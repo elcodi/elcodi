@@ -1,0 +1,26 @@
+parameters:
+
+    #
+    # Entities
+    #
+    elcodi.core.coupon.entity.coupon.class: Elcodi\CouponBundle\Entity\Coupon
+
+    #
+    # Services
+    #
+    elcodi.core.coupon.services.coupon_manager.class: Elcodi\CouponBundle\Services\CouponManager
+
+    #
+    # Form Types
+    #
+    elcodi.core.coupon.form_types.coupon.class: Elcodi\CouponBundle\Form\Type\CouponType
+
+    #
+    # Factories
+    #
+    elcodi.core.coupon.factory.coupon.class: Elcodi\CouponBundle\Factory\CouponFactory
+
+    #
+    # Generators
+    #
+    elcodi.core.referral_program.generator.coupon_code_generator.class: Elcodi\CouponBundle\Generator\CouponCodeGenerator

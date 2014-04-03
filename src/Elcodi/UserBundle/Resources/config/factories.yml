@@ -1,0 +1,9 @@
+services:
+
+    #
+    # Factories
+    #
+    elcodi.core.user.factory.customer:
+        class: %elcodi.core.user.factory.customer.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.user.entity.customer.class%"]]

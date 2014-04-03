@@ -1,0 +1,30 @@
+Elcodi\BannerBundle\Entity\BannerZone:
+    type: entity
+    repositoryClass: Elcodi\BannerBundle\Repository\BannerZoneRepository
+    table: banner_zone
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        code:
+            column: code
+            type: string
+            length: 255
+            nullable: false
+        height:
+            column: height
+            type: integer
+        width:
+            column: width
+            type: integer
+
+    manyToOne:
+        language:
+            targetEntity: Elcodi\CoreBundle\Entity\Interfaces\LanguageInterface
+
+    manyToMany:
+        banners:
+            targetEntity: Elcodi\BannerBundle\Entity\Interfaces\BannerInterface
+            mappedBy: bannerZones

@@ -1,0 +1,45 @@
+Elcodi\ReferralProgramBundle\Entity\ReferralRule:
+    type: entity
+    repositoryClass: Elcodi\ReferralProgramBundle\Repository\ReferralRuleRepository
+    table: referral_rule
+    fields:
+        referrerType:
+            column: referrer_type
+            type: string
+            length: 255
+            nullable: false
+        invitedType:
+            column: invited_type
+            type: string
+            length: 255
+            nullable: false
+        validFrom:
+            column: valid_from
+            type: datetime
+            nullable: false
+        validTo:
+            column: valid_to
+            type: datetime
+            nullable: true
+        enabled:
+            column: enabled
+            type: boolean
+
+    manyToOne:
+        referrerCoupon:
+            targetEntity: Elcodi\CouponBundle\Entity\Interfaces\CouponInterface
+            joinColumn:
+                name: referrer_coupon_id
+                referencedColumnName: id
+                nullable: true
+        invitedCoupon:
+            targetEntity: Elcodi\CouponBundle\Entity\Interfaces\CouponInterface
+            joinColumn:
+                name: invited_coupon_id
+                referencedColumnName: id
+                nullable: true
+
+    oneToMany:
+        referralLines:
+            targetEntity: Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralLineInterface
+            mappedBy: referralRule

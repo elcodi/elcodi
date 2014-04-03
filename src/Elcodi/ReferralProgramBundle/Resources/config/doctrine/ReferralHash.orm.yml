@@ -1,0 +1,23 @@
+Elcodi\ReferralProgramBundle\Entity\ReferralHash:
+    type: entity
+    repositoryClass: Elcodi\ReferralProgramBundle\Repository\ReferralHashRepository
+    table: referral_hash
+    fields:
+        hash:
+            column: hash
+            type: string
+            length: 255
+            nullable: false
+
+    manyToOne:
+        referrer:
+            targetEntity: Elcodi\UserBundle\Entity\Interfaces\CustomerInterface
+            joinColumn:
+                name: customer_id
+                referencedColumnName: id
+                nullable: false
+
+    oneToMany:
+        referralLines:
+            targetEntity: Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralLineInterface
+            mappedBy: referralHash

@@ -1,0 +1,4 @@
+elcodi_referral_program_routes:
+    resource: .
+    type: elcodi_referral_program
+    options: { i18n: false }

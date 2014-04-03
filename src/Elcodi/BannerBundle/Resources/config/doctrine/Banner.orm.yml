@@ -1,0 +1,32 @@
+Elcodi\BannerBundle\Entity\Banner:
+    type: entity
+    repositoryClass: Elcodi\BannerBundle\Repository\BannerRepository
+    table: banner
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        description:
+            column: description
+            type: text
+            nullable: true
+        url:
+            column: url
+            type: string
+            length: 255
+            nullable: true
+
+    manyToMany:
+        bannerZones:
+            targetEntity: Elcodi\BannerBundle\Entity\Interfaces\BannerZoneInterface
+            inversedBy: banners
+            joinTable:
+                name: banner_bannerzone
+                joinColumns:
+                    banner_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    banner_zone_id:
+                        referencedColumnName: id

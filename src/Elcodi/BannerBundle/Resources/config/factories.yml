@@ -1,0 +1,15 @@
+services:
+
+    #
+    # Factories
+    #
+    elcodi.core.banner.factory.banner:
+        class: %elcodi.core.banner.factory.banner.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.banner.entity.banner.class%"]]
+
+
+    elcodi.core.banner.factory.bannerzone:
+        class: %elcodi.core.banner.factory.bannerzone.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.banner.entity.bannerzone.class%"]]

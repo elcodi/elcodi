@@ -1,0 +1,29 @@
+parameters:
+
+    #
+    # Entities
+    #
+    elcodi.core.currency.entity.currency.class: Elcodi\CurrencyBundle\Entity\Currency
+    elcodi.core.currency.entity.currency_exchange_rate.class: Elcodi\CurrencyBundle\Entity\CurrencyExchangeRate
+
+    #
+    # Factory classes
+    #
+    elcodi.core.currency.factory.currency.class: Elcodi\CurrencyBundle\Factory\CurrencyFactory
+    elcodi.core.currency.factory.currency_exchange_rate.class: Elcodi\CurrencyBundle\Factory\CurrencyExchangeRateFactory
+
+    #
+    # Form type classes
+    #
+    elcodi.core.currency.form_types.currency.class: Elcodi\CurrencyBundle\Form\Type\CurrencyType
+
+    #
+    # Service classes
+    #
+    elcodi.core.currency.service.exchange_rates_provider.class: Elcodi\CurrencyBundle\Provider\DummyExchangeRatesProvider
+    elcodi.core.currency.manager.currency_manager.class: Elcodi\CurrencyBundle\Manager\CurrencyManager
+
+    #
+    # Twig classes
+    #
+    elcodi.core.currency.twig.print_price.class: Elcodi\CurrencyBundle\Twig\PrintPriceExtension

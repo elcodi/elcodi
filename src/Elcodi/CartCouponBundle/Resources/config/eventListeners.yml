@@ -1,0 +1,11 @@
+services:
+
+    #
+    # Event Listeners
+    #
+    elcodi.core.cart_coupon.event_listeners.cart:
+        class: %elcodi.core.cart_coupon.event_listeners.cart.class%
+        arguments:
+            coupon_manager: @elcodi.core.coupon.services.coupon_manager
+        tags:
+            - { name: kernel.event_listener, event: cart.load, method: onCartLoad }

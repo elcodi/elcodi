@@ -1,0 +1,44 @@
+Elcodi\CouponBundle\Entity\Coupon:
+    type: entity
+    repositoryClass: Elcodi\CouponBundle\Repository\CouponRepository
+    table: coupon
+
+    fields:
+        code:
+            column: code
+            type: string
+            length: 255
+            nullable: false
+            unique: true
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        type:
+            column: type
+            type: integer
+            nullable: false
+        value:
+            column: value
+            type: float
+        count:
+            column: count
+            type: integer
+            nullable: false
+        used:
+            column: used
+            type: integer
+            nullable: false
+        priority:
+            column: priority
+            type: integer
+            nullable: false
+        minimumPurchaseAmount:
+            column: min_purchase_amount
+            type: float
+            nullable: false
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]

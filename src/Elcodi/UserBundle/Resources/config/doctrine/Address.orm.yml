@@ -1,0 +1,29 @@
+Elcodi\UserBundle\Entity\Address:
+    type: entity
+    repositoryClass: Elcodi\UserBundle\Repository\AddressRepository
+    table: address
+    inheritanceType:
+    fields:
+        address:
+            column: address
+            type: string
+            length: 255
+            nullable: true
+
+        # datetime
+        createdAt:
+            column: created_at
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            column: updated_at
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        # enable
+        enabled:
+            column: enabled
+            type: boolean

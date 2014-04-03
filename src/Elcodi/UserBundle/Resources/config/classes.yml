@@ -1,0 +1,35 @@
+parameters:
+
+    #
+    # Entities
+    #
+    elcodi.core.user.entity.customer.class: Elcodi\UserBundle\Entity\Customer
+    elcodi.core.user.entity.address.class: Elcodi\UserBundle\Entity\Address
+
+    #
+    # Services
+    #
+    elcodi.core.user.services.newsletter_manager.class: Elcodi\UserBundle\Services\NewsletterManager
+    elcodi.core.user.services.password_manager.class: Elcodi\UserBundle\Services\PasswordManager
+    elcodi.core.user.services.customer_manager.class: Elcodi\UserBundle\Services\CustomerManager
+    elcodi.core.user.wrapper.customer_wrapper.class: Elcodi\UserBundle\Wrapper\CustomerWrapper
+
+    #
+    # Form Types
+    #
+    elcodi.core.user.form_types.customer.class: Elcodi\UserBundle\Form\Type\CustomerType
+
+    #
+    # Event Listeners
+    #
+    elcodi.core.user.event_listener.password.class: Elcodi\UserBundle\EventListener\PasswordEventListener
+
+    #
+    # Factories
+    #
+    elcodi.core.user.factory.customer.class: Elcodi\UserBundle\Factory\CustomerFactory
+
+    #
+    # Generators
+    #
+    elcodi.core.user.generator.recover_hash.class: Elcodi\UserBundle\Generator\RecoveryHashGenerator

@@ -1,0 +1,18 @@
+services:
+
+    #
+    # Services
+    #
+    elcodi.core.core.services.abstract_cache_wrapper:
+        class: %elcodi.core.core.services.abstract_cache_wrapper.class%
+        abstract: true
+        calls:
+            - [setLanguageManager, [@elcodi.core.core.services.language_manager]]
+            - [setCache, [@doctrine_cache.providers.elcodi]]
+            - [setRequest, [@?request=]]
+            - [setKey, []]
+
+    elcodi.core.core.services.language_manager:
+        class: %elcodi.core.core.services.language_manager.class%
+        arguments:
+            language_repository:  @=service("doctrine.orm.entity_manager").getRepository("ElcodiCoreBundle:Language")

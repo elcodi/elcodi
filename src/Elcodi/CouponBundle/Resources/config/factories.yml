@@ -1,0 +1,9 @@
+services:
+
+    #
+    # Factories
+    #
+    elcodi.core.coupon.factory.coupon:
+        class: %elcodi.core.coupon.factory.coupon.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.coupon.entity.coupon.class%"]]

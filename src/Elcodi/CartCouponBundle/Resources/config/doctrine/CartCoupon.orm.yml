@@ -1,0 +1,16 @@
+Elcodi\CartCouponBundle\Entity\CartCoupon:
+    type: entity
+    repositoryClass: Elcodi\CartCouponBundle\Repository\CartCouponRepository
+    table: cart_coupon
+
+    manyToOne:
+        cart:
+            targetEntity: Elcodi\CartBundle\Entity\Interfaces\CartInterface
+            joinColumn:
+                name: cart_id
+                referencedColumnName: id
+        coupon:
+            targetEntity: Elcodi\CouponBundle\Entity\Interfaces\CouponInterface
+            joinColumn:
+                name: coupon_id
+                referencedColumnName: id

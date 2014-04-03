@@ -1,0 +1,82 @@
+Elcodi\UserBundle\Entity\Customer:
+    type: entity
+    repositoryClass: Elcodi\UserBundle\Repository\CustomerRepository
+    table: customer
+    inheritanceType:
+    fields:
+        phone:
+            column: phone
+            type: string
+            length: 15
+            nullable: true
+        recoveryHash:
+            column: recovery_hash
+            type: string
+            length: 255
+            unique: true
+            nullable: true
+        identityDocument:
+            column: identity_document
+            type: string
+            length: 255
+            nullable: true
+        guest:
+            column: guest
+            type: boolean
+        newsletter:
+            column: newsletter
+            type: boolean
+
+    oneToMany:
+        carts:
+            targetEntity: Elcodi\CartBundle\Entity\Interfaces\CartInterface
+            mappedBy: customer
+            orderBy:
+                createdAt: DESC
+            cascade: [ persist ]
+
+        orders:
+            targetEntity: Elcodi\CartBundle\Entity\Interfaces\OrderInterface
+            mappedBy: customer
+            cascade: [ persist ]
+
+    oneToOne:
+        deliveryAddress:
+            targetEntity: Elcodi\UserBundle\Entity\Interfaces\AddressInterface
+            joinColumn:
+                name: delivery_address_id
+                referencedColumnName: id
+                nullable: true
+            cascade: [ persist ]
+
+        deliveryAddress:
+            targetEntity: Elcodi\UserBundle\Entity\Interfaces\AddressInterface
+            joinColumn:
+                name: invoice_address_id
+                referencedColumnName: id
+                nullable: true
+            cascade: [ persist ]
+
+    manyToOne:
+        language:
+            targetEntity: Elcodi\CoreBundle\Entity\Interfaces\LanguageInterface
+            joinColumn:
+                name: language_id
+                referencedColumnName: id
+                nullable: true
+
+    manyToMany:
+        addresses:
+            targetEntity: Elcodi\UserBundle\Entity\Interfaces\AddressInterface
+            joinTable:
+                name: customer_address
+                joinColumns:
+                    customer_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    address_id:
+                        referencedColumnName: id
+
+    lifecycleCallbacks:
+            preUpdate: [loadUpdateAt]
+            prePersist: [loadUpdateAt]

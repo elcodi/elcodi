@@ -1,0 +1,14 @@
+parameters:
+
+    #
+    # Entities
+    #
+
+    #
+    # Factories
+    #
+
+    #
+    # Event Listeners
+    #
+    elcodi.core.cart_coupon.event_listeners.cart.class: Elcodi\CartCouponBundle\EventListener\CartEventListener

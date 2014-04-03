@@ -1,0 +1,9 @@
+services:
+
+    #
+    # Form Types
+    #
+    elcodi.core.user.form_types.customer:
+        class: %elcodi.core.user.form_types.customer.class%
+        tags:
+            - { name: form.type, alias: elcodi_core_form_types_customer }

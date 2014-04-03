@@ -1,0 +1,22 @@
+Elcodi\CurrencyBundle\Entity\CurrencyExchangeRate:
+    type: entity
+    repositoryClass: Elcodi\CurrencyBundle\Repository\CurrencyExchangeRateRepository
+    table: currency_exchange_rate
+    fields:
+        exchangeRate:
+            column: exchange_rate
+            type: decimal
+            precision: 18
+            scale: 10
+            nullable: false
+    manyToOne:
+        targetCurrency:
+            targetEntity: Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                name: target_currency_id
+                referencedColumnName: id
+        sourceCurrency:
+            targetEntity: Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                name: source_currency_id
+                referencedColumnName: id

@@ -1,0 +1,38 @@
+services:
+
+    #
+    # Factories
+    #
+    elcodi.core.cart.factory.cart:
+        class: %elcodi.core.cart.factory.cart.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.cart.entity.cart.class%"]]
+
+    elcodi.core.cart.factory.order:
+        class: %elcodi.core.cart.factory.order.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.cart.entity.order.class%"]]
+            - [setOrderHistoryFactory, ["@elcodi.core.cart.factory.order_history"]]
+            - [setInitialOrderHistoryState, ["%elcodi.core.cart.order_initial_state%"]]
+
+    elcodi.core.cart.factory.cart_line:
+        class: %elcodi.core.cart.factory.cart_line.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.cart.entity.cart_line.class%"]]
+
+    elcodi.core.cart.factory.order_line:
+        class: %elcodi.core.cart.factory.order_line.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.cart.entity.order_line.class%"]]
+            - [setOrderLineHistoryFactory, ["@elcodi.core.cart.factory.order_line_history"]]
+            - [setInitialOrderHistoryState, ["%elcodi.core.cart.order_initial_state%"]]
+
+    elcodi.core.cart.factory.order_history:
+        class: %elcodi.core.cart.factory.order_history.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.cart.entity.order_history.class%"]]
+
+    elcodi.core.cart.factory.order_line_history:
+        class: %elcodi.core.cart.factory.order_line_history.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.cart.entity.order_line_history.class%"]]

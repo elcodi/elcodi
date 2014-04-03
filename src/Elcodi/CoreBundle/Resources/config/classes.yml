@@ -1,0 +1,28 @@
+parameters:
+
+    #
+    # Entities
+    #
+    elcodi.core.core.entity.language.class: Elcodi\CoreBundle\Entity\Language
+
+    #
+    # Services
+    #
+    elcodi.core.core.services.abstract_cache_wrapper.class: Elcodi\CoreBundle\Wrapper\Abstracts\AbstractCacheWrapper
+    elcodi.core.core.services.language_manager.class: Elcodi\CoreBundle\Services\LanguageManager
+
+    #
+    # Twig
+    #
+    elcodi.core.core.twig.text_extension.class: Elcodi\CoreBundle\Twig\TextExtension
+    elcodi.core.core.twig.price_extension.class: Elcodi\CoreBundle\Twig\PriceExtension
+
+    #
+    # Form Types
+    #
+    elcodi.core.core.form_types.language.class: Elcodi\CoreBundle\Form\Type\LanguageType
+
+    #
+    # Factories
+    #
+    elcodi.core.core.factory.language.class: Elcodi\CoreBundle\Factory\LanguageFactory

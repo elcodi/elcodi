@@ -1,0 +1,52 @@
+Elcodi\ProductBundle\Entity\Manufacturer:
+    type: entity
+    repositoryClass: Elcodi\ProductBundle\Repository\ManufacturerRepository
+    table: manufacturer
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        slug:
+            column: slug
+            type: string
+            length: 255
+            nullable: false
+        description:
+            column: description
+            type: text
+            nullable: true
+        createdAt:
+            column: created_at
+            type: datetime
+        updatedAt:
+            column: updated_at
+            type: datetime
+        enabled:
+            column: enabled
+            type: boolean
+        metaTitle:
+            column: meta_title
+            type: string
+            length: 255
+            nullable: true
+        metaDescription:
+            column: meta_description
+            type: string
+            length: 255
+            nullable: true
+        metaKeywords:
+            column: meta_keywords
+            type: string
+            length: 255
+            nullable: true
+
+    oneToMany:
+        products:
+            targetEntity: Elcodi\ProductBundle\Entity\Interfaces\ProductInterface
+            mappedBy: manufacturer
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]

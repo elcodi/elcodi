@@ -1,0 +1,19 @@
+services:
+
+    #
+    # Form Types
+    #
+    elcodi.core.product.form_types.category:
+        class: %elcodi.core.product.form_types.category.class%
+        tags:
+            - { name: form.type, alias: elcodi_core_form_types_category }
+
+    elcodi.core.product.form_types.manufacturer:
+        class: %elcodi.core.product.form_types.manufacturer.class%
+        tags:
+            - { name: form.type, alias: elcodi_core_form_types_manufacturer }
+
+    elcodi.core.product.form_types.product:
+        class: %elcodi.core.product.form_types.product.class%
+        tags:
+            - { name: form.type, alias: elcodi_core_form_types_product }

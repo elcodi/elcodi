@@ -1,0 +1,61 @@
+{
+    "name": "elcodi/elcodi",
+    "description": "Barebones Ecommerce functionality for Symfony",
+    "keywords": ["elcodi", "symfony", "ecommerce", "bundle"],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aldo Chiecchia",
+            "email": "aldo.chiecchia@befactory.es",
+            "role": "CTO"
+        },
+        {
+            "name": "Marc Morera",
+            "email": "marc.morera@befactory.es",
+            "homepage": "http://mmoreram.com/",
+            "role": "Web Architect"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/symfony": "~2.4",
+        "doctrine/orm": "~2.2,>=2.2.3",
+        "doctrine/doctrine-bundle": "~1.2",
+        "twig/extensions": "~1.0",
+        "symfony/assetic-bundle": "~2.3",
+        "symfony/swiftmailer-bundle": "~2.3",
+        "symfony/monolog-bundle": "~2.4",
+        "sensio/distribution-bundle": "~2.3",
+        "doctrine/doctrine-cache-bundle": "~1.0",
+        "symfony/yaml": ">=2.4.1",
+        "doctrine/doctrine-fixtures-bundle": "v2.2.0",
+        "elnur/blowfish-password-encoder-bundle": "0.5.0",
+        "symfony/expression-language": "~2.4"
+    },
+    "require-dev": {
+        "doctrine/data-fixtures": "v1.0.0",
+        "phpunit/phpunit": ">=4.0.0"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+        ],
+        "post-update-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+        ]
+    },
+    "target-dir": "Elcodi",
+    "autoload": {
+        "psr-0": {
+            "Elcodi": ["Elcodi/src/", "src/"]
+        }
+    }
+}
+

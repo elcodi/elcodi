@@ -1,0 +1,47 @@
+imports:
+    - { resource: parameters.yml }
+
+monolog:
+    handlers:
+        main:
+            type: stream
+            level: debug
+            handler: null
+
+swiftmailer:
+    disable_delivery: true
+
+framework:
+    test:            ~
+    session:         ~
+    secret:          "%secret%"
+    router:          { resource: "%kernel.root_dir%/config/routing.yml" }
+    form:            true
+    default_locale:  "%locale%"
+    templating:      { engines: ['php'] }
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   "%database_driver%"
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        path:     "%database_path%"
+        memory:   "%database_memory%"
+        charset:  UTF8
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        metadata_cache_driver: array
+        auto_mapping: true
+        query_cache_driver:
+            type: array
+        result_cache_driver:
+            type: array
+
+doctrine_cache:
+   providers:
+      elcodi:
+         type: array

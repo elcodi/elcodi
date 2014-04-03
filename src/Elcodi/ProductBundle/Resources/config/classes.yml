@@ -1,0 +1,35 @@
+parameters:
+
+    #
+    # Slug handlers - Set as bundle parameters
+    #
+    elcodi.core.product.handler.category_translation_tree_slug_handler.traverse_hierarchy: false
+    elcodi.core.product.handler.category_translation_tree_slug_handler.separator: '-'
+
+    #
+    # Services
+    #
+    elcodi.core.product.services.product_manager.class: Elcodi\ProductBundle\Services\ProductManager
+    elcodi.core.product.services.category_manager.class: Elcodi\ProductBundle\Services\CategoryManager
+    elcodi.core.product.services.product_collection_provider.class: Elcodi\ProductBundle\Services\ProductCollectionProvider
+
+    #
+    # Form Types
+    #
+    elcodi.core.product.form_types.category.class: Elcodi\ProductBundle\Form\Type\CategoryType
+    elcodi.core.product.form_types.manufacturer.class: Elcodi\ProductBundle\Form\Type\ManufacturerType
+    elcodi.core.product.form_types.product.class: Elcodi\ProductBundle\Form\Type\ProductType
+
+    #
+    # Entities
+    #
+    elcodi.core.product.entity.product.class: Elcodi\ProductBundle\Entity\Product
+    elcodi.core.product.entity.category.class: Elcodi\ProductBundle\Entity\Category
+    elcodi.core.product.entity.manufacturer.class: Elcodi\ProductBundle\Entity\Manufacturer
+
+    #
+    # Factories
+    #
+    elcodi.core.product.factory.product.class: Elcodi\ProductBundle\Factory\ProductFactory
+    elcodi.core.product.factory.manufacturer.class: Elcodi\ProductBundle\Factory\ManufacturerFactory
+    elcodi.core.product.factory.category.class: Elcodi\ProductBundle\Factory\CategoryFactory

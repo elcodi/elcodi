@@ -1,0 +1,24 @@
+parameters:
+
+    #
+    # Entities
+    #
+    elcodi.core.banner.entity.banner.class: Elcodi\BannerBundle\Entity\Banner
+    elcodi.core.banner.entity.bannerzone.class: Elcodi\BannerBundle\Entity\BannerZone
+
+    #
+    # Form Types
+    #
+    elcodi.core.banner.form_types.banner.class: Elcodi\BannerBundle\Form\Type\BannerType
+    elcodi.core.banner.form_types.bannerzone.class: Elcodi\BannerBundle\Form\Type\BannerZoneType
+
+    #
+    # Services
+    #
+    elcodi.core.banner.services.banner_manager.class: Elcodi\BannerBundle\Services\BannerManager
+
+    #
+    # Factories
+    #
+    elcodi.core.banner.factory.banner.class: Elcodi\BannerBundle\Factory\BannerFactory
+    elcodi.core.banner.factory.bannerzone.class: Elcodi\BannerBundle\Factory\BannerZoneFactory

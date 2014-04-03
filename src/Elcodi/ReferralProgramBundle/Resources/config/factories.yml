@@ -1,0 +1,29 @@
+services:
+
+    #
+    # Factories
+    #
+    elcodi.core.referral_program.factory.referralrule:
+        class: %elcodi.core.referral_program.factory.referralrule.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.referral_program.entity.referral_rule.class%"]]
+
+    elcodi.core.referral_program.factory.referralline:
+        class: %elcodi.core.referral_program.factory.referralline.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.referral_program.entity.referral_line.class%"]]
+
+    elcodi.core.referral_program.factory.referralhash:
+        class: %elcodi.core.referral_program.factory.referralhash.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.referral_program.entity.referral_hash.class%"]]
+
+    elcodi.core.referral_program.factory.invitation:
+        class: %elcodi.core.referral_program.factory.invitation.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.referral_program.model.invitation.class%"]]
+
+    elcodi.core.referral_program.factory.invitationbag:
+        class: %elcodi.core.referral_program.factory.invitationbag.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.referral_program.model.invitation_bag.class%"]]

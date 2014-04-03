@@ -1,0 +1,9 @@
+services:
+
+    #
+    # Factories
+    #
+    elcodi.core.core.factory.language:
+        class: %elcodi.core.core.factory.language.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.core.entity.language.class%"]]

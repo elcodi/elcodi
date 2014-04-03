@@ -1,0 +1,34 @@
+parameters:
+
+    #
+    # Entities
+    #
+    elcodi.core.cart.entity.cart.class: Elcodi\CartBundle\Entity\Cart
+    elcodi.core.cart.entity.order.class: Elcodi\CartBundle\Entity\Order
+    elcodi.core.cart.entity.cart_line.class: Elcodi\CartBundle\Entity\CartLine
+    elcodi.core.cart.entity.order_line.class: Elcodi\CartBundle\Entity\OrderLine
+    elcodi.core.cart.entity.order_history.class: Elcodi\CartBundle\Entity\OrderHistory
+    elcodi.core.cart.entity.order_line_history.class: Elcodi\CartBundle\Entity\OrderLineHistory
+
+    #
+    # Services
+    #
+    elcodi.core.cart.services.cart_manager.class: Elcodi\CartBundle\Services\CartManager
+    elcodi.core.cart.services.order_manager.class: Elcodi\CartBundle\Services\OrderManager
+    elcodi.core.cart.services.order_line_manager.class: Elcodi\CartBundle\Services\OrderLineManager
+
+    #
+    # Event Listeners
+    #
+    elcodi.core.cart.event_listeners.cart.class: Elcodi\CartBundle\EventListener\CartEventListener
+    elcodi.core.cart.event_listeners.order_line_state.class: Elcodi\CartBundle\EventListener\OrderLineStateEventListener
+
+    #
+    # Factories
+    #
+    elcodi.core.cart.factory.cart.class: Elcodi\CartBundle\Factory\CartFactory
+    elcodi.core.cart.factory.order.class: Elcodi\CartBundle\Factory\OrderFactory
+    elcodi.core.cart.factory.cart_line.class: Elcodi\CartBundle\Factory\CartLineFactory
+    elcodi.core.cart.factory.order_line.class: Elcodi\CartBundle\Factory\OrderLineFactory
+    elcodi.core.cart.factory.order_history.class: Elcodi\CartBundle\Factory\OrderHistoryFactory
+    elcodi.core.cart.factory.order_line_history.class: Elcodi\CartBundle\Factory\OrderLineHistoryFactory

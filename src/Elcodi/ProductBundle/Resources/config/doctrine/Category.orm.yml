@@ -1,0 +1,72 @@
+Elcodi\ProductBundle\Entity\Category:
+    type: entity
+    repositoryClass: Elcodi\ProductBundle\Repository\CategoryRepository
+    table: category
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        slug:
+            column: slug
+            type: string
+            length: 255
+            nullable: false
+        root:
+            column: root
+            type: integer
+            nullable: false
+        position:
+            column: position
+            type: integer
+            nullable: false
+        createdAt:
+            column: created_at
+            type: datetime
+        updatedAt:
+            column: updated_at
+            type: datetime
+        enabled:
+            column: enabled
+            type: boolean
+        metaTitle:
+            column: meta_title
+            type: string
+            length: 255
+            nullable: true
+        metaDescription:
+            column: meta_description
+            type: string
+            length: 255
+            nullable: true
+        metaKeywords:
+            column: meta_keywords
+            type: string
+            length: 255
+            nullable: true
+
+    oneToMany:
+        subCategories:
+            targetEntity: Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface
+            mappedBy: parent
+
+    manyToOne:
+        parent:
+            targetEntity: Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface
+            inversedBy: subCategories
+            joinColumn:
+                name: parent_id
+                referencedColumnName: id
+                nullable: true
+                onDelete: "SET NULL"
+                onUpdate: "CASCADE"
+
+    manyToMany:
+        products:
+            targetEntity: Elcodi\ProductBundle\Entity\Interfaces\ProductInterface
+            mappedBy: categories
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]

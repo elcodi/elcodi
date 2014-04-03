@@ -1,0 +1,111 @@
+<?php
+
+/**
+ * This file is part of the Elcodi package.
+ *
+ * Copyright (c) 2014 Elcodi.com
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author ##author_placeholder
+ * @version ##version_placeholder##
+ */
+
+namespace Elcodi\ReferralProgramBundle\EventListener;
+
+use Elcodi\UserBundle\Entity\Abstracts\AbstractCustomer;
+use Symfony\Component\HttpFoundation\Cookie;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
+
+use Elcodi\CartBundle\Event\OrderCreatedEvent;
+use Elcodi\ReferralProgramBundle\ElcodiReferralProgramBundle;
+use Elcodi\ReferralProgramBundle\ElcodiReferralProgramRuleTypes;
+use Elcodi\ReferralProgramBundle\Services\ReferralCouponManager;
+use Elcodi\UserBundle\Event\CustomerRegisterEvent;
+
+/**
+ * Class ReferralProgramEventListener
+ */
+class ReferralProgramEventListener
+{
+    /**
+     * @var ReferralCouponManager
+     *
+     * referralCouponManager
+     */
+    protected $referralCouponManager;
+
+    /**
+     * @var Request
+     *
+     * Request
+     */
+    protected $request;
+
+    /**
+     * Construct method
+     *
+     * @param ReferralCouponManager $referralCouponManager Referral program Coupon manager
+     * @param RequestStack          $requestStack          Request stack
+     */
+    public function __construct(
+        ReferralCouponManager $referralCouponManager,
+        RequestStack $requestStack
+    )
+    {
+        $this->referralCouponManager = $referralCouponManager;
+        $this->request = $requestStack->getMasterRequest();
+    }
+
+    /**
+     * Method raised when a new customer is registered
+     *
+     * This event listener must check if new user's email is contained
+     * in any Referral Program row.
+     *
+     * If is it, respective coupons will be assigned if relative
+     * ReferralRule is designed as it
+     *
+     * @param CustomerRegisterEvent $event Event containing referral data
+     */
+    public function onCustomerRegister(CustomerRegisterEvent $event)
+    {
+        /**
+         * @var Cookie $cookie
+         */
+        $cookie = $this->request->cookies->get(ElcodiReferralProgramBundle::REFERRAL_PROGRAM_COOKIE_NAME);
+
+        if (!empty($cookie)) {
+
+            $customer = $event->getCustomer();
+            $this
+                ->referralCouponManager
+                ->checkCouponAssignment($customer, $cookie, ElcodiReferralProgramRuleTypes::TYPE_ON_REGISTER);
+        }
+    }
+
+    /**
+     * Method triggered when a customer purchases a cart
+     *
+     * This listener just creates new Coupon if do not exists and if needs to be
+     * generated
+     *
+     * @param OrderCreatedEvent $event Event
+     */
+    public function onCustomerPurchase(OrderCreatedEvent $event)
+    {
+        /**
+         * @var Cookie           $cookie
+         * @var AbstractCustomer $customer
+         */
+        $customer = $event->getOrder()->getUser();
+        $hash = $this->request->cookies->get(ElcodiReferralProgramBundle::REFERRAL_PROGRAM_COOKIE_NAME);
+
+        $this
+            ->referralCouponManager
+            ->checkCouponAssignment($customer, $hash, ElcodiReferralProgramRuleTypes::TYPE_ON_FIRST_PURCHASE)
+            ->checkCouponsUsed($customer, $event->getOrder()->getCoupons());
+    }
+}

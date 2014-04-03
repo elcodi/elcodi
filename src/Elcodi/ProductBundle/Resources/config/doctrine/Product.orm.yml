@@ -1,0 +1,105 @@
+Elcodi\ProductBundle\Entity\Product:
+    type: entity
+    repositoryClass: Elcodi\ProductBundle\Repository\ProductRepository
+    table: product
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        slug:
+            column: slug
+            type: string
+            length: 255
+            nullable: false
+        shortDescription:
+            column: short_description
+            type: string
+            length: 255
+            nullable: true
+        description:
+            column: description
+            type: text
+            nullable: true
+        showInHome:
+            column: show_in_home
+            type: boolean
+            nullable: true
+        dimensions:
+            column: dimensions
+            type: string
+            length: 255
+            nullable: true
+        stock:
+            column: stock
+            type: integer
+            nullable: true
+        price:
+            column: price
+            type: decimal
+            precision: 10
+            scale: 2
+            nullable: true
+        reducedPrice:
+            column: reduced_price
+            type: decimal
+            precision: 10
+            scale: 2
+            nullable: true
+        createdAt:
+            column: created_at
+            type: datetime
+        updatedAt:
+            column: updated_at
+            type: datetime
+        enabled:
+            column: enabled
+            type: boolean
+        metaTitle:
+            column: meta_title
+            type: string
+            length: 255
+            nullable: true
+        metaDescription:
+            column: meta_description
+            type: string
+            length: 255
+            nullable: true
+        metaKeywords:
+            column: meta_keywords
+            type: string
+            length: 255
+            nullable: true
+
+    manyToOne:
+        manufacturer:
+            targetEntity: Elcodi\ProductBundle\Entity\Interfaces\ManufacturerInterface
+            inversedBy: products
+            joinColumn:
+                name: manufacturer_id
+                referencedColumnName: id
+                nullable: true
+        principalCategory:
+            targetEntity: Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface
+            joinColumn:
+                name: principal_category_id
+                referencedColumnName: id
+                nullable: true
+
+    manyToMany:
+        categories:
+            targetEntity: Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface
+            inversedBy: products
+            joinTable:
+                name: product_category
+                joinColumns:
+                    product_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    category_id:
+                        referencedColumnName: id
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]

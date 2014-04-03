@@ -1,0 +1,58 @@
+Elcodi\UserBundle\Entity\Abstracts\AbstractUser:
+    type: mappedSuperclass
+    fields:
+        gender:
+            column: gender
+            type: integer
+            nullable: true
+        username:
+            column: username
+            type: string
+            length: 255
+            nullable: false
+        password:
+            column: password
+            type: string
+            length: 255
+            nullable: true
+        email:
+            column: email
+            type: string
+            length: 255
+            nullable: true
+        firstname:
+            column: firstname
+            type: string
+            length: 255
+            nullable: true
+        lastname:
+            column: lastname
+            type: string
+            length: 255
+            nullable: true
+        birthday:
+            column: birthday
+            type: datetime
+            nullable: true
+
+        # datetime
+        createdAt:
+            column: created_at
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            column: updated_at
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        # enable
+        enabled:
+            column: enabled
+            type: boolean
+
+    lifecycleCallbacks:
+            preUpdate: [loadUpdateAt]
+            prePersist: [loadUpdateAt]

@@ -1,0 +1,19 @@
+services:
+
+    #
+    # Factories
+    #
+    elcodi.core.product.factory.product:
+        class: %elcodi.core.product.factory.product.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.product.entity.product.class%"]]
+
+    elcodi.core.product.factory.manufacturer:
+        class: %elcodi.core.product.factory.manufacturer.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.product.entity.manufacturer.class%"]]
+
+    elcodi.core.product.factory.category:
+        class: %elcodi.core.product.factory.category.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.product.entity.category.class%"]]

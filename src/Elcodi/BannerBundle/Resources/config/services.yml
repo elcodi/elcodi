@@ -1,0 +1,9 @@
+services:
+
+    #
+    # Services
+    #
+    elcodi.core.banner.services.banner_manager:
+        class: %elcodi.core.banner.services.banner_manager.class%
+        arguments:
+            banner_zone_repository: @=service("doctrine.orm.entity_manager").getRepository("ElcodiBannerBundle:BannerZone")

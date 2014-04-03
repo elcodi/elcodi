@@ -1,0 +1,19 @@
+services:
+
+    #
+    # Form Types
+    #
+    elcodi.core.user.form_types.referralrule:
+        class: %elcodi.core.user.form_types.referralrule.class%
+        tags:
+            - { name: form.type, alias: elcodi_core_form_types_referralrule }
+
+    elcodi.core.user.form_types.referralline:
+        class: %elcodi.core.user.form_types.referralline.class%
+        tags:
+            - { name: form.type, alias: elcodi_core_form_types_referralline }
+
+    elcodi.core.user.form_types.referralhash:
+        class: %elcodi.core.user.form_types.referralhash.class%
+        tags:
+            - { name: form.type, alias: elcodi_core_form_types_referralhash }

@@ -1,0 +1,56 @@
+Elcodi\CartBundle\Entity\Cart:
+    type: entity
+    repositoryClass: Elcodi\CartBundle\Repository\CartRepository
+    table: cart
+    fields:
+        quantity:
+            column: quantity
+            type: integer
+        priceProducts:
+            column: price_products
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+        priceCoupons:
+            column: price_coupons
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+        price:
+            column: price
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+        createdAt:
+            column: created_at
+            type: datetime
+        updatedAt:
+            column: updated_at
+            type: datetime
+
+    oneToOne:
+        order:
+            targetEntity: Elcodi\CartBundle\Entity\Interfaces\OrderInterface
+            mappedBy: cart
+
+    manyToOne:
+        customer:
+            targetEntity: Elcodi\UserBundle\Entity\Customer
+            inversedBy: carts
+            joinColumn:
+                name: customer_id
+                referencedColumnName: id
+                nullable: false
+
+    oneToMany:
+        cartLines:
+            targetEntity: Elcodi\CartBundle\Entity\Interfaces\CartLineInterface
+            mappedBy: cart
+            cascade: ["all"]
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]
