@@ -22,16 +22,14 @@ trait DateTimeTrait
     /**
      * @var \DateTime
      *
-     * @\Gedmo\Mapping\Annotation\Timestampable(on="create")
-     * @\Doctrine\ORM\Mapping\Column(name="created_at", type="datetime")
+     * Created at
      */
     protected $createdAt;
 
     /**
      * @var \DateTime
      *
-     * @\Gedmo\Mapping\Annotation\Timestampable(on="create")
-     * @\Doctrine\ORM\Mapping\Column(name="updated_at", type="datetime")
+     * Updated at
      */
     protected $updatedAt;
 
@@ -53,17 +51,6 @@ trait DateTimeTrait
     public function getUpdatedAt()
     {
         return $this->updatedAt;
-    }
-
-    /**
-     * Method triggered by LifeCycleEvent. Sets or updates $this->updatedAt
-     *
-     * @Doctrine\ORM\Mapping\PrePersist()
-     * @Doctrine\ORM\Mapping\PreUpdate()
-     */
-    public function loadUpdateAt()
-    {
-        $this->setUpdatedAt(new \DateTime);
     }
 
     /**
@@ -95,12 +82,11 @@ trait DateTimeTrait
     }
 
     /**
-     * Checks whether this product qualifies as 'new'
-     *
-     * @return bool Entity is new
+     * Method triggered by LifeCycleEvent.
+     * Sets or updates $this->updatedAt
      */
-    public function isNew()
+    public function loadUpdateAt()
     {
-        return ($this->getCreatedAt()->diff(new \DateTime())->days <= 30);
+        $this->setUpdatedAt(new \DateTime);
     }
 }

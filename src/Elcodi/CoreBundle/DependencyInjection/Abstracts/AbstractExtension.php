@@ -17,11 +17,11 @@ namespace Elcodi\CoreBundle\DependencyInjection\Abstracts;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\FileLocator;
 
 use Elcodi\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 /**
  * Class AbstractExtension

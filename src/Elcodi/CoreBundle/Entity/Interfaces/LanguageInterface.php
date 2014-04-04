@@ -14,8 +14,6 @@
 
 namespace Elcodi\CoreBundle\Entity\Interfaces;
 
-use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
-
 /**
  * Interface LanguageInterface
  */

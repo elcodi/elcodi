@@ -14,6 +14,8 @@
 
 namespace Elcodi\CoreBundle\Entity\Traits;
 
+use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
+
 /**
  * trait for entities that can hash their state and return an ETag header
  */

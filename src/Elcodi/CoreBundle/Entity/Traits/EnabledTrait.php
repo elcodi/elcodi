@@ -19,7 +19,6 @@ namespace Elcodi\CoreBundle\Entity\Traits;
  */
 trait EnabledTrait
 {
-
     /**
      * @var boolean
      */
