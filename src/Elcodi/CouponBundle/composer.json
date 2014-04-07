@@ -40,10 +40,12 @@
         "phpunit/phpunit": ">=4.0.0",
         "elcodi/elcodi": "0.1.*@dev"
     },
-    "target-dir": "Elcodi/Bundles/Core/CouponBundle",
     "autoload": {
-        "psr-0": { "Elcodi\\Bundles\\Core\\CouponBundle": "" }
+        "psr-0": {
+            "Elcodi\\CouponBundle": ""
+        }
     },
+    "target-dir": "Elcodi/Components/CouponBundle",
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {

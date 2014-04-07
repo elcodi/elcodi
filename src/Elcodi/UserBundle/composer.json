@@ -43,7 +43,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Elcodi\\Bundles\\Core\\UserBundle": ""
+            "Elcodi\\UserBundle": ""
         }
     },
     "target-dir": "Elcodi/Component/UserBundle",

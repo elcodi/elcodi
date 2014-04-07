@@ -41,10 +41,12 @@
         "phpunit/phpunit": ">=4.0.0",
         "elcodi/elcodi": "0.1.*@dev"
     },
-    "target-dir": "Elcodi/Bundles/Core/CurrencyBundle",
     "autoload": {
-        "psr-0": { "Elcodi\\Bundles\\Core\\CurrencyBundle": "" }
+        "psr-0": {
+            "Elcodi\\CurrencyBundle": ""
+        }
     },
+    "target-dir": "Elcodi/Components/CurrencyBundle",
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {

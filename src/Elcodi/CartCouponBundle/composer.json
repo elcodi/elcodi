@@ -34,10 +34,12 @@
         "phpunit/phpunit": ">=4.0.0",
         "elcodi/elcodi": "0.1.*@dev"
     },
-    "target-dir": "Elcodi/Bundles/Core/CartCouponBundle",
     "autoload": {
-        "psr-0": { "Elcodi\\Bundles\\Core\\CartCouponBundle": "" }
+        "psr-0": {
+            "Elcodi\\CartCouponBundle": ""
+        }
     },
+    "target-dir": "Elcodi/Components/CartCouponBundle",
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
