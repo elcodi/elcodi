@@ -15,7 +15,6 @@
 namespace Elcodi\BannerBundle\Factory;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use DateTime;
 
 use Elcodi\BannerBundle\Entity\BannerZone;
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
