@@ -14,11 +14,11 @@
 
 namespace Elcodi\CouponBundle\Services;
 
-use Elcodi\CoreBundle\Generator\Interfaces\GeneratorInterface;
-use Elcodi\CouponBundle\Factory\CouponFactory;
 use DateTime;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
+use Elcodi\CouponBundle\Factory\CouponFactory;
+use Elcodi\CoreBundle\Generator\Interfaces\GeneratorInterface;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 use Elcodi\CouponBundle\Exception\CouponAppliedException;
 use Elcodi\CouponBundle\Exception\CouponBelowMinimumPurchaseException;
@@ -92,7 +92,7 @@ class CouponManager
         /**
          * check if coupon is enabled and not deleted
          */
-        if ($coupon->isDeleted() || !$coupon->isEnabled()) {
+        if (!$coupon->isEnabled()) {
 
             throw new CouponNotActiveException;
         }
@@ -178,7 +178,6 @@ class CouponManager
             ->setAbsoluteValue($coupon->getAbsoluteValue())
             ->setCount($coupon->getCount())
             ->setPriority($coupon->getPriority())
-            ->setCompatibleWith($coupon->getCompatibleWith())
             ->setMinimumPurchaseAmount($coupon->getMinimumPurchaseAmount())
             ->setValidFrom($dateFrom)
             ->setValidTo($dateTo)

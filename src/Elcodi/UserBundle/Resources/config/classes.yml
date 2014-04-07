@@ -28,6 +28,7 @@ parameters:
     # Factories
     #
     elcodi.core.user.factory.customer.class: Elcodi\UserBundle\Factory\CustomerFactory
+    elcodi.core.user.factory.address.class: Elcodi\UserBundle\Factory\AddressFactory
 
     #
     # Generators

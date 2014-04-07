@@ -14,6 +14,8 @@
 
 namespace Elcodi\ReferralProgramBundle\Tests\Functional\Services;
 
+use Doctrine\Common\Collections\Collection;
+
 use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralRuleInterface;
 use Elcodi\CoreBundle\Tests\WebTestCase;
 
@@ -74,6 +76,9 @@ class ReferralRuleManagerTest extends WebTestCase
             ->get('elcodi.core.referral_program.services.referral_rule_manager')
             ->enableReferralRule($referralRule);
 
+        /**
+         * @var Collection $referralRules
+         */
         $referralRules = $manager
             ->getRepository('ElcodiReferralProgramBundle:ReferralRule')
             ->findAll();

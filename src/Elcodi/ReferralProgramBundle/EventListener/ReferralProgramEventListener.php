@@ -8,18 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
 namespace Elcodi\ReferralProgramBundle\EventListener;
 
-use Elcodi\UserBundle\Entity\Abstracts\AbstractCustomer;
+use Elcodi\CartBundle\Event\OrderOnCreatedEvent;
+use Elcodi\CartBundle\Event\OrderPostCreatedEvent;
+use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-use Elcodi\CartBundle\Event\OrderCreatedEvent;
 use Elcodi\ReferralProgramBundle\ElcodiReferralProgramBundle;
 use Elcodi\ReferralProgramBundle\ElcodiReferralProgramRuleTypes;
 use Elcodi\ReferralProgramBundle\Services\ReferralCouponManager;
@@ -92,15 +93,15 @@ class ReferralProgramEventListener
      * This listener just creates new Coupon if do not exists and if needs to be
      * generated
      *
-     * @param OrderCreatedEvent $event Event
+     * @param OrderPostCreatedEvent $event Event
      */
-    public function onCustomerPurchase(OrderCreatedEvent $event)
+    public function onCustomerPurchase(OrderPostCreatedEvent $event)
     {
         /**
-         * @var Cookie           $cookie
-         * @var AbstractCustomer $customer
+         * @var Cookie            $cookie
+         * @var CustomerInterface $customer
          */
-        $customer = $event->getOrder()->getUser();
+        $customer = $event->getOrder()->getCustomer();
         $hash = $this->request->cookies->get(ElcodiReferralProgramBundle::REFERRAL_PROGRAM_COOKIE_NAME);
 
         $this

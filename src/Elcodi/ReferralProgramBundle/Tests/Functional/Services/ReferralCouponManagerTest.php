@@ -127,7 +127,7 @@ class ReferralCouponManagerTest extends WebTestCase
             ->getReferralHashByCustomer($referrer);
         $hash = $referralHash->getHash();
 
-        $newCustomer = new Customer();
+        $newCustomer = $this->container->get('elcodi.core.user.factory.customer')->create();
         $newCustomer
             ->setUsername('customer3')
             ->setPassword('customer3')

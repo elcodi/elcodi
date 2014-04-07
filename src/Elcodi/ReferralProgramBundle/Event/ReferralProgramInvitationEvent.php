@@ -15,8 +15,8 @@
 namespace Elcodi\ReferralProgramBundle\Event;
 
 use Symfony\Component\EventDispatcher\Event;
-use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralLineInterface;
 
+use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralLineInterface;
 use Elcodi\ReferralProgramBundle\Entity\ReferralLine;
 
 /**

@@ -14,10 +14,11 @@
 
 namespace Elcodi\ReferralProgramBundle\Controller;
 
-use Elcodi\ReferralProgramBundle\ElcodiReferralProgramBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Response;
+
+use Elcodi\ReferralProgramBundle\ElcodiReferralProgramBundle;
 
 /**
  * Class ReferralProgramRoutesLoader

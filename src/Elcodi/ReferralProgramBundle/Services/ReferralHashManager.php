@@ -16,9 +16,9 @@ namespace Elcodi\ReferralProgramBundle\Services;
 
 use Doctrine\Common\Persistence\ObjectManager;
 
-use Elcodi\ReferralProgramBundle\Factory\ReferralHashFactory;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Elcodi\CoreBundle\Generator\Interfaces\GeneratorInterface;
+use Elcodi\ReferralProgramBundle\Factory\ReferralHashFactory;
 use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralHashInterface;
 use Elcodi\ReferralProgramBundle\Entity\ReferralHash;
 use Elcodi\ReferralProgramBundle\Repository\ReferralHashRepository;

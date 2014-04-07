@@ -7,3 +7,8 @@ services:
         class: %elcodi.core.user.factory.customer.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.user.entity.customer.class%"]]
+
+    elcodi.core.user.factory.address:
+        class: %elcodi.core.user.factory.address.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.user.entity.address.class%"]]
