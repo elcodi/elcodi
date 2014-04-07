@@ -20,7 +20,7 @@ use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 /**
  * Class AbstractOrderStateEvent
  */
-class AbstractOrderStateEvent extends AbstractPurchaseEvent
+class AbstractOrderStateEvent extends AbstractEvent
 {
     /**
      * @var OrderInterface

@@ -13,6 +13,7 @@
  */
 
 namespace Elcodi\CartBundle\Event;
+
 use Elcodi\CartBundle\Event\Abstracts\AbstractCartEvent;
 
 /**

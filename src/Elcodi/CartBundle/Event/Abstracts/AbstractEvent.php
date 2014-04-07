@@ -17,9 +17,9 @@ namespace Elcodi\CartBundle\Event\Abstracts;
 use Symfony\Component\EventDispatcher\Event;
 
 /**
- * Class AbstractPurchaseEvent
+ * Class AbstractEvent
  */
-class AbstractPurchaseEvent extends Event
+class AbstractEvent extends Event
 {
 
 }

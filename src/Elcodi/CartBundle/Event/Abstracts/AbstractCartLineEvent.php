@@ -19,7 +19,7 @@ use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
 /**
  * Class AbstractCartLineEvent
  */
-abstract class AbstractCartLineEvent extends AbstractPurchaseEvent
+abstract class AbstractCartLineEvent extends AbstractEvent
 {
     /**
      * @var CartLineInterface

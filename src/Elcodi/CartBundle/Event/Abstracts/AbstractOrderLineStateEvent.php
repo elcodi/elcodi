@@ -21,7 +21,7 @@ use Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface;
 /**
  * Class AbstractOrderLineStateEvent
  */
-class AbstractOrderLineStateEvent extends AbstractPurchaseEvent
+class AbstractOrderLineStateEvent extends AbstractEvent
 {
     /**
      * @var OrderInterface

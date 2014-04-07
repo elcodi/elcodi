@@ -14,12 +14,10 @@
 
 namespace Elcodi\BannerBundle\DataFixtures\ORM;
 
-use Elcodi\BannerBundle\Entity\Interfaces\BannerInterface;
-use Elcodi\BannerBundle\Entity\Interfaces\BannerZoneInterface;
-use Elcodi\CoreBundle\Entity\Interfaces\LanguageInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-use Elcodi\BannerBundle\Entity\BannerZone;
+use Elcodi\CoreBundle\Entity\Interfaces\LanguageInterface;
+use Elcodi\BannerBundle\Entity\Interfaces\BannerZoneInterface;
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 
 /**

@@ -14,26 +14,25 @@
 
 namespace Elcodi\CartCouponBundle\Services;
 
-use Elcodi\CartCouponBundle\ElcodiCartCouponEvents;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
+use Elcodi\CartCouponBundle\ElcodiCartCouponEvents;
 use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
 use Elcodi\CartCouponBundle\Repository\CartCouponRepository;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartCouponBundle\Event\CouponAppliedToCartEvent;
 use Elcodi\CartCouponBundle\Event\CouponRemovedFromCartEvent;
 use Elcodi\CartCouponBundle\Factory\CartCouponFactory;
-use Elcodi\CouponBundle\ElcodiCouponTypes;
+use Elcodi\CartBundle\Services\CartManager;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 use Elcodi\CouponBundle\Exception\CouponAppliedException;
 use Elcodi\CouponBundle\Exception\CouponFreeShippingExistsException;
 use Elcodi\CouponBundle\Exception\CouponNotAvailableException;
 use Elcodi\CouponBundle\Repository\CouponRepository;
 use Elcodi\CouponBundle\Services\CouponManager;
-use Elcodi\CartBundle\Services\CartManager;
 
 /**
  * CartCoupon Manager

@@ -15,13 +15,13 @@
 namespace Elcodi\CartBundle\Services;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
 use Elcodi\CartBundle\Event\OrderLineOnCreatedEvent;
 use Elcodi\CartBundle\Event\OrderLinePostCreatedEvent;
 use Elcodi\CartBundle\Event\OrderLinePreCreatedEvent;
 use Elcodi\CartBundle\Factory\OrderLineFactory;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-
 use Elcodi\CartBundle\ElcodiCartEvents;
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface;
@@ -30,7 +30,6 @@ use Elcodi\CartBundle\Event\OrderLineStatePostChangeEvent;
 use Elcodi\CartBundle\Factory\OrderLineHistoryFactory;
 use Elcodi\CartBundle\Event\OrderLineStatePreChangeEvent;
 use Elcodi\CartBundle\Exception\OrderLineStateChangeNotReachableException;
-use Elcodi\CartBundle\Exception\OrderLineStateNoChangeException;
 
 /**
  * Order Line History manager

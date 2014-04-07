@@ -9,11 +9,13 @@
 
 namespace Elcodi\CartBundle\DataFixtures\ORM;
 
+use Doctrine\Common\Persistence\ObjectManager;
+
+use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
-use Doctrine\Common\Persistence\ObjectManager;
 
 
 /**
@@ -32,6 +34,8 @@ class CartData extends AbstractFixture
         /**
          * Carts
          *
+         * @var CartInterface     $emptyCart
+         * @var CartInterface     $fullCart
          * @var CustomerInterface $customer
          * @var ProductInterface  $product
          * @var ProductInterface  $productReduced
