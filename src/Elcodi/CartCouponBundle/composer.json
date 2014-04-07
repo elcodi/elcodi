@@ -1,8 +1,8 @@
 {
-    "name": "elcodi/cart-bundle",
-    "description": "Cart bundle from baeecommerce project",
-    "keywords": ["elcodi", "cart"],
-    "homepage": "https://github.com/elcodi/CartBundle",
+    "name": "elcodi/cart-coupon-bundle",
+    "description": "Elcodi Cart-Coupon bridge component",
+    "keywords": ["elcodi", "cart", "coupon", "ecommerce"],
+    "homepage": "https://github.com/elcodi/CartCouponBundle",
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
@@ -16,18 +16,30 @@
         },
         {
             "name": "Symfony Community",
-            "homepage": "https://github.com/elcodi/CartBundle/contributors"
+            "homepage": "https://github.com/elcodi/CartCouponBundle/contributors"
         }
     ],
     "require": {
-        "php": ">=5.4"
+        "php": ">=5.4",
+        "doctrine/common": "~2.4",
+        "doctrine/orm": "~2.4",
+        "symfony/event-dispatcher": "~2.4",
+
+        "elcodi/core-bundle": "~0",
+        "elcodi/cart-bundle": "~0",
+        "elcodi/coupon-bundle": "~0"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*"
     },
-    "target-dir": "Elcodi/Bundles/Core/CartBundle",
+    "target-dir": "Elcodi/Bundles/Core/CartCouponBundle",
     "autoload": {
-        "psr-0": { "Elcodi\Bundles\\Core\\CartBundle": "" }
+        "psr-0": { "Elcodi\\Bundles\\Core\\CartCouponBundle": "" }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    }
 }
