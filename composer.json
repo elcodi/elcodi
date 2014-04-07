@@ -49,7 +49,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ]
     },
-    "target-dir": "Elcodi/Bundles/Core/CartBundle",
+    "target-dir": "Elcodi",
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
