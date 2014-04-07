@@ -15,6 +15,7 @@
 namespace Elcodi\UserBundle\Event\Abstracts;
 
 use Symfony\Component\EventDispatcher\Event;
+
 use Elcodi\UserBundle\Entity\NewsletterSubscription;
 
 /**

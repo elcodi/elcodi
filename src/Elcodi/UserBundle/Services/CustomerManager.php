@@ -15,9 +15,9 @@
 namespace Elcodi\UserBundle\Services;
 
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+
 use Elcodi\UserBundle\ElcodiUserEvents;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Elcodi\UserBundle\Event\CustomerRegisterEvent;

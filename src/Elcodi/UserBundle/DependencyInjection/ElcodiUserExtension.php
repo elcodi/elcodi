@@ -14,11 +14,6 @@
 
 namespace Elcodi\UserBundle\DependencyInjection;
 
-use Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver;
-use Symfony\Component\Config\FileLocator;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
-
 use Elcodi\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 

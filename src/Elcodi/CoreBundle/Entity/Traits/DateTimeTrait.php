@@ -34,6 +34,20 @@ trait DateTimeTrait
     protected $updatedAt;
 
     /**
+     * Set locally created at value
+     *
+     * @param \DateTime $createdAt Updatedat value
+     *
+     * @return Object self Object
+     */
+    public function setCreatedAt(\DateTime $createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
      * Return created_at value
      *
      * @return \DateTime
@@ -41,16 +55,6 @@ trait DateTimeTrait
     public function getCreatedAt()
     {
         return $this->createdAt;
-    }
-
-    /**
-     * Return updated_at value
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
 
     /**
@@ -68,17 +72,13 @@ trait DateTimeTrait
     }
 
     /**
-     * Set locally created at value
+     * Return updated_at value
      *
-     * @param \DateTime $createdAt Updatedat value
-     *
-     * @return Object self Object
+     * @return \DateTime
      */
-    public function setCreatedAt(\DateTime $createdAt)
+    public function getUpdatedAt()
     {
-        $this->createdAt = $createdAt;
-
-        return $this;
+        return $this->updatedAt;
     }
 
     /**

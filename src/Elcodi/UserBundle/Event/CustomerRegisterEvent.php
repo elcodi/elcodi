@@ -14,8 +14,9 @@
 
 namespace Elcodi\UserBundle\Event;
 
-use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Symfony\Component\EventDispatcher\Event;
+
+use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 
 /**
  * Event fired when a customer registers

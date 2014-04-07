@@ -14,9 +14,6 @@
 
 namespace Elcodi\UserBundle\Entity;
 
-use DateTime;
-use Doctrine\ORM\Mapping as ORM;
-
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
@@ -27,34 +24,18 @@ use Elcodi\UserBundle\Entity\Interfaces\AddressInterface;
  */
 class Address extends AbstractEntity implements AddressInterface
 {
-
     use DateTimeTrait, EnabledTrait;
-
 
     /**
      * @var string
      *
-     * @ORM\Column(name="address", type="text", nullable=true)
+     * Address
      */
     protected $address;
 
-
     /**
-     * Construct method
-     */
-    public function __construct()
-    {
-        $this->createdAt = new DateTime;
-    }
-
-
-    public function __toString()
-    {
-        return $this->address;
-    }
-
-
-    /**
+     * Get address
+     *
      * @return string
      */
     public function getAddress()
@@ -62,11 +43,12 @@ class Address extends AbstractEntity implements AddressInterface
         return $this->address;
     }
 
-
     /**
+     * Set address
+     *
      * @param string
      *
-     * @return $this
+     * @return Address self Object
      */
     public function setAddress($address)
     {
@@ -75,4 +57,13 @@ class Address extends AbstractEntity implements AddressInterface
         return $this;
     }
 
+    /**
+     * To string
+     *
+     * @return string address
+     */
+    public function __toString()
+    {
+        return $this->address;
+    }
 }

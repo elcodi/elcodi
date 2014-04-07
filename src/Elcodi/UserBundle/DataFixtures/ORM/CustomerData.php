@@ -18,7 +18,6 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\UserBundle\Entity\Customer;
 
 /**
  * AdminData class

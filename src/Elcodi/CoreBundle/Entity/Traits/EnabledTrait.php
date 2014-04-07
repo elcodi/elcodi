@@ -21,13 +21,17 @@ trait EnabledTrait
 {
     /**
      * @var boolean
+     *
+     * Enabled
      */
     protected $enabled;
 
     /**
+     * Set if is enabled
+     *
      * @param boolean $enabled enabled value
      *
-     * @return $this
+     * @return Object self Object
      */
     public function setEnabled($enabled)
     {
@@ -37,7 +41,9 @@ trait EnabledTrait
     }
 
     /**
-     * @return boolean
+     * Get is enabled
+     *
+     * @return boolean is enabled
      */
     public function isEnabled()
     {
@@ -45,7 +51,9 @@ trait EnabledTrait
     }
 
     /**
-     * @return $this
+     * Enable
+     *
+     * @return Object self Object
      */
     public function enable()
     {
@@ -53,7 +61,9 @@ trait EnabledTrait
     }
 
     /**
-     * @return $this
+     * Disable
+     *
+     * @return Object self Object
      */
     public function disable()
     {

@@ -27,10 +27,6 @@ use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
 
 /**
  * NewsletterSubscription
- *
- * @ORM\Entity(repositoryClass="Elcodi\UserBundle\Repository\NewsletterSubscriptionRepository")
- * @ORM\Table(name="newsletter_subscription")
- * @ORM\HasLifecycleCallbacks
  */
 class NewsletterSubscription extends AbstractEntity
 {
@@ -39,48 +35,28 @@ class NewsletterSubscription extends AbstractEntity
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255, nullable=true, unique=true)
      */
     protected $email;
 
     /**
      * @var ArrayCollection
-     *
-     * @ORM\ManyToOne(targetEntity="\Elcodi\UserBundle\Entity\Abstracts\AbstractCustomer")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
      */
     protected $customer;
 
     /**
      * @var ArrayCollection
-     *
-     * @ORM\ManyToOne(targetEntity="\Elcodi\CoreBundle\Entity\Language")
-     * @ORM\JoinColumn(name="language_id", referencedColumnName="id")
      */
     protected $language;
 
     /**
      * @var String
-     *
-     * @ORM\Column(name="hash", type="string", length=64)
      */
     protected $hash;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="reason", type="string", length=64, nullable=true)
      */
     protected $reason;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->createdAt = new DateTime;
-    }
 
     /**
      * Set email

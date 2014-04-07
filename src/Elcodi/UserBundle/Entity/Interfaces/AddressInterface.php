@@ -14,6 +14,8 @@
 
 namespace Elcodi\UserBundle\Entity\Interfaces;
 
+use DateTime;
+
 /**
  * Address Interface
  */
@@ -33,16 +35,51 @@ interface AddressInterface
      */
     public function getAddress();
 
-    public function setEnabled($enabled);
+    /**
+     * Set locally created at value
+     *
+     * @param DateTime $createdAt Updatedat value
+     *
+     * @return AddressInterface self Object
+     */
+    public function setCreatedAt(DateTime $createdAt);
 
-    public function isEnabled();
-
-    public function setCreatedAt(\DateTime $createdAt);
-
+    /**
+     * Return created_at value
+     *
+     * @return DateTime
+     */
     public function getCreatedAt();
 
-    public function setUpdatedAt(\DateTime $createdAt);
+    /**
+     * Set locally updated at value
+     *
+     * @param DateTime $updatedAt Updatedat value
+     *
+     * @return AddressInterface self Object
+     */
+    public function setUpdatedAt(DateTime $updatedAt);
 
+    /**
+     * Return updated_at value
+     *
+     * @return DateTime
+     */
     public function getUpdatedAt();
 
+    /**
+     * Set if is enabled
+     *
+     * @param boolean $enabled enabled value
+     *
+     * @return AddressInterface self Object
+     */
+    public function setEnabled($enabled);
+
+    /**
+     * Get is enabled
+     *
+     * @return boolean is enabled
+     */
+    public function isEnabled();
 }
