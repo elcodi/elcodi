@@ -31,7 +31,7 @@
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*",
-        "elcodi/elcodi": "0.1-dev"
+        "elcodi/elcodi": "0.1.*@dev"
     },
     "target-dir": "Elcodi/Bundles/Core/CoreBundle",
     "autoload": {
@@ -40,7 +40,7 @@
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
-            "dev-master": "0.1-dev"
+            "dev-master": "0.1.*@dev"
         }
     }
 }

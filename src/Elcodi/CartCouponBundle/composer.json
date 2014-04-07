@@ -25,13 +25,13 @@
         "doctrine/orm": "~2.4",
         "symfony/event-dispatcher": "~2.4",
 
-        "elcodi/core-bundle": "0.1-dev",
-        "elcodi/cart-bundle": "0.1-dev",
-        "elcodi/coupon-bundle": "0.1-dev"
+        "elcodi/core-bundle": "0.1.*@dev",
+        "elcodi/cart-bundle": "0.1.*@dev",
+        "elcodi/coupon-bundle": "0.1.*@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*",
-        "elcodi/elcodi": "0.1-dev"
+        "elcodi/elcodi": "0.1.*@dev"
     },
     "target-dir": "Elcodi/Bundles/Core/CartCouponBundle",
     "autoload": {
@@ -40,7 +40,7 @@
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
-            "dev-master": "0.1-dev"
+            "dev-master": "0.1.*@dev"
         }
     }
 }
