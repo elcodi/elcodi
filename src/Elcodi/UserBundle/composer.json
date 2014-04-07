@@ -31,9 +31,10 @@
         "symfony/validator": "~2.4",
         "symfony/routing": "~2.4",
         "symfony/http-foundation": "~2.4",
+        "symfony/event-dispatcher": "~2.4",
 
         "elcodi/core-bundle": "~0",
-        "elcodi/cart-bundle": "~0"
+        "elcodi/user-bundle": "~0"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*"
