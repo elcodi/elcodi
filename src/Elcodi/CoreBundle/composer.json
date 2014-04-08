@@ -30,6 +30,9 @@
         "symfony/http-foundation": "~2.4"
     },
     "require-dev": {
+        "symfony/framework-bundle": "~2.4",
+        "symfony/routing": "~2.4",
+        "symfony/console": "~2.4",
         "doctrine/data-fixtures": "v1.0.0",
         "phpunit/phpunit": ">=4.0.0",
         "elcodi/elcodi": "0.1.*@dev"
