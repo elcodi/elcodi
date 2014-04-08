@@ -52,7 +52,7 @@
     "target-dir": "Elcodi",
     "autoload": {
         "psr-0": {
-            "Elcodi\\": "src/"
+            "Elcodi\\": [ "Elcodi/src", "src/" ]
         }
     },
     "minimum-stability": "dev",
