@@ -50,6 +50,11 @@
         ]
     },
     "target-dir": "Elcodi",
+    "autoload": {
+        "psr-0": {
+            "Elcodi\\": "src/"
+        }
+    },
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
