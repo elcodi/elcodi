@@ -70,7 +70,7 @@ class PrintPriceExtension extends Twig_Extension
 
 
     /**
-     * Return route of image
+     * Return a formatted price given an amount and the target currency
      *
      * @param float  $amount         the amount to print
      * @param string $sourceCurrency Iso code of the source currency
