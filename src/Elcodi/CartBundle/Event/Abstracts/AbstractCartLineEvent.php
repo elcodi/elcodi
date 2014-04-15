@@ -14,12 +14,14 @@
 
 namespace Elcodi\CartBundle\Event\Abstracts;
 
+use Symfony\Component\EventDispatcher\Event;
+
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
 
 /**
  * Class AbstractCartLineEvent
  */
-abstract class AbstractCartLineEvent extends AbstractEvent
+abstract class AbstractCartLineEvent extends Event
 {
     /**
      * @var CartLineInterface

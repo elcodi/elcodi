@@ -14,6 +14,8 @@
 
 namespace Elcodi\CartBundle\Event\Abstracts;
 
+use Symfony\Component\EventDispatcher\Event;
+
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface;
@@ -21,7 +23,7 @@ use Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface;
 /**
  * Class AbstractOrderLineStateEvent
  */
-class AbstractOrderLineStateEvent extends AbstractEvent
+class AbstractOrderLineStateEvent extends Event
 {
     /**
      * @var OrderInterface

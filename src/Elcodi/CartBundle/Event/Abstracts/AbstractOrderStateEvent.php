@@ -14,13 +14,15 @@
 
 namespace Elcodi\CartBundle\Event\Abstracts;
 
+use Symfony\Component\EventDispatcher\Event;
+
 use Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 
 /**
  * Class AbstractOrderStateEvent
  */
-class AbstractOrderStateEvent extends AbstractEvent
+class AbstractOrderStateEvent extends Event
 {
     /**
      * @var OrderInterface
