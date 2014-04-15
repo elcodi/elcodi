@@ -18,8 +18,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Elcodi\ProductBundle\Entity\Category;
-
 /**
  * Type for a category edit profile form
  */

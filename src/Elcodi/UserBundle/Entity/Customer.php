@@ -433,8 +433,6 @@ class Customer extends AbstractUser implements CustomerInterface
      * Sleep implementation for some reason
      *
      * @url http://asiermarques.com/2013/symfony2-security-usernamepasswordtokenserialize-must-return-a-string-or-null/
-     *
-     * @todo Find out what reason
      */
     public function __sleep()
     {

@@ -14,7 +14,6 @@
 
 namespace Elcodi\ReferralProgramBundle\Entity\Interfaces;
 
-use Elcodi\CoreBundle\Entity\Interfaces\EntityInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\ValidIntervalInterface;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;

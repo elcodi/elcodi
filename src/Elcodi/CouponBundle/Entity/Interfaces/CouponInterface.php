@@ -16,8 +16,6 @@ namespace Elcodi\CouponBundle\Entity\Interfaces;
 
 use DateTime;
 
-use Elcodi\CoreBundle\Entity\Interfaces\EntityInterface;
-
 /**
  * CouponInterface
  */

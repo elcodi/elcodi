@@ -18,7 +18,6 @@ use Doctrine\Common\Collections\Collection;
 
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 
-
 /**
  * Class ReferralHashInterface
  */

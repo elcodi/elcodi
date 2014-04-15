@@ -28,7 +28,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('elcodi_coupon');
+        $treeBuilder->root('elcodi_coupon');
 
         return $treeBuilder;
     }

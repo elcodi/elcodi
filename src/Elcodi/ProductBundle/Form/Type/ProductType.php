@@ -18,9 +18,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Elcodi\ProductBundle\Entity\Manufacturer;
-use Elcodi\ProductBundle\Entity\Product;
-
 /**
  * Type for a product edit profile form
  */

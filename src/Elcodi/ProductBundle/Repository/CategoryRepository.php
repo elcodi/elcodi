@@ -14,51 +14,32 @@
 
 namespace Elcodi\ProductBundle\Repository;
 
-use Elcodi\CoreBundle\Repository\Abstracts\AbstractBaseRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\EntityRepository;
 
 /**
  * CategoryRepository
  */
-class CategoryRepository extends AbstractBaseRepository
+class CategoryRepository extends EntityRepository
 {
     /**
      * Get root categories
      *
-     * @return mixed
+     * @return ArrayCollection Collection of Root categories
      */
     public function getParentCategories()
     {
-        return $this
+        $categories = $this
             ->createQueryBuilder('c')
-            ->andWhere('c.root = :root')
+            ->where('c.root = :root')
             ->andWhere('c.enabled = :enabled')
-            ->where('c.deleted = :deleted')
             ->setParameters(array(
-                'deleted'   =>  false,
                 'enabled'   =>  true,
                 'root'      =>  true,
             ))
             ->getQuery()
             ->getResult();
-    }
 
-    /**
-     * Get category by name and locale
-     *
-     * @param string $locale       Locale
-     * @param string $categoryName CategoryName
-     *
-     * @return Category
-     */
-    protected function getCategoryByName($categoryName, $locale)
-    {
-        return $this
-            ->getEntityManager()
-            ->getRepository('ElcodiProductBundle:CategoryTranslation')
-            ->findOneBy(array(
-                'locale' => $locale,
-                'name' => $categoryName,
-            ))
-            ->getTranslatable();
+        return new ArrayCollection($categories);
     }
 }

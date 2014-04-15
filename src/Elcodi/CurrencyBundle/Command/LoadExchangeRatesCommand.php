@@ -15,7 +15,6 @@
 namespace Elcodi\CurrencyBundle\Command;
 
 use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyExchangeRateInterface;
-use Elcodi\CurrencyBundle\Factory\CurrencyExchangeRateFactory;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

@@ -19,7 +19,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use Elcodi\CouponBundle\ElcodiCouponTypes;
-use Elcodi\CouponBundle\Entity\Coupon;
 
 /**
  * Type for a coupon edit profile form

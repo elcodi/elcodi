@@ -14,6 +14,7 @@
 
 namespace Elcodi\ProductBundle\Services;
 
+use Doctrine\DBAL\Query\QueryBuilder;
 use Elcodi\CoreBundle\Wrapper\Abstracts\AbstractCacheWrapper;
 use Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface;
 
@@ -90,6 +91,9 @@ class CategoryManager extends AbstractCacheWrapper
      */
     public function buildCategoryTree()
     {
+        /**
+         * @var QueryBuilder
+         */
         $queryBuilder = $this
             ->entityManager
             ->getRepository('ElcodiProductBundle:Category')

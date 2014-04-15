@@ -14,28 +14,12 @@
 
 namespace Elcodi\ProductBundle\Repository;
 
-use Elcodi\CoreBundle\Repository\Abstracts\AbstractBaseRepository;
+use Doctrine\ORM\EntityRepository;
 
 /**
  * ManufacturerRepository
  */
-class ManufacturerRepository extends AbstractBaseRepository
+class ManufacturerRepository extends EntityRepository
 {
 
-    /**
-     * Return all active manufacturers
-     *
-     * @return ArrayCollection All active manufacturers
-     */
-    public function getListManufactures()
-    {
-        return $repository
-            ->createQueryBuilder('m')
-            ->where('m.deleted = :deleted')
-            ->andWhere('m.enabled = :enabled')
-            ->setParameter('deleted', false)
-            ->setParameter('isEnabled', true)
-            ->getQuery()
-            ->getResult();
-    }
 }

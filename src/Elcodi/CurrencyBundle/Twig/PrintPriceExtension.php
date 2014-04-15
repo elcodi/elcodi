@@ -14,10 +14,8 @@
 
 namespace Elcodi\CurrencyBundle\Twig;
 
-use Elcodi\CoreBundle\Services\LocaleManager;
 use Twig_Extension;
 use Twig_Filter_Method;
-use Twig_Function_Method;
 
 /**
  * Print price extension for twig

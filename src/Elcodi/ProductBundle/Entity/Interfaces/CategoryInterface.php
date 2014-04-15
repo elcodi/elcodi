@@ -16,9 +16,6 @@ namespace Elcodi\ProductBundle\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\CoreBundle\Entity\Interfaces\EntityInterface;
-use Elcodi\CoreBundle\Entity\Interfaces\MetaDataTraitInterface;
-use Elcodi\CoreBundle\Entity\Interfaces\DateTimeTraitInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
 
 /**

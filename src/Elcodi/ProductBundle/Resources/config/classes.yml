@@ -1,12 +1,6 @@
 parameters:
 
     #
-    # Slug handlers - Set as bundle parameters
-    #
-    elcodi.core.product.handler.category_translation_tree_slug_handler.traverse_hierarchy: false
-    elcodi.core.product.handler.category_translation_tree_slug_handler.separator: '-'
-
-    #
     # Services
     #
     elcodi.core.product.services.product_manager.class: Elcodi\ProductBundle\Services\ProductManager

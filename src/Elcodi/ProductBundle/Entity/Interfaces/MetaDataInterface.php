@@ -14,7 +14,6 @@
 
 namespace Elcodi\ProductBundle\Entity\Interfaces;
 
-
 /**
  * Class MetaDataInterface
  */

@@ -22,12 +22,7 @@ use Elcodi\CoreBundle\Entity\Interfaces\ETaggableInterface;
 /**
  * Class ProductInterface
  */
-interface ProductInterface
-
-    extends
-    EnabledInterface,
-    ETaggableInterface,
-    MetaDataInterface
+interface ProductInterface extends EnabledInterface, ETaggableInterface, MetaDataInterface
 {
     /**
      * Set name
