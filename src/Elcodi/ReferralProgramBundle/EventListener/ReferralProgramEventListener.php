@@ -14,13 +14,12 @@
 
 namespace Elcodi\ReferralProgramBundle\EventListener;
 
-use Elcodi\CartBundle\Event\OrderOnCreatedEvent;
-use Elcodi\CartBundle\Event\OrderPostCreatedEvent;
-use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
+use Elcodi\CartBundle\Event\OrderPostCreatedEvent;
+use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Elcodi\ReferralProgramBundle\ElcodiReferralProgramBundle;
 use Elcodi\ReferralProgramBundle\ElcodiReferralProgramRuleTypes;
 use Elcodi\ReferralProgramBundle\Services\ReferralCouponManager;
