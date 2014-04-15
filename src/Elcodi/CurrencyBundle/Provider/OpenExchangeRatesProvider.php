@@ -15,24 +15,36 @@
 namespace Elcodi\CurrencyBundle\Provider;
 
 use Elcodi\CurrencyBundle\Provider\Interfaces\ExchangeRatesProviderInterface;
-use Mrzard\OpenExchangeRatesBundle\Service\OpenExchangeRatesService;
+use Elcodi\CurrencyBundle\Services\Interfaces\ExchangeRatesServiceInterface;
 
 /**
  * Class OpenExchangeRatesProvider
  */
 class OpenExchangeRatesProvider implements ExchangeRatesProviderInterface
 {
+
+    /**
+     * @var ExchangeRatesServiceInterface
+     *
+     * openExchangeRatesService
+     */
+    protected $openExchangeRatesService;
+
     /**
      * @var array
+     *
+     * Exchange rates
      */
     protected $exchangeRates = array();
 
     /**
-     * @param OpenExchangeRatesService $service
+     * Build method
+     *
+     * @param ExchangeRatesServiceInterface $openExchangeRatesService OpenExchangeRates service
      */
-    public function __construct(OpenExchangeRatesService $service)
+    public function __construct(ExchangeRatesServiceInterface $openExchangeRatesService)
     {
-        $this->openExchangeRatesService =  $service;
+        $this->openExchangeRatesService =  $openExchangeRatesService;
     }
 
     /**
@@ -58,9 +70,11 @@ class OpenExchangeRatesProvider implements ExchangeRatesProviderInterface
         if (!is_array($toCodes)) {
             $toCodes = array($toCodes);
         }
+
         if (empty($this->exchangeRates)) {
             $this->exchangeRates = $this->openExchangeRatesService->getLatest()['rates'];
         }
+
         $usdToBaseExchangeRate = $this->exchangeRates[$fromCode];
 
         $exchangeRates = array();
