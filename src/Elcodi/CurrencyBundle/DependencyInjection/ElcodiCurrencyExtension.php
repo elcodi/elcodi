@@ -35,10 +35,10 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
     }
 
     /**
-     * Get the Config file location.
+     * Return a new Configuration instance.
      *
      * If object returned by this method is an instance of
-     * ConfigurationInterface, extension will use the Configurationto read all
+     * ConfigurationInterface, extension will use the Configuration to read all
      * bundle config definitions.
      *
      * Also will call getParametrizationValues method to load some config values
