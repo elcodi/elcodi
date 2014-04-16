@@ -15,7 +15,6 @@
 namespace Elcodi\CurrencyBundle\Provider;
 
 use Elcodi\CurrencyBundle\Provider\Interfaces\ExchangeRatesProviderInterface;
-use Mrzard\OpenExchangeRatesBundle\Service\OpenExchangeRatesService;
 
 /**
  * Class DummyExchangeRatesProvider
