@@ -1,6 +1,6 @@
 Elcodi for Symfony2
 =====
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/4b3bc7cf-1898-4359-8ef9-4227594150e4/mini.png)](https://insight.sensiolabs.com/projects/4b3bc7cf-1898-4359-8ef9-4227594150e4)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/6aaa1c45-e569-4f31-8344-6aab899ed083/mini.png)](https://insight.sensiolabs.com/projects/6aaa1c45-e569-4f31-8344-6aab899ed083)
 [![Latest Stable Version](https://poser.pugx.org/elcodi/elcodi/v/stable.png)](https://packagist.org/packages/elcodi/elcodi)
 [![Total Downloads](https://poser.pugx.org/elcodi/elcodi/downloads.png)](https://packagist.org/packages/elcodi/elcodi)
 [![Latest Unstable Version](https://poser.pugx.org/elcodi/elcodi/v/unstable.png)](https://packagist.org/packages/elcodi/elcodi)
