@@ -14,15 +14,13 @@
 
 namespace Elcodi\CartBundle\Event\Abstracts;
 
-use Symfony\Component\EventDispatcher\Event;
-
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 
 /**
  * Class AbstractOrderEvent
  */
-class AbstractOrderEvent extends Event
+class AbstractOrderEvent extends AbstractCartEvent
 {
     /**
      * @var OrderInterface
@@ -37,6 +35,7 @@ class AbstractOrderEvent extends Event
      */
     public function __construct(CartInterface $cart, OrderInterface $order)
     {
+        parent::__construct($cart);
         $this->order = $order;
     }
 

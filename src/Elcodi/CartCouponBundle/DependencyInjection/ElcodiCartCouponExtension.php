@@ -21,7 +21,6 @@ use Elcodi\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
  */
 class ElcodiCartCouponExtension extends AbstractExtension
 {
-
     /**
      * Get the Config file location
      *
@@ -50,6 +49,7 @@ class ElcodiCartCouponExtension extends AbstractExtension
             'services',
             'eventListeners',
             'factories',
+            'services',
         ];
     }
 }

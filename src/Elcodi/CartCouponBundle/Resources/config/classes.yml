@@ -3,17 +3,23 @@ parameters:
     #
     # Entities
     #
+    elcodi.core.cart_coupon.entity.cart_coupon.class: Elcodi\CartCouponBundle\Entity\CartCoupon
+    elcodi.core.cart_coupon.entity.order_coupon.class: Elcodi\CartCouponBundle\Entity\OrderCoupon
 
     #
     # Factories
     #
+    elcodi.core.cart_coupon.factory.cart_coupon.class: Elcodi\CartCouponBundle\Factory\CartCouponFactory
+    elcodi.core.cart_coupon.factory.order_coupon.class: Elcodi\CartCouponBundle\Factory\OrderCouponFactory
 
     #
     # Event Listeners
     #
     elcodi.core.cart_coupon.event_listeners.cart.class: Elcodi\CartCouponBundle\EventListener\CartEventListener
+    elcodi.core.cart_coupon.event_listeners.order.class: Elcodi\CartCouponBundle\EventListener\OrderEventListener
 
     #
     # Services
     #
     elcodi.core.cart_coupon.services.cart_coupon_manager.class: Elcodi\CartCouponBundle\Services\CartCouponManager
+    elcodi.core.cart_coupon.services.order_coupon_manager.class: Elcodi\CartCouponBundle\Services\OrderCouponManager

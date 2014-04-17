@@ -17,7 +17,6 @@ use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 
-
 /**
  * Class CartData
  */

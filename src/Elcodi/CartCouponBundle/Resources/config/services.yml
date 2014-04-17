@@ -1,5 +1,20 @@
 services:
 
+    #
+    # Services
+    #
     elcodi.core.cart_coupon.services.cart_coupon_manager:
         class: %elcodi.core.cart_coupon.services.cart_coupon_manager.class%
-        arguments: ~
+        arguments:
+            coupon_repository: @=service("doctrine.orm.entity_manager").getRepository("ElcodiCouponBundle:Coupon")
+            cart_coupon_repository: @=service("doctrine.orm.entity_manager").getRepository("ElcodiCartCouponBundle:CartCoupon")
+            cart_coupon_factory: @elcodi.core.cart_coupon.factory.cart_coupon
+            cart_manager: @elcodi.core.cart.services.cart_manager
+            coupon_manager: @elcodi.core.coupon.services.coupon_manager
+            event_dispatcher: @event_dispatcher
+            object_manager: @doctrine.orm.entity_manager
+
+    elcodi.core.cart_coupon.services.order_coupon_manager:
+        class: %elcodi.core.cart_coupon.services.order_coupon_manager.class%
+        arguments:
+            order_coupon_repository: @=service("doctrine.orm.entity_manager").getRepository("ElcodiCartCouponBundle:OrderCoupon")

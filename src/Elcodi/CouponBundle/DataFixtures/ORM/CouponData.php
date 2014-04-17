@@ -21,6 +21,7 @@ use DateTime;
 
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\CouponBundle\Entity\Coupon;
+use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 
 /**
  * Class CouponData
@@ -43,6 +44,8 @@ class CouponData extends AbstractFixture implements OrderedFixtureInterface
          * Customer only can redeem it 5 times in all life
          *
          * Only 100 available
+         *
+         * @var CouponInterface $couponPercent
          */
         $couponPercent = $couponFactory->create();
         $couponPercent
@@ -64,6 +67,8 @@ class CouponData extends AbstractFixture implements OrderedFixtureInterface
          * Customer only can redeem it n times in all life
          *
          * Only 20 available
+         *
+         * @var CouponInterface $couponAmount
          */
         $couponAmount = $couponFactory->create();
         $couponAmount

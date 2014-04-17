@@ -62,7 +62,7 @@ class CartEventListener
      *
      * @return CartInterface Cart
      */
-    public function onCartLoad(CartOnLoadEvent $cartOnLoadEvent)
+    public function onCartOnLoad(CartOnLoadEvent $cartOnLoadEvent)
     {
         $cart = $cartOnLoadEvent->getCart();
         $couponAmount = 0.0;

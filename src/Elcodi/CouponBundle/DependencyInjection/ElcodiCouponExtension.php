@@ -45,6 +45,7 @@ class ElcodiCouponExtension extends AbstractExtension implements EntitiesOverrid
             'formTypes',
             'services',
             'factories',
+            'eventDispatchers',
         ];
     }
 

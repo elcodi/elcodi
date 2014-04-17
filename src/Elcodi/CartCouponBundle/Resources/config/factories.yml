@@ -1,0 +1,14 @@
+services:
+
+    #
+    # Factories
+    #
+    elcodi.core.cart_coupon.factory.cart_coupon:
+        class: %elcodi.core.cart_coupon.factory.cart_coupon.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.cart_coupon.entity.cart_coupon.class%"]]
+
+    elcodi.core.cart_coupon.factory.order_coupon:
+        class: %elcodi.core.cart_coupon.factory.order_coupon.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.cart_coupon.entity.order_coupon.class%"]]

@@ -38,7 +38,7 @@ use Elcodi\CouponBundle\Services\CouponManager;
  * CartCoupon Manager
  *
  * This class aims to be a bridge between Coupons and Carts.
- * Manages all coupons instances inside Carts and Orders
+ * Manages all coupons instances inside Carts
  *
  * Public methods:
  *
@@ -100,6 +100,29 @@ class CartCouponManager
     protected $manager;
 
     /**
+     * construct method
+     *
+     */
+    public function __construct(
+        CouponRepository $couponRepository,
+        CartCouponRepository $cartCouponRepository,
+        CartCouponFactory $cartCouponFactory,
+        CartManager $cartManager,
+        CouponManager $couponManager,
+        EventDispatcherInterface $eventDispatcher,
+        ObjectManager $manager
+    )
+    {
+        $this->couponRepository = $couponRepository;
+        $this->cartCouponRepository = $cartCouponRepository;
+        $this->cartCouponFactory = $cartCouponFactory;
+        $this->cartManager = $cartManager;
+        $this->couponManager = $couponManager;
+        $this->eventDispatcher = $eventDispatcher;
+        $this->manager = $manager;
+    }
+
+    /**
      * Get cart coupons.
      *
      * If current cart has not coupons applied, this method will return an empty
@@ -119,7 +142,7 @@ class CartCouponManager
 
         if (!($cartCoupons instanceof Collection)) {
 
-            $cartCoupons = new ArrayCollection;
+            $cartCoupons = new ArrayCollection($cartCoupons);
         }
 
         return $cartCoupons;

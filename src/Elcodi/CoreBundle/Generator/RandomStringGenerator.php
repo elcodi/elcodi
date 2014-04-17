@@ -49,7 +49,7 @@ class RandomStringGenerator implements GeneratorInterface
     }
 
     /**
-     * Generates a
+     * Generates a random string
      *
      * @return string Result of generation
      */

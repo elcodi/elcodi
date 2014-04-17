@@ -24,3 +24,8 @@ parameters:
     # Generators
     #
     elcodi.core.referral_program.generator.coupon_code_generator.class: Elcodi\CouponBundle\Generator\CouponCodeGenerator
+
+    #
+    # Event Listeners
+    #
+    elcodi.core.coupon.event_dispatchers.coupon.class: Elcodi\CouponBundle\EventDispatcher\CouponEventDispatcher

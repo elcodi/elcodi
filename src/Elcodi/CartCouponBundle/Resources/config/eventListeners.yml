@@ -10,3 +10,15 @@ services:
             cart_coupon_manager: @elcodi.core.cart_coupon.services.cart_coupon_manager
         tags:
             - { name: kernel.event_listener, event: cart.load, method: onCartLoad }
+
+    elcodi.core.cart_coupon.event_listeners.order:
+        class: %elcodi.core.cart_coupon.event_listeners.order.class%
+        arguments:
+            coupon_event_dispatcher: @elcodi.core.coupon.event_dispatchers.coupon
+            order_coupon_factory: @elcodi.core.cart_coupon.factory.order_coupon
+            cart_coupon_manager: @elcodi.core.cart_coupon.services.cart_coupon_manager
+            manager: @doctrine.orm.entity_manager
+        tags:
+            - { name: kernel.event_listener, event: cart.onload, method: onCartOnLoad }
+            - { name: kernel.event_listener, event: order.oncreated, method: onOrderOnCreatedEventCouponsValue }
+            - { name: kernel.event_listener, event: order.oncreated, method: onOrderOnCreatedEventTransferCoupons }
