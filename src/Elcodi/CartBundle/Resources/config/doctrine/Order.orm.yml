@@ -6,20 +6,20 @@ Elcodi\CartBundle\Entity\Order:
         quantity:
             column: quantity
             type: integer
-        priceProducts:
-            column: price_products
+        productAmount:
+            column: product_amount
             type: decimal
             nullable: false
             precision: 10
             scale: 2
-        priceCoupons:
-            column: price_coupons
+        couponAmount:
+            column: coupon_amount
             type: decimal
             nullable: true
             precision: 10
             scale: 2
-        price:
-            column: price
+        amount:
+            column: amount
             type: decimal
             nullable: false
             precision: 10

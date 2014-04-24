@@ -125,7 +125,7 @@ class CartEventListener
      */
     protected function loadPrices(CartInterface $cart)
     {
-        $priceProducts = 0;
+        $productAmount = 0;
         $price = 0;
 
         /**
@@ -137,19 +137,19 @@ class CartEventListener
              * @var CartLineInterface $cartLine
              */
             $cartLine = $this->loadCartLinePrices($cartLine);
-            $priceProducts += $cartLine->getPriceProducts();
-            $price += $cartLine->getPrice();
+            $productAmount += $cartLine->getProductAmount();
+            $price += $cartLine->getAmount();
         }
 
         $cart
-            ->setPriceProducts($priceProducts)
-            ->setPrice($price);
+            ->setProductAmount($productAmount)
+            ->setAmount($price);
     }
 
     /**
      * Loads CartLine prices.
      *
-     * This method do not takes in account the coupons, so just ignore them.
+     * This method does not consider Coupon
      *
      * @param CartLineInterface $cartLine Cart line
      *
@@ -168,8 +168,8 @@ class CartEventListener
             $productPrice = $product->getReducedPrice();
         }
 
-        $cartLine->setPriceProducts($productPrice * $cartLine->getQuantity());
-        $cartLine->setPrice($cartLine->getPriceProducts());
+        $cartLine->setProductAmount($productPrice * $cartLine->getQuantity());
+        $cartLine->setAmount($cartLine->getProductAmount());
 
         return $cartLine;
     }

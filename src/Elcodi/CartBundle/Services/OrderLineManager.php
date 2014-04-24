@@ -132,9 +132,9 @@ class OrderLineManager
             ->setOrder($order)
             ->setProduct($cartLine->getProduct())
             ->setQuantity($cartLine->getQuantity())
-            ->setPriceProducts($cartLine->getPriceProducts())
-            ->setPriceCoupons($cartLine->getPriceCoupons())
-            ->setPrice($cartLine->getPrice());
+            ->setProductAmount($cartLine->getProductAmount())
+            ->setCouponAmount($cartLine->getCouponAmount())
+            ->setAmount($cartLine->getAmount());
 
         $orderOnCreatedEvent = new OrderLineOnCreatedEvent($order, $cartLine, $orderLine);
         $this->eventDispatcher->dispatch(ElcodiCartEvents::ORDERLINE_ONCREATED, $orderOnCreatedEvent);

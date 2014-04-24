@@ -65,16 +65,16 @@ class CartEventListener
     public function onCartLoad(CartOnLoadEvent $cartOnLoadEvent)
     {
         $cart = $cartOnLoadEvent->getCart();
-        $priceCoupons = 0.0;
+        $couponAmount = 0.0;
         $cartCoupons = $this->cartCouponManager->getCartCoupons($cart);
 
         foreach ($cartCoupons as $coupon) {
 
-            $priceCoupons += $this->getPriceCoupon($cart, $coupon);
+            $couponAmount += $this->getPriceCoupon($cart, $coupon);
         }
 
-        $cart->setPriceCoupons($priceCoupons);
-        $cart->setPrice($cart->getPrice() + $priceCoupons);
+        $cart->setCouponAmount($couponAmount);
+        $cart->setAmount($cart->getAmount() + $couponAmount);
 
         return $cart;
     }
@@ -98,7 +98,7 @@ class CartEventListener
                 break;
 
             case ElcodiCouponTypes::TYPE_PERCENT:
-                $priceCoupon = ($coupon->getValue() / 100) * $cart->getPriceProducts();
+                $priceCoupon = ($coupon->getValue() / 100) * $cart->getProductAmount();
                 break;
         }
 

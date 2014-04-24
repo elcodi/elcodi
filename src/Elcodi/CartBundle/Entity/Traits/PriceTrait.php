@@ -22,86 +22,86 @@ trait PriceTrait
     /**
      * @var float
      */
-    protected $priceProducts = 0;
+    protected $productAmount = 0;
 
     /**
      * @var float
      */
-    protected $priceCoupons = 0;
+    protected $couponAmount = 0;
 
     /**
      * @var float
      */
-    protected $price = 0;
+    protected $amount = 0;
 
     /**
-    * Get price products with tax
+    * Get product amount with tax
     *
-    * @return float Products price with tax
+    * @return float Product amount with tax
     */
-    public function getPriceProducts()
+    public function getProductAmount()
     {
-        return $this->priceProducts;
+        return $this->productAmount;
     }
 
     /**
-    * Set price products with tax
+    * Set product amount with tax
     *
-    * @param float $priceProducts Products price without tax
+    * @param float $productAmount product amount with tax
     *
     * @return Object self Object
     */
-    public function setPriceProducts($priceProducts)
+    public function setProductAmount($productAmount)
     {
-        $this->priceProducts = $priceProducts;
+        $this->productAmount = $productAmount;
 
         return $this;
     }
 
     /**
-    * Get price coupons with tax
+    * Get coupon amount with tax
     *
-    * @return float Coupons price with tax
+    * @return float Coupon amount with tax
     */
-    public function getPriceCoupons()
+    public function getCouponAmount()
     {
-        return $this->priceCoupons;
+        return $this->couponAmount;
     }
 
     /**
-    * Set price coupons with tax
+    * Set coupon amount with tax
     *
-    * @param float $priceCoupons Coupons price without tax
+    * @param float $couponAmount Coupon amount without tax
     *
     * @return Object self Object
     */
-    public function setPriceCoupons($priceCoupons)
+    public function setCouponAmount($couponAmount)
     {
-        $this->priceCoupons = $priceCoupons;
+        $this->couponAmount = $couponAmount;
 
         return $this;
     }
 
     /**
-    * Get price coupons with tax
+    * Get amount with tax
     *
     * @return float price with tax
     */
-    public function getPrice()
+    public function getAmount()
     {
-        return $this->price;
+        return $this->amount;
     }
 
     /**
-    * Set price coupons with tax
+    * Set amount with tax
     *
-    * @param float $priceCoupons  price without tax
+    * @param float $amount amount without tax
     *
-    * @return Object self Object
+    * @return $this
     */
-    public function setPrice($priceCoupons)
+    public function setAmount($amount)
     {
-        $this->price = $priceCoupons;
+        $this->amount = $amount;
 
         return $this;
     }

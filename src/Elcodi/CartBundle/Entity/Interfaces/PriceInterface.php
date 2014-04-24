@@ -20,50 +20,50 @@ namespace Elcodi\CartBundle\Entity\Interfaces;
 interface PriceInterface
 {
     /**
-    * Get price products with tax
+    * Get product amount with tax
     *
-    * @return float Products price with tax
+    * @return float Product amount with tax
     */
-    public function getPriceProducts();
+    public function getProductAmount();
 
     /**
-    * Set price products with tax
+    * Set product amount with tax
     *
-    * @param float $priceProducts Products price without tax
+    * @param float $productAmount Product amount with tax
     *
     * @return Object self Object
     */
-    public function setPriceProducts($priceProducts);
+    public function setProductAmount($productAmount);
 
     /**
-    * Get price coupons with tax
+    * Get coupon amount with tax
     *
-    * @return float Coupons price with tax
+    * @return float Coupon amount with tax
     */
-    public function getPriceCoupons();
+    public function getCouponAmount();
 
     /**
-    * Set price coupons with tax
+    * Set coupon amount with tax
     *
-    * @param float $priceCoupons Coupons price without tax
+    * @param float $couponAmount Coupon amount with tax
     *
     * @return Object self Object
     */
-    public function setPriceCoupons($priceCoupons);
+    public function setCouponAmount($couponAmount);
 
     /**
-    * Get price coupons with tax
+    * Get amount with tax
     *
     * @return float price with tax
     */
-    public function getPrice();
+    public function getAmount();
 
     /**
-    * Set price coupons with tax
+    * Set amount with tax
     *
-    * @param float $priceCoupons  price without tax
+    * @param float $amount price with tax
     *
     * @return Object self Object
     */
-    public function setPrice($priceCoupons);
+    public function setAmount($amount);
 }

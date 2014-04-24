@@ -152,8 +152,8 @@ class OrderManager
             ->setCustomer($cart->getCustomer())
             ->setCart($cart)
             ->setQuantity($cart->getQuantity())
-            ->setPriceProducts($cart->getPriceProducts())
-            ->setPrice($cart->getPrice());
+            ->setProductAmount($cart->getProductAmount())
+            ->setAmount($cart->getAmount());
 
         /**
          * @var CartLineInterface $line

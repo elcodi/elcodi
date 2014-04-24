@@ -3,20 +3,20 @@ Elcodi\CartBundle\Entity\CartLine:
     repositoryClass: Elcodi\CartBundle\Repository\CartLineRepository
     table: cart_line
     fields:
-        priceProducts:
-            column: price_products
+        productAmount:
+            column: product_amount
             type: decimal
             nullable: false
             precision: 10
             scale: 2
-        priceCoupons:
-            column: price_coupons
+        couponAmount:
+            column: coupon_amount
             type: decimal
             nullable: true
             precision: 10
             scale: 2
-        price:
-            column: price
+        amount:
+            column: amount
             type: decimal
             nullable: false
             precision: 10
