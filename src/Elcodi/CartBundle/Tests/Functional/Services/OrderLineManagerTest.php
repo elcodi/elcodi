@@ -54,20 +54,27 @@ class OrderLineManagerTest extends WebTestCase
     }
 
     /**
-     * Tests OrderLine change of state and it's impact on Order, when having
-     * many order lines
+     * Tests Order state change when multiple OrderLines change states
      */
     public function testToState()
     {
         $orderLineManager = $this->container->get('elcodi.core.cart.services.order_line_manager');
         $order = $this->container->get('elcodi.core.cart.factory.order')->create();
-        $orderLine = $this->container->get('elcodi.core.cart.factory.order_line')->create();
-        $secondaryOrderLine = $this->container->get('elcodi.core.cart.factory.order_line')->create();
+        $orderLine = $this->container->get('elcodi.core.cart.factory.order_line')->create()->setQuantity(1);
+        $secondaryOrderLine = $this->container->get('elcodi.core.cart.factory.order_line')->create()->setQuantity(1);
+
+        $product1 = $this->container->get('elcodi.core.product.factory.product')->create()->setName("p1")->setSlug("p1");;
+        $orderLine->setProduct($product1);
+
+        $product2 = $this->container->get('elcodi.core.product.factory.product')->create()->setName("p2")->setSlug("p2");
+        $secondaryOrderLine->setProduct($product2);
 
         $customer = $this->manager->getRepository('ElcodiUserBundle:Customer')->find(1);
         $order->setCustomer($customer);
 
         $this->manager->persist($order);
+        $this->manager->persist($product1);
+        $this->manager->persist($product2);
         $this->manager->flush();
 
 

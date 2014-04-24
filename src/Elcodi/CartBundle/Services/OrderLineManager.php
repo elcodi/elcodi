@@ -67,7 +67,19 @@ class OrderLineManager
     /**
      * @var array
      *
-     * Available changeset for order history lines
+     * Valid state transitions in the form
+     *
+     *     array(
+     *         'initialstate1' => array(
+     *             'targetstate1',
+     *              ... ,
+     *             'targetstateN'
+     *         ),
+     *         initialstate2' => array(
+     *             'targetstate1',
+     *             ...
+     *         )
+     *     )
      */
     protected $orderHistoryChangesAvailable;
 
@@ -96,7 +108,7 @@ class OrderLineManager
     }
 
     /**
-     * Given a cart line, create new order line
+     * Given a cart line, creates a new order line
      *
      * @param OrderInterface    $order    Order
      * @param CartLineInterface $cartLine Cart Line
@@ -125,29 +137,24 @@ class OrderLineManager
             ->setPrice($cartLine->getPrice());
 
         $orderOnCreatedEvent = new OrderLineOnCreatedEvent($order, $cartLine, $orderLine);
-        $this->eventDispatcher->dispatch(ElcodiCartEvents::ORDER_ONCREATED, $orderOnCreatedEvent);
+        $this->eventDispatcher->dispatch(ElcodiCartEvents::ORDERLINE_ONCREATED, $orderOnCreatedEvent);
 
         $orderPostCreatedEvent = new OrderLinePostCreatedEvent($order, $cartLine, $orderLine);
-        $this->eventDispatcher->dispatch(ElcodiCartEvents::ORDER_POSTCREATED, $orderPostCreatedEvent);
+        $this->eventDispatcher->dispatch(ElcodiCartEvents::ORDERLINE_POSTCREATED, $orderPostCreatedEvent);
 
         return $orderLine;
     }
 
     /**
-     * Given existent OrderLine appends new state entry. Because this method
-     * calls all events, developer must ensure first that this change is
-     * permited. Otherwise, some events will be dispatched and Exception will
-     * be thrown.
-     *
-     * This methods dispatches OrderLineState change
+     * Given an existing OrderLine, changes its state and creates a new HistoryState.
+     * 'PreChange' and 'PostChange' events are fired, which by default are observed by
+     * OrderManager and OrderLineManager to enforce the validity of the state transitions.
      *
      * @param OrderInterface     $order     Order
      * @param OrderLineInterface $orderLine Orderline object
      * @param String             $newState  New state to append
      *
      * @return OrderLineManager self Object
-     *
-     * @throws OrderLineStateChangeNotReachableException
      */
     public function toState(
         OrderInterface $order,
@@ -158,10 +165,10 @@ class OrderLineManager
         $lastOrderLineHistory = $orderLine->getOrderLineHistories()->last();
 
         /**
-         * Dispatching common pre State changed event...
+         * Dispatching "pre" state changed event
          *
-         * This event not contains new generated OrderLineHistory instance
-         * because is not generated yet.
+         * This event does not pass wrap new OrderLineHistory into the message,
+         * since it has not been created yet.
          */
         $orderLineStatePreChangeEvent = new OrderLineStatePreChangeEvent(
             $order,
@@ -189,10 +196,7 @@ class OrderLineManager
         $this->manager->flush($orderLineHistory);
 
         /**
-         * Dispatching common State changed event...
-         *
-         * This event contains new generated OrderLineHistory instance because
-         * is already defined
+         * Dispatching "post"  change event
          */
         $orderLineStatePostChangeEvent = new OrderLineStatePostChangeEvent(
             $order,
@@ -214,21 +218,17 @@ class OrderLineManager
      * @param OrderLineInterface $orderLine Orderline object
      * @param String             $newState  New state to append
      *
-     * @return OrderLineManager self Object
+     * @return boolean
      */
     public function checkChangeToState(OrderLineInterface $orderLine, $newState)
     {
         $lastOrderLineHistory = $orderLine->getOrderLineHistories()->last();
-        $this->isChangePermited($lastOrderLineHistory, $newState);
+        return $this->isChangePermited($lastOrderLineHistory, $newState);
 
-        return $this;
     }
 
     /**
-     * Checks if current change is permitted. If not, this method throws
-     * exception
-     *
-     * Change is permited
+     * Checks if a specific state transition is peritted
      *
      * @param OrderLineHistoryInterface $lastOrderLineHistory Last order line history
      * @param string                    $newState             New state
@@ -244,11 +244,11 @@ class OrderLineManager
          * $newState - New Stat to reach
          */
         $lastState = $lastOrderLineHistory->getState();
-        $availableStats = array_key_exists($lastState, $this->orderHistoryChangesAvailable)
+        $availableStates = array_key_exists($lastState, $this->orderHistoryChangesAvailable)
             ? $this->orderHistoryChangesAvailable[$lastState]
             : array();
 
-        if (($lastState == $newState) && !in_array($newState, $availableStats)) {
+        if (($lastState == $newState) && !in_array($newState, $availableStates)) {
 
             /**
              * nothing to do. If it's in the array this means we want to record
@@ -263,7 +263,7 @@ class OrderLineManager
          * Exception if new state is not available nor is accessible from
          * current state
          */
-        if (!in_array($newState, $availableStats)) {
+        if (!in_array($newState, $availableStates)) {
 
             throw new OrderLineStateChangeNotReachableException(
                 "From $lastState you cannot go to $newState, only to " .

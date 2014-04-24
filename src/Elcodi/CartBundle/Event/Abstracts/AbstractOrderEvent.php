@@ -37,8 +37,6 @@ class AbstractOrderEvent extends Event
      */
     public function __construct(CartInterface $cart, OrderInterface $order)
     {
-        parent::__construct($cart);
-
         $this->order = $order;
     }
 

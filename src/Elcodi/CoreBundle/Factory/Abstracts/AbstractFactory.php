@@ -19,12 +19,11 @@ use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 /**
  * Class AbstractFactory
  *
- * Entity factories creates a new, simple and clean instance of specified entity
- * by using new() PHP method.
+ * Entity factories create a pristine instance for the specified Entity
  *
- * All initialization of entity should be placed right here.
+ * Entity initialization logic should be placed right here.
  *
- * Also entity namespace should be injected and should not be duplicated.
+ * Injected entity namespace should not be duplicated.
  */
 abstract class AbstractFactory
 {
@@ -61,14 +60,11 @@ abstract class AbstractFactory
 
     /**
      * Creates an instance of an entity.
-     * All entity querying logic should be placed in a repository, and all
-     * creational logic in a factory class.
      *
-     * This method must return always an empty instance for related entity,
-     * initialized as expected by documentation.
+     * Queries should be implemented in a repository class
      *
-     * If original entity is overwritten and new Implementation has the same
-     * construct behaviour, this method should not be overwritten.
+     * This method must always returns an empty instance of the related Entity
+     * and initializes it in a consistent state
      *
      * @return AbstractEntity Empty entity
      */

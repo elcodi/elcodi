@@ -38,7 +38,7 @@ class ReferralProgramEventListener
     protected $referralCouponManager;
 
     /**
-     * @var Request
+     * @var RequestStack
      *
      * Request
      */
@@ -101,11 +101,14 @@ class ReferralProgramEventListener
          * @var CustomerInterface $customer
          */
         $customer = $event->getOrder()->getCustomer();
-        $hash = $this->request->cookies->get(ElcodiReferralProgramBundle::REFERRAL_PROGRAM_COOKIE_NAME);
 
-        $this
-            ->referralCouponManager
-            ->checkCouponAssignment($customer, $hash, ElcodiReferralProgramRuleTypes::TYPE_ON_FIRST_PURCHASE)
-            ->checkCouponsUsed($customer, $event->getOrder()->getCoupons());
+        if ($this->request instanceof Request) {
+            $hash = $this->request->cookies->get(ElcodiReferralProgramBundle::REFERRAL_PROGRAM_COOKIE_NAME);
+
+            $this
+                ->referralCouponManager
+                ->checkCouponAssignment($customer, $hash, ElcodiReferralProgramRuleTypes::TYPE_ON_FIRST_PURCHASE)
+                ->checkCouponsUsed($customer, $event->getOrder()->getCoupons());
+        }
     }
 }

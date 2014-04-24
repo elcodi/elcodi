@@ -16,12 +16,13 @@ namespace Elcodi\CartBundle\Tests\UnitTest\Services;
 
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface;
-use Elcodi\CartBundle\Entity\OrderLineHistory;
 use Elcodi\CartBundle\Factory\OrderFactory;
 use Elcodi\CartBundle\Factory\OrderHistoryFactory;
 use Elcodi\CartBundle\Factory\OrderLineFactory;
 use Elcodi\CartBundle\Factory\OrderLineHistoryFactory;
 use Elcodi\CartBundle\Services\OrderLineManager;
+use Elcodi\CartBundle\Exception\OrderLineStateChangeNotReachableException;
+
 use Doctrine\Common\Persistence\ObjectManager;
 use PHPUnit_Framework_TestCase;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -65,6 +66,9 @@ class OrderLineManagerTest extends PHPUnit_Framework_TestCase
         $manager = $this->getMock('Doctrine\Common\Persistence\ObjectManager');
         $eventDispatcher = $this->getMock('Symfony\Component\EventDispatcher\EventDispatcherInterface');
 
+        $orderLineFactory = new OrderLineFactory();
+        $orderLineFactory->setEntityNamespace('Elcodi\CartBundle\Entity\OrderLine');
+
         $orderLineHistoryFactory = new OrderLineHistoryFactory();
         $orderLineHistoryFactory->setEntityNamespace('Elcodi\CartBundle\Entity\OrderLineHistory');
 
@@ -80,6 +84,7 @@ class OrderLineManagerTest extends PHPUnit_Framework_TestCase
             $manager,
             $eventDispatcher,
             $orderLineHistoryFactory,
+            $orderLineFactory,
             $orderHistoryChangesAvailable
         );
 
@@ -107,62 +112,50 @@ class OrderLineManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test empty order, trying to get a non reachable state
+     * Test invalid state changes
      *
-     * @expectedException Elcodi\CartBundle\Exception\OrderLineStateChangeNotReachableException
-     */
-    public function testEmptyOrderToProblem()
-    {
-        $this->orderLineManager->toState($this->order, $this->orderLine, 'problem');
-    }
-
-    /**
-     * Test empty order, trying to get a reachable state
-     */
-    public function testEmptyOrderToAccepted()
-    {
-        $this->orderLineManager->toState($this->order, $this->orderLine, 'accepted');
-    }
-
-    /**
-     * Test empty order, trying to get same state as actual
+     * Invalid state transitions must throw an exception
      *
-     * @expectedException Elcodi\CartBundle\Exception\OrderLineStateNoChangeException
+     * @expectedException \Elcodi\CartBundle\Exception\OrderLineStateChangeNotReachableException
      */
-    public function testEmptyOrderToNew()
+    public function testCheckChangeToState()
     {
-        $this->orderLineManager->toState($this->order, $this->orderLine, 'new');
+        // new to accepted
+        $this->assertTrue($this->orderLineManager->checkChangeToState($this->orderLine, 'accepted'));
+
+        // new to problem
+        $this->assertTrue($this->orderLineManager->checkChangeToState($this->orderLine, 'problem'));
+
+        // new to ready.ship
+        $this->assertTrue($this->orderLineManager->checkChangeToState($this->orderLine, 'ready.ship'));
+
+        // 'new' to 'shipped'
+        $this->assertTrue($this->orderLineManager->checkChangeToState($this->orderLine, 'shipped'));
+
     }
 
-    /**
-     * Test empty order, trying to get to a non existing state
+    /*
+     * Test valid state changes.
      *
-     * @expectedException Elcodi\CartBundle\Exception\OrderLineStateChangeNotReachableException
+     * Change to the same state is considered valid, but returns false
      */
-    public function testEmptyOrderToNotExistingState()
+    public function testPassCheckChangeToState()
     {
-        $this->orderLineManager->toState($this->order, $this->orderLine, 'state.notexists');
+        // SetUp method let last history state for $this->orderline to 'new'
+        $this->assertFalse($this->orderLineManager->checkChangeToState($this->orderLine, 'new'));
+
+        // 'new' to 'accepted'
+        $this->assertTrue($this->orderLineManager->checkChangeToState($this->orderLine, 'accepted'));
+
+        $this->orderLine->getOrderLineHistories()->last()->setState('accepted');
+
+        // 'accepted' to 'ready.ship'
+        $this->assertTrue($this->orderLineManager->checkChangeToState($this->orderLine, 'ready.ship'));
+        // 'accepted' to 'problem'
+        $this->assertTrue($this->orderLineManager->checkChangeToState($this->orderLine, 'problem'));
+        // 'accepted' to 'accepted'
+        $this->assertTrue($this->orderLineManager->checkChangeToState($this->orderLine, 'accepted'));
+
     }
 
-    /**
-     * Test empty order, trying to get same state as actual, but defined as possible
-     */
-    public function testEmptyOrderToSame()
-    {
-        $this->orderLineManager->toState($this->order, $this->orderLine, 'accepted');
-        $this->orderLineManager->toState($this->order, $this->orderLine, 'accepted');
-    }
-
-    /**
-     * Complete state process
-     */
-    public function testCompleteTestProcess()
-    {
-        $this->orderLineManager->toState($this->order, $this->orderLine, 'accepted');
-        $this->orderLineManager->toState($this->order, $this->orderLine, 'problem');
-        $this->orderLineManager->toState($this->order, $this->orderLine, 'accepted');
-        $this->orderLineManager->toState($this->order, $this->orderLine, 'ready.ship');
-        $this->orderLineManager->toState($this->order, $this->orderLine, 'shipped');
-        $this->orderLineManager->toState($this->order, $this->orderLine, 'delivered');
-    }
 }
