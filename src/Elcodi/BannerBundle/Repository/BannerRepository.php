@@ -42,14 +42,11 @@ class BannerRepository extends EntityRepository
             ->createQueryBuilder('b')
             ->leftJoin('b.bannerZones', 'bz')
             ->where('b.enabled = :enabled')
-            ->andWhere('b.deleted = :deleted')
-            ->andWhere('bz.deleted = :deleted')
             ->andWhere('bz.language = :language')
             ->andWhere('bz.code = :code')
             ->orderBy('b.position', 'ASC')
             ->setParameters(array(
                 'enabled'  => true,
-                'deleted'  => false,
                 'language' => $language,
                 'code'     => $bannerZoneCode,
             ))

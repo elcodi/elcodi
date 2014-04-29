@@ -17,6 +17,14 @@ Elcodi\BannerBundle\Entity\Banner:
             type: string
             length: 255
             nullable: true
+        position:
+            column: position
+            type: integer
+            nullable: true
+        # enable
+        enabled:
+            column: enabled
+            type: boolean
 
     manyToMany:
         bannerZones:
