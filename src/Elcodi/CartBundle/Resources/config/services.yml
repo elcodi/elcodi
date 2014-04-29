@@ -14,7 +14,6 @@ services:
     elcodi.core.cart.services.order_manager:
         class: %elcodi.core.cart.services.order_manager.class%
         arguments:
-        arguments:
             entity_manager: @doctrine.orm.entity_manager
             event_dispatcher: @event_dispatcher
             order_line_manager: @elcodi.core.cart.services.order_line_manager
