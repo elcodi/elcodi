@@ -1,0 +1,5 @@
+services:
+
+    elcodi.core.cart_coupon.services.cart_coupon_manager:
+        class: %elcodi.core.cart_coupon.services.cart_coupon_manager.class%
+        arguments: ~

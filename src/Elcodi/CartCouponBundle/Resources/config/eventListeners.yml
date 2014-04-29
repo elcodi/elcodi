@@ -7,5 +7,6 @@ services:
         class: %elcodi.core.cart_coupon.event_listeners.cart.class%
         arguments:
             coupon_manager: @elcodi.core.coupon.services.coupon_manager
+            cart_coupon_manager: @elcodi.core.cart_coupon.services.cart_coupon_manager
         tags:
             - { name: kernel.event_listener, event: cart.load, method: onCartLoad }

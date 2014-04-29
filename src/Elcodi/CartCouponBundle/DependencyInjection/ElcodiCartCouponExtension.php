@@ -47,6 +47,7 @@ class ElcodiCartCouponExtension extends AbstractExtension
     {
         return [
             'classes',
+            'services',
             'eventListeners',
             'factories',
         ];

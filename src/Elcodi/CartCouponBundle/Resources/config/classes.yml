@@ -12,3 +12,8 @@ parameters:
     # Event Listeners
     #
     elcodi.core.cart_coupon.event_listeners.cart.class: Elcodi\CartCouponBundle\EventListener\CartEventListener
+
+    #
+    # Services
+    #
+    elcodi.core.cart_coupon.services.cart_coupon_manager.class: Elcodi\CartCouponBundle\Services\CartCouponManager
