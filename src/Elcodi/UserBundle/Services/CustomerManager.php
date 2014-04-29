@@ -14,6 +14,8 @@
 
 namespace Elcodi\UserBundle\Services;
 
+use Elcodi\UserBundle\Entity\Address;
+use Elcodi\UserBundle\Entity\Customer;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
@@ -76,5 +78,22 @@ class CustomerManager
         $this->eventDispatcher->dispatch(ElcodiUserEvents::USER_REGISTER, $event);
 
         return $this;
+    }
+
+    /**
+     * Check if customer has a valid delivery address
+     *
+     * @param Customer $customer
+     *
+     * @return bool
+     */
+    public function customerHasCorrectDeliveryAddress(Customer $customer)
+    {
+        if (($customer->getDeliveryAddress() instanceof Address)
+            && ($customer->getDeliveryAddress()->getAddress())) {
+
+            return true;
+        }
+        return false;
     }
 }

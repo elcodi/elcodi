@@ -15,6 +15,7 @@
 namespace Elcodi\UserBundle\Services;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Elcodi\CoreBundle\Entity\Interfaces\LanguageInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\ValidatorInterface;
@@ -97,13 +98,13 @@ class NewsletterManager
      * Subscribe email to newsletter
      *
      * @param String   $email    Email
-     * @param Language $language The langauge
+     * @param LanguageInterface $language The langauge
      *
      * @return $this
      *
      * @throws NewsletterCannotBeAddedException
      */
-    public function subscribe($email, Language $language)
+    public function subscribe($email, LanguageInterface $language)
     {
         if (!$this->validateEmail($email)) {
 
