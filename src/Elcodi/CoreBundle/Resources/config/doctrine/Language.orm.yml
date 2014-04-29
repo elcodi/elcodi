@@ -13,3 +13,7 @@ Elcodi\CoreBundle\Entity\Language:
             type: string
             length: 255
             nullable: false
+        # enable
+        enabled:
+            column: enabled
+            type: boolean

@@ -14,6 +14,7 @@
 
 namespace Elcodi\CoreBundle\Services;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 use Elcodi\CoreBundle\Repository\LanguageRepository;
@@ -49,10 +50,10 @@ class LanguageManager
      */
     public function getLanguages()
     {
-        return $this
+        return new ArrayCollection($this
             ->languageRepository
             ->findBy(array(
                 'enabled' => true,
-            ));
+            )));
     }
 }

@@ -16,3 +16,8 @@ services:
         class: %elcodi.core.core.services.language_manager.class%
         arguments:
             language_repository:  @=service("doctrine.orm.entity_manager").getRepository("ElcodiCoreBundle:Language")
+
+    elcodi.core.core.services.locale_manager:
+        class: %elcodi.core.core.services.locale_manager.class%
+        arguments:
+            locale: @=service("request_stack").getCurrentRequest() ? service("request_stack").getCurrentRequest().getLocale() : parameter("locale")

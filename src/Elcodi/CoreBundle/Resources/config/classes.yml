@@ -10,6 +10,7 @@ parameters:
     #
     elcodi.core.core.services.abstract_cache_wrapper.class: Elcodi\CoreBundle\Wrapper\Abstracts\AbstractCacheWrapper
     elcodi.core.core.services.language_manager.class: Elcodi\CoreBundle\Services\LanguageManager
+    elcodi.core.core.services.locale_manager.class: Elcodi\CoreBundle\Services\LocaleManager
 
     #
     # Twig
