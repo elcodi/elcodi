@@ -121,7 +121,7 @@ class CartManager
         $carts = $customer->getCarts();
         $cart = null;
 
-        if ($carts->count() > 0 && !$carts->first()->isDeleted()) {
+        if ($carts->count() > 0) {
 
             $cart = $carts->first();
             $this->dispatchCartCheckEvents($cart);
@@ -130,7 +130,7 @@ class CartManager
         } else {
 
             /**
-             * New cart will be not saved to ddbb since is not persisted.
+             * New cart will not be stored since is not persisted.
              *
              * Every cart action will persist it
              */
@@ -343,7 +343,7 @@ class CartManager
      * @param ProductInterface $product  Product to add
      * @param integer          $quantity Number of units to decrease CartLine
      *
-     * @return Cartmanager self Object
+     * @return CartManager self Object
      *
      * @throws CartLineOutOfStockException
      */
@@ -369,6 +369,9 @@ class CartManager
             ->setQuantity($quantity);
 
         $this->addLine($cart, $cartLine);
+
+        $this->manager->persist($cartLine);
+        $this->manager->flush($cart);
 
         return $this;
     }
