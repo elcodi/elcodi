@@ -9,7 +9,7 @@ Elcodi\UserBundle\Entity\Abstracts\AbstractUser:
             column: username
             type: string
             length: 255
-            nullable: false
+            nullable: true
         password:
             column: password
             type: string

@@ -14,6 +14,7 @@
 
 namespace Elcodi\UserBundle\Wrapper;
 
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContextInterface;
@@ -61,10 +62,11 @@ class CustomerWrapper
     /**
      * Construct method
      *
-     * This wrapper loads Customer from database if this exists and is authenticared.
+     * This wrapper loads Customer from database if this exists and is authenticated.
      * Otherwise, this create new Guest without persisting it
      *
      * @param CustomerRepository       $customerRepository Customer repository
+     * @param EntityManager            $entityManager      Entity manager
      * @param SessionInterface         $session            Object of Session
      * @param CustomerFactory          $customerFactory    Customer factory
      * @param string                   $sessionFieldName   Session field name
@@ -72,6 +74,7 @@ class CustomerWrapper
      */
     public function __construct(
         CustomerRepository $customerRepository,
+        EntityManager $entityManager,
         SessionInterface $session,
         CustomerFactory $customerFactory,
         $sessionFieldName,
@@ -100,6 +103,9 @@ class CustomerWrapper
             if (!($this->customer instanceof CustomerInterface)) {
 
                 $this->customer = $customerFactory->create();
+                $entityManager->persist($this->customer);
+
+                $session->set($sessionFieldName, $this->customer->getId());
             }
         }
     }
