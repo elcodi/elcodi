@@ -9,7 +9,7 @@ services:
             coupon_manager: @elcodi.core.coupon.services.coupon_manager
             cart_coupon_manager: @elcodi.core.cart_coupon.services.cart_coupon_manager
         tags:
-            - { name: kernel.event_listener, event: cart.load, method: onCartLoad }
+            - { name: kernel.event_listener, event: cart.onload, method: onCartOnLoad }
 
     elcodi.core.cart_coupon.event_listeners.order:
         class: %elcodi.core.cart_coupon.event_listeners.order.class%
@@ -19,6 +19,5 @@ services:
             cart_coupon_manager: @elcodi.core.cart_coupon.services.cart_coupon_manager
             manager: @doctrine.orm.entity_manager
         tags:
-            - { name: kernel.event_listener, event: cart.onload, method: onCartOnLoad }
             - { name: kernel.event_listener, event: order.oncreated, method: onOrderOnCreatedEventCouponsValue }
             - { name: kernel.event_listener, event: order.oncreated, method: onOrderOnCreatedEventTransferCoupons }
