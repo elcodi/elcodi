@@ -8,6 +8,7 @@ services:
         abstract: true
         calls:
             - [setLanguageManager, [@elcodi.core.core.services.language_manager]]
+            - [setEntityManager, [@doctrine.orm.entity_manager]]
             - [setCache, [@doctrine_cache.providers.elcodi]]
             - [setRequest, [@?request=]]
             - [setKey, []]

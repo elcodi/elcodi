@@ -15,6 +15,7 @@
 namespace Elcodi\CoreBundle\Wrapper\Abstracts;
 
 use Doctrine\Common\Cache\CacheProvider;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 
 use Elcodi\CoreBundle\Entity\Interfaces\LanguageInterface;
@@ -30,6 +31,12 @@ use Elcodi\CoreBundle\Services\LanguageManager;
  */
 abstract class AbstractCacheWrapper
 {
+
+    /**
+     * @var EntityManager
+     */
+    var $entityManager;
+
     /**
      * @var LanguageManager
      *
@@ -59,7 +66,7 @@ abstract class AbstractCacheWrapper
     protected $key;
 
     /**
-     * Set entityManager
+     * Set LanguageManager
      *
      * @param LanguageManager $languageManager LanguageManager
      *
@@ -145,7 +152,7 @@ abstract class AbstractCacheWrapper
     }
 
     /**
-     * Remove categories tree in cache to be updated
+     * Remove cached languages
      *
      * All enabled and non-deleted locales keys will attempted to be deleted
      *
@@ -170,5 +177,13 @@ abstract class AbstractCacheWrapper
         }
 
         return $this;
+    }
+
+    /**
+     * @param EntityManager $entityManager
+     */
+    public function setEntityManager($entityManager)
+    {
+        $this->entityManager = $entityManager;
     }
 }
