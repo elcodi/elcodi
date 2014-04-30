@@ -1,7 +1,7 @@
 Elcodi\CartBundle\Entity\Order:
     type: entity
     repositoryClass: Elcodi\CartBundle\Repository\OrderRepository
-    table: `order`
+    table: orders
     fields:
         quantity:
             column: quantity
