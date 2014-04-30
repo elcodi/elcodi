@@ -65,7 +65,7 @@ class CategoryManager extends AbstractCacheWrapper
         if ($this->locale) {
 
             /**
-             * Fetch ccache key
+             * Fetch key from cache
              */
             $this->categoryTree = json_decode($this->cache->fetch($this->key), true);
 
@@ -98,13 +98,10 @@ class CategoryManager extends AbstractCacheWrapper
             ->entityManager
             ->getRepository('ElcodiProductBundle:Category')
             ->createQueryBuilder('c')
-            ->select('c', 't')
-            ->innerJoin('c.translations', 't', 'WITH', 'c.id = t.translatable AND t.locale = :locale')
             ->where('c.enabled = :enabled')
             ->addOrderBy('c.parent', 'asc')
             ->addOrderBy('c.position', 'asc')
             ->setParameters(array(
-                'locale' => $this->locale,
                 'enabled'=> true,
             ));
 
@@ -112,10 +109,8 @@ class CategoryManager extends AbstractCacheWrapper
 
             $queryBuilder
                 ->innerJoin('c.products', 'p')
-                ->innerJoin('p.items', 'i')
-                ->andWhere('i.stock > 0')
-                ->andWhere('p.enabled = 1')
-                ->andWhere('p.deleted = 0');
+                ->andWhere('p.stock > 0')
+                ->andWhere('p.enabled = 1');
         }
 
         $categories = $queryBuilder
