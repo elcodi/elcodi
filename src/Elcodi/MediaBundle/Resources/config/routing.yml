@@ -1,0 +1,11 @@
+elcodi_image_resize_routes:
+    resource: .
+    type: elcodi_image_resize
+    methods: [GET]
+    options: { i18n: false }
+
+elcodi_image_upload_routes:
+    resource: .
+    type: elcodi_image_upload
+    methods: [POST]
+    options: { i18n: false }

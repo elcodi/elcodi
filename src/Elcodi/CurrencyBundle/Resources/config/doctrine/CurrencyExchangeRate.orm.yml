@@ -9,6 +9,7 @@ Elcodi\CurrencyBundle\Entity\CurrencyExchangeRate:
             precision: 18
             scale: 10
             nullable: false
+
     manyToOne:
         targetCurrency:
             targetEntity: Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface

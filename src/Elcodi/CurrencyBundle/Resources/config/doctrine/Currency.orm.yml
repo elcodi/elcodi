@@ -26,3 +26,7 @@ Elcodi\CurrencyBundle\Entity\Currency:
         enabled:
             column: enabled
             type: boolean
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]

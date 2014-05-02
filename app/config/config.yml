@@ -45,3 +45,17 @@ doctrine_cache:
    providers:
       elcodi:
          type: array
+
+elcodi_media:
+    images:
+        filesystem: gaufrette.local_filesystem
+
+knp_gaufrette:
+    adapters:
+        local:
+            local:
+                directory: /tmp/gaufrette
+                create: true
+    filesystems:
+        local:
+            adapter:    local

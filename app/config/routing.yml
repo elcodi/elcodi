@@ -1,2 +1,5 @@
 core_referralprogram_bundle:
     resource: "@ElcodiReferralProgramBundle/Resources/config/routing.yml"
+
+core_media_bundle:
+    resource: "@ElcodiMediaBundle/Resources/config/routing.yml"

@@ -1,0 +1,29 @@
+services:
+
+    #
+    # Resize
+    #
+    elcodi.core.media.resize.imagemagick:
+        class: %elcodi.core.media.resize.imagemagick.class%
+        arguments:
+            image_converter_bin_path: %elcodi.core.media.image_resize_converter_bin_path%
+            image_converter_default_profile: %elcodi.core.media.image_resize_converter_default_profile%
+
+    #
+    # Routes
+    #
+    elcodi.core.media.routes.image_resize.loader:
+        class: %elcodi.core.media.routes.image_resize.loader.class%
+        arguments:
+            image_resize_controller_route_name: %elcodi.core.media.image_resize_controller_route_name%
+            image_resize_controller_route: %elcodi.core.media.image_resize_controller_route%
+        tags:
+            - { name: routing.loader }
+
+    elcodi.core.media.routes.image_upload.loader:
+        class: %elcodi.core.media.routes.image_upload.loader.class%
+        arguments:
+            image_upload_controller_route_name: %elcodi.core.media.image_upload_controller_route_name%
+            image_upload_controller_route: %elcodi.core.media.image_upload_controller_route%
+        tags:
+            - { name: routing.loader }

@@ -25,6 +25,8 @@ class AppKernel extends Kernel
             new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new \Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
             new \Elnur\BlowfishPasswordEncoderBundle\ElnurBlowfishPasswordEncoderBundle(),
+            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
+            new Mmoreram\ControllerExtraBundle\ControllerExtraBundle(),
 
             /**
              * Elcodi core bundles
@@ -38,6 +40,7 @@ class AppKernel extends Kernel
             new \Elcodi\ProductBundle\ElcodiProductBundle(),
             new \Elcodi\ReferralProgramBundle\ElcodiReferralProgramBundle(),
             new \Elcodi\CartCouponBundle\ElcodiCartCouponBundle(),
+            new \Elcodi\MediaBundle\ElcodiMediaBundle(),
 
         );
 

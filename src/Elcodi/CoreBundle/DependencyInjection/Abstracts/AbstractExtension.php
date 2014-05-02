@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -122,6 +122,20 @@ abstract class AbstractExtension extends Extension implements PrependExtensionIn
                 $loader->load($configFile . '.yml');
             }
         }
+
+        $this->postLoad($container);
+    }
+
+    /**
+     * Post load implementation
+     *
+     * @param ContainerBuilder $container A ContainerBuilder instance
+     *
+     * @api
+     */
+    public function postLoad(ContainerBuilder $container)
+    {
+
     }
 
     /**

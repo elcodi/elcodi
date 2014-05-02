@@ -1,8 +1,8 @@
 {
-    "name": "elcodi/product-bundle",
-    "description": "Elcodi Product component",
-    "keywords": ["elcodi", "product", "ecommerce"],
-    "homepage": "https://github.com/elcodi/ProductBundle",
+    "name": "elcodi/media-bundle",
+    "description": "Elcodi Media component",
+    "keywords": ["elcodi", "media", "ecommerce"],
+    "homepage": "https://github.com/elcodi/MediaBundle",
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
@@ -32,8 +32,8 @@
         "symfony/routing": "~2.4",
         "symfony/http-foundation": "~2.4",
         "symfony/dependency-injection": "~2.4",
+        "mmoreram/controller-extra-bundle": "~1",
 
-        "elcodi/media-bundle": "0.1.*@dev",
         "elcodi/core-bundle": "0.1.*@dev"
     },
     "require-dev": {
@@ -42,9 +42,9 @@
         "elcodi/elcodi": "0.1.*@dev"
     },
     "autoload": {
-        "psr-0": { "Elcodi\\MediaBundle": "" }
+        "psr-0": { "Elcodi\\ProductBundle": "" }
     },
-    "target-dir": "Elcodi/Components/MediaBundle",
+    "target-dir": "Elcodi/Components/ProductBundle",
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {

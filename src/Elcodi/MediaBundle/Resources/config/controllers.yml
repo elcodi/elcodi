@@ -1,0 +1,16 @@
+services:
+
+    #
+    # Controllers
+    #
+    elcodi.core.media.controllers.image_resize:
+        class: %elcodi.core.media.controllers.image_resize.class%
+        calls:
+            - [setFilesystemAdapter, [@=service("elcodi.core.media.filesystem.default").getAdapter()]]
+            - [setResizeAdapter, [@elcodi.core.media.resize.default]]
+
+    elcodi.core.media.controllers.image_upload:
+        class: %elcodi.core.media.controllers.image_upload.class%
+        calls:
+            - [setFilesystemAdapter, [@=service("elcodi.core.media.filesystem.default").getAdapter()]]
+            - [setFieldName, [%elcodi.core.media.image_upload_field_name%]]
