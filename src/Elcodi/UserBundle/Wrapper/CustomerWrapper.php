@@ -14,7 +14,7 @@
 
 namespace Elcodi\UserBundle\Wrapper;
 
-use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContextInterface;
@@ -66,7 +66,7 @@ class CustomerWrapper
      * Otherwise, this create new Guest without persisting it
      *
      * @param CustomerRepository       $customerRepository Customer repository
-     * @param EntityManagerInterface   $entityManager      Entity manager
+     * @param ObjectManager            $entityManager      Entity manager
      * @param SessionInterface         $session            Object of Session
      * @param CustomerFactory          $customerFactory    Customer factory
      * @param string                   $sessionFieldName   Session field name
@@ -74,7 +74,7 @@ class CustomerWrapper
      */
     public function __construct(
         CustomerRepository $customerRepository,
-        EntityManagerInterface $entityManager,
+        ObjectManager $entityManager,
         SessionInterface $session,
         CustomerFactory $customerFactory,
         $sessionFieldName,
