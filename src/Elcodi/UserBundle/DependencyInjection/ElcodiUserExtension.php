@@ -54,7 +54,7 @@ class ElcodiUserExtension extends AbstractExtension implements EntitiesOverridab
     protected function getParametrizationValues(array $config)
     {
         return [
-            'elcodi.core.currency.session_field_name' => $config['session_field_name'],
+            'elcodi.core.user.session_field_name' => $config['session_field_name'],
         ];
     }
 

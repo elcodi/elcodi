@@ -32,7 +32,7 @@ services:
             entity_manager: @doctrine.orm.entity_manager
             session: @session
             customer_factory: @elcodi.core.user.factory.customer
-            session_field_name: %elcodi.core.currency.session_field_name%
+            session_field_name: %elcodi.core.user.session_field_name%
             security_context: @?security.context
 
     #

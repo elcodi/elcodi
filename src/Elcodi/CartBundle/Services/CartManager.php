@@ -332,12 +332,11 @@ class CartManager
     }
 
     /**
-     * Add item into cart as a new CartLine
+     * Add a product to Cart as a new CartLine
      *
-     * This method creates new CartLine with $quantity Items.
-     * If product is not customizable and already exists a CartLine
-     *     with this product, we only increment number of products of
-     *     this CartLine.
+     * This method creates a new CartLine with $quantity Product.
+     * If the product is already in the Cart, it just increments
+     * the quantity
      *
      * @param CartInterface    $cart     Cart
      * @param ProductInterface $product  Product to add
@@ -349,16 +348,10 @@ class CartManager
      */
     public function addProduct(CartInterface $cart, ProductInterface $product, $quantity = 1)
     {
-        /**
-         * If product is not customizable and we have it already in out cart,
-         * we can just increase its quantity
-         */
         foreach ($cart->getCartLines() as $cartLine) {
-
-            /**
-             * @var CartLineInterface $cartLine
-             */
+            /*@var CartLineInterface $cartLine */
             if ($cartLine->getProduct()->getId() == $product->getId()) {
+                // Product already in the Cart, increase quantity
                 return $this->increaseCartLineQuantity($cartLine, $quantity);
             }
         }
@@ -371,7 +364,6 @@ class CartManager
         $this->addLine($cart, $cartLine);
 
         $this->manager->persist($cartLine);
-        $this->manager->flush($cart);
 
         return $this;
     }

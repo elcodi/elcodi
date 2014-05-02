@@ -7,6 +7,7 @@ services:
         class: %elcodi.core.cart.event_listeners.cart.class%
         arguments:
             order_manager: @elcodi.core.cart.services.cart_manager
+            entity_manager: @doctrine.orm.entity_manager
         tags:
             - { name: kernel.event_listener, event: cart.oncheck, method: onCartCheck }
             - { name: kernel.event_listener, event: cart.onload, method: onCartLoad }

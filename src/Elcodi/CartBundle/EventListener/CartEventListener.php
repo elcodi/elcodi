@@ -14,6 +14,7 @@
 
 namespace Elcodi\CartBundle\EventListener;
 
+use Doctrine\Common\Persistence\ObjectManager;
 use Exception;
 
 use Elcodi\CartBundle\Exception\CartLineProductUnavailableException;
@@ -37,13 +38,20 @@ class CartEventListener
     protected $cartManager;
 
     /**
+     * @var ObjectManager
+     */
+    protected $objectManager;
+
+    /**
      * Built method
      *
      * @param CartManager $cartManager Cart Manager
+     * @param ObjectManager $objectManager
      */
-    public function __construct(CartManager $cartManager)
+    public function __construct(CartManager $cartManager, ObjectManager $objectManager)
     {
         $this->cartManager = $cartManager;
+        $this->objectManager = $objectManager;
     }
 
     /**
@@ -92,7 +100,11 @@ class CartEventListener
     {
         $cart = $event->getCart();
 
+        // Recalculate cart amount. Prices might have
+        // changed so we need to flush $cart
         $this->loadPrices($cart);
+
+        $this->objectManager->flush($cart);
     }
 
     /**
