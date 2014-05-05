@@ -41,7 +41,9 @@ class BannerFactory extends AbstractFactory
         $banner = new $classNamespace();
         $banner
             ->setBannerZones(new ArrayCollection)
-            ->setCreatedAt(new DateTime);
+            ->setCreatedAt(new DateTime)
+            ->setEnabled(false);
+
 
         return $banner;
     }

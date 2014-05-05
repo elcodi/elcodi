@@ -39,6 +39,8 @@ class LanguageFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $language = new $classNamespace();
 
+        $language->setEnabled(false);
+
         return $language;
     }
 }
