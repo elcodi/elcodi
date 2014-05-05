@@ -25,6 +25,7 @@ Elcodi\BannerBundle\Entity\Banner:
         enabled:
             column: enabled
             type: boolean
+            nullable: true
 
     manyToMany:
         bannerZones:
