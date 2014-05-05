@@ -8,12 +8,12 @@
  */
  
 namespace Elcodi\ProductBundle\DataFixtures\ORM;
+
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-
 
 /**
  * Class ProductData
@@ -82,4 +82,3 @@ class ProductData extends AbstractFixture
         return 2;
     }
 }
- 

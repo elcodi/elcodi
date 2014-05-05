@@ -138,5 +138,4 @@ class OrderLineStateEventListener
         $orderStatePostChangeEvent = new OrderStatePostChangeEvent($order, $lastOrderHistory, $orderHistory);
         $this->eventDispatcher->dispatch(ElcodiCartEvents::ORDER_STATE_POSTCHANGE, $orderStatePostChangeEvent);
     }
-
 }

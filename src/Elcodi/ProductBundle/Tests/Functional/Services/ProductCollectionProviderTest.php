@@ -17,9 +17,9 @@ namespace Elcodi\ProductBundle\Tests\Functional\Services;
 use Elcodi\CoreBundle\Tests\WebTestCase;
 
 /**
- * Tests ProductCollectionPovider class
+ * Tests ProductCollectionProvider class
  */
-class ProductCollectionPoviderTest extends WebTestCase
+class ProductCollectionProviderTest extends WebTestCase
 {
     /**
      * Returns the callable name of the service

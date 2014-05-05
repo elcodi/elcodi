@@ -20,4 +20,3 @@ use Elcodi\CouponBundle\Event\Abstracts\CouponEvent;
 class CouponUsedEvent extends CouponEvent
 {
 }
- 

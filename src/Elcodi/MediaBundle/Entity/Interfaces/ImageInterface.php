@@ -26,7 +26,7 @@ interface ImageInterface extends FileInterface
      *
      * @return ImageInterface self Object
      */
-    public function setWitdh($width);
+    public function setWidth($width);
 
     /**
      * Get image width in pixels
@@ -51,4 +51,3 @@ interface ImageInterface extends FileInterface
      */
     public function getHeight();
 }
- 

@@ -54,7 +54,7 @@ interface AddressInterface
     /**
      * Set locally updated at value
      *
-     * @param DateTime $updatedAt Updatedat value
+     * @param DateTime $updatedAt Updated at value
      *
      * @return AddressInterface self Object
      */

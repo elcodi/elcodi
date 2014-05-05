@@ -166,4 +166,3 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
         return file_get_contents($resizedFile->getRealPath());
     }
 }
- 

@@ -115,7 +115,7 @@ class ReferralCouponManager
         $referralLine = $this->referralProgramManager->resolve($customer, $hash);
 
         /**
-         * Current hash is not a generated hash or referralProgram is not actived
+         * Current hash is not a generated hash or referralProgram is not activated
          */
         if (!($referralLine instanceof ReferralLineInterface)) {
             return $this;
@@ -316,7 +316,7 @@ class ReferralCouponManager
      * coupon.
      *
      * @param Collection      $referralLines ReferralLine Collection
-     * @param CouponInterface $coupon        Coupo
+     * @param CouponInterface $coupon        Coupon
      *
      * @return ReferralCouponManager self Object
      */

@@ -39,4 +39,3 @@ interface MediaInterface extends DateTimeInterface
      */
     public function setName($name);
 }
- 

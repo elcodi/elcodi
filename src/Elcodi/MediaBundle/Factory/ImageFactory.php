@@ -48,4 +48,3 @@ class ImageFactory extends AbstractFactory
         return $image;
     }
 }
- 

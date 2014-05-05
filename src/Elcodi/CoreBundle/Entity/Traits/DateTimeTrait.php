@@ -36,7 +36,7 @@ trait DateTimeTrait
     /**
      * Set locally created at value
      *
-     * @param \DateTime $createdAt Updatedat value
+     * @param \DateTime $createdAt Created at value
      *
      * @return Object self Object
      */
@@ -60,7 +60,7 @@ trait DateTimeTrait
     /**
      * Set locally updated at value
      *
-     * @param \DateTime $updatedAt Updatedat value
+     * @param \DateTime $updatedAt Updated at value
      *
      * @return Object self Object
      */

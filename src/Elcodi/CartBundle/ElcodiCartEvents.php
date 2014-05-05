@@ -196,5 +196,4 @@ class ElcodiCartEvents
      *
      */
     const ORDERLINE_STATE_POSTCHANGE = 'orderlinestate.postchange';
-
 }

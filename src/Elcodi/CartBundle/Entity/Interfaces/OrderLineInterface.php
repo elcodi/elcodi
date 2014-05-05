@@ -51,7 +51,7 @@ interface OrderLineInterface extends PriceInterface
     /**
      * Get the product
      *
-     * @return ProductInterface product atached to this cart line
+     * @return ProductInterface product attached to this cart line
      */
     public function getProduct();
 

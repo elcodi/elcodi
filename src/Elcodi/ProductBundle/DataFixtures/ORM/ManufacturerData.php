@@ -53,4 +53,3 @@ class ManufacturerData extends AbstractFixture
         return 1;
     }
 }
- 

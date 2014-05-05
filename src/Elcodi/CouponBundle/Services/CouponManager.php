@@ -76,7 +76,7 @@ class CouponManager
     }
 
     /**
-     * Checks wether a coupon can be applied or not.
+     * Checks whether a coupon can be applied or not.
      *
      * @param CouponInterface $coupon Coupon to work with
      * @param float           $price  Price

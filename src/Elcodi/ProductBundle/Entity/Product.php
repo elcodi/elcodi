@@ -395,7 +395,7 @@ class Product extends AbstractEntity implements ProductInterface
     }
 
     /**
-     * Product manufacuter
+     * Product manufacturer
      *
      * @return ManufacturerInterface Manufacturer
      */

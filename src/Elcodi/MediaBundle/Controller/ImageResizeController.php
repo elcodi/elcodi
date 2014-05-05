@@ -165,7 +165,8 @@ class ImageResizeController extends Controller
         $response = new Response();
 
         $response->setEtag(
-            sha1($id . "." .
+            sha1(
+                $id . "." .
                 $image->getUpdatedAt()->getTimestamp() . "." .
                 $height . "." .
                 $width . "." .
@@ -210,4 +211,3 @@ class ImageResizeController extends Controller
         return $response;
     }
 }
- 

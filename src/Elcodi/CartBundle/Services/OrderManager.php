@@ -236,7 +236,7 @@ class OrderManager
         $lastOrderHistoryState = $order->getLastOrderHistory();
 
         try {
-            $this->isChangePermited($lastOrderHistoryState, $state);
+            $this->isChangePermitted($lastOrderHistoryState, $state);
             $order->getOrderLines()->forAll(function ($_, $orderLine) use ($state) {
 
                 $this->orderLineManager->checkChangeToState($orderLine, $state);
@@ -253,7 +253,7 @@ class OrderManager
      * Checks if current change is permitted. If not, this method throws
      * exception
      *
-     * Change is permited
+     * Change is permitted
      *
      * @param OrderHistoryInterface $lastOrderHistory Last order line history
      * @param string                $newState         New state
@@ -262,7 +262,7 @@ class OrderManager
      *
      * @throws OrderStateChangeNotReachableException
      */
-    protected function isChangePermited(OrderHistoryInterface $lastOrderHistory, $newState)
+    protected function isChangePermitted(OrderHistoryInterface $lastOrderHistory, $newState)
     {
         /**
          * $lastState - Current line state

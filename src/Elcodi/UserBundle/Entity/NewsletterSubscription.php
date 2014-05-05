@@ -179,5 +179,4 @@ class NewsletterSubscription extends AbstractEntity
     {
         return $this->reason;
     }
-
 }

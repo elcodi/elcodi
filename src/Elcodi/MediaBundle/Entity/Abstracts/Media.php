@@ -57,4 +57,3 @@ abstract class Media extends AbstractEntity implements MediaInterface
         $this->name = $name;
     }
 }
- 

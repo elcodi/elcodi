@@ -61,4 +61,3 @@ class ElcodiMediaImageResizeTypes
      */
     const OUTBOUND_CROP = 5;
 }
- 

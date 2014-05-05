@@ -132,7 +132,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Set identity doument
+     * Set identity document
      *
      * @param string $identityDocument
      *
@@ -438,5 +438,4 @@ class Customer extends AbstractUser implements CustomerInterface
     {
         return array('id', 'username', 'email');
     }
-
 }

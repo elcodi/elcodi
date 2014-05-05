@@ -17,7 +17,6 @@ namespace Elcodi\CouponBundle\DependencyInjection;
 use Elcodi\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
-
 /**
  * This is the class that loads and manages your bundle configuration
  */

@@ -72,7 +72,7 @@ class ReferralCouponManagerTest extends WebTestCase
      * * Referrer and 1 random Customer adds invitation
      * * Checks invitations are OK
      * * Invited registers ( Event is thrown ) in site
-     * * Both Customers recieve coupons
+     * * Both Customers receive coupons
      * * All coupons are for one use and have generated coupon names.
      */
     public function testCouponAssignmentRegReg()
@@ -191,8 +191,8 @@ class ReferralCouponManagerTest extends WebTestCase
      *   purchase coupon for invited
      * * Referrer adds invitation
      * * Invited registers in site
-     * * Referrer Customer recieve coupons
-     * * Invited customer purchases and recieve his coupon
+     * * Referrer Customer receive coupons
+     * * Invited customer purchases and receive his coupon
      * * Both purchases using their coupons
      * * ReferralRule is closed
      */
@@ -239,7 +239,7 @@ class ReferralCouponManagerTest extends WebTestCase
 
         /**
          * * Invited registers in site
-         * * Referrer Customer recieve coupons
+         * * Referrer Customer receive coupons
          */
         $referralCouponManager = $container->get('elcodi.core.referral_program.services.referral_coupon_manager');
         $referralCouponManager->checkCouponAssignment($invited, $hash, ElcodiReferralProgramRuleTypes::TYPE_ON_REGISTER);
@@ -263,7 +263,7 @@ class ReferralCouponManagerTest extends WebTestCase
         $manager->clear();
 
         /**
-         * * Invited customer purchases and recieve his coupon
+         * * Invited customer purchases and receive his coupon
          */
         $invited = $manager->getRepository('ElcodiUserBundle:Customer')->find(2);
         $referralLine = $manager->getRepository('ElcodiReferralProgramBundle:ReferralLine')->findOneByInvited($invited);
@@ -286,7 +286,7 @@ class ReferralCouponManagerTest extends WebTestCase
         $invited = $manager->getRepository('ElcodiUserBundle:Customer')->find(2);
         $referralLine = $manager->getRepository('ElcodiReferralProgramBundle:ReferralLine')->findOneByInvited($invited);
         $referralCouponManager
-            ->checkCouponAssignment($referrer, $hash,  ElcodiReferralProgramRuleTypes::TYPE_ON_FIRST_PURCHASE)
+            ->checkCouponAssignment($referrer, $hash, ElcodiReferralProgramRuleTypes::TYPE_ON_FIRST_PURCHASE)
             ->checkCouponsUsed($referrer, new ArrayCollection(array($referralLine->getReferrerAssignedCoupon())));
 
         $this->assertTrue($referralLine->getReferrerCouponUsed());
@@ -302,7 +302,7 @@ class ReferralCouponManagerTest extends WebTestCase
         $referralLine = $manager->getRepository('ElcodiReferralProgramBundle:ReferralLine')->findOneByInvited($invited);
 
         $referralCouponManager
-            ->checkCouponAssignment($invited, $hash,  ElcodiReferralProgramRuleTypes::TYPE_ON_FIRST_PURCHASE)
+            ->checkCouponAssignment($invited, $hash, ElcodiReferralProgramRuleTypes::TYPE_ON_FIRST_PURCHASE)
             ->checkCouponsUsed($invited, new ArrayCollection(array($referralLine->getInvitedAssignedCoupon())));
 
         $this->assertTrue($referralLine->getInvitedCouponUsed());

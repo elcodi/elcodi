@@ -126,7 +126,7 @@ class OrderManagerTest extends WebTestCase
     }
 
     /**
-     * Test checkChangeToStateNotAlloed method
+     * Test checkChangeToStateNotAllowed method
      *
      * @expectedException \Elcodi\CartBundle\Exception\OrderStateChangeNotReachableException
      */
