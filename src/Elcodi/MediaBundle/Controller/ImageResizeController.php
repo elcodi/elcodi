@@ -13,14 +13,15 @@
 
 namespace Elcodi\MediaBundle\Controller;
 
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Gaufrette\Adapter;
 
 use Elcodi\MediaBundle\Adapter\Resizer\Interfaces\ResizeAdapterInterface;
 use Elcodi\MediaBundle\Entity\Interfaces\ImageInterface;
+use Elcodi\MediaBundle\Transformer\FileTransformer;
 
 /**
  * Class ImageController
@@ -28,11 +29,32 @@ use Elcodi\MediaBundle\Entity\Interfaces\ImageInterface;
 class ImageResizeController extends Controller
 {
     /**
+     * @var ObjectManager
+     *
+     * Entity manager
+     */
+    protected $manager;
+
+    /**
+     * @var string
+     *
+     * Image namespace
+     */
+    protected $imageNamespace;
+
+    /**
      * @var Adapter
      *
      * Filesystem adapter
      */
     protected $filesystemAdapter;
+
+    /**
+     * @var FileTransformer
+     *
+     * File Transformer
+     */
+    protected $fileTransformer;
 
     /**
      * @var ResizeAdapterInterface
@@ -42,11 +64,39 @@ class ImageResizeController extends Controller
     protected $resizeAdapter;
 
     /**
+     * Set entityManager
+     *
+     * @param ObjectManager $manager Entity manager
+     *
+     * @return ImageResizeController self Object
+     */
+    public function setEntityManager(ObjectManager $manager)
+    {
+        $this->manager = $manager;
+
+        return $this;
+    }
+
+    /**
+     * Set entityManager
+     *
+     * @param string $imageNamespace Image namespace
+     *
+     * @return ImageResizeController self Object
+     */
+    public function setImageNamespace($imageNamespace)
+    {
+        $this->imageNamespace = $imageNamespace;
+
+        return $this;
+    }
+
+    /**
      * Set filesystem adapter
      *
      * @param Adapter $filesystemAdapter Adapter
      *
-     * @return ImageUploadController self Object
+     * @return ImageResizeController self Object
      */
     public function setFilesystemAdapter(Adapter $filesystemAdapter)
     {
@@ -56,11 +106,25 @@ class ImageResizeController extends Controller
     }
 
     /**
+     * Set file transformer
+     *
+     * @param FileTransformer $fileTransformer File transformer
+     *
+     * @return ImageResizeController self Object
+     */
+    public function setFileTransformer(FileTransformer $fileTransformer)
+    {
+        $this->fileTransformer = $fileTransformer;
+
+        return $this;
+    }
+
+    /**
      * Set resize adapter
      *
      * @param ResizeAdapterInterface $resizeAdapter Resize adapter
      *
-     * @return ImageController self Object
+     * @return ImageResizeController self Object
      */
     public function setResizeAdapter(ResizeAdapterInterface $resizeAdapter)
     {
@@ -72,57 +136,73 @@ class ImageResizeController extends Controller
     /**
      * Resizes an image
      *
-     * @param Request        $request Request
-     * @param ImageInterface $image   Image
-     * @param string         $height  Height
-     * @param string         $width   Width
-     * @param int            $type    Type
+     * @param Request $request Request
+     * @param integer $id      Image id
+     * @param string  $height  Height
+     * @param string  $width   Width
+     * @param int     $type    Type
      *
      * @return Response
      *
-     * @
+     * @throws \RuntimeException
      */
-    public function resizeAction(Request $request, ImageInterface $image, $height, $width, $type)
+    public function resizeAction(Request $request, $id, $height, $width, $type)
     {
+        /**
+         * We retrieve image given its id
+         */
+
+
+        $imageRepository = $this->manager->getRepository($this->imageNamespace);
+        $image = $imageRepository->find($id);
+
+        if (!($image instanceof ImageInterface)) {
+
+            throw $this->createNotFoundException('The image does not exist');
+        }
+
         $response = new Response();
 
         $response->setEtag(
-            sha1($image->getId() . "." .
+            sha1($id . "." .
                 $image->getUpdatedAt()->getTimestamp() . "." .
                 $height . "." .
                 $width . "." .
                 $type
-            ));
+            )
+        );
 
         $response->setLastModified($image->getUpdatedAt());
         $response->setPublic();
 
-        // if the object has not been modified, we
-        // return the response. Symfony will automatically
-        // put a 304 status in the response in that case
+        /**
+         * If the object has not been modified, we return the response.
+         * Symfony will automatically put a 304 status in the response
+         * in that case
+         */
         if ($response->isNotModified($request)) {
+
             return $response;
         }
 
-        $fileName = (0 == $type) ?
-            $image->getPath() :
-            $this
+        $imagePath = $this->fileTransformer->transform($image);
+        $imageData = $this->filesystemAdapter->read($imagePath);
+
+        if (0 !== $type) {
+
+            $imageData = $this
                 ->resizeAdapter
-                ->resize($image, $height, $width, $type)
-                ->getPathname();
+                ->resize($imageData, $height, $width, $type);
+        }
 
         $response->setStatusCode(200);
         $response->setMaxAge(7884000);
         $response->setSharedMaxAge(7884000);
-        $deposition = $response->headers->makeDisposition(
-            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
-            $fileName
-        );
+        $response->setContent($imageData);
 
         $response->headers->add(
             array(
                 'Content-Type' => $image->getContentType(),
-                'Content-Disposition' => $deposition
             )
         );
 

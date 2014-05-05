@@ -27,3 +27,9 @@ services:
             image_upload_controller_route: %elcodi.core.media.image_upload_controller_route%
         tags:
             - { name: routing.loader }
+
+    #
+    # Transformers
+    #
+    elcodi.core.media.transformer.file:
+        class: %elcodi.core.media.transformer.file.class%

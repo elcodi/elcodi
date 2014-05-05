@@ -8,26 +8,41 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author  * @version  */
- 
+ * @author  * @version
+ */
+
 namespace Elcodi\MediaBundle\Controller;
 
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Mmoreram\ControllerExtraBundle\Annotation\JsonResponse;
-use Mmoreram\ControllerExtraBundle\Annotation\Entity;
-use Mmoreram\ControllerExtraBundle\Annotation\Flush;
 use Gaufrette\Adapter;
 
-use Elcodi\MediaBundle\Entity\Interfaces\ImageInterface;
+use Elcodi\MediaBundle\Factory\ImageFactory;
+use Elcodi\MediaBundle\Transformer\FileTransformer;
 
 /**
  * Class ImageUploadController
  */
 class ImageUploadController extends Controller
 {
+    /**
+     * @var ObjectManager
+     *
+     * Entity manager
+     */
+    protected $manager;
+
+    /**
+     * @var ImageFactory
+     *
+     * Image Factory
+     */
+    protected $imageFactory;
+
     /**
      * @var Adapter
      *
@@ -36,11 +51,46 @@ class ImageUploadController extends Controller
     protected $filesystemAdapter;
 
     /**
+     * @var FileTransformer
+     *
+     * File Transformer
+     */
+    protected $fileTransformer;
+
+    /**
      * @var string
      *
      * Field name when uploading
      */
     protected $fieldName;
+
+    /**
+     * Set entityManager
+     *
+     * @param ObjectManager $manager Entity manager
+     *
+     * @return ImageUploadController self Object
+     */
+    public function setEntityManager(ObjectManager $manager)
+    {
+        $this->manager = $manager;
+
+        return $this;
+    }
+
+    /**
+     * Set image factory
+     *
+     * @param ImageFactory $imageFactory Image Factory
+     *
+     * @return ImageUploadController self Object
+     */
+    public function setImageFactory(ImageFactory $imageFactory)
+    {
+        $this->imageFactory = $imageFactory;
+
+        return $this;
+    }
 
     /**
      * Set filesystem adapter
@@ -52,6 +102,20 @@ class ImageUploadController extends Controller
     public function setFilesystemAdapter(Adapter $filesystemAdapter)
     {
         $this->filesystemAdapter = $filesystemAdapter;
+
+        return $this;
+    }
+
+    /**
+     * Set file transformer
+     *
+     * @param FileTransformer $fileTransformer File transformer
+     *
+     * @return ImageUploadController self Object
+     */
+    public function setFileTransformer(FileTransformer $fileTransformer)
+    {
+        $this->fileTransformer = $fileTransformer;
 
         return $this;
     }
@@ -73,34 +137,24 @@ class ImageUploadController extends Controller
     /**
      * Dinamic upload action
      *
-     * @param Request        $request Current request
-     * @param ImageInterface $image   Image media empty entity
+     * @param Request $request Current request
      *
      * @return Response
-     *
-     * @Entity(
-     *      class = "ElcodiMediaBundle:Image",
-     *      name = "image",
-     *      persist = true,
-     *      factoryClass = "elcodi.core.media.factory.image",
-     *      factoryMethod = "create",
-     * )
-     * @flush
-     * @JsonResponse
      */
-    public function uploadAction(Request $request, ImageInterface $image)
+    public function uploadAction(Request $request)
     {
         /**
          * @var $file UploadedFile
          */
         $file = $request->files->get($this->fieldName);
         $fileMime = $file->getMimeType();
+        $image = $this->imageFactory->create();
 
         if (strpos($fileMime, 'image/') !== 0) {
 
-            return [
+            return new JsonResponse([
                 'status' => 'ko',
-            ];
+            ]);
         }
 
         $imageSizeData = getimagesize($file->getPathname());
@@ -113,14 +167,17 @@ class ImageUploadController extends Controller
             ->setExtension($file->getExtension())
             ->setName($name);
 
+        $this->manager->persist($image);
+        $this->manager->flush($image);
+
         $this->filesystemAdapter->write(
-            $name,
+            $this->fileTransformer->transform($image),
             file_get_contents($file->getRealPath())
         );
 
-        return [
+        return new JsonResponse([
             'status' => 'ok',
-        ];
+        ]);
     }
 }
  

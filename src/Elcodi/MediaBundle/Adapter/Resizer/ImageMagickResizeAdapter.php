@@ -8,8 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author  * @version  */
- 
+ * @author  * @version
+ */
+
 namespace Elcodi\MediaBundle\Adapter\Resizer;
 
 use Symfony\Component\HttpFoundation\File\File;
@@ -42,7 +43,7 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
      * Constructor method
      *
      * @param string $imageConverterBin Path of image converter
-     * @param string $profile Default ICC profile path
+     * @param string $profile           Default ICC profile path
      */
     public function __construct($imageConverterBin, $profile)
     {
@@ -53,24 +54,22 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
     /**
      * Generate Thumbnail images with ImageMagick
      *
-     * @param ImageInterface $image  Image object
-     * @param Integer        $height Height value
-     * @param Integer        $width  Width value
-     * @param int            $type   Type
+     * @param string  $imageData Image Data
+     * @param Integer $height    Height value
+     * @param Integer $width     Width value
+     * @param Integer $type      Type
      *
-     * @return ImageInterface
+     * @return ImageInterface  Resized image data
      *
      * @throws \RuntimeException
      */
     public function resize(
-        ImageInterface $image,
+        $imageData,
         $height,
         $width,
         $type = ElcodiMediaImageResizeTypes::FORCE_MEASURES
     )
     {
-        $imageData = file_get_contents($image->getPath());
-
         $originalFile = new File(tempnam(sys_get_temp_dir(), '_original'));
         $resizedFile = new File(tempnam(sys_get_temp_dir(), '_resize'));
 
@@ -84,7 +83,7 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
             ->add($originalFile->getPathname())
             //We use a CMKY profile and a sRGB
             ->add('-profile')
-                ->add($this->profile);
+            ->add($this->profile);
 
         //Lanczos filter for reduction
         $pb->add('-filter')->add('Lanczos');
@@ -112,7 +111,7 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
                 case ElcodiMediaImageResizeTypes::INSET:
 
                     $pb
-                        ->add($width .'x'. $height);
+                        ->add($width . 'x' . $height);
 
                     break;
 
@@ -120,16 +119,16 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
                     $pb
                         ->add($width . 'x' . $height)
                         ->add('-gravity')
-                            ->add('center')
+                        ->add('center')
                         ->add('-extent')
-                            ->add($width . 'x' . $height);
+                        ->add($width . 'x' . $height);
 
                     break;
 
                 case ElcodiMediaImageResizeTypes::OUTBOUNDS_FILL_WHITE:
 
                     $pb
-                        ->add($width .'x'. $height .'');
+                        ->add($width . 'x' . $height . '');
 
                     break;
 
@@ -137,9 +136,9 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
                     $pb
                         ->add($width . 'x' . $height . '')
                         ->add('-gravity')
-                            ->add('center')
+                        ->add('center')
                         ->add('-extent')
-                            ->add($width . 'x' . $height);
+                        ->add($width . 'x' . $height);
 
                     break;
 
@@ -147,7 +146,7 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
                 default:
 
                     $pb
-                        ->add($width .'x'. $height . '!');
+                        ->add($width . 'x' . $height . '!');
                     break;
             }
         }
@@ -163,7 +162,7 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
             throw new \RuntimeException($proc->getOutput());
         }
 
-        return $resizedFile;
+        return file_get_contents($resizedFile->getRealPath());
     }
 }
  

@@ -26,3 +26,8 @@ parameters:
     #
     elcodi.core.media.routes.image_resize.loader.class: Elcodi\MediaBundle\Router\ImageResizeRouterLoader
     elcodi.core.media.routes.image_upload.loader.class: Elcodi\MediaBundle\Router\ImageUploadRouterLoader
+
+    #
+    # Transformers
+    #
+    elcodi.core.media.transformer.file.class: Elcodi\MediaBundle\Transformer\FileTransformer

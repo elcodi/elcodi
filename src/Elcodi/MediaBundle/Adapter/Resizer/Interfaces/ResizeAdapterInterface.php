@@ -24,15 +24,15 @@ interface ResizeAdapterInterface
     /**
      * Interface for resize implementations
      *
-     * @param ImageInterface $image  Image object
-     * @param Integer        $height Height value
-     * @param Integer        $width  Width value
-     * @param Integer        $type   Type
+     * @param string  $imageData Image Data
+     * @param Integer $height    Height value
+     * @param Integer $width     Width value
+     * @param Integer $type      Type
      *
-     * @return ImageInterface
+     * @return string Resized image data
      */
     public function resize(
-        ImageInterface $image,
+        $imageData,
         $height,
         $width,
         $type = ElcodiMediaImageResizeTypes::FORCE_MEASURES

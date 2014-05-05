@@ -18,6 +18,22 @@ namespace Elcodi\MediaBundle\Entity\Interfaces;
 interface FileInterface extends MediaInterface
 {
     /**
+     * Set path
+     *
+     * @param string $path Path to file
+     *
+     * @return FileInterface self Object
+     */
+    public function setPath($path);
+
+    /**
+     * Get path
+     *
+     * @return string Path
+     */
+    public function getPath();
+
+    /**
      * Set id
      *
      * @param int $id Entity Id
