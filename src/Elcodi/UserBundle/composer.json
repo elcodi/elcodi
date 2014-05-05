@@ -32,6 +32,7 @@
         "symfony/http-foundation": "~2.4",
         "symfony/event-dispatcher": "~2.4",
         "symfony/dependency-injection": "~2.4",
+        "elnur/blowfish-password-encoder-bundle": "v0.5.0",
 
         "elcodi/core-bundle": "0.1.*@dev",
         "elcodi/user-bundle": "0.1.*@dev"
