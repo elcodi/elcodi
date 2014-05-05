@@ -68,7 +68,7 @@ class ReferralRuleType extends AbstractType
                                 'enabled' => true,
                                 'deleted' => false,
                             ));
-                    },
+                },
                 'empty_value'   => 'No Coupon',
                 'property'      => 'code',
                 'label'         => '_Coupon',
@@ -94,7 +94,7 @@ class ReferralRuleType extends AbstractType
                                 'enabled' => true,
                                 'deleted' => false,
                             ));
-                    },
+                },
                 'empty_value'   => 'No Coupon',
                 'property'      => 'code',
                 'label'         => '_Coupon',

@@ -98,7 +98,7 @@ class NewsletterManager
      * Subscribe email to newsletter
      *
      * @param String   $email    Email
-     * @param LanguageInterface $language The langauge
+     * @param LanguageInterface $language The language
      *
      * @return $this
      *

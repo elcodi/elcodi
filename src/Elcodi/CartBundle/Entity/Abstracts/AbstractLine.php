@@ -56,7 +56,7 @@ abstract class AbstractLine extends AbstractEntity
     /**
      * Get the product
      *
-     * @return ProductInterface product atached to this cart line
+     * @return ProductInterface product attached to this cart line
      */
     public function getProduct()
     {

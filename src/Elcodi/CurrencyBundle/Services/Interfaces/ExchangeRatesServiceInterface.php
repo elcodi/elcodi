@@ -12,7 +12,7 @@ namespace Elcodi\CurrencyBundle\Services\Interfaces;
 /**
  * Interface ExchangeRatesServiceInterface
  */
-Interface ExchangeRatesServiceInterface
+interface ExchangeRatesServiceInterface
 {
     /**
      * Get the latest exchange rates
@@ -31,4 +31,3 @@ Interface ExchangeRatesServiceInterface
      */
     public function getCurrencies();
 }
- 

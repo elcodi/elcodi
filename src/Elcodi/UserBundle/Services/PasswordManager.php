@@ -87,7 +87,7 @@ class PasswordManager
      * @param string                  $recoverPasswordUrlName Recover password name
      * @param string                  $hashField              Hash
      *
-     * @return CustomerInterface its been found and proceessed
+     * @return CustomerInterface its been found and processed
      */
     public function rememberPasswordByEmail(
         UserEmaileableInterface $userRepository,

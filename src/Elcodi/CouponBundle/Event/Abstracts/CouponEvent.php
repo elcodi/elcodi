@@ -48,4 +48,3 @@ class CouponEvent extends Event
         return $this->coupon;
     }
 }
- 

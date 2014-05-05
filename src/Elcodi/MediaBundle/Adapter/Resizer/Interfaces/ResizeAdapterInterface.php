@@ -38,4 +38,3 @@ interface ResizeAdapterInterface
         $type = ElcodiMediaImageResizeTypes::FORCE_MEASURES
     );
 }
- 

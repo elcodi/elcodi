@@ -26,7 +26,7 @@ use Elcodi\ReferralProgramBundle\Repository\ReferralHashRepository;
 /**
  * Class ReferralHashManager
  *
- * This service is the responsable for creating and managing all ReferralHash
+ * This service is the responsible for creating and managing all ReferralHash
  * instances of ReferralProgram model
  */
 class ReferralHashManager
@@ -81,7 +81,7 @@ class ReferralHashManager
     }
 
     /**
-     * Given an extisting Customer, this service manages its referral hash
+     * Given an existing Customer, this service manages its referral hash
      *
      * When requiring Customer Hash, if not set, new one is generated.
      * Otherwise, returns related.

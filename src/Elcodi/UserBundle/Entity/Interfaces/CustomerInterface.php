@@ -49,7 +49,7 @@ interface CustomerInterface
     public function getPhone();
 
     /**
-     * Set identity doument
+     * Set identity document
      *
      * @param string $identityDocument
      *

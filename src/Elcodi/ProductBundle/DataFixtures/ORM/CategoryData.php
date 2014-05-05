@@ -58,4 +58,3 @@ class CategoryData extends AbstractFixture
         $manager->flush();
     }
 }
- 

@@ -146,4 +146,3 @@ class File extends Media implements FileInterface
         return $this->size;
     }
 }
- 

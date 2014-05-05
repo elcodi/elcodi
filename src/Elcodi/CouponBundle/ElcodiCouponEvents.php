@@ -28,4 +28,3 @@ class ElcodiCouponEvents
      */
     const COUPON_USED = 'coupon.used';
 }
- 

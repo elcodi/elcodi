@@ -22,7 +22,6 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use PHPUnit_Framework_TestCase;
 
-
 /**
  * Class CartManagerTest
  */
@@ -398,4 +397,3 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         $this->assertSame($cart->getCartLines()->first()->getProduct(), $product);
     }
 }
- 

@@ -67,4 +67,3 @@ class CartCouponData extends AbstractFixture
         return 6;
     }
 }
- 

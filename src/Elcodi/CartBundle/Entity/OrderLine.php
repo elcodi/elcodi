@@ -24,7 +24,7 @@ use Elcodi\CartBundle\Entity\Abstracts\AbstractLine;
 /**
  * OrderLine
  *
- * This entity is just an extension of existant order line with some aditional
+ * This entity is just an extension of existant order line with some additional
  * parameters
  */
 class OrderLine extends AbstractLine implements OrderLineInterface

@@ -11,7 +11,6 @@ namespace Elcodi\UserBundle\Repository\Interfaces;
 
 use Elcodi\UserBundle\Entity\Abstracts\AbstractUser;
 
-
 /**
  * Class UserEmailRecoverableInterface
  */
@@ -26,4 +25,3 @@ interface UserEmaileableInterface
      */
     public function findOneByEmail($email);
 }
- 

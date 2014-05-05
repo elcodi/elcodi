@@ -63,7 +63,7 @@ class OrderLineManagerTest extends WebTestCase
         $orderLine = $this->container->get('elcodi.core.cart.factory.order_line')->create()->setQuantity(1);
         $secondaryOrderLine = $this->container->get('elcodi.core.cart.factory.order_line')->create()->setQuantity(1);
 
-        $product1 = $this->container->get('elcodi.core.product.factory.product')->create()->setName("p1")->setSlug("p1");;
+        $product1 = $this->container->get('elcodi.core.product.factory.product')->create()->setName("p1")->setSlug("p1");
         $orderLine->setProduct($product1);
 
         $product2 = $this->container->get('elcodi.core.product.factory.product')->create()->setName("p2")->setSlug("p2");

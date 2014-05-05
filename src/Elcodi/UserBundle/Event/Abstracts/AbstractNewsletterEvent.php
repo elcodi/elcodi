@@ -36,7 +36,7 @@ class AbstractNewsletterEvent extends Event
     /**
      * construct method
      *
-     * @param NewsletterSubscription $newsletterSubscription Newslette subscription
+     * @param NewsletterSubscription $newsletterSubscription Newsletter subscription
      */
     public function __construct(NewsletterSubscription $newsletterSubscription)
     {

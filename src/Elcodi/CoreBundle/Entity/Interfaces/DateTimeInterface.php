@@ -22,7 +22,7 @@ interface DateTimeInterface
     /**
      * Set locally created at value
      *
-     * @param DateTime $createdAt Updatedat value
+     * @param DateTime $createdAt Created at value
      *
      * @return DateTimeInterface self Object
      */
@@ -38,7 +38,7 @@ interface DateTimeInterface
     /**
      * Set locally updated at value
      *
-     * @param DateTime $updatedAt Updatedat value
+     * @param DateTime $updatedAt Updated at value
      *
      * @return DateTimeInterface self Object
      */
@@ -51,4 +51,3 @@ interface DateTimeInterface
      */
     public function getUpdatedAt();
 }
- 

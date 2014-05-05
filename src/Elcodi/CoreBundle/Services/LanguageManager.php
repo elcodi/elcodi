@@ -50,10 +50,12 @@ class LanguageManager
      */
     public function getLanguages()
     {
-        return new ArrayCollection($this
+        return new ArrayCollection(
+            $this
             ->languageRepository
             ->findBy(array(
                 'enabled' => true,
-            )));
+            ))
+        );
     }
 }

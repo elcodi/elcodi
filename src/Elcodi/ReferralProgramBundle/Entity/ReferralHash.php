@@ -35,7 +35,7 @@ class ReferralHash extends AbstractEntity implements ReferralHashInterface
     /**
      * @var string
      *
-     * Referal Hash
+     * Referral Hash
      */
     protected $hash;
 

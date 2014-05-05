@@ -84,4 +84,3 @@ class CartData extends AbstractFixture
         return 5;
     }
 }
- 

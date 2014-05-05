@@ -99,4 +99,3 @@ interface FileInterface extends MediaInterface
      */
     public function getSize();
 }
- 

@@ -74,9 +74,8 @@ class LocaleManager
         $this->locale = $locale;
         $this->encoding = $encoding;
         $this->localeCountryAssociations = $localeCountryAssociations;
-        $this->localeTranslationAssociations = $localeTranslationAssociations;;
+        $this->localeTranslationAssociations = $localeTranslationAssociations;
     }
-
 
     /**
      * Initialize locale

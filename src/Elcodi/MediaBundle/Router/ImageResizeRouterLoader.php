@@ -120,4 +120,3 @@ class ImageResizeRouterLoader implements LoaderInterface
     {
     }
 }
- 

@@ -36,12 +36,14 @@ class ReferralLineRepository extends EntityRepository
      */
     public function findFromReferrer(CustomerInterface $customer)
     {
-        return new ArrayCollection($this
+        return new ArrayCollection(
+            $this
             ->findBy(array(
                 'referrer' => $customer,
                 'enabled'  => true,
                 'closed'   => false,
-            )));
+            ))
+        );
     }
 
     /**

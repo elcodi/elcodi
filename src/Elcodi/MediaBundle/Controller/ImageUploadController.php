@@ -136,7 +136,7 @@ class ImageUploadController extends Controller
     }
 
     /**
-     * Dinamic upload action
+     * Dynamic upload action
      *
      * @param Request $request Current request
      *
@@ -161,7 +161,7 @@ class ImageUploadController extends Controller
         $imageSizeData = getimagesize($file->getPathname());
         $name = $file->getClientOriginalName();
         $image
-            ->setWitdh($imageSizeData[0])
+            ->setWidth($imageSizeData[0])
             ->setHeight($imageSizeData[1])
             ->setContentType($fileMime)
             ->setSize($file->getSize())
@@ -181,4 +181,3 @@ class ImageUploadController extends Controller
         ]);
     }
 }
- 

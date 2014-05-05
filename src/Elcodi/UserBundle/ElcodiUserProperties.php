@@ -35,4 +35,3 @@ class ElcodiUserProperties
      */
     const GENDER_UNKNOWN = 2;
 }
- 

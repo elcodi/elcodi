@@ -320,7 +320,7 @@ class CartManager
 
             $this->removeLine($cart, $cartLine, false);
 
-        } elseif(is_int($quantity)) {
+        } elseif (is_int($quantity)) {
 
             $cartLine->setQuantity($quantity);
         }

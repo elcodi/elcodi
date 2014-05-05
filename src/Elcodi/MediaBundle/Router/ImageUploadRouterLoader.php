@@ -119,4 +119,3 @@ class ImageUploadRouterLoader implements LoaderInterface
     {
     }
 }
- 

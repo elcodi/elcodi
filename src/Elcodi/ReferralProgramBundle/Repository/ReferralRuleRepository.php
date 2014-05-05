@@ -20,7 +20,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\ReferralProgramBundle\Entity\ReferralRule;
 
-
 /**
  * ReferralRuleRepository
  */

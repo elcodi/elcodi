@@ -70,7 +70,7 @@ class PasswordEventListener
     }
 
     /**
-     * New entity. Password must be encryptes always
+     * New entity. Password must be encrypted always
      *
      * @param LifecycleEventArgs $args Event args
      */

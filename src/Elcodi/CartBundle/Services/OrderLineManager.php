@@ -223,12 +223,12 @@ class OrderLineManager
     public function checkChangeToState(OrderLineInterface $orderLine, $newState)
     {
         $lastOrderLineHistory = $orderLine->getOrderLineHistories()->last();
-        return $this->isChangePermited($lastOrderLineHistory, $newState);
+        return $this->isChangePermitted($lastOrderLineHistory, $newState);
 
     }
 
     /**
-     * Checks if a specific state transition is peritted
+     * Checks if a specific state transition is permitted
      *
      * @param OrderLineHistoryInterface $lastOrderLineHistory Last order line history
      * @param string                    $newState             New state
@@ -237,7 +237,7 @@ class OrderLineManager
      *
      * @throws OrderLineStateChangeNotReachableException
      */
-    protected function isChangePermited(OrderLineHistoryInterface $lastOrderLineHistory, $newState)
+    protected function isChangePermitted(OrderLineHistoryInterface $lastOrderLineHistory, $newState)
     {
         /**
          * $lastState - Current line state

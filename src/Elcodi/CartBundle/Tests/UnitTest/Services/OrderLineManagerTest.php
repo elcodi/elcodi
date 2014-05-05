@@ -157,5 +157,4 @@ class OrderLineManagerTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->orderLineManager->checkChangeToState($this->orderLine, 'accepted'));
 
     }
-
 }
