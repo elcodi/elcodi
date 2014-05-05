@@ -6,7 +6,7 @@ for i in $(ls -1 src/Elcodi/); do
     git filter-branch --prune-empty --subdirectory-filter src/Elcodi/$i;
     git remote rm origin
     git remote add origin git@github.com:elcodi/$i.git
-    git push origin master
+    git push --force origin master
     git push --tags
     cd ..
     rm -rf elcodi.$i

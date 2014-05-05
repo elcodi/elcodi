@@ -25,8 +25,7 @@ class AppKernel extends Kernel
             new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new \Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
             new \Elnur\BlowfishPasswordEncoderBundle\ElnurBlowfishPasswordEncoderBundle(),
-            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
-            new Mmoreram\ControllerExtraBundle\ControllerExtraBundle(),
+            new \Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
 
             /**
              * Elcodi core bundles

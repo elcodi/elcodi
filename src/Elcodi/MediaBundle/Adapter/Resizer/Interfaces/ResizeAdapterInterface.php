@@ -14,7 +14,6 @@
 namespace Elcodi\MediaBundle\Adapter\Resizer\Interfaces;
 
 use Elcodi\MediaBundle\ElcodiMediaImageResizeTypes;
-use Elcodi\MediaBundle\Entity\Interfaces\ImageInterface;
 
 /**
  * Class ResizerAdapterInterface
