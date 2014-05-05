@@ -35,11 +35,10 @@
         "elcodi/elcodi": "0.1.*@dev"
     },
     "autoload": {
-        "psr-0": {
-            "Elcodi\\CartCouponBundle": ""
+        "psr-4": {
+            "Elcodi\\CartCouponBundle\\": "Elcodi/Components/CartCouponBundle"
         }
     },
-    "target-dir": "Elcodi/Components/CartCouponBundle",
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {

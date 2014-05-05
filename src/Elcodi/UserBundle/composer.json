@@ -42,11 +42,10 @@
         "elcodi/elcodi": "0.1.*@dev"
     },
     "autoload": {
-        "psr-0": {
-            "Elcodi\\UserBundle": ""
+        "psr-4": {
+            "Elcodi\\UserBundle\\": "Elcodi/Components/UserBundle"
         }
     },
-    "target-dir": "Elcodi/Component/UserBundle",
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {

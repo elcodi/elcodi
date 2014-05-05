@@ -36,11 +36,10 @@
         "elcodi/elcodi": "0.1.*@dev"
     },
     "autoload": {
-        "psr-0": {
-            "Elcodi\\BannerBundle": ""
+        "psr-4": {
+            "Elcodi\\BannerBundle\\": "Elcodi/Components/BannerBundle"
         }
     },
-    "target-dir": "Elcodi/Components/BannerBundle",
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {

@@ -42,9 +42,10 @@
         "elcodi/elcodi": "0.1.*@dev"
     },
     "autoload": {
-        "psr-0": { "Elcodi\\ProductBundle": "" }
+        "psr-4": {
+            "Elcodi\\MediaBundle\\": "Elcodi/Components/MediaBundle"
+        }
     },
-    "target-dir": "Elcodi/Components/ProductBundle",
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {

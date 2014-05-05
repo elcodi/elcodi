@@ -41,11 +41,10 @@
         "elcodi/elcodi": "0.1.*@dev"
     },
     "autoload": {
-        "psr-0": {
-            "Elcodi\\CouponBundle": ""
+        "psr-4": {
+            "Elcodi\\CouponBundle": "Elcodi/Components/CouponBundle"
         }
     },
-    "target-dir": "Elcodi/Components/CouponBundle",
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {

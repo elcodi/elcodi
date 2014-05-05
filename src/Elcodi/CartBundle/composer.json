@@ -37,11 +37,10 @@
         "elcodi/elcodi": "0.1.*@dev"
     },
     "autoload": {
-        "psr-0": {
-            "Elcodi\\CartBundle": ""
+        "psr-4": {
+            "Elcodi\\CartBundle\\": "Elcodi/Components/CartBundle"
         }
     },
-    "target-dir": "Elcodi/Components/CartBundle",
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {

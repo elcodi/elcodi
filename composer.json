@@ -51,10 +51,9 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ]
     },
-    "target-dir": "Elcodi",
     "autoload": {
-        "psr-0": {
-            "Elcodi\\": [ "Elcodi/src", "src/" ]
+        "psr-4": {
+            "Elcodi\\": "src/Elcodi"
         }
     },
     "minimum-stability": "dev",

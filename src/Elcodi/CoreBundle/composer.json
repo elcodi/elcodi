@@ -38,11 +38,10 @@
         "elcodi/elcodi": "0.1.*@dev"
     },
     "autoload": {
-        "psr-0": {
-            "Elcodi\\CoreBundle": ""
+        "psr-4": {
+            "Elcodi\\CoreBundle": "Elcodi/Components/CoreBundle"
         }
     },
-    "target-dir": "Elcodi/Components/CoreBundle",
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
