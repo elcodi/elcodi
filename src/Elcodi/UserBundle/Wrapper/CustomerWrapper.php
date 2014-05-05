@@ -100,12 +100,11 @@ class CustomerWrapper
                 ));
             }
 
+            /* Customer will be persisted but not flushed. */
             if (!($this->customer instanceof CustomerInterface)) {
 
                 $this->customer = $customerFactory->create();
                 $entityManager->persist($this->customer);
-
-                $session->set($sessionFieldName, $this->customer->getId());
             }
         }
     }
