@@ -30,7 +30,7 @@
         "symfony/dependency-injection": "~2.4",
         "symfony/framework-bundle": "~2.4",
         "symfony/process": "~2.4",
-        "knplabs/knp-gaufrette-bundle": "~0.1.*",
+        "knplabs/knp-gaufrette-bundle": "v0.1.7",
 
         "elcodi/core-bundle": "0.1.*@dev"
     },
