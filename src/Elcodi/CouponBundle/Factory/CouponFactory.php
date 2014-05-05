@@ -47,6 +47,7 @@ class CouponFactory extends AbstractFactory
             ->setUsed(0)
             ->setPriority(0)
             ->setMinimumPurchaseAmount(0)
+            ->setEnabled(false)
             ->setCreatedAt(new DateTime);
 
         return $coupon;
