@@ -42,7 +42,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\CouponBundle\\": "Elcodi/Components/CouponBundle"
+            "Elcodi\\CouponBundle\\": ""
         }
     },
     "minimum-stability": "dev",

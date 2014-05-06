@@ -39,7 +39,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\CoreBundle\\": "Elcodi/Components/CoreBundle"
+            "Elcodi\\CoreBundle\\": ""
         }
     },
     "minimum-stability": "dev",

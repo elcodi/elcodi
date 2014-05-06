@@ -41,7 +41,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\ReferralProgramBundle\\": "Elcodi/Components/ReferralProgramBundle"
+            "Elcodi\\ReferralProgramBundle\\": ""
         }
     },
     "minimum-stability": "dev",

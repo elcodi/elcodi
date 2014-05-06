@@ -43,7 +43,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\CurrencyBundle\\": "Elcodi/Components/CurrencyBundle"
+            "Elcodi\\CurrencyBundle\\": ""
         }
     },
     "minimum-stability": "dev",
