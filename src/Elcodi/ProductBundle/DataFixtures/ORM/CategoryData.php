@@ -47,10 +47,10 @@ class CategoryData extends AbstractFixture
          */
         $category = $this->container->get('elcodi.core.product.factory.category')->create();
         $category
-            ->setName('root-category')
-            ->setSlug('root-category')
+            ->setName('category')
+            ->setSlug('category')
             ->setParent($rootCategory)
-            ->setRoot(true);
+            ->setRoot(false);
 
         $manager->persist($category);
         $this->addReference('category', $category);
