@@ -1,7 +1,7 @@
 Elcodi\MediaBundle\Entity\Image:
     type: entity
     repositoryClass: Elcodi\MediaBundle\Repository\ImageRepository
-    table: media
+    table: image
     fields:
         name:
             column: name
