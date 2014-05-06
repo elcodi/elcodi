@@ -42,9 +42,10 @@ class ProductFactory extends AbstractFactory
             ->setPrice(0.0)
             ->setReducedPrice(0.0)
             ->setShowInHome(false)
+            ->setCategories(new ArrayCollection)
+            ->setImages(new ArrayCollection())
             ->setEnabled(false)
-            ->setCreatedAt(new DateTime)
-            ->setCategories(new ArrayCollection);
+            ->setCreatedAt(new DateTime);
 
         return $product;
     }

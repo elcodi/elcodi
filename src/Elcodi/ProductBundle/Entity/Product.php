@@ -24,13 +24,14 @@ use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
 use Elcodi\CoreBundle\Entity\Traits\ETaggableTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
+use Elcodi\MediaBundle\Entity\Traits\ImagesContainerTrait;
 
 /**
  * Product entity
  */
 class Product extends AbstractEntity implements ProductInterface
 {
-    use DateTimeTrait, EnabledTrait, ETaggableTrait, MetaDataTrait;
+    use DateTimeTrait, EnabledTrait, ETaggableTrait, MetaDataTrait, ImagesContainerTrait;
 
     /**
      * @var string

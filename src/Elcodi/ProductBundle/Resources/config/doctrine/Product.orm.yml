@@ -86,6 +86,12 @@ Elcodi\ProductBundle\Entity\Product:
                 name: principal_category_id
                 referencedColumnName: id
                 nullable: true
+        principalImage:
+            targetEntity: Elcodi\MediaBundle\Entity\Interfaces\ImageInterface
+            joinColumn:
+                name: principal_image_id
+                referencedColumnName: id
+                nullable: true
 
     manyToMany:
         categories:
@@ -98,6 +104,16 @@ Elcodi\ProductBundle\Entity\Product:
                         referencedColumnName: id
                 inverseJoinColumns:
                     category_id:
+                        referencedColumnName: id
+        images:
+            targetEntity: Elcodi\MediaBundle\Entity\Interfaces\ImageInterface
+            joinTable:
+                name: product_image
+                joinColumns:
+                    product_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    image_id:
                         referencedColumnName: id
 
     lifecycleCallbacks:

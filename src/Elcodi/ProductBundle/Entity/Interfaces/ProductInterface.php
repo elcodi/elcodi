@@ -18,11 +18,12 @@ use Doctrine\Common\Collections\Collection;
 
 use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\ETaggableInterface;
+use Elcodi\MediaBundle\Entity\Interfaces\ImagesContainerInterface;
 
 /**
  * Class ProductInterface
  */
-interface ProductInterface extends EnabledInterface, ETaggableInterface, MetaDataInterface
+interface ProductInterface extends EnabledInterface, ETaggableInterface, MetaDataInterface, ImagesContainerInterface
 {
     /**
      * Set name
