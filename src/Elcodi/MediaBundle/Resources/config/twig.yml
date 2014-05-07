@@ -1,0 +1,10 @@
+services:
+
+    #
+    # Twig extensions
+    #
+    elcodi.core.media.twig.image_extension:
+        class: %elcodi.core.media.twig.image_extension.class%
+        arguments:
+            router: @router
+            image_manager: @elcodi.core.media.services.image_manager

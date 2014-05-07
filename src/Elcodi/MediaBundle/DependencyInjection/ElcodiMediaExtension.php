@@ -70,6 +70,7 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
             'services',
             'factories',
             'controllers',
+            'twig',
         ];
     }
 

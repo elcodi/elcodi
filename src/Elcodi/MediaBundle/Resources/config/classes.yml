@@ -36,3 +36,8 @@ parameters:
     # Transformers
     #
     elcodi.core.media.transformer.file.class: Elcodi\MediaBundle\Transformer\FileTransformer
+
+    #
+    # Twig extensions
+    #
+    elcodi.core.media.twig.image_extension.class: Elcodi\MediaBundle\Twig\ImageExtension
