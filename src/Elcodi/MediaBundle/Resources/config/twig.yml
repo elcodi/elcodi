@@ -8,3 +8,5 @@ services:
         arguments:
             router: @router
             image_manager: @elcodi.core.media.services.image_manager
+        tags:
+            - { name: twig.extension }
