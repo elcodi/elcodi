@@ -7,6 +7,6 @@ services:
         class: %elcodi.core.media.twig.image_extension.class%
         arguments:
             router: @router
-            image_manager: @elcodi.core.media.services.image_manager
+            image_resize_controller_route_name: %elcodi.core.media.image_resize_controller_route_name%
         tags:
             - { name: twig.extension }
