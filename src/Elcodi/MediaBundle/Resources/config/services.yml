@@ -1,6 +1,14 @@
 services:
 
     #
+    # Service
+    #
+    elcodi.core.media.services.image_manager:
+        class: %elcodi.core.media.services.image_manager.class%
+        arguments:
+            image_factory: @elcodi.core.media.factory.image
+
+    #
     # Resize
     #
     elcodi.core.media.resize.imagemagick:

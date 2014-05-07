@@ -22,7 +22,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Gaufrette\Adapter;
 
-use Elcodi\MediaBundle\Factory\ImageFactory;
+use Elcodi\MediaBundle\Exception\InvalidImageException;
+use Elcodi\MediaBundle\Services\ImageManager;
 use Elcodi\MediaBundle\Transformer\FileTransformer;
 
 /**
@@ -38,11 +39,11 @@ class ImageUploadController extends Controller
     protected $manager;
 
     /**
-     * @var ImageFactory
+     * @var ImageManager
      *
-     * Image Factory
+     * Image Manager
      */
-    protected $imageFactory;
+    protected $imageManager;
 
     /**
      * @var Adapter
@@ -80,15 +81,15 @@ class ImageUploadController extends Controller
     }
 
     /**
-     * Set image factory
+     * Set image manager
      *
-     * @param ImageFactory $imageFactory Image Factory
+     * @param ImageManager $imageManager Image Manager
      *
      * @return ImageUploadController self Object
      */
-    public function setImageFactory(ImageFactory $imageFactory)
+    public function setImageManager(ImageManager $imageManager)
     {
-        $this->imageFactory = $imageFactory;
+        $this->imageManager = $imageManager;
 
         return $this;
     }
@@ -148,33 +149,26 @@ class ImageUploadController extends Controller
          * @var $file UploadedFile
          */
         $file = $request->files->get($this->fieldName);
-        $fileMime = $file->getMimeType();
-        $image = $this->imageFactory->create();
 
-        if (strpos($fileMime, 'image/') !== 0) {
+        try {
+
+
+        } catch (InvalidImageException $exception) {
 
             return new JsonResponse([
                 'status' => 'ko',
             ]);
         }
 
-        $imageSizeData = getimagesize($file->getPathname());
-        $name = $file->getClientOriginalName();
-        $image
-            ->setWidth($imageSizeData[0])
-            ->setHeight($imageSizeData[1])
-            ->setContentType($fileMime)
-            ->setSize($file->getSize())
-            ->setExtension($file->getExtension())
-            ->setName($name);
-
-        $this->manager->persist($image);
-        $this->manager->flush($image);
+        $image = $this->imageManager->createImage($file);
 
         $this->filesystemAdapter->write(
             $this->fileTransformer->transform($image),
             file_get_contents($file->getRealPath())
         );
+
+        $this->manager->persist($image);
+        $this->manager->flush();
 
         return new JsonResponse([
             'status' => 'ok',
