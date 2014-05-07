@@ -16,13 +16,21 @@ Elcodi\BannerBundle\Entity\BannerZone:
         height:
             column: height
             type: integer
+            length: 11
+            nullable: false
         width:
             column: width
             type: integer
+            length: 11
+            nullable: false
 
     manyToOne:
         language:
             targetEntity: Elcodi\CoreBundle\Entity\Interfaces\LanguageInterface
+            joinColumn:
+                name: language_id
+                referencedColumnName: id
+                nullable: true
 
     manyToMany:
         banners:

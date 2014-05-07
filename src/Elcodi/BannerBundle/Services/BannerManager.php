@@ -50,7 +50,7 @@ class BannerManager
      *
      * @return Collection banners
      */
-    public function getBannersFromBannerZoneCode($bannerZoneCode, LanguageInterface $language)
+    public function getBannersFromBannerZoneCode($bannerZoneCode, LanguageInterface $language = null)
     {
         return $this
             ->bannerRepository
@@ -65,7 +65,7 @@ class BannerManager
      *
      * @return Collection banners
      */
-    public function getBannersFromBannerZone(BannerZoneInterface $bannerZone, LanguageInterface $language)
+    public function getBannersFromBannerZone(BannerZoneInterface $bannerZone, LanguageInterface $language = null)
     {
         return $this->getBannersFromBannerZoneCode(
             $bannerZone->getCode(),

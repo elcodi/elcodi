@@ -21,7 +21,6 @@ Elcodi\BannerBundle\Entity\Banner:
             column: position
             type: integer
             nullable: true
-        # enable
         enabled:
             column: enabled
             type: boolean

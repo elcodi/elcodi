@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -34,7 +34,7 @@ class BannerRepository extends EntityRepository
      *
      * @return ArrayCollection
      */
-    public function getBannerByZone($bannerZoneCode, LanguageInterface $language)
+    public function getBannerByZone($bannerZoneCode, LanguageInterface $language = null)
     {
         $banners = $this
             ->getEntityManager()
