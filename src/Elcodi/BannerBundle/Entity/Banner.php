@@ -21,6 +21,7 @@ use Elcodi\BannerBundle\Entity\Interfaces\BannerInterface;
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
+use Elcodi\MediaBundle\Entity\Interfaces\ImageInterface;
 
 /**
  * Banner
@@ -54,6 +55,13 @@ class Banner extends AbstractEntity implements BannerInterface
      * @var integer
      */
     protected $position;
+
+    /**
+     * @var ImageInterface
+     *
+     * Banner image
+     */
+    protected $image;
 
     /**
      * @var Collection
@@ -210,5 +218,21 @@ class Banner extends AbstractEntity implements BannerInterface
     public function setPosition($position)
     {
         $this->position = $position;
+    }
+
+    /**
+     * @return ImageInterface
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param ImageInterface $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
     }
 }

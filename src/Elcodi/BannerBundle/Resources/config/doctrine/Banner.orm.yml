@@ -26,6 +26,14 @@ Elcodi\BannerBundle\Entity\Banner:
             type: boolean
             nullable: true
 
+    oneToOne:
+        image:
+            targetEntity: Elcodi\MediaBundle\Entity\Interfaces\ImageInterface
+            joinColumn:
+                name: image_id
+                referencedColumnName: id
+                nullable: true
+
     manyToMany:
         bannerZones:
             targetEntity: Elcodi\BannerBundle\Entity\Interfaces\BannerZoneInterface
