@@ -24,7 +24,7 @@ use Gaufrette\Adapter;
 
 use Elcodi\MediaBundle\Exception\InvalidImageException;
 use Elcodi\MediaBundle\Services\ImageManager;
-use Elcodi\MediaBundle\Transformer\FileTransformer;
+use Elcodi\MediaBundle\Services\FileManager;
 
 /**
  * Class ImageUploadController
@@ -36,7 +36,7 @@ class ImageUploadController extends Controller
      *
      * Entity manager
      */
-    protected $manager;
+    protected $objectManager;
 
     /**
      * @var ImageManager
@@ -46,18 +46,11 @@ class ImageUploadController extends Controller
     protected $imageManager;
 
     /**
-     * @var Adapter
+     * @var FileManager
      *
-     * Filesystem adapter
+     * File Manager
      */
-    protected $filesystemAdapter;
-
-    /**
-     * @var FileTransformer
-     *
-     * File Transformer
-     */
-    protected $fileTransformer;
+    protected $fileManager;
 
     /**
      * @var string
@@ -67,15 +60,15 @@ class ImageUploadController extends Controller
     protected $fieldName;
 
     /**
-     * Set entityManager
+     * Set object manager
      *
-     * @param ObjectManager $manager Entity manager
+     * @param ObjectManager $objectManager Object manager
      *
      * @return ImageUploadController self Object
      */
-    public function setEntityManager(ObjectManager $manager)
+    public function setObjectManager(ObjectManager $objectManager)
     {
-        $this->manager = $manager;
+        $this->objectManager = $objectManager;
 
         return $this;
     }
@@ -95,29 +88,15 @@ class ImageUploadController extends Controller
     }
 
     /**
-     * Set filesystem adapter
+     * Set file manager
      *
-     * @param Adapter $filesystemAdapter Adapter
-     *
-     * @return ImageUploadController self Object
-     */
-    public function setFilesystemAdapter(Adapter $filesystemAdapter)
-    {
-        $this->filesystemAdapter = $filesystemAdapter;
-
-        return $this;
-    }
-
-    /**
-     * Set file transformer
-     *
-     * @param FileTransformer $fileTransformer File transformer
+     * @param FileManager $fileManager File Manager
      *
      * @return ImageUploadController self Object
      */
-    public function setFileTransformer(FileTransformer $fileTransformer)
+    public function setFileManager(FileManager $fileManager)
     {
-        $this->fileTransformer = $fileTransformer;
+        $this->fileManager = $fileManager;
 
         return $this;
     }
@@ -151,7 +130,7 @@ class ImageUploadController extends Controller
         $file = $request->files->get($this->fieldName);
 
         try {
-
+            $image = $this->imageManager->createImage($file);
 
         } catch (InvalidImageException $exception) {
 
@@ -160,15 +139,14 @@ class ImageUploadController extends Controller
             ]);
         }
 
-        $image = $this->imageManager->createImage($file);
+        $this->objectManager->persist($image);
+        $this->objectManager->flush($image);
 
-        $this->filesystemAdapter->write(
-            $this->fileTransformer->transform($image),
-            file_get_contents($file->getRealPath())
+        $this->fileManager->uploadFile(
+            $image,
+            file_get_contents($file->getRealPath()),
+            true
         );
-
-        $this->manager->persist($image);
-        $this->manager->flush();
 
         return new JsonResponse([
             'status' => 'ok',

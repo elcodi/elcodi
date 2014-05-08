@@ -119,7 +119,7 @@ class File extends Media implements FileInterface
      */
     public function getExtension()
     {
-        return $this;
+        return $this->extension;
     }
 
     /**

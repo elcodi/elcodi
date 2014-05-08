@@ -6,11 +6,6 @@ parameters:
     elcodi.core.media.entity.image.class: Elcodi\MediaBundle\Entity\Image
 
     #
-    # Service
-    #
-    elcodi.core.media.services.image_manager.class: Elcodi\MediaBundle\Services\ImageManager
-
-    #
     # Factories
     #
     elcodi.core.media.factory.image.class: Elcodi\MediaBundle\Factory\ImageFactory
@@ -19,6 +14,8 @@ parameters:
     # Services
     #
     elcodi.core.media.resize.imagemagick.class: Elcodi\MediaBundle\Adapter\Resizer\ImageMagickResizeAdapter
+    elcodi.core.media.services.image_manager.class: Elcodi\MediaBundle\Services\ImageManager
+    elcodi.core.media.services.file_manager.class: Elcodi\MediaBundle\Services\FileManager
 
     #
     # Controllers

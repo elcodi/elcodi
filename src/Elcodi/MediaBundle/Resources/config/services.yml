@@ -8,6 +8,12 @@ services:
         arguments:
             image_factory: @elcodi.core.media.factory.image
 
+    elcodi.core.media.services.file_manager:
+        class: %elcodi.core.media.services.file_manager.class%
+        arguments:
+            filesystem: @elcodi.core.media.filesystem.default
+            file_transformer: @elcodi.core.media.transformer.file
+
     #
     # Resize
     #

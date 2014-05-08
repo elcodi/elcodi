@@ -54,7 +54,7 @@ knp_gaufrette:
     adapters:
         local:
             local:
-                directory: /tmp/gaufrette
+                directory: %kernel.cache_dir%/gaufrette
                 create: true
     filesystems:
         local:

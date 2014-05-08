@@ -18,7 +18,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Gaufrette\Adapter;
+use Gaufrette\Filesystem;
 
 use Elcodi\MediaBundle\Adapter\Resizer\Interfaces\ResizeAdapterInterface;
 use Elcodi\MediaBundle\Entity\Interfaces\ImageInterface;
@@ -32,9 +32,9 @@ class ImageResizeController extends Controller
     /**
      * @var ObjectManager
      *
-     * Entity manager
+     * Object manager
      */
-    protected $manager;
+    protected $objectManager;
 
     /**
      * @var string
@@ -44,11 +44,11 @@ class ImageResizeController extends Controller
     protected $imageNamespace;
 
     /**
-     * @var Adapter
+     * @var Filesystem
      *
-     * Filesystem adapter
+     * Filesystem
      */
-    protected $filesystemAdapter;
+    protected $filesystem;
 
     /**
      * @var FileTransformer
@@ -65,15 +65,15 @@ class ImageResizeController extends Controller
     protected $resizeAdapter;
 
     /**
-     * Set entityManager
+     * Set object manager
      *
-     * @param ObjectManager $manager Entity manager
+     * @param ObjectManager $objectManager Object manager
      *
      * @return ImageResizeController self Object
      */
-    public function setEntityManager(ObjectManager $manager)
+    public function setObjectManager(ObjectManager $objectManager)
     {
-        $this->manager = $manager;
+        $this->objectManager = $objectManager;
 
         return $this;
     }
@@ -95,13 +95,13 @@ class ImageResizeController extends Controller
     /**
      * Set filesystem adapter
      *
-     * @param Adapter $filesystemAdapter Adapter
+     * @param FileSystem $filesystem FileSystem
      *
      * @return ImageResizeController self Object
      */
-    public function setFilesystemAdapter(Adapter $filesystemAdapter)
+    public function setFilesystem(FileSystem $filesystem)
     {
-        $this->filesystemAdapter = $filesystemAdapter;
+        $this->filesystem = $filesystem;
 
         return $this;
     }
@@ -152,9 +152,7 @@ class ImageResizeController extends Controller
         /**
          * We retrieve image given its id
          */
-
-
-        $imageRepository = $this->manager->getRepository($this->imageNamespace);
+        $imageRepository = $this->objectManager->getRepository($this->imageNamespace);
         $image = $imageRepository->find($id);
 
         if (!($image instanceof ImageInterface)) {
@@ -188,7 +186,7 @@ class ImageResizeController extends Controller
         }
 
         $imagePath = $this->fileTransformer->transform($image);
-        $imageData = $this->filesystemAdapter->read($imagePath);
+        $imageData = $this->filesystem->read($imagePath);
 
         if (0 !== $type) {
 

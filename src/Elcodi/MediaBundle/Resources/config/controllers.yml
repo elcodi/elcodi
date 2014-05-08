@@ -6,17 +6,16 @@ services:
     elcodi.core.media.controllers.image_resize:
         class: %elcodi.core.media.controllers.image_resize.class%
         calls:
-            - [setEntityManager, [@doctrine.orm.entity_manager]]
+            - [setObjectManager, [@doctrine.orm.entity_manager]]
             - [setImageNamespace, [%elcodi.core.media.entity.image.class%]]
-            - [setFilesystemAdapter, [@=service("elcodi.core.media.filesystem.default").getAdapter()]]
+            - [setFilesystem, [@elcodi.core.media.filesystem.default]]
             - [setFileTransformer, [@elcodi.core.media.transformer.file]]
             - [setResizeAdapter, [@elcodi.core.media.resize.default]]
 
     elcodi.core.media.controllers.image_upload:
         class: %elcodi.core.media.controllers.image_upload.class%
         calls:
-            - [setEntityManager, [@doctrine.orm.entity_manager]]
+            - [setObjectManager, [@doctrine.orm.entity_manager]]
             - [setImageManager, [@elcodi.core.media.services.image_manager]]
-            - [setFilesystemAdapter, [@=service("elcodi.core.media.filesystem.default").getAdapter()]]
-            - [setFileTransformer, [@elcodi.core.media.transformer.file]]
+            - [setFileManager, [@elcodi.core.media.services.file_manager]]
             - [setFieldName, [%elcodi.core.media.image_upload_field_name%]]

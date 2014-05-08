@@ -15,6 +15,8 @@
 namespace Elcodi\MediaBundle\Tests\Functional\Services;
 
 use Elcodi\CoreBundle\Tests\WebTestCase;
+use Elcodi\MediaBundle\Entity\Interfaces\ImageInterface;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * Class ImageServiceTest
@@ -29,6 +31,30 @@ class ImageServiceTest extends WebTestCase
     public function getServiceCallableName()
     {
         return 'elcodi.core.media.services.image_manager';
+    }
+
+    /**
+     * Test image object creation
+     */
+    public function testCreateImage()
+    {
+        $imagePath = realpath(dirname(__FILE__)) . '/images/image-10-10.gif';
+        $file = new File($imagePath);
+
+        /**
+         * @var ImageInterface $image
+         */
+        $image = $this
+            ->container
+            ->get('elcodi.core.media.services.image_manager')
+            ->createImage($file);
+
+        $this->assertInstanceOf('Elcodi\MediaBundle\Entity\Interfaces\ImageInterface', $image);
+        $this->assertEquals($image->getWidth(), 10);
+        $this->assertEquals($image->getHeight(), 10);
+        $this->assertEquals($image->getContentType(), 'image/gif');
+        $this->assertEquals($image->getExtension(), 'gif');
+        $this->assertEquals($image->getSize(), 102);
     }
 }
  
