@@ -33,7 +33,6 @@ class BannerZoneData extends AbstractFixture
      */
     public function load(ObjectManager $manager)
     {
-
         /**
          * BannerZone
          *
@@ -52,7 +51,23 @@ class BannerZoneData extends AbstractFixture
         $manager->persist($bannerZone);
         $this->addReference('banner-zone', $bannerZone);
 
-        $manager->flush($bannerZone);
+         /**
+         * BannerZone with no language
+         *
+         * @var BannerZoneInterface $bannerZoneNoLanguage
+         */
+        $bannerZoneNoLanguage = $this->container->get('elcodi.core.banner.factory.bannerzone')->create();
+        $bannerZoneNoLanguage
+            ->setName('bannerzone-nolanguage')
+            ->setCode('bannerzone-code-nolanguage')
+            ->setLanguage(null)
+            ->setHeight(300)
+            ->setWidth(400);
+
+        $manager->persist($bannerZoneNoLanguage);
+        $this->addReference('banner-zone-nolanguage', $bannerZoneNoLanguage);
+
+        $manager->flush();
     }
 
     /**

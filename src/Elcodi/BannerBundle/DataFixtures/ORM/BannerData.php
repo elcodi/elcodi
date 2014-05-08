@@ -50,7 +50,24 @@ class BannerData extends AbstractFixture
         $manager->persist($banner);
         $this->addReference('banner', $banner);
 
-        $manager->flush($banner);
+        /**
+         * Banner no language
+         *
+         * @var BannerInterface $banner
+         * @var BannerZoneInterface $bannerZone
+         */
+        $bannerNoLanguage = $this->container->get('elcodi.core.banner.factory.banner')->create();
+        $bannerZoneNoLanguage = $this->getReference('banner-zone-nolanguage');
+        $bannerNoLanguage
+            ->setName('banner-nolanguage')
+            ->setDescription('Simple banner no language')
+            ->addBannerZone($bannerZoneNoLanguage)
+            ->setUrl('http://myurl.com');
+
+        $manager->persist($bannerNoLanguage);
+        $this->addReference('banner-nolanguage', $bannerNoLanguage);
+
+        $manager->flush();
     }
 
     /**

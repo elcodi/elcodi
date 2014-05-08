@@ -184,7 +184,12 @@ abstract class WebTestCase extends BaseWebTestCase
         }
         static::$application->run(new ArrayInput(array('command' => 'doctrine:database:drop', '--no-interaction' => true, '--force' => true, '--quiet' => true)));
 
-        $connection = self::$application->getKernel()->getContainer()->get('doctrine')->getConnection();
+        $connection = self::$application
+            ->getKernel()
+            ->getContainer()
+            ->get('doctrine')
+            ->getConnection();
+
         if ($connection->isConnected()) {
             $connection->close();
         }
@@ -216,7 +221,7 @@ abstract class WebTestCase extends BaseWebTestCase
             return $this;
         }
 
-        self::$application->run(new ArrayInput(array('command' => 'doctrine:fixtures:load', '--no-interaction' => true, '--quiet' => true)));
+        self::$application->run(new ArrayInput(array('command' => 'doctrine:fixtures:load', '--no-interaction' => true, '--quiet' => false)));
 
         return $this;
     }
