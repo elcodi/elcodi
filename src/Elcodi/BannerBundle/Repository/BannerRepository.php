@@ -36,20 +36,25 @@ class BannerRepository extends EntityRepository
      */
     public function getBannerByZone($bannerZoneCode, LanguageInterface $language = null)
     {
+        $parameters = array(
+            'enabled'  => true,
+            'code'     => $bannerZoneCode,
+        );
+
+        if (!is_null($language)) {
+            $parameters['language'] = $language;
+        }
+
         $banners = $this
             ->getEntityManager()
             ->getRepository('ElcodiBannerBundle:Banner')
             ->createQueryBuilder('b')
             ->leftJoin('b.bannerZones', 'bz')
             ->where('b.enabled = :enabled')
-            ->andWhere('bz.language = :language')
+            ->andWhere(is_null($language) ? 'bz.language is NULL' : 'bz.language = :language')
             ->andWhere('bz.code = :code')
             ->orderBy('b.position', 'ASC')
-            ->setParameters(array(
-                'enabled'  => true,
-                'language' => $language,
-                'code'     => $bannerZoneCode,
-            ))
+            ->setParameters($parameters)
             ->getQuery()
             ->getResult();
 

@@ -44,8 +44,8 @@ class ImageManager
     }
 
     /**
-     * Given a single File, assuming is an image, cretaes a new Image object
-     * containing all needed information.
+     * Given a single File, assuming is an image, create a new
+     * Image object containing all needed information.
      *
      * This method also persists and flush created entity
      *
