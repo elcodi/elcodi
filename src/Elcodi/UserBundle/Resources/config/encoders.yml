@@ -1,0 +1,6 @@
+security:
+
+    encoders:
+        Elcodi\UserBundle\Entity\Abstracts\AbstractUser:
+            algorithm: bcrypt
+            cost:      15

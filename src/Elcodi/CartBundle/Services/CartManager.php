@@ -349,7 +349,10 @@ class CartManager
     public function addProduct(CartInterface $cart, ProductInterface $product, $quantity = 1)
     {
         foreach ($cart->getCartLines() as $cartLine) {
-            /*@var CartLineInterface $cartLine */
+
+            /**
+             * @var CartLineInterface $cartLine
+             */
             if ($cartLine->getProduct()->getId() == $product->getId()) {
                 // Product already in the Cart, increase quantity
                 return $this->increaseCartLineQuantity($cartLine, $quantity);

@@ -17,9 +17,9 @@ namespace Elcodi\UserBundle\Tests\Functional\EventListener;
 use Elcodi\CoreBundle\Tests\WebTestCase;
 
 /**
- * Tests PasswordEventListenerTest class
+ * Tests SessionEventListenerTest class
  */
-class PasswordEventListenerTest extends WebTestCase
+class SessionEventListenerTest extends WebTestCase
 {
 
     /**
@@ -29,6 +29,6 @@ class PasswordEventListenerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.user.event_listener.password';
+        return 'elcodi.core.user.event_listener.session';
     }
 }

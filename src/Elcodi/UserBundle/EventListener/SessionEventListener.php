@@ -8,31 +8,42 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
 namespace Elcodi\UserBundle\EventListener;
 
-use Elcodi\CartBundle\Event\CartPostLoadEvent;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+
+use Elcodi\CartBundle\Event\CartPostLoadEvent;
 
 class SessionEventListener
 {
-
     /**
      * @var SessionInterface
+     *
+     * Session
      */
     protected $session;
 
     /**
-     * @param SessionInterface $session HTTP session
-     * @param string           $sessionFieldName session key representing customer id
+     * @var string
+     *
+     * Session Field Name
+     */
+    protected $sessionFieldName;
+
+    /**
+     * Construct method
+     *
+     * @param SessionInterface $session          HTTP session
+     * @param string           $sessionFieldName Session key representing customer id
      */
     public function __construct(SessionInterface $session, $sessionFieldName)
     {
-        $this->sessionFieldName = $sessionFieldName;
         $this->session = $session;
+        $this->sessionFieldName = $sessionFieldName;
     }
 
     /**
@@ -53,8 +64,8 @@ class SessionEventListener
         $cart = $event->getCart();
 
         if ($this->session->get($this->sessionFieldName) != $cart->getCustomer()->getId()) {
+
             $this->session->set($this->sessionFieldName, $cart->getCustomer()->getId());
         }
-
     }
 }
