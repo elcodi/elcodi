@@ -4,6 +4,12 @@ elcodi_image_resize_routes:
     methods: [GET]
     options: { i18n: false }
 
+elcodi_image_view_routes:
+    resource: .
+    type: elcodi_image_view
+    methods: [GET]
+    options: { i18n: false }
+
 elcodi_image_upload_routes:
     resource: .
     type: elcodi_image_upload

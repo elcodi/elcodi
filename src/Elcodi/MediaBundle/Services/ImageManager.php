@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -17,12 +17,21 @@ namespace Elcodi\MediaBundle\Services;
 use Symfony\Component\HttpFoundation\File\File;
 use Gaufrette\Adapter;
 
+use Elcodi\MediaBundle\Adapter\Resizer\Interfaces\ResizeAdapterInterface;
+use Elcodi\MediaBundle\ElcodiMediaImageResizeTypes;
 use Elcodi\MediaBundle\Factory\ImageFactory;
 use Elcodi\MediaBundle\Entity\Interfaces\ImageInterface;
 use Elcodi\MediaBundle\Exception\InvalidImageException;
 
 /**
  * Class ImageManager
+ *
+ * This class manages images
+ *
+ * Public Methods:
+ *
+ * * createImage(File)
+ * * resize(ImageInterface, $height, $width, $type)
  */
 class ImageManager
 {
@@ -34,13 +43,35 @@ class ImageManager
     protected $imageFactory;
 
     /**
+     * @var FileManager
+     *
+     * File manager
+     */
+    protected $fileManager;
+
+    /**
+     * @var ResizeAdapterInterface
+     *
+     * ResizerAdapter
+     */
+    protected $resizeAdapter;
+
+    /**
      * Construct method
      *
-     * @param ImageFactory $imageFactory Image Factory
+     * @param ImageFactory           $imageFactory    Image Factory
+     * @param FileManager        $fileManager File Manager
+     * @param ResizeAdapterInterface $resizeAdapter   Resize Adapter
      */
-    public function __construct(ImageFactory $imageFactory)
+    public function __construct(
+        ImageFactory $imageFactory,
+        FileManager $fileManager,
+        ResizeAdapterInterface $resizeAdapter
+    )
     {
         $this->imageFactory = $imageFactory;
+        $this->fileManager = $fileManager;
+        $this->resizeAdapter = $resizeAdapter;
     }
 
     /**
@@ -80,6 +111,44 @@ class ImageManager
             ->setSize($file->getSize())
             ->setExtension($file->getExtension())
             ->setName($name);
+
+        return $image;
+    }
+
+    /**
+     * Given an image, resize it.
+     *
+     * @param ImageInterface $image  Image
+     * @param integer        $height Height
+     * @param integer        $width  Width
+     * @param integer        $type   Type
+     *
+     * @return ImageInterface New Image instance
+     *
+     * @api
+     */
+    public function resize(
+        ImageInterface $image,
+        $height,
+        $width,
+        $type = ElcodiMediaImageResizeTypes::FORCE_MEASURES
+    )
+    {
+        if (ElcodiMediaImageResizeTypes::NO_RESIZE === $type) {
+
+            return $image;
+        }
+
+        $imageData = $this->fileManager->downloadFile($image);
+
+        $resizedImageData = $this
+            ->resizeAdapter
+            ->resize($imageData, $height, $width, $type);
+
+        $resizedFile = new File(tempnam(sys_get_temp_dir(), '_generated'));
+        file_put_contents($resizedFile, $resizedImageData);
+
+        $image = $this->createImage($resizedFile);
 
         return $image;
     }

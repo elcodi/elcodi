@@ -32,24 +32,33 @@ class FileServiceTest extends WebTestCase
     }
 
     /**
-     * Given a file, upload using single local filesystem
+     * Given a file, upload using single local filesystem.
+     * This method also tests download method.
      */
-    public function testUploadFile()
+    public function testUploadAndDownloadFile()
     {
         $image = $this->container->get('elcodi.core.media.factory.image')->create();
         $fileTransformer = $this->container->get('elcodi.core.media.transformer.file');
         $imageName = $fileTransformer->transform($image);
+        $imageData = file_get_contents(realpath(dirname(__FILE__)) . '/images/image-10-10.gif');
 
         $this
             ->container
             ->get('elcodi.core.media.services.file_manager')
-            ->uploadFile($image, '', true);
+            ->uploadFile($image, $imageData, true);
 
         $this->assertTrue($this
             ->container
             ->get('elcodi.core.media.filesystem.default')
             ->has($imageName)
         );
+
+        $downloadedData = $this
+            ->container
+            ->get('elcodi.core.media.services.file_manager')
+            ->downloadFile($image);
+
+        $this->assertEquals($imageData, $downloadedData);
 
         $this
             ->container

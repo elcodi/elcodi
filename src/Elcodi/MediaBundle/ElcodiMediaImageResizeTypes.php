@@ -22,6 +22,13 @@ class ElcodiMediaImageResizeTypes
     /**
      * @var integer
      *
+     * Do not resize the image
+     */
+    const NO_RESIZE = 0;
+
+    /**
+     * @var integer
+     *
      * Resize mode FORCE_MEASURES sets the image to the desired size.
      * DOES NOT preserve original aspect ratio.
      * Best for fixed size images like banners

@@ -7,6 +7,8 @@ services:
         class: %elcodi.core.media.services.image_manager.class%
         arguments:
             image_factory: @elcodi.core.media.factory.image
+            file_manager: @elcodi.core.media.services.file_manager
+            resize_adapter: @elcodi.core.media.resize.default
 
     elcodi.core.media.services.file_manager:
         class: %elcodi.core.media.services.file_manager.class%
@@ -31,6 +33,14 @@ services:
         arguments:
             image_resize_controller_route_name: %elcodi.core.media.image_resize_controller_route_name%
             image_resize_controller_route: %elcodi.core.media.image_resize_controller_route%
+        tags:
+            - { name: routing.loader }
+
+    elcodi.core.media.routes.image_view.loader:
+        class: %elcodi.core.media.routes.image_view.loader.class%
+        arguments:
+            image_view_controller_route_name: %elcodi.core.media.image_view_controller_route_name%
+            image_view_controller_route: %elcodi.core.media.image_view_controller_route%
         tags:
             - { name: routing.loader }
 

@@ -63,6 +63,8 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
      * @return ImageInterface  Resized image data
      *
      * @throws \RuntimeException
+     *
+     * @api
      */
     public function resize(
         $imageData,

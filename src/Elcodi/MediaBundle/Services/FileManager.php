@@ -21,6 +21,13 @@ use Elcodi\MediaBundle\Transformer\FileTransformer;
 
 /**
  * Class FileManager
+ *
+ * This class manages filesystem files
+ *
+ * Public Methods:
+ *
+ * * uploadFile(FileInterface, $data, $overwrite)
+ * * downloadFile(FileInterface)
  */
 class FileManager
 {
@@ -72,6 +79,25 @@ class FileManager
         );
 
         return $this;
+    }
+
+    /**
+     * Retrieves File data from filesystem
+     *
+     * @param FileInterface $file
+     *
+     * @return string File data
+     *
+     * @api
+     */
+    public function downloadFile(FileInterface $file)
+    {
+        return $this
+            ->filesystem
+            ->read($this
+                ->fileTransformer
+                ->transform($file)
+            );
     }
 }
  

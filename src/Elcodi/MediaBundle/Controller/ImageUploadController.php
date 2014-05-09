@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -57,63 +57,29 @@ class ImageUploadController extends Controller
      *
      * Field name when uploading
      */
-    protected $fieldName;
+    protected $uploadFieldName;
 
     /**
-     * Set object manager
+     * Construct method
      *
-     * @param ObjectManager $objectManager Object manager
-     *
-     * @return ImageUploadController self Object
+     * @param ObjectManager $objectManager   Object Manager
+     * @param FileManager   $fileManager     File Manager
+     * @param ImageManager  $imageManager    Image Manager
+     * @param string        $uploadFieldName Field name when uploading
      */
-    public function setObjectManager(ObjectManager $objectManager)
+    public function __construct(
+        ObjectManager $objectManager,
+        FileManager $fileManager,
+        ImageManager $imageManager,
+        $uploadFieldName
+    )
     {
         $this->objectManager = $objectManager;
-
-        return $this;
-    }
-
-    /**
-     * Set image manager
-     *
-     * @param ImageManager $imageManager Image Manager
-     *
-     * @return ImageUploadController self Object
-     */
-    public function setImageManager(ImageManager $imageManager)
-    {
-        $this->imageManager = $imageManager;
-
-        return $this;
-    }
-
-    /**
-     * Set file manager
-     *
-     * @param FileManager $fileManager File Manager
-     *
-     * @return ImageUploadController self Object
-     */
-    public function setFileManager(FileManager $fileManager)
-    {
         $this->fileManager = $fileManager;
-
-        return $this;
+        $this->imageManager = $imageManager;
+        $this->uploadFieldName = $uploadFieldName;
     }
 
-    /**
-     * Set field name
-     *
-     * @param string $fieldName Field name
-     *
-     * @return ImageUploadController Self object
-     */
-    public function setFieldName($fieldName)
-    {
-        $this->fieldName = $fieldName;
-
-        return $this;
-    }
 
     /**
      * Dynamic upload action
@@ -127,7 +93,7 @@ class ImageUploadController extends Controller
         /**
          * @var $file UploadedFile
          */
-        $file = $request->files->get($this->fieldName);
+        $file = $request->files->get($this->uploadFieldName);
 
         try {
             $image = $this->imageManager->createImage($file);

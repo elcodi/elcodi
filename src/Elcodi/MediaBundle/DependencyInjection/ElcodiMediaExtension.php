@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -91,6 +91,11 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
     {
         return [
             'elcodi.core.media.filesystem'                             => $config['images']['filesystem'],
+
+            'elcodi.core.media.image_view_controller_route_name'       => $config['images']['view']['controller_route_name'],
+            'elcodi.core.media.image_view_controller_route'            => $config['images']['view']['controller_route'],
+            'elcodi.core.media.image_view_max_age'                     => $config['images']['view']['max_age'],
+            'elcodi.core.media.image_view_shared_max_age'              => $config['images']['view']['shared_max_age'],
 
             'elcodi.core.media.image_upload_field_name'                => $config['images']['upload']['field_name'],
             'elcodi.core.media.image_upload_controller_route_name'     => $config['images']['upload']['controller_route_name'],

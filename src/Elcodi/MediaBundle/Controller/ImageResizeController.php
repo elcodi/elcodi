@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
 namespace Elcodi\MediaBundle\Controller;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Gaufrette\Filesystem;
 
-use Elcodi\MediaBundle\Adapter\Resizer\Interfaces\ResizeAdapterInterface;
 use Elcodi\MediaBundle\Entity\Interfaces\ImageInterface;
-use Elcodi\MediaBundle\Transformer\FileTransformer;
+use Elcodi\MediaBundle\Services\FileManager;
+use Elcodi\MediaBundle\Services\ImageManager;
 
 /**
  * Class ImageController
@@ -37,6 +37,20 @@ class ImageResizeController extends Controller
     protected $objectManager;
 
     /**
+     * @var FileManager
+     *
+     * File manager
+     */
+    protected $fileManager;
+
+    /**
+     * @var ImageManager
+     *
+     * Image Manager
+     */
+    protected $imageManager;
+
+    /**
      * @var string
      *
      * Image namespace
@@ -44,94 +58,44 @@ class ImageResizeController extends Controller
     protected $imageNamespace;
 
     /**
-     * @var Filesystem
+     * @var integer
      *
-     * Filesystem
+     * Max size
      */
-    protected $filesystem;
+    protected $maxSize;
 
     /**
-     * @var FileTransformer
+     * @var integer
      *
-     * File Transformer
+     * Shared max size
      */
-    protected $fileTransformer;
+    protected $sharedMaxSize;
 
     /**
-     * @var ResizeAdapterInterface
+     * Construct method
      *
-     * ResizerAdapter
+     * @param ObjectManager $objectManager  Object Manager
+     * @param FileManager   $fileManager    File Manager
+     * @param ImageManager  $imageManager   Image Manager
+     * @param string        $imageNamespace Image namespace
+     * @param integer       $maxSize        Max size
+     * @param integer       $sharedMaxSize  Shared max size
      */
-    protected $resizeAdapter;
-
-    /**
-     * Set object manager
-     *
-     * @param ObjectManager $objectManager Object manager
-     *
-     * @return ImageResizeController self Object
-     */
-    public function setObjectManager(ObjectManager $objectManager)
+    public function __construct(
+        ObjectManager $objectManager,
+        FileManager $fileManager,
+        ImageManager $imageManager,
+        $imageNamespace,
+        $maxSize,
+        $sharedMaxSize
+    )
     {
         $this->objectManager = $objectManager;
-
-        return $this;
-    }
-
-    /**
-     * Set entityManager
-     *
-     * @param string $imageNamespace Image namespace
-     *
-     * @return ImageResizeController self Object
-     */
-    public function setImageNamespace($imageNamespace)
-    {
+        $this->fileManager = $fileManager;
+        $this->imageManager = $imageManager;
         $this->imageNamespace = $imageNamespace;
-
-        return $this;
-    }
-
-    /**
-     * Set filesystem adapter
-     *
-     * @param FileSystem $filesystem FileSystem
-     *
-     * @return ImageResizeController self Object
-     */
-    public function setFilesystem(FileSystem $filesystem)
-    {
-        $this->filesystem = $filesystem;
-
-        return $this;
-    }
-
-    /**
-     * Set file transformer
-     *
-     * @param FileTransformer $fileTransformer File transformer
-     *
-     * @return ImageResizeController self Object
-     */
-    public function setFileTransformer(FileTransformer $fileTransformer)
-    {
-        $this->fileTransformer = $fileTransformer;
-
-        return $this;
-    }
-
-    /**
-     * Set resize adapter
-     *
-     * @param ResizeAdapterInterface $resizeAdapter Resize adapter
-     *
-     * @return ImageResizeController self Object
-     */
-    public function setResizeAdapter(ResizeAdapterInterface $resizeAdapter)
-    {
-        $this->resizeAdapter = $resizeAdapter;
-
-        return $this;
+        $this->maxSize = $maxSize;
+        $this->sharedMaxSize = $sharedMaxSize;
     }
 
     /**
@@ -145,7 +109,7 @@ class ImageResizeController extends Controller
      *
      * @return Response
      *
-     * @throws \RuntimeException
+     * @throws EntityNotFoundException
      */
     public function resizeAction(Request $request, $id, $height, $width, $type)
     {
@@ -157,7 +121,7 @@ class ImageResizeController extends Controller
 
         if (!($image instanceof ImageInterface)) {
 
-            throw $this->createNotFoundException('The image does not exist');
+            throw new EntityNotFoundException($this->imageNamespace);
         }
 
         $response = new Response();
@@ -185,19 +149,12 @@ class ImageResizeController extends Controller
             return $response;
         }
 
-        $imagePath = $this->fileTransformer->transform($image);
-        $imageData = $this->filesystem->read($imagePath);
-
-        if (0 !== $type) {
-
-            $imageData = $this
-                ->resizeAdapter
-                ->resize($imageData, $height, $width, $type);
-        }
+        $image = $this->imageManager->resize($image, $height, $width, $type);
+        $imageData = $this->fileManager->downloadFile($image);
 
         $response->setStatusCode(200);
-        $response->setMaxAge(7884000);
-        $response->setSharedMaxAge(7884000);
+        $response->setMaxAge($this->maxSize);
+        $response->setSharedMaxAge($this->sharedMaxSize);
         $response->setContent($imageData);
 
         $response->headers->add(

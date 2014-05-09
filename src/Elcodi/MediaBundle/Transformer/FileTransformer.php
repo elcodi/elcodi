@@ -8,7 +8,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author  * @version
+ * @author  ##author_placeholder
+ * @version ##version_placeholder##
  */
 
 namespace Elcodi\MediaBundle\Transformer;
@@ -26,6 +27,8 @@ class FileTransformer
      * @param FileInterface $file File to transform
      *
      * @return mixed Entity transformed
+     *
+     * @api
      */
     public function transform(FileInterface $file)
     {
