@@ -20,7 +20,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Gaufrette\Adapter;
 
 use Elcodi\MediaBundle\Exception\InvalidImageException;
 use Elcodi\MediaBundle\Services\ImageManager;

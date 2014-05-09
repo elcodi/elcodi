@@ -15,7 +15,6 @@
 namespace Elcodi\MediaBundle\Services;
 
 use Symfony\Component\HttpFoundation\File\File;
-use Gaufrette\Adapter;
 
 use Elcodi\MediaBundle\Adapter\Resizer\Interfaces\ResizeAdapterInterface;
 use Elcodi\MediaBundle\ElcodiMediaImageResizeTypes;
