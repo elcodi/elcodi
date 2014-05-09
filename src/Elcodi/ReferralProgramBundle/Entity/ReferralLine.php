@@ -21,6 +21,7 @@ use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralLineInterface;
 use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralRuleInterface;
+use Elcodi\ReferralProgramBundle\Entity\Traits\CouponAssignmentTrait;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 
 /**
@@ -28,7 +29,7 @@ use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
  */
 class ReferralLine extends AbstractEntity implements ReferralLineInterface
 {
-    use EnabledTrait, DateTimeTrait;
+    use EnabledTrait, DateTimeTrait, CouponAssignmentTrait;
 
     /**
      * @var ReferralHashInterface
@@ -87,39 +88,11 @@ class ReferralLine extends AbstractEntity implements ReferralLineInterface
     protected $invitedCouponUsed;
 
     /**
-     * @var string
-     *
-     * referrerType
-     */
-    protected $referrerType;
-
-    /**
-     * @var CouponInterface
-     *
-     * referrerCoupon
-     */
-    protected $referrerCoupon;
-
-    /**
      * @var CouponInterface
      *
      * referrerAssignedCoupon
      */
     protected $referrerAssignedCoupon;
-
-    /**
-     * @var string
-     *
-     * invitedType
-     */
-    protected $invitedType;
-
-    /**
-     * @var CouponInterface
-     *
-     * invitedCoupon
-     */
-    protected $invitedCoupon;
 
     /**
      * @var CouponInterface
@@ -325,102 +298,6 @@ class ReferralLine extends AbstractEntity implements ReferralLineInterface
     public function getInvitedName()
     {
         return $this->invitedName;
-    }
-
-    /**
-     * Sets InvitedCoupon
-     *
-     * @param CouponInterface $invitedCoupon InvitedCoupon
-     *
-     * @return ReferralLine Self object
-     */
-    public function setInvitedCoupon(CouponInterface $invitedCoupon = null)
-    {
-        $this->invitedCoupon = $invitedCoupon;
-
-        return $this;
-    }
-
-    /**
-     * Get InvitedCoupon
-     *
-     * @return CouponInterface InvitedCoupon
-     */
-    public function getInvitedCoupon()
-    {
-        return $this->invitedCoupon;
-    }
-
-    /**
-     * Sets InvitedType
-     *
-     * @param int $invitedType InvitedType
-     *
-     * @return ReferralLine Self object
-     */
-    public function setInvitedType($invitedType)
-    {
-        $this->invitedType = $invitedType;
-
-        return $this;
-    }
-
-    /**
-     * Get InvitedType
-     *
-     * @return int InvitedType
-     */
-    public function getInvitedType()
-    {
-        return $this->invitedType;
-    }
-
-    /**
-     * Sets ReferrerCoupon
-     *
-     * @param CouponInterface $referrerCoupon ReferrerCoupon
-     *
-     * @return ReferralLine Self object
-     */
-    public function setReferrerCoupon(CouponInterface $referrerCoupon = null)
-    {
-        $this->referrerCoupon = $referrerCoupon;
-
-        return $this;
-    }
-
-    /**
-     * Get ReferrerCoupon
-     *
-     * @return CouponInterface ReferrerCoupon
-     */
-    public function getReferrerCoupon()
-    {
-        return $this->referrerCoupon;
-    }
-
-    /**
-     * Sets ReferrerType
-     *
-     * @param int $referrerType ReferrerType
-     *
-     * @return ReferralLine Self object
-     */
-    public function setReferrerType($referrerType)
-    {
-        $this->referrerType = $referrerType;
-
-        return $this;
-    }
-
-    /**
-     * Get ReferrerType
-     *
-     * @return int ReferrerType
-     */
-    public function getReferrerType()
-    {
-        return $this->referrerType;
     }
 
     /**
