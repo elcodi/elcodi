@@ -14,15 +14,13 @@
 
 namespace Elcodi\ReferralProgramBundle\Entity\Traits;
 
-use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
-
 /**
  * Class CouponAssignmentTrait
  */
 trait CouponAssignmentTrait
 {
     /**
-     * @var CouponInterface
+     * @var \Elcodi\CouponBundle\Entity\Interfaces\CouponInterface
      *
      * referrerCoupon
      */
@@ -36,7 +34,7 @@ trait CouponAssignmentTrait
     protected $referrerType;
 
     /**
-     * @var CouponInterface
+     * @var \Elcodi\CouponBundle\Entity\Interfaces\CouponInterface
      *
      * invitedCoupon
      */
@@ -52,11 +50,11 @@ trait CouponAssignmentTrait
     /**
      * Sets InvitedCoupon
      *
-     * @param CouponInterface $invitedCoupon InvitedCoupon
+     * @param \Elcodi\CouponBundle\Entity\Interfaces\CouponInterface $invitedCoupon InvitedCoupon
      *
      * @return Object Self object
      */
-    public function setInvitedCoupon(CouponInterface $invitedCoupon = null)
+    public function setInvitedCoupon(\Elcodi\CouponBundle\Entity\Interfaces\CouponInterface $invitedCoupon = null)
     {
         $this->invitedCoupon = $invitedCoupon;
 
@@ -66,7 +64,7 @@ trait CouponAssignmentTrait
     /**
      * Get InvitedCoupon
      *
-     * @return CouponInterface InvitedCoupon
+     * @return \Elcodi\CouponBundle\Entity\Interfaces\CouponInterface InvitedCoupon
      */
     public function getInvitedCoupon()
     {
@@ -100,11 +98,11 @@ trait CouponAssignmentTrait
     /**
      * Sets ReferrerCoupon
      *
-     * @param CouponInterface $referrerCoupon ReferrerCoupon
+     * @param \Elcodi\CouponBundle\Entity\Interfaces\CouponInterface $referrerCoupon ReferrerCoupon
      *
      * @return Object Self object
      */
-    public function setReferrerCoupon(CouponInterface $referrerCoupon = null)
+    public function setReferrerCoupon(\Elcodi\CouponBundle\Entity\Interfaces\CouponInterface $referrerCoupon = null)
     {
         $this->referrerCoupon = $referrerCoupon;
 
@@ -114,7 +112,7 @@ trait CouponAssignmentTrait
     /**
      * Get ReferrerCoupon
      *
-     * @return CouponInterface ReferrerCoupon
+     * @return \Elcodi\CouponBundle\Entity\Interfaces\CouponInterface ReferrerCoupon
      */
     public function getReferrerCoupon()
     {
