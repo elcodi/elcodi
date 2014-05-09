@@ -332,7 +332,7 @@ class ReferralLine extends AbstractEntity implements ReferralLineInterface
      *
      * @param CouponInterface $invitedCoupon InvitedCoupon
      *
-     * @return ReferralRule Self object
+     * @return ReferralLine Self object
      */
     public function setInvitedCoupon(CouponInterface $invitedCoupon = null)
     {
@@ -356,7 +356,7 @@ class ReferralLine extends AbstractEntity implements ReferralLineInterface
      *
      * @param int $invitedType InvitedType
      *
-     * @return ReferralRule Self object
+     * @return ReferralLine Self object
      */
     public function setInvitedType($invitedType)
     {
@@ -380,7 +380,7 @@ class ReferralLine extends AbstractEntity implements ReferralLineInterface
      *
      * @param CouponInterface $referrerCoupon ReferrerCoupon
      *
-     * @return ReferralRule Self object
+     * @return ReferralLine Self object
      */
     public function setReferrerCoupon(CouponInterface $referrerCoupon = null)
     {
@@ -404,7 +404,7 @@ class ReferralLine extends AbstractEntity implements ReferralLineInterface
      *
      * @param int $referrerType ReferrerType
      *
-     * @return ReferralRule Self object
+     * @return ReferralLine Self object
      */
     public function setReferrerType($referrerType)
     {
