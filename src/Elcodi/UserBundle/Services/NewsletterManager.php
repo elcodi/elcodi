@@ -20,7 +20,6 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\ValidatorInterface;
 
-use Elcodi\CoreBundle\Entity\Language;
 use Elcodi\UserBundle\ElcodiUserEvents;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Elcodi\UserBundle\Entity\NewsletterSubscription;

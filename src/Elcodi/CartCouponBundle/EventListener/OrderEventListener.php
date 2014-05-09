@@ -20,7 +20,6 @@ use Elcodi\CartBundle\Event\OrderOnCreatedEvent;
 use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
 use Elcodi\CartCouponBundle\Factory\OrderCouponFactory;
 use Elcodi\CartCouponBundle\Services\CartCouponManager;
-use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 use Elcodi\CouponBundle\EventDispatcher\CouponEventDispatcher;
 
 /**
