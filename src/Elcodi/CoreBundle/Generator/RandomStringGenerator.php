@@ -56,8 +56,9 @@ class RandomStringGenerator implements GeneratorInterface
     public function generate()
     {
         $string = '';
+        $length = $this->getLength();
 
-        for ($i = 0; $i < $this->getLength(); $i++) {
+        for ($i = 0; $i < $length; $i++) {
 
             $string .= substr(
                 $this->getCharset(),
