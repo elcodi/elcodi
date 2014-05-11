@@ -14,5 +14,5 @@ services:
     elcodi.core.product.services.product_collection_provider:
         class: %elcodi.core.product.services.product_collection_provider.class%
         arguments:
-            product_repository: @=service("doctrine.orm.entity_manager").getRepository("ElcodiProductBundle:Product")
+            product_repository: @=service("doctrine.orm.entity_manager").getRepository(parameter("elcodi.core.product.entity.product.class"))
             locale: %locale%
