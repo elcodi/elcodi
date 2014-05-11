@@ -1,0 +1,48 @@
+{
+    "name": "elcodi/rule-bundle",
+    "description": "Elcodi Rule component",
+    "keywords": ["elcodi", "Rule", "ecommerce"],
+    "homepage": "https://github.com/elcodi/RuleBundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "Symfony Community",
+            "homepage": "https://github.com/elcodi/UserBundle/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "doctrine/common": "~2.4",
+        "doctrine/orm": "~2.4",
+        "symfony/config": "~2.4",
+        "symfony/expression-language": "~2.4",
+        "symfony/http-kernel": "~2.4",
+
+        "elcodi/core-bundle": "0.1.*@dev"
+    },
+    "require-dev": {
+        "doctrine/data-fixtures": "v1.0.0",
+        "phpunit/phpunit": ">=4.0.0",
+        "elcodi/elcodi": "0.1.*@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\RuleBundle\\": ""
+        }
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    }
+}

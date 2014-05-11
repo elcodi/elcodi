@@ -1,0 +1,14 @@
+services:
+
+    #
+    # factories
+    #
+    elcodi.core.rule.factory.rule:
+        class: %elcodi.core.rule.factory.rule.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.rule.entity.rule.class%"]]
+
+    elcodi.core.rule.factory.rule_group:
+        class: %elcodi.core.rule.factory.rule_group.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.rule.entity.rule_group.class%"]]

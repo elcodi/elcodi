@@ -1,0 +1,23 @@
+parameters:
+
+    #
+    # Entities
+    #
+    elcodi.core.rule.entity.rule.class: Elcodi\RuleBundle\Entity\Rule
+    elcodi.core.rule.entity.rule_group.class: Elcodi\RuleBundle\Entity\RuleGroup
+
+    #
+    # Factories
+    #
+    elcodi.core.rule.factory.rule.class: Elcodi\RuleBundle\Factory\RuleFactory
+    elcodi.core.rule.factory.rule_group.class: Elcodi\RuleBundle\Factory\RuleGroupFactory
+
+    #
+    # Managers
+    #
+    elcodi.core.rule.services.rule_manager.class: Elcodi\RuleBundle\Services\RuleManager
+
+    #
+    # External
+    #
+    elcodi.core.rule.services.expression_language.class: Symfony\Component\ExpressionLanguage\ExpressionLanguage

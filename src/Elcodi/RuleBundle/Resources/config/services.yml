@@ -1,0 +1,17 @@
+services:
+
+    #
+    # Managers
+    #
+    elcodi.core.rule.services.rule_manager:
+        class: %elcodi.core.rule.services.rule_manager.class%
+        arguments:
+            expression_language: @elcodi.core.rule.services.expression_language
+            rule_repository: @=service("doctrine.orm.entity_manager").getRepository(parameter("elcodi.core.rule.entity.rule.class"))
+            rule_group_repository: @=service("doctrine.orm.entity_manager").getRepository(parameter("elcodi.core.rule.entity.rule_group.class"))
+
+    #
+    # External
+    #
+    elcodi.core.rule.services.expression_language:
+        class: %elcodi.core.rule.services.expression_language.class%
