@@ -20,12 +20,17 @@ use Symfony\Component\Config\Loader\LoaderInterface;
  */
 class AppKernel extends Kernel
 {
+    /**
+     * Register application bundles
+     *
+     * @return array Array of bundles instances
+     */
     public function registerBundles()
     {
         $bundles = array(
 
             /**
-             * Symfony dependencies
+             * Symfony bundles
              */
             new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new \Symfony\Bundle\SecurityBundle\SecurityBundle(),
@@ -34,12 +39,15 @@ class AppKernel extends Kernel
             new \Symfony\Bundle\AsseticBundle\AsseticBundle(),
 
             /**
-             * Third-party depdendencies
+             * Doctrine bundles
              */
             new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new \Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
-            new \Elnur\BlowfishPasswordEncoderBundle\ElnurBlowfishPasswordEncoderBundle(),
+
+            /**
+             * Storage bundles
+             */
             new \Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
 
             /**
@@ -62,6 +70,11 @@ class AppKernel extends Kernel
         return $bundles;
     }
 
+    /**
+     * Register container configuration
+     *
+     * @param LoaderInterface $loader Loader
+     */
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load(__DIR__ . '/config/config.yml');

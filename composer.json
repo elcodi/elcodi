@@ -7,18 +7,19 @@
     "authors": [
         {
             "name": "Aldo Chiecchia",
-            "email": "aldo.chiecchia@befactory.es",
-            "role": "CTO"
+            "email": "aldo.chiecchia@befactory.es"
         },
         {
             "name": "Marc Morera",
-            "email": "marc.morera@befactory.es",
-            "homepage": "http://mmoreram.com/",
-            "role": "Web Architect"
+            "email": "marc.morera@befactory.es"
+        },
+        {
+            "name": "Symfony Community",
+            "homepage": "https://github.com/elcodi/elcodi/contributors"
         }
     ],
     "require": {
-        "php": ">=5.3.3",
+        "php": ">=5.4",
         "symfony/symfony": "~2.4",
         "doctrine/orm": "~2.2,>=2.2.3",
         "doctrine/doctrine-bundle": "~1.2",
@@ -28,9 +29,8 @@
         "symfony/monolog-bundle": "~2.4",
         "sensio/distribution-bundle": "~2.3",
         "doctrine/doctrine-cache-bundle": "~1.0",
-        "symfony/yaml": ">=2.4.1",
+        "symfony/yaml": "~2.4",
         "doctrine/doctrine-fixtures-bundle": "v2.2.0",
-        "elnur/blowfish-password-encoder-bundle": "0.5.0",
         "symfony/expression-language": "~2.4",
         "knplabs/knp-gaufrette-bundle": "~0.1"
     },

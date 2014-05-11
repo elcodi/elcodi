@@ -26,6 +26,8 @@
         "symfony/config": "~2.4",
         "symfony/event-dispatcher": "~2.4",
         "symfony/dependency-injection": "~2.4",
+        "symfony/expression-language": "~2.4",
+        "symfony/http-kernel": "~2.4",
 
         "elcodi/core-bundle": "0.1.*@dev",
         "elcodi/user-bundle": "0.1.*@dev",

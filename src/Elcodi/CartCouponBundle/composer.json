@@ -24,6 +24,8 @@
         "doctrine/common": "~2.4",
         "doctrine/orm": "~2.4",
         "symfony/event-dispatcher": "~2.4",
+        "symfony/http-kernel": "~2.4",
+        "symfony/expression-language": "~2.4",
 
         "elcodi/core-bundle": "0.1.*@dev",
         "elcodi/cart-bundle": "0.1.*@dev",
