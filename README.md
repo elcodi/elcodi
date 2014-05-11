@@ -5,6 +5,7 @@ Elcodi for Symfony2
 [![Total Downloads](https://poser.pugx.org/elcodi/elcodi/downloads.png)](https://packagist.org/packages/elcodi/elcodi)
 [![Latest Unstable Version](https://poser.pugx.org/elcodi/elcodi/v/unstable.png)](https://packagist.org/packages/elcodi/elcodi)
 [![License](https://poser.pugx.org/elcodi/elcodi/license.png)](https://packagist.org/packages/elcodi/elcodi)
+[![Powered By Elcodi](http://elcodi.io/static/elcodi.badge.png)](http://github.com/elcodi)
 
 Elcodi components for symfony2
 
