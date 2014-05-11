@@ -30,7 +30,7 @@ class AddressFactory extends AbstractFactory
      *
      * This method must return always an empty instance
      *
-     * @return Customer Empty entity
+     * @return Address Empty entity
      */
     public function create()
     {

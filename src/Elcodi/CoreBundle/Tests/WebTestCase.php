@@ -63,6 +63,13 @@ abstract class WebTestCase extends BaseWebTestCase
     protected $container;
 
     /**
+     * @var boolean
+     *
+     * Deployment quietness
+     */
+    protected $quiet = false;
+
+    /**
      * Set up
      */
     public function setUp()
@@ -182,7 +189,13 @@ abstract class WebTestCase extends BaseWebTestCase
 
             return $this;
         }
-        static::$application->run(new ArrayInput(array('command' => 'doctrine:database:drop', '--no-interaction' => true, '--force' => true, '--quiet' => true)));
+
+        static::$application->run(new ArrayInput(array(
+            'command' => 'doctrine:database:drop',
+            '--no-interaction' => true,
+            '--force' => true,
+            '--quiet' => true,
+        )));
 
         $connection = self::$application
             ->getKernel()
@@ -194,8 +207,17 @@ abstract class WebTestCase extends BaseWebTestCase
             $connection->close();
         }
 
-        static::$application->run(new ArrayInput(array('command' => 'doctrine:database:create', '--no-interaction' => true, '--quiet' => true)));
-        static::$application->run(new ArrayInput(array('command' => 'doctrine:schema:create', '--no-interaction' => true, '--quiet' => true)));
+        static::$application->run(new ArrayInput(array(
+            'command' => 'doctrine:database:create',
+            '--no-interaction' => true,
+            '--quiet' => true,
+        )));
+
+        static::$application->run(new ArrayInput(array(
+            'command' => 'doctrine:schema:create',
+            '--no-interaction' => true,
+            '--quiet' => true,
+        )));
 
         $this->loadFixtures();
 
@@ -221,7 +243,11 @@ abstract class WebTestCase extends BaseWebTestCase
             return $this;
         }
 
-        self::$application->run(new ArrayInput(array('command' => 'doctrine:fixtures:load', '--no-interaction' => true, '--quiet' => false)));
+        self::$application->run(new ArrayInput(array(
+            'command' => 'doctrine:fixtures:load',
+            '--no-interaction' => true,
+            '--quiet' => true
+        )));
 
         return $this;
     }
