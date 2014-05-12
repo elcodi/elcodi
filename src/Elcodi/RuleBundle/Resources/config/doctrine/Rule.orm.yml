@@ -1,0 +1,37 @@
+Elcodi\RuleBundle\Entity\Rule:
+    type: entity
+    repositoryClass: Elcodi\RuleBundle\Repository\RuleRepository
+    table: rule
+    inheritanceType:
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        code:
+            column: code
+            type: string
+            length: 255
+            nullable: false
+            unique: true
+        expression:
+            column: expression
+            type: text
+            nullable: false
+        enabled:
+            column: enabled
+            type: boolean
+            nullable: false
+
+    manyToMany:
+        ruleGroups:
+            targetEntity: Elcodi\RuleBundle\Entity\Interfaces\RuleGroupInterface
+            joinTable:
+                name: rule_rule_groups
+                joinColumns:
+                    rule_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    rule_group_id:
+                        referencedColumnName: id
