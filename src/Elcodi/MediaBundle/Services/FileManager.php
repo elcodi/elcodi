@@ -84,20 +84,24 @@ class FileManager
     /**
      * Retrieves File data from filesystem
      *
-     * @param FileInterface $file
+     * @param FileInterface $file File to download
      *
-     * @return string File data
+     * @return FileInterface File downloaded
      *
      * @api
      */
     public function downloadFile(FileInterface $file)
     {
-        return $this
+        $content = $this
             ->filesystem
             ->read($this
                 ->fileTransformer
                 ->transform($file)
             );
+
+        $file->setContent($content);
+
+        return $file;
     }
 }
  

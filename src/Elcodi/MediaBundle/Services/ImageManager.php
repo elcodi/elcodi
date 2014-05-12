@@ -138,7 +138,10 @@ class ImageManager
             return $image;
         }
 
-        $imageData = $this->fileManager->downloadFile($image);
+        $imageData = $this
+            ->fileManager
+            ->downloadFile($image)
+            ->getContent();
 
         $resizedImageData = $this
             ->resizeAdapter

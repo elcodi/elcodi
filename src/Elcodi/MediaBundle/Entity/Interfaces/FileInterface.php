@@ -98,4 +98,20 @@ interface FileInterface extends MediaInterface
      * @return integer Size
      */
     public function getSize();
+
+    /**
+     * Set the content
+     *
+     * @param string $content Content
+     *
+     * @return FileInterface self Object
+     */
+    public function setContent($content);
+
+    /**
+     * Get the content
+     *
+     * @return string Content
+     */
+    public function getContent();
 }

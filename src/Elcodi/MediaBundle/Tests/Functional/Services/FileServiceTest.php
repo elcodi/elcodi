@@ -53,12 +53,12 @@ class FileServiceTest extends WebTestCase
             ->has($imageName)
         );
 
-        $downloadedData = $this
+        $image = $this
             ->container
             ->get('elcodi.core.media.services.file_manager')
             ->downloadFile($image);
 
-        $this->assertEquals($imageData, $downloadedData);
+        $this->assertEquals($imageData, $image->getContent());
 
         $this
             ->container

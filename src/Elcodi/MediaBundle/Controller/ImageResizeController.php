@@ -150,7 +150,7 @@ class ImageResizeController extends Controller
         }
 
         $image = $this->imageManager->resize($image, $height, $width, $type);
-        $imageData = $this->fileManager->downloadFile($image);
+        $imageData = $image->getContent();
 
         $response->setStatusCode(200);
         $response->setMaxAge($this->maxSize);

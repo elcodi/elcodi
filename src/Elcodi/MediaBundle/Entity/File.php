@@ -51,6 +51,13 @@ class File extends Media implements FileInterface
     protected $size;
 
     /**
+     * @var string
+     *
+     * Content
+     */
+    protected $content;
+
+    /**
      * Set path
      *
      * @param string $path Path to file
@@ -144,5 +151,29 @@ class File extends Media implements FileInterface
     public function getSize()
     {
         return $this->size;
+    }
+
+    /**
+     * Set the content
+     *
+     * @param string $content Content
+     *
+     * @return File self Object
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get the content
+     *
+     * @return string Content
+     */
+    public function getContent()
+    {
+        return $this->content;
     }
 }
