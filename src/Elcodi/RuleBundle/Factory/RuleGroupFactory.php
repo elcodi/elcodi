@@ -11,7 +11,7 @@
  * @author ##author_placeholder
  * @version ##version_placeholder##
  */
- 
+
 namespace Elcodi\RuleBundle\Factory;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -44,4 +44,3 @@ class RuleGroupFactory extends AbstractFactory
         return $ruleGroup;
     }
 }
- 

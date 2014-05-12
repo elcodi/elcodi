@@ -12,3 +12,8 @@ services:
         class: %elcodi.core.rule.factory.rule_group.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.rule.entity.rule_group.class%"]]
+
+    elcodi.core.rule.factory.expression:
+        class: %elcodi.core.rule.factory.expression.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.rule.entity.expression.class%"]]

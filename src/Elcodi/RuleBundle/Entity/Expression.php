@@ -14,19 +14,16 @@
 
 namespace Elcodi\RuleBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
-use Elcodi\RuleBundle\Entity\Abstracts\AbstractRule;
+use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\RuleBundle\Entity\Interfaces\ExpressionInterface;
-use Elcodi\RuleBundle\Entity\Interfaces\RuleInterface;
 
 /**
- * Class Rule
+ * Class Expression
  */
-class Rule extends AbstractRule implements RuleInterface
+class Expression extends AbstractEntity implements ExpressionInterface
 {
     /**
-     * @var ExpressionInterface
+     * @var string
      *
      * Expression
      */
@@ -35,7 +32,7 @@ class Rule extends AbstractRule implements RuleInterface
     /**
      * Sets Expression
      *
-     * @param ExpressionInterface $expression Expression
+     * @param string $expression Expression
      *
      * @return Rule Self object
      */
@@ -49,20 +46,10 @@ class Rule extends AbstractRule implements RuleInterface
     /**
      * Get Expression
      *
-     * @return ExpressionInterface Expression
+     * @return string Expression
      */
     public function getExpression()
     {
         return $this->expression;
-    }
-
-    /**
-     * Return all object contained expressions
-     *
-     * @return ArrayCollection Collection of expressions
-     */
-    public function getExpressionCollection()
-    {
-        return new ArrayCollection(array($this->getExpression()));
     }
 }

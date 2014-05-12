@@ -11,50 +11,16 @@
  * @author ##author_placeholder
  * @version ##version_placeholder##
  */
- 
+
 namespace Elcodi\RuleBundle\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
-
 /**
  * Class RuleGroupInterface
  */
-interface RuleGroupInterface extends EnabledInterface
+interface RuleGroupInterface extends AbstractRuleInterface
 {
-    /**
-     * Sets Name
-     *
-     * @param string $name Name
-     *
-     * @return RuleGroupInterface Self object
-     */
-    public function setName($name);
-
-    /**
-     * Get Name
-     *
-     * @return string Name
-     */
-    public function getName();
-
-    /**
-     * Sets Code
-     *
-     * @param string $code Code
-     *
-     * @return RuleGroupInterface Self object
-     */
-    public function setCode($code);
-
-    /**
-     * Get Code
-     *
-     * @return string Code
-     */
-    public function getCode();
-
     /**
      * Sets Rules
      *
@@ -74,19 +40,18 @@ interface RuleGroupInterface extends EnabledInterface
     /**
      * Add rule
      *
-     * @param RuleInterface $rule Rule
+     * @param AbstractRuleInterface $rule Rule
      *
      * @return RuleGroupInterface self Object
      */
-    public function addRule(RuleInterface $rule);
+    public function addRule(AbstractRuleInterface $rule);
 
     /**
      * Remove rule
      *
-     * @param RuleInterface $rule Rule
+     * @param AbstractRuleInterface $rule Rule
      *
      * @return RuleGroupInterface self Object
      */
-    public function removeRule(RuleInterface $rule);
+    public function removeRule(AbstractRuleInterface $rule);
 }
- 

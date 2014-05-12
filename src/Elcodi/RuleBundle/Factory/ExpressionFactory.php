@@ -15,29 +15,28 @@
 namespace Elcodi\RuleBundle\Factory;
 
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
-use Elcodi\RuleBundle\Entity\Rule;
+use Elcodi\RuleBundle\Entity\Expression;
 
 /**
- * Class RuleFactory
+ * Class ExpressionFactory
  */
-class RuleFactory extends AbstractFactory
+class ExpressionFactory extends AbstractFactory
 {
     /**
      * Creates an instance of an entity.
      *
      * This method must return always an empty instance
      *
-     * @return Rule Empty entity
+     * @return Expression Empty entity
      */
     public function create()
     {
         /**
-         * @var Rule $rule
+         * @var Expression $expression
          */
         $classNamespace = $this->getEntityNamespace();
-        $rule = new $classNamespace();
-        $rule->setEnabled(true);
+        $expression = new $classNamespace();
 
-        return $rule;
+        return $expression;
     }
 }

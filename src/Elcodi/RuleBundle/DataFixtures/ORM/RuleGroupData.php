@@ -11,7 +11,7 @@
  * @author ##author_placeholder
  * @version ##version_placeholder##
  */
- 
+
 namespace Elcodi\RuleBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
@@ -19,6 +19,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\RuleBundle\Entity\Interfaces\RuleGroupInterface;
+use Elcodi\RuleBundle\Entity\Interfaces\RuleInterface;
 use Elcodi\RuleBundle\Factory\RuleGroupFactory;
 
 /**
@@ -32,22 +33,31 @@ class RuleGroupData extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
         /**
-         * @var RuleGroupFactory $ruleGroupFactory
+         * @var RuleGroupFactory   $ruleGroupFactory
          * @var RuleGroupInterface $ruleGroup
+         * @var RuleInterface      $ruleTrue
+         * @var RuleInterface      $ruleFalse
          */
         $ruleGroupFactory = $this->container->get('elcodi.core.rule.factory.rule_group');
+        $ruleTrue = $this->getReference('rule-true');
+        $ruleFalse = $this->getReference('rule-false');
         $ruleGroupTrue = $ruleGroupFactory->create();
         $ruleGroupTrue
+            ->addRule($ruleTrue)
             ->setName('RuleGroupTrue')
-            ->setCode('rule-group-true');
+            ->setCode('rule-group-true')
+            ->setEnabled(true);
 
         $manager->persist($ruleGroupTrue);
         $this->addReference('rule-group-true', $ruleGroupTrue);
 
         $ruleGroupFalse = $ruleGroupFactory->create();
         $ruleGroupFalse
+            ->addRule($ruleTrue)
+            ->addRule($ruleFalse)
             ->setName('RuleGroupFalse')
-            ->setCode('rule-group-false');
+            ->setCode('rule-group-false')
+            ->setEnabled(true);
 
         $manager->persist($ruleGroupFalse);
         $this->addReference('rule-group-false', $ruleGroupFalse);
@@ -62,7 +72,6 @@ class RuleGroupData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 1;
+        return 3;
     }
 }
- 

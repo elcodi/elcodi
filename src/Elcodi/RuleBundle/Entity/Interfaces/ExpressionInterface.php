@@ -15,23 +15,23 @@
 namespace Elcodi\RuleBundle\Entity\Interfaces;
 
 /**
- * Class RuleInterface
+ * Class ExpressionInterface
  */
-interface RuleInterface extends AbstractRuleInterface
+interface ExpressionInterface
 {
     /**
      * Sets Expression
      *
      * @param string $expression Expression
      *
-     * @return RuleInterface Self object
+     * @return ExpressionInterface Self object
      */
     public function setExpression($expression);
 
     /**
      * Get Expression
      *
-     * @return ExpressionInterface Expression
+     * @return string Expression
      */
     public function getExpression();
 }

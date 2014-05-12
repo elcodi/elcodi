@@ -11,7 +11,7 @@
  * @author ##author_placeholder
  * @version ##version_placeholder##
  */
- 
+
 namespace Elcodi\RuleBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -33,4 +33,3 @@ class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 }
- 

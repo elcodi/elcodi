@@ -1,0 +1,27 @@
+services:
+
+    elcodi.core.rule.configuration.expression_language_collection:
+        class: %elcodi.core.rule.configuration.expression_language_collection.class%
+
+    elcodi.core.rule.configuration.context_collection:
+        class: %elcodi.core.rule.configuration.context_collection.class%
+
+    elcodi.core.rule.configuration.expression_language:
+        class: %elcodi.core.rule.configuration.expression_language.class%
+        arguments:
+            service_container: @service_container
+        tags:
+            - { name: elcodi.rule_expression_language_configuration }
+
+    elcodi.core.rule.configuration.context:
+        class: %elcodi.core.rule.configuration.context.class%
+        arguments:
+            entity_manager: @doctrine.orm.entity_manager
+        tags:
+            - { name: elcodi.rule_context_configuration }
+
+    elcodi.core.rule.configuration.rule_manager:
+        class: %elcodi.core.rule.configuration.rule_manager.class%
+        arguments:
+            context_collection: @elcodi.core.rule.configuration.context_collection
+            expression_language_collection: @elcodi.core.rule.configuration.expression_language_collection

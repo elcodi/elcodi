@@ -11,7 +11,7 @@
  * @author ##author_placeholder
  * @version ##version_placeholder##
  */
- 
+
 namespace Elcodi\RuleBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -62,9 +62,9 @@ class ElcodiRuleExtension extends AbstractExtension implements EntitiesOverridab
             'classes',
             'services',
             'factories',
+            'configurations',
         ];
     }
-
 
     /**
      * @return array
@@ -74,7 +74,7 @@ class ElcodiRuleExtension extends AbstractExtension implements EntitiesOverridab
         return [
             'Elcodi\RuleBundle\Entity\Interfaces\RuleInterface' => 'elcodi.core.rule.entity.rule.class',
             'Elcodi\RuleBundle\Entity\Interfaces\RuleGroupInterface' => 'elcodi.core.rule.entity.rule_group.class',
+            'Elcodi\RuleBundle\Entity\Interfaces\ExpressionInterface' => 'elcodi.core.rule.entity.expression.class',
         ];
     }
 }
- 

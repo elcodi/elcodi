@@ -11,91 +11,27 @@
  * @author ##author_placeholder
  * @version ##version_placeholder##
  */
- 
+
 namespace Elcodi\RuleBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
-use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
+use Elcodi\RuleBundle\Entity\Abstracts\AbstractRule;
+use Elcodi\RuleBundle\Entity\Interfaces\AbstractRuleInterface;
 use Elcodi\RuleBundle\Entity\Interfaces\RuleGroupInterface;
-use Elcodi\RuleBundle\Entity\Interfaces\RuleInterface;
 
 /**
  * Class RuleGroup
  */
-class RuleGroup extends AbstractEntity implements RuleGroupInterface
+class RuleGroup extends AbstractRule implements RuleGroupInterface
 {
-    use EnabledTrait;
-
-    /**
-     * @var string
-     *
-     * Rule Group name
-     */
-    protected $name;
-
-    /**
-     * @var string
-     *
-     * Rule Group code
-     */
-    protected $code;
-
     /**
      * @var Collection
      *
      * Rules
      */
     protected $rules;
-
-    /**
-     * Sets Name
-     *
-     * @param string $name Name
-     *
-     * @return RuleGroup Self object
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get Name
-     *
-     * @return string Name
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Sets Code
-     *
-     * @param string $code Code
-     *
-     * @return RuleGroup Self object
-     */
-    public function setCode($code)
-    {
-        $this->code = $code;
-
-        return $this;
-    }
-
-    /**
-     * Get Code
-     *
-     * @return string Code
-     */
-    public function getCode()
-    {
-        return $this->code;
-    }
 
     /**
      * Sets Rules
@@ -124,11 +60,11 @@ class RuleGroup extends AbstractEntity implements RuleGroupInterface
     /**
      * Add rule
      *
-     * @param RuleInterface $rule Rule
+     * @param AbstractRuleInterface $rule Rule
      *
      * @return RuleGroup self Object
      */
-    public function addRule(RuleInterface $rule)
+    public function addRule(AbstractRuleInterface $rule)
     {
         $this->rules->add($rule);
 
@@ -138,15 +74,37 @@ class RuleGroup extends AbstractEntity implements RuleGroupInterface
     /**
      * Remove rule
      *
-     * @param RuleInterface $rule Rule
+     * @param AbstractRuleInterface $rule Rule
      *
      * @return RuleGroup self Object
      */
-    public function removeRule(RuleInterface $rule)
+    public function removeRule(AbstractRuleInterface $rule)
     {
         $this->rules->removeElement($rule);
 
         return $this;
     }
+
+    /**
+     * Return all object contained expressions
+     *
+     * @return ArrayCollection Collection of expressions
+     */
+    public function getExpressionCollection()
+    {
+        $expressions = array();
+
+        /**
+         * @var AbstractRuleInterface $rule
+         */
+        foreach ($this->getRules() as $rule) {
+
+            $expressions = array_merge(
+                $expressions,
+                $rule->getExpressionCollection()->toArray()
+            );
+        }
+
+        return new ArrayCollection($expressions);
+    }
 }
- 

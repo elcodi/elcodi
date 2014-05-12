@@ -11,21 +11,21 @@
  * @author ##author_placeholder
  * @version ##version_placeholder##
  */
- 
+
 namespace Elcodi\RuleBundle\Services;
 
-use Doctrine\Common\Collections\Collection;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
-use Elcodi\RuleBundle\Entity\Interfaces\RuleGroupInterface;
-use Elcodi\RuleBundle\Entity\Interfaces\RuleInterface;
-use Elcodi\RuleBundle\Repository\RuleGroupRepository;
-use Elcodi\RuleBundle\Repository\RuleRepository;
+use Elcodi\RuleBundle\Entity\Interfaces\AbstractRuleInterface;
+use Elcodi\RuleBundle\Entity\Interfaces\ExpressionInterface;
+use Elcodi\RuleBundle\Repository\AbstractRuleRepository;
+use Elcodi\RuleBundle\Services\Interfaces\ContextAwareInterface;
+use Elcodi\RuleBundle\Services\Interfaces\ExpressionLanguageAwareInterface;
 
 /**
  * Class RuleManager
  */
-class RuleManager
+class RuleManager implements ContextAwareInterface, ExpressionLanguageAwareInterface
 {
     /**
      * @var ExpressionLanguage
@@ -35,143 +35,115 @@ class RuleManager
     protected $expressionLanguage;
 
     /**
-     * @var RuleRepository
+     * @var AbstractRuleRepository
      *
-     * Rule Repository
+     * Abstract Rule Repository
      */
-    protected $ruleRepository;
+    protected $abstractRuleRepository;
 
     /**
-     * @var RuleGroupRepository
+     * @var array
      *
-     * Rule Group Repository
+     * Context
      */
-    protected $ruleGroupRepository;
+    protected $context;
 
     /**
      * Construct method
      *
-     * @param ExpressionLanguage  $expressionLanguage  Expression language
-     * @param RuleRepository      $ruleRepository      Rule Repository
-     * @param RuleGroupRepository $ruleGroupRepository RuleGroup Repository
+     * @param ExpressionLanguage     $expressionLanguage     Expression language
+     * @param AbstractRuleRepository $abstractRuleRepository Rule Repository
      */
     public function __construct(
         ExpressionLanguage $expressionLanguage,
-        RuleRepository $ruleRepository,
-        RuleGroupRepository $ruleGroupRepository
+        AbstractRuleRepository $abstractRuleRepository
     )
     {
         $this->expressionLanguage = $expressionLanguage;
-        $this->ruleRepository = $ruleRepository;
-        $this->ruleGroupRepository = $ruleGroupRepository;
+        $this->abstractRuleRepository = $abstractRuleRepository;
+        $this->context = array();
+    }
+
+    /**
+     * Add context element
+     *
+     * @param Mixed $contextElement Context element
+     *
+     * @return RuleManager self Object
+     */
+    public function addContextElement($contextElement)
+    {
+        $this->context[] = $contextElement;
+
+        return $this;
+    }
+
+    /**
+     * Get expression language instance
+     *
+     * @return ExpressionLanguage Expression language instance
+     */
+    public function getExpressionLanguage()
+    {
+        return $this->expressionLanguage;
     }
 
     /**
      * Evaluate all rules from a RuleGroup, given its code
      *
-     * @param string $groupCode Group code
-     * @param array $context Context
+     * @param string $code    Rule code
+     * @param array  $context Context
      *
      * @return bool Result of evaluation
      *
      * @api
      */
-    public function evaluateGroupCode($groupCode, array $context = array())
-    {
-        $ruleGroup = $this
-            ->ruleGroupRepository
-            ->findOneBy(array(
-                'code' => $groupCode,
-            ));
-
-        if (!($ruleGroup instanceof RuleGroupInterface)) {
-
-            return false;
-        }
-
-        /**
-         * @var RuleGroupInterface $ruleGroup
-         */
-        return $this->evaluateGroup($ruleGroup, $context);
-    }
-
-    /**
-     * Evaluate all rules from a RuleGroup
-     *
-     * @param RuleGroupInterface $ruleGroup RuleGroup instance
-     * @param array $context Context
-     *
-     * @return bool Result of evaluation
-     *
-     * @api
-     */
-    public function evaluateGroup(RuleGroupInterface $ruleGroup, array $context = array())
-    {
-        return $this->evaluateRules($ruleGroup->getRules(), $context);
-    }
-
-    /**
-     * Evaluate a collection of Rules
-     *
-     * @param Collection $rules Collection of rules
-     * @param array $context Context
-     *
-     * @return bool Result of evaluation
-     *
-     * @api
-     */
-    public function evaluateRules(Collection $rules, array $context = array())
-    {
-        return $rules->forAll(function($_, RuleInterface $rule) use ($context){
-
-            return $this->evaluateRule($rule, $context);
-        });
-    }
-
-    /**
-     * Evaluate a single Rule given its code
-     *
-     * @param string $ruleCode Rule code to evaluate
-     * @param array $context Context
-     *
-     * @return bool Result of evaluation
-     *
-     * @api
-     */
-    public function evaluateRuleCode($ruleCode, array $context = array())
+    public function evaluateByCode($code, array $context = array())
     {
         $rule = $this
-            ->ruleRepository
+            ->abstractRuleRepository
             ->findOneBy(array(
-                'code' => $ruleCode,
+                'code' => $code,
             ));
 
-        if (!($rule instanceof RuleInterface)) {
-
+        if (!($rule instanceof AbstractRuleInterface)) {
             return false;
         }
 
-        /**
-         * @var RuleInterface $rule
-         */
-        return $this->evaluateRule($rule, $context);
+        return $this->evaluateByRule($rule, $context);
     }
 
     /**
-     * Evaluate a single Rule
+     * Evaluates a rule
      *
-     * @param RuleInterface $rule Rule to evaluate
-     * @param array $context Context
+     * @param AbstractRuleInterface $rule    Rule
+     * @param array                 $context Context
+     *
+     * @return boolean Rule evaluation
+     */
+    public function evaluateByRule(AbstractRuleInterface $rule, array $context = array())
+    {
+        return $rule
+            ->getExpressionCollection()
+            ->forAll(function ($_, ExpressionInterface $expression) use ($context) {
+                return $this->evaluateExpression($expression, $context);
+            });
+    }
+
+    /**
+     * Evaluates an Expression object
+     *
+     * @param ExpressionInterface $expression Expression to evaluate
+     * @param array               $context    Context
      *
      * @return boolean Result of evaluation
-     *
-     * @api
      */
-    public function evaluateRule(RuleInterface $rule, array $context = array())
+    protected function evaluateExpression(ExpressionInterface $expression, array $context = array())
     {
+        $contextMerged = array_merge($this->context, $context);
+
         return (boolean) $this
             ->expressionLanguage
-            ->evaluate($rule->getExpression(), $context);
+            ->evaluate($expression->getExpression(), $contextMerged);
     }
 }
- 

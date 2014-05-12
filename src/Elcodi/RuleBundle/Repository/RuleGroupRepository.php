@@ -11,7 +11,7 @@
  * @author ##author_placeholder
  * @version ##version_placeholder##
  */
- 
+
 namespace Elcodi\RuleBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
@@ -23,4 +23,3 @@ class RuleGroupRepository extends EntityRepository
 {
 
 }
- 

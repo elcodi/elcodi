@@ -1,8 +1,13 @@
-Elcodi\RuleBundle\Entity\RuleGroup:
+Elcodi\RuleBundle\Entity\Abstracts\AbstractRule:
     type: entity
-    repositoryClass: Elcodi\RuleBundle\Repository\RuleGroupRepository
-    table: rule_group
-    inheritanceType:
+    repositoryClass: Elcodi\RuleBundle\Repository\AbstractRuleRepository
+    inheritanceType: single_table
+    discriminatorColumn:
+        name: discr
+        type: string
+    discriminatorMap:
+        rule: Elcodi\RuleBundle\Entity\Rule
+        rule_group: Elcodi\RuleBundle\Entity\RuleGroup
     fields:
         name:
             column: name
@@ -19,7 +24,3 @@ Elcodi\RuleBundle\Entity\RuleGroup:
             column: enabled
             type: boolean
             nullable: false
-
-    manyToMany:
-        rules:
-            targetEntity: Elcodi\RuleBundle\Entity\Interfaces\RuleInterface

@@ -1,16 +1,24 @@
 parameters:
 
     #
+    # Test
+    #
+    elcodi.core.rule.test.parameter: value
+
+    #
     # Entities
     #
+    elcodi.core.rule.entity.abstract_rule.class: Elcodi\RuleBundle\Entity\Abstracts\AbstractRule
     elcodi.core.rule.entity.rule.class: Elcodi\RuleBundle\Entity\Rule
     elcodi.core.rule.entity.rule_group.class: Elcodi\RuleBundle\Entity\RuleGroup
+    elcodi.core.rule.entity.expression.class: Elcodi\RuleBundle\Entity\Expression
 
     #
     # Factories
     #
     elcodi.core.rule.factory.rule.class: Elcodi\RuleBundle\Factory\RuleFactory
     elcodi.core.rule.factory.rule_group.class: Elcodi\RuleBundle\Factory\RuleGroupFactory
+    elcodi.core.rule.factory.expression.class: Elcodi\RuleBundle\Factory\ExpressionFactory
 
     #
     # Managers
@@ -21,3 +29,12 @@ parameters:
     # External
     #
     elcodi.core.rule.services.expression_language.class: Symfony\Component\ExpressionLanguage\ExpressionLanguage
+
+    #
+    # Configurations
+    #
+    elcodi.core.rule.configuration.expression_language_collection.class: Elcodi\RuleBundle\Configuration\ExpressionLanguageConfigurationCollection
+    elcodi.core.rule.configuration.context_collection.class: Elcodi\RuleBundle\Configuration\ContextConfigurationCollection
+    elcodi.core.rule.configuration.expression_language.class: Elcodi\RuleBundle\Configuration\ExpressionLanguageConfiguration
+    elcodi.core.rule.configuration.context.class: Elcodi\RuleBundle\Configuration\ContextConfiguration
+    elcodi.core.rule.configuration.rule_manager.class: Elcodi\RuleBundle\Configuration\RuleManagerConfiguration

@@ -11,11 +11,11 @@
  * @author ##author_placeholder
  * @version ##version_placeholder##
  */
- 
+
 namespace Elcodi\RuleBundle\Tests\Functional;
 
 use Elcodi\CoreBundle\Tests\WebTestCase;
-use Elcodi\RuleBundle\Entity\Interfaces\RuleGroupInterface;
+use Elcodi\RuleBundle\Entity\Interfaces\AbstractRuleInterface;
 use Elcodi\RuleBundle\Entity\Interfaces\RuleInterface;
 use Elcodi\RuleBundle\Services\RuleManager;
 
@@ -84,29 +84,51 @@ class RuleManagerTest extends WebTestCase
     {
         $ruleTrue = $this
             ->manager
-            ->getRepository('ElcodiRuleBundle:Rule')
+            ->getRepository('Elcodi\RuleBundle\Entity\Abstracts\AbstractRule')
             ->findOneBy(array(
-                'code' => 'rule-true'
+                'code' => 'rule-group-true'
             ));
 
-        $this->assertTrue($this->ruleManager->evaluateRule($ruleTrue));
+        $this->assertTrue($this->ruleManager->evaluateByRule($ruleTrue));
     }
 
     /**
      * Evaluate rule false
      *
-     * @var RuleInterface $ruleGroupFalse
+     * @var RuleInterface $ruleFalse
      */
     public function testEvaluateRuleFalse()
     {
         $ruleFalse = $this
             ->manager
-            ->getRepository('ElcodiRuleBundle:Rule')
+            ->getRepository('Elcodi\RuleBundle\Entity\Abstracts\AbstractRule')
             ->findOneBy(array(
                 'code' => 'rule-false'
             ));
 
-        $this->assertFalse($this->ruleManager->evaluateRule($ruleFalse));
+        $this->assertFalse($this->ruleManager->evaluateByRule($ruleFalse));
+    }
+
+    /**
+     * Evaluate rule false
+     *
+     * @var RuleInterface $ruleParameter
+     */
+    public function testEvaluateRuleParameter()
+    {
+        $ruleParameter = $this
+            ->manager
+            ->getRepository('Elcodi\RuleBundle\Entity\Abstracts\AbstractRule')
+            ->findOneBy(array(
+                'code' => 'rule-variables'
+            ));
+
+        /**
+         * @var AbstractRuleInterface $ruleParameter
+         */
+        $this->assertTrue($this->ruleManager->evaluateByRule($ruleParameter, array(
+            'parameter_value' => 'value',
+        )));
     }
 
     /**
@@ -114,7 +136,7 @@ class RuleManagerTest extends WebTestCase
      */
     public function testEvaluateRuleCodeTrue()
     {
-        $this->assertTrue($this->ruleManager->evaluateRuleCode('rule-true'));
+        $this->assertTrue($this->ruleManager->evaluateByCode('rule-true'));
     }
 
     /**
@@ -122,57 +144,6 @@ class RuleManagerTest extends WebTestCase
      */
     public function testEvaluateRuleCodeFalse()
     {
-        $this->assertFalse($this->ruleManager->evaluateRuleCode('rule-false'));
-    }
-
-    /**
-     * Evaluate rule group
-     *
-     * @var RuleGroupInterface $ruleGroupTrue
-     */
-    public function testEvaluateRuleGroupTrue()
-    {
-        $ruleGroupTrue = $this
-            ->manager
-            ->getRepository('ElcodiRuleBundle:RuleGroup')
-            ->findOneBy(array(
-                'code' => 'rule-group-true'
-            ));
-
-        $this->assertTrue($this->ruleManager->evaluateGroup($ruleGroupTrue));
-    }
-
-    /**
-     * Evaluate rule group
-     *
-     * @var RuleGroupInterface $ruleGroupFalse
-     */
-    public function testEvaluateRuleGroupFalse()
-    {
-        $ruleGroupFalse = $this
-            ->manager
-            ->getRepository('ElcodiRuleBundle:RuleGroup')
-            ->findOneBy(array(
-                'code' => 'rule-group-false'
-            ));
-
-        $this->assertFalse($this->ruleManager->evaluateGroup($ruleGroupFalse));
-    }
-
-    /**
-     * Evaluate rule group
-     */
-    public function testEvaluateRuleGroupCodeTrue()
-    {
-        $this->assertTrue($this->ruleManager->evaluateGroupCode('rule-group-true'));
-    }
-
-    /**
-     * Evaluate rule group
-     */
-    public function testEvaluateRuleGroupCodeFalse()
-    {
-        $this->assertFalse($this->ruleManager->evaluateGroupCode('rule-group-false'));
+        $this->assertFalse($this->ruleManager->evaluateByCode('rule-false'));
     }
 }
- 

@@ -11,15 +11,13 @@
  * @author ##author_placeholder
  * @version ##version_placeholder##
  */
- 
+
 namespace Elcodi\RuleBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\RuleBundle\Entity\Interfaces\RuleGroupInterface;
-use Elcodi\RuleBundle\Entity\Interfaces\RuleInterface;
 use Elcodi\RuleBundle\Factory\RuleFactory;
 
 /**
@@ -33,20 +31,18 @@ class RuleData extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
         /**
-         * @var RuleFactory $ruleFactory
-         * @var RuleGroupInterface $ruleGroupTrue
-         * @var RuleGroupInterface $ruleGroupFalse
-         * @var RuleInterface $rule
+         * @var RuleFactory   $ruleFactory
          */
         $ruleFactory = $this->container->get('elcodi.core.rule.factory.rule');
-        $ruleGroupTrue = $this->getReference('rule-group-true');
-        $ruleGroupFalse = $this->getReference('rule-group-false');
+        $expressionTrue = $this->getReference('expression-true');
+        $expressionFalse = $this->getReference('expression-false');
+        $expressionVariables = $this->getReference('expression-variables');
         $ruleTrue = $ruleFactory->create();
         $ruleTrue
             ->setName('Rule true')
             ->setCode('rule-true')
-            ->setExpression('true === true')
-            ->addRuleGroup($ruleGroupTrue);
+            ->setEnabled(true)
+            ->setExpression($expressionTrue);
         $manager->persist($ruleTrue);
         $this->addReference('rule-true', $ruleTrue);
 
@@ -54,18 +50,19 @@ class RuleData extends AbstractFixture implements OrderedFixtureInterface
         $ruleFalse
             ->setName('Rule false')
             ->setCode('rule-false')
-            ->setExpression('true === false')
-            ->addRuleGroup($ruleGroupTrue)
-            ->addRuleGroup($ruleGroupFalse);
+            ->setEnabled(true)
+            ->setExpression($expressionFalse);
         $manager->persist($ruleFalse);
         $this->addReference('rule-false', $ruleFalse);
 
-        $ruleGroupTrue
-            ->addRule($ruleTrue);
-
-        $ruleGroupFalse
-            ->addRule($ruleTrue)
-            ->addRule($ruleFalse);
+        $ruleVariables = $ruleFactory->create();
+        $ruleVariables
+            ->setName('Rule variables')
+            ->setCode('rule-variables')
+            ->setEnabled(true)
+            ->setExpression($expressionVariables);
+        $manager->persist($ruleVariables);
+        $this->addReference('rule-variables', $ruleVariables);
 
         $manager->flush();
     }
@@ -80,4 +77,3 @@ class RuleData extends AbstractFixture implements OrderedFixtureInterface
         return 2;
     }
 }
- 

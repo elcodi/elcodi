@@ -17,9 +17,9 @@ namespace Elcodi\RuleBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class RuleRepository
+ * Class AbstractRuleRepository
  */
-class RuleRepository extends EntityRepository
+class AbstractRuleRepository extends EntityRepository
 {
 
 }
