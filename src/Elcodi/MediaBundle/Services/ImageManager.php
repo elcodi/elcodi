@@ -151,6 +151,7 @@ class ImageManager
         file_put_contents($resizedFile, $resizedImageData);
 
         $image = $this->createImage($resizedFile);
+        $image->setContent($resizedImageData);
 
         return $image;
     }
