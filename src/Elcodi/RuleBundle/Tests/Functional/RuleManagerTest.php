@@ -110,7 +110,7 @@ class RuleManagerTest extends WebTestCase
     }
 
     /**
-     * Evaluate rule false
+     * Evaluate rule with variables
      *
      * @var RuleInterface $ruleParameter
      */
@@ -128,6 +128,28 @@ class RuleManagerTest extends WebTestCase
          */
         $this->assertTrue($this->ruleManager->evaluateByRule($ruleParameter, array(
             'parameter_value' => 'value',
+        )));
+    }
+
+    /**
+     * Evaluate rule with variable with exception
+     *
+     * @var RuleInterface $ruleParameter
+     */
+    public function testEvaluateRuleParameterException()
+    {
+        $ruleParameter = $this
+            ->manager
+            ->getRepository('Elcodi\RuleBundle\Entity\Abstracts\AbstractRule')
+            ->findOneBy(array(
+                'code' => 'rule-variables'
+            ));
+
+        /**
+         * @var AbstractRuleInterface $ruleParameter
+         */
+        $this->assertFalse($this->ruleManager->evaluateByRule($ruleParameter, array(
+            'parameter_another_value' => 'value',
         )));
     }
 

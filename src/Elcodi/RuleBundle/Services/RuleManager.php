@@ -21,6 +21,7 @@ use Elcodi\RuleBundle\Entity\Interfaces\ExpressionInterface;
 use Elcodi\RuleBundle\Repository\AbstractRuleRepository;
 use Elcodi\RuleBundle\Services\Interfaces\ContextAwareInterface;
 use Elcodi\RuleBundle\Services\Interfaces\ExpressionLanguageAwareInterface;
+use Symfony\Component\ExpressionLanguage\SyntaxError;
 
 /**
  * Class RuleManager
@@ -142,8 +143,15 @@ class RuleManager implements ContextAwareInterface, ExpressionLanguageAwareInter
     {
         $contextMerged = array_merge($this->context, $context);
 
-        return (boolean) $this
-            ->expressionLanguage
-            ->evaluate($expression->getExpression(), $contextMerged);
+        try {
+            $result = (boolean) $this
+                ->expressionLanguage
+                ->evaluate($expression->getExpression(), $contextMerged);
+        } catch (SyntaxError $exception) {
+
+            $result = false;
+        }
+
+        return $result;
     }
 }
