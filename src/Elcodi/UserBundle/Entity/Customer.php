@@ -412,7 +412,7 @@ class Customer extends AbstractUser implements CustomerInterface
      *
      * @return Customer self Object
      */
-    public function setLanguage(LanguageInterface $language)
+    public function setLanguage(LanguageInterface $language = null)
     {
         $this->language = $language;
 
