@@ -31,7 +31,6 @@
         "doctrine/doctrine-cache-bundle": "~1.0",
         "symfony/yaml": "~2.4",
         "doctrine/doctrine-fixtures-bundle": "v2.2.0",
-        "stof/doctrine-extensions-bundle": "~1.1@dev",
         "symfony/expression-language": "~2.4",
         "knplabs/knp-gaufrette-bundle": "~0.1"
     },
