@@ -14,6 +14,7 @@
 
 namespace Elcodi\ReferralProgramBundle\EventListener;
 
+use Elcodi\CartCouponBundle\Services\OrderCouponManager;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -38,6 +39,13 @@ class ReferralProgramEventListener
     protected $referralCouponManager;
 
     /**
+     * @var OrderCouponManager
+     *
+     * Coupon manager
+     */
+    protected $orderCouponManager;
+
+    /**
      * @var RequestStack
      *
      * Request
@@ -48,14 +56,17 @@ class ReferralProgramEventListener
      * Construct method
      *
      * @param ReferralCouponManager $referralCouponManager Referral program Coupon manager
+     * @param OrderCouponManager $orderCouponManager
      * @param RequestStack          $requestStack          Request stack
      */
     public function __construct(
         ReferralCouponManager $referralCouponManager,
+        OrderCouponManager $orderCouponManager,
         RequestStack $requestStack
     )
     {
         $this->referralCouponManager = $referralCouponManager;
+        $this->orderCouponManager = $orderCouponManager;
         $this->request = $requestStack->getMasterRequest();
     }
 
@@ -108,7 +119,7 @@ class ReferralProgramEventListener
             $this
                 ->referralCouponManager
                 ->checkCouponAssignment($customer, $hash, ElcodiReferralProgramRuleTypes::TYPE_ON_FIRST_PURCHASE)
-                ->checkCouponsUsed($customer, $event->getOrder()->getCoupons());
+                ->checkCouponsUsed($customer, $this->orderCouponManager->getOrderCoupons($event->getOrder()));
         }
     }
 }
