@@ -67,7 +67,6 @@ class CustomerManager
     public function register(CustomerInterface $user, $providerKey)
     {
         if (!($this->securityContext instanceof SecurityContextInterface)) {
-
             return $this;
         }
 
@@ -91,9 +90,9 @@ class CustomerManager
     {
         if (($customer->getDeliveryAddress() instanceof Address)
             && ($customer->getDeliveryAddress()->getAddress())) {
-
             return true;
         }
+
         return false;
     }
 }

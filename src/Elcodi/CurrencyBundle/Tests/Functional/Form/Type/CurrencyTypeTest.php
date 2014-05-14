@@ -12,7 +12,7 @@
  * @version ##version_placeholder##
  */
 
-namespace Elcodi\CurrencyBundle\Tests\Form\Type;
+namespace Elcodi\CurrencyBundle\Tests\Functional\Form\Type;
 
 use Elcodi\CoreBundle\Tests\WebTestCase;
 

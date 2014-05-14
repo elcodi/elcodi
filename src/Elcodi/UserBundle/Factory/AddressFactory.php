@@ -18,7 +18,6 @@ use DateTime;
 
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
 use Elcodi\UserBundle\Entity\Address;
-use Elcodi\UserBundle\Entity\Customer;
 
 /**
  * Class AddressFactory

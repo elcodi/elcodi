@@ -35,7 +35,7 @@ abstract class AbstractCacheWrapper
     /**
      * @var EntityManager
      */
-    var $entityManager;
+    public $entityManager;
 
     /**
      * @var LanguageManager

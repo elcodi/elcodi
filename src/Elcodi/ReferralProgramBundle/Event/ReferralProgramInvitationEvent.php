@@ -41,7 +41,7 @@ class ReferralProgramInvitationEvent extends Event
 
     /**
      * @param ReferralLineInterface $referralLine Referral line
-     * @param string       $referralLink Referral link
+     * @param string                $referralLink Referral link
      */
     public function __construct(ReferralLineInterface $referralLine, $referralLink)
     {

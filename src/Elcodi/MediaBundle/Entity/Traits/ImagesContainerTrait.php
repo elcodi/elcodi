@@ -11,7 +11,7 @@
  * @author ##author_placeholder
  * @version ##version_placeholder##
  */
- 
+
 namespace Elcodi\MediaBundle\Entity\Traits;
 
 /**
@@ -52,7 +52,6 @@ trait ImagesContainerTrait
         return $this;
     }
 
-
     /**
      * Get if entity is enabled
      *
@@ -67,7 +66,6 @@ trait ImagesContainerTrait
         return $this;
     }
 
-
     /**
      * Get all images
      *
@@ -77,7 +75,6 @@ trait ImagesContainerTrait
     {
         return $this->images;
     }
-
 
     /**
      * Set images
@@ -107,7 +104,6 @@ trait ImagesContainerTrait
         return $this;
     }
 
-
     /**
      * Get the principalImage
      *
@@ -118,4 +114,3 @@ trait ImagesContainerTrait
         return $this->principalImage;
     }
 }
- 

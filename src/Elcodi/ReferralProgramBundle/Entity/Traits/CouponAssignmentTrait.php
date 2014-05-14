@@ -143,4 +143,3 @@ trait CouponAssignmentTrait
         return $this->referrerType;
     }
 }
- 

@@ -77,7 +77,6 @@ class OrderLineManagerTest extends WebTestCase
         $this->manager->persist($product2);
         $this->manager->flush();
 
-
         $order->addOrderLine($orderLine);
         $orderLine->setOrder($order);
         $order->addOrderLine($secondaryOrderLine);

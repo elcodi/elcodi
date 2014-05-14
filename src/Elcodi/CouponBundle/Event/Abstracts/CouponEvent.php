@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  *
  * @author  * @version  */
- 
+
 namespace Elcodi\CouponBundle\Event\Abstracts;
 
 use Symfony\Component\EventDispatcher\Event;

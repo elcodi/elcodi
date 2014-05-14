@@ -16,7 +16,6 @@ namespace Elcodi\CartBundle\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\CartBundle\Entity\Interfaces\PriceInterface;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 
 /**

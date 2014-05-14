@@ -31,4 +31,3 @@ class ImageFactoryTest extends WebTestCase
         return 'elcodi.core.media.factory.image';
     }
 }
- 

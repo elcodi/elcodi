@@ -12,7 +12,7 @@
  * @version ##version_placeholder##
  */
 
-namespace Elcodi\CouponBundle\Functional\Tests\Services;
+namespace Elcodi\CouponBundle\Tests\Functional\Services;
 
 use Elcodi\CoreBundle\Tests\WebTestCase;
 

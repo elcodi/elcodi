@@ -87,7 +87,6 @@ class ElcodiUserExtension extends AbstractExtension implements EntitiesOverridab
         ];
     }
 
-
     /**
      * @return array
      */

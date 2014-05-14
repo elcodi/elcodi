@@ -12,7 +12,7 @@
  * @version ##version_placeholder##
  */
 
-namespace Elcodi\CurrencyBundle\Provider;
+namespace Elcodi\CurrencyBundle\Tests\UnitTest\Provider;
 
 /**
  * Class OpenExchangeRatesProvider
@@ -37,7 +37,6 @@ class OpenExchangeRatesProviderTest extends \PHPUnit_Framework_TestCase
         'GBP' => 'Great Britain Pound'
     ];
 
-
     /**
      * @var array
      *
@@ -60,7 +59,6 @@ class OpenExchangeRatesProviderTest extends \PHPUnit_Framework_TestCase
     {
         return 'elcodi.core.currency.service.exchange_rates_provider';
     }
-
 
     /**
      * Set up before each test
@@ -91,7 +89,6 @@ class OpenExchangeRatesProviderTest extends \PHPUnit_Framework_TestCase
             ->willReturn($this->smallExchangeRateList);
     }
 
-
     /**
      * Test get currencies
      */
@@ -113,7 +110,6 @@ class OpenExchangeRatesProviderTest extends \PHPUnit_Framework_TestCase
             'Currencies lists do not match'
         );
     }
-
 
     /**
      * Test that exchange rates are the ones we expect

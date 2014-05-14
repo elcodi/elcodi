@@ -12,7 +12,7 @@
  * @version ##version_placeholder##
  */
 
-namespace Elcodi\CurrencyBundle\Provider;
+namespace Elcodi\CurrencyBundle\Tests\UnitTest\Twig;
 
 use Elcodi\CurrencyBundle\Twig\PrintPriceExtension;
 
@@ -40,7 +40,6 @@ class PrintPriceExtensionTest extends \PHPUnit_Framework_TestCase
     protected $baseCurrencySymbols = [
         'EUR' => '€', 'USD' => '$', 'GBP' => '£'
     ];
-
 
     /**
      * Test price output

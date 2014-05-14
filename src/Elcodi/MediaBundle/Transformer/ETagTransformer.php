@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  *
  * @author  * @version  */
- 
+
 namespace Elcodi\MediaBundle\Transformer;
 
 /**
@@ -32,4 +32,3 @@ class ETagTransformer
                 $file->getExtension();
     }
 }
- 

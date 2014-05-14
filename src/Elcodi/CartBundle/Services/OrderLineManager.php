@@ -223,6 +223,7 @@ class OrderLineManager
     public function checkChangeToState(OrderLineInterface $orderLine, $newState)
     {
         $lastOrderLineHistory = $orderLine->getOrderLineHistories()->last();
+
         return $this->isChangePermitted($lastOrderLineHistory, $newState);
 
     }
@@ -256,6 +257,7 @@ class OrderLineManager
              *
              * Return false because any effect will cause.
              */
+
             return false;
         }
 

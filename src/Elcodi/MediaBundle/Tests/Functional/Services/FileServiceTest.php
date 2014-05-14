@@ -66,4 +66,3 @@ class FileServiceTest extends WebTestCase
             ->delete($imageName);
     }
 }
- 

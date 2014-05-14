@@ -6,7 +6,7 @@
  * @author Befactory Team
  * @since 2013
  */
- 
+
 namespace Elcodi\UserBundle\Generator;
 
 use Elcodi\CoreBundle\Generator\Interfaces\GeneratorInterface;

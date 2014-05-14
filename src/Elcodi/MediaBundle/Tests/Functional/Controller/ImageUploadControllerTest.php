@@ -31,4 +31,3 @@ class ImageUploadControllerTest extends WebTestCase
         return 'elcodi.core.media.controllers.image_upload';
     }
 }
- 

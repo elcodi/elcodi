@@ -66,7 +66,6 @@ class PrintPriceExtension extends Twig_Extension
         );
     }
 
-
     /**
      * Return a formatted price given an amount and the target currency
      *
@@ -100,7 +99,6 @@ class PrintPriceExtension extends Twig_Extension
 
         return $formatter->format($amount * $currencyRate);
     }
-
 
     /**
      * return extension name

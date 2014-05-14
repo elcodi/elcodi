@@ -58,9 +58,9 @@ class ImageManager
     /**
      * Construct method
      *
-     * @param ImageFactory           $imageFactory    Image Factory
-     * @param FileManager        $fileManager File Manager
-     * @param ResizeAdapterInterface $resizeAdapter   Resize Adapter
+     * @param ImageFactory           $imageFactory  Image Factory
+     * @param FileManager            $fileManager   File Manager
+     * @param ResizeAdapterInterface $resizeAdapter Resize Adapter
      */
     public function __construct(
         ImageFactory $imageFactory,
@@ -134,7 +134,6 @@ class ImageManager
     )
     {
         if (ElcodiMediaImageResizeTypes::NO_RESIZE === $type) {
-
             return $image;
         }
 
@@ -156,4 +155,3 @@ class ImageManager
         return $image;
     }
 }
- 

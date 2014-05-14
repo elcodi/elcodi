@@ -6,7 +6,7 @@
  * @author Befactory Team
  * @since 2013
  */
- 
+
 namespace Elcodi\UserBundle\Repository\Interfaces;
 
 use Elcodi\UserBundle\Entity\Abstracts\AbstractUser;

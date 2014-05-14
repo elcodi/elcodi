@@ -12,7 +12,7 @@
  * @version ##version_placeholder##
  */
 
-namespace Elcodi\MediaBundle\Tests\Functional\Factories;
+namespace Elcodi\MediaBundle\Tests\Functional\Transformers;
 
 use Elcodi\CoreBundle\Tests\WebTestCase;
 
@@ -31,4 +31,3 @@ class FileTransformer extends WebTestCase
         return 'elcodi.core.media.transformers.file';
     }
 }
- 

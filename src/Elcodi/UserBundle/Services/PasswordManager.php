@@ -99,7 +99,6 @@ class PasswordManager
         $user = $userRepository->findOneByEmail($email);
 
         if (!($user instanceof AbstractUser)) {
-
             return false;
         }
 

@@ -194,7 +194,7 @@ class Cart extends AbstractEntity implements CartInterface
      */
     public function getTotalItemNumber()
     {
-        $totalItems = array_reduce($this->cartLines->toArray(), function($prev, $cur) { return $prev + $cur->getQuantity(); });
+        $totalItems = array_reduce($this->cartLines->toArray(), function ($prev, $cur) { return $prev + $cur->getQuantity(); });
 
         return is_null($totalItems) ? 0 : $totalItems;
     }

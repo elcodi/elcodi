@@ -45,8 +45,8 @@ class CartEventListener
     /**
      * Built method
      *
-     * @param CartManager $cartManager Cart Manager
-     * @param ObjectManager $objectManager
+     * @param CartManager   $cartManager   Cart Manager
+     * @param ObjectManager $objectManager Object Manager
      */
     public function __construct(CartManager $cartManager, ObjectManager $objectManager)
     {

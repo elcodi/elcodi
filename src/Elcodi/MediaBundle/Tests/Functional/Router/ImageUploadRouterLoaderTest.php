@@ -31,4 +31,3 @@ class ImageUploadRouterLoaderTest extends WebTestCase
         return 'elcodi.core.media.routes.image_upload.loader';
     }
 }
- 

@@ -44,7 +44,6 @@ class BannerFactory extends AbstractFactory
             ->setCreatedAt(new DateTime)
             ->setEnabled(false);
 
-
         return $banner;
     }
 }

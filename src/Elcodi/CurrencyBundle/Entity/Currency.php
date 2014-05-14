@@ -15,9 +15,6 @@
 namespace Elcodi\CurrencyBundle\Entity;
 
 use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
-use DateTime;
-use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;

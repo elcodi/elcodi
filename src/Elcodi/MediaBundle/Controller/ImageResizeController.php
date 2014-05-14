@@ -145,7 +145,6 @@ class ImageResizeController extends Controller
          * in that case
          */
         if ($response->isNotModified($request)) {
-
             return $response;
         }
 

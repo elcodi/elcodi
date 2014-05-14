@@ -12,7 +12,6 @@ namespace Elcodi\CartBundle\Tests\UnitTest\Services;
 use Elcodi\CartBundle\Entity\Cart;
 use Elcodi\CartBundle\Entity\CartLine;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
-use Elcodi\CartBundle\Entity\Order;
 use Elcodi\CartBundle\Factory\CartFactory;
 use Elcodi\CartBundle\Factory\CartLineFactory;
 use Elcodi\CartBundle\Services\CartManager;

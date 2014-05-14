@@ -75,10 +75,10 @@ class ImageExtension extends Twig_Extension
         return $this
             ->router
             ->generate($this->imageResizeControllerRouteName, array(
-                'id'     => (int)$imageMedia->getId(),
-                'height' => (int)$options['height'],
-                'width'  => (int)$options['width'],
-                'type'   => (int)$options['type'],
+                'id'     => (int) $imageMedia->getId(),
+                'height' => (int) $options['height'],
+                'width'  => (int) $options['width'],
+                'type'   => (int) $options['type'],
             ), true);
     }
 
@@ -92,4 +92,3 @@ class ImageExtension extends Twig_Extension
         return 'image_extension';
     }
 }
- 

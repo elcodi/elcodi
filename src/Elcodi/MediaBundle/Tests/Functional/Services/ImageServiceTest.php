@@ -57,4 +57,3 @@ class ImageServiceTest extends WebTestCase
         $this->assertEquals($image->getSize(), 102);
     }
 }
- 

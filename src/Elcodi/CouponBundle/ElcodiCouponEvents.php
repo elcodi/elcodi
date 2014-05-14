@@ -11,9 +11,8 @@
  * @author ##author_placeholder##
  * @version ##version_placeholder##
  */
- 
-namespace Elcodi\CouponBundle;
 
+namespace Elcodi\CouponBundle;
 
 /**
  * Class ElcodiCouponEvents

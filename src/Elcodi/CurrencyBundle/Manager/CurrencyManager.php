@@ -88,7 +88,6 @@ class CurrencyManager
         return $symbolsList;
     }
 
-
     /**
      * Returns a collection with the active currencies
      */

@@ -28,14 +28,12 @@ class LocaleManager
      */
     protected $locale;
 
-
     /**
      * @var string
      *
      * Encoding
      */
     protected $encoding;
-
 
     /**
      * @var array
@@ -44,7 +42,6 @@ class LocaleManager
      */
     protected $localeInfo;
 
-
     /**
      * @var array
      *
@@ -52,14 +49,12 @@ class LocaleManager
      */
     protected $localeCountryAssociations;
 
-
     /**
      * @var array
      *
      * Locale to translation associations
      */
     protected $localeTranslationAssociations;
-
 
     /**
      * Construct method
@@ -90,7 +85,6 @@ class LocaleManager
         return $this;
     }
 
-
     /**
      * Returns current locale
      *
@@ -100,7 +94,6 @@ class LocaleManager
     {
         return $this->locale;
     }
-
 
     /**
      * Sets locale
@@ -117,7 +110,6 @@ class LocaleManager
         return $this;
     }
 
-
     /**
      * Returns current encoding
      *
@@ -127,7 +119,6 @@ class LocaleManager
     {
         return $this->encoding;
     }
-
 
     /**
      * Sets encoding
@@ -144,7 +135,6 @@ class LocaleManager
         return $this;
     }
 
-
     /**
      * Returns current locale info
      *
@@ -155,7 +145,6 @@ class LocaleManager
         return $this->localeInfo;
     }
 
-
     /**
      * Returns the ISO code of the country according to locale
      *
@@ -164,13 +153,11 @@ class LocaleManager
     public function getCountryCode()
     {
         if (in_array($this->locale, array_keys($this->localeCountryAssociations))) {
-
             return $this->localeCountryAssociations[$this->locale];
         }
 
         return \Locale::getRegion($this->locale) ?: $this->locale;
     }
-
 
     /**
      * Returns the locale used to look for translations, which may not be the same as $this->locale
@@ -180,7 +167,6 @@ class LocaleManager
     public function getTranslationsLocale()
     {
         if (in_array($this->locale, array_keys($this->localeTranslationAssociations))) {
-
             return $this->localeTranslationAssociations[$this->locale];
         }
 

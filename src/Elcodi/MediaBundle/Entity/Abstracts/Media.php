@@ -11,7 +11,7 @@
  * @author ##author_placeholder
  * @version ##version_placeholder##
  */
- 
+
 namespace Elcodi\MediaBundle\Entity\Abstracts;
 
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;

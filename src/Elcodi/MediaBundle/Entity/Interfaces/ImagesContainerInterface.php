@@ -63,7 +63,6 @@ interface ImagesContainerInterface
      */
     public function setPrincipalImage(ImageInterface $principalImage = null);
 
-
     /**
      * Get the principalImage
      *
@@ -71,4 +70,3 @@ interface ImagesContainerInterface
      */
     public function getPrincipalImage();
 }
- 

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  *
  * @author  * @version  */
- 
+
 namespace Elcodi\MediaBundle\Exception;
 
 use Exception;
@@ -21,4 +21,3 @@ class InvalidImageException extends Exception
 {
 
 }
- 

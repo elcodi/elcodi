@@ -6,7 +6,7 @@
  * @author Befactory Team
  * @since 2013
  */
- 
+
 namespace Elcodi\CouponBundle\EventDispatcher;
 
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;

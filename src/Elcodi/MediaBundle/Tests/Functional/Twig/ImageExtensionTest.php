@@ -30,4 +30,3 @@ class ImageExtensionTest extends WebTestCase
         return 'elcodi.core.media.twig.image_extension';
     }
 }
- 

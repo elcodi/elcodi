@@ -79,7 +79,6 @@ class ImageUploadController extends Controller
         $this->uploadFieldName = $uploadFieldName;
     }
 
-
     /**
      * Dynamic upload action
      *
@@ -98,7 +97,6 @@ class ImageUploadController extends Controller
             $image = $this->imageManager->createImage($file);
 
         } catch (InvalidImageException $exception) {
-
             return new JsonResponse([
                 'status' => 'ko',
             ]);

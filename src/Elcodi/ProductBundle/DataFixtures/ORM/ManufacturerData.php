@@ -24,7 +24,7 @@ class ManufacturerData extends AbstractFixture
      *
      * @param ObjectManager $manager
      */
-    function load(ObjectManager $manager)
+    public function load(ObjectManager $manager)
     {
         /**
          * Category

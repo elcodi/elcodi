@@ -186,7 +186,6 @@ abstract class WebTestCase extends BaseWebTestCase
         $loadSchema = $this->loadSchema();
 
         if (!$loadSchema) {
-
             return $this;
         }
 
@@ -239,7 +238,6 @@ abstract class WebTestCase extends BaseWebTestCase
     protected function loadFixtures()
     {
         if (!is_array($this->loadFixturesBundles())) {
-
             return $this;
         }
 

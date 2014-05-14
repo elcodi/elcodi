@@ -6,7 +6,7 @@
  * @author Befactory Team
  * @since 2013
  */
- 
+
 namespace Elcodi\ProductBundle\DataFixtures\ORM;
 
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
@@ -25,7 +25,7 @@ class ProductData extends AbstractFixture
      *
      * @param ObjectManager $manager
      */
-    function load(ObjectManager $manager)
+    public function load(ObjectManager $manager)
     {
         /**
          * Product

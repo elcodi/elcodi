@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  *
  * @author  * @version  */
- 
+
 namespace Elcodi\CouponBundle\Event;
 
 use Elcodi\CouponBundle\Event\Abstracts\CouponEvent;

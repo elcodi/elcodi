@@ -16,9 +16,7 @@ namespace Elcodi\UserBundle\Entity;
 
 use Elcodi\CoreBundle\Entity\Interfaces\LanguageInterface;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
-use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping as ORM;
 
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CoreBundle\Entity\Language;

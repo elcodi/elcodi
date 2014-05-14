@@ -31,4 +31,3 @@ class ImageResizeControllerTest extends WebTestCase
         return 'elcodi.core.media.controllers.image_resize';
     }
 }
- 

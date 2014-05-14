@@ -60,7 +60,7 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
      * @param Integer $width     Width value
      * @param Integer $type      Type
      *
-     * @return ImageInterface  Resized image data
+     * @return ImageInterface Resized image data
      *
      * @throws \RuntimeException
      *
@@ -100,7 +100,6 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
 
             $height = "";
         }
-
 
         /**
          * Apply some filters depending on type of resizing

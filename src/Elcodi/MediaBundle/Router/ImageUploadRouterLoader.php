@@ -11,7 +11,7 @@
  * @author ##author_placeholder
  * @version ##version_placeholder##
  */
- 
+
 namespace Elcodi\MediaBundle\Router;
 
 use Symfony\Component\Config\Loader\LoaderInterface;

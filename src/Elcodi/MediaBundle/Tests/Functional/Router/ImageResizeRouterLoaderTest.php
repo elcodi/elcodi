@@ -31,4 +31,3 @@ class ImageResizeRouterLoaderTest extends WebTestCase
         return 'elcodi.core.media.routes.image_resize.loader';
     }
 }
- 
