@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -19,12 +19,13 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
+use Elcodi\CartCouponBundle\Event\CouponCartPostApplyEvent;
+use Elcodi\CartCouponBundle\Event\CouponCartPreApplyEvent;
+use Elcodi\CartCouponBundle\Event\CouponCartPreRemoveEvent;
 use Elcodi\CartCouponBundle\ElcodiCartCouponEvents;
 use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
 use Elcodi\CartCouponBundle\Repository\CartCouponRepository;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
-use Elcodi\CartCouponBundle\Event\CouponAppliedToCartEvent;
-use Elcodi\CartCouponBundle\Event\CouponRemovedFromCartEvent;
 use Elcodi\CartCouponBundle\Factory\CartCouponFactory;
 use Elcodi\CartBundle\Services\CartManager;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
@@ -232,6 +233,15 @@ class CartCouponManager
         }
 
         /**
+         * Coupon is going to be applied into a cart
+         */
+        $event = new CouponCartPreApplyEvent($cart, $coupon);
+        $this->eventDispatcher->dispatch(
+            ElcodiCartCouponEvents::COUPON_CART_PREAPPLY,
+            $event
+        );
+
+        /**
          * We create a new instance of CartCoupon.
          * We also persist and flush relation
          */
@@ -240,14 +250,15 @@ class CartCouponManager
             ->setCart($cart)
             ->setCoupon($coupon);
         $this->manager->persist($cartCoupon);
+
         $this->manager->flush($cartCoupon);
 
         /**
-         * Coupon applied into Cart event dispatched
+         * Coupon is applied into Cart
          */
-        $event = new CouponAppliedToCartEvent($cart, $coupon);
+        $event = new CouponCartPostApplyEvent($cart, $coupon);
         $this->eventDispatcher->dispatch(
-            ElcodiCartCouponEvents::COUPON_APPLIED_TO_CART,
+            ElcodiCartCouponEvents::COUPON_CART_POSTAPPLY,
             $event
         );
 
@@ -277,15 +288,24 @@ class CartCouponManager
             return $this;
         }
 
+        /**
+         * Coupon is going to be removed from a cart
+         */
+        $event = new CouponCartPreApplyEvent($cart, $coupon);
+        $this->eventDispatcher->dispatch(
+            ElcodiCartCouponEvents::COUPON_CART_PREREMOVE,
+            $event
+        );
+
         $this->manager->remove($cartCoupon);
         $this->manager->flush($cartCoupon);
 
         /**
-         * Coupon applied into Cart event triggered
+         * Coupon removed from a cart
          */
-        $event = new CouponRemovedFromCartEvent($cart, $coupon);
+        $event = new CouponCartPreRemoveEvent($cart, $coupon);
         $this->eventDispatcher->dispatch(
-            ElcodiCartCouponEvents::COUPON_REMOVED_FROM_CART,
+            ElcodiCartCouponEvents::COUPON_CART_POSTREMOVE,
             $event
         );
 

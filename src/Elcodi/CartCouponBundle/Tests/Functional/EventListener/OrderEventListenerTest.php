@@ -81,8 +81,7 @@ class OrderEventListenerTest extends WebTestCase
 
         $this->assertEquals($cartCoupons->count(), $orderCoupons->count());
         $this->assertTrue($cartCoupons->forAll(function ($_, $cartCoupon) use ($orderCoupons) {
-
-            return $orderCoupons->exists(function($_, $orderCoupon) use ($cartCoupon) {
+            return $orderCoupons->exists(function ($_, $orderCoupon) use ($cartCoupon) {
 
                 return $cartCoupon->getId() === $orderCoupon->getId();
             });

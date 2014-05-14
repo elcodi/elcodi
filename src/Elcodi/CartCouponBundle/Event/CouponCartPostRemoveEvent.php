@@ -19,7 +19,7 @@ use Elcodi\CartCouponBundle\Event\Abstracts\AbstractCartCouponEvent;
 /**
  * CouponRemovedFromCart Event
  */
-class CouponRemovedFromCartEvent extends AbstractCartCouponEvent
+class CouponCartPostRemoveEvent extends AbstractCartCouponEvent
 {
 
 }

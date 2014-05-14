@@ -60,7 +60,7 @@ class OrderEventListener
      *
      * @param CouponEventDispatcher $couponEventDispatcher CouponEventDispatcher
      * @param OrderCouponFactory    $orderCouponFactory    OrderCouponFactory
-     * @param CartCouponManager  $cartCouponManager  CartCoupon manager
+     * @param CartCouponManager     $cartCouponManager     CartCoupon manager
      * @param ObjectManager         $manager               Manager
      */
     public function __construct(
@@ -114,7 +114,6 @@ class OrderEventListener
         $coupons = $this->cartCouponManager->getCartCoupons($cart);
 
         if ($coupons->isEmpty()) {
-
             return $this;
         }
 
