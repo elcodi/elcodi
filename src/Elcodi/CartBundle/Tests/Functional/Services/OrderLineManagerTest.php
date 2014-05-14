@@ -8,12 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
 namespace Elcodi\CartBundle\Tests\Functional\Services;
 
+use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
+use Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface;
+use Elcodi\CartBundle\Services\OrderLineManager;
 use Elcodi\CoreBundle\Tests\WebTestCase;
 
 /**
@@ -58,6 +61,12 @@ class OrderLineManagerTest extends WebTestCase
      */
     public function testToState()
     {
+        /**
+         * @var OrderLineManager   $orderLineManager
+         * @var OrderInterface     $order
+         * @var OrderLineInterface $orderLine
+         * @var OrderLineInterface $secondaryOrderLine
+         */
         $orderLineManager = $this->container->get('elcodi.core.cart.services.order_line_manager');
         $order = $this->container->get('elcodi.core.cart.factory.order')->create();
         $orderLine = $this->container->get('elcodi.core.cart.factory.order_line')->create()->setQuantity(1);

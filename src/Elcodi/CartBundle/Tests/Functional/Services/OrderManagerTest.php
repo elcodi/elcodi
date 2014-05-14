@@ -18,6 +18,7 @@ use Elcodi\CartBundle\Entity\Cart;
 use Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface;
+use Elcodi\CartBundle\Services\OrderManager;
 use Elcodi\CoreBundle\Tests\WebTestCase;
 
 /**
@@ -84,6 +85,9 @@ class OrderManagerTest extends WebTestCase
      */
     public function testCreateFromCart()
     {
+        /**
+         * @var OrderManager $orderManager
+         */
         $orderManager = $this->container->get('elcodi.core.cart.services.order_manager');
         $orderInitialState = $this->container->getParameter('elcodi.core.cart.order_initial_state');
         $order = $orderManager->createOrderFromCart($this->cart);
@@ -142,6 +146,9 @@ class OrderManagerTest extends WebTestCase
      */
     public function testCheckChangeToState()
     {
+        /**
+         * @var OrderManager $orderManager
+         */
         $orderManager = $this->container->get('elcodi.core.cart.services.order_manager');
         $order = $orderManager->createOrderFromCart($this->cart);
         $orderManager->toState($order, 'accepted');
