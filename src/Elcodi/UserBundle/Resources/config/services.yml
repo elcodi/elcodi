@@ -3,14 +3,6 @@ services:
     #
     # Services
     #
-    elcodi.core.user.services.newsletter_manager:
-        class: %elcodi.core.user.services.newsletter_manager.class%
-        arguments:
-            customer_wrapper: @elcodi.core.user.wrapper.customer_wrapper
-            entity_manager: @doctrine.orm.entity_manager
-            event_dispatcher: @event_dispatcher
-            validator: @validator
-
     elcodi.core.user.services.password_manager:
         class: %elcodi.core.user.services.password_manager.class%
         arguments:

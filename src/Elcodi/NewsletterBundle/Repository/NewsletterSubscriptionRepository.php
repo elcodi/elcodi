@@ -8,18 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
- * @version ##version_placeholder##
+ * @author  * @version
  */
 
-namespace Elcodi\UserBundle\Exception\Abstracts;
+namespace Elcodi\NewsletterBundle\Repository;
 
-use Exception;
+use Doctrine\ORM\EntityRepository;
 
 /**
- * Custom AbstractNewsletterException
+ * Class NewsletterSubscriptionRepository
  */
-abstract class AbstractNewsletterException extends Exception
+class NewsletterSubscriptionRepository extends EntityRepository
 {
 
 }

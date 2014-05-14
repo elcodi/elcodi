@@ -12,15 +12,14 @@
  * @version ##version_placeholder##
  */
 
-namespace Elcodi\UserBundle\Event;
+namespace Elcodi\NewsletterBundle\Exception;
 
-use Elcodi\UserBundle\Event\Abstracts\AbstractNewsletterEvent;
+use Elcodi\NewsletterBundle\Exception\Abstracts\AbstractNewsletterException;
 
 /**
- * Event fired when a customer subscribes to newsletter
- *
- * This event send an email to customer
+ * Custom NewsletterCannotBeAddedException
  */
-class NewsletterSubscriptionEvent extends AbstractNewsletterEvent
+class NewsletterCannotBeAddedException extends AbstractNewsletterException
 {
+
 }

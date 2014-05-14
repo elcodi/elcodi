@@ -1,0 +1,9 @@
+services:
+
+    #
+    # Factories
+    #
+    elcodi.core.newsletter.factory.newsletter_subscription:
+        class: %elcodi.core.newsletter.factory.newsletter_subscription.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.newsletter.entity.newsletter_subscription.class%"]]

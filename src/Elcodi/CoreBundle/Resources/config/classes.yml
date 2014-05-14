@@ -27,3 +27,9 @@ parameters:
     # Factories
     #
     elcodi.core.core.factory.language.class: Elcodi\CoreBundle\Factory\LanguageFactory
+
+    #
+    # Generators
+    #
+    elcodi.core.core.generators.random.class: Elcodi\CoreBundle\Generator\RandomGenerator
+    elcodi.core.core.generators.sha1.class: Elcodi\CoreBundle\Generator\Sha1Generator

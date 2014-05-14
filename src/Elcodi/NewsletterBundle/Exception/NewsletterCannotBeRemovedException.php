@@ -12,14 +12,14 @@
  * @version ##version_placeholder##
  */
 
-namespace Elcodi\UserBundle\Exception;
+namespace Elcodi\NewsletterBundle\Exception;
 
-use Elcodi\UserBundle\Exception\Abstracts\AbstractNewsletterException;
+use Elcodi\NewsletterBundle\Exception\Abstracts\AbstractNewsletterException;
 
 /**
- * Custom NewsletterCannotBeAddedException
+ * Custom NewsletterCannotBeRemovedException
  */
-class NewsletterCannotBeAddedException extends AbstractNewsletterException
+class NewsletterCannotBeRemovedException extends AbstractNewsletterException
 {
 
 }

@@ -8,13 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
 namespace Elcodi\CoreBundle\Tests;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as BaseWebTestCase;
@@ -190,10 +191,10 @@ abstract class WebTestCase extends BaseWebTestCase
         }
 
         static::$application->run(new ArrayInput(array(
-            'command' => 'doctrine:database:drop',
+            'command'          => 'doctrine:database:drop',
             '--no-interaction' => true,
-            '--force' => true,
-            '--quiet' => true,
+            '--force'          => true,
+            '--quiet'          => true,
         )));
 
         $connection = self::$application
@@ -207,15 +208,15 @@ abstract class WebTestCase extends BaseWebTestCase
         }
 
         static::$application->run(new ArrayInput(array(
-            'command' => 'doctrine:database:create',
+            'command'          => 'doctrine:database:create',
             '--no-interaction' => true,
-            '--quiet' => true,
+            '--quiet'          => true,
         )));
 
         static::$application->run(new ArrayInput(array(
-            'command' => 'doctrine:schema:create',
+            'command'          => 'doctrine:schema:create',
             '--no-interaction' => true,
-            '--quiet' => true,
+            '--quiet'          => true,
         )));
 
         $this->loadFixtures();
@@ -241,10 +242,16 @@ abstract class WebTestCase extends BaseWebTestCase
             return $this;
         }
 
+        $bundles = static::$kernel->getBundles();
+        $formattedBundles = array_map(function ($bundle) use ($bundles) {
+            return $bundles[$bundle]->getPath();
+        }, $this->loadFixturesBundles());
+
         self::$application->run(new ArrayInput(array(
-            'command' => 'doctrine:fixtures:load',
+            'command'          => 'doctrine:fixtures:load',
             '--no-interaction' => true,
-            '--quiet' => true
+            '--fixtures'       => $formattedBundles,
+            '--quiet'          => true
         )));
 
         return $this;
@@ -260,5 +267,25 @@ abstract class WebTestCase extends BaseWebTestCase
         $this->manager->clear();
 
         return $this;
+    }
+
+    /**
+     * Get entity repository given its class parameter
+     *
+     * i.e. elcodi.core.core.entity.language.class
+     *
+     * @param string $entityClass Entity class
+     *
+     * @return EntityRepository Repository
+     */
+    public function getRepository($entityClass)
+    {
+        return $this
+            ->manager
+            ->getRepository(
+                $this
+                    ->container
+                    ->getParameter($entityClass)
+            );
     }
 }

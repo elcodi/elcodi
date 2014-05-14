@@ -12,9 +12,9 @@
  * @version ##version_placeholder##
  */
 
-namespace Elcodi\UserBundle\Event;
+namespace Elcodi\NewsletterBundle\Event;
 
-use Elcodi\UserBundle\Event\Abstracts\AbstractNewsletterEvent;
+use Elcodi\NewsletterBundle\Event\Abstracts\AbstractNewsletterEvent;
 
 /**
  * Event fired when a customer unsubscribes from newsletter

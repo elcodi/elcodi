@@ -19,23 +19,6 @@ namespace Elcodi\UserBundle;
  */
 class ElcodiUserEvents
 {
-
-    /**
-     * This event is fired each time a customer subscribe to newsletter
-     *
-     * event.name : newsletter.subscribe
-     * event.class : NewsletterSubscriptionEvent
-     */
-    const NEWSLETTER_SUBSCRIBE = 'newsletter.subscribe';
-
-    /**
-     * This event is fired when customer want unsubscribe from newsletter
-     *
-     * event.name : newsletter.unsubscribe
-     * event.class : NewsletterUnsubscriptionEvent
-     */
-    const NEWSLETTER_UNSUBSCRIBE = 'newsletter.unsubscribe';
-
     /**
      * This event is fired when customer wants to remember his password
      *

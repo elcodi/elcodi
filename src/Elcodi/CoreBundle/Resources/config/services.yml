@@ -22,3 +22,12 @@ services:
         class: %elcodi.core.core.services.locale_manager.class%
         arguments:
             locale: @=service("request_stack").getCurrentRequest() ? service("request_stack").getCurrentRequest().getLocale() : parameter("locale")
+
+    #
+    # Generators
+    #
+    elcodi.core.core.generators.random:
+        class: %elcodi.core.core.generators.random.class%
+
+    elcodi.core.core.generators.sha1:
+        class: %elcodi.core.core.generators.sha1.class%

@@ -1,0 +1,16 @@
+parameters:
+
+    #
+    # Entities
+    #
+    elcodi.core.newsletter.entity.newsletter_subscription.class: Elcodi\NewsletterBundle\Entity\NewsletterSubscription
+
+    #
+    # Factory
+    #
+    elcodi.core.newsletter.factory.newsletter_subscription.class: Elcodi\NewsletterBundle\Factory\NewsletterSubscriptionFactory
+
+    #
+    # Services
+    #
+    elcodi.core.newsletter.service.newsletter_manager.class: Elcodi\NewsletterBundle\Services\NewsletterManager

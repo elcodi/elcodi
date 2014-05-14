@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
-namespace Elcodi\UserBundle\Event\Abstracts;
+namespace Elcodi\NewsletterBundle\Event\Abstracts;
 
 use Symfony\Component\EventDispatcher\Event;
 
-use Elcodi\UserBundle\Entity\NewsletterSubscription;
+use Elcodi\NewsletterBundle\Entity\Interfaces\NewsletterSubscriptionInterface;
 
 /**
  * Event fired when a customer subscribe to newsletter
@@ -25,9 +25,8 @@ use Elcodi\UserBundle\Entity\NewsletterSubscription;
  */
 class AbstractNewsletterEvent extends Event
 {
-
     /**
-     * @var NewsletterSubscription
+     * @var NewsletterSubscriptionInterface
      *
      * NewsletterSubscription
      */
@@ -36,9 +35,9 @@ class AbstractNewsletterEvent extends Event
     /**
      * construct method
      *
-     * @param NewsletterSubscription $newsletterSubscription Newsletter subscription
+     * @param NewsletterSubscriptionInterface $newsletterSubscription Newsletter subscription
      */
-    public function __construct(NewsletterSubscription $newsletterSubscription)
+    public function __construct(NewsletterSubscriptionInterface $newsletterSubscription)
     {
         $this->newsletterSubscription = $newsletterSubscription;
     }
@@ -46,7 +45,7 @@ class AbstractNewsletterEvent extends Event
     /**
      * Return order
      *
-     * @return NewsletterSubscription
+     * @return NewsletterSubscriptionInterface Newsletter Subscription
      */
     public function getNewsletterSubscription()
     {

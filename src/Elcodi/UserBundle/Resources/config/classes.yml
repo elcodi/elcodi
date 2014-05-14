@@ -9,7 +9,6 @@ parameters:
     #
     # Services
     #
-    elcodi.core.user.services.newsletter_manager.class: Elcodi\UserBundle\Services\NewsletterManager
     elcodi.core.user.services.password_manager.class: Elcodi\UserBundle\Services\PasswordManager
     elcodi.core.user.services.customer_manager.class: Elcodi\UserBundle\Services\CustomerManager
     elcodi.core.user.wrapper.customer_wrapper.class: Elcodi\UserBundle\Wrapper\CustomerWrapper

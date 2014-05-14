@@ -12,56 +12,63 @@
  * @version ##version_placeholder##
  */
 
-namespace Elcodi\UserBundle\Entity;
+namespace Elcodi\NewsletterBundle\Entity;
 
+use Elcodi\NewsletterBundle\Entity\Interfaces\NewsletterSubscriptionInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\LanguageInterface;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
-use Doctrine\Common\Collections\ArrayCollection;
-
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
-use Elcodi\CoreBundle\Entity\Language;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
 
 /**
  * NewsletterSubscription
  */
-class NewsletterSubscription extends AbstractEntity
+class NewsletterSubscription extends AbstractEntity implements NewsletterSubscriptionInterface
 {
-
     use DateTimeTrait, EnabledTrait;
 
     /**
      * @var string
+     *
+     * Email
      */
     protected $email;
 
     /**
-     * @var ArrayCollection
+     * @var CustomerInterface
+     *
+     * Customer
      */
     protected $customer;
 
     /**
-     * @var ArrayCollection
+     * @var LanguageInterface
+     *
+     * Newsletter subscription language
      */
     protected $language;
 
     /**
      * @var String
+     *
+     * Subscription Hash
      */
     protected $hash;
 
     /**
      * @var string
+     *
+     * Reason
      */
     protected $reason;
 
     /**
      * Set email
      *
-     * @param string $email
+     * @param string $email Email
      *
-     * @return $this
+     * @return NewsletterSubscription self Object
      */
     public function setEmail($email)
     {
@@ -71,7 +78,9 @@ class NewsletterSubscription extends AbstractEntity
     }
 
     /**
-     * @return string
+     * Return email
+     *
+     * @return string Email
      */
     public function getEmail()
     {
@@ -79,11 +88,35 @@ class NewsletterSubscription extends AbstractEntity
     }
 
     /**
+     * Set Language
+     *
+     * @param LanguageInterface $language Language
+     *
+     * @return NewsletterSubscription self Object
+     */
+    public function setLanguage(LanguageInterface $language = null)
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return LanguageInterface Language
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    /**
      * Set hash
      *
-     * @param string $hash
+     * @param string $hash Hash
      *
-     * @return $this
+     * @return NewsletterSubscription self Object
      */
     public function setHash($hash)
     {
@@ -93,7 +126,9 @@ class NewsletterSubscription extends AbstractEntity
     }
 
     /**
-     * @return string
+     * Get hash
+     *
+     * @return string Hash
      */
     public function getHash()
     {
@@ -101,65 +136,11 @@ class NewsletterSubscription extends AbstractEntity
     }
 
     /**
-     * Returns a string representation of the class
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->getEmail();
-    }
-
-    /**
-     * Set Delivery Address
-     *
-     * @param CustomerInterface $customer Customer
-     *
-     * @return $this
-     */
-    public function setCustomer($customer)
-    {
-        $this->customer = $customer;
-
-        return $this;
-    }
-
-    /**
-     * @return CustomerInterface
-     */
-    public function getCustomer()
-    {
-        return $this->customer;
-    }
-
-    /**
-     * Set Language
-     *
-     * @param Language $language
-     *
-     * @return $this
-     */
-    public function setLanguage(Language $language)
-    {
-        $this->language = $language;
-
-        return $this;
-    }
-
-    /**
-     * @return LanguageInterface
-     */
-    public function getLanguage()
-    {
-        return $this->language;
-    }
-
-    /**
      * Set the unsubscribe reason
      *
-     * @param string $reason
+     * @param string $reason Reason
      *
-     * @return $this
+     * @return NewsletterSubscription self Object
      */
     public function setReason($reason)
     {
@@ -171,10 +152,20 @@ class NewsletterSubscription extends AbstractEntity
     /**
      * Get the unsubscribe reason
      *
-     * @return string
+     * @return string Reason
      */
     public function getReason()
     {
         return $this->reason;
+    }
+
+    /**
+     * Returns a string representation of the class
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getEmail();
     }
 }

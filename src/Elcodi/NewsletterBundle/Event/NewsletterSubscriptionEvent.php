@@ -12,13 +12,15 @@
  * @version ##version_placeholder##
  */
 
-namespace Elcodi\UserBundle\Repository;
+namespace Elcodi\NewsletterBundle\Event;
 
-use Doctrine\ORM\EntityRepository;
+use Elcodi\NewsletterBundle\Event\Abstracts\AbstractNewsletterEvent;
 
 /**
- * NewsletterSubscriptionRepository
+ * Event fired when a customer subscribes to newsletter
+ *
+ * This event send an email to customer
  */
-class NewsletterSubscriptionRepository extends EntityRepository
+class NewsletterSubscriptionEvent extends AbstractNewsletterEvent
 {
 }
