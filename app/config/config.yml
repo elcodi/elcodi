@@ -1,16 +1,6 @@
 imports:
     - { resource: parameters.yml }
 
-monolog:
-    handlers:
-        main:
-            type: stream
-            level: debug
-            handler: null
-
-swiftmailer:
-    disable_delivery: true
-
 framework:
     test:            ~
     session:         ~
