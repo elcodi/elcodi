@@ -63,6 +63,7 @@ class OrderManagerTest extends WebTestCase
         return array(
             'ElcodiCoreBundle',
             'ElcodiUserBundle',
+            'ElcodiProductBundle',
             'ElcodiCartBundle',
         );
     }
@@ -75,8 +76,7 @@ class OrderManagerTest extends WebTestCase
         parent::setUp();
 
         $this->cart = $this
-            ->manager
-            ->getRepository('ElcodiCartBundle:Cart')
+            ->getRepository('elcodi.core.cart.entity.cart.class')
             ->find(2);
     }
 
