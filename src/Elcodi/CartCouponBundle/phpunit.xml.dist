@@ -12,7 +12,7 @@
          bootstrap="vendor/autoload.php"
 >
     <testsuites>
-        <testsuite name="Elcodi Cart Component Test Suite">
+        <testsuite name="Elcodi Cart Coupon Component Test Suite">
             <directory>./Tests/</directory>
         </testsuite>
     </testsuites>
@@ -22,8 +22,6 @@
             <directory>./</directory>
             <exclude>
                 <directory>./Tests/</directory>
-                <directory>./Resources/</directory>
-                <directory>./DependencyInjection/</directory>
                 <directory>./vendor/</directory>
             </exclude>
         </whitelist>

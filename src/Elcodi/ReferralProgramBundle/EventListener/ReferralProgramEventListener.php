@@ -56,7 +56,7 @@ class ReferralProgramEventListener
      * Construct method
      *
      * @param ReferralCouponManager $referralCouponManager Referral program Coupon manager
-     * @param OrderCouponManager $orderCouponManager
+     * @param OrderCouponManager    $orderCouponManager    Order Coupon Manager
      * @param RequestStack          $requestStack          Request stack
      */
     public function __construct(
