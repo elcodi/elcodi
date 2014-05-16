@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -16,10 +16,14 @@ namespace Elcodi\BannerBundle\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
+use Elcodi\CoreBundle\Entity\Interfaces\DateTimeInterface;
+use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
+use Elcodi\MediaBundle\Entity\Interfaces\ImagesContainerInterface;
+
 /**
  * BannerInterface
  */
-interface BannerInterface
+interface BannerInterface extends EnabledInterface, DateTimeInterface, ImagesContainerInterface
 {
     /**
      * Set banner name

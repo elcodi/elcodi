@@ -22,13 +22,14 @@ use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
 use Elcodi\MediaBundle\Entity\Interfaces\ImageInterface;
+use Elcodi\MediaBundle\Entity\Traits\ImagesContainerTrait;
 
 /**
  * Banner
  */
 class Banner extends AbstractEntity implements BannerInterface
 {
-    use DateTimeTrait, EnabledTrait;
+    use DateTimeTrait, EnabledTrait, ImagesContainerTrait;
 
     /**
      * @var string
@@ -202,37 +203,5 @@ class Banner extends AbstractEntity implements BannerInterface
     public function __toString()
     {
         return $this->getId() . ' - ' . $this->getName();
-    }
-
-    /**
-     * @return int
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
-     * @param int $position
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-    }
-
-    /**
-     * @return ImageInterface
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param ImageInterface $image
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
     }
 }

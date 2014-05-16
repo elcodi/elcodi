@@ -23,7 +23,9 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 class Configuration implements ConfigurationInterface
 {
     /**
-     * {@inheritDoc}
+     * Generates the configuration tree builder.
+     *
+     * @return TreeBuilder The tree builder
      */
     public function getConfigTreeBuilder()
     {

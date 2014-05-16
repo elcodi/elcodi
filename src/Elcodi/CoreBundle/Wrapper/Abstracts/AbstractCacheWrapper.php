@@ -31,7 +31,6 @@ use Elcodi\CoreBundle\Services\LanguageManager;
  */
 abstract class AbstractCacheWrapper
 {
-
     /**
      * @var EntityManager
      */
