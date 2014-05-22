@@ -33,7 +33,7 @@ class CurrencyExchangeRateFactory extends AbstractFactory
          * @var CurrencyExchangeRate $exchangeRate
          */
         $classNamespace = $this->getEntityNamespace();
-        $exchangeRate = $classNamespace();
+        $exchangeRate = new $classNamespace();
         $exchangeRate->setExchangeRate(0.0);
 
         return $exchangeRate;
