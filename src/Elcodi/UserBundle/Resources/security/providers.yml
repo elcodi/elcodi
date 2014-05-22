@@ -1,7 +1,7 @@
 security:
 
     providers:
-        abstract_customer:
+        customer:
             entity:
                 class: Elcodi\UserBundle\Entity\Customer
                 property: email
