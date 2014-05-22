@@ -32,7 +32,7 @@ class FileTransformer
      */
     public function transform(FileInterface $file)
     {
-        return  $file->getId() . '_' .
+        return  $file->getId() . '.' .
                 $file->getExtension();
     }
 }
