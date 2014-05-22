@@ -1,6 +1,14 @@
 services:
 
     #
+    # Common services
+    #
+    elcodi.container_parameters:
+        class: Symfony\Component\DependencyInjection\ParameterBag\ParameterBag
+        factory_service: @service_container
+        factory_method: getParameters
+
+    #
     # Services
     #
     elcodi.core.core.services.abstract_cache_wrapper:
@@ -23,11 +31,20 @@ services:
         arguments:
             locale: @=service("request_stack").getCurrentRequest() ? service("request_stack").getCurrentRequest().getLocale() : parameter("locale")
 
+    elcodi.core.core.services.manager_provider:
+        class: %elcodi.core.core.services.manager_provider.class%
+        arguments:
+            manager: @doctrine
+            parameters_bag: @elcodi.container_parameters
+
+    elcodi.manager_provider:
+        alias: elcodi.core.core.services.manager_provider
+
     #
     # Generators
     #
-    elcodi.core.core.generators.random:
-        class: %elcodi.core.core.generators.random.class%
+    elcodi.core.core.generators.random_string:
+        class: %elcodi.core.core.generators.random_string.class%
 
     elcodi.core.core.generators.sha1:
         class: %elcodi.core.core.generators.sha1.class%

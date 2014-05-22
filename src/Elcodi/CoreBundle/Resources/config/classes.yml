@@ -11,6 +11,7 @@ parameters:
     elcodi.core.core.services.abstract_cache_wrapper.class: Elcodi\CoreBundle\Wrapper\Abstracts\AbstractCacheWrapper
     elcodi.core.core.services.language_manager.class: Elcodi\CoreBundle\Services\LanguageManager
     elcodi.core.core.services.locale_manager.class: Elcodi\CoreBundle\Services\LocaleManager
+    elcodi.core.core.services.manager_provider.class: Elcodi\CoreBundle\Services\ManagerProvider
 
     #
     # Twig
@@ -31,5 +32,5 @@ parameters:
     #
     # Generators
     #
-    elcodi.core.core.generators.random.class: Elcodi\CoreBundle\Generator\RandomGenerator
+    elcodi.core.core.generators.random_string.class: Elcodi\CoreBundle\Generator\RandomStringGenerator
     elcodi.core.core.generators.sha1.class: Elcodi\CoreBundle\Generator\Sha1Generator
