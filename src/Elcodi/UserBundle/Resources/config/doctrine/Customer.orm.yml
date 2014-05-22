@@ -2,7 +2,7 @@ Elcodi\UserBundle\Entity\Customer:
     type: entity
     repositoryClass: Elcodi\UserBundle\Repository\CustomerRepository
     table: customer
-    inheritanceType:
+    inheritanceType: joined
     fields:
         phone:
             column: phone
