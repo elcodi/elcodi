@@ -21,7 +21,17 @@ services:
     #
     # Entity providers
     #
-    elcodi.core.rule.entity.customer.instance:
-        class: %elcodi.core.user.factory.customer.class%
-        factory_service: elcodi.core.user.factory.customer
+    elcodi.core.rule.entity.rule.instance:
+        class: %elcodi.core.rule.entity.rule.class%
+        factory_service: elcodi.core.rule.factory.rule
+        factory_method: create
+
+    elcodi.core.rule.entity.rule_group.instance:
+        class: %elcodi.core.rule.entity.rule_group.class%
+        factory_service: elcodi.core.rule.factory.rule_group
+        factory_method: create
+
+    elcodi.core.rule.entity.expression.instance:
+        class: %elcodi.core.rule.entity.expression.class%
+        factory_service: elcodi.core.rule.factory.expression
         factory_method: create

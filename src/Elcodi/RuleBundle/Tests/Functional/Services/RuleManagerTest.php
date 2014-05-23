@@ -12,7 +12,7 @@
  * @version ##version_placeholder##
  */
 
-namespace Elcodi\RuleBundle\Tests\Functional;
+namespace Elcodi\RuleBundle\Tests\Functional\Services;
 
 use Elcodi\CoreBundle\Tests\WebTestCase;
 use Elcodi\RuleBundle\Entity\Interfaces\AbstractRuleInterface;
@@ -83,8 +83,7 @@ class RuleManagerTest extends WebTestCase
     public function testEvaluateRuleTrue()
     {
         $ruleTrue = $this
-            ->manager
-            ->getRepository('Elcodi\RuleBundle\Entity\Abstracts\AbstractRule')
+            ->getRepository('elcodi.core.rule.entity.abstract_rule.class')
             ->findOneBy(array(
                 'code' => 'rule-group-true'
             ));
@@ -100,8 +99,7 @@ class RuleManagerTest extends WebTestCase
     public function testEvaluateRuleFalse()
     {
         $ruleFalse = $this
-            ->manager
-            ->getRepository('Elcodi\RuleBundle\Entity\Abstracts\AbstractRule')
+            ->getRepository('elcodi.core.rule.entity.abstract_rule.class')
             ->findOneBy(array(
                 'code' => 'rule-false'
             ));
@@ -117,8 +115,7 @@ class RuleManagerTest extends WebTestCase
     public function testEvaluateRuleParameter()
     {
         $ruleParameter = $this
-            ->manager
-            ->getRepository('Elcodi\RuleBundle\Entity\Abstracts\AbstractRule')
+            ->getRepository('elcodi.core.rule.entity.abstract_rule.class')
             ->findOneBy(array(
                 'code' => 'rule-variables'
             ));
@@ -139,8 +136,7 @@ class RuleManagerTest extends WebTestCase
     public function testEvaluateRuleParameterException()
     {
         $ruleParameter = $this
-            ->manager
-            ->getRepository('Elcodi\RuleBundle\Entity\Abstracts\AbstractRule')
+            ->getRepository('elcodi.core.rule.entity.abstract_rule.class')
             ->findOneBy(array(
                 'code' => 'rule-variables'
             ));
