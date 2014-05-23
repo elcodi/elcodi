@@ -28,6 +28,19 @@ services:
             security_context: @?security.context
 
     #
+    # Provider
+    #
+    elcodi.core.user.provider.customer_provider:
+        class: %elcodi.core.user.provider.customer_provider.class%
+        factory_service: security.encoder_factory
+        factory_method: getEncoder
+        arguments:
+            customer_instance: @elcodi.core.user.entity.customer.instance
+
+    elcodi.customer_provider:
+        alias: elcodi.core.user.provider.customer_provider
+
+    #
     # Generators
     #
     elcodi.core.user.generator.recover_hash:
