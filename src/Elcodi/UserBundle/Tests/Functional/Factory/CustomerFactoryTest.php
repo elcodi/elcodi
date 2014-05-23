@@ -37,7 +37,7 @@ class CustomerFactoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            '\Elcodi\UserBundle\Entity\Interfaces\CustomerInterface',
+            $this->container->getParameter('elcodi.core.user.entity.customer.class'),
             $this->container->get('elcodi.core.user.entity.customer.instance')
         );
     }

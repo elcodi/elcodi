@@ -37,7 +37,7 @@ class AddressFactoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            '\Elcodi\UserBundle\Entity\Interfaces\AddressInterface',
+            $this->container->getParameter('elcodi.core.user.entity.address.class'),
             $this->container->get('elcodi.core.user.entity.address.instance')
         );
     }
