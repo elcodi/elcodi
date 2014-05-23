@@ -12,14 +12,14 @@
  * @version ##version_placeholder##
  */
 
-namespace Elcodi\UserBundle\Tests\Functional\Form\Type;
+namespace Elcodi\UserBundle\Tests\Functional\Factory;
 
 use Elcodi\CoreBundle\Tests\WebTestCase;
 
 /**
- * Tests CustomerType class
+ * Class CustomerFactoryTest
  */
-class CustomerTypeTest extends WebTestCase
+class CustomerFactoryTest extends WebTestCase
 {
     /**
      * Returns the callable name of the service
@@ -28,6 +28,17 @@ class CustomerTypeTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.user.form_types.customer';
+        return 'elcodi.core.user.factory.customer';
+    }
+
+    /**
+     * Test customer factory provider
+     */
+    public function testFactoryProvider()
+    {
+        $this->assertInstanceOf(
+            '\Elcodi\UserBundle\Entity\Interfaces\CustomerInterface',
+            $this->container->get('elcodi.core.user.entity.customer.instance')
+        );
     }
 }

@@ -10,11 +10,3 @@ services:
             session_field_name: %elcodi.core.user.session_field_name%
         tags:
             - { name: kernel.event_listener, event: cart.postload, method: onCartPostLoad}
-
-#    elcodi.core.user.event_listener.password:
-#        class: %elcodi.core.user.event_listener.password.class%
-#        arguments:
-#            encoder_blowfish: @=service("security.encoder_factory").getEncoder(parameter("Elcodi\UserBundle\Entity\Abstracts\AbstractUser"))
-#        tags:
-#            - { name: doctrine.event_listener, event: preUpdate, method: preUpdate }
-#            - { name: doctrine.event_listener, event: prePersist, method: prePersist }

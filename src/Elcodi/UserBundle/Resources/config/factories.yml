@@ -12,3 +12,16 @@ services:
         class: %elcodi.core.user.factory.address.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.user.entity.address.class%"]]
+
+    #
+    # Entity providers
+    #
+    elcodi.core.user.entity.customer.instance:
+        class: %elcodi.core.user.factory.customer.class%
+        factory_service: elcodi.core.user.factory.customer
+        factory_method: create
+
+    elcodi.core.user.entity.address.instance:
+        class: %elcodi.core.user.factory.address.class%
+        factory_service: elcodi.core.user.factory.address
+        factory_method: create

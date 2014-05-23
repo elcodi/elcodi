@@ -17,3 +17,11 @@ services:
         class: %elcodi.core.rule.factory.expression.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.rule.entity.expression.class%"]]
+
+    #
+    # Entity providers
+    #
+    elcodi.core.rule.entity.customer.instance:
+        class: %elcodi.core.user.factory.customer.class%
+        factory_service: elcodi.core.user.factory.customer
+        factory_method: create

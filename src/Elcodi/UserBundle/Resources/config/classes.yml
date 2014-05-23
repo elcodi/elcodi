@@ -34,3 +34,8 @@ parameters:
     # Generators
     #
     elcodi.core.user.generator.recover_hash.class: Elcodi\UserBundle\Generator\RecoveryHashGenerator
+
+    #
+    # Providers
+    #
+    elcodi.core.user.provider.customer_provider.class: Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface
