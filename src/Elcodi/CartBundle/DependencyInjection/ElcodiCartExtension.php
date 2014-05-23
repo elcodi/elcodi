@@ -68,7 +68,8 @@ class ElcodiCartExtension extends AbstractExtension implements EntitiesOverridab
     {
         return [
             'elcodi.core.cart.order_states' => $config['order']['states'],
-            'elcodi.core.cart.order_initial_state' => $config['order']['initial_state']
+            'elcodi.core.cart.order_initial_state' => $config['order']['initial_state'],
+            'elcodi.core.cart.session_field_name' => $config['cart']['session_field_name']
         ];
     }
 

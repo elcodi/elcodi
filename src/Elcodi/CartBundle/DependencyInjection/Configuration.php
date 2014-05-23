@@ -34,6 +34,14 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->arrayNode('cart')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('session_field_name')
+                            ->defaultValue('cart_id')
+                        ->end()
+                    ->end()
+                ->end()
                 ->arrayNode('order')
                     ->addDefaultsIfNotSet()
                     ->children()

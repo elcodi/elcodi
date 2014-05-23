@@ -12,7 +12,7 @@
  * @version ##version_placeholder##
  */
 
-namespace Elcodi\UserBundle\EventListener;
+namespace Elcodi\CartBundle\EventListener;
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -47,15 +47,7 @@ class SessionEventListener
     }
 
     /**
-     * Stores customer id in HTTP session.
-     *
-     * When a Cart is loaded and flushed, if the
-     * associated Customer is not stored yet, it gets
-     * flushed too. When this event occurs, the newly
-     * generated Customer entity should be associated
-     * with current HTTP session.
-     * This is achieved by storing Customer::id in
-     * session
+     * Stores cart id in HTTP session.
      *
      * @param CartPostLoadEvent $event
      */
@@ -63,9 +55,9 @@ class SessionEventListener
     {
         $cart = $event->getCart();
 
-        if ($this->session->get($this->sessionFieldName) != $cart->getCustomer()->getId()) {
+        if ($this->session->get($this->sessionFieldName) != $cart->getId()) {
 
-            $this->session->set($this->sessionFieldName, $cart->getCustomer()->getId());
+            $this->session->set($this->sessionFieldName, $cart->getId());
         }
     }
 }

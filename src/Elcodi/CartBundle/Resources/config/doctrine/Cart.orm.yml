@@ -43,7 +43,7 @@ Elcodi\CartBundle\Entity\Cart:
             joinColumn:
                 name: customer_id
                 referencedColumnName: id
-                nullable: false
+                nullable: true
 
     oneToMany:
         cartLines:

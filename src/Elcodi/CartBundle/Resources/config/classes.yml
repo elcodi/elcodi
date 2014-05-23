@@ -32,6 +32,7 @@ parameters:
     #
     elcodi.core.cart.event_listener.cart.class: Elcodi\CartBundle\EventListener\CartEventListener
     elcodi.core.cart.event_listener.order_line_state.class: Elcodi\CartBundle\EventListener\OrderLineStateEventListener
+    elcodi.core.cart.event_listener.session.class: Elcodi\CartBundle\EventListener\SessionEventListener
 
     #
     # Factories

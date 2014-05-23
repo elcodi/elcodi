@@ -1,12 +1,1 @@
 services:
-
-    #
-    # Event Listeners
-    #
-    elcodi.core.user.event_listener.session:
-        class: %elcodi.core.user.event_listener.session.class%
-        arguments:
-            session: @session
-            session_field_name: %elcodi.core.user.session_field_name%
-        tags:
-            - { name: kernel.event_listener, event: cart.postload, method: onCartPostLoad}

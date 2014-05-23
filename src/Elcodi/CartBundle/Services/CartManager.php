@@ -143,6 +143,35 @@ class CartManager
     }
 
     /**
+     * Loads a Cart and fires related events
+     *
+     * If the Cart is pristine, i.e. has no id set,
+     * a new one will be created and pertisted. The
+     * newly created Cart will not be flushed
+     *
+     * @param CartInterface $cart
+     *
+     * @return CartInterface loaded Cart
+     */
+    public function loadCart(CartInterface $cart = null)
+    {
+        if (!is_null($cart) && $cart->getId()) {
+
+            $this->dispatchCartCheckEvents($cart);
+            $this->dispatchCartLoadEvents($cart);
+
+        } else {
+
+            $cart = $this->cartFactory->create();
+            $this->manager->persist($cart);
+
+        }
+
+        return $cart;
+    }
+
+
+    /**
      * Adds cartLine to Cart
      *
      * This method dispatches all Cart Check and Load events
