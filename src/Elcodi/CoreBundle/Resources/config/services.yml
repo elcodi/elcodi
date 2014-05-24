@@ -46,8 +46,8 @@ services:
             manager_provider: @elcodi.manager_provider
             parameters_bag: @elcodi.container_parameters
 
-    elcodi.manager_provider:
-        alias: elcodi.core.core.service.manager_provider
+    elcodi.repository_provider:
+        alias: elcodi.core.core.service.repository_provider
 
     #
     # Generators
