@@ -116,6 +116,6 @@ class ReferralRuleType extends AbstractType
      */
     public function getName()
     {
-        return 'elcodi_core_form_types_referralrule';
+        return 'elcodi_core_form_types_referral_rule';
     }
 }

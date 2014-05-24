@@ -42,7 +42,7 @@ class OrderEventListenerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.cart_coupon.event_listeners.order';
+        return 'elcodi.core.cart_coupon.event_listener.order';
     }
 
     /**
@@ -54,6 +54,7 @@ class OrderEventListenerTest extends WebTestCase
     {
         return array(
             'ElcodiUserBundle',
+            'ElcodiProductBundle',
             'ElcodiCartBundle',
             'ElcodiCouponBundle',
             'ElcodiCartCouponBundle',
@@ -74,11 +75,11 @@ class OrderEventListenerTest extends WebTestCase
          * @var ArrayCollection $orderCoupons
          */
         $cart = $this->manager->getRepository('ElcodiCartBundle:Cart')->find(2);
-        $orderManager = $this->container->get('elcodi.core.cart.services.order_manager');
+        $orderManager = $this->container->get('elcodi.core.cart.service.order_manager');
         $order = $orderManager->createOrderFromCart($cart);
         $this->assertEquals($cart->getCouponAmount(), $order->getCouponAmount());
-        $cartCoupons = $this->container->get('elcodi.core.cart_coupon.services.cart_coupon_manager')->getCartCoupons($cart);
-        $orderCoupons = $this->container->get('elcodi.core.cart_coupon.services.order_coupon_manager')->getOrderCoupons($order);
+        $cartCoupons = $this->container->get('elcodi.core.cart_coupon.service.cart_coupon_manager')->getCartCoupons($cart);
+        $orderCoupons = $this->container->get('elcodi.core.cart_coupon.service.order_coupon_manager')->getOrderCoupons($order);
 
         $this->assertEquals($cartCoupons->count(), $orderCoupons->count());
         $this->assertTrue($cartCoupons->forAll(function ($_, $cartCoupon) use ($orderCoupons) {

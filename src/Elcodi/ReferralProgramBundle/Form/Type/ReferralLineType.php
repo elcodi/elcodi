@@ -108,6 +108,6 @@ class ReferralLineType extends AbstractType
      */
     public function getName()
     {
-        return 'elcodi_core_form_types_referralline';
+        return 'elcodi_core_form_types_referral_line';
     }
 }

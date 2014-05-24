@@ -29,6 +29,6 @@ class ProductTypeTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.product.form_types.product';
+        return 'elcodi.core.product.form_type.product';
     }
 }

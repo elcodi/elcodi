@@ -1,50 +1,59 @@
 services:
 
     #
-    # Common services
-    #
-    elcodi.container_parameters:
-        class: Symfony\Component\DependencyInjection\ParameterBag\ParameterBag
-        factory_service: @service_container
-        factory_method: getParameters
-
-    #
     # Services
     #
-    elcodi.core.core.services.abstract_cache_wrapper:
-        class: %elcodi.core.core.services.abstract_cache_wrapper.class%
+    elcodi.core.core.service.abstract_cache_wrapper:
+        class: %elcodi.core.core.service.abstract_cache_wrapper.class%
         abstract: true
         calls:
-            - [setLanguageManager, [@elcodi.core.core.services.language_manager]]
+            - [setLanguageManager, [@elcodi.core.core.service.language_manager]]
             - [setEntityManager, [@doctrine.orm.entity_manager]]
             - [setCache, [@doctrine_cache.providers.elcodi]]
             - [setRequest, [@?request=]]
             - [setKey, []]
 
-    elcodi.core.core.services.language_manager:
-        class: %elcodi.core.core.services.language_manager.class%
+    elcodi.core.core.service.language_manager:
+        class: %elcodi.core.core.service.language_manager.class%
         arguments:
             language_repository:  @=service("doctrine.orm.entity_manager").getRepository(parameter("elcodi.core.core.entity.language.class"))
 
-    elcodi.core.core.services.locale_manager:
-        class: %elcodi.core.core.services.locale_manager.class%
+    elcodi.core.core.service.locale_manager:
+        class: %elcodi.core.core.service.locale_manager.class%
         arguments:
             locale: @=service("request_stack").getCurrentRequest() ? service("request_stack").getCurrentRequest().getLocale() : parameter("locale")
 
-    elcodi.core.core.services.manager_provider:
-        class: %elcodi.core.core.services.manager_provider.class%
+    #
+    # Providers
+    #
+    elcodi.container_parameters:
+        class: Symfony\Component\DependencyInjection\ParameterBag\ParameterBag
+        factory_service: service_container
+        factory_method: getParameterBag
+
+    elcodi.core.core.service.manager_provider:
+        class: %elcodi.core.core.service.manager_provider.class%
         arguments:
             manager: @doctrine
             parameters_bag: @elcodi.container_parameters
 
     elcodi.manager_provider:
-        alias: elcodi.core.core.services.manager_provider
+        alias: elcodi.core.core.service.manager_provider
+
+    elcodi.core.core.service.repository_provider:
+        class: %elcodi.core.core.service.repository_provider.class%
+        arguments:
+            manager_provider: @elcodi.manager_provider
+            parameters_bag: @elcodi.container_parameters
+
+    elcodi.manager_provider:
+        alias: elcodi.core.core.service.manager_provider
 
     #
     # Generators
     #
-    elcodi.core.core.generators.random_string:
-        class: %elcodi.core.core.generators.random_string.class%
+    elcodi.core.core.generator.random_string:
+        class: %elcodi.core.core.generator.random_string.class%
 
-    elcodi.core.core.generators.sha1:
-        class: %elcodi.core.core.generators.sha1.class%
+    elcodi.core.core.generator.sha1:
+        class: %elcodi.core.core.generator.sha1.class%

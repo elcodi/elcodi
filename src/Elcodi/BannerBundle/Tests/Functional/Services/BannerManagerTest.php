@@ -51,7 +51,7 @@ class BannerManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.banner.services.banner_manager';
+        return 'elcodi.core.banner.service.banner_manager';
     }
 
     /**
@@ -68,7 +68,7 @@ class BannerManagerTest extends WebTestCase
 
         $zones = $this
             ->container
-            ->get('elcodi.core.banner.services.banner_manager')
+            ->get('elcodi.core.banner.service.banner_manager')
             ->getBannersFromBannerZoneCode('bannerzone-code', $language);
 
         $this->assertInstanceOf('Doctrine\Common\Collections\Collection', $zones);
@@ -82,7 +82,7 @@ class BannerManagerTest extends WebTestCase
     {
         $zones = $this
             ->container
-            ->get('elcodi.core.banner.services.banner_manager')
+            ->get('elcodi.core.banner.service.banner_manager')
             ->getBannersFromBannerZoneCode('bannerzone-code-nolanguage');
 
         $this->assertInstanceOf('Doctrine\Common\Collections\Collection', $zones);

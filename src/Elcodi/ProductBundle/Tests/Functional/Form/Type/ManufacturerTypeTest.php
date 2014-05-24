@@ -29,6 +29,6 @@ class ManufacturerTypeTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.product.form_types.manufacturer';
+        return 'elcodi.core.product.form_type.manufacturer';
     }
 }

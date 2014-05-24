@@ -3,7 +3,7 @@ services:
     #
     # Form Types
     #
-    elcodi.core.core.form_types.language:
-        class: %elcodi.core.core.form_types.language.class%
+    elcodi.core.core.form_type.language:
+        class: %elcodi.core.core.form_type.language.class%
         tags:
             - { name: form.type, alias: elcodi_core_form_types_language }

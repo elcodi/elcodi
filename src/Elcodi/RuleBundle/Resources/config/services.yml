@@ -3,15 +3,15 @@ services:
     #
     # Managers
     #
-    elcodi.core.rule.services.rule_manager:
-        class: %elcodi.core.rule.services.rule_manager.class%
+    elcodi.core.rule.service.rule_manager:
+        class: %elcodi.core.rule.service.rule_manager.class%
         arguments:
-            expression_language: @elcodi.core.rule.services.expression_language
+            expression_language: @elcodi.core.rule.service.expression_language
             rule_repository: @=service("doctrine.orm.entity_manager").getRepository(parameter("elcodi.core.rule.entity.abstract_rule.class"))
         configurator: ["@elcodi.core.rule.configuration.rule_manager", configureRuleManager]
 
     #
     # External
     #
-    elcodi.core.rule.services.expression_language:
-        class: %elcodi.core.rule.services.expression_language.class%
+    elcodi.core.rule.service.expression_language:
+        class: %elcodi.core.rule.service.expression_language.class%

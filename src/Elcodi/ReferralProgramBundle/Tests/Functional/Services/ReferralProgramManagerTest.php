@@ -20,7 +20,7 @@ use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralRuleInterface;
 use Elcodi\ReferralProgramBundle\Entity\ReferralHash;
 use Elcodi\ReferralProgramBundle\Entity\ReferralLine;
 use Elcodi\ReferralProgramBundle\Entity\ReferralRule;
-use Elcodi\ReferralProgramBundle\Model\Invitation;
+use Elcodi\ReferralProgramBundle\Entity\Invitation;
 use Elcodi\CoreBundle\Tests\WebTestCase;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -36,7 +36,7 @@ class ReferralProgramManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.referral_program.services.referral_program_manager';
+        return 'elcodi.core.referral_program.service.referral_program_manager';
     }
 
     /**

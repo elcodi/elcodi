@@ -3,18 +3,18 @@ services:
     #
     # Services
     #
-    elcodi.core.cart_coupon.services.cart_coupon_manager:
-        class: %elcodi.core.cart_coupon.services.cart_coupon_manager.class%
+    elcodi.core.cart_coupon.service.cart_coupon_manager:
+        class: %elcodi.core.cart_coupon.service.cart_coupon_manager.class%
         arguments:
             coupon_repository: @=service("doctrine.orm.entity_manager").getRepository(parameter("elcodi.core.coupon.entity.coupon.class"))
             cart_coupon_repository: @=service("doctrine.orm.entity_manager").getRepository(parameter("elcodi.core.cart_coupon.entity.cart_coupon.class"))
             cart_coupon_factory: @elcodi.core.cart_coupon.factory.cart_coupon
-            cart_manager: @elcodi.core.cart.services.cart_manager
-            coupon_manager: @elcodi.core.coupon.services.coupon_manager
+            cart_manager: @elcodi.core.cart.service.cart_manager
+            coupon_manager: @elcodi.core.coupon.service.coupon_manager
             event_dispatcher: @event_dispatcher
             object_manager: @doctrine.orm.entity_manager
 
-    elcodi.core.cart_coupon.services.order_coupon_manager:
-        class: %elcodi.core.cart_coupon.services.order_coupon_manager.class%
+    elcodi.core.cart_coupon.service.order_coupon_manager:
+        class: %elcodi.core.cart_coupon.service.order_coupon_manager.class%
         arguments:
             order_coupon_repository: @=service("doctrine.orm.entity_manager").getRepository(parameter("elcodi.core.cart_coupon.entity.order_coupon.class"))

@@ -9,14 +9,14 @@ parameters:
     #
     # Services
     #
-    elcodi.core.user.services.password_manager.class: Elcodi\UserBundle\Services\PasswordManager
-    elcodi.core.user.services.customer_manager.class: Elcodi\UserBundle\Services\CustomerManager
+    elcodi.core.user.service.password_manager.class: Elcodi\UserBundle\Services\PasswordManager
+    elcodi.core.user.service.customer_manager.class: Elcodi\UserBundle\Services\CustomerManager
     elcodi.core.user.wrapper.customer_wrapper.class: Elcodi\UserBundle\Wrapper\CustomerWrapper
 
     #
     # Form Types
     #
-    elcodi.core.user.form_types.customer.class: Elcodi\UserBundle\Form\Type\CustomerType
+    elcodi.core.user.form_type.customer.class: Elcodi\UserBundle\Form\Type\CustomerType
 
     #
     # Event Listeners

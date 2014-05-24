@@ -29,6 +29,6 @@ class CategoryTypeTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.product.form_types.category';
+        return 'elcodi.core.product.form_type.category';
     }
 }

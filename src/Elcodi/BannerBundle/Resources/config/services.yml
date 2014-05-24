@@ -3,7 +3,7 @@ services:
     #
     # Services
     #
-    elcodi.core.banner.services.banner_manager:
-        class: %elcodi.core.banner.services.banner_manager.class%
+    elcodi.core.banner.service.banner_manager:
+        class: %elcodi.core.banner.service.banner_manager.class%
         arguments:
             banner_repository: @=service("doctrine.orm.entity_manager").getRepository(parameter("elcodi.core.banner.entity.banner.class"))

@@ -6,21 +6,17 @@ parameters:
     elcodi.core.referral_program.entity.referral_hash.class: Elcodi\ReferralProgramBundle\Entity\ReferralHash
     elcodi.core.referral_program.entity.referral_line.class: Elcodi\ReferralProgramBundle\Entity\ReferralLine
     elcodi.core.referral_program.entity.referral_rule.class: Elcodi\ReferralProgramBundle\Entity\ReferralRule
-
-    #
-    # Model
-    #
-    elcodi.core.referral_program.model.invitation.class: Elcodi\ReferralProgramBundle\Model\Invitation
-    elcodi.core.referral_program.model.invitation_bag.class: Elcodi\ReferralProgramBundle\Model\InvitationBag
+    elcodi.core.referral_program.entity.invitation.class: Elcodi\ReferralProgramBundle\Entity\Invitation
+    elcodi.core.referral_program.entity.invitation_bag.class: Elcodi\ReferralProgramBundle\Entity\InvitationBag
 
     #
     # Services
     #
-    elcodi.core.referral_program.services.referral_program_manager.class: Elcodi\ReferralProgramBundle\Services\ReferralProgramManager
-    elcodi.core.referral_program.services.referral_hash_manager.class: Elcodi\ReferralProgramBundle\Services\ReferralHashManager
-    elcodi.core.referral_program.services.referral_route_manager.class: Elcodi\ReferralProgramBundle\Services\ReferralRouteManager
-    elcodi.core.referral_program.services.referral_coupon_manager.class: Elcodi\ReferralProgramBundle\Services\ReferralCouponManager
-    elcodi.core.referral_program.services.referral_rule_manager.class: Elcodi\ReferralProgramBundle\Services\ReferralRuleManager
+    elcodi.core.referral_program.service.referral_program_manager.class: Elcodi\ReferralProgramBundle\Services\ReferralProgramManager
+    elcodi.core.referral_program.service.referral_hash_manager.class: Elcodi\ReferralProgramBundle\Services\ReferralHashManager
+    elcodi.core.referral_program.service.referral_route_manager.class: Elcodi\ReferralProgramBundle\Services\ReferralRouteManager
+    elcodi.core.referral_program.service.referral_coupon_manager.class: Elcodi\ReferralProgramBundle\Services\ReferralCouponManager
+    elcodi.core.referral_program.service.referral_rule_manager.class: Elcodi\ReferralProgramBundle\Services\ReferralRuleManager
 
     #
     # Generators
@@ -30,9 +26,9 @@ parameters:
     #
     # Form Types
     #
-    elcodi.core.user.form_types.referralrule.class: Elcodi\ReferralProgramBundle\Form\Type\ReferralRuleType
-    elcodi.core.user.form_types.referralline.class: Elcodi\ReferralProgramBundle\Form\Type\ReferralLineType
-    elcodi.core.user.form_types.referralhash.class: Elcodi\ReferralProgramBundle\Form\Type\ReferralHashType
+    elcodi.core.user.form_type.referral_rule.class: Elcodi\ReferralProgramBundle\Form\Type\ReferralRuleType
+    elcodi.core.user.form_type.referral_line.class: Elcodi\ReferralProgramBundle\Form\Type\ReferralLineType
+    elcodi.core.user.form_type.referral_hash.class: Elcodi\ReferralProgramBundle\Form\Type\ReferralHashType
 
     #
     # Routes
@@ -47,8 +43,8 @@ parameters:
     #
     # Factories
     #
-    elcodi.core.referral_program.factory.referralrule.class: Elcodi\ReferralProgramBundle\Factory\ReferralRuleFactory
-    elcodi.core.referral_program.factory.referralline.class: Elcodi\ReferralProgramBundle\Factory\ReferralLineFactory
-    elcodi.core.referral_program.factory.referralhash.class: Elcodi\ReferralProgramBundle\Factory\ReferralHashFactory
+    elcodi.core.referral_program.factory.referral_rule.class: Elcodi\ReferralProgramBundle\Factory\ReferralRuleFactory
+    elcodi.core.referral_program.factory.referral_line.class: Elcodi\ReferralProgramBundle\Factory\ReferralLineFactory
+    elcodi.core.referral_program.factory.referral_hash.class: Elcodi\ReferralProgramBundle\Factory\ReferralHashFactory
     elcodi.core.referral_program.factory.invitation.class: Elcodi\ReferralProgramBundle\Factory\InvitationFactory
-    elcodi.core.referral_program.factory.invitationbag.class: Elcodi\ReferralProgramBundle\Factory\InvitationBagFactory
+    elcodi.core.referral_program.factory.invitation_bag.class: Elcodi\ReferralProgramBundle\Factory\InvitationBagFactory

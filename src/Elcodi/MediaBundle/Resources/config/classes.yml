@@ -14,8 +14,8 @@ parameters:
     # Services
     #
     elcodi.core.media.resize.imagemagick.class: Elcodi\MediaBundle\Adapter\Resizer\ImageMagickResizeAdapter
-    elcodi.core.media.services.image_manager.class: Elcodi\MediaBundle\Services\ImageManager
-    elcodi.core.media.services.file_manager.class: Elcodi\MediaBundle\Services\FileManager
+    elcodi.core.media.service.image_manager.class: Elcodi\MediaBundle\Services\ImageManager
+    elcodi.core.media.service.file_manager.class: Elcodi\MediaBundle\Services\FileManager
 
     #
     # Controllers
@@ -38,4 +38,4 @@ parameters:
     #
     # Twig extensions
     #
-    elcodi.core.media.twig.image_extension.class: Elcodi\MediaBundle\Twig\ImageExtension
+    elcodi.core.media.twig_extension.image_extension.class: Elcodi\MediaBundle\Twig\ImageExtension

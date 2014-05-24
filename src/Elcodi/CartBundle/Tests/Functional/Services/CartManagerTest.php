@@ -28,7 +28,7 @@ class CartManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.cart.services.cart_manager';
+        return 'elcodi.core.cart.service.cart_manager';
     }
 
     /**

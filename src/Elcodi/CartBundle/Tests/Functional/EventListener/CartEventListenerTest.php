@@ -29,6 +29,6 @@ class CartEventListenerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.cart.event_listeners.cart';
+        return 'elcodi.core.cart.event_listener.cart';
     }
 }

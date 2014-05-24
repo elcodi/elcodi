@@ -15,7 +15,7 @@
 namespace Elcodi\ReferralProgramBundle\Factory;
 
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
-use Elcodi\ReferralProgramBundle\Model\Invitation;
+use Elcodi\ReferralProgramBundle\Entity\Invitation;
 
 /**
  * Class InvitationFactory

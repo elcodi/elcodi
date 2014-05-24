@@ -8,8 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author  * @version  */
- 
+ * @author ##author_placeholder
+ * @version ##version_placeholder##
+ */
+
 namespace Elcodi\RuleBundle\Tests\Functional\Factory;
 
 use Elcodi\CoreBundle\Tests\WebTestCase;
@@ -30,7 +32,7 @@ class ExpressionFactoryTest extends WebTestCase
     }
 
     /**
-     * Test customer factory provider
+     * Test expression factory provider
      */
     public function testFactoryProvider()
     {
@@ -40,4 +42,3 @@ class ExpressionFactoryTest extends WebTestCase
         );
     }
 }
- 

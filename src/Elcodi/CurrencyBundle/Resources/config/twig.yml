@@ -1,9 +1,9 @@
 services:
-    elcodi.core.currency.twig.print_price:
-        class: %elcodi.core.currency.twig.print_price.class%
+    elcodi.core.currency.twig_extension.print_price:
+        class: %elcodi.core.currency.twig_extension.print_price.class%
         arguments:
             exchange_rates: @=service('elcodi.core.currency.manager.currency_manager').getExchangeRateList(parameter('elcodi.core.currency.default_currency'))
             currency_symbols: @=service('elcodi.core.currency.manager.currency_manager').getSymbols()
-            locale_manager: @=service('elcodi.core.core.services.locale_manager').getLocale()
+            locale_manager: @=service('elcodi.core.core.service.locale_manager').getLocale()
         tags:
             - { name: twig.extension }

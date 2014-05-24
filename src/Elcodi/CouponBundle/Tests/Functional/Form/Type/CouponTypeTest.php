@@ -29,6 +29,6 @@ class CouponTypeTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.coupon.form_types.coupon';
+        return 'elcodi.core.coupon.form_type.coupon';
     }
 }

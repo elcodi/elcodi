@@ -7,3 +7,12 @@ services:
         class: %elcodi.core.core.factory.language.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.core.entity.language.class%"]]
+
+    #
+    # Entity providers
+    #
+    elcodi.core.core.entity.language.instance:
+        class: %elcodi.core.core.entity.language.class%
+        factory_service: elcodi.core.core.factory.language
+        factory_method: create
+        scope: prototype

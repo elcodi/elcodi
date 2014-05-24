@@ -1,4 +1,5 @@
 services:
+
     #
     # Factories
     #
@@ -11,3 +12,18 @@ services:
         class: %elcodi.core.currency.factory.currency_exchange_rate.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.currency.entity.currency_exchange_rate.class%"]]
+
+    #
+    # Entity providers
+    #
+    elcodi.core.currency.entity.currency.instance:
+        class: %elcodi.core.currency.entity.currency.class%
+        factory_service: elcodi.core.currency.factory.currency
+        factory_method: create
+        scope: prototype
+
+    elcodi.core.currency.entity.currency_exchange_rate.instance:
+        class: %elcodi.core.currency.entity.currency_exchange_rate.class%
+        factory_service: elcodi.core.currency.factory.currency_exchange_rate
+        factory_method: create
+        scope: prototype

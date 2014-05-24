@@ -17,11 +17,13 @@ services:
     # Entity providers
     #
     elcodi.core.user.entity.customer.instance:
-        class: %elcodi.core.user.factory.customer.class%
+        class: %elcodi.core.user.entity.customer.class%
         factory_service: elcodi.core.user.factory.customer
         factory_method: create
+        scope: prototype
 
     elcodi.core.user.entity.address.instance:
-        class: %elcodi.core.user.factory.address.class%
+        class: %elcodi.core.user.entity.address.class%
         factory_service: elcodi.core.user.factory.address
         factory_method: create
+        scope: prototype

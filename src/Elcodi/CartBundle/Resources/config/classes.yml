@@ -13,15 +13,15 @@ parameters:
     #
     # Services
     #
-    elcodi.core.cart.services.cart_manager.class: Elcodi\CartBundle\Services\CartManager
-    elcodi.core.cart.services.order_manager.class: Elcodi\CartBundle\Services\OrderManager
-    elcodi.core.cart.services.order_line_manager.class: Elcodi\CartBundle\Services\OrderLineManager
+    elcodi.core.cart.service.cart_manager.class: Elcodi\CartBundle\Services\CartManager
+    elcodi.core.cart.service.order_manager.class: Elcodi\CartBundle\Services\OrderManager
+    elcodi.core.cart.service.order_line_manager.class: Elcodi\CartBundle\Services\OrderLineManager
 
     #
     # Event Listeners
     #
-    elcodi.core.cart.event_listeners.cart.class: Elcodi\CartBundle\EventListener\CartEventListener
-    elcodi.core.cart.event_listeners.order_line_state.class: Elcodi\CartBundle\EventListener\OrderLineStateEventListener
+    elcodi.core.cart.event_listener.cart.class: Elcodi\CartBundle\EventListener\CartEventListener
+    elcodi.core.cart.event_listener.order_line_state.class: Elcodi\CartBundle\EventListener\OrderLineStateEventListener
 
     #
     # Factories

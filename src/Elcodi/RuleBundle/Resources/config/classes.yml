@@ -23,12 +23,12 @@ parameters:
     #
     # Managers
     #
-    elcodi.core.rule.services.rule_manager.class: Elcodi\RuleBundle\Services\RuleManager
+    elcodi.core.rule.service.rule_manager.class: Elcodi\RuleBundle\Services\RuleManager
 
     #
     # External
     #
-    elcodi.core.rule.services.expression_language.class: Symfony\Component\ExpressionLanguage\ExpressionLanguage
+    elcodi.core.rule.service.expression_language.class: Symfony\Component\ExpressionLanguage\ExpressionLanguage
 
     #
     # Configurations

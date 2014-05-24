@@ -20,7 +20,7 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\ReferralProgramBundle\ElcodiReferralProgramRuleTypes;
 use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralHashInterface;
 use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralLineInterface;
-use Elcodi\ReferralProgramBundle\Model\Invitation;
+use Elcodi\ReferralProgramBundle\Entity\Invitation;
 use Elcodi\UserBundle\Entity\Customer;
 use Elcodi\CoreBundle\Tests\WebTestCase;
 
@@ -36,7 +36,7 @@ class ReferralCouponManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.referral_program.services.referral_coupon_manager';
+        return 'elcodi.core.referral_program.service.referral_coupon_manager';
     }
 
     /**
@@ -88,7 +88,7 @@ class ReferralCouponManagerTest extends WebTestCase
             ->getRepository('ElcodiReferralProgramBundle:ReferralRule')
             ->find(2);
         $container
-            ->get('elcodi.core.referral_program.services.referral_rule_manager')
+            ->get('elcodi.core.referral_program.service.referral_rule_manager')
             ->enableReferralRule($referralRule);
 
         $invitations = new ArrayCollection;
@@ -99,7 +99,7 @@ class ReferralCouponManagerTest extends WebTestCase
         $invitations->add($invitation1);
 
         $referralProgramManager = $container
-            ->get('elcodi.core.referral_program.services.referral_program_manager');
+            ->get('elcodi.core.referral_program.service.referral_program_manager');
 
         $referralProgramManager->invite(
             $manager->getRepository('ElcodiUserBundle:Customer')->find(1),
@@ -123,7 +123,7 @@ class ReferralCouponManagerTest extends WebTestCase
          */
         $referrer = $manager->getRepository('ElcodiUserBundle:Customer')->find(1);
         $referralHash = $container
-            ->get('elcodi.core.referral_program.services.referral_hash_manager')
+            ->get('elcodi.core.referral_program.service.referral_hash_manager')
             ->getReferralHashByCustomer($referrer);
         $hash = $referralHash->getHash();
 
@@ -140,7 +140,7 @@ class ReferralCouponManagerTest extends WebTestCase
             'email' => 'customer3@customer.com'
         ));
 
-        $referralCouponManager = $container->get('elcodi.core.referral_program.services.referral_coupon_manager');
+        $referralCouponManager = $container->get('elcodi.core.referral_program.service.referral_coupon_manager');
         $referralCouponManager->checkCouponAssignment($invited, $hash, ElcodiReferralProgramRuleTypes::TYPE_ON_REGISTER);
 
         /**
@@ -209,7 +209,7 @@ class ReferralCouponManagerTest extends WebTestCase
             ->getRepository('ElcodiReferralProgramBundle:ReferralRule')
             ->find(4);
         $container
-            ->get('elcodi.core.referral_program.services.referral_rule_manager')
+            ->get('elcodi.core.referral_program.service.referral_rule_manager')
             ->enableReferralRule($referralRule);
 
         $manager->clear();
@@ -222,7 +222,7 @@ class ReferralCouponManagerTest extends WebTestCase
         $referrer = $manager->getRepository('ElcodiUserBundle:Customer')->find(1);
         $invited = $manager->getRepository('ElcodiUserBundle:Customer')->find(2);
         $referralHash = $container
-            ->get('elcodi.core.referral_program.services.referral_hash_manager')
+            ->get('elcodi.core.referral_program.service.referral_hash_manager')
             ->getReferralHashByCustomer($referrer);
         $hash = $referralHash->getHash();
 
@@ -234,14 +234,14 @@ class ReferralCouponManagerTest extends WebTestCase
         $invitations->add($invitation1);
 
         $container
-            ->get('elcodi.core.referral_program.services.referral_program_manager')
+            ->get('elcodi.core.referral_program.service.referral_program_manager')
             ->invite($referrer, $invitations);
 
         /**
          * * Invited registers in site
          * * Referrer Customer receive coupons
          */
-        $referralCouponManager = $container->get('elcodi.core.referral_program.services.referral_coupon_manager');
+        $referralCouponManager = $container->get('elcodi.core.referral_program.service.referral_coupon_manager');
         $referralCouponManager->checkCouponAssignment($invited, $hash, ElcodiReferralProgramRuleTypes::TYPE_ON_REGISTER);
 
         $manager->clear();

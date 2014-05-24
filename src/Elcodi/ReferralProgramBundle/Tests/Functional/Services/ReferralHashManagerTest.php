@@ -30,7 +30,7 @@ class ReferralHashManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.referral_program.services.referral_hash_manager';
+        return 'elcodi.core.referral_program.service.referral_hash_manager';
     }
 
     /**

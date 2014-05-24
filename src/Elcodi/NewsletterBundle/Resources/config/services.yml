@@ -11,4 +11,4 @@ services:
             validator: @validator
             newsletter_subscription_factory: @elcodi.core.newsletter.factory.newsletter_subscription
             newsletter_subscription_repository: @=service("doctrine.orm.entity_manager").getRepository(parameter("elcodi.core.newsletter.entity.newsletter_subscription.class"))
-            hash_generator: @elcodi.core.core.generators.sha1
+            hash_generator: @elcodi.core.core.generator.sha1

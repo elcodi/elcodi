@@ -12,10 +12,10 @@
  * @version ##version_placeholder##
  */
 
-namespace Elcodi\ReferralProgramBundle\Model;
+namespace Elcodi\ReferralProgramBundle\Entity;
 
-use Elcodi\ReferralProgramBundle\Model\Interfaces\InvitationBagInterface;
-use Elcodi\ReferralProgramBundle\Model\Interfaces\InvitationInterface;
+use Elcodi\ReferralProgramBundle\Entity\Interfaces\InvitationBagInterface;
+use Elcodi\ReferralProgramBundle\Entity\Interfaces\InvitationInterface;
 use Doctrine\Common\Collections\Collection;
 
 /**

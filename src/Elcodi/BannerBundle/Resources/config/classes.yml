@@ -9,13 +9,13 @@ parameters:
     #
     # Form Types
     #
-    elcodi.core.banner.form_types.banner.class: Elcodi\BannerBundle\Form\Type\BannerType
-    elcodi.core.banner.form_types.bannerzone.class: Elcodi\BannerBundle\Form\Type\BannerZoneType
+    elcodi.core.banner.form_type.banner.class: Elcodi\BannerBundle\Form\Type\BannerType
+    elcodi.core.banner.form_type.bannerzone.class: Elcodi\BannerBundle\Form\Type\BannerZoneType
 
     #
     # Services
     #
-    elcodi.core.banner.services.banner_manager.class: Elcodi\BannerBundle\Services\BannerManager
+    elcodi.core.banner.service.banner_manager.class: Elcodi\BannerBundle\Services\BannerManager
 
     #
     # Factories

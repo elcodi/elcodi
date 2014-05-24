@@ -28,7 +28,7 @@ class FileServiceTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.media.services.file_manager';
+        return 'elcodi.core.media.service.file_manager';
     }
 
     /**
@@ -44,7 +44,7 @@ class FileServiceTest extends WebTestCase
 
         $this
             ->container
-            ->get('elcodi.core.media.services.file_manager')
+            ->get('elcodi.core.media.service.file_manager')
             ->uploadFile($image, $imageData, true);
 
         $this->assertTrue($this
@@ -55,7 +55,7 @@ class FileServiceTest extends WebTestCase
 
         $image = $this
             ->container
-            ->get('elcodi.core.media.services.file_manager')
+            ->get('elcodi.core.media.service.file_manager')
             ->downloadFile($image);
 
         $this->assertEquals($imageData, $image->getContent());

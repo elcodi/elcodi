@@ -15,7 +15,7 @@ parameters:
     #
     # Form type classes
     #
-    elcodi.core.currency.form_types.currency.class: Elcodi\CurrencyBundle\Form\Type\CurrencyType
+    elcodi.core.currency.form_type.currency.class: Elcodi\CurrencyBundle\Form\Type\CurrencyType
 
     #
     # Service classes
@@ -26,4 +26,4 @@ parameters:
     #
     # Twig classes
     #
-    elcodi.core.currency.twig.print_price.class: Elcodi\CurrencyBundle\Twig\PrintPriceExtension
+    elcodi.core.currency.twig_extension.print_price.class: Elcodi\CurrencyBundle\Twig\PrintPriceExtension

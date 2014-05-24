@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  *
  * @author  * @version  */
- 
+
 namespace Elcodi\RuleBundle\Tests\Functional\Factory;
 
 use Elcodi\CoreBundle\Tests\WebTestCase;
@@ -40,4 +40,3 @@ class RuleGroupFactory extends WebTestCase
         );
     }
 }
- 

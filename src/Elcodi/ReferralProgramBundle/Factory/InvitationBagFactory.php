@@ -15,7 +15,7 @@
 namespace Elcodi\ReferralProgramBundle\Factory;
 
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
-use Elcodi\ReferralProgramBundle\Model\InvitationBag;
+use Elcodi\ReferralProgramBundle\Entity\InvitationBag;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**

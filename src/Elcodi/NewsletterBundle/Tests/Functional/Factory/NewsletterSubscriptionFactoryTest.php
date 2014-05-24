@@ -8,9 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author  * @version  */
+ * @author ##author_placeholder
+ * @version ##version_placeholder##
+ */
 
 namespace Elcodi\NewsletterBundle\Tests\Functional\Factory;
+
 use Elcodi\CoreBundle\Tests\WebTestCase;
 
 /**
@@ -26,5 +29,16 @@ class NewsletterSubscriptionFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return 'elcodi.core.newsletter.factory.newsletter_subscription';
+    }
+
+    /**
+     * Test newsletter_subscription factory provider
+     */
+    public function testFactoryProvider()
+    {
+        $this->assertInstanceOf(
+            $this->container->getParameter('elcodi.core.newsletter.entity.newsletter_subscription.class'),
+            $this->container->get('elcodi.core.newsletter.entity.newsletter_subscription.instance')
+        );
     }
 }

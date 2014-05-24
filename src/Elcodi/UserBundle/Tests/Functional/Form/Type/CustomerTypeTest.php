@@ -28,6 +28,6 @@ class CustomerTypeTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.user.form_types.customer';
+        return 'elcodi.core.user.form_type.customer';
     }
 }

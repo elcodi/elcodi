@@ -28,6 +28,6 @@ class ProductCollectionProviderTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.product.services.product_collection_provider';
+        return 'elcodi.core.product.service.product_collection_provider';
     }
 }

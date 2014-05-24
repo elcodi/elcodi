@@ -28,6 +28,6 @@ class LanguageManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.core.services.language_manager';
+        return 'elcodi.core.core.service.language_manager';
     }
 }

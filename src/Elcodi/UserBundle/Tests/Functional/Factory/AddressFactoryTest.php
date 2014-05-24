@@ -32,7 +32,7 @@ class AddressFactoryTest extends WebTestCase
     }
 
     /**
-     * Test customer factory provider
+     * Test address factory provider
      */
     public function testFactoryProvider()
     {

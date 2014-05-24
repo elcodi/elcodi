@@ -3,16 +3,16 @@ services:
     #
     # Services
     #
-    elcodi.core.product.services.category_manager:
-        class: %elcodi.core.product.services.category_manager.class%
-        parent: elcodi.core.core.services.abstract_cache_wrapper
+    elcodi.core.product.service.category_manager:
+        class: %elcodi.core.product.service.category_manager.class%
+        parent: elcodi.core.core.service.abstract_cache_wrapper
         calls:
             - [setKey, [%elcodi.core.product.menu_cache_key%]]
             - [setLoadOnlyCategoriesWithProducts, [%elcodi.core.product.load_only_categories_with_products%]]
             - [load]
 
-    elcodi.core.product.services.product_collection_provider:
-        class: %elcodi.core.product.services.product_collection_provider.class%
+    elcodi.core.product.service.product_collection_provider:
+        class: %elcodi.core.product.service.product_collection_provider.class%
         arguments:
             product_repository: @=service("doctrine.orm.entity_manager").getRepository(parameter("elcodi.core.product.entity.product.class"))
             locale: %locale%

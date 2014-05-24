@@ -17,3 +17,24 @@ services:
         class: %elcodi.core.product.factory.category.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.product.entity.category.class%"]]
+
+    #
+    # Entity providers
+    #
+    elcodi.core.product.entity.product.instance:
+        class: %elcodi.core.product.entity.product.class%
+        factory_service: elcodi.core.product.factory.product
+        factory_method: create
+        scope: prototype
+
+    elcodi.core.product.entity.manufacturer.instance:
+        class: %elcodi.core.product.entity.manufacturer.class%
+        factory_service: elcodi.core.product.factory.manufacturer
+        factory_method: create
+        scope: prototype
+
+    elcodi.core.product.entity.category.instance:
+        class: %elcodi.core.product.entity.category.class%
+        factory_service: elcodi.core.product.factory.category
+        factory_method: create
+        scope: prototype

@@ -64,6 +64,6 @@ class ReferralHashType extends AbstractType
      */
     public function getName()
     {
-        return 'elcodi_core_form_types_referralhash';
+        return 'elcodi_core_form_types_referral_hash';
     }
 }

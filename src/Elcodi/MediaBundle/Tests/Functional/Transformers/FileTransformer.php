@@ -28,6 +28,6 @@ class FileTransformer extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.media.transformers.file';
+        return 'elcodi.core.media.transformer.file';
     }
 }

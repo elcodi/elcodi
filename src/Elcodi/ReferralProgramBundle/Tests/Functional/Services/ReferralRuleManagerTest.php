@@ -31,7 +31,7 @@ class ReferralRuleManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.referral_program.services.referral_rule_manager';
+        return 'elcodi.core.referral_program.service.referral_rule_manager';
     }
 
     /**
@@ -73,7 +73,7 @@ class ReferralRuleManagerTest extends WebTestCase
         $referralRule = $manager->find('ElcodiReferralProgramBundle:ReferralRule', 4);
 
         $container
-            ->get('elcodi.core.referral_program.services.referral_rule_manager')
+            ->get('elcodi.core.referral_program.service.referral_rule_manager')
             ->enableReferralRule($referralRule);
 
         /**

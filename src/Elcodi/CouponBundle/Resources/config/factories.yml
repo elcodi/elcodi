@@ -7,3 +7,12 @@ services:
         class: %elcodi.core.coupon.factory.coupon.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.coupon.entity.coupon.class%"]]
+
+    #
+    # Entity providers
+    #
+    elcodi.core.coupon.entity.coupon.instance:
+        class: %elcodi.core.coupon.entity.coupon.class%
+        factory_service: elcodi.core.coupon.factory.coupon
+        factory_method: create
+        scope: prototype

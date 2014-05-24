@@ -3,17 +3,17 @@ services:
     #
     # Event Listeners
     #
-    elcodi.core.cart.event_listeners.cart:
-        class: %elcodi.core.cart.event_listeners.cart.class%
+    elcodi.core.cart.event_listener.cart:
+        class: %elcodi.core.cart.event_listener.cart.class%
         arguments:
-            order_manager: @elcodi.core.cart.services.cart_manager
+            order_manager: @elcodi.core.cart.service.cart_manager
             entity_manager: @doctrine.orm.entity_manager
         tags:
             - { name: kernel.event_listener, event: cart.oncheck, method: onCartCheck }
             - { name: kernel.event_listener, event: cart.onload, method: onCartLoad }
 
-    elcodi.core.cart.event_listeners.order_line_state:
-        class: %elcodi.core.cart.event_listeners.order_line_state.class%
+    elcodi.core.cart.event_listener.order_line_state:
+        class: %elcodi.core.cart.event_listener.order_line_state.class%
         arguments:
             entity_manager: @doctrine.orm.entity_manager
             event_dispatcher: @event_dispatcher

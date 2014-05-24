@@ -1,6 +1,18 @@
 services:
 
+    #
+    # Factories
+    #
     elcodi.core.media.factory.image:
         class: %elcodi.core.media.factory.image.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.media.entity.image.class%"]]
+
+    #
+    # Entity providers
+    #
+    elcodi.core.media.entity.image.instance:
+        class: %elcodi.core.media.entity.image.class%
+        factory_service: elcodi.core.media.factory.image
+        factory_method: create
+        scope: prototype

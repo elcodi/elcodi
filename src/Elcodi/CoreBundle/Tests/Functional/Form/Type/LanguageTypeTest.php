@@ -29,6 +29,6 @@ class LanguageTypeTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.core.form_types.language';
+        return 'elcodi.core.core.form_type.language';
     }
 }

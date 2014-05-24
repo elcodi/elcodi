@@ -12,3 +12,18 @@ services:
         class: %elcodi.core.cart_coupon.factory.order_coupon.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.cart_coupon.entity.order_coupon.class%"]]
+
+    #
+    # Entity providers
+    #
+    elcodi.core.cart_coupon.entity.cart_coupon.instance:
+        class: %elcodi.core.cart_coupon.entity.cart_coupon.class%
+        factory_service: elcodi.core.cart_coupon.factory.cart_coupon
+        factory_method: create
+        scope: prototype
+
+    elcodi.core.cart_coupon.entity.order_coupon.instance:
+        class: %elcodi.core.cart_coupon.entity.order_coupon.class%
+        factory_service: elcodi.core.cart_coupon.factory.order_coupon
+        factory_method: create
+        scope: prototype

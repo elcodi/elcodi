@@ -41,7 +41,7 @@ class OrderLineManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.cart.services.order_line_manager';
+        return 'elcodi.core.cart.service.order_line_manager';
     }
 
     /**
@@ -67,7 +67,7 @@ class OrderLineManagerTest extends WebTestCase
          * @var OrderLineInterface $orderLine
          * @var OrderLineInterface $secondaryOrderLine
          */
-        $orderLineManager = $this->container->get('elcodi.core.cart.services.order_line_manager');
+        $orderLineManager = $this->container->get('elcodi.core.cart.service.order_line_manager');
         $order = $this->container->get('elcodi.core.cart.factory.order')->create();
         $orderLine = $this->container->get('elcodi.core.cart.factory.order_line')->create()->setQuantity(1);
         $secondaryOrderLine = $this->container->get('elcodi.core.cart.factory.order_line')->create()->setQuantity(1);

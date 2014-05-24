@@ -7,3 +7,12 @@ services:
         class: %elcodi.core.newsletter.factory.newsletter_subscription.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.newsletter.entity.newsletter_subscription.class%"]]
+
+    #
+    # Entity providers
+    #
+    elcodi.core.newsletter.entity.newsletter_subscription.instance:
+        class: %elcodi.core.newsletter.entity.newsletter_subscription.class%
+        factory_service: elcodi.core.newsletter.factory.newsletter_subscription
+        factory_method: create
+        scope: prototype

@@ -29,6 +29,6 @@ class BannerTypeTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.banner.form_types.banner';
+        return 'elcodi.core.banner.form_type.banner';
     }
 }

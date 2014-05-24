@@ -29,6 +29,6 @@ class OrderLineStateEventListenerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.cart.event_listeners.order_line_state';
+        return 'elcodi.core.cart.event_listener.order_line_state';
     }
 }

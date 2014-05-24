@@ -50,7 +50,7 @@ class OrderManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.cart.services.order_manager';
+        return 'elcodi.core.cart.service.order_manager';
     }
 
     /**
@@ -88,7 +88,7 @@ class OrderManagerTest extends WebTestCase
         /**
          * @var OrderManager $orderManager
          */
-        $orderManager = $this->container->get('elcodi.core.cart.services.order_manager');
+        $orderManager = $this->container->get('elcodi.core.cart.service.order_manager');
         $orderInitialState = $this->container->getParameter('elcodi.core.cart.order_initial_state');
         $order = $orderManager->createOrderFromCart($this->cart);
 
@@ -136,7 +136,7 @@ class OrderManagerTest extends WebTestCase
      */
     public function testCheckChangeToStateNotAllowed()
     {
-        $orderManager = $this->container->get('elcodi.core.cart.services.order_manager');
+        $orderManager = $this->container->get('elcodi.core.cart.service.order_manager');
         $order = $orderManager->createOrderFromCart($this->cart);
         $orderManager->toState($order, 'no-exists');
     }
@@ -149,7 +149,7 @@ class OrderManagerTest extends WebTestCase
         /**
          * @var OrderManager $orderManager
          */
-        $orderManager = $this->container->get('elcodi.core.cart.services.order_manager');
+        $orderManager = $this->container->get('elcodi.core.cart.service.order_manager');
         $order = $orderManager->createOrderFromCart($this->cart);
         $orderManager->toState($order, 'accepted');
         $this->assertCount(2, $order->getOrderHistories());

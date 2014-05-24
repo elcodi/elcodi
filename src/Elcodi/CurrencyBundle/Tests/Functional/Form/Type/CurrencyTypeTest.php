@@ -28,6 +28,6 @@ class CurrencyTypeTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.currency.form_types.currency';
+        return 'elcodi.core.currency.form_type.currency';
     }
 }

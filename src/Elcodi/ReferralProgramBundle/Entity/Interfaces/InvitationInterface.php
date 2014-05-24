@@ -12,7 +12,7 @@
  * @version ##version_placeholder##
  */
 
-namespace Elcodi\ReferralProgramBundle\Model\Interfaces;
+namespace Elcodi\ReferralProgramBundle\Entity\Interfaces;
 
 /**
  * Class InvitationInterface

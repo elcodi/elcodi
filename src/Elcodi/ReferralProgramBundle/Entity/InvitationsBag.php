@@ -12,7 +12,7 @@
  * @version ##version_placeholder##
  */
 
-namespace Elcodi\ReferralProgramBundle\Model;
+namespace Elcodi\ReferralProgramBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 

@@ -8,8 +8,22 @@ services:
         calls:
             - [setEntityNamespace, ["%elcodi.core.banner.entity.banner.class%"]]
 
-
     elcodi.core.banner.factory.bannerzone:
         class: %elcodi.core.banner.factory.bannerzone.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.banner.entity.bannerzone.class%"]]
+
+    #
+    # Entity providers
+    #
+    elcodi.core.banner.entity.banner.instance:
+        class: %elcodi.core.banner.entity.banner.class%
+        factory_service: elcodi.core.banner.factory.banner
+        factory_method: create
+        scope: prototype
+
+    elcodi.core.banner.entity.bannerzone.instance:
+        class: %elcodi.core.banner.entity.bannerzone.class%
+        factory_service: elcodi.core.banner.factory.bannerzone
+        factory_method: create
+        scope: prototype

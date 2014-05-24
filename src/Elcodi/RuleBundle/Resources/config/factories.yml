@@ -1,7 +1,7 @@
 services:
 
     #
-    # factories
+    # Factories
     #
     elcodi.core.rule.factory.rule:
         class: %elcodi.core.rule.factory.rule.class%
@@ -25,13 +25,16 @@ services:
         class: %elcodi.core.rule.entity.rule.class%
         factory_service: elcodi.core.rule.factory.rule
         factory_method: create
+        scope: prototype
 
     elcodi.core.rule.entity.rule_group.instance:
         class: %elcodi.core.rule.entity.rule_group.class%
         factory_service: elcodi.core.rule.factory.rule_group
         factory_method: create
+        scope: prototype
 
     elcodi.core.rule.entity.expression.instance:
         class: %elcodi.core.rule.entity.expression.class%
         factory_service: elcodi.core.rule.factory.expression
         factory_method: create
+        scope: prototype
