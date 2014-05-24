@@ -28,7 +28,10 @@ class ReferralLineFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.referral_program.factory.referral_line';
+        return [
+            'elcodi.core.referral_program.factory.referral_line',
+            'elcodi.factory.referral_line',
+        ];
     }
 
     /**
@@ -39,6 +42,17 @@ class ReferralLineFactoryTest extends WebTestCase
         $this->assertInstanceOf(
             $this->container->getParameter('elcodi.core.referral_program.entity.referral_line.class'),
             $this->container->get('elcodi.core.referral_program.entity.referral_line.instance')
+        );
+    }
+
+    /**
+     * Test referral_line factory provider alias
+     */
+    public function testFactoryProviderAlias()
+    {
+        $this->assertInstanceOf(
+            $this->container->getParameter('elcodi.core.referral_program.entity.referral_line.class'),
+            $this->container->get('elcodi.entity.referral_line.instance')
         );
     }
 }

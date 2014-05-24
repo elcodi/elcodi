@@ -6,6 +6,11 @@ parameters:
     elcodi.core.media.entity.image.class: Elcodi\MediaBundle\Entity\Image
 
     #
+    # Repositories
+    #
+    elcodi.core.media.repository.image.class: Elcodi\MediaBundle\Repository\ImageRepository
+
+    #
     # Factories
     #
     elcodi.core.media.factory.image.class: Elcodi\MediaBundle\Factory\ImageFactory

@@ -1,0 +1,44 @@
+services:
+
+    #
+    # Repositories
+    #
+
+    #
+    # Repository for entity rule
+    #
+    elcodi.core.rule.repository.rule:
+        class: %elcodi.core.rule.repository.rule.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.rule.entity.rule.class%
+
+    elcodi.repository.rule:
+        alias: elcodi.core.rule.repository.rule
+
+    #
+    # Repository for entity rule_group
+    #
+    elcodi.core.rule.repository.rule_group:
+        class: %elcodi.core.rule.repository.rule_group.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.rule.entity.rule_group.class%
+
+    elcodi.repository.rule_group:
+        alias: elcodi.core.rule.repository.rule_group
+
+    #
+    # Repository for entity expression
+    #
+    elcodi.core.rule.repository.expression:
+        class: %elcodi.core.rule.repository.expression.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.rule.entity.expression.class%
+
+    elcodi.repository.expression:
+        alias: elcodi.core.rule.repository.expression

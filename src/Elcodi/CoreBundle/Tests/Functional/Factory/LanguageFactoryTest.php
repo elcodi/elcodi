@@ -28,7 +28,10 @@ class LanguageFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.core.factory.language';
+        return [
+            'elcodi.core.core.factory.language',
+            'elcodi.factory.language',
+        ];
     }
 
     /**
@@ -39,6 +42,17 @@ class LanguageFactoryTest extends WebTestCase
         $this->assertInstanceOf(
             $this->container->getParameter('elcodi.core.core.entity.language.class'),
             $this->container->get('elcodi.core.core.entity.language.instance')
+        );
+    }
+
+    /**
+     * Test language factory provider alias
+     */
+    public function testFactoryProviderAlias()
+    {
+        $this->assertInstanceOf(
+            $this->container->getParameter('elcodi.core.core.entity.language.class'),
+            $this->container->get('elcodi.entity.language.instance')
         );
     }
 }

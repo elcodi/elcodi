@@ -1,0 +1,83 @@
+services:
+
+    #
+    # Repositories
+    #
+
+    #
+    # Repository for entity cart
+    #
+    elcodi.core.cart.repository.cart:
+        class: %elcodi.core.cart.repository.cart.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.cart.entity.cart.class%
+
+    elcodi.repository.cart:
+        alias: elcodi.core.cart.repository.cart
+
+    #
+    # Repository for entity order
+    #
+    elcodi.core.cart.repository.order:
+        class: %elcodi.core.cart.repository.order.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.cart.entity.order.class%
+
+    elcodi.repository.order:
+        alias: elcodi.core.cart.repository.order
+
+    #
+    # Repository for entity cart_line
+    #
+    elcodi.core.cart.repository.cart_line:
+        class: %elcodi.core.cart.repository.cart_line.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.cart.entity.cart_line.class%
+
+    elcodi.repository.cart_line:
+        alias: elcodi.core.cart.repository.cart_line
+
+    #
+    # Repository for entity order_line
+    #
+    elcodi.core.cart.repository.order_line:
+        class: %elcodi.core.cart.repository.order_line.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.cart.entity.order_line.class%
+
+    elcodi.repository.order_line:
+        alias: elcodi.core.cart.repository.order_line
+
+    #
+    # Repository for entity order_history
+    #
+    elcodi.core.cart.repository.order_history:
+        class: %elcodi.core.cart.repository.order_history.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.cart.entity.order_history.class%
+
+    elcodi.repository.order_history:
+        alias: elcodi.core.cart.repository.order_history
+
+    #
+    # Repository for entity order_line_history
+    #
+    elcodi.core.cart.repository.order_line_history:
+        class: %elcodi.core.cart.repository.order_line_history.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.cart.entity.order_line_history.class%
+
+    elcodi.repository.order_line_history:
+        alias: elcodi.core.cart.repository.order_line_history

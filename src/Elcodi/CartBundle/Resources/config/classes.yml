@@ -11,6 +11,16 @@ parameters:
     elcodi.core.cart.entity.order_line_history.class: Elcodi\CartBundle\Entity\OrderLineHistory
 
     #
+    # Repositories
+    #
+    elcodi.core.cart.repository.cart.class: Elcodi\CartBundle\Repository\CartRepository
+    elcodi.core.cart.repository.order.class: Elcodi\CartBundle\Repository\OrderRepository
+    elcodi.core.cart.repository.cart_line.class: Elcodi\CartBundle\Repository\CartLineRepository
+    elcodi.core.cart.repository.order_line.class: Elcodi\CartBundle\Repository\OrderLineRepository
+    elcodi.core.cart.repository.order_history.class: Elcodi\CartBundle\Repository\OrderHistoryRepository
+    elcodi.core.cart.repository.order_line_history.class: Elcodi\CartBundle\Repository\OrderLineHistoryRepository
+
+    #
     # Services
     #
     elcodi.core.cart.service.cart_manager.class: Elcodi\CartBundle\Services\CartManager

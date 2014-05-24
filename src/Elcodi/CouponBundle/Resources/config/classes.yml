@@ -6,6 +6,11 @@ parameters:
     elcodi.core.coupon.entity.coupon.class: Elcodi\CouponBundle\Entity\Coupon
 
     #
+    # Repository
+    #
+    elcodi.core.coupon.repository.coupon.class: Elcodi\CouponBundle\Repository\CouponRepository
+
+    #
     # Services
     #
     elcodi.core.coupon.service.coupon_manager.class: Elcodi\CouponBundle\Services\CouponManager

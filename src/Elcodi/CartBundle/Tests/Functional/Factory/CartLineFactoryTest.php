@@ -28,7 +28,10 @@ class CartLineFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.cart.factory.cart_line';
+        return [
+            'elcodi.core.cart.factory.cart_line',
+            'elcodi.factory.cart_line',
+        ];
     }
 
     /**
@@ -39,6 +42,17 @@ class CartLineFactoryTest extends WebTestCase
         $this->assertInstanceOf(
             $this->container->getParameter('elcodi.core.cart.entity.cart_line.class'),
             $this->container->get('elcodi.core.cart.entity.cart_line.instance')
+        );
+    }
+
+    /**
+     * Test cart_line factory provider alias
+     */
+    public function testFactoryProviderAlias()
+    {
+        $this->assertInstanceOf(
+            $this->container->getParameter('elcodi.core.cart.entity.cart_line.class'),
+            $this->container->get('elcodi.entity.cart_line.instance')
         );
     }
 }

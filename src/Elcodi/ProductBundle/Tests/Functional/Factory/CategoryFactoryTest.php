@@ -28,7 +28,10 @@ class CategoryFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.product.factory.category';
+        return [
+            'elcodi.core.product.factory.category',
+            'elcodi.factory.category',
+        ];
     }
 
     /**
@@ -39,6 +42,17 @@ class CategoryFactoryTest extends WebTestCase
         $this->assertInstanceOf(
             $this->container->getParameter('elcodi.core.product.entity.category.class'),
             $this->container->get('elcodi.core.product.entity.category.instance')
+        );
+    }
+
+    /**
+     * Test category factory provider alias
+     */
+    public function testFactoryProviderAlias()
+    {
+        $this->assertInstanceOf(
+            $this->container->getParameter('elcodi.core.product.entity.category.class'),
+            $this->container->get('elcodi.entity.category.instance')
         );
     }
 }

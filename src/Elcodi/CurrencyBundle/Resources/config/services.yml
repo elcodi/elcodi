@@ -2,8 +2,8 @@ services:
     elcodi.core.currency.manager.currency_manager:
         class: %elcodi.core.currency.manager.currency_manager.class%
         arguments:
-            currency_repo: @=service('doctrine').getRepository(parameter('elcodi.core.currency.entity.currency.class'))
-            exchange_rates_repo: @=service('doctrine').getRepository(parameter('elcodi.core.currency.entity.currency_exchange_rate.class'))
+            currency_repository: @elcodi.core.currency.repository.currency
+            exchange_rates_repository: @elcodi.core.currency.repository.currency_exchange_rate
 
     elcodi.core.currency.service.exchange_rates_provider:
         class: %elcodi.core.currency.service.exchange_rates_provider.class%

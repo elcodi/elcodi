@@ -28,7 +28,10 @@ class RuleFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.rule.factory.rule';
+        return [
+            'elcodi.core.rule.factory.rule',
+            'elcodi.factory.rule',
+        ];
     }
 
     /**
@@ -39,6 +42,17 @@ class RuleFactoryTest extends WebTestCase
         $this->assertInstanceOf(
             $this->container->getParameter('elcodi.core.rule.entity.rule.class'),
             $this->container->get('elcodi.core.rule.entity.rule.instance')
+        );
+    }
+
+    /**
+     * Test rule factory provider alias
+     */
+    public function testFactoryProviderAlias()
+    {
+        $this->assertInstanceOf(
+            $this->container->getParameter('elcodi.core.rule.entity.rule.class'),
+            $this->container->get('elcodi.entity.rule.instance')
         );
     }
 }

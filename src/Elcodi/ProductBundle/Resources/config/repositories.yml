@@ -1,0 +1,44 @@
+services:
+
+    #
+    # Repositories
+    #
+
+    #
+    # Repository for entity product
+    #
+    elcodi.core.product.repository.product:
+        class: %elcodi.core.product.repository.product.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.product.entity.product.class%
+
+    elcodi.repository.product:
+        alias: elcodi.core.product.repository.product
+
+    #
+    # Repository for entity category
+    #
+    elcodi.core.product.repository.category:
+        class: %elcodi.core.product.repository.category.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.product.entity.category.class%
+
+    elcodi.repository.category:
+        alias: elcodi.core.product.repository.category
+
+    #
+    # Repository for entity manufacturer
+    #
+    elcodi.core.product.repository.manufacturer:
+        class: %elcodi.core.product.repository.manufacturer.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.product.entity.manufacturer.class%
+
+    elcodi.repository.manufacturer:
+        alias: elcodi.core.product.repository.manufacturer

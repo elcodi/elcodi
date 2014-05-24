@@ -28,7 +28,10 @@ class CurrencyExchangeRateFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.currency.factory.currency_exchange_rate';
+        return [
+            'elcodi.core.currency.factory.currency_exchange_rate',
+            'elcodi.factory.currency_exchange_rate',
+        ];
     }
 
     /**
@@ -39,6 +42,17 @@ class CurrencyExchangeRateFactoryTest extends WebTestCase
         $this->assertInstanceOf(
             $this->container->getParameter('elcodi.core.currency.entity.currency_exchange_rate.class'),
             $this->container->get('elcodi.core.currency.entity.currency_exchange_rate.instance')
+        );
+    }
+
+    /**
+     * Test currency_exchange_rate factory provider alias
+     */
+    public function testFactoryProviderAlias()
+    {
+        $this->assertInstanceOf(
+            $this->container->getParameter('elcodi.core.currency.entity.currency_exchange_rate.class'),
+            $this->container->get('elcodi.entity.currency_exchange_rate.instance')
         );
     }
 }

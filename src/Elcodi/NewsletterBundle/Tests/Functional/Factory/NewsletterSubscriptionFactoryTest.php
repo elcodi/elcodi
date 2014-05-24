@@ -28,7 +28,10 @@ class NewsletterSubscriptionFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.newsletter.factory.newsletter_subscription';
+        return [
+            'elcodi.core.newsletter.factory.newsletter_subscription',
+            'elcodi.factory.newsletter_subscription',
+        ];
     }
 
     /**
@@ -39,6 +42,17 @@ class NewsletterSubscriptionFactoryTest extends WebTestCase
         $this->assertInstanceOf(
             $this->container->getParameter('elcodi.core.newsletter.entity.newsletter_subscription.class'),
             $this->container->get('elcodi.core.newsletter.entity.newsletter_subscription.instance')
+        );
+    }
+
+    /**
+     * Test newsletter_subscription factory provider alias
+     */
+    public function testFactoryProviderAlias()
+    {
+        $this->assertInstanceOf(
+            $this->container->getParameter('elcodi.core.newsletter.entity.newsletter_subscription.class'),
+            $this->container->get('elcodi.entity.newsletter_subscription.instance')
         );
     }
 }

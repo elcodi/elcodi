@@ -84,6 +84,7 @@ class ElcodiCartExtension extends AbstractExtension implements EntitiesOverridab
             'eventListeners',
             'services',
             'factories',
+            'repositories',
         ];
     }
 

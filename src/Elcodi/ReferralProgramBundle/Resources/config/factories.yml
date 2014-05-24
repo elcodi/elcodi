@@ -3,33 +3,68 @@ services:
     #
     # Factories
     #
+
+    #
+    # Factory for entity referral_rule
+    #
     elcodi.core.referral_program.factory.referral_rule:
         class: %elcodi.core.referral_program.factory.referral_rule.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.referral_program.entity.referral_rule.class%"]]
 
+    elcodi.factory.referral_rule:
+        alias: elcodi.core.referral_program.factory.referral_rule
+
+    #
+    # Factory for entity referral_line
+    #
     elcodi.core.referral_program.factory.referral_line:
         class: %elcodi.core.referral_program.factory.referral_line.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.referral_program.entity.referral_line.class%"]]
 
+    elcodi.factory.referral_line:
+        alias: elcodi.core.referral_program.factory.referral_line
+
+    #
+    # Factory for entity referral_hash
+    #
     elcodi.core.referral_program.factory.referral_hash:
         class: %elcodi.core.referral_program.factory.referral_hash.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.referral_program.entity.referral_hash.class%"]]
 
+    elcodi.factory.referral_hash:
+        alias: elcodi.core.referral_program.factory.referral_hash
+
+    #
+    # Factory for entity invitation
+    #
     elcodi.core.referral_program.factory.invitation:
         class: %elcodi.core.referral_program.factory.invitation.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.referral_program.entity.invitation.class%"]]
 
+    elcodi.factory.invitation:
+        alias: elcodi.core.referral_program.factory.invitation
+
+    #
+    # Factory for entity invitation_bag
+    #
     elcodi.core.referral_program.factory.invitation_bag:
         class: %elcodi.core.referral_program.factory.invitation_bag.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.referral_program.entity.invitation_bag.class%"]]
 
+    elcodi.factory.invitation_bag:
+        alias: elcodi.core.referral_program.factory.invitation_bag
+
     #
     # Entity providers
+    #
+
+    #
+    # Instance provider for entity referral_rule
     #
     elcodi.core.referral_program.entity.referral_rule.instance:
         class: %elcodi.core.referral_program.entity.referral_rule.class%
@@ -37,26 +72,53 @@ services:
         factory_method: create
         scope: prototype
 
+    elcodi.entity.referral_rule.instance:
+        alias: elcodi.core.referral_program.entity.referral_rule.instance
+
+    #
+    # Instance provider for entity referral_line
+    #
     elcodi.core.referral_program.entity.referral_line.instance:
         class: %elcodi.core.referral_program.entity.referral_line.class%
         factory_service: elcodi.core.referral_program.factory.referral_line
         factory_method: create
         scope: prototype
 
+    elcodi.entity.referral_line.instance:
+        alias: elcodi.core.referral_program.entity.referral_line.instance
+
+    #
+    # Instance provider for entity referral_hash
+    #
     elcodi.core.referral_program.entity.referral_hash.instance:
         class: %elcodi.core.referral_program.entity.referral_hash.class%
         factory_service: elcodi.core.referral_program.factory.referral_hash
         factory_method: create
         scope: prototype
 
+    elcodi.entity.referral_hash.instance:
+        alias: elcodi.core.referral_program.entity.referral_hash.instance
+
+    #
+    # Instance provider for entity invitation
+    #
     elcodi.core.referral_program.entity.invitation.instance:
         class: %elcodi.core.referral_program.entity.invitation.class%
         factory_service: elcodi.core.referral_program.factory.invitation
         factory_method: create
         scope: prototype
 
+    elcodi.entity.invitation.instance:
+        alias: elcodi.core.referral_program.entity.invitation.instance
+
+    #
+    # Instance provider for entity invitation_bag
+    #
     elcodi.core.referral_program.entity.invitation_bag.instance:
         class: %elcodi.core.referral_program.entity.invitation_bag.class%
         factory_service: elcodi.core.referral_program.factory.invitation_bag
         factory_method: create
         scope: prototype
+
+    elcodi.entity.invitation_bag.instance:
+        alias: elcodi.core.referral_program.entity.invitation_bag.instance

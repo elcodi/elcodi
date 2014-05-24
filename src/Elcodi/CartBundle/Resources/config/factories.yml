@@ -3,42 +3,83 @@ services:
     #
     # Factories
     #
+
+    #
+    # Factory for entity cart
+    #
     elcodi.core.cart.factory.cart:
         class: %elcodi.core.cart.factory.cart.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.cart.entity.cart.class%"]]
 
+    elcodi.factory.cart:
+        alias: elcodi.core.cart.factory.cart
+
+    #
+    # Factory for entity order
+    #
     elcodi.core.cart.factory.order:
         class: %elcodi.core.cart.factory.order.class%
         calls:
-            - [setEntityNamespace, [%elcodi.core.cart.entity.order.class%]]
-            - [setOrderHistoryFactory, [@elcodi.core.cart.factory.order_history]]
-            - [setInitialOrderHistoryState, [%elcodi.core.cart.order_initial_state%]]
+            - [setEntityNamespace, ["%elcodi.core.cart.entity.order.class%"]]
+            - [setOrderHistoryFactory, ["@elcodi.core.cart.factory.order_history"]]
+            - [setInitialOrderHistoryState, ["%elcodi.core.cart.order_initial_state%"]]
 
+    elcodi.factory.order:
+        alias: elcodi.core.cart.factory.order
+
+    #
+    # Factory for entity cart_line
+    #
     elcodi.core.cart.factory.cart_line:
         class: %elcodi.core.cart.factory.cart_line.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.cart.entity.cart_line.class%"]]
 
+    elcodi.factory.cart_line:
+        alias: elcodi.core.cart.factory.cart_line
+
+    #
+    # Factory for entity order_line
+    #
     elcodi.core.cart.factory.order_line:
         class: %elcodi.core.cart.factory.order_line.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.cart.entity.order_line.class%"]]
-            - [setOrderLineHistoryFactory, [@elcodi.core.cart.factory.order_line_history]]
-            - [setInitialOrderHistoryState, [%elcodi.core.cart.order_initial_state%]]
+            - [setOrderLineHistoryFactory, ["@elcodi.core.cart.factory.order_line_history"]]
+            - [setInitialOrderHistoryState, ["%elcodi.core.cart.order_initial_state%"]]
 
+    elcodi.factory.order_line:
+        alias: elcodi.core.cart.factory.order_line
+
+    #
+    # Factory for entity order_history
+    #
     elcodi.core.cart.factory.order_history:
         class: %elcodi.core.cart.factory.order_history.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.cart.entity.order_history.class%"]]
 
+    elcodi.factory.order_history:
+        alias: elcodi.core.cart.factory.order_history
+
+    #
+    # Factory for entity order_line_history
+    #
     elcodi.core.cart.factory.order_line_history:
         class: %elcodi.core.cart.factory.order_line_history.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.cart.entity.order_line_history.class%"]]
 
+    elcodi.factory.order_line_history:
+        alias: elcodi.core.cart.factory.order_line_history
+
     #
     # Entity providers
+    #
+
+    #
+    # Instance provider for entity cart
     #
     elcodi.core.cart.entity.cart.instance:
         class: %elcodi.core.cart.entity.cart.class%
@@ -46,32 +87,65 @@ services:
         factory_method: create
         scope: prototype
 
+    elcodi.entity.cart.instance:
+        alias: elcodi.core.cart.entity.cart.instance
+
+    #
+    # Instance provider for entity order
+    #
     elcodi.core.cart.entity.order.instance:
         class: %elcodi.core.cart.entity.order.class%
         factory_service: elcodi.core.cart.factory.order
         factory_method: create
         scope: prototype
 
+    elcodi.entity.order.instance:
+        alias: elcodi.core.cart.entity.order.instance
+
+    #
+    # Instance provider for entity cart_line
+    #
     elcodi.core.cart.entity.cart_line.instance:
         class: %elcodi.core.cart.entity.cart_line.class%
         factory_service: elcodi.core.cart.factory.cart_line
         factory_method: create
         scope: prototype
 
+    elcodi.entity.cart_line.instance:
+        alias: elcodi.core.cart.entity.cart_line.instance
+
+    #
+    # Instance provider for entity order_line
+    #
     elcodi.core.cart.entity.order_line.instance:
         class: %elcodi.core.cart.entity.order_line.class%
         factory_service: elcodi.core.cart.factory.order_line
         factory_method: create
         scope: prototype
 
+    elcodi.entity.order_line.instance:
+        alias: elcodi.core.cart.entity.order_line.instance
+
+    #
+    # Instance provider for entity order_history
+    #
     elcodi.core.cart.entity.order_history.instance:
         class: %elcodi.core.cart.entity.order_history.class%
         factory_service: elcodi.core.cart.factory.order_history
         factory_method: create
         scope: prototype
 
+    elcodi.entity.order_history.instance:
+        alias: elcodi.core.cart.entity.order_history.instance
+
+    #
+    # Instance provider for entity order_line_history
+    #
     elcodi.core.cart.entity.order_line_history.instance:
         class: %elcodi.core.cart.entity.order_line_history.class%
         factory_service: elcodi.core.cart.factory.order_line_history
         factory_method: create
         scope: prototype
+
+    elcodi.entity.order_line_history.instance:
+        alias: elcodi.core.cart.entity.order_line_history.instance

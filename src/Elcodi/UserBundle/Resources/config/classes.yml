@@ -7,6 +7,12 @@ parameters:
     elcodi.core.user.entity.address.class: Elcodi\UserBundle\Entity\Address
 
     #
+    # Entities
+    #
+    elcodi.core.user.repository.customer.class: Elcodi\UserBundle\Repository\CustomerRepository
+    elcodi.core.user.repository.address.class: Elcodi\UserBundle\Repository\AddressRepository
+
+    #
     # Services
     #
     elcodi.core.user.service.password_manager.class: Elcodi\UserBundle\Services\PasswordManager

@@ -28,7 +28,10 @@ class ReferralRuleFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.referral_program.factory.referral_rule';
+        return [
+            'elcodi.core.referral_program.factory.referral_rule',
+            'elcodi.factory.referral_rule',
+        ];
     }
 
     /**
@@ -39,6 +42,17 @@ class ReferralRuleFactoryTest extends WebTestCase
         $this->assertInstanceOf(
             $this->container->getParameter('elcodi.core.referral_program.entity.referral_rule.class'),
             $this->container->get('elcodi.core.referral_program.entity.referral_rule.instance')
+        );
+    }
+
+    /**
+     * Test referral_rule factory provider alias
+     */
+    public function testFactoryProviderAlias()
+    {
+        $this->assertInstanceOf(
+            $this->container->getParameter('elcodi.core.referral_program.entity.referral_rule.class'),
+            $this->container->get('elcodi.entity.referral_rule.instance')
         );
     }
 }

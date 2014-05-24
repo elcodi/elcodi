@@ -16,38 +16,12 @@ services:
     elcodi.core.core.service.language_manager:
         class: %elcodi.core.core.service.language_manager.class%
         arguments:
-            language_repository:  @=service("doctrine.orm.entity_manager").getRepository(parameter("elcodi.core.core.entity.language.class"))
+            language_repository:  @elcodi.core.core.repository.language
 
     elcodi.core.core.service.locale_manager:
         class: %elcodi.core.core.service.locale_manager.class%
         arguments:
             locale: @=service("request_stack").getCurrentRequest() ? service("request_stack").getCurrentRequest().getLocale() : parameter("locale")
-
-    #
-    # Providers
-    #
-    elcodi.container_parameters:
-        class: Symfony\Component\DependencyInjection\ParameterBag\ParameterBag
-        factory_service: service_container
-        factory_method: getParameterBag
-
-    elcodi.core.core.service.manager_provider:
-        class: %elcodi.core.core.service.manager_provider.class%
-        arguments:
-            manager: @doctrine
-            parameters_bag: @elcodi.container_parameters
-
-    elcodi.manager_provider:
-        alias: elcodi.core.core.service.manager_provider
-
-    elcodi.core.core.service.repository_provider:
-        class: %elcodi.core.core.service.repository_provider.class%
-        arguments:
-            manager_provider: @elcodi.manager_provider
-            parameters_bag: @elcodi.container_parameters
-
-    elcodi.repository_provider:
-        alias: elcodi.core.core.service.repository_provider
 
     #
     # Generators

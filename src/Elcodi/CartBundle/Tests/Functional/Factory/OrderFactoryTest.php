@@ -28,7 +28,10 @@ class OrderFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.cart.factory.order';
+        return [
+            'elcodi.core.cart.factory.order',
+            'elcodi.factory.order',
+        ];
     }
 
     /**
@@ -39,6 +42,17 @@ class OrderFactoryTest extends WebTestCase
         $this->assertInstanceOf(
             $this->container->getParameter('elcodi.core.cart.entity.order.class'),
             $this->container->get('elcodi.core.cart.entity.order.instance')
+        );
+    }
+
+    /**
+     * Test order factory provider alias
+     */
+    public function testFactoryProviderAlias()
+    {
+        $this->assertInstanceOf(
+            $this->container->getParameter('elcodi.core.cart.entity.order.class'),
+            $this->container->get('elcodi.entity.order.instance')
         );
     }
 }

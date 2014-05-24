@@ -28,7 +28,10 @@ class ManufacturerFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.product.factory.manufacturer';
+        return [
+            'elcodi.core.product.factory.manufacturer',
+            'elcodi.factory.manufacturer',
+        ];
     }
 
     /**
@@ -39,6 +42,17 @@ class ManufacturerFactoryTest extends WebTestCase
         $this->assertInstanceOf(
             $this->container->getParameter('elcodi.core.product.entity.manufacturer.class'),
             $this->container->get('elcodi.core.product.entity.manufacturer.instance')
+        );
+    }
+
+    /**
+     * Test manufacturer factory provider alias
+     */
+    public function testFactoryProviderAlias()
+    {
+        $this->assertInstanceOf(
+            $this->container->getParameter('elcodi.core.product.entity.manufacturer.class'),
+            $this->container->get('elcodi.entity.manufacturer.instance')
         );
     }
 }

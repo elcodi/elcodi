@@ -28,7 +28,10 @@ class CartCouponFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.cart_coupon.factory.cart_coupon';
+        return [
+            'elcodi.core.cart_coupon.factory.cart_coupon',
+            'elcodi.factory.cart_coupon',
+        ];
     }
 
     /**
@@ -39,6 +42,17 @@ class CartCouponFactoryTest extends WebTestCase
         $this->assertInstanceOf(
             $this->container->getParameter('elcodi.core.cart_coupon.entity.cart_coupon.class'),
             $this->container->get('elcodi.core.cart_coupon.entity.cart_coupon.instance')
+        );
+    }
+
+    /**
+     * Test cart_coupon factory provider alias
+     */
+    public function testFactoryProviderAlias()
+    {
+        $this->assertInstanceOf(
+            $this->container->getParameter('elcodi.core.cart_coupon.entity.cart_coupon.class'),
+            $this->container->get('elcodi.entity.cart_coupon.instance')
         );
     }
 }

@@ -20,7 +20,7 @@ services:
     elcodi.core.user.wrapper.customer_wrapper:
         class: %elcodi.core.user.wrapper.customer_wrapper.class%
         arguments:
-            customer_repository: @=service("doctrine.orm.entity_manager").getRepository(parameter("elcodi.core.user.entity.customer.class"))
+            customer_repository: @elcodi.core.user.repository.customer
             entity_manager: @doctrine.orm.entity_manager
             session: @session
             customer_factory: @elcodi.core.user.factory.customer

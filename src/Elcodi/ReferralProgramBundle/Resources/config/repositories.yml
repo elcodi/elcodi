@@ -1,0 +1,70 @@
+services:
+
+    #
+    # Repositories
+    #
+
+    #
+    # Repository for entity referral_hash
+    #
+    elcodi.core.referral_program.repository.referral_hash:
+        class: %elcodi.core.referral_program.repository.referral_hash.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.referral_program.entity.referral_hash.class%
+
+    elcodi.repository.referral_hash:
+        alias: elcodi.core.referral_program.repository.referral_hash
+
+    #
+    # Repository for entity referral_line
+    #
+    elcodi.core.referral_program.repository.referral_line:
+        class: %elcodi.core.referral_program.repository.referral_line.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.referral_program.entity.referral_line.class%
+
+    elcodi.repository.referral_line:
+        alias: elcodi.core.referral_program.repository.referral_line
+
+    #
+    # Repository for entity referral_rule
+    #
+    elcodi.core.referral_program.repository.referral_rule:
+        class: %elcodi.core.referral_program.repository.referral_rule.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.referral_program.entity.referral_rule.class%
+
+    elcodi.repository.referral_rule:
+        alias: elcodi.core.referral_program.repository.referral_rule
+
+    #
+    # Repository for entity invitation
+    #
+    elcodi.core.referral_program.repository.invitation:
+        class: %elcodi.core.referral_program.repository.invitation.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.referral_program.entity.invitation.class%
+
+    elcodi.repository.invitation:
+        alias: elcodi.core.referral_program.repository.invitation
+
+    #
+    # Repository for entity invitation_bag
+    #
+    elcodi.core.referral_program.repository.invitation_bag:
+        class: %elcodi.core.referral_program.repository.invitation_bag.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.referral_program.entity.invitation_bag.class%
+
+    elcodi.repository.invitation_bag:
+        alias: elcodi.core.referral_program.repository.invitation_bag

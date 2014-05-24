@@ -28,7 +28,10 @@ class BannerZoneFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.banner.factory.bannerzone';
+        return [
+            'elcodi.core.banner.factory.bannerzone',
+            'elcodi.factory.bannerzone',
+        ];
     }
 
     /**
@@ -39,6 +42,17 @@ class BannerZoneFactoryTest extends WebTestCase
         $this->assertInstanceOf(
             $this->container->getParameter('elcodi.core.banner.entity.bannerzone.class'),
             $this->container->get('elcodi.core.banner.entity.bannerzone.instance')
+        );
+    }
+
+    /**
+     * Test bannerzone factory provider alias
+     */
+    public function testFactoryProviderAlias()
+    {
+        $this->assertInstanceOf(
+            $this->container->getParameter('elcodi.core.banner.entity.bannerzone.class'),
+            $this->container->get('elcodi.entity.bannerzone.instance')
         );
     }
 }

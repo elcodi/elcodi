@@ -7,6 +7,12 @@ parameters:
     elcodi.core.banner.entity.bannerzone.class: Elcodi\BannerBundle\Entity\BannerZone
 
     #
+    # Repositories
+    #
+    elcodi.core.banner.repository.banner.class: Elcodi\BannerBundle\Repository\BannerRepository
+    elcodi.core.banner.repository.bannerzone.class: Elcodi\BannerBundle\Repository\BannerZoneRepository
+
+    #
     # Form Types
     #
     elcodi.core.banner.form_type.banner.class: Elcodi\BannerBundle\Form\Type\BannerType

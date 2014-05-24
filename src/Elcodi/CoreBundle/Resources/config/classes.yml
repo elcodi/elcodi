@@ -6,6 +6,11 @@ parameters:
     elcodi.core.core.entity.language.class: Elcodi\CoreBundle\Entity\Language
 
     #
+    # Repositories
+    #
+    elcodi.core.core.repository.language.class: Elcodi\CoreBundle\Repository\LanguageRepository
+
+    #
     # Services
     #
     elcodi.core.core.service.abstract_cache_wrapper.class: Elcodi\CoreBundle\Wrapper\Abstracts\AbstractCacheWrapper
@@ -15,6 +20,7 @@ parameters:
     #
     # Providers
     #
+    elcodi.container_parameters.class: Symfony\Component\DependencyInjection\ParameterBag\ParameterBag
     elcodi.core.core.service.manager_provider.class: Elcodi\CoreBundle\Services\ManagerProvider
     elcodi.core.core.service.repository_provider.class: Elcodi\CoreBundle\Services\RepositoryProvider
 

@@ -3,18 +3,35 @@ services:
     #
     # Factories
     #
+
+    #
+    # Factory for entity banner
+    #
     elcodi.core.banner.factory.banner:
         class: %elcodi.core.banner.factory.banner.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.banner.entity.banner.class%"]]
 
+    elcodi.factory.banner:
+        alias: elcodi.core.banner.factory.banner
+
+    #
+    # Factory for entity bannerzone
+    #
     elcodi.core.banner.factory.bannerzone:
         class: %elcodi.core.banner.factory.bannerzone.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.banner.entity.bannerzone.class%"]]
 
+    elcodi.factory.bannerzone:
+        alias: elcodi.core.banner.factory.bannerzone
+
     #
     # Entity providers
+    #
+
+    #
+    # Instance provider for entity banner
     #
     elcodi.core.banner.entity.banner.instance:
         class: %elcodi.core.banner.entity.banner.class%
@@ -22,8 +39,17 @@ services:
         factory_method: create
         scope: prototype
 
+    elcodi.entity.banner.instance:
+        alias: elcodi.core.banner.entity.banner.instance
+
+    #
+    # Instance provider for entity bannerzone
+    #
     elcodi.core.banner.entity.bannerzone.instance:
         class: %elcodi.core.banner.entity.bannerzone.class%
         factory_service: elcodi.core.banner.factory.bannerzone
         factory_method: create
         scope: prototype
+
+    elcodi.entity.bannerzone.instance:
+        alias: elcodi.core.banner.entity.bannerzone.instance

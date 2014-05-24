@@ -28,7 +28,10 @@ class OrderLineHistoryFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.cart.factory.order_line_history';
+        return [
+            'elcodi.core.cart.factory.order_line_history',
+            'elcodi.factory.order_line_history',
+        ];
     }
 
     /**
@@ -39,6 +42,17 @@ class OrderLineHistoryFactoryTest extends WebTestCase
         $this->assertInstanceOf(
             $this->container->getParameter('elcodi.core.cart.entity.order_line_history.class'),
             $this->container->get('elcodi.core.cart.entity.order_line_history.instance')
+        );
+    }
+
+    /**
+     * Test order_line_history factory provider alias
+     */
+    public function testFactoryProviderAlias()
+    {
+        $this->assertInstanceOf(
+            $this->container->getParameter('elcodi.core.cart.entity.order_line_history.class'),
+            $this->container->get('elcodi.entity.order_line_history.instance')
         );
     }
 }

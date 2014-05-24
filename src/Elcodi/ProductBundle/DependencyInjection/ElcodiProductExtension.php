@@ -84,6 +84,7 @@ class ElcodiProductExtension extends AbstractExtension implements EntitiesOverri
             'services',
             'formTypes',
             'factories',
+            'repositories',
         ];
     }
 

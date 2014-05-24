@@ -3,18 +3,35 @@ services:
     #
     # Factories
     #
+
+    #
+    # Factory for entity currency
+    #
     elcodi.core.currency.factory.currency:
         class: %elcodi.core.currency.factory.currency.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.currency.entity.currency.class%"]]
 
+    elcodi.factory.currency:
+        alias: elcodi.core.currency.factory.currency
+
+    #
+    # Factory for entity currency_exchange_rate
+    #
     elcodi.core.currency.factory.currency_exchange_rate:
         class: %elcodi.core.currency.factory.currency_exchange_rate.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.currency.entity.currency_exchange_rate.class%"]]
 
+    elcodi.factory.currency_exchange_rate:
+        alias: elcodi.core.currency.factory.currency_exchange_rate
+
     #
     # Entity providers
+    #
+
+    #
+    # Instance provider for entity currency
     #
     elcodi.core.currency.entity.currency.instance:
         class: %elcodi.core.currency.entity.currency.class%
@@ -22,8 +39,17 @@ services:
         factory_method: create
         scope: prototype
 
+    elcodi.entity.currency.instance:
+        alias: elcodi.core.currency.entity.currency.instance
+
+    #
+    # Instance provider for entity currency_exchange_rate
+    #
     elcodi.core.currency.entity.currency_exchange_rate.instance:
         class: %elcodi.core.currency.entity.currency_exchange_rate.class%
         factory_service: elcodi.core.currency.factory.currency_exchange_rate
         factory_method: create
         scope: prototype
+
+    elcodi.entity.currency_exchange_rate.instance:
+        alias: elcodi.core.currency.entity.currency_exchange_rate.instance

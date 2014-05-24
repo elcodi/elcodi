@@ -28,7 +28,10 @@ class InvitationBagFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.referral_program.factory.invitation_bag';
+        return [
+            'elcodi.core.referral_program.factory.invitation_bag',
+            'elcodi.factory.invitation_bag',
+        ];
     }
 
     /**
@@ -39,6 +42,17 @@ class InvitationBagFactoryTest extends WebTestCase
         $this->assertInstanceOf(
             $this->container->getParameter('elcodi.core.referral_program.entity.invitation_bag.class'),
             $this->container->get('elcodi.core.referral_program.entity.invitation_bag.instance')
+        );
+    }
+
+    /**
+     * Test invitation_bag factory provider alias
+     */
+    public function testFactoryProviderAlias()
+    {
+        $this->assertInstanceOf(
+            $this->container->getParameter('elcodi.core.referral_program.entity.invitation_bag.class'),
+            $this->container->get('elcodi.entity.invitation_bag.instance')
         );
     }
 }

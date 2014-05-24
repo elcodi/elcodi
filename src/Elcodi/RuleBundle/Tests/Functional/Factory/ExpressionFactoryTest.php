@@ -28,7 +28,10 @@ class ExpressionFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.rule.factory.expression';
+        return [
+            'elcodi.core.rule.factory.expression',
+            'elcodi.factory.expression',
+        ];
     }
 
     /**
@@ -39,6 +42,17 @@ class ExpressionFactoryTest extends WebTestCase
         $this->assertInstanceOf(
             $this->container->getParameter('elcodi.core.rule.entity.expression.class'),
             $this->container->get('elcodi.core.rule.entity.expression.instance')
+        );
+    }
+
+    /**
+     * Test expression factory provider alias
+     */
+    public function testFactoryProviderAlias()
+    {
+        $this->assertInstanceOf(
+            $this->container->getParameter('elcodi.core.rule.entity.expression.class'),
+            $this->container->get('elcodi.entity.expression.instance')
         );
     }
 }

@@ -28,7 +28,10 @@ class CustomerFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.user.factory.customer';
+        return [
+            'elcodi.core.user.factory.customer',
+            'elcodi.factory.customer',
+        ];
     }
 
     /**
@@ -39,6 +42,17 @@ class CustomerFactoryTest extends WebTestCase
         $this->assertInstanceOf(
             $this->container->getParameter('elcodi.core.user.entity.customer.class'),
             $this->container->get('elcodi.core.user.entity.customer.instance')
+        );
+    }
+
+    /**
+     * Test customer factory provider alias
+     */
+    public function testFactoryProviderAlias()
+    {
+        $this->assertInstanceOf(
+            $this->container->getParameter('elcodi.core.user.entity.customer.class'),
+            $this->container->get('elcodi.entity.customer.instance')
         );
     }
 }

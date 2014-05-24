@@ -50,6 +50,7 @@ class ElcodiCartCouponExtension extends AbstractExtension
             'eventListeners',
             'factories',
             'services',
+            'repositories',
         ];
     }
 }

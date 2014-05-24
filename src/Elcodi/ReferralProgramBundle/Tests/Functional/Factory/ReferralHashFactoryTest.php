@@ -28,7 +28,10 @@ class ReferralHashFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.referral_program.factory.referral_hash';
+        return [
+            'elcodi.core.referral_program.factory.referral_hash',
+            'elcodi.factory.referral_hash',
+        ];
     }
 
     /**
@@ -39,6 +42,17 @@ class ReferralHashFactoryTest extends WebTestCase
         $this->assertInstanceOf(
             $this->container->getParameter('elcodi.core.referral_program.entity.referral_hash.class'),
             $this->container->get('elcodi.core.referral_program.entity.referral_hash.instance')
+        );
+    }
+
+    /**
+     * Test referral_hash factory provider alias
+     */
+    public function testFactoryProviderAlias()
+    {
+        $this->assertInstanceOf(
+            $this->container->getParameter('elcodi.core.referral_program.entity.referral_hash.class'),
+            $this->container->get('elcodi.entity.referral_hash.instance')
         );
     }
 }

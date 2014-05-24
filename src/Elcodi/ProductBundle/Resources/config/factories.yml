@@ -3,23 +3,46 @@ services:
     #
     # Factories
     #
+
+    #
+    # Factory for entity product
+    #
     elcodi.core.product.factory.product:
         class: %elcodi.core.product.factory.product.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.product.entity.product.class%"]]
 
+    elcodi.factory.product:
+        alias: elcodi.core.product.factory.product
+
+    #
+    # Factory for entity manufacturer
+    #
     elcodi.core.product.factory.manufacturer:
         class: %elcodi.core.product.factory.manufacturer.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.product.entity.manufacturer.class%"]]
 
+    elcodi.factory.manufacturer:
+        alias: elcodi.core.product.factory.manufacturer
+
+    #
+    # Factory for entity category
+    #
     elcodi.core.product.factory.category:
         class: %elcodi.core.product.factory.category.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.product.entity.category.class%"]]
 
+    elcodi.factory.category:
+        alias: elcodi.core.product.factory.category
+
     #
     # Entity providers
+    #
+
+    #
+    # Instance provider for entity product
     #
     elcodi.core.product.entity.product.instance:
         class: %elcodi.core.product.entity.product.class%
@@ -27,14 +50,29 @@ services:
         factory_method: create
         scope: prototype
 
+    elcodi.entity.product.instance:
+        alias: elcodi.core.product.entity.product.instance
+
+    #
+    # Instance provider for entity manufacturer
+    #
     elcodi.core.product.entity.manufacturer.instance:
         class: %elcodi.core.product.entity.manufacturer.class%
         factory_service: elcodi.core.product.factory.manufacturer
         factory_method: create
         scope: prototype
 
+    elcodi.entity.manufacturer.instance:
+        alias: elcodi.core.product.entity.manufacturer.instance
+
+    #
+    # Instance provider for entity category
+    #
     elcodi.core.product.entity.category.instance:
         class: %elcodi.core.product.entity.category.class%
         factory_service: elcodi.core.product.factory.category
         factory_method: create
         scope: prototype
+
+    elcodi.entity.category.instance:
+        alias: elcodi.core.product.entity.category.instance

@@ -1,0 +1,31 @@
+services:
+
+    #
+    # Repositories
+    #
+
+    #
+    # Repository for entity customer
+    #
+    elcodi.core.user.repository.customer:
+        class: %elcodi.core.user.repository.customer.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.user.entity.customer.class%
+
+    elcodi.repository.customer:
+        alias: elcodi.core.user.repository.customer
+
+    #
+    # Repository for entity address
+    #
+    elcodi.core.user.repository.address:
+        class: %elcodi.core.user.repository.address.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.user.entity.address.class%
+
+    elcodi.repository.address:
+        alias: elcodi.core.user.repository.address

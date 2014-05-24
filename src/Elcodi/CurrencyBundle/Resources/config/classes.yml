@@ -7,6 +7,12 @@ parameters:
     elcodi.core.currency.entity.currency_exchange_rate.class: Elcodi\CurrencyBundle\Entity\CurrencyExchangeRate
 
     #
+    # Repositories
+    #
+    elcodi.core.currency.repository.currency.class: Elcodi\CurrencyBundle\Repository\CurrencyRepository
+    elcodi.core.currency.repository.currency_exchange_rate.class: Elcodi\CurrencyBundle\Repository\CurrencyExchangeRateRepository
+
+    #
     # Factory classes
     #
     elcodi.core.currency.factory.currency.class: Elcodi\CurrencyBundle\Factory\CurrencyFactory

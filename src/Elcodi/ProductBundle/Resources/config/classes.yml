@@ -1,6 +1,20 @@
 parameters:
 
     #
+    # Entities
+    #
+    elcodi.core.product.entity.product.class: Elcodi\ProductBundle\Entity\Product
+    elcodi.core.product.entity.category.class: Elcodi\ProductBundle\Entity\Category
+    elcodi.core.product.entity.manufacturer.class: Elcodi\ProductBundle\Entity\Manufacturer
+
+    #
+    # Repositories
+    #
+    elcodi.core.product.repository.product.class: Elcodi\ProductBundle\Repository\ProductRepository
+    elcodi.core.product.repository.category.class: Elcodi\ProductBundle\Repository\CategoryRepository
+    elcodi.core.product.repository.manufacturer.class: Elcodi\ProductBundle\Repository\ManufacturerRepository
+
+    #
     # Services
     #
     elcodi.core.product.service.product_manager.class: Elcodi\ProductBundle\Services\ProductManager
@@ -13,13 +27,6 @@ parameters:
     elcodi.core.product.form_type.category.class: Elcodi\ProductBundle\Form\Type\CategoryType
     elcodi.core.product.form_type.manufacturer.class: Elcodi\ProductBundle\Form\Type\ManufacturerType
     elcodi.core.product.form_type.product.class: Elcodi\ProductBundle\Form\Type\ProductType
-
-    #
-    # Entities
-    #
-    elcodi.core.product.entity.product.class: Elcodi\ProductBundle\Entity\Product
-    elcodi.core.product.entity.category.class: Elcodi\ProductBundle\Entity\Category
-    elcodi.core.product.entity.manufacturer.class: Elcodi\ProductBundle\Entity\Manufacturer
 
     #
     # Factories

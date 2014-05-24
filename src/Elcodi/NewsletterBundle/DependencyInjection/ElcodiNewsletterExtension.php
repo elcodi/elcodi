@@ -62,6 +62,7 @@ class ElcodiNewsletterExtension extends AbstractExtension implements EntitiesOve
             'classes',
             'services',
             'factories',
+            'repositories',
         ];
     }
 

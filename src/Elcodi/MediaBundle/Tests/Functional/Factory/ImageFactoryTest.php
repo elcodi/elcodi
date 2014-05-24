@@ -28,7 +28,10 @@ class ImageFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.media.factory.image';
+        return [
+            'elcodi.core.media.factory.image',
+            'elcodi.factory.image',
+        ];
     }
 
     /**
@@ -39,6 +42,17 @@ class ImageFactoryTest extends WebTestCase
         $this->assertInstanceOf(
             $this->container->getParameter('elcodi.core.media.entity.image.class'),
             $this->container->get('elcodi.core.media.entity.image.instance')
+        );
+    }
+
+    /**
+     * Test image factory provider alias
+     */
+    public function testFactoryProviderAlias()
+    {
+        $this->assertInstanceOf(
+            $this->container->getParameter('elcodi.core.media.entity.image.class'),
+            $this->container->get('elcodi.entity.image.instance')
         );
     }
 }

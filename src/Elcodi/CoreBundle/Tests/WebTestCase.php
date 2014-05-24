@@ -116,15 +116,20 @@ abstract class WebTestCase extends BaseWebTestCase
      */
     public function testServiceLoadFromContainer()
     {
-        $serviceCallableName = $this->getServiceCallableName();
+        $serviceCallableNames = $this->getServiceCallableName();
 
-        if ($serviceCallableName) {
+        if (!is_array($serviceCallableNames)) {
+
+            $serviceCallableNames = array($serviceCallableNames);
+        }
+
+        foreach ($serviceCallableNames as $serviceCallableName) {
 
             $this->assertTrue(static::$kernel->getContainer()->has($serviceCallableName));
 
-            if ($this->mustTestGetService() && $this->getServiceCallableName()) {
+            if ($this->mustTestGetService()) {
 
-                static::$kernel->getContainer()->get($this->getServiceCallableName());
+                static::$kernel->getContainer()->get($serviceCallableName);
                 $this->assertTrue(true);
             }
         }

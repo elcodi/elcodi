@@ -28,7 +28,10 @@ class AddressFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.user.factory.address';
+        return [
+            'elcodi.core.user.factory.address',
+            'elcodi.factory.address',
+        ];
     }
 
     /**
@@ -39,6 +42,17 @@ class AddressFactoryTest extends WebTestCase
         $this->assertInstanceOf(
             $this->container->getParameter('elcodi.core.user.entity.address.class'),
             $this->container->get('elcodi.core.user.entity.address.instance')
+        );
+    }
+
+    /**
+     * Test address factory provider alias
+     */
+    public function testFactoryProviderAlias()
+    {
+        $this->assertInstanceOf(
+            $this->container->getParameter('elcodi.core.user.entity.address.class'),
+            $this->container->get('elcodi.entity.address.instance')
         );
     }
 }

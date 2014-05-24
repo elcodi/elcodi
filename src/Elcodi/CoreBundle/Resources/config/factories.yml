@@ -3,16 +3,30 @@ services:
     #
     # Factories
     #
+
+    #
+    # Factory for entity language
+    #
     elcodi.core.core.factory.language:
         class: %elcodi.core.core.factory.language.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.core.entity.language.class%"]]
 
+    elcodi.factory.language:
+        alias: elcodi.core.core.factory.language
+
     #
     # Entity providers
+    #
+
+    #
+    # Instance provider for entity language
     #
     elcodi.core.core.entity.language.instance:
         class: %elcodi.core.core.entity.language.class%
         factory_service: elcodi.core.core.factory.language
         factory_method: create
         scope: prototype
+
+    elcodi.entity.language.instance:
+        alias: elcodi.core.core.entity.language.instance

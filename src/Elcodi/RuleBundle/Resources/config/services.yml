@@ -7,7 +7,7 @@ services:
         class: %elcodi.core.rule.service.rule_manager.class%
         arguments:
             expression_language: @elcodi.core.rule.service.expression_language
-            rule_repository: @=service("doctrine.orm.entity_manager").getRepository(parameter("elcodi.core.rule.entity.abstract_rule.class"))
+            rule_repository: @elcodi.core.rule.repository.rule
         configurator: ["@elcodi.core.rule.configuration.rule_manager", configureRuleManager]
 
     #

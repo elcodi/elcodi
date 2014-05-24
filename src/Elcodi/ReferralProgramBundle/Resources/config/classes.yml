@@ -10,6 +10,15 @@ parameters:
     elcodi.core.referral_program.entity.invitation_bag.class: Elcodi\ReferralProgramBundle\Entity\InvitationBag
 
     #
+    # Repositories
+    #
+    elcodi.core.referral_program.repository.referral_hash.class: Elcodi\ReferralProgramBundle\Repository\ReferralHashRepository
+    elcodi.core.referral_program.repository.referral_line.class: Elcodi\ReferralProgramBundle\Repository\ReferralLineRepository
+    elcodi.core.referral_program.repository.referral_rule.class: Elcodi\ReferralProgramBundle\Repository\ReferralRuleRepository
+    elcodi.core.referral_program.repository.invitation.class: Elcodi\ReferralProgramBundle\Repository\InvitationRepository
+    elcodi.core.referral_program.repository.invitation_bag.class: Elcodi\ReferralProgramBundle\Repository\InvitationBagRepository
+
+    #
     # Services
     #
     elcodi.core.referral_program.service.referral_program_manager.class: Elcodi\ReferralProgramBundle\Services\ReferralProgramManager

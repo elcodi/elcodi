@@ -7,6 +7,12 @@ parameters:
     elcodi.core.cart_coupon.entity.order_coupon.class: Elcodi\CartCouponBundle\Entity\OrderCoupon
 
     #
+    # Repositories
+    #
+    elcodi.core.cart_coupon.repository.cart_coupon.class: Elcodi\CartCouponBundle\Repository\CartCouponRepository
+    elcodi.core.cart_coupon.repository.order_coupon.class: Elcodi\CartCouponBundle\Repository\OrderCouponRepository
+
+    #
     # Factories
     #
     elcodi.core.cart_coupon.factory.cart_coupon.class: Elcodi\CartCouponBundle\Factory\CartCouponFactory

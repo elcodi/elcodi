@@ -28,7 +28,10 @@ class CurrencyFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.currency.factory.currency';
+        return [
+            'elcodi.core.currency.factory.currency',
+            'elcodi.factory.currency',
+        ];
     }
 
     /**
@@ -39,6 +42,17 @@ class CurrencyFactoryTest extends WebTestCase
         $this->assertInstanceOf(
             $this->container->getParameter('elcodi.core.currency.entity.currency.class'),
             $this->container->get('elcodi.core.currency.entity.currency.instance')
+        );
+    }
+
+    /**
+     * Test currency factory provider alias
+     */
+    public function testFactoryProviderAlias()
+    {
+        $this->assertInstanceOf(
+            $this->container->getParameter('elcodi.core.currency.entity.currency.class'),
+            $this->container->get('elcodi.entity.currency.instance')
         );
     }
 }

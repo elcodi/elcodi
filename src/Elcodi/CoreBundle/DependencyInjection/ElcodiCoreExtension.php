@@ -44,6 +44,8 @@ class ElcodiCoreExtension extends AbstractExtension implements EntitiesOverridab
             'factories',
             'formTypes',
             'services',
+            'providers',
+            'repositories',
         ];
     }
 

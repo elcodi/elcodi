@@ -63,6 +63,7 @@ class ElcodiRuleExtension extends AbstractExtension implements EntitiesOverridab
             'services',
             'factories',
             'configurations',
+            'repositories',
         ];
     }
 
