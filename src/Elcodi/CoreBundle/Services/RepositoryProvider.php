@@ -57,6 +57,8 @@ class RepositoryProvider
      * @param string $entityNamespace Entity Namespace
      *
      * @return ObjectRepository Repository
+     *
+     * @api
      */
     public function getRepositoryByEntityNamespace($entityNamespace)
     {
@@ -76,6 +78,8 @@ class RepositoryProvider
      * @param string $entityParameter Entity Parameter
      *
      * @return ObjectRepository Repository
+     *
+     * @api
      */
     public function getRepositoryByEntityParameter($entityParameter)
     {

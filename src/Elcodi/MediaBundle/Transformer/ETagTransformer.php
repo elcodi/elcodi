@@ -12,6 +12,8 @@
 
 namespace Elcodi\MediaBundle\Transformer;
 
+use Elcodi\MediaBundle\Entity\Interfaces\FileInterface;
+
 /**
  * Class ETagTransformer
  */
