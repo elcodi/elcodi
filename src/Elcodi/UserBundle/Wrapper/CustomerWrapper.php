@@ -174,6 +174,8 @@ class CustomerWrapper
                 $this->customer = $this->customerFactory->create();
             }
         }
+
+        return $this->customer;
     }
 
     /**
