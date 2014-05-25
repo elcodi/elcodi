@@ -14,7 +14,6 @@
 
 namespace Elcodi\UserBundle\Wrapper;
 
-use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContextInterface;
@@ -143,7 +142,6 @@ class CustomerWrapper
     public function loadCustomer()
     {
         if ($this->customer instanceof CustomerInterface) {
-
             return $this->customer;
         }
 
