@@ -64,6 +64,10 @@ class AppKernel extends Kernel
 
         );
 
+        if (in_array($this->getEnvironment(), array('dev'))) {
+            $bundles[] = new Egulias\ListenersDebugCommandBundle\EguliasListenersDebugCommandBundle();
+        }
+
         return $bundles;
     }
 
