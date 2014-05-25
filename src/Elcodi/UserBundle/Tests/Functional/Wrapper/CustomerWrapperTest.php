@@ -29,16 +29,9 @@ class CustomerWrapperTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.user.wrapper.customer_wrapper';
-    }
-
-    /**
-     * Returns if service must be retrieved from container
-     *
-     * @return boolean
-     */
-    protected function mustTestGetService()
-    {
-        return false;
+        return [
+            'elcodi.core.user.wrapper.customer_wrapper',
+            'elcodi.customer_wrapper',
+        ];
     }
 }

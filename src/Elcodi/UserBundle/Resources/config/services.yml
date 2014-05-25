@@ -21,11 +21,13 @@ services:
         class: %elcodi.core.user.wrapper.customer_wrapper.class%
         arguments:
             customer_repository: @elcodi.core.user.repository.customer
-            entity_manager: @doctrine.orm.entity_manager
             session: @session
             customer_factory: @elcodi.core.user.factory.customer
             session_field_name: %elcodi.core.user.session_field_name%
             security_context: @?security.context
+
+    elcodi.customer_wrapper:
+        alias: elcodi.core.user.wrapper.customer_wrapper
 
     #
     # Provider
@@ -35,8 +37,7 @@ services:
         factory_service: security.encoder_factory
         factory_method: getEncoder
         arguments:
-            customer_instance: @elcodi.core.user.entity.customer.instance
-        scope: prototype
+            customer_instance: @=service("elcodi.factory.customer").create()
 
     elcodi.customer_provider:
         alias: elcodi.core.user.provider.customer_provider

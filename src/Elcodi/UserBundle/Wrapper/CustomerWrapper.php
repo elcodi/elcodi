@@ -36,9 +36,73 @@ class CustomerWrapper
     protected $customer;
 
     /**
+     * @var CustomerRepository
+     *
+     * Customer repository
+     */
+    protected $customerRepository;
+
+    /**
+     * @var SessionInterface
+     *
+     * Session
+     */
+    protected $session;
+
+    /**
+     * @var CustomerFactory
+     *
+     * Customer factory
+     */
+    protected $customerFactory;
+
+    /**
+     * @var string
+     *
+     * Session field name
+     */
+    protected $sessionFieldName;
+
+    /**
+     * @var SecurityContextInterface
+     *
+     * Security context
+     */
+    protected $securityContext;
+
+    /**
+     * Construct method
+     *
+     * This wrapper loads Customer from database if this exists and is authenticated.
+     * Otherwise, this create new Guest without persisting it
+     *
+     * @param CustomerRepository       $customerRepository Customer repository
+     * @param SessionInterface         $session            Object of Session
+     * @param CustomerFactory          $customerFactory    Customer factory
+     * @param string                   $sessionFieldName   Session field name
+     * @param SecurityContextInterface $securityContext    SecurityContext instance
+     */
+    public function __construct(
+        CustomerRepository $customerRepository,
+        SessionInterface $session,
+        CustomerFactory $customerFactory,
+        $sessionFieldName,
+        SecurityContextInterface $securityContext = null
+    )
+    {
+        $this->customerRepository = $customerRepository;
+        $this->session = $session;
+        $this->customerFactory = $customerFactory;
+        $this->sessionFieldName = $sessionFieldName;
+        $this->securityContext = $securityContext;
+    }
+
+    /**
      * Return current loaded customer
      *
      * @return CustomerInterface current customer
+     *
+     * @api
      */
     public function getCustomer()
     {
@@ -51,8 +115,10 @@ class CustomerWrapper
      * @param CustomerInterface $customer Customer
      *
      * @return CustomerWrapper self Object
+     *
+     * @api
      */
-    public function setCustomer(CustomerInterface $customer)
+    public function setCustomer(CustomerInterface $customer = null)
     {
         $this->customer = $customer;
 
@@ -60,29 +126,29 @@ class CustomerWrapper
     }
 
     /**
-     * Construct method
+     * Load customer method
      *
-     * This wrapper loads Customer from database if this exists and is authenticated.
-     * Otherwise, this create new Guest without persisting it
+     * This method tries to load Customer stored in Session, using specific
+     * session field name.
      *
-     * @param CustomerRepository       $customerRepository Customer repository
-     * @param ObjectManager            $entityManager      Entity manager
-     * @param SessionInterface         $session            Object of Session
-     * @param CustomerFactory          $customerFactory    Customer factory
-     * @param string                   $sessionFieldName   Session field name
-     * @param SecurityContextInterface $securityContext    SecurityContext instance
+     * If this customer is found, stores it locally and uses it as "official"
+     * customer object
+     *
+     * Otherwise, new Customer is created and stored (not flushed nor persisted)
+     *
+     * @return CustomerInterface Loaded customer
+     *
+     * @api
      */
-    public function __construct(
-        CustomerRepository $customerRepository,
-        ObjectManager $entityManager,
-        SessionInterface $session,
-        CustomerFactory $customerFactory,
-        $sessionFieldName,
-        SecurityContextInterface $securityContext = null
-    )
+    public function loadCustomer()
     {
-        $token = $securityContext instanceof SecurityContextInterface
-            ? $securityContext->getToken()
+        if ($this->customer instanceof CustomerInterface) {
+
+            return $this->customer;
+        }
+
+        $token = $this->securityContext instanceof SecurityContextInterface
+            ? $this->securityContext->getToken()
             : null;
 
         if ($token instanceof UsernamePasswordToken) {
@@ -91,21 +157,39 @@ class CustomerWrapper
 
         } else {
 
-            $customerId = $session->get($sessionFieldName);
+            $customerId = $this->session->get($this->sessionFieldName);
 
             if (null !== $customerId) {
 
-                $this->customer = $customerRepository->findOneBy(array(
+                $this->customer = $this->customerRepository->findOneBy(array(
                     'id' => $customerId
                 ));
             }
 
-            /* Customer will be persisted but not flushed. */
+            /**
+             * Customer not found. Generating new one
+             */
             if (!($this->customer instanceof CustomerInterface)) {
 
-                $this->customer = $customerFactory->create();
-                $entityManager->persist($this->customer);
+                $this->customer = $this->customerFactory->create();
             }
         }
+    }
+
+    /**
+     * Reload Customer.
+     *
+     * This method assumes that current customer is not valid anymore, and tries
+     * to reload it.
+     *
+     * @return CustomerInterface Loaded customer
+     *
+     * @api
+     */
+    public function reloadCustomer()
+    {
+        return $this
+            ->setCustomer(null)
+            ->loadCustomer();
     }
 }
