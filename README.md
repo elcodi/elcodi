@@ -1,6 +1,7 @@
 Elcodi for Symfony2
 =====
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/6aaa1c45-e569-4f31-8344-6aab899ed083/mini.png)](https://insight.sensiolabs.com/projects/6aaa1c45-e569-4f31-8344-6aab899ed083)
+[![Build Status](https://travis-ci.org/elcodi/elcodi.svg?branch=master)](https://travis-ci.org/elcodi/elcodi)
 [![Latest Stable Version](https://poser.pugx.org/elcodi/elcodi/v/stable.png)](https://packagist.org/packages/elcodi/elcodi)
 [![Total Downloads](https://poser.pugx.org/elcodi/elcodi/downloads.png)](https://packagist.org/packages/elcodi/elcodi)
 [![Latest Unstable Version](https://poser.pugx.org/elcodi/elcodi/v/unstable.png)](https://packagist.org/packages/elcodi/elcodi)
@@ -24,6 +25,13 @@ Tags
 * Use last stable version tag to stay in a stable release.
 * [![Latest Unstable Version](https://poser.pugx.org/elcodi/elcodi/v/unstable.png)](https://packagist.org/packages/elcodi/elcodi)  [![Latest Stable Version](https://poser.pugx.org/elcodi/elcodi/v/stable.png)](https://packagist.org/packages/elcodi/elcodi)
 
+
+Projects
+--------
+
+Is your project on top of the elcodi components? Let us know it and use 
+this badge for your github repository.  
+[![Powered By Elcodi](http://elcodi.io/static/elcodi.badge.png)](http://github.com/elcodi)
 
 
 Contributing
