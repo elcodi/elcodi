@@ -42,7 +42,8 @@
 
         "sensio/distribution-bundle": "~2.3",
         "knplabs/knp-gaufrette-bundle": "v0.1.7",
-        "ircmaxell/password-compat": "~1.0"
+        "ircmaxell/password-compat": "~1.0",
+        "egulias/listeners-debug-command-bundle": "2.*"
     },
     "replace": {
         "elcodi/banner-bundle": "self.version",
