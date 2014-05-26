@@ -42,29 +42,3 @@ services:
 
     elcodi.repository.referral_rule:
         alias: elcodi.core.referral_program.repository.referral_rule
-
-    #
-    # Repository for entity invitation
-    #
-    elcodi.core.referral_program.repository.invitation:
-        class: %elcodi.core.referral_program.repository.invitation.class%
-        factory_service: elcodi.repository_provider
-        factory_method: getRepositoryByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.referral_program.entity.invitation.class%
-
-    elcodi.repository.invitation:
-        alias: elcodi.core.referral_program.repository.invitation
-
-    #
-    # Repository for entity invitation_bag
-    #
-    elcodi.core.referral_program.repository.invitation_bag:
-        class: %elcodi.core.referral_program.repository.invitation_bag.class%
-        factory_service: elcodi.repository_provider
-        factory_method: getRepositoryByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.referral_program.entity.invitation_bag.class%
-
-    elcodi.repository.invitation_bag:
-        alias: elcodi.core.referral_program.repository.invitation_bag
