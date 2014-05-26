@@ -2,11 +2,11 @@ Elcodi for Symfony2
 =====
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/6aaa1c45-e569-4f31-8344-6aab899ed083/mini.png)](https://insight.sensiolabs.com/projects/6aaa1c45-e569-4f31-8344-6aab899ed083)
 [![Build Status](https://travis-ci.org/elcodi/elcodi.svg?branch=master)](https://travis-ci.org/elcodi/elcodi)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/elcodi/elcodi/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/elcodi/elcodi/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/elcodi/elcodi/v/stable.png)](https://packagist.org/packages/elcodi/elcodi)
 [![Total Downloads](https://poser.pugx.org/elcodi/elcodi/downloads.png)](https://packagist.org/packages/elcodi/elcodi)
 [![Latest Unstable Version](https://poser.pugx.org/elcodi/elcodi/v/unstable.png)](https://packagist.org/packages/elcodi/elcodi)
 [![License](https://poser.pugx.org/elcodi/elcodi/license.png)](https://packagist.org/packages/elcodi/elcodi)
-[![Powered By Elcodi](http://elcodi.io/static/elcodi.badge.png)](http://github.com/elcodi)
 
 Elcodi components for symfony2
 
