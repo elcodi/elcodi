@@ -153,7 +153,7 @@ class CartManager
      *
      * @return CartInterface loaded Cart
      */
-    public function loadCart(CartInterface $cart = null)
+    public function loadCart(CartInterface $cart)
     {
         if (!is_null($cart) && $cart->getId()) {
 
@@ -162,7 +162,6 @@ class CartManager
 
         } else {
 
-            $cart = $this->cartFactory->create();
             $this->manager->persist($cart);
 
         }
