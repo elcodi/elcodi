@@ -26,13 +26,14 @@ parameters:
     elcodi.core.cart.service.cart_manager.class: Elcodi\CartBundle\Services\CartManager
     elcodi.core.cart.service.order_manager.class: Elcodi\CartBundle\Services\OrderManager
     elcodi.core.cart.service.order_line_manager.class: Elcodi\CartBundle\Services\OrderLineManager
+    elcodi.core.cart.service.cart_session_manager.class: Elcodi\CartBundle\Services\CartSessionManager
 
     #
     # Event Listeners
     #
     elcodi.core.cart.event_listener.cart.class: Elcodi\CartBundle\EventListener\CartEventListener
     elcodi.core.cart.event_listener.order_line_state.class: Elcodi\CartBundle\EventListener\OrderLineStateEventListener
-    elcodi.core.cart.event_listener.session.class: Elcodi\CartBundle\EventListener\SessionEventListener
+    elcodi.core.cart.event_listener.cart_session.class: Elcodi\CartBundle\EventListener\CartSessionEventListener
 
     #
     # Factories
@@ -43,3 +44,8 @@ parameters:
     elcodi.core.cart.factory.order_line.class: Elcodi\CartBundle\Factory\OrderLineFactory
     elcodi.core.cart.factory.order_history.class: Elcodi\CartBundle\Factory\OrderHistoryFactory
     elcodi.core.cart.factory.order_line_history.class: Elcodi\CartBundle\Factory\OrderLineHistoryFactory
+
+    #
+    # Wrappers
+    #
+    elcodi.core.cart.wrapper.cart_wrapper.class: Elcodi\CartBundle\Wrapper\CartWrapper

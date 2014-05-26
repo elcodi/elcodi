@@ -8,18 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author  ##author_placeholder
- * @version ##version_placeholder##
- */
+ * @author  * @version  */
 
-namespace Elcodi\CartBundle\Tests\Functional\Services;
-
+namespace Elcodi\CartBundle\Tests\Functional\Wrapper;
 use Elcodi\CoreBundle\Tests\WebTestCase;
 
 /**
- * Tests CartManager class
+ * Class CartWrapperTest
  */
-class CartManagerTest extends WebTestCase
+class CartWrapperTest extends WebTestCase
 {
     /**
      * Returns the callable name of the service
@@ -29,18 +26,8 @@ class CartManagerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.cart.service.cart_manager',
-            'elcodi.cart_manager',
+            'elcodi.core.cart.wrapper.cart_wrapper',
+            'elcodi.cart_wrapper',
         ];
-    }
-
-    /**
-     * Returns if service must be retrieved from container
-     *
-     * @return boolean
-     */
-    protected function mustTestGetService()
-    {
-        return false;
     }
 }

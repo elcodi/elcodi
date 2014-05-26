@@ -41,7 +41,10 @@ class OrderLineManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.cart.service.order_line_manager';
+        return [
+            'elcodi.core.cart.service.order_line_manager',
+            'elcodi.order_line_manager',
+        ];
     }
 
     /**

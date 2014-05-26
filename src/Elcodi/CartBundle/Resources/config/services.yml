@@ -11,6 +11,9 @@ services:
             cart_factory: @elcodi.core.cart.factory.cart
             cart_line_factory: @elcodi.core.cart.factory.cart_line
 
+    elcodi.cart_manager:
+        alias: elcodi.core.cart.service.cart_manager
+
     elcodi.core.cart.service.order_manager:
         class: %elcodi.core.cart.service.order_manager.class%
         arguments:
@@ -21,6 +24,9 @@ services:
             order_factory: @elcodi.core.cart.factory.order
             order_history_states: %elcodi.core.cart.order_states%
 
+    elcodi.order_manager:
+        alias: elcodi.core.cart.service.order_manager
+
     elcodi.core.cart.service.order_line_manager:
         class: %elcodi.core.cart.service.order_line_manager.class%
         arguments:
@@ -29,3 +35,28 @@ services:
             order_line_history_factory: @elcodi.core.cart.factory.order_line_history
             order_line_factory: @elcodi.core.cart.factory.order_line
             order_history_states: %elcodi.core.cart.order_states%
+
+    elcodi.order_line_manager:
+        alias: elcodi.core.cart.service.order_line_manager
+
+    elcodi.core.cart.service.cart_session_manager:
+        class: %elcodi.core.cart.service.cart_session_manager.class%
+        arguments:
+            session: @session
+            session_field_name: %elcodi.core.cart.session_field_name%
+
+    elcodi.cart_session_manager:
+        alias: elcodi.core.cart.service.cart_session_manager
+
+    #
+    # Wrappers
+    #
+    elcodi.core.cart.wrapper.cart_wrapper:
+        class: %elcodi.core.cart.wrapper.cart_wrapper.class%
+        arguments:
+            cart_session_manager: @elcodi.cart_session_manager
+            cart_repository: @elcodi.repository.cart
+            cart_factory: @elcodi.factory.cart
+
+    elcodi.cart_wrapper:
+        alias: elcodi.core.cart.wrapper.cart_wrapper

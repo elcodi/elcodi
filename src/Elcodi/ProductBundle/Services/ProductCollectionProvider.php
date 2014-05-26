@@ -21,8 +21,7 @@ use Elcodi\ProductBundle\Repository\ProductRepository;
 /**
  * Product Collection provider
  *
- * Locale is injected because we can just query products, loading at the same
- * time the corresponding translations.
+ * Locale is injected because we can just query products.
  */
 class ProductCollectionProvider
 {

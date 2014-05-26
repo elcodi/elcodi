@@ -21,10 +21,9 @@ services:
         tags:
             - { name: kernel.event_listener, event: orderlinestate.postchange, method: onOrderLineStatePostChange }
 
-    elcodi.core.cart.event_listener.session:
-        class: %elcodi.core.cart.event_listener.session.class%
+    elcodi.core.cart.event_listener.cart_session:
+        class: %elcodi.core.cart.event_listener.cart_session.class%
         arguments:
-            session: @session
-            session_field_name: %elcodi.core.cart.session_field_name%
+            cart_session_manager: @elcodi.cart_session_manager
         tags:
             - { name: kernel.event_listener, event: cart.postload, method: onCartPostLoad}

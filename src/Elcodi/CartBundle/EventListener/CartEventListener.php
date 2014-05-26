@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -39,19 +39,24 @@ class CartEventListener
 
     /**
      * @var ObjectManager
+     *
+     * ObjectManager for Cart entity
      */
-    protected $objectManager;
+    protected $cartObjectManager;
 
     /**
      * Built method
      *
-     * @param CartManager   $cartManager   Cart Manager
-     * @param ObjectManager $objectManager Object Manager
+     * @param CartManager   $cartManager       Cart Manager
+     * @param ObjectManager $cartObjectManager ObjectManager for Cart entity
      */
-    public function __construct(CartManager $cartManager, ObjectManager $objectManager)
+    public function __construct(
+        CartManager $cartManager,
+        ObjectManager $cartObjectManager
+    )
     {
         $this->cartManager = $cartManager;
-        $this->objectManager = $objectManager;
+        $this->cartObjectManager = $cartObjectManager;
     }
 
     /**
@@ -100,11 +105,13 @@ class CartEventListener
     {
         $cart = $event->getCart();
 
-        // Recalculate cart amount. Prices might have
-        // changed so we need to flush $cart
+        /**
+         * Recalculate cart amount. Prices might have
+         * changed so we need to flush $cart
+         */
         $this->loadPrices($cart);
 
-        $this->objectManager->flush($cart);
+        $this->cartObjectManager->flush($cart);
     }
 
     /**
