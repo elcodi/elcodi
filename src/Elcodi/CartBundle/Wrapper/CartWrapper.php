@@ -46,6 +46,13 @@ class CartWrapper
     protected $cartFactory;
 
     /**
+     * @var CartInterface
+     *
+     * Cart loaded
+     */
+    protected $cart;
+
+    /**
      * Construct method
      *
      * @param CartSessionManager $cartSessionManager CartSessionManager
@@ -64,21 +71,69 @@ class CartWrapper
     }
 
     /**
+     * Get cart
+     *
+     * Return current cart value
+     *
+     * @return CartInterface Instance of Cart loaded
+     *
+     * @api
+     */
+    public function getCart()
+    {
+        return $this->cart;
+    }
+
+    /**
      * Load cart
+     *
+     * This method, first of all tries to retrieve cart from session
+     *
+     * If this does not exists nor the id is not valid, a new cart is created
+     * using Cart factory
+     *
+     * This behavior can be overriden just overwritting the wrapper
+     *
+     * @return CartInterface Instance of Cart loaded
+     *
+     * @api
      */
     public function loadCart()
     {
-        $cartId = $this->cartSessionManager->get();
+        if ($this->cart instanceof CartInterface) {
 
-        $cart = $this
-            ->cartRepository
-            ->find($cartId);
-
-        if (!($cartId instanceof CartInterface)) {
-
-            $cart = $this->cartFactory->create();
+            return $this->cart;
         }
 
-        return $cart;
+        $cartId = $this->cartSessionManager->get();
+
+        if ($cartId) {
+            $this->cart = $this
+                ->cartRepository
+                ->find($cartId);
+        }
+
+        if (!($this->cart instanceof CartInterface)) {
+
+            $this->cart = $this->cartFactory->create();
+        }
+
+        return $this->cart;
+    }
+
+    /**
+     * Reload cart
+     *
+     * This method sets to null current cart and tries to load it again
+     *
+     * @return CartInterface Cart re-loaded
+     *
+     * @api
+     */
+    public function reloadCart()
+    {
+        $this->cart = null;
+
+        return $this->loadCart();
     }
 }
