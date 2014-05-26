@@ -30,7 +30,10 @@ class ImageServiceTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.media.service.image_manager';
+        return [
+            'elcodi.core.media.service.image_manager',
+            'elcodi.image_manager'
+        ];
     }
 
     /**

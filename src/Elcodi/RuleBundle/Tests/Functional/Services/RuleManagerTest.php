@@ -48,7 +48,10 @@ class RuleManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.rule.service.rule_manager';
+        return [
+            'elcodi.core.rule.service.rule_manager',
+            'elcodi.rule_manager'
+        ];
     }
 
     /**
@@ -72,7 +75,7 @@ class RuleManagerTest extends WebTestCase
 
         $this->ruleManager = $this
             ->container
-            ->get('elcodi.core.rule.service.rule_manager');
+            ->get('elcodi.rule_manager');
     }
 
     /**

@@ -132,7 +132,9 @@ class Product extends AbstractEntity implements ProductInterface
     }
 
     /**
-     * @return string
+     * Get name
+     *
+     * @return string name
      */
     public function getName()
     {
@@ -164,7 +166,9 @@ class Product extends AbstractEntity implements ProductInterface
     }
 
     /**
-     * @param string $description
+     * Set description
+     *
+     * @param string $description Description
      *
      * @return Product self Object
      */

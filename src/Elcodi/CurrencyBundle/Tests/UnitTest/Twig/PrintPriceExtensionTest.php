@@ -55,13 +55,13 @@ class PrintPriceExtensionTest extends \PHPUnit_Framework_TestCase
         $amount = 10000.00;
 
         $this->assertEquals(
-            '13 300,00 $',
+            '13.300,00 $',
             $priceExtension->printPrice($amount, 'EUR', 'USD'),
             'Price format does not match - EUR USD'
         );
 
         $this->assertEquals(
-            '8 000,00 £',
+            '8.000,00 £',
             $priceExtension->printPrice($amount, 'EUR', 'GBP'),
             'Price format does not match - EUR GBP'
         );

@@ -10,3 +10,4 @@
 /bin/
 /composer.phar
 /composer.lock
+/phpunit.xml

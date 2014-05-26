@@ -16,6 +16,7 @@ parameters:
     #
     # Repositories
     #
+    elcodi.core.rule.repository.abstract_rule.class: Elcodi\RuleBundle\Repository\AbstractRuleRepository
     elcodi.core.rule.repository.rule.class: Elcodi\RuleBundle\Repository\RuleRepository
     elcodi.core.rule.repository.rule_group.class: Elcodi\RuleBundle\Repository\RuleGroupRepository
     elcodi.core.rule.repository.expression.class: Elcodi\RuleBundle\Repository\ExpressionRepository

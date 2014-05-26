@@ -15,13 +15,13 @@
 namespace Elcodi\RuleBundle\Services;
 
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
+use Symfony\Component\ExpressionLanguage\SyntaxError;
 
 use Elcodi\RuleBundle\Entity\Interfaces\AbstractRuleInterface;
 use Elcodi\RuleBundle\Entity\Interfaces\ExpressionInterface;
 use Elcodi\RuleBundle\Repository\AbstractRuleRepository;
 use Elcodi\RuleBundle\Services\Interfaces\ContextAwareInterface;
 use Elcodi\RuleBundle\Services\Interfaces\ExpressionLanguageAwareInterface;
-use Symfony\Component\ExpressionLanguage\SyntaxError;
 
 /**
  * Class RuleManager

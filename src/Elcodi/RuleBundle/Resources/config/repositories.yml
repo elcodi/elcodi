@@ -5,6 +5,19 @@ services:
     #
 
     #
+    # Repository for entity abstract rule
+    #
+    elcodi.core.rule.repository.abstract_rule:
+        class: %elcodi.core.rule.repository.abstract_rule.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.rule.entity.abstract_rule.class%
+
+    elcodi.repository.abstract_rule:
+        alias: elcodi.core.rule.repository.abstract_rule
+
+    #
     # Repository for entity rule
     #
     elcodi.core.rule.repository.rule:

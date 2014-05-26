@@ -10,11 +10,17 @@ services:
             file_manager: @elcodi.core.media.service.file_manager
             resize_adapter: @elcodi.core.media.resize.default
 
+    elcodi.image_manager:
+        alias: elcodi.core.media.service.image_manager
+
     elcodi.core.media.service.file_manager:
         class: %elcodi.core.media.service.file_manager.class%
         arguments:
             filesystem: @elcodi.core.media.filesystem.default
             file_transformer: @elcodi.core.media.transformer.file
+
+    elcodi.file_manager:
+        alias: elcodi.core.media.service.file_manager
 
     #
     # Resize

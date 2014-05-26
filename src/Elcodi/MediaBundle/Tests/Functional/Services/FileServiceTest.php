@@ -28,7 +28,10 @@ class FileServiceTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.media.service.file_manager';
+        return [
+            'elcodi.core.media.service.file_manager',
+            'elcodi.file_manager'
+        ];
     }
 
     /**
@@ -38,6 +41,8 @@ class FileServiceTest extends WebTestCase
     public function testUploadAndDownloadFile()
     {
         $image = $this->container->get('elcodi.core.media.factory.image')->create();
+        $image->setId(1);
+
         $fileTransformer = $this->container->get('elcodi.core.media.transformer.file');
         $imageName = $fileTransformer->transform($image);
         $imageData = file_get_contents(realpath(dirname(__FILE__)) . '/images/image-10-10.gif');

@@ -170,7 +170,6 @@ class CartManager
         return $cart;
     }
 
-
     /**
      * Adds cartLine to Cart
      *
