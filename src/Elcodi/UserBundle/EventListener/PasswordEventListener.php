@@ -28,7 +28,7 @@ class PasswordEventListener
     /**
      * @var PasswordEncoderInterface
      *
-     * Blowfish encoder
+     * Password encoder
      */
     protected $passwordEncoder;
 
