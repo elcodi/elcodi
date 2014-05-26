@@ -10,7 +10,7 @@ services:
     elcodi.core.user.event_listener.password:
         class: %elcodi.core.user.event_listener.password.class%
         arguments:
-            encoder_blowfish: @elcodi.core.user.provider.customer_provider
+            encoder: @elcodi.core.user.provider.customer_provider
         tags:
             - { name: doctrine.event_listener, event: preUpdate, method: preUpdate }
             - { name: doctrine.event_listener, event: prePersist, method: prePersist }
