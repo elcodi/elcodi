@@ -185,10 +185,6 @@ class OrderManager
     }
 
     /**
-     * Private Methods
-     */
-
-    /**
      * This method puts all order lines (and order itself) to desired status
      *
      * If given state is same as actual Order state, will return with no action

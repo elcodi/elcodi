@@ -11,8 +11,13 @@ services:
             - [setLoadOnlyCategoriesWithProducts, [%elcodi.core.product.load_only_categories_with_products%]]
             - [load]
 
+    elcodi.category_manager:
+        alias: elcodi.core.product.service.category_manager
+
     elcodi.core.product.service.product_collection_provider:
         class: %elcodi.core.product.service.product_collection_provider.class%
         arguments:
-            product_repository: @elcodi.core.product.repository.product
-            locale: %locale%
+            product_repository: @elcodi.repository.product
+
+    elcodi.product_collection_provider:
+        alias: elcodi.core.product.service.product_collection_provider

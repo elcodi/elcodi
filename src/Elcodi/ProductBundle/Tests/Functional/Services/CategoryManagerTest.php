@@ -29,6 +29,9 @@ class CategoryManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.product.service.category_manager';
+        return [
+            'elcodi.core.product.service.category_manager',
+            'elcodi.category_manager',
+        ];
     }
 }

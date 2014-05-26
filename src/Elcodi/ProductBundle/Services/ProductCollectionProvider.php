@@ -34,27 +34,18 @@ class ProductCollectionProvider
     protected $productRepository;
 
     /**
-     * @var string
-     *
-     * Locale
-     */
-    protected $locale;
-
-    /**
      * Construct method
      *
      * @param ProductRepository $productRepository Product Repository
-     * @param string            $locale            Locale
      */
-    public function __construct(ProductRepository $productRepository, $locale)
+    public function __construct(ProductRepository $productRepository)
     {
         $this->productRepository = $productRepository;
-        $this->locale = $locale;
     }
 
     /**
      * Get products that can be shown in Home.
-     * All products returned are enabled and none deleted
+     * All products returned are actived and none deleted
      *
      * @param integer $limit Product limit. By default, this value is 0
      *
@@ -65,22 +56,14 @@ class ProductCollectionProvider
         $query = $this
             ->productRepository
             ->createQueryBuilder('p')
-            ->select('p', 't', 'm')
-            ->leftJoin('p.translations', 't', 'WITH', 'p.id = t.translatable AND t.locale = :locale')
-            ->leftJoin('p.principalImage', 'm')
-            ->leftJoin('p.items', 'i')
             ->where('p.enabled = :enabled')
-            ->andWhere('p.deleted = :deleted')
-            ->andWhere("p.showInHome = :inhome")
-            ->setParameters(array(
-                'enabled'   =>  true,
-                'deleted'   =>  false,
-                'inhome'    =>  true,
-                'locale'    =>  $this->locale,
-            ))
+            ->setParameters([
+                'enabled' => true,
+            ])
             ->orderBy('p.updatedAt', 'DESC');
 
         if ($limit > 0) {
+
             $query->setMaxResults($limit);
         }
 
@@ -93,7 +76,7 @@ class ProductCollectionProvider
 
     /**
      * Get products with price reduction.
-     * All products returned are enabled and none deleted
+     * All products returned are actived and none deleted
      *
      * @param integer $limit Product limit. By default, this value is 0
      *
@@ -104,21 +87,14 @@ class ProductCollectionProvider
         $query = $this
             ->productRepository
             ->createQueryBuilder('p')
-            ->select('p', 't', 'm')
-            ->leftJoin('p.translations', 't', 'WITH', 'p.id = t.translatable AND t.locale = :locale')
-            ->leftJoin('p.principalImage', 'm')
-            ->leftJoin('p.items', 'i')
             ->where('p.enabled = :enabled')
-            ->andWhere('p.deleted = :deleted')
-            ->andWhere("i.reducedPrice > 0")
-            ->setParameters(array(
-                'enabled'   =>  true,
-                'deleted'   =>  false,
-                'locale'    =>  $this->locale,
-            ))
+            ->setParameters([
+                'enabled' => true,
+            ])
             ->orderBy('p.updatedAt', 'DESC');
 
         if ($limit > 0) {
+
             $query->setMaxResults($limit);
         }
 

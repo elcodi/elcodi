@@ -25,7 +25,7 @@ class CouponEventDispatcher
      *
      * Event dispatcher
      */
-    private $eventDispatcher;
+    protected $eventDispatcher;
 
     /**
      * Construct method

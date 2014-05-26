@@ -30,7 +30,7 @@ class ImageExtension extends Twig_Extension
      *
      * Router
      */
-    private $router;
+    protected $router;
 
     /**
      * @var string
