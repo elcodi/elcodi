@@ -44,8 +44,6 @@ use Elcodi\CartBundle\Exception\CartLineOutOfStockException;
  *
  * Public Methods:
  *
- * * loadCustomerCart(AbstractCustomer)
- *
  * * addLine(AbstractCart, CartLine)
  * * removeLine(AbstractCart, CartLine)
  * * emptyLines()

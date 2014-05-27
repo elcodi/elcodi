@@ -151,7 +151,7 @@ class CartWrapper
     {
         $cart = $customer
             ->getCarts()
-            ->first();
+            ->last();
 
         if (($cart instanceof CartInterface) && !$cart->isOrdered()) {
 
@@ -162,7 +162,10 @@ class CartWrapper
             return $cart;
         }
 
-        return $this->cartFactory->create();
+        $cart = $this->cartFactory->create();
+        $cart->setCustomer($customer);
+
+        return $cart;
     }
 
     /**
