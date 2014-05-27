@@ -56,12 +56,14 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         $eventDispatcher = $this->getMock('Symfony\Component\EventDispatcher\EventDispatcherInterface');
         $cartFactory = $this->getMock('Elcodi\CartBundle\Factory\CartFactory');
         $cartLineFactory = $this->getMock('Elcodi\CartBundle\Factory\CartLineFactory');
+        $cartWrapper = $this->getMock('Elcodi\CartBundle\Wrapper\CartWrapper', [], [], '', false);
 
         $this->cartManager = new CartManager(
             $manager,
             $eventDispatcher,
             $cartFactory,
-            $cartLineFactory
+            $cartLineFactory,
+            $cartWrapper
         );
     }
 
@@ -369,6 +371,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
                 'create',
             ))
             ->getMock();
+        $cartWrapper = $this->getMock('Elcodi\CartBundle\Wrapper\CartWrapper', [], [], '', false);
 
         $cartLine = new CartLine();
         $cartLineFactory
@@ -380,7 +383,8 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
             $manager,
             $eventDispatcher,
             $cartFactory,
-            $cartLineFactory
+            $cartLineFactory,
+            $cartWrapper
         );
 
         /**

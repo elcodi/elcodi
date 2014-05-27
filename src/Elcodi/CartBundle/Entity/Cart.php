@@ -47,6 +47,13 @@ class Cart extends AbstractEntity implements CartInterface
     protected $order;
 
     /**
+     * @var boolean
+     *
+     * Ordered
+     */
+    protected $ordered;
+
+    /**
      * @var Collection
      *
      * Lines
@@ -106,6 +113,30 @@ class Cart extends AbstractEntity implements CartInterface
     public function getOrder()
     {
         return $this->order;
+    }
+
+    /**
+     * Set ordered
+     *
+     * @param boolean $ordered Has been ordered
+     *
+     * @return CartInterface self Object
+     */
+    public function setOrdered($ordered)
+    {
+        $this->ordered = $ordered;
+
+        return $this;
+    }
+
+    /**
+     * Is ordered
+     *
+     * @return boolean is ordered
+     */
+    public function isOrdered()
+    {
+        return $this->ordered;
     }
 
     /**

@@ -36,7 +36,6 @@ class BannerZoneType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'Elcodi\BannerBundle\Entity\BannerZone',
-            'translation_domain' => 'admin'
         ));
     }
 

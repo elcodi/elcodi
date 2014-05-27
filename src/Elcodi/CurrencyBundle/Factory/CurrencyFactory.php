@@ -14,6 +14,8 @@
 
 namespace Elcodi\CurrencyBundle\Factory;
 
+use DateTime;
+
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
 use Elcodi\CurrencyBundle\Entity\Currency;
 
@@ -34,7 +36,9 @@ class CurrencyFactory extends AbstractFactory
          */
         $classNamespace = $this->getEntityNamespace();
         $currency = new $classNamespace();
-        $currency->setCreatedAt(new \DateTime());
+        $currency
+            ->setCreatedAt(new DateTime())
+            ->setEnabled(true);
 
         return $currency;
     }

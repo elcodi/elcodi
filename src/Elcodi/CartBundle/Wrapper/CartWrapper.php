@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -18,6 +18,8 @@ use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Factory\CartFactory;
 use Elcodi\CartBundle\Repository\CartRepository;
 use Elcodi\CartBundle\Services\CartSessionManager;
+use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
+use Elcodi\UserBundle\Wrapper\CustomerWrapper;
 
 /**
  * Class CartWrapper
@@ -46,6 +48,13 @@ class CartWrapper
     protected $cartFactory;
 
     /**
+     * @var CustomerWrapper
+     *
+     * CustomerWrapper
+     */
+    protected $customerWrapper;
+
+    /**
      * @var CartInterface
      *
      * Cart loaded
@@ -58,16 +67,19 @@ class CartWrapper
      * @param CartSessionManager $cartSessionManager CartSessionManager
      * @param CartRepository     $cartRepository     Cart Repository
      * @param CartFactory        $cartFactory        Cart Factory
+     * @param CustomerWrapper    $customerWrapper    Customer Wrapper
      */
     public function __construct(
         CartSessionManager $cartSessionManager,
         CartRepository $cartRepository,
-        CartFactory $cartFactory
+        CartFactory $cartFactory,
+        CustomerWrapper $customerWrapper
     )
     {
         $this->cartSessionManager = $cartSessionManager;
         $this->cartRepository = $cartRepository;
         $this->cartFactory = $cartFactory;
+        $this->customerWrapper = $customerWrapper;
     }
 
     /**
@@ -100,23 +112,11 @@ class CartWrapper
      */
     public function loadCart()
     {
-        if ($this->cart instanceof CartInterface) {
+        $customer = $this->customerWrapper->loadCustomer();
 
-            return $this->cart;
-        }
-
-        $cartId = $this->cartSessionManager->get();
-
-        if ($cartId) {
-            $this->cart = $this
-                ->cartRepository
-                ->find($cartId);
-        }
-
-        if (!($this->cart instanceof CartInterface)) {
-
-            $this->cart = $this->cartFactory->create();
-        }
+        $this->cart = $customer->getId()
+            ? $this->getCustomerCart($customer)
+            : $this->getCartFromSession();
 
         return $this->cart;
     }
@@ -135,5 +135,60 @@ class CartWrapper
         $this->cart = null;
 
         return $this->loadCart();
+    }
+
+    /**
+     * Return customer related cart
+     *
+     * If customer has any cart related, creates new and returns it
+     * Otherwise, retrieves it and saves it to session
+     *
+     * @param CustomerInterface $customer
+     *
+     * @return CartInterface Cart
+     */
+    protected function getCustomerCart(CustomerInterface $customer)
+    {
+        $cart = $customer
+            ->getCarts()
+            ->first();
+
+        if (($cart instanceof CartInterface) && !$cart->isOrdered()) {
+
+            $this
+                ->cartSessionManager
+                ->set($cart);
+
+            return $cart;
+        }
+
+        return $this->cartFactory->create();
+    }
+
+    /**
+     * Return cart from session
+     *
+     * If session has a cart, retrieves it and checks if exists
+     * If exists, returns it
+     * Otherwise, creates new one
+     * If session has not a cart, creates a new one and returns it
+     *
+     * @return CartInterface Cart
+     */
+    public function getCartFromSession()
+    {
+        $cartIdInSession = $this->cartSessionManager->get();
+
+        if (!$cartIdInSession) {
+            return $this->cartFactory->create();
+        }
+
+        $cart = $this
+            ->cartRepository
+            ->find($cartIdInSession);
+
+        return ($cart instanceof CartInterface)
+            ? $cart
+            : $this->cartFactory->create();
     }
 }

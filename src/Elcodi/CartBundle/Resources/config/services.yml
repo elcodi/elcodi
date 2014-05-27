@@ -6,10 +6,11 @@ services:
     elcodi.core.cart.service.cart_manager:
         class: %elcodi.core.cart.service.cart_manager.class%
         arguments:
-            entity_manager: @doctrine.orm.entity_manager
+            cart_line_entity_manager: @elcodi.manager.cart_line
             event_dispatcher: @event_dispatcher
             cart_factory: @elcodi.core.cart.factory.cart
             cart_line_factory: @elcodi.core.cart.factory.cart_line
+            cart_wrapper: @elcodi.cart_wrapper
 
     elcodi.cart_manager:
         alias: elcodi.core.cart.service.cart_manager
@@ -57,6 +58,7 @@ services:
             cart_session_manager: @elcodi.cart_session_manager
             cart_repository: @elcodi.repository.cart
             cart_factory: @elcodi.factory.cart
+            customer_wrapper: @elcodi.customer_wrapper
 
     elcodi.cart_wrapper:
         alias: elcodi.core.cart.wrapper.cart_wrapper

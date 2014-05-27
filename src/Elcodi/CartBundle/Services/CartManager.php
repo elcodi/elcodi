@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
 namespace Elcodi\CartBundle\Services;
 
+use Elcodi\CartBundle\Wrapper\CartWrapper;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\CartBundle\ElcodiCartEvents;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
-use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
 use Elcodi\CartBundle\Factory\CartLineFactory;
@@ -61,9 +61,9 @@ class CartManager
     /**
      * @var ObjectManager
      *
-     * Manager
+     * Cartline Manager
      */
-    protected $manager;
+    protected $cartLineManager;
 
     /**
      * @var EventDispatcherInterface
@@ -87,59 +87,29 @@ class CartManager
     protected $cartLineFactory;
 
     /**
+     * @var CartWrapper
+     *
+     * CartWrapper
+     */
+    protected $cartWrapper;
+
+    /**
      * Construct method
      *
      */
     public function __construct(
-        ObjectManager $manager,
+        ObjectManager $cartLineManager,
         EventDispatcherInterface $eventDispatcher,
         CartFactory $cartFactory,
-        CartLineFactory $cartLineFactory
+        CartLineFactory $cartLineFactory,
+        CartWrapper $cartWrapper
     )
     {
         $this->cartFactory = $cartFactory;
-        $this->manager = $manager;
+        $this->cartLineManager = $cartLineManager;
         $this->eventDispatcher = $eventDispatcher;
         $this->cartLineFactory = $cartLineFactory;
-    }
-
-    /**
-     * Given a Customer, this service will return the Cart this customer will
-     * have to use.
-     *
-     * * If have no reachable cart, new one will be created. Will be persisted
-     * * If many, first one not deleted will be used
-     *
-     * If new Cart, this method persists it, but not flushes it
-     *
-     * @param CustomerInterface $customer Customer
-     *
-     * @return CartInterface loaded Cart
-     */
-    public function loadCustomerCart(CustomerInterface $customer)
-    {
-        $carts = $customer->getCarts();
-        $cart = null;
-
-        if ($carts->count() > 0) {
-
-            $cart = $carts->first();
-            $this->dispatchCartCheckEvents($cart);
-            $this->dispatchCartLoadEvents($cart);
-
-        } else {
-
-            /**
-             * New cart will not be stored since is not persisted.
-             *
-             * Every cart action will persist it
-             */
-            $cart = $this->cartFactory->create();
-            $cart->setCustomer($customer);
-            $this->manager->persist($cart);
-        }
-
-        return $cart;
+        $this->cartWrapper = $cartWrapper;
     }
 
     /**
@@ -155,14 +125,10 @@ class CartManager
      */
     public function loadCart(CartInterface $cart)
     {
-        if (!is_null($cart) && $cart->getId()) {
+        if ($cart->getId()) {
 
             $this->dispatchCartCheckEvents($cart);
             $this->dispatchCartLoadEvents($cart);
-
-        } else {
-
-            $this->manager->persist($cart);
 
         }
 
@@ -183,6 +149,12 @@ class CartManager
     {
         $cartLine->setCart($cart);
         $cart->addCartLine($cartLine);
+
+        /**
+         * When we persist cartLine, we are also persisting Cart if no persisted
+         * because are related with cascade ALL
+         */
+        $this->cartLineManager->persist($cartLine);
 
         $this->dispatchCartCheckEvents($cart);
         $this->dispatchCartLoadEvents($cart);
@@ -211,7 +183,7 @@ class CartManager
     {
         $lines = $cart->getCartLines();
         $lines->removeElement($cartLine);
-        $this->manager->remove($cartLine);
+        $this->cartLineManager->remove($cartLine);
 
         if ($dispatchEvents) {
             $this->dispatchCartLoadEvents($cart);
@@ -231,10 +203,10 @@ class CartManager
      */
     public function emptyLines(CartInterface $cart)
     {
-        $lines = $cart->getCartLines();
+        $cartLines = $cart->getCartLines();
 
-        foreach ($lines as $line) {
-            $this->manager->remove($line);
+        foreach ($cartLines as $cartLine) {
+            $this->cartLineManager->remove($cartLine);
         }
 
         $cart->setCartLines(new ArrayCollection);
@@ -390,8 +362,6 @@ class CartManager
             ->setQuantity($quantity);
 
         $this->addLine($cart, $cartLine);
-
-        $this->manager->persist($cartLine);
 
         return $this;
     }

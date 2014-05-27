@@ -36,7 +36,6 @@ class ReferralRuleType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class'         => 'Elcodi\ReferralProgramBundle\Entity\ReferralRule',
-            'translation_domain' => 'admin'
         ));
     }
 

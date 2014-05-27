@@ -2,7 +2,6 @@ Elcodi\UserBundle\Entity\Address:
     type: entity
     repositoryClass: Elcodi\UserBundle\Repository\AddressRepository
     table: address
-    inheritanceType:
     fields:
         address:
             column: address
@@ -14,13 +13,17 @@ Elcodi\UserBundle\Entity\Address:
         createdAt:
             column: created_at
             type: datetime
+            nullable: true
+
         updatedAt:
             column: updated_at
             type: datetime
+
         # enable
         enabled:
             column: enabled
             type: boolean
+            nullable: true
 
     lifecycleCallbacks:
         preUpdate: [loadUpdateAt]

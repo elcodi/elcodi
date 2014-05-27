@@ -16,6 +16,7 @@ namespace Elcodi\CurrencyBundle\Twig;
 
 use Twig_Extension;
 use Twig_Filter_Method;
+use NumberFormatter;
 
 /**
  * Print price extension for twig
@@ -93,9 +94,9 @@ class PrintPriceExtension extends Twig_Extension
             throw new \Exception('This exchange is not possible');
         }
 
-        $formatter = new \NumberFormatter($this->locale, \NumberFormatter::CURRENCY);
+        $formatter = new NumberFormatter($this->locale, NumberFormatter::CURRENCY);
         $targetCurrencySymbol = $this->currencySymbols[$targetCurrency];
-        $formatter->setSymbol(\NumberFormatter::CURRENCY_SYMBOL, $targetCurrencySymbol);
+        $formatter->setSymbol(NumberFormatter::CURRENCY_SYMBOL, $targetCurrencySymbol);
 
         return $formatter->format($amount * $currencyRate);
     }

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -32,7 +32,6 @@ class CategoryType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'Elcodi\ProductBundle\Entity\Category',
-            'translation_domain' => 'admin'
         ));
     }
 
@@ -47,18 +46,18 @@ class CategoryType extends AbstractType
 
         $builder
             ->add('parent', 'entity', array(
-                'class' => 'ElcodiProductBundle:Category',
-                'label' => '_Parent',
-                'multiple' => false,
-                'required' => false,
+                'class'       => 'ElcodiProductBundle:Category',
+                'label'       => '_Parent',
+                'multiple'    => false,
+                'required'    => false,
                 'empty_value' => '--- Root ---',
             ))
             ->add('position', 'number', array(
-                'label' => '_Position',
+                'label'    => '_Position',
                 'required' => false
             ))
             ->add('root', 'checkbox', array(
-                'label' => '_Principal',
+                'label'    => '_Principal',
                 'required' => false
             ))
             ->add('metaTitle', 'text', array(

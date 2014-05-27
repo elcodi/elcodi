@@ -21,9 +21,7 @@ services:
         class: %elcodi.core.user.wrapper.customer_wrapper.class%
         arguments:
             customer_repository: @elcodi.core.user.repository.customer
-            session: @session
             customer_factory: @elcodi.core.user.factory.customer
-            session_field_name: %elcodi.core.user.session_field_name%
             security_context: @?security.context
 
     elcodi.customer_wrapper:

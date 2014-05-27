@@ -34,7 +34,6 @@ class ReferralHashType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class'         => 'Elcodi\ReferralProgramBundle\Entity\ReferralHash',
-            'translation_domain' => 'admin'
         ));
     }
 

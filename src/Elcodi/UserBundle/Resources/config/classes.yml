@@ -20,11 +20,6 @@ parameters:
     elcodi.core.user.wrapper.customer_wrapper.class: Elcodi\UserBundle\Wrapper\CustomerWrapper
 
     #
-    # Form Types
-    #
-    elcodi.core.user.form_type.customer.class: Elcodi\UserBundle\Form\Type\CustomerType
-
-    #
     # Event Listeners
     #
     elcodi.core.user.event_listener.password.class: Elcodi\UserBundle\EventListener\PasswordEventListener

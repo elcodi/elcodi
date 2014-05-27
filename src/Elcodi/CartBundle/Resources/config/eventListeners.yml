@@ -6,11 +6,12 @@ services:
     elcodi.core.cart.event_listener.cart:
         class: %elcodi.core.cart.event_listener.cart.class%
         arguments:
-            order_manager: @elcodi.core.cart.service.cart_manager
-            entity_manager: @doctrine.orm.entity_manager
+            cart_manager: @elcodi.core.cart.service.cart_manager
+            cart_entity_manager: @elcodi.manager.cart
         tags:
             - { name: kernel.event_listener, event: cart.oncheck, method: onCartCheck }
             - { name: kernel.event_listener, event: cart.onload, method: onCartLoad }
+            - { name: kernel.event_listener, event: order.postcreated, method: postOrderCreated }
 
     elcodi.core.cart.event_listener.order_line_state:
         class: %elcodi.core.cart.event_listener.order_line_state.class%
@@ -27,3 +28,10 @@ services:
             cart_session_manager: @elcodi.cart_session_manager
         tags:
             - { name: kernel.event_listener, event: cart.postload, method: onCartPostLoad}
+
+    elcodi.core.cart.event_listener.cart_load:
+        class: %elcodi.core.cart.event_listener.cart_load.class%
+        arguments:
+            container: @service_container
+        tags:
+            - { name: doctrine.event_listener, event: postLoad, method: postLoad }

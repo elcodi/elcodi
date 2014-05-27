@@ -147,7 +147,10 @@ class OrderManager
             : $this->orderFactory->create();
         $this->manager->persist($order);
 
-        $cart->setOrder($order);
+        $cart
+            ->setOrder($order)
+            ->setOrdered(true);
+
         $order
             ->setCustomer($cart->getCustomer())
             ->setCart($cart)

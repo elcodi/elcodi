@@ -48,7 +48,7 @@ Elcodi\UserBundle\Entity\Customer:
                 nullable: true
             cascade: [ persist ]
 
-        deliveryAddress:
+        invoiceAddress:
             targetEntity: Elcodi\UserBundle\Entity\Interfaces\AddressInterface
             joinColumn:
                 name: invoice_address_id

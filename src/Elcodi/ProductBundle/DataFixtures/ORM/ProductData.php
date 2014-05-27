@@ -46,7 +46,8 @@ class ProductData extends AbstractFixture
             ->setPrincipalCategory($category)
             ->setManufacturer($manufacturer)
             ->setStock(10)
-            ->setPrice(10);
+            ->setPrice(10)
+            ->setEnabled(true);
 
         $manager->persist($product);
         $this->addReference('product', $product);
@@ -64,7 +65,8 @@ class ProductData extends AbstractFixture
             ->setShortDescription('my product-reduced short description')
             ->setStock(5)
             ->setPrice(10)
-            ->setReducedPrice(5);
+            ->setReducedPrice(5)
+            ->setEnabled(true);
 
         $manager->persist($productReduced);
         $this->addReference('product-reduced', $productReduced);

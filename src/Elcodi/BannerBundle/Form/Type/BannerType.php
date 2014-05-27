@@ -33,7 +33,6 @@ class BannerType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'Elcodi\BannerBundle\Entity\Banner',
-            'translation_domain' => 'admin'
         ));
     }
 

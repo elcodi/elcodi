@@ -24,6 +24,10 @@ Elcodi\CartBundle\Entity\Cart:
             nullable: false
             precision: 10
             scale: 2
+        ordered:
+            column: ordered
+            type: boolean
+            nullable: false
         createdAt:
             column: created_at
             type: datetime

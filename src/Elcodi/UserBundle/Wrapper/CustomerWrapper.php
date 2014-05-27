@@ -14,7 +14,6 @@
 
 namespace Elcodi\UserBundle\Wrapper;
 
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 
@@ -42,25 +41,11 @@ class CustomerWrapper
     protected $customerRepository;
 
     /**
-     * @var SessionInterface
-     *
-     * Session
-     */
-    protected $session;
-
-    /**
      * @var CustomerFactory
      *
      * Customer factory
      */
     protected $customerFactory;
-
-    /**
-     * @var string
-     *
-     * Session field name
-     */
-    protected $sessionFieldName;
 
     /**
      * @var SecurityContextInterface
@@ -76,23 +61,17 @@ class CustomerWrapper
      * Otherwise, this create new Guest without persisting it
      *
      * @param CustomerRepository       $customerRepository Customer repository
-     * @param SessionInterface         $session            Object of Session
      * @param CustomerFactory          $customerFactory    Customer factory
-     * @param string                   $sessionFieldName   Session field name
      * @param SecurityContextInterface $securityContext    SecurityContext instance
      */
     public function __construct(
         CustomerRepository $customerRepository,
-        SessionInterface $session,
         CustomerFactory $customerFactory,
-        $sessionFieldName,
         SecurityContextInterface $securityContext = null
     )
     {
         $this->customerRepository = $customerRepository;
-        $this->session = $session;
         $this->customerFactory = $customerFactory;
-        $this->sessionFieldName = $sessionFieldName;
         $this->securityContext = $securityContext;
     }
 
@@ -155,22 +134,7 @@ class CustomerWrapper
 
         } else {
 
-            $customerId = $this->session->get($this->sessionFieldName);
-
-            if (null !== $customerId) {
-
-                $this->customer = $this->customerRepository->findOneBy(array(
-                    'id' => $customerId
-                ));
-            }
-
-            /**
-             * Customer not found. Generating new one
-             */
-            if (!($this->customer instanceof CustomerInterface)) {
-
-                $this->customer = $this->customerFactory->create();
-            }
+            $this->customer = $this->customerFactory->create();
         }
 
         return $this->customer;

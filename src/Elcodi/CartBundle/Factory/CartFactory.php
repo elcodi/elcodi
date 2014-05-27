@@ -39,6 +39,7 @@ class CartFactory extends AbstractFactory
         $cart = new $classNamespace();
         $cart
             ->setQuantity(0)
+            ->setOrdered(false)
             ->setCartLines(new ArrayCollection)
             ->setCreatedAt(new DateTime);
 

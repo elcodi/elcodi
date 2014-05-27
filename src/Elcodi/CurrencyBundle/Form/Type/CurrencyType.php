@@ -35,7 +35,6 @@ class CurrencyType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'Elcodi\CurrencyBundle\Entity\Currency',
-            'translation_domain' => 'admin'
         ));
     }
 

@@ -90,6 +90,22 @@ interface CartInterface extends PriceInterface
     public function getOrder();
 
     /**
+     * Set ordered
+     *
+     * @param boolean $ordered Has been ordered
+     *
+     * @return CartInterface self Object
+     */
+    public function setOrdered($ordered);
+
+    /**
+     * Is ordered
+     *
+     * @return boolean is ordered
+     */
+    public function isOrdered();
+
+    /**
      * Set quantity
      *
      * @param int $quantity Quantity

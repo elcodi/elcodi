@@ -34,7 +34,6 @@ class LanguageType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'Elcodi\CoreBundle\Entity\Language',
-            'translation_domain' => 'admin'
         ));
     }
 

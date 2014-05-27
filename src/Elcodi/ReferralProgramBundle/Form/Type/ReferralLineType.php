@@ -36,7 +36,6 @@ class ReferralLineType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class'         => 'Elcodi\ReferralProgramBundle\Entity\ReferralLine',
-            'translation_domain' => 'admin'
         ));
     }
 

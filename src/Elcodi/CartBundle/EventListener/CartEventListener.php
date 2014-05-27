@@ -15,6 +15,7 @@
 namespace Elcodi\CartBundle\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Elcodi\CartBundle\Event\OrderPostCreatedEvent;
 use Exception;
 
 use Elcodi\CartBundle\Exception\CartLineProductUnavailableException;
@@ -110,6 +111,20 @@ class CartEventListener
          * changed so we need to flush $cart
          */
         $this->loadPrices($cart);
+
+        $this->cartObjectManager->flush($cart);
+    }
+
+    /**
+     * After an Order is created, the cart is set as Ordered
+     *
+     * @param OrderPostCreatedEvent $event Event
+     */
+    public function postOrderCreated(OrderPostCreatedEvent $event)
+    {
+        $cart = $event->getCart();
+
+        $cart->setOrdered(true);
 
         $this->cartObjectManager->flush($cart);
     }
