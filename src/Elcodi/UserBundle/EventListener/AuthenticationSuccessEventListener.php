@@ -1,16 +1,26 @@
 <?php
 
+/**
+ * This file is part of the Elcodi package.
+ *
+ * Copyright (c) 2014 Elcodi.com
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author  ##author_placeholder
+ * @version ##version_placeholder##
+ */
+
 namespace Elcodi\UserBundle\EventListener;
 
-use Doctrine\Common\Persistence\ObjectManager;
-use Elcodi\CartBundle\Wrapper\CartWrapper;
-use JMS\DiExtraBundle\Annotation\AfterSetup;
 use Symfony\Component\Security\Core\Event\AuthenticationEvent;
+use Doctrine\Common\Persistence\ObjectManager;
+
+use Elcodi\CartBundle\Wrapper\CartWrapper;
 
 /**
  * Class AuthenticationSuccessEventListener
- *
- * @package Elcodi\UserBundle\EventListener
  */
 class AuthenticationSuccessEventListener
 {
@@ -29,12 +39,15 @@ class AuthenticationSuccessEventListener
     protected $cartManager;
 
     /**
-     * @param CartWrapper $cartWrapper
-     * @param ObjectManager $cartManager
+     * Construct method
+     *
+     * @param CartWrapper   $cartWrapper Cart Wrapper
+     * @param ObjectManager $cartManager Object Manager
      */
     public function __construct(
         CartWrapper $cartWrapper,
-        ObjectManager $cartManager)
+        ObjectManager $cartManager
+    )
     {
         $this->cartWrapper = $cartWrapper;
         $this->cartManager = $cartManager;
@@ -47,7 +60,7 @@ class AuthenticationSuccessEventListener
      * to see if a Cart was created in session when she was not
      * logged.
      *
-     * @param AuthenticationEvent $event
+     * @param AuthenticationEvent $event Event
      */
     public function onAuthenticationSuccess(AuthenticationEvent $event)
     {
@@ -61,10 +74,10 @@ class AuthenticationSuccessEventListener
              * factory method. (i.e. has already been
              * flushed)
              */
-             $cart->setCustomer($loggedUser);
+            $cart->setCustomer($loggedUser);
 
-             $this->cartManager->flush($cart);
+            $this->cartManager->flush($cart);
         }
 
     }
-} 
+}
