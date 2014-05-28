@@ -23,6 +23,7 @@ parameters:
     # Event Listeners
     #
     elcodi.core.user.event_listener.password.class: Elcodi\UserBundle\EventListener\PasswordEventListener
+    elcodi.core.user.event_listener.authentication_success.class: Elcodi\UserBundle\EventListener\AuthenticationSuccessEventListener
 
     #
     # Factories

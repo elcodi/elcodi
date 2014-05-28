@@ -37,7 +37,7 @@
         "ircmaxell/password-compat": "~1.0",
 
         "elcodi/core-bundle": "0.1.*@dev",
-        "elcodi/user-bundle": "0.1.*@dev"
+        "elcodi/cart-bundle": "0.1.*@dev"
     },
     "require-dev": {
         "doctrine/data-fixtures": "v1.0.0",
