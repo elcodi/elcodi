@@ -67,4 +67,20 @@ interface PriceInterface
     * @return Object self Object
     */
     public function setAmount(MoneyInterface $amount);
+
+    /**
+     * Gets the associated currency
+     *
+     * @return \Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
+     */
+    public function getCurrency();
+
+    /**
+     * Sets the currency
+     *
+     * @param \Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface $currency
+     *
+     * @return Object self Object
+     */
+    public function setCurrency($currency);
 }

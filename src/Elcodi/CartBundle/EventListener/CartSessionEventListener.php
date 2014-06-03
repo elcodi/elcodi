@@ -14,10 +14,12 @@
 
 namespace Elcodi\CartBundle\EventListener;
 
+use Elcodi\CartBundle\Event\CartOnLoadEvent;
 use Elcodi\CartBundle\Services\CartSessionManager;
 
-use Elcodi\CartBundle\Event\CartPostLoadEvent;
-
+/**
+ * Class CartSessionEventListener
+ */
 class CartSessionEventListener
 {
     /**
@@ -38,12 +40,14 @@ class CartSessionEventListener
     }
 
     /**
-     * Stores cart id in HTTP session.
+     * Stores cart id in HTTP session when this is saved
      *
-     * @param CartPostLoadEvent $event
+     * @param CartOnLoadEvent $event Event
      */
-    public function onCartPostLoad(CartPostLoadEvent $event)
+    public function onCartLoad(CartOnLoadEvent $event)
     {
-        $this->cartSessionManager->set($event->getCart());
+        $this
+            ->cartSessionManager
+            ->set($event->getCart());
     }
 }

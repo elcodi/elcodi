@@ -23,7 +23,6 @@ Elcodi\CartBundle\Entity\CartLine:
         cart:
             targetEntity: Elcodi\CartBundle\Entity\Interfaces\CartInterface
             inversedBy: cartLines
-            cascade: ["all"]
             joinColumn:
                 name: cart_id
                 referencedColumnName: id

@@ -1,0 +1,18 @@
+services:
+
+    #
+    # EventDispatchers
+    #
+    elcodi.core.cart_coupon.event_dispatcher.cart_coupon:
+        class: %elcodi.core.cart_coupon.event_dispatcher.cart_coupon.class%
+        parent: elcodi.core.core.event_dispatcher.abstract
+
+    elcodi.cart_coupon_event_dispatcher:
+        alias: elcodi.core.cart_coupon.event_dispatcher.cart_coupon
+
+    elcodi.core.cart_coupon.event_dispatcher.order_coupon:
+        class: %elcodi.core.cart_coupon.event_dispatcher.order_coupon.class%
+        parent: elcodi.core.core.event_dispatcher.abstract
+
+    elcodi.order_coupon_event_dispatcher:
+        alias: elcodi.core.cart_coupon.event_dispatcher.order_coupon

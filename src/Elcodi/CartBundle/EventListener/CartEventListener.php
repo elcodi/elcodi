@@ -15,30 +15,22 @@
 namespace Elcodi\CartBundle\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Elcodi\CartBundle\Event\OrderPostCreatedEvent;
-use Elcodi\CurrencyBundle\Entity\Money;
-use Exception;
 
-use Elcodi\CartBundle\Exception\CartLineProductUnavailableException;
-use Elcodi\CartBundle\Exception\CartLineOutOfStockException;
+use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
+use Elcodi\CartBundle\EventDispatcher\CartEventDispatcher;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
-use Elcodi\CartBundle\Event\CartOnCheckEvent;
+use Elcodi\CartBundle\Event\CartPreLoadEvent;
 use Elcodi\CartBundle\Event\CartOnLoadEvent;
 use Elcodi\CartBundle\Services\CartManager;
+use Elcodi\CurrencyBundle\Entity\Money;
+use Elcodi\CartBundle\Event\OrderOnCreatedEvent;
 
 /**
  * Class CartEventListener
  */
 class CartEventListener
 {
-    /**
-     * @var CartManager
-     *
-     * cartManager
-     */
-    protected $cartManager;
-
     /**
      * @var ObjectManager
      *
@@ -47,35 +39,50 @@ class CartEventListener
     protected $cartObjectManager;
 
     /**
+     * @var CartEventDispatcher
+     *
+     * CartEventDispatcher
+     */
+    protected $cartEventDispatcher;
+
+    /**
+     * @var CartManager
+     *
+     * cartManager
+     */
+    protected $cartManager;
+
+    /**
      * Built method
      *
-     * @param CartManager   $cartManager       Cart Manager
-     * @param ObjectManager $cartObjectManager ObjectManager for Cart entity
+     * @param ObjectManager       $cartObjectManager   ObjectManager for Cart entity
+     * @param CartEventDispatcher $cartEventDispatcher Cart event dispatcher
+     * @param CartManager         $cartManager         Cart Manager
      */
     public function __construct(
-        CartManager $cartManager,
-        ObjectManager $cartObjectManager
+        ObjectManager $cartObjectManager,
+        CartEventDispatcher $cartEventDispatcher,
+        CartManager $cartManager
     )
     {
-        $this->cartManager = $cartManager;
         $this->cartObjectManager = $cartObjectManager;
+        $this->cartEventDispatcher = $cartEventDispatcher;
+        $this->cartManager = $cartManager;
     }
 
     /**
      * Check cart integrity
      *
-     * @param CartOnCheckEvent $event Event
+     * @param CartPreLoadEvent $event Event
      *
-     * @throws CartLineOutOfStockException
-     * @throws CartLineProductUnavailableException
+     * @api
      */
-    public function onCartCheck(CartOnCheckEvent $event)
+    public function onCartPreLoad(CartPreLoadEvent $event)
     {
         /**
          * @var CartInterface $cart
          */
         $cart = $event->getCart();
-        $cartQuantity = 0;
 
         /**
          * Check every CartLine
@@ -84,24 +91,16 @@ class CartEventListener
          */
         foreach ($cart->getCartLines() as $cartLine) {
 
-            try {
-                $this->checkCartLine($cartLine);
-
-            } catch (Exception $e) {
-
-                $this->cartManager->removeLine($cart, $cartLine, false);
-            }
-
-            $cartQuantity += $cartLine->getQuantity();
+            $this->checkCartLine($cartLine);
         }
-
-        $cart->setQuantity($cartQuantity);
     }
 
     /**
      * Load cart
      *
      * @param CartOnLoadEvent $event Event
+     *
+     * @api
      */
     public function onCartLoad(CartOnLoadEvent $event)
     {
@@ -111,21 +110,41 @@ class CartEventListener
          * Recalculate cart amount. Prices might have
          * changed so we need to flush $cart
          */
-        $this->loadPrices($cart);
-
-        $this->cartObjectManager->flush($cart);
+        $this->loadCartPrices($cart);
     }
 
     /**
-     * After an Order is created, the cart is set as Ordered
+     * Performs all processes to be performed after the cart load
      *
-     * @param OrderPostCreatedEvent $event Event
+     * Flushes all loaded cart and related entities.
+     *
+     * @param CartOnLoadEvent $event Event
+     *
+     * @api
      */
-    public function postOrderCreated(OrderPostCreatedEvent $event)
+    public function onCartLoadFlush(CartOnLoadEvent $event)
     {
         $cart = $event->getCart();
 
-        $cart->setOrdered(true);
+        $this->loadCartQuantities($cart);
+
+        $this->cartObjectManager->persist($cart);
+        $this->cartObjectManager->flush();
+    }
+
+    /**
+     * After an Order is created, the cart is set as Ordered enabling related
+     * flag
+     *
+     * @param OrderOnCreatedEvent $event Event
+     *
+     * @api
+     */
+    public function postOrderCreated(OrderOnCreatedEvent $event)
+    {
+        $cart = $event
+            ->getCart()
+            ->setOrdered(true);
 
         $this->cartObjectManager->flush($cart);
     }
@@ -135,30 +154,50 @@ class CartEventListener
      *
      * @param CartLineInterface $cartLine Cart line
      *
-     * @throws CartLineOutOfStockException
-     * @throws CartLineProductUnavailableException
+     * @return CartLineInterface CartLine
      */
     protected function checkCartLine(CartLineInterface $cartLine)
     {
+        $cart = $cartLine->getCart();
         $product = $cartLine->getProduct();
 
-        if (!$product->isEnabled()) {
+        if (
+            !($product instanceof ProductInterface) ||
+            !($product->isEnabled()) ||
+            $cartLine->getQuantity() <= 0
+        ) {
+            $this->cartManager->silentRemoveLine(
+                $cart,
+                $cartLine
+            );
 
-            throw new CartLineProductUnavailableException('Current product is not available');
+            /**
+             * An inconsistent cart event is dispatched
+             */
+            $this
+                ->cartEventDispatcher
+                ->dispatchCartInconsistentEvent(
+                    $cart,
+                    $cartLine
+                );
         }
 
         if ($cartLine->getQuantity() > $product->getStock()) {
 
-            throw new CartLineOutOfStockException('Current product is out of stock');
+            $cartLine->setQuantity($product->getStock());
         }
+
+        return $cartLine;
     }
 
     /**
      * This method calculates all prices given a Cart
      *
      * @param CartInterface $cart Cart
+     *
+     * @return CartInterface Cart
      */
-    protected function loadPrices(CartInterface $cart)
+    protected function loadCartPrices(CartInterface $cart)
     {
         $productAmount = new Money(0, $cart->getCurrency());
         $totalAmount = new Money(0, $cart->getCurrency());
@@ -199,6 +238,7 @@ class CartEventListener
          * price.
          */
         if ($product->getReducedPrice()->getAmount() > 0) {
+
             $productPrice = $product->getReducedPrice();
         }
 
@@ -211,5 +251,32 @@ class CartEventListener
         $cartLine->setAmount($cartLine->getProductAmount());
 
         return $cartLine;
+    }
+
+    /**
+     * This method calculates all quantities given a Cart
+     *
+     * @param CartInterface $cart Cart
+     *
+     * @return CartInterface Cart
+     */
+    protected function loadCartQuantities(CartInterface $cart)
+    {
+        $quantity = 0;
+
+        /**
+         * Calculate max shipping delay
+         */
+        foreach ($cart->getCartLines() as $cartLine) {
+
+            /**
+             * @var CartLineInterface $cartLine
+             */
+            $quantity += $cartLine->getQuantity();
+        }
+
+        $cart->setQuantity($quantity);
+
+        return $cart;
     }
 }

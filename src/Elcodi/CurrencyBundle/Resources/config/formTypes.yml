@@ -1,5 +1,0 @@
-services:
-    elcodi.core.currency.form_type.currency:
-        class: %elcodi.core.currency.form_type.currency.class%
-        tags:
-            - { name: form.type, alias: elcodi_core_form_types_currency }

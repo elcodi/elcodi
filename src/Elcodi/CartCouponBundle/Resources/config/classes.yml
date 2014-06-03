@@ -23,9 +23,17 @@ parameters:
     #
     elcodi.core.cart_coupon.event_listener.cart.class: Elcodi\CartCouponBundle\EventListener\CartEventListener
     elcodi.core.cart_coupon.event_listener.order.class: Elcodi\CartCouponBundle\EventListener\OrderEventListener
+    elcodi.core.cart_coupon.event_listener.cart_coupon.class: Elcodi\CartCouponBundle\EventListener\CartCouponEventListener
+    elcodi.core.cart_coupon.event_listener.order_coupon.class: Elcodi\CartCouponBundle\EventListener\OrderCouponEventListener
 
     #
     # Services
     #
     elcodi.core.cart_coupon.service.cart_coupon_manager.class: Elcodi\CartCouponBundle\Services\CartCouponManager
     elcodi.core.cart_coupon.service.order_coupon_manager.class: Elcodi\CartCouponBundle\Services\OrderCouponManager
+
+    #
+    # EventDispatchers
+    #
+    elcodi.core.cart_coupon.event_dispatcher.cart_coupon.class: Elcodi\CartCouponBundle\EventDispatcher\CartCouponEventDispatcher
+    elcodi.core.cart_coupon.event_dispatcher.order_coupon.class: Elcodi\CartCouponBundle\EventDispatcher\OrderCouponEventDispatcher

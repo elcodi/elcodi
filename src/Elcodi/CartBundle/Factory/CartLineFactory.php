@@ -16,12 +16,32 @@ namespace Elcodi\CartBundle\Factory;
 
 use Elcodi\CartBundle\Entity\CartLine;
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
+use Elcodi\CurrencyBundle\Wrapper\CurrencyWrapper;
 
 /**
  * Class CartLineFactory
  */
 class CartLineFactory extends AbstractFactory
 {
+    /**
+     * @var CurrencyWrapper
+     *
+     * Currency wrapper
+     */
+    protected $currencyWrapper;
+
+    /**
+     * Set the Currency wrapper
+     *
+     * @param CurrencyWrapper $currencyWrapper
+     */
+    public function setCurrencyWrapper(
+        CurrencyWrapper $currencyWrapper
+    )
+    {
+        $this->currencyWrapper = $currencyWrapper;
+    }
+
     /**
      * Creates an instance of CartLine
      *
@@ -34,6 +54,8 @@ class CartLineFactory extends AbstractFactory
          */
         $classNamespace = $this->getEntityNamespace();
         $cartLine = new $classNamespace();
+
+        $cartLine->setCurrency($this->currencyWrapper->loadCurrency());
 
         return $cartLine;
     }

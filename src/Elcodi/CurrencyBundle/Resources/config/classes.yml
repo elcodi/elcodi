@@ -13,23 +13,23 @@ parameters:
     elcodi.core.currency.repository.currency_exchange_rate.class: Elcodi\CurrencyBundle\Repository\CurrencyExchangeRateRepository
 
     #
-    # Factory classes
+    # Factories
     #
     elcodi.core.currency.factory.currency.class: Elcodi\CurrencyBundle\Factory\CurrencyFactory
     elcodi.core.currency.factory.currency_exchange_rate.class: Elcodi\CurrencyBundle\Factory\CurrencyExchangeRateFactory
 
     #
-    # Form type classes
-    #
-    elcodi.core.currency.form_type.currency.class: Elcodi\CurrencyBundle\Form\Type\CurrencyType
-
-    #
-    # Service classes
+    # Services
     #
     elcodi.core.currency.service.exchange_rates_provider.class: Elcodi\CurrencyBundle\Provider\DummyExchangeRatesProvider
-    elcodi.core.currency.manager.currency_manager.class: Elcodi\CurrencyBundle\Manager\CurrencyManager
+    elcodi.core.currency.service.currency_manager.class: Elcodi\CurrencyBundle\Manager\CurrencyManager
 
     #
-    # Twig classes
+    # Twig extensions
     #
     elcodi.core.currency.twig_extension.print_money.class: Elcodi\CurrencyBundle\Twig\PrintMoneyExtension
+
+    #
+    # Wrappers
+    #
+    elcodi.core.currency.wrapper.currency.class: Elcodi\CurrencyBundle\Wrapper\CurrencyWrapper

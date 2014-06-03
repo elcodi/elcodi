@@ -54,6 +54,7 @@ Elcodi\CartBundle\Entity\Cart:
             targetEntity: Elcodi\CartBundle\Entity\Interfaces\CartLineInterface
             mappedBy: cart
             cascade: ["all"]
+            orphanRemoval: true
 
     lifecycleCallbacks:
         preUpdate: [loadUpdateAt]

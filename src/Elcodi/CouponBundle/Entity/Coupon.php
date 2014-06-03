@@ -19,6 +19,9 @@ use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
 use Elcodi\CoreBundle\Entity\Traits\ValidIntervalTrait;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
+use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
+use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
+use Elcodi\CurrencyBundle\Entity\Money;
 
 /**
  * Coupon
@@ -56,18 +59,32 @@ class Coupon extends AbstractEntity implements CouponInterface
     protected $enforcement;
 
     /**
-     * @var float
+     * @var int
      *
-     * Value
+     * Price amount
      */
-    protected $value;
+    protected $priceAmount;
 
     /**
-     * @var float
+     * @var CurrencyInterface
      *
-     * Absolute value
+     * Price currency
      */
-    protected $absoluteValue;
+    protected $priceCurrency;
+
+    /**
+     * @var integer
+     *
+     * Discount
+     */
+    protected $discount;
+
+    /**
+     * @var MoneyInterface
+     *
+     * Absolute price
+     */
+    protected $absolutePrice;
 
     /**
      * @var float
@@ -194,51 +211,79 @@ class Coupon extends AbstractEntity implements CouponInterface
     }
 
     /**
-     * Set value
+     * Set price
      *
-     * @param int $value Value
+     * @param MoneyInterface $price Price
      *
      * @return Coupon self Object
      */
-    public function setValue($value)
+    public function setPrice(MoneyInterface $price)
     {
-        $this->value = $value;
+        $this->priceAmount = $price->getAmount();
+        $this->priceAmount = $price->getCurrency();
 
         return $this;
     }
 
     /**
-     * Get value
+     * Get price
      *
-     * @return int Value
+     * @return MoneyInterface Price
      */
-    public function getValue()
+    public function getPrice()
     {
-        return $this->value;
+        return Money::create(
+            $this->priceAmount,
+            $this->priceCurrency
+        );
     }
 
     /**
-     * Set absoluteValue
+     * Set discount
      *
-     * @param int $absoluteValue Absolute Value
+     * @param int $discount Discount
      *
      * @return Coupon self Object
      */
-    public function setAbsoluteValue($absoluteValue)
+    public function setDiscount($discount)
     {
-        $this->absoluteValue = $absoluteValue;
+        $this->discount = $discount;
 
         return $this;
     }
 
     /**
-     * Get value
+     * Get discount
      *
-     * @return int Absolute Value
+     * @return int discount
      */
-    public function getAbsoluteValue()
+    public function getDiscount()
     {
-        return $this->absoluteValue;
+        return $this->discount;
+    }
+
+    /**
+     * Set absolute price
+     *
+     * @param MoneyInterface $absolutePrice Absolute Price
+     *
+     * @return Coupon self Object
+     */
+    public function setAbsolutePrice(MoneyInterface $absolutePrice)
+    {
+        $this->absolutePrice = $absolutePrice;
+
+        return $this;
+    }
+
+    /**
+     * Get absolute price
+     *
+     * @return MoneyInterface Absolute Price
+     */
+    public function getAbsolutePrice()
+    {
+        return $this->absolutePrice;
     }
 
     /**

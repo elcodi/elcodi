@@ -21,20 +21,39 @@ parameters:
     elcodi.core.cart.repository.order_line_history.class: Elcodi\CartBundle\Repository\OrderLineHistoryRepository
 
     #
+    # EventDispatchers
+    #
+    elcodi.core.cart.event_dispatcher.cart.class: Elcodi\CartBundle\EventDispatcher\CartEventDispatcher
+    elcodi.core.cart.event_dispatcher.cart_line.class: Elcodi\CartBundle\EventDispatcher\CartLineEventDispatcher
+    elcodi.core.cart.event_dispatcher.order.class: Elcodi\CartBundle\EventDispatcher\OrderEventDispatcher
+    elcodi.core.cart.event_dispatcher.order_state.class: Elcodi\CartBundle\EventDispatcher\OrderStateEventDispatcher
+    elcodi.core.cart.event_dispatcher.order_line.class: Elcodi\CartBundle\EventDispatcher\OrderLineEventDispatcher
+    elcodi.core.cart.event_dispatcher.order_line_state.class: Elcodi\CartBundle\EventDispatcher\OrderLineStateEventDispatcher
+
+    #
     # Services
     #
     elcodi.core.cart.service.cart_manager.class: Elcodi\CartBundle\Services\CartManager
     elcodi.core.cart.service.order_manager.class: Elcodi\CartBundle\Services\OrderManager
     elcodi.core.cart.service.order_line_manager.class: Elcodi\CartBundle\Services\OrderLineManager
+    elcodi.core.cart.service.order_state_manager.class: Elcodi\CartBundle\Services\OrderStateManager
     elcodi.core.cart.service.cart_session_manager.class: Elcodi\CartBundle\Services\CartSessionManager
+
+    #
+    # Transformers
+    #
+    elcodi.core.cart.transformer.cart_order.class: Elcodi\CartBundle\Transformer\CartOrderTransformer
+    elcodi.core.cart.transformer.cart_line_order_line.class: Elcodi\CartBundle\Transformer\CartLineOrderLineTransformer
 
     #
     # Event Listeners
     #
     elcodi.core.cart.event_listener.cart.class: Elcodi\CartBundle\EventListener\CartEventListener
+    elcodi.core.cart.event_listener.order.class: Elcodi\CartBundle\EventListener\OrderEventListener
+    elcodi.core.cart.event_listener.order_state.class: Elcodi\CartBundle\EventListener\OrderStateEventListener
     elcodi.core.cart.event_listener.order_line_state.class: Elcodi\CartBundle\EventListener\OrderLineStateEventListener
     elcodi.core.cart.event_listener.cart_session.class: Elcodi\CartBundle\EventListener\CartSessionEventListener
-    elcodi.core.cart.event_listener.cart_load.class: Elcodi\CartBundle\EventListener\CartLoadEventListener
+    elcodi.core.cart.event_listener.cart_inconsistency.class: Elcodi\CartBundle\EventListener\CartInconsistencyEventListener
 
     #
     # Factories

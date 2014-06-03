@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -20,8 +20,10 @@ use Doctrine\Common\Persistence\ObjectManager;
 use DateTime;
 
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\CouponBundle\Entity\Coupon;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
+use Elcodi\CouponBundle\Factory\CouponFactory;
+use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
+use Elcodi\CurrencyBundle\Entity\Money;
 
 /**
  * Class CouponData
@@ -34,7 +36,12 @@ class CouponData extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
 
+        /**
+         * @var CurrencyInterface $currency
+         * @var CouponFactory     $couponFactory
+         */
         $couponFactory = $this->container->get('elcodi.core.coupon.factory.coupon');
+        $currency = $this->getReference('currency-dollar');
 
         /**
          * Coupon with 12% of discount
@@ -52,7 +59,7 @@ class CouponData extends AbstractFixture implements OrderedFixtureInterface
             ->setCode('percent')
             ->setName('10 percent discount')
             ->setType(ElcodiCouponTypes::TYPE_PERCENT)
-            ->setValue(12)
+            ->setDiscount(12)
             ->setCount(100)
             ->setValidFrom(new DateTime())
             ->setValidTo(new DateTime('next month'));
@@ -75,7 +82,7 @@ class CouponData extends AbstractFixture implements OrderedFixtureInterface
             ->setCode('amount')
             ->setName('5 euros discount')
             ->setType(ElcodiCouponTypes::TYPE_AMOUNT)
-            ->setValue(5)
+            ->setValue(Money::create(500, $currency))
             ->setCount(20)
             ->setValidFrom(new DateTime());
         $manager->persist($couponAmount);
