@@ -16,6 +16,7 @@ namespace Elcodi\CartBundle\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Elcodi\CartBundle\Event\OrderPostCreatedEvent;
+use Elcodi\CurrencyBundle\Entity\Money;
 use Exception;
 
 use Elcodi\CartBundle\Exception\CartLineProductUnavailableException;
@@ -159,8 +160,8 @@ class CartEventListener
      */
     protected function loadPrices(CartInterface $cart)
     {
-        $productAmount = 0;
-        $price = 0;
+        $productAmount = new Money(0, $cart->getCurrency());
+        $totalAmount = new Money(0, $cart->getCurrency());
 
         /**
          * Calculate max shipping delay
@@ -171,18 +172,17 @@ class CartEventListener
              * @var CartLineInterface $cartLine
              */
             $cartLine = $this->loadCartLinePrices($cartLine);
-            $productAmount += $cartLine->getProductAmount();
-            $price += $cartLine->getAmount();
+            $productAmount = $productAmount->add($cartLine->getProductAmount());
+            $totalAmount = $totalAmount->add($cartLine->getAmount());
         }
 
         $cart
             ->setProductAmount($productAmount)
-            ->setAmount($price);
+            ->setAmount($totalAmount);
     }
 
     /**
      * Loads CartLine prices.
-     *
      * This method does not consider Coupon
      *
      * @param CartLineInterface $cartLine Cart line
@@ -198,11 +198,16 @@ class CartEventListener
          * If reducedPrice is defined, found value will be used as real product
          * price.
          */
-        if ($product->getReducedPrice() > 0.00) {
+        if ($product->getReducedPrice()->getAmount() > 0) {
             $productPrice = $product->getReducedPrice();
         }
 
-        $cartLine->setProductAmount($productPrice * $cartLine->getQuantity());
+        /*
+         * Setting amounts for this CartLine.
+         * Line Currency has already be set when factorying CartLine
+         * by CartManager::addProduct
+         */
+        $cartLine->setProductAmount($productPrice->multiply($cartLine->getQuantity()));
         $cartLine->setAmount($cartLine->getProductAmount());
 
         return $cartLine;

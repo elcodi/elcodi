@@ -13,6 +13,7 @@
  */
 
 namespace Elcodi\CartBundle\Entity\Interfaces;
+use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 
 /**
  * Class PriceInterface
@@ -22,48 +23,48 @@ interface PriceInterface
     /**
     * Get product amount with tax
     *
-    * @return float Product amount with tax
+    * @return MoneyInterface Product amount with tax
     */
     public function getProductAmount();
 
     /**
     * Set product amount with tax
     *
-    * @param float $productAmount Product amount with tax
+    * @param MoneyInterface $productAmount Product amount with tax
     *
     * @return Object self Object
     */
-    public function setProductAmount($productAmount);
+    public function setProductAmount(MoneyInterface $productAmount);
 
     /**
     * Get coupon amount with tax
     *
-    * @return float Coupon amount with tax
+    * @return MoneyInterface Coupon amount with tax
     */
     public function getCouponAmount();
 
     /**
     * Set coupon amount with tax
     *
-    * @param float $couponAmount Coupon amount with tax
+    * @param MoneyInterface $couponAmount Coupon amount with tax
     *
     * @return Object self Object
     */
-    public function setCouponAmount($couponAmount);
+    public function setCouponAmount(MoneyInterface $couponAmount);
 
     /**
     * Get amount with tax
     *
-    * @return float price with tax
+    * @return MoneyInterface price with tax
     */
     public function getAmount();
 
     /**
     * Set amount with tax
     *
-    * @param float $amount price with tax
+    * @param MoneyInterface $amount price with tax
     *
     * @return Object self Object
     */
-    public function setAmount($amount);
+    public function setAmount(MoneyInterface $amount);
 }

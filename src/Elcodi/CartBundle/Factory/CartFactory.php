@@ -19,12 +19,30 @@ use DateTime;
 
 use Elcodi\CartBundle\Entity\Cart;
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
+use Elcodi\CurrencyBundle\Factory\CurrencyFactory;
 
 /**
  * Class CartFactory
  */
 class CartFactory extends AbstractFactory
 {
+    /**
+     * Factory for creating an empty Currency
+     *
+     * @var CurrencyFactory
+     */
+    protected $currencyFactory;
+
+    /**
+     * Set the Currency factory
+     *
+     * @param CurrencyFactory $currencyFactory
+     */
+    public function setCurrencyFactory(CurrencyFactory $currencyFactory)
+    {
+        $this->currencyFactory = $currencyFactory;
+    }
+
     /**
      * Creates an instance of Cart
      *
@@ -41,6 +59,7 @@ class CartFactory extends AbstractFactory
             ->setQuantity(0)
             ->setOrdered(false)
             ->setCartLines(new ArrayCollection)
+            ->setCurrency($this->currencyFactory->create())
             ->setCreatedAt(new DateTime);
 
         return $cart;

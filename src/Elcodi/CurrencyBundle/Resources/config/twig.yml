@@ -1,6 +1,6 @@
 services:
-    elcodi.core.currency.twig_extension.print_price:
-        class: %elcodi.core.currency.twig_extension.print_price.class%
+    elcodi.core.currency.twig_extension.print_money:
+        class: %elcodi.core.currency.twig_extension.print_money.class%
         arguments:
             exchange_rates: @=service('elcodi.core.currency.manager.currency_manager').getExchangeRateList(parameter('elcodi.core.currency.default_currency'))
             currency_symbols: @=service('elcodi.core.currency.manager.currency_manager').getSymbols()

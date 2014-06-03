@@ -32,4 +32,4 @@ parameters:
     #
     # Twig classes
     #
-    elcodi.core.currency.twig_extension.print_price.class: Elcodi\CurrencyBundle\Twig\PrintPriceExtension
+    elcodi.core.currency.twig_extension.print_money.class: Elcodi\CurrencyBundle\Twig\PrintMoneyExtension

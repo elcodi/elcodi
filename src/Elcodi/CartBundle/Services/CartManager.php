@@ -357,7 +357,10 @@ class CartManager
         $cartLine = $this->cartLineFactory->create();
         $cartLine
             ->setProduct($product)
+            ->setCurrency($product->getCurrency())
             ->setQuantity($quantity);
+
+        $cart->setCurrency($product->getCurrency());
 
         $this->addLine($cart, $cartLine);
 

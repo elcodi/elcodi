@@ -16,7 +16,6 @@ namespace Elcodi\CartBundle\EventListener;
 
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
-use Elcodi\CartBundle\Services\CartManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**

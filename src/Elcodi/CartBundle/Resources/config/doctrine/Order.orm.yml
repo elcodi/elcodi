@@ -8,22 +8,16 @@ Elcodi\CartBundle\Entity\Order:
             type: integer
         productAmount:
             column: product_amount
-            type: decimal
+            type: integer
             nullable: false
-            precision: 10
-            scale: 2
         couponAmount:
             column: coupon_amount
-            type: decimal
+            type: integer
             nullable: true
-            precision: 10
-            scale: 2
         amount:
             column: amount
-            type: decimal
+            type: integer
             nullable: false
-            precision: 10
-            scale: 2
         createdAt:
             column: created_at
             type: datetime
@@ -41,7 +35,6 @@ Elcodi\CartBundle\Entity\Order:
                 onDelete: "SET NULL"
                 onUpdate: "CASCADE"
                 nullable: true
-
         lastOrderHistory:
             targetEntity: Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface
             joinColumn:
@@ -57,7 +50,12 @@ Elcodi\CartBundle\Entity\Order:
                 name: customer_id
                 referencedColumnName: id
                 nullable: false
-
+        currency:
+            targetEntity: Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                 name: currency_id
+                 referencedColumnName: id
+                 nullable: false
     oneToMany:
         orderLines:
             targetEntity: Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface
