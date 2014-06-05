@@ -80,7 +80,7 @@ class PrintMoneyExtensionTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(
-            '13 300,00 $',
+            '13.300,00 $',
             $priceExtension->printMoney($money, 'USD'),
             'Price format does not match - EUR USD'
         );
