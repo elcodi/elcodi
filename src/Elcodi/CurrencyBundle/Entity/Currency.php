@@ -89,4 +89,5 @@ class Currency extends AbstractEntity implements CurrencyInterface
     {
         return $this->symbol;
     }
+
 }

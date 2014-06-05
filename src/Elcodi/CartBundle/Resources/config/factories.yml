@@ -11,6 +11,7 @@ services:
         class: %elcodi.core.cart.factory.cart.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.cart.entity.cart.class%"]]
+            - [setCurrencyFactory, [@elcodi.core.currency.factory.currency]]
 
     elcodi.factory.cart:
         alias: elcodi.core.cart.factory.cart

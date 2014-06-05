@@ -14,6 +14,7 @@
 
 namespace Elcodi\CurrencyBundle\Twig;
 
+use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 use Twig_Extension;
 use Twig_Filter_Method;
 use NumberFormatter;
@@ -21,7 +22,7 @@ use NumberFormatter;
 /**
  * Print price extension for twig
  */
-class PrintPriceExtension extends Twig_Extension
+class PrintMoneyExtension extends Twig_Extension
 {
     /**
      * @var array
@@ -63,40 +64,53 @@ class PrintPriceExtension extends Twig_Extension
     public function getFilters()
     {
         return array(
-            'print_price' => new Twig_Filter_Method($this, 'printPrice'),
+            'print_money' => new Twig_Filter_Method($this, 'printMoney'),
         );
     }
 
     /**
-     * Return a formatted price given an amount and the target currency
+     * Return a formatted price given an Money object and the target currency
      *
-     * @param float  $amount         the amount to print
-     * @param string $sourceCurrency Iso code of the source currency
-     * @param string $targetCurrency Iso code of the target currency
+     * @param MoneyInterface $money          the Money object to print
+     * @param string         $targetCurrency Iso code of the target currency (optional)
      *
      * @throws \Exception if source-target exchange is missing
      *
      * @return string The formatted price
      */
-    public function printPrice($amount, $sourceCurrency, $targetCurrency)
+    public function printMoney($money, $targetCurrency = null)
     {
-        if (isset($this->currencyExchangeRates[$sourceCurrency])
-            && isset($this->currencyExchangeRates[$sourceCurrency][$targetCurrency])
-        ) {
-            $currencyRate = $this->currencyExchangeRates[$sourceCurrency][$targetCurrency];
-        }
+        $sourceCurrency = $money->getCurrency()->getIso();
 
-        if ($sourceCurrency == $targetCurrency) {
+        if (is_null($targetCurrency) || $sourceCurrency == $targetCurrency) {
+
             $currencyRate = 1.0;
-        }
 
-        if (!isset($currencyRate)) {
-            throw new \Exception('This exchange is not possible');
+            /* Covering the case of $targetCurrency being null */
+            $targetCurrency = $sourceCurrency;
+
+        } elseif (isset($this->currencyExchangeRates[$sourceCurrency])
+               && isset($this->currencyExchangeRates[$sourceCurrency][$targetCurrency])) {
+
+            $currencyRate = $this->currencyExchangeRates[$sourceCurrency][$targetCurrency];
+
+        } else {
+            /* No CurrencyRate can be found */
+            throw new \Exception('Currency Rate not found. Exchange conversion not possible');
         }
 
         $formatter = new NumberFormatter($this->locale, NumberFormatter::CURRENCY);
         $targetCurrencySymbol = $this->currencySymbols[$targetCurrency];
         $formatter->setSymbol(NumberFormatter::CURRENCY_SYMBOL, $targetCurrencySymbol);
+
+        /* The precision of the integer amount for a given Money
+         * (cents, thousandths, 10-thousandths, etc) should be
+         * stored in the Currency object. We assume amounts are
+         * represented in cents */
+        $amount = $money->getAmount() / 100;
+
+        /* Loss of precision due to conversion is possible, but only when
+         * displaying prices. This operation does not affect amounts */
 
         return $formatter->format($amount * $currencyRate);
     }
@@ -108,6 +122,6 @@ class PrintPriceExtension extends Twig_Extension
      */
     public function getName()
     {
-        return 'print_price_extension';
+        return 'print_money_extension';
     }
 }

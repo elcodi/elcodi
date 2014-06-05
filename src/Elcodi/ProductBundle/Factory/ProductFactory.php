@@ -39,8 +39,6 @@ class ProductFactory extends AbstractFactory
         $product = new $classNamespace();
         $product
             ->setStock(0)
-            ->setPrice(0.0)
-            ->setReducedPrice(0.0)
             ->setShowInHome(false)
             ->setCategories(new ArrayCollection)
             ->setImages(new ArrayCollection())

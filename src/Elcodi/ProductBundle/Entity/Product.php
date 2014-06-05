@@ -16,6 +16,9 @@ namespace Elcodi\ProductBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
+use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
+use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
+use Elcodi\CurrencyBundle\Entity\Money;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface;
@@ -116,6 +119,13 @@ class Product extends AbstractEntity implements ProductInterface
      * Principal category
      */
     protected $principalCategory;
+
+    /**
+     * @var CurrencyInterface
+     *
+     * Currency for this product prices
+     */
+    protected $currency;
 
     /**
      * Set name
@@ -316,13 +326,14 @@ class Product extends AbstractEntity implements ProductInterface
     /**
      * Set price
      *
-     * @param float $price Price
+     * @param MoneyInterface $money Price
      *
      * @return Product self Object
      */
-    public function setPrice($price)
+    public function setPrice(MoneyInterface $money)
     {
-        $this->price = $price;
+        $this->price = $money->getAmount();
+        $this->currency = $money->getCurrency();
 
         return $this;
     }
@@ -334,19 +345,20 @@ class Product extends AbstractEntity implements ProductInterface
      */
     public function getPrice()
     {
-        return $this->price;
+        return new Money($this->price, $this->currency);
     }
 
     /**
      * Set price
      *
-     * @param float $reducedPrice Reduced Price
+     * @param MoneyInterface $money Reduced Price
      *
      * @return Product self Object
      */
-    public function setReducedPrice($reducedPrice)
+    public function setReducedPrice(MoneyInterface $money)
     {
-        $this->reducedPrice = $reducedPrice;
+        $this->reducedPrice = $money->getAmount();
+        $this->currency = $money->getCurrency();
 
         return $this;
     }
@@ -354,11 +366,11 @@ class Product extends AbstractEntity implements ProductInterface
     /**
      * Get price
      *
-     * @return float Reduced Price
+     * @return MoneyInterface Reduced Price
      */
     public function getReducedPrice()
     {
-        return $this->reducedPrice;
+        return new Money($this->reducedPrice, $this->currency);
     }
 
     /**
@@ -417,5 +429,29 @@ class Product extends AbstractEntity implements ProductInterface
     public function __toString()
     {
         return (string) $this->getName();
+    }
+
+    /**
+     * Get product currency
+     *
+     * @return CurrencyInterface
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * Set product currency
+     *
+     * @param CurrencyInterface $currency
+     *
+     * @return $this
+     */
+    public function setCurrency(CurrencyInterface $currency)
+    {
+        $this->currency = $currency;
+
+        return $this;
     }
 }

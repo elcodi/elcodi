@@ -14,94 +14,161 @@
 
 namespace Elcodi\CartBundle\Entity\Traits;
 
+use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
+use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
+use Elcodi\CurrencyBundle\Entity\Money;
+
 /**
- * trait for add Entity enabled funct
+ * Trait for entities that hold prices.
+ *
+ * Cart/Order related entities usually will have this trait.
+ *
+ * A more generic approach is needed in order to generalize the
+ * amounts stored, whether they refer to products, discounts,
+ * shipping, etc
+ *
+ * A currency is needed so that a {@see Money} value object can be
+ * exploited when doing currency arithmetics. When Currency is not
+ * set, it is not possible to return a Money object, so getters
+ * wil return null
  */
 trait PriceTrait
 {
     /**
-     * @var float
+     * Amount for product or products
+     *
+     * @var integer
      */
     protected $productAmount = 0;
 
     /**
-     * @var float
+     * Amount for coupon or coupons
+     *
+     * @var integer
      */
     protected $couponAmount = 0;
 
     /**
-     * @var float
+     * Total amount
+     *
+     * @var integer
      */
     protected $amount = 0;
 
     /**
-    * Get product amount with tax
-    *
-    * @return float Product amount with tax
-    */
+     * Currency for the amounts stored in this entity
+     *
+     * @var \Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
+     */
+    protected $currency;
+
+    /**
+     * Gets the product or products amount with tax
+     *
+     * @return MoneyInterface Product amount with tax
+     */
     public function getProductAmount()
     {
-        return $this->productAmount;
+        if ($this->currency instanceof CurrencyInterface) {
+            return new Money($this->productAmount, $this->currency);
+        }
+
+        return null;
     }
 
     /**
-    * Set product amount with tax
-    *
-    * @param float $productAmount product amount with tax
-    *
-    * @return Object self Object
-    */
-    public function setProductAmount($productAmount)
+     * Sets the product or products amount with tax
+     *
+     * @param MoneyInterface $productAmount product amount with tax
+     *
+     * @return Object self Object
+     */
+    public function setProductAmount(MoneyInterface $productAmount)
     {
-        $this->productAmount = $productAmount;
+        $this->productAmount = $productAmount->getAmount();
+        $this->currency = $productAmount->getCurrency();
 
         return $this;
     }
 
     /**
-    * Get coupon amount with tax
-    *
-    * @return float Coupon amount with tax
-    */
+     * Gets the coupon or coupons amount with tax
+     *
+     * @return MoneyInterface Coupon amount with tax
+     */
     public function getCouponAmount()
     {
-        return $this->couponAmount;
+        if ($this->currency instanceof CurrencyInterface) {
+            return new Money($this->couponAmount, $this->currency);
+        }
+
+        return null;
     }
 
     /**
-    * Set coupon amount with tax
-    *
-    * @param float $couponAmount Coupon amount without tax
-    *
-    * @return Object self Object
-    */
-    public function setCouponAmount($couponAmount)
+     * Sets the coupon or coupons amount with tax
+     *
+     * @param MoneyInterface $couponAmount Coupon amount without tax
+     *
+     * @return Object self Object
+     */
+    public function setCouponAmount(MoneyInterface $couponAmount)
     {
-        $this->couponAmount = $couponAmount;
+        $this->productAmount = $couponAmount->getAmount();
+        $this->currency = $couponAmount->getCurrency();
 
         return $this;
     }
 
     /**
-    * Get amount with tax
-    *
-    * @return float price with tax
-    */
+     * Gets the total amount with tax
+     *
+     * @return MoneyInterface price with tax
+     */
     public function getAmount()
     {
-        return $this->amount;
+        if ($this->currency instanceof CurrencyInterface) {
+            return new Money($this->amount, $this->currency);
+        }
+
+        return null;
     }
 
     /**
-    * Set amount with tax
-    *
-    * @param float $amount amount without tax
-    *
-    * @return $this
-    */
-    public function setAmount($amount)
+     * Sets the total amount with tax
+     *
+     * @param MoneyInterface $amount amount without tax
+     *
+     * @return $this
+     */
+    public function setAmount(MoneyInterface $amount)
     {
-        $this->amount = $amount;
+        $this->amount = $amount->getAmount();
+        $this->currency = $amount->getCurrency();
+
+        return $this;
+    }
+
+    /**
+     * Gets the associated currency
+     *
+     * @return \Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * Sets the currency
+     *
+     * @param \Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface $currency
+     *
+     * @return $this
+     */
+    public function setCurrency($currency)
+    {
+        $this->currency = $currency;
 
         return $this;
     }

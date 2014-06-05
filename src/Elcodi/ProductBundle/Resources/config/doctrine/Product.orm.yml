@@ -37,15 +37,11 @@ Elcodi\ProductBundle\Entity\Product:
             nullable: true
         price:
             column: price
-            type: decimal
-            precision: 10
-            scale: 2
+            type: integer
             nullable: true
         reducedPrice:
             column: reduced_price
-            type: decimal
-            precision: 10
-            scale: 2
+            type: integer
             nullable: true
         createdAt:
             column: created_at
@@ -92,6 +88,12 @@ Elcodi\ProductBundle\Entity\Product:
                 name: principal_image_id
                 referencedColumnName: id
                 nullable: true
+        currency:
+            targetEntity: Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                 name: currency_id
+                 referencedColumnName: id
+                 nullable: false
 
     manyToMany:
         categories:

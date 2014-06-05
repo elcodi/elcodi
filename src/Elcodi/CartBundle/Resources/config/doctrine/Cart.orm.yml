@@ -8,22 +8,16 @@ Elcodi\CartBundle\Entity\Cart:
             type: integer
         productAmount:
             column: product_amount
-            type: decimal
+            type: integer
             nullable: false
-            precision: 10
-            scale: 2
         couponAmount:
             column: coupon_amount
-            type: decimal
+            type: integer
             nullable: true
-            precision: 10
-            scale: 2
         amount:
             column: amount
-            type: decimal
+            type: integer
             nullable: false
-            precision: 10
-            scale: 2
         ordered:
             column: ordered
             type: boolean
@@ -48,6 +42,12 @@ Elcodi\CartBundle\Entity\Cart:
                 name: customer_id
                 referencedColumnName: id
                 nullable: true
+        currency:
+            targetEntity: Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                 name: currency_id
+                 referencedColumnName: id
+                 nullable: false
 
     oneToMany:
         cartLines:

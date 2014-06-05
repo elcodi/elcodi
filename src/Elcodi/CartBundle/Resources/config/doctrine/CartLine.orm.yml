@@ -5,22 +5,16 @@ Elcodi\CartBundle\Entity\CartLine:
     fields:
         productAmount:
             column: product_amount
-            type: decimal
+            type: integer
             nullable: false
-            precision: 10
-            scale: 2
         couponAmount:
             column: coupon_amount
-            type: decimal
+            type: integer
             nullable: true
-            precision: 10
-            scale: 2
         amount:
             column: amount
-            type: decimal
+            type: integer
             nullable: false
-            precision: 10
-            scale: 2
         quantity:
             column: quantity
             type: integer
@@ -34,7 +28,12 @@ Elcodi\CartBundle\Entity\CartLine:
                 name: cart_id
                 referencedColumnName: id
                 nullable: false
-
+        currency:
+            targetEntity: Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                 name: currency_id
+                 referencedColumnName: id
+                 nullable: false
         product:
             targetEntity: Elcodi\ProductBundle\Entity\Interfaces\ProductInterface
             joinColumn:
