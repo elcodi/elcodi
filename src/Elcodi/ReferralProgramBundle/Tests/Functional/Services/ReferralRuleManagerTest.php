@@ -54,6 +54,7 @@ class ReferralRuleManagerTest extends WebTestCase
         return array(
             'ElcodiCoreBundle',
             'ElcodiUserBundle',
+            'ElcodiCurrencyBundle',
             'ElcodiCouponBundle',
             'ElcodiReferralProgramBundle',
         );

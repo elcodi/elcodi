@@ -17,11 +17,13 @@ namespace Elcodi\CartCouponBundle\EventListener;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Event\CartOnLoadEvent;
 use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
+use Elcodi\CartCouponBundle\Entity\CartCoupon;
 use Elcodi\CartCouponBundle\Services\CartCouponManager;
 use Elcodi\CouponBundle\ElcodiCouponTypes;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 use Elcodi\CouponBundle\Services\CouponManager;
 use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
+use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 use Elcodi\CurrencyBundle\Entity\Money;
 
 /**
@@ -103,14 +105,15 @@ class CartEventListener
      * @param CartInterface   $cart   Abstract Cart object
      * @param CouponInterface $coupon Coupon
      *
-     * @return Money Coupon price
+     * @return MoneyInterface Coupon price
      */
     protected function getPriceCoupon(
         CartInterface $cart,
         CouponInterface $coupon
     )
     {
-        $priceCoupon = 0;
+        // Money arithmetics will be done with Cart currency
+        $priceCoupon = new Money(0, $cart->getCurrency());
 
         switch ($coupon->getType()) {
 
@@ -121,6 +124,7 @@ class CartEventListener
             case ElcodiCouponTypes::TYPE_PERCENT:
                 $priceCoupon = ($coupon->getDiscount() / 100) * $cart->getProductAmount()->getAmount();
                 $priceCoupon = Money::create($priceCouponAmount, $)
+
                 break;
         }
 

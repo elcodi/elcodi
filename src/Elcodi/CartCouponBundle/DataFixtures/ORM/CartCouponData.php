@@ -19,6 +19,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\CouponBundle\ElcodiCouponTypes;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\CurrencyBundle\Entity\Money;
@@ -47,6 +48,27 @@ class CartCouponData extends AbstractFixture
         $cart = $this->getReference('full-cart');
         $coupon = $this->getReference('coupon-percent');
         $currency = $this->getReference('currency-dollar');
+
+        /*
+         * Following extract is from CartEventListener::getPriceCoupon
+         *
+         * This method should be part of the Coupon class or be
+         * a publicly accessible method in CouponManager. Either
+         * way, a single entry to the calculation of the Money
+         * object for a Coupon is needed
+         */
+        $couponAmount = new Money(0, $cart->getCurrency());
+
+        switch ($coupon->getType()) {
+
+            case ElcodiCouponTypes::TYPE_AMOUNT:
+                $couponAmount = new Money($coupon->getValue(), $coupon->getCurrency());
+                break;
+
+            case ElcodiCouponTypes::TYPE_PERCENT:
+                $couponAmount = $cart->getProductAmount()->multiply(($coupon->getValue() / 100));
+                break;
+        }
 
         $cartCoupon
             ->setCart($cart)

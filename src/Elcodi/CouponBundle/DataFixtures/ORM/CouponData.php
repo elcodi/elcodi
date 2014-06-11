@@ -44,6 +44,11 @@ class CouponData extends AbstractFixture implements OrderedFixtureInterface
         $currency = $this->getReference('currency-dollar');
 
         /**
+         * @var CurrencyInterface
+         */
+        $currencyUsd = $this->getReference('currency-usd');
+
+        /**
          * Coupon with 12% of discount
          *
          * Valid from now without expire time
@@ -67,7 +72,7 @@ class CouponData extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('coupon-percent', $couponPercent);
 
         /**
-         * Coupon with 5 euros of discount
+         * Coupon with 5 USD of discount.
          *
          * Valid from now without expire time
          *
@@ -75,12 +80,14 @@ class CouponData extends AbstractFixture implements OrderedFixtureInterface
          *
          * Only 20 available
          *
+         * Prices are stored in cents. @see \Elcodi\CurrencyBundle\Entity\Money
+         *
          * @var CouponInterface $couponAmount
          */
         $couponAmount = $couponFactory->create();
         $couponAmount
             ->setCode('amount')
-            ->setName('5 euros discount')
+            ->setName('5 USD discount')
             ->setType(ElcodiCouponTypes::TYPE_AMOUNT)
             ->setValue(Money::create(500, $currency))
             ->setCount(20)

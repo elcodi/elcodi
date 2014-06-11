@@ -87,6 +87,11 @@ class Coupon extends AbstractEntity implements CouponInterface
     protected $absolutePrice;
 
     /**
+     * @var CurrencyInterface
+     */
+    protected $currency;
+
+    /**
      * @var float
      *
      * Count
@@ -284,6 +289,30 @@ class Coupon extends AbstractEntity implements CouponInterface
     public function getAbsolutePrice()
     {
         return $this->absolutePrice;
+    }
+
+    /**
+     * Sets the Currency used to specify the reduction amount
+     *
+     * @param CurrencyInterface $currency
+     *
+     * @return CouponInterface
+     */
+    public function setCurrency(CurrencyInterface $currency)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets the Currency used to specify the reduction amount
+     *
+     * @return CurrencyInterface
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
     }
 
     /**

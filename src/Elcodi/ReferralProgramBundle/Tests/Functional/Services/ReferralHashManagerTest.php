@@ -53,6 +53,7 @@ class ReferralHashManagerTest extends WebTestCase
         return array(
             'ElcodiCoreBundle',
             'ElcodiUserBundle',
+            'ElcodiCurrencyBundle',
             'ElcodiCouponBundle',
             'ElcodiReferralProgramBundle',
         );

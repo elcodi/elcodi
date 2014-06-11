@@ -24,7 +24,6 @@ use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
  */
 class CurrencyData extends AbstractFixture
 {
-
     /**
      * Load data fixtures with the passed EntityManager
      *

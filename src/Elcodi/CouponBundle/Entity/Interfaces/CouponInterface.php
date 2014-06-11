@@ -16,6 +16,7 @@ namespace Elcodi\CouponBundle\Entity\Interfaces;
 
 use DateTime;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
+use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 
 /**
  * CouponInterface
@@ -133,6 +134,22 @@ interface CouponInterface
      * @return MoneyInterface Absolute Price
      */
     public function getAbsolutePrice();
+
+    /**
+     * Sets the Currency used to specify the reduction amount
+     *
+     * @param CurrencyInterface $currency
+     *
+     * @return CouponInterface
+     */
+    public function setCurrency(CurrencyInterface $currency);
+
+    /**
+     * Gets the Currency used to specify the reduction amount
+     *
+     * @return CurrencyInterface
+     */
+    public function getCurrency();
 
     /**
      * Set count

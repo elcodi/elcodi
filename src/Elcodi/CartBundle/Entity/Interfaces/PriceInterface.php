@@ -13,6 +13,7 @@
  */
 
 namespace Elcodi\CartBundle\Entity\Interfaces;
+use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 
 /**
@@ -71,14 +72,22 @@ interface PriceInterface
     /**
      * Gets the associated currency
      *
+<<<<<<< HEAD
      * @return \Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
+=======
+     * @return CurrencyInterface
+>>>>>>> Added missing Money support in Coupon and CartCoupon
      */
     public function getCurrency();
 
     /**
      * Sets the currency
      *
+<<<<<<< HEAD
      * @param \Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface $currency
+=======
+     * @param CurrencyInterface $currency
+>>>>>>> Added missing Money support in Coupon and CartCoupon
      *
      * @return Object self Object
      */
