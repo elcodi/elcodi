@@ -22,4 +22,3 @@ class CartLineOnEditEvent extends AbstractCartLineEvent
 {
 
 }
- 

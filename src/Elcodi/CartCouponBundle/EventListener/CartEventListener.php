@@ -22,9 +22,10 @@ use Elcodi\CartCouponBundle\Services\CartCouponManager;
 use Elcodi\CouponBundle\ElcodiCouponTypes;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 use Elcodi\CouponBundle\Services\CouponManager;
-use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 use Elcodi\CurrencyBundle\Entity\Money;
+use Elcodi\CurrencyBundle\Services\CurrencyConverter;
+use Elcodi\CurrencyBundle\Wrapper\CurrencyWrapper;
 
 /**
  * Class CartEventListener
@@ -47,6 +48,20 @@ class CartEventListener
      * CartCouponManager
      */
     protected $cartCouponManager;
+
+    /**
+     * @var CurrencyConverter
+     *
+     * Currency converter
+     */
+    protected $currencyConverter;
+
+    /**
+     * @var CurrencyWrapper
+     *
+     * Currency Wrapper
+     */
+    protected $currencyWrapper;
 
     /**
      * Construct method
@@ -75,8 +90,10 @@ class CartEventListener
     )
     {
         $cart = $cartOnLoadEvent->getCart();
-        $cartCurrency = $cart->getCurrency();
-        $couponAmount = new Money('0', $cartCurrency);
+        $couponAmount = Money::create(
+            0,
+            $this->currencyWrapper->getCurrency()
+        );
         $cartCoupons = $this
             ->cartCouponManager
             ->getCartCoupons($cart);
@@ -112,21 +129,30 @@ class CartEventListener
         CouponInterface $coupon
     )
     {
-        $priceCoupon = null;
+        $currency = $this->currencyWrapper->getCurrency();
 
         switch ($coupon->getType()) {
 
             case ElcodiCouponTypes::TYPE_AMOUNT:
-                $priceCoupon = $coupon->getPrice();
-                break;
+
+                $amount = $coupon->getPrice();
+
+                return $this
+                    ->currencyConverter
+                    ->convertMoney(
+                        $amount,
+                        $currency
+                    );
 
             case ElcodiCouponTypes::TYPE_PERCENT:
-                $priceCoupon = ($coupon->getDiscount() / 100) * $cart->getProductAmount()->getAmount();
-                $priceCoupon = Money::create($priceCouponAmount, $)
 
-                break;
+                $couponPercent = $coupon->getDiscount();
+
+                $couponAmount = $cart
+                    ->getProductAmount()
+                    ->multiply(($couponPercent / 100));
+
+                return Money::create($couponAmount, $currency);
         }
-
-        return new Money($priceCoupon, $currency);
     }
 }

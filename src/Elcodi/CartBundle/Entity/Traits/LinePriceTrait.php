@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  *
  * @author  * @version  */
- 
+
 namespace Elcodi\CartBundle\Entity\Traits;
 
 use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
@@ -43,7 +43,6 @@ trait LinePriceTrait
     public function getAmount()
     {
         if ($this->currency instanceof CurrencyInterface) {
-
             return Money::create($this->amount, $this->currency);
         }
 
@@ -65,4 +64,3 @@ trait LinePriceTrait
         return $this;
     }
 }
- 

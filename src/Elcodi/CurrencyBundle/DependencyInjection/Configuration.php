@@ -32,8 +32,16 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('default_currency')
-                    ->defaultValue('USD')
+                ->arrayNode('currency')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('default_currency')
+                            ->defaultValue('USD')
+                        ->end()
+                        ->scalarNode('session_field_name')
+                            ->defaultValue('currency_id')
+                        ->end()
+                    ->end()
                 ->end()
                 ->scalarNode('provider')
                     ->defaultValue('Elcodi\CurrencyBundle\Provider\OpenExchangeRatesProvider')

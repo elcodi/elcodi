@@ -67,8 +67,8 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
     protected function getParametrizationValues(array $config)
     {
         return [
-            'elcodi.core.currency.default_currency' => $config['default_currency'],
-            'elcodi.core.currency.provider' => $config['provider'],
+            'elcodi.core.currency.default_currency' => $config['currency']['default_currency'],
+            'elcodi.core.currency.session_field_name' => $config['currency']['session_field_name'],
         ];
     }
 

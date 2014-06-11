@@ -108,7 +108,7 @@ class Money implements MoneyInterface
     {
         $wrappedMoney = $this->wrappedMoney->add($this->newWrappedMoneyFromMoney($other));
 
-        return self::create($wrappedMoney->getAmount(), $other->getCurrency());
+        return Money::create($wrappedMoney->getAmount(), $other->getCurrency());
     }
 
     /**
@@ -122,7 +122,7 @@ class Money implements MoneyInterface
     {
         $wrappedMoney = $this->wrappedMoney->subtract($this->newWrappedMoneyFromMoney($other));
 
-        return self::create($wrappedMoney->getAmount(), $other->getCurrency());
+        return Money::create($wrappedMoney->getAmount(), $other->getCurrency());
     }
 
     /**
@@ -136,7 +136,7 @@ class Money implements MoneyInterface
     {
         $wrappedMoney = $this->wrappedMoney->multiply($factor);
 
-        return self::create($wrappedMoney->getAmount(), $this->getCurrency());
+        return Money::create($wrappedMoney->getAmount(), $this->getCurrency());
     }
 
     /**
@@ -198,7 +198,7 @@ class Money implements MoneyInterface
      *
      * @return MoneyInterface
      */
-    static public function create($amount, CurrencyInterface $currency)
+    public static function create($amount, CurrencyInterface $currency)
     {
         return new static($amount, $currency);
     }

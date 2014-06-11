@@ -16,19 +16,10 @@ namespace Elcodi\CartCouponBundle\Services;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Persistence\ObjectManager;
-use Elcodi\CartCouponBundle\Event\CouponCartPostRemoveEvent;
 use Elcodi\CartCouponBundle\EventDispatcher\CartCouponEventDispatcher;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-use Elcodi\CartCouponBundle\Event\CouponCartPostApplyEvent;
-use Elcodi\CartCouponBundle\Event\CouponCartPreApplyEvent;
-use Elcodi\CartCouponBundle\Event\CouponCartPreRemoveEvent;
-use Elcodi\CartCouponBundle\ElcodiCartCouponEvents;
-use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
 use Elcodi\CartCouponBundle\Repository\CartCouponRepository;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
-use Elcodi\CartCouponBundle\Factory\CartCouponFactory;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 use Elcodi\CouponBundle\Exception\CouponAppliedException;
 use Elcodi\CouponBundle\Exception\CouponFreeShippingExistsException;
@@ -140,7 +131,6 @@ class CartCouponManager
             ));
 
         if (!($coupon instanceof CouponInterface)) {
-
             return false;
         }
 
@@ -187,7 +177,6 @@ class CartCouponManager
             ));
 
         if (!($coupon instanceof CouponInterface)) {
-
             return false;
         }
 
@@ -212,7 +201,6 @@ class CartCouponManager
             ));
 
         if (empty($cartCoupons)) {
-
             return false;
         }
 

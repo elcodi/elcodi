@@ -98,4 +98,3 @@ class OrderLineStateEventDispatcher extends AbstractEventDispatcher
         return $this;
     }
 }
- 

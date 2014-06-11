@@ -41,4 +41,3 @@ class OrderEventListenerTest extends WebTestCase
         return 'elcodi.core.cart.event_listener.order';
     }
 }
- 

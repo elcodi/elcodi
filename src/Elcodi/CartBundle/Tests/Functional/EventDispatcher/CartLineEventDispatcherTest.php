@@ -16,11 +16,10 @@ namespace Elcodi\CartBundle\Tests\Functional\EventDispatcher;
 
 use Elcodi\CoreBundle\Tests\WebTestCase;
 
-
 /**
  * Class CartLineEventDispatcher
  */
-class CartLineEventDispatcher extends WebTestCase
+class CartLineEventDispatcherTest extends WebTestCase
 {
     /**
      * Load fixtures of these bundles

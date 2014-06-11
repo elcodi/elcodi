@@ -69,4 +69,3 @@ class CartCouponEventDispatcher extends AbstractEventDispatcher
         );
     }
 }
- 

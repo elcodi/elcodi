@@ -48,8 +48,8 @@ class OrderCouponOnApplyEvent extends Event
     /**
      * Construct method
      *
-     * @param OrderInterface       $order       Order
-     * @param CouponInterface      $coupon      Coupon
+     * @param OrderInterface  $order  Order
+     * @param CouponInterface $coupon Coupon
      */
     public function __construct(
         OrderInterface $order,
@@ -104,4 +104,3 @@ class OrderCouponOnApplyEvent extends Event
         return $this->orderCoupon;
     }
 }
- 

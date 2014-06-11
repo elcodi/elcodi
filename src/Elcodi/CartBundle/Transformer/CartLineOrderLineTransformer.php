@@ -117,7 +117,6 @@ class CartLineOrderLineTransformer
             ->setCouponAmount($cartLine->getCouponAmount())
             ->setAmount($cartLine->getAmount());
 
-
         $this
             ->orderLineEventDispatcher
             ->dispatchOrderLineOnCreatedEvent(

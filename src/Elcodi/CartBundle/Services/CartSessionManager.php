@@ -81,7 +81,6 @@ class CartSessionManager
     public function set(CartInterface $cart)
     {
         if (!$this->saveInSession) {
-
             return $this;
         }
 

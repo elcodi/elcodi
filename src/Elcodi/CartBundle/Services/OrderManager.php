@@ -46,8 +46,8 @@ class OrderManager
     /**
      * Construct method
      *
-     * @param OrderLineManager         $orderLineManager  OrderLineManager instance
-     * @param OrderStateManager        $orderStateManager OrderStateManager
+     * @param OrderLineManager  $orderLineManager  OrderLineManager instance
+     * @param OrderStateManager $orderStateManager OrderStateManager
      */
     public function __construct(
         OrderLineManager $orderLineManager,

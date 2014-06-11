@@ -29,8 +29,8 @@ class OrderLineEventDispatcher extends AbstractEventDispatcher
     /**
      * Event dispatched when a Cart is being converted to an OrderLine
      *
-     * @param OrderInterface     $order Order
-     * @param CartLineInterface  $cartLine CartLine
+     * @param OrderInterface     $order     Order
+     * @param CartLineInterface  $cartLine  CartLine
      * @param OrderLineInterface $orderLine OrderLine
      *
      * @return OrderLineEventDispatcher self Object
@@ -55,4 +55,3 @@ class OrderLineEventDispatcher extends AbstractEventDispatcher
         return $this;
     }
 }
- 

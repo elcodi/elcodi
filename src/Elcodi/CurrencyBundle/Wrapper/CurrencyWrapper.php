@@ -13,8 +13,9 @@
 
 namespace Elcodi\CurrencyBundle\Wrapper;
 
+use Elcodi\CartBundle\Services\CurrencySessionManager;
 use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
-use Elcodi\CurrencyBundle\Exception\DefaultCurrencyNotFound;
+use Elcodi\CurrencyBundle\Exception\CurrencyNotAvailableException;
 use Elcodi\CurrencyBundle\Repository\CurrencyRepository;
 
 /**
@@ -23,9 +24,16 @@ use Elcodi\CurrencyBundle\Repository\CurrencyRepository;
 class CurrencyWrapper
 {
     /**
+     * @var CurrencySessionManager
+     *
+     * Currency Session Manager
+     */
+    protected $currencySessionManager;
+
+    /**
      * @var CurrencyRepository
      *
-     * Currency Repository
+     * Currency repository
      */
     protected $currencyRepository;
 
@@ -44,56 +52,100 @@ class CurrencyWrapper
     protected $currency;
 
     /**
-     * Construct method
+     * construct method
      *
-     * @param CurrencyRepository $currencyRepository Currency Repository
-     * @param string             $defaultCurrency       Currency
+     * @param CurrencySessionManager $currencySessionManager Currency Session Manager
+     * @param CurrencyRepository     $currencyRepository     Currency repository
+     * @param string                 $defaultCurrency        Default currency
      */
     public function __construct(
+        CurrencySessionManager $currencySessionManager,
         CurrencyRepository $currencyRepository,
         $defaultCurrency
     )
     {
+        $this->currencySessionManager = $currencySessionManager;
         $this->currencyRepository = $currencyRepository;
         $this->defaultCurrency = $defaultCurrency;
     }
 
     /**
-     * Get currency
+     * Get cart
      *
-     * @return CurrencyInterface Default currency
+     * Return current currency value
      *
-     * @throws DefaultCurrencyNotFound
+     * @return CurrencyInterface Instance of Cart loaded
+     *
+     * @api
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * Load cart
+     *
+     * This method, first of all tries to retrieve cart from session
+     *
+     * If this does not exists nor the id is not valid, a new cart is created
+     * using Cart factory
+     *
+     * This behavior can be overriden just overwritting the wrapper
+     *
+     * @return CurrencyInterface Instance of Customer loaded
+     *
+     * @throws CurrencyNotAvailableException Any currency available
+     *
+     * @api
      */
     public function loadCurrency()
     {
-        if ($this->currency instanceof CurrencyInterface) {
+        $currencyIdInSession = $this->currencySessionManager->get();
+        $currency = null;
 
-            return $this->currency;
+        /**
+         * Tries to load currency saved in session
+         */
+        if ($currencyIdInSession) {
+
+            $currency = $this
+                ->currencyRepository
+                ->find($currencyIdInSession);
         }
 
+        if ($currency instanceof CurrencyInterface) {
+            return $currency;
+        }
+
+        /**
+         * Otherwise, tries to load default currency. Notice that default
+         * currency is defined as parameter
+         */
         $currency = $this
             ->currencyRepository
             ->findOneBy([
                 'iso' => $this->defaultCurrency,
             ]);
 
-        if (!($currency instanceof CurrencyInterface)) {
+        if ($currency instanceof CurrencyInterface) {
 
-            throw new DefaultCurrencyNotFound;
+            $this->currencySessionManager->set($currency);
+
+            return $currency;
         }
 
-        $this->currency = $currency;
-
-        return $currency;
+        throw new CurrencyNotAvailableException;
     }
 
     /**
-     * Get currency
+     * Reload cart
      *
-     * @return CurrencyInterface Default currency
+     * This method sets to null current cart and tries to load it again
      *
-     * @throws DefaultCurrencyNotFound
+     * @return CurrencyInterface Currency re-loaded
+     *
+     * @api
      */
     public function reloadCurrency()
     {
@@ -101,15 +153,4 @@ class CurrencyWrapper
 
         return $this->loadCurrency();
     }
-
-    /**
-     * Get currency loaded
-     *
-     * @return CurrencyInterface Currency
-     */
-    public function getCurrency()
-    {
-        return $this->currency;
-    }
 }
- 

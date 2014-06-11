@@ -62,7 +62,6 @@ trait PriceTrait
     public function getAmount()
     {
         if ($this->currency instanceof CurrencyInterface) {
-
             return Money::create($this->couponAmount, $this->currency);
         }
 
@@ -92,7 +91,6 @@ trait PriceTrait
     public function getProductAmount()
     {
         if ($this->currency instanceof CurrencyInterface) {
-
             return Money::create($this->amount, $this->currency);
         }
 

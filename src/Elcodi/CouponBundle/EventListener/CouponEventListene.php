@@ -20,7 +20,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 /**
  * Class CouponEventListener
  */
-class CouponEventListener
+class CouponEventListene
 {
     /**
      * @var ObjectManager
@@ -66,4 +66,3 @@ class CouponEventListener
         $this->couponObjectManager->flush($coupon);
     }
 }
- 

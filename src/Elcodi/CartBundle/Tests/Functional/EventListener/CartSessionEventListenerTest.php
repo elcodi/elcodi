@@ -41,4 +41,3 @@ class CartSessionEventListenerTest extends WebTestCase
         return 'elcodi.core.cart.event_listener.cart_session';
     }
 }
- 

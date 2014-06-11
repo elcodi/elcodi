@@ -17,9 +17,7 @@ namespace Elcodi\CartBundle\EventListener;
 use Doctrine\Common\Persistence\ObjectManager;
 <<<<<<< HEAD
 =======
-use Elcodi\CartBundle\Event\OrderPostCreatedEvent;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
-use Exception;
 >>>>>>> Cart amounts are now calculated dynamically
 
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
@@ -29,7 +27,6 @@ use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Event\CartPreLoadEvent;
 use Elcodi\CartBundle\Event\CartOnLoadEvent;
 use Elcodi\CartBundle\Services\CartManager;
-use Elcodi\CurrencyBundle\Entity\Money;
 use Elcodi\CartBundle\Event\OrderOnCreatedEvent;
 
 /**

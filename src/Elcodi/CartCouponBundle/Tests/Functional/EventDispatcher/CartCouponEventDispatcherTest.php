@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  *
  * @author  * @version  */
- 
+
 namespace Elcodi\CartCouponBundle\Tests\Functional\EventDispatcher;
 
 use Elcodi\CoreBundle\Tests\WebTestCase;

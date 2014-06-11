@@ -73,10 +73,10 @@ class CartWrapper
      * Construct method
      *
      * @param CartEventDispatcher $cartEventDispatcher Cart EventDispatcher
-     * @param CartSessionManager $cartSessionManager CartSessionManager
-     * @param CartRepository     $cartRepository     Cart Repository
-     * @param CartFactory        $cartFactory        Cart Factory
-     * @param CustomerWrapper    $customerWrapper    Customer Wrapper
+     * @param CartSessionManager  $cartSessionManager  CartSessionManager
+     * @param CartRepository      $cartRepository      Cart Repository
+     * @param CartFactory         $cartFactory         Cart Factory
+     * @param CustomerWrapper     $customerWrapper     Customer Wrapper
      */
     public function __construct(
         CartEventDispatcher $cartEventDispatcher,
@@ -174,7 +174,6 @@ class CartWrapper
             ->first();
 
         if ($customerCart instanceof CartInterface) {
-
             return $customerCart;
         }
 
@@ -196,7 +195,6 @@ class CartWrapper
         $cartIdInSession = $this->cartSessionManager->get();
 
         if (!$cartIdInSession) {
-
             return null;
         }
 
@@ -221,7 +219,6 @@ class CartWrapper
     )
     {
         if ($cartFromCustomer) {
-
             return $cartFromCustomer;
         } else {
 

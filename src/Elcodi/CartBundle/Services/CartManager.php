@@ -242,7 +242,6 @@ class CartManager
         $cart = $cartLine->getCart();
 
         if (!($cart instanceof CartInterface)) {
-
             return $this;
         }
 

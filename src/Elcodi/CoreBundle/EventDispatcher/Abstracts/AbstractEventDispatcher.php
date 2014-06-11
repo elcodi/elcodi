@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  *
  * @author  * @version  */
- 
+
 namespace Elcodi\CoreBundle\EventDispatcher\Abstracts;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
@@ -35,4 +35,3 @@ abstract class AbstractEventDispatcher
         $this->eventDispatcher = $eventDispatcher;
     }
 }
- 

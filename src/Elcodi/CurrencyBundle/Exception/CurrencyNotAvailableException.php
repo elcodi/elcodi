@@ -15,9 +15,9 @@ namespace Elcodi\CurrencyBundle\Exception;
 use Exception;
 
 /**
- * Class DefaultCurrencyNotFound
+ * Class CurrencyNotAvailableException
  */
-class DefaultCurrencyNotFound extends Exception
+class CurrencyNotAvailableException extends Exception
 {
 
 }

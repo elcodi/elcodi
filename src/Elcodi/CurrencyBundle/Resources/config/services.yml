@@ -18,6 +18,15 @@ services:
     elcodi.exchange_rates_provider:
         alias: elcodi.core.currency.service.exchange_rates_provider
 
+    elcodi.core.currency.service.cart_session_manager:
+        class: %elcodi.core.currency.service.currency_session_manager.class%
+        arguments:
+            session: @session
+            session_field_name: %elcodi.core.currency.session_field_name%
+
+    elcodi.currency_session_manager:
+        alias: elcodi.core.currency.service.currency_session_manager
+
     #
     # Wrappers
     #

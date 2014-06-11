@@ -49,8 +49,8 @@ class OrderLineOnCreatedEvent extends Event
     /**
      * construct method
      *
-     * @param OrderInterface    $order    Order line
-     * @param CartLineInterface $cartLine Cart line
+     * @param OrderInterface     $order     Order line
+     * @param CartLineInterface  $cartLine  Cart line
      * @param OrderLineInterface $orderLine OrderLine
      */
     public function __construct(

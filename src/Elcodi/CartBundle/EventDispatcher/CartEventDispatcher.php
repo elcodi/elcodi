@@ -137,4 +137,3 @@ class CartEventDispatcher extends AbstractEventDispatcher
         return $this;
     }
 }
- 

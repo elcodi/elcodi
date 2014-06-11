@@ -21,7 +21,6 @@ use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
 use Elcodi\CartCouponBundle\EventDispatcher\OrderCouponEventDispatcher;
 use Elcodi\CartCouponBundle\Services\CartCouponManager;
 
-use Elcodi\CouponBundle\EventDispatcher\CouponEventDispatcher;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 
 /**
@@ -80,7 +79,6 @@ class OrderEventListener
         $coupons = $this->cartCouponManager->getCartCoupons($cart);
 
         if ($coupons->isEmpty()) {
-
             return;
         }
 

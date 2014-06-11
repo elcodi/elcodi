@@ -36,4 +36,3 @@ services:
             order_coupon_factory: @elcodi.factory.order_coupon
         tags:
             - { name: kernel.event_listener, event: order_coupon.onapply, method: onOrderCouponApply, priority: 0 }
-
