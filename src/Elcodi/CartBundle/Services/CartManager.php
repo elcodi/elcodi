@@ -428,8 +428,6 @@ class CartManager
             ->setCurrency($product->getCurrency())
             ->setQuantity($quantity);
 
-        $cart->setCurrency($product->getCurrency());
-
         $this->addLine($cart, $cartLine);
 
         return $this;

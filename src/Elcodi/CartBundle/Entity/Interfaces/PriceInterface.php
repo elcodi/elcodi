@@ -22,52 +22,36 @@ use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 interface PriceInterface
 {
     /**
-    * Get product amount with tax
-    *
-    * @return MoneyInterface Product amount with tax
-    */
-    public function getProductAmount();
-
-    /**
-    * Set product amount with tax
-    *
-    * @param MoneyInterface $productAmount Product amount with tax
-    *
-    * @return Object self Object
-    */
-    public function setProductAmount(MoneyInterface $productAmount);
-
-    /**
-    * Get coupon amount with tax
-    *
-    * @return MoneyInterface Coupon amount with tax
-    */
-    public function getCouponAmount();
-
-    /**
-    * Set coupon amount with tax
-    *
-    * @param MoneyInterface $couponAmount Coupon amount with tax
-    *
-    * @return Object self Object
-    */
-    public function setCouponAmount(MoneyInterface $couponAmount);
-
-    /**
-    * Get amount with tax
+    * Gets total amount with tax
     *
     * @return MoneyInterface price with tax
     */
     public function getAmount();
 
     /**
-    * Set amount with tax
+    * Sets total amount with tax
     *
     * @param MoneyInterface $amount price with tax
     *
     * @return Object self Object
     */
     public function setAmount(MoneyInterface $amount);
+
+    /**
+     * Gets product amount with tax
+     *
+     * @return MoneyInterface price with tax
+     */
+    public function getProductAmount();
+
+    /**
+     * Sets product amount with tax
+     *
+     * @param MoneyInterface $amount price with tax
+     *
+     * @return Object self Object
+     */
+    public function setProductAmount(MoneyInterface $amount);
 
     /**
      * Gets the associated currency

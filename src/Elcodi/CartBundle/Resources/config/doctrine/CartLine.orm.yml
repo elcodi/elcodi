@@ -7,10 +7,6 @@ Elcodi\CartBundle\Entity\CartLine:
             column: product_amount
             type: integer
             nullable: false
-        couponAmount:
-            column: coupon_amount
-            type: integer
-            nullable: true
         amount:
             column: amount
             type: integer

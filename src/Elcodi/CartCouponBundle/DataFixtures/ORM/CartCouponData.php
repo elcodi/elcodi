@@ -57,7 +57,7 @@ class CartCouponData extends AbstractFixture
          * way, a single entry to the calculation of the Money
          * object for a Coupon is needed
          */
-        $couponAmount = new Money(0, $cart->getCurrency());
+        $couponAmount = null;
 
         switch ($coupon->getType()) {
 

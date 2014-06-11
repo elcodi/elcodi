@@ -21,6 +21,9 @@ use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
 use Elcodi\CartCouponBundle\EventDispatcher\OrderCouponEventDispatcher;
 use Elcodi\CartCouponBundle\Services\CartCouponManager;
 
+use Elcodi\CouponBundle\EventDispatcher\CouponEventDispatcher;
+use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
+
 /**
  * Class OrderEventListener
  */
@@ -67,7 +70,9 @@ class OrderEventListener
         $order = $orderOnCreatedEvent->getOrder();
         $cart = $orderOnCreatedEvent->getCart();
 
-        $order->setCouponAmount($cart->getCouponAmount());
+        if ($cart->getCouponAmount() instanceof MoneyInterface) {
+            $order->setCouponAmount($cart->getCouponAmount());
+        }
 
         /**
          * @var Collection $coupons

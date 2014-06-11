@@ -15,6 +15,12 @@
 namespace Elcodi\CartBundle\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
+<<<<<<< HEAD
+=======
+use Elcodi\CartBundle\Event\OrderPostCreatedEvent;
+use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
+use Exception;
+>>>>>>> Cart amounts are now calculated dynamically
 
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
@@ -191,7 +197,7 @@ class CartEventListener
     }
 
     /**
-     * This method calculates all prices given a Cart
+     * Calculates all the amounts for a given a Cart
      *
      * @param CartInterface $cart Cart
      *
@@ -199,11 +205,11 @@ class CartEventListener
      */
     protected function loadCartPrices(CartInterface $cart)
     {
-        $productAmount = new Money(0, $cart->getCurrency());
-        $totalAmount = new Money(0, $cart->getCurrency());
+        $productAmount = null;
+        $totalAmount = null;
 
         /**
-         * Calculate max shipping delay
+         * Calculate Amount and ProductAmount
          */
         foreach ($cart->getCartLines() as $cartLine) {
 
@@ -211,8 +217,18 @@ class CartEventListener
              * @var CartLineInterface $cartLine
              */
             $cartLine = $this->loadCartLinePrices($cartLine);
-            $productAmount = $productAmount->add($cartLine->getProductAmount());
-            $totalAmount = $totalAmount->add($cartLine->getAmount());
+
+            /**
+             * @var MoneyInterface $productAmount
+             */
+            $productAmount = $productAmount ?
+                $productAmount->add($cartLine->getProductAmount()) : $cartLine->getProductAmount();
+
+            /**
+             * @var MoneyInterface $totalAmount
+             */
+            $totalAmount = $totalAmount ?
+                $totalAmount->add($cartLine->getAmount()) : $cartLine->getAmount();
         }
 
         $cart

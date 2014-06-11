@@ -341,7 +341,7 @@ class Product extends AbstractEntity implements ProductInterface
     /**
      * Get price
      *
-     * @return float Price
+     * @return MoneyInterface Price
      */
     public function getPrice()
     {

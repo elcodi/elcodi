@@ -19,32 +19,12 @@ use DateTime;
 
 use Elcodi\CartBundle\Entity\Cart;
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
-use Elcodi\CurrencyBundle\Wrapper\CurrencyWrapper;
 
 /**
  * Class CartFactory
  */
 class CartFactory extends AbstractFactory
 {
-    /**
-     * @var CurrencyWrapper
-     *
-     * Currency wrapper
-     */
-    protected $currencyWrapper;
-
-    /**
-     * Set the Currency wrapper
-     *
-     * @param CurrencyWrapper $currencyWrapper
-     */
-    public function setCurrencyWrapper(
-        CurrencyWrapper $currencyWrapper
-    )
-    {
-        $this->currencyWrapper = $currencyWrapper;
-    }
-
     /**
      * Creates an instance of Cart
      *
@@ -61,7 +41,6 @@ class CartFactory extends AbstractFactory
             ->setQuantity(0)
             ->setOrdered(false)
             ->setCartLines(new ArrayCollection)
-            ->setCurrency($this->currencyWrapper->loadCurrency())
             ->setCreatedAt(new DateTime);
 
         return $cart;

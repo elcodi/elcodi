@@ -80,6 +80,7 @@ class OrderLineManager
         $this->orderLineHistoryFactory = $orderLineHistoryFactory;
         $this->orderLineFactory = $orderLineFactory;
         $this->orderStateManager = $orderStateManager;
+
     }
 
     /**

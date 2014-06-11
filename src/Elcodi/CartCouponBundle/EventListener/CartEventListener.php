@@ -112,8 +112,7 @@ class CartEventListener
         CouponInterface $coupon
     )
     {
-        // Money arithmetics will be done with Cart currency
-        $priceCoupon = new Money(0, $cart->getCurrency());
+        $priceCoupon = null;
 
         switch ($coupon->getType()) {
 

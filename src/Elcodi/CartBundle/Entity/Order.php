@@ -16,6 +16,9 @@ namespace Elcodi\CartBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
+use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
+use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
+use Elcodi\CurrencyBundle\Entity\Money;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface;
@@ -31,6 +34,13 @@ use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 class Order extends AbstractEntity implements OrderInterface
 {
     use DateTimeTrait, PriceTrait;
+
+    /**
+     * @var integer
+     *
+     * Coupon Amount
+     */
+    protected $couponAmount;
 
     /**
      * @var CustomerInterface
@@ -271,5 +281,35 @@ class Order extends AbstractEntity implements OrderInterface
     public function getLastOrderHistory()
     {
         return $this->lastOrderHistory;
+    }
+
+    /**
+     * Gets the Coupon amount with tax
+     *
+     * @return Money
+     */
+    public function getCouponAmount()
+    {
+        if ($this->currency instanceof CurrencyInterface) {
+            return new Money($this->couponAmount, $this->currency);
+        }
+
+        return null;
+    }
+
+    /**
+     * Sets the Coupon amount with tax
+     *
+     * @param MoneyInterface $couponAmount coupon amount
+     *
+     * @return OrderInterface
+     */
+    public function setCouponAmount(MoneyInterface $couponAmount = null)
+    {
+        if ($couponAmount instanceof MoneyInterface) {
+            $this->couponAmount = $couponAmount->getAmount();
+        }
+
+        return $this;
     }
 }

@@ -16,20 +16,51 @@ namespace Elcodi\CartBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
+use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
-use Elcodi\CartBundle\Entity\Traits\PriceTrait;
 
 /**
  * Cart
  */
 class Cart extends AbstractEntity implements CartInterface
 {
-    use DateTimeTrait, PriceTrait;
+    use DateTimeTrait;
+
+    /**
+     * @var MoneyInterface
+     *
+     * Transient amount for products
+     *
+     * This value is not persisted, it is calculated
+     * by summing CartLine::$productAmount
+     */
+    protected $productAmount;
+
+    /**
+     * @var MoneyInterface
+     *
+     * Transient amount for coupons
+     *
+     * This value is not persisted, it is calculated
+     * by summing CartLine::$couponAmount
+     *
+     */
+    protected $couponAmount;
+
+    /**
+     * @var MoneyInterface
+     *
+     * Transient total amount
+     *
+     * This value is not persisted, it is calculated
+     * by summing CartLine::$amount
+     */
+    protected $amount;
 
     /**
      * @var CustomerInterface
@@ -228,5 +259,65 @@ class Cart extends AbstractEntity implements CartInterface
         $totalItems = array_reduce($this->cartLines->toArray(), function ($prev, $cur) { return $prev + $cur->getQuantity(); });
 
         return is_null($totalItems) ? 0 : $totalItems;
+    }
+
+    /**
+     * @return MoneyInterface
+     */
+    public function getProductAmount()
+    {
+        return $this->productAmount;
+    }
+
+    /**
+     * @param MoneyInterface $productAmount
+     *
+     * @return CartInterface
+     */
+    public function setProductAmount(MoneyInterface $productAmount)
+    {
+        $this->productAmount = $productAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return MoneyInterface
+     */
+    public function getCouponAmount()
+    {
+        return $this->couponAmount;
+    }
+
+    /**
+     * @param MoneyInterface $couponAmount
+     *
+     * @return CartInterface
+     */
+    public function setCouponAmount(MoneyInterface $couponAmount)
+    {
+        $this->couponAmount = $couponAmount;
+
+        return $this;
+    }
+
+    /**
+     * @return MoneyInterface
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * @param MoneyInterface $amount
+     *
+     * @return CartInterface
+     */
+    public function setAmount(MoneyInterface $amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
     }
 }

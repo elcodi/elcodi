@@ -6,18 +6,6 @@ Elcodi\CartBundle\Entity\Cart:
         quantity:
             column: quantity
             type: integer
-        productAmount:
-            column: product_amount
-            type: integer
-            nullable: false
-        couponAmount:
-            column: coupon_amount
-            type: integer
-            nullable: true
-        amount:
-            column: amount
-            type: integer
-            nullable: false
         ordered:
             column: ordered
             type: boolean
@@ -42,12 +30,6 @@ Elcodi\CartBundle\Entity\Cart:
                 name: customer_id
                 referencedColumnName: id
                 nullable: true
-        currency:
-            targetEntity: Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
-            joinColumn:
-                 name: currency_id
-                 referencedColumnName: id
-                 nullable: false
 
     oneToMany:
         cartLines:

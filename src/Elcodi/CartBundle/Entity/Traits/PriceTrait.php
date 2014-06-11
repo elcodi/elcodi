@@ -21,11 +21,7 @@ use Elcodi\CurrencyBundle\Entity\Money;
 /**
  * Trait for entities that hold prices.
  *
- * Cart/Order related entities usually will have this trait.
- *
- * A more generic approach is needed in order to generalize the
- * amounts stored, whether they refer to products, discounts,
- * shipping, etc
+ * CartLine and OrderLine entities usually will have this trait.
  *
  * A currency is needed so that a {@see Money} value object can be
  * exploited when doing currency arithmetics. When Currency is not
@@ -35,8 +31,6 @@ use Elcodi\CurrencyBundle\Entity\Money;
 trait PriceTrait
 {
     /**
-     * Amount for product or products
-     *
      * @var integer
      */
     protected $productAmount;
@@ -50,17 +44,45 @@ trait PriceTrait
 
     /**
      * Total amount
-     *
-     * @var integer
      */
     protected $amount;
 
     /**
-     * Currency for the amounts stored in this entity
-     *
      * @var \Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
+     *
+     * Currency for the amounts stored in this entity
      */
     protected $currency;
+
+    /**
+     * Gets the total amount with tax
+     *
+     * @return MoneyInterface price with tax
+     */
+    public function getAmount()
+    {
+        if ($this->currency instanceof CurrencyInterface) {
+
+            return Money::create($this->couponAmount, $this->currency);
+        }
+
+        return null;
+    }
+
+    /**
+     * Sets the total amount with tax
+     *
+     * @param MoneyInterface $amount amount without tax
+     *
+     * @return $this
+     */
+    public function setAmount(MoneyInterface $amount)
+    {
+        $this->amount = $amount->getAmount();
+        $this->currency = $amount->getCurrency();
+
+        return $this;
+    }
 
     /**
      * Gets the product or products amount with tax
@@ -70,7 +92,8 @@ trait PriceTrait
     public function getProductAmount()
     {
         if ($this->currency instanceof CurrencyInterface) {
-            return Money::create($this->productAmount, $this->currency);
+
+            return Money::create($this->amount, $this->currency);
         }
 
         return null;
@@ -87,64 +110,6 @@ trait PriceTrait
     {
         $this->productAmount = $productAmount->getAmount();
         $this->currency = $productAmount->getCurrency();
-
-        return $this;
-    }
-
-    /**
-     * Gets the coupon or coupons amount with tax
-     *
-     * @return MoneyInterface Coupon amount with tax
-     */
-    public function getCouponAmount()
-    {
-        if ($this->currency instanceof CurrencyInterface) {
-            return Money::create($this->couponAmount, $this->currency);
-        }
-
-        return null;
-    }
-
-    /**
-     * Sets the coupon or coupons amount with tax
-     *
-     * @param MoneyInterface $couponAmount Coupon amount without tax
-     *
-     * @return Object self Object
-     */
-    public function setCouponAmount(MoneyInterface $couponAmount)
-    {
-        $this->productAmount = $couponAmount->getAmount();
-        $this->currency = $couponAmount->getCurrency();
-
-        return $this;
-    }
-
-    /**
-     * Gets the total amount with tax
-     *
-     * @return MoneyInterface price with tax
-     */
-    public function getAmount()
-    {
-        if ($this->currency instanceof CurrencyInterface) {
-            return Money::create($this->amount, $this->currency);
-        }
-
-        return null;
-    }
-
-    /**
-     * Sets the total amount with tax
-     *
-     * @param MoneyInterface $amount amount without tax
-     *
-     * @return Object self Object
-     */
-    public function setAmount(MoneyInterface $amount)
-    {
-        $this->amount = $amount->getAmount();
-        $this->currency = $amount->getCurrency();
 
         return $this;
     }
