@@ -16,6 +16,7 @@ namespace Elcodi\CartCouponBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 
+use Elcodi\CartBundle\Entity\CartLine;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
@@ -47,17 +48,10 @@ class CartCouponData extends AbstractFixture
         $cartCoupon = $this->container->get('elcodi.core.cart_coupon.factory.cart_coupon')->create();
         $cart = $this->getReference('full-cart');
         $coupon = $this->getReference('coupon-percent');
-        $currency = $this->getReference('currency-dollar');
-
-        $couponAmount = $cart->getProductAmount()->multiply(($coupon->getValue() / 100));
 
         $cartCoupon
             ->setCart($cart)
             ->setCoupon($coupon);
-
-        $cart
-            ->setCouponAmount(new Money($coupon->getAbsoluteValue()*100, $currency))
-            ->setAmount(new Money(($cart->getAmount()->getAmount() - $coupon->getAbsoluteValue())*100, $currency));
 
         $manager->persist($cartCoupon);
         $this->addReference('cart-coupon', $cartCoupon);
