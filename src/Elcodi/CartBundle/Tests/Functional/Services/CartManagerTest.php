@@ -238,18 +238,18 @@ class CartManagerTest extends WebTestCase
             $this->cart->getCartLines()->first()->getAmount()
         );
 
-        $this->assertEquals(
+        $this->assertTrue(
             $this
                 ->cart
                 ->getAmount()
-                ->getAmount(),
-            $this
-                ->cart
-                ->getCartLines()
-                ->first()
-                ->getProduct()
-                ->getPrice()
-                ->getAmount() * 2
+                ->equals($this
+                    ->cart
+                    ->getCartLines()
+                    ->first()
+                    ->getProduct()
+                    ->getPrice()
+                    ->multiply(2)
+                )
         );
     }
 
