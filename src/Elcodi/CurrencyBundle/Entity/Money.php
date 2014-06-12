@@ -90,7 +90,7 @@ class Money implements MoneyInterface
      *
      * @param MoneyInterface $other
      *
-     * @return MoneyInterface
+     * @return int
      */
     public function compareTo(MoneyInterface $other)
     {
@@ -198,8 +198,12 @@ class Money implements MoneyInterface
      *
      * @return MoneyInterface
      */
-    public static function create($amount, CurrencyInterface $currency)
+    public static function create($amount, CurrencyInterface $currency = null)
     {
-        return new static($amount, $currency);
+        if ($currency instanceof CurrencyInterface) {
+            return new self($amount, $currency);
+        } else {
+            return new NullMoney();
+        }
     }
 }
