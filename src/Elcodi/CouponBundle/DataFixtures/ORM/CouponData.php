@@ -41,12 +41,10 @@ class CouponData extends AbstractFixture implements OrderedFixtureInterface
          * @var CouponFactory     $couponFactory
          */
         $couponFactory = $this->container->get('elcodi.core.coupon.factory.coupon');
-        $currency = $this->getReference('currency-dollar');
-
         /**
          * @var CurrencyInterface
          */
-        $currencyUsd = $this->getReference('currency-usd');
+        $currency = $this->getReference('currency-dollar');
 
         /**
          * Coupon with 12% of discount
@@ -89,7 +87,7 @@ class CouponData extends AbstractFixture implements OrderedFixtureInterface
             ->setCode('amount')
             ->setName('5 USD discount')
             ->setType(ElcodiCouponTypes::TYPE_AMOUNT)
-            ->setValue(Money::create(500, $currency))
+            ->setPrice(Money::create(500, $currency))
             ->setCount(20)
             ->setValidFrom(new DateTime());
         $manager->persist($couponAmount);
