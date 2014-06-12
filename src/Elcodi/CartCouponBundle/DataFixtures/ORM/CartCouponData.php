@@ -49,26 +49,7 @@ class CartCouponData extends AbstractFixture
         $coupon = $this->getReference('coupon-percent');
         $currency = $this->getReference('currency-dollar');
 
-        /*
-         * Following extract is from CartEventListener::getPriceCoupon
-         *
-         * This method should be part of the Coupon class or be
-         * a publicly accessible method in CouponManager. Either
-         * way, a single entry to the calculation of the Money
-         * object for a Coupon is needed
-         */
-        $couponAmount = null;
-
-        switch ($coupon->getType()) {
-
-            case ElcodiCouponTypes::TYPE_AMOUNT:
-                $couponAmount = new Money($coupon->getValue(), $coupon->getCurrency());
-                break;
-
-            case ElcodiCouponTypes::TYPE_PERCENT:
-                $couponAmount = $cart->getProductAmount()->multiply(($coupon->getValue() / 100));
-                break;
-        }
+        $couponAmount = $cart->getProductAmount()->multiply(($coupon->getValue() / 100));
 
         $cartCoupon
             ->setCart($cart)

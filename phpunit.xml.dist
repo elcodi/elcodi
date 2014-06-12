@@ -23,8 +23,8 @@
     </testsuites>
 
     <filter>
-        <whitelist>
-            <directory>./</directory>
+        <whitelist processUncoveredFilesFromWhitelist="false">
+            <directory>./src</directory>
             <exclude>
                 <directory>./src/Elcodi/*/Tests/</directory>
                 <directory>./src/Elcodi/*/Resources/</directory>
