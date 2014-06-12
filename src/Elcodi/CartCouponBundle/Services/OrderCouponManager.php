@@ -67,11 +67,6 @@ class OrderCouponManager
                 'order' => $order,
             ));
 
-        if (!($orderCoupons instanceof Collection)) {
-
-            $orderCoupons = new ArrayCollection($orderCoupons);
-        }
-
-        return $orderCoupons;
+        return new ArrayCollection($orderCoupons);
     }
 }

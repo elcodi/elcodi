@@ -14,6 +14,7 @@
 
 namespace Elcodi\CartCouponBundle\Event\Abstracts;
 
+use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
 use Symfony\Component\EventDispatcher\Event;
 
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
@@ -39,6 +40,13 @@ abstract class AbstractCartCouponEvent extends Event
     protected $coupon;
 
     /**
+     * @var CartCouponInterface
+     *
+     * CartCoupon
+     */
+    protected $cartCoupon;
+
+    /**
      * Construct method
      *
      * @param CartInterface   $cart   Cart
@@ -48,6 +56,20 @@ abstract class AbstractCartCouponEvent extends Event
     {
         $this->cart = $cart;
         $this->coupon = $coupon;
+    }
+
+    /**
+     * Set CartCoupon
+     *
+     * @param CartCouponInterface $cartCoupon CartCoupon
+     *
+     * @return AbstractCartCouponEvent self Object
+     */
+    public function setCartCoupon(CartCouponInterface $cartCoupon)
+    {
+        $this->cartCoupon = $cartCoupon;
+
+        return $this;
     }
 
     /**
@@ -68,5 +90,15 @@ abstract class AbstractCartCouponEvent extends Event
     public function getCoupon()
     {
         return $this->coupon;
+    }
+
+    /**
+     * Get CartCoupon
+     *
+     * @return CartCouponInterface|null Cart Coupon
+     */
+    public function getCartCoupon()
+    {
+        return $this->cartCoupon;
     }
 }

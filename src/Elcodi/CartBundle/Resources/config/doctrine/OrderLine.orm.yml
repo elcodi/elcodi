@@ -38,6 +38,7 @@ Elcodi\CartBundle\Entity\OrderLine:
             targetEntity: Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface
             mappedBy: orderLine
             cascade: [ all ]
+            orphanRemoval: true
 
     manyToOne:
         order:

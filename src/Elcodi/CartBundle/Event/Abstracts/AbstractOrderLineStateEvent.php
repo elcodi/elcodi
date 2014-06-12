@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -47,21 +47,31 @@ class AbstractOrderLineStateEvent extends Event
     protected $lastOrderLineHistory;
 
     /**
+     * @var string
+     *
+     * New state
+     */
+    protected $newState;
+
+    /**
      * construct method
      *
-     * @param OrderInterface            $order                Order
-     * @param OrderLineInterface        $orderLine            Order line
-     * @param OrderLineHistoryInterface $lastOrderLineHistory Last OrderLine history
+     * @param OrderInterface            $order                Used Order
+     * @param OrderLineInterface        $orderLine            Used OrderLine
+     * @param OrderLineHistoryInterface $lastOrderLineHistory Last OrderLineHistory
+     * @param string                    $newState             New state to reach
      */
     public function __construct(
         OrderInterface $order,
         OrderLineInterface $orderLine,
-        OrderLineHistoryInterface $lastOrderLineHistory
+        OrderLineHistoryInterface $lastOrderLineHistory,
+        $newState
     )
     {
         $this->order = $order;
         $this->orderLine = $orderLine;
         $this->lastOrderLineHistory = $lastOrderLineHistory;
+        $this->newState = $newState;
     }
 
     /**
@@ -92,5 +102,15 @@ class AbstractOrderLineStateEvent extends Event
     public function getLastOrderLineHistory()
     {
         return $this->lastOrderLineHistory;
+    }
+
+    /**
+     * Return new state to reach
+     *
+     * @return string New state to reach
+     */
+    public function getNewState()
+    {
+        return $this->newState;
     }
 }

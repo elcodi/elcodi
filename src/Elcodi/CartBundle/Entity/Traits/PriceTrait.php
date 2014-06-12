@@ -39,21 +39,21 @@ trait PriceTrait
      *
      * @var integer
      */
-    protected $productAmount = 0;
+    protected $productAmount;
 
     /**
      * Amount for coupon or coupons
      *
      * @var integer
      */
-    protected $couponAmount = 0;
+    protected $couponAmount;
 
     /**
      * Total amount
      *
      * @var integer
      */
-    protected $amount = 0;
+    protected $amount;
 
     /**
      * Currency for the amounts stored in this entity
@@ -70,7 +70,7 @@ trait PriceTrait
     public function getProductAmount()
     {
         if ($this->currency instanceof CurrencyInterface) {
-            return new Money($this->productAmount, $this->currency);
+            return Money::create($this->productAmount, $this->currency);
         }
 
         return null;
@@ -99,7 +99,7 @@ trait PriceTrait
     public function getCouponAmount()
     {
         if ($this->currency instanceof CurrencyInterface) {
-            return new Money($this->couponAmount, $this->currency);
+            return Money::create($this->couponAmount, $this->currency);
         }
 
         return null;
@@ -128,7 +128,7 @@ trait PriceTrait
     public function getAmount()
     {
         if ($this->currency instanceof CurrencyInterface) {
-            return new Money($this->amount, $this->currency);
+            return Money::create($this->amount, $this->currency);
         }
 
         return null;
@@ -139,7 +139,7 @@ trait PriceTrait
      *
      * @param MoneyInterface $amount amount without tax
      *
-     * @return $this
+     * @return Object self Object
      */
     public function setAmount(MoneyInterface $amount)
     {
@@ -164,7 +164,7 @@ trait PriceTrait
      *
      * @param \Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface $currency
      *
-     * @return $this
+     * @return Object self Object
      */
     public function setCurrency($currency)
     {

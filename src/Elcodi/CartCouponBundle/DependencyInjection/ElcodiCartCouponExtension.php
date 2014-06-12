@@ -51,6 +51,8 @@ class ElcodiCartCouponExtension extends AbstractExtension
             'factories',
             'services',
             'repositories',
+            'eventDispatchers',
+            'objectManagers',
         ];
     }
 }

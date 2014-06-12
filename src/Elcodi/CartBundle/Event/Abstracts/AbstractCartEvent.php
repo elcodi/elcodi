@@ -43,7 +43,7 @@ abstract class AbstractCartEvent extends Event
     /**
      * Get cart
      *
-     * @return CartInterface $cart
+     * @return CartInterface Cart
      */
     public function getCart()
     {

@@ -4,12 +4,14 @@
  * This file is part of BeEcommerce.
  *
  * @author Befactory Team
- * @since 2013
+ * @since  2013
  */
 
 namespace Elcodi\ProductBundle\DataFixtures\ORM;
 
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
+use Elcodi\CurrencyBundle\Entity\Money;
 use Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
@@ -30,13 +32,15 @@ class ProductData extends AbstractFixture
         /**
          * Product
          *
-         * @var ProductInterface $product
-         * @var CategoryInterface $category
+         * @var ProductInterface      $product
+         * @var CategoryInterface     $category
          * @var ManufacturerInterface $manufacturer
+         * @var CurrencyInterface     $currency
          */
         $product = $this->container->get('elcodi.core.product.factory.product')->create();
         $category = $this->getReference('category');
         $manufacturer = $this->getReference('manufacturer');
+        $currency = $this->getReference('currency-dollar');
         $product
             ->setName('product')
             ->setSlug('product')
@@ -46,7 +50,7 @@ class ProductData extends AbstractFixture
             ->setPrincipalCategory($category)
             ->setManufacturer($manufacturer)
             ->setStock(10)
-            ->setPrice(10)
+            ->setPrice(new Money(1000, $currency))
             ->setEnabled(true);
 
         $manager->persist($product);
@@ -55,7 +59,7 @@ class ProductData extends AbstractFixture
         /**
          * Reduced Product
          *
-         * @var ProductInterface $product
+         * @var ProductInterface $productReduced
          */
         $productReduced = $this->container->get('elcodi.core.product.factory.product')->create();
         $productReduced
@@ -64,8 +68,8 @@ class ProductData extends AbstractFixture
             ->setDescription('my product-reduced description')
             ->setShortDescription('my product-reduced short description')
             ->setStock(5)
-            ->setPrice(10)
-            ->setReducedPrice(5)
+            ->setPrice(new Money(1000, $currency))
+            ->setReducedPrice(new Money(500, $currency))
             ->setEnabled(true);
 
         $manager->persist($productReduced);

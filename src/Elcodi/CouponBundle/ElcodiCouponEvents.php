@@ -22,8 +22,8 @@ class ElcodiCouponEvents
     /**
      * This event is fired each time a coupon has been used
      *
-     * event.name : coupon.used
-     * event.class : CouponUsedEvent
+     * event.name : coupon.onused
+     * event.class : CouponOnUsedEvent
      */
-    const COUPON_USED = 'coupon.used';
+    const COUPON_USED = 'coupon.onused';
 }

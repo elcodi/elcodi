@@ -17,7 +17,7 @@ namespace Elcodi\CartBundle\Event;
 use Elcodi\CartBundle\Event\Abstracts\AbstractOrderStateEvent;
 
 /**
- * Event fired when a new state is added into OrderHistory
+ * Event dispatched when a new state is added into OrderHistory
  */
 class OrderStatePreChangeEvent extends AbstractOrderStateEvent
 {

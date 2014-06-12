@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -16,10 +16,13 @@ namespace Elcodi\CartCouponBundle\EventListener;
 
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Event\CartOnLoadEvent;
+use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
 use Elcodi\CartCouponBundle\Services\CartCouponManager;
 use Elcodi\CouponBundle\ElcodiCouponTypes;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 use Elcodi\CouponBundle\Services\CouponManager;
+use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
+use Elcodi\CurrencyBundle\Entity\Money;
 
 /**
  * Class CartEventListener
@@ -49,7 +52,10 @@ class CartEventListener
      * @param CouponManager     $couponManager     Coupon manager
      * @param CartCouponManager $cartCouponManager Cart coupon manager
      */
-    public function __construct(CouponManager $couponManager, CartCouponManager $cartCouponManager)
+    public function __construct(
+        CouponManager $couponManager,
+        CartCouponManager $cartCouponManager
+    )
     {
         $this->couponManager = $couponManager;
         $this->cartCouponManager = $cartCouponManager;
@@ -62,19 +68,31 @@ class CartEventListener
      *
      * @return CartInterface Cart
      */
-    public function onCartOnLoad(CartOnLoadEvent $cartOnLoadEvent)
+    public function onCartLoad(
+        CartOnLoadEvent $cartOnLoadEvent
+    )
     {
         $cart = $cartOnLoadEvent->getCart();
-        $couponAmount = 0.0;
-        $cartCoupons = $this->cartCouponManager->getCartCoupons($cart);
+        $cartCurrency = $cart->getCurrency();
+        $couponAmount = new Money('0', $cartCurrency);
+        $cartCoupons = $this
+            ->cartCouponManager
+            ->getCartCoupons($cart);
 
-        foreach ($cartCoupons as $coupon) {
+        /**
+         * @var CartCouponInterface $cartCoupon
+         */
+        foreach ($cartCoupons as $cartCoupon) {
 
-            $couponAmount += $this->getPriceCoupon($cart, $coupon);
+            $couponAmount = $couponAmount->add($this
+                ->getPriceCoupon(
+                    $cart,
+                    $cartCoupon->getCoupon()
+                ));
         }
 
         $cart->setCouponAmount($couponAmount);
-        $cart->setAmount($cart->getAmount() + $couponAmount);
+        $cart->setAmount($cart->getAmount()->subtract($couponAmount));
 
         return $cart;
     }
@@ -85,23 +103,27 @@ class CartEventListener
      * @param CartInterface   $cart   Abstract Cart object
      * @param CouponInterface $coupon Coupon
      *
-     * @return float Coupon price
+     * @return Money Coupon price
      */
-    protected function getPriceCoupon(CartInterface $cart, CouponInterface $coupon)
+    protected function getPriceCoupon(
+        CartInterface $cart,
+        CouponInterface $coupon
+    )
     {
-        $priceCoupon = 0.0;
+        $priceCoupon = 0;
 
         switch ($coupon->getType()) {
 
             case ElcodiCouponTypes::TYPE_AMOUNT:
-                $priceCoupon = (float) $coupon->getValue();
+                $priceCoupon = $coupon->getPrice();
                 break;
 
             case ElcodiCouponTypes::TYPE_PERCENT:
-                $priceCoupon = ($coupon->getValue() / 100) * $cart->getProductAmount();
+                $priceCoupon = ($coupon->getDiscount() / 100) * $cart->getProductAmount()->getAmount();
+                $priceCoupon = Money::create($priceCouponAmount, $)
                 break;
         }
 
-        return $priceCoupon;
+        return new Money($priceCoupon, $currency);
     }
 }

@@ -21,6 +21,15 @@ use Elcodi\CoreBundle\Tests\WebTestCase;
  */
 class OrderLineStateEventListenerTest extends WebTestCase
 {
+    /**
+     * Load fixtures of these bundles
+     *
+     * @return array Bundles name where fixtures should be found
+     */
+    protected function loadSchema()
+    {
+        return false;
+    }
 
     /**
      * Returns the callable name of the service

@@ -20,6 +20,8 @@ use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
+use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
+use Elcodi\CurrencyBundle\Entity\Money;
 
 /**
  * Class CartCouponData
@@ -39,17 +41,20 @@ class CartCouponData extends AbstractFixture
          * @var CartCouponInterface $cartCoupon
          * @var CartInterface       $cart
          * @var CouponInterface     $coupon
+         * @var CurrencyInterface   $currency
          */
         $cartCoupon = $this->container->get('elcodi.core.cart_coupon.factory.cart_coupon')->create();
         $cart = $this->getReference('full-cart');
         $coupon = $this->getReference('coupon-percent');
+        $currency = $this->getReference('currency-dollar');
 
         $cartCoupon
             ->setCart($cart)
             ->setCoupon($coupon);
+
         $cart
-            ->setCouponAmount($coupon->getAbsoluteValue())
-            ->setAmount($cart->getAmount() - $coupon->getAbsoluteValue());
+            ->setCouponAmount(new Money($coupon->getAbsoluteValue()*100, $currency))
+            ->setAmount(new Money(($cart->getAmount()->getAmount() - $coupon->getAbsoluteValue())*100, $currency));
 
         $manager->persist($cartCoupon);
         $this->addReference('cart-coupon', $cartCoupon);

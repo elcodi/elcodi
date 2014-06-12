@@ -68,6 +68,7 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
     {
         return [
             'elcodi.core.currency.default_currency' => $config['default_currency'],
+            'elcodi.core.currency.provider' => $config['provider'],
         ];
     }
 
@@ -80,11 +81,11 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
     {
         return [
             'classes',
-            'formTypes',
             'services',
             'factories',
             'twig',
             'repositories',
+            'objectManagers',
         ];
     }
 

@@ -36,7 +36,7 @@ class Configuration implements ConfigurationInterface
                     ->defaultValue('USD')
                 ->end()
                 ->scalarNode('provider')
-                    ->defaultValue('Elcodi\CurrencyBundle\\Provider\\OpenExchangeRatesProvider')
+                    ->defaultValue('Elcodi\CurrencyBundle\Provider\OpenExchangeRatesProvider')
                 ->end()
             ->end();
 

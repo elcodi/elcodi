@@ -8,22 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
 namespace Elcodi\CartBundle\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-use Elcodi\CartBundle\ElcodiCartEvents;
+use Elcodi\CartBundle\Event\OrderLineStateOnChangeEvent;
+use Elcodi\CartBundle\EventDispatcher\OrderStateEventDispatcher;
 use Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface;
-use Elcodi\CartBundle\Event\OrderLineStatePostChangeEvent;
-use Elcodi\CartBundle\Event\OrderStatePostChangeEvent;
-use Elcodi\CartBundle\Event\OrderStatePreChangeEvent;
 use Elcodi\CartBundle\Factory\OrderHistoryFactory;
 
 /**
@@ -34,16 +31,16 @@ class OrderLineStateEventListener
     /**
      * @var ObjectManager
      *
-     * Object manager
+     * OrderLine ObjectManager
      */
-    protected $manager;
+    protected $orderLineObjectManager;
 
     /**
-     * @var EventDispatcherInterface
+     * @var OrderStateEventDispatcher
      *
-     * Event dispatcher
+     * Order State Event dispatcher
      */
-    protected $eventDispatcher;
+    protected $orderStateEventDispatcher;
 
     /**
      * @var OrderHistoryFactory
@@ -55,18 +52,18 @@ class OrderLineStateEventListener
     /**
      * Construct method
      *
-     * @param ObjectManager            $manager             Manager
-     * @param EventDispatcherInterface $eventDispatcher     Event dispatcher
-     * @param OrderHistoryFactory      $orderHistoryFactory OrderHistory Factory
+     * @param ObjectManager             $orderLineObjectManager    OrderLine ObjectManager
+     * @param OrderStateEventDispatcher $orderStateEventDispatcher Order State Event dispatcher
+     * @param OrderHistoryFactory       $orderHistoryFactory       OrderHistory Factory
      */
     public function __construct(
-        ObjectManager $manager,
-        EventDispatcherInterface $eventDispatcher,
+        ObjectManager $orderLineObjectManager,
+        OrderStateEventDispatcher $orderStateEventDispatcher,
         OrderHistoryFactory $orderHistoryFactory
     )
     {
-        $this->manager = $manager;
-        $this->eventDispatcher = $eventDispatcher;
+        $this->orderLineObjectManager = $orderLineObjectManager;
+        $this->orderStateEventDispatcher = $orderStateEventDispatcher;
         $this->orderHistoryFactory = $orderHistoryFactory;
     }
 
@@ -76,16 +73,16 @@ class OrderLineStateEventListener
      * This listener checks if full Order has to change its event, given the
      * OrderLines states
      *
-     * @param OrderLineStatePostChangeEvent $event Event
+     * @param OrderLineStateOnChangeEvent $event Event
      */
-    public function onOrderLineStatePostChange(OrderLineStatePostChangeEvent $event)
+    public function onOrderLineStateChange(OrderLineStateOnChangeEvent $event)
     {
         $order = $event->getOrder();
 
         /**
          * If all cartLines are in same state, and last state is not same, add new line.
          */
-        $state = null;
+        $newState = null;
 
         /**
          * @var OrderLineInterface $line
@@ -99,10 +96,10 @@ class OrderLineStateEventListener
                 $lastState = $lastOrderLineHistory->getState();
             }
 
-            if (null === $state) {
-                $state = $lastState;
+            if (null === $newState) {
+                $newState = $lastState;
 
-            } elseif ($state !== $lastState) {
+            } elseif ($newState !== $lastState) {
                 /**
                  * not all lines in the same state
                  */
@@ -116,26 +113,51 @@ class OrderLineStateEventListener
             ? $order->getLastOrderHistory()
             : $this->orderHistoryFactory->create();
 
-        $orderStatePreChangeEvent = new OrderStatePreChangeEvent($order, $lastOrderHistory);
-        $this->eventDispatcher->dispatch(ElcodiCartEvents::ORDER_STATE_PRECHANGE, $orderStatePreChangeEvent);
+        $this
+            ->orderStateEventDispatcher
+            ->dispatchOrderStatePreChangeEvent(
+                $order,
+                $lastOrderHistory,
+                $newState
+            );
 
         /**
          * @var OrderHistoryInterface $orderHistory
          */
         $orderHistory = $this->orderHistoryFactory->create();
         $orderHistory
-            ->setState($state)
+            ->setState($newState)
             ->setOrder($order);
 
         $order
             ->addOrderHistory($orderHistory)
             ->setLastOrderHistory($orderHistory);
 
-        $this->manager->persist($orderHistory);
-        $this->manager->flush($orderHistory);
-        $this->manager->flush($order);
+        $this
+            ->orderStateEventDispatcher
+            ->dispatchOrderStatePreChangeEvent(
+                $order,
+                $lastOrderHistory,
+                $orderHistory,
+                $newState
+            );
+    }
 
-        $orderStatePostChangeEvent = new OrderStatePostChangeEvent($order, $lastOrderHistory, $orderHistory);
-        $this->eventDispatcher->dispatch(ElcodiCartEvents::ORDER_STATE_POSTCHANGE, $orderStatePostChangeEvent);
+    /**
+     * Flushes OrderLine. New State has added to the object
+     *
+     * @param OrderLineStateOnChangeEvent $event Event
+     */
+    public function onOrderStateChangeFlush(OrderLineStateOnChangeEvent $event)
+    {
+        $order = $event->getOrder();
+
+        $this
+            ->orderLineObjectManager
+            ->persist($order);
+
+        $this
+            ->orderLineObjectManager
+            ->flush();
     }
 }

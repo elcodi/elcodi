@@ -17,7 +17,7 @@ namespace Elcodi\CartBundle\Event;
 use Elcodi\CartBundle\Event\Abstracts\AbstractCartEvent;
 
 /**
- * Event fired before an order is created
+ * Event dispatched before an order is created
  */
 class OrderPreCreatedEvent extends AbstractCartEvent
 {

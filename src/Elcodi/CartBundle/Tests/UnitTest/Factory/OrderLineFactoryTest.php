@@ -26,11 +26,14 @@ class OrderLineFactoryTest extends PHPUnit_Framework_TestCase
 {
     /**
      * Test object creation
+     *
+     * @group order
      */
     public function testCreate()
     {
         $orderLineHistoryFactory = new OrderLineHistoryFactory();
-        $orderLineHistoryFactory->setEntityNamespace('Elcodi\CartBundle\Entity\OrderLineHistory');
+        $orderLineHistoryFactory
+            ->setEntityNamespace('Elcodi\CartBundle\Entity\OrderLineHistory');
 
         $orderLineFactory = new OrderLineFactory();
         $orderLineFactory
@@ -39,10 +42,29 @@ class OrderLineFactoryTest extends PHPUnit_Framework_TestCase
             ->setEntityNamespace('Elcodi\CartBundle\Entity\OrderLine');
         $orderLine = $orderLineFactory->create();
 
-        $this->assertCount(1, $orderLine->getOrderLineHistories());
-        $this->assertInstanceOf('Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface', $orderLine->getOrderLineHistories()->first());
-        $this->assertEquals('new', $orderLine->getOrderLineHistories()->first()->getState());
-        $this->assertInstanceOf('Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface', $orderLine->getLastOrderLineHistory());
-        $this->assertSame($orderLine->getOrderLineHistories()->first(), $orderLine->getLastOrderLineHistory());
+        $this->assertCount(
+            1,
+            $orderLine->getOrderLineHistories()
+        );
+
+        $this->assertInstanceOf(
+            'Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface',
+            $orderLine->getOrderLineHistories()->first()
+        );
+
+        $this->assertEquals(
+            'new',
+            $orderLine->getOrderLineHistories()->first()->getState()
+        );
+
+        $this->assertInstanceOf(
+            'Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface',
+            $orderLine->getLastOrderLineHistory()
+        );
+
+        $this->assertSame(
+            $orderLine->getOrderLineHistories()->first(),
+            $orderLine->getLastOrderLineHistory()
+        );
     }
 }

@@ -16,12 +16,13 @@ namespace Elcodi\CartBundle\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
+use Elcodi\CoreBundle\Entity\Interfaces\DateTimeInterface;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 
 /**
  * Class CartInterface
  */
-interface CartInterface extends PriceInterface
+interface CartInterface extends PriceInterface, DateTimeInterface
 {
     /**
      * Return the customer

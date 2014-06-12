@@ -1,0 +1,23 @@
+services:
+
+    #
+    # Transformers
+    #
+    elcodi.core.cart.transformer.cart_order:
+        class: %elcodi.core.cart.transformer.cart_order.class%
+        arguments:
+            order_event_dispatcher: @elcodi.order_event_dispatcher
+            cart_line_order_line_transformer: @elcodi.core.cart.transformer.cart_line_order_line
+            order_factory: @elcodi.factory.order
+
+    elcodi.cart_order_transformer:
+        alias: elcodi.core.cart.transformer.cart_order
+
+    elcodi.core.cart.transformer.cart_line_order_line:
+        class: %elcodi.core.cart.transformer.cart_line_order_line.class%
+        arguments:
+            order_line_event_dispatcher:  @elcodi.order_line_event_dispatcher
+            order_factory: @elcodi.factory.order_line
+
+    elcodi.cart_line_order_line_transformer:
+        alias: elcodi.core.cart.transformer.cart_line_order_line

@@ -11,9 +11,9 @@ namespace Elcodi\CouponBundle\EventDispatcher;
 
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-use Elcodi\CouponBundle\ElcodiCouponEvents;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
-use Elcodi\CouponBundle\Event\CouponUsedEvent;
+use Elcodi\CouponBundle\Event\CouponOnUsedEvent;
+use Elcodi\CouponBundle\ElcodiCouponEvents;
 
 /**
  * Class CouponEventDispatcher
@@ -46,8 +46,12 @@ class CouponEventDispatcher
      */
     public function notifyCouponUsage(CouponInterface $coupon)
     {
-        $couponUsedEvent = new CouponUsedEvent($coupon);
-        $this->eventDispatcher->dispatch(ElcodiCouponEvents::COUPON_USED, $couponUsedEvent);
+        $couponUsedEvent = new CouponOnUsedEvent($coupon);
+
+        $this->eventDispatcher->dispatch(
+            ElcodiCouponEvents::COUPON_USED,
+            $couponUsedEvent
+        );
 
         return $this;
     }

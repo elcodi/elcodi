@@ -25,6 +25,8 @@ use Symfony\Component\Routing\RouterInterface;
 
 /**
  * Core abstract tests class
+ *
+ * @backupGlobals disabled
  */
 abstract class WebTestCase extends BaseWebTestCase
 {
@@ -82,11 +84,6 @@ abstract class WebTestCase extends BaseWebTestCase
         static::$application = new Application(static::$kernel);
         static::$application->setAutoExit(false);
 
-        $this->client = static::createClient(array(), array(
-            'PHP_AUTH_USER' => 'admin',
-            'PHP_AUTH_PW'   => 'admin',
-        ));
-
         $this->container = static::$kernel->getContainer();
         $this->router = $this->container->get('router');
         $this->manager = $this->container->get('doctrine.orm.entity_manager');
@@ -125,13 +122,7 @@ abstract class WebTestCase extends BaseWebTestCase
 
         foreach ($serviceCallableNames as $serviceCallableName) {
 
-            $this->assertTrue(static::$kernel->getContainer()->has($serviceCallableName));
-
-            if ($this->mustTestGetService()) {
-
-                static::$kernel->getContainer()->get($serviceCallableName);
-                $this->assertTrue(true);
-            }
+            static::$kernel->getContainer()->get($serviceCallableName);
         }
     }
 
@@ -174,7 +165,7 @@ abstract class WebTestCase extends BaseWebTestCase
      */
     protected function loadSchema()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -189,9 +180,7 @@ abstract class WebTestCase extends BaseWebTestCase
      */
     protected function createSchema()
     {
-        $loadSchema = $this->loadSchema();
-
-        if (!$loadSchema) {
+        if (!$this->loadSchema()) {
             return $this;
         }
 
@@ -201,16 +190,6 @@ abstract class WebTestCase extends BaseWebTestCase
             '--force'          => true,
             '--quiet'          => true,
         )));
-
-        $connection = self::$application
-            ->getKernel()
-            ->getContainer()
-            ->get('doctrine')
-            ->getConnection();
-
-        if ($connection->isConnected()) {
-            $connection->close();
-        }
 
         static::$application->run(new ArrayInput(array(
             'command'          => 'doctrine:database:create',
@@ -256,7 +235,7 @@ abstract class WebTestCase extends BaseWebTestCase
             'command'          => 'doctrine:fixtures:load',
             '--no-interaction' => true,
             '--fixtures'       => $formattedBundles,
-            '--quiet'          => true
+            '--quiet'          => true,
         )));
 
         return $this;
@@ -279,18 +258,32 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * i.e. elcodi.core.core.entity.language.class
      *
-     * @param string $entityClass Entity class
+     * @param string $entityClassParameter Entity namespace parameter
      *
      * @return EntityRepository Repository
      */
-    public function getRepository($entityClass)
+    public function getRepository($entityClassParameter)
     {
         return $this
-            ->manager
-            ->getRepository(
-                $this
-                    ->container
-                    ->getParameter($entityClass)
-            );
+            ->container
+            ->get('elcodi.repository_provider')
+            ->getRepositoryByEntityParameter($entityClassParameter);
+    }
+
+    /**
+     * Get manager given its class parameter
+     *
+     * i.e. elcodi.core.core.entity.language.class
+     *
+     * @param string $entityClassParameter Entity namespace parameter
+     *
+     * @return ObjectManager Manager
+     */
+    public function getManager($entityClassParameter)
+    {
+        return $this
+            ->container
+            ->get('elcodi.manager_provider')
+            ->getManagerByEntityParameter($entityClassParameter);
     }
 }
