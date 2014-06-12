@@ -12,7 +12,7 @@
  * @version ##version_placeholder##
  */
 
-namespace Elcodi\CurrencyBundle\Manager;
+namespace Elcodi\CurrencyBundle\Services;
 
 use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\CurrencyBundle\Repository\CurrencyExchangeRateRepository;

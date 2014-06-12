@@ -9,11 +9,13 @@ services:
             cart_entity_manager: @elcodi.object_manager.cart
             cart_event_dispatcher: @elcodi.cart_event_dispatcher
             cart_manager: @elcodi.core.cart.service.cart_manager
+            currency_wrapper: @elcodi.currency_wrapper
+            currency_converter: @elcodi.currency_converter
         tags:
             - { name: kernel.event_listener, event: cart.preload, method: onCartPreLoad, priority: 0 }
+            - { name: kernel.event_listener, event: cart.onload, method: onCartLoadPrices, priority: 16 }
             - { name: kernel.event_listener, event: cart.onload, method: onCartLoadFlush, priority: 0 }
             - { name: kernel.event_listener, event: cart.onload, method: onCartLoadQuantities, priority: -16 }
-            - { name: kernel.event_listener, event: cart.onload, method: onCartLoadPrices, priority: -16 }
             - { name: kernel.event_listener, event: order.postcreated, method: postOrderCreated, priority: 0 }
 
     elcodi.core.cart.event_listener.order:

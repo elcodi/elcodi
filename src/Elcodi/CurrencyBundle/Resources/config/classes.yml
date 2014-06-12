@@ -22,7 +22,8 @@ parameters:
     # Services
     #
     elcodi.core.currency.service.exchange_rates_provider.class: Elcodi\CurrencyBundle\Provider\DummyExchangeRatesProvider
-    elcodi.core.currency.service.currency_manager.class: Elcodi\CurrencyBundle\Manager\CurrencyManager
+    elcodi.core.currency.service.currency_manager.class: Elcodi\CurrencyBundle\Services\CurrencyManager
+    elcodi.core.currency.service.currency_converter.class: Elcodi\CurrencyBundle\Services\CurrencyConverter
 
     #
     # Twig extensions

@@ -93,11 +93,25 @@ class Product extends AbstractEntity implements ProductInterface
     protected $price;
 
     /**
+     * @var CurrencyInterface
+     *
+     * Product price currency
+     */
+    protected $priceCurrency;
+
+    /**
      * @var float
      *
      * Reduced price
      */
     protected $reducedPrice;
+
+    /**
+     * @var CurrencyInterface
+     *
+     * Reduced price currency
+     */
+    protected $reducedPriceCurrency;
 
     /**
      * @var Manufacturer
@@ -119,13 +133,6 @@ class Product extends AbstractEntity implements ProductInterface
      * Principal category
      */
     protected $principalCategory;
-
-    /**
-     * @var CurrencyInterface
-     *
-     * Currency for this product prices
-     */
-    protected $currency;
 
     /**
      * Set name
@@ -326,14 +333,14 @@ class Product extends AbstractEntity implements ProductInterface
     /**
      * Set price
      *
-     * @param MoneyInterface $money Price
+     * @param MoneyInterface $amount Price
      *
      * @return Product self Object
      */
-    public function setPrice(MoneyInterface $money)
+    public function setPrice(MoneyInterface $amount)
     {
-        $this->price = $money->getAmount();
-        $this->currency = $money->getCurrency();
+        $this->price = $amount->getAmount();
+        $this->priceCurrency = $amount->getCurrency();
 
         return $this;
     }
@@ -345,20 +352,27 @@ class Product extends AbstractEntity implements ProductInterface
      */
     public function getPrice()
     {
-        return new Money($this->price, $this->currency);
+        if ($this->priceCurrency instanceof CurrencyInterface) {
+            return Money::create(
+                $this->price,
+                $this->priceCurrency
+            );
+        }
+
+        return null;
     }
 
     /**
      * Set price
      *
-     * @param MoneyInterface $money Reduced Price
+     * @param MoneyInterface $amount Reduced Price
      *
      * @return Product self Object
      */
-    public function setReducedPrice(MoneyInterface $money)
+    public function setReducedPrice(MoneyInterface $amount)
     {
-        $this->reducedPrice = $money->getAmount();
-        $this->currency = $money->getCurrency();
+        $this->reducedPrice = $amount->getAmount();
+        $this->reducedPriceCurrency = $amount->getCurrency();
 
         return $this;
     }
@@ -370,7 +384,14 @@ class Product extends AbstractEntity implements ProductInterface
      */
     public function getReducedPrice()
     {
-        return new Money($this->reducedPrice, $this->currency);
+        if ($this->reducedPriceCurrency instanceof CurrencyInterface) {
+            return Money::create(
+                $this->reducedPrice,
+                $this->reducedPriceCurrency
+            );
+        }
+
+        return null;
     }
 
     /**
@@ -429,29 +450,5 @@ class Product extends AbstractEntity implements ProductInterface
     public function __toString()
     {
         return (string) $this->getName();
-    }
-
-    /**
-     * Get product currency
-     *
-     * @return CurrencyInterface
-     */
-    public function getCurrency()
-    {
-        return $this->currency;
-    }
-
-    /**
-     * Set product currency
-     *
-     * @param CurrencyInterface $currency
-     *
-     * @return $this
-     */
-    public function setCurrency(CurrencyInterface $currency)
-    {
-        $this->currency = $currency;
-
-        return $this;
     }
 }

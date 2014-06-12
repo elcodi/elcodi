@@ -28,7 +28,7 @@ class CartEventListenerTest extends WebTestCase
      */
     protected function loadSchema()
     {
-        return false;
+        return true;
     }
 
     /**

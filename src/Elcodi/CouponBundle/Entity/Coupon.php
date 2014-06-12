@@ -220,14 +220,14 @@ class Coupon extends AbstractEntity implements CouponInterface
     /**
      * Set price
      *
-     * @param MoneyInterface $price Price
+     * @param MoneyInterface $amount Price
      *
      * @return Coupon self Object
      */
-    public function setPrice(MoneyInterface $price)
+    public function setPrice(MoneyInterface $amount)
     {
-        $this->priceAmount = $price->getAmount();
-        $this->priceCurrency = $price->getCurrency();
+        $this->priceAmount = $amount->getAmount();
+        $this->priceCurrency = $amount->getCurrency();
 
         return $this;
     }
@@ -275,14 +275,14 @@ class Coupon extends AbstractEntity implements CouponInterface
     /**
      * Set absolute price
      *
-     * @param MoneyInterface $absolutePrice Absolute Price
+     * @param MoneyInterface $amount Absolute Price
      *
      * @return Coupon self Object
      */
-    public function setAbsolutePrice(MoneyInterface $absolutePrice)
+    public function setAbsolutePrice(MoneyInterface $amount)
     {
-        $this->absolutePriceAmount = $absolutePrice->getAmount();
-        $this->absolutePriceCurrency = $absolutePrice->getCurrency();
+        $this->absolutePriceAmount = $amount->getAmount();
+        $this->absolutePriceCurrency = $amount->getCurrency();
 
         return $this;
     }

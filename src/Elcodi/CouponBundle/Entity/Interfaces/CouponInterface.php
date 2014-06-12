@@ -89,11 +89,11 @@ interface CouponInterface
     /**
      * Set price
      *
-     * @param MoneyInterface $price Price
+     * @param MoneyInterface $amount Price
      *
      * @return Object self Object
      */
-    public function setPrice(MoneyInterface $price);
+    public function setPrice(MoneyInterface $amount);
 
     /**
      * Get price
@@ -121,11 +121,11 @@ interface CouponInterface
     /**
      * Set absolute price
      *
-     * @param MoneyInterface $absolutePrice Absolute Price
+     * @param MoneyInterface $amount Absolute Price
      *
      * @return Object self Object
      */
-    public function setAbsolutePrice(MoneyInterface $absolutePrice);
+    public function setAbsolutePrice(MoneyInterface $amount);
 
     /**
      * Get absolute price

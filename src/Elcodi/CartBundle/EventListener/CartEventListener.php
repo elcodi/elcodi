@@ -17,6 +17,9 @@ namespace Elcodi\CartBundle\EventListener;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
+use Elcodi\CurrencyBundle\Entity\Money;
+use Elcodi\CurrencyBundle\Services\CurrencyConverter;
+use Elcodi\CurrencyBundle\Wrapper\CurrencyWrapper;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
 use Elcodi\CartBundle\EventDispatcher\CartEventDispatcher;
@@ -33,8 +36,8 @@ use Elcodi\CartBundle\Event\OrderOnCreatedEvent;
  *
  * * onCartPreLoad
  *
- * * onCartLoadFlush
  * * onCartLoadPrices
+ * * onCartLoadFlush
  * * onCartLoadQuantities
  *
  * * postOrderCreated
@@ -51,16 +54,30 @@ class CartEventListener
     /**
      * @var CartEventDispatcher
      *
-     * CartEventDispatcher
+     * Cart EventDispatcher
      */
     protected $cartEventDispatcher;
 
     /**
      * @var CartManager
      *
-     * cartManager
+     * Cart Manager
      */
     protected $cartManager;
+
+    /**
+     * @var CurrencyWrapper
+     *
+     * Currency Wrapper
+     */
+    protected $currencyWrapper;
+
+    /**
+     * @var CurrencyConverter
+     *
+     * Currency Converter
+     */
+    protected $currencyConverter;
 
     /**
      * Built method
@@ -68,16 +85,22 @@ class CartEventListener
      * @param ObjectManager       $cartObjectManager   ObjectManager for Cart entity
      * @param CartEventDispatcher $cartEventDispatcher Cart event dispatcher
      * @param CartManager         $cartManager         Cart Manager
+     * @param CurrencyWrapper     $currencyWrapper     Currency Wrapper
+     * @param CurrencyConverter   $currencyConverter   Currency Converter
      */
     public function __construct(
         ObjectManager $cartObjectManager,
         CartEventDispatcher $cartEventDispatcher,
-        CartManager $cartManager
+        CartManager $cartManager,
+        CurrencyWrapper $currencyWrapper,
+        CurrencyConverter $currencyConverter
     )
     {
         $this->cartObjectManager = $cartObjectManager;
         $this->cartEventDispatcher = $cartEventDispatcher;
         $this->cartManager = $cartManager;
+        $this->currencyWrapper = $currencyWrapper;
+        $this->currencyConverter = $currencyConverter;
     }
 
     /**
@@ -106,21 +129,6 @@ class CartEventListener
     }
 
     /**
-     * Flushes all loaded cart and related entities.
-     *
-     * @param CartOnLoadEvent $event Event
-     *
-     * @api
-     */
-    public function onCartLoadFlush(CartOnLoadEvent $event)
-    {
-        $this->cartObjectManager->persist(
-            $event->getCart()
-        );
-        $this->cartObjectManager->flush();
-    }
-
-    /**
      * Load cart prices. As these prices are calculated on time, because they
      * are not flushed into database
      *
@@ -139,6 +147,21 @@ class CartEventListener
         $this->loadCartPrices(
             $event->getCart()
         );
+    }
+
+    /**
+     * Flushes all loaded cart and related entities.
+     *
+     * @param CartOnLoadEvent $event Event
+     *
+     * @api
+     */
+    public function onCartLoadFlush(CartOnLoadEvent $event)
+    {
+        $this->cartObjectManager->persist(
+            $event->getCart()
+        );
+        $this->cartObjectManager->flush();
     }
 
     /**
@@ -224,9 +247,9 @@ class CartEventListener
      */
     protected function loadCartPrices(CartInterface $cart)
     {
-        $productAmount = null;
-        $totalAmount = null;
-
+        $currency = $this->currencyWrapper->loadCurrency();
+        $productAmount = Money::create(0, $currency);
+        
         /**
          * Calculate Amount and ProductAmount
          */
@@ -239,20 +262,20 @@ class CartEventListener
 
             /**
              * @var MoneyInterface $productAmount
-             */
-            $productAmount = $productAmount ?
-                $productAmount->add($cartLine->getProductAmount()) : $cartLine->getProductAmount();
-
-            /**
              * @var MoneyInterface $totalAmount
              */
-            $totalAmount = $totalAmount ?
-                $totalAmount->add($cartLine->getAmount()) : $cartLine->getAmount();
+            $convertedProductAmount = $this
+                ->currencyConverter
+                ->convertMoney(
+                    $cartLine->getProductAmount(),
+                    $currency
+                );
+            $productAmount = $productAmount->add($convertedProductAmount);
         }
 
         $cart
             ->setProductAmount($productAmount)
-            ->setAmount($totalAmount);
+            ->setAmount($productAmount);
     }
 
     /**
@@ -272,7 +295,7 @@ class CartEventListener
          * If reducedPrice is defined, found value will be used as real product
          * price.
          */
-        if ($product->getReducedPrice()->getAmount() > 0) {
+        if ($product->getReducedPrice() instanceof Money) {
 
             $productPrice = $product->getReducedPrice();
         }

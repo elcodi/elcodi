@@ -188,22 +188,6 @@ interface ProductInterface extends EnabledInterface, ETaggableInterface, MetaDat
     public function getReducedPrice();
 
     /**
-     * Get product currency
-     *
-     * @return CurrencyInterface
-     */
-    public function getCurrency();
-
-    /**
-     * Set product currency
-     *
-     * @param CurrencyInterface $currency
-     *
-     * @return $this
-     */
-    public function setCurrency(CurrencyInterface $currency);
-
-    /**
      * Set show in home
      *
      * @param boolean $showInHome Show in home

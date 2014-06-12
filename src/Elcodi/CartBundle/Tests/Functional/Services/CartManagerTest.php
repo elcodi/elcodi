@@ -239,8 +239,17 @@ class CartManagerTest extends WebTestCase
         );
 
         $this->assertEquals(
-            $this->cart->getAmount(),
-            $this->cart->getCartLines()->first()->getProduct()->getPrice() * 2
+            $this
+                ->cart
+                ->getAmount()
+                ->getAmount(),
+            $this
+                ->cart
+                ->getCartLines()
+                ->first()
+                ->getProduct()
+                ->getPrice()
+                ->getAmount() * 2
         );
     }
 
@@ -432,8 +441,8 @@ class CartManagerTest extends WebTestCase
             );
 
             $this->assertEquals(
-                $this->cart->getAmount(),
-                $cartLine->getProduct()->getPrice() * $quantity
+                $this->cart->getAmount()->getAmount(),
+                $cartLine->getProduct()->getPrice()->getAmount() * $quantity
             );
 
             $this->assertNotNull($cartLine->getId());
@@ -448,9 +457,8 @@ class CartManagerTest extends WebTestCase
             );
 
         } else {
-
             $this->assertEmpty($this->cart->getCartLines());
-            $this->assertEquals(0, $this->cart->getAmount());
+            $this->assertEquals(0, $this->cart->getAmount()->getAmount());
 
             $this->assertEquals(
                 UnitOfWork::STATE_NEW,
