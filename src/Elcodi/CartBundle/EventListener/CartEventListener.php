@@ -249,7 +249,7 @@ class CartEventListener
     {
         $currency = $this->currencyWrapper->loadCurrency();
         $productAmount = Money::create(0, $currency);
-        
+
         /**
          * Calculate Amount and ProductAmount
          */
