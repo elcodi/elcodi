@@ -10,7 +10,7 @@ services:
             cart_coupon_manager: @elcodi.core.cart_coupon.service.cart_coupon_manager
             currency_wrapper: @elcodi.currency_wrapper
         tags:
-            - { name: kernel.event_listener, event: cart.onload, method: onCartLoad, priority: 16 }
+            - { name: kernel.event_listener, event: cart.onload, method: onCartLoadCoupons, priority: -32 }
 
     elcodi.core.cart_coupon.event_listener.order:
         class: %elcodi.core.cart_coupon.event_listener.order.class%

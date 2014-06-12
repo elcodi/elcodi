@@ -68,9 +68,10 @@ class OrderEventListener
     {
         $order = $orderOnCreatedEvent->getOrder();
         $cart = $orderOnCreatedEvent->getCart();
+        $cartCouponAmount = $cart->getCouponAmount();
 
-        if ($cart->getCouponAmount() instanceof MoneyInterface) {
-            $order->setCouponAmount($cart->getCouponAmount());
+        if ($cartCouponAmount instanceof MoneyInterface) {
+            $order->setCouponAmount($cartCouponAmount);
         }
 
         /**

@@ -32,37 +32,6 @@ class Cart extends AbstractEntity implements CartInterface
     use DateTimeTrait;
 
     /**
-     * @var MoneyInterface
-     *
-     * Transient amount for products
-     *
-     * This value is not persisted, it is calculated
-     * by summing CartLine::$productAmount
-     */
-    protected $productAmount;
-
-    /**
-     * @var MoneyInterface
-     *
-     * Transient amount for coupons
-     *
-     * This value is not persisted, it is calculated
-     * by summing CartLine::$couponAmount
-     *
-     */
-    protected $couponAmount;
-
-    /**
-     * @var MoneyInterface
-     *
-     * Transient total amount
-     *
-     * This value is not persisted, it is calculated
-     * by summing CartLine::$amount
-     */
-    protected $amount;
-
-    /**
      * @var CustomerInterface
      *
      * Doctrine mapping must be define in any instance
@@ -97,6 +66,36 @@ class Cart extends AbstractEntity implements CartInterface
      * Quantity
      */
     protected $quantity;
+
+    /**
+     * @var MoneyInterface
+     *
+     * Transient amount for products
+     *
+     * This value is not persisted, it is calculated
+     * by summing CartLine::$productAmount
+     */
+    protected $productAmount;
+
+    /**
+     * @var MoneyInterface
+     *
+     * Transient amount for coupons
+     *
+     * This value is not persisted, it is calculated
+     * by summing CartLine::$couponAmount
+     */
+    protected $couponAmount;
+
+    /**
+     * @var MoneyInterface
+     *
+     * Transient total amount
+     *
+     * This value is not persisted, it is calculated
+     * by summing CartLine::$amount
+     */
+    protected $amount;
 
     /**
      * Return the customer
@@ -262,14 +261,8 @@ class Cart extends AbstractEntity implements CartInterface
     }
 
     /**
-     * @return MoneyInterface
-     */
-    public function getProductAmount()
-    {
-        return $this->productAmount;
-    }
-
-    /**
+     * Set product amount
+     *
      * @param MoneyInterface $productAmount
      *
      * @return CartInterface
@@ -282,14 +275,18 @@ class Cart extends AbstractEntity implements CartInterface
     }
 
     /**
-     * @return MoneyInterface
+     * Get product amount
+     *
+     * @return MoneyInterface Product amount
      */
-    public function getCouponAmount()
+    public function getProductAmount()
     {
-        return $this->couponAmount;
+        return $this->productAmount;
     }
 
     /**
+     * Set coupon amount
+     *
      * @param MoneyInterface $couponAmount
      *
      * @return CartInterface
@@ -302,14 +299,18 @@ class Cart extends AbstractEntity implements CartInterface
     }
 
     /**
-     * @return MoneyInterface
+     * Get coupon amount
+     *
+     * @return MoneyInterface Coupon amount
      */
-    public function getAmount()
+    public function getCouponAmount()
     {
-        return $this->amount;
+        return $this->couponAmount;
     }
 
     /**
+     * Set amount
+     *
      * @param MoneyInterface $amount
      *
      * @return CartInterface
@@ -319,5 +320,15 @@ class Cart extends AbstractEntity implements CartInterface
         $this->amount = $amount;
 
         return $this;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return MoneyInterface Amount
+     */
+    public function getAmount()
+    {
+        return $this->amount;
     }
 }

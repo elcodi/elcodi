@@ -87,7 +87,7 @@ class CartEventListener
      *
      * @return CartInterface Cart
      */
-    public function onCartLoad(
+    public function onCartLoadCoupon(
         CartOnLoadEvent $cartOnLoadEvent
     )
     {

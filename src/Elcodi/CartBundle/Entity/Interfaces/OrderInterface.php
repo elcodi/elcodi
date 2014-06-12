@@ -170,5 +170,5 @@ interface OrderInterface extends PriceInterface
      *
      * @return OrderInterface
      */
-    public function setCouponAmount(MoneyInterface $couponAmount = null);
+    public function setCouponAmount(MoneyInterface $couponAmount);
 }

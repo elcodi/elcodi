@@ -28,6 +28,16 @@ use Elcodi\CartBundle\Event\OrderOnCreatedEvent;
 
 /**
  * Class CartEventListener
+ *
+ * Subscribers:
+ *
+ * * onCartPreLoad
+ *
+ * * onCartLoadFlush
+ * * onCartLoadPrices
+ * * onCartLoadQuantities
+ *
+ * * postOrderCreated
  */
 class CartEventListener
 {
@@ -96,26 +106,6 @@ class CartEventListener
     }
 
     /**
-     * Load cart
-     *
-     * @param CartOnLoadEvent $event Event
-     *
-     * @api
-     */
-    public function onCartLoad(CartOnLoadEvent $event)
-    {
-        $cart = $event->getCart();
-
-        /**
-         * Recalculate cart amount. Prices might have
-         * changed so we need to flush $cart
-         */
-        $this->loadCartPrices($cart);
-    }
-
-    /**
-     * Performs all processes to be performed after the cart load
-     *
      * Flushes all loaded cart and related entities.
      *
      * @param CartOnLoadEvent $event Event
@@ -124,12 +114,47 @@ class CartEventListener
      */
     public function onCartLoadFlush(CartOnLoadEvent $event)
     {
-        $cart = $event->getCart();
-
-        $this->loadCartQuantities($cart);
-
-        $this->cartObjectManager->persist($cart);
+        $this->cartObjectManager->persist(
+            $event->getCart()
+        );
         $this->cartObjectManager->flush();
+    }
+
+    /**
+     * Load cart prices. As these prices are calculated on time, because they
+     * are not flushed into database
+     *
+     * This event listener should be subscribed after the cart flush action
+     *
+     * @param CartOnLoadEvent $event Event
+     *
+     * @api
+     */
+    public function onCartLoadPrices(CartOnLoadEvent $event)
+    {
+        /**
+         * Recalculate cart amount. Prices might have
+         * changed so we need to flush $cart
+         */
+        $this->loadCartPrices(
+            $event->getCart()
+        );
+    }
+
+    /**
+     * Load cart quantities.
+     *
+     * This event listener should be subscribed after the cart flush action
+     *
+     * @param CartOnLoadEvent $event Event
+     *
+     * @api
+     */
+    public function onCartLoadQuantities(CartOnLoadEvent $event)
+    {
+        $this->loadCartQuantities(
+            $event->getCart()
+        );
     }
 
     /**
@@ -252,7 +277,7 @@ class CartEventListener
             $productPrice = $product->getReducedPrice();
         }
 
-        /*
+        /**
          * Setting amounts for this CartLine.
          * Line Currency has already be set when factorying CartLine
          * by CartManager::addProduct
