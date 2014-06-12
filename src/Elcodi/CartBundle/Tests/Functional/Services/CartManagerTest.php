@@ -118,6 +118,8 @@ class CartManagerTest extends WebTestCase
             ->get('elcodi.factory.cart_line')
             ->create()
             ->setProduct($this->product)
+            ->setProductAmount($this->product->getPrice())
+            ->setAmount($this->product->getPrice())
             ->setQuantity(1);
     }
 
