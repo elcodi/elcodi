@@ -36,13 +36,6 @@ trait PriceTrait
     protected $productAmount;
 
     /**
-     * Amount for coupon or coupons
-     *
-     * @var integer
-     */
-    protected $couponAmount;
-
-    /**
      * Total amount
      */
     protected $amount;
@@ -62,7 +55,7 @@ trait PriceTrait
     public function getAmount()
     {
         if ($this->currency instanceof CurrencyInterface) {
-            return Money::create($this->couponAmount, $this->currency);
+            return Money::create($this->amount, $this->currency);
         }
 
         return null;
