@@ -18,7 +18,6 @@ use Doctrine\Common\Collections\Collection;
 
 use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\ETaggableInterface;
-use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 use Elcodi\MediaBundle\Entity\Interfaces\ImagesContainerInterface;
 

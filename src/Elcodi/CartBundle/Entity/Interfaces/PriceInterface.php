@@ -13,7 +13,6 @@
  */
 
 namespace Elcodi\CartBundle\Entity\Interfaces;
-use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 
 /**

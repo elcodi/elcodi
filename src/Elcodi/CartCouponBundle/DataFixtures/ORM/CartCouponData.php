@@ -16,14 +16,11 @@ namespace Elcodi\CartCouponBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 
-use Elcodi\CartBundle\Entity\CartLine;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\CouponBundle\ElcodiCouponTypes;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
-use Elcodi\CurrencyBundle\Entity\Money;
 
 /**
  * Class CartCouponData

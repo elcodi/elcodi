@@ -23,6 +23,7 @@ use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralLineInterface;
 use Elcodi\ReferralProgramBundle\Entity\Invitation;
 use Elcodi\UserBundle\Entity\Customer;
 use Elcodi\CoreBundle\Tests\WebTestCase;
+use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 
 /**
  * Class ReferralCouponManagerTest
@@ -128,6 +129,9 @@ class ReferralCouponManagerTest extends WebTestCase
             ->getReferralHashByCustomer($referrer);
         $hash = $referralHash->getHash();
 
+        /**
+         * @var CustomerInterface $newCustomer
+         */
         $newCustomer = $this->container->get('elcodi.core.user.factory.customer')->create();
         $newCustomer
             ->setUsername('customer3')

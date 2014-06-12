@@ -102,7 +102,6 @@ class CurrencyWrapper
     public function loadCurrency()
     {
         if ($this->currency instanceof CurrencyInterface) {
-
             return $this->currency;
         }
 

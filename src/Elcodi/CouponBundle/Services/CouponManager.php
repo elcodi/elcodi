@@ -165,7 +165,6 @@ class CouponManager
             ->setType($coupon->getType())
             ->setPrice($coupon->getPrice())
             ->setDiscount($coupon->getDiscount())
-            ->setAbsolutePrice($coupon->getAbsolutePrice())
             ->setCount($coupon->getCount())
             ->setPriority($coupon->getPriority())
             ->setMinimumPurchaseAmount($coupon->getMinimumPurchaseAmount())

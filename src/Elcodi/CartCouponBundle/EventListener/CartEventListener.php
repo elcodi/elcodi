@@ -150,11 +150,9 @@ class CartEventListener
 
                 $couponPercent = $coupon->getDiscount();
 
-                $couponAmount = $cart
+                return $cart
                     ->getProductAmount()
                     ->multiply(($couponPercent / 100));
-
-                return Money::create($couponAmount, $currency);
         }
     }
 }

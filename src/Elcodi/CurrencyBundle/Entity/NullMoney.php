@@ -131,4 +131,4 @@ class NullMoney implements MoneyInterface
     {
         return null;
     }
-} 
+}

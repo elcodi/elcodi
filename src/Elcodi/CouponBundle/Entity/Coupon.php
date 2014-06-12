@@ -239,13 +239,10 @@ class Coupon extends AbstractEntity implements CouponInterface
      */
     public function getPrice()
     {
-        if ($this->priceCurrency instanceof CurrencyInterface) {
-
-            return Money::create(
-                $this->priceAmount,
-                $this->priceCurrency
-            );
-        }
+        return Money::create(
+            $this->priceAmount,
+            $this->priceCurrency
+        );
     }
 
     /**
@@ -294,13 +291,10 @@ class Coupon extends AbstractEntity implements CouponInterface
      */
     public function getAbsolutePrice()
     {
-        if ($this->absolutePriceCurrency instanceof CurrencyInterface) {
-
-            return Money::create(
-                $this->absolutePriceAmount,
-                $this->absolutePriceCurrency
-            );
-        }
+        return Money::create(
+            $this->absolutePriceAmount,
+            $this->absolutePriceCurrency
+        );
     }
 
     /**
