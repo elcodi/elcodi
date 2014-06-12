@@ -41,14 +41,14 @@ class CartData extends AbstractFixture
          *
          * @var CartInterface     $emptyCart
          * @var CartInterface     $fullCart
-         * @var CurrencyInterface $currencyUsd
+         * @var CurrencyInterface $currency
          * @var CustomerInterface $customer
          * @var ProductInterface  $product
          * @var ProductInterface  $productReduced
          * @var CartLineInterface $cartLine1
          * @var CartLineInterface $cartLine2
          */
-        $currencyUsd = $this->getReference('currency-usd');
+        $currency = $this->getReference('currency-dollar');
 
         $emptyCart = $this->container->get('elcodi.core.cart.factory.cart')->create();
         $customer = $this->getReference('customer-1');
@@ -66,18 +66,20 @@ class CartData extends AbstractFixture
         $cartLine1 = $this->container->get('elcodi.core.cart.factory.cart_line')->create();
         $fullCart->addCartLine($cartLine1);
         $cartLine1
-            ->setCurrency($currencyUsd)
+            ->setCurrency($currency)
             ->setProduct($product)
             ->setProductAmount($product->getPrice())
+            ->setAmount($product->getPrice())
             ->setQuantity(2)
             ->setCart($fullCart);
 
         $cartLine2 = $this->container->get('elcodi.core.cart.factory.cart_line')->create();
         $fullCart->addCartLine($cartLine2);
         $cartLine2
-            ->setCurrency($currencyUsd)
+            ->setCurrency($currency)
             ->setProduct($productReduced)
             ->setProductAmount($productReduced->getPrice())
+            ->setAmount($productReduced->getPrice())
             ->setQuantity(2)
             ->setCart($fullCart);
 
