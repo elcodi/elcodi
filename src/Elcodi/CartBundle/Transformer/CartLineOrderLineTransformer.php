@@ -114,7 +114,6 @@ class CartLineOrderLineTransformer
             ->setProduct($cartLine->getProduct())
             ->setQuantity($cartLine->getQuantity())
             ->setProductAmount($cartLine->getProductAmount())
-            ->setCouponAmount($cartLine->getCouponAmount())
             ->setAmount($cartLine->getAmount());
 
         $this
