@@ -15,6 +15,8 @@
 namespace Elcodi\CartBundle\Tests\UnitTest\Transformer;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
+use Elcodi\CurrencyBundle\Entity\Money;
 use PHPUnit_Framework_TestCase;
 
 use Elcodi\CartBundle\Transformer\CartLineOrderLineTransformer;
@@ -61,11 +63,11 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
         parent::setUp();
 
         /**
-         * @var OrderEventDispatcher $orderEventDispatcher
+         * @var OrderEventDispatcher         $orderEventDispatcher
          * @var CartLineOrderLineTransformer $cartLineOrderLineTransformer
-         * @var OrderLineManager $orderLineManager
-         * @var OrderFactory $orderFactory
-         * @var OrderManager $orderManager
+         * @var OrderLineManager             $orderLineManager
+         * @var OrderFactory                 $orderFactory
+         * @var OrderManager                 $orderManager
          */
         $orderEventDispatcher = $this
             ->getMock(
@@ -98,9 +100,12 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
     public function testCreateOrderFromCartNewOrder()
     {
         /**
-         * @var OrderInterface $order
+         * @var OrderInterface    $order
+         * @var CurrencyInterface $currency
          */
         $order = $this->getMock('Elcodi\CartBundle\Entity\Order', null);
+        $currency = $this->getMock('Elcodi\CurrencyBundle\Entity\Currency', null);
+        $currency->setIso('EUR');
 
         $this
             ->orderFactory
@@ -119,8 +124,8 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
         $cart
             ->setCustomer($customer)
             ->setQuantity(10)
-            ->setProductAmount(20)
-            ->setAmount(22)
+            ->setProductAmount(Money::create(20, $currency))
+            ->setAmount(Money::create(20, $currency))
             ->setCartLines(new ArrayCollection);
 
         $this
@@ -136,9 +141,12 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
     public function testCreateOrderFromCartNewOrderExistingOrder()
     {
         /**
-         * @var OrderInterface $order
+         * @var OrderInterface    $order
+         * @var CurrencyInterface $currency
          */
         $order = $this->getMock('Elcodi\CartBundle\Entity\Order', null);
+        $currency = $this->getMock('Elcodi\CurrencyBundle\Entity\Currency', null);
+        $currency->setIso('EUR');
 
         $this
             ->orderFactory
@@ -157,9 +165,9 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
         $cart
             ->setCustomer($customer)
             ->setQuantity(10)
-            ->setProductAmount(20)
+            ->setProductAmount(Money::create(20, $currency))
             ->setOrder($order)
-            ->setAmount(22)
+            ->setAmount(Money::create(20, $currency))
             ->setCartLines(new ArrayCollection);
 
         $this

@@ -13,7 +13,7 @@
 
 namespace Elcodi\CurrencyBundle\Wrapper;
 
-use Elcodi\CartBundle\Services\CurrencySessionManager;
+use Elcodi\CurrencyBundle\Services\CurrencySessionManager;
 use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\CurrencyBundle\Exception\CurrencyNotAvailableException;
 use Elcodi\CurrencyBundle\Repository\CurrencyRepository;
@@ -101,38 +101,42 @@ class CurrencyWrapper
      */
     public function loadCurrency()
     {
+        if ($this->currency instanceof CurrencyInterface) {
+
+            return $this->currency;
+        }
+
         $currencyIdInSession = $this->currencySessionManager->get();
-        $currency = null;
 
         /**
          * Tries to load currency saved in session
          */
         if ($currencyIdInSession) {
 
-            $currency = $this
+            $this->currency = $this
                 ->currencyRepository
                 ->find($currencyIdInSession);
         }
 
-        if ($currency instanceof CurrencyInterface) {
-            return $currency;
+        if ($this->currency instanceof CurrencyInterface) {
+            return $this->currency;
         }
 
         /**
          * Otherwise, tries to load default currency. Notice that default
          * currency is defined as parameter
          */
-        $currency = $this
+        $this->currency = $this
             ->currencyRepository
             ->findOneBy([
                 'iso' => $this->defaultCurrency,
             ]);
 
-        if ($currency instanceof CurrencyInterface) {
+        if ($this->currency instanceof CurrencyInterface) {
 
-            $this->currencySessionManager->set($currency);
+            $this->currencySessionManager->set($this->currency);
 
-            return $currency;
+            return $this->currency;
         }
 
         throw new CurrencyNotAvailableException;

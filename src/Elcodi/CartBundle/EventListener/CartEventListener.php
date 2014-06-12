@@ -15,11 +15,8 @@
 namespace Elcodi\CartBundle\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
-<<<<<<< HEAD
-=======
-use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
->>>>>>> Cart amounts are now calculated dynamically
 
+use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
 use Elcodi\CartBundle\EventDispatcher\CartEventDispatcher;

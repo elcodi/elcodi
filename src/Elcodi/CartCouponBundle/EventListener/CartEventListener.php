@@ -17,7 +17,6 @@ namespace Elcodi\CartCouponBundle\EventListener;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Event\CartOnLoadEvent;
 use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
-use Elcodi\CartCouponBundle\Entity\CartCoupon;
 use Elcodi\CartCouponBundle\Services\CartCouponManager;
 use Elcodi\CouponBundle\ElcodiCouponTypes;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
@@ -68,14 +67,17 @@ class CartEventListener
      *
      * @param CouponManager     $couponManager     Coupon manager
      * @param CartCouponManager $cartCouponManager Cart coupon manager
+     * @param CurrencyWrapper   $currencyWrapper   Currency wrapper
      */
     public function __construct(
         CouponManager $couponManager,
-        CartCouponManager $cartCouponManager
+        CartCouponManager $cartCouponManager,
+        CurrencyWrapper $currencyWrapper
     )
     {
         $this->couponManager = $couponManager;
         $this->cartCouponManager = $cartCouponManager;
+        $this->currencyWrapper = $currencyWrapper;
     }
 
     /**
@@ -92,7 +94,7 @@ class CartEventListener
         $cart = $cartOnLoadEvent->getCart();
         $couponAmount = Money::create(
             0,
-            $this->currencyWrapper->getCurrency()
+            $this->currencyWrapper->loadCurrency()
         );
         $cartCoupons = $this
             ->cartCouponManager

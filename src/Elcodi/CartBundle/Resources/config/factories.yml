@@ -35,7 +35,6 @@ services:
         class: %elcodi.core.cart.factory.cart_line.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.cart.entity.cart_line.class%"]]
-            - [setCurrencyWrapper, [@elcodi.currency_wrapper]]
 
     elcodi.factory.cart_line:
         alias: elcodi.core.cart.factory.cart_line

@@ -18,7 +18,7 @@ services:
     elcodi.exchange_rates_provider:
         alias: elcodi.core.currency.service.exchange_rates_provider
 
-    elcodi.core.currency.service.cart_session_manager:
+    elcodi.core.currency.service.currency_session_manager:
         class: %elcodi.core.currency.service.currency_session_manager.class%
         arguments:
             session: @session
@@ -33,7 +33,8 @@ services:
     elcodi.core.currency.wrapper.currency:
         class: %elcodi.core.currency.wrapper.currency.class%
         arguments:
-            currency_object_manager: @elcodi.repository.currency
+            currency_session_manager: @elcodi.currency_session_manager
+            currency_repository: @elcodi.repository.currency
             default_currency: %elcodi.core.currency.default_currency%
 
     elcodi.currency_wrapper:

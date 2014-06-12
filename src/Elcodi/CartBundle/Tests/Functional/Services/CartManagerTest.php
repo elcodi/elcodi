@@ -19,6 +19,8 @@ use Doctrine\ORM\UnitOfWork;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
 use Elcodi\CoreBundle\Tests\WebTestCase;
+use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
+use Elcodi\CurrencyBundle\Entity\Money;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 
 /**
@@ -36,6 +38,18 @@ class CartManagerTest extends WebTestCase
         return [
             'elcodi.core.cart.service.cart_manager',
             'elcodi.cart_manager',
+        ];
+    }
+
+    /**
+     * Load fixtures of these bundles
+     *
+     * @return array Bundles name where fixtures should be found
+     */
+    protected function loadFixturesBundles()
+    {
+        return [
+            'ElcodiCurrencyBundle',
         ];
     }
 
@@ -72,15 +86,32 @@ class CartManagerTest extends WebTestCase
             ->get('elcodi.factory.cart')
             ->create();
 
+        /**
+         * @var CurrencyInterface $currency
+         */
+        $currency = $this
+            ->getRepository('elcodi.core.currency.entity.currency.class')
+            ->findOneBy([
+                'iso' => 'USD',
+            ]);
+
         $this->product = $this
             ->container
             ->get('elcodi.factory.product')
             ->create()
-            ->setPrice(10.00)
+            ->setPrice(Money::create(1000, $currency))
             ->setName('abc')
             ->setSlug('abc')
             ->setEnabled(true)
             ->setStock(10);
+
+        $this
+            ->getManager('elcodi.core.product.entity.product.class')
+            ->persist($this->product);
+
+        $this
+            ->getManager('elcodi.core.product.entity.product.class')
+            ->flush();
 
         $this->cartLine = $this
             ->container
@@ -215,7 +246,7 @@ class CartManagerTest extends WebTestCase
      * Test increase cartline quantity
      *
      * @dataProvider dataIncreaseCartLineQuantity
-     * @group cart
+     * @group        cart
      */
     public function testIncreaseCartLineQuantity(
         $quantityStart,
@@ -264,7 +295,7 @@ class CartManagerTest extends WebTestCase
      * Test decrease cartline quantity
      *
      * @dataProvider dataDecreaseCartLineQuantity
-     * @group cart
+     * @group        cart
      */
     public function testDecreaseCartLineQuantity(
         $quantityStart,
@@ -307,7 +338,7 @@ class CartManagerTest extends WebTestCase
      * Test set cartline quantity
      *
      * @dataProvider dataSetCartLineQuantity
-     * @group cart
+     * @group        cart
      */
     public function testSetCartLineQuantity(
         $quantityStart,
@@ -351,7 +382,7 @@ class CartManagerTest extends WebTestCase
      * Test add product
      *
      * @dataProvider dataAddProduct
-     * @group cart
+     * @group        cart
      */
     public function testAddProduct(
         $quantitySet,
