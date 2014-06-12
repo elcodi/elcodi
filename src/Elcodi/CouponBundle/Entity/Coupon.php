@@ -77,7 +77,7 @@ class Coupon extends AbstractEntity implements CouponInterface
      *
      * Discount
      */
-    protected $discount;
+    protected $discount = 0;
 
     /**
      * @var int
