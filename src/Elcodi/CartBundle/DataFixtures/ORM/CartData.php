@@ -66,7 +66,6 @@ class CartData extends AbstractFixture
         $cartLine1 = $this->container->get('elcodi.core.cart.factory.cart_line')->create();
         $fullCart->addCartLine($cartLine1);
         $cartLine1
-            ->setCurrency($currency)
             ->setProduct($product)
             ->setProductAmount($product->getPrice())
             ->setAmount($product->getPrice())
@@ -76,7 +75,6 @@ class CartData extends AbstractFixture
         $cartLine2 = $this->container->get('elcodi.core.cart.factory.cart_line')->create();
         $fullCart->addCartLine($cartLine2);
         $cartLine2
-            ->setCurrency($currency)
             ->setProduct($productReduced)
             ->setProductAmount($productReduced->getPrice())
             ->setAmount($productReduced->getPrice())

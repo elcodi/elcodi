@@ -70,6 +70,11 @@ class OrderEventListenerTest extends WebTestCase
             ->getRepository('elcodi.core.cart.entity.cart.class')
             ->find(2);
 
+        $this
+            ->container
+            ->get('elcodi.cart_event_dispatcher')
+            ->dispatchCartLoadEvents($cart);
+
         $cartOrderTransformer = $this
             ->container
             ->get('elcodi.cart_order_transformer');

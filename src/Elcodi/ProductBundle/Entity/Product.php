@@ -352,14 +352,10 @@ class Product extends AbstractEntity implements ProductInterface
      */
     public function getPrice()
     {
-        if ($this->priceCurrency instanceof CurrencyInterface) {
-            return Money::create(
-                $this->price,
-                $this->priceCurrency
-            );
-        }
-
-        return null;
+        return Money::create(
+            $this->price,
+            $this->priceCurrency
+        );
     }
 
     /**
@@ -384,14 +380,10 @@ class Product extends AbstractEntity implements ProductInterface
      */
     public function getReducedPrice()
     {
-        if ($this->reducedPriceCurrency instanceof CurrencyInterface) {
-            return Money::create(
-                $this->reducedPrice,
-                $this->reducedPriceCurrency
-            );
-        }
-
-        return null;
+        return Money::create(
+            $this->reducedPrice,
+            $this->reducedPriceCurrency
+        );
     }
 
     /**

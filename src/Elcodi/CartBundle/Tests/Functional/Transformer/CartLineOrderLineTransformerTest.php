@@ -88,6 +88,11 @@ class CartLineOrderLineTransformerTest extends WebTestCase
             ->getRepository('elcodi.core.cart.entity.cart.class')
             ->find(2);
 
+        $this
+            ->container
+            ->get('elcodi.cart_event_dispatcher')
+            ->dispatchCartLoadEvents($cart);
+
         $cartLine = $cart->getCartLines()->first();
         $order = $cartOrderTransformer->createOrderFromCart($cart);
 

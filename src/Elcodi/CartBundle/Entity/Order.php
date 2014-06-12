@@ -291,32 +291,30 @@ class Order extends AbstractEntity implements OrderInterface
     }
 
     /**
+     * Sets the Coupon amount with tax
+     *
+     * @param MoneyInterface $amount coupon amount
+     *
+     * @return OrderInterface
+     */
+    public function setCouponAmount(MoneyInterface $amount)
+    {
+        $this->couponAmount = $amount->getAmount();
+        $this->couponCurrency = $amount->getCurrency();
+
+        return $this;
+    }
+
+    /**
      * Gets the Coupon amount with tax
      *
      * @return Money
      */
     public function getCouponAmount()
     {
-        if ($this->currency instanceof CurrencyInterface) {
-            return Money::create($this->couponAmount, $this->couponCurrency);
-        }
-
-        return null;
-    }
-
-    /**
-     * Sets the Coupon amount with tax
-     *
-     * @param MoneyInterface $couponAmount coupon amount
-     *
-     * @return OrderInterface
-     */
-    public function setCouponAmount(MoneyInterface $couponAmount)
-    {
-        if ($couponAmount instanceof MoneyInterface) {
-            $this->couponAmount = $couponAmount->getAmount();
-        }
-
-        return $this;
+        return Money::create(
+            $this->couponAmount,
+            $this->couponCurrency
+        );
     }
 }

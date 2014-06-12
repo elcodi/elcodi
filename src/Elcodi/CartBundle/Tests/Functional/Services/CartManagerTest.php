@@ -121,6 +121,11 @@ class CartManagerTest extends WebTestCase
             ->setProductAmount($this->product->getPrice())
             ->setAmount($this->product->getPrice())
             ->setQuantity(1);
+
+        $this
+            ->container
+            ->get('elcodi.cart_event_dispatcher')
+            ->dispatchCartLoadEvents($this->cart);
     }
 
     /**

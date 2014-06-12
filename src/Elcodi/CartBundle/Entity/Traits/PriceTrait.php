@@ -65,24 +65,23 @@ trait PriceTrait
      */
     public function getProductAmount()
     {
-        if ($this->productCurrency instanceof CurrencyInterface) {
-            return Money::create($this->productAmount, $this->productCurrency);
-        }
-
-        return null;
+        return Money::create(
+            $this->productAmount,
+            $this->productCurrency
+        );
     }
 
     /**
      * Sets the product or products amount with tax
      *
-     * @param MoneyInterface $productAmount product amount with tax
+     * @param MoneyInterface $amount product amount with tax
      *
      * @return Object self Object
      */
-    public function setProductAmount(MoneyInterface $productAmount)
+    public function setProductAmount(MoneyInterface $amount)
     {
-        $this->productAmount = $productAmount->getAmount();
-        $this->productCurrency = $productAmount->getCurrency();
+        $this->productAmount = $amount->getAmount();
+        $this->productCurrency = $amount->getCurrency();
 
         return $this;
     }
@@ -94,11 +93,10 @@ trait PriceTrait
      */
     public function getAmount()
     {
-        if ($this->currency instanceof CurrencyInterface) {
-            return Money::create($this->amount, $this->currency);
-        }
-
-        return null;
+        return Money::create(
+            $this->amount,
+            $this->currency
+        );
     }
 
     /**

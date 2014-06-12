@@ -47,6 +47,7 @@ class CartOrderTransformerTest extends WebTestCase
         return [
             'ElcodiCoreBundle',
             'ElcodiProductBundle',
+            'ElcodiCurrencyBundle',
             'ElcodiUserBundle',
             'ElcodiCartBundle',
         ];
@@ -76,6 +77,11 @@ class CartOrderTransformerTest extends WebTestCase
         $cart = $this
             ->getRepository('elcodi.core.cart.entity.cart.class')
             ->find(2);
+
+        $this
+            ->container
+            ->get('elcodi.cart_event_dispatcher')
+            ->dispatchCartLoadEvents($cart);
 
         $order = $cartOrderTransformer->createOrderFromCart($cart);
 

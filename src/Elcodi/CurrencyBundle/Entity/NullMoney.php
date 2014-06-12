@@ -1,9 +1,15 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: zim
- * Date: 6/12/14
- * Time: 4:55 PM
+ * This file is part of the Elcodi package.
+ *
+ * Copyright (c) 2014 Elcodi.com
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author  ##author_placeholder
+ * @version ##version_placeholder##
  */
 
 namespace Elcodi\CurrencyBundle\Entity;
@@ -11,6 +17,9 @@ namespace Elcodi\CurrencyBundle\Entity;
 use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 
+/**
+ * Class NullMoney
+ */
 class NullMoney implements MoneyInterface
 {
     /**
@@ -18,7 +27,7 @@ class NullMoney implements MoneyInterface
      *
      * @param MoneyInterface $other
      *
-     * @return MoneyInterface
+     * @return MoneyInterface self Object
      */
     public function add(MoneyInterface $other)
     {
@@ -42,7 +51,7 @@ class NullMoney implements MoneyInterface
      *
      * @param float $factor
      *
-     * @return MoneyInterface
+     * @return MoneyInterface self Object
      */
     public function multiply($factor)
     {
@@ -72,7 +81,7 @@ class NullMoney implements MoneyInterface
      *
      * @param MoneyInterface $other
      *
-     * @return MoneyInterface
+     * @return MoneyInterface self Object
      */
     public function compareTo(MoneyInterface $other)
     {
@@ -84,7 +93,7 @@ class NullMoney implements MoneyInterface
      *
      * @param MoneyInterface $other
      *
-     * @return MoneyInterface
+     * @return MoneyInterface self Object
      */
     public function subtract(MoneyInterface $other)
     {
@@ -100,7 +109,7 @@ class NullMoney implements MoneyInterface
      */
     public function isGreaterThan(MoneyInterface $other)
     {
-        return false;
+        return null;
     }
 
     /**
