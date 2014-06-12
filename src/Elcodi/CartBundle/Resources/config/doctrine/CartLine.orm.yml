@@ -23,10 +23,17 @@ Elcodi\CartBundle\Entity\CartLine:
                 name: cart_id
                 referencedColumnName: id
                 nullable: false
-        currency:
+        productAmountCurrency:
             targetEntity: Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
             joinColumn:
-                 name: currency_id
+                 name: product_amount_currency_id
+                 referencedColumnName: id
+                 nullable: false
+
+        amountCurrency:
+            targetEntity: Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                 name: amount_currency_id
                  referencedColumnName: id
                  nullable: false
         product:

@@ -25,6 +25,8 @@ class CartLine extends AbstractLine implements CartLineInterface
 {
     /**
      * @var CartInterface
+     *
+     * Cart
      */
     protected $cart;
 

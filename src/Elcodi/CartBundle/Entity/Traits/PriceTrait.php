@@ -32,15 +32,17 @@ trait PriceTrait
 {
     /**
      * @var integer
+     *
+     * Product amount
      */
     protected $productAmount;
 
     /**
-     * Amount for coupon or coupons
+     * @var \Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
      *
-     * @var integer
+     * Currency for the amounts stored in this entity
      */
-    protected $couponAmount;
+    protected $productCurrency;
 
     /**
      * Total amount
