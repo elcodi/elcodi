@@ -63,7 +63,7 @@ class Coupon extends AbstractEntity implements CouponInterface
      *
      * Price amount
      */
-    protected $priceAmount;
+    protected $priceAmount = 0;
 
     /**
      * @var CurrencyInterface
@@ -80,11 +80,18 @@ class Coupon extends AbstractEntity implements CouponInterface
     protected $discount;
 
     /**
-     * @var MoneyInterface
+     * @var int
      *
-     * Absolute price
+     * Absolute price amount
      */
-    protected $absolutePrice;
+    protected $absolutePriceAmount = 0;
+
+    /**
+     * @var CurrencyInterface
+     *
+     * Absolute price currency
+     */
+    protected $absolutePriceCurrency;
 
     /**
      * @var float
@@ -212,7 +219,6 @@ class Coupon extends AbstractEntity implements CouponInterface
 
     /**
      * Set price
-<<<<<<< HEAD
      *
      * @param MoneyInterface $price Price
      *
@@ -221,7 +227,7 @@ class Coupon extends AbstractEntity implements CouponInterface
     public function setPrice(MoneyInterface $price)
     {
         $this->priceAmount = $price->getAmount();
-        $this->priceAmount = $price->getCurrency();
+        $this->priceCurrency = $price->getCurrency();
 
         return $this;
     }
@@ -233,10 +239,13 @@ class Coupon extends AbstractEntity implements CouponInterface
      */
     public function getPrice()
     {
-        return Money::create(
-            $this->priceAmount,
-            $this->priceCurrency
-        );
+        if ($this->priceCurrency instanceof CurrencyInterface) {
+
+            return Money::create(
+                $this->priceAmount,
+                $this->priceCurrency
+            );
+        }
     }
 
     /**
@@ -249,23 +258,11 @@ class Coupon extends AbstractEntity implements CouponInterface
     public function setDiscount($discount)
     {
         $this->discount = $discount;
-=======
-     *
-     * @param MoneyInterface $price Price
-     *
-     * @return Coupon self Object
-     */
-    public function setPrice(MoneyInterface $price)
-    {
-        $this->priceAmount = $price->getAmount();
-        $this->priceAmount = $price->getCurrency();
->>>>>>> Money WIP
 
         return $this;
     }
 
     /**
-<<<<<<< HEAD
      * Get discount
      *
      * @return int discount
@@ -284,65 +281,8 @@ class Coupon extends AbstractEntity implements CouponInterface
      */
     public function setAbsolutePrice(MoneyInterface $absolutePrice)
     {
-        $this->absolutePrice = $absolutePrice;
-=======
-     * Get price
-     *
-     * @return MoneyInterface Price
-     */
-    public function getPrice()
-    {
-        return Money::create(
-            $this->priceAmount,
-            $this->priceCurrency
-        );
-    }
-
-    /**
-     * Set discount
-     *
-     * @param int $discount Discount
-     *
-     * @return Coupon self Object
-     */
-    public function setDiscount($discount)
-    {
-        $this->discount = $discount;
->>>>>>> Money WIP
-
-        return $this;
-    }
-
-    /**
-<<<<<<< HEAD
-     * Get absolute price
-     *
-     * @return MoneyInterface Absolute Price
-     */
-    public function getAbsolutePrice()
-    {
-        return $this->absolutePrice;
-=======
-     * Get discount
-     *
-     * @return int discount
-     */
-    public function getDiscount()
-    {
-        return $this->discount;
->>>>>>> Money WIP
-    }
-
-    /**
-     * Set absolute price
-     *
-     * @param MoneyInterface $absolutePrice Absolute Price
-     *
-     * @return Coupon self Object
-     */
-    public function setAbsolutePrice(MoneyInterface $absolutePrice)
-    {
-        $this->absolutePrice = $absolutePrice;
+        $this->absolutePriceAmount = $absolutePrice->getAmount();
+        $this->absolutePriceCurrency = $absolutePrice->getCurrency();
 
         return $this;
     }
@@ -354,7 +294,13 @@ class Coupon extends AbstractEntity implements CouponInterface
      */
     public function getAbsolutePrice()
     {
-        return $this->absolutePrice;
+        if ($this->absolutePriceCurrency instanceof CurrencyInterface) {
+
+            return Money::create(
+                $this->absolutePriceAmount,
+                $this->absolutePriceCurrency
+            );
+        }
     }
 
     /**
