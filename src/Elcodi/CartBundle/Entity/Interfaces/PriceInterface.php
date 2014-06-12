@@ -22,58 +22,34 @@ use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 interface PriceInterface
 {
     /**
-    * Gets total amount with tax
-    *
-    * @return MoneyInterface price with tax
-    */
-    public function getAmount();
-
-    /**
-    * Sets total amount with tax
-    *
-    * @param MoneyInterface $amount price with tax
-    *
-    * @return Object self Object
-    */
-    public function setAmount(MoneyInterface $amount);
-
-    /**
-     * Gets product amount with tax
+     * Gets the product or products amount with tax
      *
-     * @return MoneyInterface price with tax
+     * @return \Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface Product amount with tax
      */
     public function getProductAmount();
 
     /**
-     * Sets product amount with tax
+     * Sets the product or products amount with tax
      *
-     * @param MoneyInterface $amount price with tax
-     *
-     * @return Object self Object
-     */
-    public function setProductAmount(MoneyInterface $amount);
-
-    /**
-     * Gets the associated currency
-     *
-<<<<<<< HEAD
-     * @return \Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
-=======
-     * @return CurrencyInterface
->>>>>>> Added missing Money support in Coupon and CartCoupon
-     */
-    public function getCurrency();
-
-    /**
-     * Sets the currency
-     *
-<<<<<<< HEAD
-     * @param \Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface $currency
-=======
-     * @param CurrencyInterface $currency
->>>>>>> Added missing Money support in Coupon and CartCoupon
+     * @param \Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface $productAmount product amount with tax
      *
      * @return Object self Object
      */
-    public function setCurrency($currency);
+    public function setProductAmount(MoneyInterface $productAmount);
+
+    /**
+     * Gets the total amount with tax
+     *
+     * @return \Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface price with tax
+     */
+    public function getAmount();
+
+    /**
+     * Sets the total amount with tax
+     *
+     * @param \Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface $amount amount without tax
+     *
+     * @return Object self Object
+     */
+    public function setAmount(MoneyInterface $amount);
 }

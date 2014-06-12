@@ -36,13 +36,6 @@ class Order extends AbstractEntity implements OrderInterface
     use DateTimeTrait, PriceTrait;
 
     /**
-     * @var integer
-     *
-     * Coupon Amount
-     */
-    protected $couponAmount;
-
-    /**
      * @var CustomerInterface
      *
      * Customer
@@ -83,6 +76,20 @@ class Order extends AbstractEntity implements OrderInterface
      * Last OrderHistory
      */
     protected $lastOrderHistory;
+
+    /**
+     * @var integer
+     *
+     * Coupon Amount
+     */
+    protected $couponAmount;
+
+    /**
+     * @var CurrencyInterface
+     *
+     * Coupon Amount
+     */
+    protected $couponCurrency;
 
     /**
      * Sets Customer
@@ -291,7 +298,7 @@ class Order extends AbstractEntity implements OrderInterface
     public function getCouponAmount()
     {
         if ($this->currency instanceof CurrencyInterface) {
-            return new Money($this->couponAmount, $this->currency);
+            return Money::create($this->couponAmount, $this->couponCurrency);
         }
 
         return null;
@@ -304,7 +311,7 @@ class Order extends AbstractEntity implements OrderInterface
      *
      * @return OrderInterface
      */
-    public function setCouponAmount(MoneyInterface $couponAmount = null)
+    public function setCouponAmount(MoneyInterface $couponAmount)
     {
         if ($couponAmount instanceof MoneyInterface) {
             $this->couponAmount = $couponAmount->getAmount();
