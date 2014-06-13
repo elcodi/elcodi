@@ -98,7 +98,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers \Elcodi\CurrencyBundle\Entity\Money::subtract
-     * @covers \Elcodi\CurrencyBundle\Entity\Money::newMoney
+     * @covers \Elcodi\CurrencyBundle\Entity\Money::create
      */
     public function testMethodWillReturnMoneyInstance()
     {
