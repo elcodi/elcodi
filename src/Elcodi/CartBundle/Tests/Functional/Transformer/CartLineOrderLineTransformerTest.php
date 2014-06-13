@@ -95,7 +95,6 @@ class CartLineOrderLineTransformerTest extends WebTestCase
 
         $cartLine = $cart->getCartLines()->first();
         $order = $cartOrderTransformer->createOrderFromCart($cart);
-
         $orderLine = $cartLineOrderLineTransformer
             ->createOrderLineByCartLine(
                 $order,

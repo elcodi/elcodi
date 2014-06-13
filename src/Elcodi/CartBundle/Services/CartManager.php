@@ -172,8 +172,7 @@ class CartManager
         CartLineInterface $cartLine
     )
     {
-        $lines = $cart->getCartLines();
-        $lines->removeElement($cartLine);
+        $cart->removeCartLine($cartLine);
 
         $this
             ->cartLineEventDispatcher

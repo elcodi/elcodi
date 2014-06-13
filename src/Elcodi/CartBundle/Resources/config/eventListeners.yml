@@ -16,7 +16,7 @@ services:
             - { name: kernel.event_listener, event: cart.onload, method: onCartLoadPrices, priority: 16 }
             - { name: kernel.event_listener, event: cart.onload, method: onCartLoadFlush, priority: 0 }
             - { name: kernel.event_listener, event: cart.onload, method: onCartLoadQuantities, priority: -16 }
-            - { name: kernel.event_listener, event: order.postcreated, method: postOrderCreated, priority: 0 }
+            - { name: kernel.event_listener, event: order.oncreated, method: onOrderCreated, priority: -16 }
 
     elcodi.core.cart.event_listener.order:
         class: %elcodi.core.cart.event_listener.order.class%

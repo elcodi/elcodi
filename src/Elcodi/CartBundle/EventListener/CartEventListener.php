@@ -188,7 +188,7 @@ class CartEventListener
      *
      * @api
      */
-    public function postOrderCreated(OrderOnCreatedEvent $event)
+    public function onOrderCreated(OrderOnCreatedEvent $event)
     {
         $cart = $event
             ->getCart()

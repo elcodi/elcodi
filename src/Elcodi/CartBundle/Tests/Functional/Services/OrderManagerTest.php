@@ -149,7 +149,7 @@ class OrderManagerTest extends WebTestCase
                 ->setState($lastOrderLineState);
             $orderLine
                 ->addOrderLineHistory($orderLine
-                        ->getLastOrderLineHistory()
+                    ->getLastOrderLineHistory()
                 );
 
             $orderLines->add($orderLine);

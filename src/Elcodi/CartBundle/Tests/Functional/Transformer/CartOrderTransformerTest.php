@@ -87,6 +87,7 @@ class CartOrderTransformerTest extends WebTestCase
 
         $this->assertInstanceOf('Elcodi\CartBundle\Entity\Interfaces\OrderInterface', $order);
         $this->assertSame($order->getCart(), $cart);
+        $this->assertTrue($cart->isOrdered());
         $this->assertCount(2, $order->getOrderLines());
         $this->assertInstanceOf('Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface', $order->getLastOrderHistory());
         $this->assertEquals($order->getLastOrderHistory()->getState(), $orderInitialState);
