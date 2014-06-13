@@ -19,9 +19,12 @@ Elcodi\CouponBundle\Entity\Coupon:
             column: type
             type: integer
             nullable: false
-        value:
-            column: value
-            type: float
+        priceAmount:
+            column: priceAmount
+            type: integer
+        discount:
+            column: discount
+            type: integer
         count:
             column: count
             type: integer
@@ -57,6 +60,14 @@ Elcodi\CouponBundle\Entity\Coupon:
         enabled:
             column: enabled
             type: boolean
+
+    manyToOne:
+        priceCurrency:
+            targetEntity: Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                 name: price_currency_id
+                 referencedColumnName: id
+                 nullable: true
 
     lifecycleCallbacks:
         preUpdate: [loadUpdateAt]

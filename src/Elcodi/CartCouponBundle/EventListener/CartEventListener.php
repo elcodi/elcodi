@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -16,10 +16,15 @@ namespace Elcodi\CartCouponBundle\EventListener;
 
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Event\CartOnLoadEvent;
+use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
 use Elcodi\CartCouponBundle\Services\CartCouponManager;
 use Elcodi\CouponBundle\ElcodiCouponTypes;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 use Elcodi\CouponBundle\Services\CouponManager;
+use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
+use Elcodi\CurrencyBundle\Entity\Money;
+use Elcodi\CurrencyBundle\Services\CurrencyConverter;
+use Elcodi\CurrencyBundle\Wrapper\CurrencyWrapper;
 
 /**
  * Class CartEventListener
@@ -44,15 +49,35 @@ class CartEventListener
     protected $cartCouponManager;
 
     /**
+     * @var CurrencyConverter
+     *
+     * Currency converter
+     */
+    protected $currencyConverter;
+
+    /**
+     * @var CurrencyWrapper
+     *
+     * Currency Wrapper
+     */
+    protected $currencyWrapper;
+
+    /**
      * Construct method
      *
      * @param CouponManager     $couponManager     Coupon manager
      * @param CartCouponManager $cartCouponManager Cart coupon manager
+     * @param CurrencyWrapper   $currencyWrapper   Currency wrapper
      */
-    public function __construct(CouponManager $couponManager, CartCouponManager $cartCouponManager)
+    public function __construct(
+        CouponManager $couponManager,
+        CartCouponManager $cartCouponManager,
+        CurrencyWrapper $currencyWrapper
+    )
     {
         $this->couponManager = $couponManager;
         $this->cartCouponManager = $cartCouponManager;
+        $this->currencyWrapper = $currencyWrapper;
     }
 
     /**
@@ -62,19 +87,33 @@ class CartEventListener
      *
      * @return CartInterface Cart
      */
-    public function onCartOnLoad(CartOnLoadEvent $cartOnLoadEvent)
+    public function onCartLoadCoupons(
+        CartOnLoadEvent $cartOnLoadEvent
+    )
     {
         $cart = $cartOnLoadEvent->getCart();
-        $couponAmount = 0.0;
-        $cartCoupons = $this->cartCouponManager->getCartCoupons($cart);
+        $couponAmount = Money::create(
+            0,
+            $this->currencyWrapper->loadCurrency()
+        );
+        $cartCoupons = $this
+            ->cartCouponManager
+            ->getCartCoupons($cart);
 
-        foreach ($cartCoupons as $coupon) {
+        /**
+         * @var CartCouponInterface $cartCoupon
+         */
+        foreach ($cartCoupons as $cartCoupon) {
 
-            $couponAmount += $this->getPriceCoupon($cart, $coupon);
+            $couponAmount = $couponAmount->add($this
+                ->getPriceCoupon(
+                    $cart,
+                    $cartCoupon->getCoupon()
+                ));
         }
 
         $cart->setCouponAmount($couponAmount);
-        $cart->setAmount($cart->getAmount() + $couponAmount);
+        $cart->setAmount($cart->getAmount()->subtract($couponAmount));
 
         return $cart;
     }
@@ -85,23 +124,35 @@ class CartEventListener
      * @param CartInterface   $cart   Abstract Cart object
      * @param CouponInterface $coupon Coupon
      *
-     * @return float Coupon price
+     * @return MoneyInterface Coupon price
      */
-    protected function getPriceCoupon(CartInterface $cart, CouponInterface $coupon)
+    protected function getPriceCoupon(
+        CartInterface $cart,
+        CouponInterface $coupon
+    )
     {
-        $priceCoupon = 0.0;
+        $currency = $this->currencyWrapper->getCurrency();
 
         switch ($coupon->getType()) {
 
             case ElcodiCouponTypes::TYPE_AMOUNT:
-                $priceCoupon = (float) $coupon->getValue();
-                break;
+
+                $amount = $coupon->getPrice();
+
+                return $this
+                    ->currencyConverter
+                    ->convertMoney(
+                        $amount,
+                        $currency
+                    );
 
             case ElcodiCouponTypes::TYPE_PERCENT:
-                $priceCoupon = ($coupon->getValue() / 100) * $cart->getProductAmount();
-                break;
-        }
 
-        return $priceCoupon;
+                $couponPercent = $coupon->getDiscount();
+
+                return $cart
+                    ->getProductAmount()
+                    ->multiply(($couponPercent / 100));
+        }
     }
 }

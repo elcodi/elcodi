@@ -11,7 +11,6 @@ services:
         class: %elcodi.core.currency.factory.currency.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.currency.entity.currency.class%"]]
-            - [setDefaultISOCode, ["%elcodi.core.currency.default_currency%"]]
 
     elcodi.factory.currency:
         alias: elcodi.core.currency.factory.currency

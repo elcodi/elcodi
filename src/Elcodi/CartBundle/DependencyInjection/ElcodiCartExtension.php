@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -67,9 +67,11 @@ class ElcodiCartExtension extends AbstractExtension implements EntitiesOverridab
     protected function getParametrizationValues(array $config)
     {
         return [
+            'elcodi.core.cart.cart_save_in_session' => $config['cart']['save_in_session'],
+            'elcodi.core.cart.cart_session_field_name' => $config['cart']['session_field_name'],
+
             'elcodi.core.cart.order_states' => $config['order']['states'],
             'elcodi.core.cart.order_initial_state' => $config['order']['initial_state'],
-            'elcodi.core.cart.session_field_name' => $config['cart']['session_field_name']
         ];
     }
 
@@ -86,7 +88,9 @@ class ElcodiCartExtension extends AbstractExtension implements EntitiesOverridab
             'services',
             'factories',
             'repositories',
-            'managers',
+            'objectManagers',
+            'transformers',
+            'eventDispatchers',
         ];
     }
 

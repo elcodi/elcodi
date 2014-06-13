@@ -6,32 +6,46 @@ services:
     elcodi.core.cart.event_listener.cart:
         class: %elcodi.core.cart.event_listener.cart.class%
         arguments:
+            cart_entity_manager: @elcodi.object_manager.cart
+            cart_event_dispatcher: @elcodi.cart_event_dispatcher
             cart_manager: @elcodi.core.cart.service.cart_manager
-            cart_entity_manager: @elcodi.manager.cart
+            currency_wrapper: @elcodi.currency_wrapper
+            currency_converter: @elcodi.currency_converter
         tags:
-            - { name: kernel.event_listener, event: cart.oncheck, method: onCartCheck }
-            - { name: kernel.event_listener, event: cart.onload, method: onCartLoad }
-            - { name: kernel.event_listener, event: order.postcreated, method: postOrderCreated }
+            - { name: kernel.event_listener, event: cart.preload, method: onCartPreLoad, priority: 0 }
+            - { name: kernel.event_listener, event: cart.onload, method: onCartLoadPrices, priority: 16 }
+            - { name: kernel.event_listener, event: cart.onload, method: onCartLoadFlush, priority: 0 }
+            - { name: kernel.event_listener, event: cart.onload, method: onCartLoadQuantities, priority: -16 }
+            - { name: kernel.event_listener, event: order.oncreated, method: onOrderCreated, priority: -16 }
+
+    elcodi.core.cart.event_listener.order:
+        class: %elcodi.core.cart.event_listener.order.class%
+        arguments:
+            order_entity_manager: @elcodi.object_manager.order
+        tags:
+            - { name: kernel.event_listener, event: order.oncreated, method: onOrderCreated, priority: 0}
+
+    elcodi.core.cart.event_listener.order_state:
+        class: %elcodi.core.cart.event_listener.order_state.class%
+        arguments:
+            order_entity_manager: @elcodi.object_manager.order
+        tags:
+            - { name: kernel.event_listener, event: orderstate.onchange, method: onOrderStateOnChangeFlush, priority: 0 }
 
     elcodi.core.cart.event_listener.order_line_state:
         class: %elcodi.core.cart.event_listener.order_line_state.class%
         arguments:
-            entity_manager: @doctrine.orm.entity_manager
-            event_dispatcher: @event_dispatcher
+            order_line_object_manager: @elcodi.object_manager.order_line
+            order_state_event_dispatcher: @elcodi.order_state_event_dispatcher
             order_history_factory: @elcodi.core.cart.factory.order_history
         tags:
-            - { name: kernel.event_listener, event: orderlinestate.postchange, method: onOrderLineStatePostChange }
+            - { name: kernel.event_listener, event: orderlinestate.onchange, method: onOrderLineStateOnChange, priority: 16 }
+            - { name: kernel.event_listener, event: orderlinestate.onchange, method: onOrderLineStateOnChangeFlush, priority: 0 }
 
     elcodi.core.cart.event_listener.cart_session:
         class: %elcodi.core.cart.event_listener.cart_session.class%
+        private: %elcodi.core.cart.session_field_name%
         arguments:
             cart_session_manager: @elcodi.cart_session_manager
         tags:
-            - { name: kernel.event_listener, event: cart.postload, method: onCartPostLoad}
-
-    elcodi.core.cart.event_listener.cart_load:
-        class: %elcodi.core.cart.event_listener.cart_load.class%
-        arguments:
-            container: @service_container
-        tags:
-            - { name: doctrine.event_listener, event: postLoad, method: postLoad }
+            - { name: kernel.event_listener, event: cart.onload, method: onCartLoad, priority: -2 }

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -53,6 +53,7 @@ class ReferralHashManagerTest extends WebTestCase
         return array(
             'ElcodiCoreBundle',
             'ElcodiUserBundle',
+            'ElcodiCurrencyBundle',
             'ElcodiCouponBundle',
             'ElcodiReferralProgramBundle',
         );

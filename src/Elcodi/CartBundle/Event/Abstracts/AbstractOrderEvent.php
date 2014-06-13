@@ -8,11 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
 namespace Elcodi\CartBundle\Event\Abstracts;
+
+use Symfony\Component\EventDispatcher\Event;
 
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
@@ -20,10 +22,19 @@ use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 /**
  * Class AbstractOrderEvent
  */
-class AbstractOrderEvent extends AbstractCartEvent
+abstract class AbstractOrderEvent extends Event
 {
     /**
+     * @var CartInterface
+     *
+     * cart
+     */
+    protected $cart;
+
+    /**
      * @var OrderInterface
+     *
+     * Order
      */
     protected $order;
 
@@ -33,10 +44,23 @@ class AbstractOrderEvent extends AbstractCartEvent
      * @param CartInterface  $cart  Cart
      * @param OrderInterface $order The order created
      */
-    public function __construct(CartInterface $cart, OrderInterface $order)
+    public function __construct(
+        CartInterface $cart,
+        OrderInterface $order
+    )
     {
-        parent::__construct($cart);
+        $this->cart = $cart;
         $this->order = $order;
+    }
+
+    /**
+     * Get cart
+     *
+     * @return CartInterface Cart
+     */
+    public function getCart()
+    {
+        return $this->cart;
     }
 
     /**

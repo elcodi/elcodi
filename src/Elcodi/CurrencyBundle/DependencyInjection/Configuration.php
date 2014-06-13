@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -32,11 +32,19 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('default_currency')
-                    ->defaultValue('USD')
+                ->arrayNode('currency')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('default_currency')
+                            ->defaultValue('USD')
+                        ->end()
+                        ->scalarNode('session_field_name')
+                            ->defaultValue('currency_id')
+                        ->end()
+                    ->end()
                 ->end()
                 ->scalarNode('provider')
-                    ->defaultValue('Elcodi\CurrencyBundle\\Provider\\OpenExchangeRatesProvider')
+                    ->defaultValue('Elcodi\CurrencyBundle\Provider\OpenExchangeRatesProvider')
                 ->end()
             ->end();
 

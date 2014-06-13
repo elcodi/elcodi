@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -37,6 +37,9 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('cart')
                     ->addDefaultsIfNotSet()
                     ->children()
+                        ->scalarNode('save_in_session')
+                            ->defaultTrue()
+                        ->end()
                         ->scalarNode('session_field_name')
                             ->defaultValue('cart_id')
                         ->end()

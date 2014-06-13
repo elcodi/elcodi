@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -16,6 +16,9 @@ namespace Elcodi\CartBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
+use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
+use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
+use Elcodi\CurrencyBundle\Entity\Money;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface;
@@ -73,6 +76,20 @@ class Order extends AbstractEntity implements OrderInterface
      * Last OrderHistory
      */
     protected $lastOrderHistory;
+
+    /**
+     * @var integer
+     *
+     * Coupon Amount
+     */
+    protected $couponAmount;
+
+    /**
+     * @var CurrencyInterface
+     *
+     * Coupon Amount
+     */
+    protected $couponCurrency;
 
     /**
      * Sets Customer
@@ -271,5 +288,33 @@ class Order extends AbstractEntity implements OrderInterface
     public function getLastOrderHistory()
     {
         return $this->lastOrderHistory;
+    }
+
+    /**
+     * Sets the Coupon amount with tax
+     *
+     * @param MoneyInterface $amount coupon amount
+     *
+     * @return OrderInterface
+     */
+    public function setCouponAmount(MoneyInterface $amount)
+    {
+        $this->couponAmount = $amount->getAmount();
+        $this->couponCurrency = $amount->getCurrency();
+
+        return $this;
+    }
+
+    /**
+     * Gets the Coupon amount with tax
+     *
+     * @return Money
+     */
+    public function getCouponAmount()
+    {
+        return Money::create(
+            $this->couponAmount,
+            $this->couponCurrency
+        );
     }
 }
