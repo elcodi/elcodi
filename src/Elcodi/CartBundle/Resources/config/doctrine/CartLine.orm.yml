@@ -7,10 +7,6 @@ Elcodi\CartBundle\Entity\CartLine:
             column: product_amount
             type: integer
             nullable: false
-        couponAmount:
-            column: coupon_amount
-            type: integer
-            nullable: true
         amount:
             column: amount
             type: integer
@@ -23,11 +19,16 @@ Elcodi\CartBundle\Entity\CartLine:
         cart:
             targetEntity: Elcodi\CartBundle\Entity\Interfaces\CartInterface
             inversedBy: cartLines
-            cascade: ["all"]
             joinColumn:
                 name: cart_id
                 referencedColumnName: id
                 nullable: false
+        productCurrency:
+            targetEntity: Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                 name: product_currency_id
+                 referencedColumnName: id
+                 nullable: false
         currency:
             targetEntity: Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
             joinColumn:

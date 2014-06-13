@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -20,34 +20,26 @@ namespace Elcodi\CartCouponBundle;
 class ElcodiCartCouponEvents
 {
     /**
-     * This event is fired each time a coupon is going to be applied into a Cart
+     * This event is dispatched each time a coupon is applied into a Cart
      *
-     * event.name : coupon.cart_preapply
-     * event.class : CouponCartPreApplyEvent
+     * event.name : cart_coupon.onapply
+     * event.class : CartCouponOnApplyEvent
      */
-    const COUPON_CART_PREAPPLY= 'coupon.cart_preapply';
+    const CART_COUPON_ONAPPLY= 'cart_coupon.onapply';
 
     /**
-     * This event is fired each time a coupon is applied and flushed into a Cart
+     * This event is dispatched each time a coupon is removed from a Cart
      *
-     * event.name : coupon.cart_prostapply
-     * event.class : CouponCartPostApplyEvent
+     * event.name : cart_coupon.onremove
+     * event.class : CartCouponOnRemoveEvent
      */
-    const COUPON_CART_POSTAPPLY = 'coupon.cart_postapply';
+    const CART_COUPON_ONREMOVE = 'cart_coupon.onremove';
 
     /**
-     * This event is fired each time a coupon is going to be removed from a Cart
+     * This event is dispatched each time a coupon is applied into an Order
      *
-     * event.name : coupon.cart_preremove
-     * event.class : CouponCartPreRemoveEvent
+     * event.name : order_coupon.onapply
+     * event.class : OrderCouponOnApplyEvent
      */
-    const COUPON_CART_PREREMOVE = 'coupon.cart_preremove';
-
-    /**
-     * This event is fired each time a coupon is removed from a Cart
-     *
-     * event.name : coupon.cart_postremove
-     * event.class : CouponCartPostRemoveEvent
-     */
-    const COUPON_CART_POSTREMOVE = 'coupon.cart_postremove';
+    const ORDER_COUPON_ONAPPLY= 'order_coupon.onapply';
 }

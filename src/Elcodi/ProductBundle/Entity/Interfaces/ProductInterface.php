@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -18,7 +18,6 @@ use Doctrine\Common\Collections\Collection;
 
 use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\ETaggableInterface;
-use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 use Elcodi\MediaBundle\Entity\Interfaces\ImagesContainerInterface;
 
@@ -186,22 +185,6 @@ interface ProductInterface extends EnabledInterface, ETaggableInterface, MetaDat
      * @return MoneyInterface Reduced Price
      */
     public function getReducedPrice();
-
-    /**
-     * Get product currency
-     *
-     * @return CurrencyInterface
-     */
-    public function getCurrency();
-
-    /**
-     * Set product currency
-     *
-     * @param CurrencyInterface $currency
-     *
-     * @return $this
-     */
-    public function setCurrency(CurrencyInterface $currency);
 
     /**
      * Set show in home

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -16,22 +16,72 @@ namespace Elcodi\CartBundle\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
+use Elcodi\CoreBundle\Entity\Interfaces\DateTimeInterface;
+use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 
 /**
  * Class CartInterface
  */
-interface CartInterface extends PriceInterface
+interface CartInterface extends DateTimeInterface
 {
     /**
-     * Return the customer
+     * Gets amount with tax
+     *
+     * @return MoneyInterface price with tax
+     */
+    public function getAmount();
+
+    /**
+     * Sets amount with tax
+     *
+     * @param MoneyInterface $amount price with tax
+     *
+     * @return Object self Object
+     */
+    public function setAmount(MoneyInterface $amount);
+
+    /**
+     * Gets coupon amount with tax
+     *
+     * @return MoneyInterface price with tax
+     */
+    public function getCouponAmount();
+
+    /**
+     * Sets coupon amount with tax
+     *
+     * @param MoneyInterface $amount price with tax
+     *
+     * @return Object self Object
+     */
+    public function setCouponAmount(MoneyInterface $amount);
+
+    /**
+     * Gets product amount with tax
+     *
+     * @return MoneyInterface price with tax
+     */
+    public function getProductAmount();
+
+    /**
+     * Sets product amount with tax
+     *
+     * @param MoneyInterface $amount price with tax
+     *
+     * @return Object self Object
+     */
+    public function setProductAmount(MoneyInterface $amount);
+
+    /**
+     * Returns the customer
      *
      * @return CustomerInterface Customer
      */
     public function getCustomer();
 
     /**
-     * Set the customer
+     * Sets the customer
      *
      * @param CustomerInterface $customer Customer
      *
@@ -40,7 +90,7 @@ interface CartInterface extends PriceInterface
     public function setCustomer(CustomerInterface $customer);
 
     /**
-     * Set cart lines
+     * Sets cart lines
      *
      * @param Collection $cartLines Cart Lines
      *
@@ -49,14 +99,14 @@ interface CartInterface extends PriceInterface
     public function setCartLines(Collection $cartLines);
 
     /**
-     * Get lines
+     * Gets lines
      *
      * @return Collection of CartLine
      */
     public function getCartLines();
 
     /**
-     * Add Cart Line
+     * Adds a Cart Line
      *
      * @param CartLineInterface $cartLine Cart line
      *
@@ -65,7 +115,7 @@ interface CartInterface extends PriceInterface
     public function addCartLine(CartLineInterface $cartLine);
 
     /**
-     * Remove Cart Line
+     * Removes a Cart Line from this Cart
      *
      * @param CartLineInterface $cartLine Cart line
      *
@@ -74,7 +124,7 @@ interface CartInterface extends PriceInterface
     public function removeCartLine(CartLineInterface $cartLine);
 
     /**
-     * Set order
+     * Sets an Order to this Cart
      *
      * @param OrderInterface $order
      *
@@ -83,14 +133,14 @@ interface CartInterface extends PriceInterface
     public function setOrder(OrderInterface $order);
 
     /**
-     * Get order
+     * Gets Cart Order
      *
      * @return OrderInterface
      */
     public function getOrder();
 
     /**
-     * Set ordered
+     * Sets the ordered flag
      *
      * @param boolean $ordered Has been ordered
      *
@@ -99,14 +149,14 @@ interface CartInterface extends PriceInterface
     public function setOrdered($ordered);
 
     /**
-     * Is ordered
+     * Tells if this cart has been converted to an Order
      *
      * @return boolean is ordered
      */
     public function isOrdered();
 
     /**
-     * Set quantity
+     * Sets the number of items on this cart
      *
      * @param int $quantity Quantity
      *
@@ -115,7 +165,7 @@ interface CartInterface extends PriceInterface
     public function setQuantity($quantity);
 
     /**
-     * Get quantity
+     * Gets the number of items on this cart
      *
      * @return integer Quantity
      */

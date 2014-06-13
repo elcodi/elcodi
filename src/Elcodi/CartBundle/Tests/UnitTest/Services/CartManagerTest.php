@@ -1,25 +1,32 @@
 <?php
 
 /**
- * This file is part of BeEcommerce.
+ * This file is part of the Elcodi package.
  *
- * @author Befactory Team
- * @since  2013
+ * Copyright (c) 2014 Elcodi.com
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author  ##author_placeholder
+ * @version ##version_placeholder##
  */
 
 namespace Elcodi\CartBundle\Tests\UnitTest\Services;
 
-use Elcodi\CartBundle\Entity\Cart;
-use Elcodi\CartBundle\Entity\CartLine;
+use Doctrine\Common\Collections\ArrayCollection;
+use Elcodi\CartBundle\EventDispatcher\CartLineEventDispatcher;
+use PHPUnit_Framework_TestCase;
+
+use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
+use Elcodi\CartBundle\EventDispatcher\CartEventDispatcher;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
-use Elcodi\CartBundle\Factory\CartFactory;
 use Elcodi\CartBundle\Factory\CartLineFactory;
 use Elcodi\CartBundle\Services\CartManager;
-use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use PHPUnit_Framework_TestCase;
+use Elcodi\CartBundle\Factory\CartFactory;
+use Elcodi\CartBundle\Wrapper\CartWrapper;
+use Elcodi\CartBundle\Entity\CartLine;
+use Elcodi\CartBundle\Entity\Cart;
 
 /**
  * Class CartManagerTest
@@ -34,6 +41,20 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     protected $cartManager;
 
     /**
+     * @var CartFactory
+     *
+     * Cart factory
+     */
+    protected $cartFactory;
+
+    /**
+     * @var CartLineFactory
+     *
+     * Cart factory
+     */
+    protected $cartLineFactory;
+
+    /**
      * @var CartInterface
      *
      * Cart
@@ -42,33 +63,36 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
 
     /**
      * Set up
-     *
      */
     public function setUp()
     {
         /**
-         * @var ObjectManager            $manager
-         * @var EventDispatcherInterface $eventDispatcher
-         * @var CartFactory              $cartFactory
-         * @var CartLineFactory          $cartLineFactory
+         * @var CartEventDispatcher $cartEventDispatcher
+         * @var CartLineEventDispatcher $cartLineEventDispatcher
+         * @var CartFactory         $cartFactory
+         * @var CartLineFactory     $cartLineFactory
+         * @var CartWrapper         $cartWrapper
          */
-        $manager = $this->getMock('Doctrine\Common\Persistence\ObjectManager');
-        $eventDispatcher = $this->getMock('Symfony\Component\EventDispatcher\EventDispatcherInterface');
-        $cartFactory = $this->getMock('Elcodi\CartBundle\Factory\CartFactory');
-        $cartLineFactory = $this->getMock('Elcodi\CartBundle\Factory\CartLineFactory');
-        $cartWrapper = $this->getMock('Elcodi\CartBundle\Wrapper\CartWrapper', [], [], '', false);
+        $cartEventDispatcher = $this->getMock('Elcodi\CartBundle\EventDispatcher\CartEventDispatcher', [], [], '', false);
+        $cartLineEventDispatcher = $this->getMock('Elcodi\CartBundle\EventDispatcher\CartLineEventDispatcher', [], [], '', false);
+        $cartFactory = $this->getMock('Elcodi\CartBundle\Factory\CartFactory', ['create']);
+        $cartLineFactory = $this->getMock('Elcodi\CartBundle\Factory\CartLineFactory', ['create']);
 
         $this->cartManager = new CartManager(
-            $manager,
-            $eventDispatcher,
+            $cartEventDispatcher,
+            $cartLineEventDispatcher,
             $cartFactory,
-            $cartLineFactory,
-            $cartWrapper
+            $cartLineFactory
         );
+
+        $this->cartFactory = $cartFactory;
+        $this->cartLineFactory = $cartLineFactory;
     }
 
     /**
      * addLine with empty cart
+     *
+     * @group cart
      */
     public function testAddLineInEmptyCart()
     {
@@ -82,6 +106,8 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
 
     /**
      * addLine twice with empty cart
+     *
+     * @group cart
      */
     public function testAddLineTwiceInEmptyCart()
     {
@@ -98,6 +124,8 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
 
     /**
      * removeLine with a non empty cart
+     *
+     * @group cart
      */
     public function testRemoveLineFromNonEmptyCart()
     {
@@ -115,6 +143,8 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
 
     /**
      * removeLine with an empty cart
+     *
+     * @group cart
      */
     public function testRemoveLineFromEmptyCart()
     {
@@ -130,6 +160,8 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
 
     /**
      * emptyLines with a non empty cart
+     *
+     * @group cart
      */
     public function testEmptyLinesFromNonEmptyCart()
     {
@@ -147,6 +179,8 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
 
     /**
      * emptyLines with an empty cart
+     *
+     * @group cart
      */
     public function testEmptyLinesFromEmptyCart()
     {
@@ -162,6 +196,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
      * editCartLine test
      *
      * @dataProvider dataEditCartLine
+     * @group cart
      */
     public function testEditCartLine($initialQuantity, $newQuantity, $finalQuantity)
     {
@@ -202,6 +237,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
      * increaseCartLineQuantity with empty Cart
      *
      * @dataProvider dataIncreaseCartLineQuantity
+     * @group cart
      */
     public function testIncreaseCartLineQuantity($initialQuantity, $quantityToIncrease, $finalQuantity)
     {
@@ -233,38 +269,8 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     /**
      * increaseCartLineQuantity with empty Cart
      *
-     * @dataProvider dataIncreaseCartLineQuantityNotDefined
-     */
-    public function testIncreaseCartLineQuantityNotDefined($initialQuantity, $finalQuantity)
-    {
-        $cart = new Cart();
-        $cartLine = new CartLine();
-        $cartLine->setCart($cart);
-        $cartLine->setQuantity($initialQuantity);
-        $cart->setCartLines(new ArrayCollection(array(
-            $cartLine
-        )));
-
-        $this->cartManager->increaseCartLineQuantity($cartLine);
-        $this->assertEquals($finalQuantity, $cartLine->getQuantity());
-    }
-
-    /**
-     * Data provider for testEditCartLine
-     */
-    public function dataIncreaseCartLineQuantityNotDefined()
-    {
-        return array(
-            array(1, 2),
-            array(null, 1),
-            array(false, 1),
-        );
-    }
-
-    /**
-     * increaseCartLineQuantity with empty Cart
-     *
      * @dataProvider dataDecreaseCartLineQuantityNotRemove
+     * @group cart
      */
     public function testDecreaseCartLineQuantityNotRemove($initialQuantity, $quantityToIncrease, $finalQuantity)
     {
@@ -295,36 +301,8 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     /**
      * increaseCartLineQuantity with empty Cart
      *
-     * @dataProvider dataDecreaseCartLineQuantityNotRemoveNotDefined
-     */
-    public function testDecreaseCartLineQuantityNotRemoveNotDefined($initialQuantity, $finalQuantity)
-    {
-        $cart = new Cart();
-        $cartLine = new CartLine();
-        $cartLine->setCart($cart);
-        $cartLine->setQuantity($initialQuantity);
-        $cart->setCartLines(new ArrayCollection(array(
-            $cartLine
-        )));
-
-        $this->cartManager->decreaseCartLineQuantity($cartLine);
-        $this->assertEquals($finalQuantity, $cartLine->getQuantity());
-    }
-
-    /**
-     * Data provider for testEditCartLine
-     */
-    public function dataDecreaseCartLineQuantityNotRemoveNotDefined()
-    {
-        return array(
-            array(2, 1),
-        );
-    }
-
-    /**
-     * increaseCartLineQuantity with empty Cart
-     *
      * @dataProvider dataDecreaseCartLineQuantityRemove
+     * @group cart
      */
     public function testDecreaseCartLineQuantityRemove($initialQuantity, $quantityToIncrease)
     {
@@ -353,39 +331,17 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
 
     /**
      * addProduct
+     *
+     * @dataProvider dataAddProduct
+     * @group cart
      */
-    public function testAddProduct()
+    public function testAddProduct($quantity, $productCreated, $quantityExpected)
     {
-        /**
-         * @var ObjectManager            $manager
-         * @var EventDispatcherInterface $eventDispatcher
-         * @var CartFactory              $cartFactory
-         * @var CartLineFactory          $cartLineFactory
-         */
-        $manager = $this->getMock('Doctrine\Common\Persistence\ObjectManager');
-        $eventDispatcher = $this->getMock('Symfony\Component\EventDispatcher\EventDispatcherInterface');
-        $cartFactory = $this->getMock('Elcodi\CartBundle\Factory\CartFactory');
-        $cartLineFactory = $this
-            ->getMockBuilder('Elcodi\CartBundle\Factory\CartLineFactory')
-            ->setMethods(array(
-                'create',
-            ))
-            ->getMock();
-        $cartWrapper = $this->getMock('Elcodi\CartBundle\Wrapper\CartWrapper', [], [], '', false);
-
         $cartLine = new CartLine();
-        $cartLineFactory
-            ->expects($this->once())
+        $this->cartLineFactory
+            ->expects($this->exactly(intval($productCreated)))
             ->method('create')
             ->will($this->returnValue($cartLine));
-
-        $this->cartManager = new CartManager(
-            $manager,
-            $eventDispatcher,
-            $cartFactory,
-            $cartLineFactory,
-            $cartWrapper
-        );
 
         /**
          * @var ProductInterface $product
@@ -394,9 +350,38 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         $cart = new Cart();
         $cart->setCartLines(new ArrayCollection);
 
-        $this->cartManager->addProduct($cart, $product);
-        $this->assertCount(1, $cart->getCartLines());
-        $this->assertInstanceOf('Elcodi\CartBundle\Entity\Interfaces\CartLineInterface', $cart->getCartLines()->first());
-        $this->assertSame($cart->getCartLines()->first()->getProduct(), $product);
+        $this->cartManager->addProduct($cart, $product, $quantity);
+
+        if ($productCreated) {
+
+            $createdLine = $cart->getCartLines()->first();
+            $createdProduct = $createdLine->getProduct();
+
+            $this->assertCount(1, $cart->getCartLines());
+            $this->assertInstanceOf('Elcodi\CartBundle\Entity\Interfaces\CartLineInterface', $createdLine);
+            $this->assertSame($createdProduct, $product);
+            $this->assertEquals($createdLine->getQuantity(), $quantityExpected);
+        } else {
+
+            $this->assertCount(0, $cart->getCartLines());
+        }
+    }
+
+    /**
+     * Data provider for testAddProduct
+     */
+    public function dataAddProduct()
+    {
+        return [
+            [1, true, 1],
+            [2, true, 2],
+            [0, false, 0],
+            [null, false, 0],
+            [false, false, 0],
+            [true, false, 0],
+            [[], false, 0],
+            ['false', false, 0],
+            [-1, false, 0],
+        ];
     }
 }

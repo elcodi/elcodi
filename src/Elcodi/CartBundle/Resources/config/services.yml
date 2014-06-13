@@ -6,11 +6,10 @@ services:
     elcodi.core.cart.service.cart_manager:
         class: %elcodi.core.cart.service.cart_manager.class%
         arguments:
-            cart_line_entity_manager: @elcodi.manager.cart_line
-            event_dispatcher: @event_dispatcher
+            cart_event_dispatcher: @elcodi.cart_event_dispatcher
+            cart_line_event_dispatcher: @elcodi.cart_line_event_dispatcher
             cart_factory: @elcodi.core.cart.factory.cart
             cart_line_factory: @elcodi.core.cart.factory.cart_line
-            cart_wrapper: @elcodi.cart_wrapper
 
     elcodi.cart_manager:
         alias: elcodi.core.cart.service.cart_manager
@@ -18,12 +17,8 @@ services:
     elcodi.core.cart.service.order_manager:
         class: %elcodi.core.cart.service.order_manager.class%
         arguments:
-            entity_manager: @doctrine.orm.entity_manager
-            event_dispatcher: @event_dispatcher
             order_line_manager: @elcodi.core.cart.service.order_line_manager
-            order_repository: @elcodi.core.cart.repository.order
-            order_factory: @elcodi.core.cart.factory.order
-            order_history_states: %elcodi.core.cart.order_states%
+            order_state_manager: @elcodi.order_state_manager
 
     elcodi.order_manager:
         alias: elcodi.core.cart.service.order_manager
@@ -31,20 +26,28 @@ services:
     elcodi.core.cart.service.order_line_manager:
         class: %elcodi.core.cart.service.order_line_manager.class%
         arguments:
-            entity_manager: @doctrine.orm.entity_manager
-            event_dispatcher: @event_dispatcher
+            order_line_states_event_dispatcher: @elcodi.order_line_state_event_dispatcher
             order_line_history_factory: @elcodi.core.cart.factory.order_line_history
             order_line_factory: @elcodi.core.cart.factory.order_line
-            order_history_states: %elcodi.core.cart.order_states%
+            order_state_manager: @elcodi.order_state_manager
 
     elcodi.order_line_manager:
         alias: elcodi.core.cart.service.order_line_manager
+
+    elcodi.core.cart.service.order_state_manager:
+        class: %elcodi.core.cart.service.order_state_manager.class%
+        arguments:
+            order_history_states: %elcodi.core.cart.order_states%
+
+    elcodi.order_state_manager:
+        alias: elcodi.core.cart.service.order_state_manager
 
     elcodi.core.cart.service.cart_session_manager:
         class: %elcodi.core.cart.service.cart_session_manager.class%
         arguments:
             session: @session
-            session_field_name: %elcodi.core.cart.session_field_name%
+            session_field_name: %elcodi.core.cart.cart_session_field_name%
+            save_in_session: %elcodi.core.cart.cart_save_in_session%
 
     elcodi.cart_session_manager:
         alias: elcodi.core.cart.service.cart_session_manager
@@ -55,6 +58,7 @@ services:
     elcodi.core.cart.wrapper.cart_wrapper:
         class: %elcodi.core.cart.wrapper.cart_wrapper.class%
         arguments:
+            cart_event_dispatcher: @elcodi.cart_event_dispatcher
             cart_session_manager: @elcodi.cart_session_manager
             cart_repository: @elcodi.repository.cart
             cart_factory: @elcodi.factory.cart

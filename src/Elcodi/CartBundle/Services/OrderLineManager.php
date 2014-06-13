@@ -14,41 +14,31 @@
 
 namespace Elcodi\CartBundle\Services;
 
-use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-
-use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
-use Elcodi\CartBundle\Event\OrderLineOnCreatedEvent;
-use Elcodi\CartBundle\Event\OrderLinePostCreatedEvent;
-use Elcodi\CartBundle\Event\OrderLinePreCreatedEvent;
-use Elcodi\CartBundle\Factory\OrderLineFactory;
-use Elcodi\CartBundle\ElcodiCartEvents;
-use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
+use Elcodi\CartBundle\EventDispatcher\OrderLineStateEventDispatcher;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface;
-use Elcodi\CartBundle\Event\OrderLineStatePostChangeEvent;
+use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 use Elcodi\CartBundle\Factory\OrderLineHistoryFactory;
-use Elcodi\CartBundle\Event\OrderLineStatePreChangeEvent;
-use Elcodi\CartBundle\Exception\OrderLineStateChangeNotReachableException;
+use Elcodi\CartBundle\Factory\OrderLineFactory;
 
 /**
  * Order Line History manager
+ *
+ * Manages all histories in specific OrderLine
+ *
+ * Api Methods:
+ *
+ * * addStateToOrderLine(OrderInterface,OrderLineInterface, $newState) : self
+ * * checkOrderLineCanChangeToState(OrderLineInterface, $newState) : boolean
  */
 class OrderLineManager
 {
     /**
-     * @var ObjectManager
+     * @var OrderLineStateEventDispatcher
      *
-     * Manager
+     * OrderLineStateEventDispatcher
      */
-    protected $manager;
-
-    /**
-     * @var EventDispatcherInterface
-     *
-     * EventDispatcherInterface instance
-     */
-    protected $eventDispatcher;
+    protected $orderLineStateEventDispatcher;
 
     /**
      * @var OrderLineHistoryFactory
@@ -65,84 +55,32 @@ class OrderLineManager
     protected $orderLineFactory;
 
     /**
-     * @var array
+     * @var OrderStateManager
      *
-     * Valid state transitions in the form
-     *
-     *     array(
-     *         'initialstate1' => array(
-     *             'targetstate1',
-     *              ... ,
-     *             'targetstateN'
-     *         ),
-     *         initialstate2' => array(
-     *             'targetstate1',
-     *             ...
-     *         )
-     *     )
+     * OrderStateManager
      */
-    protected $orderHistoryChangesAvailable;
+    protected $orderStateManager;
 
     /**
      * Construct method
      *
-     * @param ObjectManager            $manager                      Entity Manager
-     * @param EventDispatcherInterface $eventDispatcher              Event Dispatcher
-     * @param OrderLineHistoryFactory  $orderLineHistoryFactory      Order line history factory
-     * @param OrderLineFactory         $orderLineFactory             OrderLineFactory
-     * @param array                    $orderHistoryChangesAvailable Order History changes Available
+     * @param OrderLineStateEventDispatcher $orderLineStateEventDispatcher OrderLineEventDispatcher
+     * @param OrderLineHistoryFactory       $orderLineHistoryFactory       Order line history factory
+     * @param OrderLineFactory              $orderLineFactory              OrderLineFactory
+     * @param OrderStateManager             $orderStateManager             OrderStateManager
      */
     public function __construct(
-        ObjectManager $manager,
-        EventDispatcherInterface $eventDispatcher,
+        OrderLineStateEventDispatcher $orderLineStateEventDispatcher,
         OrderLineHistoryFactory $orderLineHistoryFactory,
         OrderLineFactory $orderLineFactory,
-        array $orderHistoryChangesAvailable
+        OrderStateManager $orderStateManager
     )
     {
-        $this->manager = $manager;
-        $this->eventDispatcher = $eventDispatcher;
+        $this->orderLineStateEventDispatcher = $orderLineStateEventDispatcher;
         $this->orderLineHistoryFactory = $orderLineHistoryFactory;
         $this->orderLineFactory = $orderLineFactory;
-        $this->orderHistoryChangesAvailable = $orderHistoryChangesAvailable;
-    }
+        $this->orderStateManager = $orderStateManager;
 
-    /**
-     * Given a cart line, creates a new order line
-     *
-     * @param OrderInterface    $order    Order
-     * @param CartLineInterface $cartLine Cart Line
-     *
-     * @return OrderLineInterface OrderLine created
-     */
-    public function createOrderLineByCartLine(OrderInterface $order, CartLineInterface $cartLine)
-    {
-        /**
-         * Dispatch before order created event
-         */
-        $orderPreCreatedEvent = new OrderLinePreCreatedEvent($order, $cartLine);
-        $this->eventDispatcher->dispatch(ElcodiCartEvents::ORDER_PRECREATED, $orderPreCreatedEvent);
-
-        /**
-         * @var OrderLineInterface $orderLine
-         */
-        $orderLine = $this->orderLineFactory->create();
-        $this->manager->persist($orderLine);
-        $orderLine
-            ->setOrder($order)
-            ->setProduct($cartLine->getProduct())
-            ->setQuantity($cartLine->getQuantity())
-            ->setProductAmount($cartLine->getProductAmount())
-            ->setCouponAmount($cartLine->getCouponAmount())
-            ->setAmount($cartLine->getAmount());
-
-        $orderOnCreatedEvent = new OrderLineOnCreatedEvent($order, $cartLine, $orderLine);
-        $this->eventDispatcher->dispatch(ElcodiCartEvents::ORDERLINE_ONCREATED, $orderOnCreatedEvent);
-
-        $orderPostCreatedEvent = new OrderLinePostCreatedEvent($order, $cartLine, $orderLine);
-        $this->eventDispatcher->dispatch(ElcodiCartEvents::ORDERLINE_POSTCREATED, $orderPostCreatedEvent);
-
-        return $orderLine;
     }
 
     /**
@@ -155,8 +93,10 @@ class OrderLineManager
      * @param String             $newState  New state to append
      *
      * @return OrderLineManager self Object
+     *
+     * @api
      */
-    public function toState(
+    public function addStateToOrderLine(
         OrderInterface $order,
         OrderLineInterface $orderLine,
         $newState
@@ -164,21 +104,14 @@ class OrderLineManager
     {
         $lastOrderLineHistory = $orderLine->getOrderLineHistories()->last();
 
-        /**
-         * Dispatching "pre" state changed event
-         *
-         * This event does not pass wrap new OrderLineHistory into the message,
-         * since it has not been created yet.
-         */
-        $orderLineStatePreChangeEvent = new OrderLineStatePreChangeEvent(
-            $order,
-            $orderLine,
-            $lastOrderLineHistory
-        );
-        $this->eventDispatcher->dispatch(
-            ElcodiCartEvents::ORDERLINE_STATE_PRECHANGE,
-            $orderLineStatePreChangeEvent
-        );
+        $this
+            ->orderLineStateEventDispatcher
+            ->dispatchOrderLineStatePreChangeEvent(
+                $order,
+                $orderLine,
+                $lastOrderLineHistory,
+                $newState
+            );
 
         /**
          * @var OrderLineHistoryInterface $orderLineHistory
@@ -192,22 +125,15 @@ class OrderLineManager
             ->addOrderLineHistory($orderLineHistory)
             ->setLastOrderLineHistory($orderLineHistory);
 
-        $this->manager->persist($orderLineHistory);
-        $this->manager->flush($orderLineHistory);
-
-        /**
-         * Dispatching "post"  change event
-         */
-        $orderLineStatePostChangeEvent = new OrderLineStatePostChangeEvent(
-            $order,
-            $orderLine,
-            $lastOrderLineHistory,
-            $orderLineHistory
-        );
-        $this->eventDispatcher->dispatch(
-            ElcodiCartEvents::ORDERLINE_STATE_POSTCHANGE,
-            $orderLineStatePostChangeEvent
-        );
+        $this
+            ->orderLineStateEventDispatcher
+            ->dispatchOrderLineStateOnChangeEvent(
+                $order,
+                $orderLine,
+                $lastOrderLineHistory,
+                $orderLineHistory,
+                $newState
+            );
 
         return $this;
     }
@@ -218,61 +144,24 @@ class OrderLineManager
      * @param OrderLineInterface $orderLine Orderline object
      * @param String             $newState  New state to append
      *
-     * @return boolean
+     * @return boolean OrderLine can change to desired state
+     *
+     * @api
      */
-    public function checkChangeToState(OrderLineInterface $orderLine, $newState)
+    public function checkOrderLineCanChangeToState(
+        OrderLineInterface $orderLine,
+        $newState
+    )
     {
-        $lastOrderLineHistory = $orderLine->getOrderLineHistories()->last();
+        $lastState = $orderLine
+            ->getLastOrderLineHistory()
+            ->getState();
 
-        return $this->isChangePermitted($lastOrderLineHistory, $newState);
-
-    }
-
-    /**
-     * Checks if a specific state transition is permitted
-     *
-     * @param OrderLineHistoryInterface $lastOrderLineHistory Last order line history
-     * @param string                    $newState             New state
-     *
-     * @return boolean Change can be done
-     *
-     * @throws OrderLineStateChangeNotReachableException
-     */
-    protected function isChangePermitted(OrderLineHistoryInterface $lastOrderLineHistory, $newState)
-    {
-        /**
-         * $lastState - Current line state
-         * $newState - New Stat to reach
-         */
-        $lastState = $lastOrderLineHistory->getState();
-        $availableStates = array_key_exists($lastState, $this->orderHistoryChangesAvailable)
-            ? $this->orderHistoryChangesAvailable[$lastState]
-            : array();
-
-        if (($lastState == $newState) && !in_array($newState, $availableStates)) {
-
-            /**
-             * nothing to do. If it's in the array this means we want to record
-             * repeated states
-             *
-             * Return false because any effect will cause.
-             */
-
-            return false;
-        }
-
-        /**
-         * Exception if new state is not available nor is accessible from
-         * current state
-         */
-        if (!in_array($newState, $availableStates)) {
-
-            throw new OrderLineStateChangeNotReachableException(
-                "From $lastState you cannot go to $newState, only to " .
-                implode(',', $this->orderHistoryChangesAvailable[$lastState])
+        return $this
+            ->orderStateManager
+            ->isOrderStateChangePermitted(
+                $lastState,
+                $newState
             );
-        }
-
-        return true;
     }
 }

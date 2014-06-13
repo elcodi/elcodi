@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -28,21 +28,26 @@ class OrderFactoryTest extends PHPUnit_Framework_TestCase
 {
     /**
      * Test object creation
+     *
+     * @group order
      */
     public function testCreate()
     {
         $orderLineHistoryFactory = new OrderLineHistoryFactory();
-        $orderLineHistoryFactory->setEntityNamespace('Elcodi\CartBundle\Entity\OrderLineHistory');
+        $orderLineHistoryFactory
+            ->setEntityNamespace('Elcodi\CartBundle\Entity\OrderLineHistory');
 
         $orderLineFactory = new OrderLineFactory();
         $orderLineFactory
             ->setOrderLineHistoryFactory($orderLineHistoryFactory)
             ->setInitialOrderHistoryState('new')
             ->setEntityNamespace('Elcodi\CartBundle\Entity\OrderLine');
+
         $orderLine = $orderLineFactory->create();
 
         $orderHistoryFactory = new OrderHistoryFactory();
-        $orderHistoryFactory->setEntityNamespace('Elcodi\CartBundle\Entity\OrderHistory');
+        $orderHistoryFactory
+            ->setEntityNamespace('Elcodi\CartBundle\Entity\OrderHistory');
 
         $orderFactory = new OrderFactory();
         $orderFactory
@@ -53,18 +58,61 @@ class OrderFactoryTest extends PHPUnit_Framework_TestCase
         $order = $orderFactory->create();
         $order->addOrderLine($orderLine);
 
-        $this->assertCount(1, $order->getOrderHistories());
-        $this->assertInstanceOf('Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface', $order->getOrderHistories()->first());
-        $this->assertEquals('new', $order->getOrderHistories()->first()->getState());
-        $this->assertInstanceOf('Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface', $order->getLastOrderHistory());
-        $this->assertSame($order->getOrderHistories()->first(), $order->getLastOrderHistory());
+        $this->assertCount(
+            1,
+            $order->getOrderHistories()
+        );
 
-        $this->assertCount(1, $order->getOrderLines());
+        $this->assertInstanceOf(
+            'Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface',
+            $order->getOrderHistories()->first()
+        );
+
+        $this->assertEquals(
+            'new',
+            $order->getOrderHistories()->first()->getState()
+        );
+
+        $this->assertInstanceOf(
+            'Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface',
+            $order->getLastOrderHistory()
+        );
+
+        $this->assertSame(
+            $order->getOrderHistories()->first(),
+            $order->getLastOrderHistory()
+        );
+
+        $this->assertCount(
+            1,
+            $order->getOrderLines()
+        );
+
         $orderLine = $order->getOrderLines()->first();
-        $this->assertCount(1, $orderLine->getOrderLineHistories());
-        $this->assertInstanceOf('Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface', $orderLine->getOrderLineHistories()->first());
-        $this->assertEquals('new', $orderLine->getOrderLineHistories()->first()->getState());
-        $this->assertInstanceOf('Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface', $orderLine->getLastOrderLineHistory());
-        $this->assertSame($orderLine->getOrderLineHistories()->first(), $orderLine->getLastOrderLineHistory());
+
+        $this->assertCount(
+            1,
+            $orderLine->getOrderLineHistories()
+        );
+
+        $this->assertInstanceOf(
+            'Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface',
+            $orderLine->getOrderLineHistories()->first()
+        );
+
+        $this->assertEquals(
+            $orderLine->getOrderLineHistories()->first()->getState(),
+            'new'
+        );
+
+        $this->assertInstanceOf(
+            'Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface',
+            $orderLine->getLastOrderLineHistory()
+        );
+
+        $this->assertSame(
+            $orderLine->getOrderLineHistories()->first(),
+            $orderLine->getLastOrderLineHistory()
+        );
     }
 }

@@ -1,0 +1,18 @@
+services:
+
+    #
+    # Object Managers
+    #
+    elcodi.object_manager.cart_coupon:
+        class: Doctrine\Common\Persistence\ObjectManager
+        factory_service: elcodi.manager_provider
+        factory_method: getManagerByEntityNamespace
+        arguments:
+            cart_namespace: %elcodi.core.cart_coupon.entity.cart_coupon.class%
+
+    elcodi.object_manager.order_coupon:
+        class: Doctrine\Common\Persistence\ObjectManager
+        factory_service: elcodi.manager_provider
+        factory_method: getManagerByEntityNamespace
+        arguments:
+            cart_namespace: %elcodi.core.cart_coupon.entity.order_coupon.class%

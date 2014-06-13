@@ -1,9 +1,50 @@
 services:
-    elcodi.core.currency.manager.currency_manager:
-        class: %elcodi.core.currency.manager.currency_manager.class%
+
+    #
+    # Services
+    #
+    elcodi.core.currency.service.currency_manager:
+        class: %elcodi.core.currency.service.currency_manager.class%
         arguments:
             currency_repository: @elcodi.core.currency.repository.currency
             exchange_rates_repository: @elcodi.core.currency.repository.currency_exchange_rate
 
+    elcodi.currency_manager:
+        alias: elcodi.core.currency.service.currency_manager
+
     elcodi.core.currency.service.exchange_rates_provider:
         class: %elcodi.core.currency.service.exchange_rates_provider.class%
+
+    elcodi.exchange_rates_provider:
+        alias: elcodi.core.currency.service.exchange_rates_provider
+
+    elcodi.core.currency.service.currency_session_manager:
+        class: %elcodi.core.currency.service.currency_session_manager.class%
+        arguments:
+            session: @session
+            session_field_name: %elcodi.core.currency.session_field_name%
+
+    elcodi.currency_session_manager:
+        alias: elcodi.core.currency.service.currency_session_manager
+
+    elcodi.core.currency.service.currency_converter:
+        class: %elcodi.core.currency.service.currency_converter.class%
+        arguments:
+            exchange_rates: @=service('elcodi.core.currency.service.currency_manager').getExchangeRateList(parameter('elcodi.core.currency.default_currency'))
+            currency_symbols: @=service('elcodi.core.currency.service.currency_manager').getSymbols()
+
+    elcodi.currency_converter:
+        alias: elcodi.core.currency.service.currency_converter
+
+    #
+    # Wrappers
+    #
+    elcodi.core.currency.wrapper.currency:
+        class: %elcodi.core.currency.wrapper.currency.class%
+        arguments:
+            currency_session_manager: @elcodi.currency_session_manager
+            currency_repository: @elcodi.repository.currency
+            default_currency: %elcodi.core.currency.default_currency%
+
+    elcodi.currency_wrapper:
+        alias: elcodi.core.currency.wrapper.currency

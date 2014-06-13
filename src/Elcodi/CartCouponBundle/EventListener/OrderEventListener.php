@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
 namespace Elcodi\CartCouponBundle\EventListener;
 
 use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\CartBundle\Event\OrderOnCreatedEvent;
 use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
-use Elcodi\CartCouponBundle\Factory\OrderCouponFactory;
+use Elcodi\CartCouponBundle\EventDispatcher\OrderCouponEventDispatcher;
 use Elcodi\CartCouponBundle\Services\CartCouponManager;
-use Elcodi\CouponBundle\EventDispatcher\CouponEventDispatcher;
+
+use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 
 /**
  * Class OrderEventListener
@@ -29,18 +29,11 @@ use Elcodi\CouponBundle\EventDispatcher\CouponEventDispatcher;
 class OrderEventListener
 {
     /**
-     * @var CouponEventDispatcher
+     * @var OrderCouponEventDispatcher
      *
-     * Coupon Event Dispatcher
+     * orderCouponEventDispatcher
      */
-    protected $couponEventDispatcher;
-
-    /**
-     * @var OrderCouponFactory
-     *
-     * OrderCouponFactory
-     */
-    protected $orderCouponFactory;
+    protected $orderCouponEventDispatcher;
 
     /**
      * @var CartCouponManager
@@ -50,64 +43,36 @@ class OrderEventListener
     protected $cartCouponManager;
 
     /**
-     * @var ObjectManager
-     *
-     * Object manager
-     */
-    protected $manager;
-
-    /**
      * construct method
      *
-     * @param CouponEventDispatcher $couponEventDispatcher CouponEventDispatcher
-     * @param OrderCouponFactory    $orderCouponFactory    OrderCouponFactory
-     * @param CartCouponManager     $cartCouponManager     CartCoupon manager
-     * @param ObjectManager         $manager               Manager
+     * @param OrderCouponEventDispatcher $orderCouponEventDispatcher OrderCouponEventDispatcher
+     * @param CartCouponManager          $cartCouponManager          CartCoupon manager
      */
     public function __construct(
-        CouponEventDispatcher $couponEventDispatcher,
-        OrderCouponFactory $orderCouponFactory,
-        CartCouponManager  $cartCouponManager,
-        ObjectManager $manager
+        OrderCouponEventDispatcher $orderCouponEventDispatcher,
+        CartCouponManager $cartCouponManager
     )
     {
-        $this->couponEventDispatcher = $couponEventDispatcher;
-        $this->orderCouponFactory = $orderCouponFactory;
+        $this->orderCouponEventDispatcher = $orderCouponEventDispatcher;
         $this->cartCouponManager = $cartCouponManager;
-        $this->manager = $manager;
     }
 
     /**
-     * New order has been created from a Cart, so Coupon value should be copied
-     * from cart to order.
+     * A new Order has been created.
+     *
+     * This method adds Coupon logic in this transformation
      *
      * @param OrderOnCreatedEvent $orderOnCreatedEvent OrderOnCreated Event
-     *
-     * @return OrderEventListener self Object
      */
-    public function onOrderOnCreatedEventCouponsValue(OrderOnCreatedEvent $orderOnCreatedEvent)
+    public function onOrderOnCreatedEvent(OrderOnCreatedEvent $orderOnCreatedEvent)
     {
         $order = $orderOnCreatedEvent->getOrder();
         $cart = $orderOnCreatedEvent->getCart();
+        $cartCouponAmount = $cart->getCouponAmount();
 
-        $order->setCouponAmount($cart->getCouponAmount());
-
-        return $this;
-    }
-
-    /**
-     * All cart coupons should me copied to new generated Order
-     *
-     * Also, per each applied Coupon, a new CouponUsedEvent should be dispatched
-     *
-     * @param OrderOnCreatedEvent $orderOnCreatedEvent OrderOnCreated Event
-     *
-     * @return OrderEventListener self Object
-     */
-    public function onOrderOnCreatedEventTransferCoupons(OrderOnCreatedEvent $orderOnCreatedEvent)
-    {
-        $order = $orderOnCreatedEvent->getOrder();
-        $cart = $orderOnCreatedEvent->getCart();
+        if ($cartCouponAmount instanceof MoneyInterface) {
+            $order->setCouponAmount($cartCouponAmount);
+        }
 
         /**
          * @var Collection $coupons
@@ -115,23 +80,18 @@ class OrderEventListener
         $coupons = $this->cartCouponManager->getCartCoupons($cart);
 
         if ($coupons->isEmpty()) {
-            return $this;
+            return;
         }
 
         $coupons->map(function (CartCouponInterface $cartCoupon) use ($order) {
 
             $coupon = $cartCoupon->getCoupon();
-            $orderCoupon = $this->orderCouponFactory->create();
-            $orderCoupon
-                ->setOrder($order)
-                ->setCoupon($coupon);
-
-            $this->manager->persist($orderCoupon);
-            $this->manager->flush($orderCoupon);
-
-            $this->couponEventDispatcher->notifyCouponUsage($coupon);
+            $this
+                ->orderCouponEventDispatcher
+                ->dispatchOrderCouponOnApplyEvent(
+                    $order,
+                    $coupon
+                );
         });
-
-        return $this;
     }
 }

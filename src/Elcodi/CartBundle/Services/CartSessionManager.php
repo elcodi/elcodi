@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -20,6 +20,13 @@ use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 
 /**
  * Class CartSessionManager
+ *
+ * Manages all cart mapping in session
+ *
+ * Api Methods:
+ *
+ * * set(Cart) : self
+ * * get() : integer
  */
 class CartSessionManager
 {
@@ -38,15 +45,28 @@ class CartSessionManager
     protected $sessionFieldName;
 
     /**
+     * @var boolean
+     *
+     * Save cart in session
+     */
+    protected $saveInSession;
+
+    /**
      * Construct method
      *
      * @param SessionInterface $session          HTTP session
-     * @param string           $sessionFieldName Session key representing customer id
+     * @param string           $sessionFieldName Session key representing cart
+     * @param boolean          $saveInSession    save cart in session
      */
-    public function __construct(SessionInterface $session, $sessionFieldName)
+    public function __construct(
+        SessionInterface $session,
+        $sessionFieldName,
+        $saveInSession
+    )
     {
         $this->session = $session;
         $this->sessionFieldName = $sessionFieldName;
+        $this->saveInSession = $saveInSession;
     }
 
     /**
@@ -60,7 +80,16 @@ class CartSessionManager
      */
     public function set(CartInterface $cart)
     {
-        $this->session->set($this->sessionFieldName, $cart->getId());
+        if (!$this->saveInSession) {
+            return $this;
+        }
+
+        $this
+            ->session
+            ->set(
+                $this->sessionFieldName,
+                $cart->getId()
+            );
 
         return $this;
     }
@@ -74,6 +103,8 @@ class CartSessionManager
      */
     public function get()
     {
-        return $this->session->get($this->sessionFieldName);
+        return $this
+            ->session
+            ->get($this->sessionFieldName);
     }
 }
