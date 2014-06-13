@@ -43,7 +43,7 @@ class NullMoney implements MoneyInterface
      */
     public function isLessThan(MoneyInterface $other)
     {
-        return false;
+        return null;
     }
 
     /**
@@ -67,7 +67,7 @@ class NullMoney implements MoneyInterface
      */
     public function equals(MoneyInterface $other)
     {
-        return false;
+        return null;
     }
 
     /**
