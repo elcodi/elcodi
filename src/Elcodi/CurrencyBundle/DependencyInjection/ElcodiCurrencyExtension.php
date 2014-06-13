@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -67,7 +67,8 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
     protected function getParametrizationValues(array $config)
     {
         return [
-            'elcodi.core.currency.default_currency' => $config['default_currency'],
+            'elcodi.core.currency.default_currency' => $config['currency']['default_currency'],
+            'elcodi.core.currency.session_field_name' => $config['currency']['session_field_name'],
         ];
     }
 
@@ -80,11 +81,11 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
     {
         return [
             'classes',
-            'formTypes',
             'services',
             'factories',
             'twig',
             'repositories',
+            'objectManagers',
         ];
     }
 

@@ -15,6 +15,7 @@
 namespace Elcodi\CartBundle\Wrapper;
 
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
+use Elcodi\CartBundle\EventDispatcher\CartEventDispatcher;
 use Elcodi\CartBundle\Factory\CartFactory;
 use Elcodi\CartBundle\Repository\CartRepository;
 use Elcodi\CartBundle\Services\CartSessionManager;
@@ -26,6 +27,13 @@ use Elcodi\UserBundle\Wrapper\CustomerWrapper;
  */
 class CartWrapper
 {
+    /**
+     * @var CartEventDispatcher
+     *
+     * Cart EventDispatcher
+     */
+    protected $cartEventDispatcher;
+
     /**
      * @var CartSessionManager
      *
@@ -64,18 +72,21 @@ class CartWrapper
     /**
      * Construct method
      *
-     * @param CartSessionManager $cartSessionManager CartSessionManager
-     * @param CartRepository     $cartRepository     Cart Repository
-     * @param CartFactory        $cartFactory        Cart Factory
-     * @param CustomerWrapper    $customerWrapper    Customer Wrapper
+     * @param CartEventDispatcher $cartEventDispatcher Cart EventDispatcher
+     * @param CartSessionManager  $cartSessionManager  CartSessionManager
+     * @param CartRepository      $cartRepository      Cart Repository
+     * @param CartFactory         $cartFactory         Cart Factory
+     * @param CustomerWrapper     $customerWrapper     Customer Wrapper
      */
     public function __construct(
+        CartEventDispatcher $cartEventDispatcher,
         CartSessionManager $cartSessionManager,
         CartRepository $cartRepository,
         CartFactory $cartFactory,
         CustomerWrapper $customerWrapper
     )
     {
+        $this->cartEventDispatcher = $cartEventDispatcher;
         $this->cartSessionManager = $cartSessionManager;
         $this->cartRepository = $cartRepository;
         $this->cartFactory = $cartFactory;
@@ -113,10 +124,19 @@ class CartWrapper
     public function loadCart()
     {
         $customer = $this->customerWrapper->loadCustomer();
+        $cartFromCustomer = $this->getCustomerCart($customer);
+        $cartFromSession = $this->getCartFromSession();
 
-        $this->cart = $customer->getId()
-            ? $this->getCustomerCart($customer)
-            : $this->getCartFromSession();
+        $this->cart = $this
+            ->resolveCarts(
+                $customer,
+                $cartFromCustomer,
+                $cartFromSession
+            );
+
+        $this
+            ->cartEventDispatcher
+            ->dispatchCartLoadEvents($this->cart);
 
         return $this->cart;
     }
@@ -149,23 +169,15 @@ class CartWrapper
      */
     protected function getCustomerCart(CustomerInterface $customer)
     {
-        $cart = $customer
+        $customerCart = $customer
             ->getCarts()
             ->first();
 
-        if (($cart instanceof CartInterface) && !$cart->isOrdered()) {
-
-            $this
-                ->cartSessionManager
-                ->set($cart);
-
-            return $cart;
+        if ($customerCart instanceof CartInterface) {
+            return $customerCart;
         }
 
-        $cart = $this->cartFactory->create();
-        $cart->setCustomer($customer);
-
-        return $cart;
+        return null;
     }
 
     /**
@@ -176,22 +188,67 @@ class CartWrapper
      * Otherwise, creates new one
      * If session has not a cart, creates a new one and returns it
      *
-     * @return CartInterface Cart
+     * @return CartInterface|null Cart
      */
     public function getCartFromSession()
     {
         $cartIdInSession = $this->cartSessionManager->get();
 
         if (!$cartIdInSession) {
-            return $this->cartFactory->create();
+            return null;
         }
 
-        $cart = $this
+        return $this
             ->cartRepository
             ->find($cartIdInSession);
+    }
 
-        return ($cart instanceof CartInterface)
-            ? $cart
-            : $this->cartFactory->create();
+    /**
+     * Resolve carts given customer cart and session cart
+     *
+     * @param CustomerInterface $customer         Customer
+     * @param CartInterface     $cartFromCustomer Customer Cart
+     * @param CartInterface     $cartFromSession  Cart loaded from session
+     *
+     * @return CartInterface Cart resolved
+     */
+    protected function resolveCarts(
+        CustomerInterface $customer,
+        CartInterface $cartFromCustomer = null,
+        CartInterface $cartFromSession = null
+    )
+    {
+        if ($cartFromCustomer) {
+            return $cartFromCustomer;
+        } else {
+
+            if (!$cartFromSession) {
+
+                /**
+                 * Customer has any cart not ordered, and there is no cart in
+                 * session.
+                 *
+                 * We create a new Cart
+                 */
+                $cart = $this->cartFactory->create();
+            } else {
+
+                /**
+                 * Customer has any cart not ordered, and there is a cart loaded
+                 * in session.
+                 *
+                 * If customer exists as a persisted entity, we save this cart
+                 * as Customer cart
+                 */
+                $cart = $cartFromSession;
+
+                if ($customer->getId()) {
+                    $cart->setCustomer($customer);
+                    $customer->addCart($cart);
+                }
+            }
+
+            return $cart;
+        }
     }
 }

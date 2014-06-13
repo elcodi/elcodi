@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -24,35 +24,7 @@ class ElcodiCartEvents
      */
 
     /**
-     * Cart check events
-     */
-
-    /**
-     * This event is dispatched before the Cart is checked by the bundle
-     *
-     * event.name : cart.precheck
-     * event.class : CartPreCheckEvent
-     */
-    const CART_PRECHECK = 'cart.precheck';
-
-    /**
-     * This event is dispatched when the Cart is checked by the bundle
-     *
-     * event.name : cart.oncheck
-     * event.class : CartOnCheckEvent
-     */
-    const CART_ONCHECK = 'cart.oncheck';
-
-    /**
-     * This event is dispatched after the Cart is checked by the bundle
-     *
-     * event.name : cart.postcheck
-     * event.class : CartPostCheckEvent
-     */
-    const CART_POSTCHECK = 'cart.postcheck';
-
-    /**
-     * Cart load events
+     * Cart events
      */
 
     /**
@@ -72,12 +44,48 @@ class ElcodiCartEvents
     const CART_ONLOAD = 'cart.onload';
 
     /**
-     * This event is dispatched after the Cart is loaded
+     * This event is dispatched when the Cart emptied
      *
-     * event.name : cart.postload
-     * event.class : CartPostLoadEvent
+     * event.name : cart.onempty
+     * event.class : CartOnEmptyEvent
      */
-    const CART_POSTLOAD = 'cart.postload';
+    const CART_ONEMPTY = 'cart.onempty';
+
+    /**
+     * This event is dispatched when an inconsistente is found in a cart
+     *
+     * event.name : cart.inconsistent
+     * event.class : CartInconsistentEvent
+     */
+    const CART_INCONSISTENT = 'cart.inconsistent';
+
+    /**
+     * CartLine events
+     */
+
+    /**
+     * This event is dispatched when a CartLine is being added into a Cart
+     *
+     * event.name : cart_line.onadd
+     * event.class : CartLineOnAdd
+     */
+    const CARTLINE_ONADD = 'cart_line.onadd';
+
+    /**
+     * This event is dispatched when a CartLine edited
+     *
+     * event.name : cart_line.onedit
+     * event.class : CartLineOnEdit
+     */
+    const CARTLINE_ONEDIT = 'cart_line.onedit';
+
+    /**
+     * This event is dispatched when a CartLine is removed from a Cart
+     *
+     * event.name : cart_line.onremove
+     * event.class : CartLineOnRemove
+     */
+    const CARTLINE_ONREMOVE = 'cart_line.onremove';
 
     /**
      * Order events
@@ -104,24 +112,8 @@ class ElcodiCartEvents
     const ORDER_ONCREATED = 'order.oncreated';
 
     /**
-     * This event is dispatched after an order is created
-     *
-     * event.name : order.postcreated
-     * event.class : OrderPostCreatedEvent
-     */
-    const ORDER_POSTCREATED = 'order.postcreated';
-
-    /**
      * Orderline created events
      */
-
-    /**
-     * This event is dispatched before an orderline is created
-     *
-     * event.name : orderline.precreated
-     * event.class : OrderLinePreCreatedEvent
-     */
-    const ORDERLINE_PRECREATED = 'orderline.precreated';
 
     /**
      * This event is dispatched when an orderline is created
@@ -129,15 +121,7 @@ class ElcodiCartEvents
      * event.name : orderline.oncreated
      * event.class : OrderLineOnCreatedEvent
      */
-    const ORDERLINE_ONCREATED = 'orderline.oncreated';
-
-    /**
-     * This event is dispatched after an orderline is created
-     *
-     * event.name : orderline.postcreated
-     * event.class : OrderLinePostCreatedEvent
-     */
-    const ORDERLINE_POSTCREATED = 'orderline.postcreated';
+    const ORDERLINE_ONCREATED = 'order_line.oncreated';
 
     /**
      * Order State change events
@@ -153,7 +137,7 @@ class ElcodiCartEvents
      * event.class : OrderStatePreChangeEvent
      *
      */
-    const ORDER_STATE_PRECHANGE = 'orderstate.prechange';
+    const ORDER_STATE_PRECHANGE = 'order_state.prechange';
 
     /**
      * This event is dispatched each time a new order state is added
@@ -162,10 +146,10 @@ class ElcodiCartEvents
      * having current Order object, last and current OrderHistoryObject
      *
      * event.name : orderstate.onchange
-     * event.class : OrderStatePostChangeEvent
+     * event.class : OrderStateOnChangeEvent
      *
      */
-    const ORDER_STATE_POSTCHANGE = 'orderstate.postchange';
+    const ORDER_STATE_ONCHANGE = 'order_state.onchange';
 
     /**
      * OrderLine State change events
@@ -182,7 +166,7 @@ class ElcodiCartEvents
      * event.class : OrderLineStatePreChangeEvent
      *
      */
-    const ORDERLINE_STATE_PRECHANGE = 'orderlinestate.prechange';
+    const ORDERLINE_STATE_PRECHANGE = 'order_line_state.prechange';
 
     /**
      * This event is dispatched before a new orderline state is added
@@ -191,9 +175,9 @@ class ElcodiCartEvents
      * object having current OrderLine object, last and current
      * OrderLineHistoryObject and last and current stats
      *
-     * event.name : orderlinestate.postchange
-     * event.class : OrderLineStatePostChangeEvent
+     * event.name : orderlinestate.onchange
+     * event.class : OrderLineStateOnChangeEvent
      *
      */
-    const ORDERLINE_STATE_POSTCHANGE = 'orderlinestate.postchange';
+    const ORDERLINE_STATE_ONCHANGE = 'order_line_state.onchange';
 }

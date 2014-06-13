@@ -8,14 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
 namespace Elcodi\CouponBundle\Services;
 
 use DateTime;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 use Elcodi\CouponBundle\Factory\CouponFactory;
 use Elcodi\CoreBundle\Generator\Interfaces\GeneratorInterface;
@@ -37,13 +36,6 @@ use Elcodi\CouponBundle\Exception\CouponNotActiveException;
 class CouponManager
 {
     /**
-     * @var EventDispatcherInterface
-     *
-     * Event Dispatcher
-     */
-    protected $eventDispatcher;
-
-    /**
      * @var CouponFactory
      *
      * Coupon Factory
@@ -60,17 +52,14 @@ class CouponManager
     /**
      * Construct method
      *
-     * @param EventDispatcherInterface $eventDispatcher     Event dispatcher
-     * @param CouponFactory            $couponFactory       Coupon Factory
-     * @param GeneratorInterface       $couponCodeGenerator Generator
+     * @param CouponFactory      $couponFactory       Coupon Factory
+     * @param GeneratorInterface $couponCodeGenerator Generator
      */
     public function __construct(
-        EventDispatcherInterface $eventDispatcher,
         CouponFactory $couponFactory,
         GeneratorInterface $couponCodeGenerator
     )
     {
-        $this->eventDispatcher = $eventDispatcher;
         $this->couponFactory = $couponFactory;
         $this->couponCodeGenerator = $couponCodeGenerator;
     }
@@ -174,8 +163,8 @@ class CouponManager
             ->setCode($this->couponCodeGenerator->generate())
             ->setName($coupon->getName())
             ->setType($coupon->getType())
-            ->setValue($coupon->getValue())
-            ->setAbsoluteValue($coupon->getAbsoluteValue())
+            ->setPrice($coupon->getPrice())
+            ->setDiscount($coupon->getDiscount())
             ->setCount($coupon->getCount())
             ->setPriority($coupon->getPriority())
             ->setMinimumPurchaseAmount($coupon->getMinimumPurchaseAmount())

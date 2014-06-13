@@ -3,7 +3,8 @@ imports:
 
 framework:
     test:            ~
-    session:         ~
+    session:
+        storage_id: session.storage.mock_file
     secret:          "%secret%"
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
     form:            true
@@ -39,6 +40,10 @@ doctrine_cache:
 elcodi_media:
     images:
         filesystem: gaufrette.local_filesystem
+
+elcodi_cart:
+    cart:
+        save_in_session: false
 
 knp_gaufrette:
     adapters:

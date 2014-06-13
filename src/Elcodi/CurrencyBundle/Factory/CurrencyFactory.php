@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -25,18 +25,6 @@ use Elcodi\CurrencyBundle\Entity\Currency;
 class CurrencyFactory extends AbstractFactory
 {
     /**
-     * Default ISO code for a Currency object
-     *
-     * @var string
-     */
-    protected $defaultISOCode;
-
-    public function setDefaultIsoCode($defaultISOCode)
-    {
-        $this->defaultISOCode = $defaultISOCode;
-    }
-
-    /**
      * Creates an instance of Currency entity
      *
      * @return Currency Empty entity
@@ -50,7 +38,6 @@ class CurrencyFactory extends AbstractFactory
         $currency = new $classNamespace();
         $currency
             ->setCreatedAt(new DateTime())
-            ->setISO($this->defaultISOCode)
             ->setEnabled(true);
 
         return $currency;

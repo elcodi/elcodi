@@ -8,16 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
 namespace Elcodi\CartBundle\Tests\Functional\Services;
 
-use Elcodi\CartBundle\Entity\Cart;
-use Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface;
-use Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+
+use Elcodi\CartBundle\EventDispatcher\OrderLineStateEventDispatcher;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface;
+use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
+use Elcodi\CartBundle\Factory\OrderLineHistoryFactory;
+use Elcodi\CartBundle\Services\OrderStateManager;
+use Elcodi\CartBundle\Services\OrderLineManager;
+use Elcodi\CartBundle\Factory\OrderLineFactory;
 use Elcodi\CartBundle\Services\OrderManager;
 use Elcodi\CoreBundle\Tests\WebTestCase;
 
@@ -27,11 +32,25 @@ use Elcodi\CoreBundle\Tests\WebTestCase;
 class OrderManagerTest extends WebTestCase
 {
     /**
-     * @var Cart
+     * @var OrderManager
      *
-     * Cart
+     * OrderManager
      */
-    protected $cart;
+    protected $orderManager;
+
+    /**
+     * @var OrderLineStateEventDispatcher
+     *
+     * OrderLine State Event dispatcher
+     */
+    protected $orderLineStateEventDispatcher;
+
+    /**
+     * @var OrderLineManager
+     *
+     * OrderLineManager
+     */
+    protected $orderLineManager;
 
     /**
      * Load fixtures of these bundles
@@ -40,7 +59,7 @@ class OrderManagerTest extends WebTestCase
      */
     protected function loadSchema()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -57,118 +76,132 @@ class OrderManagerTest extends WebTestCase
     }
 
     /**
-     * Load fixtures of these bundles
-     *
-     * @return array Bundles name where fixtures should be found
-     */
-    protected function loadFixturesBundles()
-    {
-        return array(
-            'ElcodiCoreBundle',
-            'ElcodiUserBundle',
-            'ElcodiProductBundle',
-            'ElcodiCartBundle',
-        );
-    }
-
-    /**
-     * setup
+     * Setup
      */
     public function setUp()
     {
         parent::setUp();
 
-        $this->cart = $this
-            ->getRepository('elcodi.core.cart.entity.cart.class')
-            ->find(2);
+        /**
+         * @var OrderLineStateEventDispatcher $orderLineStateEventDispatcher
+         * @var OrderLineHistoryFactory       $orderLineHistoryFactory
+         * @var OrderLineFactory              $orderLineFactory
+         */
+        $orderLineStateEventDispatcher = $this->container->get('elcodi.order_line_state_event_dispatcher');
+        $orderLineHistoryFactory = $this->container->get('elcodi.factory.order_line_history');
+        $orderLineFactory = $this->container->get('elcodi.factory.order_line');
+
+        $orderLineManager = new OrderLineManager(
+            $orderLineStateEventDispatcher,
+            $orderLineHistoryFactory,
+            $orderLineFactory,
+            new OrderStateManager([
+                'A' => ['B'],
+                'B' => ['C', 'E'],
+                'C' => ['B', 'D'],
+                'D' => ['E'],
+                'E' => [],
+            ])
+        );
+
+        $this->orderManager = new OrderManager(
+            $orderLineManager,
+            new OrderStateManager([
+                'A' => ['B'],
+                'B' => ['C', 'E'],
+                'C' => ['B', 'D'],
+                'D' => ['E'],
+                'E' => [],
+            ])
+        );
+
+        $this->orderLineStateEventDispatcher = $orderLineStateEventDispatcher;
+        $this->orderLineManager = $orderLineManager;
+        $this->orderLineManager = $orderLineManager;
     }
 
     /**
-     * test createFromCart method
+     * Test right state movements
+     *
+     * @dataProvider dataCheckOrderCanChangeToState
+     * @group        order
      */
-    public function testCreateFromCart()
+    public function testCheckOrderCanChangeToState(
+        array $lastOrderLineStates,
+        $lastOrderState,
+        $newOrderState,
+        $canChange
+    )
     {
-        /**
-         * @var OrderManager $orderManager
-         */
-        $orderManager = $this->container->get('elcodi.core.cart.service.order_manager');
-        $orderInitialState = $this->container->getParameter('elcodi.core.cart.order_initial_state');
-        $order = $orderManager->createOrderFromCart($this->cart);
+        $orderLines = new ArrayCollection();
+        $orderLineFactory = $this
+            ->container
+            ->get('elcodi.factory.order_line');
 
-        $this->assertInstanceOf('Elcodi\CartBundle\Entity\Interfaces\OrderInterface', $order);
-        $this->assertSame($order->getCart(), $this->cart);
-        $this->assertCount(2, $order->getOrderLines());
-        $this->assertInstanceOf('Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface', $order->getLastOrderHistory());
-        $this->assertEquals($order->getLastOrderHistory()->getState(), $orderInitialState);
-
-        $orderHistories = $order->getOrderHistories();
-
-        /**
-         * @var OrderHistoryInterface $orderHistory
-         */
-        foreach ($orderHistories as $orderHistory) {
-            $this->assertInstanceOf('Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface', $orderHistory);
-            $this->assertEquals($orderHistory->getState(), $orderInitialState);
-        }
-
-        $orderLines = $order->getOrderLines();
-
-        /**
-         * @var OrderLineInterface $orderLine
-         */
-        foreach ($orderLines as $orderLine) {
-            $this->assertInstanceOf('Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface', $orderLine);
-            $this->assertEquals($orderLine->getLastOrderLineHistory()->getState(), $orderInitialState);
-
-            $orderLineHistories = $orderLine->getOrderLineHistories();
+        foreach ($lastOrderLineStates as $lastOrderLineState) {
 
             /**
-             * @var OrderLineHistoryInterface $orderLineHistory
+             * @var OrderLineInterface $orderLine
              */
-            foreach ($orderLineHistories as $orderLineHistory) {
-                $this->assertInstanceOf('Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface', $orderLineHistory);
-                $this->assertEquals($orderLineHistory->getState(), $orderInitialState);
-            }
+            $orderLine = $orderLineFactory->create();
+            $orderLine
+                ->getLastOrderLineHistory()
+                ->setState($lastOrderLineState);
+            $orderLine
+                ->addOrderLineHistory($orderLine
+                    ->getLastOrderLineHistory()
+                );
+
+            $orderLines->add($orderLine);
         }
+
+        /**
+         * @var OrderInterface $order
+         */
+        $order = $this
+            ->container
+            ->get('elcodi.factory.order')
+            ->create()
+            ->setOrderLines($orderLines);
+
+        $order
+            ->getLastOrderHistory()
+            ->setState($lastOrderState);
+
+        $this->assertEquals(
+            $this
+                ->orderManager
+                ->checkOrderCanChangeToState(
+                    $order,
+                    $newOrderState
+                ),
+            $canChange
+        );
     }
 
     /**
-     * Test checkChangeToStateNotAllowed method
-     *
-     * @expectedException \Elcodi\CartBundle\Exception\OrderStateChangeNotReachableException
+     * Data for testCheckOrderCanChangeToState
      */
-    public function testCheckChangeToStateNotAllowed()
+    public function dataCheckOrderCanChangeToState()
     {
-        $orderManager = $this->container->get('elcodi.core.cart.service.order_manager');
-        $order = $orderManager->createOrderFromCart($this->cart);
-        $orderManager->toState($order, 'no-exists');
-    }
-
-    /**
-     * Test checkChangeToStateAllowed
-     */
-    public function testCheckChangeToState()
-    {
-        /**
-         * @var OrderManager $orderManager
-         */
-        $orderManager = $this->container->get('elcodi.core.cart.service.order_manager');
-        $order = $orderManager->createOrderFromCart($this->cart);
-        $orderManager->toState($order, 'accepted');
-        $this->assertCount(2, $order->getOrderHistories());
-        $this->assertSame($order->getLastOrderHistory(), $order->getOrderHistories()->last());
-        $this->assertEquals('accepted', $order->getLastOrderHistory()->getState());
-
-        $orderLines = $order->getOrderLines();
-
-        /**
-         * @var OrderLineInterface $orderLine
-         */
-        foreach ($orderLines as $orderLine) {
-
-            $this->assertCount(2, $orderLine->getOrderLineHistories());
-            $this->assertSame($orderLine->getLastOrderLineHistory(), $orderLine->getOrderLineHistories()->last());
-            $this->assertEquals('accepted', $orderLine->getLastOrderLineHistory()->getState());
-        }
+        return [
+            [['A', 'A'], 'A', 'B', true],
+            [['A', 'B'], 'A', 'B', true],
+            [['B', 'B'], 'B', 'B', true],
+            [['B', 'B', 'A'], 'B', 'B', true],
+            [['B', 'A', 'A'], 'B', 'B', true],
+            [[], 'B', 'B', true],
+            [['B', 'B'], 'A', 'A', false],
+            [['B', 'B'], null, 'A', false],
+            [['B', 'B'], true, 'A', false],
+            [['B', 'B'], false, 'A', false],
+            [['B', 'B'], '', 'A', false],
+            [['', 'B'], 'A', 'A', false],
+            [[true, 'B'], 'A', 'A', false],
+            [[false, 'B'], 'A', 'A', false],
+            [[null, 'B'], 'A', 'A', false],
+            [[[], 'B'], 'A', 'A', false],
+            [[['A'], 'B'], 'A', 'A', false],
+        ];
     }
 }

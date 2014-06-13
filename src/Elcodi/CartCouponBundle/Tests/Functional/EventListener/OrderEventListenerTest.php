@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -17,7 +17,7 @@ namespace Elcodi\CartCouponBundle\Tests\Functional\EventListener;
 use Doctrine\Common\Collections\ArrayCollection;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
-use Elcodi\CartBundle\Services\OrderManager;
+use Elcodi\CartBundle\Transformer\CartOrderTransformer;
 use Elcodi\CoreBundle\Tests\WebTestCase;
 
 /**
@@ -25,16 +25,6 @@ use Elcodi\CoreBundle\Tests\WebTestCase;
  */
 class OrderEventListenerTest extends WebTestCase
 {
-    /**
-     * Load fixtures of these bundles
-     *
-     * @return array Bundles name where fixtures should be found
-     */
-    protected function loadSchema()
-    {
-        return true;
-    }
-
     /**
      * Returns the callable name of the service
      *
@@ -54,7 +44,9 @@ class OrderEventListenerTest extends WebTestCase
     {
         return array(
             'ElcodiUserBundle',
+            'ElcodiCurrencyBundle',
             'ElcodiProductBundle',
+            'ElcodiCurrencyBundle',
             'ElcodiCartBundle',
             'ElcodiCouponBundle',
             'ElcodiCartCouponBundle',
@@ -67,26 +59,55 @@ class OrderEventListenerTest extends WebTestCase
     public function testOnOrderOnCreated()
     {
         /**
-         * @var CartInterface   $cart
-         * @var OrderManager    $orderManager
-         * @var OrderInterface  $order
+         * @var CartInterface        $cart
+         * @var CartOrderTransformer $cartOrderTransformer
+         * @var OrderInterface       $order
          *
-         * @var ArrayCollection $cartCoupons
-         * @var ArrayCollection $orderCoupons
+         * @var ArrayCollection      $cartCoupons
+         * @var ArrayCollection      $orderCoupons
          */
-        $cart = $this->manager->getRepository('ElcodiCartBundle:Cart')->find(2);
-        $orderManager = $this->container->get('elcodi.core.cart.service.order_manager');
-        $order = $orderManager->createOrderFromCart($cart);
-        $this->assertEquals($cart->getCouponAmount(), $order->getCouponAmount());
-        $cartCoupons = $this->container->get('elcodi.core.cart_coupon.service.cart_coupon_manager')->getCartCoupons($cart);
-        $orderCoupons = $this->container->get('elcodi.core.cart_coupon.service.order_coupon_manager')->getOrderCoupons($order);
+        $cart = $this
+            ->getRepository('elcodi.core.cart.entity.cart.class')
+            ->find(2);
 
-        $this->assertEquals($cartCoupons->count(), $orderCoupons->count());
-        $this->assertTrue($cartCoupons->forAll(function ($_, $cartCoupon) use ($orderCoupons) {
-            return $orderCoupons->exists(function ($_, $orderCoupon) use ($cartCoupon) {
+        $this
+            ->container
+            ->get('elcodi.cart_event_dispatcher')
+            ->dispatchCartLoadEvents($cart);
 
-                return $cartCoupon->getId() === $orderCoupon->getId();
-            });
-        }));
+        $cartOrderTransformer = $this
+            ->container
+            ->get('elcodi.cart_order_transformer');
+
+        $order = $cartOrderTransformer->createOrderFromCart($cart);
+
+        $this->assertEquals(
+            $cart->getCouponAmount(),
+            $order->getCouponAmount()
+        );
+
+        $cartCoupons = $this
+            ->container
+            ->get('elcodi.cart_coupon_manager')
+            ->getCartCoupons($cart);
+
+        $orderCoupons = $this
+            ->container
+            ->get('elcodi.order_coupon_manager')
+            ->getOrderCoupons($order);
+
+        $this->assertEquals(
+            $cartCoupons->count(),
+            $orderCoupons->count()
+        );
+
+        $this->assertTrue(
+            $cartCoupons->forAll(function ($_, $cartCoupon) use ($orderCoupons) {
+                return $orderCoupons->exists(function ($_, $orderCoupon) use ($cartCoupon) {
+
+                    return $cartCoupon->getId() === $orderCoupon->getId();
+                });
+            })
+        );
     }
 }

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -16,20 +16,20 @@ namespace Elcodi\CartBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
+use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
-use Elcodi\CartBundle\Entity\Traits\PriceTrait;
 
 /**
  * Cart
  */
 class Cart extends AbstractEntity implements CartInterface
 {
-    use DateTimeTrait, PriceTrait;
+    use DateTimeTrait;
 
     /**
      * @var CustomerInterface
@@ -66,6 +66,36 @@ class Cart extends AbstractEntity implements CartInterface
      * Quantity
      */
     protected $quantity;
+
+    /**
+     * @var MoneyInterface
+     *
+     * Transient amount for products
+     *
+     * This value is not persisted, it is calculated
+     * by summing CartLine::$productAmount
+     */
+    protected $productAmount;
+
+    /**
+     * @var MoneyInterface
+     *
+     * Transient amount for coupons
+     *
+     * This value is not persisted, it is calculated
+     * by summing CartLine::$couponAmount
+     */
+    protected $couponAmount;
+
+    /**
+     * @var MoneyInterface
+     *
+     * Transient total amount
+     *
+     * This value is not persisted, it is calculated
+     * by summing CartLine::$amount
+     */
+    protected $amount;
 
     /**
      * Return the customer
@@ -228,5 +258,77 @@ class Cart extends AbstractEntity implements CartInterface
         $totalItems = array_reduce($this->cartLines->toArray(), function ($prev, $cur) { return $prev + $cur->getQuantity(); });
 
         return is_null($totalItems) ? 0 : $totalItems;
+    }
+
+    /**
+     * Set product amount
+     *
+     * @param MoneyInterface $productAmount
+     *
+     * @return CartInterface
+     */
+    public function setProductAmount(MoneyInterface $productAmount)
+    {
+        $this->productAmount = $productAmount;
+
+        return $this;
+    }
+
+    /**
+     * Get product amount
+     *
+     * @return MoneyInterface Product amount
+     */
+    public function getProductAmount()
+    {
+        return $this->productAmount;
+    }
+
+    /**
+     * Set coupon amount
+     *
+     * @param MoneyInterface $couponAmount
+     *
+     * @return CartInterface
+     */
+    public function setCouponAmount(MoneyInterface $couponAmount)
+    {
+        $this->couponAmount = $couponAmount;
+
+        return $this;
+    }
+
+    /**
+     * Get coupon amount
+     *
+     * @return MoneyInterface Coupon amount
+     */
+    public function getCouponAmount()
+    {
+        return $this->couponAmount;
+    }
+
+    /**
+     * Set amount
+     *
+     * @param MoneyInterface $amount
+     *
+     * @return CartInterface
+     */
+    public function setAmount(MoneyInterface $amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return MoneyInterface Amount
+     */
+    public function getAmount()
+    {
+        return $this->amount;
     }
 }

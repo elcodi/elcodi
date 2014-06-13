@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Elcodi package.
  *
@@ -7,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -47,7 +48,7 @@ class Money implements MoneyInterface
     /**
      * Simple Money Value Object constructor
      *
-     * @param $amount
+     * @param                   $amount
      * @param CurrencyInterface $currency
      */
     public function __construct($amount, CurrencyInterface $currency)
@@ -90,7 +91,7 @@ class Money implements MoneyInterface
      *
      * @param MoneyInterface $other
      *
-     * @return MoneyInterface
+     * @return int
      */
     public function compareTo(MoneyInterface $other)
     {
@@ -108,7 +109,7 @@ class Money implements MoneyInterface
     {
         $wrappedMoney = $this->wrappedMoney->add($this->newWrappedMoneyFromMoney($other));
 
-        return $this->newMoney($wrappedMoney->getAmount(), $other->getCurrency());
+        return Money::create($wrappedMoney->getAmount(), $other->getCurrency());
     }
 
     /**
@@ -122,7 +123,7 @@ class Money implements MoneyInterface
     {
         $wrappedMoney = $this->wrappedMoney->subtract($this->newWrappedMoneyFromMoney($other));
 
-        return $this->newMoney($wrappedMoney->getAmount(), $other->getCurrency());
+        return Money::create($wrappedMoney->getAmount(), $other->getCurrency());
     }
 
     /**
@@ -136,7 +137,7 @@ class Money implements MoneyInterface
     {
         $wrappedMoney = $this->wrappedMoney->multiply($factor);
 
-        return $this->newMoney($wrappedMoney->getAmount(), $this->getCurrency());
+        return Money::create($wrappedMoney->getAmount(), $this->getCurrency());
     }
 
     /**
@@ -180,7 +181,7 @@ class Money implements MoneyInterface
      *
      * @param MoneyInterface $money
      *
-     * @return WrappedMoney
+     * @return WrappedMoney self Object
      */
     protected function newWrappedMoneyFromMoney(MoneyInterface $money)
     {
@@ -193,13 +194,18 @@ class Money implements MoneyInterface
     /**
      * Returns a new instance of a Money object
      *
-     * @param $amount
-     * @param CurrencyInterface $currency
+     * @param integer           $amount   Amount
+     * @param CurrencyInterface $currency Currency
      *
      * @return MoneyInterface
      */
-    protected function newMoney($amount, CurrencyInterface $currency)
+    public static function create(
+        $amount,
+        CurrencyInterface $currency = null
+    )
     {
-        return new static($amount, $currency);
+        return ($currency instanceof CurrencyInterface)
+            ? new self($amount, $currency)
+            : new NullMoney();
     }
 }

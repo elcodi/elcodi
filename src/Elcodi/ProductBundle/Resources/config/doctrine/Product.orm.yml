@@ -88,12 +88,18 @@ Elcodi\ProductBundle\Entity\Product:
                 name: principal_image_id
                 referencedColumnName: id
                 nullable: true
-        currency:
+        priceCurrency:
             targetEntity: Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
             joinColumn:
-                 name: currency_id
+                 name: price_currency_id
                  referencedColumnName: id
-                 nullable: false
+                 nullable: true
+        reducedPriceCurrency:
+            targetEntity: Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                 name: reduced_price_currency_id
+                 referencedColumnName: id
+                 nullable: true
 
     manyToMany:
         categories:

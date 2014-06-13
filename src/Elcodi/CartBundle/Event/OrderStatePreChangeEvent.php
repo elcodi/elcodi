@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -17,7 +17,7 @@ namespace Elcodi\CartBundle\Event;
 use Elcodi\CartBundle\Event\Abstracts\AbstractOrderStateEvent;
 
 /**
- * Event fired when a new state is added into OrderHistory
+ * Event dispatched when a new state is added into OrderHistory
  */
 class OrderStatePreChangeEvent extends AbstractOrderStateEvent
 {

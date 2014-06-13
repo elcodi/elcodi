@@ -15,30 +15,35 @@
 namespace Elcodi\CartBundle\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Elcodi\CartBundle\Event\OrderPostCreatedEvent;
-use Elcodi\CurrencyBundle\Entity\Money;
-use Exception;
 
-use Elcodi\CartBundle\Exception\CartLineProductUnavailableException;
-use Elcodi\CartBundle\Exception\CartLineOutOfStockException;
+use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
+use Elcodi\CurrencyBundle\Entity\Money;
+use Elcodi\CurrencyBundle\Services\CurrencyConverter;
+use Elcodi\CurrencyBundle\Wrapper\CurrencyWrapper;
+use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
+use Elcodi\CartBundle\EventDispatcher\CartEventDispatcher;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
-use Elcodi\CartBundle\Event\CartOnCheckEvent;
+use Elcodi\CartBundle\Event\CartPreLoadEvent;
 use Elcodi\CartBundle\Event\CartOnLoadEvent;
 use Elcodi\CartBundle\Services\CartManager;
+use Elcodi\CartBundle\Event\OrderOnCreatedEvent;
 
 /**
  * Class CartEventListener
+ *
+ * Subscribers:
+ *
+ * * onCartPreLoad
+ *
+ * * onCartLoadPrices
+ * * onCartLoadFlush
+ * * onCartLoadQuantities
+ *
+ * * postOrderCreated
  */
 class CartEventListener
 {
-    /**
-     * @var CartManager
-     *
-     * cartManager
-     */
-    protected $cartManager;
-
     /**
      * @var ObjectManager
      *
@@ -47,35 +52,70 @@ class CartEventListener
     protected $cartObjectManager;
 
     /**
+     * @var CartEventDispatcher
+     *
+     * Cart EventDispatcher
+     */
+    protected $cartEventDispatcher;
+
+    /**
+     * @var CartManager
+     *
+     * Cart Manager
+     */
+    protected $cartManager;
+
+    /**
+     * @var CurrencyWrapper
+     *
+     * Currency Wrapper
+     */
+    protected $currencyWrapper;
+
+    /**
+     * @var CurrencyConverter
+     *
+     * Currency Converter
+     */
+    protected $currencyConverter;
+
+    /**
      * Built method
      *
-     * @param CartManager   $cartManager       Cart Manager
-     * @param ObjectManager $cartObjectManager ObjectManager for Cart entity
+     * @param ObjectManager       $cartObjectManager   ObjectManager for Cart entity
+     * @param CartEventDispatcher $cartEventDispatcher Cart event dispatcher
+     * @param CartManager         $cartManager         Cart Manager
+     * @param CurrencyWrapper     $currencyWrapper     Currency Wrapper
+     * @param CurrencyConverter   $currencyConverter   Currency Converter
      */
     public function __construct(
+        ObjectManager $cartObjectManager,
+        CartEventDispatcher $cartEventDispatcher,
         CartManager $cartManager,
-        ObjectManager $cartObjectManager
+        CurrencyWrapper $currencyWrapper,
+        CurrencyConverter $currencyConverter
     )
     {
-        $this->cartManager = $cartManager;
         $this->cartObjectManager = $cartObjectManager;
+        $this->cartEventDispatcher = $cartEventDispatcher;
+        $this->cartManager = $cartManager;
+        $this->currencyWrapper = $currencyWrapper;
+        $this->currencyConverter = $currencyConverter;
     }
 
     /**
      * Check cart integrity
      *
-     * @param CartOnCheckEvent $event Event
+     * @param CartPreLoadEvent $event Event
      *
-     * @throws CartLineOutOfStockException
-     * @throws CartLineProductUnavailableException
+     * @api
      */
-    public function onCartCheck(CartOnCheckEvent $event)
+    public function onCartPreLoad(CartPreLoadEvent $event)
     {
         /**
          * @var CartInterface $cart
          */
         $cart = $event->getCart();
-        $cartQuantity = 0;
 
         /**
          * Check every CartLine
@@ -84,48 +124,75 @@ class CartEventListener
          */
         foreach ($cart->getCartLines() as $cartLine) {
 
-            try {
-                $this->checkCartLine($cartLine);
-
-            } catch (Exception $e) {
-
-                $this->cartManager->removeLine($cart, $cartLine, false);
-            }
-
-            $cartQuantity += $cartLine->getQuantity();
+            $this->checkCartLine($cartLine);
         }
-
-        $cart->setQuantity($cartQuantity);
     }
 
     /**
-     * Load cart
+     * Load cart prices. As these prices are calculated on time, because they
+     * are not flushed into database
+     *
+     * This event listener should be subscribed after the cart flush action
      *
      * @param CartOnLoadEvent $event Event
+     *
+     * @api
      */
-    public function onCartLoad(CartOnLoadEvent $event)
+    public function onCartLoadPrices(CartOnLoadEvent $event)
     {
-        $cart = $event->getCart();
-
         /**
          * Recalculate cart amount. Prices might have
          * changed so we need to flush $cart
          */
-        $this->loadPrices($cart);
-
-        $this->cartObjectManager->flush($cart);
+        $this->loadCartPrices(
+            $event->getCart()
+        );
     }
 
     /**
-     * After an Order is created, the cart is set as Ordered
+     * Flushes all loaded cart and related entities.
      *
-     * @param OrderPostCreatedEvent $event Event
+     * @param CartOnLoadEvent $event Event
+     *
+     * @api
      */
-    public function postOrderCreated(OrderPostCreatedEvent $event)
+    public function onCartLoadFlush(CartOnLoadEvent $event)
     {
-        $cart = $event->getCart();
+        $this->cartObjectManager->persist(
+            $event->getCart()
+        );
+        $this->cartObjectManager->flush();
+    }
 
-        $cart->setOrdered(true);
+    /**
+     * Load cart quantities.
+     *
+     * This event listener should be subscribed after the cart flush action
+     *
+     * @param CartOnLoadEvent $event Event
+     *
+     * @api
+     */
+    public function onCartLoadQuantities(CartOnLoadEvent $event)
+    {
+        $this->loadCartQuantities(
+            $event->getCart()
+        );
+    }
+
+    /**
+     * After an Order is created, the cart is set as Ordered enabling related
+     * flag
+     *
+     * @param OrderOnCreatedEvent $event Event
+     *
+     * @api
+     */
+    public function onOrderCreated(OrderOnCreatedEvent $event)
+    {
+        $cart = $event
+            ->getCart()
+            ->setOrdered(true);
 
         $this->cartObjectManager->flush($cart);
     }
@@ -135,36 +202,56 @@ class CartEventListener
      *
      * @param CartLineInterface $cartLine Cart line
      *
-     * @throws CartLineOutOfStockException
-     * @throws CartLineProductUnavailableException
+     * @return CartLineInterface CartLine
      */
     protected function checkCartLine(CartLineInterface $cartLine)
     {
+        $cart = $cartLine->getCart();
         $product = $cartLine->getProduct();
 
-        if (!$product->isEnabled()) {
+        if (
+            !($product instanceof ProductInterface) ||
+            !($product->isEnabled()) ||
+            $cartLine->getQuantity() <= 0
+        ) {
+            $this->cartManager->silentRemoveLine(
+                $cart,
+                $cartLine
+            );
 
-            throw new CartLineProductUnavailableException('Current product is not available');
+            /**
+             * An inconsistent cart event is dispatched
+             */
+            $this
+                ->cartEventDispatcher
+                ->dispatchCartInconsistentEvent(
+                    $cart,
+                    $cartLine
+                );
         }
 
         if ($cartLine->getQuantity() > $product->getStock()) {
 
-            throw new CartLineOutOfStockException('Current product is out of stock');
+            $cartLine->setQuantity($product->getStock());
         }
+
+        return $cartLine;
     }
 
     /**
-     * This method calculates all prices given a Cart
+     * Calculates all the amounts for a given a Cart
      *
      * @param CartInterface $cart Cart
+     *
+     * @return CartInterface Cart
      */
-    protected function loadPrices(CartInterface $cart)
+    protected function loadCartPrices(CartInterface $cart)
     {
-        $productAmount = new Money(0, $cart->getCurrency());
-        $totalAmount = new Money(0, $cart->getCurrency());
+        $currency = $this->currencyWrapper->loadCurrency();
+        $productAmount = Money::create(0, $currency);
 
         /**
-         * Calculate max shipping delay
+         * Calculate Amount and ProductAmount
          */
         foreach ($cart->getCartLines() as $cartLine) {
 
@@ -172,13 +259,23 @@ class CartEventListener
              * @var CartLineInterface $cartLine
              */
             $cartLine = $this->loadCartLinePrices($cartLine);
-            $productAmount = $productAmount->add($cartLine->getProductAmount());
-            $totalAmount = $totalAmount->add($cartLine->getAmount());
+
+            /**
+             * @var MoneyInterface $productAmount
+             * @var MoneyInterface $totalAmount
+             */
+            $convertedProductAmount = $this
+                ->currencyConverter
+                ->convertMoney(
+                    $cartLine->getProductAmount(),
+                    $currency
+                );
+            $productAmount = $productAmount->add($convertedProductAmount);
         }
 
         $cart
             ->setProductAmount($productAmount)
-            ->setAmount($totalAmount);
+            ->setAmount($productAmount);
     }
 
     /**
@@ -198,11 +295,12 @@ class CartEventListener
          * If reducedPrice is defined, found value will be used as real product
          * price.
          */
-        if ($product->getReducedPrice()->getAmount() > 0) {
+        if ($product->getReducedPrice() instanceof Money) {
+
             $productPrice = $product->getReducedPrice();
         }
 
-        /*
+        /**
          * Setting amounts for this CartLine.
          * Line Currency has already be set when factorying CartLine
          * by CartManager::addProduct
@@ -211,5 +309,32 @@ class CartEventListener
         $cartLine->setAmount($cartLine->getProductAmount());
 
         return $cartLine;
+    }
+
+    /**
+     * This method calculates all quantities given a Cart
+     *
+     * @param CartInterface $cart Cart
+     *
+     * @return CartInterface Cart
+     */
+    protected function loadCartQuantities(CartInterface $cart)
+    {
+        $quantity = 0;
+
+        /**
+         * Calculate max shipping delay
+         */
+        foreach ($cart->getCartLines() as $cartLine) {
+
+            /**
+             * @var CartLineInterface $cartLine
+             */
+            $quantity += $cartLine->getQuantity();
+        }
+
+        $cart->setQuantity($quantity);
+
+        return $cart;
     }
 }

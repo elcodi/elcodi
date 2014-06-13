@@ -8,16 +8,32 @@ services:
         arguments:
             coupon_manager: @elcodi.core.coupon.service.coupon_manager
             cart_coupon_manager: @elcodi.core.cart_coupon.service.cart_coupon_manager
+            currency_wrapper: @elcodi.currency_wrapper
         tags:
-            - { name: kernel.event_listener, event: cart.onload, method: onCartOnLoad }
+            - { name: kernel.event_listener, event: cart.onload, method: onCartLoadCoupons, priority: -32 }
 
     elcodi.core.cart_coupon.event_listener.order:
         class: %elcodi.core.cart_coupon.event_listener.order.class%
         arguments:
-            coupon_event_dispatcher: @elcodi.core.coupon.event_dispatchers.coupon
-            order_coupon_factory: @elcodi.core.cart_coupon.factory.order_coupon
-            cart_coupon_manager: @elcodi.core.cart_coupon.service.cart_coupon_manager
-            manager: @doctrine.orm.entity_manager
+            order_coupon_event_dispatcher: @elcodi.order_coupon_event_dispatcher
+            cart_coupon_manager: @elcodi.cart_coupon_manager
         tags:
-            - { name: kernel.event_listener, event: order.oncreated, method: onOrderOnCreatedEventCouponsValue }
-            - { name: kernel.event_listener, event: order.oncreated, method: onOrderOnCreatedEventTransferCoupons }
+            - { name: kernel.event_listener, event: order.oncreated, method: onOrderOnCreatedEvent, priority: -16 }
+
+    elcodi.core.cart_coupon.event_listener.cart_coupon:
+        class: %elcodi.core.cart_coupon.event_listener.cart_coupon.class%
+        arguments:
+            cart_coupon_object_manager: @elcodi.object_manager.cart_coupon
+            cart_coupon_factory: @elcodi.factory.cart_coupon
+        tags:
+            - { name: kernel.event_listener, event: cart_coupon.onapply, method: onCartCouponApply, priority: 0 }
+            - { name: kernel.event_listener, event: cart_coupon.onremove, method: onCartCouponRemove, priority: 0 }
+
+    elcodi.core.cart_coupon.event_listener.order_coupon:
+        class: %elcodi.core.cart_coupon.event_listener.order_coupon.class%
+        arguments:
+            order_coupon_object_manager: @elcodi.object_manager.order_coupon
+            coupon_event_dispatcher: @elcodi.coupon_event_dispatcher
+            order_coupon_factory: @elcodi.factory.order_coupon
+        tags:
+            - { name: kernel.event_listener, event: order_coupon.onapply, method: onOrderCouponApply, priority: 0 }

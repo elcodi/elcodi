@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author ##author_placeholder
+ * @author  ##author_placeholder
  * @version ##version_placeholder##
  */
 
@@ -16,6 +16,7 @@ namespace Elcodi\CartBundle\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
+use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 
 /**
@@ -154,4 +155,20 @@ interface OrderInterface extends PriceInterface
      * @return OrderHistoryInterface LastOrderHistory
      */
     public function getLastOrderHistory();
+
+    /**
+     * Gets the Coupon amount with tax
+     *
+     * @return MoneyInterface
+     */
+    public function getCouponAmount();
+
+    /**
+     * Sets the Coupon amount with tax
+     *
+     * @param MoneyInterface $couponAmount coupon amount
+     *
+     * @return OrderInterface
+     */
+    public function setCouponAmount(MoneyInterface $couponAmount);
 }

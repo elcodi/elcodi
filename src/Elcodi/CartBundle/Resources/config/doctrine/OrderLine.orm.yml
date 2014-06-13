@@ -9,12 +9,6 @@ Elcodi\CartBundle\Entity\OrderLine:
             nullable: false
             precision: 10
             scale: 2
-        couponAmount:
-            column: coupon_amount
-            type: decimal
-            nullable: true
-            precision: 10
-            scale: 2
         amount:
             column: amount
             type: decimal
@@ -38,6 +32,7 @@ Elcodi\CartBundle\Entity\OrderLine:
             targetEntity: Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface
             mappedBy: orderLine
             cascade: [ all ]
+            orphanRemoval: true
 
     manyToOne:
         order:
