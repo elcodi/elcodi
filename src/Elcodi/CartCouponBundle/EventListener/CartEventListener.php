@@ -68,16 +68,19 @@ class CartEventListener
      * @param CouponManager     $couponManager     Coupon manager
      * @param CartCouponManager $cartCouponManager Cart coupon manager
      * @param CurrencyWrapper   $currencyWrapper   Currency wrapper
+     * @param CurrencyConverter $currencyConverter Currency converter
      */
     public function __construct(
         CouponManager $couponManager,
         CartCouponManager $cartCouponManager,
-        CurrencyWrapper $currencyWrapper
+        CurrencyWrapper $currencyWrapper,
+        CurrencyConverter $currencyConverter
     )
     {
         $this->couponManager = $couponManager;
         $this->cartCouponManager = $cartCouponManager;
         $this->currencyWrapper = $currencyWrapper;
+        $this->currencyConverter = $currencyConverter;
     }
 
     /**
