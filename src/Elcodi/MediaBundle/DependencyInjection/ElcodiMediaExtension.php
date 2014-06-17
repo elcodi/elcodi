@@ -8,8 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author  ##author_placeholder
- * @version ##version_placeholder##
+ * Feel free to edit as you please, and have fun.
+ *
+ * @author Marc Morera <yuhu@mmoreram.com>
+ * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
 namespace Elcodi\MediaBundle\DependencyInjection;
@@ -61,9 +63,11 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
      *      ...
      * );
      *
+     * @param array $config Configuration
+     *
      * @return array Config files
      */
-    public function getConfigFiles()
+    public function getConfigFiles(array $config)
     {
         return [
             'classes',

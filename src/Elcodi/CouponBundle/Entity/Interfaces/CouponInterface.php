@@ -8,8 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author  ##author_placeholder
- * @version ##version_placeholder##
+ * Feel free to edit as you please, and have fun.
+ *
+ * @author Marc Morera <yuhu@mmoreram.com>
+ * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
 namespace Elcodi\CouponBundle\Entity\Interfaces;
@@ -27,7 +29,7 @@ interface CouponInterface
      *
      * @param string $code Code
      *
-     * @return Object self Object
+     * @return CouponInterface self Object
      */
     public function setCode($code);
 
@@ -43,7 +45,7 @@ interface CouponInterface
      *
      * @param string $name
      *
-     * @return Object self Object
+     * @return CouponInterface self Object
      */
     public function setName($name);
 
@@ -59,7 +61,7 @@ interface CouponInterface
      *
      * @param int $type Type
      *
-     * @return Object self Object
+     * @return CouponInterface self Object
      */
     public function setType($type);
 
@@ -75,7 +77,7 @@ interface CouponInterface
      *
      * @param int $enforcement Enforcement
      *
-     * @return Object Self object
+     * @return CouponInterface Self object
      */
     public function setEnforcement($enforcement);
 
@@ -91,7 +93,7 @@ interface CouponInterface
      *
      * @param MoneyInterface $amount Price
      *
-     * @return Object self Object
+     * @return CouponInterface self Object
      */
     public function setPrice(MoneyInterface $amount);
 
@@ -107,7 +109,7 @@ interface CouponInterface
      *
      * @param int $discount Discount
      *
-     * @return Object self Object
+     * @return CouponInterface self Object
      */
     public function setDiscount($discount);
 
@@ -123,7 +125,7 @@ interface CouponInterface
      *
      * @param MoneyInterface $amount Absolute Price
      *
-     * @return Object self Object
+     * @return CouponInterface self Object
      */
     public function setAbsolutePrice(MoneyInterface $amount);
 
@@ -139,7 +141,7 @@ interface CouponInterface
      *
      * @param integer $count
      *
-     * @return Object self Object
+     * @return CouponInterface self Object
      */
     public function setCount($count);
 
@@ -155,7 +157,7 @@ interface CouponInterface
      *
      * @param integer $used
      *
-     * @return Object self Object
+     * @return CouponInterface self Object
      */
     public function setUsed($used);
 
@@ -171,7 +173,7 @@ interface CouponInterface
      *
      * @param integer $priority
      *
-     * @return Object self Object
+     * @return CouponInterface self Object
      */
     public function setPriority($priority);
 
@@ -187,7 +189,7 @@ interface CouponInterface
      *
      * @param float $minimumPurchaseAmount
      *
-     * @return Object self Object
+     * @return CouponInterface self Object
      */
     public function setMinimumPurchaseAmount($minimumPurchaseAmount);
 
@@ -203,7 +205,7 @@ interface CouponInterface
      *
      * @param DateTime $validFrom Valid from
      *
-     * @return Object self Object
+     * @return CouponInterface self Object
      */
     public function setValidFrom(DateTime $validFrom);
 
@@ -219,7 +221,7 @@ interface CouponInterface
      *
      * @param DateTime $validTo Valid to
      *
-     * @return Object self Object
+     * @return CouponInterface self Object
      */
     public function setValidTo(DateTime $validTo);
 
@@ -235,7 +237,7 @@ interface CouponInterface
      *
      * @param boolean $enabled enabled value
      *
-     * @return Object self Object
+     * @return CouponInterface self Object
      */
     public function setEnabled($enabled);
 
@@ -251,7 +253,7 @@ interface CouponInterface
      *
      * @param DateTime $createdAt CreatedAt value
      *
-     * @return Object self Object
+     * @return CouponInterface self Object
      */
     public function setCreatedAt(DateTime $createdAt);
 
@@ -267,7 +269,7 @@ interface CouponInterface
      *
      * @param DateTime $updatedAt Updatedate value
      *
-     * @return Object self Object
+     * @return CouponInterface self Object
      */
     public function setUpdatedAt(DateTime $updatedAt);
 

@@ -8,16 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author  ##author_placeholder
- * @version ##version_placeholder##
+ * Feel free to edit as you please, and have fun.
+ *
+ * @author Marc Morera <yuhu@mmoreram.com>
+ * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\CurrencyBundle\Services\Interfaces;
+namespace Elcodi\CurrencyBundle\Adapter\Interfaces;
 
 /**
- * Interface ExchangeRatesServiceInterface
+ * Interface ExchangeRatesAdapterInterface
  */
-interface ExchangeRatesServiceInterface
+interface ExchangeRatesAdapterInterface
 {
     /**
      * Get the latest exchange rates
@@ -25,9 +27,9 @@ interface ExchangeRatesServiceInterface
      * @param array  $symbols array of currency codes to get the rates for.
      * @param string $base    Base currency, default NULL (gets it from config)
      *
-     * @return array
+     * @return array exchange rates
      */
-    public function getLatest(array $symbols = array(), $base = null);
+    public function getExchangeRates(array $symbols = array(), $base = null);
 
     /**
      * Gets a list of all available currencies

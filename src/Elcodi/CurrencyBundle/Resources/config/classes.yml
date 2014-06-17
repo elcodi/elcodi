@@ -21,17 +21,19 @@ parameters:
     #
     # Services
     #
-    elcodi.core.currency.service.exchange_rates_provider.class: Elcodi\CurrencyBundle\Provider\DummyExchangeRatesProvider
     elcodi.core.currency.service.currency_manager.class: Elcodi\CurrencyBundle\Services\CurrencyManager
     elcodi.core.currency.service.currency_converter.class: Elcodi\CurrencyBundle\Services\CurrencyConverter
+    elcodi.core.currency.service.currency_session_manager.class: Elcodi\CurrencyBundle\Services\CurrencySessionManager
+
+    #
+    # Providers
+    #
+    elcodi.core.currency.service.exchange_rates_provider.class: Elcodi\CurrencyBundle\Services\ExchangeRatesProvider
 
     #
     # Twig extensions
     #
     elcodi.core.currency.twig_extension.print_money.class: Elcodi\CurrencyBundle\Twig\PrintMoneyExtension
-    elcodi.core.currency.service.exchange_rates_provider.class: Elcodi\CurrencyBundle\Provider\DummyExchangeRatesProvider
-    elcodi.core.currency.manager.currency_manager.class: Elcodi\CurrencyBundle\Manager\CurrencyManager
-    elcodi.core.currency.service.currency_session_manager.class: Elcodi\CurrencyBundle\Services\CurrencySessionManager
 
     #
     # Wrappers

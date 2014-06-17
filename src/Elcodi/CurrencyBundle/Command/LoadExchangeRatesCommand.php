@@ -8,8 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author  ##author_placeholder
- * @version ##version_placeholder##
+ * Feel free to edit as you please, and have fun.
+ *
+ * @author Marc Morera <yuhu@mmoreram.com>
+ * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
 namespace Elcodi\CurrencyBundle\Command;
@@ -48,28 +50,42 @@ class LoadExchangeRatesCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         //get the exchange rates provider for the CurrencyBundle
-        $exchangeRateProvider = $this->getContainer()
+        $exchangeRateProvider = $this
+            ->getContainer()
             ->get('elcodi.core.currency.service.exchange_rates_provider');
 
         //get all available currencies
-        $currencyRepository = $this->getContainer()->get('doctrine')->getManager()
+        $currencyRepository = $this
+            ->getContainer()
+            ->get('doctrine')
+            ->getManager()
             ->getRepository('ElcodiCurrencyBundle:Currency');
 
         //get base currency code
-        $baseCurrencyCode = $this->getContainer()->getParameter(
-            'elcodi.core.currency.default_currency'
-        );
+        $baseCurrencyCode = $this
+            ->getContainer()
+            ->getParameter(
+                'elcodi.core.currency.default_currency'
+            );
 
         //get the factory to get new CurrencyExchangeInterface instances
-        $currencyExchangeRatesFactory = $this->getContainer()->get(
-            'elcodi.core.currency.factory.currency_exchange_rate'
-        );
+        $currencyExchangeRatesFactory = $this
+            ->getContainer()
+            ->get(
+                'elcodi.core.currency.factory.currency_exchange_rate'
+            );
 
         //get the manager
-        $manager = $this->getContainer()->get('doctrine')->getManager();
+        $manager = $this
+            ->getContainer()
+            ->get('doctrine')
+            ->getManager();
 
         //get all active currencies
-        $currencies = $currencyRepository->findBy(['deleted' => false, 'enabled' => true]);
+        $currencies = $currencyRepository
+            ->findBy([
+                'enabled' => true
+            ]);
 
         //extract target currency codes
         $currenciesCodes = array();
@@ -81,23 +97,32 @@ class LoadExchangeRatesCommand extends ContainerAwareCommand
 
         //get rates for all of the enabled and active currencies
         $rates = $exchangeRateProvider->getExchangeRates($baseCurrencyCode, $currenciesCodes);
+var_dump($rates);die();
 
-        $currencyExchangeRatesRepository = $this->getContainer()->get('doctrine')->getManager()
+        $currencyExchangeRatesRepository = $this
+            ->getContainer()
+            ->get('doctrine')
+            ->getManager()
             ->getRepository('ElcodiCurrencyBundle:CurrencyExchangeRate');
 
         foreach ($rates as $code => $rate) {
-            $sourceCurrency = $currencyRepository->findOneByIso(['iso' => $baseCurrencyCode]);
-            $targetCurrency = $currencyRepository->findOneByIso(['iso' => $code]);
+
+            $sourceCurrency = $currencyRepository->findOneByIso([
+                'iso' => $baseCurrencyCode
+            ]);
+
+            $targetCurrency = $currencyRepository->findOneByIso([
+                'iso' => $code
+            ]);
 
             //check if this is a new exchange rate, or if we have to create a new one
-            $exchangeRate = $currencyExchangeRatesRepository->findOneBy(
-                [
-                    'sourceCurrency' => $sourceCurrency,
-                    'targetCurrency' => $targetCurrency
-                ]
-            );
+            $exchangeRate = $currencyExchangeRatesRepository->findOneBy([
+                'sourceCurrency' => $sourceCurrency,
+                'targetCurrency' => $targetCurrency
+            ]);
 
             if (!($exchangeRate instanceof CurrencyExchangeRateInterface)) {
+
                 $exchangeRate = $currencyExchangeRatesFactory->create();
             }
 
@@ -106,9 +131,11 @@ class LoadExchangeRatesCommand extends ContainerAwareCommand
             $exchangeRate->setTargetCurrency($targetCurrency);
 
             if (!$exchangeRate->getId()) {
+
                 $manager->persist($exchangeRate);
             }
         }
+
         $manager->flush();
     }
 }

@@ -8,8 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author  ##author_placeholder
- * @version ##version_placeholder##
+ * Feel free to edit as you please, and have fun.
+ *
+ * @author Marc Morera <yuhu@mmoreram.com>
+ * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
 namespace Elcodi\CurrencyBundle\Services;
@@ -28,32 +30,46 @@ use Elcodi\CurrencyBundle\Exception\CurrencyNotConvertibleException;
 class CurrencyConverter
 {
     /**
-     * @var array
+     * @var boolean
      *
-     * An array with currencyExchange rates
+     * Multiply
      */
-    protected $currencyExchangeRates;
+    const MULTIPLY = true;
 
     /**
-     * @var array
+     * @var boolean
      *
-     * An array with the currency symbols
+     * Multiply
      */
-    protected $currencySymbols;
+    const DIVIDE = false;
+
+    /**
+     * @var CurrencyManager
+     *
+     * Currency manager
+     */
+    protected $currencyManager;
+
+    /**
+     * @var string
+     *
+     * Currency base
+     */
+    protected $currencyBase;
 
     /**
      * Construct method
      *
-     * @param array $currencyExchangeRates list of exchange rates
-     * @param array $currencySymbols       list of currency symbols
+     * @param CurrencyManager $currencyManager Currency Manager
+     * @param string          $currencyBase    Currency base
      */
     public function __construct(
-        array $currencyExchangeRates,
-        array $currencySymbols
+        CurrencyManager $currencyManager,
+        $currencyBase
     )
     {
-        $this->currencyExchangeRates = $currencyExchangeRates;
-        $this->currencySymbols = $currencySymbols;
+        $this->currencyManager = $currencyManager;
+        $this->currencyBase = $currencyBase;
     }
 
     /**
@@ -100,36 +116,94 @@ class CurrencyConverter
      *
      * @throws CurrencyNotConvertibleException Currencies cannot be converted
      */
-    public function convertCurrency(
+    protected function convertCurrency(
         CurrencyInterface $currencyFrom,
         CurrencyInterface $currencyTo,
         $amount
     )
     {
-        $currencyRate = 1.0;
-        $isoCurrencyFrom = $currencyFrom->getIso();
-        $isoCurrencyTo = $currencyTo->getIso();
-
-        if ($currencyFrom->getId() != $currencyTo->getId()) {
-
-            if (
-                isset($this->currencyExchangeRates[$isoCurrencyFrom]) &&
-                isset($this->currencyExchangeRates[$isoCurrencyFrom][$isoCurrencyTo])
-            ) {
-
-                $currencyRate = $this->currencyExchangeRates[$isoCurrencyFrom][$isoCurrencyTo];
-
-            } else {
-
-                /**
-                 * No CurrencyRate can be found
-                 */
-                throw new CurrencyNotConvertibleException;
-            }
+        if ($currencyFrom->getIso() == $currencyTo->getIso()) {
+            return Money::create($amount, $currencyFrom);
         }
 
-        $convertedAmount = $amount * $currencyRate;
+        $convertedAmount = $this->convertBetweenIsos(
+            $currencyFrom->getIso(),
+            $currencyTo->getIso(),
+            $amount
+        );
 
         return Money::create($convertedAmount, $currencyTo);
+    }
+
+    /**
+     * Convert amount between two currencies
+     *
+     * If are the same currency, return same amount
+     *
+     * If is impossible to convert between them, throw Exception
+     *
+     * @param string  $currencyFromIso Currency iso where to convert from
+     * @param string  $currencyToIso   Currency iso where to convert to
+     * @param integer $amount          Amount to convert
+     *
+     * @return float value converted
+     *
+     * @throws CurrencyNotConvertibleException Currencies cannot be converted
+     */
+    protected function convertBetweenIsos(
+        $currencyFromIso,
+        $currencyToIso,
+        $amount
+    )
+    {
+        /**
+         * If none of given Money is baseCurrency, means we'll need to perform
+         * two partial conversions
+         */
+        if (!in_array($this->currencyBase, [$currencyFromIso, $currencyToIso])) {
+            return $this->convertBetweenIsos(
+                $this->currencyBase,
+                $currencyToIso,
+                $this->convertBetweenIsos(
+                    $currencyFromIso,
+                    $this->currencyBase,
+                    $amount
+                )
+            );
+        }
+
+        return ($currencyFromIso === $this->currencyBase)
+            ? $this->convertToIso($currencyToIso, $amount, self::MULTIPLY)
+            : $this->convertToIso($currencyFromIso, $amount, self::DIVIDE);
+    }
+
+    /**
+     * Convert Amount given base currency iso
+     *
+     * @param string  $currencyToIso Currency iso where to convert to
+     * @param integer $amount        Amount to convert
+     * @param boolean $type          Type of conversion
+     *
+     * @return float conversion
+     *
+     * @throws CurrencyNotConvertibleException Currencies cannot be converted
+     */
+    protected function convertToIso($currencyToIso, $amount, $type)
+    {
+        if (isset($this->currencyManager->getExchangeRateList()[$currencyToIso])) {
+
+            $currencyRate = $this->currencyManager->getExchangeRateList()[$currencyToIso];
+
+        } else {
+
+            /**
+             * No CurrencyRate can be found
+             */
+            throw new CurrencyNotConvertibleException;
+        }
+
+        return $type
+            ? $amount * $currencyRate['rate']
+            : $amount / $currencyRate['rate'];
     }
 }

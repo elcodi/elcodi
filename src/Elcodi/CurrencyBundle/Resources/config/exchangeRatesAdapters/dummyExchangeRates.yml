@@ -1,0 +1,17 @@
+parameters:
+
+    #
+    # DummyExchangeRates Adapter
+    #
+    elcodi.core.currency.adapter.dummy_exchange_rates_adapter.class: Elcodi\CurrencyBundle\Adapter\DummyExchangeRatesAdapter
+
+services:
+
+    #
+    # DummyExchangeRates Adapter
+    #
+    elcodi.core.currency.adapter.dummy_exchange_rates_adapter:
+        class: %elcodi.core.currency.adapter.dummy_exchange_rates_adapter.class%
+
+    elcodi.core.currency.adapter.exchange_rates_adapter:
+        alias: elcodi.core.currency.adapter.dummy_exchange_rates_adapter

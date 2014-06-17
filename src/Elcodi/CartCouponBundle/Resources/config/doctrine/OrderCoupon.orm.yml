@@ -3,6 +3,22 @@ Elcodi\CartCouponBundle\Entity\OrderCoupon:
     repositoryClass: Elcodi\CartCouponBundle\Repository\OrderCouponRepository
     table: order_coupon
 
+    fields:
+        amount:
+            column: amount
+            type: integer
+        code:
+            column: code
+            type: string
+            length: 255
+            nullable: false
+            unique: true
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+
     manyToOne:
         order:
             targetEntity: Elcodi\CartBundle\Entity\Interfaces\OrderInterface
@@ -14,3 +30,9 @@ Elcodi\CartCouponBundle\Entity\OrderCoupon:
             joinColumn:
                 name: coupon_id
                 referencedColumnName: id
+        amountCurrency:
+            targetEntity: Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                 name: amount_currency_id
+                 referencedColumnName: id
+                 nullable: true

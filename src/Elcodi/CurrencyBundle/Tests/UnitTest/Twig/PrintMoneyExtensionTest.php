@@ -8,13 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author  ##author_placeholder
- * @version ##version_placeholder##
+ * Feel free to edit as you please, and have fun.
+ *
+ * @author Marc Morera <yuhu@mmoreram.com>
+ * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
 namespace Elcodi\CurrencyBundle\Tests\UnitTest\Twig;
 
 use Elcodi\CurrencyBundle\Entity\Money;
+use Elcodi\CurrencyBundle\Factory\CurrencyFactory;
 use Elcodi\CurrencyBundle\Twig\PrintMoneyExtension;
 
 /**
@@ -23,92 +26,54 @@ use Elcodi\CurrencyBundle\Twig\PrintMoneyExtension;
 class PrintMoneyExtensionTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var array
+     * Test price output
      *
-     * Sample currency exchange rates
+     * @dataProvider dataPrintPrice
      */
-    protected $baseCurrencyExchangeRates = [
-        'EUR' => [
-            'EUR' => 1.0, 'USD' => 1.33, 'GBP' => 0.8
-        ]
-    ];
-
-    /**
-     * @var array
-     *
-     * Sample currency symbols
-     */
-    protected $baseCurrencySymbols = [
-        'EUR' => '€', 'USD' => '$', 'GBP' => '£'
-    ];
-
-    /**
-     * Money Stub needed for testing PrintMoneyExtension
-     *
-     * @var Money
-     */
-    protected $money;
-
-    public function setUp()
+    public function testPrintPrice(
+        $amount,
+        $iso,
+        $symbol,
+        $locale,
+        $result
+    )
     {
-        // Amounts are in cents!
-        $amount = 1000000;
+        $currencyFactory = new CurrencyFactory();
+        $currencyFactory->setEntityNamespace('Elcodi\CurrencyBundle\Entity\Currency');
 
-        $currencyMockEUR = $this->getMock(
-            'Elcodi\CurrencyBundle\Entity\Currency',
-            ['getIso']
+        $priceExtension = new PrintMoneyExtension(
+            $this->getMock('Elcodi\CurrencyBundle\Services\CurrencyConverter', [], [], '', false),
+            $this->getMock('Elcodi\CurrencyBundle\Wrapper\CurrencyWrapper', [], [], '', false),
+            $locale
         );
-        $currencyMockEUR
-            ->expects($this->any())
-            ->method('getIso')
-            ->will($this->returnValue('EUR'));
 
-        $this->money = new Money($amount, $currencyMockEUR);
+        $this->assertEquals(
+            $result,
+            $priceExtension->printMoney(
+                new Money(
+                    $amount,
+                    $currencyFactory
+                        ->create()
+                        ->setIso($iso)
+                        ->setSymbol($symbol)
+                )
+            )
+        );
     }
 
     /**
-     * Test price output
+     * data for testPrintPrice
      */
-    public function testPrintPrice()
+    public function dataPrintPrice()
     {
-        $money = $this->money;
-
-        $priceExtension = new PrintMoneyExtension(
-            $this->baseCurrencyExchangeRates,
-            $this->baseCurrencySymbols,
-            'es_ES'
-        );
-
-        $this->assertEquals(
-            '13.300,00 $',
-            $priceExtension->printMoney($money, 'USD'),
-            'Price format does not match - EUR USD'
-        );
-
-        $this->assertEquals(
-            '8.000,00 £',
-            $priceExtension->printMoney($money, 'GBP'),
-            'Price format does not match - EUR GBP'
-        );
-
-        $priceExtension = new PrintMoneyExtension(
-            $this->baseCurrencyExchangeRates,
-            $this->baseCurrencySymbols,
-            'en_GB'
-        );
-
-        $this->assertEquals(
-            '$13,300.00',
-            $priceExtension->printMoney($money, 'USD'),
-            'Price format does not match - EUR USD'
-        );
-
-        $this->assertEquals(
-            '£8,000.00',
-            $priceExtension->printMoney($money, 'GBP'),
-            'Price format does not match - EUR GBP'
-        );
-
+        return [
+            [1330000, 'USD', '$', 'es_ES', '13.300,00 $'],
+            [800000, 'GBP', '£', 'es_ES', '8.000,00 £'],
+            [100000, 'EUR', '€', 'es_ES', '1.000,00 €'],
+            [1330000, 'USD', '$', 'en_GB', '$13,300.00'],
+            [800000, 'GBP', '£', 'en_GB', '£8,000.00'],
+            [100000, 'EUR', '€', 'en_GB', '€1,000.00'],
+        ];
     }
 
     /**
@@ -117,15 +82,22 @@ class PrintMoneyExtensionTest extends \PHPUnit_Framework_TestCase
     public function testCurrencyRateNotFoundThrowsException()
     {
         $priceExtension = new PrintMoneyExtension(
-            $this->baseCurrencyExchangeRates,
-            $this->baseCurrencySymbols,
+            $this->getMock('Elcodi\CurrencyBundle\Services\CurrencyConverter', [], [], '', false),
+            $this->getMock('Elcodi\CurrencyBundle\Wrapper\CurrencyWrapper', [], [], '', false),
             'es_ES'
         );
 
-        $this->assertEquals(
-            '13 300,00 $',
-            $priceExtension->printMoney($this->money, 'US1'),
-            'Price format does not match - EUR USD'
+        $currencyFactory = new CurrencyFactory();
+        $currencyFactory->setEntityNamespace('Elcodi\CurrencyBundle\Entity\Currency');
+
+        $priceExtension->printMoney(
+            new Money(
+                1000,
+                $currencyFactory
+                    ->create()
+                    ->setIso('US1')
+            ),
+            'US1'
         );
 
     }

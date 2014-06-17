@@ -8,13 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author  ##author_placeholder
- * @version ##version_placeholder##
+ * Feel free to edit as you please, and have fun.
+ *
+ * @author Marc Morera <yuhu@mmoreram.com>
+ * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
 namespace Elcodi\CurrencyBundle\Services;
 
-use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
+use Elcodi\CurrencyBundle\Entity\CurrencyExchangeRate;
 use Elcodi\CurrencyBundle\Repository\CurrencyExchangeRateRepository;
 use Elcodi\CurrencyBundle\Repository\CurrencyRepository;
 
@@ -24,75 +26,92 @@ use Elcodi\CurrencyBundle\Repository\CurrencyRepository;
 class CurrencyManager
 {
     /**
+     * @var CurrencyRepository
+     *
+     * Currency Repository
+     */
+    protected $currencyRepository;
+
+    /**
+     * @var CurrencyExchangeRateRepository
+     *
+     * CurrencyExchangeRate Repository
+     */
+    protected $currencyExchangeRateRepository;
+
+    /**
+     * @var string
+     *
+     * Currency base iso
+     */
+    protected $currencyBaseIso;
+
+    /**
+     * @var array
+     *
+     * Exchange Rate List
+     */
+    protected $exchangeRateList;
+
+    /**
      * Build method
      *
-     * @param CurrencyRepository             $currencyRepository             Repo for currencies
+     * @param CurrencyRepository             $currencyRepository             Currency Repository
      * @param CurrencyExchangeRateRepository $currencyExchangeRateRepository Repo for exch. rates
+     * @param string                         $currencyBaseIso                Currency base iso
      */
     public function __construct(
         CurrencyRepository $currencyRepository,
-        CurrencyExchangeRateRepository $currencyExchangeRateRepository
+        CurrencyExchangeRateRepository $currencyExchangeRateRepository,
+        $currencyBaseIso
     )
     {
         $this->currencyRepository = $currencyRepository;
         $this->currencyExchangeRateRepository = $currencyExchangeRateRepository;
+        $this->currencyBaseIso = $currencyBaseIso;
     }
 
     /**
-     * Given a currency code, returns a list of all exchange rates from this code
+     * Given a the currency base, returns a list of all exchange rates
      *
-     * @param string $currencyCode the iso code of the source currency
+     * @return array Exchange rate list
      *
-     * @return array
+     * @api
      */
-    public function getExchangeRateList($currencyCode)
+    public function getExchangeRateList()
     {
-        $exchangeList = [];
-
-        $sourceCurrency = $this->currencyRepository->findOneBy(['iso' => $currencyCode]);
-
-        if (!($sourceCurrency instanceof CurrencyInterface)) {
-            return [];
+        if (!empty($this->exchangeRateList)) {
+            return $this->exchangeRateList;
         }
 
-        $exchangeList[$currencyCode] = [];
+        $this->exchangeRateList = [];
 
-        $availableExchangeRates = $this->currencyExchangeRateRepository
-            ->findBy([
-                'sourceCurrency' => $sourceCurrency
+        $currencyBase = $this
+            ->currencyRepository
+            ->findOneBy([
+                'iso' => $this->currencyBaseIso,
             ]);
 
+        $availableExchangeRates = $this
+            ->currencyExchangeRateRepository
+            ->findBy([
+                'sourceCurrency' => $currencyBase
+            ]);
+
+        /**
+         * @var CurrencyExchangeRate $exchangeRate
+         */
         foreach ($availableExchangeRates as $exchangeRate) {
-            $targetCurrencyIso = $exchangeRate->getTargetCurrency()->getIso();
-            $exchangeList[$currencyCode][$targetCurrencyIso] = $exchangeRate->getExchangeRate();
+
+            $targetCurrency = $exchangeRate->getTargetCurrency();
+            $targetCurrencyIso = $targetCurrency->getIso();
+
+            $this->exchangeRateList[$targetCurrencyIso] = [
+                'rate'     => $exchangeRate->getExchangeRate(),
+                'currency' => $targetCurrency
+            ];
         }
 
-        return $exchangeList;
-    }
-
-    /**
-     * Get a list of ISO codes => symbols for all active currencies
-     *
-     * @return array
-     */
-    public function getSymbols()
-    {
-        $symbolsList = array();
-
-        $availableCurrencies = $this->currencyRepository->findBy(['enabled' => 1]);
-
-        foreach ($availableCurrencies as $currency) {
-            $symbolsList[$currency->getIso()] = $currency->getSymbol();
-        }
-
-        return $symbolsList;
-    }
-
-    /**
-     * Returns a collection with the active currencies
-     */
-    public function getActiveCurrencies()
-    {
-        return $this->currencyRepository->findBy(['enabled' => 1]);
+        return $this->exchangeRateList;
     }
 }
