@@ -8,8 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author  ##author_placeholder
- * @version ##version_placeholder##
+ * Feel free to edit as you please, and have fun.
+ *
+ * @author Marc Morera <yuhu@mmoreram.com>
+ * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
 namespace Elcodi\CartBundle\EventListener;
@@ -152,15 +154,24 @@ class CartEventListener
     /**
      * Flushes all loaded cart and related entities.
      *
+     * We only persist it if have lines loaded inside, so empty carts will never
+     * be persisted
+     *
      * @param CartOnLoadEvent $event Event
      *
      * @api
      */
     public function onCartLoadFlush(CartOnLoadEvent $event)
     {
-        $this->cartObjectManager->persist(
-            $event->getCart()
-        );
+        $cart = $event->getCart();
+
+        if (!$cart->getCartLines()->isEmpty()) {
+
+            $this->cartObjectManager->persist(
+                $event->getCart()
+            );
+        }
+
         $this->cartObjectManager->flush();
     }
 

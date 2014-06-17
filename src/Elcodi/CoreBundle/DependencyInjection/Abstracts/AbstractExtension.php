@@ -8,8 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author  ##author_placeholder
- * @version ##version_placeholder##
+ * Feel free to edit as you please, and have fun.
+ *
+ * @author Marc Morera <yuhu@mmoreram.com>
+ * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
 namespace Elcodi\CoreBundle\DependencyInjection\Abstracts;
@@ -38,15 +40,25 @@ abstract class AbstractExtension extends Extension implements PrependExtensionIn
     /**
      * Config files to load
      *
+     * Each array position can be a simple file name if must be loaded always,
+     * or an array, with the filename in the first position, and a boolean in
+     * the second one.
+     *
+     * As a parameter, this method receives all loaded configuration, to allow
+     * setting this boolean value from a configuration value.
+     *
      * return array(
      *      'file1.yml',
      *      'file2.yml',
+     *      ['file3.yml', $config['my_boolean'],
      *      ...
      * );
      *
+     * @param array $config Config definitions
+     *
      * @return array Config files
      */
-    abstract public function getConfigFiles();
+    abstract public function getConfigFiles(array $config);
 
     /**
      * Return a new Configuration instance.
@@ -111,13 +123,23 @@ abstract class AbstractExtension extends Extension implements PrependExtensionIn
             }
         }
 
-        $configFiles = $this->getConfigFiles();
+        $configFiles = $this->getConfigFiles($config);
 
         if (!empty($configFiles)) {
 
             $loader = new YamlFileLoader($container, new FileLocator($this->getConfigFilesLocation()));
 
             foreach ($configFiles as $configFile) {
+
+                if (is_array($configFile)) {
+
+                    if (isset($configFile[1]) && $configFile[1] === false) {
+
+                        continue;
+                    }
+
+                    $configFile = $configFile[0];
+                }
 
                 $loader->load($configFile . '.yml');
             }

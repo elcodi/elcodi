@@ -8,8 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author  ##author_placeholder
- * @version ##version_placeholder##
+ * Feel free to edit as you please, and have fun.
+ *
+ * @author Marc Morera <yuhu@mmoreram.com>
+ * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
 namespace Elcodi\CartCouponBundle\Entity;
@@ -18,6 +20,9 @@ use Elcodi\CartCouponBundle\Entity\Interfaces\OrderCouponInterface;
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
+use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
+use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
+use Elcodi\CurrencyBundle\Entity\Money;
 
 /**
  * Class OrderCoupon
@@ -37,6 +42,34 @@ class OrderCoupon extends AbstractEntity implements OrderCouponInterface
      * Coupon
      */
     protected $coupon;
+
+    /**
+     * @var integer
+     *
+     * Amount
+     */
+    protected $amount;
+
+    /**
+     * @var CurrencyInterface
+     *
+     * Amount currency
+     */
+    protected $amountCurrency;
+
+    /**
+     * @var string
+     *
+     * Code
+     */
+    protected $code;
+
+    /**
+     * @var string
+     *
+     * Name
+     */
+    protected $name;
 
     /**
      * Sets Order
@@ -84,5 +117,81 @@ class OrderCoupon extends AbstractEntity implements OrderCouponInterface
     public function getCoupon()
     {
         return $this->coupon;
+    }
+
+    /**
+     * Set code
+     *
+     * @param string $code Code
+     *
+     * @return OrderCoupon self Object
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string Code
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * Set name coupon name
+     *
+     * @param string $name
+     *
+     * @return OrderCoupon self Object
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set amount
+     *
+     * @param MoneyInterface $amount Price
+     *
+     * @return OrderCoupon self Object
+     */
+    public function setAmount(MoneyInterface $amount)
+    {
+        $this->amount = $amount->getAmount();
+        $this->amountCurrency = $amount->getCurrency();
+
+        return $this;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return MoneyInterface Price
+     */
+    public function getAmount()
+    {
+        return Money::create(
+            $this->amount,
+            $this->amountCurrency
+        );
     }
 }

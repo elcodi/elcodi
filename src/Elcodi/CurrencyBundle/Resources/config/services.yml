@@ -6,17 +6,12 @@ services:
     elcodi.core.currency.service.currency_manager:
         class: %elcodi.core.currency.service.currency_manager.class%
         arguments:
-            currency_repository: @elcodi.core.currency.repository.currency
+            currency_repository: @elcodi.repository.currency
             exchange_rates_repository: @elcodi.core.currency.repository.currency_exchange_rate
+            currency_base: %elcodi.core.currency.rates_provider_currency_base%
 
     elcodi.currency_manager:
         alias: elcodi.core.currency.service.currency_manager
-
-    elcodi.core.currency.service.exchange_rates_provider:
-        class: %elcodi.core.currency.service.exchange_rates_provider.class%
-
-    elcodi.exchange_rates_provider:
-        alias: elcodi.core.currency.service.exchange_rates_provider
 
     elcodi.core.currency.service.currency_session_manager:
         class: %elcodi.core.currency.service.currency_session_manager.class%
@@ -30,11 +25,22 @@ services:
     elcodi.core.currency.service.currency_converter:
         class: %elcodi.core.currency.service.currency_converter.class%
         arguments:
-            exchange_rates: @=service('elcodi.core.currency.service.currency_manager').getExchangeRateList(parameter('elcodi.core.currency.default_currency'))
-            currency_symbols: @=service('elcodi.core.currency.service.currency_manager').getSymbols()
+            currency_manager: @elcodi.currency_manager
+            currency_base: %elcodi.core.currency.rates_provider_currency_base%
 
     elcodi.currency_converter:
         alias: elcodi.core.currency.service.currency_converter
+
+    #
+    # Providers
+    #
+    elcodi.core.currency.service.exchange_rates_provider:
+        class: %elcodi.core.currency.service.exchange_rates_provider.class%
+        arguments:
+            exchange_rates_service: @elcodi.core.currency.adapter.exchange_rates_adapter
+
+    elcodi.exchange_rates_provider:
+        alias: elcodi.core.currency.service.exchange_rates_provider
 
     #
     # Wrappers

@@ -8,14 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author  ##author_placeholder
- * @version ##version_placeholder##
+ * Feel free to edit as you please, and have fun.
+ *
+ * @author Marc Morera <yuhu@mmoreram.com>
+ * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
 namespace Elcodi\CurrencyBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
+use Elcodi\CurrencyBundle\Adapter\DummyExchangeRatesAdapter;
+use Elcodi\CurrencyBundle\Adapter\OpenExchangeRatesAdapter;
 use Elcodi\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
@@ -69,15 +73,26 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
         return [
             'elcodi.core.currency.default_currency' => $config['currency']['default_currency'],
             'elcodi.core.currency.session_field_name' => $config['currency']['session_field_name'],
+
+            'elcodi.core.currency.rates_provider_currency_base' => $config['rates_provider']['currency_base'],
+            'elcodi.core.currency.rates_provider_client' => $config['rates_provider']['client'],
+
+            /**
+             * OpenExchangeRates
+             */
+            'elcodi.core.currency.rates_provider_api_id' => $config['rates_provider'][OpenExchangeRatesAdapter::ADAPTER_NAME]['api_id'],
+            'elcodi.core.currency.rates_provider_endpoint' => $config['rates_provider'][OpenExchangeRatesAdapter::ADAPTER_NAME]['endpoint'],
         ];
     }
 
     /**
      * Config files to load
      *
+     * @param array $config Configuration
+     *
      * @return array Config files
      */
-    public function getConfigFiles()
+    public function getConfigFiles(array $config)
     {
         return [
             'classes',
@@ -86,6 +101,14 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
             'twig',
             'repositories',
             'objectManagers',
+            [
+                'exchangeRatesAdapters/openExchangeRates',
+                $config['rates_provider']['client'] === OpenExchangeRatesAdapter::ADAPTER_NAME
+            ],
+            [
+                'exchangeRatesAdapters/dummyExchangeRates',
+                $config['rates_provider']['client'] === DummyExchangeRatesAdapter::ADAPTER_NAME
+            ],
         ];
     }
 

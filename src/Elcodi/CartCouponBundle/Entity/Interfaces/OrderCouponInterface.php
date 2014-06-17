@@ -8,14 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author  ##author_placeholder
- * @version ##version_placeholder##
+ * Feel free to edit as you please, and have fun.
+ *
+ * @author Marc Morera <yuhu@mmoreram.com>
+ * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
 namespace Elcodi\CartCouponBundle\Entity\Interfaces;
 
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
+use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 
 /**
  * Class OrderCouponInterface
@@ -53,4 +56,52 @@ interface OrderCouponInterface
      * @return CouponInterface Coupon
      */
     public function getCoupon();
+
+    /**
+     * Set code
+     *
+     * @param string $code Code
+     *
+     * @return OrderCouponInterface self Object
+     */
+    public function setCode($code);
+
+    /**
+     * Get code
+     *
+     * @return string Code
+     */
+    public function getCode();
+
+    /**
+     * Set name coupon name
+     *
+     * @param string $name
+     *
+     * @return OrderCouponInterface self Object
+     */
+    public function setName($name);
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName();
+
+    /**
+     * Set amount
+     *
+     * @param MoneyInterface $amount Price
+     *
+     * @return OrderCouponInterface self Object
+     */
+    public function setAmount(MoneyInterface $amount);
+
+    /**
+     * Get amount
+     *
+     * @return MoneyInterface Price
+     */
+    public function getAmount();
 }

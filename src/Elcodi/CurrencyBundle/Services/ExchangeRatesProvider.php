@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author  ##author_placeholder
- * @version ##version_placeholder##
+ * Feel free to edit as you please, and have fun.
+ *
+ * @author Marc Morera <yuhu@mmoreram.com>
+ * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\CurrencyBundle\Provider;
+namespace Elcodi\CurrencyBundle\Services;
 
-use Elcodi\CurrencyBundle\Provider\Interfaces\ExchangeRatesProviderInterface;
-use Elcodi\CurrencyBundle\Services\Interfaces\ExchangeRatesServiceInterface;
+use Elcodi\CurrencyBundle\Adapter\Interfaces\ExchangeRatesAdapterInterface;
 
 /**
- * Class OpenExchangeRatesProvider
+ * Class ExchangeRatesProvider
  */
-class OpenExchangeRatesProvider implements ExchangeRatesProviderInterface
+class ExchangeRatesProvider
 {
-
     /**
-     * @var ExchangeRatesServiceInterface
+     * @var ExchangeRatesAdapterInterface
      *
      * openExchangeRatesService
      */
@@ -35,22 +35,25 @@ class OpenExchangeRatesProvider implements ExchangeRatesProviderInterface
      *
      * Exchange rates
      */
-    protected $exchangeRates = array();
+    protected $exchangeRates;
 
     /**
      * Build method
      *
-     * @param ExchangeRatesServiceInterface $openExchangeRatesService OpenExchangeRates service
+     * @param ExchangeRatesAdapterInterface $openExchangeRatesService OpenExchangeRates service
      */
-    public function __construct(ExchangeRatesServiceInterface $openExchangeRatesService)
+    public function __construct(ExchangeRatesAdapterInterface $openExchangeRatesService)
     {
         $this->openExchangeRatesService =  $openExchangeRatesService;
+        $this->exchangeRates = [];
     }
 
     /**
      * Get all available currencies for this Exchange Rates provider
      *
      * @return array in the form of 'ISOCODE' => 'Currency description'
+     *
+     * @api
      */
     public function getCurrencies()
     {
@@ -64,6 +67,8 @@ class OpenExchangeRatesProvider implements ExchangeRatesProviderInterface
      * @param string|array $toCodes  ISO code of target currency, or array with ISO codes of targets
      *
      * @return array in the form of 'ISOCODE' => (float) exchange rate
+     *
+     * @api
      */
     public function getExchangeRates($fromCode, $toCodes = array())
     {
@@ -72,14 +77,18 @@ class OpenExchangeRatesProvider implements ExchangeRatesProviderInterface
         }
 
         if (empty($this->exchangeRates)) {
-            $this->exchangeRates = $this->openExchangeRatesService->getLatest()['rates'];
+            $this->exchangeRates = $this->openExchangeRatesService->getExchangeRates();
         }
 
-        $usdToBaseExchangeRate = $this->exchangeRates[$fromCode];
+        if (empty($this->exchangeRates)) {
+            return [];
+        }
+
+        $baseExchangeRate = $this->exchangeRates[$fromCode];
 
         $exchangeRates = array();
         foreach ($toCodes as $code) {
-            $exchangeRates[$code] = ($this->exchangeRates[$code] / $usdToBaseExchangeRate);
+            $exchangeRates[$code] = ($this->exchangeRates[$code] / $baseExchangeRate);
         }
 
         return $exchangeRates;

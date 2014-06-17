@@ -8,13 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author  ##author_placeholder
- * @version ##version_placeholder##
+ * Feel free to edit as you please, and have fun.
+ *
+ * @author Marc Morera <yuhu@mmoreram.com>
+ * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
 namespace Elcodi\CouponBundle\EventListener;
 
-use Elcodi\CouponBundle\Event\CouponUsedEvent;
+use Elcodi\CouponBundle\Event\CouponOnUsedEvent;
 
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -48,9 +50,9 @@ class CouponEventListene
      *
      * If not, disables it.
      *
-     * @param CouponUsedEvent $event Event
+     * @param CouponOnUsedEvent $event Event
      */
-    public function onCouponUsedEvent(CouponUsedEvent $event)
+    public function onCouponUsedEvent(CouponOnUsedEvent $event)
     {
         $coupon = $event->getCoupon();
         $count = $coupon->getCount();

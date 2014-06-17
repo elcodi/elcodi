@@ -8,12 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author  ##author_placeholder
- * @version ##version_placeholder##
+ * Feel free to edit as you please, and have fun.
+ *
+ * @author Marc Morera <yuhu@mmoreram.com>
+ * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
 namespace Elcodi\UserBundle\EventListener;
 
+use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Symfony\Component\Security\Core\Event\AuthenticationEvent;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -67,7 +70,7 @@ class AuthenticationSuccessEventListener
         $loggedUser = $event->getAuthenticationToken()->getUser();
         $cart = $this->cartWrapper->getCartFromSession();
 
-        if ($cart->getId()) {
+        if ($cart Instanceof CartInterface && $cart->getId()) {
             /*
              * We assume that a cart with an ID is
              * not a pristine entity coming from a
