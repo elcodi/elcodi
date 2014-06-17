@@ -45,12 +45,6 @@ elcodi_cart:
     cart:
         save_in_session: false
 
-elcodi_currency:
-    rates_provider:
-        client: open_exchange_rates
-        open_exchange_rates:
-            api_id: 7570400f572c44afb0c23c9b654a982b
-
 knp_gaufrette:
     adapters:
         local:
