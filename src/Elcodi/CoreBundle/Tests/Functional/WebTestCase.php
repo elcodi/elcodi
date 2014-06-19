@@ -87,6 +87,19 @@ abstract class WebTestCase extends BaseWebTestCase
     }
 
     /**
+     * Tear down
+     */
+    public function tearDown()
+    {
+        static::$application->run(new ArrayInput(array(
+            'command'          => 'doctrine:database:drop',
+            '--no-interaction' => true,
+            '--force'          => true,
+            '--quiet'          => true,
+        )));
+    }
+
+    /**
      * Test service can be instanced through container
      */
     public function testServiceLoadFromContainer()

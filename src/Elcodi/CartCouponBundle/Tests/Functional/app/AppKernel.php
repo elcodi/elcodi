@@ -63,6 +63,7 @@ class AppKernel extends AbstractElcodiKernel
             new \Elcodi\MediaBundle\ElcodiMediaBundle(),
             new \Elcodi\CartCouponBundle\ElcodiCartCouponBundle(),
             new \Elcodi\CouponBundle\ElcodiCouponBundle(),
+            new \Elcodi\RuleBundle\ElcodiRuleBundle(),
         );
 
         return $bundles;

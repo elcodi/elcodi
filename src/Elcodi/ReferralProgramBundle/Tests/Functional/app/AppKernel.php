@@ -64,6 +64,7 @@ class AppKernel extends AbstractElcodiKernel
             new \Elcodi\CouponBundle\ElcodiCouponBundle(),
             new \Elcodi\AttributeBundle\ElcodiAttributeBundle(),
             new \Elcodi\ProductBundle\ElcodiProductBundle(),
+            new \Elcodi\RuleBundle\ElcodiRuleBundle(),
             new \Elcodi\ReferralProgramBundle\ElcodiReferralProgramBundle(),
         );
 

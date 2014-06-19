@@ -75,6 +75,18 @@ Elcodi\CouponBundle\Entity\Coupon:
                  referencedColumnName: id
                  nullable: true
 
+    manyToMany:
+        rules:
+            targetEntity: Elcodi\RuleBundle\Entity\Abstracts\AbstractRule
+            joinTable:
+                name: coupons_rules
+                joinColumns:
+                    coupon_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    rule_id:
+                        referencedColumnName: id
+
     lifecycleCallbacks:
         preUpdate: [loadUpdateAt]
         prePersist: [loadUpdateAt]

@@ -20,11 +20,17 @@ use Elcodi\CoreBundle\Entity\Interfaces\DateTimeInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\ValidIntervalInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
+use Elcodi\RuleBundle\Entity\Interfaces\RulesAwareInterface;
 
 /**
  * CouponInterface
  */
-interface CouponInterface extends DateTimeInterface, EnabledInterface, ValidIntervalInterface
+interface CouponInterface
+    extends
+    DateTimeInterface,
+    EnabledInterface,
+    ValidIntervalInterface,
+    RulesAwareInterface
 {
     /**
      * Set code

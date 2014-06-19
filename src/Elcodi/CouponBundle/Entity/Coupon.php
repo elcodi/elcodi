@@ -24,13 +24,14 @@ use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 use Elcodi\CurrencyBundle\Entity\Money;
+use Elcodi\RuleBundle\Entity\Traits\RuleAwareTrait;
 
 /**
  * Coupon
  */
 class Coupon extends AbstractEntity implements CouponInterface
 {
-    use DateTimeTrait, EnabledTrait, ValidIntervalTrait;
+    use DateTimeTrait, EnabledTrait, ValidIntervalTrait, RuleAwareTrait;
 
     /**
      * @var string

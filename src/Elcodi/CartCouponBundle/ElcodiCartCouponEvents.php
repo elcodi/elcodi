@@ -38,6 +38,14 @@ class ElcodiCartCouponEvents
     const CART_COUPON_ONREMOVE = 'cart_coupon.onremove';
 
     /**
+     * This event is dispatched each time a coupon is rejected from a Cart
+     *
+     * event.name : cart_coupon.onrejected
+     * event.class : CartCouponOnRejectedEvent
+     */
+    const CART_COUPON_ONREJECTED = 'cart_coupon.onrejected';
+
+    /**
      * This event is dispatched each time a coupon is applied into an Order
      *
      * event.name : order_coupon.onapply
