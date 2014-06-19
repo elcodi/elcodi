@@ -404,4 +404,18 @@ class Coupon extends AbstractEntity implements CouponInterface
     {
         return $this->getName();
     }
+
+
+    public function incrementUsages()
+    {
+        $this->used++;
+
+        if ($this->count <= $this->used) {
+            $this->enabled = false;
+        }
+        return $this;
+    }
+
+
+
 }

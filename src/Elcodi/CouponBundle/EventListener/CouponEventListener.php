@@ -23,7 +23,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 /**
  * Class CouponEventListener
  */
-class CouponEventListene
+class CouponEventListener
 {
     /**
      * @var ObjectManager
@@ -55,17 +55,7 @@ class CouponEventListene
     public function onCouponUsedEvent(CouponOnUsedEvent $event)
     {
         $coupon = $event->getCoupon();
-        $count = $coupon->getCount();
-        $used = $coupon->getUsed();
-
-        $used++;
-        $coupon->setUsed($used);
-
-        if ($count <= $used) {
-
-            $coupon->setEnabled(false);
-        }
-
+        $coupon->incrementUsages();
         $this->couponObjectManager->flush($coupon);
     }
 }
