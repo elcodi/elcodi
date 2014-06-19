@@ -1,0 +1,19 @@
+parameters:
+
+    #
+    # Entities
+    #
+    elcodi.core.attribute.entity.attribute.class: Elcodi\AttributeBundle\Entity\Attribute
+    elcodi.core.attribute.entity.value.class: Elcodi\AttributeBundle\Entity\Value
+
+    #
+    # Repositories
+    #
+    elcodi.core.attribute.repository.attribute.class: Elcodi\AttributeBundle\Repository\AttributeRepository
+    elcodi.core.attribute.repository.value.class: Elcodi\AttributeBundle\Repository\ValueRepository
+
+    #
+    # Factories
+    #
+    elcodi.core.attribute.factory.attribute.class: Elcodi\AttributeBundle\Factory\AttributeFactory
+    elcodi.core.attribute.factory.value.class: Elcodi\AttributeBundle\Factory\ValueFactory

@@ -1,0 +1,52 @@
+{
+    "name": "elcodi/attribute-bundle",
+    "description": "Elcodi Attribute component",
+    "keywords": ["elcodi", "attribute", "ecommerce"],
+    "homepage": "https://github.com/elcodi/AttributeBundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "Symfony Community",
+            "homepage": "https://github.com/elcodi/AttributeBundle/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "doctrine/common": "~2.4",
+        "doctrine/orm": "~2.4",
+        "symfony/config": "~2.4",
+        "symfony/security": "~2.4",
+        "symfony/event-dispatcher": "~2.4",
+        "symfony/options-resolver": "~2.4",
+        "symfony/http-foundation": "~2.4",
+        "symfony/dependency-injection": "~2.4",
+        "symfony/http-kernel": "~2.4",
+
+        "elcodi/core-bundle": "0.1-dev"
+    },
+    "require-dev": {
+        "doctrine/data-fixtures": "v1.0.0",
+        "phpunit/phpunit": ">=4.0.0",
+        "elcodi/elcodi": "0.1.*@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\AttributeBundle\\": ""
+        }
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    }
+}

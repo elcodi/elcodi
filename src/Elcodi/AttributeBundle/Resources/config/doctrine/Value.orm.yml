@@ -1,0 +1,37 @@
+Elcodi\AttributeBundle\Entity\Value:
+    type: entity
+    repositoryClass: Elcodi\AttributeBundle\Repository\ValueRepository
+    table: value
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        displayName:
+            column: display_name
+            type: string
+            length: 255
+            nullable: true
+        createdAt:
+            column: created_at
+            type: datetime
+        updatedAt:
+            column: updated_at
+            type: datetime
+        enabled:
+            column: enabled
+            type: boolean
+            nullable: true
+
+    manyToOne:
+        attribute:
+            targetEntity: Elcodi\AttributeBundle\Entity\Interfaces\AttributeInterface
+            joinColumn:
+                name: attribute_id
+                referencedColumnName: id
+                nullable: false
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]
