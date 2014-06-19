@@ -207,5 +207,5 @@ interface CouponInterface extends DateTimeInterface, EnabledInterface
      *
      * @return CouponInterface self Object
      */
-    public function incrementUsages();
+    public function makeUse();
 }

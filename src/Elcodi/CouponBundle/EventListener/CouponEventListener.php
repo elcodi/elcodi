@@ -55,7 +55,7 @@ class CouponEventListener
     public function onCouponUsedEvent(CouponOnUsedEvent $event)
     {
         $coupon = $event->getCoupon();
-        $coupon->incrementUsages();
+        $coupon->makeUse();
 
         $this
             ->couponObjectManager

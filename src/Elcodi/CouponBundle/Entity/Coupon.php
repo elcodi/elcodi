@@ -411,7 +411,7 @@ class Coupon extends AbstractEntity implements CouponInterface
      *
      * @return Coupon self Object
      */
-    public function incrementUsages()
+    public function makeUse()
     {
         $this->used++;
 
