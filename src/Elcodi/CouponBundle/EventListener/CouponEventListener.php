@@ -16,9 +16,9 @@
 
 namespace Elcodi\CouponBundle\EventListener;
 
-use Elcodi\CouponBundle\Event\CouponOnUsedEvent;
-
 use Doctrine\Common\Persistence\ObjectManager;
+
+use Elcodi\CouponBundle\Event\CouponOnUsedEvent;
 
 /**
  * Class CouponEventListener
@@ -56,6 +56,9 @@ class CouponEventListener
     {
         $coupon = $event->getCoupon();
         $coupon->incrementUsages();
-        $this->couponObjectManager->flush($coupon);
+
+        $this
+            ->couponObjectManager
+            ->flush($coupon);
     }
 }

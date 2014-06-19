@@ -16,13 +16,14 @@
 
 namespace Elcodi\CouponBundle\Entity\Interfaces;
 
-use DateTime;
+use Elcodi\CoreBundle\Entity\Interfaces\DateTimeInterface;
+use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 
 /**
  * CouponInterface
  */
-interface CouponInterface
+interface CouponInterface extends DateTimeInterface, EnabledInterface
 {
     /**
      * Set code
@@ -201,82 +202,10 @@ interface CouponInterface
     public function getMinimumPurchaseAmount();
 
     /**
-     * Set valid from
-     *
-     * @param DateTime $validFrom Valid from
-     *
-     * @return CouponInterface self Object
-     */
-    public function setValidFrom(DateTime $validFrom);
-
-    /**
-     * Get valid from
-     *
-     * @return DateTime
-     */
-    public function getValidFrom();
-
-    /**
-     * Set valid to
-     *
-     * @param DateTime $validTo Valid to
+     * Increment used variable by one, and disables it if there are no more
+     * available units
      *
      * @return CouponInterface self Object
      */
-    public function setValidTo(DateTime $validTo);
-
-    /**
-     * Get valid to
-     *
-     * @return DateTime Valid to
-     */
-    public function getValidTo();
-
-    /**
-     * Set isEnabled
-     *
-     * @param boolean $enabled enabled value
-     *
-     * @return CouponInterface self Object
-     */
-    public function setEnabled($enabled);
-
-    /**
-     * Get if entity is enabled
-     *
-     * @return boolean
-     */
-    public function isEnabled();
-
-    /**
-     * Set locally created at value
-     *
-     * @param DateTime $createdAt CreatedAt value
-     *
-     * @return CouponInterface self Object
-     */
-    public function setCreatedAt(DateTime $createdAt);
-
-    /**
-     * Return created_at value
-     *
-     * @return DateTime
-     */
-    public function getCreatedAt();
-
-    /**
-     * Set locally updated at value
-     *
-     * @param DateTime $updatedAt Updatedate value
-     *
-     * @return CouponInterface self Object
-     */
-    public function setUpdatedAt(DateTime $updatedAt);
-
-    /**
-     * Return updated_at value
-     *
-     * @return DateTime
-     */
-    public function getUpdatedAt();
+    public function incrementUsages();
 }
