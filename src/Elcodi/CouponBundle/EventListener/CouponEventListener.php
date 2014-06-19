@@ -16,14 +16,14 @@
 
 namespace Elcodi\CouponBundle\EventListener;
 
-use Elcodi\CouponBundle\Event\CouponOnUsedEvent;
-
 use Doctrine\Common\Persistence\ObjectManager;
+
+use Elcodi\CouponBundle\Event\CouponOnUsedEvent;
 
 /**
  * Class CouponEventListener
  */
-class CouponEventListene
+class CouponEventListener
 {
     /**
      * @var ObjectManager
@@ -55,17 +55,10 @@ class CouponEventListene
     public function onCouponUsedEvent(CouponOnUsedEvent $event)
     {
         $coupon = $event->getCoupon();
-        $count = $coupon->getCount();
-        $used = $coupon->getUsed();
+        $coupon->makeUse();
 
-        $used++;
-        $coupon->setUsed($used);
-
-        if ($count <= $used) {
-
-            $coupon->setEnabled(false);
-        }
-
-        $this->couponObjectManager->flush($coupon);
+        $this
+            ->couponObjectManager
+            ->flush($coupon);
     }
 }
