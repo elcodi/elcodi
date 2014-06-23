@@ -44,4 +44,4 @@ class ValueFactory extends AbstractFactory
 
         return $value;
     }
-} 
+}

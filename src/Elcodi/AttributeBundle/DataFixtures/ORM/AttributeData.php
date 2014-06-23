@@ -14,7 +14,7 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\AttributeBundle\DataFixtures;
+namespace Elcodi\AttributeBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;

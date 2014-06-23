@@ -148,4 +148,4 @@ class Attribute extends AbstractEntity implements AttributeInterface
         return $this;
     }
 
-} 
+}

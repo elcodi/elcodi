@@ -94,4 +94,4 @@ interface AttributeInterface extends EnabledInterface, DateTimeInterface
      * @return AttributeInterface
      */
     public function removeValue(ValueInterface $value);
-} 
+}

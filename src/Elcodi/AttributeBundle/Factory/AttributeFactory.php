@@ -44,4 +44,4 @@ class AttributeFactory extends AbstractFactory
 
         return $attribute;
     }
-} 
+}

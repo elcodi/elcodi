@@ -68,4 +68,4 @@ interface ValueInterface extends EnabledInterface, DateTimeInterface
      * @return AttributeInterface
      */
     public function getAttribute();
-} 
+}

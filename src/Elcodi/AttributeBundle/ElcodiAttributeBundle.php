@@ -21,4 +21,4 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 class ElcodiAttributeBundle extends Bundle
 {
 
-} 
+}

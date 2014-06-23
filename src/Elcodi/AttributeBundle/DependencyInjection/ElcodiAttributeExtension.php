@@ -86,4 +86,4 @@ class ElcodiAttributeExtension extends AbstractExtension implements EntitiesOver
             'Elcodi\AttributeBundle\Entity\Interfaces\ValueInterface' => 'elcodi.core.attribute.entity.attribute.class',
         ];
     }
-} 
+}

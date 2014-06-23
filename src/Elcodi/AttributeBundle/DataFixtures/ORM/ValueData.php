@@ -13,10 +13,10 @@
  * @author Marc Morera <yuhu@mmoreram.com>
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
-namespace Elcodi\AttributeBundle\DataFixtures;
+
+namespace Elcodi\AttributeBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Elcodi\AttributeBundle\Entity\Attribute;
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 
 /**
