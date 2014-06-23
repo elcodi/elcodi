@@ -97,7 +97,6 @@ class LoadExchangeRatesCommand extends ContainerAwareCommand
 
         //get rates for all of the enabled and active currencies
         $rates = $exchangeRateProvider->getExchangeRates($baseCurrencyCode, $currenciesCodes);
-var_dump($rates);die();
 
         $currencyExchangeRatesRepository = $this
             ->getContainer()
