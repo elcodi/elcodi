@@ -16,7 +16,6 @@
 
 namespace Elcodi\CartBundle\Entity\Traits;
 
-use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 use Elcodi\CurrencyBundle\Entity\Money;
 
