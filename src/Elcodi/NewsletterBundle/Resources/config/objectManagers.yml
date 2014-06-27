@@ -1,0 +1,11 @@
+services:
+
+    #
+    # Object Managers
+    #
+    elcodi.object_manager.newsletter_subscription:
+        class: Doctrine\Common\Persistence\ObjectManager
+        factory_service: elcodi.manager_provider
+        factory_method: getManagerByEntityNamespace
+        arguments:
+            cart_namespace: %elcodi.core.newsletter.entity.newsletter_subscription.class%

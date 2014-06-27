@@ -127,7 +127,7 @@ class NewsletterManagerTest extends WebTestCase
         $newsletterSubscription = $this
             ->newsletterSubscriptionRepository
             ->findOneBy(array(
-                'email' =>  'hi@hi.org',
+                'email' => 'hi@hi.org',
             ));
 
         $this->assertNotEmpty($newsletterSubscription->getHash());
