@@ -16,8 +16,7 @@
 
 namespace Elcodi\NewsletterBundle\Services;
 
-use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Elcodi\NewsletterBundle\EventDispatcher\NewsletterEventDispatcher;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\ValidatorInterface;
 
@@ -25,9 +24,7 @@ use Elcodi\CoreBundle\Generator\Interfaces\GeneratorInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\LanguageInterface;
 use Elcodi\NewsletterBundle\Repository\NewsletterSubscriptionRepository;
 use Elcodi\NewsletterBundle\Factory\NewsletterSubscriptionFactory;
-use Elcodi\NewsletterBundle\ElcodiNewsletterEvents;
 use Elcodi\NewsletterBundle\Entity\Interfaces\NewsletterSubscriptionInterface;
-use Elcodi\NewsletterBundle\Event\NewsletterSubscriptionEvent;
 use Elcodi\NewsletterBundle\Exception\NewsletterCannotBeAddedException;
 use Elcodi\NewsletterBundle\Exception\NewsletterCannotBeRemovedException;
 
@@ -37,18 +34,11 @@ use Elcodi\NewsletterBundle\Exception\NewsletterCannotBeRemovedException;
 class NewsletterManager
 {
     /**
-     * @var ObjectManager
+     * @var NewsletterEventDispatcher
      *
-     * Entity Manager
+     * Newsletter EventDispatcher
      */
-    protected $entityManager;
-
-    /**
-     * @var EventDispatcherInterface
-     *
-     * EventDispatcher instance
-     */
-    protected $eventDispatcher;
+    protected $newsletterEventDispatcher;
 
     /**
      * @var ValidatorInterface
@@ -81,24 +71,21 @@ class NewsletterManager
     /**
      * Construct method
      *
-     * @param EventDispatcherInterface         $eventDispatcher                  Event dispatcher
-     * @param ObjectManager                    $entityManager                    Entity manager
+     * @param NewsletterEventDispatcher        $newsletterEventDispatcher        Newsletter EventDispatcher
      * @param ValidatorInterface               $validator                        Validator class
      * @param NewsletterSubscriptionFactory    $newsletterSubscriptionFactory    NewsletterSubscription Factory
      * @param NewsletterSubscriptionRepository $newsletterSubscriptionRepository NewsletterSubscription Repository
      * @param GeneratorInterface               $hashGenerator                    Hash generator
      */
     public function __construct(
-        EventDispatcherInterface $eventDispatcher,
-        ObjectManager $entityManager,
+        NewsletterEventDispatcher $newsletterEventDispatcher,
         ValidatorInterface $validator,
         NewsletterSubscriptionFactory $newsletterSubscriptionFactory,
         NewsletterSubscriptionRepository $newsletterSubscriptionRepository,
         GeneratorInterface $hashGenerator
     )
     {
-        $this->eventDispatcher = $eventDispatcher;
-        $this->entityManager = $entityManager;
+        $this->newsletterEventDispatcher = $newsletterEventDispatcher;
         $this->validator = $validator;
         $this->newsletterSubscriptionFactory = $newsletterSubscriptionFactory;
         $this->newsletterSubscriptionRepository = $newsletterSubscriptionRepository;
@@ -137,14 +124,9 @@ class NewsletterManager
 
         $newsletterSubscription->setEnabled(true);
 
-        $this->entityManager->persist($newsletterSubscription);
-        $this->entityManager->flush();
-
-        /**
-         * Subscribe event triggered
-         */
-        $newsletterSubscriptionEvent = new NewsletterSubscriptionEvent($newsletterSubscription);
-        $this->eventDispatcher->dispatch(ElcodiNewsletterEvents::NEWSLETTER_SUBSCRIBE, $newsletterSubscriptionEvent);
+        $this
+            ->newsletterEventDispatcher
+            ->dispatchSubscribeEvent($newsletterSubscription);
 
         return $this;
     }
@@ -193,13 +175,9 @@ class NewsletterManager
             ->setEnabled(false)
             ->setReason($reason);
 
-        $this->entityManager->flush();
-
-        /**
-         * Subscribe event triggered
-         */
-        $newsletterSubscriptionEvent = new NewsletterSubscriptionEvent($newsletterSubscription);
-        $this->eventDispatcher->dispatch(ElcodiNewsletterEvents::NEWSLETTER_UNSUBSCRIBE, $newsletterSubscriptionEvent);
+        $this
+            ->newsletterEventDispatcher
+            ->dispatchUnsubscribeEvent($newsletterSubscription);
 
         return $this;
     }

@@ -35,8 +35,12 @@ class NewsletterSubscriptionData extends AbstractFixture implements OrderedFixtu
         /**
          * @var NewsletterSubscriptionFactory $newsletterSubscriptionFactory
          */
-        $newsletterSubscriptionFactory = $this->container->get('elcodi.core.newsletter.factory.newsletter_subscription');
+        $newsletterSubscriptionFactory = $this
+            ->container
+            ->get('elcodi.core.newsletter.factory.newsletter_subscription');
+
         $languageEs = $this->getReference('language-es');
+
         $newsletterSubscription = $newsletterSubscriptionFactory->create();
         $newsletterSubscription
             ->setEmail('someemail@something.org')
@@ -44,7 +48,10 @@ class NewsletterSubscriptionData extends AbstractFixture implements OrderedFixtu
             ->setHash('123456789');
 
         $manager->persist($newsletterSubscription);
-        $this->setReference('newsletter-subscription', $newsletterSubscription);
+        $this->setReference(
+            'newsletter-subscription',
+            $newsletterSubscription
+        );
 
         $newsletterSubscriptionNoLanguage = $newsletterSubscriptionFactory->create();
         $newsletterSubscriptionNoLanguage
@@ -52,7 +59,10 @@ class NewsletterSubscriptionData extends AbstractFixture implements OrderedFixtu
             ->setHash('0000');
 
         $manager->persist($newsletterSubscriptionNoLanguage);
-        $this->setReference('newsletter-subscription-nolanguage', $newsletterSubscriptionNoLanguage);
+        $this->setReference(
+            'newsletter-subscription-nolanguage',
+            $newsletterSubscriptionNoLanguage
+        );
 
         $manager->flush();
     }

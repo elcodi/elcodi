@@ -19,3 +19,13 @@ parameters:
     # Services
     #
     elcodi.core.newsletter.service.newsletter_manager.class: Elcodi\NewsletterBundle\Services\NewsletterManager
+
+    #
+    # Event Listeners
+    #
+    elcodi.core.newsletter.event_listener.newsletter.class: Elcodi\NewsletterBundle\EventListener\NewsletterEventListener
+
+    #
+    # Event Dispatchers
+    #
+    elcodi.core.newsletter.event_dispatcher.newsletter.class: Elcodi\NewsletterBundle\EventDispatcher\NewsletterEventDispatcher

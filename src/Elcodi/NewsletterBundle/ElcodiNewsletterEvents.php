@@ -27,7 +27,7 @@ class ElcodiNewsletterEvents
      * event.name : newsletter.subscribe
      * event.class : NewsletterSubscriptionEvent
      */
-    const NEWSLETTER_SUBSCRIBE = 'newsletter.subscribe';
+    const NEWSLETTER_SUBSCRIBE = 'newsletter.onsubscribe';
 
     /**
      * This event is fired when customer want unsubscribe from newsletter
@@ -35,5 +35,5 @@ class ElcodiNewsletterEvents
      * event.name : newsletter.unsubscribe
      * event.class : NewsletterUnsubscriptionEvent
      */
-    const NEWSLETTER_UNSUBSCRIBE = 'newsletter.unsubscribe';
+    const NEWSLETTER_UNSUBSCRIBE = 'newsletter.onunsubscribe';
 }
