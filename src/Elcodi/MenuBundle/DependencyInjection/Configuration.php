@@ -14,7 +14,7 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\ProductBundle\DependencyInjection;
+namespace Elcodi\MenuBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -30,18 +30,15 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('elcodi_product');
+        $rootNode = $treeBuilder->root('elcodi_menu');
 
         $rootNode
             ->children()
-                ->arrayNode('categories')
+                ->arrayNode('menus')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('load_only_categories_with_products')
-                            ->defaultFalse()
-                        ->end()
                         ->scalarNode('cache_key')
-                            ->defaultValue('categories')
+                            ->defaultValue('menus')
                         ->end()
                     ->end()
                 ->end()

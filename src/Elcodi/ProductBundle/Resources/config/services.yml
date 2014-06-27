@@ -7,7 +7,7 @@ services:
         class: %elcodi.core.product.service.category_manager.class%
         parent: elcodi.core.core.service.abstract_cache_wrapper
         calls:
-            - [setKey, [%elcodi.core.product.menu_cache_key%]]
+            - [setKey, [%elcodi.core.product.cache_key%]]
             - [setLoadOnlyCategoriesWithProducts, [%elcodi.core.product.load_only_categories_with_products%]]
             - [load]
 

@@ -1,0 +1,24 @@
+parameters:
+
+    #
+    # Entities
+    #
+    elcodi.core.menu.entity.menu_node.class: Elcodi\MenuBundle\Entity\Menu\Node
+    elcodi.core.menu.entity.menu.class: Elcodi\MenuBundle\Entity\Menu\Menu
+
+    #
+    # Factories
+    #
+    elcodi.core.menu.factory.menu_node.class: Elcodi\MenuBundle\Factory\NodeFactory
+    elcodi.core.menu.factory.menu.class: Elcodi\MenuBundle\Factory\MenuFactory
+
+    #
+    # Repositories
+    #
+    elcodi.core.menu.repository.menu_node.class: Elcodi\MenuBundle\Repository\NodeRepository
+    elcodi.core.menu.repository.menu.class: Elcodi\MenuBundle\Repository\MenuRepository
+
+    #
+    # Services
+    #
+    elcodi.core.menu.service.menu_manager.class: Elcodi\MenuBundle\Services\MenuManager

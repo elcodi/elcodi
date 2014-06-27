@@ -14,18 +14,18 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\ProductBundle\DependencyInjection;
+namespace Elcodi\MenuBundle\DependencyInjection;
 
-use Elcodi\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
-use Elcodi\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
-/**
- * This is the class that loads and manages your bundle configuration
- */
-class ElcodiProductExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
-{
+use Elcodi\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
+use Elcodi\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 
+/**
+ * Class ElcodiMenuExtension
+ */
+class ElcodiMenuExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
+{
     /**
      * Get the Config file location
      *
@@ -69,15 +69,14 @@ class ElcodiProductExtension extends AbstractExtension implements EntitiesOverri
     protected function getParametrizationValues(array $config)
     {
         return [
-            'elcodi.core.product.load_only_categories_with_products' => $config['categories']['load_only_categories_with_products'],
-            'elcodi.core.product.cache_key'                          => $config['categories']['cache_key'],
+            'elcodi.core.menu.cache_key' => $config['menus']['cache_key'],
         ];
     }
 
     /**
      * Config files to load
      *
-     * @param array $config Configuration
+     * @param array $config Config array
      *
      * @return array Config files
      */
@@ -86,9 +85,9 @@ class ElcodiProductExtension extends AbstractExtension implements EntitiesOverri
         return [
             'classes',
             'services',
-            'formTypes',
             'factories',
             'repositories',
+            'objectManagers',
         ];
     }
 
@@ -104,9 +103,9 @@ class ElcodiProductExtension extends AbstractExtension implements EntitiesOverri
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\ProductBundle\Entity\Interfaces\ProductInterface'      => 'elcodi.core.product.entity.product.class',
-            'Elcodi\ProductBundle\Entity\Interfaces\ManufacturerInterface' => 'elcodi.core.product.entity.manufacturer.class',
-            'Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface'     => 'elcodi.core.product.entity.category.class',
+            'Elcodi\MenuBundle\Entity\Menu\Interfaces\NodeInterface' => 'elcodi.core.menu.entity.menu_node.class',
+            'Elcodi\MenuBundle\Entity\Menu\Interfaces\MenuInterface' => 'elcodi.core.menu.entity.menu.class',
         ];
     }
+
 }
