@@ -48,6 +48,13 @@ class Product extends AbstractEntity implements ProductInterface
     /**
      * @var string
      *
+     * Product SKU
+     */
+    protected $sku;
+
+    /**
+     * @var string
+     *
      * Slug
      */
     protected $slug;
@@ -468,5 +475,29 @@ class Product extends AbstractEntity implements ProductInterface
     public function __toString()
     {
         return (string) $this->getName();
+    }
+
+    /**
+     * Gets product SKU
+     *
+     * @return string
+     */
+    public function getSku()
+    {
+        return $this->sku;
+    }
+
+    /**
+     * Sets product SKU
+     *
+     * @param string $sku
+     *
+     * @return ProductInterface
+     */
+    public function setSku($sku)
+    {
+        $this->sku = $sku;
+
+        return $this;
     }
 }

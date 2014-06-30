@@ -45,6 +45,22 @@ interface ProductInterface extends EnabledInterface, ETaggableInterface, MetaDat
     public function getName();
 
     /**
+     * Gets product SKU
+     *
+     * @return string
+     */
+    public function getSku();
+
+    /**
+     * Sets product SKU
+     *
+     * @param string $sku
+     *
+     * @return ProductInterface
+     */
+    public function setSku($sku);
+
+    /**
      * Set slug
      *
      * @param string $slug Slug

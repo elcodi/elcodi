@@ -8,6 +8,11 @@ Elcodi\ProductBundle\Entity\Product:
             type: string
             length: 255
             nullable: false
+        sku:
+            column: sku
+            type: string
+            length: 255
+            nullable: true
         slug:
             column: slug
             type: string
