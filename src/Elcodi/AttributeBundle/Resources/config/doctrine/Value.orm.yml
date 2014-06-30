@@ -27,6 +27,7 @@ Elcodi\AttributeBundle\Entity\Value:
     manyToOne:
         attribute:
             targetEntity: Elcodi\AttributeBundle\Entity\Interfaces\AttributeInterface
+            inversedBy: values
             joinColumn:
                 name: attribute_id
                 referencedColumnName: id
