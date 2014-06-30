@@ -20,7 +20,6 @@ use Doctrine\Common\Collections\Collection;
 
 use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\ETaggableInterface;
-use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 use Elcodi\MediaBundle\Entity\Interfaces\ImagesContainerInterface;
 
 /**
@@ -171,38 +170,6 @@ interface ProductInterface extends EnabledInterface, ETaggableInterface, MetaDat
      * @return int Stock
      */
     public function getStock();
-
-    /**
-     * Set price
-     *
-     * @param MoneyInterface $money Price
-     *
-     * @return ProductInterface self Object
-     */
-    public function setPrice(MoneyInterface $money);
-
-    /**
-     * Get price
-     *
-     * @return MoneyInterface Price
-     */
-    public function getPrice();
-
-    /**
-     * Set price
-     *
-     * @param MoneyInterface $money Reduced Price
-     *
-     * @return ProductInterface self Object
-     */
-    public function setReducedPrice(MoneyInterface $money);
-
-    /**
-     * Get price
-     *
-     * @return MoneyInterface Reduced Price
-     */
-    public function getReducedPrice();
 
     /**
      * Set show in home

@@ -18,25 +18,24 @@ namespace Elcodi\ProductBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
-use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
-use Elcodi\CurrencyBundle\Entity\Money;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface;
+use Elcodi\ProductBundle\Entity\Interfaces\ProductPriceInterface;
 use Elcodi\ProductBundle\Entity\Traits\MetaDataTrait;
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
 use Elcodi\CoreBundle\Entity\Traits\ETaggableTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
 use Elcodi\MediaBundle\Entity\Traits\ImagesContainerTrait;
+use Elcodi\ProductBundle\Entity\Traits\ProductPriceTrait;
 
 /**
  * Product entity
  */
-class Product extends AbstractEntity implements ProductInterface
+class Product extends AbstractEntity implements ProductInterface, ProductPriceInterface
 {
-    use DateTimeTrait, EnabledTrait, ETaggableTrait, MetaDataTrait, ImagesContainerTrait;
+    use ProductPriceTrait, DateTimeTrait, EnabledTrait, ETaggableTrait, MetaDataTrait, ImagesContainerTrait;
 
     /**
      * @var string
@@ -51,6 +50,13 @@ class Product extends AbstractEntity implements ProductInterface
      * Product SKU
      */
     protected $sku;
+
+    /**
+     * @var int
+     *
+     * Stock
+     */
+    protected $stock;
 
     /**
      * @var string
@@ -86,41 +92,6 @@ class Product extends AbstractEntity implements ProductInterface
      * Product dimensions
      */
     protected $dimensions;
-
-    /**
-     * @var int
-     *
-     * Stock
-     */
-    protected $stock;
-
-    /**
-     * @var float
-     *
-     * Product price
-     */
-    protected $price;
-
-    /**
-     * @var CurrencyInterface
-     *
-     * Product price currency
-     */
-    protected $priceCurrency;
-
-    /**
-     * @var float
-     *
-     * Reduced price
-     */
-    protected $reducedPrice;
-
-    /**
-     * @var CurrencyInterface
-     *
-     * Reduced price currency
-     */
-    protected $reducedPriceCurrency;
 
     /**
      * @var Manufacturer
@@ -337,62 +308,6 @@ class Product extends AbstractEntity implements ProductInterface
     public function getStock()
     {
         return $this->stock;
-    }
-
-    /**
-     * Set price
-     *
-     * @param MoneyInterface $amount Price
-     *
-     * @return Product self Object
-     */
-    public function setPrice(MoneyInterface $amount)
-    {
-        $this->price = $amount->getAmount();
-        $this->priceCurrency = $amount->getCurrency();
-
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return MoneyInterface Price
-     */
-    public function getPrice()
-    {
-        return Money::create(
-            $this->price,
-            $this->priceCurrency
-        );
-    }
-
-    /**
-     * Set price
-     *
-     * @param MoneyInterface $amount Reduced Price
-     *
-     * @return Product self Object
-     */
-    public function setReducedPrice(MoneyInterface $amount)
-    {
-        $this->reducedPrice = $amount->getAmount();
-        $this->reducedPriceCurrency = $amount->getCurrency();
-
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return MoneyInterface Reduced Price
-     */
-    public function getReducedPrice()
-    {
-        return Money::create(
-            $this->reducedPrice,
-            $this->reducedPriceCurrency
-        );
     }
 
     /**
