@@ -1,0 +1,32 @@
+services:
+
+    #
+    # Factories
+    #
+
+    #
+    # Factory for Variant entities
+    #
+    elcodi.core.variant.factory.variant:
+        class: %elcodi.core.variant.factory.variant.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.variant.entity.variant.class%"]]
+
+    elcodi.factory.attribute:
+        alias: elcodi.core.attribute.factory.attribute
+
+    #
+    # Entity providers
+    #
+
+    #
+    # Instance provider for Variant entities
+    #
+    elcodi.core.variant.entity.variant.instance:
+        class: %elcodi.core.variant.entity.variant.class%
+        factory_service: elcodi.core.variant.factory.variant
+        factory_method: create
+        scope: prototype
+
+    elcodi.entity.vriant.instance:
+        alias: elcodi.core.variant.entity.variant.instance

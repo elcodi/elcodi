@@ -1,0 +1,16 @@
+parameters:
+
+    #
+    # Entities
+    #
+    elcodi.core.variant.entity.variant.class: Elcodi\VariantBundle\Entity\Variant
+
+    #
+    # Repositories
+    #
+    elcodi.core.variant.repository.variant.class: Elcodi\VariantBundle\Repository\VariantRepository
+
+    #
+    # Factories
+    #
+    elcodi.core.variant.factory.variant.class: Elcodi\VariantBundle\Factory\VariantFactory

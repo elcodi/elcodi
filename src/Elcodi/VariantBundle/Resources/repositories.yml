@@ -1,0 +1,18 @@
+services:
+
+    #
+    # Repositories
+    #
+
+    #
+    # Repository for Attribute entities
+    #
+    elcodi.core.variant.repository.variant:
+        class: %elcodi.core.variant.repository.variant.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.variant.entity.variant.class%
+
+    elcodi.repository.variant:
+        alias: elcodi.core.variant.repository.variant
