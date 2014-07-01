@@ -23,6 +23,7 @@ use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
 use Elcodi\MediaBundle\Entity\Traits\ImagesContainerTrait;
 use Elcodi\ProductBundle\Entity\Traits\ProductPriceTrait;
+use Elcodi\VariantBundle\Entity\Interfaces\VariantInterface;
 
 /**
  * Class Variant

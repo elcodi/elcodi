@@ -14,7 +14,7 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\VariantBundle\Entity;
+namespace Elcodi\VariantBundle\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 use Elcodi\AttributeBundle\Entity\Interfaces\ValueInterface;
