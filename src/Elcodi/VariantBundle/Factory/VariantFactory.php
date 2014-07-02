@@ -16,6 +16,8 @@
 
 namespace Elcodi\VariantBundle\Factory;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
 use Elcodi\VariantBundle\Entity\Variant;
 
@@ -39,6 +41,7 @@ class VariantFactory extends AbstractFactory
         $variant
             ->setSku("")
             ->setStock(0)
+            ->setOptions(new ArrayCollection())
             ->setEnabled(false)
             ->setCreatedAt(new \DateTime);
 

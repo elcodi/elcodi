@@ -21,6 +21,7 @@ use Elcodi\AttributeBundle\Entity\Interfaces\ValueInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\DateTimeInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
 use Elcodi\MediaBundle\Entity\Interfaces\ImagesContainerInterface;
+use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductPriceInterface;
 
 /**
@@ -56,8 +57,26 @@ interface VariantInterface extends ProductPriceInterface, EnabledInterface, Date
      * Sets the variant stock
      *
      * @param int $stock
+     *
+     * @return VariantInterface
      */
     public function setStock($stock);
+
+    /**
+     * Gets parent product
+     *
+     * @return VariantInterface
+     */
+    public function getProduct();
+
+    /**
+     * Sets parent product
+     *
+     * @param ProductInterface $product
+     *
+     * @return VariantInterface
+     */
+    public function setProduct($product);
 
     /**
      * Gets this variant option values
@@ -70,6 +89,8 @@ interface VariantInterface extends ProductPriceInterface, EnabledInterface, Date
      * Sets this variant option values
      *
      * @param Collection $options
+     *
+     * @return VariantInterface
      */
     public function setOptions($options);
 
@@ -80,7 +101,7 @@ interface VariantInterface extends ProductPriceInterface, EnabledInterface, Date
      *
      * @return VariantInterface
      */
-    public function addValue(ValueInterface $option);
+    public function addOption(ValueInterface $option);
 
     /**
      * Removes an option from this variant

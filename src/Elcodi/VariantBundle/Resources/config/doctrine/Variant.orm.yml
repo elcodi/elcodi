@@ -1,0 +1,84 @@
+Elcodi\VariantBundle\Entity\Variant:
+    type: entity
+    repositoryClass: Elcodi\VariantBundle\Repository\VariantRepository
+    table: variant
+    fields:
+        sku:
+            column: sku
+            type: string
+            length: 255
+            nullable: true
+        stock:
+            column: stock
+            type: integer
+            nullable: true
+        price:
+            column: price
+            type: integer
+            nullable: true
+        reducedPrice:
+            column: reduced_price
+            type: integer
+            nullable: true
+        createdAt:
+            column: created_at
+            type: datetime
+        updatedAt:
+            column: updated_at
+            type: datetime
+        enabled:
+            column: enabled
+            type: boolean
+            nullable: true
+
+    manyToOne:
+        product:
+            targetEntity: Elcodi\ProductBundle\Entity\Interfaces\ProductInterface
+            joinColumn:
+                name: product_id
+                referencedColumnName: id
+                nullable: false
+        principalImage:
+            targetEntity: Elcodi\MediaBundle\Entity\Interfaces\ImageInterface
+            joinColumn:
+                name: principal_image_id
+                referencedColumnName: id
+                nullable: true
+        priceCurrency:
+            targetEntity: Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                name: price_currency_id
+                referencedColumnName: id
+                nullable: true
+        reducedPriceCurrency:
+            targetEntity: Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                name: reduced_price_currency_id
+                referencedColumnName: id
+                nullable: true
+
+    manyToMany:
+        options:
+            targetEntity: Elcodi\AttributeBundle\Entity\Interfaces\ValueInterface
+            joinTable:
+                name: variant_options
+                joinColumns:
+                    variant_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    option_id:
+                        referencedColumnName: id
+        images:
+            targetEntity: Elcodi\MediaBundle\Entity\Interfaces\ImageInterface
+            joinTable:
+                name: variant_image
+                joinColumns:
+                    variant_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    image_id:
+                        referencedColumnName: id
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]

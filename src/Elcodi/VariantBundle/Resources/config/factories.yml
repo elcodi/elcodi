@@ -12,7 +12,7 @@ services:
         calls:
             - [setEntityNamespace, ["%elcodi.core.variant.entity.variant.class%"]]
 
-    elcodi.factory.attribute:
+    elcodi.factory.variant:
         alias: elcodi.core.attribute.factory.attribute
 
     #
@@ -28,5 +28,5 @@ services:
         factory_method: create
         scope: prototype
 
-    elcodi.entity.vriant.instance:
+    elcodi.entity.variant.instance:
         alias: elcodi.core.variant.entity.variant.instance

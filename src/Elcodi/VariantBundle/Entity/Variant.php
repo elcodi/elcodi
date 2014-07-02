@@ -22,6 +22,7 @@ use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
 use Elcodi\MediaBundle\Entity\Traits\ImagesContainerTrait;
+use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\ProductBundle\Entity\Traits\ProductPriceTrait;
 use Elcodi\VariantBundle\Entity\Interfaces\VariantInterface;
 
@@ -53,6 +54,13 @@ class Variant extends AbstractEntity implements VariantInterface
      * Stock available
      */
     protected $stock;
+
+    /**
+     * @var ProductInterface
+     *
+     * Parent product
+     */
+    protected $product;
 
     /**
      * @var Collection
@@ -123,10 +131,14 @@ class Variant extends AbstractEntity implements VariantInterface
      * Sets this variant option values
      *
      * @param Collection $options
+     *
+     * @return VariantInterface
      */
     public function setOptions($options)
     {
         $this->options = $options;
+
+        return $this;
     }
 
     /**
@@ -136,7 +148,7 @@ class Variant extends AbstractEntity implements VariantInterface
      *
      * @return VariantInterface
      */
-    public function addValue(ValueInterface $option)
+    public function addOption(ValueInterface $option)
     {
         $this->options->add($option);
 
@@ -153,6 +165,30 @@ class Variant extends AbstractEntity implements VariantInterface
     public function removeOption(ValueInterface $option)
     {
         $this->options->removeElement($option);
+
+        return $this;
+    }
+
+    /**
+     * Gets parent product
+     *
+     * @return ProductInterface
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    /**
+     * Sets parent product
+     *
+     * @param ProductInterface $product
+     *
+     * @return VariantInterface
+     */
+    public function setProduct($product)
+    {
+        $this->product = $product;
 
         return $this;
     }
