@@ -51,6 +51,7 @@ class ElcodiCoreExtension extends AbstractExtension implements EntitiesOverridab
             'providers',
             'repositories',
             'eventDispatchers',
+            'encoders',
         ];
     }
 
