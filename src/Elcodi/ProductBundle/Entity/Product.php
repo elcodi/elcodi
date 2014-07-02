@@ -21,7 +21,6 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface;
-use Elcodi\ProductBundle\Entity\Interfaces\ProductPriceInterface;
 use Elcodi\ProductBundle\Entity\Traits\MetaDataTrait;
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
@@ -33,7 +32,7 @@ use Elcodi\ProductBundle\Entity\Traits\ProductPriceTrait;
 /**
  * Product entity
  */
-class Product extends AbstractEntity implements ProductInterface, ProductPriceInterface
+class Product extends AbstractEntity implements ProductInterface
 {
     use ProductPriceTrait, DateTimeTrait, EnabledTrait, ETaggableTrait, MetaDataTrait, ImagesContainerTrait;
 

@@ -25,7 +25,7 @@ use Elcodi\MediaBundle\Entity\Interfaces\ImagesContainerInterface;
 /**
  * Class ProductInterface
  */
-interface ProductInterface extends EnabledInterface, ETaggableInterface, MetaDataInterface, ImagesContainerInterface
+interface ProductInterface extends ProductPriceInterface, EnabledInterface, ETaggableInterface, MetaDataInterface, ImagesContainerInterface
 {
     /**
      * Set name
