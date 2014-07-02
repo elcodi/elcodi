@@ -45,3 +45,9 @@ parameters:
     #
     elcodi.core.core.generator.random_string.class: Elcodi\CoreBundle\Generator\RandomStringGenerator
     elcodi.core.core.generator.sha1.class: Elcodi\CoreBundle\Generator\Sha1Generator
+
+    #
+    # Encoders
+    #
+    elcodi.core.core.encoder.json.class: Elcodi\CoreBundle\Encoder\JsonEncoder
+    elcodi.core.core.encoder.php.class: Elcodi\CoreBundle\Encoder\PHPEncoder
