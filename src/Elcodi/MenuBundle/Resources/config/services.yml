@@ -1,0 +1,15 @@
+services:
+
+    #
+    # services
+    #
+    elcodi.core.menu.service.menu_manager:
+        class: %elcodi.core.menu.service.menu_manager.class%
+        parent: elcodi.core.core.service.abstract_cache_wrapper
+        calls:
+            - [setKey, [%elcodi.core.menu.cache_key%]]
+            - [setMenuRepository, [@elcodi.repository.menu]]
+            - [setEncoder, [@elcodi.json_encoder]]
+
+    elcodi.menu_manager:
+        alias: elcodi.core.menu.service.menu_manager
