@@ -230,7 +230,7 @@ abstract class WebTestCase extends BaseWebTestCase
 
         $bundles = static::$kernel->getBundles();
         $formattedBundles = array_map(function ($bundle) use ($bundles) {
-            return $bundles[$bundle]->getPath();
+            return $bundles[$bundle]->getPath() . '/DataFixtures/ORM/';
         }, $this->loadFixturesBundles());
 
         self::$application->run(new ArrayInput(array(
