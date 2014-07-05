@@ -13,10 +13,10 @@ for i in $(ls -1 symfony.Elcodi.tmp/src/Elcodi/); do
     cd elcodi.$i;
     git filter-branch --prune-empty --subdirectory-filter src/Elcodi/$i;
     git remote rm origin
-    #git remote add origin git@github.com:elcodi/$i.git
-    #git push --force origin master
-    #git push --tags
+    git remote add origin git@github.com:elcodi/$i.git
+    git push --force origin master
+    git push --tags
     cd ..
-    #rm -rf elcodi.$i
+    rm -rf elcodi.$i
 done
 rm -rf symfony.Elcodi.tmp
