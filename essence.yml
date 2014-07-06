@@ -1,0 +1,20 @@
+# You can check the essence.yml format here
+# https://github.com/mmoreram/essence.yml
+
+Look Closely:
+    artist: "Hans Zimmer"
+    album: "Winter's Tale: Original Motion Picture Soundtrack"
+    spotify: "http://open.spotify.com/track/1iykxXOFFPkx37Wb4f80Yf"
+    listener: "Marc Morera (@mmoreram)"
+
+Sound of the drums:
+    artist: "Armin Van Buuren"
+    album: "A State Of Trance Episode 670"
+    spotify: "http://open.spotify.com/track/1M91E4HBH6VROLTGuLIw7z"
+    listener: "Marc Morera (@mmoreram)"
+
+Sadeness:
+    artist: "Enigma"
+    album : "The Platinum Collection"
+    spotify: "http://open.spotify.com/track/3n2dV8PXv1bs8KP31UhbVj"
+    listener: "Marc Morera (@mmoreram)"
