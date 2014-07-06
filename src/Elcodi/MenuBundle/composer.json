@@ -1,0 +1,53 @@
+{
+    "name": "elcodi/menu-bundle",
+    "description": "Elcodi Menu component",
+    "keywords": ["elcodi", "Menu", "ecommerce"],
+    "homepage": "https://github.com/elcodi/MenuBundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "Symfony Community",
+            "homepage": "https://github.com/elcodi/MenuBundle/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "doctrine/common": "~2.4",
+        "doctrine/orm": "~2.4",
+        "symfony/config": "~2.4",
+        "symfony/dependency-injection": "~2.4",
+        "symfony/http-kernel": "~2.4",
+
+        "elcodi/core-bundle": "~0.1"
+    },
+    "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "~2.2",
+        "symfony/browser-kit": "~2.4",
+        "symfony/framework-bundle": "~2.4",
+        "symfony/validator": "~2.4",
+        "symfony/finder": "~2.4",
+        "phpunit/phpunit": ">=4.0",
+        "symfony/routing": "~2.4",
+        "symfony/console": "~2.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\MenuBundle\\": ""
+        }
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    }
+}

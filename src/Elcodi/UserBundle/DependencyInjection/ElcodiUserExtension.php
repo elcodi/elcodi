@@ -60,8 +60,6 @@ class ElcodiUserExtension extends AbstractExtension implements EntitiesOverridab
         return [
             'Elcodi\UserBundle\Entity\Interfaces\CustomerInterface' => 'elcodi.core.user.entity.customer.class',
             'Elcodi\UserBundle\Entity\Interfaces\AddressInterface' => 'elcodi.core.user.entity.address.class',
-            'Elcodi\CartBundle\Entity\Interfaces\CartInterface' => 'elcodi.core.cart.entity.cart.class',
-            'Elcodi\CartBundle\Entity\Interfaces\OrderInterface' => 'elcodi.core.cart.entity.order.class'
         ];
     }
 }

@@ -16,7 +16,7 @@
 
 namespace Elcodi\CoreBundle\Tests\Functional\Form\Type;
 
-use Elcodi\CoreBundle\Tests\WebTestCase;
+use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
 /**
  * Tests LanguageType class

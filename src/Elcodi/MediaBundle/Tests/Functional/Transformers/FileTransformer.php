@@ -16,7 +16,7 @@
 
 namespace Elcodi\MediaBundle\Tests\Functional\Transformers;
 
-use Elcodi\CoreBundle\Tests\WebTestCase;
+use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
 /**
  * Class FileTransformer

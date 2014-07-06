@@ -80,6 +80,8 @@ class ElcodiCartExtension extends AbstractExtension implements EntitiesOverridab
     /**
      * Config files to load
      *
+     * @param array $config Config
+     *
      * @return array Config files
      */
     public function getConfigFiles(array $config)

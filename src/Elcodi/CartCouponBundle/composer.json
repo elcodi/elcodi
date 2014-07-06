@@ -27,14 +27,19 @@
         "symfony/http-kernel": "~2.4",
         "symfony/expression-language": "~2.4",
 
-        "elcodi/core-bundle": "0.1.*@dev",
-        "elcodi/cart-bundle": "0.1.*@dev",
-        "elcodi/coupon-bundle": "0.1.*@dev"
+        "elcodi/core-bundle": "~0.1",
+        "elcodi/cart-bundle": "~0.1",
+        "elcodi/coupon-bundle": "~0.1"
     },
     "require-dev": {
-        "doctrine/data-fixtures": "v1.0.0",
-        "phpunit/phpunit": ">=4.0.0",
-        "elcodi/elcodi": "0.1.*@dev"
+        "doctrine/doctrine-fixtures-bundle": "~2.2",
+        "symfony/browser-kit": "~2.4",
+        "symfony/framework-bundle": "~2.4",
+        "symfony/validator": "~2.4",
+        "symfony/finder": "~2.4",
+        "phpunit/phpunit": ">=4.0",
+        "symfony/routing": "~2.4",
+        "symfony/console": "~2.4"
     },
     "autoload": {
         "psr-4": {

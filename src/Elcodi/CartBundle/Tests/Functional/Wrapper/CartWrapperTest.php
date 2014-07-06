@@ -16,7 +16,7 @@
 
 namespace Elcodi\CartBundle\Tests\Functional\Wrapper;
 
-use Elcodi\CoreBundle\Tests\WebTestCase;
+use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
 /**
  * Class CartWrapperTest

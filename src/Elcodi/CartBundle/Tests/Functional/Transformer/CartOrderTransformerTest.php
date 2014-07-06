@@ -19,7 +19,7 @@ namespace Elcodi\CartBundle\Tests\Functional\Transformer;
 use Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface;
 use Elcodi\CartBundle\Transformer\CartOrderTransformer;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
-use Elcodi\CoreBundle\Tests\WebTestCase;
+use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
 /**
  * Class CartOrderTransformerTest

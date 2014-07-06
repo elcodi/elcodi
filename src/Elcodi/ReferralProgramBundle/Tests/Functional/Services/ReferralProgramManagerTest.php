@@ -23,7 +23,7 @@ use Elcodi\ReferralProgramBundle\Entity\ReferralHash;
 use Elcodi\ReferralProgramBundle\Entity\ReferralLine;
 use Elcodi\ReferralProgramBundle\Entity\ReferralRule;
 use Elcodi\ReferralProgramBundle\Entity\Invitation;
-use Elcodi\CoreBundle\Tests\WebTestCase;
+use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
