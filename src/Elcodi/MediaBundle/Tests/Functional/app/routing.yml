@@ -1,0 +1,2 @@
+core_media_bundle:
+    resource: "@ElcodiMediaBundle/Resources/config/routing.yml"

@@ -1,0 +1,2 @@
+core_referralprogram_bundle:
+    resource: "@ElcodiReferralProgramBundle/Resources/config/routing.yml"
