@@ -6,7 +6,7 @@
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
-         processIsolation="true"
+         processIsolation="false"
          stopOnFailure="false"
          syntaxCheck="false"
          bootstrap="vendor/autoload.php"
@@ -21,13 +21,10 @@
         <whitelist>
             <directory>./</directory>
             <exclude>
-                <directory>./Tests/</directory>
-                <directory>./vendor/</directory>
+                <directory>./Tests</directory>
+                <directory>./Resources</directory>
+                <directory>./vendor</directory>
             </exclude>
         </whitelist>
     </filter>
-
-    <php>
-        <server name="KERNEL_DIR" value="./vendor/elcodi/elcodi/Elcodi/app/" />
-    </php>
 </phpunit>
