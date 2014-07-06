@@ -9,7 +9,7 @@
          processIsolation="false"
          stopOnFailure="false"
          syntaxCheck="false"
-         bootstrap="./app/bootstrap.php.cache"
+         bootstrap="vendor/autoload.php"
 >
     <php>
         <ini name="intl.error_level" value="0"/>
@@ -18,21 +18,18 @@
 
     <testsuites>
         <testsuite name="Elcodi Test Suite">
-            <directory>./src/Elcodi/*/Tests</directory>
+            <directory>./src/Elcodi/*/Tests/</directory>
         </testsuite>
     </testsuites>
 
     <filter>
-        <whitelist processUncoveredFilesFromWhitelist="false">
-            <directory>./src</directory>
+        <whitelist>
+            <directory>./src/Elcodi/</directory>
             <exclude>
-                <directory>./src/Elcodi/*/Tests/</directory>
-                <directory>./src/Elcodi/*/Resources/</directory>
+                <directory>./src/Elcodi/*/Tests</directory>
+                <directory>./src/Elcodi/*/Resources</directory>
+                <directory>./src/Elcodi/*/Vendor</directory>
             </exclude>
         </whitelist>
     </filter>
-
-    <php>
-        <server name="KERNEL_DIR" value="./app/" />
-    </php>
 </phpunit>
