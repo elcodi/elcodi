@@ -14,7 +14,7 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\CoreBundle\Tests;
+namespace Elcodi\CoreBundle\Tests\Functional;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityRepository;
@@ -23,6 +23,7 @@ use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as BaseWebTestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\RouterInterface;
 
 /**
@@ -97,17 +98,6 @@ abstract class WebTestCase extends BaseWebTestCase
             ->setSQLLogger(null);
 
         $this->createSchema();
-    }
-
-    /**
-     * Tear down
-     */
-    public function tearDown()
-    {
-        static::$kernel->shutdown();
-        unset($this->client);
-
-        BaseWebTestCase::tearDown();
     }
 
     /**
@@ -287,5 +277,41 @@ abstract class WebTestCase extends BaseWebTestCase
             ->container
             ->get('elcodi.manager_provider')
             ->getManagerByEntityParameter($entityClassParameter);
+    }
+
+    /**
+     * Attempts to guess the kernel location.
+     *
+     * When the Kernel is located, the file is required.
+     *
+     * @return string The Kernel class name
+     *
+     * @throws \RuntimeException
+     */
+    protected static function getKernelClass()
+    {
+        $namespaceExploded = explode('\\Tests\\Functional\\', get_called_class(), 2);
+        $kernelClass = $namespaceExploded[0] . '\\Tests\\Functional\\app\\AppKernel';
+
+        return $kernelClass;
+    }
+
+    /**
+     * Creates a Kernel.
+     *
+     * Available options:
+     *
+     *  * environment
+     *  * debug
+     *
+     * @param array $options An array of options
+     *
+     * @return KernelInterface A KernelInterface instance
+     */
+    protected static function createKernel(array $options = array())
+    {
+        static::$class = static::getKernelClass();
+
+        return new static::$class('test', true);
     }
 }

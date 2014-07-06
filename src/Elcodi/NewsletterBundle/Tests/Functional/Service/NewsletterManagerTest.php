@@ -16,7 +16,7 @@
 
 namespace Elcodi\NewsletterBundle\Tests\Functional\Service;
 
-use Elcodi\CoreBundle\Tests\WebTestCase;
+use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 use Elcodi\CoreBundle\Entity\Interfaces\LanguageInterface;
 use Elcodi\NewsletterBundle\Entity\Interfaces\NewsletterSubscriptionInterface;
 use Elcodi\NewsletterBundle\Repository\NewsletterSubscriptionRepository;

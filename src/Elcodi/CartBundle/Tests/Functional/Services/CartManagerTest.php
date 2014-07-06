@@ -20,7 +20,7 @@ use Doctrine\ORM\UnitOfWork;
 
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
-use Elcodi\CoreBundle\Tests\WebTestCase;
+use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\CurrencyBundle\Entity\Money;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;

@@ -26,7 +26,7 @@ use Elcodi\CartBundle\Services\OrderStateManager;
 use Elcodi\CartBundle\Services\OrderLineManager;
 use Elcodi\CartBundle\Factory\OrderLineFactory;
 use Elcodi\CartBundle\Services\OrderManager;
-use Elcodi\CoreBundle\Tests\WebTestCase;
+use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
 /**
  * Tests OrderManager class

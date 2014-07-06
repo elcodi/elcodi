@@ -16,7 +16,7 @@
 
 namespace Elcodi\ProductBundle\Tests\Functional\Form\Type;
 
-use Elcodi\CoreBundle\Tests\WebTestCase;
+use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
 /**
  * Tests CategoryType class

@@ -16,7 +16,7 @@
 
 namespace Elcodi\MediaBundle\Tests\Functional\Services;
 
-use Elcodi\CoreBundle\Tests\WebTestCase;
+use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 use Elcodi\MediaBundle\Entity\Interfaces\ImageInterface;
 use Symfony\Component\HttpFoundation\File\File;
 

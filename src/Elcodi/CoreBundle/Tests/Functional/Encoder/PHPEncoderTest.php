@@ -16,7 +16,7 @@
 
 namespace Elcodi\CoreBundle\Tests\Functional\Encoder;
 
-use Elcodi\CoreBundle\Tests\WebTestCase;
+use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
 /**
  * Class PHPEncoderTest

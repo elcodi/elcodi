@@ -16,7 +16,7 @@
 
 namespace Elcodi\UserBundle\Tests\Functional\Wrapper;
 
-use Elcodi\CoreBundle\Tests\WebTestCase;
+use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
 /**
  * Tests CustomerWrapper class

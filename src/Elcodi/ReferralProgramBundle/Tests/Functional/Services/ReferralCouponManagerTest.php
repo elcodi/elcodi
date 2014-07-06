@@ -25,7 +25,7 @@ use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralLineInterface;
 use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralRuleInterface;
 use Elcodi\ReferralProgramBundle\Entity\Invitation;
 use Elcodi\UserBundle\Entity\Customer;
-use Elcodi\CoreBundle\Tests\WebTestCase;
+use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 
 /**

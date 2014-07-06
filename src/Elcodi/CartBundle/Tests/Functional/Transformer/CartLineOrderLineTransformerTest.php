@@ -21,7 +21,7 @@ use Elcodi\CartBundle\Transformer\CartLineOrderLineTransformer;
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
 use Elcodi\CartBundle\Transformer\CartOrderTransformer;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
-use Elcodi\CoreBundle\Tests\WebTestCase;
+use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 use Elcodi\CartBundle\Entity\OrderLine;
 
 /**

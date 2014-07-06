@@ -56,6 +56,8 @@ class Banner extends AbstractEntity implements BannerInterface
 
     /**
      * @var integer
+     *
+     * Position
      */
     protected $position;
 

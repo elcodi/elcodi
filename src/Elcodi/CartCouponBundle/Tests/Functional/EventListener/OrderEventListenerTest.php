@@ -20,7 +20,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 use Elcodi\CartBundle\Transformer\CartOrderTransformer;
-use Elcodi\CoreBundle\Tests\WebTestCase;
+use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
 /**
  * Class OrderEventListenerTest

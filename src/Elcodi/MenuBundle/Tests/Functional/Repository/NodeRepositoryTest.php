@@ -16,7 +16,7 @@
 
 namespace Elcodi\MenuBundle\Tests\Functional\Repository;
 
-use Elcodi\CoreBundle\Tests\WebTestCase;
+use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
 /**
  * Class NodeRepositoryTest

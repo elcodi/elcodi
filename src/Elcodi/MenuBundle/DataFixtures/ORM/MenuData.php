@@ -17,6 +17,7 @@
 namespace Elcodi\MenuBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
+
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\MenuBundle\Entity\Menu\Interfaces\MenuInterface;
 

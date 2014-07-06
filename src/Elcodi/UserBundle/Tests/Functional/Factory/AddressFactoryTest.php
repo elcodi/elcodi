@@ -16,7 +16,7 @@
 
 namespace Elcodi\UserBundle\Tests\Functional\Factory;
 
-use Elcodi\CoreBundle\Tests\WebTestCase;
+use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
 /**
  * Class AddressFactoryTest

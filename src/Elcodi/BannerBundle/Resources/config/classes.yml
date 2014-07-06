@@ -13,12 +13,6 @@ parameters:
     elcodi.core.banner.repository.bannerzone.class: Elcodi\BannerBundle\Repository\BannerZoneRepository
 
     #
-    # Form Types
-    #
-    elcodi.core.banner.form_type.banner.class: Elcodi\BannerBundle\Form\Type\BannerType
-    elcodi.core.banner.form_type.bannerzone.class: Elcodi\BannerBundle\Form\Type\BannerZoneType
-
-    #
     # Services
     #
     elcodi.core.banner.service.banner_manager.class: Elcodi\BannerBundle\Services\BannerManager
