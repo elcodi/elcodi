@@ -1,0 +1,30 @@
+Elcodi\VariantBundle\Entity\Product:
+    type: entity
+    repositoryClass: Elcodi\VariantBundle\Repository\ProductRepository
+    table: product
+
+    manyToOne:
+        principalVariant:
+            targetEntity: Elcodi\VariantBundle\Entity\Interfaces\VariantInterface
+            joinColumn:
+                name: principal_variant_id
+                referencedColumnName: id
+
+    oneToMany:
+        variants:
+            targetEntity: Elcodi\VariantBundle\Entity\Interfaces\VariantInterface
+            mappedBy: product
+            cascade: [ persist ]
+
+    manyToMany:
+        attributes:
+            targetEntity: Elcodi\AttributeBundle\Entity\Interfaces\AttributeInterface
+            inversedBy: products
+            joinTable:
+                name: product_attribute
+                joinColumns:
+                    product_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    attribute_id:
+                        referencedColumnName: id

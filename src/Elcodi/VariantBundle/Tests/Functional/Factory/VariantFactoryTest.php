@@ -37,6 +37,21 @@ class VariantFactoryTest extends WebTestCase
     }
 
     /**
+     * Load fixtures of these bundles
+     *
+     * @return array Bundles name where fixtures should be found
+     */
+    protected function loadFixturesBundles()
+    {
+        return array(
+            'ElcodiAttributeBundle',
+            'ElcodiCurrencyBundle',
+            'ElcodiProductBundle',
+            'ElcodiVariantBundle'
+        );
+    }
+
+    /**
      * Test menu factory provider
      */
     public function testFactoryProvider()
@@ -57,4 +72,10 @@ class VariantFactoryTest extends WebTestCase
             $this->container->get('elcodi.entity.variant.instance')
         );
     }
+
+    public function testProductInstance()
+    {
+        $product = $this->container->get('elcodi.core.variant.entity.product.instance');
+    }
+
 }

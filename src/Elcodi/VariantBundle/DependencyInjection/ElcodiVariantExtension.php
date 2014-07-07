@@ -65,6 +65,7 @@ class ElcodiVariantExtension extends AbstractExtension implements EntitiesOverri
     {
         return [
             'Elcodi\VariantBundle\Entity\Interfaces\VariantInterface' => 'elcodi.core.variant.entity.variant.class',
+            'Elcodi\ProductBundle\Entity\Interfaces\ProductInterface' => 'elcodi.core.variant.entity.product.class',
         ];
     }
 }

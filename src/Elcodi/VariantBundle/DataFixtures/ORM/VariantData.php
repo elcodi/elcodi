@@ -42,7 +42,7 @@ class VariantData extends AbstractFixture
          * @var ManufacturerInterface $manufacturer
          * @var CurrencyInterface     $currency
          */
-        $product = $this->container->get('elcodi.core.product.factory.product')->create();
+        $product = $this->container->get('elcodi.core.variant.factory.product')->create();
         $category = $this->getReference('category');
         $manufacturer = $this->getReference('manufacturer');
         $currency = $this->getReference('currency-dollar');
@@ -60,6 +60,8 @@ class VariantData extends AbstractFixture
             ->setEnabled(true);
 
         $manager->persist($product);
+        $manager->flush($product);
+
         $this->addReference('product-with-variant', $product);
 
         /* Variants */
@@ -85,6 +87,8 @@ class VariantData extends AbstractFixture
             ->addOption($optionSmall)
             ->setPrice(Money::create(1500, $currency))
             ->setEnabled(true);
+
+        $product->setPrincipalVariant($variantWhiteSmall);
 
         $manager->persist($variantWhiteSmall);
         $this->addReference('variant-white-small', $product);

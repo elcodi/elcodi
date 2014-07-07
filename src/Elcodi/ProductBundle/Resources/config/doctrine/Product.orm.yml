@@ -1,5 +1,5 @@
 Elcodi\ProductBundle\Entity\Product:
-    type: entity
+    type: mappedSuperclass
     repositoryClass: Elcodi\ProductBundle\Repository\ProductRepository
     table: product
     fields:
