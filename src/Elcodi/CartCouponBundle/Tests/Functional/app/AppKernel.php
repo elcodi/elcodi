@@ -16,13 +16,12 @@
 
 namespace Elcodi\CartCouponBundle\Tests\Functional\app;
 
-use Symfony\Component\HttpKernel\Kernel;
-use Symfony\Component\Config\Loader\LoaderInterface;
+use Elcodi\CoreBundle\Tests\Functional\app\Abstracts\AbstractElcodiKernel;
 
 /**
  * Class AppKernel
  */
-class AppKernel extends Kernel
+class AppKernel extends AbstractElcodiKernel
 {
     /**
      * Register application bundles
@@ -64,45 +63,6 @@ class AppKernel extends Kernel
         );
 
         return $bundles;
-    }
-
-    /**
-     * Register container configuration
-     *
-     * @param LoaderInterface $loader Loader
-     */
-    public function registerContainerConfiguration(LoaderInterface $loader)
-    {
-        $loader->load(__DIR__ . '/config.yml');
-    }
-
-    /**
-     * Return Cache dir
-     *
-     * @return string
-     */
-    public function getCacheDir()
-    {
-        return  sys_get_temp_dir() .
-                DIRECTORY_SEPARATOR .
-                'Elcodi' .
-                DIRECTORY_SEPARATOR .
-                $this->getContainerClass() . '/Cache/';
-
-    }
-
-    /**
-     * Return log dir
-     *
-     * @return string
-     */
-    public function getLogDir()
-    {
-        return  sys_get_temp_dir() .
-                DIRECTORY_SEPARATOR .
-                'Elcodi' .
-                DIRECTORY_SEPARATOR .
-                $this->getContainerClass() . '/Log/';
     }
 
     /**
