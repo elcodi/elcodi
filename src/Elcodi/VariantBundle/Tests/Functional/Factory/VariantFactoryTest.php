@@ -16,7 +16,7 @@
 
 namespace Elcodi\VariantBundle\Tests\Functional\Factory;
 
-use Elcodi\CoreBundle\Tests\WebTestCase;
+use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
 /**
  * Class VariantFactoryTest
@@ -48,7 +48,7 @@ class VariantFactoryTest extends WebTestCase
     }
 
     /**
-     * Test menu factory provider alias
+     * Test variant factory provider alias
      */
     public function testFactoryProviderAlias()
     {
