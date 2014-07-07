@@ -19,9 +19,11 @@ namespace Elcodi\CoreBundle\Tests\Functional\app\Abstracts;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
+/**
+ * AbstractElcodiKernel for all Elcodi specific Kernels
+ */
 abstract class AbstractElcodiKernel extends Kernel
 {
-
     /**
      * Register container configuration
      *
@@ -62,5 +64,4 @@ abstract class AbstractElcodiKernel extends Kernel
         DIRECTORY_SEPARATOR .
         $this->getContainerClass() . '/Log/';
     }
-
 }
