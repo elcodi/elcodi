@@ -10,6 +10,12 @@ Elcodi for Symfony2
 
 Elcodi components for symfony2
 
+Requirements
+------------
+
+Elcodi is only supported on PHP 5.4.* and up.
+
+
 Documentation
 -------------
 
