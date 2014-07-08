@@ -21,6 +21,7 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\ETaggableInterface;
 use Elcodi\MediaBundle\Entity\Interfaces\ImagesContainerInterface;
+use Elcodi\ProductBundle\Entity\Interfaces\VariantInterface;
 
 /**
  * Class ProductInterface
@@ -202,4 +203,52 @@ interface ProductInterface extends ProductPriceInterface, EnabledInterface, ETag
      * @return ManufacturerInterface Manufacturer
      */
     public function getManufacturer();
+
+    /**
+     * Returns product principal variant
+     *
+     * @return VariantInterface
+     */
+    public function getPrincipalVariant();
+
+    /**
+     * Sets product principal variant
+     *
+     * @param VariantInterface $principalVariant
+     *
+     * @return ProductInterface
+     */
+    public function setPrincipalVariant(VariantInterface $principalVariant);
+
+    /**
+     * Returns product attributes
+     *
+     * @return Collection
+     */
+    public function getAttributes();
+
+    /**
+     * Sets product attributes
+     *
+     * @param Collection $attributes
+     *
+     * @return ProductInterface
+     */
+    public function setAttributes(Collection $attributes);
+
+    /**
+     * Gets product variants
+     *
+     * @return Collection
+     */
+    public function getVariants();
+
+    /**
+     * Sets product variants
+     *
+     * @param Collection $variants
+     *
+     * @return ProductInterface
+     */
+    public function setVariants(Collection $variants);
 }

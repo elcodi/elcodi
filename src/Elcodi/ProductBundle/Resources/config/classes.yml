@@ -4,6 +4,7 @@ parameters:
     # Entities
     #
     elcodi.core.product.entity.product.class: Elcodi\ProductBundle\Entity\Product
+    elcodi.core.product.entity.variant.class: Elcodi\ProductBundle\Entity\Variant
     elcodi.core.product.entity.category.class: Elcodi\ProductBundle\Entity\Category
     elcodi.core.product.entity.manufacturer.class: Elcodi\ProductBundle\Entity\Manufacturer
 
@@ -11,6 +12,7 @@ parameters:
     # Repositories
     #
     elcodi.core.product.repository.product.class: Elcodi\ProductBundle\Repository\ProductRepository
+    elcodi.core.product.repository.variant.class: Elcodi\ProductBundle\Repository\VariantRepository
     elcodi.core.product.repository.category.class: Elcodi\ProductBundle\Repository\CategoryRepository
     elcodi.core.product.repository.manufacturer.class: Elcodi\ProductBundle\Repository\ManufacturerRepository
 
@@ -25,5 +27,6 @@ parameters:
     # Factories
     #
     elcodi.core.product.factory.product.class: Elcodi\ProductBundle\Factory\ProductFactory
+    elcodi.core.product.factory.variant.class: Elcodi\ProductBundle\Factory\VariantFactory
     elcodi.core.product.factory.manufacturer.class: Elcodi\ProductBundle\Factory\ManufacturerFactory
     elcodi.core.product.factory.category.class: Elcodi\ProductBundle\Factory\CategoryFactory

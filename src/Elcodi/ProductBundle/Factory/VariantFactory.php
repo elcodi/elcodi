@@ -14,18 +14,17 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\VariantBundle\Factory;
+namespace Elcodi\ProductBundle\Factory;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
-use Elcodi\VariantBundle\Entity\Product;
-use Elcodi\VariantBundle\Entity\Variant;
+use Elcodi\ProductBundle\Entity\Variant;
 
 /**
  * Factory for Attribute entities
  */
-class ProductFactory extends AbstractFactory
+class VariantFactory extends AbstractFactory
 {
     /**
      * Creates an Attribute instance
@@ -35,20 +34,17 @@ class ProductFactory extends AbstractFactory
     public function create()
     {
         /**
-         * @var Product $product
+         * @var Variant $variant
          */
         $classNamespace = $this->getEntityNamespace();
-        $product = new $classNamespace();
-        $product
+        $variant = new $classNamespace();
+        $variant
+            ->setSku("")
             ->setStock(0)
-            ->setShowInHome(false)
-            ->setCategories(new ArrayCollection)
-            ->setVariants(new ArrayCollection())
-            ->setAttributes(new ArrayCollection())
-            ->setImages(new ArrayCollection())
+            ->setOptions(new ArrayCollection())
             ->setEnabled(false)
             ->setCreatedAt(new \DateTime);
 
-        return $product;
+        return $variant;
     }
 }

@@ -28,6 +28,7 @@ use Elcodi\CoreBundle\Entity\Traits\ETaggableTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
 use Elcodi\MediaBundle\Entity\Traits\ImagesContainerTrait;
 use Elcodi\ProductBundle\Entity\Traits\ProductPriceTrait;
+use Elcodi\ProductBundle\Entity\Interfaces\VariantInterface;
 
 /**
  * Product entity
@@ -112,6 +113,27 @@ class Product extends AbstractEntity implements ProductInterface
      * Principal category
      */
     protected $principalCategory;
+
+    /**
+     * @var Collection
+     *
+     * Attributes associated with this product
+     */
+    protected $attributes;
+
+    /**
+     * @var Collection
+     *
+     * Variants for this product
+     */
+    protected $variants;
+
+    /**
+     * @var VariantInterface
+     *
+     * Principal variant for this product
+     */
+    protected $principalVariant;
 
     /**
      * Set name
@@ -413,5 +435,73 @@ class Product extends AbstractEntity implements ProductInterface
         $this->sku = $sku;
 
         return $this;
+    }
+
+    /**
+     * Returns product attributes
+     *
+     * @return Collection
+     */
+    public function getAttributes()
+    {
+        return $this->attributes;
+    }
+
+    /**
+     * Sets product attributes
+     *
+     * @param Collection $attributes
+     *
+     * @return ProductInterface
+     */
+    public function setAttributes(Collection $attributes)
+    {
+        $this->attributes = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets product variants
+     *
+     * @return Collection
+     */
+    public function getVariants()
+    {
+        return $this->variants;
+    }
+
+    /**
+     * Sets product variants
+     *
+     * @param Collection $variants
+     *
+     * @return ProductInterface
+     */
+    public function setVariants(Collection $variants)
+    {
+        $this->variants = $variants;
+    }
+
+    /**
+     * Returns product principal variant
+     *
+     * @return VariantInterface
+     */
+    public function getPrincipalVariant()
+    {
+        return $this->principalVariant;
+    }
+
+    /**
+     * Sets product principal variant
+     *
+     * @param VariantInterface $principalVariant
+     *
+     * @return ProductInterface
+     */
+    public function setPrincipalVariant(VariantInterface $principalVariant)
+    {
+        $this->principalVariant = $principalVariant;
     }
 }

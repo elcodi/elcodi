@@ -14,7 +14,7 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\VariantBundle\Entity;
+namespace Elcodi\ProductBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
 use Elcodi\AttributeBundle\Entity\Interfaces\ValueInterface;
@@ -24,7 +24,7 @@ use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
 use Elcodi\MediaBundle\Entity\Traits\ImagesContainerTrait;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\ProductBundle\Entity\Traits\ProductPriceTrait;
-use Elcodi\VariantBundle\Entity\Interfaces\VariantInterface;
+use Elcodi\ProductBundle\Entity\Interfaces\VariantInterface;
 
 /**
  * Class Variant

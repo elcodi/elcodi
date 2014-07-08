@@ -1,6 +1,6 @@
-Elcodi\VariantBundle\Entity\Variant:
+Elcodi\ProductBundle\Entity\Variant:
     type: entity
-    repositoryClass: Elcodi\VariantBundle\Repository\VariantRepository
+    repositoryClass: Elcodi\ProductBundle\Repository\VariantRepository
     table: variant
     fields:
         sku:

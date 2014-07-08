@@ -14,15 +14,13 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\VariantBundle\Entity\Interfaces;
+namespace Elcodi\ProductBundle\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 use Elcodi\AttributeBundle\Entity\Interfaces\ValueInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\DateTimeInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
 use Elcodi\MediaBundle\Entity\Interfaces\ImagesContainerInterface;
-use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
-use Elcodi\ProductBundle\Entity\Interfaces\ProductPriceInterface;
 
 /**
  * Interface VariantInterface

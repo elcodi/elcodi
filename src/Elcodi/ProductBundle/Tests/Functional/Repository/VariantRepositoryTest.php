@@ -14,7 +14,7 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\VariantBundle\Tests\Functional\Repository;
+namespace Elcodi\ProductBundle\Tests\Functional\Repository;
 
 use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
@@ -31,30 +31,19 @@ class VariantRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.variant.repository.variant',
+            'elcodi.core.product.repository.variant',
             'elcodi.repository.variant',
         ];
     }
 
     /**
-     * Test category repository provider
+     * Test variant repository provider
      */
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.variant.repository.variant.class'),
-            $this->container->get('elcodi.core.variant.repository.variant')
-        );
-    }
-
-    /**
-     * Test category repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.variant.repository.variant.class'),
-            $this->container->get('elcodi.repository.variant')
+            $this->container->getParameter('elcodi.core.product.repository.variant.class'),
+            $this->container->get('elcodi.core.product.repository.variant')
         );
     }
 }

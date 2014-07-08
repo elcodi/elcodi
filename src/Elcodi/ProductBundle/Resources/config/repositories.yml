@@ -18,6 +18,19 @@ services:
         alias: elcodi.core.product.repository.product
 
     #
+    # Repository for Variant entities
+    #
+    elcodi.core.product.repository.variant:
+        class: %elcodi.core.product.repository.variant.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.product.entity.variant.class%
+
+    elcodi.repository.variant:
+        alias: elcodi.core.product.repository.variant
+
+    #
     # Repository for entity category
     #
     elcodi.core.product.repository.category:

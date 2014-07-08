@@ -14,13 +14,13 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\VariantBundle;
+namespace Elcodi\ProductBundle\Repository;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Doctrine\ORM\EntityRepository;
 
 /**
- * ElcodiVariantBundle Bundle
+ * Class VariantRepository
  */
-class ElcodiVariantBundle extends Bundle
+class VariantRepository extends EntityRepository
 {
 }

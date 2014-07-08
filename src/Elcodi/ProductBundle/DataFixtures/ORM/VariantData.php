@@ -14,7 +14,7 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\VariantBundle\DataFixtures\ORM;
+namespace Elcodi\ProductBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Elcodi\AttributeBundle\Entity\Value;
@@ -30,7 +30,7 @@ class VariantData extends AbstractFixture
     /**
      * Loads sample fixtures for product Variant entities
      *
-     * @param ObjectManager $objectManager
+     * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager)
     {
@@ -42,7 +42,7 @@ class VariantData extends AbstractFixture
          * @var ManufacturerInterface $manufacturer
          * @var CurrencyInterface     $currency
          */
-        $product = $this->container->get('elcodi.core.variant.factory.product')->create();
+        $product = $this->container->get('elcodi.core.product.factory.product')->create();
         $category = $this->getReference('category');
         $manufacturer = $this->getReference('manufacturer');
         $currency = $this->getReference('currency-dollar');
@@ -78,7 +78,7 @@ class VariantData extends AbstractFixture
         $optionLarge = $this->getReference('value-size-large');
 
         /* Variant White-Small */
-        $variantWhiteSmall = $this->container->get('elcodi.core.variant.factory.variant')->create();
+        $variantWhiteSmall = $this->container->get('elcodi.core.product.factory.variant')->create();
         $variantWhiteSmall
             ->setSku('variant-white-small-sku')
             ->setStock(100)
@@ -94,7 +94,7 @@ class VariantData extends AbstractFixture
         $this->addReference('variant-white-small', $product);
 
         /* Variant White-Large */
-        $variantWhiteLarge = $this->container->get('elcodi.core.variant.factory.variant')->create();
+        $variantWhiteLarge = $this->container->get('elcodi.core.product.factory.variant')->create();
         $variantWhiteLarge
             ->setSku('variant-white-large-sku')
             ->setStock(100)
@@ -108,7 +108,7 @@ class VariantData extends AbstractFixture
         $this->addReference('variant-white-large', $product);
 
         /* Variant Red-Small */
-        $variantRedSmall = $this->container->get('elcodi.core.variant.factory.variant')->create();
+        $variantRedSmall = $this->container->get('elcodi.core.product.factory.variant')->create();
         $variantRedSmall
             ->setSku('variant-red-small-sku')
             ->setStock(100)
@@ -122,7 +122,7 @@ class VariantData extends AbstractFixture
         $this->addReference('variant-red-small', $product);
 
         /* Variant Red-Large */
-        $variantRedLarge = $this->container->get('elcodi.core.variant.factory.variant')->create();
+        $variantRedLarge = $this->container->get('elcodi.core.product.factory.variant')->create();
         $variantRedLarge
             ->setSku('variant-red-large-sku')
             ->setStock(100)

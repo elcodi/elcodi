@@ -1,5 +1,5 @@
 Elcodi\ProductBundle\Entity\Product:
-    type: mappedSuperclass
+    type: entity
     repositoryClass: Elcodi\ProductBundle\Repository\ProductRepository
     table: product
     fields:
@@ -81,6 +81,12 @@ Elcodi\ProductBundle\Entity\Product:
                 name: manufacturer_id
                 referencedColumnName: id
                 nullable: true
+        principalVariant:
+            targetEntity: Elcodi\ProductBundle\Entity\Interfaces\VariantInterface
+            joinColumn:
+                name: principal_variant_id
+                referencedColumnName: id
+                nullable: true
         principalCategory:
             targetEntity: Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface
             joinColumn:
@@ -106,10 +112,15 @@ Elcodi\ProductBundle\Entity\Product:
                  referencedColumnName: id
                  nullable: true
 
+    oneToMany:
+        variants:
+            targetEntity: Elcodi\ProductBundle\Entity\Interfaces\VariantInterface
+            mappedBy: product
+            cascade: [ persist ]
+
     manyToMany:
         categories:
             targetEntity: Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface
-            inversedBy: products
             joinTable:
                 name: product_category
                 joinColumns:
@@ -127,6 +138,16 @@ Elcodi\ProductBundle\Entity\Product:
                         referencedColumnName: id
                 inverseJoinColumns:
                     image_id:
+                        referencedColumnName: id
+        attributes:
+            targetEntity: Elcodi\AttributeBundle\Entity\Interfaces\AttributeInterface
+            joinTable:
+                name: product_attribute
+                joinColumns:
+                    product_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    attribute_id:
                         referencedColumnName: id
 
     lifecycleCallbacks:

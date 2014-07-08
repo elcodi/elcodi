@@ -14,7 +14,7 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\VariantBundle\Tests\Functional\Factory;
+namespace Elcodi\ProductBundle\Tests\Functional\Factory;
 
 use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
@@ -31,7 +31,7 @@ class VariantFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.variant.factory.variant',
+            'elcodi.core.product.factory.variant',
             'elcodi.factory.variant',
         ];
     }
@@ -46,8 +46,7 @@ class VariantFactoryTest extends WebTestCase
         return array(
             'ElcodiAttributeBundle',
             'ElcodiCurrencyBundle',
-            'ElcodiProductBundle',
-            'ElcodiVariantBundle'
+            'ElcodiProductBundle'
         );
     }
 
@@ -57,8 +56,8 @@ class VariantFactoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.variant.entity.variant.class'),
-            $this->container->get('elcodi.core.variant.entity.variant.instance')
+            $this->container->getParameter('elcodi.core.product.entity.variant.class'),
+            $this->container->get('elcodi.core.product.entity.variant.instance')
         );
     }
 
@@ -68,14 +67,14 @@ class VariantFactoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.variant.entity.variant.class'),
+            $this->container->getParameter('elcodi.core.product.entity.variant.class'),
             $this->container->get('elcodi.entity.variant.instance')
         );
     }
 
     public function testProductInstance()
     {
-        $product = $this->container->get('elcodi.core.variant.entity.product.instance');
+        $product = $this->container->get('elcodi.core.product.entity.product.instance');
     }
 
 }
