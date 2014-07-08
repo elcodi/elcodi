@@ -9,7 +9,8 @@ Elcodi\MenuBundle\Entity\Menu\Menu:
             length: 255
             nullable: false
         description:
-            column: text
+            column: description
+            type: text
             nullable: false
         enabled:
             column: enabled
