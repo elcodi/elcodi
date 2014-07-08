@@ -41,6 +41,7 @@ class MenuFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $menu = new $classNamespace();
         $menu
+            ->setDescription('')
             ->setSubnodes(new ArrayCollection())
             ->setEnabled(false)
             ->setCreatedAt(new DateTime);

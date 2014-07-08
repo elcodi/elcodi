@@ -37,6 +37,13 @@ class Menu extends AbstractEntity implements MenuInterface
     protected $code;
 
     /**
+     * @var string
+     *
+     * description
+     */
+    protected $description;
+
+    /**
      * Sets Code
      *
      * @param string $code Code
@@ -58,5 +65,29 @@ class Menu extends AbstractEntity implements MenuInterface
     public function getCode()
     {
         return $this->code;
+    }
+
+    /**
+     * Sets Description
+     *
+     * @param string $description Description
+     *
+     * @return Menu Self object
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get Description
+     *
+     * @return string Description
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }
