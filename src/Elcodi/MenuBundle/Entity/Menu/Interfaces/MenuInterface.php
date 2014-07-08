@@ -39,4 +39,20 @@ interface MenuInterface extends DateTimeInterface, EnabledInterface, SubnodesAwa
      * @return string Code
      */
     public function getCode();
+
+    /**
+     * Sets Description
+     *
+     * @param string $description Description
+     *
+     * @return MenuInterface Self object
+     */
+    public function setDescription($description);
+
+    /**
+     * Get Description
+     *
+     * @return string Description
+     */
+    public function getDescription();
 }

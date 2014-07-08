@@ -8,6 +8,9 @@ Elcodi\MenuBundle\Entity\Menu\Menu:
             type: string
             length: 255
             nullable: false
+        description:
+            column: text
+            nullable: false
         enabled:
             column: enabled
             type: boolean
