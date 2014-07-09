@@ -148,11 +148,17 @@ class ImageManager
             ->resizeAdapter
             ->resize($imageData, $height, $width, $type);
 
+        /* We need to physically store the new resized
+         * image in order to access its metadata, such as
+         * file size, image dimensions, mime type etc.
+         * Ideally, we should be doing this in memory */
         $resizedFile = new File(tempnam(sys_get_temp_dir(), '_generated'));
         file_put_contents($resizedFile, $resizedImageData);
 
         $image = $this->createImage($resizedFile);
         $image->setContent($resizedImageData);
+
+        unlink($resizedFile);
 
         return $image;
     }

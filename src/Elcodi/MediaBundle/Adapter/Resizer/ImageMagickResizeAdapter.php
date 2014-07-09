@@ -166,6 +166,11 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
             throw new \RuntimeException($proc->getOutput());
         }
 
-        return file_get_contents($resizedFile->getRealPath());
+        $imageContent = file_get_contents($resizedFile->getRealPath());
+
+        unlink($originalFile);
+        unlink($resizedFile);
+
+        return $imageContent;
     }
 }
