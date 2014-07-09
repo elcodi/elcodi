@@ -64,14 +64,14 @@ class ImageResizeController extends Controller
      *
      * Max size
      */
-    protected $maxSize;
+    protected $maxAge;
 
     /**
      * @var integer
      *
      * Shared max size
      */
-    protected $sharedMaxSize;
+    protected $sharedMaxAge;
 
     /**
      * Construct method
@@ -80,24 +80,24 @@ class ImageResizeController extends Controller
      * @param FileManager   $fileManager    File Manager
      * @param ImageManager  $imageManager   Image Manager
      * @param string        $imageNamespace Image namespace
-     * @param integer       $maxSize        Max size
-     * @param integer       $sharedMaxSize  Shared max size
+     * @param integer       $maxAge         Max size
+     * @param integer       $sharedMaxAge   Shared max size
      */
     public function __construct(
         ObjectManager $objectManager,
         FileManager $fileManager,
         ImageManager $imageManager,
         $imageNamespace,
-        $maxSize,
-        $sharedMaxSize
+        $maxAge,
+        $sharedMaxAge
     )
     {
         $this->objectManager = $objectManager;
         $this->fileManager = $fileManager;
         $this->imageManager = $imageManager;
         $this->imageNamespace = $imageNamespace;
-        $this->maxSize = $maxSize;
-        $this->sharedMaxSize = $sharedMaxSize;
+        $this->maxAge = $maxAge;
+        $this->sharedMaxAge = $sharedMaxAge;
     }
 
     /**
@@ -154,8 +154,8 @@ class ImageResizeController extends Controller
         $imageData = $image->getContent();
 
         $response->setStatusCode(200);
-        $response->setMaxAge($this->maxSize);
-        $response->setSharedMaxAge($this->sharedMaxSize);
+        $response->setMaxAge($this->maxAge);
+        $response->setSharedMaxAge($this->sharedMaxAge);
         $response->setContent($imageData);
 
         $response->headers->add(

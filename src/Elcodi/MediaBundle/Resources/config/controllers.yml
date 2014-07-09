@@ -10,8 +10,8 @@ services:
             file_manager: @elcodi.core.media.service.file_manager
             image_manager: @elcodi.core.media.service.image_manager
             image_namespace: %elcodi.core.media.entity.image.class%
-            image_view_max_size: %elcodi.core.media.image_view_max_age%
-            image_view_shared_max_size: %elcodi.core.media.image_view_shared_max_age%
+            image_view_max_age: %elcodi.core.media.image_view_max_age%
+            image_view_shared_max_age: %elcodi.core.media.image_view_shared_max_age%
 
     elcodi.core.media.controllers.image_upload:
         class: %elcodi.core.media.controllers.image_upload.class%
