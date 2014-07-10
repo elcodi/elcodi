@@ -8,12 +8,6 @@ Elcodi\UserBundle\Entity\Customer:
             type: string
             length: 15
             nullable: true
-        recoveryHash:
-            column: recovery_hash
-            type: string
-            length: 255
-            unique: true
-            nullable: true
         identityDocument:
             column: identity_document
             type: string

@@ -5,12 +5,24 @@ security:
             entity:
                 class: Elcodi\UserBundle\Entity\Customer
                 property: email
+        adminuser:
+            entity:
+                class: Elcodi\UserBundle\Entity\AdminUser
+                property: email
 
 services:
-    elcodi.core.user.event_listener.password:
-        class: %elcodi.core.user.event_listener.password.class%
+    elcodi.core.user.event_listener.customer_password:
+        class: %elcodi.core.user.event_listener.customer_password.class%
         arguments:
             encoder: @elcodi.core.user.provider.customer_provider
+        tags:
+            - { name: doctrine.event_listener, event: preUpdate, method: preUpdate }
+            - { name: doctrine.event_listener, event: prePersist, method: prePersist }
+
+    elcodi.core.user.event_listener.admin_user_password:
+        class: %elcodi.core.user.event_listener.admin_user_password.class%
+        arguments:
+            encoder: @elcodi.core.user.provider.admin_user_provider
         tags:
             - { name: doctrine.event_listener, event: preUpdate, method: preUpdate }
             - { name: doctrine.event_listener, event: prePersist, method: prePersist }

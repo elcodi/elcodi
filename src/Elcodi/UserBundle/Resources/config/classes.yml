@@ -5,31 +5,41 @@ parameters:
     #
     elcodi.core.user.entity.customer.class: Elcodi\UserBundle\Entity\Customer
     elcodi.core.user.entity.address.class: Elcodi\UserBundle\Entity\Address
-
-    #
-    # Entities
-    #
-    elcodi.core.user.repository.customer.class: Elcodi\UserBundle\Repository\CustomerRepository
-    elcodi.core.user.repository.address.class: Elcodi\UserBundle\Repository\AddressRepository
-
-    #
-    # Services
-    #
-    elcodi.core.user.service.password_manager.class: Elcodi\UserBundle\Services\PasswordManager
-    elcodi.core.user.service.customer_manager.class: Elcodi\UserBundle\Services\CustomerManager
-    elcodi.core.user.wrapper.customer_wrapper.class: Elcodi\UserBundle\Wrapper\CustomerWrapper
-
-    #
-    # Event Listeners
-    #
-    elcodi.core.user.event_listener.password.class: Elcodi\UserBundle\EventListener\PasswordEventListener
-    elcodi.core.user.event_listener.authentication_success.class: Elcodi\UserBundle\EventListener\AuthenticationSuccessEventListener
+    elcodi.core.user.entity.admin_user.class: Elcodi\UserBundle\Entity\AdminUser
 
     #
     # Factories
     #
     elcodi.core.user.factory.customer.class: Elcodi\UserBundle\Factory\CustomerFactory
     elcodi.core.user.factory.address.class: Elcodi\UserBundle\Factory\AddressFactory
+    elcodi.core.user.factory.admin_user.class: Elcodi\UserBundle\Factory\AdminUserFactory
+
+    #
+    # Repositories
+    #
+    elcodi.core.user.repository.customer.class: Elcodi\UserBundle\Repository\CustomerRepository
+    elcodi.core.user.repository.address.class: Elcodi\UserBundle\Repository\AddressRepository
+    elcodi.core.user.repository.admin_user.class: Elcodi\UserBundle\Repository\AdminUserRepository
+
+    #
+    # Services
+    #
+    elcodi.core.user.service.password_manager.class: Elcodi\UserBundle\Services\PasswordManager
+    elcodi.core.user.service.customer_manager.class: Elcodi\UserBundle\Services\CustomerManager
+    elcodi.core.user.service.admin_user_manager.class: Elcodi\UserBundle\Services\AdminUserManager
+
+    #
+    # Wrappers
+    #
+    elcodi.core.user.wrapper.customer_wrapper.class: Elcodi\UserBundle\Wrapper\CustomerWrapper
+    elcodi.core.user.wrapper.admin_user_wrapper.class: Elcodi\UserBundle\Wrapper\AdminUserWrapper
+
+    #
+    # Event Listeners
+    #
+    elcodi.core.user.event_listener.admin_user_password.class: Elcodi\UserBundle\EventListener\AdminUserPasswordEventListener
+    elcodi.core.user.event_listener.customer_password.class: Elcodi\UserBundle\EventListener\CustomerPasswordEventListener
+    elcodi.core.user.event_listener.authentication_success.class: Elcodi\UserBundle\EventListener\AuthenticationSuccessEventListener
 
     #
     # Generators
@@ -39,4 +49,4 @@ parameters:
     #
     # Providers
     #
-    elcodi.core.user.provider.customer_provider.class: Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface
+    elcodi.core.user.provider.abstract_user_provider.class: Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface

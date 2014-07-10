@@ -1,6 +1,9 @@
 security:
 
     encoders:
-        Elcodi\UserBundle\Entity\Abstracts\AbstractUser:
+        Elcodi\UserBundle\Entity\Customer:
+            algorithm: bcrypt
+            cost:      15
+        Elcodi\UserBundle\Entity\AdminUser:
             algorithm: bcrypt
             cost:      15
