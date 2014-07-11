@@ -55,3 +55,9 @@ Elcodi\CartBundle\Entity\OrderLine:
                 name: product_id
                 referencedColumnName: id
                 nullable: false
+        variant:
+            targetEntity: Elcodi\ProductBundle\Entity\Interfaces\VariantInterface
+            joinColumn:
+                name: variant_id
+                referencedColumnName: id
+                nullable: true

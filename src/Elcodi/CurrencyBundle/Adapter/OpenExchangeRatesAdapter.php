@@ -113,9 +113,9 @@ class OpenExchangeRatesAdapter implements ExchangeRatesAdapterInterface
     /**
      * Get the latest exchange rates
      *
-     * @param array  $symbols array of currency codes to get the rates for.
+     * @param array $symbols array of currency codes to get the rates for.
      *                        Default empty (all currencies)
-     * @param string $base    Base currency, default NULL (gets it from config)
+     * @param string $base Base currency, default NULL (gets it from config)
      *
      * @return array
      */

@@ -23,6 +23,7 @@ use Elcodi\CartBundle\EventDispatcher\CartEventDispatcher;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Factory\CartLineFactory;
 use Elcodi\CartBundle\Factory\CartFactory;
+use Elcodi\ProductBundle\Entity\Interfaces\PurchasableInterface;
 
 /**
  * Cart manager service
@@ -385,9 +386,9 @@ class CartManager
      * If the product is already in the Cart, it just increments
      * the quantity
      *
-     * @param CartInterface    $cart     Cart
-     * @param ProductInterface $product  Product to add
-     * @param integer          $quantity Number of units to decrease CartLine
+     * @param CartInterface        $cart        Cart
+     * @param PurchasableInterface $purchasable Product or Variant to add
+     * @param integer              $quantity    Number of units to set or increase
      *
      * @return CartManager self Object
      *
@@ -395,7 +396,7 @@ class CartManager
      */
     public function addProduct(
         CartInterface $cart,
-        ProductInterface $product,
+        PurchasableInterface $purchasable,
         $quantity
     )
     {
@@ -412,7 +413,7 @@ class CartManager
             /**
              * @var CartLineInterface $cartLine
              */
-            if ($cartLine->getProduct()->getId() == $product->getId()) {
+            if ($cartLine->getPurchasable()->getId() == $purchasable->getId()) {
 
                 /**
                  * Product already in the Cart, increase quantity
@@ -424,7 +425,7 @@ class CartManager
 
         $cartLine = $this->cartLineFactory->create();
         $cartLine
-            ->setProduct($product)
+            ->setPurchasable($purchasable)
             ->setQuantity($quantity);
 
         $this->addLine($cart, $cartLine);

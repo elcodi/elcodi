@@ -71,10 +71,4 @@ class VariantFactoryTest extends WebTestCase
             $this->container->get('elcodi.entity.variant.instance')
         );
     }
-
-    public function testProductInstance()
-    {
-        $product = $this->container->get('elcodi.core.product.entity.product.instance');
-    }
-
 }

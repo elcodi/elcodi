@@ -26,7 +26,7 @@ use Elcodi\ProductBundle\Entity\Interfaces\VariantInterface;
 /**
  * Class ProductInterface
  */
-interface ProductInterface extends ProductPriceInterface, EnabledInterface, ETaggableInterface, MetaDataInterface, ImagesContainerInterface
+interface ProductInterface extends PurchasableInterface, ProductPriceInterface, EnabledInterface, ETaggableInterface, MetaDataInterface, ImagesContainerInterface
 {
     /**
      * Set name
@@ -43,22 +43,6 @@ interface ProductInterface extends ProductPriceInterface, EnabledInterface, ETag
      * @return string
      */
     public function getName();
-
-    /**
-     * Gets product SKU
-     *
-     * @return string
-     */
-    public function getSku();
-
-    /**
-     * Sets product SKU
-     *
-     * @param string $sku
-     *
-     * @return ProductInterface
-     */
-    public function setSku($sku);
 
     /**
      * Set slug
@@ -155,22 +139,6 @@ interface ProductInterface extends ProductPriceInterface, EnabledInterface, ETag
      * @return CategoryInterface Principal category
      */
     public function getPrincipalCategory();
-
-    /**
-     * Set stock
-     *
-     * @param int $stock Stock
-     *
-     * @return ProductInterface self Object
-     */
-    public function setStock($stock);
-
-    /**
-     * Get stock
-     *
-     * @return int Stock
-     */
-    public function getStock();
 
     /**
      * Set show in home

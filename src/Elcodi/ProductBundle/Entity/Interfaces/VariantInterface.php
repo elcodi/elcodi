@@ -28,38 +28,8 @@ use Elcodi\MediaBundle\Entity\Interfaces\ImagesContainerInterface;
  * A Product variant is a specific combination of finite options
  * for a given Product.
  */
-interface VariantInterface extends ProductPriceInterface, EnabledInterface, DateTimeInterface, ImagesContainerInterface
+interface VariantInterface extends PurchasableInterface, ProductPriceInterface, EnabledInterface, DateTimeInterface, ImagesContainerInterface
 {
-    /**
-     * Gets the variant SKU
-     *
-     * @return string
-     */
-    public function getSku();
-
-    /**
-     * Sets the variant SKU
-     *
-     * @param string $sku
-     */
-    public function setSku($sku);
-
-    /**
-     * Gets the variant stock
-     *
-     * @return int
-     */
-    public function getStock();
-
-    /**
-     * Sets the variant stock
-     *
-     * @param int $stock
-     *
-     * @return VariantInterface
-     */
-    public function setStock($stock);
-
     /**
      * Gets parent product
      *

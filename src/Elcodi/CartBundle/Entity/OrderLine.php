@@ -22,6 +22,8 @@ use Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface;
 use Elcodi\CartBundle\Entity\Abstracts\AbstractLine;
+use Elcodi\CartBundle\Resolver\DefaultPurchasableResolver;
+use Elcodi\CartBundle\Resolver\Interfaces\PurchasableResolverInterface;
 
 /**
  * OrderLine
@@ -149,4 +151,21 @@ class OrderLine extends AbstractLine implements OrderLineInterface
     {
         return $this->lastOrderLineHistory;
     }
+
+    /**
+     * Returns a purchasable resolver
+     *
+     * A purchasable resolver is needed so that classes in the
+     * hierarchy can plug-in specific logic when adding a
+     * Purchasable to an AbstractLine
+     *
+     * Here we will return teh Default resolver
+     *
+     * @return PurchasableResolverInterface
+     */
+    protected function getPurchasableResolver()
+    {
+        return new DefaultPurchasableResolver($this);
+    }
+
 }

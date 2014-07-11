@@ -17,6 +17,8 @@
 namespace Elcodi\CartBundle\Entity\Interfaces;
 
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
+use Elcodi\ProductBundle\Entity\Interfaces\PurchasableInterface;
+use Elcodi\ProductBundle\Entity\Interfaces\VariantInterface;
 
 /**
  * Class CartLineInterface
@@ -49,11 +51,43 @@ interface CartLineInterface extends PriceInterface
     public function setProduct(ProductInterface $product);
 
     /**
+     * Returns the product variant
+     *
+     * @return VariantInterface
+     */
+    public function getVariant();
+
+    /**
+     * Sets the product variant
+     *
+     * @param VariantInterface $variant
+     *
+     * @return CartLineInterface self Object
+     */
+    public function setVariant($variant);
+
+    /**
      * Get the product
      *
      * @return ProductInterface product attached to this cart line
      */
     public function getProduct();
+
+    /**
+     * Sets the Purchasable object on this line
+     *
+     * @param PurchasableInterface $purchasable
+     *
+     * @return CartLineInterface
+     */
+    public function setPurchasable(PurchasableInterface $purchasable);
+
+    /**
+     * Gets the Purchasable object on this line
+     *
+     * @return PurchasableInterface
+     */
+    public function getPurchasable();
 
     /**
      * Set quantity
