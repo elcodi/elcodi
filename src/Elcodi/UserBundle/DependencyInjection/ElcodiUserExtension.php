@@ -49,6 +49,8 @@ class ElcodiUserExtension extends AbstractExtension implements EntitiesOverridab
             'services',
             'factories',
             'repositories',
+            'wrappers',
+            'providers',
         ];
     }
 

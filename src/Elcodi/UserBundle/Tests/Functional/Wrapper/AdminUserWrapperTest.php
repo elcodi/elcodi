@@ -14,14 +14,14 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\UserBundle\Tests\Functional\Services;
+namespace Elcodi\UserBundle\Tests\Functional\Wrapper;
 
 use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
 /**
- * Tests PasswordManager class
+ * Tests AdminUserWrapper class
  */
-class PasswordManagerTest extends WebTestCase
+class AdminUserWrapperTest extends WebTestCase
 {
     /**
      * Returns the callable name of the service
@@ -30,6 +30,9 @@ class PasswordManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.user.service.password_manager';
+        return [
+            'elcodi.core.user.wrapper.admin_user_wrapper',
+            'elcodi.admin_user_wrapper',
+        ];
     }
 }

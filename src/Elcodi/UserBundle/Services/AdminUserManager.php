@@ -18,15 +18,13 @@ namespace Elcodi\UserBundle\Services;
 
 use Elcodi\UserBundle\Entity\Interfaces\AbstractUserInterface;
 use Elcodi\UserBundle\Services\Abstracts\AbstractUserManager;
-use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
-use Elcodi\UserBundle\Event\CustomerRegisterEvent;
+use Elcodi\UserBundle\Event\AdminUserRegisterEvent;
 use Elcodi\UserBundle\ElcodiUserEvents;
-use Elcodi\UserBundle\Entity\Address;
 
 /**
- * Manager for Customer entities
+ * Class AdminUserManager
  */
-class CustomerManager extends AbstractUserManager
+class AdminUserManager extends AbstractUserManager
 {
     /**
      * Register new User into the web.
@@ -41,30 +39,12 @@ class CustomerManager extends AbstractUserManager
     {
         parent::register($user, $providerKey);
 
-        $event = new CustomerRegisterEvent($user);
+        $event = new AdminUserRegisterEvent($user);
         $this->eventDispatcher->dispatch(
-            ElcodiUserEvents::CUSTOMER_REGISTER,
+            ElcodiUserEvents::ADMINUSER_REGISTER,
             $event
         );
 
         return $this;
-    }
-
-    /**
-     * Check if customer has a valid delivery address
-     *
-     * @param CustomerInterface $customer
-     *
-     * @return bool Customer has correct delivery address
-     */
-    public function customerHasCorrectDeliveryAddress(CustomerInterface $customer)
-    {
-        if (($customer->getDeliveryAddress() instanceof Address)
-            && ($customer->getDeliveryAddress()->getAddress())
-        ) {
-            return true;
-        }
-
-        return false;
     }
 }

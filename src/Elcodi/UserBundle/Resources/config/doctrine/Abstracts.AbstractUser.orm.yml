@@ -34,6 +34,12 @@ Elcodi\UserBundle\Entity\Abstracts\AbstractUser:
             column: birthday
             type: datetime
             nullable: true
+        recoveryHash:
+            column: recovery_hash
+            type: string
+            length: 255
+            unique: true
+            nullable: true
 
         # datetime
         createdAt:

@@ -19,9 +19,9 @@ namespace Elcodi\UserBundle\Tests\Functional\Services;
 use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
 /**
- * Tests PasswordManager class
+ * Class AdminUserManagerTest
  */
-class PasswordManagerTest extends WebTestCase
+class AdminUserManagerTest extends WebTestCase
 {
     /**
      * Returns the callable name of the service
@@ -30,6 +30,9 @@ class PasswordManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.user.service.password_manager';
+        return [
+            'elcodi.core.user.service.admin_user_manager',
+            'elcodi.admin_user_manager',
+        ];
     }
 }

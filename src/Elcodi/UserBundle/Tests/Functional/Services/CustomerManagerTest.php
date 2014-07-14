@@ -23,7 +23,6 @@ use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
  */
 class CustomerManagerTest extends WebTestCase
 {
-
     /**
      * Returns the callable name of the service
      *
@@ -31,6 +30,9 @@ class CustomerManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.user.service.customer_manager';
+        return [
+            'elcodi.core.user.service.customer_manager',
+            'elcodi.customer_manager',
+        ];
     }
 }

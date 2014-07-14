@@ -14,18 +14,17 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\UserBundle\EventListener;
+namespace Elcodi\UserBundle\EventListener\Abstracts;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
+use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
-
-use Elcodi\UserBundle\Entity\Abstracts\AbstractUser;
 
 /**
  * Password event listener
  */
-class PasswordEventListener
+abstract class AbstractPasswordEventListener
 {
     /**
      * @var PasswordEncoderInterface
@@ -55,7 +54,7 @@ class PasswordEventListener
     {
         $entity = $eventArgs->getEntity();
 
-        if ($entity instanceof AbstractUser) {
+        if ($this->checkEntityType($entity)) {
 
             if ($eventArgs->hasChangedField('password')) {
 
@@ -68,7 +67,6 @@ class PasswordEventListener
 
             }
         }
-
     }
 
     /**
@@ -80,7 +78,7 @@ class PasswordEventListener
     {
         $entity = $args->getEntity();
 
-        if ($entity instanceof AbstractUser) {
+        if ($this->checkEntityType($entity)) {
 
             $password = $entity->getPassword();
 
@@ -90,7 +88,6 @@ class PasswordEventListener
                 $entity->setPassword($encodedPassword);
             }
         }
-
     }
 
     /**
@@ -105,4 +102,13 @@ class PasswordEventListener
     {
         return $this->passwordEncoder->encodePassword($password, $salt);
     }
+
+    /**
+     * Check entity type
+     *
+     * @param AbstractEntity $entity Entity to check
+     *
+     * @return boolean Entity is ready for being encoded
+     */
+    abstract public function checkEntityType(AbstractEntity $entity);
 }

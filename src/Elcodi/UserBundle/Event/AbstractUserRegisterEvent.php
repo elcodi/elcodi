@@ -16,37 +16,37 @@
 
 namespace Elcodi\UserBundle\Event;
 
+use Elcodi\UserBundle\Entity\Interfaces\AbstractUserInterface;
+
 use Symfony\Component\EventDispatcher\Event;
 
-use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
-
 /**
- * Event fired when a customer registers
+ * Class AbstractUserRegisterEvent
  */
-class CustomerRegisterEvent extends Event
+class AbstractUserRegisterEvent extends Event
 {
     /**
-     * @var CustomerInterface
+     * @var AbstractUserInterface
      *
-     * Customer
+     * User
      */
-    protected $customer;
+    protected $User;
 
     /**
      * Construct method
      *
-     * @param CustomerInterface $customer Customer
+     * @param AbstractUserInterface $User User
      */
-    public function __construct(CustomerInterface $customer)
+    public function __construct(AbstractUserInterface $User)
     {
-        $this->customer = $customer;
+        $this->User = $User;
     }
 
     /**
-     * @return CustomerInterface User
+     * @return AbstractUserInterface User
      */
-    public function getCustomer()
+    public function getUser()
     {
-        return $this->customer;
+        return $this->User;
     }
 }

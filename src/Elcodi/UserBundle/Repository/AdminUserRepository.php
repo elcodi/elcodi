@@ -18,20 +18,20 @@ namespace Elcodi\UserBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
-use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
+use Elcodi\UserBundle\Entity\Interfaces\AdminUserInterface;
 use Elcodi\UserBundle\Repository\Interfaces\UserEmaileableInterface;
 
 /**
- * CustomerRepository
+ * AdminUserRepository
  */
-class CustomerRepository extends EntityRepository implements UserEmaileableInterface
+class AdminUserRepository extends EntityRepository implements UserEmaileableInterface
 {
     /**
      * Find one Entity given an email
      *
      * @param string $email Email
      *
-     * @return CustomerInterface User found
+     * @return AdminUserInterface User found
      */
     public function findOneByEmail($email)
     {

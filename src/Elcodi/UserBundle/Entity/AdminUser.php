@@ -14,22 +14,23 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\UserBundle\Tests\Functional\Services;
+namespace Elcodi\UserBundle\Entity;
 
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
+use Elcodi\UserBundle\Entity\Interfaces\AdminUserInterface;
+use Elcodi\UserBundle\Entity\Abstracts\AbstractUser;
 
 /**
- * Tests PasswordManager class
+ * Class AdminUser
  */
-class PasswordManagerTest extends WebTestCase
+class AdminUser extends AbstractUser implements AdminUserInterface
 {
     /**
-     * Returns the callable name of the service
+     * User roles
      *
-     * @return string service name
+     * @return array Roles
      */
-    public function getServiceCallableName()
+    public function getRoles()
     {
-        return 'elcodi.core.user.service.password_manager';
+        return array('ROLE_ADMIN');
     }
 }
