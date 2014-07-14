@@ -113,7 +113,7 @@ class CartLineOrderLineTransformer
         $orderLine = $this->orderLineFactory->create();
         $orderLine
             ->setOrder($order)
-            ->setProduct($cartLine->getProduct())
+            ->setPurchasable($cartLine->getPurchasable())
             ->setQuantity($cartLine->getQuantity())
             ->setProductAmount($cartLine->getProductAmount())
             ->setAmount($cartLine->getAmount());

@@ -504,4 +504,14 @@ class Product extends AbstractEntity implements ProductInterface
     {
         $this->principalVariant = $principalVariant;
     }
+
+    /**
+     * Tells if this product has variants
+     *
+     * @return bool
+     */
+    public function hasVariants()
+    {
+        return $this->variants->count() > 0;
+    }
 }

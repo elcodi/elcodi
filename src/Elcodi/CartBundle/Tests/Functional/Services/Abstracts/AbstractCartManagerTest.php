@@ -14,21 +14,16 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\CartBundle\Tests\Functional\Services;
+namespace Elcodi\CartBundle\Tests\Functional\Services\Abstracts;
 
 use Doctrine\ORM\UnitOfWork;
-
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
 use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
-use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
-use Elcodi\CurrencyBundle\Entity\Money;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
+use Elcodi\ProductBundle\Entity\Interfaces\PurchasableInterface;
 
-/**
- * Tests CartManager class
- */
-class CartManagerTest extends WebTestCase
+abstract class AbstractCartManagerTest extends WebTestCase
 {
     /**
      * Returns the callable name of the service
@@ -74,7 +69,7 @@ class CartManagerTest extends WebTestCase
      *
      * Product
      */
-    protected $product;
+    protected $purchasable;
 
     /**
      * Set up
@@ -88,40 +83,15 @@ class CartManagerTest extends WebTestCase
             ->get('elcodi.factory.cart')
             ->create();
 
-        /**
-         * @var CurrencyInterface $currency
-         */
-        $currency = $this
-            ->getRepository('elcodi.core.currency.entity.currency.class')
-            ->findOneBy([
-                'iso' => 'USD',
-            ]);
-
-        $this->product = $this
-            ->container
-            ->get('elcodi.factory.product')
-            ->create()
-            ->setPrice(Money::create(1000, $currency))
-            ->setName('abc')
-            ->setSlug('abc')
-            ->setEnabled(true)
-            ->setStock(10);
-
-        $this
-            ->getManager('elcodi.core.product.entity.product.class')
-            ->persist($this->product);
-
-        $this
-            ->getManager('elcodi.core.product.entity.product.class')
-            ->flush();
+        $this->purchasable = $this->createPurchasable();
 
         $this->cartLine = $this
             ->container
             ->get('elcodi.factory.cart_line')
             ->create()
-            ->setProduct($this->product)
-            ->setProductAmount($this->product->getPrice())
-            ->setAmount($this->product->getPrice())
+            ->setPurchasable($this->purchasable)
+            ->setProductAmount($this->purchasable->getPrice())
+            ->setAmount($this->purchasable->getPrice())
             ->setQuantity(1);
 
         $this
@@ -149,7 +119,7 @@ class CartManagerTest extends WebTestCase
 
         $this->assertEquals(
             $this->cart->getAmount(),
-            $this->cart->getCartLines()->first()->getProduct()->getPrice()
+            $this->cart->getCartLines()->first()->getPurchasable()->getPrice()
         );
 
         $this->assertNotNull($this->cart->getId());
@@ -233,11 +203,11 @@ class CartManagerTest extends WebTestCase
             ->container
             ->get('elcodi.cart_manager')
             ->addLine($this->cart, $this->cartLine)
-            ->editCartLine($this->cartLine, $this->product, 2);
+            ->editCartLine($this->cartLine, $this->purchasable, 2);
 
         $this->assertSame(
-            $this->cartLine->getProduct(),
-            $this->product
+            $this->cartLine->getPurchasable(),
+            $this->purchasable
         );
 
         $this->assertEquals(
@@ -250,14 +220,38 @@ class CartManagerTest extends WebTestCase
                 ->cart
                 ->getAmount()
                 ->equals($this
-                    ->cart
-                    ->getCartLines()
-                    ->first()
-                    ->getProduct()
-                    ->getPrice()
-                    ->multiply(2)
+                        ->cart
+                        ->getCartLines()
+                        ->first()
+                        ->getPurchasable()
+                        ->getPrice()
+                        ->multiply(2)
                 )
         );
+    }
+
+    /**
+     * Test set cartline quantity
+     *
+     * @skip
+     * @dataProvider dataSetCartLineQuantity
+     * @group        cart
+     */
+    public function testSetCartLineQuantity(
+        $quantityStart,
+        $quantitySetted,
+        $quantityEnd
+    )
+    {
+        $this->cartLine->setQuantity($quantityStart);
+
+        $this
+            ->container
+            ->get('elcodi.cart_manager')
+            ->addLine($this->cart, $this->cartLine)
+            ->setCartLineQuantity($this->cartLine, $quantitySetted);
+
+        $this->assertResults($quantityEnd);
     }
 
     /**
@@ -276,7 +270,7 @@ class CartManagerTest extends WebTestCase
             ->container
             ->get('elcodi.factory.cart_line')
             ->create()
-            ->setProduct($this->product)
+            ->setPurchasable($this->purchasable)
             ->setQuantity($quantityStart);
 
         $this
@@ -286,27 +280,6 @@ class CartManagerTest extends WebTestCase
             ->increaseCartLineQuantity($this->cartLine, $quantityAdded);
 
         $this->assertResults($quantityEnd);
-    }
-
-    /**
-     * Data for testIncreaseCartLineQuantity
-     */
-    public function dataIncreaseCartLineQuantity()
-    {
-        return [
-            [0, 1, 0],
-            [1, 1, 2],
-            [0, 0, 0],
-            [1, -1, 0],
-            [1, -2, 0],
-            [1, 10, 10],
-            [1, false, 1],
-            [1, null, 1],
-            [1, true, 1],
-            [1, 'true', 1],
-            [1, '', 1],
-            [1, [], 1],
-        ];
     }
 
     /**
@@ -333,70 +306,6 @@ class CartManagerTest extends WebTestCase
     }
 
     /**
-     * Data for testDecreaseCartLineQuantity
-     */
-    public function dataDecreaseCartLineQuantity()
-    {
-        return [
-            [1, 1, 0],
-            [1, 0, 1],
-            [1, 2, 0],
-            [1, -1, 2],
-            [1, -10, 10],
-            [1, false, 1],
-            [1, null, 1],
-            [1, true, 1],
-            [1, 'true', 1],
-            [1, '', 1],
-            [1, [], 1],
-        ];
-    }
-
-    /**
-     * Test set cartline quantity
-     *
-     * @dataProvider dataSetCartLineQuantity
-     * @group        cart
-     */
-    public function testSetCartLineQuantity(
-        $quantityStart,
-        $quantitySetted,
-        $quantityEnd
-    )
-    {
-        $this->cartLine->setQuantity($quantityStart);
-
-        $this
-            ->container
-            ->get('elcodi.cart_manager')
-            ->addLine($this->cart, $this->cartLine)
-            ->setCartLineQuantity($this->cartLine, $quantitySetted);
-
-        $this->assertResults($quantityEnd);
-    }
-
-    /**
-     * Data for testSetCartLineQuantity
-     */
-    public function dataSetCartLineQuantity()
-    {
-        return [
-            [1, 1, 1],
-            [1, 0, 0],
-            [1, 2, 2],
-            [1, -1, 0],
-            [1, 10, 10],
-            [1, 11, 10],
-            [1, false, 1],
-            [1, null, 1],
-            [1, true, 1],
-            [1, 'true', 1],
-            [1, '', 1],
-            [1, [], 1],
-        ];
-    }
-
-    /**
      * Test add product
      *
      * @dataProvider dataAddProduct
@@ -410,27 +319,9 @@ class CartManagerTest extends WebTestCase
         $this
             ->container
             ->get('elcodi.cart_manager')
-            ->addProduct($this->cart, $this->product, $quantitySet);
+            ->addProduct($this->cart, $this->purchasable, $quantitySet);
 
         $this->assertResults($quantityEnd);
-    }
-
-    /**
-     * Data for testAddProduct
-     */
-    public function dataAddProduct()
-    {
-        return [
-            [1, 1],
-            [0, 0],
-            [11, 10],
-            [false, 0],
-            [null, 0],
-            [true, 0],
-            ['true', 0],
-            ['', 0],
-            [[], 0],
-        ];
     }
 
     /**
@@ -449,7 +340,7 @@ class CartManagerTest extends WebTestCase
 
             $this->assertEquals(
                 $this->cart->getAmount()->getAmount(),
-                $cartLine->getProduct()->getPrice()->getAmount() * $quantity
+                $cartLine->getPurchasable()->getPrice()->getAmount() * $quantity
             );
 
             $this->assertNotNull($cartLine->getId());
@@ -476,4 +367,11 @@ class CartManagerTest extends WebTestCase
             );
         }
     }
+
+    /**
+     * Creates, flushes and returns a Purchasable
+     *
+     * @return PurchasableInterface
+     */
+    abstract protected function createPurchasable();
 }

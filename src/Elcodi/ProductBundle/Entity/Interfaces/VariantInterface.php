@@ -19,7 +19,6 @@ namespace Elcodi\ProductBundle\Entity\Interfaces;
 use Doctrine\Common\Collections\Collection;
 use Elcodi\AttributeBundle\Entity\Interfaces\ValueInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\DateTimeInterface;
-use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
 use Elcodi\MediaBundle\Entity\Interfaces\ImagesContainerInterface;
 
 /**
@@ -28,7 +27,7 @@ use Elcodi\MediaBundle\Entity\Interfaces\ImagesContainerInterface;
  * A Product variant is a specific combination of finite options
  * for a given Product.
  */
-interface VariantInterface extends PurchasableInterface, ProductPriceInterface, EnabledInterface, DateTimeInterface, ImagesContainerInterface
+interface VariantInterface extends PurchasableInterface, DateTimeInterface, ImagesContainerInterface
 {
     /**
      * Gets parent product

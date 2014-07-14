@@ -15,6 +15,7 @@
  */
 
 namespace Elcodi\ProductBundle\Entity\Interfaces;
+use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
 
 /**
  * Interface PurchasableInterface
@@ -30,7 +31,7 @@ namespace Elcodi\ProductBundle\Entity\Interfaces;
  * with more concrete product classes or interfaces
  *
  */
-interface PurchasableInterface
+interface PurchasableInterface extends EnabledInterface, ProductPriceInterface
 {
     /**
      * Gets the variant SKU

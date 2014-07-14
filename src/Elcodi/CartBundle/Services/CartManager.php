@@ -102,6 +102,10 @@ class CartManager
      * Adds cartLine to Cart
      *
      * This method dispatches all Cart Check and Load events
+     * It should NOT be used to add a Purchasable to a Cart,
+     * by manually passing a newly crafted CartLine, since
+     * no product duplication check is performed: in that
+     * case CartManager::addProduct should be used
      *
      * @param CartInterface     $cart     Cart
      * @param CartLineInterface $cartLine Cart line
@@ -223,13 +227,13 @@ class CartManager
     /**
      * Edit CartLine
      *
-     * Only manages this CartLine if already exists in CartLine
+     * The line is updated only if it belongs to a Cart
      *
      * This method dispatches all Cart Check and Load events
      *
-     * @param CartLineInterface $cartLine Cart line
-     * @param ProductInterface  $product  Product
-     * @param integer           $quantity quantity of products
+     * @param CartLineInterface    $cartLine    Cart line
+     * @param PurchasableInterface $purchasable purchasable to be edited
+     * @param integer              $quantity    item quantity
      *
      * @return CartManager self Object
      *
@@ -237,7 +241,7 @@ class CartManager
      */
     public function editCartLine(
         CartLineInterface $cartLine,
-        ProductInterface $product,
+        PurchasableInterface $purchasable,
         $quantity
     )
     {
@@ -247,7 +251,7 @@ class CartManager
             return $this;
         }
 
-        $cartLine->setProduct($product);
+        $cartLine->setPurchasable($purchasable);
         $this->setCartLineQuantity($cartLine, $quantity);
 
         return $this;
@@ -380,11 +384,13 @@ class CartManager
     }
 
     /**
-     * Add a product to Cart as a new CartLine
+     * Add a Purchasable to Cart as a new CartLine
      *
-     * This method creates a new CartLine with $quantity Product.
-     * If the product is already in the Cart, it just increments
-     * the quantity
+     * This method creates a new CartLine and set item quantity
+     * correspondingly.
+     *
+     * If the Purchasable is already in the Cart, it just increments
+     * item quantity by $quantity
      *
      * @param CartInterface        $cart        Cart
      * @param PurchasableInterface $purchasable Product or Variant to add

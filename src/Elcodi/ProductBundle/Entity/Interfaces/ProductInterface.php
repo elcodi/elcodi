@@ -18,7 +18,6 @@ namespace Elcodi\ProductBundle\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\ETaggableInterface;
 use Elcodi\MediaBundle\Entity\Interfaces\ImagesContainerInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\VariantInterface;
@@ -26,7 +25,7 @@ use Elcodi\ProductBundle\Entity\Interfaces\VariantInterface;
 /**
  * Class ProductInterface
  */
-interface ProductInterface extends PurchasableInterface, ProductPriceInterface, EnabledInterface, ETaggableInterface, MetaDataInterface, ImagesContainerInterface
+interface ProductInterface extends PurchasableInterface, ETaggableInterface, MetaDataInterface, ImagesContainerInterface
 {
     /**
      * Set name
@@ -219,4 +218,11 @@ interface ProductInterface extends PurchasableInterface, ProductPriceInterface, 
      * @return ProductInterface
      */
     public function setVariants(Collection $variants);
+
+    /**
+     * Tells if this product has variants
+     *
+     * @return bool
+     */
+    public function hasVariants();
 }
