@@ -116,7 +116,8 @@ Elcodi\ProductBundle\Entity\Product:
         variants:
             targetEntity: Elcodi\ProductBundle\Entity\Interfaces\VariantInterface
             mappedBy: product
-            cascade: [ persist ]
+            cascade: [ "all" ]
+            orphanRemoval: true
 
     manyToMany:
         categories:

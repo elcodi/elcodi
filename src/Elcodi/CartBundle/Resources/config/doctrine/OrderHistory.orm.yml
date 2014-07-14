@@ -24,7 +24,7 @@ Elcodi\CartBundle\Entity\OrderHistory:
         order:
             targetEntity: Elcodi\CartBundle\Entity\Interfaces\OrderInterface
             inversedBy: orderHistories
-            cascade: [ all ]
+            cascade: [ "all" ]
             joinColumn:
                 name: order_id
                 referencedColumnName: id

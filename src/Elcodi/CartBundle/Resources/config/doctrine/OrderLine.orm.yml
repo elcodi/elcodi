@@ -31,14 +31,14 @@ Elcodi\CartBundle\Entity\OrderLine:
         orderLineHistories:
             targetEntity: Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface
             mappedBy: orderLine
-            cascade: [ all ]
+            cascade: [ "all" ]
             orphanRemoval: true
 
     manyToOne:
         order:
             targetEntity: Elcodi\CartBundle\Entity\Interfaces\OrderInterface
             inversedBy: orderLines
-            cascade: [ all ]
+            cascade: [ "all" ]
             joinColumn:
                 name: order_id
                 referencedColumnName: id

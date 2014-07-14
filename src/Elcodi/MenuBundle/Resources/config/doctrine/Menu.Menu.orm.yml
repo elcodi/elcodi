@@ -26,7 +26,7 @@ Elcodi\MenuBundle\Entity\Menu\Menu:
     manyToMany:
         subnodes:
             targetEntity: Elcodi\MenuBundle\Entity\Menu\Interfaces\NodeInterface
-            cascade: ["PERSIST"]
+            cascade: [ "persist" ]
             joinTable:
                 name: menu_node_hierachy
                 joinColumns:
