@@ -472,6 +472,20 @@ class Product extends AbstractEntity implements ProductInterface
     }
 
     /**
+     * Adds a Variant for this Product
+     *
+     * @param VariantInterface $variant
+     *
+     * @return ProductInterface
+     */
+    public function addVariant(VariantInterface $variant)
+    {
+        $this->variants->add($variant);
+
+        return $this;
+    }
+
+    /**
      * Sets product variants
      *
      * @param Collection $variants

@@ -211,6 +211,15 @@ interface ProductInterface extends PurchasableInterface, ETaggableInterface, Met
     public function getVariants();
 
     /**
+     * Adds a Variant for this Product
+     *
+     * @param VariantInterface $variant
+     *
+     * @return ProductInterface
+     */
+    public function addVariant(VariantInterface $variant);
+
+    /**
      * Sets product variants
      *
      * @param Collection $variants
