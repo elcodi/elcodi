@@ -121,6 +121,7 @@ Elcodi\ProductBundle\Entity\Product:
     manyToMany:
         categories:
             targetEntity: Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface
+            inversedBy: products
             joinTable:
                 name: product_category
                 joinColumns:

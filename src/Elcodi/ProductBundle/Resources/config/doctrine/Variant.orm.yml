@@ -34,6 +34,7 @@ Elcodi\ProductBundle\Entity\Variant:
     manyToOne:
         product:
             targetEntity: Elcodi\ProductBundle\Entity\Interfaces\ProductInterface
+            inversedBy: variants
             joinColumn:
                 name: product_id
                 referencedColumnName: id
