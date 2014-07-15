@@ -50,7 +50,7 @@ class PrintMoneyExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(
             $result,
             $priceExtension->printMoney(
-                new Money(
+                Money::create(
                     $amount,
                     $currencyFactory
                         ->create()
@@ -91,7 +91,7 @@ class PrintMoneyExtensionTest extends \PHPUnit_Framework_TestCase
         $currencyFactory->setEntityNamespace('Elcodi\CurrencyBundle\Entity\Currency');
 
         $priceExtension->printMoney(
-            new Money(
+            Money::create(
                 1000,
                 $currencyFactory
                     ->create()

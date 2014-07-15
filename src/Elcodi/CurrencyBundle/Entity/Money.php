@@ -53,13 +53,27 @@ class Money implements MoneyInterface
      * @param                   $amount
      * @param CurrencyInterface $currency
      */
-    public function __construct($amount, CurrencyInterface $currency)
+    protected function __construct($amount, CurrencyInterface $currency)
     {
         $amount = intval($amount);
 
         $this->wrappedMoney = new WrappedMoney($amount, new WrappedCurrency($currency->getIso()));
 
         $this->currency = $currency;
+    }
+
+    /**
+     * Set currency
+     *
+     * @param CurrencyInterface $currency Currency
+     *
+     * @return Money self Object
+     */
+    public function setCurrency(CurrencyInterface $currency)
+    {
+        $this->currency = $currency;
+
+        return $this;
     }
 
     /**
@@ -70,6 +84,20 @@ class Money implements MoneyInterface
     public function getCurrency()
     {
         return $this->currency;
+    }
+
+    /**
+     * Set amount
+     *
+     * @param integer $amount Amount
+     *
+     * @return Money self Object
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
     }
 
     /**
