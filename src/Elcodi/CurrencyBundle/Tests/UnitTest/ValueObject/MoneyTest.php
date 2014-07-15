@@ -56,7 +56,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
             ->method('getIso')
             ->will($this->returnValue('USD'));
 
-        $this->oneHundredDollars = new Money(100, $this->currencyMockUSD);
+        $this->oneHundredDollars = Money::create(100, $this->currencyMockUSD);
     }
 
     /**
@@ -68,7 +68,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         $currencyMock = new Currency();
         $currencyMock->setIso('USD');
 
-        $twoHundredDollars = new Money(200, $currencyMock);
+        $twoHundredDollars = Money::create(200, $currencyMock);
 
         $this->assertInstanceOf('\Elcodi\CurrencyBundle\Entity\Money', $twoHundredDollars);
     }
@@ -100,7 +100,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddMoney()
     {
-        $fiftyDollars = new Money(50, $this->currencyMockUSD);
+        $fiftyDollars = Money::create(50, $this->currencyMockUSD);
 
         $this->assertEquals(
             150,
@@ -114,7 +114,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testMethodWillReturnMoneyInstance()
     {
-        $fiftyDollars = new Money(50, $this->currencyMockUSD);
+        $fiftyDollars = Money::create(50, $this->currencyMockUSD);
 
         $this->assertInstanceOf(
             'Elcodi\CurrencyBundle\Entity\Money',
@@ -131,7 +131,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testSubtractMoney()
     {
-        $oneHundredFiftyDollars = new Money(150, $this->currencyMockUSD);
+        $oneHundredFiftyDollars = Money::create(150, $this->currencyMockUSD);
 
         $this->assertEquals(
             -50,
@@ -161,7 +161,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testMoneyIsEqualTo()
     {
-        $oneHundredDollars = new Money(100, $this->currencyMockUSD);
+        $oneHundredDollars = Money::create(100, $this->currencyMockUSD);
 
         $this->assertTrue(
             $this
@@ -175,7 +175,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testMoneyIsNotEqualTo()
     {
-        $fiftyDollars = new Money(50, $this->currencyMockUSD);
+        $fiftyDollars = Money::create(50, $this->currencyMockUSD);
 
         $this->assertFalse(
             $this
@@ -199,7 +199,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
             ->method('getIso')
             ->will($this->returnValue('EUR'));
 
-        $fiftyEuros = new Money(50, $currencyMockEUR);
+        $fiftyEuros = Money::create(50, $currencyMockEUR);
 
         $this->assertFalse(
             $this
@@ -214,7 +214,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
     public function testCompareTo()
     {
         /* Testing greater-than */
-        $fiftyDollars = new Money(50, $this->currencyMockUSD);
+        $fiftyDollars = Money::create(50, $this->currencyMockUSD);
         $this->assertEquals(
             1,
             $this
@@ -223,7 +223,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         );
 
         /* Testing less-than */
-        $oneHundredFiftyDollars = new Money(150, $this->currencyMockUSD);
+        $oneHundredFiftyDollars = Money::create(150, $this->currencyMockUSD);
         $this->assertEquals(
             -1,
             $this
@@ -232,7 +232,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         );
 
         /* Testing equals */
-        $oneHundredDollars = new Money(100, $this->currencyMockUSD);
+        $oneHundredDollars = Money::create(100, $this->currencyMockUSD);
         $this->assertEquals(
             0,
             $this
@@ -246,7 +246,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsGreaterThan()
     {
-        $fiftyDollars = new Money(50, $this->currencyMockUSD);
+        $fiftyDollars = Money::create(50, $this->currencyMockUSD);
 
         $this->assertTrue(
             $this
@@ -260,7 +260,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsLessThan()
     {
-        $fiftyDollars = new Money(50, $this->currencyMockUSD);
+        $fiftyDollars = Money::create(50, $this->currencyMockUSD);
 
         $this->assertTrue(
             $fiftyDollars->isLessThan($this->oneHundredDollars)

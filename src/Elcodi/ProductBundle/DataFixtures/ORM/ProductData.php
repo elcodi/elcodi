@@ -57,7 +57,7 @@ class ProductData extends AbstractFixture
             ->setPrincipalCategory($category)
             ->setManufacturer($manufacturer)
             ->setStock(10)
-            ->setPrice(new Money(1000, $currency))
+            ->setPrice(Money::create(1000, $currency))
             ->setEnabled(true);
 
         $manager->persist($product);
@@ -75,8 +75,8 @@ class ProductData extends AbstractFixture
             ->setDescription('my product-reduced description')
             ->setShortDescription('my product-reduced short description')
             ->setStock(5)
-            ->setPrice(new Money(1000, $currency))
-            ->setReducedPrice(new Money(500, $currency))
+            ->setPrice(Money::create(1000, $currency))
+            ->setReducedPrice(Money::create(500, $currency))
             ->setEnabled(true);
 
         $manager->persist($productReduced);
