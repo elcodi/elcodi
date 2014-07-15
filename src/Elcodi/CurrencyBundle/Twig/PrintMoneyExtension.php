@@ -88,6 +88,8 @@ class PrintMoneyExtension extends Twig_Extension
     /**
      * Return a formatted price given an Money object and the target currency
      *
+     * If money is null, print empty string
+     *
      * @param MoneyInterface    $money          the Money object to print
      * @param CurrencyInterface $targetCurrency Iso code of the target currency (optional)
      *
@@ -96,10 +98,15 @@ class PrintMoneyExtension extends Twig_Extension
      * @return string The formatted price
      */
     public function printConvertMoney(
-        MoneyInterface $money,
+        MoneyInterface $money = null,
         CurrencyInterface $targetCurrency = null
     )
     {
+        if (!($money instanceof MoneyInterface)) {
+
+            return '';
+        }
+
         if (!($targetCurrency instanceof CurrencyInterface)) {
 
             $targetCurrency = $this->currencyWrapper->loadCurrency();
@@ -118,14 +125,24 @@ class PrintMoneyExtension extends Twig_Extension
     /**
      * Return a formatted price given an Money object
      *
+     * If money is null, print empty string
+     *
      * @param MoneyInterface $money the Money object to print
      *
      * @return string The formatted price
      */
-    public function printMoney(
-        MoneyInterface $money
-    )
+    public function printMoney(MoneyInterface $money = null)
     {
+        if (!($money instanceof MoneyInterface)) {
+
+            return '';
+        }
+
+        if (!($money->getCurrency() instanceof CurrencyInterface)) {
+
+            return $money->getAmount();
+        }
+
         $formatter = new NumberFormatter($this->locale, NumberFormatter::CURRENCY);
         $formatter->setSymbol(
             NumberFormatter::CURRENCY_SYMBOL,
