@@ -56,7 +56,7 @@ class VariantData extends AbstractFixture
             ->setPrincipalCategory($category)
             ->setManufacturer($manufacturer)
             ->setStock(10)
-            ->setPrice(new Money(1000, $currency))
+            ->setPrice(Money::create(1000, $currency))
             ->setEnabled(true);
 
         $manager->persist($product);
