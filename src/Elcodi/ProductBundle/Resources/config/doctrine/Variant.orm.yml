@@ -39,6 +39,7 @@ Elcodi\ProductBundle\Entity\Variant:
                 name: product_id
                 referencedColumnName: id
                 nullable: false
+                onDelete: "CASCADE"
         principalImage:
             targetEntity: Elcodi\MediaBundle\Entity\Interfaces\ImageInterface
             joinColumn:
