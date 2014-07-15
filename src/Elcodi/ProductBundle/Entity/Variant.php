@@ -144,13 +144,29 @@ class Variant extends AbstractEntity implements VariantInterface
     /**
      * Adds an option to this variant
      *
+     * Passed option Attribute is also added to the attribute collection
+     * of the parent Product.
+     *
+     * If Variant::product is not set or does not implement ProductInterface
+     * a LogicException is thrown: presence of the parent product is mandatory
+     * since adding an Option to a Variant also updates the Parent product
+     * Attribute collection. This way Variant::options and Product::attributes
+     * are synchronized
+     *
      * @param ValueInterface $option
+     *
+     * @throws \LogicException
      *
      * @return VariantInterface
      */
     public function addOption(ValueInterface $option)
     {
+        if (!$this->product instanceof ProductInterface) {
+            throw new \LogicException('Cannot add options to a Variant before setting a parent Product');
+        }
+
         $this->options->add($option);
+        $this->product->addAttribute($option->getAttribute());
 
         return $this;
     }

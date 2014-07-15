@@ -61,7 +61,8 @@ class CartManagerVariantTest extends AbstractCartManagerTest
          * @var CurrencyInterface $currency
          */
         $currency = $this
-            ->getRepository('elcodi.core.currency.entity.currency.class')
+            ->container
+            ->get('elcodi.repository.currency')
             ->findOneBy([
                 'iso' => 'USD',
             ]);
@@ -69,7 +70,10 @@ class CartManagerVariantTest extends AbstractCartManagerTest
         /**
          * @var ValueInterface $variantOption
          */
-        $variantOption = $this->container->get('elcodi.core.attribute.repository.value')->find(1);
+        $variantOption = $this
+            ->container
+            ->get('elcodi.repository.value')
+            ->find(1);
 
         /**
          * @var ProductInterface $product
@@ -91,9 +95,9 @@ class CartManagerVariantTest extends AbstractCartManagerTest
             ->container
             ->get('elcodi.factory.variant')
             ->create()
+            ->setProduct($product)
             ->setPrice(Money::create(1200, $currency))
             ->addOption($variantOption)
-            ->setProduct($product)
             ->setEnabled(true)
             ->setStock(20);
 
@@ -230,5 +234,37 @@ class CartManagerVariantTest extends AbstractCartManagerTest
         ];
     }
 
-    public function testCannotAddParentProductIfHasVariants() {}
+    /**
+     * Adding an Option to a Variant if a parent Product is not set must throw
+     * a LogicException
+     *
+     * @expectedException \LogicException
+     */
+    public function testAddOptionToOrphanVariantThrowsLogicException()
+    {
+        /**
+         * @var ValueInterface $variantOption
+         */
+        $variantOption = $this
+            ->container
+            ->get('elcodi.repository.value')
+            ->find(1);
+        /**
+         * @var VariantInterface $variant
+         */
+        $this
+            ->container
+            ->get('elcodi.factory.variant')
+            ->create()
+            ->addOption($variantOption);
+    }
+
+    /**
+     * A product vith variant cannot be added to the cart with
+     * CartManager::addProduct()
+     */
+    public function testCannotAddParentProductIfHasVariants()
+    {
+        $this->markTestSkipped();
+    }
 }

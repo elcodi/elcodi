@@ -18,6 +18,7 @@ namespace Elcodi\ProductBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
+use Elcodi\AttributeBundle\Entity\Interfaces\AttributeInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface;
@@ -438,6 +439,24 @@ class Product extends AbstractEntity implements ProductInterface
     }
 
     /**
+     * Adds an attribute if not already in the collection
+     *
+     * @param AttributeInterface $attribute
+     *
+     * @return ProductInterface;
+     */
+    public function addAttribute(AttributeInterface $attribute)
+    {
+        if (!$this->attributes->contains($attribute)) {
+
+            $this->attributes->add($attribute);
+
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns product attributes
      *
      * @return Collection
@@ -495,6 +514,8 @@ class Product extends AbstractEntity implements ProductInterface
     public function setVariants(Collection $variants)
     {
         $this->variants = $variants;
+
+        return $this;
     }
 
     /**

@@ -18,6 +18,7 @@ namespace Elcodi\ProductBundle\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
+use Elcodi\AttributeBundle\Entity\Interfaces\AttributeInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\ETaggableInterface;
 use Elcodi\MediaBundle\Entity\Interfaces\ImagesContainerInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\VariantInterface;
@@ -186,6 +187,15 @@ interface ProductInterface extends PurchasableInterface, ETaggableInterface, Met
      * @return ProductInterface
      */
     public function setPrincipalVariant(VariantInterface $principalVariant);
+
+    /**
+     * Adds an attribute if not already in the collection
+     *
+     * @param AttributeInterface $attribute
+     *
+     * @return ProductInterface;
+     */
+    public function addAttribute(AttributeInterface $attribute);
 
     /**
      * Returns product attributes

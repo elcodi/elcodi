@@ -42,6 +42,8 @@ class ProductFactory extends AbstractFactory
         $product
             ->setStock(0)
             ->setShowInHome(false)
+            ->setAttributes(new ArrayCollection())
+            ->setVariants(new ArrayCollection())
             ->setCategories(new ArrayCollection)
             ->setImages(new ArrayCollection())
             ->setEnabled(false)
