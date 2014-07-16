@@ -113,7 +113,13 @@ class ImageResizeController extends Controller
      *
      * @throws EntityNotFoundException
      */
-    public function resizeAction(Request $request, $id, $height, $width, $type)
+    public function resizeAction(
+        Request $request,
+        $id,
+        $height,
+        $width,
+        $type
+    )
     {
         /**
          * We retrieve image given its id
@@ -150,7 +156,15 @@ class ImageResizeController extends Controller
             return $response;
         }
 
-        $image = $this->imageManager->resize($image, $height, $width, $type);
+        $image = $this
+            ->imageManager
+            ->resize(
+                $image,
+                $height,
+                $width,
+                $type
+            );
+
         $imageData = $image->getContent();
 
         $response->setStatusCode(200);

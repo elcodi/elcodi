@@ -51,7 +51,7 @@ class Configuration implements ConfigurationInterface
                                     ->defaultValue('elcodi_media_image_view')
                                 ->end()
                                 ->scalarNode('controller_route')
-                                    ->defaultValue('/image/{id}')
+                                    ->defaultValue('/image/{id}/render')
                                 ->end()
                                 ->integerNode('max_age')
                                     ->defaultValue(7884000)

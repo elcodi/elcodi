@@ -103,7 +103,6 @@ class PrintMoneyExtension extends Twig_Extension
     )
     {
         if (!($money instanceof MoneyInterface)) {
-
             return '';
         }
 
@@ -134,12 +133,10 @@ class PrintMoneyExtension extends Twig_Extension
     public function printMoney(MoneyInterface $money = null)
     {
         if (!($money instanceof MoneyInterface)) {
-
             return '';
         }
 
         if (!($money->getCurrency() instanceof CurrencyInterface)) {
-
             return $money->getAmount();
         }
 
