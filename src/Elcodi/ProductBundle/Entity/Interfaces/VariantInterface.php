@@ -32,7 +32,7 @@ interface VariantInterface extends PurchasableInterface, DateTimeInterface, Imag
     /**
      * Gets parent product
      *
-     * @return VariantInterface
+     * @return ProductInterface
      */
     public function getProduct();
 

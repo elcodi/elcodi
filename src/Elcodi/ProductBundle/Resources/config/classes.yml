@@ -30,3 +30,8 @@ parameters:
     elcodi.core.product.factory.variant.class: Elcodi\ProductBundle\Factory\VariantFactory
     elcodi.core.product.factory.manufacturer.class: Elcodi\ProductBundle\Factory\ManufacturerFactory
     elcodi.core.product.factory.category.class: Elcodi\ProductBundle\Factory\CategoryFactory
+
+    #
+    # Twig extensions
+    #
+    elcodi.core.product.twig_extension.product.class: Elcodi\ProductBundle\Twig\ProductExtension

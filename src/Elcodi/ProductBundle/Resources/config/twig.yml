@@ -1,0 +1,10 @@
+services:
+
+    #
+    # Twig extensions
+    #
+    elcodi.core.product.twig_extension.product_extension:
+        class: %elcodi.core.product.twig_extension.product.class%
+        arguments: ~
+        tags:
+            - { name: twig.extension }
