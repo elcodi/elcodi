@@ -37,20 +37,33 @@ class ImageExtension extends Twig_Extension
     /**
      * @var string
      *
-     * Upload route name
+     * Resize route name
      */
     protected $imageResizeControllerRouteName;
+
+    /**
+     * @var string
+     *
+     * View route name
+     */
+    protected $imageViewControllerRouteName;
 
     /**
      * Construct method
      *
      * @param UrlGeneratorInterface $router                         Router
      * @param string                $imageResizeControllerRouteName Image resize controller route name
+     * @param string                $imageViewControllerRouteName   Image view controller route name
      */
-    public function __construct(UrlGeneratorInterface $router, $imageResizeControllerRouteName)
+    public function __construct(
+        UrlGeneratorInterface $router,
+        $imageResizeControllerRouteName,
+        $imageViewControllerRouteName
+    )
     {
         $this->router = $router;
         $this->imageResizeControllerRouteName = $imageResizeControllerRouteName;
+        $this->imageViewControllerRouteName = $imageViewControllerRouteName;
     }
 
     /**
@@ -62,11 +75,12 @@ class ImageExtension extends Twig_Extension
     {
         return array(
             new Twig_SimpleFilter('resize', array($this, 'resize')),
+            new Twig_SimpleFilter('viewImage', array($this, 'viewImage')),
         );
     }
 
     /**
-     * Return route of image
+     * Return route of image with desired resize
      *
      * @param ImageInterface $imageMedia Imagemedia element
      * @param Array          $options    Options
@@ -82,6 +96,22 @@ class ImageExtension extends Twig_Extension
                 'height' => (int) $options['height'],
                 'width'  => (int) $options['width'],
                 'type'   => (int) $options['type'],
+            ), true);
+    }
+
+    /**
+     * Return route of image
+     *
+     * @param ImageInterface $imageMedia Imagemedia element
+     *
+     * @return string image route
+     */
+    public function viewImage(ImageInterface $imageMedia)
+    {
+        return $this
+            ->router
+            ->generate($this->imageViewControllerRouteName, array(
+                'id' => (int) $imageMedia->getId()
             ), true);
     }
 

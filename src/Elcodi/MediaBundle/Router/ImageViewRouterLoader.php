@@ -85,11 +85,9 @@ class ImageViewRouterLoader implements LoaderInterface
 
         $routes->add($this->imageViewControllerRouteName, new Route($this->imageViewControllerRoute, array(
             '_controller' => 'elcodi.core.media.controllers.image_resize:resizeAction',
-            'defaults'    => array(
-                'height' => 0,
-                'width'  => 0,
-                'type'   => ElcodiMediaImageResizeTypes::NO_RESIZE
-            )
+            'height' => 0,
+            'width'  => 0,
+            'type'   => ElcodiMediaImageResizeTypes::NO_RESIZE,
         )));
 
         $this->loaded = true;

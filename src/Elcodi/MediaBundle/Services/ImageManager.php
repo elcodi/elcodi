@@ -135,14 +135,17 @@ class ImageManager
         $type = ElcodiMediaImageResizeTypes::FORCE_MEASURES
     )
     {
-        if (ElcodiMediaImageResizeTypes::NO_RESIZE === $type) {
-            return $image;
-        }
-
         $imageData = $this
             ->fileManager
             ->downloadFile($image)
             ->getContent();
+
+        if (ElcodiMediaImageResizeTypes::NO_RESIZE === $type) {
+
+            $image->setContent($imageData);
+
+            return $image;
+        }
 
         $resizedImageData = $this
             ->resizeAdapter
