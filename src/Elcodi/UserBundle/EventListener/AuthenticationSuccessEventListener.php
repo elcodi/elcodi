@@ -16,10 +16,11 @@
 
 namespace Elcodi\UserBundle\EventListener;
 
-use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Symfony\Component\Security\Core\Event\AuthenticationEvent;
 use Doctrine\Common\Persistence\ObjectManager;
 
+use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
+use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Wrapper\CartWrapper;
 
 /**
@@ -70,7 +71,10 @@ class AuthenticationSuccessEventListener
         $loggedUser = $event->getAuthenticationToken()->getUser();
         $cart = $this->cartWrapper->getCartFromSession();
 
-        if ($cart Instanceof CartInterface && $cart->getId()) {
+        if (
+            ($loggedUser instanceof CustomerInterface) &&
+            ($cart Instanceof CartInterface && $cart->getId())
+        ) {
             /*
              * We assume that a cart with an ID is
              * not a pristine entity coming from a
@@ -81,6 +85,5 @@ class AuthenticationSuccessEventListener
 
             $this->cartManager->flush($cart);
         }
-
     }
 }
