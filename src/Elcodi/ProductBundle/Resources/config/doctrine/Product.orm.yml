@@ -148,9 +148,11 @@ Elcodi\ProductBundle\Entity\Product:
                 joinColumns:
                     product_id:
                         referencedColumnName: id
+                        onDelete: "CASCADE"
                 inverseJoinColumns:
                     attribute_id:
                         referencedColumnName: id
+                        onDelete: "CASCADE"
 
     lifecycleCallbacks:
         preUpdate: [loadUpdateAt]
