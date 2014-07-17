@@ -76,6 +76,20 @@ class CurrencyData extends AbstractFixture
         $manager->persist($currencyPound);
         $this->setReference('currency-pound', $currencyPound);
 
+        /**
+         * @var CurrencyInterface $currencyIen
+         */
+        $currencyIen = $this
+            ->container
+            ->get('elcodi.factory.currency')->create();
+
+        $currencyIen
+            ->setSymbol('円')
+            ->setIso('JPY');
+
+        $manager->persist($currencyIen);
+        $this->setReference('currency-ien', $currencyIen);
+
         $manager->flush();
     }
 
