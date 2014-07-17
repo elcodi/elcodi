@@ -17,6 +17,7 @@
 namespace Elcodi\ProductBundle\Twig;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Util\Debug;
 use Elcodi\AttributeBundle\Entity\Interfaces\AttributeInterface;
 use Elcodi\AttributeBundle\Entity\Interfaces\ValueInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
@@ -92,7 +93,7 @@ class ProductExtension extends Twig_Extension
     }
 
     /**
-     * Returns an array of available options for a Product
+     * Returns an array of unique available options for a Product
      *
      * Returned Options belong to Variants available for purchase
      *
@@ -120,7 +121,9 @@ class ProductExtension extends Twig_Extension
                 /**
                  * @var ValueInterface $option
                  */
-                if ($option->getAttribute() == $attribute) {
+                if ($option->getAttribute() == $attribute &&
+                    !$availableOptions->contains($option)) {
+
                     $availableOptions->add($option);
                 }
             }
