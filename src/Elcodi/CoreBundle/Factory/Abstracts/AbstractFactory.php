@@ -55,7 +55,7 @@ abstract class AbstractFactory
      *
      * @return string Entity Namespace
      */
-    protected function getEntityNamespace()
+    public function getEntityNamespace()
     {
         return $this->entityNamespace;
     }
