@@ -31,6 +31,8 @@ Elcodi\UserBundle\Entity\Customer:
         orders:
             targetEntity: Elcodi\CartBundle\Entity\Interfaces\OrderInterface
             mappedBy: customer
+            orderBy:
+                createdAt: DESC
             cascade: [ "persist" ]
 
     oneToOne:
@@ -40,6 +42,7 @@ Elcodi\UserBundle\Entity\Customer:
                 name: delivery_address_id
                 referencedColumnName: id
                 nullable: true
+                onDelete: "SET NULL"
             cascade: [ "persist" ]
 
         invoiceAddress:
@@ -48,6 +51,7 @@ Elcodi\UserBundle\Entity\Customer:
                 name: invoice_address_id
                 referencedColumnName: id
                 nullable: true
+                onDelete: "SET NULL"
             cascade: [ "persist" ]
 
     manyToOne:

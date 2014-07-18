@@ -51,6 +51,7 @@ Elcodi\CartBundle\Entity\Order:
                 name: customer_id
                 referencedColumnName: id
                 nullable: false
+                onDelete: "SET NULL"
         currency:
             targetEntity: Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
             joinColumn:
