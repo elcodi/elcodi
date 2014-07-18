@@ -32,7 +32,7 @@ Elcodi\UserBundle\Entity\Abstracts\AbstractUser:
             nullable: true
         birthday:
             column: birthday
-            type: datetime
+            type: date
             nullable: true
         recoveryHash:
             column: recovery_hash

@@ -323,6 +323,8 @@ abstract class AbstractUser extends AbstractEntity implements UserInterface
     }
 
     /**
+     * String representation of the Customer
+     *
      * @return string
      */
     public function __tostring()
