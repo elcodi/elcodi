@@ -7,3 +7,11 @@ services:
 
     elcodi.language_manager:
         alias: elcodi.core.language.service.language_manager
+
+    elcodi.core.language.service.locale_manager:
+        class: %elcodi.core.language.service.locale_manager.class%
+        arguments:
+            locale: @=service("request_stack").getCurrentRequest() ? service("request_stack").getCurrentRequest().getLocale() : parameter("locale")
+
+    elcodi.locale.manager:
+        alias: elcodi.core.language.service.locale_manager
