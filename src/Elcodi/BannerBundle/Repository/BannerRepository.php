@@ -19,7 +19,7 @@ namespace Elcodi\BannerBundle\Repository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
 
-use Elcodi\CoreBundle\Entity\Interfaces\LanguageInterface;
+use Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface;
 
 /**
  * BannerRepository

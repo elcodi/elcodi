@@ -1,0 +1,10 @@
+services:
+
+    #
+    # Generators
+    #
+    elcodi.core.core.generator.random_string:
+        class: %elcodi.core.core.generator.random_string.class%
+
+    elcodi.core.core.generator.sha1:
+        class: %elcodi.core.core.generator.sha1.class%

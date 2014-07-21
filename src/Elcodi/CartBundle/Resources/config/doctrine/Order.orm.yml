@@ -45,7 +45,7 @@ Elcodi\CartBundle\Entity\Order:
 
     manyToOne:
         customer:
-            targetEntity: Elcodi\UserBundle\Entity\Customer
+            targetEntity: Elcodi\UserBundle\Entity\Interfaces\CustomerInterface
             inversedBy: orders
             joinColumn:
                 name: customer_id

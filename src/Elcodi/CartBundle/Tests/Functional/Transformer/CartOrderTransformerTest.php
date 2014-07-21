@@ -47,7 +47,6 @@ class CartOrderTransformerTest extends WebTestCase
     protected function loadFixturesBundles()
     {
         return [
-            'ElcodiCoreBundle',
             'ElcodiProductBundle',
             'ElcodiCurrencyBundle',
             'ElcodiUserBundle',

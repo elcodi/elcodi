@@ -17,7 +17,7 @@
 namespace Elcodi\NewsletterBundle\Entity;
 
 use Elcodi\NewsletterBundle\Entity\Interfaces\NewsletterSubscriptionInterface;
-use Elcodi\CoreBundle\Entity\Interfaces\LanguageInterface;
+use Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;

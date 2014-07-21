@@ -74,12 +74,10 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
             ])
             ->getMock();
 
-        $this->menuManager = new MenuManager();
+        $this->menuManager = new MenuManager($this->menuRepository, 'menus');
         $this
             ->menuManager
-            ->setKey('menus')
             ->setCache($this->cacheProvider)
-            ->setMenuRepository($this->menuRepository)
             ->setEncoder(new JsonEncoder());
     }
 

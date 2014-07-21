@@ -50,7 +50,6 @@ class CartLineOrderLineTransformerTest extends WebTestCase
     protected function loadFixturesBundles()
     {
         return [
-            'ElcodiCoreBundle',
             'ElcodiCurrencyBundle',
             'ElcodiProductBundle',
             'ElcodiUserBundle',

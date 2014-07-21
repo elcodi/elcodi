@@ -18,7 +18,7 @@ namespace Elcodi\UserBundle\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\CoreBundle\Entity\Interfaces\LanguageInterface;
+use Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 

@@ -89,13 +89,6 @@ abstract class WebTestCase extends BaseWebTestCase
 
         $this->container = static::$kernel->getContainer();
         $this->router = $this->container->get('router');
-        $this->manager = $this->container->get('doctrine.orm.entity_manager');
-
-        $this
-            ->manager
-            ->getConnection()
-            ->getConfiguration()
-            ->setSQLLogger(null);
 
         $this->createSchema();
     }
@@ -248,7 +241,7 @@ abstract class WebTestCase extends BaseWebTestCase
     /**
      * Get entity repository given its class parameter
      *
-     * i.e. elcodi.core.core.entity.language.class
+     * i.e. elcodi.core.language.entity.language.class
      *
      * @param string $entityClassParameter Entity namespace parameter
      *
@@ -265,7 +258,7 @@ abstract class WebTestCase extends BaseWebTestCase
     /**
      * Get manager given its class parameter
      *
-     * i.e. elcodi.core.core.entity.language.class
+     * i.e. elcodi.core.language.entity.language.class
      *
      * @param string $entityClassParameter Entity namespace parameter
      *

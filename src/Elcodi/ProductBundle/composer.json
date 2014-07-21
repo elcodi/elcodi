@@ -36,8 +36,9 @@
         "symfony/http-kernel": "~2.4",
         "sebastian/money": "~1.3",
 
-        "elcodi/media-bundle": "~0.1",
         "elcodi/core-bundle": "~0.1",
+        "elcodi/language-bundle": "~0.1",
+        "elcodi/media-bundle": "~0.1",
         "elcodi/currency-bundle": "~0.1"
     },
     "require-dev": {

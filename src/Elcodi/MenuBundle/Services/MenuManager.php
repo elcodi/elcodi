@@ -50,45 +50,18 @@ class MenuManager extends AbstractCacheWrapper
     protected $encoder;
 
     /**
-     * Set menu repository
+     * Construct method
      *
      * @param MenuRepository $menuRepository Menu repository
-     *
-     * @return MenuManager self Object
+     * @param string         $key            Key
      */
-    public function setMenuRepository(MenuRepository $menuRepository)
+    public function __construct(
+        MenuRepository $menuRepository,
+        $key
+    )
     {
         $this->menuRepository = $menuRepository;
-
-        return $this;
-    }
-
-    /**
-     * Set encoder
-     *
-     * @param EncoderInterface $encoder Encoder
-     *
-     * @return MenuManager self Object
-     */
-    public function setEncoder(EncoderInterface $encoder)
-    {
-        $this->encoder = $encoder;
-
-        return $this;
-    }
-
-    /**
-     * Overrides default setKey method because is not using Locale variable
-     *
-     * @param string $key Key
-     *
-     * @return MenuManager self Object
-     */
-    public function setKey($key = '')
-    {
         $this->key = $key;
-
-        return $this;
     }
 
     /**
@@ -189,17 +162,5 @@ class MenuManager extends AbstractCacheWrapper
             'url'      => $node->getUrl(),
             'subnodes' => $this->loadSubnodes($node)
         ];
-    }
-
-    /**
-     * Remove cached languages
-     *
-     * All enabled and non-deleted locales keys will attempted to be deleted
-     *
-     * @return AbstractCacheWrapper self Object
-     */
-    public function emptyAll()
-    {
-        return $this;
     }
 }

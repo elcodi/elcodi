@@ -1,0 +1,21 @@
+parameters:
+
+    #
+    # Entities
+    #
+    elcodi.core.language.entity.language.class: Elcodi\LanguageBundle\Entity\Language
+
+    #
+    # Repositories
+    #
+    elcodi.core.language.repository.language.class: Elcodi\LanguageBundle\Repository\LanguageRepository
+
+    #
+    # Factories
+    #
+    elcodi.core.language.factory.language.class: Elcodi\LanguageBundle\Factory\LanguageFactory
+
+    #
+    # Services
+    #
+    elcodi.core.language.service.language_manager.class: Elcodi\LanguageBundle\Services\LanguageManager

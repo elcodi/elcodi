@@ -48,6 +48,7 @@ class AppKernel extends AbstractElcodiKernel
              * Elcodi core bundles
              */
             new \Elcodi\CoreBundle\ElcodiCoreBundle(),
+            new \Elcodi\LanguageBundle\ElcodiLanguageBundle(),
             new \Elcodi\NewsletterBundle\ElcodiNewsletterBundle(),
         );
 

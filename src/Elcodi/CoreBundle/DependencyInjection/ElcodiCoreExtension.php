@@ -17,12 +17,11 @@
 namespace Elcodi\CoreBundle\DependencyInjection;
 
 use Elcodi\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
-use Elcodi\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
  * This is the class that loads and manages your bundle configuration
  */
-class ElcodiCoreExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
+class ElcodiCoreExtension extends AbstractExtension
 {
     /**
      * Get the Config file location
@@ -45,29 +44,10 @@ class ElcodiCoreExtension extends AbstractExtension implements EntitiesOverridab
     {
         return [
             'classes',
-            'factories',
-            'formTypes',
-            'services',
             'providers',
-            'repositories',
             'eventDispatchers',
+            'generators',
             'encoders',
-        ];
-    }
-
-    /**
-     * Get entities overrides.
-     *
-     * Result must be an array with:
-     * index: Original Interface
-     * value: Parameter where class is defined.
-     *
-     * @return array Overrides definition
-     */
-    public function getEntitiesOverrides()
-    {
-        return [
-            'Elcodi\CoreBundle\Entity\Interfaces\LanguageInterface' => 'elcodi.core.core.entity.language.class',
         ];
     }
 }

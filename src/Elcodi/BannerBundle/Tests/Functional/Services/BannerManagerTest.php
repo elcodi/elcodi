@@ -41,7 +41,7 @@ class BannerManagerTest extends WebTestCase
     protected function loadFixturesBundles()
     {
         return array(
-            'ElcodiCoreBundle',
+            'ElcodiLanguageBundle',
             'ElcodiBannerBundle',
         );
     }
@@ -62,8 +62,8 @@ class BannerManagerTest extends WebTestCase
     public function testGetBannersFromBannerZoneCode()
     {
         $language = $this
-            ->manager
-            ->getRepository('ElcodiCoreBundle:Language')
+            ->getManager('elcodi.core.language.entity.language.class')
+            ->getRepository('ElcodiLanguageBundle:Language')
             ->findOneBy(array(
                 'iso' => 'es',
             ));

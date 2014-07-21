@@ -1,23 +1,6 @@
 parameters:
 
     #
-    # Entities
-    #
-    elcodi.core.core.entity.language.class: Elcodi\CoreBundle\Entity\Language
-
-    #
-    # Repositories
-    #
-    elcodi.core.core.repository.language.class: Elcodi\CoreBundle\Repository\LanguageRepository
-
-    #
-    # Services
-    #
-    elcodi.core.core.service.abstract_cache_wrapper.class: Elcodi\CoreBundle\Wrapper\Abstracts\AbstractCacheWrapper
-    elcodi.core.core.service.language_manager.class: Elcodi\CoreBundle\Services\LanguageManager
-    elcodi.core.core.service.locale_manager.class: Elcodi\CoreBundle\Services\LocaleManager
-
-    #
     # Providers
     #
     elcodi.container_parameters.class: Symfony\Component\DependencyInjection\ParameterBag\ParameterBag
@@ -29,16 +12,6 @@ parameters:
     #
     elcodi.core.core.twig_extension.text_extension.class: Elcodi\CoreBundle\Twig\TextExtension
     elcodi.core.core.twig_extension.price_extension.class: Elcodi\CoreBundle\Twig\PriceExtension
-
-    #
-    # Form Types
-    #
-    elcodi.core.core.form_type.language.class: Elcodi\CoreBundle\Form\Type\LanguageType
-
-    #
-    # Factories
-    #
-    elcodi.core.core.factory.language.class: Elcodi\CoreBundle\Factory\LanguageFactory
 
     #
     # Generators
