@@ -16,6 +16,10 @@
 
 namespace Elcodi\LanguageBundle\Services;
 
+use Elcodi\LanguageBundle\Entity\Interfaces\LocaleInterface;
+
+use Elcodi\LanguageBundle\Entity\Locale;
+
 /**
  * Locale manager service
  *
@@ -24,7 +28,7 @@ namespace Elcodi\LanguageBundle\Services;
 class LocaleManager
 {
     /**
-     * @var string
+     * @var Locale
      *
      * Locale
      */
@@ -61,12 +65,17 @@ class LocaleManager
     /**
      * Construct method
      *
-     * @param string $locale                        Locale
+     * @param Locale $locale                        Locale
      * @param string $encoding                      Encoding
      * @param array  $localeCountryAssociations     Locale to country associations
      * @param array  $localeTranslationAssociations Locale to translation assocs
      */
-    public function __construct($locale, $encoding = null, $localeCountryAssociations = null, $localeTranslationAssociations = null)
+    public function __construct(
+        Locale $locale,
+        $encoding = null,
+        $localeCountryAssociations = null,
+        $localeTranslationAssociations = null
+    )
     {
         $this->locale = $locale;
         $this->encoding = $encoding;
@@ -81,7 +90,7 @@ class LocaleManager
      */
     public function initialize()
     {
-        setlocale(LC_ALL, $this->locale . '.' . $this->encoding);
+        setlocale(LC_ALL, $this->locale->getIso() . '.' . $this->encoding);
         $this->localeInfo = localeconv();
 
         return $this;
@@ -90,7 +99,7 @@ class LocaleManager
     /**
      * Returns current locale
      *
-     * @return string locale
+     * @return Locale locale
      */
     public function getLocale()
     {
@@ -100,11 +109,11 @@ class LocaleManager
     /**
      * Sets locale
      *
-     * @param string $locale locale
+     * @param LocaleInterface $locale locale
      *
      * @return LocaleManager self object
      */
-    public function setLocale($locale)
+    public function setLocale(LocaleInterface $locale)
     {
         $this->locale = $locale;
         $this->initialize();
@@ -142,7 +151,7 @@ class LocaleManager
      *
      * @return array localeInfo
      */
-    public function getLocaleInfo()
+    public function getIsoInfo()
     {
         return $this->localeInfo;
     }
@@ -154,22 +163,31 @@ class LocaleManager
      */
     public function getCountryCode()
     {
-        if (in_array($this->locale, array_keys($this->localeCountryAssociations))) {
-            return $this->localeCountryAssociations[$this->locale];
+        $localeIso = $this->locale->getIso();
+
+        if (isset($this->localeCountryAssociations[$localeIso])) {
+            return new Locale($this->localeCountryAssociations[$localeIso]);
         }
 
-        return \Locale::getRegion($this->locale) ?: $this->locale;
+        $regionLocale = \Locale::getRegion($localeIso);
+
+        return $regionLocale
+            ? new Locale($regionLocale)
+            : $this->locale;
     }
 
     /**
-     * Returns the locale used to look for translations, which may not be the same as $this->locale
+     * Returns the locale used to look for translations, which may not be the
+     * same as $this->locale
      *
-     * @return string
+     * @return Locale Locale
      */
     public function getTranslationsLocale()
     {
-        if (in_array($this->locale, array_keys($this->localeTranslationAssociations))) {
-            return $this->localeTranslationAssociations[$this->locale];
+        $localeIso = $this->locale->getIso();
+
+        if (isset($this->localeTranslationAssociations[$localeIso])) {
+            return new Locale($this->localeTranslationAssociations[$localeIso]);
         }
 
         return $this->locale;

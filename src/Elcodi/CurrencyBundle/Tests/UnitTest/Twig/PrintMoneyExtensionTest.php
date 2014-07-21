@@ -19,6 +19,7 @@ namespace Elcodi\CurrencyBundle\Tests\UnitTest\Twig;
 use Elcodi\CurrencyBundle\Entity\Money;
 use Elcodi\CurrencyBundle\Factory\CurrencyFactory;
 use Elcodi\CurrencyBundle\Twig\PrintMoneyExtension;
+use Elcodi\LanguageBundle\Entity\Locale;
 
 /**
  * Class PrintMoneyExtensionTest
@@ -67,12 +68,12 @@ class PrintMoneyExtensionTest extends \PHPUnit_Framework_TestCase
     public function dataPrintPrice()
     {
         return [
-            [1330000, 'USD', '$', 'es_ES', '13.300,00 $'],
-            [800000, 'GBP', '£', 'es_ES', '8.000,00 £'],
-            [100000, 'EUR', '€', 'es_ES', '1.000,00 €'],
-            [1330000, 'USD', '$', 'en_GB', '$13,300.00'],
-            [800000, 'GBP', '£', 'en_GB', '£8,000.00'],
-            [100000, 'EUR', '€', 'en_GB', '€1,000.00'],
+            [1330000, 'USD', '$', new Locale('es_ES'), '13.300,00 $'],
+            [800000, 'GBP', '£', new Locale('es_ES'), '8.000,00 £'],
+            [100000, 'EUR', '€', new Locale('es_ES'), '1.000,00 €'],
+            [1330000, 'USD', '$', new Locale('en_GB'), '$13,300.00'],
+            [800000, 'GBP', '£', new Locale('en_GB'), '£8,000.00'],
+            [100000, 'EUR', '€', new Locale('en_GB'), '€1,000.00'],
         ];
     }
 

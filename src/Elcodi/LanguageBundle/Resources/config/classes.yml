@@ -4,6 +4,7 @@ parameters:
     # Entities
     #
     elcodi.core.language.entity.language.class: Elcodi\LanguageBundle\Entity\Language
+    elcodi.core.language.entity.locale.class: Elcodi\LanguageBundle\Entity\Locale
 
     #
     # Repositories
@@ -20,4 +21,4 @@ parameters:
     #
     elcodi.core.language.service.language_manager.class: Elcodi\LanguageBundle\Services\LanguageManager
     elcodi.core.language.service.locale_manager.class: Elcodi\LanguageBundle\Services\LocaleManager
-
+    elcodi.core.language.service.locale_provider.class: Elcodi\LanguageBundle\Services\LocaleProvider

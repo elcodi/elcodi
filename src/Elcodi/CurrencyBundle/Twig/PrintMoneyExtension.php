@@ -20,6 +20,7 @@ use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 use Elcodi\CurrencyBundle\Services\CurrencyConverter;
 use Elcodi\CurrencyBundle\Wrapper\CurrencyWrapper;
+use Elcodi\LanguageBundle\Entity\Interfaces\LocaleInterface;
 use Twig_Extension;
 use Twig_SimpleFilter;
 use NumberFormatter;
@@ -44,27 +45,23 @@ class PrintMoneyExtension extends Twig_Extension
     protected $currencyWrapper;
 
     /**
-     * @var string
+     * @var LocaleInterface
      *
      * Locale
      */
     protected $locale;
 
     /**
-     * @var CurrencyInterface
-     */
-
-    /**
      * Construct method
      *
      * @param CurrencyConverter $currencyConverter Currency converter
      * @param CurrencyWrapper   $currencyWrapper   Currency wrapper
-     * @param string            $locale            The locale
+     * @param LocaleInterface   $locale            The locale
      */
     public function __construct(
         CurrencyConverter $currencyConverter,
         CurrencyWrapper $currencyWrapper,
-        $locale
+        LocaleInterface $locale
     )
     {
         $this->currencyConverter = $currencyConverter;
@@ -140,7 +137,11 @@ class PrintMoneyExtension extends Twig_Extension
             return $money->getAmount();
         }
 
-        $formatter = new NumberFormatter($this->locale, NumberFormatter::CURRENCY);
+        $formatter = new NumberFormatter(
+            $this->locale->getIso(),
+            NumberFormatter::CURRENCY
+        );
+
         $formatter->setSymbol(
             NumberFormatter::CURRENCY_SYMBOL,
             $money->getCurrency()->getSymbol()
