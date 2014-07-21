@@ -18,7 +18,7 @@ namespace Elcodi\NewsletterBundle\Entity\Interfaces;
 
 use Elcodi\CoreBundle\Entity\Interfaces\DateTimeInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
-use Elcodi\CoreBundle\Entity\Interfaces\LanguageInterface;
+use Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface;
 
 /**
  * Class NewsletterSubscriptionInterface

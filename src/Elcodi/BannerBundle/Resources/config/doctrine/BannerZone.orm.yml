@@ -26,7 +26,7 @@ Elcodi\BannerBundle\Entity\BannerZone:
 
     manyToOne:
         language:
-            targetEntity: Elcodi\CoreBundle\Entity\Interfaces\LanguageInterface
+            targetEntity: Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface
             joinColumn:
                 name: language_id
                 referencedColumnName: id

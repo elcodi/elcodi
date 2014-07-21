@@ -17,7 +17,7 @@
 namespace Elcodi\NewsletterBundle\Tests\Functional\Service;
 
 use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
-use Elcodi\CoreBundle\Entity\Interfaces\LanguageInterface;
+use Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface;
 use Elcodi\NewsletterBundle\Entity\Interfaces\NewsletterSubscriptionInterface;
 use Elcodi\NewsletterBundle\Repository\NewsletterSubscriptionRepository;
 use Elcodi\NewsletterBundle\Services\NewsletterManager;
@@ -69,7 +69,7 @@ class NewsletterManagerTest extends WebTestCase
     protected function loadFixturesBundles()
     {
         return array(
-            'ElcodiCoreBundle',
+            'ElcodiLanguageBundle',
             'ElcodiNewsletterBundle',
         );
     }
@@ -105,7 +105,7 @@ class NewsletterManagerTest extends WebTestCase
          * @var LanguageInterface $language
          */
         $language = $this
-            ->getRepository('elcodi.core.core.entity.language.class')
+            ->getRepository('elcodi.core.language.entity.language.class')
             ->findOneBy(array(
                 'iso' => 'es',
             ));
@@ -182,7 +182,7 @@ class NewsletterManagerTest extends WebTestCase
          * @var LanguageInterface $language
          */
         $language = $this
-            ->getRepository('elcodi.core.core.entity.language.class')
+            ->getRepository('elcodi.core.language.entity.language.class')
             ->findOneBy(array(
                 'iso' => 'es',
             ));

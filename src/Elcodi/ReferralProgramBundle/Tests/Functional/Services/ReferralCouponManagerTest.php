@@ -61,7 +61,7 @@ class ReferralCouponManagerTest extends WebTestCase
     protected function loadFixturesBundles()
     {
         return array(
-            'ElcodiCoreBundle',
+            'ElcodiLanguageBundle',
             'ElcodiUserBundle',
             'ElcodiCurrencyBundle',
             'ElcodiCouponBundle',

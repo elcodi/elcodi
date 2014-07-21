@@ -1,0 +1,19 @@
+Elcodi\LanguageBundle\Entity\Language:
+    type: entity
+    repositoryClass: Elcodi\LanguageBundle\Repository\LanguageRepository
+    table: language
+    fields:
+        iso:
+            column: iso
+            type: string
+            length: 255
+            nullable: false
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        # enable
+        enabled:
+            column: enabled
+            type: boolean

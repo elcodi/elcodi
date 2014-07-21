@@ -26,6 +26,7 @@
         "symfony/http-kernel": "~2.4",
 
         "elcodi/core-bundle": "~0.1",
+        "elcodi/language-bundle": "~0.1",
         "elcodi/media-bundle": "~0.1"
     },
     "require-dev": {

@@ -22,13 +22,6 @@ parameters:
     elcodi.core.product.service.product_collection_provider.class: Elcodi\ProductBundle\Services\ProductCollectionProvider
 
     #
-    # Form Types
-    #
-    elcodi.core.product.form_type.category.class: Elcodi\ProductBundle\Form\Type\CategoryType
-    elcodi.core.product.form_type.manufacturer.class: Elcodi\ProductBundle\Form\Type\ManufacturerType
-    elcodi.core.product.form_type.product.class: Elcodi\ProductBundle\Form\Type\ProductType
-
-    #
     # Factories
     #
     elcodi.core.product.factory.product.class: Elcodi\ProductBundle\Factory\ProductFactory

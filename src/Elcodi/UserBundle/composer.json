@@ -37,6 +37,7 @@
         "ircmaxell/password-compat": "~1.0",
 
         "elcodi/core-bundle": "~0.1",
+        "elcodi/language-bundle": "~0.1",
         "elcodi/cart-bundle": "~0.1"
     },
     "require-dev": {

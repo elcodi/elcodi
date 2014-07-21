@@ -1,0 +1,9 @@
+services:
+
+    elcodi.core.language.service.language_manager:
+        class: %elcodi.core.language.service.language_manager.class%
+        arguments:
+            language_repository: @elcodi.repository.language
+
+    elcodi.language_manager:
+        alias: elcodi.core.language.service.language_manager

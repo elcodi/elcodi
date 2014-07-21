@@ -5,11 +5,14 @@ services:
     #
     elcodi.core.product.service.category_manager:
         class: %elcodi.core.product.service.category_manager.class%
-        parent: elcodi.core.core.service.abstract_cache_wrapper
+        arguments:
+            category_entity_manager: @elcodi.object_manager.category
+            category_repository: @elcodi.repository.category
+            load_only_categories_with_products: %elcodi.core.product.load_only_categories_with_products%
+            key: %elcodi.core.product.cache_key%
         calls:
-            - [setKey, [%elcodi.core.product.cache_key%]]
-            - [setLoadOnlyCategoriesWithProducts, [%elcodi.core.product.load_only_categories_with_products%]]
-            - [load]
+            - [setCache, [@doctrine_cache.providers.elcodi]]
+            - [setEncoder, [@elcodi.json_encoder]]
 
     elcodi.category_manager:
         alias: elcodi.core.product.service.category_manager

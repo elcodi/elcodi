@@ -16,9 +16,12 @@
 
 namespace Elcodi\ProductBundle\Services;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\DBAL\Query\QueryBuilder;
+
 use Elcodi\CoreBundle\Wrapper\Abstracts\AbstractCacheWrapper;
 use Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface;
+use Elcodi\ProductBundle\Repository\CategoryRepository;
 
 /**
  * Categories manager service
@@ -44,17 +47,45 @@ class CategoryManager extends AbstractCacheWrapper
     protected $loadOnlyCategoriesWithProducts;
 
     /**
-     * Set only associated categories
+     * @var EntityManagerInterface
      *
-     * @param boolean $loadOnlyCategoriesWithProducts Load only categories with products
-     *
-     * @return CategoryManager self Object
+     * Category entity manager
      */
-    public function setLoadOnlyCategoriesWithProducts($loadOnlyCategoriesWithProducts)
-    {
-        $this->loadOnlyCategoriesWithProducts = $loadOnlyCategoriesWithProducts;
+    protected $categoryEntityManager;
 
-        return $this;
+    /**
+     * @var CategoryRepository
+     *
+     * Category repository
+     */
+    protected $categoryRepository;
+
+    /**
+     * @var string
+     *
+     * Key
+     */
+    protected $key;
+
+    /**
+     * Construct method
+     *
+     * @param EntityManagerInterface $categoryEntityManager          Category entity manager
+     * @param CategoryRepository     $categoryRepository             Category Repository
+     * @param boolean                $loadOnlyCategoriesWithProducts Load only categories with products
+     * @param string                 $key                            Key where to store info
+     */
+    public function __construct(
+        EntityManagerInterface $categoryEntityManager,
+        CategoryRepository $categoryRepository,
+        $loadOnlyCategoriesWithProducts,
+        $key
+    )
+    {
+        $this->categoryEntityManager = $categoryEntityManager;
+        $this->categoryRepository = $categoryRepository;
+        $this->loadOnlyCategoriesWithProducts = $loadOnlyCategoriesWithProducts;
+        $this->key = $key;
     }
 
     /**
@@ -64,21 +95,29 @@ class CategoryManager extends AbstractCacheWrapper
      */
     public function load()
     {
-        if ($this->locale) {
+        /**
+         * Fetch key from cache
+         */
+        $this->categoryTree = $this
+            ->encoder
+            ->decode(
+                $this
+                    ->cache
+                    ->fetch($this->key)
+            );
 
-            /**
-             * Fetch key from cache
-             */
-            $this->categoryTree = json_decode($this->cache->fetch($this->key), true);
+        /**
+         * If cache key is empty, build it
+         */
+        if (empty($this->categoryTree)) {
 
-            /**
-             * If cache key is empty, build it
-             */
-            if (empty($this->categoryTree)) {
-
-                $this->categoryTree = $this->buildCategoryTree();
-                $this->cache->save($this->key, json_encode($this->categoryTree));
-            }
+            $this->categoryTree = $this->buildCategoryTree();
+            $this
+                ->cache
+                ->save(
+                    $this->key,
+                    $this->encoder->encode($this->categoryTree)
+                );
         }
 
         return $this;
@@ -97,14 +136,13 @@ class CategoryManager extends AbstractCacheWrapper
          * @var QueryBuilder
          */
         $queryBuilder = $this
-            ->entityManager
-            ->getRepository('ElcodiProductBundle:Category')
+            ->categoryRepository
             ->createQueryBuilder('c')
             ->where('c.enabled = :enabled')
             ->addOrderBy('c.parent', 'asc')
             ->addOrderBy('c.position', 'asc')
             ->setParameters(array(
-                'enabled'=> true,
+                'enabled' => true,
             ));
 
         if ($this->loadOnlyCategoriesWithProducts) {
@@ -120,8 +158,8 @@ class CategoryManager extends AbstractCacheWrapper
             ->getResult();
 
         $categoryTree = array(
-            0   =>  null,
-            'children'  =>  array(),
+            0          => null,
+            'children' => array(),
         );
 
         /**
@@ -135,7 +173,7 @@ class CategoryManager extends AbstractCacheWrapper
             if (!$category->isRoot()) {
                 if ($category->getParent() instanceof CategoryInterface) {
                     $parentCategoryId = $this
-                        ->entityManager
+                        ->categoryEntityManager
                         ->getUnitOfWork()
                         ->getEntityIdentifier($category->getParent())['id'];
                 } else {
@@ -150,16 +188,16 @@ class CategoryManager extends AbstractCacheWrapper
             if ($parentCategoryId && !isset($categoryTree[$parentCategoryId])) {
 
                 $categoryTree[$parentCategoryId] = array(
-                    'entity'    =>  null,
-                    'children'  =>  array(),
+                    'entity'   => null,
+                    'children' => array(),
                 );
             }
 
             if (!isset($categoryTree[$categoryId])) {
 
                 $categoryTree[$categoryId] = array(
-                    'entity'    =>  null,
-                    'children'  =>  array(),
+                    'entity'   => null,
+                    'children' => array(),
                 );
             }
 
@@ -167,12 +205,12 @@ class CategoryManager extends AbstractCacheWrapper
                 'id'            => $category->getId(),
                 'name'          => $category->getName(),
                 'slug'          => $category->getSlug(),
-                'productsCount' =>    $this->loadOnlyCategoriesWithProducts
-                                    ? count($category->getProducts())
-                                    : 0
+                'productsCount' => $this->loadOnlyCategoriesWithProducts
+                        ? count($category->getProducts())
+                        : 0
             );
 
-            $categoryTree[$parentCategoryId]['children'][] = &$categoryTree[$categoryId];
+            $categoryTree[$parentCategoryId]['children'][] = & $categoryTree[$categoryId];
         }
 
         return $categoryTree[0]['children'];
