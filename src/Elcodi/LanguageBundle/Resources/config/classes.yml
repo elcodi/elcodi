@@ -19,3 +19,5 @@ parameters:
     # Services
     #
     elcodi.core.language.service.language_manager.class: Elcodi\LanguageBundle\Services\LanguageManager
+    elcodi.core.language.service.locale_manager.class: Elcodi\LanguageBundle\Services\LocaleManager
+

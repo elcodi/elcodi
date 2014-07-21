@@ -8,6 +8,6 @@ services:
         arguments:
             currency_manager: @elcodi.currency_converter
             currency_wrapper: @elcodi.currency_wrapper
-            locale_manager: @=service('elcodi.core.core.service.locale_manager').getLocale()
+            locale_manager: @=service('elcodi.core.language.service.locale_manager').getLocale()
         tags:
             - { name: twig.extension }
