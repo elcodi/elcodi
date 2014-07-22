@@ -21,9 +21,20 @@ use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 
 /**
  * Class NullMoney
+ *
+ * Null Object implementation for a MoneyInterface object
  */
-class NullMoney implements MoneyInterface
+class NullMoney extends StubMoney implements MoneyInterface
 {
+    /**
+     * NullMoney constructor is used only to preserve
+     * the protected accessor
+     */
+    protected function __construct()
+    {
+
+    }
+
     /**
      * Adds a Money and returns the result as a new Money
      *
@@ -115,6 +126,18 @@ class NullMoney implements MoneyInterface
     }
 
     /**
+     * Sets the amount
+     *
+     * @param integer $amount Amount
+     *
+     * @return MoneyInterface self Object
+     */
+    public function setAmount($amount)
+    {
+        return $this;
+    }
+
+    /**
      * Gets the Money amount
      *
      * @return int
@@ -125,7 +148,19 @@ class NullMoney implements MoneyInterface
     }
 
     /**
-     * Gets the Money Currency
+     * Set currency
+     *
+     * @param CurrencyInterface $currency Currency
+     *
+     * @return MoneyInterface self Object
+     */
+    public function setCurrency(CurrencyInterface $currency)
+    {
+        return $this;
+    }
+
+    /**
+     * Gets the Currency
      *
      * @return CurrencyInterface
      */
@@ -133,4 +168,15 @@ class NullMoney implements MoneyInterface
     {
         return null;
     }
+
+    /**
+     * Returns a new instance of a NullMoney object
+     *
+     * @return NullMoney
+     */
+    public static function create()
+    {
+        return new NullMoney();
+    }
+
 }
