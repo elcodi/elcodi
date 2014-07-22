@@ -91,6 +91,15 @@ interface MoneyInterface
     public function isGreaterThan(MoneyInterface $other);
 
     /**
+     * Sets the amount
+     *
+     * @param integer $amount Amount
+     *
+     * @return MoneyInterface self Object
+     */
+    public function setAmount($amount);
+
+    /**
      * Gets the Money amount
      *
      * @return int
@@ -98,7 +107,16 @@ interface MoneyInterface
     public function getAmount();
 
     /**
-     * Gets the Money Currency
+     * Set currency
+     *
+     * @param CurrencyInterface $currency Currency
+     *
+     * @return MoneyInterface self Object
+     */
+    public function setCurrency(CurrencyInterface $currency);
+
+    /**
+     * Gets the Currency
      *
      * @return CurrencyInterface
      */

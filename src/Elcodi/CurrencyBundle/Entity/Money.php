@@ -31,8 +31,14 @@ use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
  *
  * Useful methods will be exposed as defined in {@see MoneyInterface}
  */
-class Money implements MoneyInterface
+class Money extends StubMoney implements MoneyInterface
 {
+    /**
+     * @var integer
+     *
+     * Money amount
+     */
+    protected $amount;
     /**
      * @var WrappedMoney
      *
@@ -87,7 +93,7 @@ class Money implements MoneyInterface
     }
 
     /**
-     * Set amount
+     * Sets the amount
      *
      * @param integer $amount Amount
      *
@@ -213,7 +219,7 @@ class Money implements MoneyInterface
      *
      * @return WrappedMoney self Object
      */
-    protected function newWrappedMoneyFromMoney(MoneyInterface $money)
+    private function newWrappedMoneyFromMoney(MoneyInterface $money)
     {
         return new WrappedMoney(
             $money->getAmount(),
@@ -223,6 +229,16 @@ class Money implements MoneyInterface
 
     /**
      * Returns a new instance of a Money object
+     *
+     * This factory should be the only process to instantiate a
+     * object implementing MoneyInterface.
+     *
+     * In order to return a proper Money value object, an integer
+     * amount and a Currency object implementing CurrencyInterface
+     * are needed. When the Currency object is invalid, a NullMoney
+     * instance is returned. The NullMoney is an implementation of
+     * a Null Object pattern, a dumb object that will just respond
+     * to MoneyInterface methods but that does nothing.
      *
      * @param integer           $amount   Amount
      * @param CurrencyInterface $currency Currency
@@ -235,7 +251,7 @@ class Money implements MoneyInterface
     )
     {
         return ($currency instanceof CurrencyInterface)
-            ? new self($amount, $currency)
-            : new NullMoney();
+            ? new Money($amount, $currency)
+            : NullMoney::create();
     }
 }

@@ -303,8 +303,7 @@ class CartEventListener
         $productPrice = $product->getPrice();
 
         /**
-         * If reducedPrice is defined, found value will be used as real product
-         * price.
+         * If present, reducedPrice will be used as product price in current CartLine.
          */
         if ($product->getReducedPrice() instanceof Money) {
 
@@ -312,9 +311,9 @@ class CartEventListener
         }
 
         /**
-         * Setting amounts for this CartLine.
-         * Line Currency has already be set when factorying CartLine
-         * by CartManager::addProduct
+         * Setting amounts for current CartLine.
+         *
+         * Line Currency was set by CartManager::addProduct when factorying CartLine
          */
         $cartLine->setProductAmount($productPrice->multiply($cartLine->getQuantity()));
         $cartLine->setAmount($cartLine->getProductAmount());
