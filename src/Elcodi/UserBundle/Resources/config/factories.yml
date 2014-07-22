@@ -27,17 +27,6 @@ services:
         alias: elcodi.core.user.factory.admin_user
 
     #
-    # Factory for entity address
-    #
-    elcodi.core.user.factory.address:
-        class: %elcodi.core.user.factory.address.class%
-        calls:
-            - [setEntityNamespace, ["%elcodi.core.user.entity.address.class%"]]
-
-    elcodi.factory.address:
-        alias: elcodi.core.user.factory.address
-
-    #
     # Entity providers
     #
 
@@ -64,15 +53,3 @@ services:
 
     elcodi.entity.admin_user.instance:
         alias: elcodi.core.user.entity.admin_user.instance
-
-    #
-    # Instance provider for entity address
-    #
-    elcodi.core.user.entity.address.instance:
-        class: %elcodi.core.user.entity.address.class%
-        factory_service: elcodi.core.user.factory.address
-        factory_method: create
-        scope: prototype
-
-    elcodi.entity.address.instance:
-        alias: elcodi.core.user.entity.address.instance

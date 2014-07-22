@@ -1,0 +1,31 @@
+services:
+
+    #
+    # Repositories
+    #
+
+    #
+    # Repository for entity address
+    #
+    elcodi.core.geo.repository.address:
+        class: %elcodi.core.geo.repository.address.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.geo.entity.address.class%
+
+    elcodi.repository.address:
+        alias: elcodi.core.geo.repository.address
+
+    #
+    # Repository for entity country
+    #
+    elcodi.core.geo.repository.country:
+        class: %elcodi.core.geo.repository.country.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.geo.entity.country.class%
+
+    elcodi.repository.country:
+        alias: elcodi.core.geo.repository.country

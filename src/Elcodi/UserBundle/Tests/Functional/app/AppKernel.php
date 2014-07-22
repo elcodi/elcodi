@@ -56,6 +56,7 @@ class AppKernel extends AbstractElcodiKernel
             new \Elcodi\LanguageBundle\ElcodiLanguageBundle(),
             new \Elcodi\CartBundle\ElcodiCartBundle(),
             new \Elcodi\UserBundle\ElcodiUserBundle(),
+            new \Elcodi\GeoBundle\ElcodiGeoBundle(),
             new \Elcodi\ProductBundle\ElcodiProductBundle(),
             new \Elcodi\CurrencyBundle\ElcodiCurrencyBundle(),
             new \Elcodi\MediaBundle\ElcodiMediaBundle(),

@@ -1,0 +1,87 @@
+Elcodi\GeoBundle\Entity\Address:
+    type: entity
+    repositoryClass: Elcodi\GeoBundle\Repository\AddressRepository
+    table: address
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        recipientName:
+            column: recipient_name
+            type: string
+            length: 255
+            nullable: false
+        recipientSurname:
+            column: recipient_surname
+            type: string
+            length: 255
+            nullable: false
+        address:
+            column: address
+            type: string
+            length: 255
+            nullable: false
+        addressMore:
+            column: address_more
+            type: string
+            length: 255
+            nullable: false
+        postalCode:
+            column: postalcode
+            type: string
+            length: 255
+            nullable: false
+        phone:
+            column: phone
+            type: string
+            length: 255
+            nullable: false
+        mobile:
+            column: mobile
+            type: string
+            length: 255
+            nullable: false
+        comments:
+            column: comments
+            type: text
+            nullable: false
+        city:
+            column: city
+            type: string
+            length: 255
+            nullable: false
+        province:
+            column: province
+            type: string
+            length: 255
+            nullable: false
+        state:
+            column: state
+            type: string
+            length: 255
+            nullable: false
+        createdAt:
+            column: created_at
+            type: datetime
+        updatedAt:
+            column: updated_at
+            type: datetime
+        enabled:
+            column: enabled
+            type: boolean
+
+    manyToOne:
+        country:
+            targetEntity: Elcodi\GeoBundle\Entity\Interfaces\CountryInterface
+            joinColumn:
+                name: country_id
+                referencedColumnName: id
+                nullable: true
+                onDelete: "SET NULL"
+                onUpdate: "CASCADE"
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]

@@ -55,13 +55,6 @@ abstract class WebTestCase extends BaseWebTestCase
     protected $router;
 
     /**
-     * @var ObjectManager
-     *
-     * Entity manager
-     */
-    protected $manager;
-
-    /**
      * @var ContainerInterface
      *
      * Container
@@ -222,18 +215,6 @@ abstract class WebTestCase extends BaseWebTestCase
             '--fixtures'       => $formattedBundles,
             '--quiet'          => true,
         )));
-
-        return $this;
-    }
-
-    /**
-     * Clears manager
-     *
-     * @return BaseWebTestCase self Object
-     */
-    protected function clear()
-    {
-        $this->manager->clear();
 
         return $this;
     }

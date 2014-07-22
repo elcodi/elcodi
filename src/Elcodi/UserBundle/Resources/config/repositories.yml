@@ -18,19 +18,6 @@ services:
         alias: elcodi.core.user.repository.customer
 
     #
-    # Repository for entity address
-    #
-    elcodi.core.user.repository.address:
-        class: %elcodi.core.user.repository.address.class%
-        factory_service: elcodi.repository_provider
-        factory_method: getRepositoryByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.user.entity.address.class%
-
-    elcodi.repository.address:
-        alias: elcodi.core.user.repository.address
-
-    #
     # Repository for entity admin
     #
     elcodi.core.user.repository.admin_user:

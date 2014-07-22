@@ -21,15 +21,6 @@ Elcodi\ProductBundle\Entity\Category:
             column: position
             type: integer
             nullable: false
-        createdAt:
-            column: created_at
-            type: datetime
-        updatedAt:
-            column: updated_at
-            type: datetime
-        enabled:
-            column: enabled
-            type: boolean
         metaTitle:
             column: meta_title
             type: string
@@ -45,6 +36,15 @@ Elcodi\ProductBundle\Entity\Category:
             type: string
             length: 255
             nullable: true
+        createdAt:
+            column: created_at
+            type: datetime
+        updatedAt:
+            column: updated_at
+            type: datetime
+        enabled:
+            column: enabled
+            type: boolean
 
     oneToMany:
         subCategories:

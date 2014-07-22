@@ -14,7 +14,7 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\UserBundle\Tests\Functional\Repository;
+namespace Elcodi\GeoBundle\Tests\Functional\Repository;
 
 use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
@@ -31,7 +31,7 @@ class AddressRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.user.repository.address',
+            'elcodi.core.geo.repository.address',
             'elcodi.repository.address',
         ];
     }
@@ -42,8 +42,8 @@ class AddressRepositoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.user.repository.address.class'),
-            $this->container->get('elcodi.core.user.repository.address')
+            $this->container->getParameter('elcodi.core.geo.repository.address.class'),
+            $this->container->get('elcodi.core.geo.repository.address')
         );
     }
 
@@ -53,7 +53,7 @@ class AddressRepositoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.user.repository.address.class'),
+            $this->container->getParameter('elcodi.core.geo.repository.address.class'),
             $this->container->get('elcodi.repository.address')
         );
     }
