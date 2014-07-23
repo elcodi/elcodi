@@ -15,7 +15,7 @@ Elcodi\ProductBundle\Entity\Category:
             nullable: false
         root:
             column: root
-            type: integer
+            type: boolean
             nullable: false
         position:
             column: position
