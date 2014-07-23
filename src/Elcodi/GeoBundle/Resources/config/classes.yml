@@ -1,0 +1,19 @@
+parameters:
+
+    #
+    # Entities
+    #
+    elcodi.core.geo.entity.address.class: Elcodi\GeoBundle\Entity\Address
+    elcodi.core.geo.entity.country.class: Elcodi\GeoBundle\Entity\Country
+
+    #
+    # Repositories
+    #
+    elcodi.core.geo.repository.address.class: Elcodi\GeoBundle\Repository\AddressRepository
+    elcodi.core.geo.repository.country.class: Elcodi\GeoBundle\Repository\CountryRepository
+
+    #
+    # Factories
+    #
+    elcodi.core.geo.factory.address.class: Elcodi\GeoBundle\Factory\AddressFactory
+    elcodi.core.geo.factory.country.class: Elcodi\GeoBundle\Factory\CountryFactory

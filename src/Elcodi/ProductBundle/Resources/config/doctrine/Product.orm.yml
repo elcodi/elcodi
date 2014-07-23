@@ -43,15 +43,6 @@ Elcodi\ProductBundle\Entity\Product:
             column: reduced_price
             type: integer
             nullable: true
-        createdAt:
-            column: created_at
-            type: datetime
-        updatedAt:
-            column: updated_at
-            type: datetime
-        enabled:
-            column: enabled
-            type: boolean
         metaTitle:
             column: meta_title
             type: string
@@ -67,6 +58,15 @@ Elcodi\ProductBundle\Entity\Product:
             type: string
             length: 255
             nullable: true
+        createdAt:
+            column: created_at
+            type: datetime
+        updatedAt:
+            column: updated_at
+            type: datetime
+        enabled:
+            column: enabled
+            type: boolean
 
     manyToOne:
         manufacturer:

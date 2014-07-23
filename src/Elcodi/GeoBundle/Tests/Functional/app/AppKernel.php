@@ -14,7 +14,7 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\CartCouponBundle\Tests\Functional\app;
+namespace Elcodi\GeoBundle\Tests\Functional\app;
 
 use Elcodi\CoreBundle\Tests\Functional\app\Abstracts\AbstractElcodiKernel;
 
@@ -41,27 +41,13 @@ class AppKernel extends AbstractElcodiKernel
              * Doctrine bundles
              */
             new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new \Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
-
-            /**
-             * Storage bundles
-             */
-            new \Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
 
             /**
              * Elcodi core bundles
              */
             new \Elcodi\CoreBundle\ElcodiCoreBundle(),
-            new \Elcodi\LanguageBundle\ElcodiLanguageBundle(),
-            new \Elcodi\CartBundle\ElcodiCartBundle(),
-            new \Elcodi\UserBundle\ElcodiUserBundle(),
             new \Elcodi\GeoBundle\ElcodiGeoBundle(),
-            new \Elcodi\ProductBundle\ElcodiProductBundle(),
-            new \Elcodi\CurrencyBundle\ElcodiCurrencyBundle(),
-            new \Elcodi\MediaBundle\ElcodiMediaBundle(),
-            new \Elcodi\CartCouponBundle\ElcodiCartCouponBundle(),
-            new \Elcodi\CouponBundle\ElcodiCouponBundle(),
         );
 
         return $bundles;
@@ -76,6 +62,6 @@ class AppKernel extends AbstractElcodiKernel
     {
         return  $this->name .
                 ucfirst($this->environment) .
-                'DebugProjectContainerCartCoupon';
+                'DebugProjectContainerGeo';
     }
 }

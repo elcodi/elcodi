@@ -14,36 +14,32 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\UserBundle\Factory;
-
-use DateTime;
+namespace Elcodi\GeoBundle\Factory;
 
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
-use Elcodi\UserBundle\Entity\Address;
+use Elcodi\GeoBundle\Entity\Interfaces\CountryInterface;
+use Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface;
 
 /**
- * Class AddressFactory
+ * Class CountryFactory
  */
-class AddressFactory extends AbstractFactory
+class CountryFactory extends AbstractFactory
 {
     /**
-     * Creates an instance of an entity.
+     * Creates an instance of a simple country.
      *
-     * This method must return always an empty instance
+     * This method must return always an empty instance for related entity
      *
-     * @return Address Empty entity
+     * @return LanguageInterface Empty entity
      */
     public function create()
     {
         /**
-         * @var Address $address
+         * @var CountryInterface $country
          */
         $classNamespace = $this->getEntityNamespace();
-        $address = new $classNamespace();
-        $address
-            ->setEnabled(true)
-            ->setCreatedAt(new DateTime);
+        $country = new $classNamespace();
 
-        return $address;
+        return $country;
     }
 }

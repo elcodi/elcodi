@@ -61,7 +61,8 @@
         "elcodi/referral-program-bundle": "self.version",
         "elcodi/rule-bundle": "self.version",
         "elcodi/user-bundle": "self.version",
-        "elcodi/language-bundle": "self.version"
+        "elcodi/language-bundle": "self.version",
+        "elcodi/geo-bundle": "self.version"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",

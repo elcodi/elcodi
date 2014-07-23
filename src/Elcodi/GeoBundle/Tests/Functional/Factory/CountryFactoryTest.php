@@ -14,14 +14,14 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\UserBundle\Tests\Functional\Factory;
+namespace Elcodi\GeoBundle\Tests\Functional\Factory;
 
 use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
 /**
- * Class AddressFactoryTest
+ * Class CountryFactoryTest
  */
-class AddressFactoryTest extends WebTestCase
+class CountryFactoryTest extends WebTestCase
 {
     /**
      * Returns the callable name of the service
@@ -31,30 +31,30 @@ class AddressFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.user.factory.address',
-            'elcodi.factory.address',
+            'elcodi.core.geo.factory.country',
+            'elcodi.factory.country',
         ];
     }
 
     /**
-     * Test address factory provider
+     * Test country factory provider
      */
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.user.entity.address.class'),
-            $this->container->get('elcodi.core.user.entity.address.instance')
+            $this->container->getParameter('elcodi.core.geo.entity.country.class'),
+            $this->container->get('elcodi.core.geo.entity.country.instance')
         );
     }
 
     /**
-     * Test address factory provider alias
+     * Test country factory provider alias
      */
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.user.entity.address.class'),
-            $this->container->get('elcodi.entity.address.instance')
+            $this->container->getParameter('elcodi.core.geo.entity.country.class'),
+            $this->container->get('elcodi.entity.country.instance')
         );
     }
 }

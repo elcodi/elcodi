@@ -4,21 +4,18 @@ parameters:
     # Entities
     #
     elcodi.core.user.entity.customer.class: Elcodi\UserBundle\Entity\Customer
-    elcodi.core.user.entity.address.class: Elcodi\UserBundle\Entity\Address
     elcodi.core.user.entity.admin_user.class: Elcodi\UserBundle\Entity\AdminUser
 
     #
     # Factories
     #
     elcodi.core.user.factory.customer.class: Elcodi\UserBundle\Factory\CustomerFactory
-    elcodi.core.user.factory.address.class: Elcodi\UserBundle\Factory\AddressFactory
     elcodi.core.user.factory.admin_user.class: Elcodi\UserBundle\Factory\AdminUserFactory
 
     #
     # Repositories
     #
     elcodi.core.user.repository.customer.class: Elcodi\UserBundle\Repository\CustomerRepository
-    elcodi.core.user.repository.address.class: Elcodi\UserBundle\Repository\AddressRepository
     elcodi.core.user.repository.admin_user.class: Elcodi\UserBundle\Repository\AdminUserRepository
 
     #

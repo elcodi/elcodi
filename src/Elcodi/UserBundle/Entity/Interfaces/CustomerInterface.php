@@ -21,6 +21,7 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
+use Elcodi\GeoBundle\Entity\Interfaces\AddressInterface;
 
 /**
  * Entities depending on CustomerInterfaces must implement shopping

@@ -14,13 +14,13 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\UserBundle\Repository;
+namespace Elcodi\GeoBundle;
 
-use Doctrine\ORM\EntityRepository;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * AddressRepository
+ * ElcodiGeoBundle Bundle
  */
-class AddressRepository extends EntityRepository
+class ElcodiGeoBundle extends Bundle
 {
 }

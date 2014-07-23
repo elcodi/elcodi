@@ -1,8 +1,8 @@
 {
-    "name": "elcodi/language-bundle",
-    "description": "Elcodi Language component",
-    "keywords": ["elcodi", "language", "ecommerce"],
-    "homepage": "https://github.com/elcodi/LanguageBundle",
+    "name": "elcodi/geo-bundle",
+    "description": "Elcodi Geo component",
+    "keywords": ["elcodi", "geo", "ecommerce"],
+    "homepage": "https://github.com/elcodi/GeoBundle",
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
@@ -16,7 +16,7 @@
         },
         {
             "name": "Symfony Community",
-            "homepage": "https://github.com/elcodi/LanguageBundle/contributors"
+            "homepage": "https://github.com/elcodi/GeoBundle/contributors"
         }
     ],
     "require": {
@@ -27,7 +27,7 @@
         "symfony/config": "~2.4",
         "symfony/options-resolver": "~2.4",
         "symfony/http-foundation": "~2.4",
-        "symfony/http-kernel": "~2.4"
+        "symfony/http-kernel": "~2.4",
 
         "elcodi/core-bundle": "~0.1"
     },
@@ -43,7 +43,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\LanguageBundle\\": ""
+            "Elcodi\\GeoBundle\\": ""
         }
     },
     "minimum-stability": "dev",

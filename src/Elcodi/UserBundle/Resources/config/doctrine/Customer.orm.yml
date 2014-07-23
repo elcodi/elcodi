@@ -35,7 +35,7 @@ Elcodi\UserBundle\Entity\Customer:
 
     oneToOne:
         deliveryAddress:
-            targetEntity: Elcodi\UserBundle\Entity\Interfaces\AddressInterface
+            targetEntity: Elcodi\GeoBundle\Entity\Interfaces\AddressInterface
             joinColumn:
                 name: delivery_address_id
                 referencedColumnName: id
@@ -43,7 +43,7 @@ Elcodi\UserBundle\Entity\Customer:
             cascade: [ persist ]
 
         invoiceAddress:
-            targetEntity: Elcodi\UserBundle\Entity\Interfaces\AddressInterface
+            targetEntity: Elcodi\GeoBundle\Entity\Interfaces\AddressInterface
             joinColumn:
                 name: invoice_address_id
                 referencedColumnName: id
@@ -60,7 +60,7 @@ Elcodi\UserBundle\Entity\Customer:
 
     manyToMany:
         addresses:
-            targetEntity: Elcodi\UserBundle\Entity\Interfaces\AddressInterface
+            targetEntity: Elcodi\GeoBundle\Entity\Interfaces\AddressInterface
             joinTable:
                 name: customer_address
                 joinColumns:

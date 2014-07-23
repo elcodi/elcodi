@@ -14,15 +14,15 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\UserBundle\DependencyInjection;
+namespace Elcodi\GeoBundle\DependencyInjection;
 
 use Elcodi\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * This class loads and manages your bundle configuration
+ * This is the class that loads and manages your bundle configuration
  */
-class ElcodiUserExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
+class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
     /**
      * Get the Config file location
@@ -45,23 +45,25 @@ class ElcodiUserExtension extends AbstractExtension implements EntitiesOverridab
     {
         return [
             'classes',
-            'eventListeners',
-            'services',
             'factories',
             'repositories',
-            'wrappers',
-            'providers',
         ];
     }
 
     /**
-     * @return array
+     * Get entities overrides.
+     *
+     * Result must be an array with:
+     * index: Original Interface
+     * value: Parameter where class is defined.
+     *
+     * @return array Overrides definition
      */
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\UserBundle\Entity\Interfaces\CustomerInterface' => 'elcodi.core.user.entity.customer.class',
-            'Elcodi\UserBundle\Entity\Interfaces\AdminUserInterface' => 'elcodi.core.user.entity.admin_user.class',
+            'Elcodi\GeoBundle\Entity\Interfaces\AddressInterface' => 'elcodi.core.geo.entity.address.class',
+            'Elcodi\GeoBundle\Entity\Interfaces\CountryInterface' => 'elcodi.core.geo.entity.country.class',
         ];
     }
 }

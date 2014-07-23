@@ -1,0 +1,15 @@
+Elcodi\GeoBundle\Entity\Country:
+    type: entity
+    repositoryClass: Elcodi\GeoBundle\Repository\CountryRepository
+    table: country
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        code:
+            column: code
+            type: string
+            length: 255
+            nullable: false

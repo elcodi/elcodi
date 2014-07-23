@@ -16,12 +16,12 @@
 
 namespace Elcodi\UserBundle\Services;
 
+use Elcodi\GeoBundle\Entity\Interfaces\AddressInterface;
 use Elcodi\UserBundle\Entity\Interfaces\AbstractUserInterface;
 use Elcodi\UserBundle\Services\Abstracts\AbstractUserManager;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Elcodi\UserBundle\Event\CustomerRegisterEvent;
 use Elcodi\UserBundle\ElcodiUserEvents;
-use Elcodi\UserBundle\Entity\Address;
 
 /**
  * Manager for Customer entities
@@ -59,7 +59,7 @@ class CustomerManager extends AbstractUserManager
      */
     public function customerHasCorrectDeliveryAddress(CustomerInterface $customer)
     {
-        if (($customer->getDeliveryAddress() instanceof Address)
+        if (($customer->getDeliveryAddress() instanceof AddressInterface)
             && ($customer->getDeliveryAddress()->getAddress())
         ) {
             return true;
