@@ -16,8 +16,9 @@
 
 namespace Elcodi\AttributeBundle\Tests\UnitTest\Factory;
 
-use Elcodi\AttributeBundle\Factory\AttributeFactory;
 use PHPUnit_Framework_TestCase;
+
+use Elcodi\AttributeBundle\Factory\AttributeFactory;
 
 /**
  * Class AttributeFactoryTest

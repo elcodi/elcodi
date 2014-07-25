@@ -13,7 +13,7 @@
  * @author Marc Morera <yuhu@mmoreram.com>
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
- 
+
 namespace Elcodi\GeoBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
@@ -304,4 +304,3 @@ class CountryData extends AbstractFixture
         $manager->flush();
     }
 }
- 

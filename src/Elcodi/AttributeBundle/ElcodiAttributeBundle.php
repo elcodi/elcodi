@@ -18,6 +18,9 @@ namespace Elcodi\AttributeBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+/**
+ * Class ElcodiAttributeBundle
+ */
 class ElcodiAttributeBundle extends Bundle
 {
 

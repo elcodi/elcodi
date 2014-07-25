@@ -17,7 +17,6 @@
 namespace Elcodi\ProductBundle\Twig;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Util\Debug;
 use Elcodi\AttributeBundle\Entity\Interfaces\AttributeInterface;
 use Elcodi\AttributeBundle\Entity\Interfaces\ValueInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
