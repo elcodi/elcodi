@@ -21,7 +21,6 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\AttributeBundle\Entity\Interfaces\AttributeInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\ETaggableInterface;
 use Elcodi\MediaBundle\Entity\Interfaces\ImagesContainerInterface;
-use Elcodi\ProductBundle\Entity\Interfaces\VariantInterface;
 
 /**
  * Class ProductInterface
