@@ -24,19 +24,19 @@
         "doctrine/common": "~2.4",
         "doctrine/orm": "~2.4",
         "symfony/config": "~2.4",
-        "symfony/security": "~2.4",
-        "symfony/event-dispatcher": "~2.4",
-        "symfony/options-resolver": "~2.4",
-        "symfony/http-foundation": "~2.4",
-        "symfony/dependency-injection": "~2.4",
         "symfony/http-kernel": "~2.4",
 
-        "elcodi/core-bundle": "0.1-dev"
+        "elcodi/core-bundle": "0.1.*@dev"
     },
     "require-dev": {
-        "doctrine/data-fixtures": "v1.0.0",
-        "phpunit/phpunit": ">=4.0.0",
-        "elcodi/elcodi": "0.1.*@dev"
+        "doctrine/doctrine-fixtures-bundle": "~2.2",
+        "symfony/browser-kit": "~2.4",
+        "symfony/framework-bundle": "~2.4",
+        "symfony/validator": "~2.4",
+        "symfony/finder": "~2.4",
+        "phpunit/phpunit": ">=4.0",
+        "symfony/routing": "~2.4",
+        "symfony/console": "~2.4"
     },
     "autoload": {
         "psr-4": {
