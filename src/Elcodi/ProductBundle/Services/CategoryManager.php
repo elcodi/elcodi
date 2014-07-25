@@ -91,7 +91,7 @@ class CategoryManager extends AbstractCacheWrapper
     /**
      * Load method
      *
-     * @return CategoryManager self Object
+     * @return array Category tree loaded
      */
     public function load()
     {
@@ -120,7 +120,7 @@ class CategoryManager extends AbstractCacheWrapper
                 );
         }
 
-        return $this;
+        return $this->categoryTree;
     }
 
     /**

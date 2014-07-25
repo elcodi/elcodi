@@ -33,7 +33,6 @@ class CurrencyData extends AbstractFixture
      */
     public function load(ObjectManager $manager)
     {
-
         /**
          * @var CurrencyInterface $currencyDollar
          */
