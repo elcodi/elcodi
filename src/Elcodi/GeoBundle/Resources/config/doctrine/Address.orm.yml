@@ -12,12 +12,12 @@ Elcodi\GeoBundle\Entity\Address:
             column: recipient_name
             type: string
             length: 255
-            nullable: false
+            nullable: true
         recipientSurname:
             column: recipient_surname
             type: string
             length: 255
-            nullable: false
+            nullable: true
         address:
             column: address
             type: string
@@ -27,25 +27,11 @@ Elcodi\GeoBundle\Entity\Address:
             column: address_more
             type: string
             length: 255
-            nullable: false
+            nullable: true
         postalCode:
             column: postalcode
             type: string
             length: 255
-            nullable: false
-        phone:
-            column: phone
-            type: string
-            length: 255
-            nullable: false
-        mobile:
-            column: mobile
-            type: string
-            length: 255
-            nullable: false
-        comments:
-            column: comments
-            type: text
             nullable: false
         city:
             column: city
@@ -62,6 +48,20 @@ Elcodi\GeoBundle\Entity\Address:
             type: string
             length: 255
             nullable: false
+        phone:
+            column: phone
+            type: string
+            length: 255
+            nullable: false
+        mobile:
+            column: mobile
+            type: string
+            length: 255
+            nullable: true
+        comments:
+            column: comments
+            type: text
+            nullable: true
         createdAt:
             column: created_at
             type: datetime
