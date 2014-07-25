@@ -18,9 +18,7 @@ namespace Elcodi\ProductBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
-use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
-use Elcodi\CurrencyBundle\Entity\Money;
+use Elcodi\AttributeBundle\Entity\Interfaces\AttributeInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface;
@@ -30,13 +28,15 @@ use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
 use Elcodi\CoreBundle\Entity\Traits\ETaggableTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
 use Elcodi\MediaBundle\Entity\Traits\ImagesContainerTrait;
+use Elcodi\ProductBundle\Entity\Traits\ProductPriceTrait;
+use Elcodi\ProductBundle\Entity\Interfaces\VariantInterface;
 
 /**
  * Product entity
  */
 class Product extends AbstractEntity implements ProductInterface
 {
-    use DateTimeTrait, EnabledTrait, ETaggableTrait, MetaDataTrait, ImagesContainerTrait;
+    use ProductPriceTrait, DateTimeTrait, EnabledTrait, ETaggableTrait, MetaDataTrait, ImagesContainerTrait;
 
     /**
      * @var string
@@ -44,6 +44,20 @@ class Product extends AbstractEntity implements ProductInterface
      * Name
      */
     protected $name;
+
+    /**
+     * @var string
+     *
+     * Product SKU
+     */
+    protected $sku;
+
+    /**
+     * @var int
+     *
+     * Stock
+     */
+    protected $stock;
 
     /**
      * @var string
@@ -81,41 +95,6 @@ class Product extends AbstractEntity implements ProductInterface
     protected $dimensions;
 
     /**
-     * @var int
-     *
-     * Stock
-     */
-    protected $stock;
-
-    /**
-     * @var float
-     *
-     * Product price
-     */
-    protected $price;
-
-    /**
-     * @var CurrencyInterface
-     *
-     * Product price currency
-     */
-    protected $priceCurrency;
-
-    /**
-     * @var float
-     *
-     * Reduced price
-     */
-    protected $reducedPrice;
-
-    /**
-     * @var CurrencyInterface
-     *
-     * Reduced price currency
-     */
-    protected $reducedPriceCurrency;
-
-    /**
      * @var Manufacturer
      *
      * Manufacturer
@@ -135,6 +114,27 @@ class Product extends AbstractEntity implements ProductInterface
      * Principal category
      */
     protected $principalCategory;
+
+    /**
+     * @var Collection
+     *
+     * Attributes associated with this product
+     */
+    protected $attributes;
+
+    /**
+     * @var Collection
+     *
+     * Variants for this product
+     */
+    protected $variants;
+
+    /**
+     * @var VariantInterface
+     *
+     * Principal variant for this product
+     */
+    protected $principalVariant;
 
     /**
      * Set name
@@ -333,62 +333,6 @@ class Product extends AbstractEntity implements ProductInterface
     }
 
     /**
-     * Set price
-     *
-     * @param MoneyInterface $amount Price
-     *
-     * @return Product self Object
-     */
-    public function setPrice(MoneyInterface $amount)
-    {
-        $this->price = $amount->getAmount();
-        $this->priceCurrency = $amount->getCurrency();
-
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return MoneyInterface Price
-     */
-    public function getPrice()
-    {
-        return Money::create(
-            $this->price,
-            $this->priceCurrency
-        );
-    }
-
-    /**
-     * Set price
-     *
-     * @param MoneyInterface $amount Reduced Price
-     *
-     * @return Product self Object
-     */
-    public function setReducedPrice(MoneyInterface $amount)
-    {
-        $this->reducedPrice = $amount->getAmount();
-        $this->reducedPriceCurrency = $amount->getCurrency();
-
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return MoneyInterface Reduced Price
-     */
-    public function getReducedPrice()
-    {
-        return Money::create(
-            $this->reducedPrice,
-            $this->reducedPriceCurrency
-        );
-    }
-
-    /**
      * Set show in home
      *
      * @param boolean $showInHome Show in home
@@ -468,5 +412,141 @@ class Product extends AbstractEntity implements ProductInterface
     public function __toString()
     {
         return (string) $this->getName();
+    }
+
+    /**
+     * Gets product SKU
+     *
+     * @return string
+     */
+    public function getSku()
+    {
+        return $this->sku;
+    }
+
+    /**
+     * Sets product SKU
+     *
+     * @param string $sku
+     *
+     * @return ProductInterface
+     */
+    public function setSku($sku)
+    {
+        $this->sku = $sku;
+
+        return $this;
+    }
+
+    /**
+     * Adds an attribute if not already in the collection
+     *
+     * @param AttributeInterface $attribute
+     *
+     * @return ProductInterface;
+     */
+    public function addAttribute(AttributeInterface $attribute)
+    {
+        if (!$this->attributes->contains($attribute)) {
+
+            $this->attributes->add($attribute);
+
+        }
+
+        return $this;
+    }
+
+    /**
+     * Returns product attributes
+     *
+     * @return Collection
+     */
+    public function getAttributes()
+    {
+        return $this->attributes;
+    }
+
+    /**
+     * Sets product attributes
+     *
+     * @param Collection $attributes
+     *
+     * @return ProductInterface
+     */
+    public function setAttributes(Collection $attributes)
+    {
+        $this->attributes = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets product variants
+     *
+     * @return Collection
+     */
+    public function getVariants()
+    {
+        return $this->variants;
+    }
+
+    /**
+     * Adds a Variant for this Product
+     *
+     * @param VariantInterface $variant
+     *
+     * @return ProductInterface
+     */
+    public function addVariant(VariantInterface $variant)
+    {
+        $this->variants->add($variant);
+
+        return $this;
+    }
+
+    /**
+     * Sets product variants
+     *
+     * @param Collection $variants
+     *
+     * @return ProductInterface
+     */
+    public function setVariants(Collection $variants)
+    {
+        $this->variants = $variants;
+
+        return $this;
+    }
+
+    /**
+     * Returns product principal variant
+     *
+     * @return VariantInterface
+     */
+    public function getPrincipalVariant()
+    {
+        return $this->principalVariant;
+    }
+
+    /**
+     * Sets product principal variant
+     *
+     * @param VariantInterface $principalVariant
+     *
+     * @return ProductInterface
+     */
+    public function setPrincipalVariant(VariantInterface $principalVariant)
+    {
+        $this->principalVariant = $principalVariant;
+    }
+
+    /**
+     * Tells if this product has variants
+     *
+     * @return bool
+     */
+    public function hasVariants()
+    {
+        return $this->variants->count() > 0;
     }
 }

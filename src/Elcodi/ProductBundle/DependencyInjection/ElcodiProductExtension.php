@@ -89,6 +89,7 @@ class ElcodiProductExtension extends AbstractExtension implements EntitiesOverri
             'factories',
             'repositories',
             'objectManagers',
+            'twig',
         ];
     }
 
@@ -105,6 +106,7 @@ class ElcodiProductExtension extends AbstractExtension implements EntitiesOverri
     {
         return [
             'Elcodi\ProductBundle\Entity\Interfaces\ProductInterface'      => 'elcodi.core.product.entity.product.class',
+            'Elcodi\ProductBundle\Entity\Interfaces\VariantInterface'      => 'elcodi.core.product.entity.variant.class',
             'Elcodi\ProductBundle\Entity\Interfaces\ManufacturerInterface' => 'elcodi.core.product.entity.manufacturer.class',
             'Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface'     => 'elcodi.core.product.entity.category.class',
         ];

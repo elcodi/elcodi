@@ -26,12 +26,12 @@ Elcodi\UserBundle\Entity\Customer:
             mappedBy: customer
             orderBy:
                 createdAt: DESC
-            cascade: [ persist ]
+            cascade: [ "persist" ]
 
         orders:
             targetEntity: Elcodi\CartBundle\Entity\Interfaces\OrderInterface
             mappedBy: customer
-            cascade: [ persist ]
+            cascade: [ "persist" ]
 
     oneToOne:
         deliveryAddress:
@@ -40,7 +40,7 @@ Elcodi\UserBundle\Entity\Customer:
                 name: delivery_address_id
                 referencedColumnName: id
                 nullable: true
-            cascade: [ persist ]
+            cascade: [ "persist" ]
 
         invoiceAddress:
             targetEntity: Elcodi\GeoBundle\Entity\Interfaces\AddressInterface
@@ -48,7 +48,7 @@ Elcodi\UserBundle\Entity\Customer:
                 name: invoice_address_id
                 referencedColumnName: id
                 nullable: true
-            cascade: [ persist ]
+            cascade: [ "persist" ]
 
     manyToOne:
         language:

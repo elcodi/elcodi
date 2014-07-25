@@ -16,9 +16,12 @@
 
 namespace Elcodi\CartBundle\Entity\Abstracts;
 
+use Elcodi\CartBundle\Resolver\Interfaces\PurchasableResolverInterface;
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
-use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\CartBundle\Entity\Traits\PriceTrait;
+use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
+use Elcodi\ProductBundle\Entity\Interfaces\PurchasableInterface;
+use Elcodi\ProductBundle\Entity\Interfaces\VariantInterface;
 
 /**
  * Cart line
@@ -35,6 +38,13 @@ abstract class AbstractLine extends AbstractEntity
     protected $product;
 
     /**
+     * @var VariantInterface
+     *
+     * Product variant
+     */
+    protected $variant;
+
+    /**
      * @var integer
      *
      * Quantity
@@ -42,7 +52,7 @@ abstract class AbstractLine extends AbstractEntity
     protected $quantity;
 
     /**
-     * Set the product
+     * Sets the product
      *
      * @param ProductInterface $product Product
      *
@@ -56,7 +66,7 @@ abstract class AbstractLine extends AbstractEntity
     }
 
     /**
-     * Get the product
+     * Gets the product
      *
      * @return ProductInterface product attached to this cart line
      */
@@ -66,7 +76,31 @@ abstract class AbstractLine extends AbstractEntity
     }
 
     /**
-     * Set quantity
+     * Returns the product variant
+     *
+     * @return VariantInterface
+     */
+    public function getVariant()
+    {
+        return $this->variant;
+    }
+
+    /**
+     * Sets the product variant
+     *
+     * @param VariantInterface $variant
+     *
+     * @return AbstractLine self Object
+     */
+    public function setVariant($variant)
+    {
+        $this->variant = $variant;
+
+        return $this;
+    }
+
+    /**
+     * Sets quantity
      *
      * @param int $quantity Quantity
      *
@@ -80,7 +114,7 @@ abstract class AbstractLine extends AbstractEntity
     }
 
     /**
-     * Get quantity
+     * Gets quantity
      *
      * @return integer Quantity
      */
@@ -88,4 +122,46 @@ abstract class AbstractLine extends AbstractEntity
     {
         return $this->quantity;
     }
+
+    /**
+     * Sets the Purchasable object on this line
+     *
+     * A resolver is needed so that the concrete logic for
+     * handling different implementations of PurchasableInterface
+     * can be plugged.
+     *
+     * Line entities in CartBundle use the DefaultPurchasableResolver
+     *
+     * @param PurchasableInterface $purchasable
+     *
+     * @return AbstractLine self Object
+     */
+    public function setPurchasable(PurchasableInterface $purchasable)
+    {
+        $this->getPurchasableResolver()->setPurchasable($purchasable);
+
+        return $this;
+    }
+
+    /**
+     * Gets the Purchasable object on this line
+     *
+     * @return PurchasableInterface
+     */
+    public function getPurchasable()
+    {
+        return $this->getPurchasableResolver()->getPurchasable();
+    }
+
+    /**
+     * Returns a purchasable resolver
+     *
+     * A purchasable resolver is needed so that classes in the
+     * hierarchy can plug-in specific logic when adding a
+     * Purchasable to an AbstractLine
+     *
+     * @return PurchasableResolverInterface
+     */
+    abstract protected function getPurchasableResolver();
+
 }

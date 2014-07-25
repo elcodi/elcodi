@@ -47,6 +47,7 @@ class OrderEventListenerTest extends WebTestCase
         return array(
             'ElcodiUserBundle',
             'ElcodiCurrencyBundle',
+            'ElcodiAttributeBundle',
             'ElcodiProductBundle',
             'ElcodiCurrencyBundle',
             'ElcodiCartBundle',

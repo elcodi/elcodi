@@ -48,6 +48,7 @@ class CartOrderTransformerTest extends WebTestCase
     {
         return [
             'ElcodiProductBundle',
+            'ElcodiAttributeBundle',
             'ElcodiCurrencyBundle',
             'ElcodiUserBundle',
             'ElcodiCartBundle',

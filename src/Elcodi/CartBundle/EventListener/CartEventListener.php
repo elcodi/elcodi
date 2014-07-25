@@ -22,7 +22,6 @@ use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 use Elcodi\CurrencyBundle\Entity\Money;
 use Elcodi\CurrencyBundle\Services\CurrencyConverter;
 use Elcodi\CurrencyBundle\Wrapper\CurrencyWrapper;
-use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
 use Elcodi\CartBundle\EventDispatcher\CartEventDispatcher;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
@@ -30,6 +29,7 @@ use Elcodi\CartBundle\Event\CartPreLoadEvent;
 use Elcodi\CartBundle\Event\CartOnLoadEvent;
 use Elcodi\CartBundle\Services\CartManager;
 use Elcodi\CartBundle\Event\OrderOnCreatedEvent;
+use Elcodi\ProductBundle\Entity\Interfaces\PurchasableInterface;
 
 /**
  * Class CartEventListener
@@ -211,6 +211,14 @@ class CartEventListener
     /**
      * Check CartLine integrity
      *
+     * When a purchasable is not enabled or its quantity is <=0,
+     * the line is discarded and a ElcodiCartEvents::CART_INCONSISTENT
+     * event is fired.
+     *
+     * A further check on stock availability is performed so that when
+     * $quantity is greater that the available units, $quantity for this
+     * CartLine is set to Purchasable::$stock number
+     *
      * @param CartLineInterface $cartLine Cart line
      *
      * @return CartLineInterface CartLine
@@ -218,11 +226,11 @@ class CartEventListener
     protected function checkCartLine(CartLineInterface $cartLine)
     {
         $cart = $cartLine->getCart();
-        $product = $cartLine->getProduct();
+        $purchasable = $cartLine->getPurchasable();
 
         if (
-            !($product instanceof ProductInterface) ||
-            !($product->isEnabled()) ||
+            !($purchasable instanceof PurchasableInterface) ||
+            !($purchasable->isEnabled()) ||
             $cartLine->getQuantity() <= 0
         ) {
             $this->cartManager->silentRemoveLine(
@@ -241,9 +249,13 @@ class CartEventListener
                 );
         }
 
-        if ($cartLine->getQuantity() > $product->getStock()) {
+        /**
+         * We cannot exceed available stock for a given purchasable
+         * when setting CartLine::$quantity
+         */
+        if ($cartLine->getQuantity() > $purchasable->getStock()) {
 
-            $cartLine->setQuantity($product->getStock());
+            $cartLine->setQuantity($purchasable->getStock());
         }
 
         return $cartLine;
@@ -299,15 +311,15 @@ class CartEventListener
      */
     protected function loadCartLinePrices(CartLineInterface $cartLine)
     {
-        $product = $cartLine->getProduct();
-        $productPrice = $product->getPrice();
+        $purchasable = $cartLine->getPurchasable();
+        $productPrice = $purchasable->getPrice();
 
         /**
          * If present, reducedPrice will be used as product price in current CartLine.
          */
-        if ($product->getReducedPrice() instanceof Money) {
+        if ($purchasable->getReducedPrice() instanceof Money) {
 
-            $productPrice = $product->getReducedPrice();
+            $productPrice = $purchasable->getReducedPrice();
         }
 
         /**

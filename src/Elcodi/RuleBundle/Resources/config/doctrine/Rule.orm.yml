@@ -6,4 +6,4 @@ Elcodi\RuleBundle\Entity\Rule:
     oneToOne:
         expression:
             targetEntity: Elcodi\RuleBundle\Entity\Interfaces\ExpressionInterface
-            cascade: [ all ]
+            cascade: [ "all" ]

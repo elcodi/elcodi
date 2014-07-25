@@ -35,7 +35,7 @@ Elcodi\CartBundle\Entity\Cart:
         cartLines:
             targetEntity: Elcodi\CartBundle\Entity\Interfaces\CartLineInterface
             mappedBy: cart
-            cascade: ["all"]
+            cascade: [ "all" ]
             orphanRemoval: true
 
     lifecycleCallbacks:

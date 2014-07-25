@@ -8,6 +8,11 @@ Elcodi\ProductBundle\Entity\Product:
             type: string
             length: 255
             nullable: false
+        sku:
+            column: sku
+            type: string
+            length: 255
+            nullable: true
         slug:
             column: slug
             type: string
@@ -76,6 +81,12 @@ Elcodi\ProductBundle\Entity\Product:
                 name: manufacturer_id
                 referencedColumnName: id
                 nullable: true
+        principalVariant:
+            targetEntity: Elcodi\ProductBundle\Entity\Interfaces\VariantInterface
+            joinColumn:
+                name: principal_variant_id
+                referencedColumnName: id
+                nullable: true
         principalCategory:
             targetEntity: Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface
             joinColumn:
@@ -101,6 +112,13 @@ Elcodi\ProductBundle\Entity\Product:
                  referencedColumnName: id
                  nullable: true
 
+    oneToMany:
+        variants:
+            targetEntity: Elcodi\ProductBundle\Entity\Interfaces\VariantInterface
+            mappedBy: product
+            cascade: [ "all" ]
+            orphanRemoval: true
+
     manyToMany:
         categories:
             targetEntity: Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface
@@ -123,6 +141,18 @@ Elcodi\ProductBundle\Entity\Product:
                 inverseJoinColumns:
                     image_id:
                         referencedColumnName: id
+        attributes:
+            targetEntity: Elcodi\AttributeBundle\Entity\Interfaces\AttributeInterface
+            joinTable:
+                name: product_attribute
+                joinColumns:
+                    product_id:
+                        referencedColumnName: id
+                        onDelete: "CASCADE"
+                inverseJoinColumns:
+                    attribute_id:
+                        referencedColumnName: id
+                        onDelete: "CASCADE"
 
     lifecycleCallbacks:
         preUpdate: [loadUpdateAt]

@@ -61,12 +61,12 @@ Elcodi\CartBundle\Entity\Order:
         orderLines:
             targetEntity: Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface
             mappedBy: order
-            cascade: ["all"]
+            cascade: [ "all" ]
             orphanRemoval: true
         orderHistories:
             targetEntity: Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface
             mappedBy: order
-            cascade: ["all"]
+            cascade: [ "all" ]
             orphanRemoval: true
 
     lifecycleCallbacks:

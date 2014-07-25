@@ -1,0 +1,55 @@
+services:
+
+    #
+    # Factories
+    #
+
+    #
+    # Factory for Attribute entities
+    #
+    elcodi.core.attribute.factory.attribute:
+        class: %elcodi.core.attribute.factory.attribute.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.attribute.entity.attribute.class%"]]
+
+    elcodi.factory.attribute:
+        alias: elcodi.core.attribute.factory.attribute
+
+    #
+    # Factory for Value entities
+    #
+    elcodi.core.attribute.factory.value:
+        class: %elcodi.core.attribute.factory.value.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.attribute.entity.value.class%"]]
+
+    elcodi.factory.value:
+        alias: elcodi.core.attribute.factory.value
+
+    #
+    # Entity providers
+    #
+
+    #
+    # Instance provider for Attribute entities
+    #
+    elcodi.core.attribute.entity.attribute.instance:
+        class: %elcodi.core.attribute.entity.attribute.class%
+        factory_service: elcodi.core.attribute.factory.attribute
+        factory_method: create
+        scope: prototype
+
+    elcodi.entity.attribute.instance:
+        alias: elcodi.core.attribute.entity.attribute.instance
+
+    #
+    # Instance provider for Value entities
+    #
+    elcodi.core.attribute.entity.value.instance:
+        class: %elcodi.core.attribute.entity.value.class%
+        factory_service: elcodi.core.attribute.factory.value
+        factory_method: create
+        scope: prototype
+
+    elcodi.entity.value.instance:
+        alias: elcodi.core.attribute.entity.value.instance

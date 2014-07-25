@@ -50,6 +50,7 @@ class ProductData extends AbstractFixture
         $currency = $this->getReference('currency-dollar');
         $product
             ->setName('product')
+            ->setSku('product-sku-code-1')
             ->setSlug('product')
             ->setDescription('my product description')
             ->setShortDescription('my product short description')

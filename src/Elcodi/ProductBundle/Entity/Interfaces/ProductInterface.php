@@ -18,15 +18,15 @@ namespace Elcodi\ProductBundle\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
+use Elcodi\AttributeBundle\Entity\Interfaces\AttributeInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\ETaggableInterface;
-use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 use Elcodi\MediaBundle\Entity\Interfaces\ImagesContainerInterface;
+use Elcodi\ProductBundle\Entity\Interfaces\VariantInterface;
 
 /**
  * Class ProductInterface
  */
-interface ProductInterface extends EnabledInterface, ETaggableInterface, MetaDataInterface, ImagesContainerInterface
+interface ProductInterface extends PurchasableInterface, ETaggableInterface, MetaDataInterface, ImagesContainerInterface
 {
     /**
      * Set name
@@ -141,54 +141,6 @@ interface ProductInterface extends EnabledInterface, ETaggableInterface, MetaDat
     public function getPrincipalCategory();
 
     /**
-     * Set stock
-     *
-     * @param int $stock Stock
-     *
-     * @return ProductInterface self Object
-     */
-    public function setStock($stock);
-
-    /**
-     * Get stock
-     *
-     * @return int Stock
-     */
-    public function getStock();
-
-    /**
-     * Set price
-     *
-     * @param MoneyInterface $money Price
-     *
-     * @return ProductInterface self Object
-     */
-    public function setPrice(MoneyInterface $money);
-
-    /**
-     * Get price
-     *
-     * @return MoneyInterface Price
-     */
-    public function getPrice();
-
-    /**
-     * Set price
-     *
-     * @param MoneyInterface $money Reduced Price
-     *
-     * @return ProductInterface self Object
-     */
-    public function setReducedPrice(MoneyInterface $money);
-
-    /**
-     * Get price
-     *
-     * @return MoneyInterface Reduced Price
-     */
-    public function getReducedPrice();
-
-    /**
      * Set show in home
      *
      * @param boolean $showInHome Show in home
@@ -219,4 +171,77 @@ interface ProductInterface extends EnabledInterface, ETaggableInterface, MetaDat
      * @return ManufacturerInterface Manufacturer
      */
     public function getManufacturer();
+
+    /**
+     * Returns product principal variant
+     *
+     * @return VariantInterface
+     */
+    public function getPrincipalVariant();
+
+    /**
+     * Sets product principal variant
+     *
+     * @param VariantInterface $principalVariant
+     *
+     * @return ProductInterface
+     */
+    public function setPrincipalVariant(VariantInterface $principalVariant);
+
+    /**
+     * Adds an attribute if not already in the collection
+     *
+     * @param AttributeInterface $attribute
+     *
+     * @return ProductInterface;
+     */
+    public function addAttribute(AttributeInterface $attribute);
+
+    /**
+     * Returns product attributes
+     *
+     * @return Collection
+     */
+    public function getAttributes();
+
+    /**
+     * Sets product attributes
+     *
+     * @param Collection $attributes
+     *
+     * @return ProductInterface
+     */
+    public function setAttributes(Collection $attributes);
+
+    /**
+     * Gets product variants
+     *
+     * @return Collection
+     */
+    public function getVariants();
+
+    /**
+     * Adds a Variant for this Product
+     *
+     * @param VariantInterface $variant
+     *
+     * @return ProductInterface
+     */
+    public function addVariant(VariantInterface $variant);
+
+    /**
+     * Sets product variants
+     *
+     * @param Collection $variants
+     *
+     * @return ProductInterface
+     */
+    public function setVariants(Collection $variants);
+
+    /**
+     * Tells if this product has variants
+     *
+     * @return bool
+     */
+    public function hasVariants();
 }
