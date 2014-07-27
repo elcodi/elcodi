@@ -39,7 +39,8 @@
         "elcodi/core-bundle": "~0.1",
         "elcodi/language-bundle": "~0.1",
         "elcodi/media-bundle": "~0.1",
-        "elcodi/currency-bundle": "~0.1"
+        "elcodi/currency-bundle": "~0.1",
+        "elcodi/attribute-bundle": "~0.1"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",
