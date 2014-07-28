@@ -20,6 +20,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
+use Elcodi\CartCouponBundle\Entity\Interfaces\OrderCouponInterface;
 use Elcodi\CartCouponBundle\Repository\OrderCouponRepository;
 
 /**
@@ -52,23 +53,48 @@ class OrderCouponManager
     }
 
     /**
-     * Get cart coupons.
+     * Get OrderCoupon instances assigned to current order
      *
-     * If current cart has not coupons applied, this method will return an empty
-     * collection
+     * @param OrderInterface $order Order
+     *
+     * @return Collection OrderCoupons
+     */
+    public function getOrderCoupons(OrderInterface $order)
+    {
+        return new ArrayCollection(
+            $this
+                ->orderCouponRepository
+                ->createQueryBuilder('oc')
+                ->where('oc.order = :order')
+                ->setParameter('order', $order)
+                ->getQuery()
+                ->getResult()
+        );
+    }
+
+    /**
+     * Get order coupon Objects
      *
      * @param OrderInterface $order Order
      *
      * @return Collection Coupons
      */
-    public function getOrderCoupons(OrderInterface $order)
+    public function getCoupons(OrderInterface $order)
     {
         $orderCoupons = $this
             ->orderCouponRepository
-            ->findBy(array(
-                'order' => $order,
-            ));
+            ->createQueryBuilder('oc')
+            ->select(['o', 'oc'])
+            ->innerJoin('oc.coupon', 'c')
+            ->where('oc.order = :order')
+            ->setParameter('order', $order)
+            ->getQuery()
+            ->getResult();
 
-        return new ArrayCollection($orderCoupons);
+        $coupons = array_map(function (OrderCouponInterface $orderCoupon) {
+            return $orderCoupon->getCoupon();
+        }, $orderCoupons);
+
+        return new ArrayCollection($coupons);
     }
 }

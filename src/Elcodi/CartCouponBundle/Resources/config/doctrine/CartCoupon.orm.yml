@@ -11,6 +11,7 @@ Elcodi\CartCouponBundle\Entity\CartCoupon:
                 referencedColumnName: id
         coupon:
             targetEntity: Elcodi\CouponBundle\Entity\Interfaces\CouponInterface
+            fetch: EAGER
             joinColumn:
                 name: coupon_id
                 referencedColumnName: id

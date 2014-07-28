@@ -54,6 +54,15 @@ use Elcodi\ProductBundle\Entity\Product;
  */
 class DefaultPurchasableResolver implements PurchasableResolverInterface
 {
+    /**
+     * PurchasableResolver constructor
+     *
+     * @param AbstractLine $line
+     */
+    public function __construct(AbstractLine $line)
+    {
+        $this->line = $line;
+    }
 
     /**
      * @var AbstractLine
@@ -108,15 +117,5 @@ class DefaultPurchasableResolver implements PurchasableResolverInterface
          */
 
         return $this->line->getProduct();
-    }
-
-    /**
-     * PurchasableResolver constructor
-     *
-     * @param AbstractLine $line
-     */
-    public function __construct(AbstractLine $line)
-    {
-        $this->line = $line;
     }
 }

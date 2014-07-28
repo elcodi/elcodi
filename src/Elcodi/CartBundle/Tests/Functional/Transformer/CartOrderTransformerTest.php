@@ -17,6 +17,7 @@
 namespace Elcodi\CartBundle\Tests\Functional\Transformer;
 
 use Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface;
+use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 use Elcodi\CartBundle\Transformer\CartOrderTransformer;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
@@ -26,6 +27,20 @@ use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
  */
 class CartOrderTransformerTest extends WebTestCase
 {
+    /**
+     * @var CartInterface
+     *
+     * Cart
+     */
+    protected $cart;
+
+    /**
+     * @var OrderInterface
+     *
+     * Order
+     */
+    protected $order;
+
     /**
      * Returns the callable name of the service
      *
@@ -56,12 +71,12 @@ class CartOrderTransformerTest extends WebTestCase
     }
 
     /**
-     * test createFromCart method
-     *
-     * @group order
+     * Setup
      */
-    public function testCreateOrderFromCart()
+    public function setUp()
     {
+        parent::setUp();
+
         /**
          * @var CartOrderTransformer $cartOrderTransformer
          */
@@ -69,32 +84,40 @@ class CartOrderTransformerTest extends WebTestCase
             ->container
             ->get('elcodi.cart_order_transformer');
 
-        $orderInitialState = $this
-            ->container
-            ->getParameter('elcodi.core.cart.order_initial_state');
-
         /**
          * @var CartInterface $cart
          */
-        $cart = $this
+        $this->cart = $this
             ->getRepository('elcodi.core.cart.entity.cart.class')
             ->find(2);
 
         $this
             ->container
             ->get('elcodi.cart_event_dispatcher')
-            ->dispatchCartLoadEvents($cart);
+            ->dispatchCartLoadEvents($this->cart);
 
-        $order = $cartOrderTransformer->createOrderFromCart($cart);
+        $this->order = $cartOrderTransformer->createOrderFromCart($this->cart);
+    }
 
-        $this->assertInstanceOf('Elcodi\CartBundle\Entity\Interfaces\OrderInterface', $order);
-        $this->assertSame($order->getCart(), $cart);
-        $this->assertTrue($cart->isOrdered());
-        $this->assertCount(2, $order->getOrderLines());
-        $this->assertInstanceOf('Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface', $order->getLastOrderHistory());
-        $this->assertEquals($order->getLastOrderHistory()->getState(), $orderInitialState);
+    /**
+     * test createFromCart method
+     *
+     * @group order
+     */
+    public function testCreateOrderFromCart()
+    {
+        $orderInitialState = $this
+            ->container
+            ->getParameter('elcodi.core.cart.order_initial_state');
 
-        $orderHistories = $order->getOrderHistories();
+        $this->assertInstanceOf('Elcodi\CartBundle\Entity\Interfaces\OrderInterface', $this->order);
+        $this->assertSame($this->order->getCart(), $this->cart);
+        $this->assertTrue($this->cart->isOrdered());
+        $this->assertCount(2, $this->order->getOrderLines());
+        $this->assertInstanceOf('Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface', $this->order->getLastOrderHistory());
+        $this->assertEquals($this->order->getLastOrderHistory()->getState(), $orderInitialState);
+
+        $orderHistories = $this->order->getOrderHistories();
 
         /**
          * @var OrderHistoryInterface $orderHistory
@@ -110,9 +133,26 @@ class CartOrderTransformerTest extends WebTestCase
             ->clear();
 
         $this->assertCount(1, $this
-            ->getRepository('elcodi.core.cart.entity.order.class')
-            ->findAll()
+                ->getRepository('elcodi.core.cart.entity.order.class')
+                ->findAll()
         );
     }
 
+    /**
+     * test createFromCart method when a cart is already ordered
+     *
+     * @group order
+     */
+    public function testCreateOrderFromCartOrdered()
+    {
+        /**
+         * @var $order OrderInterface
+         */
+        $order = $this
+            ->container
+            ->get('elcodi.cart_order_transformer')
+            ->createOrderFromCart($this->cart);
+
+        $this->assertEquals(2, $order->getOrderLines()->count());
+    }
 }

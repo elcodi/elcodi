@@ -15,6 +15,14 @@ Elcodi\CartBundle\Entity\CartLine:
             column: quantity
             type: integer
 
+    oneToOne:
+        orderLine:
+            targetEntity: Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface
+            joinColumn:
+                name: order_line_id
+                referencedColumnName: id
+                nullable: true
+
     manyToOne:
         cart:
             targetEntity: Elcodi\CartBundle\Entity\Interfaces\CartInterface
