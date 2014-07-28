@@ -286,19 +286,19 @@ class CountryData extends AbstractFixture
         foreach ($countries as $country) {
 
             /**
-             * @var Country $country
+             * @var Country $countryFixture
              */
-            $country = $this
+            $countryFixture = $this
                 ->container
                 ->get('elcodi.factory.country')
                 ->create();
 
-            $country
+            $countryFixture
                 ->setCode(strtolower($country[0]))
                 ->setName($country[1]);
 
-            $manager->persist($country);
-            $this->setReference('country-' . $country->getCode(), $country);
+            $manager->persist($countryFixture);
+            $this->setReference('country-' . $countryFixture->getCode(), $countryFixture);
         }
 
         $manager->flush();
