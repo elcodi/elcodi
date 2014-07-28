@@ -155,16 +155,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
             ->addLine($this->cart, $this->cartLine)
             ->removeLine($this->cart, $this->cartLine);
 
-        $this->assertEmpty($this->cart->getCartLines());
-        $this->assertNotNull($this->cart->getId());
-
-        $this->assertEquals(
-            UnitOfWork::STATE_NEW,
-            $this->container
-                ->get('elcodi.object_manager.cart_line')
-                ->getUnitOfWork()
-                ->getEntityState($this->cartLine)
-        );
+        $this->assertRemovedLine();
     }
 
     /**
@@ -180,16 +171,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
             ->addLine($this->cart, $this->cartLine)
             ->emptyLines($this->cart);
 
-        $this->assertEmpty($this->cart->getCartLines());
-        $this->assertNotNull($this->cart->getId());
-
-        $this->assertEquals(
-            UnitOfWork::STATE_NEW,
-            $this->container
-                ->get('elcodi.object_manager.cart_line')
-                ->getUnitOfWork()
-                ->getEntityState($this->cartLine)
-        );
+        $this->assertRemovedLine();
     }
 
     /**
@@ -374,4 +356,21 @@ abstract class AbstractCartManagerTest extends WebTestCase
      * @return PurchasableInterface
      */
     abstract protected function createPurchasable();
+
+    /**
+     * Common asserts for a test that empties lines
+     */
+    private function assertRemovedLine()
+    {
+        $this->assertEmpty($this->cart->getCartLines());
+        $this->assertNotNull($this->cart->getId());
+
+        $this->assertEquals(
+            UnitOfWork::STATE_NEW,
+            $this->container
+                ->get('elcodi.object_manager.cart_line')
+                ->getUnitOfWork()
+                ->getEntityState($this->cartLine)
+        );
+    }
 }
