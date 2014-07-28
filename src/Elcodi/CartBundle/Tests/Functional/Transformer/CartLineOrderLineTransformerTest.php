@@ -67,7 +67,7 @@ class CartLineOrderLineTransformerTest extends WebTestCase
     {
         /**
          * @var CartLineOrderLineTransformer $cartLineOrderLineTransformer
-         * @var CartOrderTransformer $cartOrderTransformer
+         * @var CartOrderTransformer         $cartOrderTransformer
          */
         $cartLineOrderLineTransformer = $this
             ->container
@@ -82,9 +82,9 @@ class CartLineOrderLineTransformerTest extends WebTestCase
             ->getParameter('elcodi.core.cart.order_initial_state');
 
         /**
-         * @var CartInterface $cart
+         * @var CartInterface     $cart
          * @var CartLineInterface $cartLine
-         * @var OrderLine $orderLine
+         * @var OrderLine         $orderLine
          */
         $cart = $this
             ->getRepository('elcodi.core.cart.entity.cart.class')

@@ -18,6 +18,8 @@ services:
         arguments:
             order_coupon_event_dispatcher: @elcodi.order_coupon_event_dispatcher
             cart_coupon_manager: @elcodi.cart_coupon_manager
+            order_coupon_manager: @elcodi.order_coupon_manager
+            order_coupon_object_manager: @elcodi.object_manager.order_coupon
         tags:
             - { name: kernel.event_listener, event: order.oncreated, method: onOrderOnCreatedEvent, priority: -16 }
 

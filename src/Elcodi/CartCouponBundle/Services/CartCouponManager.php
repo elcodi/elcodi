@@ -18,6 +18,7 @@ namespace Elcodi\CartCouponBundle\Services;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
 use Elcodi\CartCouponBundle\EventDispatcher\CartCouponEventDispatcher;
 
 use Elcodi\CartCouponBundle\Repository\CartCouponRepository;
@@ -91,24 +92,49 @@ class CartCouponManager
     }
 
     /**
-     * Get cart coupons.
-     *
-     * If current cart has not coupons applied, this method will return an empty
-     * collection
+     * Get CartCoupon instances assigned to current Cart
      *
      * @param CartInterface $cart Cart
      *
-     * @return Collection CartCoupons
+     * @return Collection OrderCoupons
      */
     public function getCartCoupons(CartInterface $cart)
     {
+        return new ArrayCollection(
+            $this
+                ->cartCouponRepository
+                ->createQueryBuilder('cc')
+                ->where('cc.cart = :cart')
+                ->setParameter('cart', $cart)
+                ->getQuery()
+                ->getResult()
+        );
+    }
+
+    /**
+     * Get cart coupon objects
+     *
+     * @param CartInterface $cart Cart
+     *
+     * @return Collection Coupons
+     */
+    public function getCoupons(CartInterface $cart)
+    {
         $cartCoupons = $this
             ->cartCouponRepository
-            ->findBy(array(
-                'cart' => $cart,
-            ));
+            ->createQueryBuilder('cc')
+            ->select(['c', 'cc'])
+            ->innerJoin('cc.coupon', 'c')
+            ->where('cc.cart = :cart')
+            ->setParameter('cart', $cart)
+            ->getQuery()
+            ->getResult();
 
-        return new ArrayCollection($cartCoupons);
+        $coupons = array_map(function (CartCouponInterface $cartCoupon) {
+            return $cartCoupon->getCoupon();
+        }, $cartCoupons);
+
+        return new ArrayCollection($coupons);
     }
 
     /**

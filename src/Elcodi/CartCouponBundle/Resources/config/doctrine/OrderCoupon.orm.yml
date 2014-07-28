@@ -12,7 +12,6 @@ Elcodi\CartCouponBundle\Entity\OrderCoupon:
             type: string
             length: 255
             nullable: false
-            unique: true
         name:
             column: name
             type: string
@@ -27,11 +26,13 @@ Elcodi\CartCouponBundle\Entity\OrderCoupon:
                 referencedColumnName: id
         coupon:
             targetEntity: Elcodi\CouponBundle\Entity\Interfaces\CouponInterface
+            fetch: EAGER
             joinColumn:
                 name: coupon_id
                 referencedColumnName: id
         amountCurrency:
             targetEntity: Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
+            fetch: EAGER
             joinColumn:
                  name: amount_currency_id
                  referencedColumnName: id

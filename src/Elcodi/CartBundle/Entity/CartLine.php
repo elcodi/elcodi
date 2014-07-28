@@ -19,6 +19,7 @@ namespace Elcodi\CartBundle\Entity;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
 use Elcodi\CartBundle\Entity\Abstracts\AbstractLine;
+use Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface;
 use Elcodi\CartBundle\Resolver\DefaultPurchasableResolver;
 use Elcodi\CartBundle\Resolver\Interfaces\PurchasableResolverInterface;
 
@@ -33,6 +34,13 @@ class CartLine extends AbstractLine implements CartLineInterface
      * Cart
      */
     protected $cart;
+
+    /**
+     * @var OrderLineInterface
+     *
+     * Order Line
+     */
+    protected $orderLine;
 
     /**
      * Set Cart
@@ -59,13 +67,37 @@ class CartLine extends AbstractLine implements CartLineInterface
     }
 
     /**
+     * Sets OrderLine
+     *
+     * @param OrderLineInterface $orderLine OrderLine
+     *
+     * @return CartLine Self object
+     */
+    public function setOrderLine($orderLine)
+    {
+        $this->orderLine = $orderLine;
+
+        return $this;
+    }
+
+    /**
+     * Get OrderLine
+     *
+     * @return OrderLineInterface OrderLine
+     */
+    public function getOrderLine()
+    {
+        return $this->orderLine;
+    }
+
+    /**
      * Returns a purchasable resolver
      *
      * A purchasable resolver is needed so that classes in the
      * hierarchy can plug-in specific logic when adding a
      * Purchasable to an AbstractLine
      *
-     * Here we will return teh Default resolver
+     * Here we will return the Default resolver
      *
      * @return PurchasableResolverInterface
      */

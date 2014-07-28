@@ -109,7 +109,10 @@ class OrderLine extends AbstractLine implements OrderLineInterface
      */
     public function addOrderLineHistory(OrderLineHistoryInterface $orderLineHistory)
     {
-        $this->orderLineHistories->add($orderLineHistory);
+        if (!$this->orderLineHistories->contains($orderLineHistory)) {
+
+            $this->orderLineHistories->add($orderLineHistory);
+        }
 
         return $this;
     }

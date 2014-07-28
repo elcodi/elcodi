@@ -174,7 +174,10 @@ class Order extends AbstractEntity implements OrderInterface
      */
     public function addOrderLine(OrderLineInterface $orderLine)
     {
-        $this->orderLines->add($orderLine);
+        if (!$this->orderLines->contains($orderLine)) {
+
+            $this->orderLines->add($orderLine);
+        }
 
         return $this;
     }
@@ -226,7 +229,10 @@ class Order extends AbstractEntity implements OrderInterface
      */
     public function addOrderHistory(OrderHistoryInterface $orderHistory)
     {
-        $this->orderHistories->add($orderHistory);
+        if (!$this->orderLines->contains($orderHistory)) {
+
+            $this->orderHistories->add($orderHistory);
+        }
 
         return $this;
     }

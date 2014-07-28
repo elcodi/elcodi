@@ -18,11 +18,14 @@ namespace Elcodi\CartCouponBundle\EventListener;
 
 use Doctrine\Common\Collections\Collection;
 
+use Doctrine\Common\Persistence\ObjectManager;
+use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 use Elcodi\CartBundle\Event\OrderOnCreatedEvent;
-use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
 use Elcodi\CartCouponBundle\EventDispatcher\OrderCouponEventDispatcher;
 use Elcodi\CartCouponBundle\Services\CartCouponManager;
 
+use Elcodi\CartCouponBundle\Services\OrderCouponManager;
+use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 
 /**
@@ -45,18 +48,38 @@ class OrderEventListener
     protected $cartCouponManager;
 
     /**
+     * @var OrderCouponManager
+     *
+     * OrderCoupon manager
+     */
+    protected $orderCouponManager;
+
+    /**
+     * @var ObjectManager
+     *
+     * OrderCoupon object manager
+     */
+    protected $orderCouponObjectManager;
+
+    /**
      * construct method
      *
      * @param OrderCouponEventDispatcher $orderCouponEventDispatcher OrderCouponEventDispatcher
      * @param CartCouponManager          $cartCouponManager          CartCoupon manager
+     * @param OrderCouponManager         $orderCouponManager         OrderCoupon manager
+     * @param ObjectManager              $orderCouponObjectManager   OrderCoupon Object Manager
      */
     public function __construct(
         OrderCouponEventDispatcher $orderCouponEventDispatcher,
-        CartCouponManager $cartCouponManager
+        CartCouponManager $cartCouponManager,
+        OrderCouponManager $orderCouponManager,
+        ObjectManager $orderCouponObjectManager
     )
     {
         $this->orderCouponEventDispatcher = $orderCouponEventDispatcher;
         $this->cartCouponManager = $cartCouponManager;
+        $this->orderCouponManager = $orderCouponManager;
+        $this->orderCouponObjectManager = $orderCouponObjectManager;
     }
 
     /**
@@ -79,15 +102,23 @@ class OrderEventListener
         /**
          * @var Collection $coupons
          */
-        $coupons = $this->cartCouponManager->getCartCoupons($cart);
+        $coupons = $this->cartCouponManager->getCoupons($cart);
 
         if ($coupons->isEmpty()) {
             return;
         }
 
-        $coupons->map(function (CartCouponInterface $cartCoupon) use ($order) {
+        /**
+         * Before applying Coupons to Order, we should remove old references
+         * if exist. Otherwise,
+         */
+        $this->truncateOrderCoupons($order);
 
-            $coupon = $cartCoupon->getCoupon();
+        /**
+         * An event is dispatched for each convertible coupon
+         */
+        $coupons->map(function (CouponInterface $coupon) use ($order) {
+
             $this
                 ->orderCouponEventDispatcher
                 ->dispatchOrderCouponOnApplyEvent(
@@ -95,5 +126,35 @@ class OrderEventListener
                     $coupon
                 );
         });
+    }
+
+    /**
+     * Purge existing OrderCoupons
+     *
+     * @param OrderInterface $order Order where to delete all coupons
+     *
+     * @return OrderEventListener self Object
+     */
+    protected function truncateOrderCoupons(OrderInterface $order)
+    {
+        $orderCoupons = $this
+            ->orderCouponManager
+            ->getOrderCoupons($order);
+
+        if ($orderCoupons instanceof Collection) {
+
+            foreach ($orderCoupons as $orderCoupon) {
+
+                $this
+                    ->orderCouponObjectManager
+                    ->remove($orderCoupon);
+            }
+
+            $this
+                ->orderCouponObjectManager
+                ->flush($orderCoupons->toArray());
+        }
+
+        return $this;
     }
 }

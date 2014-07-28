@@ -104,4 +104,20 @@ interface CartLineInterface extends PriceInterface
      * @return integer Quantity
      */
     public function getQuantity();
+
+    /**
+     * Sets OrderLine
+     *
+     * @param OrderLineInterface $orderLine OrderLine
+     *
+     * @return CartLineInterface Self object
+     */
+    public function setOrderLine($orderLine);
+
+    /**
+     * Get OrderLine
+     *
+     * @return OrderLineInterface OrderLine
+     */
+    public function getOrderLine();
 }

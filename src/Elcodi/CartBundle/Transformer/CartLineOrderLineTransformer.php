@@ -80,15 +80,18 @@ class CartLineOrderLineTransformer
         $orderLines = new ArrayCollection();
 
         /**
-         * @var CartLineInterface $line
+         * @var CartLineInterface $cartLine
          */
         foreach ($cartLines as $cartLine) {
 
-            $orderLines->add($this
+            $orderLine = $this
                 ->createOrderLineByCartLine(
                     $order,
                     $cartLine
-                ));
+                );
+
+            $cartLine->setOrderLine($orderLine);
+            $orderLines->add($orderLine);
         }
 
         return $orderLines;
@@ -107,10 +110,10 @@ class CartLineOrderLineTransformer
         CartLineInterface $cartLine
     )
     {
-        /**
-         * @var OrderLineInterface $orderLine
-         */
-        $orderLine = $this->orderLineFactory->create();
+        $orderLine = ($cartLine->getOrderLine() instanceof OrderLineInterface)
+            ? $cartLine->getOrderLine()
+            : $this->orderLineFactory->create();
+
         $orderLine
             ->setOrder($order)
             ->setPurchasable($cartLine->getPurchasable())
