@@ -48,7 +48,6 @@ class CouponFactory extends AbstractFactory
             ->setEnforcement(ElcodiCouponTypes::ENFORCEMENT_MANUAL)
             ->setUsed(0)
             ->setPriority(0)
-            ->setMinimumPurchaseAmount(0)
             ->setEnabled(false)
             ->setCreatedAt(new DateTime);
 

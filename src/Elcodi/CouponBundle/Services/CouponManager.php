@@ -109,7 +109,7 @@ class CouponManager
         /**
          * you cannot add this coupon, too cheap
          */
-        if ($coupon->getMinimumPurchaseAmount() > $price) {
+        if ($coupon->getMinimumPurchase()->getAmount() > $price) {
 
             throw new CouponBelowMinimumPurchaseException;
         }
@@ -169,7 +169,7 @@ class CouponManager
             ->setDiscount($coupon->getDiscount())
             ->setCount($coupon->getCount())
             ->setPriority($coupon->getPriority())
-            ->setMinimumPurchaseAmount($coupon->getMinimumPurchaseAmount())
+            ->setMinimumPurchase($coupon->getMinimumPurchase())
             ->setValidFrom($dateFrom)
             ->setValidTo($dateTo)
             ->setEnabled(true);

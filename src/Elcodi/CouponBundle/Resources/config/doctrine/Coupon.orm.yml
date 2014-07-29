@@ -20,7 +20,7 @@ Elcodi\CouponBundle\Entity\Coupon:
             type: integer
             nullable: false
         priceAmount:
-            column: priceAmount
+            column: price_amount
             type: integer
         discount:
             column: discount
@@ -38,9 +38,9 @@ Elcodi\CouponBundle\Entity\Coupon:
             type: integer
             nullable: false
         minimumPurchaseAmount:
-            column: min_purchase_amount
-            type: float
-            nullable: false
+            column: minimum_purchase_amount
+            type: integer
+            nullable: true
         validFrom:
             column: valid_from
             type: datetime
@@ -66,6 +66,12 @@ Elcodi\CouponBundle\Entity\Coupon:
             targetEntity: Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
             joinColumn:
                  name: price_currency_id
+                 referencedColumnName: id
+                 nullable: true
+        minimumPurchaseCurrency:
+            targetEntity: Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                 name: minimum_purchase_currency_id
                  referencedColumnName: id
                  nullable: true
 
