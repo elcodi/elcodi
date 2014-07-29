@@ -49,6 +49,7 @@
         "egulias/listeners-debug-command-bundle": "2.*"
     },
     "replace": {
+        "elcodi/attribute-bundle": "self.version",
         "elcodi/banner-bundle": "self.version",
         "elcodi/cart-bundle": "self.version",
         "elcodi/cart-coupon-bundle": "self.version",
@@ -56,6 +57,7 @@
         "elcodi/coupon-bundle": "self.version",
         "elcodi/currency-bundle": "self.version",
         "elcodi/media-bundle": "self.version",
+        "elcodi/menu-bundle": "self.version",
         "elcodi/newsletter-bundle": "self.version",
         "elcodi/product-bundle": "self.version",
         "elcodi/referral-program-bundle": "self.version",
