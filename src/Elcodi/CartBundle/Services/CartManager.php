@@ -16,13 +16,12 @@
 
 namespace Elcodi\CartBundle\Services;
 
-use Elcodi\CartBundle\EventDispatcher\CartLineEventDispatcher;
-use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
+use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
 use Elcodi\CartBundle\EventDispatcher\CartEventDispatcher;
-use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
-use Elcodi\CartBundle\Factory\CartLineFactory;
+use Elcodi\CartBundle\EventDispatcher\CartLineEventDispatcher;
 use Elcodi\CartBundle\Factory\CartFactory;
+use Elcodi\CartBundle\Factory\CartLineFactory;
 use Elcodi\ProductBundle\Entity\Interfaces\PurchasableInterface;
 
 /**
@@ -45,7 +44,7 @@ use Elcodi\ProductBundle\Entity\Interfaces\PurchasableInterface;
  * * decreaseCartLineQuantity(CartLine, $quantity) : self
  * * setCartLineQuantity(CartLine, $quantity) : self
  *
- * * addProduct(AbstractCart, ProductInterface, $quantity) : self
+ * * addProduct(AbstractCart, PurchasableInterface, $quantity) : self
  */
 class CartManager
 {

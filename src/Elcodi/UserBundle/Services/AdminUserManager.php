@@ -16,10 +16,10 @@
 
 namespace Elcodi\UserBundle\Services;
 
-use Elcodi\UserBundle\Entity\Interfaces\AbstractUserInterface;
-use Elcodi\UserBundle\Services\Abstracts\AbstractUserManager;
-use Elcodi\UserBundle\Event\AdminUserRegisterEvent;
 use Elcodi\UserBundle\ElcodiUserEvents;
+use Elcodi\UserBundle\Entity\Interfaces\AbstractUserInterface;
+use Elcodi\UserBundle\Event\AdminUserRegisterEvent;
+use Elcodi\UserBundle\Services\Abstracts\AbstractUserManager;
 
 /**
  * Class AdminUserManager

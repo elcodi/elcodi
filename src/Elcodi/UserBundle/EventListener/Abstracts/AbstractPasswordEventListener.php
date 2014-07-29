@@ -18,8 +18,9 @@ namespace Elcodi\UserBundle\EventListener\Abstracts;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
-use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
+
+use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 
 /**
  * Password event listener

@@ -16,17 +16,17 @@
 
 namespace Elcodi\NewsletterBundle\Services;
 
-use Elcodi\NewsletterBundle\EventDispatcher\NewsletterEventDispatcher;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\ValidatorInterface;
 
 use Elcodi\CoreBundle\Generator\Interfaces\GeneratorInterface;
 use Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface;
-use Elcodi\NewsletterBundle\Repository\NewsletterSubscriptionRepository;
-use Elcodi\NewsletterBundle\Factory\NewsletterSubscriptionFactory;
 use Elcodi\NewsletterBundle\Entity\Interfaces\NewsletterSubscriptionInterface;
+use Elcodi\NewsletterBundle\EventDispatcher\NewsletterEventDispatcher;
 use Elcodi\NewsletterBundle\Exception\NewsletterCannotBeAddedException;
 use Elcodi\NewsletterBundle\Exception\NewsletterCannotBeRemovedException;
+use Elcodi\NewsletterBundle\Factory\NewsletterSubscriptionFactory;
+use Elcodi\NewsletterBundle\Repository\NewsletterSubscriptionRepository;
 
 /**
  * Manager for newsletter

@@ -16,11 +16,10 @@
 
 namespace Elcodi\CurrencyBundle\Entity;
 
-use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
-
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
+use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 
 /**
  * Currency

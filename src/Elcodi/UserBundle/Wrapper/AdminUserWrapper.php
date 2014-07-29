@@ -16,15 +16,15 @@
 
 namespace Elcodi\UserBundle\Wrapper;
 
-use Elcodi\UserBundle\Entity\Interfaces\AdminUserInterface;
-use Elcodi\UserBundle\Factory\AdminUserFactory;
-use Elcodi\UserBundle\Repository\AdminUserRepository;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 
-use Elcodi\UserBundle\Factory\CustomerFactory;
-use Elcodi\UserBundle\Repository\CustomerRepository;
+use Elcodi\UserBundle\Entity\Interfaces\AdminUserInterface;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
+use Elcodi\UserBundle\Factory\AdminUserFactory;
+use Elcodi\UserBundle\Factory\CustomerFactory;
+use Elcodi\UserBundle\Repository\AdminUserRepository;
+use Elcodi\UserBundle\Repository\CustomerRepository;
 
 /**
  * Cart to order service

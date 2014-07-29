@@ -18,17 +18,17 @@ namespace Elcodi\CartBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
+use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
+use Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface;
+use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
+use Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface;
+use Elcodi\CartBundle\Entity\Traits\PriceTrait;
+use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
+use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
 use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 use Elcodi\CurrencyBundle\Entity\Money;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
-use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
-use Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface;
-use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
-use Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface;
-use Elcodi\CartBundle\Entity\Traits\PriceTrait;
-use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
-use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 
 /**
  * Order

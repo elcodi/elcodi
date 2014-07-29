@@ -17,6 +17,7 @@
 namespace Elcodi\ProductBundle\Tests\UnitTest\Twig;
 
 use Doctrine\Common\Collections\ArrayCollection;
+
 use Elcodi\AttributeBundle\Entity\Value;
 use Elcodi\ProductBundle\Twig\ProductExtension;
 

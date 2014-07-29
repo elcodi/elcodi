@@ -17,6 +17,7 @@
 namespace Elcodi\ProductBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+
 use Elcodi\AttributeBundle\Entity\Interfaces\ValueInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\VariantInterface;

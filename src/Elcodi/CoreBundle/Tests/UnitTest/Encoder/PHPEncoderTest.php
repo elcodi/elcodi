@@ -16,8 +16,9 @@
 
 namespace Elcodi\CoreBundle\Tests\UnitTest\Encoder;
 
-use Elcodi\CoreBundle\Encoder\PHPEncoder;
 use PHPUnit_Framework_TestCase;
+
+use Elcodi\CoreBundle\Encoder\PHPEncoder;
 
 /**
  * Class PHPEncoderTest

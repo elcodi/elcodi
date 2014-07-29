@@ -18,13 +18,13 @@ namespace Elcodi\CartBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
-use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
+use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
-use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
+use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
+use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 
 /**
  * Cart

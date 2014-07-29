@@ -19,9 +19,9 @@ namespace Elcodi\UserBundle\Wrapper;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 
+use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Elcodi\UserBundle\Factory\CustomerFactory;
 use Elcodi\UserBundle\Repository\CustomerRepository;
-use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 
 /**
  * Cart to order service

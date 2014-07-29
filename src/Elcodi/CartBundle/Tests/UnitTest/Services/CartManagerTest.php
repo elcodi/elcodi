@@ -17,18 +17,18 @@
 namespace Elcodi\CartBundle\Tests\UnitTest\Services;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Elcodi\CartBundle\EventDispatcher\CartLineEventDispatcher;
 use PHPUnit_Framework_TestCase;
 
-use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
-use Elcodi\CartBundle\EventDispatcher\CartEventDispatcher;
+use Elcodi\CartBundle\Entity\Cart;
+use Elcodi\CartBundle\Entity\CartLine;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
+use Elcodi\CartBundle\EventDispatcher\CartEventDispatcher;
+use Elcodi\CartBundle\EventDispatcher\CartLineEventDispatcher;
+use Elcodi\CartBundle\Factory\CartFactory;
 use Elcodi\CartBundle\Factory\CartLineFactory;
 use Elcodi\CartBundle\Services\CartManager;
-use Elcodi\CartBundle\Factory\CartFactory;
 use Elcodi\CartBundle\Wrapper\CartWrapper;
-use Elcodi\CartBundle\Entity\CartLine;
-use Elcodi\CartBundle\Entity\Cart;
+use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 
 /**
  * Class CartManagerTest

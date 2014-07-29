@@ -16,11 +16,11 @@
 
 namespace Elcodi\CurrencyBundle\Entity;
 
-use SebastianBergmann\Money\Money as WrappedMoney;
 use SebastianBergmann\Money\Currency as WrappedCurrency;
+use SebastianBergmann\Money\Money as WrappedMoney;
 
-use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
+use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 
 /**
  * Class Money

@@ -17,19 +17,19 @@
 namespace Elcodi\CartBundle\Tests\UnitTest\Transformer;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
-use Elcodi\CurrencyBundle\Entity\Money;
 use PHPUnit_Framework_TestCase;
 
-use Elcodi\CartBundle\Transformer\CartLineOrderLineTransformer;
-use Elcodi\CartBundle\EventDispatcher\OrderEventDispatcher;
-use Elcodi\CartBundle\Transformer\CartOrderTransformer;
+use Elcodi\CartBundle\Entity\Cart;
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
+use Elcodi\CartBundle\EventDispatcher\OrderEventDispatcher;
+use Elcodi\CartBundle\Factory\OrderFactory;
 use Elcodi\CartBundle\Services\OrderLineManager;
 use Elcodi\CartBundle\Services\OrderManager;
-use Elcodi\CartBundle\Factory\OrderFactory;
+use Elcodi\CartBundle\Transformer\CartLineOrderLineTransformer;
+use Elcodi\CartBundle\Transformer\CartOrderTransformer;
+use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
+use Elcodi\CurrencyBundle\Entity\Money;
 use Elcodi\UserBundle\Entity\Customer;
-use Elcodi\CartBundle\Entity\Cart;
 
 /**
  * Class CartOrderTransformerTest

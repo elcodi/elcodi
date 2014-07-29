@@ -19,9 +19,9 @@ namespace Elcodi\CouponBundle\Factory;
 use DateTime;
 
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
-use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 use Elcodi\CouponBundle\ElcodiCouponTypes;
 use Elcodi\CouponBundle\Entity\Coupon;
+use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 
 /**
  * Class CouponFactory

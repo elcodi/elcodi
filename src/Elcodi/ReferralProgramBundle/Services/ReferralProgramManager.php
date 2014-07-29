@@ -21,28 +21,28 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
-use Elcodi\UserBundle\Entity\Customer;
-use Elcodi\UserBundle\Repository\CustomerRepository;
+use Elcodi\ReferralProgramBundle\ElcodiReferralProgramEvents;
+use Elcodi\ReferralProgramBundle\ElcodiReferralProgramSources;
+use Elcodi\ReferralProgramBundle\Entity\Interfaces\InvitationBagInterface;
 use Elcodi\ReferralProgramBundle\Entity\Interfaces\InvitationInterface;
+use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralHashInterface;
+use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralLineInterface;
 use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralRuleInterface;
+use Elcodi\ReferralProgramBundle\Entity\ReferralHash;
+use Elcodi\ReferralProgramBundle\Entity\ReferralLine;
+use Elcodi\ReferralProgramBundle\Entity\ReferralRule;
+use Elcodi\ReferralProgramBundle\Event\ReferralProgramInvitationEvent;
 use Elcodi\ReferralProgramBundle\Exceptions\ReferralProgramEmailIsUserException;
 use Elcodi\ReferralProgramBundle\Exceptions\ReferralProgramLineExistsException;
+use Elcodi\ReferralProgramBundle\Exceptions\ReferralProgramRuleNotFoundException;
 use Elcodi\ReferralProgramBundle\Factory\InvitationBagFactory;
 use Elcodi\ReferralProgramBundle\Factory\InvitationFactory;
 use Elcodi\ReferralProgramBundle\Factory\ReferralLineFactory;
-use Elcodi\ReferralProgramBundle\Entity\Interfaces\InvitationBagInterface;
-use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralHashInterface;
-use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralLineInterface;
-use Elcodi\ReferralProgramBundle\Entity\ReferralHash;
 use Elcodi\ReferralProgramBundle\Repository\ReferralLineRepository;
-use Elcodi\ReferralProgramBundle\Entity\ReferralLine;
-use Elcodi\ReferralProgramBundle\Entity\ReferralRule;
-use Elcodi\ReferralProgramBundle\ElcodiReferralProgramEvents;
-use Elcodi\ReferralProgramBundle\ElcodiReferralProgramSources;
-use Elcodi\ReferralProgramBundle\Event\ReferralProgramInvitationEvent;
-use Elcodi\ReferralProgramBundle\Exceptions\ReferralProgramRuleNotFoundException;
 use Elcodi\ReferralProgramBundle\Repository\ReferralRuleRepository;
+use Elcodi\UserBundle\Entity\Customer;
+use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
+use Elcodi\UserBundle\Repository\CustomerRepository;
 
 /**
  * Class ReferralProgramManager

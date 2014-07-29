@@ -16,8 +16,8 @@
 
 namespace Elcodi\UserBundle\Entity;
 
-use Elcodi\UserBundle\Entity\Interfaces\AdminUserInterface;
 use Elcodi\UserBundle\Entity\Abstracts\AbstractUser;
+use Elcodi\UserBundle\Entity\Interfaces\AdminUserInterface;
 
 /**
  * Class AdminUser

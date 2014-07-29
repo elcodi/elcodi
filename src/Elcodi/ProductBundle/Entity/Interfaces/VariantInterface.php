@@ -17,6 +17,7 @@
 namespace Elcodi\ProductBundle\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
+
 use Elcodi\AttributeBundle\Entity\Interfaces\ValueInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\DateTimeInterface;
 use Elcodi\MediaBundle\Entity\Interfaces\ImagesContainerInterface;

@@ -18,11 +18,11 @@ namespace Elcodi\CartBundle\Transformer;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Elcodi\CartBundle\EventDispatcher\OrderLineEventDispatcher;
 
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface;
+use Elcodi\CartBundle\EventDispatcher\OrderLineEventDispatcher;
 use Elcodi\CartBundle\Factory\OrderLineFactory;
 
 /**

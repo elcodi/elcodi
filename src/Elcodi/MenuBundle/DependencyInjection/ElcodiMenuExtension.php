@@ -18,8 +18,8 @@ namespace Elcodi\MenuBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
-use Elcodi\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 use Elcodi\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
+use Elcodi\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
  * Class ElcodiMenuExtension

@@ -18,8 +18,8 @@ namespace Elcodi\CartBundle\Factory;
 
 use DateTime;
 
-use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
 use Elcodi\CartBundle\Entity\OrderHistory;
+use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
 
 /**
  * Class OrderHistoryFactory

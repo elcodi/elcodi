@@ -16,8 +16,8 @@
 
 namespace Elcodi\CartBundle\Entity;
 
-use Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface;
 use Elcodi\CartBundle\Entity\Abstracts\AbstractHistory;
+use Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 
 /**

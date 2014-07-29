@@ -16,9 +16,10 @@
 
 namespace Elcodi\ReferralProgramBundle\Entity;
 
+use Doctrine\Common\Collections\Collection;
+
 use Elcodi\ReferralProgramBundle\Entity\Interfaces\InvitationBagInterface;
 use Elcodi\ReferralProgramBundle\Entity\Interfaces\InvitationInterface;
-use Doctrine\Common\Collections\Collection;
 
 /**
  * Class InvitationsBag

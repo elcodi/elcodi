@@ -16,14 +16,15 @@
 
 namespace Elcodi\CurrencyBundle\Twig;
 
+use NumberFormatter;
+use Twig_Extension;
+use Twig_SimpleFilter;
+
 use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 use Elcodi\CurrencyBundle\Services\CurrencyConverter;
 use Elcodi\CurrencyBundle\Wrapper\CurrencyWrapper;
 use Elcodi\LanguageBundle\Entity\Interfaces\LocaleInterface;
-use Twig_Extension;
-use Twig_SimpleFilter;
-use NumberFormatter;
 
 /**
  * Print price extension for twig

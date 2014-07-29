@@ -23,11 +23,11 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Elcodi\CouponBundle\Entity\Coupon;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 use Elcodi\CouponBundle\Services\CouponManager;
-use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Elcodi\ReferralProgramBundle\ElcodiReferralProgramEvents;
 use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralLineInterface;
 use Elcodi\ReferralProgramBundle\Event\ReferralProgramCouponAssignedEvent;
 use Elcodi\ReferralProgramBundle\Repository\ReferralLineRepository;
+use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 
 /**
  * Class ReferralCouponManager

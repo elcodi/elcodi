@@ -16,10 +16,11 @@
 
 namespace Elcodi\ReferralProgramBundle\Entity\Interfaces;
 
+use Doctrine\Common\Collections\Collection;
+
 use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\ValidIntervalInterface;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
-use Doctrine\Common\Collections\Collection;
 
 /**
  * ReferralRule interface

@@ -16,8 +16,8 @@
 
 namespace Elcodi\CartCouponBundle\Factory;
 
-use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
 use Elcodi\CartCouponBundle\Entity\CartCoupon;
+use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
 
 /**
  * Class CartCoupon

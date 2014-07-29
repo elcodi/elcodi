@@ -17,6 +17,7 @@
 namespace Elcodi\RuleBundle\Factory;
 
 use Doctrine\Common\Collections\ArrayCollection;
+
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
 use Elcodi\RuleBundle\Entity\RuleGroup;
 

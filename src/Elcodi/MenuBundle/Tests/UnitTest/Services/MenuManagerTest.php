@@ -18,12 +18,12 @@ namespace Elcodi\MenuBundle\Tests\UnitTest\Services;
 
 use Doctrine\Common\Cache\CacheProvider;
 use Doctrine\Common\Collections\ArrayCollection;
+use PHPUnit_Framework_TestCase;
+
 use Elcodi\CoreBundle\Encoder\JsonEncoder;
 use Elcodi\MenuBundle\Entity\Menu\Menu;
 use Elcodi\MenuBundle\Entity\Menu\Node;
 use Elcodi\MenuBundle\Repository\MenuRepository;
-use PHPUnit_Framework_TestCase;
-
 use Elcodi\MenuBundle\Services\MenuManager;
 
 /**

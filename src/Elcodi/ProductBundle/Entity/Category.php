@@ -18,11 +18,11 @@ namespace Elcodi\ProductBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\ProductBundle\Entity\Traits\MetaDataTrait;
-use Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface;
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
+use Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface;
+use Elcodi\ProductBundle\Entity\Traits\MetaDataTrait;
 
 /**
  * Category

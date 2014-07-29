@@ -19,9 +19,9 @@ namespace Elcodi\BannerBundle\Entity;
 use Doctrine\Common\Collections\Collection;
 
 use Elcodi\BannerBundle\Entity\Interfaces\BannerInterface;
-use Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface;
-use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\BannerBundle\Entity\Interfaces\BannerZoneInterface;
+use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
+use Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface;
 
 /**
  * BannerZone

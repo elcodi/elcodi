@@ -18,8 +18,8 @@ namespace Elcodi\BannerBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\BannerBundle\Entity\Interfaces\BannerZoneInterface;
 use Elcodi\BannerBundle\Entity\Interfaces\BannerInterface;
+use Elcodi\BannerBundle\Entity\Interfaces\BannerZoneInterface;
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;

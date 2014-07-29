@@ -17,8 +17,12 @@
 namespace Elcodi\AttributeBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
+
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 
+/**
+ * Class AttributeData
+ */
 class AttributeData extends AbstractFixture
 {
     /**

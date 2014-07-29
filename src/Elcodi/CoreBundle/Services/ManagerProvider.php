@@ -16,9 +16,9 @@
 
 namespace Elcodi\CoreBundle\Services;
 
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 
 /**
  * Class ManagerProvider

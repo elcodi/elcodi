@@ -16,9 +16,9 @@
 
 namespace Elcodi\ReferralProgramBundle\Tests\Functional\Services;
 
+use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 use Elcodi\ReferralProgramBundle\Services\ReferralHashManager;
 use Elcodi\UserBundle\Entity\Customer;
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
 /**
  * Class ReferralHashManagerTest

@@ -16,8 +16,8 @@
 
 namespace Elcodi\ProductBundle\Factory;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
 use Elcodi\ProductBundle\Entity\Manufacturer;

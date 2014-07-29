@@ -17,12 +17,13 @@
 namespace Elcodi\ProductBundle\Twig;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Twig_Extension;
+
 use Elcodi\AttributeBundle\Entity\Interfaces\AttributeInterface;
 use Elcodi\AttributeBundle\Entity\Interfaces\ValueInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\PurchasableInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\VariantInterface;
-use Twig_Extension;
 
 /**
  * Product extension for twig

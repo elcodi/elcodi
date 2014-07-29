@@ -15,6 +15,7 @@
  */
 
 namespace Elcodi\ProductBundle\Entity\Interfaces;
+
 use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
 
 /**

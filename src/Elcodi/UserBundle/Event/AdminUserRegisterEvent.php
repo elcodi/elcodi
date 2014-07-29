@@ -16,9 +16,9 @@
 
 namespace Elcodi\UserBundle\Event;
 
-use Elcodi\UserBundle\Entity\Interfaces\AdminUserInterface;
-
 use Symfony\Component\EventDispatcher\Event;
+
+use Elcodi\UserBundle\Entity\Interfaces\AdminUserInterface;
 
 /**
  * Class AdminUserRegisterEvent

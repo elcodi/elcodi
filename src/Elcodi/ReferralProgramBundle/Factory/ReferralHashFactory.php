@@ -18,8 +18,8 @@ namespace Elcodi\ReferralProgramBundle\Factory;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
-use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralHashInterface;
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
+use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralHashInterface;
 use Elcodi\ReferralProgramBundle\Entity\ReferralHash;
 
 /**

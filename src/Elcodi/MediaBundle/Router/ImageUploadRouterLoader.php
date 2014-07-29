@@ -16,11 +16,11 @@
 
 namespace Elcodi\MediaBundle\Router;
 
+use RuntimeException;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Loader\LoaderResolverInterface;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
-use RuntimeException;
 
 /**
  * Class ImageUploadRouterLoader

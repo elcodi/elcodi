@@ -16,11 +16,11 @@
 
 namespace Elcodi\BannerBundle\Factory;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 
-use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
 use Elcodi\BannerBundle\Entity\Banner;
+use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
 
 /**
  * Class Banner

@@ -16,12 +16,12 @@
 
 namespace Elcodi\ReferralProgramBundle\Repository;
 
-use Doctrine\ORM\EntityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\EntityRepository;
 
-use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Elcodi\ReferralProgramBundle\Entity\ReferralHash;
 use Elcodi\ReferralProgramBundle\Entity\ReferralLine;
+use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 
 /**
  * ReferralLineRepository

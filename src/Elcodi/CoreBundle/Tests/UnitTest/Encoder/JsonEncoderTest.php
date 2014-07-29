@@ -16,8 +16,9 @@
 
 namespace Elcodi\CoreBundle\Tests\UnitTest\Encoder;
 
-use Elcodi\CoreBundle\Encoder\JsonEncoder;
 use PHPUnit_Framework_TestCase;
+
+use Elcodi\CoreBundle\Encoder\JsonEncoder;
 
 /**
  * Class JsonEncoderTest

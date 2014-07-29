@@ -16,12 +16,12 @@
 
 namespace Elcodi\UserBundle\EventListener;
 
-use Symfony\Component\Security\Core\Event\AuthenticationEvent;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Security\Core\Event\AuthenticationEvent;
 
-use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Wrapper\CartWrapper;
+use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 
 /**
  * Class AuthenticationSuccessEventListener

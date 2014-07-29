@@ -20,10 +20,10 @@ use Doctrine\Common\Collections\Collection;
 
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
-use Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface;
 use Elcodi\GeoBundle\Entity\Interfaces\AddressInterface;
-use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
+use Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface;
 use Elcodi\UserBundle\Entity\Abstracts\AbstractUser;
+use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 
 /**
  * A Customer is a User with shopping capabilities and associations,

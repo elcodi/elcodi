@@ -16,8 +16,8 @@
 
 namespace Elcodi\CartBundle\Factory;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\CartBundle\Entity\Cart;
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;

@@ -17,6 +17,7 @@
 namespace Elcodi\AttributeBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
+
 use Elcodi\AttributeBundle\Entity\Interfaces\AttributeInterface;
 use Elcodi\AttributeBundle\Entity\Interfaces\ValueInterface;
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;

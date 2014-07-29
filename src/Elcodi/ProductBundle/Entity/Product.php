@@ -19,17 +19,17 @@ namespace Elcodi\ProductBundle\Entity;
 use Doctrine\Common\Collections\Collection;
 
 use Elcodi\AttributeBundle\Entity\Interfaces\AttributeInterface;
-use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
-use Elcodi\ProductBundle\Entity\Interfaces\ManufacturerInterface;
-use Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface;
-use Elcodi\ProductBundle\Entity\Traits\MetaDataTrait;
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
-use Elcodi\CoreBundle\Entity\Traits\ETaggableTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
+use Elcodi\CoreBundle\Entity\Traits\ETaggableTrait;
 use Elcodi\MediaBundle\Entity\Traits\ImagesContainerTrait;
-use Elcodi\ProductBundle\Entity\Traits\ProductPriceTrait;
+use Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface;
+use Elcodi\ProductBundle\Entity\Interfaces\ManufacturerInterface;
+use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\VariantInterface;
+use Elcodi\ProductBundle\Entity\Traits\MetaDataTrait;
+use Elcodi\ProductBundle\Entity\Traits\ProductPriceTrait;
 
 /**
  * Product entity

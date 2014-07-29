@@ -16,10 +16,11 @@
 
 namespace Elcodi\CurrencyBundle\Command;
 
-use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyExchangeRateInterface;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+
+use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyExchangeRateInterface;
 
 /**
  * Class LoadExchangeRatesCommand

@@ -18,12 +18,12 @@ namespace Elcodi\CouponBundle\Services;
 
 use DateTime;
 
-use Elcodi\CouponBundle\Factory\CouponFactory;
 use Elcodi\CoreBundle\Generator\Interfaces\GeneratorInterface;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 use Elcodi\CouponBundle\Exception\CouponAppliedException;
 use Elcodi\CouponBundle\Exception\CouponBelowMinimumPurchaseException;
 use Elcodi\CouponBundle\Exception\CouponNotActiveException;
+use Elcodi\CouponBundle\Factory\CouponFactory;
 
 /**
  * Coupon manager service
