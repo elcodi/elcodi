@@ -73,7 +73,7 @@ class AuthenticationSuccessEventListener
 
         if (
             ($loggedUser instanceof CustomerInterface) &&
-            ($cart Instanceof CartInterface && $cart->getId())
+            ($cart instanceof CartInterface && $cart->getId())
         ) {
             /*
              * We assume that a cart with an ID is
