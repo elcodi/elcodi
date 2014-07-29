@@ -85,7 +85,7 @@ class PrintMoneyExtensionTest extends \PHPUnit_Framework_TestCase
         $priceExtension = new PrintMoneyExtension(
             $this->getMock('Elcodi\CurrencyBundle\Services\CurrencyConverter', [], [], '', false),
             $this->getMock('Elcodi\CurrencyBundle\Wrapper\CurrencyWrapper', [], [], '', false),
-            'es_ES'
+            new Locale('es_ES')
         );
 
         $currencyFactory = new CurrencyFactory();
