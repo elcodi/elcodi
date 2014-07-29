@@ -18,12 +18,13 @@ namespace Elcodi\CouponBundle\Entity\Interfaces;
 
 use Elcodi\CoreBundle\Entity\Interfaces\DateTimeInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
+use Elcodi\CoreBundle\Entity\Interfaces\ValidIntervalInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 
 /**
  * CouponInterface
  */
-interface CouponInterface extends DateTimeInterface, EnabledInterface
+interface CouponInterface extends DateTimeInterface, EnabledInterface, ValidIntervalInterface
 {
     /**
      * Set code
@@ -186,20 +187,20 @@ interface CouponInterface extends DateTimeInterface, EnabledInterface
     public function getPriority();
 
     /**
-     * Set the minimum purchase amount that enables this coupon
+     * Set minimum purchase
      *
-     * @param float $minimumPurchaseAmount
+     * @param MoneyInterface $amount Absolute Price
      *
      * @return CouponInterface self Object
      */
-    public function setMinimumPurchaseAmount($minimumPurchaseAmount);
+    public function setMinimumPurchase(MoneyInterface $amount);
 
     /**
-     * Get the minimum purchase amount that enabled this coupon
+     * Get minimum purchase
      *
-     * @return float
+     * @return MoneyInterface Absolute Price
      */
-    public function getMinimumPurchaseAmount();
+    public function getMinimumPurchase();
 
     /**
      * Increment used variable by one, and disables it if there are no more

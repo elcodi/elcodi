@@ -124,6 +124,13 @@ class Coupon extends AbstractEntity implements CouponInterface
     protected $minimumPurchaseAmount;
 
     /**
+     * @var CurrencyInterface
+     *
+     * Minumum purchase currency
+     */
+    protected $minimumPurchaseCurrency;
+
+    /**
      * Set code
      *
      * @param string $code Code
@@ -372,27 +379,31 @@ class Coupon extends AbstractEntity implements CouponInterface
     }
 
     /**
-     * Set the minimum purchase amount that enables this coupon
+     * Set minimum purchase
      *
-     * @param float $minimumPurchaseAmount
+     * @param MoneyInterface $amount Absolute Price
      *
      * @return Coupon self Object
      */
-    public function setMinimumPurchaseAmount($minimumPurchaseAmount)
+    public function setMinimumPurchase(MoneyInterface $amount)
     {
-        $this->minimumPurchaseAmount = $minimumPurchaseAmount;
+        $this->minimumPurchaseAmount = $amount->getAmount();
+        $this->minimumPurchaseCurrency = $amount->getCurrency();
 
         return $this;
     }
 
     /**
-     * Get the minimum purchase amount that enabled this coupon
+     * Get minimum purchase
      *
-     * @return float
+     * @return MoneyInterface Absolute Price
      */
-    public function getMinimumPurchaseAmount()
+    public function getMinimumPurchase()
     {
-        return $this->minimumPurchaseAmount;
+        return Money::create(
+            $this->minimumPurchaseAmount,
+            $this->minimumPurchaseCurrency
+        );
     }
 
     /**
