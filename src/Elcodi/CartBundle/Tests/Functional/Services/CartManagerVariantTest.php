@@ -17,7 +17,6 @@
 namespace Elcodi\CartBundle\Tests\Functional\Services;
 
 use Elcodi\AttributeBundle\Entity\Interfaces\ValueInterface;
-use Elcodi\CartBundle\Entity\CartLine;
 use Elcodi\CartBundle\Tests\Functional\Services\Abstracts\AbstractCartManagerTest;
 use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\CurrencyBundle\Entity\Money;
