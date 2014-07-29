@@ -17,14 +17,15 @@
 namespace Elcodi\ProductBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
+
 use Elcodi\AttributeBundle\Entity\Interfaces\ValueInterface;
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
 use Elcodi\MediaBundle\Entity\Traits\ImagesContainerTrait;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
-use Elcodi\ProductBundle\Entity\Traits\ProductPriceTrait;
 use Elcodi\ProductBundle\Entity\Interfaces\VariantInterface;
+use Elcodi\ProductBundle\Entity\Traits\ProductPriceTrait;
 
 /**
  * Class Variant

@@ -18,14 +18,14 @@ namespace Elcodi\CartBundle\Tests\Functional\Services;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
-use Elcodi\CartBundle\EventDispatcher\OrderLineStateEventDispatcher;
-use Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
-use Elcodi\CartBundle\Factory\OrderLineHistoryFactory;
-use Elcodi\CartBundle\Services\OrderStateManager;
-use Elcodi\CartBundle\Services\OrderLineManager;
+use Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface;
+use Elcodi\CartBundle\EventDispatcher\OrderLineStateEventDispatcher;
 use Elcodi\CartBundle\Factory\OrderLineFactory;
+use Elcodi\CartBundle\Factory\OrderLineHistoryFactory;
+use Elcodi\CartBundle\Services\OrderLineManager;
 use Elcodi\CartBundle\Services\OrderManager;
+use Elcodi\CartBundle\Services\OrderStateManager;
 use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
 /**

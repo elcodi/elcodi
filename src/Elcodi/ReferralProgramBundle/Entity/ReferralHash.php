@@ -19,8 +19,8 @@ namespace Elcodi\ReferralProgramBundle\Entity;
 use Doctrine\Common\Collections\Collection;
 
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
-use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralHashInterface;
+use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 
 /**
  * Class ReferralHash

@@ -18,10 +18,10 @@ namespace Elcodi\ReferralProgramBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralRuleInterface;
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
-use Elcodi\CoreBundle\Entity\Traits\ValidIntervalTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
+use Elcodi\CoreBundle\Entity\Traits\ValidIntervalTrait;
+use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralRuleInterface;
 use Elcodi\ReferralProgramBundle\Entity\Traits\CouponAssignmentTrait;
 
 /**

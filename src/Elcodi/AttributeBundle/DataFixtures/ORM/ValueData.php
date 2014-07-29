@@ -17,6 +17,7 @@
 namespace Elcodi\AttributeBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
+
 use Elcodi\AttributeBundle\Entity\Attribute;
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 

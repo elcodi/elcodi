@@ -16,11 +16,11 @@
 
 namespace Elcodi\NewsletterBundle\EventDispatcher;
 
-use Elcodi\NewsletterBundle\Entity\Interfaces\NewsletterSubscriptionInterface;
 use Elcodi\CoreBundle\EventDispatcher\Abstracts\AbstractEventDispatcher;
+use Elcodi\NewsletterBundle\ElcodiNewsletterEvents;
+use Elcodi\NewsletterBundle\Entity\Interfaces\NewsletterSubscriptionInterface;
 use Elcodi\NewsletterBundle\Event\NewsletterSubscriptionEvent;
 use Elcodi\NewsletterBundle\Event\NewsletterUnsubscriptionEvent;
-use Elcodi\NewsletterBundle\ElcodiNewsletterEvents;
 
 /**
  * Class NewsletterEventDispatcher

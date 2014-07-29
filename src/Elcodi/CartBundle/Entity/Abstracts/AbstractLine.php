@@ -16,9 +16,9 @@
 
 namespace Elcodi\CartBundle\Entity\Abstracts;
 
+use Elcodi\CartBundle\Entity\Traits\PriceTrait;
 use Elcodi\CartBundle\Resolver\Interfaces\PurchasableResolverInterface;
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
-use Elcodi\CartBundle\Entity\Traits\PriceTrait;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\PurchasableInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\VariantInterface;

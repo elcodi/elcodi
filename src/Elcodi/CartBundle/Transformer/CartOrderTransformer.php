@@ -16,10 +16,9 @@
 
 namespace Elcodi\CartBundle\Transformer;
 
-use Elcodi\CartBundle\EventDispatcher\OrderEventDispatcher;
-
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
+use Elcodi\CartBundle\EventDispatcher\OrderEventDispatcher;
 use Elcodi\CartBundle\Factory\OrderFactory;
 
 /**

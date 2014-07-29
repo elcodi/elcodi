@@ -19,8 +19,8 @@ namespace Elcodi\MediaBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-use Elcodi\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 use Elcodi\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
+use Elcodi\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
  * Class ElcodiMediaExtension

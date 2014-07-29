@@ -16,11 +16,11 @@
 
 namespace Elcodi\CartBundle\Factory;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 
-use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
 use Elcodi\CartBundle\Entity\Order;
+use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
 
 /**
  * Class Order

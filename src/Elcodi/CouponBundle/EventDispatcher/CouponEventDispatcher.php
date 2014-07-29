@@ -18,9 +18,9 @@ namespace Elcodi\CouponBundle\EventDispatcher;
 
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
+use Elcodi\CouponBundle\ElcodiCouponEvents;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 use Elcodi\CouponBundle\Event\CouponOnUsedEvent;
-use Elcodi\CouponBundle\ElcodiCouponEvents;
 
 /**
  * Class CouponEventDispatcher

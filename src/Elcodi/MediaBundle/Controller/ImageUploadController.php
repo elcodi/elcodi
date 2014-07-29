@@ -24,8 +24,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 use Elcodi\MediaBundle\Exception\InvalidImageException;
-use Elcodi\MediaBundle\Services\ImageManager;
 use Elcodi\MediaBundle\Services\FileManager;
+use Elcodi\MediaBundle\Services\ImageManager;
 
 /**
  * Class ImageUploadController

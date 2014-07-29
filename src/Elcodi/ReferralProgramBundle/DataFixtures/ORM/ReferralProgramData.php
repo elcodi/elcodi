@@ -16,14 +16,14 @@
 
 namespace Elcodi\ReferralProgramBundle\DataFixtures\ORM;
 
+use DateTime;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use DateTime;
 
-use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
-use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
-use Elcodi\ReferralProgramBundle\ElcodiReferralProgramRuleTypes;
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
+use Elcodi\ReferralProgramBundle\ElcodiReferralProgramRuleTypes;
+use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 
 /**
  * Class ReferralProgram

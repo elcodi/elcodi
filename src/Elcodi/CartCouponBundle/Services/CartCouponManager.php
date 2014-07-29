@@ -18,11 +18,11 @@ namespace Elcodi\CartCouponBundle\Services;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+
+use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
 use Elcodi\CartCouponBundle\EventDispatcher\CartCouponEventDispatcher;
-
 use Elcodi\CartCouponBundle\Repository\CartCouponRepository;
-use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 use Elcodi\CouponBundle\Exception\CouponAppliedException;
 use Elcodi\CouponBundle\Exception\CouponFreeShippingExistsException;

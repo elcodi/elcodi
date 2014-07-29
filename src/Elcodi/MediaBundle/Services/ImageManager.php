@@ -20,9 +20,9 @@ use Symfony\Component\HttpFoundation\File\File;
 
 use Elcodi\MediaBundle\Adapter\Resizer\Interfaces\ResizeAdapterInterface;
 use Elcodi\MediaBundle\ElcodiMediaImageResizeTypes;
-use Elcodi\MediaBundle\Factory\ImageFactory;
 use Elcodi\MediaBundle\Entity\Interfaces\ImageInterface;
 use Elcodi\MediaBundle\Exception\InvalidImageException;
+use Elcodi\MediaBundle\Factory\ImageFactory;
 
 /**
  * Class ImageManager

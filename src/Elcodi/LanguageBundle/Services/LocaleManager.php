@@ -17,7 +17,6 @@
 namespace Elcodi\LanguageBundle\Services;
 
 use Elcodi\LanguageBundle\Entity\Interfaces\LocaleInterface;
-
 use Elcodi\LanguageBundle\Entity\Locale;
 
 /**

@@ -16,12 +16,12 @@
 
 namespace Elcodi\CouponBundle\DataFixtures\ORM;
 
-use Elcodi\CouponBundle\ElcodiCouponTypes;
+use DateTime;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use DateTime;
 
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\CouponBundle\ElcodiCouponTypes;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 use Elcodi\CouponBundle\Factory\CouponFactory;
 use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;

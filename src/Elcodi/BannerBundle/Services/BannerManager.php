@@ -18,9 +18,9 @@ namespace Elcodi\BannerBundle\Services;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface;
 use Elcodi\BannerBundle\Entity\Interfaces\BannerZoneInterface;
 use Elcodi\BannerBundle\Repository\BannerRepository;
+use Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface;
 
 /**
  * BannerManager

@@ -17,13 +17,12 @@
 namespace Elcodi\CartCouponBundle\EventListener;
 
 use Doctrine\Common\Collections\Collection;
-
 use Doctrine\Common\Persistence\ObjectManager;
+
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 use Elcodi\CartBundle\Event\OrderOnCreatedEvent;
 use Elcodi\CartCouponBundle\EventDispatcher\OrderCouponEventDispatcher;
 use Elcodi\CartCouponBundle\Services\CartCouponManager;
-
 use Elcodi\CartCouponBundle\Services\OrderCouponManager;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;

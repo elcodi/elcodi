@@ -16,14 +16,14 @@
 
 namespace Elcodi\CartBundle\EventDispatcher;
 
-use Elcodi\CoreBundle\EventDispatcher\Abstracts\AbstractEventDispatcher;
+use Elcodi\CartBundle\ElcodiCartEvents;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
 use Elcodi\CartBundle\Event\CartInconsistentEvent;
 use Elcodi\CartBundle\Event\CartOnEmptyEvent;
-use Elcodi\CartBundle\Event\CartPreLoadEvent;
 use Elcodi\CartBundle\Event\CartOnLoadEvent;
-use Elcodi\CartBundle\ElcodiCartEvents;
+use Elcodi\CartBundle\Event\CartPreLoadEvent;
+use Elcodi\CoreBundle\EventDispatcher\Abstracts\AbstractEventDispatcher;
 
 /**
  * Class CartEventDispatcher

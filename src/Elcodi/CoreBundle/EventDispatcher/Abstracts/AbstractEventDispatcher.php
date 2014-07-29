@@ -15,6 +15,7 @@
  */
 
 namespace Elcodi\CoreBundle\EventDispatcher\Abstracts;
+
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**

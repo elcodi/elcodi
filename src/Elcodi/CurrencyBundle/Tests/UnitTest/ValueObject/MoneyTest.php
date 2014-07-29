@@ -16,8 +16,8 @@
 
 namespace Elcodi\CurrencyBundle\Tests\UnitTest\ValueObject;
 
-use Elcodi\CurrencyBundle\Entity\Money;
 use Elcodi\CurrencyBundle\Entity\Currency;
+use Elcodi\CurrencyBundle\Entity\Money;
 
 /**
  * Class MoneyTest

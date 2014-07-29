@@ -16,9 +16,10 @@
 
 namespace Elcodi\ProductBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\ConfigurationInterface;
+
 use Elcodi\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
-use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
  * This is the class that loads and manages your bundle configuration

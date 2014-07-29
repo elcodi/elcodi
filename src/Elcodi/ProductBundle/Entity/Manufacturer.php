@@ -18,12 +18,12 @@ namespace Elcodi\ProductBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\ProductBundle\Entity\Interfaces\ManufacturerInterface;
-use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
-use Elcodi\ProductBundle\Entity\Traits\MetaDataTrait;
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
+use Elcodi\ProductBundle\Entity\Interfaces\ManufacturerInterface;
+use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
+use Elcodi\ProductBundle\Entity\Traits\MetaDataTrait;
 
 /**
  * Manufacturer

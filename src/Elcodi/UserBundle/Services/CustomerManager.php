@@ -17,11 +17,11 @@
 namespace Elcodi\UserBundle\Services;
 
 use Elcodi\GeoBundle\Entity\Interfaces\AddressInterface;
+use Elcodi\UserBundle\ElcodiUserEvents;
 use Elcodi\UserBundle\Entity\Interfaces\AbstractUserInterface;
-use Elcodi\UserBundle\Services\Abstracts\AbstractUserManager;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Elcodi\UserBundle\Event\CustomerRegisterEvent;
-use Elcodi\UserBundle\ElcodiUserEvents;
+use Elcodi\UserBundle\Services\Abstracts\AbstractUserManager;
 
 /**
  * Manager for Customer entities

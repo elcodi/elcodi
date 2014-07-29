@@ -16,10 +16,10 @@
 
 namespace Elcodi\MenuBundle\Entity\Menu;
 
-use Elcodi\MenuBundle\Entity\Menu\Interfaces\NodeInterface;
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
+use Elcodi\MenuBundle\Entity\Menu\Interfaces\NodeInterface;
 use Elcodi\MenuBundle\Entity\Menu\Traits\SubnodesTrait;
 
 /**

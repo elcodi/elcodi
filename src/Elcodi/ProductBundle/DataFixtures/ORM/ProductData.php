@@ -16,13 +16,14 @@
 
 namespace Elcodi\ProductBundle\DataFixtures\ORM;
 
+use Doctrine\Common\Persistence\ObjectManager;
+
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\CurrencyBundle\Entity\Money;
 use Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
-use Doctrine\Common\Persistence\ObjectManager;
 
 /**
  * Class ProductData

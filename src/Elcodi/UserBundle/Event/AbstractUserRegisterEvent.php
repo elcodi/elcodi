@@ -16,9 +16,9 @@
 
 namespace Elcodi\UserBundle\Event;
 
-use Elcodi\UserBundle\Entity\Interfaces\AbstractUserInterface;
-
 use Symfony\Component\EventDispatcher\Event;
+
+use Elcodi\UserBundle\Entity\Interfaces\AbstractUserInterface;
 
 /**
  * Class AbstractUserRegisterEvent

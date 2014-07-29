@@ -18,17 +18,17 @@ namespace Elcodi\CartBundle\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
 
+use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
+use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
+use Elcodi\CartBundle\Event\CartOnLoadEvent;
+use Elcodi\CartBundle\Event\CartPreLoadEvent;
+use Elcodi\CartBundle\Event\OrderOnCreatedEvent;
+use Elcodi\CartBundle\EventDispatcher\CartEventDispatcher;
+use Elcodi\CartBundle\Services\CartManager;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 use Elcodi\CurrencyBundle\Entity\Money;
 use Elcodi\CurrencyBundle\Services\CurrencyConverter;
 use Elcodi\CurrencyBundle\Wrapper\CurrencyWrapper;
-use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
-use Elcodi\CartBundle\EventDispatcher\CartEventDispatcher;
-use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
-use Elcodi\CartBundle\Event\CartPreLoadEvent;
-use Elcodi\CartBundle\Event\CartOnLoadEvent;
-use Elcodi\CartBundle\Services\CartManager;
-use Elcodi\CartBundle\Event\OrderOnCreatedEvent;
 use Elcodi\ProductBundle\Entity\Interfaces\PurchasableInterface;
 
 /**

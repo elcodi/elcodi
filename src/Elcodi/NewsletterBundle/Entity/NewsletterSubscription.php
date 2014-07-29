@@ -16,12 +16,12 @@
 
 namespace Elcodi\NewsletterBundle\Entity;
 
-use Elcodi\NewsletterBundle\Entity\Interfaces\NewsletterSubscriptionInterface;
-use Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface;
-use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
+use Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface;
+use Elcodi\NewsletterBundle\Entity\Interfaces\NewsletterSubscriptionInterface;
+use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 
 /**
  * NewsletterSubscription

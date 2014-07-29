@@ -19,13 +19,13 @@ namespace Elcodi\ReferralProgramBundle\Tests\Functional\Services;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
+use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 use Elcodi\ReferralProgramBundle\ElcodiReferralProgramRuleTypes;
 use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralHashInterface;
 use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralLineInterface;
 use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralRuleInterface;
 use Elcodi\ReferralProgramBundle\Entity\Invitation;
 use Elcodi\UserBundle\Entity\Customer;
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 
 /**

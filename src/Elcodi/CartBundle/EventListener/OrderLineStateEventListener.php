@@ -18,11 +18,11 @@ namespace Elcodi\CartBundle\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
 
-use Elcodi\CartBundle\Event\OrderLineStateOnChangeEvent;
-use Elcodi\CartBundle\EventDispatcher\OrderStateEventDispatcher;
 use Elcodi\CartBundle\Entity\Interfaces\OrderHistoryInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface;
+use Elcodi\CartBundle\Event\OrderLineStateOnChangeEvent;
+use Elcodi\CartBundle\EventDispatcher\OrderStateEventDispatcher;
 use Elcodi\CartBundle\Factory\OrderHistoryFactory;
 
 /**

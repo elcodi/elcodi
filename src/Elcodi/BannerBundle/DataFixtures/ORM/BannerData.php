@@ -18,8 +18,8 @@ namespace Elcodi\BannerBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 
-use Elcodi\BannerBundle\Entity\Interfaces\BannerZoneInterface;
 use Elcodi\BannerBundle\Entity\Interfaces\BannerInterface;
+use Elcodi\BannerBundle\Entity\Interfaces\BannerZoneInterface;
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 
 /**

@@ -18,9 +18,9 @@ namespace Elcodi\BannerBundle\Factory;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Elcodi\BannerBundle\Entity\Banner;
 use Elcodi\BannerBundle\Entity\BannerZone;
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
-use Elcodi\BannerBundle\Entity\Banner;
 
 /**
  * BannerZone Factory

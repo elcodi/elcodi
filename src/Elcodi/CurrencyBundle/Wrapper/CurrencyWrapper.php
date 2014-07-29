@@ -16,10 +16,10 @@
 
 namespace Elcodi\CurrencyBundle\Wrapper;
 
-use Elcodi\CurrencyBundle\Services\CurrencySessionManager;
 use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\CurrencyBundle\Exception\CurrencyNotAvailableException;
 use Elcodi\CurrencyBundle\Repository\CurrencyRepository;
+use Elcodi\CurrencyBundle\Services\CurrencySessionManager;
 
 /**
  * Class CurrencyWrapper

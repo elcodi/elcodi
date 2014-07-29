@@ -16,10 +16,10 @@
 
 namespace Elcodi\CartCouponBundle\Event\Abstracts;
 
-use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
 use Symfony\Component\EventDispatcher\Event;
 
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
+use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 
 /**

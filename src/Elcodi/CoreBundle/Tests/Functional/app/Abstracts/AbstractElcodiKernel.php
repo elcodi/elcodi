@@ -16,8 +16,8 @@
 
 namespace Elcodi\CoreBundle\Tests\Functional\app\Abstracts;
 
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\HttpKernel\Kernel;
 
 /**
  * AbstractElcodiKernel for all Elcodi specific Kernels

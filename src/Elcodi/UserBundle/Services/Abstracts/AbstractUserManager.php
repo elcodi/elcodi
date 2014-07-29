@@ -16,12 +16,13 @@
 
 namespace Elcodi\UserBundle\Services\Abstracts;
 
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Core\SecurityContextInterface;
+
 use Elcodi\UserBundle\ElcodiUserEvents;
 use Elcodi\UserBundle\Entity\Interfaces\AbstractUserInterface;
 use Elcodi\UserBundle\Event\AbstractUserRegisterEvent;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\Security\Core\SecurityContextInterface;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 /**
  * Class AbstractUserManager

@@ -16,12 +16,13 @@
 
 namespace Elcodi\MediaBundle\Router;
 
-use Elcodi\MediaBundle\ElcodiMediaImageResizeTypes;
+use RuntimeException;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Loader\LoaderResolverInterface;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
-use RuntimeException;
+
+use Elcodi\MediaBundle\ElcodiMediaImageResizeTypes;
 
 /**
  * Class ImageViewRouterLoader

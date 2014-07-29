@@ -16,9 +16,9 @@
 
 namespace Elcodi\CoreBundle\Tests\UnitTest\Services;
 
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 use Doctrine\Common\Persistence\ObjectManager;
 use PHPUnit_Framework_TestCase;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 
 use Elcodi\CoreBundle\Services\ManagerProvider;
 

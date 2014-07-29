@@ -16,13 +16,13 @@
 
 namespace Elcodi\CartBundle\EventDispatcher;
 
-use Elcodi\CoreBundle\EventDispatcher\Abstracts\AbstractEventDispatcher;
+use Elcodi\CartBundle\ElcodiCartEvents;
+use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface;
-use Elcodi\CartBundle\Event\OrderLineStatePreChangeEvent;
 use Elcodi\CartBundle\Event\OrderLineStateOnChangeEvent;
-use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
-use Elcodi\CartBundle\ElcodiCartEvents;
+use Elcodi\CartBundle\Event\OrderLineStatePreChangeEvent;
+use Elcodi\CoreBundle\EventDispatcher\Abstracts\AbstractEventDispatcher;
 
 /**
  * Class OrderLineEventDispatcher

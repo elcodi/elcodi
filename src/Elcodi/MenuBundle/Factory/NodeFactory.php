@@ -17,7 +17,6 @@
 namespace Elcodi\MenuBundle\Factory;
 
 use DateTime;
-
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;

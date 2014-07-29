@@ -18,10 +18,10 @@ namespace Elcodi\CurrencyBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
-use Elcodi\CurrencyBundle\Adapter\DummyExchangeRatesAdapter;
-use Elcodi\CurrencyBundle\Adapter\OpenExchangeRatesAdapter;
 use Elcodi\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
+use Elcodi\CurrencyBundle\Adapter\DummyExchangeRatesAdapter;
+use Elcodi\CurrencyBundle\Adapter\OpenExchangeRatesAdapter;
 
 /**
  * This is the class that loads and manages your bundle configuration

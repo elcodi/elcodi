@@ -17,8 +17,8 @@
 namespace Elcodi\ReferralProgramBundle\Repository;
 
 use DateTime;
-use Doctrine\ORM\EntityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\EntityRepository;
 
 use Elcodi\ReferralProgramBundle\Entity\ReferralRule;
 

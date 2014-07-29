@@ -17,17 +17,17 @@
 namespace Elcodi\UserBundle\Services;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 use Elcodi\CoreBundle\Generator\Interfaces\GeneratorInterface;
+use Elcodi\UserBundle\ElcodiUserEvents;
 use Elcodi\UserBundle\Entity\Abstracts\AbstractUser;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
+use Elcodi\UserBundle\Event\PasswordRecoverEvent;
+use Elcodi\UserBundle\Event\PasswordRememberEvent;
 use Elcodi\UserBundle\Generator\RecoveryHashGenerator;
 use Elcodi\UserBundle\Repository\Interfaces\UserEmaileableInterface;
-use Elcodi\UserBundle\Event\PasswordRememberEvent;
-use Elcodi\UserBundle\Event\PasswordRecoverEvent;
-use Elcodi\UserBundle\ElcodiUserEvents;
 
 /**
  * Manager for passwords

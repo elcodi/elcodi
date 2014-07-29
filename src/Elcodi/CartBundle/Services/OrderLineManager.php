@@ -16,12 +16,12 @@
 
 namespace Elcodi\CartBundle\Services;
 
-use Elcodi\CartBundle\EventDispatcher\OrderLineStateEventDispatcher;
+use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface;
-use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
-use Elcodi\CartBundle\Factory\OrderLineHistoryFactory;
+use Elcodi\CartBundle\EventDispatcher\OrderLineStateEventDispatcher;
 use Elcodi\CartBundle\Factory\OrderLineFactory;
+use Elcodi\CartBundle\Factory\OrderLineHistoryFactory;
 
 /**
  * Order Line History manager

@@ -16,12 +16,12 @@
 
 namespace Elcodi\CartBundle\EventDispatcher;
 
-use Elcodi\CoreBundle\EventDispatcher\Abstracts\AbstractEventDispatcher;
+use Elcodi\CartBundle\ElcodiCartEvents;
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface;
 use Elcodi\CartBundle\Event\OrderLineOnCreatedEvent;
-use Elcodi\CartBundle\ElcodiCartEvents;
+use Elcodi\CoreBundle\EventDispatcher\Abstracts\AbstractEventDispatcher;
 
 /**
  * Class OrderLineEventDispatcher

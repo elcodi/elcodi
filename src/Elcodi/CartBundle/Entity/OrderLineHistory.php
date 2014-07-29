@@ -16,9 +16,9 @@
 
 namespace Elcodi\CartBundle\Entity;
 
+use Elcodi\CartBundle\Entity\Abstracts\AbstractHistory;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface;
-use Elcodi\CartBundle\Entity\Abstracts\AbstractHistory;
 
 /**
  * OrderLineHistory entity

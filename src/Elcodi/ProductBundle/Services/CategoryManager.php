@@ -16,8 +16,8 @@
 
 namespace Elcodi\ProductBundle\Services;
 
-use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\DBAL\Query\QueryBuilder;
+use Doctrine\ORM\EntityManagerInterface;
 
 use Elcodi\CoreBundle\Wrapper\Abstracts\AbstractCacheWrapper;
 use Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface;

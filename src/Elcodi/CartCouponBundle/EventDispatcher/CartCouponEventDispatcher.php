@@ -16,13 +16,13 @@
 
 namespace Elcodi\CartCouponBundle\EventDispatcher;
 
-use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
-use Elcodi\CoreBundle\EventDispatcher\Abstracts\AbstractEventDispatcher;
-use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
-use Elcodi\CartCouponBundle\Event\CartCouponOnRemoveEvent;
-use Elcodi\CartCouponBundle\Event\CartCouponOnApplyEvent;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartCouponBundle\ElcodiCartCouponEvents;
+use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
+use Elcodi\CartCouponBundle\Event\CartCouponOnApplyEvent;
+use Elcodi\CartCouponBundle\Event\CartCouponOnRemoveEvent;
+use Elcodi\CoreBundle\EventDispatcher\Abstracts\AbstractEventDispatcher;
+use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 
 /**
  * Class CartCouponEventDispatcher

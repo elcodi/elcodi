@@ -18,8 +18,8 @@ namespace Elcodi\ReferralProgramBundle\Factory;
 
 use DateTime;
 
-use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralLineInterface;
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
+use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralLineInterface;
 use Elcodi\ReferralProgramBundle\Entity\ReferralLine;
 
 /**

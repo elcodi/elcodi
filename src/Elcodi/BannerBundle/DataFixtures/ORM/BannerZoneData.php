@@ -18,9 +18,9 @@ namespace Elcodi\BannerBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 
-use Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface;
 use Elcodi\BannerBundle\Entity\Interfaces\BannerZoneInterface;
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface;
 
 /**
  * AdminData class

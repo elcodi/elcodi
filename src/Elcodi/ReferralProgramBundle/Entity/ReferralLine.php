@@ -16,11 +16,11 @@
 
 namespace Elcodi\ReferralProgramBundle\Entity;
 
-use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
-use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
-use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralHashInterface;
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
+use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
+use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
+use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralHashInterface;
 use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralLineInterface;
 use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralRuleInterface;
 use Elcodi\ReferralProgramBundle\Entity\Traits\CouponAssignmentTrait;

@@ -16,9 +16,9 @@
 
 namespace Elcodi\CartCouponBundle\Entity;
 
+use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 use Elcodi\CartCouponBundle\Entity\Interfaces\OrderCouponInterface;
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
-use Elcodi\CartBundle\Entity\Interfaces\OrderInterface;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;

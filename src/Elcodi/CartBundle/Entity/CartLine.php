@@ -16,9 +16,9 @@
 
 namespace Elcodi\CartBundle\Entity;
 
+use Elcodi\CartBundle\Entity\Abstracts\AbstractLine;
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
-use Elcodi\CartBundle\Entity\Abstracts\AbstractLine;
 use Elcodi\CartBundle\Entity\Interfaces\OrderLineInterface;
 use Elcodi\CartBundle\Resolver\DefaultPurchasableResolver;
 use Elcodi\CartBundle\Resolver\Interfaces\PurchasableResolverInterface;
