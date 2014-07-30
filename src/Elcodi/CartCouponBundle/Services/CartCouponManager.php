@@ -100,6 +100,15 @@ class CartCouponManager
      */
     public function getCartCoupons(CartInterface $cart)
     {
+        /**
+         * If Cart id is null means that this cart has been generated from
+         * the scratch. This also means that cannot have any Coupon associated.
+         * If is this case, we avoid this lookup.
+         */
+        if ($cart->getId() == null) {
+            return new ArrayCollection;
+        }
+
         return new ArrayCollection(
             $this
                 ->cartCouponRepository
@@ -120,6 +129,15 @@ class CartCouponManager
      */
     public function getCoupons(CartInterface $cart)
     {
+        /**
+         * If Cart id is null means that this cart has been generated from
+         * the scratch. This also means that cannot have any Coupon associated.
+         * If is this case, we avoid this lookup.
+         */
+        if ($cart->getId() == null) {
+            return new ArrayCollection;
+        }
+
         $cartCoupons = $this
             ->cartCouponRepository
             ->createQueryBuilder('cc')

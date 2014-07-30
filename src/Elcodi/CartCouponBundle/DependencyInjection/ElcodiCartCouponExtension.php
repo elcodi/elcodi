@@ -42,6 +42,8 @@ class ElcodiCartCouponExtension extends AbstractExtension
      *      ...
      * );
      *
+     * @param array $config Config
+     *
      * @return array Config files
      */
     public function getConfigFiles(array $config)
