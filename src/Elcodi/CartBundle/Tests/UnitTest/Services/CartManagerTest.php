@@ -100,9 +100,17 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     {
         $cart = new Cart();
         $cart->setCartLines(new ArrayCollection());
-        $cartLine = new CartLine();
+        $purchaseable = $this->getMock(
+            'Elcodi\ProductBundle\Entity\Interfaces\ProductInterface'
+        );
 
-        $this->cartManager->addLine($cart, $cartLine);
+        $this->cartLineFactory
+            ->expects($this->exactly(1))
+            ->method('create')
+            ->will($this->returnValue(new CartLine()));
+
+        $this->cartManager->addProduct($cart, $purchaseable, 1);
+
         $this->assertCount(1, $cart->getCartLines());
     }
 
@@ -115,12 +123,23 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     {
         $cart = new Cart();
         $cart->setCartLines(new ArrayCollection());
-        $cartLine = new CartLine();
+        $purchaseable = $this->getMock('Elcodi\ProductBundle\Entity\Product', ['getId']);
+
+        $this->cartLineFactory
+            ->expects($this->exactly(1))
+            ->method('create')
+            ->will($this->returnValue(new CartLine()));
+
+        $purchaseable
+            ->expects($this->any())
+            ->method('getId')
+            ->will($this->returnValue(1));
 
         $this
             ->cartManager
-            ->addLine($cart, $cartLine)
-            ->addLine($cart, $cartLine);
+            ->addProduct($cart, $purchaseable, 1)
+            ->addProduct($cart, $purchaseable, 1);
+
         $this->assertCount(1, $cart->getCartLines());
     }
 

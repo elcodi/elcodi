@@ -113,7 +113,7 @@ class CartManager
      *
      * @api
      */
-    public function addLine(
+    protected function addLine(
         CartInterface $cart,
         CartLineInterface $cartLine
     )

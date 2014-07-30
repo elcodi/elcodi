@@ -24,6 +24,9 @@ use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\PurchasableInterface;
 
+/**
+ * Class AbstractCartManagerTest
+ */
 abstract class AbstractCartManagerTest extends WebTestCase
 {
     /**
@@ -111,7 +114,11 @@ abstract class AbstractCartManagerTest extends WebTestCase
         $this
             ->container
             ->get('elcodi.cart_manager')
-            ->addLine($this->cart, $this->cartLine);
+            ->addProduct(
+                $this->cart,
+                $this->cartLine->getProduct(),
+                $this->cartLine->getQuantity()
+            );
 
         $this->assertEquals(
             $this->cart->getAmount(),
@@ -124,7 +131,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
         );
 
         $this->assertNotNull($this->cart->getId());
-        $this->assertNotNull($this->cartLine->getId());
+        $this->assertNotNull($this->cart->getCartLines()->last()->getId());
 
         $this->assertEquals(
             UnitOfWork::STATE_MANAGED,
@@ -139,7 +146,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
             $this
                 ->getManager('elcodi.core.cart.entity.cart_line.class')
                 ->getUnitOfWork()
-                ->getEntityState($this->cartLine)
+                ->getEntityState($this->cart->getCartLines()->last())
         );
     }
 
@@ -153,10 +160,20 @@ abstract class AbstractCartManagerTest extends WebTestCase
         $this
             ->container
             ->get('elcodi.cart_manager')
-            ->addLine($this->cart, $this->cartLine)
-            ->removeLine($this->cart, $this->cartLine);
+            ->addProduct(
+                $this->cart,
+                $this->cartLine->getProduct(),
+                $this->cartLine->getQuantity()
+            );
 
-        $this->assertRemovedLine();
+        $line = $this->cart->getCartLines()->last();
+
+        $this
+            ->container
+            ->get('elcodi.cart_manager')
+            ->removeLine($this->cart, $line);
+
+        $this->assertRemovedLine($line);
     }
 
     /**
@@ -169,10 +186,20 @@ abstract class AbstractCartManagerTest extends WebTestCase
         $this
             ->container
             ->get('elcodi.cart_manager')
-            ->addLine($this->cart, $this->cartLine)
+            ->addProduct(
+                $this->cart,
+                $this->cartLine->getProduct(),
+                $this->cartLine->getQuantity()
+            );
+
+        $line = $this->cart->getCartLines()->last();
+
+        $this
+            ->container
+            ->get('elcodi.cart_manager')
             ->emptyLines($this->cart);
 
-        $this->assertRemovedLine();
+        $this->assertRemovedLine($line);
     }
 
     /**
@@ -185,8 +212,18 @@ abstract class AbstractCartManagerTest extends WebTestCase
         $this
             ->container
             ->get('elcodi.cart_manager')
-            ->addLine($this->cart, $this->cartLine)
-            ->editCartLine($this->cartLine, $this->purchasable, 2);
+            ->addProduct(
+                $this->cart,
+                $this->cartLine->getProduct(),
+                $this->cartLine->getQuantity()
+            );
+
+        $line = $this->cart->getCartLines()->last();
+
+        $this
+            ->container
+            ->get('elcodi.cart_manager')
+            ->editCartLine($line, $this->purchasable, 2);
 
         $this->assertSame(
             $this->cartLine->getPurchasable(),
@@ -216,6 +253,10 @@ abstract class AbstractCartManagerTest extends WebTestCase
     /**
      * Test set cartline quantity
      *
+     * @param mixed $quantityStart  Starting quantity
+     * @param mixed $quantitySetted Quantity to set
+     * @param mixed $quantityEnd    Quantity to check against
+     *
      * @skip
      * @dataProvider dataSetCartLineQuantity
      * @group        cart
@@ -231,14 +272,28 @@ abstract class AbstractCartManagerTest extends WebTestCase
         $this
             ->container
             ->get('elcodi.cart_manager')
-            ->addLine($this->cart, $this->cartLine)
-            ->setCartLineQuantity($this->cartLine, $quantitySetted);
+            ->addProduct(
+                $this->cart,
+                $this->cartLine->getProduct(),
+                $this->cartLine->getQuantity()
+            );
+
+        $line = $this->cart->getCartLines()->last();
+
+        $this
+            ->container
+            ->get('elcodi.cart_manager')
+            ->setCartLineQuantity($line, $quantitySetted);
 
         $this->assertResults($quantityEnd);
     }
 
     /**
      * Test increase cartline quantity
+     *
+     * @param mixed $quantityStart Starting quantity
+     * @param mixed $quantityAdded Quantity to add
+     * @param mixed $quantityEnd   Quantity to check against
      *
      * @dataProvider dataIncreaseCartLineQuantity
      * @group        cart
@@ -249,7 +304,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
         $quantityEnd
     )
     {
-        $this->cartLine = $this
+        $line = $this
             ->container
             ->get('elcodi.factory.cart_line')
             ->create()
@@ -259,14 +314,32 @@ abstract class AbstractCartManagerTest extends WebTestCase
         $this
             ->container
             ->get('elcodi.cart_manager')
-            ->addLine($this->cart, $this->cartLine)
-            ->increaseCartLineQuantity($this->cartLine, $quantityAdded);
+            ->addProduct(
+                $this->cart,
+                $line->getProduct(),
+                $line->getQuantity()
+            );
+
+        if ($line->getQuantity() == 0) {
+            $this->assertFalse($this->cart->getCartLines()->last());
+
+            return;
+        }
+
+        $this
+            ->container
+            ->get('elcodi.cart_manager')
+            ->increaseCartLineQuantity($this->cart->getCartLines()->last(), $quantityAdded);
 
         $this->assertResults($quantityEnd);
     }
 
     /**
      * Test decrease cartline quantity
+     *
+     * @param mixed $quantityStart   Starting quantity
+     * @param mixed $quantityRemoved Quantity to remove
+     * @param mixed $quantityEnd     Quantity to check against
      *
      * @dataProvider dataDecreaseCartLineQuantity
      * @group        cart
@@ -282,14 +355,27 @@ abstract class AbstractCartManagerTest extends WebTestCase
         $this
             ->container
             ->get('elcodi.cart_manager')
-            ->addLine($this->cart, $this->cartLine)
-            ->decreaseCartLineQuantity($this->cartLine, $quantityRemoved);
+            ->addProduct(
+                $this->cart,
+                $this->cartLine->getProduct(),
+                $this->cartLine->getQuantity()
+            );
+
+        $line = $this->cart->getCartLines()->last();
+
+        $this
+            ->container
+            ->get('elcodi.cart_manager')
+            ->decreaseCartLineQuantity($line, $quantityRemoved);
 
         $this->assertResults($quantityEnd);
     }
 
     /**
      * Test add product
+     *
+     * @param mixed $quantitySet the quantity to set
+     * @param mixed $quantityEnd the quantity to check against
      *
      * @dataProvider dataAddProduct
      * @group        cart
@@ -309,6 +395,8 @@ abstract class AbstractCartManagerTest extends WebTestCase
 
     /**
      * Test result
+     *
+     * @param mixed $quantity the quantity to check against
      */
     public function assertResults($quantity)
     {
@@ -360,8 +448,10 @@ abstract class AbstractCartManagerTest extends WebTestCase
 
     /**
      * Common asserts for a test that empties lines
+     *
+     * @param CartLineInterface $line The CartLineInterface needed
      */
-    private function assertRemovedLine()
+    private function assertRemovedLine(CartLineInterface $line)
     {
         $this->assertEmpty($this->cart->getCartLines());
         $this->assertNotNull($this->cart->getId());
@@ -371,7 +461,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
             $this->container
                 ->get('elcodi.object_manager.cart_line')
                 ->getUnitOfWork()
-                ->getEntityState($this->cartLine)
+                ->getEntityState($line)
         );
     }
 }
