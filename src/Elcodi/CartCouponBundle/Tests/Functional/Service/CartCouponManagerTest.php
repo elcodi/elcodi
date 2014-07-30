@@ -16,6 +16,7 @@
 
 namespace Elcodi\CartCouponBundle\Tests\Functional\Service;
 
+use Elcodi\CartBundle\Entity\Cart;
 use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
 /**
@@ -44,5 +45,31 @@ class CartCouponManagerTest extends WebTestCase
             'elcodi.core.cart_coupon.service.cart_coupon_manager',
             'elcodi.cart_coupon_manager',
         ];
+    }
+
+    /**
+     * Tests that if cart is new, getCartCoupons return empty Collection
+     */
+    public function testGetCartCouponsNewCart()
+    {
+        $cart = new Cart();
+
+        $this->assertEmpty($this
+            ->container->get('elcodi.cart_coupon_manager')
+            ->getCartCoupons($cart)
+        );
+    }
+
+    /**
+     * Tests that if cart is new, getCartCoupons return empty Collection
+     */
+    public function testGetCouponsNewCart()
+    {
+        $cart = new Cart();
+
+        $this->assertEmpty($this
+            ->container->get('elcodi.cart_coupon_manager')
+            ->getCoupons($cart)
+        );
     }
 }
