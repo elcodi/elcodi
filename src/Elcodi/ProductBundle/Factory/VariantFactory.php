@@ -19,20 +19,38 @@ namespace Elcodi\ProductBundle\Factory;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
+use Elcodi\CurrencyBundle\Entity\Money;
+use Elcodi\CurrencyBundle\Wrapper\CurrencyWrapper;
 use Elcodi\ProductBundle\Entity\Variant;
 
 /**
- * Factory for Attribute entities
+ * Factory for Variant entities
  */
 class VariantFactory extends AbstractFactory
 {
     /**
-     * Creates an Attribute instance
+     * @var CurrencyWrapper
+     */
+    protected $currencyWrapper;
+
+    /**
+     * @param CurrencyWrapper $currencyWrapper
+     */
+    public function __construct(CurrencyWrapper $currencyWrapper)
+    {
+        $this->currencyWrapper = $currencyWrapper;
+    }
+
+    /**
+     * Creates a Variant instance
      *
      * @return Variant New Attribute entity
      */
     public function create()
     {
+        $currency = $this->currencyWrapper->getDefaultCurrency();
+        $zeroPrice = Money::create(0, $currency);
+
         /**
          * @var Variant $variant
          */
@@ -41,6 +59,8 @@ class VariantFactory extends AbstractFactory
         $variant
             ->setSku("")
             ->setStock(0)
+            ->setPrice($zeroPrice)
+            ->setReducedPrice($zeroPrice)
             ->setOptions(new ArrayCollection())
             ->setEnabled(false)
             ->setCreatedAt(new \DateTime);

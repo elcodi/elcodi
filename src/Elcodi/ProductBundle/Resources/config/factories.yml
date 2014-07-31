@@ -9,6 +9,8 @@ services:
     #
     elcodi.core.product.factory.product:
         class: %elcodi.core.product.factory.product.class%
+        arguments:
+            currency_wrapper: @elcodi.currency_wrapper
         calls:
             - [setEntityNamespace, ["%elcodi.core.product.entity.product.class%"]]
 
@@ -20,6 +22,8 @@ services:
     #
     elcodi.core.product.factory.variant:
         class: %elcodi.core.product.factory.variant.class%
+        arguments:
+            currency_wrapper: @elcodi.currency_wrapper
         calls:
             - [setEntityNamespace, ["%elcodi.core.product.entity.variant.class%"]]
 

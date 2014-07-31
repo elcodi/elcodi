@@ -45,7 +45,7 @@ class CurrencyWrapper
      *
      * Default currency
      */
-    protected $defaultCurrency;
+    protected $defaultCurrencyIsoCode;
 
     /**
      * @var CurrencyInterface
@@ -55,27 +55,25 @@ class CurrencyWrapper
     protected $currency;
 
     /**
-     * construct method
+     * Currency wrapper constructor
      *
      * @param CurrencySessionManager $currencySessionManager Currency Session Manager
      * @param CurrencyRepository     $currencyRepository     Currency repository
-     * @param string                 $defaultCurrency        Default currency
+     * @param string                 $defaultCurrencyIsoCode Default currency
      */
     public function __construct(
         CurrencySessionManager $currencySessionManager,
         CurrencyRepository $currencyRepository,
-        $defaultCurrency
+        $defaultCurrencyIsoCode
     )
     {
         $this->currencySessionManager = $currencySessionManager;
         $this->currencyRepository = $currencyRepository;
-        $this->defaultCurrency = $defaultCurrency;
+        $this->defaultCurrencyIsoCode = $defaultCurrencyIsoCode;
     }
 
     /**
-     * Get cart
-     *
-     * Return current currency value
+     * Gets currenc Currency
      *
      * @return CurrencyInterface Instance of Cart loaded
      *
@@ -87,14 +85,7 @@ class CurrencyWrapper
     }
 
     /**
-     * Load cart
-     *
-     * This method, first of all tries to retrieve cart from session
-     *
-     * If this does not exists nor the id is not valid, a new cart is created
-     * using Cart factory
-     *
-     * This behavior can be overriden just overwritting the wrapper
+     * Loads Currency from session or repository
      *
      * @return CurrencyInterface Instance of Customer loaded
      *
@@ -131,7 +122,7 @@ class CurrencyWrapper
         $this->currency = $this
             ->currencyRepository
             ->findOneBy([
-                'iso' => $this->defaultCurrency,
+                'iso' => $this->defaultCurrencyIsoCode,
             ]);
 
         if ($this->currency instanceof CurrencyInterface) {
@@ -142,6 +133,30 @@ class CurrencyWrapper
         }
 
         throw new CurrencyNotAvailableException;
+    }
+
+    /**
+     * Returns the default persisted Currency object
+     *
+     * @return CurrencyInterface
+     *
+     * @throws \LogicException
+     */
+    public function getDefaultCurrency()
+    {
+        $defaultCurrency = $this
+            ->currencyRepository
+            ->findOneBy([
+                'iso' => $this->defaultCurrencyIsoCode,
+            ]);
+
+        if (!$defaultCurrency instanceof CurrencyInterface) {
+            throw new \LogicException(
+                sprintf('Default currency object for ISO code "%s" not found', $this->defaultCurrencyIsoCode)
+            );
+        }
+
+        return $defaultCurrency;
     }
 
     /**

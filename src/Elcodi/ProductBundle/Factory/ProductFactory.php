@@ -20,6 +20,8 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
+use Elcodi\CurrencyBundle\Entity\Money;
+use Elcodi\CurrencyBundle\Wrapper\CurrencyWrapper;
 use Elcodi\ProductBundle\Entity\Product;
 
 /**
@@ -28,12 +30,28 @@ use Elcodi\ProductBundle\Entity\Product;
 class ProductFactory extends AbstractFactory
 {
     /**
+     * @var CurrencyWrapper
+     */
+    protected $currencyWrapper;
+
+    /**
+     * @param CurrencyWrapper $currencyWrapper
+     */
+    public function __construct(CurrencyWrapper $currencyWrapper)
+    {
+        $this->currencyWrapper = $currencyWrapper;
+    }
+
+    /**
      * Creates an instance of Product
      *
      * @return Product New Product entity
      */
     public function create()
     {
+        $currency = $this->currencyWrapper->getDefaultCurrency();
+        $zeroPrice = Money::create(0, $currency);
+
         /**
          * @var Product $product
          */
@@ -42,6 +60,8 @@ class ProductFactory extends AbstractFactory
         $product
             ->setStock(0)
             ->setShowInHome(false)
+            ->setPrice($zeroPrice)
+            ->setReducedPrice($zeroPrice)
             ->setAttributes(new ArrayCollection())
             ->setVariants(new ArrayCollection())
             ->setCategories(new ArrayCollection)
