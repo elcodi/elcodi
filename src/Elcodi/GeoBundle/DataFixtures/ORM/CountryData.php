@@ -33,7 +33,7 @@ class CountryData extends AbstractFixture
      */
     public function load(ObjectManager $manager)
     {
-        $countries = [
+        $countryCodes = [
             ["DE","germany"],
             ["AT","austria"],
             ["BE","belgium"],
@@ -283,22 +283,22 @@ class CountryData extends AbstractFixture
             ["EV","eslovenia"],
         ];
 
-        foreach ($countries as $country) {
+        foreach ($countryCodes as $countryCode) {
 
             /**
-             * @var Country $countryFixture
+             * @var Country $country
              */
-            $countryFixture = $this
+            $country = $this
                 ->container
                 ->get('elcodi.factory.country')
                 ->create();
 
-            $countryFixture
-                ->setCode(strtolower($country[0]))
-                ->setName($country[1]);
+            $country
+                ->setCode(strtolower($countryCode[0]))
+                ->setName($countryCode[1]);
 
-            $manager->persist($countryFixture);
-            $this->setReference('country-' . $countryFixture->getCode(), $countryFixture);
+            $manager->persist($country);
+            $this->setReference('country-' . $country->getCode(), $country);
         }
 
         $manager->flush();
