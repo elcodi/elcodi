@@ -123,7 +123,6 @@ class Money extends StubMoney implements MoneyInterface
      */
     public function getAmount()
     {
-        //var_dump($this->wrappedMoney->getAmount());
         return $this->wrappedMoney->getAmount();
     }
 
