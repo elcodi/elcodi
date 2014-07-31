@@ -1,0 +1,7 @@
+use-sort:
+    group:
+        - _main
+        - Elcodi
+    group-type: each
+    sort-type: alph
+    sort-direction: asc
