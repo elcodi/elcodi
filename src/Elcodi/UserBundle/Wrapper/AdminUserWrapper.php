@@ -22,7 +22,6 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
 use Elcodi\UserBundle\Entity\Interfaces\AdminUserInterface;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Elcodi\UserBundle\Factory\AdminUserFactory;
-use Elcodi\UserBundle\Factory\CustomerFactory;
 use Elcodi\UserBundle\Repository\AdminUserRepository;
 use Elcodi\UserBundle\Repository\CustomerRepository;
 
@@ -78,7 +77,7 @@ class AdminUserWrapper
     )
     {
         $this->customerRepository = $adminUserRepository;
-        $this->customerFactory = $adminUserFactory;
+        $this->adminUserFactory = $adminUserFactory;
         $this->securityContext = $securityContext;
     }
 
