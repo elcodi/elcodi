@@ -19,21 +19,26 @@ namespace Elcodi\ProductBundle\Factory;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
-use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
 use Elcodi\ProductBundle\Entity\Product;
+use Elcodi\ProductBundle\Factory\Abstracts\AbstractPurchasableFactory;
 
 /**
- * Class ProductFactory
+ * Factory for Product entities
  */
-class ProductFactory extends AbstractFactory
+class ProductFactory extends AbstractPurchasableFactory
 {
     /**
-     * Creates an instance of Product
+     * Creates and returns a pristine Product instance
+     *
+     * Prices are initialized to "zero amount" Money value objects,
+     * using injected CurrencyWrapper default Currency
      *
      * @return Product New Product entity
      */
     public function create()
     {
+        $zeroPrice = $this->createZeroAmountMoney();
+
         /**
          * @var Product $product
          */
@@ -42,6 +47,8 @@ class ProductFactory extends AbstractFactory
         $product
             ->setStock(0)
             ->setShowInHome(false)
+            ->setPrice($zeroPrice)
+            ->setReducedPrice($zeroPrice)
             ->setAttributes(new ArrayCollection())
             ->setVariants(new ArrayCollection())
             ->setCategories(new ArrayCollection)

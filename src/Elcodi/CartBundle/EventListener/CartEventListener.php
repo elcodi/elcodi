@@ -317,7 +317,7 @@ class CartEventListener
         /**
          * If present, reducedPrice will be used as product price in current CartLine.
          */
-        if ($purchasable->getReducedPrice() instanceof Money) {
+        if ($purchasable->getReducedPrice()->getAmount() > 0) {
 
             $productPrice = $purchasable->getReducedPrice();
         }

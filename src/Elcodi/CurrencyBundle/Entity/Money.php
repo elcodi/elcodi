@@ -38,7 +38,7 @@ class Money extends StubMoney implements MoneyInterface
      *
      * Money amount
      */
-    protected $amount;
+    protected $amount = 0;
     /**
      * @var WrappedMoney
      *
@@ -61,11 +61,13 @@ class Money extends StubMoney implements MoneyInterface
      */
     protected function __construct($amount, CurrencyInterface $currency)
     {
-        $amount = intval($amount);
-
-        $this->wrappedMoney = new WrappedMoney($amount, new WrappedCurrency($currency->getIso()));
-
+        $this->amount = intval($amount);
         $this->currency = $currency;
+
+        $this->wrappedMoney = new WrappedMoney(
+            $this->amount,
+            new WrappedCurrency($currency->getIso())
+        );
     }
 
     /**
@@ -123,7 +125,7 @@ class Money extends StubMoney implements MoneyInterface
      */
     public function getAmount()
     {
-        return $this->wrappedMoney->getAmount();
+        return $this->amount;
     }
 
     /**

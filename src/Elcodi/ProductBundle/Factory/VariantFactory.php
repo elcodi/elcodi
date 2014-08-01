@@ -18,21 +18,26 @@ namespace Elcodi\ProductBundle\Factory;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
-use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
 use Elcodi\ProductBundle\Entity\Variant;
+use Elcodi\ProductBundle\Factory\Abstracts\AbstractPurchasableFactory;
 
 /**
- * Factory for Attribute entities
+ * Factory for Variant entities
  */
-class VariantFactory extends AbstractFactory
+class VariantFactory extends AbstractPurchasableFactory
 {
     /**
-     * Creates an Attribute instance
+     * Creates and returns a pristine Variant instance
      *
-     * @return Variant New Attribute entity
+     * Prices are initialized to "zero amount" Money value objects,
+     * using injected CurrencyWrapper default Currency
+     *
+     * @return Variant New Variant entity
      */
     public function create()
     {
+        $zeroPrice = $this->createZeroAmountMoney();
+
         /**
          * @var Variant $variant
          */
@@ -41,6 +46,8 @@ class VariantFactory extends AbstractFactory
         $variant
             ->setSku("")
             ->setStock(0)
+            ->setPrice($zeroPrice)
+            ->setReducedPrice($zeroPrice)
             ->setOptions(new ArrayCollection())
             ->setEnabled(false)
             ->setCreatedAt(new \DateTime);
