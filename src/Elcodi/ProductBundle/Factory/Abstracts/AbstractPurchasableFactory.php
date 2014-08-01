@@ -17,7 +17,6 @@
 namespace Elcodi\ProductBundle\Factory\Abstracts;
 
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
-use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 use Elcodi\CurrencyBundle\Entity\Money;
 use Elcodi\CurrencyBundle\Wrapper\CurrencyWrapper;
@@ -40,7 +39,7 @@ abstract class AbstractPurchasableFactory extends AbstractFactory
     /**
      * Factory constructor
      *
-     * @param CurrencyWrapper   $currencyWrapper Currency wrapper
+     * @param CurrencyWrapper $currencyWrapper Currency wrapper
      */
     public function __construct(CurrencyWrapper $currencyWrapper)
     {
