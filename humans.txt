@@ -1,0 +1,20 @@
+/* TEAM */
+	CTO: Marc Morera
+	Contact: mmoreram at elcodi dot com
+	Twitter: @mmoreram
+	From: Barcelona, Catalonia
+
+	CEO: Aldo Chiecchia
+	Contact: alch at elcodi dot com
+	Twitter: @zimage
+	From: Barcelona, Catalonia
+	
+	COO: Marc Jordana
+	Twitter: @marcjordana
+	From: Barcelona, Catalonia
+
+/* SITE */
+	Last update: 2014/05/27
+	Standards: HTML5, CSS3,..
+	Components: jQuery.
+	Software: PHP 5.4, Symfony2 Components
