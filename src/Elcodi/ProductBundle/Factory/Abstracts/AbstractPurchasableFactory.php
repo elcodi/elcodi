@@ -35,16 +35,16 @@ abstract class AbstractPurchasableFactory extends AbstractFactory
      *
      * Currency wrapper used to access default Currency object
      */
-    protected $defaultCurrency;
+    protected $currencyWrapper;
 
     /**
      * Factory constructor
      *
-     * @param CurrencyInterface $currency default Currency
+     * @param CurrencyWrapper   $currencyWrapper Currency wrapper
      */
-    public function __construct(CurrencyInterface $currency)
+    public function __construct(CurrencyWrapper $currencyWrapper)
     {
-        $this->defaultCurrency = $currency;
+        $this->currencyWrapper = $currencyWrapper;
     }
 
     /**
@@ -55,6 +55,9 @@ abstract class AbstractPurchasableFactory extends AbstractFactory
      */
     protected function createZeroAmountMoney()
     {
-        return Money::create(0, $this->defaultCurrency);
+        return Money::create(
+            0,
+            $this->currencyWrapper->getDefaultCurrency()
+        );
     }
 }
