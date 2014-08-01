@@ -149,4 +149,14 @@ class Attribute extends AbstractEntity implements AttributeInterface
         return $this;
     }
 
+    /**
+     * Returns the attribute name
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }
+
 }
