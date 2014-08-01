@@ -36,10 +36,10 @@
         "symfony/http-kernel": "~2.4",
         "ircmaxell/password-compat": "~1.0",
 
-        "elcodi/core-bundle": "~0.1",
-        "elcodi/geo-bundle": "~0.1",
-        "elcodi/language-bundle": "~0.1",
-        "elcodi/cart-bundle": "~0.1"
+        "elcodi/core-bundle": "~0.2.0",
+        "elcodi/geo-bundle": "~0.2.0",
+        "elcodi/language-bundle": "~0.2.0",
+        "elcodi/cart-bundle": "~0.2.0"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",

@@ -33,7 +33,7 @@
         "knplabs/knp-gaufrette-bundle": "v0.1.7",
         "twig/twig": "~1.0",
 
-        "elcodi/core-bundle": "~0.1"
+        "elcodi/core-bundle": "~0.2.0"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",
