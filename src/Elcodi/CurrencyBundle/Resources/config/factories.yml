@@ -49,7 +49,6 @@ services:
         class: %elcodi.core.currency.entity.currency.class%
         factory_service: elcodi.core.currency.wrapper.currency
         factory_method: getDefaultCurrency
-        scope: prototype
 
     elcodi.entity.default_currency.instance:
         alias: elcodi.core.currency.entity.default_currency.instance

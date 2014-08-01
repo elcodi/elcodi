@@ -21,7 +21,6 @@ services:
         parent: elcodi.core.product.factory.abstract.purchasable
         calls:
             - [setEntityNamespace, ["%elcodi.core.product.entity.product.class%"]]
-        scope: prototype
 
     elcodi.factory.product:
         alias: elcodi.core.product.factory.product
@@ -34,7 +33,6 @@ services:
         parent: elcodi.core.product.factory.abstract.purchasable
         calls:
             - [setEntityNamespace, ["%elcodi.core.product.entity.variant.class%"]]
-        scope: prototype
 
     elcodi.factory.variant:
         alias: elcodi.core.product.factory.variant
