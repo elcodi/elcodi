@@ -1,20 +1,40 @@
 language: php
 
 php:
-  - 5.4
-  - 5.5
-  - 5.6
-  - hhvm-nightly
+    - 5.4
+    - 5.5
+    - 5.6
+    - hhvm-nightly
 
 matrix:
     allow_failures:
         - php: hhvm-nightly
 
+env:
+    - SYMFONY_VERSION="2.4.*"
+    - SYMFONY_VERSION="2.5.*"
+
 before_script:
-  - composer install --prefer-source --no-interaction
+    - composer install --prefer-source --no-interaction
+
+install:
+    - composer require symfony/config:${SYMFONY_VERSION}
+    - composer require symfony/yaml:${SYMFONY_VERSION}
+    - composer require symfony/console:${SYMFONY_VERSION}
+    - composer require symfony/framework-bundle:${SYMFONY_VERSION}
+    - composer require symfony/class-loader:${SYMFONY_VERSION}
+    - composer require symfony/security:${SYMFONY_VERSION}
+    - composer require symfony/http-foundation:${SYMFONY_VERSION}
+    - composer require symfony/validator:${SYMFONY_VERSION}
+    - composer require symfony/process:${SYMFONY_VERSION}
+    - composer require symfony/expression-language:${SYMFONY_VERSION}
+    - composer require symfony/event-dispatcher:${SYMFONY_VERSION}
+    - composer require symfony/finder:${SYMFONY_VERSION}
+    - composer require symfony/browser-kit:${SYMFONY_VERSION}
+    - composer require symfony/form:${SYMFONY_VERSION}
 
 script:
-  - phpunit -c phpunit.xml.dist
+    - phpunit -c phpunit.xml.dist
 
 notifications:
     email: false
