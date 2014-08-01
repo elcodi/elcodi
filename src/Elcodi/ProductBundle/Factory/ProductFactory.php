@@ -19,38 +19,25 @@ namespace Elcodi\ProductBundle\Factory;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
-use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
-use Elcodi\CurrencyBundle\Entity\Money;
-use Elcodi\CurrencyBundle\Wrapper\CurrencyWrapper;
 use Elcodi\ProductBundle\Entity\Product;
+use Elcodi\ProductBundle\Factory\Abstracts\AbstractPurchasableFactory;
 
 /**
- * Class ProductFactory
+ * Factory for Product entities
  */
-class ProductFactory extends AbstractFactory
+class ProductFactory extends AbstractPurchasableFactory
 {
     /**
-     * @var CurrencyWrapper
-     */
-    protected $currencyWrapper;
-
-    /**
-     * @param CurrencyWrapper $currencyWrapper
-     */
-    public function __construct(CurrencyWrapper $currencyWrapper)
-    {
-        $this->currencyWrapper = $currencyWrapper;
-    }
-
-    /**
-     * Creates an instance of Product
+     * Creates and returns a pristine Product instance
+     *
+     * Prices are initialized to "zero amount" Money value objects,
+     * using injected CurrencyWrapper default Currency
      *
      * @return Product New Product entity
      */
     public function create()
     {
-        $currency = $this->currencyWrapper->getDefaultCurrency();
-        $zeroPrice = Money::create(0, $currency);
+        $zeroPrice = $this->createZeroAmountMoney();
 
         /**
          * @var Product $product

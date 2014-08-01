@@ -138,6 +138,13 @@ class CurrencyWrapper
     /**
      * Returns the default persisted Currency object
      *
+     * The currency object is fetched from the repository using
+     * default ISO code as the search criteria. Default ISO code
+     * is passed to the CurrencyWrapper service definition as a
+     * mandatory constructor parameter.
+     *
+     * When the object is not found, a LogicException is thrown
+     *
      * @return CurrencyInterface
      *
      * @throws \LogicException

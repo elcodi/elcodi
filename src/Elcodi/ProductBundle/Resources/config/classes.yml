@@ -26,6 +26,7 @@ parameters:
     #
     # Factories
     #
+    elcodi.core.product.factory.abstract.abstract.class: Elcodi\ProductBundle\Factory\Abstracts\AbstractPurchasableFactory
     elcodi.core.product.factory.product.class: Elcodi\ProductBundle\Factory\ProductFactory
     elcodi.core.product.factory.variant.class: Elcodi\ProductBundle\Factory\VariantFactory
     elcodi.core.product.factory.manufacturer.class: Elcodi\ProductBundle\Factory\ManufacturerFactory

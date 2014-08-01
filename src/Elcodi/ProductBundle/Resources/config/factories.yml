@@ -5,14 +5,23 @@ services:
     #
 
     #
-    # Factory for entity product
+    # Abstract purchasable factory
+    #
+    elcodi.core.product.factory.abstract.purchasable:
+        class: %elcodi.core.product.factory.abstract.abstract.class%
+        abstract: true
+        arguments:
+            default_currency: @elcodi.core.currency.entity.default_currency.instance
+
+    #
+    # Factory for Product entities
     #
     elcodi.core.product.factory.product:
         class: %elcodi.core.product.factory.product.class%
-        arguments:
-            currency_wrapper: @elcodi.currency_wrapper
+        parent: elcodi.core.product.factory.abstract.purchasable
         calls:
             - [setEntityNamespace, ["%elcodi.core.product.entity.product.class%"]]
+        scope: prototype
 
     elcodi.factory.product:
         alias: elcodi.core.product.factory.product
@@ -22,16 +31,16 @@ services:
     #
     elcodi.core.product.factory.variant:
         class: %elcodi.core.product.factory.variant.class%
-        arguments:
-            currency_wrapper: @elcodi.currency_wrapper
+        parent: elcodi.core.product.factory.abstract.purchasable
         calls:
             - [setEntityNamespace, ["%elcodi.core.product.entity.variant.class%"]]
+        scope: prototype
 
     elcodi.factory.variant:
         alias: elcodi.core.product.factory.variant
 
     #
-    # Factory for entity manufacturer
+    # Factory for Manufacturer entities
     #
     elcodi.core.product.factory.manufacturer:
         class: %elcodi.core.product.factory.manufacturer.class%
@@ -42,7 +51,7 @@ services:
         alias: elcodi.core.product.factory.manufacturer
 
     #
-    # Factory for entity category
+    # Factory for Category entities
     #
     elcodi.core.product.factory.category:
         class: %elcodi.core.product.factory.category.class%
@@ -57,7 +66,7 @@ services:
     #
 
     #
-    # Instance provider for entity product
+    # Instance provider for Product entities
     #
     elcodi.core.product.entity.product.instance:
         class: %elcodi.core.product.entity.product.class%
@@ -81,7 +90,7 @@ services:
         alias: elcodi.core.product.entity.variant.instance
 
     #
-    # Instance provider for entity manufacturer
+    # Instance provider for Manufacturer entities
     #
     elcodi.core.product.entity.manufacturer.instance:
         class: %elcodi.core.product.entity.manufacturer.class%
@@ -93,7 +102,7 @@ services:
         alias: elcodi.core.product.entity.manufacturer.instance
 
     #
-    # Instance provider for entity category
+    # Instance provider for Category entities
     #
     elcodi.core.product.entity.category.instance:
         class: %elcodi.core.product.entity.category.class%

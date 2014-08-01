@@ -5,7 +5,7 @@ services:
     #
 
     #
-    # Factory for entity currency
+    # Factory for Currency entities
     #
     elcodi.core.currency.factory.currency:
         class: %elcodi.core.currency.factory.currency.class%
@@ -16,7 +16,7 @@ services:
         alias: elcodi.core.currency.factory.currency
 
     #
-    # Factory for entity currency_exchange_rate
+    # Factory for CurrencyExchangeRate entitites
     #
     elcodi.core.currency.factory.currency_exchange_rate:
         class: %elcodi.core.currency.factory.currency_exchange_rate.class%
@@ -31,7 +31,7 @@ services:
     #
 
     #
-    # Instance provider for entity currency
+    # Instance provider for Currency entities
     #
     elcodi.core.currency.entity.currency.instance:
         class: %elcodi.core.currency.entity.currency.class%
@@ -43,7 +43,19 @@ services:
         alias: elcodi.core.currency.entity.currency.instance
 
     #
-    # Instance provider for entity currency_exchange_rate
+    # Instance provider for default Currency
+    #
+    elcodi.core.currency.entity.default_currency.instance:
+        class: %elcodi.core.currency.entity.currency.class%
+        factory_service: elcodi.core.currency.wrapper.currency
+        factory_method: getDefaultCurrency
+        scope: prototype
+
+    elcodi.entity.default_currency.instance:
+        alias: elcodi.core.currency.entity.default_currency.instance
+
+    #
+    # Instance provider for CurrencyExchangeRate entities
     #
     elcodi.core.currency.entity.currency_exchange_rate.instance:
         class: %elcodi.core.currency.entity.currency_exchange_rate.class%
