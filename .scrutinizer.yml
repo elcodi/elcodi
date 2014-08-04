@@ -6,4 +6,6 @@ filter:
         - 'vendor/*'
 
 tools:
-    external_code_coverage: true
+    external_code_coverage:
+        enabled: true
+        timeout: 3600
