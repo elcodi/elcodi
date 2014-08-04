@@ -25,7 +25,7 @@
         "symfony/config": "~2.4",
         "symfony/yaml": "~2.4",
         "symfony/console": "~2.4",
-        "symfony/framework-bundle": "~2.4",
+        "symfony/framework-bundle": "~2.4, >=2.4.8",
         "symfony/class-loader": "~2.4",
         "symfony/security": "~2.4",
         "symfony/http-foundation": "~2.4",

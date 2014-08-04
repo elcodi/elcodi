@@ -22,7 +22,7 @@
     "require": {
         "php": ">=5.4",
         "doctrine/common": "~2.4",
-        "symfony/framework-bundle": "~2.4",
+        "symfony/framework-bundle": "~2.4, >=2.4.8",
         "symfony/config": "~2.4",
         "symfony/event-dispatcher": "~2.4",
         "symfony/form": "~2.4",
@@ -42,7 +42,7 @@
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",
         "symfony/browser-kit": "~2.4",
-        "symfony/framework-bundle": "~2.4",
+        "symfony/framework-bundle": "~2.4, >=2.4.8",
         "symfony/validator": "~2.4",
         "symfony/finder": "~2.4",
         "phpunit/phpunit": ">=4.0",
