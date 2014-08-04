@@ -6,7 +6,6 @@ services:
     elcodi.core.user.wrapper.customer_wrapper:
         class: %elcodi.core.user.wrapper.customer_wrapper.class%
         arguments:
-            customer_repository: @elcodi.core.user.repository.customer
             customer_factory: @elcodi.core.user.factory.customer
             security_context: @?security.context
 
@@ -16,8 +15,7 @@ services:
     elcodi.core.user.wrapper.admin_user_wrapper:
         class: %elcodi.core.user.wrapper.admin_user_wrapper.class%
         arguments:
-            customer_repository: @elcodi.core.user.repository.admin_user
-            customer_factory: @elcodi.core.user.factory.admin_user
+            admin_user_factory: @elcodi.core.user.factory.admin_user
             security_context: @?security.context
 
     elcodi.admin_user_wrapper:

@@ -21,7 +21,6 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
 
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Elcodi\UserBundle\Factory\CustomerFactory;
-use Elcodi\UserBundle\Repository\CustomerRepository;
 
 /**
  * Cart to order service
@@ -34,13 +33,6 @@ class CustomerWrapper
      * Customer
      */
     protected $customer;
-
-    /**
-     * @var CustomerRepository
-     *
-     * Customer repository
-     */
-    protected $customerRepository;
 
     /**
      * @var CustomerFactory
@@ -62,17 +54,14 @@ class CustomerWrapper
      * This wrapper loads Customer from database if this exists and is authenticated.
      * Otherwise, this create new Guest without persisting it
      *
-     * @param CustomerRepository       $customerRepository Customer repository
-     * @param CustomerFactory          $customerFactory    Customer factory
-     * @param SecurityContextInterface $securityContext    SecurityContext instance
+     * @param CustomerFactory          $customerFactory Customer factory
+     * @param SecurityContextInterface $securityContext SecurityContext instance
      */
     public function __construct(
-        CustomerRepository $customerRepository,
         CustomerFactory $customerFactory,
         SecurityContextInterface $securityContext = null
     )
     {
-        $this->customerRepository = $customerRepository;
         $this->customerFactory = $customerFactory;
         $this->securityContext = $securityContext;
     }

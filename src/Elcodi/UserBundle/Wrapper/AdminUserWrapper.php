@@ -22,8 +22,6 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
 use Elcodi\UserBundle\Entity\Interfaces\AdminUserInterface;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Elcodi\UserBundle\Factory\AdminUserFactory;
-use Elcodi\UserBundle\Repository\AdminUserRepository;
-use Elcodi\UserBundle\Repository\CustomerRepository;
 
 /**
  * Cart to order service
@@ -36,13 +34,6 @@ class AdminUserWrapper
      * AdminUser
      */
     protected $adminUser;
-
-    /**
-     * @var AdminUserRepository
-     *
-     * Admin User repository
-     */
-    protected $adminUserRepository;
 
     /**
      * @var AdminUserFactory
@@ -66,17 +57,14 @@ class AdminUserWrapper
      *
      * Otherwise, this create new Guest without persisting it
      *
-     * @param AdminUserRepository      $adminUserRepository Customer repository
-     * @param AdminUserFactory         $adminUserFactory    Customer factory
-     * @param SecurityContextInterface $securityContext     SecurityContext instance
+     * @param AdminUserFactory         $adminUserFactory Customer factory
+     * @param SecurityContextInterface $securityContext  SecurityContext instance
      */
     public function __construct(
-        AdminUserRepository $adminUserRepository,
         AdminUserFactory $adminUserFactory,
         SecurityContextInterface $securityContext = null
     )
     {
-        $this->customerRepository = $adminUserRepository;
         $this->adminUserFactory = $adminUserFactory;
         $this->securityContext = $securityContext;
     }
