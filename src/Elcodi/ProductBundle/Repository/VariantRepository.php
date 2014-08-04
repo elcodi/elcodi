@@ -34,24 +34,23 @@ class VariantRepository extends EntityRepository
      * @param ProductInterface $product to compare Variants from
      * @param $optionsSearchedIds array containng IDs of the options to match
      *
-     * @return VariantInterface|null
+     * @return VariantInterface|null Variant if found, or null if not
      */
     public function findByOptionIds(ProductInterface $product, $optionsSearchedIds)
     {
-        $optionsConfiguredIds = [];
-
         sort($optionsSearchedIds);
 
         foreach ($product->getVariants() as $variant) {
 
-            /** @var VariantInterface $variant */
-            $optionsConfiguredIds = array_map(function ($option) {
-
-                /** @var ValueInterface $option */
-
-                return $option->getId();
-
-            }, $variant->getOptions()->toArray());
+            /**
+             * @var VariantInterface $variant
+             */
+            $optionsConfiguredIds = array_map(
+                function (ValueInterface $option) {
+                    return $option->getId();
+                },
+                $variant->getOptions()->toArray()
+            );
 
             sort($optionsConfiguredIds);
 
