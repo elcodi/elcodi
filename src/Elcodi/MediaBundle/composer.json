@@ -28,7 +28,7 @@
         "symfony/http-foundation": "~2.4",
         "symfony/http-kernel": "~2.4",
         "symfony/dependency-injection": "~2.4",
-        "symfony/framework-bundle": "~2.4",
+        "symfony/framework-bundle": "~2.4, >=2.4.8",
         "symfony/process": "~2.4",
         "knplabs/knp-gaufrette-bundle": "v0.1.7",
         "twig/twig": "~1.0",
@@ -38,7 +38,7 @@
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",
         "symfony/browser-kit": "~2.4",
-        "symfony/framework-bundle": "~2.4",
+        "symfony/framework-bundle": "~2.4, >=2.4.8",
         "symfony/validator": "~2.4",
         "symfony/finder": "~2.4",
         "phpunit/phpunit": ">=4.0",

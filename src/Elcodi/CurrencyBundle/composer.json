@@ -31,7 +31,7 @@
         "symfony/options-resolver": "~2.4",
         "symfony/routing": "~2.4",
         "symfony/http-foundation": "~2.4",
-        "symfony/framework-bundle": "~2.4",
+        "symfony/framework-bundle": "~2.4, >=2.4.8",
         "symfony/dependency-injection": "~2.4",
         "symfony/http-kernel": "~2.4",
         "twig/twig": "~1",
@@ -43,7 +43,7 @@
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",
         "symfony/browser-kit": "~2.4",
-        "symfony/framework-bundle": "~2.4",
+        "symfony/framework-bundle": "~2.4, >=2.4.8",
         "symfony/validator": "~2.4",
         "symfony/finder": "~2.4",
         "phpunit/phpunit": ">=4.0",
