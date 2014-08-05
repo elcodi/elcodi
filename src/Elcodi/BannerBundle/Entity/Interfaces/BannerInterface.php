@@ -20,12 +20,11 @@ use Doctrine\Common\Collections\Collection;
 
 use Elcodi\CoreBundle\Entity\Interfaces\DateTimeInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\EnabledInterface;
-use Elcodi\MediaBundle\Entity\Interfaces\ImagesContainerInterface;
 
 /**
  * BannerInterface
  */
-interface BannerInterface extends EnabledInterface, DateTimeInterface, ImagesContainerInterface
+interface BannerInterface extends EnabledInterface, DateTimeInterface
 {
     /**
      * Set banner name

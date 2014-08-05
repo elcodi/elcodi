@@ -23,6 +23,7 @@ use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
 use Elcodi\MediaBundle\Entity\Traits\ImagesContainerTrait;
+use Elcodi\MediaBundle\Entity\Traits\PrincipalImageTrait;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\VariantInterface;
 use Elcodi\ProductBundle\Entity\Traits\ProductPriceTrait;
@@ -40,7 +41,12 @@ use Elcodi\ProductBundle\Entity\Traits\ProductPriceTrait;
  */
 class Variant extends AbstractEntity implements VariantInterface
 {
-    use ProductPriceTrait, EnabledTrait, DateTimeTrait, ImagesContainerTrait;
+    use
+        ProductPriceTrait,
+        EnabledTrait,
+        DateTimeTrait,
+        ImagesContainerTrait,
+        PrincipalImageTrait;
 
     /**
      * @var string
@@ -209,5 +215,4 @@ class Variant extends AbstractEntity implements VariantInterface
 
         return $this;
     }
-
 }

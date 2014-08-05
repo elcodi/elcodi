@@ -24,6 +24,7 @@ use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
 use Elcodi\CoreBundle\Entity\Traits\ETaggableTrait;
 use Elcodi\MediaBundle\Entity\Traits\ImagesContainerTrait;
+use Elcodi\MediaBundle\Entity\Traits\PrincipalImageTrait;
 use Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
@@ -36,7 +37,14 @@ use Elcodi\ProductBundle\Entity\Traits\ProductPriceTrait;
  */
 class Product extends AbstractEntity implements ProductInterface
 {
-    use ProductPriceTrait, DateTimeTrait, EnabledTrait, ETaggableTrait, MetaDataTrait, ImagesContainerTrait;
+    use
+        ProductPriceTrait,
+        DateTimeTrait,
+        EnabledTrait,
+        ETaggableTrait,
+        MetaDataTrait,
+        ImagesContainerTrait,
+        PrincipalImageTrait;
 
     /**
      * @var string

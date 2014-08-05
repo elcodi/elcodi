@@ -29,13 +29,6 @@ trait ImagesContainerTrait
     protected $images;
 
     /**
-     * @var \Elcodi\MediaBundle\Entity\Interfaces\ImageInterface
-     *
-     * Principal image
-     */
-    protected $principalImage;
-
-    /**
      * Set add image
      *
      * @param \Elcodi\MediaBundle\Entity\Interfaces\ImageInterface $image Image object to be added
@@ -90,29 +83,5 @@ trait ImagesContainerTrait
         $this->images = $images;
 
         return $this;
-    }
-
-    /**
-     * Set the principalImage
-     *
-     * @param \Elcodi\MediaBundle\Entity\Interfaces\ImageInterface $principalImage Principal image
-     *
-     * @return Object self Object
-     */
-    public function setPrincipalImage(\Elcodi\MediaBundle\Entity\Interfaces\ImageInterface $principalImage = null)
-    {
-        $this->principalImage = $principalImage;
-
-        return $this;
-    }
-
-    /**
-     * Get the principalImage
-     *
-     * @return \Elcodi\MediaBundle\Entity\Interfaces\ImageInterface Principal image
-     */
-    public function getPrincipalImage()
-    {
-        return $this->principalImage;
     }
 }
