@@ -56,20 +56,4 @@ interface ImagesContainerInterface
      * @return Object self Object
      */
     public function setImages(ArrayCollection $images);
-
-    /**
-     * Set the principalImage
-     *
-     * @param ImageInterface $principalImage Principal image
-     *
-     * @return ImagesContainerInterface self Object
-     */
-    public function setPrincipalImage(ImageInterface $principalImage = null);
-
-    /**
-     * Get the principalImage
-     *
-     * @return ImageInterface Principal image
-     */
-    public function getPrincipalImage();
 }

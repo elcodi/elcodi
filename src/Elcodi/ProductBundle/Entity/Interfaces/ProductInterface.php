@@ -21,11 +21,18 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\AttributeBundle\Entity\Interfaces\AttributeInterface;
 use Elcodi\CoreBundle\Entity\Interfaces\ETaggableInterface;
 use Elcodi\MediaBundle\Entity\Interfaces\ImagesContainerInterface;
+use Elcodi\MediaBundle\Entity\Interfaces\PrincipalImageInterface;
 
 /**
  * Class ProductInterface
  */
-interface ProductInterface extends PurchasableInterface, ETaggableInterface, MetaDataInterface, ImagesContainerInterface
+interface ProductInterface
+    extends
+    PurchasableInterface,
+    ETaggableInterface,
+    MetaDataInterface,
+    ImagesContainerInterface,
+    PrincipalImageInterface
 {
     /**
      * Set name

@@ -24,14 +24,14 @@ use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CoreBundle\Entity\Traits\DateTimeTrait;
 use Elcodi\CoreBundle\Entity\Traits\EnabledTrait;
 use Elcodi\MediaBundle\Entity\Interfaces\ImageInterface;
-use Elcodi\MediaBundle\Entity\Traits\ImagesContainerTrait;
+use Elcodi\MediaBundle\Entity\Traits\PrincipalImageTrait;
 
 /**
  * Banner
  */
 class Banner extends AbstractEntity implements BannerInterface
 {
-    use DateTimeTrait, EnabledTrait, ImagesContainerTrait;
+    use DateTimeTrait, EnabledTrait, PrincipalImageTrait;
 
     /**
      * @var string
