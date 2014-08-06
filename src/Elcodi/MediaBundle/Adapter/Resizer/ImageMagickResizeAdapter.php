@@ -75,6 +75,10 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
         $type = ElcodiMediaImageResizeTypes::FORCE_MEASURES
     )
     {
+        if (ElcodiMediaImageResizeTypes::NO_RESIZE === $type) {
+            return $imageData;
+        }
+
         $originalFile = new File(tempnam(sys_get_temp_dir(), '_original'));
         $resizedFile = new File(tempnam(sys_get_temp_dir(), '_resize'));
 
