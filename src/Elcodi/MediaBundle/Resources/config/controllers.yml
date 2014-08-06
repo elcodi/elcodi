@@ -3,18 +3,17 @@ services:
     #
     # Controllers
     #
-    elcodi.core.media.controllers.image_resize:
-        class: %elcodi.core.media.controllers.image_resize.class%
+    elcodi.core.media.controller.image_resize:
+        class: %elcodi.core.media.controller.image_resize.class%
         arguments:
-            object_manager: @doctrine.orm.entity_manager
-            file_manager: @elcodi.core.media.service.file_manager
+            image_repository: @elcodi.repository.image
             image_manager: @elcodi.core.media.service.image_manager
-            image_namespace: %elcodi.core.media.entity.image.class%
+            image_etag_transformer: @elcodi.image_etag_transformer
             image_view_max_age: %elcodi.core.media.image_view_max_age%
             image_view_shared_max_age: %elcodi.core.media.image_view_shared_max_age%
 
-    elcodi.core.media.controllers.image_upload:
-        class: %elcodi.core.media.controllers.image_upload.class%
+    elcodi.core.media.controller.image_upload:
+        class: %elcodi.core.media.controller.image_upload.class%
         arguments:
             object_manager: @doctrine.orm.entity_manager
             file_manager: @elcodi.core.media.service.file_manager

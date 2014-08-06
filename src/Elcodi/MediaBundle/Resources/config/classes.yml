@@ -25,8 +25,8 @@ parameters:
     #
     # Controllers
     #
-    elcodi.core.media.controllers.image_resize.class: Elcodi\MediaBundle\Controller\ImageResizeController
-    elcodi.core.media.controllers.image_upload.class: Elcodi\MediaBundle\Controller\ImageUploadController
+    elcodi.core.media.controller.image_resize.class: Elcodi\MediaBundle\Controller\ImageResizeController
+    elcodi.core.media.controller.image_upload.class: Elcodi\MediaBundle\Controller\ImageUploadController
 
     #
     # Routes
@@ -36,11 +36,12 @@ parameters:
     elcodi.core.media.routes.image_upload.loader.class: Elcodi\MediaBundle\Router\ImageUploadRouterLoader
 
     #
-    # Transformers
-    #
-    elcodi.core.media.transformer.file.class: Elcodi\MediaBundle\Transformer\FileTransformer
-
-    #
     # Twig extensions
     #
     elcodi.core.media.twig_extension.image_extension.class: Elcodi\MediaBundle\Twig\ImageExtension
+
+    #
+    # Transformers
+    #
+    elcodi.core.media.transformer.image_etag_transformer.class: Elcodi\MediaBundle\Transformer\ImageEtagTransformer
+    elcodi.core.media.transformer.file_identifier_transformer.class: Elcodi\MediaBundle\Transformer\FileIdentifierTransformer

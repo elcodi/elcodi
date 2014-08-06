@@ -17,11 +17,12 @@
 namespace Elcodi\MediaBundle\Transformer;
 
 use Elcodi\MediaBundle\Entity\Interfaces\FileInterface;
+use Elcodi\MediaBundle\Transformer\Interfaces\FileIdentifierTransformerInterface;
 
 /**
- * Class ETagTransformer
+ * Class FileIdentifierTransformer
  */
-class ETagTransformer
+class FileIdentifierTransformer implements FileIdentifierTransformerInterface
 {
     /**
      * Transforms an entity to be stored
@@ -34,7 +35,7 @@ class ETagTransformer
      */
     public function transform(FileInterface $file)
     {
-        return  $file->getId() . '_' .
-                $file->getExtension();
+        return $file->getId() . '.' .
+        $file->getExtension();
     }
 }

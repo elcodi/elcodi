@@ -17,7 +17,7 @@ services:
         class: %elcodi.core.media.service.file_manager.class%
         arguments:
             filesystem: @elcodi.core.media.filesystem.default
-            file_transformer: @elcodi.core.media.transformer.file
+            file_transformer: @elcodi.core.media.transformer.file_identifier_transformer
 
     elcodi.file_manager:
         alias: elcodi.core.media.service.file_manager
@@ -57,9 +57,3 @@ services:
             image_upload_controller_route: %elcodi.core.media.image_upload_controller_route%
         tags:
             - { name: routing.loader }
-
-    #
-    # Transformers
-    #
-    elcodi.core.media.transformer.file:
-        class: %elcodi.core.media.transformer.file.class%

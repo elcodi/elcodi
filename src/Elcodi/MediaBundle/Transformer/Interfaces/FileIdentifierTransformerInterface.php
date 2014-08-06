@@ -14,14 +14,14 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\MediaBundle\Transformer;
+namespace Elcodi\MediaBundle\Transformer\Interfaces;
 
 use Elcodi\MediaBundle\Entity\Interfaces\FileInterface;
 
 /**
- * Class FileTransformer
+ * Class FileIdentifierTransformerInterface
  */
-class FileTransformer
+interface FileIdentifierTransformerInterface
 {
     /**
      * Transforms an entity to be stored
@@ -32,9 +32,5 @@ class FileTransformer
      *
      * @api
      */
-    public function transform(FileInterface $file)
-    {
-        return  $file->getId() . '.' .
-                $file->getExtension();
-    }
+    public function transform(FileInterface $file);
 }
