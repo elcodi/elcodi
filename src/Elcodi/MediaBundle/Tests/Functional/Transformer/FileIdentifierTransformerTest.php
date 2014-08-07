@@ -14,14 +14,14 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\MediaBundle\Tests\Functional\Controller;
+namespace Elcodi\MediaBundle\Tests\Functional\Transformer;
 
 use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
 /**
- * Class ImageUploadControllerTest
+ * Class FileIdentifierTransformerTest
  */
-class ImageUploadControllerTest extends WebTestCase
+class FileIdentifierTransformerTest extends WebTestCase
 {
     /**
      * Returns the callable name of the service
@@ -30,6 +30,9 @@ class ImageUploadControllerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.media.controller.image_upload';
+        return [
+            'elcodi.core.media.transformer.file_identifier_transformer',
+            'elcodi.file_identifier_transformer'
+        ];
     }
 }

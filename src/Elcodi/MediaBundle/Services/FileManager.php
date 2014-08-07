@@ -19,7 +19,7 @@ namespace Elcodi\MediaBundle\Services;
 use Gaufrette\Filesystem;
 
 use Elcodi\MediaBundle\Entity\Interfaces\FileInterface;
-use Elcodi\MediaBundle\Transformer\FileTransformer;
+use Elcodi\MediaBundle\Transformer\Interfaces\FileIdentifierTransformerInterface;
 
 /**
  * Class FileManager
@@ -41,22 +41,22 @@ class FileManager
     protected $filesystem;
 
     /**
-     * @var FileTransformer
+     * @var FileIdentifierTransformerInterface
      *
-     * File Transformer
+     * File identifier Transformer
      */
-    protected $fileTransformer;
+    protected $fileIdentifierTransformer;
 
     /**
      * Construct method
      *
-     * @param Filesystem      $fileSystem      Filesystem
-     * @param FileTransformer $fileTransformer File transformer
+     * @param Filesystem                         $fileSystem                Filesystem
+     * @param FileIdentifierTransformerInterface $fileIdentifierTransformer File identifier transformer
      */
-    public function __construct(Filesystem $fileSystem, FileTransformer $fileTransformer)
+    public function __construct(Filesystem $fileSystem, FileIdentifierTransformerInterface $fileIdentifierTransformer)
     {
         $this->filesystem = $fileSystem;
-        $this->fileTransformer = $fileTransformer;
+        $this->fileIdentifierTransformer = $fileIdentifierTransformer;
     }
 
     /**
@@ -75,7 +75,7 @@ class FileManager
     public function uploadFile(FileInterface $file, $data, $overwrite = true)
     {
         $this->filesystem->write(
-            $this->fileTransformer->transform($file),
+            $this->fileIdentifierTransformer->transform($file),
             $data,
             $overwrite
         );
@@ -97,8 +97,8 @@ class FileManager
         $content = $this
             ->filesystem
             ->read($this
-                ->fileTransformer
-                ->transform($file)
+                    ->fileIdentifierTransformer
+                    ->transform($file)
             );
 
         $file->setContent($content);

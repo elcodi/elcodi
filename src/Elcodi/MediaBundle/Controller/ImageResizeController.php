@@ -16,15 +16,15 @@
 
 namespace Elcodi\MediaBundle\Controller;
 
-use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 use Elcodi\MediaBundle\Entity\Interfaces\ImageInterface;
-use Elcodi\MediaBundle\Services\FileManager;
+use Elcodi\MediaBundle\Repository\ImageRepository;
 use Elcodi\MediaBundle\Services\ImageManager;
+use Elcodi\MediaBundle\Transformer\Interfaces\ImageEtagTransformerInterface;
 
 /**
  * Class ImageController
@@ -32,18 +32,11 @@ use Elcodi\MediaBundle\Services\ImageManager;
 class ImageResizeController extends Controller
 {
     /**
-     * @var ObjectManager
+     * @var ImageRepository
      *
-     * Object manager
+     * Image repository
      */
-    protected $objectManager;
-
-    /**
-     * @var FileManager
-     *
-     * File manager
-     */
-    protected $fileManager;
+    protected $imageRepository;
 
     /**
      * @var ImageManager
@@ -53,11 +46,11 @@ class ImageResizeController extends Controller
     protected $imageManager;
 
     /**
-     * @var string
+     * @var ImageEtagTransformerInterface
      *
-     * Image namespace
+     * Image ETag Transformer
      */
-    protected $imageNamespace;
+    protected $imageEtagTransformer;
 
     /**
      * @var integer
@@ -76,26 +69,23 @@ class ImageResizeController extends Controller
     /**
      * Construct method
      *
-     * @param ObjectManager $objectManager  Object Manager
-     * @param FileManager   $fileManager    File Manager
-     * @param ImageManager  $imageManager   Image Manager
-     * @param string        $imageNamespace Image namespace
-     * @param integer       $maxAge         Max size
-     * @param integer       $sharedMaxAge   Shared max size
+     * @param ImageRepository               $imageRepository      Image Repository
+     * @param ImageManager                  $imageManager         Image Manager
+     * @param ImageEtagTransformerInterface $imageEtagTransformer ImageEtagTransformer Image Etag Transformer
+     * @param integer                       $maxAge               Max size
+     * @param integer                       $sharedMaxAge         Shared max size
      */
     public function __construct(
-        ObjectManager $objectManager,
-        FileManager $fileManager,
+        ImageRepository $imageRepository,
         ImageManager $imageManager,
-        $imageNamespace,
+        ImageEtagTransformerInterface $imageEtagTransformer,
         $maxAge,
         $sharedMaxAge
     )
     {
-        $this->objectManager = $objectManager;
-        $this->fileManager = $fileManager;
+        $this->imageRepository = $imageRepository;
         $this->imageManager = $imageManager;
-        $this->imageNamespace = $imageNamespace;
+        $this->imageEtagTransformer = $imageEtagTransformer;
         $this->maxAge = $maxAge;
         $this->sharedMaxAge = $sharedMaxAge;
     }
@@ -124,28 +114,30 @@ class ImageResizeController extends Controller
         /**
          * We retrieve image given its id
          */
-        $imageRepository = $this->objectManager->getRepository($this->imageNamespace);
-        $image = $imageRepository->find($id);
+        $image = $this
+            ->imageRepository
+            ->find($id);
 
         if (!($image instanceof ImageInterface)) {
 
-            throw new EntityNotFoundException($this->imageNamespace);
+            throw new EntityNotFoundException($this->imageRepository->getClassName());
         }
 
         $response = new Response();
 
-        $response->setEtag(
-            sha1(
-                $id . "." .
-                $image->getUpdatedAt()->getTimestamp() . "." .
-                $height . "." .
-                $width . "." .
-                $type
+        $response
+            ->setEtag($this
+                    ->imageEtagTransformer
+                    ->transform(
+                        $image,
+                        $height,
+                        $width,
+                        $type
+                    )
             )
-        );
-
-        $response->setLastModified($image->getUpdatedAt());
-        $response->setPublic();
+            ->setLastModified($image->getUpdatedAt())
+            ->setStatusCode(304)
+            ->setPublic();
 
         /**
          * If the object has not been modified, we return the response.
@@ -167,10 +159,11 @@ class ImageResizeController extends Controller
 
         $imageData = $image->getContent();
 
-        $response->setStatusCode(200);
-        $response->setMaxAge($this->maxAge);
-        $response->setSharedMaxAge($this->sharedMaxAge);
-        $response->setContent($imageData);
+        $response
+            ->setStatusCode(200)
+            ->setMaxAge($this->maxAge)
+            ->setSharedMaxAge($this->sharedMaxAge)
+            ->setContent($imageData);
 
         $response->headers->add(
             array(

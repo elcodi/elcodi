@@ -45,7 +45,7 @@ class FileServiceTest extends WebTestCase
         $image = $this->container->get('elcodi.core.media.factory.image')->create();
         $image->setId(1);
 
-        $fileTransformer = $this->container->get('elcodi.core.media.transformer.file');
+        $fileTransformer = $this->container->get('elcodi.core.media.transformer.file_identifier_transformer');
         $imageName = $fileTransformer->transform($image);
         $imageData = file_get_contents(realpath(dirname(__FILE__)) . '/images/image-10-10.gif');
 

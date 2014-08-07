@@ -14,14 +14,14 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\MediaBundle\Tests\Functional\Transformers;
+namespace Elcodi\MediaBundle\Tests\Functional\Transformer;
 
 use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 
 /**
- * Class FileTransformer
+ * Class ImageEtagTransformerTest
  */
-class FileTransformer extends WebTestCase
+class ImageEtagTransformerTest extends WebTestCase
 {
     /**
      * Returns the callable name of the service
@@ -30,6 +30,9 @@ class FileTransformer extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.media.transformer.file';
+        return [
+            'elcodi.core.media.transformer.image_etag_transformer',
+            'elcodi.image_etag_transformer'
+        ];
     }
 }
