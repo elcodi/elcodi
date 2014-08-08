@@ -24,6 +24,8 @@ use Elcodi\CartCouponBundle\Factory\CartCouponFactory;
 
 /**
  * Class CartCouponEventListener
+ *
+ * These Event Listeners are
  */
 class CartCouponEventListener
 {

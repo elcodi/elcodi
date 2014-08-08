@@ -48,6 +48,6 @@ class ContextConfiguration implements ContextConfigurationInterface
      */
     public function configureContext(ContextAwareInterface $contextAware)
     {
-        $contextAware->addContextElement('manager', $this->objectManager);
+        $contextAware->addContextElement(['manager', $this->objectManager]);
     }
 }

@@ -20,6 +20,7 @@ use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartCouponBundle\ElcodiCartCouponEvents;
 use Elcodi\CartCouponBundle\Entity\Interfaces\CartCouponInterface;
 use Elcodi\CartCouponBundle\Event\CartCouponOnApplyEvent;
+use Elcodi\CartCouponBundle\Event\CartCouponOnRejectedEvent;
 use Elcodi\CartCouponBundle\Event\CartCouponOnRemoveEvent;
 use Elcodi\CoreBundle\EventDispatcher\Abstracts\AbstractEventDispatcher;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
@@ -67,6 +68,26 @@ class CartCouponEventDispatcher extends AbstractEventDispatcher
         $event->setCartCoupon($cartCoupon);
         $this->eventDispatcher->dispatch(
             ElcodiCartCouponEvents::CART_COUPON_ONREMOVE,
+            $event
+        );
+    }
+
+    /**
+     * Dispatch event just before a coupon is removed into a Cart
+     *
+     * @param CartInterface   $cart   Cart where to apply the coupon
+     * @param CouponInterface $coupon Coupon to be applied
+     *
+     * @return CartCouponEventDispatcher self Object
+     */
+    public function dispatchCartCouponOnRejectedEvent(
+        CartInterface $cart,
+        CouponInterface $coupon
+    )
+    {
+        $event = new CartCouponOnRejectedEvent($cart, $coupon);
+        $this->eventDispatcher->dispatch(
+            ElcodiCartCouponEvents::CART_COUPON_ONREJECTED,
             $event
         );
     }

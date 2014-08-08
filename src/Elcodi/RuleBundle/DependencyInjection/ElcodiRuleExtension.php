@@ -16,8 +16,6 @@
 
 namespace Elcodi\RuleBundle\DependencyInjection;
 
-use Symfony\Component\Config\Definition\ConfigurationInterface;
-
 use Elcodi\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
@@ -37,23 +35,6 @@ class ElcodiRuleExtension extends AbstractExtension implements EntitiesOverridab
     }
 
     /**
-     * Return a new Configuration instance.
-     *
-     * If object returned by this method is an instance of
-     * ConfigurationInterface, extension will use the Configuration to read all
-     * bundle config definitions.
-     *
-     * Also will call getParametrizationValues method to load some config values
-     * to internal parameters.
-     *
-     * @return ConfigurationInterface Configuration file
-     */
-    protected function getConfigurationInstance()
-    {
-        return new Configuration();
-    }
-
-    /**
      * Config files to load
      *
      * @param array $config Configuration
@@ -68,6 +49,7 @@ class ElcodiRuleExtension extends AbstractExtension implements EntitiesOverridab
             'factories',
             'configurations',
             'repositories',
+            'objectManagers',
         ];
     }
 

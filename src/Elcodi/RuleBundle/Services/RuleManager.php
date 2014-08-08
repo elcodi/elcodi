@@ -92,6 +92,16 @@ class RuleManager implements ContextAwareInterface, ExpressionLanguageAwareInter
     }
 
     /**
+     * Get context
+     *
+     * @return array Context
+     */
+    public function getContext()
+    {
+        return $this->context;
+    }
+
+    /**
      * Evaluate all rules from a RuleGroup, given its code
      *
      * @param string $code    Rule code

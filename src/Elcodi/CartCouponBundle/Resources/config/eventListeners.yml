@@ -10,7 +10,10 @@ services:
             cart_coupon_manager: @elcodi.core.cart_coupon.service.cart_coupon_manager
             currency_wrapper: @elcodi.currency_wrapper
             currency_converter: @elcodi.currency_converter
+            cart_coupon_rule_manager: @elcodi.cart_coupon_rule_manager
+            cart_coupon_event_dispatcher: @elcodi.cart_coupon_event_dispatcher
         tags:
+            - { name: kernel.event_listener, event: cart.preload, method: onCartPreLoadCoupons, priority: 0 }
             - { name: kernel.event_listener, event: cart.onload, method: onCartLoadCoupons, priority: -32 }
 
     elcodi.core.cart_coupon.event_listener.order:
@@ -31,6 +34,15 @@ services:
         tags:
             - { name: kernel.event_listener, event: cart_coupon.onapply, method: onCartCouponApply, priority: 0 }
             - { name: kernel.event_listener, event: cart_coupon.onremove, method: onCartCouponRemove, priority: 0 }
+
+    elcodi.core.cart_coupon.event_listener.cart_coupon_rules:
+        class: %elcodi.core.cart_coupon.event_listener.cart_coupon_rules.class%
+        arguments:
+            cart_coupon_rule_manager: @elcodi.cart_coupon_rule_manager
+            cart_coupon_event_dispatcher: @elcodi.cart_coupon_event_dispatcher
+        tags:
+            - { name: kernel.event_listener, event: cart_coupon.onapply, method: onCartCouponApply, priority: 16 }
+
 
     elcodi.core.cart_coupon.event_listener.order_coupon:
         class: %elcodi.core.cart_coupon.event_listener.order_coupon.class%
