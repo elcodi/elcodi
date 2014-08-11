@@ -76,8 +76,6 @@ class OrderManager
      * @param string         $state The new state
      *
      * @return OrderManager self Object
-     *
-     * @api
      */
     public function addStateToOrder(
         OrderInterface $order,
@@ -99,8 +97,6 @@ class OrderManager
      * @param string         $state New state
      *
      * @return boolean Order can change to desired state
-     *
-     * @api
      */
     public function checkOrderCanChangeToState(
         OrderInterface $order,

@@ -86,8 +86,6 @@ class ImageManager
      * @return ImageInterface Image created
      *
      * @throws InvalidImageException File is not an image
-     *
-     * @api
      */
     public function createImage(File $file)
     {
@@ -125,8 +123,6 @@ class ImageManager
      * @param integer        $type   Type
      *
      * @return ImageInterface New Image instance
-     *
-     * @api
      */
     public function resize(
         ImageInterface $image,

@@ -76,8 +76,6 @@ class CurrencyWrapper
      * Gets currenc Currency
      *
      * @return CurrencyInterface Instance of Cart loaded
-     *
-     * @api
      */
     public function getCurrency()
     {
@@ -90,8 +88,6 @@ class CurrencyWrapper
      * @return CurrencyInterface Instance of Customer loaded
      *
      * @throws CurrencyNotAvailableException Any currency available
-     *
-     * @api
      */
     public function loadCurrency()
     {
@@ -172,8 +168,6 @@ class CurrencyWrapper
      * This method sets to null current cart and tries to load it again
      *
      * @return CurrencyInterface Currency re-loaded
-     *
-     * @api
      */
     public function reloadCurrency()
     {

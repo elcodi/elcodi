@@ -120,8 +120,6 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
      * Post load implementation
      *
      * @param ContainerBuilder $container A ContainerBuilder instance
-     *
-     * @api
      */
     public function postLoad(ContainerBuilder $container)
     {

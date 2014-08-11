@@ -109,8 +109,6 @@ class CartEventListener
      * Check cart integrity
      *
      * @param CartPreLoadEvent $event Event
-     *
-     * @api
      */
     public function onCartPreLoad(CartPreLoadEvent $event)
     {
@@ -137,8 +135,6 @@ class CartEventListener
      * This event listener should be subscribed after the cart flush action
      *
      * @param CartOnLoadEvent $event Event
-     *
-     * @api
      */
     public function onCartLoadPrices(CartOnLoadEvent $event)
     {
@@ -158,8 +154,6 @@ class CartEventListener
      * be persisted
      *
      * @param CartOnLoadEvent $event Event
-     *
-     * @api
      */
     public function onCartLoadFlush(CartOnLoadEvent $event)
     {
@@ -181,8 +175,6 @@ class CartEventListener
      * This event listener should be subscribed after the cart flush action
      *
      * @param CartOnLoadEvent $event Event
-     *
-     * @api
      */
     public function onCartLoadQuantities(CartOnLoadEvent $event)
     {
@@ -196,8 +188,6 @@ class CartEventListener
      * flag
      *
      * @param OrderOnCreatedEvent $event Event
-     *
-     * @api
      */
     public function onOrderCreated(OrderOnCreatedEvent $event)
     {

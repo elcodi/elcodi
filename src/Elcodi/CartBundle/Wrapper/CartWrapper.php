@@ -101,8 +101,6 @@ class CartWrapper
      * Return current cart value
      *
      * @return CartInterface Instance of Cart loaded
-     *
-     * @api
      */
     public function getCart()
     {
@@ -120,8 +118,6 @@ class CartWrapper
      * This behavior can be overriden just overwritting the wrapper
      *
      * @return CartInterface Instance of Cart loaded
-     *
-     * @api
      */
     public function loadCart()
     {
@@ -149,8 +145,6 @@ class CartWrapper
      * This method sets to null current cart and tries to load it again
      *
      * @return CartInterface Cart re-loaded
-     *
-     * @api
      */
     public function reloadCart()
     {

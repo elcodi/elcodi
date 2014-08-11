@@ -69,8 +69,6 @@ class FileManager
      * @param boolean       $overwrite Overwrite file if exists
      *
      * @return FileManager self Object
-     *
-     * @api
      */
     public function uploadFile(FileInterface $file, $data, $overwrite = true)
     {
@@ -89,8 +87,6 @@ class FileManager
      * @param FileInterface $file File to download
      *
      * @return FileInterface File downloaded
-     *
-     * @api
      */
     public function downloadFile(FileInterface $file)
     {

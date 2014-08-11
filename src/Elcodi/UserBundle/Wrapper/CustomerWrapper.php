@@ -70,8 +70,6 @@ class CustomerWrapper
      * Return current loaded customer
      *
      * @return CustomerInterface current customer
-     *
-     * @api
      */
     public function getCustomer()
     {
@@ -84,8 +82,6 @@ class CustomerWrapper
      * @param CustomerInterface $customer Customer
      *
      * @return CustomerWrapper self Object
-     *
-     * @api
      */
     public function setCustomer(CustomerInterface $customer = null)
     {
@@ -106,8 +102,6 @@ class CustomerWrapper
      * Otherwise, new Customer is created and stored (not flushed nor persisted)
      *
      * @return CustomerInterface Loaded customer
-     *
-     * @api
      */
     public function loadCustomer()
     {
@@ -138,8 +132,6 @@ class CustomerWrapper
      * to reload it.
      *
      * @return CustomerInterface Loaded customer
-     *
-     * @api
      */
     public function reloadCustomer()
     {

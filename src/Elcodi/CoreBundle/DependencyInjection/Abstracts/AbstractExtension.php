@@ -102,8 +102,6 @@ abstract class AbstractExtension extends Extension implements PrependExtensionIn
      * @param ContainerBuilder $container A ContainerBuilder instance
      *
      * @throws \InvalidArgumentException When provided tag is not defined in this extension
-     *
-     * @api
      */
     public function load(array $config, ContainerBuilder $container)
     {
@@ -152,8 +150,6 @@ abstract class AbstractExtension extends Extension implements PrependExtensionIn
      * Post load implementation
      *
      * @param ContainerBuilder $container A ContainerBuilder instance
-     *
-     * @api
      */
     public function postLoad(ContainerBuilder $container)
     {
