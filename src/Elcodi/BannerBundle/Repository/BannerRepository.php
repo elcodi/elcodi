@@ -51,7 +51,7 @@ class BannerRepository extends EntityRepository
             ->getRepository('ElcodiBannerBundle:Banner')
             ->createQueryBuilder('b')
             ->leftJoin('b.bannerZones', 'bz')
-            ->andWhere(
+            ->where(
                 is_null($language)
                     ? 'bz.language is NULL'
                     : 'bz.language = :language'
