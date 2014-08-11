@@ -53,8 +53,6 @@ class OrderStateManager
      * @param string $newState  New state to reach
      *
      * @return boolean New state is reachable from given state
-     *
-     * @api
      */
     public function isOrderStateChangePermitted(
         $lastState,

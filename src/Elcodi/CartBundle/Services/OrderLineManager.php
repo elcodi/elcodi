@@ -95,8 +95,6 @@ class OrderLineManager
      * @param String             $newState  New state to append
      *
      * @return OrderLineManager self Object
-     *
-     * @api
      */
     public function addStateToOrderLine(
         OrderInterface $order,
@@ -147,8 +145,6 @@ class OrderLineManager
      * @param String             $newState  New state to append
      *
      * @return boolean OrderLine can change to desired state
-     *
-     * @api
      */
     public function checkOrderLineCanChangeToState(
         OrderLineInterface $orderLine,

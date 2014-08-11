@@ -101,8 +101,6 @@ class NewsletterManager
      * @return NewsletterManager self Object
      *
      * @throws NewsletterCannotBeAddedException
-     *
-     * @api
      */
     public function subscribe($email, LanguageInterface $language = null)
     {
@@ -142,8 +140,6 @@ class NewsletterManager
      * @return $this
      *
      * @throws NewsletterCannotBeRemovedException
-     *
-     * @api
      */
     public function unSubscribe($email, $hash, LanguageInterface $language = null, $reason = null)
     {
@@ -188,8 +184,6 @@ class NewsletterManager
      * @param string $email Email
      *
      * @return boolean Is subscribed
-     *
-     * @api
      */
     public function isSubscribed($email)
     {
@@ -204,8 +198,6 @@ class NewsletterManager
      * @param string $email Email
      *
      * @return boolean Is subscribed
-     *
-     * @api
      */
     public function getSubscription($email)
     {
@@ -222,8 +214,6 @@ class NewsletterManager
      * @param string $email Email
      *
      * @return string Email
-     *
-     * @api
      */
     public function validateEmail($email)
     {

@@ -75,8 +75,6 @@ class CurrencyManager
      * Given a the currency base, returns a list of all exchange rates
      *
      * @return array Exchange rate list
-     *
-     * @api
      */
     public function getExchangeRateList()
     {

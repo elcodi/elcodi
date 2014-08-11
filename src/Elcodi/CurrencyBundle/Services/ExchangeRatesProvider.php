@@ -52,8 +52,6 @@ class ExchangeRatesProvider
      * Get all available currencies for this Exchange Rates provider
      *
      * @return array in the form of 'ISOCODE' => 'Currency description'
-     *
-     * @api
      */
     public function getCurrencies()
     {
@@ -67,8 +65,6 @@ class ExchangeRatesProvider
      * @param string|array $toCodes  ISO code of target currency, or array with ISO codes of targets
      *
      * @return array in the form of 'ISOCODE' => (float) exchange rate
-     *
-     * @api
      */
     public function getExchangeRates($fromCode, $toCodes = array())
     {

@@ -35,8 +35,6 @@ class CartLineEventDispatcher extends AbstractEventDispatcher
      * @param CartLineInterface $cartLine CartLine
      *
      * @return CartEventDispatcher self object
-     *
-     * @api
      */
     public function dispatchCartLineOnAddEvent(
         CartInterface $cart,
@@ -61,8 +59,6 @@ class CartLineEventDispatcher extends AbstractEventDispatcher
      * @param CartLineInterface $cartLine CartLine
      *
      * @return CartEventDispatcher self object
-     *
-     * @api
      */
     public function dispatchCartLineOnEditEvent(
         CartInterface $cart,
@@ -87,8 +83,6 @@ class CartLineEventDispatcher extends AbstractEventDispatcher
      * @param CartLineInterface $cartLine CartLine
      *
      * @return CartEventDispatcher self object
-     *
-     * @api
      */
     public function dispatchCartLineOnRemoveEvent(
         CartInterface $cart,

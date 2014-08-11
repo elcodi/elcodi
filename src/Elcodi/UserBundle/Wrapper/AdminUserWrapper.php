@@ -73,8 +73,6 @@ class AdminUserWrapper
      * Return current loaded customer
      *
      * @return CustomerInterface current customer
-     *
-     * @api
      */
     public function getAdminUser()
     {
@@ -87,8 +85,6 @@ class AdminUserWrapper
      * @param AdminUserInterface $adminUser Admin User
      *
      * @return AdminUserWrapper self Object
-     *
-     * @api
      */
     public function setAdminUser(AdminUserInterface $adminUser = null)
     {
@@ -110,8 +106,6 @@ class AdminUserWrapper
      * persisted)
      *
      * @return AdminUserInterface Loaded admin user
-     *
-     * @api
      */
     public function loadAdminUser()
     {
@@ -142,8 +136,6 @@ class AdminUserWrapper
      * tries to reload it.
      *
      * @return AdminUserInterface Loaded customer
-     *
-     * @api
      */
     public function reloadAdminUser()
     {

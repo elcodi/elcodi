@@ -50,8 +50,6 @@ class OrderEventListener
      * Flushes all loaded order and related entities.
      *
      * @param OrderOnCreatedEvent $event Event
-     *
-     * @api
      */
     public function onOrderCreated(OrderOnCreatedEvent $event)
     {

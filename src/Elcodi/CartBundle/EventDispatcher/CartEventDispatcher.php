@@ -36,8 +36,6 @@ class CartEventDispatcher extends AbstractEventDispatcher
      * @param CartInterface $cart Cart
      *
      * @return CartEventDispatcher self object
-     *
-     * @api
      */
     public function dispatchCartLoadEvents(CartInterface $cart)
     {
@@ -58,8 +56,6 @@ class CartEventDispatcher extends AbstractEventDispatcher
      * @param CartInterface $cart Cart
      *
      * @return CartEventDispatcher self object
-     *
-     * @api
      */
     public function dispatchCartPreLoadEvent(CartInterface $cart)
     {
@@ -81,8 +77,6 @@ class CartEventDispatcher extends AbstractEventDispatcher
      * @param CartInterface $cart Cart
      *
      * @return CartEventDispatcher self object
-     *
-     * @api
      */
     public function dispatchCartOnLoadEvent(CartInterface $cart)
     {
@@ -101,8 +95,6 @@ class CartEventDispatcher extends AbstractEventDispatcher
      * @param CartLineInterface $cartLine CartLine
      *
      * @return CartEventDispatcher self object
-     *
-     * @api
      */
     public function dispatchCartInconsistentEvent(
         CartInterface $cart,
@@ -126,8 +118,6 @@ class CartEventDispatcher extends AbstractEventDispatcher
      * @param CartInterface $cart Cart
      *
      * @return CartEventDispatcher self object
-     *
-     * @api
      */
     public function dispatchCartOnEmptyEvent(CartInterface $cart)
     {

@@ -108,8 +108,6 @@ class RuleManager implements ContextAwareInterface, ExpressionLanguageAwareInter
      * @param array  $context Context
      *
      * @return bool Result of evaluation
-     *
-     * @api
      */
     public function evaluateByCode($code, array $context = array())
     {

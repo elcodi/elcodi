@@ -57,8 +57,6 @@ class CurrencySessionManager
      * @param CurrencyInterface $currency Currency
      *
      * @return CurrencySessionManager self Object
-     *
-     * @api
      */
     public function set(CurrencyInterface $currency)
     {
@@ -71,8 +69,6 @@ class CurrencySessionManager
      * Get current cart id loaded in session
      *
      * @return integer Currency id
-     *
-     * @api
      */
     public function get()
     {

@@ -29,8 +29,6 @@ interface FileIdentifierTransformerInterface
      * @param FileInterface $file File to transform
      *
      * @return mixed Entity transformed
-     *
-     * @api
      */
     public function transform(FileInterface $file);
 }

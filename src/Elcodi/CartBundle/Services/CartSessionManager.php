@@ -77,8 +77,6 @@ class CartSessionManager
      * @param CartInterface $cart Cart
      *
      * @return CartSessionManager self Object
-     *
-     * @api
      */
     public function set(CartInterface $cart)
     {
@@ -100,8 +98,6 @@ class CartSessionManager
      * Get current cart id loaded in session
      *
      * @return integer Cart id
-     *
-     * @api
      */
     public function get()
     {

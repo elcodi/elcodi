@@ -110,8 +110,6 @@ class CartManager
      * @param CartLineInterface $cartLine Cart line
      *
      * @return CartManager self Object
-     *
-     * @api
      */
     protected function addLine(
         CartInterface $cart,
@@ -146,8 +144,6 @@ class CartManager
      * @param CartLineInterface $cartLine Cart line
      *
      * @return CartManager self Object
-     *
-     * @api
      */
     public function removeLine(
         CartInterface $cart,
@@ -170,8 +166,6 @@ class CartManager
      * @param CartLineInterface $cartLine Cart line
      *
      * @return CartManager self Object
-     *
-     * @api
      */
     public function silentRemoveLine(
         CartInterface $cart,
@@ -198,8 +192,6 @@ class CartManager
      * @param CartInterface $cart Cart
      *
      * @return CartManager self Object
-     *
-     * @api
      */
     public function emptyLines(
         CartInterface $cart
@@ -235,8 +227,6 @@ class CartManager
      * @param integer              $quantity    item quantity
      *
      * @return CartManager self Object
-     *
-     * @api
      */
     public function editCartLine(
         CartLineInterface $cartLine,
@@ -267,8 +257,6 @@ class CartManager
      * @param integer           $quantity Number of units to decrease CartLine quantity
      *
      * @return CartManager self Object
-     *
-     * @api
      */
     public function increaseCartLineQuantity(
         CartLineInterface $cartLine,
@@ -298,8 +286,6 @@ class CartManager
      * @param integer           $quantity Number of units to decrease CartLine quantity
      *
      * @return CartManager self Object
-     *
-     * @api
      */
     public function decreaseCartLineQuantity(
         CartLineInterface $cartLine,
@@ -327,8 +313,6 @@ class CartManager
      * @param integer           $quantity CartLine quantity to set
      *
      * @return CartManager self Object
-     *
-     * @api
      */
     public function setCartLineQuantity(
         CartLineInterface $cartLine,
@@ -396,8 +380,6 @@ class CartManager
      * @param integer              $quantity    Number of units to set or increase
      *
      * @return CartManager self Object
-     *
-     * @api
      */
     public function addProduct(
         CartInterface $cart,
