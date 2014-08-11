@@ -42,8 +42,8 @@ class ExpressionFactoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.rule.entity.expression.class'),
-            $this->container->get('elcodi.core.rule.entity.expression.instance')
+            $this->getParameter('elcodi.core.rule.entity.expression.class'),
+            $this->get('elcodi.core.rule.entity.expression.instance')
         );
     }
 
@@ -53,8 +53,8 @@ class ExpressionFactoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.rule.entity.expression.class'),
-            $this->container->get('elcodi.entity.expression.instance')
+            $this->getParameter('elcodi.core.rule.entity.expression.class'),
+            $this->get('elcodi.entity.expression.instance')
         );
     }
 }

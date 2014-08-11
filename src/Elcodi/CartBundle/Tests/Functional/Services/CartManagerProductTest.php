@@ -27,7 +27,6 @@ use Elcodi\CurrencyBundle\Entity\Money;
  */
 class CartManagerProductTest extends AbstractCartManagerTest
 {
-
     /**
      * Creates, flushes and returns a Purchasable
      *
@@ -39,13 +38,12 @@ class CartManagerProductTest extends AbstractCartManagerTest
          * @var CurrencyInterface $currency
          */
         $currency = $this
-            ->getRepository('elcodi.core.currency.entity.currency.class')
+            ->getRepository('currency')
             ->findOneBy([
                 'iso' => 'USD',
             ]);
 
         $product = $this
-            ->container
             ->get('elcodi.factory.product')
             ->create()
             ->setPrice(Money::create(1000, $currency))
@@ -55,11 +53,11 @@ class CartManagerProductTest extends AbstractCartManagerTest
             ->setStock(10);
 
         $this
-            ->getManager('elcodi.core.product.entity.product.class')
+            ->getObjectManager('product')
             ->persist($product);
 
         $this
-            ->getManager('elcodi.core.product.entity.product.class')
+            ->getObjectManager('product')
             ->flush();
 
         return $product;

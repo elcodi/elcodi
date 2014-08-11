@@ -42,8 +42,8 @@ class ReferralRuleRepositoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.referral_program.repository.referral_rule.class'),
-            $this->container->get('elcodi.core.referral_program.repository.referral_rule')
+            $this->getParameter('elcodi.core.referral_program.repository.referral_rule.class'),
+            $this->get('elcodi.core.referral_program.repository.referral_rule')
         );
     }
 
@@ -53,8 +53,8 @@ class ReferralRuleRepositoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.referral_program.repository.referral_rule.class'),
-            $this->container->get('elcodi.repository.referral_rule')
+            $this->getParameter('elcodi.core.referral_program.repository.referral_rule.class'),
+            $this->get('elcodi.repository.referral_rule')
         );
     }
 }

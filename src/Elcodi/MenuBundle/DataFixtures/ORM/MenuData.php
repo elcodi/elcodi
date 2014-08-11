@@ -16,6 +16,7 @@
 
 namespace Elcodi\MenuBundle\DataFixtures\ORM;
 
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
@@ -24,7 +25,7 @@ use Elcodi\MenuBundle\Entity\Menu\Interfaces\MenuInterface;
 /**
  * Class MenuData
  */
-class MenuData extends AbstractFixture
+class MenuData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
      * Load data fixtures with the passed EntityManager
@@ -66,12 +67,15 @@ class MenuData extends AbstractFixture
     }
 
     /**
-     * Order for given fixture
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on
      *
-     * @return int
+     * @return array
      */
-    public function getOrder()
+    public function getDependencies()
     {
-        return 2;
+        return [
+            'Elcodi\MenuBundle\DataFixtures\ORM\NodeData',
+        ];
     }
 }

@@ -27,5 +27,5 @@ services:
         arguments:
             entity_namespace: %elcodi.core.attribute.entity.value.class%
 
-    elcodi.repository.value:
+    elcodi.repository.attribute_value:
         alias: elcodi.core.attribute.repository.value

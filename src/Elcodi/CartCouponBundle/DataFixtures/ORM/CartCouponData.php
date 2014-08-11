@@ -16,6 +16,7 @@
 
 namespace Elcodi\CartCouponBundle\DataFixtures\ORM;
 
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
@@ -27,7 +28,7 @@ use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 /**
  * Class CartCouponData
  */
-class CartCouponData extends AbstractFixture
+class CartCouponData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
      * Load data fixtures with the passed EntityManager
@@ -59,12 +60,16 @@ class CartCouponData extends AbstractFixture
     }
 
     /**
-     * Order for given fixture
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on
      *
-     * @return int
+     * @return array
      */
-    public function getOrder()
+    public function getDependencies()
     {
-        return 6;
+        return [
+            'Elcodi\CartBundle\DataFixtures\ORM\CartData',
+            'Elcodi\CouponBundle\DataFixtures\ORM\CouponData',
+        ];
     }
 }

@@ -42,8 +42,8 @@ class CategoryRepositoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.product.repository.category.class'),
-            $this->container->get('elcodi.core.product.repository.category')
+            $this->getParameter('elcodi.core.product.repository.category.class'),
+            $this->get('elcodi.core.product.repository.category')
         );
     }
 
@@ -53,8 +53,8 @@ class CategoryRepositoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.product.repository.category.class'),
-            $this->container->get('elcodi.repository.category')
+            $this->getParameter('elcodi.core.product.repository.category.class'),
+            $this->get('elcodi.repository.category')
         );
     }
 }

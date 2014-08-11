@@ -23,7 +23,6 @@ use Elcodi\CoreBundle\Generator\Interfaces\GeneratorInterface;
  */
 class ReferralHashGenerator implements GeneratorInterface
 {
-
     /**
      * Generates a hash for every ReferralHash entity
      *

@@ -16,6 +16,7 @@
 
 namespace Elcodi\CurrencyBundle\DataFixtures\ORM;
 
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
@@ -26,7 +27,7 @@ use Elcodi\CurrencyBundle\Factory\CurrencyExchangeRateFactory;
 /**
  * Class RatesData
  */
-class RatesData extends AbstractFixture
+class RatesData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
      * Load data fixtures with the passed EntityManager
@@ -85,12 +86,15 @@ class RatesData extends AbstractFixture
     }
 
     /**
-     * Order for given fixture
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on
      *
-     * @return int
+     * @return array
      */
-    public function getOrder()
+    public function getDependencies()
     {
-        return 1;
+        return [
+            'Elcodi\CurrencyBundle\DataFixtures\ORM\CurrencyData',
+        ];
     }
 }

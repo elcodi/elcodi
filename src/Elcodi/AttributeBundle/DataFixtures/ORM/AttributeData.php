@@ -54,9 +54,4 @@ class AttributeData extends AbstractFixture
 
         $objectManager->flush();
     }
-
-    public function getOrder()
-    {
-        return 3;
-    }
 }

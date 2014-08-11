@@ -28,7 +28,6 @@ use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
  */
 class CouponFactory extends AbstractFactory
 {
-
     /**
      * Creates an instance of a simple coupon.
      *

@@ -42,8 +42,8 @@ class CustomerRepositoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.user.repository.customer.class'),
-            $this->container->get('elcodi.core.user.repository.customer')
+            $this->getParameter('elcodi.core.user.repository.customer.class'),
+            $this->get('elcodi.core.user.repository.customer')
         );
     }
 
@@ -53,8 +53,8 @@ class CustomerRepositoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.user.repository.customer.class'),
-            $this->container->get('elcodi.repository.customer')
+            $this->getParameter('elcodi.core.user.repository.customer.class'),
+            $this->get('elcodi.repository.customer')
         );
     }
 }

@@ -16,17 +16,16 @@
 
 namespace Elcodi\ProductBundle\DataFixtures\ORM;
 
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\AttributeBundle\Entity\Value;
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\CurrencyBundle\Entity\Money;
-use Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface;
-use Elcodi\ProductBundle\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 
-class VariantData extends AbstractFixture
+class VariantData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
      * Loads sample fixtures for product Variant entities
@@ -36,40 +35,15 @@ class VariantData extends AbstractFixture
     public function load(ObjectManager $manager)
     {
         /**
-         * Product
-         *
-         * @var ProductInterface      $product
-         * @var CategoryInterface     $category
-         * @var ManufacturerInterface $manufacturer
-         * @var CurrencyInterface     $currency
+         * @var ProductInterface  $productWithVariants
+         * @var CurrencyInterface $currency
          */
-        $product = $this->container->get('elcodi.core.product.factory.product')->create();
-        $category = $this->getReference('category');
-        $manufacturer = $this->getReference('manufacturer');
         $currency = $this->getReference('currency-dollar');
-        $product
-            ->setName('Product with variants')
-            ->setSku('product-sku-code-variant-1')
-            ->setSlug('product-with-variants')
-            ->setDescription('my product with variants description')
-            ->setShortDescription('my product with variants short description')
-            ->addCategory($category)
-            ->setPrincipalCategory($category)
-            ->setManufacturer($manufacturer)
-            ->setStock(10)
-            ->setPrice(Money::create(1000, $currency))
-            ->setEnabled(true);
-
-        $manager->persist($product);
-        $manager->flush($product);
-
-        $this->addReference('product-with-variant', $product);
-
-        /* Variants */
+        $productWithVariants = $this->getReference('product-with-variants');
 
         /**
          * @var $optionWhite Value
-         * @var $optionRed Value
+         * @var $optionRed   Value
          * @var $optionSmall Value
          * @var $optionLarge Value
          */
@@ -78,69 +52,103 @@ class VariantData extends AbstractFixture
         $optionSmall = $this->getReference('value-size-small');
         $optionLarge = $this->getReference('value-size-large');
 
-        /* Variant White-Small */
-        $variantWhiteSmall = $this->container->get('elcodi.core.product.factory.variant')->create();
+        /**
+         * Variant White-Small
+         */
+        $variantWhiteSmall = $this
+            ->container
+            ->get('elcodi.core.product.factory.variant')
+            ->create();
+
         $variantWhiteSmall
             ->setSku('variant-white-small-sku')
             ->setStock(100)
-            ->setProduct($product)
+            ->setProduct($productWithVariants)
             ->addOption($optionWhite)
             ->addOption($optionSmall)
             ->setPrice(Money::create(1500, $currency))
             ->setEnabled(true);
 
-        $product->setPrincipalVariant($variantWhiteSmall);
+        $productWithVariants->setPrincipalVariant($variantWhiteSmall);
 
         $manager->persist($variantWhiteSmall);
-        $this->addReference('variant-white-small', $product);
+        $this->addReference('variant-white-small', $productWithVariants);
 
-        /* Variant White-Large */
-        $variantWhiteLarge = $this->container->get('elcodi.core.product.factory.variant')->create();
+        /**
+         * Variant White-Large
+         */
+        $variantWhiteLarge = $this
+            ->container
+            ->get('elcodi.core.product.factory.variant')
+            ->create();
+
         $variantWhiteLarge
             ->setSku('variant-white-large-sku')
             ->setStock(100)
-            ->setProduct($product)
+            ->setProduct($productWithVariants)
             ->addOption($optionWhite)
             ->addOption($optionLarge)
             ->setPrice(Money::create(1800, $currency))
             ->setEnabled(true);
 
         $manager->persist($variantWhiteLarge);
-        $this->addReference('variant-white-large', $product);
+        $this->addReference('variant-white-large', $productWithVariants);
 
-        /* Variant Red-Small */
-        $variantRedSmall = $this->container->get('elcodi.core.product.factory.variant')->create();
+        /**
+         * Variant Red-Small
+         */
+        $variantRedSmall = $this
+            ->container
+            ->get('elcodi.core.product.factory.variant')
+            ->create();
+
         $variantRedSmall
             ->setSku('variant-red-small-sku')
             ->setStock(100)
-            ->setProduct($product)
+            ->setProduct($productWithVariants)
             ->addOption($optionRed)
             ->addOption($optionSmall)
             ->setPrice(Money::create(1500, $currency))
             ->setEnabled(true);
 
         $manager->persist($variantRedSmall);
-        $this->addReference('variant-red-small', $product);
+        $this->addReference('variant-red-small', $productWithVariants);
 
-        /* Variant Red-Large */
-        $variantRedLarge = $this->container->get('elcodi.core.product.factory.variant')->create();
+        /**
+         * Variant Red-Large
+         */
+        $variantRedLarge = $this
+            ->container
+            ->get('elcodi.core.product.factory.variant')
+            ->create();
+
         $variantRedLarge
             ->setSku('variant-red-large-sku')
             ->setStock(100)
-            ->setProduct($product)
+            ->setProduct($productWithVariants)
             ->addOption($optionRed)
             ->addOption($optionLarge)
             ->setPrice(Money::create(1800, $currency))
             ->setEnabled(true);
 
         $manager->persist($variantRedLarge);
-        $this->addReference('variant-red-large', $product);
+        $this->addReference('variant-red-large', $productWithVariants);
 
         $manager->flush();
     }
 
-    public function getOrder()
+    /**
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on
+     *
+     * @return array
+     */
+    public function getDependencies()
     {
-        return 5;
+        return [
+            'Elcodi\AttributeBundle\DataFixtures\ORM\ValueData',
+            'Elcodi\CurrencyBundle\DataFixtures\ORM\CurrencyData',
+            'Elcodi\ProductBundle\DataFixtures\ORM\ProductData',
+        ];
     }
 }

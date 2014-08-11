@@ -42,8 +42,8 @@ class NewsletterSubscriptionFactoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.newsletter.entity.newsletter_subscription.class'),
-            $this->container->get('elcodi.core.newsletter.entity.newsletter_subscription.instance')
+            $this->getParameter('elcodi.core.newsletter.entity.newsletter_subscription.class'),
+            $this->get('elcodi.core.newsletter.entity.newsletter_subscription.instance')
         );
     }
 
@@ -53,8 +53,8 @@ class NewsletterSubscriptionFactoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.newsletter.entity.newsletter_subscription.class'),
-            $this->container->get('elcodi.entity.newsletter_subscription.instance')
+            $this->getParameter('elcodi.core.newsletter.entity.newsletter_subscription.class'),
+            $this->get('elcodi.entity.newsletter_subscription.instance')
         );
     }
 }

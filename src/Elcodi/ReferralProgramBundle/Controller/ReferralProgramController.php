@@ -46,7 +46,7 @@ class ReferralProgramController extends Controller
     public function trackAction($hash)
     {
         $cookie = new Cookie(ElcodiReferralProgramBundle::REFERRAL_PROGRAM_COOKIE_NAME, $hash);
-        $response = $this->redirect($this->generateUrl($this->container->getParameter('elcodi.core.referral_program.controller_redirect')));
+        $response = $this->redirect($this->generateUrl($this->getParameter('elcodi.core.referral_program.controller_redirect')));
         $response->headers->setCookie($cookie);
 
         return $response;

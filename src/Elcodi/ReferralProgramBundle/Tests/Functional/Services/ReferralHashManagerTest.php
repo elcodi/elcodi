@@ -32,7 +32,10 @@ class ReferralHashManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.referral_program.service.referral_hash_manager';
+        return [
+            'elcodi.core.referral_program.service.referral_hash_manager',
+            'elcodi.referral_hash_manager',
+        ];
     }
 
     /**
@@ -66,24 +69,19 @@ class ReferralHashManagerTest extends WebTestCase
      */
     public function testGetReferralHashByCustomerExisting()
     {
-        $container = static::$kernel->getContainer();
-        $manager = $container->get('doctrine.orm.entity_manager');
-
         /**
          * @var Customer $customer
          */
-        $customer = $manager
-            ->getRepository('ElcodiUserBundle:Customer')
-            ->find(1);
+        $customer = $this->find('customer', 1);
 
         /**
          * @var ReferralHashManager $referralHashManager
          */
-        $referralHashManager = $container->get($this->getServiceCallableName());
+        $referralHashManager = $this->get('elcodi.referral_hash_manager');
         $referralHash = $referralHashManager->getReferralHashByCustomer($customer);
 
         $this->assertInstanceOf('Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralHashInterface', $referralHash);
-        $this->assertCount(1, $manager->getRepository('ElcodiReferralProgramBundle:ReferralHash')->findAll());
+        $this->assertCount(1, $this->findAll('referral_hash'));
     }
 
     /**
@@ -91,23 +89,18 @@ class ReferralHashManagerTest extends WebTestCase
      */
     public function testGetReferralHashByCustomerMissing()
     {
-        $container = static::$kernel->getContainer();
-        $manager = $container->get('doctrine.orm.entity_manager');
-
         /**
          * @var Customer $customer
          */
-        $customer = $manager
-            ->getRepository('ElcodiUserBundle:Customer')
-            ->find(2);
+        $customer = $this->find('customer', 2);
 
         /**
          * @var ReferralHashManager $referralHashManager
          */
-        $referralHashManager = $container->get($this->getServiceCallableName());
+        $referralHashManager = $this->get('elcodi.referral_hash_manager');
         $referralHash = $referralHashManager->getReferralHashByCustomer($customer);
 
         $this->assertInstanceOf('Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralHashInterface', $referralHash);
-        $this->assertCount(2, $manager->getRepository('ElcodiReferralProgramBundle:ReferralHash')->findAll());
+        $this->assertCount(2, $this->findAll('referral_hash'));
     }
 }

@@ -29,7 +29,6 @@ use Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface;
  */
 class BannerZoneData extends AbstractFixture
 {
-
     /**
      * {@inheritDoc}
      */
@@ -70,15 +69,5 @@ class BannerZoneData extends AbstractFixture
         $this->addReference('banner-zone-nolanguage', $bannerZoneNoLanguage);
 
         $manager->flush();
-    }
-
-    /**
-     * Order for given fixture
-     *
-     * @return int
-     */
-    public function getOrder()
-    {
-        return 2;
     }
 }

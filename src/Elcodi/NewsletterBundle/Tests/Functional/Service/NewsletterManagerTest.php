@@ -82,11 +82,10 @@ class NewsletterManagerTest extends WebTestCase
         parent::setUp();
 
         $this->newsletterManager = $this
-            ->container
             ->get('elcodi.core.newsletter.service.newsletter_manager');
 
         $this->newsletterSubscriptionRepository = $this
-            ->getRepository('elcodi.core.newsletter.entity.newsletter_subscription.class');
+            ->getRepository('newsletter_subscription');
     }
 
     /**
@@ -105,7 +104,7 @@ class NewsletterManagerTest extends WebTestCase
          * @var LanguageInterface $language
          */
         $language = $this
-            ->getRepository('elcodi.core.language.entity.language.class')
+            ->getRepository('language')
             ->findOneBy(array(
                 'iso' => 'es',
             ));
@@ -182,7 +181,7 @@ class NewsletterManagerTest extends WebTestCase
          * @var LanguageInterface $language
          */
         $language = $this
-            ->getRepository('elcodi.core.language.entity.language.class')
+            ->getRepository('language')
             ->findOneBy(array(
                 'iso' => 'es',
             ));

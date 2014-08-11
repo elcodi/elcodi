@@ -42,8 +42,8 @@ class RuleRepositoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.rule.repository.rule.class'),
-            $this->container->get('elcodi.core.rule.repository.rule')
+            $this->getParameter('elcodi.core.rule.repository.rule.class'),
+            $this->get('elcodi.core.rule.repository.rule')
         );
     }
 
@@ -53,8 +53,8 @@ class RuleRepositoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.rule.repository.rule.class'),
-            $this->container->get('elcodi.repository.rule')
+            $this->getParameter('elcodi.core.rule.repository.rule.class'),
+            $this->get('elcodi.repository.rule')
         );
     }
 }

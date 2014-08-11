@@ -9,6 +9,9 @@ services:
             coupon_factory: @elcodi.core.coupon.factory.coupon
             coupon_code_generator: @elcodi.core.referral_program.generator.coupon_code_generator
 
+    elcodi.coupon_manager:
+        alias: elcodi.core.coupon.service.coupon_manager
+
     #
     # Generators
     #

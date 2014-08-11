@@ -42,8 +42,8 @@ class CountryFactoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.geo.entity.country.class'),
-            $this->container->get('elcodi.core.geo.entity.country.instance')
+            $this->getParameter('elcodi.core.geo.entity.country.class'),
+            $this->get('elcodi.core.geo.entity.country.instance')
         );
     }
 
@@ -53,8 +53,8 @@ class CountryFactoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.geo.entity.country.class'),
-            $this->container->get('elcodi.entity.country.instance')
+            $this->getParameter('elcodi.core.geo.entity.country.class'),
+            $this->get('elcodi.entity.country.instance')
         );
     }
 }

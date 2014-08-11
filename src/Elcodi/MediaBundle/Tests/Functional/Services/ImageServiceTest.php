@@ -51,7 +51,6 @@ class ImageServiceTest extends WebTestCase
          * @var ImageInterface $image
          */
         $image = $this
-            ->container
             ->get('elcodi.core.media.service.image_manager')
             ->createImage($file);
 

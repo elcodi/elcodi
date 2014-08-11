@@ -16,7 +16,6 @@
 
 namespace Elcodi\UserBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
@@ -26,9 +25,8 @@ use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
  *
  * Load fixtures of admin entities
  */
-class CustomerData extends AbstractFixture implements OrderedFixtureInterface
+class CustomerData extends AbstractFixture
 {
-
     /**
      * {@inheritDoc}
      */
@@ -55,15 +53,5 @@ class CustomerData extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('customer-2', $customer2);
 
         $manager->flush();
-    }
-
-    /**
-     * Order for given fixture
-     *
-     * @return int
-     */
-    public function getOrder()
-    {
-        return 1;
     }
 }

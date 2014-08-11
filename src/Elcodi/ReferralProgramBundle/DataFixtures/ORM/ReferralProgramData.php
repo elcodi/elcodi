@@ -17,7 +17,7 @@
 namespace Elcodi\ReferralProgramBundle\DataFixtures\ORM;
 
 use DateTime;
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
@@ -28,7 +28,7 @@ use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 /**
  * Class ReferralProgram
  */
-class ReferralProgramData extends AbstractFixture implements OrderedFixtureInterface
+class ReferralProgramData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
      * {@inheritDoc}
@@ -38,7 +38,11 @@ class ReferralProgramData extends AbstractFixture implements OrderedFixtureInter
         /**
          * Referral Rule: ReferrerCoupon NO, InvitedCoupon NO
          */
-        $referralRuleNoNO = $this->container->get('elcodi.core.referral_program.factory.referralrule')->create();
+        $referralRuleNoNO = $this
+            ->container
+            ->get('elcodi.core.referral_program.factory.referralrule')
+            ->create();
+
         $referralRuleNoNO
             ->setReferrerType(ElcodiReferralProgramRuleTypes::TYPE_WITHOUT_COUPON)
             ->setInvitedType(ElcodiReferralProgramRuleTypes::TYPE_WITHOUT_COUPON)
@@ -53,7 +57,11 @@ class ReferralProgramData extends AbstractFixture implements OrderedFixtureInter
         /**
          * Referral Rule: ReferrerCoupon Register, InvitedCoupon Register
          */
-        $referralRuleRegReg = $this->container->get('elcodi.core.referral_program.factory.referralrule')->create();
+        $referralRuleRegReg = $this
+            ->container
+            ->get('elcodi.core.referral_program.factory.referralrule')
+            ->create();
+
         $referralRuleRegReg
             ->setReferrerType(ElcodiReferralProgramRuleTypes::TYPE_ON_REGISTER)
             ->setReferrerCoupon($coupon)
@@ -65,7 +73,11 @@ class ReferralProgramData extends AbstractFixture implements OrderedFixtureInter
         /**
          * Referral Rule: ReferrerCoupon Purchase, InvitedCoupon Purchase
          */
-        $referralRulePurchPurch = $this->container->get('elcodi.core.referral_program.factory.referralrule')->create();
+        $referralRulePurchPurch = $this
+            ->container
+            ->get('elcodi.core.referral_program.factory.referralrule')
+            ->create();
+
         $referralRulePurchPurch
             ->setReferrerType(ElcodiReferralProgramRuleTypes::TYPE_ON_FIRST_PURCHASE)
             ->setReferrerCoupon($coupon)
@@ -77,7 +89,11 @@ class ReferralProgramData extends AbstractFixture implements OrderedFixtureInter
         /**
          * Referral Rule: ReferrerCoupon Purchase, InvitedCoupon Purchase
          */
-        $referralRuleRegPurch = $this->container->get('elcodi.core.referral_program.factory.referralrule')->create();
+        $referralRuleRegPurch = $this
+            ->container
+            ->get('elcodi.core.referral_program.factory.referralrule')
+            ->create();
+
         $referralRuleRegPurch
             ->setReferrerType(ElcodiReferralProgramRuleTypes::TYPE_ON_REGISTER)
             ->setReferrerCoupon($coupon)
@@ -94,7 +110,11 @@ class ReferralProgramData extends AbstractFixture implements OrderedFixtureInter
          * @var CustomerInterface $customer
          */
         $customer = $this->getReference('customer-1');
-        $referralHash = $this->container->get('elcodi.core.referral_program.factory.referralhash')->create();
+        $referralHash = $this
+            ->container
+            ->get('elcodi.core.referral_program.factory.referralhash')
+            ->create();
+
         $referralHash
             ->setReferrer($customer)
             ->setHash('1234567890');
@@ -114,12 +134,16 @@ class ReferralProgramData extends AbstractFixture implements OrderedFixtureInter
     }
 
     /**
-     * Order for given fixture
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on
      *
-     * @return int
+     * @return array
      */
-    public function getOrder()
+    public function getDependencies()
     {
-        return 128;
+        return [
+            'Elcodi\UserBundle\DataFixtures\ORM\CustomerData',
+            'Elcodi\CouponBundle\DataFixtures\ORM\CouponData',
+        ];
     }
 }

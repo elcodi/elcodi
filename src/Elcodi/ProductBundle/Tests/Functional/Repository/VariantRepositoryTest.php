@@ -32,7 +32,7 @@ class VariantRepositoryTest extends WebTestCase
     {
         return [
             'elcodi.core.product.repository.variant',
-            'elcodi.repository.variant',
+            'elcodi.repository.product_variant',
         ];
     }
 
@@ -42,8 +42,8 @@ class VariantRepositoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.product.repository.variant.class'),
-            $this->container->get('elcodi.core.product.repository.variant')
+            $this->getParameter('elcodi.core.product.repository.variant.class'),
+            $this->get('elcodi.core.product.repository.variant')
         );
     }
 }

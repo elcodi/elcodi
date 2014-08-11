@@ -42,8 +42,8 @@ class ManufacturerRepositoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.product.repository.manufacturer.class'),
-            $this->container->get('elcodi.core.product.repository.manufacturer')
+            $this->getParameter('elcodi.core.product.repository.manufacturer.class'),
+            $this->get('elcodi.core.product.repository.manufacturer')
         );
     }
 
@@ -53,8 +53,8 @@ class ManufacturerRepositoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.product.repository.manufacturer.class'),
-            $this->container->get('elcodi.repository.manufacturer')
+            $this->getParameter('elcodi.core.product.repository.manufacturer.class'),
+            $this->get('elcodi.repository.manufacturer')
         );
     }
 }

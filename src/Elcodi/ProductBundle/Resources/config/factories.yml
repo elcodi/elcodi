@@ -34,7 +34,7 @@ services:
         calls:
             - [setEntityNamespace, ["%elcodi.core.product.entity.variant.class%"]]
 
-    elcodi.factory.variant:
+    elcodi.factory.product_variant:
         alias: elcodi.core.product.factory.variant
 
     #
@@ -84,7 +84,7 @@ services:
         factory_method: create
         scope: prototype
 
-    elcodi.entity.variant.instance:
+    elcodi.entity.product_variant.instance:
         alias: elcodi.core.product.entity.variant.instance
 
     #

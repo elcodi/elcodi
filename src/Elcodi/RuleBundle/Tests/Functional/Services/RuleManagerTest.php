@@ -75,9 +75,7 @@ class RuleManagerTest extends WebTestCase
     {
         parent::setUp();
 
-        $this->ruleManager = $this
-            ->container
-            ->get('elcodi.rule_manager');
+        $this->ruleManager = $this->get('elcodi.rule_manager');
     }
 
     /**
@@ -88,7 +86,7 @@ class RuleManagerTest extends WebTestCase
     public function testEvaluateRuleTrue()
     {
         $ruleTrue = $this
-            ->getRepository('elcodi.core.rule.entity.abstract_rule.class')
+            ->getRepository('abstract_rule')
             ->findOneBy(array(
                 'code' => 'rule-group-true'
             ));
@@ -104,7 +102,7 @@ class RuleManagerTest extends WebTestCase
     public function testEvaluateRuleFalse()
     {
         $ruleFalse = $this
-            ->getRepository('elcodi.core.rule.entity.abstract_rule.class')
+            ->getRepository('abstract_rule')
             ->findOneBy(array(
                 'code' => 'rule-false'
             ));
@@ -120,7 +118,7 @@ class RuleManagerTest extends WebTestCase
     public function testEvaluateRuleParameter()
     {
         $ruleParameter = $this
-            ->getRepository('elcodi.core.rule.entity.abstract_rule.class')
+            ->getRepository('abstract_rule')
             ->findOneBy(array(
                 'code' => 'rule-variables'
             ));
@@ -141,7 +139,7 @@ class RuleManagerTest extends WebTestCase
     public function testEvaluateRuleParameterException()
     {
         $ruleParameter = $this
-            ->getRepository('elcodi.core.rule.entity.abstract_rule.class')
+            ->getRepository('abstract_rule')
             ->findOneBy(array(
                 'code' => 'rule-variables'
             ));

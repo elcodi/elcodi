@@ -58,9 +58,7 @@ class LoadExchangeRatesCommand extends ContainerAwareCommand
         //get all available currencies
         $currencyRepository = $this
             ->getContainer()
-            ->get('doctrine')
-            ->getManager()
-            ->getRepository('ElcodiCurrencyBundle:Currency');
+            ->get('elcodi.repository.currency');
 
         //get base currency code
         $baseCurrencyCode = $this
@@ -77,10 +75,9 @@ class LoadExchangeRatesCommand extends ContainerAwareCommand
             );
 
         //get the manager
-        $manager = $this
+        $exchangeRatesObjectManager = $this
             ->getContainer()
-            ->get('doctrine')
-            ->getManager();
+            ->get('elcodi.object_manager.exchange_rate');
 
         //get all active currencies
         $currencies = $currencyRepository
@@ -101,9 +98,7 @@ class LoadExchangeRatesCommand extends ContainerAwareCommand
 
         $currencyExchangeRatesRepository = $this
             ->getContainer()
-            ->get('doctrine')
-            ->getManager()
-            ->getRepository('ElcodiCurrencyBundle:CurrencyExchangeRate');
+            ->get('elcodi.repository.currency_exchange_rate');
 
         foreach ($rates as $code => $rate) {
 
@@ -132,10 +127,10 @@ class LoadExchangeRatesCommand extends ContainerAwareCommand
 
             if (!$exchangeRate->getId()) {
 
-                $manager->persist($exchangeRate);
+                $exchangeRatesObjectManager->persist($exchangeRate);
             }
         }
 
-        $manager->flush();
+        $exchangeRatesObjectManager->flush();
     }
 }

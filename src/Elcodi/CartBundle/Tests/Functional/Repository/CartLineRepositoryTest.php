@@ -52,8 +52,8 @@ class CartLineRepositoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.cart.repository.cart_line.class'),
-            $this->container->get('elcodi.core.cart.repository.cart_line')
+            $this->getParameter('elcodi.core.cart.repository.cart_line.class'),
+            $this->get('elcodi.core.cart.repository.cart_line')
         );
     }
 
@@ -63,8 +63,8 @@ class CartLineRepositoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.cart.repository.cart_line.class'),
-            $this->container->get('elcodi.repository.cart_line')
+            $this->getParameter('elcodi.core.cart.repository.cart_line.class'),
+            $this->get('elcodi.repository.cart_line')
         );
     }
 }

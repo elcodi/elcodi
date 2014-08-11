@@ -52,8 +52,8 @@ class OrderLineHistoryFactoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.cart.entity.order_line_history.class'),
-            $this->container->get('elcodi.core.cart.entity.order_line_history.instance')
+            $this->getParameter('elcodi.core.cart.entity.order_line_history.class'),
+            $this->get('elcodi.core.cart.entity.order_line_history.instance')
         );
     }
 
@@ -63,8 +63,8 @@ class OrderLineHistoryFactoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.cart.entity.order_line_history.class'),
-            $this->container->get('elcodi.entity.order_line_history.instance')
+            $this->getParameter('elcodi.core.cart.entity.order_line_history.class'),
+            $this->get('elcodi.entity.order_line_history.instance')
         );
     }
 }

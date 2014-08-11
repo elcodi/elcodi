@@ -17,7 +17,7 @@
 namespace Elcodi\CouponBundle\DataFixtures\ORM;
 
 use DateTime;
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
@@ -30,7 +30,7 @@ use Elcodi\CurrencyBundle\Entity\Money;
 /**
  * Class CouponData
  */
-class CouponData extends AbstractFixture implements OrderedFixtureInterface
+class CouponData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
      * {@inheritDoc}
@@ -43,9 +43,6 @@ class CouponData extends AbstractFixture implements OrderedFixtureInterface
          * @var CouponFactory     $couponFactory
          */
         $couponFactory = $this->container->get('elcodi.core.coupon.factory.coupon');
-        /**
-         * @var CurrencyInterface
-         */
         $currency = $this->getReference('currency-dollar');
 
         /**
@@ -99,12 +96,15 @@ class CouponData extends AbstractFixture implements OrderedFixtureInterface
     }
 
     /**
-     * Order for given fixture
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on
      *
-     * @return int
+     * @return array
      */
-    public function getOrder()
+    public function getDependencies()
     {
-        return 3;
+        return [
+            'Elcodi\CurrencyBundle\DataFixtures\ORM\CurrencyData',
+        ];
     }
 }

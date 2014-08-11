@@ -27,7 +27,7 @@ services:
         arguments:
             entity_namespace: %elcodi.core.product.entity.variant.class%
 
-    elcodi.repository.variant:
+    elcodi.repository.product_variant:
         alias: elcodi.core.product.repository.variant
 
     #

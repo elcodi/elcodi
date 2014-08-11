@@ -89,9 +89,14 @@ class OrderManagerTest extends WebTestCase
          * @var OrderLineHistoryFactory       $orderLineHistoryFactory
          * @var OrderLineFactory              $orderLineFactory
          */
-        $orderLineStateEventDispatcher = $this->container->get('elcodi.order_line_state_event_dispatcher');
-        $orderLineHistoryFactory = $this->container->get('elcodi.factory.order_line_history');
-        $orderLineFactory = $this->container->get('elcodi.factory.order_line');
+        $orderLineStateEventDispatcher = $this
+            ->get('elcodi.order_line_state_event_dispatcher');
+
+        $orderLineHistoryFactory = $this
+            ->get('elcodi.factory.order_line_history');
+
+        $orderLineFactory = $this
+            ->get('elcodi.factory.order_line');
 
         $orderLineManager = new OrderLineManager(
             $orderLineStateEventDispatcher,
@@ -137,7 +142,6 @@ class OrderManagerTest extends WebTestCase
     {
         $orderLines = new ArrayCollection();
         $orderLineFactory = $this
-            ->container
             ->get('elcodi.factory.order_line');
 
         foreach ($lastOrderLineStates as $lastOrderLineState) {
@@ -161,7 +165,6 @@ class OrderManagerTest extends WebTestCase
          * @var OrderInterface $order
          */
         $order = $this
-            ->container
             ->get('elcodi.factory.order')
             ->create()
             ->setOrderLines($orderLines);

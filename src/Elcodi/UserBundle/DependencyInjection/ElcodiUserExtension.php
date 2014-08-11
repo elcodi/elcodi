@@ -51,6 +51,7 @@ class ElcodiUserExtension extends AbstractExtension implements EntitiesOverridab
             'repositories',
             'wrappers',
             'providers',
+            'objectManagers',
         ];
     }
 

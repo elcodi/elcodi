@@ -16,7 +16,6 @@
 
 namespace Elcodi\RuleBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
@@ -26,7 +25,7 @@ use Elcodi\RuleBundle\Factory\ExpressionFactory;
 /**
  * Class ExpressionData
  */
-class ExpressionData extends AbstractFixture implements OrderedFixtureInterface
+class ExpressionData extends AbstractFixture
 {
     /**
      * {@inheritDoc}
@@ -61,15 +60,5 @@ class ExpressionData extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('expression-variables', $expressionVariables);
 
         $manager->flush();
-    }
-
-    /**
-     * Order for given fixture
-     *
-     * @return int
-     */
-    public function getOrder()
-    {
-        return 1;
     }
 }

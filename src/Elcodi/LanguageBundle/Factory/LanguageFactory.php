@@ -24,7 +24,6 @@ use Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface;
  */
 class LanguageFactory extends AbstractFactory
 {
-
     /**
      * Creates an instance of a simple language.
      *

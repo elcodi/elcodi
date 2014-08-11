@@ -42,8 +42,8 @@ class AdminUserRepositoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.user.repository.admin_user.class'),
-            $this->container->get('elcodi.core.user.repository.admin_user')
+            $this->getParameter('elcodi.core.user.repository.admin_user.class'),
+            $this->get('elcodi.core.user.repository.admin_user')
         );
     }
 
@@ -53,8 +53,8 @@ class AdminUserRepositoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.user.repository.admin_user.class'),
-            $this->container->get('elcodi.repository.admin_user')
+            $this->getParameter('elcodi.core.user.repository.admin_user.class'),
+            $this->get('elcodi.repository.admin_user')
         );
     }
 }

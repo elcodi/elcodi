@@ -42,8 +42,8 @@ class CurrencyRepositoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.currency.repository.currency.class'),
-            $this->container->get('elcodi.core.currency.repository.currency')
+            $this->getParameter('elcodi.core.currency.repository.currency.class'),
+            $this->get('elcodi.core.currency.repository.currency')
         );
     }
 
@@ -53,8 +53,8 @@ class CurrencyRepositoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.currency.repository.currency.class'),
-            $this->container->get('elcodi.repository.currency')
+            $this->getParameter('elcodi.core.currency.repository.currency.class'),
+            $this->get('elcodi.repository.currency')
         );
     }
 }

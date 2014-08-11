@@ -63,9 +63,7 @@ class MenuManagerTest extends WebTestCase
     {
         parent::setUp();
 
-        $this->menuManager = $this
-            ->container
-            ->get('elcodi.menu_manager');
+        $this->menuManager = $this->get('elcodi.menu_manager');
     }
 
     /**

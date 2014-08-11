@@ -42,8 +42,8 @@ class AddressRepositoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.geo.repository.address.class'),
-            $this->container->get('elcodi.core.geo.repository.address')
+            $this->getParameter('elcodi.core.geo.repository.address.class'),
+            $this->get('elcodi.core.geo.repository.address')
         );
     }
 
@@ -53,8 +53,8 @@ class AddressRepositoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.geo.repository.address.class'),
-            $this->container->get('elcodi.repository.address')
+            $this->getParameter('elcodi.core.geo.repository.address.class'),
+            $this->get('elcodi.repository.address')
         );
     }
 }

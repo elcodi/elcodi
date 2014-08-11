@@ -25,7 +25,6 @@ use Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface;
  */
 interface BannerZoneInterface
 {
-
     /**
      * Set banner name
      *

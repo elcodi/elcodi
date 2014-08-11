@@ -62,10 +62,6 @@ class CartOrderTransformerTest extends WebTestCase
     protected function loadFixturesBundles()
     {
         return [
-            'ElcodiProductBundle',
-            'ElcodiAttributeBundle',
-            'ElcodiCurrencyBundle',
-            'ElcodiUserBundle',
             'ElcodiCartBundle',
         ];
     }
@@ -81,18 +77,14 @@ class CartOrderTransformerTest extends WebTestCase
          * @var CartOrderTransformer $cartOrderTransformer
          */
         $cartOrderTransformer = $this
-            ->container
             ->get('elcodi.cart_order_transformer');
 
         /**
          * @var CartInterface $cart
          */
-        $this->cart = $this
-            ->getRepository('elcodi.core.cart.entity.cart.class')
-            ->find(2);
+        $this->cart = $this->find('cart', 2);
 
         $this
-            ->container
             ->get('elcodi.cart_event_dispatcher')
             ->dispatchCartLoadEvents($this->cart);
 
@@ -107,7 +99,6 @@ class CartOrderTransformerTest extends WebTestCase
     public function testCreateOrderFromCart()
     {
         $orderInitialState = $this
-            ->container
             ->getParameter('elcodi.core.cart.order_initial_state');
 
         $this->assertInstanceOf('Elcodi\CartBundle\Entity\Interfaces\OrderInterface', $this->order);
@@ -129,12 +120,12 @@ class CartOrderTransformerTest extends WebTestCase
         }
 
         $this
-            ->getManager('elcodi.core.cart.entity.order.class')
+            ->getObjectManager('order')
             ->clear();
 
-        $this->assertCount(1, $this
-                ->getRepository('elcodi.core.cart.entity.order.class')
-                ->findAll()
+        $this->assertCount(
+            1,
+            $this->findAll('order')
         );
     }
 
@@ -149,7 +140,6 @@ class CartOrderTransformerTest extends WebTestCase
          * @var $order OrderInterface
          */
         $order = $this
-            ->container
             ->get('elcodi.cart_order_transformer')
             ->createOrderFromCart($this->cart);
 

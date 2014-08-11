@@ -62,14 +62,12 @@ class BannerManagerTest extends WebTestCase
     public function testGetBannersFromBannerZoneCode()
     {
         $language = $this
-            ->getManager('elcodi.core.language.entity.language.class')
-            ->getRepository('ElcodiLanguageBundle:Language')
+            ->getRepository('language')
             ->findOneBy(array(
                 'iso' => 'es',
             ));
 
         $zones = $this
-            ->container
             ->get('elcodi.core.banner.service.banner_manager')
             ->getBannersFromBannerZoneCode('bannerzone-code', $language);
 
@@ -83,7 +81,6 @@ class BannerManagerTest extends WebTestCase
     public function testGetBannersFromBannerZoneCodeNoLanguage()
     {
         $zones = $this
-            ->container
             ->get('elcodi.core.banner.service.banner_manager')
             ->getBannersFromBannerZoneCode('bannerzone-code-nolanguage');
 

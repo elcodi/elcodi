@@ -19,7 +19,6 @@ parameters:
     #
     # Services
     #
-    elcodi.core.product.service.product_manager.class: Elcodi\ProductBundle\Services\ProductManager
     elcodi.core.product.service.category_manager.class: Elcodi\ProductBundle\Services\CategoryManager
     elcodi.core.product.service.product_collection_provider.class: Elcodi\ProductBundle\Services\ProductCollectionProvider
 

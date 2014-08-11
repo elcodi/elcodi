@@ -16,21 +16,20 @@
 
 namespace Elcodi\CartBundle\DataFixtures\ORM;
 
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 
 /**
  * Class CartData
  */
-class CartData extends AbstractFixture
+class CartData extends AbstractFixture implements DependentFixtureInterface
 {
-
     /**
      * Load data fixtures with the passed EntityManager
      *
@@ -43,16 +42,17 @@ class CartData extends AbstractFixture
          *
          * @var CartInterface     $emptyCart
          * @var CartInterface     $fullCart
-         * @var CurrencyInterface $currency
          * @var CustomerInterface $customer
          * @var ProductInterface  $product
          * @var ProductInterface  $productReduced
          * @var CartLineInterface $cartLine1
          * @var CartLineInterface $cartLine2
          */
-        $currency = $this->getReference('currency-dollar');
+        $emptyCart = $this
+            ->container
+            ->get('elcodi.core.cart.factory.cart')
+            ->create();
 
-        $emptyCart = $this->container->get('elcodi.core.cart.factory.cart')->create();
         $customer = $this->getReference('customer-1');
         $product = $this->getReference('product');
         $productReduced = $this->getReference('product-reduced');
@@ -61,11 +61,19 @@ class CartData extends AbstractFixture
         $manager->persist($emptyCart);
         $this->addReference('empty-cart', $emptyCart);
 
-        $fullCart = $this->container->get('elcodi.core.cart.factory.cart')->create();
+        $fullCart = $this
+            ->container
+            ->get('elcodi.core.cart.factory.cart')
+            ->create();
+
         $customer = $this->getReference('customer-2');
         $fullCart->setCustomer($customer);
 
-        $cartLine1 = $this->container->get('elcodi.core.cart.factory.cart_line')->create();
+        $cartLine1 = $this
+            ->container
+            ->get('elcodi.core.cart.factory.cart_line')
+            ->create();
+
         $fullCart->addCartLine($cartLine1);
         $cartLine1
             ->setProduct($product)
@@ -74,7 +82,11 @@ class CartData extends AbstractFixture
             ->setQuantity(2)
             ->setCart($fullCart);
 
-        $cartLine2 = $this->container->get('elcodi.core.cart.factory.cart_line')->create();
+        $cartLine2 = $this
+            ->container
+            ->get('elcodi.core.cart.factory.cart_line')
+            ->create();
+
         $fullCart->addCartLine($cartLine2);
         $cartLine2
             ->setProduct($productReduced)
@@ -90,12 +102,16 @@ class CartData extends AbstractFixture
     }
 
     /**
-     * Order for given fixture
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on
      *
-     * @return int
+     * @return array
      */
-    public function getOrder()
+    public function getDependencies()
     {
-        return 5;
+        return [
+            'Elcodi\ProductBundle\DataFixtures\ORM\ProductData',
+            'Elcodi\UserBundle\DataFixtures\ORM\CustomerData',
+        ];
     }
 }

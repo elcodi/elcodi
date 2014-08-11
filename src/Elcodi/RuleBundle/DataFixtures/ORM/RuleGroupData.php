@@ -16,7 +16,7 @@
 
 namespace Elcodi\RuleBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
@@ -27,7 +27,7 @@ use Elcodi\RuleBundle\Factory\RuleGroupFactory;
 /**
  * Class RuleGroupData
  */
-class RuleGroupData extends AbstractFixture implements OrderedFixtureInterface
+class RuleGroupData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
      * {@inheritDoc}
@@ -68,12 +68,15 @@ class RuleGroupData extends AbstractFixture implements OrderedFixtureInterface
     }
 
     /**
-     * Order for given fixture
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on
      *
-     * @return int
+     * @return array
      */
-    public function getOrder()
+    public function getDependencies()
     {
-        return 3;
+        return [
+            'Elcodi\RuleBundle\DataFixtures\ORM\RuleData',
+        ];
     }
 }

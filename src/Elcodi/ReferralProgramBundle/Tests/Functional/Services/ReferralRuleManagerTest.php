@@ -33,7 +33,10 @@ class ReferralRuleManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.referral_program.service.referral_rule_manager';
+        return [
+            'elcodi.core.referral_program.service.referral_rule_manager',
+            'elcodi.referral_rule_manager',
+        ];
     }
 
     /**
@@ -67,24 +70,19 @@ class ReferralRuleManagerTest extends WebTestCase
      */
     public function testGetReferralHashByCustomerExisting()
     {
-        $container = static::$kernel->getContainer();
-        $manager = $container->get('doctrine.orm.entity_manager');
-
         /**
          * @var ReferralRuleInterface $referralRule
          */
-        $referralRule = $manager->find('ElcodiReferralProgramBundle:ReferralRule', 4);
+        $referralRule = $this->find('referral_rule', 4);
 
-        $container
+        $this
             ->get('elcodi.core.referral_program.service.referral_rule_manager')
             ->enableReferralRule($referralRule);
 
         /**
          * @var Collection $referralRules
          */
-        $referralRules = $manager
-            ->getRepository('ElcodiReferralProgramBundle:ReferralRule')
-            ->findAll();
+        $referralRules = $this->findAll('referral_rule');
         $referralRules->removeElement($referralRule);
 
         $this->assertTrue($referralRule->isEnabled());

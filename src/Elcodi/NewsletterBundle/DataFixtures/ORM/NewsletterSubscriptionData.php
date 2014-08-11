@@ -16,7 +16,7 @@
 
 namespace Elcodi\NewsletterBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
@@ -25,7 +25,7 @@ use Elcodi\NewsletterBundle\Factory\NewsletterSubscriptionFactory;
 /**
  * Class NewsletterSubscriptionData
  */
-class NewsletterSubscriptionData extends AbstractFixture implements OrderedFixtureInterface
+class NewsletterSubscriptionData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
      * {@inheritDoc}
@@ -68,12 +68,15 @@ class NewsletterSubscriptionData extends AbstractFixture implements OrderedFixtu
     }
 
     /**
-     * Order for given fixture
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on
      *
-     * @return int
+     * @return array
      */
-    public function getOrder()
+    public function getDependencies()
     {
-        return 2;
+        return [
+            'Elcodi\LanguageBundle\DataFixtures\ORM\LanguageData',
+        ];
     }
 }

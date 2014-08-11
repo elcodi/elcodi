@@ -42,8 +42,8 @@ class CouponFactoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.coupon.entity.coupon.class'),
-            $this->container->get('elcodi.core.coupon.entity.coupon.instance')
+            $this->getParameter('elcodi.core.coupon.entity.coupon.class'),
+            $this->get('elcodi.core.coupon.entity.coupon.instance')
         );
     }
 
@@ -53,8 +53,8 @@ class CouponFactoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.coupon.entity.coupon.class'),
-            $this->container->get('elcodi.entity.coupon.instance')
+            $this->getParameter('elcodi.core.coupon.entity.coupon.class'),
+            $this->get('elcodi.entity.coupon.instance')
         );
     }
 }
