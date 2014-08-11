@@ -47,8 +47,6 @@ class BannerRepository extends EntityRepository
         }
 
         $banners = $this
-            ->getEntityManager()
-            ->getRepository('ElcodiBannerBundle:Banner')
             ->createQueryBuilder('b')
             ->leftJoin('b.bannerZones', 'bz')
             ->andWhere(

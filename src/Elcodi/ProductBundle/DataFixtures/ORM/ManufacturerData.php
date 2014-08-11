@@ -49,14 +49,4 @@ class ManufacturerData extends AbstractFixture
 
         $manager->flush();
     }
-
-    /**
-     * Order for given fixture
-     *
-     * @return int
-     */
-    public function getOrder()
-    {
-        return 1;
-    }
 }

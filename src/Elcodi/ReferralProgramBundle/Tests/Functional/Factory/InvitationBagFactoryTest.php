@@ -42,8 +42,8 @@ class InvitationBagFactoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.referral_program.entity.invitation_bag.class'),
-            $this->container->get('elcodi.core.referral_program.entity.invitation_bag.instance')
+            $this->getParameter('elcodi.core.referral_program.entity.invitation_bag.class'),
+            $this->get('elcodi.core.referral_program.entity.invitation_bag.instance')
         );
     }
 
@@ -53,8 +53,8 @@ class InvitationBagFactoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.referral_program.entity.invitation_bag.class'),
-            $this->container->get('elcodi.entity.invitation_bag.instance')
+            $this->getParameter('elcodi.core.referral_program.entity.invitation_bag.class'),
+            $this->get('elcodi.entity.invitation_bag.instance')
         );
     }
 }

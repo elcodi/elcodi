@@ -52,8 +52,8 @@ class OrderFactoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.cart.entity.order.class'),
-            $this->container->get('elcodi.core.cart.entity.order.instance')
+            $this->getParameter('elcodi.core.cart.entity.order.class'),
+            $this->get('elcodi.core.cart.entity.order.instance')
         );
     }
 
@@ -63,8 +63,8 @@ class OrderFactoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.cart.entity.order.class'),
-            $this->container->get('elcodi.entity.order.instance')
+            $this->getParameter('elcodi.core.cart.entity.order.class'),
+            $this->get('elcodi.entity.order.instance')
         );
     }
 }

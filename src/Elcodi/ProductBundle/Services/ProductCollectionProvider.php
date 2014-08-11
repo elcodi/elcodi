@@ -58,8 +58,10 @@ class ProductCollectionProvider
             ->productRepository
             ->createQueryBuilder('p')
             ->where('p.enabled = :enabled')
+            ->andWhere('p.showInHome = :showInHome')
             ->setParameters([
                 'enabled' => true,
+                'showInHome' => true,
             ])
             ->orderBy('p.updatedAt', 'DESC');
 
@@ -89,6 +91,8 @@ class ProductCollectionProvider
             ->productRepository
             ->createQueryBuilder('p')
             ->where('p.enabled = :enabled')
+            ->andWhere('p.reducedPrice > 0')
+            ->andWhere('p.reducedPrice IS NOT NULL')
             ->setParameters([
                 'enabled' => true,
             ])

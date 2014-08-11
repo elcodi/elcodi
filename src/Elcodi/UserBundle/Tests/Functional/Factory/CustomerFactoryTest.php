@@ -42,8 +42,8 @@ class CustomerFactoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.user.entity.customer.class'),
-            $this->container->get('elcodi.core.user.entity.customer.instance')
+            $this->getParameter('elcodi.core.user.entity.customer.class'),
+            $this->get('elcodi.core.user.entity.customer.instance')
         );
     }
 
@@ -53,8 +53,8 @@ class CustomerFactoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.user.entity.customer.class'),
-            $this->container->get('elcodi.entity.customer.instance')
+            $this->getParameter('elcodi.core.user.entity.customer.class'),
+            $this->get('elcodi.entity.customer.instance')
         );
     }
 }

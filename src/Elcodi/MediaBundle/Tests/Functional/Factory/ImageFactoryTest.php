@@ -42,8 +42,8 @@ class ImageFactoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.media.entity.image.class'),
-            $this->container->get('elcodi.core.media.entity.image.instance')
+            $this->getParameter('elcodi.core.media.entity.image.class'),
+            $this->get('elcodi.core.media.entity.image.instance')
         );
     }
 
@@ -53,8 +53,8 @@ class ImageFactoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.media.entity.image.class'),
-            $this->container->get('elcodi.entity.image.instance')
+            $this->getParameter('elcodi.core.media.entity.image.class'),
+            $this->get('elcodi.entity.image.instance')
         );
     }
 }

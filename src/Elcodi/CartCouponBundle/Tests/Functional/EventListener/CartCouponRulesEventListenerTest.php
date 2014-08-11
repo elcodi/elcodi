@@ -47,14 +47,8 @@ class CartCouponRulesEventListenerTest extends WebTestCase
     protected function loadFixturesBundles()
     {
         return array(
-            'ElcodiUserBundle',
-            'ElcodiCurrencyBundle',
-            'ElcodiAttributeBundle',
-            'ElcodiProductBundle',
-            'ElcodiCurrencyBundle',
             'ElcodiCartBundle',
             'ElcodiCouponBundle',
-            'ElcodiRuleBundle',
         );
     }
 
@@ -71,15 +65,8 @@ class CartCouponRulesEventListenerTest extends WebTestCase
          * @var ExpressionInterface $expression
          * @var RuleInterface $rule
          */
-        $cart = $this
-            ->container
-            ->get('elcodi.repository.cart')
-            ->find(1);
-
-        $coupon = $this
-            ->container
-            ->get('elcodi.repository.coupon')
-            ->find(1);
+        $cart = $this->find('cart', 1);
+        $coupon = $this->find('coupon', 1);
 
         if (!is_array($expressions)) {
 
@@ -89,13 +76,11 @@ class CartCouponRulesEventListenerTest extends WebTestCase
         foreach ($expressions as $expression) {
 
             $expression = $this
-                ->container
                 ->get('elcodi.factory.expression')
                 ->create()
                 ->setExpression($expression);
 
             $rule = $this
-                ->container
                 ->get('elcodi.factory.rule')
                 ->create()
                 ->setName(microtime())
@@ -103,16 +88,13 @@ class CartCouponRulesEventListenerTest extends WebTestCase
                 ->setExpression($expression);
 
             $this
-                ->container
-                ->get('elcodi.object_manager.rule')
+                ->getObjectManager('rule')
                 ->persist($rule);
 
             $coupon->addRule($rule);
         }
 
-        $cartCouponManager = $this
-            ->container
-            ->get('elcodi.cart_coupon_manager');
+        $cartCouponManager = $this->get('elcodi.cart_coupon_manager');
 
         $cartCouponManager->addCoupon(
             $cart,

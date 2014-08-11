@@ -42,8 +42,8 @@ class CategoryFactoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.product.entity.category.class'),
-            $this->container->get('elcodi.core.product.entity.category.instance')
+            $this->getParameter('elcodi.core.product.entity.category.class'),
+            $this->get('elcodi.core.product.entity.category.instance')
         );
     }
 
@@ -53,8 +53,8 @@ class CategoryFactoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.product.entity.category.class'),
-            $this->container->get('elcodi.entity.category.instance')
+            $this->getParameter('elcodi.core.product.entity.category.class'),
+            $this->get('elcodi.entity.category.instance')
         );
     }
 }

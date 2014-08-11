@@ -27,7 +27,6 @@ use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
  */
 class LanguageData extends AbstractFixture
 {
-
     /**
      * {@inheritDoc}
      */
@@ -78,15 +77,5 @@ class LanguageData extends AbstractFixture
         $this->addReference('language-de', $languageDe);
 
         $manager->flush();
-    }
-
-    /**
-     * Order for given fixture
-     *
-     * @return int
-     */
-    public function getOrder()
-    {
-        return 1;
     }
 }

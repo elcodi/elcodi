@@ -70,17 +70,13 @@ class OrderEventListenerTest extends WebTestCase
          * @var ArrayCollection      $cartCoupons
          * @var ArrayCollection      $orderCoupons
          */
-        $cart = $this
-            ->getRepository('elcodi.core.cart.entity.cart.class')
-            ->find(2);
+        $cart = $this->find('cart', 2);
 
         $this
-            ->container
             ->get('elcodi.cart_event_dispatcher')
             ->dispatchCartLoadEvents($cart);
 
         $cartOrderTransformer = $this
-            ->container
             ->get('elcodi.cart_order_transformer');
 
         $order = $cartOrderTransformer->createOrderFromCart($cart);
@@ -91,12 +87,10 @@ class OrderEventListenerTest extends WebTestCase
         );
 
         $cartCoupons = $this
-            ->container
             ->get('elcodi.cart_coupon_manager')
             ->getCartCoupons($cart);
 
         $orderCoupons = $this
-            ->container
             ->get('elcodi.order_coupon_manager')
             ->getOrderCoupons($order);
 

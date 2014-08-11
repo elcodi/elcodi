@@ -42,8 +42,8 @@ class MenuFactoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.menu.entity.menu.class'),
-            $this->container->get('elcodi.core.menu.entity.menu.instance')
+            $this->getParameter('elcodi.core.menu.entity.menu.class'),
+            $this->get('elcodi.core.menu.entity.menu.instance')
         );
     }
 
@@ -53,8 +53,8 @@ class MenuFactoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.menu.entity.menu.class'),
-            $this->container->get('elcodi.entity.menu.instance')
+            $this->getParameter('elcodi.core.menu.entity.menu.class'),
+            $this->get('elcodi.entity.menu.instance')
         );
     }
 }

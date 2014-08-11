@@ -38,7 +38,8 @@ class CurrencyData extends AbstractFixture
          */
         $currencyDollar = $this
             ->container
-            ->get('elcodi.factory.currency')->create();
+            ->get('elcodi.factory.currency')
+            ->create();
 
         $currencyDollar
             ->setSymbol('$')
@@ -52,7 +53,8 @@ class CurrencyData extends AbstractFixture
          */
         $currencyEuro = $this
             ->container
-            ->get('elcodi.factory.currency')->create();
+            ->get('elcodi.factory.currency')
+            ->create();
 
         $currencyEuro
             ->setSymbol('€')
@@ -66,7 +68,8 @@ class CurrencyData extends AbstractFixture
          */
         $currencyPound = $this
             ->container
-            ->get('elcodi.factory.currency')->create();
+            ->get('elcodi.factory.currency')
+            ->create();
 
         $currencyPound
             ->setSymbol('£')
@@ -80,7 +83,8 @@ class CurrencyData extends AbstractFixture
          */
         $currencyIen = $this
             ->container
-            ->get('elcodi.factory.currency')->create();
+            ->get('elcodi.factory.currency')
+            ->create();
 
         $currencyIen
             ->setSymbol('円')
@@ -90,15 +94,5 @@ class CurrencyData extends AbstractFixture
         $this->setReference('currency-ien', $currencyIen);
 
         $manager->flush();
-    }
-
-    /**
-     * Order for given fixture
-     *
-     * @return int
-     */
-    public function getOrder()
-    {
-        return 0;
     }
 }

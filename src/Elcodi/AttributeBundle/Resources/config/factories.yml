@@ -23,7 +23,7 @@ services:
         calls:
             - [setEntityNamespace, ["%elcodi.core.attribute.entity.value.class%"]]
 
-    elcodi.factory.value:
+    elcodi.factory.attribute_value:
         alias: elcodi.core.attribute.factory.value
 
     #
@@ -51,5 +51,5 @@ services:
         factory_method: create
         scope: prototype
 
-    elcodi.entity.value.instance:
+    elcodi.entity.attribute_value.instance:
         alias: elcodi.core.attribute.entity.value.instance

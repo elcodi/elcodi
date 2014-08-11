@@ -42,8 +42,8 @@ class ReferralHashFactoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.referral_program.entity.referral_hash.class'),
-            $this->container->get('elcodi.core.referral_program.entity.referral_hash.instance')
+            $this->getParameter('elcodi.core.referral_program.entity.referral_hash.class'),
+            $this->get('elcodi.core.referral_program.entity.referral_hash.instance')
         );
     }
 
@@ -53,8 +53,8 @@ class ReferralHashFactoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.referral_program.entity.referral_hash.class'),
-            $this->container->get('elcodi.entity.referral_hash.instance')
+            $this->getParameter('elcodi.core.referral_program.entity.referral_hash.class'),
+            $this->get('elcodi.entity.referral_hash.instance')
         );
     }
 }

@@ -42,8 +42,8 @@ class NodeRepositoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.menu.repository.menu_node.class'),
-            $this->container->get('elcodi.core.menu.repository.menu_node')
+            $this->getParameter('elcodi.core.menu.repository.menu_node.class'),
+            $this->get('elcodi.core.menu.repository.menu_node')
         );
     }
 
@@ -53,8 +53,8 @@ class NodeRepositoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.menu.repository.menu_node.class'),
-            $this->container->get('elcodi.repository.menu_node')
+            $this->getParameter('elcodi.core.menu.repository.menu_node.class'),
+            $this->get('elcodi.repository.menu_node')
         );
     }
 }

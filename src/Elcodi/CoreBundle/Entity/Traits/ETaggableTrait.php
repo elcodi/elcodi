@@ -23,7 +23,6 @@ use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
  */
 trait ETaggableTrait
 {
-
     /**
      * Return etag from entity
      *

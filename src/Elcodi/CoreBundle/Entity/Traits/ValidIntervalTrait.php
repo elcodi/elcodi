@@ -21,7 +21,6 @@ namespace Elcodi\CoreBundle\Entity\Traits;
  */
 trait ValidIntervalTrait
 {
-
     /**
      * @var \DateTime
      *

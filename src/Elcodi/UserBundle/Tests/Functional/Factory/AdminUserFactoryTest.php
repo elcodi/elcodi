@@ -42,8 +42,8 @@ class AdminUserFactoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.user.entity.admin_user.class'),
-            $this->container->get('elcodi.core.user.entity.admin_user.instance')
+            $this->getParameter('elcodi.core.user.entity.admin_user.class'),
+            $this->get('elcodi.core.user.entity.admin_user.instance')
         );
     }
 
@@ -53,8 +53,8 @@ class AdminUserFactoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.user.entity.admin_user.class'),
-            $this->container->get('elcodi.entity.admin_user.instance')
+            $this->getParameter('elcodi.core.user.entity.admin_user.class'),
+            $this->get('elcodi.entity.admin_user.instance')
         );
     }
 }

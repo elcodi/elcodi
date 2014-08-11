@@ -26,7 +26,6 @@ use Elcodi\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensio
  */
 class ElcodiProductExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
-
     /**
      * Get the Config file location
      *

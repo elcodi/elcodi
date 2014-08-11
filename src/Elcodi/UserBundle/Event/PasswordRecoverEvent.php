@@ -27,7 +27,6 @@ use Elcodi\UserBundle\Entity\Abstracts\AbstractUser;
  */
 class PasswordRecoverEvent extends Event
 {
-
     /**
      * @var AbstractUser
      *

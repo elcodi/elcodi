@@ -39,7 +39,7 @@ class RuleGroupFactory extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.rule.entity.rule_group.class'),
+            $this->getParameter('elcodi.core.rule.entity.rule_group.class'),
             $this->container->get('elcodi.core.rule.entity.rule_group.instance')
         );
     }

@@ -26,7 +26,6 @@ use Elcodi\ReferralProgramBundle\Entity\ReferralLine;
  */
 class ReferralProgramInvitationEvent extends Event
 {
-
     /**
      * @var ReferralLine
      *

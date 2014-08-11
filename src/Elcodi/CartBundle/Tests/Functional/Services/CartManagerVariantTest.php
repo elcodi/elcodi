@@ -60,8 +60,7 @@ class CartManagerVariantTest extends AbstractCartManagerTest
          * @var CurrencyInterface $currency
          */
         $currency = $this
-            ->container
-            ->get('elcodi.repository.currency')
+            ->getRepository('currency')
             ->findOneBy([
                 'iso' => 'USD',
             ]);
@@ -69,17 +68,13 @@ class CartManagerVariantTest extends AbstractCartManagerTest
         /**
          * @var ValueInterface $variantOption
          */
-        $variantOption = $this
-            ->container
-            ->get('elcodi.repository.value')
-            ->find(1);
+        $variantOption = $this->find('attribute_value', 1);
 
         /**
          * @var ProductInterface $product
          */
         $product = $this
-            ->container
-            ->get('elcodi.factory.product')
+            ->getFactory('product')
             ->create()
             ->setPrice(Money::create(1000, $currency))
             ->setName('abc')
@@ -91,8 +86,7 @@ class CartManagerVariantTest extends AbstractCartManagerTest
          * @var VariantInterface $variant
          */
         $variant = $this
-            ->container
-            ->get('elcodi.factory.variant')
+            ->getFactory('product_variant')
             ->create()
             ->setProduct($product)
             ->setPrice(Money::create(1200, $currency))
@@ -103,17 +97,17 @@ class CartManagerVariantTest extends AbstractCartManagerTest
         $product->setPrincipalVariant($variant);
 
         $this
-            ->getManager('elcodi.core.product.entity.product.class')
+            ->getObjectManager('product')
             ->persist($product);
         $this
-            ->getManager('elcodi.core.product.entity.variant.class')
+            ->getObjectManager('product_variant')
             ->persist($variant);
 
         $this
-            ->getManager('elcodi.core.product.entity.product.class')
+            ->getObjectManager('product')
             ->flush();
         $this
-            ->getManager('elcodi.core.product.entity.variant.class')
+            ->getObjectManager('product_variant')
             ->flush();
 
         $this->variant = $variant;
@@ -127,7 +121,7 @@ class CartManagerVariantTest extends AbstractCartManagerTest
     public function testPurchasableIsVariant()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.product.entity.variant.class'),
+            $this->getParameter('elcodi.core.product.entity.variant.class'),
             $this->purchasable
         );
     }
@@ -139,12 +133,10 @@ class CartManagerVariantTest extends AbstractCartManagerTest
     public function testAddSameVariantTwice()
     {
         $this
-            ->container
             ->get('elcodi.cart_manager')
             ->addProduct($this->cart, $this->purchasable, 1);
 
         $this
-            ->container
             ->get('elcodi.cart_manager')
             ->addProduct($this->cart, $this->purchasable, 2);
 
@@ -244,16 +236,12 @@ class CartManagerVariantTest extends AbstractCartManagerTest
         /**
          * @var ValueInterface $variantOption
          */
-        $variantOption = $this
-            ->container
-            ->get('elcodi.repository.value')
-            ->find(1);
+        $variantOption = $this->find('attribute_value', 1);
         /**
          * @var VariantInterface $variant
          */
         $this
-            ->container
-            ->get('elcodi.factory.variant')
+            ->getFactory('product_variant')
             ->create()
             ->addOption($variantOption);
     }

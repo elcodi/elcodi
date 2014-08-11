@@ -50,10 +50,6 @@ class CartLineOrderLineTransformerTest extends WebTestCase
     protected function loadFixturesBundles()
     {
         return [
-            'ElcodiCurrencyBundle',
-            'ElcodiProductBundle',
-            'ElcodiAttributeBundle',
-            'ElcodiUserBundle',
             'ElcodiCartBundle',
         ];
     }
@@ -70,15 +66,12 @@ class CartLineOrderLineTransformerTest extends WebTestCase
          * @var CartOrderTransformer         $cartOrderTransformer
          */
         $cartLineOrderLineTransformer = $this
-            ->container
             ->get('elcodi.cart_line_order_line_transformer');
 
         $cartOrderTransformer = $this
-            ->container
             ->get('elcodi.cart_order_transformer');
 
         $orderInitialState = $this
-            ->container
             ->getParameter('elcodi.core.cart.order_initial_state');
 
         /**
@@ -86,12 +79,9 @@ class CartLineOrderLineTransformerTest extends WebTestCase
          * @var CartLineInterface $cartLine
          * @var OrderLine         $orderLine
          */
-        $cart = $this
-            ->getRepository('elcodi.core.cart.entity.cart.class')
-            ->find(2);
+        $cart = $this->find('cart', 2);
 
         $this
-            ->container
             ->get('elcodi.cart_event_dispatcher')
             ->dispatchCartLoadEvents($cart);
 

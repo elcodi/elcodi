@@ -153,7 +153,8 @@ class CurrencyWrapper
                 'iso' => $this->defaultCurrencyIsoCode,
             ]);
 
-        if (!$defaultCurrency instanceof CurrencyInterface) {
+        if (!($defaultCurrency instanceof CurrencyInterface)) {
+
             throw new \LogicException(
                 sprintf('Default currency object for ISO code "%s" not found', $this->defaultCurrencyIsoCode)
             );

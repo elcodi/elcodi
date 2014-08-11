@@ -16,6 +16,7 @@
 
 namespace Elcodi\CoreBundle\Tests\Functional;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bundle\FrameworkBundle\Client;
@@ -25,6 +26,9 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\RouterInterface;
+
+use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
+use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
 
 /**
  * Core abstract tests class
@@ -59,7 +63,7 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * Container
      */
-    protected $container;
+    private $container;
 
     /**
      * @var boolean
@@ -76,12 +80,16 @@ abstract class WebTestCase extends BaseWebTestCase
         gc_collect_cycles();
 
         static::$kernel = static::createKernel();
+        try {
         static::$kernel->boot();
+    } catch (\Exception $e) {
+
+        echo $e->getMessage();
+}
         static::$application = new Application(static::$kernel);
         static::$application->setAutoExit(false);
-
         $this->container = static::$kernel->getContainer();
-        $this->router = $this->container->get('router');
+        $this->router = $this->get('router');
 
         $this->createSchema();
     }
@@ -233,37 +241,102 @@ abstract class WebTestCase extends BaseWebTestCase
     }
 
     /**
-     * Get entity repository given its class parameter
+     * Get manager given its its entity name
      *
-     * i.e. elcodi.core.language.entity.language.class
-     *
-     * @param string $entityClassParameter Entity namespace parameter
-     *
-     * @return EntityRepository Repository
-     */
-    public function getRepository($entityClassParameter)
-    {
-        return $this
-            ->container
-            ->get('elcodi.repository_provider')
-            ->getRepositoryByEntityParameter($entityClassParameter);
-    }
-
-    /**
-     * Get manager given its class parameter
-     *
-     * i.e. elcodi.core.language.entity.language.class
-     *
-     * @param string $entityClassParameter Entity namespace parameter
+     * @param string $entityName Entity name
      *
      * @return ObjectManager Manager
      */
-    public function getManager($entityClassParameter)
+    public function getObjectManager($entityName)
     {
         return $this
             ->container
-            ->get('elcodi.manager_provider')
-            ->getManagerByEntityParameter($entityClassParameter);
+            ->get('elcodi.object_manager.' . $entityName);
+    }
+
+    /**
+     * Get entity repository given its entity name
+     *
+     * @param string $entityName Entity name
+     *
+     * @return EntityRepository Repository
+     */
+    public function getRepository($entityName)
+    {
+        return $this
+            ->container
+            ->get('elcodi.repository.' . $entityName);
+    }
+
+    /**
+     * Get factory given its its entity name
+     *
+     * @param string $entityName Entity name
+     *
+     * @return AbstractFactory Factory
+     */
+    public function getFactory($entityName)
+    {
+        return $this
+            ->container
+            ->get('elcodi.factory.' . $entityName);
+    }
+
+    /**
+     * Get container service
+     *
+     * @param string $serviceName Container service name
+     *
+     * @return object The associated service
+     */
+    public function get($serviceName)
+    {
+        return $this
+            ->container
+            ->get($serviceName);
+    }
+
+    /**
+     * Get container parameter
+     *
+     * @param string $parameterName Container parameter name
+     *
+     * @return object The required parameter value
+     */
+    public function getParameter($parameterName)
+    {
+        return $this
+            ->container
+            ->getParameter($parameterName);
+    }
+
+    /**
+     * Get the entity instance with id $id
+     *
+     * @param string  $entityName Entity name
+     * @param integer $id         Instance if
+     *
+     * @return AbstractEntity Entity
+     */
+    public function find($entityName, $id)
+    {
+        return $this
+            ->getRepository($entityName)
+            ->find($id);
+    }
+
+    /**
+     * Get all entity instances
+     *
+     * @param string $entityName Entity name
+     *
+     * @return Collection Entity Collection
+     */
+    public function findAll($entityName)
+    {
+        return $this
+            ->getRepository($entityName)
+            ->findAll();
     }
 
     /**

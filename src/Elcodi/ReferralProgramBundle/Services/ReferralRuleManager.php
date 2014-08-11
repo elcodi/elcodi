@@ -26,7 +26,6 @@ use Elcodi\ReferralProgramBundle\Repository\ReferralRuleRepository;
  */
 class ReferralRuleManager
 {
-
     /**
      * @var ReferralRuleRepository
      *

@@ -27,7 +27,6 @@ use Elcodi\ReferralProgramBundle\Entity\ReferralRule;
  */
 class ReferralRuleRepository extends EntityRepository
 {
-
     /**
      * Get first actual enabled referral rule
      *

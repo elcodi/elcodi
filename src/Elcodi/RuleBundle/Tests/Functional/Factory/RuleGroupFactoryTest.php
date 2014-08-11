@@ -42,8 +42,8 @@ class RuleGroupFactoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.rule.entity.rule_group.class'),
-            $this->container->get('elcodi.core.rule.entity.rule_group.instance')
+            $this->getParameter('elcodi.core.rule.entity.rule_group.class'),
+            $this->get('elcodi.core.rule.entity.rule_group.instance')
         );
     }
 
@@ -53,8 +53,8 @@ class RuleGroupFactoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.rule.entity.rule_group.class'),
-            $this->container->get('elcodi.entity.rule_group.instance')
+            $this->getParameter('elcodi.core.rule.entity.rule_group.class'),
+            $this->get('elcodi.entity.rule_group.instance')
         );
     }
 }

@@ -23,7 +23,6 @@ use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
  */
 class CategoryManagerTest extends WebTestCase
 {
-
     /**
      * Returns the callable name of the service
      *

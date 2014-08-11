@@ -16,6 +16,7 @@
 
 namespace Elcodi\AttributeBundle\DataFixtures\ORM;
 
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\AttributeBundle\Entity\Attribute;
@@ -24,7 +25,7 @@ use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 /**
  * Class ValueData
  */
-class ValueData extends AbstractFixture
+class ValueData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
      * Loads sample fixtures for Value entities
@@ -113,8 +114,16 @@ class ValueData extends AbstractFixture
         $objectManager->flush();
     }
 
-    public function getOrder()
+    /**
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on
+     *
+     * @return array
+     */
+    public function getDependencies()
     {
-        return 4;
+        return [
+            'Elcodi\AttributeBundle\DataFixtures\ORM\AttributeData',
+        ];
     }
 }

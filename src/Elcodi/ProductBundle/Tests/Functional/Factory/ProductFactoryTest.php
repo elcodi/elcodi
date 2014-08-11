@@ -43,9 +43,9 @@ class ProductFactoryTest extends WebTestCase
      */
     protected function loadFixturesBundles()
     {
-        return [
+        return array(
             'ElcodiCurrencyBundle'
-        ];
+        );
     }
 
     /**
@@ -54,8 +54,8 @@ class ProductFactoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.product.entity.product.class'),
-            $this->container->get('elcodi.core.product.entity.product.instance')
+            $this->getParameter('elcodi.core.product.entity.product.class'),
+            $this->get('elcodi.core.product.entity.product.instance')
         );
     }
 
@@ -65,8 +65,8 @@ class ProductFactoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.product.entity.product.class'),
-            $this->container->get('elcodi.entity.product.instance')
+            $this->getParameter('elcodi.core.product.entity.product.class'),
+            $this->get('elcodi.entity.product.instance')
         );
     }
 }

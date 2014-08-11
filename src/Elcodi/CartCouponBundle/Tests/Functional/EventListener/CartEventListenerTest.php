@@ -77,40 +77,33 @@ class CartEventListenerTest extends WebTestCase
         $ruleId = $this->loadDefaultTestConfigurationAndReturnRuleId();
 
         $cartCouponManager = $this
-            ->container
             ->get('elcodi.cart_coupon_manager');
 
         /**
          * We change rule to false
+         *
+         * @var RuleInterface $rule
          */
-        $rule = $this
-            ->container
-            ->get('elcodi.repository.rule')
-            ->find($ruleId);
+        $rule = $this->find('rule', $ruleId);
 
         $expressionFalse = $this
-            ->container
             ->get('elcodi.factory.expression')
             ->create()
             ->setExpression('false');
 
         $rule->setExpression($expressionFalse);
         $this
-            ->getManager('elcodi.core.rule.entity.rule.class')
+            ->getObjectManager('rule')
             ->flush();
 
         /**
          * We load again same Cart and load it
          */
-        $cart = $this
-            ->container
-            ->get('elcodi.repository.cart')
-            ->find(1);
+        $cart = $this->find('cart', 1);
 
         $this->assertCount(1, $cartCouponManager->getCoupons($cart));
 
         $this
-            ->container
             ->get('elcodi.cart_event_dispatcher')
             ->dispatchCartLoadEvents($cart);
 
@@ -126,19 +119,14 @@ class CartEventListenerTest extends WebTestCase
         $this->loadDefaultTestConfigurationAndReturnRuleId();
 
         $cartCouponManager = $this
-            ->container
             ->get('elcodi.cart_coupon_manager');
 
         /**
          * We load again same Cart and load it
          */
-        $cart = $this
-            ->container
-            ->get('elcodi.repository.cart')
-            ->find(1);
+        $cart = $this->find('cart', 1);
 
         $this
-            ->container
             ->get('elcodi.cart_event_dispatcher')
             ->dispatchCartLoadEvents($cart);
 
@@ -161,24 +149,15 @@ class CartEventListenerTest extends WebTestCase
          * @var ExpressionInterface $expression
          * @var RuleInterface $rule
          */
-        $cart = $this
-            ->container
-            ->get('elcodi.repository.cart')
-            ->find(1);
-
-        $coupon = $this
-            ->container
-            ->get('elcodi.repository.coupon')
-            ->find(1);
+        $cart = $this->find('cart', 1);
+        $coupon = $this->find('coupon', 1);
 
         $expressionTrue = $this
-            ->container
             ->get('elcodi.factory.expression')
             ->create()
             ->setExpression('true');
 
         $rule = $this
-            ->container
             ->get('elcodi.factory.rule')
             ->create()
             ->setName(microtime())
@@ -186,27 +165,25 @@ class CartEventListenerTest extends WebTestCase
             ->setExpression($expressionTrue);
 
         $this
-            ->container
-            ->get('elcodi.object_manager.rule')
+            ->getObjectManager('rule')
             ->persist($rule);
 
         $coupon->addRule($rule);
 
-        $cartCouponManager = $this
-            ->container
-            ->get('elcodi.cart_coupon_manager');
+        $this
+            ->get('elcodi.cart_coupon_manager')
+            ->addCoupon(
+                $cart,
+                $coupon
+            );
 
-        $cartCouponManager->addCoupon(
-            $cart,
-            $coupon
-        );
         $ruleId = $rule->getId();
 
         /**
          * We clear all the Doctrine cache to simulate a new Request
          */
         $this
-            ->getManager('elcodi.core.cart.entity.cart.class')
+            ->getObjectManager('cart')
             ->clear();
 
         return $ruleId;

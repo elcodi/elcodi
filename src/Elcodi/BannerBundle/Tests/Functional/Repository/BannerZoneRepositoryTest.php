@@ -42,8 +42,8 @@ class BannerZoneRepositoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.banner.repository.bannerzone.class'),
-            $this->container->get('elcodi.core.banner.repository.bannerzone')
+            $this->getParameter('elcodi.core.banner.repository.bannerzone.class'),
+            $this->get('elcodi.core.banner.repository.bannerzone')
         );
     }
 
@@ -53,8 +53,8 @@ class BannerZoneRepositoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.banner.repository.bannerzone.class'),
-            $this->container->get('elcodi.repository.bannerzone')
+            $this->getParameter('elcodi.core.banner.repository.bannerzone.class'),
+            $this->get('elcodi.repository.bannerzone')
         );
     }
 }

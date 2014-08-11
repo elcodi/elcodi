@@ -23,6 +23,15 @@ use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
  */
 class CouponManagerTest extends WebTestCase
 {
+    /**
+     * Load fixtures of these bundles
+     *
+     * @return array Bundles name where fixtures should be found
+     */
+    protected function loadSchema()
+    {
+        return false;
+    }
 
     /**
      * Returns the callable name of the service
@@ -31,6 +40,9 @@ class CouponManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.coupon.service.coupon_manager';
+        return [
+            'elcodi.core.coupon.service.coupon_manager',
+            'elcodi.coupon_manager',
+        ];
     }
 }

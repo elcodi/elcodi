@@ -17,6 +17,7 @@
 namespace Elcodi\ReferralProgramBundle\Tests\Functional\Services;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 use Elcodi\ReferralProgramBundle\ElcodiReferralProgramRuleTypes;
@@ -39,7 +40,11 @@ class ReferralProgramManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.referral_program.service.referral_program_manager';
+        return [
+            'elcodi.core.referral_program.service.referral_program_manager',
+            'elcodi.referral_program_manager',
+            'elcodi.referral_program',
+        ];
     }
 
     /**
@@ -76,11 +81,9 @@ class ReferralProgramManagerTest extends WebTestCase
      */
     public function testInvite()
     {
-        $container = static::$kernel->getContainer();
-        $manager = $container->get('doctrine.orm.entity_manager');
-        $referralProgramManager = $container->get($this->getServiceCallableName());
-        $referrer = $manager->getRepository('ElcodiUserBundle:Customer')->find(1);
-        $referralRule = $manager->getRepository('ElcodiReferralProgramBundle:ReferralRule')->find(1);
+        $referralProgramManager = $this->get('elcodi.referral_program');
+        $referrer = $this->find('customer', 1);
+        $referralRule = $this->find('referral_rule', 1);
 
         $invitations = new ArrayCollection;
 
@@ -122,8 +125,8 @@ class ReferralProgramManagerTest extends WebTestCase
         /**
          * @var $referralHash ReferralHash
          */
-        $referralHash = $manager
-            ->getRepository('ElcodiReferralProgramBundle:ReferralHash')
+        $referralHash = $this
+            ->getRepository('referral_hash')
             ->findOneBy(array(
                 'referrer' => $referrer,
             ));
@@ -131,8 +134,8 @@ class ReferralProgramManagerTest extends WebTestCase
         /**
          * @var $referralLine ReferralLine
          */
-        $referralLines = $manager
-            ->getRepository('ElcodiReferralProgramBundle:ReferralLine')
+        $referralLines = $this
+            ->getRepository('referral_line')
             ->findBy(array(
                 'referralHash' => $referralHash,
             ));
@@ -167,11 +170,13 @@ class ReferralProgramManagerTest extends WebTestCase
      */
     public function testInviteNoReferralHashEnabled()
     {
-        $container = static::$kernel->getContainer();
-        $manager = $container->get('doctrine.orm.entity_manager');
-        $referralProgramManager = $container->get($this->getServiceCallableName());
-        $referrer = $manager->getRepository('ElcodiUserBundle:Customer')->find(1);
-        $referralRules = $manager->getRepository('ElcodiReferralProgramBundle:ReferralRule')->findAll();
+        /**
+         * @var ObjectManager $referralRuleManager
+         */
+        $referralRuleManager = $this->getObjectManager('referral_rule');
+        $referralProgramManager = $this->get('elcodi.referral_program');
+        $referrer = $this->find('customer', 1);
+        $referralRules = $this->findAll('referral_rule');
         $referralRules->map(function ($referralRule) {
 
             /**
@@ -179,8 +184,8 @@ class ReferralProgramManagerTest extends WebTestCase
              */
             $referralRule->setEnabled(false);
         });
-        $manager->flush();
-        $manager->clear();
+        $referralRuleManager->flush();
+        $referralRuleManager->clear();
 
         $invitations = new ArrayCollection();
 

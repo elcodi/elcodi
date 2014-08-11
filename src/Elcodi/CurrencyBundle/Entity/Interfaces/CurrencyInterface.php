@@ -23,7 +23,6 @@ namespace Elcodi\CurrencyBundle\Entity\Interfaces;
  */
 interface CurrencyInterface
 {
-
     /**
      * Get currency iso
      *

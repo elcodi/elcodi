@@ -16,6 +16,7 @@
 
 namespace Elcodi\ProductBundle\DataFixtures\ORM;
 
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
@@ -28,7 +29,7 @@ use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 /**
  * Class ProductData
  */
-class ProductData extends AbstractFixture
+class ProductData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
      * Load data fixtures with the passed EntityManager
@@ -45,13 +46,16 @@ class ProductData extends AbstractFixture
          * @var ManufacturerInterface $manufacturer
          * @var CurrencyInterface     $currency
          */
-        $product = $this->container->get('elcodi.core.product.factory.product')->create();
+        $product = $this
+            ->container
+            ->get('elcodi.core.product.factory.product')
+            ->create();
+
         $category = $this->getReference('category');
         $manufacturer = $this->getReference('manufacturer');
         $currency = $this->getReference('currency-dollar');
         $product
             ->setName('product')
-            ->setSku('product-sku-code-1')
             ->setSlug('product')
             ->setDescription('my product description')
             ->setShortDescription('my product short description')
@@ -60,6 +64,7 @@ class ProductData extends AbstractFixture
             ->setManufacturer($manufacturer)
             ->setStock(10)
             ->setPrice(Money::create(1000, $currency))
+            ->setSku('product-sku-code-1')
             ->setEnabled(true);
 
         $manager->persist($product);
@@ -70,12 +75,17 @@ class ProductData extends AbstractFixture
          *
          * @var ProductInterface $productReduced
          */
-        $productReduced = $this->container->get('elcodi.core.product.factory.product')->create();
+        $productReduced = $this
+            ->container
+            ->get('elcodi.core.product.factory.product')
+            ->create();
+
         $productReduced
             ->setName('product-reduced')
             ->setSlug('product-reduced')
             ->setDescription('my product-reduced description')
             ->setShortDescription('my product-reduced short description')
+            ->setShowInHome(true)
             ->setStock(5)
             ->setPrice(Money::create(1000, $currency))
             ->setReducedPrice(Money::create(500, $currency))
@@ -84,16 +94,48 @@ class ProductData extends AbstractFixture
         $manager->persist($productReduced);
         $this->addReference('product-reduced', $productReduced);
 
+        /**
+         * Product with variants
+         *
+         * @var ProductInterface $productReduced
+         */
+        $productWithVariants = $this
+            ->container
+            ->get('elcodi.core.product.factory.product')
+            ->create();
+
+        $productWithVariants
+            ->setName('Product with variants')
+            ->setSku('product-sku-code-variant-1')
+            ->setSlug('product-with-variants')
+            ->setDescription('my product with variants description')
+            ->setShortDescription('my product with variants short description')
+            ->addCategory($category)
+            ->setPrincipalCategory($category)
+            ->setManufacturer($manufacturer)
+            ->setStock(10)
+            ->setPrice(Money::create(1000, $currency))
+            ->setEnabled(true);
+
+        $manager->persist($productWithVariants);
+
+        $this->addReference('product-with-variants', $productWithVariants);
+
         $manager->flush();
     }
 
     /**
-     * Order for given fixture
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on
      *
-     * @return int
+     * @return array
      */
-    public function getOrder()
+    public function getDependencies()
     {
-        return 2;
+        return [
+            'Elcodi\CurrencyBundle\DataFixtures\ORM\CurrencyData',
+            'Elcodi\ProductBundle\DataFixtures\ORM\CategoryData',
+            'Elcodi\ProductBundle\DataFixtures\ORM\ManufacturerData',
+        ];
     }
 }

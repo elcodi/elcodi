@@ -32,7 +32,7 @@ class VariantFactoryTest extends WebTestCase
     {
         return [
             'elcodi.core.product.factory.variant',
-            'elcodi.factory.variant',
+            'elcodi.factory.product_variant',
         ];
     }
 
@@ -44,9 +44,7 @@ class VariantFactoryTest extends WebTestCase
     protected function loadFixturesBundles()
     {
         return array(
-            'ElcodiAttributeBundle',
-            'ElcodiCurrencyBundle',
-            'ElcodiProductBundle'
+            'ElcodiCurrencyBundle'
         );
     }
 
@@ -56,8 +54,8 @@ class VariantFactoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.product.entity.variant.class'),
-            $this->container->get('elcodi.core.product.entity.variant.instance')
+            $this->getParameter('elcodi.core.product.entity.variant.class'),
+            $this->get('elcodi.core.product.entity.variant.instance')
         );
     }
 
@@ -67,8 +65,8 @@ class VariantFactoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.product.entity.variant.class'),
-            $this->container->get('elcodi.entity.variant.instance')
+            $this->getParameter('elcodi.core.product.entity.variant.class'),
+            $this->get('elcodi.entity.product_variant.instance')
         );
     }
 }

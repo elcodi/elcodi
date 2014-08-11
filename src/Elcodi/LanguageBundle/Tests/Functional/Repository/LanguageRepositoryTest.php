@@ -42,8 +42,8 @@ class LanguageRepositoryTest extends WebTestCase
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.language.repository.language.class'),
-            $this->container->get('elcodi.core.language.repository.language')
+            $this->getParameter('elcodi.core.language.repository.language.class'),
+            $this->get('elcodi.core.language.repository.language')
         );
     }
 
@@ -53,8 +53,8 @@ class LanguageRepositoryTest extends WebTestCase
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->container->getParameter('elcodi.core.language.repository.language.class'),
-            $this->container->get('elcodi.repository.language')
+            $this->getParameter('elcodi.core.language.repository.language.class'),
+            $this->get('elcodi.repository.language')
         );
     }
 }

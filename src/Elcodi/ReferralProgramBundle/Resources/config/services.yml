@@ -3,9 +3,6 @@ services:
     #
     # Services
     #
-    elcodi.referral_program:
-        alias: elcodi.core.referral_program.service.referral_program_manager
-
     elcodi.core.referral_program.service.referral_program_manager:
         class: %elcodi.core.referral_program.service.referral_program_manager.class%
         arguments:
@@ -22,19 +19,31 @@ services:
             purge_disabled_lines: %elcodi.core.referral_program.purge_disabled_lines%
             auto_referral_assignment: %elcodi.core.referral_program.auto_referral_assignment%
 
+    elcodi.referral_program_manager:
+        alias: elcodi.core.referral_program.service.referral_program_manager
+
+    elcodi.referral_program:
+        alias: elcodi.referral_program_manager
+
     elcodi.core.referral_program.service.referral_route_manager:
         class: %elcodi.core.referral_program.service.referral_route_manager.class%
         arguments:
             router: @router
             controller_route_name: %elcodi.core.referral_program.controller_route_name%
 
+    elcodi.referral_route_manager:
+        alias: elcodi.core.referral_program.service.referral_route_manager
+
     elcodi.core.referral_program.service.referral_hash_manager:
         class: %elcodi.core.referral_program.service.referral_hash_manager.class%
         arguments:
-            referral_hash_repository: @elcodi.core.referral_program.repository.referral_hash
+            referral_hash_repository: @elcodi.repository.referral_hash
             entity_manager: @doctrine.orm.default_entity_manager
             referral_hash_generator: @elcodi.core.referral_program.generator.hash_generator
-            referral_hash_factory: @elcodi.core.referral_program.factory.referral_hash
+            referral_hash_factory: @elcodi.factory.referral_hash
+
+    elcodi.referral_hash_manager:
+        alias: elcodi.core.referral_program.service.referral_hash_manager
 
     elcodi.core.referral_program.service.referral_coupon_manager:
         class: %elcodi.core.referral_program.service.referral_coupon_manager.class%
@@ -46,16 +55,17 @@ services:
             referral_line_repository: @elcodi.core.referral_program.repository.referral_line
             referral_hash_manager: @elcodi.core.referral_program.service.referral_hash_manager
 
+    elcodi.referral_coupon_manager:
+        alias: elcodi.core.referral_program.service.referral_coupon_manager
+
     elcodi.core.referral_program.service.referral_rule_manager:
         class: %elcodi.core.referral_program.service.referral_rule_manager.class%
         arguments:
             referral_rule_repository: @elcodi.core.referral_program.repository.referral_rule
             entity_manager: @doctrine.orm.default_entity_manager
-    #
-    # Generators
-    #
-    elcodi.core.referral_program.generator.hash_generator:
-        class: %elcodi.core.referral_program.generator.hash_generator.class%
+
+    elcodi.referral_rule_manager:
+        alias: elcodi.core.referral_program.service.referral_rule_manager
 
     #
     # Routes

@@ -55,7 +55,7 @@ class CartCouponManagerTest extends WebTestCase
         $cart = new Cart();
 
         $this->assertEmpty($this
-            ->container->get('elcodi.cart_coupon_manager')
+            ->get('elcodi.cart_coupon_manager')
             ->getCartCoupons($cart)
         );
     }
@@ -68,7 +68,7 @@ class CartCouponManagerTest extends WebTestCase
         $cart = new Cart();
 
         $this->assertEmpty($this
-            ->container->get('elcodi.cart_coupon_manager')
+            ->get('elcodi.cart_coupon_manager')
             ->getCoupons($cart)
         );
     }
