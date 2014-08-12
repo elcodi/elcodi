@@ -16,10 +16,8 @@
 
 namespace Elcodi\UserBundle\Services;
 
-use Elcodi\GeoBundle\Entity\Interfaces\AddressInterface;
 use Elcodi\UserBundle\ElcodiUserEvents;
 use Elcodi\UserBundle\Entity\Interfaces\AbstractUserInterface;
-use Elcodi\UserBundle\Entity\Interfaces\CustomerInterface;
 use Elcodi\UserBundle\Event\CustomerRegisterEvent;
 use Elcodi\UserBundle\Services\Abstracts\AbstractUserManager;
 
@@ -48,23 +46,5 @@ class CustomerManager extends AbstractUserManager
         );
 
         return $this;
-    }
-
-    /**
-     * Check if customer has a valid delivery address
-     *
-     * @param CustomerInterface $customer
-     *
-     * @return bool Customer has correct delivery address
-     */
-    public function customerHasCorrectDeliveryAddress(CustomerInterface $customer)
-    {
-        if (($customer->getDeliveryAddress() instanceof AddressInterface)
-            && ($customer->getDeliveryAddress()->getAddress())
-        ) {
-            return true;
-        }
-
-        return false;
     }
 }
