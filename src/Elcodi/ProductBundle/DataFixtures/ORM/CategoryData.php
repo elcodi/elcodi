@@ -42,6 +42,7 @@ class CategoryData extends AbstractFixture
         $rootCategory
             ->setName('root-category')
             ->setSlug('root-category')
+            ->setEnabled(true)
             ->setRoot(true);
 
         $manager->persist($rootCategory);
@@ -56,6 +57,7 @@ class CategoryData extends AbstractFixture
         $category
             ->setName('category')
             ->setSlug('category')
+            ->setEnabled(true)
             ->setParent($rootCategory)
             ->setRoot(false);
 
