@@ -340,6 +340,50 @@ abstract class WebTestCase extends BaseWebTestCase
     }
 
     /**
+     * Save an entity. To ensure the method is simple, the entity will be
+     * persisted always
+     *
+     * @param AbstractEntity $entity Entity
+     *
+     * @return WebTestCase self Object
+     */
+    public function flush($entity)
+    {
+        /**
+         * @var ObjectManager $objectManager
+         */
+        $objectManager = $this
+            ->get('elcodi.manager_provider')
+            ->getManagerByEntityNamespace(get_class($entity));
+
+        $objectManager->persist($entity);
+        $objectManager->flush($entity);
+
+        return $this;
+    }
+
+    /**
+     * Remove an entity from ORM map.
+     *
+     * @param AbstractEntity $entity Entity
+     *
+     * @return WebTestCase self Object
+     */
+    public function clear($entity)
+    {
+        /**
+         * @var ObjectManager $objectManager
+         */
+        $objectManager = $this
+            ->get('elcodi.manager_provider')
+            ->getManagerByEntityNamespace(get_class($entity));
+
+        $objectManager->clear($entity);
+
+        return $this;
+    }
+
+    /**
      * Attempts to guess the kernel location.
      *
      * When the Kernel is located, the file is required.

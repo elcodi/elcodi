@@ -28,7 +28,7 @@
             <exclude>
                 <directory>./src/Elcodi/*/Tests</directory>
                 <directory>./src/Elcodi/*/Resources</directory>
-                <directory>./src/Elcodi/*/Vendor</directory>
+                <directory>./src/Elcodi/*/vendor</directory>
                 <directory>./src/Elcodi/*/DependencyInjection</directory>
             </exclude>
         </whitelist>

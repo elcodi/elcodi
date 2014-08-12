@@ -16,9 +16,6 @@
 
 namespace Elcodi\ProductBundle\Services;
 
-use Doctrine\DBAL\Query\QueryBuilder;
-use Doctrine\ORM\EntityManagerInterface;
-
 use Elcodi\CoreBundle\Wrapper\Abstracts\AbstractCacheWrapper;
 use Elcodi\ProductBundle\Entity\Interfaces\CategoryInterface;
 use Elcodi\ProductBundle\Repository\CategoryRepository;
@@ -47,13 +44,6 @@ class CategoryManager extends AbstractCacheWrapper
     protected $loadOnlyCategoriesWithProducts;
 
     /**
-     * @var EntityManagerInterface
-     *
-     * Category entity manager
-     */
-    protected $categoryEntityManager;
-
-    /**
      * @var CategoryRepository
      *
      * Category repository
@@ -70,57 +60,108 @@ class CategoryManager extends AbstractCacheWrapper
     /**
      * Construct method
      *
-     * @param EntityManagerInterface $categoryEntityManager          Category entity manager
-     * @param CategoryRepository     $categoryRepository             Category Repository
-     * @param boolean                $loadOnlyCategoriesWithProducts Load only categories with products
-     * @param string                 $key                            Key where to store info
+     * @param CategoryRepository $categoryRepository             Category Repository
+     * @param boolean            $loadOnlyCategoriesWithProducts Load only categories with products
+     * @param string             $key                            Key where to store info
      */
     public function __construct(
-        EntityManagerInterface $categoryEntityManager,
         CategoryRepository $categoryRepository,
         $loadOnlyCategoriesWithProducts,
         $key
     )
     {
-        $this->categoryEntityManager = $categoryEntityManager;
         $this->categoryRepository = $categoryRepository;
         $this->loadOnlyCategoriesWithProducts = $loadOnlyCategoriesWithProducts;
         $this->key = $key;
     }
 
     /**
-     * Load method
+     * Get category tree
+     *
+     * @return array Category tree
+     */
+    public function getCategoryTree()
+    {
+        return $this->categoryTree;
+    }
+
+    /**
+     * Load Category tree from cache.
+     *
+     * If element is not loaded yet, loads it from Database and store it into
+     * cache.
      *
      * @return array Category tree loaded
      */
     public function load()
     {
+        if (is_array($this->categoryTree)) {
+            return $this->categoryTree;
+        }
+
         /**
          * Fetch key from cache
          */
-        $this->categoryTree = $this
+        $categoryTree = $this->loadCategoryTreeFromCache();
+
+        /**
+         * If cache key is empty, build it
+         */
+        if (empty($categoryTree)) {
+
+            $categoryTree = $this->buildCategoryTreeAndSaveIntoCache();
+        }
+
+        $this->categoryTree = $categoryTree;
+
+        return $categoryTree;
+    }
+
+    /**
+     * Reload Category tree from cache
+     *
+     * Empty cache and load again
+     *
+     * @return array Category tree loaded
+     */
+    public function reload()
+    {
+        $this
+            ->cache
+            ->delete($this->key);
+
+        $this->categoryTree = null;
+
+        return $this->load();
+    }
+
+    /**
+     * Load category tree from cache
+     *
+     * @return array Category tree
+     */
+    protected function loadCategoryTreeFromCache()
+    {
+        return $this
             ->encoder
             ->decode(
                 $this
                     ->cache
                     ->fetch($this->key)
             );
+    }
 
-        /**
-         * If cache key is empty, build it
-         */
-        if (empty($this->categoryTree)) {
+    /**
+     * Build category tree and save it into cache
+     *
+     * @return array Category tree
+     */
+    protected function buildCategoryTreeAndSaveIntoCache()
+    {
+        $categoryTree = $this->buildCategoryTree();
+        $this->saveCategoryTreeIntoCache($categoryTree);
 
-            $this->categoryTree = $this->buildCategoryTree();
-            $this
-                ->cache
-                ->save(
-                    $this->key,
-                    $this->encoder->encode($this->categoryTree)
-                );
-        }
-
-        return $this->categoryTree;
+        return $categoryTree;
     }
 
     /**
@@ -130,37 +171,18 @@ class CategoryManager extends AbstractCacheWrapper
      *
      * @return Array Category tree
      */
-    public function buildCategoryTree()
+    protected function buildCategoryTree()
     {
-        /**
-         * @var QueryBuilder
-         */
-        $queryBuilder = $this
+        $categories = $this
             ->categoryRepository
-            ->createQueryBuilder('c')
-            ->where('c.enabled = :enabled')
-            ->addOrderBy('c.parent', 'asc')
-            ->addOrderBy('c.position', 'asc')
-            ->setParameters(array(
-                'enabled' => true,
-            ));
+            ->getAllCategoriesSortedByParentAndPositionAsc(
+                $this->loadOnlyCategoriesWithProducts
+            );
 
-        if ($this->loadOnlyCategoriesWithProducts) {
-
-            $queryBuilder
-                ->innerJoin('c.products', 'p')
-                ->andWhere('p.stock > 0')
-                ->andWhere('p.enabled = 1');
-        }
-
-        $categories = $queryBuilder
-            ->getQuery()
-            ->getResult();
-
-        $categoryTree = array(
+        $categoryTree = [
             0          => null,
-            'children' => array(),
-        );
+            'children' => [],
+        ];
 
         /**
          * @var CategoryInterface $category
@@ -172,11 +194,10 @@ class CategoryManager extends AbstractCacheWrapper
 
             if (!$category->isRoot()) {
                 if ($category->getParent() instanceof CategoryInterface) {
-                    $parentCategoryId = $this
-                        ->categoryEntityManager
-                        ->getUnitOfWork()
-                        ->getEntityIdentifier($category->getParent())['id'];
+
+                    $parentCategoryId = $category->getParent()->getId();
                 } else {
+
                     /**
                      * If category is not root and has no parent,
                      * don't insert it into the tree
@@ -213,16 +234,26 @@ class CategoryManager extends AbstractCacheWrapper
             $categoryTree[$parentCategoryId]['children'][] = & $categoryTree[$categoryId];
         }
 
-        return $categoryTree[0]['children'];
+        return $categoryTree[0]['children']
+            ? : [];
     }
 
     /**
-     * Get category tree
+     * Save given category tree into cache
      *
-     * @return array Category tree
+     * @param array $categoryTree Category tree
+     *
+     * @return CategoryManager self Object
      */
-    public function getCategoryTree()
+    protected function saveCategoryTreeIntoCache($categoryTree)
     {
-        return $this->categoryTree;
+        $this
+            ->cache
+            ->save(
+                $this->key,
+                $this->encoder->encode($categoryTree)
+            );
+
+        return $this;
     }
 }

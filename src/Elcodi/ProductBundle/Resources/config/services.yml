@@ -6,7 +6,6 @@ services:
     elcodi.core.product.service.category_manager:
         class: %elcodi.core.product.service.category_manager.class%
         arguments:
-            category_entity_manager: @elcodi.object_manager.category
             category_repository: @elcodi.repository.category
             load_only_categories_with_products: %elcodi.core.product.load_only_categories_with_products%
             key: %elcodi.core.product.cache_key%
