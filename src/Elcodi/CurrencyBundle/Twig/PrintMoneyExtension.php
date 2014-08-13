@@ -20,11 +20,11 @@ use NumberFormatter;
 use Twig_Extension;
 use Twig_SimpleFilter;
 
+use Elcodi\CurrencyBundle\Adapter\LocaleProvider\Interfaces\LocaleProviderAdapterInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\CurrencyInterface;
 use Elcodi\CurrencyBundle\Entity\Interfaces\MoneyInterface;
 use Elcodi\CurrencyBundle\Services\CurrencyConverter;
 use Elcodi\CurrencyBundle\Wrapper\CurrencyWrapper;
-use Elcodi\LanguageBundle\Entity\Interfaces\LocaleInterface;
 
 /**
  * Print price extension for twig
@@ -46,28 +46,28 @@ class PrintMoneyExtension extends Twig_Extension
     protected $currencyWrapper;
 
     /**
-     * @var LocaleInterface
+     * @var LocaleProviderAdapterInterface
      *
-     * Locale
+     * LocaleProvider adapter
      */
-    protected $locale;
+    protected $localeProviderAdapter;
 
     /**
      * Construct method
      *
-     * @param CurrencyConverter $currencyConverter Currency converter
-     * @param CurrencyWrapper   $currencyWrapper   Currency wrapper
-     * @param LocaleInterface   $locale            The locale
+     * @param CurrencyConverter              $currencyConverter     Currency converter
+     * @param CurrencyWrapper                $currencyWrapper       Currency wrapper
+     * @param LocaleProviderAdapterInterface $localeProviderAdapter LocaleProvider adapter
      */
     public function __construct(
         CurrencyConverter $currencyConverter,
         CurrencyWrapper $currencyWrapper,
-        LocaleInterface $locale
+        LocaleProviderAdapterInterface $localeProviderAdapter
     )
     {
         $this->currencyConverter = $currencyConverter;
         $this->currencyWrapper = $currencyWrapper;
-        $this->locale = $locale;
+        $this->localeProviderAdapter = $localeProviderAdapter;
     }
 
     /**
@@ -139,7 +139,7 @@ class PrintMoneyExtension extends Twig_Extension
         }
 
         $formatter = new NumberFormatter(
-            $this->locale->getIso(),
+            $this->localeProviderAdapter->getLocaleIso(),
             NumberFormatter::CURRENCY
         );
 

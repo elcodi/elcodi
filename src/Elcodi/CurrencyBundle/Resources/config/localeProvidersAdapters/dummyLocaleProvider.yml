@@ -1,0 +1,17 @@
+parameters:
+
+    #
+    # DummyLocaleProvider Adapter
+    #
+    elcodi.core.currency.adapter.dummy_locale_provider_adapter.class: Elcodi\CurrencyBundle\Adapter\LocaleProvider\DummyLocaleProviderAdapter
+
+services:
+
+    #
+    # DummyLocaleProvider Adapter
+    #
+    elcodi.core.currency.adapter.dummy_locale_provider_adapter:
+        class: %elcodi.core.currency.adapter.dummy_locale_provider_adapter.class%
+
+    elcodi.core.currency.adapter.locale_provider_adapter:
+        alias: elcodi.core.currency.adapter.dummy_locale_provider_adapter
