@@ -3,7 +3,7 @@ parameters:
     #
     # OpenExchangeRates Adapter
     #
-    elcodi.core.currency.adapter.open_exchange_rates_adapter.class: Elcodi\CurrencyBundle\Adapter\OpenExchangeRatesAdapter
+    elcodi.core.currency.adapter.open_exchange_rates_adapter.class: Elcodi\CurrencyBundle\Adapter\ExchangeRates\OpenExchangeRatesAdapter
 
 services:
 

@@ -19,8 +19,10 @@ namespace Elcodi\CurrencyBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
-use Elcodi\CurrencyBundle\Adapter\DummyExchangeRatesAdapter;
-use Elcodi\CurrencyBundle\Adapter\OpenExchangeRatesAdapter;
+use Elcodi\CurrencyBundle\Adapter\ExchangeRates\DummyExchangeRatesAdapter;
+use Elcodi\CurrencyBundle\Adapter\ExchangeRates\OpenExchangeRatesAdapter;
+use Elcodi\CurrencyBundle\Adapter\LocaleProvider\DummyLocaleProviderAdapter;
+use Elcodi\CurrencyBundle\Adapter\LocaleProvider\ElcodiLocaleProviderAdapter;
 
 /**
  * This is the class that validates and merges configuration from your app/config files
@@ -63,6 +65,18 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                     ->append($this->addOpenExchangeRatesParametersNode())
+                ->end()
+                ->arrayNode('locale_provider')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->enumNode('adapter')
+                            ->values([
+                                DummyLocaleProviderAdapter::ADAPTER_NAME,
+                                ElcodiLocaleProviderAdapter::ADAPTER_NAME
+                            ])
+                            ->defaultValue(DummyLocaleProviderAdapter::ADAPTER_NAME)
+                        ->end()
+                    ->end()
                 ->end()
             ->end();
 

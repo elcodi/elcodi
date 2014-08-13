@@ -31,13 +31,6 @@ parameters:
     elcodi.core.referral_program.generator.hash_generator.class: Elcodi\ReferralProgramBundle\Generator\ReferralHashGenerator
 
     #
-    # Form Types
-    #
-    elcodi.core.user.form_type.referral_rule.class: Elcodi\ReferralProgramBundle\Form\Type\ReferralRuleType
-    elcodi.core.user.form_type.referral_line.class: Elcodi\ReferralProgramBundle\Form\Type\ReferralLineType
-    elcodi.core.user.form_type.referral_hash.class: Elcodi\ReferralProgramBundle\Form\Type\ReferralHashType
-
-    #
     # Routes
     #
     elcodi.core.referral_program.routes.loader.class: Elcodi\ReferralProgramBundle\Router\ReferralProgramRoutesLoader

@@ -3,7 +3,7 @@ parameters:
     #
     # DummyExchangeRates Adapter
     #
-    elcodi.core.currency.adapter.dummy_exchange_rates_adapter.class: Elcodi\CurrencyBundle\Adapter\DummyExchangeRatesAdapter
+    elcodi.core.currency.adapter.dummy_exchange_rates_adapter.class: Elcodi\CurrencyBundle\Adapter\ExchangeRates\DummyExchangeRatesAdapter
 
 services:
 

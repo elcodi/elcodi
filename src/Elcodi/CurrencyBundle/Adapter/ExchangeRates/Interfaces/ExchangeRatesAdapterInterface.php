@@ -14,7 +14,7 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\CurrencyBundle\Adapter\Interfaces;
+namespace Elcodi\CurrencyBundle\Adapter\ExchangeRates\Interfaces;
 
 /**
  * Interface ExchangeRatesAdapterInterface

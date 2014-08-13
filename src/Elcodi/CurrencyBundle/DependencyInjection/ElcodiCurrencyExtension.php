@@ -20,8 +20,10 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 use Elcodi\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
-use Elcodi\CurrencyBundle\Adapter\DummyExchangeRatesAdapter;
-use Elcodi\CurrencyBundle\Adapter\OpenExchangeRatesAdapter;
+use Elcodi\CurrencyBundle\Adapter\ExchangeRates\DummyExchangeRatesAdapter;
+use Elcodi\CurrencyBundle\Adapter\ExchangeRates\OpenExchangeRatesAdapter;
+use Elcodi\CurrencyBundle\Adapter\LocaleProvider\DummyLocaleProviderAdapter;
+use Elcodi\CurrencyBundle\Adapter\LocaleProvider\ElcodiLocaleProviderAdapter;
 
 /**
  * This is the class that loads and manages your bundle configuration
@@ -108,6 +110,14 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
             [
                 'exchangeRatesAdapters/dummyExchangeRates',
                 $config['rates_provider']['client'] === DummyExchangeRatesAdapter::ADAPTER_NAME
+            ],
+            [
+                'localeProvidersAdapters/elcodiLocaleProvider',
+                $config['locale_provider']['adapter'] === ElcodiLocaleProviderAdapter::ADAPTER_NAME
+            ],
+            [
+                'localeProvidersAdapters/dummyLocaleProvider',
+                $config['locale_provider']['adapter'] === DummyLocaleProviderAdapter::ADAPTER_NAME
             ],
         ];
     }

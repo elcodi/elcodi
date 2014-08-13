@@ -14,14 +14,14 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\CurrencyBundle\Adapter;
+namespace Elcodi\CurrencyBundle\Adapter\ExchangeRates;
 
 use DateTime;
 use Exception;
 use Guzzle\Http\Client;
 use Guzzle\Http\Message\RequestInterface;
 
-use Elcodi\CurrencyBundle\Adapter\Interfaces\ExchangeRatesAdapterInterface;
+use Elcodi\CurrencyBundle\Adapter\ExchangeRates\Interfaces\ExchangeRatesAdapterInterface;
 
 /**
  * Class OpenExchangeRatesAdapter

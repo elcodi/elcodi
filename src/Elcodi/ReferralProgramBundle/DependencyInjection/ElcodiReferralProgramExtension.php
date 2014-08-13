@@ -88,7 +88,6 @@ class ElcodiReferralProgramExtension extends AbstractExtension implements Entiti
     {
         return [
             'classes',
-            'formTypes',
             'services',
             'eventListeners',
             'factories',

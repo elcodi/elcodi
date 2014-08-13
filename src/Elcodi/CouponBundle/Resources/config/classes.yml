@@ -16,11 +16,6 @@ parameters:
     elcodi.core.coupon.service.coupon_manager.class: Elcodi\CouponBundle\Services\CouponManager
 
     #
-    # Form Types
-    #
-    elcodi.core.coupon.form_type.coupon.class: Elcodi\CouponBundle\Form\Type\CouponType
-
-    #
     # Factories
     #
     elcodi.core.coupon.factory.coupon.class: Elcodi\CouponBundle\Factory\CouponFactory

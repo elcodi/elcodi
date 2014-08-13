@@ -16,7 +16,7 @@
 
 namespace Elcodi\CurrencyBundle\Services;
 
-use Elcodi\CurrencyBundle\Adapter\Interfaces\ExchangeRatesAdapterInterface;
+use Elcodi\CurrencyBundle\Adapter\ExchangeRates\Interfaces\ExchangeRatesAdapterInterface;
 
 /**
  * Class ExchangeRatesProvider
