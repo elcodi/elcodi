@@ -65,7 +65,8 @@
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",
         "phpunit/phpunit": ">=3.7",
-        "mmoreram/php-formatter": "~1.0"
+        "mmoreram/php-formatter": "~1.0",
+        "symfony/twig-bundle": "~2.4"
     },
     "suggest": {
         "symfony/twig-bundle": "Required if using Twig extensions",
@@ -83,4 +84,3 @@
         }
     }
 }
-
