@@ -8,12 +8,6 @@ parameters:
     elcodi.core.core.service.repository_provider.class: Elcodi\CoreBundle\Services\RepositoryProvider
 
     #
-    # Twig
-    #
-    elcodi.core.core.twig_extension.text_extension.class: Elcodi\CoreBundle\Twig\TextExtension
-    elcodi.core.core.twig_extension.price_extension.class: Elcodi\CoreBundle\Twig\PriceExtension
-
-    #
     # Generators
     #
     elcodi.core.core.generator.random_string.class: Elcodi\CoreBundle\Generator\RandomStringGenerator

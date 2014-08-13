@@ -18,6 +18,8 @@ namespace Elcodi\ProductBundle\Twig;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Twig_Extension;
+use Twig_SimpleFilter;
+use Twig_SimpleFunction;
 
 use Elcodi\AttributeBundle\Entity\Interfaces\AttributeInterface;
 use Elcodi\AttributeBundle\Entity\Interfaces\ValueInterface;
@@ -38,7 +40,7 @@ class ProductExtension extends Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('available_options', array($this, 'getAvailableOptions'))
+            new Twig_SimpleFunction('available_options', array($this, 'getAvailableOptions'))
         ];
     }
 
@@ -50,7 +52,7 @@ class ProductExtension extends Twig_Extension
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('purchasable_name', array($this, 'getPurchasableName'))
+            new Twig_SimpleFilter('purchasable_name', array($this, 'getPurchasableName'))
         ];
     }
 
@@ -62,10 +64,11 @@ class ProductExtension extends Twig_Extension
      *
      * @return string
      */
-    public function getPurchasableName(PurchasableInterface $purchasable, $separator = ' - ')
+    public function getPurchasableName(
+        PurchasableInterface $purchasable,
+        $separator = ' - '
+    )
     {
-        $productName = "";
-
         if ($purchasable instanceof ProductInterface) {
             /**
              * @var ProductInterface $purchasable
@@ -104,7 +107,10 @@ class ProductExtension extends Twig_Extension
      *
      * @return ArrayCollection
      */
-    public function getAvailableOptions(ProductInterface $product, AttributeInterface $attribute)
+    public function getAvailableOptions(
+        ProductInterface $product,
+        AttributeInterface $attribute
+    )
     {
         $availableOptions = new ArrayCollection();
 

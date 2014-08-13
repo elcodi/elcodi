@@ -52,6 +52,9 @@
         "symfony/routing": "~2.4",
         "symfony/console": "~2.4"
     },
+    "suggest": {
+        "symfony/twig-bundle": "Required if using Twig extensions"
+    },
     "autoload": {
         "psr-4": {
             "Elcodi\\ProductBundle\\": ""

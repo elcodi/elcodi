@@ -37,6 +37,7 @@ class PrintMoneyExtensionTest extends PHPUnit_Framework_TestCase
             $this->markTestSkipped("Twig extension not installed");
         }
     }
+
     /**
      * Test price output
      *

@@ -60,10 +60,11 @@ abstract class AbstractEntity
      * Returns the name of the Entity. This is useful when using inheritance and
      * we don't want to mangle with reflection to get the base class name.
      *
-     * A concrete example of this is when the RouteBuilder service need to automagically
-     * compose route names based con a particular Entity. If the Entity is using inheritance
-     * and we want the *parent* name to be used as the base name to compose the route names,
-     * we just have to override this method in the child Entity class.
+     * A concrete example of this is when the RouteBuilder service need to
+     * automatically compose route names based con a particular Entity. If the
+     * Entity is using inheritance and we want the *parent* name to be used as
+     * the base name to compose the route names, we just have to override this
+     * method in the child Entity class.
      *
      * See RouteBuilder::getEntityName and AbstractController child classes
      * Route annotation for more information
@@ -78,10 +79,12 @@ abstract class AbstractEntity
     /**
      * Returns true if the class uses the trait $trait
      *
-     * This is useful when checking for objects structure in template files (twig)
+     * This is useful when checking for objects structure in
+     * template files (twig)
      *
-     * @param $trait
-     * @return bool
+     * @param string $trait Trait
+     *
+     * @return bool entity has trait
      */
     public function hasTrait($trait)
     {
@@ -95,7 +98,7 @@ abstract class AbstractEntity
     /**
      * String representation of an entity
      *
-     * @return string
+     * @return string String representation of current entity
      */
     public function __toString()
     {
