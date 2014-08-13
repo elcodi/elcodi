@@ -31,7 +31,6 @@
         "symfony/framework-bundle": "~2.4, >=2.4.8",
         "symfony/process": "~2.4",
         "knplabs/knp-gaufrette-bundle": "v0.1.7",
-        "twig/twig": "~1.0",
 
         "elcodi/core-bundle": "~0.2.0"
     },
@@ -44,6 +43,9 @@
         "phpunit/phpunit": ">=4.0",
         "symfony/routing": "~2.4",
         "symfony/console": "~2.4"
+    },
+    "suggest": {
+        "symfony/twig-bundle": "Required if using Twig extensions"
     },
     "autoload": {
         "psr-4": {

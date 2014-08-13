@@ -11,6 +11,7 @@ matrix:
         - php: hhvm-nightly
 
 before_script:
+  - composer require --no-update symfony/twig-bundle ~2.4
   - composer install --prefer-source --no-interaction
 
 script:

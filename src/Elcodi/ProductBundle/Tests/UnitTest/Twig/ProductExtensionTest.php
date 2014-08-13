@@ -24,6 +24,17 @@ use Elcodi\ProductBundle\Twig\ProductExtension;
 class ProductExtensionTest extends \PHPUnit_Framework_TestCase
 {
     /**
+     * Skipping tests if Twig is not installed
+     */
+    public function setUp()
+    {
+        if (!class_exists('Twig_Extension')) {
+
+            $this->markTestSkipped("Twig extension not installed");
+        }
+    }
+
+    /**
      * Test for Product twig extension
      */
     public function testAvailableOptions()
