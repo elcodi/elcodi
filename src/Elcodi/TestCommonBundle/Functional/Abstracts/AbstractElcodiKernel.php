@@ -14,7 +14,7 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\CoreBundle\Tests\Functional\app\Abstracts;
+namespace Elcodi\TestCommonBundle\Functional\Abstracts;
 
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;

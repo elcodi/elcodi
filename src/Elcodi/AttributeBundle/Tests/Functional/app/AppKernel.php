@@ -16,7 +16,7 @@
 
 namespace Elcodi\AttributeBundle\Tests\Functional\app;
 
-use Elcodi\CoreBundle\Tests\Functional\app\Abstracts\AbstractElcodiKernel;
+use Elcodi\TestCommonBundle\Functional\Abstracts\AbstractElcodiKernel;
 
 /**
  * Class AppKernel

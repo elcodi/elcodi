@@ -16,8 +16,8 @@
 
 namespace Elcodi\MenuBundle\Tests\Functional\Services;
 
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 use Elcodi\MenuBundle\Services\MenuManager;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Class MenuManager

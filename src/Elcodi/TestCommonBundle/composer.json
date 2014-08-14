@@ -1,0 +1,44 @@
+{
+    "name": "elcodi/test-common-bundle",
+    "description": "Elcodi Test Common component",
+    "keywords": ["elcodi", "test", "ecommerce"],
+    "homepage": "https://github.com/elcodi/TestCommonBundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "Symfony Community",
+            "homepage": "https://github.com/elcodi/TestCommonBundle/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "doctrine/common": "~2.4",
+        "doctrine/orm": "~2.4",
+        "doctrine/doctrine-fixtures-bundle": "~2.2",
+        "symfony/config": "~2.4",
+        "symfony/http-kernel": "~2.4",
+        "symfony/framework-bundle": "~2.4, >=2.4.8",
+        "symfony/console": "~2.4",
+        "symfony/dependency-injection": "~2.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\TestCommonBundle\\": ""
+        }
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.2-dev"
+        }
+    }
+}

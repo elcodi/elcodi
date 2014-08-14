@@ -16,8 +16,8 @@
 
 namespace Elcodi\ProductBundle\Tests\Functional\Services;
 
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 use Elcodi\ProductBundle\Services\ProductCollectionProvider;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Tests ProductCollectionProvider class

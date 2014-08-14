@@ -16,7 +16,7 @@
 
 namespace Elcodi\CartCouponBundle\Tests\Functional\EventDispatcher;
 
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Class OrderCouponEventDispatcherTest

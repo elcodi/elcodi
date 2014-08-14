@@ -18,7 +18,6 @@ env:
     - SYMFONY_VERSION="2.5.*" TWIG_REQUIRED=true
 
 before_script:
-
     - composer require --no-update symfony/http-kernel:${SYMFONY_VERSION}
     - composer require --no-update symfony/config:${SYMFONY_VERSION}
     - composer require --no-update symfony/yaml:${SYMFONY_VERSION}

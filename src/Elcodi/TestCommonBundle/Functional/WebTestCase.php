@@ -14,7 +14,7 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\CoreBundle\Tests\Functional;
+namespace Elcodi\TestCommonBundle\Functional;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -25,7 +25,6 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as BaseWebTestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
-use Symfony\Component\Routing\RouterInterface;
 
 use Elcodi\CoreBundle\Entity\Abstracts\AbstractEntity;
 use Elcodi\CoreBundle\Factory\Abstracts\AbstractFactory;
@@ -52,13 +51,6 @@ abstract class WebTestCase extends BaseWebTestCase
     protected $client;
 
     /**
-     * @var RouterInterface
-     *
-     * Router
-     */
-    protected $router;
-
-    /**
      * @var ContainerInterface
      *
      * Container
@@ -80,16 +72,11 @@ abstract class WebTestCase extends BaseWebTestCase
         gc_collect_cycles();
 
         static::$kernel = static::createKernel();
-        try {
         static::$kernel->boot();
-    } catch (\Exception $e) {
 
-        echo $e->getMessage();
-}
         static::$application = new Application(static::$kernel);
         static::$application->setAutoExit(false);
         $this->container = static::$kernel->getContainer();
-        $this->router = $this->get('router');
 
         $this->createSchema();
     }

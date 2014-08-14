@@ -16,7 +16,7 @@
 
 namespace Elcodi\CouponBundle\Tests\Functional\Services;
 
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Tests CouponManager class

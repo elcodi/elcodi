@@ -16,7 +16,7 @@
 
 namespace Elcodi\UserBundle\Tests\Functional\Services;
 
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Tests CustomerManager class

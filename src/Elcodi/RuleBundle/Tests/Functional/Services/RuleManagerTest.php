@@ -16,10 +16,10 @@
 
 namespace Elcodi\RuleBundle\Tests\Functional\Services;
 
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 use Elcodi\RuleBundle\Entity\Interfaces\AbstractRuleInterface;
 use Elcodi\RuleBundle\Entity\Interfaces\RuleInterface;
 use Elcodi\RuleBundle\Services\RuleManager;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Class RuleManagerTest

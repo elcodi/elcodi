@@ -16,7 +16,7 @@
 
 namespace Elcodi\MenuBundle\Tests\Functional\Factory;
 
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Class MenuFactoryTest

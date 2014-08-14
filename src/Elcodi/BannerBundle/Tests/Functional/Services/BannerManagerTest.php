@@ -16,7 +16,7 @@
 
 namespace Elcodi\BannerBundle\Tests\Functional\Services;
 
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Tests BannerManager class
