@@ -28,7 +28,7 @@ Elcodi\MenuBundle\Entity\Menu\Menu:
             targetEntity: Elcodi\MenuBundle\Entity\Menu\Interfaces\NodeInterface
             cascade: [ "persist" ]
             joinTable:
-                name: menu_node_hierachy
+                name: menu_node_hierarchy
                 joinColumns:
                     menu_node_id:
                         referencedColumnName: id
