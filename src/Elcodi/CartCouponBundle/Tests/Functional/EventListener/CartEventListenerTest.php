@@ -17,10 +17,10 @@
 namespace Elcodi\CartCouponBundle\Tests\Functional\EventListener;
 
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 use Elcodi\CouponBundle\Entity\Interfaces\CouponInterface;
 use Elcodi\RuleBundle\Entity\Interfaces\ExpressionInterface;
 use Elcodi\RuleBundle\Entity\Interfaces\RuleInterface;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Class CartEventListenerTest

@@ -16,7 +16,7 @@
 
 namespace Elcodi\LanguageBundle\Tests\Functional\Services;
 
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Tests LanguageManagerTest class

@@ -16,7 +16,7 @@
 
 namespace Elcodi\LanguageBundle\Tests\Functional\Factory;
 
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Class LanguageFactoryTest

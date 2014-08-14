@@ -16,7 +16,7 @@
 
 namespace Elcodi\NewsletterBundle\Tests\Functional\EventListener;
 
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Class NewsletterEventListenerTest

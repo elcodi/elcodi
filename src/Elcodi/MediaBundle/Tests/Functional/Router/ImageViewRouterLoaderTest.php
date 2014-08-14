@@ -16,7 +16,7 @@
 
 namespace Elcodi\MediaBundle\Tests\Functional\Router;
 
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Class ImageViewRouterLoaderTest

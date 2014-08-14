@@ -16,7 +16,7 @@
 
 namespace Elcodi\MediaBundle\Tests\Functional\Controller;
 
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Class ImageUploadControllerTest

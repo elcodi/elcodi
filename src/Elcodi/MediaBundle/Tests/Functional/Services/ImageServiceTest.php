@@ -18,8 +18,8 @@ namespace Elcodi\MediaBundle\Tests\Functional\Services;
 
 use Symfony\Component\HttpFoundation\File\File;
 
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 use Elcodi\MediaBundle\Entity\Interfaces\ImageInterface;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Class ImageServiceTest

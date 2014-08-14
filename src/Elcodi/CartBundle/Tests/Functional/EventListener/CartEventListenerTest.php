@@ -16,7 +16,7 @@
 
 namespace Elcodi\CartBundle\Tests\Functional\EventListener;
 
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Tests PaymentEventListener class

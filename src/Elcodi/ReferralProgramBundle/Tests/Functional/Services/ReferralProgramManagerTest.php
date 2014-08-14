@@ -19,7 +19,6 @@ namespace Elcodi\ReferralProgramBundle\Tests\Functional\Services;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ObjectManager;
 
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 use Elcodi\ReferralProgramBundle\ElcodiReferralProgramRuleTypes;
 use Elcodi\ReferralProgramBundle\ElcodiReferralProgramSources;
 use Elcodi\ReferralProgramBundle\Entity\Interfaces\ReferralRuleInterface;
@@ -27,6 +26,7 @@ use Elcodi\ReferralProgramBundle\Entity\Invitation;
 use Elcodi\ReferralProgramBundle\Entity\ReferralHash;
 use Elcodi\ReferralProgramBundle\Entity\ReferralLine;
 use Elcodi\ReferralProgramBundle\Entity\ReferralRule;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Class ReferralProgramManagerTest

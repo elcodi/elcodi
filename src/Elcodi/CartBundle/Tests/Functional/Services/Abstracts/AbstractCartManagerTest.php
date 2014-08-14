@@ -20,9 +20,9 @@ use Doctrine\ORM\UnitOfWork;
 
 use Elcodi\CartBundle\Entity\Interfaces\CartInterface;
 use Elcodi\CartBundle\Entity\Interfaces\CartLineInterface;
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 use Elcodi\ProductBundle\Entity\Interfaces\ProductInterface;
 use Elcodi\ProductBundle\Entity\Interfaces\PurchasableInterface;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Class AbstractCartManagerTest

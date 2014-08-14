@@ -17,7 +17,7 @@
 namespace Elcodi\CartCouponBundle\Tests\Functional\Service;
 
 use Elcodi\CartBundle\Entity\Cart;
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Class CartCouponManagerTest

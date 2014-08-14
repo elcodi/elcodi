@@ -16,7 +16,7 @@
 
 namespace Elcodi\BannerBundle\Tests\Functional\Repository;
 
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Class BannerZoneRepositoryTest

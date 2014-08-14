@@ -16,7 +16,7 @@
 
 namespace Elcodi\CoreBundle\Tests\Functional\Generator;
 
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Class RandomGeneratorTest

@@ -22,7 +22,7 @@ use Elcodi\CartBundle\Entity\Interfaces\OrderLineHistoryInterface;
 use Elcodi\CartBundle\Entity\OrderLine;
 use Elcodi\CartBundle\Transformer\CartLineOrderLineTransformer;
 use Elcodi\CartBundle\Transformer\CartOrderTransformer;
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Class CartLineOrderLineTransformer

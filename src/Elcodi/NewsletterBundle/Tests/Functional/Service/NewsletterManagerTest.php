@@ -16,11 +16,11 @@
 
 namespace Elcodi\NewsletterBundle\Tests\Functional\Service;
 
-use Elcodi\CoreBundle\Tests\Functional\WebTestCase;
 use Elcodi\LanguageBundle\Entity\Interfaces\LanguageInterface;
 use Elcodi\NewsletterBundle\Entity\Interfaces\NewsletterSubscriptionInterface;
 use Elcodi\NewsletterBundle\Repository\NewsletterSubscriptionRepository;
 use Elcodi\NewsletterBundle\Services\NewsletterManager;
+use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
  * Class NewsletterManagerTest
