@@ -55,7 +55,7 @@
             "Elcodi\\ProductBundle\\": ""
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "extra": {
         "branch-alias": {
             "dev-master": "0.2-dev"
