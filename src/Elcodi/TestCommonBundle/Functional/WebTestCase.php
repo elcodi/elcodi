@@ -58,13 +58,6 @@ abstract class WebTestCase extends BaseWebTestCase
     private $container;
 
     /**
-     * @var boolean
-     *
-     * Deployment quietness
-     */
-    protected $quiet = false;
-
-    /**
      * Set up
      */
     public function setUp()
