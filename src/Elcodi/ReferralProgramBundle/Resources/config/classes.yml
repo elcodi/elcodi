@@ -48,3 +48,8 @@ parameters:
     elcodi.core.referral_program.factory.referral_hash.class: Elcodi\ReferralProgramBundle\Factory\ReferralHashFactory
     elcodi.core.referral_program.factory.invitation.class: Elcodi\ReferralProgramBundle\Factory\InvitationFactory
     elcodi.core.referral_program.factory.invitation_bag.class: Elcodi\ReferralProgramBundle\Factory\InvitationBagFactory
+
+    #
+    # Controllers
+    #
+    elcodi.core.referral_program.controller.referral_program.class: Elcodi\ReferralProgramBundle\Controller\ReferralProgramController

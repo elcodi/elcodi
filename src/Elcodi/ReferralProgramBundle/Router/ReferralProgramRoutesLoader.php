@@ -79,7 +79,7 @@ class ReferralProgramRoutesLoader implements LoaderInterface
 
         $routes = new RouteCollection();
         $routes->add($this->controllerRouteName, new Route($this->controllerRoute, array(
-            '_controller' => 'ElcodiReferralProgramBundle:ReferralProgram:track',
+            '_controller' => 'elcodi.core.referral_program.controller.referral_program:trackAction',
         )));
 
         $this->loaded = true;

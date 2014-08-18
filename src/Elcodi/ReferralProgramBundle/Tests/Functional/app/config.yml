@@ -46,6 +46,9 @@ elcodi_cart:
     cart:
         save_in_session: false
 
+elcodi_referral_program:
+    controller_redirect_route_name: fake_route
+
 knp_gaufrette:
     adapters:
         local:
