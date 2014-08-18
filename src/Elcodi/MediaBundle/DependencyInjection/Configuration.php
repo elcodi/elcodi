@@ -36,13 +36,12 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->scalarNode('filesystem')
+                    ->defaultValue('gaufrette.local_filesystem')
+                ->end()
                 ->arrayNode('images')
                     ->addDefaultsIfNotSet()
                     ->children()
-
-                        ->scalarNode('filesystem')
-                            ->isRequired()
-                        ->end()
 
                         ->arrayNode('view')
                             ->addDefaultsIfNotSet()

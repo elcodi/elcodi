@@ -7,7 +7,7 @@ framework:
         storage_id: session.storage.mock_file
     secret:          "%secret%"
     router:
-        resource: "%kernel.root_dir%/config/routing.yml"
+        resource: "%kernel.root_dir%/routing.yml"
     form:            true
     default_locale:  "%locale%"
     templating:      { engines: ['php'] }
@@ -37,10 +37,6 @@ doctrine_cache:
    providers:
       elcodi:
          type: array
-
-elcodi_media:
-    images:
-        filesystem: gaufrette.local_filesystem
 
 knp_gaufrette:
     adapters:

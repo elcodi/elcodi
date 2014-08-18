@@ -43,8 +43,8 @@ class ReferralProgramControllerTest extends WebTestCase
     {
         $client = $this->createClient();
         $client->request('GET', $this->getParameter('elcodi.core.referral_program.controller_route'), [
-                'hash' => '1234'
-            ]);
+            'hash' => '1234'
+        ]);
 
         $response = $client->getResponse();
         $cookieValue = $client

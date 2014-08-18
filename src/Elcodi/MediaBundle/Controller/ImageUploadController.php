@@ -17,10 +17,9 @@
 namespace Elcodi\MediaBundle\Controller;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 
 use Elcodi\MediaBundle\Exception\InvalidImageException;
@@ -30,14 +29,21 @@ use Elcodi\MediaBundle\Services\ImageManager;
 /**
  * Class ImageUploadController
  */
-class ImageUploadController extends Controller
+class ImageUploadController
 {
+    /**
+     * @var RequestStack
+     *
+     * Request stack
+     */
+    protected $requestStack;
+
     /**
      * @var ObjectManager
      *
-     * Entity manager
+     * Image Object manager
      */
-    protected $objectManager;
+    protected $imageObjectManager;
 
     /**
      * @var ImageManager
@@ -63,19 +69,22 @@ class ImageUploadController extends Controller
     /**
      * Construct method
      *
-     * @param ObjectManager $objectManager   Object Manager
-     * @param FileManager   $fileManager     File Manager
-     * @param ImageManager  $imageManager    Image Manager
-     * @param string        $uploadFieldName Field name when uploading
+     * @param RequestStack  $requestStack       Request Stack
+     * @param ObjectManager $imageObjectManager Image Object Manager
+     * @param FileManager   $fileManager        File Manager
+     * @param ImageManager  $imageManager       Image Manager
+     * @param string        $uploadFieldName    Field name when uploading
      */
     public function __construct(
-        ObjectManager $objectManager,
+        RequestStack $requestStack,
+        ObjectManager $imageObjectManager,
         FileManager $fileManager,
         ImageManager $imageManager,
         $uploadFieldName
     )
     {
-        $this->objectManager = $objectManager;
+        $this->requestStack = $requestStack;
+        $this->imageObjectManager = $imageObjectManager;
         $this->fileManager = $fileManager;
         $this->imageManager = $imageManager;
         $this->uploadFieldName = $uploadFieldName;
@@ -84,16 +93,20 @@ class ImageUploadController extends Controller
     /**
      * Dynamic upload action
      *
-     * @param Request $request Current request
-     *
      * @return Response
      */
-    public function uploadAction(Request $request)
+    public function uploadAction()
     {
+        $request = $this
+            ->requestStack
+            ->getCurrentRequest();
+
         /**
          * @var $file UploadedFile
          */
-        $file = $request->files->get($this->uploadFieldName);
+        $file = $request
+            ->files
+            ->get($this->uploadFieldName);
 
         try {
             $image = $this->imageManager->createImage($file);
@@ -104,8 +117,8 @@ class ImageUploadController extends Controller
             ]);
         }
 
-        $this->objectManager->persist($image);
-        $this->objectManager->flush($image);
+        $this->imageObjectManager->persist($image);
+        $this->imageObjectManager->flush($image);
 
         $this->fileManager->uploadFile(
             $image,
