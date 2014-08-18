@@ -1,0 +1,11 @@
+services:
+
+    #
+    # Controllers
+    #
+    elcodi.core.referral_program.controller.referral_program:
+        class: %elcodi.core.referral_program.controller.referral_program.class%
+        arguments:
+            request_stack: @request_stack
+            router: @router
+            controller_redirect_route: %elcodi.core.referral_program.controller_redirect_route_name%

@@ -16,17 +16,58 @@
 
 namespace Elcodi\ReferralProgramBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Cookie;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 use Elcodi\ReferralProgramBundle\ElcodiReferralProgramBundle;
 
 /**
  * Class ReferralProgramRoutesLoader
  */
-class ReferralProgramController extends Controller
+class ReferralProgramController
 {
+    /**
+     * @var UrlGeneratorInterface
+     *
+     * UrlGenerator
+     */
+    protected $urlGenerator;
+
+    /**
+     * @var string
+     *
+     * Controller redirect
+     */
+    protected $controllerRedirect;
+
+    /**
+     * @var RequestStack
+     *
+     * Request stack
+     */
+    protected $requestStack;
+
+    /**
+     * Construct method
+     *
+     * @param RequestStack          $requestStack       Request stack
+     * @param UrlGeneratorInterface $urlGenerator       Url Generator
+     * @param string                $controllerRedirect Controller Redirect
+     */
+    public function __construct(
+        RequestStack $requestStack,
+        UrlGeneratorInterface $urlGenerator,
+        $controllerRedirect
+    )
+    {
+        $this->requestStack = $requestStack;
+        $this->urlGenerator = $urlGenerator;
+        $this->controllerRedirect = $controllerRedirect;
+    }
+
     /**
      * When a simple web user click a referral link, this code is executed.
      *
@@ -39,14 +80,23 @@ class ReferralProgramController extends Controller
      *
      * If cookie is already set, hash value is overwritten.
      *
-     * @param string $hash Referral Program Hash
-     *
      * @return Response Response object
      */
-    public function trackAction($hash)
+    public function trackAction()
     {
+        $hash = $this
+            ->requestStack
+            ->getCurrentRequest()
+            ->query
+            ->get('hash');
+
         $cookie = new Cookie(ElcodiReferralProgramBundle::REFERRAL_PROGRAM_COOKIE_NAME, $hash);
-        $response = $this->redirect($this->generateUrl($this->getParameter('elcodi.core.referral_program.controller_redirect')));
+
+        $responseUrl = $this
+            ->urlGenerator
+            ->generate($this->controllerRedirect);
+
+        $response = RedirectResponse::create($responseUrl);
         $response->headers->setCookie($cookie);
 
         return $response;

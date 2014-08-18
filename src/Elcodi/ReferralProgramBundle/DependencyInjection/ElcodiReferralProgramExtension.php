@@ -69,11 +69,11 @@ class ElcodiReferralProgramExtension extends AbstractExtension implements Entiti
     protected function getParametrizationValues(array $config)
     {
         return [
-            'elcodi.core.referral_program.controller_route_name'    => $config['controller_route_name'],
-            'elcodi.core.referral_program.controller_route'         => $config['controller_route'],
-            'elcodi.core.referral_program.controller_redirect'      => $config['controller_redirect'],
-            'elcodi.core.referral_program.purge_disabled_lines'     => $config['purge_disabled_lines'],
-            'elcodi.core.referral_program.auto_referral_assignment' => $config['auto_referral_assignment'],
+            'elcodi.core.referral_program.controller_route_name'          => $config['controller_route_name'],
+            'elcodi.core.referral_program.controller_route'               => $config['controller_route'],
+            'elcodi.core.referral_program.controller_redirect_route_name' => $config['controller_redirect_route_name'],
+            'elcodi.core.referral_program.purge_disabled_lines'           => $config['purge_disabled_lines'],
+            'elcodi.core.referral_program.auto_referral_assignment'       => $config['auto_referral_assignment'],
         ];
     }
 
@@ -94,6 +94,7 @@ class ElcodiReferralProgramExtension extends AbstractExtension implements Entiti
             'repositories',
             'generators',
             'objectManagers',
+            'controllers',
         ];
     }
 
