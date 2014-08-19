@@ -112,7 +112,7 @@ class ImageResizeController
             ->requestStack
             ->getCurrentRequest();
 
-        $id = $request->query->get('id');
+        $id = $request->get('id');
 
             /**
              * We retrieve image given its id
@@ -127,9 +127,9 @@ class ImageResizeController
         }
 
         $response = new Response();
-        $height = $request->query->get('height');
-        $width = $request->query->get('width');
-        $type = $request->query->get('type');
+        $height = $request->get('height');
+        $width = $request->get('width');
+        $type = $request->get('type');
 
         $response
             ->setEtag($this
