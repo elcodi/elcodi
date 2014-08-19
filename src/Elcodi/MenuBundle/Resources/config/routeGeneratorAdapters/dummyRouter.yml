@@ -1,0 +1,17 @@
+parameters:
+
+    #
+    # DummyRouter Adapter class
+    #
+    elcodi.core.menu.adapter.dummy_route_generator_adapter.class: Elcodi\MenuBundle\Adapter\RouteGenerator\DummyRouteGeneratorAdapter
+
+services:
+
+    #
+    # DummyRouter Adapter
+    #
+    elcodi.core.menu.adapter.dummy_route_generator_adapter:
+        class: %elcodi.core.menu.adapter.dummy_route_generator_adapter.class%
+
+    elcodi.core.menu.adapter.route_generator_adapter:
+        alias: elcodi.core.menu.adapter.dummy_route_generator_adapter

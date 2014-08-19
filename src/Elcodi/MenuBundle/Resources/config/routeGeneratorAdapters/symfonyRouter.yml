@@ -1,0 +1,19 @@
+parameters:
+
+    #
+    # SymfonyRouter Adapter class
+    #
+    elcodi.core.menu.adapter.symfony_route_generator_adapter.class: Elcodi\MenuBundle\Adapter\RouteGenerator\SymfonyRouteGeneratorAdapter
+
+services:
+
+    #
+    # SymfonyRouter Adapter
+    #
+    elcodi.core.menu.adapter.symfony_route_generator_adapter:
+        class: %elcodi.core.menu.adapter.symfony_route_generator_adapter.class%
+        arguments:
+            router: @router
+
+    elcodi.core.menu.adapter.route_generator_adapter:
+        alias: elcodi.core.menu.adapter.symfony_route_generator_adapter

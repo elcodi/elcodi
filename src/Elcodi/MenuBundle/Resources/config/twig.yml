@@ -1,0 +1,11 @@
+services:
+
+    #
+    # Twig extensions
+    #
+    elcodi.core.menu.twig_extension.print_route:
+        class: %elcodi.core.menu.twig_extension.print_route.class%
+        arguments:
+            route_adapter: @elcodi.core.menu.adapter.route_generator_adapter
+        tags:
+            - { name: twig.extension }

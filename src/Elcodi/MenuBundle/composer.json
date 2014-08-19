@@ -34,6 +34,10 @@
         "doctrine/data-fixtures": "~1.0",
         "phpunit/phpunit": ">=3.7"
     },
+    "suggest": {
+        "symfony/twig-bundle": "Required if using Twig extensions",
+        "symfony/routing": "Required if using elcodi/menu-bundle generate_url twig extension"
+    },
     "autoload": {
         "psr-4": {
             "Elcodi\\MenuBundle\\": ""

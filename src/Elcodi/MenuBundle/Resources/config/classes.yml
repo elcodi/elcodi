@@ -22,3 +22,8 @@ parameters:
     # Services
     #
     elcodi.core.menu.service.menu_manager.class: Elcodi\MenuBundle\Services\MenuManager
+
+    #
+    # Twig extensions
+    #
+    elcodi.core.menu.twig_extension.print_route.class: Elcodi\MenuBundle\Twig\PrintRouteExtension
