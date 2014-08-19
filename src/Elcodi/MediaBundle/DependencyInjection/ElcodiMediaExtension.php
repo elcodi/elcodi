@@ -97,7 +97,7 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
     protected function getParametrizationValues(array $config)
     {
         return [
-            'elcodi.core.media.filesystem'                             => $config['images']['filesystem'],
+            'elcodi.core.media.filesystem'                             => $config['filesystem'],
 
             'elcodi.core.media.image_view_controller_route_name'       => $config['images']['view']['controller_route_name'],
             'elcodi.core.media.image_view_controller_route'            => $config['images']['view']['controller_route'],

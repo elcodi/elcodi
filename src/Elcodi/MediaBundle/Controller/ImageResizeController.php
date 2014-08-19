@@ -17,8 +17,7 @@
 namespace Elcodi\MediaBundle\Controller;
 
 use Doctrine\ORM\EntityNotFoundException;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 
 use Elcodi\MediaBundle\Entity\Interfaces\ImageInterface;
@@ -29,8 +28,15 @@ use Elcodi\MediaBundle\Transformer\Interfaces\ImageEtagTransformerInterface;
 /**
  * Class ImageController
  */
-class ImageResizeController extends Controller
+class ImageResizeController
 {
+    /**
+     * @var RequestStack
+     *
+     * Request stack
+     */
+    protected $requestStack;
+
     /**
      * @var ImageRepository
      *
@@ -69,6 +75,7 @@ class ImageResizeController extends Controller
     /**
      * Construct method
      *
+     * @param RequestStack                  $requestStack         Request Stack
      * @param ImageRepository               $imageRepository      Image Repository
      * @param ImageManager                  $imageManager         Image Manager
      * @param ImageEtagTransformerInterface $imageEtagTransformer ImageEtagTransformer Image Etag Transformer
@@ -76,6 +83,7 @@ class ImageResizeController extends Controller
      * @param integer                       $sharedMaxAge         Shared max size
      */
     public function __construct(
+        RequestStack $requestStack,
         ImageRepository $imageRepository,
         ImageManager $imageManager,
         ImageEtagTransformerInterface $imageEtagTransformer,
@@ -83,6 +91,7 @@ class ImageResizeController extends Controller
         $sharedMaxAge
     )
     {
+        $this->requestStack = $requestStack;
         $this->imageRepository = $imageRepository;
         $this->imageManager = $imageManager;
         $this->imageEtagTransformer = $imageEtagTransformer;
@@ -93,27 +102,21 @@ class ImageResizeController extends Controller
     /**
      * Resizes an image
      *
-     * @param Request $request Request
-     * @param integer $id      Image id
-     * @param string  $height  Height
-     * @param string  $width   Width
-     * @param int     $type    Type
-     *
      * @return Response
      *
-     * @throws EntityNotFoundException
+     * @throws EntityNotFoundException Requested image does not exist
      */
-    public function resizeAction(
-        Request $request,
-        $id,
-        $height,
-        $width,
-        $type
-    )
+    public function resizeAction()
     {
-        /**
-         * We retrieve image given its id
-         */
+        $request = $this
+            ->requestStack
+            ->getCurrentRequest();
+
+        $id = $request->query->get('id');
+
+            /**
+             * We retrieve image given its id
+             */
         $image = $this
             ->imageRepository
             ->find($id);
@@ -124,6 +127,9 @@ class ImageResizeController extends Controller
         }
 
         $response = new Response();
+        $height = $request->query->get('height');
+        $width = $request->query->get('width');
+        $type = $request->query->get('type');
 
         $response
             ->setEtag($this

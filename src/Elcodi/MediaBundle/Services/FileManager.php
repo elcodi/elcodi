@@ -38,7 +38,7 @@ class FileManager
      *
      * Filesystem
      */
-    protected $filesystem;
+    public $filesystem;
 
     /**
      * @var FileIdentifierTransformerInterface
@@ -53,7 +53,10 @@ class FileManager
      * @param Filesystem                         $fileSystem                Filesystem
      * @param FileIdentifierTransformerInterface $fileIdentifierTransformer File identifier transformer
      */
-    public function __construct(Filesystem $fileSystem, FileIdentifierTransformerInterface $fileIdentifierTransformer)
+    public function __construct(
+        Filesystem $fileSystem,
+        FileIdentifierTransformerInterface $fileIdentifierTransformer
+    )
     {
         $this->filesystem = $fileSystem;
         $this->fileIdentifierTransformer = $fileIdentifierTransformer;
@@ -82,7 +85,8 @@ class FileManager
     }
 
     /**
-     * Retrieves File data from filesystem
+     * Given a Doctrine mapped File instance, retrieves its data and fill
+     * content local variable with it.
      *
      * @param FileInterface $file File to download
      *

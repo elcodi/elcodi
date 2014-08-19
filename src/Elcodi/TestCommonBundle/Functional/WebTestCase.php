@@ -396,6 +396,9 @@ abstract class WebTestCase extends BaseWebTestCase
     {
         static::$class = static::getKernelClass();
 
-        return new static::$class('test', true);
+        $namespaceExploded = explode('\\Tests\\Functional\\', get_called_class(), 2);
+        $bundleName = explode('Elcodi\\', $namespaceExploded[0], 2)[1];
+
+        return new static::$class($bundleName . 'Test', true);
     }
 }

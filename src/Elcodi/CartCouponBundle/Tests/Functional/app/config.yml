@@ -38,10 +38,6 @@ doctrine_cache:
       elcodi:
          type: array
 
-elcodi_media:
-    images:
-        filesystem: gaufrette.local_filesystem
-
 elcodi_cart:
     cart:
         save_in_session: false
