@@ -115,7 +115,7 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
             ->with(
                 $this->equalTo('menus-admin'),
                 $this->equalTo(
-                    '{"1":{"id":1,"name":null,"url":null,"subnodes":[]}}'
+                    '{"1":{"id":1,"name":null,"code":null,"url":null,"subnodes":[]}}'
                 )
             );
 
@@ -125,6 +125,7 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
                 1 => [
                     'id'       => 1,
                     'name'     => null,
+                    'code'     => null,
                     'url'      => null,
                     'subnodes' => [],
                 ]
