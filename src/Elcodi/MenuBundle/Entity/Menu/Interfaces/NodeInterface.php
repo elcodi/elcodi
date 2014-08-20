@@ -55,4 +55,20 @@ interface NodeInterface extends DateTimeInterface, EnabledInterface, SubnodesAwa
      * @return string Url
      */
     public function getUrl();
+
+    /**
+     * Gets Node code
+     *
+     * @return string
+     */
+    public function getCode();
+
+    /**
+     * Sets Node code
+     *
+     * @param string $code
+     *
+     * @return NodeInterface self object
+     */
+    public function setCode($code);
 }

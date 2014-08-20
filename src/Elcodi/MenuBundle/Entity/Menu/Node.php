@@ -32,9 +32,16 @@ class Node extends AbstractEntity implements NodeInterface
     /**
      * @var string
      *
-     * name
+     * Node name
      */
     protected $name;
+
+    /**
+     * @var string
+     *
+     * Node code or short name
+     */
+    protected $code;
 
     /**
      * @var string
@@ -44,7 +51,7 @@ class Node extends AbstractEntity implements NodeInterface
     protected $url;
 
     /**
-     * Sets Name
+     * Sets Node name
      *
      * @param string $name Name
      *
@@ -58,7 +65,7 @@ class Node extends AbstractEntity implements NodeInterface
     }
 
     /**
-     * Get Name
+     * Gets Node name
      *
      * @return string Name
      */
@@ -68,7 +75,9 @@ class Node extends AbstractEntity implements NodeInterface
     }
 
     /**
-     * Sets Url
+     * Sets Node URL
+     *
+     * Can be a plain URL or a route name
      *
      * @param string $url Url
      *
@@ -82,12 +91,36 @@ class Node extends AbstractEntity implements NodeInterface
     }
 
     /**
-     * Get Url
+     * Gets Node url
      *
      * @return string Url
      */
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * Gets Node code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * Sets Node code
+     *
+     * @param string $code
+     *
+     * @return Node self object
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
     }
 }

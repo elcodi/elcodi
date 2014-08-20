@@ -8,6 +8,11 @@ Elcodi\MenuBundle\Entity\Menu\Node:
             type: string
             length: 255
             nullable: false
+        code:
+            column: code
+            type: string
+            length: 25
+            nullable: true
         url:
             column: url
             type: string
