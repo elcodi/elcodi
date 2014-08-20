@@ -159,6 +159,7 @@ class MenuManager extends AbstractCacheWrapper
         return [
             'id'       => $node->getId(),
             'name'     => $node->getName(),
+            'code'     => $node->getCode(),
             'url'      => $node->getUrl(),
             'subnodes' => $this->loadSubnodes($node)
         ];

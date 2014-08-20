@@ -43,6 +43,7 @@ class NodeData extends AbstractFixture
             ->get('elcodi.factory.menu_node')
             ->create()
             ->setName('him')
+            ->setCode('him')
             ->setUrl('elcodi.dev/him')
             ->setEnabled(true);
 
@@ -51,6 +52,7 @@ class NodeData extends AbstractFixture
             ->get('elcodi.factory.menu_node')
             ->create()
             ->setName('her')
+            ->setCode('her')
             ->setUrl('elcodi.dev/her')
             ->setEnabled(true);
 
@@ -59,6 +61,7 @@ class NodeData extends AbstractFixture
             ->get('elcodi.factory.menu_node')
             ->create()
             ->setName('vogue')
+            ->setCode('vogue')
             ->setEnabled(true)
             ->addSubnode($menuNodeHim)
             ->addSubnode($menuNodeHer);
