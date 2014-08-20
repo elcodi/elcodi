@@ -19,6 +19,9 @@ namespace Elcodi\MenuBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
+use Elcodi\MenuBundle\Adapter\RouteGenerator\DummyRouteGeneratorAdapter;
+use Elcodi\MenuBundle\Adapter\RouteGenerator\SymfonyRouteGeneratorAdapter;
+
 /**
  * This is the class that validates and merges configuration from your app/config files
  */
@@ -39,6 +42,18 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('cache_key')
                             ->defaultValue('menus')
+                        ->end()
+                    ->end()
+                ->end()
+                ->arrayNode('route_provider')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->enumNode('adapter')
+                            ->values([
+                                DummyRouteGeneratorAdapter::ADAPTER_NAME,
+                                SymfonyRouteGeneratorAdapter::ADAPTER_NAME
+                            ])
+                            ->defaultValue(DummyRouteGeneratorAdapter::ADAPTER_NAME)
                         ->end()
                     ->end()
                 ->end()

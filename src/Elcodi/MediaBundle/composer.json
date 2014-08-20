@@ -40,7 +40,8 @@
         "phpunit/phpunit": ">=3.7"
     },
     "suggest": {
-        "symfony/twig-bundle": "Required if using Twig extensions"
+        "symfony/twig-bundle": "Required if using Twig extensions",
+        "symfony/routing" : "Required if using Symfony Router to generate URLs for menus"
     },
     "autoload": {
         "psr-4": {
