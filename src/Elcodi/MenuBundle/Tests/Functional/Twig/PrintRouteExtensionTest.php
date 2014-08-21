@@ -14,14 +14,14 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\MediaBundle\Tests\Functional\Twig;
+namespace Elcodi\MenuBundle\Tests\Functional\Twig;
 
 use Elcodi\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class ImageExtensionTest
+ * Class PrintRouteExtensionTest
  */
-class ImageExtensionTest extends WebTestCase
+class PrintRouteExtensionTest extends WebTestCase
 {
     /**
      * Skipping tests if Twig is not installed
@@ -43,6 +43,19 @@ class ImageExtensionTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.media.twig_extension.image_extension';
+        return [
+            'elcodi.core.menu.twig_extension.print_route'
+        ];
+    }
+
+    /**
+     * Test print url
+     */
+    public function testPrintUrl()
+    {
+        $printRouteExtension = $this
+            ->get('elcodi.core.menu.twig_extension.print_route');
+
+        $this->assertEquals('route', $printRouteExtension->printUrl('route'));
     }
 }

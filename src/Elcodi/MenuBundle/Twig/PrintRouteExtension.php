@@ -72,7 +72,9 @@ class PrintRouteExtension extends Twig_Extension
      */
     public function printUrl($route)
     {
-        return $this->routeGeneratorAdapter->generateUrl($route);
+        return $this
+            ->routeGeneratorAdapter
+            ->generateUrl($route);
     }
 
     /**

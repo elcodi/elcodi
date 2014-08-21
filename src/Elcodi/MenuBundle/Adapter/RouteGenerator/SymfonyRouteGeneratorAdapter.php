@@ -16,7 +16,8 @@
 
 namespace Elcodi\MenuBundle\Adapter\RouteGenerator;
 
-use Symfony\Component\Routing\Router;
+use Symfony\Component\Routing\Exception\ExceptionInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 use Elcodi\MenuBundle\Adapter\RouteGenerator\Interfaces\RouteGeneratorAdapterInterface;
 
@@ -33,31 +34,45 @@ class SymfonyRouteGeneratorAdapter implements RouteGeneratorAdapterInterface
     const ADAPTER_NAME = 'symfony';
 
     /**
-     * @var Router
+     * @var UrlGeneratorInterface
+     *
+     * Url generator
      */
-    private $router;
+    private $urlGenerator;
 
     /**
-     * @param Router $router
+     * Construct method
+     *
+     * @param UrlGeneratorInterface $urlGenerator Url Generator
      */
-    public function __construct(Router $router)
+    public function __construct(UrlGeneratorInterface $urlGenerator)
     {
-        $this->router = $router;
+        $this->urlGenerator = $urlGenerator;
     }
 
     /**
      * Provides a method to generate an URL starting from a route name
      *
-     * @param string $routeName route name
+     * @param string $route route
      *
-     * @return string
+     * @return string Url generated
      */
-    public function generateUrl($routeName)
+    public function generateUrl($route)
     {
-        if ("" == $routeName) {
-            return $routeName;
+        if (empty($route)) {
+            return '';
         }
 
-        return $this->router->generate($routeName);
+        try {
+
+            $url = $this
+                ->urlGenerator
+                ->generate($route);
+        } catch (ExceptionInterface $e) {
+
+            $url = (string) $route;
+        }
+
+        return $url;
     }
 }
