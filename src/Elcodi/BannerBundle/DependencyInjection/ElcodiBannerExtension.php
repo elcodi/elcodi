@@ -64,7 +64,7 @@ class ElcodiBannerExtension extends AbstractExtension implements EntitiesOverrid
     {
         return [
             'Elcodi\BannerBundle\Entity\Interfaces\BannerInterface' => 'elcodi.core.banner.entity.banner.class',
-            'Elcodi\BannerBundle\Entity\Interfaces\BannerZoneInterface' => 'elcodi.core.banner.entity.bannerzone.class',
+            'Elcodi\BannerBundle\Entity\Interfaces\BannerZoneInterface' => 'elcodi.core.banner.entity.banner_zone.class',
         ];
     }
 }

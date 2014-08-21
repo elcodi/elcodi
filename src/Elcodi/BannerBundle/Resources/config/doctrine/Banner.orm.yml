@@ -39,7 +39,7 @@ Elcodi\BannerBundle\Entity\Banner:
             targetEntity: Elcodi\BannerBundle\Entity\Interfaces\BannerZoneInterface
             inversedBy: banners
             joinTable:
-                name: banner_bannerzone
+                name: banner_banner_zone
                 joinColumns:
                     banner_id:
                         referencedColumnName: id

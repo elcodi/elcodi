@@ -40,7 +40,7 @@ class BannerZoneData extends AbstractFixture
          * @var BannerZoneInterface $bannerZone
          * @var LanguageInterface $language
          */
-        $bannerZone = $this->container->get('elcodi.core.banner.factory.bannerzone')->create();
+        $bannerZone = $this->container->get('elcodi.core.banner.factory.banner_zone')->create();
         $language = $this->getReference('language-es');
         $bannerZone
             ->setName('bannerzone')
@@ -57,7 +57,7 @@ class BannerZoneData extends AbstractFixture
          *
          * @var BannerZoneInterface $bannerZoneNoLanguage
          */
-        $bannerZoneNoLanguage = $this->container->get('elcodi.core.banner.factory.bannerzone')->create();
+        $bannerZoneNoLanguage = $this->container->get('elcodi.core.banner.factory.banner_zone')->create();
         $bannerZoneNoLanguage
             ->setName('bannerzone-nolanguage')
             ->setCode('bannerzone-code-nolanguage')
