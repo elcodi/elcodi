@@ -57,7 +57,7 @@ class BannerManagerTest extends WebTestCase
     }
 
     /**
-     * Load banners given a bannerzone with language
+     * Load banners given a banner_zone with language
      */
     public function testGetBannersFromBannerZoneCode()
     {
@@ -76,7 +76,7 @@ class BannerManagerTest extends WebTestCase
     }
 
     /**
-     * Load banners given a bannerzone with language
+     * Load banners given a banner_zone with language
      */
     public function testGetBannersFromBannerZoneCodeNoLanguage()
     {

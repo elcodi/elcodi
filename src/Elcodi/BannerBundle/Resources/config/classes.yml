@@ -4,13 +4,13 @@ parameters:
     # Entities
     #
     elcodi.core.banner.entity.banner.class: Elcodi\BannerBundle\Entity\Banner
-    elcodi.core.banner.entity.bannerzone.class: Elcodi\BannerBundle\Entity\BannerZone
+    elcodi.core.banner.entity.banner_zone.class: Elcodi\BannerBundle\Entity\BannerZone
 
     #
     # Repositories
     #
     elcodi.core.banner.repository.banner.class: Elcodi\BannerBundle\Repository\BannerRepository
-    elcodi.core.banner.repository.bannerzone.class: Elcodi\BannerBundle\Repository\BannerZoneRepository
+    elcodi.core.banner.repository.banner_zone.class: Elcodi\BannerBundle\Repository\BannerZoneRepository
 
     #
     # Services
@@ -21,4 +21,4 @@ parameters:
     # Factories
     #
     elcodi.core.banner.factory.banner.class: Elcodi\BannerBundle\Factory\BannerFactory
-    elcodi.core.banner.factory.bannerzone.class: Elcodi\BannerBundle\Factory\BannerZoneFactory
+    elcodi.core.banner.factory.banner_zone.class: Elcodi\BannerBundle\Factory\BannerZoneFactory

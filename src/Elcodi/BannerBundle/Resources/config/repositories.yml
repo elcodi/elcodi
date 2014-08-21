@@ -18,14 +18,14 @@ services:
         alias: elcodi.core.banner.repository.banner
 
     #
-    # Repository for entity bannerzone
+    # Repository for entity banner_zone
     #
-    elcodi.core.banner.repository.bannerzone:
-        class: %elcodi.core.banner.repository.bannerzone.class%
+    elcodi.core.banner.repository.banner_zone:
+        class: %elcodi.core.banner.repository.banner_zone.class%
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
-            entity_namespace: %elcodi.core.banner.entity.bannerzone.class%
+            entity_namespace: %elcodi.core.banner.entity.banner_zone.class%
 
-    elcodi.repository.bannerzone:
-        alias: elcodi.core.banner.repository.bannerzone
+    elcodi.repository.banner_zone:
+        alias: elcodi.core.banner.repository.banner_zone
