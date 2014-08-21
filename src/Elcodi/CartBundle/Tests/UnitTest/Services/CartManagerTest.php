@@ -100,6 +100,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     {
         $cart = new Cart();
         $cart->setCartLines(new ArrayCollection());
+        $this->assertEquals(0, $cart->getTotalItemNumber());
         $purchaseable = $this->getMock(
             'Elcodi\ProductBundle\Entity\Interfaces\ProductInterface'
         );
@@ -112,6 +113,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         $this->cartManager->addProduct($cart, $purchaseable, 1);
 
         $this->assertCount(1, $cart->getCartLines());
+        $this->assertEquals(1, $cart->getTotalItemNumber());
     }
 
     /**
