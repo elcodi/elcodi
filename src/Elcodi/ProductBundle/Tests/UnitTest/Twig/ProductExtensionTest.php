@@ -17,11 +17,12 @@
 namespace Elcodi\ProductBundle\Tests\UnitTest\Twig;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use PHPUnit_Framework_TestCase;
 
 use Elcodi\AttributeBundle\Entity\Value;
 use Elcodi\ProductBundle\Twig\ProductExtension;
 
-class ProductExtensionTest extends \PHPUnit_Framework_TestCase
+class ProductExtensionTest extends PHPUnit_Framework_TestCase
 {
     /**
      * Skipping tests if Twig is not installed
