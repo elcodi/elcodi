@@ -22,6 +22,9 @@ use PHPUnit_Framework_TestCase;
 use Elcodi\AttributeBundle\Entity\Value;
 use Elcodi\ProductBundle\Twig\ProductExtension;
 
+/**
+ * Class ProductExtensionTest
+ */
 class ProductExtensionTest extends PHPUnit_Framework_TestCase
 {
     /**
