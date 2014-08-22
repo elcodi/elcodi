@@ -16,7 +16,6 @@
 
 namespace Elcodi\TestCommonBundle\Functional;
 
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bundle\FrameworkBundle\Client;
@@ -310,7 +309,7 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * @param string $entityName Entity name
      *
-     * @return Collection Entity Collection
+     * @return array Result
      */
     public function findAll($entityName)
     {
