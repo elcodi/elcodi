@@ -1,0 +1,18 @@
+parameters:
+
+    #
+    # Repositories
+    #
+    elcodi.core.banner.repository.banner.class: Elcodi\Component\Banner\Repository\BannerRepository
+    elcodi.core.banner.repository.banner_zone.class: Elcodi\Component\Banner\Repository\BannerZoneRepository
+
+    #
+    # Services
+    #
+    elcodi.core.banner.service.banner_manager.class: Elcodi\Component\Banner\Services\BannerManager
+
+    #
+    # Factories
+    #
+    elcodi.core.banner.factory.banner.class: Elcodi\Component\Banner\Factory\BannerFactory
+    elcodi.core.banner.factory.banner_zone.class: Elcodi\Component\Banner\Factory\BannerZoneFactory

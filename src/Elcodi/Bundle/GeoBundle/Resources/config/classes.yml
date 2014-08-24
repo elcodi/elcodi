@@ -1,0 +1,13 @@
+parameters:
+
+    #
+    # Repositories
+    #
+    elcodi.core.geo.repository.address.class: Elcodi\Component\Geo\Repository\AddressRepository
+    elcodi.core.geo.repository.country.class: Elcodi\Component\Geo\Repository\CountryRepository
+
+    #
+    # Factories
+    #
+    elcodi.core.geo.factory.address.class: Elcodi\Component\Geo\Factory\AddressFactory
+    elcodi.core.geo.factory.country.class: Elcodi\Component\Geo\Factory\CountryFactory

@@ -1,9 +1,0 @@
-Elcodi\RuleBundle\Entity\Rule:
-    type: entity
-    repositoryClass: Elcodi\RuleBundle\Repository\RuleRepository
-    table: rule
-
-    oneToOne:
-        expression:
-            targetEntity: Elcodi\RuleBundle\Entity\Interfaces\ExpressionInterface
-            cascade: [ "all" ]

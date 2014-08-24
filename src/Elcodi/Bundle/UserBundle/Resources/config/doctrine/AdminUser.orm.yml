@@ -1,0 +1,13 @@
+Elcodi\Component\User\Entity\AdminUser:
+    type: entity
+    repositoryClass: Elcodi\Component\User\Repository\AdminUserRepository
+    table: admin_user
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
+    lifecycleCallbacks:
+            preUpdate: [loadUpdateAt]
+            prePersist: [loadUpdateAt]

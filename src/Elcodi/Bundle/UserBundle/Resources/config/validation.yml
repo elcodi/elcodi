@@ -1,0 +1,6 @@
+Elcodi\Component\User\Entity\Abstracts\AbstractUser:
+    properties:
+        email:
+            - Email: ~
+            - NotBlank: ~
+            - NotNull: ~

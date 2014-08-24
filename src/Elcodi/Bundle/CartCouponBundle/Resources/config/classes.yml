@@ -1,0 +1,35 @@
+parameters:
+
+    #
+    # Repositories
+    #
+    elcodi.core.cart_coupon.repository.cart_coupon.class: Elcodi\Component\CartCoupon\Repository\CartCouponRepository
+    elcodi.core.cart_coupon.repository.order_coupon.class: Elcodi\Component\CartCoupon\Repository\OrderCouponRepository
+
+    #
+    # Factories
+    #
+    elcodi.core.cart_coupon.factory.cart_coupon.class: Elcodi\Component\CartCoupon\Factory\CartCouponFactory
+    elcodi.core.cart_coupon.factory.order_coupon.class: Elcodi\Component\CartCoupon\Factory\OrderCouponFactory
+
+    #
+    # Event Listeners
+    #
+    elcodi.core.cart_coupon.event_listener.cart.class: Elcodi\Component\CartCoupon\EventListener\CartEventListener
+    elcodi.core.cart_coupon.event_listener.order.class: Elcodi\Component\CartCoupon\EventListener\OrderEventListener
+    elcodi.core.cart_coupon.event_listener.cart_coupon.class: Elcodi\Component\CartCoupon\EventListener\CartCouponEventListener
+    elcodi.core.cart_coupon.event_listener.cart_coupon_rules.class: Elcodi\Component\CartCoupon\EventListener\CartCouponRulesEventListener
+    elcodi.core.cart_coupon.event_listener.order_coupon.class: Elcodi\Component\CartCoupon\EventListener\OrderCouponEventListener
+
+    #
+    # Services
+    #
+    elcodi.core.cart_coupon.service.cart_coupon_manager.class: Elcodi\Component\CartCoupon\Services\CartCouponManager
+    elcodi.core.cart_coupon.service.cart_coupon_rule_manager.class: Elcodi\Component\CartCoupon\Services\CartCouponRuleManager
+    elcodi.core.cart_coupon.service.order_coupon_manager.class: Elcodi\Component\CartCoupon\Services\OrderCouponManager
+
+    #
+    # EventDispatchers
+    #
+    elcodi.core.cart_coupon.event_dispatcher.cart_coupon.class: Elcodi\Component\CartCoupon\EventDispatcher\CartCouponEventDispatcher
+    elcodi.core.cart_coupon.event_dispatcher.order_coupon.class: Elcodi\Component\CartCoupon\EventDispatcher\OrderCouponEventDispatcher

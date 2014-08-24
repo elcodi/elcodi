@@ -1,0 +1,40 @@
+Elcodi\Component\Attribute\Entity\Attribute:
+    type: entity
+    repositoryClass: Elcodi\Component\Attribute\Repository\AttributeRepository
+    table: attribute
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        displayName:
+            column: display_name
+            type: string
+            length: 255
+            nullable: true
+        createdAt:
+            column: created_at
+            type: datetime
+        updatedAt:
+            column: updated_at
+            type: datetime
+        enabled:
+            column: enabled
+            type: boolean
+            nullable: true
+
+    oneToMany:
+        values:
+            targetEntity: Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface
+            mappedBy: attribute
+            orphanRemoval: true
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]

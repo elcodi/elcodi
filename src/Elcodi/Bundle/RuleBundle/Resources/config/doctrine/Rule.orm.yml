@@ -1,0 +1,9 @@
+Elcodi\Component\Rule\Entity\Rule:
+    type: entity
+    repositoryClass: Elcodi\Component\Rule\Repository\RuleRepository
+    table: rule
+
+    oneToOne:
+        expression:
+            targetEntity: Elcodi\Component\Rule\Entity\Interfaces\ExpressionInterface
+            cascade: [ "all" ]

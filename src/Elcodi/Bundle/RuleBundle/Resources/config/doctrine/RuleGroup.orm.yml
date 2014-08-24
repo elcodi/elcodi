@@ -1,0 +1,16 @@
+Elcodi\Component\Rule\Entity\RuleGroup:
+    type: entity
+    repositoryClass: Elcodi\Component\Rule\Repository\RuleGroupRepository
+    table: rule_group
+
+    manyToMany:
+        rules:
+            targetEntity: Elcodi\Component\Rule\Entity\Abstracts\AbstractRule
+            joinTable:
+                name: rule_group_rule
+                joinColumns:
+                    rule_group_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    rule_id:
+                        referencedColumnName: id

@@ -1,0 +1,49 @@
+Elcodi\Component\Cart\Entity\Cart:
+    type: entity
+    repositoryClass: Elcodi\Component\Cart\Repository\CartRepository
+    table: cart
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        quantity:
+            column: quantity
+            type: integer
+        ordered:
+            column: ordered
+            type: boolean
+            nullable: false
+        createdAt:
+            column: created_at
+            type: datetime
+        updatedAt:
+            column: updated_at
+            type: datetime
+
+    oneToOne:
+        order:
+            targetEntity: Elcodi\Component\Cart\Entity\Interfaces\OrderInterface
+            mappedBy: cart
+
+    manyToOne:
+        customer:
+            targetEntity: Elcodi\Component\User\Entity\Interfaces\CustomerInterface
+            inversedBy: carts
+            joinColumn:
+                name: customer_id
+                referencedColumnName: id
+                nullable: true
+                onDelete: "SET NULL"
+
+    oneToMany:
+        cartLines:
+            targetEntity: Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface
+            mappedBy: cart
+            cascade: [ "all" ]
+            orphanRemoval: true
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]

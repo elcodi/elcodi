@@ -1,6 +1,0 @@
-Elcodi\UserBundle\Entity\Abstracts\AbstractUser:
-    properties:
-        email:
-            - Email: ~
-            - NotBlank: ~
-            - NotNull: ~

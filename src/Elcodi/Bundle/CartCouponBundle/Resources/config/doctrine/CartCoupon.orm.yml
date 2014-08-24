@@ -1,0 +1,21 @@
+Elcodi\Component\CartCoupon\Entity\CartCoupon:
+    type: entity
+    repositoryClass: Elcodi\Component\CartCoupon\Repository\CartCouponRepository
+    table: cart_coupon
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    manyToOne:
+        cart:
+            targetEntity: Elcodi\Component\Cart\Entity\Interfaces\CartInterface
+            joinColumn:
+                name: cart_id
+                referencedColumnName: id
+        coupon:
+            targetEntity: Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface
+            fetch: EAGER
+            joinColumn:
+                name: coupon_id
+                referencedColumnName: id

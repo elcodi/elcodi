@@ -1,0 +1,14 @@
+Elcodi\Component\Rule\Entity\Expression:
+    type: entity
+    repositoryClass: Elcodi\Component\Rule\Repository\ExpressionRepository
+    table: expression
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        expression:
+            column: expression
+            type: text
+            nullable: false

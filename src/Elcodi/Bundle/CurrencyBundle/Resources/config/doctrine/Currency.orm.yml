@@ -1,0 +1,37 @@
+Elcodi\Component\Currency\Entity\Currency:
+    type: entity
+    repositoryClass: Elcodi\Component\Currency\Repository\CurrencyRepository
+    table: currency
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        iso:
+            column: iso
+            type: string
+            length: 3
+            nullable: false
+            unique: true
+        symbol:
+            column: symbol
+            type: string
+            length: 25
+            nullable: false
+            unique: false
+        createdAt:
+            column: created_at
+            type: datetime
+            nullable: true
+        updatedAt:
+            column: updated_at
+            type: datetime
+            nullable: true
+        enabled:
+            column: enabled
+            type: boolean
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]

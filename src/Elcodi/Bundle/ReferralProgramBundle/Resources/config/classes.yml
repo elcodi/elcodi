@@ -1,0 +1,52 @@
+parameters:
+
+    #
+    # Entities
+    #
+    elcodi.core.referral_program.entity.invitation.class: Elcodi\Component\ReferralProgram\Entity\Invitation
+    elcodi.core.referral_program.entity.invitation_bag.class: Elcodi\Component\ReferralProgram\Entity\InvitationBag
+
+    #
+    # Factories
+    #
+    elcodi.core.referral_program.factory.referral_rule.class: Elcodi\Component\ReferralProgram\Factory\ReferralRuleFactory
+    elcodi.core.referral_program.factory.referral_line.class: Elcodi\Component\ReferralProgram\Factory\ReferralLineFactory
+    elcodi.core.referral_program.factory.referral_hash.class: Elcodi\Component\ReferralProgram\Factory\ReferralHashFactory
+    elcodi.core.referral_program.factory.invitation.class: Elcodi\Component\ReferralProgram\Factory\InvitationFactory
+    elcodi.core.referral_program.factory.invitation_bag.class: Elcodi\Component\ReferralProgram\Factory\InvitationBagFactory
+
+    #
+    # Repositories
+    #
+    elcodi.core.referral_program.repository.referral_hash.class: Elcodi\Component\ReferralProgram\Repository\ReferralHashRepository
+    elcodi.core.referral_program.repository.referral_line.class: Elcodi\Component\ReferralProgram\Repository\ReferralLineRepository
+    elcodi.core.referral_program.repository.referral_rule.class: Elcodi\Component\ReferralProgram\Repository\ReferralRuleRepository
+
+    #
+    # Services
+    #
+    elcodi.core.referral_program.service.referral_program_manager.class: Elcodi\Component\ReferralProgram\Services\ReferralProgramManager
+    elcodi.core.referral_program.service.referral_hash_manager.class: Elcodi\Component\ReferralProgram\Services\ReferralHashManager
+    elcodi.core.referral_program.service.referral_route_manager.class: Elcodi\Component\ReferralProgram\Services\ReferralRouteManager
+    elcodi.core.referral_program.service.referral_coupon_manager.class: Elcodi\Component\ReferralProgram\Services\ReferralCouponManager
+    elcodi.core.referral_program.service.referral_rule_manager.class: Elcodi\Component\ReferralProgram\Services\ReferralRuleManager
+
+    #
+    # Generators
+    #
+    elcodi.core.referral_program.generator.hash_generator.class: Elcodi\Component\ReferralProgram\Generator\ReferralHashGenerator
+
+    #
+    # Routes
+    #
+    elcodi.core.referral_program.routes.loader.class: Elcodi\Component\ReferralProgram\Router\ReferralProgramRoutesLoader
+
+    #
+    # EventListeners
+    #
+    elcodi.core.referral_program.event_listener.referral_program_event_listener.class: Elcodi\Component\ReferralProgram\EventListener\ReferralProgramEventListener
+
+    #
+    # Controllers
+    #
+    elcodi.core.referral_program.controller.referral_program.class: Elcodi\Component\ReferralProgram\Controller\ReferralProgramController

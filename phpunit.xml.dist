@@ -7,7 +7,7 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
-         stopOnFailure="false"
+         stopOnFailure="true"
          syntaxCheck="false"
          bootstrap="vendor/autoload.php"
 >
@@ -18,7 +18,7 @@
 
     <testsuites>
         <testsuite name="Elcodi Test Suite">
-            <directory>./src/Elcodi/*/Tests/</directory>
+            <directory>./src/Elcodi/*/*/Tests/</directory>
         </testsuite>
     </testsuites>
 
@@ -26,10 +26,10 @@
         <whitelist>
             <directory>./src/Elcodi/</directory>
             <exclude>
-                <directory>./src/Elcodi/*/Tests</directory>
-                <directory>./src/Elcodi/*/Resources</directory>
-                <directory>./src/Elcodi/*/vendor</directory>
-                <directory>./src/Elcodi/*/DependencyInjection</directory>
+                <directory>./src/Elcodi/*/*/Tests</directory>
+                <directory>./src/Elcodi/*/*/Resources</directory>
+                <directory>./src/Elcodi/*/*/vendor</directory>
+                <directory>./src/Elcodi/*/*/DependencyInjection</directory>
             </exclude>
         </whitelist>
     </filter>

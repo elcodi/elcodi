@@ -1,0 +1,40 @@
+Elcodi\Component\Cart\Entity\OrderLineHistory:
+    type: entity
+    repositoryClass: Elcodi\Component\Cart\Repository\OrderLineHistoryRepository
+    table: order_line_history
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        state:
+            column: state
+            type: string
+            length: 255
+            nullable: false
+        description:
+            column: description
+            type: string
+            length: 255
+            nullable: true
+        createdAt:
+            column: created_at
+            type: datetime
+        updatedAt:
+            column: updated_at
+            type: datetime
+
+    manyToOne:
+        orderLine:
+            targetEntity: Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface
+            inversedBy: orderLineHistories
+            cascade: [ "all" ]
+            joinColumn:
+                name: order_line_id
+                referencedColumnName: id
+                nullable: false
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]
