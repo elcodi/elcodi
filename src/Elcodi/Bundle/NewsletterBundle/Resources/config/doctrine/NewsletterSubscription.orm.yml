@@ -1,0 +1,49 @@
+Elcodi\Component\Newsletter\Entity\NewsletterSubscription:
+    type: entity
+    repositoryClass: Elcodi\Component\Newsletter\Repository\NewsletterSubscriptionRepository
+    table: newsletter_subscription
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        email:
+            column: email
+            type: string
+            length: 255
+            nullable: false
+            unique: true
+        hash:
+            column: hash
+            type: string
+            length: 255
+            nullable: false
+            unique: true
+        reason:
+            column: reason
+            type: text
+            nullable: true
+        createdAt:
+            column: created_at
+            type: datetime
+            nullable: true
+        updatedAt:
+            column: updated_at
+            type: datetime
+            nullable: true
+        enabled:
+            column: enabled
+            type: boolean
+
+    manyToOne:
+        language:
+            targetEntity: Elcodi\Component\Language\Entity\Interfaces\LanguageInterface
+            joinColumn:
+                name: language_id
+                referencedColumnName: id
+                nullable: true
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]

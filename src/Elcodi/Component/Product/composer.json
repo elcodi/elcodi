@@ -1,0 +1,50 @@
+{
+    "name": "elcodi/product",
+    "description": "Elcodi Product Component",
+    "keywords": ["elcodi", "product", "ecommerce", "component"],
+    "homepage": "https://github.com/elcodi/Product",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "Symfony Community",
+            "homepage": "https://github.com/elcodi/Product/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "doctrine/common": "~2.4",
+        "doctrine/orm": "~2.4",
+
+        "elcodi/core": "~0.3.0",
+        "elcodi/language": "~0.3.0",
+        "elcodi/media": "~0.3.0",
+        "elcodi/currency": "~0.3.0",
+        "elcodi/attribute": "~0.3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=3.7"
+    },
+    "suggest": {
+        "twig/twig": "Required if using Twig extensions"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\Product\\": ""
+        }
+    },
+    "minimum-stability": "stable",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.3-dev"
+        }
+    }
+}

@@ -1,0 +1,24 @@
+Elcodi\Component\Language\Entity\Language:
+    type: entity
+    repositoryClass: Elcodi\Component\Language\Repository\LanguageRepository
+    table: language
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        iso:
+            column: iso
+            type: string
+            length: 255
+            nullable: false
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        # enable
+        enabled:
+            column: enabled
+            type: boolean

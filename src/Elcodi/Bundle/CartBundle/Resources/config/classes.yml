@@ -1,0 +1,61 @@
+parameters:
+
+    #
+    # Repositories
+    #
+    elcodi.core.cart.repository.cart.class: Elcodi\Component\Cart\Repository\CartRepository
+    elcodi.core.cart.repository.order.class: Elcodi\Component\Cart\Repository\OrderRepository
+    elcodi.core.cart.repository.cart_line.class: Elcodi\Component\Cart\Repository\CartLineRepository
+    elcodi.core.cart.repository.order_line.class: Elcodi\Component\Cart\Repository\OrderLineRepository
+    elcodi.core.cart.repository.order_history.class: Elcodi\Component\Cart\Repository\OrderHistoryRepository
+    elcodi.core.cart.repository.order_line_history.class: Elcodi\Component\Cart\Repository\OrderLineHistoryRepository
+
+    #
+    # EventDispatchers
+    #
+    elcodi.core.cart.event_dispatcher.cart.class: Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher
+    elcodi.core.cart.event_dispatcher.cart_line.class: Elcodi\Component\Cart\EventDispatcher\CartLineEventDispatcher
+    elcodi.core.cart.event_dispatcher.order.class: Elcodi\Component\Cart\EventDispatcher\OrderEventDispatcher
+    elcodi.core.cart.event_dispatcher.order_state.class: Elcodi\Component\Cart\EventDispatcher\OrderStateEventDispatcher
+    elcodi.core.cart.event_dispatcher.order_line.class: Elcodi\Component\Cart\EventDispatcher\OrderLineEventDispatcher
+    elcodi.core.cart.event_dispatcher.order_line_state.class: Elcodi\Component\Cart\EventDispatcher\OrderLineStateEventDispatcher
+
+    #
+    # Services
+    #
+    elcodi.core.cart.service.cart_manager.class: Elcodi\Component\Cart\Services\CartManager
+    elcodi.core.cart.service.order_manager.class: Elcodi\Component\Cart\Services\OrderManager
+    elcodi.core.cart.service.order_line_manager.class: Elcodi\Component\Cart\Services\OrderLineManager
+    elcodi.core.cart.service.order_state_manager.class: Elcodi\Component\Cart\Services\OrderStateManager
+    elcodi.core.cart.service.cart_session_manager.class: Elcodi\Component\Cart\Services\CartSessionManager
+
+    #
+    # Transformers
+    #
+    elcodi.core.cart.transformer.cart_order.class: Elcodi\Component\Cart\Transformer\CartOrderTransformer
+    elcodi.core.cart.transformer.cart_line_order_line.class: Elcodi\Component\Cart\Transformer\CartLineOrderLineTransformer
+
+    #
+    # Event Listeners
+    #
+    elcodi.core.cart.event_listener.cart.class: Elcodi\Component\Cart\EventListener\CartEventListener
+    elcodi.core.cart.event_listener.order.class: Elcodi\Component\Cart\EventListener\OrderEventListener
+    elcodi.core.cart.event_listener.order_state.class: Elcodi\Component\Cart\EventListener\OrderStateEventListener
+    elcodi.core.cart.event_listener.order_line_state.class: Elcodi\Component\Cart\EventListener\OrderLineStateEventListener
+    elcodi.core.cart.event_listener.cart_session.class: Elcodi\Component\Cart\EventListener\CartSessionEventListener
+    elcodi.core.cart.event_listener.cart_inconsistency.class: Elcodi\Component\Cart\EventListener\CartInconsistencyEventListener
+
+    #
+    # Factories
+    #
+    elcodi.core.cart.factory.cart.class: Elcodi\Component\Cart\Factory\CartFactory
+    elcodi.core.cart.factory.order.class: Elcodi\Component\Cart\Factory\OrderFactory
+    elcodi.core.cart.factory.cart_line.class: Elcodi\Component\Cart\Factory\CartLineFactory
+    elcodi.core.cart.factory.order_line.class: Elcodi\Component\Cart\Factory\OrderLineFactory
+    elcodi.core.cart.factory.order_history.class: Elcodi\Component\Cart\Factory\OrderHistoryFactory
+    elcodi.core.cart.factory.order_line_history.class: Elcodi\Component\Cart\Factory\OrderLineHistoryFactory
+
+    #
+    # Wrappers
+    #
+    elcodi.core.cart.wrapper.cart_wrapper.class: Elcodi\Component\Cart\Wrapper\CartWrapper

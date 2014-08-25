@@ -1,8 +1,0 @@
-Elcodi\UserBundle\Entity\AdminUser:
-    type: entity
-    repositoryClass: Elcodi\UserBundle\Repository\AdminUserRepository
-    table: admin_user
-
-    lifecycleCallbacks:
-            preUpdate: [loadUpdateAt]
-            prePersist: [loadUpdateAt]

@@ -1,0 +1,29 @@
+parameters:
+
+    #
+    # Repositories
+    #
+    elcodi.core.product.repository.product.class: Elcodi\Component\Product\Repository\ProductRepository
+    elcodi.core.product.repository.variant.class: Elcodi\Component\Product\Repository\VariantRepository
+    elcodi.core.product.repository.category.class: Elcodi\Component\Product\Repository\CategoryRepository
+    elcodi.core.product.repository.manufacturer.class: Elcodi\Component\Product\Repository\ManufacturerRepository
+
+    #
+    # Services
+    #
+    elcodi.core.product.service.category_manager.class: Elcodi\Component\Product\Services\CategoryManager
+    elcodi.core.product.service.product_collection_provider.class: Elcodi\Component\Product\Services\ProductCollectionProvider
+
+    #
+    # Factories
+    #
+    elcodi.core.product.factory.abstract.abstract.class: Elcodi\Component\Product\Factory\Abstracts\AbstractPurchasableFactory
+    elcodi.core.product.factory.product.class: Elcodi\Component\Product\Factory\ProductFactory
+    elcodi.core.product.factory.variant.class: Elcodi\Component\Product\Factory\VariantFactory
+    elcodi.core.product.factory.manufacturer.class: Elcodi\Component\Product\Factory\ManufacturerFactory
+    elcodi.core.product.factory.category.class: Elcodi\Component\Product\Factory\CategoryFactory
+
+    #
+    # Twig extensions
+    #
+    elcodi.core.product.twig_extension.product.class: Elcodi\Component\Product\Twig\ProductExtension

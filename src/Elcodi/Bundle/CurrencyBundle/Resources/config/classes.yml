@@ -1,0 +1,35 @@
+parameters:
+
+    #
+    # Repositories
+    #
+    elcodi.core.currency.repository.currency.class: Elcodi\Component\Currency\Repository\CurrencyRepository
+    elcodi.core.currency.repository.currency_exchange_rate.class: Elcodi\Component\Currency\Repository\CurrencyExchangeRateRepository
+
+    #
+    # Factories
+    #
+    elcodi.core.currency.factory.currency.class: Elcodi\Component\Currency\Factory\CurrencyFactory
+    elcodi.core.currency.factory.currency_exchange_rate.class: Elcodi\Component\Currency\Factory\CurrencyExchangeRateFactory
+
+    #
+    # Services
+    #
+    elcodi.core.currency.service.currency_manager.class: Elcodi\Component\Currency\Services\CurrencyManager
+    elcodi.core.currency.service.currency_converter.class: Elcodi\Component\Currency\Services\CurrencyConverter
+    elcodi.core.currency.service.currency_session_manager.class: Elcodi\Component\Currency\Services\CurrencySessionManager
+
+    #
+    # Providers
+    #
+    elcodi.core.currency.service.exchange_rates_provider.class: Elcodi\Component\Currency\Services\ExchangeRatesProvider
+
+    #
+    # Twig extensions
+    #
+    elcodi.core.currency.twig_extension.print_money.class: Elcodi\Component\Currency\Twig\PrintMoneyExtension
+
+    #
+    # Wrappers
+    #
+    elcodi.core.currency.wrapper.currency.class: Elcodi\Component\Currency\Wrapper\CurrencyWrapper

@@ -1,9 +1,0 @@
-Elcodi\RuleBundle\Entity\Expression:
-    type: entity
-    repositoryClass: Elcodi\RuleBundle\Repository\ExpressionRepository
-    table: expression
-    fields:
-        expression:
-            column: expression
-            type: text
-            nullable: false

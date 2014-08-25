@@ -1,0 +1,43 @@
+parameters:
+
+    #
+    # Factories
+    #
+    elcodi.core.user.factory.customer.class: Elcodi\Component\User\Factory\CustomerFactory
+    elcodi.core.user.factory.admin_user.class: Elcodi\Component\User\Factory\AdminUserFactory
+
+    #
+    # Repositories
+    #
+    elcodi.core.user.repository.customer.class: Elcodi\Component\User\Repository\CustomerRepository
+    elcodi.core.user.repository.admin_user.class: Elcodi\Component\User\Repository\AdminUserRepository
+
+    #
+    # Services
+    #
+    elcodi.core.user.service.password_manager.class: Elcodi\Component\User\Services\PasswordManager
+    elcodi.core.user.service.customer_manager.class: Elcodi\Component\User\Services\CustomerManager
+    elcodi.core.user.service.admin_user_manager.class: Elcodi\Component\User\Services\AdminUserManager
+
+    #
+    # Wrappers
+    #
+    elcodi.core.user.wrapper.customer_wrapper.class: Elcodi\Component\User\Wrapper\CustomerWrapper
+    elcodi.core.user.wrapper.admin_user_wrapper.class: Elcodi\Component\User\Wrapper\AdminUserWrapper
+
+    #
+    # Event Listeners
+    #
+    elcodi.core.user.event_listener.admin_user_password.class: Elcodi\Component\User\EventListener\AdminUserPasswordEventListener
+    elcodi.core.user.event_listener.customer_password.class: Elcodi\Component\User\EventListener\CustomerPasswordEventListener
+    elcodi.core.user.event_listener.authentication_success.class: Elcodi\Component\User\EventListener\AuthenticationSuccessEventListener
+
+    #
+    # Generators
+    #
+    elcodi.core.user.generator.recover_hash.class: Elcodi\Component\User\Generator\RecoveryHashGenerator
+
+    #
+    # Providers
+    #
+    elcodi.core.user.provider.abstract_user_provider.class: Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface

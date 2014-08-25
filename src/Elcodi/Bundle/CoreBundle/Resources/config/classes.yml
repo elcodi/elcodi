@@ -1,0 +1,20 @@
+parameters:
+
+    #
+    # Providers
+    #
+    elcodi.container_parameters.class: Symfony\Component\DependencyInjection\ParameterBag\ParameterBag
+    elcodi.core.core.service.manager_provider.class: Elcodi\Component\Core\Services\ManagerProvider
+    elcodi.core.core.service.repository_provider.class: Elcodi\Component\Core\Services\RepositoryProvider
+
+    #
+    # Generators
+    #
+    elcodi.core.core.generator.random_string.class: Elcodi\Component\Core\Generator\RandomStringGenerator
+    elcodi.core.core.generator.sha1.class: Elcodi\Component\Core\Generator\Sha1Generator
+
+    #
+    # Encoders
+    #
+    elcodi.core.core.encoder.json.class: Elcodi\Component\Core\Encoder\JsonEncoder
+    elcodi.core.core.encoder.php.class: Elcodi\Component\Core\Encoder\PHPEncoder

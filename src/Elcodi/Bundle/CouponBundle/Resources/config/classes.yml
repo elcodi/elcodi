@@ -1,0 +1,36 @@
+parameters:
+
+    #
+    # Entities
+    #
+    elcodi.core.coupon.entity.coupon.class: Elcodi\Component\Coupon\Entity\Coupon
+
+    #
+    # Repository
+    #
+    elcodi.core.coupon.repository.coupon.class: Elcodi\Component\Coupon\Repository\CouponRepository
+
+    #
+    # Services
+    #
+    elcodi.core.coupon.service.coupon_manager.class: Elcodi\Component\Coupon\Services\CouponManager
+
+    #
+    # Factories
+    #
+    elcodi.core.coupon.factory.coupon.class: Elcodi\Component\Coupon\Factory\CouponFactory
+
+    #
+    # Generators
+    #
+    elcodi.core.referral_program.generator.coupon_code_generator.class: Elcodi\Component\Coupon\Generator\CouponCodeGenerator
+
+    #
+    # Event Dispatchers
+    #
+    elcodi.core.coupon.event_dispatchers.coupon.class: Elcodi\Component\Coupon\EventDispatcher\CouponEventDispatcher
+
+    #
+    # Event Listeners
+    #
+    elcodi.core.coupon.event_listener.coupon.class: Elcodi\Component\Coupon\EventListener\CouponEventListener

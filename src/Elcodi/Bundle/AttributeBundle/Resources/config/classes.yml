@@ -1,0 +1,13 @@
+parameters:
+
+    #
+    # Repositories
+    #
+    elcodi.core.attribute.repository.attribute.class: Elcodi\Component\Attribute\Repository\AttributeRepository
+    elcodi.core.attribute.repository.value.class: Elcodi\Component\Attribute\Repository\ValueRepository
+
+    #
+    # Factories
+    #
+    elcodi.core.attribute.factory.attribute.class: Elcodi\Component\Attribute\Factory\AttributeFactory
+    elcodi.core.attribute.factory.value.class: Elcodi\Component\Attribute\Factory\ValueFactory

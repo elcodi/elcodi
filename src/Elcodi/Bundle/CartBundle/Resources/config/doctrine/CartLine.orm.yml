@@ -1,0 +1,62 @@
+Elcodi\Component\Cart\Entity\CartLine:
+    type: entity
+    repositoryClass: Elcodi\Component\Cart\Repository\CartLineRepository
+    table: cart_line
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        productAmount:
+            column: product_amount
+            type: integer
+            nullable: false
+        amount:
+            column: amount
+            type: integer
+            nullable: false
+        quantity:
+            column: quantity
+            type: integer
+
+    oneToOne:
+        orderLine:
+            targetEntity: Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface
+            joinColumn:
+                name: order_line_id
+                referencedColumnName: id
+                nullable: true
+
+    manyToOne:
+        cart:
+            targetEntity: Elcodi\Component\Cart\Entity\Interfaces\CartInterface
+            inversedBy: cartLines
+            joinColumn:
+                name: cart_id
+                referencedColumnName: id
+                nullable: false
+        productCurrency:
+            targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                 name: product_currency_id
+                 referencedColumnName: id
+                 nullable: false
+        currency:
+            targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                 name: currency_id
+                 referencedColumnName: id
+                 nullable: false
+        product:
+            targetEntity: Elcodi\Component\Product\Entity\Interfaces\ProductInterface
+            joinColumn:
+                name: product_id
+                referencedColumnName: id
+                nullable: false
+        variant:
+            targetEntity: Elcodi\Component\Product\Entity\Interfaces\VariantInterface
+            joinColumn:
+                name: variant_id
+                referencedColumnName: id
+                nullable: true

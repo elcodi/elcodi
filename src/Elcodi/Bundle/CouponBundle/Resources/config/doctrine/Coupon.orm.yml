@@ -1,0 +1,96 @@
+Elcodi\Component\Coupon\Entity\Coupon:
+    type: entity
+    repositoryClass: Elcodi\Component\Coupon\Repository\CouponRepository
+    table: coupon
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        code:
+            column: code
+            type: string
+            length: 255
+            nullable: false
+            unique: true
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        type:
+            column: type
+            type: integer
+            nullable: false
+        priceAmount:
+            column: price_amount
+            type: integer
+        discount:
+            column: discount
+            type: integer
+        count:
+            column: count
+            type: integer
+            nullable: false
+        used:
+            column: used
+            type: integer
+            nullable: false
+        priority:
+            column: priority
+            type: integer
+            nullable: false
+        minimumPurchaseAmount:
+            column: minimum_purchase_amount
+            type: integer
+            nullable: true
+        validFrom:
+            column: valid_from
+            type: datetime
+            nullable: false
+        validTo:
+            column: valid_to
+            type: datetime
+            nullable: true
+        createdAt:
+            column: created_at
+            type: datetime
+            nullable: true
+        updatedAt:
+            column: updated_at
+            type: datetime
+            nullable: true
+        enabled:
+            column: enabled
+            type: boolean
+
+    manyToOne:
+        priceCurrency:
+            targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                 name: price_currency_id
+                 referencedColumnName: id
+                 nullable: true
+        minimumPurchaseCurrency:
+            targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                 name: minimum_purchase_currency_id
+                 referencedColumnName: id
+                 nullable: true
+
+    manyToMany:
+        rules:
+            targetEntity: Elcodi\Component\Rule\Entity\Abstracts\AbstractRule
+            joinTable:
+                name: coupons_rules
+                joinColumns:
+                    coupon_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    rule_id:
+                        referencedColumnName: id
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]

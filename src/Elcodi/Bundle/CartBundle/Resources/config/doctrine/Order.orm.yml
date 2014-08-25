@@ -1,0 +1,80 @@
+Elcodi\Component\Cart\Entity\Order:
+    type: entity
+    repositoryClass: Elcodi\Component\Cart\Repository\OrderRepository
+    table: orders
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        quantity:
+            column: quantity
+            type: integer
+        productAmount:
+            column: product_amount
+            type: integer
+            nullable: false
+        couponAmount:
+            column: coupon_amount
+            type: integer
+            nullable: true
+        amount:
+            column: amount
+            type: integer
+            nullable: false
+        createdAt:
+            column: created_at
+            type: datetime
+        updatedAt:
+            column: updated_at
+            type: datetime
+
+    oneToOne:
+        cart:
+            targetEntity: Elcodi\Component\Cart\Entity\Interfaces\CartInterface
+            inversedBy: order
+            joinColumn:
+                name: cart_id
+                referencedColumnName: id
+                onDelete: "SET NULL"
+                onUpdate: "CASCADE"
+                nullable: true
+        lastOrderHistory:
+            targetEntity: Elcodi\Component\Cart\Entity\Interfaces\OrderHistoryInterface
+            joinColumn:
+                name: last_order_history_id
+                referencedColumnName: id
+                nullable: true
+            orphanRemoval: true
+
+    manyToOne:
+        customer:
+            targetEntity: Elcodi\Component\User\Entity\Interfaces\CustomerInterface
+            inversedBy: orders
+            joinColumn:
+                name: customer_id
+                referencedColumnName: id
+                nullable: true
+                onDelete: "SET NULL"
+        currency:
+            targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                 name: currency_id
+                 referencedColumnName: id
+                 nullable: false
+    oneToMany:
+        orderLines:
+            targetEntity: Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface
+            mappedBy: order
+            cascade: [ "all" ]
+            orphanRemoval: true
+        orderHistories:
+            targetEntity: Elcodi\Component\Cart\Entity\Interfaces\OrderHistoryInterface
+            mappedBy: order
+            cascade: [ "all" ]
+            orphanRemoval: true
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]

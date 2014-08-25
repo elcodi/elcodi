@@ -1,0 +1,57 @@
+{
+    "name": "elcodi/referral-program-bundle",
+    "description": "Elcodi ReferralProgram Bundle",
+    "keywords": ["elcodi", "referral program", "ecommerce"],
+    "homepage": "https://github.com/elcodi/ReferralProgramBundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "Symfony Community",
+            "homepage": "https://github.com/elcodi/ReferralProgramBundle/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "doctrine/common": "~2.4",
+        "doctrine/orm": "~2.4",
+        "symfony/framework-bundle": "~2.4, >=2.4.8",
+        "symfony/config": "~2.4",
+        "symfony/event-dispatcher": "~2.4",
+        "symfony/options-resolver": "~2.4",
+        "symfony/routing": "~2.4",
+        "symfony/dependency-injection": "~2.4",
+        "symfony/http-kernel": "~2.4",
+
+        "elcodi/core-bundle": "~0.3.0",
+        "elcodi/user-bundle": "~0.3.0",
+        "elcodi/banner-bundle": "~0.3.0",
+        "elcodi/cart-coupon-bundle": "~0.3.0",
+        "elcodi/currency-bundle": "~0.3.0",
+        "elcodi/referral-program": "~0.3.0"
+    },
+    "require-dev": {
+        "elcodi/test-common-bundle": "~0.3.0",
+        "doctrine/data-fixtures": "~1.0",
+        "phpunit/phpunit": ">=3.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\ReferralProgramBundle\\": ""
+        }
+    },
+    "minimum-stability": "stable",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.3-dev"
+        }
+    }
+}

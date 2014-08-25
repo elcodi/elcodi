@@ -1,0 +1,37 @@
+imports:
+    - { resource: parameters.yml }
+
+framework:
+    test:            ~
+    session:
+        storage_id: session.storage.mock_file
+    secret:          "%secret%"
+    router:
+        resource: ~
+    form:            true
+    default_locale:  "%locale%"
+    templating:      { engines: ['php'] }
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   "%database_driver%"
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        path:     "%database_path%"
+        memory:   "%database_memory%"
+        charset:  UTF8
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        metadata_cache_driver: array
+        query_cache_driver: array
+        result_cache_driver: array
+        auto_mapping: false
+
+doctrine_cache:
+   providers:
+      elcodi:
+         type: array

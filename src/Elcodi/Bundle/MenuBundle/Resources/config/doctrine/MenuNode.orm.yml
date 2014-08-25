@@ -1,0 +1,52 @@
+Elcodi\Component\Menu\Entity\Menu\Node:
+    type: entity
+    repositoryClass: Elcodi\Component\Menu\Repository\NodeRepository
+    table: menu_node
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        code:
+            column: code
+            type: string
+            length: 25
+            nullable: true
+        url:
+            column: url
+            type: string
+            length: 255
+            nullable: true
+        enabled:
+            column: enabled
+            type: boolean
+            nullable: false
+        createdAt:
+            column: created_at
+            type: datetime
+        updatedAt:
+            column: updated_at
+            type: datetime
+
+    manyToMany:
+        subnodes:
+            targetEntity: Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface
+            cascade: [ "persist" ]
+            joinTable:
+                name: node_hierarchy
+                joinColumns:
+                    menu_node_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    menu_subnode_id:
+                        referencedColumnName: id
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]

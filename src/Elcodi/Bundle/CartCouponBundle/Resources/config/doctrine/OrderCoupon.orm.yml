@@ -1,0 +1,42 @@
+Elcodi\Component\CartCoupon\Entity\OrderCoupon:
+    type: entity
+    repositoryClass: Elcodi\Component\CartCoupon\Repository\OrderCouponRepository
+    table: order_coupon
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        amount:
+            column: amount
+            type: integer
+        code:
+            column: code
+            type: string
+            length: 255
+            nullable: false
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+    manyToOne:
+        order:
+            targetEntity: Elcodi\Component\Cart\Entity\Interfaces\OrderInterface
+            joinColumn:
+                name: order_id
+                referencedColumnName: id
+        coupon:
+            targetEntity: Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface
+            fetch: EAGER
+            joinColumn:
+                name: coupon_id
+                referencedColumnName: id
+        amountCurrency:
+            targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
+            fetch: EAGER
+            joinColumn:
+                 name: amount_currency_id
+                 referencedColumnName: id
+                 nullable: true

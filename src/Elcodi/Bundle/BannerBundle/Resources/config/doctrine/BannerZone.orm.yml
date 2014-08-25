@@ -1,0 +1,43 @@
+Elcodi\Component\Banner\Entity\BannerZone:
+    type: entity
+    repositoryClass: Elcodi\Component\Banner\Repository\BannerZoneRepository
+    table: banner_zone
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        code:
+            column: code
+            type: string
+            length: 255
+            nullable: false
+        height:
+            column: height
+            type: integer
+            length: 11
+            nullable: false
+        width:
+            column: width
+            type: integer
+            length: 11
+            nullable: false
+
+    manyToOne:
+        language:
+            targetEntity: Elcodi\Component\Language\Entity\Interfaces\LanguageInterface
+            joinColumn:
+                name: language_id
+                referencedColumnName: id
+                nullable: true
+
+    manyToMany:
+        banners:
+            targetEntity: Elcodi\Component\Banner\Entity\Interfaces\BannerInterface
+            mappedBy: bannerZones

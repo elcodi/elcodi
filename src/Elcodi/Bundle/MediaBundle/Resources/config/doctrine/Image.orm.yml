@@ -1,0 +1,61 @@
+Elcodi\Component\Media\Entity\Image:
+    type: entity
+    repositoryClass: Elcodi\Component\Media\Repository\ImageRepository
+    table: image
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+            unique: false
+        contentType:
+            column: content_type
+            type: string
+            length: 255
+            nullable: false
+            unique: false
+        extension:
+            column: extension
+            type: string
+            length: 10
+            nullable: false
+            unique: false
+        size:
+            column: size
+            type: integer
+            length: 11
+            nullable: false
+            unique: false
+        width:
+            column: width
+            type: integer
+            length: 11
+            nullable: false
+            unique: false
+        height:
+            column: height
+            type: integer
+            length: 11
+            nullable: false
+            unique: false
+        createdAt:
+            column: created_at
+            type: datetime
+            nullable: true
+        updatedAt:
+            column: updated_at
+            type: datetime
+            nullable: true
+        enabled:
+            column: enabled
+            type: boolean
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]

@@ -1,0 +1,9 @@
+security:
+
+    encoders:
+        Elcodi\Component\User\Entity\Customer:
+            algorithm: bcrypt
+            cost:      15
+        Elcodi\Component\User\Entity\AdminUser:
+            algorithm: bcrypt
+            cost:      15

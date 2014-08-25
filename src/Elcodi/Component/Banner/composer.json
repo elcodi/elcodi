@@ -1,0 +1,45 @@
+{
+    "name": "elcodi/banner",
+    "description": "Elcodi Banner Component",
+    "keywords": ["elcodi", "banner", "ecommerce", "component"],
+    "homepage": "https://github.com/elcodi/Banner",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "Symfony Community",
+            "homepage": "https://github.com/elcodi/Banner/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "doctrine/common": "~2.4",
+        "doctrine/orm": "~2.4",
+
+        "elcodi/core": "~0.3.0",
+        "elcodi/language": "~0.3.0",
+        "elcodi/media": "~0.3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=3.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\Banner\\": ""
+        }
+    },
+    "minimum-stability": "stable",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.3-dev"
+        }
+    }
+}

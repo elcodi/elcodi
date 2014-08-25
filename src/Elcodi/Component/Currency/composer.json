@@ -1,0 +1,50 @@
+{
+    "name": "elcodi/currency",
+    "description": "Elcodi Currency Component",
+    "keywords": ["elcodi", "currency", "ecommerce", "component"],
+    "homepage": "https://github.com/elcodi/Currency",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "Symfony Community",
+            "homepage": "https://github.com/elcodi/Currency/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "doctrine/orm": "~2.4",
+        "symfony/http-foundation": "~2.4",
+        "symfony/framework-bundle": "~2.4, >=2.4.8",
+        "sebastian/money": "~1.3",
+
+        "elcodi/core": "~0.3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=3.7"
+    },
+    "suggest": {
+        "twig/twig": "Required if using Twig extensions",
+        "elcodi/language": "Use Elcodi locale provider",
+        "guzzle/http": "Required for OpenExchangeRates adapter"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\Currency\\": ""
+        }
+    },
+    "minimum-stability": "stable",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.3-dev"
+        }
+    }
+}

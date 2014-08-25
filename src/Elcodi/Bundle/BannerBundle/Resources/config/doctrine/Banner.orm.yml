@@ -1,0 +1,61 @@
+Elcodi\Component\Banner\Entity\Banner:
+    type: entity
+    repositoryClass: Elcodi\Component\Banner\Repository\BannerRepository
+    table: banner
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        description:
+            column: description
+            type: text
+            nullable: true
+        url:
+            column: url
+            type: string
+            length: 255
+            nullable: true
+        position:
+            column: position
+            type: integer
+            nullable: true
+        enabled:
+            column: enabled
+            type: boolean
+            nullable: true
+
+    oneToOne:
+        image:
+            targetEntity: Elcodi\Component\Media\Entity\Interfaces\ImageInterface
+            joinColumn:
+                name: image_id
+                referencedColumnName: id
+                nullable: true
+
+    manyToMany:
+        bannerZones:
+            targetEntity: Elcodi\Component\Banner\Entity\Interfaces\BannerZoneInterface
+            inversedBy: banners
+            joinTable:
+                name: banner_banner_zone
+                joinColumns:
+                    banner_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    banner_zone_id:
+                        referencedColumnName: id
+
+    manyToOne:
+        principalImage:
+            targetEntity: Elcodi\Component\Media\Entity\Interfaces\ImageInterface
+            joinColumn:
+                name: principal_image_id
+                referencedColumnName: id
+                nullable: true

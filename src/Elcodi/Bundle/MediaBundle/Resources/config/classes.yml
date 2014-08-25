@@ -1,0 +1,42 @@
+parameters:
+
+    #
+    # Repositories
+    #
+    elcodi.core.media.repository.image.class: Elcodi\Component\Media\Repository\ImageRepository
+
+    #
+    # Factories
+    #
+    elcodi.core.media.factory.image.class: Elcodi\Component\Media\Factory\ImageFactory
+
+    #
+    # Services
+    #
+    elcodi.core.media.resize.imagemagick.class: Elcodi\Component\Media\Adapter\Resizer\ImageMagickResizeAdapter
+    elcodi.core.media.service.image_manager.class: Elcodi\Component\Media\Services\ImageManager
+    elcodi.core.media.service.file_manager.class: Elcodi\Component\Media\Services\FileManager
+
+    #
+    # Controllers
+    #
+    elcodi.core.media.controller.image_resize.class: Elcodi\Component\Media\Controller\ImageResizeController
+    elcodi.core.media.controller.image_upload.class: Elcodi\Component\Media\Controller\ImageUploadController
+
+    #
+    # Routes
+    #
+    elcodi.core.media.routes.image_resize.loader.class: Elcodi\Component\Media\Router\ImageResizeRouterLoader
+    elcodi.core.media.routes.image_view.loader.class: Elcodi\Component\Media\Router\ImageViewRouterLoader
+    elcodi.core.media.routes.image_upload.loader.class: Elcodi\Component\Media\Router\ImageUploadRouterLoader
+
+    #
+    # Twig extensions
+    #
+    elcodi.core.media.twig_extension.image_extension.class: Elcodi\Component\Media\Twig\ImageExtension
+
+    #
+    # Transformers
+    #
+    elcodi.core.media.transformer.image_etag_transformer.class: Elcodi\Component\Media\Transformer\ImageEtagTransformer
+    elcodi.core.media.transformer.file_identifier_transformer.class: Elcodi\Component\Media\Transformer\FileIdentifierTransformer
