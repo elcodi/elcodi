@@ -1,6 +1,6 @@
 {
     "name": "elcodi/test-common-bundle",
-    "description": "Elcodi Test Common component",
+    "description": "Elcodi Test Common Bundle",
     "keywords": ["elcodi", "test", "ecommerce"],
     "homepage": "https://github.com/elcodi/TestCommonBundle",
     "type": "symfony-bundle",
@@ -41,7 +41,7 @@
     "minimum-stability": "stable",
     "extra": {
         "branch-alias": {
-            "dev-master": "0.2-dev"
+            "dev-master": "0.3-dev"
         }
     }
 }

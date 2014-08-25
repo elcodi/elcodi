@@ -1,6 +1,6 @@
 {
     "name": "elcodi/newsletter-bundle",
-    "description": "Elcodi Newsletter component",
+    "description": "Elcodi Newsletter Bundle",
     "keywords": ["elcodi", "newsletter", "ecommerce"],
     "homepage": "https://github.com/elcodi/NewsletterBundle",
     "type": "symfony-bundle",
@@ -29,11 +29,12 @@
         "symfony/expression-language": "~2.4",
         "symfony/http-kernel": "~2.4",
 
-        "elcodi/core-bundle": "~0.2.0",
-        "elcodi/language-bundle": "~0.2.0"
+        "elcodi/core-bundle": "~0.3.0",
+        "elcodi/language-bundle": "~0.3.0",
+        "elcodi/newsletter": "~0.3.0"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "~0.2.0",
+        "elcodi/test-common-bundle": "~0.3.0",
         "doctrine/data-fixtures": "~1.0",
         "phpunit/phpunit": ">=3.7"
     },
@@ -45,7 +46,7 @@
     "minimum-stability": "stable",
     "extra": {
         "branch-alias": {
-            "dev-master": "0.2-dev"
+            "dev-master": "0.3-dev"
         }
     }
 }

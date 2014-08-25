@@ -1,6 +1,6 @@
 {
     "name": "elcodi/product-bundle",
-    "description": "Elcodi Product component",
+    "description": "Elcodi Product Bundle",
     "keywords": ["elcodi", "product", "ecommerce"],
     "homepage": "https://github.com/elcodi/ProductBundle",
     "type": "symfony-bundle",
@@ -36,14 +36,15 @@
         "symfony/http-kernel": "~2.4",
         "sebastian/money": "~1.3",
 
-        "elcodi/core-bundle": "~0.2.0",
-        "elcodi/language-bundle": "~0.2.0",
-        "elcodi/media-bundle": "~0.2.0",
-        "elcodi/currency-bundle": "~0.2.0",
-        "elcodi/attribute-bundle": "~0.2.0"
+        "elcodi/core-bundle": "~0.3.0",
+        "elcodi/language-bundle": "~0.3.0",
+        "elcodi/media-bundle": "~0.3.0",
+        "elcodi/currency-bundle": "~0.3.0",
+        "elcodi/attribute-bundle": "~0.3.0",
+        "elcodi/product": "~0.3.0"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "~0.2.0",
+        "elcodi/test-common-bundle": "~0.3.0",
         "doctrine/data-fixtures": "~1.0",
         "phpunit/phpunit": ">=3.7"
     },
@@ -58,7 +59,7 @@
     "minimum-stability": "stable",
     "extra": {
         "branch-alias": {
-            "dev-master": "0.2-dev"
+            "dev-master": "0.3-dev"
         }
     }
 }

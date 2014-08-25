@@ -1,6 +1,6 @@
 {
     "name": "elcodi/media-bundle",
-    "description": "Elcodi Media component",
+    "description": "Elcodi Media Bundle",
     "keywords": ["elcodi", "media", "ecommerce"],
     "homepage": "https://github.com/elcodi/MediaBundle",
     "type": "symfony-bundle",
@@ -16,7 +16,7 @@
         },
         {
             "name": "Symfony Community",
-            "homepage": "https://github.com/elcodi/ProductBundle/contributors"
+            "homepage": "https://github.com/elcodi/MediaBundle/contributors"
         }
     ],
     "require": {
@@ -30,12 +30,13 @@
         "symfony/dependency-injection": "~2.4",
         "symfony/framework-bundle": "~2.4, >=2.4.8",
         "symfony/process": "~2.4",
-        "knplabs/knp-gaufrette-bundle": "v0.1.7",
+        "knplabs/knp-gaufrette-bundle": "~0.1",
 
-        "elcodi/core-bundle": "~0.2.0"
+        "elcodi/core-bundle": "~0.3.0",
+        "elcodi/media": "~0.3.0"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "~0.2.0",
+        "elcodi/test-common-bundle": "~0.3.0",
         "doctrine/data-fixtures": "~1.0",
         "phpunit/phpunit": ">=3.7"
     },
@@ -51,7 +52,7 @@
     "minimum-stability": "stable",
     "extra": {
         "branch-alias": {
-            "dev-master": "0.2-dev"
+            "dev-master": "0.3-dev"
         }
     }
 }

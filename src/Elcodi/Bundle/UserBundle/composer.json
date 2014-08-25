@@ -1,6 +1,6 @@
 {
     "name": "elcodi/user-bundle",
-    "description": "Elcodi User component",
+    "description": "Elcodi User Bundle",
     "keywords": ["elcodi", "User", "ecommerce"],
     "homepage": "https://github.com/elcodi/UserBundle",
     "type": "symfony-bundle",
@@ -25,24 +25,23 @@
         "doctrine/orm": "~2.4",
         "symfony/config": "~2.4",
         "symfony/security": "~2.4",
-        "symfony/form": "~2.4",
         "symfony/options-resolver": "~2.4",
         "symfony/validator": "~2.4",
         "symfony/routing": "~2.4",
         "symfony/http-foundation": "~2.4",
         "symfony/event-dispatcher": "~2.4",
         "symfony/dependency-injection": "~2.4",
-        "symfony/expression-language": "~2.4",
         "symfony/http-kernel": "~2.4",
         "ircmaxell/password-compat": "~1.0",
 
-        "elcodi/core-bundle": "~0.2.0",
-        "elcodi/geo-bundle": "~0.2.0",
-        "elcodi/language-bundle": "~0.2.0",
-        "elcodi/cart-bundle": "~0.2.0"
+        "elcodi/core-bundle": "~0.3.0",
+        "elcodi/geo-bundle": "~0.3.0",
+        "elcodi/language-bundle": "~0.3.0",
+        "elcodi/cart-bundle": "~0.3.0",
+        "elcodi/user": "~0.3.0"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "~0.2.0",
+        "elcodi/test-common-bundle": "~0.3.0",
         "doctrine/data-fixtures": "~1.0",
         "phpunit/phpunit": ">=3.7"
     },
@@ -54,7 +53,7 @@
     "minimum-stability": "stable",
     "extra": {
         "branch-alias": {
-            "dev-master": "0.2-dev"
+            "dev-master": "0.3-dev"
         }
     }
 }

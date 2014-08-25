@@ -1,6 +1,6 @@
 {
     "name": "elcodi/currency-bundle",
-    "description": "Elcodi Currency component",
+    "description": "Elcodi Currency Bundle",
     "keywords": ["elcodi", "currency", "ecommerce"],
     "homepage": "https://github.com/elcodi/CurrencyBundle",
     "type": "symfony-bundle",
@@ -35,10 +35,11 @@
         "symfony/http-kernel": "~2.4",
         "sebastian/money": "~1.3",
 
-        "elcodi/core-bundle": "~0.2.0"
+        "elcodi/core-bundle": "~0.3.0",
+        "elcodi/currency": "~0.3.0"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "~0.2.0",
+        "elcodi/test-common-bundle": "~0.3.0",
         "doctrine/data-fixtures": "~1.0",
         "phpunit/phpunit": ">=3.7"
     },
@@ -55,7 +56,7 @@
     "minimum-stability": "stable",
     "extra": {
         "branch-alias": {
-            "dev-master": "0.2-dev"
+            "dev-master": "0.3-dev"
         }
     }
 }

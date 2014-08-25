@@ -1,9 +1,9 @@
 {
-    "name": "elcodi/banner-bundle",
-    "description": "Elcodi Banner Bundle",
-    "keywords": ["elcodi", "banner", "ecommerce"],
-    "homepage": "https://github.com/elcodi/BannerBundle",
-    "type": "symfony-bundle",
+    "name": "elcodi/product",
+    "description": "Elcodi Product Component",
+    "keywords": ["elcodi", "product", "ecommerce", "component"],
+    "homepage": "https://github.com/elcodi/Product",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
@@ -16,28 +16,29 @@
         },
         {
             "name": "Symfony Community",
-            "homepage": "https://github.com/elcodi/BannerBundle/contributors"
+            "homepage": "https://github.com/elcodi/Product/contributors"
         }
     ],
     "require": {
         "php": ">=5.4",
         "doctrine/common": "~2.4",
         "doctrine/orm": "~2.4",
-        "symfony/http-kernel": "~2.4",
 
-        "elcodi/core-bundle": "~0.3.0",
-        "elcodi/language-bundle": "~0.3.0",
-        "elcodi/media-bundle": "~0.3.0",
-        "elcodi/banner": "~0.3.0"
+        "elcodi/core": "~0.3.0",
+        "elcodi/language": "~0.3.0",
+        "elcodi/media": "~0.3.0",
+        "elcodi/currency": "~0.3.0",
+        "elcodi/attribute": "~0.3.0"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "~0.3.0",
-        "doctrine/data-fixtures": "~1.0",
         "phpunit/phpunit": ">=3.7"
+    },
+    "suggest": {
+        "twig/twig": "Required if using Twig extensions"
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\BannerBundle\\": ""
+            "Elcodi\\Product\\": ""
         }
     },
     "minimum-stability": "stable",
