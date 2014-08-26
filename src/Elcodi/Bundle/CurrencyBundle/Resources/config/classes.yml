@@ -33,3 +33,8 @@ parameters:
     # Wrappers
     #
     elcodi.core.currency.wrapper.currency.class: Elcodi\Component\Currency\Wrapper\CurrencyWrapper
+
+    #
+    # Commands
+    #
+    elcodi.core.currency.command.load_exchange_rates.class: Elcodi\Component\Currency\Command\LoadExchangeRatesCommand
