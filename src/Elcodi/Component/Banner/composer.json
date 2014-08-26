@@ -33,7 +33,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\Banner\\": ""
+            "Elcodi\\Component\\Banner\\": ""
         }
     },
     "minimum-stability": "stable",

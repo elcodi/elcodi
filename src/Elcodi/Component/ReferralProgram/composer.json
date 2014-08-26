@@ -38,7 +38,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\ReferralProgram\\": ""
+            "Elcodi\\Component\\ReferralProgram\\": ""
         }
     },
     "minimum-stability": "stable",

@@ -39,7 +39,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\LanguageBundle\\": ""
+            "Elcodi\\Bundle\\LanguageBundle\\": ""
         }
     },
     "minimum-stability": "stable",

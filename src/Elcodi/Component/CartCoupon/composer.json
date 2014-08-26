@@ -35,7 +35,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\CartCoupon\\": ""
+            "Elcodi\\Component\\CartCoupon\\": ""
         }
     },
     "minimum-stability": "stable",

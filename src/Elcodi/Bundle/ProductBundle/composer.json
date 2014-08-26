@@ -53,7 +53,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\ProductBundle\\": ""
+            "Elcodi\\Bundle\\ProductBundle\\": ""
         }
     },
     "minimum-stability": "stable",

@@ -46,7 +46,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\MediaBundle\\": ""
+            "Elcodi\\Bundle\\MediaBundle\\": ""
         }
     },
     "minimum-stability": "stable",

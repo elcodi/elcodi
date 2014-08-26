@@ -37,7 +37,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\BannerBundle\\": ""
+            "Elcodi\\Bundle\\BannerBundle\\": ""
         }
     },
     "minimum-stability": "stable",
