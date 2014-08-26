@@ -12,7 +12,7 @@
          bootstrap="vendor/autoload.php"
 >
     <testsuites>
-        <testsuite name="Elcodi Cart Coupon Component Test Suite">
+        <testsuite name="Elcodi bundle package">
             <directory>./Tests/</directory>
         </testsuite>
     </testsuites>

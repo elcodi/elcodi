@@ -40,7 +40,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\NewsletterBundle\\": ""
+            "Elcodi\\Bundle\\NewsletterBundle\\": ""
         }
     },
     "minimum-stability": "stable",

@@ -31,7 +31,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\Geo\\": ""
+            "Elcodi\\Component\\Geo\\": ""
         }
     },
     "minimum-stability": "stable",

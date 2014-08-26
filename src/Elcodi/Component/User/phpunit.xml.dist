@@ -7,12 +7,12 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="true"
-         stopOnFailure="true"
+         stopOnFailure="false"
          syntaxCheck="false"
          bootstrap="vendor/autoload.php"
 >
     <testsuites>
-        <testsuite name="Elcodi Attribute Component Test Suite">
+        <testsuite name="Elcodi component package">
             <directory>./Tests/</directory>
         </testsuite>
     </testsuites>

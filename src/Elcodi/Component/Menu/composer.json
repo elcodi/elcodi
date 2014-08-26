@@ -35,7 +35,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\Menu\\": ""
+            "Elcodi\\Component\\Menu\\": ""
         }
     },
     "minimum-stability": "stable",

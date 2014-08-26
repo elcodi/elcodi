@@ -29,7 +29,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\Attribute\\": ""
+            "Elcodi\\Component\\Attribute\\": ""
         }
     },
     "minimum-stability": "stable",
