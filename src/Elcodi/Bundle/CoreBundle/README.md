@@ -1,4 +1,4 @@
-Elcodi Core component for Symfony2
+Elcodi Core Bundle for Symfony2
 =====
 
 This bundle is part of [elcodi project](https://github.com/elcodi).

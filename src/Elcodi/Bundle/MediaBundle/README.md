@@ -1,4 +1,4 @@
-Elcodi Media component for Symfony2
+Elcodi Media Bundle for Symfony2
 =====
 
 This bundle is part of [elcodi project](https://github.com/elcodi).
