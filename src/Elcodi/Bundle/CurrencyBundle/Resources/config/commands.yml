@@ -1,0 +1,16 @@
+services:
+
+    #
+    # Commands
+    #
+    elcodi.core.currency.command.load_exchange_rates:
+        class: %elcodi.core.currency.command.load_exchange_rates.class%
+        arguments:
+            currency_repository: @elcodi.repository.currency
+            currency_exchange_rate_factory: @elcodi.factory.currency_exchange_rate
+            currency_exchange_rate_repository: @elcodi.repository.currency_exchange_rate
+            exchange_rates_provider: @elcodi.exchange_rates_provider
+            exchange_rate_object_manager: @elcodi.object_manager.currency_exchange_rate
+            default_currency: %elcodi.core.currency.default_currency%
+        tags:
+            -  { name: console.command }

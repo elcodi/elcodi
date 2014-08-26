@@ -121,6 +121,7 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
             'twig',
             'repositories',
             'objectManagers',
+            'commands',
             [
                 'exchangeRatesAdapters/openExchangeRates',
                 $config['rates_provider']['client'] === OpenExchangeRatesAdapter::ADAPTER_NAME

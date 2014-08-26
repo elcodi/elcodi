@@ -22,8 +22,6 @@ use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 
 /**
  * Class CurrencyExchangeRate
- *
- * @package Elcodi\Component\Currency\Entity
  */
 class CurrencyExchangeRate extends AbstractEntity implements CurrencyExchangeRateInterface
 {

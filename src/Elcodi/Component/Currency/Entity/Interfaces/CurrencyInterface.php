@@ -18,8 +18,6 @@ namespace Elcodi\Component\Currency\Entity\Interfaces;
 
 /**
  * Interface CurrencyInterface
- *
- * @package Elcodi\Component\Currency\Entity\Interfaces
  */
 interface CurrencyInterface
 {
