@@ -11,4 +11,4 @@ services:
             request_stack: @request_stack
         tags:
             - { name: kernel.event_listener, event: user.register, method: onCustomerRegister }
-            - { name: kernel.event_listener, event: order.postcreated, method: onCustomerPurchase }
+            - { name: kernel.event_listener, event: order.oncreated, method: onOrderCreated }

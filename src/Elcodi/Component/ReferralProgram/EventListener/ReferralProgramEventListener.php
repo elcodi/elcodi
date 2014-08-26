@@ -16,11 +16,11 @@
 
 namespace Elcodi\Component\ReferralProgram\EventListener;
 
+use Elcodi\Component\Cart\Event\OrderOnCreatedEvent;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-use Elcodi\Component\Cart\Event\OrderPostCreatedEvent;
 use Elcodi\Component\CartCoupon\Services\OrderCouponManager;
 use Elcodi\Component\ReferralProgram\ElcodiReferralProgramCookie;
 use Elcodi\Component\ReferralProgram\ElcodiReferralProgramRuleTypes;
@@ -85,17 +85,18 @@ class ReferralProgramEventListener
      */
     public function onCustomerRegister(CustomerRegisterEvent $event)
     {
-        /**
-         * @var Cookie $cookie
-         */
-        $cookie = $this->request->cookies->get(ElcodiReferralProgramCookie::REFERRAL_PROGRAM_COOKIE_NAME);
+        $hash = $this->getReferralProgramCookieHash();
 
-        if (!empty($cookie)) {
+        if (!empty($hash)) {
 
             $customer = $event->getCustomer();
             $this
                 ->referralCouponManager
-                ->checkCouponAssignment($customer, $cookie, ElcodiReferralProgramRuleTypes::TYPE_ON_REGISTER);
+                ->checkCouponAssignment(
+                    $customer,
+                    $hash,
+                    ElcodiReferralProgramRuleTypes::TYPE_ON_REGISTER
+                );
         }
     }
 
@@ -105,9 +106,9 @@ class ReferralProgramEventListener
      * This listener just creates new Coupon if do not exists and if needs to be
      * generated
      *
-     * @param OrderPostCreatedEvent $event Event
+     * @param OrderOnCreatedEvent $event Event
      */
-    public function onCustomerPurchase(OrderPostCreatedEvent $event)
+    public function onOrderCreated(OrderOnCreatedEvent $event)
     {
         /**
          * @var Cookie            $cookie
@@ -116,12 +117,34 @@ class ReferralProgramEventListener
         $customer = $event->getOrder()->getCustomer();
 
         if ($this->request instanceof Request) {
-            $hash = $this->request->cookies->get(ElcodiReferralProgramCookie::REFERRAL_PROGRAM_COOKIE_NAME);
 
+            $hash = $this->getReferralProgramCookieHash();
             $this
                 ->referralCouponManager
-                ->checkCouponAssignment($customer, $hash, ElcodiReferralProgramRuleTypes::TYPE_ON_FIRST_PURCHASE)
-                ->checkCouponsUsed($customer, $this->orderCouponManager->getOrderCoupons($event->getOrder()));
+                ->checkCouponAssignment(
+                    $customer,
+                    $hash,
+                    ElcodiReferralProgramRuleTypes::TYPE_ON_FIRST_PURCHASE
+                )
+                ->checkCouponsUsed(
+                    $customer,
+                    $this
+                        ->orderCouponManager
+                        ->getOrderCoupons($event->getOrder())
+                );
         }
+    }
+
+    /**
+     * Get ReferralProgram hash stored in ReferralProgram cookie
+     *
+     * @return string Hash
+     */
+    protected function getReferralProgramCookieHash()
+    {
+        return $this
+            ->request
+            ->cookies
+            ->get(ElcodiReferralProgramCookie::REFERRAL_PROGRAM_COOKIE_NAME);
     }
 }
