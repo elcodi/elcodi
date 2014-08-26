@@ -1,4 +1,4 @@
-Elcodi Currency component for Symfony2
+Elcodi Currency Bundle for Symfony2
 =====
 
 This bundle is part of [elcodi project](https://github.com/elcodi).

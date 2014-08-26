@@ -1,4 +1,4 @@
-Elcodi Geo component for Symfony2
+Elcodi Geo Bundle for Symfony2
 =====
 
 This bundle is part of [elcodi project](https://github.com/elcodi).

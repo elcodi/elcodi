@@ -1,4 +1,4 @@
-Elcodi Testing Common component for Symfony2
+Elcodi Testing Common Bundle for Symfony2
 =====
 
 This bundle is part of [elcodi project](https://github.com/elcodi).
