@@ -26,6 +26,7 @@
 
         "symfony/http-kernel": "~2.4",
         "symfony/config": "~2.4",
+        "symfony/routing": "~2.4",
         "symfony/dependency-injection": "~2.4",
         "mmoreram/simple-doctrine-mapping": "~0.1",
 
@@ -38,8 +39,7 @@
         "phpunit/phpunit": ">=3.7"
     },
     "suggest": {
-        "symfony/twig-bundle": "Required if using Twig extensions",
-        "symfony/routing" : "Required if using Symfony Router to generate URLs for menus"
+        "symfony/twig-bundle": "Required if using Twig extensions"
     },
     "autoload": {
         "psr-4": {
