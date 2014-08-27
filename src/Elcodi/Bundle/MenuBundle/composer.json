@@ -38,8 +38,7 @@
         "phpunit/phpunit": ">=3.7"
     },
     "suggest": {
-        "symfony/twig-bundle": "Required if using Twig extensions",
-        "symfony/routing": "Required if using elcodi/menu-bundle generate_url twig extension"
+        "symfony/twig-bundle": "Required if using Twig extensions"
     },
     "autoload": {
         "psr-4": {
