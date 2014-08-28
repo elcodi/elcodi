@@ -1,5 +1,5 @@
 Contributing
------
+------------
 
 This projects follows Symfony2 coding standards, so pull requests must pass phpcs
 checks. Read more details about

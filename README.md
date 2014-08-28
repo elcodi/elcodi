@@ -1,5 +1,5 @@
 Elcodi for Symfony2
-=====
+===================
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/6aaa1c45-e569-4f31-8344-6aab899ed083/mini.png)](https://insight.sensiolabs.com/projects/6aaa1c45-e569-4f31-8344-6aab899ed083)
 [![Build Status](https://travis-ci.org/elcodi/elcodi.svg?branch=master)](https://travis-ci.org/elcodi/elcodi)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/elcodi/elcodi/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/elcodi/elcodi/?branch=master)
@@ -20,7 +20,7 @@ Documentation
 -------------
 
 Check the documentation in [ReadTheDocs](http://elcodi.readthedocs.org/).
-This documentation is being developed and will be in alpha version until first
+This documentation is being developed and will be in alpha version until the first
 stable project version.
 
 

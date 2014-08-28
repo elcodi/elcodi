@@ -17,7 +17,7 @@ env:
     - SYMFONY_VERSION="2.5.*" TWIG_REQUIRED=false
     - SYMFONY_VERSION="2.5.*" TWIG_REQUIRED=true
 
-before_script:
+before_install:
     - composer require --no-update symfony/http-kernel:${SYMFONY_VERSION}
     - composer require --no-update symfony/config:${SYMFONY_VERSION}
     - composer require --no-update symfony/yaml:${SYMFONY_VERSION}
@@ -33,6 +33,8 @@ before_script:
     - composer require --no-update symfony/finder:${SYMFONY_VERSION}
     - composer require --no-update symfony/browser-kit:${SYMFONY_VERSION}
     - if [[ ${TWIG_REQUIRED} == true ]]; then composer require --no-update symfony/twig-bundle:${SYMFONY_VERSION}; fi
+
+install:
     - composer install --prefer-source --no-interaction
 
 script:

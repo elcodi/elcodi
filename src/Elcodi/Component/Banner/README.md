@@ -1,5 +1,5 @@
 Elcodi Banner component for Symfony2
-=====
+====================================
 
 This bundle is part of [elcodi project](https://github.com/elcodi).
 Elcodi is a set of flexible e-commerce components for Symfony2, built as a
