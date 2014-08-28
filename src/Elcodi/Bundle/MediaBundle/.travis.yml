@@ -10,8 +10,10 @@ matrix:
     allow_failures:
         - php: hhvm-nightly
 
-before_script:
+before_install:
   - composer require --no-update symfony/twig-bundle ~2.4
+
+install:
   - composer install --prefer-source --no-interaction
 
 script:
