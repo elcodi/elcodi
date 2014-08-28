@@ -1,5 +1,5 @@
 before_commands:
-    - "composer install --dev --prefer-source"
+    - "composer install --prefer-source"
 
 filter:
     excluded_paths:
