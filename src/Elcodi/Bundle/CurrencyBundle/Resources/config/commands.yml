@@ -12,5 +12,3 @@ services:
             exchange_rates_provider: @elcodi.exchange_rates_provider
             exchange_rate_object_manager: @elcodi.object_manager.currency_exchange_rate
             default_currency: %elcodi.core.currency.default_currency%
-        tags:
-            -  { name: console.command }
