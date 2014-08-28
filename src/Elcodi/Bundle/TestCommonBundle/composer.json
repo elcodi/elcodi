@@ -38,10 +38,9 @@
             "Elcodi\\Bundle\\TestCommonBundle\\": ""
         }
     },
-    "minimum-stability": "stable",
     "extra": {
         "branch-alias": {
-            "dev-master": "0.3-dev"
+            "dev-master": "0.4-dev"
         }
     }
 }
