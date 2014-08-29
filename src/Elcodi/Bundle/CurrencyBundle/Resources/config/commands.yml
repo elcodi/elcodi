@@ -6,12 +6,10 @@ services:
     elcodi.core.currency.command.load_exchange_rates:
         class: %elcodi.core.currency.command.load_exchange_rates.class%
         arguments:
-            currency_object_manager: @elcodi.object_manager.currency
-            currency_exchange_rate_object_manager: @elcodi.object_manager.currency_exchange_rate
+            manager_registry: @doctrine
             currency_exchange_rate_factory: @elcodi.factory.currency_exchange_rate
             exchange_rates_provider: @elcodi.exchange_rates_provider
             currency_namespace: %elcodi.core.currency.entity.currency.class%
-            currency_namespace: %elcodi.core.currency.entity.currency_exchange_rate.class%
             currency_exchange_rate_namespace: %elcodi.core.currency.entity.currency_exchange_rate.class%
             default_currency: %elcodi.core.currency.default_currency%
         tags:
