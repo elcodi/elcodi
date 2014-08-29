@@ -14,5 +14,3 @@ services:
             currency_namespace: %elcodi.core.currency.entity.currency_exchange_rate.class%
             currency_exchange_rate_namespace: %elcodi.core.currency.entity.currency_exchange_rate.class%
             default_currency: %elcodi.core.currency.default_currency%
-        tags:
-            -  { name: console.command }
