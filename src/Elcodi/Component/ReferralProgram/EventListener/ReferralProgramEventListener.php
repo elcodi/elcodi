@@ -16,11 +16,11 @@
 
 namespace Elcodi\Component\ReferralProgram\EventListener;
 
-use Elcodi\Component\Cart\Event\OrderOnCreatedEvent;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
+use Elcodi\Component\Cart\Event\OrderOnCreatedEvent;
 use Elcodi\Component\CartCoupon\Services\OrderCouponManager;
 use Elcodi\Component\ReferralProgram\ElcodiReferralProgramCookie;
 use Elcodi\Component\ReferralProgram\ElcodiReferralProgramRuleTypes;

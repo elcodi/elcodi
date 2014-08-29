@@ -17,6 +17,7 @@
 namespace Elcodi\Component\Currency\Command;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\Persistence\ObjectRepository;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -70,6 +71,20 @@ class LoadExchangeRatesCommand extends Command
     /**
      * @var string
      *
+     * Currency namespace
+     */
+    protected $currencyNamespace;
+
+    /**
+     * @var string
+     *
+     * CurrencyExchangeRate namespace
+     */
+    protected $currencyExchangeRateNamespace;
+
+    /**
+     * @var string
+     *
      * Default currency
      */
     protected $defaultCurrency;
@@ -77,29 +92,32 @@ class LoadExchangeRatesCommand extends Command
     /**
      * Construct method
      *
-     * @param CurrencyRepository             $currencyRepository             Currency repository
-     * @param CurrencyExchangeRateFactory    $currencyExchangeRateFactory    CurrencyExchangeRate factory
-     * @param CurrencyExchangeRateRepository $currencyExchangeRateRepository CurrencyExchangeRate repository
-     * @param ExchangeRatesProvider          $exchangeRatesProvider          ExchangeRates provider
-     * @param ObjectManager                  $exchangeRateObjectManager      ExchangeRate object manager
-     * @param string                         $defaultCurrency                Default currency
+     * @param ObjectManager               $currencyObjectManager             Currency object manager
+     * @param ObjectManager               $currencyExchangeRateObjectManager CurrencyExchangeRate object manager
+     * @param CurrencyExchangeRateFactory $currencyExchangeRateFactory       CurrencyExchangeRate factory
+     * @param ExchangeRatesProvider       $exchangeRatesProvider             ExchangeRates provider
+     * @param string                      $currencyNamespace                 Currency namespace
+     * @param string                      $currencyExchangeRateNamespace     CurrencyExchangeRate namespace
+     * @param string                      $defaultCurrency                   Default currency
      */
     public function __construct(
-        CurrencyRepository $currencyRepository,
+        ObjectManager $currencyObjectManager,
+        ObjectManager $currencyExchangeRateObjectManager,
         CurrencyExchangeRateFactory $currencyExchangeRateFactory,
-        CurrencyExchangeRateRepository $currencyExchangeRateRepository,
         ExchangeRatesProvider $exchangeRatesProvider,
-        ObjectManager $exchangeRateObjectManager,
+        $currencyNamespace,
+        $currencyExchangeRateNamespace,
         $defaultCurrency
     )
     {
         parent::__construct();
 
-        $this->currencyRepository = $currencyRepository;
+        $this->currencyObjectManager = $currencyObjectManager;
+        $this->currencyExchangeRateObjectManager = $currencyExchangeRateObjectManager;
         $this->currencyExchangeRateFactory = $currencyExchangeRateFactory;
-        $this->currencyExchangeRateRepository = $currencyExchangeRateRepository;
         $this->exchangeRatesProvider = $exchangeRatesProvider;
-        $this->exchangeRateObjectManager = $exchangeRateObjectManager;
+        $this->currencyNamespace = $currencyNamespace;
+        $this->currencyExchangeRateNamespace = $currencyExchangeRateNamespace;
         $this->defaultCurrency = $defaultCurrency;
     }
 
@@ -124,6 +142,18 @@ class LoadExchangeRatesCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        /**
+         * @var ObjectRepository $currencyRepository
+         * @var ObjectRepository $currencyExchangeRateRepository
+         */
+        $currencyRepository = $this
+            ->currencyObjectManager
+            ->getRepository($this->currencyNamespace);
+
+        $currencyExchangeRateRepository = $this
+            ->currencyExchangeRateObjectManager
+            ->getRepository($this->currencyExchangeRateNamespace);
+
         $currencies = $this
             ->currencyRepository
             ->findBy([
@@ -148,20 +178,18 @@ class LoadExchangeRatesCommand extends Command
 
         foreach ($rates as $code => $rate) {
 
-            $sourceCurrency = $this
-                ->currencyRepository
-                ->findOneByIso([
+            $sourceCurrency = $currencyRepository
+                ->findOneBy([
                     'iso' => $this->defaultCurrency
                 ]);
 
-            $targetCurrency = $this->currencyRepository
-                ->findOneByIso([
+            $targetCurrency = $currencyRepository
+                ->findOneBy([
                     'iso' => $code
                 ]);
 
             //check if this is a new exchange rate, or if we have to create a new one
-            $exchangeRate = $this
-                ->currencyExchangeRateRepository
+            $exchangeRate = $currencyExchangeRateRepository
                 ->findOneBy([
                     'sourceCurrency' => $sourceCurrency,
                     'targetCurrency' => $targetCurrency
