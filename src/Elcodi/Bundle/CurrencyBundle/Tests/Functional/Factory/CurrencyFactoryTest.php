@@ -24,6 +24,16 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class CurrencyFactoryTest extends WebTestCase
 {
     /**
+     * Schema must be loaded in all test cases
+     *
+     * @return array Load schema
+     */
+    protected function loadSchema()
+    {
+        return false;
+    }
+
+    /**
      * Returns the callable name of the service
      *
      * @return string service name
@@ -34,27 +44,5 @@ class CurrencyFactoryTest extends WebTestCase
             'elcodi.core.currency.factory.currency',
             'elcodi.factory.currency',
         ];
-    }
-
-    /**
-     * Test currency factory provider
-     */
-    public function testFactoryProvider()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.currency.entity.currency.class'),
-            $this->get('elcodi.core.currency.entity.currency.instance')
-        );
-    }
-
-    /**
-     * Test currency factory provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.currency.entity.currency.class'),
-            $this->get('elcodi.entity.currency.instance')
-        );
     }
 }

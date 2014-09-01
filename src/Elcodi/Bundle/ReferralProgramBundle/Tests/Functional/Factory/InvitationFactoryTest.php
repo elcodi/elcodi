@@ -24,6 +24,16 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class InvitationFactoryTest extends WebTestCase
 {
     /**
+     * Schema must be loaded in all test cases
+     *
+     * @return array Load schema
+     */
+    protected function loadSchema()
+    {
+        return false;
+    }
+
+    /**
      * Returns the callable name of the service
      *
      * @return string service name
@@ -34,27 +44,5 @@ class InvitationFactoryTest extends WebTestCase
             'elcodi.core.referral_program.factory.invitation',
             'elcodi.factory.invitation',
         ];
-    }
-
-    /**
-     * Test invitation factory provider
-     */
-    public function testFactoryProvider()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.referral_program.entity.invitation.class'),
-            $this->get('elcodi.core.referral_program.entity.invitation.instance')
-        );
-    }
-
-    /**
-     * Test invitation factory provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.referral_program.entity.invitation.class'),
-            $this->get('elcodi.entity.invitation.instance')
-        );
     }
 }

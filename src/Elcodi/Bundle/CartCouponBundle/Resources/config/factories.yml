@@ -25,31 +25,3 @@ services:
 
     elcodi.factory.order_coupon:
         alias: elcodi.core.cart_coupon.factory.order_coupon
-
-    #
-    # Entity providers
-    #
-
-    #
-    # Instance provider for entity cart_coupon
-    #
-    elcodi.core.cart_coupon.entity.cart_coupon.instance:
-        class: %elcodi.core.cart_coupon.entity.cart_coupon.class%
-        factory_service: elcodi.core.cart_coupon.factory.cart_coupon
-        factory_method: create
-        scope: prototype
-
-    elcodi.entity.cart_coupon.instance:
-        alias: elcodi.core.cart_coupon.entity.cart_coupon.instance
-
-    #
-    # Instance provider for entity order_coupon
-    #
-    elcodi.core.cart_coupon.entity.order_coupon.instance:
-        class: %elcodi.core.cart_coupon.entity.order_coupon.class%
-        factory_service: elcodi.core.cart_coupon.factory.order_coupon
-        factory_method: create
-        scope: prototype
-
-    elcodi.entity.order_coupon.instance:
-        alias: elcodi.core.cart_coupon.entity.order_coupon.instance

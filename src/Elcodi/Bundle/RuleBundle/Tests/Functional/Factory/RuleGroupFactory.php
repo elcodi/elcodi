@@ -24,6 +24,16 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class RuleGroupFactory extends WebTestCase
 {
     /**
+     * Schema must be loaded in all test cases
+     *
+     * @return array Load schema
+     */
+    protected function loadSchema()
+    {
+        return false;
+    }
+
+    /**
      * Returns the callable name of the service
      *
      * @return string service name
@@ -31,16 +41,5 @@ class RuleGroupFactory extends WebTestCase
     public function getServiceCallableName()
     {
         return 'elcodi.core.rule.factory.rule_group';
-    }
-
-    /**
-     * Test customer factory provider
-     */
-    public function testFactoryProvider()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.rule.entity.rule_group.class'),
-            $this->container->get('elcodi.core.rule.entity.rule_group.instance')
-        );
     }
 }

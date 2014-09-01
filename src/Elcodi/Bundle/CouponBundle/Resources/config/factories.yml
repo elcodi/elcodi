@@ -14,19 +14,3 @@ services:
 
     elcodi.factory.coupon:
         alias: elcodi.core.coupon.factory.coupon
-
-    #
-    # Entity providers
-    #
-
-    #
-    # Instance provider for entity coupon
-    #
-    elcodi.core.coupon.entity.coupon.instance:
-        class: %elcodi.core.coupon.entity.coupon.class%
-        factory_service: elcodi.core.coupon.factory.coupon
-        factory_method: create
-        scope: prototype
-
-    elcodi.entity.coupon.instance:
-        alias: elcodi.core.coupon.entity.coupon.instance

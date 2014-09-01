@@ -31,16 +31,30 @@ services:
     elcodi.currency_converter:
         alias: elcodi.core.currency.service.currency_converter
 
+    elcodi.core.currency.populator.currency_rates_populator:
+        class: %elcodi.core.currency.populator.currency_rates_populator.class%
+        lazy: true
+        arguments:
+            currency_exchange_rate_object_manager: @elcodi.object_manager.currency_exchange_rate
+            currency_repository: @elcodi.repository.currency
+            currency_exchange_rate_repository: @elcodi.repository.currency_exchange_rate
+            currency_exchange_rate_factory: @elcodi.factory.currency_exchange_rate
+            exchange_rates_provider: @elcodi.currency_exchange_rates_provider
+            default_currency: %elcodi.core.currency.default_currency%
+
+    elcodi.currency_rates_populator:
+        alias: elcodi.core.currency.populator.currency_rates_populator
+
     #
     # Providers
     #
-    elcodi.core.currency.service.exchange_rates_provider:
-        class: %elcodi.core.currency.service.exchange_rates_provider.class%
+    elcodi.core.currency.service.currency_exchange_rates_provider:
+        class: %elcodi.core.currency.service.currency_exchange_rates_provider.class%
         arguments:
-            exchange_rates_service: @elcodi.core.currency.adapter.exchange_rates_adapter
+            currency_exchange_rates_provider_adapter: @elcodi.currency_exchange_rates_provider_adapter
 
-    elcodi.exchange_rates_provider:
-        alias: elcodi.core.currency.service.exchange_rates_provider
+    elcodi.currency_exchange_rates_provider:
+        alias: elcodi.core.currency.service.currency_exchange_rates_provider
 
     #
     # Wrappers

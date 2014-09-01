@@ -15,6 +15,38 @@ services:
     elcodi.factory.address:
         alias: elcodi.core.geo.factory.address
 
+    elcodi.core.geo.factory.state:
+        class: %elcodi.core.geo.factory.state.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.geo.entity.state.class%"]]
+
+    elcodi.factory.state:
+        alias: elcodi.core.geo.factory.state
+
+    elcodi.core.geo.factory.province:
+        class: %elcodi.core.geo.factory.province.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.geo.entity.province.class%"]]
+
+    elcodi.factory.province:
+        alias: elcodi.core.geo.factory.province
+
+    elcodi.core.geo.factory.city:
+        class: %elcodi.core.geo.factory.city.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.geo.entity.city.class%"]]
+
+    elcodi.factory.city:
+        alias: elcodi.core.geo.factory.city
+
+    elcodi.core.geo.factory.postal_code:
+        class: %elcodi.core.geo.factory.postal_code.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.geo.entity.postal_code.class%"]]
+
+    elcodi.factory.postal_code:
+        alias: elcodi.core.geo.factory.postal_code
+
     elcodi.core.geo.factory.country:
         class: %elcodi.core.geo.factory.country.class%
         calls:
@@ -22,31 +54,3 @@ services:
 
     elcodi.factory.country:
         alias: elcodi.core.geo.factory.country
-
-    #
-    # Entity providers
-    #
-
-    #
-    # Instance provider for entity address
-    #
-    elcodi.core.geo.entity.address.instance:
-        class: %elcodi.core.geo.entity.address.class%
-        factory_service: elcodi.core.geo.factory.address
-        factory_method: create
-        scope: prototype
-
-    elcodi.entity.address.instance:
-        alias: elcodi.core.geo.entity.address.instance
-
-    #
-    # Instance provider for entity country
-    #
-    elcodi.core.geo.entity.country.instance:
-        class: %elcodi.core.geo.entity.country.class%
-        factory_service: elcodi.core.geo.factory.country
-        factory_method: create
-        scope: prototype
-
-    elcodi.entity.country.instance:
-        alias: elcodi.core.geo.entity.country.instance

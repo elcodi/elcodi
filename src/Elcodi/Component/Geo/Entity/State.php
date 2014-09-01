@@ -1,0 +1,221 @@
+<?php
+
+/**
+ * This file is part of the Elcodi package.
+ *
+ * Copyright (c) 2014 Elcodi.com
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Feel free to edit as you please, and have fun.
+ *
+ * @author Marc Morera <yuhu@mmoreram.com>
+ * @author Aldo Chiecchia <zimage@tiscali.it>
+ */
+
+namespace Elcodi\Component\Geo\Entity;
+
+use Doctrine\Common\Collections\Collection;
+
+use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
+use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
+use Elcodi\Component\Geo\Entity\Interfaces\CountryInterface;
+use Elcodi\Component\Geo\Entity\Interfaces\ProvinceInterface;
+use Elcodi\Component\Geo\Entity\Interfaces\StateInterface;
+
+/**
+ * Class State
+ */
+class State extends AbstractEntity implements StateInterface
+{
+    use EnabledTrait;
+
+    /**
+     * @var string
+     *
+     * Code
+     */
+    protected $code;
+
+    /**
+     * @var string
+     *
+     * Name
+     */
+    protected $name;
+
+    /**
+     * @var CountryInterface
+     *
+     * Country
+     */
+    protected $country;
+
+    /**
+     * @var Collection
+     *
+     * Provinces
+     */
+    protected $provinces;
+
+    /**
+     * @var Collection
+     *
+     * Cities
+     */
+    protected $cities;
+
+    /**
+     * Sets Code
+     *
+     * @param string $code Code
+     *
+     * @return $this self Object
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get Code
+     *
+     * @return string Code
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * Sets Name
+     *
+     * @param string $name Name
+     *
+     * @return $this self Object
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get Name
+     *
+     * @return string Name
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Get Country
+     *
+     * @return CountryInterface Country
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * Set Country
+     *
+     * @param CountryInterface $country Country
+     *
+     * @return $this self Object
+     */
+    public function setCountry(CountryInterface $country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get provinces
+     *
+     * @return Collection Provinces
+     */
+    public function getProvinces()
+    {
+        return $this->provinces;
+    }
+
+    /**
+     * Set provinces
+     *
+     * @param Collection $provinces Provinces
+     *
+     * @return $this self Object
+     */
+    public function setProvinces(Collection $provinces)
+    {
+        $this->provinces = $provinces;
+
+        return $this;
+    }
+
+    /**
+     * Add province
+     *
+     * @param ProvinceInterface $province Province
+     *
+     * @return $this self Object
+     */
+    public function addProvince(ProvinceInterface $province)
+    {
+        if (!$this->provinces->contains($province)) {
+
+            $this
+                ->provinces
+                ->add($province);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Add province
+     *
+     * @param ProvinceInterface $province Province
+     *
+     * @return $this self Object
+     */
+    public function removeProvince(ProvinceInterface $province)
+    {
+        $this
+            ->provinces
+            ->removeElement($province);
+
+        return $this;
+    }
+
+    /**
+     * Get Cities
+     *
+     * @return Collection Cities
+     */
+    public function getCities()
+    {
+        return $this->cities;
+    }
+
+    /**
+     * Get siblings
+     *
+     * @return Collection siblings
+     */
+    public function getSiblings()
+    {
+        return $this
+            ->country
+            ->getStates();
+    }
+}

@@ -24,6 +24,16 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class ExpressionFactoryTest extends WebTestCase
 {
     /**
+     * Schema must be loaded in all test cases
+     *
+     * @return array Load schema
+     */
+    protected function loadSchema()
+    {
+        return false;
+    }
+
+    /**
      * Returns the callable name of the service
      *
      * @return string service name
@@ -34,27 +44,5 @@ class ExpressionFactoryTest extends WebTestCase
             'elcodi.core.rule.factory.expression',
             'elcodi.factory.expression',
         ];
-    }
-
-    /**
-     * Test expression factory provider
-     */
-    public function testFactoryProvider()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.rule.entity.expression.class'),
-            $this->get('elcodi.core.rule.entity.expression.instance')
-        );
-    }
-
-    /**
-     * Test expression factory provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.rule.entity.expression.class'),
-            $this->get('elcodi.entity.expression.instance')
-        );
     }
 }

@@ -1,0 +1,41 @@
+Elcodi\Component\Geo\Entity\State:
+    type: entity
+    repositoryClass: Elcodi\Component\Geo\Repository\StateRepository
+    table: state
+    id:
+        id:
+            type: string
+            generator:
+                strategy: NONE
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        code:
+            column: code
+            type: string
+            length: 255
+            nullable: false
+        enabled:
+            column: enabled
+            type: boolean
+
+    manyToOne:
+        country:
+            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\CountryInterface
+            inversedBy: states
+            joinColumn:
+                name: country_code
+                referencedColumnName: code
+    oneToMany:
+        provinces:
+            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\ProvinceInterface
+            mappedBy: state
+            onDelete: "CASCADE"
+            cascade:
+                - "persist"
+        cities:
+            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\CityInterface
+            mappedBy: state

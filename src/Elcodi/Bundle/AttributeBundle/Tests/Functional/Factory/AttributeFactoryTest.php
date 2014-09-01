@@ -24,9 +24,9 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class AttributeFactoryTest extends WebTestCase
 {
     /**
-     * Load fixtures of these bundles
+     * Schema must be loaded in all test cases
      *
-     * @return array Bundles name where fixtures should be found
+     * @return array Load schema
      */
     protected function loadSchema()
     {
@@ -44,27 +44,5 @@ class AttributeFactoryTest extends WebTestCase
             'elcodi.core.attribute.factory.attribute',
             'elcodi.factory.attribute',
         ];
-    }
-
-    /**
-     * Test cart_coupon factory provider
-     */
-    public function testFactoryProvider()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.attribute.entity.attribute.class'),
-            $this->get('elcodi.core.attribute.entity.attribute.instance')
-        );
-    }
-
-    /**
-     * Test cart_coupon factory provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.attribute.entity.attribute.class'),
-            $this->get('elcodi.entity.attribute.instance')
-        );
     }
 }

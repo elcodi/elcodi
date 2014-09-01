@@ -33,7 +33,7 @@ abstract class AbstractEntity
      *
      * @param int $id Entity Id
      *
-     * @return AbstractEntity
+     * @return $this self Object
      */
     public function setId($id)
     {

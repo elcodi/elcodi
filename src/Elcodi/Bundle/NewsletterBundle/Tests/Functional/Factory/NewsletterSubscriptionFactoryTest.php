@@ -24,6 +24,16 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class NewsletterSubscriptionFactoryTest extends WebTestCase
 {
     /**
+     * Schema must be loaded in all test cases
+     *
+     * @return array Load schema
+     */
+    protected function loadSchema()
+    {
+        return false;
+    }
+
+    /**
      * Returns the callable name of the service
      *
      * @return string service name
@@ -34,27 +44,5 @@ class NewsletterSubscriptionFactoryTest extends WebTestCase
             'elcodi.core.newsletter.factory.newsletter_subscription',
             'elcodi.factory.newsletter_subscription',
         ];
-    }
-
-    /**
-     * Test newsletter_subscription factory provider
-     */
-    public function testFactoryProvider()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.newsletter.entity.newsletter_subscription.class'),
-            $this->get('elcodi.core.newsletter.entity.newsletter_subscription.instance')
-        );
-    }
-
-    /**
-     * Test newsletter_subscription factory provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.newsletter.entity.newsletter_subscription.class'),
-            $this->get('elcodi.entity.newsletter_subscription.instance')
-        );
     }
 }

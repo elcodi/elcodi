@@ -24,6 +24,16 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class ReferralHashFactoryTest extends WebTestCase
 {
     /**
+     * Schema must be loaded in all test cases
+     *
+     * @return array Load schema
+     */
+    protected function loadSchema()
+    {
+        return false;
+    }
+
+    /**
      * Returns the callable name of the service
      *
      * @return string service name
@@ -34,27 +44,5 @@ class ReferralHashFactoryTest extends WebTestCase
             'elcodi.core.referral_program.factory.referral_hash',
             'elcodi.factory.referral_hash',
         ];
-    }
-
-    /**
-     * Test referral_hash factory provider
-     */
-    public function testFactoryProvider()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.referral_program.entity.referral_hash.class'),
-            $this->get('elcodi.core.referral_program.entity.referral_hash.instance')
-        );
-    }
-
-    /**
-     * Test referral_hash factory provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.referral_program.entity.referral_hash.class'),
-            $this->get('elcodi.entity.referral_hash.instance')
-        );
     }
 }

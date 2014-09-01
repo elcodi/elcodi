@@ -24,16 +24,13 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class VariantFactoryTest extends WebTestCase
 {
     /**
-     * Returns the callable name of the service
+     * Schema must be loaded in all test cases
      *
-     * @return string service name
+     * @return array Load schema
      */
-    public function getServiceCallableName()
+    protected function loadSchema()
     {
-        return [
-            'elcodi.core.product.factory.variant',
-            'elcodi.factory.product_variant',
-        ];
+        return true;
     }
 
     /**
@@ -49,24 +46,15 @@ class VariantFactoryTest extends WebTestCase
     }
 
     /**
-     * Test menu factory provider
+     * Returns the callable name of the service
+     *
+     * @return string service name
      */
-    public function testFactoryProvider()
+    public function getServiceCallableName()
     {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.product.entity.variant.class'),
-            $this->get('elcodi.core.product.entity.variant.instance')
-        );
-    }
-
-    /**
-     * Test variant factory provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.product.entity.variant.class'),
-            $this->get('elcodi.entity.product_variant.instance')
-        );
+        return [
+            'elcodi.core.product.factory.variant',
+            'elcodi.factory.product_variant',
+        ];
     }
 }

@@ -20,7 +20,8 @@ use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
-use Elcodi\Component\Geo\Entity\Interfaces\CountryInterface;
+use Elcodi\Component\Geo\Entity\Interfaces\CityInterface;
+use Elcodi\Component\Geo\Entity\Interfaces\PostalCodeInterface;
 
 /**
  * Address
@@ -67,13 +68,6 @@ class Address extends AbstractEntity implements AddressInterface
     /**
      * @var string
      *
-     * Postalcode
-     */
-    protected $postalCode;
-
-    /**
-     * @var string
-     *
      * Phone
      */
     protected $phone;
@@ -93,39 +87,25 @@ class Address extends AbstractEntity implements AddressInterface
     protected $comments;
 
     /**
-     * @var string
+     * @var CityInterface
      *
      * City
      */
     protected $city;
 
     /**
-     * @var string
+     * @var PostalCodeInterface
      *
-     * Province
+     * Postalcode
      */
-    protected $province;
-
-    /**
-     * @var string
-     *
-     * State
-     */
-    protected $state;
-
-    /**
-     * @var CountryInterface
-     *
-     * Country
-     */
-    protected $country;
+    protected $postalCode;
 
     /**
      * Sets Address
      *
      * @param string $address Address
      *
-     * @return Address Self object
+     * @return $this self Object
      */
     public function setAddress($address)
     {
@@ -149,7 +129,7 @@ class Address extends AbstractEntity implements AddressInterface
      *
      * @param string $addressMore AddressMore
      *
-     * @return Address Self object
+     * @return $this self Object
      */
     public function setAddressMore($addressMore)
     {
@@ -169,35 +149,11 @@ class Address extends AbstractEntity implements AddressInterface
     }
 
     /**
-     * Sets City
-     *
-     * @param string $city City
-     *
-     * @return Address Self object
-     */
-    public function setCity($city)
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get City
-     *
-     * @return string City
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
      * Sets Comments
      *
      * @param string $comments Comments
      *
-     * @return Address Self object
+     * @return $this self Object
      */
     public function setComments($comments)
     {
@@ -217,35 +173,11 @@ class Address extends AbstractEntity implements AddressInterface
     }
 
     /**
-     * Sets Country
-     *
-     * @param CountryInterface $country Country
-     *
-     * @return Address Self object
-     */
-    public function setCountry($country)
-    {
-        $this->country = $country;
-
-        return $this;
-    }
-
-    /**
-     * Get Country
-     *
-     * @return CountryInterface Country
-     */
-    public function getCountry()
-    {
-        return $this->country;
-    }
-
-    /**
      * Sets Mobile
      *
      * @param string $mobile Mobile
      *
-     * @return Address Self object
+     * @return $this self Object
      */
     public function setMobile($mobile)
     {
@@ -269,7 +201,7 @@ class Address extends AbstractEntity implements AddressInterface
      *
      * @param string $name Name
      *
-     * @return Address Self object
+     * @return $this self Object
      */
     public function setName($name)
     {
@@ -293,7 +225,7 @@ class Address extends AbstractEntity implements AddressInterface
      *
      * @param string $phone Phone
      *
-     * @return Address Self object
+     * @return $this self Object
      */
     public function setPhone($phone)
     {
@@ -313,59 +245,11 @@ class Address extends AbstractEntity implements AddressInterface
     }
 
     /**
-     * Sets PostalCode
-     *
-     * @param string $postalCode PostalCode
-     *
-     * @return Address Self object
-     */
-    public function setPostalCode($postalCode)
-    {
-        $this->postalCode = $postalCode;
-
-        return $this;
-    }
-
-    /**
-     * Get PostalCode
-     *
-     * @return string PostalCode
-     */
-    public function getPostalCode()
-    {
-        return $this->postalCode;
-    }
-
-    /**
-     * Sets Province
-     *
-     * @param string $province Province
-     *
-     * @return Address Self object
-     */
-    public function setProvince($province)
-    {
-        $this->province = $province;
-
-        return $this;
-    }
-
-    /**
-     * Get Province
-     *
-     * @return string Province
-     */
-    public function getProvince()
-    {
-        return $this->province;
-    }
-
-    /**
      * Sets RecipientName
      *
      * @param string $recipientName RecipientName
      *
-     * @return Address Self object
+     * @return $this self Object
      */
     public function setRecipientName($recipientName)
     {
@@ -389,7 +273,7 @@ class Address extends AbstractEntity implements AddressInterface
      *
      * @param string $recipientSurname RecipientSurname
      *
-     * @return Address Self object
+     * @return $this self Object
      */
     public function setRecipientSurname($recipientSurname)
     {
@@ -409,26 +293,50 @@ class Address extends AbstractEntity implements AddressInterface
     }
 
     /**
-     * Sets State
+     * Sets City
      *
-     * @param string $state State
+     * @param CityInterface $city City
      *
-     * @return Address Self object
+     * @return $this self Object
      */
-    public function setState($state)
+    public function setCity(CityInterface $city)
     {
-        $this->state = $state;
+        $this->city = $city;
 
         return $this;
     }
 
     /**
-     * Get State
+     * Get City
      *
-     * @return string State
+     * @return CityInterface City
      */
-    public function getState()
+    public function getCity()
     {
-        return $this->state;
+        return $this->city;
+    }
+
+    /**
+     * Sets Postalcode
+     *
+     * @param PostalCodeInterface $postalCode Postalcode
+     *
+     * @return $this self Object
+     */
+    public function setPostalcode(PostalCodeInterface $postalCode)
+    {
+        $this->postalCode = $postalCode;
+
+        return $this;
+    }
+
+    /**
+     * Get Postalcode
+     *
+     * @return PostalCodeInterface Postalcode
+     */
+    public function getPostalcode()
+    {
+        return $this->postalCode;
     }
 }

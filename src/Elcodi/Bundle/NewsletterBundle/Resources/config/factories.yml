@@ -14,19 +14,3 @@ services:
 
     elcodi.factory.newsletter_subscription:
         alias: elcodi.core.newsletter.factory.newsletter_subscription
-
-    #
-    # Entity providers
-    #
-
-    #
-    # Instance provider for entity newsletter_subscription
-    #
-    elcodi.core.newsletter.entity.newsletter_subscription.instance:
-        class: %elcodi.core.newsletter.entity.newsletter_subscription.class%
-        factory_service: elcodi.core.newsletter.factory.newsletter_subscription
-        factory_method: create
-        scope: prototype
-
-    elcodi.entity.newsletter_subscription.instance:
-        alias: elcodi.core.newsletter.entity.newsletter_subscription.instance

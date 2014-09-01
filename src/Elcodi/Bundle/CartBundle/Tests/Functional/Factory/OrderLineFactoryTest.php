@@ -24,9 +24,9 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class OrderLineFactoryTest extends WebTestCase
 {
     /**
-     * Load fixtures of these bundles
+     * Schema must be loaded in all test cases
      *
-     * @return array Bundles name where fixtures should be found
+     * @return array Load schema
      */
     protected function loadSchema()
     {
@@ -44,27 +44,5 @@ class OrderLineFactoryTest extends WebTestCase
             'elcodi.core.cart.factory.order_line',
             'elcodi.factory.order_line',
         ];
-    }
-
-    /**
-     * Test order_line factory provider
-     */
-    public function testFactoryProvider()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.cart.entity.order_line.class'),
-            $this->get('elcodi.core.cart.entity.order_line.instance')
-        );
-    }
-
-    /**
-     * Test order_line factory provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.cart.entity.order_line.class'),
-            $this->get('elcodi.entity.order_line.instance')
-        );
     }
 }

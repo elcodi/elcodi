@@ -14,19 +14,3 @@ services:
 
     elcodi.factory.language:
         alias: elcodi.core.language.factory.language
-
-    #
-    # Entity providers
-    #
-
-    #
-    # Instance provider for entity language
-    #
-    elcodi.core.language.entity.language.instance:
-        class: %elcodi.core.language.entity.language.class%
-        factory_service: elcodi.core.language.factory.language
-        factory_method: create
-        scope: prototype
-
-    elcodi.entity.language.instance:
-        alias: elcodi.core.language.entity.language.instance

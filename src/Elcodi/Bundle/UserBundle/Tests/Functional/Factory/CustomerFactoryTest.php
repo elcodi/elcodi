@@ -24,6 +24,16 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class CustomerFactoryTest extends WebTestCase
 {
     /**
+     * Schema must be loaded in all test cases
+     *
+     * @return array Load schema
+     */
+    protected function loadSchema()
+    {
+        return false;
+    }
+
+    /**
      * Returns the callable name of the service
      *
      * @return string service name
@@ -34,27 +44,5 @@ class CustomerFactoryTest extends WebTestCase
             'elcodi.core.user.factory.customer',
             'elcodi.factory.customer',
         ];
-    }
-
-    /**
-     * Test customer factory provider
-     */
-    public function testFactoryProvider()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.user.entity.customer.class'),
-            $this->get('elcodi.core.user.entity.customer.instance')
-        );
-    }
-
-    /**
-     * Test customer factory provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.user.entity.customer.class'),
-            $this->get('elcodi.entity.customer.instance')
-        );
     }
 }

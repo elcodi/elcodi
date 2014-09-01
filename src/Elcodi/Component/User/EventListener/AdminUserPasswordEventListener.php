@@ -16,7 +16,6 @@
 
 namespace Elcodi\Component\User\EventListener;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
 use Elcodi\Component\User\EventListener\Abstracts\AbstractPasswordEventListener;
 
@@ -28,11 +27,11 @@ class AdminUserPasswordEventListener extends AbstractPasswordEventListener
     /**
      * Check entity type
      *
-     * @param AbstractEntity $entity Entity to check
+     * @param $entity Object Entity to check
      *
      * @return boolean Entity is ready for being encoded
      */
-    public function checkEntityType(AbstractEntity $entity)
+    public function checkEntityType($entity)
     {
         return ($entity instanceof AdminUserInterface);
     }
