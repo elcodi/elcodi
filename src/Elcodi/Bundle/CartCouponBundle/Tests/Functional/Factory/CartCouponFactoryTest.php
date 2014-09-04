@@ -24,9 +24,9 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class CartCouponFactoryTest extends WebTestCase
 {
     /**
-     * Load fixtures of these bundles
+     * Schema must be loaded in all test cases
      *
-     * @return array Bundles name where fixtures should be found
+     * @return array Load schema
      */
     protected function loadSchema()
     {
@@ -44,27 +44,5 @@ class CartCouponFactoryTest extends WebTestCase
             'elcodi.core.cart_coupon.factory.cart_coupon',
             'elcodi.factory.cart_coupon',
         ];
-    }
-
-    /**
-     * Test cart_coupon factory provider
-     */
-    public function testFactoryProvider()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.cart_coupon.entity.cart_coupon.class'),
-            $this->get('elcodi.core.cart_coupon.entity.cart_coupon.instance')
-        );
-    }
-
-    /**
-     * Test cart_coupon factory provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.cart_coupon.entity.cart_coupon.class'),
-            $this->get('elcodi.entity.cart_coupon.instance')
-        );
     }
 }

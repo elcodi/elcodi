@@ -1,0 +1,17 @@
+parameters:
+
+    #
+    # DummyPopulator Adapter
+    #
+    elcodi.core.geo.adapter.dummy_populator_adapter.class: Elcodi\Component\Geo\Adapter\Populator\DummyPopulatorAdapter
+
+services:
+
+    #
+    # DummyPopulator Adapter
+    #
+    elcodi.core.geo.adapter.dummy_populator_adapter:
+        class: %elcodi.core.geo.adapter.dummy_populator_adapter.class%
+
+    elcodi.core.geo.adapter.populator_adapter:
+        alias: elcodi.core.geo.adapter.dummy_populator_adapter

@@ -24,6 +24,16 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class NodeFactoryTest extends WebTestCase
 {
     /**
+     * Schema must be loaded in all test cases
+     *
+     * @return array Load schema
+     */
+    protected function loadSchema()
+    {
+        return false;
+    }
+
+    /**
      * Returns the callable name of the service
      *
      * @return string service name
@@ -34,27 +44,5 @@ class NodeFactoryTest extends WebTestCase
             'elcodi.core.menu.factory.menu_node',
             'elcodi.factory.menu_node',
         ];
-    }
-
-    /**
-     * Test menu factory provider
-     */
-    public function testFactoryProvider()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.menu.entity.menu_node.class'),
-            $this->get('elcodi.core.menu.entity.menu_node.instance')
-        );
-    }
-
-    /**
-     * Test menu factory provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.menu.entity.menu_node.class'),
-            $this->get('elcodi.entity.menu_node.instance')
-        );
     }
 }

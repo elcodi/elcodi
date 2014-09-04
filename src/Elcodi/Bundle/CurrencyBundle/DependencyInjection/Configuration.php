@@ -19,10 +19,10 @@ namespace Elcodi\Bundle\CurrencyBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
-use Elcodi\Component\Currency\Adapter\ExchangeRates\DummyExchangeRatesAdapter;
-use Elcodi\Component\Currency\Adapter\ExchangeRates\OpenExchangeRatesAdapter;
-use Elcodi\Component\Currency\Adapter\LocaleProvider\DummyLocaleProviderAdapter;
-use Elcodi\Component\Currency\Adapter\LocaleProvider\ElcodiLocaleProviderAdapter;
+use Elcodi\Component\Currency\Adapter\LocaleProvider\DummyProviderAdapter as DummyLocaleProviderAdapter;
+use Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\DummyProviderAdapter as DummyCurrencyExchangeRatesProviderAdapter;
+use Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\OpenExchangeRatesProviderAdapter;
+use Elcodi\Component\Currency\Adapter\LocaleProvider\ElcodiProviderAdapter;
 
 /**
  * This is the class that validates and merges configuration from your app/config files
@@ -97,10 +97,10 @@ class Configuration implements ConfigurationInterface
                         ->end()
                         ->enumNode('client')
                             ->values([
-                                DummyExchangeRatesAdapter::ADAPTER_NAME,
-                                OpenExchangeRatesAdapter::ADAPTER_NAME
+                                DummyCurrencyExchangeRatesProviderAdapter::ADAPTER_NAME,
+                                OpenExchangeRatesProviderAdapter::ADAPTER_NAME
                             ])
-                            ->defaultValue(DummyExchangeRatesAdapter::ADAPTER_NAME)
+                            ->defaultValue(DummyCurrencyExchangeRatesProviderAdapter::ADAPTER_NAME)
                         ->end()
                     ->end()
                     ->append($this->addOpenExchangeRatesParametersNode())
@@ -111,7 +111,7 @@ class Configuration implements ConfigurationInterface
                         ->enumNode('adapter')
                             ->values([
                                 DummyLocaleProviderAdapter::ADAPTER_NAME,
-                                ElcodiLocaleProviderAdapter::ADAPTER_NAME
+                                ElcodiProviderAdapter::ADAPTER_NAME
                             ])
                             ->defaultValue(DummyLocaleProviderAdapter::ADAPTER_NAME)
                         ->end()
@@ -128,7 +128,7 @@ class Configuration implements ConfigurationInterface
     public function addOpenExchangeRatesParametersNode()
     {
         $treeBuilder = new TreeBuilder();
-        $node = $treeBuilder->root(OpenExchangeRatesAdapter::ADAPTER_NAME);
+        $node = $treeBuilder->root(OpenExchangeRatesProviderAdapter::ADAPTER_NAME);
 
         $node
             ->addDefaultsIfNotSet()

@@ -24,6 +24,16 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class AdminUserFactoryTest extends WebTestCase
 {
     /**
+     * Schema must be loaded in all test cases
+     *
+     * @return array Load schema
+     */
+    protected function loadSchema()
+    {
+        return false;
+    }
+
+    /**
      * Returns the callable name of the service
      *
      * @return string service name
@@ -34,27 +44,5 @@ class AdminUserFactoryTest extends WebTestCase
             'elcodi.core.user.factory.admin_user',
             'elcodi.factory.admin_user',
         ];
-    }
-
-    /**
-     * Test admin user factory provider
-     */
-    public function testFactoryProvider()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.user.entity.admin_user.class'),
-            $this->get('elcodi.core.user.entity.admin_user.instance')
-        );
-    }
-
-    /**
-     * Test admin user factory provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.user.entity.admin_user.class'),
-            $this->get('elcodi.entity.admin_user.instance')
-        );
     }
 }

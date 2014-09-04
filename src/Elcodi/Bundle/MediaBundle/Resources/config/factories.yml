@@ -14,19 +14,3 @@ services:
 
     elcodi.factory.image:
         alias: elcodi.core.media.factory.image
-
-    #
-    # Entity providers
-    #
-
-    #
-    # Instance provider for entity image
-    #
-    elcodi.core.media.entity.image.instance:
-        class: %elcodi.core.media.entity.image.class%
-        factory_service: elcodi.core.media.factory.image
-        factory_method: create
-        scope: prototype
-
-    elcodi.entity.image.instance:
-        alias: elcodi.core.media.entity.image.instance

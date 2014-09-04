@@ -1,0 +1,25 @@
+parameters:
+
+    #
+    # OpenExchangeRates Adapter
+    #
+    elcodi.core.currency.currency_exchange_rates_provider_adapter.open_exchange_rates.class: Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\OpenExchangeRatesProviderAdapter
+
+services:
+
+    #
+    # OpenExchangeRates Adapter
+    #
+    elcodi.core.currency.guzzle_client:
+        class: Guzzle\Http\Client
+
+    elcodi.core.currency.currency_exchange_rates_provider_adapter.open_exchange_rates:
+        class: %elcodi.core.currency.currency_exchange_rates_provider_adapter.open_exchange_rates.class%
+        arguments:
+            guzzle_client: @elcodi.core.currency.guzzle_client
+            api_id: %elcodi.core.currency.rates_provider_api_id%
+            end_point: %elcodi.core.currency.rates_provider_endpoint%
+            base_currency: %elcodi.core.currency.rates_provider_currency_base%
+
+    elcodi.currency_exchange_rates_provider_adapter:
+        alias: elcodi.core.currency.currency_exchange_rates_provider_adapter.open_exchange_rates

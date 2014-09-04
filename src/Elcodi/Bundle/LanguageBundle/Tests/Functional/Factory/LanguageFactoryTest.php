@@ -24,6 +24,16 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class LanguageFactoryTest extends WebTestCase
 {
     /**
+     * Schema must be loaded in all test cases
+     *
+     * @return array Load schema
+     */
+    protected function loadSchema()
+    {
+        return false;
+    }
+
+    /**
      * Returns the callable name of the service
      *
      * @return string service name
@@ -34,27 +44,5 @@ class LanguageFactoryTest extends WebTestCase
             'elcodi.core.language.factory.language',
             'elcodi.factory.language',
         ];
-    }
-
-    /**
-     * Test language factory provider
-     */
-    public function testFactoryProvider()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.language.entity.language.class'),
-            $this->get('elcodi.core.language.entity.language.instance')
-        );
-    }
-
-    /**
-     * Test language factory provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.language.entity.language.class'),
-            $this->get('elcodi.entity.language.instance')
-        );
     }
 }

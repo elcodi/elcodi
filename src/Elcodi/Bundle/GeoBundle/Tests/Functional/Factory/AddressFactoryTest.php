@@ -24,6 +24,16 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class AddressFactoryTest extends WebTestCase
 {
     /**
+     * Schema must be loaded in all test cases
+     *
+     * @return array Load schema
+     */
+    protected function loadSchema()
+    {
+        return false;
+    }
+
+    /**
      * Returns the callable name of the service
      *
      * @return string service name
@@ -34,27 +44,5 @@ class AddressFactoryTest extends WebTestCase
             'elcodi.core.geo.factory.address',
             'elcodi.factory.address',
         ];
-    }
-
-    /**
-     * Test address factory provider
-     */
-    public function testFactoryProvider()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.geo.entity.address.class'),
-            $this->get('elcodi.core.geo.entity.address.instance')
-        );
-    }
-
-    /**
-     * Test address factory provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.geo.entity.address.class'),
-            $this->get('elcodi.entity.address.instance')
-        );
     }
 }

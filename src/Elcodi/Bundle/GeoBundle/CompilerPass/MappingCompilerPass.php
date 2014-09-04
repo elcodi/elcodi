@@ -42,6 +42,30 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
             )
             ->addEntityMapping(
                 $container,
+                'elcodi.core.geo.entity.state.manager',
+                'elcodi.core.geo.entity.state.class',
+                'elcodi.core.geo.entity.state.mapping_file'
+            )
+            ->addEntityMapping(
+                $container,
+                'elcodi.core.geo.entity.province.manager',
+                'elcodi.core.geo.entity.province.class',
+                'elcodi.core.geo.entity.province.mapping_file'
+            )
+            ->addEntityMapping(
+                $container,
+                'elcodi.core.geo.entity.city.manager',
+                'elcodi.core.geo.entity.city.class',
+                'elcodi.core.geo.entity.city.mapping_file'
+            )
+            ->addEntityMapping(
+                $container,
+                'elcodi.core.geo.entity.postal_code.manager',
+                'elcodi.core.geo.entity.postal_code.class',
+                'elcodi.core.geo.entity.postal_code.mapping_file'
+            )
+            ->addEntityMapping(
+                $container,
                 'elcodi.core.geo.entity.address.manager',
                 'elcodi.core.geo.entity.address.class',
                 'elcodi.core.geo.entity.address.mapping_file'

@@ -40,11 +40,13 @@
         "doctrine/common": "~2.4",
         "doctrine/orm": "~2.4",
         "doctrine/doctrine-cache-bundle": "~1.0",
-        "mmoreram/simple-doctrine-mapping": "dev-master",
+        "mmoreram/simple-doctrine-mapping": "~0.1",
 
         "sebastian/money": "~1.3",
-        "knplabs/knp-gaufrette-bundle": "v0.1.7",
-        "ircmaxell/password-compat": "~1.0"
+        "knplabs/knp-gaufrette-bundle": "~0.1",
+        "ircmaxell/password-compat": "~1.0",
+        "mmoreram/extractor": "~1.0",
+        "goodby/csv": "~1.0"
     },
     "replace": {
         "elcodi/attribute-bundle": "self.version",

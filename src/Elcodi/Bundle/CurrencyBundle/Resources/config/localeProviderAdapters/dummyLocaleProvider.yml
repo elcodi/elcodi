@@ -1,0 +1,17 @@
+parameters:
+
+    #
+    # DummyLocaleProvider Adapter
+    #
+    elcodi.locale_provider_adapter.dummy.class: Elcodi\Component\Currency\Adapter\LocaleProvider\DummyProviderAdapter
+
+services:
+
+    #
+    # DummyLocaleProvider Adapter
+    #
+    elcodi.locale_provider_adapter.dummy:
+        class: %elcodi.locale_provider_adapter.dummy.class%
+
+    elcodi.locale_provider_adapter:
+        alias: elcodi.locale_provider_adapter.dummy

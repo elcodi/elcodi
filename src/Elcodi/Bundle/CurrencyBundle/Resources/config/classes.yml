@@ -18,11 +18,12 @@ parameters:
     elcodi.core.currency.service.currency_manager.class: Elcodi\Component\Currency\Services\CurrencyManager
     elcodi.core.currency.service.currency_converter.class: Elcodi\Component\Currency\Services\CurrencyConverter
     elcodi.core.currency.service.currency_session_manager.class: Elcodi\Component\Currency\Services\CurrencySessionManager
+    elcodi.core.currency.populator.currency_rates_populator.class: Elcodi\Component\Currency\Populator\CurrencyExchangeRatesPopulator
 
     #
     # Providers
     #
-    elcodi.core.currency.service.exchange_rates_provider.class: Elcodi\Component\Currency\Services\ExchangeRatesProvider
+    elcodi.core.currency.service.currency_exchange_rates_provider.class: Elcodi\Component\Currency\Services\CurrencyExchangeRatesProvider
 
     #
     # Twig extensions
@@ -37,4 +38,4 @@ parameters:
     #
     # Commands
     #
-    elcodi.core.currency.command.load_exchange_rates.class: Elcodi\Component\Currency\Command\LoadExchangeRatesCommand
+    elcodi.core.currency.command.currency_exchange_rates_populate.class: Elcodi\Component\Currency\Command\CurrencyExchangeRatesPopulateCommand

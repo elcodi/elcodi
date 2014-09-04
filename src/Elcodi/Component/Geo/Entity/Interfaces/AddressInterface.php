@@ -57,22 +57,6 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
     public function getAddressMore();
 
     /**
-     * Sets City
-     *
-     * @param string $city City
-     *
-     * @return AddressInterface Self object
-     */
-    public function setCity($city);
-
-    /**
-     * Get City
-     *
-     * @return string City
-     */
-    public function getCity();
-
-    /**
      * Sets Comments
      *
      * @param string $comments Comments
@@ -87,22 +71,6 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
      * @return string Comments
      */
     public function getComments();
-
-    /**
-     * Sets Country
-     *
-     * @param CountryInterface $country Country
-     *
-     * @return AddressInterface Self object
-     */
-    public function setCountry($country);
-
-    /**
-     * Get Country
-     *
-     * @return CountryInterface Country
-     */
-    public function getCountry();
 
     /**
      * Sets Mobile
@@ -153,38 +121,6 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
     public function getPhone();
 
     /**
-     * Sets PostalCode
-     *
-     * @param mixed $postalCode PostalCode
-     *
-     * @return AddressInterface Self object
-     */
-    public function setPostalCode($postalCode);
-
-    /**
-     * Get PostalCode
-     *
-     * @return mixed PostalCode
-     */
-    public function getPostalCode();
-
-    /**
-     * Sets Province
-     *
-     * @param mixed $province Province
-     *
-     * @return AddressInterface Self object
-     */
-    public function setProvince($province);
-
-    /**
-     * Get Province
-     *
-     * @return mixed Province
-     */
-    public function getProvince();
-
-    /**
      * Sets RecipientName
      *
      * @param string $recipientName RecipientName
@@ -217,18 +153,34 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
     public function getRecipientSurname();
 
     /**
-     * Sets State
+     * Sets City
      *
-     * @param mixed $state State
+     * @param CityInterface $city City
      *
-     * @return AddressInterface Self object
+     * @return $this self Object
      */
-    public function setState($state);
+    public function setCity(CityInterface $city);
 
     /**
-     * Get State
+     * Get City
      *
-     * @return mixed State
+     * @return CityInterface City
      */
-    public function getState();
+    public function getCity();
+
+    /**
+     * Sets Postalcode
+     *
+     * @param PostalCodeInterface $postalCode Postalcode
+     *
+     * @return $this self Object
+     */
+    public function setPostalcode(PostalCodeInterface $postalCode);
+
+    /**
+     * Get Postalcode
+     *
+     * @return PostalCodeInterface Postalcode
+     */
+    public function getPostalcode();
 }

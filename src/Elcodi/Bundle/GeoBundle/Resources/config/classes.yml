@@ -3,11 +3,30 @@ parameters:
     #
     # Repositories
     #
-    elcodi.core.geo.repository.address.class: Elcodi\Component\Geo\Repository\AddressRepository
     elcodi.core.geo.repository.country.class: Elcodi\Component\Geo\Repository\CountryRepository
+    elcodi.core.geo.repository.state.class: Elcodi\Component\Geo\Repository\StateRepository
+    elcodi.core.geo.repository.province.class: Elcodi\Component\Geo\Repository\ProvinceRepository
+    elcodi.core.geo.repository.city.class: Elcodi\Component\Geo\Repository\CityRepository
+    elcodi.core.geo.repository.postal_code.class: Elcodi\Component\Geo\Repository\PostalCodeRepository
+    elcodi.core.geo.repository.address.class: Elcodi\Component\Geo\Repository\AddressRepository
 
     #
     # Factories
     #
-    elcodi.core.geo.factory.address.class: Elcodi\Component\Geo\Factory\AddressFactory
     elcodi.core.geo.factory.country.class: Elcodi\Component\Geo\Factory\CountryFactory
+    elcodi.core.geo.factory.state.class: Elcodi\Component\Geo\Factory\StateFactory
+    elcodi.core.geo.factory.province.class: Elcodi\Component\Geo\Factory\ProvinceFactory
+    elcodi.core.geo.factory.city.class: Elcodi\Component\Geo\Factory\CityFactory
+    elcodi.core.geo.factory.postal_code.class: Elcodi\Component\Geo\Factory\PostalCodeFactory
+    elcodi.core.geo.factory.address.class: Elcodi\Component\Geo\Factory\AddressFactory
+
+    #
+    # Commands
+    #
+    elcodi.core.geo.command.geo_populate.class: Elcodi\Component\Geo\Command\GeoPopulateCommand
+
+    #
+    # Services
+    #
+    elcodi.core.geo.populator.geo_populator.class: Elcodi\Component\Geo\Populator\GeoPopulator
+    elcodi.core.geo.builder.geo_builder.class: Elcodi\Component\Geo\Builder\GeoBuilder

@@ -16,6 +16,8 @@
 
 namespace Elcodi\Component\Geo\Entity\Interfaces;
 
+use Doctrine\Common\Collections\Collection;
+
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 
 /**
@@ -28,7 +30,7 @@ interface CountryInterface extends EnabledInterface
      *
      * @param string $code Code
      *
-     * @return CountryInterface Self object
+     * @return $this self Object
      */
     public function setCode($code);
 
@@ -44,7 +46,7 @@ interface CountryInterface extends EnabledInterface
      *
      * @param string $name Name
      *
-     * @return CountryInterface Self object
+     * @return $this self Object
      */
     public function setName($name);
 
@@ -54,4 +56,52 @@ interface CountryInterface extends EnabledInterface
      * @return string Name
      */
     public function getName();
+
+    /**
+     * Get states
+     *
+     * @return Collection States
+     */
+    public function getStates();
+
+    /**
+     * Set states
+     *
+     * @param Collection $states States
+     *
+     * @return $this self Object
+     */
+    public function setStates(Collection $states);
+
+    /**
+     * Add state
+     *
+     * @param StateInterface $state State
+     *
+     * @return $this self Object
+     */
+    public function addState(StateInterface $state);
+
+    /**
+     * Add state
+     *
+     * @param StateInterface $state State
+     *
+     * @return $this self Object
+     */
+    public function removeState(StateInterface $state);
+
+    /**
+     * Get Provinces
+     *
+     * @return Collection Provinces
+     */
+    public function getProvinces();
+
+    /**
+     * Get Cities
+     *
+     * @return Collection Cities
+     */
+    public function getCities();
 }

@@ -3,14 +3,9 @@ services:
     #
     # Commands
     #
-    elcodi.core.currency.command.load_exchange_rates:
-        class: %elcodi.core.currency.command.load_exchange_rates.class%
+    elcodi.core.currency.command.currency_exchange_rates_populate:
+        class: %elcodi.core.currency.command.currency_exchange_rates_populate.class%
         arguments:
-            manager_registry: @doctrine
-            currency_exchange_rate_factory: @elcodi.factory.currency_exchange_rate
-            exchange_rates_provider: @elcodi.exchange_rates_provider
-            currency_namespace: %elcodi.core.currency.entity.currency.class%
-            currency_exchange_rate_namespace: %elcodi.core.currency.entity.currency_exchange_rate.class%
-            default_currency: %elcodi.core.currency.default_currency%
+            currency_rates_populator: @elcodi.currency_rates_populator
         tags:
             -  { name: console.command }

@@ -16,9 +16,10 @@
 
 namespace Elcodi\Component\Geo\Factory;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Geo\Entity\Interfaces\CountryInterface;
-use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 
 /**
  * Class CountryFactory
@@ -30,7 +31,7 @@ class CountryFactory extends AbstractFactory
      *
      * This method must return always an empty instance for related entity
      *
-     * @return LanguageInterface Empty entity
+     * @return CountryInterface Empty entity
      */
     public function create()
     {
@@ -39,6 +40,9 @@ class CountryFactory extends AbstractFactory
          */
         $classNamespace = $this->getEntityNamespace();
         $country = new $classNamespace();
+        $country
+            ->setStates(new ArrayCollection())
+            ->setEnabled(true);
 
         return $country;
     }

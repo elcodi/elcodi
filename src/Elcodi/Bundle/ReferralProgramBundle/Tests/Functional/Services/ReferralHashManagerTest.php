@@ -39,9 +39,9 @@ class ReferralHashManagerTest extends WebTestCase
     }
 
     /**
-     * Load fixtures of these bundles
+     * Schema must be loaded in all test cases
      *
-     * @return array Bundles name where fixtures should be found
+     * @return array Load schema
      */
     protected function loadSchema()
     {

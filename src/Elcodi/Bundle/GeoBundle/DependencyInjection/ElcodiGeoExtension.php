@@ -20,6 +20,8 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
+use Elcodi\Component\Geo\Adapter\Populator\DummyPopulatorAdapter;
+use Elcodi\Component\Geo\Adapter\Populator\GeoDataPopulatorAdapter;
 
 /**
  * This is the class that loads and manages your bundle configuration
@@ -83,6 +85,22 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
             "elcodi.core.geo.entity.country.mapping_file" => $config['mapping']['country']['mapping_file'],
             "elcodi.core.geo.entity.country.manager" => $config['mapping']['country']['manager'],
 
+            "elcodi.core.geo.entity.state.class" => $config['mapping']['state']['class'],
+            "elcodi.core.geo.entity.state.mapping_file" => $config['mapping']['state']['mapping_file'],
+            "elcodi.core.geo.entity.state.manager" => $config['mapping']['state']['manager'],
+
+            "elcodi.core.geo.entity.province.class" => $config['mapping']['province']['class'],
+            "elcodi.core.geo.entity.province.mapping_file" => $config['mapping']['province']['mapping_file'],
+            "elcodi.core.geo.entity.province.manager" => $config['mapping']['province']['manager'],
+
+            "elcodi.core.geo.entity.city.class" => $config['mapping']['city']['class'],
+            "elcodi.core.geo.entity.city.mapping_file" => $config['mapping']['city']['mapping_file'],
+            "elcodi.core.geo.entity.city.manager" => $config['mapping']['city']['manager'],
+
+            "elcodi.core.geo.entity.postal_code.class" => $config['mapping']['postal_code']['class'],
+            "elcodi.core.geo.entity.postal_code.mapping_file" => $config['mapping']['postal_code']['mapping_file'],
+            "elcodi.core.geo.entity.postal_code.manager" => $config['mapping']['postal_code']['manager'],
+
             "elcodi.core.geo.entity.address.class" => $config['mapping']['address']['class'],
             "elcodi.core.geo.entity.address.mapping_file" => $config['mapping']['address']['mapping_file'],
             "elcodi.core.geo.entity.address.manager" => $config['mapping']['address']['manager'],
@@ -102,6 +120,17 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
             'classes',
             'factories',
             'repositories',
+            'services',
+            'objectManagers',
+            'commands',
+            [
+                'populatorAdapters/geodataPopulator',
+                $config['populator']['client'] === GeoDataPopulatorAdapter::ADAPTER_NAME
+            ],
+            [
+                'populatorAdapters/dummyPopulator',
+                $config['populator']['client'] === DummyPopulatorAdapter::ADAPTER_NAME
+            ],
         ];
     }
 
@@ -117,8 +146,12 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\Geo\Entity\Interfaces\AddressInterface' => 'elcodi.core.geo.entity.address.class',
             'Elcodi\Component\Geo\Entity\Interfaces\CountryInterface' => 'elcodi.core.geo.entity.country.class',
+            'Elcodi\Component\Geo\Entity\Interfaces\StateInterface' => 'elcodi.core.geo.entity.state.class',
+            'Elcodi\Component\Geo\Entity\Interfaces\ProvinceInterface' => 'elcodi.core.geo.entity.province.class',
+            'Elcodi\Component\Geo\Entity\Interfaces\CityInterface' => 'elcodi.core.geo.entity.city.class',
+            'Elcodi\Component\Geo\Entity\Interfaces\PostalCodeInterface' => 'elcodi.core.geo.entity.postal_code.class',
+            'Elcodi\Component\Geo\Entity\Interfaces\AddressInterface' => 'elcodi.core.geo.entity.address.class',
         ];
     }
 }

@@ -24,6 +24,16 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class CouponFactoryTest extends WebTestCase
 {
     /**
+     * Schema must be loaded in all test cases
+     *
+     * @return array Load schema
+     */
+    protected function loadSchema()
+    {
+        return false;
+    }
+
+    /**
      * Returns the callable name of the service
      *
      * @return string service name
@@ -34,27 +44,5 @@ class CouponFactoryTest extends WebTestCase
             'elcodi.core.coupon.factory.coupon',
             'elcodi.factory.coupon',
         ];
-    }
-
-    /**
-     * Test coupon factory provider
-     */
-    public function testFactoryProvider()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.coupon.entity.coupon.class'),
-            $this->get('elcodi.core.coupon.entity.coupon.instance')
-        );
-    }
-
-    /**
-     * Test coupon factory provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.coupon.entity.coupon.class'),
-            $this->get('elcodi.entity.coupon.instance')
-        );
     }
 }

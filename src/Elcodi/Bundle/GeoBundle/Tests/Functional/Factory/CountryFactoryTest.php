@@ -24,6 +24,16 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class CountryFactoryTest extends WebTestCase
 {
     /**
+     * Schema must be loaded in all test cases
+     *
+     * @return array Load schema
+     */
+    protected function loadSchema()
+    {
+        return false;
+    }
+
+    /**
      * Returns the callable name of the service
      *
      * @return string service name
@@ -34,27 +44,5 @@ class CountryFactoryTest extends WebTestCase
             'elcodi.core.geo.factory.country',
             'elcodi.factory.country',
         ];
-    }
-
-    /**
-     * Test country factory provider
-     */
-    public function testFactoryProvider()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.geo.entity.country.class'),
-            $this->get('elcodi.core.geo.entity.country.instance')
-        );
-    }
-
-    /**
-     * Test country factory provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.geo.entity.country.class'),
-            $this->get('elcodi.entity.country.instance')
-        );
     }
 }

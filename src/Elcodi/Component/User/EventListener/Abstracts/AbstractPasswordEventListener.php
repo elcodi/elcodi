@@ -20,8 +20,6 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
-
 /**
  * Password event listener
  */
@@ -107,9 +105,9 @@ abstract class AbstractPasswordEventListener
     /**
      * Check entity type
      *
-     * @param AbstractEntity $entity Entity to check
+     * @param $entity Object Entity to check
      *
      * @return boolean Entity is ready for being encoded
      */
-    abstract public function checkEntityType(AbstractEntity $entity);
+    abstract public function checkEntityType($entity);
 }

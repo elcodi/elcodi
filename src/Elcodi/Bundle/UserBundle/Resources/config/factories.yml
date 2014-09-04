@@ -25,31 +25,3 @@ services:
 
     elcodi.factory.admin_user:
         alias: elcodi.core.user.factory.admin_user
-
-    #
-    # Entity providers
-    #
-
-    #
-    # Instance provider for entity customer
-    #
-    elcodi.core.user.entity.customer.instance:
-        class: %elcodi.core.user.entity.customer.class%
-        factory_service: elcodi.core.user.factory.customer
-        factory_method: create
-        scope: prototype
-
-    elcodi.entity.customer.instance:
-        alias: elcodi.core.user.entity.customer.instance
-
-    #
-    # Instance provider for entity admin user
-    #
-    elcodi.core.user.entity.admin_user.instance:
-        class: %elcodi.core.user.entity.admin_user.class%
-        factory_service: elcodi.core.user.factory.admin_user
-        factory_method: create
-        scope: prototype
-
-    elcodi.entity.admin_user.instance:
-        alias: elcodi.core.user.entity.admin_user.instance

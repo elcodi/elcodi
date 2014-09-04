@@ -5,19 +5,6 @@ services:
     #
 
     #
-    # Repository for entity address
-    #
-    elcodi.core.geo.repository.address:
-        class: %elcodi.core.geo.repository.address.class%
-        factory_service: elcodi.repository_provider
-        factory_method: getRepositoryByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.geo.entity.address.class%
-
-    elcodi.repository.address:
-        alias: elcodi.core.geo.repository.address
-
-    #
     # Repository for entity country
     #
     elcodi.core.geo.repository.country:
@@ -29,3 +16,68 @@ services:
 
     elcodi.repository.country:
         alias: elcodi.core.geo.repository.country
+
+    #
+    # Repository for entity state
+    #
+    elcodi.core.geo.repository.state:
+        class: %elcodi.core.geo.repository.state.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.geo.entity.state.class%
+
+    elcodi.repository.state:
+        alias: elcodi.core.geo.repository.state
+
+    #
+    # Repository for entity state
+    #
+    elcodi.core.geo.repository.province:
+        class: %elcodi.core.geo.repository.province.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.geo.entity.province.class%
+
+    elcodi.repository.province:
+        alias: elcodi.core.geo.repository.province
+
+    #
+    # Repository for entity state
+    #
+    elcodi.core.geo.repository.city:
+        class: %elcodi.core.geo.repository.city.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.geo.entity.city.class%
+
+    elcodi.repository.city:
+        alias: elcodi.core.geo.repository.city
+
+    #
+    # Repository for entity state
+    #
+    elcodi.core.geo.repository.postal_code:
+        class: %elcodi.core.geo.repository.postal_code.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.geo.entity.postal_code.class%
+
+    elcodi.repository.postal_code:
+        alias: elcodi.core.geo.repository.postal_code
+
+    #
+    # Repository for entity address
+    #
+    elcodi.core.geo.repository.address:
+        class: %elcodi.core.geo.repository.address.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.geo.entity.address.class%
+
+    elcodi.repository.address:
+        alias: elcodi.core.geo.repository.address

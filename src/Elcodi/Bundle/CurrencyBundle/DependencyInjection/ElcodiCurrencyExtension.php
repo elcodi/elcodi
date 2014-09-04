@@ -20,10 +20,10 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
-use Elcodi\Component\Currency\Adapter\ExchangeRates\DummyExchangeRatesAdapter;
-use Elcodi\Component\Currency\Adapter\ExchangeRates\OpenExchangeRatesAdapter;
-use Elcodi\Component\Currency\Adapter\LocaleProvider\DummyLocaleProviderAdapter;
-use Elcodi\Component\Currency\Adapter\LocaleProvider\ElcodiLocaleProviderAdapter;
+use Elcodi\Component\Currency\Adapter\LocaleProvider\DummyProviderAdapter as DummyLocaleProviderAdapter;
+use Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\DummyProviderAdapter as DummyCurrencyExchangeRatesProviderAdapter;
+use Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\OpenExchangeRatesProviderAdapter;
+use Elcodi\Component\Currency\Adapter\LocaleProvider\ElcodiProviderAdapter;
 
 /**
  * This is the class that loads and manages your bundle configuration
@@ -100,8 +100,8 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
             /**
              * OpenExchangeRates
              */
-            'elcodi.core.currency.rates_provider_api_id' => $config['rates_provider'][OpenExchangeRatesAdapter::ADAPTER_NAME]['api_id'],
-            'elcodi.core.currency.rates_provider_endpoint' => $config['rates_provider'][OpenExchangeRatesAdapter::ADAPTER_NAME]['endpoint'],
+            'elcodi.core.currency.rates_provider_api_id' => $config['rates_provider'][OpenExchangeRatesProviderAdapter::ADAPTER_NAME]['api_id'],
+            'elcodi.core.currency.rates_provider_endpoint' => $config['rates_provider'][OpenExchangeRatesProviderAdapter::ADAPTER_NAME]['endpoint'],
         ];
     }
 
@@ -123,19 +123,19 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
             'objectManagers',
             'commands',
             [
-                'exchangeRatesAdapters/openExchangeRates',
-                $config['rates_provider']['client'] === OpenExchangeRatesAdapter::ADAPTER_NAME
+                'currencyExchangeRatesProviderAdapters/openExchangeRatesProviderAdapter',
+                $config['rates_provider']['client'] === OpenExchangeRatesProviderAdapter::ADAPTER_NAME
             ],
             [
-                'exchangeRatesAdapters/dummyExchangeRates',
-                $config['rates_provider']['client'] === DummyExchangeRatesAdapter::ADAPTER_NAME
+                'currencyExchangeRatesProviderAdapters/dummyProviderAdapter',
+                $config['rates_provider']['client'] === DummyCurrencyExchangeRatesProviderAdapter::ADAPTER_NAME
             ],
             [
-                'localeProvidersAdapters/elcodiLocaleProvider',
-                $config['locale_provider']['adapter'] === ElcodiLocaleProviderAdapter::ADAPTER_NAME
+                'localeProviderAdapters/elcodiLocaleProvider',
+                $config['locale_provider']['adapter'] === ElcodiProviderAdapter::ADAPTER_NAME
             ],
             [
-                'localeProvidersAdapters/dummyLocaleProvider',
+                'localeProviderAdapters/dummyLocaleProvider',
                 $config['locale_provider']['adapter'] === DummyLocaleProviderAdapter::ADAPTER_NAME
             ],
         ];

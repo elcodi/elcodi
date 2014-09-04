@@ -24,6 +24,16 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class BannerZoneFactoryTest extends WebTestCase
 {
     /**
+     * Schema must be loaded in all test cases
+     *
+     * @return array Load schema
+     */
+    protected function loadSchema()
+    {
+        return false;
+    }
+
+    /**
      * Returns the callable name of the service
      *
      * @return string service name
@@ -34,27 +44,5 @@ class BannerZoneFactoryTest extends WebTestCase
             'elcodi.core.banner.factory.banner_zone',
             'elcodi.factory.banner_zone',
         ];
-    }
-
-    /**
-     * Test banner_zone factory provider
-     */
-    public function testFactoryProvider()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.banner.entity.banner_zone.class'),
-            $this->get('elcodi.core.banner.entity.banner_zone.instance')
-        );
-    }
-
-    /**
-     * Test banner_zone factory provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.banner.entity.banner_zone.class'),
-            $this->get('elcodi.entity.banner_zone.instance')
-        );
     }
 }
