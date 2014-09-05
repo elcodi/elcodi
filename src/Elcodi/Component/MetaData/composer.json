@@ -1,0 +1,38 @@
+{
+    "name": "elcodi/metadata",
+    "description": "Elcodi MetaData Component",
+    "keywords": ["elcodi", "meta", "ecommerce", "component"],
+    "homepage": "https://github.com/elcodi/MetaData",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "Symfony Community",
+            "homepage": "https://github.com/elcodi/MetaData/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=3.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\Component\\MetaData\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.4-dev"
+        }
+    }
+}

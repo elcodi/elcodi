@@ -37,6 +37,22 @@ interface VariantInterface
     PrincipalImageInterface
 {
     /**
+     * Set id
+     *
+     * @param string $id Id
+     *
+     * @return $this Self object
+     */
+    public function setId($id);
+
+    /**
+     * Get id
+     *
+     * @return string Id
+     */
+    public function getId();
+
+    /**
      * Gets parent product
      *
      * @return ProductInterface

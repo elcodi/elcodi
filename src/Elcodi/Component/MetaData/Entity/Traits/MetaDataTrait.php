@@ -14,7 +14,7 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Component\Product\Entity\Traits;
+namespace Elcodi\Component\MetaData\Entity\Traits;
 
 /**
  * trait for add Meta data

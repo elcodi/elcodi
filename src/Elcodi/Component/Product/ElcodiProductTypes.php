@@ -14,31 +14,31 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Component\ReferralProgram;
+namespace Elcodi\Component\Product;
 
 /**
- * Class ElcodiReferralProgramRuleTypes
+ * Class ElcodiProductTypes
  */
-class ElcodiReferralProgramRuleTypes
+class ElcodiProductTypes
 {
     /**
-     * @var string
+     * @var integer
      *
-     * No coupon is assigned
+     * Physical product type
      */
-    const TYPE_WITHOUT_COUPON = 'NO_COUPON';
+    const TYPE_PRODUCT_PHYSICAL = 0;
 
     /**
      * @var integer
      *
-     * Coupon is assigned on register
+     * Virtual product type
      */
-    const TYPE_ON_REGISTER = 'COUPON_ON_REGISTER';
+    const TYPE_PRODUCT_VIRTUAL = 1;
 
     /**
      * @var integer
      *
-     * Coupon is assigned on first purchase
+     * Downloadable product type
      */
-    const TYPE_ON_FIRST_PURCHASE = 'COUPON_ON_FIRST_PURCHASE';
+    const TYPE_PRODUCT_DOWNLOAD = 2;
 }

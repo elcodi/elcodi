@@ -19,6 +19,7 @@ namespace Elcodi\Component\Product\Factory;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Elcodi\Component\Product\ElcodiProductTypes;
 use Elcodi\Component\Product\Entity\Product;
 use Elcodi\Component\Product\Factory\Abstracts\AbstractPurchasableFactory;
 
@@ -46,6 +47,7 @@ class ProductFactory extends AbstractPurchasableFactory
         $product = new $classNamespace();
         $product
             ->setStock(0)
+            ->setType(ElcodiProductTypes::TYPE_PRODUCT_PHYSICAL)
             ->setShowInHome(false)
             ->setPrice($zeroPrice)
             ->setReducedPrice($zeroPrice)
