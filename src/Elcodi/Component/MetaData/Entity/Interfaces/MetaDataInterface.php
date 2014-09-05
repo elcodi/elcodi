@@ -14,7 +14,7 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Component\Product\Entity\Interfaces;
+namespace Elcodi\Component\MetaData\Entity\Interfaces;
 
 /**
  * Class MetaDataInterface

@@ -10,8 +10,8 @@ Documentation
 -------------
 
 Check the documentation in [Elcodi Docs](http://docs.elcodi.io). Feel free to
-propose new recipes, examples or guides; our main goal is to help developer
-building his site.
+propose new recipes, examples or guides; our main goal is to help the developer
+building their site.
 
 Tags
 ----

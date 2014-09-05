@@ -20,9 +20,9 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
-use Elcodi\Component\Currency\Adapter\LocaleProvider\DummyProviderAdapter as DummyLocaleProviderAdapter;
 use Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\DummyProviderAdapter as DummyCurrencyExchangeRatesProviderAdapter;
 use Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\OpenExchangeRatesProviderAdapter;
+use Elcodi\Component\Currency\Adapter\LocaleProvider\DummyProviderAdapter as DummyLocaleProviderAdapter;
 use Elcodi\Component\Currency\Adapter\LocaleProvider\ElcodiProviderAdapter;
 
 /**

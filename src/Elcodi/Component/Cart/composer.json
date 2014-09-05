@@ -32,9 +32,6 @@
         "elcodi/product": "~0.3.0",
         "elcodi/currency": "~0.3.0"
     },
-    "require-dev": {
-        "phpunit/phpunit": ">=3.7"
-    },
     "autoload": {
         "psr-4": {
             "Elcodi\\Component\\Cart\\": ""

@@ -22,6 +22,7 @@ use Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\ETaggableInterface;
 use Elcodi\Component\Media\Entity\Interfaces\ImagesContainerInterface;
 use Elcodi\Component\Media\Entity\Interfaces\PrincipalImageInterface;
+use Elcodi\Component\MetaData\Entity\Interfaces\MetaDataInterface;
 
 /**
  * Class ProductInterface
@@ -34,6 +35,23 @@ interface ProductInterface
     ImagesContainerInterface,
     PrincipalImageInterface
 {
+
+    /**
+     * Set id
+     *
+     * @param string $id Id
+     *
+     * @return $this Self object
+     */
+    public function setId($id);
+
+    /**
+     * Get id
+     *
+     * @return string Id
+     */
+    public function getId();
+
     /**
      * Set name
      *

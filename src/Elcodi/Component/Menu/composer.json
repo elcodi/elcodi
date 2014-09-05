@@ -27,9 +27,6 @@
 
         "elcodi/core": "~0.3.0"
     },
-    "require-dev": {
-        "phpunit/phpunit": ">=3.7"
-    },
     "suggest": {
         "twig/twig": "Required if using Twig extensions",
         "symfony/routing": "Required if using twig extension"

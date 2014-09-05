@@ -1,20 +1,20 @@
 language: php
 
 php:
-  - 5.4
-  - 5.5
-  - 5.6
-  - hhvm-nightly
+    - 5.4
+    - 5.5
+    - 5.6
+    - hhvm-nightly
 
 matrix:
     allow_failures:
         - php: hhvm-nightly
 
 install:
-  - composer install --prefer-source --no-interaction
+    - composer install --prefer-source --no-interaction
 
 script:
-  - phpunit -c phpunit.xml.dist
+    - phpunit
 
 notifications:
     email: false

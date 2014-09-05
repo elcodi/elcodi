@@ -21,6 +21,7 @@ use Goodby\CSV\Import\Standard\Interpreter;
 use Goodby\CSV\Import\Standard\Lexer;
 use Goodby\CSV\Import\Standard\LexerConfig;
 use Mmoreram\Extractor\Extractor;
+use Mmoreram\Extractor\Filesystem\TemporaryDirectory;
 use Mmoreram\Extractor\Resolver\ExtensionResolver;
 use SplFileInfo;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -149,8 +150,13 @@ class GeoDataPopulatorAdapter implements PopulatorAdapterInterface
             $output->writeln('<header>[Geo]</header> <body>Downloaded source package to ' . $temporaryFilePath . '</body>');
         }
 
-        $extensionResolver = new ExtensionResolver;
-        $extractor = new Extractor($extensionResolver);
+        $temporaryDirectory = new TemporaryDirectory();
+        $extensionResolver = new ExtensionResolver();
+        $extractor = new Extractor(
+            $temporaryDirectory,
+            $extensionResolver
+        );
+
         $filesIterator = $extractor
             ->extractFromFile($temporaryFilePath)
             ->files()

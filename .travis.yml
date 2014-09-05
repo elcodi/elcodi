@@ -14,8 +14,6 @@ matrix:
 env:
     - SYMFONY_VERSION="2.4.*" TWIG_REQUIRED=false
     - SYMFONY_VERSION="2.4.*" TWIG_REQUIRED=true
-    - SYMFONY_VERSION="2.5.*" TWIG_REQUIRED=false
-    - SYMFONY_VERSION="2.5.*" TWIG_REQUIRED=true
 
 before_install:
     - composer require --no-update symfony/http-kernel:${SYMFONY_VERSION}
@@ -38,7 +36,7 @@ install:
     - composer install --prefer-source --no-interaction
 
 script:
-  - phpunit -c phpunit.xml.dist
+  - phpunit
 
 notifications:
     email: false

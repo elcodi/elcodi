@@ -22,7 +22,7 @@ namespace Elcodi\Component\ReferralProgram;
 class ElcodiReferralProgramRuleTypes
 {
     /**
-     * @var integer
+     * @var string
      *
      * No coupon is assigned
      */

@@ -19,9 +19,9 @@ namespace Elcodi\Bundle\CurrencyBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
-use Elcodi\Component\Currency\Adapter\LocaleProvider\DummyProviderAdapter as DummyLocaleProviderAdapter;
 use Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\DummyProviderAdapter as DummyCurrencyExchangeRatesProviderAdapter;
 use Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\OpenExchangeRatesProviderAdapter;
+use Elcodi\Component\Currency\Adapter\LocaleProvider\DummyProviderAdapter as DummyLocaleProviderAdapter;
 use Elcodi\Component\Currency\Adapter\LocaleProvider\ElcodiProviderAdapter;
 
 /**

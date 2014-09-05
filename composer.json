@@ -85,7 +85,6 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",
-        "phpunit/phpunit": ">=3.7",
         "mmoreram/php-formatter": "~1.0"
     },
     "suggest": {
