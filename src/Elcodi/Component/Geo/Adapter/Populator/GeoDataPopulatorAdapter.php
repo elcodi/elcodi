@@ -156,7 +156,7 @@ class GeoDataPopulatorAdapter implements PopulatorAdapterInterface
             $temporaryDirectory,
             $extensionResolver
         );
-        
+
         $filesIterator = $extractor
             ->extractFromFile($temporaryFilePath)
             ->files()

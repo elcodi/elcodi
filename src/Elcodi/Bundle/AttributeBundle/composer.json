@@ -34,8 +34,7 @@
     },
     "require-dev": {
         "elcodi/test-common-bundle": "~0.3.0",
-        "doctrine/data-fixtures": "~1.0",
-        "phpunit/phpunit": ">=3.7"
+        "doctrine/data-fixtures": "~1.0"
     },
     "autoload": {
         "psr-4": {
