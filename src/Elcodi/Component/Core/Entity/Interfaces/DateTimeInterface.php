@@ -28,7 +28,7 @@ interface DateTimeInterface
      *
      * @param DateTime $createdAt Created at value
      *
-     * @return DateTimeInterface self Object
+     * @return $this self Object
      */
     public function setCreatedAt(DateTime $createdAt);
 
@@ -44,7 +44,7 @@ interface DateTimeInterface
      *
      * @param DateTime $updatedAt Updated at value
      *
-     * @return DateTimeInterface self Object
+     * @return $this self Object
      */
     public function setUpdatedAt(DateTime $updatedAt);
 

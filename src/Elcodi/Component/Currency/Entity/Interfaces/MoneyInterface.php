@@ -95,7 +95,7 @@ interface MoneyInterface
      *
      * @param integer $amount Amount
      *
-     * @return MoneyInterface self Object
+     * @return $this self Object
      */
     public function setAmount($amount);
 
@@ -111,7 +111,7 @@ interface MoneyInterface
      *
      * @param CurrencyInterface $currency Currency
      *
-     * @return MoneyInterface self Object
+     * @return $this self Object
      */
     public function setCurrency(CurrencyInterface $currency);
 

@@ -80,7 +80,7 @@ class Banner extends AbstractEntity implements BannerInterface
      *
      * @param string $name Name of the banner
      *
-     * @return Banner self Object
+     * @return $this self Object
      */
     public function setName($name)
     {
@@ -104,7 +104,7 @@ class Banner extends AbstractEntity implements BannerInterface
      *
      * @param string $description Description of the banner
      *
-     * @return Banner self Object
+     * @return $this self Object
      */
     public function setDescription($description)
     {
@@ -128,7 +128,7 @@ class Banner extends AbstractEntity implements BannerInterface
      *
      * @param string $url Url of the banner
      *
-     * @return Banner self Object
+     * @return $this self Object
      */
     public function setUrl($url)
     {
@@ -152,7 +152,7 @@ class Banner extends AbstractEntity implements BannerInterface
      *
      * @param Collection $bannerZones Banner zones
      *
-     * @return Banner self Object
+     * @return $this self Object
      */
     public function setBannerZones(Collection $bannerZones)
     {
@@ -176,7 +176,7 @@ class Banner extends AbstractEntity implements BannerInterface
      *
      * @param BannerZoneInterface $bannerZone Banner Zone
      *
-     * @return Banner self Object
+     * @return $this self Object
      */
     public function addBannerZone(BannerZoneInterface $bannerZone)
     {
@@ -190,7 +190,7 @@ class Banner extends AbstractEntity implements BannerInterface
      *
      * @param BannerZoneInterface $bannerZone Banner Zone
      *
-     * @return Banner self Object
+     * @return $this self Object
      */
     public function removeBannerZone(BannerZoneInterface $bannerZone)
     {

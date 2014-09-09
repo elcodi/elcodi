@@ -37,7 +37,7 @@ trait RuleAwareTrait
      *
      * @param AbstractRuleInterface $rule Rule to add
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function addRule(AbstractRuleInterface $rule)
     {
@@ -51,7 +51,7 @@ trait RuleAwareTrait
      *
      * @param AbstractRuleInterface $rule Rule to remove
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function removeRule(AbstractRuleInterface $rule)
     {
@@ -65,7 +65,7 @@ trait RuleAwareTrait
      *
      * @param Collection $rules Rule set to be added
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setRules(Collection $rules)
     {

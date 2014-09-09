@@ -26,7 +26,7 @@ interface OrderHistoryInterface
      *
      * @param OrderInterface $order Order to set
      *
-     * @return OrderHistoryInterface self Object
+     * @return $this self Object
      */
     public function setOrder(OrderInterface $order);
 
@@ -42,7 +42,7 @@ interface OrderHistoryInterface
      *
      * @param string $state State
      *
-     * @return OrderHistoryInterface self Object
+     * @return $this self Object
      */
     public function setState($state);
 
@@ -58,7 +58,7 @@ interface OrderHistoryInterface
      *
      * @param string $description Description
      *
-     * @return OrderHistoryInterface self Object
+     * @return $this self Object
      */
     public function setDescription($description);
 

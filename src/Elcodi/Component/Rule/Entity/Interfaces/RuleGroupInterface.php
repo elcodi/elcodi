@@ -44,7 +44,7 @@ interface RuleGroupInterface extends AbstractRuleInterface
      *
      * @param AbstractRuleInterface $rule Rule
      *
-     * @return RuleGroupInterface self Object
+     * @return $this self Object
      */
     public function addRule(AbstractRuleInterface $rule);
 
@@ -53,7 +53,7 @@ interface RuleGroupInterface extends AbstractRuleInterface
      *
      * @param AbstractRuleInterface $rule Rule
      *
-     * @return RuleGroupInterface self Object
+     * @return $this self Object
      */
     public function removeRule(AbstractRuleInterface $rule);
 }

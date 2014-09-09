@@ -30,7 +30,7 @@ interface CartLineInterface extends PriceInterface
      *
      * @param CartInterface $cart Cart
      *
-     * @return CartLineInterface self Object
+     * @return $this self Object
      */
     public function setCart(CartInterface $cart);
 
@@ -46,7 +46,7 @@ interface CartLineInterface extends PriceInterface
      *
      * @param ProductInterface $product Product
      *
-     * @return CartLineInterface self Object
+     * @return $this self Object
      */
     public function setProduct(ProductInterface $product);
 
@@ -62,7 +62,7 @@ interface CartLineInterface extends PriceInterface
      *
      * @param VariantInterface $variant
      *
-     * @return CartLineInterface self Object
+     * @return $this self Object
      */
     public function setVariant($variant);
 
@@ -94,7 +94,7 @@ interface CartLineInterface extends PriceInterface
      *
      * @param int $quantity Quantity
      *
-     * @return CartLineInterface self Object
+     * @return $this self Object
      */
     public function setQuantity($quantity);
 

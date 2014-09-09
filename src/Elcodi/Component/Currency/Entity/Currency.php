@@ -47,7 +47,7 @@ class Currency extends AbstractEntity implements CurrencyInterface
      *
      * @param string $iso Iso
      *
-     * @return Currency self Object
+     * @return $this self Object
      */
     public function setIso($iso)
     {
@@ -71,7 +71,7 @@ class Currency extends AbstractEntity implements CurrencyInterface
      *
      * @param string $symbol Symbol
      *
-     * @return Currency self Object
+     * @return $this self Object
      */
     public function setSymbol($symbol)
     {

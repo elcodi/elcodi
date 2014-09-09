@@ -56,7 +56,7 @@ trait ProductPriceTrait
      *
      * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount Price
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setPrice(\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount)
     {
@@ -84,7 +84,7 @@ trait ProductPriceTrait
      *
      * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount Reduced Price
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setReducedPrice(\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount)
     {

@@ -26,7 +26,7 @@ interface ImageInterface extends FileInterface
      *
      * @param string $width Width
      *
-     * @return ImageInterface self Object
+     * @return $this self Object
      */
     public function setWidth($width);
 
@@ -42,7 +42,7 @@ interface ImageInterface extends FileInterface
      *
      * @param string $width Width
      *
-     * @return ImageInterface self Object
+     * @return $this self Object
      */
     public function setHeight($width);
 

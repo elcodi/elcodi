@@ -41,7 +41,7 @@ abstract class AbstractHistory extends AbstractEntity
      *
      * @param string $state State
      *
-     * @return AbstractHistory self Object
+     * @return $this self Object
      */
     public function setState($state)
     {
@@ -65,7 +65,7 @@ abstract class AbstractHistory extends AbstractEntity
      *
      * @param string $description Description
      *
-     * @return AbstractHistory self Object
+     * @return $this self Object
      */
     public function setDescription($description)
     {

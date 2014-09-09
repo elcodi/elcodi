@@ -64,7 +64,7 @@ class ReferralRuleManager
      * @param ReferralRuleInterface $referralRule Referral Rule
      * @param boolean               $enable       Enable
      *
-     * @return ReferralRouteManager self Object
+     * @return $this self Object
      */
     public function enableReferralRule(ReferralRuleInterface $referralRule, $enable = true)
     {

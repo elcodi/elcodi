@@ -146,7 +146,7 @@ class Order extends AbstractEntity implements OrderInterface
      *
      * @param Collection $orderLines Order lines
      *
-     * @return Order self Object
+     * @return $this self Object
      */
     public function setOrderLines(Collection $orderLines)
     {
@@ -170,7 +170,7 @@ class Order extends AbstractEntity implements OrderInterface
      *
      * @param OrderLineInterface $orderLine Order line
      *
-     * @return Order self Object
+     * @return $this self Object
      */
     public function addOrderLine(OrderLineInterface $orderLine)
     {
@@ -187,7 +187,7 @@ class Order extends AbstractEntity implements OrderInterface
      *
      * @param OrderLineInterface $orderLine Order line
      *
-     * @return Order self Object
+     * @return $this self Object
      */
     public function removeOrderLine(OrderLineInterface $orderLine)
     {
@@ -201,7 +201,7 @@ class Order extends AbstractEntity implements OrderInterface
      *
      * @param Collection $orderHistories Order histories
      *
-     * @return Order self Object
+     * @return $this self Object
      */
     public function setOrderHistories(Collection $orderHistories)
     {
@@ -225,7 +225,7 @@ class Order extends AbstractEntity implements OrderInterface
      *
      * @param OrderHistoryInterface $orderHistory Order History
      *
-     * @return Order self Object
+     * @return $this self Object
      */
     public function addOrderHistory(OrderHistoryInterface $orderHistory)
     {
@@ -242,7 +242,7 @@ class Order extends AbstractEntity implements OrderInterface
      *
      * @param OrderHistoryInterface $orderHistory Order History
      *
-     * @return Order self Object
+     * @return $this self Object
      */
     public function removeOrderHistory(OrderHistoryInterface $orderHistory)
     {
@@ -255,7 +255,7 @@ class Order extends AbstractEntity implements OrderInterface
      *
      * @param int $quantity Quantity
      *
-     * @return Order self Object
+     * @return $this self Object
      */
     public function setQuantity($quantity)
     {

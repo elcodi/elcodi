@@ -30,7 +30,7 @@ interface ProductPriceInterface
      *
      * @param MoneyInterface $amount Price
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setPrice(MoneyInterface $amount);
 
@@ -46,7 +46,7 @@ interface ProductPriceInterface
      *
      * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount Reduced Price
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setReducedPrice(MoneyInterface $amount);
 

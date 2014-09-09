@@ -46,7 +46,7 @@ class OrderFactory extends AbstractFactory
      *
      * @param OrderHistoryFactory $orderHistoryFactory OrderHistory Factory
      *
-     * @return OrderFactory self Object
+     * @return $this self Object
      */
     public function setOrderHistoryFactory(OrderHistoryFactory $orderHistoryFactory)
     {
@@ -60,7 +60,7 @@ class OrderFactory extends AbstractFactory
      *
      * @param string $initialOrderHistoryState Initial order history state
      *
-     * @return OrderFactory self Object
+     * @return $this self Object
      */
     public function setInitialOrderHistoryState($initialOrderHistoryState)
     {

@@ -64,7 +64,7 @@ class File extends Media implements FileInterface
      *
      * @param string $path Path to file
      *
-     * @return File self Object
+     * @return $this self Object
      */
     public function setPath($path)
     {
@@ -88,7 +88,7 @@ class File extends Media implements FileInterface
      *
      * @param string $contentType Content type
      *
-     * @return File self Object
+     * @return $this self Object
      */
     public function setContentType($contentType)
     {
@@ -112,7 +112,7 @@ class File extends Media implements FileInterface
      *
      * @param string $extension Extension
      *
-     * @return File self Object
+     * @return $this self Object
      */
     public function setExtension($extension)
     {
@@ -136,7 +136,7 @@ class File extends Media implements FileInterface
      *
      * @param integer $size Size
      *
-     * @return File self Object
+     * @return $this self Object
      */
     public function setSize($size)
     {
@@ -160,7 +160,7 @@ class File extends Media implements FileInterface
      *
      * @param string $content Content
      *
-     * @return File self Object
+     * @return $this self Object
      */
     public function setContent($content)
     {

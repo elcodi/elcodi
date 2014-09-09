@@ -74,7 +74,7 @@ trait PriceTrait
      *
      * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount product amount with tax
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setProductAmount(\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount)
     {
@@ -102,7 +102,7 @@ trait PriceTrait
      *
      * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount amount without tax
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setAmount(\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount)
     {

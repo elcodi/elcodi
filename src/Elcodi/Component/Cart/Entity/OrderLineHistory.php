@@ -37,7 +37,7 @@ class OrderLineHistory extends AbstractHistory implements OrderLineHistoryInterf
      *
      * @param OrderLineInterface $orderLine Order Line
      *
-     * @return OrderLineHistory self Object
+     * @return $this self Object
      */
     public function setOrderLine(OrderLineInterface $orderLine)
     {

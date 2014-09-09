@@ -47,7 +47,7 @@ trait MetaDataTrait
      *
      * @param string $metaDescription
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setMetaDescription($metaDescription)
     {
@@ -71,7 +71,7 @@ trait MetaDataTrait
      *
      * @param string $metaKeywords Meta keywords
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setMetaKeywords($metaKeywords)
     {
@@ -95,7 +95,7 @@ trait MetaDataTrait
      *
      * @param string $metaTitle Meta title
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setMetaTitle($metaTitle)
     {

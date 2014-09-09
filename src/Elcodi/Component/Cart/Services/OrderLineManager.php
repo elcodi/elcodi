@@ -94,7 +94,7 @@ class OrderLineManager
      * @param OrderLineInterface $orderLine Orderline object
      * @param String             $newState  New state to append
      *
-     * @return OrderLineManager self Object
+     * @return $this self Object
      */
     public function addStateToOrderLine(
         OrderInterface $order,

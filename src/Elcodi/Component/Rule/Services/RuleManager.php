@@ -72,7 +72,7 @@ class RuleManager implements ContextAwareInterface, ExpressionLanguageAwareInter
      *
      * @param Mixed $contextElement Context element
      *
-     * @return RuleManager self Object
+     * @return $this self Object
      */
     public function addContextElement($contextElement)
     {

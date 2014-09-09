@@ -210,7 +210,7 @@ class Customer extends AbstractUser implements CustomerInterface
      *
      * @param OrderInterface $order Order
      *
-     * @return Customer self Object
+     * @return $this self Object
      */
     public function addOrder(OrderInterface $order)
     {
@@ -224,7 +224,7 @@ class Customer extends AbstractUser implements CustomerInterface
      *
      * @param OrderInterface $order
      *
-     * @return Customer self Object
+     * @return $this self Object
      */
     public function removeOrder(OrderInterface $order)
     {
@@ -238,7 +238,7 @@ class Customer extends AbstractUser implements CustomerInterface
      *
      * @param Collection $orders Orders
      *
-     * @return Customer self Object
+     * @return $this self Object
      */
     public function setOrders($orders)
     {
@@ -262,7 +262,7 @@ class Customer extends AbstractUser implements CustomerInterface
      *
      * @param CartInterface $cart
      *
-     * @return Customer self Object
+     * @return $this self Object
      */
     public function addCart(CartInterface $cart)
     {
@@ -276,7 +276,7 @@ class Customer extends AbstractUser implements CustomerInterface
      *
      * @param CartInterface $cart
      *
-     * @return Customer self Object
+     * @return $this self Object
      */
     public function removeCart(CartInterface $cart)
     {
@@ -288,7 +288,7 @@ class Customer extends AbstractUser implements CustomerInterface
     /**
      * @param Collection $carts
      *
-     * @return Customer self Object
+     * @return $this self Object
      */
     public function setCarts($carts)
     {
@@ -312,7 +312,7 @@ class Customer extends AbstractUser implements CustomerInterface
      *
      * @param AddressInterface $address
      *
-     * @return Customer self Object
+     * @return $this self Object
      */
     public function addAddress(AddressInterface $address)
     {
@@ -326,7 +326,7 @@ class Customer extends AbstractUser implements CustomerInterface
      *
      * @param AddressInterface $address
      *
-     * @return Customer self Object
+     * @return $this self Object
      */
     public function removeAddress(AddressInterface $address)
     {
@@ -340,7 +340,7 @@ class Customer extends AbstractUser implements CustomerInterface
      *
      * @param Collection $addresses Addresses
      *
-     * @return Customer self Object
+     * @return $this self Object
      */
     public function setAddresses(Collection $addresses)
     {
@@ -364,7 +364,7 @@ class Customer extends AbstractUser implements CustomerInterface
      *
      * @param AddressInterface $deliveryAddress
      *
-     * @return Customer self Object
+     * @return $this self Object
      */
     public function setDeliveryAddress(AddressInterface $deliveryAddress = null)
     {
@@ -388,7 +388,7 @@ class Customer extends AbstractUser implements CustomerInterface
      *
      * @param AddressInterface $invoiceAddress
      *
-     * @return Customer self Object
+     * @return $this self Object
      */
     public function setInvoiceAddress(AddressInterface $invoiceAddress = null)
     {
@@ -412,7 +412,7 @@ class Customer extends AbstractUser implements CustomerInterface
      *
      * @param LanguageInterface $language The language
      *
-     * @return Customer self Object
+     * @return $this self Object
      */
     public function setLanguage(LanguageInterface $language = null)
     {

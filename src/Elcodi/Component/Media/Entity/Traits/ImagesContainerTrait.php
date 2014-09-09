@@ -33,7 +33,7 @@ trait ImagesContainerTrait
      *
      * @param \Elcodi\Component\Media\Entity\Interfaces\ImageInterface $image Image object to be added
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function addImage(\Elcodi\Component\Media\Entity\Interfaces\ImageInterface $image)
     {
@@ -52,7 +52,7 @@ trait ImagesContainerTrait
      *
      * @param \Elcodi\Component\Media\Entity\Interfaces\ImageInterface $image Image object to be removed
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function removeImage(\Elcodi\Component\Media\Entity\Interfaces\ImageInterface $image)
     {
@@ -76,7 +76,7 @@ trait ImagesContainerTrait
      *
      * @param \Doctrine\Common\Collections\ArrayCollection $images Images
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setImages(\Doctrine\Common\Collections\ArrayCollection $images)
     {

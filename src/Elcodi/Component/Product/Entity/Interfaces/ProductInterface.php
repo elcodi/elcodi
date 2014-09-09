@@ -57,7 +57,7 @@ interface ProductInterface
      *
      * @param string $name Name
      *
-     * @return ProductInterface self Object
+     * @return $this self Object
      */
     public function setName($name);
 
@@ -73,7 +73,7 @@ interface ProductInterface
      *
      * @param string $slug Slug
      *
-     * @return ProductInterface self Object
+     * @return $this self Object
      */
     public function setSlug($slug);
 
@@ -87,7 +87,7 @@ interface ProductInterface
     /**
      * @param string $description
      *
-     * @return ProductInterface self Object
+     * @return $this self Object
      */
     public function setDescription($description);
 
@@ -103,7 +103,7 @@ interface ProductInterface
      *
      * @param string $shortDescription Short description
      *
-     * @return ProductInterface self Object
+     * @return $this self Object
      */
     public function setShortDescription($shortDescription);
 
@@ -119,7 +119,7 @@ interface ProductInterface
      *
      * @param Collection $categories Categories
      *
-     * @return ProductInterface self Object
+     * @return $this self Object
      */
     public function setCategories(Collection $categories);
 
@@ -135,7 +135,7 @@ interface ProductInterface
      *
      * @param CategoryInterface $category Category
      *
-     * @return ProductInterface self Object
+     * @return $this self Object
      */
     public function addCategory(CategoryInterface $category);
 
@@ -144,7 +144,7 @@ interface ProductInterface
      *
      * @param CategoryInterface $category Category
      *
-     * @return ProductInterface self Object
+     * @return $this self Object
      */
     public function removeCategory(CategoryInterface $category);
 
@@ -153,7 +153,7 @@ interface ProductInterface
      *
      * @param CategoryInterface $principalCategory Principal category
      *
-     * @return ProductInterface self Object
+     * @return $this self Object
      */
     public function setPrincipalCategory(CategoryInterface $principalCategory = null);
 
@@ -169,7 +169,7 @@ interface ProductInterface
      *
      * @param boolean $showInHome Show in home
      *
-     * @return ProductInterface self Object
+     * @return $this self Object
      */
     public function setShowInHome($showInHome);
 
@@ -185,7 +185,7 @@ interface ProductInterface
      *
      * @param ManufacturerInterface $manufacturer Manufacturer
      *
-     * @return ProductInterface self Object
+     * @return $this self Object
      */
     public function setManufacturer(ManufacturerInterface $manufacturer = null);
 

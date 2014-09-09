@@ -30,7 +30,7 @@ interface BannerZoneInterface
      *
      * @param string $name Name of the banner
      *
-     * @return BannerZoneInterface self Object
+     * @return $this self Object
      */
     public function setName($name);
 
@@ -46,7 +46,7 @@ interface BannerZoneInterface
      *
      * @param string $code
      *
-     * @return BannerZoneInterface self Object
+     * @return $this self Object
      */
     public function setCode($code);
 
@@ -62,7 +62,7 @@ interface BannerZoneInterface
      *
      * @param LanguageInterface $language Language to set
      *
-     * @return BannerZoneInterface self Object
+     * @return $this self Object
      */
     public function setLanguage(LanguageInterface $language = null);
 
@@ -78,7 +78,7 @@ interface BannerZoneInterface
      *
      * @param BannerInterface $banner Banner
      *
-     * @return BannerZoneInterface self Object
+     * @return $this self Object
      */
     public function addBanner(BannerInterface $banner);
 
@@ -87,7 +87,7 @@ interface BannerZoneInterface
      *
      * @param BannerInterface $banner Banner
      *
-     * @return BannerZoneInterface self Object
+     * @return $this self Object
      */
     public function removeBanner(BannerInterface $banner);
 
@@ -96,7 +96,7 @@ interface BannerZoneInterface
      *
      * @param Collection $banners Banners
      *
-     * @return BannerZoneInterface self Object
+     * @return $this self Object
      */
     public function setBanners(Collection $banners);
 
@@ -112,7 +112,7 @@ interface BannerZoneInterface
      *
      * @param integer $height
      *
-     * @return BannerZoneInterface self Object
+     * @return $this self Object
      */
     public function setHeight($height);
 
@@ -128,7 +128,7 @@ interface BannerZoneInterface
      *
      * @param integer $width
      *
-     * @return BannerZoneInterface self Object
+     * @return $this self Object
      */
     public function setWidth($width);
 

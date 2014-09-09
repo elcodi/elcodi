@@ -26,7 +26,7 @@ interface MetaDataInterface
      *
      * @param string $metaDescription
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setMetaDescription($metaDescription);
 
@@ -42,7 +42,7 @@ interface MetaDataInterface
      *
      * @param string $metaKeywords Meta keywords
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setMetaKeywords($metaKeywords);
 
@@ -58,7 +58,7 @@ interface MetaDataInterface
      *
      * @param string $metaTitle Meta title
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setMetaTitle($metaTitle);
 

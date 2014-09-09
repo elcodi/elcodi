@@ -52,7 +52,7 @@ abstract class Media extends AbstractEntity implements MediaInterface
      *
      * @param string $name Name
      *
-     * @return MediaInterface self Object
+     * @return $this self Object
      */
     public function setName($name)
     {
