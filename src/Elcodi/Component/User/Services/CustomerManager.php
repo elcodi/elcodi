@@ -33,7 +33,7 @@ class CustomerManager extends AbstractUserManager
      * @param AbstractUserInterface $user        User to register
      * @param string                $providerKey Provider key
      *
-     * @return AbstractUserManager self Object
+     * @return $this self Object
      */
     public function register(AbstractUserInterface $user, $providerKey)
     {

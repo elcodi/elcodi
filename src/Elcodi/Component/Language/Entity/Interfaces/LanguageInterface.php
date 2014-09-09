@@ -28,7 +28,7 @@ interface LanguageInterface extends EnabledInterface
      *
      * @param string $name Name of the shop
      *
-     * @return LanguageInterface self Object
+     * @return $this self Object
      */
     public function setName($name);
 
@@ -44,7 +44,7 @@ interface LanguageInterface extends EnabledInterface
      *
      * @param string $iso Iso
      *
-     * @return LanguageInterface self Object
+     * @return $this self Object
      */
     public function setIso($iso);
 

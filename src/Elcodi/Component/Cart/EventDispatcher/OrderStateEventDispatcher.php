@@ -38,7 +38,7 @@ class OrderStateEventDispatcher extends AbstractEventDispatcher
      * @param OrderHistoryInterface $lastOrderHistory Last OrderHistory
      * @param string                $newState         New state to reach
      *
-     * @return OrderLineStateEventDispatcher self Object
+     * @return $this self Object
      */
     public function dispatchOrderStatePreChangeEvent(
         OrderInterface $order,
@@ -72,7 +72,7 @@ class OrderStateEventDispatcher extends AbstractEventDispatcher
      * @param OrderHistoryInterface $newOrderHistory  New OrderHistory
      * @param string                $newState         New state to reach
      *
-     * @return OrderLineStateEventDispatcher self Object
+     * @return $this self Object
      */
     public function dispatchOrderStatePostChangeEvent(
         OrderInterface $order,

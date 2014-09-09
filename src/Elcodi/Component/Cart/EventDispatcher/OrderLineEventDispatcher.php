@@ -35,7 +35,7 @@ class OrderLineEventDispatcher extends AbstractEventDispatcher
      * @param CartLineInterface  $cartLine  CartLine
      * @param OrderLineInterface $orderLine OrderLine
      *
-     * @return OrderLineEventDispatcher self Object
+     * @return $this self Object
      */
     public function dispatchOrderLineOnCreatedEvent(
         OrderInterface $order,

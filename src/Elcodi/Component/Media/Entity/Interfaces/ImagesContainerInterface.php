@@ -28,7 +28,7 @@ interface ImagesContainerInterface
      *
      * @param ImageInterface $image Image object to be added
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function addImage(ImageInterface $image);
 
@@ -37,7 +37,7 @@ interface ImagesContainerInterface
      *
      * @param ImageInterface $image Image object to be removed
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function removeImage(ImageInterface $image);
 
@@ -53,7 +53,7 @@ interface ImagesContainerInterface
      *
      * @param ArrayCollection $images Images
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setImages(ArrayCollection $images);
 }

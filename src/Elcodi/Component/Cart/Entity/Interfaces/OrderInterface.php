@@ -54,7 +54,7 @@ interface OrderInterface extends PriceInterface
     /**
      * Get cart
      *
-     * @return OrderInterface self Object
+     * @return $this self Object
      */
     public function getCart();
 
@@ -63,7 +63,7 @@ interface OrderInterface extends PriceInterface
      *
      * @param Collection $orderLines Order lines
      *
-     * @return OrderInterface self Object
+     * @return $this self Object
      */
     public function setOrderLines(Collection $orderLines);
 
@@ -79,7 +79,7 @@ interface OrderInterface extends PriceInterface
      *
      * @param OrderLineInterface $orderLine Order line
      *
-     * @return OrderInterface self Object
+     * @return $this self Object
      */
     public function addOrderLine(OrderLineInterface $orderLine);
 
@@ -88,7 +88,7 @@ interface OrderInterface extends PriceInterface
      *
      * @param OrderLineInterface $orderLine Order line
      *
-     * @return OrderInterface self Object
+     * @return $this self Object
      */
     public function removeOrderLine(OrderLineInterface $orderLine);
 
@@ -97,7 +97,7 @@ interface OrderInterface extends PriceInterface
      *
      * @param Collection $orderHistories Order histories
      *
-     * @return OrderInterface self Object
+     * @return $this self Object
      */
     public function setOrderHistories(Collection $orderHistories);
 
@@ -113,7 +113,7 @@ interface OrderInterface extends PriceInterface
      *
      * @param OrderHistoryInterface $orderHistory Order History
      *
-     * @return OrderInterface self Object
+     * @return $this self Object
      */
     public function addOrderHistory(OrderHistoryInterface $orderHistory);
 
@@ -122,7 +122,7 @@ interface OrderInterface extends PriceInterface
      *
      * @param OrderHistoryInterface $orderHistory Order History
      *
-     * @return OrderInterface self Object
+     * @return $this self Object
      */
     public function removeOrderHistory(OrderHistoryInterface $orderHistory);
 
@@ -131,7 +131,7 @@ interface OrderInterface extends PriceInterface
      *
      * @param int $quantity Quantity
      *
-     * @return OrderInterface self Object
+     * @return $this self Object
      */
     public function setQuantity($quantity);
 

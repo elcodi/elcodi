@@ -40,7 +40,7 @@ trait DateTimeTrait
      *
      * @param \DateTime $createdAt Created at value
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setCreatedAt(\DateTime $createdAt)
     {
@@ -64,7 +64,7 @@ trait DateTimeTrait
      *
      * @param \DateTime $updatedAt Updated at value
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setUpdatedAt(\DateTime $updatedAt)
     {

@@ -35,7 +35,7 @@ interface PriceInterface
      *
      * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $productAmount product amount with tax
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setProductAmount(MoneyInterface $productAmount);
 
@@ -51,7 +51,7 @@ interface PriceInterface
      *
      * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount amount without tax
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setAmount(MoneyInterface $amount);
 }

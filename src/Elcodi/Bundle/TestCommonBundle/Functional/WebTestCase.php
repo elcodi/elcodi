@@ -158,7 +158,7 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * Otherwise, will return.
      *
-     * @return BaseWebTestCase self Object
+     * @return $this self Object
      */
     protected function createSchema()
     {
@@ -200,7 +200,7 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * Otherwise, will return.
      *
-     * @return BaseWebTestCase self Object
+     * @return $this self Object
      */
     protected function loadFixtures()
     {
@@ -328,7 +328,7 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * @param AbstractEntity $entity Entity
      *
-     * @return WebTestCase self Object
+     * @return $this self Object
      */
     public function flush($entity)
     {
@@ -350,7 +350,7 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * @param AbstractEntity $entity Entity
      *
-     * @return WebTestCase self Object
+     * @return $this self Object
      */
     public function clear($entity)
     {

@@ -416,7 +416,7 @@ class ReferralProgramManager
      * @throws ReferralProgramEmailIsUserException
      * @throws ReferralProgramLineExistsException
      *
-     * @return ReferralProgramManager self Object
+     * @return $this self Object
      */
     protected function inviteLine(
         ReferralRuleInterface $referralRule,

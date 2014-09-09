@@ -103,7 +103,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param OrderInterface $order Order
      *
-     * @return Customerinterface self Object
+     * @return $this self Object
      */
     public function addOrder(OrderInterface $order);
 
@@ -112,7 +112,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param OrderInterface $order
      *
-     * @return Customerinterface self Object
+     * @return $this self Object
      */
     public function removeOrder(OrderInterface $order);
 
@@ -121,7 +121,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param Collection $orders Orders
      *
-     * @return Customerinterface self Object
+     * @return $this self Object
      */
     public function setOrders($orders);
 
@@ -137,7 +137,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param CartInterface $cart
      *
-     * @return Customerinterface self Object
+     * @return $this self Object
      */
     public function addCart(CartInterface $cart);
 
@@ -146,14 +146,14 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param CartInterface $cart
      *
-     * @return Customerinterface self Object
+     * @return $this self Object
      */
     public function removeCart(CartInterface $cart);
 
     /**
      * @param Collection $carts
      *
-     * @return Customerinterface self Object
+     * @return $this self Object
      */
     public function setCarts($carts);
 
@@ -169,7 +169,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param AddressInterface $address
      *
-     * @return Customerinterface self Object
+     * @return $this self Object
      */
     public function addAddress(AddressInterface $address);
 
@@ -178,7 +178,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param AddressInterface $address
      *
-     * @return Customerinterface self Object
+     * @return $this self Object
      */
     public function removeAddress(AddressInterface $address);
 
@@ -187,7 +187,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param Collection $addresses Addresses
      *
-     * @return Customerinterface self Object
+     * @return $this self Object
      */
     public function setAddresses(Collection $addresses);
 
@@ -203,7 +203,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param AddressInterface $deliveryAddress
      *
-     * @return Customerinterface self Object
+     * @return $this self Object
      */
     public function setDeliveryAddress(AddressInterface $deliveryAddress = null);
 
@@ -219,7 +219,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param AddressInterface $invoiceAddress
      *
-     * @return Customerinterface self Object
+     * @return $this self Object
      */
     public function setInvoiceAddress(AddressInterface $invoiceAddress = null);
 
@@ -235,7 +235,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param LanguageInterface $language The language
      *
-     * @return Customerinterface self Object
+     * @return $this self Object
      */
     public function setLanguage(LanguageInterface $language);
 

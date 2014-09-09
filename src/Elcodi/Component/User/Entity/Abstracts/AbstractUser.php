@@ -150,7 +150,7 @@ abstract class AbstractUser extends AbstractEntity implements UserInterface
      *
      * @param int $gender Gender
      *
-     * @return AbstractUser self Object
+     * @return $this self Object
      */
     public function setGender($gender)
     {
@@ -174,7 +174,7 @@ abstract class AbstractUser extends AbstractEntity implements UserInterface
      *
      * @param string $email
      *
-     * @return AbstractUser self Object
+     * @return $this self Object
      */
     public function setEmail($email)
     {
@@ -198,7 +198,7 @@ abstract class AbstractUser extends AbstractEntity implements UserInterface
      *
      * @param string $username Username
      *
-     * @return AbstractUser self Object
+     * @return $this self Object
      */
     public function setUsername($username)
     {
@@ -232,7 +232,7 @@ abstract class AbstractUser extends AbstractEntity implements UserInterface
      *
      * @param DateTime $birthday
      *
-     * @return AbstractUser self Object
+     * @return $this self Object
      */
     public function setBirthday(DateTime $birthday = null)
     {
@@ -246,7 +246,7 @@ abstract class AbstractUser extends AbstractEntity implements UserInterface
      *
      * @param string $recoveryHash
      *
-     * @return AbstractUser self Object
+     * @return $this self Object
      */
     public function setRecoveryHash($recoveryHash)
     {
@@ -280,7 +280,7 @@ abstract class AbstractUser extends AbstractEntity implements UserInterface
      *
      * @param string $password Password
      *
-     * @return AbstractUser self Object
+     * @return $this self Object
      */
     public function setPassword($password)
     {

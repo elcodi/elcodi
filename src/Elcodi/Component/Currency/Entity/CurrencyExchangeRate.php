@@ -51,7 +51,7 @@ class CurrencyExchangeRate extends AbstractEntity implements CurrencyExchangeRat
      *
      * @param CurrencyInterface $currency
      *
-     * @return CurrencyExchangeRateInterface self object
+     * @return $this self Object
      */
     public function setSourceCurrency(CurrencyInterface $currency)
     {
@@ -75,7 +75,7 @@ class CurrencyExchangeRate extends AbstractEntity implements CurrencyExchangeRat
      *
      * @param CurrencyInterface $currency
      *
-     * @return CurrencyExchangeRateInterface self object
+     * @return $this self Object
      */
     public function setTargetCurrency(CurrencyInterface $currency)
     {
@@ -99,7 +99,7 @@ class CurrencyExchangeRate extends AbstractEntity implements CurrencyExchangeRat
      *
      * @param float $exchangeRate the exchange rate
      *
-     * @return CurrencyExchangeRateInterface self object
+     * @return $this self Object
      */
     public function setExchangeRate($exchangeRate)
     {

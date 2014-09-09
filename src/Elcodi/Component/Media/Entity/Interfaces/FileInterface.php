@@ -26,7 +26,7 @@ interface FileInterface extends MediaInterface
      *
      * @param string $path Path to file
      *
-     * @return FileInterface self Object
+     * @return $this self Object
      */
     public function setPath($path);
 
@@ -42,7 +42,7 @@ interface FileInterface extends MediaInterface
      *
      * @param int $id Entity Id
      *
-     * @return FileInterface self Object
+     * @return $this self Object
      */
     public function setId($id);
 
@@ -58,7 +58,7 @@ interface FileInterface extends MediaInterface
      *
      * @param string $contentType Content type
      *
-     * @return FileInterface self Object
+     * @return $this self Object
      */
     public function setContentType($contentType);
 
@@ -74,7 +74,7 @@ interface FileInterface extends MediaInterface
      *
      * @param string $extension Extension
      *
-     * @return FileInterface self Object
+     * @return $this self Object
      */
     public function setExtension($extension);
 
@@ -90,7 +90,7 @@ interface FileInterface extends MediaInterface
      *
      * @param string $size Size
      *
-     * @return FileInterface self Object
+     * @return $this self Object
      */
     public function setSize($size);
 
@@ -106,7 +106,7 @@ interface FileInterface extends MediaInterface
      *
      * @param string $content Content
      *
-     * @return FileInterface self Object
+     * @return $this self Object
      */
     public function setContent($content);
 

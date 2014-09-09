@@ -32,7 +32,7 @@ interface OrderLineInterface extends PriceInterface
      *
      * @param OrderInterface $order Order
      *
-     * @return OrderLineInterface self Object
+     * @return $this self Object
      */
     public function setOrder(OrderInterface $order);
 
@@ -48,7 +48,7 @@ interface OrderLineInterface extends PriceInterface
      *
      * @param ProductInterface $product Product
      *
-     * @return OrderLineInterface self Object
+     * @return $this self Object
      */
     public function setProduct(ProductInterface $product);
 
@@ -71,7 +71,7 @@ interface OrderLineInterface extends PriceInterface
      *
      * @param VariantInterface $variant
      *
-     * @return CartLineInterface self Object
+     * @return $this self Object
      */
     public function setVariant($variant);
 
@@ -96,7 +96,7 @@ interface OrderLineInterface extends PriceInterface
      *
      * @param int $quantity Quantity
      *
-     * @return OrderLineInterface self Object
+     * @return $this self Object
      */
     public function setQuantity($quantity);
 
@@ -112,7 +112,7 @@ interface OrderLineInterface extends PriceInterface
      *
      * @param Collection $orderLineHistories Order histories
      *
-     * @return OrderLineInterface self Object
+     * @return $this self Object
      */
     public function setOrderLineHistories(Collection $orderLineHistories);
 
@@ -128,7 +128,7 @@ interface OrderLineInterface extends PriceInterface
      *
      * @param OrderLineHistoryInterface $orderLineHistory Order History
      *
-     * @return OrderLineInterface self Object
+     * @return $this self Object
      */
     public function addOrderLineHistory(OrderLineHistoryInterface $orderLineHistory);
 
@@ -137,7 +137,7 @@ interface OrderLineInterface extends PriceInterface
      *
      * @param OrderLineHistoryInterface $orderLineHistory Order Line History
      *
-     * @return OrderLineInterface self Object
+     * @return $this self Object
      */
     public function removeOrderLineHistory(OrderLineHistoryInterface $orderLineHistory);
 

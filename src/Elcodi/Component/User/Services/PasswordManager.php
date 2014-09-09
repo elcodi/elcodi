@@ -119,7 +119,7 @@ class PasswordManager
      * @param string       $recoverPasswordUrlName Recover password name
      * @param string       $hashField              Hash
      *
-     * @return PasswordManager self Object
+     * @return $this self Object
      */
     public function rememberPassword(
         AbstractUser $user,

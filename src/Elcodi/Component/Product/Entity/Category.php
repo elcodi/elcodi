@@ -86,7 +86,7 @@ class Category extends AbstractEntity implements CategoryInterface
      *
      * @param string $name Name
      *
-     * @return CategoryInterface self Object
+     * @return $this self Object
      */
     public function setName($name)
     {
@@ -110,7 +110,7 @@ class Category extends AbstractEntity implements CategoryInterface
      *
      * @param string $slug Slug
      *
-     * @return CategoryInterface self Object
+     * @return $this self Object
      */
     public function setSlug($slug)
     {
@@ -134,7 +134,7 @@ class Category extends AbstractEntity implements CategoryInterface
      *
      * @param Collection $subCategories Sub categories
      *
-     * @return Category self Object
+     * @return $this self Object
      */
     public function setSubCategories(Collection $subCategories)
     {
@@ -158,7 +158,7 @@ class Category extends AbstractEntity implements CategoryInterface
      *
      * @param CategoryInterface $category Category to add as subcategory
      *
-     * @return Category self Object
+     * @return $this self Object
      */
     public function addSubCategory(CategoryInterface $category)
     {
@@ -172,7 +172,7 @@ class Category extends AbstractEntity implements CategoryInterface
      *
      * @param CategoryInterface $category
      *
-     * @return Category self Object
+     * @return $this self Object
      */
     public function removeSubCategory(CategoryInterface $category)
     {
@@ -186,7 +186,7 @@ class Category extends AbstractEntity implements CategoryInterface
      *
      * @param CategoryInterface $parent Category parent
      *
-     * @return Category self Object
+     * @return $this self Object
      */
     public function setParent(CategoryInterface $parent = null)
     {
@@ -210,7 +210,7 @@ class Category extends AbstractEntity implements CategoryInterface
      *
      * @param Collection $products Products
      *
-     * @return Category self Object
+     * @return $this self Object
      */
     public function setProducts(Collection $products)
     {
@@ -256,7 +256,7 @@ class Category extends AbstractEntity implements CategoryInterface
      *
      * @param Integer $position Category relative position
      *
-     * @return Category self Object
+     * @return $this self Object
      */
     public function setPosition($position)
     {

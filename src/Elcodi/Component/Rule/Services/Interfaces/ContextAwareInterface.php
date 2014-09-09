@@ -26,7 +26,7 @@ interface ContextAwareInterface
      *
      * @param Mixed $contextElement Context element
      *
-     * @return ContextAwareInterface self Object
+     * @return $this self Object
      */
     public function addContextElement($contextElement);
 }

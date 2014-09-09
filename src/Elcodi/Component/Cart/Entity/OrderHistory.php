@@ -37,7 +37,7 @@ class OrderHistory extends AbstractHistory implements OrderHistoryInterface
      *
      * @param OrderInterface $order Order to set
      *
-     * @return OrderHistory self Object
+     * @return $this self Object
      */
     public function setOrder(OrderInterface $order)
     {

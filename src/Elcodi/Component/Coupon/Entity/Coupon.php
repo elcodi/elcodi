@@ -136,7 +136,7 @@ class Coupon extends AbstractEntity implements CouponInterface
      *
      * @param string $code Code
      *
-     * @return Coupon self Object
+     * @return $this self Object
      */
     public function setCode($code)
     {
@@ -160,7 +160,7 @@ class Coupon extends AbstractEntity implements CouponInterface
      *
      * @param string $name
      *
-     * @return Coupon self Object
+     * @return $this self Object
      */
     public function setName($name)
     {
@@ -184,7 +184,7 @@ class Coupon extends AbstractEntity implements CouponInterface
      *
      * @param int $type Type
      *
-     * @return Coupon self Object
+     * @return $this self Object
      */
     public function setType($type)
     {
@@ -232,7 +232,7 @@ class Coupon extends AbstractEntity implements CouponInterface
      *
      * @param MoneyInterface $amount Price
      *
-     * @return Coupon self Object
+     * @return $this self Object
      */
     public function setPrice(MoneyInterface $amount)
     {
@@ -260,7 +260,7 @@ class Coupon extends AbstractEntity implements CouponInterface
      *
      * @param int $discount Discount
      *
-     * @return Coupon self Object
+     * @return $this self Object
      */
     public function setDiscount($discount)
     {
@@ -284,7 +284,7 @@ class Coupon extends AbstractEntity implements CouponInterface
      *
      * @param MoneyInterface $amount Absolute Price
      *
-     * @return Coupon self Object
+     * @return $this self Object
      */
     public function setAbsolutePrice(MoneyInterface $amount)
     {
@@ -312,7 +312,7 @@ class Coupon extends AbstractEntity implements CouponInterface
      *
      * @param integer $count
      *
-     * @return Coupon self Object
+     * @return $this self Object
      */
     public function setCount($count)
     {
@@ -336,7 +336,7 @@ class Coupon extends AbstractEntity implements CouponInterface
      *
      * @param integer $used
      *
-     * @return Coupon self Object
+     * @return $this self Object
      */
     public function setUsed($used)
     {
@@ -360,7 +360,7 @@ class Coupon extends AbstractEntity implements CouponInterface
      *
      * @param integer $priority
      *
-     * @return Coupon self Object
+     * @return $this self Object
      */
     public function setPriority($priority)
     {
@@ -384,7 +384,7 @@ class Coupon extends AbstractEntity implements CouponInterface
      *
      * @param MoneyInterface $amount Absolute Price
      *
-     * @return Coupon self Object
+     * @return $this self Object
      */
     public function setMinimumPurchase(MoneyInterface $amount)
     {
@@ -421,7 +421,7 @@ class Coupon extends AbstractEntity implements CouponInterface
      * Increment used variable by one, and disables it if there are no more
      * available units
      *
-     * @return Coupon self Object
+     * @return $this self Object
      */
     public function makeUse()
     {

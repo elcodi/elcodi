@@ -39,7 +39,7 @@ interface CartInterface extends DateTimeInterface
      *
      * @param MoneyInterface $amount price with tax
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setAmount(MoneyInterface $amount);
 
@@ -55,7 +55,7 @@ interface CartInterface extends DateTimeInterface
      *
      * @param MoneyInterface $amount price with tax
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setCouponAmount(MoneyInterface $amount);
 
@@ -71,7 +71,7 @@ interface CartInterface extends DateTimeInterface
      *
      * @param MoneyInterface $amount price with tax
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setProductAmount(MoneyInterface $amount);
 
@@ -87,7 +87,7 @@ interface CartInterface extends DateTimeInterface
      *
      * @param CustomerInterface $customer Customer
      *
-     * @return CartInterface self Object
+     * @return $this self Object
      */
     public function setCustomer(CustomerInterface $customer);
 
@@ -96,7 +96,7 @@ interface CartInterface extends DateTimeInterface
      *
      * @param Collection $cartLines Cart Lines
      *
-     * @return CartInterface self Object
+     * @return $this self Object
      */
     public function setCartLines(Collection $cartLines);
 
@@ -112,7 +112,7 @@ interface CartInterface extends DateTimeInterface
      *
      * @param CartLineInterface $cartLine Cart line
      *
-     * @return CartInterface self Object
+     * @return $this self Object
      */
     public function addCartLine(CartLineInterface $cartLine);
 
@@ -121,7 +121,7 @@ interface CartInterface extends DateTimeInterface
      *
      * @param CartLineInterface $cartLine Cart line
      *
-     * @return CartInterface self Object
+     * @return $this self Object
      */
     public function removeCartLine(CartLineInterface $cartLine);
 
@@ -130,7 +130,7 @@ interface CartInterface extends DateTimeInterface
      *
      * @param OrderInterface $order
      *
-     * @return CartInterface self Object
+     * @return $this self Object
      */
     public function setOrder(OrderInterface $order);
 
@@ -146,7 +146,7 @@ interface CartInterface extends DateTimeInterface
      *
      * @param boolean $ordered Has been ordered
      *
-     * @return CartInterface self Object
+     * @return $this self Object
      */
     public function setOrdered($ordered);
 
@@ -162,7 +162,7 @@ interface CartInterface extends DateTimeInterface
      *
      * @param int $quantity Quantity
      *
-     * @return CartInterface self Object
+     * @return $this self Object
      */
     public function setQuantity($quantity);
 

@@ -26,7 +26,7 @@ interface OrderLineHistoryInterface
      *
      * @param OrderLineInterface $orderLine Order Line
      *
-     * @return OrderLineHistoryInterface self Object
+     * @return $this self Object
      */
     public function setOrderLine(OrderLineInterface $orderLine);
 
@@ -42,7 +42,7 @@ interface OrderLineHistoryInterface
      *
      * @param string $state State
      *
-     * @return OrderLineHistoryInterface self Object
+     * @return $this self Object
      */
     public function setState($state);
 
@@ -58,7 +58,7 @@ interface OrderLineHistoryInterface
      *
      * @param string $description Description
      *
-     * @return OrderLineHistoryInterface self Object
+     * @return $this self Object
      */
     public function setDescription($description);
 

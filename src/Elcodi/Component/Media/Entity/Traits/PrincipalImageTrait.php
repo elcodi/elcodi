@@ -33,7 +33,7 @@ trait PrincipalImageTrait
      *
      * @param \Elcodi\Component\Media\Entity\Interfaces\ImageInterface $principalImage Principal image
      *
-     * @return Object self Object
+     * @return $this self Object
      */
     public function setPrincipalImage(\Elcodi\Component\Media\Entity\Interfaces\ImageInterface $principalImage = null)
     {

@@ -32,7 +32,7 @@ class NewsletterEventDispatcher extends AbstractEventDispatcher
      *
      * @param NewsletterSubscriptionInterface $newsletterSubscription Newsletter subscription
      *
-     * @return NewsletterEventDispatcher self Object
+     * @return $this self Object
      */
     public function dispatchSubscribeEvent(NewsletterSubscriptionInterface $newsletterSubscription)
     {
@@ -49,7 +49,7 @@ class NewsletterEventDispatcher extends AbstractEventDispatcher
      *
      * @param NewsletterSubscriptionInterface $newsletterSubscription Newsletter subscription
      *
-     * @return NewsletterEventDispatcher self Object
+     * @return $this self Object
      */
     public function dispatchUnsubscribeEvent(NewsletterSubscriptionInterface $newsletterSubscription)
     {

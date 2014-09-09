@@ -115,7 +115,7 @@ class Node extends AbstractEntity implements NodeInterface
      *
      * @param string $code
      *
-     * @return Node self object
+     * @return $this self Object
      */
     public function setCode($code)
     {

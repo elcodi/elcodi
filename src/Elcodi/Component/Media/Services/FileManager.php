@@ -71,7 +71,7 @@ class FileManager
      * @param string        $data      File data
      * @param boolean       $overwrite Overwrite file if exists
      *
-     * @return FileManager self Object
+     * @return $this self Object
      */
     public function uploadFile(FileInterface $file, $data, $overwrite = true)
     {

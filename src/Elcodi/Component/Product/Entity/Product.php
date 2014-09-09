@@ -400,7 +400,7 @@ class Product extends AbstractEntity implements ProductInterface
      *
      * @param string $dimensions Dimensions
      *
-     * @return $this self Object
+     * @return ProductInterface Self object
      */
     public function setDimensions($dimensions)
     {

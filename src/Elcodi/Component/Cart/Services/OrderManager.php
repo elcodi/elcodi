@@ -75,7 +75,7 @@ class OrderManager
      * @param OrderInterface $order Order
      * @param string         $state The new state
      *
-     * @return OrderManager self Object
+     * @return $this self Object
      */
     public function addStateToOrder(
         OrderInterface $order,

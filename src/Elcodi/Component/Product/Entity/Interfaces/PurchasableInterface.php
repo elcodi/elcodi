@@ -45,6 +45,8 @@ interface PurchasableInterface extends EnabledInterface, ProductPriceInterface
      * Sets the variant SKU
      *
      * @param string $sku
+     *
+     * @return $this self Object
      */
     public function setSku($sku);
 
@@ -60,7 +62,7 @@ interface PurchasableInterface extends EnabledInterface, ProductPriceInterface
      *
      * @param int $stock
      *
-     * @return VariantInterface
+     * @return $this self Object
      */
     public function setStock($stock);
 }

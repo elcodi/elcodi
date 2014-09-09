@@ -68,7 +68,7 @@ interface NodeInterface extends DateTimeInterface, EnabledInterface, SubnodesAwa
      *
      * @param string $code
      *
-     * @return NodeInterface self object
+     * @return $this self Object
      */
     public function setCode($code);
 }

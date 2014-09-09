@@ -89,7 +89,7 @@ class Manufacturer extends AbstractEntity implements ManufacturerInterface
      *
      * @param string $description Description
      *
-     * @return Manufacturer self Object
+     * @return $this self Object
      */
     public function setDescription($description)
     {
@@ -111,7 +111,7 @@ class Manufacturer extends AbstractEntity implements ManufacturerInterface
      *
      * @param string $slug Slug
      *
-     * @return Manufacturer self Object
+     * @return $this self Object
      */
     public function setSlug($slug)
     {
@@ -135,7 +135,7 @@ class Manufacturer extends AbstractEntity implements ManufacturerInterface
      *
      * @param Collection $products Products
      *
-     * @return Manufacturer self Object
+     * @return $this self Object
      */
     public function setProducts(Collection $products)
     {
@@ -159,7 +159,7 @@ class Manufacturer extends AbstractEntity implements ManufacturerInterface
      *
      * @param ProductInterface $product Product
      *
-     * @return Manufacturer self Object
+     * @return $this self Object
      */
     public function addProduct(ProductInterface $product)
     {
@@ -173,7 +173,7 @@ class Manufacturer extends AbstractEntity implements ManufacturerInterface
      *
      * @param ProductInterface $product Product
      *
-     * @return Manufacturer self Object
+     * @return $this self Object
      */
     public function removeProduct(ProductInterface $product)
     {

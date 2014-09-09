@@ -81,7 +81,7 @@ class CustomerWrapper
      *
      * @param CustomerInterface $customer Customer
      *
-     * @return CustomerWrapper self Object
+     * @return $this self Object
      */
     public function setCustomer(CustomerInterface $customer = null)
     {

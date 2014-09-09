@@ -132,7 +132,7 @@ class OrderEventListener
      *
      * @param OrderInterface $order Order where to delete all coupons
      *
-     * @return OrderEventListener self Object
+     * @return $this self Object
      */
     protected function truncateOrderCoupons(OrderInterface $order)
     {

@@ -114,7 +114,7 @@ class Cart extends AbstractEntity implements CartInterface
      *
      * @param CustomerInterface $customer Customer
      *
-     * @return Cart self Object
+     * @return $this self Object
      */
     public function setCustomer(CustomerInterface $customer)
     {
@@ -128,7 +128,7 @@ class Cart extends AbstractEntity implements CartInterface
      *
      * @param OrderInterface $order
      *
-     * @return Cart self Object
+     * @return $this self Object
      */
     public function setOrder(OrderInterface $order)
     {
@@ -152,7 +152,7 @@ class Cart extends AbstractEntity implements CartInterface
      *
      * @param boolean $ordered Has been ordered
      *
-     * @return CartInterface self Object
+     * @return $this self Object
      */
     public function setOrdered($ordered)
     {
@@ -176,7 +176,7 @@ class Cart extends AbstractEntity implements CartInterface
      *
      * @param Collection $cartLines Cart Lines
      *
-     * @return Cart self Object
+     * @return $this self Object
      */
     public function setCartLines(Collection $cartLines)
     {
@@ -188,7 +188,7 @@ class Cart extends AbstractEntity implements CartInterface
     /**
      * Get lines
      *
-     * @return Collection of CartLine
+     * @return Collection of CartLines
      */
     public function getCartLines()
     {
@@ -200,7 +200,7 @@ class Cart extends AbstractEntity implements CartInterface
      *
      * @param CartLineInterface $cartLine Cart line
      *
-     * @return Cart self Object
+     * @return $this self Object
      */
     public function addCartLine(CartLineInterface $cartLine)
     {
@@ -217,7 +217,7 @@ class Cart extends AbstractEntity implements CartInterface
      *
      * @param CartLineInterface $cartLine Cart line
      *
-     * @return Cart self Object
+     * @return $this self Object
      */
     public function removeCartLine(CartLineInterface $cartLine)
     {
@@ -230,7 +230,7 @@ class Cart extends AbstractEntity implements CartInterface
      *
      * @param int $quantity Quantity
      *
-     * @return Cart self Object
+     * @return $this self Object
      */
     public function setQuantity($quantity)
     {
@@ -274,7 +274,7 @@ class Cart extends AbstractEntity implements CartInterface
      *
      * @param MoneyInterface $productAmount
      *
-     * @return CartInterface
+     * @return $this self Object
      */
     public function setProductAmount(MoneyInterface $productAmount)
     {
@@ -298,7 +298,7 @@ class Cart extends AbstractEntity implements CartInterface
      *
      * @param MoneyInterface $couponAmount
      *
-     * @return CartInterface
+     * @return $this self Object
      */
     public function setCouponAmount(MoneyInterface $couponAmount)
     {
@@ -322,7 +322,7 @@ class Cart extends AbstractEntity implements CartInterface
      *
      * @param MoneyInterface $amount
      *
-     * @return CartInterface
+     * @return $this self Object
      */
     public function setAmount(MoneyInterface $amount)
     {

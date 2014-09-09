@@ -46,7 +46,7 @@ class Language extends AbstractEntity implements LanguageInterface
      *
      * @param string $name Name of the shop
      *
-     * @return Language self Object
+     * @return $this self Object
      */
     public function setName($name)
     {
@@ -70,7 +70,7 @@ class Language extends AbstractEntity implements LanguageInterface
      *
      * @param string $iso Iso
      *
-     * @return Language self Object
+     * @return $this self Object
      */
     public function setIso($iso)
     {

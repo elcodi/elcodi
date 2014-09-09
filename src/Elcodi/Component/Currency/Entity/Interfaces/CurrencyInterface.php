@@ -33,7 +33,7 @@ interface CurrencyInterface
      *
      * @param string $iso The currency iso
      *
-     * @return CurrencyInterface self object
+     * @return $this self Object
      */
     public function setIso($iso);
 
@@ -49,7 +49,7 @@ interface CurrencyInterface
      *
      * @param string $symbol The currency symbol
      *
-     * @return CurrencyInterface self object
+     * @return $this self Object
      */
     public function setSymbol($symbol);
 

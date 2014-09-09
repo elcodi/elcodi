@@ -57,7 +57,7 @@ class OrderLine extends AbstractLine implements OrderLineInterface
      *
      * @param OrderInterface $order Order
      *
-     * @return OrderLine self Object
+     * @return $this self Object
      */
     public function setOrder(OrderInterface $order)
     {
@@ -81,7 +81,7 @@ class OrderLine extends AbstractLine implements OrderLineInterface
      *
      * @param Collection $orderLineHistories Order histories
      *
-     * @return OrderLine self Object
+     * @return $this self Object
      */
     public function setOrderLineHistories(Collection $orderLineHistories)
     {
@@ -105,7 +105,7 @@ class OrderLine extends AbstractLine implements OrderLineInterface
      *
      * @param OrderLineHistoryInterface $orderLineHistory Order History
      *
-     * @return OrderLine self Object
+     * @return $this self Object
      */
     public function addOrderLineHistory(OrderLineHistoryInterface $orderLineHistory)
     {
@@ -122,7 +122,7 @@ class OrderLine extends AbstractLine implements OrderLineInterface
      *
      * @param OrderLineHistoryInterface $orderLineHistory Order Line History
      *
-     * @return OrderLine self Object
+     * @return $this self Object
      */
     public function removeOrderLineHistory(OrderLineHistoryInterface $orderLineHistory)
     {

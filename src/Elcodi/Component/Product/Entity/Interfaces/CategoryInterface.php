@@ -47,7 +47,7 @@ interface CategoryInterface extends MetaDataInterface, EnabledInterface
      *
      * @param string $name Name
      *
-     * @return CategoryInterface self Object
+     * @return $this self Object
      */
     public function setName($name);
 
@@ -63,7 +63,7 @@ interface CategoryInterface extends MetaDataInterface, EnabledInterface
      *
      * @param string $slug Slug
      *
-     * @return CategoryInterface self Object
+     * @return $this self Object
      */
     public function setSlug($slug);
 
@@ -79,7 +79,7 @@ interface CategoryInterface extends MetaDataInterface, EnabledInterface
      *
      * @param Collection $subCategories Sub categories
      *
-     * @return CategoryInterface self Object
+     * @return $this self Object
      */
     public function setSubCategories(Collection $subCategories);
 
@@ -95,7 +95,7 @@ interface CategoryInterface extends MetaDataInterface, EnabledInterface
      *
      * @param CategoryInterface $category Category to add as subcategory
      *
-     * @return CategoryInterface self Object
+     * @return $this self Object
      */
     public function addSubCategory(CategoryInterface $category);
 
@@ -104,7 +104,7 @@ interface CategoryInterface extends MetaDataInterface, EnabledInterface
      *
      * @param CategoryInterface $category
      *
-     * @return CategoryInterface self Object
+     * @return $this self Object
      */
     public function removeSubCategory(CategoryInterface $category);
 
@@ -113,7 +113,7 @@ interface CategoryInterface extends MetaDataInterface, EnabledInterface
      *
      * @param CategoryInterface $parent Category parent
      *
-     * @return CategoryInterface self Object
+     * @return $this self Object
      */
     public function setParent(CategoryInterface $parent = null);
 
@@ -129,7 +129,7 @@ interface CategoryInterface extends MetaDataInterface, EnabledInterface
      *
      * @param Collection $products Products
      *
-     * @return CategoryInterface self Object
+     * @return $this self Object
      */
     public function setProducts(Collection $products);
 
@@ -159,7 +159,7 @@ interface CategoryInterface extends MetaDataInterface, EnabledInterface
      *
      * @param Integer $position Category relative position
      *
-     * @return CategoryInterface self Object
+     * @return $this self Object
      */
     public function setPosition($position);
 

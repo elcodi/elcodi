@@ -33,7 +33,7 @@ class OrderCouponEventDispatcher extends AbstractEventDispatcher
      * @param OrderInterface  $cart   Cart where to apply the coupon
      * @param CouponInterface $coupon Coupon to be applied
      *
-     * @return CartCouponEventDispatcher self Object
+     * @return $this self Object
      */
     public function dispatchOrderCouponOnApplyEvent(
         OrderInterface $cart,

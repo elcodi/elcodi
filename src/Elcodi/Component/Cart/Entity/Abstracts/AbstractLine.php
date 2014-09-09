@@ -56,7 +56,7 @@ abstract class AbstractLine extends AbstractEntity
      *
      * @param ProductInterface $product Product
      *
-     * @return AbstractLine self Object
+     * @return $this self Object
      */
     public function setProduct(ProductInterface $product)
     {
@@ -90,7 +90,7 @@ abstract class AbstractLine extends AbstractEntity
      *
      * @param VariantInterface $variant
      *
-     * @return AbstractLine self Object
+     * @return $this self Object
      */
     public function setVariant($variant)
     {
@@ -104,7 +104,7 @@ abstract class AbstractLine extends AbstractEntity
      *
      * @param int $quantity Quantity
      *
-     * @return AbstractLine self Object
+     * @return $this self Object
      */
     public function setQuantity($quantity)
     {
@@ -134,7 +134,7 @@ abstract class AbstractLine extends AbstractEntity
      *
      * @param PurchasableInterface $purchasable
      *
-     * @return AbstractLine self Object
+     * @return $this self Object
      */
     public function setPurchasable(PurchasableInterface $purchasable)
     {
