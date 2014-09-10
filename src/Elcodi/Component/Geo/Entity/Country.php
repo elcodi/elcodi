@@ -21,11 +21,12 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Geo\Entity\Interfaces\CountryInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\StateInterface;
+use Elcodi\Component\Geo\Entity\Interfaces\ZoneMemberAssignableInterface;
 
 /**
  * Language
  */
-class Country implements CountryInterface
+class Country implements CountryInterface, ZoneMemberAssignableInterface
 {
     use EnabledTrait;
 
@@ -189,5 +190,17 @@ class Country implements CountryInterface
     public function getCities()
     {
         return $this->cities;
+    }
+
+    /**
+     * Return if a country is equal than current
+     *
+     * @param CountryInterface $country Country to be compared with
+     *
+     * @return boolean Countries are the same
+     */
+    public function equals(CountryInterface $country)
+    {
+        return $country->getCode() === $this->getCode();
     }
 }

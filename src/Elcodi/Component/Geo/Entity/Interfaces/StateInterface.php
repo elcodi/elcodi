@@ -136,4 +136,13 @@ interface StateInterface extends EnabledInterface
      * @return Collection siblings
      */
     public function getSiblings();
+
+    /**
+     * Return if a state is equal than current
+     *
+     * @param StateInterface $state State to be compared with
+     *
+     * @return boolean States are the same
+     */
+    public function equals(StateInterface $state);
 }

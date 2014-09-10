@@ -18,20 +18,27 @@ namespace Elcodi\Component\Geo\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Geo\Entity\Interfaces\CityInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\CountryInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\PostalCodeInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\ProvinceInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\StateInterface;
+use Elcodi\Component\Geo\Entity\Interfaces\ZoneMemberAssignableInterface;
 
 /**
  * Class City
  */
-class City extends AbstractEntity implements CityInterface
+class City implements CityInterface, ZoneMemberAssignableInterface
 {
     use EnabledTrait;
+
+    /**
+     * @var string
+     *
+     * Entity id
+     */
+    protected $id;
 
     /**
      * @var string
@@ -67,6 +74,30 @@ class City extends AbstractEntity implements CityInterface
      * Postal codes
      */
     protected $postalCodes;
+
+    /**
+     * Set id
+     *
+     * @param string $id Entity Id
+     *
+     * @return $this self Object
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return string Entity identifier
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Sets Name
@@ -207,5 +238,17 @@ class City extends AbstractEntity implements CityInterface
         return $this
             ->province
             ->getCities();
+    }
+
+    /**
+     * Return if a city is equal than current
+     *
+     * @param CityInterface $city City to be compared with
+     *
+     * @return boolean Cities are the same
+     */
+    public function equals(CityInterface $city)
+    {
+        return $city->getId() === $this->getId();
     }
 }

@@ -1,0 +1,8 @@
+Elcodi\Component\Geo\Entity\ZoneCityMember:
+    type: entity
+    manyToOne:
+        city:
+            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\CityInterface
+            joinColumn:
+                name: member_id
+                referencedColumnName: id

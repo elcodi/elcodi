@@ -31,7 +31,7 @@ services:
         alias: elcodi.core.geo.repository.state
 
     #
-    # Repository for entity state
+    # Repository for entity province
     #
     elcodi.core.geo.repository.province:
         class: %elcodi.core.geo.repository.province.class%
@@ -44,7 +44,7 @@ services:
         alias: elcodi.core.geo.repository.province
 
     #
-    # Repository for entity state
+    # Repository for entity city
     #
     elcodi.core.geo.repository.city:
         class: %elcodi.core.geo.repository.city.class%
@@ -57,7 +57,7 @@ services:
         alias: elcodi.core.geo.repository.city
 
     #
-    # Repository for entity state
+    # Repository for entity postalcode
     #
     elcodi.core.geo.repository.postal_code:
         class: %elcodi.core.geo.repository.postal_code.class%
@@ -81,3 +81,94 @@ services:
 
     elcodi.repository.address:
         alias: elcodi.core.geo.repository.address
+
+    #
+    # Repository for entity zone
+    #
+    elcodi.core.geo.repository.zone:
+        class: %elcodi.core.geo.repository.zone.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.geo.entity.zone.class%
+
+    elcodi.repository.zone:
+        alias: elcodi.core.geo.repository.zone
+
+    #
+    # Repository for entity zone member
+    #
+    elcodi.core.geo.repository.zone_member:
+        class: %elcodi.core.geo.repository.zone_member.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.geo.entity.zone_member.class%
+
+    elcodi.repository.zone_member:
+        alias: elcodi.core.geo.repository.zone_member
+
+    #
+    # Repository for entity zone country member
+    #
+    elcodi.core.geo.repository.zone_country_member:
+        class: %elcodi.core.geo.repository.zone_country_member.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.geo.entity.zone_country_member.class%
+
+    elcodi.repository.zone_country_member:
+        alias: elcodi.core.geo.repository.zone_country_member
+
+    #
+    # Repository for entity zone state member
+    #
+    elcodi.core.geo.repository.zone_state_member:
+        class: %elcodi.core.geo.repository.zone_state_member.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.geo.entity.zone_state_member.class%
+
+    elcodi.repository.zone_state_member:
+        alias: elcodi.core.geo.repository.zone_state_member
+
+    #
+    # Repository for entity zone province member
+    #
+    elcodi.core.geo.repository.zone_province_member:
+        class: %elcodi.core.geo.repository.zone_province_member.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.geo.entity.zone_province_member.class%
+
+    elcodi.repository.zone_province_member:
+        alias: elcodi.core.geo.repository.zone_province_member
+
+    #
+    # Repository for entity zone city member
+    #
+    elcodi.core.geo.repository.zone_city_member:
+        class: %elcodi.core.geo.repository.zone_city_member.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.geo.entity.zone_city_member.class%
+
+    elcodi.repository.zone_city_member:
+        alias: elcodi.core.geo.repository.zone_city_member
+
+    #
+    # Repository for entity zone postal code member
+    #
+    elcodi.core.geo.repository.zone_postal_code_member:
+        class: %elcodi.core.geo.repository.zone_postal_code_member.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.geo.entity.zone_postal_code_member.class%
+
+    elcodi.repository.zone_postal_code_member:
+        alias: elcodi.core.geo.repository.zone_postal_code_member

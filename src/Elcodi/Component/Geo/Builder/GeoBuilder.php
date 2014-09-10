@@ -19,16 +19,11 @@ namespace Elcodi\Component\Geo\Builder;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\Component\Geo\Builder\Interfaces\GeoBuilderInterface;
-use Elcodi\Component\Geo\Entity\City;
-use Elcodi\Component\Geo\Entity\Country;
 use Elcodi\Component\Geo\Entity\Interfaces\CityInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\CountryInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\PostalCodeInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\ProvinceInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\StateInterface;
-use Elcodi\Component\Geo\Entity\PostalCode;
-use Elcodi\Component\Geo\Entity\Province;
-use Elcodi\Component\Geo\Entity\State;
 use Elcodi\Component\Geo\Factory\CityFactory;
 use Elcodi\Component\Geo\Factory\CountryFactory;
 use Elcodi\Component\Geo\Factory\PostalCodeFactory;
@@ -272,10 +267,7 @@ class GeoBuilder implements GeoBuilderInterface
     public function addPostalCode(CityInterface $city, $postalCodeCode)
     {
         $postalCodeCode = trim($postalCodeCode);
-        $cityCountry = $city
-            ->getProvince()
-            ->getState()
-            ->getCountry();
+        $cityCountry = $city->getCountry();
 
         $postalCodeId = $cityCountry->getCode() . '_' . trim($postalCodeCode);
 

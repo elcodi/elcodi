@@ -18,18 +18,25 @@ namespace Elcodi\Component\Geo\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Geo\Entity\Interfaces\CountryInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\ProvinceInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\StateInterface;
+use Elcodi\Component\Geo\Entity\Interfaces\ZoneMemberAssignableInterface;
 
 /**
  * Class State
  */
-class State extends AbstractEntity implements StateInterface
+class State implements StateInterface, ZoneMemberAssignableInterface
 {
     use EnabledTrait;
+
+    /**
+     * @var string
+     *
+     * Entity id
+     */
+    protected $id;
 
     /**
      * @var string
@@ -65,6 +72,30 @@ class State extends AbstractEntity implements StateInterface
      * Cities
      */
     protected $cities;
+
+    /**
+     * Set id
+     *
+     * @param string $id Entity Id
+     *
+     * @return $this self Object
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return string Entity identifier
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Sets Code
@@ -217,5 +248,17 @@ class State extends AbstractEntity implements StateInterface
         return $this
             ->country
             ->getStates();
+    }
+
+    /**
+     * Return if a state is equal than current
+     *
+     * @param StateInterface $state State to be compared with
+     *
+     * @return boolean States are the same
+     */
+    public function equals(StateInterface $state)
+    {
+        return $state->getId() === $this->getId();
     }
 }

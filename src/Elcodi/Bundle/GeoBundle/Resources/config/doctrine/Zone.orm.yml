@@ -1,0 +1,31 @@
+Elcodi\Component\Geo\Entity\Zone:
+    type: entity
+    repositoryClass: Elcodi\Component\Geo\Repository\ZoneRepository
+    table: zone
+    id:
+        code:
+            type: string
+            generator:
+                strategy: NONE
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        enabled:
+            column: enabled
+            type: boolean
+
+    manyToMany:
+        members:
+            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\ZoneMemberInterface
+            inversedBy: zones
+            joinTable:
+                name: zone_zone_members
+                joinColumns:
+                    zone_code:
+                        referencedColumnName: code
+                inverseJoinColumns:
+                    zone_member_id:
+                        referencedColumnName: id

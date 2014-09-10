@@ -16,7 +16,6 @@
 
 namespace Elcodi\Component\Geo\Entity;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
@@ -26,9 +25,16 @@ use Elcodi\Component\Geo\Entity\Interfaces\PostalCodeInterface;
 /**
  * Address
  */
-class Address extends AbstractEntity implements AddressInterface
+class Address implements AddressInterface
 {
     use DateTimeTrait, EnabledTrait;
+
+    /**
+     * @var string
+     *
+     * Entity id
+     */
+    protected $id;
 
     /**
      * @var string
@@ -99,6 +105,30 @@ class Address extends AbstractEntity implements AddressInterface
      * Postalcode
      */
     protected $postalCode;
+
+    /**
+     * Set id
+     *
+     * @param string $id Entity Id
+     *
+     * @return $this self Object
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return string Entity identifier
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Sets Address

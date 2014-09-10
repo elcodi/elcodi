@@ -31,8 +31,8 @@
         "symfony/http-foundation": "~2.4",
         "symfony/validator": "~2.4",
         "symfony/process": "~2.4",
-        "symfony/expression-language": "~2.4",
         "symfony/event-dispatcher": "~2.4",
+        "symfony/expression-language": "~2.4",
         "symfony/finder": "~2.4",
         "symfony/browser-kit": "~2.4",
         "symfony/routing": "~2.4",
@@ -81,7 +81,8 @@
         "elcodi/rule": "self.version",
         "elcodi/user": "self.version",
         "elcodi/language": "self.version",
-        "elcodi/geo": "self.version"
+        "elcodi/geo": "self.version",
+        "elcodi/metadata": "self.version"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",

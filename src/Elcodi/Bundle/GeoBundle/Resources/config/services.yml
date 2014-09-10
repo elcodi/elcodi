@@ -24,3 +24,29 @@ services:
 
     elcodi.geo_builder:
         alias: elcodi.core.geo.builder.geo_builder
+
+    elcodi.core.geo.service.zone_manager:
+        class: %elcodi.core.geo.service.zone_manager.class%
+        arguments:
+            zone_object_manager: @elcodi.object_manager.zone
+            zone_matcher: @elcodi.zone_matcher
+            country_namespace: %elcodi.core.geo.entity.zone_country_member.class%
+            state_namespace: %elcodi.core.geo.entity.zone_state_member.class%
+            province_namespace: %elcodi.core.geo.entity.zone_province_member.class%
+            city_namespace: %elcodi.core.geo.entity.zone_city_member.class%
+            postal_code_namespace: %elcodi.core.geo.entity.zone_postal_code_member.class%
+
+    elcodi.zone_manager:
+        alias: elcodi.core.geo.service.zone_manager
+
+    elcodi.core.geo.service.zone_matcher:
+        class: %elcodi.core.geo.service.zone_matcher.class%
+
+    elcodi.zone_matcher:
+        alias: elcodi.core.geo.service.zone_matcher
+
+    elcodi.core.geo.service.zone_finder:
+        class: %elcodi.core.geo.service.zone_finder.class%
+
+    elcodi.zone_finder:
+        alias: elcodi.core.geo.service.zone_finder

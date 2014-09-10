@@ -152,4 +152,13 @@ interface ProvinceInterface extends EnabledInterface
      * @return Collection siblings
      */
     public function getSiblings();
+
+    /**
+     * Return if a province is equal than current
+     *
+     * @param ProvinceInterface $province Province to be compared with
+     *
+     * @return boolean Provinces are the same
+     */
+    public function equals(ProvinceInterface $province);
 }

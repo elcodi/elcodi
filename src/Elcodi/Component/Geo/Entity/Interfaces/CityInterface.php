@@ -127,4 +127,13 @@ interface CityInterface extends EnabledInterface
      * @return Collection siblings
      */
     public function getSiblings();
+
+    /**
+     * Return if a city is equal than current
+     *
+     * @param CityInterface $city City to be compared with
+     *
+     * @return boolean Cities are the same
+     */
+    public function equals(CityInterface $city);
 }

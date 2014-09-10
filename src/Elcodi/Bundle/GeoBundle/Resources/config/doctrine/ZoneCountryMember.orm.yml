@@ -1,0 +1,8 @@
+Elcodi\Component\Geo\Entity\ZoneCountryMember:
+    type: entity
+    manyToOne:
+        country:
+            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\CountryInterface
+            joinColumn:
+                name: member_id
+                referencedColumnName: code
