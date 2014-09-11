@@ -30,8 +30,3 @@ doctrine:
         query_cache_driver: array
         result_cache_driver: array
         auto_mapping: false
-
-doctrine_cache:
-   providers:
-      elcodi:
-         type: array

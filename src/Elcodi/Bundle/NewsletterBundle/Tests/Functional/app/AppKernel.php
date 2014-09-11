@@ -42,7 +42,6 @@ class AppKernel extends AbstractElcodiKernel
              */
             new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-            new \Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
 
             /**
              * Elcodi core bundles
