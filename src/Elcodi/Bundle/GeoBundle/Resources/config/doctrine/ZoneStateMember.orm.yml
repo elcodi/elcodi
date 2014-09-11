@@ -1,0 +1,8 @@
+Elcodi\Component\Geo\Entity\ZoneStateMember:
+    type: entity
+    manyToOne:
+        state:
+            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\StateInterface
+            joinColumn:
+                name: member_id
+                referencedColumnName: id

@@ -90,4 +90,13 @@ interface PostalCodeInterface extends EnabledInterface
      * @return $this self Object
      */
     public function removeCity(CityInterface $city);
+
+    /**
+     * Return if a $postalCode is equal than current
+     *
+     * @param PostalCodeInterface $postalCode PostalCode to be compared with
+     *
+     * @return boolean Cities are the same
+     */
+    public function equals(PostalcodeInterface $postalCode);
 }

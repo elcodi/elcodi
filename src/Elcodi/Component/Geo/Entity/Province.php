@@ -18,19 +18,26 @@ namespace Elcodi\Component\Geo\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Geo\Entity\Interfaces\CityInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\CountryInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\ProvinceInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\StateInterface;
+use Elcodi\Component\Geo\Entity\Interfaces\ZoneMemberAssignableInterface;
 
 /**
  * Class Province
  */
-class Province extends AbstractEntity implements ProvinceInterface
+class Province implements ProvinceInterface, ZoneMemberAssignableInterface
 {
     use EnabledTrait;
+
+    /**
+     * @var string
+     *
+     * Entity id
+     */
+    protected $id;
 
     /**
      * @var string
@@ -73,6 +80,30 @@ class Province extends AbstractEntity implements ProvinceInterface
      * Postalcodes
      */
     protected $postalCodes;
+
+    /**
+     * Set id
+     *
+     * @param string $id Entity Id
+     *
+     * @return $this self Object
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return string Entity identifier
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Sets Code
@@ -250,5 +281,17 @@ class Province extends AbstractEntity implements ProvinceInterface
         return $this
             ->state
             ->getProvinces();
+    }
+
+    /**
+     * Return if a province is equal than current
+     *
+     * @param ProvinceInterface $province Province to be compared with
+     *
+     * @return boolean Provinces are the same
+     */
+    public function equals(ProvinceInterface $province)
+    {
+        return $province->getId() === $this->getId();
     }
 }

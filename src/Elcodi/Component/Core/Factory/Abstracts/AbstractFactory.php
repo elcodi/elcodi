@@ -16,8 +16,6 @@
 
 namespace Elcodi\Component\Core\Factory\Abstracts;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
-
 /**
  * Class AbstractFactory
  *
@@ -68,7 +66,7 @@ abstract class AbstractFactory
      * This method must always returns an empty instance of the related Entity
      * and initializes it in a consistent state
      *
-     * @return AbstractEntity Empty entity
+     * @return Object Empty entity
      */
     abstract public function create();
 }

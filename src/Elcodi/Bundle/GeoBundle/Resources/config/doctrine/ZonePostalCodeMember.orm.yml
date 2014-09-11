@@ -1,0 +1,8 @@
+Elcodi\Component\Geo\Entity\ZonePostalCodeMember:
+    type: entity
+    manyToOne:
+        postalCode:
+            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\PostalCodeInterface
+            joinColumn:
+                name: member_id
+                referencedColumnName: id

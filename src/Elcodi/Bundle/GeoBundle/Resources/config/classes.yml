@@ -9,6 +9,13 @@ parameters:
     elcodi.core.geo.repository.city.class: Elcodi\Component\Geo\Repository\CityRepository
     elcodi.core.geo.repository.postal_code.class: Elcodi\Component\Geo\Repository\PostalCodeRepository
     elcodi.core.geo.repository.address.class: Elcodi\Component\Geo\Repository\AddressRepository
+    elcodi.core.geo.repository.zone.class: Elcodi\Component\Geo\Repository\ZoneRepository
+    elcodi.core.geo.repository.zone_member.class: Elcodi\Component\Geo\Repository\ZoneMemberRepository
+    elcodi.core.geo.repository.zone_country_member.class: Elcodi\Component\Geo\Repository\ZoneCountryMemberRepository
+    elcodi.core.geo.repository.zone_state_member.class: Elcodi\Component\Geo\Repository\ZoneStateMemberRepository
+    elcodi.core.geo.repository.zone_province_member.class: Elcodi\Component\Geo\Repository\ZoneProvinceMemberRepository
+    elcodi.core.geo.repository.zone_city_member.class: Elcodi\Component\Geo\Repository\ZoneCityMemberRepository
+    elcodi.core.geo.repository.zone_postal_code_member.class: Elcodi\Component\Geo\Repository\ZonePostalCodeMemberRepository
 
     #
     # Factories
@@ -19,6 +26,7 @@ parameters:
     elcodi.core.geo.factory.city.class: Elcodi\Component\Geo\Factory\CityFactory
     elcodi.core.geo.factory.postal_code.class: Elcodi\Component\Geo\Factory\PostalCodeFactory
     elcodi.core.geo.factory.address.class: Elcodi\Component\Geo\Factory\AddressFactory
+    elcodi.core.geo.factory.zone.class: Elcodi\Component\Geo\Factory\ZoneFactory
 
     #
     # Commands
@@ -30,3 +38,6 @@ parameters:
     #
     elcodi.core.geo.populator.geo_populator.class: Elcodi\Component\Geo\Populator\GeoPopulator
     elcodi.core.geo.builder.geo_builder.class: Elcodi\Component\Geo\Builder\GeoBuilder
+    elcodi.core.geo.service.zone_manager.class: Elcodi\Component\Geo\Services\ZoneManager
+    elcodi.core.geo.service.zone_matcher.class: Elcodi\Component\Geo\Services\ZoneMatcher
+    elcodi.core.geo.service.zone_finder.class: Elcodi\Component\Geo\Services\ZoneFinder

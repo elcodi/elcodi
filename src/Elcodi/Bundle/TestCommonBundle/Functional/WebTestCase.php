@@ -25,13 +25,10 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 
 /**
  * Core abstract tests class
- *
- * @backupGlobals disabled
  */
 abstract class WebTestCase extends BaseWebTestCase
 {
@@ -62,14 +59,14 @@ abstract class WebTestCase extends BaseWebTestCase
     public function setUp()
     {
         gc_collect_cycles();
-
+try {
         static::$kernel = static::createKernel();
         static::$kernel->boot();
 
         static::$application = new Application(static::$kernel);
         static::$application->setAutoExit(false);
         $this->container = static::$kernel->getContainer();
-
+} catch (\Exception $e) { echo $e->getMessage(); die();}
         $this->createSchema();
     }
 
@@ -270,7 +267,7 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * @param string $serviceName Container service name
      *
-     * @return object The associated service
+     * @return mixed The associated service
      */
     public function get($serviceName)
     {
@@ -284,7 +281,7 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * @param string $parameterName Container parameter name
      *
-     * @return object The required parameter value
+     * @return mixed The required parameter value
      */
     public function getParameter($parameterName)
     {
@@ -299,7 +296,7 @@ abstract class WebTestCase extends BaseWebTestCase
      * @param string  $entityName Entity name
      * @param integer $id         Instance if
      *
-     * @return AbstractEntity Entity
+     * @return mixed Entity
      */
     public function find($entityName, $id)
     {
@@ -326,7 +323,7 @@ abstract class WebTestCase extends BaseWebTestCase
      * Save an entity. To ensure the method is simple, the entity will be
      * persisted always
      *
-     * @param AbstractEntity $entity Entity
+     * @param mixed $entity Entity
      *
      * @return $this self Object
      */
@@ -348,7 +345,7 @@ abstract class WebTestCase extends BaseWebTestCase
     /**
      * Remove an entity from ORM map.
      *
-     * @param AbstractEntity $entity Entity
+     * @param mixed $entity Entity
      *
      * @return $this self Object
      */

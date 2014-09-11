@@ -1,0 +1,8 @@
+Elcodi\Component\Geo\Entity\ZoneProvinceMember:
+    type: entity
+    manyToOne:
+        province:
+            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\ProvinceInterface
+            joinColumn:
+                name: member_id
+                referencedColumnName: id

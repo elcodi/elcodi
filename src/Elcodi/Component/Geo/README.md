@@ -19,6 +19,17 @@ Tags
 * Use last unstable version ( alias of `dev-master` ) to stay always in last commit
 * Use last stable version tag to stay in a stable release.
 
+Content
+-------
+
+GeoPopulator
+------------
+
+El servicio GeoPopulator permite popular el modelo entero a partir de una
+entrada de datos a partir de un adapter.
+
+Para construir un adaptador
+
 Contributing
 ------------
 

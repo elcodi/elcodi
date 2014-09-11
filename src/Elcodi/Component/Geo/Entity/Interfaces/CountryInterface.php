@@ -104,4 +104,13 @@ interface CountryInterface extends EnabledInterface
      * @return Collection Cities
      */
     public function getCities();
+
+    /**
+     * Return if a country is equal than current
+     *
+     * @param CountryInterface $country Country to be compared with
+     *
+     * @return boolean Countries are the same
+     */
+    public function equals(CountryInterface $country);
 }
