@@ -31,11 +31,6 @@ doctrine:
         result_cache_driver: array
         auto_mapping: false
 
-doctrine_cache:
-   providers:
-      elcodi:
-         type: array
-
 knp_gaufrette:
     adapters:
         local:
