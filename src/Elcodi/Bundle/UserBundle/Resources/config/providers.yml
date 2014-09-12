@@ -5,12 +5,12 @@ services:
     #
     elcodi.core.user.provider.customer_provider_entity_instance:
         class: %elcodi.core.user.entity.customer.class%
-        factory_service: @elcodi.factory.customer
+        factory_service: elcodi.factory.customer
         factory_method: create
 
     elcodi.core.user.provider.admin_user_provider_entity_instance:
         class: %elcodi.core.user.entity.admin_user.class%
-        factory_service: @elcodi.factory.admin_user
+        factory_service: elcodi.factory.admin_user
         factory_method: create
 
     #
