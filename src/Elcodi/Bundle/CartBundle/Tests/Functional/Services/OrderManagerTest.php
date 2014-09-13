@@ -57,7 +57,7 @@ class OrderManagerTest extends WebTestCase
     /**
      * Schema must be loaded in all test cases
      *
-     * @return array Load schema
+     * @return boolean Load schema
      */
     protected function loadSchema()
     {
@@ -67,7 +67,7 @@ class OrderManagerTest extends WebTestCase
     /**
      * Returns the callable name of the service
      *
-     * @return string service name
+     * @return string[] service name
      */
     public function getServiceCallableName()
     {

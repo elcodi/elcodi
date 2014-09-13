@@ -31,7 +31,7 @@ class OrderEventListenerTest extends WebTestCase
     /**
      * Returns the callable name of the service
      *
-     * @return string service name
+     * @return string[] service name
      */
     public function getServiceCallableName()
     {

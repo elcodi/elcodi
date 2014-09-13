@@ -32,7 +32,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
     /**
      * Returns the callable name of the service
      *
-     * @return string service name
+     * @return string[] service name
      */
     public function getServiceCallableName()
     {
