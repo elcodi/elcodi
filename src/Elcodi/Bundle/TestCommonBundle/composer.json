@@ -25,7 +25,7 @@
         "doctrine/orm": "~2.4",
         "doctrine/doctrine-fixtures-bundle": "~2.2",
         "symfony/config": "~2.4",
-        "symfony/http-kernel": "~2.4",
+        "symfony/http-kernel": "~2.4, >2.4.6",
         "symfony/framework-bundle": "~2.4, >=2.4.8",
         "symfony/console": "~2.4",
         "symfony/browser-kit": "~2.4",
