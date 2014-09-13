@@ -43,7 +43,7 @@ class Locale implements LocaleInterface
     /**
      * Get Iso
      *
-     * @return mixed Iso
+     * @return string Iso
      */
     public function getIso()
     {

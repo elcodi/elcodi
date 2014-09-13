@@ -23,7 +23,6 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 use Elcodi\Component\User\ElcodiUserEvents;
 use Elcodi\Component\User\Entity\Abstracts\AbstractUser;
-use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 use Elcodi\Component\User\Event\PasswordRecoverEvent;
 use Elcodi\Component\User\Event\PasswordRememberEvent;
 use Elcodi\Component\User\Generator\RecoveryHashGenerator;
@@ -89,7 +88,7 @@ class PasswordManager
      * @param string                  $recoverPasswordUrlName Recover password name
      * @param string                  $hashField              Hash
      *
-     * @return CustomerInterface its been found and processed
+     * @return boolean its been found and processed
      */
     public function rememberPasswordByEmail(
         UserEmaileableInterface $userRepository,

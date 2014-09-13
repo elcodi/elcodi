@@ -262,12 +262,14 @@ interface ReferralLineInterface extends EnabledInterface
     /**
      * Get Closed
      *
-     * @return boolean Closed
+     * @return boolean ReferralLine is closed
      */
     public function isClosed();
 
     /**
      * Calculate closed variable
+     *
+     * @return $this self Object
      */
     public function loadClosed();
 }

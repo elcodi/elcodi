@@ -69,7 +69,7 @@ class ImageExtension extends Twig_Extension
     /**
      * Return all filters
      *
-     * @return array Filters created
+     * @return Twig_SimpleFilter[] Filters created
      */
     public function getFilters()
     {

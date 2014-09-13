@@ -75,7 +75,11 @@ class RuleManagerConfiguration implements ContextConfigurationInterface, Express
     }
 
     /**
+     * Configures context
+     *
      * @param ContextAwareInterface $contextAware
+     *
+     * @return $this self Object
      */
     public function configureContext(ContextAwareInterface $contextAware)
     {
@@ -87,12 +91,16 @@ class RuleManagerConfiguration implements ContextConfigurationInterface, Express
 
             $contextConfiguration->configureContext($contextAware);
         }
+
+        return $this;
     }
 
     /**
      * Configures expression language
      *
      * @param ExpressionLanguageAwareInterface $expressionLanguageAware Expression Language aware
+     *
+     * @return $this self Object
      */
     public function configureExpressionLanguage(
         ExpressionLanguageAwareInterface $expressionLanguageAware
@@ -106,5 +114,7 @@ class RuleManagerConfiguration implements ContextConfigurationInterface, Express
 
             $expressionLanguageConfiguration->configureExpressionLanguage($expressionLanguageAware);
         }
+
+        return $this;
     }
 }

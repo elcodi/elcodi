@@ -269,7 +269,7 @@ class ReferralProgramManager
      * @param CustomerInterface $invited Customer
      * @param string            $hash    Hash
      *
-     * @return null|ReferralLine Related Referral Line
+     * @return null|ReferralHashInterface Related Referral Line
      */
     public function resolve(CustomerInterface $invited, $hash)
     {

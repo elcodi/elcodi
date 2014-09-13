@@ -208,64 +208,64 @@ interface ProductInterface
      *
      * @param VariantInterface $principalVariant
      *
-     * @return ProductInterface
+     * @return $this self Object
      */
     public function setPrincipalVariant(VariantInterface $principalVariant);
 
     /**
      * Adds an attribute if not already in the collection
      *
-     * @param AttributeInterface $attribute
+     * @param AttributeInterface $attribute Attribute
      *
-     * @return ProductInterface;
+     * @return $this self Object;
      */
     public function addAttribute(AttributeInterface $attribute);
 
     /**
      * Returns product attributes
      *
-     * @return Collection
+     * @return Collection Attributes
      */
     public function getAttributes();
 
     /**
      * Sets product attributes
      *
-     * @param Collection $attributes
+     * @param Collection $attributes Attributes
      *
-     * @return ProductInterface
+     * @return $this self Object
      */
     public function setAttributes(Collection $attributes);
 
     /**
      * Gets product variants
      *
-     * @return Collection
+     * @return Collection Variants
      */
     public function getVariants();
 
     /**
      * Adds a Variant for this Product
      *
-     * @param VariantInterface $variant
+     * @param VariantInterface $variant Variant
      *
-     * @return ProductInterface
+     * @return $this self Object
      */
     public function addVariant(VariantInterface $variant);
 
     /**
      * Sets product variants
      *
-     * @param Collection $variants
+     * @param Collection $variants Variants
      *
-     * @return ProductInterface
+     * @return $this self Object
      */
     public function setVariants(Collection $variants);
 
     /**
      * Tells if this product has variants
      *
-     * @return bool
+     * @return boolean Product has variants
      */
     public function hasVariants();
 }

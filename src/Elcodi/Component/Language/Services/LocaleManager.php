@@ -158,7 +158,7 @@ class LocaleManager
     /**
      * Returns the ISO code of the country according to locale
      *
-     * @return string 2-letter ISO code
+     * @return Locale 2-letter ISO code
      */
     public function getCountryCode()
     {

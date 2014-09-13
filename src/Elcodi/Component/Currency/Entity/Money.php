@@ -39,6 +39,7 @@ class Money extends StubMoney implements MoneyInterface
      * Money amount
      */
     protected $amount = 0;
+
     /**
      * @var WrappedMoney
      *
@@ -56,8 +57,8 @@ class Money extends StubMoney implements MoneyInterface
     /**
      * Simple Money Value Object constructor
      *
-     * @param                   $amount
-     * @param CurrencyInterface $currency
+     * @param Integer           $amount   Amount
+     * @param CurrencyInterface $currency Currency
      */
     protected function __construct($amount, CurrencyInterface $currency)
     {
@@ -91,7 +92,7 @@ class Money extends StubMoney implements MoneyInterface
     /**
      * Gets the Money Currency
      *
-     * @return CurrencyInterface
+     * @return CurrencyInterface Currency
      */
     public function getCurrency()
     {
@@ -121,7 +122,7 @@ class Money extends StubMoney implements MoneyInterface
     /**
      * Gets the Money amount
      *
-     * @return int
+     * @return integer Amount
      */
     public function getAmount()
     {
@@ -139,7 +140,7 @@ class Money extends StubMoney implements MoneyInterface
      *
      * @param MoneyInterface $other
      *
-     * @return int
+     * @return integer Comparation value
      */
     public function compareTo(MoneyInterface $other)
     {
@@ -149,9 +150,10 @@ class Money extends StubMoney implements MoneyInterface
     /**
      * Adds a Money and returns the result as a new Money
      *
-     * @param MoneyInterface $other
+     * @param MoneyInterface $other Other money
      *
-     * @return MoneyInterface
+     * @return MoneyInterface New money instance as a result of addition
+     *                        between current object and given as a parameter
      */
     public function add(MoneyInterface $other)
     {
@@ -163,9 +165,10 @@ class Money extends StubMoney implements MoneyInterface
     /**
      * Subtracts a Money and returns the result as a new Money
      *
-     * @param MoneyInterface $other
+     * @param MoneyInterface $other Other money
      *
-     * @return MoneyInterface
+     * @return MoneyInterface New money instance as a result of subtraction
+     *                        between current object and given as a parameter
      */
     public function subtract(MoneyInterface $other)
     {
@@ -177,9 +180,9 @@ class Money extends StubMoney implements MoneyInterface
     /**
      * Multiplies current Money amount by a factor returns the result as a new Money
      *
-     * @param float $factor
+     * @param float $factor Factor
      *
-     * @return MoneyInterface
+     * @return MoneyInterface New money instance with amount multiplied by factor
      */
     public function multiply($factor)
     {
@@ -193,7 +196,7 @@ class Money extends StubMoney implements MoneyInterface
      *
      * @param MoneyInterface $other
      *
-     * @return bool
+     * @return boolean Current money equals given as parameter
      */
     public function equals(MoneyInterface $other)
     {
@@ -205,7 +208,7 @@ class Money extends StubMoney implements MoneyInterface
      *
      * @param MoneyInterface $other
      *
-     * @return bool
+     * @return boolean Current money is greater than given as parameter
      */
     public function isGreaterThan(MoneyInterface $other)
     {
@@ -217,7 +220,7 @@ class Money extends StubMoney implements MoneyInterface
      *
      * @param MoneyInterface $other
      *
-     * @return bool
+     * @return boolean Current money is less than given as parameter
      */
     public function isLessThan(MoneyInterface $other)
     {
@@ -227,9 +230,9 @@ class Money extends StubMoney implements MoneyInterface
     /**
      * Returns a new WrappedMoney given a MoneyInterface
      *
-     * @param MoneyInterface $money
+     * @param MoneyInterface $money Money
      *
-     * @return $this self Object
+     * @return WrappedMoney WrappedMoney new instance
      */
     private function newWrappedMoneyFromMoney(MoneyInterface $money)
     {
@@ -255,7 +258,7 @@ class Money extends StubMoney implements MoneyInterface
      * @param integer           $amount   Amount
      * @param CurrencyInterface $currency Currency
      *
-     * @return MoneyInterface
+     * @return MoneyInterface new Money instance
      */
     public static function create(
         $amount,

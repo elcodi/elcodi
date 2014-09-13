@@ -23,6 +23,8 @@ use Twig_SimpleFilter;
 use Elcodi\Component\Currency\Adapter\LocaleProvider\Interfaces\LocaleProviderAdapterInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
+use Elcodi\Component\Currency\Exception\CurrencyNotAvailableException;
+use Elcodi\Component\Currency\Exception\CurrencyNotConvertibleException;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
 use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 
@@ -73,7 +75,7 @@ class PrintMoneyExtension extends Twig_Extension
     /**
      * Return all filters
      *
-     * @return array Filters created
+     * @return Twig_SimpleFilter[] Filters
      */
     public function getFilters()
     {
@@ -91,7 +93,8 @@ class PrintMoneyExtension extends Twig_Extension
      * @param MoneyInterface    $money          the Money object to print
      * @param CurrencyInterface $targetCurrency Iso code of the target currency (optional)
      *
-     * @throws \Exception if source-target exchange is missing
+     * @throws CurrencyNotAvailableException   Any currency available
+     * @throws CurrencyNotConvertibleException Currencies cannot be converted
      *
      * @return string The formatted price
      */

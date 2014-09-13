@@ -470,7 +470,7 @@ class Product extends AbstractEntity implements ProductInterface
     /**
      * Adds an attribute if not already in the collection
      *
-     * @param AttributeInterface $attribute
+     * @param AttributeInterface $attribute Attribute
      *
      * @return $this self Object
      */
@@ -488,7 +488,7 @@ class Product extends AbstractEntity implements ProductInterface
     /**
      * Returns product attributes
      *
-     * @return Collection
+     * @return Collection Attributes
      */
     public function getAttributes()
     {
@@ -498,7 +498,7 @@ class Product extends AbstractEntity implements ProductInterface
     /**
      * Sets product attributes
      *
-     * @param Collection $attributes
+     * @param Collection $attributes Attributes
      *
      * @return $this self Object
      */
@@ -512,7 +512,7 @@ class Product extends AbstractEntity implements ProductInterface
     /**
      * Gets product variants
      *
-     * @return Collection
+     * @return Collection Variants
      */
     public function getVariants()
     {
@@ -536,7 +536,7 @@ class Product extends AbstractEntity implements ProductInterface
     /**
      * Sets product variants
      *
-     * @param Collection $variants
+     * @param Collection $variants Variants
      *
      * @return $this self Object
      */
@@ -574,7 +574,7 @@ class Product extends AbstractEntity implements ProductInterface
     /**
      * Tells if this product has variants
      *
-     * @return bool Has variants
+     * @return boolean Product has variants
      */
     public function hasVariants()
     {

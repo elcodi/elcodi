@@ -197,7 +197,7 @@ class NewsletterManager
      *
      * @param string $email Email
      *
-     * @return boolean Is subscribed
+     * @return null|object Subscription instance if exists
      */
     public function getSubscription($email)
     {
@@ -213,7 +213,7 @@ class NewsletterManager
      *
      * @param string $email Email
      *
-     * @return string Email
+     * @return boolean Email is valid
      */
     public function validateEmail($email)
     {

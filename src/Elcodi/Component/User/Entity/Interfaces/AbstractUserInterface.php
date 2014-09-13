@@ -26,7 +26,7 @@ interface AbstractUserInterface
     /**
      * User roles
      *
-     * @return array Roles
+     * @return string[] Roles
      */
     public function getRoles();
 

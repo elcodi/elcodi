@@ -367,7 +367,7 @@ class ReferralLine extends AbstractEntity implements ReferralLineInterface
     /**
      * Get Closed
      *
-     * @return boolean Closed
+     * @return boolean ReferralLine is closed
      */
     public function isClosed()
     {
@@ -376,6 +376,8 @@ class ReferralLine extends AbstractEntity implements ReferralLineInterface
 
     /**
      * Calculate closed variable
+     *
+     * @return $this self Object
      */
     public function loadClosed()
     {
@@ -383,5 +385,7 @@ class ReferralLine extends AbstractEntity implements ReferralLineInterface
             $this->getInvitedCouponUsed() &&
             $this->getReferrerCouponUsed()
         );
+
+        return $this;
     }
 }

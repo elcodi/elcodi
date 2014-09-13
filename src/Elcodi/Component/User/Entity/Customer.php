@@ -104,7 +104,7 @@ class Customer extends AbstractUser implements CustomerInterface
     /**
      * User roles
      *
-     * @return array Roles
+     * @return string[] Roles
      */
     public function getRoles()
     {

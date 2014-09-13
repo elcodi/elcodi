@@ -54,7 +54,7 @@ class PrintRouteExtension extends Twig_Extension
     /**
      * Returns a list of functions to add to the existing list.
      *
-     * @return array An array of functions
+     * @return Twig_SimpleFunction[] An array of functions
      */
     public function getFunctions()
     {

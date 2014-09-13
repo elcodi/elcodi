@@ -110,7 +110,7 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * If returns false, avoid service check.
      *
-     * @return string service name
+     * @return string[] service name
      */
     public function getServiceCallableName()
     {
@@ -140,7 +140,7 @@ abstract class WebTestCase extends BaseWebTestCase
     /**
      * Schema must be loaded in all test cases
      *
-     * @return array Load schema
+     * @return boolean Load schema
      */
     protected function loadSchema()
     {
