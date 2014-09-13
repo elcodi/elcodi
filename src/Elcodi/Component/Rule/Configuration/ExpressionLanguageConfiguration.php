@@ -47,6 +47,8 @@ class ExpressionLanguageConfiguration implements ExpressionLanguageConfiguration
      * Configures expression language
      *
      * @param ExpressionLanguageAwareInterface $expressionLanguageAware Expression Language aware
+     *
+     * @return $this self Object
      */
     public function configureExpressionLanguage(ExpressionLanguageAwareInterface $expressionLanguageAware)
     {

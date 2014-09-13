@@ -110,7 +110,7 @@ interface BannerZoneInterface
     /**
      * Set the BannerZoneInterface height in pixels
      *
-     * @param integer $height
+     * @param float $height Height
      *
      * @return $this self Object
      */
@@ -119,14 +119,14 @@ interface BannerZoneInterface
     /**
      * Get the BannerZoneInterface height in pixels
      *
-     * @return integer Height
+     * @return float Height
      */
     public function getHeight();
 
     /**
      * Set the BannerZoneInterface width in pixels
      *
-     * @param integer $width
+     * @param float $width Width
      *
      * @return $this self Object
      */
@@ -135,7 +135,7 @@ interface BannerZoneInterface
     /**
      * Get the BannerZoneInterface width in pixels
      *
-     * @return integer Width
+     * @return float Width
      */
     public function getWidth();
 }

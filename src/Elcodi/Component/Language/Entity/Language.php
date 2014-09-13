@@ -28,7 +28,7 @@ class Language extends AbstractEntity implements LanguageInterface
     use EnabledTrait;
 
     /**
-     * @var float
+     * @var string
      *
      * Language name
      */
@@ -58,7 +58,7 @@ class Language extends AbstractEntity implements LanguageInterface
     /**
      * Get shop name
      *
-     * @return string
+     * @return string Name
      */
     public function getName()
     {
@@ -82,7 +82,7 @@ class Language extends AbstractEntity implements LanguageInterface
     /**
      * Get iso
      *
-     * @return string
+     * @return string Iso
      */
     public function getIso()
     {

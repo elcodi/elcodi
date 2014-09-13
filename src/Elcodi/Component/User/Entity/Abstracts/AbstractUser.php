@@ -90,7 +90,7 @@ abstract class AbstractUser extends AbstractEntity implements UserInterface
     /**
      * User roles
      *
-     * @return array Roles
+     * @return string[] Roles
      */
     public function getRoles()
     {

@@ -48,21 +48,21 @@ class Coupon extends AbstractEntity implements CouponInterface
     protected $name;
 
     /**
-     * @var int
+     * @var integer
      *
      * Type
      */
     protected $type;
 
     /**
-     * @var int
+     * @var integer
      *
      * Enforcement type
      */
     protected $enforcement;
 
     /**
-     * @var int
+     * @var integer
      *
      * Price amount
      */
@@ -83,7 +83,7 @@ class Coupon extends AbstractEntity implements CouponInterface
     protected $discount = 0;
 
     /**
-     * @var int
+     * @var integer
      *
      * Absolute price amount
      */
@@ -97,21 +97,21 @@ class Coupon extends AbstractEntity implements CouponInterface
     protected $absolutePriceCurrency;
 
     /**
-     * @var float
+     * @var integer
      *
      * Count
      */
     protected $count;
 
     /**
-     * @var int
+     * @var integer
      *
      * Used times
      */
     protected $used;
 
     /**
-     * @var float
+     * @var integer
      *
      * Priority
      */
@@ -182,7 +182,7 @@ class Coupon extends AbstractEntity implements CouponInterface
     /**
      * Set type
      *
-     * @param int $type Type
+     * @param integer $type Type
      *
      * @return $this self Object
      */
@@ -196,7 +196,7 @@ class Coupon extends AbstractEntity implements CouponInterface
     /**
      * Get type
      *
-     * @return int Type
+     * @return integer Type
      */
     public function getType()
     {
@@ -206,7 +206,7 @@ class Coupon extends AbstractEntity implements CouponInterface
     /**
      * Sets Enforcement
      *
-     * @param int $enforcement Enforcement
+     * @param integer $enforcement Enforcement
      *
      * @return Coupon Self object
      */
@@ -220,7 +220,7 @@ class Coupon extends AbstractEntity implements CouponInterface
     /**
      * Get Enforcement
      *
-     * @return int Enforcement
+     * @return integer Enforcement
      */
     public function getEnforcement()
     {
@@ -258,7 +258,7 @@ class Coupon extends AbstractEntity implements CouponInterface
     /**
      * Set discount
      *
-     * @param int $discount Discount
+     * @param integer $discount Discount
      *
      * @return $this self Object
      */
@@ -272,7 +272,7 @@ class Coupon extends AbstractEntity implements CouponInterface
     /**
      * Get discount
      *
-     * @return int discount
+     * @return integer discount
      */
     public function getDiscount()
     {

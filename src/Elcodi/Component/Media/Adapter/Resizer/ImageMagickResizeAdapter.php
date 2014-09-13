@@ -21,7 +21,6 @@ use Symfony\Component\Process\ProcessBuilder;
 
 use Elcodi\Component\Media\Adapter\Resizer\Interfaces\ResizeAdapterInterface;
 use Elcodi\Component\Media\ElcodiMediaImageResizeTypes;
-use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 
 /**
  * Class ImageMagickResizerAdapter
@@ -62,7 +61,7 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
      * @param Integer $width     Width value
      * @param Integer $type      Type
      *
-     * @return ImageInterface Resized image data
+     * @return string Resized image data
      *
      * @throws \RuntimeException
      */

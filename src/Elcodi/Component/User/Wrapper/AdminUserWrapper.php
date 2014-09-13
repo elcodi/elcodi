@@ -20,7 +20,6 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 
 use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
-use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 use Elcodi\Component\User\Factory\AdminUserFactory;
 
 /**
@@ -72,7 +71,7 @@ class AdminUserWrapper
     /**
      * Return current loaded customer
      *
-     * @return CustomerInterface current customer
+     * @return AdminUserInterface current customer
      */
     public function getAdminUser()
     {

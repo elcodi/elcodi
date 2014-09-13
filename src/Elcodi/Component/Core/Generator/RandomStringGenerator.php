@@ -43,7 +43,7 @@ class RandomStringGenerator implements GeneratorInterface
     /**
      * Return the length of desired generator
      *
-     * @return string Length of string
+     * @return integer Length of string
      */
     protected function getLength()
     {

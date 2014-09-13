@@ -107,7 +107,7 @@ class ZoneFinder
      * @param ZoneInterface    $zone    Zone
      * @param AddressInterface $address Address
      *
-     * @return boolean Address is contained in zone
+     * @return boolean Zones where address is contained
      */
     public function getZonesFromAddress(
         ZoneInterface $zone,
@@ -133,7 +133,7 @@ class ZoneFinder
      * @param ZoneInterface    $zone    Zone
      * @param CountryInterface $country Country
      *
-     * @return Collection
+     * @return Collection Zones where country is contained
      */
     public function getZonesFromCountry(
         $zone, $country
@@ -164,7 +164,7 @@ class ZoneFinder
      * @param ZoneInterface  $zone  Zone
      * @param StateInterface $state State
      *
-     * @return Collection
+     * @return Collection Zones where state is contained
      */
     public function getZonesFromState(
         $zone, $state
@@ -195,7 +195,7 @@ class ZoneFinder
      * @param ZoneInterface     $zone     Zone
      * @param ProvinceInterface $province Province
      *
-     * @return Collection
+     * @return Collection Zones where province is contained
      */
     public function getZonesFromProvince(
         $zone, $province
@@ -226,7 +226,7 @@ class ZoneFinder
      * @param ZoneInterface $zone Zone
      * @param CityInterface $city City
      *
-     * @return Collection
+     * @return Collection Zones where city is contained
      */
     public function getZonesFromCity(
         $zone, $city
@@ -257,7 +257,7 @@ class ZoneFinder
      * @param ZoneInterface       $zone       Zone
      * @param PostalCodeInterface $postalCode PostalCode
      *
-     * @return Collection
+     * @return Collection Zones where postalcode is contained
      */
     public function getZonesFromPostalCode(
         $zone, $postalCode

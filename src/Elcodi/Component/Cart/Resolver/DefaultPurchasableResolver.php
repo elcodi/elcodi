@@ -74,7 +74,9 @@ class DefaultPurchasableResolver implements PurchasableResolverInterface
     /**
      * Sets the purchasable in current line
      *
-     * @param PurchasableInterface $purchasable
+     * @param PurchasableInterface $purchasable Purchasable object
+     *
+     * @return $this self Object
      */
     public function setPurchasable(PurchasableInterface $purchasable)
     {
@@ -96,6 +98,8 @@ class DefaultPurchasableResolver implements PurchasableResolverInterface
         }
 
         $this->line->setProduct($product);
+
+        return $this;
     }
 
     /**

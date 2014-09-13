@@ -25,9 +25,9 @@ use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
 class AdminUser extends AbstractUser implements AdminUserInterface
 {
     /**
-     * User roles
+     * Admin User roles
      *
-     * @return array Roles
+     * @return string[] Roles
      */
     public function getRoles()
     {

@@ -192,7 +192,7 @@ class CartCouponManager
      * @throws CouponAppliedException
      * @throws CouponFreeShippingExistsException
      *
-     * @return boolean Coupon has added to Cart
+     * @return $this self Object
      */
     public function addCoupon(CartInterface $cart, CouponInterface $coupon)
     {

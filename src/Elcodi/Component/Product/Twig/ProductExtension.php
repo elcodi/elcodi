@@ -35,7 +35,7 @@ class ProductExtension extends Twig_Extension
     /**
      * Returns defined twig functions
      *
-     * @return array|void
+     * @return Twig_SimpleFunction[] Functions
      */
     public function getFunctions()
     {
@@ -47,7 +47,7 @@ class ProductExtension extends Twig_Extension
     /**
      * Returns defined twig functions
      *
-     * @return array|void
+     * @return Twig_SimpleFilter[] Filters
      */
     public function getFilters()
     {

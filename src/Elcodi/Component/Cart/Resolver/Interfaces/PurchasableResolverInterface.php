@@ -30,23 +30,25 @@ use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 interface PurchasableResolverInterface
 {
     /**
+     * PurchasableResolver constructor
+     *
+     * @param AbstractLine $abstractLine Line
+     */
+    public function __construct(AbstractLine $abstractLine);
+
+    /**
      * Sets the purchasable in current line
      *
-     * @param PurchasableInterface $purchasable
+     * @param PurchasableInterface $purchasable Purchasable object
+     *
+     * @return $this self Object
      */
     public function setPurchasable(PurchasableInterface $purchasable);
 
     /**
      * Gets the purchasable from current line
      *
-     * @return PurchasableInterface
+     * @return PurchasableInterface Purchasable object
      */
     public function getPurchasable();
-
-    /**
-     * PurchasableResolver constructor
-     *
-     * @param AbstractLine $abstractLine
-     */
-    public function __construct(AbstractLine $abstractLine);
 }

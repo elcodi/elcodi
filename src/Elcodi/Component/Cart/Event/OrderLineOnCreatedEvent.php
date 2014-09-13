@@ -89,7 +89,7 @@ class OrderLineOnCreatedEvent extends Event
     /**
      * Get cartLine
      *
-     * @return OrderLineInterface|null Cart Line
+     * @return OrderLineInterface Order Line
      */
     public function getOrderLine()
     {
