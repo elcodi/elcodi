@@ -1,0 +1,47 @@
+{
+    "name": "elcodi/comment",
+    "description": "Elcodi Comment Component",
+    "keywords": ["elcodi", "comment", "ecommerce", "component"],
+    "homepage": "https://github.com/elcodi/Comment",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "Symfony Community",
+            "homepage": "https://github.com/elcodi/Comment/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "doctrine/common": "~2.4",
+        "doctrine/orm": "~2.4",
+        "doctrine/cache": "~1.0",
+        "symfony/doctrine-bridge": "~2.4",
+        "symfony/dependency-injection": "~2.4",
+        "symfony/event-dispatcher": "~2.4",
+
+        "elcodi/core": "~0.3.0",
+        "elcodi/user": "~0.3.0"
+    },
+    "suggest": {
+        "michelf/php-markdown": "Needed for the markdown parsing adapter"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\Component\\Comment\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.4-dev"
+        }
+    }
+}

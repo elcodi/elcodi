@@ -14,17 +14,17 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Bundle\MenuBundle;
+namespace Elcodi\Bundle\CommentBundle;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-use Elcodi\Bundle\MenuBundle\CompilerPass\MappingCompilerPass;
+use Elcodi\Bundle\CommentBundle\CompilerPass\MappingCompilerPass;
 
 /**
- * Class ElcodiMenuBundle
+ * ElcodiCommentBundle Class
  */
-class ElcodiMenuBundle extends Bundle
+class ElcodiCommentBundle extends Bundle
 {
     /**
      * @param ContainerBuilder $container

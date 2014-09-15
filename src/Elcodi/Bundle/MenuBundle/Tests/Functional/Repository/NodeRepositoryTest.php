@@ -37,7 +37,7 @@ class NodeRepositoryTest extends WebTestCase
     }
 
     /**
-     * Test category repository provider
+     * Test menu node repository provider
      */
     public function testFactoryProvider()
     {
@@ -48,7 +48,7 @@ class NodeRepositoryTest extends WebTestCase
     }
 
     /**
-     * Test category repository provider alias
+     * Test menu node repository provider alias
      */
     public function testFactoryProviderAlias()
     {
