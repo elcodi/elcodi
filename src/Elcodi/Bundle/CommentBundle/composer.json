@@ -29,8 +29,9 @@
         "symfony/dependency-injection": "~2.4",
         "mmoreram/simple-doctrine-mapping": "~0.1",
 
+        "elcodi/core-bundle": "~0.3.0",
         "elcodi/user-bundle": "~0.3.0",
-        "elcodi/core": "~0.3.0"
+        "elcodi/comment": "~0.3.0"
     },
     "require-dev": {
         "elcodi/test-common-bundle": "~0.3.0"
