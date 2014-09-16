@@ -59,14 +59,14 @@ abstract class WebTestCase extends BaseWebTestCase
     public function setUp()
     {
         gc_collect_cycles();
-
+try {
         static::$kernel = static::createKernel();
         static::$kernel->boot();
 
         static::$application = new Application(static::$kernel);
         static::$application->setAutoExit(false);
         $this->container = static::$kernel->getContainer();
-
+} catch (\Exception $e) { echo $e->getMessage();die(); }
         $this->createSchema();
     }
 

@@ -1,0 +1,17 @@
+parameters:
+
+    #
+    # Repositories
+    #
+    elcodi.core.comment.repository.comment.class: Elcodi\Component\Comment\Repository\CommentRepository
+
+    #
+    # Factories
+    #
+    elcodi.core.comment.factory.comment.class: Elcodi\Component\Comment\Factory\CommentFactory
+
+    #
+    # Services
+    #
+    elcodi.core.comment.service.comment_manager.class: Elcodi\Component\Comment\Services\CommentManager
+    elcodi.core.comment.service.comment_parser.class: Elcodi\Component\Comment\Services\CommentParser

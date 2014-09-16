@@ -1,0 +1,58 @@
+Elcodi\Component\Comment\Entity\Comment:
+    type: entity
+    repositoryClass: Elcodi\Component\Comment\Repository\CommentRepository
+    table: comment
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: NONE
+        author:
+            associationKey: true
+    fields:
+        source:
+            column: quantity
+            type: string
+            length: 255
+            nullable: false
+        content:
+            column: content
+            type: text
+            nullable: false
+        parsedContent:
+            column: parsed_content
+            type: text
+            nullable: false
+        parsingType:
+            column: parsingType
+            type: string
+            length: 255
+            nullable: false
+        createdAt:
+            column: created_at
+            type: datetime
+        updatedAt:
+            column: updated_at
+            type: datetime
+        enabled:
+            column: enabled
+            type: boolean
+
+    manyToOne:
+        parent:
+            targetEntity: Elcodi\Component\Comment\Entity\Interfaces\CommentInterface
+            inversedBy: children
+            joinColumn:
+                name: parent_id
+                referencedColumnName: id
+                nullable: true
+        author:
+            targetEntity: Elcodi\Component\User\Entity\Interfaces\CustomerInterface
+            joinColumn:
+                name: author_id
+                referencedColumnName: id
+                nullable: true
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]

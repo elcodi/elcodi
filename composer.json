@@ -66,6 +66,7 @@
         "elcodi/user-bundle": "self.version",
         "elcodi/language-bundle": "self.version",
         "elcodi/geo-bundle": "self.version",
+        "elcodi/comment-bundle": "self.version",
         "elcodi/test-common-bundle": "self.version",
         "elcodi/attribute": "self.version",
         "elcodi/banner": "self.version",
@@ -83,7 +84,8 @@
         "elcodi/user": "self.version",
         "elcodi/language": "self.version",
         "elcodi/geo": "self.version",
-        "elcodi/metadata": "self.version"
+        "elcodi/metadata": "self.version",
+        "elcodi/comment": "self.version"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",

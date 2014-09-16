@@ -1,0 +1,16 @@
+services:
+
+    #
+    # Factories
+    #
+
+    #
+    # Factory for entity comment
+    #
+    elcodi.core.comment.factory.comment:
+        class: %elcodi.core.comment.factory.comment.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.comment.entity.comment.class%"]]
+
+    elcodi.factory.comment:
+        alias: elcodi.core.comment.factory.comment

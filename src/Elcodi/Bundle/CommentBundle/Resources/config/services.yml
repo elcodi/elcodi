@@ -1,0 +1,27 @@
+services:
+
+    #
+    # Services
+    #
+    elcodi.core.comment.service.comment_manager:
+        class: %elcodi.core.comment.service.comment_manager.class%
+        arguments:
+            comment_object_manager: @elcodi.object_manager.comment
+            comment_repository: @elcodi.core.comment.repository.comment
+            comment_factory: @elcodi.factory.comment
+            comment_parser: @elcodi.comment_parser
+            cache_key: %elcodi.core.comment.cache_key%
+        calls:
+            - [setCache, [@doctrine_cache.providers.elcodi]]
+            - [setEncoder, [@elcodi.json_encoder]]
+
+    elcodi.comment_manager:
+        alias: elcodi.core.comment.service.comment_manager
+
+    elcodi.core.comment.service.comment_parser:
+        class: %elcodi.core.comment.service.comment_parser.class%
+        arguments:
+            parser_adapter: @elcodi.core.comment.adapter.parser_adapter
+
+    elcodi.comment_parser:
+        alias: elcodi.core.comment.service.comment_parser

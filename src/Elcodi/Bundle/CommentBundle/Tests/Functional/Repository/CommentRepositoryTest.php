@@ -14,14 +14,14 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Bundle\MenuBundle\Tests\Functional\Repository;
+namespace Elcodi\Bundle\CommentBundle\Tests\Functional\Repository;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class MenuRepositoryTest
+ * Class CommentRepositoryTest
  */
-class MenuRepositoryTest extends WebTestCase
+class CommentRepositoryTest extends WebTestCase
 {
     /**
      * Returns the callable name of the service
@@ -31,30 +31,30 @@ class MenuRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.menu.repository.menu',
-            'elcodi.repository.menu',
+            'elcodi.core.comment.repository.comment',
+            'elcodi.repository.comment',
         ];
     }
 
     /**
-     * Test menu repository provider
+     * Test comment repository provider
      */
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.menu.repository.menu.class'),
-            $this->get('elcodi.core.menu.repository.menu')
+            $this->getParameter('elcodi.core.comment.repository.comment.class'),
+            $this->get('elcodi.core.comment.repository.comment')
         );
     }
 
     /**
-     * Test menu repository provider alias
+     * Test comment repository provider alias
      */
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.menu.repository.menu.class'),
-            $this->get('elcodi.repository.menu')
+            $this->getParameter('elcodi.core.comment.repository.comment.class'),
+            $this->get('elcodi.repository.comment')
         );
     }
 }
