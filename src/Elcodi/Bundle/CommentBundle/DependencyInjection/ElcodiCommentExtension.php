@@ -84,6 +84,9 @@ class ElcodiCommentExtension extends AbstractExtension implements EntitiesOverri
             "elcodi.core.comment.entity.comment.class"        => $config['mapping']['comment']['class'],
             "elcodi.core.comment.entity.comment.mapping_file" => $config['mapping']['comment']['mapping_file'],
             "elcodi.core.comment.entity.comment.manager"      => $config['mapping']['comment']['manager'],
+            "elcodi.core.comment.entity.vote.class"           => $config['mapping']['vote']['class'],
+            "elcodi.core.comment.entity.vote.mapping_file"    => $config['mapping']['vote']['mapping_file'],
+            "elcodi.core.comment.entity.vote.manager"         => $config['mapping']['vote']['manager'],
 
             'elcodi.core.comment.cache_key'                   => $config['comments']['cache_key'],
         ];
@@ -104,6 +107,8 @@ class ElcodiCommentExtension extends AbstractExtension implements EntitiesOverri
             'factories',
             'repositories',
             'objectManagers',
+            'eventListeners',
+            'eventDispatchers',
             [
                 'parserAdapters/dummyParser',
                 $config['comments']['parser'] === DummyParserAdapter::ADAPTER_NAME
@@ -128,6 +133,7 @@ class ElcodiCommentExtension extends AbstractExtension implements EntitiesOverri
     {
         return [
             'Elcodi\Component\Comment\Entity\Interfaces\CommentInterface' => 'elcodi.core.comment.entity.comment.class',
+            'Elcodi\Component\Comment\Entity\Interfaces\VoteInterface' => 'elcodi.core.comment.entity.vote.class',
         ];
     }
 }

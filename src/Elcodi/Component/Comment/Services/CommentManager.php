@@ -19,6 +19,7 @@ namespace Elcodi\Component\Comment\Services;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Component\Comment\Entity\Interfaces\CommentInterface;
+use Elcodi\Component\Comment\EventDispatcher\CommentEventDispatcher;
 use Elcodi\Component\Comment\Factory\CommentFactory;
 use Elcodi\Component\Comment\Repository\CommentRepository;
 use Elcodi\Component\Core\Wrapper\Abstracts\AbstractCacheWrapper;
@@ -29,6 +30,13 @@ use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
  */
 class CommentManager extends AbstractCacheWrapper
 {
+    /**
+     * @var CommentEventDispatcher
+     *
+     * Comment event dispatcher
+     */
+    protected $commentEventDispatcher;
+
     /**
      * @var ObjectManager
      *
@@ -58,41 +66,27 @@ class CommentManager extends AbstractCacheWrapper
     protected $commentParser;
 
     /**
-     * @var array
-     *
-     * Comment tree
-     */
-    protected $commentTree;
-
-    /**
-     * @var string
-     *
-     * Key
-     */
-    protected $key;
-
-    /**
      * Construct method
      *
-     * @param ObjectManager     $commentObjectManager Comment object manager
-     * @param CommentRepository $commentRepository    Comment Repository
-     * @param CommentFactory    $commentFactory       Comment Factory
-     * @param CommentParser     $commentParser        Comment parser
-     * @param string            $key                  Key where to store info
+     * @param CommentEventDispatcher $commentEventDispatcher Comment event dispatcher
+     * @param ObjectManager          $commentObjectManager   Comment object manager
+     * @param CommentRepository      $commentRepository      Comment Repository
+     * @param CommentFactory         $commentFactory         Comment Factory
+     * @param CommentParser          $commentParser          Comment parser
      */
     public function __construct(
+        CommentEventDispatcher $commentEventDispatcher,
         ObjectManager $commentObjectManager,
         CommentRepository $commentRepository,
         CommentFactory $commentFactory,
-        CommentParser $commentParser,
-        $key
+        CommentParser $commentParser
     )
     {
+        $this->commentEventDispatcher = $commentEventDispatcher;
         $this->commentObjectManager = $commentObjectManager;
         $this->commentRepository = $commentRepository;
         $this->commentFactory = $commentFactory;
         $this->commentParser = $commentParser;
-        $this->key = $key;
     }
 
     /**
@@ -133,219 +127,68 @@ class CommentManager extends AbstractCacheWrapper
             ->commentObjectManager
             ->flush($comment);
 
-        $this->invalidateCache($source);
+        $this
+            ->commentEventDispatcher
+            ->dispatchCommentOnAddEvent($comment);
 
         return $comment;
     }
 
     /**
-     * Get comment tree
+     * Edit a comment
      *
-     * @param string $source Source of comments
+     * @param CommentInterface $comment Comment
+     * @param string           $content Content
      *
-     * @return array Comment tree
+     * @return CommentInterface Edited comment
      */
-    public function getCommentTree($source)
+    public function editComment(
+        CommentInterface $comment,
+        $content
+    )
     {
-        return $this->commentTree[$source]
-            ? : [];
-    }
+        $comment->setContent($content);
 
-    /**
-     * Load Comment tree from cache.
-     *
-     * If element is not loaded yet, loads it from Database and store it into
-     * cache.
-     *
-     * @param string $source Source of comments
-     *
-     * @return array Comment tree loaded
-     */
-    public function load($source)
-    {
-        if (is_array($this->commentTree[$source])) {
-            return $this->commentTree[$source];
-        }
+        $comment = $this
+            ->commentParser
+            ->parse($comment);
 
-        /**
-         * Fetch key from cache
-         */
-        $commentTree = $this->loadCommentTreeFromCache($source);
-
-        /**
-         * If cache key is empty, build it
-         */
-        if (empty($commentTree)) {
-
-            $commentTree = $this->buildCommentTreeAndSaveIntoCache($source);
-        }
-
-        $this->commentTree[$source] = $commentTree;
-
-        return $commentTree;
-    }
-
-    /**
-     * Invalidates cache from source
-     *
-     * @param string $source Source of comments
-     *
-     * @return $this self Object
-     */
-    public function invalidateCache($source)
-    {
         $this
-            ->cache
-            ->delete($this->getSpecificSourceCacheKey($source));
+            ->commentObjectManager
+            ->flush($comment);
 
-        $this->commentTree = null;
+        $this
+            ->commentEventDispatcher
+            ->dispatchCommentOnEditEvent($comment);
 
         return $this;
     }
 
     /**
-     * Invalidates cache and reload all cache from source
+     * Remove a comment
      *
-     * @param string $source Source of comments
+     * @param CommentInterface $comment Comment
      *
-     * @return array Comment tree loaded
+     * @return CommentManager self Object
      */
-    public function reload($source)
-    {
-        $this->invalidateCache($source);
-
-        return $this->load($source);
-    }
-
-    /**
-     * Load comment tree from cache
-     *
-     * @param string $source Source of comments
-     *
-     * @return array Comment tree
-     */
-    protected function loadCommentTreeFromCache($source)
-    {
-        return $this
-            ->encoder
-            ->decode(
-                $this
-                    ->cache
-                    ->fetch($this->getSpecificSourceCacheKey($source))
-            );
-    }
-
-    /**
-     * Build comment tree and save it into cache
-     *
-     * @param string $source Source of comments
-     *
-     * @return array Comment tree
-     */
-    protected function buildCommentTreeAndSaveIntoCache($source)
-    {
-        $commentTree = $this->buildCommentTree($source);
-        $this->saveCommentTreeIntoCache($commentTree, $source);
-
-        return $commentTree;
-    }
-
-    /**
-     * Build comments tree from doctrine given their source
-     *
-     * cost O(n)
-     *
-     * @param string $source Source of comments
-     *
-     * @return Array Comments tree given the source
-     */
-    protected function buildCommentTree($source)
-    {
-        $comments = $this
-            ->commentRepository
-            ->getAllCommentsSortedByParentAndIdAsc($source);
-
-        $commentTree = [
-            0          => null,
-            'children' => [],
-        ];
-
-        /**
-         * @var CommentInterface $comment
-         */
-        foreach ($comments as $comment) {
-
-            $parentCommentId = 0;
-            $commentId = $comment->getId();
-
-            if ($comment->getParent() instanceof CommentInterface) {
-
-                $parentCommentId = $comment->getParent()->getId();
-            }
-
-            if ($parentCommentId && !isset($commentTree[$parentCommentId])) {
-
-                $commentTree[$parentCommentId] = array(
-                    'entity'   => null,
-                    'children' => array(),
-                );
-            }
-
-            if (!isset($commentTree[$commentId])) {
-
-                $commentTree[$commentId] = array(
-                    'entity'   => null,
-                    'children' => array(),
-                );
-            }
-
-            $author = $comment->getAuthor();
-            $commentTree[$commentId]['entity'] = array(
-                'id'             => $comment->getId(),
-                'authorFullName' => $author->getFullName(),
-                'authorUsername' => $author->getUsername(),
-                'authorEmail'    => $author->getEmail(),
-                'content'        => $comment->getContent(),
-                'parsedContent'  => $comment->getParsedContent(),
-                'parsedType'     => $comment->getParsingType(),
-            );
-
-            $commentTree[$parentCommentId]['children'][] = & $commentTree[$commentId];
-        }
-
-        return $commentTree[0]['children']
-            ? : [];
-    }
-
-    /**
-     * Save given comment tree into cache
-     *
-     * @param array  $commentTree Comment tree
-     * @param string $source      Source of comments
-     *
-     * @return $this self Object
-     */
-    protected function saveCommentTreeIntoCache($commentTree, $source)
+    public function removeComment(CommentInterface $comment)
     {
         $this
-            ->cache
-            ->save(
-                $this->getSpecificSourceCacheKey($source),
-                $this->encoder->encode($commentTree)
-            );
+            ->commentEventDispatcher
+            ->dispatchCommentPreRemoveEvent($comment);
+
+        $this
+            ->commentObjectManager
+            ->remove($comment);
+
+        $this
+            ->commentObjectManager
+            ->flush($comment);
+
+        $this
+            ->commentEventDispatcher
+            ->dispatchCommentOnRemoveEvent($comment);
 
         return $this;
-    }
-
-    /**
-     * Get cache key given the source
-     *
-     * @param string $source Source of comments
-     *
-     * @return string specific source cache key
-     */
-    protected function getSpecificSourceCacheKey($source)
-    {
-        return $this->key . '-' . $source;
     }
 }

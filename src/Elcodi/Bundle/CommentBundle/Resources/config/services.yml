@@ -6,14 +6,11 @@ services:
     elcodi.core.comment.service.comment_manager:
         class: %elcodi.core.comment.service.comment_manager.class%
         arguments:
+            comment_event_dispatcher: @elcodi.comment_event_dispatcher
             comment_object_manager: @elcodi.object_manager.comment
             comment_repository: @elcodi.core.comment.repository.comment
             comment_factory: @elcodi.factory.comment
             comment_parser: @elcodi.comment_parser
-            cache_key: %elcodi.core.comment.cache_key%
-        calls:
-            - [setCache, [@doctrine_cache.providers.elcodi]]
-            - [setEncoder, [@elcodi.json_encoder]]
 
     elcodi.comment_manager:
         alias: elcodi.core.comment.service.comment_manager
@@ -25,3 +22,27 @@ services:
 
     elcodi.comment_parser:
         alias: elcodi.core.comment.service.comment_parser
+
+    elcodi.core.comment.service.comment_cache:
+        class: %elcodi.core.comment.service.comment_cache.class%
+        arguments:
+            comment_repository: @elcodi.core.comment.repository.comment
+            comment_vote_manager: @elcodi.comment_vote_manager
+            cache_key: %elcodi.core.comment.cache_key%
+        calls:
+            - [setCache, [@doctrine_cache.providers.elcodi]]
+            - [setEncoder, [@elcodi.json_encoder]]
+
+    elcodi.comment_cache:
+        alias: elcodi.core.comment.service.comment_cache
+
+    elcodi.core.comment.service.comment_vote_manager:
+        class: %elcodi.core.comment.service.comment_vote_manager.class%
+        arguments:
+            comment_event_dispatcher: @elcodi.comment_event_dispatcher
+            vote_factory: @elcodi.factory.vote
+            vote_repository: @elcodi.repository.vote
+            vote_object_manager: @elcodi.object_manager.vote
+
+    elcodi.comment_vote_manager:
+        alias: elcodi.core.comment.service.comment_vote_manager

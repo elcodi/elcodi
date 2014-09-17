@@ -16,3 +16,16 @@ services:
 
     elcodi.repository.comment:
         alias: elcodi.core.comment.repository.comment
+
+    #
+    # Repository for entity vote
+    #
+    elcodi.core.comment.repository.vote:
+        class: %elcodi.core.comment.repository.vote.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.comment.entity.vote.class%
+
+    elcodi.repository.vote:
+        alias: elcodi.core.comment.repository.vote

@@ -87,6 +87,30 @@ class Comment implements CommentInterface
     protected $parsingType;
 
     /**
+     * Sets Id
+     *
+     * @param int $id Id
+     *
+     * @return $this Self object
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get Id
+     *
+     * @return int Id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
      * Sets Author
      *
      * @param AbstractUserInterface $author Author
@@ -132,30 +156,6 @@ class Comment implements CommentInterface
     public function getContent()
     {
         return $this->content;
-    }
-
-    /**
-     * Sets Id
-     *
-     * @param int $id Id
-     *
-     * @return $this Self object
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * Get Id
-     *
-     * @return int Id
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**

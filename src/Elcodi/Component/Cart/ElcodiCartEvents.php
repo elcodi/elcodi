@@ -22,14 +22,6 @@ namespace Elcodi\Component\Cart;
 class ElcodiCartEvents
 {
     /**
-     * Cart events
-     */
-
-    /**
-     * Cart events
-     */
-
-    /**
      * This event is dispatched before the Cart is loaded
      *
      * event.name : cart.preload

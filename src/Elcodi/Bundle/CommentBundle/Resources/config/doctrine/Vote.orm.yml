@@ -1,0 +1,38 @@
+Elcodi\Component\Comment\Entity\Vote:
+    type: entity
+    repositoryClass: Elcodi\Component\Comment\Repository\VoteRepository
+    table: vote
+    id:
+        comment:
+            associationKey: true
+        user:
+            associationKey: true
+
+    fields:
+        type:
+            column: type
+            type: boolean
+        createdAt:
+            column: created_at
+            type: datetime
+        updatedAt:
+            column: updated_at
+            type: datetime
+
+    manyToOne:
+        comment:
+            targetEntity: Elcodi\Component\Comment\Entity\Interfaces\CommentInterface
+            joinColumn:
+                name: comment_id
+                referencedColumnName: id
+                nullable: false
+        user:
+            targetEntity: Elcodi\Component\User\Entity\Interfaces\CustomerInterface
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+                nullable: false
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]

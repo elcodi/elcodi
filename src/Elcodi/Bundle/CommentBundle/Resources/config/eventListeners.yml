@@ -1,0 +1,14 @@
+services:
+
+    #
+    # EventListeners
+    #
+    elcodi.core.comment.event_listener.comment_event_listener:
+        class: %elcodi.core.comment.event_listener.comment_event_listener.class%
+        arguments:
+            comment_cache: @elcodi.comment_cache
+        tags:
+            - { name: kernel.event_listener, event: comment.onadd, method: onCommentChange, priority: 0 }
+            - { name: kernel.event_listener, event: comment.onedit, method: onCommentChange, priority: 0 }
+            - { name: kernel.event_listener, event: comment.onremove, method: onCommentChange, priority: 0 }
+            - { name: kernel.event_listener, event: comment.onvoted, method: onCommentChange, priority: 0 }

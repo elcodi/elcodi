@@ -40,6 +40,12 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
                 'elcodi.core.comment.entity.comment.class',
                 'elcodi.core.comment.entity.comment.mapping_file'
             )
+            ->addEntityMapping(
+                $container,
+                'elcodi.core.comment.entity.vote.manager',
+                'elcodi.core.comment.entity.vote.class',
+                'elcodi.core.comment.entity.vote.mapping_file'
+            )
         ;
     }
 }
