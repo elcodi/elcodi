@@ -14,3 +14,14 @@ services:
 
     elcodi.factory.comment:
         alias: elcodi.core.comment.factory.comment
+
+    #
+    # Factory for entity vote
+    #
+    elcodi.core.comment.factory.vote:
+        class: %elcodi.core.comment.factory.vote.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.comment.entity.vote.class%"]]
+
+    elcodi.factory.vote:
+        alias: elcodi.core.comment.factory.vote

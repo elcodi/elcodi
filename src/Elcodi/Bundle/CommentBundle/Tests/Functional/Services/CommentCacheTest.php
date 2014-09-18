@@ -19,9 +19,9 @@ namespace Elcodi\Bundle\CommentBundle\Tests\Functional\Services;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class CommentManagerTest
+ * Class CommentCacheTest
  */
-class CommentManagerTest extends WebTestCase
+class CommentCacheTest extends WebTestCase
 {
     /**
      * Schema must be loaded in all test cases
@@ -41,15 +41,15 @@ class CommentManagerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.comment.service.comment_manager',
-            'elcodi.comment_manager',
+            'elcodi.core.comment.service.comment_cache',
+            'elcodi.comment_cache',
         ];
     }
 
     /**
-     * Test add comment
+     * Test load
      */
-    public function testAddComment()
+    public function testLoad()
     {
         $user = $this
             ->getFactory('customer')
@@ -60,21 +60,47 @@ class CommentManagerTest extends WebTestCase
 
         $this->flush($user);
 
+        $commentCache = $this->get('elcodi.comment_cache');
         $commentManager = $this->get('elcodi.comment_manager');
         $source = 'http://page.com/product1';
-        $commentManager->addComment(
+        $comment1 = $commentManager->addComment(
             $source,
             'This is my comment #1',
             $user,
             null
         );
 
-        $storedComment = $this->find('comment', 1);
-        $this->assertEquals('http://page.com/product1', $storedComment->getSource());
-        $this->assertEquals('This is my comment #1', $storedComment->getContent());
-        $this->assertEquals('This is my comment #1', $storedComment->getParsedContent());
-        $this->assertEquals('none', $storedComment->getParsingType());
-        $this->assertSame($user, $storedComment->getAuthor());
-        $this->assertNull($storedComment->getParent());
+        $comments = $commentCache->load($source);
+        $this->assertCount(1, $comments);
+        $this->assertEmpty($comments[0]['children']);
+
+        $comments = $commentCache->getCommentTree($source);
+        $this->assertCount(1, $comments);
+        $this->assertEmpty($comments[0]['children']);
+
+        $commentManager->addComment(
+            $source,
+            'This is my comment #2',
+            $user,
+            $comment1
+        );
+
+        $comments = $commentCache->getCommentTree($source);
+        $this->assertEmpty($comments);
+
+        $comments = $commentCache->load($source);
+        $this->assertCount(1, $comments);
+        $this->assertCount(1, $comments[0]['children']);
+        $this->assertCount(0, $comments[0]['children'][0]['children']);
+
+        $commentManager->addComment(
+            $source,
+            'This is my comment #3',
+            $user,
+            null
+        );
+
+        $comments = $commentCache->load($source);
+        $this->assertCount(2, $comments);
     }
 }

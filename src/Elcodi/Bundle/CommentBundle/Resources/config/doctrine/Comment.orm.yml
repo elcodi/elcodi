@@ -6,9 +6,7 @@ Elcodi\Component\Comment\Entity\Comment:
         id:
             type: integer
             generator:
-                strategy: NONE
-        author:
-            associationKey: true
+                strategy: AUTO
     fields:
         source:
             column: quantity
