@@ -21,7 +21,7 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 /**
  * Class CartLineTest
  */
-class CartLineTest extends WebTestCase
+class CartTest extends WebTestCase
 {
     /**
      * Schema must be loaded in all test cases
@@ -55,7 +55,6 @@ class CartLineTest extends WebTestCase
         $this->assertEquals(25, $cart->getHeight());
         $this->assertEquals(30, $cart->getWidth());
         $this->assertEquals(35, $cart->getDepth());
-        $this->assertEquals(300, $cart->getWeight());
+        $this->assertEquals(600, $cart->getWeight());
     }
 }
- 

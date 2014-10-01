@@ -38,7 +38,7 @@ class VoteFactory extends AbstractFactory
          */
         $classNamespace = $this->getEntityNamespace();
         $vote = new $classNamespace();
-        $vote->setCreatedAt(new DateTime);
+        $vote->setCreatedAt(new DateTime());
 
         return $vote;
     }

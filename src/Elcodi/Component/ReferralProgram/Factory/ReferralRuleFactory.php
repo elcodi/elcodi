@@ -42,7 +42,7 @@ class ReferralRuleFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $referralRule = new $classNamespace();
         $referralRule
-            ->setReferralLines(new ArrayCollection)
+            ->setReferralLines(new ArrayCollection())
             ->setEnabled(false);
 
         return $referralRule;

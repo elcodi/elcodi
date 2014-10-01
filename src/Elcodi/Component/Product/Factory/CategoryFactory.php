@@ -40,12 +40,12 @@ class CategoryFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $category = new $classNamespace();
         $category
-            ->setSubcategories(new ArrayCollection)
-            ->setProducts(new ArrayCollection)
+            ->setSubcategories(new ArrayCollection())
+            ->setProducts(new ArrayCollection())
             ->setRoot(false)
             ->setPosition(0)
             ->setEnabled(false)
-            ->setCreatedAt(new DateTime);
+            ->setCreatedAt(new DateTime());
 
         return $category;
     }

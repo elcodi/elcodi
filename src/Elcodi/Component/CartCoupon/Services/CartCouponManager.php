@@ -106,7 +106,7 @@ class CartCouponManager
          * If is this case, we avoid this lookup.
          */
         if ($cart->getId() == null) {
-            return new ArrayCollection;
+            return new ArrayCollection();
         }
 
         return new ArrayCollection(
@@ -135,7 +135,7 @@ class CartCouponManager
          * If is this case, we avoid this lookup.
          */
         if ($cart->getId() == null) {
-            return new ArrayCollection;
+            return new ArrayCollection();
         }
 
         $cartCoupons = $this

@@ -1,7 +1,7 @@
 Elcodi\Component\Tax\Entity\Tax:
     type: entity
     repositoryClass: Elcodi\Component\Tax\Repository\TaxRepository
-    table: customer
+    table: tax
     id:
         id:
             type: integer

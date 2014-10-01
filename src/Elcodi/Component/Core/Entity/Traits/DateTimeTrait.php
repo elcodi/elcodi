@@ -89,6 +89,6 @@ trait DateTimeTrait
      */
     public function loadUpdateAt()
     {
-        $this->setUpdatedAt(new \DateTime);
+        $this->setUpdatedAt(new \DateTime());
     }
 }

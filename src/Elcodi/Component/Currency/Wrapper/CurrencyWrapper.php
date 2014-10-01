@@ -128,7 +128,7 @@ class CurrencyWrapper
             return $this->currency;
         }
 
-        throw new CurrencyNotAvailableException;
+        throw new CurrencyNotAvailableException();
     }
 
     /**

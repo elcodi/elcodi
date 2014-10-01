@@ -40,7 +40,7 @@ class AttributeFactory extends AbstractFactory
             ->setName('')
             ->setDisplayName('')
             ->setEnabled(false)
-            ->setCreatedAt(new \DateTime);
+            ->setCreatedAt(new \DateTime());
 
         return $attribute;
     }

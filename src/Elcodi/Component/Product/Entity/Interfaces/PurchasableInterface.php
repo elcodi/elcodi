@@ -57,7 +57,7 @@ interface PurchasableInterface
     /**
      * Gets the variant stock
      *
-     * @return int
+     * @return int stock
      */
     public function getStock();
 

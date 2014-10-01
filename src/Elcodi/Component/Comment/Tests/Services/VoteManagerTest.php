@@ -106,7 +106,7 @@ class VoteManagerTest extends PHPUnit_Framework_TestCase
      */
     public function testVote()
     {
-        $vote = new Vote;
+        $vote = new Vote();
         $this
             ->voteRepository
             ->expects($this->any())

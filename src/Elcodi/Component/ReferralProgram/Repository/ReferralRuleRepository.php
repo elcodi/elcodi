@@ -34,7 +34,7 @@ class ReferralRuleRepository extends EntityRepository
      */
     public function findEnabledReferralRule()
     {
-        return $this->findEnabledReferralRuleFromDateTime(new DateTime);
+        return $this->findEnabledReferralRuleFromDateTime(new DateTime());
     }
 
     /**

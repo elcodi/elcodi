@@ -14,14 +14,14 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Bundle\RuleBundle\Tests\Functional\Factory;
+namespace Elcodi\Bundle\ShippingBundle\Tests\Functional\Resolver;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class RuleGroupFactory
+ * Class CarrierResolverTest
  */
-class RuleGroupFactory extends WebTestCase
+class CarrierResolverTest extends WebTestCase
 {
     /**
      * Schema must be loaded in all test cases
@@ -40,6 +40,9 @@ class RuleGroupFactory extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.rule.factory.rule_group';
+        return [
+            'elcodi.core.shipping.resolver.carrier_resolver',
+            'elcodi.carrier_resolver',
+        ];
     }
 }

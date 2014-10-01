@@ -85,7 +85,7 @@ class ReferralProgramManagerTest extends WebTestCase
         $referrer = $this->find('customer', 1);
         $referralRule = $this->find('referral_rule', 1);
 
-        $invitations = new ArrayCollection;
+        $invitations = new ArrayCollection();
 
         $invitation1 = new Invitation();
         $invitation1

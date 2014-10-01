@@ -85,7 +85,7 @@ class CouponManager
          */
         if (!$coupon->isEnabled()) {
 
-            throw new CouponNotActiveException;
+            throw new CouponNotActiveException();
         }
 
         $now = new DateTime();
@@ -95,7 +95,7 @@ class CouponManager
          */
         if (($coupon->getValidFrom()) > $now || ($coupon->getValidTo() < $now)) {
 
-            throw new CouponNotActiveException;
+            throw new CouponNotActiveException();
         }
 
         /**
@@ -103,7 +103,7 @@ class CouponManager
          */
         if (($coupon->getCount() - $coupon->getUsed()) < 1) {
 
-            throw new CouponAppliedException;
+            throw new CouponAppliedException();
         }
 
         /**
@@ -111,7 +111,7 @@ class CouponManager
          */
         if ($coupon->getMinimumPurchase()->getAmount() > $price) {
 
-            throw new CouponBelowMinimumPurchaseException;
+            throw new CouponBelowMinimumPurchaseException();
         }
 
         return true;
@@ -146,7 +146,7 @@ class CouponManager
          */
         if (!($dateFrom instanceof DateTime)) {
 
-            $dateFrom = new DateTime;
+            $dateFrom = new DateTime();
         }
 
         $dateTo = null;

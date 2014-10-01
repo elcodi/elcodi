@@ -13,7 +13,7 @@
  * @author Marc Morera <yuhu@mmoreram.com>
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
- 
+
 namespace Elcodi\Component\Product\Entity\Traits;
 
 /**
@@ -145,4 +145,3 @@ trait DimensionsTrait
         return $this;
     }
 }
- 

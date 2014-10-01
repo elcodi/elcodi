@@ -19,6 +19,7 @@ namespace Elcodi\Bundle\TaxBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\Component\Tax\Factory\TaxFactory;
 
 /**
  * AdminData class
@@ -33,21 +34,18 @@ class TaxData extends AbstractFixture
     public function load(ObjectManager $manager)
     {
         /**
-         * Tax
+         * @var ObjectManager $taxObjectManager
+         * @var TaxFactory    $taxFactory
          */
-        $taxObjectManager = $this
-            ->container
-            ->get('elcodi.object_manager.tax');
-
-        $taxFactory = $this
-            ->container
-            ->get('elcodi.core.tax.factory.tax');
+        $taxObjectManager = $this->get('elcodi.object_manager.tax');
+        $taxFactory = $this->get('elcodi.factory.tax');
 
         $tax21 = $taxFactory->create();
         $tax21
             ->setName('tax21')
             ->setDescription('This is my tax 21')
             ->setValue(21.0);
+
         $taxObjectManager->persist($tax21);
         $this->addReference('tax-21', $tax21);
 
@@ -56,6 +54,7 @@ class TaxData extends AbstractFixture
             ->setName('tax16')
             ->setDescription('This is my tax 16')
             ->setValue(16.0);
+
         $taxObjectManager->persist($tax16);
         $this->addReference('tax-16', $tax16);
 

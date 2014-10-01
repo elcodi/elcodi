@@ -16,8 +16,6 @@
 
 namespace Elcodi\Component\Tax\Factory;
 
-use DateTime;
-
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Tax\Entity\Tax;
 
@@ -44,8 +42,7 @@ class TaxFactory extends AbstractFactory
             ->setName('')
             ->setDescription('')
             ->setValue(0)
-            ->setEnabled(false)
-            ->setCreatedAt(new DateTime);
+            ->setEnabled(false);
 
         return $tax;
     }

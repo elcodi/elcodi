@@ -39,8 +39,8 @@ class InvitationBagFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $invitationBag = new $classNamespace();
         $invitationBag
-            ->setErrorInvitations(new ArrayCollection)
-            ->setSentInvitations(new ArrayCollection);
+            ->setErrorInvitations(new ArrayCollection())
+            ->setSentInvitations(new ArrayCollection());
 
         return $invitationBag;
     }

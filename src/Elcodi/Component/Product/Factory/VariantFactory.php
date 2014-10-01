@@ -55,7 +55,7 @@ class VariantFactory extends AbstractPurchasableFactory
             ->setDepth(0)
             ->setWeight(0)
             ->setEnabled(false)
-            ->setCreatedAt(new \DateTime);
+            ->setCreatedAt(new \DateTime());
 
         return $variant;
     }
