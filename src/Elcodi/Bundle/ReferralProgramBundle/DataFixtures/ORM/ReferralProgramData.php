@@ -46,7 +46,7 @@ class ReferralProgramData extends AbstractFixture implements DependentFixtureInt
         $referralRuleNoNO
             ->setReferrerType(ElcodiReferralProgramRuleTypes::TYPE_WITHOUT_COUPON)
             ->setInvitedType(ElcodiReferralProgramRuleTypes::TYPE_WITHOUT_COUPON)
-            ->setValidFrom(new DateTime)
+            ->setValidFrom(new DateTime())
             ->enable();
 
         /**
@@ -67,7 +67,7 @@ class ReferralProgramData extends AbstractFixture implements DependentFixtureInt
             ->setReferrerCoupon($coupon)
             ->setInvitedType(ElcodiReferralProgramRuleTypes::TYPE_ON_REGISTER)
             ->setInvitedCoupon($coupon)
-            ->setValidFrom(new DateTime)
+            ->setValidFrom(new DateTime())
             ->disable();
 
         /**
@@ -83,7 +83,7 @@ class ReferralProgramData extends AbstractFixture implements DependentFixtureInt
             ->setReferrerCoupon($coupon)
             ->setInvitedType(ElcodiReferralProgramRuleTypes::TYPE_ON_FIRST_PURCHASE)
             ->setInvitedCoupon($coupon)
-            ->setValidFrom(new DateTime)
+            ->setValidFrom(new DateTime())
             ->disable();
 
         /**
@@ -99,7 +99,7 @@ class ReferralProgramData extends AbstractFixture implements DependentFixtureInt
             ->setReferrerCoupon($coupon)
             ->setInvitedType(ElcodiReferralProgramRuleTypes::TYPE_ON_FIRST_PURCHASE)
             ->setInvitedCoupon($coupon)
-            ->setValidFrom(new DateTime)
+            ->setValidFrom(new DateTime())
             ->disable();
 
         /**

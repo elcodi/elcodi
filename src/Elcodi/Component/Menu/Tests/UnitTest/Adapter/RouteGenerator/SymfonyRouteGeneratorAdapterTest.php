@@ -48,7 +48,7 @@ class SymfonyRouteGeneratorAdapterTest extends PHPUnit_Framework_TestCase
 
                 if (true === $value) {
 
-                    throw new RouteNotFoundException;
+                    throw new RouteNotFoundException();
                 }
 
                 switch ($value) {
@@ -57,7 +57,7 @@ class SymfonyRouteGeneratorAdapterTest extends PHPUnit_Framework_TestCase
                         return '/my/route1';
                         break;
                     default:
-                        throw new RouteNotFoundException;
+                        throw new RouteNotFoundException();
                 }
             }));
 

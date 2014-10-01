@@ -19,6 +19,7 @@ namespace Elcodi\Component\Cart\Entity\Interfaces;
 use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
+use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
@@ -210,4 +211,36 @@ interface OrderInterface extends PriceInterface, DimensionableInterface
      * @return $this self Object
      */
     public function setWeight($weight);
+
+    /**
+     * Get InvoiceAddress
+     *
+     * @return AddressInterface InvoiceAddress
+     */
+    public function getInvoiceAddress();
+
+    /**
+     * Sets InvoiceAddress
+     *
+     * @param AddressInterface $invoiceAddress InvoiceAddress
+     *
+     * @return $this Self object
+     */
+    public function setInvoiceAddress($invoiceAddress);
+
+    /**
+     * Get DeliveryAddress
+     *
+     * @return AddressInterface DeliveryAddress
+     */
+    public function getDeliveryAddress();
+
+    /**
+     * Sets DeliveryAddress
+     *
+     * @param AddressInterface $deliveryAddress DeliveryAddress
+     *
+     * @return $this Self object
+     */
+    public function setDeliveryAddress($deliveryAddress);
 }

@@ -1,6 +1,9 @@
 imports:
     - { resource: parameters.yml }
 
+parameters:
+    elcodi.core.rule.test.parameter: value
+
 framework:
     test:            ~
     session:

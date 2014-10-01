@@ -43,7 +43,7 @@ class AddressFactory extends AbstractFactory
         $address
             ->setAddressMore('')
             ->setEnabled(true)
-            ->setCreatedAt(new DateTime);
+            ->setCreatedAt(new DateTime());
 
         return $address;
     }

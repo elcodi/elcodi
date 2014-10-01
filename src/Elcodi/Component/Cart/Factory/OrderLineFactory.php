@@ -83,7 +83,7 @@ class OrderLineFactory extends AbstractFactory
          */
         $classNamespace = $this->getEntityNamespace();
         $orderLine = new $classNamespace();
-        $orderLine->setOrderLineHistories(new ArrayCollection);
+        $orderLine->setOrderLineHistories(new ArrayCollection());
 
         $orderLine
             ->setWidth(0)

@@ -41,7 +41,7 @@ class ProvinceFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $province = new $classNamespace();
         $province
-            ->setCities(new ArrayCollection)
+            ->setCities(new ArrayCollection())
             ->setEnabled(true);
 
         return $province;

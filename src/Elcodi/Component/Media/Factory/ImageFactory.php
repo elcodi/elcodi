@@ -44,7 +44,7 @@ class ImageFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $image = new $classNamespace();
         $image
-            ->setCreatedAt(new DateTime)
+            ->setCreatedAt(new DateTime())
             ->setEnabled(true);
 
         return $image;

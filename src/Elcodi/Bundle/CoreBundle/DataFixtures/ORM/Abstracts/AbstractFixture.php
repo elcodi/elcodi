@@ -19,6 +19,9 @@ namespace Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts;
 use Doctrine\Common\DataFixtures\AbstractFixture as DoctrineAbstractFixture;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 
 /**
  * AdminData class
@@ -46,5 +49,23 @@ abstract class AbstractFixture extends DoctrineAbstractFixture implements Contai
         $this->container = $container;
 
         return $this;
+    }
+
+    /**
+     * Get service from container
+     *
+     * @param string $serviceName Service name
+     *
+     * @return Object service instance
+     *
+     * @throws InvalidArgumentException          if the service is not defined
+     * @throws ServiceCircularReferenceException When a circular reference is detected
+     * @throws ServiceNotFoundException          When the service is not defined
+     */
+    protected function get($serviceName)
+    {
+        return $this
+            ->container
+            ->get($serviceName);
     }
 }
