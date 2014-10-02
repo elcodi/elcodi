@@ -19,6 +19,7 @@ namespace Elcodi\Component\Cart\Factory;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Elcodi\Component\Cart\Entity\Interfaces\OrderHistoryInterface;
 use Elcodi\Component\Cart\Entity\Order;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 
@@ -85,14 +86,22 @@ class OrderFactory extends AbstractFactory
         $order = new $classNamespace();
         $order
             ->setQuantity(0)
+            ->setWidth(0)
+            ->setHeight(0)
+            ->setWidth(0)
+            ->setWeight(0)
             ->setOrderLines(new ArrayCollection)
             ->setOrderHistories(new ArrayCollection)
             ->setCreatedAt(new DateTime);
 
+        /**
+         * @var OrderHistoryInterface $orderHistory
+         */
         $orderHistory = $this->orderHistoryFactory->create();
         $orderHistory
             ->setOrder($order)
             ->setState($this->initialOrderHistoryState);
+
         $order
             ->addOrderHistory($orderHistory)
             ->setLastOrderHistory($orderHistory);

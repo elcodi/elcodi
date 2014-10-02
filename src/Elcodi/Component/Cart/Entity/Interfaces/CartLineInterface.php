@@ -16,6 +16,7 @@
 
 namespace Elcodi\Component\Cart\Entity\Interfaces;
 
+use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
@@ -23,7 +24,7 @@ use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
 /**
  * Class CartLineInterface
  */
-interface CartLineInterface extends PriceInterface
+interface CartLineInterface extends PriceInterface, DimensionableInterface
 {
     /**
      * Set Cart

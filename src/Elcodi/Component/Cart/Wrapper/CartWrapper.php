@@ -154,32 +154,6 @@ class CartWrapper
     }
 
     /**
-     * Return customer related cart
-     *
-     * If customer has any cart related, creates new and returns it
-     * Otherwise, retrieves it and saves it to session
-     *
-     * @param CustomerInterface $customer
-     *
-     * @return CartInterface Cart
-     */
-    protected function getCustomerCart(CustomerInterface $customer)
-    {
-        $customerCart = $customer
-            ->getCarts()
-            ->filter(function (CartInterface $cart) {
-                return !$cart->isOrdered();
-            })
-            ->first();
-
-        if ($customerCart instanceof CartInterface) {
-            return $customerCart;
-        }
-
-        return null;
-    }
-
-    /**
      * Return cart from session
      *
      * If session has a cart, retrieves it and checks if exists
@@ -203,6 +177,32 @@ class CartWrapper
                 'id'      => $cartIdInSession,
                 'ordered' => false,
             ]);
+    }
+
+    /**
+     * Return customer related cart
+     *
+     * If customer has any cart related, creates new and returns it
+     * Otherwise, retrieves it and saves it to session
+     *
+     * @param CustomerInterface $customer
+     *
+     * @return CartInterface Cart
+     */
+    protected function getCustomerCart(CustomerInterface $customer)
+    {
+        $customerCart = $customer
+            ->getCarts()
+            ->filter(function (CartInterface $cart) {
+                return !$cart->isOrdered();
+            })
+            ->first();
+
+        if ($customerCart instanceof CartInterface) {
+            return $customerCart;
+        }
+
+        return null;
     }
 
     /**

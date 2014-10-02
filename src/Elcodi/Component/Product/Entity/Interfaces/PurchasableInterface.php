@@ -32,7 +32,11 @@ use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
  * with more concrete product classes or interfaces
  *
  */
-interface PurchasableInterface extends EnabledInterface, ProductPriceInterface
+interface PurchasableInterface
+    extends
+    EnabledInterface,
+    ProductPriceInterface,
+    DimensionableInterface
 {
     /**
      * Gets the variant SKU
@@ -65,4 +69,40 @@ interface PurchasableInterface extends EnabledInterface, ProductPriceInterface
      * @return $this self Object
      */
     public function setStock($stock);
+
+    /**
+     * Set the height
+     *
+     * @param integer $height Height
+     *
+     * @return $this self Object
+     */
+    public function setHeight($height);
+
+    /**
+     * Set the width
+     *
+     * @param integer $width Width
+     *
+     * @return $this self Object
+     */
+    public function setWidth($width);
+
+    /**
+     * Set the depth
+     *
+     * @param integer $depth Depth
+     *
+     * @return $this self Object
+     */
+    public function setDepth($depth);
+
+    /**
+     * Set the weight
+     *
+     * @param integer $weight Weight
+     *
+     * @return $this self Object
+     */
+    public function setWeight($weight);
 }

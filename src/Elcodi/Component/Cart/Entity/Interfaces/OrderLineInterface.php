@@ -18,6 +18,7 @@ namespace Elcodi\Component\Cart\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
+use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
@@ -25,7 +26,7 @@ use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
 /**
  * Class OrderLineInterface
  */
-interface OrderLineInterface extends PriceInterface
+interface OrderLineInterface extends PriceInterface, DimensionableInterface
 {
     /**
      * Set Order
@@ -156,4 +157,40 @@ interface OrderLineInterface extends PriceInterface
      * @return OrderLineHistoryInterface LastOrderLineHistory
      */
     public function getLastOrderLineHistory();
+
+    /**
+     * Set the height
+     *
+     * @param integer $height Height
+     *
+     * @return $this self Object
+     */
+    public function setHeight($height);
+
+    /**
+     * Set the width
+     *
+     * @param integer $width Width
+     *
+     * @return $this self Object
+     */
+    public function setWidth($width);
+
+    /**
+     * Set the depth
+     *
+     * @param integer $depth Depth
+     *
+     * @return $this self Object
+     */
+    public function setDepth($depth);
+
+    /**
+     * Set the weight
+     *
+     * @param integer $weight Weight
+     *
+     * @return $this self Object
+     */
+    public function setWeight($weight);
 }

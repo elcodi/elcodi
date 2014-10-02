@@ -109,12 +109,19 @@ class CartOrderTransformer
                 $cart->getCartLines()
             );
 
+        /**
+         * @var OrderInterface $order
+         */
         $order
             ->setCustomer($cart->getCustomer())
             ->setCart($cart)
             ->setQuantity($cart->getQuantity())
             ->setProductAmount($cart->getProductAmount())
             ->setAmount($cart->getAmount())
+            ->setHeight($cart->getHeight())
+            ->setWidth($cart->getWidth())
+            ->setDepth($cart->getDepth())
+            ->setWeight($cart->getWeight())
             ->setOrderLines($orderLines);
 
         $this

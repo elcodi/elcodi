@@ -49,6 +49,10 @@ class CartManagerProductTest extends AbstractCartManagerTest
             ->setPrice(Money::create(1000, $currency))
             ->setName('abc')
             ->setSlug('abc')
+            ->setWidth(10)
+            ->setHeight(10)
+            ->setDepth(10)
+            ->setWeight(10)
             ->setEnabled(true)
             ->setStock(10);
 

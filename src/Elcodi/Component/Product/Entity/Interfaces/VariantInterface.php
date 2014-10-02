@@ -41,7 +41,7 @@ interface VariantInterface
      *
      * @param string $id Id
      *
-     * @return $this Self object
+     * @return $this self Object
      */
     public function setId($id);
 
@@ -55,7 +55,7 @@ interface VariantInterface
     /**
      * Gets parent product
      *
-     * @return ProductInterface
+     * @return ProductInterface Product
      */
     public function getProduct();
 
@@ -64,14 +64,14 @@ interface VariantInterface
      *
      * @param ProductInterface $product
      *
-     * @return VariantInterface
+     * @return $this self Object
      */
     public function setProduct($product);
 
     /**
      * Gets this variant option values
      *
-     * @return Collection
+     * @return Collection Variant options
      */
     public function getOptions();
 
@@ -80,7 +80,7 @@ interface VariantInterface
      *
      * @param Collection $options
      *
-     * @return VariantInterface
+     * @return $this self Object
      */
     public function setOptions($options);
 
@@ -89,7 +89,7 @@ interface VariantInterface
      *
      * @param ValueInterface $option
      *
-     * @return VariantInterface
+     * @return $this self Object
      */
     public function addOption(ValueInterface $option);
 
@@ -98,7 +98,7 @@ interface VariantInterface
      *
      * @param ValueInterface $option
      *
-     * @return @return VariantInterface
+     * @return $this self Object
      */
     public function removeOption(ValueInterface $option);
 }

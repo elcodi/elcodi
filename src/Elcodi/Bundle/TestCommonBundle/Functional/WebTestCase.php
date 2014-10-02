@@ -104,11 +104,12 @@ abstract class WebTestCase extends BaseWebTestCase
 
         foreach ($serviceCallableNames as $serviceCallableName) {
 
-            $this->assertNotNull(static::$kernel
-                    ->getContainer()
-                    ->get($serviceCallableName)
-            );
-
+            if ($serviceCallableName) {
+                $this->assertNotNull(static::$kernel
+                        ->getContainer()
+                        ->get($serviceCallableName)
+                );
+            }
         }
     }
 

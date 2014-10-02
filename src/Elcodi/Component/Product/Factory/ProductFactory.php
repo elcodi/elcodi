@@ -55,6 +55,10 @@ class ProductFactory extends AbstractPurchasableFactory
             ->setVariants(new ArrayCollection())
             ->setCategories(new ArrayCollection)
             ->setImages(new ArrayCollection())
+            ->setWidth(0)
+            ->setHeight(0)
+            ->setWidth(0)
+            ->setWeight(0)
             ->setEnabled(false)
             ->setCreatedAt(new DateTime);
 

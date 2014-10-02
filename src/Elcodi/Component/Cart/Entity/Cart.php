@@ -340,4 +340,92 @@ class Cart extends AbstractEntity implements CartInterface
     {
         return $this->amount;
     }
+
+    /**
+     * Return the maximum depth of all the cartLines
+     *
+     * @return int Depth
+     */
+    public function getDepth()
+    {
+        $maximumDepth = 0;
+
+        $this
+            ->cartLines
+            ->map(function(CartLineInterface $cartLine) use (&$maximumDepth) {
+
+                $cartLineDepth = $cartLine->getDepth();
+                if ($cartLineDepth > $maximumDepth) {
+
+                    $maximumDepth = $cartLineDepth;
+                }
+            });
+
+        return $maximumDepth;
+    }
+
+    /**
+     * Return the maximum height of all the cartLines
+     *
+     * @return int Height
+     */
+    public function getHeight()
+    {
+        $maximumHeight = 0;
+
+        $this
+            ->cartLines
+            ->map(function(CartLineInterface $cartLine) use (&$maximumHeight) {
+
+                $cartLineHeight = $cartLine->getHeight();
+                if ($cartLineHeight > $maximumHeight) {
+
+                    $maximumHeight = $cartLineHeight;
+                }
+            });
+
+        return $maximumHeight;
+    }
+
+    /**
+     * Return the maximum width of all the cartLines
+     *
+     * @return int Width
+     */
+    public function getWidth()
+    {
+        $maximumWidth = 0;
+
+        $this
+            ->cartLines
+            ->map(function(CartLineInterface $cartLine) use (&$maximumWidth) {
+
+                $cartLineWidth = $cartLine->getWidth();
+                if ($cartLineWidth > $maximumWidth) {
+
+                    $maximumWidth = $cartLineWidth;
+                }
+            });
+
+        return $maximumWidth;
+    }
+
+    /**
+     * Get the sum of all CartLines weight
+     *
+     * @return int Weight
+     */
+    public function getWeight()
+    {
+        $weight = 0;
+
+        $this
+            ->cartLines
+            ->map(function(CartLineInterface $cartLine) use (&$weight) {
+
+                $weight += $cartLine->getWeight();
+            });
+
+        return $weight;
+    }
 }

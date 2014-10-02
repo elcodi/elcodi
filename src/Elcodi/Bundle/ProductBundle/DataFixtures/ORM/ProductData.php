@@ -65,6 +65,10 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
             ->setStock(10)
             ->setPrice(Money::create(1000, $currency))
             ->setSku('product-sku-code-1')
+            ->setHeight(10)
+            ->setWidth(15)
+            ->setDepth(20)
+            ->setWeight(100)
             ->setEnabled(true);
 
         $manager->persist($product);
@@ -89,6 +93,10 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
             ->setStock(5)
             ->setPrice(Money::create(1000, $currency))
             ->setReducedPrice(Money::create(500, $currency))
+            ->setHeight(25)
+            ->setWidth(30)
+            ->setDepth(35)
+            ->setWeight(200)
             ->setEnabled(true);
 
         $manager->persist($productReduced);
@@ -115,6 +123,10 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
             ->setManufacturer($manufacturer)
             ->setStock(10)
             ->setPrice(Money::create(1000, $currency))
+            ->setHeight(40)
+            ->setWidth(45)
+            ->setDepth(50)
+            ->setWeight(500)
             ->setEnabled(true);
 
         $manager->persist($productWithVariants);
