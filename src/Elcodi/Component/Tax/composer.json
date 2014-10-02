@@ -16,14 +16,13 @@
         },
         {
             "name": "Symfony Community",
-            "homepage": "https://github.com/elcodi/User/contributors"
+            "homepage": "https://github.com/elcodi/Tax/contributors"
         }
     ],
     "require": {
         "php": ">=5.4",
         "doctrine/common": "~2.4",
         "doctrine/orm": "~2.4",
-        "symfony/expression-language": "~2.4",
 
         "elcodi/core": "~0.3.0"
     },
