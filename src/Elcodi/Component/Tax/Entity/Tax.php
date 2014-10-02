@@ -16,7 +16,6 @@
 
 namespace Elcodi\Component\Tax\Entity;
 
-use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Tax\Entity\Interfaces\TaxInterface;
 
@@ -25,10 +24,12 @@ use Elcodi\Component\Tax\Entity\Interfaces\TaxInterface;
  */
 class Tax implements TaxInterface
 {
-    use EnabledTrait, DateTimeTrait
+    use EnabledTrait;
 
     /**
      * @var integer
+     *
+     * Identifier
      */
     protected $id;
 
@@ -52,6 +53,30 @@ class Tax implements TaxInterface
      * Tax percent value
      */
     protected $value;
+
+    /**
+     * Get Id
+     *
+     * @return int Id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Sets Id
+     *
+     * @param int $id Id
+     *
+     * @return $this Self object
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     /**
      * Gets Tax name

@@ -41,7 +41,7 @@ class Configuration implements ConfigurationInterface
                             ->addDefaultsIfNotSet()
                             ->children()
                                 ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\Tax\Entity\Abstracts\Tax')
+                                    ->defaultValue('Elcodi\Component\Tax\Entity\Tax')
                                     ->cannotBeEmpty()
                                 ->end()
                                 ->scalarNode('mapping_file')
