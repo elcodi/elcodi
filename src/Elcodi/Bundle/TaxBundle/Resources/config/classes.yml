@@ -1,0 +1,11 @@
+parameters:
+
+    #
+    # Factories
+    #
+    elcodi.core.tax.factory.tax.class: Elcodi\Component\Tax\Factory\TaxFactory
+
+    #
+    # Repositories
+    #
+    elcodi.core.tax.repository.tax.class: Elcodi\Component\Tax\Repository\TaxRepository

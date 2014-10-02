@@ -1,0 +1,18 @@
+services:
+
+    #
+    # Repositories
+    #
+
+    #
+    # Repository for entity tax
+    #
+    elcodi.core.tax.repository.tax:
+        class: %elcodi.core.tax.repository.tax.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.tax.entity.tax.class%
+
+    elcodi.repository.tax:
+        alias: elcodi.core.tax.repository.tax

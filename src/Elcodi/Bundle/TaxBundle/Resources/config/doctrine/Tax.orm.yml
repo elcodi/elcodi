@@ -1,0 +1,26 @@
+Elcodi\Component\Tax\Entity\Tax:
+    type: entity
+    repositoryClass: Elcodi\Component\Tax\Repository\TaxRepository
+    table: customer
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            column: name
+            type: string
+            length: 15
+            nullable: false
+        description:
+            column: description
+            type: string
+            length: 255
+            nullable: false
+        value:
+            column: value
+            type: float
+        enabled:
+            column: enabled
+            type: boolean
