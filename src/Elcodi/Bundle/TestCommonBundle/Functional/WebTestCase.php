@@ -18,6 +18,7 @@ namespace Elcodi\Bundle\TestCommonBundle\Functional;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityRepository;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as BaseWebTestCase;
@@ -59,14 +60,20 @@ abstract class WebTestCase extends BaseWebTestCase
     public function setUp()
     {
         gc_collect_cycles();
-try {
-        static::$kernel = static::createKernel();
-        static::$kernel->boot();
 
-        static::$application = new Application(static::$kernel);
-        static::$application->setAutoExit(false);
-        $this->container = static::$kernel->getContainer();
-} catch (\Exception $e) { echo $e->getMessage();die(); }
+        try {
+            static::$kernel = static::createKernel();
+            static::$kernel->boot();
+
+            static::$application = new Application(static::$kernel);
+            static::$application->setAutoExit(false);
+            $this->container = static::$kernel->getContainer();
+
+        } catch (Exception $e) {
+
+            die($e->getMessage());
+        }
+
         $this->createSchema();
     }
 
@@ -98,8 +105,8 @@ try {
         foreach ($serviceCallableNames as $serviceCallableName) {
 
             $this->assertNotNull(static::$kernel
-                ->getContainer()
-                ->get($serviceCallableName)
+                    ->getContainer()
+                    ->get($serviceCallableName)
             );
 
         }

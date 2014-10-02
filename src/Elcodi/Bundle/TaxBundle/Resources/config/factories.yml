@@ -1,0 +1,16 @@
+services:
+
+    #
+    # Factories
+    #
+
+    #
+    # Factory for entity tax
+    #
+    elcodi.core.tax.factory.tax:
+        class: %elcodi.core.tax.factory.tax.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.tax.entity.tax.class%"]]
+
+    elcodi.factory.tax:
+        alias: elcodi.core.tax.factory.tax
