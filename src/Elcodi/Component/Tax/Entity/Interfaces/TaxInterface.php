@@ -16,14 +16,29 @@
 
 namespace Elcodi\Component\Tax\Entity\Interfaces;
 
-use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 
 /**
  * Interface TaxInterface
  */
-interface TaxInterface extends EnabledInterface, DateTimeInterface
+interface TaxInterface extends EnabledInterface
 {
+    /**
+     * Get Id
+     *
+     * @return int Id
+     */
+    public function getId();
+
+    /**
+     * Sets Id
+     *
+     * @param int $id Id
+     *
+     * @return $this Self object
+     */
+    public function setId($id);
+
     /**
      * Gets Tax name
      *
