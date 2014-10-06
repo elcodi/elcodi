@@ -9,6 +9,12 @@ Elcodi\MediaBundle\Entity\Image:
             length: 255
             nullable: false
             unique: false
+        path:
+            column: path
+            type: string
+            length: 255
+            nullable: false
+            unique: false
         contentType:
             column: content_type
             type: string

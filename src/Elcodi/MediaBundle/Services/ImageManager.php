@@ -109,6 +109,7 @@ class ImageManager
             ->setContentType($fileMime)
             ->setSize($file->getSize())
             ->setExtension($file->getExtension())
+            ->setPath($file->getPath())
             ->setName($name);
 
         return $image;
