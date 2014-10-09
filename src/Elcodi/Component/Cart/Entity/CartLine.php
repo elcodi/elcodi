@@ -105,4 +105,52 @@ class CartLine extends AbstractLine implements CartLineInterface
     {
         return new DefaultPurchasableResolver($this);
     }
+
+    /**
+     * Return the purchasable object depth
+     *
+     * @return int Depth
+     */
+    public function getDepth()
+    {
+        return $this
+            ->getPurchasable()
+            ->getDepth();
+    }
+
+    /**
+     * Return the purchasable object height
+     *
+     * @return int Height
+     */
+    public function getHeight()
+    {
+        return $this
+            ->getPurchasable()
+            ->getHeight();
+    }
+
+    /**
+     * Return the purchasable object width
+     *
+     * @return int Width
+     */
+    public function getWidth()
+    {
+        return $this
+            ->getPurchasable()
+            ->getWidth();
+    }
+
+    /**
+     * Return the purchasable object weight
+     *
+     * @return int Weight
+     */
+    public function getWeight()
+    {
+        return $this
+            ->getPurchasable()
+            ->getWeight();
+    }
 }

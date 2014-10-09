@@ -18,6 +18,7 @@ namespace Elcodi\Component\Cart\Factory;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Elcodi\Component\Cart\Entity\Interfaces\OrderLineHistoryInterface;
 use Elcodi\Component\Cart\Entity\OrderLine;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 
@@ -84,10 +85,20 @@ class OrderLineFactory extends AbstractFactory
         $orderLine = new $classNamespace();
         $orderLine->setOrderLineHistories(new ArrayCollection);
 
+        $orderLine
+            ->setWidth(0)
+            ->setHeight(0)
+            ->setWidth(0)
+            ->setWeight(0);
+
+        /**
+         * @var OrderLineHistoryInterface $orderLineHistory
+         */
         $orderLineHistory = $this->orderLineHistoryFactory->create();
         $orderLineHistory
             ->setOrderLine($orderLine)
             ->setState($this->initialOrderHistoryState);
+
         $orderLine
             ->addOrderLineHistory($orderLineHistory)
             ->setLastOrderLineHistory($orderLineHistory);

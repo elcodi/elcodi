@@ -19,19 +19,20 @@ namespace Elcodi\Component\Cart\Entity\Interfaces;
 use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
+use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
  * Class OrderInterface
  */
-interface OrderInterface extends PriceInterface
+interface OrderInterface extends PriceInterface, DimensionableInterface
 {
     /**
      * Sets Customer
      *
      * @param CustomerInterface $customer Customer
      *
-     * @return OrderInterface Self object
+     * @return $this Self object
      */
     public function setCustomer(CustomerInterface $customer);
 
@@ -47,7 +48,7 @@ interface OrderInterface extends PriceInterface
      *
      * @param CartInterface $cart Cart
      *
-     * @return OrderInterface Self object
+     * @return $this Self object
      */
     public function setCart(CartInterface $cart);
 
@@ -147,7 +148,7 @@ interface OrderInterface extends PriceInterface
      *
      * @param OrderHistoryInterface $lastOrderHistory LastOrderHistory
      *
-     * @return OrderInterface Self object
+     * @return $this Self object
      */
     public function setLastOrderHistory(OrderHistoryInterface $lastOrderHistory);
 
@@ -170,7 +171,43 @@ interface OrderInterface extends PriceInterface
      *
      * @param MoneyInterface $couponAmount coupon amount
      *
-     * @return OrderInterface
+     * @return $this
      */
     public function setCouponAmount(MoneyInterface $couponAmount);
+
+    /**
+     * Set the height
+     *
+     * @param integer $height Height
+     *
+     * @return $this self Object
+     */
+    public function setHeight($height);
+
+    /**
+     * Set the width
+     *
+     * @param integer $width Width
+     *
+     * @return $this self Object
+     */
+    public function setWidth($width);
+
+    /**
+     * Set the depth
+     *
+     * @param integer $depth Depth
+     *
+     * @return $this self Object
+     */
+    public function setDepth($depth);
+
+    /**
+     * Set the weight
+     *
+     * @param integer $weight Weight
+     *
+     * @return $this self Object
+     */
+    public function setWeight($weight);
 }

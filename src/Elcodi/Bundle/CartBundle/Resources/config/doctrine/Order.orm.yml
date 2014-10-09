@@ -23,6 +23,22 @@ Elcodi\Component\Cart\Entity\Order:
             column: amount
             type: integer
             nullable: false
+        height:
+            column: height
+            type: integer
+            nullable: false
+        width:
+            column: width
+            type: integer
+            nullable: false
+        depth:
+            column: depth
+            type: integer
+            nullable: false
+        weight:
+            column: weight
+            type: integer
+            nullable: false
         createdAt:
             column: created_at
             type: datetime

@@ -176,4 +176,83 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
             ->cartOrderTransformer
             ->createOrderFromCart($cart);
     }
+
+    /**
+     * Test dimensions transformation
+     *
+     * @group Order
+     */
+    public function testCreateOrderFromCartDimensions()
+    {
+        /**
+         * @var OrderInterface    $order
+         * @var CurrencyInterface $currency
+         */
+        $order = $this->getMock('Elcodi\Component\Cart\Entity\Order', null);
+        $currency = $this->getMock('Elcodi\Component\Currency\Entity\Currency', null);
+        $currency->setIso('EUR');
+
+        $this
+            ->orderFactory
+            ->expects($this->once())
+            ->method('create')
+            ->will($this->returnValue($order));
+
+        $this
+            ->cartLineOrderLineTransformer
+            ->expects($this->any())
+            ->method('createOrderLinesByCartLines')
+            ->will($this->returnValue(new ArrayCollection));
+
+        $cart = $this->getMock('Elcodi\Component\Cart\Entity\Cart');
+
+        $cart
+            ->expects($this->any())
+            ->method('getCartLines')
+            ->will($this->returnValue(new ArrayCollection()));
+
+        $cart
+            ->expects($this->any())
+            ->method('getCustomer')
+            ->will($this->returnValue(new Customer()));
+
+        $cart
+            ->expects($this->any())
+            ->method('getProductAmount')
+            ->will($this->returnValue(Money::create(10, $currency)));
+
+        $cart
+            ->expects($this->any())
+            ->method('getAmount')
+            ->will($this->returnValue(Money::create(10, $currency)));
+
+        $cart
+            ->expects($this->any())
+            ->method('getWeight')
+            ->will($this->returnValue(10));
+
+        $cart
+            ->expects($this->any())
+            ->method('getHeight')
+            ->will($this->returnValue(11));
+
+        $cart
+            ->expects($this->any())
+            ->method('getWidth')
+            ->will($this->returnValue(12));
+
+        $cart
+            ->expects($this->any())
+            ->method('getDepth')
+            ->will($this->returnValue(13));
+
+        $order = $this
+            ->cartOrderTransformer
+            ->createOrderFromCart($cart);
+
+        $this->assertEquals(10, $order->getWeight());
+        $this->assertEquals(11, $order->getHeight());
+        $this->assertEquals(12, $order->getWidth());
+        $this->assertEquals(13, $order->getDepth());
+    }
 }

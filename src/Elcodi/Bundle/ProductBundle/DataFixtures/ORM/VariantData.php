@@ -67,6 +67,10 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
             ->addOption($optionWhite)
             ->addOption($optionSmall)
             ->setPrice(Money::create(1500, $currency))
+            ->setHeight(13)
+            ->setWidth(12)
+            ->setDepth(19)
+            ->setWeight(125)
             ->setEnabled(true);
 
         $productWithVariants->setPrincipalVariant($variantWhiteSmall);
@@ -89,6 +93,10 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
             ->addOption($optionWhite)
             ->addOption($optionLarge)
             ->setPrice(Money::create(1800, $currency))
+            ->setHeight(12)
+            ->setWidth(11)
+            ->setDepth(45)
+            ->setWeight(155)
             ->setEnabled(true);
 
         $manager->persist($variantWhiteLarge);
@@ -109,6 +117,10 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
             ->addOption($optionRed)
             ->addOption($optionSmall)
             ->setPrice(Money::create(1500, $currency))
+            ->setHeight(19)
+            ->setWidth(9)
+            ->setDepth(33)
+            ->setWeight(1000)
             ->setEnabled(true);
 
         $manager->persist($variantRedSmall);
@@ -129,6 +141,10 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
             ->addOption($optionRed)
             ->addOption($optionLarge)
             ->setPrice(Money::create(1800, $currency))
+            ->setHeight(50)
+            ->setWidth(30)
+            ->setDepth(18)
+            ->setWeight(70)
             ->setEnabled(true);
 
         $manager->persist($variantRedLarge);

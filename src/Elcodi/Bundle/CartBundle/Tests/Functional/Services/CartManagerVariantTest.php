@@ -80,6 +80,10 @@ class CartManagerVariantTest extends AbstractCartManagerTest
             ->setName('abc')
             ->setSlug('abc')
             ->setEnabled(true)
+            ->setWidth(10)
+            ->setHeight(10)
+            ->setDepth(10)
+            ->setWeight(10)
             ->setStock(10);
 
         /**
@@ -91,6 +95,10 @@ class CartManagerVariantTest extends AbstractCartManagerTest
             ->setProduct($product)
             ->setPrice(Money::create(1200, $currency))
             ->addOption($variantOption)
+            ->setWidth(10)
+            ->setHeight(10)
+            ->setDepth(10)
+            ->setWeight(10)
             ->setEnabled(true)
             ->setStock(20);
 

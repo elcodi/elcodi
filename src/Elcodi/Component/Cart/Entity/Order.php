@@ -28,6 +28,7 @@ use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
+use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
@@ -35,7 +36,7 @@ use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
  */
 class Order extends AbstractEntity implements OrderInterface
 {
-    use DateTimeTrait, PriceTrait;
+    use DateTimeTrait, PriceTrait, DimensionsTrait;
 
     /**
      * @var CustomerInterface

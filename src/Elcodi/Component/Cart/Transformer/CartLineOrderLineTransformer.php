@@ -114,12 +114,19 @@ class CartLineOrderLineTransformer
             ? $cartLine->getOrderLine()
             : $this->orderLineFactory->create();
 
+        /**
+         * @var OrderLineInterface $orderLine
+         */
         $orderLine
             ->setOrder($order)
             ->setPurchasable($cartLine->getPurchasable())
             ->setQuantity($cartLine->getQuantity())
             ->setProductAmount($cartLine->getProductAmount())
-            ->setAmount($cartLine->getAmount());
+            ->setAmount($cartLine->getAmount())
+            ->setHeight($cartLine->getHeight())
+            ->setWidth($cartLine->getWidth())
+            ->setDepth($cartLine->getDepth())
+            ->setWeight($cartLine->getWeight());
 
         $this
             ->orderLineEventDispatcher

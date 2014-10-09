@@ -22,13 +22,14 @@ use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
+use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
 
 /**
  * Cart line
  */
 abstract class AbstractLine extends AbstractEntity
 {
-    use PriceTrait;
+    use PriceTrait, DimensionsTrait;
 
     /**
      * @var ProductInterface
@@ -163,5 +164,4 @@ abstract class AbstractLine extends AbstractEntity
      * @return PurchasableResolverInterface
      */
     abstract protected function getPurchasableResolver();
-
 }

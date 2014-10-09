@@ -24,6 +24,7 @@ use Elcodi\Component\Cart\Entity\Interfaces\OrderLineHistoryInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface;
 use Elcodi\Component\Cart\Resolver\DefaultPurchasableResolver;
 use Elcodi\Component\Cart\Resolver\Interfaces\PurchasableResolverInterface;
+use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
 
 /**
  * OrderLine
@@ -170,5 +171,4 @@ class OrderLine extends AbstractLine implements OrderLineInterface
     {
         return new DefaultPurchasableResolver($this);
     }
-
 }

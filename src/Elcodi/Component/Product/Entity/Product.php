@@ -30,6 +30,7 @@ use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
+use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
 use Elcodi\Component\Product\Entity\Traits\ProductPriceTrait;
 
 /**
@@ -44,7 +45,8 @@ class Product extends AbstractEntity implements ProductInterface
         ETaggableTrait,
         MetaDataTrait,
         ImagesContainerTrait,
-        PrincipalImageTrait;
+        PrincipalImageTrait,
+        DimensionsTrait;
 
     /**
      * @var string
