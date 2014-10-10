@@ -9,6 +9,7 @@ parameters:
     #
     # Factories
     #
+    elcodi.core.currency.factory.abstract.abstract.class: Elcodi\Component\Currency\Factory\Abstracts\AbstractPurchasableFactory
     elcodi.core.currency.factory.currency.class: Elcodi\Component\Currency\Factory\CurrencyFactory
     elcodi.core.currency.factory.currency_exchange_rate.class: Elcodi\Component\Currency\Factory\CurrencyExchangeRateFactory
 

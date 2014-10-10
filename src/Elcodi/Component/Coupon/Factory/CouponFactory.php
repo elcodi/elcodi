@@ -18,15 +18,15 @@ namespace Elcodi\Component\Coupon\Factory;
 
 use DateTime;
 
-use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Coupon\ElcodiCouponTypes;
 use Elcodi\Component\Coupon\Entity\Coupon;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
+use Elcodi\Component\Currency\Factory\Abstracts\AbstractPurchasableFactory;
 
 /**
  * Class CouponFactory
  */
-class CouponFactory extends AbstractFactory
+class CouponFactory extends AbstractPurchasableFactory
 {
     /**
      * Creates an instance of a simple coupon.
@@ -37,6 +37,8 @@ class CouponFactory extends AbstractFactory
      */
     public function create()
     {
+        $zeroPrice = $this->createZeroAmountMoney();
+
         /**
          * @var CouponInterface $coupon
          */
@@ -44,8 +46,11 @@ class CouponFactory extends AbstractFactory
         $coupon = new $classNamespace();
         $coupon
             ->setType(ElcodiCouponTypes::TYPE_AMOUNT)
+            ->setPrice($zeroPrice)
+            ->setAbsolutePrice($zeroPrice)
+            ->setMinimumPurchase($zeroPrice)
             ->setEnforcement(ElcodiCouponTypes::ENFORCEMENT_MANUAL)
-            ->setUsed(0)
+            ->setUsed(false)
             ->setPriority(0)
             ->setEnabled(false)
             ->setCreatedAt(new DateTime);

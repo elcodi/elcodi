@@ -14,7 +14,7 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Component\Product\Factory\Abstracts;
+namespace Elcodi\Component\Currency\Factory\Abstracts;
 
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
