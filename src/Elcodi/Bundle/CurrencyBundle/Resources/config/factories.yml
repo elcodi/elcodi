@@ -5,6 +5,15 @@ services:
     #
 
     #
+    # Abstract purchasable factory
+    #
+    elcodi.core.currency.factory.abstract.purchasable:
+        class: %elcodi.core.currency.factory.abstract.abstract.class%
+        abstract: true
+        arguments:
+            currency_wrapper: @elcodi.currency_wrapper
+
+    #
     # Factory for Currency entities
     #
     elcodi.core.currency.factory.currency:

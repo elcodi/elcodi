@@ -17,6 +17,7 @@
 namespace Elcodi\Bundle\CouponBundle\Tests\Functional\Factory;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
+use Elcodi\Component\Coupon\Entity\Coupon;
 
 /**
  * Class CouponFactoryTest
@@ -30,7 +31,19 @@ class CouponFactoryTest extends WebTestCase
      */
     protected function loadSchema()
     {
-        return false;
+        return true;
+    }
+
+    /**
+     * Load fixtures of these bundles
+     *
+     * @return array Bundles name where fixtures should be found
+     */
+    protected function loadFixturesBundles()
+    {
+        return array(
+            'ElcodiCurrencyBundle'
+        );
     }
 
     /**
@@ -45,4 +58,42 @@ class CouponFactoryTest extends WebTestCase
             'elcodi.factory.coupon',
         ];
     }
+
+    /**
+     * Tests that the Coupon object is factored correctly
+     */
+    public function testCreateCouponFactory()
+    {
+        $this->assertInstanceOf(
+            $this->getParameter('elcodi.core.coupon.entity.coupon.class'),
+            $this->get('elcodi.factory.coupon')->create()
+        );
+    }
+
+    /**
+     * Tests that amounts in the Currency objects are Money value objects
+     */
+    public function testCouponPricesAreMoney()
+    {
+        /**
+         * @var $coupon Coupon
+         */
+        $coupon = $this->get('elcodi.factory.coupon')->create();
+
+        $this->assertInstanceOf(
+            '\Elcodi\Component\Currency\Entity\Money',
+            $coupon->getPrice()
+        );
+
+        $this->assertInstanceOf(
+            '\Elcodi\Component\Currency\Entity\Money',
+            $coupon->getAbsolutePrice()
+        );
+
+        $this->assertInstanceOf(
+            '\Elcodi\Component\Currency\Entity\Money',
+            $coupon->getMinimumPurchase()
+        );
+    }
+
 }

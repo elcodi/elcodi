@@ -5,20 +5,11 @@ services:
     #
 
     #
-    # Abstract purchasable factory
-    #
-    elcodi.core.product.factory.abstract.purchasable:
-        class: %elcodi.core.product.factory.abstract.abstract.class%
-        abstract: true
-        arguments:
-            currency_wrapper: @elcodi.currency_wrapper
-
-    #
     # Factory for Product entities
     #
     elcodi.core.product.factory.product:
         class: %elcodi.core.product.factory.product.class%
-        parent: elcodi.core.product.factory.abstract.purchasable
+        parent: elcodi.core.currency.factory.abstract.purchasable
         calls:
             - [setEntityNamespace, ["%elcodi.core.product.entity.product.class%"]]
 
@@ -30,7 +21,7 @@ services:
     #
     elcodi.core.product.factory.variant:
         class: %elcodi.core.product.factory.variant.class%
-        parent: elcodi.core.product.factory.abstract.purchasable
+        parent: elcodi.core.currency.factory.abstract.purchasable
         calls:
             - [setEntityNamespace, ["%elcodi.core.product.entity.variant.class%"]]
 
