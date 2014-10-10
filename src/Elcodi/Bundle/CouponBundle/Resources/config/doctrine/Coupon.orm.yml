@@ -35,7 +35,7 @@ Elcodi\Component\Coupon\Entity\Coupon:
             nullable: false
         used:
             column: used
-            type: integer
+            type: boolean
             nullable: false
         priority:
             column: priority
