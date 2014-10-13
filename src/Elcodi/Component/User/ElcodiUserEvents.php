@@ -41,7 +41,7 @@ class ElcodiUserEvents
      * This event is fired when a user is registered
      *
      * event.name : user.register
-     * event.class : AbstractUserRegisterEvent
+     * event.class : UserRegisterEvent
      */
     const ABSTRACTUSER_REGISTER = 'user.register';
 
