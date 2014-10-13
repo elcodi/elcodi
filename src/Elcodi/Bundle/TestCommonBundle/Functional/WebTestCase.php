@@ -24,6 +24,7 @@ use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as BaseWebTestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\DependencyInjection\Exception\RuntimeException;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
@@ -70,8 +71,7 @@ abstract class WebTestCase extends BaseWebTestCase
             $this->container = static::$kernel->getContainer();
 
         } catch (Exception $e) {
-
-            die($e->getMessage());
+            throw new RuntimeException(sprintf('Unable to start the application: %s', $e->getMessage()));
         }
 
         $this->createSchema();
