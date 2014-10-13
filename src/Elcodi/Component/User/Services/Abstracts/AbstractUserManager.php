@@ -22,7 +22,7 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
 
 use Elcodi\Component\User\ElcodiUserEvents;
 use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
-use Elcodi\Component\User\Event\AbstractUserRegisterEvent;
+use Elcodi\Component\User\Event\UserRegisterEvent;
 
 /**
  * Class AbstractUserManager
@@ -82,7 +82,7 @@ abstract class AbstractUserManager
 
         $this->securityContext->setToken($token);
 
-        $event = new AbstractUserRegisterEvent($user);
+        $event = new UserRegisterEvent($user);
         $this->eventDispatcher->dispatch(
             ElcodiUserEvents::ABSTRACTUSER_REGISTER,
             $event

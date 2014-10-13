@@ -21,9 +21,9 @@ use Symfony\Component\EventDispatcher\Event;
 use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 
 /**
- * Class AbstractUserRegisterEvent
+ * Class UserRegisterEvent
  */
-class AbstractUserRegisterEvent extends Event
+class UserRegisterEvent extends Event
 {
     /**
      * @var AbstractUserInterface
