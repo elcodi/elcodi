@@ -104,11 +104,9 @@ class CurrencyExchangeRatesPopulator
     /**
      * Populates the exchange rates
      *
-     * @param OutputInterface $output The output interface
-     *
      * @return int|null|void
      */
-    public function populate(OutputInterface $output)
+    public function populate()
     {
         $currencies = $this
             ->currencyRepository
