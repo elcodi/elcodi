@@ -21,10 +21,5 @@ namespace Elcodi\Component\User\Entity\Interfaces;
  */
 interface AdminUserInterface extends AbstractUserInterface
 {
-    /**
-     * Admin user roles
-     *
-     * @return string[] Roles
-     */
-    public function getRoles();
+
 }
