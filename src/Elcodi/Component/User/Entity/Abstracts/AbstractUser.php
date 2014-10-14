@@ -17,7 +17,7 @@
 namespace Elcodi\Component\User\Entity\Abstracts;
 
 use DateTime;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 
 use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
@@ -27,7 +27,7 @@ use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
  * AbstractUser is the building block for simple User entities,
  * consisting of username, password, email
  */
-abstract class AbstractUser extends AbstractEntity implements UserInterface
+abstract class AbstractUser extends AbstractEntity implements AbstractUserInterface
 {
     use DateTimeTrait, EnabledTrait;
 
