@@ -17,19 +17,13 @@
 namespace Elcodi\Component\User\Entity\Interfaces;
 
 use DateTime;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Class AbstractUserInterface
  */
-interface AbstractUserInterface
+interface AbstractUserInterface extends UserInterface
 {
-    /**
-     * User roles
-     *
-     * @return string[] Roles
-     */
-    public function getRoles();
-
     /**
      * Set recovery hash
      *
@@ -120,13 +114,6 @@ interface AbstractUserInterface
     public function setUsername($username);
 
     /**
-     * Get username
-     *
-     * @return String Username
-     */
-    public function getUsername();
-
-    /**
      * Get birthday
      *
      * @return DateTime
@@ -157,11 +144,4 @@ interface AbstractUserInterface
      * @return $this self Object
      */
     public function setPassword($password);
-
-    /**
-     * Get password
-     *
-     * @return string Password
-     */
-    public function getPassword();
 }
