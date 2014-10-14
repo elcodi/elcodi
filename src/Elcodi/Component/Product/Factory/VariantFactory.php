@@ -52,6 +52,7 @@ class VariantFactory extends AbstractPurchasableFactory
             ->setWidth(0)
             ->setHeight(0)
             ->setWidth(0)
+            ->setDepth(0)
             ->setWeight(0)
             ->setEnabled(false)
             ->setCreatedAt(new \DateTime);

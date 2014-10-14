@@ -57,6 +57,7 @@ class ProductFactory extends AbstractPurchasableFactory
             ->setImages(new ArrayCollection())
             ->setWidth(0)
             ->setHeight(0)
+            ->setDepth(0)
             ->setWidth(0)
             ->setWeight(0)
             ->setEnabled(false)
