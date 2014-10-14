@@ -30,13 +30,6 @@ use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 interface CustomerInterface extends AbstractUserInterface
 {
     /**
-     * User roles
-     *
-     * @return string[] Roles
-     */
-    public function getRoles();
-
-    /**
      * @param string
      *
      * @return $this
