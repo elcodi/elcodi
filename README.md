@@ -8,18 +8,27 @@ Elcodi for Symfony2
 [![Latest Unstable Version](https://poser.pugx.org/elcodi/elcodi/v/unstable.png)](https://packagist.org/packages/elcodi/elcodi)
 [![License](https://poser.pugx.org/elcodi/elcodi/license.png)](https://packagist.org/packages/elcodi/elcodi)
 
-Elcodi components for symfony2
+Elcodi is a suite of e-commerce bundles and components developed for the **Symfony2 Framework**.
+
+It aims to promote SOLID principles, efficient code reutilization, separation of concerns as effective building blocks for the development of e-commerce applications.
+
+Elcodi is now in an early development stage and provides a reference implementation for the basic core components found in e-commerce web projects.
+
+See the [front-end store](http://bamboo.elcodi.com) and the [back-office](http://bamboo.elcodi.com/admin) demo application in action.
+
+Check out the source code for the [front](https://github.com/elcodi/bamboo-store) and [backend](https://github.com/elcodi/bamboo-admin) applications.
 
 Requirements
 ------------
 
-Elcodi is only supported on PHP 5.4.* and up.
+Elcodi is supported on PHP 5.4.* and up.
 
 
 Documentation
 -------------
 
 Check the documentation in [ReadTheDocs](http://elcodi.readthedocs.org/).
+
 This documentation is being developed and will be in alpha version until the first
 stable project version.
 
@@ -27,7 +36,7 @@ stable project version.
 Tags
 ----
 
-* Use last unstable version ( alias of `dev-master` ) to stay always in last commit
+* Use last unstable version ( alias of `dev-master` ) to stay always in last commit.
 * Use last stable version tag to stay in a stable release.
 * [![Latest Unstable Version](https://poser.pugx.org/elcodi/elcodi/v/unstable.png)](https://packagist.org/packages/elcodi/elcodi)  [![Latest Stable Version](https://poser.pugx.org/elcodi/elcodi/v/stable.png)](https://packagist.org/packages/elcodi/elcodi)
 
@@ -35,7 +44,7 @@ Tags
 Projects
 --------
 
-Is your project on top of the elcodi components? Let us know it and use 
+Have you developed an application on top of Elcodi components? Let us know it and use 
 this badge for your github repository.  
 [![Powered By Elcodi](http://elcodi.io/static/elcodi.badge.png)](http://github.com/elcodi)
 
