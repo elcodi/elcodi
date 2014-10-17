@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
