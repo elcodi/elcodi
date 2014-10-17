@@ -41,7 +41,7 @@ class CityFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $city = new $classNamespace();
         $city
-            ->setPostalCodes(new ArrayCollection)
+            ->setPostalCodes(new ArrayCollection())
             ->setEnabled(true);
 
         return $city;

@@ -1,0 +1,58 @@
+Elcodi\Component\Shipping\Entity\Abstracts\AbstractCarrierRange:
+    type: entity
+    repositoryClass: Elcodi\Component\Shipping\Repository\CarrierRangeRepository
+    inheritanceType: joined
+    discriminatorColumn:
+        name: discr
+        type: string
+    discriminatorMap:
+        carrier_price_range: Elcodi\Component\Shipping\Entity\CarrierPriceRange
+        carrier_weight_range: Elcodi\Component\Shipping\Entity\CarrierWeightRange
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        description:
+            column: description
+            type: text
+        priceAmount:
+            column: price_amount
+            type: integer
+        enabled:
+            column: enabled
+            type: boolean
+            nullable: false
+
+    manyToOne:
+        carrier:
+            targetEntity: Elcodi\Component\Shipping\Entity\Interfaces\CarrierInterface
+            inversedBy: carrierRanges
+            joinColumn:
+                name: carrier_id
+                referencedColumnName: id
+                nullable: false
+        fromZone:
+            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\ZoneInterface
+            joinColumn:
+                name: from_zone_code
+                referencedColumnName: code
+                nullable: false
+        toZone:
+            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\ZoneInterface
+            joinColumn:
+                name: to_zone_code
+                referencedColumnName: code
+                nullable: false
+        priceCurrency:
+            targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                 name: price_currency_id
+                 referencedColumnName: id
+                 nullable: false

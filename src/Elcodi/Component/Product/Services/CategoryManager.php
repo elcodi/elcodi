@@ -235,7 +235,7 @@ class CategoryManager extends AbstractCacheWrapper
         }
 
         return $categoryTree[0]['children']
-            ? : [];
+            ?: [];
     }
 
     /**

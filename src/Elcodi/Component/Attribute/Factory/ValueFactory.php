@@ -40,7 +40,7 @@ class ValueFactory extends AbstractFactory
             ->setName('')
             ->setDisplayName('')
             ->setEnabled(false)
-            ->setCreatedAt(new \DateTime);
+            ->setCreatedAt(new \DateTime());
 
         return $value;
     }

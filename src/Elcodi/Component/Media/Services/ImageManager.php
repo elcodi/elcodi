@@ -93,7 +93,7 @@ class ImageManager
 
         if (strpos($fileMime, 'image/') !== 0) {
 
-            throw new InvalidImageException;
+            throw new InvalidImageException();
         }
 
         /**

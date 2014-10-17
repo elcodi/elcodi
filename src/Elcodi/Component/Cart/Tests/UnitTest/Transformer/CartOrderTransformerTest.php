@@ -119,7 +119,7 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
             ->cartLineOrderLineTransformer
             ->expects($this->any())
             ->method('createOrderLinesByCartLines')
-            ->will($this->returnValue(new ArrayCollection));
+            ->will($this->returnValue(new ArrayCollection()));
 
         $customer = new Customer();
         $cart = new Cart();
@@ -128,7 +128,7 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
             ->setQuantity(10)
             ->setProductAmount(Money::create(20, $currency))
             ->setAmount(Money::create(20, $currency))
-            ->setCartLines(new ArrayCollection);
+            ->setCartLines(new ArrayCollection());
 
         $this
             ->cartOrderTransformer
@@ -160,7 +160,7 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
             ->cartLineOrderLineTransformer
             ->expects($this->any())
             ->method('createOrderLinesByCartLines')
-            ->will($this->returnValue(new ArrayCollection));
+            ->will($this->returnValue(new ArrayCollection()));
 
         $customer = new Customer();
         $cart = new Cart();
@@ -170,7 +170,7 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
             ->setProductAmount(Money::create(20, $currency))
             ->setOrder($order)
             ->setAmount(Money::create(20, $currency))
-            ->setCartLines(new ArrayCollection);
+            ->setCartLines(new ArrayCollection());
 
         $this
             ->cartOrderTransformer
@@ -202,7 +202,7 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
             ->cartLineOrderLineTransformer
             ->expects($this->any())
             ->method('createOrderLinesByCartLines')
-            ->will($this->returnValue(new ArrayCollection));
+            ->will($this->returnValue(new ArrayCollection()));
 
         $cart = $this->getMock('Elcodi\Component\Cart\Entity\Cart');
 

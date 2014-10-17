@@ -49,10 +49,10 @@ class ZoneMatcher
         $city = $address->getCity();
 
         return
-            $this->isCountryContainedInZone($zone, $city->getCountry()) ||
-            $this->isStateContainedInZone($zone, $city->getState()) ||
-            $this->isProvinceContainedInZone($zone, $city->getProvince()) ||
-            $this->isCityContainedInZone($zone, $address->getCity()) ||
+            $this->isCountryContainedInZone($zone, $city->getCountry()) |
+            $this->isStateContainedInZone($zone, $city->getState()) |
+            $this->isProvinceContainedInZone($zone, $city->getProvince()) |
+            $this->isCityContainedInZone($zone, $address->getCity()) |
             $this->isPostalCodeContainedInZone($zone, $address->getPostalcode());
     }
 

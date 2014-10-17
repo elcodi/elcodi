@@ -43,7 +43,7 @@ class MenuFactory extends AbstractFactory
             ->setDescription('')
             ->setSubnodes(new ArrayCollection())
             ->setEnabled(false)
-            ->setCreatedAt(new DateTime);
+            ->setCreatedAt(new DateTime());
 
         return $menu;
     }

@@ -199,7 +199,7 @@ class CurrencyConverter
             /**
              * No CurrencyRate can be found
              */
-            throw new CurrencyNotConvertibleException;
+            throw new CurrencyNotConvertibleException();
         }
 
         return $type

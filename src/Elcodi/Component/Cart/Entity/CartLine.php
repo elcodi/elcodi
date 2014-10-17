@@ -149,7 +149,7 @@ class CartLine extends AbstractLine implements CartLineInterface
      */
     public function getWeight()
     {
-        return $this
+        return $this->quantity * $this
             ->getPurchasable()
             ->getWeight();
     }

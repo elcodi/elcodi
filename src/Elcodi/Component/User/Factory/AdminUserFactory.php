@@ -44,7 +44,7 @@ class AdminUserFactory extends AbstractFactory
         $customer
             ->setGender(ElcodiUserProperties::GENDER_UNKNOWN)
             ->setEnabled(true)
-            ->setCreatedAt(new DateTime);
+            ->setCreatedAt(new DateTime());
 
         return $customer;
     }

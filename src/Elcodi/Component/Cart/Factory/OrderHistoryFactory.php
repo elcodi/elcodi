@@ -38,7 +38,7 @@ class OrderHistoryFactory extends AbstractFactory
          */
         $classNamespace = $this->getEntityNamespace();
         $orderHistory = new $classNamespace();
-        $orderHistory->setCreatedAt(new DateTime);
+        $orderHistory->setCreatedAt(new DateTime());
 
         return $orderHistory;
     }

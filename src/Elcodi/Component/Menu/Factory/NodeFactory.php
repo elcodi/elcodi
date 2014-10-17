@@ -42,7 +42,7 @@ class NodeFactory extends AbstractFactory
         $node
             ->setSubnodes(new ArrayCollection())
             ->setEnabled(false)
-            ->setCreatedAt(new DateTime);
+            ->setCreatedAt(new DateTime());
 
         return $node;
     }

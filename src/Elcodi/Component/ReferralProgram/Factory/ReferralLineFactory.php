@@ -44,7 +44,7 @@ class ReferralLineFactory extends AbstractFactory
         $referralLine
             ->setReferrerCouponUsed(false)
             ->setInvitedCouponUsed(false)
-            ->setCreatedAt(new DateTime)
+            ->setCreatedAt(new DateTime())
             ->setEnabled(false)
             ->setClosed(false);
 

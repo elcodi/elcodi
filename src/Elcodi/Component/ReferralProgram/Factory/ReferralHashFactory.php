@@ -42,7 +42,7 @@ class ReferralHashFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $referralHash = new $classNamespace();
         $referralHash
-            ->setReferralLines(new ArrayCollection);
+            ->setReferralLines(new ArrayCollection());
 
         return $referralHash;
     }

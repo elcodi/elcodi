@@ -53,7 +53,7 @@ class ProductFactory extends AbstractPurchasableFactory
             ->setReducedPrice($zeroPrice)
             ->setAttributes(new ArrayCollection())
             ->setVariants(new ArrayCollection())
-            ->setCategories(new ArrayCollection)
+            ->setCategories(new ArrayCollection())
             ->setImages(new ArrayCollection())
             ->setWidth(0)
             ->setHeight(0)
@@ -61,7 +61,7 @@ class ProductFactory extends AbstractPurchasableFactory
             ->setWidth(0)
             ->setWeight(0)
             ->setEnabled(false)
-            ->setCreatedAt(new DateTime);
+            ->setCreatedAt(new DateTime());
 
         return $product;
     }
