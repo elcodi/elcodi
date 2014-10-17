@@ -121,6 +121,7 @@ Elcodi\Component\Product\Entity\Product:
                 name: principal_image_id
                 referencedColumnName: id
                 nullable: true
+                onDelete: "SET NULL"
         priceCurrency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
@@ -163,6 +164,7 @@ Elcodi\Component\Product\Entity\Product:
                 inverseJoinColumns:
                     image_id:
                         referencedColumnName: id
+                        onDelete: "CASCADE"
         attributes:
             targetEntity: Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface
             joinTable:
