@@ -7,7 +7,7 @@ use-sort:
     sort-direction: asc
 
 header: |
-    /**
+    /*
      * This file is part of the Elcodi package.
      *
      * Copyright (c) 2014 Elcodi.com

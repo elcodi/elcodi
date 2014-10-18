@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -371,7 +371,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
          */
         $product = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\ProductInterface');
         $cart = new Cart();
-        $cart->setCartLines(new ArrayCollection);
+        $cart->setCartLines(new ArrayCollection());
 
         $this->cartManager->addProduct($cart, $product, $quantity);
 

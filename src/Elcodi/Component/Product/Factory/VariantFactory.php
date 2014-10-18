@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -55,7 +55,7 @@ class VariantFactory extends AbstractPurchasableFactory
             ->setDepth(0)
             ->setWeight(0)
             ->setEnabled(false)
-            ->setCreatedAt(new \DateTime);
+            ->setCreatedAt(new \DateTime());
 
         return $variant;
     }

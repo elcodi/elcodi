@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -98,7 +98,7 @@ class ReferralCouponManagerTest extends WebTestCase
             ->get('elcodi.referral_rule_manager')
             ->enableReferralRule($referralRule);
 
-        $invitations = new ArrayCollection;
+        $invitations = new ArrayCollection();
         $invitation1 = new Invitation();
         $invitation1
             ->setEmail('invited@invited.com')
@@ -267,7 +267,7 @@ class ReferralCouponManagerTest extends WebTestCase
             ->getReferralHashByCustomer($referrer);
         $hash = $referralHash->getHash();
 
-        $invitations = new ArrayCollection;
+        $invitations = new ArrayCollection();
         $invitation1 = new Invitation();
         $invitation1
             ->setEmail('invited@invited.com')

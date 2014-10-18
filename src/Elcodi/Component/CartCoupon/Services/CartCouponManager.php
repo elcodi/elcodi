@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -106,7 +106,7 @@ class CartCouponManager
          * If is this case, we avoid this lookup.
          */
         if ($cart->getId() == null) {
-            return new ArrayCollection;
+            return new ArrayCollection();
         }
 
         return new ArrayCollection(
@@ -135,7 +135,7 @@ class CartCouponManager
          * If is this case, we avoid this lookup.
          */
         if ($cart->getId() == null) {
-            return new ArrayCollection;
+            return new ArrayCollection();
         }
 
         $cartCoupons = $this

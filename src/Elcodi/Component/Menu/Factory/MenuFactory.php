@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -43,7 +43,7 @@ class MenuFactory extends AbstractFactory
             ->setDescription('')
             ->setSubnodes(new ArrayCollection())
             ->setEnabled(false)
-            ->setCreatedAt(new DateTime);
+            ->setCreatedAt(new DateTime());
 
         return $menu;
     }

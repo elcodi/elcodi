@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -41,7 +41,7 @@ class ProvinceFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $province = new $classNamespace();
         $province
-            ->setCities(new ArrayCollection)
+            ->setCities(new ArrayCollection())
             ->setEnabled(true);
 
         return $province;

@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -41,7 +41,7 @@ class BannerZoneFactory extends AbstractFactory
          */
         $classNamespace = $this->getEntityNamespace();
         $bannerZone = new $classNamespace();
-        $bannerZone->setBanners(new ArrayCollection);
+        $bannerZone->setBanners(new ArrayCollection());
 
         return $bannerZone;
     }

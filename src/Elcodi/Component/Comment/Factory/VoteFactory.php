@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -38,7 +38,7 @@ class VoteFactory extends AbstractFactory
          */
         $classNamespace = $this->getEntityNamespace();
         $vote = new $classNamespace();
-        $vote->setCreatedAt(new DateTime);
+        $vote->setCreatedAt(new DateTime());
 
         return $vote;
     }

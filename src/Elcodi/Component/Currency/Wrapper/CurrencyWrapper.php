@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -128,7 +128,7 @@ class CurrencyWrapper
             return $this->currency;
         }
 
-        throw new CurrencyNotAvailableException;
+        throw new CurrencyNotAvailableException();
     }
 
     /**

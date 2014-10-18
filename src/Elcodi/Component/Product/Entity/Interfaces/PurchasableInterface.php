@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -57,7 +57,7 @@ interface PurchasableInterface
     /**
      * Gets the variant stock
      *
-     * @return int
+     * @return int stock
      */
     public function getStock();
 

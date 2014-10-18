@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -149,7 +149,7 @@ class CartLine extends AbstractLine implements CartLineInterface
      */
     public function getWeight()
     {
-        return $this
+        return $this->quantity * $this
             ->getPurchasable()
             ->getWeight();
     }

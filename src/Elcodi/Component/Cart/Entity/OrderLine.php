@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -24,7 +24,6 @@ use Elcodi\Component\Cart\Entity\Interfaces\OrderLineHistoryInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface;
 use Elcodi\Component\Cart\Resolver\DefaultPurchasableResolver;
 use Elcodi\Component\Cart\Resolver\Interfaces\PurchasableResolverInterface;
-use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
 
 /**
  * OrderLine

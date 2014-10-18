@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -83,7 +83,7 @@ class OrderLineFactory extends AbstractFactory
          */
         $classNamespace = $this->getEntityNamespace();
         $orderLine = new $classNamespace();
-        $orderLine->setOrderLineHistories(new ArrayCollection);
+        $orderLine->setOrderLineHistories(new ArrayCollection());
 
         $orderLine
             ->setWidth(0)

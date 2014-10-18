@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -44,7 +44,7 @@ class ReferralLineFactory extends AbstractFactory
         $referralLine
             ->setReferrerCouponUsed(false)
             ->setInvitedCouponUsed(false)
-            ->setCreatedAt(new DateTime)
+            ->setCreatedAt(new DateTime())
             ->setEnabled(false)
             ->setClosed(false);
 

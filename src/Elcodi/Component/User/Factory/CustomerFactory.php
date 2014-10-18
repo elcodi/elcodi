@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -46,11 +46,11 @@ class CustomerFactory extends AbstractFactory
             ->setGender(ElcodiUserProperties::GENDER_UNKNOWN)
             ->setGuest(false)
             ->setNewsletter(false)
-            ->setAddresses(new ArrayCollection)
+            ->setAddresses(new ArrayCollection())
             ->setCarts(new ArrayCollection())
             ->setOrders(new ArrayCollection())
             ->setEnabled(true)
-            ->setCreatedAt(new DateTime);
+            ->setCreatedAt(new DateTime());
 
         return $customer;
     }

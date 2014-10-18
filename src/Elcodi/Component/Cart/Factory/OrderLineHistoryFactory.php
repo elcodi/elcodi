@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -38,7 +38,7 @@ class OrderLineHistoryFactory extends AbstractFactory
          */
         $classNamespace = $this->getEntityNamespace();
         $orderLineHistory = new $classNamespace();
-        $orderLineHistory->setCreatedAt(new DateTime);
+        $orderLineHistory->setCreatedAt(new DateTime());
 
         return $orderLineHistory;
     }

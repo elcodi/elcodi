@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -42,7 +42,7 @@ class ReferralRuleFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $referralRule = new $classNamespace();
         $referralRule
-            ->setReferralLines(new ArrayCollection)
+            ->setReferralLines(new ArrayCollection())
             ->setEnabled(false);
 
         return $referralRule;

@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -199,7 +199,7 @@ class CurrencyConverter
             /**
              * No CurrencyRate can be found
              */
-            throw new CurrencyNotConvertibleException;
+            throw new CurrencyNotConvertibleException();
         }
 
         return $type

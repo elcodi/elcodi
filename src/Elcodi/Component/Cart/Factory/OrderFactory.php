@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -90,9 +90,9 @@ class OrderFactory extends AbstractFactory
             ->setHeight(0)
             ->setWidth(0)
             ->setWeight(0)
-            ->setOrderLines(new ArrayCollection)
-            ->setOrderHistories(new ArrayCollection)
-            ->setCreatedAt(new DateTime);
+            ->setOrderLines(new ArrayCollection())
+            ->setOrderHistories(new ArrayCollection())
+            ->setCreatedAt(new DateTime());
 
         /**
          * @var OrderHistoryInterface $orderHistory

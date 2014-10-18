@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -28,6 +28,7 @@ use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
+use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
@@ -93,6 +94,20 @@ class Order extends AbstractEntity implements OrderInterface
      * Coupon Amount
      */
     protected $couponCurrency;
+
+    /**
+     * @var AddressInterface
+     *
+     * delivery address
+     */
+    protected $deliveryAddress;
+
+    /**
+     * @var AddressInterface
+     *
+     * invoice address
+     */
+    protected $invoiceAddress;
 
     /**
      * Sets Customer
@@ -251,6 +266,7 @@ class Order extends AbstractEntity implements OrderInterface
 
         return $this;
     }
+
     /**
      * Set quantity
      *
@@ -325,5 +341,53 @@ class Order extends AbstractEntity implements OrderInterface
             $this->couponAmount,
             $this->couponCurrency
         );
+    }
+
+    /**
+     * Get InvoiceAddress
+     *
+     * @return AddressInterface InvoiceAddress
+     */
+    public function getInvoiceAddress()
+    {
+        return $this->invoiceAddress;
+    }
+
+    /**
+     * Sets InvoiceAddress
+     *
+     * @param AddressInterface $invoiceAddress InvoiceAddress
+     *
+     * @return $this Self object
+     */
+    public function setInvoiceAddress($invoiceAddress)
+    {
+        $this->invoiceAddress = $invoiceAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get DeliveryAddress
+     *
+     * @return AddressInterface DeliveryAddress
+     */
+    public function getDeliveryAddress()
+    {
+        return $this->deliveryAddress;
+    }
+
+    /**
+     * Sets DeliveryAddress
+     *
+     * @param AddressInterface $deliveryAddress DeliveryAddress
+     *
+     * @return $this Self object
+     */
+    public function setDeliveryAddress($deliveryAddress)
+    {
+        $this->deliveryAddress = $deliveryAddress;
+
+        return $this;
     }
 }

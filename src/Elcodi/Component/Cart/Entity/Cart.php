@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -352,7 +352,7 @@ class Cart extends AbstractEntity implements CartInterface
 
         $this
             ->cartLines
-            ->map(function(CartLineInterface $cartLine) use (&$maximumDepth) {
+            ->map(function (CartLineInterface $cartLine) use (&$maximumDepth) {
 
                 $cartLineDepth = $cartLine->getDepth();
                 if ($cartLineDepth > $maximumDepth) {
@@ -375,7 +375,7 @@ class Cart extends AbstractEntity implements CartInterface
 
         $this
             ->cartLines
-            ->map(function(CartLineInterface $cartLine) use (&$maximumHeight) {
+            ->map(function (CartLineInterface $cartLine) use (&$maximumHeight) {
 
                 $cartLineHeight = $cartLine->getHeight();
                 if ($cartLineHeight > $maximumHeight) {
@@ -398,7 +398,7 @@ class Cart extends AbstractEntity implements CartInterface
 
         $this
             ->cartLines
-            ->map(function(CartLineInterface $cartLine) use (&$maximumWidth) {
+            ->map(function (CartLineInterface $cartLine) use (&$maximumWidth) {
 
                 $cartLineWidth = $cartLine->getWidth();
                 if ($cartLineWidth > $maximumWidth) {
@@ -421,7 +421,7 @@ class Cart extends AbstractEntity implements CartInterface
 
         $this
             ->cartLines
-            ->map(function(CartLineInterface $cartLine) use (&$weight) {
+            ->map(function (CartLineInterface $cartLine) use (&$weight) {
 
                 $weight += $cartLine->getWeight();
             });

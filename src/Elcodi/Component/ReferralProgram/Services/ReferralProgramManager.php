@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -207,7 +207,7 @@ class ReferralProgramManager
          */
         if (!($referralRule instanceof ReferralRule)) {
 
-            throw new ReferralProgramRuleNotFoundException;
+            throw new ReferralProgramRuleNotFoundException();
         }
 
         /**
@@ -293,7 +293,7 @@ class ReferralProgramManager
 
         if (!($referralHash instanceof ReferralHashInterface)) {
 
-            $referralLines = new ArrayCollection;
+            $referralLines = new ArrayCollection();
             $referralLine = $this
                 ->referralLineRepository
                 ->findOneBy(array(
@@ -454,7 +454,7 @@ class ReferralProgramManager
                 'referralHash' => $referralHash
             ));
         if ($referralLine instanceof ReferralLine) {
-            throw new ReferralProgramLineExistsException;
+            throw new ReferralProgramLineExistsException();
         }
 
         /** @var $customer Customer */
@@ -463,7 +463,7 @@ class ReferralProgramManager
             ->findOneByEmail($invitation->getEmail());
 
         if ($customer instanceof Customer) {
-            throw new ReferralProgramEmailIsUserException;
+            throw new ReferralProgramEmailIsUserException();
         }
         /**
          * New referral line

@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -13,7 +13,7 @@
  * @author Marc Morera <yuhu@mmoreram.com>
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
- 
+
 namespace Elcodi\Component\Product\Entity\Interfaces;
 
 /**
@@ -49,4 +49,3 @@ interface DimensionableInterface
      */
     public function getWidth();
 }
- 

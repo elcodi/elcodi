@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -88,12 +88,12 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
     {
         $node = new Node();
         $node
-            ->setSubnodes(new ArrayCollection)
+            ->setSubnodes(new ArrayCollection())
             ->setId(1);
 
         $menu = new Menu();
         $menu
-            ->setSubnodes(new ArrayCollection)
+            ->setSubnodes(new ArrayCollection())
             ->addSubnode($node);
 
         $this
@@ -140,12 +140,12 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
     {
         $node = new Node();
         $node
-            ->setSubnodes(new ArrayCollection)
+            ->setSubnodes(new ArrayCollection())
             ->setId(1);
 
         $menu = new Menu();
         $menu
-            ->setSubnodes(new ArrayCollection)
+            ->setSubnodes(new ArrayCollection())
             ->addSubnode($node);
 
         $this

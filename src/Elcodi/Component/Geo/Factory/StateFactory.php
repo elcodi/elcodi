@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -41,7 +41,7 @@ class StateFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $state = new $classNamespace();
         $state
-            ->setProvinces(new ArrayCollection)
+            ->setProvinces(new ArrayCollection())
             ->setEnabled(true);
 
         return $state;

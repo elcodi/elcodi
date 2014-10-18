@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -39,8 +39,8 @@ class InvitationBagFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $invitationBag = new $classNamespace();
         $invitationBag
-            ->setErrorInvitations(new ArrayCollection)
-            ->setSentInvitations(new ArrayCollection);
+            ->setErrorInvitations(new ArrayCollection())
+            ->setSentInvitations(new ArrayCollection());
 
         return $invitationBag;
     }

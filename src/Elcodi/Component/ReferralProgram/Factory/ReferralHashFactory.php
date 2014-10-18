@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -42,7 +42,7 @@ class ReferralHashFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $referralHash = new $classNamespace();
         $referralHash
-            ->setReferralLines(new ArrayCollection);
+            ->setReferralLines(new ArrayCollection());
 
         return $referralHash;
     }

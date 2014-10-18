@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -34,7 +34,7 @@ class ReferralRuleRepository extends EntityRepository
      */
     public function findEnabledReferralRule()
     {
-        return $this->findEnabledReferralRuleFromDateTime(new DateTime);
+        return $this->findEnabledReferralRuleFromDateTime(new DateTime());
     }
 
     /**

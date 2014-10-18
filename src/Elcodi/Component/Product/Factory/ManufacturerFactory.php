@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -40,9 +40,9 @@ class ManufacturerFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $manufacturer = new $classNamespace();
         $manufacturer
-            ->setProducts(new ArrayCollection)
+            ->setProducts(new ArrayCollection())
             ->setEnabled(false)
-            ->setCreatedAt(new DateTime);
+            ->setCreatedAt(new DateTime());
 
         return $manufacturer;
     }

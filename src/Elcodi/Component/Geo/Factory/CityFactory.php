@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -41,7 +41,7 @@ class CityFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $city = new $classNamespace();
         $city
-            ->setPostalCodes(new ArrayCollection)
+            ->setPostalCodes(new ArrayCollection())
             ->setEnabled(true);
 
         return $city;

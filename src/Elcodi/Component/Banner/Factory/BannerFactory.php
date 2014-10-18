@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -42,8 +42,8 @@ class BannerFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $banner = new $classNamespace();
         $banner
-            ->setBannerZones(new ArrayCollection)
-            ->setCreatedAt(new DateTime)
+            ->setBannerZones(new ArrayCollection())
+            ->setCreatedAt(new DateTime())
             ->setEnabled(false);
 
         return $banner;

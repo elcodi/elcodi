@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -42,7 +42,7 @@ class CommentFactory extends AbstractFactory
         $comment
             ->setParent(null)
             ->setChildren(new ArrayCollection())
-            ->setCreatedAt(new DateTime)
+            ->setCreatedAt(new DateTime())
             ->setEnabled(true);
 
         return $comment;

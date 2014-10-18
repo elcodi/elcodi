@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -44,7 +44,7 @@ class AdminUserFactory extends AbstractFactory
         $customer
             ->setGender(ElcodiUserProperties::GENDER_UNKNOWN)
             ->setEnabled(true)
-            ->setCreatedAt(new DateTime);
+            ->setCreatedAt(new DateTime());
 
         return $customer;
     }

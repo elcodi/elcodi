@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -14,14 +14,14 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Bundle\RuleBundle\Tests\Functional\Factory;
+namespace Elcodi\Bundle\ShippingBundle\Tests\Functional\Factory;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class RuleGroupFactory
+ * Class CarrierPriceRangeFactoryTest
  */
-class RuleGroupFactory extends WebTestCase
+class CarrierPriceRangeFactoryTest extends WebTestCase
 {
     /**
      * Schema must be loaded in all test cases
@@ -40,6 +40,9 @@ class RuleGroupFactory extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.rule.factory.rule_group';
+        return [
+            'elcodi.core.shipping.factory.carrier_price_range',
+            'elcodi.factory.carrier_price_range',
+        ];
     }
 }

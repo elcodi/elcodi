@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -106,7 +106,7 @@ class VoteManagerTest extends PHPUnit_Framework_TestCase
      */
     public function testVote()
     {
-        $vote = new Vote;
+        $vote = new Vote();
         $this
             ->voteRepository
             ->expects($this->any())

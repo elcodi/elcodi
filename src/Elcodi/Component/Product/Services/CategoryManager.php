@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -235,7 +235,7 @@ class CategoryManager extends AbstractCacheWrapper
         }
 
         return $categoryTree[0]['children']
-            ? : [];
+            ?: [];
     }
 
     /**
