@@ -16,13 +16,13 @@
 
 namespace Elcodi\Component\Shipping\Entity;
 
-use Elcodi\Component\Shipping\Entity\Abstracts\AbstractCarrierRange;
+use Elcodi\Component\Shipping\Entity\Abstracts\AbstractCarrierBaseRange;
 use Elcodi\Component\Shipping\Entity\Interfaces\CarrierWeightRangeInterface;
 
 /**
  * Class CarrierWeightRange
  */
-class CarrierWeightRange extends AbstractCarrierRange implements CarrierWeightRangeInterface
+class CarrierWeightRange extends AbstractCarrierBaseRange implements CarrierWeightRangeInterface
 {
     /**
      * @var integer

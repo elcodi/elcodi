@@ -19,9 +19,9 @@ namespace Elcodi\Component\Shipping\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class CarrierRangeRepository
+ * Class CarrierBaseRangeRepository
  */
-class CarrierRangeRepository extends EntityRepository
+class CarrierBaseRangeRepository extends EntityRepository
 {
 
 }

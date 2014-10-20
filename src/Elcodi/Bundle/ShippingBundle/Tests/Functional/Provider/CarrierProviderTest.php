@@ -65,7 +65,7 @@ class CarrierProviderTest extends AbstractProviderTest
     }
 
     /**
-     * Test provideCarrierRangesSatisfiedWithOrder
+     * Test provideCarrierBaseRangesSatisfiedWithOrder
      */
     public function testProvideCarrierRangesSatisfiedWithOrder()
     {

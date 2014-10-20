@@ -21,9 +21,9 @@ use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\ZoneInterface;
 
 /**
- * Interface CarrierRangeInterface
+ * Interface CarrierBaseRangeInterface
  */
-interface CarrierRangeInterface extends EnabledInterface
+interface CarrierBaseRangeInterface extends EnabledInterface
 {
     /**
      * Get Carrier

@@ -42,9 +42,9 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
             )
             ->addEntityMapping(
                 $container,
-                'elcodi.core.shipping.entity.carrier_range.manager',
-                'elcodi.core.shipping.entity.carrier_range.class',
-                'elcodi.core.shipping.entity.carrier_range.mapping_file'
+                'elcodi.core.shipping.entity.carrier_base_range.manager',
+                'elcodi.core.shipping.entity.carrier_base_range.class',
+                'elcodi.core.shipping.entity.carrier_base_range.mapping_file'
             )
             ->addEntityMapping(
                 $container,

@@ -19,13 +19,13 @@ namespace Elcodi\Component\Shipping\Entity;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
-use Elcodi\Component\Shipping\Entity\Abstracts\AbstractCarrierRange;
+use Elcodi\Component\Shipping\Entity\Abstracts\AbstractCarrierBaseRange;
 use Elcodi\Component\Shipping\Entity\Interfaces\CarrierPriceRangeInterface;
 
 /**
  * Class CarrierPriceRange
  */
-class CarrierPriceRange extends AbstractCarrierRange implements CarrierPriceRangeInterface
+class CarrierPriceRange extends AbstractCarrierBaseRange implements CarrierPriceRangeInterface
 {
     /**
      * @var integer

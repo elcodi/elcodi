@@ -3,7 +3,7 @@ parameters:
     #
     # Entities
     #
-    elcodi.core.shipping.entity.carrier_range.class: Elcodi\Component\Shipping\Entity\Abstracts\AbstractCarrierRange
+    elcodi.core.shipping.entity.carrier_base_range.class: Elcodi\Component\Shipping\Entity\Abstracts\AbstractCarrierBaseRange
     elcodi.core.shipping.entity.carrier_price_range.class: Elcodi\Component\Shipping\Entity\CarrierPriceRange
     elcodi.core.shipping.entity.carrier_weight_range.class: Elcodi\Component\Shipping\Entity\CarrierWeightRange
     elcodi.core.shipping.entity.carrier.class: Elcodi\Component\Shipping\Entity\Carrier
@@ -12,7 +12,7 @@ parameters:
     #
     # Repositories
     #
-    elcodi.core.shipping.repository.carrier_range.class: Elcodi\Component\Shipping\Repository\CarrierRangeRepository
+    elcodi.core.shipping.repository.carrier_base_range.class: Elcodi\Component\Shipping\Repository\CarrierBaseRangeRepository
     elcodi.core.shipping.repository.carrier_price_range.class: Elcodi\Component\Shipping\Repository\CarrierPriceRangeRepository
     elcodi.core.shipping.repository.carrier_weight_range.class: Elcodi\Component\Shipping\Repository\CarrierWeightRangeRepository
     elcodi.core.shipping.repository.carrier.class: Elcodi\Component\Shipping\Repository\CarrierRepository

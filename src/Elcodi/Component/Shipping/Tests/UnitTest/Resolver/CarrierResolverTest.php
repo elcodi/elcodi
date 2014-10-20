@@ -22,7 +22,7 @@ use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
 use Elcodi\Component\Shipping\ElcodiShippingResolverTypes;
-use Elcodi\Component\Shipping\Entity\Interfaces\CarrierRangeInterface;
+use Elcodi\Component\Shipping\Entity\Interfaces\CarrierBaseRangeInterface;
 use Elcodi\Component\Shipping\Resolver\CarrierResolver;
 
 /**
@@ -45,7 +45,7 @@ class CarrierResolverTest extends PHPUnit_Framework_TestCase
     private $currency;
 
     /**
-     * @var CarrierRangeInterface[]
+     * @var CarrierBaseRangeInterface[]
      *
      * CarrierRange collection
      */
@@ -76,21 +76,21 @@ class CarrierResolverTest extends PHPUnit_Framework_TestCase
             ->method('getIso')
             ->will($this->returnValue('USD'));
 
-        $cheapCarrierRange = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\CarrierRangeInterface');
+        $cheapCarrierRange = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\CarrierBaseRangeInterface');
 
         $cheapCarrierRange
             ->expects($this->any())
             ->method('getPrice')
             ->will($this->returnValue(Money::create(10, $this->currency)));
 
-        $mediumCarrierRange = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\CarrierRangeInterface');
+        $mediumCarrierRange = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\CarrierBaseRangeInterface');
 
         $mediumCarrierRange
             ->expects($this->any())
             ->method('getPrice')
             ->will($this->returnValue(Money::create(20, $this->currency)));
 
-        $expensiveCarrierRange = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\CarrierRangeInterface');
+        $expensiveCarrierRange = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\CarrierBaseRangeInterface');
 
         $expensiveCarrierRange
             ->expects($this->any())

@@ -83,9 +83,9 @@ class ElcodiShippingExtension extends AbstractExtension implements EntitiesOverr
             "elcodi.core.shipping.entity.carrier.mapping_file" => $config['mapping']['carrier']['mapping_file'],
             "elcodi.core.shipping.entity.carrier.manager" => $config['mapping']['carrier']['manager'],
 
-            "elcodi.core.shipping.entity.carrier_range.class" => $config['mapping']['carrier_range']['class'],
-            "elcodi.core.shipping.entity.carrier_range.mapping_file" => $config['mapping']['carrier_range']['mapping_file'],
-            "elcodi.core.shipping.entity.carrier_range.manager" => $config['mapping']['carrier_range']['manager'],
+            "elcodi.core.shipping.entity.carrier_base_range.class" => $config['mapping']['carrier_base_range']['class'],
+            "elcodi.core.shipping.entity.carrier_base_range.mapping_file" => $config['mapping']['carrier_base_range']['mapping_file'],
+            "elcodi.core.shipping.entity.carrier_base_range.manager" => $config['mapping']['carrier_base_range']['manager'],
 
             "elcodi.core.shipping.entity.carrier_price_range.class" => $config['mapping']['carrier_price_range']['class'],
             "elcodi.core.shipping.entity.carrier_price_range.mapping_file" => $config['mapping']['carrier_price_range']['mapping_file'],
@@ -129,7 +129,7 @@ class ElcodiShippingExtension extends AbstractExtension implements EntitiesOverr
     {
         return [
             'Elcodi\Component\Shipping\Entity\Interfaces\CarrierInterface' => 'elcodi.core.shipping.entity.carrier.class',
-            'Elcodi\Component\Shipping\Entity\Interfaces\CarrierRangeInterface' => 'elcodi.core.shipping.entity.carrier_range.class',
+            'Elcodi\Component\Shipping\Entity\Interfaces\CarrierBaseRangeInterface' => 'elcodi.core.shipping.entity.carrier_base_range.class',
             'Elcodi\Component\Shipping\Entity\Interfaces\CarrierPriceInterface' => 'elcodi.core.shipping.entity.carrier_price_range.class',
             'Elcodi\Component\Shipping\Entity\Interfaces\CarrierWeightInterface' => 'elcodi.core.shipping.entity.carrier_weight_range.class',
             'Elcodi\Component\Shipping\Entity\Interfaces\WarehouseInterface' => 'elcodi.core.shipping.entity.warehouse.class',

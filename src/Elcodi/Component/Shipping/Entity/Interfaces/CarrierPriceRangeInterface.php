@@ -21,7 +21,7 @@ use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 /**
  * Interface CarrierPriceRangeInterface
  */
-interface CarrierPriceRangeInterface extends CarrierRangeInterface
+interface CarrierPriceRangeInterface extends CarrierBaseRangeInterface
 {
     /**
      * Sets from price

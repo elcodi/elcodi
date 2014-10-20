@@ -270,7 +270,7 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue(true));
 
         $this->assertInstanceOf(
-            'Elcodi\Component\Shipping\Entity\Interfaces\CarrierRangeInterface',
+            'Elcodi\Component\Shipping\Entity\Interfaces\CarrierBaseRangeInterface',
             $carrierProvider->getCarrierRangeSatisfiedByOrder(
                 $this->order,
                 $carrier
@@ -352,7 +352,7 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
         foreach ($carrierRanges as $carrierRange) {
 
             $this->assertInstanceOf(
-                'Elcodi\Component\Shipping\Entity\Interfaces\CarrierRangeInterface',
+                'Elcodi\Component\Shipping\Entity\Interfaces\CarrierBaseRangeInterface',
                 $carrierRange
             );
         }
