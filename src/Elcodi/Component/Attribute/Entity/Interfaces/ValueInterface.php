@@ -19,6 +19,9 @@ namespace Elcodi\Component\Attribute\Entity\Interfaces;
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 
+/**
+ * Interface ValueInterface
+ */
 interface ValueInterface extends EnabledInterface, DateTimeInterface
 {
     /**

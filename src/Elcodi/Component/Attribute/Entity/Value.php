@@ -22,6 +22,9 @@ use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 
+/**
+ * Class Value
+ */
 class Value extends AbstractEntity implements ValueInterface
 {
     use DateTimeTrait, EnabledTrait;
