@@ -225,6 +225,7 @@ class Cart extends AbstractEntity implements CartInterface
 
         return $this;
     }
+
     /**
      * Set quantity
      *
@@ -348,20 +349,13 @@ class Cart extends AbstractEntity implements CartInterface
      */
     public function getDepth()
     {
-        $maximumDepth = 0;
-
-        $this
-            ->cartLines
-            ->map(function (CartLineInterface $cartLine) use (&$maximumDepth) {
-
-                $cartLineDepth = $cartLine->getDepth();
-                if ($cartLineDepth > $maximumDepth) {
-
-                    $maximumDepth = $cartLineDepth;
-                }
-            });
-
-        return $maximumDepth;
+        return array_reduce(
+            $this->cartLines->toArray(),
+            function ($depth, CartLineInterface $cartLine) {
+                return max($depth, $cartLine->getDepth());
+            },
+            0
+        );
     }
 
     /**
@@ -371,20 +365,13 @@ class Cart extends AbstractEntity implements CartInterface
      */
     public function getHeight()
     {
-        $maximumHeight = 0;
-
-        $this
-            ->cartLines
-            ->map(function (CartLineInterface $cartLine) use (&$maximumHeight) {
-
-                $cartLineHeight = $cartLine->getHeight();
-                if ($cartLineHeight > $maximumHeight) {
-
-                    $maximumHeight = $cartLineHeight;
-                }
-            });
-
-        return $maximumHeight;
+        return array_reduce(
+            $this->cartLines->toArray(),
+            function ($height, CartLineInterface $cartLine) {
+                return max($height, $cartLine->getHeight());
+            },
+            0
+        );
     }
 
     /**
@@ -394,20 +381,13 @@ class Cart extends AbstractEntity implements CartInterface
      */
     public function getWidth()
     {
-        $maximumWidth = 0;
-
-        $this
-            ->cartLines
-            ->map(function (CartLineInterface $cartLine) use (&$maximumWidth) {
-
-                $cartLineWidth = $cartLine->getWidth();
-                if ($cartLineWidth > $maximumWidth) {
-
-                    $maximumWidth = $cartLineWidth;
-                }
-            });
-
-        return $maximumWidth;
+        return array_reduce(
+            $this->cartLines->toArray(),
+            function ($width, CartLineInterface $cartLine) {
+                return max($width, $cartLine->getWidth());
+            },
+            0
+        );
     }
 
     /**
@@ -417,15 +397,12 @@ class Cart extends AbstractEntity implements CartInterface
      */
     public function getWeight()
     {
-        $weight = 0;
-
-        $this
-            ->cartLines
-            ->map(function (CartLineInterface $cartLine) use (&$weight) {
-
-                $weight += $cartLine->getWeight();
-            });
-
-        return $weight;
+        return array_reduce(
+            $this->cartLines->toArray(),
+            function ($weight, CartLineInterface $cartLine) {
+                return $weight + $cartLine->getWeight();
+            },
+            0
+        );
     }
 }

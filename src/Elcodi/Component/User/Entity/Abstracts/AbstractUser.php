@@ -17,11 +17,11 @@
 namespace Elcodi\Component\User\Entity\Abstracts;
 
 use DateTime;
-use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 
 use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
+use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 
 /**
  * AbstractUser is the building block for simple User entities,
