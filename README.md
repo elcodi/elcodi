@@ -66,6 +66,10 @@ If you would like to contribute, please read the [Contributing Code][1] in the p
 documentation. If you are submitting a pull request, please follow the guidelines
 in the [Submitting a Patch][2] section and use the [Pull Request Template][3].
 
+Discuss and share your opinions on Elcodi in our gitter chat
+
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/elcodi/elcodi)
+
 
 [1]: http://symfony.com/doc/current/contributing/code/index.html
 [2]: http://symfony.com/doc/current/contributing/code/patches.html#check-list
