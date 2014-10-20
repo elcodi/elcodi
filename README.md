@@ -1,5 +1,6 @@
 Elcodi for Symfony2
 ===================
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/elcodi/elcodi?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/6aaa1c45-e569-4f31-8344-6aab899ed083/mini.png)](https://insight.sensiolabs.com/projects/6aaa1c45-e569-4f31-8344-6aab899ed083)
 [![Build Status](https://travis-ci.org/elcodi/elcodi.svg?branch=master)](https://travis-ci.org/elcodi/elcodi)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/elcodi/elcodi/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/elcodi/elcodi/?branch=master)
