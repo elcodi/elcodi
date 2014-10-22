@@ -38,24 +38,28 @@ Elcodi\Component\Cart\Entity\CartLine:
                 nullable: false
         productCurrency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
+            fetch: "EAGER"
             joinColumn:
                  name: product_currency_id
                  referencedColumnName: id
                  nullable: false
         currency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
+            fetch: "EAGER"
             joinColumn:
                  name: currency_id
                  referencedColumnName: id
                  nullable: false
         product:
             targetEntity: Elcodi\Component\Product\Entity\Interfaces\ProductInterface
+            fetch: "EAGER"
             joinColumn:
                 name: product_id
                 referencedColumnName: id
                 nullable: false
         variant:
             targetEntity: Elcodi\Component\Product\Entity\Interfaces\VariantInterface
+            fetch: "EAGER"
             joinColumn:
                 name: variant_id
                 referencedColumnName: id
