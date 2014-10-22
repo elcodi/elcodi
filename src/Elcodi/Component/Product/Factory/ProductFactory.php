@@ -19,9 +19,9 @@ namespace Elcodi\Component\Product\Factory;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Elcodi\Component\Currency\Factory\Abstracts\AbstractPurchasableFactory;
 use Elcodi\Component\Product\ElcodiProductTypes;
 use Elcodi\Component\Product\Entity\Product;
-use Elcodi\Component\Currency\Factory\Abstracts\AbstractPurchasableFactory;
 
 /**
  * Factory for Product entities
