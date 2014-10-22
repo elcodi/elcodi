@@ -82,22 +82,27 @@ class ElcodiShippingExtension extends AbstractExtension implements EntitiesOverr
             "elcodi.core.shipping.entity.carrier.class" => $config['mapping']['carrier']['class'],
             "elcodi.core.shipping.entity.carrier.mapping_file" => $config['mapping']['carrier']['mapping_file'],
             "elcodi.core.shipping.entity.carrier.manager" => $config['mapping']['carrier']['manager'],
+            "elcodi.core.shipping.entity.carrier.enabled" => $config['mapping']['carrier']['enabled'],
 
             "elcodi.core.shipping.entity.carrier_base_range.class" => $config['mapping']['carrier_base_range']['class'],
             "elcodi.core.shipping.entity.carrier_base_range.mapping_file" => $config['mapping']['carrier_base_range']['mapping_file'],
             "elcodi.core.shipping.entity.carrier_base_range.manager" => $config['mapping']['carrier_base_range']['manager'],
+            "elcodi.core.shipping.entity.carrier_base_range.enabled" => $config['mapping']['carrier_base_range']['enabled'],
 
             "elcodi.core.shipping.entity.carrier_price_range.class" => $config['mapping']['carrier_price_range']['class'],
             "elcodi.core.shipping.entity.carrier_price_range.mapping_file" => $config['mapping']['carrier_price_range']['mapping_file'],
             "elcodi.core.shipping.entity.carrier_price_range.manager" => $config['mapping']['carrier_price_range']['manager'],
+            "elcodi.core.shipping.entity.carrier_price_range.enabled" => $config['mapping']['carrier_price_range']['enabled'],
 
             "elcodi.core.shipping.entity.carrier_weight_range.class" => $config['mapping']['carrier_weight_range']['class'],
             "elcodi.core.shipping.entity.carrier_weight_range.mapping_file" => $config['mapping']['carrier_weight_range']['mapping_file'],
             "elcodi.core.shipping.entity.carrier_weight_range.manager" => $config['mapping']['carrier_weight_range']['manager'],
+            "elcodi.core.shipping.entity.carrier_weight_range.enabled" => $config['mapping']['carrier_weight_range']['enabled'],
 
             "elcodi.core.shipping.entity.warehouse.class" => $config['mapping']['warehouse']['class'],
             "elcodi.core.shipping.entity.warehouse.mapping_file" => $config['mapping']['warehouse']['mapping_file'],
             "elcodi.core.shipping.entity.warehouse.manager" => $config['mapping']['warehouse']['manager'],
+            "elcodi.core.shipping.entity.warehouse.enabled" => $config['mapping']['warehouse']['enabled'],
 
             "elcodi.core.shipping.carrier_resolver_strategy" => $config['carrier']['resolve_strategy'],
         ];

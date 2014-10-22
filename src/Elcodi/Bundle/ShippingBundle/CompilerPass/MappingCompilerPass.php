@@ -38,31 +38,36 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
                 $container,
                 'elcodi.core.shipping.entity.warehouse.manager',
                 'elcodi.core.shipping.entity.warehouse.class',
-                'elcodi.core.shipping.entity.warehouse.mapping_file'
+                'elcodi.core.shipping.entity.warehouse.mapping_file',
+                'elcodi.core.shipping.entity.warehouse.enabled'
             )
             ->addEntityMapping(
                 $container,
                 'elcodi.core.shipping.entity.carrier_base_range.manager',
                 'elcodi.core.shipping.entity.carrier_base_range.class',
-                'elcodi.core.shipping.entity.carrier_base_range.mapping_file'
+                'elcodi.core.shipping.entity.carrier_base_range.mapping_file',
+                'elcodi.core.shipping.entity.carrier_base_range.enabled'
             )
             ->addEntityMapping(
                 $container,
                 'elcodi.core.shipping.entity.carrier_price_range.manager',
                 'elcodi.core.shipping.entity.carrier_price_range.class',
-                'elcodi.core.shipping.entity.carrier_price_range.mapping_file'
+                'elcodi.core.shipping.entity.carrier_price_range.mapping_file',
+                'elcodi.core.shipping.entity.carrier_price_range.enabled'
             )
             ->addEntityMapping(
                 $container,
                 'elcodi.core.shipping.entity.carrier_weight_range.manager',
                 'elcodi.core.shipping.entity.carrier_weight_range.class',
-                'elcodi.core.shipping.entity.carrier_weight_range.mapping_file'
+                'elcodi.core.shipping.entity.carrier_weight_range.mapping_file',
+                'elcodi.core.shipping.entity.carrier_weight_range.enabled'
             )
             ->addEntityMapping(
                 $container,
                 'elcodi.core.shipping.entity.carrier.manager',
                 'elcodi.core.shipping.entity.carrier.class',
-                'elcodi.core.shipping.entity.carrier.mapping_file'
+                'elcodi.core.shipping.entity.carrier.mapping_file',
+                'elcodi.core.shipping.entity.carrier.enabled'
             );
     }
 }

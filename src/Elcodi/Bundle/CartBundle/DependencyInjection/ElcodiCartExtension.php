@@ -82,26 +82,32 @@ class ElcodiCartExtension extends AbstractExtension implements EntitiesOverridab
             "elcodi.core.cart.entity.cart.class" => $config['mapping']['cart']['class'],
             "elcodi.core.cart.entity.cart.mapping_file" => $config['mapping']['cart']['mapping_file'],
             "elcodi.core.cart.entity.cart.manager" => $config['mapping']['cart']['manager'],
+            "elcodi.core.cart.entity.cart.enabled" => $config['mapping']['cart']['enabled'],
 
             "elcodi.core.cart.entity.order.class" => $config['mapping']['order']['class'],
             "elcodi.core.cart.entity.order.mapping_file" => $config['mapping']['order']['mapping_file'],
             "elcodi.core.cart.entity.order.manager" => $config['mapping']['order']['manager'],
+            "elcodi.core.cart.entity.order.enabled" => $config['mapping']['order']['enabled'],
 
             "elcodi.core.cart.entity.cart_line.class" => $config['mapping']['cart_line']['class'],
             "elcodi.core.cart.entity.cart_line.mapping_file" => $config['mapping']['cart_line']['mapping_file'],
             "elcodi.core.cart.entity.cart_line.manager" => $config['mapping']['cart_line']['manager'],
+            "elcodi.core.cart.entity.cart_line.enabled" => $config['mapping']['cart_line']['enabled'],
 
             "elcodi.core.cart.entity.order_line.class" => $config['mapping']['order_line']['class'],
             "elcodi.core.cart.entity.order_line.mapping_file" => $config['mapping']['order_line']['mapping_file'],
             "elcodi.core.cart.entity.order_line.manager" => $config['mapping']['order_line']['manager'],
+            "elcodi.core.cart.entity.order_line.enabled" => $config['mapping']['order_line']['enabled'],
 
             "elcodi.core.cart.entity.order_history.class" => $config['mapping']['order_history']['class'],
             "elcodi.core.cart.entity.order_history.mapping_file" => $config['mapping']['order_history']['mapping_file'],
             "elcodi.core.cart.entity.order_history.manager" => $config['mapping']['order_history']['manager'],
+            "elcodi.core.cart.entity.order_history.enabled" => $config['mapping']['order_history']['enabled'],
 
             "elcodi.core.cart.entity.order_line_history.class" => $config['mapping']['order_line_history']['class'],
             "elcodi.core.cart.entity.order_line_history.mapping_file" => $config['mapping']['order_line_history']['mapping_file'],
             "elcodi.core.cart.entity.order_line_history.manager" => $config['mapping']['order_line_history']['manager'],
+            "elcodi.core.cart.entity.order_line_history.enabled" => $config['mapping']['order_line_history']['enabled'],
 
             'elcodi.core.cart.cart_save_in_session' => $config['cart']['save_in_session'],
             'elcodi.core.cart.cart_session_field_name' => $config['cart']['session_field_name'],

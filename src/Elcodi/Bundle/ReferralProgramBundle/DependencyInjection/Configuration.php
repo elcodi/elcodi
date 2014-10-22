@@ -19,10 +19,12 @@ namespace Elcodi\Bundle\ReferralProgramBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
+use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
+
 /**
  * This is the class that validates and merges configuration from your app/config files
  */
-class Configuration implements ConfigurationInterface
+class Configuration extends AbstractConfiguration implements ConfigurationInterface
 {
     /**
      * {@inheritDoc}
@@ -37,57 +39,27 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('mapping')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->arrayNode('referral_hash')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\ReferralProgram\Entity\ReferralHash')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('mapping_file')
-                                    ->defaultValue('@ElcodiReferralProgramBundle/Resources/config/doctrine/ReferralHash.orm.yml')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('manager')
-                                    ->defaultValue('default')
-                                    ->cannotBeEmpty()
-                                ->end()
-                            ->end()
-                        ->end()
-                        ->arrayNode('referral_line')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\ReferralProgram\Entity\ReferralLine')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('mapping_file')
-                                    ->defaultValue('@ElcodiReferralProgramBundle/Resources/config/doctrine/ReferralLine.orm.yml')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('manager')
-                                    ->defaultValue('default')
-                                    ->cannotBeEmpty()
-                                ->end()
-                            ->end()
-                        ->end()
-                        ->arrayNode('referral_rule')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\ReferralProgram\Entity\ReferralRule')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('mapping_file')
-                                    ->defaultValue('@ElcodiReferralProgramBundle/Resources/config/doctrine/ReferralRule.orm.yml')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('manager')
-                                    ->defaultValue('default')
-                                    ->cannotBeEmpty()
-                                ->end()
-                            ->end()
-                        ->end()
+                        ->append($this->addMappingNode(
+                            'referral_hash',
+                            'Elcodi\Component\ReferralProgram\Entity\ReferralHash',
+                            '@ElcodiReferralProgramBundle/Resources/config/doctrine/ReferralHash.orm.yml',
+                            'default',
+                            true
+                        ))
+                        ->append($this->addMappingNode(
+                            'referral_line',
+                            'Elcodi\Component\ReferralProgram\Entity\ReferralLine',
+                            '@ElcodiReferralProgramBundle/Resources/config/doctrine/ReferralLine.orm.yml',
+                            'default',
+                            true
+                        ))
+                        ->append($this->addMappingNode(
+                            'referral_rule',
+                            'Elcodi\Component\ReferralProgram\Entity\ReferralRule',
+                            '@ElcodiReferralProgramBundle/Resources/config/doctrine/ReferralRule.orm.yml',
+                            'default',
+                            true
+                        ))
                     ->end()
                 ->end()
                 ->scalarNode('controller_route_name')

@@ -38,37 +38,43 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
                 $container,
                 'elcodi.core.cart.entity.cart.manager',
                 'elcodi.core.cart.entity.cart.class',
-                'elcodi.core.cart.entity.cart.mapping_file'
+                'elcodi.core.cart.entity.cart.mapping_file',
+                'elcodi.core.cart.entity.cart.enabled'
             )
             ->addEntityMapping(
                 $container,
                 'elcodi.core.cart.entity.cart_line.manager',
                 'elcodi.core.cart.entity.cart_line.class',
-                'elcodi.core.cart.entity.cart_line.mapping_file'
+                'elcodi.core.cart.entity.cart_line.mapping_file',
+                'elcodi.core.cart.entity.cart_line.enabled'
             )
             ->addEntityMapping(
                 $container,
                 'elcodi.core.cart.entity.order.manager',
                 'elcodi.core.cart.entity.order.class',
-                'elcodi.core.cart.entity.order.mapping_file'
+                'elcodi.core.cart.entity.order.mapping_file',
+                'elcodi.core.cart.entity.order.enabled'
             )
             ->addEntityMapping(
                 $container,
                 'elcodi.core.cart.entity.order_line.manager',
                 'elcodi.core.cart.entity.order_line.class',
-                'elcodi.core.cart.entity.order_line.mapping_file'
+                'elcodi.core.cart.entity.order_line.mapping_file',
+                'elcodi.core.cart.entity.order_line.enabled'
             )
             ->addEntityMapping(
                 $container,
                 'elcodi.core.cart.entity.order_history.manager',
                 'elcodi.core.cart.entity.order_history.class',
-                'elcodi.core.cart.entity.order_history.mapping_file'
+                'elcodi.core.cart.entity.order_history.mapping_file',
+                'elcodi.core.cart.entity.order_history.enabled'
             )
             ->addEntityMapping(
                 $container,
                 'elcodi.core.cart.entity.order_line_history.manager',
                 'elcodi.core.cart.entity.order_line_history.class',
-                'elcodi.core.cart.entity.order_line_history.mapping_file'
+                'elcodi.core.cart.entity.order_line_history.mapping_file',
+                'elcodi.core.cart.entity.order_line_history.enabled'
             )
         ;
     }
