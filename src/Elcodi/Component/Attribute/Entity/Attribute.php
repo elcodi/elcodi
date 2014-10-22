@@ -24,6 +24,9 @@ use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 
+/**
+ * Class Attribute
+ */
 class Attribute extends AbstractEntity implements AttributeInterface
 {
     use DateTimeTrait, EnabledTrait;
