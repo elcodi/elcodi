@@ -36,7 +36,8 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
                 $container,
                 'elcodi.core.tax.entity.tax.manager',
                 'elcodi.core.tax.entity.tax.class',
-                'elcodi.core.tax.entity.tax.mapping_file'
+                'elcodi.core.tax.entity.tax.mapping_file',
+                'elcodi.core.tax.entity.tax.enabled'
             );
     }
 }

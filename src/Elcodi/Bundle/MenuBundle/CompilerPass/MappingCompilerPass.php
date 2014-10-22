@@ -38,13 +38,15 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
                 $container,
                 'elcodi.core.menu.entity.menu.manager',
                 'elcodi.core.menu.entity.menu.class',
-                'elcodi.core.menu.entity.menu.mapping_file'
+                'elcodi.core.menu.entity.menu.mapping_file',
+                'elcodi.core.menu.entity.menu.enabled'
             )
             ->addEntityMapping(
                 $container,
                 'elcodi.core.menu.entity.menu_node.manager',
                 'elcodi.core.menu.entity.menu_node.class',
-                'elcodi.core.menu.entity.menu_node.mapping_file'
+                'elcodi.core.menu.entity.menu_node.mapping_file',
+                'elcodi.core.menu.entity.menu_node.enabled'
             );
     }
 }

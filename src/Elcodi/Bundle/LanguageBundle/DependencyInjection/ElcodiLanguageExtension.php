@@ -82,6 +82,7 @@ class ElcodiLanguageExtension extends AbstractExtension implements EntitiesOverr
             "elcodi.core.language.entity.language.class" => $config['mapping']['language']['class'],
             "elcodi.core.language.entity.language.mapping_file" => $config['mapping']['language']['mapping_file'],
             "elcodi.core.language.entity.language.manager" => $config['mapping']['language']['manager'],
+            "elcodi.core.language.entity.language.enabled" => $config['mapping']['language']['enabled'],
         ];
     }
 

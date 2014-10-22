@@ -82,6 +82,7 @@ class ElcodiTaxExtension extends AbstractExtension implements EntitiesOverridabl
             "elcodi.core.tax.entity.tax.class" => $config['mapping']['tax']['class'],
             "elcodi.core.tax.entity.tax.mapping_file" => $config['mapping']['tax']['mapping_file'],
             "elcodi.core.tax.entity.tax.manager" => $config['mapping']['tax']['manager'],
+            "elcodi.core.tax.entity.tax.enabled" => $config['mapping']['tax']['enabled'],
         ];
     }
 

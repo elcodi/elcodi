@@ -19,12 +19,13 @@ namespace Elcodi\Bundle\ShippingBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
+use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
 use Elcodi\Component\Shipping\ElcodiShippingResolverTypes;
 
 /**
  * This is the class that validates and merges configuration from your app/config files
  */
-class Configuration implements ConfigurationInterface
+class Configuration extends AbstractConfiguration implements ConfigurationInterface
 {
     /**
      * {@inheritDoc}
@@ -39,91 +40,41 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('mapping')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->arrayNode('carrier')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\Shipping\Entity\Carrier')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('mapping_file')
-                                    ->defaultValue('@ElcodiShippingBundle/Resources/config/doctrine/Carrier.orm.yml')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('manager')
-                                    ->defaultValue('default')
-                                    ->cannotBeEmpty()
-                                ->end()
-                            ->end()
-                        ->end()
-                        ->arrayNode('carrier_base_range')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\Shipping\Entity\Abstracts\AbstractCarrierBaseRange')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('mapping_file')
-                                    ->defaultValue('@ElcodiShippingBundle/Resources/config/doctrine/CarrierBaseRange.orm.yml')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('manager')
-                                    ->defaultValue('default')
-                                    ->cannotBeEmpty()
-                                ->end()
-                            ->end()
-                        ->end()
-                        ->arrayNode('carrier_price_range')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\Shipping\Entity\CarrierPriceRange')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('mapping_file')
-                                    ->defaultValue('@ElcodiShippingBundle/Resources/config/doctrine/CarrierPriceRange.orm.yml')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('manager')
-                                    ->defaultValue('default')
-                                    ->cannotBeEmpty()
-                                ->end()
-                            ->end()
-                        ->end()
-                        ->arrayNode('carrier_weight_range')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\Shipping\Entity\CarrierWeightRange')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('mapping_file')
-                                    ->defaultValue('@ElcodiShippingBundle/Resources/config/doctrine/CarrierWeightRange.orm.yml')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('manager')
-                                    ->defaultValue('default')
-                                    ->cannotBeEmpty()
-                                ->end()
-                            ->end()
-                        ->end()
-                        ->arrayNode('warehouse')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\Shipping\Entity\Warehouse')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('mapping_file')
-                                    ->defaultValue('@ElcodiShippingBundle/Resources/config/doctrine/Warehouse.orm.yml')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('manager')
-                                    ->defaultValue('default')
-                                    ->cannotBeEmpty()
-                                ->end()
-                            ->end()
-                        ->end()
+                        ->append($this->addMappingNode(
+                            'carrier',
+                            'Elcodi\Component\Shipping\Entity\Carrier',
+                            '@ElcodiShippingBundle/Resources/config/doctrine/Carrier.orm.yml',
+                            'default',
+                            true
+                        ))
+                        ->append($this->addMappingNode(
+                            'carrier_base_range',
+                            'Elcodi\Component\Shipping\Entity\Abstracts\AbstractCarrierBaseRange',
+                            '@ElcodiShippingBundle/Resources/config/doctrine/CarrierBaseRange.orm.yml',
+                            'default',
+                            true
+                        ))
+                        ->append($this->addMappingNode(
+                            'carrier_price_range',
+                            'Elcodi\Component\Shipping\Entity\CarrierPriceRange',
+                            '@ElcodiShippingBundle/Resources/config/doctrine/CarrierPriceRange.orm.yml',
+                            'default',
+                            true
+                        ))
+                        ->append($this->addMappingNode(
+                            'carrier_weight_range',
+                            'Elcodi\Component\Shipping\Entity\CarrierWeightRange',
+                            '@ElcodiShippingBundle/Resources/config/doctrine/CarrierWeightRange.orm.yml',
+                            'default',
+                            true
+                        ))
+                        ->append($this->addMappingNode(
+                            'warehouse',
+                            'Elcodi\Component\Shipping\Entity\Warehouse',
+                            '@ElcodiShippingBundle/Resources/config/doctrine/Warehouse.orm.yml',
+                            'default',
+                            true
+                        ))
                     ->end()
                 ->end()
                 ->arrayNode('carrier')

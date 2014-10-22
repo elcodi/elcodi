@@ -38,13 +38,15 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
                 $container,
                 'elcodi.core.cart_coupon.entity.cart_coupon.manager',
                 'elcodi.core.cart_coupon.entity.cart_coupon.class',
-                'elcodi.core.cart_coupon.entity.cart_coupon.mapping_file'
+                'elcodi.core.cart_coupon.entity.cart_coupon.mapping_file',
+                'elcodi.core.cart_coupon.entity.cart_coupon.enabled'
             )
             ->addEntityMapping(
                 $container,
                 'elcodi.core.cart_coupon.entity.order_coupon.manager',
                 'elcodi.core.cart_coupon.entity.order_coupon.class',
-                'elcodi.core.cart_coupon.entity.order_coupon.mapping_file'
+                'elcodi.core.cart_coupon.entity.order_coupon.mapping_file',
+                'elcodi.core.cart_coupon.entity.order_coupon.enabled'
             );
     }
 }

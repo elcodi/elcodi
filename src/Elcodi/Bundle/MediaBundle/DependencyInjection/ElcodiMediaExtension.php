@@ -110,6 +110,7 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
             "elcodi.core.media.entity.image.class" => $config['mapping']['image']['class'],
             "elcodi.core.media.entity.image.mapping_file" => $config['mapping']['image']['mapping_file'],
             "elcodi.core.media.entity.image.manager" => $config['mapping']['image']['manager'],
+            "elcodi.core.media.entity.image.enabled" => $config['mapping']['image']['enabled'],
 
             'elcodi.core.media.filesystem'                             => $config['filesystem'],
 

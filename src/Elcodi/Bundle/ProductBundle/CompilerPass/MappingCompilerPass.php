@@ -38,25 +38,29 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
                 $container,
                 'elcodi.core.product.entity.product.manager',
                 'elcodi.core.product.entity.product.class',
-                'elcodi.core.product.entity.product.mapping_file'
+                'elcodi.core.product.entity.product.mapping_file',
+                'elcodi.core.product.entity.product.enabled'
             )
             ->addEntityMapping(
                 $container,
                 'elcodi.core.product.entity.variant.manager',
                 'elcodi.core.product.entity.variant.class',
-                'elcodi.core.product.entity.variant.mapping_file'
+                'elcodi.core.product.entity.variant.mapping_file',
+                'elcodi.core.product.entity.variant.enabled'
             )
             ->addEntityMapping(
                 $container,
                 'elcodi.core.product.entity.category.manager',
                 'elcodi.core.product.entity.category.class',
-                'elcodi.core.product.entity.category.mapping_file'
+                'elcodi.core.product.entity.category.mapping_file',
+                'elcodi.core.product.entity.category.enabled'
             )
             ->addEntityMapping(
                 $container,
                 'elcodi.core.product.entity.manufacturer.manager',
                 'elcodi.core.product.entity.manufacturer.class',
-                'elcodi.core.product.entity.manufacturer.mapping_file'
+                'elcodi.core.product.entity.manufacturer.mapping_file',
+                'elcodi.core.product.entity.manufacturer.enabled'
             );
     }
 }

@@ -38,25 +38,29 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
                 $container,
                 'elcodi.core.rule.entity.abstract_rule.manager',
                 'elcodi.core.rule.entity.abstract_rule.class',
-                'elcodi.core.rule.entity.abstract_rule.mapping_file'
+                'elcodi.core.rule.entity.abstract_rule.mapping_file',
+                'elcodi.core.rule.entity.abstract_rule.enabled'
             )
             ->addEntityMapping(
                 $container,
                 'elcodi.core.rule.entity.expression.manager',
                 'elcodi.core.rule.entity.expression.class',
-                'elcodi.core.rule.entity.expression.mapping_file'
+                'elcodi.core.rule.entity.expression.mapping_file',
+                'elcodi.core.rule.entity.expression.enabled'
             )
             ->addEntityMapping(
                 $container,
                 'elcodi.core.rule.entity.rule.manager',
                 'elcodi.core.rule.entity.rule.class',
-                'elcodi.core.rule.entity.rule.mapping_file'
+                'elcodi.core.rule.entity.rule.mapping_file',
+                'elcodi.core.rule.entity.rule.enabled'
             )
             ->addEntityMapping(
                 $container,
                 'elcodi.core.rule.entity.rule_group.manager',
                 'elcodi.core.rule.entity.rule_group.class',
-                'elcodi.core.rule.entity.rule_group.mapping_file'
+                'elcodi.core.rule.entity.rule_group.mapping_file',
+                'elcodi.core.rule.entity.rule_group.enabled'
             );
     }
 }
