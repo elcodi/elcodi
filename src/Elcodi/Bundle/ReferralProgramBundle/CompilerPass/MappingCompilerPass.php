@@ -38,19 +38,22 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
                 $container,
                 'elcodi.core.referral_program.entity.referral_hash.manager',
                 'elcodi.core.referral_program.entity.referral_hash.class',
-                'elcodi.core.referral_program.entity.referral_hash.mapping_file'
+                'elcodi.core.referral_program.entity.referral_hash.mapping_file',
+                'elcodi.core.referral_program.entity.referral_hash.enabled'
             )
             ->addEntityMapping(
                 $container,
                 'elcodi.core.referral_program.entity.referral_line.manager',
                 'elcodi.core.referral_program.entity.referral_line.class',
-                'elcodi.core.referral_program.entity.referral_line.mapping_file'
+                'elcodi.core.referral_program.entity.referral_line.mapping_file',
+                'elcodi.core.referral_program.entity.referral_line.enabled'
             )
             ->addEntityMapping(
                 $container,
                 'elcodi.core.referral_program.entity.referral_rule.manager',
                 'elcodi.core.referral_program.entity.referral_rule.class',
-                'elcodi.core.referral_program.entity.referral_rule.mapping_file'
+                'elcodi.core.referral_program.entity.referral_rule.mapping_file',
+                'elcodi.core.referral_program.entity.referral_rule.enabled'
             );
     }
 }

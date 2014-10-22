@@ -19,6 +19,7 @@ namespace Elcodi\Bundle\CurrencyBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
+use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
 use Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\DummyProviderAdapter as DummyCurrencyExchangeRatesProviderAdapter;
 use Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\OpenExchangeRatesProviderAdapter;
 use Elcodi\Component\Currency\Adapter\LocaleProvider\DummyProviderAdapter as DummyLocaleProviderAdapter;
@@ -27,7 +28,7 @@ use Elcodi\Component\Currency\Adapter\LocaleProvider\ElcodiProviderAdapter;
 /**
  * This is the class that validates and merges configuration from your app/config files
  */
-class Configuration implements ConfigurationInterface
+class Configuration extends AbstractConfiguration implements ConfigurationInterface
 {
     /**
      * {@inheritDoc}
@@ -42,40 +43,20 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('mapping')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->arrayNode('currency')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\Currency\Entity\Currency')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('mapping_file')
-                                    ->defaultValue('@ElcodiCurrencyBundle/Resources/config/doctrine/Currency.orm.yml')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('manager')
-                                    ->defaultValue('default')
-                                    ->cannotBeEmpty()
-                                ->end()
-                            ->end()
-                        ->end()
-                        ->arrayNode('currency_exchange_rate')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\Currency\Entity\CurrencyExchangeRate')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('mapping_file')
-                                    ->defaultValue('@ElcodiCurrencyBundle/Resources/config/doctrine/CurrencyExchangeRate.orm.yml')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('manager')
-                                    ->defaultValue('default')
-                                    ->cannotBeEmpty()
-                                ->end()
-                            ->end()
-                        ->end()
+                        ->append($this->addMappingNode(
+                            'currency',
+                            'Elcodi\Component\Currency\Entity\Currency',
+                            '@ElcodiCurrencyBundle/Resources/config/doctrine/Currency.orm.yml',
+                            'default',
+                            true
+                        ))
+                        ->append($this->addMappingNode(
+                            'currency_exchange_rate',
+                            'Elcodi\Component\Currency\Entity\CurrencyExchangeRate',
+                            '@ElcodiCurrencyBundle/Resources/config/doctrine/CurrencyExchangeRate.orm.yml',
+                            'default',
+                            true
+                        ))
                     ->end()
                 ->end()
                 ->arrayNode('currency')

@@ -38,7 +38,8 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
                 $container,
                 'elcodi.core.language.entity.language.manager',
                 'elcodi.core.language.entity.language.class',
-                'elcodi.core.language.entity.language.mapping_file'
+                'elcodi.core.language.entity.language.mapping_file',
+                'elcodi.core.language.entity.language.enabled'
             );
     }
 }

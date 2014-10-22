@@ -19,10 +19,12 @@ namespace Elcodi\Bundle\ProductBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
+use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
+
 /**
  * This is the class that validates and merges configuration from your app/config files
  */
-class Configuration implements ConfigurationInterface
+class Configuration extends AbstractConfiguration implements ConfigurationInterface
 {
     /**
      * {@inheritDoc}
@@ -37,74 +39,34 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('mapping')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->arrayNode('product')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\Product\Entity\Product')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('mapping_file')
-                                    ->defaultValue('@ElcodiProductBundle/Resources/config/doctrine/Product.orm.yml')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('manager')
-                                    ->defaultValue('default')
-                                    ->cannotBeEmpty()
-                                ->end()
-                            ->end()
-                        ->end()
-                        ->arrayNode('variant')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\Product\Entity\Variant')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('mapping_file')
-                                    ->defaultValue('@ElcodiProductBundle/Resources/config/doctrine/Variant.orm.yml')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('manager')
-                                    ->defaultValue('default')
-                                    ->cannotBeEmpty()
-                                ->end()
-                            ->end()
-                        ->end()
-                        ->arrayNode('category')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\Product\Entity\Category')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('mapping_file')
-                                    ->defaultValue('@ElcodiProductBundle/Resources/config/doctrine/Category.orm.yml')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('manager')
-                                    ->defaultValue('default')
-                                    ->cannotBeEmpty()
-                                ->end()
-                            ->end()
-                        ->end()
-                        ->arrayNode('manufacturer')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\Product\Entity\Manufacturer')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('mapping_file')
-                                    ->defaultValue('@ElcodiProductBundle/Resources/config/doctrine/Manufacturer.orm.yml')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('manager')
-                                    ->defaultValue('default')
-                                    ->cannotBeEmpty()
-                                ->end()
-                            ->end()
-                        ->end()
+                        ->append($this->addMappingNode(
+                            'product',
+                            'Elcodi\Component\Product\Entity\Product',
+                            '@ElcodiProductBundle/Resources/config/doctrine/Product.orm.yml',
+                            'default',
+                            true
+                        ))
+                        ->append($this->addMappingNode(
+                            'variant',
+                            'Elcodi\Component\Product\Entity\Variant',
+                            '@ElcodiProductBundle/Resources/config/doctrine/Variant.orm.yml',
+                            'default',
+                            true
+                        ))
+                        ->append($this->addMappingNode(
+                            'category',
+                            'Elcodi\Component\Product\Entity\Category',
+                            '@ElcodiProductBundle/Resources/config/doctrine/Category.orm.yml',
+                            'default',
+                            true
+                        ))
+                        ->append($this->addMappingNode(
+                            'manufacturer',
+                            'Elcodi\Component\Product\Entity\Manufacturer',
+                            '@ElcodiProductBundle/Resources/config/doctrine/Manufacturer.orm.yml',
+                            'default',
+                            true
+                        ))
                     ->end()
                 ->end()
                 ->arrayNode('categories')

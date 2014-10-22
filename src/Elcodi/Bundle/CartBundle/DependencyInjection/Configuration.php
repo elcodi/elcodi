@@ -19,10 +19,12 @@ namespace Elcodi\Bundle\CartBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
+use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
+
 /**
  * This is the class that validates and merges configuration from your app/config files
  */
-class Configuration implements ConfigurationInterface
+class Configuration extends AbstractConfiguration implements ConfigurationInterface
 {
     /**
      * Generates the configuration tree builder.
@@ -39,114 +41,48 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('mapping')
                     ->addDefaultsIfNotSet()
                     ->children()
-
-                        ->arrayNode('cart')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\Cart\Entity\Cart')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('mapping_file')
-                                    ->defaultValue('@ElcodiCartBundle/Resources/config/doctrine/Cart.orm.yml')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('manager')
-                                    ->defaultValue('default')
-                                    ->cannotBeEmpty()
-                                ->end()
-                            ->end()
-                        ->end()
-
-                        ->arrayNode('order')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\Cart\Entity\Order')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('mapping_file')
-                                    ->defaultValue('@ElcodiCartBundle/Resources/config/doctrine/Order.orm.yml')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('manager')
-                                    ->defaultValue('default')
-                                    ->cannotBeEmpty()
-                                ->end()
-                            ->end()
-                        ->end()
-
-                        ->arrayNode('cart_line')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\Cart\Entity\CartLine')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('mapping_file')
-                                    ->defaultValue('@ElcodiCartBundle/Resources/config/doctrine/CartLine.orm.yml')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('manager')
-                                    ->defaultValue('default')
-                                    ->cannotBeEmpty()
-                                ->end()
-                            ->end()
-                        ->end()
-
-                        ->arrayNode('order_line')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\Cart\Entity\OrderLine')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('mapping_file')
-                                    ->defaultValue('@ElcodiCartBundle/Resources/config/doctrine/OrderLine.orm.yml')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('manager')
-                                    ->defaultValue('default')
-                                    ->cannotBeEmpty()
-                                ->end()
-                            ->end()
-                        ->end()
-
-                        ->arrayNode('order_history')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\Cart\Entity\OrderHistory')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('mapping_file')
-                                    ->defaultValue('@ElcodiCartBundle/Resources/config/doctrine/OrderHistory.orm.yml')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('manager')
-                                    ->defaultValue('default')
-                                    ->cannotBeEmpty()
-                                ->end()
-                            ->end()
-                        ->end()
-
-                        ->arrayNode('order_line_history')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\Cart\Entity\OrderLineHistory')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('mapping_file')
-                                    ->defaultValue('@ElcodiCartBundle/Resources/config/doctrine/OrderLineHistory.orm.yml')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('manager')
-                                    ->defaultValue('default')
-                                    ->cannotBeEmpty()
-                                ->end()
-                            ->end()
-                        ->end()
+                        ->append($this->addMappingNode(
+                            'cart',
+                            'Elcodi\Component\Cart\Entity\Cart',
+                            '@ElcodiCartBundle/Resources/config/doctrine/Cart.orm.yml',
+                            'default',
+                            true
+                        ))
+                        ->append($this->addMappingNode(
+                            'order',
+                            'Elcodi\Component\Cart\Entity\Order',
+                            '@ElcodiCartBundle/Resources/config/doctrine/Order.orm.yml',
+                            'default',
+                            true
+                        ))
+                        ->append($this->addMappingNode(
+                            'cart_line',
+                            'Elcodi\Component\Cart\Entity\CartLine',
+                            '@ElcodiCartBundle/Resources/config/doctrine/CartLine.orm.yml',
+                            'default',
+                            true
+                        ))
+                        ->append($this->addMappingNode(
+                            'order_line',
+                            'Elcodi\Component\Cart\Entity\OrderLine',
+                            '@ElcodiCartBundle/Resources/config/doctrine/OrderLine.orm.yml',
+                            'default',
+                            true
+                        ))
+                        ->append($this->addMappingNode(
+                            'order_history',
+                            'Elcodi\Component\Cart\Entity\OrderHistory',
+                            '@ElcodiCartBundle/Resources/config/doctrine/OrderHistory.orm.yml',
+                            'default',
+                            true
+                        ))
+                        ->append($this->addMappingNode(
+                            'order_line_history',
+                            'Elcodi\Component\Cart\Entity\OrderLineHistory',
+                            '@ElcodiCartBundle/Resources/config/doctrine/OrderLineHistory.orm.yml',
+                            'default',
+                            true
+                        ))
                     ->end()
                 ->end()
                 ->arrayNode('cart')

@@ -38,7 +38,8 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
                 $container,
                 'elcodi.core.newsletter.entity.newsletter_subscription.manager',
                 'elcodi.core.newsletter.entity.newsletter_subscription.class',
-                'elcodi.core.newsletter.entity.newsletter_subscription.mapping_file'
+                'elcodi.core.newsletter.entity.newsletter_subscription.mapping_file',
+                'elcodi.core.newsletter.entity.newsletter_subscription.enabled'
             );
     }
 }

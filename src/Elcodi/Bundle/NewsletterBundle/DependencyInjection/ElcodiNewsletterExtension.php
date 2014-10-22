@@ -82,6 +82,7 @@ class ElcodiNewsletterExtension extends AbstractExtension implements EntitiesOve
             "elcodi.core.newsletter.entity.newsletter_subscription.class" => $config['mapping']['newsletter_subscription']['class'],
             "elcodi.core.newsletter.entity.newsletter_subscription.mapping_file" => $config['mapping']['newsletter_subscription']['mapping_file'],
             "elcodi.core.newsletter.entity.newsletter_subscription.manager" => $config['mapping']['newsletter_subscription']['manager'],
+            "elcodi.core.newsletter.entity.newsletter_subscription.enabled" => $config['mapping']['newsletter_subscription']['enabled'],
         ];
     }
 

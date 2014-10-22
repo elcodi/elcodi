@@ -19,10 +19,12 @@ namespace Elcodi\Bundle\CouponBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
+use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
+
 /**
  * This is the class that validates and merges configuration from your app/config files
  */
-class Configuration implements ConfigurationInterface
+class Configuration extends AbstractConfiguration implements ConfigurationInterface
 {
     /**
      * Generates the configuration tree builder.
@@ -39,23 +41,13 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('mapping')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->arrayNode('coupon')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\Coupon\Entity\Coupon')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('mapping_file')
-                                    ->defaultValue('@ElcodiCouponBundle/Resources/config/doctrine/Coupon.orm.yml')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('manager')
-                                    ->defaultValue('default')
-                                    ->cannotBeEmpty()
-                                ->end()
-                            ->end()
-                        ->end()
+                        ->append($this->addMappingNode(
+                            'coupon',
+                            'Elcodi\Component\Coupon\Entity\Coupon',
+                            '@ElcodiCouponBundle/Resources/config/doctrine/Coupon.orm.yml',
+                            'default',
+                            true
+                        ))
                     ->end()
                 ->end()
             ->end();

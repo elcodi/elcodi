@@ -38,19 +38,22 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
                 $container,
                 'elcodi.core.user.entity.abstract_user.manager',
                 'elcodi.core.user.entity.abstract_user.class',
-                'elcodi.core.user.entity.abstract_user.mapping_file'
+                'elcodi.core.user.entity.abstract_user.mapping_file',
+                'elcodi.core.user.entity.abstract_user.enabled'
             )
             ->addEntityMapping(
                 $container,
                 'elcodi.core.user.entity.admin_user.manager',
                 'elcodi.core.user.entity.admin_user.class',
-                'elcodi.core.user.entity.admin_user.mapping_file'
+                'elcodi.core.user.entity.admin_user.mapping_file',
+                'elcodi.core.user.entity.admin_user.enabled'
             )
             ->addEntityMapping(
                 $container,
                 'elcodi.core.user.entity.customer.manager',
                 'elcodi.core.user.entity.customer.class',
-                'elcodi.core.user.entity.customer.mapping_file'
+                'elcodi.core.user.entity.customer.mapping_file',
+                'elcodi.core.user.entity.customer.enabled'
             );
     }
 }

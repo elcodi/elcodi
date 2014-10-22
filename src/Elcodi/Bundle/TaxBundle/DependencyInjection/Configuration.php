@@ -19,10 +19,12 @@ namespace Elcodi\Bundle\TaxBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
+use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
+
 /**
  * This is the class that validates and merges configuration from your app/config files
  */
-class Configuration implements ConfigurationInterface
+class Configuration extends AbstractConfiguration implements ConfigurationInterface
 {
     /**
      * {@inheritDoc}
@@ -37,23 +39,13 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('mapping')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->arrayNode('tax')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Elcodi\Component\Tax\Entity\Tax')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('mapping_file')
-                                    ->defaultValue('@ElcodiTaxBundle/Resources/config/doctrine/Tax.orm.yml')
-                                    ->cannotBeEmpty()
-                                ->end()
-                                ->scalarNode('manager')
-                                    ->defaultValue('default')
-                                    ->cannotBeEmpty()
-                                ->end()
-                            ->end()
-                        ->end()
+                        ->append($this->addMappingNode(
+                            'tax',
+                            'Elcodi\Component\Tax\Entity\Tax',
+                            '@ElcodiTaxBundle/Resources/config/doctrine/Tax.orm.yml',
+                            'default',
+                            true
+                        ))
                     ->end()
                 ->end()
             ->end();
