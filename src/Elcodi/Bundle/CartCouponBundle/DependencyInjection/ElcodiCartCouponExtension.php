@@ -82,10 +82,12 @@ class ElcodiCartCouponExtension extends AbstractExtension implements EntitiesOve
             "elcodi.core.cart_coupon.entity.cart_coupon.class" => $config['mapping']['cart_coupon']['class'],
             "elcodi.core.cart_coupon.entity.cart_coupon.mapping_file" => $config['mapping']['cart_coupon']['mapping_file'],
             "elcodi.core.cart_coupon.entity.cart_coupon.manager" => $config['mapping']['cart_coupon']['manager'],
+            "elcodi.core.cart_coupon.entity.cart_coupon.enabled" => $config['mapping']['cart_coupon']['enabled'],
 
             "elcodi.core.cart_coupon.entity.order_coupon.class" => $config['mapping']['order_coupon']['class'],
             "elcodi.core.cart_coupon.entity.order_coupon.mapping_file" => $config['mapping']['order_coupon']['mapping_file'],
             "elcodi.core.cart_coupon.entity.order_coupon.manager" => $config['mapping']['order_coupon']['manager'],
+            "elcodi.core.cart_coupon.entity.order_coupon.enabled" => $config['mapping']['order_coupon']['enabled'],
         ];
     }
 

@@ -86,10 +86,12 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
             "elcodi.core.currency.entity.currency.class" => $config['mapping']['currency']['class'],
             "elcodi.core.currency.entity.currency.mapping_file" => $config['mapping']['currency']['mapping_file'],
             "elcodi.core.currency.entity.currency.manager" => $config['mapping']['currency']['manager'],
+            "elcodi.core.currency.entity.currency.enabled" => $config['mapping']['currency']['enabled'],
 
             "elcodi.core.currency.entity.currency_exchange_rate.class" => $config['mapping']['currency_exchange_rate']['class'],
             "elcodi.core.currency.entity.currency_exchange_rate.mapping_file" => $config['mapping']['currency_exchange_rate']['mapping_file'],
             "elcodi.core.currency.entity.currency_exchange_rate.manager" => $config['mapping']['currency_exchange_rate']['manager'],
+            "elcodi.core.currency.entity.currency_exchange_rate.enabled" => $config['mapping']['currency_exchange_rate']['enabled'],
 
             'elcodi.core.currency.default_currency' => $config['currency']['default_currency'],
             'elcodi.core.currency.session_field_name' => $config['currency']['session_field_name'],

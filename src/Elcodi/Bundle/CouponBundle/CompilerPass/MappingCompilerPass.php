@@ -38,7 +38,8 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
                 $container,
                 'elcodi.core.coupon.entity.coupon.manager',
                 'elcodi.core.coupon.entity.coupon.class',
-                'elcodi.core.coupon.entity.coupon.mapping_file'
+                'elcodi.core.coupon.entity.coupon.mapping_file',
+                'elcodi.core.coupon.entity.coupon.enabled'
             );
     }
 }

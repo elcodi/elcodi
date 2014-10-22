@@ -82,18 +82,22 @@ class ElcodiRuleExtension extends AbstractExtension implements EntitiesOverridab
             "elcodi.core.rule.entity.abstract_rule.class" => $config['mapping']['abstract_rule']['class'],
             "elcodi.core.rule.entity.abstract_rule.mapping_file" => $config['mapping']['abstract_rule']['mapping_file'],
             "elcodi.core.rule.entity.abstract_rule.manager" => $config['mapping']['abstract_rule']['manager'],
+            "elcodi.core.rule.entity.abstract_rule.enabled" => $config['mapping']['abstract_rule']['enabled'],
 
             "elcodi.core.rule.entity.expression.class" => $config['mapping']['expression']['class'],
             "elcodi.core.rule.entity.expression.mapping_file" => $config['mapping']['expression']['mapping_file'],
             "elcodi.core.rule.entity.expression.manager" => $config['mapping']['expression']['manager'],
+            "elcodi.core.rule.entity.expression.enabled" => $config['mapping']['expression']['enabled'],
 
             "elcodi.core.rule.entity.rule.class" => $config['mapping']['rule']['class'],
             "elcodi.core.rule.entity.rule.mapping_file" => $config['mapping']['rule']['mapping_file'],
             "elcodi.core.rule.entity.rule.manager" => $config['mapping']['rule']['manager'],
+            "elcodi.core.rule.entity.rule.enabled" => $config['mapping']['rule']['enabled'],
 
             "elcodi.core.rule.entity.rule_group.class" => $config['mapping']['rule_group']['class'],
             "elcodi.core.rule.entity.rule_group.mapping_file" => $config['mapping']['rule_group']['mapping_file'],
             "elcodi.core.rule.entity.rule_group.manager" => $config['mapping']['rule_group']['manager'],
+            "elcodi.core.rule.entity.rule_group.enabled" => $config['mapping']['rule_group']['enabled'],
         ];
     }
 

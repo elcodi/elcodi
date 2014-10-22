@@ -82,10 +82,12 @@ class ElcodiAttributeExtension extends AbstractExtension implements EntitiesOver
             "elcodi.core.attribute.entity.attribute.class" => $config['mapping']['attribute']['class'],
             "elcodi.core.attribute.entity.attribute.mapping_file" => $config['mapping']['attribute']['mapping_file'],
             "elcodi.core.attribute.entity.attribute.manager" => $config['mapping']['attribute']['manager'],
+            "elcodi.core.attribute.entity.attribute.enabled" => $config['mapping']['attribute']['enabled'],
 
             "elcodi.core.attribute.entity.value.class" => $config['mapping']['value']['class'],
             "elcodi.core.attribute.entity.value.mapping_file" => $config['mapping']['value']['mapping_file'],
             "elcodi.core.attribute.entity.value.manager" => $config['mapping']['value']['manager'],
+            "elcodi.core.attribute.entity.value.enabled" => $config['mapping']['value']['enabled'],
         ];
     }
 
