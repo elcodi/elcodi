@@ -70,6 +70,7 @@
         "elcodi/comment-bundle": "self.version",
         "elcodi/test-common-bundle": "self.version",
         "elcodi/tax-bundle": "self.version",
+        "elcodi/shipping-bundle": "self.version",
 
         "elcodi/attribute": "self.version",
         "elcodi/banner": "self.version",
@@ -89,7 +90,8 @@
         "elcodi/geo": "self.version",
         "elcodi/metadata": "self.version",
         "elcodi/comment": "self.version",
-        "elcodi/tax": "self.version"
+        "elcodi/tax": "self.version",
+        "elcodi/shipping": "self.version"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",
