@@ -16,12 +16,12 @@
 
 namespace Elcodi\Component\Tax\Entity\Interfaces;
 
-use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
+use Doctrine\Common\Collections\Collection;
 
 /**
- * Interface TaxInterface
+ * Interface TaxGroupInterface
  */
-interface TaxInterface extends EnabledInterface
+interface TaxGroupInterface
 {
     /**
      * Get Id
@@ -40,30 +40,30 @@ interface TaxInterface extends EnabledInterface
     public function setId($id);
 
     /**
-     * Gets Tax name
+     * Get Name
      *
-     * @return string
+     * @return string Name
      */
     public function getName();
 
     /**
-     * Sets tax name
+     * Sets Name
      *
-     * @param string $name
+     * @param string $name Name
      *
-     * @return $this
+     * @return $this Self object
      */
     public function setName($name);
 
     /**
-     * Get Tax description
+     * Get TaxGroup description
      *
      * @return string
      */
     public function getDescription();
 
     /**
-     * Sets Tax description
+     * Sets TaxGroup description
      *
      * @param string $description
      *
@@ -72,34 +72,36 @@ interface TaxInterface extends EnabledInterface
     public function setDescription($description);
 
     /**
-     * Sets Tax value in percentage
+     * Get Taxes
      *
-     * @return float
+     * @return Collection Taxes
      */
-    public function getValue();
+    public function getTaxes();
 
     /**
-     * Gets Tax value in percentage
+     * Sets Taxes
      *
-     * @param float $value
-     *
-     * @return $this
-     */
-    public function setValue($value);
-
-    /**
-     * Get TaxGroup
-     *
-     * @return TaxGroupInterface TaxGroup
-     */
-    public function getTaxGroup();
-
-    /**
-     * Sets TaxGroup
-     *
-     * @param TaxGroupInterface $taxGroup TaxGroup
+     * @param Collection $taxes Taxes
      *
      * @return $this Self object
      */
-    public function setTaxGroup($taxGroup);
+    public function setTaxes($taxes);
+
+    /**
+     * Add a tax into the group if not exists
+     *
+     * @param TaxInterface $tax Tax
+     *
+     * @return $this self Object
+     */
+    public function addTax(TaxInterface $tax);
+
+    /**
+     * Removes Tax from the group if exists
+     *
+     * @param TaxInterface $tax Tax
+     *
+     * @return $this self Object
+     */
+    public function removeTax(TaxInterface $tax);
 }
