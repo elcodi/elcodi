@@ -19,9 +19,9 @@ namespace Elcodi\Bundle\ShippingBundle\Tests\Functional\Repository;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class CarrierRangeRepositoryTest
+ * Class CarrierBaseRangeRepositoryTest
  */
-class CarrierRangeRepositoryTest extends WebTestCase
+class CarrierBaseRangeRepositoryTest extends WebTestCase
 {
     /**
      * Returns the callable name of the service
@@ -31,30 +31,30 @@ class CarrierRangeRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.shipping.repository.carrier_range',
-            'elcodi.repository.carrier_range',
+            'elcodi.core.shipping.repository.carrier_base_range',
+            'elcodi.repository.carrier_base_range',
         ];
     }
 
     /**
-     * Test carrier_range repository provider
+     * Test carrier_base_range repository provider
      */
     public function testFactoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.shipping.repository.carrier_range.class'),
-            $this->get('elcodi.core.shipping.repository.carrier_range')
+            $this->getParameter('elcodi.core.shipping.repository.carrier_base_range.class'),
+            $this->get('elcodi.core.shipping.repository.carrier_base_range')
         );
     }
 
     /**
-     * Test carrier_range repository provider alias
+     * Test carrier_base_range repository provider alias
      */
     public function testFactoryProviderAlias()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.shipping.repository.carrier_range.class'),
-            $this->get('elcodi.repository.carrier_range')
+            $this->getParameter('elcodi.core.shipping.repository.carrier_base_range.class'),
+            $this->get('elcodi.repository.carrier_base_range')
         );
     }
 }

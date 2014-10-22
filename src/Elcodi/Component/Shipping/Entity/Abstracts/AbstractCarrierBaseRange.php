@@ -21,13 +21,13 @@ use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Geo\Entity\Interfaces\ZoneInterface;
+use Elcodi\Component\Shipping\Entity\Interfaces\CarrierBaseRangeInterface;
 use Elcodi\Component\Shipping\Entity\Interfaces\CarrierInterface;
-use Elcodi\Component\Shipping\Entity\Interfaces\CarrierRangeInterface;
 
 /**
- * Class AbstractCarrierRange
+ * Class AbstractCarrierBaseRange
  */
-abstract class AbstractCarrierRange implements CarrierRangeInterface
+abstract class AbstractCarrierBaseRange implements CarrierBaseRangeInterface
 {
     use EnabledTrait;
 

@@ -26,7 +26,7 @@ Elcodi\Component\Shipping\Entity\Carrier:
 
     oneToMany:
         ranges:
-            targetEntity: Elcodi\Component\Shipping\Entity\Interfaces\CarrierRangeInterface
+            targetEntity: Elcodi\Component\Shipping\Entity\Interfaces\CarrierBaseRangeInterface
             mappedBy: carrier
             cascade: [ "all" ]
             orphanRemoval: true

@@ -18,7 +18,7 @@ namespace Elcodi\Component\Shipping\Resolver;
 
 use Elcodi\Component\Currency\Services\CurrencyConverter;
 use Elcodi\Component\Shipping\ElcodiShippingResolverTypes;
-use Elcodi\Component\Shipping\Entity\Interfaces\CarrierRangeInterface;
+use Elcodi\Component\Shipping\Entity\Interfaces\CarrierBaseRangeInterface;
 
 /**
  * Class CarrierResolver
@@ -56,9 +56,9 @@ class CarrierResolver
     /**
      * Resolve valid carrier given a set of them
      *
-     * @param CarrierRangeInterface[] $carrierRanges Carrier Ranges set
+     * @param CarrierBaseRangeInterface[] $carrierRanges Carrier Ranges set
      *
-     * @return CarrierRangeInterface[] Valid carrier ranges
+     * @return CarrierBaseRangeInterface[] Valid carrier ranges
      */
     public function resolveCarrierRanges(array $carrierRanges)
     {
@@ -85,14 +85,14 @@ class CarrierResolver
     /**
      * Get the CarrierRange with the lowest price
      *
-     * @param CarrierRangeInterface[] $carrierRanges Carrier Ranges set
+     * @param CarrierBaseRangeInterface[] $carrierRanges Carrier Ranges set
      *
-     * @return CarrierRangeInterface Lowest price CarrierRange
+     * @return CarrierBaseRangeInterface Lowest price CarrierRange
      */
     protected function getCarrierRangeWithLowestPrice(array $carrierRanges)
     {
         /**
-         * @var CarrierRangeInterface $lowestPriceCarrierRange
+         * @var CarrierBaseRangeInterface $lowestPriceCarrierRange
          */
         $lowestPriceCarrierRange = null;
 
@@ -100,7 +100,7 @@ class CarrierResolver
 
             $carrierRangePrice = $carrierRange->getPrice();
 
-            if ($lowestPriceCarrierRange instanceof CarrierRangeInterface) {
+            if ($lowestPriceCarrierRange instanceof CarrierBaseRangeInterface) {
 
                 if ($carrierRangePrice
                     ->isLessThan(
@@ -126,14 +126,14 @@ class CarrierResolver
     /**
      * Get the CarrierRange with the highest price
      *
-     * @param CarrierRangeInterface[] $carrierRanges Carrier Ranges set
+     * @param CarrierBaseRangeInterface[] $carrierRanges Carrier Ranges set
      *
-     * @return CarrierRangeInterface Highest price CarrierRange
+     * @return CarrierBaseRangeInterface Highest price CarrierRange
      */
     protected function getCarrierRangeWithHighestPrice(array $carrierRanges)
     {
         /**
-         * @var CarrierRangeInterface $highestPriceCarrierRange
+         * @var CarrierBaseRangeInterface $highestPriceCarrierRange
          */
         $highestPriceCarrierRange = null;
 
@@ -141,7 +141,7 @@ class CarrierResolver
 
             $carrierRangePrice = $carrierRange->getPrice();
 
-            if ($highestPriceCarrierRange instanceof CarrierRangeInterface) {
+            if ($highestPriceCarrierRange instanceof CarrierBaseRangeInterface) {
 
                 if ($carrierRangePrice
                     ->isGreaterThan(

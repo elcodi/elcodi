@@ -1,6 +1,6 @@
-Elcodi\Component\Shipping\Entity\Abstracts\AbstractCarrierRange:
+Elcodi\Component\Shipping\Entity\Abstracts\AbstractCarrierBaseRange:
     type: entity
-    repositoryClass: Elcodi\Component\Shipping\Repository\CarrierRangeRepository
+    repositoryClass: Elcodi\Component\Shipping\Repository\CarrierBaseRangeRepository
     inheritanceType: joined
     discriminatorColumn:
         name: discr

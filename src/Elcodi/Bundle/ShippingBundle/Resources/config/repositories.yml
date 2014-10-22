@@ -5,17 +5,17 @@ services:
     #
 
     #
-    # Repository for entity carrier_range
+    # Repository for entity carrier_base_range
     #
-    elcodi.core.shipping.repository.carrier_range:
-        class: %elcodi.core.shipping.repository.carrier_range.class%
+    elcodi.core.shipping.repository.carrier_base_range:
+        class: %elcodi.core.shipping.repository.carrier_base_range.class%
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
-            entity_namespace: %elcodi.core.shipping.entity.carrier_range.class%
+            entity_namespace: %elcodi.core.shipping.entity.carrier_base_range.class%
 
-    elcodi.repository.carrier_range:
-        alias: elcodi.core.shipping.repository.carrier_range
+    elcodi.repository.carrier_base_range:
+        alias: elcodi.core.shipping.repository.carrier_base_range
 
     #
     # Repository for entity carrier_price_range

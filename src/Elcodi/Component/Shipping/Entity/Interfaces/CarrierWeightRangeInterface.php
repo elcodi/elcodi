@@ -19,7 +19,7 @@ namespace Elcodi\Component\Shipping\Entity\Interfaces;
 /**
  * Interface CarrierWeightRangeInterface
  */
-interface CarrierWeightRangeInterface extends CarrierRangeInterface
+interface CarrierWeightRangeInterface extends CarrierBaseRangeInterface
 {
     /**
      * Get ToWeight
