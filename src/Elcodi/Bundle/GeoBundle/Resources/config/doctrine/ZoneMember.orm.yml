@@ -17,3 +17,11 @@ Elcodi\Component\Geo\Entity\ZoneMember:
             type: integer
             generator:
                 strategy: AUTO
+
+    manyToOne:
+        zone:
+            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\ZoneInterface
+            inversedBy: members
+            joinColumn:
+                name: zone_code
+                referencedColumnName: code
