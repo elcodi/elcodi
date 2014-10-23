@@ -17,15 +17,7 @@ Elcodi\Component\Geo\Entity\Zone:
             column: enabled
             type: boolean
 
-    manyToMany:
+    oneToMany:
         members:
             targetEntity: Elcodi\Component\Geo\Entity\Interfaces\ZoneMemberInterface
-            inversedBy: zones
-            joinTable:
-                name: zone_zone_members
-                joinColumns:
-                    zone_code:
-                        referencedColumnName: code
-                inverseJoinColumns:
-                    zone_member_id:
-                        referencedColumnName: id
+            mappedBy: zone
