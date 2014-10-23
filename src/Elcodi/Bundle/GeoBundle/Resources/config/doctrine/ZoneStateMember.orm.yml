@@ -1,5 +1,6 @@
 Elcodi\Component\Geo\Entity\ZoneStateMember:
     type: entity
+    table: zone_state_member
     manyToOne:
         state:
             targetEntity: Elcodi\Component\Geo\Entity\Interfaces\StateInterface
