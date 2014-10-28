@@ -27,14 +27,11 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableE
 class ElcodiLanguageExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
     /**
-     * Get the Config file location
+     * @var string
      *
-     * @return string Config file location
+     * Extension name
      */
-    public static function getExtensionName()
-    {
-        return 'elcodi_language';
-    }
+    const EXTENSION_NAME = 'elcodi_language';
 
     /**
      * Get the Config file location
@@ -60,7 +57,7 @@ class ElcodiLanguageExtension extends AbstractExtension implements EntitiesOverr
      */
     protected function getConfigurationInstance()
     {
-        return new Configuration();
+        return new Configuration(static::EXTENSION_NAME);
     }
 
     /**
@@ -118,5 +115,15 @@ class ElcodiLanguageExtension extends AbstractExtension implements EntitiesOverr
         return [
             'Elcodi\Component\Language\Entity\Interfaces\LanguageInterface' => 'elcodi.core.language.entity.language.class',
         ];
+    }
+
+    /**
+     * Returns the extension alias, same value as extension name
+     *
+     * @return string The alias
+     */
+    public function getAlias()
+    {
+        return static::EXTENSION_NAME;
     }
 }

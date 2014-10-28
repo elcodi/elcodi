@@ -27,14 +27,11 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableE
 class ElcodiAttributeExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
     /**
-     * Get the Config file location
+     * @var string
      *
-     * @return string Config file location
+     * Extension name
      */
-    public static function getExtensionName()
-    {
-        return 'elcodi_attribute';
-    }
+    const EXTENSION_NAME = 'elcodi_attribute';
 
     /**
      * Get the Config file location
@@ -60,7 +57,7 @@ class ElcodiAttributeExtension extends AbstractExtension implements EntitiesOver
      */
     protected function getConfigurationInstance()
     {
-        return new Configuration();
+        return new Configuration(static::EXTENSION_NAME);
     }
 
     /**
@@ -124,5 +121,15 @@ class ElcodiAttributeExtension extends AbstractExtension implements EntitiesOver
             'Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface' => 'elcodi.core.attribute.entity.attribute.class',
             'Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface' => 'elcodi.core.attribute.entity.value.class',
         ];
+    }
+
+    /**
+     * Returns the extension alias, same value as extension name
+     *
+     * @return string The alias
+     */
+    public function getAlias()
+    {
+        return static::EXTENSION_NAME;
     }
 }

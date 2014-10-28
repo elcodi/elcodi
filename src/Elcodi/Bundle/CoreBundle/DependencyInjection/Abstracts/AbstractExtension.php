@@ -238,6 +238,5 @@ abstract class AbstractExtension extends Extension implements PrependExtensionIn
                 'resolve_target_entities' => $overrides
             ]
         ]);
-
     }
 }

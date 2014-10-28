@@ -33,7 +33,7 @@ class Configuration extends AbstractConfiguration implements ConfigurationInterf
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root(ElcodiShippingExtension::getExtensionName());
+        $rootNode = $treeBuilder->root($this->extensionName);
 
         $rootNode
             ->children()

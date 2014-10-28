@@ -17,9 +17,11 @@
 namespace Elcodi\Bundle\RuleBundle;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 use Elcodi\Bundle\RuleBundle\CompilerPass\MappingCompilerPass;
+use Elcodi\Bundle\RuleBundle\DependencyInjection\ElcodiRuleExtension;
 use Elcodi\Component\Rule\CompilerPass\ContextCompilerPass;
 use Elcodi\Component\Rule\CompilerPass\ExpressionLanguageCompilerPass;
 
@@ -46,4 +48,13 @@ class ElcodiRuleBundle extends Bundle
             ->addCompilerPass(new ExpressionLanguageCompilerPass());
     }
 
+    /**
+     * Returns the bundle's container extension.
+     *
+     * @return ExtensionInterface The container extension
+     */
+    public function getContainerExtension()
+    {
+        return new ElcodiRuleExtension();
+    }
 }

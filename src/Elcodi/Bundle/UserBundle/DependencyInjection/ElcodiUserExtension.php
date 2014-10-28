@@ -27,14 +27,11 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableE
 class ElcodiUserExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
     /**
-     * Get the Config file location
+     * @var string
      *
-     * @return string Config file location
+     * Extension name
      */
-    public static function getExtensionName()
-    {
-        return 'elcodi_user';
-    }
+    const EXTENSION_NAME = 'elcodi_user';
 
     /**
      * Get the Config file location
@@ -60,7 +57,7 @@ class ElcodiUserExtension extends AbstractExtension implements EntitiesOverridab
      */
     protected function getConfigurationInstance()
     {
-        return new Configuration();
+        return new Configuration(static::EXTENSION_NAME);
     }
 
     /**
@@ -126,5 +123,15 @@ class ElcodiUserExtension extends AbstractExtension implements EntitiesOverridab
             'Elcodi\Component\User\Entity\Interfaces\CustomerInterface' => 'elcodi.core.user.entity.customer.class',
             'Elcodi\Component\User\Entity\Interfaces\AdminUserInterface' => 'elcodi.core.user.entity.admin_user.class',
         ];
+    }
+
+    /**
+     * Returns the extension alias, same value as extension name
+     *
+     * @return string The alias
+     */
+    public function getAlias()
+    {
+        return static::EXTENSION_NAME;
     }
 }

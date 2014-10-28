@@ -17,9 +17,11 @@
 namespace Elcodi\Bundle\BannerBundle;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 use Elcodi\Bundle\BannerBundle\CompilerPass\MappingCompilerPass;
+use Elcodi\Bundle\BannerBundle\DependencyInjection\ElcodiBannerExtension;
 
 /**
  * ElcodiBannerBundle Bundle
@@ -32,5 +34,15 @@ class ElcodiBannerBundle extends Bundle
     public function build(ContainerBuilder $container)
     {
         $container->addCompilerPass(new MappingCompilerPass());
+    }
+
+    /**
+     * Returns the bundle's container extension.
+     *
+     * @return ExtensionInterface The container extension
+     */
+    public function getContainerExtension()
+    {
+        return new ElcodiBannerExtension();
     }
 }

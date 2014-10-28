@@ -16,7 +16,10 @@
 
 namespace Elcodi\Bundle\CoreBundle;
 
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+use Elcodi\Bundle\CoreBundle\DependencyInjection\ElcodiCoreExtension;
 
 /**
  * ElcodiCoreBundle Bundle
@@ -27,4 +30,13 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class ElcodiCoreBundle extends Bundle
 {
+    /**
+     * Returns the bundle's container extension.
+     *
+     * @return ExtensionInterface The container extension
+     */
+    public function getContainerExtension()
+    {
+        return new ElcodiCoreExtension();
+    }
 }
