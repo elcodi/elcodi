@@ -29,9 +29,9 @@ use Elcodi\Component\Core\EventDispatcher\Abstracts\AbstractEventDispatcher;
 class OrderStateEventDispatcher extends AbstractEventDispatcher
 {
     /**
-     * Dispatching "pre" state changed event
+     * Event dispatcher before OrderState changes
      *
-     * This event does not pass wrap new OrderLineHistory into the message,
+     * This event does not pass wrap new OrderHistory into the message,
      * since it has not been created yet.
      *
      * @param OrderInterface        $order            Used Order
@@ -63,9 +63,9 @@ class OrderStateEventDispatcher extends AbstractEventDispatcher
     }
 
     /**
-     * Dispatching "post" state changed event
+     * Event dispatcher when OrderState changes
      *
-     * New OrderLineHistory has been created already
+     * New OrderHistory has been created already
      *
      * @param OrderInterface        $order            Used Order
      * @param OrderHistoryInterface $lastOrderHistory Last OrderHistory
@@ -74,7 +74,7 @@ class OrderStateEventDispatcher extends AbstractEventDispatcher
      *
      * @return $this self Object
      */
-    public function dispatchOrderStatePostChangeEvent(
+    public function dispatchOrderStateOnChangeEvent(
         OrderInterface $order,
         OrderHistoryInterface $lastOrderHistory,
         OrderHistoryInterface $newOrderHistory,
@@ -91,7 +91,7 @@ class OrderStateEventDispatcher extends AbstractEventDispatcher
         $this
             ->eventDispatcher
             ->dispatch(
-                ElcodiCartEvents::ORDER_STATE_POSTCHANGE,
+                ElcodiCartEvents::ORDER_STATE_ONCHANGE,
                 $orderStatePostChangeEvent
             );
 
