@@ -30,7 +30,7 @@ services:
         arguments:
             order_entity_manager: @elcodi.object_manager.order
         tags:
-            - { name: kernel.event_listener, event: orderstate.onchange, method: onOrderStateOnChangeFlush, priority: 0 }
+            - { name: kernel.event_listener, event: order_state.onchange, method: onOrderStateOnChangeFlush, priority: 0 }
 
     elcodi.core.cart.event_listener.order_line_state:
         class: %elcodi.core.cart.event_listener.order_line_state.class%
@@ -39,8 +39,8 @@ services:
             order_state_event_dispatcher: @elcodi.order_state_event_dispatcher
             order_history_factory: @elcodi.core.cart.factory.order_history
         tags:
-            - { name: kernel.event_listener, event: orderlinestate.onchange, method: onOrderLineStateOnChange, priority: 16 }
-            - { name: kernel.event_listener, event: orderlinestate.onchange, method: onOrderLineStateOnChangeFlush, priority: 0 }
+            - { name: kernel.event_listener, event: order_line_state.onchange, method: onOrderLineStateOnChange, priority: 16 }
+            - { name: kernel.event_listener, event: order_line_state.onchange, method: onOrderLineStateOnChangeFlush, priority: 0 }
 
     elcodi.core.cart.event_listener.cart_session:
         class: %elcodi.core.cart.event_listener.cart_session.class%

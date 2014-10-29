@@ -112,7 +112,7 @@ class ElcodiCartEvents
     /**
      * This event is dispatched when an orderline is created
      *
-     * event.name : orderline.oncreated
+     * event.name : order_line.oncreated
      * event.class : OrderLineOnCreatedEvent
      */
     const ORDERLINE_ONCREATED = 'order_line.oncreated';
@@ -127,7 +127,7 @@ class ElcodiCartEvents
      * This event has, as first parameter an OrderChangedStatusEvent object
      * having current Order object, last and current OrderHistoryObject
      *
-     * event.name : orderstate.change
+     * event.name : order_state.change
      * event.class : OrderStatePreChangeEvent
      *
      */
@@ -139,7 +139,7 @@ class ElcodiCartEvents
      * This event has, as first parameter an OrderChangedStatusEvent object
      * having current Order object, last and current OrderHistoryObject
      *
-     * event.name : orderstate.onchange
+     * event.name : order_state.onchange
      * event.class : OrderStateOnChangeEvent
      *
      */
@@ -156,7 +156,7 @@ class ElcodiCartEvents
      * object having current OrderLine object, last and current
      * OrderLineHistoryObject and last and current stats
      *
-     * event.name : orderlinestate.prechange
+     * event.name : order_line_state.prechange
      * event.class : OrderLineStatePreChangeEvent
      *
      */
@@ -169,7 +169,7 @@ class ElcodiCartEvents
      * object having current OrderLine object, last and current
      * OrderLineHistoryObject and last and current stats
      *
-     * event.name : orderlinestate.onchange
+     * event.name : order_line_state.onchange
      * event.class : OrderLineStateOnChangeEvent
      *
      */
