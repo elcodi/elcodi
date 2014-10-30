@@ -16,51 +16,43 @@
 
 namespace Elcodi\Component\Tax\Entity;
 
-use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
+use Doctrine\Common\Collections\Collection;
+
 use Elcodi\Component\Tax\Entity\Interfaces\TaxGroupInterface;
 use Elcodi\Component\Tax\Entity\Interfaces\TaxInterface;
 
 /**
- * Class Tax
+ * Class TaxGroup
  */
-class Tax implements TaxInterface
+class TaxGroup implements TaxGroupInterface
 {
-    use EnabledTrait;
-
     /**
      * @var integer
      *
-     * Identifier
+     * id
      */
     protected $id;
 
     /**
      * @var string
      *
-     * Tax name
+     * name
      */
     protected $name;
 
     /**
      * @var string
      *
-     * Tax description
+     * Description
      */
     protected $description;
 
     /**
-     * @var float
+     * @var Collection
      *
-     * Tax percent value
+     * taxes
      */
-    protected $value;
-
-    /**
-     * @var TaxGroupInterface
-     *
-     * Tax Group
-     */
-    protected $taxGroup;
+    protected $taxes;
 
     /**
      * Get Id
@@ -87,9 +79,9 @@ class Tax implements TaxInterface
     }
 
     /**
-     * Gets Tax name
+     * Get Name
      *
-     * @return string
+     * @return string Name
      */
     public function getName()
     {
@@ -97,11 +89,11 @@ class Tax implements TaxInterface
     }
 
     /**
-     * Sets tax name
+     * Sets Name
      *
-     * @param string $name
+     * @param string $name Name
      *
-     * @return $this
+     * @return $this Self object
      */
     public function setName($name)
     {
@@ -111,7 +103,7 @@ class Tax implements TaxInterface
     }
 
     /**
-     * Get Tax description
+     * Get TaxGroup description
      *
      * @return string
      */
@@ -121,7 +113,7 @@ class Tax implements TaxInterface
     }
 
     /**
-     * Sets Tax description
+     * Sets TaxGroup description
      *
      * @param string $description
      *
@@ -135,49 +127,60 @@ class Tax implements TaxInterface
     }
 
     /**
-     * Sets Tax value in percentage
+     * Get Taxes
      *
-     * @return float
+     * @return Collection Taxes
      */
-    public function getValue()
+    public function getTaxes()
     {
-        return $this->value;
+        return $this->taxes;
     }
 
     /**
-     * Gets Tax value in percentage
+     * Sets Taxes
      *
-     * @param float $value
+     * @param Collection $taxes Taxes
      *
-     * @return $this;
+     * @return $this Self object
      */
-    public function setValue($value)
+    public function setTaxes($taxes)
     {
-        $this->value = $value;
+        $this->taxes = $taxes;
 
         return $this;
     }
 
     /**
-     * Get TaxGroup
+     * Add a tax into the group if not exists
      *
-     * @return TaxGroupInterface TaxGroup
+     * @param TaxInterface $tax Tax
+     *
+     * @return $this self Object
      */
-    public function getTaxGroup()
+    public function addTax(TaxInterface $tax)
     {
-        return $this->taxGroup;
+        if (!$this->taxes->contains($tax)) {
+
+            $this
+                ->taxes
+                ->add($tax);
+        }
+
+        return $this;
     }
 
     /**
-     * Sets TaxGroup
+     * Removes Tax from the group if exists
      *
-     * @param TaxGroupInterface $taxGroup TaxGroup
+     * @param TaxInterface $tax Tax
      *
-     * @return $this Self object
+     * @return $this self Object
      */
-    public function setTaxGroup($taxGroup)
+    public function removeTax(TaxInterface $tax)
     {
-        $this->taxGroup = $taxGroup;
+        $this
+            ->taxes
+            ->removeElement($tax);
 
         return $this;
     }

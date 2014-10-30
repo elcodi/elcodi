@@ -14,3 +14,14 @@ services:
 
     elcodi.factory.tax:
         alias: elcodi.core.tax.factory.tax
+
+    #
+    # Factory for entity tax group
+    #
+    elcodi.core.tax.factory.tax_group:
+        class: %elcodi.core.tax.factory.tax_group.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.tax.entity.tax_group.class%"]]
+
+    elcodi.factory.tax_group:
+        alias: elcodi.core.tax.factory.tax_group
