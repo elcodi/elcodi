@@ -116,9 +116,9 @@ class CustomerWrapper
         if ($token instanceof TokenInterface) {
 
             $this->customer = $token->getUser();
+        }
 
-        } else {
-
+        if (null === $customer) {
             $this->customer = $this->customerFactory->create();
         }
 
