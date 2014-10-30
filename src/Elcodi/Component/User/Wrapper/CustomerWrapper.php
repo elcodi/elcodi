@@ -16,7 +16,7 @@
 
 namespace Elcodi\Component\User\Wrapper;
 
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
@@ -113,7 +113,7 @@ class CustomerWrapper
             ? $this->securityContext->getToken()
             : null;
 
-        if ($token instanceof UsernamePasswordToken) {
+        if ($token instanceof TokenInterface) {
 
             $this->customer = $token->getUser();
 
