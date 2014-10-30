@@ -26,6 +26,20 @@ use Elcodi\Component\User\Wrapper\CustomerWrapper;
 
 /**
  * Class CartWrapper
+ *
+ * Envelopes a Cart object and provides the minimum logic to
+ * load it from HTTP Session, from the Customer collection
+ * of pending Carts or by factoring a pristine Cart.
+ *
+ * The most useful method in this wrapper is loadCart(), which
+ * will behave according to different scenarios:
+ *
+ * - When the Customer has pending Carts, the last Cart form
+ *   this collection is returned
+ * - When there is a Cart in session, it is associated with
+ *   the Customer and is returned
+ * - When there is no Cart in session, a new one is factored
+ *
  */
 class CartWrapper
 {
@@ -206,7 +220,7 @@ class CartWrapper
     }
 
     /**
-     * Resolve carts given customer cart and session cart
+     * Resolves a cart given a customer cart and a session cart
      *
      * @param CustomerInterface $customer         Customer
      * @param CartInterface     $cartFromCustomer Customer Cart
@@ -227,7 +241,7 @@ class CartWrapper
             if (!$cartFromSession) {
 
                 /**
-                 * Customer has any cart not ordered, and there is no cart in
+                 * Customer has no pending carts, and there is no cart in
                  * session.
                  *
                  * We create a new Cart
@@ -236,11 +250,11 @@ class CartWrapper
             } else {
 
                 /**
-                 * Customer has any cart not ordered, and there is a cart loaded
+                 * Customer has no pending carts, and there is a cart loaded
                  * in session.
                  *
-                 * If customer exists as a persisted entity, we save this cart
-                 * as Customer cart
+                 * If customer is not a pristine entity since it has already
+                 * been flushed, we associate this cart with customer
                  */
                 $cart = $cartFromSession;
 
