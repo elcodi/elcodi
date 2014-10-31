@@ -31,7 +31,9 @@ use Elcodi\Component\User\Wrapper\CustomerWrapper;
 class CustomerWrapperTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     *
+     * Given a security token pointing to a valid customer C
+     * When  I ask the wrapper to load a customer
+     * Then  it returns C
      */
     public function testLoadCustomerFromToken()
     {
@@ -61,7 +63,11 @@ class CustomerWrapperTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     *
+     * Given a security token with no user
+     *   and a customer factory F
+     * When  I ask the wrapper to load a customer
+     * Then  it calls F to create a new customer C
+     *  and  it returns C
      */
     public function testCreateCustomerWhenTokenIsEmpty()
     {
@@ -92,7 +98,11 @@ class CustomerWrapperTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     *
+     * Given there are no security token
+     *   and a customer factory F
+     * When  I ask the wrapper to load a customer
+     * Then  it calls F to create a new customer C
+     *  and  it returns C
      */
     public function testCreateCustomerWhenNoSecurityContext()
     {
