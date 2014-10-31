@@ -2,6 +2,7 @@ Elcodi\Component\Shipping\Entity\Abstracts\AbstractCarrierBaseRange:
     type: entity
     repositoryClass: Elcodi\Component\Shipping\Repository\CarrierBaseRangeRepository
     inheritanceType: joined
+    table: carrier_base_range
     discriminatorColumn:
         name: discr
         type: string
