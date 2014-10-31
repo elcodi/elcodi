@@ -143,9 +143,32 @@ class Variant extends AbstractEntity implements VariantInterface
      *
      * @return VariantInterface
      */
-    public function setOptions($options)
+    public function setOptions(Collection $options)
     {
-        $this->options = $options;
+        /*
+         * We want to be able to assign an empty
+         * ArrayCollection to variant options
+         *
+         * When the collection is not empty, each
+         * option in the collection will be added
+         * separately since it needs to update the
+         * parent product attribute list
+         */
+        if ($options->isEmpty()) {
+            $this->options = $options;
+        } else {
+            $this->options->clear();
+        }
+
+        /**
+         * @var ValueInterface $option
+         */
+        foreach ($options as $option) {
+            /*
+             * We need to update the parent product attribute collection
+             */
+            $this->addOption($option);
+        }
 
         return $this;
     }

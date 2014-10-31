@@ -488,6 +488,20 @@ class Product extends AbstractEntity implements ProductInterface
     }
 
     /**
+     * Removes an attribute from the collection
+     *
+     * @param AttributeInterface $attribute Attribute to be removed
+     *
+     * @return $this self Object
+     */
+    public function removeAttribute(AttributeInterface $attribute)
+    {
+        $this->attributes->removeElement($attribute);
+
+        return $this;
+    }
+
+    /**
      * Returns product attributes
      *
      * @return Collection Attributes

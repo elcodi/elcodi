@@ -82,7 +82,7 @@ interface VariantInterface
      *
      * @return $this self Object
      */
-    public function setOptions($options);
+    public function setOptions(Collection $options);
 
     /**
      * Adds an option to this variant

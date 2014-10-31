@@ -222,6 +222,15 @@ interface ProductInterface
     public function addAttribute(AttributeInterface $attribute);
 
     /**
+     * Removes an attribute from the collection
+     *
+     * @param AttributeInterface $attribute Attribute to be removed
+     *
+     * @return $this self Object
+     */
+    public function removeAttribute(AttributeInterface $attribute);
+
+    /**
      * Returns product attributes
      *
      * @return Collection Attributes
