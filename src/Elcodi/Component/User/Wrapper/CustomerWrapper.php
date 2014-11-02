@@ -16,7 +16,7 @@
 
 namespace Elcodi\Component\User\Wrapper;
 
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
@@ -109,20 +109,15 @@ class CustomerWrapper
             return $this->customer;
         }
 
-        $token = $this->securityContext instanceof SecurityContextInterface
-            ? $this->securityContext->getToken()
-            : null;
+        $customer = $this->getCustomerFromToken();
 
-        if ($token instanceof UsernamePasswordToken) {
-
-            $this->customer = $token->getUser();
-
-        } else {
-
-            $this->customer = $this->customerFactory->create();
+        if (null === $customer) {
+            $customer = $this->customerFactory->create();
         }
 
-        return $this->customer;
+        $this->customer = $customer;
+
+        return $customer;
     }
 
     /**
@@ -138,5 +133,29 @@ class CustomerWrapper
         return $this
             ->setCustomer(null)
             ->loadCustomer();
+    }
+
+    /**
+     * Return the current user from security context.
+     *
+     * @return CustomerInterface Current customer in token
+     */
+    protected function getCustomerFromToken()
+    {
+        if (!($this->securityContext instanceof SecurityContextInterface)) {
+            return null;
+        }
+
+        $token = $this->securityContext->getToken();
+        if (!($token instanceof TokenInterface)) {
+            return null;
+        }
+
+        $customer = $token->getUser();
+        if (!($customer instanceof CustomerInterface)) {
+            return null;
+        }
+
+        return $customer;
     }
 }
