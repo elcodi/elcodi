@@ -1,0 +1,35 @@
+{
+    "name": "elcodi/state-machine",
+    "description": "Elcodi State Machine Component",
+    "keywords": ["elcodi", "state machine", "ecommerce", "component"],
+    "homepage": "https://github.com/elcodi/StateMachine",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "Symfony Community",
+            "homepage": "https://github.com/elcodi/StateMachine/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\Component\\StateMachine\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.4-dev"
+        }
+    }
+}
