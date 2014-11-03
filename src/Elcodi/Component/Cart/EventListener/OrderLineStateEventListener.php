@@ -137,7 +137,7 @@ class OrderLineStateEventListener
 
         $this
             ->orderStateEventDispatcher
-            ->dispatchOrderStatePreChangeEvent(
+            ->dispatchOrderStateOnChangeEvent(
                 $order,
                 $lastOrderHistory,
                 $orderHistory,
@@ -150,7 +150,7 @@ class OrderLineStateEventListener
      *
      * @param OrderLineStateOnChangeEvent $event Event
      */
-    public function onOrderStateChangeFlush(OrderLineStateOnChangeEvent $event)
+    public function onOrderLineStateChangeFlush(OrderLineStateOnChangeEvent $event)
     {
         $order = $event->getOrder();
 

@@ -93,7 +93,7 @@ class OrderLineStateEventDispatcher extends AbstractEventDispatcher
         );
 
         $this->eventDispatcher->dispatch(
-            ElcodiCartEvents::ORDERLINE_STATE_POSTCHANGE,
+            ElcodiCartEvents::ORDERLINE_STATE_ONCHANGE,
             $orderLineStatePostChangeEvent
         );
 

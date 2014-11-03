@@ -62,7 +62,6 @@ Elcodi\Component\Cart\Entity\Order:
                 name: last_order_history_id
                 referencedColumnName: id
                 nullable: true
-            orphanRemoval: true
 
     manyToOne:
         customer:
