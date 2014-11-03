@@ -78,6 +78,18 @@ Elcodi\Component\Cart\Entity\Order:
                  name: currency_id
                  referencedColumnName: id
                  nullable: false
+        productCurrency:
+            targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                 name: product_currency_id
+                 referencedColumnName: id
+                 nullable: false
+        couponCurrency:
+            targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                 name: coupon_currency_id
+                 referencedColumnName: id
+                 nullable: false
     oneToMany:
         orderLines:
             targetEntity: Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface

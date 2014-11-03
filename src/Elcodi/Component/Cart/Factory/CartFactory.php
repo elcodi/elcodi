@@ -30,6 +30,14 @@ class CartFactory extends AbstractFactory
     /**
      * Creates an instance of Cart
      *
+     * Cart factory does not need to known about Currency
+     * objects in order to initialize Money objects for
+     * properties such as Cart::amount, Cart::productAmount
+     * and Cart::couponAmount since they are meant to be
+     * set by event listeners.
+     *
+     * @see Elcodi\Component\Cart\EventListener\CartEventListener::loadCartPrices()
+     *
      * @return Cart New Cart entity
      */
     public function create()
