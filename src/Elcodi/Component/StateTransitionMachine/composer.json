@@ -1,0 +1,39 @@
+{
+    "name": "elcodi/state-transition-machine",
+    "description": "Elcodi State Transition Machine Component",
+    "keywords": ["elcodi", "state transition machine", "ecommerce", "component"],
+    "homepage": "https://github.com/elcodi/StateTransitionMachine",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "Symfony Community",
+            "homepage": "https://github.com/elcodi/StateTransitionMachine/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+
+        "symfony/event-dispatcher": "~2.4",
+
+        "elcodi/core": "~0.3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\Component\\StateTransitionMachine\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.4-dev"
+        }
+    }
+}

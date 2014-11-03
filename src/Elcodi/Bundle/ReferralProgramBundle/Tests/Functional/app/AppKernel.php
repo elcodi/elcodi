@@ -66,6 +66,7 @@ class AppKernel extends AbstractElcodiKernel
             new \Elcodi\Bundle\ProductBundle\ElcodiProductBundle(),
             new \Elcodi\Bundle\RuleBundle\ElcodiRuleBundle(),
             new \Elcodi\Bundle\ReferralProgramBundle\ElcodiReferralProgramBundle(),
+            new \Elcodi\Bundle\StateTransitionMachineBundle\ElcodiStateTransitionMachineBundle(),
         );
 
         return $bundles;

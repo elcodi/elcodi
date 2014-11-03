@@ -21,12 +21,13 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
+use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StatefulInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
  * Class OrderInterface
  */
-interface OrderInterface extends PriceInterface, DimensionableInterface
+interface OrderInterface extends PriceInterface, DimensionableInterface, StatefulInterface
 {
     /**
      * Sets Customer
@@ -95,40 +96,6 @@ interface OrderInterface extends PriceInterface, DimensionableInterface
     public function removeOrderLine(OrderLineInterface $orderLine);
 
     /**
-     * Set order histories
-     *
-     * @param Collection $orderHistories Order histories
-     *
-     * @return $this self Object
-     */
-    public function setOrderHistories(Collection $orderHistories);
-
-    /**
-     * Get order histories
-     *
-     * @return Collection Order histories
-     */
-    public function getOrderHistories();
-
-    /**
-     * Add Order History
-     *
-     * @param OrderHistoryInterface $orderHistory Order History
-     *
-     * @return $this self Object
-     */
-    public function addOrderHistory(OrderHistoryInterface $orderHistory);
-
-    /**
-     * Remove Order History
-     *
-     * @param OrderHistoryInterface $orderHistory Order History
-     *
-     * @return $this self Object
-     */
-    public function removeOrderHistory(OrderHistoryInterface $orderHistory);
-
-    /**
      * Set quantity
      *
      * @param int $quantity Quantity
@@ -143,22 +110,6 @@ interface OrderInterface extends PriceInterface, DimensionableInterface
      * @return integer Quantity
      */
     public function getQuantity();
-
-    /**
-     * Sets LastOrderHistory
-     *
-     * @param OrderHistoryInterface $lastOrderHistory LastOrderHistory
-     *
-     * @return $this Self object
-     */
-    public function setLastOrderHistory(OrderHistoryInterface $lastOrderHistory);
-
-    /**
-     * Get LastOrderHistory
-     *
-     * @return OrderHistoryInterface LastOrderHistory
-     */
-    public function getLastOrderHistory();
 
     /**
      * Gets the Coupon amount with tax

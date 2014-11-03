@@ -40,21 +40,6 @@ Elcodi\Component\Cart\Entity\OrderLine:
             column: quantity
             type: integer
 
-    oneToOne:
-        lastOrderLineHistory:
-            targetEntity: Elcodi\Component\Cart\Entity\Interfaces\OrderLineHistoryInterface
-            joinColumn:
-                name: last_order_line_history_id
-                referencedColumnName: id
-                nullable: true
-
-    oneToMany:
-        orderLineHistories:
-            targetEntity: Elcodi\Component\Cart\Entity\Interfaces\OrderLineHistoryInterface
-            mappedBy: orderLine
-            cascade: [ "all" ]
-            orphanRemoval: true
-
     manyToOne:
         order:
             targetEntity: Elcodi\Component\Cart\Entity\Interfaces\OrderInterface

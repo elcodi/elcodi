@@ -56,10 +56,10 @@ Elcodi\Component\Cart\Entity\Order:
                 onDelete: "SET NULL"
                 onUpdate: "CASCADE"
                 nullable: true
-        lastOrderHistory:
-            targetEntity: Elcodi\Component\Cart\Entity\Interfaces\OrderHistoryInterface
+        lastStateLine:
+            targetEntity: Elcodi\Component\Cart\Entity\Interfaces\OrderStateLineInterface
             joinColumn:
-                name: last_order_history_id
+                name: last_state_line_id
                 referencedColumnName: id
                 nullable: true
 
@@ -96,8 +96,8 @@ Elcodi\Component\Cart\Entity\Order:
             mappedBy: order
             cascade: [ "all" ]
             orphanRemoval: true
-        orderHistories:
-            targetEntity: Elcodi\Component\Cart\Entity\Interfaces\OrderHistoryInterface
+        stateLines:
+            targetEntity: Elcodi\Component\Cart\Entity\Interfaces\OrderStateLineInterface
             mappedBy: order
             cascade: [ "all" ]
             orphanRemoval: true

@@ -59,25 +59,12 @@ services:
     #
     # Repository for entity order_history
     #
-    elcodi.core.cart.repository.order_history:
-        class: %elcodi.core.cart.repository.order_history.class%
+    elcodi.core.cart.repository.order_state_line:
+        class: %elcodi.core.cart.repository.order_state_line.class%
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
-            entity_namespace: %elcodi.core.cart.entity.order_history.class%
+            entity_namespace: %elcodi.core.cart.entity.order_state_line.class%
 
-    elcodi.repository.order_history:
-        alias: elcodi.core.cart.repository.order_history
-
-    #
-    # Repository for entity order_line_history
-    #
-    elcodi.core.cart.repository.order_line_history:
-        class: %elcodi.core.cart.repository.order_line_history.class%
-        factory_service: elcodi.repository_provider
-        factory_method: getRepositoryByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.cart.entity.order_line_history.class%
-
-    elcodi.repository.order_line_history:
-        alias: elcodi.core.cart.repository.order_line_history
+    elcodi.repository.order_state_line:
+        alias: elcodi.core.cart.repository.order_state_line

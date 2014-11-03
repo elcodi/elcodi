@@ -96,21 +96,17 @@ class ElcodiCartExtension extends AbstractExtension implements EntitiesOverridab
             "elcodi.core.cart.entity.order_line.manager" => $config['mapping']['order_line']['manager'],
             "elcodi.core.cart.entity.order_line.enabled" => $config['mapping']['order_line']['enabled'],
 
-            "elcodi.core.cart.entity.order_history.class" => $config['mapping']['order_history']['class'],
-            "elcodi.core.cart.entity.order_history.mapping_file" => $config['mapping']['order_history']['mapping_file'],
-            "elcodi.core.cart.entity.order_history.manager" => $config['mapping']['order_history']['manager'],
-            "elcodi.core.cart.entity.order_history.enabled" => $config['mapping']['order_history']['enabled'],
-
-            "elcodi.core.cart.entity.order_line_history.class" => $config['mapping']['order_line_history']['class'],
-            "elcodi.core.cart.entity.order_line_history.mapping_file" => $config['mapping']['order_line_history']['mapping_file'],
-            "elcodi.core.cart.entity.order_line_history.manager" => $config['mapping']['order_line_history']['manager'],
-            "elcodi.core.cart.entity.order_line_history.enabled" => $config['mapping']['order_line_history']['enabled'],
+            "elcodi.core.cart.entity.order_state_line.class" => $config['mapping']['order_state_line']['class'],
+            "elcodi.core.cart.entity.order_state_line.mapping_file" => $config['mapping']['order_state_line']['mapping_file'],
+            "elcodi.core.cart.entity.order_state_line.manager" => $config['mapping']['order_state_line']['manager'],
+            "elcodi.core.cart.entity.order_state_line.enabled" => $config['mapping']['order_state_line']['enabled'],
 
             'elcodi.core.cart.cart_save_in_session' => $config['cart']['save_in_session'],
             'elcodi.core.cart.cart_session_field_name' => $config['cart']['session_field_name'],
 
-            'elcodi.core.cart.order_states' => $config['order']['states'],
-            'elcodi.core.cart.order_initial_state' => $config['order']['initial_state'],
+            'elcodi.core.cart.order_state_transition_machine_states' => $config['order_state_transition_machine']['states'],
+            'elcodi.core.cart.order_state_transition_machine_identifier' => $config['order_state_transition_machine']['identifier'],
+            'elcodi.core.cart.order_state_transition_machine_point_of_entry' => $config['order_state_transition_machine']['point_of_entry'],
         ];
     }
 
@@ -132,6 +128,7 @@ class ElcodiCartExtension extends AbstractExtension implements EntitiesOverridab
             'objectManagers',
             'transformers',
             'eventDispatchers',
+            'machine',
         ];
     }
 
@@ -151,8 +148,7 @@ class ElcodiCartExtension extends AbstractExtension implements EntitiesOverridab
             'Elcodi\Component\Cart\Entity\Interfaces\OrderInterface' => 'elcodi.core.cart.entity.order.class',
             'Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface' => 'elcodi.core.cart.entity.cart_line.class',
             'Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface' => 'elcodi.core.cart.entity.order_line.class',
-            'Elcodi\Component\Cart\Entity\Interfaces\OrderHistoryInterface' => 'elcodi.core.cart.entity.order_history.class',
-            'Elcodi\Component\Cart\Entity\Interfaces\OrderLineHistoryInterface' => 'elcodi.core.cart.entity.order_line_history.class',
+            'Elcodi\Component\Cart\Entity\Interfaces\OrderStateLineInterface' => 'elcodi.core.cart.entity.order_state_line.class',
         ];
     }
 

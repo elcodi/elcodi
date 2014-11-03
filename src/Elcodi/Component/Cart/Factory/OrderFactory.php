@@ -19,9 +19,10 @@ namespace Elcodi\Component\Cart\Factory;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
-use Elcodi\Component\Cart\Entity\Interfaces\OrderHistoryInterface;
+use Elcodi\Component\Cart\Entity\Interfaces\OrderStateLineInterface;
 use Elcodi\Component\Cart\Entity\Order;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
+use Elcodi\Component\StateTransitionMachine\Machine\MachineManager;
 
 /**
  * Class Order
@@ -29,45 +30,20 @@ use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 class OrderFactory extends AbstractFactory
 {
     /**
-     * @var OrderHistoryFactory
+     * @var MachineManager
      *
-     * OrderHistory Factory
+     * Machine Manager
      */
-    protected $orderHistoryFactory;
+    protected $machineManager;
 
     /**
-     * @var string
+     * Construct method
      *
-     * Initial History state
+     * @param MachineManager $machineManager Machine Manager
      */
-    protected $initialOrderHistoryState;
-
-    /**
-     * Set orderHistoryFactory
-     *
-     * @param OrderHistoryFactory $orderHistoryFactory OrderHistory Factory
-     *
-     * @return $this self Object
-     */
-    public function setOrderHistoryFactory(OrderHistoryFactory $orderHistoryFactory)
+    public function __construct(MachineManager $machineManager)
     {
-        $this->orderHistoryFactory = $orderHistoryFactory;
-
-        return $this;
-    }
-
-    /**
-     * Set initial history state
-     *
-     * @param string $initialOrderHistoryState Initial order history state
-     *
-     * @return $this self Object
-     */
-    public function setInitialOrderHistoryState($initialOrderHistoryState)
-    {
-        $this->initialOrderHistoryState = $initialOrderHistoryState;
-
-        return $this;
+        $this->machineManager = $machineManager;
     }
 
     /**
@@ -91,20 +67,17 @@ class OrderFactory extends AbstractFactory
             ->setWidth(0)
             ->setWeight(0)
             ->setOrderLines(new ArrayCollection())
-            ->setOrderHistories(new ArrayCollection())
+            ->setStateLines(new ArrayCollection())
             ->setCreatedAt(new DateTime());
 
         /**
-         * @var OrderHistoryInterface $orderHistory
+         * @var OrderStateLineInterface $stateLine
          */
-        $orderHistory = $this->orderHistoryFactory->create();
-        $orderHistory
-            ->setOrder($order)
-            ->setState($this->initialOrderHistoryState);
+        $stateLine = $this
+            ->machineManager
+            ->initialize($order, '');
 
-        $order
-            ->addOrderHistory($orderHistory)
-            ->setLastOrderHistory($orderHistory);
+        $stateLine->setOrder($order);
 
         return $order;
     }

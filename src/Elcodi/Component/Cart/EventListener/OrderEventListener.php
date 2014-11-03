@@ -37,9 +37,7 @@ class OrderEventListener
      *
      * @param ObjectManager $orderObjectManager ObjectManager for Order entity
      */
-    public function __construct(
-        ObjectManager $orderObjectManager
-    )
+    public function __construct(ObjectManager $orderObjectManager)
     {
         $this->orderObjectManager = $orderObjectManager;
     }

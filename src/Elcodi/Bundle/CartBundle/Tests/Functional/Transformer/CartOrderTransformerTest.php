@@ -18,8 +18,8 @@ namespace Elcodi\Bundle\CartBundle\Tests\Functional\Transformer;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
-use Elcodi\Component\Cart\Entity\Interfaces\OrderHistoryInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
+use Elcodi\Component\Cart\Entity\Interfaces\OrderStateLineInterface;
 use Elcodi\Component\Cart\Transformer\CartOrderTransformer;
 
 /**
@@ -98,26 +98,31 @@ class CartOrderTransformerTest extends WebTestCase
      */
     public function testCreateOrderFromCart()
     {
-        $orderInitialState = $this
-            ->getParameter('elcodi.core.cart.order_initial_state');
+        $orderStatePointOfEntry = $this
+            ->getParameter('elcodi.core.cart.order_state_transition_machine_point_of_entry');
 
         $this->assertInstanceOf('Elcodi\Component\Cart\Entity\Interfaces\OrderInterface', $this->order);
         $this->assertSame($this->order->getCart(), $this->cart);
         $this->assertTrue($this->cart->isOrdered());
         $this->assertCount(2, $this->order->getOrderLines());
-        $this->assertInstanceOf('Elcodi\Component\Cart\Entity\Interfaces\OrderHistoryInterface', $this->order->getLastOrderHistory());
-        $this->assertEquals($this->order->getLastOrderHistory()->getState(), $orderInitialState);
+        $this->assertInstanceOf(
+            'Elcodi\Component\Cart\Entity\Interfaces\OrderStateLineInterface',
+            $this->order->getLastStateLine()
+        );
 
-        $orderHistories = $this->order->getOrderHistories();
+        $this->assertEquals(
+            $orderStatePointOfEntry,
+            $this
+                ->order
+                ->getLastStateLine()
+                ->getName()
+        );
 
-        /**
-         * @var OrderHistoryInterface $orderHistory
-         */
-        foreach ($orderHistories as $orderHistory) {
+        $orderStateLines = $this
+            ->order
+            ->getStateLines();
 
-            $this->assertInstanceOf('Elcodi\Component\Cart\Entity\Interfaces\OrderHistoryInterface', $orderHistory);
-            $this->assertEquals($orderHistory->getState(), $orderInitialState);
-        }
+        $this->assertCount(1, $orderStateLines);
 
         $this
             ->getObjectManager('order')

@@ -14,34 +14,6 @@ services:
     elcodi.cart_manager:
         alias: elcodi.core.cart.service.cart_manager
 
-    elcodi.core.cart.service.order_manager:
-        class: %elcodi.core.cart.service.order_manager.class%
-        arguments:
-            order_line_manager: @elcodi.core.cart.service.order_line_manager
-            order_state_manager: @elcodi.order_state_manager
-
-    elcodi.order_manager:
-        alias: elcodi.core.cart.service.order_manager
-
-    elcodi.core.cart.service.order_line_manager:
-        class: %elcodi.core.cart.service.order_line_manager.class%
-        arguments:
-            order_line_states_event_dispatcher: @elcodi.order_line_state_event_dispatcher
-            order_line_history_factory: @elcodi.core.cart.factory.order_line_history
-            order_line_factory: @elcodi.core.cart.factory.order_line
-            order_state_manager: @elcodi.order_state_manager
-
-    elcodi.order_line_manager:
-        alias: elcodi.core.cart.service.order_line_manager
-
-    elcodi.core.cart.service.order_state_manager:
-        class: %elcodi.core.cart.service.order_state_manager.class%
-        arguments:
-            order_history_states: %elcodi.core.cart.order_states%
-
-    elcodi.order_state_manager:
-        alias: elcodi.core.cart.service.order_state_manager
-
     elcodi.core.cart.service.cart_session_manager:
         class: %elcodi.core.cart.service.cart_session_manager.class%
         arguments:

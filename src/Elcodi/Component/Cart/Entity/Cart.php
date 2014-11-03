@@ -21,7 +21,6 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
@@ -29,9 +28,16 @@ use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 /**
  * Cart
  */
-class Cart extends AbstractEntity implements CartInterface
+class Cart implements CartInterface
 {
     use DateTimeTrait;
+
+    /**
+     * @var integer
+     *
+     * Identifier
+     */
+    protected $id;
 
     /**
      * @var CustomerInterface
@@ -98,6 +104,30 @@ class Cart extends AbstractEntity implements CartInterface
      * by summing CartLine::$amount
      */
     protected $amount;
+
+    /**
+     * Get Id
+     *
+     * @return int Id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Sets Id
+     *
+     * @param int $id Id
+     *
+     * @return $this Self object
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     /**
      * Return the customer
