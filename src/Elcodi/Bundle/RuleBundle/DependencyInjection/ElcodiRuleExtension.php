@@ -27,14 +27,11 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableE
 class ElcodiRuleExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
     /**
-     * Get the Config file location
+     * @var string
      *
-     * @return string Config file location
+     * Extension name
      */
-    public static function getExtensionName()
-    {
-        return 'elcodi_rule';
-    }
+    const EXTENSION_NAME = 'elcodi_rule';
 
     /**
      * Get the Config file location
@@ -60,7 +57,7 @@ class ElcodiRuleExtension extends AbstractExtension implements EntitiesOverridab
      */
     protected function getConfigurationInstance()
     {
-        return new Configuration();
+        return new Configuration(static::EXTENSION_NAME);
     }
 
     /**
@@ -130,5 +127,15 @@ class ElcodiRuleExtension extends AbstractExtension implements EntitiesOverridab
             'Elcodi\Component\Rule\Entity\Interfaces\RuleGroupInterface' => 'elcodi.core.rule.entity.rule_group.class',
             'Elcodi\Component\Rule\Entity\Interfaces\ExpressionInterface' => 'elcodi.core.rule.entity.expression.class',
         ];
+    }
+
+    /**
+     * Returns the extension alias, same value as extension name
+     *
+     * @return string The alias
+     */
+    public function getAlias()
+    {
+        return static::EXTENSION_NAME;
     }
 }

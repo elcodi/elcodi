@@ -29,14 +29,11 @@ use Elcodi\Component\Geo\Adapter\Populator\GeoDataPopulatorAdapter;
 class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
     /**
-     * Get the Config file location
+     * @var string
      *
-     * @return string Config file location
+     * Extension name
      */
-    public static function getExtensionName()
-    {
-        return 'elcodi_geo';
-    }
+    const EXTENSION_NAME = 'elcodi_geo';
 
     /**
      * Get the Config file location
@@ -62,7 +59,7 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
      */
     protected function getConfigurationInstance()
     {
-        return new Configuration();
+        return new Configuration(static::EXTENSION_NAME);
     }
 
     /**
@@ -201,5 +198,15 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
             'Elcodi\Component\Geo\Entity\Interfaces\ZoneCityMemberInterface' => 'elcodi.core.geo.entity.zone_city_member.class',
             'Elcodi\Component\Geo\Entity\Interfaces\ZonePostalCodeMemberInterface' => 'elcodi.core.geo.entity.zone_postal_code_member.class',
         ];
+    }
+
+    /**
+     * Returns the extension alias, same value as extension name
+     *
+     * @return string The alias
+     */
+    public function getAlias()
+    {
+        return static::EXTENSION_NAME;
     }
 }

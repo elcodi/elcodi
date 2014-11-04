@@ -27,14 +27,11 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableE
 class ElcodiCartExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
     /**
-     * Get the Config file location
+     * @var string
      *
-     * @return string Config file location
+     * Extension name
      */
-    public static function getExtensionName()
-    {
-        return 'elcodi_cart';
-    }
+    const EXTENSION_NAME = 'elcodi_cart';
 
     /**
      * Get the Config file location
@@ -60,7 +57,7 @@ class ElcodiCartExtension extends AbstractExtension implements EntitiesOverridab
      */
     protected function getConfigurationInstance()
     {
-        return new Configuration();
+        return new Configuration(static::EXTENSION_NAME);
     }
 
     /**
@@ -157,5 +154,15 @@ class ElcodiCartExtension extends AbstractExtension implements EntitiesOverridab
             'Elcodi\Component\Cart\Entity\Interfaces\OrderHistoryInterface' => 'elcodi.core.cart.entity.order_history.class',
             'Elcodi\Component\Cart\Entity\Interfaces\OrderLineHistoryInterface' => 'elcodi.core.cart.entity.order_line_history.class',
         ];
+    }
+
+    /**
+     * Returns the extension alias, same value as extension name
+     *
+     * @return string The alias
+     */
+    public function getAlias()
+    {
+        return static::EXTENSION_NAME;
     }
 }

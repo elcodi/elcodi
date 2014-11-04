@@ -17,9 +17,11 @@
 namespace Elcodi\Bundle\ShippingBundle;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 use Elcodi\Bundle\ShippingBundle\CompilerPass\MappingCompilerPass;
+use Elcodi\Bundle\ShippingBundle\DependencyInjection\ElcodiShippingExtension;
 
 /**
  * ElcodiShippingBundle
@@ -34,5 +36,15 @@ class ElcodiShippingBundle extends Bundle
         parent::build($container);
 
         $container->addCompilerPass(new MappingCompilerPass());
+    }
+
+    /**
+     * Returns the bundle's container extension.
+     *
+     * @return ExtensionInterface The container extension
+     */
+    public function getContainerExtension()
+    {
+        return new ElcodiShippingExtension();
     }
 }

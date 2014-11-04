@@ -31,14 +31,11 @@ use Elcodi\Component\Currency\Adapter\LocaleProvider\ElcodiProviderAdapter;
 class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
     /**
-     * Get the Config file location
+     * @var string
      *
-     * @return string Config file location
+     * Extension name
      */
-    public static function getExtensionName()
-    {
-        return 'elcodi_currency';
-    }
+    const EXTENSION_NAME = 'elcodi_currency';
 
     /**
      * Get the Config file location
@@ -64,7 +61,7 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
      */
     protected function getConfigurationInstance()
     {
-        return new Configuration();
+        return new Configuration(static::EXTENSION_NAME);
     }
 
     /**
@@ -158,5 +155,15 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
             'Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface' => 'elcodi.core.currency.entity.currency.class',
             'Elcodi\Component\Currency\Entity\Interfaces\CurrencyExchangeRateInterface' => 'elcodi.core.currency.entity.currency_exchange_rate.class',
         ];
+    }
+
+    /**
+     * Returns the extension alias, same value as extension name
+     *
+     * @return string The alias
+     */
+    public function getAlias()
+    {
+        return static::EXTENSION_NAME;
     }
 }

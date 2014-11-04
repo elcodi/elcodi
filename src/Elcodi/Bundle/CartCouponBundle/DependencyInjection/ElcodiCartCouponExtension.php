@@ -27,14 +27,11 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableE
 class ElcodiCartCouponExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
     /**
-     * Get the Config file location
+     * @var string
      *
-     * @return string Config file location
+     * Extension name
      */
-    public static function getExtensionName()
-    {
-        return 'elcodi_cart_coupon';
-    }
+    const EXTENSION_NAME = 'elcodi_cart_coupon';
 
     /**
      * Get the Config file location
@@ -60,7 +57,7 @@ class ElcodiCartCouponExtension extends AbstractExtension implements EntitiesOve
      */
     protected function getConfigurationInstance()
     {
-        return new Configuration();
+        return new Configuration(static::EXTENSION_NAME);
     }
 
     /**
@@ -133,5 +130,15 @@ class ElcodiCartCouponExtension extends AbstractExtension implements EntitiesOve
             'Elcodi\Component\CartCoupon\Entity\Interfaces\CartCouponInterface' => 'elcodi.core.cart_coupon.entity.cart_coupon.class',
             'Elcodi\Component\CartCoupon\Entity\Interfaces\OrderCouponInterface' => 'elcodi.core.cart_coupon.entity.order_coupon.class',
         ];
+    }
+
+    /**
+     * Returns the extension alias, same value as extension name
+     *
+     * @return string The alias
+     */
+    public function getAlias()
+    {
+        return static::EXTENSION_NAME;
     }
 }

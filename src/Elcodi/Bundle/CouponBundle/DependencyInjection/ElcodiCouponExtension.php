@@ -27,14 +27,11 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableE
 class ElcodiCouponExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
     /**
-     * Get the Config file location
+     * @var string
      *
-     * @return string Config file location
+     * Extension name
      */
-    public static function getExtensionName()
-    {
-        return 'elcodi_coupon';
-    }
+    const EXTENSION_NAME = 'elcodi_coupon';
 
     /**
      * Get the Config file location
@@ -60,7 +57,7 @@ class ElcodiCouponExtension extends AbstractExtension implements EntitiesOverrid
      */
     protected function getConfigurationInstance()
     {
-        return new Configuration();
+        return new Configuration(static::EXTENSION_NAME);
     }
 
     /**
@@ -118,5 +115,15 @@ class ElcodiCouponExtension extends AbstractExtension implements EntitiesOverrid
         return [
             'Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface' => 'elcodi.core.coupon.entity.coupon.class',
         ];
+    }
+
+    /**
+     * Returns the extension alias, same value as extension name
+     *
+     * @return string The alias
+     */
+    public function getAlias()
+    {
+        return static::EXTENSION_NAME;
     }
 }

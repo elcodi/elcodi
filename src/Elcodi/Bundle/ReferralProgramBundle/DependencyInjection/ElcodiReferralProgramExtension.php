@@ -27,14 +27,11 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableE
 class ElcodiReferralProgramExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
     /**
-     * Get the Config file location
+     * @var string
      *
-     * @return string Config file location
+     * Extension name
      */
-    public static function getExtensionName()
-    {
-        return 'elcodi_referral_program';
-    }
+    const EXTENSION_NAME = 'elcodi_referral_program';
 
     /**
      * Get the Config file location
@@ -60,7 +57,7 @@ class ElcodiReferralProgramExtension extends AbstractExtension implements Entiti
      */
     protected function getConfigurationInstance()
     {
-        return new Configuration();
+        return new Configuration(static::EXTENSION_NAME);
     }
 
     /**
@@ -136,5 +133,15 @@ class ElcodiReferralProgramExtension extends AbstractExtension implements Entiti
             'Elcodi\Component\ReferralProgram\Entity\Interfaces\ReferralLineInterface' => 'elcodi.core.referral_program.entity.referral_line.class',
             'Elcodi\Component\ReferralProgram\Entity\Interfaces\ReferralRuleInterface' => 'elcodi.core.referral_program.entity.referral_rule.class',
         ];
+    }
+
+    /**
+     * Returns the extension alias, same value as extension name
+     *
+     * @return string The alias
+     */
+    public function getAlias()
+    {
+        return static::EXTENSION_NAME;
     }
 }

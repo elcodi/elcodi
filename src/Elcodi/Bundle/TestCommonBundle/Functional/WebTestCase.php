@@ -71,6 +71,7 @@ abstract class WebTestCase extends BaseWebTestCase
             $this->container = static::$kernel->getContainer();
 
         } catch (Exception $e) {
+
             throw new RuntimeException(sprintf('Unable to start the application: %s', $e->getMessage()));
         }
 

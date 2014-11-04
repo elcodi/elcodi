@@ -27,14 +27,11 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableE
 class ElcodiShippingExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
     /**
-     * Get the Config file location
+     * @var string
      *
-     * @return string Config file location
+     * Extension name
      */
-    public static function getExtensionName()
-    {
-        return 'elcodi_shipping';
-    }
+    const EXTENSION_NAME = 'elcodi_shipping';
 
     /**
      * Get the Config file location
@@ -60,7 +57,7 @@ class ElcodiShippingExtension extends AbstractExtension implements EntitiesOverr
      */
     protected function getConfigurationInstance()
     {
-        return new Configuration();
+        return new Configuration(static::EXTENSION_NAME);
     }
 
     /**
@@ -139,5 +136,15 @@ class ElcodiShippingExtension extends AbstractExtension implements EntitiesOverr
             'Elcodi\Component\Shipping\Entity\Interfaces\CarrierWeightInterface' => 'elcodi.core.shipping.entity.carrier_weight_range.class',
             'Elcodi\Component\Shipping\Entity\Interfaces\WarehouseInterface' => 'elcodi.core.shipping.entity.warehouse.class',
         ];
+    }
+
+    /**
+     * Returns the extension alias, same value as extension name
+     *
+     * @return string The alias
+     */
+    public function getAlias()
+    {
+        return static::EXTENSION_NAME;
     }
 }

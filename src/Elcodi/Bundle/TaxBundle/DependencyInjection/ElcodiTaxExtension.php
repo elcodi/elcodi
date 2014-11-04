@@ -27,14 +27,11 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableE
 class ElcodiTaxExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
     /**
-     * Get the Config file location
+     * @var string
      *
-     * @return string Config file location
+     * Extension name
      */
-    public static function getExtensionName()
-    {
-        return 'elcodi_tax';
-    }
+    const EXTENSION_NAME = 'elcodi_tax';
 
     /**
      * Get the Config file location
@@ -60,7 +57,7 @@ class ElcodiTaxExtension extends AbstractExtension implements EntitiesOverridabl
      */
     protected function getConfigurationInstance()
     {
-        return new Configuration();
+        return new Configuration(static::EXTENSION_NAME);
     }
 
     /**
@@ -117,5 +114,15 @@ class ElcodiTaxExtension extends AbstractExtension implements EntitiesOverridabl
             'Elcodi\Component\Tax\Entity\Interfaces\TaxInterface' => 'elcodi.core.tax.entity.tax.class',
             'Elcodi\Component\Tax\Entity\Interfaces\TaxGroupInterface' => 'elcodi.core.tax.entity.tax_group.class',
         ];
+    }
+
+    /**
+     * Returns the extension alias, same value as extension name
+     *
+     * @return string The alias
+     */
+    public function getAlias()
+    {
+        return static::EXTENSION_NAME;
     }
 }

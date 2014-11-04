@@ -29,14 +29,11 @@ use Elcodi\Component\Comment\Adapter\Parser\MarkdownParserAdapter;
 class ElcodiCommentExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
     /**
-     * Get the Config file location
+     * @var string
      *
-     * @return string Config file location
+     * Extension name
      */
-    public static function getExtensionName()
-    {
-        return 'elcodi_comment';
-    }
+    const EXTENSION_NAME = 'elcodi_comment';
 
     /**
      * Get the Config file location
@@ -62,7 +59,7 @@ class ElcodiCommentExtension extends AbstractExtension implements EntitiesOverri
      */
     protected function getConfigurationInstance()
     {
-        return new Configuration();
+        return new Configuration(static::EXTENSION_NAME);
     }
 
     /**
@@ -135,5 +132,28 @@ class ElcodiCommentExtension extends AbstractExtension implements EntitiesOverri
             'Elcodi\Component\Comment\Entity\Interfaces\CommentInterface' => 'elcodi.core.comment.entity.comment.class',
             'Elcodi\Component\Comment\Entity\Interfaces\VoteInterface' => 'elcodi.core.comment.entity.vote.class',
         ];
+    }
+
+    /**
+     * Returns the recommended alias to use in XML.
+     *
+     * This alias is also the mandatory prefix to use when using YAML.
+     *
+     * This convention is to remove the "Extension" postfix from the class
+     * name and then lowercase and underscore the result. So:
+     *
+     *     AcmeHelloExtension
+     *
+     * becomes
+     *
+     *     acme_hello
+     *
+     * This can be overridden in a sub-class to specify the alias manually.
+     *
+     * @return string The alias
+     */
+    public function getAlias()
+    {
+        return static::EXTENSION_NAME;
     }
 }

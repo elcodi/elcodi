@@ -25,6 +25,23 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 class AbstractConfiguration
 {
     /**
+     * @var string
+     *
+     * Extension name
+     */
+    protected $extensionName;
+
+    /**
+     * Construct method
+     *
+     * @var string $extensionName Extension name
+     */
+    public function __construct($extensionName)
+    {
+        $this->extensionName = $extensionName;
+    }
+
+    /**
      * Add a mapping node into configuration
      *
      * @param string  $nodeName          Node name
@@ -62,7 +79,7 @@ class AbstractConfiguration
                     ->cannotBeEmpty()
                 ->end()
                 ->booleanNode('enabled')
-                    ->defaultValue(true)
+                    ->defaultValue($entityEnabled)
                     ->cannotBeEmpty()
                 ->end()
             ->end()

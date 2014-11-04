@@ -24,14 +24,11 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 class ElcodiCoreExtension extends AbstractExtension
 {
     /**
-     * Get the Config file location
+     * @var string
      *
-     * @return string Config file location
+     * Extension name
      */
-    public static function getExtensionName()
-    {
-        return 'elcodi_core';
-    }
+    const EXTENSION_NAME = 'elcodi_core';
 
     /**
      * Get the Config file location
@@ -59,5 +56,15 @@ class ElcodiCoreExtension extends AbstractExtension
             'generators',
             'encoders',
         ];
+    }
+
+    /**
+     * Returns the extension alias, same value as extension name
+     *
+     * @return string The alias
+     */
+    public function getAlias()
+    {
+        return static::EXTENSION_NAME;
     }
 }
