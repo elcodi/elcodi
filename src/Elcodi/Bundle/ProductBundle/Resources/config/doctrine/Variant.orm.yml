@@ -55,6 +55,7 @@ Elcodi\Component\Product\Entity\Variant:
     manyToOne:
         product:
             targetEntity: Elcodi\Component\Product\Entity\Interfaces\ProductInterface
+            fetch: EAGER
             inversedBy: variants
             joinColumn:
                 name: product_id

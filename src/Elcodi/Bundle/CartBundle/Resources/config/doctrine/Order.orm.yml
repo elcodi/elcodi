@@ -89,7 +89,7 @@ Elcodi\Component\Cart\Entity\Order:
             joinColumn:
                  name: coupon_currency_id
                  referencedColumnName: id
-                 nullable: false
+                 nullable: true
     oneToMany:
         orderLines:
             targetEntity: Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface

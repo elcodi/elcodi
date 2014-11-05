@@ -104,6 +104,7 @@ Elcodi\Component\Product\Entity\Product:
                 nullable: true
         principalVariant:
             targetEntity: Elcodi\Component\Product\Entity\Interfaces\VariantInterface
+            fetch: EAGER
             joinColumn:
                 name: principal_variant_id
                 referencedColumnName: id

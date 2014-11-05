@@ -117,7 +117,6 @@ class CartOrderTransformer
             ->setCart($cart)
             ->setQuantity($cart->getQuantity())
             ->setProductAmount($cart->getProductAmount())
-            ->setCouponAmount($cart->getCouponAmount())
             ->setAmount($cart->getAmount())
             ->setHeight($cart->getHeight())
             ->setWidth($cart->getWidth())
