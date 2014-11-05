@@ -4,7 +4,7 @@ services:
     # Providers
     #
     elcodi.container_parameters:
-        class: Symfony\Component\DependencyInjection\ParameterBag\ParameterBag
+        class: %elcodi.container_parameters.class%
         factory_service: service_container
         factory_method: getParameterBag
 
