@@ -127,6 +127,7 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
             ->setCustomer($customer)
             ->setQuantity(10)
             ->setProductAmount(Money::create(20, $currency))
+            ->setCouponAmount(Money::create(0, $currency))
             ->setAmount(Money::create(20, $currency))
             ->setCartLines(new ArrayCollection());
 
@@ -168,6 +169,7 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
             ->setCustomer($customer)
             ->setQuantity(10)
             ->setProductAmount(Money::create(20, $currency))
+            ->setCouponAmount(Money::create(0, $currency))
             ->setOrder($order)
             ->setAmount(Money::create(20, $currency))
             ->setCartLines(new ArrayCollection());
@@ -220,6 +222,11 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
             ->expects($this->any())
             ->method('getProductAmount')
             ->will($this->returnValue(Money::create(10, $currency)));
+
+        $cart
+            ->expects($this->any())
+            ->method('getCouponAmount')
+            ->will($this->returnValue(Money::create(0, $currency)));
 
         $cart
             ->expects($this->any())
