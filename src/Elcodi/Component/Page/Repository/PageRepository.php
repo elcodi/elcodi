@@ -24,7 +24,7 @@ class PageRepository extends EntityRepository implements RoutableRepositoryInter
 {
     public function findOneByPath($path)
     {
-        return parent::findBy(array(
+        return parent::findOneBy(array(
             'path' => $path,
         ));
     }
