@@ -22,11 +22,15 @@ namespace Elcodi\Component\Page\Entity\Interfaces;
 interface RoutableInterface
 {
     /**
+     * Get the path
+     *
      * @return string
      */
     public function getPath();
 
     /**
+     * Set the path
+     *
      * @param string $path
      */
     public function setPath($path);

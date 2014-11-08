@@ -32,21 +32,29 @@ class Page implements RoutableInterface
         EnabledTrait;
 
     /**
+     * The path
+     *
      * @var string
      */
     protected $path;
 
     /**
+     * The title
+     *
      * @var string
      */
     protected $title;
 
     /**
+     * The content
+     *
      * @var string
      */
     protected $content;
 
     /**
+     * Get the path
+     *
      * @return string
      */
     public function getPath()
@@ -55,6 +63,8 @@ class Page implements RoutableInterface
     }
 
     /**
+     * Set the path
+     *
      * @param  string $path
      * @return $this
      */
@@ -66,6 +76,8 @@ class Page implements RoutableInterface
     }
 
     /**
+     * Get the content
+     *
      * @return string
      */
     public function getContent()
@@ -74,6 +86,8 @@ class Page implements RoutableInterface
     }
 
     /**
+     * Set the content
+     *
      * @param  string $content
      * @return $this
      */
@@ -85,6 +99,8 @@ class Page implements RoutableInterface
     }
 
     /**
+     * Get the title
+     *
      * @return string
      */
     public function getTitle()
@@ -93,6 +109,8 @@ class Page implements RoutableInterface
     }
 
     /**
+     * Set the title
+     *
      * @param  string $title
      * @return $this
      */
