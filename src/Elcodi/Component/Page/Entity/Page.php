@@ -65,8 +65,9 @@ class Page implements RoutableInterface
     /**
      * Set the path
      *
-     * @param  string $path
-     * @return $this
+     * @param string $path The path
+     *
+     * @return $this Self object
      */
     public function setPath($path)
     {
@@ -88,8 +89,9 @@ class Page implements RoutableInterface
     /**
      * Set the content
      *
-     * @param  string $content
-     * @return $this
+     * @param string $content The content
+     *
+     * @return $this Self object
      */
     public function setContent($content)
     {
@@ -111,8 +113,9 @@ class Page implements RoutableInterface
     /**
      * Set the title
      *
-     * @param  string $title
-     * @return $this
+     * @param string $title The title
+     *
+     * @return $this Self object
      */
     public function setTitle($title)
     {

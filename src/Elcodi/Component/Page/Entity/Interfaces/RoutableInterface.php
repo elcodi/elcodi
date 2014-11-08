@@ -31,7 +31,9 @@ interface RoutableInterface
     /**
      * Set the path
      *
-     * @param string $path
+     * @param string $path The path
+     *
+     * @return $this Self Object
      */
     public function setPath($path);
 }
