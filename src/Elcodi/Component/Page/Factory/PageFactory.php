@@ -16,14 +16,23 @@
 
 namespace Elcodi\Component\Page\Factory;
 
-use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Page\Entity\Page;
 
 /**
  * Class PageFactory
+ *
+ * @author Cayetano Soriano <neoshadybeat@gmail.com>
+ * @author Jordi Grados <planetzombies@gmail.com>
+ * @author Damien Gavard <damien.gavard@gmail.com>
  */
-class PageFactory extends AbstractFactory
+class PageFactory
 {
+    /**
+     * @var string
+     *
+     * Entity namespace
+     */
+    protected $entityNamespace = 'Elcodi\Component\Page\Entity\Page';
 
     /**
      * Creates an instance of an entity.
@@ -33,17 +42,22 @@ class PageFactory extends AbstractFactory
      * This method must always returns an empty instance of the related Entity
      * and initializes it in a consistent state
      *
-     * @return Page Empty entity
+     * @param string $title   The title
+     * @param string $content The content
+     * @param string $path    The path
+     *
+     * @return Page entity
      */
-    public function create()
+    public function create($title, $content, $path)
     {
         /**
          * @var Page $page
          */
-        $classNamespace = $this->getEntityNamespace();
-        $page = new $classNamespace();
+        $page = new $this->entityNamespace();
         $page
-            ->setPath("");
+            ->setTitle($title)
+            ->setContent($content)
+            ->setPath($path);
 
         return $page;
     }

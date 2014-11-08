@@ -17,27 +17,25 @@
 namespace Elcodi\Component\Page\Entity\Interfaces;
 
 /**
- * Interface RoutableInterface
+ * Interface PageInterface
  *
  * @author Cayetano Soriano <neoshadybeat@gmail.com>
  * @author Jordi Grados <planetzombies@gmail.com>
  * @author Damien Gavard <damien.gavard@gmail.com>
  */
-interface RoutableInterface
+interface PageInterface extends RoutableInterface
 {
     /**
-     * Get the path
+     * Get the title
      *
      * @return string
      */
-    public function getPath();
+    public function getTitle();
 
     /**
-     * Set the path
+     * Get the content
      *
-     * @param string $path The path
-     *
-     * @return $this Self Object
+     * @return string
      */
-    public function setPath($path);
+    public function getContent();
 }
