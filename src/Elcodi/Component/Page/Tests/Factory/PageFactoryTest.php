@@ -14,30 +14,25 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Component\Page\Entity\Interfaces;
+namespace Elcodi\Component\Page\Tests\Factory;
+
+use Elcodi\Component\Page\Factory\PageFactory;
 
 /**
- * Interface RoutableInterface
+ * Class PageFactoryTest
  *
  * @author Cayetano Soriano <neoshadybeat@gmail.com>
  * @author Jordi Grados <planetzombies@gmail.com>
  * @author Damien Gavard <damien.gavard@gmail.com>
  */
-interface RoutableInterface
+class PageFactoryTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * Get the path
-     *
-     * @return string
-     */
-    public function getPath();
+    public function testCreateReturnAPage()
+    {
+        $factory = new PageFactory();
 
-    /**
-     * Set the path
-     *
-     * @param string $path The path
-     *
-     * @return $this Self Object
-     */
-    public function setPath($path);
+        $result = $factory->create("A title", "Some conent", "/the-path");
+
+        $this->assertInstanceOf('Elcodi\Component\Page\Entity\Interfaces\PageInterface', $result);
+    }
 }
