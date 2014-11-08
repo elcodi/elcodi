@@ -29,6 +29,16 @@ class Router implements RouterInterface
      */
     protected $repository;
 
+    /**
+     * @var RendererInterface
+     */
+    protected $renderer;
+
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
     public function handleRequest(Request $request)
     {
         /**
@@ -36,6 +46,20 @@ class Router implements RouterInterface
          */
         $routable = $this->repository->findOneByPath($request->getUri());
 
-        return $routable;
+        if ($routable instanceof RoutableInterface) {
+
+            return $this->render($routable);
+        }
+    }
+
+    /**
+     * @param RoutableInterface $routable
+     * @return Response
+     */
+    public function render(RoutableInterface $routable)
+    {
+        $content = $this->renderer->render($routable);
+
+        return new Response($content);
     }
 }
