@@ -22,6 +22,9 @@ namespace Elcodi\Component\Page\Entity\Interfaces;
  * @author Cayetano Soriano <neoshadybeat@gmail.com>
  * @author Jordi Grados <planetzombies@gmail.com>
  * @author Damien Gavard <damien.gavard@gmail.com>
+ * @author Jonas HAOUZI <haouzijonas@gmail.com>
+ * @author Àlex Corretgé <alex@corretge.cat>
+ * @author Berny Cantos <be@rny.cc>
  */
 interface RoutableInterface
 {

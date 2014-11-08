@@ -17,8 +17,21 @@
 namespace Elcodi\Component\Page\Services\Interfaces;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Interface RouterInterface
+ *
+ * @author Jonas HAOUZI <haouzijonas@gmail.com>
+ * @author Àlex Corretgé <alex@corretge.cat>
+ * @author Berny Cantos <be@rny.cc>
+ */
 interface RouterInterface
 {
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
     public function handleRequest(Request $request);
 }

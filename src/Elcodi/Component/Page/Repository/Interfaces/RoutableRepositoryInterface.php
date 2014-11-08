@@ -16,7 +16,21 @@
 
 namespace Elcodi\Component\Page\Repository\Interfaces;
 
+use Elcodi\Component\Page\Entity\Interfaces\RoutableInterface;
+
+/**
+ * Interface RoutableRepositoryInterface
+ *
+ * @author Jonas HAOUZI <haouzijonas@gmail.com>
+ * @author Àlex Corretgé <alex@corretge.cat>
+ * @author Berny Cantos <be@rny.cc>
+ */
 interface RoutableRepositoryInterface
 {
+    /**
+     * @param string $path
+     *
+     * @return RoutableInterface
+     */
     public function findOneByPath($path);
 }

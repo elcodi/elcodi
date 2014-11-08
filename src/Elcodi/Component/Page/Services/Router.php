@@ -17,11 +17,19 @@
 namespace Elcodi\Component\Page\Services;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 use Elcodi\Component\Page\Entity\Interfaces\RoutableInterface;
 use Elcodi\Component\Page\Repository\Interfaces\RoutableRepositoryInterface;
 use Elcodi\Component\Page\Services\Interfaces\RouterInterface;
 
+/**
+ * Class Router
+ *
+ * @author Jonas HAOUZI <haouzijonas@gmail.com>
+ * @author Àlex Corretgé <alex@corretge.cat>
+ * @author Berny Cantos <be@rny.cc>
+ */
 class Router implements RouterInterface
 {
     /**
@@ -41,9 +49,6 @@ class Router implements RouterInterface
      */
     public function handleRequest(Request $request)
     {
-        /**
-         * @var RoutableInterface
-         */
         $routable = $this->repository->findOneByPath($request->getUri());
 
         if ($routable instanceof RoutableInterface) {
