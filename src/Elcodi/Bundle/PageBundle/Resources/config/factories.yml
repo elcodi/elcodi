@@ -1,0 +1,14 @@
+services:
+
+    #
+    # Factories
+    #
+
+    #
+    # Factory for entity page
+    #
+    elcodi.core.page.factory.page:
+        class: %elcodi.core.page.factory.page.class%
+
+    elcodi.factory.page:
+        alias: elcodi.core.page.factory.page

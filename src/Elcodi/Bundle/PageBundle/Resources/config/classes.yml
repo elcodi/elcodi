@@ -1,0 +1,12 @@
+parameters:
+
+    #
+    # Repositories
+    #
+    elcodi.core.page.repository.page.class: Elcodi\Component\Page\Repository\PageRepository
+
+    #
+    # Factories
+    #
+    elcodi.core.page.factory.page.class: Elcodi\Component\Page\Factory\PageFactory
+

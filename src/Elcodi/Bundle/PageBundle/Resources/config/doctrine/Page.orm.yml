@@ -1,0 +1,52 @@
+Elcodi\Component\Page\Entity\Page:
+    type: entity
+    repositoryClass: Elcodi\Component\Page\Repository\PageRepository
+    table: page
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            column: title
+            type: string
+            length: 255
+            nullable: false
+        content:
+            column: content
+            type: text
+            nullable: false
+        path:
+            column: path
+            type: string
+            length: 255
+            nullable: false
+        metaTitle:
+            column: meta_title
+            type: string
+            length: 255
+            nullable: true
+        metaDescription:
+            column: meta_description
+            type: string
+            length: 255
+            nullable: true
+        metaKeywords:
+            column: meta_keywords
+            type: string
+            length: 255
+            nullable: true
+        createdAt:
+            column: created_at
+            type: datetime
+        updatedAt:
+            column: updated_at
+            type: datetime
+        enabled:
+            column: enabled
+            type: boolean
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]
