@@ -16,6 +16,10 @@
 
 namespace Elcodi\Component\Page\Entity\Interfaces;
 
+use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
+use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
+use Elcodi\Component\MetaData\Entity\Interfaces\MetaDataInterface;
+
 /**
  * Interface PageInterface
  *
@@ -23,7 +27,7 @@ namespace Elcodi\Component\Page\Entity\Interfaces;
  * @author Jordi Grados <planetzombies@gmail.com>
  * @author Damien Gavard <damien.gavard@gmail.com>
  */
-interface PageInterface extends RoutableInterface
+interface PageInterface extends MetaDataInterface, DateTimeInterface, EnabledInterface, RoutableInterface
 {
     /**
      * Get the title
