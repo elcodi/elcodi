@@ -24,15 +24,19 @@ use Elcodi\Component\Page\Factory\PageFactory;
  * @author Cayetano Soriano <neoshadybeat@gmail.com>
  * @author Jordi Grados <planetzombies@gmail.com>
  * @author Damien Gavard <damien.gavard@gmail.com>
+ * @author Berny Cantos <be@rny.cc>
  */
 class PageFactoryTest extends \PHPUnit_Framework_TestCase
 {
     public function testCreateReturnAPage()
     {
+        $entityName = 'Elcodi\Component\Page\Entity\Page';
+
         $factory = new PageFactory();
+        $factory->setEntityNamespace($entityName);
 
-        $result = $factory->create("A title", "Some conent", "/the-path");
+        $result = $factory->create();
 
-        $this->assertInstanceOf('Elcodi\Component\Page\Entity\Interfaces\PageInterface', $result);
+        $this->assertInstanceOf($entityName, $result);
     }
 }
