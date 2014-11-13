@@ -9,3 +9,4 @@ Elcodi is the result of the work of many people who made the code better
 * Pascal Borreli ([@pborreli](https://github.com/pborreli))
 * Eduardo Gualias ([@egulias](https://github.com/egulias))
 * Carles Climent ([@carlescliment](https://github.com/carlescliment))
+* Berny Cantos ([@xphere](https://github.com/xphere))
