@@ -65,7 +65,7 @@ class MenuManager extends AbstractCacheWrapper
     }
 
     /**
-     * Load menu hidration given the code.
+     * Load menu hydration given the code.
      *
      * If the menu is already loaded in local variable, return it.
      * Otherwise, if is saved into cache, load it and save it locally
@@ -83,11 +83,11 @@ class MenuManager extends AbstractCacheWrapper
             return $this->menus[$key];
         }
 
-        $menuHidrated = $this
+        $menuHydrated = $this
             ->encoder
             ->decode($this->cache->fetch($key));
 
-        if (empty($menuHidrated)) {
+        if (empty($menuHydrated)) {
 
             $menu = $this
                 ->menuRepository
@@ -100,42 +100,42 @@ class MenuManager extends AbstractCacheWrapper
                 return null;
             }
 
-            $menuHidrated = $this->loadSubnodes($menu);
+            $menuHydrated = $this->loadSubnodes($menu);
 
             $this
                 ->cache
-                ->save($key, $this->encoder->encode($menuHidrated));
+                ->save($key, $this->encoder->encode($menuHydrated));
         }
 
-        $this->menus[$key] = $menuHidrated;
+        $this->menus[$key] = $menuHydrated;
 
-        return $menuHidrated;
+        return $menuHydrated;
     }
 
     /**
-     * Given a subnodes wrapper, load all subnodes and return their hidration
+     * Given a subnodes wrapper, load all subnodes and return their hydration
      *
      * @param SubnodesAwareInterface $node Node
      *
-     * @return array Nodes hidrated
+     * @return array Nodes hydrated
      */
     protected function loadSubnodes(SubnodesAwareInterface $node)
     {
-        $subnodesHidrated = [];
+        $subnodesHydrated = [];
 
         $node
             ->getSubnodes()
-            ->map(function (NodeInterface $node) use (&$subnodesHidrated) {
+            ->map(function (NodeInterface $node) use (&$subnodesHydrated) {
 
                 $subnodeId = $node->getId();
-                $subnodesHidrated[$subnodeId] = $this->hidrateNode($node);
+                $subnodesHydrated[$subnodeId] = $this->hydrateNode($node);
             });
 
-        return $subnodesHidrated;
+        return $subnodesHydrated;
     }
 
     /**
-     * buld menu key
+     * build menu key
      *
      * @param string $key      Key
      * @param string $menuCode Menu code
@@ -148,13 +148,13 @@ class MenuManager extends AbstractCacheWrapper
     }
 
     /**
-     * Generate node hidration
+     * Generate node hydration
      *
      * @param NodeInterface $node Node
      *
-     * @return array Node hidrated
+     * @return array Node hydrated
      */
-    public function hidrateNode(NodeInterface $node)
+    public function hydrateNode(NodeInterface $node)
     {
         return [
             'id'       => $node->getId(),

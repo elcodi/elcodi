@@ -28,7 +28,7 @@ class ElcodiCouponTypes
     /**
      * @var int
      *
-     * Cupon type absolute amount
+     * Coupon type absolute amount
      */
     const TYPE_AMOUNT = 1;
 

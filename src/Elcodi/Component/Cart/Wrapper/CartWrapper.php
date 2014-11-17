@@ -129,7 +129,7 @@ class CartWrapper
      * If this does not exists nor the id is not valid, a new cart is created
      * using Cart factory
      *
-     * This behavior can be overriden just overwritting the wrapper
+     * This behavior can be overridden just overwriting the wrapper
      *
      * @return CartInterface Instance of Cart loaded
      */

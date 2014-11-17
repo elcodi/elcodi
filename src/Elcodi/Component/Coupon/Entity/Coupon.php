@@ -127,7 +127,7 @@ class Coupon extends AbstractEntity implements CouponInterface
     /**
      * @var CurrencyInterface
      *
-     * Minumum purchase currency
+     * Minimum purchase currency
      */
     protected $minimumPurchaseCurrency;
 

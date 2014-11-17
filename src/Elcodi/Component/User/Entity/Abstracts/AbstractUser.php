@@ -327,7 +327,7 @@ abstract class AbstractUser extends AbstractEntity implements AbstractUserInterf
      *
      * @return string
      */
-    public function __tostring()
+    public function __toString()
     {
         return $this->getFullName();
     }

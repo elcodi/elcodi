@@ -73,7 +73,7 @@ class CurrencyWrapper
     }
 
     /**
-     * Gets currenc Currency
+     * Gets Currency
      *
      * @return CurrencyInterface Instance of Cart loaded
      */

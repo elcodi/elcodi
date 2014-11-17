@@ -46,7 +46,7 @@ class ProductCollectionProvider
 
     /**
      * Get products that can be shown in Home.
-     * All products returned are actived and none deleted
+     * All products returned are activated and none deleted
      *
      * @param integer $limit Product limit. By default, this value is 0
      *
@@ -79,7 +79,7 @@ class ProductCollectionProvider
 
     /**
      * Get products with price reduction.
-     * All products returned are actived and none deleted
+     * All products returned are activated and none deleted
      *
      * @param integer $limit Product limit. By default, this value is 0
      *

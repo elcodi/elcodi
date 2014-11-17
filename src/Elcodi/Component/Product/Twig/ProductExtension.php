@@ -57,7 +57,7 @@ class ProductExtension extends Twig_Extension
     }
 
     /**
-     * Returns a homan readable name for a purchasable, whether Product or Variant
+     * Returns a human readable name for a purchasable, whether Product or Variant
      *
      * @param PurchasableInterface $purchasable Purchasable to get name from
      * @param string               $separator   Separator string for product variant options

@@ -190,7 +190,7 @@ interface ProductInterface
     public function setManufacturer(ManufacturerInterface $manufacturer = null);
 
     /**
-     * Product manufacuter
+     * Product manufacturer
      *
      * @return ManufacturerInterface Manufacturer
      */

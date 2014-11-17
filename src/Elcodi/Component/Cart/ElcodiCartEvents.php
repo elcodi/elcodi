@@ -46,7 +46,7 @@ class ElcodiCartEvents
     const CART_ONEMPTY = 'cart.onempty';
 
     /**
-     * This event is dispatched when an inconsistente is found in a cart
+     * This event is dispatched when an inconsistency is found in a cart
      *
      * event.name : cart.inconsistent
      * event.class : CartInconsistentEvent

@@ -31,7 +31,7 @@ abstract class AbstractEventDispatcher
     protected $eventDispatcher;
 
     /**
-     * Contstruct method
+     * Construct method
      *
      * @param EventDispatcherInterface $eventDispatcher Event Dispatcher
      */
