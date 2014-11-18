@@ -93,7 +93,7 @@ class VariantTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests that addind an option to a Variant with no
+     * Tests that adding an option to a Variant with no
      * configured parent Product throws a LogicException
      *
      * @expectedException \LogicException

@@ -22,7 +22,7 @@ use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 /**
  * Interface PurchasableResolverInterface
  *
- * A purchasable resolver allows an object in the AbstracLine
+ * A purchasable resolver allows an object in the AbstractLine
  * class hierarchy to specify the concrete logic to recognize
  * the actual type of a purchasable and to act on the AbstractLine
  * accordingly.

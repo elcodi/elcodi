@@ -60,7 +60,7 @@ class AuthenticationSuccessEventListener
     /**
      * Assign the Cart stored in session to the logged Customer.
      *
-     * When a user has succesfully logged in, a check is needed
+     * When a user has successfully logged in, a check is needed
      * to see if a Cart was created in session when she was not
      * logged.
      *

@@ -94,7 +94,7 @@ class GeoPopulateCommand extends Command
         $output->writeln('');
         $output->writeln('<header>[Geo]</header> <body>Populating your database with ' . $country . ' fixtures</body>');
         $output->writeln('<header>[Geo]</header> <body>This process may take a few minutes. Please, be patient</body>');
-        $output->writeln('<header>[Geo]</header> <body>Proces started...</body>');
+        $output->writeln('<header>[Geo]</header> <body>Process started...</body>');
 
         $this
             ->geoPopulator
@@ -104,6 +104,6 @@ class GeoPopulateCommand extends Command
                 $reloadSource
             );
 
-        $output->writeln('<header>[Geo]</header> <body>Proces finished. Please checkout your database</body>');
+        $output->writeln('<header>[Geo]</header> <body>Process finished. Please checkout your database</body>');
     }
 }

@@ -64,7 +64,7 @@ interface MoneyInterface
      *
      * @param MoneyInterface $other
      *
-     * @return integer|null Comparation value
+     * @return integer|null Comparison value
      */
     public function compareTo(MoneyInterface $other);
 

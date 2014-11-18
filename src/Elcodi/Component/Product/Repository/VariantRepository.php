@@ -28,11 +28,11 @@ use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
 class VariantRepository extends EntityRepository
 {
     /**
-     * Given a Product and an array of integer representing the IDs of a Value Entitiy,
+     * Given a Product and an array of integer representing the IDs of a Value Entity,
      * returns the Variant that is associated with the options matching the IDs, if any
      *
      * @param ProductInterface $product to compare Variants from
-     * @param $optionsSearchedIds array containng IDs of the options to match
+     * @param $optionsSearchedIds array containing IDs of the options to match
      *
      * @return VariantInterface|null Variant if found, or null if not
      */

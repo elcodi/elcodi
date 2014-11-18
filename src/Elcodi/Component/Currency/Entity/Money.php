@@ -140,7 +140,7 @@ class Money extends StubMoney implements MoneyInterface
      *
      * @param MoneyInterface $other
      *
-     * @return integer Comparation value
+     * @return integer Comparison value
      */
     public function compareTo(MoneyInterface $other)
     {
