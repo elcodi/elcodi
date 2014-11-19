@@ -44,6 +44,16 @@ class Router implements RouterInterface
     protected $renderer;
 
     /**
+     * @param PageRepositoryInterface $repository
+     * @param RendererInterface $renderer
+     */
+    public function __construct(PageRepositoryInterface $repository, RendererInterface $renderer)
+    {
+        $this->repository = $repository;
+        $this->renderer = $renderer;
+    }
+
+    /**
      * @param Request $request
      *
      * @return Response
