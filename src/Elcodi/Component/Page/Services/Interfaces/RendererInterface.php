@@ -16,6 +16,8 @@
 
 namespace Elcodi\Component\Page\Services\Interfaces;
 
+use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
+
 /**
  * Interface RendererInterface
  *
@@ -26,9 +28,9 @@ namespace Elcodi\Component\Page\Services\Interfaces;
 interface RendererInterface
 {
     /**
-     * @param mixed $content
+     * @param PageInterface $content
      *
      * @return string
      */
-    public function render($content);
+    public function render(PageInterface $content);
 }

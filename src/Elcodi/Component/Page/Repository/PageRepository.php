@@ -18,8 +18,8 @@ namespace Elcodi\Component\Page\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
-use Elcodi\Component\Page\Entity\Interfaces\RoutableInterface;
-use Elcodi\Component\Page\Repository\Interfaces\RoutableRepositoryInterface;
+use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
+use Elcodi\Component\Page\Repository\Interfaces\PageRepositoryInterface;
 
 /**
  * Class PageRepository
@@ -28,11 +28,21 @@ use Elcodi\Component\Page\Repository\Interfaces\RoutableRepositoryInterface;
  * @author Àlex Corretgé <alex@corretge.cat>
  * @author Berny Cantos <be@rny.cc>
  */
-class PageRepository extends EntityRepository implements RoutableRepositoryInterface
+class PageRepository extends EntityRepository implements PageRepositoryInterface
 {
     /**
+     * @param mixed $id
+     *
+     * @return PageInterface
+     */
+    public function findOneById($id)
+    {
+        return parent::find($id);
+    }
+
+    /**
      * @param string $path
-     * @return RoutableInterface
+     * @return PageInterface
      */
     public function findOneByPath($path)
     {

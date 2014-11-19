@@ -16,21 +16,28 @@
 
 namespace Elcodi\Component\Page\Repository\Interfaces;
 
-use Elcodi\Component\Page\Entity\Interfaces\RoutableInterface;
+use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
 
 /**
- * Interface RoutableRepositoryInterface
+ * Interface PageRepositoryInterface
  *
  * @author Jonas HAOUZI <haouzijonas@gmail.com>
  * @author Àlex Corretgé <alex@corretge.cat>
  * @author Berny Cantos <be@rny.cc>
  */
-interface RoutableRepositoryInterface
+interface PageRepositoryInterface
 {
+    /**
+     * @param mixed $id
+     *
+     * @return PageInterface
+     */
+    public function findOneById($id);
+
     /**
      * @param string $path
      *
-     * @return RoutableInterface
+     * @return PageInterface
      */
     public function findOneByPath($path);
 }

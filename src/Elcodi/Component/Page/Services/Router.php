@@ -19,8 +19,9 @@ namespace Elcodi\Component\Page\Services;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-use Elcodi\Component\Page\Entity\Interfaces\RoutableInterface;
-use Elcodi\Component\Page\Repository\Interfaces\RoutableRepositoryInterface;
+use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
+use Elcodi\Component\Page\Repository\Interfaces\PageRepositoryInterface;
+use Elcodi\Component\Page\Services\Interfaces\RendererInterface;
 use Elcodi\Component\Page\Services\Interfaces\RouterInterface;
 
 /**
@@ -33,7 +34,7 @@ use Elcodi\Component\Page\Services\Interfaces\RouterInterface;
 class Router implements RouterInterface
 {
     /**
-     * @var RoutableRepositoryInterface
+     * @var PageRepositoryInterface
      */
     protected $repository;
 
@@ -51,17 +52,17 @@ class Router implements RouterInterface
     {
         $routable = $this->repository->findOneByPath($request->getUri());
 
-        if ($routable instanceof RoutableInterface) {
+        if ($routable instanceof PageInterface) {
 
             return $this->render($routable);
         }
     }
 
     /**
-     * @param RoutableInterface $routable
+     * @param PageInterface $routable
      * @return Response
      */
-    public function render(RoutableInterface $routable)
+    public function render(PageInterface $routable)
     {
         $content = $this->renderer->render($routable);
 

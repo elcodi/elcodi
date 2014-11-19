@@ -26,8 +26,9 @@ use Elcodi\Component\MetaData\Entity\Interfaces\MetaDataInterface;
  * @author Cayetano Soriano <neoshadybeat@gmail.com>
  * @author Jordi Grados <planetzombies@gmail.com>
  * @author Damien Gavard <damien.gavard@gmail.com>
+ * @author Berny Cantos <be@rny.cc>
  */
-interface PageInterface extends MetaDataInterface, DateTimeInterface, EnabledInterface, RoutableInterface
+interface PageInterface extends MetaDataInterface, DateTimeInterface, EnabledInterface
 {
     /**
      * Get the title
@@ -42,4 +43,11 @@ interface PageInterface extends MetaDataInterface, DateTimeInterface, EnabledInt
      * @return string
      */
     public function getContent();
+
+    /**
+     * Get the path
+     *
+     * @return string
+     */
+    public function getPath();
 }
