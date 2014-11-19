@@ -10,3 +10,7 @@ parameters:
     #
     elcodi.core.page.factory.page.class: Elcodi\Component\Page\Factory\PageFactory
 
+    #
+    # Controllers
+    #
+    elcodi.core.page.controller.page.class: Elcodi\Bundle\PageBundle\Controller\PageController
