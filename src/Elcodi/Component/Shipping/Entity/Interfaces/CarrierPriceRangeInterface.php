@@ -28,7 +28,7 @@ interface CarrierPriceRangeInterface extends CarrierBaseRangeInterface
      *
      * @param MoneyInterface $price Price
      *
-     * @return $this self object
+     * @return self
      */
     public function setFromPrice(MoneyInterface $price);
 
@@ -44,7 +44,7 @@ interface CarrierPriceRangeInterface extends CarrierBaseRangeInterface
      *
      * @param MoneyInterface $price Price
      *
-     * @return $this self object
+     * @return self
      */
     public function setToPrice(MoneyInterface $price);
 

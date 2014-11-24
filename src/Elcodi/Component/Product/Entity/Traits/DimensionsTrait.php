@@ -64,7 +64,7 @@ trait DimensionsTrait
      *
      * @param int $depth Depth
      *
-     * @return $this Self object
+     * @return self
      */
     public function setDepth($depth)
     {
@@ -88,7 +88,7 @@ trait DimensionsTrait
      *
      * @param int $height Height
      *
-     * @return $this Self object
+     * @return self
      */
     public function setHeight($height)
     {
@@ -112,7 +112,7 @@ trait DimensionsTrait
      *
      * @param int $weight Weight
      *
-     * @return $this Self object
+     * @return self
      */
     public function setWeight($weight)
     {
@@ -136,7 +136,7 @@ trait DimensionsTrait
      *
      * @param int $width Width
      *
-     * @return $this Self object
+     * @return self
      */
     public function setWidth($width)
     {

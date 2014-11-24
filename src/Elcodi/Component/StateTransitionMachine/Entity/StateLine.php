@@ -62,7 +62,7 @@ class StateLine implements StateLineInterface
      *
      * @param int $id Id
      *
-     * @return $this Self object
+     * @return self
      */
     public function setId($id)
     {
@@ -76,7 +76,7 @@ class StateLine implements StateLineInterface
      *
      * @param string $description Description
      *
-     * @return $this Self object
+     * @return self
      */
     public function setDescription($description)
     {
@@ -90,7 +90,7 @@ class StateLine implements StateLineInterface
      *
      * @param string $name Name
      *
-     * @return $this Self object
+     * @return self
      */
     public function setName($name)
     {

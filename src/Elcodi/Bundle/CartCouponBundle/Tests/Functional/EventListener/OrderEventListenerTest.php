@@ -31,7 +31,7 @@ class OrderEventListenerTest extends WebTestCase
     /**
      * Returns the callable name of the service
      *
-     * @return string[] service name
+     * @return string service name
      */
     public function getServiceCallableName()
     {
@@ -41,7 +41,7 @@ class OrderEventListenerTest extends WebTestCase
     /**
      * Load fixtures of these bundles
      *
-     * @return array Bundles name where fixtures should be found
+     * @return string[] Bundles name where fixtures should be found
      */
     protected function loadFixturesBundles()
     {

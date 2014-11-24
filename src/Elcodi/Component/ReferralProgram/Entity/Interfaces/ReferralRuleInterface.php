@@ -32,7 +32,7 @@ interface ReferralRuleInterface extends ValidIntervalInterface, EnabledInterface
      *
      * @param CouponInterface $invitedCoupon InvitedCoupon
      *
-     * @return ReferralRuleInterface Self object
+     * @return self
      */
     public function setInvitedCoupon(CouponInterface $invitedCoupon = null);
 
@@ -48,7 +48,7 @@ interface ReferralRuleInterface extends ValidIntervalInterface, EnabledInterface
      *
      * @param string $invitedType InvitedType
      *
-     * @return ReferralRuleInterface Self object
+     * @return self
      */
     public function setInvitedType($invitedType);
 
@@ -64,7 +64,7 @@ interface ReferralRuleInterface extends ValidIntervalInterface, EnabledInterface
      *
      * @param CouponInterface $referrerCoupon ReferrerCoupon
      *
-     * @return ReferralRuleInterface Self object
+     * @return self
      */
     public function setReferrerCoupon(CouponInterface $referrerCoupon = null);
 
@@ -80,7 +80,7 @@ interface ReferralRuleInterface extends ValidIntervalInterface, EnabledInterface
      *
      * @param string $referrerType ReferrerType
      *
-     * @return ReferralRuleInterface Self object
+     * @return self
      */
     public function setReferrerType($referrerType);
 
@@ -96,7 +96,7 @@ interface ReferralRuleInterface extends ValidIntervalInterface, EnabledInterface
      *
      * @param Collection $referralLines Referral Lines
      *
-     * @return ReferralRuleInterface Self object
+     * @return self
      */
     public function setReferralLines(Collection $referralLines);
 

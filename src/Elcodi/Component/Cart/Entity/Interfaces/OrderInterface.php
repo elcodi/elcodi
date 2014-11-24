@@ -34,7 +34,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
      *
      * @param CustomerInterface $customer Customer
      *
-     * @return $this Self object
+     * @return self
      */
     public function setCustomer(CustomerInterface $customer);
 
@@ -50,14 +50,14 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
      *
      * @param CartInterface $cart Cart
      *
-     * @return $this Self object
+     * @return self
      */
     public function setCart(CartInterface $cart);
 
     /**
      * Get cart
      *
-     * @return $this self Object
+     * @return self
      */
     public function getCart();
 
@@ -66,7 +66,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
      *
      * @param Collection $orderLines Order lines
      *
-     * @return $this self Object
+     * @return self
      */
     public function setOrderLines(Collection $orderLines);
 
@@ -82,7 +82,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
      *
      * @param OrderLineInterface $orderLine Order line
      *
-     * @return $this self Object
+     * @return self
      */
     public function addOrderLine(OrderLineInterface $orderLine);
 
@@ -91,7 +91,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
      *
      * @param OrderLineInterface $orderLine Order line
      *
-     * @return $this self Object
+     * @return self
      */
     public function removeOrderLine(OrderLineInterface $orderLine);
 
@@ -100,7 +100,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
      *
      * @param int $quantity Quantity
      *
-     * @return $this self Object
+     * @return self
      */
     public function setQuantity($quantity);
 
@@ -123,7 +123,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
      *
      * @param MoneyInterface $couponAmount coupon amount
      *
-     * @return $this
+     * @return self
      */
     public function setCouponAmount(MoneyInterface $couponAmount);
 
@@ -132,7 +132,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
      *
      * @param integer $height Height
      *
-     * @return $this self Object
+     * @return self
      */
     public function setHeight($height);
 
@@ -141,7 +141,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
      *
      * @param integer $width Width
      *
-     * @return $this self Object
+     * @return self
      */
     public function setWidth($width);
 
@@ -150,7 +150,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
      *
      * @param integer $depth Depth
      *
-     * @return $this self Object
+     * @return self
      */
     public function setDepth($depth);
 
@@ -159,7 +159,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
      *
      * @param integer $weight Weight
      *
-     * @return $this self Object
+     * @return self
      */
     public function setWeight($weight);
 
@@ -175,7 +175,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
      *
      * @param AddressInterface $invoiceAddress InvoiceAddress
      *
-     * @return $this Self object
+     * @return self
      */
     public function setInvoiceAddress($invoiceAddress);
 
@@ -191,7 +191,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
      *
      * @param AddressInterface $deliveryAddress DeliveryAddress
      *
-     * @return $this Self object
+     * @return self
      */
     public function setDeliveryAddress($deliveryAddress);
 }

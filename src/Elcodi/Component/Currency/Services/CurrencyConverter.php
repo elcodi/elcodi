@@ -82,7 +82,7 @@ class CurrencyConverter
      * @param MoneyInterface    $money
      * @param CurrencyInterface $currencyTo
      *
-     * @return MoneyInterface Money converted
+     * @return MoneyInterface|null Money converted
      *
      * @throws CurrencyNotConvertibleException Currencies cannot be converted
      */

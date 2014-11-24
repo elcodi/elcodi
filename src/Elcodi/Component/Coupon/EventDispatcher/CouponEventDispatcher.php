@@ -49,7 +49,7 @@ class CouponEventDispatcher
      *
      * @param CouponInterface $coupon Coupon used
      *
-     * @return $this self Object
+     * @return self
      */
     public function notifyCouponUsage(CouponInterface $coupon)
     {

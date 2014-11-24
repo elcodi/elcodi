@@ -37,7 +37,7 @@ interface CarrierBaseRangeInterface extends EnabledInterface
      *
      * @param CarrierInterface $carrier Carrier
      *
-     * @return $this Self object
+     * @return self
      */
     public function setCarrier($carrier);
 
@@ -53,7 +53,7 @@ interface CarrierBaseRangeInterface extends EnabledInterface
      *
      * @param string $description Description
      *
-     * @return $this Self object
+     * @return self
      */
     public function setDescription($description);
 
@@ -69,7 +69,7 @@ interface CarrierBaseRangeInterface extends EnabledInterface
      *
      * @param string $name Name
      *
-     * @return $this Self object
+     * @return self
      */
     public function setName($name);
 
@@ -85,7 +85,7 @@ interface CarrierBaseRangeInterface extends EnabledInterface
      *
      * @param ZoneInterface $fromZone FromZone
      *
-     * @return $this Self object
+     * @return self
      */
     public function setFromZone($fromZone);
 
@@ -101,7 +101,7 @@ interface CarrierBaseRangeInterface extends EnabledInterface
      *
      * @param ZoneInterface $toZone ToZone
      *
-     * @return $this Self object
+     * @return self
      */
     public function setToZone($toZone);
 
@@ -110,7 +110,7 @@ interface CarrierBaseRangeInterface extends EnabledInterface
      *
      * @param MoneyInterface $amount Price
      *
-     * @return $this self Object
+     * @return self
      */
     public function setPrice(MoneyInterface $amount);
 

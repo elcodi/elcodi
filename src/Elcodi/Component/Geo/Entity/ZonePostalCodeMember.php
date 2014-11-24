@@ -16,7 +16,7 @@
 
 namespace Elcodi\Component\Geo\Entity;
 
-use Elcodi\Component\Geo\Entity\Interfaces\PostalcodeInterface;
+use Elcodi\Component\Geo\Entity\Interfaces\PostalCodeInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\ZoneInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\ZonePostalCodeMemberInterface;
 

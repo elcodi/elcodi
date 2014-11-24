@@ -47,7 +47,7 @@ class CartLine extends AbstractLine implements CartLineInterface
      *
      * @param CartInterface $cart Cart
      *
-     * @return $this self Object
+     * @return self
      */
     public function setCart(CartInterface $cart)
     {
@@ -71,7 +71,7 @@ class CartLine extends AbstractLine implements CartLineInterface
      *
      * @param OrderLineInterface $orderLine OrderLine
      *
-     * @return CartLine Self object
+     * @return self
      */
     public function setOrderLine($orderLine)
     {

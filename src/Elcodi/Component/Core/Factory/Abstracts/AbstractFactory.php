@@ -39,7 +39,7 @@ abstract class AbstractFactory
      *
      * @param string $entityNamespace Entity namespace
      *
-     * @return $this self Object
+     * @return self
      */
     public function setEntityNamespace($entityNamespace)
     {

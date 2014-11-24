@@ -116,7 +116,7 @@ class Order implements OrderInterface
      *
      * @param int $id Id
      *
-     * @return $this Self object
+     * @return self
      */
     public function setId($id)
     {
@@ -130,7 +130,7 @@ class Order implements OrderInterface
      *
      * @param CustomerInterface $customer Customer
      *
-     * @return Order Self object
+     * @return self
      */
     public function setCustomer(CustomerInterface $customer)
     {
@@ -154,7 +154,7 @@ class Order implements OrderInterface
      *
      * @param CartInterface $cart Cart
      *
-     * @return Order Self object
+     * @return self
      */
     public function setCart(CartInterface $cart)
     {
@@ -178,7 +178,7 @@ class Order implements OrderInterface
      *
      * @param Collection $orderLines Order lines
      *
-     * @return $this self Object
+     * @return self
      */
     public function setOrderLines(Collection $orderLines)
     {
@@ -202,7 +202,7 @@ class Order implements OrderInterface
      *
      * @param OrderLineInterface $orderLine Order line
      *
-     * @return $this self Object
+     * @return self
      */
     public function addOrderLine(OrderLineInterface $orderLine)
     {
@@ -219,7 +219,7 @@ class Order implements OrderInterface
      *
      * @param OrderLineInterface $orderLine Order line
      *
-     * @return $this self Object
+     * @return self
      */
     public function removeOrderLine(OrderLineInterface $orderLine)
     {
@@ -233,7 +233,7 @@ class Order implements OrderInterface
      *
      * @param int $quantity Quantity
      *
-     * @return $this self Object
+     * @return self
      */
     public function setQuantity($quantity)
     {
@@ -257,7 +257,7 @@ class Order implements OrderInterface
      *
      * @param MoneyInterface $amount coupon amount
      *
-     * @return OrderInterface
+     * @return self
      */
     public function setCouponAmount(MoneyInterface $amount)
     {
@@ -295,7 +295,7 @@ class Order implements OrderInterface
      *
      * @param AddressInterface $invoiceAddress InvoiceAddress
      *
-     * @return $this Self object
+     * @return self
      */
     public function setInvoiceAddress($invoiceAddress)
     {
@@ -319,7 +319,7 @@ class Order implements OrderInterface
      *
      * @param AddressInterface $deliveryAddress DeliveryAddress
      *
-     * @return $this Self object
+     * @return self
      */
     public function setDeliveryAddress($deliveryAddress)
     {

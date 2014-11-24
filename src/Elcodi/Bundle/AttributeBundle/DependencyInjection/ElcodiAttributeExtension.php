@@ -93,7 +93,7 @@ class ElcodiAttributeExtension extends AbstractExtension implements EntitiesOver
      *
      * @param array $config Configuration array
      *
-     * @return array Config files
+     * @return string[] Config files
      */
     public function getConfigFiles(array $config)
     {

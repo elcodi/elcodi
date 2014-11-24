@@ -36,7 +36,7 @@ class CommentEventDispatcher extends AbstractEventDispatcher
      *
      * @param CommentInterface $comment Comment
      *
-     * @return $this self Object
+     * @return self
      */
     public function dispatchCommentOnAddEvent(CommentInterface $comment)
     {
@@ -56,7 +56,7 @@ class CommentEventDispatcher extends AbstractEventDispatcher
      *
      * @param CommentInterface $comment Comment
      *
-     * @return $this self Object
+     * @return self
      */
     public function dispatchCommentOnEditEvent(CommentInterface $comment)
     {
@@ -76,7 +76,7 @@ class CommentEventDispatcher extends AbstractEventDispatcher
      *
      * @param CommentInterface $comment Comment
      *
-     * @return $this self Object
+     * @return self
      */
     public function dispatchCommentPreRemoveEvent(CommentInterface $comment)
     {
@@ -96,7 +96,7 @@ class CommentEventDispatcher extends AbstractEventDispatcher
      *
      * @param CommentInterface $comment Comment
      *
-     * @return $this self Object
+     * @return self
      */
     public function dispatchCommentOnRemoveEvent(CommentInterface $comment)
     {
@@ -118,7 +118,7 @@ class CommentEventDispatcher extends AbstractEventDispatcher
      * @param VoteInterface    $vote    Vote
      * @param boolean          $edited  Vote is edition of one already added
      *
-     * @return $this self Object
+     * @return self
      */
     public function dispatchCommentOnVotedEvent(
         CommentInterface $comment,

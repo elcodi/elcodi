@@ -91,7 +91,7 @@ class Comment implements CommentInterface
      *
      * @param int $id Id
      *
-     * @return $this Self object
+     * @return self
      */
     public function setId($id)
     {
@@ -115,7 +115,7 @@ class Comment implements CommentInterface
      *
      * @param AbstractUserInterface $author Author
      *
-     * @return $this Self object
+     * @return self
      */
     public function setAuthor(AbstractUserInterface $author)
     {
@@ -139,7 +139,7 @@ class Comment implements CommentInterface
      *
      * @param string $content Content
      *
-     * @return $this Self object
+     * @return self
      */
     public function setContent($content)
     {
@@ -163,7 +163,7 @@ class Comment implements CommentInterface
      *
      * @param CommentInterface|null $parent Parent
      *
-     * @return $this Self object
+     * @return self
      */
     public function setParent($parent = null)
     {
@@ -187,7 +187,7 @@ class Comment implements CommentInterface
      *
      * @param string $parsedContent ParsedContent
      *
-     * @return $this Self object
+     * @return self
      */
     public function setParsedContent($parsedContent)
     {
@@ -211,7 +211,7 @@ class Comment implements CommentInterface
      *
      * @param int $parsingType ParsingType
      *
-     * @return $this Self object
+     * @return self
      */
     public function setParsingType($parsingType)
     {
@@ -235,7 +235,7 @@ class Comment implements CommentInterface
      *
      * @param string $source Source
      *
-     * @return $this Self object
+     * @return self
      */
     public function setSource($source)
     {
@@ -259,7 +259,7 @@ class Comment implements CommentInterface
      *
      * @param Collection $children Children
      *
-     * @return $this self Object
+     * @return self
      */
     public function setChildren(Collection $children)
     {

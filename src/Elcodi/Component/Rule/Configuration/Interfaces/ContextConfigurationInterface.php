@@ -28,7 +28,7 @@ interface ContextConfigurationInterface
      *
      * @param ContextAwareInterface $contextAware Context aware object
      *
-     * @return $this self Object
+     * @return self
      */
     public function configureContext(ContextAwareInterface $contextAware);
 }

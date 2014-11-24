@@ -30,7 +30,7 @@ interface OrderCouponInterface
      *
      * @param OrderInterface $order Order
      *
-     * @return OrderCouponInterface Self object
+     * @return self
      */
     public function setOrder(OrderInterface $order);
 
@@ -46,7 +46,7 @@ interface OrderCouponInterface
      *
      * @param CouponInterface $coupon Coupon
      *
-     * @return OrderCouponInterface Self object
+     * @return self
      */
     public function setCoupon(CouponInterface $coupon);
 
@@ -62,7 +62,7 @@ interface OrderCouponInterface
      *
      * @param string $code Code
      *
-     * @return $this self Object
+     * @return self
      */
     public function setCode($code);
 
@@ -78,7 +78,7 @@ interface OrderCouponInterface
      *
      * @param string $name
      *
-     * @return $this self Object
+     * @return self
      */
     public function setName($name);
 
@@ -94,7 +94,7 @@ interface OrderCouponInterface
      *
      * @param MoneyInterface $amount Price
      *
-     * @return $this self Object
+     * @return self
      */
     public function setAmount(MoneyInterface $amount);
 

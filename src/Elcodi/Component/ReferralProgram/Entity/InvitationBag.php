@@ -45,7 +45,7 @@ class InvitationBag implements InvitationBagInterface
      *
      * @param InvitationInterface $errorInvitation Invitation
      *
-     * @return InvitationBag Self object
+     * @return self
      */
     public function addErrorInvitation(InvitationInterface $errorInvitation)
     {
@@ -59,7 +59,7 @@ class InvitationBag implements InvitationBagInterface
      *
      * @param Collection $errorInvitations ErrorInvitations
      *
-     * @return InvitationBag Self object
+     * @return self
      */
     public function setErrorInvitations(Collection $errorInvitations)
     {
@@ -83,7 +83,7 @@ class InvitationBag implements InvitationBagInterface
      *
      * @param InvitationInterface $sentInvitation Invitation
      *
-     * @return InvitationBag Self object
+     * @return self
      */
     public function addSentInvitation(InvitationInterface $sentInvitation)
     {
@@ -97,7 +97,7 @@ class InvitationBag implements InvitationBagInterface
      *
      * @param Collection $sentInvitations SentInvitations
      *
-     * @return InvitationBag Self object
+     * @return self
      */
     public function setSentInvitations($sentInvitations)
     {

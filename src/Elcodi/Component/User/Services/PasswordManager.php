@@ -118,7 +118,7 @@ class PasswordManager
      * @param string       $recoverPasswordUrlName Recover password name
      * @param string       $hashField              Hash
      *
-     * @return $this self Object
+     * @return self
      */
     public function rememberPassword(
         AbstractUser $user,
@@ -149,7 +149,7 @@ class PasswordManager
      * @param string       $hash        Hash given by provider
      * @param string       $newPassword New password
      *
-     * @return $this
+     * @return self
      */
     public function recoverPassword(AbstractUser $user, $hash, $newPassword)
     {

@@ -76,7 +76,7 @@ class Money extends StubMoney implements MoneyInterface
      *
      * @param CurrencyInterface $currency Currency
      *
-     * @return $this self Object
+     * @return self
      */
     public function setCurrency(CurrencyInterface $currency)
     {
@@ -104,7 +104,7 @@ class Money extends StubMoney implements MoneyInterface
      *
      * @param integer $amount Amount
      *
-     * @return $this self Object
+     * @return self
      */
     public function setAmount($amount)
     {

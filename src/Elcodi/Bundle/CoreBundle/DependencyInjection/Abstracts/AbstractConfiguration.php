@@ -35,6 +35,7 @@ class AbstractConfiguration
      * Construct method
      *
      * @var string $extensionName Extension name
+     * @param string $extensionName
      */
     public function __construct($extensionName)
     {

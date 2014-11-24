@@ -26,7 +26,7 @@ interface EnabledInterface
      *
      * @param boolean $enabled enabled value
      *
-     * @return $this self Object
+     * @return self
      */
     public function setEnabled($enabled);
 

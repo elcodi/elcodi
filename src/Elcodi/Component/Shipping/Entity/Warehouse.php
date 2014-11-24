@@ -70,7 +70,7 @@ class Warehouse implements WarehouseInterface
      *
      * @param int $id Id
      *
-     * @return $this Self object
+     * @return self
      */
     public function setId($id)
     {
@@ -94,7 +94,7 @@ class Warehouse implements WarehouseInterface
      *
      * @param string $name Name
      *
-     * @return $this Self object
+     * @return self
      */
     public function setName($name)
     {
@@ -118,7 +118,7 @@ class Warehouse implements WarehouseInterface
      *
      * @param string $description Description
      *
-     * @return $this Self object
+     * @return self
      */
     public function setDescription($description)
     {
@@ -142,7 +142,7 @@ class Warehouse implements WarehouseInterface
      *
      * @param AddressInterface $address Address
      *
-     * @return $this Self object
+     * @return self
      */
     public function setAddress($address)
     {

@@ -54,7 +54,7 @@ class ProvinceData extends AbstractFixture implements DependentFixtureInterface
      * This method must return an array of fixtures classes
      * on which the implementing class depends on
      *
-     * @return array
+     * @return string[]
      */
     public function getDependencies()
     {

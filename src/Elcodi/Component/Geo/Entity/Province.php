@@ -86,7 +86,7 @@ class Province implements ProvinceInterface, ZoneMemberAssignableInterface
      *
      * @param string $id Entity Id
      *
-     * @return $this self Object
+     * @return self
      */
     public function setId($id)
     {
@@ -110,7 +110,7 @@ class Province implements ProvinceInterface, ZoneMemberAssignableInterface
      *
      * @param string $code Code
      *
-     * @return $this self Object
+     * @return self
      */
     public function setCode($code)
     {
@@ -134,7 +134,7 @@ class Province implements ProvinceInterface, ZoneMemberAssignableInterface
      *
      * @param string $name Name
      *
-     * @return $this self Object
+     * @return self
      */
     public function setName($name)
     {
@@ -178,7 +178,7 @@ class Province implements ProvinceInterface, ZoneMemberAssignableInterface
      *
      * @param StateInterface $state State
      *
-     * @return $this self Object
+     * @return self
      */
     public function setState(StateInterface $state)
     {
@@ -203,7 +203,7 @@ class Province implements ProvinceInterface, ZoneMemberAssignableInterface
      *
      * @param Collection $cities Cities
      *
-     * @return $this self Object
+     * @return self
      */
     public function setCities(Collection $cities)
     {
@@ -217,7 +217,7 @@ class Province implements ProvinceInterface, ZoneMemberAssignableInterface
      *
      * @param CityInterface $city City
      *
-     * @return $this self Object
+     * @return self
      */
     public function addCity(CityInterface $city)
     {
@@ -236,7 +236,7 @@ class Province implements ProvinceInterface, ZoneMemberAssignableInterface
      *
      * @param CityInterface $city City
      *
-     * @return $this self Object
+     * @return self
      */
     public function removeCity(CityInterface $city)
     {
@@ -252,7 +252,7 @@ class Province implements ProvinceInterface, ZoneMemberAssignableInterface
      *
      * @param Collection $postalCodes PostalCodes
      *
-     * @return self Self object
+     * @return self
      */
     public function setPostalCodes($postalCodes)
     {

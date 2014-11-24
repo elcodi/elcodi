@@ -66,7 +66,7 @@ class GeoDataPopulatorAdapter implements PopulatorAdapterInterface
      * @param string          $countryCode                 Country Code
      * @param boolean         $sourcePackageMustbeReloaded Source package must be reloaded
      *
-     * @return CountryInterface|null Country populated if created
+     * @return CountryInterface Country populated if created
      */
     public function populateCountry(
         OutputInterface $output,

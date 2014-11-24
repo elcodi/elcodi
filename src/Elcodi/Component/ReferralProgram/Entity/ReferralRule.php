@@ -43,7 +43,7 @@ class ReferralRule extends AbstractEntity implements ReferralRuleInterface
      *
      * @param Collection $referralLines Referral Lines
      *
-     * @return ReferralRule Self object
+     * @return self
      */
     public function setReferralLines(Collection $referralLines)
     {

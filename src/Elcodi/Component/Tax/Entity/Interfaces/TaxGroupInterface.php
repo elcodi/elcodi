@@ -35,7 +35,7 @@ interface TaxGroupInterface
      *
      * @param int $id Id
      *
-     * @return $this Self object
+     * @return self
      */
     public function setId($id);
 
@@ -51,7 +51,7 @@ interface TaxGroupInterface
      *
      * @param string $name Name
      *
-     * @return $this Self object
+     * @return self
      */
     public function setName($name);
 
@@ -67,7 +67,7 @@ interface TaxGroupInterface
      *
      * @param string $description
      *
-     * @return $this
+     * @return self
      */
     public function setDescription($description);
 
@@ -83,7 +83,7 @@ interface TaxGroupInterface
      *
      * @param Collection $taxes Taxes
      *
-     * @return $this Self object
+     * @return self
      */
     public function setTaxes($taxes);
 
@@ -92,7 +92,7 @@ interface TaxGroupInterface
      *
      * @param TaxInterface $tax Tax
      *
-     * @return $this self Object
+     * @return self
      */
     public function addTax(TaxInterface $tax);
 
@@ -101,7 +101,7 @@ interface TaxGroupInterface
      *
      * @param TaxInterface $tax Tax
      *
-     * @return $this self Object
+     * @return self
      */
     public function removeTax(TaxInterface $tax);
 }

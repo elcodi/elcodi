@@ -99,7 +99,7 @@ class ElcodiCartCouponExtension extends AbstractExtension implements EntitiesOve
      *
      * @param array $config Config
      *
-     * @return array Config files
+     * @return string[] Config files
      */
     public function getConfigFiles(array $config)
     {

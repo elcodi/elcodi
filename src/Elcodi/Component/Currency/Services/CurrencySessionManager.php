@@ -56,7 +56,7 @@ class CurrencySessionManager
      *
      * @param CurrencyInterface $currency Currency
      *
-     * @return $this self Object
+     * @return self
      */
     public function set(CurrencyInterface $currency)
     {

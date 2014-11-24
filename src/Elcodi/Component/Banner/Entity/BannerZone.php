@@ -43,7 +43,7 @@ class BannerZone extends AbstractEntity implements BannerZoneInterface
     protected $code;
 
     /**
-     * @var Collection
+     * @var LanguageInterface|null
      *
      * Language
      */
@@ -75,7 +75,7 @@ class BannerZone extends AbstractEntity implements BannerZoneInterface
      *
      * @param string $name Name of the banner
      *
-     * @return $this self Object
+     * @return self
      */
     public function setName($name)
     {
@@ -99,7 +99,7 @@ class BannerZone extends AbstractEntity implements BannerZoneInterface
      *
      * @param string $code
      *
-     * @return $this self Object
+     * @return self
      */
     public function setCode($code)
     {
@@ -123,7 +123,7 @@ class BannerZone extends AbstractEntity implements BannerZoneInterface
      *
      * @param LanguageInterface $language Language to set
      *
-     * @return $this self Object
+     * @return self
      */
     public function setLanguage(LanguageInterface $language = null)
     {
@@ -147,7 +147,7 @@ class BannerZone extends AbstractEntity implements BannerZoneInterface
      *
      * @param BannerInterface $banner Banner
      *
-     * @return $this self Object
+     * @return self
      */
     public function addBanner(BannerInterface $banner)
     {
@@ -161,7 +161,7 @@ class BannerZone extends AbstractEntity implements BannerZoneInterface
      *
      * @param BannerInterface $banner Banner
      *
-     * @return $this self Object
+     * @return self
      */
     public function removeBanner(BannerInterface $banner)
     {
@@ -175,7 +175,7 @@ class BannerZone extends AbstractEntity implements BannerZoneInterface
      *
      * @param Collection $banners Banners
      *
-     * @return $this self Object
+     * @return self
      */
     public function setBanners(Collection $banners)
     {
@@ -199,7 +199,7 @@ class BannerZone extends AbstractEntity implements BannerZoneInterface
      *
      * @param float $height Height
      *
-     * @return $this self Object
+     * @return self
      */
     public function setHeight($height)
     {
@@ -223,7 +223,7 @@ class BannerZone extends AbstractEntity implements BannerZoneInterface
      *
      * @param float $width Width
      *
-     * @return $this self Object
+     * @return self
      */
     public function setWidth($width)
     {

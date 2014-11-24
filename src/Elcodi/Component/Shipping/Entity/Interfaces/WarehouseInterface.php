@@ -17,6 +17,7 @@
 namespace Elcodi\Component\Shipping\Entity\Interfaces;
 
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
+use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 
 /**
  * Interface WarehouseInterface
@@ -35,7 +36,7 @@ interface WarehouseInterface extends EnabledInterface
      *
      * @param int $id Id
      *
-     * @return $this Self object
+     * @return self
      */
     public function setId($id);
 
@@ -51,7 +52,7 @@ interface WarehouseInterface extends EnabledInterface
      *
      * @param string $name Name
      *
-     * @return $this Self object
+     * @return self
      */
     public function setName($name);
 
@@ -67,7 +68,7 @@ interface WarehouseInterface extends EnabledInterface
      *
      * @param string $description Description
      *
-     * @return $this Self object
+     * @return self
      */
     public function setDescription($description);
 
@@ -83,7 +84,7 @@ interface WarehouseInterface extends EnabledInterface
      *
      * @param AddressInterface $address Address
      *
-     * @return $this Self object
+     * @return self
      */
     public function setAddress($address);
 }

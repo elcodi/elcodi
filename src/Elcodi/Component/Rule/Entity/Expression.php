@@ -36,7 +36,7 @@ class Expression extends AbstractEntity implements ExpressionInterface
      *
      * @param string $expression Expression
      *
-     * @return Rule Self object
+     * @return self
      */
     public function setExpression($expression)
     {

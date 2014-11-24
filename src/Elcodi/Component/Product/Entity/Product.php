@@ -158,7 +158,7 @@ class Product extends AbstractEntity implements ProductInterface
      *
      * @param string $name Name
      *
-     * @return $this self Object
+     * @return self
      */
     public function setName($name)
     {
@@ -182,7 +182,7 @@ class Product extends AbstractEntity implements ProductInterface
      *
      * @param string $slug Slug
      *
-     * @return $this self Object
+     * @return self
      */
     public function setSlug($slug)
     {
@@ -206,7 +206,7 @@ class Product extends AbstractEntity implements ProductInterface
      *
      * @param string $description Description
      *
-     * @return $this self Object
+     * @return self
      */
     public function setDescription($description)
     {
@@ -230,7 +230,7 @@ class Product extends AbstractEntity implements ProductInterface
      *
      * @param string $shortDescription Short description
      *
-     * @return $this self Object
+     * @return self
      */
     public function setShortDescription($shortDescription)
     {
@@ -254,7 +254,7 @@ class Product extends AbstractEntity implements ProductInterface
      *
      * @param Collection $categories Categories
      *
-     * @return $this self Object
+     * @return self
      */
     public function setCategories(Collection $categories)
     {
@@ -278,7 +278,7 @@ class Product extends AbstractEntity implements ProductInterface
      *
      * @param CategoryInterface $category Category
      *
-     * @return $this self Object
+     * @return self
      */
     public function addCategory(CategoryInterface $category)
     {
@@ -292,7 +292,7 @@ class Product extends AbstractEntity implements ProductInterface
      *
      * @param CategoryInterface $category Category
      *
-     * @return $this self Object
+     * @return self
      */
     public function removeCategory(CategoryInterface $category)
     {
@@ -306,7 +306,7 @@ class Product extends AbstractEntity implements ProductInterface
      *
      * @param CategoryInterface $principalCategory Principal category
      *
-     * @return $this self Object
+     * @return self
      */
     public function setPrincipalCategory(CategoryInterface $principalCategory = null)
     {
@@ -330,7 +330,7 @@ class Product extends AbstractEntity implements ProductInterface
      *
      * @param int $stock Stock
      *
-     * @return $this self Object
+     * @return self
      */
     public function setStock($stock)
     {
@@ -354,7 +354,7 @@ class Product extends AbstractEntity implements ProductInterface
      *
      * @param boolean $showInHome Show in home
      *
-     * @return $this self Object
+     * @return self
      */
     public function setShowInHome($showInHome)
     {
@@ -378,7 +378,7 @@ class Product extends AbstractEntity implements ProductInterface
      *
      * @param ManufacturerInterface $manufacturer Manufacturer
      *
-     * @return $this self Object
+     * @return self
      */
     public function setManufacturer(ManufacturerInterface $manufacturer = null)
     {
@@ -402,7 +402,7 @@ class Product extends AbstractEntity implements ProductInterface
      *
      * @param string $dimensions Dimensions
      *
-     * @return ProductInterface Self object
+     * @return self
      */
     public function setDimensions($dimensions)
     {
@@ -436,7 +436,7 @@ class Product extends AbstractEntity implements ProductInterface
      *
      * @param string $sku
      *
-     * @return $this self Object
+     * @return self
      */
     public function setSku($sku)
     {
@@ -450,7 +450,7 @@ class Product extends AbstractEntity implements ProductInterface
      *
      * @param int $type Type
      *
-     * @return $this self Object
+     * @return self
      */
     public function setType($type)
     {
@@ -474,7 +474,7 @@ class Product extends AbstractEntity implements ProductInterface
      *
      * @param AttributeInterface $attribute Attribute
      *
-     * @return $this self Object
+     * @return self
      */
     public function addAttribute(AttributeInterface $attribute)
     {
@@ -492,7 +492,7 @@ class Product extends AbstractEntity implements ProductInterface
      *
      * @param AttributeInterface $attribute Attribute to be removed
      *
-     * @return $this self Object
+     * @return self
      */
     public function removeAttribute(AttributeInterface $attribute)
     {
@@ -516,7 +516,7 @@ class Product extends AbstractEntity implements ProductInterface
      *
      * @param Collection $attributes Attributes
      *
-     * @return $this self Object
+     * @return self
      */
     public function setAttributes(Collection $attributes)
     {
@@ -540,7 +540,7 @@ class Product extends AbstractEntity implements ProductInterface
      *
      * @param VariantInterface $variant
      *
-     * @return $this self Object
+     * @return self
      */
     public function addVariant(VariantInterface $variant)
     {
@@ -554,7 +554,7 @@ class Product extends AbstractEntity implements ProductInterface
      *
      * @param Collection $variants Variants
      *
-     * @return $this self Object
+     * @return self
      */
     public function setVariants(Collection $variants)
     {
@@ -578,7 +578,7 @@ class Product extends AbstractEntity implements ProductInterface
      *
      * @param VariantInterface $principalVariant
      *
-     * @return $this self Object
+     * @return self
      */
     public function setPrincipalVariant(VariantInterface $principalVariant)
     {

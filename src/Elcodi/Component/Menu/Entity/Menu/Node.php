@@ -55,7 +55,7 @@ class Node extends AbstractEntity implements NodeInterface
      *
      * @param string $name Name
      *
-     * @return Node Self object
+     * @return self
      */
     public function setName($name)
     {
@@ -81,7 +81,7 @@ class Node extends AbstractEntity implements NodeInterface
      *
      * @param string $url Url
      *
-     * @return Node Self object
+     * @return self
      */
     public function setUrl($url)
     {
@@ -115,7 +115,7 @@ class Node extends AbstractEntity implements NodeInterface
      *
      * @param string $code
      *
-     * @return $this self Object
+     * @return self
      */
     public function setCode($code)
     {

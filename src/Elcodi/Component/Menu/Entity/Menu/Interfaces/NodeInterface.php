@@ -29,7 +29,7 @@ interface NodeInterface extends DateTimeInterface, EnabledInterface, SubnodesAwa
      *
      * @param string $name Name
      *
-     * @return NodeInterface Self object
+     * @return self
      */
     public function setName($name);
 
@@ -45,7 +45,7 @@ interface NodeInterface extends DateTimeInterface, EnabledInterface, SubnodesAwa
      *
      * @param string $url Url
      *
-     * @return NodeInterface Self object
+     * @return self
      */
     public function setUrl($url);
 
@@ -68,7 +68,7 @@ interface NodeInterface extends DateTimeInterface, EnabledInterface, SubnodesAwa
      *
      * @param string $code
      *
-     * @return $this self Object
+     * @return self
      */
     public function setCode($code);
 }

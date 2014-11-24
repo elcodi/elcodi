@@ -31,7 +31,7 @@ interface ManufacturerInterface extends EnabledInterface, MetaDataInterface
      *
      * @param string $id Id
      *
-     * @return $this Self object
+     * @return self
      */
     public function setId($id);
 
@@ -47,7 +47,7 @@ interface ManufacturerInterface extends EnabledInterface, MetaDataInterface
      *
      * @param string $name Name
      *
-     * @return ManufacturerInterface Self Object
+     * @return self
      */
     public function setName($name);
 
@@ -63,7 +63,7 @@ interface ManufacturerInterface extends EnabledInterface, MetaDataInterface
      *
      * @param string $description Description
      *
-     * @return $this self Object
+     * @return self
      */
     public function setDescription($description);
 
@@ -77,7 +77,7 @@ interface ManufacturerInterface extends EnabledInterface, MetaDataInterface
      *
      * @param string $slug Slug
      *
-     * @return $this self Object
+     * @return self
      */
     public function setSlug($slug);
 
@@ -93,7 +93,7 @@ interface ManufacturerInterface extends EnabledInterface, MetaDataInterface
      *
      * @param Collection $products Products
      *
-     * @return $this self Object
+     * @return self
      */
     public function setProducts(Collection $products);
 
@@ -109,7 +109,7 @@ interface ManufacturerInterface extends EnabledInterface, MetaDataInterface
      *
      * @param ProductInterface $product Product
      *
-     * @return $this self Object
+     * @return self
      */
     public function addProduct(ProductInterface $product);
 
@@ -118,7 +118,7 @@ interface ManufacturerInterface extends EnabledInterface, MetaDataInterface
      *
      * @param ProductInterface $product Product
      *
-     * @return $this self Object
+     * @return self
      */
     public function removeProduct(ProductInterface $product);
 }

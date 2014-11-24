@@ -33,7 +33,7 @@ class OrderEventDispatcher extends AbstractEventDispatcher
      *
      * @param CartInterface $cart Cart
      *
-     * @return $this self Object
+     * @return self
      */
     public function dispatchOrderPreCreatedEvent(
         CartInterface $cart
@@ -52,7 +52,7 @@ class OrderEventDispatcher extends AbstractEventDispatcher
      * @param CartInterface  $cart  Cart
      * @param OrderInterface $order Order
      *
-     * @return $this self Object
+     * @return self
      */
     public function dispatchOrderOnCreatedEvent(
         CartInterface $cart,

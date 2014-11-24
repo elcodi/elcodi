@@ -102,7 +102,7 @@ abstract class AbstractUser extends AbstractEntity implements AbstractUserInterf
      *
      * @param string $firstname Firstname
      *
-     * @return AbstractUser Self object
+     * @return self
      */
     public function setFirstname($firstname)
     {
@@ -126,7 +126,7 @@ abstract class AbstractUser extends AbstractEntity implements AbstractUserInterf
      *
      * @param string $lastname Lastname
      *
-     * @return AbstractUser Self object
+     * @return self
      */
     public function setLastname($lastname)
     {
@@ -150,7 +150,7 @@ abstract class AbstractUser extends AbstractEntity implements AbstractUserInterf
      *
      * @param int $gender Gender
      *
-     * @return $this self Object
+     * @return self
      */
     public function setGender($gender)
     {
@@ -174,7 +174,7 @@ abstract class AbstractUser extends AbstractEntity implements AbstractUserInterf
      *
      * @param string $email
      *
-     * @return $this self Object
+     * @return self
      */
     public function setEmail($email)
     {
@@ -198,7 +198,7 @@ abstract class AbstractUser extends AbstractEntity implements AbstractUserInterf
      *
      * @param string $username Username
      *
-     * @return $this self Object
+     * @return self
      */
     public function setUsername($username)
     {
@@ -232,7 +232,7 @@ abstract class AbstractUser extends AbstractEntity implements AbstractUserInterf
      *
      * @param DateTime $birthday
      *
-     * @return $this self Object
+     * @return self
      */
     public function setBirthday(DateTime $birthday = null)
     {
@@ -246,7 +246,7 @@ abstract class AbstractUser extends AbstractEntity implements AbstractUserInterf
      *
      * @param string $recoveryHash
      *
-     * @return $this self Object
+     * @return self
      */
     public function setRecoveryHash($recoveryHash)
     {
@@ -280,7 +280,7 @@ abstract class AbstractUser extends AbstractEntity implements AbstractUserInterf
      *
      * @param string $password Password
      *
-     * @return $this self Object
+     * @return self
      */
     public function setPassword($password)
     {

@@ -76,7 +76,7 @@ class OrderCoupon extends AbstractEntity implements OrderCouponInterface
      *
      * @param OrderInterface $order Order
      *
-     * @return OrderCoupon Self object
+     * @return self
      */
     public function setOrder(OrderInterface $order)
     {
@@ -100,7 +100,7 @@ class OrderCoupon extends AbstractEntity implements OrderCouponInterface
      *
      * @param CouponInterface $coupon Coupon
      *
-     * @return OrderCoupon Self object
+     * @return self
      */
     public function setCoupon(CouponInterface $coupon)
     {
@@ -124,7 +124,7 @@ class OrderCoupon extends AbstractEntity implements OrderCouponInterface
      *
      * @param string $code Code
      *
-     * @return $this self Object
+     * @return self
      */
     public function setCode($code)
     {
@@ -148,7 +148,7 @@ class OrderCoupon extends AbstractEntity implements OrderCouponInterface
      *
      * @param string $name
      *
-     * @return $this self Object
+     * @return self
      */
     public function setName($name)
     {
@@ -172,7 +172,7 @@ class OrderCoupon extends AbstractEntity implements OrderCouponInterface
      *
      * @param MoneyInterface $amount Price
      *
-     * @return $this self Object
+     * @return self
      */
     public function setAmount(MoneyInterface $amount)
     {

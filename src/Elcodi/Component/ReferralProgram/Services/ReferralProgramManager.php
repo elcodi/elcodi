@@ -269,7 +269,7 @@ class ReferralProgramManager
      * @param CustomerInterface $invited Customer
      * @param string            $hash    Hash
      *
-     * @return null|ReferralHashInterface Related Referral Line
+     * @return ReferralLineInterface|null Related Referral Line
      */
     public function resolve(CustomerInterface $invited, $hash)
     {
@@ -416,7 +416,7 @@ class ReferralProgramManager
      * @throws ReferralProgramEmailIsUserException
      * @throws ReferralProgramLineExistsException
      *
-     * @return $this self Object
+     * @return self
      */
     protected function inviteLine(
         ReferralRuleInterface $referralRule,

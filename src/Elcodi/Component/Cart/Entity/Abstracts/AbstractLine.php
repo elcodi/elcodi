@@ -73,7 +73,7 @@ abstract class AbstractLine
      *
      * @param int $id Id
      *
-     * @return $this Self object
+     * @return self
      */
     public function setId($id)
     {
@@ -87,7 +87,7 @@ abstract class AbstractLine
      *
      * @param ProductInterface $product Product
      *
-     * @return $this self Object
+     * @return self
      */
     public function setProduct(ProductInterface $product)
     {
@@ -121,7 +121,7 @@ abstract class AbstractLine
      *
      * @param VariantInterface $variant
      *
-     * @return $this self Object
+     * @return self
      */
     public function setVariant($variant)
     {
@@ -135,7 +135,7 @@ abstract class AbstractLine
      *
      * @param int $quantity Quantity
      *
-     * @return $this self Object
+     * @return self
      */
     public function setQuantity($quantity)
     {
@@ -165,7 +165,7 @@ abstract class AbstractLine
      *
      * @param PurchasableInterface $purchasable
      *
-     * @return $this self Object
+     * @return self
      */
     public function setPurchasable(PurchasableInterface $purchasable)
     {

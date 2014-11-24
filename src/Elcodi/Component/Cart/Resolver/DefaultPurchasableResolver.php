@@ -76,7 +76,7 @@ class DefaultPurchasableResolver implements PurchasableResolverInterface
      *
      * @param PurchasableInterface $purchasable Purchasable object
      *
-     * @return $this self Object
+     * @return self
      */
     public function setPurchasable(PurchasableInterface $purchasable)
     {

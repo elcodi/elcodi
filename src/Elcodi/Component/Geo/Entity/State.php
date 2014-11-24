@@ -78,7 +78,7 @@ class State implements StateInterface, ZoneMemberAssignableInterface
      *
      * @param string $id Entity Id
      *
-     * @return $this self Object
+     * @return self
      */
     public function setId($id)
     {
@@ -102,7 +102,7 @@ class State implements StateInterface, ZoneMemberAssignableInterface
      *
      * @param string $code Code
      *
-     * @return $this self Object
+     * @return self
      */
     public function setCode($code)
     {
@@ -126,7 +126,7 @@ class State implements StateInterface, ZoneMemberAssignableInterface
      *
      * @param string $name Name
      *
-     * @return $this self Object
+     * @return self
      */
     public function setName($name)
     {
@@ -160,7 +160,7 @@ class State implements StateInterface, ZoneMemberAssignableInterface
      *
      * @param CountryInterface $country Country
      *
-     * @return $this self Object
+     * @return self
      */
     public function setCountry(CountryInterface $country)
     {
@@ -184,7 +184,7 @@ class State implements StateInterface, ZoneMemberAssignableInterface
      *
      * @param Collection $provinces Provinces
      *
-     * @return $this self Object
+     * @return self
      */
     public function setProvinces(Collection $provinces)
     {
@@ -198,7 +198,7 @@ class State implements StateInterface, ZoneMemberAssignableInterface
      *
      * @param ProvinceInterface $province Province
      *
-     * @return $this self Object
+     * @return self
      */
     public function addProvince(ProvinceInterface $province)
     {
@@ -217,7 +217,7 @@ class State implements StateInterface, ZoneMemberAssignableInterface
      *
      * @param ProvinceInterface $province Province
      *
-     * @return $this self Object
+     * @return self
      */
     public function removeProvince(ProvinceInterface $province)
     {

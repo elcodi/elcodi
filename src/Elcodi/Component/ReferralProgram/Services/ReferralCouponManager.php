@@ -110,7 +110,7 @@ class ReferralCouponManager
      * @param string            $hash     Hash
      * @param string            $type     Type of assignment
      *
-     * @return $this self Object
+     * @return self
      */
     public function checkCouponAssignment(CustomerInterface $customer, $hash, $type)
     {
@@ -143,7 +143,7 @@ class ReferralCouponManager
      * @param CustomerInterface $customer Customer
      * @param Collection        $coupons  Coupons
      *
-     * @return $this self Object
+     * @return self
      */
     public function checkCouponsUsed(CustomerInterface $customer, Collection $coupons)
     {
@@ -168,7 +168,7 @@ class ReferralCouponManager
      * @param ReferralLineInterface $referralLine Referral Line
      * @param string                $type         Type of rule
      *
-     * @return $this self Object
+     * @return self
      */
     protected function checkReferrerCouponAssignment(ReferralLineInterface $referralLine, $type)
     {
@@ -225,7 +225,7 @@ class ReferralCouponManager
      * @param ReferralLineInterface $referralLine Referral Line
      * @param string                $type         Type of rule
      *
-     * @return $this self Object
+     * @return self
      */
     protected function checkInvitedCouponAssignment(ReferralLineInterface $referralLine, $type)
     {
@@ -276,7 +276,7 @@ class ReferralCouponManager
      * @param ReferralLineInterface $referralLine Referral line
      * @param CouponInterface       $coupon       Coupon
      *
-     * @return $this self Object
+     * @return self
      */
     protected function raiseCommonCouponAssignedEvent(ReferralLineInterface $referralLine, CouponInterface $coupon)
     {
@@ -296,7 +296,7 @@ class ReferralCouponManager
      * @param CustomerInterface $customer Customer
      * @param Collection        $coupons  Coupons
      *
-     * @return $this self Object
+     * @return self
      */
     protected function checkCouponsUsedAsReferrer(CustomerInterface $customer, Collection $coupons)
     {
@@ -320,7 +320,7 @@ class ReferralCouponManager
      * @param Collection      $referralLines ReferralLine Collection
      * @param CouponInterface $coupon        Coupon
      *
-     * @return $this self Object
+     * @return self
      */
     protected function checkCouponInReferralLineCollection(Collection $referralLines, CouponInterface $coupon)
     {
@@ -349,7 +349,7 @@ class ReferralCouponManager
      * @param CustomerInterface $customer Customer
      * @param Collection        $coupons  Coupons
      *
-     * @return $this self Object
+     * @return self
      */
     protected function checkCouponsUsedAsInvited(CustomerInterface $customer, Collection $coupons)
     {

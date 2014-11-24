@@ -62,7 +62,7 @@ class OrderLine extends AbstractLine implements OrderLineInterface
      *
      * @param int $id Id
      *
-     * @return $this Self object
+     * @return self
      */
     public function setId($id)
     {
@@ -76,7 +76,7 @@ class OrderLine extends AbstractLine implements OrderLineInterface
      *
      * @param OrderInterface $order Order
      *
-     * @return $this self Object
+     * @return self
      */
     public function setOrder(OrderInterface $order)
     {

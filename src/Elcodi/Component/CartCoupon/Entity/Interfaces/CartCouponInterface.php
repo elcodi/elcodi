@@ -29,7 +29,7 @@ interface CartCouponInterface
      *
      * @param CartInterface $cart Cart
      *
-     * @return CartCouponInterface Self object
+     * @return self
      */
     public function setCart(CartInterface $cart);
 
@@ -45,7 +45,7 @@ interface CartCouponInterface
      *
      * @param CouponInterface $coupon Coupon
      *
-     * @return CartCouponInterface Self object
+     * @return self
      */
     public function setCoupon(CouponInterface $coupon);
 

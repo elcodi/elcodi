@@ -17,6 +17,7 @@
 namespace Elcodi\Component\Shipping\Provider;
 
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
+use Elcodi\Component\Shipping\Entity\Interfaces\CarrierBaseRangeInterface;
 use Elcodi\Component\Shipping\Resolver\CarrierResolver;
 
 /**
@@ -58,7 +59,7 @@ class ShippingProvider
      *
      * @param OrderInterface $order Order
      *
-     * @return array Valid CarrierRanges satisfied by the cart
+     * @return CarrierBaseRangeInterface[] Valid CarrierRanges satisfied by the cart
      */
     public function getValidCarrierRangesFromCart(OrderInterface $order)
     {
@@ -74,7 +75,7 @@ class ShippingProvider
      *
      * @param OrderInterface $order Order
      *
-     * @return array CarrierRanges satisfied by the cart
+     * @return CarrierBaseRangeInterface[] CarrierRanges satisfied by the cart
      */
     public function getAllCarrierRangesFromOrder(OrderInterface $order)
     {

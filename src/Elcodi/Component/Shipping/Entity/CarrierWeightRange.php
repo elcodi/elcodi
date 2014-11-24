@@ -53,7 +53,7 @@ class CarrierWeightRange extends AbstractCarrierBaseRange implements CarrierWeig
      *
      * @param int $toWeight ToWeight
      *
-     * @return $this Self object
+     * @return self
      */
     public function setToWeight($toWeight)
     {
@@ -77,7 +77,7 @@ class CarrierWeightRange extends AbstractCarrierBaseRange implements CarrierWeig
      *
      * @param int $fromWeight FromWeight
      *
-     * @return $this Self object
+     * @return self
      */
     public function setFromWeight($fromWeight)
     {

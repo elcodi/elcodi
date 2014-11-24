@@ -32,7 +32,7 @@ interface OrderLineInterface extends PriceInterface, DimensionableInterface, Sta
      *
      * @param OrderInterface $order Order
      *
-     * @return $this self Object
+     * @return self
      */
     public function setOrder(OrderInterface $order);
 
@@ -48,7 +48,7 @@ interface OrderLineInterface extends PriceInterface, DimensionableInterface, Sta
      *
      * @param ProductInterface $product Product
      *
-     * @return $this self Object
+     * @return self
      */
     public function setProduct(ProductInterface $product);
 
@@ -71,7 +71,7 @@ interface OrderLineInterface extends PriceInterface, DimensionableInterface, Sta
      *
      * @param VariantInterface $variant
      *
-     * @return $this self Object
+     * @return self
      */
     public function setVariant($variant);
 
@@ -96,7 +96,7 @@ interface OrderLineInterface extends PriceInterface, DimensionableInterface, Sta
      *
      * @param int $quantity Quantity
      *
-     * @return $this self Object
+     * @return self
      */
     public function setQuantity($quantity);
 
@@ -112,7 +112,7 @@ interface OrderLineInterface extends PriceInterface, DimensionableInterface, Sta
      *
      * @param integer $height Height
      *
-     * @return $this self Object
+     * @return self
      */
     public function setHeight($height);
 
@@ -121,7 +121,7 @@ interface OrderLineInterface extends PriceInterface, DimensionableInterface, Sta
      *
      * @param integer $width Width
      *
-     * @return $this self Object
+     * @return self
      */
     public function setWidth($width);
 
@@ -130,7 +130,7 @@ interface OrderLineInterface extends PriceInterface, DimensionableInterface, Sta
      *
      * @param integer $depth Depth
      *
-     * @return $this self Object
+     * @return self
      */
     public function setDepth($depth);
 
@@ -139,7 +139,7 @@ interface OrderLineInterface extends PriceInterface, DimensionableInterface, Sta
      *
      * @param integer $weight Weight
      *
-     * @return $this self Object
+     * @return self
      */
     public function setWeight($weight);
 }

@@ -54,7 +54,7 @@ abstract class AbstractRule extends AbstractEntity
      *
      * @param string $name Name
      *
-     * @return AbstractRule Self object
+     * @return self
      */
     public function setName($name)
     {
@@ -78,7 +78,7 @@ abstract class AbstractRule extends AbstractEntity
      *
      * @param string $code Code
      *
-     * @return AbstractRule Self object
+     * @return self
      */
     public function setCode($code)
     {

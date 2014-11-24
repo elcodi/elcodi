@@ -69,7 +69,7 @@ class TaxGroup implements TaxGroupInterface
      *
      * @param int $id Id
      *
-     * @return $this Self object
+     * @return self
      */
     public function setId($id)
     {
@@ -93,7 +93,7 @@ class TaxGroup implements TaxGroupInterface
      *
      * @param string $name Name
      *
-     * @return $this Self object
+     * @return self
      */
     public function setName($name)
     {
@@ -117,7 +117,7 @@ class TaxGroup implements TaxGroupInterface
      *
      * @param string $description
      *
-     * @return $this
+     * @return self
      */
     public function setDescription($description)
     {
@@ -141,7 +141,7 @@ class TaxGroup implements TaxGroupInterface
      *
      * @param Collection $taxes Taxes
      *
-     * @return $this Self object
+     * @return self
      */
     public function setTaxes($taxes)
     {
@@ -155,7 +155,7 @@ class TaxGroup implements TaxGroupInterface
      *
      * @param TaxInterface $tax Tax
      *
-     * @return $this self Object
+     * @return self
      */
     public function addTax(TaxInterface $tax)
     {
@@ -174,7 +174,7 @@ class TaxGroup implements TaxGroupInterface
      *
      * @param TaxInterface $tax Tax
      *
-     * @return $this self Object
+     * @return self
      */
     public function removeTax(TaxInterface $tax)
     {

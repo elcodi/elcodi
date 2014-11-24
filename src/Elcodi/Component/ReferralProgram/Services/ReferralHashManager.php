@@ -121,7 +121,7 @@ class ReferralHashManager
      *
      * @param string $hash Hash
      *
-     * @return null|ReferralHash
+     * @return ReferralHash|null
      */
     public function getReferralHashByHash($hash)
     {

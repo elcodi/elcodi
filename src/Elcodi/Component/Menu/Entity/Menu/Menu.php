@@ -48,7 +48,7 @@ class Menu extends AbstractEntity implements MenuInterface
      *
      * @param string $code Code
      *
-     * @return Menu Self object
+     * @return self
      */
     public function setCode($code)
     {
@@ -72,7 +72,7 @@ class Menu extends AbstractEntity implements MenuInterface
      *
      * @param string $description Description
      *
-     * @return Menu Self object
+     * @return self
      */
     public function setDescription($description)
     {
