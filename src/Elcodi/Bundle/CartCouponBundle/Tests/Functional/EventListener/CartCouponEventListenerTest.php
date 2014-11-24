@@ -30,7 +30,7 @@ class CartCouponEventListenerTest extends WebTestCase
      */
     protected function loadSchema()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -42,6 +42,18 @@ class CartCouponEventListenerTest extends WebTestCase
     {
         return [
             'elcodi.core.cart_coupon.event_listener.cart'
+        ];
+    }
+
+    /**
+     * Load fixtures of these bundles
+     *
+     * @return array Bundles name where fixtures should be found
+     */
+    protected function loadFixturesBundles()
+    {
+        return [
+            'ElcodiCurrencyBundle',
         ];
     }
 }

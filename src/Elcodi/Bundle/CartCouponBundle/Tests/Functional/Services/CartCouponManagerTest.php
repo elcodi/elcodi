@@ -31,7 +31,7 @@ class CartCouponManagerTest extends WebTestCase
      */
     protected function loadSchema()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -71,5 +71,17 @@ class CartCouponManagerTest extends WebTestCase
             ->get('elcodi.cart_coupon_manager')
             ->getCoupons($cart)
         );
+    }
+
+    /**
+     * Load fixtures of these bundles
+     *
+     * @return array Bundles name where fixtures should be found
+     */
+    protected function loadFixturesBundles()
+    {
+        return [
+            'ElcodiCurrencyBundle',
+        ];
     }
 }

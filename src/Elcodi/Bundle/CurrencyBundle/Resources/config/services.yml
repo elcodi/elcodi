@@ -65,6 +65,8 @@ services:
             currency_session_manager: @elcodi.currency_session_manager
             currency_repository: @elcodi.repository.currency
             default_currency: %elcodi.core.currency.default_currency%
+        calls:
+            - [loadCurrency]
 
     elcodi.currency_wrapper:
         alias: elcodi.core.currency.wrapper.currency

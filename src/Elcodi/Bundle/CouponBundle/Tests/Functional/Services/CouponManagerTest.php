@@ -30,7 +30,7 @@ class CouponManagerTest extends WebTestCase
      */
     protected function loadSchema()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -43,6 +43,18 @@ class CouponManagerTest extends WebTestCase
         return [
             'elcodi.core.coupon.service.coupon_manager',
             'elcodi.coupon_manager',
+        ];
+    }
+
+    /**
+     * Load fixtures of these bundles
+     *
+     * @return array Bundles name where fixtures should be found
+     */
+    protected function loadFixturesBundles()
+    {
+        return [
+            'ElcodiCurrencyBundle',
         ];
     }
 }

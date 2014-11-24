@@ -85,9 +85,9 @@ class CurrencyWrapper
     /**
      * Loads Currency from session or repository
      *
-     * @return CurrencyInterface Instance of Customer loaded
+     * @return CurrencyInterface Instance of loaded Currency
      *
-     * @throws CurrencyNotAvailableException Any currency available
+     * @throws CurrencyNotAvailableException No available currencies
      */
     public function loadCurrency()
     {
