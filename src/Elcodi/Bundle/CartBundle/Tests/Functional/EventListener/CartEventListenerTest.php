@@ -42,4 +42,16 @@ class CartEventListenerTest extends WebTestCase
     {
         return 'elcodi.core.cart.event_listener.cart';
     }
+
+    /**
+     * Load fixtures of these bundles
+     *
+     * @return array Bundles name where fixtures should be found
+     */
+    protected function loadFixturesBundles()
+    {
+        return [
+            'ElcodiCurrencyBundle',
+        ];
+    }
 }
