@@ -17,6 +17,7 @@
 namespace Elcodi\Bundle\PageBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
@@ -144,5 +145,23 @@ class ElcodiPageExtension extends AbstractExtension implements EntitiesOverridab
     public function getAlias()
     {
         return static::EXTENSION_NAME;
+    }
+
+    /**
+     * Post load implementation
+     *
+     * @param ContainerBuilder $container A ContainerBuilder instance
+     * @param array            $config    Parsed configuration
+     */
+    public function postLoad(ContainerBuilder $container, array $config = array())
+    {
+        parent::postLoad($container, $config);
+
+        if ($config['routing']['enabled']) {
+            $loader_id = $config['routing']['loader'];
+            $loaderDefinition = $container->findDefinition($loader_id);
+            $loaderDefinition->addTag('routing.loader');
+            $container->setAlias('elcodi.core.page.router', $loader_id);
+        }
     }
 }
