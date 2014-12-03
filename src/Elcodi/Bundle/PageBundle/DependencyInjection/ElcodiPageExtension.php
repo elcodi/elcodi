@@ -79,8 +79,15 @@ class ElcodiPageExtension extends AbstractExtension implements EntitiesOverridab
     {
         return [
             'classes',
-            'controllers',
+            [
+                'controllers',
+                $config['routing']['enabled']
+            ],
             'factories',
+            [
+                'loaders',
+                $config['routing']['enabled']
+            ],
             'objectManagers',
             'repositories',
         ];
@@ -106,6 +113,10 @@ class ElcodiPageExtension extends AbstractExtension implements EntitiesOverridab
             "elcodi.core.page.entity.page.mapping_file" => $config['mapping']['page']['mapping_file'],
             "elcodi.core.page.entity.page.manager"      => $config['mapping']['page']['manager'],
             "elcodi.core.page.entity.page.enabled"      => $config['mapping']['page']['enabled'],
+
+            "elcodi.core.page.routing.route_name" => $config['routing']['route_name'],
+            "elcodi.core.page.routing.route_path" => $config['routing']['route_path'],
+            "elcodi.core.page.routing.controller" => $config['routing']['controller'],
         ];
     }
 
