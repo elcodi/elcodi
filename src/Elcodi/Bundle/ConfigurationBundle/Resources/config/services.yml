@@ -1,0 +1,12 @@
+services:
+
+    #
+    # Services
+    #
+    elcodi.core.configuration.service.configuration_manager:
+        class: %elcodi.core.configuration.service.configuration_manager.class%
+        arguments:
+            configuration_provider: @elcodi.core.configuration.adapter.configuration_provider
+
+    elcodi.configuration_manager:
+        alias: elcodi.core.configuration.service.configuration_manager

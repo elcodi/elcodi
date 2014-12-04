@@ -1,0 +1,11 @@
+services:
+
+    #
+    # Twig extensions
+    #
+    elcodi.core.configuration.twig_extension.configuration_extension:
+        class: %elcodi.core.configuration.twig_extension.configuration_extension.class%
+        arguments:
+            configuration_manager: @elcodi.configuration_manager
+        tags:
+            - { name: twig.extension }

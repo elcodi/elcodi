@@ -1,0 +1,40 @@
+{
+    "name": "elcodi/configuration",
+    "description": "Elcodi Configuration Component",
+    "keywords": ["elcodi", "Configuration", "ecommerce", "component"],
+    "homepage": "https://github.com/elcodi/Configuration",
+
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "Symfony Community",
+            "homepage": "https://github.com/elcodi/Configuration/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "doctrine/common": "~2.4",
+        "doctrine/orm": "~2.4",
+
+        "elcodi/core": "~0.3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\Component\\Configuration\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.4-dev"
+        }
+    }
+}

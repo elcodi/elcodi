@@ -1,0 +1,19 @@
+parameters:
+
+    #
+    # Doctrine parameter configuration provider
+    #
+    elcodi.core.configuration.adapter.doctrine_cache_configuration_provider.class: Elcodi\Component\Configuration\Adapter\DoctrineCacheConfigurationProvider
+
+services:
+
+    #
+    # Doctrine parameter configuration provider
+    #
+    elcodi.core.configuration.adapter.doctrine_cache_configuration_provider:
+        class: %elcodi.core.configuration.adapter.doctrine_cache_configuration_provider.class%
+        calls:
+            - [setCache, [@doctrine_cache.providers.elcodi_configuration]]
+
+    elcodi.core.configuration.adapter.configuration_provider:
+        alias: elcodi.core.configuration.adapter.doctrine_cache_configuration_provider
