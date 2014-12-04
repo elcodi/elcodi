@@ -1,0 +1,24 @@
+services:
+
+    #
+    # Factories
+    #
+
+    #
+    # Factory for entity tax
+    #
+    elcodi.core.translator.factory.translation:
+        class: %elcodi.core.translator.factory.translation.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.translator.entity.translation.class%"]]
+
+    elcodi.factory.translation:
+        alias: elcodi.core.translator.factory.translation
+
+    #
+    # Factory o for Translator service
+    #
+    elcodi.core.translator.factory.translator:
+        class: %elcodi.core.translator.factory.translator.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.translator.services.translator.class%"]]

@@ -1,0 +1,127 @@
+<?php
+
+/*
+ * This file is part of the Elcodi package.
+ *
+ * Copyright (c) 2014 Elcodi.com
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Feel free to edit as you please, and have fun.
+ *
+ * @author Marc Morera <yuhu@mmoreram.com>
+ * @author Aldo Chiecchia <zimage@tiscali.it>
+ */
+
+namespace Elcodi\Bundle\TranslatorBundle\DependencyInjection;
+
+use Symfony\Component\Config\Definition\ConfigurationInterface;
+
+use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
+use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
+
+/**
+ * This class loads and manages your bundle configuration
+ */
+class ElcodiTranslatorExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
+{
+    /**
+     * @var string
+     *
+     * Extension name
+     */
+    const EXTENSION_NAME = 'elcodi_translator';
+
+    /**
+     * Get the Config file location
+     *
+     * @return string Config file location
+     */
+    public function getConfigFilesLocation()
+    {
+        return __DIR__ . '/../Resources/config';
+    }
+
+    /**
+     * Return a new Configuration instance.
+     *
+     * If object returned by this method is an instance of
+     * ConfigurationInterface, extension will use the Configuration to read all
+     * bundle config definitions.
+     *
+     * Also will call getParametrizationValues method to load some config values
+     * to internal parameters.
+     *
+     * @return ConfigurationInterface Configuration file
+     */
+    protected function getConfigurationInstance()
+    {
+        return new Configuration(static::EXTENSION_NAME);
+    }
+
+    /**
+     * Load Parametrization definition
+     *
+     * return array(
+     *      'parameter1' => $config['parameter1'],
+     *      'parameter2' => $config['parameter2'],
+     *      ...
+     * );
+     *
+     * @param array $config Bundles config values
+     *
+     * @return array Parametrization values
+     */
+    protected function getParametrizationValues(array $config)
+    {
+        return [
+            "elcodi.core.translator.entity.translation.class" => $config['mapping']['translation']['class'],
+            "elcodi.core.translator.entity.translation.mapping_file" => $config['mapping']['translation']['mapping_file'],
+            "elcodi.core.translator.entity.translation.manager" => $config['mapping']['translation']['manager'],
+            "elcodi.core.translator.entity.translation.enabled" => $config['mapping']['translation']['enabled'],
+
+            "elcodi.core.translator.configuration" => $config['configuration'],
+            "elcodi.core.translator.cache_prefix" => $config['cache_prefix'],
+        ];
+    }
+
+    /**
+     * Config files to load
+     *
+     * @param array $config Configuration
+     *
+     * @return array Config files
+     */
+    public function getConfigFiles(array $config)
+    {
+        return [
+            'classes',
+            'factories',
+            'repositories',
+            'objectManagers',
+            'services',
+            'eventDispatchers',
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function getEntitiesOverrides()
+    {
+        return [
+            'Elcodi\Component\Translator\Entity\Interfaces\TranslationInterface' => 'elcodi.core.translator.entity.translation.class',
+        ];
+    }
+
+    /**
+     * Returns the extension alias, same value as extension name
+     *
+     * @return string The alias
+     */
+    public function getAlias()
+    {
+        return static::EXTENSION_NAME;
+    }
+}

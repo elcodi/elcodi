@@ -14,24 +14,16 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Component\Core\Factory\Abstracts;
+namespace Elcodi\Component\Translator\Factory;
 
-use Elcodi\Component\Core\Factory\Traits\EntityNamespaceTrait;
+use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Translator\Entity\Interfaces\TranslationInterface;
 
 /**
- * Class AbstractFactory
- *
- * Entity factories create a pristine instance for the specified Entity
- *
- * Entity initialization logic should be placed right here.
- *
- * Injected entity namespace should not be duplicated.
+ * Class TranslationFactory
  */
-abstract class AbstractFactory
+class TranslationFactory extends AbstractFactory
 {
-    use EntityNamespaceTrait;
-
     /**
      * Creates an instance of an entity.
      *
@@ -40,7 +32,16 @@ abstract class AbstractFactory
      * This method must always returns an empty instance of the related Entity
      * and initializes it in a consistent state
      *
-     * @return TranslationInterface Empty entity
+     * @return Object Empty entity
      */
-    abstract public function create();
+    public function create()
+    {
+        /**
+         * @var TranslationInterface $translation
+         */
+        $classNamespace = $this->getEntityNamespace();
+        $translation = new $classNamespace();
+
+        return $translation;
+    }
 }
