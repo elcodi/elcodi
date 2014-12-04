@@ -1,0 +1,19 @@
+parameters:
+
+    #
+    # Doctrine parameter fetcher adapter
+    #
+    elcodi.core.configuration.adapter.doctrine_parameter_fetcher_adapter.class: Elcodi\Component\Configuration\Adapter\DoctrineParameterFetcher
+
+services:
+
+    #
+    # Doctrine parameter fetcher
+    #
+    elcodi.core.configuration.adapter.doctrine_parameter_fetcher_adapter:
+        class: %elcodi.core.configuration.adapter.doctrine_parameter_fetcher_adapter.class%
+        arguments:
+            object_manager: @elcodi.repository.configuration
+
+    elcodi.core.configuration.adapter.fetcher_adapter:
+        alias: elcodi.core.configuration.adapter.doctrine_parameter_fetcher_adapter

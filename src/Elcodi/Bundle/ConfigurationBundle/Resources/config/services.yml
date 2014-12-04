@@ -1,0 +1,13 @@
+services:
+
+    #
+    # Services
+    #
+    elcodi.core.configuration.service.configuration_manager:
+        class: %elcodi.core.configuration.service.configuration_manager.class%
+        arguments:
+            fetcher_adapter: @elcodi.core.configuration.adapter.fetcher_adapter
+
+
+    elcodi.configuration_manager:
+        alias: elcodi.core.configuration.service.configuration_manager
