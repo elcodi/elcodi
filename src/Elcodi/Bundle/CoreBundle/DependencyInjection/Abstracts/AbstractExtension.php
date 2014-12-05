@@ -17,25 +17,107 @@
 namespace Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Config\Resource\FileResource;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
  * Class AbstractExtension
  */
-abstract class AbstractExtension extends Extension implements PrependExtensionInterface
+abstract class AbstractExtension
+    implements ExtensionInterface, ConfigurationExtensionInterface, PrependExtensionInterface
 {
+    /**
+     * {@inheritdoc}
+     */
+    abstract public function getAlias();
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getNamespace()
+    {
+        return 'http://example.org/schema/dic/'.$this->getAlias();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getXsdValidationBasePath()
+    {
+        return false;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    final public function getConfiguration(array $config, ContainerBuilder $container)
+    {
+        $configuration = $this->getConfigurationInstance();
+
+        if ($configuration) {
+            $refClass = new \ReflectionObject($configuration);
+            $container->addResource(new FileResource($refClass->getFileName()));
+        }
+
+        return $configuration;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function load(array $config, ContainerBuilder $container)
+    {
+        $configuration = $this->getConfiguration($config, $container);
+        if ($configuration instanceof ConfigurationInterface) {
+            $config = $this->processConfiguration($configuration, $config);
+            $this->applyParametrizedValues($config, $container);
+        }
+
+        $configFiles = $this->getConfigFiles($config);
+        if (!empty($configFiles)) {
+            $this->loadFiles($configFiles, $container);
+        }
+
+        $this->postLoad($config, $container);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function prepend(ContainerBuilder $container)
+    {
+        $config = [];
+        $configuration = $this->getConfigurationInstance();
+        if ($configuration instanceof ConfigurationInterface) {
+            $config = $container->getExtensionConfig($this->getAlias());
+
+            $tmpContainer = new ContainerBuilder($container->getParameterBag());
+            $tmpContainer->setResourceTracking($container->isTrackingResources());
+            $tmpContainer->addObjectResource($this);
+            $config = $this->processConfiguration($configuration, $config);
+            $config = $container->getParameterBag()->resolveValue($config);
+            $this->applyParametrizedValues($config, $tmpContainer);
+
+            $container->merge($tmpContainer);
+        }
+
+        $this->preLoad($config, $container);
+    }
+
     /**
      * Get the Config file location
      *
      * @return string Config file location
      */
-    abstract public function getConfigFilesLocation();
+    abstract protected function getConfigFilesLocation();
 
     /**
      * Config files to load
@@ -58,7 +140,7 @@ abstract class AbstractExtension extends Extension implements PrependExtensionIn
      *
      * @return array Config files
      */
-    abstract public function getConfigFiles(array $config);
+    abstract protected function getConfigFiles(array $config);
 
     /**
      * Return a new Configuration instance.
@@ -96,133 +178,17 @@ abstract class AbstractExtension extends Extension implements PrependExtensionIn
     }
 
     /**
-     * Loads a specific configuration.
-     *
-     * @param array            $config    An array of configuration values
-     * @param ContainerBuilder $container A ContainerBuilder instance
-     *
-     * @throws \InvalidArgumentException When provided tag is not defined in this extension
-     */
-    public function load(array $config, ContainerBuilder $container)
-    {
-        $configuration = $this->getConfigurationInstance();
-
-        if ($configuration instanceof ConfigurationInterface) {
-
-            $config = $this->processConfiguration($configuration, $config);
-            $parametrizationValues = $this->getParametrizationValues($config);
-
-            if (is_array($parametrizationValues)) {
-
-                foreach ($parametrizationValues as $parameter => $value) {
-
-                    $container->setParameter($parameter, $value);
-                }
-            }
-        }
-
-        $configFiles = $this->getConfigFiles($config);
-
-        if (!empty($configFiles)) {
-
-            $loader = new YamlFileLoader($container, new FileLocator($this->getConfigFilesLocation()));
-
-            foreach ($configFiles as $configFile) {
-
-                if (is_array($configFile)) {
-
-                    if (isset($configFile[1]) && $configFile[1] === false) {
-
-                        continue;
-                    }
-
-                    $configFile = $configFile[0];
-                }
-
-                $loader->load($configFile . '.yml');
-            }
-        }
-
-        $this->postLoad($container, $config);
-    }
-
-    /**
-     * Loads a specific configuration.
-     *
-     * @param ConfigurationInterface $configuration Configuration instance
-     * @param array                  $config        An array of configuration values
-     * @param ContainerBuilder       $container     A ContainerBuilder instance
-     *
-     * @throws \InvalidArgumentException When provided tag is not defined in this extension
-     */
-    public function loadMappingConfiguration(
-        ContainerBuilder $container,
-        ConfigurationInterface $configuration,
-        array $config
-    )
-    {
-        $config = $this->processConfiguration($configuration, $config);
-        $mappingParametrizationValues = $this->getParametrizationValues($config);
-
-        if (is_array($mappingParametrizationValues)) {
-
-            foreach ($mappingParametrizationValues as $parameter => $value) {
-
-                $container->setParameter($parameter, $value);
-            }
-        }
-    }
-
-    /**
-     * Post load implementation
-     *
-     * @param ContainerBuilder $container A ContainerBuilder instance
-     * @param array            $config    Parsed configuration
-     */
-    public function postLoad(ContainerBuilder $container, array $config = array())
-    {
-    }
-
-    /**
-     * Allow an extension to prepend the extension configurations.
-     *
+     * @param array            $config
      * @param ContainerBuilder $container
      */
-    public function prepend(ContainerBuilder $container)
+    protected function preLoad(array $config, ContainerBuilder $container)
     {
-        if (!($this instanceof EntitiesOverridableExtensionInterface)) {
+        if (!$this instanceof EntitiesOverridableExtensionInterface) {
             return;
         }
 
-        /**
-         * @var $this self|EntitiesOverridableExtensionInterface
-         */
-        $mappingConfiguration = $this->getConfigurationInstance();
-
-        if ($mappingConfiguration instanceof ConfigurationInterface) {
-
-            $config = $container->getExtensionConfig($this->getAlias());
-            $config = $container->getParameterBag()->resolveValue($config);
-
-            $tmpContainer = new ContainerBuilder($container->getParameterBag());
-            $tmpContainer->setResourceTracking($container->isTrackingResources());
-            $tmpContainer->addObjectResource($this);
-
-            $this->loadMappingConfiguration(
-                $tmpContainer,
-                $mappingConfiguration,
-                $config
-            );
-
-            $container->merge($tmpContainer);
-        }
-
-        /**
-         * Perform overrides for Doctrine ORM mapping resolves
-         */
         $overrides = $this->getEntitiesOverrides();
         foreach ($overrides as $interface => $override) {
-
             $overrides[$interface] = $container->getParameter($override);
         }
 
@@ -231,5 +197,64 @@ abstract class AbstractExtension extends Extension implements PrependExtensionIn
                 'resolve_target_entities' => $overrides
             ]
         ]);
+    }
+
+    /**
+     * @param array            $config
+     * @param ContainerBuilder $container
+     */
+    protected function postLoad(array $config, ContainerBuilder $container)
+    {
+        // Implement here your bundle logic
+    }
+
+    /**
+     * @param ConfigurationInterface $configuration
+     * @param array                  $configs
+     *
+     * @return array
+     */
+    protected function processConfiguration(ConfigurationInterface $configuration, array $configs)
+    {
+        $processor = new Processor();
+
+        return $processor->processConfiguration($configuration, $configs);
+    }
+
+    /**
+     * @param array            $config
+     * @param ContainerBuilder $container
+     */
+    protected function applyParametrizedValues(array $config, ContainerBuilder $container)
+    {
+        $parametrizationValues = $this->getParametrizationValues($config);
+        if (is_array($parametrizationValues)) {
+            $container
+                ->getParameterBag()
+                ->add($parametrizationValues);
+        }
+    }
+
+    /**
+     * Load multiple files
+     *
+     * @param array            $configFiles
+     * @param ContainerBuilder $container
+     */
+    protected function loadFiles(array $configFiles, ContainerBuilder $container)
+    {
+        $loader = new YamlFileLoader($container, new FileLocator($this->getConfigFilesLocation()));
+
+        foreach ($configFiles as $configFile) {
+            if (is_array($configFile)) {
+                if (isset($configFile[1]) && false === $configFile[1]) {
+                    continue;
+                }
+
+                $configFile = $configFile[0];
+            }
+
+            $loader->load($configFile . '.yml');
+        }
     }
 }
