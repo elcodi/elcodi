@@ -16,13 +16,15 @@
 
 namespace Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts;
 
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
  * Class AbstractConfiguration
  */
-class AbstractConfiguration
+abstract class AbstractConfiguration implements ConfigurationInterface
 {
     /**
      * @var string
@@ -40,6 +42,26 @@ class AbstractConfiguration
     {
         $this->extensionName = $extensionName;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getConfigTreeBuilder()
+    {
+        $treeBuilder = new TreeBuilder();
+        $rootNode = $treeBuilder->root($this->extensionName);
+
+        $this->setupTree($rootNode);
+
+        return $treeBuilder;
+    }
+
+    /**
+     * Configure the root node
+     *
+     * @param ArrayNodeDefinition $rootNode
+     */
+    abstract protected function setupTree(ArrayNodeDefinition $rootNode);
 
     /**
      * Add a mapping node into configuration
