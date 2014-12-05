@@ -20,7 +20,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-use Elcodi\Component\Page\Services\Interfaces\RouterInterface;
+use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
+use Elcodi\Component\Page\Repository\Interfaces\PageRepositoryInterface;
 
 /**
  * Class PageController
@@ -30,33 +31,72 @@ use Elcodi\Component\Page\Services\Interfaces\RouterInterface;
 class PageController
 {
     /**
-     * @var RouterInterface
+     * @var PageRepositoryInterface
      */
-    protected $router;
+    protected $repository;
 
     /**
-     * @param RouterInterface $router
+     * @param PageRepositoryInterface $repository
      */
-    public function __construct(RouterInterface $router)
+    public function __construct(PageRepositoryInterface $repository)
     {
-        $this->router = $router;
+        $this->repository = $repository;
     }
 
     /**
      * Renders a page
      *
      * @param Request $request
+     * @param string  $path
      *
      * @return Response
+     *
+     * @throws \Exception
      */
-    public function renderAction(Request $request)
+    public function renderAction(Request $request, $path = '')
     {
-        $response = $this->router->handleRequest($request);
-
-        if (null === $response) {
+        $page = $this->repository->findOneByPath($path);
+        if (null === $page) {
             throw new NotFoundHttpException('Page not found');
         }
 
+        $response = $this->createResponse($page);
+
+        if (!$response->isNotModified($request)) {
+
+            $response->setContent($this->renderPage($page));
+            $response->headers->set('Content-Type', 'text/html');
+        }
+
         return $response;
+    }
+
+    /**
+     * @param PageInterface $page
+     *
+     * @return Response
+     */
+    protected function createResponse(PageInterface $page)
+    {
+        $response = new Response();
+
+        $response
+            ->setLastModified($page->getUpdatedAt())
+            ->setPublic()
+        ;
+
+        return $response;
+    }
+
+    /**
+     * Renders page content
+     *
+     * @param PageInterface $page
+     *
+     * @return string
+     */
+    protected function renderPage(PageInterface $page)
+    {
+        return $page->getContent();
     }
 }
