@@ -81,9 +81,12 @@ class ElcodiCommentExtension extends AbstractExtension implements EntitiesOverri
             "elcodi.core.comment.entity.comment.class"        => $config['mapping']['comment']['class'],
             "elcodi.core.comment.entity.comment.mapping_file" => $config['mapping']['comment']['mapping_file'],
             "elcodi.core.comment.entity.comment.manager"      => $config['mapping']['comment']['manager'],
+            "elcodi.core.comment.entity.comment.enabled"      => $config['mapping']['comment']['enabled'],
+
             "elcodi.core.comment.entity.vote.class"           => $config['mapping']['vote']['class'],
             "elcodi.core.comment.entity.vote.mapping_file"    => $config['mapping']['vote']['mapping_file'],
             "elcodi.core.comment.entity.vote.manager"         => $config['mapping']['vote']['manager'],
+            "elcodi.core.comment.entity.vote.enabled"         => $config['mapping']['vote']['enabled'],
 
             'elcodi.core.comment.cache_key'                   => $config['comments']['cache_key'],
         ];
