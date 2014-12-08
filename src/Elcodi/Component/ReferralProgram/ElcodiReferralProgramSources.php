@@ -19,7 +19,7 @@ namespace Elcodi\Component\ReferralProgram;
 /**
  * ElcodiReferralProgramSources
  */
-class ElcodiReferralProgramSources
+final class ElcodiReferralProgramSources
 {
     /**
      * Source email.

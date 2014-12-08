@@ -19,7 +19,7 @@ namespace Elcodi\Component\ReferralProgram;
 /**
  * ElcodiReferralProgramEvents
  */
-class ElcodiReferralProgramEvents
+final class ElcodiReferralProgramEvents
 {
     /**
      * This event is fired each time a user invites an email

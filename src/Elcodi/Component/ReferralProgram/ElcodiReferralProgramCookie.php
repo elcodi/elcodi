@@ -19,7 +19,7 @@ namespace Elcodi\Component\ReferralProgram;
 /**
  * Class ElcodiReferralProgramCookie
  */
-class ElcodiReferralProgramCookie
+final class ElcodiReferralProgramCookie
 {
     /**
      * Cookie name

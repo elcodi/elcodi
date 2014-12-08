@@ -19,7 +19,7 @@ namespace Elcodi\Component\Shipping;
 /**
  * Class ElcodiShippingResolverTypes
  */
-class ElcodiShippingResolverTypes
+final class ElcodiShippingResolverTypes
 {
     /**
      * @var integer

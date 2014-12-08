@@ -19,7 +19,7 @@ namespace Elcodi\Component\Cart;
 /**
  * Core Events related with all core entities
  */
-class ElcodiCartEvents
+final class ElcodiCartEvents
 {
     /**
      * This event is dispatched before the Cart is loaded

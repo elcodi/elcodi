@@ -19,7 +19,7 @@ namespace Elcodi\Component\User;
 /**
  * Class ElcodiUserProperties
  */
-class ElcodiUserProperties
+final class ElcodiUserProperties
 {
     /**
      * @var integer
