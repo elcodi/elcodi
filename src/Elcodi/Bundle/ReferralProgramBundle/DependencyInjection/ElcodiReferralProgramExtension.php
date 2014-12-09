@@ -79,14 +79,17 @@ class ElcodiReferralProgramExtension extends AbstractExtension implements Entiti
             "elcodi.core.referral_program.entity.referral_hash.class"        => $config['mapping']['referral_hash']['class'],
             "elcodi.core.referral_program.entity.referral_hash.mapping_file" => $config['mapping']['referral_hash']['mapping_file'],
             "elcodi.core.referral_program.entity.referral_hash.manager"      => $config['mapping']['referral_hash']['manager'],
+            "elcodi.core.referral_program.entity.referral_hash.enabled"      => $config['mapping']['referral_hash']['enabled'],
 
             "elcodi.core.referral_program.entity.referral_line.class"        => $config['mapping']['referral_line']['class'],
             "elcodi.core.referral_program.entity.referral_line.mapping_file" => $config['mapping']['referral_line']['mapping_file'],
             "elcodi.core.referral_program.entity.referral_line.manager"      => $config['mapping']['referral_line']['manager'],
+            "elcodi.core.referral_program.entity.referral_line.enabled"      => $config['mapping']['referral_line']['enabled'],
 
             "elcodi.core.referral_program.entity.referral_rule.class"        => $config['mapping']['referral_rule']['class'],
             "elcodi.core.referral_program.entity.referral_rule.mapping_file" => $config['mapping']['referral_rule']['mapping_file'],
             "elcodi.core.referral_program.entity.referral_rule.manager"      => $config['mapping']['referral_rule']['manager'],
+            "elcodi.core.referral_program.entity.referral_rule.enabled"      => $config['mapping']['referral_rule']['enabled'],
 
             'elcodi.core.referral_program.controller_route_name'             => $config['controller_route_name'],
             'elcodi.core.referral_program.controller_route'                  => $config['controller_route'],

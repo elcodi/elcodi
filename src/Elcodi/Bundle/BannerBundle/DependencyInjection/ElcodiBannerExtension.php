@@ -79,10 +79,12 @@ class ElcodiBannerExtension extends AbstractExtension implements EntitiesOverrid
             "elcodi.core.banner.entity.banner.class"             => $config['mapping']['banner']['class'],
             "elcodi.core.banner.entity.banner.mapping_file"      => $config['mapping']['banner']['mapping_file'],
             "elcodi.core.banner.entity.banner.manager"           => $config['mapping']['banner']['manager'],
+            "elcodi.core.banner.entity.banner.enabled"           => $config['mapping']['banner']['enabled'],
 
             "elcodi.core.banner.entity.banner_zone.class"        => $config['mapping']['banner_zone']['class'],
             "elcodi.core.banner.entity.banner_zone.mapping_file" => $config['mapping']['banner_zone']['mapping_file'],
             "elcodi.core.banner.entity.banner_zone.manager"      => $config['mapping']['banner_zone']['manager'],
+            "elcodi.core.banner.entity.banner_zone.enabled"      => $config['mapping']['banner_zone']['enabled'],
         ];
     }
 
