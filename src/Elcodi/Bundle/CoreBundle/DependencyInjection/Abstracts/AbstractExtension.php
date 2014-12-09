@@ -38,16 +38,6 @@ abstract class AbstractExtension extends Extension implements PrependExtensionIn
     abstract public function getConfigFilesLocation();
 
     /**
-     * Get the Config file location
-     *
-     * @return string Config file location
-     */
-    public static function getExtensionName()
-    {
-        return null;
-    }
-
-    /**
      * Config files to load
      *
      * Each array position can be a simple file name if must be loaded always,
@@ -204,11 +194,14 @@ abstract class AbstractExtension extends Extension implements PrependExtensionIn
             return;
         }
 
+        /**
+         * @var $this self|EntitiesOverridableExtensionInterface
+         */
         $mappingConfiguration = $this->getConfigurationInstance();
 
         if ($mappingConfiguration instanceof ConfigurationInterface) {
 
-            $config = $container->getExtensionConfig($this::getExtensionName());
+            $config = $container->getExtensionConfig($this->getAlias());
             $config = $container->getParameterBag()->resolveValue($config);
 
             $tmpContainer = new ContainerBuilder($container->getParameterBag());
