@@ -29,7 +29,7 @@
     },
     "suggest": {
         "twig/twig": "Required if using Twig extensions",
-        "symfony/routing": "Required if using twig extension"
+        "symfony/routing": "~2.6"
     },
     "autoload": {
         "psr-4": {
