@@ -22,6 +22,7 @@
     "require": {
         "php": ">=5.4",
 
+        "psr/log": "~1.0",
         "symfony/event-dispatcher": "~2.4",
 
         "elcodi/core": "~0.3.0"
