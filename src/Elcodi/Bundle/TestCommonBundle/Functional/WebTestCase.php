@@ -70,7 +70,11 @@ abstract class WebTestCase extends BaseWebTestCase
 
         } catch (Exception $e) {
 
-            throw new RuntimeException(sprintf('Unable to start the application: %s', $e->getMessage()));
+            throw new RuntimeException(
+                sprintf('Unable to start the application: %s', $e->getMessage()),
+                $e->getCode(),
+                $e
+            );
         }
 
         $this->createSchema();
