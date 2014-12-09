@@ -1,0 +1,42 @@
+{
+    "name": "elcodi/entity-translator",
+    "description": "Elcodi Entity Translator Component",
+    "keywords": ["elcodi", "translator", "ecommerce", "component"],
+    "homepage": "https://github.com/elcodi/EntityTranslator",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "Symfony Community",
+            "homepage": "https://github.com/elcodi/EntityTranslator/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "doctrine/common": "~2.4",
+        "doctrine/orm": "~2.4",
+
+        "elcodi/core": "~0.3.0"
+    },
+    "suggested": {
+        "symfony/form": "Required if using Form features"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\Component\\EntityTranslator\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.4-dev"
+        }
+    }
+}

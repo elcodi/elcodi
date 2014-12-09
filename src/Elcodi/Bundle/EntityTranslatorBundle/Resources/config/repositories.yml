@@ -1,0 +1,18 @@
+services:
+
+    #
+    # Repositories
+    #
+
+    #
+    # Repository for entity translation
+    #
+    elcodi.core.entity_translator.repository.entity_translation:
+        class: %elcodi.core.entity_translator.repository.entity_translation.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.entity_translator.entity.entity_translation.class%
+
+    elcodi.repository.entity_translation:
+        alias: elcodi.core.entity_translator.repository.entity_translation

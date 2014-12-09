@@ -1,0 +1,50 @@
+{
+    "name": "elcodi/translator-bundle",
+    "description": "Elcodi Translator Bundle",
+    "keywords": ["elcodi", "Translator", "ecommerce"],
+    "homepage": "https://github.com/elcodi/TranslatorBundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "Symfony Community",
+            "homepage": "https://github.com/elcodi/TranslatorBundle/contributors"
+        }
+    ],
+    "require": {
+
+        "php": ">=5.4",
+        "doctrine/common": "~2.4",
+        "doctrine/orm": "~2.4",
+
+        "symfony/http-kernel": "~2.4, >2.4.6",
+        "symfony/config": "~2.4",
+        "symfony/dependency-injection": "~2.4",
+        "mmoreram/simple-doctrine-mapping": "~0.1",
+
+        "elcodi/core-bundle": "~0.3.0",
+        "elcodi/language-bundle": "~0.3.0"
+    },
+    "require-dev": {
+        "elcodi/test-common-bundle": "~0.3.0",
+        "doctrine/data-fixtures": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\Bundle\\TranslatorBundle\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.4-dev"
+        }
+    }
+}
