@@ -6,6 +6,12 @@ services:
             translation_repository: @elcodi.repository.translation
             translation_factory: @elcodi.factory.translation
             translation_object_manager: @elcodi.object_manager.translation
+
+    elcodi.core.translator.services.cached_translation_provider:
+        class: %elcodi.core.translator.services.cached_translation_provider.class%
+        arguments:
+            translation_provider: @elcodi.core.translator.services.translation_provider
+            translation_repository: @elcodi.repository.translation
             cache: @doctrine_cache.providers.elcodi
             cache_prefix: %elcodi.core.translator.cache_prefix%
         tags:
@@ -14,7 +20,7 @@ services:
     elcodi.core.translator.services.translator_builder:
         class: %elcodi.core.translator.services.translator_builder.class%
         arguments:
-            translation_provider: @elcodi.core.translator.services.translation_provider
+            translation_provider: @elcodi.core.translator.services.cached_translation_provider
             translator_factory: @elcodi.core.translator.factory.translator
             configuration: %elcodi.core.translator.configuration%
 

@@ -17,7 +17,6 @@
 namespace Elcodi\Component\Core\Factory\Abstracts;
 
 use Elcodi\Component\Core\Factory\Traits\EntityNamespaceTrait;
-use Elcodi\Component\Translator\Entity\Interfaces\TranslationInterface;
 
 /**
  * Class AbstractFactory
@@ -40,7 +39,7 @@ abstract class AbstractFactory
      * This method must always returns an empty instance of the related Entity
      * and initializes it in a consistent state
      *
-     * @return TranslationInterface Empty entity
+     * @return Object Empty entity
      */
     abstract public function create();
 }

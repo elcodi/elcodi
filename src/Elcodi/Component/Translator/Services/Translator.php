@@ -16,6 +16,7 @@
 
 namespace Elcodi\Component\Translator\Services;
 
+use Elcodi\Component\Translator\Services\Interfaces\TranslationProviderInterface;
 use Elcodi\Component\Translator\Services\Interfaces\TranslatorInterface;
 
 /**
@@ -24,7 +25,7 @@ use Elcodi\Component\Translator\Services\Interfaces\TranslatorInterface;
 class Translator implements TranslatorInterface
 {
     /**
-     * @var TranslationProvider
+     * @var TranslationProviderInterface
      *
      * Translation Provider
      */
@@ -40,11 +41,11 @@ class Translator implements TranslatorInterface
     /**
      * Construct method
      *
-     * @param TranslationProvider $translationProvider Translation Provider
-     * @param array               $configuration       Configuration
+     * @param TranslationProviderInterface $translationProvider Translation Provider
+     * @param array                        $configuration       Configuration
      */
     public function __construct(
-        TranslationProvider $translationProvider,
+        TranslationProviderInterface $translationProvider,
         array $configuration
     )
     {

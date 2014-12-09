@@ -1,8 +1,8 @@
 {
-    "name": "elcodi/user-bundle",
-    "description": "Elcodi User Bundle",
-    "keywords": ["elcodi", "User", "ecommerce"],
-    "homepage": "https://github.com/elcodi/UserBundle",
+    "name": "elcodi/translator-bundle",
+    "description": "Elcodi Translator Bundle",
+    "keywords": ["elcodi", "Translator", "ecommerce"],
+    "homepage": "https://github.com/elcodi/TranslatorBundle",
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
@@ -16,7 +16,7 @@
         },
         {
             "name": "Symfony Community",
-            "homepage": "https://github.com/elcodi/UserBundle/contributors"
+            "homepage": "https://github.com/elcodi/TranslatorBundle/contributors"
         }
     ],
     "require": {
@@ -29,13 +29,8 @@
         "symfony/config": "~2.4",
         "symfony/dependency-injection": "~2.4",
         "mmoreram/simple-doctrine-mapping": "~0.1",
-        "ircmaxell/password-compat": "~1.0",
 
-        "elcodi/core-bundle": "~0.3.0",
-        "elcodi/geo-bundle": "~0.3.0",
-        "elcodi/language-bundle": "~0.3.0",
-        "elcodi/cart-bundle": "~0.3.0",
-        "elcodi/user": "~0.3.0"
+        "elcodi/core-bundle": "~0.3.0"
     },
     "require-dev": {
         "elcodi/test-common-bundle": "~0.3.0",
@@ -43,7 +38,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\Bundle\\UserBundle\\": ""
+            "Elcodi\\Bundle\\TranslatorBundle\\": ""
         }
     },
     "extra": {

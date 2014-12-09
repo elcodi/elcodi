@@ -17,7 +17,7 @@
 namespace Elcodi\Component\Translator\Factory;
 
 use Elcodi\Component\Core\Factory\Traits\EntityNamespaceTrait;
-use Elcodi\Component\Translator\Services\TranslationProvider;
+use Elcodi\Component\Translator\Services\Interfaces\TranslationProviderInterface;
 
 /**
  * Class TranslatorFactory
@@ -29,13 +29,13 @@ class TranslatorFactory
     /**
      * Creates an instance of a translator
      *
-     * @param TranslationProvider $translationProvider Translation Provider
-     * @param array               $configuration       Configuration
+     * @param TranslationProviderInterface $translationProvider Translation Provider
+     * @param array                        $configuration       Configuration
      *
      * @return Object Empty entity
      */
     public function create(
-        TranslationProvider $translationProvider,
+        TranslationProviderInterface $translationProvider,
         array $configuration
     )
     {

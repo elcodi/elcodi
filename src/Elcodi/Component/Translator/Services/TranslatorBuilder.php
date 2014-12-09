@@ -18,6 +18,7 @@ namespace Elcodi\Component\Translator\Services;
 
 use Elcodi\Component\Translator\Exception\TranslationDefinitionException;
 use Elcodi\Component\Translator\Factory\TranslatorFactory;
+use Elcodi\Component\Translator\Services\Interfaces\TranslationProviderInterface;
 use Elcodi\Component\Translator\Services\Interfaces\TranslatorInterface;
 
 /**
@@ -66,12 +67,12 @@ class TranslatorBuilder
     /**
      * Construct method
      *
-     * @param TranslationProvider $translationProvider Translation Provider
-     * @param TranslatorFactory   $translatorFactory   Translator Factory
-     * @param array               $configuration       Configuration
+     * @param TranslationProviderInterface $translationProvider Translation Provider
+     * @param TranslatorFactory            $translatorFactory   Translator Factory
+     * @param array                        $configuration       Configuration
      */
     public function __construct(
-        TranslationProvider $translationProvider,
+        TranslationProviderInterface $translationProvider,
         TranslatorFactory $translatorFactory,
         array $configuration
     )

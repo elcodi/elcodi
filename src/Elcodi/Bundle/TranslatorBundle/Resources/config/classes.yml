@@ -14,6 +14,7 @@ parameters:
     #
     # Services
     #
+    elcodi.core.translator.services.cached_translation_provider.class: Elcodi\Component\Translator\Services\CachedTranslationProvider
     elcodi.core.translator.services.translation_provider.class: Elcodi\Component\Translator\Services\TranslationProvider
     elcodi.core.translator.services.translator_builder.class: Elcodi\Component\Translator\Services\TranslatorBuilder
     elcodi.core.translator.services.translator.class: Elcodi\Component\Translator\Services\Translator

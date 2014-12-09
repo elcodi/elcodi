@@ -16,17 +16,16 @@
 
 namespace Elcodi\Component\Translator\Services;
 
-use Doctrine\Common\Cache\Cache;
 use Doctrine\Common\Persistence\ObjectManager;
 use Elcodi\Component\Translator\Entity\Interfaces\TranslationInterface;
-use Elcodi\Component\Translator\Entity\Translation;
 use Elcodi\Component\Translator\Factory\TranslationFactory;
 use Elcodi\Component\Translator\Repository\TranslationRepository;
+use Elcodi\Component\Translator\Services\Interfaces\TranslationProviderInterface;
 
 /**
  * Class TranslationProvider
  */
-class TranslationProvider
+class TranslationProvider implements TranslationProviderInterface
 {
     /**
      * @var TranslationRepository
@@ -50,20 +49,6 @@ class TranslationProvider
     protected $translationFactory;
 
     /**
-     * @var Cache
-     *
-     * Cache
-     */
-    protected $cache;
-
-    /**
-     * @var string
-     *
-     * Cache key
-     */
-    protected $cachePrefix;
-
-    /**
      * @var array
      *
      * Translations to be flushed
@@ -76,52 +61,17 @@ class TranslationProvider
      * @param TranslationRepository $translationRepository    Translation Repository
      * @param TranslationFactory    $translationFactory       Translation Factory
      * @param ObjectManager         $translationObjectManager Translation Object Manager
-     * @param Cache                 $cache                    Cache
-     * @param string                $cachePrefix              Cache prefix
      */
     public function __construct(
         TranslationRepository $translationRepository,
         TranslationFactory $translationFactory,
-        ObjectManager $translationObjectManager,
-        Cache $cache,
-        $cachePrefix
+        ObjectManager $translationObjectManager
     )
     {
         $this->translationRepository = $translationRepository;
         $this->translationFactory = $translationFactory;
         $this->translationObjectManager = $translationObjectManager;
-        $this->cache = $cache;
-        $this->cachePrefix = $cachePrefix;
-    }
-
-    /**
-     * Warm-up translations
-     */
-    public function warmUp()
-    {
-        $translations = $this
-            ->translationRepository
-            ->findAll();
-
-        /**
-         * @var $translation Translation
-         */
-        foreach ($translations as $translation) {
-
-            $key = $this->buildKey(
-                $translation->getEntityType(),
-                $translation->getEntityId(),
-                $translation->getEntityField(),
-                $translation->getLocale()
-            );
-
-            $this
-                ->cache
-                ->save(
-                    $key,
-                    $translation->getTranslation()
-                );
-        }
+        $this->translationsToBeFlushed = array();
     }
 
     /**
@@ -141,26 +91,28 @@ class TranslationProvider
         $locale
     )
     {
-        $key = $this->buildKey(
-            $entityType,
-            $entityId,
-            $entityField,
-            $locale
-        );
+        $translation = $this
+            ->translationRepository
+            ->findOneBy(array(
+                'entityType'  => $entityType,
+                'entityId'    => $entityId,
+                'entityField' => $entityField,
+                'locale'      => $locale,
+            ));
 
-        return $this
-            ->cache
-            ->fetch($key);
+        return $translation instanceof TranslationInterface
+            ? $translation->getTranslation()
+            : '';
     }
 
     /**
-     * Get translation
+     * Set translation
      *
-     * @param string $entityType  Type of entity
-     * @param string $entityId    Id of entity
-     * @param string $entityField Field of entity
-     * @param string $value       Translated value
-     * @param string $locale      Locale
+     * @param string $entityType       Type of entity
+     * @param string $entityId         Id of entity
+     * @param string $entityField      Field of entity
+     * @param string $translationValue Translated value
+     * @param string $locale           Locale
      *
      * @return string Value fetched
      */
@@ -168,24 +120,10 @@ class TranslationProvider
         $entityType,
         $entityId,
         $entityField,
-        $value,
+        $translationValue,
         $locale
     )
     {
-        $key = $this->buildKey(
-            $entityType,
-            $entityId,
-            $entityField,
-            $locale
-        );
-
-        $this
-            ->cache
-            ->save(
-                $key,
-                $value
-            );
-
         $translation = $this
             ->translationRepository
             ->findOneBy(array(
@@ -210,7 +148,7 @@ class TranslationProvider
                 ->persist($translation);
         }
 
-        $translation->setTranslation($value);
+        $translation->setTranslation($translationValue);
 
         $this->translationsToBeFlushed[] = $translation;
 
@@ -218,7 +156,9 @@ class TranslationProvider
     }
 
     /**
-     * Flush translations
+     * Flush all previously set translations.
+     *
+     * @return $this self Object
      */
     public function flushTranslations()
     {
@@ -229,29 +169,5 @@ class TranslationProvider
         $this->translationsToBeFlushed = array();
 
         return $this;
-    }
-
-    /**
-     * Get translation
-     *
-     * @param string $entityType  Type of entity
-     * @param string $entityId    Id of entity
-     * @param string $entityField Field of entity
-     * @param string $locale      Locale
-     *
-     * @return string Key
-     */
-    protected function buildKey(
-        $entityType,
-        $entityId,
-        $entityField,
-        $locale
-    )
-    {
-        return $this->cachePrefix . '_' .
-        $entityType . '_' .
-        $entityId . '_' .
-        $entityField . '_' .
-        $locale;
     }
 }
