@@ -1,0 +1,5 @@
+elcodi_page_render_routes:
+    resource: .
+    type: elcodi_page_render
+    methods: [GET]
+    options: { i18n: false }
