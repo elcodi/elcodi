@@ -85,12 +85,14 @@ abstract class WebTestCase extends BaseWebTestCase
      */
     public function tearDown()
     {
-        static::$application->run(new ArrayInput(array(
-            'command'          => 'doctrine:database:drop',
-            '--no-interaction' => true,
-            '--force'          => true,
-            '--quiet'          => true,
-        )));
+        if (static::$application) {
+            static::$application->run(new ArrayInput(array(
+                'command'          => 'doctrine:database:drop',
+                '--no-interaction' => true,
+                '--force'          => true,
+                '--quiet'          => true,
+            )));
+        }
     }
 
     /**
