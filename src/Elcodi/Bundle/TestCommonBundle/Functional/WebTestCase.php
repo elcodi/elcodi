@@ -60,8 +60,6 @@ abstract class WebTestCase extends BaseWebTestCase
      */
     public function setUp()
     {
-        gc_collect_cycles();
-
         try {
             static::$kernel = static::createKernel();
             static::$kernel->boot();

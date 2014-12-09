@@ -19,7 +19,6 @@ namespace Elcodi\Bundle\CartBundle\Tests\Functional\Transformer;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
-use Elcodi\Component\Cart\Entity\Interfaces\OrderLineHistoryInterface;
 use Elcodi\Component\Cart\Entity\OrderLine;
 use Elcodi\Component\Cart\Transformer\CartLineOrderLineTransformer;
 use Elcodi\Component\Cart\Transformer\CartOrderTransformer;
@@ -71,9 +70,6 @@ class CartLineOrderLineTransformerTest extends WebTestCase
         $cartOrderTransformer = $this
             ->get('elcodi.cart_order_transformer');
 
-        $orderInitialState = $this
-            ->getParameter('elcodi.core.cart.order_initial_state');
-
         /**
          * @var CartInterface     $cart
          * @var CartLineInterface $cartLine
@@ -94,16 +90,5 @@ class CartLineOrderLineTransformerTest extends WebTestCase
             );
 
         $this->assertInstanceOf('Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface', $orderLine);
-        $this->assertEquals($orderLine->getLastOrderLineHistory()->getState(), $orderInitialState);
-
-        $orderLineHistories = $orderLine->getOrderLineHistories();
-
-        /**
-         * @var OrderLineHistoryInterface $orderLineHistory
-         */
-        foreach ($orderLineHistories as $orderLineHistory) {
-            $this->assertInstanceOf('Elcodi\Component\Cart\Entity\Interfaces\OrderLineHistoryInterface', $orderLineHistory);
-            $this->assertEquals($orderLineHistory->getState(), $orderInitialState);
-        }
     }
 }

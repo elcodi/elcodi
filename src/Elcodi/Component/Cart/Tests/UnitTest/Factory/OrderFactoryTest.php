@@ -16,17 +16,13 @@
 
 namespace Elcodi\Component\Cart\Tests\UnitTest\Factory;
 
-use PHPUnit_Framework_TestCase;
-
 use Elcodi\Component\Cart\Factory\OrderFactory;
-use Elcodi\Component\Cart\Factory\OrderHistoryFactory;
-use Elcodi\Component\Cart\Factory\OrderLineFactory;
-use Elcodi\Component\Cart\Factory\OrderLineHistoryFactory;
+use Elcodi\Component\StateTransitionMachine\Tests\UnitTest\Fixtures\AbstractStateTransitionTest;
 
 /**
  * Class OrderFactoryTest
  */
-class OrderFactoryTest extends PHPUnit_Framework_TestCase
+class OrderFactoryTest extends AbstractStateTransitionTest
 {
     /**
      * Test object creation
@@ -35,86 +31,16 @@ class OrderFactoryTest extends PHPUnit_Framework_TestCase
      */
     public function testCreate()
     {
-        $orderLineHistoryFactory = new OrderLineHistoryFactory();
-        $orderLineHistoryFactory
-            ->setEntityNamespace('Elcodi\Component\Cart\Entity\OrderLineHistory');
-
-        $orderLineFactory = new OrderLineFactory();
-        $orderLineFactory
-            ->setOrderLineHistoryFactory($orderLineHistoryFactory)
-            ->setInitialOrderHistoryState('new')
-            ->setEntityNamespace('Elcodi\Component\Cart\Entity\OrderLine');
-
-        $orderLine = $orderLineFactory->create();
-
-        $orderHistoryFactory = new OrderHistoryFactory();
-        $orderHistoryFactory
-            ->setEntityNamespace('Elcodi\Component\Cart\Entity\OrderHistory');
-
-        $orderFactory = new OrderFactory();
-        $orderFactory
-            ->setOrderHistoryFactory($orderHistoryFactory)
-            ->setInitialOrderHistoryState('new')
-            ->setEntityNamespace('Elcodi\Component\Cart\Entity\Order');
-
-        $order = $orderFactory->create();
-        $order->addOrderLine($orderLine);
-
-        $this->assertCount(
+        $machineManager = $this->getMachineManager(
             1,
-            $order->getOrderHistories()
+            'Elcodi\Component\Cart\Entity\OrderStateLine'
         );
 
-        $this->assertInstanceOf(
-            'Elcodi\Component\Cart\Entity\Interfaces\OrderHistoryInterface',
-            $order->getOrderHistories()->first()
-        );
+        $factory = new OrderFactory($machineManager);
+        $factory->setEntityNamespace('\Elcodi\Component\Cart\Entity\Order');
 
-        $this->assertEquals(
-            'new',
-            $order->getOrderHistories()->first()->getState()
-        );
-
-        $this->assertInstanceOf(
-            'Elcodi\Component\Cart\Entity\Interfaces\OrderHistoryInterface',
-            $order->getLastOrderHistory()
-        );
-
-        $this->assertSame(
-            $order->getOrderHistories()->first(),
-            $order->getLastOrderHistory()
-        );
-
-        $this->assertCount(
-            1,
-            $order->getOrderLines()
-        );
-
-        $orderLine = $order->getOrderLines()->first();
-
-        $this->assertCount(
-            1,
-            $orderLine->getOrderLineHistories()
-        );
-
-        $this->assertInstanceOf(
-            'Elcodi\Component\Cart\Entity\Interfaces\OrderLineHistoryInterface',
-            $orderLine->getOrderLineHistories()->first()
-        );
-
-        $this->assertEquals(
-            $orderLine->getOrderLineHistories()->first()->getState(),
-            'new'
-        );
-
-        $this->assertInstanceOf(
-            'Elcodi\Component\Cart\Entity\Interfaces\OrderLineHistoryInterface',
-            $orderLine->getLastOrderLineHistory()
-        );
-
-        $this->assertSame(
-            $orderLine->getOrderLineHistories()->first(),
-            $orderLine->getLastOrderLineHistory()
-        );
+        $order = $factory->create();
+        $this->assertEquals('unpaid', $order->getLastStateLine()->getName());
+        $this->assertEquals('unpaid', $order->getStateLines()->last()->getName());
     }
 }

@@ -70,16 +70,9 @@ class Configuration extends AbstractConfiguration implements ConfigurationInterf
                             true
                         ))
                         ->append($this->addMappingNode(
-                            'order_history',
-                            'Elcodi\Component\Cart\Entity\OrderHistory',
-                            '@ElcodiCartBundle/Resources/config/doctrine/OrderHistory.orm.yml',
-                            'default',
-                            true
-                        ))
-                        ->append($this->addMappingNode(
-                            'order_line_history',
-                            'Elcodi\Component\Cart\Entity\OrderLineHistory',
-                            '@ElcodiCartBundle/Resources/config/doctrine/OrderLineHistory.orm.yml',
+                            'order_state_line',
+                            'Elcodi\Component\Cart\Entity\OrderStateLine',
+                            '@ElcodiCartBundle/Resources/config/doctrine/OrderStateLine.orm.yml',
                             'default',
                             true
                         ))
@@ -96,60 +89,19 @@ class Configuration extends AbstractConfiguration implements ConfigurationInterf
                         ->end()
                     ->end()
                 ->end()
-                ->arrayNode('order')
+                ->arrayNode('order_state_transition_machine')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('initial_state')
+                        ->scalarNode('identifier')
+                            ->defaultValue('order_state_transition_machine')
+                        ->end()
+                        ->scalarNode('point_of_entry')
                             ->defaultValue('new')
                         ->end()
                         ->variableNode('states')
                             ->defaultValue(array(
-                                'new' => array(
-                                    'accepted',
-                                    'pending.payment',
-                                    'payment.failed',
-                                ),
-                                'accepted' => array(
-                                    'problem',
-                                    'ready.ship',
-                                    'cancelled',
-                                ),
-                                'problem' => array(
-                                    'accepted',
-                                    'cancelled',
-                                ),
-                                'ready.ship' => array(
-                                    'shipped',
-                                ),
-                                'shipped' => array(
-                                    'returned',
-                                    'delivered',
-                                ),
-                                'returned' => array(
-                                    'shipped',
-                                    'refunded',
-                                    'cancelled',
-                                ),
-                                'delivered' => array(
-                                    'ready.invoice',
-                                    'returned',
-                                ),
-                                'ready.invoice' => array(
-                                    'invoiced',
-                                ),
-                                'invoiced' => array(
-                                    'paid',
-                                ),
-                                'refunded' => array(
-                                    'cancelled',
-                                ),
-                                'cancelled' => array(
-                                    'accepted',
-                                ),
-                                'pending.payment' => array(
-                                    'accepted',
-                                    'cancelled',
-                                ),
+                                ['new', 'pay', 'paid'],
+                                ['paid', 'ship', 'shipped'],
                             ))
                         ->end()
                     ->end()

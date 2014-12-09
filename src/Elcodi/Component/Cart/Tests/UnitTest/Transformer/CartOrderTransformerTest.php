@@ -21,10 +21,10 @@ use PHPUnit_Framework_TestCase;
 
 use Elcodi\Component\Cart\Entity\Cart;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
+use Elcodi\Component\Cart\Entity\Order;
+use Elcodi\Component\Cart\Entity\OrderStateLine;
 use Elcodi\Component\Cart\EventDispatcher\OrderEventDispatcher;
 use Elcodi\Component\Cart\Factory\OrderFactory;
-use Elcodi\Component\Cart\Services\OrderLineManager;
-use Elcodi\Component\Cart\Services\OrderManager;
 use Elcodi\Component\Cart\Transformer\CartLineOrderLineTransformer;
 use Elcodi\Component\Cart\Transformer\CartOrderTransformer;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
@@ -67,9 +67,7 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
         /**
          * @var OrderEventDispatcher         $orderEventDispatcher
          * @var CartLineOrderLineTransformer $cartLineOrderLineTransformer
-         * @var OrderLineManager             $orderLineManager
          * @var OrderFactory                 $orderFactory
-         * @var OrderManager                 $orderManager
          */
         $orderEventDispatcher = $this
             ->getMock(
@@ -77,7 +75,19 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
                 [], [], '', false
             );
 
-        $orderFactory = $this->getMock('Elcodi\Component\Cart\Factory\OrderFactory');
+        $orderFactory = $this->getMock('Elcodi\Component\Cart\Factory\OrderFactory', [], [], '', false);
+        $order = new Order();
+        $order->setStateLines(new ArrayCollection());
+        $stateLine = new OrderStateLine();
+        $stateLine
+            ->setName('new')
+            ->setOrder($order);
+        $order->addStateLine($stateLine);
+        $orderFactory
+            ->expects($this->any())
+            ->method('create')
+            ->will($this->returnValue($order));
+
         $cartLineOrderLineTransformer = $this->getMock(
             'Elcodi\Component\Cart\Transformer\CartLineOrderLineTransformer',
             [], [], '', false

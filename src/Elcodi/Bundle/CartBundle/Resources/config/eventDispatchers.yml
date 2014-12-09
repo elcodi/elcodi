@@ -24,23 +24,9 @@ services:
     elcodi.order_event_dispatcher:
         alias: elcodi.core.cart.event_dispatcher.order
 
-    elcodi.core.cart.event_dispatcher.order_state:
-        class: %elcodi.core.cart.event_dispatcher.order_state.class%
-        parent: elcodi.core.core.event_dispatcher.abstract
-
-    elcodi.order_state_event_dispatcher:
-        alias: elcodi.core.cart.event_dispatcher.order_state
-
     elcodi.core.cart.event_dispatcher.order_line:
         class: %elcodi.core.cart.event_dispatcher.order_line.class%
         parent: elcodi.core.core.event_dispatcher.abstract
 
     elcodi.order_line_event_dispatcher:
         alias: elcodi.core.cart.event_dispatcher.order_line
-
-    elcodi.core.cart.event_dispatcher.order_line_state:
-        class: %elcodi.core.cart.event_dispatcher.order_line_state.class%
-        parent: elcodi.core.core.event_dispatcher.abstract
-
-    elcodi.order_line_state_event_dispatcher:
-        alias: elcodi.core.cart.event_dispatcher.order_line_state

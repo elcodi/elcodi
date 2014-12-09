@@ -16,14 +16,12 @@
 
 namespace Elcodi\Component\Cart\Entity;
 
-use Doctrine\Common\Collections\Collection;
-
 use Elcodi\Component\Cart\Entity\Abstracts\AbstractLine;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
-use Elcodi\Component\Cart\Entity\Interfaces\OrderLineHistoryInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface;
 use Elcodi\Component\Cart\Resolver\DefaultPurchasableResolver;
 use Elcodi\Component\Cart\Resolver\Interfaces\PurchasableResolverInterface;
+use Elcodi\Component\StateTransitionMachine\Entity\Traits\StateLinesTrait;
 
 /**
  * OrderLine
@@ -33,24 +31,45 @@ use Elcodi\Component\Cart\Resolver\Interfaces\PurchasableResolverInterface;
  */
 class OrderLine extends AbstractLine implements OrderLineInterface
 {
+    use StateLinesTrait;
+
+    /**
+     * @var integer
+     *
+     * Identifier
+     */
+    protected $id;
+
     /**
      * @var OrderInterface
+     *
+     * Order
      */
     protected $order;
 
     /**
-     * @var Collection
+     * Get Id
      *
-     * Order histories
+     * @return int Id
      */
-    protected $orderLineHistories;
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
-     * @var OrderLineHistoryInterface
+     * Sets Id
      *
-     * Last OrderLineHistory
+     * @param int $id Id
+     *
+     * @return $this Self object
      */
-    protected $lastOrderLineHistory;
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     /**
      * Set Order
@@ -74,85 +93,6 @@ class OrderLine extends AbstractLine implements OrderLineInterface
     public function getOrder()
     {
         return $this->order;
-    }
-
-    /**
-     * Set order line histories
-     *
-     * @param Collection $orderLineHistories Order histories
-     *
-     * @return $this self Object
-     */
-    public function setOrderLineHistories(Collection $orderLineHistories)
-    {
-        $this->orderLineHistories = $orderLineHistories;
-
-        return $this;
-    }
-
-    /**
-     * Get order line histories
-     *
-     * @return Collection Order Line histories
-     */
-    public function getOrderLineHistories()
-    {
-        return $this->orderLineHistories;
-    }
-
-    /**
-     * Add Order History
-     *
-     * @param OrderLineHistoryInterface $orderLineHistory Order History
-     *
-     * @return $this self Object
-     */
-    public function addOrderLineHistory(OrderLineHistoryInterface $orderLineHistory)
-    {
-        if (!$this->orderLineHistories->contains($orderLineHistory)) {
-
-            $this->orderLineHistories->add($orderLineHistory);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Remove Order History
-     *
-     * @param OrderLineHistoryInterface $orderLineHistory Order Line History
-     *
-     * @return $this self Object
-     */
-    public function removeOrderLineHistory(OrderLineHistoryInterface $orderLineHistory)
-    {
-        $this->orderLineHistories->removeElement($orderLineHistory);
-
-        return $this;
-    }
-
-    /**
-     * Sets LastOrderLineHistory
-     *
-     * @param OrderLineHistoryInterface $lastOrderLineHistory LastOrderLineHistory
-     *
-     * @return OrderLine Self object
-     */
-    public function setLastOrderLineHistory(OrderLineHistoryInterface $lastOrderLineHistory)
-    {
-        $this->lastOrderLineHistory = $lastOrderLineHistory;
-
-        return $this;
-    }
-
-    /**
-     * Get LastOrderLineHistory
-     *
-     * @return OrderLineHistoryInterface LastOrderLineHistory
-     */
-    public function getLastOrderLineHistory()
-    {
-        return $this->lastOrderLineHistory;
     }
 
     /**

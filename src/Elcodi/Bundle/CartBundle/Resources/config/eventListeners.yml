@@ -25,23 +25,6 @@ services:
         tags:
             - { name: kernel.event_listener, event: order.oncreated, method: onOrderCreated, priority: 0}
 
-    elcodi.core.cart.event_listener.order_state:
-        class: %elcodi.core.cart.event_listener.order_state.class%
-        arguments:
-            order_entity_manager: @elcodi.object_manager.order
-        tags:
-            - { name: kernel.event_listener, event: order_state.onchange, method: onOrderStateChangeFlush, priority: 0 }
-
-    elcodi.core.cart.event_listener.order_line_state:
-        class: %elcodi.core.cart.event_listener.order_line_state.class%
-        arguments:
-            order_line_object_manager: @elcodi.object_manager.order_line
-            order_state_event_dispatcher: @elcodi.order_state_event_dispatcher
-            order_history_factory: @elcodi.core.cart.factory.order_history
-        tags:
-            - { name: kernel.event_listener, event: order_line_state.onchange, method: onOrderLineStateChange, priority: 16 }
-            - { name: kernel.event_listener, event: order_line_state.onchange, method: onOrderLineStateChangeFlush, priority: 0 }
-
     elcodi.core.cart.event_listener.cart_session:
         class: %elcodi.core.cart.event_listener.cart_session.class%
         private: %elcodi.core.cart.session_field_name%
@@ -49,3 +32,8 @@ services:
             cart_session_manager: @elcodi.cart_session_manager
         tags:
             - { name: kernel.event_listener, event: cart.onload, method: onCartLoad, priority: -2 }
+
+    elcodi.core.cart.event_listener.order_machine:
+        class: %elcodi.core.cart.event_listener.order_machine.class%
+        arguments:
+            order_state_line_object_manager: elcodi.object_manager.order_state_line

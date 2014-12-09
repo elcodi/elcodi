@@ -18,7 +18,6 @@ namespace Elcodi\Component\Cart\Entity\Abstracts;
 
 use Elcodi\Component\Cart\Entity\Traits\PriceTrait;
 use Elcodi\Component\Cart\Resolver\Interfaces\PurchasableResolverInterface;
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
@@ -27,9 +26,16 @@ use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
 /**
  * Cart line
  */
-abstract class AbstractLine extends AbstractEntity
+abstract class AbstractLine
 {
     use PriceTrait, DimensionsTrait;
+
+    /**
+     * @var integer
+     *
+     * Identifier
+     */
+    protected $id;
 
     /**
      * @var ProductInterface
@@ -51,6 +57,30 @@ abstract class AbstractLine extends AbstractEntity
      * Quantity
      */
     protected $quantity;
+
+    /**
+     * Get Id
+     *
+     * @return int Id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Sets Id
+     *
+     * @param int $id Id
+     *
+     * @return $this Self object
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     /**
      * Sets the product

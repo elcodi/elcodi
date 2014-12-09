@@ -20,10 +20,10 @@ services:
     #
     elcodi.core.cart.factory.order:
         class: %elcodi.core.cart.factory.order.class%
+        arguments:
+            order_state_transition_machine_manager: @elcodi.core.cart.order_state_transition_machine.machine_manager
         calls:
             - [setEntityNamespace, ["%elcodi.core.cart.entity.order.class%"]]
-            - [setOrderHistoryFactory, ["@elcodi.core.cart.factory.order_history"]]
-            - [setInitialOrderHistoryState, ["%elcodi.core.cart.order_initial_state%"]]
 
     elcodi.factory.order:
         alias: elcodi.core.cart.factory.order
@@ -46,30 +46,6 @@ services:
         class: %elcodi.core.cart.factory.order_line.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.cart.entity.order_line.class%"]]
-            - [setOrderLineHistoryFactory, ["@elcodi.core.cart.factory.order_line_history"]]
-            - [setInitialOrderHistoryState, ["%elcodi.core.cart.order_initial_state%"]]
 
     elcodi.factory.order_line:
         alias: elcodi.core.cart.factory.order_line
-
-    #
-    # Factory for entity order_history
-    #
-    elcodi.core.cart.factory.order_history:
-        class: %elcodi.core.cart.factory.order_history.class%
-        calls:
-            - [setEntityNamespace, ["%elcodi.core.cart.entity.order_history.class%"]]
-
-    elcodi.factory.order_history:
-        alias: elcodi.core.cart.factory.order_history
-
-    #
-    # Factory for entity order_line_history
-    #
-    elcodi.core.cart.factory.order_line_history:
-        class: %elcodi.core.cart.factory.order_line_history.class%
-        calls:
-            - [setEntityNamespace, ["%elcodi.core.cart.entity.order_line_history.class%"]]
-
-    elcodi.factory.order_line_history:
-        alias: elcodi.core.cart.factory.order_line_history

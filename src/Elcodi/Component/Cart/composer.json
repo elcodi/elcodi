@@ -30,6 +30,7 @@
         "elcodi/core": "~0.3.0",
         "elcodi/user": "~0.3.0",
         "elcodi/product": "~0.3.0",
+        "elcodi/state-transition-machine": "~0.3.0",
         "elcodi/currency": "~0.3.0"
     },
     "autoload": {

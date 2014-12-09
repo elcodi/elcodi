@@ -33,6 +33,7 @@
         "elcodi/user-bundle": "~0.3.0",
         "elcodi/product-bundle": "~0.3.0",
         "elcodi/currency-bundle": "~0.3.0",
+        "elcodi/state-transition-machine-bundle": "~0.3.0",
         "elcodi/cart": "~0.3.0"
     },
     "require-dev": {

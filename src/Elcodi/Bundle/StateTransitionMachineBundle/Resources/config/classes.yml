@@ -1,0 +1,20 @@
+parameters:
+
+    #
+    # Entities
+    #
+    elcodi.core.state_transition_machine.entity.state_line.class: Elcodi\Component\StateTransitionMachine\Entity\StateLine
+
+    #
+    # Factories
+    #
+    elcodi.core.state_transition_machine.factory.machine.class: Elcodi\Component\StateTransitionMachine\Factory\MachineFactory
+    elcodi.core.state_transition_machine.factory.state_line.class: Elcodi\Component\StateTransitionMachine\Factory\StateLineFactory
+
+    #
+    # Services
+    #
+    elcodi.core.state_transition_machine.service.loggable_machine.class: Elcodi\Component\StateTransitionMachine\Machine\LoggableMachine
+    elcodi.core.state_transition_machine.service.machine_builder.class: Elcodi\Component\StateTransitionMachine\Machine\MachineBuilder
+    elcodi.core.state_transition_machine.service.machine_manager.class: Elcodi\Component\StateTransitionMachine\Machine\MachineManager
+    elcodi.core.state_transition_machine.service.machine.class: Elcodi\Component\StateTransitionMachine\Machine\Machine

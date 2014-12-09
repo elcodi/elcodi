@@ -19,25 +19,31 @@ namespace Elcodi\Component\Cart\Entity;
 use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
-use Elcodi\Component\Cart\Entity\Interfaces\OrderHistoryInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface;
 use Elcodi\Component\Cart\Entity\Traits\PriceTrait;
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
+use Elcodi\Component\StateTransitionMachine\Entity\Traits\StateLinesTrait;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
  * Order
  */
-class Order extends AbstractEntity implements OrderInterface
+class Order implements OrderInterface
 {
-    use DateTimeTrait, PriceTrait, DimensionsTrait;
+    use DateTimeTrait, PriceTrait, DimensionsTrait, StateLinesTrait;
+
+    /**
+     * @var integer
+     *
+     * Identifier
+     */
+    protected $id;
 
     /**
      * @var CustomerInterface
@@ -61,25 +67,11 @@ class Order extends AbstractEntity implements OrderInterface
     protected $orderLines;
 
     /**
-     * @var Collection
-     *
-     * Order histories
-     */
-    protected $orderHistories;
-
-    /**
      * @var integer
      *
      * Quantity
      */
     protected $quantity;
-
-    /**
-     * @var OrderHistoryInterface
-     *
-     * Last OrderHistory
-     */
-    protected $lastOrderHistory;
 
     /**
      * @var integer
@@ -108,6 +100,30 @@ class Order extends AbstractEntity implements OrderInterface
      * invoice address
      */
     protected $invoiceAddress;
+
+    /**
+     * Get Id
+     *
+     * @return int Id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Sets Id
+     *
+     * @param int $id Id
+     *
+     * @return $this Self object
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     /**
      * Sets Customer
@@ -213,61 +229,6 @@ class Order extends AbstractEntity implements OrderInterface
     }
 
     /**
-     * Set order histories
-     *
-     * @param Collection $orderHistories Order histories
-     *
-     * @return $this self Object
-     */
-    public function setOrderHistories(Collection $orderHistories)
-    {
-        $this->orderHistories = $orderHistories;
-
-        return $this;
-    }
-
-    /**
-     * Get order histories
-     *
-     * @return Collection Order histories
-     */
-    public function getOrderHistories()
-    {
-        return $this->orderHistories;
-    }
-
-    /**
-     * Add Order History
-     *
-     * @param OrderHistoryInterface $orderHistory Order History
-     *
-     * @return $this self Object
-     */
-    public function addOrderHistory(OrderHistoryInterface $orderHistory)
-    {
-        if (!$this->orderLines->contains($orderHistory)) {
-
-            $this->orderHistories->add($orderHistory);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Remove Order History
-     *
-     * @param OrderHistoryInterface $orderHistory Order History
-     *
-     * @return $this self Object
-     */
-    public function removeOrderHistory(OrderHistoryInterface $orderHistory)
-    {
-        $this->orderHistories->removeElement($orderHistory);
-
-        return $this;
-    }
-
-    /**
      * Set quantity
      *
      * @param int $quantity Quantity
@@ -289,30 +250,6 @@ class Order extends AbstractEntity implements OrderInterface
     public function getQuantity()
     {
         return $this->quantity;
-    }
-
-    /**
-     * Sets LastOrderHistory
-     *
-     * @param OrderHistoryInterface $lastOrderHistory LastOrderHistory
-     *
-     * @return Order Self object
-     */
-    public function setLastOrderHistory(OrderHistoryInterface $lastOrderHistory)
-    {
-        $this->lastOrderHistory = $lastOrderHistory;
-
-        return $this;
-    }
-
-    /**
-     * Get LastOrderHistory
-     *
-     * @return OrderHistoryInterface LastOrderHistory
-     */
-    public function getLastOrderHistory()
-    {
-        return $this->lastOrderHistory;
     }
 
     /**

@@ -1,0 +1,18 @@
+services:
+
+    #
+    # Factories
+    #
+    elcodi.core.state_transition_machine.factory.machine:
+        class: %elcodi.core.state_transition_machine.factory.machine.class%
+
+    elcodi.factory.machine:
+        alias: elcodi.core.state_transition_machine.factory.machine
+
+    elcodi.core.state_transition_machine.factory.state_line:
+        class: %elcodi.core.state_transition_machine.factory.state_line.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.state_transition_machine.entity.state_line.class%"]]
+
+    elcodi.factory.state_line:
+        alias: elcodi.core.state_transition_machine.factory.state_line

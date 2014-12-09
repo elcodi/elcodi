@@ -16,17 +16,16 @@
 
 namespace Elcodi\Component\Cart\Entity\Interfaces;
 
-use Doctrine\Common\Collections\Collection;
-
 use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
+use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StatefulInterface;
 
 /**
  * Class OrderLineInterface
  */
-interface OrderLineInterface extends PriceInterface, DimensionableInterface
+interface OrderLineInterface extends PriceInterface, DimensionableInterface, StatefulInterface
 {
     /**
      * Set Order
@@ -107,56 +106,6 @@ interface OrderLineInterface extends PriceInterface, DimensionableInterface
      * @return integer Quantity
      */
     public function getQuantity();
-
-    /**
-     * Set order line histories
-     *
-     * @param Collection $orderLineHistories Order histories
-     *
-     * @return $this self Object
-     */
-    public function setOrderLineHistories(Collection $orderLineHistories);
-
-    /**
-     * Get order line histories
-     *
-     * @return Collection Order Line histories
-     */
-    public function getOrderLineHistories();
-
-    /**
-     * Add Order History
-     *
-     * @param OrderLineHistoryInterface $orderLineHistory Order History
-     *
-     * @return $this self Object
-     */
-    public function addOrderLineHistory(OrderLineHistoryInterface $orderLineHistory);
-
-    /**
-     * Remove Order History
-     *
-     * @param OrderLineHistoryInterface $orderLineHistory Order Line History
-     *
-     * @return $this self Object
-     */
-    public function removeOrderLineHistory(OrderLineHistoryInterface $orderLineHistory);
-
-    /**
-     * Sets LastOrderLineHistory
-     *
-     * @param OrderLineHistoryInterface $lastOrderLineHistory LastOrderLineHistory
-     *
-     * @return OrderLineInterface Self object
-     */
-    public function setLastOrderLineHistory(OrderLineHistoryInterface $lastOrderLineHistory);
-
-    /**
-     * Get LastOrderLineHistory
-     *
-     * @return OrderLineHistoryInterface LastOrderLineHistory
-     */
-    public function getLastOrderLineHistory();
 
     /**
      * Set the height
