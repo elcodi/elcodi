@@ -19,7 +19,7 @@ namespace Elcodi\Component\CartCoupon;
 /**
  * ElcodiCartCouponEvents
  */
-class ElcodiCartCouponEvents
+final class ElcodiCartCouponEvents
 {
     /**
      * This event is dispatched each time a coupon is applied into a Cart

@@ -19,7 +19,7 @@ namespace Elcodi\Component\Media;
 /**
  * Class ElcodiMediaImageResizeTypes
  */
-class ElcodiMediaImageResizeTypes
+final class ElcodiMediaImageResizeTypes
 {
     /**
      * @var integer

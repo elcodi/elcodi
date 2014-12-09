@@ -19,12 +19,8 @@ namespace Elcodi\Component\Coupon;
 /**
  * Class ElcodiCouponTypes
  */
-class ElcodiCouponTypes
+final class ElcodiCouponTypes
 {
-    /**
-     * Coupon types
-     */
-
     /**
      * @var int
      *

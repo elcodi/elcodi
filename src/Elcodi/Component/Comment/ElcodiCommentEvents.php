@@ -19,7 +19,7 @@ namespace Elcodi\Component\Comment;
 /**
  * Class ElcodiCommentEvents
  */
-class ElcodiCommentEvents
+final class ElcodiCommentEvents
 {
     /**
      * This event is dispatched when a comment is added

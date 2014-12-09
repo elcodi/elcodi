@@ -19,7 +19,7 @@ namespace Elcodi\Component\Coupon;
 /**
  * Class ElcodiCouponEvents
  */
-class ElcodiCouponEvents
+final class ElcodiCouponEvents
 {
     /**
      * This event is fired each time a coupon has been used

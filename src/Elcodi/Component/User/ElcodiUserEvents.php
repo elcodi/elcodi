@@ -19,7 +19,7 @@ namespace Elcodi\Component\User;
 /**
  * ElcodiUserEvents
  */
-class ElcodiUserEvents
+final class ElcodiUserEvents
 {
     /**
      * This event is fired when customer wants to remember his password

@@ -19,7 +19,7 @@ namespace Elcodi\Component\ReferralProgram;
 /**
  * Class ElcodiReferralProgramRuleTypes
  */
-class ElcodiReferralProgramRuleTypes
+final class ElcodiReferralProgramRuleTypes
 {
     /**
      * @var string

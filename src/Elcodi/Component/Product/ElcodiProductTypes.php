@@ -19,7 +19,7 @@ namespace Elcodi\Component\Product;
 /**
  * Class ElcodiProductTypes
  */
-class ElcodiProductTypes
+final class ElcodiProductTypes
 {
     /**
      * @var integer

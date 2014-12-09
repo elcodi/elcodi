@@ -19,7 +19,7 @@ namespace Elcodi\Component\Newsletter;
 /**
  * Class ElcodiNewsletterEvents
  */
-class ElcodiNewsletterEvents
+final class ElcodiNewsletterEvents
 {
     /**
      * This event is fired each time a customer subscribe to newsletter
