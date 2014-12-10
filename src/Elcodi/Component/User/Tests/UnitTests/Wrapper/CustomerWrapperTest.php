@@ -16,8 +16,8 @@
 
 namespace Elcodi\Component\User\Tests\UnitTests\Wrapper;
 
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\SecurityContextInterface;
 
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 use Elcodi\Component\User\Factory\CustomerFactory;
@@ -40,9 +40,9 @@ class CustomerWrapperTest extends \PHPUnit_Framework_TestCase
         $customer = $this->mockCustomer();
         $factory = $this->mockCustomerFactory();
         $token = $this->mockSecurityToken();
-        $context = $this->mockSecurityContext();
+        $tokenStorage = $this->mockTokenStorage();
 
-        $context
+        $tokenStorage
             ->expects($this->once())
             ->method('getToken')
             ->willReturn($token);
@@ -56,7 +56,7 @@ class CustomerWrapperTest extends \PHPUnit_Framework_TestCase
             ->expects($this->never())
             ->method('create');
 
-        $wrapper = new CustomerWrapper($factory, $context);
+        $wrapper = new CustomerWrapper($factory, $tokenStorage);
         $actual = $wrapper->loadCustomer();
 
         $this->assertSame($customer, $actual);
@@ -74,9 +74,9 @@ class CustomerWrapperTest extends \PHPUnit_Framework_TestCase
         $customer = $this->mockCustomer();
         $factory = $this->mockCustomerFactory();
         $token = $this->mockSecurityToken();
-        $context = $this->mockSecurityContext();
+        $tokenStorage = $this->mockTokenStorage();
 
-        $context
+        $tokenStorage
             ->expects($this->once())
             ->method('getToken')
             ->willReturn($token);
@@ -91,7 +91,7 @@ class CustomerWrapperTest extends \PHPUnit_Framework_TestCase
             ->method('create')
             ->willReturn($customer);
 
-        $wrapper = new CustomerWrapper($factory, $context);
+        $wrapper = new CustomerWrapper($factory, $tokenStorage);
         $actual = $wrapper->loadCustomer();
 
         $this->assertSame($customer, $actual);
@@ -137,11 +137,11 @@ class CustomerWrapperTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return SecurityContextInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @return TokenStorageInterface|\PHPUnit_Framework_MockObject_MockObject
      */
-    protected function mockSecurityContext()
+    protected function mockTokenStorage()
     {
-        return $this->getMock('Symfony\Component\Security\Core\SecurityContextInterface');
+        return $this->getMock('Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface');
     }
 
     /**

@@ -16,8 +16,8 @@
 
 namespace Elcodi\Component\User\Wrapper;
 
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\SecurityContextInterface;
 
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 use Elcodi\Component\User\Factory\CustomerFactory;
@@ -42,11 +42,11 @@ class CustomerWrapper
     protected $customerFactory;
 
     /**
-     * @var SecurityContextInterface
+     * @var TokenStorageInterface
      *
-     * Security context
+     * Token storage
      */
-    protected $securityContext;
+    protected $tokenStorage;
 
     /**
      * Construct method
@@ -54,16 +54,16 @@ class CustomerWrapper
      * This wrapper loads Customer from database if this exists and is authenticated.
      * Otherwise, this create new Guest without persisting it
      *
-     * @param CustomerFactory          $customerFactory Customer factory
-     * @param SecurityContextInterface $securityContext SecurityContext instance
+     * @param CustomerFactory       $customerFactory Customer factory
+     * @param TokenStorageInterface $tokenStorage TokenStorageInterface instance
      */
     public function __construct(
         CustomerFactory $customerFactory,
-        SecurityContextInterface $securityContext = null
+        TokenStorageInterface $tokenStorage = null
     )
     {
         $this->customerFactory = $customerFactory;
-        $this->securityContext = $securityContext;
+        $this->tokenStorage = $tokenStorage;
     }
 
     /**
@@ -142,11 +142,11 @@ class CustomerWrapper
      */
     protected function getCustomerFromToken()
     {
-        if (!($this->securityContext instanceof SecurityContextInterface)) {
+        if (!($this->tokenStorage instanceof TokenStorageInterface)) {
             return null;
         }
 
-        $token = $this->securityContext->getToken();
+        $token = $this->tokenStorage->getToken();
         if (!($token instanceof TokenInterface)) {
             return null;
         }

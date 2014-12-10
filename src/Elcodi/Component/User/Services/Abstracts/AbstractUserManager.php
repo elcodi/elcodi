@@ -17,8 +17,8 @@
 namespace Elcodi\Component\User\Services\Abstracts;
 
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Symfony\Component\Security\Core\SecurityContextInterface;
 
 use Elcodi\Component\User\ElcodiUserEvents;
 use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
@@ -37,25 +37,25 @@ abstract class AbstractUserManager
     protected $eventDispatcher;
 
     /**
-     * @var SecurityContextInterface
+     * @var TokenStorageInterface
      *
-     * Security Context
+     * Token storage
      */
-    protected $securityContext;
+    protected $tokenStorage;
 
     /**
      * Construct method
      *
      * @param EventDispatcherInterface $eventDispatcher Event dispatcher
-     * @param SecurityContextInterface $securityContext Security Context
+     * @param TokenStorageInterface    $securityContext Token storage
      */
     public function __construct(
         EventDispatcherInterface $eventDispatcher,
-        SecurityContextInterface $securityContext = null
+        TokenStorageInterface $securityContext = null
     )
     {
         $this->eventDispatcher = $eventDispatcher;
-        $this->securityContext = $securityContext;
+        $this->tokenStorage = $securityContext;
     }
 
     /**
@@ -69,7 +69,7 @@ abstract class AbstractUserManager
      */
     public function register(AbstractUserInterface $user, $providerKey)
     {
-        if (!($this->securityContext instanceof SecurityContextInterface)) {
+        if (!($this->tokenStorage instanceof TokenStorageInterface)) {
             return $this;
         }
 
@@ -80,7 +80,7 @@ abstract class AbstractUserManager
             $user->getRoles()
         );
 
-        $this->securityContext->setToken($token);
+        $this->tokenStorage->setToken($token);
 
         $event = new UserRegisterEvent($user);
         $this->eventDispatcher->dispatch(

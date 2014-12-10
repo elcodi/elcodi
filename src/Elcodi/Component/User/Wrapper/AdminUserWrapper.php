@@ -16,8 +16,8 @@
 
 namespace Elcodi\Component\User\Wrapper;
 
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Symfony\Component\Security\Core\SecurityContextInterface;
 
 use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
 use Elcodi\Component\User\Factory\AdminUserFactory;
@@ -42,11 +42,11 @@ class AdminUserWrapper
     protected $adminUserFactory;
 
     /**
-     * @var SecurityContextInterface
+     * @var TokenStorageInterface
      *
-     * Security context
+     * Token storage
      */
-    protected $securityContext;
+    protected $tokenStorage;
 
     /**
      * Construct method
@@ -56,16 +56,16 @@ class AdminUserWrapper
      *
      * Otherwise, this create new Guest without persisting it
      *
-     * @param AdminUserFactory         $adminUserFactory Customer factory
-     * @param SecurityContextInterface $securityContext  SecurityContext instance
+     * @param AdminUserFactory      $adminUserFactory Customer factory
+     * @param TokenStorageInterface $tokenStorage TokenStorageInterface instance
      */
     public function __construct(
         AdminUserFactory $adminUserFactory,
-        SecurityContextInterface $securityContext = null
+        TokenStorageInterface $tokenStorage = null
     )
     {
         $this->adminUserFactory = $adminUserFactory;
-        $this->securityContext = $securityContext;
+        $this->tokenStorage = $tokenStorage;
     }
 
     /**
@@ -112,8 +112,8 @@ class AdminUserWrapper
             return $this->adminUser;
         }
 
-        $token = $this->securityContext instanceof SecurityContextInterface
-            ? $this->securityContext->getToken()
+        $token = $this->tokenStorage instanceof TokenStorageInterface
+            ? $this->tokenStorage->getToken()
             : null;
 
         if ($token instanceof UsernamePasswordToken) {
