@@ -48,6 +48,7 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     {
         return parent::findOneBy(array(
             'path' => $path,
+            'enabled' => true,
         ));
     }
 }
