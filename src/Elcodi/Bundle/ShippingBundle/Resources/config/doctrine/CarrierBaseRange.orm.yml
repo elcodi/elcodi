@@ -34,7 +34,7 @@ Elcodi\Component\Shipping\Entity\Abstracts\AbstractCarrierBaseRange:
     manyToOne:
         carrier:
             targetEntity: Elcodi\Component\Shipping\Entity\Interfaces\CarrierInterface
-            inversedBy: carrierRanges
+            inversedBy: ranges
             joinColumn:
                 name: carrier_id
                 referencedColumnName: id
@@ -54,6 +54,6 @@ Elcodi\Component\Shipping\Entity\Abstracts\AbstractCarrierBaseRange:
         priceCurrency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
-                 name: price_currency_id
-                 referencedColumnName: id
-                 nullable: false
+                name: price_currency_id
+                referencedColumnName: id
+                nullable: false
