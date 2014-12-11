@@ -19,6 +19,6 @@ Elcodi\Component\Shipping\Entity\Warehouse:
         address:
             targetEntity: Elcodi\Component\Geo\Entity\Interfaces\AddressInterface
             joinColumn:
-                 name: address_id
-                 referencedColumnName: id
-                 nullable: false
+                name: address_id
+                referencedColumnName: id
+                nullable: false

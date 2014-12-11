@@ -181,4 +181,14 @@ class Tax implements TaxInterface
 
         return $this;
     }
+
+    /**
+     * Returns the tax name
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->name;
+    }
 }

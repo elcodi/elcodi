@@ -184,4 +184,14 @@ class TaxGroup implements TaxGroupInterface
 
         return $this;
     }
+
+    /**
+     * Returns the group name
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->name;
+    }
 }
