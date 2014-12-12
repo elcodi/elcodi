@@ -19,7 +19,6 @@ namespace Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
-use Symfony\Component\Config\Resource\FileResource;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
@@ -58,13 +57,11 @@ abstract class AbstractExtension
     /**
      * {@inheritdoc}
      */
-    final public function getConfiguration(array $config, ContainerBuilder $container)
+    public function getConfiguration(array $config, ContainerBuilder $container)
     {
         $configuration = $this->getConfigurationInstance();
-
         if ($configuration) {
-            $refClass = new \ReflectionObject($configuration);
-            $container->addResource(new FileResource($refClass->getFileName()));
+            $container->addObjectResource($configuration);
         }
 
         return $configuration;
@@ -75,6 +72,8 @@ abstract class AbstractExtension
      */
     public function load(array $config, ContainerBuilder $container)
     {
+        $container->addObjectResource($this);
+
         $configuration = $this->getConfiguration($config, $container);
         if ($configuration instanceof ConfigurationInterface) {
             $config = $this->processConfiguration($configuration, $config);
@@ -101,7 +100,6 @@ abstract class AbstractExtension
 
             $tmpContainer = new ContainerBuilder($container->getParameterBag());
             $tmpContainer->setResourceTracking($container->isTrackingResources());
-            $tmpContainer->addObjectResource($this);
             $config = $this->processConfiguration($configuration, $config);
             $config = $container->getParameterBag()->resolveValue($config);
             $this->applyParametrizedValues($config, $tmpContainer);
