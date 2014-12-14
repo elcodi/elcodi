@@ -18,8 +18,8 @@ namespace Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider;
 
 use DateTime;
 use Exception;
-use Guzzle\Http\Client;
-use Guzzle\Http\Message\RequestInterface;
+use GuzzleHttp\Client;
+use GuzzleHttp\Message\RequestInterface;
 
 use Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\Interfaces\CurrencyExchangeRatesProviderAdapterInterface;
 
@@ -102,8 +102,6 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
         $request = $this->client->createRequest(
             'GET',
             $this->endPoint . '/convert/' . $value . '/' . $symbolFrom . '/' . $symbolTo,
-            null,
-            null,
             ['query' => $query]
         );
 
@@ -133,8 +131,6 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
         $request = $this->client->createRequest(
             'GET',
             $this->endPoint . '/latest.json',
-            null,
-            null,
             ['query' => $query]
         );
 
@@ -149,8 +145,6 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
         $request = $this->client->createRequest(
             'GET',
             $this->endPoint. '/currencies.json',
-            null,
-            null,
             ['query' => ['app_id' => $this->appId]]
         );
 
@@ -167,10 +161,10 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
     private function runRequest(RequestInterface $request)
     {
         try {
-            $request->send();
+            $response = $this->client->send($request);
 
             //send the req and return the json
-            return $request->getResponse()->json();
+            return $response->json();
         } catch (Exception $e) {
             return array('error' => $request->getResponse()->json());
         }
@@ -188,8 +182,6 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
         $request = $this->client->createRequest(
             'GET',
             $this->endPoint . '/historical/' . $date->format('Y-m-d') . '.json',
-            null,
-            null,
             [
                 'query' =>
                     [
