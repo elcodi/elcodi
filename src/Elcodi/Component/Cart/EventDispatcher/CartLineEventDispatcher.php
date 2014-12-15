@@ -77,7 +77,7 @@ class CartLineEventDispatcher extends AbstractEventDispatcher
     }
 
     /**
-     * Dispatch cartLine event when is removed
+     * Dispatch cartLine event when is added into cart
      *
      * @param CartInterface     $cart     Cart
      * @param CartLineInterface $cartLine CartLine
@@ -90,7 +90,7 @@ class CartLineEventDispatcher extends AbstractEventDispatcher
     )
     {
         $this->eventDispatcher->dispatch(
-            ElcodiCartEvents::CARTLINE_ONREMOVE,
+            ElcodiCartEvents::CARTLINE_ONADD,
             new CartLineOnAddEvent(
                 $cart,
                 $cartLine
