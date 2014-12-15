@@ -215,7 +215,6 @@ For that reason we need to build the translator using a TranslatorBuilder.
 ``` php
 $entityTranslationProvider;
 $entityTranslatorFactory = new TranslatorFactory();
-$entityTranslatorFactory->setEntityNamespace('
 $entityTranslator = $this->getMock('Elcodi\Component\EntityTranslator\Services\EntityTranslator', array(), array(), '', false);
 
 $configuration = array(
