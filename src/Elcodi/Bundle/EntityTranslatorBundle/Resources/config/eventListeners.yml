@@ -8,6 +8,7 @@ services:
         arguments:
             translation_provider: @elcodi.entity_translation_provider
             configuration: %elcodi.core.entity_translator.configuration%
+            locales: @elcodi.languages_iso
 
     elcodi.entity_translator_form_event_listener:
         alias: elcodi.core.entity_translator.event_listener.entity_translator_form

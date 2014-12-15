@@ -16,6 +16,7 @@
 
 namespace Elcodi\Component\EntityTranslator\EventListener;
 
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -43,11 +44,11 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
     protected $translationConfiguration;
 
     /**
-     * @var array
+     * @var Collection
      *
      * Locales
      */
-    protected $locales = ['es', 'en', 'fr'];
+    protected $locales;
 
     /**
      * @var array
@@ -61,14 +62,17 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
      *
      * @param EntityTranslationProviderInterface $entityTranslationProvider Entity Translation provider
      * @param array                              $translationConfiguration  Entity Translation configuration
+     * @param Collection                         $locales                   Locales
      */
     public function __construct(
         EntityTranslationProviderInterface $entityTranslationProvider,
-        array $translationConfiguration
+        array $translationConfiguration,
+        Collection $locales
     )
     {
         $this->entityTranslationProvider = $entityTranslationProvider;
         $this->translationConfiguration = $translationConfiguration;
+        $this->locales = $locales;
     }
 
     /**

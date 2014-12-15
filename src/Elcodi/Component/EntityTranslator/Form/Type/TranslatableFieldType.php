@@ -16,6 +16,7 @@
 
 namespace Elcodi\Component\EntityTranslator\Form\Type;
 
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormConfigInterface;
@@ -70,7 +71,7 @@ class TranslatableFieldType extends AbstractType
     protected $fieldConfiguration;
 
     /**
-     * @var array
+     * @var Collection
      *
      * Locales
      */
@@ -85,7 +86,7 @@ class TranslatableFieldType extends AbstractType
      * @param string                             $fieldName                 Field name
      * @param array                              $entityConfiguration       Entity configuration
      * @param array                              $fieldConfiguration        Field configuration
-     * @param array                              $locales                   Locales
+     * @param Collection                         $locales                   Locales
      */
     public function __construct(
         EntityTranslationProviderInterface $entityTranslationProvider,
@@ -94,7 +95,7 @@ class TranslatableFieldType extends AbstractType
         $fieldName,
         array $entityConfiguration,
         array $fieldConfiguration,
-        array $locales
+        Collection $locales
     )
     {
         $this->translationProvider = $entityTranslationProvider;

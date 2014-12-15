@@ -19,8 +19,6 @@ namespace Elcodi\Component\EntityTranslator\EventListener;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-use Elcodi\Component\Language\Entity\Interfaces\LocaleInterface;
-
 /**
  * Class EntityTranslatorEntityEventListener
  */
@@ -34,7 +32,7 @@ class EntityTranslatorEntityEventListener
     protected $container;
 
     /**
-     * @var LocaleInterface
+     * @var string
      *
      * Locale
      */
@@ -44,11 +42,11 @@ class EntityTranslatorEntityEventListener
      * Construct method
      *
      * @param ContainerInterface $container Container
-     * @param LocaleInterface    $locale    Locale
+     * @param string             $locale    Locale
      */
     public function __construct(
         ContainerInterface $container,
-        LocaleInterface $locale
+        $locale
     )
     {
         $this->container = $container;
@@ -67,7 +65,7 @@ class EntityTranslatorEntityEventListener
             ->get('elcodi.entity_translator')
             ->translate(
                 $args->getEntity(),
-                $this->locale->getIso()
+                $this->locale
             );
     }
 }

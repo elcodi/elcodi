@@ -106,6 +106,18 @@ class LocaleManager
     }
 
     /**
+     * Returns current locale
+     *
+     * @return Locale locale
+     */
+    public function getLocaleIso()
+    {
+        return $this
+            ->getLocale()
+            ->getIso();
+    }
+
+    /**
      * Sets locale
      *
      * @param LocaleInterface $locale locale

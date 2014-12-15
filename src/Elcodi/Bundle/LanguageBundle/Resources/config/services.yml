@@ -40,7 +40,25 @@ services:
     elcodi.locale_manager:
         alias: elcodi.core.language.service.locale_manager
 
+    #
+    # Environment values
+    #
+    elcodi.languages:
+        class: Doctrine\Common\Collections\Collection
+        factory_service: elcodi.language_manager
+        factory_method: getLanguages
+
+    elcodi.languages_iso:
+        class: Doctrine\Common\Collections\Collection
+        factory_service: elcodi.language_manager
+        factory_method: getLanguagesIso
+
     elcodi.locale:
         class: %elcodi.core.language.entity.locale.class%
         factory_service: elcodi.locale_manager
         factory_method: getLocale
+
+    elcodi.locale_iso:
+        class: stdClass
+        factory_service: elcodi.locale_manager
+        factory_method: getLocaleIso
