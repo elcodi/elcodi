@@ -171,8 +171,8 @@ class ConfigurationManagerTest extends WebTestCase
      *
      * See this test's app/config.yml for service definition
      *
-     * These test services have their arguments injected via expression language
-     * service() function that ask for elcodi.configuration_manager
+     * These test services have their arguments injected via expression-language's
+     * service() function that asks for elcodi.configuration_manager
      */
     public function testDynamicServiceParameter()
     {
