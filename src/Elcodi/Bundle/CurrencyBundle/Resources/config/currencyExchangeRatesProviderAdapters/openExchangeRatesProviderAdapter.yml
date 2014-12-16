@@ -11,7 +11,7 @@ services:
     # OpenExchangeRates Adapter
     #
     elcodi.core.currency.guzzle_client:
-        class: GuzzleHttp\Client
+        class: Guzzle\Http\Client
 
     elcodi.core.currency.currency_exchange_rates_provider_adapter.open_exchange_rates:
         class: %elcodi.core.currency.currency_exchange_rates_provider_adapter.open_exchange_rates.class%
