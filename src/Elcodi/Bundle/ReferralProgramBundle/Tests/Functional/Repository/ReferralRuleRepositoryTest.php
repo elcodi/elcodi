@@ -31,7 +31,6 @@ class ReferralRuleRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.referral_program.repository.referral_rule',
             'elcodi.repository.referral_rule',
         ];
     }
@@ -39,21 +38,10 @@ class ReferralRuleRepositoryTest extends WebTestCase
     /**
      * Test referral_rule repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.referral_program.repository.referral_rule.class'),
-            $this->get('elcodi.core.referral_program.repository.referral_rule')
-        );
-    }
-
-    /**
-     * Test referral_rule repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.referral_program.repository.referral_rule.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.referral_rule')
         );
     }

@@ -7,25 +7,19 @@ services:
     #
     # Repository for entity currency
     #
-    elcodi.core.currency.repository.currency:
-        class: %elcodi.core.currency.repository.currency.class%
+    elcodi.repository.currency:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.currency.entity.currency.class%
 
-    elcodi.repository.currency:
-        alias: elcodi.core.currency.repository.currency
-
     #
     # Repository for entity currency_exchange_rate
     #
-    elcodi.core.currency.repository.currency_exchange_rate:
-        class: %elcodi.core.currency.repository.currency_exchange_rate.class%
+    elcodi.repository.currency_exchange_rate:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.currency.entity.currency_exchange_rate.class%
-
-    elcodi.repository.currency_exchange_rate:
-        alias: elcodi.core.currency.repository.currency_exchange_rate

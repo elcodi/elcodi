@@ -7,12 +7,6 @@ parameters:
     elcodi.core.menu.factory.menu.class: Elcodi\Component\Menu\Factory\MenuFactory
 
     #
-    # Repositories
-    #
-    elcodi.core.menu.repository.menu_node.class: Elcodi\Component\Menu\Repository\NodeRepository
-    elcodi.core.menu.repository.menu.class: Elcodi\Component\Menu\Repository\MenuRepository
-
-    #
     # Services
     #
     elcodi.core.menu.service.menu_manager.class: Elcodi\Component\Menu\Services\MenuManager

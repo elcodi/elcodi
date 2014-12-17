@@ -31,7 +31,6 @@ class ExpressionRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.rule.repository.expression',
             'elcodi.repository.expression',
         ];
     }
@@ -39,21 +38,10 @@ class ExpressionRepositoryTest extends WebTestCase
     /**
      * Test expression repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.rule.repository.expression.class'),
-            $this->get('elcodi.core.rule.repository.expression')
-        );
-    }
-
-    /**
-     * Test expression repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.rule.repository.expression.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.expression')
         );
     }

@@ -41,7 +41,6 @@ class OrderRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.cart.repository.order',
             'elcodi.repository.order',
         ];
     }
@@ -49,21 +48,10 @@ class OrderRepositoryTest extends WebTestCase
     /**
      * Test order repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.cart.repository.order.class'),
-            $this->get('elcodi.core.cart.repository.order')
-        );
-    }
-
-    /**
-     * Test order repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.cart.repository.order.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.order')
         );
     }

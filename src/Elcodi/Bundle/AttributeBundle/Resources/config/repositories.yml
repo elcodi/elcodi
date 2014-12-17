@@ -7,25 +7,19 @@ services:
     #
     # Repository for Attribute entities
     #
-    elcodi.core.attribute.repository.attribute:
-        class: %elcodi.core.attribute.repository.attribute.class%
+    elcodi.repository.attribute:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.attribute.entity.attribute.class%
 
-    elcodi.repository.attribute:
-        alias: elcodi.core.attribute.repository.attribute
-
     #
-    # Repository for Value entities
+    # Repository for Attribute Value entities
     #
-    elcodi.core.attribute.repository.value:
-        class: %elcodi.core.attribute.repository.value.class%
+    elcodi.repository.attribute_value:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
-            entity_namespace: %elcodi.core.attribute.entity.value.class%
-
-    elcodi.repository.attribute_value:
-        alias: elcodi.core.attribute.repository.value
+            entity_namespace: %elcodi.core.attribute.entity.attribute_value.class%

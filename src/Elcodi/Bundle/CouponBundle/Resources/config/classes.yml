@@ -1,16 +1,6 @@
 parameters:
 
     #
-    # Entities
-    #
-    elcodi.core.coupon.entity.coupon.class: Elcodi\Component\Coupon\Entity\Coupon
-
-    #
-    # Repository
-    #
-    elcodi.core.coupon.repository.coupon.class: Elcodi\Component\Coupon\Repository\CouponRepository
-
-    #
     # Services
     #
     elcodi.core.coupon.service.coupon_manager.class: Elcodi\Component\Coupon\Services\CouponManager

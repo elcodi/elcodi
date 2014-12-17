@@ -31,7 +31,6 @@ class CommentRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.comment.repository.comment',
             'elcodi.repository.comment',
         ];
     }
@@ -39,21 +38,10 @@ class CommentRepositoryTest extends WebTestCase
     /**
      * Test comment repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.comment.repository.comment.class'),
-            $this->get('elcodi.core.comment.repository.comment')
-        );
-    }
-
-    /**
-     * Test comment repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.comment.repository.comment.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.comment')
         );
     }

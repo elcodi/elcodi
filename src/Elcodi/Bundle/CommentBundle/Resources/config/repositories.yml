@@ -7,25 +7,19 @@ services:
     #
     # Repository for entity comment
     #
-    elcodi.core.comment.repository.comment:
-        class: %elcodi.core.comment.repository.comment.class%
+    elcodi.repository.comment:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.comment.entity.comment.class%
 
-    elcodi.repository.comment:
-        alias: elcodi.core.comment.repository.comment
-
     #
     # Repository for entity vote
     #
-    elcodi.core.comment.repository.vote:
-        class: %elcodi.core.comment.repository.vote.class%
+    elcodi.repository.vote:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.comment.entity.vote.class%
-
-    elcodi.repository.vote:
-        alias: elcodi.core.comment.repository.vote

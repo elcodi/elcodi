@@ -7,25 +7,19 @@ services:
     #
     # Repository for entity cart_coupon
     #
-    elcodi.core.cart_coupon.repository.cart_coupon:
-        class: %elcodi.core.cart_coupon.repository.cart_coupon.class%
+    elcodi.repository.cart_coupon:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.cart_coupon.entity.cart_coupon.class%
 
-    elcodi.repository.cart_coupon:
-        alias: elcodi.core.cart_coupon.repository.cart_coupon
-
     #
     # Repository for entity order_coupon
     #
-    elcodi.core.cart_coupon.repository.order_coupon:
-        class: %elcodi.core.cart_coupon.repository.order_coupon.class%
+    elcodi.repository.order_coupon:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.cart_coupon.entity.order_coupon.class%
-
-    elcodi.repository.order_coupon:
-        alias: elcodi.core.cart_coupon.repository.order_coupon

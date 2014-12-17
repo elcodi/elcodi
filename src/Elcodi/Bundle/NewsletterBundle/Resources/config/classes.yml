@@ -1,11 +1,6 @@
 parameters:
 
     #
-    # Repositories
-    #
-    elcodi.core.newsletter.repository.newsletter_subscription.class: Elcodi\Component\Newsletter\Repository\NewsletterSubscriptionRepository
-
-    #
     # Factory
     #
     elcodi.core.newsletter.factory.newsletter_subscription.class: Elcodi\Component\Newsletter\Factory\NewsletterSubscriptionFactory

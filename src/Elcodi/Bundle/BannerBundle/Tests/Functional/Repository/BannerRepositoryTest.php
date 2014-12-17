@@ -31,7 +31,6 @@ class BannerRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.banner.repository.banner',
             'elcodi.repository.banner',
         ];
     }
@@ -39,21 +38,10 @@ class BannerRepositoryTest extends WebTestCase
     /**
      * Test banner repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.banner.repository.banner.class'),
-            $this->get('elcodi.core.banner.repository.banner')
-        );
-    }
-
-    /**
-     * Test banner repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.banner.repository.banner.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.banner')
         );
     }

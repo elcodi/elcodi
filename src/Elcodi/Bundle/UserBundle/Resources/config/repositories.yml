@@ -7,25 +7,19 @@ services:
     #
     # Repository for entity customer
     #
-    elcodi.core.user.repository.customer:
-        class: %elcodi.core.user.repository.customer.class%
+    elcodi.repository.customer:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.user.entity.customer.class%
 
-    elcodi.repository.customer:
-        alias: elcodi.core.user.repository.customer
-
     #
     # Repository for entity admin
     #
-    elcodi.core.user.repository.admin_user:
-        class: %elcodi.core.user.repository.admin_user.class%
+    elcodi.repository.admin_user:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.user.entity.admin_user.class%
-
-    elcodi.repository.admin_user:
-        alias: elcodi.core.user.repository.admin_user

@@ -1,12 +1,6 @@
 parameters:
 
     #
-    # Repositories
-    #
-    elcodi.core.currency.repository.currency.class: Elcodi\Component\Currency\Repository\CurrencyRepository
-    elcodi.core.currency.repository.currency_exchange_rate.class: Elcodi\Component\Currency\Repository\CurrencyExchangeRateRepository
-
-    #
     # Factories
     #
     elcodi.core.currency.factory.abstract.abstract.class: Elcodi\Component\Currency\Factory\Abstracts\AbstractPurchasableFactory

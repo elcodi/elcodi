@@ -1,15 +1,6 @@
 parameters:
 
     #
-    # Repositories
-    #
-    elcodi.core.cart.repository.cart.class: Elcodi\Component\Cart\Repository\CartRepository
-    elcodi.core.cart.repository.order.class: Elcodi\Component\Cart\Repository\OrderRepository
-    elcodi.core.cart.repository.cart_line.class: Elcodi\Component\Cart\Repository\CartLineRepository
-    elcodi.core.cart.repository.order_line.class: Elcodi\Component\Cart\Repository\OrderLineRepository
-    elcodi.core.cart.repository.order_state_line.class: Elcodi\Component\Cart\Repository\OrderStateLineRepository
-
-    #
     # EventDispatchers
     #
     elcodi.core.cart.event_dispatcher.cart.class: Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher

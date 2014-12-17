@@ -19,9 +19,9 @@ services:
     # Factory for Value entities
     #
     elcodi.core.attribute.factory.value:
-        class: %elcodi.core.attribute.factory.value.class%
+        class: %elcodi.core.attribute.factory.attribute_value.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.attribute.entity.value.class%"]]
+            - [setEntityNamespace, ["%elcodi.core.attribute.entity.attribute_value.class%"]]
 
     elcodi.factory.attribute_value:
         alias: elcodi.core.attribute.factory.value

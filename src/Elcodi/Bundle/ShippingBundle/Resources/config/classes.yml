@@ -10,15 +10,6 @@ parameters:
     elcodi.core.shipping.entity.warehouse.class: Elcodi\Component\Shipping\Entity\Warehouse
 
     #
-    # Repositories
-    #
-    elcodi.core.shipping.repository.carrier_base_range.class: Elcodi\Component\Shipping\Repository\CarrierBaseRangeRepository
-    elcodi.core.shipping.repository.carrier_price_range.class: Elcodi\Component\Shipping\Repository\CarrierPriceRangeRepository
-    elcodi.core.shipping.repository.carrier_weight_range.class: Elcodi\Component\Shipping\Repository\CarrierWeightRangeRepository
-    elcodi.core.shipping.repository.carrier.class: Elcodi\Component\Shipping\Repository\CarrierRepository
-    elcodi.core.shipping.repository.warehouse.class: Elcodi\Component\Shipping\Repository\WarehouseRepository
-
-    #
     # Factories
     #
     elcodi.core.shipping.factory.carrier.class: Elcodi\Component\Shipping\Factory\CarrierFactory

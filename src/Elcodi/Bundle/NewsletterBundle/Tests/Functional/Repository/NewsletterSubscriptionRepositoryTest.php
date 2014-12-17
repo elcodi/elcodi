@@ -31,7 +31,6 @@ class NewsletterSubscriptionRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.newsletter.repository.newsletter_subscription',
             'elcodi.repository.newsletter_subscription',
         ];
     }
@@ -39,21 +38,10 @@ class NewsletterSubscriptionRepositoryTest extends WebTestCase
     /**
      * Test newsletter_subscription repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.newsletter.repository.newsletter_subscription.class'),
-            $this->get('elcodi.core.newsletter.repository.newsletter_subscription')
-        );
-    }
-
-    /**
-     * Test newsletter_subscription repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.newsletter.repository.newsletter_subscription.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.newsletter_subscription')
         );
     }

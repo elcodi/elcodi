@@ -1,23 +1,6 @@
 parameters:
 
     #
-    # Repositories
-    #
-    elcodi.core.geo.repository.country.class: Elcodi\Component\Geo\Repository\CountryRepository
-    elcodi.core.geo.repository.state.class: Elcodi\Component\Geo\Repository\StateRepository
-    elcodi.core.geo.repository.province.class: Elcodi\Component\Geo\Repository\ProvinceRepository
-    elcodi.core.geo.repository.city.class: Elcodi\Component\Geo\Repository\CityRepository
-    elcodi.core.geo.repository.postal_code.class: Elcodi\Component\Geo\Repository\PostalCodeRepository
-    elcodi.core.geo.repository.address.class: Elcodi\Component\Geo\Repository\AddressRepository
-    elcodi.core.geo.repository.zone.class: Elcodi\Component\Geo\Repository\ZoneRepository
-    elcodi.core.geo.repository.zone_member.class: Elcodi\Component\Geo\Repository\ZoneMemberRepository
-    elcodi.core.geo.repository.zone_country_member.class: Elcodi\Component\Geo\Repository\ZoneCountryMemberRepository
-    elcodi.core.geo.repository.zone_state_member.class: Elcodi\Component\Geo\Repository\ZoneStateMemberRepository
-    elcodi.core.geo.repository.zone_province_member.class: Elcodi\Component\Geo\Repository\ZoneProvinceMemberRepository
-    elcodi.core.geo.repository.zone_city_member.class: Elcodi\Component\Geo\Repository\ZoneCityMemberRepository
-    elcodi.core.geo.repository.zone_postal_code_member.class: Elcodi\Component\Geo\Repository\ZonePostalCodeMemberRepository
-
-    #
     # Factories
     #
     elcodi.core.geo.factory.country.class: Elcodi\Component\Geo\Factory\CountryFactory

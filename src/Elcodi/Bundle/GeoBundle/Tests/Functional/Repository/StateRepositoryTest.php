@@ -31,7 +31,6 @@ class StateRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.geo.repository.state',
             'elcodi.repository.state',
         ];
     }
@@ -39,21 +38,10 @@ class StateRepositoryTest extends WebTestCase
     /**
      * Test state repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.geo.repository.state.class'),
-            $this->get('elcodi.core.geo.repository.state')
-        );
-    }
-
-    /**
-     * Test state repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.geo.repository.state.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.state')
         );
     }

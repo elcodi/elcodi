@@ -31,7 +31,6 @@ class ProductRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.product.repository.product',
             'elcodi.repository.product',
         ];
     }
@@ -39,21 +38,10 @@ class ProductRepositoryTest extends WebTestCase
     /**
      * Test product repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.product.repository.product.class'),
-            $this->get('elcodi.core.product.repository.product')
-        );
-    }
-
-    /**
-     * Test product repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.product.repository.product.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.product')
         );
     }

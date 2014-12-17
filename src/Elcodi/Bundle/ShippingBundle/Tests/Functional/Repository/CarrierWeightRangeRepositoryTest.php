@@ -31,7 +31,6 @@ class CarrierWeightRangeRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.shipping.repository.carrier_weight_range',
             'elcodi.repository.carrier_weight_range',
         ];
     }
@@ -39,21 +38,10 @@ class CarrierWeightRangeRepositoryTest extends WebTestCase
     /**
      * Test carrier_weight_range repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.shipping.repository.carrier_weight_range.class'),
-            $this->get('elcodi.core.shipping.repository.carrier_weight_range')
-        );
-    }
-
-    /**
-     * Test carrier_weight_range repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.shipping.repository.carrier_weight_range.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.carrier_weight_range')
         );
     }
