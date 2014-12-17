@@ -14,22 +14,24 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Bundle\CoreBundle\Tests\Functional\Generator;
+namespace Elcodi\Component\Core\Generator;
 
-use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
+use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 
 /**
- * Class Sha1GeneratorTest
+ * Class Sha1Generator
+ *
+ * This class is a unique id generator.
  */
-class Sha1GeneratorTest extends WebTestCase
+class UniqIdGenerator implements GeneratorInterface
 {
     /**
-     * Returns the callable name of the service
+     * Generates a unique Id
      *
-     * @return string[] service name
+     * @return string Result of generation
      */
-    public function getServiceCallableName()
+    public function generate()
     {
-        return 'elcodi.generator.sha1';
+        return rand(0, 2147483647);
     }
 }

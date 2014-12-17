@@ -6,7 +6,7 @@ Elcodi\Component\Product\Entity\Category:
         id:
             type: integer
             generator:
-                strategy: AUTO
+                strategy: none
     fields:
         root:
             column: root

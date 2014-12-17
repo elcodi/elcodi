@@ -6,7 +6,7 @@ Elcodi\Component\Product\Entity\Product:
         id:
             type: integer
             generator:
-                strategy: AUTO
+                strategy: none
     fields:
         sku:
             column: sku

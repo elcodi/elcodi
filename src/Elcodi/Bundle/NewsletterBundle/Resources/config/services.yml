@@ -10,4 +10,4 @@ services:
             validator: @validator
             newsletter_subscription_factory: @elcodi.core.newsletter.factory.newsletter_subscription
             newsletter_subscription_repository: @elcodi.repository.newsletter_subscription
-            hash_generator: @elcodi.core.core.generator.sha1
+            hash_generator: @elcodi.generator.sha1

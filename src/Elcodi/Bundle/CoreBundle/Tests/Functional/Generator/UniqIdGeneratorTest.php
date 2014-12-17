@@ -19,9 +19,9 @@ namespace Elcodi\Bundle\CoreBundle\Tests\Functional\Generator;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class Sha1GeneratorTest
+ * Class UniqIdGeneratorTest
  */
-class Sha1GeneratorTest extends WebTestCase
+class UniqIdGeneratorTest extends WebTestCase
 {
     /**
      * Returns the callable name of the service
@@ -30,6 +30,6 @@ class Sha1GeneratorTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.generator.sha1';
+        return 'elcodi.generator.uniqid';
     }
 }
