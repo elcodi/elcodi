@@ -111,7 +111,7 @@ class EntityTranslatorBuilder
     {
         foreach ($configuration as $classNamespace => $classConfiguration) {
 
-            if (class_exists($classNamespace)) {
+            if (class_exists($classNamespace) || interface_exists($classNamespace)) {
                 return $this;
             }
         }

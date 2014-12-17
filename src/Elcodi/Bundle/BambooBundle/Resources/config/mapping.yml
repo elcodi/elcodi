@@ -1,0 +1,6 @@
+elcodi_product:
+    mapping:
+        product:
+            mapping_file: @ElcodiBambooBundle/Resources/config/doctrine/Product.orm.yml
+        category:
+            mapping_file: @ElcodiBambooBundle/Resources/config/doctrine/Category.orm.yml

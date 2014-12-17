@@ -173,6 +173,19 @@ elcodi_entity_translator:
                 description: ~
 ```
 
+You can use Interfaces as well, so in that case, to ensure that the
+configuration will be still valid even if you change the Product implementation,
+you can use an Interface for that
+
+``` yml
+elcodi_entity_translator:
+    configuration:
+        My\Bundle\Entity\Interfaces\ProductInterface:
+            fields:
+                name: ~
+                description: ~
+```
+
 ## Saving translations
 
 Do you want to translate an entity? Great, let's do that! You can easily manage

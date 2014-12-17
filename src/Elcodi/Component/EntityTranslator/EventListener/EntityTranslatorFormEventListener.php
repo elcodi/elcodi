@@ -114,34 +114,37 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
         $entity = $event->getData();
         $form = $event->getForm();
 
-        $entityNamespace = get_class($entity);
+        $classStack = $this->getNamespacesFromClass(get_class($entity));
 
-        if (!isset($this->translationConfiguration[$entityNamespace])) {
-            return $this;
-        }
+        foreach ($classStack as $classNamespace) {
 
-        $entityConfiguration = $this->translationConfiguration[$entityNamespace];
-        $entityFields = $entityConfiguration['fields'];
+            if (!array_key_exists($classNamespace, $this->translationConfiguration)) {
+                continue;
+            }
 
-        foreach ($entityFields as $fieldName => $fieldConfiguration) {
+            $entityConfiguration = $this->translationConfiguration[$classNamespace];
+            $entityFields = $entityConfiguration['fields'];
 
-            $formConfig = $form
-                ->get($fieldName)
-                ->getConfig();
+            foreach ($entityFields as $fieldName => $fieldConfiguration) {
 
-            $form
-                ->remove($fieldName)
-                ->add($fieldName, new TranslatableFieldType(
-                    $this->entityTranslationProvider,
-                    $formConfig,
-                    $entity,
-                    $fieldName,
-                    $entityConfiguration,
-                    $fieldConfiguration,
-                    $this->locales
-                ), array(
-                    'mapped' => false,
-                ));
+                $formConfig = $form
+                    ->get($fieldName)
+                    ->getConfig();
+
+                $form
+                    ->remove($fieldName)
+                    ->add($fieldName, new TranslatableFieldType(
+                        $this->entityTranslationProvider,
+                        $formConfig,
+                        $entity,
+                        $fieldName,
+                        $entityConfiguration,
+                        $fieldConfiguration,
+                        $this->locales
+                    ), array(
+                        'mapped' => false,
+                    ));
+            }
         }
     }
 
@@ -169,32 +172,53 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
             ->getConfig()
             ->getDataClass();
 
-        if (!isset($this->translationConfiguration[$entityNamespace])) {
-            return $this;
-        }
+        $classStack = $this->getNamespacesFromClass($entityNamespace);
 
-        $entityConfiguration = $this->translationConfiguration[$entityNamespace];
-        $entityFields = $entityConfiguration['fields'];
-        $entityIdGetter = $entityConfiguration['idGetter'];
+        foreach ($classStack as $classNamespace) {
 
-        foreach ($this->locales as $locale) {
+            if (!array_key_exists($classNamespace, $this->translationConfiguration)) {
+                continue;
+            }
 
-            foreach ($entityFields as $fieldName => $fieldConfiguration) {
+            $entityConfiguration = $this->translationConfiguration[$classNamespace];
+            $entityFields = $entityConfiguration['fields'];
+            $entityIdGetter = $entityConfiguration['idGetter'];
 
-                $this
-                    ->entityTranslationProvider
-                    ->setTranslation(
-                        $entityConfiguration['alias'],
-                        $entity->$entityIdGetter(),
-                        $fieldName,
-                        $this->submittedDataPlain[$fieldName][$locale . '_' . $fieldName],
-                        $locale
-                    );
+            foreach ($this->locales as $locale) {
+
+                foreach ($entityFields as $fieldName => $fieldConfiguration) {
+
+                    $this
+                        ->entityTranslationProvider
+                        ->setTranslation(
+                            $entityConfiguration['alias'],
+                            $entity->$entityIdGetter(),
+                            $fieldName,
+                            $this->submittedDataPlain[$fieldName][$locale . '_' . $fieldName],
+                            $locale
+                        );
+                }
             }
         }
 
         $this
             ->entityTranslationProvider
             ->flushTranslations();
+    }
+
+    /**
+     * Get all possible classes given an object
+     *
+     * @param string $namespace Namespace
+     *
+     * @return string[] Set of classes and interfaces
+     */
+    protected function getNamespacesFromClass($namespace)
+    {
+        $classStack = [$namespace];
+        $classStack = array_merge($classStack, class_parents($namespace));
+        $classStack = array_merge($classStack, class_implements($namespace));
+
+        return $classStack;
     }
 }

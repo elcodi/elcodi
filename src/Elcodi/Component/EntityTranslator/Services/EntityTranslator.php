@@ -63,29 +63,32 @@ class EntityTranslator implements EntityTranslatorInterface
      */
     public function translate($object, $locale)
     {
-        $classNamespace = get_class($object);
+        $classStack = $this->getNamespacesFromClass(get_class($object));
 
-        if (!array_key_exists($classNamespace, $this->configuration)) {
-            return $object;
-        }
+        foreach ($classStack as $classNamespace) {
 
-        $configuration = $this->configuration[$classNamespace];
-        $idGetter = $configuration['idGetter'];
-        $entityId = $object->$idGetter();
+            if (!array_key_exists($classNamespace, $this->configuration)) {
+                continue;
+            }
 
-        foreach ($configuration['fields'] as $fieldName => $fieldConfiguration) {
+            $configuration = $this->configuration[$classNamespace];
+            $idGetter = $configuration['idGetter'];
+            $entityId = $object->$idGetter();
 
-            $setter = $fieldConfiguration['setter'];
-            $translation = $this
-                ->translationProvider
-                ->getTranslation(
-                    $configuration['alias'],
-                    $entityId,
-                    $fieldName,
-                    $locale
-                );
+            foreach ($configuration['fields'] as $fieldName => $fieldConfiguration) {
 
-            $object->$setter($translation);
+                $setter = $fieldConfiguration['setter'];
+                $translation = $this
+                    ->translationProvider
+                    ->getTranslation(
+                        $configuration['alias'],
+                        $entityId,
+                        $fieldName,
+                        $locale
+                    );
+
+                $object->$setter($translation);
+            }
         }
 
         return $object;
@@ -112,31 +115,34 @@ class EntityTranslator implements EntityTranslatorInterface
      */
     public function save($object, array $translations)
     {
-        $classNamespace = get_class($object);
+        $classStack = $this->getNamespacesFromClass(get_class($object));
 
-        if (!array_key_exists($classNamespace, $this->configuration)) {
-            return $object;
-        }
+        foreach ($classStack as $classNamespace) {
 
-        $configuration = $this->configuration[$classNamespace];
-        $idGetter = $configuration['idGetter'];
-        $entityId = $object->$idGetter();
+            if (!array_key_exists($classNamespace, $this->configuration)) {
+                continue;
+            }
 
-        foreach ($translations as $locale => $translation) {
+            $configuration = $this->configuration[$classNamespace];
+            $idGetter = $configuration['idGetter'];
+            $entityId = $object->$idGetter();
 
-            foreach ($configuration['fields'] as $fieldName => $fieldConfiguration) {
+            foreach ($translations as $locale => $translation) {
 
-                if (isset($translation[$fieldName])) {
+                foreach ($configuration['fields'] as $fieldName => $fieldConfiguration) {
 
-                    $this
-                        ->translationProvider
-                        ->setTranslation(
-                            $configuration['alias'],
-                            $entityId,
-                            $fieldName,
-                            $translation[$fieldName],
-                            $locale
-                        );
+                    if (isset($translation[$fieldName])) {
+
+                        $this
+                            ->translationProvider
+                            ->setTranslation(
+                                $configuration['alias'],
+                                $entityId,
+                                $fieldName,
+                                $translation[$fieldName],
+                                $locale
+                            );
+                    }
                 }
             }
         }
@@ -146,5 +152,21 @@ class EntityTranslator implements EntityTranslatorInterface
             ->flushTranslations();
 
         return $this;
+    }
+
+    /**
+     * Get all possible classes given an object
+     *
+     * @param string $namespace Namespace
+     *
+     * @return string[] Set of classes and interfaces
+     */
+    protected function getNamespacesFromClass($namespace)
+    {
+        $classStack = [$namespace];
+        $classStack = array_merge($classStack, class_parents($namespace));
+        $classStack = array_merge($classStack, class_implements($namespace));
+
+        return $classStack;
     }
 }

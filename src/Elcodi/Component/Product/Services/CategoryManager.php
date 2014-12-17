@@ -107,7 +107,7 @@ class CategoryManager extends AbstractCacheWrapper
         /**
          * If cache key is empty, build it
          */
-        if (empty($categoryTree)) {
+        if (is_null($categoryTree)) {
 
             $categoryTree = $this->buildCategoryTreeAndSaveIntoCache();
         }
