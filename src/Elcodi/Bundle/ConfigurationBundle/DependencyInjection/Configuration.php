@@ -20,8 +20,8 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
-use Elcodi\Component\Configuration\Adapter\DoctrineConfigurationProvider;
 use Elcodi\Component\Configuration\Adapter\DoctrineCacheConfigurationProvider;
+use Elcodi\Component\Configuration\Adapter\DoctrineConfigurationProvider;
 
 /**
  * This is the class that validates and merges configuration from your app/config files

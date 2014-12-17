@@ -57,7 +57,7 @@ class AdminUserWrapper
      * Otherwise, this create new Guest without persisting it
      *
      * @param AdminUserFactory      $adminUserFactory Customer factory
-     * @param TokenStorageInterface $tokenStorage TokenStorageInterface instance
+     * @param TokenStorageInterface $tokenStorage     TokenStorageInterface instance
      */
     public function __construct(
         AdminUserFactory $adminUserFactory,

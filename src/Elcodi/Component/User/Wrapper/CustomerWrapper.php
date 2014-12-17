@@ -55,7 +55,7 @@ class CustomerWrapper
      * Otherwise, this create new Guest without persisting it
      *
      * @param CustomerFactory       $customerFactory Customer factory
-     * @param TokenStorageInterface $tokenStorage TokenStorageInterface instance
+     * @param TokenStorageInterface $tokenStorage    TokenStorageInterface instance
      */
     public function __construct(
         CustomerFactory $customerFactory,
