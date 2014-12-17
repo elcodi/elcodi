@@ -93,7 +93,7 @@ class ConfigurationManagerTest extends PHPUnit_Framework_TestCase
         return [
             ['param1', 'value1'],
             ['param2', 'value2'],
-            ['param3', NULL]
+            ['param3', null]
         ];
     }
 
