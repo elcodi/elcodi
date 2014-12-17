@@ -1,0 +1,21 @@
+parameters:
+
+    #
+    # Doctrine parameter configuration provider
+    #
+    elcodi.core.configuration.adapter.doctrine_configuration_provider.class: Elcodi\Component\Configuration\Adapter\DoctrineConfigurationProvider
+
+services:
+
+    #
+    # Doctrine parameter configuration provider
+    #
+    elcodi.core.configuration.adapter.doctrine_configuration_provider:
+        class: %elcodi.core.configuration.adapter.doctrine_configuration_provider.class%
+        arguments:
+            object_manager: @elcodi.object_manager.configuration
+            object_repository: @elcodi.repository.configuration
+            configuration_factory: @elcodi.factory.configuration
+
+    elcodi.core.configuration.adapter.configuration_provider:
+        alias: elcodi.core.configuration.adapter.doctrine_configuration_provider
