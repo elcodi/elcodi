@@ -35,18 +35,6 @@ class NullMoney extends StubMoney implements MoneyInterface
     }
 
     /**
-     * Sets the amount
-     *
-     * @param integer $amount Amount
-     *
-     * @return $this self Object
-     */
-    public function setAmount($amount)
-    {
-        return $this;
-    }
-
-    /**
      * Gets the Money amount
      *
      * @return integer Amount
@@ -54,18 +42,6 @@ class NullMoney extends StubMoney implements MoneyInterface
     public function getAmount()
     {
         return 0;
-    }
-
-    /**
-     * Set currency
-     *
-     * @param CurrencyInterface $currency Currency
-     *
-     * @return $this self Object
-     */
-    public function setCurrency(CurrencyInterface $currency)
-    {
-        return $this;
     }
 
     /**
@@ -93,7 +69,7 @@ class NullMoney extends StubMoney implements MoneyInterface
      */
     public function compareTo(MoneyInterface $other)
     {
-        return null;
+        return $other;
     }
 
     /**
@@ -105,7 +81,7 @@ class NullMoney extends StubMoney implements MoneyInterface
      */
     public function add(MoneyInterface $other)
     {
-        return $this;
+        return $other;
     }
 
     /**
@@ -117,11 +93,12 @@ class NullMoney extends StubMoney implements MoneyInterface
      */
     public function subtract(MoneyInterface $other)
     {
-        return $this;
+        return $other;
     }
 
     /**
-     * Multiplies current Money amount by a factor returns the result as a new Money
+     * Multiplies current Money amount by a factor
+     * and returns the result as a new Money
      *
      * @param float $factor Factor
      *

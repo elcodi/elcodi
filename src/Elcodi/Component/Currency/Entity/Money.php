@@ -72,24 +72,6 @@ class Money extends StubMoney implements MoneyInterface
     }
 
     /**
-     * Set currency
-     *
-     * @param CurrencyInterface $currency Currency
-     *
-     * @return $this self Object
-     */
-    public function setCurrency(CurrencyInterface $currency)
-    {
-        $this->wrappedMoney = new WrappedMoney(
-            $this->amount,
-            new WrappedCurrency($currency->getIso())
-        );
-        $this->currency = $currency;
-
-        return $this;
-    }
-
-    /**
      * Gets the Money Currency
      *
      * @return CurrencyInterface Currency
@@ -97,26 +79,6 @@ class Money extends StubMoney implements MoneyInterface
     public function getCurrency()
     {
         return $this->currency;
-    }
-
-    /**
-     * Sets the amount
-     *
-     * @param integer $amount Amount
-     *
-     * @return $this self Object
-     */
-    public function setAmount($amount)
-    {
-        $amount = intval($amount);
-
-        $this->wrappedMoney = new WrappedMoney(
-            $amount,
-            new WrappedCurrency($this->currency->getIso())
-        );
-        $this->amount = $amount;
-
-        return $this;
     }
 
     /**
