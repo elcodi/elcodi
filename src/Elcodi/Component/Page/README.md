@@ -22,6 +22,8 @@ Usage
 All classes are under the `Elcodi\Component\Page` namespace.
 The main one is `PageInterface`, which defines the contract any entity must fulfill in order to work with this component. Although you can define your own entity, we also provide `Page` as a basic implementation.
 
+Check the documentation in [Elcodi Docs](http://docs.elcodi.io). Feel free to propose new recipes, examples or guides; our main goal is to help the developer building their site.
+
 Contributing
 ------------
 All issues and Pull Requests should be on the main repository [elcodi/elcodi](https://github.com/elcodi/elcodi), so this one is read-only.
