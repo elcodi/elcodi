@@ -91,6 +91,8 @@ abstract class AbstractExtension
             $container->merge($tmpContainer);
         }
 
+        $this->overrideEntities($container);
+
         $this->preLoad($config, $container);
     }
 
@@ -185,28 +187,19 @@ abstract class AbstractExtension
     }
 
     /**
+     * Hook after prepending configuration.
+     *
      * @param array            $config
      * @param ContainerBuilder $container
      */
     protected function preLoad(array $config, ContainerBuilder $container)
     {
-        if (!$this instanceof EntitiesOverridableExtensionInterface) {
-            return;
-        }
-
-        $overrides = $this->getEntitiesOverrides();
-        foreach ($overrides as $interface => $override) {
-            $overrides[$interface] = $container->getParameter($override);
-        }
-
-        $container->prependExtensionConfig('doctrine', [
-            'orm' => [
-                'resolve_target_entities' => $overrides
-            ]
-        ]);
+        // Implement here your bundle logic
     }
 
     /**
+     * Hook after load the full container.
+     *
      * @param array            $config
      * @param ContainerBuilder $container
      */
@@ -263,5 +256,28 @@ abstract class AbstractExtension
 
             $loader->load($configFile . '.yml');
         }
+    }
+
+    /**
+     * Override Doctrine entities
+     *
+     * @param ContainerBuilder $container
+     */
+    protected function overrideEntities(ContainerBuilder $container)
+    {
+        if (!$this instanceof EntitiesOverridableExtensionInterface) {
+            return;
+        }
+
+        $overrides = $this->getEntitiesOverrides();
+        foreach ($overrides as $interface => $override) {
+            $overrides[$interface] = $container->getParameter($override);
+        }
+
+        $container->prependExtensionConfig('doctrine', [
+            'orm' => [
+                'resolve_target_entities' => $overrides
+            ]
+        ]);
     }
 }
