@@ -31,7 +31,6 @@ class PostalCodeRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.geo.repository.city',
             'elcodi.repository.city',
         ];
     }
@@ -39,21 +38,10 @@ class PostalCodeRepositoryTest extends WebTestCase
     /**
      * Test city repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.geo.repository.city.class'),
-            $this->get('elcodi.core.geo.repository.city')
-        );
-    }
-
-    /**
-     * Test city repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.geo.repository.city.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.city')
         );
     }

@@ -31,7 +31,6 @@ class WarehouseRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.shipping.repository.warehouse',
             'elcodi.repository.warehouse',
         ];
     }
@@ -39,21 +38,10 @@ class WarehouseRepositoryTest extends WebTestCase
     /**
      * Test warehouse repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.shipping.repository.warehouse.class'),
-            $this->get('elcodi.core.shipping.repository.warehouse')
-        );
-    }
-
-    /**
-     * Test warehouse repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.shipping.repository.warehouse.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.warehouse')
         );
     }

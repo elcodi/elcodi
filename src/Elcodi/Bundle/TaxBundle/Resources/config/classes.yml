@@ -5,9 +5,3 @@ parameters:
     #
     elcodi.core.tax.factory.tax.class: Elcodi\Component\Tax\Factory\TaxFactory
     elcodi.core.tax.factory.tax_group.class: Elcodi\Component\Tax\Factory\TaxGroupFactory
-
-    #
-    # Repositories
-    #
-    elcodi.core.tax.repository.tax.class: Elcodi\Component\Tax\Repository\TaxRepository
-    elcodi.core.tax.repository.tax_group.class: Elcodi\Component\Tax\Repository\TaxGroupRepository

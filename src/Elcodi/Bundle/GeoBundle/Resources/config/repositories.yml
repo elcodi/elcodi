@@ -7,168 +7,129 @@ services:
     #
     # Repository for entity country
     #
-    elcodi.core.geo.repository.country:
-        class: %elcodi.core.geo.repository.country.class%
+    elcodi.repository.country:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.geo.entity.country.class%
 
-    elcodi.repository.country:
-        alias: elcodi.core.geo.repository.country
-
     #
     # Repository for entity state
     #
-    elcodi.core.geo.repository.state:
-        class: %elcodi.core.geo.repository.state.class%
+    elcodi.repository.state:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.geo.entity.state.class%
 
-    elcodi.repository.state:
-        alias: elcodi.core.geo.repository.state
-
     #
     # Repository for entity province
     #
-    elcodi.core.geo.repository.province:
-        class: %elcodi.core.geo.repository.province.class%
+    elcodi.repository.province:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.geo.entity.province.class%
 
-    elcodi.repository.province:
-        alias: elcodi.core.geo.repository.province
-
     #
     # Repository for entity city
     #
-    elcodi.core.geo.repository.city:
-        class: %elcodi.core.geo.repository.city.class%
+    elcodi.repository.city:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.geo.entity.city.class%
 
-    elcodi.repository.city:
-        alias: elcodi.core.geo.repository.city
-
     #
     # Repository for entity postalcode
     #
-    elcodi.core.geo.repository.postal_code:
-        class: %elcodi.core.geo.repository.postal_code.class%
+    elcodi.repository.postal_code:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.geo.entity.postal_code.class%
 
-    elcodi.repository.postal_code:
-        alias: elcodi.core.geo.repository.postal_code
-
     #
     # Repository for entity address
     #
-    elcodi.core.geo.repository.address:
-        class: %elcodi.core.geo.repository.address.class%
+    elcodi.repository.address:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.geo.entity.address.class%
 
-    elcodi.repository.address:
-        alias: elcodi.core.geo.repository.address
-
     #
     # Repository for entity zone
     #
-    elcodi.core.geo.repository.zone:
-        class: %elcodi.core.geo.repository.zone.class%
+    elcodi.repository.zone:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.geo.entity.zone.class%
 
-    elcodi.repository.zone:
-        alias: elcodi.core.geo.repository.zone
-
     #
     # Repository for entity zone member
     #
-    elcodi.core.geo.repository.zone_member:
-        class: %elcodi.core.geo.repository.zone_member.class%
+    elcodi.repository.zone_member:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.geo.entity.zone_member.class%
 
-    elcodi.repository.zone_member:
-        alias: elcodi.core.geo.repository.zone_member
-
     #
     # Repository for entity zone country member
     #
-    elcodi.core.geo.repository.zone_country_member:
-        class: %elcodi.core.geo.repository.zone_country_member.class%
+    elcodi.repository.zone_country_member:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.geo.entity.zone_country_member.class%
 
-    elcodi.repository.zone_country_member:
-        alias: elcodi.core.geo.repository.zone_country_member
-
     #
     # Repository for entity zone state member
     #
-    elcodi.core.geo.repository.zone_state_member:
-        class: %elcodi.core.geo.repository.zone_state_member.class%
+    elcodi.repository.zone_state_member:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.geo.entity.zone_state_member.class%
 
-    elcodi.repository.zone_state_member:
-        alias: elcodi.core.geo.repository.zone_state_member
-
     #
     # Repository for entity zone province member
     #
-    elcodi.core.geo.repository.zone_province_member:
-        class: %elcodi.core.geo.repository.zone_province_member.class%
+    elcodi.repository.zone_province_member:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.geo.entity.zone_province_member.class%
 
-    elcodi.repository.zone_province_member:
-        alias: elcodi.core.geo.repository.zone_province_member
-
     #
     # Repository for entity zone city member
     #
-    elcodi.core.geo.repository.zone_city_member:
-        class: %elcodi.core.geo.repository.zone_city_member.class%
+    elcodi.repository.zone_city_member:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.geo.entity.zone_city_member.class%
 
-    elcodi.repository.zone_city_member:
-        alias: elcodi.core.geo.repository.zone_city_member
-
     #
     # Repository for entity zone postal code member
     #
-    elcodi.core.geo.repository.zone_postal_code_member:
-        class: %elcodi.core.geo.repository.zone_postal_code_member.class%
+    elcodi.repository.zone_postal_code_member:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.geo.entity.zone_postal_code_member.class%
-
-    elcodi.repository.zone_postal_code_member:
-        alias: elcodi.core.geo.repository.zone_postal_code_member

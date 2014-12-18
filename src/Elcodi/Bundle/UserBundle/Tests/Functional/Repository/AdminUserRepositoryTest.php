@@ -31,7 +31,6 @@ class AdminUserRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.user.repository.admin_user',
             'elcodi.repository.admin_user',
         ];
     }
@@ -39,21 +38,10 @@ class AdminUserRepositoryTest extends WebTestCase
     /**
      * Test admin user repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.user.repository.admin_user.class'),
-            $this->get('elcodi.core.user.repository.admin_user')
-        );
-    }
-
-    /**
-     * Test admin user repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.user.repository.admin_user.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.admin_user')
         );
     }

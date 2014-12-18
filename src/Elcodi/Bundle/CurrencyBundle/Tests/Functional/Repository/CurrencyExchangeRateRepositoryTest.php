@@ -31,7 +31,6 @@ class CurrencyExchangeRateRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.currency.repository.currency_exchange_rate',
             'elcodi.repository.currency_exchange_rate',
         ];
     }
@@ -39,21 +38,10 @@ class CurrencyExchangeRateRepositoryTest extends WebTestCase
     /**
      * Test currency_exchange_rate repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.currency.repository.currency_exchange_rate.class'),
-            $this->get('elcodi.core.currency.repository.currency_exchange_rate')
-        );
-    }
-
-    /**
-     * Test currency_exchange_rate repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.currency.repository.currency_exchange_rate.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.currency_exchange_rate')
         );
     }

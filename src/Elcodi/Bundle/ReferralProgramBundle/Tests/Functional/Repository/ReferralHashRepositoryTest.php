@@ -31,7 +31,6 @@ class ReferralHashRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.referral_program.repository.referral_hash',
             'elcodi.repository.referral_hash',
         ];
     }
@@ -39,21 +38,10 @@ class ReferralHashRepositoryTest extends WebTestCase
     /**
      * Test referral_hash repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.referral_program.repository.referral_hash.class'),
-            $this->get('elcodi.core.referral_program.repository.referral_hash')
-        );
-    }
-
-    /**
-     * Test referral_hash repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.referral_program.repository.referral_hash.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.referral_hash')
         );
     }

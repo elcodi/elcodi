@@ -1,12 +1,6 @@
 parameters:
 
     #
-    # Repositories
-    #
-    elcodi.core.cart_coupon.repository.cart_coupon.class: Elcodi\Component\CartCoupon\Repository\CartCouponRepository
-    elcodi.core.cart_coupon.repository.order_coupon.class: Elcodi\Component\CartCoupon\Repository\OrderCouponRepository
-
-    #
     # Factories
     #
     elcodi.core.cart_coupon.factory.cart_coupon.class: Elcodi\Component\CartCoupon\Factory\CartCouponFactory

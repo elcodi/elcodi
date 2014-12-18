@@ -7,12 +7,9 @@ services:
     #
     # Repository for entity newsletter_subscription
     #
-    elcodi.core.newsletter.repository.newsletter_subscription:
-        class: %elcodi.core.newsletter.repository.newsletter_subscription.class%
+    elcodi.repository.newsletter_subscription:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.newsletter.entity.newsletter_subscription.class%
-
-    elcodi.repository.newsletter_subscription:
-        alias: elcodi.core.newsletter.repository.newsletter_subscription

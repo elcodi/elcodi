@@ -31,7 +31,6 @@ class MenuRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.menu.repository.menu',
             'elcodi.repository.menu',
         ];
     }
@@ -39,21 +38,10 @@ class MenuRepositoryTest extends WebTestCase
     /**
      * Test menu repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.menu.repository.menu.class'),
-            $this->get('elcodi.core.menu.repository.menu')
-        );
-    }
-
-    /**
-     * Test menu repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.menu.repository.menu.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.menu')
         );
     }

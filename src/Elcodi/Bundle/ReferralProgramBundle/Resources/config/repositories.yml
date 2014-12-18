@@ -7,38 +7,29 @@ services:
     #
     # Repository for entity referral_hash
     #
-    elcodi.core.referral_program.repository.referral_hash:
-        class: %elcodi.core.referral_program.repository.referral_hash.class%
+    elcodi.repository.referral_hash:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.referral_program.entity.referral_hash.class%
 
-    elcodi.repository.referral_hash:
-        alias: elcodi.core.referral_program.repository.referral_hash
-
     #
     # Repository for entity referral_line
     #
-    elcodi.core.referral_program.repository.referral_line:
-        class: %elcodi.core.referral_program.repository.referral_line.class%
+    elcodi.repository.referral_line:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.referral_program.entity.referral_line.class%
 
-    elcodi.repository.referral_line:
-        alias: elcodi.core.referral_program.repository.referral_line
-
     #
     # Repository for entity referral_rule
     #
-    elcodi.core.referral_program.repository.referral_rule:
-        class: %elcodi.core.referral_program.repository.referral_rule.class%
+    elcodi.repository.referral_rule:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.referral_program.entity.referral_rule.class%
-
-    elcodi.repository.referral_rule:
-        alias: elcodi.core.referral_program.repository.referral_rule

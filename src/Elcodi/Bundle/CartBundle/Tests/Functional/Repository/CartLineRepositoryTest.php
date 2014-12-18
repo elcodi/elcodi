@@ -41,7 +41,6 @@ class CartLineRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.cart.repository.cart_line',
             'elcodi.repository.cart_line',
         ];
     }
@@ -49,21 +48,10 @@ class CartLineRepositoryTest extends WebTestCase
     /**
      * Test cart_line repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.cart.repository.cart_line.class'),
-            $this->get('elcodi.core.cart.repository.cart_line')
-        );
-    }
-
-    /**
-     * Test cart_line repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.cart.repository.cart_line.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.cart_line')
         );
     }

@@ -7,25 +7,19 @@ services:
     #
     # Repository for entity banner
     #
-    elcodi.core.banner.repository.banner:
-        class: %elcodi.core.banner.repository.banner.class%
+    elcodi.repository.banner:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.banner.entity.banner.class%
 
-    elcodi.repository.banner:
-        alias: elcodi.core.banner.repository.banner
-
     #
     # Repository for entity banner_zone
     #
-    elcodi.core.banner.repository.banner_zone:
-        class: %elcodi.core.banner.repository.banner_zone.class%
+    elcodi.repository.banner_zone:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.banner.entity.banner_zone.class%
-
-    elcodi.repository.banner_zone:
-        alias: elcodi.core.banner.repository.banner_zone

@@ -31,7 +31,6 @@ class ImageRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.media.repository.image',
             'elcodi.repository.image',
         ];
     }
@@ -39,21 +38,10 @@ class ImageRepositoryTest extends WebTestCase
     /**
      * Test image repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.media.repository.image.class'),
-            $this->get('elcodi.core.media.repository.image')
-        );
-    }
-
-    /**
-     * Test image repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.media.repository.image.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.image')
         );
     }

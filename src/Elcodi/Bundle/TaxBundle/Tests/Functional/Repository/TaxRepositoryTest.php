@@ -31,7 +31,6 @@ class TaxRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.tax.repository.tax',
             'elcodi.repository.tax',
         ];
     }
@@ -39,21 +38,10 @@ class TaxRepositoryTest extends WebTestCase
     /**
      * Test tax repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.tax.repository.tax.class'),
-            $this->get('elcodi.core.tax.repository.tax')
-        );
-    }
-
-    /**
-     * Test tax repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.tax.repository.tax.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.tax')
         );
     }

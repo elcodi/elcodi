@@ -31,7 +31,6 @@ class CurrencyRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.currency.repository.currency',
             'elcodi.repository.currency',
         ];
     }
@@ -39,21 +38,10 @@ class CurrencyRepositoryTest extends WebTestCase
     /**
      * Test currency repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.currency.repository.currency.class'),
-            $this->get('elcodi.core.currency.repository.currency')
-        );
-    }
-
-    /**
-     * Test currency repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.currency.repository.currency.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.currency')
         );
     }

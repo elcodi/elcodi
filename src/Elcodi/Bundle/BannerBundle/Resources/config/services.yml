@@ -6,4 +6,4 @@ services:
     elcodi.core.banner.service.banner_manager:
         class: %elcodi.core.banner.service.banner_manager.class%
         arguments:
-            banner_repository: @elcodi.core.banner.repository.banner
+            banner_repository: @elcodi.repository.banner

@@ -31,7 +31,6 @@ class ProvinceRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.geo.repository.province',
             'elcodi.repository.province',
         ];
     }
@@ -39,21 +38,10 @@ class ProvinceRepositoryTest extends WebTestCase
     /**
      * Test province repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.geo.repository.province.class'),
-            $this->get('elcodi.core.geo.repository.province')
-        );
-    }
-
-    /**
-     * Test province repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.geo.repository.province.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.province')
         );
     }

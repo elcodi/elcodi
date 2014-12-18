@@ -1,11 +1,6 @@
 parameters:
 
     #
-    # Repositories
-    #
-    elcodi.core.configuration.repository.configuration.class: Elcodi\Component\Configuration\Repository\ConfigurationRepository
-
-    #
     # Factories
     #
     elcodi.core.configuration.factory.configuration.class: Elcodi\Component\Configuration\Factory\ConfigurationFactory

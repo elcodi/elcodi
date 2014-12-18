@@ -6,11 +6,6 @@ parameters:
     elcodi.core.language.entity.locale.class: Elcodi\Component\Language\Entity\Locale
 
     #
-    # Repositories
-    #
-    elcodi.core.language.repository.language.class: Elcodi\Component\Language\Repository\LanguageRepository
-
-    #
     # Factories
     #
     elcodi.core.language.factory.language.class: Elcodi\Component\Language\Factory\LanguageFactory

@@ -1,11 +1,6 @@
 parameters:
 
     #
-    # Repositories
-    #
-    elcodi.core.media.repository.image.class: Elcodi\Component\Media\Repository\ImageRepository
-
-    #
     # Factories
     #
     elcodi.core.media.factory.image.class: Elcodi\Component\Media\Factory\ImageFactory

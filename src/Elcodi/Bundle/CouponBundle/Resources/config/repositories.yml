@@ -7,12 +7,9 @@ services:
     #
     # Repository for entity coupon
     #
-    elcodi.core.coupon.repository.coupon:
-        class: %elcodi.core.coupon.repository.coupon.class%
+    elcodi.repository.coupon:
+        class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: elcodi.repository_provider
         factory_method: getRepositoryByEntityNamespace
         arguments:
             entity_namespace: %elcodi.core.coupon.entity.coupon.class%
-
-    elcodi.repository.coupon:
-        alias: elcodi.core.coupon.repository.coupon

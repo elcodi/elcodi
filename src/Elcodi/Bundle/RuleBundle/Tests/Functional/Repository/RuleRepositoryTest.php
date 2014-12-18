@@ -31,7 +31,6 @@ class RuleRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.rule.repository.rule',
             'elcodi.repository.rule',
         ];
     }
@@ -39,21 +38,10 @@ class RuleRepositoryTest extends WebTestCase
     /**
      * Test rule repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.rule.repository.rule.class'),
-            $this->get('elcodi.core.rule.repository.rule')
-        );
-    }
-
-    /**
-     * Test rule repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.rule.repository.rule.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.rule')
         );
     }

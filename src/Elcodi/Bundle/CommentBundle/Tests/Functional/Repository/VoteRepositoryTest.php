@@ -31,7 +31,6 @@ class VoteRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.comment.repository.vote',
             'elcodi.repository.vote',
         ];
     }
@@ -39,21 +38,10 @@ class VoteRepositoryTest extends WebTestCase
     /**
      * Test vote repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.comment.repository.vote.class'),
-            $this->get('elcodi.core.comment.repository.vote')
-        );
-    }
-
-    /**
-     * Test vote repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.comment.repository.vote.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.vote')
         );
     }

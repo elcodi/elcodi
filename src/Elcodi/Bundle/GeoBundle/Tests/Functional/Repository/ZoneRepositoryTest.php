@@ -31,7 +31,6 @@ class ZoneRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.geo.repository.zone',
             'elcodi.repository.zone',
         ];
     }
@@ -39,21 +38,10 @@ class ZoneRepositoryTest extends WebTestCase
     /**
      * Test zone repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.geo.repository.zone.class'),
-            $this->get('elcodi.core.geo.repository.zone')
-        );
-    }
-
-    /**
-     * Test zone repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.geo.repository.zone.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.zone')
         );
     }

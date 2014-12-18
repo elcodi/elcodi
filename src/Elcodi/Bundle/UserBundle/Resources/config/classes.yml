@@ -7,12 +7,6 @@ parameters:
     elcodi.core.user.factory.admin_user.class: Elcodi\Component\User\Factory\AdminUserFactory
 
     #
-    # Repositories
-    #
-    elcodi.core.user.repository.customer.class: Elcodi\Component\User\Repository\CustomerRepository
-    elcodi.core.user.repository.admin_user.class: Elcodi\Component\User\Repository\AdminUserRepository
-
-    #
     # Services
     #
     elcodi.core.user.service.password_manager.class: Elcodi\Component\User\Services\PasswordManager

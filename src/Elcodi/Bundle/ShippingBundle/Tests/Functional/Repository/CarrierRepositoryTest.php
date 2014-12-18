@@ -31,7 +31,6 @@ class CarrierRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.shipping.repository.carrier',
             'elcodi.repository.carrier',
         ];
     }
@@ -39,21 +38,10 @@ class CarrierRepositoryTest extends WebTestCase
     /**
      * Test carrier repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.shipping.repository.carrier.class'),
-            $this->get('elcodi.core.shipping.repository.carrier')
-        );
-    }
-
-    /**
-     * Test carrier repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.shipping.repository.carrier.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.carrier')
         );
     }

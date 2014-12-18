@@ -14,14 +14,6 @@ parameters:
     elcodi.core.rule.entity.expression.class: Elcodi\Component\Rule\Entity\Expression
 
     #
-    # Repositories
-    #
-    elcodi.core.rule.repository.abstract_rule.class: Elcodi\Component\Rule\Repository\AbstractRuleRepository
-    elcodi.core.rule.repository.rule.class: Elcodi\Component\Rule\Repository\RuleRepository
-    elcodi.core.rule.repository.rule_group.class: Elcodi\Component\Rule\Repository\RuleGroupRepository
-    elcodi.core.rule.repository.expression.class: Elcodi\Component\Rule\Repository\ExpressionRepository
-
-    #
     # Factories
     #
     elcodi.core.rule.factory.rule.class: Elcodi\Component\Rule\Factory\RuleFactory

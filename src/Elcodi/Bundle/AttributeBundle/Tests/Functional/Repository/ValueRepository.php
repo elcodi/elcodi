@@ -31,7 +31,6 @@ class ValueRepository extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.attribute.repository.value',
             'elcodi.repository.attribute_value',
         ];
     }
@@ -39,21 +38,10 @@ class ValueRepository extends WebTestCase
     /**
      * Test attribute value repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.attribute.repository.value.class'),
-            $this->get('elcodi.core.attribute.repository.value')
-        );
-    }
-
-    /**
-     * Test attribute value repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.attribute.repository.value.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.attribute_value')
         );
     }

@@ -81,10 +81,10 @@ class ElcodiAttributeExtension extends AbstractExtension implements EntitiesOver
             "elcodi.core.attribute.entity.attribute.manager" => $config['mapping']['attribute']['manager'],
             "elcodi.core.attribute.entity.attribute.enabled" => $config['mapping']['attribute']['enabled'],
 
-            "elcodi.core.attribute.entity.value.class" => $config['mapping']['value']['class'],
-            "elcodi.core.attribute.entity.value.mapping_file" => $config['mapping']['value']['mapping_file'],
-            "elcodi.core.attribute.entity.value.manager" => $config['mapping']['value']['manager'],
-            "elcodi.core.attribute.entity.value.enabled" => $config['mapping']['value']['enabled'],
+            "elcodi.core.attribute.entity.attribute_value.class" => $config['mapping']['value']['class'],
+            "elcodi.core.attribute.entity.attribute_value.mapping_file" => $config['mapping']['value']['mapping_file'],
+            "elcodi.core.attribute.entity.attribute_value.manager" => $config['mapping']['value']['manager'],
+            "elcodi.core.attribute.entity.attribute_value.enabled" => $config['mapping']['value']['enabled'],
         ];
     }
 
@@ -99,7 +99,6 @@ class ElcodiAttributeExtension extends AbstractExtension implements EntitiesOver
     {
         return [
             'classes',
-            'services',
             'factories',
             'repositories',
             'objectManagers',
@@ -119,7 +118,7 @@ class ElcodiAttributeExtension extends AbstractExtension implements EntitiesOver
     {
         return [
             'Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface' => 'elcodi.core.attribute.entity.attribute.class',
-            'Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface' => 'elcodi.core.attribute.entity.value.class',
+            'Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface' => 'elcodi.core.attribute.entity.attribute_value.class',
         ];
     }
 

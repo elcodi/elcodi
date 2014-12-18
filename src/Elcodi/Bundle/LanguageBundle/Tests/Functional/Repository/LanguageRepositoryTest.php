@@ -31,7 +31,6 @@ class LanguageRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.language.repository.language',
             'elcodi.repository.language',
         ];
     }
@@ -39,21 +38,10 @@ class LanguageRepositoryTest extends WebTestCase
     /**
      * Test language repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.language.repository.language.class'),
-            $this->get('elcodi.core.language.repository.language')
-        );
-    }
-
-    /**
-     * Test language repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.language.repository.language.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.language')
         );
     }

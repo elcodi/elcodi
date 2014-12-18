@@ -31,7 +31,6 @@ class ReferralLineRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.referral_program.repository.referral_line',
             'elcodi.repository.referral_line',
         ];
     }
@@ -39,21 +38,10 @@ class ReferralLineRepositoryTest extends WebTestCase
     /**
      * Test referral_line repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.referral_program.repository.referral_line.class'),
-            $this->get('elcodi.core.referral_program.repository.referral_line')
-        );
-    }
-
-    /**
-     * Test referral_line repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.referral_program.repository.referral_line.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.referral_line')
         );
     }

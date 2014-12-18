@@ -31,7 +31,6 @@ class AddressRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.geo.repository.address',
             'elcodi.repository.address',
         ];
     }
@@ -39,21 +38,10 @@ class AddressRepositoryTest extends WebTestCase
     /**
      * Test address repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.geo.repository.address.class'),
-            $this->get('elcodi.core.geo.repository.address')
-        );
-    }
-
-    /**
-     * Test address repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.geo.repository.address.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.address')
         );
     }

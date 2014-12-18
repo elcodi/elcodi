@@ -41,7 +41,6 @@ class CartCouponRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.cart_coupon.repository.cart_coupon',
             'elcodi.repository.cart_coupon',
         ];
     }
@@ -49,21 +48,10 @@ class CartCouponRepositoryTest extends WebTestCase
     /**
      * Test cart_coupon repository provider
      */
-    public function testFactoryProvider()
+    public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.cart_coupon.repository.cart_coupon.class'),
-            $this->get('elcodi.core.cart_coupon.repository.cart_coupon')
-        );
-    }
-
-    /**
-     * Test cart_coupon repository provider alias
-     */
-    public function testFactoryProviderAlias()
-    {
-        $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.cart_coupon.repository.cart_coupon.class'),
+            'Doctrine\Common\Persistence\ObjectRepository',
             $this->get('elcodi.repository.cart_coupon')
         );
     }

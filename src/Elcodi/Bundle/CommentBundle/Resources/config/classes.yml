@@ -1,12 +1,6 @@
 parameters:
 
     #
-    # Repositories
-    #
-    elcodi.core.comment.repository.comment.class: Elcodi\Component\Comment\Repository\CommentRepository
-    elcodi.core.comment.repository.vote.class: Elcodi\Component\Comment\Repository\VoteRepository
-
-    #
     # Factories
     #
     elcodi.core.comment.factory.comment.class: Elcodi\Component\Comment\Factory\CommentFactory
