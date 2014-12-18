@@ -55,6 +55,7 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
         $manufacturer = $this->getReference('manufacturer');
         $currency = $this->getReference('currency-dollar');
         $product
+            ->setId(1)
             ->setName('product')
             ->setSlug('product')
             ->setDescription('my product description')
@@ -85,6 +86,7 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
             ->create();
 
         $productReduced
+            ->setId(2)
             ->setName('product-reduced')
             ->setSlug('product-reduced')
             ->setDescription('my product-reduced description')
@@ -113,6 +115,7 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
             ->create();
 
         $productWithVariants
+            ->setId(3)
             ->setName('Product with variants')
             ->setSku('product-sku-code-variant-1')
             ->setSlug('product-with-variants')

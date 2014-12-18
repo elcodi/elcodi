@@ -40,6 +40,7 @@ class CategoryData extends AbstractFixture
          */
         $rootCategory = $this->container->get('elcodi.core.product.factory.category')->create();
         $rootCategory
+            ->setId(1)
             ->setName('root-category')
             ->setSlug('root-category')
             ->setEnabled(true)
@@ -55,6 +56,7 @@ class CategoryData extends AbstractFixture
          */
         $category = $this->container->get('elcodi.core.product.factory.category')->create();
         $category
+            ->setId(2)
             ->setName('category')
             ->setSlug('category')
             ->setEnabled(true)
