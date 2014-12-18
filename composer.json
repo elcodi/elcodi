@@ -72,6 +72,7 @@
         "elcodi/tax-bundle": "self.version",
         "elcodi/shipping-bundle": "self.version",
         "elcodi/state-transition-machine-bundle": "self.version",
+        "elcodi/page-bundle": "self.version",
 
         "elcodi/attribute": "self.version",
         "elcodi/banner": "self.version",
@@ -93,7 +94,8 @@
         "elcodi/comment": "self.version",
         "elcodi/tax": "self.version",
         "elcodi/shipping": "self.version",
-        "elcodi/state-transition-machine": "self.version"
+        "elcodi/state-transition-machine": "self.version",
+        "elcodi/page": "self.version"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",

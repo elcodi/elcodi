@@ -1,0 +1,21 @@
+parameters:
+
+    #
+    # Repositories
+    #
+    elcodi.core.page.repository.page.class: Elcodi\Component\Page\Repository\PageRepository
+
+    #
+    # Factories
+    #
+    elcodi.core.page.factory.page.class: Elcodi\Component\Page\Factory\PageFactory
+
+    #
+    # Controllers
+    #
+    elcodi.core.page.controller.page.class: Elcodi\Bundle\PageBundle\Controller\PageController
+
+    #
+    # Loaders
+    #
+    elcodi.core.page.router.simple_loader.class: Elcodi\Bundle\PageBundle\Router\PageRouterSimpleLoader

@@ -1,0 +1,18 @@
+services:
+
+    #
+    # Repositories
+    #
+
+    #
+    # Repository for entity page
+    #
+    elcodi.core.page.repository.page:
+        class: %elcodi.core.page.repository.page.class%
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.page.entity.page.class%
+
+    elcodi.repository.page:
+        alias: elcodi.core.page.repository.page

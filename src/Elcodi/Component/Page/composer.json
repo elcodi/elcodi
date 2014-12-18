@@ -1,0 +1,38 @@
+{
+    "name": "elcodi/page",
+    "description": "Elcodi Page Component",
+    "keywords": ["elcodi", "page", "ecommerce", "component"],
+    "homepage": "https://github.com/elcodi/Page",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "Symfony Community",
+            "homepage": "https://github.com/elcodi/Page/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "doctrine/orm": "~2.4",
+
+        "elcodi/core": "~0.3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\Component\\Page\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.4-dev"
+        }
+    }
+}
