@@ -39,7 +39,7 @@ class Rule extends AbstractRule implements RuleInterface
      *
      * @param ExpressionInterface $expression Expression
      *
-     * @return Rule Self object
+     * @return self
      */
     public function setExpression($expression)
     {

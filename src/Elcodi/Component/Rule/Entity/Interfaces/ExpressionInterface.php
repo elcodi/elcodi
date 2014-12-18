@@ -26,7 +26,7 @@ interface ExpressionInterface
      *
      * @param string $expression Expression
      *
-     * @return ExpressionInterface Self object
+     * @return self
      */
     public function setExpression($expression);
 

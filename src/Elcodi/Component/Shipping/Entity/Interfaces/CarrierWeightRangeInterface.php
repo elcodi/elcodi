@@ -33,7 +33,7 @@ interface CarrierWeightRangeInterface extends CarrierBaseRangeInterface
      *
      * @param int $toWeight ToWeight
      *
-     * @return $this Self object
+     * @return self
      */
     public function setToWeight($toWeight);
 
@@ -49,7 +49,7 @@ interface CarrierWeightRangeInterface extends CarrierBaseRangeInterface
      *
      * @param int $fromWeight FromWeight
      *
-     * @return $this Self object
+     * @return self
      */
     public function setFromWeight($fromWeight);
 }

@@ -41,7 +41,7 @@ interface ProductInterface
      *
      * @param string $id Id
      *
-     * @return $this Self object
+     * @return self
      */
     public function setId($id);
 
@@ -57,7 +57,7 @@ interface ProductInterface
      *
      * @param string $name Name
      *
-     * @return $this self Object
+     * @return self
      */
     public function setName($name);
 
@@ -73,7 +73,7 @@ interface ProductInterface
      *
      * @param string $slug Slug
      *
-     * @return $this self Object
+     * @return self
      */
     public function setSlug($slug);
 
@@ -87,7 +87,7 @@ interface ProductInterface
     /**
      * @param string $description
      *
-     * @return $this self Object
+     * @return self
      */
     public function setDescription($description);
 
@@ -103,7 +103,7 @@ interface ProductInterface
      *
      * @param string $shortDescription Short description
      *
-     * @return $this self Object
+     * @return self
      */
     public function setShortDescription($shortDescription);
 
@@ -119,7 +119,7 @@ interface ProductInterface
      *
      * @param Collection $categories Categories
      *
-     * @return $this self Object
+     * @return self
      */
     public function setCategories(Collection $categories);
 
@@ -135,7 +135,7 @@ interface ProductInterface
      *
      * @param CategoryInterface $category Category
      *
-     * @return $this self Object
+     * @return self
      */
     public function addCategory(CategoryInterface $category);
 
@@ -144,7 +144,7 @@ interface ProductInterface
      *
      * @param CategoryInterface $category Category
      *
-     * @return $this self Object
+     * @return self
      */
     public function removeCategory(CategoryInterface $category);
 
@@ -153,7 +153,7 @@ interface ProductInterface
      *
      * @param CategoryInterface $principalCategory Principal category
      *
-     * @return $this self Object
+     * @return self
      */
     public function setPrincipalCategory(CategoryInterface $principalCategory = null);
 
@@ -169,7 +169,7 @@ interface ProductInterface
      *
      * @param boolean $showInHome Show in home
      *
-     * @return $this self Object
+     * @return self
      */
     public function setShowInHome($showInHome);
 
@@ -185,7 +185,7 @@ interface ProductInterface
      *
      * @param ManufacturerInterface $manufacturer Manufacturer
      *
-     * @return $this self Object
+     * @return self
      */
     public function setManufacturer(ManufacturerInterface $manufacturer = null);
 
@@ -208,7 +208,7 @@ interface ProductInterface
      *
      * @param VariantInterface $principalVariant
      *
-     * @return $this self Object
+     * @return self
      */
     public function setPrincipalVariant(VariantInterface $principalVariant);
 
@@ -217,7 +217,7 @@ interface ProductInterface
      *
      * @param AttributeInterface $attribute Attribute
      *
-     * @return $this self Object;
+     * @return self;
      */
     public function addAttribute(AttributeInterface $attribute);
 
@@ -226,7 +226,7 @@ interface ProductInterface
      *
      * @param AttributeInterface $attribute Attribute to be removed
      *
-     * @return $this self Object
+     * @return self
      */
     public function removeAttribute(AttributeInterface $attribute);
 
@@ -242,7 +242,7 @@ interface ProductInterface
      *
      * @param Collection $attributes Attributes
      *
-     * @return $this self Object
+     * @return self
      */
     public function setAttributes(Collection $attributes);
 
@@ -258,7 +258,7 @@ interface ProductInterface
      *
      * @param VariantInterface $variant Variant
      *
-     * @return $this self Object
+     * @return self
      */
     public function addVariant(VariantInterface $variant);
 
@@ -267,7 +267,7 @@ interface ProductInterface
      *
      * @param Collection $variants Variants
      *
-     * @return $this self Object
+     * @return self
      */
     public function setVariants(Collection $variants);
 

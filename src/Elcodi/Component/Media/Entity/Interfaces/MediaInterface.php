@@ -37,7 +37,7 @@ interface MediaInterface extends DateTimeInterface
      *
      * @param string $name Name
      *
-     * @return $this self Object
+     * @return self
      */
     public function setName($name);
 }

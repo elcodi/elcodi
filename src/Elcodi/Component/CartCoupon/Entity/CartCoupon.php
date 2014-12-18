@@ -45,7 +45,7 @@ class CartCoupon extends AbstractEntity implements CartCouponInterface
      *
      * @param CartInterface $cart Cart
      *
-     * @return CartCoupon Self object
+     * @return self
      */
     public function setCart(CartInterface $cart)
     {
@@ -69,7 +69,7 @@ class CartCoupon extends AbstractEntity implements CartCouponInterface
      *
      * @param CouponInterface $coupon Coupon
      *
-     * @return CartCoupon Self object
+     * @return self
      */
     public function setCoupon(CouponInterface $coupon)
     {

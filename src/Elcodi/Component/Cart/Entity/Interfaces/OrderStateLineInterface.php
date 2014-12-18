@@ -35,7 +35,7 @@ interface OrderStateLineInterface extends StateLineInterface
      *
      * @param OrderInterface $order Order
      *
-     * @return $this Self object
+     * @return self
      */
     public function setOrder(OrderInterface $order);
 }

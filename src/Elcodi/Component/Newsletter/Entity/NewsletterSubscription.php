@@ -70,7 +70,7 @@ class NewsletterSubscription extends AbstractEntity implements NewsletterSubscri
      *
      * @param string $email Email
      *
-     * @return $this self Object
+     * @return self
      */
     public function setEmail($email)
     {
@@ -94,7 +94,7 @@ class NewsletterSubscription extends AbstractEntity implements NewsletterSubscri
      *
      * @param LanguageInterface $language Language
      *
-     * @return $this self Object
+     * @return self
      */
     public function setLanguage(LanguageInterface $language = null)
     {
@@ -118,7 +118,7 @@ class NewsletterSubscription extends AbstractEntity implements NewsletterSubscri
      *
      * @param string $hash Hash
      *
-     * @return $this self Object
+     * @return self
      */
     public function setHash($hash)
     {
@@ -142,7 +142,7 @@ class NewsletterSubscription extends AbstractEntity implements NewsletterSubscri
      *
      * @param string $reason Reason
      *
-     * @return $this self Object
+     * @return self
      */
     public function setReason($reason)
     {

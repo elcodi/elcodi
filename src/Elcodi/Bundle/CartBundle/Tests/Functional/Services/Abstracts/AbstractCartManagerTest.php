@@ -45,7 +45,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
     /**
      * Load fixtures of these bundles
      *
-     * @return array Bundles name where fixtures should be found
+     * @return string[] Bundles name where fixtures should be found
      */
     protected function loadFixturesBundles()
     {

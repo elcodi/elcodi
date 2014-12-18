@@ -31,7 +31,7 @@ interface ReferralLineInterface extends EnabledInterface
      *
      * @param ReferralHashInterface $referralHash ReferralHash
      *
-     * @return ReferralLineInterface Self object
+     * @return self
      */
     public function setReferralHash(ReferralHashInterface $referralHash);
 
@@ -47,7 +47,7 @@ interface ReferralLineInterface extends EnabledInterface
      *
      * @param ReferralRuleInterface $referralRule ReferralRule
      *
-     * @return ReferralLineInterface Self object
+     * @return self
      */
     public function setReferralRule(ReferralRuleInterface $referralRule);
 
@@ -63,7 +63,7 @@ interface ReferralLineInterface extends EnabledInterface
      *
      * @param CustomerInterface $invited Invited
      *
-     * @return ReferralLineInterface Self object
+     * @return self
      */
     public function setInvited(CustomerInterface $invited);
 
@@ -79,7 +79,7 @@ interface ReferralLineInterface extends EnabledInterface
      *
      * @param boolean $invitedCouponUsed InvitedCouponUsed
      *
-     * @return ReferralLineInterface Self object
+     * @return self
      */
     public function setInvitedCouponUsed($invitedCouponUsed);
 
@@ -95,7 +95,7 @@ interface ReferralLineInterface extends EnabledInterface
      *
      * @param string $invitedEmail InvitedEmail
      *
-     * @return ReferralLineInterface Self object
+     * @return self
      */
     public function setInvitedEmail($invitedEmail);
 
@@ -111,7 +111,7 @@ interface ReferralLineInterface extends EnabledInterface
      *
      * @param boolean $referrerCouponUsed ReferrerCouponUsed
      *
-     * @return ReferralLineInterface Self object
+     * @return self
      */
     public function setReferrerCouponUsed($referrerCouponUsed);
 
@@ -127,7 +127,7 @@ interface ReferralLineInterface extends EnabledInterface
      *
      * @param string $source Source
      *
-     * @return ReferralLineInterface Self object
+     * @return self
      */
     public function setSource($source);
 
@@ -143,7 +143,7 @@ interface ReferralLineInterface extends EnabledInterface
      *
      * @param string $invitedName InvitedName
      *
-     * @return ReferralLineInterface Self object
+     * @return self
      */
     public function setInvitedName($invitedName);
 
@@ -159,7 +159,7 @@ interface ReferralLineInterface extends EnabledInterface
      *
      * @param CouponInterface $invitedCoupon InvitedCoupon
      *
-     * @return ReferralLineInterface Self object
+     * @return self
      */
     public function setInvitedCoupon(CouponInterface $invitedCoupon = null);
 
@@ -175,7 +175,7 @@ interface ReferralLineInterface extends EnabledInterface
      *
      * @param int $invitedType InvitedType
      *
-     * @return ReferralLineInterface Self object
+     * @return self
      */
     public function setInvitedType($invitedType);
 
@@ -191,7 +191,7 @@ interface ReferralLineInterface extends EnabledInterface
      *
      * @param CouponInterface $referrerCoupon ReferrerCoupon
      *
-     * @return ReferralLineInterface Self object
+     * @return self
      */
     public function setReferrerCoupon(CouponInterface $referrerCoupon = null);
 
@@ -207,7 +207,7 @@ interface ReferralLineInterface extends EnabledInterface
      *
      * @param int $referrerType ReferrerType
      *
-     * @return ReferralLineInterface Self object
+     * @return self
      */
     public function setReferrerType($referrerType);
 
@@ -223,7 +223,7 @@ interface ReferralLineInterface extends EnabledInterface
      *
      * @param CouponInterface $invitedAssignedCoupon InvitedAssignedCoupon
      *
-     * @return ReferralLineInterface Self object
+     * @return self
      */
     public function setInvitedAssignedCoupon(CouponInterface $invitedAssignedCoupon);
 
@@ -239,7 +239,7 @@ interface ReferralLineInterface extends EnabledInterface
      *
      * @param CouponInterface $referrerAssignedCoupon ReferrerAssignedCoupon
      *
-     * @return ReferralLineInterface Self object
+     * @return self
      */
     public function setReferrerAssignedCoupon(CouponInterface $referrerAssignedCoupon);
 
@@ -255,7 +255,7 @@ interface ReferralLineInterface extends EnabledInterface
      *
      * @param boolean $closed Closed
      *
-     * @return ReferralLineInterface Self object
+     * @return self
      */
     public function setClosed($closed);
 
@@ -269,7 +269,7 @@ interface ReferralLineInterface extends EnabledInterface
     /**
      * Calculate closed variable
      *
-     * @return $this self Object
+     * @return self
      */
     public function loadClosed();
 }

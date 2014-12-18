@@ -32,7 +32,7 @@ interface CustomerInterface extends AbstractUserInterface
     /**
      * @param string
      *
-     * @return $this
+     * @return self
      */
     public function setPhone($phone);
 
@@ -48,7 +48,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param string $identityDocument
      *
-     * @return $this
+     * @return self
      */
     public function setIdentityDocument($identityDocument);
 
@@ -64,7 +64,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param boolean $guest Guest
      *
-     * @return Customerinterface Self object
+     * @return self
      */
     public function setGuest($guest);
 
@@ -80,7 +80,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param boolean $newsletter Newsletter
      *
-     * @return Customerinterface Self object
+     * @return self
      */
     public function setNewsletter($newsletter);
 
@@ -96,7 +96,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param OrderInterface $order Order
      *
-     * @return $this self Object
+     * @return self
      */
     public function addOrder(OrderInterface $order);
 
@@ -105,7 +105,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param OrderInterface $order
      *
-     * @return $this self Object
+     * @return self
      */
     public function removeOrder(OrderInterface $order);
 
@@ -114,7 +114,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param Collection $orders Orders
      *
-     * @return $this self Object
+     * @return self
      */
     public function setOrders($orders);
 
@@ -130,7 +130,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param CartInterface $cart
      *
-     * @return $this self Object
+     * @return self
      */
     public function addCart(CartInterface $cart);
 
@@ -139,14 +139,14 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param CartInterface $cart
      *
-     * @return $this self Object
+     * @return self
      */
     public function removeCart(CartInterface $cart);
 
     /**
      * @param Collection $carts
      *
-     * @return $this self Object
+     * @return self
      */
     public function setCarts($carts);
 
@@ -162,7 +162,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param AddressInterface $address
      *
-     * @return $this self Object
+     * @return self
      */
     public function addAddress(AddressInterface $address);
 
@@ -171,7 +171,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param AddressInterface $address
      *
-     * @return $this self Object
+     * @return self
      */
     public function removeAddress(AddressInterface $address);
 
@@ -180,7 +180,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param Collection $addresses Addresses
      *
-     * @return $this self Object
+     * @return self
      */
     public function setAddresses(Collection $addresses);
 
@@ -196,7 +196,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param AddressInterface $deliveryAddress
      *
-     * @return $this self Object
+     * @return self
      */
     public function setDeliveryAddress(AddressInterface $deliveryAddress = null);
 
@@ -212,7 +212,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param AddressInterface $invoiceAddress
      *
-     * @return $this self Object
+     * @return self
      */
     public function setInvoiceAddress(AddressInterface $invoiceAddress = null);
 
@@ -228,7 +228,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @param LanguageInterface $language The language
      *
-     * @return $this self Object
+     * @return self
      */
     public function setLanguage(LanguageInterface $language);
 

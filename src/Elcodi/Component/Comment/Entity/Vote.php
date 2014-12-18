@@ -75,7 +75,7 @@ class Vote implements VoteInterface
      *
      * @param int $id Id
      *
-     * @return $this Self object
+     * @return self
      */
     public function setId($id)
     {
@@ -109,7 +109,7 @@ class Vote implements VoteInterface
      *
      * @param CommentInterface $comment Comment
      *
-     * @return $this Self object
+     * @return self
      */
     public function setComment($comment)
     {
@@ -133,7 +133,7 @@ class Vote implements VoteInterface
      *
      * @param boolean $type Type
      *
-     * @return $this Self object
+     * @return self
      */
     public function setType($type)
     {
@@ -157,7 +157,7 @@ class Vote implements VoteInterface
      *
      * @param AbstractUserInterface $user User
      *
-     * @return $this Self object
+     * @return self
      */
     public function setUser($user)
     {

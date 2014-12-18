@@ -46,7 +46,7 @@ abstract class AbstractCartCouponEvent extends Event
      *
      * CartCoupon
      */
-    protected $cartCoupon;
+    protected $cartCoupon = null;
 
     /**
      * Construct method
@@ -65,7 +65,7 @@ abstract class AbstractCartCouponEvent extends Event
      *
      * @param CartCouponInterface $cartCoupon CartCoupon
      *
-     * @return $this self Object
+     * @return self
      */
     public function setCartCoupon(CartCouponInterface $cartCoupon)
     {

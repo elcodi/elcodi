@@ -80,7 +80,7 @@ class City implements CityInterface, ZoneMemberAssignableInterface
      *
      * @param string $id Entity Id
      *
-     * @return $this self Object
+     * @return self
      */
     public function setId($id)
     {
@@ -104,7 +104,7 @@ class City implements CityInterface, ZoneMemberAssignableInterface
      *
      * @param string $name Name
      *
-     * @return $this self Object
+     * @return self
      */
     public function setName($name)
     {
@@ -158,7 +158,7 @@ class City implements CityInterface, ZoneMemberAssignableInterface
      *
      * @param ProvinceInterface $province Province
      *
-     * @return $this self Object
+     * @return self
      */
     public function setProvince(ProvinceInterface $province)
     {
@@ -184,7 +184,7 @@ class City implements CityInterface, ZoneMemberAssignableInterface
      *
      * @param Collection $postalCodes Postalcodes
      *
-     * @return $this self Object
+     * @return self
      */
     public function setPostalCodes(Collection $postalCodes)
     {
@@ -198,7 +198,7 @@ class City implements CityInterface, ZoneMemberAssignableInterface
      *
      * @param PostalCodeInterface $postalCode PostalCode
      *
-     * @return $this self Object
+     * @return self
      */
     public function addPostalCode(PostalCodeInterface $postalCode)
     {
@@ -217,7 +217,7 @@ class City implements CityInterface, ZoneMemberAssignableInterface
      *
      * @param PostalCodeInterface $postalCode PostalCode
      *
-     * @return $this self Object
+     * @return self
      */
     public function removePostalCode(PostalCodeInterface $postalCode)
     {

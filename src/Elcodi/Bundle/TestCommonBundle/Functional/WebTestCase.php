@@ -143,7 +143,7 @@ abstract class WebTestCase extends BaseWebTestCase
     /**
      * Load fixtures of these bundles
      *
-     * @return array Bundles name where fixtures should be found
+     * @return boolean Bundles name where fixtures should be found
      */
     protected function loadFixturesBundles()
     {
@@ -168,7 +168,7 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * Otherwise, will return.
      *
-     * @return $this self Object
+     * @return self
      */
     protected function createSchema()
     {
@@ -210,7 +210,7 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * Otherwise, will return.
      *
-     * @return $this self Object
+     * @return self
      */
     protected function loadFixtures()
     {
@@ -294,7 +294,7 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * @param string $parameterName Container parameter name
      *
-     * @return mixed The required parameter value
+     * @return string The required parameter value
      */
     public function getParameter($parameterName)
     {
@@ -338,7 +338,7 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * @param mixed $entity Entity
      *
-     * @return $this self Object
+     * @return self
      */
     public function flush($entity)
     {
@@ -360,7 +360,7 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * @param mixed $entity Entity
      *
-     * @return $this self Object
+     * @return self
      */
     public function clear($entity)
     {

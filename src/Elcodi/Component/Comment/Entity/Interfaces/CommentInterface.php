@@ -32,7 +32,7 @@ interface CommentInterface extends DateTimeInterface, EnabledInterface
      *
      * @param AbstractUserInterface $author Author
      *
-     * @return $this Self object
+     * @return self
      */
     public function setAuthor(AbstractUserInterface $author);
 
@@ -48,7 +48,7 @@ interface CommentInterface extends DateTimeInterface, EnabledInterface
      *
      * @param string $content Content
      *
-     * @return $this Self object
+     * @return self
      */
     public function setContent($content);
 
@@ -64,7 +64,7 @@ interface CommentInterface extends DateTimeInterface, EnabledInterface
      *
      * @param int $id Id
      *
-     * @return $this Self object
+     * @return self
      */
     public function setId($id);
 
@@ -80,7 +80,7 @@ interface CommentInterface extends DateTimeInterface, EnabledInterface
      *
      * @param CommentInterface|null $parent Parent
      *
-     * @return $this Self object
+     * @return self
      */
     public function setParent($parent = null);
 
@@ -96,7 +96,7 @@ interface CommentInterface extends DateTimeInterface, EnabledInterface
      *
      * @param string $parsedContent ParsedContent
      *
-     * @return $this Self object
+     * @return self
      */
     public function setParsedContent($parsedContent);
 
@@ -112,7 +112,7 @@ interface CommentInterface extends DateTimeInterface, EnabledInterface
      *
      * @param int $parsingType ParsingType
      *
-     * @return $this Self object
+     * @return self
      */
     public function setParsingType($parsingType);
 
@@ -128,7 +128,7 @@ interface CommentInterface extends DateTimeInterface, EnabledInterface
      *
      * @param string $source Source
      *
-     * @return $this Self object
+     * @return self
      */
     public function setSource($source);
 
@@ -144,7 +144,7 @@ interface CommentInterface extends DateTimeInterface, EnabledInterface
      *
      * @param Collection $children Children
      *
-     * @return $this self Object
+     * @return self
      */
     public function setChildren(Collection $children);
 

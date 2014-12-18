@@ -76,7 +76,7 @@ class CartSessionManager
      *
      * @param CartInterface $cart Cart
      *
-     * @return $this self Object
+     * @return self
      */
     public function set(CartInterface $cart)
     {

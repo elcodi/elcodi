@@ -234,7 +234,7 @@ class MachineManager
      * @param MachineInterface  $machine Machine
      * @param StatefulInterface $object  Object
      *
-     * @return $this self Object
+     * @return self
      */
     protected function dispatchInitializationEvents(
         MachineInterface $machine,
@@ -262,7 +262,7 @@ class MachineManager
      * @param StatefulInterface $object     Object
      * @param Transition        $transition Transition
      *
-     * @return $this self Object
+     * @return self
      */
     protected function dispatchTransitionEvents(
         MachineInterface $machine,

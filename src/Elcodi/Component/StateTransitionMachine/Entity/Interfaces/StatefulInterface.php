@@ -28,7 +28,7 @@ interface StatefulInterface
      *
      * @param Collection $stateLines State lines
      *
-     * @return $this self Object
+     * @return self
      */
     public function setStateLines(Collection $stateLines);
 
@@ -44,7 +44,7 @@ interface StatefulInterface
      *
      * @param StateLineInterface $stateLine State line
      *
-     * @return $this self Object
+     * @return self
      */
     public function addStateLine(StateLineInterface $stateLine);
 
@@ -53,7 +53,7 @@ interface StatefulInterface
      *
      * @param StateLineInterface $stateLine State line
      *
-     * @return $this self Object
+     * @return self
      */
     public function removeStateLine(StateLineInterface $stateLine);
 

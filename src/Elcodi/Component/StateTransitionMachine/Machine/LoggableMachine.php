@@ -142,7 +142,7 @@ class LoggableMachine implements MachineInterface
      *
      * @param Transition $transition Transition to log
      *
-     * @return $this self Object
+     * @return self
      */
     public function logTransition(Transition $transition)
     {

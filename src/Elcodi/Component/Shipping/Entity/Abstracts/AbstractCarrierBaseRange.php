@@ -102,7 +102,7 @@ abstract class AbstractCarrierBaseRange implements CarrierBaseRangeInterface
      *
      * @param int $id Id
      *
-     * @return $this Self object
+     * @return self
      */
     public function setId($id)
     {
@@ -126,7 +126,7 @@ abstract class AbstractCarrierBaseRange implements CarrierBaseRangeInterface
      *
      * @param CarrierInterface $carrier Carrier
      *
-     * @return $this Self object
+     * @return self
      */
     public function setCarrier($carrier)
     {
@@ -150,7 +150,7 @@ abstract class AbstractCarrierBaseRange implements CarrierBaseRangeInterface
      *
      * @param string $description Description
      *
-     * @return $this Self object
+     * @return self
      */
     public function setDescription($description)
     {
@@ -174,7 +174,7 @@ abstract class AbstractCarrierBaseRange implements CarrierBaseRangeInterface
      *
      * @param string $name Name
      *
-     * @return $this Self object
+     * @return self
      */
     public function setName($name)
     {
@@ -198,7 +198,7 @@ abstract class AbstractCarrierBaseRange implements CarrierBaseRangeInterface
      *
      * @param ZoneInterface $fromZone FromZone
      *
-     * @return $this Self object
+     * @return self
      */
     public function setFromZone($fromZone)
     {
@@ -222,7 +222,7 @@ abstract class AbstractCarrierBaseRange implements CarrierBaseRangeInterface
      *
      * @param ZoneInterface $toZone ToZone
      *
-     * @return $this Self object
+     * @return self
      */
     public function setToZone($toZone)
     {
@@ -236,7 +236,7 @@ abstract class AbstractCarrierBaseRange implements CarrierBaseRangeInterface
      *
      * @param MoneyInterface $amount Price
      *
-     * @return $this self Object
+     * @return self
      */
     public function setPrice(MoneyInterface $amount)
     {

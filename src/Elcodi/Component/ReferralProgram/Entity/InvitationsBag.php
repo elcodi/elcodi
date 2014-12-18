@@ -42,7 +42,7 @@ class InvitationsBag
      *
      * @param Invitation $errorInvitation Invitation
      *
-     * @return InvitationsBag Self object
+     * @return self
      */
     public function addErrorInvitation(Invitation $errorInvitation)
     {
@@ -56,7 +56,7 @@ class InvitationsBag
      *
      * @param Invitation $sentInvitation Invitation
      *
-     * @return InvitationsBag Self object
+     * @return self
      */
     public function addSentInvitation(Invitation $sentInvitation)
     {
@@ -70,7 +70,7 @@ class InvitationsBag
      *
      * @param \Doctrine\Common\Collections\ArrayCollection $errorInvitations ErrorInvitations
      *
-     * @return InvitationsBag Self object
+     * @return self
      */
     public function setErrorInvitations($errorInvitations)
     {
@@ -94,7 +94,7 @@ class InvitationsBag
      *
      * @param \Doctrine\Common\Collections\ArrayCollection $sentInvitations SentInvitations
      *
-     * @return InvitationsBag Self object
+     * @return self
      */
     public function setSentInvitations($sentInvitations)
     {

@@ -47,7 +47,7 @@ class OrderStateLine extends StateLine implements OrderStateLineInterface
      *
      * @param OrderInterface $order Order
      *
-     * @return $this Self object
+     * @return self
      */
     public function setOrder(OrderInterface $order)
     {

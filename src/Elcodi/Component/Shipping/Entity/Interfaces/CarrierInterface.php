@@ -38,7 +38,7 @@ interface CarrierInterface extends EnabledInterface
      *
      * @param string $description Description
      *
-     * @return $this Self object
+     * @return self
      */
     public function setDescription($description);
 
@@ -54,7 +54,7 @@ interface CarrierInterface extends EnabledInterface
      *
      * @param int $id Id
      *
-     * @return $this Self object
+     * @return self
      */
     public function setId($id);
 
@@ -70,7 +70,7 @@ interface CarrierInterface extends EnabledInterface
      *
      * @param string $name Name
      *
-     * @return $this Self object
+     * @return self
      */
     public function setName($name);
 
@@ -86,7 +86,7 @@ interface CarrierInterface extends EnabledInterface
      *
      * @param Collection $ranges Ranges
      *
-     * @return $this Self object
+     * @return self
      */
     public function setRanges($ranges);
 
@@ -102,7 +102,7 @@ interface CarrierInterface extends EnabledInterface
      *
      * @param TaxInterface $tax Tax
      *
-     * @return $this Self object
+     * @return self
      */
     public function setTax($tax);
 }

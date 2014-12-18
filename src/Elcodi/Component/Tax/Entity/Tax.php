@@ -77,7 +77,7 @@ class Tax implements TaxInterface
      *
      * @param int $id Id
      *
-     * @return $this Self object
+     * @return self
      */
     public function setId($id)
     {
@@ -101,7 +101,7 @@ class Tax implements TaxInterface
      *
      * @param string $name
      *
-     * @return $this
+     * @return self
      */
     public function setName($name)
     {
@@ -125,7 +125,7 @@ class Tax implements TaxInterface
      *
      * @param string $description
      *
-     * @return $this
+     * @return self
      */
     public function setDescription($description)
     {
@@ -149,7 +149,7 @@ class Tax implements TaxInterface
      *
      * @param float $value
      *
-     * @return $this;
+     * @return self
      */
     public function setValue($value)
     {
@@ -173,7 +173,7 @@ class Tax implements TaxInterface
      *
      * @param TaxGroupInterface $taxGroup TaxGroup
      *
-     * @return $this Self object
+     * @return self
      */
     public function setTaxGroup($taxGroup)
     {

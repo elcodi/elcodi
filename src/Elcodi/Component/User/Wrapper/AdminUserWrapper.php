@@ -83,7 +83,7 @@ class AdminUserWrapper
      *
      * @param AdminUserInterface $adminUser Admin User
      *
-     * @return $this self Object
+     * @return self
      */
     public function setAdminUser(AdminUserInterface $adminUser = null)
     {

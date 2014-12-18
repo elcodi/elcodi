@@ -31,7 +31,7 @@ interface BannerInterface extends EnabledInterface, DateTimeInterface
      *
      * @param string $name Name of the banner
      *
-     * @return $this self Object
+     * @return self
      */
     public function setName($name);
 
@@ -47,7 +47,7 @@ interface BannerInterface extends EnabledInterface, DateTimeInterface
      *
      * @param string $description Description of the banner
      *
-     * @return $this self Object
+     * @return self
      */
     public function setDescription($description);
 
@@ -63,7 +63,7 @@ interface BannerInterface extends EnabledInterface, DateTimeInterface
      *
      * @param string $url Url of the banner
      *
-     * @return $this self Object
+     * @return self
      */
     public function setUrl($url);
 
@@ -79,7 +79,7 @@ interface BannerInterface extends EnabledInterface, DateTimeInterface
      *
      * @param Collection $bannerZones Banner zones
      *
-     * @return $this self Object
+     * @return self
      */
     public function setBannerZones(Collection $bannerZones);
 
@@ -95,7 +95,7 @@ interface BannerInterface extends EnabledInterface, DateTimeInterface
      *
      * @param BannerZoneInterface $bannerZone Banner Zone
      *
-     * @return $this self Object
+     * @return self
      */
     public function addBannerZone(BannerZoneInterface $bannerZone);
 
@@ -104,7 +104,7 @@ interface BannerInterface extends EnabledInterface, DateTimeInterface
      *
      * @param BannerZoneInterface $bannerZone Banner Zone
      *
-     * @return $this self Object
+     * @return self
      */
     public function removeBannerZone(BannerZoneInterface $bannerZone);
 }

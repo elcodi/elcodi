@@ -36,7 +36,7 @@ interface VoteInterface extends DateTimeInterface
      *
      * @param CommentInterface $comment Comment
      *
-     * @return $this Self object
+     * @return self
      */
     public function setComment($comment);
 
@@ -52,7 +52,7 @@ interface VoteInterface extends DateTimeInterface
      *
      * @param boolean $type Type
      *
-     * @return $this Self object
+     * @return self
      */
     public function setType($type);
 
@@ -68,7 +68,7 @@ interface VoteInterface extends DateTimeInterface
      *
      * @param AbstractUserInterface $user User
      *
-     * @return $this Self object
+     * @return self
      */
     public function setUser($user);
 }

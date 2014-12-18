@@ -72,7 +72,7 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
      *
      * @param array $config Configuration
      *
-     * @return array Config files
+     * @return string[] Config files
      */
     public function getConfigFiles(array $config)
     {

@@ -117,7 +117,7 @@ class Variant extends AbstractEntity implements VariantInterface
      *
      * @param int $stock
      *
-     * @return $this self Object
+     * @return self
      */
     public function setStock($stock)
     {

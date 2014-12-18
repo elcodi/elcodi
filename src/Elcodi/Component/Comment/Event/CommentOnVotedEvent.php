@@ -60,7 +60,7 @@ class CommentOnVotedEvent extends AbstractCommentEvent
     /**
      * Get Vote
      *
-     * @return mixed Vote
+     * @return VoteInterface Vote
      */
     public function getVote()
     {

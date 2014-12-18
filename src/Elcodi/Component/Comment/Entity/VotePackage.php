@@ -51,23 +51,8 @@ class VotePackage
      */
     protected function __construct(array $votes = null)
     {
-        if (is_null($votes)) {
-            return;
-        }
-
-        foreach ($votes as $vote) {
-
-            if ($vote instanceof VoteInterface) {
-                $this->nbVotes++;
-
-                if (Vote::UP === $vote->getType()) {
-
-                    $this->nbUpVotes++;
-                } else {
-
-                    $this->nbDownVotes++;
-                }
-            }
+        if (!empty($votes)) {
+            $this->processVotes($votes);
         }
     }
 
@@ -106,10 +91,33 @@ class VotePackage
      *
      * @param VoteInterface[] $votes Votes
      *
-     * @return $this VotePackage
+     * @return self
      */
     public static function create(array $votes)
     {
         return new self($votes);
+    }
+
+    /**
+     * Processes a bunch of votes
+     *
+     * @param array $votes
+     */
+    protected function processVotes(array $votes)
+    {
+        foreach ($votes as $vote) {
+
+            if ($vote instanceof VoteInterface) {
+                $this->nbVotes++;
+
+                if (Vote::UP === $vote->getType()) {
+
+                    $this->nbUpVotes++;
+                } else {
+
+                    $this->nbDownVotes++;
+                }
+            }
+        }
     }
 }

@@ -143,7 +143,7 @@ class GeoDataPopulatorAdapterTest extends PHPUnit_Framework_TestCase
      *
      * @param CountryInterface $country Country
      *
-     * @return $this Self Object
+     * @return self
      */
     public function blockTestCountry(CountryInterface $country)
     {
@@ -157,7 +157,7 @@ class GeoDataPopulatorAdapterTest extends PHPUnit_Framework_TestCase
      *
      * @param CountryInterface $country Country
      *
-     * @return $this Self Object
+     * @return self
      */
     public function blockTestStates(CountryInterface $country)
     {
@@ -172,7 +172,7 @@ class GeoDataPopulatorAdapterTest extends PHPUnit_Framework_TestCase
      *
      * @param CountryInterface $country Country
      *
-     * @return $this Self Object
+     * @return self
      */
     public function blockTestProvinces(CountryInterface $country)
     {

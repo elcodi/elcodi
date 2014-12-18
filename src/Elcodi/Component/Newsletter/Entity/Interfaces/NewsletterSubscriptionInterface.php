@@ -30,7 +30,7 @@ interface NewsletterSubscriptionInterface extends DateTimeInterface, EnabledInte
      *
      * @param string $email Email
      *
-     * @return $this self Object
+     * @return self
      */
     public function setEmail($email);
 
@@ -46,7 +46,7 @@ interface NewsletterSubscriptionInterface extends DateTimeInterface, EnabledInte
      *
      * @param LanguageInterface $language Language
      *
-     * @return $this self Object
+     * @return self
      */
     public function setLanguage(LanguageInterface $language = null);
 
@@ -62,7 +62,7 @@ interface NewsletterSubscriptionInterface extends DateTimeInterface, EnabledInte
      *
      * @param string $hash Hash
      *
-     * @return $this self Object
+     * @return self
      */
     public function setHash($hash);
 
@@ -78,7 +78,7 @@ interface NewsletterSubscriptionInterface extends DateTimeInterface, EnabledInte
      *
      * @param string $reason Reason
      *
-     * @return $this self Object
+     * @return self
      */
     public function setReason($reason);
 

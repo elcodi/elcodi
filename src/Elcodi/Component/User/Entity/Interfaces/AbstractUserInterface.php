@@ -29,7 +29,7 @@ interface AbstractUserInterface extends UserInterface
      *
      * @param string $recoveryHash
      *
-     * @return $this self Object
+     * @return self
      */
     public function setRecoveryHash($recoveryHash);
 
@@ -45,7 +45,7 @@ interface AbstractUserInterface extends UserInterface
      *
      * @param string $firstname Firstname
      *
-     * @return AbstractUserInterface Self object
+     * @return self
      */
     public function setFirstname($firstname);
 
@@ -61,7 +61,7 @@ interface AbstractUserInterface extends UserInterface
      *
      * @param string $lastname Lastname
      *
-     * @return AbstractUserInterface Self object
+     * @return self
      */
     public function setLastname($lastname);
 
@@ -77,7 +77,7 @@ interface AbstractUserInterface extends UserInterface
      *
      * @param int $gender Gender
      *
-     * @return $this self Object
+     * @return self
      */
     public function setGender($gender);
 
@@ -93,7 +93,7 @@ interface AbstractUserInterface extends UserInterface
      *
      * @param string $email
      *
-     * @return $this self Object
+     * @return self
      */
     public function setEmail($email);
 
@@ -109,7 +109,7 @@ interface AbstractUserInterface extends UserInterface
      *
      * @param string $username Username
      *
-     * @return $this self Object
+     * @return self
      */
     public function setUsername($username);
 
@@ -125,7 +125,7 @@ interface AbstractUserInterface extends UserInterface
      *
      * @param DateTime $birthday
      *
-     * @return $this self Object
+     * @return self
      */
     public function setBirthday(DateTime $birthday = null);
 
@@ -141,7 +141,7 @@ interface AbstractUserInterface extends UserInterface
      *
      * @param string $password
      *
-     * @return $this self Object
+     * @return self
      */
     public function setPassword($password);
 }

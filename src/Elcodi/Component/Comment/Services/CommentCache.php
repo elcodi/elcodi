@@ -123,7 +123,7 @@ class CommentCache extends AbstractCacheWrapper
      *
      * @param string $source Source of comments
      *
-     * @return $this self Object
+     * @return self
      */
     public function invalidateCache($source)
     {
@@ -263,7 +263,7 @@ class CommentCache extends AbstractCacheWrapper
      * @param array  $commentTree Comment tree
      * @param string $source      Source of comments
      *
-     * @return $this self Object
+     * @return self
      */
     protected function saveCommentTreeIntoCache($commentTree, $source)
     {

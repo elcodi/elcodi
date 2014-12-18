@@ -37,7 +37,7 @@ interface AbstractRuleInterface extends EnabledInterface
      *
      * @param string $name Name
      *
-     * @return AbstractRuleInterface Self object
+     * @return self
      */
     public function setName($name);
 
@@ -53,7 +53,7 @@ interface AbstractRuleInterface extends EnabledInterface
      *
      * @param string $code Code
      *
-     * @return AbstractRuleInterface Self object
+     * @return self
      */
     public function setCode($code);
 

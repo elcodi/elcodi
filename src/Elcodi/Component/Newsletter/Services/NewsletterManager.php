@@ -98,7 +98,7 @@ class NewsletterManager
      * @param String            $email    Email
      * @param LanguageInterface $language The language
      *
-     * @return $this self Object
+     * @return self
      *
      * @throws NewsletterCannotBeAddedException
      */
@@ -137,7 +137,7 @@ class NewsletterManager
      * @param LanguageInterface $language Language
      * @param string            $reason   reason if it exists
      *
-     * @return $this
+     * @return self
      *
      * @throws NewsletterCannotBeRemovedException
      */
@@ -197,7 +197,7 @@ class NewsletterManager
      *
      * @param string $email Email
      *
-     * @return null|object Subscription instance if exists
+     * @return NewsletterSubscriptionInterface|null Subscription instance if exists
      */
     public function getSubscription($email)
     {

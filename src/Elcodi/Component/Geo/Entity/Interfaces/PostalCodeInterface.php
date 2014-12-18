@@ -30,7 +30,7 @@ interface PostalCodeInterface extends EnabledInterface
      *
      * @param string $id Id
      *
-     * @return $this Self object
+     * @return self
      */
     public function setId($id);
 
@@ -46,7 +46,7 @@ interface PostalCodeInterface extends EnabledInterface
      *
      * @param string $code Code
      *
-     * @return $this Self object
+     * @return self
      */
     public function setCode($code);
 
@@ -69,7 +69,7 @@ interface PostalCodeInterface extends EnabledInterface
      *
      * @param Collection $cities Cities
      *
-     * @return $this self Object
+     * @return self
      */
     public function setCities(Collection $cities);
 
@@ -78,7 +78,7 @@ interface PostalCodeInterface extends EnabledInterface
      *
      * @param CityInterface $city City
      *
-     * @return $this self Object
+     * @return self
      */
     public function addCity(CityInterface $city);
 
@@ -87,7 +87,7 @@ interface PostalCodeInterface extends EnabledInterface
      *
      * @param CityInterface $city City
      *
-     * @return $this self Object
+     * @return self
      */
     public function removeCity(CityInterface $city);
 

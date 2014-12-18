@@ -29,7 +29,7 @@ interface MenuInterface extends DateTimeInterface, EnabledInterface, SubnodesAwa
      *
      * @param string $code Code
      *
-     * @return MenuInterface Self object
+     * @return self
      */
     public function setCode($code);
 
@@ -45,7 +45,7 @@ interface MenuInterface extends DateTimeInterface, EnabledInterface, SubnodesAwa
      *
      * @param string $description Description
      *
-     * @return MenuInterface Self object
+     * @return self
      */
     public function setDescription($description);
 

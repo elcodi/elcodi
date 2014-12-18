@@ -68,7 +68,7 @@ class GeoPopulator
      * @param array           $countryCodes                Set of country codes
      * @param boolean         $sourcePackageMustbeReloaded Source package must be reloaded
      *
-     * @return $this self Object
+     * @return self
      */
     public function populateCountries(
         OutputInterface $output,

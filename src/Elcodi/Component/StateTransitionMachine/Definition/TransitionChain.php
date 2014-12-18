@@ -41,7 +41,7 @@ class TransitionChain
      *
      * @param Transition $transition Transition
      *
-     * @return $this self Object
+     * @return self
      */
     public function addTransition(Transition $transition)
     {

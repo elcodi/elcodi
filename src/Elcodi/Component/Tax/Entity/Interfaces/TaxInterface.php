@@ -35,7 +35,7 @@ interface TaxInterface extends EnabledInterface
      *
      * @param int $id Id
      *
-     * @return $this Self object
+     * @return self
      */
     public function setId($id);
 
@@ -51,7 +51,7 @@ interface TaxInterface extends EnabledInterface
      *
      * @param string $name
      *
-     * @return $this
+     * @return self
      */
     public function setName($name);
 
@@ -67,7 +67,7 @@ interface TaxInterface extends EnabledInterface
      *
      * @param string $description
      *
-     * @return $this
+     * @return self
      */
     public function setDescription($description);
 
@@ -83,7 +83,7 @@ interface TaxInterface extends EnabledInterface
      *
      * @param float $value
      *
-     * @return $this
+     * @return self
      */
     public function setValue($value);
 
@@ -99,7 +99,7 @@ interface TaxInterface extends EnabledInterface
      *
      * @param TaxGroupInterface $taxGroup TaxGroup
      *
-     * @return $this Self object
+     * @return self
      */
     public function setTaxGroup($taxGroup);
 }

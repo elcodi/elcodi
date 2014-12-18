@@ -243,7 +243,7 @@ class CategoryManager extends AbstractCacheWrapper
      *
      * @param array $categoryTree Category tree
      *
-     * @return $this self Object
+     * @return self
      */
     protected function saveCategoryTreeIntoCache($categoryTree)
     {

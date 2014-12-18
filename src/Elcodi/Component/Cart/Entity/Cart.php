@@ -120,7 +120,7 @@ class Cart implements CartInterface
      *
      * @param int $id Id
      *
-     * @return $this Self object
+     * @return self
      */
     public function setId($id)
     {
@@ -144,7 +144,7 @@ class Cart implements CartInterface
      *
      * @param CustomerInterface $customer Customer
      *
-     * @return $this self Object
+     * @return self
      */
     public function setCustomer(CustomerInterface $customer)
     {
@@ -158,7 +158,7 @@ class Cart implements CartInterface
      *
      * @param OrderInterface $order
      *
-     * @return $this self Object
+     * @return self
      */
     public function setOrder(OrderInterface $order)
     {
@@ -182,7 +182,7 @@ class Cart implements CartInterface
      *
      * @param boolean $ordered Has been ordered
      *
-     * @return $this self Object
+     * @return self
      */
     public function setOrdered($ordered)
     {
@@ -206,7 +206,7 @@ class Cart implements CartInterface
      *
      * @param Collection $cartLines Cart Lines
      *
-     * @return $this self Object
+     * @return self
      */
     public function setCartLines(Collection $cartLines)
     {
@@ -230,7 +230,7 @@ class Cart implements CartInterface
      *
      * @param CartLineInterface $cartLine Cart line
      *
-     * @return $this self Object
+     * @return self
      */
     public function addCartLine(CartLineInterface $cartLine)
     {
@@ -247,7 +247,7 @@ class Cart implements CartInterface
      *
      * @param CartLineInterface $cartLine Cart line
      *
-     * @return $this self Object
+     * @return self
      */
     public function removeCartLine(CartLineInterface $cartLine)
     {
@@ -261,7 +261,7 @@ class Cart implements CartInterface
      *
      * @param int $quantity Quantity
      *
-     * @return $this self Object
+     * @return self
      */
     public function setQuantity($quantity)
     {
@@ -305,7 +305,7 @@ class Cart implements CartInterface
      *
      * @param MoneyInterface $productAmount
      *
-     * @return $this self Object
+     * @return self
      */
     public function setProductAmount(MoneyInterface $productAmount)
     {
@@ -329,7 +329,7 @@ class Cart implements CartInterface
      *
      * @param MoneyInterface $couponAmount
      *
-     * @return $this self Object
+     * @return self
      */
     public function setCouponAmount(MoneyInterface $couponAmount)
     {
@@ -353,7 +353,7 @@ class Cart implements CartInterface
      *
      * @param MoneyInterface $amount
      *
-     * @return $this self Object
+     * @return self
      */
     public function setAmount(MoneyInterface $amount)
     {

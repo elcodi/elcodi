@@ -141,7 +141,7 @@ class VoteManager
      * @param AbstractUserInterface $user    User
      * @param CommentInterface      $comment Comment
      *
-     * @return $this VoteManager
+     * @return self
      */
     public function removeVote(
         AbstractUserInterface $user,

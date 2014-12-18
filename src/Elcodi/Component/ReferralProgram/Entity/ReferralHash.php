@@ -53,7 +53,7 @@ class ReferralHash extends AbstractEntity implements ReferralHashInterface
      *
      * @param CustomerInterface $referrer Referrer
      *
-     * @return ReferralHash Self object
+     * @return self
      */
     public function setReferrer(CustomerInterface $referrer)
     {
@@ -77,7 +77,7 @@ class ReferralHash extends AbstractEntity implements ReferralHashInterface
      *
      * @param string $hash Hash
      *
-     * @return ReferralHash Self object
+     * @return self
      */
     public function setHash($hash)
     {
@@ -101,7 +101,7 @@ class ReferralHash extends AbstractEntity implements ReferralHashInterface
      *
      * @param Collection $referralLines Referral Lines
      *
-     * @return ReferralHash Self object
+     * @return self
      */
     public function setReferralLines(Collection $referralLines)
     {

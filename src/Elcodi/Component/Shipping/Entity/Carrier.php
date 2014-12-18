@@ -79,7 +79,7 @@ class Carrier implements CarrierInterface
      *
      * @param string $description Description
      *
-     * @return $this Self object
+     * @return self
      */
     public function setDescription($description)
     {
@@ -103,7 +103,7 @@ class Carrier implements CarrierInterface
      *
      * @param int $id Id
      *
-     * @return $this Self object
+     * @return self
      */
     public function setId($id)
     {
@@ -127,7 +127,7 @@ class Carrier implements CarrierInterface
      *
      * @param string $name Name
      *
-     * @return $this Self object
+     * @return self
      */
     public function setName($name)
     {
@@ -151,7 +151,7 @@ class Carrier implements CarrierInterface
      *
      * @param Collection $ranges Ranges
      *
-     * @return $this Self object
+     * @return self
      */
     public function setRanges($ranges)
     {
@@ -175,7 +175,7 @@ class Carrier implements CarrierInterface
      *
      * @param TaxInterface $tax Tax
      *
-     * @return $this Self object
+     * @return self
      */
     public function setTax($tax)
     {
