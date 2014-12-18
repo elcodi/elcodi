@@ -41,22 +41,6 @@ abstract class AbstractExtension
     /**
      * {@inheritdoc}
      */
-    public function getNamespace()
-    {
-        return 'http://example.org/schema/dic/'.$this->getAlias();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getXsdValidationBasePath()
-    {
-        return false;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getConfiguration(array $config, ContainerBuilder $container)
     {
         $configuration = $this->getConfigurationInstance();
@@ -108,6 +92,22 @@ abstract class AbstractExtension
         }
 
         $this->preLoad($config, $container);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getNamespace()
+    {
+        return 'http://example.org/schema/dic/' . $this->getAlias();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getXsdValidationBasePath()
+    {
+        return false;
     }
 
     /**
