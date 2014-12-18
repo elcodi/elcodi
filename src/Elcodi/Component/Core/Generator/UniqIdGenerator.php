@@ -19,7 +19,7 @@ namespace Elcodi\Component\Core\Generator;
 use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 
 /**
- * Class Sha1Generator
+ * Class UniqIdGenerator
  *
  * This class is a unique id generator.
  */

@@ -41,7 +41,7 @@ class TranslatorTest extends WebTestCase
         $this->flush($translation);
 
         $this
-            ->get('elcodi.entity_translator_event_dispatcher')
+            ->get('elcodi.event_dispatcher.entity_translator')
             ->dispatchTranslatorWarmUp();
 
         $translatableProduct = new TranslatableProduct();
@@ -73,7 +73,7 @@ class TranslatorTest extends WebTestCase
         $this->flush($translation);
 
         $this
-            ->get('elcodi.entity_translator_event_dispatcher')
+            ->get('elcodi.event_dispatcher.entity_translator')
             ->dispatchTranslatorWarmUp();
 
         $translatableProduct = new TranslatableProduct();

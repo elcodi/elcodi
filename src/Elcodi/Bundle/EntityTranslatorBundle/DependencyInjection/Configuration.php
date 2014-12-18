@@ -16,7 +16,7 @@
 
 namespace Elcodi\Bundle\EntityTranslatorBundle\DependencyInjection;
 
-use Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
@@ -27,13 +27,12 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration
 class Configuration extends AbstractConfiguration implements ConfigurationInterface
 {
     /**
-     * {@inheritDoc}
+     * Configure the root node
+     *
+     * @param ArrayNodeDefinition $rootNode
      */
-    public function getConfigTreeBuilder()
+    protected function setupTree(ArrayNodeDefinition $rootNode)
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root($this->extensionName);
-
         $rootNode
             ->children()
                 ->arrayNode('mapping')
@@ -71,12 +70,31 @@ class Configuration extends AbstractConfiguration implements ConfigurationInterf
                                         ->scalarNode('getter')->end()
                                     ->end()
                                 ->end()
+                                ->beforeNormalization()
+                                ->always(function ($fields) {
+                                    foreach ($fields as $fieldName => $fieldConfiguration) {
+
+                                        if (!is_array($fieldConfiguration)) {
+                                            $fieldConfiguration = [];
+                                        }
+
+                                        if (!isset($fieldConfiguration['getter'])) {
+
+                                            $fields[$fieldName]['getter'] = 'get' . ucfirst($fieldName);
+                                        }
+
+                                        if (!isset($fieldConfiguration['getter'])) {
+
+                                            $fields[$fieldName]['setter'] = 'set' . ucfirst($fieldName);
+                                        }
+                                    }
+
+                                    return $fields;
+                                })
                             ->end()
                         ->end()
                     ->end()
                 ->end()
             ->end();
-
-        return $treeBuilder;
     }
 }

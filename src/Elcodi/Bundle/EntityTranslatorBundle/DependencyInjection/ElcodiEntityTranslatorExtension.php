@@ -75,8 +75,6 @@ class ElcodiEntityTranslatorExtension extends AbstractExtension implements Entit
      */
     protected function getParametrizationValues(array $config)
     {
-        $config['configuration'] = $this->setDefaultFieldMethods($config['configuration']);
-
         return [
             "elcodi.core.entity_translator.entity.entity_translation.class"        => $config['mapping']['translation']['class'],
             "elcodi.core.entity_translator.entity.entity_translation.mapping_file" => $config['mapping']['translation']['mapping_file'],
@@ -128,33 +126,5 @@ class ElcodiEntityTranslatorExtension extends AbstractExtension implements Entit
     public function getAlias()
     {
         return static::EXTENSION_NAME;
-    }
-
-    /**
-     * Set field getters and setters if not set
-     *
-     * @param array $configuration Configuration
-     *
-     * @return array Confguration modified
-     */
-    public function setDefaultFieldMethods(array $configuration)
-    {
-        foreach ($configuration as $entityNamespace => $entityConfiguration) {
-
-            foreach ($entityConfiguration['fields'] as $fieldName => $fieldConfiguration) {
-
-                if (!isset($fieldConfiguration['getter'])) {
-
-                    $configuration[$entityNamespace]['fields'][$fieldName]['getter'] = 'get' . ucfirst($fieldName);
-                }
-
-                if (!isset($fieldConfiguration['setter'])) {
-
-                    $configuration[$entityNamespace]['fields'][$fieldName]['setter'] = 'set' . ucfirst($fieldName);
-                }
-            }
-        }
-
-        return $configuration;
     }
 }
