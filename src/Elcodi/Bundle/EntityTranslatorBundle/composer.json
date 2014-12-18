@@ -31,6 +31,7 @@
         "mmoreram/simple-doctrine-mapping": "~0.1",
 
         "elcodi/core-bundle": "~0.4.0",
+        "elcodi/entity-translator": "~0.4.0",
         "elcodi/language-bundle": "~0.4.0"
     },
     "require-dev": {
