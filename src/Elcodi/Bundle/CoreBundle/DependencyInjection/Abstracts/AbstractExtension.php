@@ -115,7 +115,13 @@ abstract class AbstractExtension
      *
      * @return string Config file location
      */
-    abstract protected function getConfigFilesLocation();
+    protected function getConfigFilesLocation()
+    {
+        throw new \RuntimeException(sprintf(
+            'Method "getConfigFiles" returns non-empty, but "getConfigFilesLocation" is missing in "%s" extension.',
+            $this->getAlias()
+        ));
+    }
 
     /**
      * Config files to load
@@ -138,7 +144,10 @@ abstract class AbstractExtension
      *
      * @return array Config files
      */
-    abstract protected function getConfigFiles(array $config);
+    protected function getConfigFiles(array $config)
+    {
+        return [];
+    }
 
     /**
      * Return a new Configuration instance.
