@@ -41,13 +41,16 @@ class PageRepository extends EntityRepository implements PageRepositoryInterface
     }
 
     /**
-     * @param string $path
+     * Find one Page given its path
+     *
+     * @param string $path Page path
+     *
      * @return PageInterface
      */
     public function findOneByPath($path)
     {
         return parent::findOneBy(array(
-            'path' => $path,
+            'path'    => $path,
             'enabled' => true,
         ));
     }
