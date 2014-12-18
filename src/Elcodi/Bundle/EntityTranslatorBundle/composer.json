@@ -1,8 +1,8 @@
 {
-    "name": "elcodi/translator-bundle",
-    "description": "Elcodi Translator Bundle",
-    "keywords": ["elcodi", "Translator", "ecommerce"],
-    "homepage": "https://github.com/elcodi/TranslatorBundle",
+    "name": "elcodi/entity-translator-bundle",
+    "description": "Elcodi Entity Translator Bundle",
+    "keywords": ["elcodi", "Entity Translator", "ecommerce"],
+    "homepage": "https://github.com/elcodi/EntityTranslatorBundle",
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
@@ -16,7 +16,7 @@
         },
         {
             "name": "Symfony Community",
-            "homepage": "https://github.com/elcodi/TranslatorBundle/contributors"
+            "homepage": "https://github.com/elcodi/EntityTranslatorBundle/contributors"
         }
     ],
     "require": {
@@ -30,21 +30,21 @@
         "symfony/dependency-injection": "~2.4",
         "mmoreram/simple-doctrine-mapping": "~0.1",
 
-        "elcodi/core-bundle": "~0.3.0",
-        "elcodi/language-bundle": "~0.3.0"
+        "elcodi/core-bundle": "~0.4.0",
+        "elcodi/language-bundle": "~0.4.0"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "~0.3.0",
+        "elcodi/test-common-bundle": "~0.4.0",
         "doctrine/data-fixtures": "~1.0"
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\Bundle\\TranslatorBundle\\": ""
+            "Elcodi\\Bundle\\EntityTranslatorBundle\\": ""
         }
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.4-dev"
+            "dev-master": "0.5-dev"
         }
     }
 }
