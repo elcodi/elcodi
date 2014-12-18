@@ -24,7 +24,7 @@
         "doctrine/common": "~2.4",
         "doctrine/orm": "~2.4",
 
-        "elcodi/core": "~0.3.0"
+        "elcodi/core": "~0.4.0"
     },
     "suggested": {
         "symfony/form": "Required if using Form features"
@@ -36,7 +36,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.4-dev"
+            "dev-master": "0.5-dev"
         }
     }
 }

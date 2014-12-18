@@ -25,8 +25,8 @@
         "doctrine/orm": "~2.4",
         "doctrine/cache": "~1.0",
 
-        "elcodi/core": "~0.3.0",
-        "elcodi/user": "~0.3.0"
+        "elcodi/core": "~0.4.0",
+        "elcodi/user": "~0.4.0"
     },
     "suggest": {
         "michelf/php-markdown": "Needed for the markdown parsing adapter"
@@ -38,7 +38,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.4-dev"
+            "dev-master": "0.5-dev"
         }
     }
 }

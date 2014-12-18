@@ -30,15 +30,15 @@
         "mmoreram/simple-doctrine-mapping": "~0.1",
         "doctrine/doctrine-cache-bundle": "~1.0",
 
-        "elcodi/core-bundle": "~0.3.0",
-        "elcodi/language-bundle": "~0.3.0",
-        "elcodi/media-bundle": "~0.3.0",
-        "elcodi/currency-bundle": "~0.3.0",
-        "elcodi/attribute-bundle": "~0.3.0",
-        "elcodi/product": "~0.3.0"
+        "elcodi/core-bundle": "~0.4.0",
+        "elcodi/language-bundle": "~0.4.0",
+        "elcodi/media-bundle": "~0.4.0",
+        "elcodi/currency-bundle": "~0.4.0",
+        "elcodi/attribute-bundle": "~0.4.0",
+        "elcodi/product": "~0.4.0"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "~0.3.0",
+        "elcodi/test-common-bundle": "~0.4.0",
         "doctrine/data-fixtures": "~1.0"
     },
     "suggest": {
@@ -51,7 +51,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.4-dev"
+            "dev-master": "0.5-dev"
         }
     }
 }

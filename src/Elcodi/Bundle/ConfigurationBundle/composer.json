@@ -31,11 +31,11 @@
         "symfony/dependency-injection": "~2.4",
         "mmoreram/simple-doctrine-mapping": "~0.1",
 
-        "elcodi/core-bundle": "~0.3.0",
-        "elcodi/configuration": "~0.3.0"
+        "elcodi/core-bundle": "~0.4.0",
+        "elcodi/configuration": "~0.4.0"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "~0.3.0",
+        "elcodi/test-common-bundle": "~0.4.0",
         "symfony/expression-language": "~2.4",
         "doctrine/doctrine-fixtures-bundle": "2.2.*",
         "doctrine/data-fixtures": "~1.0"
@@ -47,7 +47,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.4-dev"
+            "dev-master": "0.5-dev"
         }
     }
 }

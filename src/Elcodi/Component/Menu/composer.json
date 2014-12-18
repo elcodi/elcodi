@@ -25,7 +25,7 @@
         "doctrine/orm": "~2.4",
         "symfony/routing" : "~2.4",
 
-        "elcodi/core": "~0.3.0"
+        "elcodi/core": "~0.4.0"
     },
     "suggest": {
         "twig/twig": "Required if using Twig extensions",
@@ -38,7 +38,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.4-dev"
+            "dev-master": "0.5-dev"
         }
     }
 }
