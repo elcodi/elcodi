@@ -24,9 +24,9 @@
         "doctrine/common": "~2.4",
         "doctrine/orm": "~2.4",
 
-        "elcodi/core": "~0.3.0",
-        "elcodi/language": "~0.3.0",
-        "elcodi/media": "~0.3.0"
+        "elcodi/core": "~0.4.0",
+        "elcodi/language": "~0.4.0",
+        "elcodi/media": "~0.4.0"
     },
     "autoload": {
         "psr-4": {
@@ -36,7 +36,7 @@
     "minimum-stability": "stable",
     "extra": {
         "branch-alias": {
-            "dev-master": "0.4-dev"
+            "dev-master": "0.5-dev"
         }
     }
 }

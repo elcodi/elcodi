@@ -26,7 +26,7 @@
         "mmoreram/extractor": "~1.0",
         "goodby/csv": "~1.0",
 
-        "elcodi/core": "~0.3.0"
+        "elcodi/core": "~0.4.0"
     },
     "autoload": {
         "psr-4": {
@@ -35,7 +35,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.4-dev"
+            "dev-master": "0.5-dev"
         }
     }
 }

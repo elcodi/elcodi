@@ -26,11 +26,11 @@
         "symfony/http-kernel": "~2.4, >2.4.6",
         "symfony/config": "~2.4",
 
-        "elcodi/core-bundle": "~0.3.0",
-        "elcodi/state-transition-machine": "~0.3.0"
+        "elcodi/core-bundle": "~0.4.0",
+        "elcodi/state-transition-machine": "~0.4.0"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "~0.3.0",
+        "elcodi/test-common-bundle": "~0.4.0",
         "doctrine/data-fixtures": "~1.0"
     },
     "autoload": {
@@ -40,7 +40,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.4-dev"
+            "dev-master": "0.5-dev"
         }
     }
 }
