@@ -19,6 +19,7 @@ namespace Elcodi\Component\Product\Factory;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 use Elcodi\Component\Currency\Factory\Abstracts\AbstractPurchasableFactory;
 use Elcodi\Component\Product\ElcodiProductTypes;
 use Elcodi\Component\Product\Entity\Product;
@@ -28,6 +29,27 @@ use Elcodi\Component\Product\Entity\Product;
  */
 class ProductFactory extends AbstractPurchasableFactory
 {
+    /**
+     * @var GeneratorInterface
+     *
+     * Generator
+     */
+    protected $generator;
+
+    /**
+     * Set generator
+     *
+     * @param GeneratorInterface $generator Generator
+     *
+     * @return $this self Object
+     */
+    public function setGenerator(GeneratorInterface $generator)
+    {
+        $this->generator = $generator;
+
+        return $this;
+    }
+
     /**
      * Creates and returns a pristine Product instance
      *
@@ -46,6 +68,7 @@ class ProductFactory extends AbstractPurchasableFactory
         $classNamespace = $this->getEntityNamespace();
         $product = new $classNamespace();
         $product
+            ->setId($this->generator->generate())
             ->setStock(0)
             ->setType(ElcodiProductTypes::TYPE_PRODUCT_PHYSICAL)
             ->setShowInHome(false)

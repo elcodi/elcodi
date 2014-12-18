@@ -10,8 +10,9 @@ parameters:
     #
     # Generators
     #
-    elcodi.core.core.generator.random_string.class: Elcodi\Component\Core\Generator\RandomStringGenerator
-    elcodi.core.core.generator.sha1.class: Elcodi\Component\Core\Generator\Sha1Generator
+    elcodi.generator.random_string.class: Elcodi\Component\Core\Generator\RandomStringGenerator
+    elcodi.generator.sha1.class: Elcodi\Component\Core\Generator\Sha1Generator
+    elcodi.generator.uniqid.class: Elcodi\Component\Core\Generator\UniqIdGenerator
 
     #
     # Encoders

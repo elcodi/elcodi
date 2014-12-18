@@ -1,0 +1,30 @@
+Elcodi\Component\EntityTranslator\Entity\EntityTranslation:
+    type: entity
+    repositoryClass: Elcodi\Component\EntityTranslator\Repository\EntityTranslationRepository
+    table: entity_translation
+    id:
+        entityType:
+            column: entity_type
+            type: string
+            length: 255
+            nullable: false
+        entityId:
+            column: entity_id
+            type: string
+            length: 255
+            nullable: false
+        entityField:
+            column: entity_field
+            type: string
+            length: 255
+            nullable: false
+        locale:
+            column: locale
+            type: string
+            length: 8
+            nullable: false
+    fields:
+        translation:
+            column: translation
+            type: text
+            nullable: false

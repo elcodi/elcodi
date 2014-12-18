@@ -1,0 +1,21 @@
+elcodi_entity_translator:
+    auto_translate: true
+    configuration:
+        Elcodi\Component\Product\Entity\Interfaces\ProductInterface:
+            alias: product
+            fields:
+                name: ~
+                slug: ~
+                description: ~
+                shortDescription: ~
+                metaTitle: ~
+                metaDescription: ~
+                metaKeywords: ~
+        Elcodi\Component\Product\Entity\Interfaces\CategoryInterface:
+            alias: category
+            fields:
+                name: ~
+                slug: ~
+                metaTitle: ~
+                metaDescription: ~
+                metaKeywords: ~

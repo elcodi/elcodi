@@ -1,0 +1,31 @@
+parameters:
+
+    #
+    # Factories
+    #
+    elcodi.core.entity_translator.factory.entity_translator.class: Elcodi\Component\EntityTranslator\Factory\EntityTranslatorFactory
+    elcodi.core.entity_translator.factory.entity_translation.class: Elcodi\Component\EntityTranslator\Factory\EntityTranslationFactory
+
+    #
+    # Repositories
+    #
+    elcodi.core.entity_translator.repository.entity_translation.class: Elcodi\Component\EntityTranslator\Repository\EntityTranslationRepository
+
+    #
+    # Services
+    #
+    elcodi.core.entity_translator.services.cached_entity_translation_provider.class: Elcodi\Component\EntityTranslator\Services\CachedEntityTranslationProvider
+    elcodi.core.entity_translator.services.entity_translation_provider.class: Elcodi\Component\EntityTranslator\Services\EntityTranslationProvider
+    elcodi.core.entity_translator.services.entity_translator_builder.class: Elcodi\Component\EntityTranslator\Services\EntityTranslatorBuilder
+    elcodi.core.entity_translator.services.entity_translator.class: Elcodi\Component\EntityTranslator\Services\EntityTranslator
+
+    #
+    # Event Dispatchers
+    #
+    elcodi.core.entity_translator.event_dispatcher.entity_translator.class: Elcodi\Component\EntityTranslator\EventDispatcher\EntityTranslatorEventDispatcher
+
+    #
+    # Event Listeners
+    #
+    elcodi.core.entity_translator.event_listener.entity_translator_form.class: Elcodi\Component\EntityTranslator\EventListener\EntityTranslatorFormEventListener
+    elcodi.core.entity_translator.event_listener.entity_translator_entity.class: Elcodi\Component\EntityTranslator\EventListener\EntityTranslatorEntityEventListener

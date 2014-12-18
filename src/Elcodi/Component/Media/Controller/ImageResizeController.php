@@ -130,7 +130,6 @@ class ImageResizeController
         $height = $request->get('height');
         $width = $request->get('width');
         $type = $request->get('type');
-
         $response
             ->setEtag($this
                     ->imageEtagTransformer
