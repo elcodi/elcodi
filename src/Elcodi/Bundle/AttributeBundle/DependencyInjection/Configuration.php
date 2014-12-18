@@ -16,26 +16,20 @@
 
 namespace Elcodi\Bundle\AttributeBundle\DependencyInjection;
 
-use Symfony\Component\Config\Definition\Builder\TreeBuilder;
-use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
 
 /**
- * This is the class that validates and merges configuration from your app/config files
+ * Class Configuration
  */
-class Configuration extends AbstractConfiguration implements ConfigurationInterface
+class Configuration extends AbstractConfiguration
 {
     /**
-     * Generates the configuration tree builder.
-     *
-     * @return TreeBuilder The tree builder
+     * {@inheritDoc}
      */
-    public function getConfigTreeBuilder()
+    protected function setupTree(ArrayNodeDefinition $rootNode)
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root($this->extensionName);
-
         $rootNode
             ->children()
                 ->arrayNode('mapping')
@@ -58,7 +52,5 @@ class Configuration extends AbstractConfiguration implements ConfigurationInterf
                     ->end()
                 ->end()
             ->end();
-
-        return $treeBuilder;
     }
 }

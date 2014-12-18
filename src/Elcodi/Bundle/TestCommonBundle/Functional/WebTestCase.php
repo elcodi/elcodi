@@ -70,7 +70,11 @@ abstract class WebTestCase extends BaseWebTestCase
 
         } catch (Exception $e) {
 
-            throw new RuntimeException(sprintf('Unable to start the application: %s', $e->getMessage()));
+            throw new RuntimeException(
+                sprintf('Unable to start the application: %s', $e->getMessage()),
+                $e->getCode(),
+                $e
+            );
         }
 
         $this->createSchema();
@@ -81,12 +85,14 @@ abstract class WebTestCase extends BaseWebTestCase
      */
     public function tearDown()
     {
-        static::$application->run(new ArrayInput(array(
-            'command'          => 'doctrine:database:drop',
-            '--no-interaction' => true,
-            '--force'          => true,
-            '--quiet'          => true,
-        )));
+        if (static::$application) {
+            static::$application->run(new ArrayInput(array(
+                'command'          => 'doctrine:database:drop',
+                '--no-interaction' => true,
+                '--force'          => true,
+                '--quiet'          => true,
+            )));
+        }
     }
 
     /**

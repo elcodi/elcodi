@@ -16,7 +16,7 @@
 
 namespace Elcodi\Bundle\ConfigurationBundle\DependencyInjection;
 
-use Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
@@ -29,15 +29,12 @@ use Elcodi\Component\Configuration\Adapter\DoctrineConfigurationProvider;
 class Configuration extends AbstractConfiguration implements ConfigurationInterface
 {
     /**
-     * Generates the configuration tree builder.
+     * Configure the root node
      *
-     * @return TreeBuilder The tree builder
+     * @param ArrayNodeDefinition $rootNode
      */
-    public function getConfigTreeBuilder()
+    protected function setupTree(ArrayNodeDefinition $rootNode)
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root($this->extensionName);
-
         $rootNode
             ->children()
                 ->arrayNode('mapping')
@@ -61,14 +58,12 @@ class Configuration extends AbstractConfiguration implements ConfigurationInterf
                     ->enumNode('provider')
                         ->values([
                             DoctrineConfigurationProvider::ADAPTER_NAME,
-                            DoctrineCacheConfigurationProvider::ADAPTER_NAME
+                            DoctrineCacheConfigurationProvider::ADAPTER_NAME,
                         ])
                         ->defaultValue(DoctrineConfigurationProvider::ADAPTER_NAME)
                     ->end()
                 ->end()
             ->end()
         ->end();
-
-        return $treeBuilder;
     }
 }

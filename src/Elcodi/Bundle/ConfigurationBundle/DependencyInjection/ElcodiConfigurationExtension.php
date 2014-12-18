@@ -17,7 +17,6 @@
 namespace Elcodi\Bundle\ConfigurationBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
@@ -61,19 +60,6 @@ class ElcodiConfigurationExtension extends AbstractExtension implements Entities
     protected function getConfigurationInstance()
     {
         return new Configuration(static::EXTENSION_NAME);
-    }
-
-    /**
-     * Returns extension configuration
-     *
-     * @param array            $config    An array of configuration values
-     * @param ContainerBuilder $container A ContainerBuilder instance
-     *
-     * @return ConfigurationInterface|null The configuration or null
-     */
-    public function getConfiguration(array $config, ContainerBuilder $container)
-    {
-        return $this->getConfigurationInstance();
     }
 
     /**

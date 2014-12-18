@@ -150,12 +150,12 @@ class ElcodiPageExtension extends AbstractExtension implements EntitiesOverridab
     /**
      * Post load implementation
      *
-     * @param ContainerBuilder $container A ContainerBuilder instance
      * @param array            $config    Parsed configuration
+     * @param ContainerBuilder $container A ContainerBuilder instance
      */
-    public function postLoad(ContainerBuilder $container, array $config = array())
+    protected function postLoad(array $config, ContainerBuilder $container)
     {
-        parent::postLoad($container, $config);
+        parent::postLoad($config, $container);
 
         if ($config['routing']['enabled']) {
             $loader_id = $config['routing']['loader'];

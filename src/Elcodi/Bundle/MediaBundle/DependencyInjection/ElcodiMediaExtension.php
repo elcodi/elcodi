@@ -134,8 +134,10 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
      * @param ContainerBuilder $container A ContainerBuilder instance
      * @param array            $config    Parsed configuration
      */
-    public function postLoad(ContainerBuilder $container, array $config = array())
+    protected function postLoad(array $config, ContainerBuilder $container)
     {
+        parent::postLoad($config, $container);
+
         $container->setAlias(
             'elcodi.core.media.resize.default',
             'elcodi.core.media.resize.' . $container->getParameter('elcodi.core.media.image_resize_engine')
