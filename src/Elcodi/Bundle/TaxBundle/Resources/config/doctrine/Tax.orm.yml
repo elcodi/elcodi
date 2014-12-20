@@ -28,6 +28,7 @@ Elcodi\Component\Tax\Entity\Tax:
     manyToOne:
         taxGroup:
             targetEntity: Elcodi\Component\Tax\Entity\Interfaces\TaxGroupInterface
+            inversedBy: taxes
             joinColumn:
                 name: tax_group_id
                 referencedColumnName: id
