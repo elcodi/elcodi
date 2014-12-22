@@ -1,0 +1,9 @@
+services:
+
+    #
+    # Services
+    #
+    elcodi.core.plugin.hook_system.adapter.event_dispatcher:
+        class: %elcodi.core.plugin.hook_system.adapter.event_dispatcher.class%
+        arguments:
+            - @event_dispatcher

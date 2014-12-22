@@ -1,0 +1,11 @@
+parameters:
+
+    #
+    # Services
+    #
+    elcodi.core.plugin.hook_system.adapter.event_dispatcher.class: Elcodi\Component\Plugin\Adapter\EventDispatcher\HookSystemAdapter
+
+    #
+    # Twig extensions
+    #
+    elcodi.core.plugin.twig_extension.hook.class: Elcodi\Bundle\PluginBundle\Twig\HookExtension
