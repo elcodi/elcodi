@@ -11,6 +11,7 @@ parameters:
     elcodi.core.media.resize.imagemagick.class: Elcodi\Component\Media\Adapter\Resizer\ImageMagickResizeAdapter
     elcodi.core.media.service.image_manager.class: Elcodi\Component\Media\Services\ImageManager
     elcodi.core.media.service.file_manager.class: Elcodi\Component\Media\Services\FileManager
+    elcodi.core.media.service.image_uploader.class: Elcodi\Component\Media\Services\ImageUploader
 
     #
     # Controllers

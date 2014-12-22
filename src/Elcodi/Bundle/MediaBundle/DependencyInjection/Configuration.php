@@ -73,7 +73,7 @@ class Configuration extends AbstractConfiguration
                             ->addDefaultsIfNotSet()
                             ->children()
                                 ->scalarNode('field_name')
-                                    ->defaultValue('image')
+                                    ->defaultValue('file')
                                 ->end()
                                 ->scalarNode('controller_route_name')
                                     ->defaultValue('elcodi_media_image_upload')

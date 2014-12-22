@@ -65,12 +65,13 @@ class ImageUploadControllerTest extends WebTestCase
             'POST',
             $this->getParameter('elcodi.core.media.image_upload_controller_route'),
             [],
-            ['image' => $image]
+            ['file' => $image]
         );
 
         $response = $client->getResponse();
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertEquals(['status' => 'ok'], json_decode($response->getContent(), true));
+        $content = json_decode($response->getContent(), true);
+        $this->assertEquals('ok', $content['status']);
 
         /**
          * @var FileInterface $image
