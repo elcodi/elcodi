@@ -6,4 +6,5 @@ services:
     elcodi.core.page.controller.page:
         class: %elcodi.core.page.controller.page.class%
         arguments:
-            - @elcodi.core.page.repository.page
+            page_repository: @elcodi.repository.page
+            request_stack: @request_stack

@@ -13,9 +13,9 @@ parameters:
     #
     # Controllers
     #
-    elcodi.core.page.controller.page.class: Elcodi\Bundle\PageBundle\Controller\PageController
+    elcodi.core.page.controller.page.class: Elcodi\Component\Page\Controller\PageController
 
     #
     # Loaders
     #
-    elcodi.core.page.router.simple_loader.class: Elcodi\Bundle\PageBundle\Router\PageRouterSimpleLoader
+    elcodi.core.page.router.simple_loader.class: Elcodi\Component\Page\Router\PageRouterSimpleLoader
