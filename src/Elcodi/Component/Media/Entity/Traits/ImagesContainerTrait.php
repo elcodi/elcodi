@@ -39,11 +39,6 @@ trait ImagesContainerTrait
     {
         $this->images->add($image);
 
-        if (empty($this->principalImage)) {
-
-            $this->setPrincipalImage($image);
-        }
-
         return $this;
     }
 

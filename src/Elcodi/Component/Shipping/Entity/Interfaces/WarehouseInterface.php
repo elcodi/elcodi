@@ -17,6 +17,7 @@
 namespace Elcodi\Component\Shipping\Entity\Interfaces;
 
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
+use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 
 /**
  * Interface WarehouseInterface

@@ -20,7 +20,7 @@ use DateTime;
 
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\User\ElcodiUserProperties;
-use Elcodi\Component\User\Entity\Customer;
+use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
 
 /**
  * Class AdminUserFactory
@@ -32,20 +32,20 @@ class AdminUserFactory extends AbstractFactory
      *
      * This method must return always an empty instance
      *
-     * @return Customer Empty entity
+     * @return AdminUserInterface Empty entity
      */
     public function create()
     {
         /**
-         * @var Customer $customer
+         * @var AdminUserInterface $adminUser
          */
         $classNamespace = $this->getEntityNamespace();
-        $customer = new $classNamespace();
-        $customer
+        $adminUser = new $classNamespace();
+        $adminUser
             ->setGender(ElcodiUserProperties::GENDER_UNKNOWN)
             ->setEnabled(true)
             ->setCreatedAt(new DateTime());
 
-        return $customer;
+        return $adminUser;
     }
 }

@@ -56,6 +56,13 @@ class CachedEntityTranslationProvider implements EntityTranslationProviderInterf
     protected $cachePrefix;
 
     /**
+     * @var array
+     *
+     * Translations to be flushed
+     */
+    protected $translationsToBeFlushed;
+
+    /**
      * Construct method
      *
      * @param EntityTranslationProviderInterface $entityTranslationProvider   Translation Provider

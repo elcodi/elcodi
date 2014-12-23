@@ -130,7 +130,7 @@ class Order implements OrderInterface
      *
      * @param CustomerInterface $customer Customer
      *
-     * @return Order Self object
+     * @return $this self Object
      */
     public function setCustomer(CustomerInterface $customer)
     {
@@ -154,7 +154,7 @@ class Order implements OrderInterface
      *
      * @param CartInterface $cart Cart
      *
-     * @return Order Self object
+     * @return $this self Object
      */
     public function setCart(CartInterface $cart)
     {
@@ -166,7 +166,7 @@ class Order implements OrderInterface
     /**
      * Get cart
      *
-     * @return Cart
+     * @return CartInterface Cart
      */
     public function getCart()
     {
@@ -270,7 +270,7 @@ class Order implements OrderInterface
     /**
      * Gets the Coupon amount with tax
      *
-     * @return Money
+     * @return MoneyInterface Coupon amount
      */
     public function getCouponAmount()
     {

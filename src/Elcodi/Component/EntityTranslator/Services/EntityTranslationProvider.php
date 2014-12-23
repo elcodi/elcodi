@@ -115,7 +115,7 @@ class EntityTranslationProvider implements EntityTranslationProviderInterface
      * @param string $translationValue Translated value
      * @param string $locale           Locale
      *
-     * @return string Value fetched
+     * @return $this self Object
      */
     public function setTranslation(
         $entityType,

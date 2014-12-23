@@ -43,7 +43,7 @@ class BannerZone extends AbstractEntity implements BannerZoneInterface
     protected $code;
 
     /**
-     * @var Collection
+     * @var LanguageInterface
      *
      * Language
      */
@@ -133,7 +133,7 @@ class BannerZone extends AbstractEntity implements BannerZoneInterface
     }
 
     /**
-     * Get shops
+     * Get Language
      *
      * @return LanguageInterface Language
      */

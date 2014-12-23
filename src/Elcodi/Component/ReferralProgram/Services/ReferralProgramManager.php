@@ -110,7 +110,7 @@ class ReferralProgramManager
      *
      * InvitationBag factory
      */
-    protected $invitationsBagFactory;
+    protected $invitationBagFactory;
 
     /**
      * @var boolean

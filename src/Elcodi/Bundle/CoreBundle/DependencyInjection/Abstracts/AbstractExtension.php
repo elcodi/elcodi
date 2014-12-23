@@ -31,15 +31,29 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableE
  * Class AbstractExtension
  */
 abstract class AbstractExtension
-    implements ExtensionInterface, ConfigurationExtensionInterface, PrependExtensionInterface
+    implements
+    ExtensionInterface,
+    ConfigurationExtensionInterface,
+    PrependExtensionInterface
 {
     /**
-     * {@inheritdoc}
+     * Returns the recommended alias to use in XML.
+     *
+     * This alias is also the mandatory prefix to use when using YAML.
+     *
+     * @return string The alias
+     *
+     * @api
      */
     abstract public function getAlias();
 
     /**
-     * {@inheritdoc}
+     * Returns extension configuration
+     *
+     * @param array            $config    An array of configuration values
+     * @param ContainerBuilder $container A ContainerBuilder instance
+     *
+     * @return ConfigurationInterface|null The configuration or null
      */
     public function getConfiguration(array $config, ContainerBuilder $container)
     {
@@ -52,7 +66,14 @@ abstract class AbstractExtension
     }
 
     /**
-     * {@inheritdoc}
+     * Loads a specific configuration.
+     *
+     * @param array            $config    An array of configuration values
+     * @param ContainerBuilder $container A ContainerBuilder instance
+     *
+     * @throws \InvalidArgumentException When provided tag is not defined in this extension
+     *
+     * @api
      */
     public function load(array $config, ContainerBuilder $container)
     {
@@ -73,7 +94,9 @@ abstract class AbstractExtension
     }
 
     /**
-     * {@inheritdoc}
+     * Allow an extension to prepend the extension configurations.
+     *
+     * @param ContainerBuilder $container
      */
     public function prepend(ContainerBuilder $container)
     {
@@ -97,7 +120,11 @@ abstract class AbstractExtension
     }
 
     /**
-     * {@inheritdoc}
+     * Returns the namespace to be used for this extension (XML namespace).
+     *
+     * @return string The XML namespace
+     *
+     * @api
      */
     public function getNamespace()
     {
@@ -105,7 +132,11 @@ abstract class AbstractExtension
     }
 
     /**
-     * {@inheritdoc}
+     * Returns the base path for the XSD files.
+     *
+     * @return string The XSD base path
+     *
+     * @api
      */
     public function getXsdValidationBasePath()
     {
@@ -187,10 +218,10 @@ abstract class AbstractExtension
     }
 
     /**
-     * Hook after prepending configuration.
+     * Hook after pre-pending configuration.
      *
-     * @param array            $config
-     * @param ContainerBuilder $container
+     * @param array            $config    Configuration
+     * @param ContainerBuilder $container Container
      */
     protected function preLoad(array $config, ContainerBuilder $container)
     {
@@ -198,10 +229,10 @@ abstract class AbstractExtension
     }
 
     /**
-     * Hook after load the full container.
+     * Hook after load the full container
      *
-     * @param array            $config
-     * @param ContainerBuilder $container
+     * @param array            $config    Configuration
+     * @param ContainerBuilder $container Container
      */
     protected function postLoad(array $config, ContainerBuilder $container)
     {
@@ -209,10 +240,12 @@ abstract class AbstractExtension
     }
 
     /**
-     * @param ConfigurationInterface $configuration
-     * @param array                  $configs
+     * Process configuration
      *
-     * @return array
+     * @param ConfigurationInterface $configuration Configuration object
+     * @param array                  $configs       Configuration stack
+     *
+     * @return array configuration processed
      */
     protected function processConfiguration(ConfigurationInterface $configuration, array $configs)
     {
@@ -222,8 +255,10 @@ abstract class AbstractExtension
     }
 
     /**
-     * @param array            $config
-     * @param ContainerBuilder $container
+     * Apply parametrized values
+     *
+     * @param array            $config    Configuration
+     * @param ContainerBuilder $container Container
      */
     protected function applyParametrizedValues(array $config, ContainerBuilder $container)
     {
@@ -238,8 +273,8 @@ abstract class AbstractExtension
     /**
      * Load multiple files
      *
-     * @param array            $configFiles
-     * @param ContainerBuilder $container
+     * @param array            $configFiles Config files
+     * @param ContainerBuilder $container   Container
      */
     protected function loadFiles(array $configFiles, ContainerBuilder $container)
     {

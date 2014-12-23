@@ -27,7 +27,7 @@ use Elcodi\Component\ReferralProgram\Entity\ReferralLine;
 class ReferralProgramInvitationEvent extends Event
 {
     /**
-     * @var ReferralLine
+     * @var ReferralLineInterface
      *
      * referralLine
      */
@@ -44,7 +44,10 @@ class ReferralProgramInvitationEvent extends Event
      * @param ReferralLineInterface $referralLine Referral line
      * @param string                $referralLink Referral link
      */
-    public function __construct(ReferralLineInterface $referralLine, $referralLink)
+    public function __construct(
+        ReferralLineInterface $referralLine,
+        $referralLink
+    )
     {
         $this->referralLine = $referralLine;
         $this->referralLink = $referralLink;

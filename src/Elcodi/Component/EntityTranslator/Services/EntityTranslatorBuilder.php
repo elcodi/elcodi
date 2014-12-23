@@ -58,7 +58,7 @@ class EntityTranslatorBuilder
     protected $entityTranslatorFactory;
 
     /**
-     * @var EntityTranslationProvider
+     * @var EntityTranslationProviderInterface
      *
      * Translation Provider
      */
@@ -77,7 +77,7 @@ class EntityTranslatorBuilder
         array $configuration
     )
     {
-        $this->translationProvider = $entityTranslationProvider;
+        $this->entityTranslationProvider = $entityTranslationProvider;
         $this->entityTranslatorFactory = $entityTranslatorFactory;
         $this->configuration = $configuration;
     }
@@ -198,7 +198,7 @@ class EntityTranslatorBuilder
         return $this
             ->entityTranslatorFactory
             ->create(
-                $this->translationProvider,
+                $this->entityTranslationProvider,
                 $this->configuration
             );
     }

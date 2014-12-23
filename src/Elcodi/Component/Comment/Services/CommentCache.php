@@ -40,7 +40,7 @@ class CommentCache extends AbstractCacheWrapper
     protected $voteManager;
 
     /**
-     * @var array
+     * @var array|null
      *
      * Comment tree
      */

@@ -47,11 +47,25 @@ class CurrencyExchangeRatesPopulator
     protected $managerRegistry;
 
     /**
+     * @var CurrencyRepository
+     *
+     * Currency repository
+     */
+    protected $currencyRepository;
+
+    /**
      * @var CurrencyExchangeRateRepository
      *
      * CurrencyExchangeRate repository
      */
     protected $currencyExchangeRateRepository;
+
+    /**
+     * @var CurrencyExchangeRateFactory
+     *
+     * CurrencyExchangeRate factory
+     */
+    protected $currencyExchangeRateFactory;
 
     /**
      * @var CurrencyExchangeRatesProvider
