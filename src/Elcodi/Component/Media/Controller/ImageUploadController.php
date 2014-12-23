@@ -16,15 +16,14 @@
 
 namespace Elcodi\Component\Media\Controller;
 
-use Doctrine\Common\Persistence\ObjectManager;
+use Exception;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\RouterInterface;
 
-use Elcodi\Component\Media\Exception\InvalidImageException;
-use Elcodi\Component\Media\Services\FileManager;
-use Elcodi\Component\Media\Services\ImageManager;
+use Elcodi\Component\Media\Services\ImageUploader;
 
 /**
  * Class ImageUploadController
@@ -39,25 +38,18 @@ class ImageUploadController
     protected $requestStack;
 
     /**
-     * @var ObjectManager
+     * @var ImageUploader
      *
-     * Image Object manager
+     * Image uploader
      */
-    protected $imageObjectManager;
+    protected $imageUploader;
 
     /**
-     * @var ImageManager
+     * @var RouterInterface
      *
-     * Image Manager
+     * Router
      */
-    protected $imageManager;
-
-    /**
-     * @var FileManager
-     *
-     * File Manager
-     */
-    protected $fileManager;
+    protected $router;
 
     /**
      * @var string
@@ -67,33 +59,50 @@ class ImageUploadController
     protected $uploadFieldName;
 
     /**
-     * Construct method
+     * @var string
      *
-     * @param RequestStack  $requestStack       Request Stack
-     * @param ObjectManager $imageObjectManager Image Object Manager
-     * @param FileManager   $fileManager        File Manager
-     * @param ImageManager  $imageManager       Image Manager
-     * @param string        $uploadFieldName    Field name when uploading
+     * View image url name
+     */
+    protected $viewImageUrlName;
+
+    /**
+     * @var string
+     *
+     * Resize image url name
+     */
+    protected $resizeImageUrlName;
+
+    /**
+     * Image uploader
+     *
+     * @param RequestStack    $requestStack       Request stack
+     * @param ImageUploader   $imageUploader      Image uploader
+     * @param RouterInterface $router             Router
+     * @param string          $uploadFieldName    Field name when uploading
+     * @param string          $viewImageUrlName   View image url name
+     * @param string          $resizeImageUrlName Resize image url name
      */
     public function __construct(
         RequestStack $requestStack,
-        ObjectManager $imageObjectManager,
-        FileManager $fileManager,
-        ImageManager $imageManager,
-        $uploadFieldName
+        ImageUploader $imageUploader,
+        RouterInterface $router,
+        $uploadFieldName,
+        $viewImageUrlName,
+        $resizeImageUrlName
     )
     {
         $this->requestStack = $requestStack;
-        $this->imageObjectManager = $imageObjectManager;
-        $this->fileManager = $fileManager;
-        $this->imageManager = $imageManager;
+        $this->imageUploader = $imageUploader;
+        $this->router = $router;
         $this->uploadFieldName = $uploadFieldName;
+        $this->viewImageUrlName = $viewImageUrlName;
+        $this->resizeImageUrlName = $resizeImageUrlName;
     }
 
     /**
      * Dynamic upload action
      *
-     * @return Response
+     * @return JsonResponse Upload response
      */
     public function uploadAction()
     {
@@ -108,26 +117,49 @@ class ImageUploadController
             ->files
             ->get($this->uploadFieldName);
 
-        try {
-            $image = $this->imageManager->createImage($file);
-
-        } catch (InvalidImageException $exception) {
+        if (!($file instanceof UploadedFile)) {
             return new JsonResponse([
-                'status' => 'ko',
+                'status'   => 'ko',
+                'response' => [
+                    'message' => 'Image not found',
+                ],
             ]);
         }
 
-        $this->imageObjectManager->persist($image);
-        $this->imageObjectManager->flush($image);
+        try {
+            $image = $this
+                ->imageUploader
+                ->uploadImage($file);
 
-        $this->fileManager->uploadFile(
-            $image,
-            file_get_contents($file->getRealPath()),
-            true
-        );
+            $routes = $this
+                ->router
+                ->getRouteCollection();
 
-        return new JsonResponse([
-            'status' => 'ok',
-        ]);
+            $response = [
+                'status'   => 'ok',
+                'response' => [
+                    'id'     => $image->getId(),
+                    'routes' => [
+                        'view'   => $routes
+                            ->get($this->viewImageUrlName)
+                            ->getPath(),
+                        'resize' => $routes
+                            ->get($this->resizeImageUrlName)
+                            ->getPath(),
+                    ],
+                ]
+            ];
+
+        } catch (Exception $exception) {
+
+            $response = [
+                'status'   => 'ko',
+                'response' => [
+                    'message' => $exception->getMessage(),
+                ]
+            ];
+        }
+
+        return new JsonResponse($response);
     }
 }

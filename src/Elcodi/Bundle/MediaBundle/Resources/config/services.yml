@@ -22,6 +22,16 @@ services:
     elcodi.file_manager:
         alias: elcodi.core.media.service.file_manager
 
+    elcodi.core.media.service.image_uploader:
+        class: %elcodi.core.media.service.image_uploader.class%
+        arguments:
+            image_object_manager: @elcodi.object_manager.image
+            file_manager: @elcodi.core.media.service.file_manager
+            image_manager: @elcodi.core.media.service.image_manager
+
+    elcodi.image_uploader:
+        alias: elcodi.core.media.service.image_uploader
+
     #
     # Resize
     #

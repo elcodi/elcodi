@@ -64,7 +64,7 @@ class ImageResizeControllerTest extends WebTestCase
             'POST',
             $this->getParameter('elcodi.core.media.image_upload_controller_route'),
             [],
-            ['image' => $image]
+            ['file' => $image]
         );
 
         $client->request(
