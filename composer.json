@@ -106,6 +106,7 @@
     "suggest": {
         "symfony/twig-bundle": "Required if using Twig extensions",
         "symfony/form": "Required if using Form features",
+        "symfony/swiftmailer-bundle": "Required if using Mailer",
         "guzzle/http": "Required for OpenExchangeRates adapter"
     },
     "autoload": {
