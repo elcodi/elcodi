@@ -19,6 +19,8 @@ namespace Elcodi\Bundle\BambooBundle;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+use Elcodi\Bundle\BambooBundle\DependencyInjection\ElcodiBambooExtension;
+
 /**
  * ElcodiBambooBundle Bundle
  */
@@ -31,6 +33,6 @@ class ElcodiBambooBundle extends Bundle
      */
     public function getContainerExtension()
     {
-        return null;
+        return new ElcodiBambooExtension();
     }
 }

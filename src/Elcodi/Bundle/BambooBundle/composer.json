@@ -27,6 +27,7 @@
         "symfony/http-kernel": "~2.6",
         "symfony/config": "~2.6",
         "symfony/dependency-injection": "~2.6",
+        "symfony/swiftmailer-bundle": "~2.3",
         "mmoreram/simple-doctrine-mapping": "~0.1",
 
         "elcodi/core-bundle": "~0.4.0"
