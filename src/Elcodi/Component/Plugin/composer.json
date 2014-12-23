@@ -1,0 +1,38 @@
+{
+    "name": "elcodi/plugin-bundle",
+    "description": "Elcodi Plugin Bundle",
+    "keywords": ["elcodi", "plugin", "ecommerce"],
+    "homepage": "https://github.com/elcodi/PluginBundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "Elcodi Community",
+            "homepage": "https://github.com/elcodi/Plugin/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\Component\\Plugin\\": ""
+        }
+    },
+    "suggest": {
+        "symfony/dependency-injection": "For EventDispatcher HookSystem adapter"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.5-dev"
+        }
+    }
+}
