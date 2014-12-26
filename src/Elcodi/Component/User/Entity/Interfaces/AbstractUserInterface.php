@@ -19,10 +19,13 @@ namespace Elcodi\Component\User\Entity\Interfaces;
 use DateTime;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
+use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
+
 /**
  * Class AbstractUserInterface
  */
-interface AbstractUserInterface extends UserInterface
+interface AbstractUserInterface extends UserInterface, DateTimeInterface, EnabledInterface
 {
     /**
      * Set recovery hash

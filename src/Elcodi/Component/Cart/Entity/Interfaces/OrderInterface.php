@@ -57,7 +57,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
     /**
      * Get cart
      *
-     * @return $this self Object
+     * @return CartInterface Cart
      */
     public function getCart();
 

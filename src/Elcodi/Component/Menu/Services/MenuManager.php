@@ -50,6 +50,13 @@ class MenuManager extends AbstractCacheWrapper
     protected $encoder;
 
     /**
+     * @var string
+     *
+     * key
+     */
+    protected $key;
+
+    /**
      * Construct method
      *
      * @param MenuRepository $menuRepository Menu repository

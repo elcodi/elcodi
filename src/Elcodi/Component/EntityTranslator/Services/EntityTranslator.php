@@ -49,7 +49,7 @@ class EntityTranslator implements EntityTranslatorInterface
         array $configuration
     )
     {
-        $this->translationProvider = $entityTranslationProvider;
+        $this->entityTranslationProvider = $entityTranslationProvider;
         $this->configuration = $configuration;
     }
 
@@ -79,7 +79,7 @@ class EntityTranslator implements EntityTranslatorInterface
 
                 $setter = $fieldConfiguration['setter'];
                 $translation = $this
-                    ->translationProvider
+                    ->entityTranslationProvider
                     ->getTranslation(
                         $configuration['alias'],
                         $entityId,
@@ -134,7 +134,7 @@ class EntityTranslator implements EntityTranslatorInterface
                     if (isset($translation[$fieldName])) {
 
                         $this
-                            ->translationProvider
+                            ->entityTranslationProvider
                             ->setTranslation(
                                 $configuration['alias'],
                                 $entityId,
@@ -148,7 +148,7 @@ class EntityTranslator implements EntityTranslatorInterface
         }
 
         $this
-            ->translationProvider
+            ->entityTranslationProvider
             ->flushTranslations();
 
         return $this;

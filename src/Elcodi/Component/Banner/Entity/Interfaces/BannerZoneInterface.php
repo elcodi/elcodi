@@ -67,7 +67,7 @@ interface BannerZoneInterface
     public function setLanguage(LanguageInterface $language = null);
 
     /**
-     * Get shops
+     * Get Language
      *
      * @return LanguageInterface Language
      */

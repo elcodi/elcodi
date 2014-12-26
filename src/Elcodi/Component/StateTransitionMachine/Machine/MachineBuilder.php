@@ -39,6 +39,13 @@ class MachineBuilder
     protected $machineFactory;
 
     /**
+     * @var string
+     *
+     * Machine id
+     */
+    protected $machineId;
+
+    /**
      * @var array
      *
      * Configuration

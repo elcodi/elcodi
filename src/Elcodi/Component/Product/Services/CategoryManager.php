@@ -30,7 +30,7 @@ use Elcodi\Component\Product\Repository\CategoryRepository;
 class CategoryManager extends AbstractCacheWrapper
 {
     /**
-     * @var array
+     * @var array|null
      *
      * Category tree
      */

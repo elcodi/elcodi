@@ -27,7 +27,7 @@ use Elcodi\Component\Language\Entity\Locale;
 class LocaleManager
 {
     /**
-     * @var Locale
+     * @var LocaleInterface
      *
      * Locale
      */
@@ -64,13 +64,13 @@ class LocaleManager
     /**
      * Construct method
      *
-     * @param Locale $locale                        Locale
-     * @param string $encoding                      Encoding
-     * @param array  $localeCountryAssociations     Locale to country associations
-     * @param array  $localeTranslationAssociations Locale to translation assocs
+     * @param LocaleInterface $locale                        Locale
+     * @param string          $encoding                      Encoding
+     * @param array           $localeCountryAssociations     Locale to country associations
+     * @param array           $localeTranslationAssociations Locale to translation assocs
      */
     public function __construct(
-        Locale $locale,
+        LocaleInterface $locale,
         $encoding = null,
         $localeCountryAssociations = null,
         $localeTranslationAssociations = null

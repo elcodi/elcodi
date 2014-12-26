@@ -32,7 +32,7 @@ class ElcodiProviderAdapter implements LocaleProviderAdapterInterface
     const ADAPTER_NAME = 'elcodi';
 
     /**
-     * @var string
+     * @var LocaleInterface
      *
      * Elcodi locale
      */

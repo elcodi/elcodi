@@ -49,7 +49,7 @@ class NullMoney extends StubMoney implements MoneyInterface
     /**
      * Gets the Money amount
      *
-     * @return integer Amount
+     * @return integer Amount 0 valued
      */
     public function getAmount()
     {
@@ -89,7 +89,7 @@ class NullMoney extends StubMoney implements MoneyInterface
      *
      * @param MoneyInterface $other
      *
-     * @return null
+     * @return MoneyInterface Same object than the parameter
      */
     public function compareTo(MoneyInterface $other)
     {
@@ -101,7 +101,7 @@ class NullMoney extends StubMoney implements MoneyInterface
      *
      * @param MoneyInterface $other Other Money
      *
-     * @return $this self Object
+     * @return MoneyInterface Same object than the parameter
      */
     public function add(MoneyInterface $other)
     {
@@ -113,7 +113,7 @@ class NullMoney extends StubMoney implements MoneyInterface
      *
      * @param MoneyInterface $other
      *
-     * @return $this self Object
+     * @return MoneyInterface Same object than the parameter
      */
     public function subtract(MoneyInterface $other)
     {
@@ -172,7 +172,7 @@ class NullMoney extends StubMoney implements MoneyInterface
     /**
      * Returns a new instance of a NullMoney object
      *
-     * @return NullMoney
+     * @return NullMoney new self instance
      */
     public static function create()
     {

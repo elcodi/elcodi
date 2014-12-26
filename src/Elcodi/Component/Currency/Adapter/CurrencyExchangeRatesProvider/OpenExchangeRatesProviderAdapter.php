@@ -70,7 +70,7 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
      *
      * @param Client $client                 Guzzle client for requests
      * @param string $openExchangeRatesAppId the app_id for OpenExchangeRates
-     * @param array  $endPoint               Endpoint
+     * @param string $endPoint               Endpoint
      * @param string $baseCurrency           Base currency
      */
     public function __construct(
@@ -144,7 +144,7 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
     {
         $request = $this->client->createRequest(
             'GET',
-            $this->endPoint. '/currencies.json',
+            $this->endPoint . '/currencies.json',
             ['query' => ['app_id' => $this->appId]]
         );
 
