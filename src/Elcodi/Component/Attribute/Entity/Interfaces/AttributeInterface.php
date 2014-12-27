@@ -20,6 +20,7 @@ use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
  * Interface AttributeInterface
@@ -27,7 +28,11 @@ use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
  * Attributes are a key-value structure used to describe
  * product features or options.
  */
-interface AttributeInterface extends EnabledInterface, DateTimeInterface
+interface AttributeInterface
+    extends
+    IdentifiableInterface,
+    EnabledInterface,
+    DateTimeInterface
 {
     /**
      * Sets attribute name

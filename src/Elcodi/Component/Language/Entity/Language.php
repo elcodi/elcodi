@@ -16,16 +16,18 @@
 
 namespace Elcodi\Component\Language\Entity;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 
 /**
  * Language
  */
-class Language extends AbstractEntity implements LanguageInterface
+class Language implements LanguageInterface
 {
-    use EnabledTrait;
+    use
+        IdentifiableTrait,
+        EnabledTrait;
 
     /**
      * @var string

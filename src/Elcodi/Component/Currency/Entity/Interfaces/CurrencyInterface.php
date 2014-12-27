@@ -16,10 +16,18 @@
 
 namespace Elcodi\Component\Currency\Entity\Interfaces;
 
+use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
+use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
+
 /**
  * Interface CurrencyInterface
  */
 interface CurrencyInterface
+    extends
+    IdentifiableInterface,
+    DateTimeInterface,
+    EnabledInterface
 {
     /**
      * Get currency iso

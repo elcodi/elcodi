@@ -400,7 +400,10 @@ class CartManager
             /**
              * @var CartLineInterface $cartLine
              */
-            if ($cartLine->getPurchasable()->getId() == $purchasable->getId()) {
+            if (
+                (get_class($cartLine->getPurchasable()) === get_class($purchasable)) &&
+                ($cartLine->getPurchasable()->getId() == $purchasable->getId())
+            ) {
 
                 /**
                  * Product already in the Cart, increase quantity

@@ -18,15 +18,17 @@ namespace Elcodi\Component\ReferralProgram\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\ReferralProgram\Entity\Interfaces\ReferralHashInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
  * Class ReferralHash
  */
-class ReferralHash extends AbstractEntity implements ReferralHashInterface
+class ReferralHash implements ReferralHashInterface
 {
+    use IdentifiableTrait;
+
     /**
      * @var CustomerInterface
      *

@@ -16,9 +16,9 @@
 
 namespace Elcodi\Component\ReferralProgram\Entity;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\ReferralProgram\Entity\Interfaces\ReferralHashInterface;
 use Elcodi\Component\ReferralProgram\Entity\Interfaces\ReferralLineInterface;
@@ -29,9 +29,13 @@ use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 /**
  * Class ReferralLine
  */
-class ReferralLine extends AbstractEntity implements ReferralLineInterface
+class ReferralLine implements ReferralLineInterface
 {
-    use EnabledTrait, DateTimeTrait, CouponAssignmentTrait;
+    use
+        IdentifiableTrait,
+        EnabledTrait,
+        DateTimeTrait,
+        CouponAssignmentTrait;
 
     /**
      * @var ReferralHashInterface

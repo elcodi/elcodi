@@ -19,11 +19,12 @@ namespace Elcodi\Component\Rule\Entity\Interfaces;
 use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
  * interface AbstractRuleInterface
  */
-interface AbstractRuleInterface extends EnabledInterface
+interface AbstractRuleInterface extends IdentifiableInterface, EnabledInterface
 {
     /**
      * Return all object contained expressions

@@ -16,18 +16,22 @@
 
 namespace Elcodi\Component\Menu\Entity\Menu;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface;
 use Elcodi\Component\Menu\Entity\Menu\Traits\SubnodesTrait;
 
 /**
  * Class Node
  */
-class Node extends AbstractEntity implements NodeInterface
+class Node implements NodeInterface
 {
-    use SubnodesTrait, DateTimeTrait, EnabledTrait;
+    use
+        IdentifiableTrait,
+        SubnodesTrait,
+        DateTimeTrait,
+        EnabledTrait;
 
     /**
      * @var string

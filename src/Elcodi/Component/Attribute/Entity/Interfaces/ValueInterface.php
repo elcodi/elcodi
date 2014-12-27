@@ -18,11 +18,16 @@ namespace Elcodi\Component\Attribute\Entity\Interfaces;
 
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
  * Interface ValueInterface
  */
-interface ValueInterface extends EnabledInterface, DateTimeInterface
+interface ValueInterface
+    extends
+    IdentifiableInterface,
+    EnabledInterface,
+    DateTimeInterface
 {
     /**
      * Sets this value name

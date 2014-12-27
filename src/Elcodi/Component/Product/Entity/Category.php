@@ -18,18 +18,22 @@ namespace Elcodi\Component\Product\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\MetaData\Entity\Traits\MetaDataTrait;
 use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 
 /**
  * Category
  */
-class Category extends AbstractEntity implements CategoryInterface
+class Category implements CategoryInterface
 {
-    use DateTimeTrait, EnabledTrait, MetaDataTrait;
+    use
+        IdentifiableTrait,
+        DateTimeTrait,
+        EnabledTrait,
+        MetaDataTrait;
 
     /**
      * @var string

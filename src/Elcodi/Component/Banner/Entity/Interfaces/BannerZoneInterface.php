@@ -18,12 +18,13 @@ namespace Elcodi\Component\Banner\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 
 /**
  * BannerZoneInterfaceInterface
  */
-interface BannerZoneInterface
+interface BannerZoneInterface extends IdentifiableInterface
 {
     /**
      * Set banner name

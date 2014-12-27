@@ -16,9 +16,9 @@
 
 namespace Elcodi\Component\Newsletter\Entity;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 use Elcodi\Component\Newsletter\Entity\Interfaces\NewsletterSubscriptionInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
@@ -26,9 +26,12 @@ use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 /**
  * NewsletterSubscription
  */
-class NewsletterSubscription extends AbstractEntity implements NewsletterSubscriptionInterface
+class NewsletterSubscription implements NewsletterSubscriptionInterface
 {
-    use DateTimeTrait, EnabledTrait;
+    use
+        IdentifiableTrait,
+        DateTimeTrait,
+        EnabledTrait;
 
     /**
      * @var string

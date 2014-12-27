@@ -18,14 +18,16 @@ namespace Elcodi\Component\CartCoupon\Entity;
 
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\CartCoupon\Entity\Interfaces\CartCouponInterface;
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 
 /**
  * Class CartCoupon
  */
-class CartCoupon extends AbstractEntity implements CartCouponInterface
+class CartCoupon implements CartCouponInterface
 {
+    use IdentifiableTrait;
+
     /**
      * @var CartInterface
      *

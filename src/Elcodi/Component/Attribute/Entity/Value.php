@@ -18,16 +18,19 @@ namespace Elcodi\Component\Attribute\Entity;
 
 use Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface;
 use Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface;
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 
 /**
  * Class Value
  */
-class Value extends AbstractEntity implements ValueInterface
+class Value implements ValueInterface
 {
-    use DateTimeTrait, EnabledTrait;
+    use
+        IdentifiableTrait,
+        DateTimeTrait,
+        EnabledTrait;
 
     /**
      * @var string

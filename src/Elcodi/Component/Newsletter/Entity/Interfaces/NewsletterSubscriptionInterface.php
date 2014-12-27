@@ -18,12 +18,17 @@ namespace Elcodi\Component\Newsletter\Entity\Interfaces;
 
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 
 /**
  * Class NewsletterSubscriptionInterface
  */
-interface NewsletterSubscriptionInterface extends DateTimeInterface, EnabledInterface
+interface NewsletterSubscriptionInterface
+    extends
+    IdentifiableInterface,
+    DateTimeInterface,
+    EnabledInterface
 {
     /**
      * Set email

@@ -20,16 +20,19 @@ use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface;
 use Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface;
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 
 /**
  * Class Attribute
  */
-class Attribute extends AbstractEntity implements AttributeInterface
+class Attribute implements AttributeInterface
 {
-    use DateTimeTrait, EnabledTrait;
+    use
+        IdentifiableTrait,
+        DateTimeTrait,
+        EnabledTrait;
 
     /**
      * @var string

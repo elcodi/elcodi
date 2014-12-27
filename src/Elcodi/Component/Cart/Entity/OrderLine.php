@@ -16,11 +16,12 @@
 
 namespace Elcodi\Component\Cart\Entity;
 
-use Elcodi\Component\Cart\Entity\Abstracts\AbstractLine;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface;
-use Elcodi\Component\Cart\Resolver\DefaultPurchasableResolver;
-use Elcodi\Component\Cart\Resolver\Interfaces\PurchasableResolverInterface;
+use Elcodi\Component\Cart\Entity\Traits\PriceTrait;
+use Elcodi\Component\Cart\Entity\Traits\PurchasableWrapperTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
+use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
 use Elcodi\Component\StateTransitionMachine\Entity\Traits\StateLinesTrait;
 
 /**
@@ -29,16 +30,14 @@ use Elcodi\Component\StateTransitionMachine\Entity\Traits\StateLinesTrait;
  * This entity is just an extension of existant order line with some additional
  * parameters
  */
-class OrderLine extends AbstractLine implements OrderLineInterface
+class OrderLine implements OrderLineInterface
 {
-    use StateLinesTrait;
-
-    /**
-     * @var integer
-     *
-     * Identifier
-     */
-    protected $id;
+    use
+        IdentifiableTrait,
+        PurchasableWrapperTrait,
+        PriceTrait,
+        DimensionsTrait,
+        StateLinesTrait;
 
     /**
      * @var OrderInterface
@@ -46,30 +45,6 @@ class OrderLine extends AbstractLine implements OrderLineInterface
      * Order
      */
     protected $order;
-
-    /**
-     * Get Id
-     *
-     * @return int Id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Sets Id
-     *
-     * @param int $id Id
-     *
-     * @return $this Self object
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 
     /**
      * Set Order
@@ -93,21 +68,5 @@ class OrderLine extends AbstractLine implements OrderLineInterface
     public function getOrder()
     {
         return $this->order;
-    }
-
-    /**
-     * Returns a purchasable resolver
-     *
-     * A purchasable resolver is needed so that classes in the
-     * hierarchy can plug-in specific logic when adding a
-     * Purchasable to an AbstractLine
-     *
-     * Here we will return teh Default resolver
-     *
-     * @return PurchasableResolverInterface
-     */
-    protected function getPurchasableResolver()
-    {
-        return new DefaultPurchasableResolver($this);
     }
 }

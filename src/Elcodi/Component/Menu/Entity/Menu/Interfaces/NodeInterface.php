@@ -18,11 +18,17 @@ namespace Elcodi\Component\Menu\Entity\Menu\Interfaces;
 
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
  * Interface NodeInterface
  */
-interface NodeInterface extends DateTimeInterface, EnabledInterface, SubnodesAwareInterface
+interface NodeInterface
+    extends
+    IdentifiableInterface,
+    DateTimeInterface,
+    EnabledInterface,
+    SubnodesAwareInterface
 {
     /**
      * Sets Name

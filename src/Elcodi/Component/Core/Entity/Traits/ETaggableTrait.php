@@ -16,7 +16,7 @@
 
 namespace Elcodi\Component\Core\Entity\Traits;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
  * trait for entities that can hash their state and return an ETag header
@@ -32,7 +32,7 @@ trait ETaggableTrait
     {
         $sha1Able = '';
 
-        if ($this instanceof AbstractEntity) {
+        if ($this instanceof IdentifiableInterface) {
 
             $sha1Able .= $this->getId();
         } else {

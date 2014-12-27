@@ -407,4 +407,83 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
             [-1, false, 0],
         ];
     }
+
+    /**
+     * Testing that when I add a product with id 1 and a variant with the same
+     * id (1), new variant is added into the cart, instead of incrementing first
+     * mentioned product
+     */
+    public function testAddProductAndVariantSameId()
+    {
+        /**
+         * @var CartEventDispatcher $cartEventDispatcher
+         * @var CartLineEventDispatcher $cartLineEventDispatcher
+         * @var CartFactory         $cartFactory
+         * @var CartLineFactory     $cartLineFactory
+         * @var CartWrapper         $cartWrapper
+         */
+        $cartEventDispatcher = $this->getMock('Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher', [], [], '', false);
+        $cartLineEventDispatcher = $this->getMock('Elcodi\Component\Cart\EventDispatcher\CartLineEventDispatcher', [], [], '', false);
+        $cartFactory = $this->getMock('Elcodi\Component\Cart\Factory\CartFactory', ['create']);
+        $cartLineFactory = $this->getMock('Elcodi\Component\Cart\Factory\CartLineFactory', ['create']);
+
+        $cartLineFactory
+            ->expects($this->any())
+            ->method('create')
+            ->willReturn(new CartLine());
+
+        $cartManager = $this
+            ->getMockBuilder('Elcodi\Component\Cart\Services\CartManager')
+            ->setMethods([
+                'increaseCartLineQuantity'
+            ])
+            ->setConstructorArgs([
+                $cartEventDispatcher,
+                $cartLineEventDispatcher,
+                $cartFactory,
+                $cartLineFactory
+            ])
+            ->getMock();
+
+        $cart = $this->getMock('Elcodi\Component\Cart\Entity\Interfaces\CartInterface');
+        $cartLine = $this->getMock('Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface');
+        $product = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\ProductInterface');
+        $variant = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\VariantInterface');
+
+        $product
+            ->expects($this->any())
+            ->method('getId')
+            ->willReturn(1);
+
+        $variant
+            ->expects($this->any())
+            ->method('getId')
+            ->willReturn(1);
+
+        $variant
+            ->expects($this->any())
+            ->method('getProduct')
+            ->willReturn($this->getMock('Elcodi\Component\Product\Entity\Interfaces\ProductInterface'));
+
+        $cartLine
+            ->expects($this->any())
+            ->method('getPurchasable')
+            ->willReturn($product);
+
+        $cart
+            ->expects($this->any())
+            ->method('getCartLines')
+            ->willReturn(new ArrayCollection(array($cartLine)));
+
+        $cartManager
+            ->expects($this->never())
+            ->method('increaseCartLineQuantity');
+
+        $cartManager
+            ->addProduct(
+                $cart,
+                $variant,
+                1
+            );
+    }
 }
