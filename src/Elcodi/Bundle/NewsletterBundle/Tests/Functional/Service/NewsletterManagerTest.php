@@ -58,7 +58,7 @@ class NewsletterManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.newsletter.service.newsletter_manager';
+        return ['elcodi.core.newsletter.service.newsletter_manager'];
     }
 
     /**

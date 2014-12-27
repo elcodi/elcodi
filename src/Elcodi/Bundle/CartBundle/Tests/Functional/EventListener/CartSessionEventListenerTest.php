@@ -40,6 +40,6 @@ class CartSessionEventListenerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.cart.event_listener.cart_session';
+        return ['elcodi.core.cart.event_listener.cart_session'];
     }
 }

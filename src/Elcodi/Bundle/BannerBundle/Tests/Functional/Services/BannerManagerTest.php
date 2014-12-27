@@ -53,7 +53,7 @@ class BannerManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.banner.service.banner_manager';
+        return ['elcodi.core.banner.service.banner_manager'];
     }
 
     /**

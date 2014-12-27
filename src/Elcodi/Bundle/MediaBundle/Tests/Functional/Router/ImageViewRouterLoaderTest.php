@@ -30,6 +30,6 @@ class ImageViewRouterLoaderTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.media.routes.image_view.loader';
+        return ['elcodi.core.media.routes.image_view.loader'];
     }
 }
