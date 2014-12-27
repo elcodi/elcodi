@@ -51,6 +51,7 @@
         "goodby/csv": "~1.0"
     },
     "replace": {
+        "elcodi/bamboo-bundle": "self.version",
         "elcodi/attribute-bundle": "self.version",
         "elcodi/banner-bundle": "self.version",
         "elcodi/cart-bundle": "self.version",
