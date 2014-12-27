@@ -8,11 +8,11 @@ services:
         factory_service: elcodi.manager_provider
         factory_method: getManagerByEntityNamespace
         arguments:
-            attribute_namespace: %elcodi.core.attribute.entity.attribute.class%
+            entity_namespace: %elcodi.core.attribute.entity.attribute.class%
 
     elcodi.object_manager.attribute_value:
         class: Doctrine\Common\Persistence\ObjectManager
         factory_service: elcodi.manager_provider
         factory_method: getManagerByEntityNamespace
         arguments:
-            value_namespace: %elcodi.core.attribute.entity.attribute_value.class%
+            entity_namespace: %elcodi.core.attribute.entity.attribute_value.class%

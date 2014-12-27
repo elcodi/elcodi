@@ -8,11 +8,11 @@ services:
         factory_service: elcodi.manager_provider
         factory_method: getManagerByEntityNamespace
         arguments:
-            cart_namespace: %elcodi.core.menu.entity.menu.class%
+            entity_namespace: %elcodi.core.menu.entity.menu.class%
 
     elcodi.object_manager.menu_node:
         class: Doctrine\Common\Persistence\ObjectManager
         factory_service: elcodi.manager_provider
         factory_method: getManagerByEntityNamespace
         arguments:
-            cart_namespace: %elcodi.core.menu.entity.menu_node.class%
+            entity_namespace: %elcodi.core.menu.entity.menu_node.class%
