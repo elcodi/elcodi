@@ -35,7 +35,7 @@ class OrderEventListenerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.cart_coupon.event_listener.order';
+        return ['elcodi.core.cart_coupon.event_listener.order'];
     }
 
     /**

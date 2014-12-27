@@ -30,6 +30,6 @@ class UniqIdGeneratorTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.generator.uniqid';
+        return ['elcodi.generator.uniqid'];
     }
 }

@@ -102,11 +102,6 @@ abstract class WebTestCase extends BaseWebTestCase
     {
         $serviceCallableNames = $this->getServiceCallableName();
 
-        if (!is_array($serviceCallableNames)) {
-
-            $serviceCallableNames = array($serviceCallableNames);
-        }
-
         foreach ($serviceCallableNames as $serviceCallableName) {
 
             if ($serviceCallableName) {
@@ -127,7 +122,7 @@ abstract class WebTestCase extends BaseWebTestCase
      */
     public function getServiceCallableName()
     {
-        return null;
+        return [];
     }
 
     /**

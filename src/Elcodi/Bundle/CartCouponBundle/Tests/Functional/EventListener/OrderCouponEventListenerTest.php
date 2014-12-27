@@ -38,7 +38,7 @@ class OrderCouponEventListenerTest
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.core.cart_coupon.event_listener.order_coupon';
+        return ['elcodi.core.cart_coupon.event_listener.order_coupon'];
     }
 
 }

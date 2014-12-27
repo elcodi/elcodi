@@ -27,16 +27,6 @@ use Elcodi\Component\Media\Entity\Interfaces\FileInterface;
 class ImageUploadControllerTest extends WebTestCase
 {
     /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return 'elcodi.core.media.controller.image_upload';
-    }
-
-    /**
      * Schema must be loaded in all test cases
      *
      * @return boolean Load schema
@@ -44,6 +34,16 @@ class ImageUploadControllerTest extends WebTestCase
     protected function loadSchema()
     {
         return true;
+    }
+
+    /**
+     * Returns the callable name of the service
+     *
+     * @return string[] service name
+     */
+    public function getServiceCallableName()
+    {
+        return ['elcodi.core.media.controller.image_upload'];
     }
 
     /**

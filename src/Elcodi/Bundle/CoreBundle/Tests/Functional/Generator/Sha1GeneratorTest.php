@@ -30,6 +30,6 @@ class Sha1GeneratorTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.generator.sha1';
+        return ['elcodi.generator.sha1'];
     }
 }

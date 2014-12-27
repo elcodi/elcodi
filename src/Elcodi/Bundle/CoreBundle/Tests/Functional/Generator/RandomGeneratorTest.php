@@ -30,6 +30,6 @@ class RandomGeneratorTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return 'elcodi.generator.random_string';
+        return ['elcodi.generator.random_string'];
     }
 }
