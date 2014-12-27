@@ -6,6 +6,7 @@ parameters:
     elcodi.container_parameters.class: Symfony\Component\DependencyInjection\ParameterBag\ParameterBag
     elcodi.core.core.service.manager_provider.class: Elcodi\Component\Core\Services\ManagerProvider
     elcodi.core.core.service.repository_provider.class: Elcodi\Component\Core\Services\RepositoryProvider
+    elcodi.core.core.service.mapping_provider.class: Elcodi\Component\Core\Services\MappingProvider
 
     #
     # Generators

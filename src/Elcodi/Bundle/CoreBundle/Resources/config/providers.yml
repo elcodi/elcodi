@@ -25,3 +25,8 @@ services:
 
     elcodi.repository_provider:
         alias: elcodi.core.core.service.repository_provider
+
+    elcodi.mapping_provider:
+        class: %elcodi.core.core.service.mapping_provider.class%
+        arguments:
+            mapping_implementations: %elcodi.mapping_implementations%
