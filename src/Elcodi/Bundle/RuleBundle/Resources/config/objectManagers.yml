@@ -8,18 +8,18 @@ services:
         factory_service: elcodi.manager_provider
         factory_method: getManagerByEntityNamespace
         arguments:
-            cart_namespace: %elcodi.core.rule.entity.rule.class%
+            entity_namespace: %elcodi.core.rule.entity.rule.class%
 
     elcodi.object_manager.rule_group:
         class: Doctrine\Common\Persistence\ObjectManager
         factory_service: elcodi.manager_provider
         factory_method: getManagerByEntityNamespace
         arguments:
-            cart_namespace: %elcodi.core.rule.entity.rule_group.class%
+            entity_namespace: %elcodi.core.rule.entity.rule_group.class%
 
     elcodi.object_manager.expression:
         class: Doctrine\Common\Persistence\ObjectManager
         factory_service: elcodi.manager_provider
         factory_method: getManagerByEntityNamespace
         arguments:
-            cart_namespace: %elcodi.core.rule.entity.expression.class%
+            entity_namespace: %elcodi.core.rule.entity.expression.class%

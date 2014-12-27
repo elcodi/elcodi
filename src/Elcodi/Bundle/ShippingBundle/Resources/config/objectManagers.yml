@@ -8,25 +8,25 @@ services:
         factory_service: elcodi.manager_provider
         factory_method: getManagerByEntityNamespace
         arguments:
-            cart_namespace: %elcodi.core.shipping.entity.carrier_price_range.class%
+            entity_namespace: %elcodi.core.shipping.entity.carrier_price_range.class%
 
     elcodi.object_manager.carrier_weight_range:
         class: Doctrine\Common\Persistence\ObjectManager
         factory_service: elcodi.manager_provider
         factory_method: getManagerByEntityNamespace
         arguments:
-            cart_namespace: %elcodi.core.shipping.entity.carrier_weight_range.class%
+            entity_namespace: %elcodi.core.shipping.entity.carrier_weight_range.class%
 
     elcodi.object_manager.carrier:
         class: Doctrine\Common\Persistence\ObjectManager
         factory_service: elcodi.manager_provider
         factory_method: getManagerByEntityNamespace
         arguments:
-            cart_namespace: %elcodi.core.shipping.entity.carrier.class%
+            entity_namespace: %elcodi.core.shipping.entity.carrier.class%
 
     elcodi.object_manager.warehouse:
         class: Doctrine\Common\Persistence\ObjectManager
         factory_service: elcodi.manager_provider
         factory_method: getManagerByEntityNamespace
         arguments:
-            cart_namespace: %elcodi.core.shipping.entity.warehouse.class%
+            entity_namespace: %elcodi.core.shipping.entity.warehouse.class%
