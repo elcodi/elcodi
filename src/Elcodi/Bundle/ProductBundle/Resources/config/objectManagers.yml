@@ -15,7 +15,7 @@ services:
         factory_service: elcodi.manager_provider
         factory_method: getManagerByEntityNamespace
         arguments:
-            entity_namespace: %elcodi.core.product.entity.variant.class%
+            entity_namespace: %elcodi.core.product.entity.product_variant.class%
 
     elcodi.object_manager.category:
         class: Doctrine\Common\Persistence\ObjectManager

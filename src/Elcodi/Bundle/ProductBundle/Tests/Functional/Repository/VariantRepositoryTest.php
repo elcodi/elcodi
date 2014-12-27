@@ -31,7 +31,7 @@ class VariantRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.repository.variant',
+            'elcodi.repository.product_variant',
         ];
     }
 
@@ -42,7 +42,7 @@ class VariantRepositoryTest extends WebTestCase
     {
         $this->assertInstanceOf(
             'Doctrine\Common\Persistence\ObjectRepository',
-            $this->get('elcodi.repository.variant')
+            $this->get('elcodi.repository.product_variant')
         );
     }
 }

@@ -10,7 +10,7 @@ parameters:
     # Factories
     #
     elcodi.core.product.factory.product.class: Elcodi\Component\Product\Factory\ProductFactory
-    elcodi.core.product.factory.variant.class: Elcodi\Component\Product\Factory\VariantFactory
+    elcodi.core.product.factory.product_variant.class: Elcodi\Component\Product\Factory\VariantFactory
     elcodi.core.product.factory.manufacturer.class: Elcodi\Component\Product\Factory\ManufacturerFactory
     elcodi.core.product.factory.category.class: Elcodi\Component\Product\Factory\CategoryFactory
 

@@ -24,6 +24,7 @@ use Elcodi\Component\Attribute\Entity\Value;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
+use Elcodi\Component\Product\Factory\VariantFactory;
 
 class VariantData extends AbstractFixture implements DependentFixtureInterface
 {
@@ -37,9 +38,13 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
         /**
          * @var ProductInterface  $productWithVariants
          * @var CurrencyInterface $currency
+         * @var VariantFactory    $variantFactory
+         * @var ObjectManager     $variantObjectManager
          */
         $currency = $this->getReference('currency-dollar');
         $productWithVariants = $this->getReference('product-with-variants');
+        $variantFactory = $this->get('elcodi.factory.product_variant');
+        $variantObjectManager = $this->get('elcodi.object_manager.product_variant');
 
         /**
          * @var $optionWhite Value
@@ -55,12 +60,8 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
         /**
          * Variant White-Small
          */
-        $variantWhiteSmall = $this
-            ->container
-            ->get('elcodi.core.product.factory.variant')
-            ->create();
-
-        $variantWhiteSmall
+        $variantWhiteSmall = $variantFactory
+            ->create()
             ->setSku('variant-white-small-sku')
             ->setStock(100)
             ->setProduct($productWithVariants)
@@ -75,18 +76,14 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
 
         $productWithVariants->setPrincipalVariant($variantWhiteSmall);
 
-        $manager->persist($variantWhiteSmall);
+        $variantObjectManager->persist($variantWhiteSmall);
         $this->addReference('variant-white-small', $productWithVariants);
 
         /**
          * Variant White-Large
          */
-        $variantWhiteLarge = $this
-            ->container
-            ->get('elcodi.core.product.factory.variant')
-            ->create();
-
-        $variantWhiteLarge
+        $variantWhiteLarge = $variantFactory
+            ->create()
             ->setSku('variant-white-large-sku')
             ->setStock(100)
             ->setProduct($productWithVariants)
@@ -99,18 +96,14 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
             ->setWeight(155)
             ->setEnabled(true);
 
-        $manager->persist($variantWhiteLarge);
+        $variantObjectManager->persist($variantWhiteLarge);
         $this->addReference('variant-white-large', $productWithVariants);
 
         /**
          * Variant Red-Small
          */
-        $variantRedSmall = $this
-            ->container
-            ->get('elcodi.core.product.factory.variant')
-            ->create();
-
-        $variantRedSmall
+        $variantRedSmall = $variantFactory
+            ->create()
             ->setSku('variant-red-small-sku')
             ->setStock(100)
             ->setProduct($productWithVariants)
@@ -123,18 +116,14 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
             ->setWeight(1000)
             ->setEnabled(true);
 
-        $manager->persist($variantRedSmall);
+        $variantObjectManager->persist($variantRedSmall);
         $this->addReference('variant-red-small', $productWithVariants);
 
         /**
          * Variant Red-Large
          */
-        $variantRedLarge = $this
-            ->container
-            ->get('elcodi.core.product.factory.variant')
-            ->create();
-
-        $variantRedLarge
+        $variantRedLarge = $variantFactory
+            ->create()
             ->setSku('variant-red-large-sku')
             ->setStock(100)
             ->setProduct($productWithVariants)
@@ -147,10 +136,10 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
             ->setWeight(70)
             ->setEnabled(true);
 
-        $manager->persist($variantRedLarge);
+        $variantObjectManager->persist($variantRedLarge);
         $this->addReference('variant-red-large', $productWithVariants);
 
-        $manager->flush();
+        $variantObjectManager->flush();
     }
 
     /**
