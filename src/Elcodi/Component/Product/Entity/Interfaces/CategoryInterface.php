@@ -19,12 +19,17 @@ namespace Elcodi\Component\Product\Entity\Interfaces;
 use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\MetaData\Entity\Interfaces\MetaDataInterface;
 
 /**
  * Class CategoryInterface
  */
-interface CategoryInterface extends MetaDataInterface, EnabledInterface
+interface CategoryInterface
+    extends
+    IdentifiableInterface,
+    MetaDataInterface,
+    EnabledInterface
 {
     /**
      * Set id

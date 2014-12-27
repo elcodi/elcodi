@@ -18,7 +18,7 @@ namespace Elcodi\Component\CartCoupon\Entity;
 
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\CartCoupon\Entity\Interfaces\OrderCouponInterface;
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
@@ -27,8 +27,10 @@ use Elcodi\Component\Currency\Entity\Money;
 /**
  * Class OrderCoupon
  */
-class OrderCoupon extends AbstractEntity implements OrderCouponInterface
+class OrderCoupon implements OrderCouponInterface
 {
+    use IdentifiableTrait;
+
     /**
      * @var OrderInterface
      *

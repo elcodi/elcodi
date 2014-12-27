@@ -18,15 +18,17 @@ namespace Elcodi\Component\Rule\Entity\Abstracts;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 
 /**
  * Class AbstractRule
  */
-abstract class AbstractRule extends AbstractEntity
+abstract class AbstractRule
 {
-    use EnabledTrait;
+    use
+        IdentifiableTrait,
+        EnabledTrait;
 
     /**
      * @var string

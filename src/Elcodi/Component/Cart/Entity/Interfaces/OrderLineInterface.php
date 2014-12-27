@@ -16,16 +16,20 @@
 
 namespace Elcodi\Component\Cart\Entity\Interfaces;
 
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
-use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
-use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
-use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
 use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StatefulInterface;
 
 /**
  * Class OrderLineInterface
  */
-interface OrderLineInterface extends PriceInterface, DimensionableInterface, StatefulInterface
+interface OrderLineInterface
+    extends
+    IdentifiableInterface,
+    PurchasableWrapperInterface,
+    PriceInterface,
+    DimensionableInterface,
+    StatefulInterface
 {
     /**
      * Set Order
@@ -42,70 +46,6 @@ interface OrderLineInterface extends PriceInterface, DimensionableInterface, Sta
      * @return OrderInterface Order
      */
     public function getOrder();
-
-    /**
-     * Set the product
-     *
-     * @param ProductInterface $product Product
-     *
-     * @return $this self Object
-     */
-    public function setProduct(ProductInterface $product);
-
-    /**
-     * Get the product
-     *
-     * @return ProductInterface product attached to this cart line
-     */
-    public function getProduct();
-
-    /**
-     * Returns the product variant
-     *
-     * @return VariantInterface
-     */
-    public function getVariant();
-
-    /**
-     * Sets the product variant
-     *
-     * @param VariantInterface $variant
-     *
-     * @return $this self Object
-     */
-    public function setVariant($variant);
-
-    /**
-     * Sets the Purchasable object on this line
-     *
-     * @param PurchasableInterface $purchasable
-     *
-     * @return OrderLineInterface
-     */
-    public function setPurchasable(PurchasableInterface $purchasable);
-
-    /**
-     * Gets the Purchasable object on this line
-     *
-     * @return PurchasableInterface
-     */
-    public function getPurchasable();
-
-    /**
-     * Set quantity
-     *
-     * @param int $quantity Quantity
-     *
-     * @return $this self Object
-     */
-    public function setQuantity($quantity);
-
-    /**
-     * Get quantity
-     *
-     * @return integer Quantity
-     */
-    public function getQuantity();
 
     /**
      * Set the height

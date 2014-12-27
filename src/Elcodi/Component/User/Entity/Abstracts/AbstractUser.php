@@ -18,18 +18,21 @@ namespace Elcodi\Component\User\Entity\Abstracts;
 
 use DateTime;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 
 /**
  * AbstractUser is the building block for simple User entities,
  * consisting of username, password, email
  */
-abstract class AbstractUser extends AbstractEntity implements AbstractUserInterface
+abstract class AbstractUser implements AbstractUserInterface
 {
-    use DateTimeTrait, EnabledTrait;
+    use
+        IdentifiableTrait,
+        DateTimeTrait,
+        EnabledTrait;
 
     /**
      * @var string

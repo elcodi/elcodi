@@ -16,9 +16,9 @@
 
 namespace Elcodi\Component\Page\Entity;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\MetaData\Entity\Traits\MetaDataTrait;
 use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
 
@@ -30,9 +30,10 @@ use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
  * @author Damien Gavard <damien.gavard@gmail.com>
  * @author Berny Cantos <be@rny.cc>
  */
-class Page extends AbstractEntity implements PageInterface
+class Page implements PageInterface
 {
     use
+        IdentifiableTrait,
         MetaDataTrait,
         DateTimeTrait,
         EnabledTrait;

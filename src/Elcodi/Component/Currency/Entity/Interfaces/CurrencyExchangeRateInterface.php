@@ -16,10 +16,12 @@
 
 namespace Elcodi\Component\Currency\Entity\Interfaces;
 
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
+
 /**
  * Interface CurrencyExchangeRateInterface
  */
-interface CurrencyExchangeRateInterface
+interface CurrencyExchangeRateInterface extends IdentifiableInterface
 {
     /**
      * Set the source Currency

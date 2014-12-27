@@ -16,14 +16,16 @@
 
 namespace Elcodi\Component\Rule\Entity;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Rule\Entity\Interfaces\ExpressionInterface;
 
 /**
  * Class Expression
  */
-class Expression extends AbstractEntity implements ExpressionInterface
+class Expression implements ExpressionInterface
 {
+    use IdentifiableTrait;
+
     /**
      * @var string
      *

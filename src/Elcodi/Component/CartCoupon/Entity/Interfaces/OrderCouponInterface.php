@@ -17,13 +17,14 @@
 namespace Elcodi\Component\CartCoupon\Entity\Interfaces;
 
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 
 /**
  * Class OrderCouponInterface
  */
-interface OrderCouponInterface
+interface OrderCouponInterface extends IdentifiableInterface
 {
     /**
      * Sets Order

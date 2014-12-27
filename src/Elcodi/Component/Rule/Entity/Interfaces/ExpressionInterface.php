@@ -16,10 +16,12 @@
 
 namespace Elcodi\Component\Rule\Entity\Interfaces;
 
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
+
 /**
  * Class ExpressionInterface
  */
-interface ExpressionInterface
+interface ExpressionInterface extends IdentifiableInterface
 {
     /**
      * Sets Expression

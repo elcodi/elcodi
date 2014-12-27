@@ -18,6 +18,7 @@ namespace Elcodi\Component\Coupon\Entity\Interfaces;
 
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Core\Entity\Interfaces\ValidIntervalInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Rule\Entity\Interfaces\RulesAwareInterface;
@@ -27,6 +28,7 @@ use Elcodi\Component\Rule\Entity\Interfaces\RulesAwareInterface;
  */
 interface CouponInterface
     extends
+    IdentifiableInterface,
     DateTimeInterface,
     EnabledInterface,
     ValidIntervalInterface,

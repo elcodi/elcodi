@@ -19,9 +19,9 @@ namespace Elcodi\Component\Product\Entity;
 use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface;
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait;
 use Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
@@ -40,9 +40,10 @@ use Elcodi\Component\Product\Entity\Traits\ProductPriceTrait;
  * A Variant will normally have a different SKU than its parent product,
  * so it can have independent stock and pricing informations.
  */
-class Variant extends AbstractEntity implements VariantInterface
+class Variant implements VariantInterface
 {
     use
+        IdentifiableTrait,
         ProductPriceTrait,
         EnabledTrait,
         DateTimeTrait,

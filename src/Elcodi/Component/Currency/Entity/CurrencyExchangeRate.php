@@ -16,15 +16,17 @@
 
 namespace Elcodi\Component\Currency\Entity;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyExchangeRateInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 
 /**
  * Class CurrencyExchangeRate
  */
-class CurrencyExchangeRate extends AbstractEntity implements CurrencyExchangeRateInterface
+class CurrencyExchangeRate implements CurrencyExchangeRateInterface
 {
+    use IdentifiableTrait;
+
     /**
      * @var CurrencyInterface
      *

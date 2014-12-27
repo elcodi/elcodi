@@ -20,14 +20,16 @@ use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Banner\Entity\Interfaces\BannerInterface;
 use Elcodi\Component\Banner\Entity\Interfaces\BannerZoneInterface;
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 
 /**
  * BannerZone
  */
-class BannerZone extends AbstractEntity implements BannerZoneInterface
+class BannerZone implements BannerZoneInterface
 {
+    use IdentifiableTrait;
+
     /**
      * @var string
      *

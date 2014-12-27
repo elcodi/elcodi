@@ -18,13 +18,20 @@ namespace Elcodi\Component\Product\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
+use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\MetaData\Entity\Interfaces\MetaDataInterface;
 
 /**
  * Class ManufacturerInterface
  */
-interface ManufacturerInterface extends EnabledInterface, MetaDataInterface
+interface ManufacturerInterface
+    extends
+    IdentifiableInterface,
+    DateTimeInterface,
+    EnabledInterface,
+    MetaDataInterface
 {
     /**
      * Set id

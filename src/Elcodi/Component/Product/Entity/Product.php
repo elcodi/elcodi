@@ -19,10 +19,10 @@ namespace Elcodi\Component\Product\Entity;
 use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface;
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Core\Entity\Traits\ETaggableTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait;
 use Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait;
 use Elcodi\Component\MetaData\Entity\Traits\MetaDataTrait;
@@ -36,9 +36,10 @@ use Elcodi\Component\Product\Entity\Traits\ProductPriceTrait;
 /**
  * Product entity
  */
-class Product extends AbstractEntity implements ProductInterface
+class Product implements ProductInterface
 {
     use
+        IdentifiableTrait,
         ProductPriceTrait,
         DateTimeTrait,
         EnabledTrait,

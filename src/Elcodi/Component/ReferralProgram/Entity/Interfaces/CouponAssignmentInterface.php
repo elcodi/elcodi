@@ -16,29 +16,19 @@
 
 namespace Elcodi\Component\ReferralProgram\Entity\Interfaces;
 
-use Doctrine\Common\Collections\Collection;
-
-use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
-use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
-use Elcodi\Component\Core\Entity\Interfaces\ValidIntervalInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 
 /**
- * ReferralRule interface
+ * Interface CouponAssignmentInterface
  */
-interface ReferralRuleInterface
-    extends
-    IdentifiableInterface,
-    ValidIntervalInterface,
-    EnabledInterface,
-    CouponAssignmentInterface
+interface CouponAssignmentInterface
 {
     /**
      * Sets InvitedCoupon
      *
      * @param CouponInterface $invitedCoupon InvitedCoupon
      *
-     * @return ReferralRuleInterface Self object
+     * @return $this self Object
      */
     public function setInvitedCoupon(CouponInterface $invitedCoupon = null);
 
@@ -54,7 +44,7 @@ interface ReferralRuleInterface
      *
      * @param string $invitedType InvitedType
      *
-     * @return ReferralRuleInterface Self object
+     * @return $this self Object
      */
     public function setInvitedType($invitedType);
 
@@ -70,7 +60,7 @@ interface ReferralRuleInterface
      *
      * @param CouponInterface $referrerCoupon ReferrerCoupon
      *
-     * @return ReferralRuleInterface Self object
+     * @return $this self Object
      */
     public function setReferrerCoupon(CouponInterface $referrerCoupon = null);
 
@@ -86,7 +76,7 @@ interface ReferralRuleInterface
      *
      * @param string $referrerType ReferrerType
      *
-     * @return ReferralRuleInterface Self object
+     * @return $this self Object
      */
     public function setReferrerType($referrerType);
 
@@ -96,20 +86,4 @@ interface ReferralRuleInterface
      * @return string ReferrerType
      */
     public function getReferrerType();
-
-    /**
-     * Set ReferralLines
-     *
-     * @param Collection $referralLines Referral Lines
-     *
-     * @return ReferralRuleInterface Self object
-     */
-    public function setReferralLines(Collection $referralLines);
-
-    /**
-     * Get ReferralLines
-     *
-     * @return Collection ReferralLines
-     */
-    public function getReferralLines();
 }

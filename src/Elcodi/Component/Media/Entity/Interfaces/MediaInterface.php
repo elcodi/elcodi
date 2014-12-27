@@ -17,11 +17,17 @@
 namespace Elcodi\Component\Media\Entity\Interfaces;
 
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
+use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
  * Class MediaInterface
  */
-interface MediaInterface extends DateTimeInterface
+interface MediaInterface
+    extends
+    IdentifiableInterface,
+    EnabledInterface,
+    DateTimeInterface
 {
     /**
      * The name of this media, e.g. for managing media documents

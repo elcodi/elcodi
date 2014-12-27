@@ -16,7 +16,9 @@
 
 namespace Elcodi\Component\ReferralProgram\Entity\Interfaces;
 
+use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\ReferralProgram\Entity\ReferralHash;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
@@ -24,7 +26,12 @@ use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 /**
  * ReferralLine interface
  */
-interface ReferralLineInterface extends EnabledInterface
+interface ReferralLineInterface
+    extends
+    IdentifiableInterface,
+    EnabledInterface,
+    DateTimeInterface,
+    CouponAssignmentInterface
 {
     /**
      * Sets ReferralHash

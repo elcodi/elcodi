@@ -16,18 +16,22 @@
 
 namespace Elcodi\Component\Menu\Entity\Menu;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\MenuInterface;
 use Elcodi\Component\Menu\Entity\Menu\Traits\SubnodesTrait;
 
 /**
  * Class Menu
  */
-class Menu extends AbstractEntity implements MenuInterface
+class Menu implements MenuInterface
 {
-    use SubnodesTrait, DateTimeTrait, EnabledTrait;
+    use
+        IdentifiableTrait,
+        SubnodesTrait,
+        DateTimeTrait,
+        EnabledTrait;
 
     /**
      * @var string

@@ -18,8 +18,8 @@ namespace Elcodi\Component\ReferralProgram\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Core\Entity\Traits\ValidIntervalTrait;
 use Elcodi\Component\ReferralProgram\Entity\Interfaces\ReferralRuleInterface;
 use Elcodi\Component\ReferralProgram\Entity\Traits\CouponAssignmentTrait;
@@ -27,9 +27,13 @@ use Elcodi\Component\ReferralProgram\Entity\Traits\CouponAssignmentTrait;
 /**
  * ReferralRule entity
  */
-class ReferralRule extends AbstractEntity implements ReferralRuleInterface
+class ReferralRule implements ReferralRuleInterface
 {
-    use ValidIntervalTrait, EnabledTrait, CouponAssignmentTrait;
+    use
+        IdentifiableTrait,
+        ValidIntervalTrait,
+        EnabledTrait,
+        CouponAssignmentTrait;
 
     /**
      * @var Collection

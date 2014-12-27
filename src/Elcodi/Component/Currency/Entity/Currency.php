@@ -16,17 +16,20 @@
 
 namespace Elcodi\Component\Currency\Entity;
 
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 
 /**
  * Currency
  */
-class Currency extends AbstractEntity implements CurrencyInterface
+class Currency implements CurrencyInterface
 {
-    use DateTimeTrait, EnabledTrait;
+    use
+        IdentifiableTrait,
+        DateTimeTrait,
+        EnabledTrait;
 
     /**
      * @var string

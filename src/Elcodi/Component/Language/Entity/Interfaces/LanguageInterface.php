@@ -17,11 +17,15 @@
 namespace Elcodi\Component\Language\Entity\Interfaces;
 
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
  * Interface LanguageInterface
  */
-interface LanguageInterface extends EnabledInterface
+interface LanguageInterface
+    extends
+    IdentifiableInterface,
+    EnabledInterface
 {
     /**
      * Set language name

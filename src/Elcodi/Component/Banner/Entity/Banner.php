@@ -20,18 +20,22 @@ use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Banner\Entity\Interfaces\BannerInterface;
 use Elcodi\Component\Banner\Entity\Interfaces\BannerZoneInterface;
-use Elcodi\Component\Core\Entity\Abstracts\AbstractEntity;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 use Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait;
 
 /**
  * Banner
  */
-class Banner extends AbstractEntity implements BannerInterface
+class Banner implements BannerInterface
 {
-    use DateTimeTrait, EnabledTrait, PrincipalImageTrait;
+    use
+        IdentifiableTrait,
+        DateTimeTrait,
+        EnabledTrait,
+        PrincipalImageTrait;
 
     /**
      * @var string
