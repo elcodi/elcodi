@@ -20,14 +20,14 @@ services:
     #
     # Factory for Variant entities
     #
-    elcodi.core.product.factory.variant:
-        class: %elcodi.core.product.factory.variant.class%
+    elcodi.core.product.factory.product_variant:
+        class: %elcodi.core.product.factory.product_variant.class%
         parent: elcodi.core.currency.factory.abstract.purchasable
         calls:
-            - [setEntityNamespace, ["%elcodi.core.product.entity.variant.class%"]]
+            - [setEntityNamespace, ["%elcodi.core.product.entity.product_variant.class%"]]
 
     elcodi.factory.product_variant:
-        alias: elcodi.core.product.factory.variant
+        alias: elcodi.core.product.factory.product_variant
 
     #
     # Factory for Manufacturer entities

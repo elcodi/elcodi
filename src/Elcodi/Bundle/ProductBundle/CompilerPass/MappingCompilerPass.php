@@ -43,10 +43,10 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
             )
             ->addEntityMapping(
                 $container,
-                'elcodi.core.product.entity.variant.manager',
-                'elcodi.core.product.entity.variant.class',
-                'elcodi.core.product.entity.variant.mapping_file',
-                'elcodi.core.product.entity.variant.enabled'
+                'elcodi.core.product.entity.product_variant.manager',
+                'elcodi.core.product.entity.product_variant.class',
+                'elcodi.core.product.entity.product_variant.mapping_file',
+                'elcodi.core.product.entity.product_variant.enabled'
             )
             ->addEntityMapping(
                 $container,

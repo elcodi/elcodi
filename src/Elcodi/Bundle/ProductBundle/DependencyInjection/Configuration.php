@@ -43,7 +43,7 @@ class Configuration extends AbstractConfiguration
                             true
                         ))
                         ->append($this->addMappingNode(
-                            'variant',
+                            'product_variant',
                             'Elcodi\Component\Product\Entity\Variant',
                             '@ElcodiProductBundle/Resources/config/doctrine/Variant.orm.yml',
                             'default',
