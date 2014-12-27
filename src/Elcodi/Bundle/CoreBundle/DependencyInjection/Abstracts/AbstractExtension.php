@@ -314,5 +314,9 @@ abstract class AbstractExtension
                 'resolve_target_entities' => $overrides
             ]
         ]);
+
+        $container->prependExtensionConfig('elcodi_core', [
+            'mapping_implementations' => $overrides
+        ]);
     }
 }

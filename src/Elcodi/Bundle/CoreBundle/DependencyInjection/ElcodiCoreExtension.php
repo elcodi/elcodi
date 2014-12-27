@@ -16,6 +16,8 @@
 
 namespace Elcodi\Bundle\CoreBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\ConfigurationInterface;
+
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 
 /**
@@ -38,6 +40,43 @@ class ElcodiCoreExtension extends AbstractExtension
     public function getConfigFilesLocation()
     {
         return __DIR__ . '/../Resources/config';
+    }
+
+    /**
+     * Return a new Configuration instance.
+     *
+     * If object returned by this method is an instance of
+     * ConfigurationInterface, extension will use the Configuration to read all
+     * bundle config definitions.
+     *
+     * Also will call getParametrizationValues method to load some config values
+     * to internal parameters.
+     *
+     * @return ConfigurationInterface Configuration file
+     */
+    protected function getConfigurationInstance()
+    {
+        return new Configuration(static::EXTENSION_NAME);
+    }
+
+    /**
+     * Load Parametrization definition
+     *
+     * return array(
+     *      'parameter1' => $config['parameter1'],
+     *      'parameter2' => $config['parameter2'],
+     *      ...
+     * );
+     *
+     * @param array $config Bundles config values
+     *
+     * @return array Parametrization values
+     */
+    protected function getParametrizationValues(array $config)
+    {
+        return [
+            "elcodi.mapping_implementations" => $config['mapping_implementations'],
+        ];
     }
 
     /**
