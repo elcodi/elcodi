@@ -15,7 +15,7 @@ You have to add require line into you composer.json file
     "php": ">=5.4",
     ...
 
-    "elcodi/entity-translation-bundle": "dev-master",
+    "elcodi/entity-translator-bundle": "dev-master",
 }
 ```
 
@@ -168,6 +168,7 @@ be defined as well that way
 elcodi_entity_translator:
     configuration:
         My\Bundle\Entity\Product:
+            alias: product
             fields:
                 name: ~
                 description: ~
@@ -181,6 +182,7 @@ you can use an Interface for that
 elcodi_entity_translator:
     configuration:
         My\Bundle\Entity\Interfaces\ProductInterface:
+            alias: product
             fields:
                 name: ~
                 description: ~
