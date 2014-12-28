@@ -66,11 +66,11 @@ abstract class AbstractConfiguration implements ConfigurationInterface
     /**
      * Add a mapping node into configuration
      *
-     * @param string  $nodeName          Node name
-     * @param string  $entityClass       Class of the entity
-     * @param string  $entityMappingFile Path of the file where the mapping is defined
-     * @param string  $entityManager     Name of the entityManager assigned to manage the entity
-     * @param boolean $entityEnabled     The entity mapping will be added to the application
+     * @param string         $nodeName          Node name
+     * @param string         $entityClass       Class of the entity
+     * @param string         $entityMappingFile Path of the file where the mapping is defined
+     * @param string         $entityManager     Name of the entityManager assigned to manage the entity
+     * @param string|boolean $entityEnabled     The entity mapping will be added to the application
      *
      * @return NodeDefinition Node
      */
