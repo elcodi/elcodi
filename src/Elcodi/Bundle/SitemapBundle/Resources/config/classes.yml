@@ -1,0 +1,21 @@
+parameters:
+
+    #
+    # Loaders
+    #
+    elcodi.core.sitemap.loader.entity_loader.class: Elcodi\Component\Sitemap\Loader\EntityLoader
+
+    #
+    # Profiles
+    #
+    elcodi.core.sitemap.loader.profile.class: Elcodi\Component\Sitemap\Profile\SitemapProfile
+
+    #
+    # Renders
+    #
+    elcodi.core.sitemap.render.xml.class: Elcodi\Component\Sitemap\Render\XmlRender
+
+    #
+    # Commands
+    #
+    elcodi.core.sitemap.command.dump_sitemap.class: Elcodi\Component\Sitemap\Command\DumpSitemapCommand

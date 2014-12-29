@@ -1,0 +1,201 @@
+<?php
+
+/*
+ * This file is part of the Elcodi package.
+ *
+ * Copyright (c) 2014 Elcodi.com
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Feel free to edit as you please, and have fun.
+ *
+ * @author Marc Morera <yuhu@mmoreram.com>
+ * @author Aldo Chiecchia <zimage@tiscali.it>
+ */
+
+namespace Elcodi\Bundle\SitemapBundle\DependencyInjection;
+
+use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Reference;
+
+use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
+
+/**
+ * Class ElcodiSitemapExtension
+ */
+class ElcodiSitemapExtension extends AbstractExtension
+{
+    /**
+     * @var string
+     *
+     * Extension name
+     */
+    const EXTENSION_NAME = 'elcodi_sitemap';
+
+    /**
+     * Get the Config file location
+     *
+     * @return string Config file location
+     */
+    public function getConfigFilesLocation()
+    {
+        return __DIR__ . '/../Resources/config';
+    }
+
+    /**
+     * Return a new Configuration instance.
+     *
+     * If object returned by this method is an instance of
+     * ConfigurationInterface, extension will use the Configuration to read all
+     * bundle config definitions.
+     *
+     * Also will call getParametrizationValues method to load some config values
+     * to internal parameters.
+     *
+     * @return ConfigurationInterface Configuration file
+     */
+    protected function getConfigurationInstance()
+    {
+        return new Configuration(static::EXTENSION_NAME);
+    }
+
+    /**
+     * Load Parametrization definition
+     *
+     * return array(
+     *      'parameter1' => $config['parameter1'],
+     *      'parameter2' => $config['parameter2'],
+     *      ...
+     * );
+     *
+     * @param array $config Bundles config values
+     *
+     * @return array Parametrization values
+     */
+    protected function getParametrizationValues(array $config)
+    {
+        return [
+
+        ];
+    }
+
+    /**
+     * Hook after load the full container
+     *
+     * @param array            $config    Configuration
+     * @param ContainerBuilder $container Container
+     */
+    protected function postLoad(array $config, ContainerBuilder $container)
+    {
+        $this->loadBlocks($config, $container);
+        $this->loadProfiles($config, $container);
+        $this->loadCommands($config, $container);
+    }
+
+    /**
+     * Load blocks
+     *
+     * @param array            $config    Configuration
+     * @param ContainerBuilder $container Container
+     */
+    protected function loadBlocks(array $config, ContainerBuilder $container)
+    {
+        $blocks = $config['blocks'];
+
+        foreach ($blocks as $blockName => $block) {
+
+            $container
+                ->register(
+                    'elcodi.sitemap_entity_loader.' . $blockName,
+                    '%elcodi.core.sitemap.loader.entity_loader.class%'
+                )
+                ->addArgument(new Reference($block['transformer']))
+                ->addArgument(new Reference($block['repository_service']))
+                ->addArgument($block['method'])
+                ->addArgument($block['arguments'])
+                ->setPublic(false);
+        }
+    }
+
+    /**
+     * Load profiles
+     *
+     * @param array            $config    Configuration
+     * @param ContainerBuilder $container Container
+     */
+    protected function loadProfiles(array $config, ContainerBuilder $container)
+    {
+        $profiles = $config['profiles'];
+
+        foreach ($profiles as $profileName => $profile) {
+
+            $definition = $container
+                ->register(
+                    'elcodi.sitemap_profile.' . $profileName,
+                    '%elcodi.core.sitemap.loader.profile.class%'
+                )
+                ->addArgument($profileName)
+                ->addArgument($profile['path'])
+                ->setPublic(true);
+
+            foreach ($profile['blocks'] as $profileBlockName) {
+
+                $definition->addMethodCall(
+                    'addEntityLoader',
+                    [new Reference('elcodi.sitemap_entity_loader.' . $profileBlockName)]
+                );
+            }
+        }
+    }
+
+    /**
+     * Load commands
+     *
+     * @param array            $config    Configuration
+     * @param ContainerBuilder $container Container
+     */
+    protected function loadCommands(array $config, ContainerBuilder $container)
+    {
+        $profiles = $config['profiles'];
+
+        foreach ($profiles as $profileName => $profile) {
+
+            $container
+                ->register(
+                    'elcodi.sitemap_dumper.' . $profileName,
+                    '%elcodi.core.sitemap.command.dump_sitemap.class%'
+                )
+                ->addArgument(new Reference($profile['render']))
+                ->addArgument(new Reference('elcodi.sitemap_profile.' . $profileName))
+                ->setPublic(true)
+                ->addTag('console.command');
+        }
+    }
+
+    /**
+     * Config files to load
+     *
+     * @param array $config Configuration
+     *
+     * @return array Config files
+     */
+    public function getConfigFiles(array $config)
+    {
+        return [
+            'classes',
+            'renders',
+        ];
+    }
+
+    /**
+     * Returns the extension alias, same value as extension name
+     *
+     * @return string The alias
+     */
+    public function getAlias()
+    {
+        return static::EXTENSION_NAME;
+    }
+}
