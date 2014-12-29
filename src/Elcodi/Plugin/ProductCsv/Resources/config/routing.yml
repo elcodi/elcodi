@@ -1,0 +1,3 @@
+elcodi_plugin_productcsv:
+    resource: "@ProductCsvBundle/Controller/"
+    type:     annotation
