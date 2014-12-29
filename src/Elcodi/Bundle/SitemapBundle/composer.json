@@ -1,10 +1,20 @@
 {
     "name": "elcodi/sitemap-bundle",
     "description": "Elcodi Sitemap Bundle",
-    "keywords": ["elcodi", "Sitemap", "ecommerce"],
+    "keywords": [
+        "elcodi",
+        "Sitemap",
+        "ecommerce"
+    ],
     "homepage": "https://github.com/elcodi/SitemapBundle",
     "type": "symfony-bundle",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

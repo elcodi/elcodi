@@ -1,10 +1,22 @@
 {
     "name": "elcodi/cart-coupon",
     "description": "Elcodi Cart-Coupon bridge Component",
-    "keywords": ["elcodi", "cart", "coupon", "ecommerce", "component"],
+    "keywords": [
+        "elcodi",
+        "cart",
+        "coupon",
+        "ecommerce",
+        "component"
+    ],
     "homepage": "https://github.com/elcodi/CartCoupon",
     "type": "library",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

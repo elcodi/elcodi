@@ -1,10 +1,21 @@
 {
     "name": "elcodi/cart-coupon-bundle",
     "description": "Elcodi Cart-Coupon bridge Bundle",
-    "keywords": ["elcodi", "cart", "coupon", "ecommerce"],
+    "keywords": [
+        "elcodi",
+        "cart",
+        "coupon",
+        "ecommerce"
+    ],
     "homepage": "https://github.com/elcodi/CartCouponBundle",
     "type": "symfony-bundle",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

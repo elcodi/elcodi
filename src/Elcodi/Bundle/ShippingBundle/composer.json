@@ -1,10 +1,20 @@
 {
     "name": "elcodi/shipping-bundle",
     "description": "Elcodi Shipping Bundle",
-    "keywords": ["elcodi", "Shipping", "ecommerce"],
+    "keywords": [
+        "elcodi",
+        "Shipping",
+        "ecommerce"
+    ],
     "homepage": "https://github.com/elcodi/ShippingBundle",
     "type": "symfony-bundle",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

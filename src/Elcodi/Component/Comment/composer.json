@@ -1,10 +1,21 @@
 {
     "name": "elcodi/comment",
     "description": "Elcodi Comment Component",
-    "keywords": ["elcodi", "comment", "ecommerce", "component"],
+    "keywords": [
+        "elcodi",
+        "comment",
+        "ecommerce",
+        "component"
+    ],
     "homepage": "https://github.com/elcodi/Comment",
     "type": "library",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

@@ -1,10 +1,20 @@
 {
     "name": "elcodi/tax-bundle",
     "description": "Elcodi Tax Bundle",
-    "keywords": ["elcodi", "Tax", "ecommerce"],
+    "keywords": [
+        "elcodi",
+        "Tax",
+        "ecommerce"
+    ],
     "homepage": "https://github.com/elcodi/TaxBundle",
     "type": "symfony-bundle",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

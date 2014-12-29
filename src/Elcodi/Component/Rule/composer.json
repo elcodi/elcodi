@@ -1,10 +1,21 @@
 {
     "name": "elcodi/rule",
     "description": "Elcodi Rule Component",
-    "keywords": ["elcodi", "Rule", "ecommerce", "component"],
+    "keywords": [
+        "elcodi",
+        "Rule",
+        "ecommerce",
+        "component"
+    ],
     "homepage": "https://github.com/elcodi/Rule",
     "type": "library",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

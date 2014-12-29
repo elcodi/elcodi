@@ -1,10 +1,20 @@
 {
     "name": "elcodi/media-bundle",
     "description": "Elcodi Media Bundle",
-    "keywords": ["elcodi", "media", "ecommerce"],
+    "keywords": [
+        "elcodi",
+        "media",
+        "ecommerce"
+    ],
     "homepage": "https://github.com/elcodi/MediaBundle",
     "type": "symfony-bundle",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

@@ -1,10 +1,20 @@
 {
     "name": "elcodi/bamboo-bundle",
     "description": "Elcodi Bamboo Bundle",
-    "keywords": ["elcodi", "bamboo", "ecommerce"],
+    "keywords": [
+        "elcodi",
+        "bamboo",
+        "ecommerce"
+    ],
     "homepage": "https://github.com/elcodi/BambooBundle",
     "type": "symfony-bundle",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

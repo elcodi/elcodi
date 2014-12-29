@@ -1,10 +1,21 @@
 {
     "name": "elcodi/coupon",
     "description": "Elcodi Coupon Component",
-    "keywords": ["elcodi", "coupon", "ecommerce", "component"],
+    "keywords": [
+        "elcodi",
+        "coupon",
+        "ecommerce",
+        "component"
+    ],
     "homepage": "https://github.com/elcodi/Coupon",
     "type": "library",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

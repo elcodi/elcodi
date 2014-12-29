@@ -1,9 +1,21 @@
 {
     "name": "elcodi/elcodi",
     "description": "Barebones Ecommerce functionality for Symfony",
-    "keywords": ["elcodi", "symfony", "ecommerce", "components", "bundle"],
+    "keywords": [
+        "elcodi",
+        "symfony",
+        "ecommerce",
+        "components",
+        "bundle"
+    ],
     "type": "library",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

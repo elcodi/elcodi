@@ -1,10 +1,20 @@
 {
     "name": "elcodi/comment-bundle",
     "description": "Elcodi Comment Bundle",
-    "keywords": ["elcodi", "comment", "ecommerce"],
+    "keywords": [
+        "elcodi",
+        "comment",
+        "ecommerce"
+    ],
     "homepage": "https://github.com/elcodi/CommentBundle",
     "type": "symfony-bundle",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

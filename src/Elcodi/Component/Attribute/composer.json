@@ -1,10 +1,21 @@
 {
     "name": "elcodi/attribute",
     "description": "Elcodi Attribute Component",
-    "keywords": ["elcodi", "attribute", "ecommerce", "component"],
+    "keywords": [
+        "elcodi",
+        "attribute",
+        "ecommerce",
+        "component"
+    ],
     "homepage": "https://github.com/elcodi/Attribute",
     "type": "library",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",
