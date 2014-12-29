@@ -1,0 +1,46 @@
+<?php
+
+/*
+ * This file is part of the Elcodi package.
+ *
+ * Copyright (c) 2014 Elcodi.com
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Feel free to edit as you please, and have fun.
+ *
+ * @author Marc Morera <yuhu@mmoreram.com>
+ * @author Aldo Chiecchia <zimage@tiscali.it>
+ */
+
+namespace Elcodi\Plugin\ProductCsv\Templating;
+
+use Elcodi\Component\Plugin\Interfaces\EventInterface;
+use Elcodi\Component\Plugin\Templating\Traits\TemplatingTrait;
+
+/**
+ * Renders import/export buttons in Twig
+ *
+ * @author Berny Cantos <be@rny.cc>
+ */
+class TwigRenderer
+{
+    use TemplatingTrait;
+
+    /**
+     * Renders import/export buttons
+     *
+     * @param EventInterface $event
+     *
+     * @return string
+     */
+    public function renderButtons(EventInterface $event)
+    {
+        if ($event->get('entity_type') !== 'product') {
+            return;
+        }
+
+        $this->appendTemplate('@ProductCsv/buttons.html.twig', $event);
+    }
+}

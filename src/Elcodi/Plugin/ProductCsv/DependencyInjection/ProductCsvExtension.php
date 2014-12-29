@@ -73,6 +73,7 @@ class ProductCsvExtension extends AbstractExtension
         return [
             'classes',
             'services',
+            'twig',
         ];
     }
 }
