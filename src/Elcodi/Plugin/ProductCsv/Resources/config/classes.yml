@@ -1,0 +1,6 @@
+parameters:
+
+    #
+    # Services
+    #
+    elcodi_plugin.product_csv.exporter.class: Elcodi\Plugin\ProductCsv\Services\ProductExporter

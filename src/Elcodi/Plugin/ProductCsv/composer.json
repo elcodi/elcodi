@@ -16,7 +16,15 @@
     "require": {
         "php": ">=5.4",
 
-        "elcodi/plugin-bundle": "~0.4.0"
+        "goodby/csv": "~1.0",
+        "symfony/framework-extra-bundle": "~2.6",
+        "symfony/framework-bundle": "~2.6",
+        "symfony/http-foundation": "~2.6",
+        "symfony/http-kernel": "~2.6",
+        "symfony/twig-bridge": "~2.6",
+
+        "elcodi/plugin-bundle": "~0.4.0",
+        "elcodi/product-bundle": "~0.4.0"
     },
     "require-dev": {
         "mmoreram/php-formatter": "~1.0"
