@@ -1,10 +1,21 @@
 {
     "name": "elcodi/tax",
     "description": "Elcodi Tax Component",
-    "keywords": ["elcodi", "Tax", "ecommerce", "component"],
+    "keywords": [
+        "elcodi",
+        "Tax",
+        "ecommerce",
+        "component"
+    ],
     "homepage": "https://github.com/elcodi/Tax",
     "type": "library",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

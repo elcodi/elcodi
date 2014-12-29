@@ -1,10 +1,21 @@
 {
     "name": "elcodi/banner",
     "description": "Elcodi Banner Component",
-    "keywords": ["elcodi", "banner", "ecommerce", "component"],
+    "keywords": [
+        "elcodi",
+        "banner",
+        "ecommerce",
+        "component"
+    ],
     "homepage": "https://github.com/elcodi/Banner",
     "type": "library",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

@@ -1,10 +1,21 @@
 {
     "name": "elcodi/shipping",
     "description": "Elcodi Shipping Component",
-    "keywords": ["elcodi", "shipping", "ecommerce", "component"],
+    "keywords": [
+        "elcodi",
+        "shipping",
+        "ecommerce",
+        "component"
+    ],
     "homepage": "https://github.com/elcodi/Shipping",
     "type": "library",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

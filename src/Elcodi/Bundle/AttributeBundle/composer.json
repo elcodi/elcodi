@@ -1,10 +1,20 @@
 {
     "name": "elcodi/attribute-bundle",
     "description": "Elcodi Attribute Bundle",
-    "keywords": ["elcodi", "attribute", "ecommerce"],
+    "keywords": [
+        "elcodi",
+        "attribute",
+        "ecommerce"
+    ],
     "homepage": "https://github.com/elcodi/AttributeBundle",
     "type": "symfony-bundle",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

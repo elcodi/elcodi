@@ -1,10 +1,21 @@
 {
     "name": "elcodi/core",
     "description": "Elcodi Core Component",
-    "keywords": ["elcodi", "core", "ecommerce", "component"],
+    "keywords": [
+        "elcodi",
+        "core",
+        "ecommerce",
+        "component"
+    ],
     "homepage": "https://github.com/elcodi/Core",
     "type": "library",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

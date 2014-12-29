@@ -1,10 +1,20 @@
 {
     "name": "elcodi/test-common-bundle",
     "description": "Elcodi Test Common Bundle",
-    "keywords": ["elcodi", "test", "ecommerce"],
+    "keywords": [
+        "elcodi",
+        "test",
+        "ecommerce"
+    ],
     "homepage": "https://github.com/elcodi/TestCommonBundle",
     "type": "symfony-bundle",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

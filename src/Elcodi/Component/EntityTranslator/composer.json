@@ -1,10 +1,21 @@
 {
     "name": "elcodi/entity-translator",
     "description": "Elcodi Entity Translator Component",
-    "keywords": ["elcodi", "translator", "ecommerce", "component"],
+    "keywords": [
+        "elcodi",
+        "translator",
+        "ecommerce",
+        "component"
+    ],
     "homepage": "https://github.com/elcodi/EntityTranslator",
     "type": "library",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

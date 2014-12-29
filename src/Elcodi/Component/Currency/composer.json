@@ -1,10 +1,21 @@
 {
     "name": "elcodi/currency",
     "description": "Elcodi Currency Component",
-    "keywords": ["elcodi", "currency", "ecommerce", "component"],
+    "keywords": [
+        "elcodi",
+        "currency",
+        "ecommerce",
+        "component"
+    ],
     "homepage": "https://github.com/elcodi/Currency",
     "type": "library",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

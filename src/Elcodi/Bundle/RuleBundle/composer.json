@@ -1,10 +1,20 @@
 {
     "name": "elcodi/rule-bundle",
     "description": "Elcodi Rule Bundle",
-    "keywords": ["elcodi", "Rule", "ecommerce"],
+    "keywords": [
+        "elcodi",
+        "Rule",
+        "ecommerce"
+    ],
     "homepage": "https://github.com/elcodi/RuleBundle",
     "type": "symfony-bundle",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

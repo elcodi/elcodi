@@ -1,10 +1,20 @@
 {
     "name": "elcodi/state-transition-machine-bundle",
     "description": "Elcodi State Transition Machine Bundle",
-    "keywords": ["elcodi", "state transition machine", "ecommerce"],
+    "keywords": [
+        "elcodi",
+        "state transition machine",
+        "ecommerce"
+    ],
     "homepage": "https://github.com/elcodi/StateTransitionMachineBundle",
     "type": "symfony-bundle",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

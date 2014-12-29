@@ -1,10 +1,21 @@
 {
     "name": "elcodi/referral-program",
     "description": "Elcodi ReferralProgram Component",
-    "keywords": ["elcodi", "referral program", "ecommerce", "component"],
+    "keywords": [
+        "elcodi",
+        "referral program",
+        "ecommerce",
+        "component"
+    ],
     "homepage": "https://github.com/elcodi/ReferralProgram",
     "type": "library",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

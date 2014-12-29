@@ -1,10 +1,20 @@
 {
     "name": "elcodi/currency-bundle",
     "description": "Elcodi Currency Bundle",
-    "keywords": ["elcodi", "currency", "ecommerce"],
+    "keywords": [
+        "elcodi",
+        "currency",
+        "ecommerce"
+    ],
     "homepage": "https://github.com/elcodi/CurrencyBundle",
     "type": "symfony-bundle",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Gonzalo Miguez",

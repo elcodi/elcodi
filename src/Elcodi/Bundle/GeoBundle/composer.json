@@ -1,10 +1,20 @@
 {
     "name": "elcodi/geo-bundle",
     "description": "Elcodi Geo Bundle",
-    "keywords": ["elcodi", "geo", "ecommerce"],
+    "keywords": [
+        "elcodi",
+        "geo",
+        "ecommerce"
+    ],
     "homepage": "https://github.com/elcodi/GeoBundle",
     "type": "symfony-bundle",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",

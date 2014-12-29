@@ -1,10 +1,21 @@
 {
     "name": "elcodi/menu",
     "description": "Elcodi Menu Component",
-    "keywords": ["elcodi", "Menu", "ecommerce", "component"],
+    "keywords": [
+        "elcodi",
+        "Menu",
+        "ecommerce",
+        "component"
+    ],
     "homepage": "https://github.com/elcodi/Menu",
     "type": "library",
     "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
     "authors": [
         {
             "name": "Marc Morera",
@@ -23,7 +34,7 @@
         "php": ">=5.4",
         "doctrine/common": "~2.4",
         "doctrine/orm": "~2.4",
-        "symfony/routing" : "~2.4",
+        "symfony/routing": "~2.4",
 
         "elcodi/core": "~0.4.0"
     },
