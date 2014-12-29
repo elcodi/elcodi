@@ -76,6 +76,7 @@
         "elcodi/page-bundle": "self.version",
         "elcodi/entity-translator-bundle": "self.version",
         "elcodi/configuration-bundle": "self.version",
+        "elcodi/sitemap-bundle": "self.version",
 
         "elcodi/attribute": "self.version",
         "elcodi/banner": "self.version",
@@ -100,7 +101,8 @@
         "elcodi/state-transition-machine": "self.version",
         "elcodi/page": "self.version",
         "elcodi/entity-translator": "self.version",
-        "elcodi/configuration": "self.version"
+        "elcodi/configuration": "self.version",
+        "elcodi/sitemap": "self.version"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",

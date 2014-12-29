@@ -1,0 +1,7 @@
+services:
+
+    #
+    # Renders
+    #
+    elcodi.core.sitemap.render.xml:
+        class: %elcodi.core.sitemap.render.xml.class%

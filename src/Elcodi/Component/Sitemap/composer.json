@@ -1,0 +1,38 @@
+{
+    "name": "elcodi/sitemap",
+    "description": "Elcodi Sitemap Component",
+    "keywords": ["elcodi", "sitemap", "ecommerce", "component"],
+    "homepage": "https://github.com/elcodi/Sitemap",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "The Awesome Elcodi Community",
+            "homepage": "https://github.com/elcodi/Sitemap/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "doctrine/common": "~2.4",
+
+        "elcodi/core": "~0.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\Component\\Sitemap\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.5-dev"
+        }
+    }
+}
