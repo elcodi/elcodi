@@ -17,6 +17,7 @@
 namespace Elcodi\Component\Media\Services;
 
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use Elcodi\Component\Media\Adapter\Resizer\Interfaces\ResizeAdapterInterface;
 use Elcodi\Component\Media\ElcodiMediaImageResizeTypes;
@@ -96,6 +97,12 @@ class ImageManager
             throw new InvalidImageException();
         }
 
+        $extension = $file->getExtension();
+
+        if (!$extension && $file instanceof UploadedFile) {
+            $extension = $file->getClientOriginalExtension();
+        }
+
         /**
          * @var ImageInterface $image
          */
@@ -108,7 +115,7 @@ class ImageManager
             ->setHeight($imageSizeData[1])
             ->setContentType($fileMime)
             ->setSize($file->getSize())
-            ->setExtension($file->getExtension())
+            ->setExtension($extension)
             ->setName($name);
 
         return $image;
