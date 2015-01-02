@@ -56,7 +56,7 @@ abstract class AbstractRule
      *
      * @param string $name Name
      *
-     * @return AbstractRule Self object
+     * @return $this Self object
      */
     public function setName($name)
     {
@@ -80,7 +80,7 @@ abstract class AbstractRule
      *
      * @param string $code Code
      *
-     * @return AbstractRule Self object
+     * @return $this Self object
      */
     public function setCode($code)
     {

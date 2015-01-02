@@ -71,14 +71,14 @@ Elcodi\Component\Product\Entity\Variant:
         priceCurrency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
-                name: price_currency_id
-                referencedColumnName: id
+                name: price_currency_iso
+                referencedColumnName: iso
                 nullable: true
         reducedPriceCurrency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
-                name: reduced_price_currency_id
-                referencedColumnName: id
+                name: reduced_price_currency_iso
+                referencedColumnName: iso
                 nullable: true
 
     manyToMany:

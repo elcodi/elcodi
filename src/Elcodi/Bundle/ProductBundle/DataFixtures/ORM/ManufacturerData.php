@@ -19,7 +19,7 @@ namespace Elcodi\Bundle\ProductBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface;
+use Elcodi\Component\Product\Factory\ManufacturerFactory;
 
 /**
  * Class ManufacturerData
@@ -34,19 +34,20 @@ class ManufacturerData extends AbstractFixture
     public function load(ObjectManager $manager)
     {
         /**
-         * Category
-         *
-         * @var ManufacturerInterface $manufacturer
+         * @var ManufacturerFactory $manufacturerFactory
          */
-        $manufacturer = $this->container->get('elcodi.core.product.factory.manufacturer')->create();
-        $manufacturer
+        $manufacturerObjectManager = $this->getObjectManager('manufacturer');
+        $manufacturerFactory = $this->getFactory('manufacturer');
+
+        $manufacturer = $manufacturerFactory
+            ->create()
             ->setName('manufacturer')
             ->setSlug('manufacturer')
             ->setDescription('manufacturer description');
 
-        $manager->persist($manufacturer);
+        $manufacturerObjectManager->persist($manufacturer);
         $this->addReference('manufacturer', $manufacturer);
 
-        $manager->flush();
+        $manufacturerObjectManager->flush();
     }
 }

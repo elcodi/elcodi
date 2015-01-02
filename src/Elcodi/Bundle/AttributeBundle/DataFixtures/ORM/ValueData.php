@@ -21,6 +21,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Attribute\Entity\Attribute;
+use Elcodi\Component\Attribute\Factory\ValueFactory;
 
 /**
  * Class ValueData
@@ -37,81 +38,99 @@ class ValueData extends AbstractFixture implements DependentFixtureInterface
         /**
          * @var Attribute $sizeAttribute
          * @var Attribute $colorAttribute
+         * @var ValueFactory $attributeFactory
          */
+        $attributeValueFactory = $this->getFactory('attribute_value');
+        $attributeValueObjectManager = $this->getObjectManager('attribute_value');
         $sizeAttribute = $this->getReference('attribute-size');
         $colorAttribute = $this->getReference('attribute-color');
 
-        /* Colors */
-
-        /* Red */
-        $redValue = $this->container->get('elcodi.core.attribute.factory.value')->create();
-        $redValue
+        /**
+         * Red
+         */
+        $redValue = $attributeValueFactory
+            ->create()
             ->setName('Red')
             ->setDisplayName('Red')
             ->setAttribute($colorAttribute)
             ->setEnabled(true);
 
-        $objectManager->persist($redValue);
+        $attributeValueObjectManager->persist($redValue);
         $this->addReference('value-color-red', $redValue);
 
-        /* White */
-        $whiteValue = $this->container->get('elcodi.core.attribute.factory.value')->create();
-        $whiteValue
+        /**
+         * White
+         */
+        $whiteValue = $attributeValueFactory
+            ->create()
             ->setName('White')
             ->setDisplayName('White')
             ->setAttribute($colorAttribute)
             ->setEnabled(true);
 
-        $objectManager->persist($whiteValue);
+        $attributeValueObjectManager->persist($whiteValue);
         $this->addReference('value-color-white', $whiteValue);
 
-        /* Blue */
-        $blueValue = $this->container->get('elcodi.core.attribute.factory.value')->create();
-        $blueValue
+        /**
+         * Blue
+         */
+        $blueValue = $attributeValueFactory
+            ->create()
             ->setName('Blue')
             ->setDisplayName('Blue')
             ->setAttribute($colorAttribute)
             ->setEnabled(true);
 
-        $objectManager->persist($blueValue);
+        $attributeValueObjectManager->persist($blueValue);
         $this->addReference('value-color-blue', $blueValue);
 
-        /* Sizes */
-
-        /* Small */
-        $smallValue = $this->container->get('elcodi.core.attribute.factory.value')->create();
-        $smallValue
+        /**
+         * Small
+         */
+        $smallValue = $attributeValueFactory
+            ->create()
             ->setName('Small')
             ->setDisplayName('Small')
             ->setAttribute($sizeAttribute)
             ->setEnabled(true);
 
-        $objectManager->persist($smallValue);
+        $attributeValueObjectManager->persist($smallValue);
         $this->addReference('value-size-small', $smallValue);
 
-        /* Medium */
-        $mediumValue = $this->container->get('elcodi.core.attribute.factory.value')->create();
-        $mediumValue
+        /**
+         * Medium
+         */
+        $mediumValue = $attributeValueFactory
+            ->create()
             ->setName('Medium')
             ->setDisplayName('Medium')
             ->setAttribute($sizeAttribute)
             ->setEnabled(true);
 
-        $objectManager->persist($mediumValue);
+        $attributeValueObjectManager->persist($mediumValue);
         $this->addReference('value-size-medium', $mediumValue);
 
-        /* Large */
-        $largeValue = $this->container->get('elcodi.core.attribute.factory.value')->create();
-        $largeValue
+        /**
+         * Large
+         */
+        $largeValue = $attributeValueFactory
+            ->create()
             ->setName('Large')
             ->setDisplayName('Large')
             ->setAttribute($sizeAttribute)
             ->setEnabled(true);
 
-        $objectManager->persist($largeValue);
+        $attributeValueObjectManager->persist($largeValue);
         $this->addReference('value-size-large', $largeValue);
 
-        $objectManager->flush();
+        $attributeValueObjectManager->flush([
+            $redValue,
+            $whiteValue,
+            $blueValue,
+            $smallValue,
+            $mediumValue,
+            $largeValue,
+        ]);
     }
 
     /**

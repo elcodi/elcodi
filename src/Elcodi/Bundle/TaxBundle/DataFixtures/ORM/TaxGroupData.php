@@ -32,20 +32,21 @@ class TaxGroupData extends AbstractFixture
     public function load(ObjectManager $manager)
     {
         /**
-         * @var ObjectManager   $taxGroupObjectManager
          * @var TaxGroupFactory $taxGroupFactory
          */
-        $taxGroupObjectManager = $this->get('elcodi.object_manager.tax_group');
-        $taxGroupFactory = $this->get('elcodi.factory.tax_group');
+        $taxGroupObjectManager = $this->getObjectManager('tax_group');
+        $taxGroupFactory = $this->getFactory('tax_group');
 
-        $andorranTaxes = $taxGroupFactory->create();
-        $andorranTaxes
+        $andorranTaxes = $taxGroupFactory
+            ->create()
             ->setName('andorran-taxes')
             ->setDescription('All andorran taxes');
 
         $taxGroupObjectManager->persist($andorranTaxes);
         $this->addReference('tax-group-andorran', $andorranTaxes);
 
-        $taxGroupObjectManager->flush();
+        $taxGroupObjectManager->flush(
+            $andorranTaxes
+        );
     }
 }

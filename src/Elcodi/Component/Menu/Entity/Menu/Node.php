@@ -16,7 +16,6 @@
 
 namespace Elcodi\Component\Menu\Entity\Menu;
 
-use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface;
@@ -30,15 +29,7 @@ class Node implements NodeInterface
     use
         IdentifiableTrait,
         SubnodesTrait,
-        DateTimeTrait,
         EnabledTrait;
-
-    /**
-     * @var string
-     *
-     * Node name
-     */
-    protected $name;
 
     /**
      * @var string
@@ -50,9 +41,40 @@ class Node implements NodeInterface
     /**
      * @var string
      *
+     * Node name
+     */
+    protected $name;
+
+    /**
+     * @var string
+     *
      * url
      */
     protected $url;
+
+    /**
+     * Gets Node code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * Sets Node code
+     *
+     * @param string $code
+     *
+     * @return $this self Object
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
 
     /**
      * Sets Node name
@@ -102,29 +124,5 @@ class Node implements NodeInterface
     public function getUrl()
     {
         return $this->url;
-    }
-
-    /**
-     * Gets Node code
-     *
-     * @return string
-     */
-    public function getCode()
-    {
-        return $this->code;
-    }
-
-    /**
-     * Sets Node code
-     *
-     * @param string $code
-     *
-     * @return $this self Object
-     */
-    public function setCode($code)
-    {
-        $this->code = $code;
-
-        return $this;
     }
 }

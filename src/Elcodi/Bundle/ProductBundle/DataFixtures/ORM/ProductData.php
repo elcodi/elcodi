@@ -25,6 +25,7 @@ use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
+use Elcodi\Component\Product\Factory\ProductFactory;
 
 /**
  * Class ProductData
@@ -41,21 +42,19 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
         /**
          * Product
          *
-         * @var ProductInterface      $product
          * @var CategoryInterface     $category
          * @var ManufacturerInterface $manufacturer
          * @var CurrencyInterface     $currency
+         * @var ProductFactory        $productFactory
          */
-        $product = $this
-            ->container
-            ->get('elcodi.core.product.factory.product')
-            ->create();
-
         $category = $this->getReference('category');
         $manufacturer = $this->getReference('manufacturer');
         $currency = $this->getReference('currency-dollar');
-        $product
-            ->setId(1)
+        $productObjectManager = $this->getObjectManager('product');
+        $productFactory = $this->getFactory('product');
+
+        $product = $productFactory
+            ->create()
             ->setName('product')
             ->setSlug('product')
             ->setDescription('my product description')
@@ -72,21 +71,14 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
             ->setWeight(100)
             ->setEnabled(true);
 
-        $manager->persist($product);
+        $productObjectManager->persist($product);
         $this->addReference('product', $product);
 
         /**
          * Reduced Product
-         *
-         * @var ProductInterface $productReduced
          */
-        $productReduced = $this
-            ->container
-            ->get('elcodi.core.product.factory.product')
-            ->create();
-
-        $productReduced
-            ->setId(2)
+        $productReduced = $productFactory
+            ->create()
             ->setName('product-reduced')
             ->setSlug('product-reduced')
             ->setDescription('my product-reduced description')
@@ -101,7 +93,7 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
             ->setWeight(200)
             ->setEnabled(true);
 
-        $manager->persist($productReduced);
+        $productObjectManager->persist($productReduced);
         $this->addReference('product-reduced', $productReduced);
 
         /**
@@ -109,13 +101,8 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
          *
          * @var ProductInterface $productWithVariants
          */
-        $productWithVariants = $this
-            ->container
-            ->get('elcodi.core.product.factory.product')
-            ->create();
-
-        $productWithVariants
-            ->setId(3)
+        $productWithVariants = $productFactory
+            ->create()
             ->setName('Product with variants')
             ->setSku('product-sku-code-variant-1')
             ->setSlug('product-with-variants')
@@ -132,11 +119,14 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
             ->setWeight(500)
             ->setEnabled(true);
 
-        $manager->persist($productWithVariants);
-
+        $productObjectManager->persist($productWithVariants);
         $this->addReference('product-with-variants', $productWithVariants);
 
-        $manager->flush();
+        $productObjectManager->flush([
+            $product,
+            $productReduced,
+            $productWithVariants,
+        ]);
     }
 
     /**

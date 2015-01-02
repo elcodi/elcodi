@@ -1,5 +1,6 @@
 <?php
-/**
+
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -63,7 +64,6 @@ class EventAdapter extends Event implements EventInterface
     public function get($key, $default = null)
     {
         if (array_key_exists($key, $this->context)) {
-
             return $this->context[$key];
         }
 
@@ -93,7 +93,7 @@ class EventAdapter extends Event implements EventInterface
     /**
      * Set current content
      *
-     * @param  string $content
+     * @param string $content
      *
      * @return $this self Object
      */

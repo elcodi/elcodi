@@ -16,7 +16,6 @@
 
 namespace Elcodi\Component\Menu\Entity\Menu\Interfaces;
 
-use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
@@ -26,7 +25,6 @@ use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 interface MenuInterface
     extends
     IdentifiableInterface,
-    DateTimeInterface,
     EnabledInterface,
     SubnodesAwareInterface
 {

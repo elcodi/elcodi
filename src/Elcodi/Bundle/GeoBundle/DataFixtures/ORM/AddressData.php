@@ -20,6 +20,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\Component\Geo\Entity\Address;
 use Elcodi\Component\Geo\Factory\AddressFactory;
 
 /**
@@ -35,9 +36,11 @@ class AddressData extends AbstractFixture implements DependentFixtureInterface
         /**
          * @var AddressFactory $addressFactory
          */
-        $addressFactory = $this->container->get('elcodi.factory.address');
-        $address = $addressFactory->create();
-        $address
+        $addressFactory = $this->getFactory('address');
+        $addressObjectManager = $this->getObjectManager('address');
+
+        $addressBarcelona = $addressFactory
+            ->create()
             ->setName('Some address')
             ->setRecipientName('user name')
             ->setRecipientSurname('user surname')
@@ -50,11 +53,11 @@ class AddressData extends AbstractFixture implements DependentFixtureInterface
             ->setPostalcode($this->getReference('postalcode-08021'))
             ->setEnabled(true);
 
-        $manager->persist($address);
-        $this->addReference('address-barcelona', $address);
+        $addressObjectManager->persist($addressBarcelona);
+        $this->addReference('address-barcelona', $addressBarcelona);
 
-        $address = $addressFactory->create();
-        $address
+        $addressViladecavalls = $addressFactory
+            ->create()
             ->setName('Some other address')
             ->setRecipientName('user2 name')
             ->setRecipientSurname('user2 surname')
@@ -67,10 +70,13 @@ class AddressData extends AbstractFixture implements DependentFixtureInterface
             ->setPostalcode($this->getReference('postalcode-08232'))
             ->setEnabled(true);
 
-        $manager->persist($address);
-        $this->addReference('address-viladecavalls', $address);
+        $addressObjectManager->persist($addressViladecavalls);
+        $this->addReference('address-viladecavalls', $addressViladecavalls);
 
-        $manager->flush();
+        $addressObjectManager->flush([
+            $addressBarcelona,
+            $addressViladecavalls,
+        ]);
     }
 
     /**

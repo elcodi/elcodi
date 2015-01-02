@@ -16,7 +16,6 @@
 
 namespace Elcodi\Component\Menu\Entity\Menu\Interfaces;
 
-use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
@@ -26,10 +25,25 @@ use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 interface NodeInterface
     extends
     IdentifiableInterface,
-    DateTimeInterface,
     EnabledInterface,
     SubnodesAwareInterface
 {
+    /**
+     * Gets Node code
+     *
+     * @return string
+     */
+    public function getCode();
+
+    /**
+     * Sets Node code
+     *
+     * @param string $code
+     *
+     * @return $this self Object
+     */
+    public function setCode($code);
+
     /**
      * Sets Name
      *
@@ -61,20 +75,4 @@ interface NodeInterface
      * @return string Url
      */
     public function getUrl();
-
-    /**
-     * Gets Node code
-     *
-     * @return string
-     */
-    public function getCode();
-
-    /**
-     * Sets Node code
-     *
-     * @param string $code
-     *
-     * @return $this self Object
-     */
-    public function setCode($code);
 }

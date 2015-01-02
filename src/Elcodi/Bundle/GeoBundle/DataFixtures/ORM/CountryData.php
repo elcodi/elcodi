@@ -34,16 +34,20 @@ class CountryData extends AbstractFixture
         /**
          * @var CountryFactory $countryFactory
          */
-        $countryFactory = $this->container->get('elcodi.factory.country');
-        $country = $countryFactory->create();
-        $country
+        $countryFactory = $this->getFactory('country');
+        $countryObjectManager = $this->getObjectManager('country');
+
+        $countrySpain = $countryFactory
+            ->create()
             ->setCode('es')
             ->setName('Spain')
             ->setEnabled(true);
 
-        $manager->persist($country);
-        $this->addReference('country-spain', $country);
+        $countryObjectManager->persist($countrySpain);
+        $this->addReference('country-spain', $countrySpain);
 
-        $manager->flush();
+        $countryObjectManager->flush([
+            $countrySpain
+        ]);
     }
 }

@@ -16,7 +16,6 @@
 
 namespace Elcodi\Component\Menu\Factory;
 
-use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
@@ -42,8 +41,7 @@ class MenuFactory extends AbstractFactory
         $menu
             ->setDescription('')
             ->setSubnodes(new ArrayCollection())
-            ->setEnabled(false)
-            ->setCreatedAt(new DateTime());
+            ->setEnabled(false);
 
         return $menu;
     }

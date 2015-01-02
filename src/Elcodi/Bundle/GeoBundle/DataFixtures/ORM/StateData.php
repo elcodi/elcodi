@@ -35,19 +35,23 @@ class StateData extends AbstractFixture implements DependentFixtureInterface
         /**
          * @var StateFactory $stateFactory
          */
-        $stateFactory = $this->container->get('elcodi.factory.state');
-        $state = $stateFactory->create();
-        $state
+        $stateFactory = $this->getFactory('state');
+        $stateObjectManager = $this->getObjectManager('state');
+
+        $stateCatalunya = $stateFactory
+            ->create()
             ->setId('es-cat')
             ->setCode('cat')
             ->setName('Catalunya')
             ->setCountry($this->getReference('country-spain'))
             ->setEnabled(true);
 
-        $manager->persist($state);
-        $this->addReference('state-catalunya', $state);
+        $stateObjectManager->persist($stateCatalunya);
+        $this->addReference('state-catalunya', $stateCatalunya);
 
-        $manager->flush();
+        $stateObjectManager->flush([
+            $stateCatalunya
+        ]);
     }
 
     /**

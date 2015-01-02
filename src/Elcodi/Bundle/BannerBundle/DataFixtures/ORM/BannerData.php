@@ -20,8 +20,8 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\Component\Banner\Entity\Interfaces\BannerInterface;
 use Elcodi\Component\Banner\Entity\Interfaces\BannerZoneInterface;
+use Elcodi\Component\Banner\Factory\BannerFactory;
 
 /**
  * AdminData class
@@ -36,40 +36,47 @@ class BannerData extends AbstractFixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         /**
+         * @var BannerFactory $bannerFactory
+         */
+        $bannerFactory = $this->getFactory('banner');
+        $bannerObjectManager = $this->getObjectManager('banner');
+
+        /**
          * Banner
          *
-         * @var BannerInterface $banner
          * @var BannerZoneInterface $bannerZone
          */
-        $banner = $this->container->get('elcodi.core.banner.factory.banner')->create();
         $bannerZone = $this->getReference('banner-zone');
-        $banner
+        $banner = $bannerFactory
+            ->create()
             ->setName('banner')
             ->setDescription('Simple banner')
             ->addBannerZone($bannerZone)
             ->setUrl('http://myurl.com');
 
-        $manager->persist($banner);
+        $bannerObjectManager->persist($banner);
         $this->addReference('banner', $banner);
 
         /**
          * Banner no language
          *
-         * @var BannerInterface $banner
          * @var BannerZoneInterface $bannerZone
          */
-        $bannerNoLanguage = $this->container->get('elcodi.core.banner.factory.banner')->create();
         $bannerZoneNoLanguage = $this->getReference('banner-zone-nolanguage');
-        $bannerNoLanguage
+        $bannerNoLanguage = $bannerFactory
+            ->create()
             ->setName('banner-nolanguage')
             ->setDescription('Simple banner no language')
             ->addBannerZone($bannerZoneNoLanguage)
             ->setUrl('http://myurl.com');
 
-        $manager->persist($bannerNoLanguage);
+        $bannerObjectManager->persist($bannerNoLanguage);
         $this->addReference('banner-nolanguage', $bannerNoLanguage);
 
-        $manager->flush();
+        $bannerObjectManager->flush([
+            $banner,
+            $bannerNoLanguage
+        ]);
     }
 
     /**

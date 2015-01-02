@@ -20,6 +20,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
+use Elcodi\Component\Product\Factory\CategoryFactory;
 
 /**
  * Class CategoryData
@@ -34,13 +35,19 @@ class CategoryData extends AbstractFixture
     public function load(ObjectManager $manager)
     {
         /**
+         * @var ObjectManager   $categoryObjectManager
+         * @var CategoryFactory $categoryFactory
+         */
+        $categoryObjectManager = $this->getObjectManager('category');
+        $categoryFactory = $this->getFactory('category');
+
+        /**
          * Category
          *
          * @var CategoryInterface $rootCategory
          */
-        $rootCategory = $this->container->get('elcodi.core.product.factory.category')->create();
-        $rootCategory
-            ->setId(1)
+        $rootCategory = $categoryFactory
+            ->create()
             ->setName('root-category')
             ->setSlug('root-category')
             ->setEnabled(true)
@@ -54,9 +61,8 @@ class CategoryData extends AbstractFixture
          *
          * @var CategoryInterface $category
          */
-        $category = $this->container->get('elcodi.core.product.factory.category')->create();
-        $category
-            ->setId(2)
+        $category = $categoryFactory
+            ->create()
             ->setName('category')
             ->setSlug('category')
             ->setEnabled(true)
@@ -66,6 +72,9 @@ class CategoryData extends AbstractFixture
         $manager->persist($category);
         $this->addReference('category', $category);
 
-        $manager->flush();
+        $categoryObjectManager->flush([
+            $rootCategory,
+            $category,
+        ]);
     }
 }

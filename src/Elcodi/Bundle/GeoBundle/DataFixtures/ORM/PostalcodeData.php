@@ -33,30 +33,35 @@ class PostalcodeData extends AbstractFixture implements DependentFixtureInterfac
     public function load(ObjectManager $manager)
     {
         /**
-         * @var PostalCodeFactory $postalcodeFactory
+         * @var PostalCodeFactory $postalCodeFactory
          */
-        $postalcodeFactory = $this->container->get('elcodi.factory.postal_code');
-        $postalcode = $postalcodeFactory->create();
-        $postalcode
+        $postalCodeFactory = $this->getFactory('postal_code');
+        $postalCodeObjectManager = $this->getObjectManager('postal_code');
+
+        $postalcode08021 = $postalCodeFactory
+            ->create()
             ->setId('es-cat-bar-bar-08021')
             ->setCode('08021')
             ->addCity($this->getReference('city-barcelona'))
             ->setEnabled(true);
 
-        $manager->persist($postalcode);
-        $this->addReference('postalcode-08021', $postalcode);
+        $postalCodeObjectManager->persist($postalcode08021);
+        $this->addReference('postalcode-08021', $postalcode08021);
 
-        $postalcode = $postalcodeFactory->create();
-        $postalcode
+        $postalcode08232 = $postalCodeFactory
+            ->create()
             ->setId('es-cat-bar-viladecavalls-08232')
             ->setCode('08232')
             ->addCity($this->getReference('city-viladecavalls'))
             ->setEnabled(true);
 
-        $manager->persist($postalcode);
-        $this->addReference('postalcode-08232', $postalcode);
+        $postalCodeObjectManager->persist($postalcode08232);
+        $this->addReference('postalcode-08232', $postalcode08232);
 
-        $manager->flush();
+        $postalCodeObjectManager->flush([
+            $postalcode08021,
+            $postalcode08232,
+        ]);
     }
 
     /**

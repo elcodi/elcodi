@@ -18,8 +18,7 @@ namespace Elcodi\Component\Banner\Factory;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
-use Elcodi\Component\Banner\Entity\Banner;
-use Elcodi\Component\Banner\Entity\BannerZone;
+use Elcodi\Component\Banner\Entity\Interfaces\BannerZoneInterface;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 
 /**
@@ -32,12 +31,12 @@ class BannerZoneFactory extends AbstractFactory
      *
      * This method must return always an empty instance for related entity
      *
-     * @return Banner New BannerZone instance
+     * @return BannerZoneInterface New BannerZone instance
      */
     public function create()
     {
         /**
-         * @var BannerZone $bannerZone
+         * @var BannerZoneInterface $bannerZone
          */
         $classNamespace = $this->getEntityNamespace();
         $bannerZone = new $classNamespace();

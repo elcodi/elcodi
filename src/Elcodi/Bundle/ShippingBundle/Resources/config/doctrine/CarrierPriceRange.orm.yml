@@ -15,12 +15,12 @@ Elcodi\Component\Shipping\Entity\CarrierPriceRange:
         fromPriceCurrency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
-                name: from_price_currency_id
-                referencedColumnName: id
+                name: from_price_currency_iso
+                referencedColumnName: iso
                 nullable: true
         toPriceCurrency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
-                name: to_price_currency_id
-                referencedColumnName: id
+                name: to_price_currency_iso
+                referencedColumnName: iso
                 nullable: false

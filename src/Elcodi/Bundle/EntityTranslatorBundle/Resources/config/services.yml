@@ -17,6 +17,9 @@ services:
         tags:
             - { name: kernel.event_listener, event: translator.warmup, method: warmUp }
 
+    elcodi.entity_translator_changes:
+        class: %elcodi.entity_translator_changes.class%
+
     elcodi.entity_translation_provider:
         alias: elcodi.core.entity_translator.services.cached_entity_translation_provider
 

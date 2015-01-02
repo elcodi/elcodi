@@ -52,8 +52,8 @@ Elcodi\Component\Cart\Entity\OrderLine:
         currency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
-                 name: currency_id
-                 referencedColumnName: id
+                 name: currency_iso
+                 referencedColumnName: iso
                  nullable: false
         product:
             targetEntity: Elcodi\Component\Product\Entity\Interfaces\ProductInterface

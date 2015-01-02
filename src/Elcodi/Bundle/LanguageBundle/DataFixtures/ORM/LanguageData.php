@@ -19,6 +19,7 @@ namespace Elcodi\Bundle\LanguageBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\Component\Language\Factory\LanguageFactory;
 
 /**
  * AdminData class
@@ -33,49 +34,57 @@ class LanguageData extends AbstractFixture
     public function load(ObjectManager $manager)
     {
         /**
-         * Languages
+         * @var LanguageFactory $languageFactory
          */
-        $languageFactory = $this->container->get('elcodi.core.language.factory.language');
-        $languageEs = $languageFactory->create();
-        $languageEs
+        $languageFactory = $this->getFactory('language');
+        $languageObjectManager = $this->getObjectManager('language');
+
+        $languageEs = $languageFactory
+            ->create()
             ->setIso('es')
             ->setname('Español');
 
-        $manager->persist($languageEs);
+        $languageObjectManager->persist($languageEs);
         $this->addReference('language-es', $languageEs);
 
-        $languageEn = $languageFactory->create();
-        $languageEn
+        $languageEn = $languageFactory
+            ->create()
             ->setIso('en')
             ->setname('English');
 
-        $manager->persist($languageEn);
+        $languageObjectManager->persist($languageEn);
         $this->addReference('language-en', $languageEn);
 
-        $languageFr = $languageFactory->create();
-        $languageFr
+        $languageFr = $languageFactory
+            ->create()
             ->setIso('fr')
             ->setname('Français');
 
-        $manager->persist($languageFr);
+        $languageObjectManager->persist($languageFr);
         $this->addReference('language-fr', $languageFr);
 
-        $languageIt = $languageFactory->create();
-        $languageIt
+        $languageIt = $languageFactory
+            ->create()
             ->setIso('it')
             ->setname('Italiano');
 
-        $manager->persist($languageIt);
+        $languageObjectManager->persist($languageIt);
         $this->addReference('language-it', $languageIt);
 
-        $languageDe = $languageFactory->create();
-        $languageDe
+        $languageDe = $languageFactory
+            ->create()
             ->setIso('de')
             ->setname('Deutch');
 
-        $manager->persist($languageDe);
+        $languageObjectManager->persist($languageDe);
         $this->addReference('language-de', $languageDe);
 
-        $manager->flush();
+        $languageObjectManager->flush([
+            $languageEs,
+            $languageEn,
+            $languageFr,
+            $languageIt,
+            $languageDe,
+        ]);
     }
 }

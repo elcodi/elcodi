@@ -16,7 +16,6 @@
 
 namespace Elcodi\Component\Menu\Factory;
 
-use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
@@ -41,8 +40,7 @@ class NodeFactory extends AbstractFactory
         $node = new $classNamespace();
         $node
             ->setSubnodes(new ArrayCollection())
-            ->setEnabled(false)
-            ->setCreatedAt(new DateTime());
+            ->setEnabled(false);
 
         return $node;
     }

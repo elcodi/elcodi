@@ -20,7 +20,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\Component\Attribute\Entity\Value;
+use Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
@@ -39,18 +39,17 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
          * @var ProductInterface  $productWithVariants
          * @var CurrencyInterface $currency
          * @var VariantFactory    $variantFactory
-         * @var ObjectManager     $variantObjectManager
          */
         $currency = $this->getReference('currency-dollar');
         $productWithVariants = $this->getReference('product-with-variants');
-        $variantFactory = $this->get('elcodi.factory.product_variant');
-        $variantObjectManager = $this->get('elcodi.object_manager.product_variant');
+        $variantFactory = $this->getFactory('product_variant');
+        $variantObjectManager = $this->getObjectManager('product_variant');
 
         /**
-         * @var $optionWhite Value
-         * @var $optionRed   Value
-         * @var $optionSmall Value
-         * @var $optionLarge Value
+         * @var $optionWhite ValueInterface
+         * @var $optionRed   ValueInterface
+         * @var $optionSmall ValueInterface
+         * @var $optionLarge ValueInterface
          */
         $optionWhite = $this->getReference('value-color-white');
         $optionRed = $this->getReference('value-color-red');
@@ -139,7 +138,12 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
         $variantObjectManager->persist($variantRedLarge);
         $this->addReference('variant-red-large', $productWithVariants);
 
-        $variantObjectManager->flush();
+        $variantObjectManager->flush([
+            $variantWhiteSmall,
+            $variantWhiteLarge,
+            $variantRedSmall,
+            $variantRedLarge,
+        ]);
     }
 
     /**

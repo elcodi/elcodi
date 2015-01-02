@@ -78,6 +78,24 @@ class TranslatableFieldType extends AbstractType
     protected $locales;
 
     /**
+     * @var string
+     *
+     * Master locale
+     */
+    protected $masterLocale;
+
+    /**
+     * @var boolean
+     *
+     * Fallback is enabled.
+     *
+     * If a field is required and the fallback flag is enabled, all translations
+     * will not be required anymore, but just the translation with same language
+     * than master
+     */
+    protected $fallback;
+
+    /**
      * Construct
      *
      * @param EntityTranslationProviderInterface $entityTranslationProvider Entity Translation provider
@@ -86,7 +104,9 @@ class TranslatableFieldType extends AbstractType
      * @param string                             $fieldName                 Field name
      * @param array                              $entityConfiguration       Entity configuration
      * @param array                              $fieldConfiguration        Field configuration
-     * @param Collection                         $locales                   Locales
+     * @param array                              $locales                   Locales
+     * @param string                             $masterLocale              Master locale
+     * @param boolean                            $fallback                  Fallback
      */
     public function __construct(
         EntityTranslationProviderInterface $entityTranslationProvider,
@@ -95,7 +115,9 @@ class TranslatableFieldType extends AbstractType
         $fieldName,
         array $entityConfiguration,
         array $fieldConfiguration,
-        Collection $locales
+        array $locales,
+        $masterLocale,
+        $fallback
     )
     {
         $this->translationProvider = $entityTranslationProvider;
@@ -105,6 +127,8 @@ class TranslatableFieldType extends AbstractType
         $this->entityConfiguration = $entityConfiguration;
         $this->fieldConfiguration = $fieldConfiguration;
         $this->locales = $locales;
+        $this->masterLocale = $masterLocale;
+        $this->fallback = $fallback;
     }
 
     /**
@@ -144,12 +168,30 @@ class TranslatableFieldType extends AbstractType
                 : '';
 
             $builder->add($translatedFieldName, $fieldType, array(
-                'required' => $fieldOptions['required'],
+                'required' => $this->evaluateRequired(
+                    $fieldOptions['required'],
+                    $locale
+                ),
                 'mapped'   => false,
-                'label'    => 'Translation of ' . $this->fieldName . ' for ' . $locale,
+                'label'    => $fieldOptions['label'],
                 'data'     => $translationData,
             ));
         }
+    }
+
+    /**
+     * Check the require value
+     *
+     * @param boolean $required Form field is required
+     * @param string  $locale   Locale
+     *
+     * @return boolean translatable field is required
+     */
+    public function evaluateRequired($required, $locale)
+    {
+        return $this->fallback
+            ? $this->masterLocale === $locale
+            : $required;
     }
 
     /**

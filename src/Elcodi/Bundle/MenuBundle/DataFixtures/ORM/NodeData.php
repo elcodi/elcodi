@@ -19,7 +19,7 @@ namespace Elcodi\Bundle\MenuBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface;
+use Elcodi\Component\Menu\Factory\NodeFactory;
 
 /**
  * Class NodeData
@@ -34,31 +34,26 @@ class NodeData extends AbstractFixture
     public function load(ObjectManager $manager)
     {
         /**
-         * @var NodeInterface $menuNodeHim
-         * @var NodeInterface $menuNodeHer
-         * @var NodeInterface $menuNodeVogue
+         * @var NodeFactory $menuNodeFactory
          */
-        $menuNodeHim = $this
-            ->container
-            ->get('elcodi.factory.menu_node')
+        $menuNodeFactory = $this->getFactory('menu_node');
+        $menuNodeObjectManager = $this->getObjectManager('menu_node');
+
+        $menuNodeHim = $menuNodeFactory
             ->create()
             ->setName('him')
             ->setCode('him')
             ->setUrl('elcodi.dev/him')
             ->setEnabled(true);
 
-        $menuNodeHer = $this
-            ->container
-            ->get('elcodi.factory.menu_node')
+        $menuNodeHer = $menuNodeFactory
             ->create()
             ->setName('her')
             ->setCode('her')
             ->setUrl('elcodi.dev/her')
             ->setEnabled(true);
 
-        $menuNodeVogue = $this
-            ->container
-            ->get('elcodi.factory.menu_node')
+        $menuNodeVogue = $menuNodeFactory
             ->create()
             ->setName('vogue')
             ->setCode('vogue')
@@ -66,11 +61,13 @@ class NodeData extends AbstractFixture
             ->addSubnode($menuNodeHim)
             ->addSubnode($menuNodeHer);
 
-        $manager->persist($menuNodeVogue);
+        $menuNodeObjectManager->persist($menuNodeVogue);
         $this->addReference('menu-node-him', $menuNodeHim);
         $this->addReference('menu-node-her', $menuNodeHer);
         $this->addReference('menu-node-vogue', $menuNodeVogue);
 
-        $manager->flush();
+        $menuNodeObjectManager->flush([
+            $menuNodeVogue
+        ]);
     }
 }

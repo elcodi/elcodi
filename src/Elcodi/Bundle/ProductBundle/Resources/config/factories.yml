@@ -12,7 +12,6 @@ services:
         parent: elcodi.core.currency.factory.abstract.purchasable
         calls:
             - [setEntityNamespace, ["%elcodi.core.product.entity.product.class%"]]
-            - [setGenerator, [@elcodi.generator.uniqid]]
 
     elcodi.factory.product:
         alias: elcodi.core.product.factory.product
@@ -47,7 +46,6 @@ services:
         class: %elcodi.core.product.factory.category.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.product.entity.category.class%"]]
-            - [setGenerator, [@elcodi.generator.uniqid]]
 
     elcodi.factory.category:
         alias: elcodi.core.product.factory.category

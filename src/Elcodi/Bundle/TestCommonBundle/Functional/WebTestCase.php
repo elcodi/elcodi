@@ -16,24 +16,23 @@
 
 namespace Elcodi\Bundle\TestCommonBundle\Functional;
 
-use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\ORM\EntityRepository;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as BaseWebTestCase;
 use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
 use Symfony\Component\HttpKernel\KernelInterface;
 
-use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
+use Elcodi\Bundle\CoreBundle\Container\Traits\ContainerAccessorTrait;
 
 /**
  * Core abstract tests class
  */
 abstract class WebTestCase extends BaseWebTestCase
 {
+    use ContainerAccessorTrait;
+
     /**
      * @var Application
      *
@@ -49,13 +48,6 @@ abstract class WebTestCase extends BaseWebTestCase
     protected $client;
 
     /**
-     * @var ContainerInterface
-     *
-     * Container
-     */
-    private $container;
-
-    /**
      * Set up
      */
     public function setUp()
@@ -69,7 +61,7 @@ abstract class WebTestCase extends BaseWebTestCase
             $this->container = static::$kernel->getContainer();
 
         } catch (Exception $e) {
-
+die($e->getMessage());
             throw new RuntimeException(
                 sprintf('Unable to start the application: %s', $e->getMessage()),
                 $e->getCode(),
@@ -224,149 +216,6 @@ abstract class WebTestCase extends BaseWebTestCase
             '--fixtures'       => $formattedBundles,
             '--quiet'          => true,
         )));
-
-        return $this;
-    }
-
-    /**
-     * Get manager given its its entity name
-     *
-     * @param string $entityName Entity name
-     *
-     * @return ObjectManager Manager
-     */
-    public function getObjectManager($entityName)
-    {
-        return $this
-            ->container
-            ->get('elcodi.object_manager.' . $entityName);
-    }
-
-    /**
-     * Get entity repository given its entity name
-     *
-     * @param string $entityName Entity name
-     *
-     * @return EntityRepository Repository
-     */
-    public function getRepository($entityName)
-    {
-        return $this
-            ->container
-            ->get('elcodi.repository.' . $entityName);
-    }
-
-    /**
-     * Get factory given its its entity name
-     *
-     * @param string $entityName Entity name
-     *
-     * @return AbstractFactory Factory
-     */
-    public function getFactory($entityName)
-    {
-        return $this
-            ->container
-            ->get('elcodi.factory.' . $entityName);
-    }
-
-    /**
-     * Get container service
-     *
-     * @param string $serviceName Container service name
-     *
-     * @return mixed The associated service
-     */
-    public function get($serviceName)
-    {
-        return $this
-            ->container
-            ->get($serviceName);
-    }
-
-    /**
-     * Get container parameter
-     *
-     * @param string $parameterName Container parameter name
-     *
-     * @return mixed The required parameter value
-     */
-    public function getParameter($parameterName)
-    {
-        return $this
-            ->container
-            ->getParameter($parameterName);
-    }
-
-    /**
-     * Get the entity instance with id $id
-     *
-     * @param string  $entityName Entity name
-     * @param integer $id         Instance id
-     *
-     * @return mixed Entity
-     */
-    public function find($entityName, $id)
-    {
-        return $this
-            ->getRepository($entityName)
-            ->find($id);
-    }
-
-    /**
-     * Get all entity instances
-     *
-     * @param string $entityName Entity name
-     *
-     * @return array Result
-     */
-    public function findAll($entityName)
-    {
-        return $this
-            ->getRepository($entityName)
-            ->findAll();
-    }
-
-    /**
-     * Save an entity. To ensure the method is simple, the entity will be
-     * persisted always
-     *
-     * @param mixed $entity Entity
-     *
-     * @return $this self Object
-     */
-    public function flush($entity)
-    {
-        /**
-         * @var ObjectManager $objectManager
-         */
-        $objectManager = $this
-            ->get('elcodi.manager_provider')
-            ->getManagerByEntityNamespace(get_class($entity));
-
-        $objectManager->persist($entity);
-        $objectManager->flush($entity);
-
-        return $this;
-    }
-
-    /**
-     * Remove an entity from ORM map.
-     *
-     * @param mixed $entity Entity
-     *
-     * @return $this self Object
-     */
-    public function clear($entity)
-    {
-        /**
-         * @var ObjectManager $objectManager
-         */
-        $objectManager = $this
-            ->get('elcodi.manager_provider')
-            ->getManagerByEntityNamespace(get_class($entity));
-
-        $objectManager->clear($entity);
 
         return $this;
     }

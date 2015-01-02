@@ -35,18 +35,25 @@ class WarehouseData extends AbstractFixture implements DependentFixtureInterface
         /**
          * @var WarehouseFactory $warehouseFactory
          */
-        $warehouseFactory = $this->container->get('elcodi.factory.warehouse');
-        $warehouse = $warehouseFactory->create();
-        $warehouse
+        $warehouseFactory = $this->getFactory('warehouse');
+        $warehouseObjectManager = $this->getObjectManager('warehouse');
+
+        /**
+         * Warehouse
+         */
+        $warehouse = $warehouseFactory
+            ->create()
             ->setName('warehouse')
             ->setDescription('Testing warehouse')
             ->setAddress($this->getReference('address-viladecavalls'))
             ->setEnabled(true);
 
-        $manager->persist($warehouse);
+        $warehouseObjectManager->persist($warehouse);
         $this->addReference('warehouse', $warehouse);
 
-        $manager->flush();
+        $warehouseObjectManager->flush([
+            $warehouse,
+        ]);
     }
 
     /**

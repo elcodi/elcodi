@@ -37,6 +37,6 @@ Elcodi\Component\CartCoupon\Entity\OrderCoupon:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             fetch: EAGER
             joinColumn:
-                 name: amount_currency_id
-                 referencedColumnName: id
+                 name: amount_currency_iso
+                 referencedColumnName: iso
                  nullable: true

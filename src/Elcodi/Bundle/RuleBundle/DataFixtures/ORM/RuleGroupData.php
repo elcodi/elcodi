@@ -20,7 +20,6 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\Component\Rule\Entity\Interfaces\RuleGroupInterface;
 use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
 use Elcodi\Component\Rule\Factory\RuleGroupFactory;
 
@@ -35,36 +34,46 @@ class RuleGroupData extends AbstractFixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         /**
-         * @var RuleGroupFactory   $ruleGroupFactory
-         * @var RuleGroupInterface $ruleGroup
+         * @var RuleGroupFactory $ruleGroupFactory
          * @var RuleInterface      $ruleTrue
          * @var RuleInterface      $ruleFalse
          */
-        $ruleGroupFactory = $this->container->get('elcodi.core.rule.factory.rule_group');
+        $ruleGroupFactory = $this->getFactory('rule_group');
+        $ruleGroupObjectManager = $this->getObjectManager('rule_group');
         $ruleTrue = $this->getReference('rule-true');
         $ruleFalse = $this->getReference('rule-false');
-        $ruleGroupTrue = $ruleGroupFactory->create();
-        $ruleGroupTrue
+
+        /**
+         * True group
+         */
+        $ruleGroupTrue = $ruleGroupFactory
+            ->create()
             ->addRule($ruleTrue)
             ->setName('RuleGroupTrue')
             ->setCode('rule-group-true')
             ->setEnabled(true);
 
-        $manager->persist($ruleGroupTrue);
+        $ruleGroupObjectManager->persist($ruleGroupTrue);
         $this->addReference('rule-group-true', $ruleGroupTrue);
 
-        $ruleGroupFalse = $ruleGroupFactory->create();
-        $ruleGroupFalse
+        /**
+         * False group
+         */
+        $ruleGroupFalse = $ruleGroupFactory
+            ->create()
             ->addRule($ruleTrue)
             ->addRule($ruleFalse)
             ->setName('RuleGroupFalse')
             ->setCode('rule-group-false')
             ->setEnabled(true);
 
-        $manager->persist($ruleGroupFalse);
+        $ruleGroupObjectManager->persist($ruleGroupFalse);
         $this->addReference('rule-group-false', $ruleGroupFalse);
 
-        $manager->flush();
+        $ruleGroupObjectManager->flush([
+            $ruleGroupTrue,
+            $ruleGroupFalse,
+        ]);
     }
 
     /**

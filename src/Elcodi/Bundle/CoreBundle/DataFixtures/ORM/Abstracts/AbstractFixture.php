@@ -19,9 +19,9 @@ namespace Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts;
 use Doctrine\Common\DataFixtures\AbstractFixture as DoctrineAbstractFixture;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use Symfony\Component\Yaml\Parser;
+
+use Elcodi\Bundle\CoreBundle\Container\Traits\ContainerAccessorTrait;
 
 /**
  * AdminData class
@@ -30,12 +30,7 @@ use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
  */
 abstract class AbstractFixture extends DoctrineAbstractFixture implements ContainerAwareInterface
 {
-    /**
-     * @var ContainerInterface
-     *
-     * Container
-     */
-    protected $container;
+    use ContainerAccessorTrait;
 
     /**
      * Set container
@@ -52,20 +47,16 @@ abstract class AbstractFixture extends DoctrineAbstractFixture implements Contai
     }
 
     /**
-     * Get service from container
+     * Parse some content using a YAML parser
      *
-     * @param string $serviceName Service name
+     * @param string $filePath File path
      *
-     * @return Object service instance
-     *
-     * @throws InvalidArgumentException          if the service is not defined
-     * @throws ServiceCircularReferenceException When a circular reference is detected
-     * @throws ServiceNotFoundException          When the service is not defined
+     * @return mixed Value parsed
      */
-    protected function get($serviceName)
+    protected function parseYaml($filePath)
     {
-        return $this
-            ->container
-            ->get($serviceName);
+        $yaml = new Parser();
+
+        return $yaml->parse(file_get_contents($filePath));
     }
 }

@@ -19,6 +19,7 @@ namespace Elcodi\Bundle\AttributeBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\Component\Attribute\Factory\AttributeFactory;
 
 /**
  * Class AttributeData
@@ -32,26 +33,33 @@ class AttributeData extends AbstractFixture
      */
     public function load(ObjectManager $objectManager)
     {
-        $sizeAttribute = $this->container->get('elcodi.core.attribute.factory.attribute')->create();
+        /**
+         * @var AttributeFactory $attributeFactory
+         */
+        $attributeFactory = $this->getFactory('attribute');
+        $attributeObjectManager = $this->getObjectManager('attribute');
 
-        $sizeAttribute
+        $sizeAttribute = $attributeFactory
+            ->create()
             ->setName('Size')
             ->setDisplayName('Size')
             ->setEnabled(true);
 
-        $objectManager->persist($sizeAttribute);
+        $attributeObjectManager->persist($sizeAttribute);
         $this->addReference('attribute-size', $sizeAttribute);
 
-        $colorAttribute = $this->container->get('elcodi.core.attribute.factory.attribute')->create();
-
-        $colorAttribute
+        $colorAttribute = $attributeFactory
+            ->create()
             ->setName('Color')
             ->setDisplayName('Color')
             ->setEnabled(true);
 
-        $objectManager->persist($colorAttribute);
+        $attributeObjectManager->persist($colorAttribute);
         $this->addReference('attribute-color', $colorAttribute);
 
-        $objectManager->flush();
+        $attributeObjectManager->flush([
+            $sizeAttribute,
+            $colorAttribute,
+        ]);
     }
 }

@@ -60,7 +60,12 @@ class CurrencySessionManager
      */
     public function set(CurrencyInterface $currency)
     {
-        $this->session->set($this->sessionFieldName, $currency->getId());
+        $this
+            ->session
+            ->set(
+                $this->sessionFieldName,
+                $currency->getIso()
+            );
 
         return $this;
     }
@@ -72,6 +77,8 @@ class CurrencySessionManager
      */
     public function get()
     {
-        return $this->session->get($this->sessionFieldName);
+        return $this
+            ->session
+            ->get($this->sessionFieldName);
     }
 }

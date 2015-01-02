@@ -20,6 +20,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\Component\Rule\Entity\Interfaces\ExpressionInterface;
 use Elcodi\Component\Rule\Factory\RuleFactory;
 
 /**
@@ -33,40 +34,52 @@ class RuleData extends AbstractFixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         /**
-         * @var RuleFactory   $ruleFactory
+         * @var RuleFactory         $ruleFactory
+         * @var ExpressionInterface $expressionTrue
+         * @var ExpressionInterface $expressionFalse
+         * @var ExpressionInterface $expressionVariables
          */
-        $ruleFactory = $this->container->get('elcodi.core.rule.factory.rule');
+        $ruleFactory = $this->getFactory('rule');
+        $ruleObjectManager = $this->getObjectManager('rule');
         $expressionTrue = $this->getReference('expression-true');
         $expressionFalse = $this->getReference('expression-false');
         $expressionVariables = $this->getReference('expression-variables');
-        $ruleTrue = $ruleFactory->create();
-        $ruleTrue
+
+        $ruleTrue = $ruleFactory
+            ->create()
             ->setName('Rule true')
             ->setCode('rule-true')
             ->setEnabled(true)
             ->setExpression($expressionTrue);
-        $manager->persist($ruleTrue);
+
+        $ruleObjectManager->persist($ruleTrue);
         $this->addReference('rule-true', $ruleTrue);
 
-        $ruleFalse = $ruleFactory->create();
-        $ruleFalse
+        $ruleFalse = $ruleFactory
+            ->create()
             ->setName('Rule false')
             ->setCode('rule-false')
             ->setEnabled(true)
             ->setExpression($expressionFalse);
-        $manager->persist($ruleFalse);
+
+        $ruleObjectManager->persist($ruleFalse);
         $this->addReference('rule-false', $ruleFalse);
 
-        $ruleVariables = $ruleFactory->create();
-        $ruleVariables
+        $ruleVariables = $ruleFactory
+            ->create()
             ->setName('Rule variables')
             ->setCode('rule-variables')
             ->setEnabled(true)
             ->setExpression($expressionVariables);
-        $manager->persist($ruleVariables);
+
+        $ruleObjectManager->persist($ruleVariables);
         $this->addReference('rule-variables', $ruleVariables);
 
-        $manager->flush();
+        $ruleObjectManager->flush([
+            $ruleTrue,
+            $ruleFalse,
+            $ruleVariables,
+        ]);
     }
 
     /**
