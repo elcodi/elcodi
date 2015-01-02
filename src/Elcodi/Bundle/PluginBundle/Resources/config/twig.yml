@@ -1,0 +1,11 @@
+services:
+
+    #
+    # Twig extensions
+    #
+    elcodi.core.plugin.twig_extension.hook:
+        class: %elcodi.core.plugin.twig_extension.hook.class%
+        arguments:
+            - @elcodi.hook_system
+        tags:
+            - { name: twig.extension }

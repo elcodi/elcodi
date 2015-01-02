@@ -1,0 +1,42 @@
+{
+    "name": "elcodi/plugin-bundle",
+    "description": "Elcodi Plugin Bundle",
+    "keywords": ["elcodi", "plugin", "ecommerce"],
+    "homepage": "https://github.com/elcodi/PluginBundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "Elcodi Community",
+            "homepage": "https://github.com/elcodi/PluginBundle/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+
+        "symfony/config": "~2.6",
+        "symfony/dependency-injection": "~2.6",
+        "symfony/http-kernel": "~2.6",
+
+        "elcodi/core-bundle": "~0.4.0",
+        "elcodi/plugin": "~0.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\Bundle\\PluginBundle\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.5-dev"
+        }
+    }
+}
