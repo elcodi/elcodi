@@ -35,19 +35,23 @@ class ProvinceData extends AbstractFixture implements DependentFixtureInterface
         /**
          * @var ProvinceFactory $provinceFactory
          */
-        $provinceFactory = $this->container->get('elcodi.factory.province');
-        $province = $provinceFactory->create();
-        $province
+        $provinceFactory = $this->getFactory('province');
+        $provinceObjectManager = $this->getObjectManager('province');
+
+        $provinceBarcelones = $provinceFactory
+            ->create()
             ->setId('es-cat-bar')
             ->setCode('bar')
             ->setName('Barcelonès')
             ->setState($this->getReference('state-catalunya'))
             ->setEnabled(true);
 
-        $manager->persist($province);
-        $this->addReference('province-barcelones', $province);
+        $provinceObjectManager->persist($provinceBarcelones);
+        $this->addReference('province-barcelones', $provinceBarcelones);
 
-        $manager->flush();
+        $provinceObjectManager->flush([
+            $provinceBarcelones
+        ]);
     }
 
     /**

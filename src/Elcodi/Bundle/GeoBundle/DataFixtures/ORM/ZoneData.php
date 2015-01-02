@@ -37,9 +37,14 @@ class ZoneData extends AbstractFixture implements DependentFixtureInterface
         /**
          * @var ZoneFactory $zoneFactory
          */
-        $zoneFactory = $this->get('elcodi.factory.zone');
-        $zoneBarcelona = $zoneFactory->create();
-        $zoneBarcelona
+        $zoneFactory = $this->getFactory('zone');
+        $zoneObjectManager = $this->getObjectManager('zone');
+
+        /**
+         * Zone Barcelona
+         */
+        $zoneBarcelona = $zoneFactory
+            ->create()
             ->setCode('zone-barcelona')
             ->setName('Barcelona zone');
 
@@ -50,12 +55,15 @@ class ZoneData extends AbstractFixture implements DependentFixtureInterface
 
         $zoneBarcelona->addMember($zoneCityMemberBarcelona);
 
-        $manager->persist($zoneBarcelona);
-        $manager->persist($zoneCityMemberBarcelona);
+        $zoneObjectManager->persist($zoneBarcelona);
+        $zoneObjectManager->persist($zoneCityMemberBarcelona);
         $this->addReference('zone-barcelona', $zoneBarcelona);
 
-        $zoneViladecavalls = $zoneFactory->create();
-        $zoneViladecavalls
+        /**
+         * Zone Viladecavalls
+         */
+        $zoneViladecavalls = $zoneFactory
+            ->create()
             ->setCode('zone-viladecavalls')
             ->setName('Viladecavalls zone');
 
@@ -66,11 +74,11 @@ class ZoneData extends AbstractFixture implements DependentFixtureInterface
 
         $zoneViladecavalls->addMember($zonePostalcodeMemberViladecavalls);
 
-        $manager->persist($zoneViladecavalls);
-        $manager->persist($zonePostalcodeMemberViladecavalls);
+        $zoneObjectManager->persist($zoneViladecavalls);
+        $zoneObjectManager->persist($zonePostalcodeMemberViladecavalls);
         $this->addReference('zone-viladecavalls', $zoneViladecavalls);
 
-        $manager->flush();
+        $zoneObjectManager->flush();
     }
 
     /**

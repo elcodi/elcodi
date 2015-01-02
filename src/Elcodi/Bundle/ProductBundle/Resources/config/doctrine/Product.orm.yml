@@ -6,7 +6,7 @@ Elcodi\Component\Product\Entity\Product:
         id:
             type: integer
             generator:
-                strategy: none
+                strategy: AUTO
     fields:
         name:
             column: name
@@ -125,14 +125,14 @@ Elcodi\Component\Product\Entity\Product:
         priceCurrency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
-                 name: price_currency_id
-                 referencedColumnName: id
+                 name: price_currency_iso
+                 referencedColumnName: iso
                  nullable: true
         reducedPriceCurrency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
-                 name: reduced_price_currency_id
-                 referencedColumnName: id
+                 name: reduced_price_currency_iso
+                 referencedColumnName: iso
                  nullable: true
 
     oneToMany:

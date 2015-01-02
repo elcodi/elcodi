@@ -3,22 +3,17 @@ Elcodi\Component\Language\Entity\Language:
     repositoryClass: Elcodi\Component\Language\Repository\LanguageRepository
     table: language
     id:
-        id:
-            type: integer
-            generator:
-                strategy: AUTO
-    fields:
         iso:
-            column: iso
             type: string
-            length: 255
-            nullable: false
+            length: 10
+            generator:
+                strategy: NONE
+    fields:
         name:
             column: name
             type: string
             length: 255
             nullable: false
-        # enable
         enabled:
             column: enabled
             type: boolean

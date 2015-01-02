@@ -20,7 +20,6 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
-use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 use Elcodi\Component\Product\Entity\Category;
 
 /**
@@ -28,27 +27,6 @@ use Elcodi\Component\Product\Entity\Category;
  */
 class CategoryFactory extends AbstractFactory
 {
-    /**
-     * @var GeneratorInterface
-     *
-     * Generator
-     */
-    protected $generator;
-
-    /**
-     * Set generator
-     *
-     * @param GeneratorInterface $generator Generator
-     *
-     * @return $this self Object
-     */
-    public function setGenerator(GeneratorInterface $generator)
-    {
-        $this->generator = $generator;
-
-        return $this;
-    }
-
     /**
      * Creates an instance of Category
      *
@@ -62,7 +40,6 @@ class CategoryFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $category = new $classNamespace();
         $category
-            ->setId($this->generator->generate())
             ->setSubcategories(new ArrayCollection())
             ->setProducts(new ArrayCollection())
             ->setRoot(false)

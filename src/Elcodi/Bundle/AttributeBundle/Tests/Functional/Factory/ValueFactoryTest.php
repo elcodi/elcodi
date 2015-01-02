@@ -41,7 +41,7 @@ class ValueFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.attribute.factory.value',
+            'elcodi.core.attribute.factory.attribute_value',
             'elcodi.factory.attribute_value',
         ];
     }

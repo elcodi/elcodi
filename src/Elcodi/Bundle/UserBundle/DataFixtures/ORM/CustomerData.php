@@ -19,6 +19,7 @@ namespace Elcodi\Bundle\UserBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\Component\User\Factory\CustomerFactory;
 
 /**
  * AdminData class
@@ -33,25 +34,38 @@ class CustomerData extends AbstractFixture
     public function load(ObjectManager $manager)
     {
         /**
-         * Customer
+         * @var CustomerFactory $customerFactory
          */
-        $customerFactory = $this->container->get('elcodi.core.user.factory.customer');
-        $customer1 = $customerFactory->create();
-        $customer1
+        $customerObjectManager = $this->getObjectManager('customer');
+        $customerFactory = $this->getFactory('customer');
+
+        /**
+         * Customer 1
+         */
+        $customer1 = $customerFactory
+            ->create()
             ->setUsername('customer')
             ->setPassword('customer')
             ->setEmail('customer@customer.com');
-        $manager->persist($customer1);
+
+        $customerObjectManager->persist($customer1);
         $this->addReference('customer-1', $customer1);
 
-        $customer2 = $customerFactory->create();
-        $customer2
+        /**
+         * Customer 2
+         */
+        $customer2 = $customerFactory
+            ->create()
             ->setUsername('customer2')
             ->setPassword('customer2')
             ->setEmail('customer2@customer.com');
-        $manager->persist($customer2);
+
+        $customerObjectManager->persist($customer2);
         $this->addReference('customer-2', $customer2);
 
-        $manager->flush();
+        $customerObjectManager->flush([
+            $customer1,
+            $customer2,
+        ]);
     }
 }

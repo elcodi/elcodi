@@ -16,7 +16,6 @@
 
 namespace Elcodi\Component\Menu\Entity\Menu;
 
-use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\MenuInterface;
@@ -30,7 +29,6 @@ class Menu implements MenuInterface
     use
         IdentifiableTrait,
         SubnodesTrait,
-        DateTimeTrait,
         EnabledTrait;
 
     /**
@@ -52,7 +50,7 @@ class Menu implements MenuInterface
      *
      * @param string $code Code
      *
-     * @return Menu Self object
+     * @return $this Self object
      */
     public function setCode($code)
     {
@@ -76,7 +74,7 @@ class Menu implements MenuInterface
      *
      * @param string $description Description
      *
-     * @return Menu Self object
+     * @return $this Self object
      */
     public function setDescription($description)
     {

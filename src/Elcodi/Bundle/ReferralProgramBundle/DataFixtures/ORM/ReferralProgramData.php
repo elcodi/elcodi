@@ -23,6 +23,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\ReferralProgram\ElcodiReferralProgramRuleTypes;
+use Elcodi\Component\ReferralProgram\Factory\ReferralRuleFactory;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
@@ -36,33 +37,35 @@ class ReferralProgramData extends AbstractFixture implements DependentFixtureInt
     public function load(ObjectManager $manager)
     {
         /**
+         * @var ReferralRuleFactory $referralRuleFactory
+         * @var CouponInterface     $coupon
+         * @var CustomerInterface   $customer
+         */
+        $referralRuleFactory = $this->getFactory('referral_rule');
+        $referralHashFactory = $this->getFactory('referral_hash');
+        $referralRuleObjectManager = $this->getObjectManager('referral_rule');
+        $referralHashObjectManager = $this->getObjectManager('referral_hash');
+        $coupon = $this->getReference('coupon-percent');
+        $customer = $this->getReference('customer-1');
+
+        /**
          * Referral Rule: ReferrerCoupon NO, InvitedCoupon NO
          */
-        $referralRuleNoNO = $this
-            ->container
-            ->get('elcodi.core.referral_program.factory.referralrule')
-            ->create();
-
-        $referralRuleNoNO
+        $referralRuleNoNO = $referralRuleFactory
+            ->create()
             ->setReferrerType(ElcodiReferralProgramRuleTypes::TYPE_WITHOUT_COUPON)
             ->setInvitedType(ElcodiReferralProgramRuleTypes::TYPE_WITHOUT_COUPON)
             ->setValidFrom(new DateTime())
             ->enable();
 
-        /**
-         * @var CouponInterface $coupon
-         */
-        $coupon = $this->getReference('coupon-percent');
+        $referralRuleObjectManager->persist($referralRuleNoNO);
+        $this->addReference('referral-rule-no-no', $referralRuleNoNO);
 
         /**
          * Referral Rule: ReferrerCoupon Register, InvitedCoupon Register
          */
-        $referralRuleRegReg = $this
-            ->container
-            ->get('elcodi.core.referral_program.factory.referralrule')
-            ->create();
-
-        $referralRuleRegReg
+        $referralRuleRegReg = $referralRuleFactory
+            ->create()
             ->setReferrerType(ElcodiReferralProgramRuleTypes::TYPE_ON_REGISTER)
             ->setReferrerCoupon($coupon)
             ->setInvitedType(ElcodiReferralProgramRuleTypes::TYPE_ON_REGISTER)
@@ -70,15 +73,14 @@ class ReferralProgramData extends AbstractFixture implements DependentFixtureInt
             ->setValidFrom(new DateTime())
             ->disable();
 
+        $referralRuleObjectManager->persist($referralRuleRegReg);
+        $this->addReference('referral-rule-reg-reg', $referralRuleRegReg);
+
         /**
          * Referral Rule: ReferrerCoupon Purchase, InvitedCoupon Purchase
          */
-        $referralRulePurchPurch = $this
-            ->container
-            ->get('elcodi.core.referral_program.factory.referralrule')
-            ->create();
-
-        $referralRulePurchPurch
+        $referralRulePurchPurch = $referralRuleFactory
+            ->create()
             ->setReferrerType(ElcodiReferralProgramRuleTypes::TYPE_ON_FIRST_PURCHASE)
             ->setReferrerCoupon($coupon)
             ->setInvitedType(ElcodiReferralProgramRuleTypes::TYPE_ON_FIRST_PURCHASE)
@@ -86,15 +88,14 @@ class ReferralProgramData extends AbstractFixture implements DependentFixtureInt
             ->setValidFrom(new DateTime())
             ->disable();
 
+        $referralRuleObjectManager->persist($referralRulePurchPurch);
+        $this->addReference('referral-rule-purch-purch', $referralRulePurchPurch);
+
         /**
          * Referral Rule: ReferrerCoupon Purchase, InvitedCoupon Purchase
          */
-        $referralRuleRegPurch = $this
-            ->container
-            ->get('elcodi.core.referral_program.factory.referralrule')
-            ->create();
-
-        $referralRuleRegPurch
+        $referralRuleRegPurch = $referralRuleFactory
+            ->create()
             ->setReferrerType(ElcodiReferralProgramRuleTypes::TYPE_ON_REGISTER)
             ->setReferrerCoupon($coupon)
             ->setInvitedType(ElcodiReferralProgramRuleTypes::TYPE_ON_FIRST_PURCHASE)
@@ -102,35 +103,30 @@ class ReferralProgramData extends AbstractFixture implements DependentFixtureInt
             ->setValidFrom(new DateTime())
             ->disable();
 
+        $referralRuleObjectManager->persist($referralRuleRegPurch);
+        $this->addReference('referral-rule-reg-purch', $referralRuleRegPurch);
+
+        $referralRuleObjectManager->flush([
+            $referralRuleNoNO,
+            $referralRuleRegReg,
+            $referralRulePurchPurch,
+            $referralRuleRegPurch,
+        ]);
+
         /**
          * Referral Hash
          */
-
-        /**
-         * @var CustomerInterface $customer
-         */
-        $customer = $this->getReference('customer-1');
-        $referralHash = $this
-            ->container
-            ->get('elcodi.core.referral_program.factory.referralhash')
-            ->create();
-
-        $referralHash
+        $referralHash = $referralHashFactory
+            ->create()
             ->setReferrer($customer)
             ->setHash('1234567890');
 
-        $manager->persist($referralRuleNoNO);
-        $manager->persist($referralRuleRegReg);
-        $manager->persist($referralRulePurchPurch);
-        $manager->persist($referralRuleRegPurch);
-        $manager->persist($referralHash);
-        $manager->flush();
-
-        $this->addReference('referral-rule-no-no', $referralRuleNoNO);
-        $this->addReference('referral-rule-reg-reg', $referralRuleRegReg);
-        $this->addReference('referral-rule-purch-purch', $referralRulePurchPurch);
-        $this->addReference('referral-rule-reg-purch', $referralRuleRegPurch);
+        $referralHashObjectManager->persist($referralHash);
         $this->addReference('referral-hash', $referralHash);
+
+        $referralHashObjectManager->flush([
+            $referralHash,
+        ]);
     }
 
     /**

@@ -18,7 +18,6 @@ namespace Elcodi\Component\Currency\Entity;
 
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
-use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 
 /**
@@ -27,7 +26,6 @@ use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 class Currency implements CurrencyInterface
 {
     use
-        IdentifiableTrait,
         DateTimeTrait,
         EnabledTrait;
 
@@ -37,6 +35,13 @@ class Currency implements CurrencyInterface
      * The currency iso code
      */
     protected $iso;
+
+    /**
+     * @var string
+     *
+     * The currency name
+     */
+    protected $name;
 
     /**
      * @var string
@@ -67,6 +72,30 @@ class Currency implements CurrencyInterface
     public function getIso()
     {
         return $this->iso;
+    }
+
+    /**
+     * Sets Name
+     *
+     * @param string $name Name
+     *
+     * @return $this Self object
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get Name
+     *
+     * @return string Name
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**

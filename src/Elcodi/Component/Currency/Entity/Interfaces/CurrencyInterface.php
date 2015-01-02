@@ -18,14 +18,12 @@ namespace Elcodi\Component\Currency\Entity\Interfaces;
 
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
-use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
  * Interface CurrencyInterface
  */
 interface CurrencyInterface
     extends
-    IdentifiableInterface,
     DateTimeInterface,
     EnabledInterface
 {
@@ -44,6 +42,22 @@ interface CurrencyInterface
      * @return $this self Object
      */
     public function setIso($iso);
+
+    /**
+     * Sets Name
+     *
+     * @param string $name Name
+     *
+     * @return $this Self object
+     */
+    public function setName($name);
+
+    /**
+     * Get Name
+     *
+     * @return string Name
+     */
+    public function getName();
 
     /**
      * Get currency symbol

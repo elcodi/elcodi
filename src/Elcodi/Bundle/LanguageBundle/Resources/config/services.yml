@@ -53,6 +53,11 @@ services:
         factory_service: elcodi.language_manager
         factory_method: getLanguagesIso
 
+    elcodi.languages_iso_array:
+        class: stdClass
+        factory_service: elcodi.languages_iso
+        factory_method: toArray
+
     elcodi.locale:
         class: %elcodi.core.language.entity.locale.class%
         factory_service: elcodi.locale_manager

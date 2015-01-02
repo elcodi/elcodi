@@ -16,13 +16,13 @@
 
 namespace Elcodi\Component\EntityTranslator\EventListener;
 
-use Doctrine\Common\Collections\Collection;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 
 use Elcodi\Component\EntityTranslator\Form\Type\TranslatableFieldType;
 use Elcodi\Component\EntityTranslator\Services\Interfaces\EntityTranslationProviderInterface;
+use Symfony\Component\Form\FormInterface;
 
 /**
  * Class EntityTranslatorFormEventListener
@@ -44,11 +44,29 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
     protected $translationConfiguration;
 
     /**
-     * @var Collection
+     * @var array
      *
      * Locales
      */
     protected $locales;
+
+    /**
+     * @var string
+     *
+     * Master locale
+     */
+    protected $masterLocale;
+
+    /**
+     * @var boolean
+     *
+     * Fallback is enabled.
+     *
+     * If a field is required and the fallback flag is enabled, all translations
+     * will not be required anymore, but just the translation with same language
+     * than master
+     */
+    protected $fallback;
 
     /**
      * @var array
@@ -58,21 +76,36 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
     protected $submittedDataPlain;
 
     /**
+     * @var array
+     *
+     * Local and temporary backup of translations
+     */
+    protected $translationsBackup;
+
+    /**
      * Construct method
      *
      * @param EntityTranslationProviderInterface $entityTranslationProvider Entity Translation provider
      * @param array                              $translationConfiguration  Entity Translation configuration
-     * @param Collection                         $locales                   Locales
+     * @param array                              $locales                   Locales
+     * @param string                             $masterLocale              Master locale
+     * @param boolean                            $fallback                  Fallback
      */
     public function __construct(
         EntityTranslationProviderInterface $entityTranslationProvider,
         array $translationConfiguration,
-        Collection $locales
+        array $locales,
+        $masterLocale,
+        $fallback
     )
     {
         $this->entityTranslationProvider = $entityTranslationProvider;
         $this->translationConfiguration = $translationConfiguration;
         $this->locales = $locales;
+        $this->masterLocale = $masterLocale;
+        $this->fallback = $fallback;
+        $this->submittedDataPlain = array();
+        $this->translationsBackup = array();
     }
 
     /**
@@ -114,37 +147,36 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
         $entity = $event->getData();
         $form = $event->getForm();
 
-        $classStack = $this->getNamespacesFromClass(get_class($entity));
+        $entityConfiguration = $this->getTranslatableEntityConfiguration($entity);
 
-        foreach ($classStack as $classNamespace) {
+        if (is_null($entityConfiguration)) {
 
-            if (!array_key_exists($classNamespace, $this->translationConfiguration)) {
-                continue;
-            }
+            return;
+        }
 
-            $entityConfiguration = $this->translationConfiguration[$classNamespace];
-            $entityFields = $entityConfiguration['fields'];
+        $entityFields = $entityConfiguration['fields'];
 
-            foreach ($entityFields as $fieldName => $fieldConfiguration) {
+        foreach ($entityFields as $fieldName => $fieldConfiguration) {
 
-                $formConfig = $form
-                    ->get($fieldName)
-                    ->getConfig();
+            $formConfig = $form
+                ->get($fieldName)
+                ->getConfig();
 
-                $form
-                    ->remove($fieldName)
-                    ->add($fieldName, new TranslatableFieldType(
-                        $this->entityTranslationProvider,
-                        $formConfig,
-                        $entity,
-                        $fieldName,
-                        $entityConfiguration,
-                        $fieldConfiguration,
-                        $this->locales
-                    ), array(
-                        'mapped' => false,
-                    ));
-            }
+            $form
+                ->remove($fieldName)
+                ->add($fieldName, new TranslatableFieldType(
+                    $this->entityTranslationProvider,
+                    $formConfig,
+                    $entity,
+                    $fieldName,
+                    $entityConfiguration,
+                    $fieldConfiguration,
+                    $this->locales,
+                    $this->masterLocale,
+                    $this->fallback
+                ), array(
+                    'mapped' => false,
+                ));
         }
     }
 
@@ -155,7 +187,9 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
      */
     public function preSubmit(FormEvent $event)
     {
-        $this->submittedDataPlain = $event->getData();
+        $form = $event->getForm();
+        $formHash = $this->getFormHash($form);
+        $this->submittedDataPlain[$formHash] = $event->getData();
     }
 
     /**
@@ -167,36 +201,80 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
     {
         $entity = $event->getData();
         $form = $event->getForm();
+        $formHash = $this->getFormHash($form);
 
-        $entityNamespace = $form
-            ->getConfig()
-            ->getDataClass();
+        $entityConfiguration = $this->getTranslatableEntityConfiguration($entity);
 
-        $classStack = $this->getNamespacesFromClass($entityNamespace);
+        if (is_null($entityConfiguration)) {
 
-        foreach ($classStack as $classNamespace) {
+            return;
+        }
 
-            if (!array_key_exists($classNamespace, $this->translationConfiguration)) {
-                continue;
-            }
+        $this->translationsBackup[$formHash] = [];
 
-            $entityConfiguration = $this->translationConfiguration[$classNamespace];
-            $entityFields = $entityConfiguration['fields'];
-            $entityIdGetter = $entityConfiguration['idGetter'];
+        $entityData = [
+            'object'          => $entity,
+            'idGetter'        => $entityConfiguration['idGetter'],
+            'alias'           => $entityConfiguration['alias'],
+            'fields'          => [],
+        ];
+
+        $entityFields = $entityConfiguration['fields'];
+
+        foreach ($entityFields as $fieldName => $fieldConfiguration) {
 
             foreach ($this->locales as $locale) {
 
-                foreach ($entityFields as $fieldName => $fieldConfiguration) {
+                $data = $this->submittedDataPlain[$formHash][$fieldName][$locale . '_' . $fieldName];
+                $entityData['fields'][$fieldName][$locale] = $data;
+            }
 
-                    $this
-                        ->entityTranslationProvider
-                        ->setTranslation(
-                            $entityConfiguration['alias'],
-                            $entity->$entityIdGetter(),
-                            $fieldName,
-                            $this->submittedDataPlain[$fieldName][$locale . '_' . $fieldName],
-                            $locale
-                        );
+            if ($this->masterLocale) {
+
+                $setter = $fieldConfiguration['setter'];
+                $masterLocaleData = $this->submittedDataPlain[$formHash][$fieldName][$this->masterLocale . '_' . $fieldName];
+                $entity->$setter($masterLocaleData);
+            }
+        }
+
+        $this->translationsBackup[$formHash][] = $entityData;
+    }
+
+    /**
+     * Method executed at the end of the response. Save all entity translations
+     * previously generated and waiting for being flushed into database and
+     * cache layer
+     */
+    public function saveEntityTranslations()
+    {
+        if (!$this->translationsBackup) {
+
+            return;
+        }
+
+        foreach ($this->translationsBackup as $formHash => $entities) {
+
+            foreach ($entities as $entityData) {
+
+                $entity = $entityData['object'];
+                $entityIdGetter = $entityData['idGetter'];
+                $entityAlias = $entityData['alias'];
+                $fields = $entityData['fields'];
+
+                foreach ($fields as $fieldName => $locales) {
+
+                    foreach ($locales as $locale => $translation) {
+
+                        $this
+                            ->entityTranslationProvider
+                            ->setTranslation(
+                                $entityAlias,
+                                $entity->$entityIdGetter(),
+                                $fieldName,
+                                $translation,
+                                $locale
+                            );
+                    }
                 }
             }
         }
@@ -204,6 +282,30 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
         $this
             ->entityTranslationProvider
             ->flushTranslations();
+    }
+
+    /**
+     * Get configuration for a translatable entity, or null if the entity is not
+     * translatable
+     *
+     * @param Object $entity Entity
+     *
+     * @return array|null Configuration
+     */
+    protected function getTranslatableEntityConfiguration($entity)
+    {
+        $entityNamespace = get_class($entity);
+        $classStack = $this->getNamespacesFromClass($entityNamespace);
+
+        foreach ($classStack as $classNamespace) {
+
+            if (array_key_exists($classNamespace, $this->translationConfiguration)) {
+
+                return $this->translationConfiguration[$classNamespace];
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -220,5 +322,17 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
         $classStack = array_merge($classStack, class_implements($namespace));
 
         return $classStack;
+    }
+
+    /**
+     * Get form unique hash
+     *
+     * @param FormInterface $form Form
+     *
+     * @return string Form hash
+     */
+    public function getFormHash(FormInterface $form)
+    {
+        return spl_object_hash($form);
     }
 }

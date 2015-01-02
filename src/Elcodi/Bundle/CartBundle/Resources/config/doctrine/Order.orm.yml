@@ -75,20 +75,20 @@ Elcodi\Component\Cart\Entity\Order:
         currency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
-                 name: currency_id
-                 referencedColumnName: id
+                 name: currency_iso
+                 referencedColumnName: iso
                  nullable: false
         productCurrency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
-                 name: product_currency_id
-                 referencedColumnName: id
+                 name: product_currency_iso
+                 referencedColumnName: iso
                  nullable: false
         couponCurrency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
-                 name: coupon_currency_id
-                 referencedColumnName: id
+                 name: coupon_currency_iso
+                 referencedColumnName: iso
                  nullable: true
     oneToMany:
         orderLines:

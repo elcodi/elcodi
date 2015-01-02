@@ -19,7 +19,6 @@ namespace Elcodi\Bundle\RuleBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\Component\Rule\Entity\Interfaces\ExpressionInterface;
 use Elcodi\Component\Rule\Factory\ExpressionFactory;
 
 /**
@@ -33,32 +32,45 @@ class ExpressionData extends AbstractFixture
     public function load(ObjectManager $manager)
     {
         /**
-         * @var ExpressionFactory   $expressionFactory
-         * @var ExpressionInterface $expressionTrue
+         * @var ExpressionFactory $expressionFactory
          */
-        $expressionFactory = $this->container->get('elcodi.core.rule.factory.expression');
-        $expressionTrue = $expressionFactory->create();
-        $expressionTrue->setExpression('true === true');
-        $manager->persist($expressionTrue);
+        $expressionFactory = $this->getFactory('expression');
+        $expressionObjectManager = $this->getObjectManager('expression');
+
+        /**
+         * True
+         */
+        $expressionTrue = $expressionFactory
+            ->create()
+            ->setExpression('true === true');
+
+        $expressionObjectManager->persist($expressionTrue);
         $this->addReference('expression-true', $expressionTrue);
 
         /**
-         * @var ExpressionInterface $expressionFalse
+         * False
          */
-        $expressionFactory = $this->container->get('elcodi.core.rule.factory.expression');
-        $expressionFalse = $expressionFactory->create();
-        $expressionFalse->setExpression('true === false');
-        $manager->persist($expressionFalse);
+        $expressionFalse = $expressionFactory
+            ->create()
+            ->setExpression('true === false');
+
+        $expressionObjectManager->persist($expressionFalse);
         $this->addReference('expression-false', $expressionFalse);
 
         /**
-         * @var ExpressionInterface $expressionVariables
+         * parameter
          */
-        $expressionVariables = $expressionFactory->create();
-        $expressionVariables->setExpression('parameter("elcodi.core.rule.test.parameter") == parameter_value');
-        $manager->persist($expressionVariables);
+        $expressionVariables = $expressionFactory
+            ->create()
+            ->setExpression('parameter("elcodi.core.rule.test.parameter") == parameter_value');
+
+        $expressionObjectManager->persist($expressionVariables);
         $this->addReference('expression-variables', $expressionVariables);
 
-        $manager->flush();
+        $expressionObjectManager->flush([
+            $expressionTrue,
+            $expressionFalse,
+            $expressionVariables,
+        ]);
     }
 }

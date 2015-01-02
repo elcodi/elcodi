@@ -3,17 +3,18 @@ Elcodi\Component\Currency\Entity\Currency:
     repositoryClass: Elcodi\Component\Currency\Repository\CurrencyRepository
     table: currency
     id:
-        id:
-            type: integer
-            generator:
-                strategy: AUTO
-    fields:
         iso:
-            column: iso
             type: string
             length: 3
+            generator:
+                strategy: NONE
+    fields:
+        name:
+            column: name
+            type: string
+            length: 25
             nullable: false
-            unique: true
+            unique: false
         symbol:
             column: symbol
             type: string

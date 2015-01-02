@@ -27,17 +27,11 @@ Elcodi\Component\Menu\Entity\Menu\Node:
             column: enabled
             type: boolean
             nullable: false
-        createdAt:
-            column: created_at
-            type: datetime
-        updatedAt:
-            column: updated_at
-            type: datetime
 
     manyToMany:
         subnodes:
             targetEntity: Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface
-            cascade: [ "persist" ]
+            cascade: [ "persist", "remove" ]
             joinTable:
                 name: node_hierarchy
                 joinColumns:
@@ -46,7 +40,3 @@ Elcodi\Component\Menu\Entity\Menu\Node:
                 inverseJoinColumns:
                     menu_subnode_id:
                         referencedColumnName: id
-
-    lifecycleCallbacks:
-        preUpdate: [loadUpdateAt]
-        prePersist: [loadUpdateAt]

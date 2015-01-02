@@ -37,16 +37,15 @@ class TaxData extends AbstractFixture implements DependentFixtureInterface
     {
 
         /**
-         * @var ObjectManager     $taxObjectManager
          * @var TaxFactory        $taxFactory
          * @var TaxGroupInterface $andorranTaxGroup
          */
-        $taxObjectManager = $this->get('elcodi.object_manager.tax');
-        $taxFactory = $this->get('elcodi.factory.tax');
+        $taxObjectManager = $this->getObjectManager('tax');
+        $taxFactory = $this->getFactory('tax');
         $andorranTaxGroup = $this->getReference('tax-group-andorran');
 
-        $tax21 = $taxFactory->create();
-        $tax21
+        $tax21 = $taxFactory
+            ->create()
             ->setName('tax21')
             ->setDescription('This is my tax 21')
             ->setValue(21.0)
@@ -55,8 +54,8 @@ class TaxData extends AbstractFixture implements DependentFixtureInterface
         $taxObjectManager->persist($tax21);
         $this->addReference('tax-21', $tax21);
 
-        $tax16 = $taxFactory->create();
-        $tax16
+        $tax16 = $taxFactory
+            ->create()
             ->setName('tax16')
             ->setDescription('This is my tax 16')
             ->setValue(16.0)
@@ -65,7 +64,10 @@ class TaxData extends AbstractFixture implements DependentFixtureInterface
         $taxObjectManager->persist($tax16);
         $this->addReference('tax-16', $tax16);
 
-        $taxObjectManager->flush();
+        $taxObjectManager->flush([
+            $tax21,
+            $tax16,
+        ]);
     }
 
     /**

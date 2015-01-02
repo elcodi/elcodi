@@ -20,6 +20,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Configuration\Entity\Configuration;
+use Elcodi\Component\Configuration\Factory\ConfigurationFactory;
 
 /**
  * Class ConfigurationData
@@ -35,29 +36,36 @@ class ConfigurationData extends AbstractFixture
     public function load(ObjectManager $manager)
     {
         /**
-         * @var Configuration $parameter1
+         * @var ConfigurationFactory $configurationFactory
          */
-        $parameter1 = $this
-            ->get('elcodi.factory.configuration')
-            ->create();
-        $parameter1
+        $configurationFactory = $this->getFactory('configuration');
+        $configurationObjectManager = $this->getObjectManager('configuration');
+
+        /**
+         * Parameter1
+         */
+        $parameter1 = $configurationFactory
+            ->create()
             ->setParameter('parameter1')
             ->setValue('value1')
             ->setEnabled(true);
-        $manager->persist($parameter1);
+
+        $configurationObjectManager->persist($parameter1);
 
         /**
-         * @var Configuration $parameter2
+         * Parameter2
          */
-        $parameter1 = $this
-            ->get('elcodi.factory.configuration')
-            ->create();
-        $parameter1
+        $parameter2 = $configurationFactory
+            ->create()
             ->setParameter('parameter2')
             ->setValue('value2')
             ->setEnabled(true);
-        $manager->persist($parameter1);
 
-        $manager->flush();
+        $configurationObjectManager->persist($parameter2);
+
+        $configurationObjectManager->flush([
+            $parameter1,
+            $parameter2,
+        ]);
     }
 }

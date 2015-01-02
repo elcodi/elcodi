@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of the Elcodi package.
  *
  * Copyright (c) 2014 Elcodi.com
@@ -50,7 +50,7 @@ interface EventInterface
     /**
      * Set current content
      *
-     * @param  string $content
+     * @param string $content
      *
      * @return $this self Object
      */

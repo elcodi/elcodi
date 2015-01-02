@@ -54,6 +54,6 @@ Elcodi\Component\Shipping\Entity\Abstracts\AbstractCarrierBaseRange:
         priceCurrency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
-                name: price_currency_id
-                referencedColumnName: id
+                name: price_currency_iso
+                referencedColumnName: iso
                 nullable: false

@@ -42,7 +42,8 @@ class CouponData extends AbstractFixture implements DependentFixtureInterface
          * @var CurrencyInterface $currency
          * @var CouponFactory     $couponFactory
          */
-        $couponFactory = $this->container->get('elcodi.core.coupon.factory.coupon');
+        $couponFactory = $this->getFactory('coupon');
+        $couponObjectManager = $this->getObjectManager('coupon');
         $currency = $this->getReference('currency-dollar');
 
         /**
@@ -56,8 +57,8 @@ class CouponData extends AbstractFixture implements DependentFixtureInterface
          *
          * @var CouponInterface $couponPercent
          */
-        $couponPercent = $couponFactory->create();
-        $couponPercent
+        $couponPercent = $couponFactory
+            ->create()
             ->setCode('percent')
             ->setName('10 percent discount')
             ->setType(ElcodiCouponTypes::TYPE_PERCENT)
@@ -65,7 +66,7 @@ class CouponData extends AbstractFixture implements DependentFixtureInterface
             ->setCount(100)
             ->setValidFrom(new DateTime())
             ->setValidTo(new DateTime('next month'));
-        $manager->persist($couponPercent);
+        $couponObjectManager->persist($couponPercent);
         $this->addReference('coupon-percent', $couponPercent);
 
         /**
@@ -81,18 +82,21 @@ class CouponData extends AbstractFixture implements DependentFixtureInterface
          *
          * @var CouponInterface $couponAmount
          */
-        $couponAmount = $couponFactory->create();
-        $couponAmount
+        $couponAmount = $couponFactory
+            ->create()
             ->setCode('amount')
             ->setName('5 USD discount')
             ->setType(ElcodiCouponTypes::TYPE_AMOUNT)
             ->setPrice(Money::create(500, $currency))
             ->setCount(20)
             ->setValidFrom(new DateTime());
-        $manager->persist($couponAmount);
+        $couponObjectManager->persist($couponAmount);
         $this->addReference('coupon-amount', $couponAmount);
 
-        $manager->flush();
+        $couponObjectManager->flush([
+            $couponPercent,
+            $couponAmount,
+        ]);
     }
 
     /**

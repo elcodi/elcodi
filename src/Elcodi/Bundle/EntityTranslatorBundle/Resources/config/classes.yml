@@ -18,6 +18,7 @@ parameters:
     elcodi.core.entity_translator.services.entity_translation_provider.class: Elcodi\Component\EntityTranslator\Services\EntityTranslationProvider
     elcodi.core.entity_translator.services.entity_translator_builder.class: Elcodi\Component\EntityTranslator\Services\EntityTranslatorBuilder
     elcodi.core.entity_translator.services.entity_translator.class: Elcodi\Component\EntityTranslator\Services\EntityTranslator
+    elcodi.entity_translator_changes.class: Elcodi\Component\EntityTranslator\Services\EntityTranslationChangesBag
 
     #
     # Event Dispatchers

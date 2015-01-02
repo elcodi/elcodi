@@ -22,6 +22,8 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
+use Elcodi\Component\Cart\Factory\CartFactory;
+use Elcodi\Component\Cart\Factory\CartLineFactory;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
@@ -42,63 +44,74 @@ class CartData extends AbstractFixture implements DependentFixtureInterface
          *
          * @var CartInterface     $emptyCart
          * @var CartInterface     $fullCart
-         * @var CustomerInterface $customer
+         * @var CustomerInterface $customer1
+         * @var CustomerInterface $customer2
          * @var ProductInterface  $product
          * @var ProductInterface  $productReduced
          * @var CartLineInterface $cartLine1
          * @var CartLineInterface $cartLine2
+         * @var CartFactory $cartFactory
+         * @var CartLineFactory $cartLineFactory
          */
-        $emptyCart = $this
-            ->container
-            ->get('elcodi.core.cart.factory.cart')
-            ->create();
+        $cartFactory = $this->getFactory('cart');
+        $cartLineFactory = $this->getFactory('cart_line');
+        $cartObjectManager = $this->getObjectManager('cart');
+        $cartLineObjectManager = $this->getObjectManager('cart_line');
 
-        $customer = $this->getReference('customer-1');
+        $customer1 = $this->getReference('customer-1');
+        $customer2 = $this->getReference('customer-2');
         $product = $this->getReference('product');
         $productReduced = $this->getReference('product-reduced');
-        $emptyCart->setCustomer($customer);
 
-        $manager->persist($emptyCart);
+        /**
+         * Empty cart
+         */
+        $emptyCart = $cartFactory
+            ->create()
+            ->setCustomer($customer1);
+
+        $cartObjectManager->persist($emptyCart);
         $this->addReference('empty-cart', $emptyCart);
 
-        $fullCart = $this
-            ->container
-            ->get('elcodi.core.cart.factory.cart')
-            ->create();
+        /**
+         * Full cart
+         */
+        $fullCart = $cartFactory
+            ->create()
+            ->setCustomer($customer2);
 
-        $customer = $this->getReference('customer-2');
-        $fullCart->setCustomer($customer);
-
-        $cartLine1 = $this
-            ->container
-            ->get('elcodi.core.cart.factory.cart_line')
-            ->create();
-
-        $fullCart->addCartLine($cartLine1);
-        $cartLine1
+        $cartLine1 = $cartLineFactory
+            ->create()
             ->setProduct($product)
             ->setProductAmount($product->getPrice())
             ->setAmount($product->getPrice())
             ->setQuantity(2)
             ->setCart($fullCart);
 
-        $cartLine2 = $this
-            ->container
-            ->get('elcodi.core.cart.factory.cart_line')
-            ->create();
-
-        $fullCart->addCartLine($cartLine2);
-        $cartLine2
+        $cartLine2 = $cartLineFactory
+            ->create()
             ->setProduct($productReduced)
             ->setProductAmount($productReduced->getPrice())
             ->setAmount($productReduced->getPrice())
             ->setQuantity(2)
             ->setCart($fullCart);
 
-        $manager->persist($fullCart);
+        $fullCart
+            ->addCartLine($cartLine1)
+            ->addCartLine($cartLine2);
+
+        $cartObjectManager->persist($fullCart);
         $this->addReference('full-cart', $fullCart);
 
-        $manager->flush();
+        $cartObjectManager->flush([
+            $emptyCart,
+            $fullCart,
+        ]);
+
+        $cartLineObjectManager->flush([
+            $cartLine1,
+            $cartLine2,
+        ]);
     }
 
     /**

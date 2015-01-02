@@ -18,10 +18,10 @@ Elcodi\Component\Currency\Entity\CurrencyExchangeRate:
         targetCurrency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
-                name: target_currency_id
-                referencedColumnName: id
+                name: target_currency_iso
+                referencedColumnName: iso
         sourceCurrency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
-                name: source_currency_id
-                referencedColumnName: id
+                name: source_currency_iso
+                referencedColumnName: iso

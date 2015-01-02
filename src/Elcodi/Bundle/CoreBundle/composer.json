@@ -38,6 +38,7 @@
         "symfony/config": "~2.6",
         "symfony/dependency-injection": "~2.6",
         "symfony/event-dispatcher": "~2.6",
+        "symfony/yaml": "~2.6",
         "mmoreram/simple-doctrine-mapping": "~0.1",
 
         "elcodi/core": "~0.4.0"

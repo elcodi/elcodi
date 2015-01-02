@@ -38,20 +38,16 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         /**
-         * @var CarrierFactory            $carrierFactory
+         * @var CarrierFactory $carrierFactory
          * @var CarrierPriceRangeFactory  $carrierPriceRangeFactory
          * @var CarrierWeightRangeFactory $carrierWeightRangeFactory
-         * @var ObjectManager             $carrierObjectManager
-         * @var ObjectManager             $carrierPriceRangeObjectManager
-         * @var ObjectManager             $carrierWeightRangeObjectManager
          */
-        $carrierObjectManager = $this->get('elcodi.object_manager.carrier');
-        $carrierPriceRangeObjectManager = $this->get('elcodi.object_manager.carrier_price_range');
-        $carrierWeightRangeObjectManager = $this->get('elcodi.object_manager.carrier_weight_range');
-
-        $carrierFactory = $this->get('elcodi.factory.carrier');
-        $carrierPriceRangeFactory = $this->get('elcodi.factory.carrier_price_range');
-        $carrierWeightRangeFactory = $this->get('elcodi.factory.carrier_weight_range');
+        $carrierFactory = $this->getFactory('carrier');
+        $carrierPriceRangeFactory = $this->getFactory('carrier_price_range');
+        $carrierWeightRangeFactory = $this->getFactory('carrier_weight_range');
+        $carrierObjectManager = $this->getObjectManager('carrier');
+        $carrierPriceRangeObjectManager = $this->getObjectManager('carrier_price_range');
+        $carrierWeightRangeObjectManager = $this->getObjectManager('carrier_weight_range');
 
         /**
          * @var CurrencyInterface $currencyEuro
@@ -65,15 +61,15 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
         /**
          * Carrier1 from Viladecavalls to Barcelona
          */
-        $carrier1 = $carrierFactory->create();
-        $carrier1
+        $carrier1 = $carrierFactory
+            ->create()
             ->setName('carrier-1')
             ->setDescription('Carrier 1')
             ->setTax($this->getReference('tax-21'))
             ->setEnabled(true);
 
-        $carrierPriceRange1 = $carrierPriceRangeFactory->create();
-        $carrierPriceRange1
+        $carrierPriceRange1 = $carrierPriceRangeFactory
+            ->create()
             ->setCarrier($carrier1)
             ->setName('From 0€ to 10€')
             ->setDescription('From 0€ to 10€')
@@ -84,8 +80,8 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(900, $currencyEuro))
             ->setEnabled(true);
 
-        $carrierPriceRange2 = $carrierPriceRangeFactory->create();
-        $carrierPriceRange2
+        $carrierPriceRange2 = $carrierPriceRangeFactory
+            ->create()
             ->setCarrier($carrier1)
             ->setName('From 10€ to 20€')
             ->setDescription('From 10€ to 20€')
@@ -96,8 +92,8 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(500, $currencyEuro))
             ->setEnabled(true);
 
-        $carrierPriceRange3 = $carrierPriceRangeFactory->create();
-        $carrierPriceRange3
+        $carrierPriceRange3 = $carrierPriceRangeFactory
+            ->create()
             ->setCarrier($carrier1)
             ->setName('Free for up to 20€')
             ->setDescription('Free shipping for up to 20€')
@@ -117,15 +113,15 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
         /**
          * Carrier2 from Viladecavalls to Barcelona
          */
-        $carrier2 = $carrierFactory->create();
-        $carrier2
+        $carrier2 = $carrierFactory
+            ->create()
             ->setName('carrier-2')
             ->setDescription('Carrier 2')
             ->setTax($this->getReference('tax-21'))
             ->setEnabled(true);
 
-        $carrierPriceRangeB1 = $carrierPriceRangeFactory->create();
-        $carrierPriceRangeB1
+        $carrierPriceRangeB1 = $carrierPriceRangeFactory
+            ->create()
             ->setCarrier($carrier2)
             ->setName('From 0€ to 15€')
             ->setDescription('From 0€ to 15€')
@@ -136,8 +132,8 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(700, $currencyEuro))
             ->setEnabled(true);
 
-        $carrierPriceRangeB2 = $carrierPriceRangeFactory->create();
-        $carrierPriceRangeB2
+        $carrierPriceRangeB2 = $carrierPriceRangeFactory
+            ->create()
             ->setCarrier($carrier2)
             ->setName('From 15€ to 30€')
             ->setDescription('From 15€ to 30€')
@@ -148,8 +144,8 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(300, $currencyEuro))
             ->setEnabled(true);
 
-        $carrierPriceRangeB3 = $carrierPriceRangeFactory->create();
-        $carrierPriceRangeB3
+        $carrierPriceRangeB3 = $carrierPriceRangeFactory
+            ->create()
             ->setCarrier($carrier2)
             ->setName('Free for up to 30€')
             ->setDescription('Free shipping for up to 30€')
@@ -169,15 +165,15 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
         /**
          * Carrier3 from Viladecavalls to Barcelona
          */
-        $carrier3 = $carrierFactory->create();
-        $carrier3
+        $carrier3 = $carrierFactory
+            ->create()
             ->setName('carrier-3')
             ->setDescription('Carrier 3')
             ->setTax($this->getReference('tax-16'))
             ->setEnabled(true);
 
-        $carrierWeightRange1 = $carrierWeightRangeFactory->create();
-        $carrierWeightRange1
+        $carrierWeightRange1 = $carrierWeightRangeFactory
+            ->create()
             ->setCarrier($carrier3)
             ->setName('From 0g to 500g')
             ->setDescription('From 0g to 500g')
@@ -188,8 +184,8 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(500, $currencyEuro))
             ->setEnabled(true);
 
-        $carrierWeightRange2 = $carrierWeightRangeFactory->create();
-        $carrierWeightRange2
+        $carrierWeightRange2 = $carrierWeightRangeFactory
+            ->create()
             ->setCarrier($carrier3)
             ->setName('From 500g to 1000g')
             ->setDescription('From 500g to 1000g')
@@ -200,8 +196,8 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(700, $currencyEuro))
             ->setEnabled(true);
 
-        $carrierWeightRange3 = $carrierWeightRangeFactory->create();
-        $carrierWeightRange3
+        $carrierWeightRange3 = $carrierWeightRangeFactory
+            ->create()
             ->setCarrier($carrier3)
             ->setName('Up to 1000g')
             ->setDescription('Up to 1000g')
@@ -221,15 +217,15 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
         /**
          * Carrier4 from Barcelona to Viladecavalls
          */
-        $carrier4 = $carrierFactory->create();
-        $carrier4
+        $carrier4 = $carrierFactory
+            ->create()
             ->setName('carrier-4')
             ->setDescription('Carrier 4')
             ->setTax($this->getReference('tax-21'))
             ->setEnabled(true);
 
-        $carrierWeightRangeB1 = $carrierWeightRangeFactory->create();
-        $carrierWeightRangeB1
+        $carrierWeightRangeB1 = $carrierWeightRangeFactory
+            ->create()
             ->setCarrier($carrier4)
             ->setName('From 0g to 700g')
             ->setDescription('From 0g to 700g')
@@ -240,8 +236,8 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(500, $currencyEuro))
             ->setEnabled(true);
 
-        $carrierWeightRangeB2 = $carrierWeightRangeFactory->create();
-        $carrierWeightRangeB2
+        $carrierWeightRangeB2 = $carrierWeightRangeFactory
+            ->create()
             ->setCarrier($carrier4)
             ->setName('From 500g to 1000g')
             ->setDescription('From 500g to 1000g')
@@ -252,8 +248,8 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(1500, $currencyEuro))
             ->setEnabled(true);
 
-        $carrierWeightRangeB3 = $carrierWeightRangeFactory->create();
-        $carrierWeightRangeB3
+        $carrierWeightRangeB3 = $carrierWeightRangeFactory
+            ->create()
             ->setCarrier($carrier4)
             ->setName('Up to 1000g')
             ->setDescription('Up to 1000g')

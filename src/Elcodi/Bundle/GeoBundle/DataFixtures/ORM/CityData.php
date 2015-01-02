@@ -35,28 +35,33 @@ class CityData extends AbstractFixture implements DependentFixtureInterface
         /**
          * @var CityFactory $cityFactory
          */
-        $cityFactory = $this->container->get('elcodi.factory.city');
-        $city = $cityFactory->create();
-        $city
+        $cityFactory = $this->getFactory('city');
+        $cityObjectManager = $this->getObjectManager('city');
+
+        $cityBarcelona = $cityFactory
+            ->create()
             ->setId('es-cat-bar-bar')
             ->setName('Barcelona')
             ->setProvince($this->getReference('province-barcelones'))
             ->setEnabled(true);
 
-        $manager->persist($city);
-        $this->addReference('city-barcelona', $city);
+        $cityObjectManager->persist($cityBarcelona);
+        $this->addReference('city-barcelona', $cityBarcelona);
 
-        $city = $cityFactory->create();
-        $city
+        $cityViladecavalls = $cityFactory
+            ->create()
             ->setId('es-cat-bar-viladecavalls')
             ->setName('Viladecavalls')
             ->setProvince($this->getReference('province-barcelones'))
             ->setEnabled(true);
 
-        $manager->persist($city);
-        $this->addReference('city-viladecavalls', $city);
+        $cityObjectManager->persist($cityViladecavalls);
+        $this->addReference('city-viladecavalls', $cityViladecavalls);
 
-        $manager->flush();
+        $cityObjectManager->flush([
+            $cityBarcelona,
+            $cityViladecavalls,
+        ]);
     }
 
     /**

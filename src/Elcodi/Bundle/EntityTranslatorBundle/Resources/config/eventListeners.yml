@@ -8,7 +8,12 @@ services:
         arguments:
             translation_provider: @elcodi.entity_translation_provider
             configuration: %elcodi.core.entity_translator.configuration%
-            locales: @elcodi.languages_iso
+            locales: @elcodi.languages_iso_array
+            master_locale: %elcodi.core.entity_translator.language_master_locale%
+            fallback: %elcodi.core.entity_translator.language_fallback%
+            changes_bag: @elcodi.entity_translator_changes
+        tags:
+            - { name: kernel.event_listener, event: kernel.response, method: saveEntityTranslations }
 
     elcodi.entity_translator_form_event_listener:
         alias: elcodi.core.entity_translator.event_listener.entity_translator_form

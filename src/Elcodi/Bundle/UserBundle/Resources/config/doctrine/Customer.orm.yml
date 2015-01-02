@@ -63,8 +63,8 @@ Elcodi\Component\User\Entity\Customer:
         language:
             targetEntity: Elcodi\Component\Language\Entity\Interfaces\LanguageInterface
             joinColumn:
-                name: language_id
-                referencedColumnName: id
+                name: language_iso
+                referencedColumnName: iso
                 nullable: true
 
     manyToMany:
