@@ -14,7 +14,7 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Bundle\PageBundle\Router;
+namespace Elcodi\Component\Page\Router;
 
 use RuntimeException;
 use Symfony\Component\Config\Loader\LoaderInterface;

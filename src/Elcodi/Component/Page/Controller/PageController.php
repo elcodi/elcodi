@@ -14,9 +14,9 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Bundle\PageBundle\Controller;
+namespace Elcodi\Component\Page\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -32,33 +32,56 @@ class PageController
 {
     /**
      * @var PageRepositoryInterface
+     *
+     * Page repository
      */
     protected $repository;
 
     /**
-     * @param PageRepositoryInterface $repository
+     * @var RequestStack
+     *
+     * Request stack
      */
-    public function __construct(PageRepositoryInterface $repository)
+    protected $requestStack;
+
+    /**
+     * Constructor
+     *
+     * @param PageRepositoryInterface $repository   Page repository
+     * @param RequestStack            $requestStack Request stack
+     */
+    public function __construct(
+        PageRepositoryInterface $repository,
+        RequestStack $requestStack
+    )
     {
         $this->repository = $repository;
+        $this->requestStack = $requestStack;
     }
 
     /**
      * Renders a page
      *
-     * @param Request $request
-     * @param string  $path
+     * @param string $path Path
      *
      * @return Response
      *
-     * @throws \Exception
+     * @throws NotFoundHttpException Page not found
      */
-    public function renderAction(Request $request, $path = '')
+    public function renderAction($path = '')
     {
-        $page = $this->repository->findOneByPath($path);
-        if (null === $page) {
+        $page = $this
+            ->repository
+            ->findOneByPath($path);
+
+        if (!($page instanceof PageInterface)) {
+
             throw new NotFoundHttpException('Page not found');
         }
+
+        $request = $this
+            ->requestStack
+            ->getCurrentRequest();
 
         $response = $this->createResponse($page);
 
@@ -82,8 +105,7 @@ class PageController
 
         $response
             ->setLastModified($page->getUpdatedAt())
-            ->setPublic()
-        ;
+            ->setPublic();
 
         return $response;
     }
