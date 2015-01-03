@@ -1,6 +1,6 @@
 elcodi_entity_translator:
     auto_translate: true
-    languages:
+    language:
         master_locale: en
         fallback: true
     configuration:
