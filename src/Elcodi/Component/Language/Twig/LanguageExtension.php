@@ -17,8 +17,10 @@
 namespace Elcodi\Component\Language\Twig;
 
 use Doctrine\Common\Collections\Collection;
-use Elcodi\Component\Language\Services\LanguageManager;
 use Twig_Extension;
+use Twig_SimpleFunction;
+
+use Elcodi\Component\Language\Services\LanguageManager;
 
 /**
  * Class LanguageExtension
