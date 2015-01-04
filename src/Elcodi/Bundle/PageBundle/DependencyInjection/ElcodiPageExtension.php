@@ -158,10 +158,11 @@ class ElcodiPageExtension extends AbstractExtension implements EntitiesOverridab
         parent::postLoad($config, $container);
 
         if ($config['routing']['enabled']) {
-            $loader_id = $config['routing']['loader'];
-            $loaderDefinition = $container->findDefinition($loader_id);
+
+            $loaderId = $config['routing']['loader'];
+            $loaderDefinition = $container->findDefinition($loaderId);
             $loaderDefinition->addTag('routing.loader');
-            $container->setAlias('elcodi.core.page.router', $loader_id);
+            $container->setAlias('elcodi.core.page.router', $loaderId);
         }
     }
 }
