@@ -24,19 +24,6 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class ImageExtensionTest extends WebTestCase
 {
     /**
-     * Skipping tests if Twig is not installed
-     */
-    public function setUp()
-    {
-        parent::setUp();
-
-        if (!class_exists('Twig_Extension')) {
-
-            $this->markTestSkipped("Twig extension not installed");
-        }
-    }
-
-    /**
      * Returns the callable name of the service
      *
      * @return string[] service name

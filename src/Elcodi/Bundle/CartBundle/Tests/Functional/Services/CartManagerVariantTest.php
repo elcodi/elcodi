@@ -32,6 +32,13 @@ use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
 class CartManagerVariantTest extends AbstractCartManagerTest
 {
     /**
+     * @var VariantInterface
+     *
+     * Variant
+     */
+    protected $variant;
+
+    /**
      * Load fixtures of these bundles
      *
      * @return array Bundles name where fixtures should be found
@@ -43,11 +50,6 @@ class CartManagerVariantTest extends AbstractCartManagerTest
             'ElcodiAttributeBundle'
         ];
     }
-
-    /**
-     * @var VariantInterface
-     */
-    protected $variant;
 
     /**
      * Creates, flushes and returns a Purchasable
@@ -252,14 +254,5 @@ class CartManagerVariantTest extends AbstractCartManagerTest
             ->getFactory('product_variant')
             ->create()
             ->addOption($variantOption);
-    }
-
-    /**
-     * A product vith variant cannot be added to the cart with
-     * CartManager::addProduct()
-     */
-    public function testCannotAddParentProductIfHasVariants()
-    {
-        $this->markTestSkipped();
     }
 }
