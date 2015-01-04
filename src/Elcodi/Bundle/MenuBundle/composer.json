@@ -38,6 +38,7 @@
         "symfony/http-kernel": "~2.6",
         "symfony/config": "~2.6",
         "symfony/dependency-injection": "~2.6",
+        "symfony/twig-bundle": "~2.6",
         "mmoreram/simple-doctrine-mapping": "~0.1",
 
         "elcodi/core-bundle": "~0.4.0",
@@ -47,9 +48,6 @@
         "elcodi/test-common-bundle": "~0.4.0",
         "elcodi/bamboo-bundle": "~0.4.0",
         "doctrine/data-fixtures": "~1.0"
-    },
-    "suggest": {
-        "symfony/twig-bundle": "~2.6"
     },
     "autoload": {
         "psr-4": {
