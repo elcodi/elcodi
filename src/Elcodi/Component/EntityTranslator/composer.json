@@ -35,10 +35,11 @@
         "doctrine/common": "~2.4",
         "doctrine/orm": "~2.4",
 
+        "symfony/event-dispatcher": "~2.6",
+        "symfony/dependency-injection": "~2.6",
+        "symfony/form": "~2.6",
+
         "elcodi/core": "~0.4.0"
-    },
-    "suggested": {
-        "symfony/form": "Required if using Form features"
     },
     "autoload": {
         "psr-4": {

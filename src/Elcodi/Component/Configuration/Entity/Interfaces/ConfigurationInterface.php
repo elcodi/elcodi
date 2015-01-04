@@ -17,58 +17,89 @@
 namespace Elcodi\Component\Configuration\Entity\Interfaces;
 
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
-use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 
 /**
  * Interface ConfigurationInterface
  */
-interface ConfigurationInterface extends DateTimeInterface, EnabledInterface
+interface ConfigurationInterface extends DateTimeInterface
 {
     /**
-     * Gets parameter name
+     * Get Key
      *
-     * @return mixed
+     * @return string Key
      */
-    public function getParameter();
+    public function getKey();
 
     /**
-     * Sets parameter name
+     * Sets Key
      *
-     * @param mixed $name
+     * @param string $key Key
      *
-     * @return $this self Object
+     * @return $this Self object
      */
-    public function setParameter($name);
+    public function setKey($key);
 
     /**
-     * Gets configuration value
+     * Get Name
      *
-     * @return mixed
+     * @return string Name
      */
-    public function getValue();
+    public function getName();
 
     /**
-     * Sets configuration value
+     * Sets Name
      *
-     * @param mixed $value
+     * @param string $name Name
      *
-     * @return $this self Object
+     * @return $this Self object
      */
-    public function setValue($value);
+    public function setName($name);
 
     /**
-     * Gets configuration namespace
+     * Get Namespace
      *
-     * @return mixed
+     * @return string Namespace
      */
     public function getNamespace();
 
     /**
-     * Sets configuration namespace
+     * Sets Namespace
      *
-     * @param mixed $namespace
+     * @param string $namespace Namespace
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setNamespace($namespace);
+
+    /**
+     * Get Type
+     *
+     * @return string Type
+     */
+    public function getType();
+
+    /**
+     * Sets Type
+     *
+     * @param string $type Type
+     *
+     * @return $this Self object
+     */
+    public function setType($type);
+
+    /**
+     * Get Value
+     *
+     * @return mixed Value
+     */
+    public function getValue();
+
+    /**
+     * Sets Value
+     *
+     * @param mixed $value Value
+     *
+     * @return $this Self object
+     */
+    public function setValue($value);
 }

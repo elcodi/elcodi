@@ -17,13 +17,10 @@
 namespace Elcodi\Bundle\CurrencyBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
-use Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\DummyProviderAdapter as DummyCurrencyExchangeRatesProviderAdapter;
-use Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\OpenExchangeRatesProviderAdapter;
-use Elcodi\Component\Currency\Adapter\LocaleProvider\DummyProviderAdapter as DummyLocaleProviderAdapter;
-use Elcodi\Component\Currency\Adapter\LocaleProvider\ElcodiProviderAdapter;
 
 /**
  * This is the class that loads and manages your bundle configuration
@@ -79,29 +76,34 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
      */
     protected function getParametrizationValues(array $config)
     {
-        return [
-            "elcodi.core.currency.entity.currency.class" => $config['mapping']['currency']['class'],
-            "elcodi.core.currency.entity.currency.mapping_file" => $config['mapping']['currency']['mapping_file'],
-            "elcodi.core.currency.entity.currency.manager" => $config['mapping']['currency']['manager'],
-            "elcodi.core.currency.entity.currency.enabled" => $config['mapping']['currency']['enabled'],
+        $result = [
+            "elcodi.core.currency.entity.currency.class"                      => $config['mapping']['currency']['class'],
+            "elcodi.core.currency.entity.currency.mapping_file"               => $config['mapping']['currency']['mapping_file'],
+            "elcodi.core.currency.entity.currency.manager"                    => $config['mapping']['currency']['manager'],
+            "elcodi.core.currency.entity.currency.enabled"                    => $config['mapping']['currency']['enabled'],
 
-            "elcodi.core.currency.entity.currency_exchange_rate.class" => $config['mapping']['currency_exchange_rate']['class'],
+            "elcodi.core.currency.entity.currency_exchange_rate.class"        => $config['mapping']['currency_exchange_rate']['class'],
             "elcodi.core.currency.entity.currency_exchange_rate.mapping_file" => $config['mapping']['currency_exchange_rate']['mapping_file'],
-            "elcodi.core.currency.entity.currency_exchange_rate.manager" => $config['mapping']['currency_exchange_rate']['manager'],
-            "elcodi.core.currency.entity.currency_exchange_rate.enabled" => $config['mapping']['currency_exchange_rate']['enabled'],
+            "elcodi.core.currency.entity.currency_exchange_rate.manager"      => $config['mapping']['currency_exchange_rate']['manager'],
+            "elcodi.core.currency.entity.currency_exchange_rate.enabled"      => $config['mapping']['currency_exchange_rate']['enabled'],
 
-            'elcodi.core.currency.default_currency' => $config['currency']['default_currency'],
-            'elcodi.core.currency.session_field_name' => $config['currency']['session_field_name'],
+            'elcodi.core.currency.default_currency'                           => $config['currency']['default_currency'],
+            'elcodi.core.currency.session_field_name'                         => $config['currency']['session_field_name'],
 
-            'elcodi.core.currency.rates_provider_currency_base' => $config['rates_provider']['currency_base'],
-            'elcodi.core.currency.rates_provider_client' => $config['rates_provider']['client'],
-
-            /**
-             * OpenExchangeRates
-             */
-            'elcodi.core.currency.rates_provider_api_id' => $config['rates_provider'][OpenExchangeRatesProviderAdapter::ADAPTER_NAME]['api_id'],
-            'elcodi.core.currency.rates_provider_endpoint' => $config['rates_provider'][OpenExchangeRatesProviderAdapter::ADAPTER_NAME]['endpoint'],
+            'elcodi.core.currency.rates_provider_currency_base'               => $config['rates_provider']['currency_base'],
+            'elcodi.core.currency.rates_provider_client'                      => $config['rates_provider']['client'],
         ];
+
+        /**
+         * OpenExchangeRates
+         */
+        if ($config['rates_provider']['open_exchange_rates']) {
+
+            $result['elcodi.core.currency.rates_provider_api_id'] = $config['rates_provider']['open_exchange_rates']['api_id'];
+            $result['elcodi.core.currency.rates_provider_endpoint'] = $config['rates_provider']['open_exchange_rates']['endpoint'];
+        }
+
+        return $result;
     }
 
     /**
@@ -121,22 +123,7 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
             'repositories',
             'objectManagers',
             'commands',
-            [
-                'currencyExchangeRatesProviderAdapters/openExchangeRatesProviderAdapter',
-                $config['rates_provider']['client'] === OpenExchangeRatesProviderAdapter::ADAPTER_NAME
-            ],
-            [
-                'currencyExchangeRatesProviderAdapters/dummyProviderAdapter',
-                $config['rates_provider']['client'] === DummyCurrencyExchangeRatesProviderAdapter::ADAPTER_NAME
-            ],
-            [
-                'localeProviderAdapters/elcodiLocaleProvider',
-                $config['locale_provider']['adapter'] === ElcodiProviderAdapter::ADAPTER_NAME
-            ],
-            [
-                'localeProviderAdapters/dummyLocaleProvider',
-                $config['locale_provider']['adapter'] === DummyLocaleProviderAdapter::ADAPTER_NAME
-            ],
+            'currencyExchangeRatesProviderAdapters',
         ];
     }
 
@@ -152,9 +139,23 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface' => 'elcodi.core.currency.entity.currency.class',
+            'Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface'             => 'elcodi.core.currency.entity.currency.class',
             'Elcodi\Component\Currency\Entity\Interfaces\CurrencyExchangeRateInterface' => 'elcodi.core.currency.entity.currency_exchange_rate.class',
         ];
+    }
+
+    /**
+     * Post load implementation
+     *
+     * @param array            $config    Parsed configuration
+     * @param ContainerBuilder $container A ContainerBuilder instance
+     */
+    protected function postLoad(array $config, ContainerBuilder $container)
+    {
+        parent::postLoad($config, $container);
+
+        $ratesProviderId = $config['rates_provider']['client'];
+        $container->setAlias('elcodi.rates_provider_adapter', $ratesProviderId);
     }
 
     /**

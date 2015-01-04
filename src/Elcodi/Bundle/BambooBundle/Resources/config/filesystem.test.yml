@@ -1,0 +1,9 @@
+knp_gaufrette:
+    adapters:
+        local:
+            local:
+                directory: %kernel.cache_dir%/local
+                create: true
+    filesystems:
+        local:
+            adapter: local

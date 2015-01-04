@@ -53,13 +53,13 @@ class Configuration extends AbstractConfiguration
 
                         ->append($this->addEmailNode(
                             'customer_password_remember',
-                            true,
+                            false,
                             'ElcodiBambooBundle:emails:customer_password_remember.html.twig'
                         ))
 
                         ->append($this->addEmailNode(
                             'customer_password_recover',
-                            true,
+                            false,
                             'ElcodiBambooBundle:emails:customer_password_recover.html.twig'
                         ))
                     ->end()

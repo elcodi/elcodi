@@ -31,13 +31,6 @@ use Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\Interfaces\C
 class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderAdapterInterface
 {
     /**
-     * @var string
-     *
-     * Adapter name
-     */
-    const ADAPTER_NAME = 'open_exchange_rates';
-
-    /**
      * @var Client
      *
      * Client

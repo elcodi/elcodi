@@ -20,8 +20,6 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
-use Elcodi\Component\Menu\Adapter\RouteGenerator\DummyRouteGeneratorAdapter;
-use Elcodi\Component\Menu\Adapter\RouteGenerator\SymfonyRouteGeneratorAdapter;
 
 /**
  * Class ElcodiMenuExtension
@@ -108,14 +106,6 @@ class ElcodiMenuExtension extends AbstractExtension implements EntitiesOverridab
             'twig',
             'repositories',
             'objectManagers',
-            [
-                'routeGeneratorAdapters/dummyRouter',
-                $config['route_provider']['adapter'] === DummyRouteGeneratorAdapter::ADAPTER_NAME
-            ],
-            [
-                'routeGeneratorAdapters/symfonyRouter',
-                $config['route_provider']['adapter'] === SymfonyRouteGeneratorAdapter::ADAPTER_NAME
-            ]
         ];
     }
 

@@ -51,7 +51,7 @@ services:
     elcodi.core.currency.service.currency_exchange_rates_provider:
         class: %elcodi.core.currency.service.currency_exchange_rates_provider.class%
         arguments:
-            currency_exchange_rates_provider_adapter: @elcodi.currency_exchange_rates_provider_adapter
+            currency_exchange_rates_provider_adapter: @elcodi.rates_provider_adapter
 
     elcodi.currency_exchange_rates_provider:
         alias: elcodi.core.currency.service.currency_exchange_rates_provider

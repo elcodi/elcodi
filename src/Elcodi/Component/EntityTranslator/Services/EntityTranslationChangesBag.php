@@ -13,7 +13,7 @@
  * @author Marc Morera <yuhu@mmoreram.com>
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
- 
+
 namespace Elcodi\Component\EntityTranslator\Services;
 
 /**
@@ -60,4 +60,3 @@ class EntityTranslationChangesBag
         return $this->changes;
     }
 }
- 

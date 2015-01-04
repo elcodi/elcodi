@@ -49,6 +49,9 @@
         "symfony/browser-kit": "~2.6",
         "symfony/routing": "~2.6",
         "symfony/proxy-manager-bridge": "~2.6",
+        "symfony/twig-bundle": "~2.6",
+        "symfony/swiftmailer-bundle": "~2.3",
+        "symfony/form": "~2.6",
         "ocramius/proxy-manager": ">=0.3.1,<0.6-dev",
 
         "doctrine/common": "~2.4",
@@ -121,9 +124,6 @@
         "mmoreram/php-formatter": "~1.0"
     },
     "suggest": {
-        "symfony/twig-bundle": "Required if using Twig extensions",
-        "symfony/form": "Required if using Form features",
-        "symfony/swiftmailer-bundle": "Required if using Mailer",
         "guzzle/http": "Required for OpenExchangeRates adapter"
     },
     "autoload": {

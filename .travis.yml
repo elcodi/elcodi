@@ -6,34 +6,16 @@ php:
   - 5.6
   - hhvm-nightly
 
-matrix:
-    fast_finish: true
-    allow_failures:
-        - php: hhvm-nightly
-
-env:
-    - SYMFONY_VERSION="2.6.*" TWIG_REQUIRED=false
-    - SYMFONY_VERSION="2.6.*" TWIG_REQUIRED=true
-
 before_install:
-    - composer require --no-update symfony/http-kernel:${SYMFONY_VERSION}
-    - composer require --no-update symfony/config:${SYMFONY_VERSION}
-    - composer require --no-update symfony/yaml:${SYMFONY_VERSION}
-    - composer require --no-update symfony/console:${SYMFONY_VERSION}
-    - composer require --no-update symfony/framework-bundle:${SYMFONY_VERSION}
-    - composer require --no-update symfony/class-loader:${SYMFONY_VERSION}
-    - composer require --no-update symfony/security:${SYMFONY_VERSION}
-    - composer require --no-update symfony/http-foundation:${SYMFONY_VERSION}
-    - composer require --no-update symfony/validator:${SYMFONY_VERSION}
-    - composer require --no-update symfony/process:${SYMFONY_VERSION}
-    - composer require --no-update symfony/expression-language:${SYMFONY_VERSION}
-    - composer require --no-update symfony/event-dispatcher:${SYMFONY_VERSION}
-    - composer require --no-update symfony/finder:${SYMFONY_VERSION}
-    - composer require --no-update symfony/browser-kit:${SYMFONY_VERSION}
-    - if [[ ${TWIG_REQUIRED} == true ]]; then composer require --no-update symfony/twig-bundle:${SYMFONY_VERSION}; fi
+    - sh -c "sudo mkdir vendor"
+    - sh -c "sudo mount -t tmpfs -o size=512M tmpfs vendor"
 
 install:
     - composer install --prefer-source --no-interaction
+
+before_script:
+    - sh -c "sudo mkdir /tmp/Elcodi"
+    - sh -c "sudo mount -t tmpfs -o size=512M tmpfs /tmp/Elcodi/"
 
 script:
   - phpunit

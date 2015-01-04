@@ -1,0 +1,37 @@
+doctrine_cache:
+    providers:
+
+        #
+        # Categories cache
+        #
+        elcodi_categories:
+            type: array
+            namespace: categories
+
+        #
+        # Menus cache
+        #
+        elcodi_menus:
+            type: array
+            namespace: menus
+
+        #
+        # Configuration values cache
+        #
+        elcodi_configurations:
+            type: array
+            namespace: configuration
+
+        #
+        # Entity translations cache
+        #
+        elcodi_translations:
+            type: array
+            namespace: translations
+
+        #
+        # Comments cache
+        #
+        elcodi_comments:
+            type: array
+            namespace: comments

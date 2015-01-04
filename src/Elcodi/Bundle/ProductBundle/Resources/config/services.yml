@@ -10,7 +10,7 @@ services:
             load_only_categories_with_products: %elcodi.core.product.load_only_categories_with_products%
             key: %elcodi.core.product.cache_key%
         calls:
-            - [setCache, [@doctrine_cache.providers.elcodi]]
+            - [setCache, [@doctrine_cache.providers.elcodi_categories]]
             - [setEncoder, [@elcodi.json_encoder]]
 
     elcodi.category_manager:

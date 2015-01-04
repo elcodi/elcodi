@@ -16,10 +16,10 @@
 
 namespace Elcodi\Component\Menu\Twig;
 
+use Symfony\Component\Routing\Exception\ExceptionInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig_Extension;
 use Twig_SimpleFunction;
-
-use Elcodi\Component\Menu\Adapter\RouteGenerator\Interfaces\RouteGeneratorAdapterInterface;
 
 /**
  * Class PrintRouteExtension
@@ -35,20 +35,20 @@ use Elcodi\Component\Menu\Adapter\RouteGenerator\Interfaces\RouteGeneratorAdapte
 class PrintRouteExtension extends Twig_Extension
 {
     /**
-     * @var RouteGeneratorAdapterInterface
+     * @var UrlGeneratorInterface
      *
-     * Adapter used to generate the route
+     * Url generator
      */
-    protected $routeGeneratorAdapter;
+    private $urlGenerator;
 
     /**
-     * The constructor needs an adapter that can return an URL.
+     * Construct method
      *
-     * @param RouteGeneratorAdapterInterface $routeGeneratorAdapter route generator adapter
+     * @param UrlGeneratorInterface $urlGenerator Url Generator
      */
-    public function __construct(RouteGeneratorAdapterInterface $routeGeneratorAdapter)
+    public function __construct(UrlGeneratorInterface $urlGenerator)
     {
-        $this->routeGeneratorAdapter = $routeGeneratorAdapter;
+        $this->urlGenerator = $urlGenerator;
     }
 
     /**
@@ -72,9 +72,21 @@ class PrintRouteExtension extends Twig_Extension
      */
     public function printUrl($route)
     {
-        return $this
-            ->routeGeneratorAdapter
-            ->generateUrl($route);
+        if (empty($route)) {
+            return '';
+        }
+
+        try {
+
+            $url = $this
+                ->urlGenerator
+                ->generate($route);
+        } catch (ExceptionInterface $e) {
+
+            $url = (string) $route;
+        }
+
+        return $url;
     }
 
     /**

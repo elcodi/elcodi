@@ -1,0 +1,12 @@
+services:
+
+    #
+    # GeoData populator adapters
+    #
+    elcodi.geo.geodata_populator_adapter:
+        class: %elcodi.geo.geodata_populator_adapter.class%
+        arguments:
+            geo_builder: @elcodi.geo_builder
+
+    elcodi.geo.dummy_populator_adapter:
+        class: %elcodi.geo.dummy_populator_adapter.class%

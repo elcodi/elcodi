@@ -14,29 +14,37 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Component\Currency\Adapter\LocaleProvider;
-
-use Elcodi\Component\Currency\Adapter\LocaleProvider\Interfaces\LocaleProviderAdapterInterface;
+namespace Elcodi\Bundle\ConfigurationBundle\Tests\Functional\Fixtures;
 
 /**
- * Class DummyProviderAdapter
+ * Class MyClass
  */
-class DummyProviderAdapter implements LocaleProviderAdapterInterface
+class MyClass
 {
     /**
      * @var string
      *
-     * Adapter name
+     * Configuration element
      */
-    const ADAPTER_NAME = 'none';
+    public $value;
 
     /**
-     * Get locale
+     * Construct
      *
-     * @return string Locale
+     * @param string $value Value
      */
-    public function getLocaleIso()
+    public function __construct($value)
     {
-        return 'en';
+        $this->value = $value;
+    }
+
+    /**
+     * Get Value
+     *
+     * @return string Value
+     */
+    public function getValue()
+    {
+        return $this->value;
     }
 }

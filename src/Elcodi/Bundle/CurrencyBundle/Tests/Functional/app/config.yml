@@ -30,3 +30,5 @@ doctrine:
         query_cache_driver: array
         result_cache_driver: array
         auto_mapping: false
+
+elcodi_currency:

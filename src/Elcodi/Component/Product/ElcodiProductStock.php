@@ -14,19 +14,17 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Component\Menu\Adapter\RouteGenerator\Interfaces;
+namespace Elcodi\Component\Product;
 
 /**
- * Interface RouterGeneratorAdapterInterface
+ * Class ElcodiProductTypes
  */
-interface RouteGeneratorAdapterInterface
+final class ElcodiProductStock
 {
     /**
-     * Provides a method to generate an URL starting from a route name
+     * @var null
      *
-     * @param string $routeName route name
-     *
-     * @return string
+     * Infinite stock
      */
-    public function generateUrl($routeName);
+    const INFINITE_STOCK = null;
 }

@@ -19,7 +19,6 @@ namespace Elcodi\Bundle\ConfigurationBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\Component\Configuration\Entity\Configuration;
 use Elcodi\Component\Configuration\Factory\ConfigurationFactory;
 
 /**
@@ -42,30 +41,19 @@ class ConfigurationData extends AbstractFixture
         $configurationObjectManager = $this->getObjectManager('configuration');
 
         /**
-         * Parameter1
+         * Parameter
          */
-        $parameter1 = $configurationFactory
+        $parameter = $configurationFactory
             ->create()
-            ->setParameter('parameter1')
-            ->setValue('value1')
-            ->setEnabled(true);
+            ->setKey('my_boolean_parameter')
+            ->setNamespace('app')
+            ->setName('My Fixtures Boolean Parameter')
+            ->setValue(true)
+            ->setType('boolean');
 
-        $configurationObjectManager->persist($parameter1);
-
-        /**
-         * Parameter2
-         */
-        $parameter2 = $configurationFactory
-            ->create()
-            ->setParameter('parameter2')
-            ->setValue('value2')
-            ->setEnabled(true);
-
-        $configurationObjectManager->persist($parameter2);
-
+        $configurationObjectManager->persist($parameter);
         $configurationObjectManager->flush([
-            $parameter1,
-            $parameter2,
+            $parameter,
         ]);
     }
 }

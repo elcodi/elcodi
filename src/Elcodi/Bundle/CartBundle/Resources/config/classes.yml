@@ -25,6 +25,7 @@ parameters:
     #
     elcodi.core.cart.event_listener.cart.class: Elcodi\Component\Cart\EventListener\CartEventListener
     elcodi.core.cart.event_listener.order.class: Elcodi\Component\Cart\EventListener\OrderEventListener
+    elcodi.core.cart.event_listener.order_line.class: Elcodi\Component\Cart\EventListener\OrderLineEventListener
     elcodi.core.cart.event_listener.order_machine.class: Elcodi\Component\Cart\EventListener\OrderMachineEventListener
     elcodi.core.cart.event_listener.cart_session.class: Elcodi\Component\Cart\EventListener\CartSessionEventListener
 

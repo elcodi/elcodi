@@ -14,17 +14,14 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Component\Currency\Adapter\LocaleProvider\Interfaces;
+namespace Elcodi\Component\Configuration\Exception;
+
+use Exception;
 
 /**
- * Interface LocaleProviderAdapterInterface
+ * Class ConfigurationParameterNotFoundException
  */
-interface LocaleProviderAdapterInterface
+class ConfigurationParameterNotFoundException extends Exception
 {
-    /**
-     * Get locale
-     *
-     * @return string Locale
-     */
-    public function getLocaleIso();
+
 }

@@ -24,3 +24,9 @@ parameters:
     elcodi.core.geo.service.zone_manager.class: Elcodi\Component\Geo\Services\ZoneManager
     elcodi.core.geo.service.zone_matcher.class: Elcodi\Component\Geo\Services\ZoneMatcher
     elcodi.core.geo.service.zone_finder.class: Elcodi\Component\Geo\Services\ZoneFinder
+
+    #
+    # GeoData populator adapters
+    #
+    elcodi.geo.dummy_populator_adapter.class: Elcodi\Component\Geo\Adapter\Populator\DummyPopulatorAdapter
+    elcodi.geo.geodata_populator_adapter.class: Elcodi\Component\Geo\Adapter\Populator\GeoDataPopulatorAdapter

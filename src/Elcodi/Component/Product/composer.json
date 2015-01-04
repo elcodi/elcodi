@@ -34,6 +34,7 @@
         "php": ">=5.4",
         "doctrine/common": "~2.4",
         "doctrine/orm": "~2.4",
+        "twig/twig": "~1.16",
 
         "elcodi/core": "~0.4.0",
         "elcodi/language": "~0.4.0",
@@ -41,9 +42,6 @@
         "elcodi/currency": "~0.4.0",
         "elcodi/attribute": "~0.4.0",
         "elcodi/metadata": "~0.4.0"
-    },
-    "suggest": {
-        "twig/twig": "Required if using Twig extensions"
     },
     "autoload": {
         "psr-4": {

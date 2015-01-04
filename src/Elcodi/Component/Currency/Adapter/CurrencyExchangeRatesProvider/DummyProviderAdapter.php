@@ -24,13 +24,6 @@ use Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\Interfaces\C
 class DummyProviderAdapter implements CurrencyExchangeRatesProviderAdapterInterface
 {
     /**
-     * @var string
-     *
-     * Adapter name
-     */
-    const ADAPTER_NAME = 'none';
-
-    /**
      * Get the latest exchange rates
      *
      * @param array  $symbols array of currency codes to get the rates for.
