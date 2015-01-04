@@ -2,7 +2,7 @@ knp_gaufrette:
     adapters:
         local:
             local:
-                directory: /tmp/local
+                directory: %kernel.cache_dir%/local
                 create: true
     filesystems:
         local:

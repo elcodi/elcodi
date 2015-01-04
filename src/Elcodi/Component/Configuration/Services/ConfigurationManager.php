@@ -181,7 +181,10 @@ class ConfigurationManager extends AbstractCacheWrapper
          */
         if ($configurationEntity instanceof ConfigurationInterface) {
 
-            $configurationEntity->setValue($parameterValue);
+            if (!is_null($parameterValue)) {
+
+                $configurationEntity->setValue($parameterValue);
+            }
 
             $this->flushConfiguration(
                 $configurationEntity,

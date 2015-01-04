@@ -26,13 +26,6 @@ use Elcodi\Component\Comment\Adapter\Parser\Interfaces\ParserAdapterInterface;
 class MarkdownParserAdapter implements ParserAdapterInterface
 {
     /**
-     * @var string
-     *
-     * Adapter name
-     */
-    const ADAPTER_NAME = 'markdown';
-
-    /**
      * Return the parser identifier
      *
      * @return string Parser identifier

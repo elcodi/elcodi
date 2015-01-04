@@ -5,33 +5,33 @@ doctrine_cache:
         # Categories cache
         #
         elcodi_categories:
-            type: redis
+            type: array
             namespace: categories
 
         #
         # Menus cache
         #
         elcodi_menus:
-            type: redis
+            type: array
             namespace: menus
 
         #
         # Configuration values cache
         #
         elcodi_configurations:
-            type: redis
+            type: array
             namespace: configuration
 
         #
         # Entity translations cache
         #
         elcodi_translations:
-            type: redis
+            type: array
             namespace: translations
 
         #
         # Comments cache
         #
         elcodi_comments:
-            type: redis
+            type: array
             namespace: comments

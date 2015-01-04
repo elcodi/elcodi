@@ -19,8 +19,6 @@ namespace Elcodi\Bundle\GeoBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
-use Elcodi\Component\Geo\Adapter\Populator\DummyPopulatorAdapter;
-use Elcodi\Component\Geo\Adapter\Populator\GeoDataPopulatorAdapter;
 
 /**
  * Class Configuration
@@ -28,7 +26,9 @@ use Elcodi\Component\Geo\Adapter\Populator\GeoDataPopulatorAdapter;
 class Configuration extends AbstractConfiguration
 {
     /**
-     * {@inheritDoc}
+     * Configure the root node
+     *
+     * @param ArrayNodeDefinition $rootNode
      */
     protected function setupTree(ArrayNodeDefinition $rootNode)
     {
@@ -133,12 +133,8 @@ class Configuration extends AbstractConfiguration
                 ->arrayNode('populator')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->enumNode('client')
-                            ->values([
-                                DummyPopulatorAdapter::ADAPTER_NAME,
-                                GeoDataPopulatorAdapter::ADAPTER_NAME
-                            ])
-                            ->defaultValue(GeoDataPopulatorAdapter::ADAPTER_NAME)
+                        ->scalarNode('client')
+                            ->defaultValue('elcodi.geo.dummy_populator_adapter')
                         ->end()
                     ->end()
                 ->end()

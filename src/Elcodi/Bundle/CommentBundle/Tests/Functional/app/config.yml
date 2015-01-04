@@ -1,5 +1,8 @@
 imports:
     - { resource: parameters.yml }
+    - { resource: @ElcodiBambooBundle/Resources/config/configuration.yml }
+    - { resource: @ElcodiBambooBundle/Resources/config/cache.test.yml }
+    - { resource: @ElcodiBambooBundle/Resources/config/filesystem.test.yml }
 
 framework:
     test:            ~
@@ -31,21 +34,6 @@ doctrine:
         result_cache_driver: array
         auto_mapping: false
 
-doctrine_cache:
-   providers:
-      elcodi:
-         type: array
-
 elcodi_cart:
     cart:
         save_in_session: false
-
-knp_gaufrette:
-    adapters:
-        local:
-            local:
-                directory: %kernel.cache_dir%/gaufrette
-                create: true
-    filesystems:
-        local:
-            adapter:    local

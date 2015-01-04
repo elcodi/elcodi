@@ -19,8 +19,6 @@ namespace Elcodi\Bundle\MenuBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
-use Elcodi\Component\Menu\Adapter\RouteGenerator\DummyRouteGeneratorAdapter;
-use Elcodi\Component\Menu\Adapter\RouteGenerator\SymfonyRouteGeneratorAdapter;
 
 /**
  * Class Configuration
@@ -58,18 +56,6 @@ class Configuration extends AbstractConfiguration
                     ->children()
                         ->scalarNode('cache_key')
                             ->defaultValue('menus')
-                        ->end()
-                    ->end()
-                ->end()
-                ->arrayNode('route_provider')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->enumNode('adapter')
-                            ->values([
-                                DummyRouteGeneratorAdapter::ADAPTER_NAME,
-                                SymfonyRouteGeneratorAdapter::ADAPTER_NAME
-                            ])
-                            ->defaultValue(DummyRouteGeneratorAdapter::ADAPTER_NAME)
                         ->end()
                     ->end()
                 ->end()

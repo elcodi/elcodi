@@ -18,7 +18,7 @@ services:
     elcodi.core.comment.service.comment_parser:
         class: %elcodi.core.comment.service.comment_parser.class%
         arguments:
-            parser_adapter: @elcodi.core.comment.adapter.parser_adapter
+            parser_adapter: @elcodi.comment.parser_adapter
 
     elcodi.comment_parser:
         alias: elcodi.core.comment.service.comment_parser
@@ -30,7 +30,7 @@ services:
             comment_vote_manager: @elcodi.comment_vote_manager
             cache_key: %elcodi.core.comment.cache_key%
         calls:
-            - [setCache, [@doctrine_cache.providers.elcodi]]
+            - [setCache, [@doctrine_cache.providers.elcodi_comments]]
             - [setEncoder, [@elcodi.json_encoder]]
 
     elcodi.comment_cache:

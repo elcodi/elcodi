@@ -10,7 +10,6 @@ elcodi_configuration:
             type: string
             reference: elcodi.core.product.use_stock
 
-
         #
         # Product namespace
         #

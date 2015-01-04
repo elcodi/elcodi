@@ -24,3 +24,9 @@ parameters:
     # EventDispatchers
     #
     elcodi.core.comment.event_dispatcher.comment_event_dispatcher.class: Elcodi\Component\Comment\EventDispatcher\CommentEventDispatcher
+
+    #
+    # Parser Adapter
+    #
+    elcodi.comment.markdown_parser_adapter.class: Elcodi\Component\Comment\Adapter\Parser\MarkdownParserAdapter
+    elcodi.comment.dummy_parser_adapter.class: Elcodi\Component\Comment\Adapter\Parser\DummyParserAdapter

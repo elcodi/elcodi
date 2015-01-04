@@ -100,7 +100,7 @@ class TranslatorTest extends WebTestCase
             ->findAll('entity_translation')
         );
 
-        $cache = $this->get('doctrine_cache.providers.elcodi');
+        $cache = $this->get('doctrine_cache.providers.elcodi_translations');
         $this->assertEquals('el nombre', $cache->fetch('translation_translatable_product_1_name_es'));
         $this->assertEquals('the name', $cache->fetch('translation_translatable_product_1_name_en'));
         $this->assertEquals('le nom', $cache->fetch('translation_translatable_product_1_name_fr'));

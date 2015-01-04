@@ -100,7 +100,8 @@ class ElcodiConfigurationExtension extends AbstractExtension implements Entities
             'factories',
             'repositories',
             'objectManagers',
-            'twig'
+            'services',
+            'twig',
         ];
     }
 

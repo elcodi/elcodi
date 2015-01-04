@@ -24,13 +24,6 @@ use Elcodi\Component\Comment\Adapter\Parser\Interfaces\ParserAdapterInterface;
 class DummyParserAdapter implements ParserAdapterInterface
 {
     /**
-     * @var string
-     *
-     * Adapter name
-     */
-    const ADAPTER_NAME = 'none';
-
-    /**
      * Return the parser identifier
      *
      * @return string Parser identifier

@@ -19,8 +19,6 @@ namespace Elcodi\Bundle\CommentBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
-use Elcodi\Component\Comment\Adapter\Parser\DummyParserAdapter;
-use Elcodi\Component\Comment\Adapter\Parser\MarkdownParserAdapter;
 
 /**
  * Class Configuration
@@ -59,12 +57,8 @@ class Configuration extends AbstractConfiguration
                         ->scalarNode('cache_key')
                             ->defaultValue('comments')
                         ->end()
-                        ->enumNode('parser')
-                            ->values([
-                                DummyParserAdapter::ADAPTER_NAME,
-                                MarkdownParserAdapter::ADAPTER_NAME
-                            ])
-                            ->defaultValue(DummyParserAdapter::ADAPTER_NAME)
+                        ->scalarNode('parser')
+                            ->defaultValue('elcodi.comment.adapter.dummy_parser_adapter')
                         ->end()
                     ->end()
                 ->end()

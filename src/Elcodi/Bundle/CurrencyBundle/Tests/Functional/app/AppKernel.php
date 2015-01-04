@@ -47,7 +47,9 @@ class AppKernel extends AbstractElcodiKernel
              * Elcodi core bundles
              */
             new \Elcodi\Bundle\CoreBundle\ElcodiCoreBundle(),
+            new \Elcodi\Bundle\BambooBundle\ElcodiBambooBundle(),
             new \Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle(),
+            new \Elcodi\Bundle\LanguageBundle\ElcodiLanguageBundle(),
         );
 
         return $bundles;

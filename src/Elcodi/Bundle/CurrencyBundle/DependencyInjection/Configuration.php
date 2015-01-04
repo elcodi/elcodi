@@ -20,10 +20,6 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
-use Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\DummyProviderAdapter as DummyCurrencyExchangeRatesProviderAdapter;
-use Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\OpenExchangeRatesProviderAdapter;
-use Elcodi\Component\Currency\Adapter\LocaleProvider\DummyProviderAdapter as DummyLocaleProviderAdapter;
-use Elcodi\Component\Currency\Adapter\LocaleProvider\ElcodiProviderAdapter;
 
 /**
  * Class Configuration
@@ -73,27 +69,11 @@ class Configuration extends AbstractConfiguration
                         ->scalarNode('currency_base')
                             ->defaultValue('USD')
                         ->end()
-                        ->enumNode('client')
-                            ->values([
-                                DummyCurrencyExchangeRatesProviderAdapter::ADAPTER_NAME,
-                                OpenExchangeRatesProviderAdapter::ADAPTER_NAME
-                            ])
-                            ->defaultValue(DummyCurrencyExchangeRatesProviderAdapter::ADAPTER_NAME)
+                        ->scalarNode('client')
+                            ->defaultValue('elcodi.currency_exchange_rates_provider_adapter.dummy')
                         ->end()
                     ->end()
                     ->append($this->addOpenExchangeRatesParametersNode())
-                ->end()
-                ->arrayNode('locale_provider')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->enumNode('adapter')
-                            ->values([
-                                DummyLocaleProviderAdapter::ADAPTER_NAME,
-                                ElcodiProviderAdapter::ADAPTER_NAME
-                            ])
-                            ->defaultValue(DummyLocaleProviderAdapter::ADAPTER_NAME)
-                        ->end()
-                    ->end()
                 ->end()
             ->end();
     }
@@ -104,7 +84,7 @@ class Configuration extends AbstractConfiguration
     public function addOpenExchangeRatesParametersNode()
     {
         $treeBuilder = new TreeBuilder();
-        $node = $treeBuilder->root(OpenExchangeRatesProviderAdapter::ADAPTER_NAME);
+        $node = $treeBuilder->root('open_exchange_rates');
 
         $node
             ->addDefaultsIfNotSet()

@@ -36,13 +36,6 @@ use Elcodi\Component\Geo\Entity\Interfaces\CountryInterface;
 class GeoDataPopulatorAdapter implements PopulatorAdapterInterface
 {
     /**
-     * @var string
-     *
-     * Adapter name
-     */
-    const ADAPTER_NAME = 'geodata';
-
-    /**
      * @var GeoBuilderInterface
      *
      * GeoBuilder

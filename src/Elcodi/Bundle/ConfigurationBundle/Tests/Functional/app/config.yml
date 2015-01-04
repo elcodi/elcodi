@@ -1,5 +1,6 @@
 imports:
     - { resource: parameters.yml }
+    - { resource: @ElcodiBambooBundle/Resources/config/cache.test.yml }
 
 framework:
     test:            ~
@@ -30,12 +31,6 @@ doctrine:
         query_cache_driver: array
         result_cache_driver: array
         auto_mapping: false
-
-doctrine_cache:
-    providers:
-        elcodi_configurations:
-            type: array
-            namespace: configuration
 
 parameters:
     my_parameter: my_parameter_value

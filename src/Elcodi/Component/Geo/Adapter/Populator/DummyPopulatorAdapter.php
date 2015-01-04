@@ -27,13 +27,6 @@ use Elcodi\Component\Geo\Entity\Interfaces\CountryInterface;
 class DummyPopulatorAdapter implements PopulatorAdapterInterface
 {
     /**
-     * @var string
-     *
-     * Adapter name
-     */
-    const ADAPTER_NAME = 'none';
-
-    /**
      * Populate a country
      *
      * @param OutputInterface $output                      The output interface

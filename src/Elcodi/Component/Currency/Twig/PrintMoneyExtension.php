@@ -20,13 +20,13 @@ use NumberFormatter;
 use Twig_Extension;
 use Twig_SimpleFilter;
 
-use Elcodi\Component\Currency\Adapter\LocaleProvider\Interfaces\LocaleProviderAdapterInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Exception\CurrencyNotAvailableException;
 use Elcodi\Component\Currency\Exception\CurrencyNotConvertibleException;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
 use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
+use Elcodi\Component\Language\Entity\Interfaces\LocaleInterface;
 
 /**
  * Print price extension for twig
@@ -48,28 +48,28 @@ class PrintMoneyExtension extends Twig_Extension
     protected $currencyWrapper;
 
     /**
-     * @var LocaleProviderAdapterInterface
+     * @var LocaleInterface
      *
-     * LocaleProvider adapter
+     * Elcodi locale
      */
-    protected $localeProviderAdapter;
+    protected $locale;
 
     /**
      * Construct method
      *
-     * @param CurrencyConverter              $currencyConverter     Currency converter
-     * @param CurrencyWrapper                $currencyWrapper       Currency wrapper
-     * @param LocaleProviderAdapterInterface $localeProviderAdapter LocaleProvider adapter
+     * @param CurrencyConverter $currencyConverter Currency converter
+     * @param CurrencyWrapper   $currencyWrapper   Currency wrapper
+     * @param LocaleInterface   $locale            Locale
      */
     public function __construct(
         CurrencyConverter $currencyConverter,
         CurrencyWrapper $currencyWrapper,
-        LocaleProviderAdapterInterface $localeProviderAdapter
+        LocaleInterface $locale
     )
     {
         $this->currencyConverter = $currencyConverter;
         $this->currencyWrapper = $currencyWrapper;
-        $this->localeProviderAdapter = $localeProviderAdapter;
+        $this->locale = $locale;
     }
 
     /**
@@ -142,7 +142,7 @@ class PrintMoneyExtension extends Twig_Extension
         }
 
         $formatter = new NumberFormatter(
-            $this->localeProviderAdapter->getLocaleIso(),
+            $this->locale->getIso(),
             NumberFormatter::CURRENCY
         );
 
