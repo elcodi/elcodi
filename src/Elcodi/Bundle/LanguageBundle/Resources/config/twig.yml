@@ -1,0 +1,11 @@
+services:
+
+    #
+    # Twig extensions
+    #
+    elcodi.core.language.twig_extension.language_extension:
+        class: %elcodi.core.language.twig_extension.language_extension.class%
+        arguments:
+            language_manager: @elcodi.language_manager
+        tags:
+            - { name: twig.extension }

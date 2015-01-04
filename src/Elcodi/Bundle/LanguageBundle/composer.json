@@ -47,6 +47,9 @@
         "elcodi/bamboo-bundle": "~0.4.0",
         "doctrine/data-fixtures": "~1.0"
     },
+    "suggest": {
+        "symfony/twig-bundle": "Required if using Twig extensions"
+    },
     "autoload": {
         "psr-4": {
             "Elcodi\\Bundle\\LanguageBundle\\": ""

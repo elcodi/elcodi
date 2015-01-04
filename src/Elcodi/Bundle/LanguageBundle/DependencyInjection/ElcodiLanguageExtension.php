@@ -98,6 +98,7 @@ class ElcodiLanguageExtension extends AbstractExtension implements EntitiesOverr
             'repositories',
             'services',
             'objectManagers',
+            'twig',
         ];
     }
 

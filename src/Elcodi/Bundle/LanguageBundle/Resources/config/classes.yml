@@ -16,3 +16,8 @@ parameters:
     elcodi.core.language.service.language_manager.class: Elcodi\Component\Language\Services\LanguageManager
     elcodi.core.language.service.locale_manager.class: Elcodi\Component\Language\Services\LocaleManager
     elcodi.core.language.service.locale_provider.class: Elcodi\Component\Language\Services\LocaleProvider
+
+    #
+    # Twig extensions
+    #
+    elcodi.core.language.twig_extension.language_extension.class: Elcodi\Component\Language\Twig\LanguageExtension

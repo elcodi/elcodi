@@ -42,7 +42,8 @@ class LanguageData extends AbstractFixture
         $languageEs = $languageFactory
             ->create()
             ->setIso('es')
-            ->setname('Español');
+            ->setname('Español')
+            ->setEnabled(true);
 
         $languageObjectManager->persist($languageEs);
         $this->addReference('language-es', $languageEs);
@@ -50,7 +51,8 @@ class LanguageData extends AbstractFixture
         $languageEn = $languageFactory
             ->create()
             ->setIso('en')
-            ->setname('English');
+            ->setname('English')
+            ->setEnabled(true);
 
         $languageObjectManager->persist($languageEn);
         $this->addReference('language-en', $languageEn);
@@ -58,7 +60,8 @@ class LanguageData extends AbstractFixture
         $languageFr = $languageFactory
             ->create()
             ->setIso('fr')
-            ->setname('Français');
+            ->setname('Français')
+            ->setEnabled(true);
 
         $languageObjectManager->persist($languageFr);
         $this->addReference('language-fr', $languageFr);
@@ -66,7 +69,8 @@ class LanguageData extends AbstractFixture
         $languageIt = $languageFactory
             ->create()
             ->setIso('it')
-            ->setname('Italiano');
+            ->setname('Italiano')
+            ->setEnabled(true);
 
         $languageObjectManager->persist($languageIt);
         $this->addReference('language-it', $languageIt);
@@ -74,7 +78,8 @@ class LanguageData extends AbstractFixture
         $languageDe = $languageFactory
             ->create()
             ->setIso('de')
-            ->setname('Deutch');
+            ->setname('Deutch')
+            ->setEnabled(true);
 
         $languageObjectManager->persist($languageDe);
         $this->addReference('language-de', $languageDe);
