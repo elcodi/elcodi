@@ -20,8 +20,6 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
-use Elcodi\Component\Configuration\Adapter\DoctrineCacheConfigurationProvider;
-use Elcodi\Component\Configuration\Adapter\DoctrineConfigurationProvider;
 
 /**
  * This is the class that validates and merges configuration from your app/config files
@@ -49,21 +47,45 @@ class Configuration extends AbstractConfiguration implements ConfigurationInterf
                         ))
                     ->end()
                 ->end()
-            ->arrayNode('configuration')
-                ->addDefaultsIfNotSet()
-                ->children()
-                    ->scalarNode('cache_key')
-                        ->defaultValue('configuration')
+                ->arrayNode('elements')
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('key')
+                                ->isRequired()
+                            ->end()
+                            ->scalarNode('name')
+                                ->isRequired()
+                            ->end()
+                            ->scalarNode('namespace')
+                                ->defaultValue('')
+                            ->end()
+                            ->enumNode('type')
+                                ->values([
+                                    'string', 'text', 'boolean'
+                                ])
+                            ->end()
+                            ->scalarNode('reference')
+                                ->isRequired()
+                            ->end()
+                        ->end()
                     ->end()
-                    ->enumNode('provider')
-                        ->values([
-                            DoctrineConfigurationProvider::ADAPTER_NAME,
-                            DoctrineCacheConfigurationProvider::ADAPTER_NAME,
-                        ])
-                        ->defaultValue(DoctrineConfigurationProvider::ADAPTER_NAME)
+                    ->beforeNormalization()
+                        ->always(function (array $elements) {
+
+                            $newElements = [];
+                            foreach ($elements as $element) {
+
+                                $completeParameterName = isset($element['namespace'])
+                                    ? $element['namespace'] . '.' . $element['key']
+                                    : $element['key'];
+
+                                $newElements[$completeParameterName] = $element;
+                            }
+
+                            return $newElements;
+                        })
                     ->end()
                 ->end()
-            ->end()
-        ->end();
+            ->end();
     }
 }

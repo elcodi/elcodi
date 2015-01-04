@@ -2,33 +2,31 @@ Elcodi\Component\Configuration\Entity\Configuration:
     type: entity
     repositoryClass: Elcodi\Component\Configuration\Repository\ConfigurationRepository
     table: configuration
-    indexes:
-        namespace_index:
-            columns: [ namespace ]
-        parameter_index:
-            columns: [ parameter ]
-        namespace_parameter_index:
-            columns: [ namespace, parameter ]
     id:
-        id:
-            type: integer
-            generator:
-                strategy: AUTO
-    fields:
         namespace:
             column: namespace
             type: string
             length: 255
-            nullable: true
-        parameter:
-            column: parameter
+            nullable: false
+        key:
+            column: `key`
             type: string
             length: 255
             nullable: false
-        value:
-            column: value
+    fields:
+        name:
+            column: name
             type: string
             length: 255
+            nullable: false
+        type:
+            column: type
+            type: string
+            length: 10
+            nullable: true
+        value:
+            column: value
+            type: text
             nullable: false
         createdAt:
             column: created_at
@@ -36,9 +34,6 @@ Elcodi\Component\Configuration\Entity\Configuration:
         updatedAt:
             column: updated_at
             type: datetime
-        enabled:
-            column: enabled
-            type: boolean
 
     lifecycleCallbacks:
         preUpdate: [loadUpdateAt]

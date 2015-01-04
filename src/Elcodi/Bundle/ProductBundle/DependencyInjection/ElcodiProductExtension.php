@@ -96,6 +96,7 @@ class ElcodiProductExtension extends AbstractExtension implements EntitiesOverri
             "elcodi.core.product.entity.manufacturer.manager"         => $config['mapping']['manufacturer']['manager'],
             "elcodi.core.product.entity.manufacturer.enabled"         => $config['mapping']['manufacturer']['enabled'],
 
+            'elcodi.core.product.use_stock'                           => $config['products']['use_stock'],
             'elcodi.core.product.load_only_categories_with_products'  => $config['categories']['load_only_categories_with_products'],
             'elcodi.core.product.cache_key'                           => $config['categories']['cache_key'],
         ];

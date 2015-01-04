@@ -18,119 +18,101 @@ namespace Elcodi\Component\Configuration\Entity;
 
 use Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
-use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 
 /**
  * Class Parameter
  */
 class Configuration implements ConfigurationInterface
 {
-    use DateTimeTrait, EnabledTrait;
-
-    /**
-     * @var integer
-     *
-     * Entity id
-     */
-    protected $id;
+    use DateTimeTrait;
 
     /**
      * @var string
      *
-     * Configuration namespace
+     * Namespace
      */
     protected $namespace;
 
     /**
      * @var string
      *
-     * Parameter name
+     * Key
      */
-    protected $parameter;
+    protected $key;
 
     /**
      * @var string
      *
-     * Configuration value
+     * Name
+     */
+    protected $name;
+
+    /**
+     * @var string
+     *
+     * Type
+     */
+    protected $type;
+
+    /**
+     * @var string
+     *
+     * Value
      */
     protected $value;
 
     /**
-     * Set id
+     * Get Key
      *
-     * @param int $id Entity Id
-     *
-     * @return $this self Object
+     * @return string Key
      */
-    public function setId($id)
+    public function getKey()
     {
-        $this->id = $id;
+        return $this->key;
+    }
+
+    /**
+     * Sets Key
+     *
+     * @param string $key Key
+     *
+     * @return $this Self object
+     */
+    public function setKey($key)
+    {
+        $this->key = $key;
 
         return $this;
     }
 
     /**
-     * Get id
+     * Get Name
      *
-     * @return int Entity identifier
+     * @return string Name
      */
-    public function getId()
+    public function getName()
     {
-        return $this->id;
+        return $this->name;
     }
 
     /**
-     * Gets parameter name
+     * Sets Name
      *
-     * @return string
+     * @param string $name Name
+     *
+     * @return $this Self object
      */
-    public function getParameter()
+    public function setName($name)
     {
-        return $this->parameter;
-    }
-
-    /**
-     * Sets parameter name
-     *
-     * @param string $name
-     *
-     * @return $this self Object
-     */
-    public function setParameter($name)
-    {
-        $this->parameter = $name;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Gets configuration value
+     * Get Namespace
      *
-     * @return mixed
-     */
-    public function getValue()
-    {
-        return $this->value;
-    }
-
-    /**
-     * Sets ocnfiguration value
-     *
-     * @param mixed $value
-     *
-     * @return $this self Object
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
-
-        return $this;
-    }
-
-    /**
-     * Gets configuration namespace
-     *
-     * @return mixed
+     * @return string Namespace
      */
     public function getNamespace()
     {
@@ -138,15 +120,63 @@ class Configuration implements ConfigurationInterface
     }
 
     /**
-     * Setc configuration namespace
+     * Sets Namespace
      *
-     * @param mixed $namespace
+     * @param string $namespace Namespace
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setNamespace($namespace)
     {
         $this->namespace = $namespace;
+
+        return $this;
+    }
+
+    /**
+     * Get Type
+     *
+     * @return string Type
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Sets Type
+     *
+     * @param string $type Type
+     *
+     * @return $this Self object
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get Value
+     *
+     * @return mixed Value
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * Sets Value
+     *
+     * @param mixed $value Value
+     *
+     * @return $this Self object
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
 
         return $this;
     }

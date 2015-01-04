@@ -18,6 +18,7 @@ namespace Elcodi\Component\EntityTranslator\Services;
 
 use Doctrine\Common\Cache\Cache;
 
+use Elcodi\Component\Core\Wrapper\Abstracts\AbstractCacheWrapper;
 use Elcodi\Component\EntityTranslator\Entity\Interfaces\EntityTranslationInterface;
 use Elcodi\Component\EntityTranslator\Repository\EntityTranslationRepository;
 use Elcodi\Component\EntityTranslator\Services\Interfaces\EntityTranslationProviderInterface;
@@ -25,7 +26,7 @@ use Elcodi\Component\EntityTranslator\Services\Interfaces\EntityTranslationProvi
 /**
  * Class CachedEntityTranslationProvider
  */
-class CachedEntityTranslationProvider implements EntityTranslationProviderInterface
+class CachedEntityTranslationProvider extends AbstractCacheWrapper implements EntityTranslationProviderInterface
 {
     /**
      * @var EntityTranslationProviderInterface
@@ -40,13 +41,6 @@ class CachedEntityTranslationProvider implements EntityTranslationProviderInterf
      * Entity Translation repository
      */
     protected $entityTranslationRepository;
-
-    /**
-     * @var Cache
-     *
-     * Cache
-     */
-    protected $cache;
 
     /**
      * @var string
@@ -67,19 +61,16 @@ class CachedEntityTranslationProvider implements EntityTranslationProviderInterf
      *
      * @param EntityTranslationProviderInterface $entityTranslationProvider   Translation Provider
      * @param EntityTranslationRepository        $entityTranslationRepository Entity Translation Repository
-     * @param Cache                              $cache                       Cache
      * @param string                             $cachePrefix                 Cache prefix
      */
     public function __construct(
         EntityTranslationProviderInterface $entityTranslationProvider,
         EntityTranslationRepository $entityTranslationRepository,
-        Cache $cache,
         $cachePrefix
     )
     {
         $this->entityTranslatorProvider = $entityTranslationProvider;
         $this->entityTranslationRepository = $entityTranslationRepository;
-        $this->cache = $cache;
         $this->cachePrefix = $cachePrefix;
         $this->translationsToBeFlushed = array();
     }

@@ -19,6 +19,7 @@ namespace Elcodi\Component\Configuration\Twig;
 use Twig_Extension;
 use Twig_SimpleFunction;
 
+use Elcodi\Component\Configuration\Exception\ConfigurationParameterNotFoundException;
 use Elcodi\Component\Configuration\Services\ConfigurationManager;
 
 /**
@@ -30,10 +31,14 @@ class ConfigurationExtension extends Twig_Extension
 {
     /**
      * @var ConfigurationManager
+     *
+     * Configuration manager
      */
     protected $configurationManager;
 
     /**
+     * Constructor
+     *
      * @param ConfigurationManager $configurationManager
      */
     public function __construct(ConfigurationManager $configurationManager)
@@ -41,26 +46,36 @@ class ConfigurationExtension extends Twig_Extension
         $this->configurationManager = $configurationManager;
     }
 
+    /**
+     * Returns a list of functions to add to the existing list.
+     *
+     * @return array An array of functions
+     */
     public function getFunctions()
     {
         return array(
-            new Twig_SimpleFunction('config_parameter', array($this, 'getParameter'))
+            new Twig_SimpleFunction('getConfiguration', array($this, 'getParameter'))
         );
     }
 
     /**
-     * Returns a configuration parameter given a parameter name and namespace
+     * Load a parameter given the key and the namespace
      *
-     * @param $parameter
-     * @param string $namespace
+     * @param string $parameterKey       Parameter key
+     * @param string $parameterNamespace Parameter namespace
      *
-     * @return mixed
+     * @return null|string|boolean Configuration parameter value
+     *
+     * @throws ConfigurationParameterNotFoundException Configuration not found
      */
-    public function getParameter($parameter, $namespace = "")
+    public function getParameter(
+        $parameterKey,
+        $parameterNamespace = ''
+    )
     {
         return $this
             ->configurationManager
-            ->getParameter($parameter, $namespace);
+            ->getParameter($parameterKey, $parameterNamespace);
     }
 
     /**

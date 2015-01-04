@@ -12,8 +12,9 @@ services:
         arguments:
             translation_provider: @elcodi.core.entity_translator.services.entity_translation_provider
             translation_repository: @elcodi.repository.entity_translation
-            cache: @doctrine_cache.providers.elcodi
             cache_prefix: %elcodi.core.entity_translator.cache_prefix%
+        calls:
+            - [setCache, [@doctrine_cache.providers.elcodi_translations]]
         tags:
             - { name: kernel.event_listener, event: translator.warmup, method: warmUp }
 

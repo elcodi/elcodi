@@ -40,6 +40,10 @@ elcodi_cart:
     cart:
         save_in_session: false
 
+elcodi_product:
+    products:
+        use_stock: true
+
 knp_gaufrette:
     adapters:
         local:

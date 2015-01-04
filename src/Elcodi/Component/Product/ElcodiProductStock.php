@@ -14,13 +14,17 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Component\Product\Repository;
-
-use Doctrine\ORM\EntityRepository;
+namespace Elcodi\Component\Product;
 
 /**
- * ProductRepository
+ * Class ElcodiProductTypes
  */
-class ProductRepository extends EntityRepository
+final class ElcodiProductStock
 {
+    /**
+     * @var null
+     *
+     * Infinite stock
+     */
+    const INFINITE_STOCK = null;
 }

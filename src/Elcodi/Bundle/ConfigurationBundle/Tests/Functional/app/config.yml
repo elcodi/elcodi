@@ -32,17 +32,41 @@ doctrine:
         auto_mapping: false
 
 doctrine_cache:
-   providers:
-      elcodi_configuration:
-         type: array
+    providers:
+        elcodi_configurations:
+            type: array
+            namespace: configuration
+
+parameters:
+    my_parameter: my_parameter_value
+    my_boolean_parameter: true
+
+elcodi_configuration:
+    elements:
+        my_parameter:
+            key: my_parameter
+            name: My Parameter
+            type: string
+            reference: my_parameter
+        my_boolean_parameter:
+            key: my_boolean_parameter
+            namespace: app
+            name: My Boolean Parameter
+            type: boolean
+            reference: my_boolean_parameter
 
 services:
-    elcodi.configuration.test1:
-        class: Elcodi\Bundle\ConfigurationBundle\Tests\Functional\Services\TestService
+    my_class_parameter:
+        class: Elcodi\Bundle\ConfigurationBundle\Tests\Functional\Fixtures\MyClass
         arguments:
-            parameter_value: @=service('elcodi.configuration_manager').getParameter('parameter1') ?: 'default'
+            my_parameter: @=service("elcodi.configuration_manager").getParameter("my_parameter")
 
-    elcodi.configuration.test2:
-        class: Elcodi\Bundle\ConfigurationBundle\Tests\Functional\Services\TestService
+    my_class_parameter_boolean:
+        class: Elcodi\Bundle\ConfigurationBundle\Tests\Functional\Fixtures\MyClass
         arguments:
-            parameter_value: @=service('elcodi.configuration_manager').getParameter('non_existant_parameter') ?: 'default'
+            my_parameter: @=service("elcodi.configuration_manager").getParameter("app.my_boolean_parameter")
+
+    my_class_non_existing_parameter:
+        class: Elcodi\Bundle\ConfigurationBundle\Tests\Functional\Fixtures\MyClass
+        arguments:
+            my_parameter: @=service("elcodi.configuration_manager").getParameter("my_non_existing_parameter")

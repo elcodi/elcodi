@@ -25,6 +25,14 @@ services:
         tags:
             - { name: kernel.event_listener, event: order.oncreated, method: onOrderCreated, priority: 0}
 
+    elcodi.core.cart.event_listener.order_line:
+        class: %elcodi.core.cart.event_listener.order_line.class%
+        arguments:
+            product_object_manager: @elcodi.object_manager.product
+            variant_object_manager: @elcodi.object_manager.product_variant
+        tags:
+            - { name: kernel.event_listener, event: order_line.oncreated, method: updateStock, priority: 0}
+
     elcodi.core.cart.event_listener.cart_session:
         class: %elcodi.core.cart.event_listener.cart_session.class%
         private: %elcodi.core.cart.session_field_name%

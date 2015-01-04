@@ -20,8 +20,6 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
-use Elcodi\Component\Configuration\Adapter\DoctrineCacheConfigurationProvider;
-use Elcodi\Component\Configuration\Adapter\DoctrineConfigurationProvider;
 
 /**
  * This is the class that loads and manages your bundle configuration
@@ -81,7 +79,9 @@ class ElcodiConfigurationExtension extends AbstractExtension implements Entities
             "elcodi.core.configuration.entity.configuration.class" => $config['mapping']['configuration']['class'],
             "elcodi.core.configuration.entity.configuration.mapping_file" => $config['mapping']['configuration']['mapping_file'],
             "elcodi.core.configuration.entity.configuration.manager" => $config['mapping']['configuration']['manager'],
-            'elcodi.core.configuration.cache_key' => $config['configuration']['cache_key'],
+            "elcodi.core.configuration.entity.configuration.enabled" => $config['mapping']['configuration']['enabled'],
+
+            'elcodi.core.configuration.elements' => $config['elements'],
         ];
     }
 
@@ -100,14 +100,6 @@ class ElcodiConfigurationExtension extends AbstractExtension implements Entities
             'factories',
             'repositories',
             'objectManagers',
-            [
-                'configurationProvider/doctrineConfigurationProvider',
-                $config['configuration']['provider'] === DoctrineConfigurationProvider::ADAPTER_NAME
-            ],
-            [
-                'configurationProvider/doctrineCacheConfigurationProvider',
-                $config['configuration']['provider'] === DoctrineCacheConfigurationProvider::ADAPTER_NAME
-            ],
             'twig'
         ];
     }

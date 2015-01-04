@@ -17,7 +17,9 @@
 namespace Elcodi\Component\Product\Services;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\QueryBuilder;
 
+use Elcodi\Component\Product\ElcodiProductStock;
 use Elcodi\Component\Product\Repository\ProductRepository;
 
 /**
@@ -46,7 +48,10 @@ class ProductCollectionProvider
 
     /**
      * Get products that can be shown in Home.
-     * All products returned are activated and none deleted
+     * All products returned are
+     * * enabled
+     * * with stock > 0
+     * * with stock infinite
      *
      * @param integer $limit Product limit. By default, this value is 0
      *
@@ -54,15 +59,17 @@ class ProductCollectionProvider
      */
     public function getHomeProducts($limit = 0)
     {
-        $query = $this
+        $queryBuilder = $this
             ->productRepository
-            ->createQueryBuilder('p')
-            ->where('p.enabled = :enabled')
+            ->createQueryBuilder('p');
+
+        $this->addStockPropertiesToQueryBuilder($queryBuilder);
+
+        $query = $queryBuilder
+            ->andWhere('p.enabled = :enabled')
             ->andWhere('p.showInHome = :showInHome')
-            ->setParameters([
-                'enabled' => true,
-                'showInHome' => true,
-            ])
+            ->setParameter('enabled', true)
+            ->setParameter('showInHome', true)
             ->orderBy('p.updatedAt', 'DESC');
 
         if ($limit > 0) {
@@ -87,15 +94,17 @@ class ProductCollectionProvider
      */
     public function getOfferProducts($limit = 0)
     {
-        $query = $this
+        $queryBuilder = $this
             ->productRepository
-            ->createQueryBuilder('p')
-            ->where('p.enabled = :enabled')
+            ->createQueryBuilder('p');
+
+        $this->addStockPropertiesToQueryBuilder($queryBuilder);
+
+        $query = $queryBuilder
+            ->andWhere('p.enabled = :enabled')
             ->andWhere('p.reducedPrice > 0')
             ->andWhere('p.reducedPrice IS NOT NULL')
-            ->setParameters([
-                'enabled' => true,
-            ])
+            ->setParameter('enabled', true)
             ->orderBy('p.updatedAt', 'DESC');
 
         if ($limit > 0) {
@@ -108,5 +117,33 @@ class ProductCollectionProvider
             ->getResult();
 
         return new ArrayCollection($results);
+    }
+
+    /**
+     * Add stock properties to query builder
+     *
+     * @param QueryBuilder $queryBuilder QueryBuilder
+     *
+     * @return QueryBuilder same object
+     */
+    protected function addStockPropertiesToQueryBuilder(QueryBuilder $queryBuilder)
+    {
+        $infiniteStockIsNull = is_null(ElcodiProductStock::INFINITE_STOCK);
+
+        $queryBuilder
+            ->andWhere($queryBuilder->expr()->orX(
+                $queryBuilder->expr()->gt('p.stock', ':stockZero'),
+                $infiniteStockIsNull
+                    ? $queryBuilder->expr()->isNull('p.stock')
+                    : $queryBuilder->expr()->eq('p.stock', ':infiniteStock')
+            ))
+            ->setParameter('stockZero', 0);
+
+        if (!$infiniteStockIsNull) {
+
+            $queryBuilder->setParameter('infiniteStock', ElcodiProductStock::INFINITE_STOCK);
+        }
+
+        return $queryBuilder;
     }
 }

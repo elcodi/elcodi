@@ -16,58 +16,279 @@
 
 namespace Elcodi\Component\Configuration\Services;
 
-use Elcodi\Component\Configuration\Adapter\Interfaces\ConfigurationProviderInterface;
-use Elcodi\Component\Configuration\Entity\Configuration;
+use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+
+use Elcodi\Component\Configuration\ElcodiConfigurationTypes;
+use Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface;
+use Elcodi\Component\Configuration\Exception\ConfigurationParameterNotFoundException;
+use Elcodi\Component\Configuration\Factory\ConfigurationFactory;
+use Elcodi\Component\Configuration\Repository\ConfigurationRepository;
+use Elcodi\Component\Core\Wrapper\Abstracts\AbstractCacheWrapper;
 
 /**
  * Class ConfigurationManager
  */
-class ConfigurationManager
+class ConfigurationManager extends AbstractCacheWrapper
 {
     /**
-     * @var ConfigurationProviderInterface
+     * @var ObjectManager
+     *
+     * Configuration Object manager
      */
-    protected $configurationProvider;
+    protected $configurationObjectManager;
 
-    public function __construct(ConfigurationProviderInterface $configurationProvider)
+    /**
+     * @var ConfigurationRepository
+     *
+     * Configuration repository
+     */
+    protected $configurationRepository;
+
+    /**
+     * @var ConfigurationFactory
+     *
+     * Configuration factory
+     */
+    protected $configurationFactory;
+
+    /**
+     * @var ParameterBagInterface
+     *
+     * Parameter bag
+     */
+    protected $parameterBag;
+
+    /**
+     * @var array
+     *
+     * Configuration elements
+     */
+    protected $configurationElements;
+
+    /**
+     * @param ObjectManager           $configurationObjectManager Configuration Object manager
+     * @param ConfigurationRepository $configurationRepository    Configuration repository
+     * @param ConfigurationFactory    $configurationFactory       Configuration factory
+     * @param ParameterBagInterface   $parameterBag               Parameter bag
+     * @param array                   $configurationElements      Configuration elements
+     */
+    public function __construct(
+        ObjectManager $configurationObjectManager,
+        ConfigurationRepository $configurationRepository,
+        ConfigurationFactory $configurationFactory,
+        ParameterBagInterface $parameterBag,
+        array $configurationElements
+    )
     {
-        $this->configurationProvider = $configurationProvider;
+        $this->configurationObjectManager = $configurationObjectManager;
+        $this->configurationRepository = $configurationRepository;
+        $this->configurationFactory = $configurationFactory;
+        $this->parameterBag = $parameterBag;
+        $this->configurationElements = $configurationElements;
     }
 
     /**
-     * Sets a parameter name
+     * Set a parameter
      *
-     * @param $parameter string parameter name
-     * @param $value     string parameter value
-     * @param $namespace string namespace
+     * @param string $parameterIdentifier Parameter identifier
+     * @param mixed  $parameterValue      Parameter value
      *
-     * @return $this self Object
+     * @return ConfigurationInterface|null Object saved
      */
-    public function setParameter($parameter, $value, $namespace = "")
+    public function setParameter(
+        $parameterIdentifier,
+        $parameterValue = null
+    )
     {
-        $this
-            ->configurationProvider
-            ->setParameter($parameter, $value, $namespace);
+        $this->saveParameter(
+            $parameterIdentifier,
+            $parameterValue,
+            false
+        );
 
         return $this;
     }
 
     /**
-     * Gets a parameter value
+     * Load a parameter given the key and the namespace
      *
-     * @param $parameter string parameter name
-     * @param $namespace string namespace
+     * @param string $parameterIdentifier Parameter identifier
      *
-     * @return null|string
+     * @return null|string|boolean Configuration parameter value
+     *
+     * @throws ConfigurationParameterNotFoundException Configuration not found
      */
-    public function getParameter($parameter, $namespace = "")
+    public function getParameter($parameterIdentifier)
     {
+        $valueIsCached = $this
+            ->cache
+            ->contains($parameterIdentifier);
+
         /**
-         * @var Configuration $configuration
+         * The value is cached, so we can securely return its value
          */
-        $configuration  = $this
-            ->configurationProvider
-            ->getParameter($parameter, $namespace);
+        if (false !== $valueIsCached) {
+            return $valueIsCached = $this
+                ->cache
+                ->fetch($parameterIdentifier);
+        }
+
+        /**
+         * Otherwise we must generate it
+         */
+        $configuration = $this->saveParameter(
+            $parameterIdentifier,
+            null,
+            true
+        );
+
+        if (!($configuration instanceof ConfigurationInterface)) {
+
+            throw new ConfigurationParameterNotFoundException();
+        }
+
+        return $configuration->getValue();
+    }
+
+    /**
+     * Saves a parameter
+     *
+     * @param string  $parameterIdentifier Parameter identifier
+     * @param mixed   $parameterValue      Parameter value
+     * @param boolean $onlyDefined         Only create defined elements
+     *
+     * @return ConfigurationInterface|null Object saved
+     */
+    protected function saveParameter(
+        $parameterIdentifier,
+        $parameterValue = null,
+        $onlyDefined = true
+    )
+    {
+        list($parameterNamespace, $parameterKey) = $this->splitConfigurationKey($parameterIdentifier);
+
+        $configurationEntity = $this
+            ->configurationRepository
+            ->find([
+                'namespace' => $parameterNamespace,
+                'key'       => $parameterKey
+            ]);
+
+        /**
+         * We found an existing configuration parameter. We update it and return
+         * its value
+         */
+        if ($configurationEntity instanceof ConfigurationInterface) {
+
+            $configurationEntity->setValue($parameterValue);
+
+            $this->flushConfiguration(
+                $configurationEntity,
+                $parameterIdentifier
+            );
+
+            return $configurationEntity;
+        }
+
+        /**
+         * Value is not found on database. We can just check if the value is
+         * defined in the configuration elements, and we can generate new entry
+         * for our database
+         */
+        if (
+            $onlyDefined &&
+            !$this->configurationElements[$parameterIdentifier]
+        ) {
+            return null;
+        }
+
+        /**
+         * Let's create the new configuration instance and flush it
+         */
+        $parameterReference = $this->configurationElements[$parameterIdentifier]['reference'];
+        $configurationValue = $parameterValue
+            ?: $this->parameterBag->get($parameterReference);
+
+        $configurationEntity = $this
+            ->configurationFactory
+            ->create()
+            ->setKey($parameterKey)
+            ->setNamespace($parameterNamespace)
+            ->setName($this->configurationElements[$parameterIdentifier]['name'])
+            ->setType($this->configurationElements[$parameterIdentifier]['type'])
+            ->setValue($configurationValue);
+
+        $this->flushConfiguration(
+            $configurationEntity,
+            $parameterIdentifier
+        );
+
+        return $configurationEntity;
+    }
+
+    /**
+     * Compose key for a configuration
+     *
+     * @param string $parameterIdentifier Parameter identifier
+     *
+     * @return string[] Identifier splitted
+     */
+    protected function splitConfigurationKey($parameterIdentifier)
+    {
+        $parameterIdentifier = explode('.', $parameterIdentifier, 2);
+
+        if (count($parameterIdentifier) === 1) {
+
+            array_unshift($parameterIdentifier, '');
+        }
+
+        return $parameterIdentifier;
+    }
+
+    /**
+     * Flush configuration entity
+     *
+     * @param ConfigurationInterface $configuration           Configuration
+     * @param string                 $configurationIdentifier Configuration identifier
+     *
+     * @return $this self Object
+     */
+    protected function flushConfiguration(
+        ConfigurationInterface $configuration,
+        $configurationIdentifier
+    )
+    {
+        $configurationValue = $this
+            ->normalizeValue($configuration)
+            ->getValue();
+
+        $this
+            ->configurationObjectManager
+            ->persist($configuration);
+
+        $this
+            ->configurationObjectManager
+            ->flush($configuration);
+
+        $this
+            ->cache
+            ->save($configurationIdentifier, $configurationValue);
+    }
+
+    /**
+     * Normalizes configuration value
+     *
+     * @param ConfigurationInterface $configuration Configuration
+     *
+     * @return ConfigurationInterface Configuration
+     */
+    protected function normalizeValue(ConfigurationInterface $configuration)
+    {
+        if ($configuration->getType() === ElcodiConfigurationTypes::TYPE_BOOLEAN) {
+
+            $configuration->setValue((boolean) $configuration->getValue());
+        }
 
         return $configuration;
     }

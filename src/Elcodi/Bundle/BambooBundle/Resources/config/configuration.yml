@@ -1,0 +1,22 @@
+elcodi_configuration:
+    elements:
+
+        #
+        # Store namespace
+        store_name:
+            key: name
+            name: Store name
+            namespace: store
+            type: string
+            reference: elcodi.core.product.use_stock
+
+
+        #
+        # Product namespace
+        #
+        product_use_stock:
+            key: use_stock
+            name: Use Stock
+            namespace: product
+            type: boolean
+            reference: elcodi.core.product.use_stock

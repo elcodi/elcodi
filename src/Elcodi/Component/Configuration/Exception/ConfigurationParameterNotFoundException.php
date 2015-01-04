@@ -14,13 +14,14 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Component\Product\Repository;
+namespace Elcodi\Component\Configuration\Exception;
 
-use Doctrine\ORM\EntityRepository;
+use Exception;
 
 /**
- * ProductRepository
+ * Class ConfigurationParameterNotFoundException
  */
-class ProductRepository extends EntityRepository
+class ConfigurationParameterNotFoundException extends Exception
 {
+
 }

@@ -19,10 +19,10 @@ namespace Elcodi\Component\EntityTranslator\EventListener;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormInterface;
 
 use Elcodi\Component\EntityTranslator\Form\Type\TranslatableFieldType;
 use Elcodi\Component\EntityTranslator\Services\Interfaces\EntityTranslationProviderInterface;
-use Symfony\Component\Form\FormInterface;
 
 /**
  * Class EntityTranslatorFormEventListener
@@ -150,7 +150,6 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
         $entityConfiguration = $this->getTranslatableEntityConfiguration($entity);
 
         if (is_null($entityConfiguration)) {
-
             return;
         }
 
@@ -206,7 +205,6 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
         $entityConfiguration = $this->getTranslatableEntityConfiguration($entity);
 
         if (is_null($entityConfiguration)) {
-
             return;
         }
 
@@ -248,7 +246,6 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
     public function saveEntityTranslations()
     {
         if (!$this->translationsBackup) {
-
             return;
         }
 
@@ -300,7 +297,6 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
         foreach ($classStack as $classNamespace) {
 
             if (array_key_exists($classNamespace, $this->translationConfiguration)) {
-
                 return $this->translationConfiguration[$classNamespace];
             }
         }

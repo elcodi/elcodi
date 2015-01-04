@@ -29,6 +29,7 @@ use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
 use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
+use Elcodi\Component\Product\ElcodiProductStock;
 use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 
 /**
@@ -242,8 +243,13 @@ class CartEventListener
         /**
          * We cannot exceed available stock for a given purchasable
          * when setting CartLine::$quantity
+         *
+         * This checking has sense when the Product has not infinite stock
          */
-        if ($cartLine->getQuantity() > $purchasable->getStock()) {
+        if (
+            ($cartLine->getProduct()->getStock() !== ElcodiProductStock::INFINITE_STOCK) &&
+            ($cartLine->getQuantity() > $purchasable->getStock())
+        ) {
 
             $cartLine->setQuantity($purchasable->getStock());
         }

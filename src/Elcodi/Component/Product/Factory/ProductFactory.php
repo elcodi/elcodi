@@ -20,6 +20,7 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\Component\Currency\Factory\Abstracts\AbstractPurchasableFactory;
+use Elcodi\Component\Product\ElcodiProductStock;
 use Elcodi\Component\Product\ElcodiProductTypes;
 use Elcodi\Component\Product\Entity\Product;
 
@@ -28,6 +29,27 @@ use Elcodi\Component\Product\Entity\Product;
  */
 class ProductFactory extends AbstractPurchasableFactory
 {
+    /**
+     * @var boolean
+     *
+     * Use use stock
+     */
+    public $useStock;
+
+    /**
+     * Set use stock
+     *
+     * @param boolean $useStock Infinite stock
+     *
+     * @return $this self Object
+     */
+    public function setUseStock($useStock)
+    {
+        $this->useStock = $useStock;
+
+        return $this;
+    }
+
     /**
      * Creates and returns a pristine Product instance
      *
@@ -45,8 +67,13 @@ class ProductFactory extends AbstractPurchasableFactory
          */
         $classNamespace = $this->getEntityNamespace();
         $product = new $classNamespace();
+
+        $stock = $this->useStock
+            ? 0
+            : ElcodiProductStock::INFINITE_STOCK;
+
         $product
-            ->setStock(0)
+            ->setStock($stock)
             ->setType(ElcodiProductTypes::TYPE_PRODUCT_PHYSICAL)
             ->setShowInHome(false)
             ->setPrice($zeroPrice)

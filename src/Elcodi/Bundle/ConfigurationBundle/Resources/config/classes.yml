@@ -8,7 +8,7 @@ parameters:
     #
     # Services
     #
-    elcodi.core.configuration.service.configuration_manager.class: Elcodi\Component\Configuration\Services\ConfigurationManager
+    elcodi.configuration_manager.class: Elcodi\Component\Configuration\Services\ConfigurationManager
 
     #
     # Twig extensions
