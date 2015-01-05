@@ -12,13 +12,13 @@ Elcodi\Component\Currency\Entity\Currency:
         name:
             column: name
             type: string
-            length: 25
+            length: 65
             nullable: false
             unique: false
         symbol:
             column: symbol
             type: string
-            length: 25
+            length: 15
             nullable: false
             unique: false
         createdAt:
