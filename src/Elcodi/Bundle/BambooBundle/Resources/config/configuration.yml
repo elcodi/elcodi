@@ -19,3 +19,13 @@ elcodi_configuration:
             namespace: product
             type: boolean
             reference: elcodi.core.product.use_stock
+
+        #
+        # Currency namespace
+        #
+        currency_default_currency:
+            key: default_currency
+            name: Default Currency
+            namespace: currency
+            type: string
+            reference: elcodi.core.currency.default_currency
