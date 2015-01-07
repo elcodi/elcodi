@@ -16,6 +16,7 @@
 
 namespace Elcodi\Bundle\ConfigurationBundle;
 
+use Elcodi\Component\Configuration\ExpressionLanguage\ConfigurationExpressionLanguageProvider;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -36,6 +37,7 @@ class ElcodiConfigurationBundle extends Bundle
         parent::build($container);
 
         $container->addCompilerPass(new MappingCompilerPass());
+        $container->addExpressionLanguageProvider(new ConfigurationExpressionLanguageProvider());
     }
 
     /**
