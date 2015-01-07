@@ -19,7 +19,7 @@ namespace Elcodi\Component\Plugin\Twig;
 use Twig_Extension;
 use Twig_SimpleFunction;
 
-use Elcodi\Component\Plugin\HookSystemInterface;
+use Elcodi\Component\Plugin\Interfaces\HookSystemInterface;
 
 /**
  * Class HookExtension for Twig
