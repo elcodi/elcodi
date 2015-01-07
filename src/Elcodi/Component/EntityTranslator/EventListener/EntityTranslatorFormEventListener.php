@@ -221,6 +221,11 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
 
         foreach ($entityFields as $fieldName => $fieldConfiguration) {
 
+            if (!isset($this->submittedDataPlain[$formHash][$fieldName])) {
+
+                continue;
+            }
+
             foreach ($this->locales as $locale) {
 
                 $data = $this->submittedDataPlain[$formHash][$fieldName][$locale . '_' . $fieldName];
