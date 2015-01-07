@@ -14,7 +14,7 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Component\Plugin;
+namespace Elcodi\Component\Plugin\Interfaces;
 
 /**
  * Interface HookSystemInterface
