@@ -20,8 +20,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use Elcodi\Component\Sitemap\Profile\Interfaces\SitemapProfileInterface;
-use Elcodi\Component\Sitemap\Render\Interfaces\SitemapRenderInterface;
+use Elcodi\Component\Sitemap\Dumper\SitemapDumper;
 
 /**
  * Class DumpSitemapCommand
@@ -29,32 +28,20 @@ use Elcodi\Component\Sitemap\Render\Interfaces\SitemapRenderInterface;
 class DumpSitemapCommand extends Command
 {
     /**
-     * @var SitemapRenderInterface
+     * @var SitemapDumper
      *
-     * Render
+     * Dumper
      */
-    protected $sitemapRender;
-
-    /**
-     * @var SitemapProfileInterface
-     *
-     * Profile
-     */
-    protected $sitemapProfile;
+    protected $sitemapDumper;
 
     /**
      * Construct
      *
-     * @param SitemapRenderInterface  $sitemapRender  Render
-     * @param SitemapProfileInterface $sitemapProfile Profile
+     * @param SitemapDumper $sitemapDumper Dumper
      */
-    public function __construct(
-        SitemapRenderInterface $sitemapRender,
-        SitemapProfileInterface $sitemapProfile
-    )
+    public function __construct(SitemapDumper $sitemapDumper)
     {
-        $this->sitemapRender = $sitemapRender;
-        $this->sitemapProfile = $sitemapProfile;
+        $this->sitemapDumper = $sitemapDumper;
 
         parent::__construct();
     }
@@ -64,9 +51,11 @@ class DumpSitemapCommand extends Command
      */
     protected function configure()
     {
+        $sitemapProfileName = $this->getSitemapProfileName();
+
         $this
-            ->setName('elcodi:sitemap:' . $this->sitemapProfile->getName() . ':dump')
-            ->setDescription('Dumps sitemap ' . $this->sitemapProfile->getName());
+            ->setName('elcodi:sitemap:' . $sitemapProfileName . ':dump')
+            ->setDescription('Dumps sitemap ' . $sitemapProfileName);
     }
 
     /**
@@ -80,15 +69,40 @@ class DumpSitemapCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $data = $this
-            ->sitemapRender
-            ->render($this->sitemapProfile);
+        $this
+            ->sitemapDumper
+            ->dump();
 
-        file_put_contents(
-            $this->sitemapProfile->getPath(),
-            $data
+        $output->writeln(
+            '<header>[Sitemap]</header> <body>Sitemap ' .
+            $this->getSitemapProfileName() .
+            ' built in . ' . $this->getSitemapProfilePath() . ' </body>'
         );
+    }
 
-        $output->writeln('<header>[Sitemap]</header> <body>Sitemap file built.</body>');
+    /**
+     * Get sitemap profile name
+     *
+     * @return string Sitemap profile name
+     */
+    protected function getSitemapProfileName()
+    {
+        return $this
+            ->sitemapDumper
+            ->getSitemapProfile()
+            ->getName();
+    }
+
+    /**
+     * Get sitemap profile path
+     *
+     * @return string Sitemap profile path
+     */
+    protected function getSitemapProfilePath()
+    {
+        return $this
+            ->sitemapDumper
+            ->getSitemapProfile()
+            ->getPath();
     }
 }

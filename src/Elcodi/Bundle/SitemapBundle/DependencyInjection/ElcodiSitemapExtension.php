@@ -89,9 +89,12 @@ class ElcodiSitemapExtension extends AbstractExtension
      */
     protected function postLoad(array $config, ContainerBuilder $container)
     {
-        $this->loadBlocks($config, $container);
-        $this->loadProfiles($config, $container);
-        $this->loadCommands($config, $container);
+        $this
+            ->loadBlocks($config, $container)
+            ->loadProfiles($config, $container)
+            ->loadDumpers($config, $container)
+            ->loadDumperChain($config, $container)
+            ->loadCommands($config, $container);
     }
 
     /**
@@ -99,6 +102,8 @@ class ElcodiSitemapExtension extends AbstractExtension
      *
      * @param array            $config    Configuration
      * @param ContainerBuilder $container Container
+     *
+     * @return $this self Object
      */
     protected function loadBlocks(array $config, ContainerBuilder $container)
     {
@@ -117,6 +122,8 @@ class ElcodiSitemapExtension extends AbstractExtension
                 ->addArgument($block['arguments'])
                 ->setPublic(false);
         }
+
+        return $this;
     }
 
     /**
@@ -124,6 +131,8 @@ class ElcodiSitemapExtension extends AbstractExtension
      *
      * @param array            $config    Configuration
      * @param ContainerBuilder $container Container
+     *
+     * @return $this self Object
      */
     protected function loadProfiles(array $config, ContainerBuilder $container)
     {
@@ -148,6 +157,69 @@ class ElcodiSitemapExtension extends AbstractExtension
                 );
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * Load dumpers
+     *
+     * @param array            $config    Configuration
+     * @param ContainerBuilder $container Container
+     *
+     * @return $this self Object
+     */
+    protected function loadDumpers(array $config, ContainerBuilder $container)
+    {
+        $profiles = $config['profiles'];
+
+        foreach ($profiles as $profileName => $profile) {
+
+            $container
+                ->register(
+                    'elcodi.sitemap_dumper.' . $profileName,
+                    '%elcodi.sitemap_dumper.class%'
+                )
+                ->addArgument(new Reference($profile['render']))
+                ->addArgument(new Reference('elcodi.sitemap_profile.' . $profileName))
+                ->addArgument(new Reference('elcodi.sitemap_event_dispatcher'))
+                ->setPublic(true)
+                ->addTag('elcodi.sitemap_dumper');
+        }
+
+        return $this;
+    }
+
+    /**
+     * Load dumper chain
+     *
+     * @param array            $config    Configuration
+     * @param ContainerBuilder $container Container
+     *
+     * @return $this self Object
+     */
+    protected function loadDumperChain(array $config, ContainerBuilder $container)
+    {
+        if (!$container->hasDefinition('elcodi.sitemap_dumper_chain')) {
+
+            return $this;
+        }
+
+        $sitemapDumperChain = $container->getDefinition('elcodi.sitemap_dumper_chain');
+
+        $sitemapDumpers = $container->findTaggedServiceIds(
+            'elcodi.sitemap_dumper'
+        );
+
+        foreach ($sitemapDumpers as $sitemapDumperId => $tags) {
+
+            $sitemapDumperChain->addMethodCall(
+                'addSitemapDumper',
+                array(new Reference($sitemapDumperId))
+            );
+        }
+
+        return $this;
     }
 
     /**
@@ -155,6 +227,8 @@ class ElcodiSitemapExtension extends AbstractExtension
      *
      * @param array            $config    Configuration
      * @param ContainerBuilder $container Container
+     *
+     * @return $this self Object
      */
     protected function loadCommands(array $config, ContainerBuilder $container)
     {
@@ -164,14 +238,15 @@ class ElcodiSitemapExtension extends AbstractExtension
 
             $container
                 ->register(
-                    'elcodi.sitemap_dumper.' . $profileName,
+                    'elcodi.sitemap_command.' . $profileName,
                     '%elcodi.core.sitemap.command.dump_sitemap.class%'
                 )
-                ->addArgument(new Reference($profile['render']))
-                ->addArgument(new Reference('elcodi.sitemap_profile.' . $profileName))
+                ->addArgument(new Reference('elcodi.sitemap_dumper.' . $profileName))
                 ->setPublic(true)
                 ->addTag('console.command');
         }
+
+        return $this;
     }
 
     /**
@@ -186,6 +261,7 @@ class ElcodiSitemapExtension extends AbstractExtension
         return [
             'classes',
             'renders',
+            'eventDispatchers',
         ];
     }
 

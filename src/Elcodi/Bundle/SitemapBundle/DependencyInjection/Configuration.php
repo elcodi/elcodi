@@ -43,7 +43,7 @@ class Configuration extends AbstractConfiguration
                                 ->isRequired()
                             ->end()
                             ->scalarNode('method')
-                                ->isRequired()
+                                ->defaultValue('findBy')
                             ->end()
                             ->arrayNode('arguments')
                                 ->useAttributeAsKey('name')
@@ -61,6 +61,13 @@ class Configuration extends AbstractConfiguration
                         ->children()
                             ->scalarNode('path')
                                 ->isRequired()
+                                ->beforeNormalization()
+                                    ->always()
+                                    ->then(function($path) {
+
+                                        return realpath($path);
+                                    })
+                                ->end()
                             ->end()
                             ->scalarNode('render')
                                 ->defaultValue('elcodi.core.sitemap.render.xml')
