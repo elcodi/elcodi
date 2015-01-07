@@ -14,7 +14,10 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Bundle\PluginBundle\Twig;
+namespace Elcodi\Component\Plugin\Twig;
+
+use Twig_Extension;
+use Twig_SimpleFunction;
 
 use Elcodi\Component\Plugin\HookSystemInterface;
 
@@ -23,7 +26,7 @@ use Elcodi\Component\Plugin\HookSystemInterface;
  *
  * @author Berny Cantos <be@rny.cc>
  */
-class HookExtension extends \Twig_Extension
+class HookExtension extends Twig_Extension
 {
     /**
      * @var HookSystemInterface $hookSystem
@@ -35,7 +38,7 @@ class HookExtension extends \Twig_Extension
     /**
      * Construct
      *
-     * @param HookSystemInterface $hookSystem
+     * @param HookSystemInterface $hookSystem Where to execute the hooks
      */
     public function __construct(HookSystemInterface $hookSystem)
     {
@@ -50,7 +53,7 @@ class HookExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction(
+            new Twig_SimpleFunction(
                 'elcodi_hook',
                 [$this->hookSystem, 'execute'],
                 [

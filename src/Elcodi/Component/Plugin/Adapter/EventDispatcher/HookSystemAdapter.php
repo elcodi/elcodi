@@ -18,7 +18,7 @@ namespace Elcodi\Component\Plugin\Adapter\EventDispatcher;
 
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-use Elcodi\Component\Plugin\HookSystemInterface;
+use Elcodi\Component\Plugin\Interfaces\HookSystemInterface;
 
 /**
  * Class HookSystemAdapter
