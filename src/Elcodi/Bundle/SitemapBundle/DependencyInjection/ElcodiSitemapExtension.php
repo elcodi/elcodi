@@ -201,7 +201,6 @@ class ElcodiSitemapExtension extends AbstractExtension
     protected function loadDumperChain(array $config, ContainerBuilder $container)
     {
         if (!$container->hasDefinition('elcodi.sitemap_dumper_chain')) {
-
             return $this;
         }
 

@@ -16,8 +16,6 @@
 
 namespace Elcodi\Component\Coupon\EventDispatcher;
 
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-
 use Elcodi\Component\Core\EventDispatcher\Abstracts\AbstractEventDispatcher;
 use Elcodi\Component\Coupon\ElcodiCouponEvents;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;

@@ -45,4 +45,3 @@ class SitemapEventDispatcher extends AbstractEventDispatcher
         return $this;
     }
 }
- 

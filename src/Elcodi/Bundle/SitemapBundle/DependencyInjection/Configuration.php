@@ -63,8 +63,7 @@ class Configuration extends AbstractConfiguration
                                 ->isRequired()
                                 ->beforeNormalization()
                                     ->always()
-                                    ->then(function($path) {
-
+                                    ->then(function ($path) {
                                         return realpath($path);
                                     })
                                 ->end()

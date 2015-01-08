@@ -15,7 +15,7 @@
  */
 
 namespace Elcodi\Component\Sitemap\Dumper\Interfaces;
- 
+
 /**
  * Interface SitemapDumperInterface
  */
@@ -28,4 +28,3 @@ interface SitemapDumperInterface
      */
     public function dump();
 }
- 

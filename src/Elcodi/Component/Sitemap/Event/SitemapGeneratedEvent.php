@@ -43,7 +43,7 @@ class SitemapGeneratedEvent extends Event
      * @param string $data Data
      * @param string $path Path
      */
-    function __construct($data, $path)
+    public function __construct($data, $path)
     {
         $this->data = $data;
         $this->path = $path;

@@ -16,8 +16,6 @@
 
 namespace Elcodi\Component\Sitemap\Dumper;
 
-use Symfony\Component\Console\Input\InputInterface;
-
 use Elcodi\Component\Sitemap\Dumper\Interfaces\SitemapDumperInterface;
 use Elcodi\Component\Sitemap\EventDispatcher\SitemapEventDispatcher;
 use Elcodi\Component\Sitemap\Profile\Interfaces\SitemapProfileInterface;
@@ -111,4 +109,3 @@ class SitemapDumper implements SitemapDumperInterface
             );
     }
 }
- 

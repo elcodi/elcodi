@@ -13,7 +13,7 @@
  * @author Marc Morera <yuhu@mmoreram.com>
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
- 
+
 namespace Elcodi\Component\Sitemap\Dumper;
 
 use Elcodi\Component\Sitemap\Dumper\Interfaces\SitemapDumperInterface;
@@ -62,4 +62,3 @@ class SitemapDumperChain
         return $this->sitemapDumpers;
     }
 }
- 
