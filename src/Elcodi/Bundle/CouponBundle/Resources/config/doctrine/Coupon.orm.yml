@@ -78,18 +78,12 @@ Elcodi\Component\Coupon\Entity\Coupon:
                  name: minimum_purchase_currency_iso
                  referencedColumnName: iso
                  nullable: true
-
-    manyToMany:
-        rules:
-            targetEntity: Elcodi\Component\Rule\Entity\Abstracts\AbstractRule
-            joinTable:
-                name: coupons_rules
-                joinColumns:
-                    coupon_id:
-                        referencedColumnName: id
-                inverseJoinColumns:
-                    rule_id:
-                        referencedColumnName: id
+        rule:
+            targetEntity: Elcodi\Component\Rule\Entity\Interfaces\RuleInterface
+            joinColumn:
+                name: rule
+                referencedColumnName: id
+                nullable: true
 
     lifecycleCallbacks:
         preUpdate: [loadUpdateAt]
