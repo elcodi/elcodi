@@ -37,8 +37,8 @@
         "symfony/http-kernel": "~2.6",
         "symfony/config": "~2.6",
         "symfony/dependency-injection": "~2.6",
-        "symfony/proxy-manager-bridge": "~2.6",
-        "ocramius/proxy-manager": ">=0.3.1,<0.6-dev",
+        "symfony/proxy-manager-bridge": "~2.6, >=2.6.3",
+        "ocramius/proxy-manager": "~1.0",
 
         "mmoreram/simple-doctrine-mapping": "~0.1",
 
