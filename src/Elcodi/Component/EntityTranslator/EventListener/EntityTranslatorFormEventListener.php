@@ -157,6 +157,11 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
 
         foreach ($entityFields as $fieldName => $fieldConfiguration) {
 
+            if (!$form->has($fieldName)) {
+
+                continue;
+            }
+
             $formConfig = $form
                 ->get($fieldName)
                 ->getConfig();

@@ -168,10 +168,12 @@ class TranslatableFieldType extends AbstractType
                 : '';
 
             $builder->add($translatedFieldName, $fieldType, array(
-                'required' => $this->evaluateRequired(
-                    $fieldOptions['required'],
-                    $locale
-                ),
+                'required' => isset($fieldOptions['required'])
+                    ? $this->evaluateRequired(
+                        $fieldOptions['required'],
+                        $locale
+                    )
+                    : false,
                 'mapped'   => false,
                 'label'    => $fieldOptions['label'],
                 'data'     => $translationData,
@@ -189,9 +191,9 @@ class TranslatableFieldType extends AbstractType
      */
     public function evaluateRequired($required, $locale)
     {
-        return $this->fallback
-            ? $this->masterLocale === $locale
-            : $required;
+        return (boolean) $required
+            ? !$this->fallback || ($this->masterLocale === $locale)
+            : false;
     }
 
     /**

@@ -16,13 +16,13 @@
 
 namespace Elcodi\Bundle\ConfigurationBundle;
 
-use Elcodi\Component\Configuration\ExpressionLanguage\ConfigurationExpressionLanguageProvider;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 use Elcodi\Bundle\ConfigurationBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\ConfigurationBundle\DependencyInjection\ElcodiConfigurationExtension;
+use Elcodi\Component\Configuration\ExpressionLanguage\ConfigurationExpressionLanguageProvider;
 
 /**
  * ElcodiConfigurationBundle Class
