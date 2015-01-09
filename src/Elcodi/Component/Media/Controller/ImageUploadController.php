@@ -138,8 +138,9 @@ class ImageUploadController
             $response = [
                 'status'   => 'ok',
                 'response' => [
-                    'id'     => $image->getId(),
-                    'routes' => [
+                    'id'        => $image->getId(),
+                    'extension' => $image->getExtension(),
+                    'routes'    => [
                         'view'   => $routes
                             ->get($this->viewImageUrlName)
                             ->getPath(),
