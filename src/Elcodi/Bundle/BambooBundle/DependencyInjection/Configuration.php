@@ -36,6 +36,9 @@ class Configuration extends AbstractConfiguration
     {
         $rootNode
             ->children()
+                ->scalarNode('cache_prefix')
+                    ->defaultValue('')
+                ->end()
                 ->arrayNode('emails')
                     ->addDefaultsIfNotSet()
                     ->children()
