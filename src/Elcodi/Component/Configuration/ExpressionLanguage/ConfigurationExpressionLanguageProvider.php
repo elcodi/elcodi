@@ -19,16 +19,29 @@ namespace Elcodi\Component\Configuration\ExpressionLanguage;
 use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 
+/**
+ * Class ConfigurationExpressionLanguageProvider
+ */
 class ConfigurationExpressionLanguageProvider implements ExpressionFunctionProviderInterface
 {
+    /**
+     * @return ExpressionFunction[] An array of Function instances
+     */
     public function getFunctions()
     {
         return array(
             new ExpressionFunction('elcodi_config', function ($name) {
-                    return sprintf('$this->get(\'elcodi.configuration_manager\')->getParameter(%s)', $name);
-                }, function (array $variables, $name) {
-                    return $variables['container']->get('elcodi.configuration_manager')->getParameter($name);
-                }),
+
+                return sprintf(
+                    '$this->get(\'elcodi.configuration_manager\')->getParameter(%s)',
+                    $name
+                );
+            }, function (array $variables, $name) {
+
+                return $variables['container']
+                    ->get('elcodi.configuration_manager')
+                    ->getParameter($name);
+            }),
         );
     }
 }
