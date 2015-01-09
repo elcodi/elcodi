@@ -22,3 +22,12 @@ elcodi_entity_translator:
                 metaTitle: ~
                 metaDescription: ~
                 metaKeywords: ~
+        Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface:
+            alias: manufacturer
+            fields:
+                name: ~
+                slug: ~
+                description: ~
+                metaTitle: ~
+                metaDescription: ~
+                metaKeywords: ~
