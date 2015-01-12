@@ -31,13 +31,11 @@ class ConfigurationExpressionLanguageProvider implements ExpressionFunctionProvi
     {
         return array(
             new ExpressionFunction('elcodi_config', function ($name) {
-
                 return sprintf(
                     '$this->get(\'elcodi.configuration_manager\')->getParameter(%s)',
                     $name
                 );
             }, function (array $variables, $name) {
-
                 return $variables['container']
                     ->get('elcodi.configuration_manager')
                     ->getParameter($name);

@@ -8,7 +8,14 @@ elcodi_configuration:
             name: Store name
             namespace: store
             type: string
-            reference: elcodi.core.product.use_stock
+            reference: elcodi.core.bamboo.store_name
+
+        store_template:
+            key: template
+            name: Store template
+            namespace: store
+            type: string
+            reference: elcodi.core.bamboo.store_template
 
         #
         # Product namespace
