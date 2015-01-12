@@ -20,6 +20,7 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
+use Elcodi\Component\Configuration\ElcodiConfigurationTypes;
 
 /**
  * This is the class that validates and merges configuration from your app/config files
@@ -61,7 +62,10 @@ class Configuration extends AbstractConfiguration implements ConfigurationInterf
                             ->end()
                             ->enumNode('type')
                                 ->values([
-                                    'string', 'text', 'boolean'
+                                    ElcodiConfigurationTypes::TYPE_BOOLEAN,
+                                    ElcodiConfigurationTypes::TYPE_STRING,
+                                    ElcodiConfigurationTypes::TYPE_TEXT,
+                                    ElcodiConfigurationTypes::TYPE_ARRAY
                                 ])
                             ->end()
                             ->scalarNode('reference')

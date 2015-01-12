@@ -17,6 +17,13 @@ elcodi_configuration:
             type: string
             reference: elcodi.core.bamboo.store_template
 
+        store_templates:
+            key: templates
+            name: Store templates
+            namespace: store
+            type: array
+            reference: elcodi.core.bamboo.store_templates
+
         #
         # Product namespace
         #

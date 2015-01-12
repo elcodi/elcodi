@@ -80,6 +80,7 @@ class ElcodiBambooExtension extends AbstractExtension
             "elcodi.core.bamboo.cache_prefix"                                   => $config['cache_prefix'],
             "elcodi.core.bamboo.store_name"                                     => $config['store_name'],
             "elcodi.core.bamboo.store_template"                                 => $config['store_template'],
+            "elcodi.core.bamboo.store_templates"                                => $config['store_templates'],
 
             "elcodi.core.bamboo.emails.layout"                                  => $config['emails']['defaults']['layout'],
             "elcodi.core.bamboo.emails.sender_email"                            => $config['emails']['defaults']['sender_email'],
@@ -106,6 +107,9 @@ class ElcodiBambooExtension extends AbstractExtension
     public function getConfigFiles(array $config)
     {
         return [
+            'classes',
+            'services',
+            'commands',
             [
                 'emails/customerPasswordRemember',
                 $config['emails']['customer_password_remember']['enabled']

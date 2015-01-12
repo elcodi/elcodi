@@ -1,0 +1,11 @@
+parameters:
+
+    #
+    # Services
+    #
+    elcodi.template_loader.class: Elcodi\Bundle\BambooBundle\Services\TemplateLoader
+
+    #
+    # Commands
+    #
+    elcodi.template_loader_command.class: Elcodi\Bundle\BambooBundle\Command\TemplateLoaderCommand

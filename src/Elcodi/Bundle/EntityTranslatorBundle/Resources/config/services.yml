@@ -2,6 +2,7 @@ services:
 
     elcodi.core.entity_translator.services.entity_translation_provider:
         class: %elcodi.core.entity_translator.services.entity_translation_provider.class%
+        lazy: true
         arguments:
             translation_repository: @elcodi.repository.entity_translation
             translation_factory: @elcodi.factory.entity_translation
