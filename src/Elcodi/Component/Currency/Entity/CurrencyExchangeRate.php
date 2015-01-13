@@ -53,7 +53,7 @@ class CurrencyExchangeRate implements CurrencyExchangeRateInterface
      *
      * @param CurrencyInterface $currency
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setSourceCurrency(CurrencyInterface $currency)
     {
@@ -77,7 +77,7 @@ class CurrencyExchangeRate implements CurrencyExchangeRateInterface
      *
      * @param CurrencyInterface $currency
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setTargetCurrency(CurrencyInterface $currency)
     {
@@ -101,7 +101,7 @@ class CurrencyExchangeRate implements CurrencyExchangeRateInterface
      *
      * @param float $exchangeRate the exchange rate
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setExchangeRate($exchangeRate)
     {

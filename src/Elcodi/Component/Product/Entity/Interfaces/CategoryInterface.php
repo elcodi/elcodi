@@ -52,7 +52,7 @@ interface CategoryInterface
      *
      * @param string $name Name
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setName($name);
 
@@ -68,7 +68,7 @@ interface CategoryInterface
      *
      * @param string $slug Slug
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setSlug($slug);
 
@@ -84,7 +84,7 @@ interface CategoryInterface
      *
      * @param Collection $subCategories Sub categories
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setSubCategories(Collection $subCategories);
 
@@ -100,7 +100,7 @@ interface CategoryInterface
      *
      * @param CategoryInterface $category Category to add as subcategory
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addSubCategory(CategoryInterface $category);
 
@@ -109,7 +109,7 @@ interface CategoryInterface
      *
      * @param CategoryInterface $category
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeSubCategory(CategoryInterface $category);
 
@@ -118,7 +118,7 @@ interface CategoryInterface
      *
      * @param CategoryInterface $parent Category parent
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setParent(CategoryInterface $parent = null);
 
@@ -134,7 +134,7 @@ interface CategoryInterface
      *
      * @param Collection $products Products
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setProducts(Collection $products);
 
@@ -164,7 +164,7 @@ interface CategoryInterface
      *
      * @param Integer $position Category relative position
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setPosition($position);
 

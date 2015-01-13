@@ -111,7 +111,7 @@ class EntityTranslator implements EntityTranslatorInterface
      * @param Object $object       Object
      * @param array  $translations Translations
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function save($object, array $translations)
     {

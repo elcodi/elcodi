@@ -30,7 +30,7 @@ interface CountryInterface extends EnabledInterface
      *
      * @param string $code Code
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCode($code);
 
@@ -46,7 +46,7 @@ interface CountryInterface extends EnabledInterface
      *
      * @param string $name Name
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setName($name);
 
@@ -69,7 +69,7 @@ interface CountryInterface extends EnabledInterface
      *
      * @param Collection $states States
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setStates(Collection $states);
 
@@ -78,7 +78,7 @@ interface CountryInterface extends EnabledInterface
      *
      * @param StateInterface $state State
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addState(StateInterface $state);
 
@@ -87,7 +87,7 @@ interface CountryInterface extends EnabledInterface
      *
      * @param StateInterface $state State
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeState(StateInterface $state);
 

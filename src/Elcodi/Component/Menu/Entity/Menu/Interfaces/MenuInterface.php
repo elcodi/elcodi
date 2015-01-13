@@ -33,7 +33,7 @@ interface MenuInterface
      *
      * @param string $code Code
      *
-     * @return MenuInterface Self object
+     * @return $this Self object
      */
     public function setCode($code);
 
@@ -49,7 +49,7 @@ interface MenuInterface
      *
      * @param string $description Description
      *
-     * @return MenuInterface Self object
+     * @return $this Self object
      */
     public function setDescription($description);
 

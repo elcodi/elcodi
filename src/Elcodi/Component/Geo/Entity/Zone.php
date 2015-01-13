@@ -55,7 +55,7 @@ class Zone implements ZoneInterface
      *
      * @param string $code Code
      *
-     * @return self Self object
+     * @return $this Self object
      */
     public function setCode($code)
     {
@@ -79,7 +79,7 @@ class Zone implements ZoneInterface
      *
      * @param string $name Name
      *
-     * @return self Self object
+     * @return $this Self object
      */
     public function setName($name)
     {
@@ -103,7 +103,7 @@ class Zone implements ZoneInterface
      *
      * @param Collection $members Zone Members
      *
-     * @return self Self object
+     * @return $this Self object
      */
     public function setMembers(Collection $members)
     {
@@ -127,7 +127,7 @@ class Zone implements ZoneInterface
      *
      * @param ZoneMemberInterface $member Zone member
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addMember(ZoneMemberInterface $member)
     {
@@ -146,7 +146,7 @@ class Zone implements ZoneInterface
      *
      * @param ZoneMemberInterface $member Zone member
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeMember(ZoneMemberInterface $member)
     {

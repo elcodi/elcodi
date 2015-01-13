@@ -236,7 +236,7 @@ abstract class AbstractCarrierBaseRange implements CarrierBaseRangeInterface
      *
      * @param MoneyInterface $amount Price
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setPrice(MoneyInterface $amount)
     {

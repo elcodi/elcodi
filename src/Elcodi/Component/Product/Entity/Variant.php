@@ -118,7 +118,7 @@ class Variant implements VariantInterface
      *
      * @param int $stock
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setStock($stock)
     {

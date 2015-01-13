@@ -159,7 +159,7 @@ class Product implements ProductInterface
      *
      * @param string $name Name
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setName($name)
     {
@@ -183,7 +183,7 @@ class Product implements ProductInterface
      *
      * @param string $slug Slug
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setSlug($slug)
     {
@@ -207,7 +207,7 @@ class Product implements ProductInterface
      *
      * @param string $description Description
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setDescription($description)
     {
@@ -231,7 +231,7 @@ class Product implements ProductInterface
      *
      * @param string $shortDescription Short description
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setShortDescription($shortDescription)
     {
@@ -255,7 +255,7 @@ class Product implements ProductInterface
      *
      * @param Collection $categories Categories
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCategories(Collection $categories)
     {
@@ -279,7 +279,7 @@ class Product implements ProductInterface
      *
      * @param CategoryInterface $category Category
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addCategory(CategoryInterface $category)
     {
@@ -293,7 +293,7 @@ class Product implements ProductInterface
      *
      * @param CategoryInterface $category Category
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeCategory(CategoryInterface $category)
     {
@@ -307,7 +307,7 @@ class Product implements ProductInterface
      *
      * @param CategoryInterface $principalCategory Principal category
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setPrincipalCategory(CategoryInterface $principalCategory = null)
     {
@@ -331,7 +331,7 @@ class Product implements ProductInterface
      *
      * @param int $stock Stock
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setStock($stock)
     {
@@ -355,7 +355,7 @@ class Product implements ProductInterface
      *
      * @param boolean $showInHome Show in home
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setShowInHome($showInHome)
     {
@@ -379,7 +379,7 @@ class Product implements ProductInterface
      *
      * @param ManufacturerInterface $manufacturer Manufacturer
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setManufacturer(ManufacturerInterface $manufacturer = null)
     {
@@ -403,7 +403,7 @@ class Product implements ProductInterface
      *
      * @param string $dimensions Dimensions
      *
-     * @return ProductInterface Self object
+     * @return $this Self object
      */
     public function setDimensions($dimensions)
     {
@@ -437,7 +437,7 @@ class Product implements ProductInterface
      *
      * @param string $sku
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setSku($sku)
     {
@@ -451,7 +451,7 @@ class Product implements ProductInterface
      *
      * @param int $type Type
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setType($type)
     {
@@ -475,7 +475,7 @@ class Product implements ProductInterface
      *
      * @param AttributeInterface $attribute Attribute
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addAttribute(AttributeInterface $attribute)
     {
@@ -493,7 +493,7 @@ class Product implements ProductInterface
      *
      * @param AttributeInterface $attribute Attribute to be removed
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeAttribute(AttributeInterface $attribute)
     {
@@ -517,7 +517,7 @@ class Product implements ProductInterface
      *
      * @param Collection $attributes Attributes
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setAttributes(Collection $attributes)
     {
@@ -541,7 +541,7 @@ class Product implements ProductInterface
      *
      * @param VariantInterface $variant
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addVariant(VariantInterface $variant)
     {
@@ -555,7 +555,7 @@ class Product implements ProductInterface
      *
      * @param Collection $variants Variants
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setVariants(Collection $variants)
     {
@@ -579,7 +579,7 @@ class Product implements ProductInterface
      *
      * @param VariantInterface $principalVariant
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setPrincipalVariant(VariantInterface $principalVariant)
     {

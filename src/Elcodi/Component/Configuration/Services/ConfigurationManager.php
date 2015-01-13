@@ -255,7 +255,7 @@ class ConfigurationManager extends AbstractCacheWrapper
      * @param ConfigurationInterface $configuration           Configuration
      * @param string                 $configurationIdentifier Configuration identifier
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     protected function flushConfiguration(
         ConfigurationInterface $configuration,

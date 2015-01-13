@@ -41,7 +41,7 @@ class ProductFactory extends AbstractPurchasableFactory
      *
      * @param boolean $useStock Infinite stock
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setUseStock($useStock)
     {

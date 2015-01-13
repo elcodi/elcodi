@@ -119,7 +119,7 @@ class ReferralLine implements ReferralLineInterface
      *
      * @param ReferralHashInterface $referralHash ReferralHash
      *
-     * @return ReferralLine Self object
+     * @return $this Self object
      */
     public function setReferralHash(ReferralHashInterface $referralHash)
     {
@@ -143,7 +143,7 @@ class ReferralLine implements ReferralLineInterface
      *
      * @param ReferralRuleInterface $referralRule ReferralRule
      *
-     * @return ReferralLine Self object
+     * @return $this Self object
      */
     public function setReferralRule(ReferralRuleInterface $referralRule)
     {
@@ -167,7 +167,7 @@ class ReferralLine implements ReferralLineInterface
      *
      * @param CustomerInterface $invited Invited
      *
-     * @return ReferralLine Self object
+     * @return $this Self object
      */
     public function setInvited(CustomerInterface $invited)
     {
@@ -191,7 +191,7 @@ class ReferralLine implements ReferralLineInterface
      *
      * @param boolean $invitedCouponUsed InvitedCouponUsed
      *
-     * @return ReferralLine Self object
+     * @return $this Self object
      */
     public function setInvitedCouponUsed($invitedCouponUsed)
     {
@@ -215,7 +215,7 @@ class ReferralLine implements ReferralLineInterface
      *
      * @param string $invitedEmail InvitedEmail
      *
-     * @return ReferralLine Self object
+     * @return $this Self object
      */
     public function setInvitedEmail($invitedEmail)
     {
@@ -239,7 +239,7 @@ class ReferralLine implements ReferralLineInterface
      *
      * @param boolean $referrerCouponUsed ReferrerCouponUsed
      *
-     * @return ReferralLine Self object
+     * @return $this Self object
      */
     public function setReferrerCouponUsed($referrerCouponUsed)
     {
@@ -263,7 +263,7 @@ class ReferralLine implements ReferralLineInterface
      *
      * @param string $source Source
      *
-     * @return ReferralLine Self object
+     * @return $this Self object
      */
     public function setSource($source)
     {
@@ -287,7 +287,7 @@ class ReferralLine implements ReferralLineInterface
      *
      * @param string $invitedName InvitedName
      *
-     * @return ReferralLine Self object
+     * @return $this Self object
      */
     public function setInvitedName($invitedName)
     {
@@ -311,7 +311,7 @@ class ReferralLine implements ReferralLineInterface
      *
      * @param CouponInterface $invitedAssignedCoupon InvitedAssignedCoupon
      *
-     * @return ReferralLine Self object
+     * @return $this Self object
      */
     public function setInvitedAssignedCoupon(CouponInterface $invitedAssignedCoupon)
     {
@@ -335,7 +335,7 @@ class ReferralLine implements ReferralLineInterface
      *
      * @param CouponInterface $referrerAssignedCoupon ReferrerAssignedCoupon
      *
-     * @return ReferralLine Self object
+     * @return $this Self object
      */
     public function setReferrerAssignedCoupon(CouponInterface $referrerAssignedCoupon)
     {
@@ -359,7 +359,7 @@ class ReferralLine implements ReferralLineInterface
      *
      * @param boolean $closed Closed
      *
-     * @return ReferralLine Self object
+     * @return $this Self object
      */
     public function setClosed($closed)
     {
@@ -381,7 +381,7 @@ class ReferralLine implements ReferralLineInterface
     /**
      * Calculate closed variable
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function loadClosed()
     {

@@ -54,7 +54,7 @@ trait CouponAssignmentTrait
      *
      * @param \Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface $invitedCoupon InvitedCoupon
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setInvitedCoupon(\Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface $invitedCoupon = null)
     {
@@ -78,7 +78,7 @@ trait CouponAssignmentTrait
      *
      * @param string $invitedType InvitedType
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setInvitedType($invitedType)
     {
@@ -102,7 +102,7 @@ trait CouponAssignmentTrait
      *
      * @param \Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface $referrerCoupon ReferrerCoupon
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setReferrerCoupon(\Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface $referrerCoupon = null)
     {
@@ -126,7 +126,7 @@ trait CouponAssignmentTrait
      *
      * @param string $referrerType ReferrerType
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setReferrerType($referrerType)
     {

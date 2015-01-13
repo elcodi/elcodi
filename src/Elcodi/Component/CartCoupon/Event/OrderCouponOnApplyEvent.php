@@ -68,7 +68,7 @@ class OrderCouponOnApplyEvent extends Event
      *
      * @param OrderCouponInterface $orderCoupon OrderCoupon
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setOrderCoupon(OrderCouponInterface $orderCoupon)
     {

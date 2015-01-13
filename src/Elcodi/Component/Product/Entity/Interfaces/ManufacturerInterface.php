@@ -54,7 +54,7 @@ interface ManufacturerInterface
      *
      * @param string $name Name
      *
-     * @return ManufacturerInterface Self Object
+     * @return $this Self object
      */
     public function setName($name);
 
@@ -70,7 +70,7 @@ interface ManufacturerInterface
      *
      * @param string $description Description
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setDescription($description);
 
@@ -84,7 +84,7 @@ interface ManufacturerInterface
      *
      * @param string $slug Slug
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setSlug($slug);
 
@@ -100,7 +100,7 @@ interface ManufacturerInterface
      *
      * @param Collection $products Products
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setProducts(Collection $products);
 
@@ -116,7 +116,7 @@ interface ManufacturerInterface
      *
      * @param ProductInterface $product Product
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addProduct(ProductInterface $product);
 
@@ -125,7 +125,7 @@ interface ManufacturerInterface
      *
      * @param ProductInterface $product Product
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeProduct(ProductInterface $product);
 }

@@ -155,7 +155,7 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * Otherwise, will return.
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     protected function createSchema()
     {
@@ -197,7 +197,7 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * Otherwise, will return.
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     protected function loadFixtures()
     {

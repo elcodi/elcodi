@@ -28,7 +28,7 @@ interface InvitationBagInterface
      *
      * @param InvitationInterface $errorInvitation Invitation
      *
-     * @return InvitationBagInterface Self object
+     * @return $this Self object
      */
     public function addErrorInvitation(InvitationInterface $errorInvitation);
 
@@ -37,7 +37,7 @@ interface InvitationBagInterface
      *
      * @param Collection $errorInvitations ErrorInvitations
      *
-     * @return InvitationBagInterface Self object
+     * @return $this Self object
      */
     public function setErrorInvitations(Collection $errorInvitations);
 
@@ -53,7 +53,7 @@ interface InvitationBagInterface
      *
      * @param InvitationInterface $sentInvitation Invitation
      *
-     * @return InvitationBagInterface Self object
+     * @return $this Self object
      */
     public function addSentInvitation(InvitationInterface $sentInvitation);
 
@@ -62,7 +62,7 @@ interface InvitationBagInterface
      *
      * @param \Doctrine\Common\Collections\ArrayCollection $sentInvitations SentInvitations
      *
-     * @return InvitationBagInterface Self object
+     * @return $this Self object
      */
     public function setSentInvitations($sentInvitations);
 

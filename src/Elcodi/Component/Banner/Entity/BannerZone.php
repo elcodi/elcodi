@@ -77,7 +77,7 @@ class BannerZone implements BannerZoneInterface
      *
      * @param string $name Name of the banner
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setName($name)
     {
@@ -101,7 +101,7 @@ class BannerZone implements BannerZoneInterface
      *
      * @param string $code
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCode($code)
     {
@@ -125,7 +125,7 @@ class BannerZone implements BannerZoneInterface
      *
      * @param LanguageInterface $language Language to set
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setLanguage(LanguageInterface $language = null)
     {
@@ -149,7 +149,7 @@ class BannerZone implements BannerZoneInterface
      *
      * @param BannerInterface $banner Banner
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addBanner(BannerInterface $banner)
     {
@@ -163,7 +163,7 @@ class BannerZone implements BannerZoneInterface
      *
      * @param BannerInterface $banner Banner
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeBanner(BannerInterface $banner)
     {
@@ -177,7 +177,7 @@ class BannerZone implements BannerZoneInterface
      *
      * @param Collection $banners Banners
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setBanners(Collection $banners)
     {
@@ -201,7 +201,7 @@ class BannerZone implements BannerZoneInterface
      *
      * @param float $height Height
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setHeight($height)
     {
@@ -225,7 +225,7 @@ class BannerZone implements BannerZoneInterface
      *
      * @param float $width Width
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setWidth($width)
     {

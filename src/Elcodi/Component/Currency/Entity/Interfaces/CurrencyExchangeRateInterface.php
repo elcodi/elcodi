@@ -28,7 +28,7 @@ interface CurrencyExchangeRateInterface extends IdentifiableInterface
      *
      * @param CurrencyInterface $currency
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setSourceCurrency(CurrencyInterface $currency);
 
@@ -44,7 +44,7 @@ interface CurrencyExchangeRateInterface extends IdentifiableInterface
      *
      * @param CurrencyInterface $currency
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setTargetCurrency(CurrencyInterface $currency);
 
@@ -60,7 +60,7 @@ interface CurrencyExchangeRateInterface extends IdentifiableInterface
      *
      * @param float $exchangeRate the exchange rate
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setExchangeRate($exchangeRate);
 

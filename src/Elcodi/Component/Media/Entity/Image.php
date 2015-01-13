@@ -42,7 +42,7 @@ class Image extends File implements ImageInterface
      *
      * @param string $width Width
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setWidth($width)
     {
@@ -66,7 +66,7 @@ class Image extends File implements ImageInterface
      *
      * @param string $height Height
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setHeight($height)
     {

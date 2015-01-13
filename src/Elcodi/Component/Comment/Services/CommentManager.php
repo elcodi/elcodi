@@ -169,7 +169,7 @@ class CommentManager extends AbstractCacheWrapper
      *
      * @param CommentInterface $comment Comment
      *
-     * @return CommentManager self Object
+     * @return $this Self object
      */
     public function removeComment(CommentInterface $comment)
     {

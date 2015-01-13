@@ -47,7 +47,7 @@ class ReferralRule implements ReferralRuleInterface
      *
      * @param Collection $referralLines Referral Lines
      *
-     * @return ReferralRule Self object
+     * @return $this Self object
      */
     public function setReferralLines(Collection $referralLines)
     {

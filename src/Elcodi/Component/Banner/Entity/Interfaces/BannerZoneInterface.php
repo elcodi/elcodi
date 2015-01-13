@@ -31,7 +31,7 @@ interface BannerZoneInterface extends IdentifiableInterface
      *
      * @param string $name Name of the banner
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setName($name);
 
@@ -47,7 +47,7 @@ interface BannerZoneInterface extends IdentifiableInterface
      *
      * @param string $code
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCode($code);
 
@@ -63,7 +63,7 @@ interface BannerZoneInterface extends IdentifiableInterface
      *
      * @param LanguageInterface $language Language to set
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setLanguage(LanguageInterface $language = null);
 
@@ -79,7 +79,7 @@ interface BannerZoneInterface extends IdentifiableInterface
      *
      * @param BannerInterface $banner Banner
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addBanner(BannerInterface $banner);
 
@@ -88,7 +88,7 @@ interface BannerZoneInterface extends IdentifiableInterface
      *
      * @param BannerInterface $banner Banner
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeBanner(BannerInterface $banner);
 
@@ -97,7 +97,7 @@ interface BannerZoneInterface extends IdentifiableInterface
      *
      * @param Collection $banners Banners
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setBanners(Collection $banners);
 
@@ -113,7 +113,7 @@ interface BannerZoneInterface extends IdentifiableInterface
      *
      * @param float $height Height
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setHeight($height);
 
@@ -129,7 +129,7 @@ interface BannerZoneInterface extends IdentifiableInterface
      *
      * @param float $width Width
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setWidth($width);
 

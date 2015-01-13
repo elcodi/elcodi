@@ -46,7 +46,7 @@ interface CityInterface extends EnabledInterface
      *
      * @param string $name Name
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setName($name);
 
@@ -83,7 +83,7 @@ interface CityInterface extends EnabledInterface
      *
      * @param ProvinceInterface $province Province
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setProvince(ProvinceInterface $province);
 
@@ -99,7 +99,7 @@ interface CityInterface extends EnabledInterface
      *
      * @param Collection $postalCodes Postalcodes
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setPostalCodes(Collection $postalCodes);
 
@@ -108,7 +108,7 @@ interface CityInterface extends EnabledInterface
      *
      * @param PostalCodeInterface $postalCode PostalCode
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addPostalCode(PostalCodeInterface $postalCode);
 
@@ -117,7 +117,7 @@ interface CityInterface extends EnabledInterface
      *
      * @param PostalCodeInterface $postalCode PostalCode
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removePostalCode(PostalCodeInterface $postalCode);
 

@@ -52,7 +52,7 @@ interface EventInterface
      *
      * @param string $content
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setContent($content);
 }

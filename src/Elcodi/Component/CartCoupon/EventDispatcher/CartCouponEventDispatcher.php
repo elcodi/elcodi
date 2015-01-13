@@ -36,7 +36,7 @@ class CartCouponEventDispatcher extends AbstractEventDispatcher
      * @param CartInterface   $cart   Cart where to apply the coupon
      * @param CouponInterface $coupon Coupon to be applied
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function dispatchCartCouponOnApplyEvent(
         CartInterface $cart,
@@ -55,7 +55,7 @@ class CartCouponEventDispatcher extends AbstractEventDispatcher
      *
      * @param CartCouponInterface $cartCoupon CartCoupon to remove
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function dispatchCartCouponOnRemoveEvent(
         CartCouponInterface $cartCoupon
@@ -78,7 +78,7 @@ class CartCouponEventDispatcher extends AbstractEventDispatcher
      * @param CartInterface   $cart   Cart where to apply the coupon
      * @param CouponInterface $coupon Coupon to be applied
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function dispatchCartCouponOnRejectedEvent(
         CartInterface $cart,

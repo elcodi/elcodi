@@ -90,7 +90,7 @@ class Category implements CategoryInterface
      *
      * @param string $name Name
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setName($name)
     {
@@ -114,7 +114,7 @@ class Category implements CategoryInterface
      *
      * @param string $slug Slug
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setSlug($slug)
     {
@@ -138,7 +138,7 @@ class Category implements CategoryInterface
      *
      * @param Collection $subCategories Sub categories
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setSubCategories(Collection $subCategories)
     {
@@ -162,7 +162,7 @@ class Category implements CategoryInterface
      *
      * @param CategoryInterface $category Category to add as subcategory
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addSubCategory(CategoryInterface $category)
     {
@@ -176,7 +176,7 @@ class Category implements CategoryInterface
      *
      * @param CategoryInterface $category
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeSubCategory(CategoryInterface $category)
     {
@@ -190,7 +190,7 @@ class Category implements CategoryInterface
      *
      * @param CategoryInterface $parent Category parent
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setParent(CategoryInterface $parent = null)
     {
@@ -214,7 +214,7 @@ class Category implements CategoryInterface
      *
      * @param Collection $products Products
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setProducts(Collection $products)
     {
@@ -260,7 +260,7 @@ class Category implements CategoryInterface
      *
      * @param Integer $position Category relative position
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setPosition($position)
     {

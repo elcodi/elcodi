@@ -130,7 +130,7 @@ class Order implements OrderInterface
      *
      * @param CustomerInterface $customer Customer
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCustomer(CustomerInterface $customer)
     {
@@ -154,7 +154,7 @@ class Order implements OrderInterface
      *
      * @param CartInterface $cart Cart
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCart(CartInterface $cart)
     {
@@ -178,7 +178,7 @@ class Order implements OrderInterface
      *
      * @param Collection $orderLines Order lines
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setOrderLines(Collection $orderLines)
     {
@@ -202,7 +202,7 @@ class Order implements OrderInterface
      *
      * @param OrderLineInterface $orderLine Order line
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addOrderLine(OrderLineInterface $orderLine)
     {
@@ -219,7 +219,7 @@ class Order implements OrderInterface
      *
      * @param OrderLineInterface $orderLine Order line
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeOrderLine(OrderLineInterface $orderLine)
     {
@@ -233,7 +233,7 @@ class Order implements OrderInterface
      *
      * @param int $quantity Quantity
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setQuantity($quantity)
     {

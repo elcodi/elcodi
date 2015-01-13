@@ -32,7 +32,7 @@ interface LanguageInterface
      *
      * @param string $name Name of the shop
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setName($name);
 
@@ -48,7 +48,7 @@ interface LanguageInterface
      *
      * @param string $iso Iso
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setIso($iso);
 

@@ -66,7 +66,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
      *
      * @param Collection $orderLines Order lines
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setOrderLines(Collection $orderLines);
 
@@ -82,7 +82,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
      *
      * @param OrderLineInterface $orderLine Order line
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addOrderLine(OrderLineInterface $orderLine);
 
@@ -91,7 +91,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
      *
      * @param OrderLineInterface $orderLine Order line
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeOrderLine(OrderLineInterface $orderLine);
 
@@ -100,7 +100,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
      *
      * @param int $quantity Quantity
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setQuantity($quantity);
 
@@ -132,7 +132,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
      *
      * @param integer $height Height
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setHeight($height);
 
@@ -141,7 +141,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
      *
      * @param integer $width Width
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setWidth($width);
 
@@ -150,7 +150,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
      *
      * @param integer $depth Depth
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setDepth($depth);
 
@@ -159,7 +159,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
      *
      * @param integer $weight Weight
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setWeight($weight);
 

@@ -31,7 +31,7 @@ interface ReferralHashInterface extends IdentifiableInterface
      *
      * @param CustomerInterface $referrer Referrer
      *
-     * @return ReferralHashInterface Self object
+     * @return $this Self object
      */
     public function setReferrer(CustomerInterface $referrer);
 
@@ -47,7 +47,7 @@ interface ReferralHashInterface extends IdentifiableInterface
      *
      * @param string $hash Hash
      *
-     * @return ReferralHashInterface Self object
+     * @return $this Self object
      */
     public function setHash($hash);
 
@@ -63,7 +63,7 @@ interface ReferralHashInterface extends IdentifiableInterface
      *
      * @param Collection $referralLines Referral Lines
      *
-     * @return ReferralHashInterface Self object
+     * @return $this Self object
      */
     public function setReferralLines(Collection $referralLines);
 

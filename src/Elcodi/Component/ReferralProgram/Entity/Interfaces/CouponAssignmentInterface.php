@@ -28,7 +28,7 @@ interface CouponAssignmentInterface
      *
      * @param CouponInterface $invitedCoupon InvitedCoupon
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setInvitedCoupon(CouponInterface $invitedCoupon = null);
 
@@ -44,7 +44,7 @@ interface CouponAssignmentInterface
      *
      * @param string $invitedType InvitedType
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setInvitedType($invitedType);
 
@@ -60,7 +60,7 @@ interface CouponAssignmentInterface
      *
      * @param CouponInterface $referrerCoupon ReferrerCoupon
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setReferrerCoupon(CouponInterface $referrerCoupon = null);
 
@@ -76,7 +76,7 @@ interface CouponAssignmentInterface
      *
      * @param string $referrerType ReferrerType
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setReferrerType($referrerType);
 

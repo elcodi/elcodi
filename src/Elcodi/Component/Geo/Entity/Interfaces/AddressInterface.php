@@ -45,7 +45,7 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
      *
      * @param mixed $address Address
      *
-     * @return AddressInterface Self object
+     * @return $this Self object
      */
     public function setAddress($address);
 
@@ -61,7 +61,7 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
      *
      * @param mixed $addressMore AddressMore
      *
-     * @return AddressInterface Self object
+     * @return $this Self object
      */
     public function setAddressMore($addressMore);
 
@@ -77,7 +77,7 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
      *
      * @param string $comments Comments
      *
-     * @return AddressInterface Self object
+     * @return $this Self object
      */
     public function setComments($comments);
 
@@ -93,7 +93,7 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
      *
      * @param mixed $mobile Mobile
      *
-     * @return AddressInterface Self object
+     * @return $this Self object
      */
     public function setMobile($mobile);
 
@@ -109,7 +109,7 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
      *
      * @param mixed $name Name
      *
-     * @return AddressInterface Self object
+     * @return $this Self object
      */
     public function setName($name);
 
@@ -125,7 +125,7 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
      *
      * @param mixed $phone Phone
      *
-     * @return AddressInterface Self object
+     * @return $this Self object
      */
     public function setPhone($phone);
 
@@ -141,7 +141,7 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
      *
      * @param string $recipientName RecipientName
      *
-     * @return AddressInterface Self object
+     * @return $this Self object
      */
     public function setRecipientName($recipientName);
 
@@ -157,7 +157,7 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
      *
      * @param mixed $recipientSurname RecipientSurname
      *
-     * @return AddressInterface Self object
+     * @return $this Self object
      */
     public function setRecipientSurname($recipientSurname);
 
@@ -173,7 +173,7 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
      *
      * @param CityInterface $city City
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCity(CityInterface $city);
 
@@ -189,7 +189,7 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
      *
      * @param PostalCodeInterface $postalCode Postalcode
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setPostalcode(PostalCodeInterface $postalCode);
 

@@ -98,7 +98,7 @@ class NewsletterManager
      * @param String            $email    Email
      * @param LanguageInterface $language The language
      *
-     * @return $this self Object
+     * @return $this Self object
      *
      * @throws NewsletterCannotBeAddedException
      */

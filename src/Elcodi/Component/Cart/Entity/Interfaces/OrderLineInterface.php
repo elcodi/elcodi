@@ -36,7 +36,7 @@ interface OrderLineInterface
      *
      * @param OrderInterface $order Order
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setOrder(OrderInterface $order);
 
@@ -52,7 +52,7 @@ interface OrderLineInterface
      *
      * @param integer $height Height
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setHeight($height);
 
@@ -61,7 +61,7 @@ interface OrderLineInterface
      *
      * @param integer $width Width
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setWidth($width);
 
@@ -70,7 +70,7 @@ interface OrderLineInterface
      *
      * @param integer $depth Depth
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setDepth($depth);
 
@@ -79,7 +79,7 @@ interface OrderLineInterface
      *
      * @param integer $weight Weight
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setWeight($weight);
 }

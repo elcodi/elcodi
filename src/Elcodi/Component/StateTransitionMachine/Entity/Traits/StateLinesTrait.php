@@ -44,7 +44,7 @@ trait StateLinesTrait
      *
      * @param StateLineInterface $stateLine State line
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addStateLine(StateLineInterface $stateLine)
     {
@@ -62,7 +62,7 @@ trait StateLinesTrait
      *
      * @param StateLineInterface $stateLine State line
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeStateLine(StateLineInterface $stateLine)
     {
@@ -78,7 +78,7 @@ trait StateLinesTrait
      *
      * @param Collection $stateLines State lines
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setStateLines(Collection $stateLines)
     {

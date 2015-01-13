@@ -40,7 +40,7 @@ trait ValidIntervalTrait
      *
      * @param \DateTime $validFrom Valid from
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setValidFrom(\DateTime $validFrom)
     {
@@ -65,7 +65,7 @@ trait ValidIntervalTrait
      *
      * @param \DateTime $validTo Valid to
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setValidTo(\DateTime $validTo = null)
     {

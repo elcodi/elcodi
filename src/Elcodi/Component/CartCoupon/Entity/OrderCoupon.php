@@ -78,7 +78,7 @@ class OrderCoupon implements OrderCouponInterface
      *
      * @param OrderInterface $order Order
      *
-     * @return OrderCoupon Self object
+     * @return $this Self object
      */
     public function setOrder(OrderInterface $order)
     {
@@ -102,7 +102,7 @@ class OrderCoupon implements OrderCouponInterface
      *
      * @param CouponInterface $coupon Coupon
      *
-     * @return OrderCoupon Self object
+     * @return $this Self object
      */
     public function setCoupon(CouponInterface $coupon)
     {
@@ -126,7 +126,7 @@ class OrderCoupon implements OrderCouponInterface
      *
      * @param string $code Code
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCode($code)
     {
@@ -150,7 +150,7 @@ class OrderCoupon implements OrderCouponInterface
      *
      * @param string $name
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setName($name)
     {
@@ -174,7 +174,7 @@ class OrderCoupon implements OrderCouponInterface
      *
      * @param MoneyInterface $amount Price
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setAmount(MoneyInterface $amount)
     {

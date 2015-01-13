@@ -34,7 +34,7 @@ interface CartLineInterface
      *
      * @param CartInterface $cart Cart
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCart(CartInterface $cart);
 
@@ -50,7 +50,7 @@ interface CartLineInterface
      *
      * @param OrderLineInterface $orderLine OrderLine
      *
-     * @return CartLineInterface Self object
+     * @return $this Self object
      */
     public function setOrderLine($orderLine);
 

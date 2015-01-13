@@ -26,7 +26,7 @@ interface PrincipalImageInterface
      *
      * @param ImageInterface $principalImage Principal image
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setPrincipalImage(ImageInterface $principalImage = null);
 

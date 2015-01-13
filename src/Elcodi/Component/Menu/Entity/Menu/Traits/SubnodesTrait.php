@@ -40,7 +40,7 @@ trait SubnodesTrait
      *
      * @param \Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface $node Node
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addSubnode(\Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface $node)
     {
@@ -56,7 +56,7 @@ trait SubnodesTrait
      *
      * @param \Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface $node Node
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeSubnode(\Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface $node)
     {
@@ -70,7 +70,7 @@ trait SubnodesTrait
      *
      * @param \Doctrine\Common\Collections\Collection $subnodes Subnodes
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setSubnodes(\Doctrine\Common\Collections\Collection $subnodes)
     {
@@ -94,7 +94,7 @@ trait SubnodesTrait
      *
      * @param string $sort Sort
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setSort($sort)
     {

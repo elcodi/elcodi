@@ -38,7 +38,7 @@ class Expression implements ExpressionInterface
      *
      * @param string $expression Expression
      *
-     * @return Rule Self object
+     * @return $this Self object
      */
     public function setExpression($expression)
     {

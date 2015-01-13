@@ -52,7 +52,7 @@ trait PurchasableWrapperTrait
      *
      * @param PurchasableInterface $purchasable Purchasable object
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setPurchasable(PurchasableInterface $purchasable)
     {
@@ -88,7 +88,7 @@ trait PurchasableWrapperTrait
      *
      * @param ProductInterface $product Product
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setProduct(ProductInterface $product)
     {
@@ -112,7 +112,7 @@ trait PurchasableWrapperTrait
      *
      * @param VariantInterface $variant Variant
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setVariant(VariantInterface $variant)
     {
@@ -136,7 +136,7 @@ trait PurchasableWrapperTrait
      *
      * @param int $quantity Quantity
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setQuantity($quantity)
     {

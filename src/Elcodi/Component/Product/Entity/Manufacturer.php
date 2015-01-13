@@ -69,7 +69,7 @@ class Manufacturer implements ManufacturerInterface
      *
      * @param string $name Name
      *
-     * @return Manufacturer Self Object
+     * @return $this Self object
      */
     public function setName($name)
     {
@@ -93,7 +93,7 @@ class Manufacturer implements ManufacturerInterface
      *
      * @param string $description Description
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setDescription($description)
     {
@@ -115,7 +115,7 @@ class Manufacturer implements ManufacturerInterface
      *
      * @param string $slug Slug
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setSlug($slug)
     {
@@ -139,7 +139,7 @@ class Manufacturer implements ManufacturerInterface
      *
      * @param Collection $products Products
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setProducts(Collection $products)
     {
@@ -163,7 +163,7 @@ class Manufacturer implements ManufacturerInterface
      *
      * @param ProductInterface $product Product
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addProduct(ProductInterface $product)
     {
@@ -177,7 +177,7 @@ class Manufacturer implements ManufacturerInterface
      *
      * @param ProductInterface $product Product
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeProduct(ProductInterface $product)
     {

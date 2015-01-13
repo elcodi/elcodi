@@ -49,7 +49,7 @@ class Invitation implements InvitationInterface
      *
      * @param string $email Email
      *
-     * @return Invitation Self object
+     * @return $this Self object
      */
     public function setEmail($email)
     {
@@ -73,7 +73,7 @@ class Invitation implements InvitationInterface
      *
      * @param string $name Name
      *
-     * @return Invitation Self object
+     * @return $this Self object
      */
     public function setName($name)
     {
@@ -97,7 +97,7 @@ class Invitation implements InvitationInterface
      *
      * @param string $source Source
      *
-     * @return Invitation Self object
+     * @return $this Self object
      */
     public function setSource($source)
     {

@@ -37,7 +37,7 @@ abstract class AbstractFixture extends DoctrineAbstractFixture implements Contai
      *
      * @param ContainerInterface $container Container
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setContainer(ContainerInterface $container = null)
     {

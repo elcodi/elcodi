@@ -41,7 +41,7 @@ class EntityTranslationChangesBag
      *
      * @param array $change Change
      *
-     * @return EntityTranslationChangesBag self Object
+     * @return $this Self object
      */
     public function addChange(array $change)
     {

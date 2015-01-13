@@ -40,7 +40,7 @@ class RuleGroup extends AbstractRule implements RuleGroupInterface
      *
      * @param Collection $rules Rules
      *
-     * @return RuleGroup Self object
+     * @return $this Self object
      */
     public function setRules($rules)
     {
@@ -64,7 +64,7 @@ class RuleGroup extends AbstractRule implements RuleGroupInterface
      *
      * @param AbstractRuleInterface $rule Rule
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addRule(AbstractRuleInterface $rule)
     {
@@ -78,7 +78,7 @@ class RuleGroup extends AbstractRule implements RuleGroupInterface
      *
      * @param AbstractRuleInterface $rule Rule
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeRule(AbstractRuleInterface $rule)
     {

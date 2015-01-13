@@ -85,7 +85,7 @@ class LocaleManager
     /**
      * Initialize locale
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function initialize()
     {
@@ -122,7 +122,7 @@ class LocaleManager
      *
      * @param LocaleInterface $locale locale
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setLocale(LocaleInterface $locale)
     {
@@ -147,7 +147,7 @@ class LocaleManager
      *
      * @param string $encoding encoding
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setEncoding($encoding)
     {

@@ -84,7 +84,7 @@ class Banner implements BannerInterface
      *
      * @param string $name Name of the banner
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setName($name)
     {
@@ -108,7 +108,7 @@ class Banner implements BannerInterface
      *
      * @param string $description Description of the banner
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setDescription($description)
     {
@@ -132,7 +132,7 @@ class Banner implements BannerInterface
      *
      * @param string $url Url of the banner
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setUrl($url)
     {
@@ -156,7 +156,7 @@ class Banner implements BannerInterface
      *
      * @param Collection $bannerZones Banner zones
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setBannerZones(Collection $bannerZones)
     {
@@ -180,7 +180,7 @@ class Banner implements BannerInterface
      *
      * @param BannerZoneInterface $bannerZone Banner Zone
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addBannerZone(BannerZoneInterface $bannerZone)
     {
@@ -194,7 +194,7 @@ class Banner implements BannerInterface
      *
      * @param BannerZoneInterface $bannerZone Banner Zone
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeBannerZone(BannerZoneInterface $bannerZone)
     {

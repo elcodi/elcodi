@@ -109,7 +109,7 @@ class CartManager
      * @param CartInterface     $cart     Cart
      * @param CartLineInterface $cartLine Cart line
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     protected function addLine(
         CartInterface $cart,
@@ -143,7 +143,7 @@ class CartManager
      * @param CartInterface     $cart     Cart
      * @param CartLineInterface $cartLine Cart line
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeLine(
         CartInterface $cart,
@@ -165,7 +165,7 @@ class CartManager
      * @param CartInterface     $cart     Cart
      * @param CartLineInterface $cartLine Cart line
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function silentRemoveLine(
         CartInterface $cart,
@@ -191,7 +191,7 @@ class CartManager
      *
      * @param CartInterface $cart Cart
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function emptyLines(
         CartInterface $cart
@@ -226,7 +226,7 @@ class CartManager
      * @param PurchasableInterface $purchasable purchasable to be edited
      * @param integer              $quantity    item quantity
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function editCartLine(
         CartLineInterface $cartLine,
@@ -256,7 +256,7 @@ class CartManager
      * @param CartLineInterface $cartLine Cart line
      * @param integer           $quantity Number of units to decrease CartLine quantity
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function increaseCartLineQuantity(
         CartLineInterface $cartLine,
@@ -285,7 +285,7 @@ class CartManager
      * @param CartLineInterface $cartLine Cart line
      * @param integer           $quantity Number of units to decrease CartLine quantity
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function decreaseCartLineQuantity(
         CartLineInterface $cartLine,
@@ -312,7 +312,7 @@ class CartManager
      * @param CartLineInterface $cartLine Cart line
      * @param integer           $quantity CartLine quantity to set
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCartLineQuantity(
         CartLineInterface $cartLine,
@@ -379,7 +379,7 @@ class CartManager
      * @param PurchasableInterface $purchasable Product or Variant to add
      * @param integer              $quantity    Number of units to set or increase
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addProduct(
         CartInterface $cart,

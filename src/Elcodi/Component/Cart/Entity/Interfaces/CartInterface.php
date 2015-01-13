@@ -40,7 +40,7 @@ interface CartInterface extends DateTimeInterface, DimensionableInterface
      *
      * @param MoneyInterface $amount price with tax
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setAmount(MoneyInterface $amount);
 
@@ -56,7 +56,7 @@ interface CartInterface extends DateTimeInterface, DimensionableInterface
      *
      * @param MoneyInterface $amount price with tax
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCouponAmount(MoneyInterface $amount);
 
@@ -72,7 +72,7 @@ interface CartInterface extends DateTimeInterface, DimensionableInterface
      *
      * @param MoneyInterface $amount price with tax
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setProductAmount(MoneyInterface $amount);
 
@@ -88,7 +88,7 @@ interface CartInterface extends DateTimeInterface, DimensionableInterface
      *
      * @param CustomerInterface $customer Customer
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCustomer(CustomerInterface $customer);
 
@@ -97,7 +97,7 @@ interface CartInterface extends DateTimeInterface, DimensionableInterface
      *
      * @param Collection $cartLines Cart Lines
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCartLines(Collection $cartLines);
 
@@ -113,7 +113,7 @@ interface CartInterface extends DateTimeInterface, DimensionableInterface
      *
      * @param CartLineInterface $cartLine Cart line
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addCartLine(CartLineInterface $cartLine);
 
@@ -122,7 +122,7 @@ interface CartInterface extends DateTimeInterface, DimensionableInterface
      *
      * @param CartLineInterface $cartLine Cart line
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeCartLine(CartLineInterface $cartLine);
 
@@ -131,7 +131,7 @@ interface CartInterface extends DateTimeInterface, DimensionableInterface
      *
      * @param OrderInterface $order
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setOrder(OrderInterface $order);
 
@@ -147,7 +147,7 @@ interface CartInterface extends DateTimeInterface, DimensionableInterface
      *
      * @param boolean $ordered Has been ordered
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setOrdered($ordered);
 
@@ -163,7 +163,7 @@ interface CartInterface extends DateTimeInterface, DimensionableInterface
      *
      * @param int $quantity Quantity
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setQuantity($quantity);
 

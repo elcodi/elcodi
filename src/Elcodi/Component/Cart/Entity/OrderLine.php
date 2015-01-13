@@ -51,7 +51,7 @@ class OrderLine implements OrderLineInterface
      *
      * @param OrderInterface $order Order
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setOrder(OrderInterface $order)
     {

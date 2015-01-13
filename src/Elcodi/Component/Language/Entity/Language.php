@@ -48,7 +48,7 @@ class Language implements LanguageInterface
      *
      * @param string $name Name of the shop
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setName($name)
     {
@@ -72,7 +72,7 @@ class Language implements LanguageInterface
      *
      * @param string $iso Iso
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setIso($iso)
     {
