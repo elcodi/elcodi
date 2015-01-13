@@ -75,7 +75,7 @@ class ConfigurationExtension extends Twig_Extension
     {
         return $this
             ->configurationManager
-            ->getParameter($parameterKey, $parameterNamespace);
+            ->get($parameterKey, $parameterNamespace);
     }
 
     /**

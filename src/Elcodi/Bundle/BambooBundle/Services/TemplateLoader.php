@@ -17,6 +17,7 @@
 namespace Elcodi\Bundle\BambooBundle\Services;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Exception;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\HttpKernel\KernelInterface;
 
@@ -51,7 +52,7 @@ class TemplateLoader
      */
     public function __construct(
         KernelInterface $kernel,
-        ConfigurationManager $configurationManager
+        ConfigurationManager $configurationManager = null
     )
     {
         $this->kernel = $kernel;
@@ -63,10 +64,16 @@ class TemplateLoader
      *
      * @return array Templates found
      *
-     * @throws ConfigurationParameterNotFoundException
+     * @throws ConfigurationParameterNotFoundException Parameter not found
+     * @throws Exception                               ConfigurationBundle not installed
      */
     public function loadTemplates()
     {
+        if (!($this->configurationManager instanceof ConfigurationManager)) {
+
+            throw new Exception('You need to install ConfigurationBundle');
+        }
+
         $templates = new ArrayCollection([]);
         $bundles = $this->kernel->getBundles();
 
@@ -89,17 +96,17 @@ class TemplateLoader
 
         $this
             ->configurationManager
-            ->setParameter('store.templates', json_encode($templatesArray));
+            ->set('store.templates', $templatesArray);
 
         /**
          * If current template is not available anymore, we assume that the
          * first one is the right one
          */
-        if (!isset($templates[$this->configurationManager->getParameter('store.template')])) {
+        if (!isset($templates[$this->configurationManager->get('store.template')])) {
 
             $this
                 ->configurationManager
-                ->setParameter(
+                ->set(
                     'store.template',
                     $templates->first()['bundle']
                 );

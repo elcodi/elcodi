@@ -75,6 +75,15 @@ class ConfigurationManagerTest extends WebTestCase
                     ->contains('app.my_boolean_parameter')
             );
 
+        $this
+            ->assertInstanceOf(
+                'Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface',
+                $this->find('Configuration', [
+                    'namespace' => 'app',
+                    'key' => 'my_boolean_parameter'
+                ])
+            );
+
         $this->assertEquals(
             true,
             $this
@@ -103,6 +112,14 @@ class ConfigurationManagerTest extends WebTestCase
                     ->contains('my_parameter')
             );
 
+        $this
+            ->assertNull(
+                $this->find('Configuration', [
+                    'namespace' => '',
+                    'key' => 'my_parameter'
+                ])
+            );
+
         $this->assertEquals(
             'my_parameter_value',
             $this
@@ -116,6 +133,15 @@ class ConfigurationManagerTest extends WebTestCase
                 $this
                     ->get('doctrine_cache.providers.elcodi_configurations')
                     ->fetch('my_parameter')
+            );
+
+        $this
+            ->assertInstanceOf(
+                'Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface',
+                $this->find('Configuration', [
+                    'namespace' => '',
+                    'key' => 'my_parameter'
+                ])
             );
     }
 
@@ -133,7 +159,16 @@ class ConfigurationManagerTest extends WebTestCase
 
         $this
             ->get('elcodi.configuration_manager')
-            ->setParameter('my_parameter', 'my_new_value');
+            ->set('my_parameter', 'my_new_value');
+
+        $this
+            ->assertInstanceOf(
+                'Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface',
+                $this->find('Configuration', [
+                    'namespace' => '',
+                    'key' => 'my_parameter'
+                ])
+            );
 
         $this->assertEquals(
             'my_new_value',

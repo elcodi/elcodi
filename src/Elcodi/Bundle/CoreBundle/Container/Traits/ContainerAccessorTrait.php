@@ -107,8 +107,8 @@ trait ContainerAccessorTrait
     /**
      * Get the entity instance with id $id
      *
-     * @param string  $entityName Entity name
-     * @param integer $id         Instance id
+     * @param string $entityName Entity name
+     * @param mixed  $id         Instance id
      *
      * @return mixed Entity
      */
