@@ -17,6 +17,7 @@
 namespace Elcodi\Bundle\BambooBundle\Services;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Exception;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\HttpKernel\KernelInterface;
 
@@ -51,7 +52,7 @@ class TemplateLoader
      */
     public function __construct(
         KernelInterface $kernel,
-        ConfigurationManager $configurationManager
+        ConfigurationManager $configurationManager = null
     )
     {
         $this->kernel = $kernel;
@@ -63,10 +64,16 @@ class TemplateLoader
      *
      * @return array Templates found
      *
-     * @throws ConfigurationParameterNotFoundException
+     * @throws ConfigurationParameterNotFoundException Parameter not found
+     * @throws Exception                               ConfigurationBundle not installed
      */
     public function loadTemplates()
     {
+        if (!($this->configurationManager instanceof ConfigurationManager)) {
+
+            throw new Exception('You need to install ConfigurationBundle');
+        }
+
         $templates = new ArrayCollection([]);
         $bundles = $this->kernel->getBundles();
 

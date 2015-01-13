@@ -47,6 +47,9 @@
         "elcodi/bamboo-bundle": "~0.4.0",
         "doctrine/data-fixtures": "~1.0"
     },
+    "suggest": {
+        "elcodi/configuration-bundle": "Required for console templates loader"
+    },
     "autoload": {
         "psr-4": {
             "Elcodi\\Bundle\\BambooBundle\\": ""
