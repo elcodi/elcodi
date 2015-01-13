@@ -28,7 +28,7 @@ interface ExpressionInterface extends IdentifiableInterface
      *
      * @param string $expression Expression
      *
-     * @return ExpressionInterface Self object
+     * @return $this Self object
      */
     public function setExpression($expression);
 

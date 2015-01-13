@@ -50,7 +50,7 @@ interface PurchasableInterface
      *
      * @param string $sku
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setSku($sku);
 
@@ -66,7 +66,7 @@ interface PurchasableInterface
      *
      * @param int $stock
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setStock($stock);
 
@@ -75,7 +75,7 @@ interface PurchasableInterface
      *
      * @param integer $height Height
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setHeight($height);
 
@@ -84,7 +84,7 @@ interface PurchasableInterface
      *
      * @param integer $width Width
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setWidth($width);
 
@@ -93,7 +93,7 @@ interface PurchasableInterface
      *
      * @param integer $depth Depth
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setDepth($depth);
 
@@ -102,7 +102,7 @@ interface PurchasableInterface
      *
      * @param integer $weight Weight
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setWeight($weight);
 }

@@ -111,7 +111,7 @@ class Address implements AddressInterface
      *
      * @param string $id Entity Id
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setId($id)
     {
@@ -135,7 +135,7 @@ class Address implements AddressInterface
      *
      * @param string $address Address
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setAddress($address)
     {
@@ -159,7 +159,7 @@ class Address implements AddressInterface
      *
      * @param string $addressMore AddressMore
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setAddressMore($addressMore)
     {
@@ -183,7 +183,7 @@ class Address implements AddressInterface
      *
      * @param string $comments Comments
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setComments($comments)
     {
@@ -207,7 +207,7 @@ class Address implements AddressInterface
      *
      * @param string $mobile Mobile
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setMobile($mobile)
     {
@@ -231,7 +231,7 @@ class Address implements AddressInterface
      *
      * @param string $name Name
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setName($name)
     {
@@ -255,7 +255,7 @@ class Address implements AddressInterface
      *
      * @param string $phone Phone
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setPhone($phone)
     {
@@ -279,7 +279,7 @@ class Address implements AddressInterface
      *
      * @param string $recipientName RecipientName
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setRecipientName($recipientName)
     {
@@ -303,7 +303,7 @@ class Address implements AddressInterface
      *
      * @param string $recipientSurname RecipientSurname
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setRecipientSurname($recipientSurname)
     {
@@ -327,7 +327,7 @@ class Address implements AddressInterface
      *
      * @param CityInterface $city City
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCity(CityInterface $city)
     {
@@ -351,7 +351,7 @@ class Address implements AddressInterface
      *
      * @param PostalCodeInterface $postalCode Postalcode
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setPostalcode(PostalCodeInterface $postalCode)
     {

@@ -48,7 +48,7 @@ class ContextConfiguration implements ContextConfigurationInterface
      *
      * @param ContextAwareInterface $contextAware
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function configureContext(ContextAwareInterface $contextAware)
     {

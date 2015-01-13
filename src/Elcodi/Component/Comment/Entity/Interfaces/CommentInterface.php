@@ -144,7 +144,7 @@ interface CommentInterface extends DateTimeInterface, EnabledInterface
      *
      * @param Collection $children Children
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setChildren(Collection $children);
 

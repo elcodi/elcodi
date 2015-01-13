@@ -105,7 +105,7 @@ abstract class AbstractUser implements AbstractUserInterface
      *
      * @param string $firstname Firstname
      *
-     * @return AbstractUser Self object
+     * @return $this Self object
      */
     public function setFirstname($firstname)
     {
@@ -129,7 +129,7 @@ abstract class AbstractUser implements AbstractUserInterface
      *
      * @param string $lastname Lastname
      *
-     * @return AbstractUser Self object
+     * @return $this Self object
      */
     public function setLastname($lastname)
     {
@@ -153,7 +153,7 @@ abstract class AbstractUser implements AbstractUserInterface
      *
      * @param int $gender Gender
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setGender($gender)
     {
@@ -177,7 +177,7 @@ abstract class AbstractUser implements AbstractUserInterface
      *
      * @param string $email
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setEmail($email)
     {
@@ -201,7 +201,7 @@ abstract class AbstractUser implements AbstractUserInterface
      *
      * @param string $username Username
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setUsername($username)
     {
@@ -235,7 +235,7 @@ abstract class AbstractUser implements AbstractUserInterface
      *
      * @param DateTime $birthday
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setBirthday(DateTime $birthday = null)
     {
@@ -249,7 +249,7 @@ abstract class AbstractUser implements AbstractUserInterface
      *
      * @param string $recoveryHash
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setRecoveryHash($recoveryHash)
     {
@@ -283,7 +283,7 @@ abstract class AbstractUser implements AbstractUserInterface
      *
      * @param string $password Password
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setPassword($password)
     {

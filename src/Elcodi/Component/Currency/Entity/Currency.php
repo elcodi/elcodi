@@ -55,7 +55,7 @@ class Currency implements CurrencyInterface
      *
      * @param string $iso Iso
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setIso($iso)
     {
@@ -103,7 +103,7 @@ class Currency implements CurrencyInterface
      *
      * @param string $symbol Symbol
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setSymbol($symbol)
     {

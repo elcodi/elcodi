@@ -28,7 +28,7 @@ interface ExpressionLanguageConfigurationInterface
      *
      * @param ExpressionLanguageAwareInterface $expressionLanguageAware Expression Language aware
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function configureExpressionLanguage(ExpressionLanguageAwareInterface $expressionLanguageAware);
 }

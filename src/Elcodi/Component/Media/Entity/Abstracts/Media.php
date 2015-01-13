@@ -55,7 +55,7 @@ abstract class Media implements MediaInterface
      *
      * @param string $name Name
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setName($name)
     {

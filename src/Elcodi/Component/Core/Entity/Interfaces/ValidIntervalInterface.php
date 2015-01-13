@@ -28,7 +28,7 @@ interface ValidIntervalInterface
      *
      * @param DateTime $validFrom Valid from
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setValidFrom(DateTime $validFrom);
 
@@ -44,7 +44,7 @@ interface ValidIntervalInterface
      *
      * @param DateTime $validTo Valid to
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setValidTo(DateTime $validTo = null);
 

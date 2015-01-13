@@ -91,7 +91,7 @@ abstract class AbstractMailer
      * @param string $receiverEmail Receiver Email
      * @param array  $context       Context
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     protected function renderEmail(
         $subject,

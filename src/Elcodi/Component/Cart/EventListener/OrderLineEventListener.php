@@ -92,7 +92,7 @@ class OrderLineEventListener
      *
      * @param PurchasableInterface $purchasable Purchasable object to flush
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     protected function flushPurchasable(PurchasableInterface $purchasable)
     {

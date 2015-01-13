@@ -26,7 +26,7 @@ interface RuleInterface extends AbstractRuleInterface
      *
      * @param string $expression Expression
      *
-     * @return RuleInterface Self object
+     * @return $this Self object
      */
     public function setExpression($expression);
 

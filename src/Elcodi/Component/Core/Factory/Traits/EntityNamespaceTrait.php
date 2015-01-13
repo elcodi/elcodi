@@ -33,7 +33,7 @@ trait EntityNamespaceTrait
      *
      * @param string $entityNamespace Entity namespace
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setEntityNamespace($entityNamespace)
     {

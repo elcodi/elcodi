@@ -35,7 +35,7 @@ interface NewsletterSubscriptionInterface
      *
      * @param string $email Email
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setEmail($email);
 
@@ -51,7 +51,7 @@ interface NewsletterSubscriptionInterface
      *
      * @param LanguageInterface $language Language
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setLanguage(LanguageInterface $language = null);
 
@@ -67,7 +67,7 @@ interface NewsletterSubscriptionInterface
      *
      * @param string $hash Hash
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setHash($hash);
 
@@ -83,7 +83,7 @@ interface NewsletterSubscriptionInterface
      *
      * @param string $reason Reason
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setReason($reason);
 

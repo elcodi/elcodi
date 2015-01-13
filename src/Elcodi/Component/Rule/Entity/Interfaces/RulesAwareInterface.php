@@ -28,7 +28,7 @@ interface RulesAwareInterface
      *
      * @param AbstractRuleInterface $rule Rule to add
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addRule(AbstractRuleInterface $rule);
 
@@ -37,7 +37,7 @@ interface RulesAwareInterface
      *
      * @param AbstractRuleInterface $rule Rule to remove
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeRule(AbstractRuleInterface $rule);
 
@@ -46,7 +46,7 @@ interface RulesAwareInterface
      *
      * @param Collection $rules Rule set to be added
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setRules(Collection $rules);
 

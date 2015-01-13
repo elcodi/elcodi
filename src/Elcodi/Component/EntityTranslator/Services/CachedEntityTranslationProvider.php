@@ -172,7 +172,7 @@ class CachedEntityTranslationProvider extends AbstractCacheWrapper implements En
     /**
      * Flush all previously set translations.
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function flushTranslations()
     {
@@ -184,7 +184,7 @@ class CachedEntityTranslationProvider extends AbstractCacheWrapper implements En
     /**
      * Warm-up translations
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function warmUp()
     {

@@ -47,7 +47,7 @@ class CartCoupon implements CartCouponInterface
      *
      * @param CartInterface $cart Cart
      *
-     * @return CartCoupon Self object
+     * @return $this Self object
      */
     public function setCart(CartInterface $cart)
     {
@@ -71,7 +71,7 @@ class CartCoupon implements CartCouponInterface
      *
      * @param CouponInterface $coupon Coupon
      *
-     * @return CartCoupon Self object
+     * @return $this Self object
      */
     public function setCoupon(CouponInterface $coupon)
     {

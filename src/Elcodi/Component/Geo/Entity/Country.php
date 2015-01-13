@@ -70,7 +70,7 @@ class Country implements CountryInterface, ZoneMemberAssignableInterface
      *
      * @param string $code Code
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCode($code)
     {
@@ -94,7 +94,7 @@ class Country implements CountryInterface, ZoneMemberAssignableInterface
      *
      * @param string $name Name
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setName($name)
     {
@@ -128,7 +128,7 @@ class Country implements CountryInterface, ZoneMemberAssignableInterface
      *
      * @param Collection $states States
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setStates(Collection $states)
     {
@@ -142,7 +142,7 @@ class Country implements CountryInterface, ZoneMemberAssignableInterface
      *
      * @param StateInterface $state State
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addState(StateInterface $state)
     {
@@ -161,7 +161,7 @@ class Country implements CountryInterface, ZoneMemberAssignableInterface
      *
      * @param StateInterface $state State
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeState(StateInterface $state)
     {

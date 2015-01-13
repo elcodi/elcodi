@@ -67,7 +67,7 @@ class Node implements NodeInterface
      *
      * @param string $code
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCode($code)
     {
@@ -81,7 +81,7 @@ class Node implements NodeInterface
      *
      * @param string $name Name
      *
-     * @return Node Self object
+     * @return $this Self object
      */
     public function setName($name)
     {
@@ -107,7 +107,7 @@ class Node implements NodeInterface
      *
      * @param string $url Url
      *
-     * @return Node Self object
+     * @return $this Self object
      */
     public function setUrl($url)
     {

@@ -45,7 +45,7 @@ trait EntityTranslatableFormTrait
      *
      * @param EntityTranslatorFormEventListener $entityTranslatorFormEventListener Translator form event listener
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setEntityTranslatorFormEventListener(EntityTranslatorFormEventListener $entityTranslatorFormEventListener)
     {

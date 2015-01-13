@@ -39,7 +39,7 @@ class NullMoney extends StubMoney implements MoneyInterface
      *
      * @param integer $amount Amount
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setAmount($amount)
     {
@@ -61,7 +61,7 @@ class NullMoney extends StubMoney implements MoneyInterface
      *
      * @param CurrencyInterface $currency Currency
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCurrency(CurrencyInterface $currency)
     {
@@ -126,7 +126,7 @@ class NullMoney extends StubMoney implements MoneyInterface
      *
      * @param float $factor Factor
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function multiply($factor)
     {

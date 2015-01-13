@@ -155,7 +155,7 @@ class TaxGroup implements TaxGroupInterface
      *
      * @param TaxInterface $tax Tax
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addTax(TaxInterface $tax)
     {
@@ -174,7 +174,7 @@ class TaxGroup implements TaxGroupInterface
      *
      * @param TaxInterface $tax Tax
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeTax(TaxInterface $tax)
     {

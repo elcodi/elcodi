@@ -30,7 +30,7 @@ interface CartCouponInterface extends IdentifiableInterface
      *
      * @param CartInterface $cart Cart
      *
-     * @return CartCouponInterface Self object
+     * @return $this Self object
      */
     public function setCart(CartInterface $cart);
 
@@ -46,7 +46,7 @@ interface CartCouponInterface extends IdentifiableInterface
      *
      * @param CouponInterface $coupon Coupon
      *
-     * @return CartCouponInterface Self object
+     * @return $this Self object
      */
     public function setCoupon(CouponInterface $coupon);
 

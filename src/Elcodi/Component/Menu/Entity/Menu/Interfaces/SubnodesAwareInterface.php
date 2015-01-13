@@ -28,7 +28,7 @@ interface SubnodesAwareInterface
      *
      * @param NodeInterface $node Node
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addSubnode(NodeInterface $node);
 
@@ -37,7 +37,7 @@ interface SubnodesAwareInterface
      *
      * @param NodeInterface $node Node
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeSubnode(NodeInterface $node);
 
@@ -46,7 +46,7 @@ interface SubnodesAwareInterface
      *
      * @param Collection $subnodes Subnodes
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setSubnodes(Collection $subnodes);
 
@@ -62,7 +62,7 @@ interface SubnodesAwareInterface
      *
      * @param string $sort Sort
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setSort($sort);
 

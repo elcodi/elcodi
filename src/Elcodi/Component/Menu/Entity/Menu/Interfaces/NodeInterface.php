@@ -40,7 +40,7 @@ interface NodeInterface
      *
      * @param string $code
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCode($code);
 
@@ -49,7 +49,7 @@ interface NodeInterface
      *
      * @param string $name Name
      *
-     * @return NodeInterface Self object
+     * @return $this Self object
      */
     public function setName($name);
 
@@ -65,7 +65,7 @@ interface NodeInterface
      *
      * @param string $url Url
      *
-     * @return NodeInterface Self object
+     * @return $this Self object
      */
     public function setUrl($url);
 

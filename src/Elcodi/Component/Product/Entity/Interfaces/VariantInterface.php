@@ -43,7 +43,7 @@ interface VariantInterface
      *
      * @param string $id Id
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setId($id);
 
@@ -66,7 +66,7 @@ interface VariantInterface
      *
      * @param ProductInterface $product
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setProduct($product);
 
@@ -82,7 +82,7 @@ interface VariantInterface
      *
      * @param Collection $options
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setOptions(Collection $options);
 
@@ -91,7 +91,7 @@ interface VariantInterface
      *
      * @param ValueInterface $option
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addOption(ValueInterface $option);
 
@@ -100,7 +100,7 @@ interface VariantInterface
      *
      * @param ValueInterface $option
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeOption(ValueInterface $option);
 }

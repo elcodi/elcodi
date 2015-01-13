@@ -141,7 +141,7 @@ class Coupon implements CouponInterface
      *
      * @param string $code Code
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCode($code)
     {
@@ -165,7 +165,7 @@ class Coupon implements CouponInterface
      *
      * @param string $name
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setName($name)
     {
@@ -189,7 +189,7 @@ class Coupon implements CouponInterface
      *
      * @param integer $type Type
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setType($type)
     {
@@ -213,7 +213,7 @@ class Coupon implements CouponInterface
      *
      * @param integer $enforcement Enforcement
      *
-     * @return Coupon Self object
+     * @return $this Self object
      */
     public function setEnforcement($enforcement)
     {
@@ -237,7 +237,7 @@ class Coupon implements CouponInterface
      *
      * @param MoneyInterface $amount Price
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setPrice(MoneyInterface $amount)
     {
@@ -265,7 +265,7 @@ class Coupon implements CouponInterface
      *
      * @param integer $discount Discount
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setDiscount($discount)
     {
@@ -289,7 +289,7 @@ class Coupon implements CouponInterface
      *
      * @param MoneyInterface $amount Absolute Price
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setAbsolutePrice(MoneyInterface $amount)
     {
@@ -317,7 +317,7 @@ class Coupon implements CouponInterface
      *
      * @param integer $count
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCount($count)
     {
@@ -341,7 +341,7 @@ class Coupon implements CouponInterface
      *
      * @param integer $used
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setUsed($used)
     {
@@ -365,7 +365,7 @@ class Coupon implements CouponInterface
      *
      * @param integer $priority
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setPriority($priority)
     {
@@ -389,7 +389,7 @@ class Coupon implements CouponInterface
      *
      * @param MoneyInterface $amount Absolute Price
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setMinimumPurchase(MoneyInterface $amount)
     {
@@ -426,7 +426,7 @@ class Coupon implements CouponInterface
      * Increment used variable by one, and disables it if there are no more
      * available units
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function makeUse()
     {

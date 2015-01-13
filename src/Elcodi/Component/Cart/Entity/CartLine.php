@@ -52,7 +52,7 @@ class CartLine implements CartLineInterface
      *
      * @param CartInterface $cart Cart
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCart(CartInterface $cart)
     {
@@ -76,7 +76,7 @@ class CartLine implements CartLineInterface
      *
      * @param OrderLineInterface $orderLine OrderLine
      *
-     * @return CartLine Self object
+     * @return $this Self object
      */
     public function setOrderLine($orderLine)
     {

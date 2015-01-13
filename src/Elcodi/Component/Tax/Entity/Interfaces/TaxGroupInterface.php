@@ -92,7 +92,7 @@ interface TaxGroupInterface
      *
      * @param TaxInterface $tax Tax
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addTax(TaxInterface $tax);
 
@@ -101,7 +101,7 @@ interface TaxGroupInterface
      *
      * @param TaxInterface $tax Tax
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeTax(TaxInterface $tax);
 }

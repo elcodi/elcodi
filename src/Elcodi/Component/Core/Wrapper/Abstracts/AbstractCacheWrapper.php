@@ -47,7 +47,7 @@ abstract class AbstractCacheWrapper
      *
      * @param CacheProvider $cache Cache
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCache(CacheProvider $cache)
     {
@@ -61,7 +61,7 @@ abstract class AbstractCacheWrapper
      *
      * @param EncoderInterface $encoder Encoder
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setEncoder(EncoderInterface $encoder)
     {

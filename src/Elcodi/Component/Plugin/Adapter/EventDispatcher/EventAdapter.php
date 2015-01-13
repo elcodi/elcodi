@@ -95,7 +95,7 @@ class EventAdapter extends Event implements EventInterface
      *
      * @param string $content
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setContent($content)
     {

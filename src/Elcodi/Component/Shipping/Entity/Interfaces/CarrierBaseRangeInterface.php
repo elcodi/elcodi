@@ -110,7 +110,7 @@ interface CarrierBaseRangeInterface extends EnabledInterface
      *
      * @param MoneyInterface $amount Price
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setPrice(MoneyInterface $amount);
 

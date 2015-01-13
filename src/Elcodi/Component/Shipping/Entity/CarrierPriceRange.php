@@ -60,7 +60,7 @@ class CarrierPriceRange extends AbstractCarrierBaseRange implements CarrierPrice
      *
      * @param MoneyInterface $price Price
      *
-     * @return $this self object
+     * @return $this Self object
      */
     public function setFromPrice(MoneyInterface $price)
     {
@@ -88,7 +88,7 @@ class CarrierPriceRange extends AbstractCarrierBaseRange implements CarrierPrice
      *
      * @param MoneyInterface $price Price
      *
-     * @return $this self object
+     * @return $this Self object
      */
     public function setToPrice(MoneyInterface $price)
     {

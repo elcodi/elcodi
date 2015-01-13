@@ -62,7 +62,7 @@ class SitemapProfile implements SitemapProfileInterface
      *
      * @param EntityLoaderInterface $entityLoader Entity Loader
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addEntityLoader(EntityLoaderInterface $entityLoader)
     {

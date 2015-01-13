@@ -139,7 +139,7 @@ trait ContainerAccessorTrait
      *
      * @param mixed $entity Entity
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function flush($entity)
     {
@@ -161,7 +161,7 @@ trait ContainerAccessorTrait
      *
      * @param mixed $entity Entity
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function clear($entity)
     {

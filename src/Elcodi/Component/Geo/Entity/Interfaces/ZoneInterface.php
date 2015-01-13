@@ -30,7 +30,7 @@ interface ZoneInterface extends EnabledInterface
      *
      * @param string $code Code
      *
-     * @return self Self object
+     * @return $this Self object
      */
     public function setCode($code);
 
@@ -46,7 +46,7 @@ interface ZoneInterface extends EnabledInterface
      *
      * @param string $name Name
      *
-     * @return self Self object
+     * @return $this Self object
      */
     public function setName($name);
 
@@ -62,7 +62,7 @@ interface ZoneInterface extends EnabledInterface
      *
      * @param Collection $members Zone Members
      *
-     * @return self Self object
+     * @return $this Self object
      */
     public function setMembers(Collection $members);
 
@@ -78,7 +78,7 @@ interface ZoneInterface extends EnabledInterface
      *
      * @param ZoneMemberInterface $member Zone member
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addMember(ZoneMemberInterface $member);
 
@@ -87,7 +87,7 @@ interface ZoneInterface extends EnabledInterface
      *
      * @param ZoneMemberInterface $member Zone member
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function removeMember(ZoneMemberInterface $member);
 }

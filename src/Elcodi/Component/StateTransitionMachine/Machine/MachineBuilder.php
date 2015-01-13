@@ -101,7 +101,7 @@ class MachineBuilder
      *
      * @param boolean $canBeCyclic The Machine can be cyclic
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function allowCycles($canBeCyclic)
     {
@@ -168,7 +168,7 @@ class MachineBuilder
      *
      * @param array $configuration Configuration
      *
-     * @return $this self Object
+     * @return $this Self object
      *
      * @throws TransitionNotValidException Transition not valid
      */
@@ -203,7 +203,7 @@ class MachineBuilder
      * @param array  $configuration Configuration
      * @param string $pointOfEntry  Point of entry
      *
-     * @return $this self Object
+     * @return $this Self object
      *
      * @throws InvalidPointOfEntryException Invalid point of entry
      */
@@ -226,7 +226,7 @@ class MachineBuilder
      * @param string $node          Node to check
      * @param array  $nodesVisited  All visited nodes name
      *
-     * @return $this self Object
+     * @return $this Self object
      *
      * @throws CyclesNotAllowedException Cycles found not allowed
      */
@@ -303,7 +303,7 @@ class MachineBuilder
      *
      * @param TransitionChain $transitionChain Transition chain
      *
-     * @return $this self Object
+     * @return $this Self object
      *
      * @throws InconsistentTransitionConfigurationException Duplicated pair of
      *                                                      state-transition
@@ -345,7 +345,7 @@ class MachineBuilder
      *
      * @param TransitionChain $transitionChain Transition chain
      *
-     * @return $this self Object
+     * @return $this Self object
      *
      * @throws StateNotValidException state is not valid
      */

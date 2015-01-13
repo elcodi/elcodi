@@ -115,7 +115,7 @@ class EntityTranslationProvider implements EntityTranslationProviderInterface
      * @param string $translationValue Translated value
      * @param string $locale           Locale
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setTranslation(
         $entityType,
@@ -159,7 +159,7 @@ class EntityTranslationProvider implements EntityTranslationProviderInterface
     /**
      * Flush all previously set translations.
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function flushTranslations()
     {

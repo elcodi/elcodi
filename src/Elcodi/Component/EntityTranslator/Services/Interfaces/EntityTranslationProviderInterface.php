@@ -60,7 +60,7 @@ interface EntityTranslationProviderInterface
     /**
      * Flush all previously set translations.
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function flushTranslations();
 }

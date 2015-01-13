@@ -31,7 +31,7 @@ interface PurchasableWrapperInterface
      *
      * @param PurchasableInterface $purchasable Purchasable object
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setPurchasable(PurchasableInterface $purchasable);
 
@@ -47,7 +47,7 @@ interface PurchasableWrapperInterface
      *
      * @param ProductInterface $product Product
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setProduct(ProductInterface $product);
 
@@ -63,7 +63,7 @@ interface PurchasableWrapperInterface
      *
      * @param VariantInterface $variant Variant
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setVariant(VariantInterface $variant);
 
@@ -79,7 +79,7 @@ interface PurchasableWrapperInterface
      *
      * @param int $quantity Quantity
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setQuantity($quantity);
 

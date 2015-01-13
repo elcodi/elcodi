@@ -103,7 +103,7 @@ class EntityTranslatorBuilder
      *
      * @param array $configuration Configuration
      *
-     * @return $this self Object
+     * @return $this Self object
      *
      * @throws TranslationDefinitionException Namespace invalid or not found
      */
@@ -124,7 +124,7 @@ class EntityTranslatorBuilder
      *
      * @param array $configuration Configuration
      *
-     * @return $this self Object
+     * @return $this Self object
      *
      * @throws TranslationDefinitionException Namespace invalid or not found
      */
@@ -148,7 +148,7 @@ class EntityTranslatorBuilder
      *
      * @param array $configuration Configuration
      *
-     * @return $this self Object
+     * @return $this Self object
      *
      * @throws TranslationDefinitionException Namespace invalid or not found
      */

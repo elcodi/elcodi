@@ -116,7 +116,7 @@ class ZoneManager
      * @param ZoneInterface                 $zone   Zone
      * @param ZoneMemberAssignableInterface $entity Zone assignable entity
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addElementToZone(
         ZoneInterface $zone,
@@ -167,7 +167,7 @@ class ZoneManager
      * @param ZoneInterface    $zone    Zone
      * @param CountryInterface $country Country
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addCountryToZone(
         ZoneInterface $zone,
@@ -202,7 +202,7 @@ class ZoneManager
      * @param ZoneInterface  $zone  Zone
      * @param StateInterface $state State
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addStateToZone(
         ZoneInterface $zone,
@@ -237,7 +237,7 @@ class ZoneManager
      * @param ZoneInterface     $zone     Zone
      * @param ProvinceInterface $province Province
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addProvinceToZone(
         ZoneInterface $zone,
@@ -272,7 +272,7 @@ class ZoneManager
      * @param ZoneInterface $zone Zone
      * @param CityInterface $city City
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addCityToZone(
         ZoneInterface $zone,
@@ -307,7 +307,7 @@ class ZoneManager
      * @param ZoneInterface       $zone       Zone
      * @param PostalCodeInterface $postalCode PostalCode
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function addPostalcodeToZone(
         ZoneInterface $zone,

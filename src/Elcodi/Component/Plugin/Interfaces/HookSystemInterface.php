@@ -29,7 +29,7 @@ interface HookSystemInterface
      * @param string   $hookName Name of the hook to listen
      * @param callable $callable Function to call on hook execution
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function listen($hookName, $callable);
 

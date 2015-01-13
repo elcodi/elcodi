@@ -31,7 +31,7 @@ interface OrderCouponInterface extends IdentifiableInterface
      *
      * @param OrderInterface $order Order
      *
-     * @return OrderCouponInterface Self object
+     * @return $this Self object
      */
     public function setOrder(OrderInterface $order);
 
@@ -47,7 +47,7 @@ interface OrderCouponInterface extends IdentifiableInterface
      *
      * @param CouponInterface $coupon Coupon
      *
-     * @return OrderCouponInterface Self object
+     * @return $this Self object
      */
     public function setCoupon(CouponInterface $coupon);
 
@@ -63,7 +63,7 @@ interface OrderCouponInterface extends IdentifiableInterface
      *
      * @param string $code Code
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setCode($code);
 
@@ -79,7 +79,7 @@ interface OrderCouponInterface extends IdentifiableInterface
      *
      * @param string $name
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setName($name);
 
@@ -95,7 +95,7 @@ interface OrderCouponInterface extends IdentifiableInterface
      *
      * @param MoneyInterface $amount Price
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setAmount(MoneyInterface $amount);
 

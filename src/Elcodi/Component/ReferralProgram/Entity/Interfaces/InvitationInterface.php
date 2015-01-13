@@ -26,7 +26,7 @@ interface InvitationInterface
      *
      * @param string $email Email
      *
-     * @return InvitationInterface Self object
+     * @return $this Self object
      */
     public function setEmail($email);
 
@@ -42,7 +42,7 @@ interface InvitationInterface
      *
      * @param string $name Name
      *
-     * @return InvitationInterface Self object
+     * @return $this Self object
      */
     public function setName($name);
 
@@ -58,7 +58,7 @@ interface InvitationInterface
      *
      * @param string $source Source
      *
-     * @return InvitationInterface Self object
+     * @return $this Self object
      */
     public function setSource($source);
 

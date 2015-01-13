@@ -73,7 +73,7 @@ class NewsletterSubscription implements NewsletterSubscriptionInterface
      *
      * @param string $email Email
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setEmail($email)
     {
@@ -97,7 +97,7 @@ class NewsletterSubscription implements NewsletterSubscriptionInterface
      *
      * @param LanguageInterface $language Language
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setLanguage(LanguageInterface $language = null)
     {
@@ -121,7 +121,7 @@ class NewsletterSubscription implements NewsletterSubscriptionInterface
      *
      * @param string $hash Hash
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setHash($hash)
     {
@@ -145,7 +145,7 @@ class NewsletterSubscription implements NewsletterSubscriptionInterface
      *
      * @param string $reason Reason
      *
-     * @return $this self Object
+     * @return $this Self object
      */
     public function setReason($reason)
     {
