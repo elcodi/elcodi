@@ -129,7 +129,7 @@ class ConfigurationManager extends AbstractCacheWrapper
          * The value is cached, so we can securely return its value
          */
         if (false !== $valueIsCached) {
-            return $valueIsCached = $this
+            return $this
                 ->cache
                 ->fetch($parameterIdentifier);
         }
@@ -181,6 +181,8 @@ class ConfigurationManager extends AbstractCacheWrapper
          */
         if ($configurationEntity instanceof ConfigurationInterface) {
 
+            $this->unserialize($configurationEntity);
+
             if (!is_null($parameterValue)) {
 
                 $configurationEntity->setValue($parameterValue);
@@ -205,7 +207,6 @@ class ConfigurationManager extends AbstractCacheWrapper
         ) {
             return null;
         }
-
         /**
          * Let's create the new configuration instance and flush it
          */
@@ -263,9 +264,8 @@ class ConfigurationManager extends AbstractCacheWrapper
     )
     {
         $configurationValue = $this
-            ->normalizeValue($configuration)
+            ->serialize($configuration)
             ->getValue();
-
         $this
             ->configurationObjectManager
             ->persist($configuration);
@@ -280,18 +280,51 @@ class ConfigurationManager extends AbstractCacheWrapper
     }
 
     /**
-     * Normalizes configuration value
+     * Unserialize configuration value
      *
      * @param ConfigurationInterface $configuration Configuration
      *
      * @return ConfigurationInterface Configuration
      */
-    protected function normalizeValue(ConfigurationInterface $configuration)
+    protected function unserialize(ConfigurationInterface $configuration)
     {
-        if ($configuration->getType() === ElcodiConfigurationTypes::TYPE_BOOLEAN) {
+        $configurationValue = $configuration->getValue();
 
-            $configuration->setValue((boolean) $configuration->getValue());
+        switch ($configuration->getType()) {
+
+            case ElcodiConfigurationTypes::TYPE_BOOLEAN:
+                $configurationValue = (boolean) $configurationValue;
+                break;
+
+            case ElcodiConfigurationTypes::TYPE_ARRAY:
+                $configurationValue = json_decode($configurationValue, true);
+                break;
         }
+
+        $configuration->setValue($configurationValue);
+
+        return $configuration;
+    }
+
+    /**
+     * Serialize configuration value
+     *
+     * @param ConfigurationInterface $configuration Configuration
+     *
+     * @return ConfigurationInterface Configuration
+     */
+    protected function serialize(ConfigurationInterface $configuration)
+    {
+        $configurationValue = $configuration->getValue();
+
+        switch ($configuration->getType()) {
+
+            case ElcodiConfigurationTypes::TYPE_ARRAY:
+                $configurationValue = json_encode($configurationValue);
+                break;
+        }
+
+        $configuration->setValue($configurationValue);
 
         return $configuration;
     }

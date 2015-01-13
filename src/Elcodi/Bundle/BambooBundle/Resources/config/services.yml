@@ -1,0 +1,10 @@
+services:
+
+    #
+    # Services
+    #
+    elcodi.template_loader:
+        class: %elcodi.template_loader.class%
+        arguments:
+            kernel: @kernel
+            configuration_manager: @elcodi.configuration_manager

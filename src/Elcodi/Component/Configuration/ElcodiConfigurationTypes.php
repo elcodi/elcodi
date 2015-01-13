@@ -41,4 +41,11 @@ final class ElcodiConfigurationTypes
      * Configuration type boolean
      */
     const TYPE_BOOLEAN = 'boolean';
+
+    /**
+     * @var string
+     *
+     * Configuration type array
+     */
+    const TYPE_ARRAY = 'array';
 }

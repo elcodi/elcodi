@@ -5,6 +5,7 @@ services:
     #
     elcodi.configuration_manager:
         class: %elcodi.configuration_manager.class%
+        lazy: true
         arguments:
             configuration_object_manager: @elcodi.object_manager.configuration
             configuration_repository: @elcodi.repository.configuration

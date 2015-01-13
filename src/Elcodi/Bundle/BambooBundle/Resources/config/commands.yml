@@ -1,0 +1,11 @@
+services:
+
+    #
+    # Commands
+    #
+    elcodi.template_loader_command:
+        class: %elcodi.template_loader_command.class%
+        arguments:
+            template_loader: @elcodi.template_loader
+        tags:
+            -  { name: console.command }
