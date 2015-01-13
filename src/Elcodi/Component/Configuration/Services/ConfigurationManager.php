@@ -89,22 +89,49 @@ class ConfigurationManager extends AbstractCacheWrapper
     }
 
     /**
-     * Set a parameter
+     * Set a configuration value
      *
-     * @param string $parameterIdentifier Parameter identifier
-     * @param mixed  $parameterValue      Parameter value
+     * @param string $configurationIdentifier Configuration identifier
+     * @param mixed  $configurationValue      Configuration value
      *
      * @return ConfigurationInterface|null Object saved
      */
-    public function setParameter(
-        $parameterIdentifier,
-        $parameterValue = null
+    public function set(
+        $configurationIdentifier,
+        $configurationValue
     )
     {
-        $this->saveParameter(
-            $parameterIdentifier,
-            $parameterValue,
-            false
+        list($configurationNamespace, $configurationKey) = $this->splitConfigurationKey($configurationIdentifier);
+
+        $configurationLoaded = $this->loadConfiguration(
+            $configurationNamespace,
+            $configurationKey
+        );
+
+        if (!($configurationLoaded instanceof ConfigurationInterface)) {
+
+            $configurationLoaded = $this
+                ->createConfigurationInstance(
+                    $configurationIdentifier,
+                    $configurationNamespace,
+                    $configurationKey,
+                    $configurationValue
+                );
+        } else {
+
+            $serializedValue = $this->serializeValue(
+                $configurationValue,
+                $configurationLoaded->getType()
+            );
+
+            $configurationLoaded->setValue($serializedValue);
+        }
+
+        $this->flushConfiguration($configurationLoaded);
+
+        $this->flushConfigurationToCache(
+            $configurationLoaded,
+            $configurationIdentifier
         );
 
         return $this;
@@ -113,159 +140,89 @@ class ConfigurationManager extends AbstractCacheWrapper
     /**
      * Load a parameter given the key and the namespace
      *
-     * @param string $parameterIdentifier Parameter identifier
+     * @param string $configurationIdentifier Configuration identifier
      *
      * @return null|string|boolean Configuration parameter value
      *
      * @throws ConfigurationParameterNotFoundException Configuration not found
      */
-    public function getParameter($parameterIdentifier)
+    public function get($configurationIdentifier)
     {
         $valueIsCached = $this
             ->cache
-            ->contains($parameterIdentifier);
+            ->contains($configurationIdentifier);
 
         /**
-         * The value is cached, so we can securely return its value
+         * The value is cached, so we can securely return its value.
+         * We must unserialize the value if needed
          */
         if (false !== $valueIsCached) {
             return $this
                 ->cache
-                ->fetch($parameterIdentifier);
+                ->fetch($configurationIdentifier);
         }
 
-        /**
-         * Otherwise we must generate it
-         */
-        $configuration = $this->saveParameter(
-            $parameterIdentifier,
-            null,
-            true
+        list($configurationNamespace, $configurationKey) = $this->splitConfigurationKey($configurationIdentifier);
+
+        $configurationLoaded = $this->loadConfiguration(
+            $configurationNamespace,
+            $configurationKey
         );
 
-        if (!($configuration instanceof ConfigurationInterface)) {
+        if (!($configurationLoaded instanceof ConfigurationInterface)) {
 
-            throw new ConfigurationParameterNotFoundException();
+            $parameterReference = $this->configurationElements[$configurationIdentifier]['reference'];
+            $configurationLoaded = $this
+                ->createConfigurationInstance(
+                    $configurationIdentifier,
+                    $configurationNamespace,
+                    $configurationKey,
+                    $this->parameterBag->get($parameterReference)
+                );
+
+            $this->flushConfiguration($configurationLoaded);
         }
 
-        return $configuration->getValue();
+        $configurationValueUnserialized = $this->flushConfigurationToCache(
+            $configurationLoaded,
+            $configurationIdentifier
+        );
+
+        return $configurationValueUnserialized;
     }
 
     /**
-     * Saves a parameter
+     * Loads a configuration
      *
-     * @param string  $parameterIdentifier Parameter identifier
-     * @param mixed   $parameterValue      Parameter value
-     * @param boolean $onlyDefined         Only create defined elements
+     * @param string $configurationNamespace Configuration namespace
+     * @param string $configurationKey       Configuration key
      *
      * @return ConfigurationInterface|null Object saved
      */
-    protected function saveParameter(
-        $parameterIdentifier,
-        $parameterValue = null,
-        $onlyDefined = true
+    protected function loadConfiguration(
+        $configurationNamespace,
+        $configurationKey
     )
     {
-        list($parameterNamespace, $parameterKey) = $this->splitConfigurationKey($parameterIdentifier);
-
         $configurationEntity = $this
             ->configurationRepository
             ->find([
-                'namespace' => $parameterNamespace,
-                'key'       => $parameterKey
+                'namespace' => $configurationNamespace,
+                'key'       => $configurationKey,
             ]);
-
-        /**
-         * We found an existing configuration parameter. We update it and return
-         * its value
-         */
-        if ($configurationEntity instanceof ConfigurationInterface) {
-
-            $this->unserialize($configurationEntity);
-
-            if (!is_null($parameterValue)) {
-
-                $configurationEntity->setValue($parameterValue);
-            }
-
-            $this->flushConfiguration(
-                $configurationEntity,
-                $parameterIdentifier
-            );
-
-            return $configurationEntity;
-        }
-
-        /**
-         * Value is not found on database. We can just check if the value is
-         * defined in the configuration elements, and we can generate new entry
-         * for our database
-         */
-        if (
-            $onlyDefined &&
-            !$this->configurationElements[$parameterIdentifier]
-        ) {
-            return null;
-        }
-        /**
-         * Let's create the new configuration instance and flush it
-         */
-        $parameterReference = $this->configurationElements[$parameterIdentifier]['reference'];
-        $configurationValue = $parameterValue
-            ?: $this->parameterBag->get($parameterReference);
-
-        $configurationEntity = $this
-            ->configurationFactory
-            ->create()
-            ->setKey($parameterKey)
-            ->setNamespace($parameterNamespace)
-            ->setName($this->configurationElements[$parameterIdentifier]['name'])
-            ->setType($this->configurationElements[$parameterIdentifier]['type'])
-            ->setValue($configurationValue);
-
-        $this->flushConfiguration(
-            $configurationEntity,
-            $parameterIdentifier
-        );
 
         return $configurationEntity;
     }
 
     /**
-     * Compose key for a configuration
+     * Flushes a configuration instance
      *
-     * @param string $parameterIdentifier Parameter identifier
+     * @param ConfigurationInterface $configuration Configuration instance
      *
-     * @return string[] Identifier splitted
+     * @return ConfigurationManager Self object
      */
-    protected function splitConfigurationKey($parameterIdentifier)
+    protected function flushConfiguration(ConfigurationInterface $configuration)
     {
-        $parameterIdentifier = explode('.', $parameterIdentifier, 2);
-
-        if (count($parameterIdentifier) === 1) {
-
-            array_unshift($parameterIdentifier, '');
-        }
-
-        return $parameterIdentifier;
-    }
-
-    /**
-     * Flush configuration entity
-     *
-     * @param ConfigurationInterface $configuration           Configuration
-     * @param string                 $configurationIdentifier Configuration identifier
-     *
-     * @return $this Self object
-     */
-    protected function flushConfiguration(
-        ConfigurationInterface $configuration,
-        $configurationIdentifier
-    )
-    {
-        $configurationValue = $this
-            ->serialize($configuration)
-            ->getValue();
         $this
             ->configurationObjectManager
             ->persist($configuration);
@@ -274,23 +231,116 @@ class ConfigurationManager extends AbstractCacheWrapper
             ->configurationObjectManager
             ->flush($configuration);
 
+        return $this;
+    }
+
+    /**
+     * Creates a new configuration instance and serializes
+     *
+     * @param string $configurationIdentifier Configuration identifier
+     * @param string $configurationNamespace  Configuration namespace
+     * @param string $configurationKey        Configuration key
+     * @param mixed  $configurationValue      Configuration value
+     *
+     * @return ConfigurationInterface New Configuration created
+     *
+     * @throws ConfigurationParameterNotFoundException Configuration not found
+     */
+    protected function createConfigurationInstance(
+        $configurationIdentifier,
+        $configurationNamespace,
+        $configurationKey,
+        $configurationValue
+    )
+    {
+        /**
+         * Value is not found on database. We can just check if the value is
+         * defined in the configuration elements, and we can generate new entry
+         * for our database
+         */
+        if (!$this->configurationElements[$configurationIdentifier]) {
+
+            throw new ConfigurationParameterNotFoundException();
+        }
+
+        $configurationType = $this->configurationElements[$configurationIdentifier]['type'];
+
+        $configurationValue = $this
+            ->serializeValue(
+                $configurationValue,
+                $configurationType
+            );
+
+        $configurationEntity = $this
+            ->configurationFactory
+            ->create()
+            ->setKey($configurationKey)
+            ->setNamespace($configurationNamespace)
+            ->setName($this->configurationElements[$configurationIdentifier]['name'])
+            ->setType($configurationType)
+            ->setValue($configurationValue);
+
+        return $configurationEntity;
+    }
+
+    /**
+     * Saves configuration into cache
+     *
+     * @param ConfigurationInterface $configuration           Configuration
+     * @param string                 $configurationIdentifier Configuration identifier
+     *
+     * @return mixed flushed value
+     */
+    protected function flushConfigurationToCache(
+        ConfigurationInterface $configuration,
+        $configurationIdentifier
+    )
+    {
+        $configurationValue = $this->unserializeValue(
+            $configuration->getValue(),
+            $configuration->getType()
+        );
+
         $this
             ->cache
-            ->save($configurationIdentifier, $configurationValue);
+            ->save(
+                $configurationIdentifier,
+                $configurationValue
+            );
+
+        return $configurationValue;
+    }
+
+    /**
+     * Split the configuration identifier and return each part
+     *
+     * @param string $configurationIdentifier Configuration identifier
+     *
+     * @return string[] Identifier splitted
+     */
+    protected function splitConfigurationKey($configurationIdentifier)
+    {
+        $configurationIdentifier = explode('.', $configurationIdentifier, 2);
+
+        if (count($configurationIdentifier) === 1) {
+
+            array_unshift($configurationIdentifier, '');
+        }
+
+        return $configurationIdentifier;
     }
 
     /**
      * Unserialize configuration value
      *
-     * @param ConfigurationInterface $configuration Configuration
+     * @param string $configurationValue Configuration value
+     * @param string $configurationType  Configuration type
      *
-     * @return ConfigurationInterface Configuration
+     * @return mixed Configuration value unserialized
      */
-    protected function unserialize(ConfigurationInterface $configuration)
+    protected function unserializeValue($configurationValue, $configurationType)
     {
-        $configurationValue = $configuration->getValue();
-
-        switch ($configuration->getType()) {
+        switch ($configurationType) {
 
             case ElcodiConfigurationTypes::TYPE_BOOLEAN:
                 $configurationValue = (boolean) $configurationValue;
@@ -301,31 +351,26 @@ class ConfigurationManager extends AbstractCacheWrapper
                 break;
         }
 
-        $configuration->setValue($configurationValue);
-
-        return $configuration;
+        return $configurationValue;
     }
 
     /**
      * Serialize configuration value
      *
-     * @param ConfigurationInterface $configuration Configuration
+     * @param string $configurationValue Configuration value
+     * @param string $configurationType  Configuration type
      *
-     * @return ConfigurationInterface Configuration
+     * @return string Configuration value serialized
      */
-    protected function serialize(ConfigurationInterface $configuration)
+    protected function serializeValue($configurationValue, $configurationType)
     {
-        $configurationValue = $configuration->getValue();
-
-        switch ($configuration->getType()) {
+        switch ($configurationType) {
 
             case ElcodiConfigurationTypes::TYPE_ARRAY:
                 $configurationValue = json_encode($configurationValue);
                 break;
         }
 
-        $configuration->setValue($configurationValue);
-
-        return $configuration;
+        return $configurationValue;
     }
 }

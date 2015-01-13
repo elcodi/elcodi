@@ -12,7 +12,7 @@ services:
         parent: elcodi.core.currency.factory.abstract.purchasable
         calls:
             - [setEntityNamespace, ["%elcodi.core.product.entity.product.class%"]]
-            - [setUseStock, [@=service("elcodi.configuration_manager").getParameter('product.use_stock')]]
+            - [setUseStock, [@=elcodi_config('product.use_stock')]]
 
     elcodi.factory.product:
         alias: elcodi.core.product.factory.product

@@ -96,17 +96,17 @@ class TemplateLoader
 
         $this
             ->configurationManager
-            ->setParameter('store.templates', json_encode($templatesArray));
+            ->set('store.templates', $templatesArray);
 
         /**
          * If current template is not available anymore, we assume that the
          * first one is the right one
          */
-        if (!isset($templates[$this->configurationManager->getParameter('store.template')])) {
+        if (!isset($templates[$this->configurationManager->get('store.template')])) {
 
             $this
                 ->configurationManager
-                ->setParameter(
+                ->set(
                     'store.template',
                     $templates->first()['bundle']
                 );
