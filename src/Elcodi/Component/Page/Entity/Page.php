@@ -39,23 +39,23 @@ class Page implements PageInterface
         EnabledTrait;
 
     /**
-     * The path
-     *
      * @var string
+     *
+     * Path from which this page would be accessed
      */
     protected $path;
 
     /**
-     * The title
-     *
      * @var string
+     *
+     * Title of the page
      */
     protected $title;
 
     /**
-     * The content
-     *
      * @var string
+     *
+     * Content of the page
      */
     protected $content;
 
