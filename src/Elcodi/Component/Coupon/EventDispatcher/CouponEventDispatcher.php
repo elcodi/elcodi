@@ -16,8 +16,7 @@
 
 namespace Elcodi\Component\Coupon\EventDispatcher;
 
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-
+use Elcodi\Component\Core\EventDispatcher\Abstracts\AbstractEventDispatcher;
 use Elcodi\Component\Coupon\ElcodiCouponEvents;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\Coupon\Event\CouponOnUsedEvent;
@@ -25,25 +24,8 @@ use Elcodi\Component\Coupon\Event\CouponOnUsedEvent;
 /**
  * Class CouponEventDispatcher
  */
-class CouponEventDispatcher
+class CouponEventDispatcher extends AbstractEventDispatcher
 {
-    /**
-     * @var EventDispatcherInterface
-     *
-     * Event dispatcher
-     */
-    protected $eventDispatcher;
-
-    /**
-     * Construct method
-     *
-     * @param EventDispatcherInterface $eventDispatcher Event dispatcher
-     */
-    public function __construct(EventDispatcherInterface $eventDispatcher)
-    {
-        $this->eventDispatcher = $eventDispatcher;
-    }
-
     /**
      * Notify Coupon usage
      *
