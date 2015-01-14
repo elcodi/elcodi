@@ -16,10 +16,10 @@
 
 namespace Elcodi\Component\Language\Twig;
 
-use Doctrine\Common\Collections\Collection;
 use Twig_Extension;
 use Twig_SimpleFunction;
 
+use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 use Elcodi\Component\Language\Services\LanguageManager;
 
 /**
@@ -35,13 +35,25 @@ class LanguageExtension extends Twig_Extension
     protected $languageManager;
 
     /**
+     * @var string
+     *
+     * Master locale
+     */
+    protected $masterLocale;
+
+    /**
      * Construct method
      *
      * @param LanguageManager $languageManager Language manager
+     * @param string          $masterLocale    Master locale
      */
-    public function __construct(LanguageManager $languageManager)
+    public function __construct(
+        LanguageManager $languageManager,
+        $masterLocale
+    )
     {
         $this->languageManager = $languageManager;
+        $this->masterLocale = $masterLocale;
     }
 
     /**
@@ -59,13 +71,27 @@ class LanguageExtension extends Twig_Extension
     /**
      * Return all available languages
      *
-     * @return Collection Available languages
+     * @return array Available languages
      */
     public function getLanguages()
     {
-        return $this
+        $languages = $this
             ->languageManager
             ->getLanguages();
+
+        $masterLanguage = $languages
+            ->filter(function (LanguageInterface $language) {
+                return $language->getIso() === $this->masterLocale;
+            })
+            ->first();
+
+        $languages->removeElement($masterLanguage);
+        $otherLanguagesArray = $languages->toArray();
+
+        return array_merge(
+            [$masterLanguage],
+            $otherLanguagesArray
+        );
     }
 
     /**
