@@ -90,6 +90,7 @@ class ElcodiPageExtension extends AbstractExtension implements EntitiesOverridab
                 $config['routing']['enabled']
             ],
             'objectManagers',
+            'renderers',
             'repositories',
         ];
     }

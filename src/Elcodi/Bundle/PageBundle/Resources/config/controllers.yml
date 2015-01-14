@@ -8,3 +8,4 @@ services:
         arguments:
             page_repository: @elcodi.repository.page
             request_stack: @request_stack
+            renderer: @elcodi.core.page.chain_renderer
