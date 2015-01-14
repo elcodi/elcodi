@@ -87,7 +87,7 @@ class TemplateLoader
                 $bundleName = $bundle->getName();
                 $templates->set($bundleName, [
                     'bundle' => $bundleName,
-                    'name'   => $bundle->getTemplateName()
+                    'name'   => $bundle->getTemplateName(),
                 ]);
             }
         }

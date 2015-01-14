@@ -1,0 +1,7 @@
+services:
+
+    #
+    # Page renderers
+    #
+    elcodi.core.page.chain_renderer:
+        class: %elcodi.core.page.chain_renderer.class%
