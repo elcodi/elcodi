@@ -18,6 +18,7 @@ namespace Elcodi\Bundle\PageBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Reference;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
@@ -164,6 +165,19 @@ class ElcodiPageExtension extends AbstractExtension implements EntitiesOverridab
             $loaderDefinition = $container->findDefinition($loaderId);
             $loaderDefinition->addTag('routing.loader');
             $container->setAlias('elcodi.core.page.router', $loaderId);
+        }
+
+        if (!empty($config['renderers'])) {
+
+            $rendererReferences = [];
+            foreach ($config['renderers'] as $rendererId) {
+
+                $rendererReferences[] = new Reference($rendererId);
+            }
+
+            $controllerId = 'elcodi.core.page.chain_renderer';
+            $controllerDefinition = $container->findDefinition($controllerId);
+            $controllerDefinition->addArgument($rendererReferences);
         }
     }
 }
