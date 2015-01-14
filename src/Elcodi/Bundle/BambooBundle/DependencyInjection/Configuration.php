@@ -55,6 +55,8 @@ class Configuration extends AbstractConfiguration
                 ->end()
 
                 ->append($this->createEmailConfiguration())
+
+                ->append($this->createPagesConfiguration())
             ->end();
     }
 
@@ -140,4 +142,26 @@ class Configuration extends AbstractConfiguration
 
         return $node;
     }
+
+    /**
+     * Creates configuration for page rendering
+     *
+     * @return ArrayNodeDefinition|NodeDefinition
+     */
+    protected function createPagesConfiguration()
+    {
+        $builder = new TreeBuilder();
+        $node = $builder->root('pages');
+
+        $node
+            ->addDefaultsIfNotSet()
+            ->children()
+                ->scalarNode('default_template')
+                    ->defaultValue('ElcodiBambooBundle:pages:basic_layout.html.twig')
+                ->end()
+            ->end();
+
+        return $node;
+    }
+
 }
