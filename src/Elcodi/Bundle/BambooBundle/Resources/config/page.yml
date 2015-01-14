@@ -1,0 +1,6 @@
+#
+# Page renderers
+#
+elcodi_page:
+    renderers:
+        - bamboo.page.renderer.template_renderer

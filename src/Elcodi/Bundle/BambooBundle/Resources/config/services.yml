@@ -8,3 +8,12 @@ services:
         arguments:
             kernel: @kernel
             configuration_manager: @?elcodi.configuration_manager
+
+    #
+    # Page renderer
+    #
+    bamboo.page.renderer.template_renderer:
+        class: Elcodi\Bundle\BambooBundle\Renderer\TemplateRenderer
+        arguments:
+            - @templating.engine.twig
+            - %elcodi.core.bamboo.page.default_template%
