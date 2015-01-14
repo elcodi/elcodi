@@ -15,5 +15,5 @@ services:
     bamboo.page.renderer.template_renderer:
         class: Elcodi\Bundle\BambooBundle\Renderer\TemplateRenderer
         arguments:
-            - @templating.engine.twig
+            - @?templating.engine.twig
             - %elcodi.core.bamboo.page.default_template%
