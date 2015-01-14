@@ -53,39 +53,54 @@ class Configuration extends AbstractConfiguration
                     ->prototype('scalar')
                     ->end()
                 ->end()
-                ->arrayNode('emails')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->arrayNode('defaults')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('layout')
-                                    ->defaultValue('ElcodiBambooBundle:emails:layout.html.twig')
-                                ->end()
-                                ->scalarNode('sender_email')
-                                    ->defaultValue('no-reply@elcodi.com')
-                                ->end()
-                            ->end()
-                        ->end()
 
-                        ->append($this->addEmailNode(
-                            'customer_password_remember',
-                            false,
-                            'ElcodiBambooBundle:emails:customer_password_remember.html.twig'
-                        ))
-
-                        ->append($this->addEmailNode(
-                            'customer_password_recover',
-                            false,
-                            'ElcodiBambooBundle:emails:customer_password_recover.html.twig'
-                        ))
-                    ->end()
-                ->end()
+                ->append($this->createEmailConfiguration())
             ->end();
     }
 
     /**
-     * Add a mapping node into configuration
+     * Creates configuration for email sending
+     *
+     * @return ArrayNodeDefinition|NodeDefinition
+     */
+    protected function createEmailConfiguration()
+    {
+        $builder = new TreeBuilder();
+        $node = $builder->root('emails');
+
+        $node
+            ->addDefaultsIfNotSet()
+            ->children()
+                ->arrayNode('defaults')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('layout')
+                            ->defaultValue('ElcodiBambooBundle:emails:layout.html.twig')
+                        ->end()
+                        ->scalarNode('sender_email')
+                            ->defaultValue('no-reply@elcodi.com')
+                        ->end()
+                    ->end()
+                ->end()
+
+                ->append($this->addEmailNode(
+                    'customer_password_remember',
+                    false,
+                    'ElcodiBambooBundle:emails:customer_password_remember.html.twig'
+                ))
+
+                ->append($this->addEmailNode(
+                    'customer_password_recover',
+                    false,
+                    'ElcodiBambooBundle:emails:customer_password_recover.html.twig'
+                ))
+            ->end();
+
+        return $node;
+    }
+
+    /**
+     * Add configuration for email template
      *
      * @param string  $nodeName    Node name
      * @param boolean $enabled     The email is enabled by default
@@ -121,8 +136,7 @@ class Configuration extends AbstractConfiguration
                 ->scalarNode('sender_email')
                     ->defaultValue($senderEmail)
                 ->end()
-            ->end()
-        ->end();
+            ->end();
 
         return $node;
     }
