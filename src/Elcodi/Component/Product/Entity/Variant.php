@@ -94,7 +94,7 @@ class Variant implements VariantInterface
      *
      * @param string $sku
      *
-     * @return VariantInterface
+     * @return $this Self object
      */
     public function setSku($sku)
     {
@@ -106,7 +106,7 @@ class Variant implements VariantInterface
     /**
      * Gets the variant stock
      *
-     * @return int
+     * @return int Stock
      */
     public function getStock()
     {
@@ -142,7 +142,7 @@ class Variant implements VariantInterface
      *
      * @param Collection $options
      *
-     * @return VariantInterface
+     * @return $this Self object
      */
     public function setOptions(Collection $options)
     {
@@ -190,7 +190,7 @@ class Variant implements VariantInterface
      *
      * @throws \LogicException
      *
-     * @return VariantInterface
+     * @return $this Self object
      */
     public function addOption(ValueInterface $option)
     {
@@ -209,7 +209,7 @@ class Variant implements VariantInterface
      *
      * @param ValueInterface $option
      *
-     * @return VariantInterface
+     * @return $this Self object
      */
     public function removeOption(ValueInterface $option)
     {
@@ -233,7 +233,7 @@ class Variant implements VariantInterface
      *
      * @param ProductInterface $product
      *
-     * @return VariantInterface
+     * @return $this Self object
      */
     public function setProduct($product)
     {

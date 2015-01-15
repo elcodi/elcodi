@@ -69,6 +69,11 @@ Elcodi\Component\Product\Entity\Product:
             column: weight
             type: integer
             nullable: false
+        imagesSort:
+            column: images_sort
+            type: string
+            lentgh: 2048
+            nullable: true
         metaTitle:
             column: meta_title
             type: string
@@ -119,6 +124,7 @@ Elcodi\Component\Product\Entity\Product:
         principalImage:
             targetEntity: Elcodi\Component\Media\Entity\Interfaces\ImageInterface
             joinColumn:
+                onDelete: SET NULL
                 name: principal_image_id
                 referencedColumnName: id
                 nullable: true
@@ -151,9 +157,11 @@ Elcodi\Component\Product\Entity\Product:
                 joinColumns:
                     product_id:
                         referencedColumnName: id
+                        onDelete: "CASCADE"
                 inverseJoinColumns:
                     category_id:
                         referencedColumnName: id
+                        onDelete: "CASCADE"
         images:
             targetEntity: Elcodi\Component\Media\Entity\Interfaces\ImageInterface
             joinTable:
@@ -161,9 +169,11 @@ Elcodi\Component\Product\Entity\Product:
                 joinColumns:
                     product_id:
                         referencedColumnName: id
+                        onDelete: "CASCADE"
                 inverseJoinColumns:
                     image_id:
                         referencedColumnName: id
+                        onDelete: "CASCADE"
         attributes:
             targetEntity: Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface
             joinTable:

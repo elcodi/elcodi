@@ -21,6 +21,8 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
+use Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait;
+use Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait;
 use Elcodi\Component\MetaData\Entity\Traits\MetaDataTrait;
 use Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
@@ -32,6 +34,8 @@ class Manufacturer implements ManufacturerInterface
 {
     use
         IdentifiableTrait,
+        ImagesContainerTrait,
+        PrincipalImageTrait,
         DateTimeTrait,
         EnabledTrait,
         MetaDataTrait;

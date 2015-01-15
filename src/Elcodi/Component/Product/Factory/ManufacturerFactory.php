@@ -41,6 +41,8 @@ class ManufacturerFactory extends AbstractFactory
         $manufacturer = new $classNamespace();
         $manufacturer
             ->setProducts(new ArrayCollection())
+            ->setImages(new ArrayCollection())
+            ->setImagesSort('')
             ->setEnabled(false)
             ->setCreatedAt(new DateTime());
 
