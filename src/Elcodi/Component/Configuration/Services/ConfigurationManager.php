@@ -343,7 +343,7 @@ class ConfigurationManager extends AbstractCacheWrapper
         switch ($configurationType) {
 
             case ElcodiConfigurationTypes::TYPE_BOOLEAN:
-                $configurationValue = (boolean)$configurationValue;
+                $configurationValue = (boolean) $configurationValue;
                 break;
 
             case ElcodiConfigurationTypes::TYPE_ARRAY:

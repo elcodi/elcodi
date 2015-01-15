@@ -1,0 +1,12 @@
+services:
+
+    #
+    # Twig extensions
+    #
+    elcodi.bamboo_api_metric_twig_extension:
+        class: %elcodi.bamboo_api_metric_twig_extension.class%
+        parent: elcodi.api_metric_twig_extension
+        calls:
+            - ["setStoreTracker", [@=elcodi_config("store.tracker")]]
+        tags:
+            - { name: twig.extension }

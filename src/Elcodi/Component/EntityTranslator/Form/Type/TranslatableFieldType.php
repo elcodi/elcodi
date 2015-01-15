@@ -191,7 +191,7 @@ class TranslatableFieldType extends AbstractType
      */
     public function evaluateRequired($required, $locale)
     {
-        return (boolean)$required
+        return (boolean) $required
             ? !$this->fallback || ($this->masterLocale === $locale)
             : false;
     }

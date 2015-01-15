@@ -1,0 +1,5 @@
+elcodi_metric_input_routes:
+    resource: .
+    type: elcodi_metric_input
+    methods: [GET]
+    options: { i18n: false }

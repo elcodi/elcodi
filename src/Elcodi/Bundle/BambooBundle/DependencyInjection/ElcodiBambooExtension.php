@@ -78,6 +78,7 @@ class ElcodiBambooExtension extends AbstractExtension
 
         return [
             "elcodi.core.bamboo.cache_prefix"                                   => $config['cache_prefix'],
+            "elcodi.core.bamboo.store_tracker"                                  => $config['store_tracker'],
             "elcodi.core.bamboo.store_name"                                     => $config['store_name'],
             "elcodi.core.bamboo.store_template"                                 => $config['store_template'],
             "elcodi.core.bamboo.store_templates"                                => $config['store_templates'],
@@ -112,6 +113,7 @@ class ElcodiBambooExtension extends AbstractExtension
             'classes',
             'services',
             'commands',
+            'twig',
             [
                 'emails/customerPasswordRemember',
                 $config['emails']['customer_password_remember']['enabled']

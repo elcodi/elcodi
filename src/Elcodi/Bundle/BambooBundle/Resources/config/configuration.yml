@@ -10,6 +10,13 @@ elcodi_configuration:
             type: string
             reference: elcodi.core.bamboo.store_name
 
+        store_tracker:
+            key: tracker
+            name: Store tracker
+            namespace: store
+            type: string
+            reference: elcodi.core.bamboo.store_tracker
+
         store_template:
             key: template
             name: Store template

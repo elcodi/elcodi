@@ -1,0 +1,29 @@
+Elcodi\Component\Metric\Core\Entity\Entry:
+    type: entity
+    repositoryClass: Elcodi\Component\Metric\Core\Repository\EntryRepository
+    table: metric_entry
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        token:
+            column: token
+            type: string
+            length: 255
+            nullable: false
+        event:
+            column: event
+            type: string
+            length: 255
+            nullable: false
+        context:
+            column: context
+            type: string
+            length: 2048
+            nullable: true
+        createdAt:
+            column: created_at
+            type: datetime
+            nullable: false

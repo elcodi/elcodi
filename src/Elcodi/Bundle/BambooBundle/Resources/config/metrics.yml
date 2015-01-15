@@ -1,0 +1,7 @@
+snc_redis:
+    clients:
+        default:
+            type: phpredis
+            alias: metric
+            dsn: redis://localhost
+            logging: false

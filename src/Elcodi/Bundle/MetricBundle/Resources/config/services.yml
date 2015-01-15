@@ -1,0 +1,22 @@
+services:
+
+    #
+    # Services
+    #
+    elcodi.metric_manager:
+        class: %elcodi.metric_manager.class%
+        arguments:
+            metrics_bucket: @elcodi.metrics_bucket
+            entry_factory: @elcodi.factory.metric_entry
+            entry_object_manager: @elcodi.object_manager.entry
+
+    #
+    # Routes
+    #
+    elcodi.core.metric.routes.input.loader:
+        class: %elcodi.core.metric.routes.input.loader.class%
+        arguments:
+            input_controller_route_name: %elcodi.core.metric.input_controller_route_name%
+            input_controller_route: %elcodi.core.metric.input_controller_route%
+        tags:
+            - { name: routing.loader }
