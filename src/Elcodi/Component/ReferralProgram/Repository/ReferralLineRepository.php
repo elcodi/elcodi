@@ -40,11 +40,11 @@ class ReferralLineRepository extends EntityRepository
     {
         return new ArrayCollection(
             $this
-            ->findBy(array(
-                'referrer' => $customer,
-                'enabled'  => true,
-                'closed'   => false,
-            ))
+                ->findBy(array(
+                    'referrer' => $customer,
+                    'enabled'  => true,
+                    'closed'   => false,
+                ))
         );
     }
 

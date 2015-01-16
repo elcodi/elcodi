@@ -154,7 +154,7 @@ class RuleManager implements ContextAwareInterface, ExpressionLanguageAwareInter
         $contextMerged = array_merge($this->context, $context);
 
         try {
-            $result = (boolean) $this
+            $result = (boolean)$this
                 ->expressionLanguage
                 ->evaluate($expression->getExpression(), $contextMerged);
         } catch (SyntaxError $exception) {

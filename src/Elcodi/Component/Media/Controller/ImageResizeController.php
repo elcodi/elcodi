@@ -114,9 +114,9 @@ class ImageResizeController
 
         $id = $request->get('id');
 
-            /**
-             * We retrieve image given its id
-             */
+        /**
+         * We retrieve image given its id
+         */
         $image = $this
             ->imageRepository
             ->find($id);

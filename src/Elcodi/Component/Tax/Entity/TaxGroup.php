@@ -192,6 +192,6 @@ class TaxGroup implements TaxGroupInterface
      */
     public function __toString()
     {
-        return (string) $this->name;
+        return (string)$this->name;
     }
 }

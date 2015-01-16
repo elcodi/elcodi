@@ -84,8 +84,8 @@ class PageRouterSimpleLoader implements LoaderInterface
 
         $route = new Route(
             $this->routePath,
-            [ '_controller' => $this->controller ],
-            [ 'path' => '[^/]+(?>/[^/]+)*+' ]
+            ['_controller' => $this->controller],
+            ['path' => '[^/]+(?>/[^/]+)*+']
         );
 
         $routes->add($this->routeName, $route);

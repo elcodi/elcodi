@@ -216,10 +216,10 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
         $this->translationsBackup[$formHash] = [];
 
         $entityData = [
-            'object'          => $entity,
-            'idGetter'        => $entityConfiguration['idGetter'],
-            'alias'           => $entityConfiguration['alias'],
-            'fields'          => [],
+            'object'   => $entity,
+            'idGetter' => $entityConfiguration['idGetter'],
+            'alias'    => $entityConfiguration['alias'],
+            'fields'   => [],
         ];
 
         $entityFields = $entityConfiguration['fields'];

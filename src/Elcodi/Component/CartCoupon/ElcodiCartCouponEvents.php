@@ -27,7 +27,7 @@ final class ElcodiCartCouponEvents
      * event.name : cart_coupon.onapply
      * event.class : CartCouponOnApplyEvent
      */
-    const CART_COUPON_ONAPPLY= 'cart_coupon.onapply';
+    const CART_COUPON_ONAPPLY = 'cart_coupon.onapply';
 
     /**
      * This event is dispatched each time a coupon is removed from a Cart
@@ -51,5 +51,5 @@ final class ElcodiCartCouponEvents
      * event.name : order_coupon.onapply
      * event.class : OrderCouponOnApplyEvent
      */
-    const ORDER_COUPON_ONAPPLY= 'order_coupon.onapply';
+    const ORDER_COUPON_ONAPPLY = 'order_coupon.onapply';
 }
