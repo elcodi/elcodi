@@ -10,7 +10,7 @@
          stopOnFailure="false"
          syntaxCheck="false"
          bootstrap="vendor/autoload.php"
->
+        >
     <testsuites>
         <testsuite name="Elcodi component package">
             <directory>./Tests/</directory>
@@ -26,8 +26,4 @@
             </exclude>
         </whitelist>
     </filter>
-
-    <php>
-        <server name="KERNEL_DIR" value="./vendor/elcodi/elcodi/Elcodi/app/" />
-    </php>
 </phpunit>

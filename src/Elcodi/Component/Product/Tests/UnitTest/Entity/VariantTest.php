@@ -111,7 +111,7 @@ class VariantTest extends PHPUnit_Framework_TestCase
      * Shortcut method to assert product Attribute collection size
      *
      * @param Product $product
-     * @param $size
+     * @param         $size
      */
     private function assertProductAttributeCollectionSizeIs(Product $product, $size)
     {

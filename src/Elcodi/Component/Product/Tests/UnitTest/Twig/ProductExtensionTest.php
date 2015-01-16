@@ -34,7 +34,7 @@ class ProductExtensionTest extends PHPUnit_Framework_TestCase
     {
         $product = $this->getMock('Elcodi\Component\Product\Entity\Product', [], [], '', false);
         $variant = $this->getMock('Elcodi\Component\Product\Entity\Variant', [], [], '', false);
-        $attribute = $this->getMock('Elcodi\Component\Attribute\Entity\Attribute',  [], [], '', false);
+        $attribute = $this->getMock('Elcodi\Component\Attribute\Entity\Attribute', [], [], '', false);
 
         $option = new Value();
         $option->setId(111);

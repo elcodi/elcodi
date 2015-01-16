@@ -227,11 +227,11 @@ class CategoryManager extends AbstractCacheWrapper
                 'name'          => $category->getName(),
                 'slug'          => $category->getSlug(),
                 'productsCount' => $this->loadOnlyCategoriesWithProducts
-                        ? count($category->getProducts())
-                        : 0
+                    ? count($category->getProducts())
+                    : 0
             );
 
-            $categoryTree[$parentCategoryId]['children'][] = & $categoryTree[$categoryId];
+            $categoryTree[$parentCategoryId]['children'][] = &$categoryTree[$categoryId];
         }
 
         return $categoryTree[0]['children']

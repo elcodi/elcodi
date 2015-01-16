@@ -35,7 +35,7 @@ class PasswordRememberMailer extends AbstractMailer
             'Password remember email',
             $event->getUser()->getEmail(),
             [
-                'user' => $event->getUser(),
+                'user'        => $event->getUser(),
                 'rememberUrl' => $event->getRememberUrl(),
             ]
         );

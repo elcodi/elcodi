@@ -140,12 +140,12 @@ class TranslatorTest extends PHPUnit_Framework_TestCase
 
         $translator->save($product, array(
             'es' => array(
-                'name' => 'el nombre',
+                'name'        => 'el nombre',
                 'description' => 'la descripción',
             ),
             'en' => array(
-                'name' => 'the name',
-                'description' => 'the description',
+                'name'         => 'the name',
+                'description'  => 'the description',
                 'anotherfield' => 'some value',
             ),
         ));

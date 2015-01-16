@@ -75,7 +75,7 @@ class ZoneMatcher
             ->exists(function ($_, ZoneCountryMemberInterface $zoneCountryMember) use ($country) {
                 return $country
                     ->equals($zoneCountryMember
-                        ->getCountry()
+                            ->getCountry()
                     );
             });
     }
@@ -99,7 +99,7 @@ class ZoneMatcher
             ->exists(function ($_, ZoneStateMemberInterface $zoneStateMember) use ($state) {
                 return $state
                     ->equals($zoneStateMember
-                        ->getState()
+                            ->getState()
                     );
             });
     }
@@ -123,7 +123,7 @@ class ZoneMatcher
             ->exists(function ($_, ZoneProvinceMemberInterface $zoneProvinceMember) use ($province) {
                 return $province
                     ->equals($zoneProvinceMember
-                        ->getProvince()
+                            ->getProvince()
                     );
             });
     }
@@ -147,7 +147,7 @@ class ZoneMatcher
             ->exists(function ($_, ZoneCityMemberInterface $zoneCityMember) use ($city) {
                 return $city
                     ->equals($zoneCityMember
-                        ->getCity()
+                            ->getCity()
                     );
             });
     }
@@ -171,7 +171,7 @@ class ZoneMatcher
             ->exists(function ($_, ZonePostalcodeMemberInterface $zonePostalCodeMember) use ($postalCode) {
                 return $postalCode
                     ->equals($zonePostalCodeMember
-                        ->getPostalcode()
+                            ->getPostalcode()
                     );
             });
     }

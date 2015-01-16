@@ -205,7 +205,7 @@ class BannerZone implements BannerZoneInterface
      */
     public function setHeight($height)
     {
-        $this->height = (float) $height;
+        $this->height = (float)$height;
 
         return $this;
     }
@@ -229,7 +229,7 @@ class BannerZone implements BannerZoneInterface
      */
     public function setWidth($width)
     {
-        $this->width = (float) $width;
+        $this->width = (float)$width;
 
         return $this;
     }

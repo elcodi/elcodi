@@ -69,11 +69,11 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         /**
-         * @var CartEventDispatcher $cartEventDispatcher
+         * @var CartEventDispatcher     $cartEventDispatcher
          * @var CartLineEventDispatcher $cartLineEventDispatcher
-         * @var CartFactory         $cartFactory
-         * @var CartLineFactory     $cartLineFactory
-         * @var CartWrapper         $cartWrapper
+         * @var CartFactory             $cartFactory
+         * @var CartLineFactory         $cartLineFactory
+         * @var CartWrapper             $cartWrapper
          */
         $cartEventDispatcher = $this->getMock('Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher', [], [], '', false);
         $cartLineEventDispatcher = $this->getMock('Elcodi\Component\Cart\EventDispatcher\CartLineEventDispatcher', [], [], '', false);
@@ -219,7 +219,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
      * editCartLine test
      *
      * @dataProvider dataEditCartLine
-     * @group cart
+     * @group        cart
      */
     public function testEditCartLine($initialQuantity, $newQuantity, $finalQuantity)
     {
@@ -260,7 +260,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
      * increaseCartLineQuantity with empty Cart
      *
      * @dataProvider dataIncreaseCartLineQuantity
-     * @group cart
+     * @group        cart
      */
     public function testIncreaseCartLineQuantity($initialQuantity, $quantityToIncrease, $finalQuantity)
     {
@@ -293,7 +293,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
      * increaseCartLineQuantity with empty Cart
      *
      * @dataProvider dataDecreaseCartLineQuantityNotRemove
-     * @group cart
+     * @group        cart
      */
     public function testDecreaseCartLineQuantityNotRemove($initialQuantity, $quantityToIncrease, $finalQuantity)
     {
@@ -325,7 +325,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
      * increaseCartLineQuantity with empty Cart
      *
      * @dataProvider dataDecreaseCartLineQuantityRemove
-     * @group cart
+     * @group        cart
      */
     public function testDecreaseCartLineQuantityRemove($initialQuantity, $quantityToIncrease)
     {
@@ -356,7 +356,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
      * addProduct
      *
      * @dataProvider dataAddProduct
-     * @group cart
+     * @group        cart
      */
     public function testAddProduct($quantity, $productCreated, $quantityExpected)
     {
@@ -416,11 +416,11 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     public function testAddProductAndVariantSameId()
     {
         /**
-         * @var CartEventDispatcher $cartEventDispatcher
+         * @var CartEventDispatcher     $cartEventDispatcher
          * @var CartLineEventDispatcher $cartLineEventDispatcher
-         * @var CartFactory         $cartFactory
-         * @var CartLineFactory     $cartLineFactory
-         * @var CartWrapper         $cartWrapper
+         * @var CartFactory             $cartFactory
+         * @var CartLineFactory         $cartLineFactory
+         * @var CartWrapper             $cartWrapper
          */
         $cartEventDispatcher = $this->getMock('Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher', [], [], '', false);
         $cartLineEventDispatcher = $this->getMock('Elcodi\Component\Cart\EventDispatcher\CartLineEventDispatcher', [], [], '', false);

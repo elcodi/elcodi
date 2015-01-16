@@ -128,7 +128,8 @@ class ProductExtension extends Twig_Extension
                  * @var ValueInterface $option
                  */
                 if ($option->getAttribute() == $attribute &&
-                    !$availableOptions->contains($option)) {
+                    !$availableOptions->contains($option)
+                ) {
 
                     $availableOptions->add($option);
                 }
