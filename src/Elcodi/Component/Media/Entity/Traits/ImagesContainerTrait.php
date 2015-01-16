@@ -16,6 +16,8 @@
 
 namespace Elcodi\Component\Media\Entity\Traits;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Trait ImagesContainerTrait
  */
@@ -103,7 +105,7 @@ trait ImagesContainerTrait
             }
         );
 
-        return $imagesCollection;
+        return new ArrayCollection($imagesCollection);
     }
 
     /**
