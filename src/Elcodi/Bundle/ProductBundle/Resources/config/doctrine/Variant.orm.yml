@@ -41,6 +41,11 @@ Elcodi\Component\Product\Entity\Variant:
             column: weight
             type: integer
             nullable: false
+        imagesSort:
+            column: images_sort
+            type: string
+            lentgh: 2048
+            nullable: true
         createdAt:
             column: created_at
             type: datetime
@@ -55,7 +60,6 @@ Elcodi\Component\Product\Entity\Variant:
     manyToOne:
         product:
             targetEntity: Elcodi\Component\Product\Entity\Interfaces\ProductInterface
-            fetch: EAGER
             inversedBy: variants
             joinColumn:
                 name: product_id
@@ -68,6 +72,7 @@ Elcodi\Component\Product\Entity\Variant:
                 name: principal_image_id
                 referencedColumnName: id
                 nullable: true
+                onDelete: SET NULL
         priceCurrency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
@@ -89,9 +94,11 @@ Elcodi\Component\Product\Entity\Variant:
                 joinColumns:
                     variant_id:
                         referencedColumnName: id
+                        onDelete: "CASCADE"
                 inverseJoinColumns:
                     option_id:
                         referencedColumnName: id
+                        onDelete: "CASCADE"
         images:
             targetEntity: Elcodi\Component\Media\Entity\Interfaces\ImageInterface
             joinTable:
@@ -99,9 +106,11 @@ Elcodi\Component\Product\Entity\Variant:
                 joinColumns:
                     variant_id:
                         referencedColumnName: id
+                        onDelete: "CASCADE"
                 inverseJoinColumns:
                     image_id:
                         referencedColumnName: id
+                        onDelete: "CASCADE"
 
     lifecycleCallbacks:
         preUpdate: [loadUpdateAt]

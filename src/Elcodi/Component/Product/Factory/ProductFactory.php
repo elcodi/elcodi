@@ -87,6 +87,7 @@ class ProductFactory extends AbstractPurchasableFactory
             ->setDepth(0)
             ->setWidth(0)
             ->setWeight(0)
+            ->setImagesSort('')
             ->setEnabled(false)
             ->setCreatedAt(new DateTime());
 

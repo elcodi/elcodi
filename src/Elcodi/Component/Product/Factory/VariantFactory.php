@@ -48,12 +48,14 @@ class VariantFactory extends AbstractPurchasableFactory
             ->setStock(0)
             ->setPrice($zeroPrice)
             ->setReducedPrice($zeroPrice)
+            ->setImages(new ArrayCollection())
             ->setOptions(new ArrayCollection())
             ->setWidth(0)
             ->setHeight(0)
             ->setWidth(0)
             ->setDepth(0)
             ->setWeight(0)
+            ->setImagesSort('')
             ->setEnabled(false)
             ->setCreatedAt(new \DateTime());
 

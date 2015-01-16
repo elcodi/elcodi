@@ -95,7 +95,6 @@ class TemplateRenderer implements PageRendererInterface
     {
         $template = $page->getTemplate();
         if (!empty($template)) {
-
             return $template;
         }
 
