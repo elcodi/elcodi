@@ -37,11 +37,20 @@ interface PageInterface
     EnabledInterface
 {
     /**
-     * Get the title
+     * Get the path
      *
      * @return string
      */
-    public function getTitle();
+    public function getPath();
+
+    /**
+     * Set the path
+     *
+     * @param string $path The path
+     *
+     * @return $this Self object
+     */
+    public function setPath($path);
 
     /**
      * Get the content
@@ -51,9 +60,27 @@ interface PageInterface
     public function getContent();
 
     /**
-     * Get the path
+     * Set the content
+     *
+     * @param string $content The content
+     *
+     * @return $this Self object
+     */
+    public function setContent($content);
+
+    /**
+     * Get the title
      *
      * @return string
      */
-    public function getPath();
+    public function getTitle();
+
+    /**
+     * Set the title
+     *
+     * @param string $title The title
+     *
+     * @return $this Self object
+     */
+    public function setTitle($title);
 }
