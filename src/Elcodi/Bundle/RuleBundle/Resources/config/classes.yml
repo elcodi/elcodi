@@ -1,24 +1,14 @@
 parameters:
 
     #
-    # Test
-    #
-    elcodi.core.rule.test.parameter: value
-
-    #
     # Entities
     #
-    elcodi.core.rule.entity.abstract_rule.class: Elcodi\Component\Rule\Entity\Abstracts\AbstractRule
     elcodi.core.rule.entity.rule.class: Elcodi\Component\Rule\Entity\Rule
-    elcodi.core.rule.entity.rule_group.class: Elcodi\Component\Rule\Entity\RuleGroup
-    elcodi.core.rule.entity.expression.class: Elcodi\Component\Rule\Entity\Expression
 
     #
     # Factories
     #
     elcodi.core.rule.factory.rule.class: Elcodi\Component\Rule\Factory\RuleFactory
-    elcodi.core.rule.factory.rule_group.class: Elcodi\Component\Rule\Factory\RuleGroupFactory
-    elcodi.core.rule.factory.expression.class: Elcodi\Component\Rule\Factory\ExpressionFactory
 
     #
     # Managers

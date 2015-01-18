@@ -14,25 +14,3 @@ services:
 
     elcodi.factory.rule:
         alias: elcodi.core.rule.factory.rule
-
-    #
-    # Factory for entity rule_group
-    #
-    elcodi.core.rule.factory.rule_group:
-        class: %elcodi.core.rule.factory.rule_group.class%
-        calls:
-            - [setEntityNamespace, ["%elcodi.core.rule.entity.rule_group.class%"]]
-
-    elcodi.factory.rule_group:
-        alias: elcodi.core.rule.factory.rule_group
-
-    #
-    # Factory for entity expression
-    #
-    elcodi.core.rule.factory.expression:
-        class: %elcodi.core.rule.factory.expression.class%
-        calls:
-            - [setEntityNamespace, ["%elcodi.core.rule.entity.expression.class%"]]
-
-    elcodi.factory.expression:
-        alias: elcodi.core.rule.factory.expression
