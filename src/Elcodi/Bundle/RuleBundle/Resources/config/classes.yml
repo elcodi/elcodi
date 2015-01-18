@@ -23,8 +23,6 @@ parameters:
     #
     # Configurations
     #
-    elcodi.core.rule.configuration.expression_language_collection.class: Elcodi\Component\Rule\Configuration\ExpressionLanguageConfigurationCollection
-    elcodi.core.rule.configuration.context_collection.class: Elcodi\Component\Rule\Configuration\ContextConfigurationCollection
-    elcodi.core.rule.configuration.expression_language.class: Elcodi\Component\Rule\Configuration\ExpressionLanguageConfiguration
-    elcodi.core.rule.configuration.context.class: Elcodi\Component\Rule\Configuration\ContextConfiguration
-    elcodi.core.rule.configuration.rule_manager.class: Elcodi\Component\Rule\Configuration\RuleManagerConfiguration
+    elcodi.core.rule.context_collector.class: Elcodi\Component\Rule\ExpressionLanguage\Context\ContextCollector
+    elcodi.core.rule.expression_language.container_provider.class: Elcodi\Component\Rule\ExpressionLanguage\Provider\ContainerProvider
+    elcodi.core.rule.expression_language.rule_provider.class: Elcodi\Component\Rule\ExpressionLanguage\Provider\RuleProvider

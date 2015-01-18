@@ -14,26 +14,24 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Component\Rule\Repository;
+namespace Elcodi\Component\Rule\Services\Interfaces;
 
-use Doctrine\ORM\EntityRepository;
 use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
 
 /**
- * Class RuleRepository
+ * Interface RuleManagerInterface
+ *
+ * @author Berny Cantos <be@rny.cc>
  */
-class RuleRepository extends EntityRepository
+interface RuleManagerInterface
 {
     /**
-     * Return a rule by name
+     * Evaluates a rule and returns result
      *
-     * @param $name
+     * @param RuleInterface $rule
+     * @param array         $context
      *
-     * @return null|RuleInterface
+     * @return mixed
      */
-    public function findOneByName($name)
-    {
-        return parent::findOneBy(['name' => $name]);
-    }
-
+    public function evaluate(RuleInterface $rule, array $context = []);
 }

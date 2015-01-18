@@ -26,35 +26,27 @@ use Symfony\Component\DependencyInjection\Reference;
 class ExpressionLanguageCompilerPass implements CompilerPassInterface
 {
     /**
-     * This compiler pass computes all services that want to configure the
-     * RuleManager expression language instance, adding them some context
+     * Collect services tagged to configure the ExpressionLanguage instance of RuleManager
      *
      * @param ContainerBuilder $container Container
      */
     public function process(ContainerBuilder $container)
     {
-        /**
-         * We get our eventlistener
-         */
         $definition = $container->getDefinition(
-            'elcodi.core.rule.configuration.expression_language_collection'
+            'elcodi.core.rule.service.expression_language'
         );
 
-        /**
-         * We get all tagged services
-         */
         $taggedServices = $container->findTaggedServiceIds(
-            'elcodi.rule_expression_language_configuration'
+            'elcodi.rule_configuration'
         );
 
-        /**
-         * We add every tagged Resolver into EventListener
-         */
         foreach ($taggedServices as $id => $attributes) {
 
             $definition->addMethodCall(
-                'addExpressionLanguageConfiguration',
-                array(new Reference($id))
+                'registerProvider',
+                [
+                    new Reference($id),
+                ]
             );
         }
     }

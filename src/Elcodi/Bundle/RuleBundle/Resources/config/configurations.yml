@@ -1,27 +1,18 @@
 services:
+    elcodi.core.rule.context_collector:
+        class: %elcodi.core.rule.context_collector.class%
 
-    elcodi.core.rule.configuration.expression_language_collection:
-        class: %elcodi.core.rule.configuration.expression_language_collection.class%
-
-    elcodi.core.rule.configuration.context_collection:
-        class: %elcodi.core.rule.configuration.context_collection.class%
-
-    elcodi.core.rule.configuration.expression_language:
-        class: %elcodi.core.rule.configuration.expression_language.class%
+    elcodi.core.rule.expression_language.container_provider:
+        class: %elcodi.core.rule.expression_language.container_provider.class%
         arguments:
-            service_container: @service_container
+            - @service_container
         tags:
-            - { name: elcodi.rule_expression_language_configuration }
+            - { name: elcodi.rule_configuration }
 
-    elcodi.core.rule.configuration.context:
-        class: %elcodi.core.rule.configuration.context.class%
+    elcodi.core.rule.expression_language.rule_provider:
+        class: %elcodi.core.rule.expression_language.rule_provider.class%
         arguments:
-            entity_manager: @doctrine.orm.entity_manager
+            rule_repository: @elcodi.repository.rule
+            rule_manager: @elcodi.rule_manager
         tags:
-            - { name: elcodi.rule_context_configuration }
-
-    elcodi.core.rule.configuration.rule_manager:
-        class: %elcodi.core.rule.configuration.rule_manager.class%
-        arguments:
-            context_collection: @elcodi.core.rule.configuration.context_collection
-            expression_language_collection: @elcodi.core.rule.configuration.expression_language_collection
+            - { name: elcodi.rule_configuration }

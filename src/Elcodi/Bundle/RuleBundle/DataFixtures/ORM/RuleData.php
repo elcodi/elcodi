@@ -16,17 +16,15 @@
 
 namespace Elcodi\Bundle\RuleBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\Component\Rule\Entity\Interfaces\ExpressionInterface;
 use Elcodi\Component\Rule\Factory\RuleFactory;
 
 /**
  * Class RuleData
  */
-class RuleData extends AbstractFixture implements DependentFixtureInterface
+class RuleData extends AbstractFixture
 {
     /**
      * {@inheritDoc}
@@ -34,64 +32,36 @@ class RuleData extends AbstractFixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         /**
-         * @var RuleFactory         $ruleFactory
-         * @var ExpressionInterface $expressionTrue
-         * @var ExpressionInterface $expressionFalse
-         * @var ExpressionInterface $expressionVariables
+         * @var RuleFactory $ruleFactory
          */
         $ruleFactory = $this->getFactory('rule');
+
+        /**
+         * @var ObjectManager $ruleObjectManager
+         */
         $ruleObjectManager = $this->getObjectManager('rule');
-        $expressionTrue = $this->getReference('expression-true');
-        $expressionFalse = $this->getReference('expression-false');
-        $expressionVariables = $this->getReference('expression-variables');
 
-        $ruleTrue = $ruleFactory
+        $cartOver1000Euros = $ruleFactory
             ->create()
-            ->setName('Rule true')
-            ->setCode('rule-true')
-            ->setEnabled(true)
-            ->setExpression($expressionTrue);
+            ->setName('cart_over_1000euros')
+            ->setExpression('cart.getAmount() > 1000');
 
-        $ruleObjectManager->persist($ruleTrue);
-        $this->addReference('rule-true', $ruleTrue);
+        $ruleObjectManager->persist($cartOver1000Euros);
 
-        $ruleFalse = $ruleFactory
+        $cartUnder10Products = $ruleFactory
             ->create()
-            ->setName('Rule false')
-            ->setCode('rule-false')
-            ->setEnabled(true)
-            ->setExpression($expressionFalse);
+            ->setName('cart_under_10products')
+            ->setExpression('cart.getQuantity() < 10');
 
-        $ruleObjectManager->persist($ruleFalse);
-        $this->addReference('rule-false', $ruleFalse);
+        $ruleObjectManager->persist($cartUnder10Products);
 
-        $ruleVariables = $ruleFactory
+        $cartValuableItems = $ruleFactory
             ->create()
-            ->setName('Rule variables')
-            ->setCode('rule-variables')
-            ->setEnabled(true)
-            ->setExpression($expressionVariables);
+            ->setName('cart_valuable_items')
+            ->setExpression('rule("cart_over_1000euros") and rule("cart_under_10products")');
 
-        $ruleObjectManager->persist($ruleVariables);
-        $this->addReference('rule-variables', $ruleVariables);
+        $ruleObjectManager->persist($cartValuableItems);
 
-        $ruleObjectManager->flush([
-            $ruleTrue,
-            $ruleFalse,
-            $ruleVariables,
-        ]);
-    }
-
-    /**
-     * This method must return an array of fixtures classes
-     * on which the implementing class depends on
-     *
-     * @return array
-     */
-    public function getDependencies()
-    {
-        return [
-            'Elcodi\Bundle\RuleBundle\DataFixtures\ORM\ExpressionData',
-        ];
+        $ruleObjectManager->flush();
     }
 }

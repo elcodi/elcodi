@@ -14,26 +14,19 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Component\Rule\Repository;
-
-use Doctrine\ORM\EntityRepository;
-use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
+namespace Elcodi\Component\Rule\ExpressionLanguage\Interfaces;
 
 /**
- * Class RuleRepository
+ * Interface ExpressionContextProviderInterface
+ *
+ * Provides context for ExpressionLanguage
  */
-class RuleRepository extends EntityRepository
+interface ExpressionContextProviderInterface
 {
     /**
-     * Return a rule by name
+     * Get provided context
      *
-     * @param $name
-     *
-     * @return null|RuleInterface
+     * @return array
      */
-    public function findOneByName($name)
-    {
-        return parent::findOneBy(['name' => $name]);
-    }
-
+    public function getContext();
 }

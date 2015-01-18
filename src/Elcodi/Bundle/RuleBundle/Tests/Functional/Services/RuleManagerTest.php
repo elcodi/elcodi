@@ -17,8 +17,8 @@
 namespace Elcodi\Bundle\RuleBundle\Tests\Functional\Services;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
-use Elcodi\Component\Rule\Entity\Interfaces\AbstractRuleInterface;
 use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
+use Elcodi\Component\Rule\Entity\Rule;
 use Elcodi\Component\Rule\Services\RuleManager;
 
 /**
@@ -79,92 +79,60 @@ class RuleManagerTest extends WebTestCase
     }
 
     /**
-     * Evaluate rule true
+     * Test if it can evaluate simple rules
+     */
+    public function testEvaluateSimpleRule()
+    {
+        $rule = new Rule();
+        $rule->setExpression('cart.getQuantity() < 10');
+
+        $cart = $this->getMock('Elcodi\Component\Cart\Entity\Interfaces\CartInterface');
+        $cart->expects($this->any())->method('getQuantity')->willReturn(5);
+
+        $context = [
+            'cart' => $cart,
+        ];
+
+        $this->assertTrue($this->ruleManager->evaluate($rule, $context));
+    }
+
+    /**
+     * Evaluate compound rules
      *
-     * @var RuleInterface $ruleTrue
-     */
-    public function testEvaluateRuleTrue()
-    {
-        $ruleTrue = $this
-            ->getRepository('abstract_rule')
-            ->findOneBy(array(
-                'code' => 'rule-group-true'
-            ));
-
-        $this->assertTrue($this->ruleManager->evaluateByRule($ruleTrue));
-    }
-
-    /**
-     * Evaluate rule false
+     * @dataProvider providerEvaluateCompoundRule
      *
-     * @var RuleInterface $ruleFalse
+     * @param integer $amount
+     * @param integer $quantity
+     * @param boolean $expected
      */
-    public function testEvaluateRuleFalse()
+    public function testEvaluateCompoundRule($amount, $quantity, $expected)
     {
-        $ruleFalse = $this
-            ->getRepository('abstract_rule')
-            ->findOneBy(array(
-                'code' => 'rule-false'
-            ));
+        $rule = new Rule();
+        $rule->setExpression('rule("cart_valuable_items")');
 
-        $this->assertFalse($this->ruleManager->evaluateByRule($ruleFalse));
+        $cart = $this->getMock('Elcodi\Component\Cart\Entity\Interfaces\CartInterface');
+        $cart->expects($this->any())->method('getAmount')->willReturn($amount);
+        $cart->expects($this->any())->method('getQuantity')->willReturn($quantity);
+
+        $context = [
+            'cart' => $cart,
+        ];
+
+        $this->assertEquals($expected, $this->ruleManager->evaluate($rule, $context));
     }
 
     /**
-     * Evaluate rule with variables
+     * Tests for "cart.getAmount() > 1000 and cart.getQuantity() < 10"
      *
-     * @var RuleInterface $ruleParameter
+     * @return array
      */
-    public function testEvaluateRuleParameter()
+    public function providerEvaluateCompoundRule()
     {
-        $ruleParameter = $this
-            ->getRepository('abstract_rule')
-            ->findOneBy(array(
-                'code' => 'rule-variables'
-            ));
-
-        /**
-         * @var AbstractRuleInterface $ruleParameter
-         */
-        $this->assertTrue($this->ruleManager->evaluateByRule($ruleParameter, array(
-            'parameter_value' => 'value',
-        )));
-    }
-
-    /**
-     * Evaluate rule with variable with exception
-     *
-     * @var RuleInterface $ruleParameter
-     */
-    public function testEvaluateRuleParameterException()
-    {
-        $ruleParameter = $this
-            ->getRepository('abstract_rule')
-            ->findOneBy(array(
-                'code' => 'rule-variables'
-            ));
-
-        /**
-         * @var AbstractRuleInterface $ruleParameter
-         */
-        $this->assertFalse($this->ruleManager->evaluateByRule($ruleParameter, array(
-            'parameter_another_value' => 'value',
-        )));
-    }
-
-    /**
-     * Evaluate rule true
-     */
-    public function testEvaluateRuleCodeTrue()
-    {
-        $this->assertTrue($this->ruleManager->evaluateByCode('rule-true'));
-    }
-
-    /**
-     * Evaluate rule false
-     */
-    public function testEvaluateRuleCodeFalse()
-    {
-        $this->assertFalse($this->ruleManager->evaluateByCode('rule-false'));
+       return [
+           [  100, 20, false ],
+           [ 1100, 20, false ],
+           [  100,  5, false ],
+           [ 1100,  5, true  ],
+       ];
     }
 }
