@@ -51,7 +51,7 @@ class CartCouponEventDispatcher extends AbstractEventDispatcher
     }
 
     /**
-     * Dispatch event just before a coupon is removed into a Cart
+     * Dispatch event just before a coupon is removed from a Cart
      *
      * @param CartCouponInterface $cartCoupon CartCoupon to remove
      *
@@ -73,10 +73,10 @@ class CartCouponEventDispatcher extends AbstractEventDispatcher
     }
 
     /**
-     * Dispatch event just before a coupon is removed into a Cart
+     * Dispatch event when a coupon application is rejected
      *
-     * @param CartInterface   $cart   Cart where to apply the coupon
-     * @param CouponInterface $coupon Coupon to be applied
+     * @param CartInterface   $cart   Cart where the coupon is going to be applied
+     * @param CouponInterface $coupon Rejected coupon
      *
      * @return $this Self object
      */

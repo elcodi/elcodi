@@ -23,7 +23,7 @@ use Elcodi\Component\Core\EventDispatcher\Abstracts\AbstractEventDispatcher;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 
 /**
- * Class CartOrderEventDIspatcher
+ * Class OrderCouponEventDispatcher
  */
 class OrderCouponEventDispatcher extends AbstractEventDispatcher
 {

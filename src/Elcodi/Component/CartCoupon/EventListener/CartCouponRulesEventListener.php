@@ -18,7 +18,6 @@ namespace Elcodi\Component\CartCoupon\EventListener;
 
 use Elcodi\Component\CartCoupon\Event\CartCouponOnApplyEvent;
 use Elcodi\Component\CartCoupon\EventDispatcher\CartCouponEventDispatcher;
-use Elcodi\Component\CartCoupon\Exception\CouponRulesNotValidateException;
 use Elcodi\Component\CartCoupon\Services\CartCouponRuleManager;
 
 /**
@@ -43,8 +42,8 @@ class CartCouponRulesEventListener
     /**
      * Construct method
      *
-     * @param CartCouponRuleManager     $cartCouponRuleManager     CartCouponRuleManager
-     * @param CartCouponEventDispatcher $cartCouponEventDispatcher $cartCouponEventDispatcher
+     * @param CartCouponRuleManager     $cartCouponRuleManager     Manager for cart coupon rules
+     * @param CartCouponEventDispatcher $cartCouponEventDispatcher Dispatcher for cart coupon events
      */
     public function __construct(
         CartCouponRuleManager $cartCouponRuleManager,
@@ -59,8 +58,6 @@ class CartCouponRulesEventListener
      * Applies Coupon in Cart, and flushes it
      *
      * @param CartCouponOnApplyEvent $event Event
-     *
-     * @throws CouponRulesNotValidateException Invalid rules
      */
     public function onCartCouponApply(CartCouponOnApplyEvent $event)
     {

@@ -468,5 +468,4 @@ class Coupon implements CouponInterface
 
         return $this;
     }
-
 }

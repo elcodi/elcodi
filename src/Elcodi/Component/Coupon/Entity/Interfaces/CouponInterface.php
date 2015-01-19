@@ -67,6 +67,8 @@ interface CouponInterface
 
     /**
      * Set type
+     * @see ElcodiCouponTypes::TYPE_AMOUNT
+     * @see ElcodiCouponTypes::TYPE_PERCENT
      *
      * @param int $type Type
      *
@@ -83,6 +85,8 @@ interface CouponInterface
 
     /**
      * Sets Enforcement
+     * @see ElcodiCouponTypes::ENFORCEMENT_AUTOMATIC
+     * @see ElcodiCouponTypes::ENFORCEMENT_MANUAL
      *
      * @param int $enforcement Enforcement
      *
