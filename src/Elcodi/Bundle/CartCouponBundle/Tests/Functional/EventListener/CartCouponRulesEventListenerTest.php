@@ -19,7 +19,6 @@ namespace Elcodi\Bundle\CartCouponBundle\Tests\Functional\EventListener;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
-use Elcodi\Component\Rule\Entity\Interfaces\ExpressionInterface;
 use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
 
 /**
@@ -35,7 +34,7 @@ class CartCouponRulesEventListenerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.cart_coupon.event_listener.cart_coupon_rules'
+            'elcodi.core.cart_coupon.event_listener.cart_coupon_rules',
         ];
     }
 
@@ -55,44 +54,37 @@ class CartCouponRulesEventListenerTest extends WebTestCase
     /**
      * Tests coupon rules when all rules validate
      *
+     * @param array $expressions   One or more expressions, only the last one will be checked
+     * @param int   $couponsNumber Number of coupons that should apply
+     *
      * @dataProvider dataOnCartCouponApplyValidate
      */
-    public function testOnCartCouponApplyValidate($expressions, $couponsNumber)
+    public function testOnCartCouponApplyValidate(array $expressions, $couponsNumber)
     {
         /**
          * @var CartInterface $cart
          * @var CouponInterface $coupon
-         * @var ExpressionInterface $expression
          * @var RuleInterface $rule
          */
         $cart = $this->find('cart', 1);
         $coupon = $this->find('coupon', 1);
 
-        if (!is_array($expressions)) {
+        $ruleFactory = $this->getFactory('rule');
+        $ruleObjectManager = $this->getObjectManager('rule');
 
-            $expressions = array($expressions);
-        }
+        foreach ($expressions as $name => $expression) {
 
-        foreach ($expressions as $expression) {
-
-            $expression = $this
-                ->get('elcodi.factory.expression')
+            $rule = $ruleFactory
                 ->create()
+                ->setName($name)
                 ->setExpression($expression);
 
-            $rule = $this
-                ->get('elcodi.factory.rule')
-                ->create()
-                ->setName(microtime())
-                ->setCode(microtime())
-                ->setExpression($expression);
-
-            $this
-                ->getObjectManager('rule')
-                ->persist($rule);
-
-            $coupon->addRule($rule);
+            $ruleObjectManager->persist($rule);
         }
+
+        $ruleObjectManager->flush();
+
+        $coupon->setRule($rule);
 
         $cartCouponManager = $this->get('elcodi.cart_coupon_manager');
 
@@ -115,21 +107,30 @@ class CartCouponRulesEventListenerTest extends WebTestCase
     public function dataOnCartCouponApplyValidate()
     {
         return [
-            ['true == true', 1],
-            ['cart.getId() == 1', 1],
-            ['coupon.getId() == 1', 1],
-            ['true == false', 0],
-            ['null', 0],
-            ['false', 0],
-            ['true', 1],
-            ['cart.getId() == 2', 0],
-            ['coupon.getId() == 2', 0],
-            [['true == true', '1 == 1'], 1],
-            [['cart.getId() == 1', '1 == 1'], 1],
-            [['cart.getId() == 1', 'cart.getId() == coupon.getId()'], 1],
-            [['true == false', '1 == 1'], 0],
-            [['cart.getId() == 1', '1 == 2'], 0],
-            [['cart.getId() == 3', 'cart.getId() != coupon.getId()'], 0],
+            [['true == true'], 1],
+            [['cart.getId() == 1'], 1],
+            [['coupon.getId() == 1'], 1],
+            [['true == false'], 0],
+            [['null'], 0],
+            [['false'], 0],
+            [['true'], 1],
+            [['cart.getId() == 2'], 0],
+            [['coupon.getId() == 2'], 0],
+            [['true == true', '1 == 1', 'rule(0) and rule(1)'], 1],
+            [['cart.getId() == 1', '1 == 1', 'rule(0) and rule(1)'], 1],
+            [['cart.getId() == 1', 'cart.getId() == coupon.getId()', 'rule(0) and rule(1)'], 1],
+            [['true == false', '1 == 1', 'rule(0) and rule(1)'], 0],
+            [['true == false', '1 == 1', 'rule(0) or rule(1)'], 1],
+            [['cart.getId() == 1', '1 == 2', 'rule(0) and rule(1)'], 0],
+            [['cart.getId() == 3', 'cart.getId() != coupon.getId()', 'rule(0) and rule(1)'], 0],
+            [
+                [
+                    'few_products' => 'cart.getQuantity() < 5',
+                    'low_cost' => 'cart.getAmount() < 10',
+                    'rule("few_products") and rule("low_cost")'
+                ],
+                1
+            ],
         ];
     }
 }

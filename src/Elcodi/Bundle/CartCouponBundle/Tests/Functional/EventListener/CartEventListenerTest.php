@@ -19,7 +19,6 @@ namespace Elcodi\Bundle\CartCouponBundle\Tests\Functional\EventListener;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
-use Elcodi\Component\Rule\Entity\Interfaces\ExpressionInterface;
 use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
 
 /**
@@ -45,7 +44,7 @@ class CartEventListenerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.cart_coupon.event_listener.cart'
+            'elcodi.core.cart_coupon.event_listener.cart',
         ];
     }
 
@@ -86,12 +85,8 @@ class CartEventListenerTest extends WebTestCase
          */
         $rule = $this->find('rule', $ruleId);
 
-        $expressionFalse = $this
-            ->get('elcodi.factory.expression')
-            ->create()
-            ->setExpression('false');
+        $rule->setExpression('false');
 
-        $rule->setExpression($expressionFalse);
         $this
             ->getObjectManager('rule')
             ->flush();
@@ -146,29 +141,22 @@ class CartEventListenerTest extends WebTestCase
          *
          * @var CartInterface $cart
          * @var CouponInterface $coupon
-         * @var ExpressionInterface $expression
          * @var RuleInterface $rule
          */
         $cart = $this->find('cart', 1);
         $coupon = $this->find('coupon', 1);
 
-        $expressionTrue = $this
-            ->get('elcodi.factory.expression')
-            ->create()
-            ->setExpression('true');
-
         $rule = $this
             ->get('elcodi.factory.rule')
             ->create()
-            ->setName(microtime())
-            ->setCode(microtime())
-            ->setExpression($expressionTrue);
+            ->setName('rule')
+            ->setExpression('true');
 
         $this
             ->getObjectManager('rule')
             ->persist($rule);
 
-        $coupon->addRule($rule);
+        $coupon->setRule($rule);
 
         $this
             ->get('elcodi.cart_coupon_manager')

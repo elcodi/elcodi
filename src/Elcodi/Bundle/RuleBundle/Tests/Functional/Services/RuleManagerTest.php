@@ -17,7 +17,6 @@
 namespace Elcodi\Bundle\RuleBundle\Tests\Functional\Services;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
-use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
 use Elcodi\Component\Rule\Entity\Rule;
 use Elcodi\Component\Rule\Services\RuleManager;
 
