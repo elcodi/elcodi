@@ -57,13 +57,18 @@ class CartCouponRuleManager
         CouponInterface $coupon
     )
     {
-        $rules = $coupon->getRules();
+        $rule = $coupon->getRule();
 
-        return $rules->forAll(function ($_, AbstractRuleInterface $rule) use ($cart, $coupon) {
-            return $this->ruleManager->evaluateByRule($rule, [
+        if (null === $rule) {
+            return false;
+        }
+
+        return $this->ruleManager->evaluate(
+            $rule,
+            [
                 'cart'   => $cart,
                 'coupon' => $coupon,
-            ]);
-        });
+            ]
+        );
     }
 }
