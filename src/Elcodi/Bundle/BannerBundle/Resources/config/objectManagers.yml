@@ -4,15 +4,9 @@ services:
     # Object Managers
     #
     elcodi.object_manager.banner:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.banner.entity.banner.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.banner.entity.banner.class% ]
 
     elcodi.object_manager.banner_zone:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.banner.entity.banner_zone.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.banner.entity.banner_zone.class% ]

@@ -6,18 +6,12 @@ services:
     # Repository for entity node
     #
     elcodi.repository.menu_node:
-        class: Doctrine\Common\Persistence\ObjectRepository
-        factory_service: elcodi.repository_provider
-        factory_method: getRepositoryByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.menu.entity.menu_node.class%
+        parent: elcodi.abstract_repository
+        arguments: [ %elcodi.core.menu.entity.menu_node.class% ]
 
     #
     # Repository for entity menu
     #
     elcodi.repository.menu:
-        class: Doctrine\Common\Persistence\ObjectRepository
-        factory_service: elcodi.repository_provider
-        factory_method: getRepositoryByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.menu.entity.menu.class%
+        parent: elcodi.abstract_repository
+        arguments: [ %elcodi.core.menu.entity.menu.class% ]

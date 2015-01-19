@@ -8,18 +8,12 @@ services:
     # Repository for entity tax
     #
     elcodi.repository.tax:
-        class: Doctrine\Common\Persistence\ObjectRepository
-        factory_service: elcodi.repository_provider
-        factory_method: getRepositoryByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.tax.entity.tax.class%
+        parent: elcodi.abstract_repository
+        arguments: [ %elcodi.core.tax.entity.tax.class% ]
 
     #
     # Repository for entity tax group
     #
     elcodi.repository.tax_group:
-        class: Doctrine\Common\Persistence\ObjectRepository
-        factory_service: elcodi.repository_provider
-        factory_method: getRepositoryByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.tax.entity.tax_group.class%
+        parent: elcodi.abstract_repository
+        arguments: [ %elcodi.core.tax.entity.tax_group.class% ]

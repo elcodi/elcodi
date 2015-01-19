@@ -4,8 +4,5 @@ services:
     # Object Managers
     #
     elcodi.object_manager.image:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.media.entity.image.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.media.entity.image.class% ]

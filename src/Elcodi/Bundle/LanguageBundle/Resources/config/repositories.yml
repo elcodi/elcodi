@@ -8,8 +8,5 @@ services:
     # Repository for entity language
     #
     elcodi.repository.language:
-        class: Doctrine\Common\Persistence\ObjectRepository
-        factory_service: elcodi.repository_provider
-        factory_method: getRepositoryByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.language.entity.language.class%
+        parent: elcodi.abstract_repository
+        arguments: [ %elcodi.core.language.entity.language.class% ]

@@ -4,15 +4,9 @@ services:
     # Object Managers
     #
     elcodi.object_manager.tax:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.tax.entity.tax.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.tax.entity.tax.class% ]
 
     elcodi.object_manager.tax_group:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.tax.entity.tax_group.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.tax.entity.tax_group.class% ]

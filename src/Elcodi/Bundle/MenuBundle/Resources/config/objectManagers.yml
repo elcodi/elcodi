@@ -4,15 +4,9 @@ services:
     # Object Managers
     #
     elcodi.object_manager.menu:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.menu.entity.menu.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.menu.entity.menu.class% ]
 
     elcodi.object_manager.menu_node:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.menu.entity.menu_node.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.menu.entity.menu_node.class% ]

@@ -4,50 +4,29 @@ services:
     # Object Managers
     #
     elcodi.object_manager.country:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.geo.entity.country.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.geo.entity.country.class% ]
 
     elcodi.object_manager.state:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.geo.entity.state.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.geo.entity.state.class% ]
 
     elcodi.object_manager.province:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.geo.entity.province.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.geo.entity.province.class% ]
 
     elcodi.object_manager.city:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.geo.entity.city.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.geo.entity.city.class% ]
 
     elcodi.object_manager.postal_code:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.geo.entity.postal_code.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.geo.entity.postal_code.class% ]
 
     elcodi.object_manager.address:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.geo.entity.address.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.geo.entity.address.class% ]
 
     elcodi.object_manager.zone:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.geo.entity.zone.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.geo.entity.zone.class% ]

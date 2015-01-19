@@ -1,0 +1,19 @@
+services:
+
+    #
+    # Abstract Doctrine ObjectManager
+    #
+    elcodi.abstract_manager:
+        class: Doctrine\Common\Persistence\ObjectManager
+        factory_service: elcodi.manager_provider
+        factory_method: getManagerByEntityNamespace
+        abstract: true
+
+    #
+    # Abstract Doctrine Repository
+    #
+    elcodi.abstract_repository:
+        class: Doctrine\Common\Persistence\ObjectRepository
+        factory_service: elcodi.repository_provider
+        factory_method: getRepositoryByEntityNamespace
+        abstract: true

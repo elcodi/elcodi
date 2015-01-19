@@ -4,22 +4,13 @@ services:
     # Object Managers
     #
     elcodi.object_manager.referral_hash:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.referral_program.entity.referral_hash.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.referral_program.entity.referral_hash.class% ]
 
     elcodi.object_manager.referral_line:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.referral_program.entity.referral_line.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.referral_program.entity.referral_line.class% ]
 
     elcodi.object_manager.referral_rule:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.referral_program.entity.referral_rule.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.referral_program.entity.referral_rule.class% ]
