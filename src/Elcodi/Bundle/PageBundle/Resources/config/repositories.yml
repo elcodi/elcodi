@@ -8,8 +8,6 @@ services:
     # Repository for entity page
     #
     elcodi.repository.page:
+        parent: elcodi.abstract_repository
         class: %elcodi.core.page.repository.page.class%
-        factory_service: elcodi.repository_provider
-        factory_method: getRepositoryByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.page.entity.page.class%
+        arguments: [ %elcodi.core.page.entity.page.class% ]

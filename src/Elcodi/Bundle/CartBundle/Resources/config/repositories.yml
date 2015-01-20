@@ -8,48 +8,33 @@ services:
     # Repository for entity cart
     #
     elcodi.repository.cart:
-        class: Doctrine\Common\Persistence\ObjectRepository
-        factory_service: elcodi.repository_provider
-        factory_method: getRepositoryByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.cart.entity.cart.class%
+        parent: elcodi.abstract_repository
+        arguments: [ %elcodi.core.cart.entity.cart.class% ]
 
     #
     # Repository for entity order
     #
     elcodi.repository.order:
-        class: Doctrine\Common\Persistence\ObjectRepository
-        factory_service: elcodi.repository_provider
-        factory_method: getRepositoryByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.cart.entity.order.class%
+        parent: elcodi.abstract_repository
+        arguments: [ %elcodi.core.cart.entity.order.class% ]
 
     #
     # Repository for entity cart_line
     #
     elcodi.repository.cart_line:
-        class: Doctrine\Common\Persistence\ObjectRepository
-        factory_service: elcodi.repository_provider
-        factory_method: getRepositoryByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.cart.entity.cart_line.class%
+        parent: elcodi.abstract_repository
+        arguments: [ %elcodi.core.cart.entity.cart_line.class% ]
 
     #
     # Repository for entity order_line
     #
     elcodi.repository.order_line:
-        class: Doctrine\Common\Persistence\ObjectRepository
-        factory_service: elcodi.repository_provider
-        factory_method: getRepositoryByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.cart.entity.order_line.class%
+        parent: elcodi.abstract_repository
+        arguments: [ %elcodi.core.cart.entity.order_line.class% ]
 
     #
     # Repository for entity order_history
     #
     elcodi.repository.order_state_line:
-        class: Doctrine\Common\Persistence\ObjectRepository
-        factory_service: elcodi.repository_provider
-        factory_method: getRepositoryByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.cart.entity.order_state_line.class%
+        parent: elcodi.abstract_repository
+        arguments: [ %elcodi.core.cart.entity.order_state_line.class% ]

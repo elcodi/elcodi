@@ -8,38 +8,26 @@ services:
     # Repository for entity product
     #
     elcodi.repository.product:
-        class: Doctrine\Common\Persistence\ObjectRepository
-        factory_service: elcodi.repository_provider
-        factory_method: getRepositoryByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.product.entity.product.class%
+        parent: elcodi.abstract_repository
+        arguments: [ %elcodi.core.product.entity.product.class% ]
 
     #
     # Repository for Variant entities
     #
     elcodi.repository.product_variant:
-        class: Doctrine\Common\Persistence\ObjectRepository
-        factory_service: elcodi.repository_provider
-        factory_method: getRepositoryByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.product.entity.product_variant.class%
+        parent: elcodi.abstract_repository
+        arguments: [ %elcodi.core.product.entity.product_variant.class% ]
 
     #
     # Repository for entity category
     #
     elcodi.repository.category:
-        class: Doctrine\Common\Persistence\ObjectRepository
-        factory_service: elcodi.repository_provider
-        factory_method: getRepositoryByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.product.entity.category.class%
+        parent: elcodi.abstract_repository
+        arguments: [ %elcodi.core.product.entity.category.class% ]
 
     #
     # Repository for entity manufacturer
     #
     elcodi.repository.manufacturer:
-        class: Doctrine\Common\Persistence\ObjectRepository
-        factory_service: elcodi.repository_provider
-        factory_method: getRepositoryByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.product.entity.manufacturer.class%
+        parent: elcodi.abstract_repository
+        arguments: [ %elcodi.core.product.entity.manufacturer.class% ]

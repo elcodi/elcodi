@@ -4,15 +4,9 @@ services:
     # Object Managers
     #
     elcodi.object_manager.currency:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.currency.entity.currency.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.currency.entity.currency.class% ]
 
     elcodi.object_manager.currency_exchange_rate:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.currency.entity.currency_exchange_rate.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.currency.entity.currency_exchange_rate.class% ]

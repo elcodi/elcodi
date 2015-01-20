@@ -94,6 +94,7 @@ class ElcodiCoreExtension extends AbstractExtension
             'eventDispatchers',
             'generators',
             'encoders',
+            'services',
         ];
     }
 

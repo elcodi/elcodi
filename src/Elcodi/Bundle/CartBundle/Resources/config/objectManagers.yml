@@ -4,36 +4,21 @@ services:
     # Object Managers
     #
     elcodi.object_manager.cart:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.cart.entity.cart.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.cart.entity.cart.class% ]
 
     elcodi.object_manager.cart_line:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.cart.entity.cart.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.cart.entity.cart.class% ]
 
     elcodi.object_manager.order:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.cart.entity.order.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.cart.entity.order.class% ]
 
     elcodi.object_manager.order_line:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.cart.entity.order_line.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.cart.entity.order_line.class% ]
 
     elcodi.object_manager.order_state_line:
-        class: Doctrine\Common\Persistence\ObjectManager
-        factory_service: elcodi.manager_provider
-        factory_method: getManagerByEntityNamespace
-        arguments:
-            entity_namespace: %elcodi.core.cart.entity.order_state_line.class%
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.cart.entity.order_state_line.class% ]
