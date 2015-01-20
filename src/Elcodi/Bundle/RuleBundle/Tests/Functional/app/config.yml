@@ -1,5 +1,6 @@
 imports:
     - { resource: parameters.yml }
+    - { resource: @ElcodiBambooBundle/Resources/config/store.yml }
 
 parameters:
     elcodi.core.rule.test.parameter: value

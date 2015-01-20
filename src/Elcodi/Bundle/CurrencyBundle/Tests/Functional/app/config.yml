@@ -1,5 +1,6 @@
 imports:
     - { resource: parameters.yml }
+    - { resource: @ElcodiBambooBundle/Resources/config/store.yml }
 
 framework:
     test:            ~
