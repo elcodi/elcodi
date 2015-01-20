@@ -51,22 +51,6 @@ interface AttributeInterface
     public function getName();
 
     /**
-     * Sets attribute display name
-     *
-     * @param string $displayName
-     *
-     * @return AttributeInterface
-     */
-    public function setDisplayName($displayName);
-
-    /**
-     * Return attribute display name
-     *
-     * @return string
-     */
-    public function getDisplayName();
-
-    /**
      * Sets attribute values
      *
      * @param Collection $values

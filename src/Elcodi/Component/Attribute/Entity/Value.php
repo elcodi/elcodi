@@ -18,8 +18,6 @@ namespace Elcodi\Component\Attribute\Entity;
 
 use Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface;
 use Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface;
-use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
-use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 
 /**
@@ -27,88 +25,64 @@ use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
  */
 class Value implements ValueInterface
 {
-    use
-        IdentifiableTrait,
-        DateTimeTrait,
-        EnabledTrait;
+    use IdentifiableTrait;
 
     /**
      * @var string
      *
-     * Value name
+     * Value content
      */
-    protected $name;
-
-    /**
-     * @var string
-     *
-     * Value display name
-     */
-    protected $displayName;
+    protected $value;
 
     /**
      * @var AttributeInterface
      *
-     * The Attribute who owns this value
+     * Attribute
      */
     protected $attribute;
 
     /**
-     * Sets this value name
+     * Get Value
      *
-     * @param string $name
-     *
-     * @return ValueInterface
+     * @return string Value
      */
-    public function setName($name)
+    public function getValue()
     {
-        $this->name = $name;
+        return $this->value;
+    }
+
+    /**
+     * Sets Value
+     *
+     * @param string $value Value
+     *
+     * @return $this Self object
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
 
         return $this;
     }
 
     /**
-     * Returns this value name
+     * Get Attribute
      *
-     * @return string
+     * @return AttributeInterface Attribute
      */
-    public function getName()
+    public function getAttribute()
     {
-        return $this->name;
+        return $this->attribute;
     }
 
     /**
-     * Sets this value display name
+     * Sets Attribute
      *
-     * @param string $displayName
+     * @param AttributeInterface $attribute Attribute
      *
-     * @return ValueInterface
+     * @return $this Self object
      */
-    public function setDisplayName($displayName)
-    {
-        $this->displayName = $displayName;
-
-        return $this;
-    }
-
-    /**
-     * Return value display name
-     *
-     * @return string
-     */
-    public function getDisplayName()
-    {
-        return $this->displayName;
-    }
-
-    /**
-     * Sets an Attribute that owns this Value
-     *
-     * @param AttributeInterface $attribute
-     *
-     * @return ValueInterface
-     */
-    public function setAttribute(AttributeInterface $attribute)
+    public function setAttribute($attribute)
     {
         $this->attribute = $attribute;
 
@@ -116,13 +90,12 @@ class Value implements ValueInterface
     }
 
     /**
-     * Gets the attribute that owns this Value
+     * String representation of a value
      *
-     * @return AttributeInterface
+     * @return string String representation
      */
-    public function getAttribute()
+    public function __toString()
     {
-        return $this->attribute;
+        return $this->getValue();
     }
-
 }

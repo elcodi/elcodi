@@ -42,13 +42,6 @@ class Attribute implements AttributeInterface
     protected $name;
 
     /**
-     * Attribute display value
-     *
-     * @var string
-     */
-    protected $displayName;
-
-    /**
      * Values for this Attribute
      *
      * @var Collection
@@ -75,30 +68,6 @@ class Attribute implements AttributeInterface
     public function setName($name)
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Return attribute display name
-     *
-     * @return string
-     */
-    public function getDisplayName()
-    {
-        return $this->displayName;
-    }
-
-    /**
-     * Sets attribute display name
-     *
-     * @param string $displayName
-     *
-     * @return AttributeInterface
-     */
-    public function setDisplayName($displayName)
-    {
-        $this->displayName = $displayName;
 
         return $this;
     }

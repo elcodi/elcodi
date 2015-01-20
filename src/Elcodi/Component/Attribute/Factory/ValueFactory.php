@@ -36,11 +36,6 @@ class ValueFactory extends AbstractFactory
          */
         $classNamespace = $this->getEntityNamespace();
         $value = new $classNamespace();
-        $value
-            ->setName('')
-            ->setDisplayName('')
-            ->setEnabled(false)
-            ->setCreatedAt(new \DateTime());
 
         return $value;
     }

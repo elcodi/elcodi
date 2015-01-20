@@ -16,64 +16,42 @@
 
 namespace Elcodi\Component\Attribute\Entity\Interfaces;
 
-use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
-use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
  * Interface ValueInterface
  */
-interface ValueInterface
-    extends
-    IdentifiableInterface,
-    EnabledInterface,
-    DateTimeInterface
+interface ValueInterface extends IdentifiableInterface
 {
     /**
-     * Sets this value name
+     * Get Value
      *
-     * @param string $name
-     *
-     * @return ValueInterface
+     * @return string Value
      */
-    public function setName($name);
+    public function getValue();
 
     /**
-     * Returns this value name
+     * Sets Value
      *
-     * @return string
+     * @param string $value Value
+     *
+     * @return $this Self object
      */
-    public function getName();
+    public function setValue($value);
 
     /**
-     * Sets this value display name
+     * Get Attribute
      *
-     * @param string $displayName
-     *
-     * @return ValueInterface
-     */
-    public function setDisplayName($displayName);
-
-    /**
-     * Return this value display name
-     *
-     * @return string
-     */
-    public function getDisplayName();
-
-    /**
-     * Sets an Attribute that owns this Value
-     *
-     * @param AttributeInterface $attribute
-     *
-     * @return ValueInterface
-     */
-    public function setAttribute(AttributeInterface $attribute);
-
-    /**
-     * Gets the attribute that owns this Value
-     *
-     * @return AttributeInterface
+     * @return AttributeInterface Attribute
      */
     public function getAttribute();
+
+    /**
+     * Sets Attribute
+     *
+     * @param AttributeInterface $attribute Attribute
+     *
+     * @return $this Self object
+     */
+    public function setAttribute($attribute);
 }
