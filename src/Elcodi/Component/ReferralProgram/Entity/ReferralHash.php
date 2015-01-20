@@ -129,6 +129,6 @@ class ReferralHash implements ReferralHashInterface
      */
     public function __toString()
     {
-        return (string)$this->referrer;
+        return (string) $this->referrer;
     }
 }

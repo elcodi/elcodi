@@ -1,0 +1,49 @@
+{
+    "name": "elcodi/metric",
+    "description": "Elcodi Metric Component",
+    "keywords": [
+        "elcodi",
+        "Metric",
+        "ecommerce"
+    ],
+    "homepage": "https://github.com/elcodi/Metric",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "The Awesome Elcodi Community",
+            "homepage": "https://github.com/elcodi/Metric/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "doctrine/common": "~2.4",
+        "doctrine/orm": "~2.4",
+
+        "elcodi/core": "~0.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\Component\\Metric\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.5-dev"
+        }
+    }
+}

@@ -87,7 +87,7 @@ class EventAdapter extends Event implements EventInterface
      */
     public function getContent()
     {
-        return (string)$this->content;
+        return (string) $this->content;
     }
 
     /**

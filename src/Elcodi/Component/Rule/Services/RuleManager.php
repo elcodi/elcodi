@@ -71,6 +71,8 @@ class RuleManager implements RuleManagerInterface
             $context
         );
 
-        return $this->expressionLanguage->evaluate($rule->getExpression(), $context);
+        return $this
+            ->expressionLanguage
+            ->evaluate($rule->getExpression(), $context);
     }
 }

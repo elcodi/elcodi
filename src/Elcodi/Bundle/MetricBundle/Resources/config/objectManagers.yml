@@ -1,0 +1,11 @@
+services:
+
+    #
+    # Object Managers
+    #
+    elcodi.object_manager.entry:
+        class: Doctrine\Common\Persistence\ObjectManager
+        factory_service: elcodi.manager_provider
+        factory_method: getManagerByEntityNamespace
+        arguments:
+            entity_namespace: %elcodi.core.metric.entity.metric_entry.class%

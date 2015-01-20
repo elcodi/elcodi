@@ -1,0 +1,5 @@
+#
+# Store related configuration
+#
+elcodi_bamboo:
+    store_tracker: 47832974

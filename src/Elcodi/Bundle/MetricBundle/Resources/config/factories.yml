@@ -1,0 +1,11 @@
+services:
+
+    #
+    # Factories
+    #
+
+    #
+    # Factories
+    #
+    elcodi.factory.metric_entry:
+        class: %elcodi.factory.metric_entry.class%
