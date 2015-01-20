@@ -88,7 +88,7 @@ class ProductExtension extends Twig_Extension
                 $productName .= $separator .
                     $option->getAttribute()->getName() .
                     ' ' .
-                    $option->getName();
+                    $option->getValue();
             }
         }
 

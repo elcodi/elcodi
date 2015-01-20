@@ -13,11 +13,6 @@ Elcodi\Component\Attribute\Entity\Attribute:
             type: string
             length: 255
             nullable: false
-        displayName:
-            column: display_name
-            type: string
-            length: 255
-            nullable: true
         createdAt:
             column: created_at
             type: datetime
@@ -34,6 +29,7 @@ Elcodi\Component\Attribute\Entity\Attribute:
             targetEntity: Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface
             mappedBy: attribute
             orphanRemoval: true
+            cascade: ["persist", "remove"]
 
     lifecycleCallbacks:
         preUpdate: [loadUpdateAt]

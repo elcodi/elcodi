@@ -155,7 +155,7 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            'Elcodi\Bundle\AttributeBundle\DataFixtures\ORM\ValueData',
+            'Elcodi\Bundle\AttributeBundle\DataFixtures\ORM\AttributeData',
             'Elcodi\Bundle\CurrencyBundle\DataFixtures\ORM\CurrencyData',
             'Elcodi\Bundle\ProductBundle\DataFixtures\ORM\ProductData',
         ];

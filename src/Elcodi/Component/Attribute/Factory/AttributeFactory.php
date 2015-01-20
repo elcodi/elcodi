@@ -39,9 +39,7 @@ class AttributeFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $attribute = new $classNamespace();
         $attribute
-            ->setName('')
-            ->setDisplayName('')
-            ->setEnabled(false)
+            ->setEnabled(true)
             ->setValues(new ArrayCollection())
             ->setCreatedAt(new \DateTime());
 
