@@ -6,11 +6,3 @@ services:
     elcodi.object_manager.rule:
         parent: elcodi.abstract_manager
         arguments: [ %elcodi.core.rule.entity.rule.class% ]
-
-    elcodi.object_manager.rule_group:
-        parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.rule.entity.rule_group.class% ]
-
-    elcodi.object_manager.expression:
-        parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.rule.entity.expression.class% ]

@@ -1,24 +1,14 @@
 parameters:
 
     #
-    # Test
-    #
-    elcodi.core.rule.test.parameter: value
-
-    #
     # Entities
     #
-    elcodi.core.rule.entity.abstract_rule.class: Elcodi\Component\Rule\Entity\Abstracts\AbstractRule
     elcodi.core.rule.entity.rule.class: Elcodi\Component\Rule\Entity\Rule
-    elcodi.core.rule.entity.rule_group.class: Elcodi\Component\Rule\Entity\RuleGroup
-    elcodi.core.rule.entity.expression.class: Elcodi\Component\Rule\Entity\Expression
 
     #
     # Factories
     #
     elcodi.core.rule.factory.rule.class: Elcodi\Component\Rule\Factory\RuleFactory
-    elcodi.core.rule.factory.rule_group.class: Elcodi\Component\Rule\Factory\RuleGroupFactory
-    elcodi.core.rule.factory.expression.class: Elcodi\Component\Rule\Factory\ExpressionFactory
 
     #
     # Managers
@@ -33,8 +23,6 @@ parameters:
     #
     # Configurations
     #
-    elcodi.core.rule.configuration.expression_language_collection.class: Elcodi\Component\Rule\Configuration\ExpressionLanguageConfigurationCollection
-    elcodi.core.rule.configuration.context_collection.class: Elcodi\Component\Rule\Configuration\ContextConfigurationCollection
-    elcodi.core.rule.configuration.expression_language.class: Elcodi\Component\Rule\Configuration\ExpressionLanguageConfiguration
-    elcodi.core.rule.configuration.context.class: Elcodi\Component\Rule\Configuration\ContextConfiguration
-    elcodi.core.rule.configuration.rule_manager.class: Elcodi\Component\Rule\Configuration\RuleManagerConfiguration
+    elcodi.core.rule.context_collector.class: Elcodi\Component\Rule\ExpressionLanguage\Context\ContextCollector
+    elcodi.core.rule.expression_language.container_provider.class: Elcodi\Component\Rule\ExpressionLanguage\Provider\ContainerProvider
+    elcodi.core.rule.expression_language.rule_provider.class: Elcodi\Component\Rule\ExpressionLanguage\Provider\RuleProvider

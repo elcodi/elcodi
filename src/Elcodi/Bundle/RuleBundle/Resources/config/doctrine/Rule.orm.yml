@@ -3,7 +3,19 @@ Elcodi\Component\Rule\Entity\Rule:
     repositoryClass: Elcodi\Component\Rule\Repository\RuleRepository
     table: rule
 
-    oneToOne:
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            column: name
+            type: string
+            length: 64
+            nullable: false
+            unique: true
         expression:
-            targetEntity: Elcodi\Component\Rule\Entity\Interfaces\ExpressionInterface
-            cascade: [ "all" ]
+            column: expression
+            type: text
+            nullable: false

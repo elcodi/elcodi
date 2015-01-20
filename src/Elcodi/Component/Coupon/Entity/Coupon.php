@@ -24,7 +24,7 @@ use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
-use Elcodi\Component\Rule\Entity\Traits\RuleAwareTrait;
+use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
 
 /**
  * Coupon
@@ -35,8 +35,7 @@ class Coupon implements CouponInterface
         IdentifiableTrait,
         DateTimeTrait,
         EnabledTrait,
-        ValidIntervalTrait,
-        RuleAwareTrait;
+        ValidIntervalTrait;
 
     /**
      * @var string
@@ -135,6 +134,13 @@ class Coupon implements CouponInterface
      * Minimum purchase currency
      */
     protected $minimumPurchaseCurrency;
+
+    /**
+     * @var RuleInterface
+     *
+     * Rule to check to be applicable
+     */
+    protected $rule;
 
     /**
      * Set code
@@ -413,6 +419,30 @@ class Coupon implements CouponInterface
     }
 
     /**
+     * Set rule Rule to check for applicability
+     *
+     * @param RuleInterface $rule New rule
+     *
+     * @return $this Self object
+     */
+    public function setRule(RuleInterface $rule = null)
+    {
+        $this->rule = $rule;
+
+        return $this;
+    }
+
+    /**
+     * Get rule to check for applicability
+     *
+     * @return RuleInterface Current rule
+     */
+    public function getRule()
+    {
+        return $this->rule;
+    }
+
+    /**
      * String representation of Coupon
      *
      * @return string
@@ -438,5 +468,4 @@ class Coupon implements CouponInterface
 
         return $this;
     }
-
 }

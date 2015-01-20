@@ -5,10 +5,10 @@ services:
     #
     elcodi.core.rule.service.rule_manager:
         class: %elcodi.core.rule.service.rule_manager.class%
+        lazy: true
         arguments:
             expression_language: @elcodi.core.rule.service.expression_language
-            abstract_rule_repository: @elcodi.repository.abstract_rule
-        configurator: ["@elcodi.core.rule.configuration.rule_manager", configureRuleManager]
+            context_provider: @elcodi.core.rule.context_collector
 
     elcodi.rule_manager:
         alias: elcodi.core.rule.service.rule_manager

@@ -22,6 +22,9 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Cart\Transformer\CartOrderTransformer;
+use Elcodi\Component\CartCoupon\Entity\Interfaces\CartCouponInterface;
+use Elcodi\Component\CartCoupon\Entity\Interfaces\OrderCouponInterface;
+use Elcodi\Component\CartCoupon\Entity\OrderCoupon;
 
 /**
  * Class OrderEventListenerTest
@@ -100,8 +103,8 @@ class OrderEventListenerTest extends WebTestCase
         );
 
         $this->assertTrue(
-            $cartCoupons->forAll(function ($_, $cartCoupon) use ($orderCoupons) {
-                return $orderCoupons->exists(function ($_, $orderCoupon) use ($cartCoupon) {
+            $cartCoupons->forAll(function ($_, CartCouponInterface $cartCoupon) use ($orderCoupons) {
+                return $orderCoupons->exists(function ($_, OrderCouponInterface $orderCoupon) use ($cartCoupon) {
 
                     return $cartCoupon->getId() === $orderCoupon->getId();
                 });

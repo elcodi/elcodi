@@ -16,28 +16,58 @@
 
 namespace Elcodi\Component\Rule\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
-use Elcodi\Component\Rule\Entity\Abstracts\AbstractRule;
-use Elcodi\Component\Rule\Entity\Interfaces\ExpressionInterface;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
 
 /**
  * Class Rule
  */
-class Rule extends AbstractRule implements RuleInterface
+class Rule implements RuleInterface
 {
+    use IdentifiableTrait;
+
     /**
-     * @var ExpressionInterface
+     * @var string
+     *
+     * Name of the rule
+     */
+    protected $name;
+
+    /**
+     * @var string
      *
      * Expression
      */
     protected $expression;
 
     /**
-     * Sets Expression
+     * Sets name
      *
-     * @param ExpressionInterface $expression Expression
+     * @param string $name Name
+     *
+     * @return $this Self object
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string Name
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Sets expression
+     *
+     * @param string $expression Expression
      *
      * @return $this Self object
      */
@@ -49,22 +79,12 @@ class Rule extends AbstractRule implements RuleInterface
     }
 
     /**
-     * Get Expression
+     * Get expression
      *
-     * @return ExpressionInterface Expression
+     * @return string Expression
      */
     public function getExpression()
     {
         return $this->expression;
-    }
-
-    /**
-     * Return all object contained expressions
-     *
-     * @return ArrayCollection Collection of expressions
-     */
-    public function getExpressionCollection()
-    {
-        return new ArrayCollection(array($this->getExpression()));
     }
 }

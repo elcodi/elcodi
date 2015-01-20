@@ -132,7 +132,7 @@ class CouponManager
      * Given Coupon name: FOO
      * New Coupon name: FOO_a67b6786a6
      *
-     * Coupons are only generated, and are not persisted in Manager not Flushed
+     * Coupons are only generated, and are not persisted in Manager nor Flushed
      *
      * @param CouponInterface $coupon   Reference coupon
      * @param DateTime        $dateFrom Date From. If null, takes actual dateTime
@@ -172,6 +172,7 @@ class CouponManager
             ->setMinimumPurchase($coupon->getMinimumPurchase())
             ->setValidFrom($dateFrom)
             ->setValidTo($dateTo)
+            ->setRule($coupon->getRule())
             ->setEnabled(true);
 
         return $couponGenerated;

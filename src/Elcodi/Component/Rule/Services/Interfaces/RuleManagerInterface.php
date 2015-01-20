@@ -16,17 +16,22 @@
 
 namespace Elcodi\Component\Rule\Services\Interfaces;
 
-use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
+use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
 
 /**
- * interface ExpressionLanguageAwareInterface
+ * Interface RuleManagerInterface
+ *
+ * @author Berny Cantos <be@rny.cc>
  */
-interface ExpressionLanguageAwareInterface
+interface RuleManagerInterface
 {
     /**
-     * Get expression language instance
+     * Evaluates a rule and returns result
      *
-     * @return ExpressionLanguage Expression language instance
+     * @param RuleInterface $rule
+     * @param array         $context
+     *
+     * @return mixed
      */
-    public function getExpressionLanguage();
+    public function evaluate(RuleInterface $rule, array $context = []);
 }

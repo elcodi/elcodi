@@ -38,7 +38,6 @@ class RuleFactory extends AbstractFactory
          */
         $classNamespace = $this->getEntityNamespace();
         $rule = new $classNamespace();
-        $rule->setEnabled(true);
 
         return $rule;
     }

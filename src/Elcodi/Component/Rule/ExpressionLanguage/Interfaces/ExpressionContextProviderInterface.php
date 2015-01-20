@@ -14,14 +14,19 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Component\Rule\Repository;
-
-use Doctrine\ORM\EntityRepository;
+namespace Elcodi\Component\Rule\ExpressionLanguage\Interfaces;
 
 /**
- * Class ExpressionRepository
+ * Interface ExpressionContextProviderInterface
+ *
+ * Provides context for ExpressionLanguage
  */
-class ExpressionRepository extends EntityRepository
+interface ExpressionContextProviderInterface
 {
-
+    /**
+     * Get provided context
+     *
+     * @return array
+     */
+    public function getContext();
 }

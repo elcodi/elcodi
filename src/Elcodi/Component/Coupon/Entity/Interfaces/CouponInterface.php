@@ -21,7 +21,7 @@ use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Core\Entity\Interfaces\ValidIntervalInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
-use Elcodi\Component\Rule\Entity\Interfaces\RulesAwareInterface;
+use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
 
 /**
  * CouponInterface
@@ -31,8 +31,7 @@ interface CouponInterface
     IdentifiableInterface,
     DateTimeInterface,
     EnabledInterface,
-    ValidIntervalInterface,
-    RulesAwareInterface
+    ValidIntervalInterface
 {
     /**
      * Set code
@@ -68,6 +67,8 @@ interface CouponInterface
 
     /**
      * Set type
+     * @see ElcodiCouponTypes::TYPE_AMOUNT
+     * @see ElcodiCouponTypes::TYPE_PERCENT
      *
      * @param int $type Type
      *
@@ -84,6 +85,8 @@ interface CouponInterface
 
     /**
      * Sets Enforcement
+     * @see ElcodiCouponTypes::ENFORCEMENT_AUTOMATIC
+     * @see ElcodiCouponTypes::ENFORCEMENT_MANUAL
      *
      * @param int $enforcement Enforcement
      *
@@ -209,6 +212,22 @@ interface CouponInterface
      * @return MoneyInterface Absolute Price
      */
     public function getMinimumPurchase();
+
+    /**
+     * Set rule Rule to check for applicability
+     *
+     * @param RuleInterface $rule New rule
+     *
+     * @return $this Self object
+     */
+    public function setRule(RuleInterface $rule);
+
+    /**
+     * Get rule to check for applicability
+     *
+     * @return RuleInterface Current rule
+     */
+    public function getRule();
 
     /**
      * Increment used variable by one, and disables it if there are no more

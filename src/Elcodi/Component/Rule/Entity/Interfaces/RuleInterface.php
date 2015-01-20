@@ -16,13 +16,31 @@
 
 namespace Elcodi\Component\Rule\Entity\Interfaces;
 
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
+
 /**
  * Class RuleInterface
  */
-interface RuleInterface extends AbstractRuleInterface
+interface RuleInterface extends IdentifiableInterface
 {
     /**
-     * Sets Expression
+     * Sets name
+     *
+     * @param string $name Name
+     *
+     * @return $this Self object
+     */
+    public function setName($name);
+
+    /**
+     * Get name
+     *
+     * @return string Name
+     */
+    public function getName();
+
+    /**
+     * Sets expression
      *
      * @param string $expression Expression
      *
@@ -31,9 +49,9 @@ interface RuleInterface extends AbstractRuleInterface
     public function setExpression($expression);
 
     /**
-     * Get Expression
+     * Get expression
      *
-     * @return ExpressionInterface Expression
+     * @return string Expression
      */
     public function getExpression();
 }

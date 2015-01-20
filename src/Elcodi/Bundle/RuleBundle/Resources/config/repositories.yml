@@ -5,29 +5,8 @@ services:
     #
 
     #
-    # Repository for entity abstract rule
-    #
-    elcodi.repository.abstract_rule:
-        parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.rule.entity.abstract_rule.class% ]
-
-    #
     # Repository for entity rule
     #
     elcodi.repository.rule:
         parent: elcodi.abstract_repository
         arguments: [ %elcodi.core.rule.entity.rule.class% ]
-
-    #
-    # Repository for entity rule_group
-    #
-    elcodi.repository.rule_group:
-        parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.rule.entity.rule_group.class% ]
-
-    #
-    # Repository for entity expression
-    #
-    elcodi.repository.expression:
-        parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.rule.entity.expression.class% ]

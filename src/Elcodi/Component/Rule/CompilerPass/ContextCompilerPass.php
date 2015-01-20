@@ -26,37 +26,26 @@ use Symfony\Component\DependencyInjection\Reference;
 class ContextCompilerPass implements CompilerPassInterface
 {
     /**
-     * This compiler pass computes all services that want to configure the
-     * RuleManager expression language instance, configuring injected
-     * ExpressionLanguage
+     * Collect services tagged to add context for RuleManager
      *
      * @param ContainerBuilder $container Container
      */
     public function process(ContainerBuilder $container)
     {
-        /**
-         * We get our eventlistener
-         */
-        $definition = $container->getDefinition(
-            'elcodi.core.rule.configuration.context_collection'
-        );
-
-        /**
-         * We get all tagged services
-         */
         $taggedServices = $container->findTaggedServiceIds(
-            'elcodi.rule_context_configuration'
+            'elcodi.rule_context'
         );
 
-        /**
-         * We add every tagged Resolver into EventListener
-         */
+        $contextProviders = [];
         foreach ($taggedServices as $id => $attributes) {
 
-            $definition->addMethodCall(
-                'addContextConfiguration',
-                array(new Reference($id))
-            );
+            $contextProviders[] = new Reference($id);
         }
+
+        $definition = $container->getDefinition(
+            'elcodi.core.rule.context_collector'
+        );
+
+        $definition->addArgument($contextProviders);
     }
 }
