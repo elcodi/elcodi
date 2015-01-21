@@ -46,12 +46,12 @@ class Configuration extends AbstractConfiguration
                     ->isRequired()
                 ->end()
                 ->scalarNode('store_template')
-                    ->defaultValue('ElcodiTemplateBundle')
+                    ->defaultValue('StoreTemplateBundle')
                 ->end()
                 ->arrayNode('store_templates')
                     ->treatNullLike([])
                     ->defaultValue([
-                        'ElcodiTemplateBundle',
+                        'StoreTemplateBundle',
                     ])
                     ->prototype('scalar')
                     ->end()
