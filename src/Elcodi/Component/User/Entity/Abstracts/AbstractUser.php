@@ -91,6 +91,13 @@ abstract class AbstractUser implements AbstractUserInterface
     protected $recoveryHash;
 
     /**
+     * @var string
+     *
+     * One time login hash.
+     */
+    protected $oneTimeLoginHash;
+
+    /**
      * User roles
      *
      * @return string[] Roles
@@ -157,7 +164,7 @@ abstract class AbstractUser implements AbstractUserInterface
      */
     public function setGender($gender)
     {
-        $this->gender = (int) $gender;
+        $this->gender = (int)$gender;
 
         return $this;
     }
@@ -169,7 +176,7 @@ abstract class AbstractUser implements AbstractUserInterface
      */
     public function getGender()
     {
-        return (int) $this->gender;
+        return (int)$this->gender;
     }
 
     /**
@@ -303,6 +310,30 @@ abstract class AbstractUser implements AbstractUserInterface
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Gets the one time login hash
+     *
+     * @return string Login hash
+     */
+    public function getOneTimeLoginHash()
+    {
+        return $this->oneTimeLoginHash;
+    }
+
+    /**
+     * Sets a hash so it can be used to login once without the need to use the password
+     *
+     * @param string $oneTimeLoginHash The hash you want to set for the one time login
+     *
+     * @return $this Self object
+     */
+    public function setOneTimeLoginHash($oneTimeLoginHash)
+    {
+        $this->oneTimeLoginHash = $oneTimeLoginHash;
+
+        return $this;
     }
 
     /**

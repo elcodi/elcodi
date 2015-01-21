@@ -34,6 +34,22 @@ interface AbstractUserInterface
     EnabledInterface
 {
     /**
+     * Sets a hash so it can be used to login once without the need to use the password
+     *
+     * @param string $oneTimeLoginHash The hash you want to set for the one time login
+     *
+     * @return $this Self object
+     */
+    public function setOneTimeLoginHash($oneTimeLoginHash);
+
+    /**
+     * Gets the one time login hash
+     *
+     * @return string Login hash
+     */
+    public function getOneTimeLoginHash();
+
+    /**
      * Set recovery hash
      *
      * @param string $recoveryHash
