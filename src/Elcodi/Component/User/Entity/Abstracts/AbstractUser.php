@@ -164,7 +164,7 @@ abstract class AbstractUser implements AbstractUserInterface
      */
     public function setGender($gender)
     {
-        $this->gender = (int)$gender;
+        $this->gender = (int) $gender;
 
         return $this;
     }
@@ -176,7 +176,7 @@ abstract class AbstractUser implements AbstractUserInterface
      */
     public function getGender()
     {
-        return (int)$this->gender;
+        return (int) $this->gender;
     }
 
     /**

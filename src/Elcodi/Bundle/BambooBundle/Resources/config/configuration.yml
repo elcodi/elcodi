@@ -31,6 +31,20 @@ elcodi_configuration:
             type: array
             reference: elcodi.core.bamboo.store_templates
 
+        store_enabled:
+            key: enabled
+            name: Store is enabled
+            namespace: store
+            type: boolean
+            reference: elcodi.core.bamboo.store_enabled
+
+        store_under_construction:
+            key: under_construction
+            name: Store is under construction
+            namespace: store
+            type: boolean
+            reference: elcodi.core.bamboo.store_under_construction
+
         #
         # Product namespace
         #

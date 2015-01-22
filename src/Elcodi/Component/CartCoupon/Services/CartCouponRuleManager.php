@@ -18,7 +18,6 @@ namespace Elcodi\Component\CartCoupon\Services;
 
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
-use Elcodi\Component\Rule\Entity\Interfaces\AbstractRuleInterface;
 use Elcodi\Component\Rule\Services\RuleManager;
 
 /**
