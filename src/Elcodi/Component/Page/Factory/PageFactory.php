@@ -47,6 +47,7 @@ class PageFactory extends AbstractFactory
         $page = new $classNamespace();
         $page
             ->setEnabled(true)
+            ->setPersistent(false)
             ->setCreatedAt($now)
             ->setUpdatedAt($now);
 

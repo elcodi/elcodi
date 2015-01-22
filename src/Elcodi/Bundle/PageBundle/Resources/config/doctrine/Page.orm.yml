@@ -22,6 +22,9 @@ Elcodi\Component\Page\Entity\Page:
             type: string
             length: 255
             nullable: false
+        persistent:
+            column: persistent
+            type: boolean
         metaTitle:
             column: meta_title
             type: string

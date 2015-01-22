@@ -60,6 +60,13 @@ class Page implements PageInterface
     protected $content;
 
     /**
+     * @var boolean
+     *
+     * The persistence of the page
+     */
+    protected $persistent;
+
+    /**
      * Get the path
      *
      * @return string
@@ -129,5 +136,29 @@ class Page implements PageInterface
         $this->title = $title;
 
         return $this;
+    }
+
+    /**
+     * Sets the persistence property
+     *
+     * @param boolean $persistent If the page can't be removed
+     *
+     * @return $this Self object
+     */
+    public function setPersistent($persistent)
+    {
+        $this->persistent = $persistent;
+
+        return $this;
+    }
+
+    /**
+     * Gets the page persistence
+     *
+     * @return boolean If the page is persistent
+     */
+    public function isPersistent()
+    {
+        return $this->persistent;
     }
 }

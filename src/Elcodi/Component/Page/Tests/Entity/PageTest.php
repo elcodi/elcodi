@@ -54,4 +54,25 @@ class PageTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($page, $page->setContent($content));
         $this->assertEquals($content, $page->getContent());
     }
+
+    public function persistentProvider()
+    {
+        return array(
+            'The page is persistent'     => array(true),
+            'The page is not persistent' => array(false),
+        );
+    }
+
+    /**
+     * @dataProvider persistentProvider
+     *
+     * @param boolean $persistent The persistence of the page
+     */
+    public function testPersistent($persistent)
+    {
+        $page = new Page();
+
+        $this->assertSame($page, $page->setPersistent($persistent));
+        $this->assertEquals($persistent, $page->isPersistent());
+    }
 }
