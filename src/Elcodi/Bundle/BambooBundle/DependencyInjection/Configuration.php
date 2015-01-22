@@ -56,6 +56,12 @@ class Configuration extends AbstractConfiguration
                     ->prototype('scalar')
                     ->end()
                 ->end()
+                ->scalarNode('store_enabled')
+                    ->defaultTrue()
+                ->end()
+                ->scalarNode('store_under_construction')
+                    ->defaultTrue()
+                ->end()
 
                 ->append($this->createEmailConfiguration())
 
