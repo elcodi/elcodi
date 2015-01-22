@@ -93,13 +93,13 @@ class AttributeData extends AbstractFixture
         $attributeObjectManager->persist($colorAttribute);
         $this->addReference('attribute-color', $colorAttribute);
 
-        $blackValue = $attributeValueFactory
+        $blueValue = $attributeValueFactory
             ->create()
-            ->setValue('Black')
+            ->setValue('Blue')
             ->setAttribute($colorAttribute);
 
-        $attributeValueObjectManager->persist($blackValue);
-        $this->addReference('value-color-black', $blackValue);
+        $attributeValueObjectManager->persist($blueValue);
+        $this->addReference('value-color-blue', $blueValue);
 
         $whiteValue = $attributeValueFactory
             ->create()
@@ -109,13 +109,13 @@ class AttributeData extends AbstractFixture
         $attributeValueObjectManager->persist($whiteValue);
         $this->addReference('value-color-white', $whiteValue);
 
-        $grayValue = $attributeValueFactory
+        $redValue = $attributeValueFactory
             ->create()
-            ->setValue('Gray')
+            ->setValue('Red')
             ->setAttribute($colorAttribute);
 
-        $attributeValueObjectManager->persist($grayValue);
-        $this->addReference('value-color-gray', $grayValue);
+        $attributeValueObjectManager->persist($redValue);
+        $this->addReference('value-color-red', $redValue);
 
 
         $attributeObjectManager->flush();
