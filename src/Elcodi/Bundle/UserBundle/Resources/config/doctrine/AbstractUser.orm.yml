@@ -40,6 +40,12 @@ Elcodi\Component\User\Entity\Abstracts\AbstractUser:
             length: 255
             unique: true
             nullable: true
+        oneTimeLoginHash:
+            column: one_time_login_hash
+            type: string
+            length: 255
+            unique: true
+            nullable: true
 
         # datetime
         createdAt:
