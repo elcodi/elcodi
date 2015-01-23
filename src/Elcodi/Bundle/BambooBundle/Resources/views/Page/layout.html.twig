@@ -1,0 +1,13 @@
+{% extends templateBundle ~ '::Layout/_static.html.twig' %}
+
+
+{% block title %}{{ page.title }}{% endblock title %}
+
+
+{% block meta_tags %}
+    <meta name="description" content="{{ page.metadescription }}">
+    <meta name="keywords" content="{{ page.metakeywords }}">
+{% endblock meta_tags %}
+
+
+{% block content %}{{ page.content|raw }}{% endblock content %}

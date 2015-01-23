@@ -41,18 +41,20 @@ class TemplateRenderer implements PageRendererInterface
     /**
      * @var string
      *
-     * Default template
+     * Template bundle
      */
-    protected $defaultTemplate;
+    protected $templateBundle;
 
     /**
-     * @param EngineInterface $engine          Render engine
-     * @param string          $defaultTemplate Default template
+     * Construct
+     *
+     * @param EngineInterface $engine         Render engine
+     * @param string          $templateBundle Template bundle
      */
-    public function __construct(EngineInterface $engine, $defaultTemplate)
+    public function __construct(EngineInterface $engine, $templateBundle)
     {
         $this->engine = $engine;
-        $this->defaultTemplate = (string) $defaultTemplate;
+        $this->templateBundle = $templateBundle;
     }
 
     /**
@@ -64,12 +66,15 @@ class TemplateRenderer implements PageRendererInterface
      */
     public function render(PageInterface $page)
     {
-        return $this->engine->render(
-            $this->getTemplate($page),
-            array(
-                'page' => $page,
-            )
-        );
+        return $this
+            ->engine
+            ->render(
+                'ElcodiBambooBundle:Page:layout.html.twig',
+                array(
+                    'templateBundle' => $this->templateBundle,
+                    'page'           => $page,
+                )
+            );
     }
 
     /**
@@ -82,22 +87,5 @@ class TemplateRenderer implements PageRendererInterface
     public function supports(PageInterface $page)
     {
         return $page instanceof BambooPage;
-    }
-
-    /**
-     * Get template to render
-     *
-     * @param BambooPage $page Page to get current template
-     *
-     * @return string
-     */
-    protected function getTemplate(BambooPage $page)
-    {
-        $template = $page->getTemplate();
-        if (!empty($template)) {
-            return $template;
-        }
-
-        return $this->defaultTemplate;
     }
 }
