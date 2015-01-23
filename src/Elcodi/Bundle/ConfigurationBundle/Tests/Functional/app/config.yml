@@ -36,6 +36,7 @@ doctrine:
 parameters:
     my_parameter: my_parameter_value
     my_boolean_parameter: true
+    my_immutable_parameter: immutable
 
 elcodi_configuration:
     elements:
@@ -50,6 +51,12 @@ elcodi_configuration:
             name: My Boolean Parameter
             type: boolean
             reference: my_boolean_parameter
+        my_immutable_parameter:
+            key: my_immutable_parameter
+            name: My Immutable Parameter
+            type: string
+            reference: my_immutable_parameter
+            read_only: true
 
 services:
     my_class_parameter:

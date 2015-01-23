@@ -16,6 +16,7 @@ elcodi_configuration:
             namespace: store
             type: string
             reference: elcodi.core.bamboo.store_tracker
+            read_only: true
 
         store_template:
             key: template
@@ -64,3 +65,4 @@ elcodi_configuration:
             namespace: currency
             type: string
             reference: elcodi.core.currency.default_currency
+            read_only: true

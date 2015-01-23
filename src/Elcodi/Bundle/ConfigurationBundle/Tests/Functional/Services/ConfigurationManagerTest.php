@@ -80,7 +80,7 @@ class ConfigurationManagerTest extends WebTestCase
                 'Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface',
                 $this->find('Configuration', [
                     'namespace' => 'app',
-                    'key' => 'my_boolean_parameter'
+                    'key'       => 'my_boolean_parameter'
                 ])
             );
 
@@ -116,7 +116,7 @@ class ConfigurationManagerTest extends WebTestCase
             ->assertNull(
                 $this->find('Configuration', [
                     'namespace' => '',
-                    'key' => 'my_parameter'
+                    'key'       => 'my_parameter'
                 ])
             );
 
@@ -140,7 +140,7 @@ class ConfigurationManagerTest extends WebTestCase
                 'Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface',
                 $this->find('Configuration', [
                     'namespace' => '',
-                    'key' => 'my_parameter'
+                    'key'       => 'my_parameter'
                 ])
             );
     }
@@ -166,7 +166,7 @@ class ConfigurationManagerTest extends WebTestCase
                 'Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface',
                 $this->find('Configuration', [
                     'namespace' => '',
-                    'key' => 'my_parameter'
+                    'key'       => 'my_parameter'
                 ])
             );
 
@@ -184,5 +184,39 @@ class ConfigurationManagerTest extends WebTestCase
                     ->get('doctrine_cache.providers.elcodi_configurations')
                     ->fetch('my_parameter')
             );
+    }
+
+    /**
+     * Test write immutable value with different value than expected
+     *
+     * @expectedException \Elcodi\Component\Configuration\Exception\ConfigurationNotEditableException
+     */
+    public function testImmutableConfigurationWrite()
+    {
+        $this
+            ->assertFalse(
+                $this
+                    ->get('doctrine_cache.providers.elcodi_configurations')
+                    ->contains('my_immutable_parameter')
+            );
+
+        $this
+            ->get('elcodi.configuration_manager')
+            ->set('my_immutable_parameter', 'immutable');
+
+        $this
+            ->assertEquals(
+                'immutable',
+                $this
+                    ->find('Configuration', [
+                        'namespace' => '',
+                        'key'       => 'my_immutable_parameter'
+                    ])
+                    ->getValue()
+            );
+
+        $this
+            ->get('elcodi.configuration_manager')
+            ->set('my_immutable_parameter', 'non-immutable');
     }
 }

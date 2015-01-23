@@ -21,6 +21,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 use Elcodi\Component\Configuration\ElcodiConfigurationTypes;
 use Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface;
+use Elcodi\Component\Configuration\Exception\ConfigurationNotEditableException;
 use Elcodi\Component\Configuration\Exception\ConfigurationParameterNotFoundException;
 use Elcodi\Component\Configuration\Factory\ConfigurationFactory;
 use Elcodi\Component\Configuration\Repository\ConfigurationRepository;
@@ -95,6 +96,8 @@ class ConfigurationManager extends AbstractCacheWrapper
      * @param mixed  $configurationValue      Configuration value
      *
      * @return ConfigurationInterface|null Object saved
+     *
+     * @throws ConfigurationNotEditableException Configuration not editable
      */
     public function set(
         $configurationIdentifier,
@@ -102,6 +105,18 @@ class ConfigurationManager extends AbstractCacheWrapper
     )
     {
         list($configurationNamespace, $configurationKey) = $this->splitConfigurationKey($configurationIdentifier);
+
+        /**
+         * We must check if the configuration element is read-only. If it is,
+         * we return an exception
+         */
+        if (
+            isset($this->configurationElements[$configurationIdentifier]) &&
+            $this->configurationElements[$configurationIdentifier]['read_only'] === true
+        ) {
+
+            throw new ConfigurationNotEditableException();
+        }
 
         $configurationLoaded = $this->loadConfiguration(
             $configurationNamespace,
