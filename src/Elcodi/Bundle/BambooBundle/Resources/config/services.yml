@@ -16,4 +16,4 @@ services:
         class: Elcodi\Bundle\BambooBundle\Renderer\TemplateRenderer
         arguments:
             - @?templating.engine.twig
-            - %elcodi.core.bamboo.page.default_template%
+            - @?=elcodi_config("store.template")

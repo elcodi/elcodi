@@ -47,6 +47,8 @@ class PageController
 
     /**
      * @var PageRendererInterface
+     *
+     * Page renderer
      */
     protected $pageRenderer;
 

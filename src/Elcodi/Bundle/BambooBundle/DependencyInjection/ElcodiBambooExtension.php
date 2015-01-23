@@ -97,8 +97,6 @@ class ElcodiBambooExtension extends AbstractExtension
             "elcodi.core.bamboo.emails.customer_password_recover.template"      => $config['emails']['customer_password_recover']['template'],
             "elcodi.core.bamboo.emails.customer_password_recover.layout"        => $config['emails']['customer_password_recover']['layout'],
             "elcodi.core.bamboo.emails.customer_password_recover.sender_email"  => $config['emails']['customer_password_recover']['sender_email'],
-
-            "elcodi.core.bamboo.page.default_template"                          => $config['pages']['default_template'],
         ];
     }
 
