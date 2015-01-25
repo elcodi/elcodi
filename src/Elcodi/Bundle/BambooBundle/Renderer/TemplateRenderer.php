@@ -39,22 +39,13 @@ class TemplateRenderer implements PageRendererInterface
     protected $engine;
 
     /**
-     * @var string
-     *
-     * Template bundle
-     */
-    protected $templateBundle;
-
-    /**
      * Construct
      *
-     * @param EngineInterface $engine         Render engine
-     * @param string          $templateBundle Template bundle
+     * @param EngineInterface $engine Render engine
      */
-    public function __construct(EngineInterface $engine, $templateBundle)
+    public function __construct(EngineInterface $engine)
     {
         $this->engine = $engine;
-        $this->templateBundle = $templateBundle;
     }
 
     /**
@@ -71,8 +62,7 @@ class TemplateRenderer implements PageRendererInterface
             ->render(
                 'ElcodiBambooBundle:Page:layout.html.twig',
                 array(
-                    'templateBundle' => $this->templateBundle,
-                    'page'           => $page,
+                    'page' => $page,
                 )
             );
     }
