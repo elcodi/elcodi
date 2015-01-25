@@ -1,4 +1,4 @@
-{% extends templateBundle ~ '::Layout/_static.html.twig' %}
+{% extends getConfiguration('store.template') ~ '::Layout/_static.html.twig' %}
 
 
 {% block title %}{{ page.title }}{% endblock title %}
