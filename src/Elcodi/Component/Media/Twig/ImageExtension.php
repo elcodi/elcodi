@@ -184,7 +184,7 @@ class ImageExtension extends Twig_Extension
         $random = substr(mt_rand(), 0, 1) % count($hostNames);
         $hostName = $hostNames[$random];
 
-        return $hostName.$path;
+        return '//'.$hostName.$path;
     }
 
     /**
