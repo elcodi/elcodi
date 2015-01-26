@@ -43,7 +43,6 @@ services:
         tags:
             - { name: kernel.event_listener, event: cart_coupon.onapply, method: onCartCouponApply, priority: 16 }
 
-
     elcodi.core.cart_coupon.event_listener.order_coupon:
         class: %elcodi.core.cart_coupon.event_listener.order_coupon.class%
         arguments:
@@ -52,3 +51,11 @@ services:
             order_coupon_factory: @elcodi.factory.order_coupon
         tags:
             - { name: kernel.event_listener, event: order_coupon.onapply, method: onOrderCouponApply, priority: 0 }
+
+    elcodi.core.cart_coupon.event_listener.automatic_coupons:
+        class: %elcodi.core.cart_coupon.event_listener.automatic_coupons.class%
+        arguments:
+            - @elcodi.cart_coupon_manager
+            - @elcodi.repository.coupon
+        tags:
+            - { name: kernel.event_listener, event: cart.onload, method: tryAutomaticCoupons, priority: -16 }

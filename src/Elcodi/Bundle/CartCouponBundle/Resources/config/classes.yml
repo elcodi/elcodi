@@ -14,6 +14,7 @@ parameters:
     elcodi.core.cart_coupon.event_listener.cart_coupon.class: Elcodi\Component\CartCoupon\EventListener\CartCouponEventListener
     elcodi.core.cart_coupon.event_listener.cart_coupon_rules.class: Elcodi\Component\CartCoupon\EventListener\CartCouponRulesEventListener
     elcodi.core.cart_coupon.event_listener.order_coupon.class: Elcodi\Component\CartCoupon\EventListener\OrderCouponEventListener
+    elcodi.core.cart_coupon.event_listener.automatic_coupons.class: Elcodi\Component\CartCoupon\EventListener\AutomaticCouponApplicatorListener
 
     #
     # Services
