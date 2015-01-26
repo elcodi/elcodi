@@ -16,3 +16,10 @@ services:
             rule_manager: @elcodi.rule_manager
         tags:
             - { name: elcodi.rule_configuration }
+
+    elcodi.core.rule.expression_language.money_provider:
+        class: %elcodi.core.rule.expression_language.money_provider.class%
+        arguments:
+            - @elcodi.currency_wrapper
+        tags:
+            - { name: elcodi.rule_configuration }
