@@ -43,6 +43,13 @@ services:
         tags:
             - { name: kernel.event_listener, event: cart_coupon.onapply, method: onCartCouponApply, priority: 16 }
 
+    elcodi.core.cart_coupon.event_listener.duplicated_coupons:
+        class: %elcodi.core.cart_coupon.event_listener.duplicated_coupons.class%
+        arguments:
+            - @elcodi.repository.cart_coupon
+        tags:
+            - { name: kernel.event_listener, event: cart_coupon.onapply, method: onCartCouponApply, priority: 16 }
+
     elcodi.core.cart_coupon.event_listener.order_coupon:
         class: %elcodi.core.cart_coupon.event_listener.order_coupon.class%
         arguments:
