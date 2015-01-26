@@ -24,9 +24,7 @@ use Elcodi\Component\CartCoupon\Entity\Interfaces\CartCouponInterface;
 use Elcodi\Component\CartCoupon\EventDispatcher\CartCouponEventDispatcher;
 use Elcodi\Component\CartCoupon\Repository\CartCouponRepository;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
-use Elcodi\Component\Coupon\Exception\CouponAppliedException;
-use Elcodi\Component\Coupon\Exception\CouponFreeShippingExistsException;
-use Elcodi\Component\Coupon\Exception\CouponNotAvailableException;
+use Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException;
 use Elcodi\Component\Coupon\Repository\CouponRepository;
 use Elcodi\Component\Coupon\Services\CouponManager;
 
@@ -75,8 +73,12 @@ class CartCouponManager
     protected $cartCouponRepository;
 
     /**
-     * construct method
+     * Construct method
      *
+     * @param CartCouponEventDispatcher $cartCouponEventDispatcher
+     * @param CouponManager $couponManager
+     * @param CouponRepository $couponRepository
+     * @param CartCouponRepository $cartCouponRepository
      */
     public function __construct(
         CartCouponEventDispatcher $cartCouponEventDispatcher,
@@ -161,9 +163,7 @@ class CartCouponManager
      * @param CartInterface $cart       Cart
      * @param string        $couponCode Coupon code
      *
-     * @throws CouponNotAvailableException
-     * @throws CouponAppliedException
-     * @throws CouponFreeShippingExistsException
+     * @throws AbstractCouponException
      *
      * @return boolean Coupon has added to Cart
      */
@@ -189,8 +189,7 @@ class CartCouponManager
      * @param CartInterface   $cart   Cart
      * @param CouponInterface $coupon The coupon to add
      *
-     * @throws CouponAppliedException
-     * @throws CouponFreeShippingExistsException
+     * @throws AbstractCouponException
      *
      * @return $this Self object
      */
