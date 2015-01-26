@@ -51,6 +51,15 @@ class Configuration extends AbstractConfiguration
                     ->addDefaultsIfNotSet()
                     ->children()
 
+                        ->arrayNode('domain_sharding')
+                            ->canBeEnabled()
+                            ->children()
+                                ->arrayNode('base_urls')
+                                    ->prototype('scalar')->end()
+                                ->end()
+                            ->end()
+                        ->end()
+
                         ->arrayNode('view')
                             ->addDefaultsIfNotSet()
                             ->children()
@@ -115,4 +124,5 @@ class Configuration extends AbstractConfiguration
                 ->end()
             ->end();
     }
+
 }
