@@ -32,7 +32,7 @@ elcodi_entity_translator:
                 metaDescription: ~
                 metaKeywords: ~
         Elcodi\Component\Page\Entity\Interfaces\PageInterface:
-            alias: image
+            alias: page
             fields:
                 title: ~
                 content: ~
