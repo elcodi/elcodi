@@ -59,15 +59,25 @@ class CartCouponRuleManager
         $rule = $coupon->getRule();
 
         if (null === $rule) {
-            return false;
+            return true;
         }
 
-        return $this->ruleManager->evaluate(
-            $rule,
-            [
-                'cart'   => $cart,
-                'coupon' => $coupon,
-            ]
-        );
+        try {
+
+            return $this
+                ->ruleManager
+                ->evaluate(
+                    $rule,
+                    [
+                        'cart'   => $cart,
+                        'coupon' => $coupon,
+                    ]
+                );
+
+        } catch (\Exception $e) {
+            // Maybe log something in case of exception?
+
+            return false;
+        }
     }
 }
