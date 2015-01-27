@@ -22,6 +22,9 @@ Elcodi\Bundle\BambooBundle\Entity\Page:
             type: string
             length: 255
             nullable: false
+        persistent:
+            column: persistent
+            type: boolean
         template:
             column: template
             type: string

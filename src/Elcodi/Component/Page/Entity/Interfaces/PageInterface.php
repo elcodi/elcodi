@@ -83,4 +83,20 @@ interface PageInterface
      * @return $this Self object
      */
     public function setTitle($title);
+
+    /**
+     * Sets the persistence property
+     *
+     * @param boolean $persistent If the page can't be removed
+     *
+     * @return $this Self object
+     */
+    public function setPersistent($persistent);
+
+    /**
+     * Gets the page persistence
+     *
+     * @return boolean If the page is persistent
+     */
+    public function isPersistent();
 }
