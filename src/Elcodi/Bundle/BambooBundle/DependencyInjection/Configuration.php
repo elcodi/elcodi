@@ -62,6 +62,9 @@ class Configuration extends AbstractConfiguration
                 ->scalarNode('store_under_construction')
                     ->defaultTrue()
                 ->end()
+                ->scalarNode('store_google_analytics_id')
+                    ->defaultValue('')
+                ->end()
 
                 ->append($this->createEmailConfiguration())
             ->end();
