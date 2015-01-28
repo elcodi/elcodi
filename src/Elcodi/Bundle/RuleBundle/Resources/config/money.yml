@@ -7,5 +7,6 @@ services:
         class: %elcodi.core.rule.expression_language.money_provider.class%
         arguments:
             - @elcodi.currency_wrapper
+            - @elcodi.repository.currency
         tags:
             - { name: elcodi.rule_configuration }

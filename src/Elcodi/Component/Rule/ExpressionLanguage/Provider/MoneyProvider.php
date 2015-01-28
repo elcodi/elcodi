@@ -16,6 +16,7 @@
 
 namespace Elcodi\Component\Rule\ExpressionLanguage\Provider;
 
+use Doctrine\Common\Persistence\ObjectRepository;
 use RuntimeException;
 use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
@@ -32,15 +33,26 @@ class MoneyProvider implements ExpressionFunctionProviderInterface
 {
     /**
      * @var CurrencyWrapper
+     *
+     * Currency wrapper to get the default currency
      */
     protected $currencyWrapper;
 
     /**
-     * @param CurrencyWrapper $currencyWrapper
+     * @var ObjectRepository
+     *
+     * Currency repository
      */
-    public function __construct(CurrencyWrapper $currencyWrapper)
+    protected $repository;
+
+    /**
+     * @param CurrencyWrapper  $currencyWrapper
+     * @param ObjectRepository $repository
+     */
+    public function __construct(CurrencyWrapper $currencyWrapper, ObjectRepository $repository)
     {
         $this->currencyWrapper = $currencyWrapper;
+        $this->repository = $repository;
     }
 
     /**
@@ -59,11 +71,20 @@ class MoneyProvider implements ExpressionFunctionProviderInterface
                         'Function "money" can\'t be compiled.'
                     );
                 },
-                function (array $context, $amount) {
+                function (array $context, $amount, $currency = null) {
 
-                    $currency = $this
-                        ->currencyWrapper
-                        ->getDefaultCurrency();
+                    if ($currency === null) {
+                        $currency = $this
+                            ->currencyWrapper
+                            ->getDefaultCurrency();
+
+                    } else {
+                        $currency = $this
+                            ->repository
+                            ->findOneBy([
+                                'iso' => $currency,
+                            ]);
+                    }
 
                     $centsPerUnit = 100;
 
