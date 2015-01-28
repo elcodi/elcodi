@@ -93,6 +93,8 @@
         "elcodi/configuration-bundle": "self.version",
         "elcodi/sitemap-bundle": "self.version",
         "elcodi/metric-bundle": "self.version",
+        "elcodi/plugin-bundle": "self.version",
+        "elcodi/template-bundle": "self.version",
 
         "elcodi/attribute": "self.version",
         "elcodi/banner": "self.version",
@@ -119,7 +121,9 @@
         "elcodi/entity-translator": "self.version",
         "elcodi/configuration": "self.version",
         "elcodi/sitemap": "self.version",
-        "elcodi/metric": "self.version"
+        "elcodi/metric": "self.version",
+        "elcodi/plugin": "self.version",
+        "elcodi/template": "self.version"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",
