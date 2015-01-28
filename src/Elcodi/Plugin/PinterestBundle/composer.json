@@ -1,0 +1,60 @@
+{
+    "name": "elcodi-plugin/pinterest",
+    "description": "Elcodi Pinterest plugin",
+    "keywords": [
+        "elcodi",
+        "plugin",
+        "pinterest",
+        "ecommerce"
+    ],
+    "homepage": "https://github.com/elcodi-plugins/PinterestBundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "The Awesome Elcodi Community",
+            "homepage": "https://github.com/elcodi-plugins/PinterestBundle/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+
+        "sensio/framework-extra-bundle": "~3.0",
+        "symfony/config": "~2.6",
+        "symfony/console": "~2.6",
+        "symfony/dependency-injection": "~2.6",
+        "symfony/expression-language": "~2.6",
+        "symfony/http-foundation": "~2.6",
+        "symfony/http-kernel": "~2.6",
+        "symfony/yaml": "~2.6",
+
+        "elcodi/bamboo": "~0.4.0",
+        "elcodi/configuration-bundle": "~0.4.0",
+        "elcodi/plugin-bundle": "~0.4.0",
+        "elcodi/template-bundle": "~0.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\Plugin\\PinterestBundle\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.5-dev"
+        }
+    }
+}

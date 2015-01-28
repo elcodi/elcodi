@@ -1,0 +1,3 @@
+ElcodiPinterestBundle:
+    resource: "@ElcodiPinterestBundle/Controller/"
+    type:     annotation
