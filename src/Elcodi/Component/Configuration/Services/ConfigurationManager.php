@@ -17,6 +17,7 @@
 namespace Elcodi\Component\Configuration\Services;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Exception;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 use Elcodi\Component\Configuration\ElcodiConfigurationTypes;
@@ -160,6 +161,7 @@ class ConfigurationManager extends AbstractCacheWrapper
      * @return null|string|boolean Configuration parameter value
      *
      * @throws ConfigurationParameterNotFoundException Configuration not found
+     * @throws Exception                               Configuration cannot be resolved
      */
     public function get($configurationIdentifier)
     {
@@ -176,7 +178,6 @@ class ConfigurationManager extends AbstractCacheWrapper
                 ->cache
                 ->fetch($configurationIdentifier);
         }
-
         list($configurationNamespace, $configurationKey) = $this->splitConfigurationKey($configurationIdentifier);
 
         $configurationLoaded = $this->loadConfiguration(
@@ -186,13 +187,25 @@ class ConfigurationManager extends AbstractCacheWrapper
 
         if (!($configurationLoaded instanceof ConfigurationInterface)) {
 
-            $parameterReference = $this->configurationElements[$configurationIdentifier]['reference'];
+            $configurationElement = $this->configurationElements[$configurationIdentifier];
+            $configurationValue = isset($configurationElement['reference'])
+                ? $this->parameterBag->get($configurationElement['reference'])
+                : $configurationElement['default_value'];
+
+            if (empty($configurationValue) && !$configurationElement['can_be_empty']) {
+
+                $message = $configurationElement['empty_message']
+                    ?: 'The configuration element "' . $configurationIdentifier . '" cannot be resolved';
+
+                throw new Exception($message);
+            }
+
             $configurationLoaded = $this
                 ->createConfigurationInstance(
                     $configurationIdentifier,
                     $configurationNamespace,
                     $configurationKey,
-                    $this->parameterBag->get($parameterReference)
+                    $configurationValue
                 );
 
             $this->flushConfiguration($configurationLoaded);
