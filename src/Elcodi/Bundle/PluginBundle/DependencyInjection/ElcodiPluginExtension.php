@@ -58,6 +58,7 @@ class ElcodiPluginExtension extends AbstractExtension
         return [
             'classes',
             'services',
+            'commands',
             'twig',
         ];
     }
