@@ -30,11 +30,10 @@
         }
     ],
     "require": {
-
         "php": ">=5.4",
 
-        "symfony/http-kernel": "~2.4, >2.4.6",
-        "symfony/config": "~2.4",
+        "symfony/http-kernel": "~2.6",
+        "symfony/config": "~2.6",
 
         "elcodi/core-bundle": "~0.4.0",
         "elcodi/state-transition-machine": "~0.4.0"
