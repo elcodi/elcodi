@@ -16,13 +16,12 @@
 
 namespace Elcodi\Plugin\GoogleAnalyticsBundle;
 
+use Elcodi\Component\Plugin\Interfaces\PluginInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-
-use Elcodi\Bundle\PluginBundle\Interfaces\PluginBundleInterface;
 
 /**
  * Class ElcodiGoogleAnalyticsBundle
  */
-class ElcodiGoogleAnalyticsBundle extends Bundle implements PluginBundleInterface
+class ElcodiGoogleAnalyticsBundle extends Bundle implements PluginInterface
 {
 }
