@@ -1,0 +1,14 @@
+services:
+
+    #
+    # Twig renderer
+    #
+    elcodi_plugin.pinterest.renderer:
+        class: Elcodi\Plugin\PinterestBundle\Templating\TwigRenderer
+        calls:
+            - [setTemplating, [@twig]]
+            - [setPlugin, [@=elcodi_plugin("Elcodi\\Plugin\\PinterestBundle")]]
+        tags:
+            - { name: kernel.event_listener, event: store.head_bottom, method: renderAsynchronousJavascript }
+            - { name: kernel.event_listener, event: store.body_bottom, method: renderJavascript }
+            - { name: kernel.event_listener, event: store.product_pin_top, method: renderPin }

@@ -1,0 +1,18 @@
+services:
+
+    #
+    # Commands
+    #
+    elcodi.templates_load_command:
+        class: %elcodi.templates_load_command.class%
+        arguments:
+            template_loader: @elcodi.template_manager
+        tags:
+            -  { name: console.command }
+
+    elcodi.templates_enable_command:
+        class: %elcodi.templates_enable_command.class%
+        arguments:
+            configuration_manager: @elcodi.configuration_manager
+        tags:
+            -  { name: console.command }

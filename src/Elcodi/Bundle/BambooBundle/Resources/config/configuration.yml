@@ -8,6 +8,7 @@ elcodi_configuration:
             name: Store name
             namespace: store
             type: string
+            can_be_empty: false
             reference: elcodi.core.bamboo.store_name
 
         store_tracker:
@@ -16,6 +17,7 @@ elcodi_configuration:
             namespace: store
             type: string
             reference: elcodi.core.bamboo.store_tracker
+            can_be_empty: false
             read_only: true
 
         store_template:
@@ -23,14 +25,24 @@ elcodi_configuration:
             name: Store template
             namespace: store
             type: string
-            reference: elcodi.core.bamboo.store_template
+            can_be_empty: false
+            empty_message: Template not enabled.
 
         store_templates:
             key: templates
             name: Store templates
             namespace: store
             type: array
-            reference: elcodi.core.bamboo.store_templates
+            can_be_empty: false
+            empty_message: Templates not loaded. Please, run "php app/console elcodi:templates:load"
+
+        store_plugins:
+            key: plugins
+            name: Store plugins
+            namespace: store
+            type: array
+            can_be_empty: true
+            default_value: []
 
         store_enabled:
             key: enabled
@@ -55,6 +67,7 @@ elcodi_configuration:
             namespace: product
             type: boolean
             reference: elcodi.core.product.use_stock
+            default_value: true
 
         #
         # Currency namespace

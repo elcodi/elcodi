@@ -35,3 +35,13 @@ doctrine_cache:
         elcodi_comments:
             type: array
             namespace: comments
+
+
+doctrine_cache:
+    providers:
+        #
+        # Entity translations cache
+        #
+        elcodi_translations:
+            type: array
+            namespace: translations

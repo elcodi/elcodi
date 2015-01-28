@@ -14,17 +14,15 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Bundle\BambooBundle\Interfaces;
+namespace Elcodi\Plugin\GoogleAnalyticsBundle;
+
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+use Elcodi\Component\Plugin\Interfaces\PluginInterface;
 
 /**
- * Interface TemplateBundleInterface
+ * Class ElcodiGoogleAnalyticsBundle
  */
-interface TemplateBundleInterface
+class ElcodiGoogleAnalyticsBundle extends Bundle implements PluginInterface
 {
-    /**
-     * Get the template bundle
-     *
-     * @return string Template name
-     */
-    public function getTemplateName();
 }

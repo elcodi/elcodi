@@ -14,36 +14,36 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Bundle\BambooBundle\Command;
+namespace Elcodi\Component\Template\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use Elcodi\Bundle\BambooBundle\Services\TemplateLoader;
+use Elcodi\Component\Template\Services\TemplateManager;
 
 /**
- * Class TemplateLoaderCommand
+ * Class TemplatesLoadCommand
  */
-class TemplateLoaderCommand extends Command
+class TemplatesLoadCommand extends Command
 {
     /**
-     * @var TemplateLoader
+     * @var TemplateManager
      *
-     * Template loader
+     * Template manager
      */
-    protected $templateLoader;
+    protected $templateManager;
 
     /**
      * Constructor
      *
-     * @param TemplateLoader $templateLoader Template loader
+     * @param TemplateManager $templateManager Template manager
      */
-    public function __construct(TemplateLoader $templateLoader)
+    public function __construct(TemplateManager $templateManager)
     {
         parent::__construct();
 
-        $this->templateLoader = $templateLoader;
+        $this->templateManager = $templateManager;
     }
 
     /**
@@ -67,13 +67,19 @@ class TemplateLoaderCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $formatter = $this->getHelper('formatter');
         $templates = $this
-            ->templateLoader
+            ->templateManager
             ->loadTemplates();
 
         foreach ($templates as $template) {
 
-            $output->writeln('Template @' . $template['bundle'] . ' installed');
+            $formattedLine = $formatter->formatSection(
+                'OK',
+                'Template "' . $template['bundle'] . '" installed'
+            );
+
+            $output->writeln($formattedLine);
         }
     }
 }

@@ -1,0 +1,58 @@
+{
+    "name": "elcodi/template-bundle",
+    "description": "Elcodi Template Bundle",
+    "keywords": [
+        "elcodi",
+        "template",
+        "ecommerce"
+    ],
+    "homepage": "https://github.com/elcodi/TemplateBundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "The Awesome Elcodi Community",
+            "homepage": "https://github.com/elcodi/TemplateBundle/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+
+        "symfony/http-kernel": "~2.6",
+        "symfony/dependency-injection": "~2.6",
+        "symfony/config": "~2.6",
+
+        "elcodi/core-bundle": "~0.4.0",
+        "elcodi/configuration-bundle": "~0.4.0",
+        "elcodi/plugin": "~0.4.0"
+    },
+    "require-dev": {
+        "elcodi/test-common-bundle": "~0.4.0",
+        "elcodi/bamboo-bundle": "~0.4.0",
+        "doctrine/data-fixtures": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\Component\\TemplateBundle\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.5-dev"
+        }
+    }
+}

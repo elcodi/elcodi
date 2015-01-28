@@ -14,21 +14,21 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Bundle\BambooBundle\Services;
+namespace Elcodi\Component\Template\Services;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Exception;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\HttpKernel\KernelInterface;
 
-use Elcodi\Bundle\BambooBundle\Interfaces\TemplateBundleInterface;
 use Elcodi\Component\Configuration\Exception\ConfigurationParameterNotFoundException;
 use Elcodi\Component\Configuration\Services\ConfigurationManager;
+use Elcodi\Component\Template\Interfaces\TemplateInterface;
 
 /**
- * Class TemplateLoader
+ * Class TemplateManager
  */
-class TemplateLoader
+class TemplateManager
 {
     /**
      * @var array
@@ -82,12 +82,14 @@ class TemplateLoader
          */
         foreach ($bundles as $bundle) {
 
-            if ($bundle instanceof TemplateBundleInterface) {
+            if ($bundle instanceof TemplateInterface) {
 
                 $bundleName = $bundle->getName();
+                $bundleNamespace = $bundle->getNamespace();
                 $templates->set($bundleName, [
-                    'bundle' => $bundleName,
-                    'name'   => $bundle->getTemplateName(),
+                    'bundle'    => $bundleName,
+                    'namespace' => $bundleNamespace,
+                    'name'      => $bundle->getTemplateName(),
                 ]);
             }
         }
@@ -97,20 +99,6 @@ class TemplateLoader
         $this
             ->configurationManager
             ->set('store.templates', $templatesArray);
-
-        /**
-         * If current template is not available anymore, we assume that the
-         * first one is the right one
-         */
-        if (!isset($templates[$this->configurationManager->get('store.template')])) {
-
-            $this
-                ->configurationManager
-                ->set(
-                    'store.template',
-                    $templates->first()['bundle']
-                );
-        }
 
         return $templatesArray;
     }

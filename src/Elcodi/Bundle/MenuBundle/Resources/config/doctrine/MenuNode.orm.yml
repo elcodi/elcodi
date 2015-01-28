@@ -37,6 +37,8 @@ Elcodi\Component\Menu\Entity\Menu\Node:
                 joinColumns:
                     menu_node_id:
                         referencedColumnName: id
+                        onDelete: cascade
                 inverseJoinColumns:
                     menu_subnode_id:
                         referencedColumnName: id
+                        onDelete: cascade

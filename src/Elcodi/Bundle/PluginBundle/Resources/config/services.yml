@@ -7,3 +7,15 @@ services:
         class: %elcodi.core.plugin.hook_system.adapter.event_dispatcher.class%
         arguments:
             - @event_dispatcher
+
+    elcodi.template_manager:
+        class: %elcodi.template_manager.class%
+        arguments:
+            kernel: @kernel
+            configuration_manager: @elcodi.configuration_manager
+
+    elcodi.plugin_manager:
+        class: %elcodi.plugin_manager.class%
+        arguments:
+            kernel: @kernel
+            configuration_manager: @elcodi.configuration_manager

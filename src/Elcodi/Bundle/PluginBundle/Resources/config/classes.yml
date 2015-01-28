@@ -4,6 +4,12 @@ parameters:
     # Services
     #
     elcodi.core.plugin.hook_system.adapter.event_dispatcher.class: Elcodi\Component\Plugin\Adapter\EventDispatcher\HookSystemAdapter
+    elcodi.plugin_manager.class: Elcodi\Component\Plugin\Services\PluginManager
+
+    #
+    # Commands
+    #
+    elcodi.plugins_load_command.class: Elcodi\Component\Plugin\Command\PluginsLoadCommand
 
     #
     # Twig extensions

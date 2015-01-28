@@ -16,10 +16,12 @@
 
 namespace Elcodi\Bundle\PluginBundle;
 
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 use Elcodi\Bundle\PluginBundle\DependencyInjection\ElcodiPluginExtension;
+use Elcodi\Component\Plugin\ExpressionLanguage\PluginExpressionLanguageProvider;
 
 /**
  * Class ElcodiPluginBundle
@@ -28,6 +30,16 @@ use Elcodi\Bundle\PluginBundle\DependencyInjection\ElcodiPluginExtension;
  */
 class ElcodiPluginBundle extends Bundle
 {
+    /**
+     * @param ContainerBuilder $container
+     */
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+
+        $container->addExpressionLanguageProvider(new PluginExpressionLanguageProvider());
+    }
+
     /**
      * Returns the bundle's container extension.
      *
