@@ -1,18 +1,18 @@
 services:
 
     #
-    # Services
-    #
-    elcodi.template_loader:
-        class: %elcodi.template_loader.class%
-        arguments:
-            kernel: @kernel
-            configuration_manager: @?elcodi.configuration_manager
-
-    #
     # Page renderer
     #
     bamboo.page.renderer.template_renderer:
         class: Elcodi\Bundle\BambooBundle\Renderer\TemplateRenderer
         arguments:
-            - @?templating.engine.twig
+            - @templating.engine.twig
+
+    #
+    # Store tracker
+    #
+    elcodi.store_tracker:
+        class: StdClass
+        factory_service: elcodi.configuration_manager
+        factory_method: get
+        arguments: ['store.tracker']
