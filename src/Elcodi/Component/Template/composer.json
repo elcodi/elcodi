@@ -38,7 +38,7 @@
         "symfony/console": "~2.6",
 
         "elcodi/core": "~0.4.0",
-        "elcodi/configuration": "~0.4.0",
+        "elcodi/configuration": "~0.4.0"
     },
     "autoload": {
         "psr-4": {

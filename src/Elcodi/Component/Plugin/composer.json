@@ -1,13 +1,13 @@
 {
-    "name": "elcodi/plugin-bundle",
-    "description": "Elcodi Plugin Bundle",
+    "name": "elcodi/plugin",
+    "description": "Elcodi Plugin Component",
     "keywords": [
         "elcodi",
         "plugin",
         "ecommerce"
     ],
-    "homepage": "https://github.com/elcodi/PluginBundle",
-    "type": "symfony-bundle",
+    "homepage": "https://github.com/elcodi/Plugin",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
