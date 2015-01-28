@@ -17,13 +17,13 @@
 namespace Elcodi\Component\Template\Services;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Elcodi\Component\Template\Interfaces\TemplateInterface;
 use Exception;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 use Elcodi\Component\Configuration\Exception\ConfigurationParameterNotFoundException;
 use Elcodi\Component\Configuration\Services\ConfigurationManager;
+use Elcodi\Component\Template\Interfaces\TemplateInterface;
 
 /**
  * Class TemplateManager

@@ -18,15 +18,15 @@ namespace Elcodi\Plugin\PinterestBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-use Elcodi\Admin\CoreBundle\Controller\Abstracts\AbstractAdminController;
 use Elcodi\Component\Plugin\Entity\Plugin;
 
 /**
  * Class AdminController
  */
-class AdminController extends AbstractAdminController
+class AdminController extends Controller
 {
     /**
      * @Route(

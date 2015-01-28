@@ -38,14 +38,14 @@
         "symfony/console": "~2.6",
         "symfony/dependency-injection": "~2.6",
         "symfony/expression-language": "~2.6",
+        "symfony/framework-bundle": "~2.6",
         "symfony/http-foundation": "~2.6",
         "symfony/http-kernel": "~2.6",
         "symfony/yaml": "~2.6",
+        "twig/twig": "~1.16",
 
-        "elcodi/bamboo": "~0.4.0",
         "elcodi/configuration-bundle": "~0.4.0",
-        "elcodi/plugin-bundle": "~0.4.0",
-        "elcodi/template-bundle": "~0.4.0"
+        "elcodi/plugin-bundle": "~0.4.0"
     },
     "autoload": {
         "psr-4": {

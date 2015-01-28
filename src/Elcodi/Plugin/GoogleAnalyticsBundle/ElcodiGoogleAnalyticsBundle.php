@@ -16,8 +16,9 @@
 
 namespace Elcodi\Plugin\GoogleAnalyticsBundle;
 
-use Elcodi\Component\Plugin\Interfaces\PluginInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+use Elcodi\Component\Plugin\Interfaces\PluginInterface;
 
 /**
  * Class ElcodiGoogleAnalyticsBundle
