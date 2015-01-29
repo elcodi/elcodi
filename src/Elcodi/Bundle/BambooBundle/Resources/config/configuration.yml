@@ -3,6 +3,7 @@ elcodi_configuration:
 
         #
         # Store namespace
+        #
         store_name:
             key: name
             name: Store name
@@ -57,6 +58,13 @@ elcodi_configuration:
             namespace: store
             type: boolean
             reference: elcodi.core.bamboo.store_under_construction
+
+        store_google_analytics_id:
+            key: google_analytics_id
+            name: Google analytics tracking ID
+            namespace: store
+            type: string
+            reference: elcodi.core.bamboo.store_google_analytics_id
 
         #
         # Product namespace
