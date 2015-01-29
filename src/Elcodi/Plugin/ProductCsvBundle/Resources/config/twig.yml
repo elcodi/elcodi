@@ -7,5 +7,6 @@ services:
         class: %elcodi_plugin.product_csv.renderer.class%
         calls:
             - [setTemplating, [@twig]]
+            - [setPlugin, [@=elcodi_plugin("Elcodi\\Plugin\\ProductCsvBundle")]]
         tags:
             - { name: kernel.event_listener, event: admin.header_actions, method: renderButtons }

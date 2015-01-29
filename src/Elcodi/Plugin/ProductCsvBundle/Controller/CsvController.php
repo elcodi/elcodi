@@ -48,6 +48,10 @@ class CsvController extends Controller
             ->get('elcodi.plugin_manager')
             ->getPlugin('Elcodi\Plugin\ProductCsvBundle');
 
+        if (!$plugin->isEnabled()) {
+            $this->createNotFoundException('The plugin is disabled');
+        }
+
         /**
          * @var ProductExporter $exporter
          */

@@ -16,6 +16,7 @@
 
 namespace Elcodi\Plugin\ProductCsvBundle\Templating;
 
+use Elcodi\Component\Plugin\Entity\Plugin;
 use Elcodi\Component\Plugin\Interfaces\EventInterface;
 use Elcodi\Component\Plugin\Templating\Traits\TemplatingTrait;
 
@@ -29,6 +30,27 @@ class TwigRenderer
     use TemplatingTrait;
 
     /**
+     * @var Plugin
+     *
+     * Plugin
+     */
+    protected $plugin;
+
+    /**
+     * Set plugin
+     *
+     * @param Plugin $plugin Plugin
+     *
+     * @return $this Self object
+     */
+    public function setPlugin(Plugin $plugin)
+    {
+        $this->plugin = $plugin;
+
+        return $this;
+    }
+
+    /**
      * Renders import/export buttons
      *
      * @param EventInterface $event
@@ -38,6 +60,10 @@ class TwigRenderer
     public function renderButtons(EventInterface $event)
     {
         if ($event->get('entity_type') !== 'product') {
+            return;
+        }
+
+        if (!$this->plugin->isEnabled()) {
             return;
         }
 
