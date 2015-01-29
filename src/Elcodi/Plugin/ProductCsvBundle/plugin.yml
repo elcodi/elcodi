@@ -1,0 +1,9 @@
+author: Elcodi Team
+description: |
+    Export you product list with only a click.
+year: 2015
+url: http://elcodi.io
+name: Elcodi Product CSV
+fa_icon: download
+configuration_route: admin_product_csv_configuration
+version: ~0.4

@@ -123,7 +123,9 @@
         "elcodi/sitemap": "self.version",
         "elcodi/metric": "self.version",
         "elcodi/plugin": "self.version",
-        "elcodi/template": "self.version"
+        "elcodi/template": "self.version",
+
+        "elcodi-plugin/product-csv": "self.version"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",

@@ -195,7 +195,7 @@ class PluginManager
      *
      * @param string $pluginNamespace Plugin namespace
      *
-     * @return array Plugins
+     * @return Plugin Selected plugin
      */
     public function getPlugin($pluginNamespace)
     {

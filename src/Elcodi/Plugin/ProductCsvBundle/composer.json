@@ -1,0 +1,37 @@
+{
+    "name": "elcodi-plugins/product-csv",
+    "license": "MIT",
+    "type": "elcodi-plugin",
+    "description": "Elcodi plugin to add Product import/export from .csv files",
+    "authors": [
+        {
+            "name": "Berny Cantos",
+            "email": "be@rny.cc"
+        },
+        {
+            "name": "The Awesome Elcodi Community",
+            "homepage": "https://github.com/elcodi-plugin/product-csv/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+
+        "goodby/csv": "~1.0",
+        "symfony/framework-extra-bundle": "~2.6",
+        "symfony/framework-bundle": "~2.6",
+        "symfony/http-foundation": "~2.6",
+        "symfony/http-kernel": "~2.6",
+        "symfony/twig-bridge": "~2.6",
+
+        "elcodi/plugin-bundle": "~0.4.0",
+        "elcodi/product-bundle": "~0.4.0"
+    },
+    "require-dev": {
+        "mmoreram/php-formatter": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\Plugin\\ProductCsv\\": ""
+        }
+    }
+}

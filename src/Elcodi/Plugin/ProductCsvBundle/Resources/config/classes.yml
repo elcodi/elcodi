@@ -1,0 +1,11 @@
+parameters:
+
+    #
+    # Services
+    #
+    elcodi_plugin.product_csv.exporter.class: Elcodi\Plugin\ProductCsvBundle\Services\ProductExporter
+
+    #
+    # Renderers
+    #
+    elcodi_plugin.product_csv.renderer.class: Elcodi\Plugin\ProductCsvBundle\Templating\TwigRenderer
