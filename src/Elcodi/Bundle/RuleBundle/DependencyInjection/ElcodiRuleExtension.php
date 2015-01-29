@@ -122,24 +122,4 @@ class ElcodiRuleExtension extends AbstractExtension implements EntitiesOverridab
     {
         return static::EXTENSION_NAME;
     }
-
-    /**
-     * Hook after load the full container
-     *
-     * @param array            $config    Configuration
-     * @param ContainerBuilder $container Container
-     */
-    public function postLoad(array $config, ContainerBuilder $container)
-    {
-        parent::postLoad($config, $container);
-
-        $files = [];
-        if ($container->has('elcodi.currency_wrapper')) {
-            $files[] = 'money';
-        }
-
-        if (!empty($files)) {
-            $this->loadFiles($files, $container);
-        }
-    }
 }

@@ -46,3 +46,8 @@ parameters:
     #
     elcodi.currency_exchange_rates_provider_adapter.open_exchange_rates.class: Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\OpenExchangeRatesProviderAdapter
     elcodi.currency_exchange_rates_provider_adapter.dummy.class: Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\DummyProviderAdapter
+
+    #
+    # ExpressionLanguage providers
+    #
+    elcodi.core.currency.expression_language.money_provider.class: Elcodi\Component\Currency\ExpressionLanguage\MoneyProvider

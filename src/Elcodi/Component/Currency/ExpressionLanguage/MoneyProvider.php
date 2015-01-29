@@ -14,7 +14,7 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Component\Rule\ExpressionLanguage\Provider;
+namespace Elcodi\Component\Currency\ExpressionLanguage;
 
 use Doctrine\Common\Persistence\ObjectRepository;
 use RuntimeException;
