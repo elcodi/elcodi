@@ -12,7 +12,7 @@
             'Plugins': {
                     'url': url('admin_plugin_list')
                 },
-                ('Pinterest'): {
+                ('Google analytics'): {
                     'active': true
                 }
             }
@@ -22,21 +22,19 @@
 
 
 {% block content %}
-    <form class="form" method="post">
+    <form class="form" method="POST">
         <fieldset>
             <div class="col-1-3">
-                <h2 class="fw-n">Pinterest Setup</h2>
-                <a target="_blank" href="https://www.pinterest.com/">Go to Pinterest</a>
+                <h2 class="fw-n">Google Analytics Setup</h2>
+                <a target="_blank" href="https://www.google.com/analytics/web/">Go to google analytics</a>
             </div>
             <div class="col-2-3">
                 <div class="box">
                     <ol>
                         <li>
-                            <div class="switch">
-								<input name="asynchronous" id="asynchronous" type="checkbox"{% if plugin.configuration.asynchronous %} checked="checked"{% endif %}>
-								<label for="asynchronous"></label>
-							</div>
-                            {% trans %}Js asynchronous{% endtrans %}
+                            <label for="analytics_tracker_id">{{ 'Google analytics tracking ID'|trans }}</label>
+
+                            <input id="analytics_tracker_id" type="text" name="analytics_tracker_id" value="{{ plugin.configuration['analytics_tracker_id'] }}" placeholder="UA-XXXXXXXX-X" />
                         </li>
                     </ol>
                 </div>

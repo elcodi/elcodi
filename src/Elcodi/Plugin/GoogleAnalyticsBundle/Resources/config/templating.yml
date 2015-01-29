@@ -1,0 +1,12 @@
+services:
+
+    #
+    # Twig renderer
+    #
+    elcodi_plugin.google_analytics.renderer:
+        class: Elcodi\Plugin\GoogleAnalyticsBundle\Templating\TwigRenderer
+        calls:
+            - [setTemplating, [@twig]]
+            - [setPlugin, [@=elcodi_plugin("Elcodi\\Plugin\\GoogleAnalyticsBundle")]]
+        tags:
+            - { name: kernel.event_listener, event: store.head_bottom, method: renderJavascript }

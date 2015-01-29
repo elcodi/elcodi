@@ -1,4 +1,4 @@
-author: Marc Morera
+author: Roger Gros
 description: |
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     Mauris ac nibh a eros auctor lobortis. Etiam pellentesque diam nibh, id sagittis nisi finibus ac.
@@ -8,4 +8,5 @@ year: 2015
 name: Elcodi Google Analytics
 url: http://url-ga.com
 fa_icon: google
+configuration_route: admin_google_analytics_configuration
 version: ~0.4
