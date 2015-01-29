@@ -1,0 +1,18 @@
+services:
+
+    #
+    # Commands
+    #
+    elcodi.configuration_set_command:
+        class: %elcodi.configuration_set_command.class%
+        arguments:
+            template_loader: @elcodi.configuration_manager
+        tags:
+            -  { name: console.command }
+
+    elcodi.configuration_get_command:
+        class: %elcodi.configuration_get_command.class%
+        arguments:
+            template_loader: @elcodi.configuration_manager
+        tags:
+            -  { name: console.command }

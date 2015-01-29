@@ -96,6 +96,7 @@ class ElcodiConfigurationExtension extends AbstractExtension implements Entities
     {
         return [
             'classes',
+            'commands',
             'services',
             'factories',
             'repositories',
