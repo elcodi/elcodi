@@ -14,9 +14,8 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Component\Template\Command;
+namespace Elcodi\Component\Configuration\Command;
 
-use Exception;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -25,9 +24,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Elcodi\Component\Configuration\Services\ConfigurationManager;
 
 /**
- * Class TemplatesEnableCommand
+ * Class ConfigurationGetCommand
  */
-class TemplatesEnableCommand extends Command
+class ConfigurationGetCommand extends Command
 {
     /**
      * @var ConfigurationManager
@@ -54,49 +53,35 @@ class TemplatesEnableCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('elcodi:templates:enable')
-            ->setDescription('Enable template')
+            ->setName('elcodi:configuration:get')
+            ->setDescription('Get an specific json_encoded configuration value.')
             ->addArgument(
-                'template',
+                'identifier',
                 InputArgument::REQUIRED,
-                'Template name'
+                'Configuration identifier'
             );
     }
 
     /**
-     * This command enables a template
+     * This command saves a configuration value
      *
      * @param InputInterface  $input  The input interface
      * @param OutputInterface $output The output interface
      *
      * @return void
-     *
-     * @throws Exception Template nof found
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $templateName = $input->getArgument('template');
-        $templates = $this->configurationManager->get('store.templates');
-        $templateFound = array_reduce(
-            $templates,
-            function ($alreadyFound, $template) use ($templateName) {
-                return $alreadyFound || ($template['bundle'] == $templateName);
-            },
-            false);
+        $configurationIdentifier = $input->getArgument('identifier');
 
-        if (!$templateFound) {
-
-            throw new Exception(sprintf('Template %s not found', $templateName));
-        }
-
-        $this
+        $configurationValue = json_encode($this
             ->configurationManager
-            ->set('store.template', $templateName);
+            ->get($configurationIdentifier));
 
         $formatter = $this->getHelper('formatter');
         $formattedLine = $formatter->formatSection(
-            'OK',
-            'Template "' . $templateName . '" enabled'
+            $configurationIdentifier,
+            $configurationValue
         );
 
         $output->writeln($formattedLine);

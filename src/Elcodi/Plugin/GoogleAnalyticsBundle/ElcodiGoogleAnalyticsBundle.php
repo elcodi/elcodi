@@ -16,10 +16,10 @@
 
 namespace Elcodi\Plugin\GoogleAnalyticsBundle;
 
-use Elcodi\Plugin\GoogleAnalyticsBundle\DependencyInjection\ElcodiGoogleAnalyticsExtension;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 use Elcodi\Component\Plugin\Interfaces\PluginInterface;
+use Elcodi\Plugin\GoogleAnalyticsBundle\DependencyInjection\ElcodiGoogleAnalyticsExtension;
 
 /**
  * Class ElcodiGoogleAnalyticsBundle

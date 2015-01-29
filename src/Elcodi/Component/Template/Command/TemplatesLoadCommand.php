@@ -57,8 +57,7 @@ class TemplatesLoadCommand extends Command
     }
 
     /**
-     * This command loads all the exchange rates from base_currency to all available
-     * currencies
+     * This command loads all the templates installed
      *
      * @param InputInterface  $input  The input interface
      * @param OutputInterface $output The output interface
