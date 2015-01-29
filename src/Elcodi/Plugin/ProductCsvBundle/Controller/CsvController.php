@@ -44,6 +44,10 @@ class CsvController extends Controller
      */
     public function exportAction()
     {
+        $plugin = $this
+            ->get('elcodi.plugin_manager')
+            ->getPlugin('Elcodi\Plugin\ProductCsvBundle');
+
         /**
          * @var ProductExporter $exporter
          */
@@ -57,7 +61,14 @@ class CsvController extends Controller
             $exporter->export($rows);
         });
 
-        return $this->makeDownloadable($response, 'products.csv', 'text/csv');
+        $configuration = $plugin->getConfiguration();
+
+        $filename = $configuration['export_filename'];
+        if (empty($filename)) {
+            $filename = 'products.csv';
+        }
+
+        return $this->makeDownloadable($response, $filename, 'text/csv');
     }
 
     /**
