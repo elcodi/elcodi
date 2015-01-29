@@ -12,9 +12,3 @@ services:
 
     elcodi.rule_manager:
         alias: elcodi.core.rule.service.rule_manager
-
-    #
-    # External
-    #
-    elcodi.core.rule.service.expression_language:
-        class: %elcodi.core.rule.service.expression_language.class%

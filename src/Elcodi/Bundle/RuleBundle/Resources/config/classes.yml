@@ -16,14 +16,13 @@ parameters:
     elcodi.core.rule.service.rule_manager.class: Elcodi\Component\Rule\Services\RuleManager
 
     #
-    # External
+    # ExpressionLanguage
     #
     elcodi.core.rule.service.expression_language.class: Symfony\Component\ExpressionLanguage\ExpressionLanguage
+    elcodi.core.rule.context_collector.class: Elcodi\Component\Rule\ExpressionLanguage\Context\ContextCollector
 
     #
-    # Configurations
+    # ExpressionLanguage providers
     #
-    elcodi.core.rule.context_collector.class: Elcodi\Component\Rule\ExpressionLanguage\Context\ContextCollector
     elcodi.core.rule.expression_language.container_provider.class: Elcodi\Component\Rule\ExpressionLanguage\Provider\ContainerProvider
     elcodi.core.rule.expression_language.rule_provider.class: Elcodi\Component\Rule\ExpressionLanguage\Provider\RuleProvider
-    elcodi.core.rule.expression_language.money_provider.class: Elcodi\Component\Rule\ExpressionLanguage\Provider\MoneyProvider

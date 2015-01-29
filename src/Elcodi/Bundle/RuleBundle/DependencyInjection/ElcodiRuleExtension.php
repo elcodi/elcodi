@@ -17,7 +17,6 @@
 namespace Elcodi\Bundle\RuleBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
@@ -96,10 +95,10 @@ class ElcodiRuleExtension extends AbstractExtension implements EntitiesOverridab
         return [
             'classes',
             'services',
+            'expressionLanguage',
             'factories',
-            'configurations',
-            'repositories',
             'objectManagers',
+            'repositories',
         ];
     }
 

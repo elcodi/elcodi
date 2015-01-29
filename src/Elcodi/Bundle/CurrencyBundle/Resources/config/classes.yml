@@ -36,12 +36,6 @@ parameters:
     elcodi.core.currency.command.currency_exchange_rates_populate.class: Elcodi\Component\Currency\Command\CurrencyExchangeRatesPopulateCommand
 
     #
-    # LocaleProvider Adapter
-    #
-    elcodi.locale_provider_adapter.elcodi.class: Elcodi\Component\Currency\Adapter\LocaleProvider\ElcodiProviderAdapter
-    elcodi.locale_provider_adapter.dummy.class: Elcodi\Component\Currency\Adapter\LocaleProvider\DummyProviderAdapter
-
-    #
     # ExchangeRates Adapter
     #
     elcodi.currency_exchange_rates_provider_adapter.open_exchange_rates.class: Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\OpenExchangeRatesProviderAdapter

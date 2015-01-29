@@ -118,13 +118,13 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
         return [
             'classes',
             'services',
-            'factories',
-            'twig',
-            'repositories',
-            'objectManagers',
             'commands',
             'currencyExchangeRatesProviderAdapters',
             'expressionLanguage',
+            'factories',
+            'objectManagers',
+            'repositories',
+            'twig',
         ];
     }
 
