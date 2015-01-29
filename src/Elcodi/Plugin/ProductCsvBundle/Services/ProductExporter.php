@@ -14,7 +14,7 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Plugin\ProductCsv\Services;
+namespace Elcodi\Plugin\ProductCsvBundle\Services;
 
 use DateTime;
 use Goodby\CSV\Export\Protocol\ExporterInterface;

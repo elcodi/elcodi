@@ -17,8 +17,8 @@ Installation
     $ composer require elcodi-plugins/product-csv
     ```
 
-2. Register the `Elcodi\Plugin\ProductCsv\ProductCsvBundle` in your application `Kernel`.
-3. Add the resource `@ProductCsvBundle/Resources/config/routing.yml` to your `routing.yml`.
+2. Register the `Elcodi\Plugin\ProductCsvBundle\ElcodiProductCsvBundle` in your application `Kernel`.
+3. Add the resource `@ElcodiProductCsvBundle/Resources/config/routing.yml` to your `routing.yml`.
 
 Documentation
 -------------

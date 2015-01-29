@@ -14,19 +14,20 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Plugin\ProductCsv;
+namespace Elcodi\Plugin\ProductCsvBundle;
 
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-use Elcodi\Plugin\ProductCsv\DependencyInjection\ProductCsvExtension;
+use Elcodi\Component\Plugin\Interfaces\PluginInterface;
+use Elcodi\Plugin\ProductCsvBundle\DependencyInjection\ElcodiProductCsvExtension;
 
 /**
- * Class ProductCsvBundle
+ * Class ElcodiProductCsvBundle
  *
  * @author Berny Cantos <be@rny.cc>
  */
-class ProductCsvBundle extends Bundle
+class ElcodiProductCsvBundle extends Bundle implements PluginInterface
 {
     /**
      * Returns the bundle's container extension.
@@ -35,6 +36,6 @@ class ProductCsvBundle extends Bundle
      */
     public function getContainerExtension()
     {
-        return new ProductCsvExtension();
+        return new ElcodiProductCsvExtension();
     }
 }

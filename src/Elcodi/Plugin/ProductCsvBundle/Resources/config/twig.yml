@@ -8,4 +8,4 @@ services:
         calls:
             - [setTemplating, [@twig]]
         tags:
-            - { name: kernel.event_listener, event: bamboo_admin.table_buttons, method: renderButtons }
+            - { name: kernel.event_listener, event: admin.header_actions, method: renderButtons }

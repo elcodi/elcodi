@@ -14,7 +14,7 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Plugin\ProductCsv\Templating;
+namespace Elcodi\Plugin\ProductCsvBundle\Templating;
 
 use Elcodi\Component\Plugin\Interfaces\EventInterface;
 use Elcodi\Component\Plugin\Templating\Traits\TemplatingTrait;
@@ -41,6 +41,6 @@ class TwigRenderer
             return;
         }
 
-        $this->appendTemplate('@ProductCsv/buttons.html.twig', $event);
+        $this->appendTemplate('ElcodiProductCsvBundle::buttons.html.twig', $event);
     }
 }

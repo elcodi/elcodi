@@ -14,16 +14,16 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Plugin\ProductCsv\DependencyInjection;
+namespace Elcodi\Plugin\ProductCsvBundle\DependencyInjection;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 
 /**
- * Class ProductCsvExtension
+ * Class ElcodiProductCsvExtension
  *
  * @author Berny Cantos <be@rny.cc>
  */
-class ProductCsvExtension extends AbstractExtension
+class ElcodiProductCsvExtension extends AbstractExtension
 {
     /**
      * Returns the recommended alias to use in XML.

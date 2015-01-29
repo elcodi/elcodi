@@ -14,7 +14,7 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Plugin\ProductCsv\Controller;
+namespace Elcodi\Plugin\ProductCsvBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -23,8 +23,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
+use Elcodi\Plugin\ProductCsvBundle\Services\ProductExporter;
+
 /**
- * Class Controller for ProductCsv plugin
+ * Class Controller for ElcodiProductCsvBundle plugin
  *
  * @author Berny Cantos <be@rny.cc>
  */
@@ -42,8 +44,11 @@ class CsvController extends Controller
      */
     public function exportAction()
     {
-        $repository = $this->get('elcodi.repository.product');
+        /**
+         * @var ProductExporter $exporter
+         */
         $exporter = $this->get('elcodi_plugin.product_csv.exporter');
+        $repository = $this->get('elcodi.repository.product');
 
         $response = new StreamedResponse();
         $response->setCallback(function () use ($repository, $exporter) {
