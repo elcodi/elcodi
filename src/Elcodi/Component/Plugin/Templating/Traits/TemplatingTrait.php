@@ -47,8 +47,13 @@ trait TemplatingTrait
      *
      * @param string                                             $template
      * @param \Elcodi\Component\Plugin\Interfaces\EventInterface $event
+     * @param array                                              $extraContextParams
      */
-    protected function appendTemplate($template, \Elcodi\Component\Plugin\Interfaces\EventInterface $event)
+    protected function appendTemplate(
+        $template,
+        \Elcodi\Component\Plugin\Interfaces\EventInterface $event,
+        array $extraContextParams = []
+    )
     {
         $event->setContent(
             $event->getContent() .
@@ -56,7 +61,10 @@ trait TemplatingTrait
                 ->twig
                 ->render(
                     $template,
-                    $event->getContext()
+                    array_merge(
+                        $event->getContext(),
+                        $extraContextParams
+                    )
                 )
         );
     }
