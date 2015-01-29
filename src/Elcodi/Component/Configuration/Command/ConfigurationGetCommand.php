@@ -54,11 +54,11 @@ class ConfigurationGetCommand extends Command
     {
         $this
             ->setName('elcodi:configuration:get')
-            ->setDescription('Get an specific configuration value')
+            ->setDescription('Get an specific json_encoded configuration value.')
             ->addArgument(
                 'identifier',
                 InputArgument::REQUIRED,
-                'Template identifier'
+                'Configuration identifier'
             );
     }
 
@@ -74,9 +74,9 @@ class ConfigurationGetCommand extends Command
     {
         $configurationIdentifier = $input->getArgument('identifier');
 
-        $configurationValue = $this
+        $configurationValue = json_encode($this
             ->configurationManager
-            ->get($configurationIdentifier);
+            ->get($configurationIdentifier));
 
         $formatter = $this->getHelper('formatter');
         $formattedLine = $formatter->formatSection(

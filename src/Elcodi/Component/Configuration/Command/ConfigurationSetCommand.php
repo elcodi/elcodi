@@ -58,12 +58,12 @@ class ConfigurationSetCommand extends Command
             ->addArgument(
                 'identifier',
                 InputArgument::REQUIRED,
-                'Template identifier'
+                'Configuration identifier'
             )
             ->addArgument(
                 'value',
                 InputArgument::REQUIRED,
-                'Template name'
+                'Configuration name in a json_encode mode'
             );
     }
 
@@ -78,7 +78,7 @@ class ConfigurationSetCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $configurationIdentifier = $input->getArgument('identifier');
-        $configurationValue = $input->getArgument('value');
+        $configurationValue = json_decode($input->getArgument('value'), true);
 
         $this
             ->configurationManager

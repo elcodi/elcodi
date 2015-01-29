@@ -366,7 +366,7 @@ class ConfigurationManager extends AbstractCacheWrapper
      *
      * @return mixed Configuration value unserialized
      */
-    protected function unserializeValue($configurationValue, $configurationType)
+    public function unserializeValue($configurationValue, $configurationType)
     {
         switch ($configurationType) {
 
