@@ -105,13 +105,9 @@ abstract class AbstractExtension
         if ($configuration instanceof ConfigurationInterface) {
             $config = $container->getExtensionConfig($this->getAlias());
 
-            $tmpContainer = new ContainerBuilder($container->getParameterBag());
-            $tmpContainer->setResourceTracking($container->isTrackingResources());
             $config = $this->processConfiguration($configuration, $config);
             $config = $container->getParameterBag()->resolveValue($config);
-            $this->applyParametrizedValues($config, $tmpContainer);
-
-            $container->merge($tmpContainer);
+            $this->applyParametrizedValues($config, $container);
         }
 
         $this->overrideEntities($container);
