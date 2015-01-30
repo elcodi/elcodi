@@ -13,8 +13,16 @@ services:
             - [setCache, [@doctrine_cache.providers.elcodi_categories]]
             - [setEncoder, [@elcodi.json_encoder]]
 
+    elcodi.core.product.service.category_tree:
+        class: %elcodi.core.product.service.category_tree.class%
+        arguments:
+            category_repository: @elcodi.repository.category
+
     elcodi.category_manager:
         alias: elcodi.core.product.service.category_manager
+
+    elcodi.category_tree:
+            alias:  elcodi.core.product.service.category_tree
 
     elcodi.core.product.service.product_collection_provider:
         class: %elcodi.core.product.service.product_collection_provider.class%

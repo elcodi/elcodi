@@ -4,6 +4,7 @@ parameters:
     # Services
     #
     elcodi.core.product.service.category_manager.class: Elcodi\Component\Product\Services\CategoryManager
+    elcodi.core.product.service.category_tree.class: Elcodi\Component\Product\Services\CategoryTree
     elcodi.core.product.service.product_collection_provider.class: Elcodi\Component\Product\Services\ProductCollectionProvider
 
     #

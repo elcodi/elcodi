@@ -36,10 +36,8 @@ class CategoryRepository extends EntityRepository
         $categories = $this
             ->createQueryBuilder('c')
             ->where('c.root = :root')
-            ->andWhere('c.enabled = :enabled')
             ->setParameters(array(
-                'enabled' => true,
-                'root'    => true,
+                'root' => true,
             ))
             ->getQuery()
             ->getResult();
@@ -50,31 +48,40 @@ class CategoryRepository extends EntityRepository
     /**
      * Get all categories ordered by parent elements and position, ascendant.
      *
-     * @param boolean $loadOnlyCategoriesWithProducts Load only categories with products
-     *
      * @return Collection Category collection
      */
-    public function getAllCategoriesSortedByParentAndPositionAsc($loadOnlyCategoriesWithProducts)
+    public function getAllCategoriesSortedByParentAndPositionAsc()
     {
         /**
          * @var QueryBuilder
          */
         $queryBuilder = $this
             ->createQueryBuilder('c')
-            ->where('c.enabled = :enabled')
             ->addOrderBy('c.parent', 'asc')
-            ->addOrderBy('c.position', 'asc')
-            ->setParameter('enabled', true);
-
-        if ($loadOnlyCategoriesWithProducts) {
-
-            $queryBuilder
-                ->innerJoin('c.products', 'p')
-                ->andWhere('p.stock > 0')
-                ->andWhere('p.enabled = 1');
-        }
+            ->addOrderBy('c.position', 'asc');
 
         $categories = $queryBuilder
+            ->getQuery()
+            ->getResult();
+
+        return new ArrayCollection($categories);
+    }
+
+    /**
+     * Get the children categories given a parent category.
+     *
+     * @param integer $parentCategory The parent category.
+     *
+     * @return ArrayCollection The list of children categories.
+     */
+    public function getChildrenCategories($parentCategory)
+    {
+        $categories = $this
+            ->createQueryBuilder('c')
+            ->where('c.parent = :parent_category')
+            ->setParameters(array(
+                'parent_category' => $parentCategory,
+            ))
             ->getQuery()
             ->getResult();
 
