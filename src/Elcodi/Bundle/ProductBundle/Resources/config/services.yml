@@ -3,23 +3,10 @@ services:
     #
     # Services
     #
-    elcodi.core.product.service.category_manager:
-        class: %elcodi.core.product.service.category_manager.class%
-        arguments:
-            category_repository: @elcodi.repository.category
-            load_only_categories_with_products: %elcodi.core.product.load_only_categories_with_products%
-            key: %elcodi.core.product.cache_key%
-        calls:
-            - [setCache, [@doctrine_cache.providers.elcodi_categories]]
-            - [setEncoder, [@elcodi.json_encoder]]
-
     elcodi.core.product.service.category_tree:
         class: %elcodi.core.product.service.category_tree.class%
         arguments:
             category_repository: @elcodi.repository.category
-
-    elcodi.category_manager:
-        alias: elcodi.core.product.service.category_manager
 
     elcodi.category_tree:
             alias:  elcodi.core.product.service.category_tree
