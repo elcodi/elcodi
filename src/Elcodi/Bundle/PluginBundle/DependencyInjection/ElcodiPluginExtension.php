@@ -90,15 +90,6 @@ class ElcodiPluginExtension extends AbstractExtension
     {
         parent::postLoad($config, $container);
 
-        if (!$container->has($config['hook_system'])) {
-
-            throw new InvalidArgumentException(sprintf(
-                'The config "%s.hook_system" has a dependency on a non-existent service "%s".',
-                $this->getAlias(),
-                $config['hook_system']
-            ));
-        }
-
         $container->setAlias('elcodi.hook_system', $config['hook_system']);
     }
 
