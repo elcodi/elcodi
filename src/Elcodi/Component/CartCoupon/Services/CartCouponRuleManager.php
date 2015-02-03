@@ -18,7 +18,7 @@ namespace Elcodi\Component\CartCoupon\Services;
 
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
-use Elcodi\Component\Rule\Services\RuleManager;
+use Elcodi\Component\Rule\Services\Interfaces\RuleManagerInterface;
 
 /**
  * Class CouponRuleManager
@@ -26,7 +26,7 @@ use Elcodi\Component\Rule\Services\RuleManager;
 class CartCouponRuleManager
 {
     /**
-     * @var RuleManager
+     * @var RuleManagerInterface
      *
      * Rule manager
      */
@@ -35,9 +35,9 @@ class CartCouponRuleManager
     /**
      * Construct method
      *
-     * @param RuleManager $ruleManager Rule manager
+     * @param RuleManagerInterface $ruleManager Rule manager
      */
-    public function __construct(RuleManager $ruleManager)
+    public function __construct(RuleManagerInterface $ruleManager)
     {
         $this->ruleManager = $ruleManager;
     }
@@ -59,15 +59,25 @@ class CartCouponRuleManager
         $rule = $coupon->getRule();
 
         if (null === $rule) {
-            return false;
+            return true;
         }
 
-        return $this->ruleManager->evaluate(
-            $rule,
-            [
-                'cart'   => $cart,
-                'coupon' => $coupon,
-            ]
-        );
+        try {
+
+            return $this
+                ->ruleManager
+                ->evaluate(
+                    $rule,
+                    [
+                        'cart'   => $cart,
+                        'coupon' => $coupon,
+                    ]
+                );
+
+        } catch (\Exception $e) {
+            // Maybe log something in case of exception?
+
+            return false;
+        }
     }
 }

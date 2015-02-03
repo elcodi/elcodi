@@ -19,9 +19,9 @@ namespace Elcodi\Component\CartCoupon\Exception;
 use Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException;
 
 /**
- * Class CouponRulesNotValidateException
+ * Custom CouponAlreadyAppliedException
  */
-class CouponRulesNotValidateException extends AbstractCouponException
+class CouponAlreadyAppliedException extends AbstractCouponException
 {
 
 }

@@ -37,6 +37,7 @@ class CouponFactory extends AbstractPurchasableFactory
      */
     public function create()
     {
+        $now = new DateTime();
         $zeroPrice = $this->createZeroAmountMoney();
 
         /**
@@ -50,10 +51,12 @@ class CouponFactory extends AbstractPurchasableFactory
             ->setAbsolutePrice($zeroPrice)
             ->setMinimumPurchase($zeroPrice)
             ->setEnforcement(ElcodiCouponTypes::ENFORCEMENT_MANUAL)
-            ->setUsed(false)
+            ->setUsed(0)
             ->setPriority(0)
             ->setEnabled(false)
-            ->setCreatedAt(new DateTime());
+            ->setCreatedAt($now)
+            ->setValidFrom($now)
+        ;
 
         return $coupon;
     }

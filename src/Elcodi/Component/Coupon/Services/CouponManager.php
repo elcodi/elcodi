@@ -20,6 +20,7 @@ use DateTime;
 
 use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
+use Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException;
 use Elcodi\Component\Coupon\Exception\CouponAppliedException;
 use Elcodi\Component\Coupon\Exception\CouponBelowMinimumPurchaseException;
 use Elcodi\Component\Coupon\Exception\CouponNotActiveException;
@@ -67,57 +68,6 @@ class CouponManager
     }
 
     /**
-     * Checks whether a coupon can be applied or not.
-     *
-     * @param CouponInterface $coupon Coupon to work with
-     * @param float           $price  Price
-     *
-     * @return boolean Coupon can be applied
-     *
-     * @throws CouponBelowMinimumPurchaseException
-     * @throws CouponAppliedException
-     * @throws CouponNotActiveException
-     */
-    protected function checkCoupon(CouponInterface $coupon, $price)
-    {
-        /**
-         * check if coupon is enabled and not deleted
-         */
-        if (!$coupon->isEnabled()) {
-
-            throw new CouponNotActiveException();
-        }
-
-        $now = new DateTime();
-
-        /**
-         * check if coupon is active
-         */
-        if (($coupon->getValidFrom()) > $now || ($coupon->getValidTo() < $now)) {
-
-            throw new CouponNotActiveException();
-        }
-
-        /**
-         * check if coupon still can be applied
-         */
-        if (($coupon->getCount() - $coupon->getUsed()) < 1) {
-
-            throw new CouponAppliedException();
-        }
-
-        /**
-         * you cannot add this coupon, too cheap
-         */
-        if ($coupon->getMinimumPurchase()->getAmount() > $price) {
-
-            throw new CouponBelowMinimumPurchaseException();
-        }
-
-        return true;
-    }
-
-    /**
      * Creates a new coupon instance, given an existing Coupon as reference
      *
      * You can specify a DateTime new coupon will be valid from.
@@ -144,7 +94,7 @@ class CouponManager
         /**
          * Creates a valid date interval given the referent Coupon
          */
-        if (!($dateFrom instanceof DateTime)) {
+        if (null === $dateFrom) {
 
             $dateFrom = new DateTime();
         }
@@ -176,5 +126,98 @@ class CouponManager
             ->setEnabled(true);
 
         return $couponGenerated;
+    }
+
+    /**
+     * Checks whether a coupon can be applied or not.
+     *
+     * @param CouponInterface $coupon Coupon to work with
+     * @param float           $price  Price
+     *
+     * @return boolean Coupon can be applied
+     *
+     * @throws AbstractCouponException
+     */
+    protected function checkCoupon(CouponInterface $coupon, $price)
+    {
+        if (!$this->IsActive($coupon)) {
+            throw new CouponNotActiveException();
+        }
+
+        if (!$this->canBeUsed($coupon)) {
+            throw new CouponAppliedException();
+        }
+
+        if (!$this->isApplicable($coupon)) {
+            throw new CouponBelowMinimumPurchaseException();
+        }
+
+        /**
+         * check if coupon still can be applied
+         */
+        $count = $coupon->getCount();
+        if (null !== $count && $count > $coupon->getUsed()) {
+
+            throw new CouponAppliedException();
+        }
+
+        /**
+         * you cannot add this coupon, too cheap
+         */
+        if ($coupon->getMinimumPurchase()->getAmount() > $price) {
+
+            throw new CouponBelowMinimumPurchaseException();
+        }
+
+        return true;
+    }
+
+    /**
+     * Check if a coupon is currently active
+     *
+     * @param CouponInterface $coupon Coupon to check activeness
+     * @param DateTime        $now
+     *
+     * @return bool
+     */
+    protected function isActive(CouponInterface $coupon, \DateTime $now = null)
+    {
+        if (!$coupon->isEnabled()) {
+            return false;
+        }
+
+        $now = $now ?: new DateTime();
+        if ($coupon->getValidFrom() > $now) {
+            return false;
+        }
+
+        $validTo = $coupon->getValidTo();
+        if ($validTo && $now > $validTo) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Check if a coupon can be currently used
+     *
+     * @param CouponInterface $coupon
+     *
+     * @return bool
+     */
+    protected function canBeUsed(CouponInterface $coupon)
+    {
+        $count = $coupon->getCount();
+
+        if ($count === null) {
+            return true;
+        }
+
+        if ($coupon->getUsed() < $count) {
+            return true;
+        }
+
+        return false;
     }
 }

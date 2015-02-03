@@ -19,6 +19,7 @@ namespace Elcodi\Bundle\CartCouponBundle\Tests\Functional\EventListener;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
+use Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException;
 use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
 
 /**
@@ -88,10 +89,16 @@ class CartCouponRulesEventListenerTest extends WebTestCase
 
         $cartCouponManager = $this->get('elcodi.cart_coupon_manager');
 
-        $cartCouponManager->addCoupon(
-            $cart,
-            $coupon
-        );
+        try {
+
+            $cartCouponManager->addCoupon(
+                $cart,
+                $coupon
+            );
+
+        } catch (AbstractCouponException $e) {
+            // Silently pass
+        }
 
         $cartCoupons = $cartCouponManager->getCoupons(
             $cart,

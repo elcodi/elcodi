@@ -23,6 +23,10 @@ Elcodi\Component\Coupon\Entity\Coupon:
             column: type
             type: integer
             nullable: false
+        enforcement:
+            column: enforcement
+            type: integer
+            nullable: false
         priceAmount:
             column: price_amount
             type: integer
