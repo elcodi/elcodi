@@ -52,7 +52,7 @@ class CategoryTree
     {
         $categories = $this
             ->categoryRepository
-            ->getAllCategoriesSortedByParentAndPositionAsc();
+            ->getAllCategoriesSortedByParentAndPositionDesc();
 
         $categoryTree = [
             0          => null,

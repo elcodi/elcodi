@@ -46,19 +46,19 @@ class CategoryRepository extends EntityRepository
     }
 
     /**
-     * Get all categories ordered by parent elements and position, ascendant.
+     * Get all categories ordered by parent elements and position, descendent.
      *
      * @return Collection Category collection
      */
-    public function getAllCategoriesSortedByParentAndPositionAsc()
+    public function getAllCategoriesSortedByParentAndPositionDesc()
     {
         /**
          * @var QueryBuilder
          */
         $queryBuilder = $this
             ->createQueryBuilder('c')
-            ->addOrderBy('c.parent', 'asc')
-            ->addOrderBy('c.position', 'asc');
+            ->addOrderBy('c.parent', 'desc')
+            ->addOrderBy('c.position', 'desc');
 
         $categories = $queryBuilder
             ->getQuery()
