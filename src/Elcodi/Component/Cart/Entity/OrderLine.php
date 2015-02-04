@@ -32,8 +32,7 @@ use Elcodi\Component\StateTransitionMachine\Entity\Traits\StateLinesTrait;
  */
 class OrderLine implements OrderLineInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         PurchasableWrapperTrait,
         PriceTrait,
         DimensionsTrait,

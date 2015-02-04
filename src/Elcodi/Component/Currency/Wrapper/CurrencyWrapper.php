@@ -65,8 +65,7 @@ class CurrencyWrapper
         CurrencySessionManager $currencySessionManager,
         CurrencyRepository $currencyRepository,
         $defaultCurrencyIsoCode
-    )
-    {
+    ) {
         $this->currencySessionManager = $currencySessionManager;
         $this->currencyRepository = $currencyRepository;
         $this->defaultCurrencyIsoCode = $defaultCurrencyIsoCode;
@@ -101,7 +100,6 @@ class CurrencyWrapper
          * Tries to load currency saved in session
          */
         if ($currencyIdInSession) {
-
             $this->currency = $this
                 ->currencyRepository
                 ->find($currencyIdInSession);
@@ -122,7 +120,6 @@ class CurrencyWrapper
             ]);
 
         if ($this->currency instanceof CurrencyInterface) {
-
             $this->currencySessionManager->set($this->currency);
 
             return $this->currency;
@@ -154,7 +151,6 @@ class CurrencyWrapper
             ]);
 
         if (!($defaultCurrency instanceof CurrencyInterface)) {
-
             throw new \LogicException(
                 sprintf('Default currency object for ISO code "%s" not found', $this->defaultCurrencyIsoCode)
             );

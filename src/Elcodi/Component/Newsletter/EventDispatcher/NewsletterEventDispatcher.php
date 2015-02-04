@@ -41,7 +41,6 @@ class NewsletterEventDispatcher extends AbstractEventDispatcher
             ElcodiNewsletterEvents::NEWSLETTER_SUBSCRIBE,
             $newsletterSubscriptionEvent
         );
-
     }
 
     /**

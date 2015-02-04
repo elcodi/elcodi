@@ -66,8 +66,7 @@ class CurrencyConverter
     public function __construct(
         CurrencyManager $currencyManager,
         $currencyBase
-    )
-    {
+    ) {
         $this->currencyManager = $currencyManager;
         $this->currencyBase = $currencyBase;
     }
@@ -89,8 +88,7 @@ class CurrencyConverter
     public function convertMoney(
         MoneyInterface $money,
         CurrencyInterface $currencyTo
-    )
-    {
+    ) {
         $currencyFrom = $money->getCurrency();
         $amount = $money->getAmount();
 
@@ -120,8 +118,7 @@ class CurrencyConverter
         CurrencyInterface $currencyFrom,
         CurrencyInterface $currencyTo,
         $amount
-    )
-    {
+    ) {
         if ($currencyFrom->getIso() == $currencyTo->getIso()) {
             return Money::create($amount, $currencyFrom);
         }
@@ -154,8 +151,7 @@ class CurrencyConverter
         $currencyFromIso,
         $currencyToIso,
         $amount
-    )
-    {
+    ) {
         /**
          * If none of given Money is baseCurrency, means we'll need to perform
          * two partial conversions
@@ -191,9 +187,7 @@ class CurrencyConverter
     protected function convertToIso($currencyToIso, $amount, $type)
     {
         if (isset($this->currencyManager->getExchangeRateList()[$currencyToIso])) {
-
             $currencyRate = $this->currencyManager->getExchangeRateList()[$currencyToIso];
-
         } else {
 
             /**

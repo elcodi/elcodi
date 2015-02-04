@@ -89,7 +89,6 @@ class VariantTest extends PHPUnit_Framework_TestCase
          */
         $variant->addOption($option3);
         $this->assertProductAttributeCollectionSizeIs($product, 2);
-
     }
 
     /**
@@ -145,7 +144,6 @@ class VariantTest extends PHPUnit_Framework_TestCase
         $variant->setProduct($product);
 
         if ($initializeCollection) {
-
             $reflectedVariantOptions = new \ReflectionProperty(
                 'Elcodi\Component\Product\Entity\Variant',
                 'options'
@@ -215,12 +213,10 @@ class VariantTest extends PHPUnit_Framework_TestCase
         $optionCollection = new ArrayCollection();
 
         while ($size--) {
-
             $option = new Value();
             $option->setAttribute($attribute);
 
             $optionCollection->add($option);
-
         }
 
         return $optionCollection;

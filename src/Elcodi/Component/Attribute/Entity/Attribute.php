@@ -29,8 +29,7 @@ use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
  */
 class Attribute implements AttributeInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         DateTimeTrait,
         EnabledTrait;
 
@@ -133,5 +132,4 @@ class Attribute implements AttributeInterface
     {
         return $this->name;
     }
-
 }

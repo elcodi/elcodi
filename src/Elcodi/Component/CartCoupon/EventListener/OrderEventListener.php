@@ -73,8 +73,7 @@ class OrderEventListener
         CartCouponManager $cartCouponManager,
         OrderCouponManager $orderCouponManager,
         ObjectManager $orderCouponObjectManager
-    )
-    {
+    ) {
         $this->orderCouponEventDispatcher = $orderCouponEventDispatcher;
         $this->cartCouponManager = $cartCouponManager;
         $this->orderCouponManager = $orderCouponManager;
@@ -141,9 +140,7 @@ class OrderEventListener
             ->getOrderCoupons($order);
 
         if ($orderCoupons instanceof Collection) {
-
             foreach ($orderCoupons as $orderCoupon) {
-
                 $this
                     ->orderCouponObjectManager
                     ->remove($orderCoupon);

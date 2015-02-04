@@ -80,8 +80,7 @@ abstract class AbstractConfiguration implements ConfigurationInterface
         $entityMappingFile,
         $entityManager,
         $entityEnabled
-    )
-    {
+    ) {
         $builder = new TreeBuilder();
         $node = $builder->root($nodeName);
 

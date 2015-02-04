@@ -51,6 +51,5 @@ class CommentParserTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('# Hi!', $comment->getContent());
         $this->assertEquals('<h1>Hi!</h1>', $comment->getParsedContent());
         $this->assertEquals('adapter', $comment->getParsingType());
-
     }
 }

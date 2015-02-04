@@ -23,5 +23,4 @@ use Elcodi\Component\Newsletter\Exception\Abstracts\AbstractNewsletterException;
  */
 class NewsletterCannotBeAddedException extends AbstractNewsletterException
 {
-
 }

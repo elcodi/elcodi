@@ -84,8 +84,7 @@ class ImageExtension extends Twig_Extension
         $imageViewControllerRouteName,
         $imageDomainShardingEnabled,
         $imageDomainShardingBaseUrls
-    )
-    {
+    ) {
         $this->router = $router;
         $this->imageResizeControllerRouteName = $imageResizeControllerRouteName;
         $this->imageViewControllerRouteName = $imageViewControllerRouteName;
@@ -174,7 +173,9 @@ class ImageExtension extends Twig_Extension
      */
     protected function randomizeBaseUrls($path)
     {
-        if ($this->generateAbsolutePath) return $path;
+        if ($this->generateAbsolutePath) {
+            return $path;
+        }
 
         $hostNames = $this->imageDomainShardingBaseUrls;
         /*

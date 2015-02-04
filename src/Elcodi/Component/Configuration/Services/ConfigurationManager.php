@@ -81,8 +81,7 @@ class ConfigurationManager extends AbstractCacheWrapper
         ConfigurationFactory $configurationFactory,
         ParameterBagInterface $parameterBag,
         array $configurationElements
-    )
-    {
+    ) {
         $this->configurationObjectManager = $configurationObjectManager;
         $this->configurationRepository = $configurationRepository;
         $this->configurationFactory = $configurationFactory;
@@ -103,8 +102,7 @@ class ConfigurationManager extends AbstractCacheWrapper
     public function set(
         $configurationIdentifier,
         $configurationValue
-    )
-    {
+    ) {
         list($configurationNamespace, $configurationKey) = $this->splitConfigurationKey($configurationIdentifier);
 
         /**
@@ -115,7 +113,6 @@ class ConfigurationManager extends AbstractCacheWrapper
             isset($this->configurationElements[$configurationIdentifier]) &&
             $this->configurationElements[$configurationIdentifier]['read_only'] === true
         ) {
-
             throw new ConfigurationNotEditableException();
         }
 
@@ -125,7 +122,6 @@ class ConfigurationManager extends AbstractCacheWrapper
         );
 
         if (!($configurationLoaded instanceof ConfigurationInterface)) {
-
             $configurationLoaded = $this
                 ->createConfigurationInstance(
                     $configurationIdentifier,
@@ -134,7 +130,6 @@ class ConfigurationManager extends AbstractCacheWrapper
                     $configurationValue
                 );
         } else {
-
             $serializedValue = $this->serializeValue(
                 $configurationValue,
                 $configurationLoaded->getType()
@@ -186,16 +181,14 @@ class ConfigurationManager extends AbstractCacheWrapper
         );
 
         if (!($configurationLoaded instanceof ConfigurationInterface)) {
-
             $configurationElement = $this->configurationElements[$configurationIdentifier];
             $configurationValue = isset($configurationElement['reference'])
                 ? $this->parameterBag->get($configurationElement['reference'])
                 : $configurationElement['default_value'];
 
             if (empty($configurationValue) && !$configurationElement['can_be_empty']) {
-
                 $message = $configurationElement['empty_message']
-                    ?: 'The configuration element "' . $configurationIdentifier . '" cannot be resolved';
+                    ?: 'The configuration element "'.$configurationIdentifier.'" cannot be resolved';
 
                 throw new Exception($message);
             }
@@ -230,8 +223,7 @@ class ConfigurationManager extends AbstractCacheWrapper
     protected function loadConfiguration(
         $configurationNamespace,
         $configurationKey
-    )
-    {
+    ) {
         $configurationEntity = $this
             ->configurationRepository
             ->find([
@@ -279,15 +271,13 @@ class ConfigurationManager extends AbstractCacheWrapper
         $configurationNamespace,
         $configurationKey,
         $configurationValue
-    )
-    {
+    ) {
         /**
          * Value is not found on database. We can just check if the value is
          * defined in the configuration elements, and we can generate new entry
          * for our database
          */
         if (!$this->configurationElements[$configurationIdentifier]) {
-
             throw new ConfigurationParameterNotFoundException();
         }
 
@@ -322,8 +312,7 @@ class ConfigurationManager extends AbstractCacheWrapper
     protected function flushConfigurationToCache(
         ConfigurationInterface $configuration,
         $configurationIdentifier
-    )
-    {
+    ) {
         $configurationValue = $this->unserializeValue(
             $configuration->getValue(),
             $configuration->getType()
@@ -351,7 +340,6 @@ class ConfigurationManager extends AbstractCacheWrapper
         $configurationIdentifier = explode('.', $configurationIdentifier, 2);
 
         if (count($configurationIdentifier) === 1) {
-
             array_unshift($configurationIdentifier, '');
         }
 

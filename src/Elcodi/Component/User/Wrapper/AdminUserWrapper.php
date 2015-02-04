@@ -62,8 +62,7 @@ class AdminUserWrapper
     public function __construct(
         AdminUserFactory $adminUserFactory,
         TokenStorageInterface $tokenStorage = null
-    )
-    {
+    ) {
         $this->adminUserFactory = $adminUserFactory;
         $this->tokenStorage = $tokenStorage;
     }
@@ -117,11 +116,8 @@ class AdminUserWrapper
             : null;
 
         if ($token instanceof UsernamePasswordToken) {
-
             $this->adminUser = $token->getUser();
-
         } else {
-
             $this->adminUser = $this->adminUserFactory->create();
         }
 

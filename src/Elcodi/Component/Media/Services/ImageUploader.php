@@ -59,8 +59,7 @@ class ImageUploader
         ObjectManager $imageObjectManager,
         FileManager $fileManager,
         ImageManager $imageManager
-    )
-    {
+    ) {
         $this->imageObjectManager = $imageObjectManager;
         $this->fileManager = $fileManager;
         $this->imageManager = $imageManager;

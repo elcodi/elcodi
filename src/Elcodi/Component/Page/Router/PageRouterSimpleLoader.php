@@ -61,8 +61,7 @@ class PageRouterSimpleLoader implements LoaderInterface
         $routeName,
         $routePath,
         $controller
-    )
-    {
+    ) {
         $this->routeName = $routeName;
         $this->routePath = $routePath;
         $this->controller = $controller;

@@ -23,5 +23,4 @@ use Elcodi\Component\StateTransitionMachine\Exception\Abstracts\AbstractTransiti
  */
 class TransitionNotAccessibleException extends AbstractTransitionException
 {
-
 }

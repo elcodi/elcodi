@@ -50,8 +50,7 @@ class LanguageExtension extends Twig_Extension
     public function __construct(
         LanguageManager $languageManager,
         $masterLocale
-    )
-    {
+    ) {
         $this->languageManager = $languageManager;
         $this->masterLocale = $masterLocale;
     }

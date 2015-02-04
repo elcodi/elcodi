@@ -67,8 +67,7 @@ class OrderLineEventListenerTest extends WebTestCase
         $stock,
         $quantity,
         $finalStock
-    )
-    {
+    ) {
         /**
          * @var CartOrderTransformer $cartOrderTransformer
          */

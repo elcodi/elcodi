@@ -52,8 +52,7 @@ abstract class AbstractUserManager
     public function __construct(
         EventDispatcherInterface $eventDispatcher,
         TokenStorageInterface $securityContext = null
-    )
-    {
+    ) {
         $this->eventDispatcher = $eventDispatcher;
         $this->tokenStorage = $securityContext;
     }

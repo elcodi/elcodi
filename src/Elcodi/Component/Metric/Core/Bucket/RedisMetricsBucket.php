@@ -121,8 +121,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
     protected function incrementPointerByKey(
         $key,
         $hashKey
-    )
-    {
+    ) {
         $this
             ->redis
             ->hIncrBy(

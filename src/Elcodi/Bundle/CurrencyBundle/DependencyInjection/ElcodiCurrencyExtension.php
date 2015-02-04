@@ -41,7 +41,7 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
      */
     public function getConfigFilesLocation()
     {
-        return __DIR__ . '/../Resources/config';
+        return __DIR__.'/../Resources/config';
     }
 
     /**
@@ -98,7 +98,6 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
          * OpenExchangeRates
          */
         if ($config['rates_provider']['open_exchange_rates']) {
-
             $result['elcodi.core.currency.rates_provider_api_id'] = $config['rates_provider']['open_exchange_rates']['api_id'];
             $result['elcodi.core.currency.rates_provider_endpoint'] = $config['rates_provider']['open_exchange_rates']['endpoint'];
         }

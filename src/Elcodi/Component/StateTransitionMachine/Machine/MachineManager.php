@@ -69,8 +69,7 @@ class MachineManager
         MachineInterface $machine,
         EventDispatcherInterface $eventDispatcher,
         StateLineFactory $stateLineFactory
-    )
-    {
+    ) {
         $this->machine = $machine;
         $this->eventDispatcher = $eventDispatcher;
         $this->stateLineFactory = $stateLineFactory;
@@ -89,7 +88,6 @@ class MachineManager
     public function initialize(StatefulInterface $object, $description)
     {
         if ($object->getLastStateLine() instanceof StateLineInterface) {
-
             throw new ObjectAlreadyInitializedException();
         }
 
@@ -129,12 +127,10 @@ class MachineManager
         StatefulInterface $object,
         $transitionName,
         $description
-    )
-    {
+    ) {
         $startState = $object->getLastStateLine();
 
         if (!($startState instanceof StateLineInterface)) {
-
             throw new ObjectNotInitializedException();
         }
 
@@ -177,12 +173,10 @@ class MachineManager
         StatefulInterface $object,
         $transitionName,
         $description
-    )
-    {
+    ) {
         $startState = $object->getLastStateLine();
 
         if (!($startState instanceof StateLineInterface)) {
-
             throw new ObjectNotInitializedException();
         }
 
@@ -239,8 +233,7 @@ class MachineManager
     protected function dispatchInitializationEvents(
         MachineInterface $machine,
         StatefulInterface $object
-    )
-    {
+    ) {
         $this
             ->eventDispatcher
             ->dispatch(
@@ -268,8 +261,7 @@ class MachineManager
         MachineInterface $machine,
         StatefulInterface $object,
         Transition $transition
-    )
-    {
+    ) {
         $this
             ->eventDispatcher
             ->dispatch(

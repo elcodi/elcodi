@@ -31,8 +31,7 @@ use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
  */
 class Coupon implements CouponInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         DateTimeTrait,
         EnabledTrait,
         ValidIntervalTrait;

@@ -38,8 +38,7 @@ class OrderCouponEventDispatcher extends AbstractEventDispatcher
     public function dispatchOrderCouponOnApplyEvent(
         OrderInterface $cart,
         CouponInterface $coupon
-    )
-    {
+    ) {
         $event = new OrderCouponOnApplyEvent(
             $cart,
             $coupon

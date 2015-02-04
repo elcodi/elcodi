@@ -26,8 +26,7 @@ use Elcodi\Component\Media\Entity\Interfaces\MediaInterface;
  */
 abstract class Media implements MediaInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         EnabledTrait,
         DateTimeTrait;
 

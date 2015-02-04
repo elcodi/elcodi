@@ -90,7 +90,7 @@ class ConfigurationSetCommand extends Command
         $formatter = $this->getHelper('formatter');
         $formattedLine = $formatter->formatSection(
             'OK',
-            'Saved configuration "' . $configurationIdentifier . '"'
+            'Saved configuration "'.$configurationIdentifier.'"'
         );
 
         $output->writeln($formattedLine);

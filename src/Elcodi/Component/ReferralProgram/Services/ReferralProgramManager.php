@@ -167,8 +167,7 @@ class ReferralProgramManager
         CustomerRepository $customerRepository,
         $purgeDisabledLines,
         $autoReferralAssignment
-    )
-    {
+    ) {
         $this->eventDispatcher = $eventDispatcher;
         $this->referralRuleRepository = $referralRuleRepository;
         $this->referralLineRepository = $referralLineRepository;
@@ -206,7 +205,6 @@ class ReferralProgramManager
          * If any referral rule is defined, throw exception
          */
         if (!($referralRule instanceof ReferralRule)) {
-
             throw new ReferralProgramRuleNotFoundException();
         }
 
@@ -217,7 +215,6 @@ class ReferralProgramManager
 
         foreach ($invitations as $invitation) {
             if ($invitation instanceof InvitationInterface) {
-
                 try {
                     $source = $invitation->getSource()
                         ? $invitation->getSource()
@@ -237,10 +234,8 @@ class ReferralProgramManager
                     );
 
                     $invitationBag->addSentInvitation($invitation);
-
                 } catch (ReferralProgramLineExistsException $e) {
                     $invitationBag->addErrorInvitation($invitation);
-
                 } catch (ReferralProgramEmailIsUserException $e) {
                     $invitationBag->addErrorInvitation($invitation);
                 }
@@ -292,7 +287,6 @@ class ReferralProgramManager
             ->getReferralHashByHash($hash);
 
         if (!($referralHash instanceof ReferralHashInterface)) {
-
             $referralLines = new ArrayCollection();
             $referralLine = $this
                 ->referralLineRepository
@@ -309,7 +303,7 @@ class ReferralProgramManager
                  * $autoReferralAssignment is true
                  */
                 if (!$this->autoReferralAssignment) {
-                    return null;
+                    return;
                 }
 
                 $referralLines = $this
@@ -324,12 +318,11 @@ class ReferralProgramManager
                  * is not invited and the hash is trying to use is not valid.
                  */
                 if (!($referralLines instanceof ArrayCollection) || $referralLines->count() > 1) {
-                    return null;
+                    return;
                 }
 
                 $referralLine = $referralLines->first();
             }
-
         } else {
 
             /**
@@ -354,7 +347,6 @@ class ReferralProgramManager
         $purgeDisabledLines = $this->purgeDisabledLines;
 
         if (!$referralLines->isEmpty()) {
-
             $referralLines->removeElement($referralLine);
             $referralLines->map(function (ReferralLineInterface $otherReferralLine) use ($purgeDisabledLines, $manager) {
 
@@ -370,13 +362,12 @@ class ReferralProgramManager
          * ReferralLine is not created, so we create new one with type direct
          */
         if (!($referralLine instanceof ReferralLineInterface)) {
-
             $referralRule = $this
                 ->referralRuleRepository
                 ->findEnabledReferralRule();
 
             if (!($referralRule instanceof ReferralRuleInterface)) {
-                return null;
+                return;
             }
 
             $referralLine = $this->referralLineFactory->create();
@@ -422,8 +413,7 @@ class ReferralProgramManager
         ReferralRuleInterface $referralRule,
         CustomerInterface $referrer,
         InvitationInterface $invitation
-    )
-    {
+    ) {
         $referralHash = $this
             ->referralHashManager
             ->getReferralHashByCustomer($referrer);
@@ -433,7 +423,6 @@ class ReferralProgramManager
          * is enabled. If it is, we skip this email.
          */
         if ($this->purgeDisabledLines) {
-
             $enabledReferralLine = $this->referralLineRepository->findOneBy(array(
                 'enabled'      => true,
                 'invitedEmail' => $invitation->getEmail(),
@@ -451,7 +440,7 @@ class ReferralProgramManager
             ->referralLineRepository
             ->findOneBy(array(
                 'invitedEmail' => $invitation->getEmail(),
-                'referralHash' => $referralHash
+                'referralHash' => $referralHash,
             ));
         if ($referralLine instanceof ReferralLine) {
             throw new ReferralProgramLineExistsException();

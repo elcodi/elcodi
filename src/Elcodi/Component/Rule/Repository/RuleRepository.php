@@ -36,5 +36,4 @@ class RuleRepository extends EntityRepository
     {
         return parent::findOneBy(['name' => $name]);
     }
-
 }

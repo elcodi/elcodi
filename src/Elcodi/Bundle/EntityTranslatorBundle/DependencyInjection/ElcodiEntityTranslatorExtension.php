@@ -40,7 +40,7 @@ class ElcodiEntityTranslatorExtension extends AbstractExtension implements Entit
      */
     public function getConfigFilesLocation()
     {
-        return __DIR__ . '/../Resources/config';
+        return __DIR__.'/../Resources/config';
     }
 
     /**
@@ -85,7 +85,7 @@ class ElcodiEntityTranslatorExtension extends AbstractExtension implements Entit
             "elcodi.core.entity_translator.cache_prefix"                           => $config['cache_prefix'],
             "elcodi.core.entity_translator.auto_translate"                         => $config['auto_translate'],
             "elcodi.core.entity_translator.language_master_locale"                 => $config['language']['master_locale'],
-            "elcodi.core.entity_translator.language_fallback"                      => $config['language']['fallback']
+            "elcodi.core.entity_translator.language_fallback"                      => $config['language']['fallback'],
         ];
     }
 
@@ -106,7 +106,7 @@ class ElcodiEntityTranslatorExtension extends AbstractExtension implements Entit
             'services',
             'eventDispatchers',
             'eventListeners',
-            ['autoloadEventListeners', $config['auto_translate']]
+            ['autoloadEventListeners', $config['auto_translate']],
         ];
     }
 

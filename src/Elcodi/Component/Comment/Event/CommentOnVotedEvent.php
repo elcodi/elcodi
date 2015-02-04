@@ -50,8 +50,7 @@ class CommentOnVotedEvent extends AbstractCommentEvent
         CommentInterface $comment,
         VoteInterface $vote,
         $edited
-    )
-    {
+    ) {
         parent::__construct($comment);
 
         $this->vote = $vote;

@@ -142,7 +142,6 @@ class ReferralProgramManagerTest extends WebTestCase
 
         $this->assertCount(5, $referralLines);
         foreach ($referralLines as $referralLine) {
-
             $this->assertInstanceOf('Elcodi\Component\ReferralProgram\Entity\ReferralLine', $referralLine);
             $this->assertNull($referralLine->getInvited());
             $this->assertEquals($referralLine->getSource(), ElcodiReferralProgramSources::EMAIL);

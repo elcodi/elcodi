@@ -23,5 +23,4 @@ use Exception;
  */
 abstract class AbstractTransitionException extends Exception
 {
-
 }

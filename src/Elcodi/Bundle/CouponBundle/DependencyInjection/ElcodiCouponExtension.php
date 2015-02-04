@@ -40,7 +40,7 @@ class ElcodiCouponExtension extends AbstractExtension implements EntitiesOverrid
      */
     public function getConfigFilesLocation()
     {
-        return __DIR__ . '/../Resources/config';
+        return __DIR__.'/../Resources/config';
     }
 
     /**

@@ -49,8 +49,7 @@ abstract class AbstractResizeAdapterTest extends PHPUnit_Framework_TestCase
         $definedWidth,
         $expectedHeight,
         $expectedWidth
-    )
-    {
+    ) {
         $imagePath = tempnam(sys_get_temp_dir(), '_test');
         $image = imagecreate($originalWidth, $originalHeight);
         $background = imagecolorallocate($image, 255, 255, 255);

@@ -34,8 +34,7 @@ class ZoneCountryMember extends ZoneMember implements ZoneCountryMemberInterface
     public function __construct(
         ZoneInterface $zone,
         CountryInterface $country
-    )
-    {
+    ) {
         $this->zone = $zone;
         $this->country = $country;
     }

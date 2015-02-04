@@ -160,7 +160,7 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
                             'nbDownVotes'    => 1,
                         ],
                         'children' => [],
-                    ]
+                    ],
                 ],
             ],
             [
@@ -191,9 +191,9 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
                             'nbDownVotes'    => 1,
                         ],
                         'children' => [],
-                    ]
+                    ],
                 ],
-            ]
+            ],
         ], $comments);
     }
 

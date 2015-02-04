@@ -80,8 +80,7 @@ class CommentManager extends AbstractCacheWrapper
         CommentRepository $commentRepository,
         CommentFactory $commentFactory,
         CommentParser $commentParser
-    )
-    {
+    ) {
         $this->commentEventDispatcher = $commentEventDispatcher;
         $this->commentObjectManager = $commentObjectManager;
         $this->commentRepository = $commentRepository;
@@ -104,8 +103,7 @@ class CommentManager extends AbstractCacheWrapper
         $content,
         AbstractUserInterface $author,
         CommentInterface $parent = null
-    )
-    {
+    ) {
         $comment = $this
             ->commentFactory
             ->create()
@@ -145,8 +143,7 @@ class CommentManager extends AbstractCacheWrapper
     public function editComment(
         CommentInterface $comment,
         $content
-    )
-    {
+    ) {
         $comment->setContent($content);
 
         $comment = $this

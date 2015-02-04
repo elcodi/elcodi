@@ -118,8 +118,7 @@ class TranslatableFieldType extends AbstractType
         array $locales,
         $masterLocale,
         $fallback
-    )
-    {
+    ) {
         $this->translationProvider = $entityTranslationProvider;
         $this->formConfig = $formConfig;
         $this->entity = $entity;
@@ -152,8 +151,7 @@ class TranslatableFieldType extends AbstractType
             ->getName();
 
         foreach ($this->locales as $locale) {
-
-            $translatedFieldName = $locale . '_' . $this->fieldName;
+            $translatedFieldName = $locale.'_'.$this->fieldName;
 
             $entityId = $this->entity->$entityIdGetter();
             $translationData = $entityId

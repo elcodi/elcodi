@@ -85,7 +85,7 @@ class CurrencyExchangeRatesData extends AbstractFixture implements DependentFixt
         $manager->flush([
             $dollarToEuroRate,
             $dollarToPoundRate,
-            $dollarToIenRate
+            $dollarToIenRate,
         ]);
     }
 

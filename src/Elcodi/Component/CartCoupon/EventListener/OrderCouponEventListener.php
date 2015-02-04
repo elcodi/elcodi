@@ -61,8 +61,7 @@ class OrderCouponEventListener
         ObjectManager $orderCouponObjectManager,
         CouponEventDispatcher $couponEventDispatcher,
         OrderCouponFactory $orderCouponFactory
-    )
-    {
+    ) {
         $this->orderCouponObjectManager = $orderCouponObjectManager;
         $this->couponEventDispatcher = $couponEventDispatcher;
         $this->orderCouponFactory = $orderCouponFactory;

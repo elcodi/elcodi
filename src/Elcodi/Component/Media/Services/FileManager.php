@@ -56,8 +56,7 @@ class FileManager
     public function __construct(
         Filesystem $fileSystem,
         FileIdentifierTransformerInterface $fileIdentifierTransformer
-    )
-    {
+    ) {
         $this->filesystem = $fileSystem;
         $this->fileIdentifierTransformer = $fileIdentifierTransformer;
     }

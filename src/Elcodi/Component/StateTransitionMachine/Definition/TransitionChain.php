@@ -138,8 +138,7 @@ class TransitionChain
     public function getTransitionByStartingStateAndTransitionName(
         $stateName,
         $transitionName
-    )
-    {
+    ) {
         $transition = array_filter(
             $this->transitions,
             function (Transition $transition) use ($stateName, $transitionName) {
@@ -165,8 +164,7 @@ class TransitionChain
     public function getTransitionByStartingStateAndFinalState(
         $startStateName,
         $finalStateName
-    )
-    {
+    ) {
         $transition = array_filter(
             $this->transitions,
             function (Transition $transition) use ($startStateName, $finalStateName) {

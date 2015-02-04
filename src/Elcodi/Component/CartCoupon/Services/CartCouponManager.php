@@ -76,17 +76,16 @@ class CartCouponManager
      * Construct method
      *
      * @param CartCouponEventDispatcher $cartCouponEventDispatcher
-     * @param CouponManager $couponManager
-     * @param CouponRepository $couponRepository
-     * @param CartCouponRepository $cartCouponRepository
+     * @param CouponManager             $couponManager
+     * @param CouponRepository          $couponRepository
+     * @param CartCouponRepository      $cartCouponRepository
      */
     public function __construct(
         CartCouponEventDispatcher $cartCouponEventDispatcher,
         CouponManager $couponManager,
         CouponRepository $couponRepository,
         CartCouponRepository $cartCouponRepository
-    )
-    {
+    ) {
         $this->cartCouponEventDispatcher = $cartCouponEventDispatcher;
         $this->couponManager = $couponManager;
         $this->couponRepository = $couponRepository;
@@ -250,7 +249,6 @@ class CartCouponManager
         }
 
         foreach ($cartCoupons as $cartCoupon) {
-
             $this
                 ->cartCouponEventDispatcher
                 ->dispatchCartCouponOnRemoveEvent(

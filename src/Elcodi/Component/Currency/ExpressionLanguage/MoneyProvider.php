@@ -77,7 +77,6 @@ class MoneyProvider implements ExpressionFunctionProviderInterface
                         $currency = $this
                             ->currencyWrapper
                             ->getDefaultCurrency();
-
                     } else {
                         $currency = $this
                             ->repository

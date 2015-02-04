@@ -83,8 +83,7 @@ class NewsletterManager
         NewsletterSubscriptionFactory $newsletterSubscriptionFactory,
         NewsletterSubscriptionRepository $newsletterSubscriptionRepository,
         GeneratorInterface $hashGenerator
-    )
-    {
+    ) {
         $this->newsletterEventDispatcher = $newsletterEventDispatcher;
         $this->validator = $validator;
         $this->newsletterSubscriptionFactory = $newsletterSubscriptionFactory;
@@ -105,14 +104,12 @@ class NewsletterManager
     public function subscribe($email, LanguageInterface $language = null)
     {
         if (!$this->validateEmail($email)) {
-
             throw new NewsletterCannotBeAddedException();
         }
 
         $newsletterSubscription = $this->getSubscription($email);
 
         if (!($newsletterSubscription instanceof NewsletterSubscriptionInterface)) {
-
             $newsletterSubscription = $this->newsletterSubscriptionFactory->create();
             $newsletterSubscription
                 ->setEmail($email)
@@ -144,7 +141,6 @@ class NewsletterManager
     public function unSubscribe($email, $hash, LanguageInterface $language = null, $reason = null)
     {
         if (!$this->validateEmail($email)) {
-
             throw new NewsletterCannotBeRemovedException();
         }
 
@@ -154,7 +150,6 @@ class NewsletterManager
         );
 
         if ($language instanceof LanguageInterface) {
-
             $conditions['language'] = $language;
         }
 
@@ -163,7 +158,6 @@ class NewsletterManager
             ->findOneBy($conditions);
 
         if (!($newsletterSubscription instanceof NewsletterSubscriptionInterface)) {
-
             throw new NewsletterCannotBeRemovedException();
         }
 
@@ -204,7 +198,7 @@ class NewsletterManager
         return $this
             ->newsletterSubscriptionRepository
             ->findOneBy(array(
-                'email' => $email
+                'email' => $email,
             ));
     }
 

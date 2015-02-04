@@ -45,7 +45,7 @@ trait ContainerAccessorTrait
     {
         return $this
             ->container
-            ->get('elcodi.object_manager.' . $entityName);
+            ->get('elcodi.object_manager.'.$entityName);
     }
 
     /**
@@ -59,7 +59,7 @@ trait ContainerAccessorTrait
     {
         return $this
             ->container
-            ->get('elcodi.repository.' . $entityName);
+            ->get('elcodi.repository.'.$entityName);
     }
 
     /**
@@ -73,7 +73,7 @@ trait ContainerAccessorTrait
     {
         return $this
             ->container
-            ->get('elcodi.factory.' . $entityName);
+            ->get('elcodi.factory.'.$entityName);
     }
 
     /**

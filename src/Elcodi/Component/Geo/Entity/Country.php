@@ -147,7 +147,6 @@ class Country implements CountryInterface, ZoneMemberAssignableInterface
     public function addState(StateInterface $state)
     {
         if (!$this->states->contains($state)) {
-
             $this
                 ->states
                 ->add($state);

@@ -41,8 +41,7 @@ class OrderLineEventDispatcher extends AbstractEventDispatcher
         OrderInterface $order,
         CartLineInterface $cartLine,
         OrderLineInterface $orderLine
-    )
-    {
+    ) {
         $orderLineOnCreatedEvent = new OrderLineOnCreatedEvent(
             $order,
             $cartLine,
