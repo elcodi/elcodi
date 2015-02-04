@@ -129,7 +129,8 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",
-        "mmoreram/php-formatter": "~1.0"
+        "mmoreram/php-formatter": "1.0.4",
+        "fabpot/php-cs-fixer": "1.4.2"
     },
     "suggest": {
         "guzzle/http": "Required for OpenExchangeRates adapter"
@@ -138,6 +139,9 @@
         "psr-4": {
             "Elcodi\\": "src/Elcodi"
         }
+    },
+    "config": {
+        "bin-dir": "bin"
     },
     "extra": {
         "branch-alias": {
