@@ -75,8 +75,7 @@ abstract class AbstractMailer
         $layout,
         $template,
         $fromEmail
-    )
-    {
+    ) {
         $this->templatingEngine = $templatingEngine;
         $this->mailer = $mailer;
         $this->layout = $layout;
@@ -97,8 +96,7 @@ abstract class AbstractMailer
         $subject,
         $receiverEmail,
         array $context = array()
-    )
-    {
+    ) {
         $message = Swift_Message::newInstance()
             ->setSubject($subject)
             ->setFrom($this->fromEmail)

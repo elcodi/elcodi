@@ -35,7 +35,7 @@ class PasswordRecoverMailer extends AbstractMailer
             'Password recover email',
             $event->getUser()->getEmail(),
             [
-                'user' => $event->getUser()
+                'user' => $event->getUser(),
             ]
         );
     }

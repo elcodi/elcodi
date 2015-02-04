@@ -56,8 +56,7 @@ class InputController
     public function __construct(
         RequestStack $requestStack,
         MetricManager $metricManager
-    )
-    {
+    ) {
         $this->requestStack = $requestStack;
         $this->metricManager = $metricManager;
     }

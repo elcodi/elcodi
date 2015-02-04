@@ -67,8 +67,7 @@ class CachedEntityTranslationProvider extends AbstractCacheWrapper implements En
         EntityTranslationProviderInterface $entityTranslationProvider,
         EntityTranslationRepository $entityTranslationRepository,
         $cachePrefix
-    )
-    {
+    ) {
         $this->entityTranslatorProvider = $entityTranslationProvider;
         $this->entityTranslationRepository = $entityTranslationRepository;
         $this->cachePrefix = $cachePrefix;
@@ -90,8 +89,7 @@ class CachedEntityTranslationProvider extends AbstractCacheWrapper implements En
         $entityId,
         $entityField,
         $locale
-    )
-    {
+    ) {
         $cacheKey = $this->buildKey(
             $entityType,
             $entityId,
@@ -104,7 +102,6 @@ class CachedEntityTranslationProvider extends AbstractCacheWrapper implements En
             ->fetch($cacheKey);
 
         if ($translation === false) {
-
             $translation = $this
                 ->entityTranslatorProvider
                 ->getTranslation(
@@ -142,8 +139,7 @@ class CachedEntityTranslationProvider extends AbstractCacheWrapper implements En
         $entityField,
         $translationValue,
         $locale
-    )
-    {
+    ) {
         $cacheKey = $this->buildKey(
             $entityType,
             $entityId,
@@ -166,7 +162,7 @@ class CachedEntityTranslationProvider extends AbstractCacheWrapper implements En
                 $entityField,
                 $translationValue,
                 $locale
-            );;
+            );
     }
 
     /**
@@ -196,7 +192,6 @@ class CachedEntityTranslationProvider extends AbstractCacheWrapper implements En
          * @var $translation EntityTranslationInterface
          */
         foreach ($translations as $translation) {
-
             $cacheKey = $this->buildKey(
                 $translation->getEntityType(),
                 $translation->getEntityId(),
@@ -230,12 +225,11 @@ class CachedEntityTranslationProvider extends AbstractCacheWrapper implements En
         $entityId,
         $entityField,
         $locale
-    )
-    {
-        return $this->cachePrefix . '_' .
-        $entityType . '_' .
-        $entityId . '_' .
-        $entityField . '_' .
+    ) {
+        return $this->cachePrefix.'_'.
+        $entityType.'_'.
+        $entityId.'_'.
+        $entityField.'_'.
         $locale;
     }
 }

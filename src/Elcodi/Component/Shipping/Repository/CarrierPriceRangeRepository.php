@@ -23,5 +23,4 @@ use Doctrine\ORM\EntityRepository;
  */
 class CarrierPriceRangeRepository extends EntityRepository
 {
-
 }

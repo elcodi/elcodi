@@ -31,8 +31,7 @@ use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
  */
 class ReferralLine implements ReferralLineInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         EnabledTrait,
         DateTimeTrait,
         CouponAssignmentTrait;

@@ -128,8 +128,7 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
         $fromWeight,
         $toWeight,
         $isSatisfied
-    )
-    {
+    ) {
         $carrierRange = $this->getCarrierWeightRangeMock(
             $fromWeight,
             $toWeight
@@ -138,7 +137,7 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
         $carrierProvider = $this
             ->getMockBuilder('Elcodi\Component\Shipping\Provider\CarrierProvider')
             ->setMethods(array(
-                'isCarrierRangeZonesSatisfiedByOrder'
+                'isCarrierRangeZonesSatisfiedByOrder',
             ))
             ->setConstructorArgs(array(
                 $this->carrierRepository,
@@ -193,8 +192,7 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
         $fromPrice,
         $toPrice,
         $isSatisfied
-    )
-    {
+    ) {
         $priceRange = $this->getCarrierPriceRangeMock(
             $fromPrice,
             $toPrice
@@ -203,7 +201,7 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
         $carrierProvider = $this
             ->getMockBuilder('Elcodi\Component\Shipping\Provider\CarrierProvider')
             ->setMethods(array(
-                'isCarrierRangeZonesSatisfiedByOrder'
+                'isCarrierRangeZonesSatisfiedByOrder',
             ))
             ->setConstructorArgs(array(
                 $this->carrierRepository,
@@ -254,7 +252,7 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
         $carrierProvider = $this
             ->getMockBuilder('Elcodi\Component\Shipping\Provider\CarrierProvider')
             ->setMethods(array(
-                'isCarrierRangeZonesSatisfiedByOrder'
+                'isCarrierRangeZonesSatisfiedByOrder',
             ))
             ->setConstructorArgs(array(
                 $this->carrierRepository,
@@ -288,7 +286,7 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
         $carrierProvider = $this
             ->getMockBuilder('Elcodi\Component\Shipping\Provider\CarrierProvider')
             ->setMethods(array(
-                'isCarrierRangeZonesSatisfiedByOrder'
+                'isCarrierRangeZonesSatisfiedByOrder',
             ))
             ->setConstructorArgs(array(
                 $this->carrierRepository,
@@ -330,7 +328,7 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
         $carrierProvider = $this
             ->getMockBuilder('Elcodi\Component\Shipping\Provider\CarrierProvider')
             ->setMethods(array(
-                'isCarrierRangeZonesSatisfiedByOrder'
+                'isCarrierRangeZonesSatisfiedByOrder',
             ))
             ->setConstructorArgs(array(
                 $this->carrierRepository,
@@ -350,7 +348,6 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
         $this->assertCount(2, $carrierRanges);
 
         foreach ($carrierRanges as $carrierRange) {
-
             $this->assertInstanceOf(
                 'Elcodi\Component\Shipping\Entity\Interfaces\CarrierBaseRangeInterface',
                 $carrierRange
@@ -373,8 +370,7 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
         $toPrice,
         $fromWeight,
         $toWeight
-    )
-    {
+    ) {
         $carrier = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\CarrierInterface');
 
         $carrierRanges = array(
@@ -401,8 +397,7 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
     private function getCarrierPriceRangeMock(
         $fromPrice,
         $toPrice
-    )
-    {
+    ) {
         $priceRange = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\CarrierPriceRangeInterface');
 
         $priceRange
@@ -433,8 +428,7 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
     private function getCarrierWeightRangeMock(
         $fromWeight,
         $toWeight
-    )
-    {
+    ) {
         $carrierRange = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\CarrierWeightRangeInterface');
 
         $carrierRange
@@ -536,8 +530,7 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
         $inZoneFrom,
         $inZoneTo,
         $isSatisfied
-    )
-    {
+    ) {
         $carrierRange = $this->getCarrierWeightRangeMock(
             10,
             20

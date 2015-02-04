@@ -72,8 +72,7 @@ class VoteManager
         VoteFactory $voteFactory,
         VoteRepository $voteRepository,
         ObjectManager $voteObjectManager
-    )
-    {
+    ) {
         $this->commentEventDispatcher = $commentEventDispatcher;
         $this->voteFactory = $voteFactory;
         $this->voteRepository = $voteRepository;
@@ -93,8 +92,7 @@ class VoteManager
         AbstractUserInterface $user,
         CommentInterface $comment,
         $type
-    )
-    {
+    ) {
         /**
          * @var VoteInterface $vote
          */
@@ -108,7 +106,6 @@ class VoteManager
         $edited = true;
 
         if (!($vote instanceof VoteInterface)) {
-
             $vote = $this
                 ->voteFactory
                 ->create()
@@ -146,8 +143,7 @@ class VoteManager
     public function removeVote(
         AbstractUserInterface $user,
         CommentInterface $comment
-    )
-    {
+    ) {
         /**
          * @var VoteInterface $vote
          */
@@ -159,7 +155,6 @@ class VoteManager
             ]);
 
         if ($vote instanceof VoteInterface) {
-
             $this
                 ->voteObjectManager
                 ->remove($vote);
@@ -187,7 +182,7 @@ class VoteManager
         $votes = $this
             ->voteRepository
             ->findBy([
-                'comment' => $comment
+                'comment' => $comment,
             ]);
 
         return VotePackage::create($votes);

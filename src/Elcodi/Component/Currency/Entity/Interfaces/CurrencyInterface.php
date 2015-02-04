@@ -74,5 +74,4 @@ interface CurrencyInterface
      * @return $this Self object
      */
     public function setSymbol($symbol);
-
 }

@@ -99,8 +99,7 @@ class ZoneManager
         $zoneProvinceMemberNamespace,
         $zoneCityMemberNamespace,
         $zonePostalCodeMemberNamespace
-    )
-    {
+    ) {
         $this->zoneMemberObjectManager = $zoneMemberObjectManager;
         $this->zoneMatcher = $zoneMatcher;
         $this->zoneCountryMemberNamespace = $zoneCountryMemberNamespace;
@@ -121,8 +120,7 @@ class ZoneManager
     public function addElementToZone(
         ZoneInterface $zone,
         ZoneMemberAssignableInterface $entity
-    )
-    {
+    ) {
         if ($entity instanceof CountryInterface) {
             return $this->addCountryToZone(
                 $zone,
@@ -172,8 +170,7 @@ class ZoneManager
     public function addCountryToZone(
         ZoneInterface $zone,
         CountryInterface $country
-    )
-    {
+    ) {
         $zoneHasCountry = $this
             ->zoneMatcher
             ->isCountryContainedInZone(
@@ -182,7 +179,6 @@ class ZoneManager
             );
 
         if (!$zoneHasCountry) {
-
             $zoneCountryMember = new $this->zoneCountryMemberNamespace(
                 $zone,
                 $country
@@ -207,8 +203,7 @@ class ZoneManager
     public function addStateToZone(
         ZoneInterface $zone,
         StateInterface $state
-    )
-    {
+    ) {
         $zoneHasState = $this
             ->zoneMatcher
             ->isStateContainedInZone(
@@ -217,7 +212,6 @@ class ZoneManager
             );
 
         if (!$zoneHasState) {
-
             $zoneStateMember = new $this->zoneStateMemberNamespace(
                 $zone,
                 $state
@@ -242,8 +236,7 @@ class ZoneManager
     public function addProvinceToZone(
         ZoneInterface $zone,
         ProvinceInterface $province
-    )
-    {
+    ) {
         $zoneHasProvince = $this
             ->zoneMatcher
             ->isProvinceContainedInZone(
@@ -252,7 +245,6 @@ class ZoneManager
             );
 
         if (!$zoneHasProvince) {
-
             $zoneProvinceMember = new $this->zoneProvinceMemberNamespace(
                 $zone,
                 $province
@@ -277,8 +269,7 @@ class ZoneManager
     public function addCityToZone(
         ZoneInterface $zone,
         CityInterface $city
-    )
-    {
+    ) {
         $zoneHasCity = $this
             ->zoneMatcher
             ->isCityContainedInZone(
@@ -287,7 +278,6 @@ class ZoneManager
             );
 
         if (!$zoneHasCity) {
-
             $zoneCityMember = new $this->zoneCityMemberNamespace(
                 $zone,
                 $city
@@ -312,8 +302,7 @@ class ZoneManager
     public function addPostalcodeToZone(
         ZoneInterface $zone,
         PostalcodeInterface $postalCode
-    )
-    {
+    ) {
         $zoneHasPostalcode = $this
             ->zoneMatcher
             ->isPostalCodeContainedInZone(
@@ -322,7 +311,6 @@ class ZoneManager
             );
 
         if (!$zoneHasPostalcode) {
-
             $zonePostalcodeMember = new $this->zonePostalCodeMemberNamespace(
                 $zone,
                 $postalCode

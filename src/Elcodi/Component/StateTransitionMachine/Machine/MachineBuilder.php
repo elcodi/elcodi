@@ -86,8 +86,7 @@ class MachineBuilder
         $machineId,
         array $configuration,
         $pointOfEntry
-    )
-    {
+    ) {
         $this->machineFactory = $machineFactory;
         $this->machineId = $machineId;
         $this->configuration = $configuration;
@@ -175,7 +174,6 @@ class MachineBuilder
     protected function checkTransitionsConfiguration(array $configuration)
     {
         foreach ($configuration as $transitionConfiguration) {
-
             if (
                 is_array($transitionConfiguration) &&
                 (count($transitionConfiguration) === 3) &&
@@ -190,7 +188,6 @@ class MachineBuilder
                 $transitionConfiguration[2]
             ) {
                 return $this;
-
             }
         }
 
@@ -210,7 +207,6 @@ class MachineBuilder
     protected function checkPointOfEntry(array $configuration, $pointOfEntry)
     {
         foreach ($configuration as $transitionConfiguration) {
-
             if ($transitionConfiguration[0] === $pointOfEntry) {
                 return $this;
             }
@@ -234,12 +230,9 @@ class MachineBuilder
         array $configuration,
         $node,
         array &$nodesVisited
-    )
-    {
+    ) {
         if (in_array($node, $nodesVisited)) {
-
             if (!$this->canBeCyclic) {
-
                 throw new CyclesNotAllowedException();
             }
 
@@ -249,9 +242,7 @@ class MachineBuilder
         $nodesVisited[] = $node;
 
         foreach ($configuration as $transitionConfiguration) {
-
             if ($transitionConfiguration[0] === $node) {
-
                 $this->checkCycles(
                     $configuration,
                     $transitionConfiguration[2],
@@ -275,7 +266,6 @@ class MachineBuilder
         $transitionChain = TransitionChain::create();
 
         foreach ($configuration as $transitionConfiguration) {
-
             list(
                 $startStateName,
                 $transitionName,
@@ -316,21 +306,17 @@ class MachineBuilder
          * @var Transition $transition
          */
         foreach ($transitionChain->getTransitions() as $transition) {
-
             $startingStateName = $transition->getStart()->getName();
             $transitionName = $transition->getName();
 
             if (isset($states[$startingStateName])) {
-
                 if (isset($states[$startingStateName][$transitionName])) {
-
                     throw new InconsistentTransitionConfigurationException(
                         $startingStateName,
                         $transitionName
                     );
                 }
             } else {
-
                 $states[$startingStateName] = array();
             }
 
@@ -355,16 +341,13 @@ class MachineBuilder
          * @var Transition $transition
          */
         foreach ($transitionChain->getTransitions() as $transition) {
-
             $initialStateName = $transition->getStart()->getName();
 
             if ($initialStateName === $this->pointOfEntry) {
-
                 continue;
             }
 
             if (!$this->transitionChain->getTransitionsByFinalState($initialStateName)) {
-
                 throw new StateNotValidException($initialStateName);
             }
         }

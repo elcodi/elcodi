@@ -47,7 +47,6 @@ trait ValidIntervalTrait
         $this->validFrom = $validFrom;
 
         return $this;
-
     }
 
     /**
@@ -72,7 +71,6 @@ trait ValidIntervalTrait
         $this->validTo = $validTo;
 
         return $this;
-
     }
 
     /**

@@ -21,5 +21,4 @@ namespace Elcodi\Component\Geo\Entity\Interfaces;
  */
 interface ZoneMemberAssignableInterface
 {
-
 }

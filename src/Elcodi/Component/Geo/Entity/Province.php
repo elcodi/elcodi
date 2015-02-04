@@ -222,7 +222,6 @@ class Province implements ProvinceInterface, ZoneMemberAssignableInterface
     public function addCity(CityInterface $city)
     {
         if (!$this->cities->contains($city)) {
-
             $this
                 ->cities
                 ->add($city);

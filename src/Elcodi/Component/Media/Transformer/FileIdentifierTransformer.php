@@ -33,7 +33,7 @@ class FileIdentifierTransformer implements FileIdentifierTransformerInterface
      */
     public function transform(FileInterface $file)
     {
-        return $file->getId() . '.' .
+        return $file->getId().'.'.
         $file->getExtension();
     }
 }

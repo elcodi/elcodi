@@ -65,8 +65,7 @@ class CartOrderTransformer
         OrderEventDispatcher $orderEventDispatcher,
         CartLineOrderLineTransformer $cartLineOrderLineTransformer,
         OrderFactory $orderFactory
-    )
-    {
+    ) {
         $this->orderEventDispatcher = $orderEventDispatcher;
         $this->cartLineOrderLineTransformer = $cartLineOrderLineTransformer;
         $this->orderFactory = $orderFactory;

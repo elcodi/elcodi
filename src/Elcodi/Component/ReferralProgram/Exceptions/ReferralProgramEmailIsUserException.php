@@ -23,5 +23,4 @@ use Elcodi\Component\ReferralProgram\Exceptions\Abstracts\AbstractReferralProgra
  */
 class ReferralProgramEmailIsUserException extends AbstractReferralProgramException
 {
-
 }

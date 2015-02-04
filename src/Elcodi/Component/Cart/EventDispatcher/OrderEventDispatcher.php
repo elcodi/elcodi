@@ -37,8 +37,7 @@ class OrderEventDispatcher extends AbstractEventDispatcher
      */
     public function dispatchOrderPreCreatedEvent(
         CartInterface $cart
-    )
-    {
+    ) {
         $orderPreCreatedEvent = new OrderPreCreatedEvent($cart);
         $this->eventDispatcher->dispatch(
             ElcodiCartEvents::ORDER_PRECREATED,
@@ -57,8 +56,7 @@ class OrderEventDispatcher extends AbstractEventDispatcher
     public function dispatchOrderOnCreatedEvent(
         CartInterface $cart,
         OrderInterface $order
-    )
-    {
+    ) {
         $orderPreCreatedEvent = new OrderOnCreatedEvent($cart, $order);
         $this->eventDispatcher->dispatch(
             ElcodiCartEvents::ORDER_ONCREATED,

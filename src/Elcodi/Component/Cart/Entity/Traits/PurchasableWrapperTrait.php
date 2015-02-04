@@ -57,12 +57,9 @@ trait PurchasableWrapperTrait
     public function setPurchasable(PurchasableInterface $purchasable)
     {
         if ($purchasable instanceof VariantInterface) {
-
             $this->setVariant($purchasable);
             $product = $purchasable->getProduct();
-
         } else {
-
             $product = $purchasable;
         }
 

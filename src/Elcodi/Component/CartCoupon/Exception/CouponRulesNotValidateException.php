@@ -23,5 +23,4 @@ use Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException;
  */
 class CouponRulesNotValidateException extends AbstractCouponException
 {
-
 }

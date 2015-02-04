@@ -89,8 +89,7 @@ class ImageUploadController
         $uploadFieldName,
         $viewImageUrlName,
         $resizeImageUrlName
-    )
-    {
+    ) {
         $this->requestStack = $requestStack;
         $this->imageUploader = $imageUploader;
         $this->router = $router;
@@ -148,16 +147,14 @@ class ImageUploadController
                             ->get($this->resizeImageUrlName)
                             ->getPath(),
                     ],
-                ]
+                ],
             ];
-
         } catch (Exception $exception) {
-
             $response = [
                 'status'   => 'ko',
                 'response' => [
                     'message' => $exception->getMessage(),
-                ]
+                ],
             ];
         }
 

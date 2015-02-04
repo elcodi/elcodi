@@ -52,8 +52,7 @@ class OrderLineEventListener
     public function __construct(
         ObjectManager $productObjectManager,
         ObjectManager $variantObjectManager
-    )
-    {
+    ) {
         $this->productObjectManager = $productObjectManager;
         $this->variantObjectManager = $variantObjectManager;
     }
@@ -97,13 +96,10 @@ class OrderLineEventListener
     protected function flushPurchasable(PurchasableInterface $purchasable)
     {
         if ($purchasable instanceof ProductInterface) {
-
             $this
                 ->productObjectManager
                 ->flush($purchasable);
-
         } elseif ($purchasable instanceof VariantInterface) {
-
             $this
                 ->variantObjectManager
                 ->flush($purchasable);

@@ -21,5 +21,4 @@ namespace Elcodi\Component\User\Entity\Interfaces;
  */
 interface AdminUserInterface extends AbstractUserInterface
 {
-
 }

@@ -156,7 +156,7 @@ class ReferralCouponManagerTest extends WebTestCase
         $customerObjectManager->clear();
 
         $invited = $this->getRepository('customer')->findOneBy(array(
-            'email' => 'customer3@customer.com'
+            'email' => 'customer3@customer.com',
         ));
 
         $referralCouponManager = $this

@@ -124,7 +124,7 @@ abstract class AbstractExtension
      */
     public function getNamespace()
     {
-        return 'http://example.org/schema/dic/' . $this->getAlias();
+        return 'http://example.org/schema/dic/'.$this->getAlias();
     }
 
     /**
@@ -192,7 +192,7 @@ abstract class AbstractExtension
      */
     protected function getConfigurationInstance()
     {
-        return null;
+        return;
     }
 
     /**
@@ -285,7 +285,7 @@ abstract class AbstractExtension
                 $configFile = $configFile[0];
             }
 
-            $loader->load($configFile . '.yml');
+            $loader->load($configFile.'.yml');
         }
     }
 
@@ -307,12 +307,12 @@ abstract class AbstractExtension
 
         $container->prependExtensionConfig('doctrine', [
             'orm' => [
-                'resolve_target_entities' => $overrides
-            ]
+                'resolve_target_entities' => $overrides,
+            ],
         ]);
 
         $container->prependExtensionConfig('elcodi_core', [
-            'mapping_implementations' => $overrides
+            'mapping_implementations' => $overrides,
         ]);
     }
 }

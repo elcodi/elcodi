@@ -39,8 +39,7 @@ class DummyPopulatorAdapter implements PopulatorAdapterInterface
         OutputInterface $output,
         $countryCode,
         $sourcePackageMustbeReloaded
-    )
-    {
-        return null;
+    ) {
+        return;
     }
 }

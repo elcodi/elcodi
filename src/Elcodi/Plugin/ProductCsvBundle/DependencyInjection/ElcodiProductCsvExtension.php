@@ -44,7 +44,7 @@ class ElcodiProductCsvExtension extends AbstractExtension
      */
     protected function getConfigFilesLocation()
     {
-        return __DIR__ . '/../Resources/config';
+        return __DIR__.'/../Resources/config';
     }
 
     /**

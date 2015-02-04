@@ -50,7 +50,7 @@ class ProvinceData extends AbstractFixture implements DependentFixtureInterface
         $this->addReference('province-barcelones', $provinceBarcelones);
 
         $provinceObjectManager->flush([
-            $provinceBarcelones
+            $provinceBarcelones,
         ]);
     }
 

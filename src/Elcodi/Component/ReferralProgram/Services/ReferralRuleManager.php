@@ -49,8 +49,7 @@ class ReferralRuleManager
     public function __construct(
         ReferralRuleRepository $referralRuleRepository,
         ObjectManager $manager
-    )
-    {
+    ) {
         $this->referralRuleRepository = $referralRuleRepository;
         $this->manager = $manager;
     }

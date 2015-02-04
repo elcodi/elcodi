@@ -124,5 +124,4 @@ class Configuration extends AbstractConfiguration
                 ->end()
             ->end();
     }
-
 }

@@ -47,7 +47,7 @@ class CartManagerVariantTest extends AbstractCartManagerTest
     {
         return [
             'ElcodiCurrencyBundle',
-            'ElcodiAttributeBundle'
+            'ElcodiAttributeBundle',
         ];
     }
 
@@ -152,7 +152,6 @@ class CartManagerVariantTest extends AbstractCartManagerTest
 
         $this->assertEquals(1, $this->cart->getCartLines()->count());
         $this->assertResults(3);
-
     }
 
     /**

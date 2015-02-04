@@ -68,8 +68,7 @@ class EntityLoader implements EntityLoaderInterface
         ObjectRepository $repository,
         $method,
         array $arguments
-    )
-    {
+    ) {
         $this->transformer = $transformer;
         $this->repository = $repository;
         $this->method = $method;

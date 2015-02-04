@@ -71,8 +71,7 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
         $openExchangeRatesAppId,
         $endPoint,
         $baseCurrency
-    )
-    {
+    ) {
         $this->client = $client;
         $this->appId = $openExchangeRatesAppId;
         $this->endPoint = $endPoint;
@@ -94,7 +93,7 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
 
         $request = $this->client->createRequest(
             'GET',
-            $this->endPoint . '/convert/' . $value . '/' . $symbolFrom . '/' . $symbolTo,
+            $this->endPoint.'/convert/'.$value.'/'.$symbolFrom.'/'.$symbolTo,
             ['query' => $query]
         );
 
@@ -114,7 +113,7 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
     {
         $query = [
             'app_id' => $this->appId,
-            'base'   => is_null($base) ? $this->baseCurrency : $base
+            'base'   => is_null($base) ? $this->baseCurrency : $base,
         ];
 
         if (count($symbols)) {
@@ -123,7 +122,7 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
 
         $request = $this->client->createRequest(
             'GET',
-            $this->endPoint . '/latest.json',
+            $this->endPoint.'/latest.json',
             ['query' => $query]
         );
 
@@ -137,7 +136,7 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
     {
         $request = $this->client->createRequest(
             'GET',
-            $this->endPoint . '/currencies.json',
+            $this->endPoint.'/currencies.json',
             ['query' => ['app_id' => $this->appId]]
         );
 
@@ -174,13 +173,12 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
     {
         $request = $this->client->createRequest(
             'GET',
-            $this->endPoint . '/historical/' . $date->format('Y-m-d') . '.json',
+            $this->endPoint.'/historical/'.$date->format('Y-m-d').'.json',
             [
-                'query' =>
-                    [
+                'query' => [
                         'app_id' => $this->appId,
-                        'base'   => $this->baseCurrency
-                    ]
+                        'base'   => $this->baseCurrency,
+                    ],
             ]
         );
 

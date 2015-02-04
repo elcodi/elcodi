@@ -235,7 +235,6 @@ class Cart implements CartInterface
     public function addCartLine(CartLineInterface $cartLine)
     {
         if (!$this->cartLines->contains($cartLine)) {
-
             $this->cartLines->add($cartLine);
         }
 

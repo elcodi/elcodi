@@ -49,8 +49,7 @@ class LocaleProvider
     public function __construct(
         RequestStack $requestStack,
         $defaultLocale
-    )
-    {
+    ) {
         $this->requestStack = $requestStack;
         $this->defaultLocale = $defaultLocale;
     }

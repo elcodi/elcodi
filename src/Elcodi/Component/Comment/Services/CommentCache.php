@@ -64,8 +64,7 @@ class CommentCache extends AbstractCacheWrapper
         CommentRepository $commentRepository,
         VoteManager $voteManager,
         $key
-    )
-    {
+    ) {
         $this->commentRepository = $commentRepository;
         $this->voteManager = $voteManager;
         $this->key = $key;
@@ -109,7 +108,6 @@ class CommentCache extends AbstractCacheWrapper
          * If cache key is empty, build it
          */
         if (empty($commentTree)) {
-
             $commentTree = $this->buildCommentTreeAndSaveIntoCache($source);
         }
 
@@ -207,17 +205,14 @@ class CommentCache extends AbstractCacheWrapper
          * @var CommentInterface $comment
          */
         foreach ($comments as $comment) {
-
             $parentCommentId = 0;
             $commentId = $comment->getId();
 
             if ($comment->getParent() instanceof CommentInterface) {
-
                 $parentCommentId = $comment->getParent()->getId();
             }
 
             if ($parentCommentId && !isset($commentTree[$parentCommentId])) {
-
                 $commentTree[$parentCommentId] = array(
                     'entity'   => null,
                     'children' => array(),
@@ -225,7 +220,6 @@ class CommentCache extends AbstractCacheWrapper
             }
 
             if (!isset($commentTree[$commentId])) {
-
                 $commentTree[$commentId] = array(
                     'entity'   => null,
                     'children' => array(),
@@ -286,6 +280,6 @@ class CommentCache extends AbstractCacheWrapper
      */
     protected function getSpecificSourceCacheKey($source)
     {
-        return $this->key . '-' . $source;
+        return $this->key.'-'.$source;
     }
 }

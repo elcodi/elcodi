@@ -49,8 +49,7 @@ abstract class AbstractCartLineEvent extends Event
     public function __construct(
         CartInterface $cart,
         CartLineInterface $cartLine
-    )
-    {
+    ) {
         $this->cart = $cart;
         $this->cartLine = $cartLine;
     }

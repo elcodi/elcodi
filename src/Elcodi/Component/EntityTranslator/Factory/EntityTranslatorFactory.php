@@ -37,8 +37,7 @@ class EntityTranslatorFactory
     public function create(
         EntityTranslationProviderInterface $entityTranslationProvider,
         array $configuration
-    )
-    {
+    ) {
         return new $this->entityNamespace(
             $entityTranslationProvider,
             $configuration

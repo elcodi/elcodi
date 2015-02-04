@@ -31,8 +31,7 @@ use Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait;
  */
 class Banner implements BannerInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         DateTimeTrait,
         EnabledTrait,
         PrincipalImageTrait;
@@ -210,6 +209,6 @@ class Banner implements BannerInterface
      */
     public function __toString()
     {
-        return $this->getId() . ' - ' . $this->getName();
+        return $this->getId().' - '.$this->getName();
     }
 }

@@ -89,8 +89,7 @@ class CartManager
         CartLineEventDispatcher $cartLineEventDispatcher,
         CartFactory $cartFactory,
         CartLineFactory $cartLineFactory
-    )
-    {
+    ) {
         $this->cartEventDispatcher = $cartEventDispatcher;
         $this->cartLineEventDispatcher = $cartLineEventDispatcher;
         $this->cartFactory = $cartFactory;
@@ -114,8 +113,7 @@ class CartManager
     protected function addLine(
         CartInterface $cart,
         CartLineInterface $cartLine
-    )
-    {
+    ) {
         $cartLine->setCart($cart);
         $cart->addCartLine($cartLine);
 
@@ -148,8 +146,7 @@ class CartManager
     public function removeLine(
         CartInterface $cart,
         CartLineInterface $cartLine
-    )
-    {
+    ) {
         $this->silentRemoveLine($cart, $cartLine);
 
         $this
@@ -170,8 +167,7 @@ class CartManager
     public function silentRemoveLine(
         CartInterface $cart,
         CartLineInterface $cartLine
-    )
-    {
+    ) {
         $cart->removeCartLine($cartLine);
 
         $this
@@ -195,8 +191,7 @@ class CartManager
      */
     public function emptyLines(
         CartInterface $cart
-    )
-    {
+    ) {
         $cart
             ->getCartLines()
             ->map(function (CartLineInterface $cartLine) use ($cart) {
@@ -232,8 +227,7 @@ class CartManager
         CartLineInterface $cartLine,
         PurchasableInterface $purchasable,
         $quantity
-    )
-    {
+    ) {
         $cart = $cartLine->getCart();
 
         if (!($cart instanceof CartInterface)) {
@@ -261,8 +255,7 @@ class CartManager
     public function increaseCartLineQuantity(
         CartLineInterface $cartLine,
         $quantity
-    )
-    {
+    ) {
         if (!is_int($quantity) || empty($quantity)) {
             return $this;
         }
@@ -290,8 +283,7 @@ class CartManager
     public function decreaseCartLineQuantity(
         CartLineInterface $cartLine,
         $quantity
-    )
-    {
+    ) {
         if (!is_int($quantity) || empty($quantity)) {
             return $this;
         }
@@ -317,8 +309,7 @@ class CartManager
     public function setCartLineQuantity(
         CartLineInterface $cartLine,
         $quantity
-    )
-    {
+    ) {
         $cart = $cartLine->getCart();
 
         if (!($cart instanceof CartInterface)) {
@@ -335,11 +326,8 @@ class CartManager
          *   recalculated.
          */
         if (is_int($quantity) && $quantity <= 0) {
-
             $this->silentRemoveLine($cart, $cartLine);
-
         } elseif (is_int($quantity)) {
-
             $cartLine->setQuantity($quantity);
 
             $this
@@ -348,7 +336,6 @@ class CartManager
                     $cart,
                     $cartLine
                 );
-
         } else {
 
             /**
@@ -385,8 +372,7 @@ class CartManager
         CartInterface $cart,
         PurchasableInterface $purchasable,
         $quantity
-    )
-    {
+    ) {
         /**
          * If quantity is not a number or is 0 or less, product is not added
          * into cart

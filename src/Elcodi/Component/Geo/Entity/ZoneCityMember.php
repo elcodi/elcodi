@@ -34,8 +34,7 @@ class ZoneCityMember extends ZoneMember implements ZoneCityMemberInterface
     public function __construct(
         ZoneInterface $zone,
         CityInterface $city
-    )
-    {
+    ) {
         $this->zone = $zone;
         $this->city = $city;
     }

@@ -16,10 +16,11 @@
 
 namespace Elcodi\Component\Product\Tests\UnitTest\Services;
 
+use PHPUnit_Framework_TestCase;
+
 use Elcodi\Component\Product\Entity\Category;
 use Elcodi\Component\Product\Repository\CategoryRepository;
 use Elcodi\Component\Product\Services\CategoryTree;
-use PHPUnit_Framework_TestCase;
 
 /**
  * Class CategoryTreeTest
@@ -36,7 +37,7 @@ class CategoryTreeTest extends PHPUnit_Framework_TestCase
         return [
             'No categories'                  => [
                 [],
-                []
+                [],
             ],
             'Only parent categories'         => [
                 [
@@ -46,13 +47,13 @@ class CategoryTreeTest extends PHPUnit_Framework_TestCase
                 [
                     [
                         'entity'   => $this->getCategoryEntity(1, true, null),
-                        'children' => []
+                        'children' => [],
                     ],
                     [
                         'entity'   => $this->getCategoryEntity(2, true, null),
-                        'children' => []
+                        'children' => [],
                     ],
-                ]
+                ],
             ],
             'Parent and children categories' => [
                 [
@@ -73,7 +74,7 @@ class CategoryTreeTest extends PHPUnit_Framework_TestCase
                                     false,
                                     $this->getCategoryEntity(1, false, null)
                                 ),
-                                'children' => []
+                                'children' => [],
                             ],
                             [
                                 'entity'   => $this->getCategoryEntity(
@@ -81,9 +82,9 @@ class CategoryTreeTest extends PHPUnit_Framework_TestCase
                                     false,
                                     $this->getCategoryEntity(1, false, null)
                                 ),
-                                'children' => []
+                                'children' => [],
                             ],
-                        ]
+                        ],
                     ],
                     [
                         'entity'   => $this->getCategoryEntity(2, true, null),
@@ -94,16 +95,16 @@ class CategoryTreeTest extends PHPUnit_Framework_TestCase
                                     false,
                                     $this->getCategoryEntity(2, false, null)
                                 ),
-                                'children' => []
+                                'children' => [],
                             ],
-                        ]
+                        ],
                     ],
                     [
                         'entity'   => $this->getCategoryEntity(3, true, null),
-                        'children' => []
+                        'children' => [],
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -184,6 +185,7 @@ class CategoryTreeTest extends PHPUnit_Framework_TestCase
         $category->setId($id);
         $category->setRoot($isRoot);
         $category->setParent($parentCategory);
+
         return $category;
     }
 }

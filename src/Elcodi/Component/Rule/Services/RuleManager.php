@@ -50,8 +50,7 @@ class RuleManager implements RuleManagerInterface
     public function __construct(
         ExpressionLanguage $expressionLanguage,
         ExpressionContextProviderInterface $contextProvider
-    )
-    {
+    ) {
         $this->expressionLanguage = $expressionLanguage;
         $this->contextProvider = $contextProvider;
     }

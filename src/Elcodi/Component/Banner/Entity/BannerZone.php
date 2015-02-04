@@ -254,10 +254,9 @@ class BannerZone implements BannerZoneInterface
         $isoLang = 'all languages';
 
         if ($this->getLanguage() instanceof LanguageInterface) {
-
             $isoLang = $this->getLanguage()->getIso();
         }
 
-        return $this->getName() . ' - ' . $isoLang;
+        return $this->getName().' - '.$isoLang;
     }
 }

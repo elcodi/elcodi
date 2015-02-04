@@ -65,7 +65,7 @@ class Configuration extends AbstractConfiguration implements ConfigurationInterf
                                     ElcodiConfigurationTypes::TYPE_BOOLEAN,
                                     ElcodiConfigurationTypes::TYPE_STRING,
                                     ElcodiConfigurationTypes::TYPE_TEXT,
-                                    ElcodiConfigurationTypes::TYPE_ARRAY
+                                    ElcodiConfigurationTypes::TYPE_ARRAY,
                                 ])
                             ->end()
                             ->scalarNode('reference')
@@ -90,9 +90,8 @@ class Configuration extends AbstractConfiguration implements ConfigurationInterf
 
                             $newElements = [];
                             foreach ($elements as $element) {
-
                                 $completeParameterName = isset($element['namespace'])
-                                    ? $element['namespace'] . '.' . $element['key']
+                                    ? $element['namespace'].'.'.$element['key']
                                     : $element['key'];
 
                                 $newElements[$completeParameterName] = $element;

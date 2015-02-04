@@ -42,8 +42,7 @@ use Elcodi\Component\Product\Entity\Traits\ProductPriceTrait;
  */
 class Variant implements VariantInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         ProductPriceTrait,
         EnabledTrait,
         DateTimeTrait,

@@ -64,8 +64,7 @@ class PrintMoneyExtension extends Twig_Extension
         CurrencyConverter $currencyConverter,
         CurrencyWrapper $currencyWrapper,
         $localeIso
-    )
-    {
+    ) {
         $this->currencyConverter = $currencyConverter;
         $this->currencyWrapper = $currencyWrapper;
         $this->localeIso = $localeIso;
@@ -100,14 +99,12 @@ class PrintMoneyExtension extends Twig_Extension
     public function printConvertMoney(
         MoneyInterface $money = null,
         CurrencyInterface $targetCurrency = null
-    )
-    {
+    ) {
         if (!($money instanceof MoneyInterface)) {
             return '';
         }
 
         if (!($targetCurrency instanceof CurrencyInterface)) {
-
             $targetCurrency = $this->currencyWrapper->loadCurrency();
         }
 

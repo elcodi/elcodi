@@ -31,7 +31,7 @@ class PrintRouteExtensionTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.menu.twig_extension.print_route'
+            'elcodi.core.menu.twig_extension.print_route',
         ];
     }
 }

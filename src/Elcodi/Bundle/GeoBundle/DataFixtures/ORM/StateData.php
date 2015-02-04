@@ -50,7 +50,7 @@ class StateData extends AbstractFixture implements DependentFixtureInterface
         $this->addReference('state-catalunya', $stateCatalunya);
 
         $stateObjectManager->flush([
-            $stateCatalunya
+            $stateCatalunya,
         ]);
     }
 

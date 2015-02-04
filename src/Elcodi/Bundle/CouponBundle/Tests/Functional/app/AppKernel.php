@@ -64,8 +64,8 @@ class AppKernel extends AbstractElcodiKernel
      */
     protected function getContainerClass()
     {
-        return  $this->name .
-                ucfirst($this->environment) .
+        return  $this->name.
+                ucfirst($this->environment).
                 'DebugProjectContainerCoupon';
     }
 }
