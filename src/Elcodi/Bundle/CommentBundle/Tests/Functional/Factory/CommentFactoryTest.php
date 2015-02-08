@@ -41,7 +41,6 @@ class CommentFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.comment.factory.comment',
             'elcodi.factory.comment',
         ];
     }

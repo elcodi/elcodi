@@ -14,24 +14,19 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Component\Comment\Adapter\Parser;
-
-use Elcodi\Component\Comment\Adapter\Parser\Interfaces\ParserAdapterInterface;
+namespace Elcodi\Component\Core\Adapter\Parser\Interfaces;
 
 /**
- * Class DummyParserAdapter
+ * Interface ParserAdapterInterface
  */
-class DummyParserAdapter implements ParserAdapterInterface
+interface ParserAdapterInterface
 {
     /**
      * Return the parser identifier
      *
      * @return string Parser identifier
      */
-    public function getIdentifier()
-    {
-        return 'none';
-    }
+    public function getIdentifier();
 
     /**
      * Transform plain text to parsed content
@@ -40,8 +35,5 @@ class DummyParserAdapter implements ParserAdapterInterface
      *
      * @return string Transformed string
      */
-    public function parse($text)
-    {
-        return $text;
-    }
+    public function parse($text);
 }

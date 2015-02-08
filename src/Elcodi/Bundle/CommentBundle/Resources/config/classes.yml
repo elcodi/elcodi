@@ -3,30 +3,28 @@ parameters:
     #
     # Factories
     #
-    elcodi.core.comment.factory.comment.class: Elcodi\Component\Comment\Factory\CommentFactory
-    elcodi.core.comment.factory.vote.class: Elcodi\Component\Comment\Factory\VoteFactory
+    elcodi.factory.comment.class: Elcodi\Component\Comment\Factory\CommentFactory
+    elcodi.factory.vote.class: Elcodi\Component\Comment\Factory\VoteFactory
 
     #
     # Services
     #
-    elcodi.core.comment.service.comment_manager.class: Elcodi\Component\Comment\Services\CommentManager
-    elcodi.core.comment.service.comment_parser.class: Elcodi\Component\Comment\Services\CommentParser
-    elcodi.core.comment.service.comment_cache.class: Elcodi\Component\Comment\Services\CommentCache
-    elcodi.core.comment.service.comment_vote_manager.class: Elcodi\Component\Comment\Services\VoteManager
+    elcodi.comment_manager.class: Elcodi\Component\Comment\Services\CommentManager
+    elcodi.comment_parser.class: Elcodi\Component\Comment\Services\CommentParser
+    elcodi.comment_cache.class: Elcodi\Component\Comment\Services\CommentCache
+    elcodi.comment_vote_manager.class: Elcodi\Component\Comment\Services\VoteManager
 
+    #
+    # Controllers
+    #
+    elcodi.controller.comment.class: Elcodi\Component\Comment\Controller\CommentController
 
     #
     # EventListeners
     #
-    elcodi.core.comment.event_listener.comment_event_listener.class: Elcodi\Component\Comment\EventListener\CommentEventListener
+    elcodi.event_listener.comment_cache_invalidation.class: Elcodi\Component\Comment\EventListener\CommentCacheInvalidationEventListener
 
     #
     # EventDispatchers
     #
-    elcodi.core.comment.event_dispatcher.comment_event_dispatcher.class: Elcodi\Component\Comment\EventDispatcher\CommentEventDispatcher
-
-    #
-    # Parser Adapter
-    #
-    elcodi.comment.markdown_parser_adapter.class: Elcodi\Component\Comment\Adapter\Parser\MarkdownParserAdapter
-    elcodi.comment.dummy_parser_adapter.class: Elcodi\Component\Comment\Adapter\Parser\DummyParserAdapter
+    elcodi.event_dispatcher.comment.class: Elcodi\Component\Comment\EventDispatcher\CommentEventDispatcher

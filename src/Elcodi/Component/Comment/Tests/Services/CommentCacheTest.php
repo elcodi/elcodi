@@ -16,6 +16,7 @@
 
 namespace Elcodi\Component\Comment\Tests\Services;
 
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use PHPUnit_Framework_TestCase;
@@ -114,50 +115,56 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
 
         $comments = $this
             ->commentCache
-            ->load('source');
+            ->load('source', 'context');
 
         $this->assertEquals([
             [
                 'entity'   => [
-                    'id'             => 1,
-                    'authorFullName' => null,
-                    'authorUsername' => null,
-                    'authorEmail'    => null,
-                    'content'        => 'comment1',
-                    'parsedContent'  => 'comment1',
-                    'parsedType'     => 'none',
-                    'nbVotes'        => 2,
-                    'nbUpVotes'      => 1,
-                    'nbDownVotes'    => 1,
+                    'id'            => 1,
+                    'authorName'    => 'Marc Morera',
+                    'authorEmail'   => 'engonga@engonga.com',
+                    'context'       => 'admin',
+                    'content'       => 'comment1',
+                    'parsedContent' => 'comment1',
+                    'parsedType'    => 'none',
+                    'nbVotes'       => 2,
+                    'nbUpVotes'     => 1,
+                    'nbDownVotes'   => 1,
+                    'createdAt' => '2015-01-01 00:00:00',
+                    'updatedAt' => '2015-01-01 00:00:00',
                 ],
                 'children' => [
                     [
                         'entity'   => [
-                            'id'             => 2,
-                            'authorFullName' => null,
-                            'authorUsername' => null,
-                            'authorEmail'    => null,
-                            'parsedContent'  => 'comment2',
-                            'content'        => 'comment2',
-                            'parsedType'     => 'none',
-                            'nbVotes'        => 2,
-                            'nbUpVotes'      => 1,
-                            'nbDownVotes'    => 1,
+                            'id'            => 2,
+                            'authorName'    => 'Marc Morera',
+                            'authorEmail'   => 'engonga@engonga.com',
+                            'context'       => 'admin',
+                            'parsedContent' => 'comment2',
+                            'content'       => 'comment2',
+                            'parsedType'    => 'none',
+                            'nbVotes'       => 2,
+                            'nbUpVotes'     => 1,
+                            'nbDownVotes'   => 1,
+                    'createdAt' => '2015-01-01 00:00:00',
+                    'updatedAt' => '2015-01-01 00:00:00',
                         ],
                         'children' => [],
                     ],
                     [
                         'entity'   => [
-                            'id'             => 3,
-                            'authorFullName' => null,
-                            'authorUsername' => null,
-                            'authorEmail'    => null,
-                            'parsedContent'  => 'comment3',
-                            'content'        => 'comment3',
-                            'parsedType'     => 'none',
-                            'nbVotes'        => 2,
-                            'nbUpVotes'      => 1,
-                            'nbDownVotes'    => 1,
+                            'id'            => 3,
+                            'authorName'    => 'Another guy',
+                            'authorEmail'   => 'lala@lala.com',
+                            'context'       => 'admin',
+                            'parsedContent' => 'comment3',
+                            'content'       => 'comment3',
+                            'parsedType'    => 'none',
+                            'nbVotes'       => 2,
+                            'nbUpVotes'     => 1,
+                            'nbDownVotes'   => 1,
+                    'createdAt' => '2015-01-01 00:00:00',
+                    'updatedAt' => '2015-01-01 00:00:00',
                         ],
                         'children' => [],
                     ]
@@ -165,30 +172,34 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
             ],
             [
                 'entity'   => [
-                    'id'             => 4,
-                    'authorFullName' => null,
-                    'authorUsername' => null,
-                    'authorEmail'    => null,
-                    'content'        => 'comment4',
-                    'parsedContent'  => 'comment4',
-                    'parsedType'     => 'none',
-                    'nbVotes'        => 2,
-                    'nbUpVotes'      => 1,
-                    'nbDownVotes'    => 1,
+                    'id'            => 4,
+                    'authorName'    => 'Marc Morera',
+                    'authorEmail'   => 'engonga@engonga.com',
+                    'context'       => 'admin',
+                    'content'       => 'comment4',
+                    'parsedContent' => 'comment4',
+                    'parsedType'    => 'none',
+                    'nbVotes'       => 2,
+                    'nbUpVotes'     => 1,
+                    'nbDownVotes'   => 1,
+                    'createdAt' => '2015-01-01 00:00:00',
+                    'updatedAt' => '2015-01-01 00:00:00',
                 ],
                 'children' => [
                     [
                         'entity'   => [
-                            'id'             => 5,
-                            'authorFullName' => null,
-                            'authorUsername' => null,
-                            'authorEmail'    => null,
-                            'content'        => 'comment5',
-                            'parsedContent'  => 'comment5',
-                            'parsedType'     => 'none',
-                            'nbVotes'        => 2,
-                            'nbUpVotes'      => 1,
-                            'nbDownVotes'    => 1,
+                            'id'            => 5,
+                            'authorName'    => 'Marc Morera',
+                            'authorEmail'   => 'engonga@engonga.com',
+                            'context'       => 'admin',
+                            'content'       => 'comment5',
+                            'parsedContent' => 'comment5',
+                            'parsedType'    => 'none',
+                            'nbVotes'       => 2,
+                            'nbUpVotes'     => 1,
+                            'nbDownVotes'   => 1,
+                    'createdAt' => '2015-01-01 00:00:00',
+                    'updatedAt' => '2015-01-01 00:00:00',
                         ],
                         'children' => [],
                     ]
@@ -208,51 +219,76 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
         $comment1
             ->setId(1)
             ->setSource('source')
+            ->setContext('admin')
             ->setParent(null)
-            ->setAuthor($this->getMock('Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface'))
+            ->setAuthorName('Marc Morera')
+            ->setAuthorEmail('engonga@engonga.com')
+            ->setAuthorToken('12345')
             ->setContent('comment1')
             ->setParsedContent('comment1')
-            ->setParsingType('none');
+            ->setParsingType('none')
+            ->setCreatedAt(DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 00:00:00'))
+            ->setUpdatedAt(DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 00:00:00'));
 
         $comment2 = new Comment();
         $comment2
             ->setId(2)
             ->setSource('source')
+            ->setContext('admin')
             ->setParent($comment1)
-            ->setAuthor($this->getMock('Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface'))
+            ->setAuthorName('Marc Morera')
+            ->setAuthorEmail('engonga@engonga.com')
+            ->setAuthorToken('12345')
             ->setContent('comment2')
             ->setParsedContent('comment2')
-            ->setParsingType('none');
+            ->setParsingType('none')
+            ->setCreatedAt(DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 00:00:00'))
+            ->setUpdatedAt(DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 00:00:00'));
 
         $comment3 = new Comment();
         $comment3
             ->setId(3)
             ->setSource('source')
+            ->setContext('admin')
             ->setParent($comment1)
-            ->setAuthor($this->getMock('Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface'))
+            ->setAuthorName('Another guy')
+            ->setAuthorEmail('lala@lala.com')
+            ->setAuthorToken('12345')
             ->setContent('comment3')
             ->setParsedContent('comment3')
-            ->setParsingType('none');
+            ->setParsingType('none')
+            ->setCreatedAt(DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 00:00:00'))
+            ->setUpdatedAt(DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 00:00:00'));
 
         $comment4 = new Comment();
         $comment4
             ->setId(4)
             ->setSource('source')
+            ->setContext('admin')
             ->setParent(null)
-            ->setAuthor($this->getMock('Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface'))
+            ->setAuthorName('Marc Morera')
+            ->setAuthorEmail('engonga@engonga.com')
+            ->setAuthorToken('12345')
             ->setContent('comment4')
             ->setParsedContent('comment4')
-            ->setParsingType('none');
+            ->setParsingType('none')
+            ->setCreatedAt(DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 00:00:00'))
+            ->setUpdatedAt(DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 00:00:00'));
 
         $comment5 = new Comment();
         $comment5
             ->setId(5)
             ->setSource('source')
+            ->setContext('admin')
             ->setParent($comment4)
-            ->setAuthor($this->getMock('Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface'))
+            ->setAuthorName('Marc Morera')
+            ->setAuthorEmail('engonga@engonga.com')
+            ->setAuthorToken('12345')
             ->setContent('comment5')
             ->setParsedContent('comment5')
-            ->setParsingType('none');
+            ->setParsingType('none')
+            ->setCreatedAt(DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 00:00:00'))
+            ->setUpdatedAt(DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 00:00:00'));
 
         return new ArrayCollection([
             $comment1,

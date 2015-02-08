@@ -111,8 +111,12 @@ class CouponManager
          * @var CouponInterface $couponGenerated
          */
         $couponGenerated = $this->couponFactory->create();
+        $couponCode = $this
+            ->couponCodeGenerator
+            ->generate(10);
+
         $couponGenerated
-            ->setCode($this->couponCodeGenerator->generate())
+            ->setCode($couponCode)
             ->setName($coupon->getName())
             ->setType($coupon->getType())
             ->setPrice($coupon->getPrice())

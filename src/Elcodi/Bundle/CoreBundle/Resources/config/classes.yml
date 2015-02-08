@@ -4,19 +4,25 @@ parameters:
     # Providers
     #
     elcodi.container_parameters.class: Symfony\Component\DependencyInjection\ParameterBag\ParameterBag
-    elcodi.core.core.service.manager_provider.class: Elcodi\Component\Core\Services\ManagerProvider
-    elcodi.core.core.service.repository_provider.class: Elcodi\Component\Core\Services\RepositoryProvider
-    elcodi.core.core.service.mapping_provider.class: Elcodi\Component\Core\Services\MappingProvider
+    elcodi.manager_provider.class: Elcodi\Component\Core\Services\ManagerProvider
+    elcodi.repository_provider.class: Elcodi\Component\Core\Services\RepositoryProvider
+    elcodi.mapping_provider.class: Elcodi\Component\Core\Services\MappingProvider
 
     #
     # Generators
     #
-    elcodi.generator.random_string.class: Elcodi\Component\Core\Generator\RandomStringGenerator
+    elcodi.generator.random_string.class: Elcodi\Component\Core\Generator\RandomGenerator
     elcodi.generator.sha1.class: Elcodi\Component\Core\Generator\Sha1Generator
     elcodi.generator.uniqid.class: Elcodi\Component\Core\Generator\UniqIdGenerator
 
     #
     # Encoders
     #
-    elcodi.core.core.encoder.json.class: Elcodi\Component\Core\Encoder\JsonEncoder
-    elcodi.core.core.encoder.php.class: Elcodi\Component\Core\Encoder\PHPEncoder
+    elcodi.json_encoder.class: Elcodi\Component\Core\Encoder\JsonEncoder
+    elcodi.php_encoder.class: Elcodi\Component\Core\Encoder\PHPEncoder
+
+    #
+    # Parser Adapter
+    #
+    elcodi.markdown_parser_adapter.class: Elcodi\Component\Core\Adapter\Parser\MarkdownParserAdapter
+    elcodi.dummy_parser_adapter.class: Elcodi\Component\Core\Adapter\Parser\DummyParserAdapter

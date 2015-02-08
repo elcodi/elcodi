@@ -21,7 +21,6 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\Component\Comment\Entity\Interfaces\CommentInterface;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
-use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 
 /**
  * Class Comment
@@ -45,6 +44,13 @@ class Comment implements CommentInterface
     protected $source;
 
     /**
+     * @var string
+     *
+     * Context
+     */
+    protected $context;
+
+    /**
      * @var CommentInterface|null
      *
      * parent
@@ -59,11 +65,25 @@ class Comment implements CommentInterface
     protected $children;
 
     /**
-     * @var
+     * @var string
      *
-     * author
+     * Author token
      */
-    protected $author;
+    protected $authorToken;
+
+    /**
+     * @var string
+     *
+     * Author name
+     */
+    protected $authorName;
+
+    /**
+     * @var string
+     *
+     * Author email
+     */
+    protected $authorEmail;
 
     /**
      * @var string
@@ -108,30 +128,6 @@ class Comment implements CommentInterface
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Sets Author
-     *
-     * @param AbstractUserInterface $author Author
-     *
-     * @return $this Self object
-     */
-    public function setAuthor(AbstractUserInterface $author)
-    {
-        $this->author = $author;
-
-        return $this;
-    }
-
-    /**
-     * Get Author
-     *
-     * @return AbstractUserInterface Author
-     */
-    public function getAuthor()
-    {
-        return $this->author;
     }
 
     /**
@@ -276,5 +272,101 @@ class Comment implements CommentInterface
     public function getChildren()
     {
         return $this->children;
+    }
+
+    /**
+     * Get Context
+     *
+     * @return string Context
+     */
+    public function getContext()
+    {
+        return $this->context;
+    }
+
+    /**
+     * Sets Context
+     *
+     * @param string $context Context
+     *
+     * @return $this Self object
+     */
+    public function setContext($context)
+    {
+        $this->context = $context;
+
+        return $this;
+    }
+
+    /**
+     * Get AuthorEmail
+     *
+     * @return string AuthorEmail
+     */
+    public function getAuthorEmail()
+    {
+        return $this->authorEmail;
+    }
+
+    /**
+     * Sets AuthorEmail
+     *
+     * @param string $authorEmail AuthorEmail
+     *
+     * @return $this Self object
+     */
+    public function setAuthorEmail($authorEmail)
+    {
+        $this->authorEmail = $authorEmail;
+
+        return $this;
+    }
+
+    /**
+     * Get AuthorName
+     *
+     * @return string AuthorName
+     */
+    public function getAuthorName()
+    {
+        return $this->authorName;
+    }
+
+    /**
+     * Sets AuthorName
+     *
+     * @param string $authorName AuthorName
+     *
+     * @return $this Self object
+     */
+    public function setAuthorName($authorName)
+    {
+        $this->authorName = $authorName;
+
+        return $this;
+    }
+
+    /**
+     * Get AuthorToken
+     *
+     * @return string AuthorToken
+     */
+    public function getAuthorToken()
+    {
+        return $this->authorToken;
+    }
+
+    /**
+     * Sets AuthorToken
+     *
+     * @param string $authorToken AuthorToken
+     *
+     * @return $this Self object
+     */
+    public function setAuthorToken($authorToken)
+    {
+        $this->authorToken = $authorToken;
+
+        return $this;
     }
 }

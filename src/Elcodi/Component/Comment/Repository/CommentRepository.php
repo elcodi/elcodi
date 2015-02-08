@@ -29,11 +29,12 @@ class CommentRepository extends EntityRepository
     /**
      * Get all comments ordered by parent elements and position, ascendant.
      *
-     * @param string $source Source
+     * @param string $source  Source
+     * @param string $context Context of comment
      *
      * @return Collection Category collection
      */
-    public function getAllCommentsSortedByParentAndIdAsc($source)
+    public function getAllCommentsSortedByParentAndIdAsc($source, $context)
     {
         /**
          * @var QueryBuilder
@@ -41,10 +42,15 @@ class CommentRepository extends EntityRepository
         $queryBuilder = $this
             ->createQueryBuilder('c')
             ->where('c.source = :source')
-            ->where('c.enabled = :enabled')
+            ->andWhere('c.context = :context')
+            ->andWhere('c.enabled = :enabled')
             ->addOrderBy('c.parent', 'asc')
             ->addOrderBy('c.id', 'asc')
-            ->setParameter('enabled', true);
+            ->setParameters([
+                'source'  => $source,
+                'context' => $context,
+                'enabled' => true,
+            ]);
 
         $comments = $queryBuilder
             ->getQuery()

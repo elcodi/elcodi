@@ -17,7 +17,6 @@
 namespace Elcodi\Component\Comment\Entity\Interfaces;
 
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
-use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 
 /**
  * Interface VoteInterface
@@ -57,18 +56,18 @@ interface VoteInterface extends DateTimeInterface
     public function setType($type);
 
     /**
-     * Get User
+     * Get AuthorToken
      *
-     * @return AbstractUserInterface User
+     * @return string AuthorToken
      */
-    public function getUser();
+    public function getAuthorToken();
 
     /**
-     * Sets User
+     * Sets AuthorToken
      *
-     * @param AbstractUserInterface $user User
+     * @param string $authorToken AuthorToken
      *
      * @return $this Self object
      */
-    public function setUser($user);
+    public function setAuthorToken($authorToken);
 }

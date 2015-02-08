@@ -25,7 +25,6 @@ use Elcodi\Component\User\ElcodiUserEvents;
 use Elcodi\Component\User\Entity\Abstracts\AbstractUser;
 use Elcodi\Component\User\Event\PasswordRecoverEvent;
 use Elcodi\Component\User\Event\PasswordRememberEvent;
-use Elcodi\Component\User\Generator\RecoveryHashGenerator;
 use Elcodi\Component\User\Repository\Interfaces\UserEmaileableInterface;
 
 /**
@@ -65,13 +64,13 @@ class PasswordManager
      * @param ObjectManager            $manager               Manager
      * @param UrlGeneratorInterface    $router                Router
      * @param EventDispatcherInterface $eventDispatcher       Event Dispatcher
-     * @param RecoveryHashGenerator    $recoveryHashGenerator Recovery hash generator
+     * @param GeneratorInterface       $recoveryHashGenerator Recovery hash generator
      */
     public function __construct(
         ObjectManager $manager,
         UrlGeneratorInterface $router,
         EventDispatcherInterface $eventDispatcher,
-        RecoveryHashGenerator $recoveryHashGenerator
+        GeneratorInterface $recoveryHashGenerator
     )
     {
         $this->manager = $manager;

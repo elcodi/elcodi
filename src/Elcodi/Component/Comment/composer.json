@@ -36,11 +36,7 @@
         "doctrine/orm": "~2.4",
         "doctrine/cache": "~1.0",
 
-        "elcodi/core": "~0.4.0",
-        "elcodi/user": "~0.4.0"
-    },
-    "suggest": {
-        "michelf/php-markdown": "Needed for the markdown parsing adapter"
+        "elcodi/core": "~0.4.0"
     },
     "autoload": {
         "psr-4": {

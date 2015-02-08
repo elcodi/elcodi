@@ -31,6 +31,7 @@
     ],
     "require": {
         "php": ">=5.4",
+        "ext-openssl": "*",
         "doctrine/common": "~2.4",
         "doctrine/orm": "~2.4",
 

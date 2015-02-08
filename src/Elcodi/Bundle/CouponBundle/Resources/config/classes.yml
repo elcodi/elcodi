@@ -11,11 +11,6 @@ parameters:
     elcodi.core.coupon.factory.coupon.class: Elcodi\Component\Coupon\Factory\CouponFactory
 
     #
-    # Generators
-    #
-    elcodi.core.referral_program.generator.coupon_code_generator.class: Elcodi\Component\Coupon\Generator\CouponCodeGenerator
-
-    #
     # Event Dispatchers
     #
     elcodi.core.coupon.event_dispatchers.coupon.class: Elcodi\Component\Coupon\EventDispatcher\CouponEventDispatcher

@@ -8,6 +8,8 @@ services:
 
     elcodi.generator.sha1:
         class: %elcodi.generator.sha1.class%
+        arguments:
+            - @elcodi.generator.random_string
 
     elcodi.generator.uniqid:
         class: %elcodi.generator.uniqid.class%

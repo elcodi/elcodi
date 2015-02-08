@@ -41,7 +41,6 @@ class CommentManagerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.comment.service.comment_manager',
             'elcodi.comment_manager',
         ];
     }
@@ -51,21 +50,15 @@ class CommentManagerTest extends WebTestCase
      */
     public function testAddComment()
     {
-        $user = $this
-            ->getFactory('customer')
-            ->create()
-            ->setUsername('customer')
-            ->setPassword('customer')
-            ->setEmail('customer@customer.com');
-
-        $this->flush($user);
-
         $commentManager = $this->get('elcodi.comment_manager');
         $source = 'http://page.com/product1';
         $commentManager->addComment(
             $source,
+            'admin',
             'This is my comment #1',
-            $user,
+            '1234',
+            'Efervescencio',
+            'uhsi@noseque.com',
             null
         );
 
@@ -74,7 +67,9 @@ class CommentManagerTest extends WebTestCase
         $this->assertEquals('This is my comment #1', $storedComment->getContent());
         $this->assertEquals('This is my comment #1', $storedComment->getParsedContent());
         $this->assertEquals('none', $storedComment->getParsingType());
-        $this->assertSame($user, $storedComment->getAuthor());
+        $this->assertSame('Efervescencio', $storedComment->getAuthorName());
+        $this->assertSame('uhsi@noseque.com', $storedComment->getAuthorEmail());
+        $this->assertSame('1234', $storedComment->getAuthorToken());
         $this->assertNull($storedComment->getParent());
     }
 }

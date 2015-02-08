@@ -30,9 +30,6 @@ class JsonEncoderTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.core.core.encoder.json',
-            'elcodi.json_encoder',
-        ];
+        return ['elcodi.json_encoder'];
     }
 }

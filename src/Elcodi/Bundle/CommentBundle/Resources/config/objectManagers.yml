@@ -5,8 +5,8 @@ services:
     #
     elcodi.object_manager.comment:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.comment.entity.comment.class% ]
+        arguments: [ %elcodi.entity.comment.class% ]
 
-    elcodi.object_manager.vote:
+    elcodi.object_manager.comment_vote:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.comment.entity.vote.class% ]
+        arguments: [ %elcodi.entity.comment_vote.class% ]

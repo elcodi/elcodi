@@ -20,28 +20,60 @@ use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
-use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 
 /**
  * Interface CommentInterface
  */
 interface CommentInterface extends DateTimeInterface, EnabledInterface
 {
+
     /**
-     * Sets Author
+     * Get AuthorEmail
      *
-     * @param AbstractUserInterface $author Author
+     * @return string AuthorEmail
+     */
+    public function getAuthorEmail();
+
+    /**
+     * Sets AuthorEmail
+     *
+     * @param string $authorEmail AuthorEmail
      *
      * @return $this Self object
      */
-    public function setAuthor(AbstractUserInterface $author);
+    public function setAuthorEmail($authorEmail);
 
     /**
-     * Get Author
+     * Get AuthorName
      *
-     * @return AbstractUserInterface Author
+     * @return string AuthorName
      */
-    public function getAuthor();
+    public function getAuthorName();
+
+    /**
+     * Sets AuthorName
+     *
+     * @param string $authorName AuthorName
+     *
+     * @return $this Self object
+     */
+    public function setAuthorName($authorName);
+
+    /**
+     * Get AuthorToken
+     *
+     * @return string AuthorToken
+     */
+    public function getAuthorToken();
+
+    /**
+     * Sets AuthorToken
+     *
+     * @param string $authorToken AuthorToken
+     *
+     * @return $this Self object
+     */
+    public function setAuthorToken($authorToken);
 
     /**
      * Sets Content
@@ -154,4 +186,20 @@ interface CommentInterface extends DateTimeInterface, EnabledInterface
      * @return Collection Children
      */
     public function getChildren();
+
+    /**
+     * Get Context
+     *
+     * @return string Context
+     */
+    public function getContext();
+
+    /**
+     * Sets Context
+     *
+     * @param string $context Context
+     *
+     * @return $this Self object
+     */
+    public function setContext($context);
 }

@@ -16,15 +16,13 @@
 
 namespace Elcodi\Component\Comment\Tests\Services;
 
-use Doctrine\Common\Persistence\ObjectManager;
 use PHPUnit_Framework_TestCase;
 
 use Elcodi\Component\Comment\Entity\Comment;
 use Elcodi\Component\Comment\Entity\Interfaces\CommentInterface;
-use Elcodi\Component\Comment\Factory\CommentFactory;
-use Elcodi\Component\Comment\Repository\CommentRepository;
 use Elcodi\Component\Comment\Services\CommentManager;
 use Elcodi\Component\Comment\Services\CommentParser;
+use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
  * Class CommentManagerTest
@@ -39,42 +37,26 @@ class CommentManagerTest extends PHPUnit_Framework_TestCase
     protected $commentManager;
 
     /**
-     * @var ObjectManager
+     * @var ObjectDirector
      *
-     * Comment Object Manager
+     * Object director
      */
-    protected $commentObjectManager;
-
-    /**
-     * @var CommentRepository
-     *
-     * Comment repository
-     */
-    protected $commentRepository;
-
-    /**
-     * @var CommentFactory
-     *
-     * Comment factory
-     */
-    protected $commentFactory;
+    protected $commentObjectDirector;
 
     /**
      * Setup
      */
     public function setUp()
     {
-        $this->commentObjectManager = $this->getMock('Doctrine\Common\Persistence\ObjectManager');
-        $this->commentRepository = $this->getMock('Elcodi\Component\Comment\Repository\CommentRepository', [], [], '', false);
-        $this->commentFactory = $this->getMock('Elcodi\Component\Comment\Factory\CommentFactory', [], [], '', false);
+        $this->commentObjectDirector = $this->getMock('Elcodi\Component\Core\Services\ObjectDirector', [], [], '', false);
 
         $this
-            ->commentFactory
+            ->commentObjectDirector
             ->expects($this->any())
             ->method('create')
             ->will($this->returnValue(new Comment()));
 
-        $parserAdapter = $this->getMock('Elcodi\Component\Comment\Adapter\Parser\Interfaces\ParserAdapterInterface');
+        $parserAdapter = $this->getMock('Elcodi\Component\Core\Adapter\Parser\Interfaces\ParserAdapterInterface');
 
         $parserAdapter
             ->expects($this->any())
@@ -90,9 +72,7 @@ class CommentManagerTest extends PHPUnit_Framework_TestCase
 
         $this->commentManager = new CommentManager(
             $this->getMock('Elcodi\Component\Comment\EventDispatcher\CommentEventDispatcher', [], [], '', false),
-            $this->commentObjectManager,
-            $this->commentRepository,
-            $this->commentFactory,
+            $this->commentObjectDirector,
             $commentParser
         );
     }
@@ -109,8 +89,11 @@ class CommentManagerTest extends PHPUnit_Framework_TestCase
             ->commentManager
             ->addComment(
                 'source',
+                'context',
                 'This is my content',
-                $this->getMock('Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface'),
+                '12345',
+                'Marc Morera',
+                'engonga@engonga.com',
                 null
             );
 

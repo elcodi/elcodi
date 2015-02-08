@@ -28,10 +28,12 @@ class UniqIdGenerator implements GeneratorInterface
     /**
      * Generates a unique Id
      *
+     * @param string $length Length of generation
+     *
      * @return string Result of generation
      */
-    public function generate()
+    public function generate($length = null)
     {
-        return rand(0, 2147483647);
+        return uniqid('', true);
     }
 }

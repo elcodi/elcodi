@@ -19,7 +19,6 @@ namespace Elcodi\Component\Comment\Entity;
 use Elcodi\Component\Comment\Entity\Interfaces\CommentInterface;
 use Elcodi\Component\Comment\Entity\Interfaces\VoteInterface;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
-use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 
 /**
  * Class Vote
@@ -57,11 +56,11 @@ class Vote implements VoteInterface
     protected $type;
 
     /**
-     * @var AbstractUserInterface
+     * @var string
      *
-     * User
+     * Author token
      */
-    protected $user;
+    protected $authorToken;
 
     /**
      * @var CommentInterface
@@ -143,25 +142,25 @@ class Vote implements VoteInterface
     }
 
     /**
-     * Get User
+     * Get AuthorToken
      *
-     * @return AbstractUserInterface User
+     * @return string AuthorToken
      */
-    public function getUser()
+    public function getAuthorToken()
     {
-        return $this->user;
+        return $this->authorToken;
     }
 
     /**
-     * Sets User
+     * Sets AuthorToken
      *
-     * @param AbstractUserInterface $user User
+     * @param string $authorToken AuthorToken
      *
      * @return $this Self object
      */
-    public function setUser($user)
+    public function setAuthorToken($authorToken)
     {
-        $this->user = $user;
+        $this->authorToken = $authorToken;
 
         return $this;
     }

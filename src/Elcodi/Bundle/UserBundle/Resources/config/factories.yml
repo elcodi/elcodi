@@ -7,21 +7,17 @@ services:
     #
     # Factory for entity customer
     #
-    elcodi.core.user.factory.customer:
-        class: %elcodi.core.user.factory.customer.class%
+    elcodi.factory.customer:
+        class: %elcodi.factory.customer.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.user.entity.customer.class%"]]
-
-    elcodi.factory.customer:
-        alias: elcodi.core.user.factory.customer
+            - [setGenerator, [@elcodi.generator.random_string]]
 
     #
     # Factory for entity admin user
     #
-    elcodi.core.user.factory.admin_user:
-        class: %elcodi.core.user.factory.admin_user.class%
+    elcodi.factory.admin_user:
+        class: %elcodi.factory.admin_user.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.user.entity.admin_user.class%"]]
-
-    elcodi.factory.admin_user:
-        alias: elcodi.core.user.factory.admin_user
+            - [setGenerator, [@elcodi.generator.random_string]]

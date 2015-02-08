@@ -17,6 +17,7 @@
 namespace Elcodi\Component\Comment\Services;
 
 use Elcodi\Component\Comment\Entity\Interfaces\CommentInterface;
+use Elcodi\Component\Comment\Entity\VotePackage;
 use Elcodi\Component\Comment\Repository\CommentRepository;
 use Elcodi\Component\Core\Wrapper\Abstracts\AbstractCacheWrapper;
 
@@ -74,14 +75,21 @@ class CommentCache extends AbstractCacheWrapper
     /**
      * Get comment tree
      *
-     * @param string $source Source of comments
+     * @param string $source  Source of comments
+     * @param string $context Context of comment
      *
      * @return array Comment tree
      */
-    public function getCommentTree($source)
+    public function getCommentTree($source, $context)
     {
-        return $this->commentTree[$source]
-            ?: [];
+        $key = $this->getSpecificSourceCacheKey(
+            $source,
+            $context
+        );
+
+        return isset($this->commentTree[$key])
+            ? $this->commentTree[$key]
+            : [];
     }
 
     /**
@@ -90,30 +98,36 @@ class CommentCache extends AbstractCacheWrapper
      * If element is not loaded yet, loads it from Database and store it into
      * cache.
      *
-     * @param string $source Source of comments
+     * @param string $source  Source of comments
+     * @param string $context Context of comment
      *
      * @return array Comment tree loaded
      */
-    public function load($source)
+    public function load($source, $context)
     {
-        if (is_array($this->commentTree[$source])) {
-            return $this->commentTree[$source];
+        $key = $this->getSpecificSourceCacheKey(
+            $source,
+            $context
+        );
+
+        if (isset($this->commentTree[$key]) && is_array($this->commentTree[$key])) {
+            return $this->commentTree[$key];
         }
 
         /**
          * Fetch key from cache
          */
-        $commentTree = $this->loadCommentTreeFromCache($source);
+        $commentTree = $this->loadCommentTreeFromCache($source, $context);
 
         /**
          * If cache key is empty, build it
          */
         if (empty($commentTree)) {
 
-            $commentTree = $this->buildCommentTreeAndSaveIntoCache($source);
+            $commentTree = $this->buildCommentTreeAndSaveIntoCache($source, $context);
         }
 
-        $this->commentTree[$source] = $commentTree;
+        $this->commentTree[$key] = $commentTree;
 
         return $commentTree;
     }
@@ -121,17 +135,26 @@ class CommentCache extends AbstractCacheWrapper
     /**
      * Invalidates cache from source
      *
-     * @param string $source Source of comments
+     * @param string $source  Source of comments
+     * @param string $context Context of comment
      *
      * @return $this Self object
      */
-    public function invalidateCache($source)
+    public function invalidateCache($source, $context)
     {
+        $key = $this->getSpecificSourceCacheKey(
+            $source,
+            $context
+        );
+
         $this
             ->cache
-            ->delete($this->getSpecificSourceCacheKey($source));
+            ->delete($this->getSpecificSourceCacheKey(
+                $source,
+                $context
+            ));
 
-        $this->commentTree = null;
+        unset($this->commentTree[$key]);
 
         return $this;
     }
@@ -139,46 +162,62 @@ class CommentCache extends AbstractCacheWrapper
     /**
      * Invalidates cache and reload all cache from source
      *
-     * @param string $source Source of comments
+     * @param string $source  Source of comments
+     * @param string $context Context of comment
      *
      * @return array Comment tree loaded
      */
-    public function reload($source)
+    public function reload($source, $context)
     {
-        $this->invalidateCache($source);
+        $this->invalidateCache(
+            $source,
+            $context
+        );
 
-        return $this->load($source);
+        return $this->load(
+            $source,
+            $context
+        );
     }
 
     /**
      * Load comment tree from cache
      *
-     * @param string $source Source of comments
+     * @param string $source  Source of comments
+     * @param string $context Context of comment
      *
      * @return array Comment tree
      */
-    protected function loadCommentTreeFromCache($source)
+    protected function loadCommentTreeFromCache($source, $context)
     {
         return $this
             ->encoder
             ->decode(
                 $this
                     ->cache
-                    ->fetch($this->getSpecificSourceCacheKey($source))
+                    ->fetch($this->getSpecificSourceCacheKey(
+                        $source,
+                        $context
+                    ))
             );
     }
 
     /**
      * Build comment tree and save it into cache
      *
-     * @param string $source Source of comments
+     * @param string $source  Source of comments
+     * @param string $context Context of comment
      *
      * @return array Comment tree
      */
-    protected function buildCommentTreeAndSaveIntoCache($source)
+    protected function buildCommentTreeAndSaveIntoCache($source, $context)
     {
-        $commentTree = $this->buildCommentTree($source);
-        $this->saveCommentTreeIntoCache($commentTree, $source);
+        $commentTree = $this->buildCommentTree($source, $context);
+        $this->saveCommentTreeIntoCache(
+            $commentTree,
+            $source,
+            $context
+        );
 
         return $commentTree;
     }
@@ -188,15 +227,16 @@ class CommentCache extends AbstractCacheWrapper
      *
      * cost O(n)
      *
-     * @param string $source Source of comments
+     * @param string $source  Source of comments
+     * @param string $context Context of comment
      *
      * @return Array Comments tree given the source
      */
-    protected function buildCommentTree($source)
+    protected function buildCommentTree($source, $context)
     {
         $comments = $this
             ->commentRepository
-            ->getAllCommentsSortedByParentAndIdAsc($source);
+            ->getAllCommentsSortedByParentAndIdAsc($source, $context);
 
         $commentTree = [
             0          => null,
@@ -236,18 +276,9 @@ class CommentCache extends AbstractCacheWrapper
                 ->voteManager
                 ->getCommentVotes($comment);
 
-            $author = $comment->getAuthor();
-            $commentTree[$commentId]['entity'] = array(
-                'id'             => $comment->getId(),
-                'authorFullName' => $author->getFullName(),
-                'authorUsername' => $author->getUsername(),
-                'authorEmail'    => $author->getEmail(),
-                'content'        => $comment->getContent(),
-                'parsedContent'  => $comment->getParsedContent(),
-                'parsedType'     => $comment->getParsingType(),
-                'nbVotes'        => $commentVotePackage->getNbVotes(),
-                'nbUpVotes'      => $commentVotePackage->getNbUpVotes(),
-                'nbDownVotes'    => $commentVotePackage->getNbDownVotes(),
+            $commentTree[$commentId]['entity'] = $this->createCommentStructure(
+                $comment,
+                $commentVotePackage
             );
 
             $commentTree[$parentCommentId]['children'][] = &$commentTree[$commentId];
@@ -262,15 +293,16 @@ class CommentCache extends AbstractCacheWrapper
      *
      * @param array  $commentTree Comment tree
      * @param string $source      Source of comments
+     * @param string $context     Context of comment
      *
      * @return $this Self object
      */
-    protected function saveCommentTreeIntoCache($commentTree, $source)
+    protected function saveCommentTreeIntoCache($commentTree, $source, $context)
     {
         $this
             ->cache
             ->save(
-                $this->getSpecificSourceCacheKey($source),
+                $this->getSpecificSourceCacheKey($source, $context),
                 $this->encoder->encode($commentTree)
             );
 
@@ -280,12 +312,56 @@ class CommentCache extends AbstractCacheWrapper
     /**
      * Get cache key given the source
      *
-     * @param string $source Source of comments
+     * @param string $source  Source of comments
+     * @param string $context Context of comment
      *
      * @return string specific source cache key
      */
-    protected function getSpecificSourceCacheKey($source)
+    protected function getSpecificSourceCacheKey($source, $context)
     {
-        return $this->key . '-' . $source;
+        $source = str_replace('.', '_', $source);
+        $context = str_replace('.', '_', $context);
+
+        return $this->key . '.' . $source . '.' . $context;
+    }
+
+    /**
+     * Create structure for comment
+     *
+     * @param CommentInterface $comment            Comment
+     * @param VotePackage      $commentVotePackage Vote package
+     *
+     * @return array
+     */
+    public function createCommentStructure(
+        CommentInterface $comment,
+        VotePackage $commentVotePackage = null
+    )
+    {
+        $commentStructure = [
+            'id'            => $comment->getId(),
+            'authorName'    => $comment->getAuthorName(),
+            'authorEmail'   => $comment->getAuthorEmail(),
+            'content'       => $comment->getContent(),
+            'context'       => $comment->getContext(),
+            'parsedContent' => $comment->getParsedContent(),
+            'parsedType'    => $comment->getParsingType(),
+            'createdAt'     => $comment->getCreatedAt()->format('Y-m-d H:i:s'),
+            'updatedAt'     => $comment->getUpdatedAt()->format('Y-m-d H:i:s'),
+        ];
+
+        if ($commentVotePackage instanceof VotePackage) {
+
+            $commentStructure = array_merge(
+                $commentStructure,
+                [
+                    'nbVotes'     => $commentVotePackage->getNbVotes(),
+                    'nbUpVotes'   => $commentVotePackage->getNbUpVotes(),
+                    'nbDownVotes' => $commentVotePackage->getNbDownVotes(),
+                ]
+            );
+        }
+
+        return $commentStructure;
     }
 }

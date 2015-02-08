@@ -30,9 +30,6 @@ class AdminUserWrapperTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.core.user.wrapper.admin_user_wrapper',
-            'elcodi.admin_user_wrapper',
-        ];
+        return ['elcodi.admin_user_wrapper'];
     }
 }

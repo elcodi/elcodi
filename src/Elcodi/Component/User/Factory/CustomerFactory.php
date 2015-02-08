@@ -20,6 +20,7 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
+use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 use Elcodi\Component\User\ElcodiUserProperties;
 use Elcodi\Component\User\Entity\Customer;
 
@@ -28,6 +29,23 @@ use Elcodi\Component\User\Entity\Customer;
  */
 class CustomerFactory extends AbstractFactory
 {
+    /**
+     * @var GeneratorInterface
+     *
+     * Generator
+     */
+    protected $generator;
+
+    /**
+     * Token generator
+     *
+     * @param GeneratorInterface $generator Token generator
+     */
+    public function setGenerator(GeneratorInterface $generator)
+    {
+        $this->generator = $generator;
+    }
+
     /**
      * Creates an instance of an entity.
      *
@@ -49,6 +67,7 @@ class CustomerFactory extends AbstractFactory
             ->setAddresses(new ArrayCollection())
             ->setCarts(new ArrayCollection())
             ->setOrders(new ArrayCollection())
+            ->setToken($this->generator->generate(2))
             ->setEnabled(true)
             ->setCreatedAt(new DateTime());
 

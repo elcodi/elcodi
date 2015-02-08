@@ -58,6 +58,13 @@ abstract class AbstractUser implements AbstractUserInterface
     /**
      * @var string
      *
+     * Token
+     */
+    protected $token;
+
+    /**
+     * @var string
+     *
      * Firstname
      */
     protected $firstname;
@@ -201,6 +208,30 @@ abstract class AbstractUser implements AbstractUserInterface
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Get Token
+     *
+     * @return string Token
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    /**
+     * Sets Token
+     *
+     * @param string $token Token
+     *
+     * @return $this Self object
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+
+        return $this;
     }
 
     /**

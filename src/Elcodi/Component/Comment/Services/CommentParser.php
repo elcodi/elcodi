@@ -16,8 +16,8 @@
 
 namespace Elcodi\Component\Comment\Services;
 
-use Elcodi\Component\Comment\Adapter\Parser\Interfaces\ParserAdapterInterface;
 use Elcodi\Component\Comment\Entity\Interfaces\CommentInterface;
+use Elcodi\Component\Core\Adapter\Parser\Interfaces\ParserAdapterInterface;
 
 /**
  * Class CommentParser

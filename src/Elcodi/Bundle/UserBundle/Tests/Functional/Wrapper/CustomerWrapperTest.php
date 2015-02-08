@@ -30,9 +30,6 @@ class CustomerWrapperTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.core.user.wrapper.customer_wrapper',
-            'elcodi.customer_wrapper',
-        ];
+        return ['elcodi.customer_wrapper'];
     }
 }

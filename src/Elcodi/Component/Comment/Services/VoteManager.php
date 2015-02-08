@@ -16,15 +16,11 @@
 
 namespace Elcodi\Component\Comment\Services;
 
-use Doctrine\Common\Persistence\ObjectManager;
-
 use Elcodi\Component\Comment\Entity\Interfaces\CommentInterface;
 use Elcodi\Component\Comment\Entity\Interfaces\VoteInterface;
 use Elcodi\Component\Comment\Entity\VotePackage;
 use Elcodi\Component\Comment\EventDispatcher\CommentEventDispatcher;
-use Elcodi\Component\Comment\Factory\VoteFactory;
-use Elcodi\Component\Comment\Repository\VoteRepository;
-use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
+use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
  * Class VoteManager
@@ -39,59 +35,39 @@ class VoteManager
     protected $commentEventDispatcher;
 
     /**
-     * @var VoteFactory
+     * @var ObjectDirector
      *
-     * Vote factory
+     * Comment vote Object Director
      */
-    protected $voteFactory;
-
-    /**
-     * @var VoteRepository
-     *
-     * Vote repository
-     */
-    protected $voteRepository;
-
-    /**
-     * @var ObjectManager
-     *
-     * Vote Object Manager
-     */
-    protected $voteObjectManager;
+    protected $commentVoteObjectDirector;
 
     /**
      * Construct
      *
-     * @param CommentEventDispatcher $commentEventDispatcher Comment event dispatcher
-     * @param VoteFactory            $voteFactory            Vote Factory
-     * @param VoteRepository         $voteRepository         Vote Repository
-     * @param ObjectManager          $voteObjectManager      Vote Object Manager
+     * @param CommentEventDispatcher $commentEventDispatcher    Comment event dispatcher
+     * @param ObjectDirector         $commentVoteObjectDirector Comment vote Object Director
      */
     public function __construct(
         CommentEventDispatcher $commentEventDispatcher,
-        VoteFactory $voteFactory,
-        VoteRepository $voteRepository,
-        ObjectManager $voteObjectManager
+        ObjectDirector $commentVoteObjectDirector
     )
     {
         $this->commentEventDispatcher = $commentEventDispatcher;
-        $this->voteFactory = $voteFactory;
-        $this->voteRepository = $voteRepository;
-        $this->voteObjectManager = $voteObjectManager;
+        $this->commentVoteObjectDirector = $commentVoteObjectDirector;
     }
 
     /**
      * Vote action
      *
-     * @param AbstractUserInterface $user    User
-     * @param CommentInterface      $comment Comment
-     * @param boolean               $type    Vote type
+     * @param CommentInterface $comment     Comment
+     * @param string           $authorToken Author token
+     * @param boolean          $type        Vote type
      *
      * @return VoteInterface Vote
      */
     public function vote(
-        AbstractUserInterface $user,
         CommentInterface $comment,
+        $authorToken,
         $type
     )
     {
@@ -99,10 +75,10 @@ class VoteManager
          * @var VoteInterface $vote
          */
         $vote = $this
-            ->voteRepository
+            ->commentVoteObjectDirector
             ->findOneBy([
-                'user'    => $user,
-                'comment' => $comment,
+                'authorToken' => $authorToken,
+                'comment'     => $comment,
             ]);
 
         $edited = true;
@@ -110,14 +86,10 @@ class VoteManager
         if (!($vote instanceof VoteInterface)) {
 
             $vote = $this
-                ->voteFactory
+                ->commentVoteObjectDirector
                 ->create()
-                ->setUser($user)
+                ->setAuthorToken($authorToken)
                 ->setComment($comment);
-
-            $this
-                ->voteObjectManager
-                ->persist($vote);
 
             $edited = false;
         }
@@ -125,8 +97,8 @@ class VoteManager
         $vote->setType($type);
 
         $this
-            ->voteObjectManager
-            ->flush($vote);
+            ->commentVoteObjectDirector
+            ->save($vote);
 
         $this
             ->commentEventDispatcher
@@ -138,35 +110,31 @@ class VoteManager
     /**
      * Remove Vote action
      *
-     * @param AbstractUserInterface $user    User
-     * @param CommentInterface      $comment Comment
+     * @param CommentInterface $comment     Comment
+     * @param string           $authorToken Author token
      *
      * @return $this VoteManager
      */
     public function removeVote(
-        AbstractUserInterface $user,
-        CommentInterface $comment
+        CommentInterface $comment,
+        $authorToken
     )
     {
         /**
          * @var VoteInterface $vote
          */
         $vote = $this
-            ->voteRepository
+            ->commentVoteObjectDirector
             ->findOneBy([
-                'user'    => $user,
-                'comment' => $comment,
+                'authorToken' => $authorToken,
+                'comment'     => $comment,
             ]);
 
         if ($vote instanceof VoteInterface) {
 
             $this
-                ->voteObjectManager
+                ->commentVoteObjectDirector
                 ->remove($vote);
-
-            $this
-                ->voteObjectManager
-                ->flush($vote);
         }
 
         return $this;
@@ -185,7 +153,7 @@ class VoteManager
          * @var VoteInterface[] $votes
          */
         $votes = $this
-            ->voteRepository
+            ->commentVoteObjectDirector
             ->findBy([
                 'comment' => $comment
             ]);

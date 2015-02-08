@@ -3,14 +3,8 @@ services:
     #
     # Encoders
     #
-    elcodi.core.core.encoder.json:
-        class: %elcodi.core.core.encoder.json.class%
-
     elcodi.json_encoder:
-        alias: elcodi.core.core.encoder.json
-
-    elcodi.core.core.encoder.php:
-        class: %elcodi.core.core.encoder.php.class%
+        class: %elcodi.json_encoder.class%
 
     elcodi.php_encoder:
-        alias: elcodi.core.core.encoder.php
+        class: %elcodi.php_encoder.class%

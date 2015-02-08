@@ -1,0 +1,10 @@
+services:
+
+    #
+    # Parser Adapter
+    #
+    elcodi.dummy_parser_adapter:
+        class: %elcodi.dummy_parser_adapter.class%
+
+    elcodi.markdown_parser_adapter:
+        class: %elcodi.markdown_parser_adapter.class%

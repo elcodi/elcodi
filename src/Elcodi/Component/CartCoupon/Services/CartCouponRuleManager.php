@@ -63,7 +63,6 @@ class CartCouponRuleManager
         }
 
         try {
-
             return $this
                 ->ruleManager
                 ->evaluate(
@@ -76,7 +75,6 @@ class CartCouponRuleManager
 
         } catch (\Exception $e) {
             // Maybe log something in case of exception?
-
             return false;
         }
     }

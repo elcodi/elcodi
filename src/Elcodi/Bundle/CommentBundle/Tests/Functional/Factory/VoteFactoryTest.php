@@ -41,8 +41,7 @@ class VoteFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.comment.factory.vote',
-            'elcodi.factory.vote',
+            'elcodi.factory.comment_vote',
         ];
     }
 }

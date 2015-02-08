@@ -77,18 +77,18 @@ class ElcodiCommentExtension extends AbstractExtension implements EntitiesOverri
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.core.comment.entity.comment.class"        => $config['mapping']['comment']['class'],
-            "elcodi.core.comment.entity.comment.mapping_file" => $config['mapping']['comment']['mapping_file'],
-            "elcodi.core.comment.entity.comment.manager"      => $config['mapping']['comment']['manager'],
-            "elcodi.core.comment.entity.comment.enabled"      => $config['mapping']['comment']['enabled'],
+            "elcodi.entity.comment.class"             => $config['mapping']['comment']['class'],
+            "elcodi.entity.comment.mapping_file"      => $config['mapping']['comment']['mapping_file'],
+            "elcodi.entity.comment.manager"           => $config['mapping']['comment']['manager'],
+            "elcodi.entity.comment.enabled"           => $config['mapping']['comment']['enabled'],
 
-            "elcodi.core.comment.entity.vote.class"           => $config['mapping']['vote']['class'],
-            "elcodi.core.comment.entity.vote.mapping_file"    => $config['mapping']['vote']['mapping_file'],
-            "elcodi.core.comment.entity.vote.manager"         => $config['mapping']['vote']['manager'],
-            "elcodi.core.comment.entity.vote.enabled"         => $config['mapping']['vote']['enabled'],
+            "elcodi.entity.comment_vote.class"        => $config['mapping']['comment_vote']['class'],
+            "elcodi.entity.comment_vote.mapping_file" => $config['mapping']['comment_vote']['mapping_file'],
+            "elcodi.entity.comment_vote.manager"      => $config['mapping']['comment_vote']['manager'],
+            "elcodi.entity.comment_vote.enabled"      => $config['mapping']['comment_vote']['enabled'],
 
-            'elcodi.core.comment.cache_key'                   => $config['comments']['cache_key'],
-            'elcodi.core.comment.parser'                      => $config['comments']['parser'],
+            'elcodi.comment.cache_key'                => $config['comments']['cache_key'],
+            'elcodi.comment.parser'                   => $config['comments']['parser'],
         ];
     }
 
@@ -103,13 +103,14 @@ class ElcodiCommentExtension extends AbstractExtension implements EntitiesOverri
     {
         return [
             'classes',
+            'controllers',
             'services',
             'factories',
             'repositories',
             'objectManagers',
+            'directors',
             'eventListeners',
             'eventDispatchers',
-            'parserAdapters',
         ];
     }
 
@@ -125,8 +126,8 @@ class ElcodiCommentExtension extends AbstractExtension implements EntitiesOverri
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\Comment\Entity\Interfaces\CommentInterface' => 'elcodi.core.comment.entity.comment.class',
-            'Elcodi\Component\Comment\Entity\Interfaces\VoteInterface'    => 'elcodi.core.comment.entity.vote.class',
+            'Elcodi\Component\Comment\Entity\Interfaces\CommentInterface' => 'elcodi.entity.comment.class',
+            'Elcodi\Component\Comment\Entity\Interfaces\VoteInterface'    => 'elcodi.entity.comment_vote.class',
         ];
     }
 
@@ -141,7 +142,7 @@ class ElcodiCommentExtension extends AbstractExtension implements EntitiesOverri
         parent::postLoad($config, $container);
 
         $ratesProviderId = $config['comments']['parser'];
-        $container->setAlias('elcodi.comment.parser_adapter', $ratesProviderId);
+        $container->setAlias('elcodi.comment_parser_adapter', $ratesProviderId);
     }
 
     /**

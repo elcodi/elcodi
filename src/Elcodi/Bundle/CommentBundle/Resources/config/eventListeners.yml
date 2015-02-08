@@ -3,8 +3,8 @@ services:
     #
     # EventListeners
     #
-    elcodi.core.comment.event_listener.comment_event_listener:
-        class: %elcodi.core.comment.event_listener.comment_event_listener.class%
+    elcodi.event_listener.comment_cache_invalidation:
+        class: %elcodi.event_listener.comment_cache_invalidation.class%
         arguments:
             comment_cache: @elcodi.comment_cache
         tags:

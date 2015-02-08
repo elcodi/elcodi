@@ -41,8 +41,7 @@ class CommentEventDispatcherTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.comment.event_dispatcher.comment_event_dispatcher',
-            'elcodi.comment_event_dispatcher',
+            'elcodi.event_dispatcher.comment',
         ];
     }
 }

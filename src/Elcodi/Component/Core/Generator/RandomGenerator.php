@@ -14,22 +14,26 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Component\Coupon\Generator;
+namespace Elcodi\Component\Core\Generator;
 
 use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 
 /**
- * Class CouponCodeGenerator
+ * Class RandomGenerator
  */
-class CouponCodeGenerator implements GeneratorInterface
+class RandomGenerator implements GeneratorInterface
 {
     /**
-     * Generates a hash (10 characters length) for new Coupon.
+     * Generates a random string with entropy
      *
-     * @return string Hash generated
+     * @param string $length Length of generation
+     *
+     * @return string Result of generation
      */
-    public function generate()
+    public function generate($length = null)
     {
-        return substr(hash("sha1", uniqid(rand(), true)), -10);
+        $bits = $length * 8;
+
+        return bin2hex(openssl_random_pseudo_bytes($bits));
     }
 }
