@@ -150,10 +150,6 @@ class CouponManager
             throw new CouponAppliedException();
         }
 
-        if (!$this->isApplicable($coupon)) {
-            throw new CouponBelowMinimumPurchaseException();
-        }
-
         /**
          * check if coupon still can be applied
          */
