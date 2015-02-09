@@ -84,6 +84,7 @@ Elcodi\Component\Coupon\Entity\Coupon:
                  nullable: true
         rule:
             targetEntity: Elcodi\Component\Rule\Entity\Interfaces\RuleInterface
+            fetch: EAGER
             joinColumn:
                 name: rule
                 referencedColumnName: id
