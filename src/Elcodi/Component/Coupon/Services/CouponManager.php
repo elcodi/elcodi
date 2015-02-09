@@ -210,7 +210,7 @@ class CouponManager
     {
         $count = $coupon->getCount();
 
-        if ($count === null) {
+        if ($count === 0) {
             return true;
         }
 

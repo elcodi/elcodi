@@ -53,6 +53,7 @@ class CouponFactory extends AbstractPurchasableFactory
             ->setMinimumPurchase($zeroPrice)
             ->setEnforcement(ElcodiCouponTypes::ENFORCEMENT_MANUAL)
             ->setUsed(0)
+            ->setCount(0)
             ->setPriority(0)
             ->setEnabled(false)
             ->setCreatedAt($now)
