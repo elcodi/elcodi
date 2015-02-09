@@ -1,7 +1,0 @@
-services:
-
-    #
-    # Generators
-    #
-    elcodi.core.referral_program.generator.hash_generator:
-        class: %elcodi.core.referral_program.generator.hash_generator.class%

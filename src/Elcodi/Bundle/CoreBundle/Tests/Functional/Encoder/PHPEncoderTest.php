@@ -30,9 +30,6 @@ class PHPEncoderTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.core.core.encoder.php',
-            'elcodi.php_encoder',
-        ];
+        return ['elcodi.php_encoder'];
     }
 }

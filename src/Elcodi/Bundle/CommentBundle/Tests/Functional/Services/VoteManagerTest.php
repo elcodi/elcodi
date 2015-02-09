@@ -43,7 +43,6 @@ class VoteManagerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.comment.service.comment_vote_manager',
             'elcodi.comment_vote_manager',
         ];
     }
@@ -58,21 +57,15 @@ class VoteManagerTest extends WebTestCase
          */
         $voteManager = $this->get('elcodi.comment_vote_manager');
 
-        $user = $this
-            ->getFactory('customer')
-            ->create()
-            ->setUsername('customer')
-            ->setPassword('customer')
-            ->setEmail('customer@customer.com');
-
-        $this->flush($user);
-
         $comment = $this
             ->getFactory('comment')
             ->create()
             ->setSource('source')
-            ->setAuthor($user)
+            ->setAuthorToken(1234)
+            ->setAuthorName('percebe')
+            ->setAuthorEmail('sjka@hjdhj.com')
             ->setContent('content')
+            ->setContext('admin')
             ->setParsedContent('content')
             ->setParsingType('none');
 
@@ -82,8 +75,8 @@ class VoteManagerTest extends WebTestCase
          * Customer votes UP
          */
         $voteManager->vote(
-            $user,
             $comment,
+            '1234',
             Vote::UP
         );
 
@@ -96,8 +89,8 @@ class VoteManagerTest extends WebTestCase
          * Customer votes DOWN the same comment
          */
         $voteManager->vote(
-            $user,
             $comment,
+            '1234',
             Vote::DOWN
         );
 
@@ -106,21 +99,12 @@ class VoteManagerTest extends WebTestCase
         $this->assertEquals(0, $votePackage->getNbUpVotes());
         $this->assertEquals(1, $votePackage->getNbDownVotes());
 
-        $user2 = $this
-            ->getFactory('customer')
-            ->create()
-            ->setUsername('customer2')
-            ->setPassword('customer2')
-            ->setEmail('customer2@customer.com');
-
-        $this->flush($user2);
-
         /**
          * Customer2 votes UP the comment
          */
         $voteManager->vote(
-            $user2,
             $comment,
+            '5678',
             Vote::UP
         );
 
@@ -133,11 +117,11 @@ class VoteManagerTest extends WebTestCase
          * Customer removed his vote
          */
         $voteManager->removeVote(
-            $user,
-            $comment
+            $comment,
+            '1234'
         );
-
         $votePackage = $voteManager->getCommentVotes($comment);
+
         $this->assertEquals(1, $votePackage->getNbVotes());
         $this->assertEquals(1, $votePackage->getNbUpVotes());
         $this->assertEquals(0, $votePackage->getNbDownVotes());

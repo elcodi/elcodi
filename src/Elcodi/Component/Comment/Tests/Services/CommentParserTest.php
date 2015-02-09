@@ -31,7 +31,7 @@ class CommentParserTest extends PHPUnit_Framework_TestCase
      */
     public function testParse()
     {
-        $adapter = $this->getMock('Elcodi\Component\Comment\Adapter\Parser\Interfaces\ParserAdapterInterface');
+        $adapter = $this->getMock('Elcodi\Component\Core\Adapter\Parser\Interfaces\ParserAdapterInterface');
 
         $adapter
             ->expects($this->any())

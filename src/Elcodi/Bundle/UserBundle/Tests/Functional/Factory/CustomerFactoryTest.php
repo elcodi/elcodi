@@ -40,9 +40,6 @@ class CustomerFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.core.user.factory.customer',
-            'elcodi.factory.customer',
-        ];
+        return ['elcodi.factory.customer'];
     }
 }

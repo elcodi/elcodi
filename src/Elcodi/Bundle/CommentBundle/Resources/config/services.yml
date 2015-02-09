@@ -3,46 +3,34 @@ services:
     #
     # Services
     #
-    elcodi.core.comment.service.comment_manager:
-        class: %elcodi.core.comment.service.comment_manager.class%
+    elcodi.comment_manager:
+        class: %elcodi.comment_manager.class%
         arguments:
-            comment_event_dispatcher: @elcodi.comment_event_dispatcher
-            comment_object_manager: @elcodi.object_manager.comment
-            comment_repository: @elcodi.repository.comment
-            comment_factory: @elcodi.factory.comment
+            comment_event_dispatcher: @elcodi.event_dispatcher.comment
+            comment_director: @elcodi.director.comment
             comment_parser: @elcodi.comment_parser
 
-    elcodi.comment_manager:
-        alias: elcodi.core.comment.service.comment_manager
-
-    elcodi.core.comment.service.comment_parser:
-        class: %elcodi.core.comment.service.comment_parser.class%
-        arguments:
-            parser_adapter: @elcodi.comment.parser_adapter
-
     elcodi.comment_parser:
-        alias: elcodi.core.comment.service.comment_parser
+        class: %elcodi.comment_parser.class%
+        arguments:
+            parser_adapter: @elcodi.comment_parser_adapter
 
-    elcodi.core.comment.service.comment_cache:
-        class: %elcodi.core.comment.service.comment_cache.class%
+    elcodi.comment_parser_adapter:
+        class: Elcodi\Component\Core\Adapter\Parser\Interfaces\ParserAdapterInterface
+        synthetic: true
+
+    elcodi.comment_cache:
+        class: %elcodi.comment_cache.class%
         arguments:
             comment_repository: @elcodi.repository.comment
             comment_vote_manager: @elcodi.comment_vote_manager
-            cache_key: %elcodi.core.comment.cache_key%
+            cache_key: %elcodi.comment.cache_key%
         calls:
             - [setCache, [@doctrine_cache.providers.elcodi_comments]]
             - [setEncoder, [@elcodi.json_encoder]]
 
-    elcodi.comment_cache:
-        alias: elcodi.core.comment.service.comment_cache
-
-    elcodi.core.comment.service.comment_vote_manager:
-        class: %elcodi.core.comment.service.comment_vote_manager.class%
-        arguments:
-            comment_event_dispatcher: @elcodi.comment_event_dispatcher
-            vote_factory: @elcodi.factory.vote
-            vote_repository: @elcodi.repository.vote
-            vote_object_manager: @elcodi.object_manager.vote
-
     elcodi.comment_vote_manager:
-        alias: elcodi.core.comment.service.comment_vote_manager
+        class: %elcodi.comment_vote_manager.class%
+        arguments:
+            comment_event_dispatcher: @elcodi.event_dispatcher.comment
+            vote_director: @elcodi.director.comment_vote

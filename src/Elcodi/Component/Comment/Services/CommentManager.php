@@ -16,14 +16,10 @@
 
 namespace Elcodi\Component\Comment\Services;
 
-use Doctrine\Common\Persistence\ObjectManager;
-
 use Elcodi\Component\Comment\Entity\Interfaces\CommentInterface;
 use Elcodi\Component\Comment\EventDispatcher\CommentEventDispatcher;
-use Elcodi\Component\Comment\Factory\CommentFactory;
-use Elcodi\Component\Comment\Repository\CommentRepository;
+use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Core\Wrapper\Abstracts\AbstractCacheWrapper;
-use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 
 /**
  * Class CommentManager
@@ -38,25 +34,11 @@ class CommentManager extends AbstractCacheWrapper
     protected $commentEventDispatcher;
 
     /**
-     * @var ObjectManager
+     * @var ObjectDirector
      *
-     * Comment Object Manager
+     * Comment Director
      */
-    protected $commentObjectManager;
-
-    /**
-     * @var CommentRepository
-     *
-     * Comment repository
-     */
-    protected $commentRepository;
-
-    /**
-     * @var CommentFactory
-     *
-     * Comment factory
-     */
-    protected $commentFactory;
+    protected $commentDirector;
 
     /**
      * @var CommentParser
@@ -69,63 +51,62 @@ class CommentManager extends AbstractCacheWrapper
      * Construct method
      *
      * @param CommentEventDispatcher $commentEventDispatcher Comment event dispatcher
-     * @param ObjectManager          $commentObjectManager   Comment object manager
-     * @param CommentRepository      $commentRepository      Comment Repository
-     * @param CommentFactory         $commentFactory         Comment Factory
+     * @param ObjectDirector         $commentDirector        Comment Director
      * @param CommentParser          $commentParser          Comment parser
      */
     public function __construct(
         CommentEventDispatcher $commentEventDispatcher,
-        ObjectManager $commentObjectManager,
-        CommentRepository $commentRepository,
-        CommentFactory $commentFactory,
+        ObjectDirector $commentDirector,
         CommentParser $commentParser
     )
     {
         $this->commentEventDispatcher = $commentEventDispatcher;
-        $this->commentObjectManager = $commentObjectManager;
-        $this->commentRepository = $commentRepository;
-        $this->commentFactory = $commentFactory;
+        $this->commentDirector = $commentDirector;
         $this->commentParser = $commentParser;
     }
 
     /**
      * Add comment into source
      *
-     * @param string                $source  Source
-     * @param string                $content Content
-     * @param AbstractUserInterface $author  Author
-     * @param CommentInterface|null $parent  Parent
+     * @param string                $source      Source
+     * @param string                $context     Context
+     * @param string                $content     Content
+     * @param string                $authorToken Author token
+     * @param string                $authorName  Author name
+     * @param string                $authorEmail Author email
+     * @param CommentInterface|null $parent      Parent
      *
      * @return CommentInterface Commend added
      */
     public function addComment(
         $source,
+        $context,
         $content,
-        AbstractUserInterface $author,
+        $authorToken,
+        $authorName,
+        $authorEmail,
         CommentInterface $parent = null
     )
     {
         $comment = $this
-            ->commentFactory
+            ->commentDirector
             ->create()
             ->setId(round(microtime(true) * 1000))
             ->setParent($parent)
             ->setSource($source)
-            ->setAuthor($author)
-            ->setContent($content);
+            ->setAuthorToken($authorToken)
+            ->setAuthorName($authorName)
+            ->setAuthorEmail($authorEmail)
+            ->setContent($content)
+            ->setContext($context);
 
         $comment = $this
             ->commentParser
             ->parse($comment);
 
         $this
-            ->commentObjectManager
-            ->persist($comment);
-
-        $this
-            ->commentObjectManager
-            ->flush($comment);
+            ->commentDirector
+            ->save($comment);
 
         $this
             ->commentEventDispatcher
@@ -154,8 +135,8 @@ class CommentManager extends AbstractCacheWrapper
             ->parse($comment);
 
         $this
-            ->commentObjectManager
-            ->flush($comment);
+            ->commentDirector
+            ->save($comment);
 
         $this
             ->commentEventDispatcher
@@ -178,12 +159,8 @@ class CommentManager extends AbstractCacheWrapper
             ->dispatchCommentPreRemoveEvent($comment);
 
         $this
-            ->commentObjectManager
-            ->remove($comment);
-
-        $this
-            ->commentObjectManager
-            ->flush($comment);
+            ->commentDirector
+            ->save($comment);
 
         $this
             ->commentEventDispatcher

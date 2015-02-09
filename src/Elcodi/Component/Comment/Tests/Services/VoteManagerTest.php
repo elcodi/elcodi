@@ -16,16 +16,13 @@
 
 namespace Elcodi\Component\Comment\Tests\Services;
 
-use Doctrine\Common\Persistence\ObjectManager;
 use PHPUnit_Framework_TestCase;
 
 use Elcodi\Component\Comment\Entity\Interfaces\CommentInterface;
 use Elcodi\Component\Comment\Entity\Vote;
 use Elcodi\Component\Comment\EventDispatcher\CommentEventDispatcher;
-use Elcodi\Component\Comment\Factory\VoteFactory;
-use Elcodi\Component\Comment\Repository\VoteRepository;
 use Elcodi\Component\Comment\Services\VoteManager;
-use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
+use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
  * Class VoteManagerTest
@@ -40,32 +37,18 @@ class VoteManagerTest extends PHPUnit_Framework_TestCase
     protected $commentEventDispatcher;
 
     /**
-     * @var VoteFactory
+     * @var ObjectDirector
      *
-     * Vote factory
+     * Comment vote director
      */
-    protected $voteFactory;
+    protected $voteDirector;
 
     /**
-     * @var VoteRepository
+     * @var string
      *
-     * Vote repository
+     * Author token
      */
-    protected $voteRepository;
-
-    /**
-     * @var ObjectManager
-     *
-     * Vote Object Manager
-     */
-    protected $voteObjectManager;
-
-    /**
-     * @var AbstractUserInterface
-     *
-     * User
-     */
-    protected $user;
+    protected $authorToken;
 
     /**
      * @var CommentInterface
@@ -87,17 +70,13 @@ class VoteManagerTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->commentEventDispatcher = $this->getMock('Elcodi\Component\Comment\EventDispatcher\CommentEventDispatcher', [], [], '', false);
-        $this->voteFactory = $this->getMock('Elcodi\Component\Comment\Factory\VoteFactory', [], [], '', false);
-        $this->voteRepository = $this->getMock('Elcodi\Component\Comment\Repository\VoteRepository', [], [], '', false);
-        $this->voteObjectManager = $this->getMock('Doctrine\Common\Persistence\ObjectManager');
-        $this->user = $this->getMock('Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface');
+        $this->voteDirector = $this->getMock('Elcodi\Component\Core\Services\ObjectDirector', [], [], '', false);
+        $this->authorToken = "12345";
         $this->comment = $this->getMock('Elcodi\Component\Comment\Entity\Interfaces\CommentInterface');
 
         $this->voteManager = new VoteManager(
             $this->commentEventDispatcher,
-            $this->voteFactory,
-            $this->voteRepository,
-            $this->voteObjectManager
+            $this->voteDirector
         );
     }
 
@@ -108,13 +87,13 @@ class VoteManagerTest extends PHPUnit_Framework_TestCase
     {
         $vote = new Vote();
         $this
-            ->voteRepository
+            ->voteDirector
             ->expects($this->any())
             ->method('findOneBy')
             ->will($this->returnValue(null));
 
         $this
-            ->voteFactory
+            ->voteDirector
             ->expects($this->once())
             ->method('create')
             ->will($this->returnValue($vote));
@@ -132,12 +111,12 @@ class VoteManagerTest extends PHPUnit_Framework_TestCase
         $vote = $this
             ->voteManager
             ->vote(
-                $this->user,
                 $this->comment,
+                $this->authorToken,
                 Vote::DOWN
             );
 
-        $this->assertSame($this->user, $vote->getUser());
+        $this->assertSame($this->authorToken, $vote->getAuthorToken());
         $this->assertSame($this->comment, $vote->getComment());
         $this->assertSame(Vote::DOWN, $vote->getType());
     }
@@ -149,18 +128,18 @@ class VoteManagerTest extends PHPUnit_Framework_TestCase
     {
         $vote = new Vote();
         $vote
-            ->setUser($this->user)
+            ->setAuthorToken($this->authorToken)
             ->setComment($this->comment)
             ->setType(Vote::UP);
 
         $this
-            ->voteRepository
+            ->voteDirector
             ->expects($this->any())
             ->method('findOneBy')
             ->will($this->returnValue($vote));
 
         $this
-            ->voteFactory
+            ->voteDirector
             ->expects($this->never())
             ->method('create');
 
@@ -177,12 +156,12 @@ class VoteManagerTest extends PHPUnit_Framework_TestCase
         $vote = $this
             ->voteManager
             ->vote(
-                $this->user,
                 $this->comment,
+                $this->authorToken,
                 Vote::DOWN
             );
 
-        $this->assertSame($this->user, $vote->getUser());
+        $this->assertSame($this->authorToken, $vote->getAuthorToken());
         $this->assertSame($this->comment, $vote->getComment());
         $this->assertSame(Vote::DOWN, $vote->getType());
     }
@@ -194,18 +173,18 @@ class VoteManagerTest extends PHPUnit_Framework_TestCase
     {
         $vote = new Vote();
         $vote
-            ->setUser($this->user)
+            ->setAuthorToken($this->authorToken)
             ->setComment($this->comment)
             ->setType(Vote::UP);
 
         $this
-            ->voteRepository
+            ->voteDirector
             ->expects($this->any())
             ->method('findOneBy')
             ->will($this->returnValue($vote));
 
         $this
-            ->voteObjectManager
+            ->voteDirector
             ->expects($this->once())
             ->method('remove')
             ->with($this->equalTo($vote));
@@ -213,8 +192,8 @@ class VoteManagerTest extends PHPUnit_Framework_TestCase
         $this
             ->voteManager
             ->removeVote(
-                $this->user,
                 $this->comment,
+                $this->authorToken,
                 Vote::DOWN
             );
     }
@@ -225,21 +204,21 @@ class VoteManagerTest extends PHPUnit_Framework_TestCase
     public function testRemoveNonExistingVote()
     {
         $this
-            ->voteRepository
+            ->voteDirector
             ->expects($this->any())
             ->method('findOneBy')
             ->will($this->returnValue(null));
 
         $this
-            ->voteObjectManager
+            ->voteDirector
             ->expects($this->never())
             ->method('remove');
 
         $this
             ->voteManager
             ->removeVote(
-                $this->user,
                 $this->comment,
+                $this->authorToken,
                 Vote::DOWN
             );
     }

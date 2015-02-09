@@ -9,10 +9,15 @@ Elcodi\Component\Comment\Entity\Comment:
                 strategy: AUTO
     fields:
         source:
-            column: quantity
+            column: source
             type: string
             length: 255
             nullable: false
+        context:
+            column: context
+            type: string
+            nullable: false
+
         content:
             column: content
             type: text
@@ -26,6 +31,23 @@ Elcodi\Component\Comment\Entity\Comment:
             type: string
             length: 255
             nullable: false
+
+        authorToken:
+            column: author_token
+            type: string
+            length: 255
+            nullable: true
+        authorName:
+            column: author_name
+            type: string
+            length: 255
+            nullable: true
+        authorEmail:
+            column: author_email
+            type: string
+            length: 255
+            nullable: true
+
         createdAt:
             column: created_at
             type: datetime
@@ -44,12 +66,7 @@ Elcodi\Component\Comment\Entity\Comment:
                 name: parent_id
                 referencedColumnName: id
                 nullable: true
-        author:
-            targetEntity: Elcodi\Component\User\Entity\Interfaces\CustomerInterface
-            joinColumn:
-                name: author_id
-                referencedColumnName: id
-                nullable: true
+                onDelete: cascade
 
     lifecycleCallbacks:
         preUpdate: [loadUpdateAt]

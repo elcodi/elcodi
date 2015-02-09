@@ -1,0 +1,38 @@
+elcodi_comments_list:
+    path: /comments/{source}/{context}/list
+    methods: GET
+    defaults:
+        _controller: elcodi.controller.comment:listComments
+    requirements:
+        source: ".+"
+        context: ".+"
+        authorToken: ".+"
+
+elcodi_comments_add:
+    path: /comments/{authorToken}/{source}/{context}/add
+    methods: POST
+    defaults:
+        _controller: elcodi.controller.comment:addComment
+    requirements:
+        source: ".+"
+        context: ".+"
+        authorToken: ".+"
+
+elcodi_comments_edit:
+    path: /comments/{authorToken}/{commentId}/edit
+    methods: POST
+    defaults:
+        _controller: elcodi.controller.comment:editComment
+    requirements:
+        source: ".+"
+        authorToken: ".+"
+        commentId: "\d+"
+
+elcodi_comments_delete:
+    path: /comments/{authorToken}/{commentId}/delete
+    methods: DELETE
+    defaults:
+        _controller: elcodi.controller.comment:deleteComment
+    requirements:
+        authorToken: ".+"
+        commentId: "\d+"

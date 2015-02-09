@@ -30,7 +30,9 @@ interface GeneratorInterface
     /**
      * Generates a hash
      *
-     * @return string Hash generated
+     * @param string $length Length of generation
+     *
+     * @return string Generation
      */
-    public function generate();
+    public function generate($length = null);
 }

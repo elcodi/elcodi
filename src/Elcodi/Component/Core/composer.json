@@ -39,6 +39,9 @@
         "symfony/dependency-injection": "~2.6",
         "symfony/event-dispatcher": "~2.6"
     },
+    "suggest": {
+        "michelf/php-markdown": "Needed for the markdown parsing adapter"
+    },
     "autoload": {
         "psr-4": {
             "Elcodi\\Component\\Core\\": ""

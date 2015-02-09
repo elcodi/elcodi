@@ -20,6 +20,12 @@ Elcodi\Component\User\Entity\Abstracts\AbstractUser:
             type: string
             length: 255
             nullable: true
+        token:
+            column: token
+            type: string
+            length: 255
+            nullable: false
+            unique: true
         firstname:
             column: firstname
             type: string

@@ -19,6 +19,7 @@ namespace Elcodi\Component\User\Factory;
 use DateTime;
 
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
+use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 use Elcodi\Component\User\ElcodiUserProperties;
 use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
 
@@ -27,6 +28,23 @@ use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
  */
 class AdminUserFactory extends AbstractFactory
 {
+    /**
+     * @var GeneratorInterface
+     *
+     * Generator
+     */
+    protected $generator;
+
+    /**
+     * Token generator
+     *
+     * @param GeneratorInterface $generator Token generator
+     */
+    public function setGenerator(GeneratorInterface $generator)
+    {
+        $this->generator = $generator;
+    }
+
     /**
      * Creates an instance of an entity.
      *
@@ -43,6 +61,7 @@ class AdminUserFactory extends AbstractFactory
         $adminUser = new $classNamespace();
         $adminUser
             ->setGender(ElcodiUserProperties::GENDER_UNKNOWN)
+            ->setToken($this->generator->generate(2))
             ->setEnabled(true)
             ->setCreatedAt(new DateTime());
 

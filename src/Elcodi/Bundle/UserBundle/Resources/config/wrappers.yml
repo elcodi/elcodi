@@ -3,20 +3,14 @@ services:
     #
     # Wrappers
     #
-    elcodi.core.user.wrapper.customer_wrapper:
-        class: %elcodi.core.user.wrapper.customer_wrapper.class%
-        arguments:
-            customer_factory: @elcodi.core.user.factory.customer
-            security_context: @?security.context
-
     elcodi.customer_wrapper:
-        alias: elcodi.core.user.wrapper.customer_wrapper
-
-    elcodi.core.user.wrapper.admin_user_wrapper:
-        class: %elcodi.core.user.wrapper.admin_user_wrapper.class%
+        class: %elcodi.customer_wrapper.class%
         arguments:
-            admin_user_factory: @elcodi.core.user.factory.admin_user
+            customer_factory: @elcodi.factory.customer
             security_context: @?security.context
 
     elcodi.admin_user_wrapper:
-        alias: elcodi.core.user.wrapper.admin_user_wrapper
+        class: %elcodi.admin_user_wrapper.class%
+        arguments:
+            admin_user_factory: @elcodi.factory.admin_user
+            security_context: @?security.context

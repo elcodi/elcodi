@@ -40,9 +40,6 @@ class AdminUserFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.core.user.factory.admin_user',
-            'elcodi.factory.admin_user',
-        ];
+        return ['elcodi.factory.admin_user'];
     }
 }

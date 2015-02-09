@@ -39,7 +39,7 @@ services:
         arguments:
             referral_hash_repository: @elcodi.repository.referral_hash
             entity_manager: @doctrine.orm.default_entity_manager
-            referral_hash_generator: @elcodi.core.referral_program.generator.hash_generator
+            referral_hash_generator: @elcodi.generator.sha1
             referral_hash_factory: @elcodi.factory.referral_hash
 
     elcodi.referral_hash_manager:

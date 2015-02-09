@@ -14,11 +14,11 @@
  * @author Aldo Chiecchia <zimage@tiscali.it>
  */
 
-namespace Elcodi\Component\Comment\Adapter\Parser;
+namespace Elcodi\Component\Core\Adapter\Parser;
 
 use Michelf\MarkdownExtra;
 
-use Elcodi\Component\Comment\Adapter\Parser\Interfaces\ParserAdapterInterface;
+use Elcodi\Component\Core\Adapter\Parser\Interfaces\ParserAdapterInterface;
 
 /**
  * Class MarkdownParserAdapter

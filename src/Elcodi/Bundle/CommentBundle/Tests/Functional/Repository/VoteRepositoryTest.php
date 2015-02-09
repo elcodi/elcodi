@@ -31,7 +31,7 @@ class VoteRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.repository.vote',
+            'elcodi.repository.comment_vote',
         ];
     }
 
@@ -42,7 +42,7 @@ class VoteRepositoryTest extends WebTestCase
     {
         $this->assertInstanceOf(
             'Doctrine\Common\Persistence\ObjectRepository',
-            $this->get('elcodi.repository.vote')
+            $this->get('elcodi.repository.comment_vote')
         );
     }
 }

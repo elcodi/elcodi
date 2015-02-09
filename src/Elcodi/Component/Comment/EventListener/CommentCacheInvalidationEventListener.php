@@ -20,9 +20,9 @@ use Elcodi\Component\Comment\Event\Abstracts\AbstractCommentEvent;
 use Elcodi\Component\Comment\Services\CommentCache;
 
 /**
- * Class CommentEventListener
+ * Class CommentCacheInvalidationEventListener
  */
-class CommentEventListener
+class CommentCacheInvalidationEventListener
 {
     /**
      * @var CommentCache
@@ -48,12 +48,13 @@ class CommentEventListener
      */
     public function onCommentChange(AbstractCommentEvent $event)
     {
-        $source = $event
-            ->getComment()
-            ->getSource();
+        $comment = $event->getComment();
 
         $this
             ->commentCache
-            ->invalidateCache($source);
+            ->invalidateCache(
+                $comment->getSource(),
+                $comment->getContext()
+            );
     }
 }

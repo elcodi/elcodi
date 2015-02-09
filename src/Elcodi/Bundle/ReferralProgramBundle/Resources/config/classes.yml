@@ -25,11 +25,6 @@ parameters:
     elcodi.core.referral_program.service.referral_rule_manager.class: Elcodi\Component\ReferralProgram\Services\ReferralRuleManager
 
     #
-    # Generators
-    #
-    elcodi.core.referral_program.generator.hash_generator.class: Elcodi\Component\ReferralProgram\Generator\ReferralHashGenerator
-
-    #
     # Routes
     #
     elcodi.core.referral_program.routes.loader.class: Elcodi\Component\ReferralProgram\Router\ReferralProgramRoutesLoader

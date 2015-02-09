@@ -28,21 +28,21 @@ class VotePackage
      *
      * Number of up votes
      */
-    protected $nbUpVotes;
+    protected $nbUpVotes = 0;
 
     /**
      * @var integer
      *
      * Number of down votes
      */
-    protected $nbDownVotes;
+    protected $nbDownVotes = 0;
 
     /**
      * @var integer
      *
      * Number of votes
      */
-    protected $nbVotes;
+    protected $nbVotes = 0;
 
     /**
      * Construct

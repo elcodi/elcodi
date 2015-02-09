@@ -26,12 +26,31 @@ use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 class Sha1Generator implements GeneratorInterface
 {
     /**
+     * @var GeneratorInterface
+     *
+     * Generator
+     */
+    protected $generator;
+
+    /**
+     * Construct
+     *
+     * @param GeneratorInterface $generator Generator
+     */
+    public function __construct(GeneratorInterface $generator)
+    {
+        $this->generator = $generator;
+    }
+
+    /**
      * Generates a random string
+     *
+     * @param string $length Length of generation
      *
      * @return string Result of generation
      */
-    public function generate()
+    public function generate($length = null)
     {
-        return hash("sha1", uniqid(rand(), true));
+        return hash("sha1", $this->generator->generate($length));
     }
 }

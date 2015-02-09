@@ -169,4 +169,20 @@ interface AbstractUserInterface
      * @return $this Self object
      */
     public function setPassword($password);
+
+    /**
+     * Get Token
+     *
+     * @return string Token
+     */
+    public function getToken();
+
+    /**
+     * Sets Token
+     *
+     * @param string $token Token
+     *
+     * @return $this Self object
+     */
+    public function setToken($token);
 }

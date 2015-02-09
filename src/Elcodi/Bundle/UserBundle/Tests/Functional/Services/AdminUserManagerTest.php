@@ -30,9 +30,6 @@ class AdminUserManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.core.user.service.admin_user_manager',
-            'elcodi.admin_user_manager',
-        ];
+        return ['elcodi.admin_user_manager'];
     }
 }

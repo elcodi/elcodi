@@ -76,9 +76,9 @@ class CartCouponManager
      * Construct method
      *
      * @param CartCouponEventDispatcher $cartCouponEventDispatcher
-     * @param CouponManager $couponManager
-     * @param CouponRepository $couponRepository
-     * @param CartCouponRepository $cartCouponRepository
+     * @param CouponManager             $couponManager
+     * @param CouponRepository          $couponRepository
+     * @param CartCouponRepository      $cartCouponRepository
      */
     public function __construct(
         CartCouponEventDispatcher $cartCouponEventDispatcher,

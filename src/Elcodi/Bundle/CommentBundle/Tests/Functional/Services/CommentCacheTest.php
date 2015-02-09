@@ -41,7 +41,6 @@ class CommentCacheTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.comment.service.comment_cache',
             'elcodi.comment_cache',
         ];
     }
@@ -62,45 +61,57 @@ class CommentCacheTest extends WebTestCase
 
         $commentCache = $this->get('elcodi.comment_cache');
         $commentManager = $this->get('elcodi.comment_manager');
-        $source = 'http://page.com/product1';
+        $source = 'product-1';
         $comment1 = $commentManager->addComment(
             $source,
+            'admin',
             'This is my comment #1',
-            $user,
+            '1234',
+            'Efervescencio',
+            'uhsi@noseque.com',
             null
         );
 
-        $comments = $commentCache->load($source);
+        $comments = $commentCache->load($source, 'admin');
         $this->assertCount(1, $comments);
         $this->assertEmpty($comments[0]['children']);
 
-        $comments = $commentCache->getCommentTree($source);
+        $comments = $commentCache->getCommentTree($source, 'admin');
         $this->assertCount(1, $comments);
         $this->assertEmpty($comments[0]['children']);
 
         $commentManager->addComment(
             $source,
+            'admin',
             'This is my comment #2',
-            $user,
+            '1234',
+            'Percebe',
+            'vestu@quinacosa.com',
             $comment1
         );
 
-        $comments = $commentCache->getCommentTree($source);
+        $comments = $commentCache->getCommentTree($source, 'admin');
         $this->assertEmpty($comments);
 
-        $comments = $commentCache->load($source);
+        $comments = $commentCache->load($source, 'admin');
         $this->assertCount(1, $comments);
         $this->assertCount(1, $comments[0]['children']);
         $this->assertCount(0, $comments[0]['children'][0]['children']);
 
         $commentManager->addComment(
             $source,
+            'admin',
             'This is my comment #3',
-            $user,
+            '1234',
+            'Efervescencio',
+            'uhsi@noseque.com',
             null
         );
 
-        $comments = $commentCache->load($source);
+        $comments = $commentCache->load($source, 'admin');
         $this->assertCount(2, $comments);
+
+        $comments = $commentCache->load($source, 'noadmin');
+        $this->assertCount(0, $comments);
     }
 }

@@ -114,7 +114,6 @@ class ElcodiReferralProgramExtension extends AbstractExtension implements Entiti
             'eventListeners',
             'factories',
             'repositories',
-            'generators',
             'objectManagers',
             'controllers',
         ];

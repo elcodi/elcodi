@@ -43,7 +43,7 @@ class Configuration extends AbstractConfiguration
                             true
                         ))
                         ->append($this->addMappingNode(
-                            'vote',
+                            'comment_vote',
                             'Elcodi\Component\Comment\Entity\Vote',
                             '@ElcodiCommentBundle/Resources/config/doctrine/Vote.orm.yml',
                             'default',
@@ -58,7 +58,7 @@ class Configuration extends AbstractConfiguration
                             ->defaultValue('comments')
                         ->end()
                         ->scalarNode('parser')
-                            ->defaultValue('elcodi.comment.adapter.dummy_parser_adapter')
+                            ->defaultValue('elcodi.dummy_parser_adapter')
                         ->end()
                     ->end()
                 ->end()

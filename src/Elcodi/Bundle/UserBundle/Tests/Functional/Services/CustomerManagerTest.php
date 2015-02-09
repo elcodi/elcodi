@@ -30,9 +30,6 @@ class CustomerManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.core.user.service.customer_manager',
-            'elcodi.customer_manager',
-        ];
+        return ['elcodi.customer_manager'];
     }
 }

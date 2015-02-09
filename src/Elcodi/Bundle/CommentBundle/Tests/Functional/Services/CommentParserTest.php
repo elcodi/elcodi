@@ -41,7 +41,6 @@ class CommentParserTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.comment.service.comment_parser',
             'elcodi.comment_parser',
         ];
     }

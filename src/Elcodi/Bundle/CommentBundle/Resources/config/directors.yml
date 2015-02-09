@@ -1,0 +1,18 @@
+services:
+
+    #
+    # Directors
+    #
+    elcodi.director.comment:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        arguments:
+            - @elcodi.object_manager.comment
+            - @elcodi.repository.comment
+            - @elcodi.factory.comment
+
+    elcodi.director.comment_vote:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        arguments:
+            - @elcodi.object_manager.comment_vote
+            - @elcodi.repository.comment_vote
+            - @elcodi.factory.comment_vote

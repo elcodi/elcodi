@@ -19,9 +19,9 @@ namespace Elcodi\Bundle\CommentBundle\Tests\Functional\EventListener;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class CommentEventListenerTest
+ * Class CommentCacheInvalidationEventListenerTest
  */
-class CommentEventListenerTest extends WebTestCase
+class CommentCacheInvalidationEventListenerTest extends WebTestCase
 {
     /**
      * Schema must be loaded in all test cases
@@ -41,7 +41,7 @@ class CommentEventListenerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.comment.event_listener.comment_event_listener',
+            'elcodi.event_listener.comment_cache_invalidation',
         ];
     }
 }
