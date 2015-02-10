@@ -135,7 +135,7 @@ class Configuration extends AbstractConfiguration
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('client')
-                            ->defaultValue('elcodi.geo.dummy_populator_adapter')
+                            ->defaultValue('elcodi.geo.geodata_populator_adapter')
                         ->end()
                     ->end()
                 ->end()
