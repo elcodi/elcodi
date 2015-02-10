@@ -12,6 +12,7 @@
  *
  * @author Marc Morera <yuhu@mmoreram.com>
  * @author Aldo Chiecchia <zimage@tiscali.it>
+ * @author Elcodi Team <tech@elcodi.com>
  */
 
 namespace Elcodi\Component\EntityTranslator\Repository;
