@@ -17,9 +17,10 @@
 
 namespace Elcodi\Component\StateTransitionMachine\Event;
 
+use StdClass;
 use Symfony\Component\EventDispatcher\Event;
 
-use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StatefulInterface;
+use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 
 /**
  * Class InitializationEvent
@@ -27,29 +28,51 @@ use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StatefulInterface;
 class InitializationEvent extends Event
 {
     /**
-     * @var StatefulInterface
+     * @var StdClass
      *
      * Object
      */
     protected $object;
 
     /**
+     * @var StateLineStack
+     *
+     * State line stack
+     */
+    protected $stateLineStack;
+
+    /**
      * Construct
      *
-     * @param StatefulInterface $object Object
+     * @param StdClass       $object         Object
+     * @param StateLineStack $stateLineStack State line stack
      */
-    public function __construct(StatefulInterface $object)
+    public function __construct(
+        $object,
+        StateLineStack $stateLineStack
+    )
     {
         $this->object = $object;
+        $this->stateLineStack = $stateLineStack;
     }
 
     /**
      * Get Object
      *
-     * @return StatefulInterface Object
+     * @return StdClass Object
      */
     public function getObject()
     {
         return $this->object;
+    }
+
+    /**
+     * Get StateLine Stack
+     *
+     * @return StateLineStack
+     */
+    public function getStateLineStack()
+    {
+        return $this->stateLineStack;
     }
 }

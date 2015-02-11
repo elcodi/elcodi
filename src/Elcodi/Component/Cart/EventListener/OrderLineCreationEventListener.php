@@ -26,9 +26,15 @@ use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
 
 /**
- * Class OrderLineEventListener
+ * Class OrderLineCreationEventListener
+ *
+ * These event listeners are supposed to be used when an OrderLine is created
+ *
+ * Public methods:
+ *
+ * * updateStock
  */
-class OrderLineEventListener
+class OrderLineCreationEventListener
 {
     /**
      * @var ObjectManager

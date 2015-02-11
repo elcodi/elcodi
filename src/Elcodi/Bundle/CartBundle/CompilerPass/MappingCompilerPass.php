@@ -63,13 +63,6 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
                 'elcodi.core.cart.entity.order_line.mapping_file',
                 'elcodi.core.cart.entity.order_line.enabled'
             )
-            ->addEntityMapping(
-                $container,
-                'elcodi.core.cart.entity.order_state_line.manager',
-                'elcodi.core.cart.entity.order_state_line.class',
-                'elcodi.core.cart.entity.order_state_line.mapping_file',
-                'elcodi.core.cart.entity.order_state_line.enabled'
-            )
         ;
     }
 }

@@ -22,6 +22,12 @@ use Elcodi\Component\Cart\Services\CartSessionManager;
 
 /**
  * Class CartSessionEventListener
+ *
+ * These event listeners are supposed to be used for cart and session
+ *
+ * Public methods:
+ *
+ * * saveCartInSession
  */
 class CartSessionEventListener
 {
@@ -47,7 +53,7 @@ class CartSessionEventListener
      *
      * @param CartOnLoadEvent $event Event
      */
-    public function onCartLoad(CartOnLoadEvent $event)
+    public function saveCartInSession(CartOnLoadEvent $event)
     {
         $this
             ->cartSessionManager

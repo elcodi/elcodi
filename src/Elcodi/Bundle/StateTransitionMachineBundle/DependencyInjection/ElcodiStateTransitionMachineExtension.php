@@ -17,12 +17,15 @@
 
 namespace Elcodi\Bundle\StateTransitionMachineBundle\DependencyInjection;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ConfigurationInterface;
+
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
+use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
  * This class loads and manages your bundle configuration
  */
-class ElcodiStateTransitionMachineExtension extends AbstractExtension
+class ElcodiStateTransitionMachineExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
     /**
      * @var string
@@ -42,6 +45,46 @@ class ElcodiStateTransitionMachineExtension extends AbstractExtension
     }
 
     /**
+     * Return a new Configuration instance.
+     *
+     * If object returned by this method is an instance of
+     * ConfigurationInterface, extension will use the Configuration to read all
+     * bundle config definitions.
+     *
+     * Also will call getParametrizationValues method to load some config values
+     * to internal parameters.
+     *
+     * @return ConfigurationInterface Configuration file
+     */
+    protected function getConfigurationInstance()
+    {
+        return new Configuration(static::EXTENSION_NAME);
+    }
+
+    /**
+     * Load Parametrization definition
+     *
+     * return array(
+     *      'parameter1' => $config['parameter1'],
+     *      'parameter2' => $config['parameter2'],
+     *      ...
+     * );
+     *
+     * @param array $config Bundles config values
+     *
+     * @return array Parametrization values
+     */
+    protected function getParametrizationValues(array $config)
+    {
+        return [
+            "elcodi.state_transition_machine.state_line.class" => $config['mapping']['state_line']['class'],
+            "elcodi.state_transition_machine.state_line.mapping_file" => $config['mapping']['state_line']['mapping_file'],
+            "elcodi.state_transition_machine.state_line.manager" => $config['mapping']['state_line']['manager'],
+            "elcodi.state_transition_machine.state_line.enabled" => $config['mapping']['state_line']['enabled'],
+        ];
+    }
+
+    /**
      * Config files to load
      *
      * @param array $config Configuration
@@ -53,6 +96,18 @@ class ElcodiStateTransitionMachineExtension extends AbstractExtension
         return [
             'classes',
             'factories',
+            'repositories',
+            'objectManagers',
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function getEntitiesOverrides()
+    {
+        return [
+            'Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface' => 'elcodi.state_transition_machine.state_line.class',
         ];
     }
 

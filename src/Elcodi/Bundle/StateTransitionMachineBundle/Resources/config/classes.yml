@@ -3,18 +3,18 @@ parameters:
     #
     # Entities
     #
-    elcodi.core.state_transition_machine.entity.state_line.class: Elcodi\Component\StateTransitionMachine\Entity\StateLine
+    elcodi.state_transition_machine.state_line.class: Elcodi\Component\StateTransitionMachine\Entity\StateLine
 
     #
     # Factories
     #
-    elcodi.core.state_transition_machine.factory.machine.class: Elcodi\Component\StateTransitionMachine\Factory\MachineFactory
-    elcodi.core.state_transition_machine.factory.state_line.class: Elcodi\Component\StateTransitionMachine\Factory\StateLineFactory
+    elcodi.factory.state_transition_machine.class: Elcodi\Component\StateTransitionMachine\Factory\MachineFactory
+    elcodi.factory.state_transition_machine_state_line.class: Elcodi\Component\StateTransitionMachine\Factory\StateLineFactory
 
     #
     # Services
     #
-    elcodi.core.state_transition_machine.service.loggable_machine.class: Elcodi\Component\StateTransitionMachine\Machine\LoggableMachine
-    elcodi.core.state_transition_machine.service.machine_builder.class: Elcodi\Component\StateTransitionMachine\Machine\MachineBuilder
-    elcodi.core.state_transition_machine.service.machine_manager.class: Elcodi\Component\StateTransitionMachine\Machine\MachineManager
-    elcodi.core.state_transition_machine.service.machine.class: Elcodi\Component\StateTransitionMachine\Machine\Machine
+    elcodi.state_transition_machine.loggable_machine.class: Elcodi\Component\StateTransitionMachine\Machine\LoggableMachine
+    elcodi.state_transition_machine.machine_builder.class: Elcodi\Component\StateTransitionMachine\Machine\MachineBuilder
+    elcodi.state_transition_machine.machine_manager.class: Elcodi\Component\StateTransitionMachine\Machine\MachineManager
+    elcodi.state_transition_machine.machine.class: Elcodi\Component\StateTransitionMachine\Machine\Machine

@@ -3,10 +3,10 @@ parameters:
     #
     # EventDispatchers
     #
-    elcodi.core.cart.event_dispatcher.cart.class: Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher
-    elcodi.core.cart.event_dispatcher.cart_line.class: Elcodi\Component\Cart\EventDispatcher\CartLineEventDispatcher
-    elcodi.core.cart.event_dispatcher.order.class: Elcodi\Component\Cart\EventDispatcher\OrderEventDispatcher
-    elcodi.core.cart.event_dispatcher.order_line.class: Elcodi\Component\Cart\EventDispatcher\OrderLineEventDispatcher
+    elcodi.cart_event_dispatcher.class: Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher
+    elcodi.cart_line_event_dispatcher.class: Elcodi\Component\Cart\EventDispatcher\CartLineEventDispatcher
+    elcodi.order_event_dispatcher.class: Elcodi\Component\Cart\EventDispatcher\OrderEventDispatcher
+    elcodi.order_line_event_dispatcher.class: Elcodi\Component\Cart\EventDispatcher\OrderLineEventDispatcher
 
     #
     # Services
@@ -23,11 +23,11 @@ parameters:
     #
     # Event Listeners
     #
-    elcodi.core.cart.event_listener.cart.class: Elcodi\Component\Cart\EventListener\CartEventListener
-    elcodi.core.cart.event_listener.order.class: Elcodi\Component\Cart\EventListener\OrderEventListener
-    elcodi.core.cart.event_listener.order_line.class: Elcodi\Component\Cart\EventListener\OrderLineEventListener
-    elcodi.core.cart.event_listener.order_machine.class: Elcodi\Component\Cart\EventListener\OrderMachineEventListener
+    elcodi.core.cart.event_listener.cart_load.class: Elcodi\Component\Cart\EventListener\CartLoadEventListener
+    elcodi.core.cart.event_listener.order_creation.class: Elcodi\Component\Cart\EventListener\OrderCreationEventListener
+    elcodi.core.cart.event_listener.order_line_creation.class: Elcodi\Component\Cart\EventListener\OrderLineCreationEventListener
     elcodi.core.cart.event_listener.cart_session.class: Elcodi\Component\Cart\EventListener\CartSessionEventListener
+
 
     #
     # Factories

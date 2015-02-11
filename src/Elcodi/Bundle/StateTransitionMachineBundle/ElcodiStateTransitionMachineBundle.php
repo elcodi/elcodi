@@ -17,9 +17,11 @@
 
 namespace Elcodi\Bundle\StateTransitionMachineBundle;
 
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+use Elcodi\Bundle\StateTransitionMachineBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\StateTransitionMachineBundle\DependencyInjection\ElcodiStateTransitionMachineExtension;
 
 /**
@@ -27,6 +29,16 @@ use Elcodi\Bundle\StateTransitionMachineBundle\DependencyInjection\ElcodiStateTr
  */
 class ElcodiStateTransitionMachineBundle extends Bundle
 {
+    /**
+     * @param ContainerBuilder $container
+     */
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+
+        $container->addCompilerPass(new MappingCompilerPass());
+    }
+
     /**
      * Returns the bundle's container extension.
      *

@@ -97,17 +97,16 @@ class ElcodiCartExtension extends AbstractExtension implements EntitiesOverridab
             "elcodi.core.cart.entity.order_line.manager" => $config['mapping']['order_line']['manager'],
             "elcodi.core.cart.entity.order_line.enabled" => $config['mapping']['order_line']['enabled'],
 
-            "elcodi.core.cart.entity.order_state_line.class" => $config['mapping']['order_state_line']['class'],
-            "elcodi.core.cart.entity.order_state_line.mapping_file" => $config['mapping']['order_state_line']['mapping_file'],
-            "elcodi.core.cart.entity.order_state_line.manager" => $config['mapping']['order_state_line']['manager'],
-            "elcodi.core.cart.entity.order_state_line.enabled" => $config['mapping']['order_state_line']['enabled'],
-
             'elcodi.core.cart.cart_save_in_session' => $config['cart']['save_in_session'],
             'elcodi.core.cart.cart_session_field_name' => $config['cart']['session_field_name'],
 
-            'elcodi.core.cart.order_state_transition_machine_states' => $config['order_state_transition_machine']['states'],
-            'elcodi.core.cart.order_state_transition_machine_identifier' => $config['order_state_transition_machine']['identifier'],
-            'elcodi.core.cart.order_state_transition_machine_point_of_entry' => $config['order_state_transition_machine']['point_of_entry'],
+            'elcodi.order.payment_states_machine.states' => $config['payment_states_machine']['states'],
+            'elcodi.order.payment_states_machine.identifier' => $config['payment_states_machine']['identifier'],
+            'elcodi.order.payment_states_machine.point_of_entry' => $config['payment_states_machine']['point_of_entry'],
+
+            'elcodi.order.shipping_states_machine.states' => $config['shipping_states_machine']['states'],
+            'elcodi.order.shipping_states_machine.identifier' => $config['shipping_states_machine']['identifier'],
+            'elcodi.order.shipping_states_machine.point_of_entry' => $config['shipping_states_machine']['point_of_entry'],
         ];
     }
 
@@ -129,7 +128,7 @@ class ElcodiCartExtension extends AbstractExtension implements EntitiesOverridab
             'objectManagers',
             'transformers',
             'eventDispatchers',
-            'machine',
+            'stateMachine',
         ];
     }
 
@@ -149,7 +148,6 @@ class ElcodiCartExtension extends AbstractExtension implements EntitiesOverridab
             'Elcodi\Component\Cart\Entity\Interfaces\OrderInterface' => 'elcodi.core.cart.entity.order.class',
             'Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface' => 'elcodi.core.cart.entity.cart_line.class',
             'Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface' => 'elcodi.core.cart.entity.order_line.class',
-            'Elcodi\Component\Cart\Entity\Interfaces\OrderStateLineInterface' => 'elcodi.core.cart.entity.order_state_line.class',
         ];
     }
 

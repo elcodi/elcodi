@@ -151,4 +151,22 @@ class Machine implements MachineInterface
 
         return $transition;
     }
+
+    /**
+     * Get available states given a start state
+     *
+     * @param string $startStateName Start state name
+     *
+     * @return array Set of states
+     */
+    public function getAvailableStates($startStateName)
+    {
+        return array_filter(
+            $this->transitionChain->getTransitions(),
+            function (Transition $transition) use ($startStateName) {
+                return
+                    $transition->getStart()->getName() === $startStateName;
+            }
+        );
+    }
 }

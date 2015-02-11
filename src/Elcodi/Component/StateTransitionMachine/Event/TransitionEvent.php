@@ -17,10 +17,11 @@
 
 namespace Elcodi\Component\StateTransitionMachine\Event;
 
+use StdClass;
 use Symfony\Component\EventDispatcher\Event;
 
 use Elcodi\Component\StateTransitionMachine\Definition\Transition;
-use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StatefulInterface;
+use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 
 /**
  * Class TransitionEvent
@@ -28,11 +29,18 @@ use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StatefulInterface;
 class TransitionEvent extends Event
 {
     /**
-     * @var StatefulInterface
+     * @var StdClass
      *
      * Object
      */
     protected $object;
+
+    /**
+     * @var StateLineStack
+     *
+     * State line stack
+     */
+    protected $stateLineStack;
 
     /**
      * @var Transition
@@ -44,23 +52,39 @@ class TransitionEvent extends Event
     /**
      * Construct
      *
-     * @param StatefulInterface $object     Object
-     * @param Transition        $transition Transition
+     * @param StdClass       $object         Object
+     * @param StateLineStack $stateLineStack State line stack
+     * @param Transition     $transition     Transition
      */
-    public function __construct(StatefulInterface $object, Transition $transition)
+    public function __construct(
+        $object,
+        StateLineStack $stateLineStack,
+        Transition $transition
+    )
     {
         $this->object = $object;
+        $this->stateLineStack = $stateLineStack;
         $this->transition = $transition;
     }
 
     /**
      * Get Object
      *
-     * @return StatefulInterface Object
+     * @return StdClass Object
      */
     public function getObject()
     {
         return $this->object;
+    }
+
+    /**
+     * Get StateLine Stack
+     *
+     * @return StateLineStack
+     */
+    public function getStateLineStack()
+    {
+        return $this->stateLineStack;
     }
 
     /**

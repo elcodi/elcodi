@@ -20,9 +20,9 @@ namespace Elcodi\Component\Cart\Factory;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
-use Elcodi\Component\Cart\Entity\Interfaces\OrderStateLineInterface;
 use Elcodi\Component\Cart\Entity\Order;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
+use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 use Elcodi\Component\StateTransitionMachine\Machine\MachineManager;
 
 /**
@@ -33,18 +33,30 @@ class OrderFactory extends AbstractFactory
     /**
      * @var MachineManager
      *
-     * Machine Manager
+     * Machine Manager for Payment
      */
-    protected $machineManager;
+    protected $paymentMachineManager;
+
+    /**
+     * @var MachineManager
+     *
+     * Machine Manager for Shipping
+     */
+    protected $shippingMachineManager;
 
     /**
      * Construct method
      *
-     * @param MachineManager $machineManager Machine Manager
+     * @param MachineManager $paymentMachineManager  Machine Manager for Payment
+     * @param MachineManager $shippingMachineManager Machine Manager for Shipping
      */
-    public function __construct(MachineManager $machineManager)
+    public function __construct(
+        MachineManager $paymentMachineManager,
+        MachineManager $shippingMachineManager
+    )
     {
-        $this->machineManager = $machineManager;
+        $this->paymentMachineManager = $paymentMachineManager;
+        $this->shippingMachineManager = $shippingMachineManager;
     }
 
     /**
@@ -67,18 +79,33 @@ class OrderFactory extends AbstractFactory
             ->setHeight(0)
             ->setWidth(0)
             ->setWeight(0)
-            ->setOrderLines(new ArrayCollection())
-            ->setStateLines(new ArrayCollection())
             ->setCreatedAt(new DateTime());
 
-        /**
-         * @var OrderStateLineInterface $stateLine
-         */
-        $stateLine = $this
-            ->machineManager
-            ->initialize($order, '');
+        $paymentStateLineStack = $this
+            ->paymentMachineManager
+            ->initialize(
+                $order,
+                StateLineStack::create(
+                    new ArrayCollection(),
+                    null
+                ),
+                'Order not paid'
+            );
 
-        $stateLine->setOrder($order);
+        $order->setPaymentStateLineStack($paymentStateLineStack);
+
+        $shippingStateLineStack = $this
+            ->shippingMachineManager
+            ->initialize(
+                $order,
+                StateLineStack::create(
+                    new ArrayCollection(),
+                    null
+                ),
+                'Order not shipped'
+            );
+
+        $order->setShippingStateLineStack($shippingStateLineStack);
 
         return $order;
     }

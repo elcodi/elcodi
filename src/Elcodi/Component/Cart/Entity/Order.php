@@ -29,7 +29,8 @@ use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
-use Elcodi\Component\StateTransitionMachine\Entity\Traits\StateLinesTrait;
+use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface;
+use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
@@ -37,7 +38,7 @@ use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
  */
 class Order implements OrderInterface
 {
-    use DateTimeTrait, PriceTrait, DimensionsTrait, StateLinesTrait;
+    use DateTimeTrait, PriceTrait, DimensionsTrait;
 
     /**
      * @var integer
@@ -101,6 +102,34 @@ class Order implements OrderInterface
      * invoice address
      */
     protected $invoiceAddress;
+
+    /**
+     * @var StateLineInterface
+     *
+     * Last stateLine in payment stateLine stack
+     */
+    protected $paymentLastStateLine;
+
+    /**
+     * @var StateLineInterface
+     *
+     * Last stateLine in shipping stateLine stack
+     */
+    protected $shippingLastStateLine;
+
+    /**
+     * @var Collection
+     *
+     * StateLines for payment
+     */
+    protected $paymentStateLines;
+
+    /**
+     * @var Collection
+     *
+     * StateLines for shipping
+     */
+    protected $shippingStateLines;
 
     /**
      * Get Id
@@ -325,6 +354,62 @@ class Order implements OrderInterface
     public function setDeliveryAddress($deliveryAddress)
     {
         $this->deliveryAddress = $deliveryAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get PaymentStateLineStack
+     *
+     * @return StateLineStack PaymentStateLineStack
+     */
+    public function getPaymentStateLineStack()
+    {
+        return StateLineStack::create(
+            $this->paymentStateLines,
+            $this->paymentLastStateLine
+        );
+    }
+
+    /**
+     * Sets PaymentStateLineStack
+     *
+     * @param StateLineStack $paymentStateLineStack PaymentStateLineStack
+     *
+     * @return $this Self object
+     */
+    public function setPaymentStateLineStack(StateLineStack $paymentStateLineStack)
+    {
+        $this->paymentStateLines = $paymentStateLineStack->getStateLines();
+        $this->paymentLastStateLine = $paymentStateLineStack->getLastStateLine();
+
+        return $this;
+    }
+
+    /**
+     * Get ShippingStateLineStack
+     *
+     * @return StateLineStack ShippingStateLineStack
+     */
+    public function getShippingStateLineStack()
+    {
+        return StateLineStack::create(
+            $this->shippingStateLines,
+            $this->shippingLastStateLine
+        );
+    }
+
+    /**
+     * Sets ShippingStateLineStack
+     *
+     * @param StateLineStack $shippingStateLineStack ShippingStateLineStack
+     *
+     * @return $this Self object
+     */
+    public function setShippingStateLineStack(StateLineStack $shippingStateLineStack)
+    {
+        $this->shippingStateLines = $shippingStateLineStack->getStateLines();
+        $this->shippingLastStateLine = $shippingStateLineStack->getLastStateLine();
 
         return $this;
     }

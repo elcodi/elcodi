@@ -3,8 +3,8 @@ services:
     #
     # Event Listeners
     #
-    elcodi.core.cart.event_listener.cart:
-        class: %elcodi.core.cart.event_listener.cart.class%
+    elcodi.core.cart.event_listener.cart_load:
+        class: %elcodi.core.cart.event_listener.cart_load.class%
         arguments:
             cart_entity_manager: @elcodi.object_manager.cart
             cart_event_dispatcher: @elcodi.cart_event_dispatcher
@@ -12,21 +12,22 @@ services:
             currency_wrapper: @elcodi.currency_wrapper
             currency_converter: @elcodi.currency_converter
         tags:
-            - { name: kernel.event_listener, event: cart.preload, method: onCartPreLoad, priority: 0 }
-            - { name: kernel.event_listener, event: cart.onload, method: onCartLoadPrices, priority: 16 }
-            - { name: kernel.event_listener, event: cart.onload, method: onCartLoadFlush, priority: 0 }
-            - { name: kernel.event_listener, event: cart.onload, method: onCartLoadQuantities, priority: -16 }
-            - { name: kernel.event_listener, event: order.oncreated, method: onOrderCreated, priority: -16 }
+            - { name: kernel.event_listener, event: cart.preload, method: checkCartIntegrity, priority: 0 }
+            - { name: kernel.event_listener, event: cart.onload, method: loadCartPrices, priority: 16 }
+            - { name: kernel.event_listener, event: cart.onload, method: saveCart, priority: 0 }
+            - { name: kernel.event_listener, event: cart.onload, method: loadCartQuantities, priority: -16 }
 
-    elcodi.core.cart.event_listener.order:
-        class: %elcodi.core.cart.event_listener.order.class%
+    elcodi.core.cart.event_listener.order_creation:
+        class: %elcodi.core.cart.event_listener.order_creation.class%
         arguments:
             order_entity_manager: @elcodi.object_manager.order
+            cart_entity_manager: @elcodi.object_manager.cart
         tags:
-            - { name: kernel.event_listener, event: order.oncreated, method: onOrderCreated, priority: 0}
+            - { name: kernel.event_listener, event: order.oncreated, method: saveOrder, priority: 0}
+            - { name: kernel.event_listener, event: order.oncreated, method: setCartAsOrdered, priority: -16 }
 
-    elcodi.core.cart.event_listener.order_line:
-        class: %elcodi.core.cart.event_listener.order_line.class%
+    elcodi.core.cart.event_listener.order_line_creation:
+        class: %elcodi.core.cart.event_listener.order_line_creation.class%
         arguments:
             product_object_manager: @elcodi.object_manager.product
             variant_object_manager: @elcodi.object_manager.product_variant
@@ -35,13 +36,7 @@ services:
 
     elcodi.core.cart.event_listener.cart_session:
         class: %elcodi.core.cart.event_listener.cart_session.class%
-        private: %elcodi.core.cart.session_field_name%
         arguments:
             cart_session_manager: @elcodi.cart_session_manager
         tags:
-            - { name: kernel.event_listener, event: cart.onload, method: onCartLoad, priority: -2 }
-
-    elcodi.core.cart.event_listener.order_machine:
-        class: %elcodi.core.cart.event_listener.order_machine.class%
-        arguments:
-            order_state_line_object_manager: elcodi.object_manager.order_state_line
+            - { name: kernel.event_listener, event: cart.onload, method: saveCartInSession, priority: -2 }

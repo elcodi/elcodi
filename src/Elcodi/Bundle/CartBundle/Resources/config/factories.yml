@@ -21,7 +21,8 @@ services:
     elcodi.core.cart.factory.order:
         class: %elcodi.core.cart.factory.order.class%
         arguments:
-            order_state_transition_machine_manager: @elcodi.core.cart.order_state_transition_machine.machine_manager
+            payment_machine_manager: @elcodi.order.payment_states_machine.manager
+            shipping_machine_manager: @elcodi.order.shipping_states_machine.manager
         calls:
             - [setEntityNamespace, ["%elcodi.core.cart.entity.order.class%"]]
 

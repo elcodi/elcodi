@@ -17,12 +17,13 @@
 
 namespace Elcodi\Component\StateTransitionMachine\Machine;
 
+use StdClass;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 use Elcodi\Component\StateTransitionMachine\Definition\Transition;
 use Elcodi\Component\StateTransitionMachine\ElcodiStateTransitionMachineEvents;
-use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StatefulInterface;
 use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface;
+use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 use Elcodi\Component\StateTransitionMachine\Event\InitializationEvent;
 use Elcodi\Component\StateTransitionMachine\Event\TransitionEvent;
 use Elcodi\Component\StateTransitionMachine\Exception\ObjectAlreadyInitializedException;
@@ -80,16 +81,21 @@ class MachineManager
     /**
      * Initialize the object into the machine
      *
-     * @param StatefulInterface $object      Object
-     * @param string            $description Description
+     * @param StdClass       $object         $object Object
+     * @param StateLineStack $stateLineStack StateLine Stack
+     * @param string         $description    Description
      *
-     * @return StateLineInterface New state applied
+     * @return StateLineStack StateLine stack given
      *
      * @throws ObjectAlreadyInitializedException Object already initialized
      */
-    public function initialize(StatefulInterface $object, $description)
+    public function initialize(
+        $object,
+        StateLineStack $stateLineStack,
+        $description
+    )
     {
-        if ($object->getLastStateLine() instanceof StateLineInterface) {
+        if ($stateLineStack->getLastStateLine() instanceof StateLineInterface) {
 
             throw new ObjectAlreadyInitializedException();
         }
@@ -103,36 +109,39 @@ class MachineManager
             $description
         );
 
-        $object->addStateLine($stateLine);
+        $stateLineStack->addStateLine($stateLine);
 
         $this->dispatchInitializationEvents(
             $this->machine,
-            $object
+            $object,
+            $stateLineStack
         );
 
-        return $stateLine;
+        return $stateLineStack;
     }
 
     /**
      * Applies a transition given a object
      *
-     * @param StatefulInterface $object         Object
-     * @param string            $transitionName Transition name
-     * @param string            $description    Description
+     * @param StdClass       $object         $object Object
+     * @param StateLineStack $stateLineStack StateLine Stack
+     * @param string         $transitionName Transition name
+     * @param string         $description    Description
      *
-     * @return Transition Transition done
+     * @return StateLineStack StateLine stack given
      *
      * @throws TransitionNotAccessibleException Transition not accessible
      * @throws TransitionNotValidException      Invalid transition
      * @throws ObjectNotInitializedException    Object needs to be initialized in machine
      */
     public function transition(
-        StatefulInterface $object,
+        $object,
+        StateLineStack $stateLineStack,
         $transitionName,
         $description
     )
     {
-        $startState = $object->getLastStateLine();
+        $startState = $stateLineStack->getLastStateLine();
 
         if (!($startState instanceof StateLineInterface)) {
 
@@ -145,42 +154,44 @@ class MachineManager
                 $startState->getName(),
                 $transitionName
             );
-
         $stateLine = $this->createStateLine(
             $transition->getFinal()->getName(),
             $description
         );
 
-        $object->addStateLine($stateLine);
+        $stateLineStack->addStateLine($stateLine);
 
         $this->dispatchTransitionEvents(
             $this->machine,
             $object,
+            $stateLineStack,
             $transition
         );
 
-        return $transition;
+        return $stateLineStack;
     }
 
     /**
      * Applies a transition given a object
      *
-     * @param StatefulInterface $object         Object
-     * @param string            $transitionName Transition name
-     * @param string            $description    Description
+     * @param StdClass       $object         $object Object
+     * @param StateLineStack $stateLineStack StateLine Stack
+     * @param string         $transitionName Transition name
+     * @param string         $description    Description
      *
-     * @return Transition Transition done
+     * @return StateLineStack StateLine stack given
      *
      * @throws StateNotReachableException    State is not reachable
      * @throws ObjectNotInitializedException Object needs to be initialized in machine
      */
     public function reachState(
-        StatefulInterface $object,
+        $object,
+        StateLineStack $stateLineStack,
         $transitionName,
         $description
     )
     {
-        $startState = $object->getLastStateLine();
+        $startState = $stateLineStack->getLastStateLine();
 
         if (!($startState instanceof StateLineInterface)) {
 
@@ -199,15 +210,16 @@ class MachineManager
             $description
         );
 
-        $object->addStateLine($stateLine);
+        $stateLineStack->addStateLine($stateLine);
 
         $this->dispatchTransitionEvents(
             $this->machine,
             $object,
+            $stateLineStack,
             $transition
         );
 
-        return $transition;
+        return $stateLineStack;
     }
 
     /**
@@ -232,14 +244,16 @@ class MachineManager
     /**
      * Throw initialization events
      *
-     * @param MachineInterface  $machine Machine
-     * @param StatefulInterface $object  Object
+     * @param MachineInterface $machine        Machine
+     * @param StdClass         $object         $object Object
+     * @param StateLineStack   $stateLineStack StateLine Stack
      *
      * @return $this Self object
      */
     protected function dispatchInitializationEvents(
         MachineInterface $machine,
-        StatefulInterface $object
+        $object,
+        StateLineStack $stateLineStack
     )
     {
         $this
@@ -251,7 +265,8 @@ class MachineManager
                     ElcodiStateTransitionMachineEvents::INITIALIZATION
                 ),
                 new InitializationEvent(
-                    $object
+                    $object,
+                    $stateLineStack
                 )
             );
     }
@@ -259,18 +274,31 @@ class MachineManager
     /**
      * Throw transition events
      *
-     * @param MachineInterface  $machine    Machine
-     * @param StatefulInterface $object     Object
-     * @param Transition        $transition Transition
+     * @param MachineInterface $machine        Machine
+     * @param StdClass         $object         $object Object
+     * @param StateLineStack   $stateLineStack StateLine Stack
+     * @param Transition       $transition     Transition
      *
      * @return $this Self object
      */
     protected function dispatchTransitionEvents(
         MachineInterface $machine,
-        StatefulInterface $object,
+        $object,
+        StateLineStack $stateLineStack,
         Transition $transition
     )
     {
+        $this
+            ->eventDispatcher
+            ->dispatch(
+                ElcodiStateTransitionMachineEvents::ALL_TRANSITIONS,
+                new TransitionEvent(
+                    $object,
+                    $stateLineStack,
+                    $transition
+                )
+            );
+
         $this
             ->eventDispatcher
             ->dispatch(
@@ -287,6 +315,7 @@ class MachineManager
                 ),
                 new TransitionEvent(
                     $object,
+                    $stateLineStack,
                     $transition
                 )
             );
@@ -307,6 +336,7 @@ class MachineManager
                 ),
                 new TransitionEvent(
                     $object,
+                    $stateLineStack,
                     $transition
                 )
             );
@@ -327,6 +357,7 @@ class MachineManager
                 ),
                 new TransitionEvent(
                     $object,
+                    $stateLineStack,
                     $transition
                 )
             );

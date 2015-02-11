@@ -64,13 +64,6 @@ class Configuration extends AbstractConfiguration
                             'default',
                             true
                         ))
-                        ->append($this->addMappingNode(
-                            'order_state_line',
-                            'Elcodi\Component\Cart\Entity\OrderStateLine',
-                            '@ElcodiCartBundle/Resources/config/doctrine/OrderStateLine.orm.yml',
-                            'default',
-                            true
-                        ))
                     ->end()
                 ->end()
                 ->arrayNode('cart')
@@ -84,19 +77,35 @@ class Configuration extends AbstractConfiguration
                         ->end()
                     ->end()
                 ->end()
-                ->arrayNode('order_state_transition_machine')
+                ->arrayNode('payment_states_machine')
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('identifier')
-                            ->defaultValue('order_state_transition_machine')
+                            ->defaultValue('order_payment_states_machine')
                         ->end()
                         ->scalarNode('point_of_entry')
-                            ->defaultValue('new')
+                            ->defaultValue('unpaid')
                         ->end()
                         ->variableNode('states')
                             ->defaultValue(array(
-                                ['new', 'pay', 'paid'],
-                                ['paid', 'ship', 'shipped'],
+                                ['unpaid', 'pay', 'paid'],
+                                ['paid', 'refund', 'refunded'],
+                            ))
+                        ->end()
+                    ->end()
+                ->end()
+                ->arrayNode('shipping_states_machine')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('identifier')
+                            ->defaultValue('order_shipping_states_machine')
+                        ->end()
+                        ->scalarNode('point_of_entry')
+                            ->defaultValue('not shipped')
+                        ->end()
+                        ->variableNode('states')
+                            ->defaultValue(array(
+                                ['not shipped', 'ship', 'shipped'],
                             ))
                         ->end()
                     ->end()

@@ -44,7 +44,7 @@ class ElcodiStateTransitionMachineEvents
      * event.name : state_machine.{machine_id}.{transition_name}
      * event.class : TransitionEvent
      */
-    const TRANSITION = 'state_machine.{machine_id}.{transition_name}';
+    const TRANSITION = 'state_machine.{machine_id}.transition_{transition_name}';
 
     /**
      * This event is fired each time a transition is done to a state
@@ -53,4 +53,12 @@ class ElcodiStateTransitionMachineEvents
      * event.class : TransitionEvent
      */
     const TRANSITION_TO_STATE = 'state_machine.{machine_id}.transition_to_{state_name}';
+
+    /**
+     * This event is fired each time a transition is done
+     *
+     * event.name : state_machine.{machine_id}.{transition_name}
+     * event.class : TransitionEvent
+     */
+    const ALL_TRANSITIONS = 'state_machine.transition';
 }
