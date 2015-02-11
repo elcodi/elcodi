@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Media\Services;
 
 use Gaufrette\Filesystem;
-
 use Elcodi\Component\Media\Entity\Interfaces\FileInterface;
 use Elcodi\Component\Media\Transformer\Interfaces\FileIdentifierTransformerInterface;
 
@@ -57,8 +56,7 @@ class FileManager
     public function __construct(
         Filesystem $fileSystem,
         FileIdentifierTransformerInterface $fileIdentifierTransformer
-    )
-    {
+    ) {
         $this->filesystem = $fileSystem;
         $this->fileIdentifierTransformer = $fileIdentifierTransformer;
     }

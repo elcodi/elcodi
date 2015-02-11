@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Product\Repository;
 
 use Doctrine\ORM\EntityRepository;
-
 use Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
@@ -68,6 +67,6 @@ class VariantRepository extends EntityRepository
          * No match, probable option misconfiguration in Variants
          */
 
-        return null;
+        return;
     }
 }

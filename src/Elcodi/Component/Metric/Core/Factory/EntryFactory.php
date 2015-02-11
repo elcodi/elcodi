@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Metric\Core\Factory;
 
 use DateTime;
-
 use Elcodi\Component\Metric\Core\Entity\Entry;
 
 /**
@@ -41,8 +40,7 @@ class EntryFactory
         $event,
         $context,
         $createdAt
-    )
-    {
+    ) {
         return new Entry(
             $token,
             $event,

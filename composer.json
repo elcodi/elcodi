@@ -129,7 +129,8 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",
-        "mmoreram/php-formatter": "~1.0"
+        "fabpot/php-cs-fixer": "1.4.2",
+        "mmoreram/php-formatter": "1.0.4"
     },
     "suggest": {
         "guzzle/http": "Required for OpenExchangeRates adapter"

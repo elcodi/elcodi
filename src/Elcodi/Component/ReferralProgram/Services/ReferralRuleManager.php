@@ -18,7 +18,6 @@
 namespace Elcodi\Component\ReferralProgram\Services;
 
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Elcodi\Component\ReferralProgram\Entity\Interfaces\ReferralRuleInterface;
 use Elcodi\Component\ReferralProgram\Repository\ReferralRuleRepository;
 
@@ -50,8 +49,7 @@ class ReferralRuleManager
     public function __construct(
         ReferralRuleRepository $referralRuleRepository,
         ObjectManager $manager
-    )
-    {
+    ) {
         $this->referralRuleRepository = $referralRuleRepository;
         $this->manager = $manager;
     }

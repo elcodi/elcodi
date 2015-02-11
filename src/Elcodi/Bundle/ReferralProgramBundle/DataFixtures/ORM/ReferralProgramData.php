@@ -20,7 +20,6 @@ namespace Elcodi\Bundle\ReferralProgramBundle\DataFixtures\ORM;
 use DateTime;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\ReferralProgram\ElcodiReferralProgramRuleTypes;

@@ -20,7 +20,6 @@ namespace Elcodi\Bundle\PageBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
-
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
@@ -45,7 +44,7 @@ class ElcodiPageExtension extends AbstractExtension implements EntitiesOverridab
      */
     public function getConfigFilesLocation()
     {
-        return __DIR__ . '/../Resources/config';
+        return __DIR__.'/../Resources/config';
     }
 
     /**
@@ -84,12 +83,12 @@ class ElcodiPageExtension extends AbstractExtension implements EntitiesOverridab
             'classes',
             [
                 'controllers',
-                $config['routing']['enabled']
+                $config['routing']['enabled'],
             ],
             'factories',
             [
                 'loaders',
-                $config['routing']['enabled']
+                $config['routing']['enabled'],
             ],
             'objectManagers',
             'renderers',
@@ -161,7 +160,6 @@ class ElcodiPageExtension extends AbstractExtension implements EntitiesOverridab
         parent::postLoad($config, $container);
 
         if ($config['routing']['enabled']) {
-
             $loaderId = $config['routing']['loader'];
             $loaderDefinition = $container->findDefinition($loaderId);
             $loaderDefinition->addTag('routing.loader');
@@ -169,10 +167,8 @@ class ElcodiPageExtension extends AbstractExtension implements EntitiesOverridab
         }
 
         if (!empty($config['renderers'])) {
-
             $rendererReferences = [];
             foreach ($config['renderers'] as $rendererId) {
-
                 $rendererReferences[] = new Reference($rendererId);
             }
 

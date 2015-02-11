@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Geo\Tests\UnitTest\Adapter;
 
 use PHPUnit_Framework_TestCase;
-
 use Elcodi\Component\Geo\Entity\City;
 use Elcodi\Component\Geo\Entity\Country;
 use Elcodi\Component\Geo\Entity\Interfaces\CityInterface;
@@ -129,7 +128,7 @@ class GeoDataPopulatorAdapterTest extends PHPUnit_Framework_TestCase
         $geoDataPopulatorAdapter
             ->expects($this->any())
             ->method('getDataFilePathFromCountryCode')
-            ->will($this->returnValue(dirname(__FILE__) . '/Fixtures/geodata.fr.zip'));
+            ->will($this->returnValue(dirname(__FILE__).'/Fixtures/geodata.fr.zip'));
 
         $output = $this->getMock('Symfony\Component\Console\Output\OutputInterface');
 

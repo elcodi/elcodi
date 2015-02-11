@@ -55,8 +55,7 @@ class CartCouponRuleManager
     public function checkCouponValidity(
         CartInterface $cart,
         CouponInterface $coupon
-    )
-    {
+    ) {
         $rule = $coupon->getRule();
 
         if (null === $rule) {
@@ -73,7 +72,6 @@ class CartCouponRuleManager
                         'coupon' => $coupon,
                     ]
                 );
-
         } catch (\Exception $e) {
             // Maybe log something in case of exception?
             return false;

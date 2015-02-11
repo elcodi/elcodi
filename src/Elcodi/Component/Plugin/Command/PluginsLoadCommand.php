@@ -20,7 +20,6 @@ namespace Elcodi\Component\Plugin\Command;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-
 use Elcodi\Component\Plugin\Services\PluginManager;
 
 /**
@@ -74,10 +73,9 @@ class PluginsLoadCommand extends Command
             ->loadPlugins();
 
         foreach ($plugins as $plugin) {
-
             $formattedLine = $formatter->formatSection(
                 'OK',
-                'Plugin "' . $plugin['bundle'] . '" installed'
+                'Plugin "'.$plugin['bundle'].'" installed'
             );
 
             $output->writeln($formattedLine);

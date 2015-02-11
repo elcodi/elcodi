@@ -24,5 +24,4 @@ use Doctrine\ORM\EntityRepository;
  */
 class CarrierBaseRangeRepository extends EntityRepository
 {
-
 }

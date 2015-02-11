@@ -19,7 +19,6 @@ namespace Elcodi\Component\User\Wrapper;
 
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 use Elcodi\Component\User\Factory\CustomerFactory;
 
@@ -61,8 +60,7 @@ class CustomerWrapper
     public function __construct(
         CustomerFactory $customerFactory,
         TokenStorageInterface $tokenStorage = null
-    )
-    {
+    ) {
         $this->customerFactory = $customerFactory;
         $this->tokenStorage = $tokenStorage;
     }
@@ -144,17 +142,17 @@ class CustomerWrapper
     protected function getCustomerFromToken()
     {
         if (!($this->tokenStorage instanceof TokenStorageInterface)) {
-            return null;
+            return;
         }
 
         $token = $this->tokenStorage->getToken();
         if (!($token instanceof TokenInterface)) {
-            return null;
+            return;
         }
 
         $customer = $token->getUser();
         if (!($customer instanceof CustomerInterface)) {
-            return null;
+            return;
         }
 
         return $customer;

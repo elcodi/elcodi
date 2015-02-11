@@ -17,7 +17,7 @@
 
 namespace Elcodi\Component\Rule\ExpressionLanguage\Provider;
 
-use \RuntimeException;
+use RuntimeException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;

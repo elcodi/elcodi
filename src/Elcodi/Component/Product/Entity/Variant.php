@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Product\Entity;
 
 use Doctrine\Common\Collections\Collection;
-
 use Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
@@ -43,8 +42,7 @@ use Elcodi\Component\Product\Entity\Traits\ProductPriceTrait;
  */
 class Variant implements VariantInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         ProductPriceTrait,
         EnabledTrait,
         DateTimeTrait,

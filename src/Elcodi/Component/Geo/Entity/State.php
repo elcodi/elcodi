@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Geo\Entity;
 
 use Doctrine\Common\Collections\Collection;
-
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Geo\Entity\Interfaces\CountryInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\ProvinceInterface;
@@ -204,7 +203,6 @@ class State implements StateInterface, ZoneMemberAssignableInterface
     public function addProvince(ProvinceInterface $province)
     {
         if (!$this->provinces->contains($province)) {
-
             $this
                 ->provinces
                 ->add($province);

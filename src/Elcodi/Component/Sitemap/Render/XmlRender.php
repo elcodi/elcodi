@@ -34,24 +34,22 @@ class XmlRender implements SitemapRenderInterface
      */
     public function render(SitemapProfileInterface $sitemapProfile)
     {
-        $data = '<?xml version="1.0" encoding="UTF-8"?>' . PHP_EOL;
-        $data .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL;
+        $data = '<?xml version="1.0" encoding="UTF-8"?>'.PHP_EOL;
+        $data .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'.PHP_EOL;
 
         foreach ($sitemapProfile->getEntityLoaders() as $entityLoader) {
-
             $transformer = $entityLoader->getTransformer();
             foreach ($entityLoader->load() as $entity) {
-
-                $data .= '    <url>' . PHP_EOL;
-                $data .= '        <loc>' . $transformer->getLoc($entity) . '</loc>' . PHP_EOL;
-                $data .= '        <lastmod>' . $transformer->getLastMod($entity) . '</lastmod>' . PHP_EOL;
-                $data .= '        <changefreq>' . $transformer->getChangeFreq($entity) . '</changefreq>' . PHP_EOL;
-                $data .= '        <priority>' . $transformer->getPriority($entity) . '</priority>' . PHP_EOL;
-                $data .= '    </url>' . PHP_EOL;
+                $data .= '    <url>'.PHP_EOL;
+                $data .= '        <loc>'.$transformer->getLoc($entity).'</loc>'.PHP_EOL;
+                $data .= '        <lastmod>'.$transformer->getLastMod($entity).'</lastmod>'.PHP_EOL;
+                $data .= '        <changefreq>'.$transformer->getChangeFreq($entity).'</changefreq>'.PHP_EOL;
+                $data .= '        <priority>'.$transformer->getPriority($entity).'</priority>'.PHP_EOL;
+                $data .= '    </url>'.PHP_EOL;
             }
         }
 
-        $data .= '</urlset>' . PHP_EOL;
+        $data .= '</urlset>'.PHP_EOL;
 
         return $data;
     }

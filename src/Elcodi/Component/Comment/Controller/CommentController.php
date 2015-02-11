@@ -21,7 +21,6 @@ use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
 use Elcodi\Component\Comment\Entity\Interfaces\CommentInterface;
 use Elcodi\Component\Comment\Services\CommentCache;
 use Elcodi\Component\Comment\Services\CommentManager;
@@ -63,8 +62,7 @@ class CommentController
         CommentManager $commentManager,
         CommentCache $commentCache,
         ObjectRepository $commentRepository
-    )
-    {
+    ) {
         $this->commentManager = $commentManager;
         $this->commentCache = $commentCache;
         $this->commentRepository = $commentRepository;
@@ -102,8 +100,7 @@ class CommentController
         $authorToken,
         $context,
         $source
-    )
-    {
+    ) {
         $requestBag = $request->request;
         $content = $requestBag->get('content');
         $authorName = $requestBag->get('author_name');
@@ -132,7 +129,7 @@ class CommentController
 
         return new Response(json_encode([
             'entity' => $commentStructure,
-            'children' => []
+            'children' => [],
         ]));
     }
 
@@ -151,8 +148,7 @@ class CommentController
         Request $request,
         $commentId,
         $authorToken
-    )
-    {
+    ) {
         $requestBag = $request->request;
         $content = $requestBag->get('content');
         $comment = $this->findComment(
@@ -211,11 +207,10 @@ class CommentController
             ->commentRepository
             ->findOneBy([
                 'id'          => $commentId,
-                'authorToken' => $authorToken
+                'authorToken' => $authorToken,
             ]);
 
         if (!($comment instanceof CommentInterface)) {
-
             throw new EntityNotFoundException('Comment not found');
         }
 

@@ -21,7 +21,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Exception;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\HttpKernel\KernelInterface;
-
 use Elcodi\Component\Configuration\Exception\ConfigurationParameterNotFoundException;
 use Elcodi\Component\Configuration\Services\ConfigurationManager;
 use Elcodi\Component\Template\Interfaces\TemplateInterface;
@@ -54,8 +53,7 @@ class TemplateManager
     public function __construct(
         KernelInterface $kernel,
         ConfigurationManager $configurationManager = null
-    )
-    {
+    ) {
         $this->kernel = $kernel;
         $this->configurationManager = $configurationManager;
     }
@@ -71,7 +69,6 @@ class TemplateManager
     public function loadTemplates()
     {
         if (!($this->configurationManager instanceof ConfigurationManager)) {
-
             throw new Exception('You need to install ConfigurationBundle');
         }
 
@@ -82,9 +79,7 @@ class TemplateManager
          * @var Bundle $bundle
          */
         foreach ($bundles as $bundle) {
-
             if ($bundle instanceof TemplateInterface) {
-
                 $bundleName = $bundle->getName();
                 $bundleNamespace = $bundle->getNamespace();
                 $templates->set($bundleName, [

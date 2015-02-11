@@ -19,7 +19,6 @@ namespace Elcodi\Bundle\MediaBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
@@ -42,7 +41,7 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
      */
     public function getConfigFilesLocation()
     {
-        return __DIR__ . '/../Resources/config';
+        return __DIR__.'/../Resources/config';
     }
 
     /**
@@ -144,7 +143,7 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
 
         $container->setAlias(
             'elcodi.core.media.resize.default',
-            'elcodi.core.media.resize.' . $container->getParameter('elcodi.core.media.image_resize_engine')
+            'elcodi.core.media.resize.'.$container->getParameter('elcodi.core.media.image_resize_engine')
         );
 
         $container->setAlias(

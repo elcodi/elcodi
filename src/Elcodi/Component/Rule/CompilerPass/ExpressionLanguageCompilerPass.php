@@ -42,7 +42,6 @@ class ExpressionLanguageCompilerPass implements CompilerPassInterface
         );
 
         foreach ($taggedServices as $id => $attributes) {
-
             $definition->addMethodCall(
                 'registerProvider',
                 [

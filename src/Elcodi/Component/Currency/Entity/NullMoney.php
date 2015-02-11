@@ -76,7 +76,7 @@ class NullMoney extends StubMoney implements MoneyInterface
      */
     public function getCurrency()
     {
-        return null;
+        return;
     }
 
     /**
@@ -143,7 +143,7 @@ class NullMoney extends StubMoney implements MoneyInterface
      */
     public function equals(MoneyInterface $other)
     {
-        return null;
+        return;
     }
 
     /**
@@ -155,7 +155,7 @@ class NullMoney extends StubMoney implements MoneyInterface
      */
     public function isGreaterThan(MoneyInterface $other)
     {
-        return null;
+        return;
     }
 
     /**
@@ -167,7 +167,7 @@ class NullMoney extends StubMoney implements MoneyInterface
      */
     public function isLessThan(MoneyInterface $other)
     {
-        return null;
+        return;
     }
 
     /**

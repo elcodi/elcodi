@@ -19,7 +19,6 @@ namespace Elcodi\Component\Comment\Factory;
 
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
-
 use Elcodi\Component\Comment\Entity\Comment;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 

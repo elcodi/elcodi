@@ -19,7 +19,6 @@ namespace Elcodi\Bundle\ReferralProgramBundle\Tests\Functional\Services;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\ReferralProgram\ElcodiReferralProgramRuleTypes;
 use Elcodi\Component\ReferralProgram\Entity\Interfaces\ReferralHashInterface;
@@ -157,7 +156,7 @@ class ReferralCouponManagerTest extends WebTestCase
         $customerObjectManager->clear();
 
         $invited = $this->getRepository('customer')->findOneBy(array(
-            'email' => 'customer3@customer.com'
+            'email' => 'customer3@customer.com',
         ));
 
         $referralCouponManager = $this

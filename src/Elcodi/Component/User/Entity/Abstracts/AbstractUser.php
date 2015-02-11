@@ -18,7 +18,6 @@
 namespace Elcodi\Component\User\Entity\Abstracts;
 
 use DateTime;
-
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
@@ -30,8 +29,7 @@ use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
  */
 abstract class AbstractUser implements AbstractUserInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         DateTimeTrait,
         EnabledTrait;
 
@@ -314,7 +312,7 @@ abstract class AbstractUser implements AbstractUserInterface
      */
     public function getFullName()
     {
-        return trim($this->firstname . ' ' . $this->lastname);
+        return trim($this->firstname.' '.$this->lastname);
     }
 
     /**
@@ -327,7 +325,6 @@ abstract class AbstractUser implements AbstractUserInterface
     public function setPassword($password)
     {
         if (null !== $password) {
-
             $this->password = $password;
         }
 

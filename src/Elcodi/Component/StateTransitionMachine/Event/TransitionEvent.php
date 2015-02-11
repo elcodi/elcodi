@@ -19,7 +19,6 @@ namespace Elcodi\Component\StateTransitionMachine\Event;
 
 use StdClass;
 use Symfony\Component\EventDispatcher\Event;
-
 use Elcodi\Component\StateTransitionMachine\Definition\Transition;
 use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 
@@ -60,8 +59,7 @@ class TransitionEvent extends Event
         $object,
         StateLineStack $stateLineStack,
         Transition $transition
-    )
-    {
+    ) {
         $this->object = $object;
         $this->stateLineStack = $stateLineStack;
         $this->transition = $transition;

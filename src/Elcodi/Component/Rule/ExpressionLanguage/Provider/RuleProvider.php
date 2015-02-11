@@ -21,7 +21,6 @@ use Doctrine\Common\Persistence\ObjectRepository;
 use RuntimeException;
 use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
-
 use Elcodi\Component\Rule\Entity\Rule;
 use Elcodi\Component\Rule\Repository\RuleRepository;
 use Elcodi\Component\Rule\Services\RuleManager;

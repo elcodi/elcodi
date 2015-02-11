@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Core\Wrapper\Abstracts;
 
 use Doctrine\Common\Cache\CacheProvider;
-
 use Elcodi\Component\Core\Encoder\Interfaces\EncoderInterface;
 
 /**

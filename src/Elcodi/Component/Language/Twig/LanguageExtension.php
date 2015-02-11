@@ -19,7 +19,6 @@ namespace Elcodi\Component\Language\Twig;
 
 use Twig_Extension;
 use Twig_SimpleFunction;
-
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 use Elcodi\Component\Language\Services\LanguageManager;
 
@@ -51,8 +50,7 @@ class LanguageExtension extends Twig_Extension
     public function __construct(
         LanguageManager $languageManager,
         $masterLocale
-    )
-    {
+    ) {
         $this->languageManager = $languageManager;
         $this->masterLocale = $masterLocale;
     }

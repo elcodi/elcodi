@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Currency\Tests\UnitTest\Services;
 
 use PHPUnit_Framework_TestCase;
-
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Factory\CurrencyFactory;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
@@ -39,12 +38,11 @@ class CurrencyConverterTest extends PHPUnit_Framework_TestCase
         $isoTo,
         $amount,
         $resultAmount
-    )
-    {
+    ) {
         $currencyManager = $this
             ->getMockBuilder('Elcodi\Component\Currency\Services\CurrencyManager')
             ->setMethods([
-                'getExchangeRateList'
+                'getExchangeRateList',
             ])
             ->disableOriginalConstructor()
             ->getMock();

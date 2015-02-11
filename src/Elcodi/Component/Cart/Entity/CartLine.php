@@ -29,8 +29,7 @@ use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
  */
 class CartLine implements CartLineInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         PurchasableWrapperTrait,
         PriceTrait;
 

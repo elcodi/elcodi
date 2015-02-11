@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Newsletter\Factory;
 
 use DateTime;
-
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Newsletter\Entity\NewsletterSubscription;
 

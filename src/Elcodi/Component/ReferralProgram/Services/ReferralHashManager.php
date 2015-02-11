@@ -18,7 +18,6 @@
 namespace Elcodi\Component\ReferralProgram\Services;
 
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 use Elcodi\Component\ReferralProgram\Entity\Interfaces\ReferralHashInterface;
 use Elcodi\Component\ReferralProgram\Entity\ReferralHash;
@@ -75,8 +74,7 @@ class ReferralHashManager
         ObjectManager $manager,
         GeneratorInterface $referralHashGenerator,
         ReferralHashFactory $referralHashFactory
-    )
-    {
+    ) {
         $this->referralHashRepository = $referralHashRepository;
         $this->manager = $manager;
         $this->referralHashGenerator = $referralHashGenerator;
@@ -103,7 +101,6 @@ class ReferralHashManager
         ));
 
         if (!($referralHash instanceof ReferralHashInterface)) {
-
             $referralHash = $this->referralHashFactory->create();
             $referralHash
                 ->setReferrer($customer)

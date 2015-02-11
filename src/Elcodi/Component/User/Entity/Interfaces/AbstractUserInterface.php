@@ -19,7 +19,6 @@ namespace Elcodi\Component\User\Entity\Interfaces;
 
 use DateTime;
 use Symfony\Component\Security\Core\User\UserInterface;
-
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;

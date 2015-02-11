@@ -18,7 +18,6 @@
 namespace Elcodi\Component\User\Factory;
 
 use DateTime;
-
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 use Elcodi\Component\User\ElcodiUserProperties;

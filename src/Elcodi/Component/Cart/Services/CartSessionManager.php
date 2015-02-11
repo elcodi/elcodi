@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Cart\Services;
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 
 /**
@@ -65,8 +64,7 @@ class CartSessionManager
         SessionInterface $session,
         $sessionFieldName,
         $saveInSession
-    )
-    {
+    ) {
         $this->session = $session;
         $this->sessionFieldName = $sessionFieldName;
         $this->saveInSession = $saveInSession;

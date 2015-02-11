@@ -19,7 +19,6 @@ namespace Elcodi\Component\Metric\Input\Controller;
 
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
-
 use Elcodi\Component\Metric\Core\Services\MetricManager;
 
 /**
@@ -57,8 +56,7 @@ class InputController
     public function __construct(
         RequestStack $requestStack,
         MetricManager $metricManager
-    )
-    {
+    ) {
         $this->requestStack = $requestStack;
         $this->metricManager = $metricManager;
     }

@@ -66,8 +66,7 @@ class CommentCache extends AbstractCacheWrapper
         CommentRepository $commentRepository,
         VoteManager $voteManager,
         $key
-    )
-    {
+    ) {
         $this->commentRepository = $commentRepository;
         $this->voteManager = $voteManager;
         $this->key = $key;
@@ -124,7 +123,6 @@ class CommentCache extends AbstractCacheWrapper
          * If cache key is empty, build it
          */
         if (empty($commentTree)) {
-
             $commentTree = $this->buildCommentTreeAndSaveIntoCache($source, $context);
         }
 
@@ -248,17 +246,14 @@ class CommentCache extends AbstractCacheWrapper
          * @var CommentInterface $comment
          */
         foreach ($comments as $comment) {
-
             $parentCommentId = 0;
             $commentId = $comment->getId();
 
             if ($comment->getParent() instanceof CommentInterface) {
-
                 $parentCommentId = $comment->getParent()->getId();
             }
 
             if ($parentCommentId && !isset($commentTree[$parentCommentId])) {
-
                 $commentTree[$parentCommentId] = array(
                     'entity'   => null,
                     'children' => array(),
@@ -266,7 +261,6 @@ class CommentCache extends AbstractCacheWrapper
             }
 
             if (!isset($commentTree[$commentId])) {
-
                 $commentTree[$commentId] = array(
                     'entity'   => null,
                     'children' => array(),
@@ -323,7 +317,7 @@ class CommentCache extends AbstractCacheWrapper
         $source = str_replace('.', '_', $source);
         $context = str_replace('.', '_', $context);
 
-        return $this->key . '.' . $source . '.' . $context;
+        return $this->key.'.'.$source.'.'.$context;
     }
 
     /**
@@ -337,8 +331,7 @@ class CommentCache extends AbstractCacheWrapper
     public function createCommentStructure(
         CommentInterface $comment,
         VotePackage $commentVotePackage = null
-    )
-    {
+    ) {
         $commentStructure = [
             'id'            => $comment->getId(),
             'authorName'    => $comment->getAuthorName(),
@@ -352,7 +345,6 @@ class CommentCache extends AbstractCacheWrapper
         ];
 
         if ($commentVotePackage instanceof VotePackage) {
-
             $commentStructure = array_merge(
                 $commentStructure,
                 [

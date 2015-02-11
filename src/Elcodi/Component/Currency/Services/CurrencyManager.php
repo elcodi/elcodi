@@ -65,8 +65,7 @@ class CurrencyManager
         CurrencyRepository $currencyRepository,
         CurrencyExchangeRateRepository $currencyExchangeRateRepository,
         $currencyBaseIso
-    )
-    {
+    ) {
         $this->currencyRepository = $currencyRepository;
         $this->currencyExchangeRateRepository = $currencyExchangeRateRepository;
         $this->currencyBaseIso = $currencyBaseIso;
@@ -94,20 +93,19 @@ class CurrencyManager
         $availableExchangeRates = $this
             ->currencyExchangeRateRepository
             ->findBy([
-                'sourceCurrency' => $currencyBase
+                'sourceCurrency' => $currencyBase,
             ]);
 
         /**
          * @var CurrencyExchangeRate $exchangeRate
          */
         foreach ($availableExchangeRates as $exchangeRate) {
-
             $targetCurrency = $exchangeRate->getTargetCurrency();
             $targetCurrencyIso = $targetCurrency->getIso();
 
             $this->exchangeRateList[$targetCurrencyIso] = [
                 'rate'     => $exchangeRate->getExchangeRate(),
-                'currency' => $targetCurrency
+                'currency' => $targetCurrency,
             ];
         }
 

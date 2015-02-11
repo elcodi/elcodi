@@ -20,7 +20,6 @@ namespace Elcodi\Bundle\NewsletterBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-
 use Elcodi\Bundle\NewsletterBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\NewsletterBundle\DependencyInjection\ElcodiNewsletterExtension;
 

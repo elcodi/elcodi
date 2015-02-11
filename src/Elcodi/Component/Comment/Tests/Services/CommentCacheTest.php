@@ -21,7 +21,6 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use PHPUnit_Framework_TestCase;
-
 use Elcodi\Component\Comment\Entity\Comment;
 use Elcodi\Component\Comment\Entity\Vote;
 use Elcodi\Component\Comment\Repository\CommentRepository;
@@ -168,7 +167,7 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
                     'updatedAt' => '2015-01-01 00:00:00',
                         ],
                         'children' => [],
-                    ]
+                    ],
                 ],
             ],
             [
@@ -203,9 +202,9 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
                     'updatedAt' => '2015-01-01 00:00:00',
                         ],
                         'children' => [],
-                    ]
+                    ],
                 ],
-            ]
+            ],
         ], $comments);
     }
 

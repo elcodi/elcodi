@@ -39,8 +39,7 @@ class MachineFactory
         $machineId,
         TransitionChain $transitionChain,
         $pointOfEntry
-    )
-    {
+    ) {
         $machine = new Machine(
             $machineId,
             $transitionChain,

@@ -18,7 +18,6 @@
 namespace Elcodi\Bundle\MediaBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
-
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
 
 /**
@@ -125,5 +124,4 @@ class Configuration extends AbstractConfiguration
                 ->end()
             ->end();
     }
-
 }

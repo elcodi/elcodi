@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Comment\Tests\Services;
 
 use PHPUnit_Framework_TestCase;
-
 use Elcodi\Component\Comment\Entity\Interfaces\CommentInterface;
 use Elcodi\Component\Comment\Entity\Vote;
 use Elcodi\Component\Comment\EventDispatcher\CommentEventDispatcher;

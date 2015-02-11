@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Media\Tests\UnitTest\Transformer;
 
 use PHPUnit_Framework_TestCase;
-
 use Elcodi\Component\Media\Transformer\FileIdentifierTransformer;
 
 /**

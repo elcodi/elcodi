@@ -18,7 +18,6 @@
 namespace Elcodi\Component\StateTransitionMachine\Machine;
 
 use Psr\Log\LoggerInterface;
-
 use Elcodi\Component\StateTransitionMachine\Definition\Transition;
 use Elcodi\Component\StateTransitionMachine\Exception\StateNotReachableException;
 use Elcodi\Component\StateTransitionMachine\Exception\TransitionNotAccessibleException;
@@ -53,8 +52,7 @@ class LoggableMachine implements MachineInterface
     public function __construct(
         MachineInterface $machine,
         LoggerInterface $logger
-    )
-    {
+    ) {
         $this->machine = $machine;
         $this->logger = $logger;
     }
@@ -97,8 +95,7 @@ class LoggableMachine implements MachineInterface
     public function transition(
         $startStateName,
         $transitionName
-    )
-    {
+    ) {
         $transition = $this
             ->machine
             ->transition(
@@ -124,8 +121,7 @@ class LoggableMachine implements MachineInterface
     public function reachState(
         $startStateName,
         $finalStateName
-    )
-    {
+    ) {
         $transition = $this
             ->machine
             ->reachState(
@@ -155,7 +151,7 @@ class LoggableMachine implements MachineInterface
                     'transition_name' => $transition->getName(),
                     'machine_id'      => $this->machine->getId(),
                     'state_from'      => $transition->getStart()->getName(),
-                    'state_to'        => $transition->getFinal()->getName()
+                    'state_to'        => $transition->getFinal()->getName(),
                 )
             );
     }

@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Shipping\Entity;
 
 use Doctrine\Common\Collections\Collection;
-
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Shipping\Entity\Interfaces\CarrierInterface;
 use Elcodi\Component\Tax\Entity\Interfaces\TaxInterface;

@@ -125,7 +125,7 @@ class RuleManagerTest extends WebTestCase
      */
     public function providerEvaluateCompoundRule()
     {
-       return [
+        return [
            [  100, 20, false ],
            [ 1100, 20, false ],
            [  100,  5, false ],

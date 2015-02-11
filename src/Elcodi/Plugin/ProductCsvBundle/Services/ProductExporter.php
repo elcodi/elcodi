@@ -19,7 +19,6 @@ namespace Elcodi\Plugin\ProductCsvBundle\Services;
 
 use DateTime;
 use Goodby\CSV\Export\Protocol\ExporterInterface;
-
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 
 /**

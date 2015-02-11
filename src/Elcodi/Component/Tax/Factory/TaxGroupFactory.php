@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Tax\Factory;
 
 use Doctrine\Common\Collections\ArrayCollection;
-
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Tax\Entity\TaxGroup;
 

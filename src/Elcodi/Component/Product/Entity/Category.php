@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Product\Entity;
 
 use Doctrine\Common\Collections\Collection;
-
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
@@ -30,8 +29,7 @@ use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
  */
 class Category implements CategoryInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         DateTimeTrait,
         EnabledTrait,
         MetaDataTrait;

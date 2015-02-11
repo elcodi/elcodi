@@ -107,5 +107,4 @@ trait ProductPriceTrait
             $this->reducedPriceCurrency
         );
     }
-
 }

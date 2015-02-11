@@ -19,7 +19,6 @@ namespace Elcodi\Component\CartCoupon\Services;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\CartCoupon\Entity\Interfaces\OrderCouponInterface;
 use Elcodi\Component\CartCoupon\Repository\OrderCouponRepository;

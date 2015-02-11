@@ -21,7 +21,6 @@ use Doctrine\Common\Persistence\ObjectRepository;
 use RuntimeException;
 use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
-
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 
@@ -78,7 +77,6 @@ class MoneyProvider implements ExpressionFunctionProviderInterface
                         $currency = $this
                             ->currencyWrapper
                             ->getDefaultCurrency();
-
                     } else {
                         $currency = $this
                             ->repository

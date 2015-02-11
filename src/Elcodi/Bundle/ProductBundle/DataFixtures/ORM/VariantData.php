@@ -19,7 +19,6 @@ namespace Elcodi\Bundle\ProductBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;

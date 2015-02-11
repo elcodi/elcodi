@@ -18,7 +18,6 @@
 namespace Elcodi\Component\ReferralProgram\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
-
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 

@@ -18,7 +18,6 @@
 namespace Elcodi\Bundle\AttributeBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Attribute\Factory\AttributeFactory;
 use Elcodi\Component\Attribute\Factory\ValueFactory;
@@ -49,7 +48,6 @@ class AttributeData extends AbstractFixture
         /**
          * Sizes
          */
-
         $sizeAttribute = $attributeFactory
             ->create()
             ->setName('Size')
@@ -85,7 +83,6 @@ class AttributeData extends AbstractFixture
         /**
          * Colors
          */
-
         $colorAttribute = $attributeFactory
             ->create()
             ->setName('Color')

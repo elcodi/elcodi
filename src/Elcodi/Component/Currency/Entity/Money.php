@@ -19,7 +19,6 @@ namespace Elcodi\Component\Currency\Entity;
 
 use SebastianBergmann\Money\Currency as WrappedCurrency;
 use SebastianBergmann\Money\Money as WrappedMoney;
-
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 
@@ -264,8 +263,7 @@ class Money extends StubMoney implements MoneyInterface
     public static function create(
         $amount,
         CurrencyInterface $currency = null
-    )
-    {
+    ) {
         return ($currency instanceof CurrencyInterface)
             ? new Money($amount, $currency)
             : NullMoney::create();

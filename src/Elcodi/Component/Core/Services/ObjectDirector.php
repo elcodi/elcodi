@@ -19,7 +19,6 @@ namespace Elcodi\Component\Core\Services;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
-
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 
 /**
@@ -59,8 +58,7 @@ class ObjectDirector
         ObjectManager $manager,
         ObjectRepository $repository,
         AbstractFactory $factory
-    )
-    {
+    ) {
         $this->manager = $manager;
         $this->repository = $repository;
         $this->factory = $factory;

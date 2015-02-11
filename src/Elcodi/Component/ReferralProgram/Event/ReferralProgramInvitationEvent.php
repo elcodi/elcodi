@@ -18,7 +18,6 @@
 namespace Elcodi\Component\ReferralProgram\Event;
 
 use Symfony\Component\EventDispatcher\Event;
-
 use Elcodi\Component\ReferralProgram\Entity\Interfaces\ReferralLineInterface;
 use Elcodi\Component\ReferralProgram\Entity\ReferralLine;
 
@@ -48,8 +47,7 @@ class ReferralProgramInvitationEvent extends Event
     public function __construct(
         ReferralLineInterface $referralLine,
         $referralLink
-    )
-    {
+    ) {
         $this->referralLine = $referralLine;
         $this->referralLink = $referralLink;
     }

@@ -21,7 +21,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
 use Elcodi\Component\Plugin\Entity\Plugin;
 
 /**
@@ -47,14 +46,13 @@ class AdminController extends Controller
             ->getPlugin('Elcodi\Plugin\PinterestBundle');
 
         if ('POST' === $request->getMethod()) {
-
             $this
                 ->get('elcodi.plugin_manager')
                 ->updatePlugin(
                     'Elcodi\Plugin\PinterestBundle',
                     $plugin->isEnabled(),
                     [
-                        'asynchronous' => (boolean) $request->request->get('asynchronous')
+                        'asynchronous' => (boolean) $request->request->get('asynchronous'),
                     ]
                 );
 

@@ -19,7 +19,6 @@ namespace Elcodi\Component\Product\Tests\UnitTest\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit_Framework_TestCase;
-
 use Elcodi\Component\Attribute\Entity\Attribute;
 use Elcodi\Component\Attribute\Entity\Value;
 use Elcodi\Component\Product\Entity\Product;
@@ -90,7 +89,6 @@ class VariantTest extends PHPUnit_Framework_TestCase
          */
         $variant->addOption($option3);
         $this->assertProductAttributeCollectionSizeIs($product, 2);
-
     }
 
     /**
@@ -146,7 +144,6 @@ class VariantTest extends PHPUnit_Framework_TestCase
         $variant->setProduct($product);
 
         if ($initializeCollection) {
-
             $reflectedVariantOptions = new \ReflectionProperty(
                 'Elcodi\Component\Product\Entity\Variant',
                 'options'
@@ -216,12 +213,10 @@ class VariantTest extends PHPUnit_Framework_TestCase
         $optionCollection = new ArrayCollection();
 
         while ($size--) {
-
             $option = new Value();
             $option->setAttribute($attribute);
 
             $optionCollection->add($option);
-
         }
 
         return $optionCollection;

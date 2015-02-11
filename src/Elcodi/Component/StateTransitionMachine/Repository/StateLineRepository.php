@@ -24,5 +24,4 @@ use Doctrine\Common\Persistence\ObjectManager;
  */
 class StateLineRepository extends ObjectManager
 {
-
 }

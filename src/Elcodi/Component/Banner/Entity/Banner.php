@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Banner\Entity;
 
 use Doctrine\Common\Collections\Collection;
-
 use Elcodi\Component\Banner\Entity\Interfaces\BannerInterface;
 use Elcodi\Component\Banner\Entity\Interfaces\BannerZoneInterface;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
@@ -32,8 +31,7 @@ use Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait;
  */
 class Banner implements BannerInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         DateTimeTrait,
         EnabledTrait,
         PrincipalImageTrait;
@@ -211,6 +209,6 @@ class Banner implements BannerInterface
      */
     public function __toString()
     {
-        return $this->getId() . ' - ' . $this->getName();
+        return $this->getId().' - '.$this->getName();
     }
 }

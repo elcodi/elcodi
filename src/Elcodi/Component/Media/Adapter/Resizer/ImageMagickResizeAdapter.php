@@ -19,7 +19,6 @@ namespace Elcodi\Component\Media\Adapter\Resizer;
 
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Process\ProcessBuilder;
-
 use Elcodi\Component\Media\Adapter\Resizer\Interfaces\ResizeAdapterInterface;
 use Elcodi\Component\Media\ElcodiMediaImageResizeTypes;
 
@@ -71,8 +70,7 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
         $height,
         $width,
         $type = ElcodiMediaImageResizeTypes::FORCE_MEASURES
-    )
-    {
+    ) {
         if (ElcodiMediaImageResizeTypes::NO_RESIZE === $type) {
             return $imageData;
         }
@@ -96,12 +94,10 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
         $pb->add('-filter')->add('Lanczos');
 
         if ($width == 0) {
-
             $width = "";
         }
 
         if ($height == 0) {
-
             $height = "";
         }
 
@@ -109,7 +105,6 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
          * Apply some filters depending on type of resizing
          */
         if ($width || $height) {
-
             $pb->add('-resize');
 
             switch ($type) {
@@ -117,34 +112,34 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
                 case ElcodiMediaImageResizeTypes::INSET:
 
                     $pb
-                        ->add($width . 'x' . $height);
+                        ->add($width.'x'.$height);
 
                     break;
 
                 case ElcodiMediaImageResizeTypes::INSET_FILL_WHITE:
                     $pb
-                        ->add($width . 'x' . $height)
+                        ->add($width.'x'.$height)
                         ->add('-gravity')
                         ->add('center')
                         ->add('-extent')
-                        ->add($width . 'x' . $height);
+                        ->add($width.'x'.$height);
 
                     break;
 
                 case ElcodiMediaImageResizeTypes::OUTBOUNDS_FILL_WHITE:
 
                     $pb
-                        ->add($width . 'x' . $height . '');
+                        ->add($width.'x'.$height.'');
 
                     break;
 
                 case ElcodiMediaImageResizeTypes::OUTBOUND_CROP:
                     $pb
-                        ->add($width . 'x' . $height . '')
+                        ->add($width.'x'.$height.'')
                         ->add('-gravity')
                         ->add('center')
                         ->add('-extent')
-                        ->add($width . 'x' . $height);
+                        ->add($width.'x'.$height);
 
                     break;
 
@@ -152,7 +147,7 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
                 default:
 
                     $pb
-                        ->add($width . 'x' . $height . '!');
+                        ->add($width.'x'.$height.'!');
                     break;
             }
         }
@@ -164,7 +159,6 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
         $proc->run();
 
         if (false !== strpos($proc->getOutput(), 'ERROR')) {
-
             throw new \RuntimeException($proc->getOutput());
         }
 

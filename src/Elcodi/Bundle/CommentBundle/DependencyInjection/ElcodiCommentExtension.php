@@ -19,7 +19,6 @@ namespace Elcodi\Bundle\CommentBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
@@ -42,7 +41,7 @@ class ElcodiCommentExtension extends AbstractExtension implements EntitiesOverri
      */
     public function getConfigFilesLocation()
     {
-        return __DIR__ . '/../Resources/config';
+        return __DIR__.'/../Resources/config';
     }
 
     /**

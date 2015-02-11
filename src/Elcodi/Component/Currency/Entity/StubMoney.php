@@ -24,5 +24,4 @@ namespace Elcodi\Component\Currency\Entity;
  */
 class StubMoney
 {
-
 }

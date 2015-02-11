@@ -41,5 +41,4 @@ class OrderCouponEventListenerTest
     {
         return ['elcodi.core.cart_coupon.event_listener.order_coupon'];
     }
-
 }

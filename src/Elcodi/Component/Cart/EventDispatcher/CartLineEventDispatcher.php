@@ -40,8 +40,7 @@ class CartLineEventDispatcher extends AbstractEventDispatcher
     public function dispatchCartLineOnAddEvent(
         CartInterface $cart,
         CartLineInterface $cartLine
-    )
-    {
+    ) {
         $this->eventDispatcher->dispatch(
             ElcodiCartEvents::CARTLINE_ONADD,
             new CartLineOnAddEvent(
@@ -64,8 +63,7 @@ class CartLineEventDispatcher extends AbstractEventDispatcher
     public function dispatchCartLineOnEditEvent(
         CartInterface $cart,
         CartLineInterface $cartLine
-    )
-    {
+    ) {
         $this->eventDispatcher->dispatch(
             ElcodiCartEvents::CARTLINE_ONEDIT,
             new CartLineOnEditEvent(
@@ -88,8 +86,7 @@ class CartLineEventDispatcher extends AbstractEventDispatcher
     public function dispatchCartLineOnRemoveEvent(
         CartInterface $cart,
         CartLineInterface $cartLine
-    )
-    {
+    ) {
         $this->eventDispatcher->dispatch(
             ElcodiCartEvents::CARTLINE_ONREMOVE,
             new CartLineOnAddEvent(

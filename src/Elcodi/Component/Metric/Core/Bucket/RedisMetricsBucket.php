@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Metric\Core\Bucket;
 
 use Redis;
-
 use Elcodi\Component\Metric\Core\Bucket\Abstracts\AbstractMetricsBucket;
 use Elcodi\Component\Metric\Core\Entity\Interfaces\EntryInterface;
 
@@ -122,8 +121,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
     protected function incrementPointerByKey(
         $key,
         $hashKey
-    )
-    {
+    ) {
         $this
             ->redis
             ->hIncrBy(

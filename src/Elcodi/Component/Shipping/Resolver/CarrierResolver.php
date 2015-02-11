@@ -98,11 +98,9 @@ class CarrierResolver
         $lowestPriceCarrierRange = null;
 
         foreach ($carrierRanges as $carrierRange) {
-
             $carrierRangePrice = $carrierRange->getPrice();
 
             if ($lowestPriceCarrierRange instanceof CarrierBaseRangeInterface) {
-
                 if ($carrierRangePrice
                     ->isLessThan(
                         $this
@@ -116,7 +114,6 @@ class CarrierResolver
                     $lowestPriceCarrierRange = $carrierRange;
                 }
             } else {
-
                 $lowestPriceCarrierRange = $carrierRange;
             }
         }
@@ -139,11 +136,9 @@ class CarrierResolver
         $highestPriceCarrierRange = null;
 
         foreach ($carrierRanges as $carrierRange) {
-
             $carrierRangePrice = $carrierRange->getPrice();
 
             if ($highestPriceCarrierRange instanceof CarrierBaseRangeInterface) {
-
                 if ($carrierRangePrice
                     ->isGreaterThan(
                         $this
@@ -157,7 +152,6 @@ class CarrierResolver
                     $highestPriceCarrierRange = $carrierRange;
                 }
             } else {
-
                 $highestPriceCarrierRange = $carrierRange;
             }
         }

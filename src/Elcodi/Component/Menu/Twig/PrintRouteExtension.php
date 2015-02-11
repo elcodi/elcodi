@@ -60,7 +60,7 @@ class PrintRouteExtension extends Twig_Extension
     public function getFunctions()
     {
         return [
-            new Twig_SimpleFunction('generate_url', array($this, 'printUrl'))
+            new Twig_SimpleFunction('generate_url', array($this, 'printUrl')),
         ];
     }
 
@@ -78,12 +78,10 @@ class PrintRouteExtension extends Twig_Extension
         }
 
         try {
-
             $url = $this
                 ->urlGenerator
                 ->generate($route);
         } catch (ExceptionInterface $e) {
-
             $url = (string) $route;
         }
 

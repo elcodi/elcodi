@@ -64,13 +64,11 @@ class CategoryTree
          * @var CategoryInterface $category
          */
         foreach ($categories as $category) {
-
             $parentCategoryId = 0;
             $categoryId = $category->getId();
 
             if (!$category->isRoot()) {
                 if ($category->getParent() instanceof CategoryInterface) {
-
                     $parentCategoryId = $category->getParent()->getId();
                 } else {
 
@@ -83,7 +81,6 @@ class CategoryTree
             }
 
             if ($parentCategoryId && !isset($categoryTree[$parentCategoryId])) {
-
                 $categoryTree[$parentCategoryId] = array(
                     'entity'   => null,
                     'children' => array(),
@@ -91,7 +88,6 @@ class CategoryTree
             }
 
             if (!isset($categoryTree[$categoryId])) {
-
                 $categoryTree[$categoryId] = array(
                     'entity'   => null,
                     'children' => array(),

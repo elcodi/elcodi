@@ -19,7 +19,6 @@ namespace Elcodi\Component\Media\Tests\UnitTest\Adapter\Resizer\Abstracts;
 
 use PHPUnit_Framework_TestCase;
 use Symfony\Component\HttpFoundation\File\File;
-
 use Elcodi\Component\Media\Adapter\Resizer\Interfaces\ResizeAdapterInterface;
 use Elcodi\Component\Media\ElcodiMediaImageResizeTypes;
 
@@ -50,8 +49,7 @@ abstract class AbstractResizeAdapterTest extends PHPUnit_Framework_TestCase
         $definedWidth,
         $expectedHeight,
         $expectedWidth
-    )
-    {
+    ) {
         $imagePath = tempnam(sys_get_temp_dir(), '_test');
         $image = imagecreate($originalWidth, $originalHeight);
         $background = imagecolorallocate($image, 255, 255, 255);

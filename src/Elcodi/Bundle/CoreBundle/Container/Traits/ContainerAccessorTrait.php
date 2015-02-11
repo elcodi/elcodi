@@ -20,7 +20,6 @@ namespace Elcodi\Bundle\CoreBundle\Container\Traits;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 
 /**
@@ -46,7 +45,7 @@ trait ContainerAccessorTrait
     {
         return $this
             ->container
-            ->get('elcodi.object_manager.' . $entityName);
+            ->get('elcodi.object_manager.'.$entityName);
     }
 
     /**
@@ -60,7 +59,7 @@ trait ContainerAccessorTrait
     {
         return $this
             ->container
-            ->get('elcodi.repository.' . $entityName);
+            ->get('elcodi.repository.'.$entityName);
     }
 
     /**
@@ -74,7 +73,7 @@ trait ContainerAccessorTrait
     {
         return $this
             ->container
-            ->get('elcodi.factory.' . $entityName);
+            ->get('elcodi.factory.'.$entityName);
     }
 
     /**

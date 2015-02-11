@@ -19,7 +19,6 @@ namespace Elcodi\Component\Banner\Factory;
 
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
-
 use Elcodi\Component\Banner\Entity\Banner;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 

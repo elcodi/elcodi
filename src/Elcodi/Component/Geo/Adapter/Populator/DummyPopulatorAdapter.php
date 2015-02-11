@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Geo\Adapter\Populator;
 
 use Symfony\Component\Console\Output\OutputInterface;
-
 use Elcodi\Component\Geo\Adapter\Populator\Interfaces\PopulatorAdapterInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\CountryInterface;
 
@@ -40,8 +39,7 @@ class DummyPopulatorAdapter implements PopulatorAdapterInterface
         OutputInterface $output,
         $countryCode,
         $sourcePackageMustbeReloaded
-    )
-    {
-        return null;
+    ) {
+        return;
     }
 }

@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Cart\Event\Abstracts;
 
 use Symfony\Component\EventDispatcher\Event;
-
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
 
@@ -50,8 +49,7 @@ abstract class AbstractCartLineEvent extends Event
     public function __construct(
         CartInterface $cart,
         CartLineInterface $cartLine
-    )
-    {
+    ) {
         $this->cart = $cart;
         $this->cartLine = $cartLine;
     }

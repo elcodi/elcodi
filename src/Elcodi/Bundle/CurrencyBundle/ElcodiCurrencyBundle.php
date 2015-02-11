@@ -20,7 +20,6 @@ namespace Elcodi\Bundle\CurrencyBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-
 use Elcodi\Bundle\CurrencyBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\CurrencyBundle\DependencyInjection\ElcodiCurrencyExtension;
 

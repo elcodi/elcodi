@@ -19,7 +19,6 @@ namespace Elcodi\Component\Metric\Core\Services;
 
 use DateTime;
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Elcodi\Component\Metric\Core\Bucket\Abstracts\AbstractMetricsBucket;
 use Elcodi\Component\Metric\Core\Factory\EntryFactory;
 
@@ -58,8 +57,7 @@ class MetricManager
         AbstractMetricsBucket $metricsBucket,
         EntryFactory $entryFactory,
         ObjectManager $entryObjectManager
-    )
-    {
+    ) {
         $this->metricsBucket = $metricsBucket;
         $this->entryFactory = $entryFactory;
         $this->entryObjectManager = $entryObjectManager;

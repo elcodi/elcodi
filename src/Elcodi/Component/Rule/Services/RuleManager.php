@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Rule\Services;
 
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
-
 use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
 use Elcodi\Component\Rule\ExpressionLanguage\Interfaces\ExpressionContextProviderInterface;
 use Elcodi\Component\Rule\Services\Interfaces\RuleManagerInterface;
@@ -51,8 +50,7 @@ class RuleManager implements RuleManagerInterface
     public function __construct(
         ExpressionLanguage $expressionLanguage,
         ExpressionContextProviderInterface $contextProvider
-    )
-    {
+    ) {
         $this->expressionLanguage = $expressionLanguage;
         $this->contextProvider = $contextProvider;
     }

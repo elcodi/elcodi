@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Cart\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Elcodi\Component\Cart\Event\OrderOnCreatedEvent;
 
 /**
@@ -57,8 +56,7 @@ class OrderCreationEventListener
     public function __construct(
         ObjectManager $orderObjectManager,
         ObjectManager $cartObjectManager
-    )
-    {
+    ) {
         $this->orderObjectManager = $orderObjectManager;
         $this->cartObjectManager = $cartObjectManager;
     }

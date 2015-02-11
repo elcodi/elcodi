@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Product\Entity;
 
 use Doctrine\Common\Collections\Collection;
-
 use Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
@@ -39,8 +38,7 @@ use Elcodi\Component\Product\Entity\Traits\ProductPriceTrait;
  */
 class Product implements ProductInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         ProductPriceTrait,
         DateTimeTrait,
         EnabledTrait,
@@ -481,9 +479,7 @@ class Product implements ProductInterface
     public function addAttribute(AttributeInterface $attribute)
     {
         if (!$this->attributes->contains($attribute)) {
-
             $this->attributes->add($attribute);
-
         }
 
         return $this;

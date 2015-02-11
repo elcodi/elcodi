@@ -18,7 +18,6 @@
 namespace Elcodi\Bundle\ConfigurationBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
@@ -41,7 +40,7 @@ class ElcodiConfigurationExtension extends AbstractExtension implements Entities
      */
     public function getConfigFilesLocation()
     {
-        return __DIR__ . '/../Resources/config';
+        return __DIR__.'/../Resources/config';
     }
 
     /**

@@ -18,7 +18,6 @@
 namespace Elcodi\Component\CartCoupon\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Elcodi\Component\CartCoupon\Event\OrderCouponOnApplyEvent;
 use Elcodi\Component\CartCoupon\Factory\OrderCouponFactory;
 use Elcodi\Component\Coupon\EventDispatcher\CouponEventDispatcher;
@@ -62,8 +61,7 @@ class OrderCouponEventListener
         ObjectManager $orderCouponObjectManager,
         CouponEventDispatcher $couponEventDispatcher,
         OrderCouponFactory $orderCouponFactory
-    )
-    {
+    ) {
         $this->orderCouponObjectManager = $orderCouponObjectManager;
         $this->couponEventDispatcher = $couponEventDispatcher;
         $this->orderCouponFactory = $orderCouponFactory;

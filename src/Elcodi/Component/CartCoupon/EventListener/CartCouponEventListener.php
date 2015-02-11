@@ -18,7 +18,6 @@
 namespace Elcodi\Component\CartCoupon\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Elcodi\Component\CartCoupon\Event\CartCouponOnApplyEvent;
 use Elcodi\Component\CartCoupon\Event\CartCouponOnRemoveEvent;
 use Elcodi\Component\CartCoupon\Factory\CartCouponFactory;
@@ -53,8 +52,7 @@ class CartCouponEventListener
     public function __construct(
         ObjectManager $cartCouponObjectManager,
         CartCouponFactory $cartCouponFactory
-    )
-    {
+    ) {
         $this->cartCouponObjectManager = $cartCouponObjectManager;
         $this->cartCouponFactory = $cartCouponFactory;
     }

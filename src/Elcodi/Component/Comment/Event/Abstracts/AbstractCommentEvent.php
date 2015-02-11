@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Comment\Event\Abstracts;
 
 use Symfony\Component\EventDispatcher\Event;
-
 use Elcodi\Component\Comment\Entity\Interfaces\CommentInterface;
 
 /**

@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Coupon\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Elcodi\Component\Coupon\Event\CouponOnUsedEvent;
 
 /**
@@ -40,8 +39,7 @@ class MakeCouponUsedEventListener
      */
     public function __construct(
         ObjectManager $couponObjectManager
-    )
-    {
+    ) {
         $this->couponObjectManager = $couponObjectManager;
     }
 

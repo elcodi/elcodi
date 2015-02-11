@@ -19,7 +19,6 @@ namespace Elcodi\Component\User\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Event\AuthenticationEvent;
-
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Wrapper\CartWrapper;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
@@ -52,8 +51,7 @@ class AuthenticationSuccessEventListener
     public function __construct(
         CartWrapper $cartWrapper,
         ObjectManager $cartManager
-    )
-    {
+    ) {
         $this->cartWrapper = $cartWrapper;
         $this->cartManager = $cartManager;
     }

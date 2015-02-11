@@ -24,5 +24,4 @@ use Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException;
  */
 class CouponFreeShippingExistsException extends AbstractCouponException
 {
-
 }

@@ -27,8 +27,7 @@ use Elcodi\Component\Menu\Entity\Menu\Traits\SubnodesTrait;
  */
 class Menu implements MenuInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         SubnodesTrait,
         EnabledTrait;
 

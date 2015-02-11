@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Currency\Services;
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 
 /**

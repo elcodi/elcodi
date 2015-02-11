@@ -18,7 +18,6 @@
 namespace Elcodi\Bundle\StateTransitionMachineBundle\DependencyInjection;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ConfigurationInterface;
-
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
@@ -41,7 +40,7 @@ class ElcodiStateTransitionMachineExtension extends AbstractExtension implements
      */
     public function getConfigFilesLocation()
     {
-        return __DIR__ . '/../Resources/config';
+        return __DIR__.'/../Resources/config';
     }
 
     /**

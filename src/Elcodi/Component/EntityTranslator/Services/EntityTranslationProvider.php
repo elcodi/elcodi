@@ -18,7 +18,6 @@
 namespace Elcodi\Component\EntityTranslator\Services;
 
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Elcodi\Component\EntityTranslator\Entity\Interfaces\EntityTranslationInterface;
 use Elcodi\Component\EntityTranslator\Factory\EntityTranslationFactory;
 use Elcodi\Component\EntityTranslator\Repository\EntityTranslationRepository;
@@ -68,8 +67,7 @@ class EntityTranslationProvider implements EntityTranslationProviderInterface
         EntityTranslationRepository $entityTranslationRepository,
         EntityTranslationFactory $entityTranslationFactory,
         ObjectManager $entityTranslationObjectManager
-    )
-    {
+    ) {
         $this->entityTranslationRepository = $entityTranslationRepository;
         $this->entityTranslationFactory = $entityTranslationFactory;
         $this->entityTranslationObjectManager = $entityTranslationObjectManager;
@@ -91,8 +89,7 @@ class EntityTranslationProvider implements EntityTranslationProviderInterface
         $entityId,
         $entityField,
         $locale
-    )
-    {
+    ) {
         $translation = $this
             ->entityTranslationRepository
             ->findOneBy(array(
@@ -124,8 +121,7 @@ class EntityTranslationProvider implements EntityTranslationProviderInterface
         $entityField,
         $translationValue,
         $locale
-    )
-    {
+    ) {
         $translation = $this
             ->entityTranslationRepository
             ->findOneBy(array(
@@ -136,7 +132,6 @@ class EntityTranslationProvider implements EntityTranslationProviderInterface
             ));
 
         if (!($translation instanceof EntityTranslationInterface)) {
-
             $translation = $this
                 ->entityTranslationFactory
                 ->create()

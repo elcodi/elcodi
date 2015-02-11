@@ -19,7 +19,6 @@ namespace Elcodi\Bundle\GeoBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Geo\Factory\ProvinceFactory;
 
@@ -51,7 +50,7 @@ class ProvinceData extends AbstractFixture implements DependentFixtureInterface
         $this->addReference('province-barcelones', $provinceBarcelones);
 
         $provinceObjectManager->flush([
-            $provinceBarcelones
+            $provinceBarcelones,
         ]);
     }
 

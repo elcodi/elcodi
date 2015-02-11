@@ -21,7 +21,6 @@ use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormConfigInterface;
-
 use Elcodi\Component\EntityTranslator\Services\Interfaces\EntityTranslationProviderInterface;
 
 /**
@@ -119,8 +118,7 @@ class TranslatableFieldType extends AbstractType
         array $locales,
         $masterLocale,
         $fallback
-    )
-    {
+    ) {
         $this->translationProvider = $entityTranslationProvider;
         $this->formConfig = $formConfig;
         $this->entity = $entity;
@@ -153,8 +151,7 @@ class TranslatableFieldType extends AbstractType
             ->getName();
 
         foreach ($this->locales as $locale) {
-
-            $translatedFieldName = $locale . '_' . $this->fieldName;
+            $translatedFieldName = $locale.'_'.$this->fieldName;
 
             $entityId = $this->entity->$entityIdGetter();
             $translationData = $entityId

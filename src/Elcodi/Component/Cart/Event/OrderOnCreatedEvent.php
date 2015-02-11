@@ -24,5 +24,4 @@ use Elcodi\Component\Cart\Event\Abstracts\AbstractOrderEvent;
  */
 class OrderOnCreatedEvent extends AbstractOrderEvent
 {
-
 }

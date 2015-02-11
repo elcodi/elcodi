@@ -51,8 +51,7 @@ class VoteManager
     public function __construct(
         CommentEventDispatcher $commentEventDispatcher,
         ObjectDirector $commentVoteObjectDirector
-    )
-    {
+    ) {
         $this->commentEventDispatcher = $commentEventDispatcher;
         $this->commentVoteObjectDirector = $commentVoteObjectDirector;
     }
@@ -70,8 +69,7 @@ class VoteManager
         CommentInterface $comment,
         $authorToken,
         $type
-    )
-    {
+    ) {
         /**
          * @var VoteInterface $vote
          */
@@ -85,7 +83,6 @@ class VoteManager
         $edited = true;
 
         if (!($vote instanceof VoteInterface)) {
-
             $vote = $this
                 ->commentVoteObjectDirector
                 ->create()
@@ -119,8 +116,7 @@ class VoteManager
     public function removeVote(
         CommentInterface $comment,
         $authorToken
-    )
-    {
+    ) {
         /**
          * @var VoteInterface $vote
          */
@@ -132,7 +128,6 @@ class VoteManager
             ]);
 
         if ($vote instanceof VoteInterface) {
-
             $this
                 ->commentVoteObjectDirector
                 ->remove($vote);
@@ -156,7 +151,7 @@ class VoteManager
         $votes = $this
             ->commentVoteObjectDirector
             ->findBy([
-                'comment' => $comment
+                'comment' => $comment,
             ]);
 
         return VotePackage::create($votes);

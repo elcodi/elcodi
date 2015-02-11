@@ -19,7 +19,6 @@ namespace Elcodi\Component\StateTransitionMachine\Event;
 
 use StdClass;
 use Symfony\Component\EventDispatcher\Event;
-
 use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 
 /**
@@ -50,8 +49,7 @@ class InitializationEvent extends Event
     public function __construct(
         $object,
         StateLineStack $stateLineStack
-    )
-    {
+    ) {
         $this->object = $object;
         $this->stateLineStack = $stateLineStack;
     }

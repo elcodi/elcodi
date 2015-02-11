@@ -19,7 +19,6 @@ namespace Elcodi\Component\Configuration\Twig;
 
 use Twig_Extension;
 use Twig_SimpleFunction;
-
 use Elcodi\Component\Configuration\Exception\ConfigurationParameterNotFoundException;
 use Elcodi\Component\Configuration\Services\ConfigurationManager;
 
@@ -55,7 +54,7 @@ class ConfigurationExtension extends Twig_Extension
     public function getFunctions()
     {
         return array(
-            new Twig_SimpleFunction('getConfiguration', array($this, 'getParameter'))
+            new Twig_SimpleFunction('getConfiguration', array($this, 'getParameter')),
         );
     }
 
@@ -72,8 +71,7 @@ class ConfigurationExtension extends Twig_Extension
     public function getParameter(
         $parameterKey,
         $parameterNamespace = ''
-    )
-    {
+    ) {
         return $this
             ->configurationManager
             ->get($parameterKey, $parameterNamespace);

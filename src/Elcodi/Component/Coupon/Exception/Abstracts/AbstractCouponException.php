@@ -24,5 +24,4 @@ use Exception;
  */
 abstract class AbstractCouponException extends Exception
 {
-
 }

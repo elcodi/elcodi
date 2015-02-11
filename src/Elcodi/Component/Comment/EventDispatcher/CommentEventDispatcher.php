@@ -125,8 +125,7 @@ class CommentEventDispatcher extends AbstractEventDispatcher
         CommentInterface $comment,
         VoteInterface $vote,
         $edited
-    )
-    {
+    ) {
         $event = new CommentOnVotedEvent(
             $comment,
             $vote,

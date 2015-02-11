@@ -40,13 +40,12 @@ class ImageEtagTransformer implements ImageEtagTransformerInterface
         $height,
         $width,
         $type
-    )
-    {
+    ) {
         return sha1(
-            $image->getId() . "." .
-            $image->getUpdatedAt()->getTimestamp() . "." .
-            $height . "." .
-            $width . "." .
+            $image->getId().".".
+            $image->getUpdatedAt()->getTimestamp().".".
+            $height.".".
+            $width.".".
             $type
         );
     }

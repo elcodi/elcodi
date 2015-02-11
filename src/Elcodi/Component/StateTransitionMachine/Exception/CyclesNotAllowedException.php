@@ -24,5 +24,4 @@ use Exception;
  */
 class CyclesNotAllowedException extends Exception
 {
-
 }

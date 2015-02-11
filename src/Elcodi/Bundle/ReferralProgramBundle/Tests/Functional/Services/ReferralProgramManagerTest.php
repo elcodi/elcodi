@@ -19,7 +19,6 @@ namespace Elcodi\Bundle\ReferralProgramBundle\Tests\Functional\Services;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\ReferralProgram\ElcodiReferralProgramRuleTypes;
 use Elcodi\Component\ReferralProgram\ElcodiReferralProgramSources;
@@ -143,7 +142,6 @@ class ReferralProgramManagerTest extends WebTestCase
 
         $this->assertCount(5, $referralLines);
         foreach ($referralLines as $referralLine) {
-
             $this->assertInstanceOf('Elcodi\Component\ReferralProgram\Entity\ReferralLine', $referralLine);
             $this->assertNull($referralLine->getInvited());
             $this->assertEquals($referralLine->getSource(), ElcodiReferralProgramSources::EMAIL);

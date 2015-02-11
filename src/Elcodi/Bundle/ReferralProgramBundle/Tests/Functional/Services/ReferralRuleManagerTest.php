@@ -18,7 +18,6 @@
 namespace Elcodi\Bundle\ReferralProgramBundle\Tests\Functional\Services;
 
 use Doctrine\Common\Collections\Collection;
-
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\ReferralProgram\Entity\Interfaces\ReferralRuleInterface;
 

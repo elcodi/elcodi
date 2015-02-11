@@ -18,7 +18,6 @@
 namespace Elcodi\Bundle\GeoBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Geo\Factory\CountryFactory;
 
@@ -48,7 +47,7 @@ class CountryData extends AbstractFixture
         $this->addReference('country-spain', $countrySpain);
 
         $countryObjectManager->flush([
-            $countrySpain
+            $countrySpain,
         ]);
     }
 }

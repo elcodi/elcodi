@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Sitemap\Loader\Interfaces;
 
 use Doctrine\Common\Collections\ArrayCollection;
-
 use Elcodi\Component\Sitemap\Transformer\Interfaces\SitemapTransformerInterface;
 
 /**

@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Page\Repository;
 
 use Doctrine\ORM\EntityRepository;
-
 use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
 use Elcodi\Component\Page\Repository\Interfaces\PageRepositoryInterface;
 

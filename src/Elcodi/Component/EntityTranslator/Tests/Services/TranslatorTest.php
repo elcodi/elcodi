@@ -18,7 +18,6 @@
 namespace Elcodi\Component\EntityTranslator\Tests\Services;
 
 use PHPUnit_Framework_TestCase;
-
 use Elcodi\Component\EntityTranslator\Services\EntityTranslator;
 use Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct;
 
@@ -52,8 +51,8 @@ class TranslatorTest extends PHPUnit_Framework_TestCase
                     'name' => array(
                         'setter' => 'setName',
                         'getter' => 'getName',
-                    )
-                )
+                    ),
+                ),
             ),
         );
 
@@ -86,25 +85,25 @@ class TranslatorTest extends PHPUnit_Framework_TestCase
                 $this->equalTo('1'),
                 $this->equalTo('name'),
                 $this->equalTo('el nombre'),
-                $this->equalTo('es')
+                $this->equalTo('es'),
             ), array(
                 $this->equalTo('product'),
                 $this->equalTo('1'),
                 $this->equalTo('description'),
                 $this->equalTo('la descripción'),
-                $this->equalTo('es')
+                $this->equalTo('es'),
             ), array(
                 $this->equalTo('product'),
                 $this->equalTo('1'),
                 $this->equalTo('name'),
                 $this->equalTo('the name'),
-                $this->equalTo('en')
+                $this->equalTo('en'),
             ), array(
                 $this->equalTo('product'),
                 $this->equalTo('1'),
                 $this->equalTo('description'),
                 $this->equalTo('the description'),
-                $this->equalTo('en')
+                $this->equalTo('en'),
             ));
 
         $entityTranslationProvider
@@ -123,8 +122,8 @@ class TranslatorTest extends PHPUnit_Framework_TestCase
                     'description' => array(
                         'setter' => 'setDescription',
                         'getter' => 'getDescription',
-                    )
-                )
+                    ),
+                ),
             ),
         );
 

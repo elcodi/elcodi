@@ -18,7 +18,6 @@
 namespace Elcodi\Component\User\Event;
 
 use Symfony\Component\EventDispatcher\Event;
-
 use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 
 /**

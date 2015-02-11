@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Geo\Factory;
 
 use Doctrine\Common\Collections\ArrayCollection;
-
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Geo\Entity\Interfaces\ProvinceInterface;
 

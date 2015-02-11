@@ -19,7 +19,6 @@ namespace Elcodi\Component\Cart\Factory;
 
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
-
 use Elcodi\Component\Cart\Entity\Order;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
@@ -53,8 +52,7 @@ class OrderFactory extends AbstractFactory
     public function __construct(
         MachineManager $paymentMachineManager,
         MachineManager $shippingMachineManager
-    )
-    {
+    ) {
         $this->paymentMachineManager = $paymentMachineManager;
         $this->shippingMachineManager = $shippingMachineManager;
     }

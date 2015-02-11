@@ -48,8 +48,7 @@ class RepositoryProvider
     public function __construct(
         ManagerProvider $managerProvider,
         ParameterBag $parameterBag
-    )
-    {
+    ) {
         $this->managerProvider = $managerProvider;
         $this->parameterBag = $parameterBag;
     }

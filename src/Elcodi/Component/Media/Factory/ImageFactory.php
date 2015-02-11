@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Media\Factory;
 
 use DateTime;
-
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 

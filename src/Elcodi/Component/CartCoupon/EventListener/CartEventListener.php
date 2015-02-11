@@ -99,8 +99,7 @@ class CartEventListener
         CurrencyConverter $currencyConverter,
         CartCouponRuleManager $cartCouponRuleManager,
         CartCouponEventDispatcher $cartCouponEventDispatcher
-    )
-    {
+    ) {
         $this->couponManager = $couponManager;
         $this->cartCouponManager = $cartCouponManager;
         $this->currencyWrapper = $currencyWrapper;
@@ -129,7 +128,6 @@ class CartEventListener
          * @var CartCouponInterface $cartCoupon
          */
         foreach ($cartCoupons as $cartCoupon) {
-
             $coupon = $cartCoupon->getCoupon();
             if (!$this
                 ->cartCouponRuleManager
@@ -147,7 +145,6 @@ class CartEventListener
                         $coupon
                     );
             }
-
         }
     }
 
@@ -174,7 +171,6 @@ class CartEventListener
          * @var CouponInterface $coupon
          */
         foreach ($coupons as $coupon) {
-
             $currentCouponAmount = $this
                 ->getPriceCoupon(
                     $cart,
@@ -199,8 +195,7 @@ class CartEventListener
     protected function getPriceCoupon(
         CartInterface $cart,
         CouponInterface $coupon
-    )
-    {
+    ) {
         $currency = $this->currencyWrapper->getCurrency();
 
         switch ($coupon->getType()) {

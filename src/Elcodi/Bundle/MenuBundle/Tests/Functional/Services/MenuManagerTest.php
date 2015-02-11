@@ -86,17 +86,17 @@ class MenuManagerTest extends WebTestCase
                             'name'     => 'him',
                             'code'     => 'him',
                             'url'      => 'elcodi.dev/him',
-                            'subnodes' => []
+                            'subnodes' => [],
                         ],
                         3 => [
                             'id'       => 3,
                             'name'     => 'her',
                             'code'     => 'her',
                             'url'      => 'elcodi.dev/her',
-                            'subnodes' => []
-                        ]
-                    ]
-                ]
+                            'subnodes' => [],
+                        ],
+                    ],
+                ],
             ]
         );
     }
@@ -114,15 +114,15 @@ class MenuManagerTest extends WebTestCase
                     'name'     => 'him',
                     'code'     => 'him',
                     'url'      => 'elcodi.dev/him',
-                    'subnodes' => []
+                    'subnodes' => [],
                 ],
                 3 => [
                     'id'       => 3,
                     'name'     => 'her',
                     'code'     => 'her',
                     'url'      => 'elcodi.dev/her',
-                    'subnodes' => []
-                ]
+                    'subnodes' => [],
+                ],
             ]
         );
     }

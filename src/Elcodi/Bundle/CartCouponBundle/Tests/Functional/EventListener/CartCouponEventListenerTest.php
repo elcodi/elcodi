@@ -42,7 +42,7 @@ class CartCouponEventListenerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.cart_coupon.event_listener.cart'
+            'elcodi.core.cart_coupon.event_listener.cart',
         ];
     }
 }

@@ -19,7 +19,6 @@ namespace Elcodi\Component\User\Wrapper;
 
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-
 use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
 use Elcodi\Component\User\Factory\AdminUserFactory;
 
@@ -63,8 +62,7 @@ class AdminUserWrapper
     public function __construct(
         AdminUserFactory $adminUserFactory,
         TokenStorageInterface $tokenStorage = null
-    )
-    {
+    ) {
         $this->adminUserFactory = $adminUserFactory;
         $this->tokenStorage = $tokenStorage;
     }
@@ -118,11 +116,8 @@ class AdminUserWrapper
             : null;
 
         if ($token instanceof UsernamePasswordToken) {
-
             $this->adminUser = $token->getUser();
-
         } else {
-
             $this->adminUser = $this->adminUserFactory->create();
         }
 

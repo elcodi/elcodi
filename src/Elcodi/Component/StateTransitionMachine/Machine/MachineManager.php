@@ -19,7 +19,6 @@ namespace Elcodi\Component\StateTransitionMachine\Machine;
 
 use StdClass;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-
 use Elcodi\Component\StateTransitionMachine\Definition\Transition;
 use Elcodi\Component\StateTransitionMachine\ElcodiStateTransitionMachineEvents;
 use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface;
@@ -71,8 +70,7 @@ class MachineManager
         MachineInterface $machine,
         EventDispatcherInterface $eventDispatcher,
         StateLineFactory $stateLineFactory
-    )
-    {
+    ) {
         $this->machine = $machine;
         $this->eventDispatcher = $eventDispatcher;
         $this->stateLineFactory = $stateLineFactory;
@@ -93,10 +91,8 @@ class MachineManager
         $object,
         StateLineStack $stateLineStack,
         $description
-    )
-    {
+    ) {
         if ($stateLineStack->getLastStateLine() instanceof StateLineInterface) {
-
             throw new ObjectAlreadyInitializedException();
         }
 
@@ -139,12 +135,10 @@ class MachineManager
         StateLineStack $stateLineStack,
         $transitionName,
         $description = ''
-    )
-    {
+    ) {
         $startState = $stateLineStack->getLastStateLine();
 
         if (!($startState instanceof StateLineInterface)) {
-
             throw new ObjectNotInitializedException();
         }
 
@@ -189,12 +183,10 @@ class MachineManager
         StateLineStack $stateLineStack,
         $transitionName,
         $description = ''
-    )
-    {
+    ) {
         $startState = $stateLineStack->getLastStateLine();
 
         if (!($startState instanceof StateLineInterface)) {
-
             throw new ObjectNotInitializedException();
         }
 
@@ -254,8 +246,7 @@ class MachineManager
         MachineInterface $machine,
         $object,
         StateLineStack $stateLineStack
-    )
-    {
+    ) {
         $this
             ->eventDispatcher
             ->dispatch(
@@ -286,8 +277,7 @@ class MachineManager
         $object,
         StateLineStack $stateLineStack,
         Transition $transition
-    )
-    {
+    ) {
         $this
             ->eventDispatcher
             ->dispatch(

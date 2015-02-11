@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Cart\Entity;
 
 use Doctrine\Common\Collections\Collection;
-
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
@@ -236,7 +235,6 @@ class Cart implements CartInterface
     public function addCartLine(CartLineInterface $cartLine)
     {
         if (!$this->cartLines->contains($cartLine)) {
-
             $this->cartLines->add($cartLine);
         }
 

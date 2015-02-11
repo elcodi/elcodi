@@ -18,7 +18,6 @@
 namespace Elcodi\Bundle\BannerBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Banner\Factory\BannerZoneFactory;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
@@ -58,9 +57,9 @@ class BannerZoneData extends AbstractFixture
         $bannerZonebjectManager->persist($bannerZone);
         $this->addReference('banner-zone', $bannerZone);
 
-         /**
-          * BannerZone with no language
-          */
+        /**
+         * BannerZone with no language
+         */
         $bannerZoneNoLanguage = $bannerZoneFactory
             ->create()
             ->setName('bannerzone-nolanguage')

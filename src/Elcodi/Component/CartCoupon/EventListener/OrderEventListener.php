@@ -19,7 +19,6 @@ namespace Elcodi\Component\CartCoupon\EventListener;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Cart\Event\OrderOnCreatedEvent;
 use Elcodi\Component\CartCoupon\EventDispatcher\OrderCouponEventDispatcher;
@@ -74,8 +73,7 @@ class OrderEventListener
         CartCouponManager $cartCouponManager,
         OrderCouponManager $orderCouponManager,
         ObjectManager $orderCouponObjectManager
-    )
-    {
+    ) {
         $this->orderCouponEventDispatcher = $orderCouponEventDispatcher;
         $this->cartCouponManager = $cartCouponManager;
         $this->orderCouponManager = $orderCouponManager;
@@ -142,9 +140,7 @@ class OrderEventListener
             ->getOrderCoupons($order);
 
         if ($orderCoupons instanceof Collection) {
-
             foreach ($orderCoupons as $orderCoupon) {
-
                 $this
                     ->orderCouponObjectManager
                     ->remove($orderCoupon);

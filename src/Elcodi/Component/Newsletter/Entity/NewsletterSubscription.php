@@ -29,8 +29,7 @@ use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
  */
 class NewsletterSubscription implements NewsletterSubscriptionInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         DateTimeTrait,
         EnabledTrait;
 

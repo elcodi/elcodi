@@ -23,7 +23,6 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-
 use Elcodi\Component\Geo\Populator\GeoPopulator;
 
 /**
@@ -93,7 +92,7 @@ class GeoPopulateCommand extends Command
         ));
 
         $output->writeln('');
-        $output->writeln('<header>[Geo]</header> <body>Populating your database with ' . $country . ' fixtures</body>');
+        $output->writeln('<header>[Geo]</header> <body>Populating your database with '.$country.' fixtures</body>');
         $output->writeln('<header>[Geo]</header> <body>This process may take a few minutes. Please, be patient</body>');
         $output->writeln('<header>[Geo]</header> <body>Process started...</body>');
 

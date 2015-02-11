@@ -27,6 +27,5 @@ class FakeController
      */
     public function fakeAction()
     {
-
     }
 }

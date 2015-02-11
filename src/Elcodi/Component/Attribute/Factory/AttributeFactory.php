@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Attribute\Factory;
 
 use Doctrine\Common\Collections\ArrayCollection;
-
 use Elcodi\Component\Attribute\Entity\Attribute;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 

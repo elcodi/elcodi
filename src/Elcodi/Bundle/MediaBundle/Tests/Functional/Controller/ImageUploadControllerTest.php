@@ -18,7 +18,6 @@
 namespace Elcodi\Bundle\MediaBundle\Tests\Functional\Controller;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Media\Entity\Interfaces\FileInterface;
 
@@ -54,7 +53,7 @@ class ImageUploadControllerTest extends WebTestCase
     {
         $client = $this->createClient();
         $image = new UploadedFile(
-            dirname(__FILE__) . '/images/image.png',
+            dirname(__FILE__).'/images/image.png',
             'image.png',
             'image/png',
             3966,

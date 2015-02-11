@@ -19,7 +19,6 @@ namespace Elcodi\Bundle\TemplateBundle;
 
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-
 use Elcodi\Bundle\TemplateBundle\DependencyInjection\ElcodiTemplateExtension;
 
 /**

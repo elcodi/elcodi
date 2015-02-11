@@ -19,7 +19,6 @@ namespace Elcodi\Component\Language\Services;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
-
 use Elcodi\Component\Language\Entity\Locale;
 
 /**
@@ -50,8 +49,7 @@ class LocaleProvider
     public function __construct(
         RequestStack $requestStack,
         $defaultLocale
-    )
-    {
+    ) {
         $this->requestStack = $requestStack;
         $this->defaultLocale = $defaultLocale;
     }

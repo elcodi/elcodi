@@ -18,7 +18,6 @@
 namespace Elcodi\Component\CartCoupon\Event;
 
 use Symfony\Component\EventDispatcher\Event;
-
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\CartCoupon\Entity\Interfaces\OrderCouponInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
@@ -58,8 +57,7 @@ class OrderCouponOnApplyEvent extends Event
     public function __construct(
         OrderInterface $order,
         CouponInterface $coupon
-    )
-    {
+    ) {
         $this->order = $order;
         $this->coupon = $coupon;
     }

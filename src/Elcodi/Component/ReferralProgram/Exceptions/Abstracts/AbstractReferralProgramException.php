@@ -17,12 +17,11 @@
 
 namespace Elcodi\Component\ReferralProgram\Exceptions\Abstracts;
 
-use \Exception;
+use Exception;
 
 /**
  * Class AbstractReferralProgramException
  */
 class AbstractReferralProgramException extends Exception
 {
-
 }

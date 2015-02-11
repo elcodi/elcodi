@@ -19,7 +19,6 @@ namespace Elcodi\Component\Product\Tests\UnitTest\Twig;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit_Framework_TestCase;
-
 use Elcodi\Component\Attribute\Entity\Value;
 use Elcodi\Component\Product\Twig\ProductExtension;
 

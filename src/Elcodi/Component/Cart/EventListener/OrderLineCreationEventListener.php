@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Cart\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Elcodi\Component\Cart\Event\OrderLineOnCreatedEvent;
 use Elcodi\Component\Product\ElcodiProductStock;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
@@ -59,8 +58,7 @@ class OrderLineCreationEventListener
     public function __construct(
         ObjectManager $productObjectManager,
         ObjectManager $variantObjectManager
-    )
-    {
+    ) {
         $this->productObjectManager = $productObjectManager;
         $this->variantObjectManager = $variantObjectManager;
     }
@@ -104,13 +102,10 @@ class OrderLineCreationEventListener
     protected function flushPurchasable(PurchasableInterface $purchasable)
     {
         if ($purchasable instanceof ProductInterface) {
-
             $this
                 ->productObjectManager
                 ->flush($purchasable);
-
         } elseif ($purchasable instanceof VariantInterface) {
-
             $this
                 ->variantObjectManager
                 ->flush($purchasable);

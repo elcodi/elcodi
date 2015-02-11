@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Comment\Tests\Services;
 
 use PHPUnit_Framework_TestCase;
-
 use Elcodi\Component\Comment\Entity\Comment;
 use Elcodi\Component\Comment\Services\CommentParser;
 
@@ -52,6 +51,5 @@ class CommentParserTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('# Hi!', $comment->getContent());
         $this->assertEquals('<h1>Hi!</h1>', $comment->getParsedContent());
         $this->assertEquals('adapter', $comment->getParsingType());
-
     }
 }

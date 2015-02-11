@@ -101,8 +101,7 @@ class CartWrapper
         CartRepository $cartRepository,
         CartFactory $cartFactory,
         CustomerWrapper $customerWrapper
-    )
-    {
+    ) {
         $this->cartEventDispatcher = $cartEventDispatcher;
         $this->cartSessionManager = $cartSessionManager;
         $this->cartRepository = $cartRepository;
@@ -183,7 +182,7 @@ class CartWrapper
         $cartIdInSession = $this->cartSessionManager->get();
 
         if (!$cartIdInSession) {
-            return null;
+            return;
         }
 
         return $this
@@ -217,7 +216,7 @@ class CartWrapper
             return $customerCart;
         }
 
-        return null;
+        return;
     }
 
     /**
@@ -233,12 +232,10 @@ class CartWrapper
         CustomerInterface $customer,
         CartInterface $cartFromCustomer = null,
         CartInterface $cartFromSession = null
-    )
-    {
+    ) {
         if ($cartFromCustomer) {
             return $cartFromCustomer;
         } else {
-
             if (!$cartFromSession) {
 
                 /**

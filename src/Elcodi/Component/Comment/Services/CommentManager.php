@@ -59,8 +59,7 @@ class CommentManager extends AbstractCacheWrapper
         CommentEventDispatcher $commentEventDispatcher,
         ObjectDirector $commentDirector,
         CommentParser $commentParser
-    )
-    {
+    ) {
         $this->commentEventDispatcher = $commentEventDispatcher;
         $this->commentDirector = $commentDirector;
         $this->commentParser = $commentParser;
@@ -87,8 +86,7 @@ class CommentManager extends AbstractCacheWrapper
         $authorName,
         $authorEmail,
         CommentInterface $parent = null
-    )
-    {
+    ) {
         $comment = $this
             ->commentDirector
             ->create()
@@ -127,8 +125,7 @@ class CommentManager extends AbstractCacheWrapper
     public function editComment(
         CommentInterface $comment,
         $content
-    )
-    {
+    ) {
         $comment->setContent($content);
 
         $comment = $this

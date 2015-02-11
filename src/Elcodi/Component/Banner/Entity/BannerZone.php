@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Banner\Entity;
 
 use Doctrine\Common\Collections\Collection;
-
 use Elcodi\Component\Banner\Entity\Interfaces\BannerInterface;
 use Elcodi\Component\Banner\Entity\Interfaces\BannerZoneInterface;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
@@ -255,10 +254,9 @@ class BannerZone implements BannerZoneInterface
         $isoLang = 'all languages';
 
         if ($this->getLanguage() instanceof LanguageInterface) {
-
             $isoLang = $this->getLanguage()->getIso();
         }
 
-        return $this->getName() . ' - ' . $isoLang;
+        return $this->getName().' - '.$isoLang;
     }
 }

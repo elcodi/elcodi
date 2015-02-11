@@ -21,7 +21,6 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-
 use Elcodi\Component\Configuration\Services\ConfigurationManager;
 
 /**
@@ -91,7 +90,7 @@ class ConfigurationSetCommand extends Command
         $formatter = $this->getHelper('formatter');
         $formattedLine = $formatter->formatSection(
             'OK',
-            'Saved configuration "' . $configurationIdentifier . '"'
+            'Saved configuration "'.$configurationIdentifier.'"'
         );
 
         $output->writeln($formattedLine);

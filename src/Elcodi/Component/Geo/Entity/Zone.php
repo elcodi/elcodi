@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Geo\Entity;
 
 use Doctrine\Common\Collections\Collection;
-
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Geo\Entity\Interfaces\ZoneInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\ZoneMemberInterface;
@@ -133,7 +132,6 @@ class Zone implements ZoneInterface
     public function addMember(ZoneMemberInterface $member)
     {
         if (!$this->members->contains($member)) {
-
             $this
                 ->members
                 ->add($member);

@@ -20,7 +20,6 @@ namespace Elcodi\Component\Media\Controller;
 use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
-
 use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 use Elcodi\Component\Media\Repository\ImageRepository;
 use Elcodi\Component\Media\Services\ImageManager;
@@ -90,8 +89,7 @@ class ImageResizeController
         ImageEtagTransformerInterface $imageEtagTransformer,
         $maxAge,
         $sharedMaxAge
-    )
-    {
+    ) {
         $this->requestStack = $requestStack;
         $this->imageRepository = $imageRepository;
         $this->imageManager = $imageManager;
@@ -123,7 +121,6 @@ class ImageResizeController
             ->find($id);
 
         if (!($image instanceof ImageInterface)) {
-
             throw new EntityNotFoundException($this->imageRepository->getClassName());
         }
 

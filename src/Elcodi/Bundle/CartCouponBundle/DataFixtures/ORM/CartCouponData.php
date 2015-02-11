@@ -19,7 +19,6 @@ namespace Elcodi\Bundle\CartCouponBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\CartCoupon\Entity\Interfaces\CartCouponInterface;
@@ -60,7 +59,7 @@ class CartCouponData extends AbstractFixture implements DependentFixtureInterfac
         $this->addReference('cart-coupon', $cartCoupon);
 
         $cartCouponObjectManager->flush([
-            $cartCoupon
+            $cartCoupon,
         ]);
     }
 

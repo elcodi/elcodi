@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Cart\Event;
 
 use Symfony\Component\EventDispatcher\Event;
-
 use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface;
@@ -60,8 +59,7 @@ class OrderLineOnCreatedEvent extends Event
         OrderInterface $order,
         CartLineInterface $cartLine,
         OrderLineInterface $orderLine
-    )
-    {
+    ) {
         $this->order = $order;
         $this->cartLine = $cartLine;
         $this->orderLine = $orderLine;

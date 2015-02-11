@@ -19,7 +19,6 @@ namespace Elcodi\Component\Metric\API\Twig;
 
 use Twig_Extension;
 use Twig_SimpleFunction;
-
 use Elcodi\Component\Metric\Core\Bucket\Abstracts\AbstractMetricsBucket;
 
 /**
@@ -70,8 +69,7 @@ class APIMetricExtension extends Twig_Extension
         $token,
         $event,
         $date
-    )
-    {
+    ) {
         return (int) $this
             ->metricBucket
             ->get($token, $event, $date);
@@ -88,8 +86,7 @@ class APIMetricExtension extends Twig_Extension
     public function getGlobalMetricCount(
         $event,
         $date
-    )
-    {
+    ) {
         return (int) $this
             ->metricBucket
             ->getGlobal($event, $date);

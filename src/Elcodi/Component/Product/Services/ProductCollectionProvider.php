@@ -19,7 +19,6 @@ namespace Elcodi\Component\Product\Services;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\QueryBuilder;
-
 use Elcodi\Component\Product\ElcodiProductStock;
 use Elcodi\Component\Product\Repository\ProductRepository;
 
@@ -74,7 +73,6 @@ class ProductCollectionProvider
             ->orderBy('p.updatedAt', 'DESC');
 
         if ($limit > 0) {
-
             $query->setMaxResults($limit);
         }
 
@@ -109,7 +107,6 @@ class ProductCollectionProvider
             ->orderBy('p.updatedAt', 'DESC');
 
         if ($limit > 0) {
-
             $query->setMaxResults($limit);
         }
 
@@ -141,7 +138,6 @@ class ProductCollectionProvider
             ->setParameter('stockZero', 0);
 
         if (!$infiniteStockIsNull) {
-
             $queryBuilder->setParameter('infiniteStock', ElcodiProductStock::INFINITE_STOCK);
         }
 

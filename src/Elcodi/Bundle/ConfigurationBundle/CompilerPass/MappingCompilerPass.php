@@ -43,5 +43,4 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
                 'elcodi.core.configuration.entity.configuration.enabled'
             );
     }
-
 }

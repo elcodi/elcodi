@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Geo\Entity;
 
 use Doctrine\Common\Collections\Collection;
-
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Geo\Entity\Interfaces\CityInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\CountryInterface;
@@ -204,7 +203,6 @@ class City implements CityInterface, ZoneMemberAssignableInterface
     public function addPostalCode(PostalCodeInterface $postalCode)
     {
         if (!$this->postalCodes->contains($postalCode)) {
-
             $this
                 ->postalCodes
                 ->add($postalCode);

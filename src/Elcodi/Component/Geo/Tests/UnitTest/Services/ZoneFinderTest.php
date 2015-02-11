@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Geo\Tests\UnitTest\Services;
 
 use PHPUnit_Framework_TestCase;
-
 use Elcodi\Component\Geo\Services\ZoneFinder;
 
 /**
@@ -57,7 +56,7 @@ class ZoneFinderTest extends PHPUnit_Framework_TestCase
             ->expects($this->any())
             ->method('findBy')
             ->will($this->returnValue([
-                $zoneCityMember
+                $zoneCityMember,
             ]));
 
         $zoneFinder = new ZoneFinder(
@@ -96,7 +95,7 @@ class ZoneFinderTest extends PHPUnit_Framework_TestCase
             ->expects($this->any())
             ->method('findBy')
             ->will($this->returnValue([
-                $zoneCountryMember
+                $zoneCountryMember,
             ]));
 
         $zoneFinder = new ZoneFinder(
@@ -135,7 +134,7 @@ class ZoneFinderTest extends PHPUnit_Framework_TestCase
             ->expects($this->any())
             ->method('findBy')
             ->will($this->returnValue([
-                $zoneStateMember
+                $zoneStateMember,
             ]));
 
         $zoneFinder = new ZoneFinder(
@@ -174,7 +173,7 @@ class ZoneFinderTest extends PHPUnit_Framework_TestCase
             ->expects($this->any())
             ->method('findBy')
             ->will($this->returnValue([
-                $zoneProvinceMember
+                $zoneProvinceMember,
             ]));
 
         $zoneFinder = new ZoneFinder(
@@ -213,7 +212,7 @@ class ZoneFinderTest extends PHPUnit_Framework_TestCase
             ->expects($this->any())
             ->method('findBy')
             ->will($this->returnValue([
-                $zoneCityMember
+                $zoneCityMember,
             ]));
 
         $zoneFinder = new ZoneFinder(
@@ -252,7 +251,7 @@ class ZoneFinderTest extends PHPUnit_Framework_TestCase
             ->expects($this->any())
             ->method('findBy')
             ->will($this->returnValue([
-                $zonePostalCodeMember
+                $zonePostalCodeMember,
             ]));
 
         $zoneFinder = new ZoneFinder(

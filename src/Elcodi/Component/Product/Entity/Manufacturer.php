@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Product\Entity;
 
 use Doctrine\Common\Collections\Collection;
-
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
@@ -33,8 +32,7 @@ use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
  */
 class Manufacturer implements ManufacturerInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         ImagesContainerTrait,
         PrincipalImageTrait,
         DateTimeTrait,

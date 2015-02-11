@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Core\Adapter\Parser;
 
 use Michelf\MarkdownExtra;
-
 use Elcodi\Component\Core\Adapter\Parser\Interfaces\ParserAdapterInterface;
 
 /**

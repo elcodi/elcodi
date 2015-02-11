@@ -24,5 +24,4 @@ use Symfony\Component\EventDispatcher\Event;
  */
 class EntityTranslatorWarmUpEvent extends Event
 {
-
 }

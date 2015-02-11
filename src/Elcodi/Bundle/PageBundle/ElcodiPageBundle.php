@@ -20,7 +20,6 @@ namespace Elcodi\Bundle\PageBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-
 use Elcodi\Bundle\PageBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\PageBundle\DependencyInjection\ElcodiPageExtension;
 

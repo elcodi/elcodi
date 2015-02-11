@@ -19,7 +19,6 @@ namespace Elcodi\Component\Sitemap\Loader;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ObjectRepository;
-
 use Elcodi\Component\Sitemap\Loader\Interfaces\EntityLoaderInterface;
 use Elcodi\Component\Sitemap\Transformer\Interfaces\SitemapTransformerInterface;
 
@@ -69,8 +68,7 @@ class EntityLoader implements EntityLoaderInterface
         ObjectRepository $repository,
         $method,
         array $arguments
-    )
-    {
+    ) {
         $this->transformer = $transformer;
         $this->repository = $repository;
         $this->method = $method;

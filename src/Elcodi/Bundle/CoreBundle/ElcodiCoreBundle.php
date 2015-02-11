@@ -19,7 +19,6 @@ namespace Elcodi\Bundle\CoreBundle;
 
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-
 use Elcodi\Bundle\CoreBundle\DependencyInjection\ElcodiCoreExtension;
 
 /**

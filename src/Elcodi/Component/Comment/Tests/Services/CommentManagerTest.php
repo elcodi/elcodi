@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Comment\Tests\Services;
 
 use PHPUnit_Framework_TestCase;
-
 use Elcodi\Component\Comment\Entity\Comment;
 use Elcodi\Component\Comment\Entity\Interfaces\CommentInterface;
 use Elcodi\Component\Comment\Services\CommentManager;

@@ -20,7 +20,6 @@ namespace Elcodi\Component\User\Services;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-
 use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 use Elcodi\Component\User\ElcodiUserEvents;
 use Elcodi\Component\User\Entity\Abstracts\AbstractUser;
@@ -72,8 +71,7 @@ class PasswordManager
         UrlGeneratorInterface $router,
         EventDispatcherInterface $eventDispatcher,
         GeneratorInterface $recoveryHashGenerator
-    )
-    {
+    ) {
         $this->manager = $manager;
         $this->router = $router;
         $this->eventDispatcher = $eventDispatcher;
@@ -95,8 +93,7 @@ class PasswordManager
         $email,
         $recoverPasswordUrlName,
         $hashField = 'hash'
-    )
-    {
+    ) {
         $user = $userRepository->findOneByEmail($email);
 
         if (!($user instanceof AbstractUser)) {
@@ -124,8 +121,7 @@ class PasswordManager
         AbstractUser $user,
         $recoverPasswordUrlName,
         $hashField = 'hash'
-    )
-    {
+    ) {
         $recoveryHash = $this->recoveryHashGenerator->generate();
         $user->setRecoveryHash($recoveryHash);
         $this->manager->flush($user);
@@ -153,9 +149,7 @@ class PasswordManager
      */
     public function recoverPassword(AbstractUser $user, $hash, $newPassword)
     {
-
         if ($hash == $user->getRecoveryHash()) {
-
             $user
                 ->setPassword($newPassword)
                 ->setRecoveryHash(null);

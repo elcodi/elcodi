@@ -19,7 +19,6 @@ namespace Elcodi\Component\Product\Factory;
 
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
-
 use Elcodi\Component\Currency\Factory\Abstracts\AbstractPurchasableFactory;
 use Elcodi\Component\Product\ElcodiProductStock;
 use Elcodi\Component\Product\ElcodiProductTypes;

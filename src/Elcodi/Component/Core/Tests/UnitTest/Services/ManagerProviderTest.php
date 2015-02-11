@@ -20,7 +20,6 @@ namespace Elcodi\Component\Core\Tests\UnitTest\Services;
 use Doctrine\Common\Persistence\ObjectManager;
 use PHPUnit_Framework_TestCase;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
-
 use Elcodi\Component\Core\Services\ManagerProvider;
 
 /**
@@ -83,7 +82,6 @@ class ManagerProviderTest extends PHPUnit_Framework_TestCase
             $managerRegistry,
             $parametersBag
         );
-
     }
 
     /**

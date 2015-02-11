@@ -19,7 +19,6 @@ namespace Elcodi\Component\Media\Services;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-
 use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 use Elcodi\Component\Media\Exception\InvalidImageException;
 
@@ -60,8 +59,7 @@ class ImageUploader
         ObjectManager $imageObjectManager,
         FileManager $fileManager,
         ImageManager $imageManager
-    )
-    {
+    ) {
         $this->imageObjectManager = $imageObjectManager;
         $this->fileManager = $fileManager;
         $this->imageManager = $imageManager;

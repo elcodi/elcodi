@@ -19,7 +19,6 @@ namespace Elcodi\Component\Product\Factory;
 
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
-
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Product\Entity\Category;
 

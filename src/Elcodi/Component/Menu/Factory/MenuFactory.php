@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Menu\Factory;
 
 use Doctrine\Common\Collections\ArrayCollection;
-
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Menu\Entity\Menu\Menu;
 

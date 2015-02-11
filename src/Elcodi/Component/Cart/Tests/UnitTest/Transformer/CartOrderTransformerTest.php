@@ -19,7 +19,6 @@ namespace Elcodi\Component\Cart\Tests\UnitTest\Transformer;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit_Framework_TestCase;
-
 use Elcodi\Component\Cart\Entity\Cart;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Cart\Entity\Order;

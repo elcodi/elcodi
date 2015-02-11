@@ -20,7 +20,6 @@ namespace Elcodi\Component\ReferralProgram\Repository;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
-
 use Elcodi\Component\ReferralProgram\Entity\ReferralRule;
 
 /**
@@ -62,7 +61,7 @@ class ReferralRuleRepository extends EntityRepository
             ->setMaxResults(1)
             ->setParameters(array(
                 'enabled'  => true,
-                'datetime' => $dateTime
+                'datetime' => $dateTime,
             ))
             ->getQuery()
             ->getResult();

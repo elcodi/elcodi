@@ -19,7 +19,6 @@ namespace Elcodi\Component\Cart\Transformer;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-
 use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface;
@@ -59,8 +58,7 @@ class CartLineOrderLineTransformer
     public function __construct(
         OrderLineEventDispatcher $orderLineEventDispatcher,
         OrderLineFactory $orderLineFactory
-    )
-    {
+    ) {
         $this->orderLineEventDispatcher = $orderLineEventDispatcher;
         $this->orderLineFactory = $orderLineFactory;
     }
@@ -76,15 +74,13 @@ class CartLineOrderLineTransformer
     public function createOrderLinesByCartLines(
         OrderInterface $order,
         Collection $cartLines
-    )
-    {
+    ) {
         $orderLines = new ArrayCollection();
 
         /**
          * @var CartLineInterface $cartLine
          */
         foreach ($cartLines as $cartLine) {
-
             $orderLine = $this
                 ->createOrderLineByCartLine(
                     $order,
@@ -109,8 +105,7 @@ class CartLineOrderLineTransformer
     public function createOrderLineByCartLine(
         OrderInterface $order,
         CartLineInterface $cartLine
-    )
-    {
+    ) {
         $orderLine = ($cartLine->getOrderLine() instanceof OrderLineInterface)
             ? $cartLine->getOrderLine()
             : $this->orderLineFactory->create();

@@ -19,7 +19,6 @@ namespace Elcodi\Component\Cart\Tests\UnitTest\Services;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit_Framework_TestCase;
-
 use Elcodi\Component\Cart\Entity\Cart;
 use Elcodi\Component\Cart\Entity\CartLine;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
@@ -156,7 +155,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         $cart = new Cart();
         $cartLine = new CartLine();
         $cart->setCartLines(new ArrayCollection(array(
-            $cartLine
+            $cartLine,
         )));
         $cartLine->setCart($cart);
 
@@ -192,7 +191,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         $cart = new Cart();
         $cartLine = new CartLine();
         $cart->setCartLines(new ArrayCollection(array(
-            $cartLine
+            $cartLine,
         )));
         $cartLine->setCart($cart);
 
@@ -235,7 +234,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         $cartLine->setQuantity($initialQuantity);
         $cartLine->setProduct($product);
         $cart->setCartLines(new ArrayCollection(array(
-            $cartLine
+            $cartLine,
         )));
 
         $this->cartManager->editCartLine($cartLine, $product, $newQuantity);
@@ -270,7 +269,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         $cartLine->setCart($cart);
         $cartLine->setQuantity($initialQuantity);
         $cart->setCartLines(new ArrayCollection(array(
-            $cartLine
+            $cartLine,
         )));
 
         $this->cartManager->increaseCartLineQuantity($cartLine, $quantityToIncrease);
@@ -303,7 +302,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         $cartLine->setCart($cart);
         $cartLine->setQuantity($initialQuantity);
         $cart->setCartLines(new ArrayCollection(array(
-            $cartLine
+            $cartLine,
         )));
 
         $this->cartManager->decreaseCartLineQuantity($cartLine, $quantityToIncrease);
@@ -335,7 +334,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         $cartLine->setCart($cart);
         $cartLine->setQuantity($initialQuantity);
         $cart->setCartLines(new ArrayCollection(array(
-            $cartLine
+            $cartLine,
         )));
 
         $this->cartManager->decreaseCartLineQuantity($cartLine, $quantityToIncrease);
@@ -377,7 +376,6 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         $this->cartManager->addProduct($cart, $product, $quantity);
 
         if ($productCreated) {
-
             $createdLine = $cart->getCartLines()->first();
             $createdProduct = $createdLine->getProduct();
 
@@ -386,7 +384,6 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
             $this->assertSame($createdProduct, $product);
             $this->assertEquals($createdLine->getQuantity(), $quantityExpected);
         } else {
-
             $this->assertCount(0, $cart->getCartLines());
         }
     }
@@ -436,13 +433,13 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         $cartManager = $this
             ->getMockBuilder('Elcodi\Component\Cart\Services\CartManager')
             ->setMethods([
-                'increaseCartLineQuantity'
+                'increaseCartLineQuantity',
             ])
             ->setConstructorArgs([
                 $cartEventDispatcher,
                 $cartLineEventDispatcher,
                 $cartFactory,
-                $cartLineFactory
+                $cartLineFactory,
             ])
             ->getMock();
 

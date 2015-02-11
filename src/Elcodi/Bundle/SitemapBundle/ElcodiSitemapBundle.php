@@ -19,7 +19,6 @@ namespace Elcodi\Bundle\SitemapBundle;
 
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-
 use Elcodi\Bundle\SitemapBundle\DependencyInjection\ElcodiSitemapExtension;
 
 /**

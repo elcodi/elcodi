@@ -54,10 +54,9 @@ trait TemplatingTrait
         $template,
         \Elcodi\Component\Plugin\Interfaces\EventInterface $event,
         array $extraContextParams = []
-    )
-    {
+    ) {
         $event->setContent(
-            $event->getContent() .
+            $event->getContent().
             $this
                 ->twig
                 ->render(

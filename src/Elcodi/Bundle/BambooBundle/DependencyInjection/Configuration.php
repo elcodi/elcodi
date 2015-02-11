@@ -20,7 +20,6 @@ namespace Elcodi\Bundle\BambooBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
-
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
 
 /**
@@ -115,8 +114,7 @@ class Configuration extends AbstractConfiguration
         $template,
         $layout = null,
         $senderEmail = null
-    )
-    {
+    ) {
         $builder = new TreeBuilder();
         $node = $builder->root($nodeName);
 

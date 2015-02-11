@@ -76,8 +76,7 @@ class EntityTranslatorBuilder
         EntityTranslationProviderInterface $entityTranslationProvider,
         EntityTranslatorFactory $entityTranslatorFactory,
         array $configuration
-    )
-    {
+    ) {
         $this->entityTranslationProvider = $entityTranslationProvider;
         $this->entityTranslatorFactory = $entityTranslatorFactory;
         $this->configuration = $configuration;
@@ -111,7 +110,6 @@ class EntityTranslatorBuilder
     public function checkNamespace(array $configuration)
     {
         foreach ($configuration as $classNamespace => $classConfiguration) {
-
             if (class_exists($classNamespace) || interface_exists($classNamespace)) {
                 return $this;
             }
@@ -132,7 +130,6 @@ class EntityTranslatorBuilder
     public function checkAlias(array $configuration)
     {
         foreach ($configuration as $classNamespace => $classConfiguration) {
-
             if (
                 isset($classConfiguration['alias']) &&
                 $classConfiguration['alias']
@@ -156,19 +153,16 @@ class EntityTranslatorBuilder
     public function checkMethods(array $configuration)
     {
         foreach ($configuration as $classNamespace => $classConfiguration) {
-
             if (
                 !isset($classConfiguration['idGetter']) ||
                 !method_exists($classNamespace, $classConfiguration['idGetter']) ||
                 !isset($classConfiguration['fields']) ||
                 !is_array($classConfiguration['fields'])
             ) {
-
                 throw new TranslationDefinitionException();
             }
 
             foreach ($classConfiguration['fields'] as $fieldName => $fieldConfiguration) {
-
                 if (
                     $fieldName &&
                     $fieldConfiguration &&
@@ -178,12 +172,11 @@ class EntityTranslatorBuilder
                     isset($fieldConfiguration['setter']) &&
                     method_exists($classNamespace, $fieldConfiguration['setter'])
                 ) {
-
                     continue;
                 }
 
                 throw new TranslationDefinitionException(
-                    'Field ' . $classNamespace . ' not found, or methods [' . $fieldConfiguration['getter'] . ', ' . $fieldConfiguration['setter'] . '] not found inside the class'
+                    'Field '.$classNamespace.' not found, or methods ['.$fieldConfiguration['getter'].', '.$fieldConfiguration['setter'].'] not found inside the class'
                 );
             }
         }

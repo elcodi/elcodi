@@ -20,7 +20,6 @@ namespace Elcodi\Bundle\CouponBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-
 use Elcodi\Bundle\CouponBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\CouponBundle\DependencyInjection\ElcodiCouponExtension;
 
