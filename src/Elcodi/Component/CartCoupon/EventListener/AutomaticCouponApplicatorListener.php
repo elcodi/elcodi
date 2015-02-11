@@ -70,6 +70,10 @@ class AutomaticCouponApplicatorListener
     {
         $cart = $event->getCart();
 
+        if ($cart->getCartLines()->isEmpty()) {
+            return;
+        }
+
         /**
          * @var CouponInterface[] $automaticCoupons
          */
