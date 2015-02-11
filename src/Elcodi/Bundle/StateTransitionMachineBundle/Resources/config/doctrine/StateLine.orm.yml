@@ -1,7 +1,7 @@
-Elcodi\Component\Cart\Entity\OrderStateLine:
+Elcodi\Component\StateTransitionMachine\Entity\StateLine:
     type: entity
-    repositoryClass: Elcodi\Component\Cart\Repository\OrderStateLineRepository
-    table: order_state_line
+    repositoryClass: Elcodi\Component\Cart\Repository\StateLineRepository
+    table: state_line
     id:
         id:
             type: integer
@@ -24,16 +24,6 @@ Elcodi\Component\Cart\Entity\OrderStateLine:
         updatedAt:
             column: updated_at
             type: datetime
-
-    manyToOne:
-        order:
-            targetEntity: Elcodi\Component\Cart\Entity\Interfaces\OrderInterface
-            inversedBy: stateLines
-            cascade: [ "all" ]
-            joinColumn:
-                name: order_id
-                referencedColumnName: id
-                nullable: false
 
     lifecycleCallbacks:
         preUpdate: [loadUpdateAt]

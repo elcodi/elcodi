@@ -23,7 +23,6 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
 use Elcodi\Component\Cart\Event\CartOnLoadEvent;
 use Elcodi\Component\Cart\Event\CartPreLoadEvent;
-use Elcodi\Component\Cart\Event\OrderOnCreatedEvent;
 use Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher;
 use Elcodi\Component\Cart\Services\CartManager;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
@@ -34,19 +33,18 @@ use Elcodi\Component\Product\ElcodiProductStock;
 use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 
 /**
- * Class CartEventListener
+ * Class CartLoadEventListener
  *
- * Subscribers:
+ * These event listeners are supposed to be used when a cart is loaded
  *
- * * onCartPreLoad
+ * Public methods:
  *
- * * onCartLoadPrices
- * * onCartLoadFlush
- * * onCartLoadQuantities
- *
- * * postOrderCreated
+ * * checkCartIntegrity
+ * * loadCart
+ * * saveCart
+ * * loadCartQuantities
  */
-class CartEventListener
+class CartLoadEventListener
 {
     /**
      * @var ObjectManager
@@ -112,7 +110,7 @@ class CartEventListener
      *
      * @param CartPreLoadEvent $event Event
      */
-    public function onCartPreLoad(CartPreLoadEvent $event)
+    public function checkCartIntegrity(CartPreLoadEvent $event)
     {
         /**
          * @var CartInterface $cart
@@ -138,15 +136,28 @@ class CartEventListener
      *
      * @param CartOnLoadEvent $event Event
      */
-    public function onCartLoadPrices(CartOnLoadEvent $event)
+    public function loadCartPrices(CartOnLoadEvent $event)
     {
+        $cart = $event->getCart();
+
         /**
          * Recalculate cart amount. Prices might have
          * changed so we need to flush $cart
          */
-        $this->loadCartPrices(
-            $event->getCart()
-        );
+        $this->calculateCartPrices($cart);
+    }
+
+    /**
+     * Load cart quantities.
+     *
+     * This event listener should be subscribed after the cart flush action
+     *
+     * @param CartOnLoadEvent $event Event
+     */
+    public function loadCartQuantities(CartOnLoadEvent $event)
+    {
+        $cart = $event->getCart();
+        $this->calculateCartQuantities($cart);
     }
 
     /**
@@ -157,48 +168,23 @@ class CartEventListener
      *
      * @param CartOnLoadEvent $event Event
      */
-    public function onCartLoadFlush(CartOnLoadEvent $event)
+    public function saveCart(CartOnLoadEvent $event)
     {
         $cart = $event->getCart();
 
         if (!$cart->getCartLines()->isEmpty()) {
 
-            $this->cartObjectManager->persist(
-                $event->getCart()
-            );
+            $this->cartObjectManager->persist($cart);
         }
 
-        $this->cartObjectManager->flush();
+        $this
+            ->cartObjectManager
+            ->flush();
     }
 
     /**
-     * Load cart quantities.
-     *
-     * This event listener should be subscribed after the cart flush action
-     *
-     * @param CartOnLoadEvent $event Event
+     * Protected methods
      */
-    public function onCartLoadQuantities(CartOnLoadEvent $event)
-    {
-        $this->loadCartQuantities(
-            $event->getCart()
-        );
-    }
-
-    /**
-     * After an Order is created, the cart is set as Ordered enabling related
-     * flag
-     *
-     * @param OrderOnCreatedEvent $event Event
-     */
-    public function onOrderCreated(OrderOnCreatedEvent $event)
-    {
-        $cart = $event
-            ->getCart()
-            ->setOrdered(true);
-
-        $this->cartObjectManager->flush($cart);
-    }
 
     /**
      * Check CartLine integrity
@@ -265,7 +251,7 @@ class CartEventListener
      *
      * @return CartInterface Cart
      */
-    protected function loadCartPrices(CartInterface $cart)
+    protected function calculateCartPrices(CartInterface $cart)
     {
         $currency = $this->currencyWrapper->loadCurrency();
         $productAmount = Money::create(0, $currency);
@@ -337,7 +323,7 @@ class CartEventListener
      *
      * @return CartInterface Cart
      */
-    protected function loadCartQuantities(CartInterface $cart)
+    protected function calculateCartQuantities(CartInterface $cart)
     {
         $quantity = 0;
 

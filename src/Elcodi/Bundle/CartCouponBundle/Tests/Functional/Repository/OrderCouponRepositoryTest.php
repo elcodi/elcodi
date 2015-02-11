@@ -41,9 +41,7 @@ class OrderCouponRepositoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.repository.order_coupon',
-        ];
+        return ['elcodi.repository.order_coupon'];
     }
 
     /**

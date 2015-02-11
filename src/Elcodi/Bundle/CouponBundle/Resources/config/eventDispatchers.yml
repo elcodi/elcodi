@@ -3,9 +3,6 @@ services:
     #
     # Event Dispatchers
     #
-    elcodi.core.coupon.event_dispatcher.coupon:
-        class: %elcodi.core.coupon.event_dispatchers.coupon.class%
+    elcodi.event_dispatcher.coupon:
+        class: %elcodi.event_dispatchers.coupon.class%
         parent: elcodi.core.core.event_dispatcher.abstract
-
-    elcodi.coupon_event_dispatcher:
-        alias: elcodi.core.coupon.event_dispatcher.coupon

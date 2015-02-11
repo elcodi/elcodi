@@ -17,10 +17,13 @@
 
 namespace Elcodi\Component\StateTransitionMachine\Entity\Interfaces;
 
+use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
+
 /**
  * Interface StateLineInterface
  */
-interface StateLineInterface
+interface StateLineInterface extends IdentifiableInterface, DateTimeInterface
 {
     /**
      * Get Name

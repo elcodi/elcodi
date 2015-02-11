@@ -1,0 +1,12 @@
+services:
+
+    #
+    # Repositories
+    #
+
+    #
+    # Repository for entity state_transition_machine_state_line
+    #
+    elcodi.repository.state_transition_machine_state_line:
+        parent: elcodi.abstract_repository
+        arguments: [ %elcodi.state_transition_machine.state_line.class% ]

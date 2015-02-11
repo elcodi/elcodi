@@ -3,26 +3,26 @@ parameters:
     #
     # Entities
     #
-    elcodi.core.rule.entity.rule.class: Elcodi\Component\Rule\Entity\Rule
+    elcodi.entity.rule.class: Elcodi\Component\Rule\Entity\Rule
 
     #
     # Factories
     #
-    elcodi.core.rule.factory.rule.class: Elcodi\Component\Rule\Factory\RuleFactory
+    elcodi.factory.rule.class: Elcodi\Component\Rule\Factory\RuleFactory
 
     #
     # Managers
     #
-    elcodi.core.rule.service.rule_manager.class: Elcodi\Component\Rule\Services\RuleManager
+    elcodi.rule_manager.class: Elcodi\Component\Rule\Services\RuleManager
 
     #
     # ExpressionLanguage
     #
-    elcodi.core.rule.service.expression_language.class: Symfony\Component\ExpressionLanguage\ExpressionLanguage
-    elcodi.core.rule.context_collector.class: Elcodi\Component\Rule\ExpressionLanguage\Context\ContextCollector
+    elcodi.expression_language.class: Symfony\Component\ExpressionLanguage\ExpressionLanguage
+    elcodi.expression_language_context_collector.class: Elcodi\Component\Rule\ExpressionLanguage\Context\ContextCollector
 
     #
     # ExpressionLanguage providers
     #
-    elcodi.core.rule.expression_language.container_provider.class: Elcodi\Component\Rule\ExpressionLanguage\Provider\ContainerProvider
-    elcodi.core.rule.expression_language.rule_provider.class: Elcodi\Component\Rule\ExpressionLanguage\Provider\RuleProvider
+    elcodi.expression_language_container_provider.class: Elcodi\Component\Rule\ExpressionLanguage\Provider\ContainerProvider
+    elcodi.expression_language_rule_provider.class: Elcodi\Component\Rule\ExpressionLanguage\Provider\RuleProvider

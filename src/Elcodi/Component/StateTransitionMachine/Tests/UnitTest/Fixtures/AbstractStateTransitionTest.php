@@ -79,7 +79,7 @@ abstract class AbstractStateTransitionTest extends PHPUnit_Framework_TestCase
      * @return MachineManager Machine Manager
      */
     public function getMachineManager(
-        $nbEventDispatcherCalls = 3,
+        $nbEventDispatcherCalls = 4,
         $stateLineNamespace = 'Elcodi\Component\StateTransitionMachine\Entity\StateLine'
     )
     {

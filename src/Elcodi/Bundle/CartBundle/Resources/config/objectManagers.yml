@@ -18,7 +18,3 @@ services:
     elcodi.object_manager.order_line:
         parent: elcodi.abstract_manager
         arguments: [ %elcodi.core.cart.entity.order_line.class% ]
-
-    elcodi.object_manager.order_state_line:
-        parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.cart.entity.order_state_line.class% ]

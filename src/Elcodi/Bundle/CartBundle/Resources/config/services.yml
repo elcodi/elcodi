@@ -3,38 +3,29 @@ services:
     #
     # Services
     #
-    elcodi.core.cart.service.cart_manager:
-        class: %elcodi.core.cart.service.cart_manager.class%
-        arguments:
-            cart_event_dispatcher: @elcodi.cart_event_dispatcher
-            cart_line_event_dispatcher: @elcodi.cart_line_event_dispatcher
-            cart_factory: @elcodi.core.cart.factory.cart
-            cart_line_factory: @elcodi.core.cart.factory.cart_line
-
     elcodi.cart_manager:
-        alias: elcodi.core.cart.service.cart_manager
+        class: %elcodi.cart_manager.class%
+        arguments:
+            cart_event_dispatcher: @elcodi.event_dispatcher.cart
+            cart_line_event_dispatcher: @elcodi.event_dispatcher.cart_line
+            cart_factory: @elcodi.factory.cart
+            cart_line_factory: @elcodi.factory.cart_line
 
-    elcodi.core.cart.service.cart_session_manager:
-        class: %elcodi.core.cart.service.cart_session_manager.class%
+    elcodi.cart_session_manager:
+        class: %elcodi.cart_session_manager.class%
         arguments:
             session: @session
             session_field_name: %elcodi.core.cart.cart_session_field_name%
             save_in_session: %elcodi.core.cart.cart_save_in_session%
 
-    elcodi.cart_session_manager:
-        alias: elcodi.core.cart.service.cart_session_manager
-
     #
     # Wrappers
     #
-    elcodi.core.cart.wrapper.cart_wrapper:
-        class: %elcodi.core.cart.wrapper.cart_wrapper.class%
+    elcodi.cart_wrapper:
+        class: %elcodi.cart_wrapper.class%
         arguments:
-            cart_event_dispatcher: @elcodi.cart_event_dispatcher
+            cart_event_dispatcher: @elcodi.event_dispatcher.cart
             cart_session_manager: @elcodi.cart_session_manager
             cart_repository: @elcodi.repository.cart
             cart_factory: @elcodi.factory.cart
             customer_wrapper: @elcodi.customer_wrapper
-
-    elcodi.cart_wrapper:
-        alias: elcodi.core.cart.wrapper.cart_wrapper

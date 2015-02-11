@@ -41,9 +41,7 @@ class CartCouponRepositoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.repository.cart_coupon',
-        ];
+        return ['elcodi.repository.cart_coupon'];
     }
 
     /**

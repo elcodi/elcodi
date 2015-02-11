@@ -23,9 +23,9 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
 use Elcodi\Component\Cart\Transformer\CartOrderTransformer;
 
 /**
- * Tests OrderLineEventListenerTest class
+ * Class OrderLineCreationEventListenerTest
  */
-class OrderLineEventListenerTest extends WebTestCase
+class OrderLineCreationEventListenerTest extends WebTestCase
 {
     /**
      * Schema must be loaded in all test cases
@@ -44,7 +44,7 @@ class OrderLineEventListenerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.core.cart.event_listener.order_line'];
+        return ['elcodi.event_listener.order_line_creation'];
     }
 
     /**
@@ -74,7 +74,7 @@ class OrderLineEventListenerTest extends WebTestCase
          * @var CartOrderTransformer $cartOrderTransformer
          */
         $cartOrderTransformer = $this
-            ->get('elcodi.cart_order_transformer');
+            ->get('elcodi.transformer.cart_order');
 
         /**
          * @var CartInterface $cart
@@ -95,7 +95,7 @@ class OrderLineEventListenerTest extends WebTestCase
         $this->flush($purchasable);
 
         $this
-            ->get('elcodi.cart_event_dispatcher')
+            ->get('elcodi.event_dispatcher.cart')
             ->dispatchCartLoadEvents($cart);
 
         $cartOrderTransformer->createOrderFromCart($cart);

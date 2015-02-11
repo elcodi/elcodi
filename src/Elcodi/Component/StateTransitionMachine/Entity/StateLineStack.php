@@ -15,16 +15,16 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\StateTransitionMachine\Entity\Traits;
+namespace Elcodi\Component\StateTransitionMachine\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface;
 
 /**
- * Trait StateLinesTrait
+ * Class StateLineStack
  */
-trait StateLinesTrait
+class StateLineStack
 {
     /**
      * @var Collection
@@ -39,6 +39,21 @@ trait StateLinesTrait
      * Last OrderLineHistory
      */
     protected $lastStateLine;
+
+    /**
+     * Construct
+     *
+     * @param Collection         $stateLines    State Lines
+     * @param StateLineInterface $lastStateLine Last stateLine
+     */
+    public function __construct(
+        Collection $stateLines,
+        StateLineInterface $lastStateLine = null
+    )
+    {
+        $this->stateLines = $stateLines;
+        $this->lastStateLine = $lastStateLine;
+    }
 
     /**
      * Add state line
@@ -75,20 +90,6 @@ trait StateLinesTrait
     }
 
     /**
-     * Set state lines
-     *
-     * @param Collection $stateLines State lines
-     *
-     * @return $this Self object
-     */
-    public function setStateLines(Collection $stateLines)
-    {
-        $this->stateLines = $stateLines;
-
-        return $this;
-    }
-
-    /**
      * Get state lines
      *
      * @return Collection StateLines
@@ -106,5 +107,21 @@ trait StateLinesTrait
     public function getLastStateLine()
     {
         return $this->lastStateLine;
+    }
+
+    /**
+     * Create new StateLineStack
+     *
+     * @param Collection         $stateLines    State Lines
+     * @param StateLineInterface $lastStateLine Last stateLine
+     *
+     * @return self New instance
+     */
+    public static function create(
+        Collection $stateLines,
+        StateLineInterface $lastStateLine = null
+    )
+    {
+        return new self($stateLines, $lastStateLine);
     }
 }

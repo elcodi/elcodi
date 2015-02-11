@@ -44,7 +44,7 @@ class ContextCompilerPass implements CompilerPassInterface
         }
 
         $definition = $container->getDefinition(
-            'elcodi.core.rule.context_collector'
+            'elcodi.expression_language_context_collector'
         );
 
         $definition->addArgument($contextProviders);

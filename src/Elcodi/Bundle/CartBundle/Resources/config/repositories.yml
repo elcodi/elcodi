@@ -31,10 +31,3 @@ services:
     elcodi.repository.order_line:
         parent: elcodi.abstract_repository
         arguments: [ %elcodi.core.cart.entity.order_line.class% ]
-
-    #
-    # Repository for entity order_history
-    #
-    elcodi.repository.order_state_line:
-        parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.cart.entity.order_state_line.class% ]

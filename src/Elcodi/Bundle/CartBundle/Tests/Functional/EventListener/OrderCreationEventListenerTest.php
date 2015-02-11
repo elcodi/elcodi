@@ -15,14 +15,14 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\CartBundle\Tests\Functional\Repository;
+namespace Elcodi\Bundle\CartBundle\Tests\Functional\EventListener;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class OrderStateLineRepositoryTest
+ * Tests OrderCreationEventListenerTest class
  */
-class OrderStateLineRepositoryTest extends WebTestCase
+class OrderCreationEventListenerTest extends WebTestCase
 {
     /**
      * Schema must be loaded in all test cases
@@ -31,7 +31,7 @@ class OrderStateLineRepositoryTest extends WebTestCase
      */
     protected function loadSchema()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -41,19 +41,6 @@ class OrderStateLineRepositoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.repository.order_state_line',
-        ];
-    }
-
-    /**
-     * Test order_history repository provider
-     */
-    public function testRepositoryProvider()
-    {
-        $this->assertInstanceOf(
-            'Doctrine\Common\Persistence\ObjectRepository',
-            $this->get('elcodi.repository.order_state_line')
-        );
+        return ['elcodi.event_listener.order_creation'];
     }
 }

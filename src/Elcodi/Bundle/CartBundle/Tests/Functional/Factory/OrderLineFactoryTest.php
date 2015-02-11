@@ -41,9 +41,6 @@ class OrderLineFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.core.cart.factory.order_line',
-            'elcodi.factory.order_line',
-        ];
+        return ['elcodi.factory.order_line'];
     }
 }

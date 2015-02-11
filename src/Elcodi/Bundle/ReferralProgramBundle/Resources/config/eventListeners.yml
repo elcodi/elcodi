@@ -7,7 +7,7 @@ services:
         class: %elcodi.core.referral_program.event_listener.referral_program_event_listener.class%
         arguments:
             referral_coupon_manager: @elcodi.core.referral_program.service.referral_coupon_manager
-            order_coupon_manager: @elcodi.core.cart_coupon.service.order_coupon_manager
+            order_coupon_manager: @elcodi.order_coupon_manager
             request_stack: @request_stack
         tags:
             - { name: kernel.event_listener, event: user.register, method: onCustomerRegister }

@@ -41,9 +41,6 @@ class OrderEventDispatcherTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.core.cart.event_dispatcher.order',
-            'elcodi.order_event_dispatcher',
-        ];
+        return ['elcodi.event_dispatcher.order'];
     }
 }

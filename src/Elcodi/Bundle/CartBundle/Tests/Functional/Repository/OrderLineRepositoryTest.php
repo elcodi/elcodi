@@ -41,9 +41,7 @@ class OrderLineRepositoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.repository.order_line',
-        ];
+        return ['elcodi.repository.order_line'];
     }
 
     /**

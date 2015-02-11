@@ -25,15 +25,23 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class CouponRepositoryTest extends WebTestCase
 {
     /**
+     * Schema must be loaded in all test cases
+     *
+     * @return boolean Load schema
+     */
+    protected function loadSchema()
+    {
+        return false;
+    }
+
+    /**
      * Returns the callable name of the service
      *
      * @return string[] service name
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.repository.coupon',
-        ];
+        return ['elcodi.repository.coupon'];
     }
 
     /**

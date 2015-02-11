@@ -56,12 +56,22 @@ Elcodi\Component\Cart\Entity\Order:
                 onDelete: "SET NULL"
                 onUpdate: "CASCADE"
                 nullable: true
-        lastStateLine:
-            targetEntity: Elcodi\Component\Cart\Entity\Interfaces\OrderStateLineInterface
+
+        paymentLastStateLine:
+            targetEntity: Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface
+            cascade: ["persist"]
             joinColumn:
-                name: last_state_line_id
+                name: payment_last_state_line_id
                 referencedColumnName: id
-                nullable: true
+                nullable: false
+
+        shippingLastStateLine:
+            targetEntity: Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface
+            cascade: ["persist"]
+            joinColumn:
+                name: shipping_last_state_line_id
+                referencedColumnName: id
+                nullable: false
 
     manyToOne:
         customer:
@@ -72,35 +82,59 @@ Elcodi\Component\Cart\Entity\Order:
                 referencedColumnName: id
                 nullable: true
                 onDelete: "SET NULL"
+
         currency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
                  name: currency_iso
                  referencedColumnName: iso
                  nullable: false
+
         productCurrency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
                  name: product_currency_iso
                  referencedColumnName: iso
                  nullable: false
+
         couponCurrency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
                  name: coupon_currency_iso
                  referencedColumnName: iso
                  nullable: true
+
     oneToMany:
         orderLines:
             targetEntity: Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface
             mappedBy: order
             cascade: [ "all" ]
             orphanRemoval: true
-        stateLines:
-            targetEntity: Elcodi\Component\Cart\Entity\Interfaces\OrderStateLineInterface
-            mappedBy: order
-            cascade: [ "all" ]
-            orphanRemoval: true
+
+    manyToMany:
+        shippingStateLines:
+            targetEntity: Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface
+            cascade: ["persist"]
+            joinTable:
+                name: shipping_state_lines
+                joinColumns:
+                    order_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    state_line_id:
+                        referencedColumnName: id
+
+        paymentStateLines:
+            targetEntity: Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface
+            cascade: ["persist"]
+            joinTable:
+                name: payment_state_lines
+                joinColumns:
+                    order_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    state_line_id:
+                        referencedColumnName: id
 
     lifecycleCallbacks:
         preUpdate: [loadUpdateAt]

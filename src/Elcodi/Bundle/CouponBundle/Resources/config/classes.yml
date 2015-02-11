@@ -3,19 +3,19 @@ parameters:
     #
     # Services
     #
-    elcodi.core.coupon.service.coupon_manager.class: Elcodi\Component\Coupon\Services\CouponManager
+    elcodi.coupon_manager.class: Elcodi\Component\Coupon\Services\CouponManager
 
     #
     # Factories
     #
-    elcodi.core.coupon.factory.coupon.class: Elcodi\Component\Coupon\Factory\CouponFactory
+    elcodi.factory.coupon.class: Elcodi\Component\Coupon\Factory\CouponFactory
 
     #
     # Event Dispatchers
     #
-    elcodi.core.coupon.event_dispatchers.coupon.class: Elcodi\Component\Coupon\EventDispatcher\CouponEventDispatcher
+    elcodi.event_dispatchers.coupon.class: Elcodi\Component\Coupon\EventDispatcher\CouponEventDispatcher
 
     #
     # Event Listeners
     #
-    elcodi.core.coupon.event_listener.coupon.class: Elcodi\Component\Coupon\EventListener\CouponEventListener
+    elcodi.event_listener.make_coupon_used.class: Elcodi\Component\Coupon\EventListener\MakeCouponUsedEventListener

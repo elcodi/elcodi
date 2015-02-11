@@ -22,13 +22,13 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
-use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StatefulInterface;
+use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
  * Class OrderInterface
  */
-interface OrderInterface extends PriceInterface, DimensionableInterface, StatefulInterface
+interface OrderInterface extends PriceInterface, DimensionableInterface
 {
     /**
      * Sets Customer
@@ -195,4 +195,36 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Statefu
      * @return $this Self object
      */
     public function setDeliveryAddress($deliveryAddress);
+
+    /**
+     * Get PaymentStateLineStack
+     *
+     * @return StateLineStack PaymentStateLineStack
+     */
+    public function getPaymentStateLineStack();
+
+    /**
+     * Sets PaymentStateLineStack
+     *
+     * @param StateLineStack $paymentStateLineStack PaymentStateLineStack
+     *
+     * @return $this Self object
+     */
+    public function setPaymentStateLineStack(StateLineStack $paymentStateLineStack);
+
+    /**
+     * Get ShippingStateLineStack
+     *
+     * @return StateLineStack ShippingStateLineStack
+     */
+    public function getShippingStateLineStack();
+
+    /**
+     * Sets ShippingStateLineStack
+     *
+     * @param StateLineStack $shippingStateLineStack ShippingStateLineStack
+     *
+     * @return $this Self object
+     */
+    public function setShippingStateLineStack(StateLineStack $shippingStateLineStack);
 }

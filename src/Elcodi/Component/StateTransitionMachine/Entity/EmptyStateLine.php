@@ -22,32 +22,11 @@ use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface;
 
 /**
- * Class StateLine
+ * Class EmptyStateLine
  */
-class StateLine implements StateLineInterface
+class EmptyStateLine implements StateLineInterface
 {
     use IdentifiableTrait, DateTimeTrait;
-
-    /**
-     * @var string
-     *
-     * State name
-     */
-    protected $name;
-
-    /**
-     * @var string
-     *
-     * Description
-     */
-    protected $description;
-
-    /**
-     * @var StateLineStack
-     *
-     * StateLine Stack
-     */
-    protected $stateLineStack;
 
     /**
      * Sets Name
@@ -58,8 +37,6 @@ class StateLine implements StateLineInterface
      */
     public function setName($name)
     {
-        $this->name = $name;
-
         return $this;
     }
 
@@ -70,7 +47,7 @@ class StateLine implements StateLineInterface
      */
     public function getName()
     {
-        return $this->name;
+        return null;
     }
 
     /**
@@ -82,8 +59,6 @@ class StateLine implements StateLineInterface
      */
     public function setDescription($description)
     {
-        $this->description = $description;
-
         return $this;
     }
 
@@ -94,6 +69,16 @@ class StateLine implements StateLineInterface
      */
     public function getDescription()
     {
-        return $this->description;
+        return null;
+    }
+
+    /**
+     * Create empty object
+     *
+     * @return self new instance
+     */
+    public static function create()
+    {
+        return new self();
     }
 }

@@ -41,9 +41,6 @@ class CouponManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.core.coupon.service.coupon_manager',
-            'elcodi.coupon_manager',
-        ];
+        return ['elcodi.coupon_manager'];
     }
 }

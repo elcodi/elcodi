@@ -22,9 +22,17 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Elcodi\Component\Cart\Event\OrderOnCreatedEvent;
 
 /**
- * Class OrderEventListener
+ * Class OrderCreationEventListener
+ *
+ * These event listeners are supposed to be used when an Order is created given
+ * a Cart
+ *
+ * Public methods:
+ *
+ * * saveOrder
+ * * setCartAsOrdered
  */
-class OrderEventListener
+class OrderCreationEventListener
 {
     /**
      * @var ObjectManager
@@ -34,13 +42,25 @@ class OrderEventListener
     protected $orderObjectManager;
 
     /**
+     * @var ObjectManager
+     *
+     * ObjectManager for Cart entity
+     */
+    protected $cartObjectManager;
+
+    /**
      * Built method
      *
      * @param ObjectManager $orderObjectManager ObjectManager for Order entity
+     * @param ObjectManager $cartObjectManager  ObjectManager for Cart entity
      */
-    public function __construct(ObjectManager $orderObjectManager)
+    public function __construct(
+        ObjectManager $orderObjectManager,
+        ObjectManager $cartObjectManager
+    )
     {
         $this->orderObjectManager = $orderObjectManager;
+        $this->cartObjectManager = $cartObjectManager;
     }
 
     /**
@@ -50,11 +70,26 @@ class OrderEventListener
      *
      * @param OrderOnCreatedEvent $event Event
      */
-    public function onOrderCreated(OrderOnCreatedEvent $event)
+    public function saveOrder(OrderOnCreatedEvent $event)
     {
         $order = $event->getOrder();
 
         $this->orderObjectManager->persist($order);
-        $this->orderObjectManager->flush();
+        $this->orderObjectManager->flush($order);
+    }
+
+    /**
+     * After an Order is created, the cart is set as Ordered enabling related
+     * flag
+     *
+     * @param OrderOnCreatedEvent $event Event
+     */
+    public function setCartAsOrdered(OrderOnCreatedEvent $event)
+    {
+        $cart = $event
+            ->getCart()
+            ->setOrdered(true);
+
+        $this->cartObjectManager->flush($cart);
     }
 }

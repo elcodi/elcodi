@@ -41,9 +41,6 @@ class CartCouponEventDispatcherTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.core.cart_coupon.event_dispatcher.cart_coupon',
-            'elcodi.cart_coupon_event_dispatcher',
-        ];
+        return ['elcodi.event_dispatcher.cart_coupon'];
     }
 }
