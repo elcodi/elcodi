@@ -18,6 +18,7 @@
 namespace Elcodi\Component\User\Entity;
 
 use Doctrine\Common\Collections\Collection;
+
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;

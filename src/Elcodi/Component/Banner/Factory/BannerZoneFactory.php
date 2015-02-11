@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Banner\Factory;
 
 use Doctrine\Common\Collections\ArrayCollection;
+
 use Elcodi\Component\Banner\Entity\Interfaces\BannerZoneInterface;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 

@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Media\Services;
 
 use Gaufrette\Filesystem;
+
 use Elcodi\Component\Media\Entity\Interfaces\FileInterface;
 use Elcodi\Component\Media\Transformer\Interfaces\FileIdentifierTransformerInterface;
 

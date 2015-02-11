@@ -18,6 +18,7 @@
 namespace Elcodi\Component\ReferralProgram\Event;
 
 use Symfony\Component\EventDispatcher\Event;
+
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\ReferralProgram\Entity\Interfaces\ReferralLineInterface;
 

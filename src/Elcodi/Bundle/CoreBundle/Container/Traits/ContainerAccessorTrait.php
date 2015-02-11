@@ -20,6 +20,7 @@ namespace Elcodi\Bundle\CoreBundle\Container\Traits;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 
 /**

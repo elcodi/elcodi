@@ -18,6 +18,7 @@
 namespace Elcodi\Component\StateTransitionMachine\Entity;
 
 use Doctrine\Common\Collections\Collection;
+
 use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface;
 
 /**

@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Coupon\Factory;
 
 use DateTime;
+
 use Elcodi\Component\Coupon\ElcodiCouponTypes;
 use Elcodi\Component\Coupon\Entity\Coupon;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;

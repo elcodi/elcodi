@@ -19,6 +19,7 @@ namespace Elcodi\Component\Product\Services;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\QueryBuilder;
+
 use Elcodi\Component\Product\ElcodiProductStock;
 use Elcodi\Component\Product\Repository\ProductRepository;
 

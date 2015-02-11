@@ -19,6 +19,7 @@ namespace Elcodi\Component\Currency\Entity;
 
 use SebastianBergmann\Money\Currency as WrappedCurrency;
 use SebastianBergmann\Money\Money as WrappedMoney;
+
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 

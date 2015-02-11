@@ -20,6 +20,7 @@ namespace Elcodi\Component\Configuration\Services;
 use Doctrine\Common\Persistence\ObjectManager;
 use Exception;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+
 use Elcodi\Component\Configuration\ElcodiConfigurationTypes;
 use Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface;
 use Elcodi\Component\Configuration\Exception\ConfigurationNotEditableException;

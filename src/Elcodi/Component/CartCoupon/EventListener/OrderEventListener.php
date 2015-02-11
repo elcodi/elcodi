@@ -19,6 +19,7 @@ namespace Elcodi\Component\CartCoupon\EventListener;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Persistence\ObjectManager;
+
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Cart\Event\OrderOnCreatedEvent;
 use Elcodi\Component\CartCoupon\EventDispatcher\OrderCouponEventDispatcher;

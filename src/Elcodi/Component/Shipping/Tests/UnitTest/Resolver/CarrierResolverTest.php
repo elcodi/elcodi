@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Shipping\Tests\UnitTest\Resolver;
 
 use PHPUnit_Framework_TestCase;
+
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Services\CurrencyConverter;

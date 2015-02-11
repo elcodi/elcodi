@@ -20,6 +20,7 @@ namespace Elcodi\Bundle\LanguageBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+
 use Elcodi\Bundle\LanguageBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\LanguageBundle\DependencyInjection\ElcodiLanguageExtension;
 

@@ -20,6 +20,7 @@ namespace Elcodi\Component\User\Services;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+
 use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 use Elcodi\Component\User\ElcodiUserEvents;
 use Elcodi\Component\User\Entity\Abstracts\AbstractUser;

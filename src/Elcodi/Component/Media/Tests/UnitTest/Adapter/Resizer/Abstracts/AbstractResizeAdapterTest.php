@@ -19,6 +19,7 @@ namespace Elcodi\Component\Media\Tests\UnitTest\Adapter\Resizer\Abstracts;
 
 use PHPUnit_Framework_TestCase;
 use Symfony\Component\HttpFoundation\File\File;
+
 use Elcodi\Component\Media\Adapter\Resizer\Interfaces\ResizeAdapterInterface;
 use Elcodi\Component\Media\ElcodiMediaImageResizeTypes;
 

@@ -19,6 +19,7 @@ namespace Elcodi\Component\Metric\API\Twig;
 
 use Twig_Extension;
 use Twig_SimpleFunction;
+
 use Elcodi\Component\Metric\Core\Bucket\Abstracts\AbstractMetricsBucket;
 
 /**

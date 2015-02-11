@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Geo\Adapter\Populator\Interfaces;
 
 use Symfony\Component\Console\Output\OutputInterface;
+
 use Elcodi\Component\Geo\Entity\Interfaces\CountryInterface;
 
 /**

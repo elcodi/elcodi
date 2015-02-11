@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Geo\Services;
 
 use Doctrine\Common\Persistence\ObjectManager;
+
 use Elcodi\Component\Geo\Entity\Interfaces\CityInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\CountryInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\PostalCodeInterface;

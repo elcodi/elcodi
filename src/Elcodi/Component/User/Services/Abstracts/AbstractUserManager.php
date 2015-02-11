@@ -20,6 +20,7 @@ namespace Elcodi\Component\User\Services\Abstracts;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+
 use Elcodi\Component\User\ElcodiUserEvents;
 use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 use Elcodi\Component\User\Event\UserRegisterEvent;

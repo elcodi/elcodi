@@ -18,6 +18,7 @@
 namespace Elcodi\Component\ReferralProgram\Services;
 
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+
 use Elcodi\Component\ReferralProgram\Entity\Interfaces\ReferralHashInterface;
 
 /**

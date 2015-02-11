@@ -20,6 +20,7 @@ namespace Elcodi\Component\Media\Twig;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig_Extension;
 use Twig_SimpleFilter;
+
 use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 
 /**

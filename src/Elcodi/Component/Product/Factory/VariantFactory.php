@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Product\Factory;
 
 use Doctrine\Common\Collections\ArrayCollection;
+
 use Elcodi\Component\Currency\Factory\Abstracts\AbstractPurchasableFactory;
 use Elcodi\Component\Product\Entity\Variant;
 

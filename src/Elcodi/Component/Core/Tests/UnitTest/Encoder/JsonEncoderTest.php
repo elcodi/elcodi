@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Core\Tests\UnitTest\Encoder;
 
 use PHPUnit_Framework_TestCase;
+
 use Elcodi\Component\Core\Encoder\JsonEncoder;
 
 /**

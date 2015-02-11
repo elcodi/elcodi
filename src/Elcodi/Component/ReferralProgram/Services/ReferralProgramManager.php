@@ -21,6 +21,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+
 use Elcodi\Component\ReferralProgram\ElcodiReferralProgramEvents;
 use Elcodi\Component\ReferralProgram\ElcodiReferralProgramSources;
 use Elcodi\Component\ReferralProgram\Entity\Interfaces\InvitationBagInterface;

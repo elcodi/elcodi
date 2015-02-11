@@ -19,6 +19,7 @@ namespace Elcodi\Component\Language\Twig;
 
 use Twig_Extension;
 use Twig_SimpleFunction;
+
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 use Elcodi\Component\Language\Services\LanguageManager;
 

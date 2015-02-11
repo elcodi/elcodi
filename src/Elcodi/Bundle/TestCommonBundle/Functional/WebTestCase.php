@@ -24,6 +24,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as BaseWebTestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
 use Symfony\Component\HttpKernel\KernelInterface;
+
 use Elcodi\Bundle\CoreBundle\Container\Traits\ContainerAccessorTrait;
 
 /**

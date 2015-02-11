@@ -19,6 +19,7 @@ namespace Elcodi\Bundle\ReferralProgramBundle\Tests\Functional\Services;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ObjectManager;
+
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\ReferralProgram\ElcodiReferralProgramRuleTypes;
 use Elcodi\Component\ReferralProgram\ElcodiReferralProgramSources;

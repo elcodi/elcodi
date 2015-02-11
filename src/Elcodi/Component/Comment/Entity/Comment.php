@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Comment\Entity;
 
 use Doctrine\Common\Collections\Collection;
+
 use Elcodi\Component\Comment\Entity\Interfaces\CommentInterface;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;

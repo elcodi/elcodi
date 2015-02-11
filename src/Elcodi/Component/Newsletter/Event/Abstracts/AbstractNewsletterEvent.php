@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Newsletter\Event\Abstracts;
 
 use Symfony\Component\EventDispatcher\Event;
+
 use Elcodi\Component\Newsletter\Entity\Interfaces\NewsletterSubscriptionInterface;
 
 /**

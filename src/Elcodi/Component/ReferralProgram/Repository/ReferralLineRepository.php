@@ -19,6 +19,7 @@ namespace Elcodi\Component\ReferralProgram\Repository;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
+
 use Elcodi\Component\ReferralProgram\Entity\ReferralHash;
 use Elcodi\Component\ReferralProgram\Entity\ReferralLine;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;

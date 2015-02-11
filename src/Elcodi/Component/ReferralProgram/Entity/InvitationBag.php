@@ -18,6 +18,7 @@
 namespace Elcodi\Component\ReferralProgram\Entity;
 
 use Doctrine\Common\Collections\Collection;
+
 use Elcodi\Component\ReferralProgram\Entity\Interfaces\InvitationBagInterface;
 use Elcodi\Component\ReferralProgram\Entity\Interfaces\InvitationInterface;
 

@@ -19,6 +19,7 @@ namespace Elcodi\Component\StateTransitionMachine\Tests\UnitTest\Fixtures;
 
 use PHPUnit_Framework_TestCase;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+
 use Elcodi\Component\StateTransitionMachine\Definition\State;
 use Elcodi\Component\StateTransitionMachine\Definition\Transition;
 use Elcodi\Component\StateTransitionMachine\Definition\TransitionChain;

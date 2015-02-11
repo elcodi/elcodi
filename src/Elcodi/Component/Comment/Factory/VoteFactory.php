@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Comment\Factory;
 
 use DateTime;
+
 use Elcodi\Component\Comment\Entity\Vote;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 

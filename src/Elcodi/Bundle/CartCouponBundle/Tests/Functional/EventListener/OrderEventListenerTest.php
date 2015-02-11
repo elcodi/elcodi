@@ -18,6 +18,7 @@
 namespace Elcodi\Bundle\CartCouponBundle\Tests\Functional\EventListener;
 
 use Doctrine\Common\Collections\ArrayCollection;
+
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;

@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Cart\Services;
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 
 /**

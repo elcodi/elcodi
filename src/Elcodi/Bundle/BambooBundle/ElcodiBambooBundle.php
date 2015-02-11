@@ -19,6 +19,7 @@ namespace Elcodi\Bundle\BambooBundle;
 
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+
 use Elcodi\Bundle\BambooBundle\DependencyInjection\ElcodiBambooExtension;
 
 /**

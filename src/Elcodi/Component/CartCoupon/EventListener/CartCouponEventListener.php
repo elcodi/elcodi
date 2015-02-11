@@ -18,6 +18,7 @@
 namespace Elcodi\Component\CartCoupon\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
+
 use Elcodi\Component\CartCoupon\Event\CartCouponOnApplyEvent;
 use Elcodi\Component\CartCoupon\Event\CartCouponOnRemoveEvent;
 use Elcodi\Component\CartCoupon\Factory\CartCouponFactory;

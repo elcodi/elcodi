@@ -18,6 +18,7 @@
 namespace Elcodi\Bundle\CartBundle\Tests\Functional\Services\Abstracts;
 
 use Doctrine\ORM\UnitOfWork;
+
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;

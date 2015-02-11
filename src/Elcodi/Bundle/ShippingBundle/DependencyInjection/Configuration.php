@@ -18,6 +18,7 @@
 namespace Elcodi\Bundle\ShippingBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
+
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
 use Elcodi\Component\Shipping\ElcodiShippingResolverTypes;
 

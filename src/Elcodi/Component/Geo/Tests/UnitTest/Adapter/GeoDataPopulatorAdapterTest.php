@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Geo\Tests\UnitTest\Adapter;
 
 use PHPUnit_Framework_TestCase;
+
 use Elcodi\Component\Geo\Entity\City;
 use Elcodi\Component\Geo\Entity\Country;
 use Elcodi\Component\Geo\Entity\Interfaces\CityInterface;

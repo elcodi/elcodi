@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Currency\Tests\UnitTest\Twig;
 
 use PHPUnit_Framework_TestCase;
+
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Factory\CurrencyFactory;
 use Elcodi\Component\Currency\Twig\PrintMoneyExtension;

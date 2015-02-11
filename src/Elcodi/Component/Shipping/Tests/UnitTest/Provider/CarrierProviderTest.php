@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Shipping\Tests\UnitTest\Provider;
 
 use PHPUnit_Framework_TestCase;
+
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Money;

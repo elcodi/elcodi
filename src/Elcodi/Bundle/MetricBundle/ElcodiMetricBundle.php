@@ -20,6 +20,7 @@ namespace Elcodi\Bundle\MetricBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+
 use Elcodi\Bundle\MetricBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\MetricBundle\DependencyInjection\ElcodiMetricExtension;
 

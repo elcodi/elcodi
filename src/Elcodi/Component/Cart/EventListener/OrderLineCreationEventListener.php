@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Cart\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
+
 use Elcodi\Component\Cart\Event\OrderLineOnCreatedEvent;
 use Elcodi\Component\Product\ElcodiProductStock;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;

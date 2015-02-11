@@ -20,6 +20,7 @@ namespace Elcodi\Bundle\ReferralProgramBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+
 use Elcodi\Bundle\ReferralProgramBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\ReferralProgramBundle\DependencyInjection\ElcodiReferralProgramExtension;
 

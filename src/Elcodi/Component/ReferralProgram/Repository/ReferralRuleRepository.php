@@ -20,6 +20,7 @@ namespace Elcodi\Component\ReferralProgram\Repository;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
+
 use Elcodi\Component\ReferralProgram\Entity\ReferralRule;
 
 /**

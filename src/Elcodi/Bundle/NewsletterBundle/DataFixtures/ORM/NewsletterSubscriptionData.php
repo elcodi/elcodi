@@ -19,6 +19,7 @@ namespace Elcodi\Bundle\NewsletterBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 use Elcodi\Component\Newsletter\Factory\NewsletterSubscriptionFactory;

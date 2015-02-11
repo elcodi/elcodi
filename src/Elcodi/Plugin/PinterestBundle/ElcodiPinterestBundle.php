@@ -19,6 +19,7 @@ namespace Elcodi\Plugin\PinterestBundle;
 
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+
 use Elcodi\Component\Plugin\Interfaces\PluginInterface;
 use Elcodi\Plugin\PinterestBundle\DependencyInjection\ElcodiPinterestExtension;
 

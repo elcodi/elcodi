@@ -19,6 +19,7 @@ namespace Elcodi\Component\Metric\Core\Services;
 
 use DateTime;
 use Doctrine\Common\Persistence\ObjectManager;
+
 use Elcodi\Component\Metric\Core\Bucket\Abstracts\AbstractMetricsBucket;
 use Elcodi\Component\Metric\Core\Factory\EntryFactory;
 

@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Geo\Entity;
 
 use Doctrine\Common\Collections\Collection;
+
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Geo\Entity\Interfaces\CountryInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\ProvinceInterface;

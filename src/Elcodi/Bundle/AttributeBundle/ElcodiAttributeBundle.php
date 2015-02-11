@@ -20,6 +20,7 @@ namespace Elcodi\Bundle\AttributeBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+
 use Elcodi\Bundle\AttributeBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\AttributeBundle\DependencyInjection\ElcodiAttributeExtension;
 

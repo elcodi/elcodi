@@ -18,6 +18,7 @@
 namespace Elcodi\Component\ReferralProgram\Services;
 
 use Doctrine\Common\Persistence\ObjectManager;
+
 use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 use Elcodi\Component\ReferralProgram\Entity\Interfaces\ReferralHashInterface;
 use Elcodi\Component\ReferralProgram\Entity\ReferralHash;

@@ -19,6 +19,7 @@ namespace Elcodi\Component\Media\Services;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 use Elcodi\Component\Media\Exception\InvalidImageException;
 

@@ -19,6 +19,7 @@ namespace Elcodi\Component\Newsletter\Services;
 
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\ValidatorInterface;
+
 use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 use Elcodi\Component\Newsletter\Entity\Interfaces\NewsletterSubscriptionInterface;

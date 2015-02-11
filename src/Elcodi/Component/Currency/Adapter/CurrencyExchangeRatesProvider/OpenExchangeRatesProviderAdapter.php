@@ -21,6 +21,7 @@ use DateTime;
 use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Message\RequestInterface;
+
 use Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\Interfaces\CurrencyExchangeRatesProviderAdapterInterface;
 
 /**

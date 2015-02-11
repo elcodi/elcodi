@@ -18,6 +18,7 @@
 namespace Elcodi\Component\CartCoupon\EventListener;
 
 use Doctrine\Common\Persistence\ObjectRepository;
+
 use Elcodi\Component\Cart\Event\CartOnLoadEvent;
 use Elcodi\Component\CartCoupon\Services\CartCouponManager;
 use Elcodi\Component\Coupon\ElcodiCouponTypes;

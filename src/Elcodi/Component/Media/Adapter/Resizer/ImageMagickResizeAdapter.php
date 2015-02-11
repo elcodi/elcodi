@@ -19,6 +19,7 @@ namespace Elcodi\Component\Media\Adapter\Resizer;
 
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Process\ProcessBuilder;
+
 use Elcodi\Component\Media\Adapter\Resizer\Interfaces\ResizeAdapterInterface;
 use Elcodi\Component\Media\ElcodiMediaImageResizeTypes;
 

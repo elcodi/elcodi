@@ -18,6 +18,7 @@
 namespace Elcodi\Component\User\Repository;
 
 use Doctrine\ORM\EntityRepository;
+
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 use Elcodi\Component\User\Repository\Interfaces\UserEmaileableInterface;
 

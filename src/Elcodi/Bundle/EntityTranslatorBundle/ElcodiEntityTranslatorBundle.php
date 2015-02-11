@@ -20,6 +20,7 @@ namespace Elcodi\Bundle\EntityTranslatorBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+
 use Elcodi\Bundle\EntityTranslatorBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\EntityTranslatorBundle\DependencyInjection\ElcodiEntityTranslatorExtension;
 

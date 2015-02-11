@@ -18,6 +18,7 @@
 namespace Elcodi\Component\User\Entity\Abstracts;
 
 use DateTime;
+
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;

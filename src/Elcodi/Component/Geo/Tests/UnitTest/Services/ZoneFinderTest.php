@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Geo\Tests\UnitTest\Services;
 
 use PHPUnit_Framework_TestCase;
+
 use Elcodi\Component\Geo\Services\ZoneFinder;
 
 /**

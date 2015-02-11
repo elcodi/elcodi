@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Cart\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
+
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;

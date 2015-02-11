@@ -19,6 +19,7 @@ namespace Elcodi\Component\Media\Services;
 
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 use Elcodi\Component\Media\Adapter\Resizer\Interfaces\ResizeAdapterInterface;
 use Elcodi\Component\Media\ElcodiMediaImageResizeTypes;
 use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;

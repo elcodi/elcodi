@@ -20,6 +20,7 @@ namespace Elcodi\Bundle\TaxBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+
 use Elcodi\Bundle\TaxBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\TaxBundle\DependencyInjection\ElcodiTaxExtension;
 

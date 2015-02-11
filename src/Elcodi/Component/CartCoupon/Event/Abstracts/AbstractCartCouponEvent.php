@@ -18,6 +18,7 @@
 namespace Elcodi\Component\CartCoupon\Event\Abstracts;
 
 use Symfony\Component\EventDispatcher\Event;
+
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\CartCoupon\Entity\Interfaces\CartCouponInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;

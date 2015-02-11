@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Banner\Entity;
 
 use Doctrine\Common\Collections\Collection;
+
 use Elcodi\Component\Banner\Entity\Interfaces\BannerInterface;
 use Elcodi\Component\Banner\Entity\Interfaces\BannerZoneInterface;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;

@@ -18,6 +18,7 @@
 namespace Elcodi\Bundle\MediaBundle\Tests\Functional\Controller;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Media\Entity\Interfaces\FileInterface;
 

@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Newsletter\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
+
 use Elcodi\Component\Newsletter\Event\NewsletterSubscriptionEvent;
 use Elcodi\Component\Newsletter\Event\NewsletterUnsubscriptionEvent;
 

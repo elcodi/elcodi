@@ -20,6 +20,7 @@ namespace Elcodi\Component\Currency\Twig;
 use NumberFormatter;
 use Twig_Extension;
 use Twig_SimpleFilter;
+
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Exception\CurrencyNotAvailableException;

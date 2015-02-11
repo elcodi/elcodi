@@ -19,6 +19,7 @@ namespace Elcodi\Component\StateTransitionMachine\Machine;
 
 use StdClass;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+
 use Elcodi\Component\StateTransitionMachine\Definition\Transition;
 use Elcodi\Component\StateTransitionMachine\ElcodiStateTransitionMachineEvents;
 use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface;

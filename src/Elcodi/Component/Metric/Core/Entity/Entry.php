@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Metric\Core\Entity;
 
 use DateTime;
+
 use Elcodi\Component\Metric\Core\Entity\Interfaces\EntryInterface;
 
 /**

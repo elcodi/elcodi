@@ -21,6 +21,7 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use PHPUnit_Framework_TestCase;
+
 use Elcodi\Component\Comment\Entity\Comment;
 use Elcodi\Component\Comment\Entity\Vote;
 use Elcodi\Component\Comment\Repository\CommentRepository;

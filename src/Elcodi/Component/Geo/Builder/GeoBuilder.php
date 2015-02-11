@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Geo\Builder;
 
 use Doctrine\Common\Collections\ArrayCollection;
+
 use Elcodi\Component\Geo\Builder\Interfaces\GeoBuilderInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\CityInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\CountryInterface;

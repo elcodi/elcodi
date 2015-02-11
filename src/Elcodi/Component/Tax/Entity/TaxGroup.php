@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Tax\Entity;
 
 use Doctrine\Common\Collections\Collection;
+
 use Elcodi\Component\Tax\Entity\Interfaces\TaxGroupInterface;
 use Elcodi\Component\Tax\Entity\Interfaces\TaxInterface;
 

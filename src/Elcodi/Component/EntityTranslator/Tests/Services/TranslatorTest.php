@@ -18,6 +18,7 @@
 namespace Elcodi\Component\EntityTranslator\Tests\Services;
 
 use PHPUnit_Framework_TestCase;
+
 use Elcodi\Component\EntityTranslator\Services\EntityTranslator;
 use Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct;
 

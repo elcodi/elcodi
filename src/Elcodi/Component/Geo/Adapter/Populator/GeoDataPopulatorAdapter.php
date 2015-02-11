@@ -26,6 +26,7 @@ use Mmoreram\Extractor\Filesystem\TemporaryDirectory;
 use Mmoreram\Extractor\Resolver\ExtensionResolver;
 use SplFileInfo;
 use Symfony\Component\Console\Output\OutputInterface;
+
 use Elcodi\Component\Geo\Adapter\Populator\Interfaces\PopulatorAdapterInterface;
 use Elcodi\Component\Geo\Builder\Interfaces\GeoBuilderInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\CountryInterface;

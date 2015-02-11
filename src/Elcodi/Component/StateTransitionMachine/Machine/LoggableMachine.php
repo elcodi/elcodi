@@ -18,6 +18,7 @@
 namespace Elcodi\Component\StateTransitionMachine\Machine;
 
 use Psr\Log\LoggerInterface;
+
 use Elcodi\Component\StateTransitionMachine\Definition\Transition;
 use Elcodi\Component\StateTransitionMachine\Exception\StateNotReachableException;
 use Elcodi\Component\StateTransitionMachine\Exception\TransitionNotAccessibleException;

@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Coupon\Services;
 
 use DateTime;
+
 use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException;

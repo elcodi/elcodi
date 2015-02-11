@@ -19,6 +19,7 @@ namespace Elcodi\Component\StateTransitionMachine\Event;
 
 use StdClass;
 use Symfony\Component\EventDispatcher\Event;
+
 use Elcodi\Component\StateTransitionMachine\Definition\Transition;
 use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 

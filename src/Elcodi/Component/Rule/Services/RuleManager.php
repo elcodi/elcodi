@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Rule\Services;
 
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
+
 use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
 use Elcodi\Component\Rule\ExpressionLanguage\Interfaces\ExpressionContextProviderInterface;
 use Elcodi\Component\Rule\Services\Interfaces\RuleManagerInterface;

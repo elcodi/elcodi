@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Cart\Event\Abstracts;
 
 use Symfony\Component\EventDispatcher\Event;
+
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 

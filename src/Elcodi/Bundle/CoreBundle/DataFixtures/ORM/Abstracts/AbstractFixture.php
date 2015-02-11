@@ -21,6 +21,7 @@ use Doctrine\Common\DataFixtures\AbstractFixture as DoctrineAbstractFixture;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Yaml\Parser;
+
 use Elcodi\Bundle\CoreBundle\Container\Traits\ContainerAccessorTrait;
 
 /**

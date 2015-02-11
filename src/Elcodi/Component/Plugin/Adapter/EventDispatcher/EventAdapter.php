@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Plugin\Adapter\EventDispatcher;
 
 use Symfony\Component\EventDispatcher\Event;
+
 use Elcodi\Component\Plugin\Interfaces\EventInterface;
 
 /**

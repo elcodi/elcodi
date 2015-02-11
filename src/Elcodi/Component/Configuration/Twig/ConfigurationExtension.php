@@ -19,6 +19,7 @@ namespace Elcodi\Component\Configuration\Twig;
 
 use Twig_Extension;
 use Twig_SimpleFunction;
+
 use Elcodi\Component\Configuration\Exception\ConfigurationParameterNotFoundException;
 use Elcodi\Component\Configuration\Services\ConfigurationManager;
 

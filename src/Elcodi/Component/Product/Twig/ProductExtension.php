@@ -21,6 +21,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Twig_Extension;
 use Twig_SimpleFilter;
 use Twig_SimpleFunction;
+
 use Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface;
 use Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;

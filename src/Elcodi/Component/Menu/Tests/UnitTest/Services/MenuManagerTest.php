@@ -20,6 +20,7 @@ namespace Elcodi\Component\Menu\Tests\UnitTest\Services;
 use Doctrine\Common\Cache\CacheProvider;
 use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit_Framework_TestCase;
+
 use Elcodi\Component\Core\Encoder\JsonEncoder;
 use Elcodi\Component\Menu\Entity\Menu\Menu;
 use Elcodi\Component\Menu\Entity\Menu\Node;

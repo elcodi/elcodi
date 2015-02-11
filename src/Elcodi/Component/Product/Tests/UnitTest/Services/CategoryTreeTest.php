@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Product\Tests\UnitTest\Services;
 
 use PHPUnit_Framework_TestCase;
+
 use Elcodi\Component\Product\Entity\Category;
 use Elcodi\Component\Product\Repository\CategoryRepository;
 use Elcodi\Component\Product\Services\CategoryTree;

@@ -19,6 +19,7 @@ namespace Elcodi\Component\StateTransitionMachine\Tests\UnitTest\Fixtures;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+
 use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface;
 use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 

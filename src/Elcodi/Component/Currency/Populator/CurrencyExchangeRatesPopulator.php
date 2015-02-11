@@ -20,6 +20,7 @@ namespace Elcodi\Component\Currency\Populator;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Console\Output\OutputInterface;
+
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyExchangeRateInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Factory\CurrencyExchangeRateFactory;

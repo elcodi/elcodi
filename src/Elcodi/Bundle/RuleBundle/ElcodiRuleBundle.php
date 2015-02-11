@@ -20,6 +20,7 @@ namespace Elcodi\Bundle\RuleBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+
 use Elcodi\Bundle\RuleBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\RuleBundle\DependencyInjection\ElcodiRuleExtension;
 use Elcodi\Component\Rule\CompilerPass\ContextCompilerPass;

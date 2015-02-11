@@ -18,6 +18,7 @@
 namespace Elcodi\Bundle\CoreBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 
 /**

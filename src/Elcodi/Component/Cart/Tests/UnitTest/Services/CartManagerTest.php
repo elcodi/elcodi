@@ -19,6 +19,7 @@ namespace Elcodi\Component\Cart\Tests\UnitTest\Services;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit_Framework_TestCase;
+
 use Elcodi\Component\Cart\Entity\Cart;
 use Elcodi\Component\Cart\Entity\CartLine;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;

@@ -19,6 +19,7 @@ namespace Elcodi\Component\CartCoupon\Services;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\CartCoupon\Entity\Interfaces\CartCouponInterface;
 use Elcodi\Component\CartCoupon\EventDispatcher\CartCouponEventDispatcher;
