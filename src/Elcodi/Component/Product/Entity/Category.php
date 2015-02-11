@@ -30,8 +30,7 @@ use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
  */
 class Category implements CategoryInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         DateTimeTrait,
         EnabledTrait,
         MetaDataTrait;

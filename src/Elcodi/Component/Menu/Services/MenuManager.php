@@ -66,8 +66,7 @@ class MenuManager extends AbstractCacheWrapper
     public function __construct(
         MenuRepository $menuRepository,
         $key
-    )
-    {
+    ) {
         $this->menuRepository = $menuRepository;
         $this->key = $key;
     }
@@ -96,16 +95,15 @@ class MenuManager extends AbstractCacheWrapper
             ->decode($this->cache->fetch($key));
 
         if (empty($menuHydrated)) {
-
             $menu = $this
                 ->menuRepository
                 ->findOneBy([
                     'code'    => $menuCode,
-                    'enabled' => true
+                    'enabled' => true,
                 ]);
 
             if (!($menu instanceof MenuInterface)) {
-                return null;
+                return;
             }
 
             $menuHydrated = $this->loadSubnodes($menu);
@@ -152,7 +150,7 @@ class MenuManager extends AbstractCacheWrapper
      */
     protected function buildKey($key, $menuCode)
     {
-        return $key . '-' . $menuCode;
+        return $key.'-'.$menuCode;
     }
 
     /**
@@ -169,7 +167,7 @@ class MenuManager extends AbstractCacheWrapper
             'name'     => $node->getName(),
             'code'     => $node->getCode(),
             'url'      => $node->getUrl(),
-            'subnodes' => $this->loadSubnodes($node)
+            'subnodes' => $this->loadSubnodes($node),
         ];
     }
 }

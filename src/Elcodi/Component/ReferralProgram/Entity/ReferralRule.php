@@ -30,8 +30,7 @@ use Elcodi\Component\ReferralProgram\Entity\Traits\CouponAssignmentTrait;
  */
 class ReferralRule implements ReferralRuleInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         ValidIntervalTrait,
         EnabledTrait,
         CouponAssignmentTrait;

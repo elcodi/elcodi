@@ -75,8 +75,7 @@ class CarrierProvider
         CurrencyConverter $currencyConverter,
         WarehouseRepository $warehouseRepository,
         ZoneMatcher $zoneMatcher
-    )
-    {
+    ) {
         $this->carrierRepository = $carrierRepository;
         $this->currencyConverter = $currencyConverter;
         $this->warehouseRepository = $warehouseRepository;
@@ -95,20 +94,18 @@ class CarrierProvider
         $availableCarriers = $this
             ->carrierRepository
             ->findBy([
-                'enabled' => true
+                'enabled' => true,
             ]);
 
         $satisfiedCarriers = array();
 
         foreach ($availableCarriers as $carrier) {
-
             $carrierRange = $this->getCarrierRangeSatisfiedByOrder(
                 $order,
                 $carrier
             );
 
             if ($carrierRange instanceof CarrierBaseRangeInterface) {
-
                 $satisfiedCarriers[] = $carrierRange;
             }
         }
@@ -129,12 +126,10 @@ class CarrierProvider
     public function getCarrierRangeSatisfiedByOrder(
         OrderInterface $order,
         CarrierInterface $carrier
-    )
-    {
+    ) {
         $carrierRanges = $carrier->getRanges();
 
         foreach ($carrierRanges as $carrierRange) {
-
             $carrierRangeSatisfied = $this->isCarrierRangeSatisfiedByOrder(
                 $order,
                 $carrierRange
@@ -159,8 +154,7 @@ class CarrierProvider
     public function isCarrierRangeSatisfiedByOrder(
         OrderInterface $order,
         CarrierBaseRangeInterface $carrierRange
-    )
-    {
+    ) {
         if ($carrierRange instanceof CarrierPriceRangeInterface) {
             return $this->isCarrierPriceRangeSatisfiedByOrder($order, $carrierRange);
         } elseif ($carrierRange instanceof CarrierWeightRangeInterface) {
@@ -181,8 +175,7 @@ class CarrierProvider
     public function isCarrierPriceRangeSatisfiedByOrder(
         OrderInterface $order,
         CarrierPriceRangeInterface $carrierRange
-    )
-    {
+    ) {
         $orderPrice = $order->getAmount();
         $orderPriceCurrency = $orderPrice->getCurrency();
         $carrierRangeFromPrice = $carrierRange->getFromPrice();
@@ -215,8 +208,7 @@ class CarrierProvider
     public function isCarrierWeightRangeSatisfiedByOrder(
         OrderInterface $order,
         CarrierWeightRangeInterface $carrierRange
-    )
-    {
+    ) {
         $orderWeight = $order->getWeight();
         $orderRangeFromWeight = $carrierRange->getFromWeight();
         $orderRangeToWeight = $carrierRange->getToWeight();
@@ -243,8 +235,7 @@ class CarrierProvider
     public function isCarrierRangeZonesSatisfiedByOrder(
         OrderInterface $order,
         CarrierBaseRangeInterface $carrierRange
-    )
-    {
+    ) {
         $warehouse = $this
             ->warehouseRepository
             ->findOneBy([

@@ -68,7 +68,7 @@ class NodeData extends AbstractFixture
         $this->addReference('menu-node-vogue', $menuNodeVogue);
 
         $menuNodeObjectManager->flush([
-            $menuNodeVogue
+            $menuNodeVogue,
         ]);
     }
 }

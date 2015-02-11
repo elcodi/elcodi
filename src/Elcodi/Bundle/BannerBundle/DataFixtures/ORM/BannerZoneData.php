@@ -58,9 +58,9 @@ class BannerZoneData extends AbstractFixture
         $bannerZonebjectManager->persist($bannerZone);
         $this->addReference('banner-zone', $bannerZone);
 
-         /**
-          * BannerZone with no language
-          */
+        /**
+         * BannerZone with no language
+         */
         $bannerZoneNoLanguage = $bannerZoneFactory
             ->create()
             ->setName('bannerzone-nolanguage')

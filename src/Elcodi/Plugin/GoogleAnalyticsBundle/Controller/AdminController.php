@@ -47,14 +47,13 @@ class AdminController extends Controller
             ->getPlugin('Elcodi\Plugin\GoogleAnalyticsBundle');
 
         if ('POST' === $request->getMethod()) {
-
             $this
                 ->get('elcodi.plugin_manager')
                 ->updatePlugin(
                     'Elcodi\Plugin\GoogleAnalyticsBundle',
                     $plugin->isEnabled(),
                     [
-                        'analytics_tracker_id' => $request->request->get('analytics_tracker_id')
+                        'analytics_tracker_id' => $request->request->get('analytics_tracker_id'),
                     ]
                 );
 

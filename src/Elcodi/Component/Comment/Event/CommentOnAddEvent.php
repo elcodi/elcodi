@@ -24,5 +24,4 @@ use Elcodi\Component\Comment\Event\Abstracts\AbstractCommentEvent;
  */
 class CommentOnAddEvent extends AbstractCommentEvent
 {
-
 }

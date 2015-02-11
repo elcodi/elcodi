@@ -60,8 +60,7 @@ class OrderLineOnCreatedEvent extends Event
         OrderInterface $order,
         CartLineInterface $cartLine,
         OrderLineInterface $orderLine
-    )
-    {
+    ) {
         $this->order = $order;
         $this->cartLine = $cartLine;
         $this->orderLine = $orderLine;

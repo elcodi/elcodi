@@ -168,7 +168,7 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
                     'updatedAt' => '2015-01-01 00:00:00',
                         ],
                         'children' => [],
-                    ]
+                    ],
                 ],
             ],
             [
@@ -203,9 +203,9 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
                     'updatedAt' => '2015-01-01 00:00:00',
                         ],
                         'children' => [],
-                    ]
+                    ],
                 ],
-            ]
+            ],
         ], $comments);
     }
 

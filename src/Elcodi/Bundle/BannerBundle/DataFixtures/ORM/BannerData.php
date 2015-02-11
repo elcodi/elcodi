@@ -76,7 +76,7 @@ class BannerData extends AbstractFixture implements DependentFixtureInterface
 
         $bannerObjectManager->flush([
             $banner,
-            $bannerNoLanguage
+            $bannerNoLanguage,
         ]);
     }
 

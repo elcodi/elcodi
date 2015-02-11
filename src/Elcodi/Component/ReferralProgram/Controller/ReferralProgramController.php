@@ -62,8 +62,7 @@ class ReferralProgramController
         RequestStack $requestStack,
         UrlGeneratorInterface $urlGenerator,
         $controllerRedirect
-    )
-    {
+    ) {
         $this->requestStack = $requestStack;
         $this->urlGenerator = $urlGenerator;
         $this->controllerRedirect = $controllerRedirect;

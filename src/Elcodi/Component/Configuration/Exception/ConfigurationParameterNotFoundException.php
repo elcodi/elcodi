@@ -24,5 +24,4 @@ use Exception;
  */
 class ConfigurationParameterNotFoundException extends Exception
 {
-
 }

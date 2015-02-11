@@ -135,8 +135,7 @@ class Plugin
         $url,
         $version,
         $year
-    )
-    {
+    ) {
         $this->author = $author;
         $this->bundle = $bundle;
         $this->configuration = $configuration;

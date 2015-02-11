@@ -93,8 +93,7 @@ class ZoneFinder
         ZoneProvinceMemberRepository $zoneProvinceMemberRepository,
         ZoneCityMemberRepository $zoneCityMemberRepository,
         ZonePostalCodeMemberRepository $zonePostalCodeMemberRepository
-    )
-    {
+    ) {
         $this->zoneCountryMemberRepository = $zoneCountryMemberRepository;
         $this->zoneStateMemberRepository = $zoneStateMemberRepository;
         $this->zoneProvinceMemberRepository = $zoneProvinceMemberRepository;
@@ -113,8 +112,7 @@ class ZoneFinder
     public function getZonesFromAddress(
         ZoneInterface $zone,
         AddressInterface $address
-    )
-    {
+    ) {
         $city = $address->getCity();
         $zones = array_merge(
             [],
@@ -138,8 +136,7 @@ class ZoneFinder
      */
     public function getZonesFromCountry(
         $zone, $country
-    )
-    {
+    ) {
         $zones = new ArrayCollection();
         $zoneMembers = $this
             ->zoneCountryMemberRepository
@@ -149,7 +146,6 @@ class ZoneFinder
             ]);
 
         if (is_array($zoneMembers) && !empty($zoneMembers)) {
-
             array_walk($zoneMembers, function (ZoneCountryMemberInterface $zoneCountryMember) use ($zones) {
 
                 $zones->add($zoneCountryMember->getZone());
@@ -169,8 +165,7 @@ class ZoneFinder
      */
     public function getZonesFromState(
         $zone, $state
-    )
-    {
+    ) {
         $zones = new ArrayCollection();
         $zoneMembers = $this
             ->zoneStateMemberRepository
@@ -180,7 +175,6 @@ class ZoneFinder
             ]);
 
         if (is_array($zoneMembers) && !empty($zoneMembers)) {
-
             array_walk($zoneMembers, function (ZoneStateMemberInterface $zoneStateMember) use ($zones) {
 
                 $zones->add($zoneStateMember->getZone());
@@ -200,8 +194,7 @@ class ZoneFinder
      */
     public function getZonesFromProvince(
         $zone, $province
-    )
-    {
+    ) {
         $zones = new ArrayCollection();
         $zoneMembers = $this
             ->zoneProvinceMemberRepository
@@ -211,7 +204,6 @@ class ZoneFinder
             ]);
 
         if (is_array($zoneMembers) && !empty($zoneMembers)) {
-
             array_walk($zoneMembers, function (ZoneProvinceMemberInterface $zoneProvinceMember) use ($zones) {
 
                 $zones->add($zoneProvinceMember->getZone());
@@ -231,8 +223,7 @@ class ZoneFinder
      */
     public function getZonesFromCity(
         $zone, $city
-    )
-    {
+    ) {
         $zones = new ArrayCollection();
         $zoneMembers = $this
             ->zoneCityMemberRepository
@@ -242,7 +233,6 @@ class ZoneFinder
             ]);
 
         if (is_array($zoneMembers) && !empty($zoneMembers)) {
-
             array_walk($zoneMembers, function (ZoneCityMemberInterface $zoneCityMember) use ($zones) {
 
                 $zones->add($zoneCityMember->getZone());
@@ -262,8 +252,7 @@ class ZoneFinder
      */
     public function getZonesFromPostalCode(
         $zone, $postalCode
-    )
-    {
+    ) {
         $zones = new ArrayCollection();
         $zoneMembers = $this
             ->zonePostalCodeMemberRepository
@@ -273,7 +262,6 @@ class ZoneFinder
             ]);
 
         if (is_array($zoneMembers) && !empty($zoneMembers)) {
-
             array_walk($zoneMembers, function (ZonePostalCodeMemberInterface $zonePostalCodeMember) use ($zones) {
 
                 $zones->add($zonePostalCodeMember->getZone());

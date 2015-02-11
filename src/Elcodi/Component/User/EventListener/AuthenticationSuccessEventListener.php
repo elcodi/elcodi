@@ -52,8 +52,7 @@ class AuthenticationSuccessEventListener
     public function __construct(
         CartWrapper $cartWrapper,
         ObjectManager $cartManager
-    )
-    {
+    ) {
         $this->cartWrapper = $cartWrapper;
         $this->cartManager = $cartManager;
     }

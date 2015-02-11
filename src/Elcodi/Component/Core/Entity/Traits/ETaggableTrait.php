@@ -34,15 +34,12 @@ trait ETaggableTrait
         $sha1Able = '';
 
         if ($this instanceof IdentifiableInterface) {
-
             $sha1Able .= $this->getId();
         } else {
-
             $sha1Able .= spl_object_hash($this);
         }
 
         if (in_array('Elcodi\Component\Core\Entity\Traits\DateTimeTrait', class_uses($this))) {
-
             $sha1Able .= $this->getUpdatedAt()->getTimestamp();
         }
 

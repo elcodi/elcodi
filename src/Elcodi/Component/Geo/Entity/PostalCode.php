@@ -134,7 +134,6 @@ class PostalCode implements PostalCodeInterface, ZoneMemberAssignableInterface
     public function addCity(CityInterface $city)
     {
         if (!$this->cities->contains($city)) {
-
             $this
                 ->cities
                 ->add($city);

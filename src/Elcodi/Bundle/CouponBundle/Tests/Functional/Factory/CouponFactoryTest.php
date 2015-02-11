@@ -53,7 +53,7 @@ class CouponFactoryTest extends WebTestCase
     protected function loadFixturesBundles()
     {
         return array(
-            'ElcodiCurrencyBundle'
+            'ElcodiCurrencyBundle',
         );
     }
 
@@ -93,5 +93,4 @@ class CouponFactoryTest extends WebTestCase
             $coupon->getMinimumPurchase()
         );
     }
-
 }

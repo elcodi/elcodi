@@ -62,8 +62,7 @@ class CouponManager
     public function __construct(
         CouponFactory $couponFactory,
         GeneratorInterface $couponCodeGenerator
-    )
-    {
+    ) {
         $this->couponFactory = $couponFactory;
         $this->couponCodeGenerator = $couponCodeGenerator;
     }
@@ -96,13 +95,11 @@ class CouponManager
          * Creates a valid date interval given the referent Coupon
          */
         if (null === $dateFrom) {
-
             $dateFrom = new DateTime();
         }
 
         $dateTo = null;
         if ($coupon->getValidTo() instanceof DateTime) {
-
             $interval = $coupon->getValidFrom()->diff($coupon->getValidTo());
             $dateTo = clone $dateFrom;
             $dateTo->add($interval);
@@ -162,7 +159,6 @@ class CouponManager
          */
         $count = $coupon->getCount();
         if (null !== $count && $count > $coupon->getUsed()) {
-
             throw new CouponAppliedException();
         }
 
@@ -170,7 +166,6 @@ class CouponManager
          * you cannot add this coupon, too cheap
          */
         if ($coupon->getMinimumPurchase()->getAmount() > $price) {
-
             throw new CouponBelowMinimumPurchaseException();
         }
 

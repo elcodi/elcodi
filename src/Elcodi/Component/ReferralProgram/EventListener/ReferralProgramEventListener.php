@@ -66,8 +66,7 @@ class ReferralProgramEventListener
         ReferralCouponManager $referralCouponManager,
         OrderCouponManager $orderCouponManager,
         RequestStack $requestStack
-    )
-    {
+    ) {
         $this->referralCouponManager = $referralCouponManager;
         $this->orderCouponManager = $orderCouponManager;
         $this->request = $requestStack->getMasterRequest();
@@ -89,7 +88,6 @@ class ReferralProgramEventListener
         $hash = $this->getReferralProgramCookieHash();
 
         if (!empty($hash)) {
-
             $customer = $event->getCustomer();
             $this
                 ->referralCouponManager
@@ -118,7 +116,6 @@ class ReferralProgramEventListener
         $customer = $event->getOrder()->getCustomer();
 
         if ($this->request instanceof Request) {
-
             $hash = $this->getReferralProgramCookieHash();
             $this
                 ->referralCouponManager

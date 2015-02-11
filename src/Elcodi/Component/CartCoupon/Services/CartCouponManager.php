@@ -86,8 +86,7 @@ class CartCouponManager
         CouponManager $couponManager,
         CouponRepository $couponRepository,
         CartCouponRepository $cartCouponRepository
-    )
-    {
+    ) {
         $this->cartCouponEventDispatcher = $cartCouponEventDispatcher;
         $this->couponManager = $couponManager;
         $this->couponRepository = $couponRepository;
@@ -251,7 +250,6 @@ class CartCouponManager
         }
 
         foreach ($cartCoupons as $cartCoupon) {
-
             $this
                 ->cartCouponEventDispatcher
                 ->dispatchCartCouponOnRemoveEvent(

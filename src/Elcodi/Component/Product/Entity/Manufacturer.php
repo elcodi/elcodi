@@ -33,8 +33,7 @@ use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
  */
 class Manufacturer implements ManufacturerInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         ImagesContainerTrait,
         PrincipalImageTrait,
         DateTimeTrait,

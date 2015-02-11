@@ -66,8 +66,7 @@ class GeoDataPopulatorAdapter implements PopulatorAdapterInterface
         OutputInterface $output,
         $countryCode,
         $sourcePackageMustbeReloaded
-    )
-    {
+    ) {
         $countryCode = strtoupper($countryCode);
 
         $file = $this->downloadRemoteFileFromCountryCode(
@@ -97,7 +96,7 @@ class GeoDataPopulatorAdapter implements PopulatorAdapterInterface
         $lexer->parse($file->getRealpath(), $interpreter);
         $finished = new DateTime();
         $elapsed = $finished->diff($started);
-        $output->writeln('<header>[Geo]</header> <body>File processed in ' . $elapsed->format('%s') . ' seconds</body>');
+        $output->writeln('<header>[Geo]</header> <body>File processed in '.$elapsed->format('%s').' seconds</body>');
 
         return $country;
     }
@@ -115,33 +114,29 @@ class GeoDataPopulatorAdapter implements PopulatorAdapterInterface
         OutputInterface $output,
         $countryCode,
         $sourcePackageMustbeReloaded
-    )
-    {
+    ) {
         $filePath = $this->getDataFilePathFromCountryCode($countryCode);
-        $temporaryDirPath = sys_get_temp_dir() . '/' . 'elcodi_geo/geodata/';
+        $temporaryDirPath = sys_get_temp_dir().'/'.'elcodi_geo/geodata/';
 
         if (!is_dir($temporaryDirPath)) {
             mkdir($temporaryDirPath, 0777, true);
         }
 
-        $temporaryFilePath = $temporaryDirPath . $countryCode . '.zip';
+        $temporaryFilePath = $temporaryDirPath.$countryCode.'.zip';
 
         if (is_file($temporaryFilePath)) {
-
             $output->writeln('<header>[Geo]</header> <body>Source package found in cache</body>');
             if (!$sourcePackageMustbeReloaded) {
-
                 unlink($temporaryFilePath);
                 $output->writeln('<header>[Geo]</header> <body>Cached Source package ignored</body>');
-                $output->writeln('<header>[Geo]</header> <body>Downloading source package from ' . $filePath . '</body>');
+                $output->writeln('<header>[Geo]</header> <body>Downloading source package from '.$filePath.'</body>');
                 copy($filePath, $temporaryFilePath);
-                $output->writeln('<header>[Geo]</header> <body>Downloaded source package to ' . $temporaryFilePath . '</body>');
+                $output->writeln('<header>[Geo]</header> <body>Downloaded source package to '.$temporaryFilePath.'</body>');
             }
         } else {
-
-            $output->writeln('<header>[Geo]</header> <body>Downloading source package from ' . $filePath . '</body>');
+            $output->writeln('<header>[Geo]</header> <body>Downloading source package from '.$filePath.'</body>');
             copy($filePath, $temporaryFilePath);
-            $output->writeln('<header>[Geo]</header> <body>Downloaded source package to ' . $temporaryFilePath . '</body>');
+            $output->writeln('<header>[Geo]</header> <body>Downloaded source package to '.$temporaryFilePath.'</body>');
         }
 
         $temporaryDirectory = new TemporaryDirectory();
@@ -162,7 +157,7 @@ class GeoDataPopulatorAdapter implements PopulatorAdapterInterface
          * @var SplFileInfo $file
          */
         $file = reset($filesArray);
-        $output->writeln('<header>[Geo]</header> <body>Found file ' . $file->getFilename() . '</body>');
+        $output->writeln('<header>[Geo]</header> <body>Found file '.$file->getFilename().'</body>');
 
         return $file;
     }
@@ -176,7 +171,7 @@ class GeoDataPopulatorAdapter implements PopulatorAdapterInterface
      */
     public function getDataFilePathFromCountryCode($countryCode)
     {
-        return 'http://download.geonames.org/export/zip/' . $countryCode . '.zip';
+        return 'http://download.geonames.org/export/zip/'.$countryCode.'.zip';
     }
 
     /**

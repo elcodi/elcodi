@@ -33,7 +33,7 @@ class FileIdentifierTransformerTest extends WebTestCase
     {
         return [
             'elcodi.core.media.transformer.file_identifier_transformer',
-            'elcodi.file_identifier_transformer'
+            'elcodi.file_identifier_transformer',
         ];
     }
 }

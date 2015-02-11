@@ -33,8 +33,7 @@ use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
  */
 class Page implements PageInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         MetaDataTrait,
         DateTimeTrait,
         EnabledTrait;

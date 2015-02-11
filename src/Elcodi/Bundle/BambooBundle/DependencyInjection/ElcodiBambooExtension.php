@@ -40,7 +40,7 @@ class ElcodiBambooExtension extends AbstractExtension
      */
     public function getConfigFilesLocation()
     {
-        return __DIR__ . '/../Resources/config';
+        return __DIR__.'/../Resources/config';
     }
 
     /**
@@ -118,11 +118,11 @@ class ElcodiBambooExtension extends AbstractExtension
             'services',
             [
                 'emails/customerPasswordRemember',
-                $config['emails']['customer_password_remember']['enabled']
+                $config['emails']['customer_password_remember']['enabled'],
             ],
             [
                 'emails/customerPasswordRecover',
-                $config['emails']['customer_password_recover']['enabled']
+                $config['emails']['customer_password_recover']['enabled'],
             ],
         ];
     }
@@ -150,9 +150,7 @@ class ElcodiBambooExtension extends AbstractExtension
         $senderEmail = $config['emails']['defaults']['sender_email'];
 
         foreach ($config['emails'] as $emailName => $emailConfiguration) {
-
             if ('defaults' !== $emailName) {
-
                 $config['emails'][$emailName]['layout'] = $emailConfiguration['layout']
                     ?: $layoutNamespace;
 

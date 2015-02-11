@@ -48,7 +48,7 @@ class CountryData extends AbstractFixture
         $this->addReference('country-spain', $countrySpain);
 
         $countryObjectManager->flush([
-            $countrySpain
+            $countrySpain,
         ]);
     }
 }

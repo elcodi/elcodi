@@ -59,8 +59,7 @@ class SitemapDumper implements SitemapDumperInterface
         SitemapRenderInterface $sitemapRender,
         SitemapProfileInterface $sitemapProfile,
         SitemapEventDispatcher $eventDispatcher
-    )
-    {
+    ) {
         $this->sitemapRender = $sitemapRender;
         $this->sitemapProfile = $sitemapProfile;
         $this->eventDispatcher = $eventDispatcher;

@@ -204,7 +204,6 @@ class City implements CityInterface, ZoneMemberAssignableInterface
     public function addPostalCode(PostalCodeInterface $postalCode)
     {
         if (!$this->postalCodes->contains($postalCode)) {
-
             $this
                 ->postalCodes
                 ->add($postalCode);

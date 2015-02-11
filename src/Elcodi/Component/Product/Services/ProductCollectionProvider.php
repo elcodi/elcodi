@@ -74,7 +74,6 @@ class ProductCollectionProvider
             ->orderBy('p.updatedAt', 'DESC');
 
         if ($limit > 0) {
-
             $query->setMaxResults($limit);
         }
 
@@ -109,7 +108,6 @@ class ProductCollectionProvider
             ->orderBy('p.updatedAt', 'DESC');
 
         if ($limit > 0) {
-
             $query->setMaxResults($limit);
         }
 
@@ -141,7 +139,6 @@ class ProductCollectionProvider
             ->setParameter('stockZero', 0);
 
         if (!$infiniteStockIsNull) {
-
             $queryBuilder->setParameter('infiniteStock', ElcodiProductStock::INFINITE_STOCK);
         }
 

@@ -41,7 +41,7 @@ class ElcodiReferralProgramExtension extends AbstractExtension implements Entiti
      */
     public function getConfigFilesLocation()
     {
-        return __DIR__ . '/../Resources/config';
+        return __DIR__.'/../Resources/config';
     }
 
     /**

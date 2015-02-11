@@ -101,7 +101,7 @@ class CarrierResolverTest extends PHPUnit_Framework_TestCase
         $this->carrierRanges = array(
             $cheapCarrierRange,
             $mediumCarrierRange,
-            $expensiveCarrierRange
+            $expensiveCarrierRange,
         );
     }
 

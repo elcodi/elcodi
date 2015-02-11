@@ -97,7 +97,7 @@ class NewsletterManagerTest extends WebTestCase
         $this->assertCount(2, $this
                 ->newsletterSubscriptionRepository
                 ->findBy(array(
-                    'enabled' => true
+                    'enabled' => true,
                 ))
         );
 
@@ -117,7 +117,7 @@ class NewsletterManagerTest extends WebTestCase
         $this->assertCount(3, $this
                 ->newsletterSubscriptionRepository
                 ->findBy(array(
-                    'enabled' => true
+                    'enabled' => true,
                 ))
         );
 
@@ -141,7 +141,7 @@ class NewsletterManagerTest extends WebTestCase
         $this->assertCount(2, $this
                 ->newsletterSubscriptionRepository
                 ->findBy(array(
-                    'enabled' => true
+                    'enabled' => true,
                 ))
         );
 
@@ -152,7 +152,7 @@ class NewsletterManagerTest extends WebTestCase
         $this->assertCount(3, $this
                 ->newsletterSubscriptionRepository
                 ->findBy(array(
-                    'enabled' => true
+                    'enabled' => true,
                 ))
         );
     }
@@ -165,7 +165,7 @@ class NewsletterManagerTest extends WebTestCase
         $this->assertCount(2, $this
                 ->newsletterSubscriptionRepository
                 ->findBy(array(
-                    'enabled' => true
+                    'enabled' => true,
                 ))
         );
 
@@ -195,14 +195,14 @@ class NewsletterManagerTest extends WebTestCase
         $this->assertCount(1, $this
                 ->newsletterSubscriptionRepository
                 ->findBy(array(
-                    'enabled' => true
+                    'enabled' => true,
                 ))
         );
 
         $disabledNewsletterSubscription = $this
             ->newsletterSubscriptionRepository
             ->findOneBy(array(
-                'enabled' => false
+                'enabled' => false,
             ));
 
         $this->assertEquals($disabledNewsletterSubscription->getReason(), $reason);

@@ -237,7 +237,6 @@ class Order implements OrderInterface
     public function addOrderLine(OrderLineInterface $orderLine)
     {
         if (!$this->orderLines->contains($orderLine)) {
-
             $this->orderLines->add($orderLine);
         }
 

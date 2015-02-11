@@ -48,8 +48,7 @@ class ReferralProgramInvitationEvent extends Event
     public function __construct(
         ReferralLineInterface $referralLine,
         $referralLink
-    )
-    {
+    ) {
         $this->referralLine = $referralLine;
         $this->referralLink = $referralLink;
     }

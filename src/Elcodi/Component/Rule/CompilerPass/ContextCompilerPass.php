@@ -39,7 +39,6 @@ class ContextCompilerPass implements CompilerPassInterface
 
         $contextProviders = [];
         foreach ($taggedServices as $id => $attributes) {
-
             $contextProviders[] = new Reference($id);
         }
 

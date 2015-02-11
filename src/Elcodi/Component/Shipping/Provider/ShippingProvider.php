@@ -48,8 +48,7 @@ class ShippingProvider
     public function __construct(
         CarrierProvider $carrierProvider,
         CarrierResolver $carrierResolver
-    )
-    {
+    ) {
         $this->carrierProvider = $carrierProvider;
         $this->carrierResolver = $carrierResolver;
     }

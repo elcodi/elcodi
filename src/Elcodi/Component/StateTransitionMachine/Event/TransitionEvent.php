@@ -60,8 +60,7 @@ class TransitionEvent extends Event
         $object,
         StateLineStack $stateLineStack,
         Transition $transition
-    )
-    {
+    ) {
         $this->object = $object;
         $this->stateLineStack = $stateLineStack;
         $this->transition = $transition;

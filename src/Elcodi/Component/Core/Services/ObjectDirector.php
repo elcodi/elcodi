@@ -59,8 +59,7 @@ class ObjectDirector
         ObjectManager $manager,
         ObjectRepository $repository,
         AbstractFactory $factory
-    )
-    {
+    ) {
         $this->manager = $manager;
         $this->repository = $repository;
         $this->factory = $factory;

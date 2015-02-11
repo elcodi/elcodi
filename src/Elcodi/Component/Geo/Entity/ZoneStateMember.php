@@ -35,8 +35,7 @@ class ZoneStateMember extends ZoneMember implements ZoneStateMemberInterface
     public function __construct(
         ZoneInterface $zone,
         StateInterface $state
-    )
-    {
+    ) {
         $this->zone = $zone;
         $this->state = $state;
     }

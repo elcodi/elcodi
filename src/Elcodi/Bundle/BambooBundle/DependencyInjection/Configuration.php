@@ -115,8 +115,7 @@ class Configuration extends AbstractConfiguration
         $template,
         $layout = null,
         $senderEmail = null
-    )
-    {
+    ) {
         $builder = new TreeBuilder();
         $node = $builder->root($nodeName);
 

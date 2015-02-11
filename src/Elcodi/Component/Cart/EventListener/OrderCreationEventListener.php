@@ -57,8 +57,7 @@ class OrderCreationEventListener
     public function __construct(
         ObjectManager $orderObjectManager,
         ObjectManager $cartObjectManager
-    )
-    {
+    ) {
         $this->orderObjectManager = $orderObjectManager;
         $this->cartObjectManager = $cartObjectManager;
     }

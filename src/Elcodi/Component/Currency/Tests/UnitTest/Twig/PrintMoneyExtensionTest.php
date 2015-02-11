@@ -40,8 +40,7 @@ class PrintMoneyExtensionTest extends PHPUnit_Framework_TestCase
         $symbol,
         $locale,
         $result
-    )
-    {
+    ) {
         $this->markTestSkipped("Problems in local environments");
 
         $currencyFactory = new CurrencyFactory();

@@ -70,8 +70,7 @@ class ImageManager
         ImageFactory $imageFactory,
         FileManager $fileManager,
         ResizeAdapterInterface $resizeAdapter
-    )
-    {
+    ) {
         $this->imageFactory = $imageFactory;
         $this->fileManager = $fileManager;
         $this->resizeAdapter = $resizeAdapter;
@@ -94,7 +93,6 @@ class ImageManager
         $fileMime = $file->getMimeType();
 
         if (strpos($fileMime, 'image/') !== 0) {
-
             throw new InvalidImageException();
         }
 
@@ -137,15 +135,13 @@ class ImageManager
         $height,
         $width,
         $type = ElcodiMediaImageResizeTypes::FORCE_MEASURES
-    )
-    {
+    ) {
         $imageData = $this
             ->fileManager
             ->downloadFile($image)
             ->getContent();
 
         if (ElcodiMediaImageResizeTypes::NO_RESIZE === $type) {
-
             $image->setContent($imageData);
 
             return $image;

@@ -119,8 +119,7 @@ class GeoBuilder implements GeoBuilderInterface
         ProvinceFactory $provinceFactory,
         CityFactory $cityFactory,
         PostalCodeFactory $postalCodeFactory
-    )
-    {
+    ) {
         $this->countryFactory = $countryFactory;
         $this->stateFactory = $stateFactory;
         $this->provinceFactory = $provinceFactory;
@@ -148,7 +147,6 @@ class GeoBuilder implements GeoBuilderInterface
         $countryName = trim($countryName);
 
         if (!isset($this->countries[$countryCode])) {
-
             $country = $this->countryFactory->create();
             $country
                 ->setCode($countryCode)
@@ -175,10 +173,9 @@ class GeoBuilder implements GeoBuilderInterface
     {
         $stateCode = trim($stateCode);
         $stateName = trim($stateName);
-        $stateId = $country->getCode() . '_' . $stateCode;
+        $stateId = $country->getCode().'_'.$stateCode;
 
         if (!isset($this->states[$stateId])) {
-
             $state = $this->stateFactory->create();
             $state
                 ->setId($stateId)
@@ -208,10 +205,9 @@ class GeoBuilder implements GeoBuilderInterface
     {
         $provinceCode = trim($provinceCode);
         $provinceName = trim($provinceName);
-        $provinceId = $state->getId() . '_' . $provinceCode;
+        $provinceId = $state->getId().'_'.$provinceCode;
 
         if (!isset($this->provinces[$provinceId])) {
-
             $province = $this->provinceFactory->create();
             $province
                 ->setId($provinceId)
@@ -239,7 +235,7 @@ class GeoBuilder implements GeoBuilderInterface
     public function addCity(ProvinceInterface $province, $cityName)
     {
         $cityName = trim($cityName);
-        $cityId = $province->getId() . '_' . preg_replace('/[^\da-z]/i', '', strtolower($cityName));
+        $cityId = $province->getId().'_'.preg_replace('/[^\da-z]/i', '', strtolower($cityName));
 
         if (!isset($this->cities[$cityId])) {
             $city = $this->cityFactory->create();
@@ -270,7 +266,7 @@ class GeoBuilder implements GeoBuilderInterface
         $postalCodeCode = trim($postalCodeCode);
         $cityCountry = $city->getCountry();
 
-        $postalCodeId = $cityCountry->getCode() . '_' . trim($postalCodeCode);
+        $postalCodeId = $cityCountry->getCode().'_'.trim($postalCodeCode);
 
         if (!isset($this->postalCodes[$postalCodeId])) {
             $postalCode = $this->postalCodeFactory->create();

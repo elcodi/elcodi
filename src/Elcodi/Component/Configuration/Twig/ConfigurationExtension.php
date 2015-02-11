@@ -55,7 +55,7 @@ class ConfigurationExtension extends Twig_Extension
     public function getFunctions()
     {
         return array(
-            new Twig_SimpleFunction('getConfiguration', array($this, 'getParameter'))
+            new Twig_SimpleFunction('getConfiguration', array($this, 'getParameter')),
         );
     }
 
@@ -72,8 +72,7 @@ class ConfigurationExtension extends Twig_Extension
     public function getParameter(
         $parameterKey,
         $parameterNamespace = ''
-    )
-    {
+    ) {
         return $this
             ->configurationManager
             ->get($parameterKey, $parameterNamespace);

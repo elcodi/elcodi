@@ -24,5 +24,4 @@ use Elcodi\Component\Newsletter\Exception\Abstracts\AbstractNewsletterException;
  */
 class NewsletterCannotBeRemovedException extends AbstractNewsletterException
 {
-
 }

@@ -50,8 +50,7 @@ class InitializationEvent extends Event
     public function __construct(
         $object,
         StateLineStack $stateLineStack
-    )
-    {
+    ) {
         $this->object = $object;
         $this->stateLineStack = $stateLineStack;
     }

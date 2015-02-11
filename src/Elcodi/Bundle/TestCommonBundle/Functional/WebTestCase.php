@@ -60,9 +60,7 @@ abstract class WebTestCase extends BaseWebTestCase
             static::$application = new Application(static::$kernel);
             static::$application->setAutoExit(false);
             $this->container = static::$kernel->getContainer();
-
         } catch (Exception $e) {
-
             throw new RuntimeException(
                 sprintf('Unable to start the application: %s', $e->getMessage()),
                 $e->getCode(),
@@ -96,7 +94,6 @@ abstract class WebTestCase extends BaseWebTestCase
         $serviceCallableNames = $this->getServiceCallableName();
 
         foreach ($serviceCallableNames as $serviceCallableName) {
-
             if ($serviceCallableName) {
                 $this->assertNotNull(static::$kernel
                         ->getContainer()
@@ -208,7 +205,7 @@ abstract class WebTestCase extends BaseWebTestCase
 
         $bundles = static::$kernel->getBundles();
         $formattedBundles = array_map(function ($bundle) use ($bundles) {
-            return $bundles[$bundle]->getPath() . '/DataFixtures/ORM/';
+            return $bundles[$bundle]->getPath().'/DataFixtures/ORM/';
         }, $this->loadFixturesBundles());
 
         self::$application->run(new ArrayInput(array(
@@ -233,7 +230,7 @@ abstract class WebTestCase extends BaseWebTestCase
     protected static function getKernelClass()
     {
         $namespaceExploded = explode('\\Tests\\Functional\\', get_called_class(), 2);
-        $kernelClass = $namespaceExploded[0] . '\\Tests\\Functional\\app\\AppKernel';
+        $kernelClass = $namespaceExploded[0].'\\Tests\\Functional\\app\\AppKernel';
 
         return $kernelClass;
     }
@@ -258,6 +255,6 @@ abstract class WebTestCase extends BaseWebTestCase
         $bundleName = explode('Elcodi\\', $namespaceExploded[0], 2)[1];
         $bundleName = str_replace('\\', '_', $bundleName);
 
-        return new static::$class($bundleName . 'Test', true);
+        return new static::$class($bundleName.'Test', true);
     }
 }

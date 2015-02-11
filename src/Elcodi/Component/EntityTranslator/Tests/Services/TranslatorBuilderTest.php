@@ -48,8 +48,8 @@ class TranslatorBuilderTest extends PHPUnit_Framework_TestCase
                     'name' => array(
                         'setter' => 'setName',
                         'getter' => 'getName',
-                    )
-                )
+                    ),
+                ),
             ),
         );
 
@@ -96,10 +96,10 @@ class TranslatorBuilderTest extends PHPUnit_Framework_TestCase
                             'name' => array(
                                 'setter' => 'setName',
                                 'getter' => 'getName',
-                            )
-                        )
-                    )
-                ]
+                            ),
+                        ),
+                    ),
+                ],
             ],
             [
                 [
@@ -110,10 +110,10 @@ class TranslatorBuilderTest extends PHPUnit_Framework_TestCase
                             'name' => array(
                                 'setter' => 'setName',
                                 'getter' => 'getName',
-                            )
-                        )
-                    )
-                ]
+                            ),
+                        ),
+                    ),
+                ],
             ],
             [
                 [
@@ -123,10 +123,10 @@ class TranslatorBuilderTest extends PHPUnit_Framework_TestCase
                             'name' => array(
                                 'setter' => 'setName',
                                 'getter' => 'getName',
-                            )
-                        )
-                    )
-                ]
+                            ),
+                        ),
+                    ),
+                ],
             ],
             [
                 [
@@ -136,10 +136,10 @@ class TranslatorBuilderTest extends PHPUnit_Framework_TestCase
                             'name' => array(
                                 'setter' => 'nonExistingSetName',
                                 'getter' => 'getName',
-                            )
-                        )
-                    )
-                ]
+                            ),
+                        ),
+                    ),
+                ],
             ],
             [
                 [
@@ -149,10 +149,10 @@ class TranslatorBuilderTest extends PHPUnit_Framework_TestCase
                             'name' => array(
                                 'setter' => 'setName',
                                 'getter' => 'nonExistingGetName',
-                            )
-                        )
-                    )
-                ]
+                            ),
+                        ),
+                    ),
+                ],
             ],
         ];
     }

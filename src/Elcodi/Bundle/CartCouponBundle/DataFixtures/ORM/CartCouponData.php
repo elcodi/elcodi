@@ -60,7 +60,7 @@ class CartCouponData extends AbstractFixture implements DependentFixtureInterfac
         $this->addReference('cart-coupon', $cartCoupon);
 
         $cartCouponObjectManager->flush([
-            $cartCoupon
+            $cartCoupon,
         ]);
     }
 

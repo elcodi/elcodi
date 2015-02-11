@@ -50,8 +50,7 @@ class CartCouponRulesEventListener
     public function __construct(
         CartCouponRuleManager $cartCouponRuleManager,
         CartCouponEventDispatcher $cartCouponEventDispatcher
-    )
-    {
+    ) {
         $this->cartCouponRuleManager = $cartCouponRuleManager;
         $this->cartCouponEventDispatcher = $cartCouponEventDispatcher;
     }
@@ -69,7 +68,6 @@ class CartCouponRulesEventListener
         $coupon = $event->getCoupon();
 
         if (!$this->cartCouponRuleManager->checkCouponValidity($cart, $coupon)) {
-
             $this
                 ->cartCouponEventDispatcher
                 ->dispatchCartCouponOnRejectedEvent(

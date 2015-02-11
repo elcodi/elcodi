@@ -26,8 +26,7 @@ use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
  */
 class Language implements LanguageInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         EnabledTrait;
 
     /**

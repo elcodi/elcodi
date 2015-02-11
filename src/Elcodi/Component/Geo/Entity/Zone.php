@@ -133,7 +133,6 @@ class Zone implements ZoneInterface
     public function addMember(ZoneMemberInterface $member)
     {
         if (!$this->members->contains($member)) {
-
             $this
                 ->members
                 ->add($member);

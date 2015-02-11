@@ -45,8 +45,7 @@ class ZoneMatcher
     public function isAddressContainedInZone(
         ZoneInterface $zone,
         AddressInterface $address
-    )
-    {
+    ) {
         $city = $address->getCity();
 
         return
@@ -66,8 +65,7 @@ class ZoneMatcher
     public function isCountryContainedInZone(
         ZoneInterface $zone,
         CountryInterface $country
-    )
-    {
+    ) {
         return $zone
             ->getMembers()
             ->filter(function (ZoneMemberInterface $zoneMember) {
@@ -90,8 +88,7 @@ class ZoneMatcher
     public function isStateContainedInZone(
         ZoneInterface $zone,
         StateInterface $state
-    )
-    {
+    ) {
         return $zone
             ->getMembers()
             ->filter(function (ZoneMemberInterface $zoneMember) {
@@ -114,8 +111,7 @@ class ZoneMatcher
     public function isProvinceContainedInZone(
         ZoneInterface $zone,
         ProvinceInterface $province
-    )
-    {
+    ) {
         return $zone
             ->getMembers()
             ->filter(function (ZoneMemberInterface $zoneMember) {
@@ -138,8 +134,7 @@ class ZoneMatcher
     public function isCityContainedInZone(
         ZoneInterface $zone,
         CityInterface $city
-    )
-    {
+    ) {
         return $zone
             ->getMembers()
             ->filter(function (ZoneMemberInterface $zoneMember) {
@@ -162,8 +157,7 @@ class ZoneMatcher
     public function isPostalCodeContainedInZone(
         ZoneInterface $zone,
         PostalCodeInterface $postalCode
-    )
-    {
+    ) {
         return $zone
             ->getMembers()
             ->filter(function (ZoneMemberInterface $zoneMember) {

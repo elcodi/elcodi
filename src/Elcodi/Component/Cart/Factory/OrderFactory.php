@@ -53,8 +53,7 @@ class OrderFactory extends AbstractFactory
     public function __construct(
         MachineManager $paymentMachineManager,
         MachineManager $shippingMachineManager
-    )
-    {
+    ) {
         $this->paymentMachineManager = $paymentMachineManager;
         $this->shippingMachineManager = $shippingMachineManager;
     }

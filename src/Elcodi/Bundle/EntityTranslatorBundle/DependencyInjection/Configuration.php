@@ -85,19 +85,16 @@ class Configuration extends AbstractConfiguration implements ConfigurationInterf
                                 ->beforeNormalization()
                                 ->always(function ($fields) {
                                     foreach ($fields as $fieldName => $fieldConfiguration) {
-
                                         if (!is_array($fieldConfiguration)) {
                                             $fieldConfiguration = [];
                                         }
 
                                         if (!isset($fieldConfiguration['getter'])) {
-
-                                            $fields[$fieldName]['getter'] = 'get' . ucfirst($fieldName);
+                                            $fields[$fieldName]['getter'] = 'get'.ucfirst($fieldName);
                                         }
 
                                         if (!isset($fieldConfiguration['getter'])) {
-
-                                            $fields[$fieldName]['setter'] = 'set' . ucfirst($fieldName);
+                                            $fields[$fieldName]['setter'] = 'set'.ucfirst($fieldName);
                                         }
                                     }
 

@@ -67,13 +67,13 @@ class MachineBuilderTest extends AbstractStateTransitionTest
                     ['unpaid', 'revise', 'revised'],
                     ['revised', 'pay', 'paid'],
                     ['paid', 'ship', 'shipped'],
-                ]
+                ],
             ],
             [
                 [
                     ['unpaid', 'pay', 'paid'],
                     ['paid', 'return', 'unpaid'],
-                ]
+                ],
             ],
         ];
     }

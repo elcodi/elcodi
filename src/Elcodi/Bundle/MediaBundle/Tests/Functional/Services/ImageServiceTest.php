@@ -36,7 +36,7 @@ class ImageServiceTest extends WebTestCase
     {
         return [
             'elcodi.core.media.service.image_manager',
-            'elcodi.image_manager'
+            'elcodi.image_manager',
         ];
     }
 
@@ -45,7 +45,7 @@ class ImageServiceTest extends WebTestCase
      */
     public function testCreateImage()
     {
-        $imagePath = realpath(dirname(__FILE__)) . '/images/image-10-10.gif';
+        $imagePath = realpath(dirname(__FILE__)).'/images/image-10-10.gif';
         $file = new File($imagePath);
 
         /**

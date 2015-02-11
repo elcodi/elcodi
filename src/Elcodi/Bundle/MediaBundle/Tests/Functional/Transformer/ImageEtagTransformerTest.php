@@ -33,7 +33,7 @@ class ImageEtagTransformerTest extends WebTestCase
     {
         return [
             'elcodi.core.media.transformer.image_etag_transformer',
-            'elcodi.image_etag_transformer'
+            'elcodi.image_etag_transformer',
         ];
     }
 }

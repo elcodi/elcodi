@@ -52,8 +52,7 @@ class GeoPopulator
     public function __construct(
         PopulatorAdapterInterface $populatorAdapter,
         ObjectManager $countryObjectManager
-    )
-    {
+    ) {
         $this->populatorAdapter = $populatorAdapter;
         $this->countryObjectManager = $countryObjectManager;
     }
@@ -75,10 +74,8 @@ class GeoPopulator
         OutputInterface $output,
         $countryCodes,
         $sourcePackageMustbeReloaded
-    )
-    {
+    ) {
         foreach ($countryCodes as $countryCode) {
-
             $country = $this
                 ->populateCountry(
                     $output,
@@ -87,7 +84,6 @@ class GeoPopulator
                 );
 
             if (!is_null($country)) {
-
                 $started = new DateTime();
                 $output->writeln('<header>[Geo]</header> <body>Starting flushing manager</body>');
                 $this->countryObjectManager->persist($country);
@@ -95,7 +91,7 @@ class GeoPopulator
                 $this->countryObjectManager->clear($country);
                 $finished = new DateTime();
                 $elapsed = $finished->diff($started);
-                $output->writeln('<header>[Geo]</header> <body>Manager flushed in ' . $elapsed->format('%s') . ' seconds</body>');
+                $output->writeln('<header>[Geo]</header> <body>Manager flushed in '.$elapsed->format('%s').' seconds</body>');
             }
         }
 
@@ -115,8 +111,7 @@ class GeoPopulator
         OutputInterface $output,
         $countryCode,
         $sourcePackageMustbeReloaded
-    )
-    {
+    ) {
         return $this
             ->populatorAdapter
             ->populateCountry(

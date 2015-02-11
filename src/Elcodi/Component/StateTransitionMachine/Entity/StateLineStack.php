@@ -49,8 +49,7 @@ class StateLineStack
     public function __construct(
         Collection $stateLines,
         StateLineInterface $lastStateLine = null
-    )
-    {
+    ) {
         $this->stateLines = $stateLines;
         $this->lastStateLine = $lastStateLine;
     }
@@ -120,8 +119,7 @@ class StateLineStack
     public static function create(
         Collection $stateLines,
         StateLineInterface $lastStateLine = null
-    )
-    {
+    ) {
         return new self($stateLines, $lastStateLine);
     }
 }

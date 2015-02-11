@@ -39,8 +39,7 @@ use Elcodi\Component\Product\Entity\Traits\ProductPriceTrait;
  */
 class Product implements ProductInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         ProductPriceTrait,
         DateTimeTrait,
         EnabledTrait,
@@ -481,9 +480,7 @@ class Product implements ProductInterface
     public function addAttribute(AttributeInterface $attribute)
     {
         if (!$this->attributes->contains($attribute)) {
-
             $this->attributes->add($attribute);
-
         }
 
         return $this;

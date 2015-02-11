@@ -129,7 +129,7 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
                     'code'     => null,
                     'url'      => null,
                     'subnodes' => [],
-                ]
+                ],
             ]
         );
     }
@@ -180,7 +180,7 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
                     'name'     => null,
                     'url'      => null,
                     'subnodes' => [],
-                ]
+                ],
             ]
         );
 
@@ -192,7 +192,7 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
                     'name'     => null,
                     'url'      => null,
                     'subnodes' => [],
-                ]
+                ],
             ]
         );
     }

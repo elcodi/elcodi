@@ -42,8 +42,7 @@ class CartCouponEventDispatcher extends AbstractEventDispatcher
     public function dispatchCartCouponOnApplyEvent(
         CartInterface $cart,
         CouponInterface $coupon
-    )
-    {
+    ) {
         $event = new CartCouponOnApplyEvent($cart, $coupon);
         $this->eventDispatcher->dispatch(
             ElcodiCartCouponEvents::CART_COUPON_ONAPPLY,
@@ -60,8 +59,7 @@ class CartCouponEventDispatcher extends AbstractEventDispatcher
      */
     public function dispatchCartCouponOnRemoveEvent(
         CartCouponInterface $cartCoupon
-    )
-    {
+    ) {
         $cart = $cartCoupon->getCart();
         $coupon = $cartCoupon->getCoupon();
 
@@ -84,8 +82,7 @@ class CartCouponEventDispatcher extends AbstractEventDispatcher
     public function dispatchCartCouponOnRejectedEvent(
         CartInterface $cart,
         CouponInterface $coupon
-    )
-    {
+    ) {
         $event = new CartCouponOnRejectedEvent($cart, $coupon);
         $this->eventDispatcher->dispatch(
             ElcodiCartCouponEvents::CART_COUPON_ONREJECTED,

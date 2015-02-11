@@ -32,8 +32,7 @@ use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
  */
 class OrderLine implements OrderLineInterface
 {
-    use
-        IdentifiableTrait,
+    use IdentifiableTrait,
         PurchasableWrapperTrait,
         PriceTrait,
         DimensionsTrait;

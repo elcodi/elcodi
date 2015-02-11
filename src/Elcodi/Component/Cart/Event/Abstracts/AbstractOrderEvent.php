@@ -50,8 +50,7 @@ abstract class AbstractOrderEvent extends Event
     public function __construct(
         CartInterface $cart,
         OrderInterface $order
-    )
-    {
+    ) {
         $this->cart = $cart;
         $this->order = $order;
     }

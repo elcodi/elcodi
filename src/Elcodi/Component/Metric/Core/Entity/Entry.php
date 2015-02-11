@@ -74,8 +74,7 @@ class Entry implements EntryInterface
         $event,
         $context,
         $createdAt
-    )
-    {
+    ) {
         $this->context = $context;
         $this->createdAt = $createdAt;
         $this->event = $event;

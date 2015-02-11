@@ -253,8 +253,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
         $quantityStart,
         $quantitySetted,
         $quantityEnd
-    )
-    {
+    ) {
         $this->cartLine->setQuantity($quantityStart);
 
         $this
@@ -288,8 +287,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
         $quantityStart,
         $quantityAdded,
         $quantityEnd
-    )
-    {
+    ) {
         $line = $this
             ->get('elcodi.factory.cart_line')
             ->create()
@@ -331,8 +329,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
         $quantityStart,
         $quantityRemoved,
         $quantityEnd
-    )
-    {
+    ) {
         $this->cartLine->setQuantity($quantityStart);
 
         $this
@@ -364,8 +361,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
     public function testAddProduct(
         $quantitySet,
         $quantityEnd
-    )
-    {
+    ) {
         $this
             ->get('elcodi.cart_manager')
             ->addProduct($this->cart, $this->purchasable, $quantitySet);
@@ -381,7 +377,6 @@ abstract class AbstractCartManagerTest extends WebTestCase
     public function assertResults($quantity)
     {
         if ($quantity > 0) {
-
             $cartLine = $this->cart->getCartLines()->first();
 
             $this->assertEquals(
@@ -404,7 +399,6 @@ abstract class AbstractCartManagerTest extends WebTestCase
                     ->getUnitOfWork()
                     ->getEntityState($this->cart)
             );
-
         } else {
             $this->assertEmpty($this->cart->getCartLines());
             $this->assertEquals(0, $this->cart->getAmount()->getAmount());

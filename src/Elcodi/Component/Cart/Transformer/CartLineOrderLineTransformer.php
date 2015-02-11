@@ -59,8 +59,7 @@ class CartLineOrderLineTransformer
     public function __construct(
         OrderLineEventDispatcher $orderLineEventDispatcher,
         OrderLineFactory $orderLineFactory
-    )
-    {
+    ) {
         $this->orderLineEventDispatcher = $orderLineEventDispatcher;
         $this->orderLineFactory = $orderLineFactory;
     }
@@ -76,15 +75,13 @@ class CartLineOrderLineTransformer
     public function createOrderLinesByCartLines(
         OrderInterface $order,
         Collection $cartLines
-    )
-    {
+    ) {
         $orderLines = new ArrayCollection();
 
         /**
          * @var CartLineInterface $cartLine
          */
         foreach ($cartLines as $cartLine) {
-
             $orderLine = $this
                 ->createOrderLineByCartLine(
                     $order,
@@ -109,8 +106,7 @@ class CartLineOrderLineTransformer
     public function createOrderLineByCartLine(
         OrderInterface $order,
         CartLineInterface $cartLine
-    )
-    {
+    ) {
         $orderLine = ($cartLine->getOrderLine() instanceof OrderLineInterface)
             ? $cartLine->getOrderLine()
             : $this->orderLineFactory->create();

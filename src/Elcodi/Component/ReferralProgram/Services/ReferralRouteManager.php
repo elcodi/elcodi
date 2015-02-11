@@ -66,7 +66,7 @@ class ReferralRouteManager
         return $this
             ->routeGenerator
             ->generate($this->controllerRouteName, array(
-                'hash' => $referralHash->getHash()
+                'hash' => $referralHash->getHash(),
             ), true);
     }
 }

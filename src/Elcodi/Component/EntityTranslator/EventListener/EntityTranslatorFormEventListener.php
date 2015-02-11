@@ -98,8 +98,7 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
         array $locales,
         $masterLocale,
         $fallback
-    )
-    {
+    ) {
         $this->entityTranslationProvider = $entityTranslationProvider;
         $this->translationConfiguration = $translationConfiguration;
         $this->locales = $locales;
@@ -157,9 +156,7 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
         $entityFields = $entityConfiguration['fields'];
 
         foreach ($entityFields as $fieldName => $fieldConfiguration) {
-
             if (!$form->has($fieldName)) {
-
                 continue;
             }
 
@@ -226,22 +223,18 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
         $entityFields = $entityConfiguration['fields'];
 
         foreach ($entityFields as $fieldName => $fieldConfiguration) {
-
             if (!isset($this->submittedDataPlain[$formHash][$fieldName])) {
-
                 continue;
             }
 
             foreach ($this->locales as $locale) {
-
-                $data = $this->submittedDataPlain[$formHash][$fieldName][$locale . '_' . $fieldName];
+                $data = $this->submittedDataPlain[$formHash][$fieldName][$locale.'_'.$fieldName];
                 $entityData['fields'][$fieldName][$locale] = $data;
             }
 
             if ($this->masterLocale) {
-
                 $setter = $fieldConfiguration['setter'];
-                $masterLocaleData = $this->submittedDataPlain[$formHash][$fieldName][$this->masterLocale . '_' . $fieldName];
+                $masterLocaleData = $this->submittedDataPlain[$formHash][$fieldName][$this->masterLocale.'_'.$fieldName];
                 $entity->$setter($masterLocaleData);
             }
         }
@@ -261,18 +254,14 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
         }
 
         foreach ($this->translationsBackup as $formHash => $entities) {
-
             foreach ($entities as $entityData) {
-
                 $entity = $entityData['object'];
                 $entityIdGetter = $entityData['idGetter'];
                 $entityAlias = $entityData['alias'];
                 $fields = $entityData['fields'];
 
                 foreach ($fields as $fieldName => $locales) {
-
                     foreach ($locales as $locale => $translation) {
-
                         $this
                             ->entityTranslationProvider
                             ->setTranslation(
@@ -306,13 +295,12 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
         $classStack = $this->getNamespacesFromClass($entityNamespace);
 
         foreach ($classStack as $classNamespace) {
-
             if (array_key_exists($classNamespace, $this->translationConfiguration)) {
                 return $this->translationConfiguration[$classNamespace];
             }
         }
 
-        return null;
+        return;
     }
 
     /**

@@ -58,8 +58,7 @@ class MetricManager
         AbstractMetricsBucket $metricsBucket,
         EntryFactory $entryFactory,
         ObjectManager $entryObjectManager
-    )
-    {
+    ) {
         $this->metricsBucket = $metricsBucket;
         $this->entryFactory = $entryFactory;
         $this->entryObjectManager = $entryObjectManager;

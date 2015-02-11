@@ -47,7 +47,6 @@ class AdminController extends Controller
             ->getPlugin('Elcodi\Plugin\ProductCsvBundle');
 
         if ('POST' === $request->getMethod()) {
-
             $this
                 ->get('elcodi.plugin_manager')
                 ->updatePlugin(

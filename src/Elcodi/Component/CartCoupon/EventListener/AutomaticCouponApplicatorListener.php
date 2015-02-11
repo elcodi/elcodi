@@ -53,8 +53,7 @@ class AutomaticCouponApplicatorListener
     public function __construct(
         CartCouponManager $cartCouponManager,
         ObjectRepository $couponRepository
-    )
-    {
+    ) {
         $this->cartCouponManager = $cartCouponManager;
         $this->couponRepository = $couponRepository;
     }
@@ -79,15 +78,12 @@ class AutomaticCouponApplicatorListener
         ]);
 
         foreach ($automaticCoupons as $coupon) {
-
             try {
                 $this
                     ->cartCouponManager
                     ->addCoupon($cart, $coupon);
-
             } catch (AbstractCouponException $e) {
                 // Silently tries next coupon on controlled exception
-
             }
         }
     }

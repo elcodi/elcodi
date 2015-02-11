@@ -26,8 +26,7 @@ use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
  */
 class Currency implements CurrencyInterface
 {
-    use
-        DateTimeTrait,
+    use DateTimeTrait,
         EnabledTrait;
 
     /**

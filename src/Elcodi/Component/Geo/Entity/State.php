@@ -204,7 +204,6 @@ class State implements StateInterface, ZoneMemberAssignableInterface
     public function addProvince(ProvinceInterface $province)
     {
         if (!$this->provinces->contains($province)) {
-
             $this
                 ->provinces
                 ->add($province);

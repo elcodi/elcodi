@@ -47,7 +47,7 @@ class EmptyStateLine implements StateLineInterface
      */
     public function getName()
     {
-        return null;
+        return;
     }
 
     /**
@@ -69,7 +69,7 @@ class EmptyStateLine implements StateLineInterface
      */
     public function getDescription()
     {
-        return null;
+        return;
     }
 
     /**

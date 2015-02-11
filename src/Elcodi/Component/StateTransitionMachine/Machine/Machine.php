@@ -59,8 +59,7 @@ class Machine implements MachineInterface
         $machineId,
         TransitionChain $transitionChain,
         $pointOfEntry
-    )
-    {
+    ) {
         $this->machineId = $machineId;
         $this->transitionChain = $transitionChain;
         $this->pointOfEntry = $pointOfEntry;
@@ -100,10 +99,8 @@ class Machine implements MachineInterface
     public function transition(
         $startStateName,
         $transitionName
-    )
-    {
+    ) {
         if (!$this->transitionChain->hasTransition($transitionName)) {
-
             throw new TransitionNotValidException($transitionName);
         }
 
@@ -115,7 +112,6 @@ class Machine implements MachineInterface
             );
 
         if (!($transition instanceof Transition)) {
-
             throw new TransitionNotAccessibleException();
         }
 
@@ -135,8 +131,7 @@ class Machine implements MachineInterface
     public function reachState(
         $startStateName,
         $finalStateName
-    )
-    {
+    ) {
         $transition = $this
             ->transitionChain
             ->getTransitionByStartingStateAndFinalState(
@@ -145,7 +140,6 @@ class Machine implements MachineInterface
             );
 
         if (!($transition instanceof Transition)) {
-
             throw new StateNotReachableException();
         }
 

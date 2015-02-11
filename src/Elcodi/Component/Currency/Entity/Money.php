@@ -264,8 +264,7 @@ class Money extends StubMoney implements MoneyInterface
     public static function create(
         $amount,
         CurrencyInterface $currency = null
-    )
-    {
+    ) {
         return ($currency instanceof CurrencyInterface)
             ? new Money($amount, $currency)
             : NullMoney::create();

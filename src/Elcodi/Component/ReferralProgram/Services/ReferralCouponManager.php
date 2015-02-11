@@ -94,8 +94,7 @@ class ReferralCouponManager
         CouponManager $couponManager,
         ReferralLineRepository $referralLineRepository,
         ReferralHashManager $referralHashManager
-    )
-    {
+    ) {
         $this->eventDispatcher = $eventDispatcher;
         $this->referralProgramManager = $referralProgramManager;
         $this->manager = $manager;
@@ -186,7 +185,6 @@ class ReferralCouponManager
          * New coupon MUST be assigned to referrer.
          */
         if ($couponReferrer instanceof CouponInterface) {
-
             $newCoupon = $this->couponManager->duplicateCoupon($couponReferrer);
 
             /**
@@ -243,7 +241,6 @@ class ReferralCouponManager
          * New coupon MUST be assigned to invited.
          */
         if ($couponInvited instanceof CouponInterface) {
-
             $newCoupon = $this->couponManager->duplicateCoupon($couponInvited);
 
             /**
@@ -307,7 +304,6 @@ class ReferralCouponManager
             ->getReferralLines();
 
         foreach ($coupons as $coupon) {
-
             $this->checkCouponInReferralLineCollection($referralLines, $coupon);
         }
 
@@ -331,7 +327,6 @@ class ReferralCouponManager
              * @var ReferralLineInterface $referralLine
              */
             if ($referralLine->getReferrerAssignedCoupon() == $coupon) {
-
                 $referralLine->setReferrerCouponUsed(true);
                 $this->manager->flush($referralLine);
             }
@@ -368,7 +363,6 @@ class ReferralCouponManager
              * @var ReferralLineInterface $referralLine
              */
             if ($referralLine->getInvitedAssignedCoupon() == $coupon) {
-
                 $referralLine->setInvitedCouponUsed(true);
                 $this->manager->flush($referralLine);
             }

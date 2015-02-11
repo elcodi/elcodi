@@ -42,8 +42,7 @@ class CurrencyExchangeRatesPopulateCommand extends Command
      */
     public function __construct(
         CurrencyExchangeRatesPopulator $currencyExchangeRatesPopulator
-    )
-    {
+    ) {
         parent::__construct();
 
         $this->currencyExchangeRatesPopulator = $currencyExchangeRatesPopulator;

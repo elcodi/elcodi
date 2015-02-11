@@ -58,8 +58,7 @@ class OrderCouponOnApplyEvent extends Event
     public function __construct(
         OrderInterface $order,
         CouponInterface $coupon
-    )
-    {
+    ) {
         $this->order = $order;
         $this->coupon = $coupon;
     }

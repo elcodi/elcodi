@@ -65,8 +65,7 @@ class CartSessionManager
         SessionInterface $session,
         $sessionFieldName,
         $saveInSession
-    )
-    {
+    ) {
         $this->session = $session;
         $this->sessionFieldName = $sessionFieldName;
         $this->saveInSession = $saveInSession;

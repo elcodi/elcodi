@@ -40,8 +40,7 @@ class MakeCouponUsedEventListener
      */
     public function __construct(
         ObjectManager $couponObjectManager
-    )
-    {
+    ) {
         $this->couponObjectManager = $couponObjectManager;
     }
 

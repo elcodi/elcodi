@@ -48,8 +48,7 @@ class EntityTranslator implements EntityTranslatorInterface
     public function __construct(
         EntityTranslationProviderInterface $entityTranslationProvider,
         array $configuration
-    )
-    {
+    ) {
         $this->entityTranslationProvider = $entityTranslationProvider;
         $this->configuration = $configuration;
     }
@@ -67,7 +66,6 @@ class EntityTranslator implements EntityTranslatorInterface
         $classStack = $this->getNamespacesFromClass(get_class($object));
 
         foreach ($classStack as $classNamespace) {
-
             if (!array_key_exists($classNamespace, $this->configuration)) {
                 continue;
             }
@@ -77,7 +75,6 @@ class EntityTranslator implements EntityTranslatorInterface
             $entityId = $object->$idGetter();
 
             foreach ($configuration['fields'] as $fieldName => $fieldConfiguration) {
-
                 $setter = $fieldConfiguration['setter'];
                 $translation = $this
                     ->entityTranslationProvider
@@ -119,7 +116,6 @@ class EntityTranslator implements EntityTranslatorInterface
         $classStack = $this->getNamespacesFromClass(get_class($object));
 
         foreach ($classStack as $classNamespace) {
-
             if (!array_key_exists($classNamespace, $this->configuration)) {
                 continue;
             }
@@ -129,11 +125,8 @@ class EntityTranslator implements EntityTranslatorInterface
             $entityId = $object->$idGetter();
 
             foreach ($translations as $locale => $translation) {
-
                 foreach ($configuration['fields'] as $fieldName => $fieldConfiguration) {
-
                     if (isset($translation[$fieldName])) {
-
                         $this
                             ->entityTranslationProvider
                             ->setTranslation(

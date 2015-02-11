@@ -64,8 +64,7 @@ class PageController
         PageRepositoryInterface $repository,
         RequestStack $requestStack,
         PageRendererInterface $pageRenderer = null
-    )
-    {
+    ) {
         $this->repository = $repository;
         $this->requestStack = $requestStack;
         $this->pageRenderer = $pageRenderer;
@@ -87,7 +86,6 @@ class PageController
             ->findOneByPath($path);
 
         if (!($page instanceof PageInterface)) {
-
             throw new NotFoundHttpException('Page not found');
         }
 
@@ -98,7 +96,6 @@ class PageController
         $response = $this->createResponse($page);
 
         if (!$response->isNotModified($request)) {
-
             $response->setContent($this->renderPage($page));
             $response->headers->set('Content-Type', 'text/html');
         }

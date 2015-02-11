@@ -90,8 +90,7 @@ class ImageResizeController
         ImageEtagTransformerInterface $imageEtagTransformer,
         $maxAge,
         $sharedMaxAge
-    )
-    {
+    ) {
         $this->requestStack = $requestStack;
         $this->imageRepository = $imageRepository;
         $this->imageManager = $imageManager;
@@ -123,7 +122,6 @@ class ImageResizeController
             ->find($id);
 
         if (!($image instanceof ImageInterface)) {
-
             throw new EntityNotFoundException($this->imageRepository->getClassName());
         }
 

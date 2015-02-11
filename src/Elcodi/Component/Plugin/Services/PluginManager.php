@@ -57,8 +57,7 @@ class PluginManager
     public function __construct(
         KernelInterface $kernel,
         ConfigurationManager $configurationManager = null
-    )
-    {
+    ) {
         $this->kernel = $kernel;
         $this->configurationManager = $configurationManager;
     }
@@ -74,7 +73,6 @@ class PluginManager
     public function loadPlugins()
     {
         if (!($this->configurationManager instanceof ConfigurationManager)) {
-
             throw new Exception('You need to install ConfigurationBundle');
         }
 
@@ -92,9 +90,7 @@ class PluginManager
          * @var Bundle $bundle
          */
         foreach ($bundles as $bundle) {
-
             if ($bundle instanceof PluginInterface) {
-
                 $bundleName = $bundle->getName();
                 $bundleNamespace = $bundle->getNamespace();
                 $bundlesFound[] = $bundleNamespace;
@@ -112,7 +108,7 @@ class PluginManager
                         'fa_icon'             => 'gear',
                         'configuration_route' => null,
                         'enabled'             => false,
-                        'configuration'       => []
+                        'configuration'       => [],
                     ],
                     $this->getPluginSpecification($bundle->getPath())
                 );
@@ -125,9 +121,7 @@ class PluginManager
          * We remove old plugin references
          */
         foreach ($plugins as $pluginNamespace => $plugin) {
-
             if (!in_array($pluginNamespace, $bundlesFound)) {
-
                 unset($plugins[$pluginNamespace]);
             }
         }
@@ -151,7 +145,7 @@ class PluginManager
     protected function getPluginSpecification($bundlePath)
     {
         $yaml = new Parser();
-        $specificationFilePath = $bundlePath . '/plugin.yml';
+        $specificationFilePath = $bundlePath.'/plugin.yml';
 
         if (!file_exists($specificationFilePath)) {
             return [];
@@ -184,7 +178,6 @@ class PluginManager
             ->get('store.plugins');
 
         foreach ($plugins as $pluginKey => $plugin) {
-
             $plugins[$pluginKey] = $this->hidratePlugin($plugin);
         }
 
@@ -216,8 +209,7 @@ class PluginManager
         $pluginNamespace,
         $enabled,
         array $configuration = []
-    )
-    {
+    ) {
         $plugins = $this
             ->configurationManager
             ->get('store.plugins');

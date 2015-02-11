@@ -35,8 +35,7 @@ class ZonePostalCodeMember extends ZoneMember implements ZonePostalCodeMemberInt
     public function __construct(
         ZoneInterface $zone,
         PostalCodeInterface $postalCode
-    )
-    {
+    ) {
         $this->zone = $zone;
         $this->postalCode = $postalCode;
     }

@@ -60,8 +60,7 @@ class ImageViewRouterLoader implements LoaderInterface
     public function __construct(
         $imageViewControllerRouteName,
         $imageViewControllerRoute
-    )
-    {
+    ) {
         $this->imageViewControllerRouteName = $imageViewControllerRouteName;
         $this->imageViewControllerRoute = $imageViewControllerRoute;
     }
@@ -79,7 +78,6 @@ class ImageViewRouterLoader implements LoaderInterface
     public function load($resource, $type = null)
     {
         if ($this->loaded) {
-
             throw new RuntimeException('Do not add this loader twice');
         }
 

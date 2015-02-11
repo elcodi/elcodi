@@ -81,7 +81,7 @@ class ConfigurationManagerTest extends WebTestCase
                 'Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface',
                 $this->find('Configuration', [
                     'namespace' => 'app',
-                    'key'       => 'my_boolean_parameter'
+                    'key'       => 'my_boolean_parameter',
                 ])
             );
 
@@ -117,7 +117,7 @@ class ConfigurationManagerTest extends WebTestCase
             ->assertNull(
                 $this->find('Configuration', [
                     'namespace' => '',
-                    'key'       => 'my_parameter'
+                    'key'       => 'my_parameter',
                 ])
             );
 
@@ -141,7 +141,7 @@ class ConfigurationManagerTest extends WebTestCase
                 'Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface',
                 $this->find('Configuration', [
                     'namespace' => '',
-                    'key'       => 'my_parameter'
+                    'key'       => 'my_parameter',
                 ])
             );
     }
@@ -167,7 +167,7 @@ class ConfigurationManagerTest extends WebTestCase
                 'Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface',
                 $this->find('Configuration', [
                     'namespace' => '',
-                    'key'       => 'my_parameter'
+                    'key'       => 'my_parameter',
                 ])
             );
 
@@ -211,7 +211,7 @@ class ConfigurationManagerTest extends WebTestCase
                 $this
                     ->find('Configuration', [
                         'namespace' => '',
-                        'key'       => 'my_immutable_parameter'
+                        'key'       => 'my_immutable_parameter',
                     ])
                     ->getValue()
             );

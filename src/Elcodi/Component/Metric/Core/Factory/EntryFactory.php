@@ -41,8 +41,7 @@ class EntryFactory
         $event,
         $context,
         $createdAt
-    )
-    {
+    ) {
         return new Entry(
             $token,
             $event,

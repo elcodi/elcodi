@@ -100,8 +100,7 @@ class CartEventDispatcher extends AbstractEventDispatcher
     public function dispatchCartInconsistentEvent(
         CartInterface $cart,
         CartLineInterface $cartLine
-    )
-    {
+    ) {
         $this->eventDispatcher->dispatch(
             ElcodiCartEvents::CART_INCONSISTENT,
             new CartInconsistentEvent(

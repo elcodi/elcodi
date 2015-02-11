@@ -75,7 +75,6 @@ class CartCouponRulesEventListenerTest extends WebTestCase
         $ruleObjectManager = $this->getObjectManager('rule');
 
         foreach ($expressions as $name => $expression) {
-
             $rule = $ruleFactory
                 ->create()
                 ->setName($name)
@@ -91,12 +90,10 @@ class CartCouponRulesEventListenerTest extends WebTestCase
         $cartCouponManager = $this->get('elcodi.cart_coupon_manager');
 
         try {
-
             $cartCouponManager->addCoupon(
                 $cart,
                 $coupon
             );
-
         } catch (AbstractCouponException $e) {
             // Silently pass
         }
@@ -135,9 +132,9 @@ class CartCouponRulesEventListenerTest extends WebTestCase
                 [
                     'few_products' => 'cart.getQuantity() < 5',
                     'low_cost' => 'cart.getAmount() < 10',
-                    'rule("few_products") and rule("low_cost")'
+                    'rule("few_products") and rule("low_cost")',
                 ],
-                1
+                1,
             ],
         ];
     }

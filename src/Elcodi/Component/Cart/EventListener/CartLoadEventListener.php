@@ -96,8 +96,7 @@ class CartLoadEventListener
         CartManager $cartManager,
         CurrencyWrapper $currencyWrapper,
         CurrencyConverter $currencyConverter
-    )
-    {
+    ) {
         $this->cartObjectManager = $cartObjectManager;
         $this->cartEventDispatcher = $cartEventDispatcher;
         $this->cartManager = $cartManager;
@@ -123,7 +122,6 @@ class CartLoadEventListener
          * @var CartLineInterface $cartLine
          */
         foreach ($cart->getCartLines() as $cartLine) {
-
             $this->checkCartLine($cartLine);
         }
     }
@@ -173,7 +171,6 @@ class CartLoadEventListener
         $cart = $event->getCart();
 
         if (!$cart->getCartLines()->isEmpty()) {
-
             $this->cartObjectManager->persist($cart);
         }
 
@@ -237,7 +234,6 @@ class CartLoadEventListener
             ($cartLine->getProduct()->getStock() !== ElcodiProductStock::INFINITE_STOCK) &&
             ($cartLine->getQuantity() > $purchasable->getStock())
         ) {
-
             $cartLine->setQuantity($purchasable->getStock());
         }
 
@@ -301,7 +297,6 @@ class CartLoadEventListener
          * If present, reducedPrice will be used as product price in current CartLine.
          */
         if ($purchasable->getReducedPrice()->getAmount() > 0) {
-
             $productPrice = $purchasable->getReducedPrice();
         }
 

@@ -35,8 +35,7 @@ class ZoneProvinceMember extends ZoneMember implements ZoneProvinceMemberInterfa
     public function __construct(
         ZoneInterface $zone,
         ProvinceInterface $province
-    )
-    {
+    ) {
         $this->zone = $zone;
         $this->province = $province;
     }

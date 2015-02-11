@@ -127,7 +127,6 @@ class CartEventListenerTest extends WebTestCase
             ->dispatchCartLoadEvents($cart);
 
         $this->assertCount(1, $cartCouponManager->getCoupons($cart));
-
     }
 
     /**

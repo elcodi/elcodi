@@ -48,8 +48,7 @@ class EntityTranslatorEntityEventListener
     public function __construct(
         ContainerInterface $container,
         $locale
-    )
-    {
+    ) {
         $this->container = $container;
         $this->locale = $locale;
     }

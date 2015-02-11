@@ -49,7 +49,6 @@ class AttributeData extends AbstractFixture
         /**
          * Sizes
          */
-
         $sizeAttribute = $attributeFactory
             ->create()
             ->setName('Size')
@@ -85,7 +84,6 @@ class AttributeData extends AbstractFixture
         /**
          * Colors
          */
-
         $colorAttribute = $attributeFactory
             ->create()
             ->setName('Color')

@@ -161,7 +161,6 @@ class TaxGroup implements TaxGroupInterface
     public function addTax(TaxInterface $tax)
     {
         if (!$this->taxes->contains($tax)) {
-
             $this
                 ->taxes
                 ->add($tax);

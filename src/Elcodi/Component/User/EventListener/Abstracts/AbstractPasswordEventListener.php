@@ -55,16 +55,12 @@ abstract class AbstractPasswordEventListener
         $entity = $eventArgs->getEntity();
 
         if ($this->checkEntityType($entity)) {
-
             if ($eventArgs->hasChangedField('password')) {
-
                 $password = $entity->getPassword();
                 if (!empty($password)) {
-
                     $encodedPassword = $this->encryptPassword($password);
                     $eventArgs->setNewValue('password', $encodedPassword);
                 }
-
             }
         }
     }
@@ -79,11 +75,9 @@ abstract class AbstractPasswordEventListener
         $entity = $args->getEntity();
 
         if ($this->checkEntityType($entity)) {
-
             $password = $entity->getPassword();
 
             if (!empty($password)) {
-
                 $encodedPassword = $this->encryptPassword($password);
                 $entity->setPassword($encodedPassword);
             }

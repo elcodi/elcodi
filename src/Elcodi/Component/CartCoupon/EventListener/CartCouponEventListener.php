@@ -53,8 +53,7 @@ class CartCouponEventListener
     public function __construct(
         ObjectManager $cartCouponObjectManager,
         CartCouponFactory $cartCouponFactory
-    )
-    {
+    ) {
         $this->cartCouponObjectManager = $cartCouponObjectManager;
         $this->cartCouponFactory = $cartCouponFactory;
     }

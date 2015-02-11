@@ -57,15 +57,12 @@ class VotePackage
         }
 
         foreach ($votes as $vote) {
-
             if ($vote instanceof VoteInterface) {
                 $this->nbVotes++;
 
                 if (Vote::UP === $vote->getType()) {
-
                     $this->nbUpVotes++;
                 } else {
-
                     $this->nbDownVotes++;
                 }
             }

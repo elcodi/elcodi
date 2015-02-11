@@ -106,8 +106,7 @@ class CurrencyExchangeRatesPopulator
         CurrencyExchangeRateFactory $currencyExchangeRateFactory,
         CurrencyExchangeRatesProvider $currencyExchangeRatesProvider,
         $defaultCurrency
-    )
-    {
+    ) {
         $this->currencyExchangeRateObjectManager = $currencyExchangeRateObjectManager;
         $this->currencyRepository = $currencyRepository;
         $this->currencyExchangeRateRepository = $currencyExchangeRateRepository;
@@ -128,7 +127,7 @@ class CurrencyExchangeRatesPopulator
         $currencies = $this
             ->currencyRepository
             ->findBy([
-                'enabled' => true
+                'enabled' => true,
             ]);
 
         //extract target currency codes
@@ -155,7 +154,7 @@ class CurrencyExchangeRatesPopulator
             $sourceCurrency = $this
                 ->currencyRepository
                 ->findOneBy([
-                    'iso' => $this->defaultCurrency
+                    'iso' => $this->defaultCurrency,
                 ]);
 
             /**
@@ -164,7 +163,7 @@ class CurrencyExchangeRatesPopulator
             $targetCurrency = $this
                 ->currencyRepository
                 ->findOneBy([
-                    'iso' => $code
+                    'iso' => $code,
                 ]);
 
             //check if this is a new exchange rate, or if we have to create a new one
@@ -172,11 +171,10 @@ class CurrencyExchangeRatesPopulator
                 ->currencyExchangeRateRepository
                 ->findOneBy([
                     'sourceCurrency' => $sourceCurrency,
-                    'targetCurrency' => $targetCurrency
+                    'targetCurrency' => $targetCurrency,
                 ]);
 
             if (!($exchangeRate instanceof CurrencyExchangeRateInterface)) {
-
                 $exchangeRate = $this->currencyExchangeRateFactory->create();
             }
 
@@ -185,7 +183,6 @@ class CurrencyExchangeRatesPopulator
             $exchangeRate->setTargetCurrency($targetCurrency);
 
             if (!$exchangeRate->getId()) {
-
                 $this
                     ->currencyExchangeRateObjectManager
                     ->persist($exchangeRate);
