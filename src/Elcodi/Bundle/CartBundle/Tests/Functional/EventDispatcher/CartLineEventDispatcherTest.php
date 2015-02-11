@@ -41,9 +41,6 @@ class CartLineEventDispatcherTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.core.cart.event_dispatcher.cart_line',
-            'elcodi.cart_line_event_dispatcher',
-        ];
+        return ['elcodi.event_dispatcher.cart_line'];
     }
 }

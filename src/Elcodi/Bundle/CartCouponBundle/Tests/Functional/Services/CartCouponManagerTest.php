@@ -42,10 +42,7 @@ class CartCouponManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.core.cart_coupon.service.cart_coupon_manager',
-            'elcodi.cart_coupon_manager',
-        ];
+        return ['elcodi.cart_coupon_manager'];
     }
 
     /**

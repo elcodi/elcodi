@@ -7,10 +7,7 @@ services:
     #
     # Factory for entity rule
     #
-    elcodi.core.rule.factory.rule:
-        class: %elcodi.core.rule.factory.rule.class%
+    elcodi.factory.rule:
+        class: %elcodi.factory.rule.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.rule.entity.rule.class%"]]
-
-    elcodi.factory.rule:
-        alias: elcodi.core.rule.factory.rule

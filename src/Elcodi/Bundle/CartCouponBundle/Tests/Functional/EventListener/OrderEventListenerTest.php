@@ -25,7 +25,6 @@ use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Cart\Transformer\CartOrderTransformer;
 use Elcodi\Component\CartCoupon\Entity\Interfaces\CartCouponInterface;
 use Elcodi\Component\CartCoupon\Entity\Interfaces\OrderCouponInterface;
-use Elcodi\Component\CartCoupon\Entity\OrderCoupon;
 
 /**
  * Class OrderEventListenerTest
@@ -77,11 +76,11 @@ class OrderEventListenerTest extends WebTestCase
         $cart = $this->find('cart', 2);
 
         $this
-            ->get('elcodi.cart_event_dispatcher')
+            ->get('elcodi.event_dispatcher.cart')
             ->dispatchCartLoadEvents($cart);
 
         $cartOrderTransformer = $this
-            ->get('elcodi.cart_order_transformer');
+            ->get('elcodi.transformer.cart_order');
 
         $order = $cartOrderTransformer->createOrderFromCart($cart);
 

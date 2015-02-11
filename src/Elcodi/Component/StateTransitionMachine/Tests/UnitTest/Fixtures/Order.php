@@ -18,22 +18,55 @@
 namespace Elcodi\Component\StateTransitionMachine\Tests\UnitTest\Fixtures;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
-use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StatefulInterface;
-use Elcodi\Component\StateTransitionMachine\Entity\Traits\StateLinesTrait;
+use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface;
+use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 
 /**
  * Class Order
  */
-class Order implements StatefulInterface
+class Order
 {
-    use StateLinesTrait;
+    /**
+     * @var StateLineInterface
+     *
+     * Last stateLine in  stateLine stack
+     */
+    protected $LastStateLine;
 
     /**
-     * Construct method
+     * @var Collection
+     *
+     * StateLines for
      */
-    public function __construct()
+    protected $StateLines;
+
+    /**
+     * Get StateLineStack
+     *
+     * @return StateLineStack StateLineStack
+     */
+    public function getStateLineStack()
     {
-        $this->stateLines = new ArrayCollection();
+        return StateLineStack::create(
+            $this->StateLines,
+            $this->LastStateLine
+        );
+    }
+
+    /**
+     * Sets StateLineStack
+     *
+     * @param StateLineStack $StateLineStack StateLineStack
+     *
+     * @return $this Self object
+     */
+    public function setStateLineStack(StateLineStack $StateLineStack)
+    {
+        $this->StateLines = $StateLineStack->getStateLines();
+        $this->LastStateLine = $StateLineStack->getLastStateLine();
+
+        return $this;
     }
 }

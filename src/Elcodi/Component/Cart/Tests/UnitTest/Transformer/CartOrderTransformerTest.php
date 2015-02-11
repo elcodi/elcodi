@@ -23,7 +23,6 @@ use PHPUnit_Framework_TestCase;
 use Elcodi\Component\Cart\Entity\Cart;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Cart\Entity\Order;
-use Elcodi\Component\Cart\Entity\OrderStateLine;
 use Elcodi\Component\Cart\EventDispatcher\OrderEventDispatcher;
 use Elcodi\Component\Cart\Factory\OrderFactory;
 use Elcodi\Component\Cart\Transformer\CartLineOrderLineTransformer;
@@ -78,12 +77,6 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
 
         $orderFactory = $this->getMock('Elcodi\Component\Cart\Factory\OrderFactory', [], [], '', false);
         $order = new Order();
-        $order->setStateLines(new ArrayCollection());
-        $stateLine = new OrderStateLine();
-        $stateLine
-            ->setName('new')
-            ->setOrder($order);
-        $order->addStateLine($stateLine);
         $orderFactory
             ->expects($this->any())
             ->method('create')

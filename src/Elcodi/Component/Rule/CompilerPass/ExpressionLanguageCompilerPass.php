@@ -34,7 +34,7 @@ class ExpressionLanguageCompilerPass implements CompilerPassInterface
     public function process(ContainerBuilder $container)
     {
         $definition = $container->getDefinition(
-            'elcodi.core.rule.service.expression_language'
+            'elcodi.expression_language'
         );
 
         $taggedServices = $container->findTaggedServiceIds(

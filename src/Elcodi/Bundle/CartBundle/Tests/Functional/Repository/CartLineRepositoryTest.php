@@ -41,9 +41,7 @@ class CartLineRepositoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.repository.cart_line',
-        ];
+        return ['elcodi.repository.cart_line'];
     }
 
     /**

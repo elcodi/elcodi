@@ -46,11 +46,11 @@ abstract class AbstractProviderTest extends WebTestCase
         $cart = $this->find('cart', $cartId);
         $address = $this->find('address', $deliveryAddressId);
         $this
-            ->get('elcodi.cart_event_dispatcher')
+            ->get('elcodi.event_dispatcher.cart')
             ->dispatchCartLoadEvents($cart);
 
         $order = $this
-            ->get('elcodi.cart_order_transformer')
+            ->get('elcodi.transformer.cart_order')
             ->createOrderFromCart($cart);
 
         $order->setDeliveryAddress($address);

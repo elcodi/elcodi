@@ -100,7 +100,7 @@ class CartEventListenerTest extends WebTestCase
         $this->assertCount(1, $cartCouponManager->getCoupons($cart));
 
         $this
-            ->get('elcodi.cart_event_dispatcher')
+            ->get('elcodi.event_dispatcher.cart')
             ->dispatchCartLoadEvents($cart);
 
         $this->assertCount(0, $cartCouponManager->getCoupons($cart));
@@ -123,7 +123,7 @@ class CartEventListenerTest extends WebTestCase
         $cart = $this->find('cart', 1);
 
         $this
-            ->get('elcodi.cart_event_dispatcher')
+            ->get('elcodi.event_dispatcher.cart')
             ->dispatchCartLoadEvents($cart);
 
         $this->assertCount(1, $cartCouponManager->getCoupons($cart));

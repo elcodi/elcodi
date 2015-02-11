@@ -3,18 +3,18 @@ services:
     #
     # EventDispatchers
     #
-    elcodi.cart_event_dispatcher:
-        class: %elcodi.cart_event_dispatcher.class%
+    elcodi.event_dispatcher.cart:
+        class: %elcodi.event_dispatcher.cart.class%
         parent: elcodi.core.core.event_dispatcher.abstract
 
-    elcodi.cart_line_event_dispatcher:
-        class: %elcodi.cart_line_event_dispatcher.class%
+    elcodi.event_dispatcher.cart_line:
+        class: %elcodi.event_dispatcher.cart_line.class%
         parent: elcodi.core.core.event_dispatcher.abstract
 
-    elcodi.order_event_dispatcher:
-        class: %elcodi.order_event_dispatcher.class%
+    elcodi.event_dispatcher.order:
+        class: %elcodi.event_dispatcher.order.class%
         parent: elcodi.core.core.event_dispatcher.abstract
 
-    elcodi.order_line_event_dispatcher:
-        class: %elcodi.order_line_event_dispatcher.class%
+    elcodi.event_dispatcher.order_line:
+        class: %elcodi.event_dispatcher.order_line.class%
         parent: elcodi.core.core.event_dispatcher.abstract

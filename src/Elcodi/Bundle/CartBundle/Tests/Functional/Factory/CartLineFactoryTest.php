@@ -41,9 +41,6 @@ class CartLineFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.core.cart.factory.cart_line',
-            'elcodi.factory.cart_line',
-        ];
+        return ['elcodi.factory.cart_line'];
     }
 }

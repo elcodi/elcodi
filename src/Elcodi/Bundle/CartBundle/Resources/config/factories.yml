@@ -7,46 +7,34 @@ services:
     #
     # Factory for entity cart
     #
-    elcodi.core.cart.factory.cart:
-        class: %elcodi.core.cart.factory.cart.class%
+    elcodi.factory.cart:
+        class: %elcodi.factory.cart.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.cart.entity.cart.class%"]]
-
-    elcodi.factory.cart:
-        alias: elcodi.core.cart.factory.cart
 
     #
     # Factory for entity order
     #
-    elcodi.core.cart.factory.order:
-        class: %elcodi.core.cart.factory.order.class%
+    elcodi.factory.order:
+        class: %elcodi.factory.order.class%
         arguments:
             payment_machine_manager: @elcodi.order.payment_states_machine.manager
             shipping_machine_manager: @elcodi.order.shipping_states_machine.manager
         calls:
             - [setEntityNamespace, ["%elcodi.core.cart.entity.order.class%"]]
 
-    elcodi.factory.order:
-        alias: elcodi.core.cart.factory.order
-
     #
     # Factory for entity cart_line
     #
-    elcodi.core.cart.factory.cart_line:
-        class: %elcodi.core.cart.factory.cart_line.class%
+    elcodi.factory.cart_line:
+        class: %elcodi.factory.cart_line.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.cart.entity.cart_line.class%"]]
-
-    elcodi.factory.cart_line:
-        alias: elcodi.core.cart.factory.cart_line
 
     #
     # Factory for entity order_line
     #
-    elcodi.core.cart.factory.order_line:
-        class: %elcodi.core.cart.factory.order_line.class%
+    elcodi.factory.order_line:
+        class: %elcodi.factory.order_line.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.cart.entity.order_line.class%"]]
-
-    elcodi.factory.order_line:
-        alias: elcodi.core.cart.factory.order_line

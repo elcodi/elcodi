@@ -36,10 +36,7 @@ class CartLineOrderLineTransformerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.core.cart.transformer.cart_line_order_line',
-            'elcodi.cart_line_order_line_transformer',
-        ];
+        return ['elcodi.transformer.cart_line_order_line'];
     }
 
     /**
@@ -66,10 +63,10 @@ class CartLineOrderLineTransformerTest extends WebTestCase
          * @var CartOrderTransformer         $cartOrderTransformer
          */
         $cartLineOrderLineTransformer = $this
-            ->get('elcodi.cart_line_order_line_transformer');
+            ->get('elcodi.transformer.cart_line_order_line');
 
         $cartOrderTransformer = $this
-            ->get('elcodi.cart_order_transformer');
+            ->get('elcodi.transformer.cart_order');
 
         /**
          * @var CartInterface     $cart
@@ -79,7 +76,7 @@ class CartLineOrderLineTransformerTest extends WebTestCase
         $cart = $this->find('cart', 2);
 
         $this
-            ->get('elcodi.cart_event_dispatcher')
+            ->get('elcodi.event_dispatcher.cart')
             ->dispatchCartLoadEvents($cart);
 
         $cartLine = $cart->getCartLines()->first();

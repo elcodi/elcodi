@@ -20,9 +20,9 @@ namespace Elcodi\Bundle\CartBundle\Tests\Functional\EventListener;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Tests CartEventListenerTest class
+ * Tests CartLoadEventListenerTest class
  */
-class CartEventListenerTest extends WebTestCase
+class CartLoadEventListenerTest extends WebTestCase
 {
     /**
      * Schema must be loaded in all test cases
@@ -41,6 +41,6 @@ class CartEventListenerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.core.cart.event_listener.cart'];
+        return ['elcodi.event_listener.cart_load'];
     }
 }

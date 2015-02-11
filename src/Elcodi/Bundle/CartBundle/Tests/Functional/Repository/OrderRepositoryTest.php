@@ -41,9 +41,7 @@ class OrderRepositoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.repository.order',
-        ];
+        return ['elcodi.repository.order'];
     }
 
     /**

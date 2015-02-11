@@ -138,7 +138,7 @@ class MachineManager
         $object,
         StateLineStack $stateLineStack,
         $transitionName,
-        $description
+        $description = ''
     )
     {
         $startState = $stateLineStack->getLastStateLine();
@@ -188,7 +188,7 @@ class MachineManager
         $object,
         StateLineStack $stateLineStack,
         $transitionName,
-        $description
+        $description = ''
     )
     {
         $startState = $stateLineStack->getLastStateLine();

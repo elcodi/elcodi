@@ -41,9 +41,6 @@ class RuleFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.core.rule.factory.rule',
-            'elcodi.factory.rule',
-        ];
+        return ['elcodi.factory.rule'];
     }
 }

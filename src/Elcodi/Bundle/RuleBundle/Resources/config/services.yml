@@ -3,12 +3,9 @@ services:
     #
     # Managers
     #
-    elcodi.core.rule.service.rule_manager:
-        class: %elcodi.core.rule.service.rule_manager.class%
+    elcodi.rule_manager:
+        class: %elcodi.rule_manager.class%
         lazy: true
         arguments:
-            expression_language: @elcodi.core.rule.service.expression_language
-            context_provider: @elcodi.core.rule.context_collector
-
-    elcodi.rule_manager:
-        alias: elcodi.core.rule.service.rule_manager
+            expression_language: @elcodi.expression_language
+            context_provider: @elcodi.expression_language_context_collector

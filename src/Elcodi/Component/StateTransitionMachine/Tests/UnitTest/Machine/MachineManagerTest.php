@@ -17,7 +17,10 @@
 
 namespace Elcodi\Component\StateTransitionMachine\Tests\UnitTest\Machine;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 use Elcodi\Component\StateTransitionMachine\Entity\StateLine;
+use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 use Elcodi\Component\StateTransitionMachine\Tests\UnitTest\Fixtures\AbstractStateTransitionTest;
 use Elcodi\Component\StateTransitionMachine\Tests\UnitTest\Fixtures\Order;
 
@@ -36,9 +39,18 @@ class MachineManagerTest extends AbstractStateTransitionTest
         $machineManager = $this->getMachineManager(0);
 
         $order = new Order();
-        $stateLine = new StateLine();
-        $order->addStateLine($stateLine);
-        $machineManager->initialize($order, '');
+        $stateLineStack = StateLineStack::create(
+            new ArrayCollection(),
+            null
+        );
+        $order->setStateLineStack($stateLineStack);
+
+        $stateLineStack->addStateLine(new StateLine());
+        $machineManager->initialize(
+            $order,
+            $stateLineStack,
+            ''
+        );
     }
 
     /**
@@ -49,8 +61,20 @@ class MachineManagerTest extends AbstractStateTransitionTest
         $machineManager = $this->getMachineManager(1);
 
         $order = new Order();
-        $stateLine = $machineManager->initialize($order, '');
-        $this->assertEquals('unpaid', $stateLine->getName());
+        $stateLineStack = StateLineStack::create(
+            new ArrayCollection(),
+            null
+        );
+        $order->setStateLineStack($stateLineStack);
+
+        $stateLineStack = $machineManager->initialize(
+            $order,
+            $stateLineStack,
+            ''
+        );
+
+        $this->assertEquals('unpaid', $stateLineStack->getLastStateLine()->getName());
+        $this->assertCount(1, $stateLineStack->getStateLines());
     }
 
     /**
@@ -63,7 +87,18 @@ class MachineManagerTest extends AbstractStateTransitionTest
         $machineManager = $this->getMachineManager(0);
 
         $order = new Order();
-        $machineManager->transition($order, 'pay', '');
+        $stateLineStack = StateLineStack::create(
+            new ArrayCollection(),
+            null
+        );
+        $order->setStateLineStack($stateLineStack);
+
+        $machineManager->transition(
+            $order,
+            $stateLineStack,
+            'pay',
+            ''
+        );
     }
 
     /**
@@ -71,16 +106,30 @@ class MachineManagerTest extends AbstractStateTransitionTest
      */
     public function testMakeTransitionInitialized()
     {
-        $machineManager = $this->getMachineManager(4);
+        $machineManager = $this->getMachineManager(5);
 
         $order = new Order();
-        $machineManager->initialize($order, '');
-        $transition = $machineManager->transition($order, 'pay', '');
+        $stateLineStack = StateLineStack::create(
+            new ArrayCollection(),
+            null
+        );
+        $order->setStateLineStack($stateLineStack);
 
-        $this->assertEquals('pay', $transition->getName());
-        $this->assertEquals('paid', $transition->getFinal()->getName());
-        $this->assertEquals('paid', $order->getLastStateLine()->getName());
-        $this->assertEquals('paid', $order->getStateLines()->last()->getName());
+        $stateLineStack = $machineManager->initialize(
+            $order,
+            $stateLineStack,
+            ''
+        );
+
+        $stateLineStack = $machineManager->transition(
+            $order,
+            $stateLineStack,
+            'pay',
+            ''
+        );
+
+        $this->assertEquals('paid', $stateLineStack->getLastStateLine()->getName());
+        $this->assertEquals('paid', $stateLineStack->getStateLines()->last()->getName());
     }
 
     /**
@@ -93,7 +142,18 @@ class MachineManagerTest extends AbstractStateTransitionTest
         $machineManager = $this->getMachineManager(0);
 
         $order = new Order();
-        $machineManager->reachState($order, 'paid', '');
+        $stateLineStack = StateLineStack::create(
+            new ArrayCollection(),
+            null
+        );
+        $order->setStateLineStack($stateLineStack);
+
+        $machineManager->reachState(
+            $order,
+            $stateLineStack,
+            'paid',
+            ''
+        );
     }
 
     /**
@@ -101,15 +161,29 @@ class MachineManagerTest extends AbstractStateTransitionTest
      */
     public function testReachStateInitialized()
     {
-        $machineManager = $this->getMachineManager(4);
+        $machineManager = $this->getMachineManager(5);
 
         $order = new Order();
-        $machineManager->initialize($order, '');
-        $transition = $machineManager->reachState($order, 'paid', '');
+        $stateLineStack = StateLineStack::create(
+            new ArrayCollection(),
+            null
+        );
+        $order->setStateLineStack($stateLineStack);
+        $stateLineStack = $machineManager->initialize(
+            $order,
+            $stateLineStack,
+            ''
+        );
+        $order->setStateLineStack($stateLineStack);
 
-        $this->assertEquals('pay', $transition->getName());
-        $this->assertEquals('paid', $transition->getFinal()->getName());
-        $this->assertEquals('paid', $order->getLastStateLine()->getName());
-        $this->assertEquals('paid', $order->getStateLines()->last()->getName());
+        $stateLineStack = $machineManager->reachState(
+            $order,
+            $stateLineStack,
+            'paid',
+            ''
+        );
+
+        $this->assertEquals('paid', $stateLineStack->getLastStateLine()->getName());
+        $this->assertEquals('paid', $stateLineStack->getStateLines()->last()->getName());
     }
 }

@@ -37,10 +37,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.core.cart.service.cart_manager',
-            'elcodi.cart_manager',
-        ];
+        return ['elcodi.cart_manager'];
     }
 
     /**
@@ -98,7 +95,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
             ->setQuantity(1);
 
         $this
-            ->get('elcodi.cart_event_dispatcher')
+            ->get('elcodi.event_dispatcher.cart')
             ->dispatchCartLoadEvents($this->cart);
     }
 

@@ -20,7 +20,6 @@ namespace Elcodi\Bundle\CartBundle\Tests\Functional\Transformer;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
-use Elcodi\Component\Cart\Entity\Interfaces\OrderStateLineInterface;
 use Elcodi\Component\Cart\Transformer\CartOrderTransformer;
 
 /**
@@ -49,10 +48,7 @@ class CartOrderTransformerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.core.cart.transformer.cart_order',
-            'elcodi.cart_order_transformer',
-        ];
+        return ['elcodi.transformer.cart_order'];
     }
 
     /**
@@ -78,7 +74,7 @@ class CartOrderTransformerTest extends WebTestCase
          * @var CartOrderTransformer $cartOrderTransformer
          */
         $cartOrderTransformer = $this
-            ->get('elcodi.cart_order_transformer');
+            ->get('elcodi.transformer.cart_order');
 
         /**
          * @var CartInterface $cart
@@ -86,53 +82,10 @@ class CartOrderTransformerTest extends WebTestCase
         $this->cart = $this->find('cart', 2);
 
         $this
-            ->get('elcodi.cart_event_dispatcher')
+            ->get('elcodi.event_dispatcher.cart')
             ->dispatchCartLoadEvents($this->cart);
 
         $this->order = $cartOrderTransformer->createOrderFromCart($this->cart);
-    }
-
-    /**
-     * test createFromCart method
-     *
-     * @group order
-     */
-    public function testCreateOrderFromCart()
-    {
-        $orderStatePointOfEntry = $this
-            ->getParameter('elcodi.core.cart.order_state_transition_machine_point_of_entry');
-
-        $this->assertInstanceOf('Elcodi\Component\Cart\Entity\Interfaces\OrderInterface', $this->order);
-        $this->assertSame($this->order->getCart(), $this->cart);
-        $this->assertTrue($this->cart->isOrdered());
-        $this->assertCount(2, $this->order->getOrderLines());
-        $this->assertInstanceOf(
-            'Elcodi\Component\Cart\Entity\Interfaces\OrderStateLineInterface',
-            $this->order->getLastStateLine()
-        );
-
-        $this->assertEquals(
-            $orderStatePointOfEntry,
-            $this
-                ->order
-                ->getLastStateLine()
-                ->getName()
-        );
-
-        $orderStateLines = $this
-            ->order
-            ->getStateLines();
-
-        $this->assertCount(1, $orderStateLines);
-
-        $this
-            ->getObjectManager('order')
-            ->clear();
-
-        $this->assertCount(
-            1,
-            $this->findAll('order')
-        );
     }
 
     /**
@@ -146,7 +99,7 @@ class CartOrderTransformerTest extends WebTestCase
          * @var $order OrderInterface
          */
         $order = $this
-            ->get('elcodi.cart_order_transformer')
+            ->get('elcodi.transformer.cart_order')
             ->createOrderFromCart($this->cart);
 
         $this->assertEquals(2, $order->getOrderLines()->count());

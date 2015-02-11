@@ -3,24 +3,24 @@ services:
     #
     # ExpressionLanguage
     #
-    elcodi.core.rule.service.expression_language:
-        class: %elcodi.core.rule.service.expression_language.class%
+    elcodi.expression_language:
+        class: %elcodi.expression_language.class%
 
-    elcodi.core.rule.context_collector:
-        class: %elcodi.core.rule.context_collector.class%
+    elcodi.expression_language_context_collector:
+        class: %elcodi.expression_language_context_collector.class%
 
     #
     # ExpressionLanguage providers
     #
-    elcodi.core.rule.expression_language.container_provider:
-        class: %elcodi.core.rule.expression_language.container_provider.class%
+    elcodi.expression_language_container_provider:
+        class: %elcodi.expression_language_container_provider.class%
         arguments:
             - @service_container
         tags:
             - { name: elcodi.rule_configuration }
 
-    elcodi.core.rule.expression_language.rule_provider:
-        class: %elcodi.core.rule.expression_language.rule_provider.class%
+    elcodi.expression_language_rule_provider:
+        class: %elcodi.expression_language_rule_provider.class%
         arguments:
             - @elcodi.repository.rule
             - @elcodi.rule_manager
