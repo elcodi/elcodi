@@ -147,7 +147,6 @@ class ReferralCouponManagerTest extends WebTestCase
             ->create();
 
         $newCustomer
-            ->setUsername('customer3')
             ->setPassword('customer3')
             ->setEmail('customer3@customer.com');
 

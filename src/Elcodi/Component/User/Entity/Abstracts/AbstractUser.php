@@ -37,13 +37,6 @@ abstract class AbstractUser implements AbstractUserInterface
     /**
      * @var string
      *
-     * Username
-     */
-    protected $username;
-
-    /**
-     * @var string
-     *
      * Password
      */
     protected $password;
@@ -235,27 +228,15 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Set username
-     *
-     * @param string $username Username
-     *
-     * @return $this Self object
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    /**
      * Get username
+     *
+     * Just for symfony security purposes
      *
      * @return String Username
      */
     public function getUsername()
     {
-        return $this->username;
+        return $this->email;
     }
 
     /**

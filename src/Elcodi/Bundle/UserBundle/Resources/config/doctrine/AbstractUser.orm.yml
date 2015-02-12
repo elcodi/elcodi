@@ -5,11 +5,6 @@ Elcodi\Component\User\Entity\Abstracts\AbstractUser:
             column: gender
             type: integer
             nullable: true
-        username:
-            column: username
-            type: string
-            length: 255
-            nullable: true
         password:
             column: password
             type: string
