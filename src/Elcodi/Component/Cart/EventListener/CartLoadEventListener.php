@@ -172,11 +172,11 @@ class CartLoadEventListener
 
         if (!$cart->getCartLines()->isEmpty()) {
             $this->cartObjectManager->persist($cart);
-        }
 
-        $this
-            ->cartObjectManager
-            ->flush();
+            $this
+                ->cartObjectManager
+                ->flush($cart);
+        }
     }
 
     /**
