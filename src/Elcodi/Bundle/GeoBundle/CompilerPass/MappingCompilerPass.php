@@ -79,6 +79,13 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
             )
             ->addEntityMapping(
                 $container,
+                'elcodi.core.geo.entity.lite_address.manager',
+                'elcodi.core.geo.entity.lite_address.class',
+                'elcodi.core.geo.entity.lite_address.mapping_file',
+                'elcodi.core.geo.entity.lite_address.enabled'
+            )
+            ->addEntityMapping(
+                $container,
                 'elcodi.core.geo.entity.zone.manager',
                 'elcodi.core.geo.entity.zone.class',
                 'elcodi.core.geo.entity.zone.mapping_file',

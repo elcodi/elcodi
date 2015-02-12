@@ -15,6 +15,14 @@ services:
     elcodi.factory.address:
         alias: elcodi.core.geo.factory.address
 
+    elcodi.core.geo.factory.lite_address:
+            class: %elcodi.core.geo.factory.lite_address.class%
+            calls:
+                - [setEntityNamespace, ["%elcodi.core.geo.entity.lite_address.class%"]]
+
+    elcodi.factory.lite_address:
+        alias: elcodi.core.geo.factory.lite_address
+
     elcodi.core.geo.factory.state:
         class: %elcodi.core.geo.factory.state.class%
         calls:

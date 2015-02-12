@@ -1,0 +1,72 @@
+Elcodi\Component\Geo\Entity\LiteAddress:
+    type: entity
+    repositoryClass: Elcodi\Component\Geo\Repository\LiteAddressRepository
+    table: lite_address
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        recipientName:
+            column: recipient_name
+            type: string
+            length: 255
+            nullable: true
+        recipientSurname:
+            column: recipient_surname
+            type: string
+            length: 255
+            nullable: true
+        address:
+            column: address
+            type: string
+            length: 255
+            nullable: false
+        addressMore:
+            column: address_more
+            type: string
+            length: 255
+            nullable: true
+        phone:
+            column: phone
+            type: string
+            length: 255
+            nullable: false
+        mobile:
+            column: mobile
+            type: string
+            length: 255
+            nullable: true
+        cityId:
+            column: city_id
+            type: string
+            length: 255
+            nullable: false
+        postalCode:
+            column: postal_code
+            type: string
+            length: 255
+            nullable: false
+        comments:
+            column: comments
+            type: text
+            nullable: true
+        createdAt:
+            column: created_at
+            type: datetime
+        updatedAt:
+            column: updated_at
+            type: datetime
+        enabled:
+            column: enabled
+            type: boolean
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]
