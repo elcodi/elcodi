@@ -125,6 +125,7 @@ class CouponManager
             ->setValidFrom($dateFrom)
             ->setValidTo($dateTo)
             ->setRule($coupon->getRule())
+            ->setEnforcement($coupon->getEnforcement())
             ->setEnabled(true);
 
         return $couponGenerated;
