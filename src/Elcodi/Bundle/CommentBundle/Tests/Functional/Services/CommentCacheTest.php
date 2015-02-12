@@ -51,15 +51,6 @@ class CommentCacheTest extends WebTestCase
      */
     public function testLoad()
     {
-        $user = $this
-            ->getFactory('customer')
-            ->create()
-            ->setUsername('customer')
-            ->setPassword('customer')
-            ->setEmail('customer@customer.com');
-
-        $this->flush($user);
-
         $commentCache = $this->get('elcodi.comment_cache');
         $commentManager = $this->get('elcodi.comment_manager');
         $source = 'product-1';

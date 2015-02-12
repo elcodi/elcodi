@@ -45,7 +45,6 @@ class CustomerData extends AbstractFixture
          */
         $customer1 = $customerFactory
             ->create()
-            ->setUsername('customer')
             ->setPassword('customer')
             ->setEmail('customer@customer.com');
 
@@ -57,7 +56,6 @@ class CustomerData extends AbstractFixture
          */
         $customer2 = $customerFactory
             ->create()
-            ->setUsername('customer2')
             ->setPassword('customer2')
             ->setEmail('customer2@customer.com');
 

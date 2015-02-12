@@ -131,15 +131,6 @@ interface AbstractUserInterface
     public function getEmail();
 
     /**
-     * Set username
-     *
-     * @param string $username Username
-     *
-     * @return $this Self object
-     */
-    public function setUsername($username);
-
-    /**
      * Get birthday
      *
      * @return DateTime
