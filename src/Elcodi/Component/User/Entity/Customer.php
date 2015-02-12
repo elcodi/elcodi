@@ -439,6 +439,6 @@ class Customer extends AbstractUser implements CustomerInterface
      */
     public function __sleep()
     {
-        return array('id', 'username', 'email');
+        return array('id', 'email');
     }
 }
