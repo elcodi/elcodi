@@ -42,6 +42,13 @@ services:
         tags:
             - { name: kernel.event_listener, event: cart_coupon.onapply, method: checkCoupon, priority: 32 }
 
+    elcodi.core.cart_coupon.event_listener.minimum_price:
+        class: %elcodi.core.cart_coupon.event_listener.minimum_price.class%
+        arguments:
+            - @elcodi.currency_converter
+        tags:
+            - { name: kernel.event_listener, event: cart_coupon.onapply, method: checkMinimumPrice, priority: 16 }
+
     elcodi.core.cart_coupon.event_listener.cart_coupon_rules:
         class: %elcodi.core.cart_coupon.event_listener.cart_coupon_rules.class%
         arguments:
