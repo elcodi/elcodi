@@ -40,4 +40,43 @@ class CustomerRepository extends EntityRepository implements UserEmaileableInter
             'email' => $email,
         ));
     }
+
+    /**
+     * Find a user address by it's id
+     *
+     * @param integer $customerId The customer Id
+     * @param integer $addressId  The address Id
+     *
+     * @return bool
+     */
+    public function findAddress($customerId, $addressId)
+    {
+        $response = $this
+            ->createQueryBuilder('c')
+            ->select(
+                ['c', 'a']
+            )
+            ->join('c.addresses', 'a')
+            ->where('c.id = :customerId')
+            ->andWhere('a.id = :addressId')
+            ->setParameter('customerId', $customerId)
+            ->setParameter('addressId', $addressId)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult();
+
+        if (!empty($response)) {
+            /**
+             * @var CustomerInterface $customer
+             */
+            $customer  = reset($response);
+            $addresses = $customer->getAddresses();
+
+            if ($addresses ) {
+                return $addresses->first();
+            }
+        }
+
+        return false;
+    }
 }

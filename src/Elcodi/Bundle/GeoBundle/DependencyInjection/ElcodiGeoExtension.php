@@ -108,6 +108,11 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
             "elcodi.core.geo.entity.address.manager"                      => $config['mapping']['address']['manager'],
             "elcodi.core.geo.entity.address.enabled"                      => $config['mapping']['address']['enabled'],
 
+            "elcodi.core.geo.entity.lite_address.class"                   => $config['mapping']['lite_address']['class'],
+            "elcodi.core.geo.entity.lite_address.mapping_file"            => $config['mapping']['lite_address']['mapping_file'],
+            "elcodi.core.geo.entity.lite_address.manager"                 => $config['mapping']['lite_address']['manager'],
+            "elcodi.core.geo.entity.lite_address.enabled"                 => $config['mapping']['lite_address']['enabled'],
+
             "elcodi.core.geo.entity.zone.class"                           => $config['mapping']['zone']['class'],
             "elcodi.core.geo.entity.zone.mapping_file"                    => $config['mapping']['zone']['mapping_file'],
             "elcodi.core.geo.entity.zone.manager"                         => $config['mapping']['zone']['manager'],
@@ -183,6 +188,7 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
             'Elcodi\Component\Geo\Entity\Interfaces\CityInterface'                 => 'elcodi.core.geo.entity.city.class',
             'Elcodi\Component\Geo\Entity\Interfaces\PostalCodeInterface'           => 'elcodi.core.geo.entity.postal_code.class',
             'Elcodi\Component\Geo\Entity\Interfaces\AddressInterface'              => 'elcodi.core.geo.entity.address.class',
+            'Elcodi\Component\Geo\Entity\Interfaces\LiteAddressInterface'          => 'elcodi.core.geo.entity.lite_address.class',
             'Elcodi\Component\Geo\Entity\Interfaces\ZoneInterface'                 => 'elcodi.core.geo.entity.zone.class',
             'Elcodi\Component\Geo\Entity\Interfaces\ZoneMemberInterface'           => 'elcodi.core.geo.entity.zone_member.class',
             'Elcodi\Component\Geo\Entity\Interfaces\ZoneCountryMemberInterface'    => 'elcodi.core.geo.entity.zone_country_member.class',

@@ -42,7 +42,7 @@ Elcodi\Component\User\Entity\Customer:
 
     oneToOne:
         deliveryAddress:
-            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\AddressInterface
+            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\LiteAddressInterface
             joinColumn:
                 name: delivery_address_id
                 referencedColumnName: id
@@ -51,7 +51,7 @@ Elcodi\Component\User\Entity\Customer:
             cascade: [ "persist" ]
 
         invoiceAddress:
-            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\AddressInterface
+            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\LiteAddressInterface
             joinColumn:
                 name: invoice_address_id
                 referencedColumnName: id
@@ -69,7 +69,7 @@ Elcodi\Component\User\Entity\Customer:
 
     manyToMany:
         addresses:
-            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\AddressInterface
+            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\LiteAddressInterface
             joinTable:
                 name: customer_address
                 joinColumns:

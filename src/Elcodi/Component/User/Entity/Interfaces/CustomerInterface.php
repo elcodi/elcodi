@@ -21,7 +21,7 @@ use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
-use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
+use Elcodi\Component\Geo\Entity\Interfaces\LiteAddressInterface;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 
 /**
@@ -161,20 +161,20 @@ interface CustomerInterface extends AbstractUserInterface
     /**
      * Add address
      *
-     * @param AddressInterface $address
+     * @param LiteAddressInterface $address
      *
      * @return $this Self object
      */
-    public function addAddress(AddressInterface $address);
+    public function addAddress(LiteAddressInterface $address);
 
     /**
      * Remove address
      *
-     * @param AddressInterface $address
+     * @param LiteAddressInterface $address
      *
      * @return $this Self object
      */
-    public function removeAddress(AddressInterface $address);
+    public function removeAddress(LiteAddressInterface $address);
 
     /**
      * Set addresses
@@ -195,32 +195,32 @@ interface CustomerInterface extends AbstractUserInterface
     /**
      * Set Delivery Address
      *
-     * @param AddressInterface $deliveryAddress
+     * @param LiteAddressInterface $deliveryAddress
      *
      * @return $this Self object
      */
-    public function setDeliveryAddress(AddressInterface $deliveryAddress = null);
+    public function setDeliveryAddress(LiteAddressInterface $deliveryAddress = null);
 
     /**
      * Get Delivery address
      *
-     * @return AddressInterface
+     * @return LiteAddressInterface
      */
     public function getDeliveryAddress();
 
     /**
      * Set Invoice Address
      *
-     * @param AddressInterface $invoiceAddress
+     * @param LiteAddressInterface $invoiceAddress
      *
      * @return $this Self object
      */
-    public function setInvoiceAddress(AddressInterface $invoiceAddress = null);
+    public function setInvoiceAddress(LiteAddressInterface $invoiceAddress = null);
 
     /**
      * Get Invoice address
      *
-     * @return AddressInterface
+     * @return LiteAddressInterface
      */
     public function getInvoiceAddress();
 

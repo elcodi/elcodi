@@ -22,6 +22,7 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
+use Elcodi\Component\Geo\Entity\Interfaces\LiteAddressInterface;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 use Elcodi\Component\User\Entity\Abstracts\AbstractUser;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
@@ -311,11 +312,11 @@ class Customer extends AbstractUser implements CustomerInterface
     /**
      * Add address
      *
-     * @param AddressInterface $address
+     * @param LiteAddressInterface $address
      *
      * @return $this Self object
      */
-    public function addAddress(AddressInterface $address)
+    public function addAddress(LiteAddressInterface $address)
     {
         $this->addresses->add($address);
 
@@ -325,11 +326,11 @@ class Customer extends AbstractUser implements CustomerInterface
     /**
      * Remove address
      *
-     * @param AddressInterface $address
+     * @param LiteAddressInterface $address
      *
      * @return $this Self object
      */
-    public function removeAddress(AddressInterface $address)
+    public function removeAddress(LiteAddressInterface $address)
     {
         $this->addresses->removeElement($address);
 
@@ -363,11 +364,11 @@ class Customer extends AbstractUser implements CustomerInterface
     /**
      * Set Delivery Address
      *
-     * @param AddressInterface $deliveryAddress
+     * @param LiteAddressInterface $deliveryAddress
      *
      * @return $this Self object
      */
-    public function setDeliveryAddress(AddressInterface $deliveryAddress = null)
+    public function setDeliveryAddress(LiteAddressInterface $deliveryAddress = null)
     {
         $this->deliveryAddress = $deliveryAddress;
 
@@ -377,7 +378,7 @@ class Customer extends AbstractUser implements CustomerInterface
     /**
      * Get Delivery address
      *
-     * @return AddressInterface
+     * @return LiteAddressInterface
      */
     public function getDeliveryAddress()
     {
@@ -387,11 +388,11 @@ class Customer extends AbstractUser implements CustomerInterface
     /**
      * Set Invoice Address
      *
-     * @param AddressInterface $invoiceAddress
+     * @param LiteAddressInterface $invoiceAddress
      *
      * @return $this Self object
      */
-    public function setInvoiceAddress(AddressInterface $invoiceAddress = null)
+    public function setInvoiceAddress(LiteAddressInterface $invoiceAddress = null)
     {
         $this->invoiceAddress = $invoiceAddress;
 
@@ -401,7 +402,7 @@ class Customer extends AbstractUser implements CustomerInterface
     /**
      * Get Invoice address
      *
-     * @return AddressInterface
+     * @return LiteAddressInterface
      */
     public function getInvoiceAddress()
     {

@@ -47,6 +47,13 @@ services:
         arguments: [ %elcodi.core.geo.entity.address.class% ]
 
     #
+    # Repository for entity lite address
+    #
+    elcodi.repository.lite_address:
+        parent: elcodi.abstract_repository
+        arguments: [ %elcodi.core.geo.entity.lite_address.class% ]
+
+    #
     # Repository for entity zone
     #
     elcodi.repository.zone:

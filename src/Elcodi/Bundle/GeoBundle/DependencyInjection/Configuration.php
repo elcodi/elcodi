@@ -81,6 +81,13 @@ class Configuration extends AbstractConfiguration
                             true
                         ))
                         ->append($this->addMappingNode(
+                            'lite_address',
+                            'Elcodi\Component\Geo\Entity\LiteAddress',
+                            '@ElcodiGeoBundle/Resources/config/doctrine/LiteAddress.orm.yml',
+                            'default',
+                            true
+                        ))
+                        ->append($this->addMappingNode(
                             'zone',
                             'Elcodi\Component\Geo\Entity\Zone',
                             '@ElcodiGeoBundle/Resources/config/doctrine/Zone.orm.yml',
@@ -135,7 +142,7 @@ class Configuration extends AbstractConfiguration
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('client')
-                            ->defaultValue('elcodi.geo.geodata_populator_adapter')
+                            ->defaultValue('elcodi.geo.dummy_populator_adapter')
                         ->end()
                     ->end()
                 ->end()
