@@ -125,6 +125,13 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
                 'elcodi.core.geo.entity.zone_postal_code_member.class',
                 'elcodi.core.geo.entity.zone_postal_code_member.mapping_file',
                 'elcodi.core.geo.entity.zone_postal_code_member.enabled'
+            )
+            ->addEntityMapping(
+                $container,
+                'elcodi.core.geo.entity.location.manager',
+                'elcodi.core.geo.entity.location.class',
+                'elcodi.core.geo.entity.location.mapping_file',
+                'elcodi.core.geo.entity.location.enabled'
             );
     }
 }

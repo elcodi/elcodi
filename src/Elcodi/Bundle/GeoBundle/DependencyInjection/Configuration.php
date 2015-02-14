@@ -129,6 +129,13 @@ class Configuration extends AbstractConfiguration
                             'default',
                             true
                         ))
+                        ->append($this->addMappingNode(
+                            'location',
+                            'Elcodi\Component\Geo\Entity\Location',
+                            '@ElcodiGeoBundle/Resources/config/doctrine/Location.orm.yml',
+                            'default',
+                            true
+                        ))
                     ->end()
                 ->end()
                 ->arrayNode('populator')

@@ -10,6 +10,7 @@ parameters:
     elcodi.core.geo.factory.postal_code.class: Elcodi\Component\Geo\Factory\PostalCodeFactory
     elcodi.core.geo.factory.address.class: Elcodi\Component\Geo\Factory\AddressFactory
     elcodi.core.geo.factory.zone.class: Elcodi\Component\Geo\Factory\ZoneFactory
+    elcodi.core.geo.factory.location.class: Elcodi\Component\Geo\Factory\LocationFactory
 
     #
     # Commands

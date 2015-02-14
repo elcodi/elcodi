@@ -62,3 +62,8 @@ services:
 
     elcodi.factory.zone:
         alias: elcodi.core.geo.factory.zone
+
+    elcodi.factory.location:
+        class: %elcodi.core.geo.factory.location.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.core.geo.entity.location.class%"]]

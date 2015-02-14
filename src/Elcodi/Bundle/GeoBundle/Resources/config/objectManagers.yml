@@ -30,3 +30,7 @@ services:
     elcodi.object_manager.zone:
         parent: elcodi.abstract_manager
         arguments: [ %elcodi.core.geo.entity.zone.class% ]
+
+    elcodi.object_manager.location:
+        parent: elcodi.abstract_manager
+        arguments: [ %elcodi.core.geo.entity.location.class% ]

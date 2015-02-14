@@ -142,6 +142,11 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
             "elcodi.core.geo.entity.zone_postal_code_member.mapping_file" => $config['mapping']['zone_postal_code_member']['mapping_file'],
             "elcodi.core.geo.entity.zone_postal_code_member.manager"      => $config['mapping']['zone_postal_code_member']['manager'],
             "elcodi.core.geo.entity.zone_postal_code_member.enabled"      => $config['mapping']['zone_postal_code_member']['enabled'],
+
+            "elcodi.core.geo.entity.location.class"                       => $config['mapping']['location']['class'],
+            "elcodi.core.geo.entity.location.mapping_file"                => $config['mapping']['location']['mapping_file'],
+            "elcodi.core.geo.entity.location.manager"                     => $config['mapping']['location']['manager'],
+            "elcodi.core.geo.entity.location.enabled"                     => $config['mapping']['location']['enabled'],
         ];
     }
 
@@ -190,6 +195,7 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
             'Elcodi\Component\Geo\Entity\Interfaces\ZoneProvinceMemberInterface'   => 'elcodi.core.geo.entity.zone_province_member.class',
             'Elcodi\Component\Geo\Entity\Interfaces\ZoneCityMemberInterface'       => 'elcodi.core.geo.entity.zone_city_member.class',
             'Elcodi\Component\Geo\Entity\Interfaces\ZonePostalCodeMemberInterface' => 'elcodi.core.geo.entity.zone_postal_code_member.class',
+            'Elcodi\Component\Geo\Entity\Interfaces\LocationInterface'             => 'elcodi.core.geo.entity.location.class',
         ];
     }
 

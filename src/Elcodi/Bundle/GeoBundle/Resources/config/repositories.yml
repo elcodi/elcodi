@@ -94,3 +94,10 @@ services:
     elcodi.repository.zone_postal_code_member:
         parent: elcodi.abstract_repository
         arguments: [ %elcodi.core.geo.entity.zone_postal_code_member.class% ]
+
+    #
+    # Repository for entity location
+    #
+    elcodi.repository.location:
+        parent: elcodi.abstract_repository
+        arguments: [ %elcodi.core.geo.entity.location.class% ]
