@@ -51,4 +51,4 @@ services:
     #
     elcodi.repository.location:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.geo.entity.location.class% ]
+        arguments: [ %elcodi.entity.location.class% ]
