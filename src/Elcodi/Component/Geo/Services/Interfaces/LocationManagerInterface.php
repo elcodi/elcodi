@@ -2,6 +2,8 @@
 
 namespace Elcodi\Component\Geo\Services\Interfaces;
 
+use Elcodi\Component\Geo\LocationData\LocationData;
+
 /**
  * Interface LocationManagerInterface
  */
@@ -10,46 +12,46 @@ interface LocationManagerInterface
     /**
      * Get all the root locations.
      *
-     * @return LocationIdentifiedCollectionInterface[]
+     * @return LocationData[]
      */
     public function getRootLocations();
 
     /**
      * Get the children given a location id.
      *
-     * @param string|array $ids The location Ids or a single id.
+     * @param string $id The location Id.
      *
-     * @return LocationIdentifiedCollectionInterface[]
+     * @return LocationData[]
      */
-    public function getChildren($ids);
+    public function getChildren($id);
 
     /**
      * Get the parents given a location id.
      *
-     * @param string|array $ids The location Ids or a single id.
+     * @param string $id The location Id.
      *
-     * @return LocationIdentifiedCollectionInterface[]
+     * @return LocationData[]
      */
-    public function getParents($ids);
+    public function getParents($id);
 
     /**
      * Get the full location info given it's id.
      *
-     * @param string|array $ids The location Ids or a single id.
+     * @param string $id The location id.
      *
-     * @return LocationIdentifiedCollectionInterface[]
+     * @return LocationData
      */
-    public function getLocation($ids);
+    public function getLocation($id);
 
     /**
      * Get the hierarchy given a location sorted from root to the given
      * location.
      *
-     * @param string|array $ids The location Ids or a single id.
+     * @param string $id The location id.
      *
-     * @return LocationIdentifiedCollectionInterface[]
+     * @return LocationData
      */
-    public function getHierarchy($ids);
+    public function getHierarchy($id);
 
     /**
      * Checks if the first received id is contained between the rest of ids
