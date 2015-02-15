@@ -3,8 +3,7 @@
 namespace Elcodi\Bundle\GeoBundle\Tests\Functional\Services;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
-use Elcodi\Component\Geo\Entity\Interfaces\LocationInterface;
-use Elcodi\Component\Geo\Services\Interfaces\LocationIdentifiedCollectionInterface;
+use Elcodi\Component\Geo\ValueObject\LocationData;
 use Elcodi\Component\Geo\Services\LocationManager;
 
 class LocationManagerTest extends WebTestCase
@@ -57,7 +56,9 @@ class LocationManagerTest extends WebTestCase
      */
     public function testGetRootLocations()
     {
-        $rootLocations = $this->locationManager->getRootLocations();
+        $rootLocations = $this
+            ->locationManager
+            ->getRootLocations();
 
         $this->assertCount(
             1,
@@ -66,13 +67,13 @@ class LocationManagerTest extends WebTestCase
         );
 
         /**
-         * @var LocationInterface $location
+         * @var LocationData $location
          */
         $location = reset($rootLocations);
         $this->assertInstanceOf(
-            'Elcodi\Component\Geo\Entity\Interfaces\LocationInterface',
+            'Elcodi\Component\Geo\ValueObject\LocationData',
             $location,
-            'The response should be a LocationInterface'
+            'The response should be a LocationData'
         );
 
         $this->assertEquals(
@@ -84,7 +85,9 @@ class LocationManagerTest extends WebTestCase
 
     public function testGetChildren()
     {
-        $locations = $this->locationManager->getChildren('ES');
+        $locations = $this
+            ->locationManager
+            ->getChildren('ES');
 
         $this->assertCount(
             1,
@@ -93,14 +96,14 @@ class LocationManagerTest extends WebTestCase
         );
 
         /**
-         * @var LocationInterface $children
+         * @var LocationData $children
          */
-        $children = reset($locations->toArray());
+        $children = reset($locations);
 
         $this->assertInstanceOf(
-            'Elcodi\Component\Geo\Entity\Interfaces\LocationInterface',
+            'Elcodi\Component\Geo\ValueObject\LocationData',
             $children,
-            'The response should be a LocationInterface'
+            'The response should be a LocationData'
         );
 
         $this->assertEquals(
@@ -110,31 +113,33 @@ class LocationManagerTest extends WebTestCase
         );
     }
 
-    public function testGetChildrenParentNotFound()
+    public function testGetChildrenLocationNotFound()
     {
-        $locations = $this->locationManager->getChildren('UNEXISTENT');
-
-        $this->assertCount(
-            0,
-            $locations,
-            'We only expect one location to be returned'
+        $this->setExpectedException(
+            'Doctrine\ORM\EntityNotFoundException',
+            'Entity was not found.'
         );
+        $this->locationManager->getChildren('UNEXISTENT');
     }
 
     public function testGetChildrenNotFound()
     {
-        $locations = $this->locationManager->getChildren('UNEXISTENT');
+        $locations = $this
+            ->locationManager
+            ->getChildren('ES_CA_VO_SantCeloni');
 
         $this->assertCount(
             0,
             $locations,
-            'We only expect one location to be returned'
+            'We don\'t expect any location to be returned'
         );
     }
 
     public function testGetParents()
     {
-        $locations = $this->locationManager->getParents('ES_CA');
+        $locations = $this
+            ->locationManager
+            ->getParents('ES_CA');
 
         $this->assertCount(
             1,
@@ -143,14 +148,14 @@ class LocationManagerTest extends WebTestCase
         );
 
         /**
-         * @var LocationInterface $children
+         * @var LocationData $children
          */
-        $children = reset($locations->toArray());
+        $children = reset($locations);
 
         $this->assertInstanceOf(
-            'Elcodi\Component\Geo\Entity\Interfaces\LocationInterface',
+            'Elcodi\Component\Geo\ValueObject\LocationData',
             $children,
-            'The response should be a LocationInterface'
+            'The response should be a LocationData'
         );
 
         $this->assertEquals(
@@ -158,5 +163,108 @@ class LocationManagerTest extends WebTestCase
             $children->getName(),
             'We expect only Spain as parent of Catalunya'
         );
+    }
+
+    public function testGetParentsLocationNotFound()
+    {
+        $this->setExpectedException(
+            'Doctrine\ORM\EntityNotFoundException',
+            'Entity was not found.'
+        );
+        $this->locationManager->getParents('UNEXISTENT');
+    }
+
+    public function testGetParentsNotFound()
+    {
+        $locations = $this->locationManager->getParents('ES');
+
+        $this->assertCount(
+            0,
+            $locations,
+            'We don\'t expect any location to be returned'
+        );
+    }
+
+    public function testGetLocation()
+    {
+        $location = $this->locationManager->getLocation('ES_CA');
+
+        $this->assertInstanceOf(
+            'Elcodi\Component\Geo\ValueObject\LocationData',
+            $location,
+            'The response should be a LocationData'
+        );
+
+        $this->assertEquals(
+            'ES_CA',
+            $location->getId(),
+            'Unexpected id for the received location'
+        );
+
+        $this->assertEquals(
+            'Catalunya',
+            $location->getName(),
+            'Unexpected name for the received location'
+        );
+
+        $this->assertEquals(
+            'CA',
+            $location->getCode(),
+            'Unexpected code for the received location'
+        );
+
+        $this->assertEquals(
+            'provincia',
+            $location->getType(),
+            'Unexpected type for the received location'
+        );
+    }
+
+    public function testGetHierarchy()
+    {
+        $hierarchy = $this
+            ->locationManager
+            ->getHierarchy('ES_CA_VO_SantCeloni');
+
+        $expectedHierarchyNames = array(
+            'Spain',
+            'Catalunya',
+            'Valles Oriental',
+            'Sant Celoni',
+        );
+
+        $this->assertCount(
+            count($expectedHierarchyNames),
+            $hierarchy,
+            'The height of the received hierarchy tree is incorrect'
+        );
+
+        foreach ($hierarchy as $key => $hierarchyNode) {
+            $this->assertInstanceOf(
+                'Elcodi\Component\Geo\ValueObject\LocationData',
+                $hierarchyNode,
+                'Every node received should be a LocationData'
+            );
+
+            $this->assertEquals(
+                $expectedHierarchyNames[$key],
+                $hierarchyNode->getName(),
+                'Unexpected name for one of the received nodes'
+            );
+        }
+    }
+
+    public function testInFound()
+    {
+        $found = $this->locationManager->in('ES_CA',['ES']);
+
+        $this->assertTrue($found, 'CA should be found inside ES');
+    }
+
+    public function testInNotFound()
+    {
+        $found = $this->locationManager->in('ES',['ES_CA']);
+
+        $this->assertFalse($found, 'ES should not be found inside CA');
     }
 }

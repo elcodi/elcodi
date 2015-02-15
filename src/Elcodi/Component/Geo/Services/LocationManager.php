@@ -2,8 +2,10 @@
 
 namespace Elcodi\Component\Geo\Services;
 
+use Doctrine\ORM\EntityNotFoundException;
 use Elcodi\Component\Geo\Entity\Interfaces\LocationInterface;
-use Elcodi\Component\Geo\LocationData\LocationData;
+use Elcodi\Component\Geo\Factory\LocationDataFactory;
+use Elcodi\Component\Geo\ValueObject\LocationData;
 use Elcodi\Component\Geo\Services\Interfaces\LocationManagerInterface;
 use Elcodi\Component\Geo\Repository\LocationRepository;
 
@@ -12,12 +14,19 @@ class LocationManager implements LocationManagerInterface
     /**
      * @var EntityRepositor
      */
-    private $locationRepository;
+    protected $locationRepository;
+
+    /**
+     * @var LocationDataFactory
+     */
+    protected $locationDataFactory;
 
     public function __construct(
-        LocationRepository $locationRepository
+        LocationRepository $locationRepository,
+        LocationDataFactory $locationDataFactory
     ) {
-        $this->locationRepository = $locationRepository;
+        $this->locationRepository  = $locationRepository;
+        $this->locationDataFactory = $locationDataFactory;
     }
 
     /**
@@ -27,7 +36,11 @@ class LocationManager implements LocationManagerInterface
      */
     public function getRootLocations()
     {
-        return $this->locationRepository->findAllRoots();
+        $roots = $this
+            ->locationRepository
+            ->findAllRoots();
+
+        return $this->formatOutput($roots);
     }
 
     /**
@@ -39,8 +52,19 @@ class LocationManager implements LocationManagerInterface
      */
     public function getChildren($id)
     {
-        $parent = $this->locationRepository->findOneBy(['id'=>$id]);
-        return $parent->getChildren();
+        $location = $this
+            ->locationRepository
+            ->findOneBy([
+                'id' => $id
+            ]);
+
+        if (empty($location)) {
+            throw new EntityNotFoundException();
+        }
+
+        return $this->formatOutput(
+            $location->getChildren()
+        );
     }
 
     /**
@@ -52,8 +76,15 @@ class LocationManager implements LocationManagerInterface
      */
     public function getParents($id)
     {
-        $parent = $this->locationRepository->findOneBy(['id'=>$id]);
-        return $parent->getParents();
+        $location = $this->locationRepository->findOneBy(['id' => $id]);
+
+        if (empty($location)) {
+            throw new EntityNotFoundException();
+        }
+
+        return $this->formatOutput(
+            $location->getParents()
+        );
     }
 
     /**
@@ -65,7 +96,13 @@ class LocationManager implements LocationManagerInterface
      */
     public function getLocation($id)
     {
-        // TODO: Implement getLocation() method.
+        $location = $this->locationRepository->findOneBy(['id' => $id]);
+
+        if (empty($location)) {
+            throw new EntityNotFoundException();
+        }
+
+        return $this->formatOutput($location);
     }
 
     /**
@@ -78,7 +115,19 @@ class LocationManager implements LocationManagerInterface
      */
     public function getHierarchy($id)
     {
-        // TODO: Implement getHierarchy() method.
+        $location = $this->locationRepository->findOneBy(['id' => $id]);
+
+        if (empty($location)) {
+            throw new EntityNotFoundException();
+        }
+
+        $addedNodes = [];
+        $hierarchy  = $this->getLocationHierarchyRecursively(
+            $location,
+            $addedNodes
+        );
+
+        return $this->formatOutput(array_reverse($hierarchy));
     }
 
     /**
@@ -92,6 +141,118 @@ class LocationManager implements LocationManagerInterface
      */
     public function in($id, array $ids)
     {
-        // TODO: Implement in() method.
+        $found         = false;
+        $searchedNodes = [];
+        foreach ($ids as $searchId) {
+            $location = $this->locationRepository->findOneBy(['id' => $searchId]);
+
+            $this->inHierarchyRecursively(
+                $id,
+                $location,
+                $searchedNodes,
+                $found
+            );
+
+            if ($found) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    protected function inHierarchyRecursively(
+        $id,
+        LocationInterface $location,
+        array &$searchedNodes,
+        &$found
+    ) {
+        if (
+            $found
+            || in_array($location->getId(), $searchedNodes)
+        ) {
+            return;
+        }
+
+        if ($id == $location->getId()) {
+            $found = true;
+            return;
+        }
+
+        $searchedNodes[] = $location->getId();
+
+        $parents = $location->getChildren();
+
+        if (!empty($parents)) {
+            foreach ($parents as $parent) {
+                $this->inHierarchyRecursively(
+                    $id,
+                    $parent,
+                    $searchedNodes,
+                    $found
+                );
+            }
+        }
+
+        return;
+    }
+
+    protected function getLocationHierarchyRecursively(
+        LocationInterface $location,
+        array &$addedNodes
+    ) {
+        if (in_array($location->getId(), $addedNodes)) {
+            return [];
+        }
+
+        $hierarchy = [$location];
+        $parents   = $location->getParents();
+
+        if (!empty($parents)) {
+            foreach ($parents as $parent) {
+                $hierarchy = array_merge(
+                    $hierarchy,
+                    $this->getLocationHierarchyRecursively(
+                        $parent,
+                        $addedNodes
+                    )
+                );
+            }
+        }
+
+        return $hierarchy;
+    }
+
+    /**
+     * @param LocationInterface|array $locations The locations to format.
+     *
+     * @return array
+     */
+    protected function formatOutput($locations)
+    {
+        if ($locations instanceof LocationInterface) {
+            return $this
+                ->locationDataFactory
+                ->create(
+                    $locations->getId(),
+                    $locations->getName(),
+                    $locations->getCode(),
+                    $locations->getType()
+                );
+        }
+
+        $formattedResponse = [];
+        foreach ($locations as $location) {
+            $formattedResponse[] =
+                $this
+                    ->locationDataFactory
+                    ->create(
+                        $location->getId(),
+                        $location->getName(),
+                        $location->getCode(),
+                        $location->getType()
+                    );
+        }
+        return $formattedResponse;
     }
 }

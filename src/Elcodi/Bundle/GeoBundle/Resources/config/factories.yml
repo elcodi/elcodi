@@ -61,4 +61,4 @@ services:
             - [setEntityNamespace, ["%elcodi.entity.location.class%"]]
 
     elcodi.factory.location_data:
-        class: %elcodi.factory.location.class%
+        class: %elcodi.factory.location_data.class%

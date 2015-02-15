@@ -2,7 +2,7 @@
 
 namespace Elcodi\Component\Geo\Services\Interfaces;
 
-use Elcodi\Component\Geo\LocationData\LocationData;
+use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
  * Interface LocationManagerInterface

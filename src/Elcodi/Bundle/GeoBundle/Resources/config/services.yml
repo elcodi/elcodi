@@ -29,3 +29,4 @@ services:
         class: %elcodi.location_manager.service.class%
         arguments:
             location_repository: @elcodi.repository.location
+            location_data_factory: @elcodi.factory.location_data
