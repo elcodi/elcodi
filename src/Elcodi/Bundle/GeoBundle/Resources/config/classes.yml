@@ -13,9 +13,15 @@ parameters:
     elcodi.command.geo_populate.class: Elcodi\Component\Geo\Command\GeoPopulateCommand
 
     #
+    # Controllers
+    #
+    elcodi.controller.location_api.class: Elcodi\Component\Geo\Controller\LocationApiController
+
+    #
     # Services
     #
     elcodi.location_manager.service.class: Elcodi\Component\Geo\Services\LocationManager
+    elcodi.location_manager.api_urls.class: Elcodi\Component\Geo\ValueObject\ApiUrls
 
     #
     # GeoData populator adapters

@@ -1,0 +1,18 @@
+parameters:
+
+    #
+    # Location api version
+    #
+    elcodi.location_manager.api.version: v1
+
+    #
+    # Location api routes
+    #
+    elcodi.route.location_api.host: http://localhost:8000
+    elcodi.route.location_api.prefix: %elcodi.route.location_api.host%/api/%elcodi.location_manager.api.version%/
+    elcodi.route.location_api.get_root_locations: %elcodi.route.location_api.prefix%/root
+    elcodi.route.location_api.get_children: %elcodi.route.location_api.prefix%/children
+    elcodi.route.location_api.get_parents: %elcodi.route.location_api.prefix%/parents
+    elcodi.route.location_api.get_location: %elcodi.route.location_api.prefix%/location
+    elcodi.route.location_api.get_hierarchy: %elcodi.route.location_api.prefix%/hierarchy
+    elcodi.route.location_api.in: %elcodi.route.location_api.prefix%/in

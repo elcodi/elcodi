@@ -8,3 +8,13 @@ services:
         arguments:
             location_repository: @elcodi.repository.location
             location_data_factory: @elcodi.factory.location_data
+
+    elcodi.location_manager.api_urls:
+        class: %elcodi.location_manager.api_urls.class%
+        arguments:
+            elcodi.route.location_api.get_root_locations
+            elcodi.route.location_api.get_children
+            elcodi.route.location_api.get_parents
+            elcodi.route.location_api.get_location
+            elcodi.route.location_api.get_hierarchy
+            elcodi.route.location_api.in

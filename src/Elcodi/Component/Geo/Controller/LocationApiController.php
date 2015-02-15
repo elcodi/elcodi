@@ -17,7 +17,12 @@
 namespace Elcodi\Component\Geo\Controller;
 
 use Elcodi\Component\Geo\Services\Interfaces\LocationManagerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Exception;
 
 /**
  * Class LocationApiController
@@ -32,12 +37,24 @@ class LocationApiController
     protected $locationManager;
 
     /**
+     * @var Request
+     *
+     * Request
+     */
+    protected $request;
+
+    /**
      * Construct
      *
+     * @param RequestStack             $requestStack    Request stack
      * @param LocationManagerInterface $locationManager Location manager
      */
-    public function __construct(LocationManagerInterface $locationManager)
+    public function __construct(
+        RequestStack $requestStack,
+        LocationManagerInterface $locationManager
+    )
     {
+        $this->request = $requestStack->getCurrentRequest();
         $this->locationManager = $locationManager;
     }
 
@@ -48,93 +65,144 @@ class LocationApiController
      */
     public function getRootLocationsAction()
     {
-        $locations = $this
-            ->locationManager
-            ->getRootLocations();
-
-        return new Response(json_encode($locations));
+        return $this->createResponseObject(function () {
+            return $this
+                ->locationManager
+                ->getRootLocations();
+        });
     }
 
     /**
-     * Get the children given a location id.
-     *
-     * @param string $id The location Id
+     * Get the children given a location id
      *
      * @return Response Data serialized in json
      */
-    public function getChildrenAction($id)
+    public function getChildrenAction()
     {
-        $locations = $this
-            ->locationManager
-            ->getChildren($id);
+        $id = $this
+            ->request
+            ->query
+            ->get('id');
 
-        return new Response(json_encode($locations));
+        return $this->createResponseObject(function () use ($id) {
+            return $this
+                ->locationManager
+                ->getChildren($id);
+        });
     }
 
     /**
-     * Get the parents given a location id.
-     *
-     * @param string $id The location Id
+     * Get the parents given a location id
      *
      * @return Response Data serialized in json
      */
-    public function getParentsAction($id)
+    public function getParentsAction()
     {
-        $locations = $this
-            ->locationManager
-            ->getParents($id);
+        $id = $this
+            ->request
+            ->query
+            ->get('id');
 
-        return new Response(json_encode($locations));
+        return $this->createResponseObject(function () use ($id) {
+            return $this
+                ->locationManager
+                ->getParents($id);
+        });
     }
 
     /**
-     * Get the full location info given it's id.
-     *
-     * @param string $id The location Id
+     * Get the full location info given it's id
      *
      * @return Response Data serialized in json
      */
-    public function getLocationAction($id)
+    public function getLocationAction()
     {
-        $locations = $this
-            ->locationManager
-            ->getLocation($id);
+        $id = $this
+            ->request
+            ->query
+            ->get('id');
 
-        return new Response(json_encode($locations));
+        return $this->createResponseObject(function () use ($id) {
+            return $this
+                ->locationManager
+                ->getLocation($id);
+        });
     }
 
     /**
      * Get the hierarchy given a location sorted from root to the given
-     * location.
-     *
-     * @param string $id The location Id
+     * location
      *
      * @return Response Data serialized in json
      */
-    public function getHierarchyAction($id)
+    public function getHierarchyAction()
     {
-        $locations = $this
-            ->locationManager
-            ->getHierarchy($id);
+        $id = $this
+            ->request
+            ->query
+            ->get('id');
 
-        return new Response(json_encode($locations));
+        return $this->createResponseObject(function () use ($id) {
+            return $this
+                ->locationManager
+                ->getHierarchy($id);
+        });
     }
 
     /**
      * Checks if the first received id is contained between the rest of ids
      * received as second parameter
      *
-     * @param string $id  The location Id
-     * @param string $ids The location Ids separated by commas
-     *
      * @return Response Data serialized in json
      */
-    public function inAction($id, $ids)
+    public function inAction()
     {
-        $locations = $this
-            ->locationManager
-            ->in($id, explode(',', $ids));
+        $id = $this
+            ->request
+            ->query
+            ->get('id');
 
-        return new Response(json_encode($locations));
+        $ids = explode(',', $this
+            ->request
+            ->query
+            ->get('ids'));
+
+        return $this->createResponseObject(function () use ($id, $ids) {
+            return $this
+                ->locationManager
+                ->getChildren($id, $ids);
+        });
+    }
+
+    /**
+     * Create new response
+     *
+     * @param Callable $callable Callable
+     *
+     * @return Response Response object
+     */
+    protected function createResponseObject(Callable $callable)
+    {
+        try {
+            $response = new JsonResponse(
+                json_encode($callable())
+            );
+
+        } catch (NotFoundHttpException $notFoundException) {
+
+            $response = new Response(
+                $notFoundException->getMessage(),
+                404
+            );
+
+        } catch (Exception $e) {
+
+            $response = new Response(
+                'Exception',
+                500
+            );
+        }
+
+        return $response;
     }
 }
