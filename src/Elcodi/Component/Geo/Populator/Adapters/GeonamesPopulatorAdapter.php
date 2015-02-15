@@ -12,176 +12,163 @@
  *
  * @author Marc Morera <yuhu@mmoreram.com>
  * @author Aldo Chiecchia <zimage@tiscali.it>
- * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Geo\Adapter\Populator;
+namespace Elcodi\Component\Geo\Populator\Adapters;
 
 use DateTime;
+use Elcodi\Component\Geo\Builder\GeoBuilder;
 use Goodby\CSV\Import\Standard\Interpreter;
 use Goodby\CSV\Import\Standard\Lexer;
 use Goodby\CSV\Import\Standard\LexerConfig;
 use Mmoreram\Extractor\Extractor;
-use Mmoreram\Extractor\Filesystem\TemporaryDirectory;
-use Mmoreram\Extractor\Resolver\ExtensionResolver;
-use SplFileInfo;
-use Symfony\Component\Console\Output\OutputInterface;
 
-use Elcodi\Component\Geo\Adapter\Populator\Interfaces\PopulatorAdapterInterface;
-use Elcodi\Component\Geo\Builder\Interfaces\GeoBuilderInterface;
-use Elcodi\Component\Geo\Entity\Interfaces\CountryInterface;
+use Elcodi\Component\Geo\Entity\Interfaces\LocationInterface;
+use Elcodi\Component\Geo\Populator\Interfaces\PopulatorInterface;
+use Symfony\Component\Filesystem\Exception\FileNotFoundException;
 
 /**
- * Class GeoDataPopulatorAdapter
+ * Class GeonamesPopulatorAdapter
+ *
+ * @author Berny Cantos <be@rny.cc>
  */
-class GeoDataPopulatorAdapter implements PopulatorAdapterInterface
+class GeonamesPopulatorAdapter implements PopulatorInterface
 {
     /**
-     * @var GeoBuilderInterface
-     *
-     * GeoBuilder
+     * @var Extractor
+     */
+    protected $extractor;
+
+    /**
+     * @var GeoBuilder
      */
     protected $geoBuilder;
 
     /**
-     * Construct method
-     *
-     * @param GeoBuilderInterface $geoBuilder Geo builder
+     * @param Extractor       $extractor
+     * @param GeoBuilder      $geoBuilder
      */
-    public function __construct(GeoBuilderInterface $geoBuilder)
+    public function __construct(Extractor $extractor, GeoBuilder $geoBuilder)
     {
+        $this->extractor = $extractor;
         $this->geoBuilder = $geoBuilder;
     }
 
     /**
      * Populate a country
      *
-     * @param OutputInterface $output                      The output interface
-     * @param string          $countryCode                 Country Code
-     * @param boolean         $sourcePackageMustbeReloaded Source package must be reloaded
+     * @param string $countryCode Country Code
      *
-     * @return CountryInterface|null Country populated if created
+     * @return LocationInterface[]
      */
-    public function populateCountry(
-        OutputInterface $output,
-        $countryCode,
-        $sourcePackageMustbeReloaded
-    ) {
+    public function populate($countryCode)
+    {
         $countryCode = strtoupper($countryCode);
+        $tempname = $this->downloadFile($countryCode);
+        $pathname = $this->extractFile($tempname);
+        $locations = $this->loadLocationsFrom($countryCode, $pathname);
 
-        $file = $this->downloadRemoteFileFromCountryCode(
-            $output,
-            $countryCode,
-            $sourcePackageMustbeReloaded
-        );
+        return $locations;
+    }
 
-        $countryData = $this->getCountryArray()[$countryCode];
-        $country = $this->geoBuilder->addCountry($countryData[0], $countryData[1]);
+    /**
+     * Download data file from country
+     * Avoids download if the file exists
+     *
+     * @param string $countryCode Country code
+     *
+     * @return string
+     */
+    protected function downloadFile($countryCode)
+    {
+        $tempname = sys_get_temp_dir().'/elcodi-locator-geonames-'.$countryCode.'.zip';
+        if (!file_exists($tempname)) {
+
+            $dirname = dirname($tempname);
+            if (!file_exists($dirname)) {
+
+                mkdir($dirname, 0777, true);
+            }
+            $downloadUrl = 'http://download.geonames.org/export/zip/'.$countryCode.'.zip';
+            copy($downloadUrl, $tempname);
+        }
+
+        return $tempname;
+    }
+
+    /**
+     * Download file and return new pathname of extracted content
+     *
+     * The geoname's zipfile contains this structure:
+     * - {countryCode}.txt
+     * - readme.txt
+     *
+     * We're only interested in the first file.
+     *
+     * @param string $tempname temporary name for downloaded content
+     *
+     * @return string Pathname of the resulting file
+     */
+    protected function extractFile($tempname)
+    {
+        $extractedFiles = $this
+            ->extractor
+            ->extractFromFile($tempname)
+            ->files()
+            ->notName('readme.txt')
+            ->getIterator();
+
+        $extractedFiles->rewind();
+        if (!$extractedFiles->valid()) {
+
+            throw new FileNotFoundException();
+        }
+
+        return $extractedFiles->current();
+    }
+
+    /**
+     * Extract data from de CSV and create new Location objects
+     *
+     * @param string $pathname
+     *
+     * @return LocationInterface[]
+     */
+    protected function loadLocationsFrom($countryCode, $pathname)
+    {
+        $country = $this->addCountry($countryCode);
 
         $interpreter = new Interpreter();
         $interpreter->unstrict();
         $interpreter->addObserver(function (array $columns) use ($country) {
 
-            $state = $this->geoBuilder->addState($country, $columns[4], $columns[3]);
-            $province = $this->geoBuilder->addProvince($state, $columns[6], $columns[5]);
-            $city = $this->geoBuilder->addCity($province, $columns[2]);
-            $this->geoBuilder->addPostalCode($city, $columns[1]);
+            $state    = $this->addState($columns, $country);
+            $province = $this->addProvince($columns, $state);
+            $city     = $this->addCity($columns, $province);
+            $code     = $this->addPostalCode($columns, $city);
         });
 
         $config = new LexerConfig();
         $config->setDelimiter("\t");
         $lexer = new Lexer($config);
-        $started = new DateTime();
-        $output->writeln('<header>[Geo]</header> <body>Starting file processing</body>');
-        $lexer->parse($file->getRealpath(), $interpreter);
-        $finished = new DateTime();
-        $elapsed = $finished->diff($started);
-        $output->writeln('<header>[Geo]</header> <body>File processed in '.$elapsed->format('%s').' seconds</body>');
+//        $started = new DateTime();
+//        $output->writeln('<header>[Geo]</header> <body>Starting file processing</body>');
+        $lexer->parse($pathname, $interpreter);
+//        $finished = new DateTime();
+//        $elapsed = $finished->diff($started);
+//        $output->writeln('<header>[Geo]</header> <body>File processed in '.$elapsed->format('%s').' seconds</body>');
 
-        return $country;
+        return [];
     }
 
     /**
-     * Download the data file from remote server and return a local file
+     * Get Country name from country code
      *
-     * @param OutputInterface $output                      The output interface
-     * @param string          $countryCode                 Country code
-     * @param boolean         $sourcePackageMustbeReloaded Source package must be reloaded
-     *
-     * @return SplFileInfo File
+     * @return string[] Country code and country name
      */
-    protected function downloadRemoteFileFromCountryCode(
-        OutputInterface $output,
-        $countryCode,
-        $sourcePackageMustbeReloaded
-    ) {
-        $filePath = $this->getDataFilePathFromCountryCode($countryCode);
-        $temporaryDirPath = sys_get_temp_dir().'/'.'elcodi_geo/geodata/';
-
-        if (!is_dir($temporaryDirPath)) {
-            mkdir($temporaryDirPath, 0777, true);
-        }
-
-        $temporaryFilePath = $temporaryDirPath.$countryCode.'.zip';
-
-        if (is_file($temporaryFilePath)) {
-            $output->writeln('<header>[Geo]</header> <body>Source package found in cache</body>');
-            if (!$sourcePackageMustbeReloaded) {
-                unlink($temporaryFilePath);
-                $output->writeln('<header>[Geo]</header> <body>Cached Source package ignored</body>');
-                $output->writeln('<header>[Geo]</header> <body>Downloading source package from '.$filePath.'</body>');
-                copy($filePath, $temporaryFilePath);
-                $output->writeln('<header>[Geo]</header> <body>Downloaded source package to '.$temporaryFilePath.'</body>');
-            }
-        } else {
-            $output->writeln('<header>[Geo]</header> <body>Downloading source package from '.$filePath.'</body>');
-            copy($filePath, $temporaryFilePath);
-            $output->writeln('<header>[Geo]</header> <body>Downloaded source package to '.$temporaryFilePath.'</body>');
-        }
-
-        $temporaryDirectory = new TemporaryDirectory();
-        $extensionResolver = new ExtensionResolver();
-        $extractor = new Extractor(
-            $temporaryDirectory,
-            $extensionResolver
-        );
-
-        $filesIterator = $extractor
-            ->extractFromFile($temporaryFilePath)
-            ->files()
-            ->notName('readme.txt')
-            ->getIterator();
-        $filesArray = iterator_to_array($filesIterator);
-
-        /**
-         * @var SplFileInfo $file
-         */
-        $file = reset($filesArray);
-        $output->writeln('<header>[Geo]</header> <body>Found file '.$file->getFilename().'</body>');
-
-        return $file;
-    }
-
-    /**
-     * Build the url where to find the data file given a country code
-     *
-     * @param string $countryCode Country code
-     *
-     * @return string File path
-     */
-    public function getDataFilePathFromCountryCode($countryCode)
+    protected function getCountryInfo($countryCode)
     {
-        return 'http://download.geonames.org/export/zip/'.$countryCode.'.zip';
-    }
-
-    /**
-     * Get Country array
-     *
-     * @return array Country array
-     */
-    protected function getCountryArray()
-    {
-        return [
+        $countryNames = [
             "AD" => ["AD", "Andorra"],
             "AE" => ["AE", "United Arab Emirates"],
             "AF" => ["AF", "Afghanistan"],
@@ -433,5 +420,7 @@ class GeoDataPopulatorAdapter implements PopulatorAdapterInterface
             "ZM" => ["ZM", "Zambia"],
             "ZW" => ["ZW", "Zimbabwe"],
         ];
+
+        return $countryNames[$countryCode];
     }
 }

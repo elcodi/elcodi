@@ -30,9 +30,9 @@ use Elcodi\Component\Geo\Entity\Province;
 use Elcodi\Component\Geo\Entity\State;
 
 /**
- * Class GeoDataPopulatorAdapterTest
+ * Class GeonamesPopulatorTest
  */
-class GeoDataPopulatorAdapterTest extends PHPUnit_Framework_TestCase
+class GeonamesPopulatorTest extends PHPUnit_Framework_TestCase
 {
     /**
      * Test the popoulate adapter
@@ -118,22 +118,22 @@ class GeoDataPopulatorAdapterTest extends PHPUnit_Framework_TestCase
             ])
             ->getMock();
 
-        $geoDataPopulatorAdapter = $this
-            ->getMockBuilder('\Elcodi\Component\Geo\Adapter\Populator\GeoDataPopulatorAdapter')
+        $geonamesPopulator = $this
+            ->getMockBuilder('\Elcodi\Component\Geo\Adapter\Populator\GeonamesPopulator')
             ->setMethods([
                 'getDataFilePathFromCountryCode',
             ])
             ->setConstructorArgs([$geoBuilder])
             ->getMock();
 
-        $geoDataPopulatorAdapter
+        $geonamesPopulator
             ->expects($this->any())
             ->method('getDataFilePathFromCountryCode')
             ->will($this->returnValue(dirname(__FILE__).'/Fixtures/geodata.fr.zip'));
 
         $output = $this->getMock('Symfony\Component\Console\Output\OutputInterface');
 
-        $country = $geoDataPopulatorAdapter->populateCountry($output, 'FR', true);
+        $country = $geonamesPopulator->populate($output, 'FR', true);
 
         $this
             ->blockTestCountry($country)

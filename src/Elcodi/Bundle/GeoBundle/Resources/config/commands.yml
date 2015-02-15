@@ -3,9 +3,10 @@ services:
     #
     # Commands
     #
-    elcodi.core.geo.command.geo_populate:
-        class: %elcodi.core.geo.command.geo_populate.class%
+    elcodi.command.geo_populate:
+        class: %elcodi.command.geo_populate.class%
         arguments:
-            geo_populator: @elcodi.geo_populator
+            - @elcodi.geo_populator
+            - @elcodi.director.location
         tags:
             -  { name: console.command }

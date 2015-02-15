@@ -101,13 +101,13 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
     {
         return [
             'classes',
+            'commands',
             'directors',
             'factories',
+            'objectManagers',
+            'populatorAdapters',
             'repositories',
             'services',
-            'objectManagers',
-            'commands',
-            'populatorAdapters',
             'transformers',
         ];
     }
@@ -140,7 +140,7 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
         parent::postLoad($config, $container);
 
         $populatorClientId = $config['populator']['client'];
-        $container->setAlias('elcodi.geo.populator_adapter', $populatorClientId);
+        $container->setAlias('elcodi.geo_populator', $populatorClientId);
     }
 
     /**

@@ -3,10 +3,25 @@ services:
     #
     # GeoData populator adapters
     #
-    elcodi.geo.geodata_populator_adapter:
-        class: %elcodi.geo.geodata_populator_adapter.class%
+    elcodi.populator.location.geoname:
+        class: %elcodi.populator.location.geoname.class%
         arguments:
-            geo_builder: @elcodi.geo_builder
+            - @elcodi.extractor
+            - @elcodi.factory.location
 
-    elcodi.geo.dummy_populator_adapter:
-        class: %elcodi.geo.dummy_populator_adapter.class%
+    #
+    # Extractor
+    #
+    elcodi.extractor:
+        class: Mmoreram\Extractor\Extractor
+        arguments:
+            - @elcodi.extractor.directory
+            - @elcodi.extractor.extension_resolver
+
+    elcodi.extractor.directory:
+        class: Mmoreram\Extractor\Filesystem\TemporaryDirectory
+        public: false
+
+    elcodi.extractor.extension_resolver:
+        class: Mmoreram\Extractor\Resolver\ExtensionResolver
+        public: false

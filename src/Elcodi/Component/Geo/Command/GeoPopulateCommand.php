@@ -17,6 +17,9 @@
 
 namespace Elcodi\Component\Geo\Command;
 
+use DateTime;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 use Symfony\Component\Console\Input\InputArgument;
@@ -24,30 +27,49 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use Elcodi\Component\Geo\Populator\GeoPopulator;
+use Elcodi\Component\Core\Services\ObjectDirector;
+use Elcodi\Component\Geo\Populator\Interfaces\PopulatorInterface;
 
 /**
  * Class GeoPopulateCommand
  */
-class GeoPopulateCommand extends Command
+class GeoPopulateCommand extends Command implements LoggerAwareInterface
 {
     /**
-     * @var GeoPopulator
+     * @var PopulatorInterface
      *
      * Geo Populator
      */
     protected $geoPopulator;
 
     /**
+     * @var ObjectDirector
+     *
+     * Location director
+     */
+    protected $locationDirector;
+
+    /**
+     * @var LoggerInterface
+     *
+     * Logger
+     */
+    protected $logger;
+
+    /**
      * Construct method
      *
-     * @param GeoPopulator $geoPopulator Geo Populator
+     * @param PopulatorInterface $populator        Populator
+     * @param ObjectDirector     $locationDirector Location director
      */
-    public function __construct(GeoPopulator $geoPopulator)
-    {
+    public function __construct(
+        PopulatorInterface $populator,
+        ObjectDirector $locationDirector
+    ) {
         parent::__construct();
 
-        $this->geoPopulator = $geoPopulator;
+        $this->geoPopulator = $populator;
+        $this->locationDirector = $locationDirector;
     }
 
     /**
@@ -82,29 +104,50 @@ class GeoPopulateCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $country = $input->getArgument('country');
-        $reloadSource = $input->hasOption('reload-source');
+        $countryCodes = $input->getArgument('country');
+        $countryCodes = explode(',', $countryCodes);
+
         $formatter = $output->getFormatter();
-        $formatter->setStyle('header', new OutputFormatterStyle(
-            'green', null, []
-        ));
-        $formatter->setStyle('body', new OutputFormatterStyle(
-            'white', null, []
-        ));
+        $formatter->setStyle('header', new OutputFormatterStyle('green'));
+        $formatter->setStyle('body', new OutputFormatterStyle('white'));
 
         $output->writeln('');
-        $output->writeln('<header>[Geo]</header> <body>Populating your database with '.$country.' fixtures</body>');
         $output->writeln('<header>[Geo]</header> <body>This process may take a few minutes. Please, be patient</body>');
-        $output->writeln('<header>[Geo]</header> <body>Process started...</body>');
 
-        $this
-            ->geoPopulator
-            ->populateCountries(
-                $output,
-                [$country],
-                $reloadSource
-            );
+        foreach ($countryCodes as $countryCode) {
+            $output->writeln('<header>[Geo]</header> <body>Populating country code: '.$countryCode);
+
+            $locations = $this
+                ->geoPopulator
+                ->populate($countryCode);
+
+            $output->writeln('<header>[Geo]</header> <body>Flushing manager started</body>');
+
+            $start = new DateTime();
+
+            $this
+                ->locationDirector
+                ->save($locations);
+
+            $finish = new DateTime();
+            $elapsed = $finish->diff($start);
+
+            $output->writeln('<header>[Geo]</header> <body>Manager flushed in '.$elapsed->format('%s').' seconds</body>');
+        }
 
         $output->writeln('<header>[Geo]</header> <body>Process finished. Please checkout your database</body>');
+    }
+
+    /**
+     * Sets a logger instance on the object
+     *
+     * @param LoggerInterface $logger
+     * @return null
+     */
+    public function setLogger(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+
+        return $this;
     }
 }

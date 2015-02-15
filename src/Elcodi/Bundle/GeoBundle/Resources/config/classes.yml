@@ -10,20 +10,17 @@ parameters:
     #
     # Commands
     #
-    elcodi.core.geo.command.geo_populate.class: Elcodi\Component\Geo\Command\GeoPopulateCommand
+    elcodi.command.geo_populate.class: Elcodi\Component\Geo\Command\GeoPopulateCommand
 
     #
     # Services
     #
-    elcodi.core.geo.populator.geo_populator.class: Elcodi\Component\Geo\Populator\GeoPopulator
-    elcodi.core.geo.builder.geo_builder.class: Elcodi\Component\Geo\Builder\GeoBuilder
     elcodi.location_manager.service.class: Elcodi\Component\Geo\Services\LocationManager
 
     #
     # GeoData populator adapters
     #
-    elcodi.geo.dummy_populator_adapter.class: Elcodi\Component\Geo\Adapter\Populator\DummyPopulatorAdapter
-    elcodi.geo.geodata_populator_adapter.class: Elcodi\Component\Geo\Adapter\Populator\GeoDataPopulatorAdapter
+    elcodi.populator.location.geoname.class: Elcodi\Component\Geo\Populator\Adapters\GeonamesPopulatorAdapter
 
     #
     # Transformers

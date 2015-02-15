@@ -3,28 +3,6 @@ services:
     #
     # Services
     #
-    elcodi.core.geo.populator.geo_populator:
-        class: %elcodi.core.geo.populator.geo_populator.class%
-        lazy: true
-        arguments:
-            geo_populator_adapter: @elcodi.geo.populator_adapter
-            country_object_manager: @elcodi.object_manager.country
-
-    elcodi.geo_populator:
-        alias: elcodi.core.geo.populator.geo_populator
-
-    elcodi.core.geo.builder.geo_builder:
-        class: %elcodi.core.geo.builder.geo_builder.class%
-        arguments:
-            country_factory: @elcodi.factory.country
-            country_state: @elcodi.factory.state
-            country_province: @elcodi.factory.province
-            country_city: @elcodi.factory.city
-            country_postal_code: @elcodi.factory.postal_code
-
-    elcodi.geo_builder:
-        alias: elcodi.core.geo.builder.geo_builder
-
     elcodi.location_manager.service:
         class: %elcodi.location_manager.service.class%
         arguments:
