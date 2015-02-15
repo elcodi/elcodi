@@ -79,10 +79,10 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
             )
             ->addEntityMapping(
                 $container,
-                'elcodi.core.geo.entity.location.manager',
-                'elcodi.core.geo.entity.location.class',
-                'elcodi.core.geo.entity.location.mapping_file',
-                'elcodi.core.geo.entity.location.enabled'
+                'elcodi.entity.location.manager',
+                'elcodi.entity.location.class',
+                'elcodi.entity.location.mapping_file',
+                'elcodi.entity.location.enabled'
             );
     }
 }

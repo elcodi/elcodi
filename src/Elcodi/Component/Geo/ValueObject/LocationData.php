@@ -1,6 +1,6 @@
 <?php
 
-namespace Elcodi\Component\Geo\LocationData;
+namespace Elcodi\Component\Geo\ValueObject;
 
 /**
  * Class LocationData value object
@@ -96,6 +96,4 @@ class LocationData
     {
         return $this->type;
     }
-
-
 }

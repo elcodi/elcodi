@@ -43,9 +43,10 @@ class ZoneMatcher
         $this->locationManager = $locationManager;
     }
 
-
     /**
-     * Checks if an specific Address is contained in a Zone
+     * Checks if an specific Address is contained in a Zone. For an Address, to
+     * be contained in a Zone means that belongs to one (at least) of this Zone
+     * locations.
      *
      * @param AddressInterface $address Address
      * @param ZoneInterface    $zone    Zone
@@ -57,11 +58,19 @@ class ZoneMatcher
         ZoneInterface $zone
     )
     {
-        return $this
-            ->locationManager
-            ->in(
-                $address->getId(),
-                $zone->getLocations()
-            );
+        $locations = $zone->getLocations();
+        $isContained = false;
+
+        foreach ($locations as $location) {
+
+            $isContained |= $this
+                ->locationManager
+                ->in(
+                    $address->getId(),
+                    $location
+                );
+        }
+
+        return $isContained;
     }
 }

@@ -56,6 +56,9 @@ services:
         alias: elcodi.core.geo.factory.country
 
     elcodi.factory.location:
-        class: %elcodi.core.geo.factory.location.class%
+        class: %elcodi.factory.location.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.geo.entity.location.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.location.class%"]]
+
+    elcodi.factory.location_data:
+        class: %elcodi.factory.location.class%

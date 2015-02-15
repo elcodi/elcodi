@@ -9,7 +9,8 @@ parameters:
     elcodi.core.geo.factory.city.class: Elcodi\Component\Geo\Factory\CityFactory
     elcodi.core.geo.factory.postal_code.class: Elcodi\Component\Geo\Factory\PostalCodeFactory
     elcodi.core.geo.factory.address.class: Elcodi\Component\Geo\Factory\AddressFactory
-    elcodi.core.geo.factory.location.class: Elcodi\Component\Geo\Factory\LocationFactory
+    elcodi.factory.location.class: Elcodi\Component\Geo\Factory\LocationFactory
+    elcodi.factory.location_data.class: Elcodi\Component\Geo\Factory\LocationFactory
 
     #
     # Commands
@@ -27,3 +28,8 @@ parameters:
     #
     elcodi.geo.dummy_populator_adapter.class: Elcodi\Component\Geo\Adapter\Populator\DummyPopulatorAdapter
     elcodi.geo.geodata_populator_adapter.class: Elcodi\Component\Geo\Adapter\Populator\GeoDataPopulatorAdapter
+
+    #
+    # Transformers
+    #
+    elcodi.location_to_location_data_transformer.class: Elcodi\Component\Geo\Transformer\LocationToLocationDataTransformer

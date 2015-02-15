@@ -168,6 +168,7 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
             'objectManagers',
             'commands',
             'populatorAdapters',
+            'transformers',
         ];
     }
 
