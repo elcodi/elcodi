@@ -1,0 +1,11 @@
+services:
+
+    #
+    # Directors
+    #
+    elcodi.director.location:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        arguments:
+            - @elcodi.object_manager.location
+            - @elcodi.repository.location
+            - @elcodi.factory.location

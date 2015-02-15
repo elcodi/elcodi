@@ -161,6 +161,7 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
     {
         return [
             'classes',
+            'directors',
             'factories',
             'repositories',
             'services',
