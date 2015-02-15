@@ -17,6 +17,8 @@
 
 namespace Elcodi\Component\Zone\Repository;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -24,4 +26,22 @@ use Doctrine\ORM\EntityRepository;
  */
 class ZoneRepository extends EntityRepository
 {
+    /**
+     * Find active zones
+     *
+     * @return Collection Active zones
+     */
+    public function getActiveZones()
+    {
+        $zones = $this
+            ->createQueryBuilder('z')
+            ->where('z.enabled = :enabled')
+            ->setParameters([
+                'enabled' => true
+            ])
+            ->getQuery()
+            ->getArrayResult();
+
+        return new ArrayCollection($zones);
+    }
 }

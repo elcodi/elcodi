@@ -4,3 +4,9 @@ parameters:
     # Factories
     #
     elcodi.factory.zone.class: Elcodi\Component\Zone\Factory\ZoneFactory
+
+    #
+    # Services
+    #
+    elcodi.zone_matcher.class: Elcodi\Component\Zone\Services\ZoneMatcher
+    elcodi.zone_finder.class: Elcodi\Component\Zone\Services\ZoneFinder

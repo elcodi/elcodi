@@ -41,7 +41,7 @@ class ElcodiZoneExtension extends AbstractExtension implements EntitiesOverridab
      */
     public function getConfigFilesLocation()
     {
-        return __DIR__.'/../Resources/config';
+        return __DIR__ . '/../Resources/config';
     }
 
     /**
@@ -77,15 +77,10 @@ class ElcodiZoneExtension extends AbstractExtension implements EntitiesOverridab
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.core.Zone.entity.Zone.class" => $config['mapping']['Zone']['class'],
-            "elcodi.core.Zone.entity.Zone.mapping_file" => $config['mapping']['Zone']['mapping_file'],
-            "elcodi.core.Zone.entity.Zone.manager" => $config['mapping']['Zone']['manager'],
-            "elcodi.core.Zone.entity.Zone.enabled" => $config['mapping']['Zone']['enabled'],
-
-            "elcodi.core.Zone.entity.Zone_value.class" => $config['mapping']['value']['class'],
-            "elcodi.core.Zone.entity.Zone_value.mapping_file" => $config['mapping']['value']['mapping_file'],
-            "elcodi.core.Zone.entity.Zone_value.manager" => $config['mapping']['value']['manager'],
-            "elcodi.core.Zone.entity.Zone_value.enabled" => $config['mapping']['value']['enabled'],
+            "elcodi.zone.class"        => $config['mapping']['Zone']['class'],
+            "elcodi.zone.mapping_file" => $config['mapping']['Zone']['mapping_file'],
+            "elcodi.zone.manager"      => $config['mapping']['Zone']['manager'],
+            "elcodi.zone.enabled"      => $config['mapping']['Zone']['enabled'],
         ];
     }
 
@@ -103,6 +98,7 @@ class ElcodiZoneExtension extends AbstractExtension implements EntitiesOverridab
             'factories',
             'repositories',
             'objectManagers',
+            'services',
         ];
     }
 
@@ -118,8 +114,7 @@ class ElcodiZoneExtension extends AbstractExtension implements EntitiesOverridab
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface' => 'elcodi.core.Zone.entity.Zone.class',
-            'Elcodi\Component\Zone\Entity\Interfaces\ValueInterface' => 'elcodi.core.Zone.entity.Zone_value.class',
+            'Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface'  => 'elcodi.zone.class',
         ];
     }
 

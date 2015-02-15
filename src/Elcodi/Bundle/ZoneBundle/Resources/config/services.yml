@@ -1,0 +1,15 @@
+services:
+
+    #
+    # Services
+    #
+    elcodi.zone_matcher:
+        class: %elcodi.zone_matcher.class%
+        arguments:
+            location_manager: @elcodi.location_manager
+
+    elcodi.zone_finder:
+        class: %elcodi.zone_finder.class%
+        arguments:
+            zone_repository: @elcodi.repository.zone
+            zone_matcher: @elcodi.zone_matcher

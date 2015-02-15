@@ -11,7 +11,7 @@ Elcodi\Component\Zone\Entity\Zone:
         locations:
             column: locations
             type: string
-            length: 512
+            length: 1024
             nullable: false
         createdAt:
             column: created_at

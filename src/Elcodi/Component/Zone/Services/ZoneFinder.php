@@ -33,29 +33,50 @@ class ZoneFinder
      *
      * Zone repository
      */
+    protected $zoneRepository;
+
+    /**
+     * @var ZoneMatcher
+     *
+     * Zone matcher
+     */
+    protected $zoneMatcher;
+
+    /**
+     * Construct
+     *
+     * @param ZoneRepository $zoneRepository Zone repository
+     * @param ZoneMatcher    $zoneMatcher    Zone matcher
+     */
+    public function __construct(
+        ZoneRepository $zoneRepository,
+        ZoneMatcher $zoneMatcher
+    )
+    {
+        $this->zoneRepository = $zoneRepository;
+        $this->zoneMatcher = $zoneMatcher;
+    }
 
     /**
      * Get all zones where the address is included in
      *
-     * @param ZoneInterface    $zone    Zone
      * @param AddressInterface $address Address
      *
      * @return boolean Zones where address is contained
      */
-    public function getZonesFromAddress(
-        ZoneInterface $zone,
-        AddressInterface $address
-    ) {
-        $city = $address->getCity();
-        $zones = array_merge(
-            [],
-            $this->getZonesFromCountry($zone, $city->getCountry())->toArray(),
-            $this->getZonesFromState($zone, $city->getState())->toArray(),
-            $this->getZonesFromProvince($zone, $city->getProvince())->toArray(),
-            $this->getZonesFromCity($zone, $city)->toArray(),
-            $this->getZonesFromPostalCode($zone, $address->getPostalcode())->toArray()
-        );
+    public function getZonesFromAddress(AddressInterface $address)
+    {
+        return $this
+            ->zoneRepository
+            ->getActiveZones()
+            ->filter(function (ZoneInterface $zone) use ($address) {
 
-        return new ArrayCollection($zones);
+                return $this
+                    ->zoneMatcher
+                    ->isAddressContainedInZone(
+                        $address,
+                        $zone
+                    );
+            });
     }
 }

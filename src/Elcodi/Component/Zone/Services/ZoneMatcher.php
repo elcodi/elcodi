@@ -57,10 +57,11 @@ class ZoneMatcher
         ZoneInterface $zone
     )
     {
-        return $locationManager
+        return $this
+            ->locationManager
             ->in(
                 $address->getId(),
-                $this->getLocations()
+                $zone->getLocations()
             );
     }
 }

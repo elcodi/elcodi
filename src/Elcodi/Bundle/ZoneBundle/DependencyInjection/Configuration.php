@@ -43,13 +43,6 @@ class Configuration extends AbstractConfiguration
                             'default',
                             true
                         ))
-                        ->append($this->addMappingNode(
-                            'value',
-                            'Elcodi\Component\Zone\Entity\Value',
-                            '@ElcodiZoneBundle/Resources/config/doctrine/Value.orm.yml',
-                            'default',
-                            true
-                        ))
                     ->end()
                 ->end()
             ->end();
