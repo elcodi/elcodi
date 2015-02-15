@@ -9,7 +9,6 @@ parameters:
     elcodi.core.geo.factory.city.class: Elcodi\Component\Geo\Factory\CityFactory
     elcodi.core.geo.factory.postal_code.class: Elcodi\Component\Geo\Factory\PostalCodeFactory
     elcodi.core.geo.factory.address.class: Elcodi\Component\Geo\Factory\AddressFactory
-    elcodi.core.geo.factory.zone.class: Elcodi\Component\Geo\Factory\ZoneFactory
     elcodi.core.geo.factory.location.class: Elcodi\Component\Geo\Factory\LocationFactory
 
     #
@@ -22,9 +21,6 @@ parameters:
     #
     elcodi.core.geo.populator.geo_populator.class: Elcodi\Component\Geo\Populator\GeoPopulator
     elcodi.core.geo.builder.geo_builder.class: Elcodi\Component\Geo\Builder\GeoBuilder
-    elcodi.core.geo.service.zone_manager.class: Elcodi\Component\Geo\Services\ZoneManager
-    elcodi.core.geo.service.zone_matcher.class: Elcodi\Component\Geo\Services\ZoneMatcher
-    elcodi.core.geo.service.zone_finder.class: Elcodi\Component\Geo\Services\ZoneFinder
 
     #
     # GeoData populator adapters

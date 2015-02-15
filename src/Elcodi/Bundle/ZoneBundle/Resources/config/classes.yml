@@ -1,0 +1,6 @@
+parameters:
+
+    #
+    # Factories
+    #
+    elcodi.factory.zone.class: Elcodi\Component\Zone\Factory\ZoneFactory

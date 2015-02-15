@@ -79,55 +79,6 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
             )
             ->addEntityMapping(
                 $container,
-                'elcodi.core.geo.entity.zone.manager',
-                'elcodi.core.geo.entity.zone.class',
-                'elcodi.core.geo.entity.zone.mapping_file',
-                'elcodi.core.geo.entity.zone.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.core.geo.entity.zone_member.manager',
-                'elcodi.core.geo.entity.zone_member.class',
-                'elcodi.core.geo.entity.zone_member.mapping_file',
-                'elcodi.core.geo.entity.zone_member.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.core.geo.entity.zone_country_member.manager',
-                'elcodi.core.geo.entity.zone_country_member.class',
-                'elcodi.core.geo.entity.zone_country_member.mapping_file',
-                'elcodi.core.geo.entity.zone_country_member.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.core.geo.entity.zone_state_member.manager',
-                'elcodi.core.geo.entity.zone_state_member.class',
-                'elcodi.core.geo.entity.zone_state_member.mapping_file',
-                'elcodi.core.geo.entity.zone_state_member.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.core.geo.entity.zone_province_member.manager',
-                'elcodi.core.geo.entity.zone_province_member.class',
-                'elcodi.core.geo.entity.zone_province_member.mapping_file',
-                'elcodi.core.geo.entity.zone_province_member.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.core.geo.entity.zone_city_member.manager',
-                'elcodi.core.geo.entity.zone_city_member.class',
-                'elcodi.core.geo.entity.zone_city_member.mapping_file',
-                'elcodi.core.geo.entity.zone_city_member.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.core.geo.entity.zone_postal_code_member.manager',
-                'elcodi.core.geo.entity.zone_postal_code_member.class',
-                'elcodi.core.geo.entity.zone_postal_code_member.mapping_file',
-                'elcodi.core.geo.entity.zone_postal_code_member.enabled'
-            )
-            ->addEntityMapping(
-                $container,
                 'elcodi.core.geo.entity.location.manager',
                 'elcodi.core.geo.entity.location.class',
                 'elcodi.core.geo.entity.location.mapping_file',
