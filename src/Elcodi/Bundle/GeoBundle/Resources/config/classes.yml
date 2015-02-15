@@ -22,6 +22,7 @@ parameters:
     #
     elcodi.core.geo.populator.geo_populator.class: Elcodi\Component\Geo\Populator\GeoPopulator
     elcodi.core.geo.builder.geo_builder.class: Elcodi\Component\Geo\Builder\GeoBuilder
+    elcodi.location_manager.service.class: Elcodi\Component\Geo\Services\LocationManager
 
     #
     # GeoData populator adapters

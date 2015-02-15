@@ -27,7 +27,7 @@ use Elcodi\Component\Geo\Factory\LocationFactory;
 /**
  * Class LocationData
  */
-class LocationData extends AbstractFixture implements DependentFixtureInterface
+class LocationData extends AbstractFixture
 {
     /**
      * {@inheritDoc}
@@ -89,16 +89,5 @@ class LocationData extends AbstractFixture implements DependentFixtureInterface
             $locationVallesOriental,
             $locationSantCeloni,
         ]);
-    }
-
-    /**
-     * This method must return an array of fixtures classes
-     * on which the implementing class depends on
-     *
-     * @return array
-     */
-    public function getDependencies()
-    {
-        return [];
     }
 }

@@ -24,3 +24,8 @@ services:
 
     elcodi.geo_builder:
         alias: elcodi.core.geo.builder.geo_builder
+
+    elcodi.location_manager.service:
+        class: %elcodi.location_manager.service.class%
+        arguments:
+            location_repository: @elcodi.repository.location

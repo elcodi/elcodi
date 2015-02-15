@@ -24,4 +24,20 @@ use Doctrine\ORM\EntityRepository;
  */
 class LocationRepository extends EntityRepository
 {
+    /**
+     * Return all the root locations.
+     *
+     * @return array
+     */
+    public function findAllRoots()
+    {
+        $roots = $this
+            ->createQueryBuilder('l')
+            ->leftJoin('l.parents', 'p')
+            ->andWhere('p.id is NULL')
+            ->getQuery()
+            ->getResult();
+
+        return $roots;
+    }
 }
