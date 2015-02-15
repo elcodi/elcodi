@@ -17,8 +17,6 @@
 
 namespace Elcodi\Component\Zone\Services;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface;
 use Elcodi\Component\Zone\Repository\ZoneRepository;

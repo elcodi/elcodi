@@ -99,6 +99,7 @@ class ElcodiZoneExtension extends AbstractExtension implements EntitiesOverridab
             'repositories',
             'objectManagers',
             'services',
+            'directors',
         ];
     }
 

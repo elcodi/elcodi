@@ -2,8 +2,6 @@
 
 namespace Elcodi\Component\Geo\Services\Interfaces;
 
-use Elcodi\Component\Geo\Services\Interfaces\LocationIdentifiedCollectionInterface;
-
 /**
  * Interface LocationManagerInterface
  */
@@ -12,7 +10,7 @@ interface LocationManagerInterface
     /**
      * Get all the root locations.
      *
-     * @return [LocationIdentifiedCollectionInterface]
+     * @return LocationIdentifiedCollectionInterface[]
      */
     public function getRootLocations();
 
@@ -21,7 +19,7 @@ interface LocationManagerInterface
      *
      * @param string|array $ids The location Ids or a single id.
      *
-     * @return [LocationIdentifiedCollectionInterface]
+     * @return LocationIdentifiedCollectionInterface[]
      */
     public function getChildren($ids);
 
@@ -30,7 +28,7 @@ interface LocationManagerInterface
      *
      * @param string|array $ids The location Ids or a single id.
      *
-     * @return [LocationIdentifiedCollectionInterface]
+     * @return LocationIdentifiedCollectionInterface[]
      */
     public function getParents($ids);
 
@@ -39,21 +37,23 @@ interface LocationManagerInterface
      *
      * @param string|array $ids The location Ids or a single id.
      *
-     * @return LocationIdentifiedCollectionInterface
+     * @return LocationIdentifiedCollectionInterface[]
      */
     public function getLocation($ids);
 
     /**
-     * Get the hierarchy given a location sorted from root to the given location.
+     * Get the hierarchy given a location sorted from root to the given
+     * location.
      *
      * @param string|array $ids The location Ids or a single id.
      *
-     * @return [LocationIdentifiedCollectionInterface]
+     * @return LocationIdentifiedCollectionInterface[]
      */
     public function getHierarchy($ids);
 
     /**
-     * Checks if the first received id is contained between the rest of ids received as second parameter
+     * Checks if the first received id is contained between the rest of ids
+     * received as second parameter
      *
      * @param string $id  The location Id
      * @param array  $ids The location Ids
