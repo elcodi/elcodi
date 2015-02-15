@@ -156,15 +156,26 @@ class ObjectDirector
      *
      * This method will persist and flush the object
      *
-     * @param Object $object Object
+     * @param object|array $object Object
      *
-     * @return Object Saved object
+     * @return object|array Saved object
      */
     public function save($object)
     {
-        $this
-            ->manager
-            ->persist($object);
+        if (is_array($object)) {
+
+            foreach ($object as $entity) {
+                $this
+                    ->manager
+                    ->persist($entity);
+            }
+
+        } else {
+
+            $this
+                ->manager
+                ->persist($object);
+        }
 
         $this
             ->manager
@@ -178,15 +189,26 @@ class ObjectDirector
      *
      * This method will remove and flush the object
      *
-     * @param Object $object Object
+     * @param object|array $object Object
      *
-     * @return Object Saved object
+     * @return object|array Saved object
      */
     public function remove($object)
     {
-        $this
-            ->manager
-            ->remove($object);
+        if (is_array($object)) {
+
+            foreach ($object as $entity) {
+                $this
+                    ->manager
+                    ->remove($entity);
+            }
+
+        } else {
+
+            $this
+                ->manager
+                ->remove($object);
+        }
 
         $this
             ->manager
