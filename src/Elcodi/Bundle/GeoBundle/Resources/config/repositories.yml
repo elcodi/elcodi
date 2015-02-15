@@ -5,46 +5,11 @@ services:
     #
 
     #
-    # Repository for entity country
-    #
-    elcodi.repository.country:
-        parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.geo.entity.country.class% ]
-
-    #
-    # Repository for entity state
-    #
-    elcodi.repository.state:
-        parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.geo.entity.state.class% ]
-
-    #
-    # Repository for entity province
-    #
-    elcodi.repository.province:
-        parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.geo.entity.province.class% ]
-
-    #
-    # Repository for entity city
-    #
-    elcodi.repository.city:
-        parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.geo.entity.city.class% ]
-
-    #
-    # Repository for entity postalcode
-    #
-    elcodi.repository.postal_code:
-        parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.geo.entity.postal_code.class% ]
-
-    #
     # Repository for entity address
     #
     elcodi.repository.address:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.geo.entity.address.class% ]
+        arguments: [ %elcodi.entity.address.class% ]
 
     #
     # Repository for entity location

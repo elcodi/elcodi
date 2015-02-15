@@ -37,45 +37,10 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
         $this
             ->addEntityMapping(
                 $container,
-                'elcodi.core.geo.entity.country.manager',
-                'elcodi.core.geo.entity.country.class',
-                'elcodi.core.geo.entity.country.mapping_file',
-                'elcodi.core.geo.entity.country.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.core.geo.entity.state.manager',
-                'elcodi.core.geo.entity.state.class',
-                'elcodi.core.geo.entity.state.mapping_file',
-                'elcodi.core.geo.entity.state.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.core.geo.entity.province.manager',
-                'elcodi.core.geo.entity.province.class',
-                'elcodi.core.geo.entity.province.mapping_file',
-                'elcodi.core.geo.entity.province.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.core.geo.entity.city.manager',
-                'elcodi.core.geo.entity.city.class',
-                'elcodi.core.geo.entity.city.mapping_file',
-                'elcodi.core.geo.entity.city.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.core.geo.entity.postal_code.manager',
-                'elcodi.core.geo.entity.postal_code.class',
-                'elcodi.core.geo.entity.postal_code.mapping_file',
-                'elcodi.core.geo.entity.postal_code.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.core.geo.entity.address.manager',
-                'elcodi.core.geo.entity.address.class',
-                'elcodi.core.geo.entity.address.mapping_file',
-                'elcodi.core.geo.entity.address.enabled'
+                'elcodi.entity.address.manager',
+                'elcodi.entity.address.class',
+                'elcodi.entity.address.mapping_file',
+                'elcodi.entity.address.enabled'
             )
             ->addEntityMapping(
                 $container,

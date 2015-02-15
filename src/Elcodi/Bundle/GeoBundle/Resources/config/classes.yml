@@ -3,12 +3,7 @@ parameters:
     #
     # Factories
     #
-    elcodi.core.geo.factory.country.class: Elcodi\Component\Geo\Factory\CountryFactory
-    elcodi.core.geo.factory.state.class: Elcodi\Component\Geo\Factory\StateFactory
-    elcodi.core.geo.factory.province.class: Elcodi\Component\Geo\Factory\ProvinceFactory
-    elcodi.core.geo.factory.city.class: Elcodi\Component\Geo\Factory\CityFactory
-    elcodi.core.geo.factory.postal_code.class: Elcodi\Component\Geo\Factory\PostalCodeFactory
-    elcodi.core.geo.factory.address.class: Elcodi\Component\Geo\Factory\AddressFactory
+    elcodi.factory.address.class: Elcodi\Component\Geo\Factory\AddressFactory
     elcodi.factory.location.class: Elcodi\Component\Geo\Factory\LocationFactory
     elcodi.factory.location_data.class: Elcodi\Component\Geo\Factory\LocationDataFactory
 

@@ -3,6 +3,13 @@ services:
     #
     # Directors
     #
+    elcodi.director.address:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        arguments:
+            - @elcodi.object_manager.address
+            - @elcodi.repository.address
+            - @elcodi.factory.address
+
     elcodi.director.location:
         class: Elcodi\Component\Core\Services\ObjectDirector
         arguments:

@@ -3,29 +3,9 @@ services:
     #
     # Object Managers
     #
-    elcodi.object_manager.country:
-        parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.geo.entity.country.class% ]
-
-    elcodi.object_manager.state:
-        parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.geo.entity.state.class% ]
-
-    elcodi.object_manager.province:
-        parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.geo.entity.province.class% ]
-
-    elcodi.object_manager.city:
-        parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.geo.entity.city.class% ]
-
-    elcodi.object_manager.postal_code:
-        parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.geo.entity.postal_code.class% ]
-
     elcodi.object_manager.address:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.geo.entity.address.class% ]
+        arguments: [ %elcodi.entity.address.class% ]
 
     elcodi.object_manager.location:
         parent: elcodi.abstract_manager
