@@ -82,6 +82,17 @@ class LocationData extends AbstractFixture
         $locationObjectManager->persist($locationSantCeloni);
         $this->addReference('location-sant-celoni', $locationSantCeloni);
 
+        $locationLaBatlloria = $locationFactory
+            ->create()
+            ->setId('ES_CA_VO_LaBatlloria')
+            ->setName('La Batlloria')
+            ->setCode('LaBatlloria')
+            ->setType('city')
+            ->addParent($locationVallesOriental);
+
+        $locationObjectManager->persist($locationLaBatlloria);
+        $this->addReference('location-la-batlloria', $locationLaBatlloria);
+
         $locationViladecavalls = $locationFactory
             ->create()
             ->setId('ES_CA_VO_Viladecavalls')
@@ -92,6 +103,18 @@ class LocationData extends AbstractFixture
 
         $locationObjectManager->persist($locationViladecavalls);
         $this->addReference('location-viladecavalls', $locationViladecavalls);
+
+        $locationPostalCode8000 = $locationFactory
+            ->create()
+            ->setId('08470')
+            ->setName('08470')
+            ->setCode('08470')
+            ->setType('postal_code')
+            ->addParent($locationLaBatlloria)
+            ->addParent($locationSantCeloni);
+
+        $locationObjectManager->persist($locationPostalCode8000);
+        $this->addReference('location-8000', $locationPostalCode8000);
 
         $locationObjectManager->flush([
             $locationSpain,

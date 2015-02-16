@@ -165,7 +165,7 @@ class LocationServiceProviderTest extends WebTestCase
     {
         $locations = $this
             ->locationProvider
-            ->getChildren('ES_CA_VO_SantCeloni');
+            ->getChildren('08470');
 
         $this->assertCount(
             0,
@@ -279,6 +279,21 @@ class LocationServiceProviderTest extends WebTestCase
     }
 
     /**
+     * Test get location not found
+     */
+    public function testGetLocationNotFound()
+    {
+        $this->setExpectedException(
+            'Doctrine\ORM\EntityNotFoundException',
+            'Entity was not found.'
+        );
+
+        $this
+            ->locationProvider
+            ->getLocation('UNEXISTENT');
+    }
+
+    /**
      * Test get hierarchy
      */
     public function testGetHierarchy()
@@ -316,6 +331,63 @@ class LocationServiceProviderTest extends WebTestCase
     }
 
     /**
+     * Test get hierarchy for multiple paths
+     */
+    public function testGetHierarchyMultiplePaths()
+    {
+        $hierarchy = $this
+            ->locationProvider
+            ->getHierarchy('08470');
+
+        $expectedHierarchyNames = [
+            'Spain',
+            'Catalunya',
+            'Valles Oriental',
+            'La Batlloria',
+            'Sant Celoni',
+            '08470'
+        ];
+
+        $this->assertCount(
+            count($expectedHierarchyNames),
+            $hierarchy,
+            'The height of the received hierarchy tree is incorrect'
+        );
+
+        $hierarchyNames = [];
+        foreach ($hierarchy as $key => $hierarchyNode) {
+            $this->assertInstanceOf(
+                'Elcodi\Component\Geo\ValueObject\LocationData',
+                $hierarchyNode,
+                'Every node received should be a LocationData'
+            );
+
+            $hierarchyNames[] = $hierarchyNode->getName();
+        }
+
+        $this->assertSame(
+            sort($hierarchyNames),
+            sort($expectedHierarchyNames),
+            'Unexpected hierarchy returned'
+        );
+    }
+
+    /**
+     * Public function test get hierarchy not found.
+     */
+    public function testGetHierarchyNotFound()
+    {
+        $this->setExpectedException(
+            'Doctrine\ORM\EntityNotFoundException',
+            'Entity was not found.'
+        );
+
+        $this
+            ->locationProvider
+            ->getHierarchy('UNEXISTENT');
+    }
+
+    /**
      * Test in found
      */
     public function testInFound()
@@ -346,7 +418,7 @@ class LocationServiceProviderTest extends WebTestCase
 
         $this->assertTrue(
             $found,
-            'CA should be found inside ES'
+            'Viladecavalls should be found inside ES_CA'
         );
     }
 
@@ -364,6 +436,24 @@ class LocationServiceProviderTest extends WebTestCase
         $this->assertFalse(
             $found,
             'ES should not be found inside CA'
+        );
+    }
+
+    /**
+     * Test in not found for multiple options
+     */
+    public function testInNotFoundMultiple()
+    {
+        $found = $this
+            ->locationProvider
+            ->in('ES', [
+                'ES_CA',
+                'ES_CA_VO_SantCeloni'
+            ]);
+
+        $this->assertFalse(
+            $found,
+            'ES should not be found inside Catalunya or Sant Celoni'
         );
     }
 
