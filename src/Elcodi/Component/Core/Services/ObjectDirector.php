@@ -163,15 +163,12 @@ class ObjectDirector
     public function save($object)
     {
         if (is_array($object)) {
-
             foreach ($object as $entity) {
                 $this
                     ->manager
                     ->persist($entity);
             }
-
         } else {
-
             $this
                 ->manager
                 ->persist($object);
@@ -196,15 +193,12 @@ class ObjectDirector
     public function remove($object)
     {
         if (is_array($object)) {
-
             foreach ($object as $entity) {
                 $this
                     ->manager
                     ->remove($entity);
             }
-
         } else {
-
             $this
                 ->manager
                 ->remove($object);

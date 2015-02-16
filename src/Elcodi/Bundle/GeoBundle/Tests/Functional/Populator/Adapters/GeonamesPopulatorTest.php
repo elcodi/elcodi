@@ -20,9 +20,9 @@ namespace Elcodi\Bundle\GeoBundle\Tests\Functional\Populator;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class GeoPopulatorTest
+ * Class LocationPopulatorTest
  */
-class GeoPopulatorTest extends WebTestCase
+class GeonamesPopulatorTest extends WebTestCase
 {
     /**
      * Schema must be loaded in all test cases
@@ -41,9 +41,6 @@ class GeoPopulatorTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.core.geo.populator.geo_populator',
-            'elcodi.geo_populator',
-        ];
+        return ['elcodi.location_populator.geoname'];
     }
 }

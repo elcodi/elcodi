@@ -17,7 +17,6 @@
 
 namespace Elcodi\Component\Zone\Entity\Interfaces;
 
-use Doctrine\Common\Collections\Collection;
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
@@ -42,5 +41,4 @@ interface ZoneInterface extends IdentifiableInterface, DateTimeInterface, Enable
      * @return $this Self object
      */
     public function setLocations(array $locations);
-
 }

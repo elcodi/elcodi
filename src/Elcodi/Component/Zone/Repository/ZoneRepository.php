@@ -37,7 +37,7 @@ class ZoneRepository extends EntityRepository
             ->createQueryBuilder('z')
             ->where('z.enabled = :enabled')
             ->setParameters([
-                'enabled' => true
+                'enabled' => true,
             ])
             ->getQuery()
             ->getArrayResult();

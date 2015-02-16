@@ -15,14 +15,14 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\GeoBundle\Tests\Functional\Builder;
+namespace Elcodi\Bundle\GeoBundle\Tests\Functional\Services;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class GeoBuilderTest
+ * Class LocationBuilderTest
  */
-class GeoBuilderTest extends WebTestCase
+class LocationBuilderTest extends WebTestCase
 {
     /**
      * Schema must be loaded in all test cases
@@ -41,9 +41,6 @@ class GeoBuilderTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.core.geo.builder.geo_builder',
-            'elcodi.geo_builder',
-        ];
+        return ['elcodi.location_builder'];
     }
 }

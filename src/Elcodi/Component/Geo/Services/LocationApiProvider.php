@@ -12,22 +12,24 @@
  *
  * @author Marc Morera <yuhu@mmoreram.com>
  * @author Aldo Chiecchia <zimage@tiscali.it>
+ * @author Elcodi Team <tech@elcodi.com>
  */
 
 namespace Elcodi\Component\Geo\Services;
 
 use Doctrine\ORM\EntityNotFoundException;
-use Elcodi\Component\Geo\Factory\LocationDataFactory;
 use GuzzleHttp\Client;
-use Elcodi\Component\Geo\Services\Interfaces\LocationManagerInterface;
-use Elcodi\Component\Geo\ValueObject\ApiUrls;
-use Elcodi\Component\Geo\ValueObject\LocationData;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
+use Elcodi\Component\Geo\Factory\LocationDataFactory;
+use Elcodi\Component\Geo\Services\Interfaces\LocationProviderInterface;
+use Elcodi\Component\Geo\ValueObject\ApiUrls;
+use Elcodi\Component\Geo\ValueObject\LocationData;
+
 /**
- * Class LocationApiManager
+ * Class LocationApiProvider
  */
-class LocationApiManager implements LocationManagerInterface
+class LocationApiProvider implements LocationProviderInterface
 {
     /**
      * @var LocationDataFactory
@@ -48,11 +50,10 @@ class LocationApiManager implements LocationManagerInterface
      *
      * @param LocationDataFactory $locationDataFactory Transformer
      */
-    function __construct(
+    public function __construct(
         LocationDataFactory $locationDataFactory,
         ApiUrls $apiUrls
-    )
-    {
+    ) {
         $this->locationDataFactory = $locationDataFactory;
         $this->apiUrls = $apiUrls;
     }
@@ -82,7 +83,7 @@ class LocationApiManager implements LocationManagerInterface
     {
         $url = $this
             ->apiUrls
-            ->getGetChildrenUrl() . '?id=' . $id;
+            ->getGetChildrenUrl().'?id='.$id;
 
         return $this->getDataFromApi($url);
     }
@@ -98,7 +99,7 @@ class LocationApiManager implements LocationManagerInterface
     {
         $url = $this
             ->apiUrls
-            ->getGetParentsUrl() . '?id=' . $id;
+            ->getGetParentsUrl().'?id='.$id;
 
         return $this->getDataFromApi($url);
     }
@@ -114,7 +115,7 @@ class LocationApiManager implements LocationManagerInterface
     {
         $url = $this
             ->apiUrls
-            ->getGetLocationUrl() . '?id=' . $id;
+            ->getGetLocationUrl().'?id='.$id;
 
         return $this->getDataFromApi($url);
     }
@@ -131,7 +132,7 @@ class LocationApiManager implements LocationManagerInterface
     {
         $url = $this
             ->apiUrls
-            ->getGetHierarchyUrl() . '?id=' . $id;
+            ->getGetHierarchyUrl().'?id='.$id;
 
         return $this->getDataFromApi($url);
     }
@@ -149,7 +150,7 @@ class LocationApiManager implements LocationManagerInterface
     {
         $url = $this
             ->apiUrls
-            ->getInUrl() . '?id=' . $id . '&ids=' . implode(',', $ids);
+            ->getInUrl().'?id='.$id.'&ids='.implode(',', $ids);
 
         return $this->getDataFromApi($url);
     }
@@ -162,7 +163,7 @@ class LocationApiManager implements LocationManagerInterface
      * @return LocationData[] Location data
      *
      * @throws EntityNotFoundException Entity not found
-     * @throws HttpException Http Exception
+     * @throws HttpException           Http Exception
      */
     protected function getDataFromApi($url)
     {
@@ -171,19 +172,16 @@ class LocationApiManager implements LocationManagerInterface
         $responseStatusCode = $response->getStatusCode();
 
         if (404 == $responseStatusCode) {
-
             throw new EntityNotFoundException();
         }
 
         if (500 == $responseStatusCode) {
-
             throw new HttpException('Http exception');
         }
 
         $locationDataArray = [];
 
         foreach ($response->json(['object' => true]) as $locationResponse) {
-
             $locationDataArray[] = $this
                 ->locationDataFactory
                 ->create(

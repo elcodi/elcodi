@@ -17,6 +17,8 @@
 
 namespace Elcodi\Component\Geo\Populator\Interfaces;
 
+use Symfony\Component\Console\Output\OutputInterface;
+
 use Elcodi\Component\Geo\Entity\Interfaces\LocationInterface;
 
 /**
@@ -29,9 +31,10 @@ interface PopulatorInterface
     /**
      * Populate a country
      *
-     * @param string $countryCode Country Code
+     * @param string          $countryCode Country Code
+     * @param OutputInterface $output      Console Output
      *
-     * @return LocationInterface[]
+     * @return LocationInterface[] Root locations
      */
-    public function populate($countryCode);
+    public function populate($countryCode, OutputInterface $output);
 }

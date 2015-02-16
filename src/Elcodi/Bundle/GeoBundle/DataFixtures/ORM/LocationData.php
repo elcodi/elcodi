@@ -17,7 +17,6 @@
 
 namespace Elcodi\Bundle\GeoBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
@@ -83,11 +82,23 @@ class LocationData extends AbstractFixture
         $locationObjectManager->persist($locationSantCeloni);
         $this->addReference('location-sant-celoni', $locationSantCeloni);
 
+        $locationViladecavalls = $locationFactory
+            ->create()
+            ->setId('ES_CA_VO_Viladecavalls')
+            ->setName('Viladecavalls')
+            ->setCode('Viladecavalls')
+            ->setType('city')
+            ->addParent($locationVallesOriental);
+
+        $locationObjectManager->persist($locationViladecavalls);
+        $this->addReference('location-viladecavalls', $locationViladecavalls);
+
         $locationObjectManager->flush([
             $locationSpain,
             $locationCatalunya,
             $locationVallesOriental,
             $locationSantCeloni,
+            $locationViladecavalls,
         ]);
     }
 }

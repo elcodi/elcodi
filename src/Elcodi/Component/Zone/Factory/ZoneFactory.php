@@ -17,10 +17,8 @@
 
 namespace Elcodi\Component\Zone\Factory;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
-use Elcodi\Component\Zone\Entity\Zone;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
+use Elcodi\Component\Zone\Entity\Zone;
 
 /**
  * Factory for Zone entities

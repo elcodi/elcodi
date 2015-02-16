@@ -15,14 +15,14 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\GeoBundle\Tests\Functional\Factory;
+namespace Elcodi\Bundle\GeoBundle\Tests\Functional\Populator;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class AddressFactoryTest
+ * Class GeonamesPopulatorTest
  */
-class AddressFactoryTest extends WebTestCase
+class LocationPopulatorTest extends WebTestCase
 {
     /**
      * Schema must be loaded in all test cases
@@ -41,6 +41,6 @@ class AddressFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.factory.address'];
+        return ['elcodi.location_populator'];
     }
 }

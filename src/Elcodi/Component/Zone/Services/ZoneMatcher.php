@@ -18,8 +18,8 @@
 namespace Elcodi\Component\Zone\Services;
 
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
-use Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface;
 use Elcodi\Component\Geo\Services\Interfaces\LocationManagerInterface;
+use Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface;
 
 /**
  * Class ZoneMatcher
@@ -56,13 +56,11 @@ class ZoneMatcher
     public function isAddressContainedInZone(
         AddressInterface $address,
         ZoneInterface $zone
-    )
-    {
+    ) {
         $locations = $zone->getLocations();
         $isContained = false;
 
         foreach ($locations as $location) {
-
             $isContained |= $this
                 ->locationManager
                 ->in(

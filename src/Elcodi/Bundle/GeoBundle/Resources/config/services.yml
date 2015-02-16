@@ -3,18 +3,29 @@ services:
     #
     # Services
     #
-    elcodi.location_manager.service:
-        class: %elcodi.location_manager.service.class%
+    elcodi.location_provider.service:
+        class: %elcodi.location_provider.service.class%
         arguments:
             location_repository: @elcodi.repository.location
-            location_data_factory: @elcodi.factory.location_data
+            location_to_location_data_transformer: @elcodi.transformer.location_to_location_data
 
-    elcodi.location_manager.api_urls:
-        class: %elcodi.location_manager.api_urls.class%
+    elcodi.location_provider.api:
+        class: %elcodi.location_provider.api.class%
         arguments:
-            elcodi.route.location_api.get_root_locations
-            elcodi.route.location_api.get_children
-            elcodi.route.location_api.get_parents
-            elcodi.route.location_api.get_location
-            elcodi.route.location_api.get_hierarchy
-            elcodi.route.location_api.in
+            location_data_factory: @elcodi.factory.location_data
+            location_api_urls: @elcodi.location_api_urls
+
+    elcodi.location_api_urls:
+        class: %elcodi.location_api_urls.class%
+        arguments:
+            - %elcodi.route.location_api.host%%elcodi.route.location_api.prefix%/%elcodi.route.location_api.get_root_locations%
+            - %elcodi.route.location_api.host%%elcodi.route.location_api.prefix%/%elcodi.route.location_api.get_children%
+            - %elcodi.route.location_api.host%%elcodi.route.location_api.prefix%/%elcodi.route.location_api.get_parents%
+            - %elcodi.route.location_api.host%%elcodi.route.location_api.prefix%/%elcodi.route.location_api.get_location%
+            - %elcodi.route.location_api.host%%elcodi.route.location_api.prefix%/%elcodi.route.location_api.get_hierarchy%
+            - %elcodi.route.location_api.host%%elcodi.route.location_api.prefix%/%elcodi.route.location_api.in%
+
+    elcodi.location_builder:
+        class: %elcodi.location_builder.class%
+        arguments:
+            location_factory: @elcodi.factory.location

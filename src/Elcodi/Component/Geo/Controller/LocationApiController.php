@@ -12,17 +12,20 @@
  *
  * @author Marc Morera <yuhu@mmoreram.com>
  * @author Aldo Chiecchia <zimage@tiscali.it>
+ * @author Elcodi Team <tech@elcodi.com>
  */
 
 namespace Elcodi\Component\Geo\Controller;
 
-use Elcodi\Component\Geo\Services\Interfaces\LocationManagerInterface;
+use Doctrine\ORM\EntityNotFoundException;
+use Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Exception;
+
+use Elcodi\Component\Geo\Services\Interfaces\LocationproviderInterface;
+use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
  * Class LocationApiController
@@ -30,11 +33,11 @@ use Exception;
 class LocationApiController
 {
     /**
-     * @var LocationManagerInterface
+     * @var LocationproviderInterface
      *
      * Location manager
      */
-    protected $locationManager;
+    protected $locationprovider;
 
     /**
      * @var Request
@@ -46,16 +49,15 @@ class LocationApiController
     /**
      * Construct
      *
-     * @param RequestStack             $requestStack    Request stack
-     * @param LocationManagerInterface $locationManager Location manager
+     * @param RequestStack              $requestStack     Request stack
+     * @param LocationproviderInterface $locationprovider Location manager
      */
     public function __construct(
         RequestStack $requestStack,
-        LocationManagerInterface $locationManager
-    )
-    {
+        LocationproviderInterface $locationprovider
+    ) {
         $this->request = $requestStack->getCurrentRequest();
-        $this->locationManager = $locationManager;
+        $this->locationprovider = $locationprovider;
     }
 
     /**
@@ -66,9 +68,12 @@ class LocationApiController
     public function getRootLocationsAction()
     {
         return $this->createResponseObject(function () {
-            return $this
-                ->locationManager
-                ->getRootLocations();
+            return
+                $this->normalizeLocationDataArray(
+                    $this
+                        ->locationprovider
+                        ->getRootLocations()
+                );
         });
     }
 
@@ -85,9 +90,11 @@ class LocationApiController
             ->get('id');
 
         return $this->createResponseObject(function () use ($id) {
-            return $this
-                ->locationManager
-                ->getChildren($id);
+            return $this->normalizeLocationDataArray(
+                $this
+                    ->locationprovider
+                    ->getChildren($id)
+            );
         });
     }
 
@@ -104,9 +111,11 @@ class LocationApiController
             ->get('id');
 
         return $this->createResponseObject(function () use ($id) {
-            return $this
-                ->locationManager
-                ->getParents($id);
+            return $this->normalizeLocationDataArray(
+                $this
+                    ->locationprovider
+                    ->getParents($id)
+            );
         });
     }
 
@@ -123,9 +132,11 @@ class LocationApiController
             ->get('id');
 
         return $this->createResponseObject(function () use ($id) {
-            return $this
-                ->locationManager
-                ->getLocation($id);
+            return $this->normalizeLocationData(
+                $this
+                    ->locationprovider
+                    ->getLocation($id)
+            );
         });
     }
 
@@ -143,9 +154,11 @@ class LocationApiController
             ->get('id');
 
         return $this->createResponseObject(function () use ($id) {
-            return $this
-                ->locationManager
-                ->getHierarchy($id);
+            return $this->normalizeLocationDataArray(
+                $this
+                    ->locationprovider
+                    ->getHierarchy($id)
+            );
         });
     }
 
@@ -169,8 +182,8 @@ class LocationApiController
 
         return $this->createResponseObject(function () use ($id, $ids) {
             return $this
-                ->locationManager
-                ->getChildren($id, $ids);
+                ->locationprovider
+                ->in($id, $ids);
         });
     }
 
@@ -181,28 +194,58 @@ class LocationApiController
      *
      * @return Response Response object
      */
-    protected function createResponseObject(Callable $callable)
+    protected function createResponseObject(callable $callable)
     {
         try {
+            $response = new JsonResponse($callable());
+        } catch (EntityNotFoundException $notFoundException) {
             $response = new JsonResponse(
-                json_encode($callable())
-            );
-
-        } catch (NotFoundHttpException $notFoundException) {
-
-            $response = new Response(
                 $notFoundException->getMessage(),
                 404
             );
-
         } catch (Exception $e) {
-
-            $response = new Response(
-                'Exception',
+            $response = new JsonResponse(
+                'API exception. Please contact your webmaster',
                 500
             );
         }
 
         return $response;
+    }
+
+    /**
+     * Normalize an array of LocationData objects to be json encoded
+     *
+     * @param LocationData[] $locationDataArray Location data array
+     *
+     * @return array Data normalized
+     */
+    protected function normalizeLocationDataArray(array $locationDataArray)
+    {
+        $normalizedLocationDataArray = [];
+
+        foreach ($locationDataArray as $locationData) {
+            $normalizedLocationDataArray[] = $this
+                ->normalizeLocationData($locationData);
+        }
+
+        return $normalizedLocationDataArray;
+    }
+
+    /**
+     * Normalize LocationData object to be json encoded
+     *
+     * @param LocationData $locationData Location data
+     *
+     * @return array Data normalized
+     */
+    protected function normalizeLocationData(LocationData $locationData)
+    {
+        return [
+            'id'   => $locationData->getId(),
+            'name' => $locationData->getName(),
+            'code' => $locationData->getCode(),
+            'type' => $locationData->getType(),
+        ];
     }
 }

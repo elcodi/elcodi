@@ -50,8 +50,8 @@ class AddressData extends AbstractFixture implements DependentFixtureInterface
             ->setPhone('123-456789')
             ->setMobile('000-123456')
             ->setComments('Some comments')
-            ->setCity($this->getReference('city-barcelona'))
-            ->setPostalcode($this->getReference('postalcode-08021'))
+            ->setCity($this->getReference('location-sant-celoni')->getId())
+            ->setPostalcode('08021')
             ->setEnabled(true);
 
         $addressObjectManager->persist($addressBarcelona);
@@ -67,8 +67,8 @@ class AddressData extends AbstractFixture implements DependentFixtureInterface
             ->setPhone('123-456789')
             ->setMobile('000-123456')
             ->setComments('Some other comments')
-            ->setCity($this->getReference('city-viladecavalls'))
-            ->setPostalcode($this->getReference('postalcode-08232'))
+            ->setCity($this->getReference('location-viladecavalls')->getId())
+            ->setPostalcode('08232')
             ->setEnabled(true);
 
         $addressObjectManager->persist($addressViladecavalls);
@@ -89,7 +89,7 @@ class AddressData extends AbstractFixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            'Elcodi\Bundle\GeoBundle\DataFixtures\ORM\PostalcodeData',
+            'Elcodi\Bundle\GeoBundle\DataFixtures\ORM\LocationData',
         ];
     }
 }

@@ -19,7 +19,7 @@ namespace Elcodi\Component\Geo\Entity;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Geo\Entity\Interfaces\LocationInterface;
 
 /**
@@ -27,14 +27,7 @@ use Elcodi\Component\Geo\Entity\Interfaces\LocationInterface;
  */
 class Location implements LocationInterface
 {
-    use DateTimeTrait;
-
-    /**
-     * @var string
-     *
-     * The id
-     */
-    protected $id;
+    use IdentifiableTrait;
 
     /**
      * @var string
@@ -70,30 +63,6 @@ class Location implements LocationInterface
      * The location children
      */
     protected $children;
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Sets the id
-     *
-     * @param string $id The id
-     *
-     * @return $this Self object
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 
     /**
      * Gets the name
@@ -168,13 +137,38 @@ class Location implements LocationInterface
     }
 
     /**
-     * Get the parents
+     * Get the closest parents
      *
-     * @return Collection
+     * @return Collection Closest parents
      */
     public function getParents()
     {
         return $this->parents;
+    }
+
+    /**
+     * Get all the parents
+     *
+     * @return array All parents
+     */
+    public function getAllParents()
+    {
+        $closestParents = $this->getParents();
+        $allParents = [];
+
+        foreach ($closestParents as $parent) {
+            $allParents = array_merge(
+                $allParents,
+                $parent->getAllParents()
+            );
+        }
+
+        $allParents = array_merge(
+            $allParents,
+            $closestParents->toArray()
+        );
+
+        return $allParents;
     }
 
     /**
@@ -204,6 +198,8 @@ class Location implements LocationInterface
             $this
                 ->parents
                 ->add($location);
+
+            $location->addChildren($this);
         }
 
         return $this;
@@ -228,7 +224,7 @@ class Location implements LocationInterface
     /**
      * Get the children
      *
-     * @return Collection
+     * @return Collection Children
      */
     public function getChildren()
     {
@@ -236,7 +232,7 @@ class Location implements LocationInterface
     }
 
     /**
-     * Set children locations
+     * Set the children
      *
      * @param Collection $children Locations
      *
@@ -250,7 +246,7 @@ class Location implements LocationInterface
     }
 
     /**
-     * Add children Location
+     * Get the children
      *
      * @param LocationInterface $location Location
      *
@@ -263,22 +259,6 @@ class Location implements LocationInterface
                 ->children
                 ->add($location);
         }
-
-        return $this;
-    }
-
-    /**
-     * Remove children Location
-     *
-     * @param LocationInterface $location Location
-     *
-     * @return $this Self object
-     */
-    public function removeChildren(LocationInterface $location)
-    {
-        $this
-            ->children
-            ->removeElement($location);
 
         return $this;
     }

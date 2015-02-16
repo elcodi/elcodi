@@ -19,29 +19,13 @@ namespace Elcodi\Component\Geo\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
  * Interface LocationInterface
  */
-interface LocationInterface extends DateTimeInterface
+interface LocationInterface extends IdentifiableInterface
 {
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId();
-
-    /**
-     * Sets the id
-     *
-     * @param string $id The id
-     *
-     * @return string
-     */
-    public function setId($id);
-
     /**
      * Gets the name
      *
@@ -91,11 +75,18 @@ interface LocationInterface extends DateTimeInterface
     public function setType($type);
 
     /**
-     * Get the parents
+     * Get the closest parents
      *
-     * @return Collection
+     * @return Collection Closest parents
      */
     public function getParents();
+
+    /**
+     * Get all the parents
+     *
+     * @return array All parents
+     */
+    public function getAllParents();
 
     /**
      * Set parent locations
@@ -127,12 +118,12 @@ interface LocationInterface extends DateTimeInterface
     /**
      * Get the children
      *
-     * @return Collection
+     * @return Collection Children
      */
     public function getChildren();
 
     /**
-     * Set children locations
+     * Set the children
      *
      * @param Collection $children Locations
      *
@@ -141,20 +132,11 @@ interface LocationInterface extends DateTimeInterface
     public function setChildren(Collection $children);
 
     /**
-     * Add children Location
+     * Get the children
      *
      * @param LocationInterface $location Location
      *
      * @return $this Self object
      */
     public function addChildren(LocationInterface $location);
-
-    /**
-     * Remove children Location
-     *
-     * @param LocationInterface $location Location
-     *
-     * @return $this Self object
-     */
-    public function removeChildren(LocationInterface $location);
 }

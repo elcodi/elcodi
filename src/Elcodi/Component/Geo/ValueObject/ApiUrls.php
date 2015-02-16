@@ -12,6 +12,7 @@
  *
  * @author Marc Morera <yuhu@mmoreram.com>
  * @author Aldo Chiecchia <zimage@tiscali.it>
+ * @author Elcodi Team <tech@elcodi.com>
  */
 
 namespace Elcodi\Component\Geo\ValueObject;
@@ -73,15 +74,14 @@ class ApiUrls
      * @param string $getHierarchyUrl     getHierarchy url
      * @param string $inUrl               in url
      */
-    function __construct(
+    public function __construct(
         $getRootLocationsUrl,
         $getChildrenUrl,
         $getParentsUrl,
         $getLocationUrl,
         $getHierarchyUrl,
         $inUrl
-    )
-    {
+    ) {
         $this->getRootLocationsUrl = $getRootLocationsUrl;
         $this->getChildrenUrl = $getChildrenUrl;
         $this->getParentsUrl = $getParentsUrl;

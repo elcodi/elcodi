@@ -20,8 +20,8 @@ namespace Elcodi\Bundle\ZoneBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\Component\Zone\Factory\ZoneFactory;
 use Elcodi\Component\Zone\Factory\ValueFactory;
+use Elcodi\Component\Zone\Factory\ZoneFactory;
 
 /**
  * Class ZoneData

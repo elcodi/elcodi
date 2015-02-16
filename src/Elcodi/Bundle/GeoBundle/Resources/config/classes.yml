@@ -10,7 +10,7 @@ parameters:
     #
     # Commands
     #
-    elcodi.command.geo_populate.class: Elcodi\Component\Geo\Command\GeoPopulateCommand
+    elcodi.command.location_populate.class: Elcodi\Component\Geo\Command\LocationPopulateCommand
 
     #
     # Controllers
@@ -20,15 +20,18 @@ parameters:
     #
     # Services
     #
-    elcodi.location_manager.service.class: Elcodi\Component\Geo\Services\LocationManager
-    elcodi.location_manager.api_urls.class: Elcodi\Component\Geo\ValueObject\ApiUrls
+    elcodi.location_provider.service.class: Elcodi\Component\Geo\Services\LocationServiceProvider
+    elcodi.location_provider.api.class: Elcodi\Component\Geo\Services\LocationApiProvider
+    elcodi.location_api_urls.class: Elcodi\Component\Geo\ValueObject\ApiUrls
+    elcodi.location_builder.class: Elcodi\Component\Geo\Services\LocationBuilder
 
     #
-    # GeoData populator adapters
+    # Location populators
     #
-    elcodi.populator.location.geoname.class: Elcodi\Component\Geo\Populator\Adapters\GeonamesPopulatorAdapter
+    elcodi.location_populator.class: Elcodi\Component\Geo\Populator\Interfaces\PopulatorInterface
+    elcodi.location_populator.geoname.class: Elcodi\Component\Geo\Populator\Adapters\GeonamesPopulatorAdapter
 
     #
     # Transformers
     #
-    elcodi.location_to_location_data_transformer.class: Elcodi\Component\Geo\Transformer\LocationToLocationDataTransformer
+    elcodi.transformer.location_to_location_data.class: Elcodi\Component\Geo\Transformer\LocationToLocationDataTransformer

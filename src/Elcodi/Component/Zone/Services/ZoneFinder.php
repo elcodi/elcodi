@@ -49,8 +49,7 @@ class ZoneFinder
     public function __construct(
         ZoneRepository $zoneRepository,
         ZoneMatcher $zoneMatcher
-    )
-    {
+    ) {
         $this->zoneRepository = $zoneRepository;
         $this->zoneMatcher = $zoneMatcher;
     }

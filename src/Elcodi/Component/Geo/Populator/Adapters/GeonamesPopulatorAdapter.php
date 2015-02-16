@@ -12,20 +12,22 @@
  *
  * @author Marc Morera <yuhu@mmoreram.com>
  * @author Aldo Chiecchia <zimage@tiscali.it>
+ * @author Elcodi Team <tech@elcodi.com>
  */
 
 namespace Elcodi\Component\Geo\Populator\Adapters;
 
 use DateTime;
-use Elcodi\Component\Geo\Builder\GeoBuilder;
 use Goodby\CSV\Import\Standard\Interpreter;
 use Goodby\CSV\Import\Standard\Lexer;
 use Goodby\CSV\Import\Standard\LexerConfig;
 use Mmoreram\Extractor\Extractor;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\Exception\FileNotFoundException;
 
 use Elcodi\Component\Geo\Entity\Interfaces\LocationInterface;
 use Elcodi\Component\Geo\Populator\Interfaces\PopulatorInterface;
-use Symfony\Component\Filesystem\Exception\FileNotFoundException;
+use Elcodi\Component\Geo\Services\LocationBuilder;
 
 /**
  * Class GeonamesPopulatorAdapter
@@ -40,33 +42,44 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
     protected $extractor;
 
     /**
-     * @var GeoBuilder
+     * @var LocationBuilder
      */
-    protected $geoBuilder;
+    protected $locationBuilder;
 
     /**
-     * @param Extractor       $extractor
-     * @param GeoBuilder      $geoBuilder
+     * Constructor
+     *
+     * @param Extractor       $extractor       Extractor instance
+     * @param LocationBuilder $locationBuilder Location builder
      */
-    public function __construct(Extractor $extractor, GeoBuilder $geoBuilder)
-    {
+    public function __construct(
+        Extractor $extractor,
+        LocationBuilder $locationBuilder
+    ) {
         $this->extractor = $extractor;
-        $this->geoBuilder = $geoBuilder;
+        $this->locationBuilder = $locationBuilder;
     }
 
     /**
      * Populate a country
      *
-     * @param string $countryCode Country Code
+     * @param string          $countryCode Country Code
+     * @param OutputInterface $output      Console Output
      *
-     * @return LocationInterface[]
+     * @return LocationInterface[] Root locations
      */
-    public function populate($countryCode)
+    public function populate($countryCode, OutputInterface $output)
     {
         $countryCode = strtoupper($countryCode);
-        $tempname = $this->downloadFile($countryCode);
-        $pathname = $this->extractFile($tempname);
-        $locations = $this->loadLocationsFrom($countryCode, $pathname);
+        $downloadedFilePath = $this->downloadFile($countryCode);
+        $extractedPath = $this->extractFile($downloadedFilePath);
+
+        $locations = $this
+            ->loadLocationsFrom(
+                $countryCode,
+                $extractedPath,
+                $output
+            );
 
         return $locations;
     }
@@ -83,10 +96,8 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
     {
         $tempname = sys_get_temp_dir().'/elcodi-locator-geonames-'.$countryCode.'.zip';
         if (!file_exists($tempname)) {
-
             $dirname = dirname($tempname);
             if (!file_exists($dirname)) {
-
                 mkdir($dirname, 0777, true);
             }
             $downloadUrl = 'http://download.geonames.org/export/zip/'.$countryCode.'.zip';
@@ -120,7 +131,6 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
 
         $extractedFiles->rewind();
         if (!$extractedFiles->valid()) {
-
             throw new FileNotFoundException();
         }
 
@@ -130,35 +140,102 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
     /**
      * Extract data from de CSV and create new Location objects
      *
-     * @param string $pathname
+     * @param string          $countryCode Country code
+     * @param string          $pathname    Pathname
+     * @param OutputInterface $output      Console Output
      *
-     * @return LocationInterface[]
+     * @return LocationInterface[] Root locations
      */
-    protected function loadLocationsFrom($countryCode, $pathname)
-    {
-        $country = $this->addCountry($countryCode);
+    protected function loadLocationsFrom(
+        $countryCode,
+        $pathname,
+        OutputInterface $output
+    ) {
+        $countryInfo = $this->getCountryInfo($countryCode);
+        $country = $this
+            ->locationBuilder
+            ->addLocation(
+                $countryInfo[0],
+                $countryInfo[1],
+                $countryInfo[0],
+                'country'
+            );
 
         $interpreter = new Interpreter();
         $interpreter->unstrict();
-        $interpreter->addObserver(function (array $columns) use ($country) {
+        $nbItems = 0;
+        $interpreter->addObserver(function (array $columns) use ($country, &$nbItems) {
 
-            $state    = $this->addState($columns, $country);
-            $province = $this->addProvince($columns, $state);
-            $city     = $this->addCity($columns, $province);
-            $code     = $this->addPostalCode($columns, $city);
+            $nbItems++;
+            $stateId = $this->normalizeId($columns[4]);
+            $state = $this
+                ->locationBuilder
+                ->addLocation(
+                    $country->getId().'_'.$stateId,
+                    $columns[3],
+                    $stateId,
+                    'state',
+                    $country
+                );
+
+            $provinceId = $this->normalizeId($columns[6]);
+            $province = $this
+                ->locationBuilder
+                ->addLocation(
+                    $state->getId().'_'.$provinceId,
+                    $columns[5],
+                    $provinceId,
+                    'province',
+                    $state
+                );
+
+            $cityId = $this->normalizeId($columns[2]);
+            $city = $this
+                ->locationBuilder
+                ->addLocation(
+                    $province->getId().'_'.$cityId,
+                    $columns[2],
+                    $cityId,
+                    'city',
+                    $province
+                );
+
+            $postalCodeId = $this->normalizeId($columns[1]);
+            $this
+                ->locationBuilder
+                ->addLocation(
+                    $city->getId().'_'.$postalCodeId,
+                    $columns[1],
+                    $postalCodeId,
+                    'postalcode',
+                    $city
+                );
         });
 
         $config = new LexerConfig();
         $config->setDelimiter("\t");
         $lexer = new Lexer($config);
-//        $started = new DateTime();
-//        $output->writeln('<header>[Geo]</header> <body>Starting file processing</body>');
+        $started = new DateTime();
+        $output->writeln('<header>[Geo]</header> <body>Starting file processing</body>');
         $lexer->parse($pathname, $interpreter);
-//        $finished = new DateTime();
-//        $elapsed = $finished->diff($started);
-//        $output->writeln('<header>[Geo]</header> <body>File processed in '.$elapsed->format('%s').' seconds</body>');
+        $finished = new DateTime();
+        $elapsed = $finished->diff($started);
+        $output->writeln('<header>[Geo]</header> <body>Processed '.$nbItems.' entries</body>');
+        $output->writeln('<header>[Geo]</header> <body>File processed in '.$elapsed->format('%s').' seconds</body>');
 
-        return [];
+        return [$country];
+    }
+
+    /**
+     * Normalize Id, assuming it is a strange string
+     *
+     * @param string $id Id
+     *
+     * @return string Normalized id
+     */
+    protected function normalizeId($id)
+    {
+        return strtolower(trim(preg_replace('~[^a-zA-Z\d]{1}~', '', $id)));
     }
 
     /**

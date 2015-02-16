@@ -54,13 +54,11 @@ class Configuration extends AbstractConfiguration
                         ))
                     ->end()
                 ->end()
-                ->arrayNode('populator')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->scalarNode('client')
-                            ->defaultValue('elcodi.populator.location.geoname')
-                        ->end()
-                    ->end()
+                ->scalarNode('location_populator')
+                    ->defaultValue('elcodi.location_populator.geoname')
+                ->end()
+                ->scalarNode('location_provider')
+                    ->defaultValue('elcodi.location_provider.service')
                 ->end()
             ->end();
     }

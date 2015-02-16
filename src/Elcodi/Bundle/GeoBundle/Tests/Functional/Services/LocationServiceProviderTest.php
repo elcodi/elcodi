@@ -1,19 +1,47 @@
 <?php
 
+/*
+ * This file is part of the Elcodi package.
+ *
+ * Copyright (c) 2014 Elcodi.com
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * Feel free to edit as you please, and have fun.
+ *
+ * @author Marc Morera <yuhu@mmoreram.com>
+ * @author Aldo Chiecchia <zimage@tiscali.it>
+ * @author Elcodi Team <tech@elcodi.com>
+ */
+
 namespace Elcodi\Bundle\GeoBundle\Tests\Functional\Services;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
+use Elcodi\Component\Geo\Services\Interfaces\LocationProviderInterface;
 use Elcodi\Component\Geo\ValueObject\LocationData;
-use Elcodi\Component\Geo\Services\LocationManager;
 
-class LocationManagerTest extends WebTestCase
+/**
+ * Class LocationServiceProviderTest
+ */
+class LocationServiceProviderTest extends WebTestCase
 {
     /**
-     * @var LocationManager
+     * @var LocationProviderInterface
      *
-     * LocationManager class
+     * LocationProvider class
      */
-    protected $locationManager;
+    protected $locationProvider;
+
+    /**
+     * Schema must be loaded in all test cases
+     *
+     * @return boolean Load schema
+     */
+    protected function loadSchema()
+    {
+        return true;
+    }
 
     /**
      * Returns the callable name of the service
@@ -22,7 +50,7 @@ class LocationManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.location_manager.service'];
+        return ['elcodi.location_provider.service'];
     }
 
     /**
@@ -45,10 +73,9 @@ class LocationManagerTest extends WebTestCase
         parent::setUp();
 
         /**
-         * @var LocationManager $locationManager
+         * @var LocationProviderInterface $locationProvider
          */
-        $this->locationManager = $this
-            ->get('elcodi.location_manager.service');
+        $this->locationProvider = $this->get('elcodi.location_provider.service');
     }
 
     /**
@@ -57,7 +84,7 @@ class LocationManagerTest extends WebTestCase
     public function testGetRootLocations()
     {
         $rootLocations = $this
-            ->locationManager
+            ->locationProvider
             ->getRootLocations();
 
         $this->assertCount(
@@ -83,10 +110,13 @@ class LocationManagerTest extends WebTestCase
         );
     }
 
+    /**
+     * Test get children
+     */
     public function testGetChildren()
     {
         $locations = $this
-            ->locationManager
+            ->locationProvider
             ->getChildren('ES');
 
         $this->assertCount(
@@ -113,19 +143,28 @@ class LocationManagerTest extends WebTestCase
         );
     }
 
+    /**
+     * Test get children with a non-existent entity
+     */
     public function testGetChildrenLocationNotFound()
     {
         $this->setExpectedException(
             'Doctrine\ORM\EntityNotFoundException',
             'Entity was not found.'
         );
-        $this->locationManager->getChildren('UNEXISTENT');
+
+        $this
+            ->locationProvider
+            ->getChildren('UNEXISTENT');
     }
 
+    /**
+     * Test get children with a location without children
+     */
     public function testGetChildrenNotFound()
     {
         $locations = $this
-            ->locationManager
+            ->locationProvider
             ->getChildren('ES_CA_VO_SantCeloni');
 
         $this->assertCount(
@@ -135,10 +174,13 @@ class LocationManagerTest extends WebTestCase
         );
     }
 
+    /**
+     * Test get parents
+     */
     public function testGetParents()
     {
         $locations = $this
-            ->locationManager
+            ->locationProvider
             ->getParents('ES_CA');
 
         $this->assertCount(
@@ -165,18 +207,29 @@ class LocationManagerTest extends WebTestCase
         );
     }
 
+    /**
+     * Test get parents with a non-existent location
+     */
     public function testGetParentsLocationNotFound()
     {
         $this->setExpectedException(
             'Doctrine\ORM\EntityNotFoundException',
             'Entity was not found.'
         );
-        $this->locationManager->getParents('UNEXISTENT');
+
+        $this
+            ->locationProvider
+            ->getParents('UNEXISTENT');
     }
 
+    /**
+     * Test get parents with a root location
+     */
     public function testGetParentsNotFound()
     {
-        $locations = $this->locationManager->getParents('ES');
+        $locations = $this
+            ->locationProvider
+            ->getParents('ES');
 
         $this->assertCount(
             0,
@@ -185,9 +238,14 @@ class LocationManagerTest extends WebTestCase
         );
     }
 
+    /**
+     * Test get location
+     */
     public function testGetLocation()
     {
-        $location = $this->locationManager->getLocation('ES_CA');
+        $location = $this
+            ->locationProvider
+            ->getLocation('ES_CA');
 
         $this->assertInstanceOf(
             'Elcodi\Component\Geo\ValueObject\LocationData',
@@ -220,18 +278,21 @@ class LocationManagerTest extends WebTestCase
         );
     }
 
+    /**
+     * Test get hierarchy
+     */
     public function testGetHierarchy()
     {
         $hierarchy = $this
-            ->locationManager
+            ->locationProvider
             ->getHierarchy('ES_CA_VO_SantCeloni');
 
-        $expectedHierarchyNames = array(
+        $expectedHierarchyNames = [
             'Spain',
             'Catalunya',
             'Valles Oriental',
             'Sant Celoni',
-        );
+        ];
 
         $this->assertCount(
             count($expectedHierarchyNames),
@@ -254,17 +315,73 @@ class LocationManagerTest extends WebTestCase
         }
     }
 
+    /**
+     * Test in found
+     */
     public function testInFound()
     {
-        $found = $this->locationManager->in('ES_CA',['ES']);
+        $found = $this
+            ->locationProvider
+            ->in('ES_CA', [
+                'ES',
+            ]);
 
-        $this->assertTrue($found, 'CA should be found inside ES');
+        $this->assertTrue(
+            $found,
+            'CA should be found inside ES'
+        );
     }
 
+    /**
+     * Test in found with multiples possibilities
+     */
+    public function testInMultipleFound()
+    {
+        $found = $this
+            ->locationProvider
+            ->in('ES_CA_VO_Viladecavalls', [
+                'ES_CA_VO_SantCeloni',
+                'ES_CA',
+            ]);
+
+        $this->assertTrue(
+            $found,
+            'CA should be found inside ES'
+        );
+    }
+
+    /**
+     * Test in not found
+     */
     public function testInNotFound()
     {
-        $found = $this->locationManager->in('ES',['ES_CA']);
+        $found = $this
+            ->locationProvider
+            ->in('ES', [
+                'ES_CA',
+            ]);
 
-        $this->assertFalse($found, 'ES should not be found inside CA');
+        $this->assertFalse(
+            $found,
+            'ES should not be found inside CA'
+        );
+    }
+
+    /**
+     * Test in with a non-existent location
+     */
+    public function testInLocationNotFound()
+    {
+        $this->setExpectedException(
+            'Doctrine\ORM\EntityNotFoundException',
+            'Entity was not found.'
+        );
+
+        $this
+            ->locationProvider
+            ->in('UNEXISTENT', [
+                'ES_CA_VO_SantCeloni',
+                'ES_CA',
+            ]);
     }
 }

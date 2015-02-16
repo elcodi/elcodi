@@ -41,8 +41,6 @@ class LocationFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.factory.location',
-        ];
+        return ['elcodi.factory.location'];
     }
 }

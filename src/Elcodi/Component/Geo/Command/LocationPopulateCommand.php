@@ -18,8 +18,6 @@
 namespace Elcodi\Component\Geo\Command;
 
 use DateTime;
-use Psr\Log\LoggerAwareInterface;
-use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 use Symfony\Component\Console\Input\InputArgument;
@@ -31,16 +29,16 @@ use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Geo\Populator\Interfaces\PopulatorInterface;
 
 /**
- * Class GeoPopulateCommand
+ * Class LocationPopulateCommand
  */
-class GeoPopulateCommand extends Command implements LoggerAwareInterface
+class LocationPopulateCommand extends Command
 {
     /**
      * @var PopulatorInterface
      *
-     * Geo Populator
+     * Location Populator
      */
-    protected $geoPopulator;
+    protected $locationPopulator;
 
     /**
      * @var ObjectDirector
@@ -50,25 +48,18 @@ class GeoPopulateCommand extends Command implements LoggerAwareInterface
     protected $locationDirector;
 
     /**
-     * @var LoggerInterface
-     *
-     * Logger
-     */
-    protected $logger;
-
-    /**
      * Construct method
      *
-     * @param PopulatorInterface $populator        Populator
-     * @param ObjectDirector     $locationDirector Location director
+     * @param PopulatorInterface $locationPopulator Location Populator
+     * @param ObjectDirector     $locationDirector  Location director
      */
     public function __construct(
-        PopulatorInterface $populator,
+        PopulatorInterface $locationPopulator,
         ObjectDirector $locationDirector
     ) {
         parent::__construct();
 
-        $this->geoPopulator = $populator;
+        $this->locationPopulator = $locationPopulator;
         $this->locationDirector = $locationDirector;
     }
 
@@ -78,7 +69,7 @@ class GeoPopulateCommand extends Command implements LoggerAwareInterface
     protected function configure()
     {
         $this
-            ->setName('elcodi:geo:populate')
+            ->setName('elcodi:locations:populate')
             ->setDescription('populates geo schema')
             ->addArgument(
                 'country',
@@ -118,8 +109,11 @@ class GeoPopulateCommand extends Command implements LoggerAwareInterface
             $output->writeln('<header>[Geo]</header> <body>Populating country code: '.$countryCode);
 
             $locations = $this
-                ->geoPopulator
-                ->populate($countryCode);
+                ->locationPopulator
+                ->populate(
+                    $countryCode,
+                    $output
+                );
 
             $output->writeln('<header>[Geo]</header> <body>Flushing manager started</body>');
 
@@ -136,18 +130,5 @@ class GeoPopulateCommand extends Command implements LoggerAwareInterface
         }
 
         $output->writeln('<header>[Geo]</header> <body>Process finished. Please checkout your database</body>');
-    }
-
-    /**
-     * Sets a logger instance on the object
-     *
-     * @param LoggerInterface $logger
-     * @return null
-     */
-    public function setLogger(LoggerInterface $logger)
-    {
-        $this->logger = $logger;
-
-        return $this;
     }
 }

@@ -33,4 +33,3 @@ elcodi_location_api_in:
     methods: GET
     defaults:
         _controller: elcodi.controller.location_api:inAction
-

@@ -23,6 +23,16 @@ Elcodi\Component\Geo\Entity\Address:
             type: string
             length: 255
             nullable: true
+        city:
+            column: city
+            type: string
+            length: 64
+            nullable: false
+        postalCode:
+            column: postal_code
+            type: string
+            length: 64
+            nullable: false
         address:
             column: address
             type: string
@@ -56,24 +66,6 @@ Elcodi\Component\Geo\Entity\Address:
         enabled:
             column: enabled
             type: boolean
-
-    manyToOne:
-        city:
-            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\CityInterface
-            joinColumn:
-                name: city_id
-                referencedColumnName: id
-                nullable: true
-                onDelete: "SET NULL"
-                onUpdate: "CASCADE"
-        postalCode:
-            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\PostalCodeInterface
-            joinColumn:
-                name: postal_code_id
-                referencedColumnName: id
-                nullable: true
-                onDelete: "SET NULL"
-                onUpdate: "CASCADE"
 
     lifecycleCallbacks:
         preUpdate: [loadUpdateAt]

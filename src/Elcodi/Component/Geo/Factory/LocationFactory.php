@@ -17,7 +17,6 @@
 
 namespace Elcodi\Component\Geo\Factory;
 
-use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
@@ -43,7 +42,6 @@ class LocationFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $location = new $classNamespace();
         $location
-            ->setCreatedAt(new DateTime())
             ->setChildren(new ArrayCollection())
             ->setParents(new ArrayCollection());
 
