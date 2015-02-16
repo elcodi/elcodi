@@ -77,10 +77,10 @@ class ElcodiZoneExtension extends AbstractExtension implements EntitiesOverridab
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.zone.class"        => $config['mapping']['Zone']['class'],
-            "elcodi.zone.mapping_file" => $config['mapping']['Zone']['mapping_file'],
-            "elcodi.zone.manager"      => $config['mapping']['Zone']['manager'],
-            "elcodi.zone.enabled"      => $config['mapping']['Zone']['enabled'],
+            "elcodi.entity.zone.class"        => $config['mapping']['Zone']['class'],
+            "elcodi.entity.zone.mapping_file" => $config['mapping']['Zone']['mapping_file'],
+            "elcodi.entity.zone.manager"      => $config['mapping']['Zone']['manager'],
+            "elcodi.entity.zone.enabled"      => $config['mapping']['Zone']['enabled'],
         ];
     }
 
@@ -115,7 +115,7 @@ class ElcodiZoneExtension extends AbstractExtension implements EntitiesOverridab
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface'  => 'elcodi.zone.class',
+            'Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface'  => 'elcodi.entity.zone.class',
         ];
     }
 

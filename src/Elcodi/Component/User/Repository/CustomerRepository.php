@@ -70,10 +70,11 @@ class CustomerRepository extends EntityRepository implements UserEmaileableInter
              */
             $customer  = reset($response);
             $addresses = $customer->getAddresses();
-            if ($addresses ) {
+            if ($addresses) {
                 return $addresses->first();
             }
         }
+
         return false;
     }
 }

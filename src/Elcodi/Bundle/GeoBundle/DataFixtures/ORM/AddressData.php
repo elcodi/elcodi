@@ -40,7 +40,7 @@ class AddressData extends AbstractFixture implements DependentFixtureInterface
         $addressFactory = $this->getFactory('address');
         $addressObjectManager = $this->getObjectManager('address');
 
-        $addressBarcelona = $addressFactory
+        $addressSantCeloni = $addressFactory
             ->create()
             ->setName('Some address')
             ->setRecipientName('user name')
@@ -54,8 +54,8 @@ class AddressData extends AbstractFixture implements DependentFixtureInterface
             ->setPostalcode('08021')
             ->setEnabled(true);
 
-        $addressObjectManager->persist($addressBarcelona);
-        $this->addReference('address-barcelona', $addressBarcelona);
+        $addressObjectManager->persist($addressSantCeloni);
+        $this->addReference('address-sant-celoni', $addressSantCeloni);
 
         $addressViladecavalls = $addressFactory
             ->create()
@@ -75,7 +75,7 @@ class AddressData extends AbstractFixture implements DependentFixtureInterface
         $this->addReference('address-viladecavalls', $addressViladecavalls);
 
         $addressObjectManager->flush([
-            $addressBarcelona,
+            $addressSantCeloni,
             $addressViladecavalls,
         ]);
     }

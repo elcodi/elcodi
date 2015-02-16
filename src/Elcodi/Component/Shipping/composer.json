@@ -39,7 +39,8 @@
         "elcodi/tax": "~0.4.0",
         "elcodi/currency": "~0.4.0",
         "elcodi/cart": "~0.4.0",
-        "elcodi/core": "~0.4.0"
+        "elcodi/core": "~0.4.0",
+        "elcodi/zone": "~0.4.0"
     },
     "autoload": {
         "psr-4": {

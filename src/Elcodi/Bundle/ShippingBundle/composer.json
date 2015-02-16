@@ -45,6 +45,7 @@
         "elcodi/currency-bundle": "~0.4.0",
         "elcodi/cart-bundle": "~0.4.0",
         "elcodi/geo-bundle": "~0.4.0",
+        "elcodi/zone-bundle": "~0.4.0",
         "elcodi/shipping": "~0.4.0"
     },
     "require-dev": {

@@ -17,8 +17,10 @@
 
 namespace Elcodi\Component\Zone\Services;
 
+use Exception;
+
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
-use Elcodi\Component\Geo\Services\Interfaces\LocationManagerInterface;
+use Elcodi\Component\Geo\Services\Interfaces\LocationProviderInterface;
 use Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface;
 
 /**
@@ -27,20 +29,20 @@ use Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface;
 class ZoneMatcher
 {
     /**
-     * @var LocationManagerInterface
+     * @var LocationProviderInterface
      *
      * Location manager
      */
-    protected $locationManager;
+    protected $locationProvider;
 
     /**
      * Construct
      *
-     * @param LocationManagerInterface $locationManager Location manager
+     * @param LocationProviderInterface $locationProvider Location manager
      */
-    public function __construct(LocationManagerInterface $locationManager)
+    public function __construct(LocationProviderInterface $locationProvider)
     {
-        $this->locationManager = $locationManager;
+        $this->locationProvider = $locationProvider;
     }
 
     /**
@@ -58,17 +60,19 @@ class ZoneMatcher
         ZoneInterface $zone
     ) {
         $locations = $zone->getLocations();
-        $isContained = false;
+        $cityId = $address->getCity();
+        $found = false;
 
-        foreach ($locations as $location) {
-            $isContained |= $this
-                ->locationManager
-                ->in(
-                    $address->getId(),
-                    $location
-                );
+        try {
+            $found =
+                $this
+                    ->locationProvider
+                    ->in($cityId, $locations);
+        } catch (Exception $e) {
+
+            // Silent pass
         }
 
-        return $isContained;
+        return $found;
     }
 }

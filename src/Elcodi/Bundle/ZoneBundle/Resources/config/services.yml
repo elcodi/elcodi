@@ -6,7 +6,7 @@ services:
     elcodi.zone_matcher:
         class: %elcodi.zone_matcher.class%
         arguments:
-            location_manager: @elcodi.location_manager
+            location_manager: @elcodi.location_provider
 
     elcodi.zone_finder:
         class: %elcodi.zone_finder.class%

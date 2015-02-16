@@ -17,16 +17,16 @@
 
 namespace Elcodi\Bundle\ZoneBundle\DataFixtures\ORM;
 
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\Component\Zone\Factory\ValueFactory;
-use Elcodi\Component\Zone\Factory\ZoneFactory;
+use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
  * Class ZoneData
  */
-class ZoneData extends AbstractFixture
+class ZoneData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
      * Loads sample fixtures for Zone entities
@@ -36,87 +36,40 @@ class ZoneData extends AbstractFixture
     public function load(ObjectManager $objectManager)
     {
         /**
-         * @var ValueFactory     $ZoneValueFactory
-         * @var ZoneFactory $ZoneFactory
-         * @var ObjectManager    $ZoneValueObjectManager
-         * @var ObjectManager    $ZoneObjectManager
+         * @var ObjectDirector $zoneDirector
          */
-        $ZoneValueFactory = $this->getFactory('Zone_value');
-        $ZoneFactory = $this->getFactory('Zone');
-        $ZoneValueObjectManager = $this->getObjectManager('Zone_value');
-        $ZoneObjectManager = $this->getObjectManager('Zone');
+        $zoneDirector = $this->getDirector('zone');
 
-        /**
-         * Sizes
-         */
-        $sizeZone = $ZoneFactory
+        $zone08021 = $zoneDirector
             ->create()
-            ->setName('Size')
-            ->setEnabled(true);
+            ->setName('Postalcode 08021')
+            ->setCode('zone-08021')
+            ->addLocation($this->getReference('location-sant-celoni'))
+            ->addLocation($this->getReference('location-08021'));
 
-        $ZoneObjectManager->persist($sizeZone);
-        $this->addReference('Zone-size', $sizeZone);
+        $this->setReference('zone-08021', $zone08021);
+        $zoneDirector->save($zone08021);
 
-        $smallValue = $ZoneValueFactory
+        $zoneViladecavalls = $zoneDirector
             ->create()
-            ->setValue('Small')
-            ->setZone($sizeZone);
+            ->setName('Viladecavalls i alrededores')
+            ->setCode('zone-viladecavalls')
+            ->addLocation($this->getReference('location-viladecavalls'));
 
-        $ZoneValueObjectManager->persist($smallValue);
-        $this->addReference('value-size-small', $smallValue);
+        $this->setReference('zone-viladecavalls', $zoneViladecavalls);
+        $zoneDirector->save($zoneViladecavalls);
+    }
 
-        $mediumValue = $ZoneValueFactory
-            ->create()
-            ->setValue('Medium')
-            ->setZone($sizeZone);
-
-        $ZoneValueObjectManager->persist($mediumValue);
-        $this->addReference('value-size-medium', $mediumValue);
-
-        $largeValue = $ZoneValueFactory
-            ->create()
-            ->setValue('Large')
-            ->setZone($sizeZone);
-
-        $ZoneValueObjectManager->persist($largeValue);
-        $this->addReference('value-size-large', $largeValue);
-
-        /**
-         * Colors
-         */
-        $colorZone = $ZoneFactory
-            ->create()
-            ->setName('Color')
-            ->setEnabled(true);
-
-        $ZoneObjectManager->persist($colorZone);
-        $this->addReference('Zone-color', $colorZone);
-
-        $blueValue = $ZoneValueFactory
-            ->create()
-            ->setValue('Blue')
-            ->setZone($colorZone);
-
-        $ZoneValueObjectManager->persist($blueValue);
-        $this->addReference('value-color-blue', $blueValue);
-
-        $whiteValue = $ZoneValueFactory
-            ->create()
-            ->setValue('White')
-            ->setZone($colorZone);
-
-        $ZoneValueObjectManager->persist($whiteValue);
-        $this->addReference('value-color-white', $whiteValue);
-
-        $redValue = $ZoneValueFactory
-            ->create()
-            ->setValue('Red')
-            ->setZone($colorZone);
-
-        $ZoneValueObjectManager->persist($redValue);
-        $this->addReference('value-color-red', $redValue);
-
-        $ZoneObjectManager->flush();
-        $ZoneValueObjectManager->flush();
+    /**
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on
+     *
+     * @return array
+     */
+    public function getDependencies()
+    {
+        return [
+            'Elcodi\Bundle\GeoBundle\DataFixtures\ORM\LocationData',
+        ];
     }
 }

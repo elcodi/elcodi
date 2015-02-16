@@ -20,7 +20,6 @@ namespace Elcodi\Bundle\GeoBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\Component\Geo\Entity\Location;
 use Elcodi\Component\Geo\Factory\LocationFactory;
 
 /**
@@ -71,6 +70,17 @@ class LocationData extends AbstractFixture
         $locationObjectManager->persist($locationVallesOriental);
         $this->addReference('location-valles-oriental', $locationVallesOriental);
 
+        $locationLaBatlloria = $locationFactory
+            ->create()
+            ->setId('ES_CA_VO_LaBatlloria')
+            ->setName('La batlloria')
+            ->setCode('LaBatlloria')
+            ->setType('city')
+            ->addParent($locationVallesOriental);
+
+        $locationObjectManager->persist($locationLaBatlloria);
+        $this->addReference('location-la-batlloria', $locationLaBatlloria);
+
         $locationSantCeloni = $locationFactory
             ->create()
             ->setId('ES_CA_VO_SantCeloni')
@@ -81,17 +91,6 @@ class LocationData extends AbstractFixture
 
         $locationObjectManager->persist($locationSantCeloni);
         $this->addReference('location-sant-celoni', $locationSantCeloni);
-
-        $locationLaBatlloria = $locationFactory
-            ->create()
-            ->setId('ES_CA_VO_LaBatlloria')
-            ->setName('La Batlloria')
-            ->setCode('LaBatlloria')
-            ->setType('city')
-            ->addParent($locationVallesOriental);
-
-        $locationObjectManager->persist($locationLaBatlloria);
-        $this->addReference('location-la-batlloria', $locationLaBatlloria);
 
         $locationViladecavalls = $locationFactory
             ->create()
@@ -104,17 +103,28 @@ class LocationData extends AbstractFixture
         $locationObjectManager->persist($locationViladecavalls);
         $this->addReference('location-viladecavalls', $locationViladecavalls);
 
-        $locationPostalCode8000 = $locationFactory
+        $location08021 = $locationFactory
             ->create()
-            ->setId('08470')
+            ->setId('ES_CA_VO_Viladecavalls_08021')
+            ->setName('08021')
+            ->setCode('08021')
+            ->setType('postalcode')
+            ->addParent($locationViladecavalls);
+
+        $locationObjectManager->persist($location08021);
+        $this->addReference('location-08021', $location08021);
+
+        $location08470 = $locationFactory
+            ->create()
+            ->setId('ES_CA_VO_SantCeloni_08470')
             ->setName('08470')
             ->setCode('08470')
-            ->setType('postal_code')
+            ->setType('postalcode')
             ->addParent($locationLaBatlloria)
             ->addParent($locationSantCeloni);
 
-        $locationObjectManager->persist($locationPostalCode8000);
-        $this->addReference('location-8000', $locationPostalCode8000);
+        $locationObjectManager->persist($location08470);
+        $this->addReference('location-08470', $location08470);
 
         $locationObjectManager->flush([
             $locationSpain,
@@ -122,6 +132,7 @@ class LocationData extends AbstractFixture
             $locationVallesOriental,
             $locationSantCeloni,
             $locationViladecavalls,
+            $location08021,
         ]);
     }
 }

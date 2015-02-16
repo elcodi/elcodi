@@ -27,6 +27,38 @@ use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 interface ZoneInterface extends IdentifiableInterface, DateTimeInterface, EnabledInterface
 {
     /**
+     * Get Name
+     *
+     * @return string Name
+     */
+    public function getName();
+
+    /**
+     * Sets Name
+     *
+     * @param string $name Name
+     *
+     * @return $this Self object
+     */
+    public function setName($name);
+
+    /**
+     * Get Code
+     *
+     * @return string Code
+     */
+    public function getCode();
+
+    /**
+     * Sets Code
+     *
+     * @param string $code Code
+     *
+     * @return $this Self object
+     */
+    public function setCode($code);
+
+    /**
      * Get Locations
      *
      * @return mixed Locations
@@ -41,4 +73,22 @@ interface ZoneInterface extends IdentifiableInterface, DateTimeInterface, Enable
      * @return $this Self object
      */
     public function setLocations(array $locations);
+
+    /**
+     * Add location
+     *
+     * @param string $location Location
+     *
+     * @return $this Self object
+     */
+    public function addLocation($location);
+
+    /**
+     * Remove location
+     *
+     * @param string $location Location
+     *
+     * @return $this Self object
+     */
+    public function removeLocation($location);
 }

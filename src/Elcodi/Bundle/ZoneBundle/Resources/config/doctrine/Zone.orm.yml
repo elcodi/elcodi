@@ -8,6 +8,17 @@ Elcodi\Component\Zone\Entity\Zone:
             generator:
                 strategy: AUTO
     fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        code:
+            column: code
+            type: string
+            length: 32
+            nullable: false
+            unique: true
         locations:
             column: locations
             type: string

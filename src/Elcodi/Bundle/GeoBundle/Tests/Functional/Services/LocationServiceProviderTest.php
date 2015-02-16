@@ -165,7 +165,7 @@ class LocationServiceProviderTest extends WebTestCase
     {
         $locations = $this
             ->locationProvider
-            ->getChildren('08470');
+            ->getChildren('ES_CA_VO_SantCeloni_08470');
 
         $this->assertCount(
             0,
@@ -337,7 +337,7 @@ class LocationServiceProviderTest extends WebTestCase
     {
         $hierarchy = $this
             ->locationProvider
-            ->getHierarchy('08470');
+            ->getHierarchy('ES_CA_VO_SantCeloni_08470');
 
         $expectedHierarchyNames = [
             'Spain',
@@ -345,7 +345,7 @@ class LocationServiceProviderTest extends WebTestCase
             'Valles Oriental',
             'La Batlloria',
             'Sant Celoni',
-            '08470'
+            '08470',
         ];
 
         $this->assertCount(
@@ -448,7 +448,7 @@ class LocationServiceProviderTest extends WebTestCase
             ->locationProvider
             ->in('ES', [
                 'ES_CA',
-                'ES_CA_VO_SantCeloni'
+                'ES_CA_VO_SantCeloni',
             ]);
 
         $this->assertFalse(

@@ -30,11 +30,73 @@ class Zone implements ZoneInterface
     use IdentifiableTrait, DateTimeTrait, EnabledTrait;
 
     /**
+     * @var string
+     *
+     * Name
+     */
+    protected $name;
+
+    /**
+     * @var string
+     *
+     * Code
+     */
+    protected $code;
+
+    /**
      * @var array
      *
      * Locations ids
      */
     protected $locations;
+
+    /**
+     * Get Name
+     *
+     * @return string Name
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Sets Name
+     *
+     * @param string $name Name
+     *
+     * @return $this Self object
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get Code
+     *
+     * @return string Code
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * Sets Code
+     *
+     * @param string $code Code
+     *
+     * @return $this Self object
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
 
     /**
      * Get Locations
@@ -56,6 +118,48 @@ class Zone implements ZoneInterface
     public function setLocations(array $locations)
     {
         $this->locations = implode(',', $locations);
+
+        return $this;
+    }
+
+    /**
+     * Add location
+     *
+     * @param string $location Location
+     *
+     * @return $this Self object
+     */
+    public function addLocation($location)
+    {
+        $this->setLocations(
+            array_unique(
+                array_merge(
+                    $this->getLocations(),
+                    [$location]
+                )
+            )
+        );
+
+        return $this;
+    }
+
+    /**
+     * Remove location
+     *
+     * @param string $location Location
+     *
+     * @return $this Self object
+     */
+    public function removeLocation($location)
+    {
+        $locations = $this->getLocations();
+        $key = array_search($location, $locations);
+
+        if ($key !== false) {
+            unset($locations[$location]);
+        }
+
+        $this->setLocations($locations);
 
         return $this;
     }

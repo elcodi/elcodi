@@ -18,10 +18,11 @@
 namespace Elcodi\Component\Geo\Tests\UnitTest\Adapter;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use PHPUnit_Framework_TestCase;
+
 use Elcodi\Component\Geo\Repository\LocationRepository;
 use Elcodi\Component\Geo\Services\LocationServiceProvider;
 use Elcodi\Component\Geo\Transformer\LocationToLocationDataTransformer;
-use PHPUnit_Framework_TestCase;
 
 /**
  * Class LocationServiceProviderTest
@@ -306,7 +307,7 @@ class LocationServiceProviderTest extends PHPUnit_Framework_TestCase
         $expectedResponse = [
             $location,
             $locationParentOne,
-            $locationParentTwo
+            $locationParentTwo,
         ];
 
         $this->assertEquals(
@@ -449,7 +450,7 @@ class LocationServiceProviderTest extends PHPUnit_Framework_TestCase
                 $searchedId,
                 [
                     $searchInLocationId,
-                    $searchInAnotherLocationId
+                    $searchInAnotherLocationId,
                 ]
             );
 
@@ -491,7 +492,7 @@ class LocationServiceProviderTest extends PHPUnit_Framework_TestCase
                 'id-test',
                 [
                     'id-search-in',
-                    'id-search-also-here'
+                    'id-search-also-here',
                 ]
             );
 
