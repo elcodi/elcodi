@@ -163,9 +163,11 @@ class Location implements LocationInterface
             );
         }
 
-        $allParents = array_merge(
-            $allParents,
-            $closestParents->toArray()
+        $allParents = array_unique(
+            array_merge(
+                $allParents,
+                $closestParents->toArray()
+            )
         );
 
         return $allParents;
@@ -261,5 +263,14 @@ class Location implements LocationInterface
         }
 
         return $this;
+    }
+
+    /**
+     * To string
+     *
+     */
+    public function __toString()
+    {
+        return (string) $this->id;
     }
 }
