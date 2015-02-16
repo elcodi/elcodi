@@ -41,6 +41,6 @@ class OrderCouponManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.order_coupon_manager'];
+        return ['elcodi.manager.order_coupon'];
     }
 }

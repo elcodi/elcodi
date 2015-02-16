@@ -23,9 +23,9 @@ use Elcodi\Component\Cart\Event\CartPreLoadEvent;
 use Elcodi\Component\CartCoupon\Entity\Interfaces\CartCouponInterface;
 use Elcodi\Component\CartCoupon\EventDispatcher\CartCouponEventDispatcher;
 use Elcodi\Component\CartCoupon\Services\CartCouponManager;
-use Elcodi\Component\CartCoupon\Services\CartCouponRuleManager;
 use Elcodi\Component\Coupon\ElcodiCouponTypes;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
+use Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException;
 use Elcodi\Component\Coupon\Services\CouponManager;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
@@ -33,12 +33,12 @@ use Elcodi\Component\Currency\Services\CurrencyConverter;
 use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 
 /**
- * Class CartEventListener
+ * Class RefreshCartListener
  *
  * This event listener should update the cart given in the event, applying
  * all the coupon features.
  */
-class CartEventListener
+class RefreshCartListener
 {
     /**
      * @var CouponManager
@@ -69,13 +69,6 @@ class CartEventListener
     protected $currencyWrapper;
 
     /**
-     * @var CartCouponRuleManager
-     *
-     * CartCoupon Rule managers
-     */
-    protected $cartCouponRuleManager;
-
-    /**
      * @var CartCouponEventDispatcher
      *
      * CartCoupon Event Dispatcher
@@ -89,7 +82,6 @@ class CartEventListener
      * @param CartCouponManager         $cartCouponManager         Cart coupon manager
      * @param CurrencyWrapper           $currencyWrapper           Currency wrapper
      * @param CurrencyConverter         $currencyConverter         Currency converter
-     * @param CartCouponRuleManager     $cartCouponRuleManager     CartCouponRuleManager
      * @param CartCouponEventDispatcher $cartCouponEventDispatcher $cartCouponEventDispatcher
      */
     public function __construct(
@@ -97,14 +89,12 @@ class CartEventListener
         CartCouponManager $cartCouponManager,
         CurrencyWrapper $currencyWrapper,
         CurrencyConverter $currencyConverter,
-        CartCouponRuleManager $cartCouponRuleManager,
         CartCouponEventDispatcher $cartCouponEventDispatcher
     ) {
         $this->couponManager = $couponManager;
         $this->cartCouponManager = $cartCouponManager;
         $this->currencyWrapper = $currencyWrapper;
         $this->currencyConverter = $currencyConverter;
-        $this->cartCouponRuleManager = $cartCouponRuleManager;
         $this->cartCouponEventDispatcher = $cartCouponEventDispatcher;
     }
 
@@ -120,23 +110,34 @@ class CartEventListener
     public function onCartPreLoadCoupons(CartPreLoadEvent $cartPreLoadEvent)
     {
         $cart = $cartPreLoadEvent->getCart();
+
+        /**
+         * @var CartCouponInterface[] $cartCoupons
+         */
         $cartCoupons = $this
             ->cartCouponManager
             ->getCartCoupons($cart);
 
-        /**
-         * @var CartCouponInterface $cartCoupon
-         */
         foreach ($cartCoupons as $cartCoupon) {
             $coupon = $cartCoupon->getCoupon();
-            if (!$this
-                ->cartCouponRuleManager
-                ->checkCouponValidity(
-                    $cart,
-                    $coupon
-                )
-            ) {
-                $this->cartCouponManager->removeCoupon($cart, $coupon);
+
+            try {
+
+                $this
+                    ->cartCouponEventDispatcher
+                    ->dispatchCartCouponOnCheckEvent(
+                        $cart,
+                        $coupon
+                    );
+
+            } catch (AbstractCouponException $exception) {
+
+                $this
+                    ->cartCouponManager
+                    ->removeCoupon(
+                        $cart,
+                        $coupon
+                    );
 
                 $this
                     ->cartCouponEventDispatcher
@@ -196,7 +197,9 @@ class CartEventListener
         CartInterface $cart,
         CouponInterface $coupon
     ) {
-        $currency = $this->currencyWrapper->getCurrency();
+        $currency = $this
+            ->currencyWrapper
+            ->getCurrency();
 
         switch ($coupon->getType()) {
 
@@ -217,7 +220,7 @@ class CartEventListener
 
                 return $cart
                     ->getProductAmount()
-                    ->multiply(($couponPercent / 100));
+                    ->multiply($couponPercent / 100);
         }
     }
 }

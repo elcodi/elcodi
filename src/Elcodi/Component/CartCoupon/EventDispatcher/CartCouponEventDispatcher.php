@@ -74,7 +74,7 @@ class CartCouponEventDispatcher extends AbstractEventDispatcher
     /**
      * Dispatch event when a coupon application is rejected
      *
-     * @param CartInterface   $cart   Cart where the coupon is going to be applied
+     * @param CartInterface   $cart   Cart where the coupon should be rejected
      * @param CouponInterface $coupon Rejected coupon
      *
      * @return $this Self object

@@ -36,7 +36,7 @@ class CartCouponRulesEventListenerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.cart_coupon.event_listener.cart_coupon_rules',
+            'elcodi.event_listener.cart_coupon.check_rules',
         ];
     }
 
@@ -87,7 +87,7 @@ class CartCouponRulesEventListenerTest extends WebTestCase
 
         $coupon->setRule($rule);
 
-        $cartCouponManager = $this->get('elcodi.cart_coupon_manager');
+        $cartCouponManager = $this->get('elcodi.manager.cart_coupon');
 
         try {
             $cartCouponManager->addCoupon(

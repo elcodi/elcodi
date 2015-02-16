@@ -38,7 +38,7 @@ class OrderEventListenerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.core.cart_coupon.event_listener.order'];
+        return ['elcodi.event_listener.cart_coupon.convert_to_order'];
     }
 
     /**
@@ -90,11 +90,11 @@ class OrderEventListenerTest extends WebTestCase
         );
 
         $cartCoupons = $this
-            ->get('elcodi.cart_coupon_manager')
+            ->get('elcodi.manager.cart_coupon')
             ->getCartCoupons($cart);
 
         $orderCoupons = $this
-            ->get('elcodi.order_coupon_manager')
+            ->get('elcodi.manager.order_coupon')
             ->getOrderCoupons($order);
 
         $this->assertEquals(

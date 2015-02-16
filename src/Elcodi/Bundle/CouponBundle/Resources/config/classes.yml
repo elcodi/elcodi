@@ -3,7 +3,7 @@ parameters:
     #
     # Services
     #
-    elcodi.coupon_manager.class: Elcodi\Component\Coupon\Services\CouponManager
+    elcodi.manager.coupon.class: Elcodi\Component\Coupon\Services\CouponManager
 
     #
     # Factories

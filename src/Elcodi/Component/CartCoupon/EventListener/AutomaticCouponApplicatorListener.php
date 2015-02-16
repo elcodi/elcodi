@@ -86,6 +86,7 @@ class AutomaticCouponApplicatorListener
                 $this
                     ->cartCouponManager
                     ->addCoupon($cart, $coupon);
+
             } catch (AbstractCouponException $e) {
                 // Silently tries next coupon on controlled exception
             }

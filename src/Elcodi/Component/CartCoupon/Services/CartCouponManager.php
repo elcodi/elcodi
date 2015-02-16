@@ -26,6 +26,7 @@ use Elcodi\Component\CartCoupon\EventDispatcher\CartCouponEventDispatcher;
 use Elcodi\Component\CartCoupon\Repository\CartCouponRepository;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException;
+use Elcodi\Component\Coupon\Exception\CouponNotAvailableException;
 use Elcodi\Component\Coupon\Repository\CouponRepository;
 use Elcodi\Component\Coupon\Services\CouponManager;
 
@@ -34,14 +35,6 @@ use Elcodi\Component\Coupon\Services\CouponManager;
  *
  * This class aims to be a bridge between Coupons and Carts.
  * Manages all coupons instances inside Carts
- *
- * Public methods:
- *
- * getCartCoupons(CartInterface) : Collection
- * addCouponByCode(CartInterface, $couponCode) : self
- * removeCouponByCode(CartInterface, $couponCode) : self
- * addCoupon(CartInterface, CouponInterface) : self
- * removeCoupon(CartInterface, CouponInterface) : self
  */
 class CartCouponManager
 {
@@ -176,8 +169,9 @@ class CartCouponManager
                 'enabled' => true,
             ));
 
-        if (!($coupon instanceof CouponInterface)) {
-            return false;
+        if (false === $coupon instanceof CouponInterface) {
+
+            throw new CouponNotAvailableException();
         }
 
         return $this->addCoupon($cart, $coupon);

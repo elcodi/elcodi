@@ -45,7 +45,7 @@ class CartEventListenerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.cart_coupon.event_listener.cart',
+            'elcodi.event_listener.cart_coupon.refresh_cart',
         ];
     }
 
@@ -77,7 +77,7 @@ class CartEventListenerTest extends WebTestCase
         $ruleId = $this->loadDefaultTestConfigurationAndReturnRuleId();
 
         $cartCouponManager = $this
-            ->get('elcodi.cart_coupon_manager');
+            ->get('elcodi.manager.cart_coupon');
 
         /**
          * We change rule to false
@@ -115,7 +115,7 @@ class CartEventListenerTest extends WebTestCase
         $this->loadDefaultTestConfigurationAndReturnRuleId();
 
         $cartCouponManager = $this
-            ->get('elcodi.cart_coupon_manager');
+            ->get('elcodi.manager.cart_coupon');
 
         /**
          * We load again same Cart and load it
@@ -159,7 +159,7 @@ class CartEventListenerTest extends WebTestCase
         $coupon->setRule($rule);
 
         $this
-            ->get('elcodi.cart_coupon_manager')
+            ->get('elcodi.manager.cart_coupon')
             ->addCoupon(
                 $cart,
                 $coupon

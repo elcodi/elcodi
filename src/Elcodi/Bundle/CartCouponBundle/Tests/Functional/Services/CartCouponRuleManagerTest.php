@@ -41,6 +41,6 @@ class CartCouponRuleManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.cart_coupon_rule_manager'];
+        return ['elcodi.manager.cart_coupon_rule'];
     }
 }

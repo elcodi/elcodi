@@ -3,20 +3,20 @@ services:
     #
     # Services
     #
-    elcodi.cart_coupon_manager:
-        class: %elcodi.cart_coupon_manager.class%
+    elcodi.manager.cart_coupon:
+        class: %elcodi.manager.cart_coupon.class%
         arguments:
             cart_coupon_event_dispatcher: @elcodi.event_dispatcher.cart_coupon
-            coupon_manager: @elcodi.coupon_manager
+            coupon_manager: @elcodi.manager.coupon
             coupon_repository: @elcodi.repository.coupon
             cart_coupon_repository: @elcodi.repository.cart_coupon
 
-    elcodi.order_coupon_manager:
-        class: %elcodi.order_coupon_manager.class%
+    elcodi.manager.order_coupon:
+        class: %elcodi.manager.order_coupon.class%
         arguments:
             order_coupon_repository: @elcodi.repository.order_coupon
 
-    elcodi.cart_coupon_rule_manager:
-        class: %elcodi.cart_coupon_rule_manager.class%
+    elcodi.manager.cart_coupon_rule:
+        class: %elcodi.manager.cart_coupon_rule.class%
         arguments:
             rule_manager: @elcodi.rule_manager

@@ -3,80 +3,72 @@ services:
     #
     # Event Listeners
     #
-    elcodi.core.cart_coupon.event_listener.cart:
-        class: %elcodi.core.cart_coupon.event_listener.cart.class%
+    elcodi.event_listener.cart_coupon.refresh_cart:
+        class: %elcodi.event_listener.cart_coupon.refresh_cart.class%
         arguments:
-            coupon_manager: @elcodi.coupon_manager
-            cart_coupon_manager: @elcodi.cart_coupon_manager
-            currency_wrapper: @elcodi.currency_wrapper
-            currency_converter: @elcodi.currency_converter
-            cart_coupon_rule_manager: @elcodi.cart_coupon_rule_manager
-            cart_coupon_event_dispatcher: @elcodi.event_dispatcher.cart_coupon
+            - @elcodi.manager.coupon
+            - @elcodi.manager.cart_coupon
+            - @elcodi.currency_wrapper
+            - @elcodi.currency_converter
+            - @elcodi.manager.cart_coupon_rule
+            - @elcodi.event_dispatcher.cart_coupon
         tags:
             - { name: kernel.event_listener, event: cart.preload, method: onCartPreLoadCoupons, priority: 0 }
             - { name: kernel.event_listener, event: cart.onload, method: onCartLoadCoupons, priority: -32 }
 
-    elcodi.core.cart_coupon.event_listener.order:
-        class: %elcodi.core.cart_coupon.event_listener.order.class%
+    elcodi.event_listener.cart_coupon.convert_to_order:
+        class: %elcodi.event_listener.cart_coupon.convert_to_order.class%
         arguments:
-            order_coupon_event_dispatcher: @elcodi.event_dispatcher.order_coupon
-            cart_coupon_manager: @elcodi.cart_coupon_manager
-            order_coupon_manager: @elcodi.order_coupon_manager
-            order_coupon_object_manager: @elcodi.object_manager.order_coupon
+            - @elcodi.event_dispatcher.order_coupon
+            - @elcodi.manager.cart_coupon
+            - @elcodi.manager.order_coupon
+            - @elcodi.object_manager.order_coupon
         tags:
-            - { name: kernel.event_listener, event: order.oncreated, method: onOrderOnCreatedEvent, priority: -16 }
+            - { name: kernel.event_listener, event: order.oncreated, method: convertCoupontToOrder, priority: -16 }
 
-    elcodi.core.cart_coupon.event_listener.cart_coupon:
-        class: %elcodi.core.cart_coupon.event_listener.cart_coupon.class%
+    elcodi.event_listener.cart_coupon.cart_coupon_manager:
+        class: %elcodi.event_listener.cart_coupon.cart_coupon_manager.class%
         arguments:
-            cart_coupon_object_manager: @elcodi.object_manager.cart_coupon
-            cart_coupon_factory: @elcodi.factory.cart_coupon
+            - @elcodi.object_manager.cart_coupon
+            - @elcodi.factory.cart_coupon
         tags:
             - { name: kernel.event_listener, event: cart_coupon.onapply, method: onCartCouponApply, priority: 0 }
             - { name: kernel.event_listener, event: cart_coupon.onremove, method: onCartCouponRemove, priority: 0 }
 
-    elcodi.core.cart_coupon.event_listener.check_coupon:
-        class: %elcodi.core.cart_coupon.event_listener.check_coupon.class%
+    elcodi.event_listener.cart_coupon.check_rules:
+        class: %elcodi.event_listener.cart_coupon.check_rules.class%
         arguments:
-            - @elcodi.coupon_manager
+            - @elcodi.manager.coupon
         tags:
             - { name: kernel.event_listener, event: cart_coupon.onapply, method: checkCoupon, priority: 32 }
 
-    elcodi.core.cart_coupon.event_listener.minimum_price:
-        class: %elcodi.core.cart_coupon.event_listener.minimum_price.class%
+    elcodi.event_listener.cart_coupon.check_minimum_price:
+        class: %elcodi.event_listener.cart_coupon.check_minimum_price.class%
         arguments:
             - @elcodi.currency_converter
         tags:
             - { name: kernel.event_listener, event: cart_coupon.onapply, method: checkMinimumPrice, priority: 16 }
 
-    elcodi.core.cart_coupon.event_listener.cart_coupon_rules:
-        class: %elcodi.core.cart_coupon.event_listener.cart_coupon_rules.class%
-        arguments:
-            cart_coupon_rule_manager: @elcodi.cart_coupon_rule_manager
-            cart_coupon_event_dispatcher: @elcodi.event_dispatcher.cart_coupon
-        tags:
-            - { name: kernel.event_listener, event: cart_coupon.onapply, method: onCartCouponApply, priority: 16 }
-
-    elcodi.core.cart_coupon.event_listener.duplicated_coupons:
-        class: %elcodi.core.cart_coupon.event_listener.duplicated_coupons.class%
+    elcodi.event_listener.cart_coupon.avoid_coupon_duplicates:
+        class: %elcodi.event_listener.cart_coupon.avoid_coupon_duplicates.class%
         arguments:
             - @elcodi.repository.cart_coupon
         tags:
-            - { name: kernel.event_listener, event: cart_coupon.onapply, method: onCartCouponApply, priority: 16 }
+            - { name: kernel.event_listener, event: cart_coupon.onapply, method: checkDuplicates, priority: 16 }
 
-    elcodi.core.cart_coupon.event_listener.order_coupon:
-        class: %elcodi.core.cart_coupon.event_listener.order_coupon.class%
+    elcodi.event_listener.cart_coupon.order_coupon_manager:
+        class: %elcodi.event_listener.cart_coupon.order_coupon_manager.class%
         arguments:
-            order_coupon_object_manager: @elcodi.object_manager.order_coupon
-            coupon_event_dispatcher: @elcodi.event_dispatcher.coupon
-            order_coupon_factory: @elcodi.factory.order_coupon
+            - @elcodi.object_manager.order_coupon
+            - @elcodi.event_dispatcher.coupon
+            - @elcodi.factory.order_coupon
         tags:
-            - { name: kernel.event_listener, event: order_coupon.onapply, method: onOrderCouponApply, priority: 0 }
+            - { name: kernel.event_listener, event: order_coupon.onapply, method: convertToOrderCoupons, priority: 0 }
 
-    elcodi.core.cart_coupon.event_listener.automatic_coupons:
-        class: %elcodi.core.cart_coupon.event_listener.automatic_coupons.class%
+    elcodi.event_listener.cart_coupon.automatic_coupons:
+        class: %elcodi.event_listener.cart_coupon.automatic_coupons.class%
         arguments:
-            - @elcodi.cart_coupon_manager
+            - @elcodi.manager.cart_coupon
             - @elcodi.repository.coupon
         tags:
             - { name: kernel.event_listener, event: cart.onload, method: tryAutomaticCoupons, priority: -16 }

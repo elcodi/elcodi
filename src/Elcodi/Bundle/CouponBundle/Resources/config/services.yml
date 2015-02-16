@@ -3,8 +3,8 @@ services:
     #
     # Services
     #
-    elcodi.coupon_manager:
-        class: %elcodi.coupon_manager.class%
+    elcodi.manager.coupon:
+        class: %elcodi.manager.coupon.class%
         arguments:
             coupon_factory: @elcodi.factory.coupon
             coupon_code_generator: @elcodi.generator.random_string

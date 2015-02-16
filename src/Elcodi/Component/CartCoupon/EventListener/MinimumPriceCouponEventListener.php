@@ -18,7 +18,6 @@ namespace Elcodi\Component\CartCoupon\EventListener;
 
 use Elcodi\Component\CartCoupon\Event\CartCouponOnApplyEvent;
 use Elcodi\Component\Coupon\Exception\CouponBelowMinimumPurchaseException;
-use Elcodi\Component\Currency\Entity\NullMoney;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
 
 /**
@@ -50,17 +49,18 @@ class MinimumPriceCouponEventListener
      */
     public function checkMinimumPrice(CartCouponOnApplyEvent $event)
     {
-        $couponMinimumPrice = $event->getCoupon()->getMinimumPurchase();
+        $couponMinimumPrice = $event
+            ->getCoupon()
+            ->getMinimumPurchase();
+
         if ($couponMinimumPrice->getAmount() === 0) {
 
             return;
         }
 
-        $productMoney = $event->getCart()->getProductAmount();
-        if ($productMoney->getAmount() === 0) {
-
-            return;
-        }
+        $productMoney = $event
+            ->getCart()
+            ->getProductAmount();
 
         if ($couponMinimumPrice->getCurrency() != $productMoney->getCurrency()) {
             $couponMinimumPrice = $this

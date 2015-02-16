@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Elcodi package.
  *
@@ -18,6 +19,7 @@ namespace Elcodi\Component\CartCoupon\EventListener;
 
 use Elcodi\Component\CartCoupon\Event\CartCouponOnApplyEvent;
 use Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException;
+use Elcodi\Component\Coupon\Exception\CouponIncompatibleException;
 use Elcodi\Component\Coupon\Services\CouponManager;
 
 /**
@@ -51,8 +53,15 @@ class CheckCouponEventListener
      */
     public function checkCoupon(CartCouponOnApplyEvent $event)
     {
+        if ($event->getCart()->getQuantity() === 0) {
+
+            throw new CouponIncompatibleException();
+        }
+
         $coupon = $event->getCoupon();
 
-        $this->couponManager->checkCoupon($coupon);
+        $this
+            ->couponManager
+            ->checkCoupon($coupon);
     }
 }
