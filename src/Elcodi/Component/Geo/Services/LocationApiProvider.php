@@ -181,7 +181,7 @@ class LocationApiProvider implements LocationProviderInterface
 
         $locationDataArray = [];
 
-        foreach ($response->json(['object' => true]) as $locationResponse) {
+        foreach ($response->json(['object' => false]) as $locationResponse) {
             $locationDataArray[] = $this
                 ->locationDataFactory
                 ->create(
