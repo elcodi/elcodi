@@ -42,7 +42,6 @@ class ImageFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.media.factory.image',
             'elcodi.factory.image',
         ];
     }

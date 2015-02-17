@@ -59,7 +59,7 @@ class NewsletterManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.core.newsletter.service.newsletter_manager'];
+        return ['elcodi.manager.newsletter'];
     }
 
     /**
@@ -83,7 +83,7 @@ class NewsletterManagerTest extends WebTestCase
         parent::setUp();
 
         $this->newsletterManager = $this
-            ->get('elcodi.core.newsletter.service.newsletter_manager');
+            ->get('elcodi.manager.newsletter');
 
         $this->newsletterSubscriptionRepository = $this
             ->getRepository('newsletter_subscription');

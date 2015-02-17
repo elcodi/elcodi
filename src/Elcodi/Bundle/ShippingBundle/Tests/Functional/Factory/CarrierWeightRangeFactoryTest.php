@@ -42,8 +42,7 @@ class CarrierWeightRangeFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.shipping.factory.carrier_weight_range',
-            'elcodi.factory.carrier_weight_range',
+            'elcodi.factory.shipping_carrier_weight_range',
         ];
     }
 }

@@ -3,8 +3,8 @@ services:
     #
     # Services
     #
-    elcodi.configuration_manager:
-        class: %elcodi.configuration_manager.class%
+    elcodi.manager.configuration:
+        class: %elcodi.manager.configuration.class%
         lazy: true
         arguments:
             configuration_object_manager: @elcodi.object_manager.configuration

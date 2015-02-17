@@ -3,8 +3,8 @@ services:
     #
     # Services
     #
-    elcodi.comment_manager:
-        class: %elcodi.comment_manager.class%
+    elcodi.manager.comment:
+        class: %elcodi.manager.comment.class%
         arguments:
             comment_event_dispatcher: @elcodi.event_dispatcher.comment
             comment_director: @elcodi.director.comment
@@ -23,14 +23,14 @@ services:
         class: %elcodi.comment_cache.class%
         arguments:
             comment_repository: @elcodi.repository.comment
-            comment_vote_manager: @elcodi.comment_vote_manager
+            comment_vote_manager: @elcodi.manager.comment_vote
             cache_key: %elcodi.comment.cache_key%
         calls:
             - [setCache, [@doctrine_cache.providers.elcodi_comments]]
             - [setEncoder, [@elcodi.json_encoder]]
 
-    elcodi.comment_vote_manager:
-        class: %elcodi.comment_vote_manager.class%
+    elcodi.manager.comment_vote:
+        class: %elcodi.manager.comment_vote.class%
         arguments:
             comment_event_dispatcher: @elcodi.event_dispatcher.comment
             vote_director: @elcodi.director.comment_vote

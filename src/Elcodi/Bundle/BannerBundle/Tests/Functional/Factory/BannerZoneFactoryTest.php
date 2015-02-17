@@ -42,7 +42,6 @@ class BannerZoneFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.banner.factory.banner_zone',
             'elcodi.factory.banner_zone',
         ];
     }

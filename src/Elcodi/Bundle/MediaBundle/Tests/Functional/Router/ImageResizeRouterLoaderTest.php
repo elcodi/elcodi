@@ -31,6 +31,6 @@ class ImageResizeRouterLoaderTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.core.media.routes.image_resize.loader'];
+        return ['elcodi.router.media_image_resize'];
     }
 }

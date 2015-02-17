@@ -42,8 +42,7 @@ class CarrierPriceRangeFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.shipping.factory.carrier_price_range',
-            'elcodi.factory.carrier_price_range',
+            'elcodi.factory.shipping_carrier_price_range',
         ];
     }
 }

@@ -11,8 +11,8 @@ parameters:
     #
     # Services
     #
-    elcodi.cart_manager.class: Elcodi\Component\Cart\Services\CartManager
-    elcodi.cart_session_manager.class: Elcodi\Component\Cart\Services\CartSessionManager
+    elcodi.cart.manager.class: Elcodi\Component\Cart\Services\CartManager
+    elcodi.session_manager.cart.class: Elcodi\Component\Cart\Services\CartSessionManager
 
     #
     # Transformers
@@ -40,4 +40,4 @@ parameters:
     #
     # Wrappers
     #
-    elcodi.cart_wrapper.class: Elcodi\Component\Cart\Wrapper\CartWrapper
+    elcodi.wrapper.cart.class: Elcodi\Component\Cart\Wrapper\CartWrapper

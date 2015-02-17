@@ -23,6 +23,6 @@ services:
         class: %elcodi.expression_language_rule_provider.class%
         arguments:
             - @elcodi.repository.rule
-            - @elcodi.rule_manager
+            - @elcodi.manager.rule
         tags:
             - { name: elcodi.rule_configuration }

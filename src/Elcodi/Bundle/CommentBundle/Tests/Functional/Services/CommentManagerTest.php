@@ -42,7 +42,7 @@ class CommentManagerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.comment_manager',
+            'elcodi.manager.comment',
         ];
     }
 
@@ -51,7 +51,7 @@ class CommentManagerTest extends WebTestCase
      */
     public function testAddComment()
     {
-        $commentManager = $this->get('elcodi.comment_manager');
+        $commentManager = $this->get('elcodi.manager.comment');
         $source = 'http://page.com/product1';
         $commentManager->addComment(
             $source,

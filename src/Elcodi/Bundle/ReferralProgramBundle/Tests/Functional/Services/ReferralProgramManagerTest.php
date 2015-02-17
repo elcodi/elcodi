@@ -42,8 +42,7 @@ class ReferralProgramManagerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.referral_program.service.referral_program_manager',
-            'elcodi.referral_program_manager',
+            'elcodi.manager.referral_program',
             'elcodi.referral_program',
         ];
     }

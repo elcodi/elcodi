@@ -3,36 +3,36 @@ parameters:
     #
     # Factories
     #
-    elcodi.core.media.factory.image.class: Elcodi\Component\Media\Factory\ImageFactory
+    elcodi.factory.image.class: Elcodi\Component\Media\Factory\ImageFactory
 
     #
     # Services
     #
     elcodi.core.media.resize.imagemagick.class: Elcodi\Component\Media\Adapter\Resizer\ImageMagickResizeAdapter
-    elcodi.core.media.service.image_manager.class: Elcodi\Component\Media\Services\ImageManager
-    elcodi.core.media.service.file_manager.class: Elcodi\Component\Media\Services\FileManager
-    elcodi.core.media.service.image_uploader.class: Elcodi\Component\Media\Services\ImageUploader
+    elcodi.manager.media_image.class: Elcodi\Component\Media\Services\ImageManager
+    elcodi.manager.media_file.class: Elcodi\Component\Media\Services\FileManager
+    elcodi.image_uploader.class: Elcodi\Component\Media\Services\ImageUploader
 
     #
     # Controllers
     #
-    elcodi.core.media.controller.image_resize.class: Elcodi\Component\Media\Controller\ImageResizeController
-    elcodi.core.media.controller.image_upload.class: Elcodi\Component\Media\Controller\ImageUploadController
+    elcodi.controller.media_image_resize.class: Elcodi\Component\Media\Controller\ImageResizeController
+    elcodi.controller.media_image_upload.class: Elcodi\Component\Media\Controller\ImageUploadController
 
     #
     # Routes
     #
-    elcodi.core.media.routes.image_resize.loader.class: Elcodi\Component\Media\Router\ImageResizeRouterLoader
-    elcodi.core.media.routes.image_view.loader.class: Elcodi\Component\Media\Router\ImageViewRouterLoader
-    elcodi.core.media.routes.image_upload.loader.class: Elcodi\Component\Media\Router\ImageUploadRouterLoader
+    elcodi.router.media_image_resize.class: Elcodi\Component\Media\Router\ImageResizeRouterLoader
+    elcodi.router.media_image_view.class: Elcodi\Component\Media\Router\ImageViewRouterLoader
+    elcodi.router.media_image_upload.class: Elcodi\Component\Media\Router\ImageUploadRouterLoader
 
     #
     # Twig extensions
     #
-    elcodi.core.media.twig_extension.image_extension.class: Elcodi\Component\Media\Twig\ImageExtension
+    elcodi.twig_extension.media_image.class: Elcodi\Component\Media\Twig\ImageExtension
 
     #
     # Transformers
     #
-    elcodi.core.media.transformer.image_etag_transformer.class: Elcodi\Component\Media\Transformer\ImageEtagTransformer
-    elcodi.core.media.transformer.file_identifier_transformer.class: Elcodi\Component\Media\Transformer\FileIdentifierTransformer
+    elcodi.transformer.media_image_etag.class: Elcodi\Component\Media\Transformer\ImageEtagTransformer
+    elcodi.transformer.media_file_identifier.class: Elcodi\Component\Media\Transformer\FileIdentifierTransformer

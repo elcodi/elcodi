@@ -3,8 +3,8 @@ services:
     #
     # Managers
     #
-    elcodi.rule_manager:
-        class: %elcodi.rule_manager.class%
+    elcodi.manager.rule:
+        class: %elcodi.manager.rule.class%
         lazy: true
         arguments:
             expression_language: @elcodi.expression_language

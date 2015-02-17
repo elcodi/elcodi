@@ -7,10 +7,7 @@ services:
     #
     # Factory for configuration entity
     #
-    elcodi.core.configuration.factory.configuration:
-        class: %elcodi.core.configuration.factory.configuration.class%
+    elcodi.factory.configuration:
+        class: %elcodi.factory.configuration.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.configuration.entity.configuration.class%"]]
-
-    elcodi.factory.configuration:
-        alias: elcodi.core.configuration.factory.configuration

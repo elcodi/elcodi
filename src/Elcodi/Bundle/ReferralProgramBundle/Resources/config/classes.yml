@@ -9,20 +9,20 @@ parameters:
     #
     # Factories
     #
-    elcodi.core.referral_program.factory.referral_rule.class: Elcodi\Component\ReferralProgram\Factory\ReferralRuleFactory
-    elcodi.core.referral_program.factory.referral_line.class: Elcodi\Component\ReferralProgram\Factory\ReferralLineFactory
-    elcodi.core.referral_program.factory.referral_hash.class: Elcodi\Component\ReferralProgram\Factory\ReferralHashFactory
-    elcodi.core.referral_program.factory.invitation.class: Elcodi\Component\ReferralProgram\Factory\InvitationFactory
-    elcodi.core.referral_program.factory.invitation_bag.class: Elcodi\Component\ReferralProgram\Factory\InvitationBagFactory
+    elcodi.factory.referral_rule.class: Elcodi\Component\ReferralProgram\Factory\ReferralRuleFactory
+    elcodi.factory.referral_line.class: Elcodi\Component\ReferralProgram\Factory\ReferralLineFactory
+    elcodi.factory.referral_hash.class: Elcodi\Component\ReferralProgram\Factory\ReferralHashFactory
+    elcodi.factory.referral_invitation.class: Elcodi\Component\ReferralProgram\Factory\InvitationFactory
+    elcodi.factory.referral_invitation_bag.class: Elcodi\Component\ReferralProgram\Factory\InvitationBagFactory
 
     #
     # Services
     #
-    elcodi.core.referral_program.service.referral_program_manager.class: Elcodi\Component\ReferralProgram\Services\ReferralProgramManager
-    elcodi.core.referral_program.service.referral_hash_manager.class: Elcodi\Component\ReferralProgram\Services\ReferralHashManager
-    elcodi.core.referral_program.service.referral_route_manager.class: Elcodi\Component\ReferralProgram\Services\ReferralRouteManager
-    elcodi.core.referral_program.service.referral_coupon_manager.class: Elcodi\Component\ReferralProgram\Services\ReferralCouponManager
-    elcodi.core.referral_program.service.referral_rule_manager.class: Elcodi\Component\ReferralProgram\Services\ReferralRuleManager
+    elcodi.manager.referral_program.class: Elcodi\Component\ReferralProgram\Services\ReferralProgramManager
+    elcodi.manager.referral_hash.class: Elcodi\Component\ReferralProgram\Services\ReferralHashManager
+    elcodi.manager.referral_route.class: Elcodi\Component\ReferralProgram\Services\ReferralRouteManager
+    elcodi.manager.referral_coupon.class: Elcodi\Component\ReferralProgram\Services\ReferralCouponManager
+    elcodi.manager.referral_rule.class: Elcodi\Component\ReferralProgram\Services\ReferralRuleManager
 
     #
     # Routes
@@ -37,4 +37,4 @@ parameters:
     #
     # Controllers
     #
-    elcodi.core.referral_program.controller.referral_program.class: Elcodi\Component\ReferralProgram\Controller\ReferralProgramController
+    elcodi.controller.referral_program.class: Elcodi\Component\ReferralProgram\Controller\ReferralProgramController

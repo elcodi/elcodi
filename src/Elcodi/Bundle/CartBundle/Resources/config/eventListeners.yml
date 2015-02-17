@@ -8,7 +8,7 @@ services:
         arguments:
             - @elcodi.object_manager.cart
             - @elcodi.event_dispatcher.cart
-            - @elcodi.cart_manager
+            - @elcodi.cart.manager
             - @elcodi.wrapper.currency
             - @elcodi.converter.currency
         tags:
@@ -42,6 +42,6 @@ services:
     elcodi.event_listener.cart_session:
         class: %elcodi.event_listener.cart_session.class%
         arguments:
-            - @elcodi.cart_session_manager
+            - @elcodi.session_manager.cart
         tags:
             - { name: kernel.event_listener, event: cart.onload, method: saveCartInSession, priority: -2 }

@@ -3,8 +3,8 @@ services:
     #
     # Controllers
     #
-    elcodi.core.referral_program.controller.referral_program:
-        class: %elcodi.core.referral_program.controller.referral_program.class%
+    elcodi.controller.referral_program:
+        class: %elcodi.controller.referral_program.class%
         arguments:
             request_stack: @request_stack
             router: @router

@@ -42,7 +42,6 @@ class NodeFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.menu.factory.menu_node',
             'elcodi.factory.menu_node',
         ];
     }

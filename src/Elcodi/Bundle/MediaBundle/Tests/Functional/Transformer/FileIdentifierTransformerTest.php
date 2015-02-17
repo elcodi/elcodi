@@ -32,8 +32,7 @@ class FileIdentifierTransformerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.media.transformer.file_identifier_transformer',
-            'elcodi.file_identifier_transformer',
+            'elcodi.transformer.media_file_identifier',
         ];
     }
 }

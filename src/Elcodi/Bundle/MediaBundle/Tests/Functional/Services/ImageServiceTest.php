@@ -35,8 +35,7 @@ class ImageServiceTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.media.service.image_manager',
-            'elcodi.image_manager',
+            'elcodi.manager.media_image',
         ];
     }
 
@@ -52,7 +51,7 @@ class ImageServiceTest extends WebTestCase
          * @var ImageInterface $image
          */
         $image = $this
-            ->get('elcodi.core.media.service.image_manager')
+            ->get('elcodi.manager.media_image')
             ->createImage($file);
 
         $this->assertInstanceOf('Elcodi\Component\Media\Entity\Interfaces\ImageInterface', $image);

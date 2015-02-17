@@ -3,8 +3,8 @@ services:
     #
     # Event Listeners
     #
-    elcodi.core.newsletter.event_listener.newsletter:
-        class: %elcodi.core.newsletter.event_listener.newsletter.class%
+    elcodi.event_listener.newsletter:
+        class: %elcodi.event_listener.newsletter.class%
         arguments:
             newsletter_object_manager: @elcodi.object_manager.newsletter_subscription
         tags:

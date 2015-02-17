@@ -42,7 +42,6 @@ class ReferralHashFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.referral_program.factory.referral_hash',
             'elcodi.factory.referral_hash',
         ];
     }

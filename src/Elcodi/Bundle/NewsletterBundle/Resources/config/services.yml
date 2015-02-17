@@ -3,11 +3,11 @@ services:
     #
     # Services
     #
-    elcodi.core.newsletter.service.newsletter_manager:
-        class: %elcodi.core.newsletter.service.newsletter_manager.class%
+    elcodi.manager.newsletter:
+        class: %elcodi.manager.newsletter.class%
         arguments:
-            newsletter_event_dispatcher: @elcodi.newsletter_event_dispatcher
+            newsletter_event_dispatcher: @elcodi.event_dispatcher.newsletter
             validator: @validator
-            newsletter_subscription_factory: @elcodi.core.newsletter.factory.newsletter_subscription
+            newsletter_subscription_factory: @elcodi.factory.newsletter_subscription
             newsletter_subscription_repository: @elcodi.repository.newsletter_subscription
             hash_generator: @elcodi.generator.sha1

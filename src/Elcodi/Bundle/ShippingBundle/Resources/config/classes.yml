@@ -12,16 +12,16 @@ parameters:
     #
     # Factories
     #
-    elcodi.core.shipping.factory.carrier.class: Elcodi\Component\Shipping\Factory\CarrierFactory
-    elcodi.core.shipping.factory.carrier_price_range.class: Elcodi\Component\Shipping\Factory\CarrierPriceRangeFactory
-    elcodi.core.shipping.factory.carrier_weight_range.class: Elcodi\Component\Shipping\Factory\CarrierWeightRangeFactory
-    elcodi.core.shipping.factory.warehouse.class: Elcodi\Component\Shipping\Factory\WarehouseFactory
+    elcodi.factory.shipping_carrier.class: Elcodi\Component\Shipping\Factory\CarrierFactory
+    elcodi.factory.shipping_carrier_price_range.class: Elcodi\Component\Shipping\Factory\CarrierPriceRangeFactory
+    elcodi.factory.shipping_carrier_weight_range.class: Elcodi\Component\Shipping\Factory\CarrierWeightRangeFactory
+    elcodi.factory.shipping_warehouse.class: Elcodi\Component\Shipping\Factory\WarehouseFactory
 
     #
     # Providers
     #
-    elcodi.core.shipping.provider.carrier_provider.class: Elcodi\Component\Shipping\Provider\CarrierProvider
-    elcodi.core.shipping.provider.shipping_provider.class: Elcodi\Component\Shipping\Provider\ShippingProvider
+    elcodi.provider.shipping_carrier.class: Elcodi\Component\Shipping\Provider\CarrierProvider
+    elcodi.provider.shipping.class: Elcodi\Component\Shipping\Provider\ShippingProvider
 
     #
     # Resolvers

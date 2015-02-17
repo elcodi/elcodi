@@ -31,6 +31,6 @@ class ImageExtensionTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.core.media.twig_extension.image_extension'];
+        return ['elcodi.twig_extension.media_image'];
     }
 }

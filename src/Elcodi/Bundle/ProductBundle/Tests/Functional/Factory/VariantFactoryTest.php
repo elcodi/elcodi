@@ -54,7 +54,6 @@ class VariantFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.product.factory.product_variant',
             'elcodi.factory.product_variant',
         ];
     }

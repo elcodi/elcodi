@@ -144,11 +144,11 @@ class CartManagerVariantTest extends AbstractCartManagerTest
     public function testAddSameVariantTwice()
     {
         $this
-            ->get('elcodi.cart_manager')
+            ->get('elcodi.cart.manager')
             ->addProduct($this->cart, $this->purchasable, 1);
 
         $this
-            ->get('elcodi.cart_manager')
+            ->get('elcodi.cart.manager')
             ->addProduct($this->cart, $this->purchasable, 2);
 
         $this->assertEquals(1, $this->cart->getCartLines()->count());

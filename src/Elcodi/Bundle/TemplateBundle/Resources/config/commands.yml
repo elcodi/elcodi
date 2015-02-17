@@ -13,6 +13,6 @@ services:
     elcodi.templates_enable_command:
         class: %elcodi.templates_enable_command.class%
         arguments:
-            configuration_manager: @elcodi.configuration_manager
+            configuration_manager: @elcodi.manager.configuration
         tags:
             -  { name: console.command }

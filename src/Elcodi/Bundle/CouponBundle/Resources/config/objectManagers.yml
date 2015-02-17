@@ -5,4 +5,4 @@ services:
     #
     elcodi.object_manager.coupon:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.coupon.entity.coupon.class% ]
+        arguments: [ %elcodi.entity.coupon.class% ]

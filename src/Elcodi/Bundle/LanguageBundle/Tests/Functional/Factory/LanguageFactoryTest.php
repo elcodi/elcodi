@@ -42,7 +42,6 @@ class LanguageFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.language.factory.language',
             'elcodi.factory.language',
         ];
     }

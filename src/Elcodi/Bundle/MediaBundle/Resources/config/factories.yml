@@ -7,10 +7,7 @@ services:
     #
     # Factory for entity image
     #
-    elcodi.core.media.factory.image:
-        class: %elcodi.core.media.factory.image.class%
+    elcodi.factory.image:
+        class: %elcodi.factory.image.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.media.entity.image.class%"]]
-
-    elcodi.factory.image:
-        alias: elcodi.core.media.factory.image

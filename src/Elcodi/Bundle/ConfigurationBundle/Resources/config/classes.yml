@@ -3,17 +3,17 @@ parameters:
     #
     # Factories
     #
-    elcodi.core.configuration.factory.configuration.class: Elcodi\Component\Configuration\Factory\ConfigurationFactory
+    elcodi.factory.configuration.class: Elcodi\Component\Configuration\Factory\ConfigurationFactory
 
     #
     # Services
     #
-    elcodi.configuration_manager.class: Elcodi\Component\Configuration\Services\ConfigurationManager
+    elcodi.manager.configuration.class: Elcodi\Component\Configuration\Services\ConfigurationManager
 
     #
     # Twig extensions
     #
-    elcodi.core.configuration.twig_extension.configuration_extension.class: Elcodi\Component\Configuration\Twig\ConfigurationExtension
+    elcodi.twig_extension.configuration.class: Elcodi\Component\Configuration\Twig\ConfigurationExtension
 
     #
     # Commands

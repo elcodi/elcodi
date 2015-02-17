@@ -3,14 +3,8 @@ services:
     #
     # Transformers
     #
-    elcodi.core.media.transformer.image_etag_transformer:
-        class: %elcodi.core.media.transformer.image_etag_transformer.class%
+    elcodi.transformer.media_image_etag:
+        class: %elcodi.transformer.media_image_etag.class%
 
-    elcodi.image_etag_transformer:
-        alias: elcodi.core.media.transformer.image_etag_transformer
-
-    elcodi.core.media.transformer.file_identifier_transformer:
-        class: %elcodi.core.media.transformer.file_identifier_transformer.class%
-
-    elcodi.file_identifier_transformer:
-        alias: elcodi.core.media.transformer.file_identifier_transformer
+    elcodi.transformer.media_file_identifier:
+        class: %elcodi.transformer.media_file_identifier.class%

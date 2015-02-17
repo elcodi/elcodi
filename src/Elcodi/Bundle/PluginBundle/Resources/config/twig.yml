@@ -3,8 +3,8 @@ services:
     #
     # Twig extensions
     #
-    elcodi.core.plugin.twig_extension.hook:
-        class: %elcodi.core.plugin.twig_extension.hook.class%
+    elcodi.twig_extension.plugin_hook:
+        class: %elcodi.twig_extension.plugin_hook.class%
         arguments:
             - @elcodi.hook_system
         tags:

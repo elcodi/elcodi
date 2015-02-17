@@ -3,15 +3,15 @@ parameters:
     #
     # Factories
     #
-    elcodi.core.menu.factory.menu_node.class: Elcodi\Component\Menu\Factory\NodeFactory
-    elcodi.core.menu.factory.menu.class: Elcodi\Component\Menu\Factory\MenuFactory
+    elcodi.factory.menu_node.class: Elcodi\Component\Menu\Factory\NodeFactory
+    elcodi.factory.menu.class: Elcodi\Component\Menu\Factory\MenuFactory
 
     #
     # Services
     #
-    elcodi.core.menu.service.menu_manager.class: Elcodi\Component\Menu\Services\MenuManager
+    elcodi.manager.menu.class: Elcodi\Component\Menu\Services\MenuManager
 
     #
     # Twig extensions
     #
-    elcodi.core.menu.twig_extension.print_route.class: Elcodi\Component\Menu\Twig\PrintRouteExtension
+    elcodi.twig_extension.menu_print_route.class: Elcodi\Component\Menu\Twig\PrintRouteExtension

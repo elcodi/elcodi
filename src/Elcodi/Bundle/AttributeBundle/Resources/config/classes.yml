@@ -3,5 +3,5 @@ parameters:
     #
     # Factories
     #
-    elcodi.core.attribute.factory.attribute.class: Elcodi\Component\Attribute\Factory\AttributeFactory
-    elcodi.core.attribute.factory.attribute_value.class: Elcodi\Component\Attribute\Factory\ValueFactory
+    elcodi.factory.attribute.class: Elcodi\Component\Attribute\Factory\AttributeFactory
+    elcodi.factory.attribute_value.class: Elcodi\Component\Attribute\Factory\ValueFactory

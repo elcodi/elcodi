@@ -58,8 +58,7 @@ class ShippingProviderTest extends AbstractProviderTest
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.shipping.provider.shipping_provider',
-            'elcodi.shipping_provider',
+            'elcodi.provider.shipping',
         ];
     }
 
@@ -71,7 +70,7 @@ class ShippingProviderTest extends AbstractProviderTest
         $order = $this->createShippingEnvironment(2, 1);
 
         $carriers = $this
-            ->get('elcodi.shipping_provider')
+            ->get('elcodi.provider.shipping')
             ->getValidCarrierRangesFromCart($order);
 
         $this->assertCount(1, $carriers);
@@ -87,7 +86,7 @@ class ShippingProviderTest extends AbstractProviderTest
         $order = $this->createShippingEnvironment(2, 2);
 
         $carriers = $this
-            ->get('elcodi.shipping_provider')
+            ->get('elcodi.provider.shipping')
             ->getValidCarrierRangesFromCart($order);
 
         $this->assertCount(1, $carriers);
@@ -103,7 +102,7 @@ class ShippingProviderTest extends AbstractProviderTest
         $order = $this->createShippingEnvironment(2, 1);
 
         $carriers = $this
-            ->get('elcodi.shipping_provider')
+            ->get('elcodi.provider.shipping')
             ->getAllCarrierRangesFromOrder($order);
 
         $this->assertCount(3, $carriers);
@@ -117,7 +116,7 @@ class ShippingProviderTest extends AbstractProviderTest
         $order = $this->createShippingEnvironment(2, 2);
 
         $carriers = $this
-            ->get('elcodi.shipping_provider')
+            ->get('elcodi.provider.shipping')
             ->getAllCarrierRangesFromOrder($order);
 
         $this->assertCount(1, $carriers);

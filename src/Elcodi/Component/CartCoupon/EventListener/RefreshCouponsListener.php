@@ -19,8 +19,6 @@ namespace Elcodi\Component\CartCoupon\EventListener;
 
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Event\CartOnLoadEvent;
-use Elcodi\Component\Cart\Event\CartPreLoadEvent;
-use Elcodi\Component\CartCoupon\Entity\Interfaces\CartCouponInterface;
 use Elcodi\Component\CartCoupon\EventDispatcher\CartCouponEventDispatcher;
 use Elcodi\Component\CartCoupon\Services\CartCouponManager;
 use Elcodi\Component\Coupon\ElcodiCouponTypes;

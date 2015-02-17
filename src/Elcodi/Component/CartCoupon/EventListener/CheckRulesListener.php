@@ -22,9 +22,9 @@ use Elcodi\Component\CartCoupon\Exception\CouponRulesNotValidateException;
 use Elcodi\Component\CartCoupon\Services\CartCouponRuleManager;
 
 /**
- * Class CartCouponRulesEventListener
+ * Class CheckRulesListener
  */
-class CartCouponRulesEventListener
+class CheckRulesListener
 {
     /**
      * @var CartCouponRuleManager

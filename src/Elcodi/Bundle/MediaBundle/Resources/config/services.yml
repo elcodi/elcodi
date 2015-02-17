@@ -3,34 +3,25 @@ services:
     #
     # Service
     #
-    elcodi.core.media.service.image_manager:
-        class: %elcodi.core.media.service.image_manager.class%
+    elcodi.manager.media_image:
+        class: %elcodi.manager.media_image.class%
         arguments:
-            image_factory: @elcodi.core.media.factory.image
-            file_manager: @elcodi.core.media.service.file_manager
+            image_factory: @elcodi.factory.image
+            file_manager: @elcodi.manager.media_file
             resize_adapter: @elcodi.core.media.resize.default
 
-    elcodi.image_manager:
-        alias: elcodi.core.media.service.image_manager
-
-    elcodi.core.media.service.file_manager:
-        class: %elcodi.core.media.service.file_manager.class%
+    elcodi.manager.media_file:
+        class: %elcodi.manager.media_file.class%
         arguments:
             filesystem: @elcodi.core.media.filesystem.default
-            file_transformer: @elcodi.core.media.transformer.file_identifier_transformer
-
-    elcodi.file_manager:
-        alias: elcodi.core.media.service.file_manager
-
-    elcodi.core.media.service.image_uploader:
-        class: %elcodi.core.media.service.image_uploader.class%
-        arguments:
-            image_object_manager: @elcodi.object_manager.image
-            file_manager: @elcodi.core.media.service.file_manager
-            image_manager: @elcodi.core.media.service.image_manager
+            file_transformer: @elcodi.transformer.media_file_identifier
 
     elcodi.image_uploader:
-        alias: elcodi.core.media.service.image_uploader
+        class: %elcodi.image_uploader.class%
+        arguments:
+            image_object_manager: @elcodi.object_manager.image
+            file_manager: @elcodi.manager.media_file
+            image_manager: @elcodi.manager.media_image
 
     #
     # Resize
@@ -44,24 +35,24 @@ services:
     #
     # Routes
     #
-    elcodi.core.media.routes.image_resize.loader:
-        class: %elcodi.core.media.routes.image_resize.loader.class%
+    elcodi.router.media_image_resize:
+        class: %elcodi.router.media_image_resize.class%
         arguments:
             image_resize_controller_route_name: %elcodi.core.media.image_resize_controller_route_name%
             image_resize_controller_route: %elcodi.core.media.image_resize_controller_route%
         tags:
             - { name: routing.loader }
 
-    elcodi.core.media.routes.image_view.loader:
-        class: %elcodi.core.media.routes.image_view.loader.class%
+    elcodi.router.media_image_view:
+        class: %elcodi.router.media_image_view.class%
         arguments:
             image_view_controller_route_name: %elcodi.core.media.image_view_controller_route_name%
             image_view_controller_route: %elcodi.core.media.image_view_controller_route%
         tags:
             - { name: routing.loader }
 
-    elcodi.core.media.routes.image_upload.loader:
-        class: %elcodi.core.media.routes.image_upload.loader.class%
+    elcodi.router.media_image_upload:
+        class: %elcodi.router.media_image_upload.class%
         arguments:
             image_upload_controller_route_name: %elcodi.core.media.image_upload_controller_route_name%
             image_upload_controller_route: %elcodi.core.media.image_upload_controller_route%

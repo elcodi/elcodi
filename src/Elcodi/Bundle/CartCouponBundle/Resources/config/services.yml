@@ -19,4 +19,4 @@ services:
     elcodi.manager.cart_coupon_rule:
         class: %elcodi.manager.cart_coupon_rule.class%
         arguments:
-            rule_manager: @elcodi.rule_manager
+            rule_manager: @elcodi.manager.rule

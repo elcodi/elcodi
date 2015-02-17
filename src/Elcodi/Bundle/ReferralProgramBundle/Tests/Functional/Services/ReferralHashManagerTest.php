@@ -34,8 +34,7 @@ class ReferralHashManagerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.referral_program.service.referral_hash_manager',
-            'elcodi.referral_hash_manager',
+            'elcodi.manager.referral_hash',
         ];
     }
 
@@ -78,7 +77,7 @@ class ReferralHashManagerTest extends WebTestCase
         /**
          * @var ReferralHashManager $referralHashManager
          */
-        $referralHashManager = $this->get('elcodi.referral_hash_manager');
+        $referralHashManager = $this->get('elcodi.manager.referral_hash');
         $referralHash = $referralHashManager->getReferralHashByCustomer($customer);
 
         $this->assertInstanceOf('Elcodi\Component\ReferralProgram\Entity\Interfaces\ReferralHashInterface', $referralHash);
@@ -98,7 +97,7 @@ class ReferralHashManagerTest extends WebTestCase
         /**
          * @var ReferralHashManager $referralHashManager
          */
-        $referralHashManager = $this->get('elcodi.referral_hash_manager');
+        $referralHashManager = $this->get('elcodi.manager.referral_hash');
         $referralHash = $referralHashManager->getReferralHashByCustomer($customer);
 
         $this->assertInstanceOf('Elcodi\Component\ReferralProgram\Entity\Interfaces\ReferralHashInterface', $referralHash);

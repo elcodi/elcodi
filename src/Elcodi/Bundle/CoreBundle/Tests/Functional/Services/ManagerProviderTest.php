@@ -31,6 +31,6 @@ class ManagerProviderTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.manager_provider'];
+        return ['elcodi.provider.manager'];
     }
 }

@@ -33,8 +33,7 @@ class MenuManagerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.menu.service.menu_manager',
-            'elcodi.menu_manager',
+            'elcodi.manager.menu',
         ];
     }
 
@@ -64,7 +63,7 @@ class MenuManagerTest extends WebTestCase
     {
         parent::setUp();
 
-        $this->menuManager = $this->get('elcodi.menu_manager');
+        $this->menuManager = $this->get('elcodi.manager.menu');
     }
 
     /**

@@ -11,4 +11,4 @@ services:
         class: %elcodi.factory.coupon.class%
         parent: elcodi.core.currency.factory.abstract.purchasable
         calls:
-            - [setEntityNamespace, ["%elcodi.core.coupon.entity.coupon.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.coupon.class%"]]

@@ -41,6 +41,6 @@ class CartWrapperTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.cart_wrapper'];
+        return ['elcodi.wrapper.cart'];
     }
 }
