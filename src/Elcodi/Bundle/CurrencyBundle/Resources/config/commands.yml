@@ -3,9 +3,9 @@ services:
     #
     # Commands
     #
-    elcodi.core.currency.command.currency_exchange_rates_populate:
-        class: %elcodi.core.currency.command.currency_exchange_rates_populate.class%
+    elcodi.command.populate_currency_rates:
+        class: %elcodi.command.populate_currency_rates.class%
         arguments:
-            currency_rates_populator: @elcodi.currency_rates_populator
+            currency_rates_populator: @elcodi.populator.currency_exchange_rate
         tags:
             -  { name: console.command }

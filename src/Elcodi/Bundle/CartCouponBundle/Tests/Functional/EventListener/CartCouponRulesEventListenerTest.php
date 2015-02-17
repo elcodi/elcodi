@@ -17,6 +17,8 @@
 
 namespace Elcodi\Bundle\CartCouponBundle\Tests\Functional\EventListener;
 
+use PHPUnit_Framework_MockObject_MockObject as MockObject;
+
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
@@ -71,6 +73,10 @@ class CartCouponRulesEventListenerTest extends WebTestCase
         $cart = $this->find('cart', 1);
         $coupon = $this->find('coupon', 1);
 
+        $coupon
+            ->setEnabled(true)
+            ->setCount(0);
+
         $ruleFactory = $this->getFactory('rule');
         $ruleObjectManager = $this->getObjectManager('rule');
 
@@ -89,6 +95,8 @@ class CartCouponRulesEventListenerTest extends WebTestCase
 
         $cartCouponManager = $this->get('elcodi.manager.cart_coupon');
 
+        $cart->setQuantity(1);
+
         try {
             $cartCouponManager->addCoupon(
                 $cart,
@@ -104,6 +112,64 @@ class CartCouponRulesEventListenerTest extends WebTestCase
         );
 
         $this->assertCount($couponsNumber, $cartCoupons);
+    }
+
+    /**
+     * Tests coupon rules when all rules validate
+     *
+     * @param array $expressions            One or more expressions, only the last one will be checked
+     * @param int   $appliedCouponsExpected Number of coupons that should apply
+     *
+     * @dataProvider dataOnCartCouponApplyValidate
+     */
+    public function _testCheckRules(array $expressions, $appliedCouponsExpected)
+    {
+        /**
+         * @var MockObject|CartInterface $cart
+         */
+        $cart = $this->getMock('Elcodi\Component\Cart\Entity\Interfaces\CartInterface');
+
+        /**
+         * @var MockObject|CouponInterface $coupon
+         */
+        $coupon = $this->getMock('Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface');
+
+        /**
+         * @var MockObject|RuleInterface $rule
+         */
+        $rule = $this->getMock('Elcodi\Component\Rule\Entity\Interfaces\RuleInterface');
+
+        $coupon
+            ->expects($this->any())
+            ->method('getRule')
+            ->willReturn($this->returnValue($rule));
+
+        $cartCouponManager = $this->get('elcodi.manager.cart_coupon');
+
+        $actualCartCoupons = $cartCouponManager
+            ->getCoupons(
+                $cart,
+                $coupon
+            );
+
+        $this->assertCount($appliedCouponsExpected, $actualCartCoupons);
+    }
+
+    public function x()
+    {
+        /**
+         * @var CartInterface $cart
+         */
+        $cart = $this
+            ->getFactory('cart')
+            ->create();
+
+        /**
+         * @var CouponInterface $coupon
+         */
+        $coupon = $this
+            ->getFactory('coupon')
+            ->create();
     }
 
     /**

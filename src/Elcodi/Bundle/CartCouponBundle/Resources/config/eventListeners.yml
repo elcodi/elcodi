@@ -3,18 +3,69 @@ services:
     #
     # Event Listeners
     #
-    elcodi.event_listener.cart_coupon.refresh_cart:
-        class: %elcodi.event_listener.cart_coupon.refresh_cart.class%
+    elcodi.event_listener.cart_coupon.refresh_coupons:
+        class: %elcodi.event_listener.cart_coupon.refresh_coupons.class%
         arguments:
             - @elcodi.manager.coupon
             - @elcodi.manager.cart_coupon
-            - @elcodi.currency_wrapper
-            - @elcodi.currency_converter
-            - @elcodi.manager.cart_coupon_rule
+            - @elcodi.wrapper.currency
+            - @elcodi.converter.currency
             - @elcodi.event_dispatcher.cart_coupon
         tags:
-            - { name: kernel.event_listener, event: cart.preload, method: onCartPreLoadCoupons, priority: 0 }
-            - { name: kernel.event_listener, event: cart.onload, method: onCartLoadCoupons, priority: -32 }
+            - { name: kernel.event_listener, event: cart.onload, method: refreshCartCoupons, priority: 0 }
+            - { name: kernel.event_listener, event: cart.onload, method: refreshCouponAmount, priority: -32 }
+
+    elcodi.event_listener.cart_coupon.automatic_coupons:
+        class: %elcodi.event_listener.cart_coupon.automatic_coupons.class%
+        arguments:
+            - @elcodi.manager.cart_coupon
+            - @elcodi.repository.coupon
+        tags:
+            - { name: kernel.event_listener, event: cart.onload, method: tryAutomaticCoupons, priority: -16 }
+
+    elcodi.event_listener.cart_coupon.avoid_coupon_duplicates:
+        class: %elcodi.event_listener.cart_coupon.avoid_coupon_duplicates.class%
+        arguments:
+            - @elcodi.repository.cart_coupon
+        tags:
+            - { name: kernel.event_listener, event: cart_coupon.onapply, method: checkDuplicates, priority: 16 }
+
+    elcodi.event_listener.cart_coupon.cart_coupon_checker:
+        class: %elcodi.event_listener.cart_coupon.cart_coupon_checker.class%
+        arguments:
+            - @elcodi.event_dispatcher.cart_coupon
+        tags:
+            - { name: kernel.event_listener, event: cart_coupon.onapply, method: checkCoupon, priority: 16 }
+
+    elcodi.event_listener.cart_coupon.cart_coupon_manager:
+        class: %elcodi.event_listener.cart_coupon.cart_coupon_manager.class%
+        arguments:
+            - @elcodi.object_manager.cart_coupon
+            - @elcodi.factory.cart_coupon
+        tags:
+            - { name: kernel.event_listener, event: cart_coupon.onapply, method: onCartCouponApply, priority: 0 }
+            - { name: kernel.event_listener, event: cart_coupon.onremove, method: onCartCouponRemove, priority: 0 }
+
+    elcodi.event_listener.cart_coupon.coupon_checker:
+        class: %elcodi.event_listener.cart_coupon.coupon_checker.class%
+        arguments:
+            - @elcodi.manager.coupon
+        tags:
+            - { name: kernel.event_listener, event: cart_coupon.oncheck, method: checkCoupon, priority: 32 }
+
+    elcodi.event_listener.cart_coupon.check_minimum_price:
+        class: %elcodi.event_listener.cart_coupon.check_minimum_price.class%
+        arguments:
+            - @elcodi.converter.currency
+        tags:
+            - { name: kernel.event_listener, event: cart_coupon.oncheck, method: checkMinimumPrice, priority: 0 }
+
+    elcodi.event_listener.cart_coupon.check_rules:
+        class: %elcodi.event_listener.cart_coupon.check_rules.class%
+        arguments:
+            - @elcodi.manager.cart_coupon_rule
+        tags:
+            - { name: kernel.event_listener, event: cart_coupon.oncheck, method: checkCoupon, priority: -16 }
 
     elcodi.event_listener.cart_coupon.convert_to_order:
         class: %elcodi.event_listener.cart_coupon.convert_to_order.class%
@@ -26,36 +77,6 @@ services:
         tags:
             - { name: kernel.event_listener, event: order.oncreated, method: convertCoupontToOrder, priority: -16 }
 
-    elcodi.event_listener.cart_coupon.cart_coupon_manager:
-        class: %elcodi.event_listener.cart_coupon.cart_coupon_manager.class%
-        arguments:
-            - @elcodi.object_manager.cart_coupon
-            - @elcodi.factory.cart_coupon
-        tags:
-            - { name: kernel.event_listener, event: cart_coupon.onapply, method: onCartCouponApply, priority: 0 }
-            - { name: kernel.event_listener, event: cart_coupon.onremove, method: onCartCouponRemove, priority: 0 }
-
-    elcodi.event_listener.cart_coupon.check_rules:
-        class: %elcodi.event_listener.cart_coupon.check_rules.class%
-        arguments:
-            - @elcodi.manager.coupon
-        tags:
-            - { name: kernel.event_listener, event: cart_coupon.onapply, method: checkCoupon, priority: 32 }
-
-    elcodi.event_listener.cart_coupon.check_minimum_price:
-        class: %elcodi.event_listener.cart_coupon.check_minimum_price.class%
-        arguments:
-            - @elcodi.currency_converter
-        tags:
-            - { name: kernel.event_listener, event: cart_coupon.onapply, method: checkMinimumPrice, priority: 16 }
-
-    elcodi.event_listener.cart_coupon.avoid_coupon_duplicates:
-        class: %elcodi.event_listener.cart_coupon.avoid_coupon_duplicates.class%
-        arguments:
-            - @elcodi.repository.cart_coupon
-        tags:
-            - { name: kernel.event_listener, event: cart_coupon.onapply, method: checkDuplicates, priority: 16 }
-
     elcodi.event_listener.cart_coupon.order_coupon_manager:
         class: %elcodi.event_listener.cart_coupon.order_coupon_manager.class%
         arguments:
@@ -64,11 +85,3 @@ services:
             - @elcodi.factory.order_coupon
         tags:
             - { name: kernel.event_listener, event: order_coupon.onapply, method: convertToOrderCoupons, priority: 0 }
-
-    elcodi.event_listener.cart_coupon.automatic_coupons:
-        class: %elcodi.event_listener.cart_coupon.automatic_coupons.class%
-        arguments:
-            - @elcodi.manager.cart_coupon
-            - @elcodi.repository.coupon
-        tags:
-            - { name: kernel.event_listener, event: cart.onload, method: tryAutomaticCoupons, priority: -16 }

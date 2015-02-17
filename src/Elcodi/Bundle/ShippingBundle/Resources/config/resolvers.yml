@@ -3,11 +3,8 @@ services:
     #
     # Resolvers
     #
-    elcodi.core.shipping.resolver.carrier_resolver:
-        class: %elcodi.core.shipping.resolver.carrier_resolver.class%
-        arguments:
-            currency_converter: @elcodi.currency_converter
-            carrier_resolver_strategy: %elcodi.core.shipping.carrier_resolver_strategy%
-
     elcodi.carrier_resolver:
-        alias: elcodi.core.shipping.resolver.carrier_resolver
+        class: %elcodi.carrier_resolver.class%
+        arguments:
+            currency_converter: @elcodi.converter.currency
+            carrier_resolver_strategy: %elcodi.core.shipping.carrier_resolver_strategy%

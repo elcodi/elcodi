@@ -91,7 +91,7 @@ class CartCouponManager
      *
      * @param CartInterface $cart Cart
      *
-     * @return Collection OrderCoupons
+     * @return CartCouponInterface[]|Collection OrderCoupons
      */
     public function getCartCoupons(CartInterface $cart)
     {

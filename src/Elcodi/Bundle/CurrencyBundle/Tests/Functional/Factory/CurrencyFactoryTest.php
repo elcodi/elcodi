@@ -42,7 +42,6 @@ class CurrencyFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.currency.factory.currency',
             'elcodi.factory.currency',
         ];
     }

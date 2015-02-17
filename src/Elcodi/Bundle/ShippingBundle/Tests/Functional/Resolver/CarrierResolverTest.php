@@ -42,7 +42,6 @@ class CarrierResolverTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.shipping.resolver.carrier_resolver',
             'elcodi.carrier_resolver',
         ];
     }

@@ -33,12 +33,12 @@ use Elcodi\Component\Currency\Services\CurrencyConverter;
 use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 
 /**
- * Class RefreshCartListener
+ * Class RefreshCouponsListener
  *
  * This event listener should update the cart given in the event, applying
  * all the coupon features.
  */
-class RefreshCartListener
+class RefreshCouponsListener
 {
     /**
      * @var CouponManager
@@ -99,21 +99,18 @@ class RefreshCartListener
     }
 
     /**
-     * Method subscribed to PreCartLoad event
+     * Method subscribed to CartLoad event
      *
      * Checks if all Coupons applied to current cart are still valid.
      * If are not, they will be deleted from the Cart and new Event typeof
      * CartCouponOnRejected will be dispatched
      *
-     * @param CartPreLoadEvent $cartPreLoadEvent Event
+     * @param CartOnLoadEvent $event Event
      */
-    public function onCartPreLoadCoupons(CartPreLoadEvent $cartPreLoadEvent)
+    public function refreshCartCoupons(CartOnLoadEvent $event)
     {
-        $cart = $cartPreLoadEvent->getCart();
+        $cart = $event->getCart();
 
-        /**
-         * @var CartCouponInterface[] $cartCoupons
-         */
         $cartCoupons = $this
             ->cartCouponManager
             ->getCartCoupons($cart);
@@ -155,22 +152,21 @@ class RefreshCartListener
      * Calculates coupons price given actual Cart, and overrides Cart price
      * given new information.
      *
-     * @param CartOnLoadEvent $cartOnLoadEvent Event
+     * @param CartOnLoadEvent $event
      */
-    public function onCartLoadCoupons(CartOnLoadEvent $cartOnLoadEvent)
+    public function refreshCouponAmount(CartOnLoadEvent $event)
     {
-        $cart = $cartOnLoadEvent->getCart();
+        $cart = $event->getCart();
+
         $couponAmount = Money::create(
             0,
             $this->currencyWrapper->loadCurrency()
         );
+
         $coupons = $this
             ->cartCouponManager
             ->getCoupons($cart);
 
-        /**
-         * @var CouponInterface $coupon
-         */
         foreach ($coupons as $coupon) {
             $currentCouponAmount = $this
                 ->getPriceCoupon(

@@ -19,7 +19,10 @@ namespace Elcodi\Bundle\CartCouponBundle\Tests\Functional\EventListener;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
+use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
+use Elcodi\Component\Currency\Entity\Money;
+use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
 
 /**
@@ -45,7 +48,7 @@ class CartEventListenerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.event_listener.cart_coupon.refresh_cart',
+            'elcodi.event_listener.cart_coupon.refresh_coupons',
         ];
     }
 
@@ -69,8 +72,32 @@ class CartEventListenerTest extends WebTestCase
     }
 
     /**
-     * Tests if a cart with an existing Coupon valid, when this Coupon becomes
-     * invalid and Cart is reloaded, then this Coupon is removed from the Cart
+     * A cart with an existing valid coupon can load and coupon is still there
+     */
+    public function testOnCartPreLoadCouponsStillThere()
+    {
+        $this->loadDefaultTestConfigurationAndReturnRuleId();
+
+        /**
+         * @var CartInterface $cart
+         */
+        $cart = $this->find('cart', 1);
+
+        $cartCouponManager = $this
+            ->get('elcodi.manager.cart_coupon');
+
+        $this->assertCount(1, $cartCouponManager->getCoupons($cart));
+
+        $this
+            ->get('elcodi.event_dispatcher.cart')
+            ->dispatchCartLoadEvents($cart);
+
+        $this->assertCount(1, $cartCouponManager->getCoupons($cart));
+    }
+
+    /**
+     * On a cart with an existing valid coupon, when this becomes invalid and
+     * cart is reloaded, then it is removed from the cart
      */
     public function testOnCartPreLoadCouponsRemove()
     {
@@ -107,29 +134,6 @@ class CartEventListenerTest extends WebTestCase
     }
 
     /**
-     * Tests if a cart with an existing Coupon valid can load good and Coupon
-     * is still there
-     */
-    public function testOnCartPreLoadCouponsStillThere()
-    {
-        $this->loadDefaultTestConfigurationAndReturnRuleId();
-
-        $cartCouponManager = $this
-            ->get('elcodi.manager.cart_coupon');
-
-        /**
-         * We load again same Cart and load it
-         */
-        $cart = $this->find('cart', 1);
-
-        $this
-            ->get('elcodi.event_dispatcher.cart')
-            ->dispatchCartLoadEvents($cart);
-
-        $this->assertCount(1, $cartCouponManager->getCoupons($cart));
-    }
-
-    /**
      * Load default test configuration
      *
      * @return integer Rule created id
@@ -139,12 +143,33 @@ class CartEventListenerTest extends WebTestCase
         /**
          * We assign the coupon to the loaded cart
          *
-         * @var CartInterface $cart
-         * @var CouponInterface $coupon
-         * @var RuleInterface $rule
+         * @var CartInterface     $cart
+         * @var ProductInterface  $product
+         * @var CartLineInterface $cartLine
+         * @var CouponInterface   $coupon
+         * @var RuleInterface     $rule
          */
         $cart = $this->find('cart', 1);
+
+        $product = $this->find('product', 1);
+
+        $cartLine = $this
+            ->getFactory('cartLine')
+            ->create()
+            ->setProduct($product)
+            ->setProductAmount($product->getPrice())
+            ->setAmount($product->getPrice())
+            ->setQuantity(1)
+            ->setCart($cart);
+
+        $cart->addCartLine($cartLine);
+
+        $this
+            ->get('elcodi.event_dispatcher.cart')
+            ->dispatchCartLoadEvents($cart);
+
         $coupon = $this->find('coupon', 1);
+        $coupon->setEnabled(true);
 
         $rule = $this
             ->get('elcodi.factory.rule')
@@ -153,17 +178,29 @@ class CartEventListenerTest extends WebTestCase
             ->setExpression('true');
 
         $this
-            ->getObjectManager('rule')
-            ->persist($rule);
-
-        $coupon->setRule($rule);
-
-        $this
             ->get('elcodi.manager.cart_coupon')
             ->addCoupon(
                 $cart,
                 $coupon
             );
+
+        $coupon->setRule($rule);
+
+        $this
+            ->getObjectManager('rule')
+            ->persist($rule);
+
+        $this
+            ->getObjectManager('rule')
+            ->flush($rule);
+
+        $this
+            ->getObjectManager('coupon')
+            ->persist($coupon);
+
+        $this
+            ->getObjectManager('coupon')
+            ->flush($coupon);
 
         $ruleId = $rule->getId();
 

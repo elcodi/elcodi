@@ -7,7 +7,7 @@ services:
         class: %elcodi.core.shipping.provider.carrier_provider.class%
         arguments:
             carrier_repository: @elcodi.repository.carrier
-            currency_converter: @elcodi.currency_converter
+            currency_converter: @elcodi.converter.currency
             warehouse_repository: @elcodi.repository.warehouse
             zone_matcher: @elcodi.zone_matcher
 

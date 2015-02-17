@@ -26,4 +26,4 @@ parameters:
     #
     # Resolvers
     #
-    elcodi.core.shipping.resolver.carrier_resolver.class: Elcodi\Component\Shipping\Resolver\CarrierResolver
+    elcodi.carrier_resolver.class: Elcodi\Component\Shipping\Resolver\CarrierResolver

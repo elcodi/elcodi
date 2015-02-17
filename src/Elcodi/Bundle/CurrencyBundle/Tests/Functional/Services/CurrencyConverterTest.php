@@ -42,8 +42,7 @@ class CurrencyConverterTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.currency.service.currency_converter',
-            'elcodi.currency_converter',
+            'elcodi.converter.currency',
         ];
     }
 }

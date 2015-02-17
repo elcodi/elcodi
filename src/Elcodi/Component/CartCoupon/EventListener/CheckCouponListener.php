@@ -17,17 +17,17 @@
 
 namespace Elcodi\Component\CartCoupon\EventListener;
 
-use Elcodi\Component\CartCoupon\Event\CartCouponOnApplyEvent;
+use Elcodi\Component\CartCoupon\Event\CartCouponOnCheckEvent;
 use Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException;
 use Elcodi\Component\Coupon\Exception\CouponIncompatibleException;
 use Elcodi\Component\Coupon\Services\CouponManager;
 
 /**
- * Class CheckCouponEventListener
+ * Class CheckCouponListener
  *
  * @author Berny Cantos <be@rny.cc>
  */
-class CheckCouponEventListener
+class CheckCouponListener
 {
     /**
      * @var CouponManager
@@ -47,11 +47,11 @@ class CheckCouponEventListener
     /**
      * Check if cart meets basic requirements for a coupon
      *
-     * @param CartCouponOnApplyEvent $event
+     * @param CartCouponOnCheckEvent $event
      *
      * @throws AbstractCouponException
      */
-    public function checkCoupon(CartCouponOnApplyEvent $event)
+    public function checkCoupon(CartCouponOnCheckEvent $event)
     {
         if ($event->getCart()->getQuantity() === 0) {
 

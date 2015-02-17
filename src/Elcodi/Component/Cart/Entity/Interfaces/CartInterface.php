@@ -20,6 +20,7 @@ namespace Elcodi\Component\Cart\Entity\Interfaces;
 use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
@@ -27,7 +28,11 @@ use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 /**
  * Class CartInterface
  */
-interface CartInterface extends DateTimeInterface, DimensionableInterface
+interface CartInterface
+    extends
+        DateTimeInterface,
+        DimensionableInterface,
+        IdentifiableInterface
 {
     /**
      * Gets amount with tax

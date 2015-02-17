@@ -42,8 +42,7 @@ class CurrencySessionManagerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.currency.service.currency_session_manager',
-            'elcodi.currency_session_manager',
+            'elcodi.session_manager.currency',
         ];
     }
 }

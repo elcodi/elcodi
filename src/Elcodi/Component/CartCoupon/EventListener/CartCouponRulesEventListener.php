@@ -17,7 +17,7 @@
 
 namespace Elcodi\Component\CartCoupon\EventListener;
 
-use Elcodi\Component\CartCoupon\Event\CartCouponOnApplyEvent;
+use Elcodi\Component\CartCoupon\Event\CartCouponOnCheckEvent;
 use Elcodi\Component\CartCoupon\Exception\CouponRulesNotValidateException;
 use Elcodi\Component\CartCoupon\Services\CartCouponRuleManager;
 
@@ -46,11 +46,11 @@ class CartCouponRulesEventListener
     /**
      * Check for the rules required by the coupon
      *
-     * @param CartCouponOnApplyEvent $event Event
+     * @param CartCouponOnCheckEvent $event Event
      *
      * @throws CouponRulesNotValidateException
      */
-    public function checkCoupon(CartCouponOnApplyEvent $event)
+    public function checkCoupon(CartCouponOnCheckEvent $event)
     {
         $isValid = $this
             ->cartCouponRuleManager

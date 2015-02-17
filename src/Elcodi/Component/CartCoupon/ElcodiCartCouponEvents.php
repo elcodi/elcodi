@@ -23,6 +23,14 @@ namespace Elcodi\Component\CartCoupon;
 final class ElcodiCartCouponEvents
 {
     /**
+     * This event is dispatched while checking if a Coupon applies to a Cart
+     *
+     * event.name : cart_coupon.oncheck
+     * event.class : CartCouponOnCheckEvent
+     */
+    const CART_COUPON_ONCHECK = 'cart_coupon.oncheck';
+
+    /**
      * This event is dispatched each time a coupon is applied into a Cart
      *
      * event.name : cart_coupon.onapply

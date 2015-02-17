@@ -21,6 +21,7 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\CartCoupon\ElcodiCartCouponEvents;
 use Elcodi\Component\CartCoupon\Entity\Interfaces\CartCouponInterface;
 use Elcodi\Component\CartCoupon\Event\CartCouponOnApplyEvent;
+use Elcodi\Component\CartCoupon\Event\CartCouponOnCheckEvent;
 use Elcodi\Component\CartCoupon\Event\CartCouponOnRejectedEvent;
 use Elcodi\Component\CartCoupon\Event\CartCouponOnRemoveEvent;
 use Elcodi\Component\Core\EventDispatcher\Abstracts\AbstractEventDispatcher;
@@ -31,6 +32,25 @@ use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
  */
 class CartCouponEventDispatcher extends AbstractEventDispatcher
 {
+    /**
+     * Dispatch event to check a coupon applies to a Cart
+     *
+     * @param CartInterface   $cart   Cart where the coupon should apply
+     * @param CouponInterface $coupon Coupon to be checked
+     *
+     * @return $this Self object
+     */
+    public function dispatchCartCouponOnCheckEvent(
+        CartInterface $cart,
+        CouponInterface $coupon
+    ) {
+        $event = new CartCouponOnCheckEvent($cart, $coupon);
+        $this->eventDispatcher->dispatch(
+            ElcodiCartCouponEvents::CART_COUPON_ONCHECK,
+            $event
+        );
+    }
+
     /**
      * Dispatch event just before a coupon is applied into a Cart
      *

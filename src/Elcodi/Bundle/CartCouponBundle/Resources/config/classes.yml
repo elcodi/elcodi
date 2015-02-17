@@ -9,7 +9,8 @@ parameters:
     #
     # Event Listeners
     #
-    elcodi.event_listener.cart_coupon.refresh_cart.class: Elcodi\Component\CartCoupon\EventListener\CartEventListener
+    elcodi.event_listener.cart_coupon.refresh_coupons.class: Elcodi\Component\CartCoupon\EventListener\RefreshCouponsListener
+    elcodi.event_listener.cart_coupon.coupon_checker.class: Elcodi\Component\CartCoupon\EventListener\CheckCouponListener
     elcodi.event_listener.cart_coupon.check_minimum_price.class: Elcodi\Component\CartCoupon\EventListener\MinimumPriceCouponEventListener
     elcodi.event_listener.cart_coupon.convert_to_order.class: Elcodi\Component\CartCoupon\EventListener\ConvertToOrderCouponsListener
     elcodi.event_listener.cart_coupon.cart_coupon_manager.class: Elcodi\Component\CartCoupon\EventListener\CartCouponManagerListener
@@ -17,6 +18,7 @@ parameters:
     elcodi.event_listener.cart_coupon.order_coupon_manager.class: Elcodi\Component\CartCoupon\EventListener\OrderCouponManagerListener
     elcodi.event_listener.cart_coupon.automatic_coupons.class: Elcodi\Component\CartCoupon\EventListener\AutomaticCouponApplicatorListener
     elcodi.event_listener.cart_coupon.avoid_coupon_duplicates.class: Elcodi\Component\CartCoupon\EventListener\AvoidDuplicatesListener
+    elcodi.event_listener.cart_coupon.cart_coupon_checker.class: Elcodi\Component\CartCoupon\EventListener\CheckCartCouponListener
 
     #
     # Services
