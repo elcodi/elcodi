@@ -1,5 +1,5 @@
 {
-    "name": "elcodi/Zone-bundle",
+    "name": "elcodi/zone-bundle",
     "description": "Elcodi Zone Bundle",
     "keywords": [
         "elcodi",
@@ -40,7 +40,8 @@
         "mmoreram/simple-doctrine-mapping": "~0.1",
 
         "elcodi/core-bundle": "~0.4.0",
-        "elcodi/Zone": "~0.4.0"
+        "elcodi/geo-bundle": "~0.4.0",
+        "elcodi/zone": "~0.4.0"
     },
     "require-dev": {
         "elcodi/test-common-bundle": "~0.4.0",

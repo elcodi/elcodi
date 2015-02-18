@@ -1,5 +1,5 @@
 {
-    "name": "elcodi/Zone",
+    "name": "elcodi/zone",
     "description": "Elcodi Zone Component",
     "keywords": [
         "elcodi",
@@ -33,7 +33,10 @@
     "require": {
         "php": ">=5.4",
         "doctrine/common": "~2.4",
-        "doctrine/orm": "~2.4"
+        "doctrine/orm": "~2.4",
+
+        "elcodi/core": "~0.4.0",
+        "elcodi/geo": "~0.4.0"
     },
     "autoload": {
         "psr-4": {
