@@ -11,6 +11,27 @@ elcodi_configuration:
             can_be_empty: false
             reference: elcodi.core.bamboo.store_name
 
+        store_leitmotiv:
+            key: leitmotiv
+            name: Store leitmotiv
+            namespace: store
+            type: string
+            can_be_empty: true
+
+        store_phone:
+            key: phone
+            name: Store phone
+            namespace: store
+            type: string
+            can_be_empty: true
+
+        store_email:
+            key: email
+            name: Store email
+            namespace: store
+            type: string
+            can_be_empty: true
+
         store_tracker:
             key: tracker
             name: Store tracker
