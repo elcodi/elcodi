@@ -5,7 +5,7 @@ services:
     #
     elcodi.location_populator:
         class: %elcodi.location_populator.geoname.class%
-        syntatic: true
+        synthetic: true
 
     elcodi.location_populator.geoname:
         class: %elcodi.location_populator.geoname.class%
