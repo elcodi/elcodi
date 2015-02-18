@@ -40,16 +40,16 @@ Elcodi\Component\Shipping\Entity\Abstracts\AbstractCarrierBaseRange:
                 referencedColumnName: id
                 nullable: false
         fromZone:
-            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\ZoneInterface
+            targetEntity: Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface
             joinColumn:
                 name: from_zone_code
-                referencedColumnName: code
+                referencedColumnName: id
                 nullable: false
         toZone:
-            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\ZoneInterface
+            targetEntity: Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface
             joinColumn:
                 name: to_zone_code
-                referencedColumnName: code
+                referencedColumnName: id
                 nullable: false
         priceCurrency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface

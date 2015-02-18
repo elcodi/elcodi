@@ -39,41 +39,6 @@ class Configuration extends AbstractConfiguration
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->append($this->addMappingNode(
-                            'country',
-                            'Elcodi\Component\Geo\Entity\Country',
-                            '@ElcodiGeoBundle/Resources/config/doctrine/Country.orm.yml',
-                            'default',
-                            true
-                        ))
-                        ->append($this->addMappingNode(
-                            'state',
-                            'Elcodi\Component\Geo\Entity\State',
-                            '@ElcodiGeoBundle/Resources/config/doctrine/State.orm.yml',
-                            'default',
-                            true
-                        ))
-                        ->append($this->addMappingNode(
-                            'province',
-                            'Elcodi\Component\Geo\Entity\Province',
-                            '@ElcodiGeoBundle/Resources/config/doctrine/Province.orm.yml',
-                            'default',
-                            true
-                        ))
-                        ->append($this->addMappingNode(
-                            'city',
-                            'Elcodi\Component\Geo\Entity\City',
-                            '@ElcodiGeoBundle/Resources/config/doctrine/City.orm.yml',
-                            'default',
-                            true
-                        ))
-                        ->append($this->addMappingNode(
-                            'postal_code',
-                            'Elcodi\Component\Geo\Entity\PostalCode',
-                            '@ElcodiGeoBundle/Resources/config/doctrine/PostalCode.orm.yml',
-                            'default',
-                            true
-                        ))
-                        ->append($this->addMappingNode(
                             'address',
                             'Elcodi\Component\Geo\Entity\Address',
                             '@ElcodiGeoBundle/Resources/config/doctrine/Address.orm.yml',
@@ -81,63 +46,19 @@ class Configuration extends AbstractConfiguration
                             true
                         ))
                         ->append($this->addMappingNode(
-                            'zone',
-                            'Elcodi\Component\Geo\Entity\Zone',
-                            '@ElcodiGeoBundle/Resources/config/doctrine/Zone.orm.yml',
-                            'default',
-                            true
-                        ))
-                        ->append($this->addMappingNode(
-                            'zone_member',
-                            'Elcodi\Component\Geo\Entity\ZoneMember',
-                            '@ElcodiGeoBundle/Resources/config/doctrine/ZoneMember.orm.yml',
-                            'default',
-                            true
-                        ))
-                        ->append($this->addMappingNode(
-                            'zone_country_member',
-                            'Elcodi\Component\Geo\Entity\ZoneCountryMember',
-                            '@ElcodiGeoBundle/Resources/config/doctrine/ZoneCountryMember.orm.yml',
-                            'default',
-                            true
-                        ))
-                        ->append($this->addMappingNode(
-                            'zone_state_member',
-                            'Elcodi\Component\Geo\Entity\ZoneStateMember',
-                            '@ElcodiGeoBundle/Resources/config/doctrine/ZoneStateMember.orm.yml',
-                            'default',
-                            true
-                        ))
-                        ->append($this->addMappingNode(
-                            'zone_province_member',
-                            'Elcodi\Component\Geo\Entity\ZoneProvinceMember',
-                            '@ElcodiGeoBundle/Resources/config/doctrine/ZoneProvinceMember.orm.yml',
-                            'default',
-                            true
-                        ))
-                        ->append($this->addMappingNode(
-                            'zone_city_member',
-                            'Elcodi\Component\Geo\Entity\ZoneCityMember',
-                            '@ElcodiGeoBundle/Resources/config/doctrine/ZoneCityMember.orm.yml',
-                            'default',
-                            true
-                        ))
-                        ->append($this->addMappingNode(
-                            'zone_postal_code_member',
-                            'Elcodi\Component\Geo\Entity\ZonePostalCodeMember',
-                            '@ElcodiGeoBundle/Resources/config/doctrine/ZonePostalCodeMember.orm.yml',
+                            'location',
+                            'Elcodi\Component\Geo\Entity\Location',
+                            '@ElcodiGeoBundle/Resources/config/doctrine/Location.orm.yml',
                             'default',
                             true
                         ))
                     ->end()
                 ->end()
-                ->arrayNode('populator')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->scalarNode('client')
-                            ->defaultValue('elcodi.geo.geodata_populator_adapter')
-                        ->end()
-                    ->end()
+                ->scalarNode('location_populator')
+                    ->defaultValue('elcodi.location_populator.geoname')
+                ->end()
+                ->scalarNode('location_provider')
+                    ->defaultValue('elcodi.location_provider.service')
                 ->end()
             ->end();
     }

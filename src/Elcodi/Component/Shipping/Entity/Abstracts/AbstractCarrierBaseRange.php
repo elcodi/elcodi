@@ -21,9 +21,9 @@ use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
-use Elcodi\Component\Geo\Entity\Interfaces\ZoneInterface;
 use Elcodi\Component\Shipping\Entity\Interfaces\CarrierBaseRangeInterface;
 use Elcodi\Component\Shipping\Entity\Interfaces\CarrierInterface;
+use Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface;
 
 /**
  * Class AbstractCarrierBaseRange

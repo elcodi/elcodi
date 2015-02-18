@@ -19,7 +19,7 @@ namespace Elcodi\Component\Shipping\Entity\Interfaces;
 
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
-use Elcodi\Component\Geo\Entity\Interfaces\ZoneInterface;
+use Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface;
 
 /**
  * Interface CarrierBaseRangeInterface

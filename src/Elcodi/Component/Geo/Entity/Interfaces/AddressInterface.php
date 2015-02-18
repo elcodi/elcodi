@@ -172,32 +172,32 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
     /**
      * Sets City
      *
-     * @param CityInterface $city City
+     * @param string $city City
      *
      * @return $this Self object
      */
-    public function setCity(CityInterface $city);
+    public function setCity($city);
 
     /**
      * Get City
      *
-     * @return CityInterface City
+     * @return string City
      */
     public function getCity();
 
     /**
      * Sets Postalcode
      *
-     * @param PostalCodeInterface $postalCode Postalcode
+     * @param string $postalCode Postalcode
      *
      * @return $this Self object
      */
-    public function setPostalcode(PostalCodeInterface $postalCode);
+    public function setPostalcode($postalCode);
 
     /**
      * Get Postalcode
      *
-     * @return PostalCodeInterface Postalcode
+     * @return string Postalcode
      */
     public function getPostalcode();
 }

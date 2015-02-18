@@ -1,0 +1,45 @@
+Elcodi\Component\Geo\Entity\Location:
+    type: entity
+    repositoryClass: Elcodi\Component\Geo\Repository\LocationRepository
+    table: location
+    id:
+        id:
+            column: id
+            type: string
+            length: 255
+
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        code:
+            column: code
+            type: string
+            length: 255
+            nullable: false
+        type:
+            column: type
+            type: string
+            length: 255
+            nullable: false
+
+    manyToMany:
+        parents:
+            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\LocationInterface
+            inversedBy: children
+            joinTable:
+                name: location_inheritance
+                joinColumns:
+                    parent_id:
+                        referencedColumnName: id
+                        onDelete: cascade
+                inverseJoinColumns:
+                    children_id:
+                        referencedColumnName: id
+                        onDelete: cascade
+        children:
+            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\LocationInterface
+            mappedBy: parents
+            cascade: ["persist"]

@@ -3,50 +3,29 @@ services:
     #
     # Services
     #
-    elcodi.core.geo.populator.geo_populator:
-        class: %elcodi.core.geo.populator.geo_populator.class%
-        lazy: true
+    elcodi.location_provider.service:
+        class: %elcodi.location_provider.service.class%
         arguments:
-            geo_populator_adapter: @elcodi.geo.populator_adapter
-            country_object_manager: @elcodi.object_manager.country
+            location_repository: @elcodi.repository.location
+            location_to_location_data_transformer: @elcodi.transformer.location_to_location_data
 
-    elcodi.geo_populator:
-        alias: elcodi.core.geo.populator.geo_populator
-
-    elcodi.core.geo.builder.geo_builder:
-        class: %elcodi.core.geo.builder.geo_builder.class%
+    elcodi.location_provider.api:
+        class: %elcodi.location_provider.api.class%
         arguments:
-            country_factory: @elcodi.factory.country
-            country_state: @elcodi.factory.state
-            country_province: @elcodi.factory.province
-            country_city: @elcodi.factory.city
-            country_postal_code: @elcodi.factory.postal_code
+            location_data_factory: @elcodi.factory.location_data
+            location_api_urls: @elcodi.location_api_urls
 
-    elcodi.geo_builder:
-        alias: elcodi.core.geo.builder.geo_builder
-
-    elcodi.core.geo.service.zone_manager:
-        class: %elcodi.core.geo.service.zone_manager.class%
+    elcodi.location_api_urls:
+        class: %elcodi.location_api_urls.class%
         arguments:
-            zone_object_manager: @elcodi.object_manager.zone
-            zone_matcher: @elcodi.zone_matcher
-            country_namespace: %elcodi.core.geo.entity.zone_country_member.class%
-            state_namespace: %elcodi.core.geo.entity.zone_state_member.class%
-            province_namespace: %elcodi.core.geo.entity.zone_province_member.class%
-            city_namespace: %elcodi.core.geo.entity.zone_city_member.class%
-            postal_code_namespace: %elcodi.core.geo.entity.zone_postal_code_member.class%
+            - %elcodi.route.location_api.host%%elcodi.route.location_api.prefix%/%elcodi.route.location_api.get_root_locations%
+            - %elcodi.route.location_api.host%%elcodi.route.location_api.prefix%/%elcodi.route.location_api.get_children%
+            - %elcodi.route.location_api.host%%elcodi.route.location_api.prefix%/%elcodi.route.location_api.get_parents%
+            - %elcodi.route.location_api.host%%elcodi.route.location_api.prefix%/%elcodi.route.location_api.get_location%
+            - %elcodi.route.location_api.host%%elcodi.route.location_api.prefix%/%elcodi.route.location_api.get_hierarchy%
+            - %elcodi.route.location_api.host%%elcodi.route.location_api.prefix%/%elcodi.route.location_api.in%
 
-    elcodi.zone_manager:
-        alias: elcodi.core.geo.service.zone_manager
-
-    elcodi.core.geo.service.zone_matcher:
-        class: %elcodi.core.geo.service.zone_matcher.class%
-
-    elcodi.zone_matcher:
-        alias: elcodi.core.geo.service.zone_matcher
-
-    elcodi.core.geo.service.zone_finder:
-        class: %elcodi.core.geo.service.zone_finder.class%
-
-    elcodi.zone_finder:
-        alias: elcodi.core.geo.service.zone_finder
+    elcodi.location_builder:
+        class: %elcodi.location_builder.class%
+        arguments:
+            location_factory: @elcodi.factory.location

@@ -40,7 +40,7 @@ class AddressData extends AbstractFixture implements DependentFixtureInterface
         $addressFactory = $this->getFactory('address');
         $addressObjectManager = $this->getObjectManager('address');
 
-        $addressBarcelona = $addressFactory
+        $addressSantCeloni = $addressFactory
             ->create()
             ->setName('Some address')
             ->setRecipientName('user name')
@@ -50,12 +50,12 @@ class AddressData extends AbstractFixture implements DependentFixtureInterface
             ->setPhone('123-456789')
             ->setMobile('000-123456')
             ->setComments('Some comments')
-            ->setCity($this->getReference('city-barcelona'))
-            ->setPostalcode($this->getReference('postalcode-08021'))
+            ->setCity($this->getReference('location-sant-celoni')->getId())
+            ->setPostalcode('08021')
             ->setEnabled(true);
 
-        $addressObjectManager->persist($addressBarcelona);
-        $this->addReference('address-barcelona', $addressBarcelona);
+        $addressObjectManager->persist($addressSantCeloni);
+        $this->addReference('address-sant-celoni', $addressSantCeloni);
 
         $addressViladecavalls = $addressFactory
             ->create()
@@ -67,15 +67,15 @@ class AddressData extends AbstractFixture implements DependentFixtureInterface
             ->setPhone('123-456789')
             ->setMobile('000-123456')
             ->setComments('Some other comments')
-            ->setCity($this->getReference('city-viladecavalls'))
-            ->setPostalcode($this->getReference('postalcode-08232'))
+            ->setCity($this->getReference('location-viladecavalls')->getId())
+            ->setPostalcode('08232')
             ->setEnabled(true);
 
         $addressObjectManager->persist($addressViladecavalls);
         $this->addReference('address-viladecavalls', $addressViladecavalls);
 
         $addressObjectManager->flush([
-            $addressBarcelona,
+            $addressSantCeloni,
             $addressViladecavalls,
         ]);
     }
@@ -89,7 +89,7 @@ class AddressData extends AbstractFixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            'Elcodi\Bundle\GeoBundle\DataFixtures\ORM\PostalcodeData',
+            'Elcodi\Bundle\GeoBundle\DataFixtures\ORM\LocationData',
         ];
     }
 }

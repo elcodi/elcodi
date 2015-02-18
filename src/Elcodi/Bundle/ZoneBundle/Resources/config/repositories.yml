@@ -1,0 +1,12 @@
+services:
+
+    #
+    # Repositories
+    #
+
+    #
+    # Repository for Zone entities
+    #
+    elcodi.repository.zone:
+        parent: elcodi.abstract_repository
+        arguments: [ %elcodi.entity.zone.class% ]

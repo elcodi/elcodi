@@ -20,7 +20,6 @@ namespace Elcodi\Component\Shipping\Provider;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
-use Elcodi\Component\Geo\Services\ZoneMatcher;
 use Elcodi\Component\Shipping\Entity\Interfaces\CarrierBaseRangeInterface;
 use Elcodi\Component\Shipping\Entity\Interfaces\CarrierInterface;
 use Elcodi\Component\Shipping\Entity\Interfaces\CarrierPriceRangeInterface;
@@ -28,6 +27,7 @@ use Elcodi\Component\Shipping\Entity\Interfaces\CarrierWeightRangeInterface;
 use Elcodi\Component\Shipping\Entity\Interfaces\WarehouseInterface;
 use Elcodi\Component\Shipping\Repository\CarrierRepository;
 use Elcodi\Component\Shipping\Repository\WarehouseRepository;
+use Elcodi\Component\Zone\Services\ZoneMatcher;
 
 /**
  * Class CarrierProvider
@@ -257,14 +257,14 @@ class CarrierProvider
             $this
                 ->zoneMatcher
                 ->isAddressContainedInZone(
-                    $carrierRange->getFromZone(),
-                    $warehouseAddress
+                    $warehouseAddress,
+                    $carrierRange->getFromZone()
                 ) &&
             $this
                 ->zoneMatcher
                 ->isAddressContainedInZone(
-                    $carrierRange->getToZone(),
-                    $deliveryAddress
+                    $deliveryAddress,
+                    $carrierRange->getToZone()
                 );
     }
 }

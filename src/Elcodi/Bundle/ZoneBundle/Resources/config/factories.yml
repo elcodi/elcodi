@@ -1,0 +1,13 @@
+services:
+
+    #
+    # Factories
+    #
+
+    #
+    # Factory for Zone entities
+    #
+    elcodi.factory.zone:
+        class: %elcodi.factory.zone.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.entity.zone.class%"]]

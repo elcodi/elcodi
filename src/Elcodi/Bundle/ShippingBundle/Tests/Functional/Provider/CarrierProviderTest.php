@@ -52,8 +52,7 @@ class CarrierProviderTest extends AbstractProviderTest
         ];
     }
 
-    /**
-     * Returns the callable name of the service
+    /**     * Returns the callable name of the service
      *
      * @return string[] service name
      */

@@ -23,11 +23,11 @@ use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
-use Elcodi\Component\Geo\Services\ZoneMatcher;
 use Elcodi\Component\Shipping\Entity\Interfaces\CarrierInterface;
 use Elcodi\Component\Shipping\Entity\Interfaces\CarrierWeightRangeInterface;
 use Elcodi\Component\Shipping\Repository\CarrierRepository;
 use Elcodi\Component\Shipping\Repository\WarehouseRepository;
+use Elcodi\Component\Zone\Services\ZoneMatcher;
 
 /**
  * Class CarrierProviderTest
@@ -85,7 +85,7 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
         $this->carrierRepository = $this->getMock('Elcodi\Component\Shipping\Repository\CarrierRepository', [], [], '', false);
         $this->currencyConverter = $this->getMock('Elcodi\Component\Currency\Services\CurrencyConverter', [], [], '', false);
         $this->warehouseRepository = $this->getMock('Elcodi\Component\Shipping\Repository\WarehouseRepository', [], [], '', false);
-        $this->zoneMatcher = $this->getMock('Elcodi\Component\Geo\Services\ZoneMatcher', [], [], '', false);
+        $this->zoneMatcher = $this->getMock('Elcodi\Component\Zone\Services\ZoneMatcher', [], [], '', false);
 
         $this
             ->currencyConverter
@@ -571,12 +571,12 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
         $carrierRange
             ->expects($this->any())
             ->method('getFromZone')
-            ->will($this->returnValue($this->getMock('Elcodi\Component\Geo\Entity\Interfaces\ZoneInterface')));
+            ->will($this->returnValue($this->getMock('Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface')));
 
         $carrierRange
             ->expects($this->any())
             ->method('getToZone')
-            ->will($this->returnValue($this->getMock('Elcodi\Component\Geo\Entity\Interfaces\ZoneInterface')));
+            ->will($this->returnValue($this->getMock('Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface')));
 
         $this
             ->order

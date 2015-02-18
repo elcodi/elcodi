@@ -22,6 +22,7 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
+use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
  * Trait ContainerAccessorTrait
@@ -75,6 +76,20 @@ trait ContainerAccessorTrait
         return $this
             ->container
             ->get('elcodi.factory.'.$entityName);
+    }
+
+    /**
+     * Get director given its its entity name
+     *
+     * @param string $entityName Entity name
+     *
+     * @return ObjectDirector Director
+     */
+    public function getDirector($entityName)
+    {
+        return $this
+            ->container
+            ->get('elcodi.director.'.$entityName);
     }
 
     /**

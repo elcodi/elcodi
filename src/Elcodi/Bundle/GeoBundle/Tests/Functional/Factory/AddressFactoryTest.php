@@ -41,9 +41,6 @@ class AddressFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.core.geo.factory.address',
-            'elcodi.factory.address',
-        ];
+        return ['elcodi.factory.address'];
     }
 }

@@ -20,8 +20,6 @@ namespace Elcodi\Component\Geo\Entity;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
-use Elcodi\Component\Geo\Entity\Interfaces\CityInterface;
-use Elcodi\Component\Geo\Entity\Interfaces\PostalCodeInterface;
 
 /**
  * Address
@@ -94,14 +92,14 @@ class Address implements AddressInterface
     protected $comments;
 
     /**
-     * @var CityInterface
+     * @var string
      *
      * City
      */
     protected $city;
 
     /**
-     * @var PostalCodeInterface
+     * @var string
      *
      * Postalcode
      */
@@ -326,11 +324,11 @@ class Address implements AddressInterface
     /**
      * Sets City
      *
-     * @param CityInterface $city City
+     * @param string $city City
      *
      * @return $this Self object
      */
-    public function setCity(CityInterface $city)
+    public function setCity($city)
     {
         $this->city = $city;
 
@@ -340,7 +338,7 @@ class Address implements AddressInterface
     /**
      * Get City
      *
-     * @return CityInterface City
+     * @return string City
      */
     public function getCity()
     {
@@ -350,11 +348,11 @@ class Address implements AddressInterface
     /**
      * Sets Postalcode
      *
-     * @param PostalCodeInterface $postalCode Postalcode
+     * @param string $postalCode Postalcode
      *
      * @return $this Self object
      */
-    public function setPostalcode(PostalCodeInterface $postalCode)
+    public function setPostalcode($postalCode)
     {
         $this->postalCode = $postalCode;
 
@@ -364,7 +362,7 @@ class Address implements AddressInterface
     /**
      * Get Postalcode
      *
-     * @return PostalCodeInterface Postalcode
+     * @return string Postalcode
      */
     public function getPostalcode()
     {
