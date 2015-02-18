@@ -17,6 +17,11 @@ services:
             - { name: kernel.event_listener, event: cart.onload, method: saveCart, priority: 0 }
             - { name: kernel.event_listener, event: cart.onload, method: loadCartQuantities, priority: 16 }
 
+    elcodi.event_listener.limit_negative_carts:
+        class: %elcodi.event_listener.limit_negative_carts.class%
+        tags:
+            - { name: kernel.event_listener, event: cart.onload, method: limitCartAmount, priority: -255 }
+
     elcodi.event_listener.order_creation:
         class: %elcodi.event_listener.order_creation.class%
         arguments:
