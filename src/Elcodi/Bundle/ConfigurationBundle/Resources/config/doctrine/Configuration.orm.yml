@@ -27,7 +27,7 @@ Elcodi\Component\Configuration\Entity\Configuration:
         value:
             column: value
             type: text
-            nullable: false
+            nullable: true
         createdAt:
             column: created_at
             type: datetime
