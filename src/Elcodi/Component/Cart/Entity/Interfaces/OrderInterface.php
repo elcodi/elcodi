@@ -210,7 +210,9 @@ interface OrderInterface extends PriceInterface, DimensionableInterface
      *
      * @return $this Self object
      */
-    public function setPaymentStateLineStack(StateLineStack $paymentStateLineStack);
+    public function setPaymentStateLineStack(
+        StateLineStack $paymentStateLineStack
+    );
 
     /**
      * Get ShippingStateLineStack
@@ -226,5 +228,23 @@ interface OrderInterface extends PriceInterface, DimensionableInterface
      *
      * @return $this Self object
      */
-    public function setShippingStateLineStack(StateLineStack $shippingStateLineStack);
+    public function setShippingStateLineStack(
+        StateLineStack $shippingStateLineStack
+    );
+
+    /**
+     * Get BillingAddress
+     *
+     * @return AddressInterface BillingAddress
+     */
+    public function getBillingAddress();
+
+    /**
+     * Sets BillingAddress
+     *
+     * @param AddressInterface $billingAddress BillingAddress
+     *
+     * @return $this Self object
+     */
+    public function setBillingAddress($billingAddress);
 }

@@ -132,6 +132,13 @@ class Order implements OrderInterface
     protected $shippingStateLines;
 
     /**
+     * @var AddressInterface
+     *
+     * billing address
+     */
+    protected $billingAddress;
+
+    /**
      * Get Id
      *
      * @return int Id
@@ -290,7 +297,7 @@ class Order implements OrderInterface
      */
     public function setCouponAmount(MoneyInterface $amount)
     {
-        $this->couponAmount = $amount->getAmount();
+        $this->couponAmount   = $amount->getAmount();
         $this->couponCurrency = $amount->getCurrency();
 
         return $this;
@@ -377,9 +384,10 @@ class Order implements OrderInterface
      *
      * @return $this Self object
      */
-    public function setPaymentStateLineStack(StateLineStack $paymentStateLineStack)
-    {
-        $this->paymentStateLines = $paymentStateLineStack->getStateLines();
+    public function setPaymentStateLineStack(
+        StateLineStack $paymentStateLineStack
+    ) {
+        $this->paymentStateLines    = $paymentStateLineStack->getStateLines();
         $this->paymentLastStateLine = $paymentStateLineStack->getLastStateLine();
 
         return $this;
@@ -405,10 +413,35 @@ class Order implements OrderInterface
      *
      * @return $this Self object
      */
-    public function setShippingStateLineStack(StateLineStack $shippingStateLineStack)
-    {
-        $this->shippingStateLines = $shippingStateLineStack->getStateLines();
+    public function setShippingStateLineStack(
+        StateLineStack $shippingStateLineStack
+    ) {
+        $this->shippingStateLines    = $shippingStateLineStack->getStateLines();
         $this->shippingLastStateLine = $shippingStateLineStack->getLastStateLine();
+
+        return $this;
+    }
+
+    /**
+     * Get BillingAddress
+     *
+     * @return AddressInterface BillingAddress
+     */
+    public function getBillingAddress()
+    {
+        return $this->billingAddress;
+    }
+
+    /**
+     * Sets BillingAddress
+     *
+     * @param AddressInterface $billingAddress BillingAddress
+     *
+     * @return $this Self object
+     */
+    public function setBillingAddress($billingAddress)
+    {
+        $this->billingAddress = $billingAddress;
 
         return $this;
     }

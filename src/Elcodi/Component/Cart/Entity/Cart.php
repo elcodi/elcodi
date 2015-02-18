@@ -25,6 +25,7 @@ use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
+use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 
 /**
  * Cart
@@ -105,6 +106,21 @@ class Cart implements CartInterface
      * by summing CartLine::$amount
      */
     protected $amount;
+
+    /**
+     * @var AddressInterface
+     *
+     * delivery address
+     */
+    protected $deliveryAddress;
+
+    /**
+     * @var AddressInterface
+     *
+     * billing address
+     */
+    protected $billingAddress;
+
 
     /**
      * Get Id
@@ -431,5 +447,53 @@ class Cart implements CartInterface
             },
             0
         );
+    }
+
+    /**
+     * Get DeliveryAddress
+     *
+     * @return AddressInterface DeliveryAddress
+     */
+    public function getDeliveryAddress()
+    {
+        return $this->deliveryAddress;
+    }
+
+    /**
+     * Sets DeliveryAddress
+     *
+     * @param AddressInterface $deliveryAddress DeliveryAddress
+     *
+     * @return $this Self object
+     */
+    public function setDeliveryAddress($deliveryAddress)
+    {
+        $this->deliveryAddress = $deliveryAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get BillingAddress
+     *
+     * @return AddressInterface BillingAddress
+     */
+    public function getBillingAddress()
+    {
+        return $this->billingAddress;
+    }
+
+    /**
+     * Sets BillingAddress
+     *
+     * @param AddressInterface $billingAddress BillingAddress
+     *
+     * @return $this Self object
+     */
+    public function setBillingAddress($billingAddress)
+    {
+        $this->billingAddress = $billingAddress;
+
+        return $this;
     }
 }
