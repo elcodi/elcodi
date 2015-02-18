@@ -3,9 +3,6 @@ services:
     #
     # Event Dispatchers
     #
-    elcodi.core.newsletter.event_dispatcher.newsletter:
-        class: %elcodi.core.newsletter.event_dispatcher.newsletter.class%
+    elcodi.event_dispatcher.newsletter:
+        class: %elcodi.event_dispatcher.newsletter.class%
         parent: elcodi.core.core.event_dispatcher.abstract
-
-    elcodi.newsletter_event_dispatcher:
-        alias: elcodi.core.newsletter.event_dispatcher.newsletter

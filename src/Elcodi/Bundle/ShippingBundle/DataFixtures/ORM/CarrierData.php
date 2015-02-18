@@ -43,12 +43,12 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
          * @var CarrierPriceRangeFactory  $carrierPriceRangeFactory
          * @var CarrierWeightRangeFactory $carrierWeightRangeFactory
          */
-        $carrierFactory = $this->getFactory('carrier');
-        $carrierPriceRangeFactory = $this->getFactory('carrier_price_range');
-        $carrierWeightRangeFactory = $this->getFactory('carrier_weight_range');
-        $carrierObjectManager = $this->getObjectManager('carrier');
-        $carrierPriceRangeObjectManager = $this->getObjectManager('carrier_price_range');
-        $carrierWeightRangeObjectManager = $this->getObjectManager('carrier_weight_range');
+        $carrierFactory = $this->getFactory('shipping_carrier');
+        $carrierPriceRangeFactory = $this->getFactory('shipping_carrier_price_range');
+        $carrierWeightRangeFactory = $this->getFactory('shipping_carrier_weight_range');
+        $carrierObjectManager = $this->getObjectManager('shipping_carrier');
+        $carrierPriceRangeObjectManager = $this->getObjectManager('shipping_carrier_price_range');
+        $carrierWeightRangeObjectManager = $this->getObjectManager('shipping_carrier_weight_range');
 
         /**
          * @var CurrencyInterface $currencyEuro

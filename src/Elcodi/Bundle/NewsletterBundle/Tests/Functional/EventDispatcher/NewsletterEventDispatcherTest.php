@@ -32,8 +32,7 @@ class NewsletterEventDispatcherTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.newsletter.event_dispatcher.newsletter',
-            'elcodi.newsletter_event_dispatcher',
+            'elcodi.event_dispatcher.newsletter',
         ];
     }
 }

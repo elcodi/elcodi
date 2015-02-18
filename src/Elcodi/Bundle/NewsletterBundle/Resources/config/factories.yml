@@ -7,10 +7,7 @@ services:
     #
     # Factory for entity newsletter_subscription
     #
-    elcodi.core.newsletter.factory.newsletter_subscription:
-        class: %elcodi.core.newsletter.factory.newsletter_subscription.class%
+    elcodi.factory.newsletter_subscription:
+        class: %elcodi.factory.newsletter_subscription.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.newsletter.entity.newsletter_subscription.class%"]]
-
-    elcodi.factory.newsletter_subscription:
-        alias: elcodi.core.newsletter.factory.newsletter_subscription

@@ -3,7 +3,7 @@ services:
     #
     # Services
     #
-    elcodi.core.banner.service.banner_manager:
-        class: %elcodi.core.banner.service.banner_manager.class%
+    elcodi.manager.banner:
+        class: %elcodi.manager.banner.class%
         arguments:
             banner_repository: @elcodi.repository.banner

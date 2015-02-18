@@ -42,7 +42,6 @@ class ReferralRuleFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.referral_program.factory.referral_rule',
             'elcodi.factory.referral_rule',
         ];
     }

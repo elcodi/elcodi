@@ -32,8 +32,7 @@ class ImageEtagTransformerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.media.transformer.image_etag_transformer',
-            'elcodi.image_etag_transformer',
+            'elcodi.transformer.media_image_etag',
         ];
     }
 }

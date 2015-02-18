@@ -81,7 +81,7 @@ class ImageUploadRouterLoader implements LoaderInterface
 
         $routes = new RouteCollection();
         $routes->add($this->imageUploadControllerRouteName, new Route($this->imageUploadControllerRoute, array(
-            '_controller' => 'elcodi.core.media.controller.image_upload:uploadAction',
+            '_controller' => 'elcodi.controller.media_image_upload:uploadAction',
         )));
 
         $this->loaded = true;

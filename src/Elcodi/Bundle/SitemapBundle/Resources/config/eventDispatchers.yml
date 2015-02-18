@@ -3,9 +3,6 @@ services:
     #
     # Event Dispatchers
     #
-    elcodi.core.sitemap.event_dispatcher.sitemap:
-        class: %elcodi.core.sitemap.event_dispatcher.sitemap.class%
+    elcodi.event_dispatcher.sitemap:
+        class: %elcodi.event_dispatcher.sitemap.class%
         parent: elcodi.core.core.event_dispatcher.abstract
-
-    elcodi.sitemap_event_dispatcher:
-        alias: elcodi.core.sitemap.event_dispatcher.sitemap

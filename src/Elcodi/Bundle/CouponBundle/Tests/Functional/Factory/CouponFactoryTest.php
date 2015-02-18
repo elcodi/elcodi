@@ -63,7 +63,7 @@ class CouponFactoryTest extends WebTestCase
     public function testCreateCouponFactory()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.coupon.entity.coupon.class'),
+            $this->getParameter('elcodi.entity.coupon.class'),
             $this->get('elcodi.factory.coupon')->create()
         );
     }

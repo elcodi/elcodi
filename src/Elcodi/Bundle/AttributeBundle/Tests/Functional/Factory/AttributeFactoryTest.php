@@ -42,7 +42,6 @@ class AttributeFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.attribute.factory.attribute',
             'elcodi.factory.attribute',
         ];
     }

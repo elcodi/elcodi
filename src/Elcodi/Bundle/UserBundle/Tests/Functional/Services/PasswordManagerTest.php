@@ -31,6 +31,6 @@ class PasswordManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.password_manager'];
+        return ['elcodi.manager.password'];
     }
 }

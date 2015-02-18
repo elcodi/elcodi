@@ -7,10 +7,7 @@ services:
     #
     # Repository for entity translation
     #
-    elcodi.core.entity_translator.repository.entity_translation:
-        parent: elcodi.abstract_repository
-        class: %elcodi.core.entity_translator.repository.entity_translation.class%
-        arguments: [ %elcodi.core.entity_translator.entity.entity_translation.class% ]
-
     elcodi.repository.entity_translation:
-        alias: elcodi.core.entity_translator.repository.entity_translation
+        parent: elcodi.abstract_repository
+        class: %elcodi.repository.entity_translation.class%
+        arguments: [ %elcodi.core.entity_translator.entity.entity_translation.class% ]

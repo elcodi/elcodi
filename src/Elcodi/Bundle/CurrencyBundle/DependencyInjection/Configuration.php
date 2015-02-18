@@ -71,7 +71,7 @@ class Configuration extends AbstractConfiguration
                             ->defaultValue('USD')
                         ->end()
                         ->scalarNode('client')
-                            ->defaultValue('elcodi.currency_exchange_rates_provider_adapter.dummy')
+                            ->defaultValue('elcodi.adapter.currency_exchange_rate.dummy')
                         ->end()
                     ->end()
                     ->append($this->addOpenExchangeRatesParametersNode())

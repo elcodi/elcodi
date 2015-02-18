@@ -25,17 +25,14 @@ services:
     elcodi.entity_translation_provider:
         alias: elcodi.core.entity_translator.services.cached_entity_translation_provider
 
-    elcodi.core.entity_translator.services.entity_translator_builder:
-        class: %elcodi.core.entity_translator.services.entity_translator_builder.class%
+    elcodi.entity_translator_builder:
+        class: %elcodi.entity_translator_builder.class%
         arguments:
             translation_provider: @elcodi.entity_translation_provider
             translator_factory: @elcodi.core.entity_translator.factory.entity_translator
             configuration: %elcodi.core.entity_translator.configuration%
 
-    elcodi.core.entity_translator.services.entity_translator:
-        class: %elcodi.core.entity_translator.services.entity_translator.class%
-        factory_service: elcodi.core.entity_translator.services.entity_translator_builder
-        factory_method: compile
-
     elcodi.entity_translator:
-        alias: elcodi.core.entity_translator.services.entity_translator
+        class: %elcodi.entity_translator.class%
+        factory_service: elcodi.entity_translator_builder
+        factory_method: compile

@@ -13,7 +13,7 @@ parameters:
     #
     # Managers
     #
-    elcodi.rule_manager.class: Elcodi\Component\Rule\Services\RuleManager
+    elcodi.manager.rule.class: Elcodi\Component\Rule\Services\RuleManager
 
     #
     # ExpressionLanguage

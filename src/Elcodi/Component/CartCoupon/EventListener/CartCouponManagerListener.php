@@ -24,11 +24,11 @@ use Elcodi\Component\CartCoupon\Event\CartCouponOnRemoveEvent;
 use Elcodi\Component\CartCoupon\Factory\CartCouponFactory;
 
 /**
- * Class CartCouponEventListener
+ * Class CartCouponManagerListener
  *
  * These Event Listeners are
  */
-class CartCouponEventListener
+class CartCouponManagerListener
 {
     /**
      * @var ObjectManager
@@ -72,13 +72,19 @@ class CartCouponEventListener
          * We create a new instance of CartCoupon.
          * We also persist and flush relation
          */
-        $cartCoupon = $this->cartCouponFactory->create();
-        $cartCoupon
+        $cartCoupon = $this
+            ->cartCouponFactory
+            ->create()
             ->setCart($cart)
             ->setCoupon($coupon);
 
-        $this->cartCouponObjectManager->persist($cartCoupon);
-        $this->cartCouponObjectManager->flush();
+        $this
+            ->cartCouponObjectManager
+            ->persist($cartCoupon);
+
+        $this
+            ->cartCouponObjectManager
+            ->flush($cartCoupon);
 
         $event->setCartCoupon($cartCoupon);
     }
@@ -92,7 +98,12 @@ class CartCouponEventListener
     {
         $cartCoupon = $event->getCartCoupon();
 
-        $this->cartCouponObjectManager->remove($cartCoupon);
-        $this->cartCouponObjectManager->flush();
+        $this
+            ->cartCouponObjectManager
+            ->remove($cartCoupon);
+
+        $this
+            ->cartCouponObjectManager
+            ->flush($cartCoupon);
     }
 }

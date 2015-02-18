@@ -42,7 +42,6 @@ class TaxFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.tax.factory.tax',
             'elcodi.factory.tax',
         ];
     }

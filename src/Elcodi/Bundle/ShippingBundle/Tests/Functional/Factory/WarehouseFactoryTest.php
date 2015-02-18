@@ -42,8 +42,7 @@ class WarehouseFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.shipping.factory.warehouse',
-            'elcodi.factory.warehouse',
+            'elcodi.factory.shipping_warehouse',
         ];
     }
 }

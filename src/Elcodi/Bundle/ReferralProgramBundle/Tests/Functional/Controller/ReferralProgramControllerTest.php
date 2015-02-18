@@ -33,7 +33,7 @@ class ReferralProgramControllerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.referral_program.controller.referral_program',
+            'elcodi.controller.referral_program',
         ];
     }
 

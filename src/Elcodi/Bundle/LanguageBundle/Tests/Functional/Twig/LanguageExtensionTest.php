@@ -32,7 +32,7 @@ class LanguageExtensionTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.language.twig_extension.language_extension',
+            'elcodi.twig_extension.language',
         ];
     }
 
@@ -56,7 +56,7 @@ class LanguageExtensionTest extends WebTestCase
         $this->assertCount(
             5,
             $this
-                ->get('elcodi.core.language.twig_extension.language_extension')
+                ->get('elcodi.twig_extension.language')
                 ->getLanguages()
         );
     }

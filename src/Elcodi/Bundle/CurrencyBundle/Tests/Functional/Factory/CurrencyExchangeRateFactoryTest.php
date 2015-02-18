@@ -42,7 +42,6 @@ class CurrencyExchangeRateFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.currency.factory.currency_exchange_rate',
             'elcodi.factory.currency_exchange_rate',
         ];
     }

@@ -3,19 +3,19 @@ parameters:
     #
     # Factory
     #
-    elcodi.core.newsletter.factory.newsletter_subscription.class: Elcodi\Component\Newsletter\Factory\NewsletterSubscriptionFactory
+    elcodi.factory.newsletter_subscription.class: Elcodi\Component\Newsletter\Factory\NewsletterSubscriptionFactory
 
     #
     # Services
     #
-    elcodi.core.newsletter.service.newsletter_manager.class: Elcodi\Component\Newsletter\Services\NewsletterManager
+    elcodi.manager.newsletter.class: Elcodi\Component\Newsletter\Services\NewsletterManager
 
     #
     # Event Listeners
     #
-    elcodi.core.newsletter.event_listener.newsletter.class: Elcodi\Component\Newsletter\EventListener\NewsletterEventListener
+    elcodi.event_listener.newsletter.class: Elcodi\Component\Newsletter\EventListener\NewsletterEventListener
 
     #
     # Event Dispatchers
     #
-    elcodi.core.newsletter.event_dispatcher.newsletter.class: Elcodi\Component\Newsletter\EventDispatcher\NewsletterEventDispatcher
+    elcodi.event_dispatcher.newsletter.class: Elcodi\Component\Newsletter\EventDispatcher\NewsletterEventDispatcher

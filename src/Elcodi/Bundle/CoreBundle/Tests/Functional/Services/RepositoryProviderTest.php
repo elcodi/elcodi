@@ -31,6 +31,6 @@ class RepositoryProviderTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.repository_provider'];
+        return ['elcodi.provider.repository'];
     }
 }

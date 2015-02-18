@@ -3,18 +3,12 @@ services:
     #
     # Services
     #
-    elcodi.core.product.service.category_tree:
-        class: %elcodi.core.product.service.category_tree.class%
+    elcodi.provider.category_tree:
+        class: %elcodi.provider.category_tree.class%
         arguments:
             category_repository: @elcodi.repository.category
 
-    elcodi.category_tree:
-            alias:  elcodi.core.product.service.category_tree
-
-    elcodi.core.product.service.product_collection_provider:
-        class: %elcodi.core.product.service.product_collection_provider.class%
+    elcodi.provider.product_collection:
+        class: %elcodi.provider.product_collection.class%
         arguments:
             product_repository: @elcodi.repository.product
-
-    elcodi.product_collection_provider:
-        alias: elcodi.core.product.service.product_collection_provider

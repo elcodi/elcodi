@@ -8,16 +8,16 @@ services:
         factory_service: service_container
         factory_method: getParameterBag
 
-    elcodi.manager_provider:
-        class: %elcodi.manager_provider.class%
+    elcodi.provider.manager:
+        class: %elcodi.provider.manager.class%
         arguments:
             manager: @doctrine
             parameters_bag: @elcodi.container_parameters
 
-    elcodi.repository_provider:
-        class: %elcodi.repository_provider.class%
+    elcodi.provider.repository:
+        class: %elcodi.provider.repository.class%
         arguments:
-            manager_provider: @elcodi.manager_provider
+            manager_provider: @elcodi.provider.manager
             parameters_bag: @elcodi.container_parameters
 
     elcodi.mapping_provider:

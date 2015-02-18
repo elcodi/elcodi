@@ -460,9 +460,9 @@ class Coupon implements CouponInterface
      */
     public function makeUse()
     {
-        $this->used++;
+        ++$this->used;
 
-        if ($this->count <= $this->used) {
+        if ($this->count > 0 && $this->count <= $this->used) {
             $this->enabled = false;
         }
 

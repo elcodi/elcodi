@@ -42,7 +42,6 @@ class ManufacturerFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.product.factory.manufacturer',
             'elcodi.factory.manufacturer',
         ];
     }

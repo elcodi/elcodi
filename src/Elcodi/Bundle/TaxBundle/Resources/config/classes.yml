@@ -3,5 +3,5 @@ parameters:
     #
     # Factories
     #
-    elcodi.core.tax.factory.tax.class: Elcodi\Component\Tax\Factory\TaxFactory
-    elcodi.core.tax.factory.tax_group.class: Elcodi\Component\Tax\Factory\TaxGroupFactory
+    elcodi.factory.tax.class: Elcodi\Component\Tax\Factory\TaxFactory
+    elcodi.factory.tax_group.class: Elcodi\Component\Tax\Factory\TaxGroupFactory

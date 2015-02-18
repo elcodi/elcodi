@@ -3,8 +3,8 @@ services:
     #
     # Twig extensions
     #
-    elcodi.core.menu.twig_extension.print_route:
-        class: %elcodi.core.menu.twig_extension.print_route.class%
+    elcodi.twig_extension.menu_print_route:
+        class: %elcodi.twig_extension.menu_print_route.class%
         arguments:
             router: @router
         tags:

@@ -3,54 +3,44 @@ services:
     #
     # Providers
     #
-    elcodi.core.language.service.locale_provider:
-        class: %elcodi.core.language.service.locale_provider.class%
+    elcodi.provider.locale:
+        class: %elcodi.provider.locale.class%
         arguments:
             request_stack: @request_stack
             default_locale: %locale%
 
-    elcodi.locale_provider:
-        alias: elcodi.core.language.service.locale_provider
-
-    elcodi.locale_provider.locale:
+    elcodi.provider.locale.locale:
         class: %elcodi.core.language.entity.locale.class%
-        factory_service: elcodi.locale_provider
+        factory_service: elcodi.provider.locale
         factory_method: getLocale
         public: false
 
     #
     # Services
     #
-    elcodi.core.language.service.language_manager:
-        class: %elcodi.core.language.service.language_manager.class%
+    elcodi.manager.language:
+        class: %elcodi.manager.language.class%
         arguments:
             language_repository: @elcodi.repository.language
 
-    elcodi.language_manager:
-        alias: elcodi.core.language.service.language_manager
-
-
-    elcodi.core.language.service.locale_manager:
-        class: %elcodi.core.language.service.locale_manager.class%
+    elcodi.manager.locale:
+        class: %elcodi.manager.locale.class%
         arguments:
-            locale: @elcodi.locale_provider.locale
+            locale: @elcodi.provider.locale.locale
         calls:
             - [initialize, []]
-
-    elcodi.locale_manager:
-        alias: elcodi.core.language.service.locale_manager
 
     #
     # Environment values
     #
     elcodi.languages:
         class: Doctrine\Common\Collections\Collection
-        factory_service: elcodi.language_manager
+        factory_service: elcodi.manager.language
         factory_method: getLanguages
 
     elcodi.languages_iso:
         class: Doctrine\Common\Collections\Collection
-        factory_service: elcodi.language_manager
+        factory_service: elcodi.manager.language
         factory_method: getLanguagesIso
 
     elcodi.languages_iso_array:
@@ -60,10 +50,10 @@ services:
 
     elcodi.locale:
         class: %elcodi.core.language.entity.locale.class%
-        factory_service: elcodi.locale_manager
+        factory_service: elcodi.manager.locale
         factory_method: getLocale
 
     elcodi.locale_iso:
         class: stdClass
-        factory_service: elcodi.locale_manager
+        factory_service: elcodi.manager.locale
         factory_method: getLocaleIso

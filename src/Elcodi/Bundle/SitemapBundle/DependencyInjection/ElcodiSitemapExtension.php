@@ -179,7 +179,7 @@ class ElcodiSitemapExtension extends AbstractExtension
                 )
                 ->addArgument(new Reference($profile['render']))
                 ->addArgument(new Reference('elcodi.sitemap_profile.'.$profileName))
-                ->addArgument(new Reference('elcodi.sitemap_event_dispatcher'))
+                ->addArgument(new Reference('elcodi.event_dispatcher.sitemap'))
                 ->setPublic(true)
                 ->addTag('elcodi.sitemap_dumper');
         }

@@ -7,46 +7,34 @@ services:
     #
     # Factory for Product entities
     #
-    elcodi.core.product.factory.product:
-        class: %elcodi.core.product.factory.product.class%
+    elcodi.factory.product:
+        class: %elcodi.factory.product.class%
         parent: elcodi.core.currency.factory.abstract.purchasable
         calls:
             - [setEntityNamespace, ["%elcodi.core.product.entity.product.class%"]]
             - [setUseStock, [@=elcodi_config('product.use_stock')]]
 
-    elcodi.factory.product:
-        alias: elcodi.core.product.factory.product
-
     #
     # Factory for Variant entities
     #
-    elcodi.core.product.factory.product_variant:
-        class: %elcodi.core.product.factory.product_variant.class%
+    elcodi.factory.product_variant:
+        class: %elcodi.factory.product_variant.class%
         parent: elcodi.core.currency.factory.abstract.purchasable
         calls:
             - [setEntityNamespace, ["%elcodi.core.product.entity.product_variant.class%"]]
 
-    elcodi.factory.product_variant:
-        alias: elcodi.core.product.factory.product_variant
-
     #
     # Factory for Manufacturer entities
     #
-    elcodi.core.product.factory.manufacturer:
-        class: %elcodi.core.product.factory.manufacturer.class%
+    elcodi.factory.manufacturer:
+        class: %elcodi.factory.manufacturer.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.product.entity.manufacturer.class%"]]
-
-    elcodi.factory.manufacturer:
-        alias: elcodi.core.product.factory.manufacturer
 
     #
     # Factory for Category entities
     #
-    elcodi.core.product.factory.category:
-        class: %elcodi.core.product.factory.category.class%
+    elcodi.factory.category:
+        class: %elcodi.factory.category.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.product.entity.category.class%"]]
-
-    elcodi.factory.category:
-        alias: elcodi.core.product.factory.category

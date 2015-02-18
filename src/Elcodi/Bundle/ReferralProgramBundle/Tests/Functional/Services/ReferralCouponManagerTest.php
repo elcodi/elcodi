@@ -42,8 +42,7 @@ class ReferralCouponManagerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.referral_program.service.referral_coupon_manager',
-            'elcodi.referral_coupon_manager',
+            'elcodi.manager.referral_coupon',
         ];
     }
 
@@ -96,7 +95,7 @@ class ReferralCouponManagerTest extends WebTestCase
         $referralRule = $this->find('referral_rule', 2);
 
         $this
-            ->get('elcodi.referral_rule_manager')
+            ->get('elcodi.manager.referral_rule')
             ->enableReferralRule($referralRule);
 
         $invitations = new ArrayCollection();
@@ -107,7 +106,7 @@ class ReferralCouponManagerTest extends WebTestCase
         $invitations->add($invitation1);
 
         $referralProgramManager = $this
-            ->get('elcodi.referral_program_manager');
+            ->get('elcodi.manager.referral_program');
 
         $referralProgramManager->invite(
             $this->find('customer', 1),
@@ -135,7 +134,7 @@ class ReferralCouponManagerTest extends WebTestCase
         $referrer = $this->find('customer', 1);
 
         $referralHash = $this
-            ->get('elcodi.referral_hash_manager')
+            ->get('elcodi.manager.referral_hash')
             ->getReferralHashByCustomer($referrer);
         $hash = $referralHash->getHash();
 
@@ -160,7 +159,7 @@ class ReferralCouponManagerTest extends WebTestCase
         ));
 
         $referralCouponManager = $this
-            ->get('elcodi.referral_coupon_manager');
+            ->get('elcodi.manager.referral_coupon');
 
         $referralCouponManager
             ->checkCouponAssignment(
@@ -246,7 +245,7 @@ class ReferralCouponManagerTest extends WebTestCase
         $referralRule = $this->find('referral_rule', 4);
 
         $this
-            ->get('elcodi.referral_rule_manager')
+            ->get('elcodi.manager.referral_rule')
             ->enableReferralRule($referralRule);
 
         $this
@@ -263,7 +262,7 @@ class ReferralCouponManagerTest extends WebTestCase
         $invited = $this->find('customer', 2);
 
         $referralHash = $this
-            ->get('elcodi.referral_hash_manager')
+            ->get('elcodi.manager.referral_hash')
             ->getReferralHashByCustomer($referrer);
         $hash = $referralHash->getHash();
 
@@ -275,14 +274,14 @@ class ReferralCouponManagerTest extends WebTestCase
         $invitations->add($invitation1);
 
         $this
-            ->get('elcodi.referral_program_manager')
+            ->get('elcodi.manager.referral_program')
             ->invite($referrer, $invitations);
 
         /**
          * * Invited registers in site
          * * Referrer Customer receive coupons
          */
-        $referralCouponManager = $this->get('elcodi.referral_coupon_manager');
+        $referralCouponManager = $this->get('elcodi.manager.referral_coupon');
 
         $referralCouponManager->checkCouponAssignment(
             $invited,

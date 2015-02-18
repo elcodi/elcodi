@@ -3,10 +3,10 @@ parameters:
     #
     # Services
     #
-    elcodi.core.banner.service.banner_manager.class: Elcodi\Component\Banner\Services\BannerManager
+    elcodi.manager.banner.class: Elcodi\Component\Banner\Services\BannerManager
 
     #
     # Factories
     #
-    elcodi.core.banner.factory.banner.class: Elcodi\Component\Banner\Factory\BannerFactory
-    elcodi.core.banner.factory.banner_zone.class: Elcodi\Component\Banner\Factory\BannerZoneFactory
+    elcodi.factory.banner.class: Elcodi\Component\Banner\Factory\BannerFactory
+    elcodi.factory.banner_zone.class: Elcodi\Component\Banner\Factory\BannerZoneFactory

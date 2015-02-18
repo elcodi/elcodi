@@ -6,13 +6,13 @@ services:
     elcodi.core.currency.guzzle_client:
         class: GuzzleHttp\Client
 
-    elcodi.currency_exchange_rates_provider_adapter.open_exchange_rates:
-        class: %elcodi.currency_exchange_rates_provider_adapter.open_exchange_rates.class%
+    elcodi.adapter.currency_exchange_rate.open_exchange:
+        class: %elcodi.adapter.currency_exchange_rate.open_exchange.class%
         arguments:
             guzzle_client: @elcodi.core.currency.guzzle_client
             api_id: %elcodi.core.currency.rates_provider_api_id%
             end_point: %elcodi.core.currency.rates_provider_endpoint%
             base_currency: %elcodi.core.currency.rates_provider_currency_base%
 
-    elcodi.currency_exchange_rates_provider_adapter.dummy:
-        class: %elcodi.currency_exchange_rates_provider_adapter.dummy.class%
+    elcodi.adapter.currency_exchange_rate.dummy:
+        class: %elcodi.adapter.currency_exchange_rate.dummy.class%

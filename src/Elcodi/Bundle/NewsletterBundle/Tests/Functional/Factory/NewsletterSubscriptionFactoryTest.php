@@ -42,7 +42,6 @@ class NewsletterSubscriptionFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.newsletter.factory.newsletter_subscription',
             'elcodi.factory.newsletter_subscription',
         ];
     }

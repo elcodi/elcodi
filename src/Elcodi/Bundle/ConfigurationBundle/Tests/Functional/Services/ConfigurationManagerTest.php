@@ -49,7 +49,7 @@ class ConfigurationManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.configuration_manager'];
+        return ['elcodi.manager.configuration'];
     }
 
     /**
@@ -159,7 +159,7 @@ class ConfigurationManagerTest extends WebTestCase
             );
 
         $this
-            ->get('elcodi.configuration_manager')
+            ->get('elcodi.manager.configuration')
             ->set('my_parameter', 'my_new_value');
 
         $this
@@ -202,7 +202,7 @@ class ConfigurationManagerTest extends WebTestCase
             );
 
         $this
-            ->get('elcodi.configuration_manager')
+            ->get('elcodi.manager.configuration')
             ->set('my_immutable_parameter', 'immutable');
 
         $this
@@ -217,7 +217,7 @@ class ConfigurationManagerTest extends WebTestCase
             );
 
         $this
-            ->get('elcodi.configuration_manager')
+            ->get('elcodi.manager.configuration')
             ->set('my_immutable_parameter', 'non-immutable');
     }
 }

@@ -31,6 +31,6 @@ class ImageUploadRouterLoaderTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.core.media.routes.image_upload.loader'];
+        return ['elcodi.router.media_image_upload'];
     }
 }

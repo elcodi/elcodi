@@ -23,7 +23,6 @@ use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException;
 use Elcodi\Component\Coupon\Exception\CouponAppliedException;
-use Elcodi\Component\Coupon\Exception\CouponBelowMinimumPurchaseException;
 use Elcodi\Component\Coupon\Exception\CouponNotActiveException;
 use Elcodi\Component\Coupon\Factory\CouponFactory;
 
@@ -31,11 +30,6 @@ use Elcodi\Component\Coupon\Factory\CouponFactory;
  * Coupon manager service
  *
  * Manages all coupon actions
- *
- * Public methods:
- *
- * * checkCoupon(CouponInterface, $price)
- * * duplicateCoupon(CouponInterface)
  */
 class CouponManager
 {
@@ -125,6 +119,7 @@ class CouponManager
             ->setValidFrom($dateFrom)
             ->setValidTo($dateTo)
             ->setRule($coupon->getRule())
+            ->setEnforcement($coupon->getEnforcement())
             ->setEnabled(true);
 
         return $couponGenerated;
@@ -134,13 +129,12 @@ class CouponManager
      * Checks whether a coupon can be applied or not.
      *
      * @param CouponInterface $coupon Coupon to work with
-     * @param float           $price  Price
      *
      * @return boolean Coupon can be applied
      *
      * @throws AbstractCouponException
      */
-    protected function checkCoupon(CouponInterface $coupon, $price)
+    public function checkCoupon(CouponInterface $coupon)
     {
         if (!$this->IsActive($coupon)) {
             throw new CouponNotActiveException();
@@ -148,25 +142,6 @@ class CouponManager
 
         if (!$this->canBeUsed($coupon)) {
             throw new CouponAppliedException();
-        }
-
-        if (!$this->isApplicable($coupon)) {
-            throw new CouponBelowMinimumPurchaseException();
-        }
-
-        /**
-         * check if coupon still can be applied
-         */
-        $count = $coupon->getCount();
-        if (null !== $count && $count > $coupon->getUsed()) {
-            throw new CouponAppliedException();
-        }
-
-        /**
-         * you cannot add this coupon, too cheap
-         */
-        if ($coupon->getMinimumPurchase()->getAmount() > $price) {
-            throw new CouponBelowMinimumPurchaseException();
         }
 
         return true;
@@ -210,7 +185,7 @@ class CouponManager
     {
         $count = $coupon->getCount();
 
-        if ($count === null) {
+        if ($count === 0) {
             return true;
         }
 

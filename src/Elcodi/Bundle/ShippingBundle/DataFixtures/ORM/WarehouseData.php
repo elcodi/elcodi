@@ -36,8 +36,8 @@ class WarehouseData extends AbstractFixture implements DependentFixtureInterface
         /**
          * @var WarehouseFactory $warehouseFactory
          */
-        $warehouseFactory = $this->getFactory('warehouse');
-        $warehouseObjectManager = $this->getObjectManager('warehouse');
+        $warehouseFactory = $this->getFactory('shipping_warehouse');
+        $warehouseObjectManager = $this->getObjectManager('shipping_warehouse');
 
         /**
          * Warehouse

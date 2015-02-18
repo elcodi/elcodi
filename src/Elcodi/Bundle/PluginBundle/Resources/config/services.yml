@@ -12,10 +12,10 @@ services:
         class: %elcodi.template_manager.class%
         arguments:
             kernel: @kernel
-            configuration_manager: @elcodi.configuration_manager
+            configuration_manager: @elcodi.manager.configuration
 
     elcodi.plugin_manager:
         class: %elcodi.plugin_manager.class%
         arguments:
             kernel: @kernel
-            configuration_manager: @elcodi.configuration_manager
+            configuration_manager: @elcodi.manager.configuration

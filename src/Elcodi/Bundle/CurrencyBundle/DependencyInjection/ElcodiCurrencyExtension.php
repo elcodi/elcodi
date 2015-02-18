@@ -156,7 +156,7 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
         parent::postLoad($config, $container);
 
         $ratesProviderId = $config['rates_provider']['client'];
-        $container->setAlias('elcodi.rates_provider_adapter', $ratesProviderId);
+        $container->setAlias('elcodi.adapter.currency_exchange_rate', $ratesProviderId);
     }
 
     /**

@@ -35,6 +35,6 @@ services:
     #
     # Repository for entity warehouse
     #
-    elcodi.repository.warehouse:
+    elcodi.repository.shipping_warehouse:
         parent: elcodi.abstract_repository
         arguments: [ %elcodi.core.shipping.entity.warehouse.class% ]

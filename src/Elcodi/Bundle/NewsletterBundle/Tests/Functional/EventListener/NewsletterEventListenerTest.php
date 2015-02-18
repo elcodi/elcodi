@@ -32,7 +32,7 @@ class NewsletterEventListenerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.newsletter.event_listener.newsletter',
+            'elcodi.event_listener.newsletter',
         ];
     }
 }

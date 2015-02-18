@@ -63,7 +63,7 @@ class Cart implements CartInterface
     protected $ordered;
 
     /**
-     * @var Collection
+     * @var CartLineInterface[]|Collection
      *
      * Lines
      */
@@ -288,16 +288,13 @@ class Cart implements CartInterface
      */
     public function getTotalItemNumber()
     {
-        $totalItems = array_reduce(
+        return array_reduce(
             $this->cartLines->toArray(),
             function ($previousTotal, CartLineInterface $current) {
                 return $previousTotal + $current->getQuantity();
-            }
+            },
+            0
         );
-
-        return is_null($totalItems)
-            ? 0
-            : $totalItems;
     }
 
     /**

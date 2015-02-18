@@ -9,15 +9,15 @@ parameters:
     #
     # Services
     #
-    elcodi.password_manager.class: Elcodi\Component\User\Services\PasswordManager
-    elcodi.customer_manager.class: Elcodi\Component\User\Services\CustomerManager
-    elcodi.admin_user_manager.class: Elcodi\Component\User\Services\AdminUserManager
+    elcodi.manager.password.class: Elcodi\Component\User\Services\PasswordManager
+    elcodi.manager.customer.class: Elcodi\Component\User\Services\CustomerManager
+    elcodi.manager.admin_user.class: Elcodi\Component\User\Services\AdminUserManager
 
     #
     # Wrappers
     #
-    elcodi.customer_wrapper.class: Elcodi\Component\User\Wrapper\CustomerWrapper
-    elcodi.admin_user_wrapper.class: Elcodi\Component\User\Wrapper\AdminUserWrapper
+    elcodi.wrapper.customer.class: Elcodi\Component\User\Wrapper\CustomerWrapper
+    elcodi.wrapper.admin_user.class: Elcodi\Component\User\Wrapper\AdminUserWrapper
 
     #
     # Event Listeners

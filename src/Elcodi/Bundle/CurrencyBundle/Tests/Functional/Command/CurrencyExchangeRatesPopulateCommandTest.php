@@ -32,7 +32,7 @@ class CurrencyExchangeRatesPopulateCommandTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.currency.command.currency_exchange_rates_populate',
+            'elcodi.command.populate_currency_rates',
         ];
     }
 }

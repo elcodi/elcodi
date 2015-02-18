@@ -3,14 +3,11 @@ services:
     #
     # services
     #
-    elcodi.core.menu.service.menu_manager:
-        class: %elcodi.core.menu.service.menu_manager.class%
+    elcodi.manager.menu:
+        class: %elcodi.manager.menu.class%
         arguments:
             menu_repository: @elcodi.repository.menu
             key: %elcodi.core.menu.cache_key%
         calls:
             - [setCache, [@doctrine_cache.providers.elcodi_menus]]
             - [setEncoder, [@elcodi.json_encoder]]
-
-    elcodi.menu_manager:
-        alias: elcodi.core.menu.service.menu_manager

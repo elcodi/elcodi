@@ -8,7 +8,7 @@ parameters:
     #
     # Factories
     #
-    elcodi.core.page.factory.page.class: Elcodi\Component\Page\Factory\PageFactory
+    elcodi.factory.page.class: Elcodi\Component\Page\Factory\PageFactory
 
     #
     # Controllers

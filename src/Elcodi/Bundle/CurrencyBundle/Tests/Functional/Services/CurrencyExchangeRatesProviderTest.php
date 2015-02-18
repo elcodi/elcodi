@@ -42,8 +42,7 @@ class CurrencyExchangeRatesProviderTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.currency.service.currency_exchange_rates_provider',
-            'elcodi.currency_exchange_rates_provider',
+            'elcodi.provider.currency_exchange_rate',
         ];
     }
 }

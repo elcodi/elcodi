@@ -42,7 +42,6 @@ class CategoryFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.product.factory.category',
             'elcodi.factory.category',
         ];
     }

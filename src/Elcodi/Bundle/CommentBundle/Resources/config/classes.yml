@@ -9,10 +9,10 @@ parameters:
     #
     # Services
     #
-    elcodi.comment_manager.class: Elcodi\Component\Comment\Services\CommentManager
+    elcodi.manager.comment.class: Elcodi\Component\Comment\Services\CommentManager
     elcodi.comment_parser.class: Elcodi\Component\Comment\Services\CommentParser
     elcodi.comment_cache.class: Elcodi\Component\Comment\Services\CommentCache
-    elcodi.comment_vote_manager.class: Elcodi\Component\Comment\Services\VoteManager
+    elcodi.manager.comment_vote.class: Elcodi\Component\Comment\Services\VoteManager
 
     #
     # Controllers

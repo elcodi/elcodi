@@ -7,10 +7,7 @@ services:
     #
     # Factory for entity language
     #
-    elcodi.core.language.factory.language:
-        class: %elcodi.core.language.factory.language.class%
+    elcodi.factory.language:
+        class: %elcodi.factory.language.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.language.entity.language.class%"]]
-
-    elcodi.factory.language:
-        alias: elcodi.core.language.factory.language

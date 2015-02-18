@@ -42,7 +42,7 @@ class CartCouponManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.cart_coupon_manager'];
+        return ['elcodi.manager.cart_coupon'];
     }
 
     /**
@@ -53,7 +53,7 @@ class CartCouponManagerTest extends WebTestCase
         $cart = new Cart();
 
         $this->assertEmpty($this
-            ->get('elcodi.cart_coupon_manager')
+            ->get('elcodi.manager.cart_coupon')
             ->getCartCoupons($cart)
         );
     }
@@ -66,7 +66,7 @@ class CartCouponManagerTest extends WebTestCase
         $cart = new Cart();
 
         $this->assertEmpty($this
-            ->get('elcodi.cart_coupon_manager')
+            ->get('elcodi.manager.cart_coupon')
             ->getCoupons($cart)
         );
     }

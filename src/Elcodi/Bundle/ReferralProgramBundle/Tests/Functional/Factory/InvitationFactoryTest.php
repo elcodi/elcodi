@@ -42,8 +42,7 @@ class InvitationFactoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.referral_program.factory.invitation',
-            'elcodi.factory.invitation',
+            'elcodi.factory.referral_invitation',
         ];
     }
 }

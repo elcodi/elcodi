@@ -22,9 +22,9 @@ use Elcodi\Component\CartCoupon\Exception\CouponAlreadyAppliedException;
 use Elcodi\Component\CartCoupon\Repository\CartCouponRepository;
 
 /**
- * Class CartCouponDuplicateListener
+ * Class AvoidDuplicatesListener
  */
-class CartCouponDuplicateListener
+class AvoidDuplicatesListener
 {
     /**
      * @var CartCouponRepository
@@ -50,12 +50,14 @@ class CartCouponDuplicateListener
      *
      * @throws CouponAlreadyAppliedException
      */
-    public function onCartCouponApply(CartCouponOnApplyEvent $event)
+    public function checkDuplicates(CartCouponOnApplyEvent $event)
     {
-        $cartCoupon = $this->cartCouponRepository->findOneBy([
-            'cart' => $event->getCart(),
-            'coupon' => $event->getCoupon(),
-        ]);
+        $cartCoupon = $this
+            ->cartCouponRepository
+            ->findOneBy([
+                'cart' => $event->getCart(),
+                'coupon' => $event->getCoupon(),
+            ]);
 
         if (null !== $cartCoupon) {
             throw new CouponAlreadyAppliedException();

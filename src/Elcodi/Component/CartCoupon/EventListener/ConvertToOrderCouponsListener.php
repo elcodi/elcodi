@@ -29,9 +29,9 @@ use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 
 /**
- * Class OrderEventListener
+ * Class ConvertToOrderCouponsListener
  */
-class OrderEventListener
+class ConvertToOrderCouponsListener
 {
     /**
      * @var OrderCouponEventDispatcher
@@ -88,7 +88,7 @@ class OrderEventListener
      *
      * @param OrderOnCreatedEvent $orderOnCreatedEvent OrderOnCreated Event
      */
-    public function onOrderOnCreatedEvent(OrderOnCreatedEvent $orderOnCreatedEvent)
+    public function convertCoupontToOrder(OrderOnCreatedEvent $orderOnCreatedEvent)
     {
         $order = $orderOnCreatedEvent->getOrder();
         $cart = $orderOnCreatedEvent->getCart();
@@ -99,9 +99,11 @@ class OrderEventListener
         }
 
         /**
-         * @var Collection $coupons
+         * @var CouponInterface[]|Collection $coupons
          */
-        $coupons = $this->cartCouponManager->getCoupons($cart);
+        $coupons = $this
+            ->cartCouponManager
+            ->getCoupons($cart);
 
         if ($coupons->isEmpty()) {
             return;
@@ -116,7 +118,7 @@ class OrderEventListener
         /**
          * An event is dispatched for each convertible coupon
          */
-        $coupons->map(function (CouponInterface $coupon) use ($order) {
+        foreach ($coupons as $coupon) {
 
             $this
                 ->orderCouponEventDispatcher
@@ -124,7 +126,7 @@ class OrderEventListener
                     $order,
                     $coupon
                 );
-        });
+        }
     }
 
     /**

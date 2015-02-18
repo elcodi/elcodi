@@ -33,7 +33,7 @@ class ImageResizeControllerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.core.media.controller.image_resize'];
+        return ['elcodi.controller.media_image_resize'];
     }
 
     /**

@@ -62,8 +62,7 @@ class ProductCollectionProviderTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.core.product.service.product_collection_provider',
-            'elcodi.product_collection_provider',
+            'elcodi.provider.product_collection',
         ];
     }
 
@@ -75,7 +74,7 @@ class ProductCollectionProviderTest extends WebTestCase
         parent::setUp();
 
         $this->productCollectionProvider = $this
-            ->get('elcodi.product_collection_provider');
+            ->get('elcodi.provider.product_collection');
     }
 
     /**

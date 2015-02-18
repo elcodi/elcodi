@@ -77,10 +77,10 @@ class ElcodiCouponExtension extends AbstractExtension implements EntitiesOverrid
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.core.coupon.entity.coupon.class" => $config['mapping']['coupon']['class'],
-            "elcodi.core.coupon.entity.coupon.mapping_file" => $config['mapping']['coupon']['mapping_file'],
-            "elcodi.core.coupon.entity.coupon.manager" => $config['mapping']['coupon']['manager'],
-            "elcodi.core.coupon.entity.coupon.enabled" => $config['mapping']['coupon']['enabled'],
+            "elcodi.entity.coupon.class" => $config['mapping']['coupon']['class'],
+            "elcodi.entity.coupon.mapping_file" => $config['mapping']['coupon']['mapping_file'],
+            "elcodi.entity.coupon.manager" => $config['mapping']['coupon']['manager'],
+            "elcodi.entity.coupon.enabled" => $config['mapping']['coupon']['enabled'],
         ];
     }
 
@@ -115,7 +115,7 @@ class ElcodiCouponExtension extends AbstractExtension implements EntitiesOverrid
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface' => 'elcodi.core.coupon.entity.coupon.class',
+            'Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface' => 'elcodi.entity.coupon.class',
         ];
     }
 

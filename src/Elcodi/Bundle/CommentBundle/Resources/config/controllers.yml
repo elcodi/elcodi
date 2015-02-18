@@ -6,6 +6,6 @@ services:
     elcodi.controller.comment:
         class: %elcodi.controller.comment.class%
         arguments:
-            - @elcodi.comment_manager
+            - @elcodi.manager.comment
             - @elcodi.comment_cache
             - @elcodi.repository.comment

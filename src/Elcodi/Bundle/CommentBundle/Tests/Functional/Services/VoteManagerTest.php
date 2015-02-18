@@ -44,7 +44,7 @@ class VoteManagerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.comment_vote_manager',
+            'elcodi.manager.comment_vote',
         ];
     }
 
@@ -56,7 +56,7 @@ class VoteManagerTest extends WebTestCase
         /**
          * @var VoteManager $voteManager
          */
-        $voteManager = $this->get('elcodi.comment_vote_manager');
+        $voteManager = $this->get('elcodi.manager.comment_vote');
 
         $comment = $this
             ->getFactory('comment')

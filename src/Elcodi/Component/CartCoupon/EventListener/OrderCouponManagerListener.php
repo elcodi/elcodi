@@ -24,11 +24,11 @@ use Elcodi\Component\CartCoupon\Factory\OrderCouponFactory;
 use Elcodi\Component\Coupon\EventDispatcher\CouponEventDispatcher;
 
 /**
- * Class OrderCouponEventListener
+ * Class OrderCouponManagerListener
  *
  * This eventListener is subscribed into OpenCoupon events.
  */
-class OrderCouponEventListener
+class OrderCouponManagerListener
 {
     /**
      * @var ObjectManager
@@ -78,21 +78,27 @@ class OrderCouponEventListener
      *
      * @param OrderCouponOnApplyEvent $event Event
      */
-    public function onOrderCouponApply(OrderCouponOnApplyEvent $event)
+    public function convertToOrderCoupons(OrderCouponOnApplyEvent $event)
     {
         $order = $event->getOrder();
         $coupon = $event->getCoupon();
 
-        $orderCoupon = $this->orderCouponFactory->create();
-        $orderCoupon
+        $orderCoupon = $this
+            ->orderCouponFactory
+            ->create()
             ->setOrder($order)
             ->setCoupon($coupon)
             ->setAmount($coupon->getAbsolutePrice())
             ->setName($coupon->getName())
             ->setCode($coupon->getCode());
 
-        $this->orderCouponObjectManager->persist($orderCoupon);
-        $this->orderCouponObjectManager->flush($orderCoupon);
+        $this
+            ->orderCouponObjectManager
+            ->persist($orderCoupon);
+
+        $this
+            ->orderCouponObjectManager
+            ->flush($orderCoupon);
 
         $this
             ->couponEventDispatcher

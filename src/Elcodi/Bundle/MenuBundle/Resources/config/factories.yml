@@ -7,21 +7,15 @@ services:
     #
     # Factory for entity node
     #
-    elcodi.core.menu.factory.menu_node:
-        class: %elcodi.core.menu.factory.menu_node.class%
+    elcodi.factory.menu_node:
+        class: %elcodi.factory.menu_node.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.menu.entity.menu_node.class%"]]
-
-    elcodi.factory.menu_node:
-        alias: elcodi.core.menu.factory.menu_node
 
     #
     # Factory for entity menu
     #
-    elcodi.core.menu.factory.menu:
-        class: %elcodi.core.menu.factory.menu.class%
+    elcodi.factory.menu:
+        class: %elcodi.factory.menu.class%
         calls:
             - [setEntityNamespace, ["%elcodi.core.menu.entity.menu.class%"]]
-
-    elcodi.factory.menu:
-        alias: elcodi.core.menu.factory.menu

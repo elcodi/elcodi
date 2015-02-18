@@ -14,4 +14,4 @@ parameters:
     #
     # Twig extensions
     #
-    elcodi.core.plugin.twig_extension.hook.class: Elcodi\Component\Plugin\Twig\HookExtension
+    elcodi.twig_extension.plugin_hook.class: Elcodi\Component\Plugin\Twig\HookExtension

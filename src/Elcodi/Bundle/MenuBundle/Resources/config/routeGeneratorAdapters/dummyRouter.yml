@@ -3,15 +3,15 @@ parameters:
     #
     # DummyRouter Adapter class
     #
-    elcodi.core.menu.adapter.dummy_route_generator_adapter.class: Elcodi\Component\Menu\Adapter\RouteGenerator\DummyRouteGeneratorAdapter
+    elcodi.adapter.menu_route_generator.dummy.class: Elcodi\Component\Menu\Adapter\RouteGenerator\DummyRouteGeneratorAdapter
 
 services:
 
     #
     # DummyRouter Adapter
     #
-    elcodi.core.menu.adapter.dummy_route_generator_adapter:
-        class: %elcodi.core.menu.adapter.dummy_route_generator_adapter.class%
+    elcodi.adapter.menu_route_generator.dummy:
+        class: %elcodi.adapter.menu_route_generator.dummy.class%
 
-    elcodi.core.menu.adapter.route_generator_adapter:
-        alias: elcodi.core.menu.adapter.dummy_route_generator_adapter
+    elcodi.adapter.menu_route_generator:
+        alias: elcodi.adapter.menu_route_generator.dummy

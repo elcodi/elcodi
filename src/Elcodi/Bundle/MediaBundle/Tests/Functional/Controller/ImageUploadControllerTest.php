@@ -44,7 +44,7 @@ class ImageUploadControllerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.core.media.controller.image_upload'];
+        return ['elcodi.controller.media_image_upload'];
     }
 
     /**
@@ -80,7 +80,7 @@ class ImageUploadControllerTest extends WebTestCase
         $image = $this->find('image', 1);
         $this->assertInstanceOf('Elcodi\Component\Media\Entity\Interfaces\ImageInterface', $image);
         $this->assertEmpty($image->getContent());
-        $this->get('elcodi.file_manager')->downloadFile($image);
+        $this->get('elcodi.manager.media_file')->downloadFile($image);
 
         $this->assertNotEmpty($image->getContent());
     }
