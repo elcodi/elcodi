@@ -15,13 +15,24 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Shipping\Repository;
-
-use Doctrine\ORM\EntityRepository;
+namespace Elcodi\Component\Shipping;
 
 /**
- * Class CarrierPriceRangeRepository
+ * Class ElcodiShippingRangeTypes
  */
-class CarrierPriceRangeRepository extends EntityRepository
+class ElcodiShippingRangeTypes
 {
+    /**
+     * @var string
+     *
+     * type price
+     */
+    const TYPE_PRICE = 1;
+
+    /**
+     * @var string
+     *
+     * type weight
+     */
+    const TYPE_WEIGHT = 2;
 }

@@ -15,18 +15,12 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Shipping\Entity;
-
-use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
-use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
-use Elcodi\Component\Currency\Entity\Money;
-use Elcodi\Component\Shipping\Entity\Abstracts\AbstractCarrierBaseRange;
-use Elcodi\Component\Shipping\Entity\Interfaces\CarrierPriceRangeInterface;
+namespace Elcodi\Component\Shipping\Entity\Traits;
 
 /**
- * Class CarrierPriceRange
+ * Trait ShippingPriceRangeTrait
  */
-class CarrierPriceRange extends AbstractCarrierBaseRange implements CarrierPriceRangeInterface
+trait ShippingPriceRangeTrait
 {
     /**
      * @var integer
@@ -36,7 +30,7 @@ class CarrierPriceRange extends AbstractCarrierBaseRange implements CarrierPrice
     protected $fromPriceAmount;
 
     /**
-     * @var CurrencyInterface
+     * @var \Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
      *
      * fromPriceCurrency
      */
@@ -50,7 +44,7 @@ class CarrierPriceRange extends AbstractCarrierBaseRange implements CarrierPrice
     protected $toPriceAmount;
 
     /**
-     * @var CurrencyInterface
+     * @var \Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
      *
      * toPriceCurrency
      */
@@ -59,11 +53,11 @@ class CarrierPriceRange extends AbstractCarrierBaseRange implements CarrierPrice
     /**
      * Sets from price
      *
-     * @param MoneyInterface $price Price
+     * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $price Price
      *
      * @return $this Self object
      */
-    public function setFromPrice(MoneyInterface $price)
+    public function setFromPrice(\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $price)
     {
         $this->fromPriceAmount = $price->getAmount();
         $this->fromPriceCurrency = $price->getCurrency();
@@ -74,11 +68,11 @@ class CarrierPriceRange extends AbstractCarrierBaseRange implements CarrierPrice
     /**
      * Get from price
      *
-     * @return MoneyInterface Price
+     * @return \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface Price
      */
     public function getFromPrice()
     {
-        return Money::create(
+        return \Elcodi\Component\Currency\Entity\Money::create(
             $this->fromPriceAmount,
             $this->fromPriceCurrency
         );
@@ -87,11 +81,11 @@ class CarrierPriceRange extends AbstractCarrierBaseRange implements CarrierPrice
     /**
      * Sets to price
      *
-     * @param MoneyInterface $price Price
+     * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $price Price
      *
      * @return $this Self object
      */
-    public function setToPrice(MoneyInterface $price)
+    public function setToPrice(\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $price)
     {
         $this->toPriceAmount = $price->getAmount();
         $this->toPriceCurrency = $price->getCurrency();
@@ -102,11 +96,11 @@ class CarrierPriceRange extends AbstractCarrierBaseRange implements CarrierPrice
     /**
      * Get to price
      *
-     * @return MoneyInterface Price
+     * @return \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface Price
      */
     public function getToPrice()
     {
-        return Money::create(
+        return \Elcodi\Component\Currency\Entity\Money::create(
             $this->toPriceAmount,
             $this->toPriceCurrency
         );

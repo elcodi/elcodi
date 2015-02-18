@@ -23,8 +23,9 @@ use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
+use Elcodi\Component\Shipping\ElcodiShippingRangeTypes;
 use Elcodi\Component\Shipping\Entity\Interfaces\CarrierInterface;
-use Elcodi\Component\Shipping\Entity\Interfaces\CarrierWeightRangeInterface;
+use Elcodi\Component\Shipping\Entity\Interfaces\ShippingWeightRangeInterface;
 use Elcodi\Component\Shipping\Repository\CarrierRepository;
 use Elcodi\Component\Shipping\Repository\WarehouseRepository;
 use Elcodi\Component\Zone\Services\ZoneMatcher;
@@ -121,16 +122,16 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests isCarrierWeightRangeSatisfiedByOrder
+     * Tests isShippingWeightRangeSatisfiedByOrder
      *
-     * @dataProvider dataIsCarrierWeightRangeSatisfiedByOrderOk
+     * @dataProvider dataIsShippingWeightRangeSatisfiedByOrderOk
      */
-    public function testIsCarrierWeightRangeSatisfiedByOrder(
+    public function testIsShippingWeightRangeSatisfiedByOrder(
         $fromWeight,
         $toWeight,
         $isSatisfied
     ) {
-        $carrierRange = $this->getCarrierWeightRangeMock(
+        $carrierRange = $this->getShippingWeightRangeMock(
             $fromWeight,
             $toWeight
         );
@@ -155,7 +156,7 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             $isSatisfied,
-            $carrierProvider->isCarrierWeightRangeSatisfiedByOrder(
+            $carrierProvider->isShippingWeightRangeSatisfiedByOrder(
                 $this->order,
                 $carrierRange
             )
@@ -163,11 +164,11 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Data for testIsCarrierWeightRangeSatisfiedByOrder
+     * Data for testIsShippingWeightRangeSatisfiedByOrder
      *
      * @return array
      */
-    public function dataIsCarrierWeightRangeSatisfiedByOrderOk()
+    public function dataIsShippingWeightRangeSatisfiedByOrderOk()
     {
         return [
             [5, 15, true],
@@ -185,16 +186,16 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests isCarrierPriceRangeSatisfiedByOrder
+     * Tests isShippingPriceRangeSatisfiedByOrder
      *
-     * @dataProvider dataIsCarrierPriceRangeSatisfiedByOrder
+     * @dataProvider dataIsShippingPriceRangeSatisfiedByOrder
      */
-    public function testIsCarrierPriceRangeSatisfiedByOrder(
+    public function testIsShippingPriceRangeSatisfiedByOrder(
         $fromPrice,
         $toPrice,
         $isSatisfied
     ) {
-        $priceRange = $this->getCarrierPriceRangeMock(
+        $priceRange = $this->getShippingPriceRangeMock(
             $fromPrice,
             $toPrice
         );
@@ -219,7 +220,7 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             $isSatisfied,
-            $carrierProvider->isCarrierPriceRangeSatisfiedByOrder(
+            $carrierProvider->isShippingPriceRangeSatisfiedByOrder(
                 $this->order,
                 $priceRange
             )
@@ -227,11 +228,11 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Data for testIsCarrierPriceRangeSatisfiedByOrder
+     * Data for testIsShippingPriceRangeSatisfiedByOrder
      *
      * @return array
      */
-    public function dataIsCarrierPriceRangeSatisfiedByOrder()
+    public function dataIsShippingPriceRangeSatisfiedByOrder()
     {
         return [
             [50, 150, true],
@@ -269,7 +270,7 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue(true));
 
         $this->assertInstanceOf(
-            'Elcodi\Component\Shipping\Entity\Interfaces\CarrierBaseRangeInterface',
+            'Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface',
             $carrierProvider->getCarrierRangeSatisfiedByOrder(
                 $this->order,
                 $carrier
@@ -350,7 +351,7 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
 
         foreach ($carrierRanges as $carrierRange) {
             $this->assertInstanceOf(
-                'Elcodi\Component\Shipping\Entity\Interfaces\CarrierBaseRangeInterface',
+                'Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface',
                 $carrierRange
             );
         }
@@ -375,8 +376,8 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
         $carrier = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\CarrierInterface');
 
         $carrierRanges = array(
-            $this->getCarrierPriceRangeMock($fromPrice, $toPrice),
-            $this->getCarrierWeightRangeMock($fromWeight, $toWeight),
+            $this->getShippingPriceRangeMock($fromPrice, $toPrice),
+            $this->getShippingWeightRangeMock($fromWeight, $toWeight),
         );
 
         $carrier
@@ -388,18 +389,18 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Get CarrierPriceRange mock
+     * Get ShippingPriceRange mock
      *
      * @param string $fromPrice From price
      * @param string $toPrice   To price
      *
-     * @return CarrierWeightRangeInterface
+     * @return ShippingWeightRangeInterface
      */
-    private function getCarrierPriceRangeMock(
+    private function getShippingPriceRangeMock(
         $fromPrice,
         $toPrice
     ) {
-        $priceRange = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\CarrierPriceRangeInterface');
+        $priceRange = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface');
 
         $priceRange
             ->expects($this->any())
@@ -407,6 +408,11 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue(
                 Money::create($fromPrice, $this->currency)
             ));
+
+        $priceRange
+            ->expects($this->any())
+            ->method('getType')
+            ->will($this->returnValue(ElcodiShippingRangeTypes::TYPE_PRICE));
 
         $priceRange
             ->expects($this->any())
@@ -419,18 +425,23 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Get CarrierWeightRange mock
+     * Get ShippingWeightRange mock
      *
      * @param string $fromWeight From weight
      * @param string $toWeight   To weight
      *
-     * @return CarrierWeightRangeInterface
+     * @return ShippingWeightRangeInterface
      */
-    private function getCarrierWeightRangeMock(
+    private function getShippingWeightRangeMock(
         $fromWeight,
         $toWeight
     ) {
-        $carrierRange = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\CarrierWeightRangeInterface');
+        $carrierRange = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface');
+
+        $carrierRange
+            ->expects($this->any())
+            ->method('getType')
+            ->will($this->returnValue(ElcodiShippingRangeTypes::TYPE_WEIGHT));
 
         $carrierRange
             ->expects($this->any())
@@ -450,7 +461,7 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
      */
     public function testIsCarrierRangeZonesSatisfiedByOrderNoWarehouse()
     {
-        $carrierRange = $this->getCarrierWeightRangeMock(
+        $carrierRange = $this->getShippingWeightRangeMock(
             10,
             20
         );
@@ -485,7 +496,7 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
      */
     public function testIsCarrierRangeZonesSatisfiedByOrderWarehouseWithoutAddress()
     {
-        $carrierRange = $this->getCarrierWeightRangeMock(
+        $carrierRange = $this->getShippingWeightRangeMock(
             10,
             20
         );
@@ -532,7 +543,7 @@ class CarrierProviderTest extends PHPUnit_Framework_TestCase
         $inZoneTo,
         $isSatisfied
     ) {
-        $carrierRange = $this->getCarrierWeightRangeMock(
+        $carrierRange = $this->getShippingWeightRangeMock(
             10,
             20
         );

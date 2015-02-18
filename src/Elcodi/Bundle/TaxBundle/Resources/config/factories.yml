@@ -10,7 +10,7 @@ services:
     elcodi.factory.tax:
         class: %elcodi.factory.tax.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.tax.entity.tax.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.tax.class%"]]
 
     #
     # Factory for entity tax group
@@ -18,4 +18,4 @@ services:
     elcodi.factory.tax_group:
         class: %elcodi.factory.tax_group.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.tax.entity.tax_group.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.tax_group.class%"]]

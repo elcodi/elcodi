@@ -20,9 +20,9 @@ namespace Elcodi\Bundle\ShippingBundle\Tests\Functional\Repository;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class CarrierPriceRangeRepositoryTest
+ * Class ShippingRangeRepositoryTest
  */
-class CarrierPriceRangeRepositoryTest extends WebTestCase
+class ShippingRangeRepositoryTest extends WebTestCase
 {
     /**
      * Returns the callable name of the service
@@ -32,18 +32,18 @@ class CarrierPriceRangeRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.repository.carrier_price_range',
+            'elcodi.repository.shipping_range',
         ];
     }
 
     /**
-     * Test carrier_price_range repository provider
+     * Test shipping_base_range repository provider
      */
     public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
             'Doctrine\Common\Persistence\ObjectRepository',
-            $this->get('elcodi.repository.carrier_price_range')
+            $this->get('elcodi.repository.shipping_range')
         );
     }
 }

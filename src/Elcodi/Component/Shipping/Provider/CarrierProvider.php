@@ -20,10 +20,9 @@ namespace Elcodi\Component\Shipping\Provider;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
-use Elcodi\Component\Shipping\Entity\Interfaces\CarrierBaseRangeInterface;
+use Elcodi\Component\Shipping\ElcodiShippingRangeTypes;
 use Elcodi\Component\Shipping\Entity\Interfaces\CarrierInterface;
-use Elcodi\Component\Shipping\Entity\Interfaces\CarrierPriceRangeInterface;
-use Elcodi\Component\Shipping\Entity\Interfaces\CarrierWeightRangeInterface;
+use Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface;
 use Elcodi\Component\Shipping\Entity\Interfaces\WarehouseInterface;
 use Elcodi\Component\Shipping\Repository\CarrierRepository;
 use Elcodi\Component\Shipping\Repository\WarehouseRepository;
@@ -87,7 +86,7 @@ class CarrierProvider
      *
      * @param OrderInterface $order Order
      *
-     * @return CarrierBaseRangeInterface[] Set of carriers ranges satisfied
+     * @return ShippingRangeInterface[] Set of carriers ranges satisfied
      */
     public function provideCarrierRangesSatisfiedWithOrder(OrderInterface $order)
     {
@@ -105,7 +104,7 @@ class CarrierProvider
                 $carrier
             );
 
-            if ($carrierRange instanceof CarrierBaseRangeInterface) {
+            if ($carrierRange instanceof ShippingRangeInterface) {
                 $satisfiedCarriers[] = $carrierRange;
             }
         }
@@ -121,7 +120,7 @@ class CarrierProvider
      * @param OrderInterface   $order
      * @param CarrierInterface $carrier
      *
-     * @return CarrierBaseRangeInterface|false CarrierRange satisfied by Order
+     * @return ShippingRangeInterface|false CarrierRange satisfied by Order
      */
     public function getCarrierRangeSatisfiedByOrder(
         OrderInterface $order,
@@ -146,35 +145,35 @@ class CarrierProvider
     /**
      * Return if Carrier Range is satisfied by order
      *
-     * @param OrderInterface            $order
-     * @param CarrierBaseRangeInterface $carrierRange
+     * @param OrderInterface         $order
+     * @param ShippingRangeInterface $carrierRange
      *
      * @return boolean Carrier Range is satisfied by order
      */
     public function isCarrierRangeSatisfiedByOrder(
         OrderInterface $order,
-        CarrierBaseRangeInterface $carrierRange
+        ShippingRangeInterface $carrierRange
     ) {
-        if ($carrierRange instanceof CarrierPriceRangeInterface) {
-            return $this->isCarrierPriceRangeSatisfiedByOrder($order, $carrierRange);
-        } elseif ($carrierRange instanceof CarrierWeightRangeInterface) {
-            return $this->isCarrierWeightRangeSatisfiedByOrder($order, $carrierRange);
+        if ($carrierRange->getType() === ElcodiShippingRangeTypes::TYPE_PRICE) {
+            return $this->isShippingPriceRangeSatisfiedByOrder($order, $carrierRange);
+        } elseif ($carrierRange->getType() === ElcodiShippingRangeTypes::TYPE_WEIGHT) {
+            return $this->isShippingWeightRangeSatisfiedByOrder($order, $carrierRange);
         }
 
         return false;
     }
 
     /**
-     * Given CarrierPriceRange is satisfied by a order
+     * Given ShippingPriceRange is satisfied by a order
      *
-     * @param OrderInterface             $order        Order
-     * @param CarrierPriceRangeInterface $carrierRange Carrier Range
+     * @param OrderInterface         $order        Order
+     * @param ShippingRangeInterface $carrierRange Carrier Range
      *
      * @return bool CarrierRange is satisfied by order
      */
-    public function isCarrierPriceRangeSatisfiedByOrder(
+    public function isShippingPriceRangeSatisfiedByOrder(
         OrderInterface $order,
-        CarrierPriceRangeInterface $carrierRange
+        ShippingRangeInterface $carrierRange
     ) {
         $orderPrice = $order->getAmount();
         $orderPriceCurrency = $orderPrice->getCurrency();
@@ -198,16 +197,16 @@ class CarrierProvider
     }
 
     /**
-     * Given CarrierWeightRange is satisfied by a order
+     * Given ShippingWeightRange is satisfied by a order
      *
-     * @param OrderInterface              $order        Order
-     * @param CarrierWeightRangeInterface $carrierRange Carrier Range
+     * @param OrderInterface         $order        Order
+     * @param ShippingRangeInterface $carrierRange Carrier Range
      *
      * @return bool CarrierRange is satisfied by order
      */
-    public function isCarrierWeightRangeSatisfiedByOrder(
+    public function isShippingWeightRangeSatisfiedByOrder(
         OrderInterface $order,
-        CarrierWeightRangeInterface $carrierRange
+        ShippingRangeInterface $carrierRange
     ) {
         $orderWeight = $order->getWeight();
         $orderRangeFromWeight = $carrierRange->getFromWeight();
@@ -227,14 +226,14 @@ class CarrierProvider
      * Given CarrierRange zones are satisfied by a order, using as a warehouse
      * the first valid warehouse available
      *
-     * @param OrderInterface            $order        Order
-     * @param CarrierBaseRangeInterface $carrierRange Carrier Range
+     * @param OrderInterface         $order        Order
+     * @param ShippingRangeInterface $carrierRange Carrier Range
      *
      * @return bool CarrierRange is satisfied by order
      */
     public function isCarrierRangeZonesSatisfiedByOrder(
         OrderInterface $order,
-        CarrierBaseRangeInterface $carrierRange
+        ShippingRangeInterface $carrierRange
     ) {
         $warehouse = $this
             ->warehouseRepository

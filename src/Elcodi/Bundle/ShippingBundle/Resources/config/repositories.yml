@@ -5,36 +5,22 @@ services:
     #
 
     #
-    # Repository for entity carrier_base_range
+    # Repository for entity shipping_range
     #
-    elcodi.repository.carrier_base_range:
+    elcodi.repository.shipping_range:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.shipping.entity.carrier_base_range.class% ]
-
-    #
-    # Repository for entity carrier_price_range
-    #
-    elcodi.repository.carrier_price_range:
-        parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.shipping.entity.carrier_price_range.class% ]
-
-    #
-    # Repository for entity carrier_weight_range
-    #
-    elcodi.repository.carrier_weight_range:
-        parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.shipping.entity.carrier_weight_range.class% ]
+        arguments: [ %elcodi.entity.shipping_range.class% ]
 
     #
     # Repository for entity carrier
     #
     elcodi.repository.carrier:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.shipping.entity.carrier.class% ]
+        arguments: [ %elcodi.entity.carrier.class% ]
 
     #
     # Repository for entity warehouse
     #
-    elcodi.repository.shipping_warehouse:
+    elcodi.repository.warehouse:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.shipping.entity.warehouse.class% ]
+        arguments: [ %elcodi.entity.warehouse.class% ]

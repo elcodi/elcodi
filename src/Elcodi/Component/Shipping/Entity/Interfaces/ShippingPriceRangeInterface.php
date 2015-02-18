@@ -20,9 +20,9 @@ namespace Elcodi\Component\Shipping\Entity\Interfaces;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 
 /**
- * Interface CarrierPriceRangeInterface
+ * Interface ShippingPriceRangeInterface
  */
-interface CarrierPriceRangeInterface extends CarrierBaseRangeInterface
+interface ShippingPriceRangeInterface
 {
     /**
      * Sets from price

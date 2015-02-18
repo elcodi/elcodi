@@ -57,9 +57,7 @@ class ShippingProviderTest extends AbstractProviderTest
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.provider.shipping',
-        ];
+        return ['elcodi.provider.shipping'];
     }
 
     /**

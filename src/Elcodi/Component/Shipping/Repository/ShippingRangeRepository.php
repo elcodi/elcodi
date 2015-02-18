@@ -20,8 +20,8 @@ namespace Elcodi\Component\Shipping\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class CarrierWeightRangeRepository
+ * Class ShippingRangeRepository
  */
-class CarrierWeightRangeRepository extends EntityRepository
+class ShippingRangeRepository extends EntityRepository
 {
 }

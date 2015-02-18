@@ -27,7 +27,6 @@ use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
  */
 abstract class AbstractProviderTest extends WebTestCase
 {
-
     /**
      * Create environment to test and return Order generated
      *

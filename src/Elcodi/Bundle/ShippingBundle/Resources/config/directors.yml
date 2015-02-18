@@ -1,0 +1,28 @@
+services:
+
+    #
+    # Directors
+    #
+    elcodi.director.carrier:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
+        arguments:
+            - @elcodi.object_manager.carrier
+            - @elcodi.repository.carrier
+            - @elcodi.factory.carrier
+
+    elcodi.director.shipping_range:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
+        arguments:
+            - @elcodi.object_manager.shipping_range
+            - @elcodi.repository.shipping_range
+            - @elcodi.factory.shipping_range
+
+    elcodi.director.warehouse:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
+        arguments:
+            - @elcodi.object_manager.warehouse
+            - @elcodi.repository.warehouse
+            - @elcodi.factory.warehouse

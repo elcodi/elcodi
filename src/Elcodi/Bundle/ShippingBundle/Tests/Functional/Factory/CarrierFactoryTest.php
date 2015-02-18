@@ -41,8 +41,6 @@ class CarrierFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.factory.shipping_carrier',
-        ];
+        return ['elcodi.factory.carrier'];
     }
 }

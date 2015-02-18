@@ -15,14 +15,14 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\ShippingBundle\Tests\Functional\Factory;
+namespace Elcodi\Bundle\ShippingBundle\Tests\Functional\Resolver;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class CarrierWeightRangeFactoryTest
+ * Class ShippingRangeResolverTest
  */
-class CarrierWeightRangeFactoryTest extends WebTestCase
+class ShippingRangeResolverTest extends WebTestCase
 {
     /**
      * Schema must be loaded in all test cases
@@ -41,8 +41,6 @@ class CarrierWeightRangeFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.factory.shipping_carrier_weight_range',
-        ];
+        return ['elcodi.resolver.shipping_range'];
     }
 }

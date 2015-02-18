@@ -42,23 +42,9 @@ class Configuration extends AbstractConfiguration
                             true
                         ))
                         ->append($this->addMappingNode(
-                            'carrier_base_range',
-                            'Elcodi\Component\Shipping\Entity\Abstracts\AbstractCarrierBaseRange',
-                            '@ElcodiShippingBundle/Resources/config/doctrine/CarrierBaseRange.orm.yml',
-                            'default',
-                            true
-                        ))
-                        ->append($this->addMappingNode(
-                            'carrier_price_range',
-                            'Elcodi\Component\Shipping\Entity\CarrierPriceRange',
-                            '@ElcodiShippingBundle/Resources/config/doctrine/CarrierPriceRange.orm.yml',
-                            'default',
-                            true
-                        ))
-                        ->append($this->addMappingNode(
-                            'carrier_weight_range',
-                            'Elcodi\Component\Shipping\Entity\CarrierWeightRange',
-                            '@ElcodiShippingBundle/Resources/config/doctrine/CarrierWeightRange.orm.yml',
+                            'shipping_range',
+                            'Elcodi\Component\Shipping\Entity\ShippingRange',
+                            '@ElcodiShippingBundle/Resources/config/doctrine/ShippingRange.orm.yml',
                             'default',
                             true
                         ))

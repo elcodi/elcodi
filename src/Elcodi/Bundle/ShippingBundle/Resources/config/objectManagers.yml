@@ -3,18 +3,14 @@ services:
     #
     # Object Managers
     #
-    elcodi.object_manager.shipping_carrier_price_range:
+    elcodi.object_manager.shipping_range:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.shipping.entity.carrier_price_range.class% ]
+        arguments: [ %elcodi.entity.shipping_range.class% ]
 
-    elcodi.object_manager.shipping_carrier_weight_range:
+    elcodi.object_manager.carrier:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.shipping.entity.carrier_weight_range.class% ]
+        arguments: [ %elcodi.entity.carrier.class% ]
 
-    elcodi.object_manager.shipping_carrier:
+    elcodi.object_manager.warehouse:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.shipping.entity.carrier.class% ]
-
-    elcodi.object_manager.shipping_warehouse:
-        parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.shipping.entity.warehouse.class% ]
+        arguments: [ %elcodi.entity.warehouse.class% ]

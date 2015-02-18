@@ -21,7 +21,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\Component\Shipping\Factory\WarehouseFactory;
+use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
  * Class WarehouseData
@@ -34,27 +34,22 @@ class WarehouseData extends AbstractFixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         /**
-         * @var WarehouseFactory $warehouseFactory
+         * @var ObjectDirector $warehouseDirector
          */
-        $warehouseFactory = $this->getFactory('shipping_warehouse');
-        $warehouseObjectManager = $this->getObjectManager('shipping_warehouse');
+        $warehouseDirector = $this->getDirector('warehouse');
 
         /**
          * Warehouse
          */
-        $warehouse = $warehouseFactory
+        $warehouse = $warehouseDirector
             ->create()
             ->setName('warehouse')
             ->setDescription('Testing warehouse')
             ->setAddress($this->getReference('address-viladecavalls'))
             ->setEnabled(true);
 
-        $warehouseObjectManager->persist($warehouse);
         $this->addReference('warehouse', $warehouse);
-
-        $warehouseObjectManager->flush([
-            $warehouse,
-        ]);
+        $warehouseDirector->save($warehouse);
     }
 
     /**

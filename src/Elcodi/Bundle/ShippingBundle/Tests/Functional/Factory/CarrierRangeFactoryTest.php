@@ -20,9 +20,9 @@ namespace Elcodi\Bundle\ShippingBundle\Tests\Functional\Factory;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class CarrierPriceRangeFactoryTest
+ * Class ShippingRangeFactoryTest
  */
-class CarrierPriceRangeFactoryTest extends WebTestCase
+class CarrierRangeFactoryTest extends WebTestCase
 {
     /**
      * Schema must be loaded in all test cases
@@ -41,8 +41,6 @@ class CarrierPriceRangeFactoryTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return [
-            'elcodi.factory.shipping_carrier_price_range',
-        ];
+        return ['elcodi.factory.shipping_range'];
     }
 }

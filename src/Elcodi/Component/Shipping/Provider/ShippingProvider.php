@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Shipping\Provider;
 
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
-use Elcodi\Component\Shipping\Resolver\CarrierResolver;
+use Elcodi\Component\Shipping\Resolver\ShippingRangeResolver;
 
 /**
  * Class ShippingProvider
@@ -33,24 +33,24 @@ class ShippingProvider
     protected $carrierProvider;
 
     /**
-     * @var CarrierResolver
+     * @var ShippingRangeResolver
      *
      * Carrier Resolver
      */
-    protected $carrierResolver;
+    protected $shippingRangeResolver;
 
     /**
      * Construct method
      *
-     * @param CarrierProvider $carrierProvider Carrier Provider
-     * @param CarrierResolver $carrierResolver Carrier Resolver
+     * @param CarrierProvider       $carrierProvider       Carrier Provider
+     * @param ShippingRangeResolver $shippingRangeResolver Carrier Resolver
      */
     public function __construct(
         CarrierProvider $carrierProvider,
-        CarrierResolver $carrierResolver
+        ShippingRangeResolver $shippingRangeResolver
     ) {
         $this->carrierProvider = $carrierProvider;
-        $this->carrierResolver = $carrierResolver;
+        $this->shippingRangeResolver = $shippingRangeResolver;
     }
 
     /**
@@ -65,7 +65,7 @@ class ShippingProvider
         $carrierRanges = $this->getAllCarrierRangesFromOrder($order);
 
         return $this
-            ->carrierResolver
+            ->shippingRangeResolver
             ->resolveCarrierRanges($carrierRanges);
     }
 

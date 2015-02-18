@@ -7,31 +7,25 @@ services:
     #
     # Factory for entity carrier
     #
-    elcodi.factory.shipping_carrier:
-        class: %elcodi.factory.shipping_carrier.class%
+    elcodi.factory.carrier:
+        class: %elcodi.factory.carrier.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.shipping.entity.carrier.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.carrier.class%"]]
 
     #
-    # Factory for entity carrier_price_range
+    # Factory for entity shipping_weight_range
     #
-    elcodi.factory.shipping_carrier_price_range:
-        class: %elcodi.factory.shipping_carrier_price_range.class%
+    elcodi.factory.shipping_range:
+        class: %elcodi.factory.shipping_range.class%
+        arguments:
+            - @elcodi.wrapper.currency
         calls:
-            - [setEntityNamespace, ["%elcodi.core.shipping.entity.carrier_price_range.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.shipping_range.class%"]]
 
     #
-    # Factory for entity carrier_weight_range
+    # Factory for entity shipping_weight_range
     #
-    elcodi.factory.shipping_carrier_weight_range:
-        class: %elcodi.factory.shipping_carrier_weight_range.class%
+    elcodi.factory.warehouse:
+        class: %elcodi.factory.warehouse.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.shipping.entity.carrier_weight_range.class%"]]
-
-    #
-    # Factory for entity carrier_weight_range
-    #
-    elcodi.factory.shipping_warehouse:
-        class: %elcodi.factory.shipping_warehouse.class%
-        calls:
-            - [setEntityNamespace, ["%elcodi.core.shipping.entity.warehouse.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.warehouse.class%"]]

@@ -18,13 +18,19 @@
 namespace Elcodi\Component\Shipping\Entity\Interfaces;
 
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface;
 
 /**
- * Interface CarrierBaseRangeInterface
+ * Interface ShippingRangeInterface
  */
-interface CarrierBaseRangeInterface extends EnabledInterface
+interface ShippingRangeInterface
+    extends
+    ShippingPriceRangeInterface,
+    ShippingWeightRangeInterface,
+    EnabledInterface,
+    IdentifiableInterface
 {
     /**
      * Get Carrier
@@ -41,22 +47,6 @@ interface CarrierBaseRangeInterface extends EnabledInterface
      * @return $this Self object
      */
     public function setCarrier($carrier);
-
-    /**
-     * Get Description
-     *
-     * @return string Description
-     */
-    public function getDescription();
-
-    /**
-     * Sets Description
-     *
-     * @param string $description Description
-     *
-     * @return $this Self object
-     */
-    public function setDescription($description);
 
     /**
      * Get Name
@@ -121,4 +111,20 @@ interface CarrierBaseRangeInterface extends EnabledInterface
      * @return MoneyInterface Price
      */
     public function getPrice();
+
+    /**
+     * Get Type
+     *
+     * @return mixed Type
+     */
+    public function getType();
+
+    /**
+     * Sets Type
+     *
+     * @param mixed $type Type
+     *
+     * @return $this Self object
+     */
+    public function setType($type);
 }

@@ -3,27 +3,24 @@ parameters:
     #
     # Entities
     #
-    elcodi.core.shipping.entity.carrier_base_range.class: Elcodi\Component\Shipping\Entity\Abstracts\AbstractCarrierBaseRange
-    elcodi.core.shipping.entity.carrier_price_range.class: Elcodi\Component\Shipping\Entity\CarrierPriceRange
-    elcodi.core.shipping.entity.carrier_weight_range.class: Elcodi\Component\Shipping\Entity\CarrierWeightRange
-    elcodi.core.shipping.entity.carrier.class: Elcodi\Component\Shipping\Entity\Carrier
-    elcodi.core.shipping.entity.warehouse.class: Elcodi\Component\Shipping\Entity\Warehouse
+    elcodi.entity.shipping_range.class: Elcodi\Component\Shipping\Entity\ShippingRange
+    elcodi.entity.carrier.class: Elcodi\Component\Shipping\Entity\Carrier
+    elcodi.entity.warehouse.class: Elcodi\Component\Shipping\Entity\Warehouse
 
     #
     # Factories
     #
-    elcodi.factory.shipping_carrier.class: Elcodi\Component\Shipping\Factory\CarrierFactory
-    elcodi.factory.shipping_carrier_price_range.class: Elcodi\Component\Shipping\Factory\CarrierPriceRangeFactory
-    elcodi.factory.shipping_carrier_weight_range.class: Elcodi\Component\Shipping\Factory\CarrierWeightRangeFactory
-    elcodi.factory.shipping_warehouse.class: Elcodi\Component\Shipping\Factory\WarehouseFactory
+    elcodi.factory.carrier.class: Elcodi\Component\Shipping\Factory\CarrierFactory
+    elcodi.factory.shipping_range.class: Elcodi\Component\Shipping\Factory\ShippingRangeFactory
+    elcodi.factory.warehouse.class: Elcodi\Component\Shipping\Factory\WarehouseFactory
 
     #
     # Providers
     #
-    elcodi.provider.shipping_carrier.class: Elcodi\Component\Shipping\Provider\CarrierProvider
+    elcodi.provider.carrier.class: Elcodi\Component\Shipping\Provider\CarrierProvider
     elcodi.provider.shipping.class: Elcodi\Component\Shipping\Provider\ShippingProvider
 
     #
     # Resolvers
     #
-    elcodi.carrier_resolver.class: Elcodi\Component\Shipping\Resolver\CarrierResolver
+    elcodi.resolver.shipping_range.class: Elcodi\Component\Shipping\Resolver\ShippingRangeResolver

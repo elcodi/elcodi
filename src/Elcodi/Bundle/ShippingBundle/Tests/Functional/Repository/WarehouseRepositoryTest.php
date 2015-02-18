@@ -32,7 +32,7 @@ class WarehouseRepositoryTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.repository.shipping_warehouse',
+            'elcodi.repository.warehouse',
         ];
     }
 
@@ -43,7 +43,7 @@ class WarehouseRepositoryTest extends WebTestCase
     {
         $this->assertInstanceOf(
             'Doctrine\Common\Persistence\ObjectRepository',
-            $this->get('elcodi.repository.shipping_warehouse')
+            $this->get('elcodi.repository.warehouse')
         );
     }
 }

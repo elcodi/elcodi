@@ -15,29 +15,28 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Shipping\Entity\Abstracts;
+namespace Elcodi\Component\Shipping\Entity;
 
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
-use Elcodi\Component\Shipping\Entity\Interfaces\CarrierBaseRangeInterface;
 use Elcodi\Component\Shipping\Entity\Interfaces\CarrierInterface;
+use Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface;
+use Elcodi\Component\Shipping\Entity\Traits\ShippingPriceRangeTrait;
+use Elcodi\Component\Shipping\Entity\Traits\ShippingWeightRangeTrait;
 use Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface;
 
 /**
- * Class AbstractCarrierBaseRange
+ * Class ShippingRange
  */
-abstract class AbstractCarrierBaseRange implements CarrierBaseRangeInterface
+class ShippingRange implements ShippingRangeInterface
 {
-    use EnabledTrait;
-
-    /**
-     * @var integer
-     *
-     * id
-     */
-    protected $id;
+    use ShippingPriceRangeTrait,
+        ShippingWeightRangeTrait,
+        IdentifiableTrait,
+        EnabledTrait;
 
     /**
      * @var CarrierInterface
@@ -52,13 +51,6 @@ abstract class AbstractCarrierBaseRange implements CarrierBaseRangeInterface
      * name of the range
      */
     protected $name;
-
-    /**
-     * @var string
-     *
-     * description of the range
-     */
-    protected $description;
 
     /**
      * @var ZoneInterface
@@ -89,28 +81,11 @@ abstract class AbstractCarrierBaseRange implements CarrierBaseRangeInterface
     protected $priceCurrency;
 
     /**
-     * Get Id
+     * @var string
      *
-     * @return int Id
+     * Type
      */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Sets Id
-     *
-     * @param int $id Id
-     *
-     * @return $this Self object
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
+    protected $type;
 
     /**
      * Get Carrier
@@ -132,30 +107,6 @@ abstract class AbstractCarrierBaseRange implements CarrierBaseRangeInterface
     public function setCarrier($carrier)
     {
         $this->carrier = $carrier;
-
-        return $this;
-    }
-
-    /**
-     * Get Description
-     *
-     * @return string Description
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Sets Description
-     *
-     * @param string $description Description
-     *
-     * @return $this Self object
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
 
         return $this;
     }
@@ -258,5 +209,29 @@ abstract class AbstractCarrierBaseRange implements CarrierBaseRangeInterface
             $this->priceAmount,
             $this->priceCurrency
         );
+    }
+
+    /**
+     * Get Type
+     *
+     * @return mixed Type
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Sets Type
+     *
+     * @param mixed $type Type
+     *
+     * @return $this Self object
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
     }
 }

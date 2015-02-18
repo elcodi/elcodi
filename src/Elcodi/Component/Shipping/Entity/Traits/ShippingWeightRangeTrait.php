@@ -15,19 +15,36 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Shipping\Entity\Interfaces;
+namespace Elcodi\Component\Shipping\Entity\Traits;
 
 /**
- * Interface CarrierWeightRangeInterface
+ * Trait ShippingWeightRangeTrait
  */
-interface CarrierWeightRangeInterface extends CarrierBaseRangeInterface
+trait ShippingWeightRangeTrait
 {
+    /**
+     * @var integer
+     *
+     * fromWeight
+     */
+    protected $fromWeight;
+
+    /**
+     * @var integer
+     *
+     * toWeight
+     */
+    protected $toWeight;
+
     /**
      * Get ToWeight
      *
      * @return int ToWeight
      */
-    public function getToWeight();
+    public function getToWeight()
+    {
+        return $this->toWeight;
+    }
 
     /**
      * Sets ToWeight
@@ -36,14 +53,22 @@ interface CarrierWeightRangeInterface extends CarrierBaseRangeInterface
      *
      * @return $this Self object
      */
-    public function setToWeight($toWeight);
+    public function setToWeight($toWeight)
+    {
+        $this->toWeight = $toWeight;
+
+        return $this;
+    }
 
     /**
      * Get FromWeight
      *
      * @return int FromWeight
      */
-    public function getFromWeight();
+    public function getFromWeight()
+    {
+        return $this->fromWeight;
+    }
 
     /**
      * Sets FromWeight
@@ -52,5 +77,10 @@ interface CarrierWeightRangeInterface extends CarrierBaseRangeInterface
      *
      * @return $this Self object
      */
-    public function setFromWeight($fromWeight);
+    public function setFromWeight($fromWeight)
+    {
+        $this->fromWeight = $fromWeight;
+
+        return $this;
+    }
 }

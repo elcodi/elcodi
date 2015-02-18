@@ -19,12 +19,12 @@ namespace Elcodi\Component\Shipping\Resolver;
 
 use Elcodi\Component\Currency\Services\CurrencyConverter;
 use Elcodi\Component\Shipping\ElcodiShippingResolverTypes;
-use Elcodi\Component\Shipping\Entity\Interfaces\CarrierBaseRangeInterface;
+use Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface;
 
 /**
- * Class CarrierResolver
+ * Class ShippingRangeResolver
  */
-class CarrierResolver
+class ShippingRangeResolver
 {
     /**
      * @var CurrencyConverter
@@ -38,34 +38,34 @@ class CarrierResolver
      *
      * Carrier resolver type
      */
-    protected $carrierResolverStrategy;
+    protected $ShippingRangeResolverStrategy;
 
     /**
      * Construct method
      *
-     * @param CurrencyConverter $currencyConverter       Currency Converter
-     * @param integer           $carrierResolverStrategy Carrier Resolver Type
+     * @param CurrencyConverter $currencyConverter             Currency Converter
+     * @param integer           $ShippingRangeResolverStrategy Carrier Resolver Type
      */
     public function __construct(
         CurrencyConverter $currencyConverter,
-        $carrierResolverStrategy)
+        $ShippingRangeResolverStrategy)
     {
         $this->currencyConverter = $currencyConverter;
-        $this->carrierResolverStrategy = $carrierResolverStrategy;
+        $this->ShippingRangeResolverStrategy = $ShippingRangeResolverStrategy;
     }
 
     /**
      * Resolve valid carrier given a set of them
      *
-     * @param CarrierBaseRangeInterface[] $carrierRanges Carrier Ranges set
+     * @param ShippingRangeInterface[] $carrierRanges Carrier Ranges set
      *
-     * @return CarrierBaseRangeInterface[] Valid carrier ranges
+     * @return ShippingRangeInterface[] Valid carrier ranges
      */
     public function resolveCarrierRanges(array $carrierRanges)
     {
         $validCarrierRanges = array();
 
-        switch ($this->carrierResolverStrategy) {
+        switch ($this->ShippingRangeResolverStrategy) {
 
             case ElcodiShippingResolverTypes::CARRIER_RESOLVER_ALL:
                 $validCarrierRanges = $carrierRanges;
@@ -86,21 +86,21 @@ class CarrierResolver
     /**
      * Get the CarrierRange with the lowest price
      *
-     * @param CarrierBaseRangeInterface[] $carrierRanges Carrier Ranges set
+     * @param ShippingRangeInterface[] $carrierRanges Carrier Ranges set
      *
-     * @return CarrierBaseRangeInterface Lowest price CarrierRange
+     * @return ShippingRangeInterface Lowest price CarrierRange
      */
     protected function getCarrierRangeWithLowestPrice(array $carrierRanges)
     {
         /**
-         * @var CarrierBaseRangeInterface $lowestPriceCarrierRange
+         * @var ShippingRangeInterface $lowestPriceCarrierRange
          */
         $lowestPriceCarrierRange = null;
 
         foreach ($carrierRanges as $carrierRange) {
             $carrierRangePrice = $carrierRange->getPrice();
 
-            if ($lowestPriceCarrierRange instanceof CarrierBaseRangeInterface) {
+            if ($lowestPriceCarrierRange instanceof ShippingRangeInterface) {
                 if ($carrierRangePrice
                     ->isLessThan(
                         $this
@@ -124,21 +124,21 @@ class CarrierResolver
     /**
      * Get the CarrierRange with the highest price
      *
-     * @param CarrierBaseRangeInterface[] $carrierRanges Carrier Ranges set
+     * @param ShippingRangeInterface[] $carrierRanges Carrier Ranges set
      *
-     * @return CarrierBaseRangeInterface Highest price CarrierRange
+     * @return ShippingRangeInterface Highest price CarrierRange
      */
     protected function getCarrierRangeWithHighestPrice(array $carrierRanges)
     {
         /**
-         * @var CarrierBaseRangeInterface $highestPriceCarrierRange
+         * @var ShippingRangeInterface $highestPriceCarrierRange
          */
         $highestPriceCarrierRange = null;
 
         foreach ($carrierRanges as $carrierRange) {
             $carrierRangePrice = $carrierRange->getPrice();
 
-            if ($highestPriceCarrierRange instanceof CarrierBaseRangeInterface) {
+            if ($highestPriceCarrierRange instanceof ShippingRangeInterface) {
                 if ($carrierRangePrice
                     ->isGreaterThan(
                         $this
