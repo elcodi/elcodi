@@ -18,10 +18,11 @@
 namespace Elcodi\Component\Geo\Tests\UnitTest\Adapter;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use PHPUnit_Framework_TestCase;
+
 use Elcodi\Component\Geo\Entity\Address;
 use Elcodi\Component\Geo\EventDispatcher\AddressEventDispatcher;
 use Elcodi\Component\Geo\Services\AddressManager;
-use PHPUnit_Framework_TestCase;
 
 /**
  * Class AddressManagerTest
@@ -111,7 +112,6 @@ class AddressManagerTest extends PHPUnit_Framework_TestCase
             $originalAddress,
             'The saved address should be the one received'
         );
-
     }
 
     /**
@@ -178,6 +178,7 @@ class AddressManagerTest extends PHPUnit_Framework_TestCase
         $address = new Address();
         $address->setId($id);
         $address->setName($name);
+
         return $address;
     }
 }

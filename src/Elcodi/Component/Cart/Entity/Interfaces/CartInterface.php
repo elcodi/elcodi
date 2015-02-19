@@ -22,9 +22,10 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
-use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
-use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
+use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
+use Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface;
+use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
  * Class CartInterface
@@ -66,6 +67,22 @@ interface CartInterface
      * @return $this Self object
      */
     public function setCouponAmount(MoneyInterface $amount);
+
+    /**
+     * Gets the shipping amount
+     *
+     * @return MoneyInterface Shipping amount with tax
+     */
+    public function getShippingAmount();
+
+    /**
+     * Sets the shipping amount
+     *
+     * @param MoneyInterface $shippingAmount shipping amount with tax
+     *
+     * @return $this Self object
+     */
+    public function setShippingAmount(MoneyInterface $shippingAmount);
 
     /**
      * Gets product amount with tax
@@ -212,4 +229,20 @@ interface CartInterface
      * @return $this Self object
      */
     public function setBillingAddress($billingAddress);
+
+    /**
+     * Get ShippingRange
+     *
+     * @return ShippingRangeInterface ShippingRange
+     */
+    public function getShippingRange();
+
+    /**
+     * Sets ShippingRange
+     *
+     * @param ShippingRangeInterface $shippingRange ShippingRange
+     *
+     * @return $this Self object
+     */
+    public function setShippingRange(ShippingRangeInterface $shippingRange = null);
 }

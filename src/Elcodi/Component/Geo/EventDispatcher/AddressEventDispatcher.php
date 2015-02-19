@@ -18,8 +18,8 @@
 namespace Elcodi\Component\Geo\EventDispatcher;
 
 use Elcodi\Component\Core\EventDispatcher\Abstracts\AbstractEventDispatcher;
-use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Geo\ElcodiGeoEvents;
+use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Geo\Event\AddressOnCloneEvent;
 
 /**

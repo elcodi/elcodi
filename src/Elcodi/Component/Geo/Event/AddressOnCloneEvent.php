@@ -17,8 +17,9 @@
 
 namespace Elcodi\Component\Geo\Event;
 
-use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Symfony\Component\EventDispatcher\Event;
+
+use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 
 /**
  * Class CartLineOnAddEvent

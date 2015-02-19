@@ -126,6 +126,7 @@ class ElcodiCartExtension extends AbstractExtension implements EntitiesOverridab
             'factories',
             'repositories',
             'objectManagers',
+            'directors',
             'transformers',
             'eventDispatchers',
             'stateMachine',

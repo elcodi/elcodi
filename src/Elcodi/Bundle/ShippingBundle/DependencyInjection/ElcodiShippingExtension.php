@@ -113,6 +113,7 @@ class ElcodiShippingExtension extends AbstractExtension implements EntitiesOverr
             'repositories',
             'objectManagers',
             'directors',
+            'eventListeners',
         ];
     }
 

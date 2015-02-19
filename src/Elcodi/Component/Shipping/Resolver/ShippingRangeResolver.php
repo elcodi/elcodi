@@ -38,124 +38,125 @@ class ShippingRangeResolver
      *
      * Carrier resolver type
      */
-    protected $ShippingRangeResolverStrategy;
+    protected $shippingRangeResolverStrategy;
 
     /**
      * Construct method
      *
      * @param CurrencyConverter $currencyConverter             Currency Converter
-     * @param integer           $ShippingRangeResolverStrategy Carrier Resolver Type
+     * @param integer           $shippingRangeResolverStrategy Carrier Resolver Type
      */
     public function __construct(
         CurrencyConverter $currencyConverter,
-        $ShippingRangeResolverStrategy)
+        $shippingRangeResolverStrategy)
     {
         $this->currencyConverter = $currencyConverter;
-        $this->ShippingRangeResolverStrategy = $ShippingRangeResolverStrategy;
+        $this->shippingRangeResolverStrategy = $shippingRangeResolverStrategy;
     }
 
     /**
      * Resolve valid carrier given a set of them
      *
-     * @param ShippingRangeInterface[] $carrierRanges Carrier Ranges set
+     * @param ShippingRangeInterface[] $shippingRanges Carrier Ranges set
      *
      * @return ShippingRangeInterface[] Valid carrier ranges
      */
-    public function resolveCarrierRanges(array $carrierRanges)
+    public function resolveShippingRanges(array $shippingRanges)
     {
-        $validCarrierRanges = array();
+        $validShippingRanges = array();
 
-        switch ($this->ShippingRangeResolverStrategy) {
+        switch ($this->shippingRangeResolverStrategy) {
 
             case ElcodiShippingResolverTypes::CARRIER_RESOLVER_ALL:
-                $validCarrierRanges = $carrierRanges;
+                $validShippingRanges = $shippingRanges;
                 break;
 
             case ElcodiShippingResolverTypes::CARRIER_RESOLVER_LOWEST:
-                $validCarrierRanges = array($this->getCarrierRangeWithLowestPrice($carrierRanges));
+                $range = $this->getShippingRangeWithLowestPrice($shippingRanges);
+                $validShippingRanges = array($this->getShippingRangeWithLowestPrice($shippingRanges));
                 break;
 
             case ElcodiShippingResolverTypes::CARRIER_RESOLVER_HIGHEST:
-                $validCarrierRanges = array($this->getCarrierRangeWithHighestPrice($carrierRanges));
+                $validShippingRanges = array($this->getShippingRangeWithHighestPrice($shippingRanges));
                 break;
         }
 
-        return $validCarrierRanges;
+        return $validShippingRanges;
     }
 
     /**
-     * Get the CarrierRange with the lowest price
+     * Get the ShippingRange with the lowest price
      *
-     * @param ShippingRangeInterface[] $carrierRanges Carrier Ranges set
+     * @param ShippingRangeInterface[] $shippingRanges Carrier Ranges set
      *
-     * @return ShippingRangeInterface Lowest price CarrierRange
+     * @return ShippingRangeInterface Lowest price ShippingRange
      */
-    protected function getCarrierRangeWithLowestPrice(array $carrierRanges)
+    protected function getShippingRangeWithLowestPrice(array $shippingRanges)
     {
         /**
-         * @var ShippingRangeInterface $lowestPriceCarrierRange
+         * @var ShippingRangeInterface $lowestPriceShippingRange
          */
-        $lowestPriceCarrierRange = null;
+        $lowestPriceShippingRange = null;
 
-        foreach ($carrierRanges as $carrierRange) {
-            $carrierRangePrice = $carrierRange->getPrice();
+        foreach ($shippingRanges as $shippingRange) {
+            $shippingRangePrice = $shippingRange->getPrice();
 
-            if ($lowestPriceCarrierRange instanceof ShippingRangeInterface) {
-                if ($carrierRangePrice
+            if ($lowestPriceShippingRange instanceof ShippingRangeInterface) {
+                if ($shippingRangePrice
                     ->isLessThan(
                         $this
                             ->currencyConverter
                             ->convertMoney(
-                                $lowestPriceCarrierRange->getPrice(),
-                                $carrierRangePrice->getCurrency()
+                                $lowestPriceShippingRange->getPrice(),
+                                $shippingRangePrice->getCurrency()
                             )
                     )
                 ) {
-                    $lowestPriceCarrierRange = $carrierRange;
+                    $lowestPriceShippingRange = $shippingRange;
                 }
             } else {
-                $lowestPriceCarrierRange = $carrierRange;
+                $lowestPriceShippingRange = $shippingRange;
             }
         }
 
-        return $lowestPriceCarrierRange;
+        return $lowestPriceShippingRange;
     }
 
     /**
-     * Get the CarrierRange with the highest price
+     * Get the ShippingRange with the highest price
      *
-     * @param ShippingRangeInterface[] $carrierRanges Carrier Ranges set
+     * @param ShippingRangeInterface[] $shippingRanges Carrier Ranges set
      *
-     * @return ShippingRangeInterface Highest price CarrierRange
+     * @return ShippingRangeInterface Highest price ShippingRange
      */
-    protected function getCarrierRangeWithHighestPrice(array $carrierRanges)
+    protected function getShippingRangeWithHighestPrice(array $shippingRanges)
     {
         /**
-         * @var ShippingRangeInterface $highestPriceCarrierRange
+         * @var ShippingRangeInterface $highestPriceShippingRange
          */
-        $highestPriceCarrierRange = null;
+        $highestPriceShippingRange = null;
 
-        foreach ($carrierRanges as $carrierRange) {
-            $carrierRangePrice = $carrierRange->getPrice();
+        foreach ($shippingRanges as $shippingRange) {
+            $shippingRangePrice = $shippingRange->getPrice();
 
-            if ($highestPriceCarrierRange instanceof ShippingRangeInterface) {
-                if ($carrierRangePrice
+            if ($highestPriceShippingRange instanceof ShippingRangeInterface) {
+                if ($shippingRangePrice
                     ->isGreaterThan(
                         $this
                             ->currencyConverter
                             ->convertMoney(
-                                $highestPriceCarrierRange->getPrice(),
-                                $carrierRangePrice->getCurrency()
+                                $highestPriceShippingRange->getPrice(),
+                                $shippingRangePrice->getCurrency()
                             )
                     )
                 ) {
-                    $highestPriceCarrierRange = $carrierRange;
+                    $highestPriceShippingRange = $shippingRange;
                 }
             } else {
-                $highestPriceCarrierRange = $carrierRange;
+                $highestPriceShippingRange = $shippingRange;
             }
         }
 
-        return $highestPriceCarrierRange;
+        return $highestPriceShippingRange;
     }
 }

@@ -17,11 +17,12 @@
 
 namespace Elcodi\Component\Geo\Tests\UnitTest\Adapter;
 
-use Elcodi\Component\Geo\Formatter\AddressFormatter;
+use PHPUnit_Framework_TestCase;
+
 use Elcodi\Component\Geo\Entity\Address;
+use Elcodi\Component\Geo\Formatter\AddressFormatter;
 use Elcodi\Component\Geo\Services\Interfaces\LocationProviderInterface;
 use Elcodi\Component\Geo\ValueObject\LocationData;
-use PHPUnit_Framework_TestCase;
 
 /**
  * Class AddressManagerTest
@@ -106,7 +107,7 @@ class AddressFormatterTest extends PHPUnit_Framework_TestCase
                 'city'    => 'Estudis de TV3',
                 'country' => 'Catalunya',
             ],
-            'fullAddress'      => $expectedFullAddress
+            'fullAddress'      => $expectedFullAddress,
         ];
 
         $this
@@ -116,7 +117,7 @@ class AddressFormatterTest extends PHPUnit_Framework_TestCase
             ->with('city_id')
             ->will($this->returnValue([
                 $country,
-                $city
+                $city,
             ]));
 
         $response = $this

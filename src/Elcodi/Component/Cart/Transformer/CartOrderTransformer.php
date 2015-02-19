@@ -21,7 +21,6 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Cart\EventDispatcher\OrderEventDispatcher;
 use Elcodi\Component\Cart\Factory\OrderFactory;
-use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 
 /**
  * Class CartOrderTransformer
@@ -118,6 +117,7 @@ class CartOrderTransformer
             ->setCart($cart)
             ->setQuantity($cart->getQuantity())
             ->setProductAmount($cart->getProductAmount())
+            ->setShippingAmount($cart->getShippingAmount())
             ->setAmount($cart->getAmount())
             ->setHeight($cart->getHeight())
             ->setWidth($cart->getWidth())

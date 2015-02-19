@@ -129,6 +129,22 @@ interface OrderInterface extends PriceInterface, DimensionableInterface
     public function setCouponAmount(MoneyInterface $couponAmount);
 
     /**
+     * Gets the shipping amount
+     *
+     * @return MoneyInterface Shipping amount with tax
+     */
+    public function getShippingAmount();
+
+    /**
+     * Sets the shipping amount
+     *
+     * @param MoneyInterface $shippingAmount shipping amount with tax
+     *
+     * @return $this Self object
+     */
+    public function setShippingAmount(MoneyInterface $shippingAmount);
+
+    /**
      * Set the height
      *
      * @param integer $height Height

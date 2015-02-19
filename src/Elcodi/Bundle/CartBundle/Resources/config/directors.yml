@@ -1,0 +1,32 @@
+services:
+
+    #
+    # Directors
+    #
+    elcodi.director.cart:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        arguments:
+            - @elcodi.object_manager.cart
+            - @elcodi.repository.cart
+            - @elcodi.factory.cart
+
+    elcodi.director.cart_line:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        arguments:
+            - @elcodi.object_manager.cart_line
+            - @elcodi.repository.cart_line
+            - @elcodi.factory.cart_line
+
+    elcodi.director.order:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        arguments:
+            - @elcodi.object_manager.order
+            - @elcodi.repository.order
+            - @elcodi.factory.order
+
+    elcodi.director.order_line:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        arguments:
+            - @elcodi.object_manager.order_line
+            - @elcodi.repository.order_line
+            - @elcodi.factory.order_line

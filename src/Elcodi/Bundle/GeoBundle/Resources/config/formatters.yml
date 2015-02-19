@@ -7,4 +7,3 @@ services:
         class: %elcodi.formatter.address.class%
         arguments:
             location_provider: @elcodi.location_provider
-

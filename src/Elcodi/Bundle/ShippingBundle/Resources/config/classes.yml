@@ -17,10 +17,14 @@ parameters:
     #
     # Providers
     #
-    elcodi.provider.carrier.class: Elcodi\Component\Shipping\Provider\CarrierProvider
-    elcodi.provider.shipping.class: Elcodi\Component\Shipping\Provider\ShippingProvider
+    elcodi.provider.shipping_range.class: Elcodi\Component\Shipping\Provider\ShippingRangeProvider
 
     #
     # Resolvers
     #
     elcodi.resolver.shipping_range.class: Elcodi\Component\Shipping\Resolver\ShippingRangeResolver
+
+    #
+    # Event Listeners
+    #
+    elcodi.event_listener.refresh_shipping_amount.class: Elcodi\Component\Shipping\EventListener\RefreshShippingAmountEventListener

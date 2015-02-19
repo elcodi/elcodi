@@ -19,6 +19,10 @@ Elcodi\Component\Cart\Entity\Order:
             column: coupon_amount
             type: integer
             nullable: true
+        shippingAmount:
+            column: shipping_amount
+            type: integer
+            nullable: true
         amount:
             column: amount
             type: integer
@@ -101,6 +105,13 @@ Elcodi\Component\Cart\Entity\Order:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
                  name: coupon_currency_iso
+                 referencedColumnName: iso
+                 nullable: true
+
+        shippingCurrency:
+            targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                 name: shipping_currency_iso
                  referencedColumnName: iso
                  nullable: true
 

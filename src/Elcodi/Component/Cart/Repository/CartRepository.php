@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Cart\Repository;
 
 use Doctrine\ORM\EntityRepository;
+
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 
@@ -54,5 +55,4 @@ class CartRepository extends EntityRepository
 
         return $result;
     }
-
 }
