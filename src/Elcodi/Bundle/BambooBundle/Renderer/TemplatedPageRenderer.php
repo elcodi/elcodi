@@ -17,21 +17,21 @@
 
 namespace Elcodi\Bundle\BambooBundle\Renderer;
 
+use RuntimeException;
 use Symfony\Component\Templating\EngineInterface;
 
 use Elcodi\Bundle\BambooBundle\Entity\Page as BambooPage;
-use Elcodi\Component\Configuration\Services\ConfigurationManager;
 use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
 use Elcodi\Component\Page\Renderer\Interfaces\PageRendererInterface;
 
 /**
- * Class TemplateRenderer
+ * Class TemplatedPageRenderer
  *
  * Add layout rendering
  *
  * @author Berny Cantos <be@rny.cc>
  */
-class TemplateRenderer implements PageRendererInterface
+class TemplatedPageRenderer implements PageRendererInterface
 {
     /**
      * @var EngineInterface
@@ -41,24 +41,35 @@ class TemplateRenderer implements PageRendererInterface
     protected $engine;
 
     /**
-     * @var ConfigurationManager
+     * @var string
      *
-     * Configuration manager
+     * Path of the template to render
      */
-    protected $configurationManager;
+    protected $templatePath;
+
+    /**
+     * @var array
+     *
+     * Bundles to search
+     */
+    protected $bundles;
 
     /**
      * Construct
      *
-     * @param EngineInterface      $engine               Render engine
-     * @param ConfigurationManager $configurationManager Configuration manager
+     * @param EngineInterface $engine  Render engine
+     * @param string          $path    Relative path to the template
+     * @param array           $bundles Array of bundles to search
      */
     public function __construct(
         EngineInterface $engine,
-        ConfigurationManager $configurationManager
-    ) {
+        $path,
+        array $bundles
+    )
+    {
         $this->engine = $engine;
-        $this->configurationManager = $configurationManager;
+        $this->templatePath = $path;
+        $this->bundles = $bundles;
     }
 
     /**
@@ -70,25 +81,36 @@ class TemplateRenderer implements PageRendererInterface
      */
     public function render(PageInterface $page)
     {
-        $templateBundleName = $this
-            ->configurationManager
-            ->get('store.template');
-
-        $templateBaseName = "Page:layout.html.twig";
-
-        $templateName = "{$templateBundleName}:{$templateBaseName}";
-        if (!$this->engine->exists($templateName)) {
-            $templateName = "ElcodiBambooBundle:{$templateBaseName}";
-        }
+        $templateName = $this->locateTemplate();
 
         return $this
             ->engine
             ->render(
-                $templateName,
-                array(
+                $templateName, array(
                     'page' => $page,
                 )
             );
+    }
+
+    /**
+     * Search for the template in every specified bundle
+     *
+     * @return string
+     */
+    protected function locateTemplate()
+    {
+        foreach ($this->bundles as $bundleName) {
+            $templateName = "{$bundleName}:{$this->templatePath}";
+
+            if ($this->engine->exists($templateName)) {
+                return $templateName;
+            }
+        }
+
+        throw new RuntimeException(sprintf(
+            'Template "%s" not found',
+            $this->templatePath
+        ));
     }
 
     /**

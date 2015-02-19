@@ -4,10 +4,13 @@ services:
     # Page renderer
     #
     bamboo.page.renderer.template_renderer:
-        class: Elcodi\Bundle\BambooBundle\Renderer\TemplateRenderer
+        class: Elcodi\Bundle\BambooBundle\Renderer\TemplatedPageRenderer
         arguments:
             - @templating.engine.twig
-            - @elcodi.manager.configuration
+            - "Page:layout.html.twig"
+            -
+              - @=elcodi_config("store.template")
+              - ElcodiBambooBundle
 
     #
     # Store tracker
