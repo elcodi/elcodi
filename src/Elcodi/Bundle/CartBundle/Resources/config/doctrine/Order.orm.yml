@@ -73,20 +73,6 @@ Elcodi\Component\Cart\Entity\Order:
                 referencedColumnName: id
                 nullable: false
 
-        deliveryAddress:
-            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\AddressInterface
-            joinColumn:
-                name: delivery_address_id
-                referencedColumnName: id
-                nullable: true
-
-        billingAddress:
-            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\AddressInterface
-            joinColumn:
-                name: billing_address_id
-                referencedColumnName: id
-                nullable: true
-
     manyToOne:
         customer:
             targetEntity: Elcodi\Component\User\Entity\Interfaces\CustomerInterface
@@ -116,6 +102,20 @@ Elcodi\Component\Cart\Entity\Order:
             joinColumn:
                  name: coupon_currency_iso
                  referencedColumnName: iso
+                 nullable: true
+
+        deliveryAddress:
+            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\AddressInterface
+            joinColumn:
+                name: delivery_address_id
+                referencedColumnName: id
+                nullable: true
+
+        billingAddress:
+            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\AddressInterface
+            joinColumn:
+                 name: billing_address_id
+                 referencedColumnName: id
                  nullable: true
 
     oneToMany:

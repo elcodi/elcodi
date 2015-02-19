@@ -27,6 +27,16 @@ Elcodi\Component\Cart\Entity\Cart:
             targetEntity: Elcodi\Component\Cart\Entity\Interfaces\OrderInterface
             mappedBy: cart
 
+    manyToOne:
+        customer:
+            targetEntity: Elcodi\Component\User\Entity\Interfaces\CustomerInterface
+            inversedBy: carts
+            joinColumn:
+                name: customer_id
+                referencedColumnName: id
+                nullable: true
+                onDelete: "SET NULL"
+
         deliveryAddress:
             targetEntity: Elcodi\Component\Geo\Entity\Interfaces\AddressInterface
             joinColumn:
@@ -40,16 +50,6 @@ Elcodi\Component\Cart\Entity\Cart:
                 name: billing_address_id
                 referencedColumnName: id
                 nullable: true
-
-    manyToOne:
-        customer:
-            targetEntity: Elcodi\Component\User\Entity\Interfaces\CustomerInterface
-            inversedBy: carts
-            joinColumn:
-                name: customer_id
-                referencedColumnName: id
-                nullable: true
-                onDelete: "SET NULL"
 
     oneToMany:
         cartLines:

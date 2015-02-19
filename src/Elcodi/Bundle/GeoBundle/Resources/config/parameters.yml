@@ -17,3 +17,8 @@ parameters:
     elcodi.route.location_api.get_location: location
     elcodi.route.location_api.get_hierarchy: hierarchy
     elcodi.route.location_api.in: in
+
+    #
+    # Location provider active
+    #
+    elcodi.location_provider: "elcodi.location_provider.service"

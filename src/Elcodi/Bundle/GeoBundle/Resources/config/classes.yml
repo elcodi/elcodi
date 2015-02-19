@@ -41,3 +41,8 @@ parameters:
     # EventDispatcher
     #
     elcodi.event_dispatcher.address.class: Elcodi\Component\Geo\EventDispatcher\AddressEventDispatcher
+
+    #
+    # Formatters
+    #
+    elcodi.formatter.address.class: Elcodi\Component\Geo\Formatter\AddressFormatter
