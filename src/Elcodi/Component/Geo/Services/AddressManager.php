@@ -60,20 +60,21 @@ class AddressManager
         if ($address->getId()) {
             $addressToSave = clone $address;
             $addressToSave->setId(null);
+
             $this->addressObjectManager->refresh($address);
+            $this->addressObjectManager->persist($addressToSave);
+            $this->addressObjectManager->flush($addressToSave);
 
             $this->addressEventDispatcher->dispatchAddressOnCloneEvent(
                 $address,
                 $addressToSave
             );
+
+            $this->addressSaved = $addressToSave;
         } else {
-            $addressToSave = $address;
+            $this->addressObjectManager->flush($address);
+            $this->addressSaved = $address;
         }
-
-        $this->addressObjectManager->persist($addressToSave);
-        $this->addressObjectManager->flush($addressToSave);
-
-        $this->addressSaved = $addressToSave;
 
         return $this;
     }
