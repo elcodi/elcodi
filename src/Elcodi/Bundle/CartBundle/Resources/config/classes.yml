@@ -28,6 +28,7 @@ parameters:
     elcodi.event_listener.order_line_creation.class: Elcodi\Component\Cart\EventListener\OrderLineCreationEventListener
     elcodi.event_listener.cart_session.class: Elcodi\Component\Cart\EventListener\CartSessionEventListener
     elcodi.event_listener.limit_negative_carts.class: Elcodi\Component\Cart\EventListener\LimitNegativeCartsListener
+    elcodi.event_listener.address_clone.class: Elcodi\Component\Cart\EventListener\AddressCloneEventListener
 
     #
     # Factories
