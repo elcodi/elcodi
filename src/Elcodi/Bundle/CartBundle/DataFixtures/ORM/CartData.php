@@ -53,6 +53,8 @@ class CartData extends AbstractFixture implements DependentFixtureInterface
          * @var CartLineInterface $cartLine2
          * @var CartFactory $cartFactory
          * @var CartLineFactory $cartLineFactory
+         * @var AddressInterface $address1
+         * @var AddressInterface $address2
          */
         $cartFactory = $this->getFactory('cart');
         $cartLineFactory = $this->getFactory('cart_line');
@@ -63,6 +65,9 @@ class CartData extends AbstractFixture implements DependentFixtureInterface
         $customer2 = $this->getReference('customer-2');
         $product = $this->getReference('product');
         $productReduced = $this->getReference('product-reduced');
+
+        $address1 = $this->getReference('address-sant-celoni');
+        $address2 = $this->getReference('address-viladecavalls');
 
         /**
          * Empty cart
@@ -101,6 +106,9 @@ class CartData extends AbstractFixture implements DependentFixtureInterface
             ->addCartLine($cartLine1)
             ->addCartLine($cartLine2);
 
+        $fullCart->setBillingAddress($address1);
+        $fullCart->setDeliveryAddress($address2);
+
         $cartObjectManager->persist($fullCart);
         $this->addReference('full-cart', $fullCart);
 
@@ -126,6 +134,7 @@ class CartData extends AbstractFixture implements DependentFixtureInterface
         return [
             'Elcodi\Bundle\ProductBundle\DataFixtures\ORM\ProductData',
             'Elcodi\Bundle\UserBundle\DataFixtures\ORM\CustomerData',
+            'Elcodi\Bundle\GeoBundle\DataFixtures\ORM\AddressData',
         ];
     }
 }

@@ -49,7 +49,7 @@ class AddressCloneEventListener
     private $cartObjectManager;
 
     /**
-     * 
+     * Builds an event listener
      *
      * @param CartRepository $cartRepository
      * @param ObjectManager  $cartObjectManager

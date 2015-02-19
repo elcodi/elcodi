@@ -19,6 +19,7 @@ namespace Elcodi\Component\Geo\Tests\UnitTest\Adapter;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Elcodi\Component\Geo\Entity\Address;
+use Elcodi\Component\Geo\EventDispatcher\AddressEventDispatcher;
 use Elcodi\Component\Geo\Services\AddressManager;
 use PHPUnit_Framework_TestCase;
 
@@ -35,11 +36,18 @@ class AddressManagerTest extends PHPUnit_Framework_TestCase
     protected $addressManager;
 
     /**
-     * @var ObjectManager
+     * @var ObjectManager|\PHPUnit_Framework_MockObject_MockObject
      *
      * An address object manager
      */
     protected $addressObjectManagerMock;
+
+    /**
+     * @var AddressEventDispatcher|\PHPUnit_Framework_MockObject_MockObject
+     *
+     * An address event dispatcher
+     */
+    protected $addressEventDispatcher;
 
     /**
      * Set ups the test to be executed
@@ -52,8 +60,15 @@ class AddressManagerTest extends PHPUnit_Framework_TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
+        $this->addressEventDispatcher = $this->getMockBuilder(
+            'Elcodi\Component\Geo\EventDispatcher\AddressEventDispatcher'
+        )
+            ->disableOriginalConstructor()
+            ->getMock();
+
         $this->addressManager = new AddressManager(
-            $this->addressObjectManagerMock
+            $this->addressObjectManagerMock,
+            $this->addressEventDispatcher
         );
     }
 
@@ -69,10 +84,8 @@ class AddressManagerTest extends PHPUnit_Framework_TestCase
 
         $this
             ->addressObjectManagerMock
-            ->expects($this->once())
-            ->method('persist')
-            ->with($originalAddress);
-
+            ->expects($this->never())
+            ->method('persist');
 
         $this
             ->addressObjectManagerMock
@@ -83,6 +96,11 @@ class AddressManagerTest extends PHPUnit_Framework_TestCase
         $this
             ->addressManager
             ->saveAddress($originalAddress);
+
+        $this
+            ->addressEventDispatcher
+            ->expects($this->never())
+            ->method('dispatchAddressOnCloneEvent');
 
         $savedAddress = $this
             ->addressManager
@@ -122,6 +140,11 @@ class AddressManagerTest extends PHPUnit_Framework_TestCase
             ->expects($this->once())
             ->method('flush')
             ->with($clonedAddress);
+
+        $this
+            ->addressEventDispatcher
+            ->expects($this->once())
+            ->method('dispatchAddressOnCloneEvent');
 
         $this
             ->addressManager

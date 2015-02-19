@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Cart\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 
 /**
@@ -25,6 +26,13 @@ use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
  */
 class CartRepository extends EntityRepository
 {
+    /**
+     * Finds all the carts that had an address for billing or delivery
+     *
+     * @param AddressInterface $address The address to search
+     *
+     * @return CartInterface[]
+     */
     public function findAllCartsWithAddress(AddressInterface $address)
     {
         $queryBuilder = $this
