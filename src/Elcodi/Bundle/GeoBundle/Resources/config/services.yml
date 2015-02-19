@@ -29,3 +29,8 @@ services:
         class: %elcodi.location_builder.class%
         arguments:
             location_factory: @elcodi.factory.location
+
+    elcodi.manager.address:
+        class: %elcodi.manager.address.class%
+        arguments:
+            address_object_manager: @elcodi.object_manager.address
