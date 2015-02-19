@@ -36,3 +36,8 @@ parameters:
     # Transformers
     #
     elcodi.transformer.location_to_location_data.class: Elcodi\Component\Geo\Transformer\LocationToLocationDataTransformer
+
+    #
+    # EventDispatcher
+    #
+    elcodi.event_dispatcher.address.class: Elcodi\Component\Geo\EventDispatcher\AddressEventDispatcher

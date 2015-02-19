@@ -34,3 +34,4 @@ services:
         class: %elcodi.manager.address.class%
         arguments:
             address_object_manager: @elcodi.object_manager.address
+            address_event_dispatcher: @elcodi.event_dispatcher.address

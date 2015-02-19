@@ -111,6 +111,7 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
             'services',
             'parameters',
             'transformers',
+            'eventDispatchers',
         ];
     }
 

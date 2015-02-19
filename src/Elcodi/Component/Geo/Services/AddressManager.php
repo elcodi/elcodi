@@ -3,6 +3,7 @@
 namespace Elcodi\Component\Geo\Services;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Elcodi\Component\Geo\EventDispatcher\AddressEventDispatcher;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 
 /**
@@ -25,14 +26,26 @@ class AddressManager
     protected $addressObjectManager;
 
     /**
+     * @var AddressEventDispatcher
+     *
+     * Address event dispatcher
+     */
+    private $addressEventDispatcher;
+
+    /**
      * Builds an address manager
      *
-     * @param ObjectManager $addressObjectManager An address object manager
+     * @param ObjectManager          $addressObjectManager   An address object
+     *                                                       manager
+     * @param AddressEventDispatcher $addressEventDispatcher An address event
+     *                                                       dispatcher
      */
     public function __construct(
-        ObjectManager $addressObjectManager
+        ObjectManager $addressObjectManager,
+        AddressEventDispatcher $addressEventDispatcher
     ) {
-        $this->addressObjectManager = $addressObjectManager;
+        $this->addressObjectManager   = $addressObjectManager;
+        $this->addressEventDispatcher = $addressEventDispatcher;
     }
 
     /**
@@ -48,6 +61,11 @@ class AddressManager
             $addressToSave = clone $address;
             $addressToSave->setId(null);
             $this->addressObjectManager->refresh($address);
+
+            $this->addressEventDispatcher->dispatchAddressOnCloneEvent(
+                $address,
+                $addressToSave
+            );
         } else {
             $addressToSave = $address;
         }
