@@ -15,7 +15,7 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\BambooBundle\Renderer;
+namespace Elcodi\Component\Page\Renderer;
 
 use RuntimeException;
 use Symfony\Component\Templating\EngineInterface;
