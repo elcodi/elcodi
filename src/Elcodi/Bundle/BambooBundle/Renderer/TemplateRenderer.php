@@ -20,6 +20,7 @@ namespace Elcodi\Bundle\BambooBundle\Renderer;
 use Symfony\Component\Templating\EngineInterface;
 
 use Elcodi\Bundle\BambooBundle\Entity\Page as BambooPage;
+use Elcodi\Component\Configuration\Services\ConfigurationManager;
 use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
 use Elcodi\Component\Page\Renderer\Interfaces\PageRendererInterface;
 
@@ -40,13 +41,24 @@ class TemplateRenderer implements PageRendererInterface
     protected $engine;
 
     /**
+     * @var ConfigurationManager
+     *
+     * Configuration manager
+     */
+    protected $configurationManager;
+
+    /**
      * Construct
      *
-     * @param EngineInterface $engine Render engine
+     * @param EngineInterface      $engine               Render engine
+     * @param ConfigurationManager $configurationManager Configuration manager
      */
-    public function __construct(EngineInterface $engine)
-    {
+    public function __construct(
+        EngineInterface $engine,
+        ConfigurationManager $configurationManager
+    ) {
         $this->engine = $engine;
+        $this->configurationManager = $configurationManager;
     }
 
     /**
@@ -58,10 +70,21 @@ class TemplateRenderer implements PageRendererInterface
      */
     public function render(PageInterface $page)
     {
+        $templateBundleName = $this
+            ->configurationManager
+            ->get('store.template');
+
+        $templateBaseName = "Page:layout.html.twig";
+
+        $templateName = "{$templateBundleName}:{$templateBaseName}";
+        if (!$this->engine->exists($templateName)) {
+            $templateName = "ElcodiBambooBundle:{$templateBaseName}";
+        }
+
         return $this
             ->engine
             ->render(
-                'ElcodiBambooBundle:Page:layout.html.twig',
+                $templateName,
                 array(
                     'page' => $page,
                 )
