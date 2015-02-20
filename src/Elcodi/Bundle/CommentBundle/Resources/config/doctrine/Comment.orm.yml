@@ -61,7 +61,6 @@ Elcodi\Component\Comment\Entity\Comment:
     manyToOne:
         parent:
             targetEntity: Elcodi\Component\Comment\Entity\Interfaces\CommentInterface
-            inversedBy: children
             joinColumn:
                 name: parent_id
                 referencedColumnName: id
