@@ -68,6 +68,11 @@ Elcodi\Component\Comment\Entity\Comment:
                 nullable: true
                 onDelete: cascade
 
+    oneToMany:
+        children:
+            targetEntity: Elcodi\Component\Comment\Entity\Interfaces\CommentInterface
+            mappedBy: parent
+
     lifecycleCallbacks:
         preUpdate: [loadUpdateAt]
         prePersist: [loadUpdateAt]
