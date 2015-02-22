@@ -139,6 +139,13 @@ class Cart implements CartInterface
     protected $shippingRange;
 
     /**
+     * @var ShippingRangeInterface
+     *
+     * Cheapest Shipping range
+     */
+    protected $cheapestShippingRange;
+
+    /**
      * Get Id
      *
      * @return int Id
@@ -557,6 +564,30 @@ class Cart implements CartInterface
     public function setShippingRange(ShippingRangeInterface $shippingRange = null)
     {
         $this->shippingRange = $shippingRange;
+
+        return $this;
+    }
+
+    /**
+     * Get ShippingRange
+     *
+     * @return ShippingRangeInterface Cheapest ShippingRange
+     */
+    public function getCheapestShippingRange()
+    {
+        return $this->cheapestShippingRange;
+    }
+
+    /**
+     * Sets ShippingRange
+     *
+     * @param ShippingRangeInterface $cheapestShippingRange Cheapest ShippingRange
+     *
+     * @return $this Self object
+     */
+    public function setCheapestShippingRange(ShippingRangeInterface $cheapestShippingRange = null)
+    {
+        $this->cheapestShippingRange = $cheapestShippingRange;
 
         return $this;
     }

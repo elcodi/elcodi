@@ -245,4 +245,20 @@ interface CartInterface
      * @return $this Self object
      */
     public function setShippingRange(ShippingRangeInterface $shippingRange = null);
+
+    /**
+     * Get ShippingRange
+     *
+     * @return ShippingRangeInterface Cheapest ShippingRange
+     */
+    public function getCheapestShippingRange();
+
+    /**
+     * Sets ShippingRange
+     *
+     * @param ShippingRangeInterface $cheapestShippingRange Cheapest ShippingRange
+     *
+     * @return $this Self object
+     */
+    public function setCheapestShippingRange(ShippingRangeInterface $cheapestShippingRange = null);
 }

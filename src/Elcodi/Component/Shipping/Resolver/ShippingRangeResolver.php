@@ -48,7 +48,8 @@ class ShippingRangeResolver
      */
     public function __construct(
         CurrencyConverter $currencyConverter,
-        $shippingRangeResolverStrategy)
+        $shippingRangeResolverStrategy
+    )
     {
         $this->currencyConverter = $currencyConverter;
         $this->shippingRangeResolverStrategy = $shippingRangeResolverStrategy;
@@ -72,7 +73,6 @@ class ShippingRangeResolver
                 break;
 
             case ElcodiShippingResolverTypes::CARRIER_RESOLVER_LOWEST:
-                $range = $this->getShippingRangeWithLowestPrice($shippingRanges);
                 $validShippingRanges = array($this->getShippingRangeWithLowestPrice($shippingRanges));
                 break;
 
@@ -91,7 +91,7 @@ class ShippingRangeResolver
      *
      * @return ShippingRangeInterface Lowest price ShippingRange
      */
-    protected function getShippingRangeWithLowestPrice(array $shippingRanges)
+    public function getShippingRangeWithLowestPrice(array $shippingRanges)
     {
         /**
          * @var ShippingRangeInterface $lowestPriceShippingRange
@@ -129,7 +129,7 @@ class ShippingRangeResolver
      *
      * @return ShippingRangeInterface Highest price ShippingRange
      */
-    protected function getShippingRangeWithHighestPrice(array $shippingRanges)
+    public function getShippingRangeWithHighestPrice(array $shippingRanges)
     {
         /**
          * @var ShippingRangeInterface $highestPriceShippingRange
