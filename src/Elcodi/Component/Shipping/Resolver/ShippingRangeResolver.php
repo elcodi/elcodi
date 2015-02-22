@@ -49,8 +49,7 @@ class ShippingRangeResolver
     public function __construct(
         CurrencyConverter $currencyConverter,
         $shippingRangeResolverStrategy
-    )
-    {
+    ) {
         $this->currencyConverter = $currencyConverter;
         $this->shippingRangeResolverStrategy = $shippingRangeResolverStrategy;
     }
