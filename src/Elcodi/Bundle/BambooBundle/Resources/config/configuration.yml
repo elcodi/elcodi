@@ -116,4 +116,3 @@ elcodi_configuration:
             type: string
             reference: elcodi.core.currency.default_currency
             read_only: true
-

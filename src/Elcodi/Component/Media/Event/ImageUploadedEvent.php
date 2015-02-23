@@ -12,12 +12,14 @@
  *
  * @author Marc Morera <yuhu@mmoreram.com>
  * @author Aldo Chiecchia <zimage@tiscali.it>
+ * @author Elcodi Team <tech@elcodi.com>
  */
 
 namespace Elcodi\Component\Media\Event;
 
-use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 use Symfony\Component\EventDispatcher\Event;
+
+use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 
 /**
  * Class ImageUploadedEvent

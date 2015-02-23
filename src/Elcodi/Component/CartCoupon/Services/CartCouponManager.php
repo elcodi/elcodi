@@ -170,7 +170,6 @@ class CartCouponManager
             ));
 
         if (false === $coupon instanceof CouponInterface) {
-
             throw new CouponNotAvailableException();
         }
 

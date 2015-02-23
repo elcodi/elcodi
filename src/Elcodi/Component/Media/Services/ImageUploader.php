@@ -18,10 +18,10 @@
 namespace Elcodi\Component\Media\Services;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Elcodi\Component\Media\EventDispatcher\MediaEventDispatcher;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
+use Elcodi\Component\Media\EventDispatcher\MediaEventDispatcher;
 use Elcodi\Component\Media\Exception\InvalidImageException;
 
 /**
@@ -70,8 +70,7 @@ class ImageUploader
         FileManager $fileManager,
         ImageManager $imageManager,
         MediaEventDispatcher $mediaEventDispatcher
-    )
-    {
+    ) {
         $this->imageObjectManager = $imageObjectManager;
         $this->fileManager = $fileManager;
         $this->imageManager = $imageManager;

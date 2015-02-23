@@ -119,7 +119,6 @@ class ConvertToOrderCouponsListener
          * An event is dispatched for each convertible coupon
          */
         foreach ($coupons as $coupon) {
-
             $this
                 ->orderCouponEventDispatcher
                 ->dispatchOrderCouponOnApplyEvent(
