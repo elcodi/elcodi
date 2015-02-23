@@ -1,9 +1,6 @@
 imports:
     - { resource: parameters.yml }
-    - { resource: @ElcodiBambooBundle/Resources/config/store.yml }
-    - { resource: @ElcodiBambooBundle/Resources/config/configuration.yml }
     - { resource: @ElcodiBambooBundle/Resources/config/cache.test.yml }
-    - { resource: @ElcodiBambooBundle/Resources/config/filesystem.test.yml }
 
 framework:
     test:            ~
@@ -35,6 +32,5 @@ doctrine:
         result_cache_driver: array
         auto_mapping: false
 
-elcodi_cart:
-    cart:
-        save_in_session: false
+elcodi_bamboo:
+    store_tracker: 873489327894
