@@ -88,4 +88,28 @@ class CategoryRepository extends EntityRepository
 
         return new ArrayCollection($categories);
     }
+
+    /**
+     * Get the available parent categories for the received, usually the
+     * category itself and all the non root categories are excluded
+     *
+     * @param string|null $categoryId The category id
+     *
+     * @return QueryBuilder
+     */
+    public function getAvailableParentCategoriesQueryBuilder(
+        $categoryId = null
+    ) {
+        $queryBuilder = $this
+            ->createQueryBuilder('c')
+            ->where('c.root = 1');
+
+        if ($categoryId) {
+            $queryBuilder
+                ->andWhere('c.id <> :parent_category')
+                ->setParameter('parent_category', $categoryId);
+        }
+
+        return $queryBuilder;
+    }
 }
