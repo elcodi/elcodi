@@ -36,3 +36,8 @@ parameters:
     #
     elcodi.transformer.media_image_etag.class: Elcodi\Component\Media\Transformer\ImageEtagTransformer
     elcodi.transformer.media_file_identifier.class: Elcodi\Component\Media\Transformer\FileIdentifierTransformer
+
+    #
+    # Event Dispatchers
+    #
+    elcodi.event_dispatcher.media.class: Elcodi\Component\Media\EventDispatcher\MediaEventDispatcher

@@ -22,6 +22,7 @@ services:
             image_object_manager: @elcodi.object_manager.image
             file_manager: @elcodi.manager.media_file
             image_manager: @elcodi.manager.media_image
+            media_event_dispatcher: @elcodi.event_dispatcher.media
 
     #
     # Resize
