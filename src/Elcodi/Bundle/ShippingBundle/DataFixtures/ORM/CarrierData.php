@@ -21,11 +21,10 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Money;
-use Elcodi\Component\Shipping\Factory\CarrierFactory;
-use Elcodi\Component\Shipping\Factory\CarrierPriceRangeFactory;
-use Elcodi\Component\Shipping\Factory\CarrierWeightRangeFactory;
+use Elcodi\Component\Shipping\ElcodiShippingRangeTypes;
 use Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface;
 
 /**
@@ -39,16 +38,11 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         /**
-         * @var CarrierFactory $carrierFactory
-         * @var CarrierPriceRangeFactory  $carrierPriceRangeFactory
-         * @var CarrierWeightRangeFactory $carrierWeightRangeFactory
+         * @var ObjectDirector $carrierDirector
+         * @var ObjectDirector $shippingRangeDirector
          */
-        $carrierFactory = $this->getFactory('shipping_carrier');
-        $carrierPriceRangeFactory = $this->getFactory('shipping_carrier_price_range');
-        $carrierWeightRangeFactory = $this->getFactory('shipping_carrier_weight_range');
-        $carrierObjectManager = $this->getObjectManager('shipping_carrier');
-        $carrierPriceRangeObjectManager = $this->getObjectManager('shipping_carrier_price_range');
-        $carrierWeightRangeObjectManager = $this->getObjectManager('shipping_carrier_weight_range');
+        $carrierDirector = $this->getDirector('carrier');
+        $shippingRangeDirector = $this->getDirector('shipping_range');
 
         /**
          * @var CurrencyInterface $currencyEuro
@@ -62,18 +56,18 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
         /**
          * Carrier1 from Viladecavalls to Barcelona
          */
-        $carrier1 = $carrierFactory
+        $carrier1 = $carrierDirector
             ->create()
             ->setName('carrier-1')
             ->setDescription('Carrier 1')
             ->setTax($this->getReference('tax-21'))
             ->setEnabled(true);
 
-        $carrierPriceRange1 = $carrierPriceRangeFactory
+        $ShippingPriceRange1 = $shippingRangeDirector
             ->create()
+            ->setType(ElcodiShippingRangeTypes::TYPE_PRICE)
             ->setCarrier($carrier1)
             ->setName('From 0€ to 10€')
-            ->setDescription('From 0€ to 10€')
             ->setFromZone($zoneViladecavalls)
             ->setToZone($zone08021)
             ->setFromPrice(Money::create(0, $currencyEuro))
@@ -81,11 +75,11 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(900, $currencyEuro))
             ->setEnabled(true);
 
-        $carrierPriceRange2 = $carrierPriceRangeFactory
+        $ShippingPriceRange2 = $shippingRangeDirector
             ->create()
+            ->setType(ElcodiShippingRangeTypes::TYPE_PRICE)
             ->setCarrier($carrier1)
             ->setName('From 10€ to 20€')
-            ->setDescription('From 10€ to 20€')
             ->setFromZone($zoneViladecavalls)
             ->setToZone($zone08021)
             ->setFromPrice(Money::create(1000, $currencyEuro))
@@ -93,11 +87,11 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(500, $currencyEuro))
             ->setEnabled(true);
 
-        $carrierPriceRange3 = $carrierPriceRangeFactory
+        $ShippingPriceRange3 = $shippingRangeDirector
             ->create()
+            ->setType(ElcodiShippingRangeTypes::TYPE_PRICE)
             ->setCarrier($carrier1)
             ->setName('Free for up to 20€')
-            ->setDescription('Free shipping for up to 20€')
             ->setFromZone($zoneViladecavalls)
             ->setToZone($zone08021)
             ->setFromPrice(Money::create(2000, $currencyEuro))
@@ -105,27 +99,27 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(115, $currencyEuro))
             ->setEnabled(true);
 
-        $carrierObjectManager->persist($carrier1);
-        $carrierPriceRangeObjectManager->persist($carrierPriceRange1);
-        $carrierPriceRangeObjectManager->persist($carrierPriceRange2);
-        $carrierPriceRangeObjectManager->persist($carrierPriceRange3);
+        $carrierDirector->save($carrier1);
+        $shippingRangeDirector->save($ShippingPriceRange1);
+        $shippingRangeDirector->save($ShippingPriceRange2);
+        $shippingRangeDirector->save($ShippingPriceRange3);
         $this->addReference('carrier-1', $carrier1);
 
         /**
          * Carrier2 from Viladecavalls to Barcelona
          */
-        $carrier2 = $carrierFactory
+        $carrier2 = $carrierDirector
             ->create()
             ->setName('carrier-2')
             ->setDescription('Carrier 2')
             ->setTax($this->getReference('tax-21'))
             ->setEnabled(true);
 
-        $carrierPriceRangeB1 = $carrierPriceRangeFactory
+        $ShippingPriceRangeB1 = $shippingRangeDirector
             ->create()
+            ->setType(ElcodiShippingRangeTypes::TYPE_PRICE)
             ->setCarrier($carrier2)
             ->setName('From 0€ to 15€')
-            ->setDescription('From 0€ to 15€')
             ->setFromZone($zoneViladecavalls)
             ->setToZone($zone08021)
             ->setFromPrice(Money::create(0, $currencyEuro))
@@ -133,11 +127,11 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(700, $currencyEuro))
             ->setEnabled(true);
 
-        $carrierPriceRangeB2 = $carrierPriceRangeFactory
+        $ShippingPriceRangeB2 = $shippingRangeDirector
             ->create()
+            ->setType(ElcodiShippingRangeTypes::TYPE_PRICE)
             ->setCarrier($carrier2)
             ->setName('From 15€ to 30€')
-            ->setDescription('From 15€ to 30€')
             ->setFromZone($zoneViladecavalls)
             ->setToZone($zone08021)
             ->setFromPrice(Money::create(1500, $currencyEuro))
@@ -145,11 +139,11 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(300, $currencyEuro))
             ->setEnabled(true);
 
-        $carrierPriceRangeB3 = $carrierPriceRangeFactory
+        $ShippingPriceRangeB3 = $shippingRangeDirector
             ->create()
+            ->setType(ElcodiShippingRangeTypes::TYPE_PRICE)
             ->setCarrier($carrier2)
             ->setName('Free for up to 30€')
-            ->setDescription('Free shipping for up to 30€')
             ->setFromZone($zoneViladecavalls)
             ->setToZone($zone08021)
             ->setFromPrice(Money::create(3000, $currencyEuro))
@@ -157,27 +151,27 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(100, $currencyEuro))
             ->setEnabled(true);
 
-        $carrierObjectManager->persist($carrier2);
-        $carrierPriceRangeObjectManager->persist($carrierPriceRangeB1);
-        $carrierPriceRangeObjectManager->persist($carrierPriceRangeB2);
-        $carrierPriceRangeObjectManager->persist($carrierPriceRangeB3);
+        $carrierDirector->save($carrier2);
+        $shippingRangeDirector->save($ShippingPriceRangeB1);
+        $shippingRangeDirector->save($ShippingPriceRangeB2);
+        $shippingRangeDirector->save($ShippingPriceRangeB3);
         $this->addReference('carrier-2', $carrier2);
 
         /**
          * Carrier3 from Viladecavalls to Barcelona
          */
-        $carrier3 = $carrierFactory
+        $carrier3 = $carrierDirector
             ->create()
             ->setName('carrier-3')
             ->setDescription('Carrier 3')
             ->setTax($this->getReference('tax-16'))
             ->setEnabled(true);
 
-        $carrierWeightRange1 = $carrierWeightRangeFactory
+        $ShippingWeightRange1 = $shippingRangeDirector
             ->create()
+            ->setType(ElcodiShippingRangeTypes::TYPE_WEIGHT)
             ->setCarrier($carrier3)
             ->setName('From 0g to 500g')
-            ->setDescription('From 0g to 500g')
             ->setFromZone($zoneViladecavalls)
             ->setToZone($zone08021)
             ->setFromWeight(0)
@@ -185,11 +179,11 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(500, $currencyEuro))
             ->setEnabled(true);
 
-        $carrierWeightRange2 = $carrierWeightRangeFactory
+        $ShippingWeightRange2 = $shippingRangeDirector
             ->create()
+            ->setType(ElcodiShippingRangeTypes::TYPE_WEIGHT)
             ->setCarrier($carrier3)
             ->setName('From 500g to 1000g')
-            ->setDescription('From 500g to 1000g')
             ->setFromZone($zoneViladecavalls)
             ->setToZone($zone08021)
             ->setFromWeight(500)
@@ -197,11 +191,11 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(700, $currencyEuro))
             ->setEnabled(true);
 
-        $carrierWeightRange3 = $carrierWeightRangeFactory
+        $ShippingWeightRange3 = $shippingRangeDirector
             ->create()
+            ->setType(ElcodiShippingRangeTypes::TYPE_WEIGHT)
             ->setCarrier($carrier3)
             ->setName('Up to 1000g')
-            ->setDescription('Up to 1000g')
             ->setFromZone($zoneViladecavalls)
             ->setToZone($zone08021)
             ->setFromWeight(1000)
@@ -209,27 +203,27 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(1000, $currencyEuro))
             ->setEnabled(true);
 
-        $carrierObjectManager->persist($carrier3);
-        $carrierWeightRangeObjectManager->persist($carrierWeightRange1);
-        $carrierWeightRangeObjectManager->persist($carrierWeightRange2);
-        $carrierWeightRangeObjectManager->persist($carrierWeightRange3);
+        $carrierDirector->save($carrier3);
+        $shippingRangeDirector->save($ShippingWeightRange1);
+        $shippingRangeDirector->save($ShippingWeightRange2);
+        $shippingRangeDirector->save($ShippingWeightRange3);
         $this->addReference('carrier-3', $carrier3);
 
         /**
          * Carrier4 from Barcelona to Viladecavalls
          */
-        $carrier4 = $carrierFactory
+        $carrier4 = $carrierDirector
             ->create()
             ->setName('carrier-4')
             ->setDescription('Carrier 4')
             ->setTax($this->getReference('tax-21'))
             ->setEnabled(true);
 
-        $carrierWeightRangeB1 = $carrierWeightRangeFactory
+        $ShippingWeightRangeB1 = $shippingRangeDirector
             ->create()
+            ->setType(ElcodiShippingRangeTypes::TYPE_WEIGHT)
             ->setCarrier($carrier4)
             ->setName('From 0g to 700g')
-            ->setDescription('From 0g to 700g')
             ->setFromZone($zoneViladecavalls)
             ->setToZone($zoneViladecavalls)
             ->setFromWeight(0)
@@ -237,11 +231,11 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(500, $currencyEuro))
             ->setEnabled(true);
 
-        $carrierWeightRangeB2 = $carrierWeightRangeFactory
+        $ShippingWeightRangeB2 = $shippingRangeDirector
             ->create()
+            ->setType(ElcodiShippingRangeTypes::TYPE_WEIGHT)
             ->setCarrier($carrier4)
             ->setName('From 500g to 1000g')
-            ->setDescription('From 500g to 1000g')
             ->setFromZone($zoneViladecavalls)
             ->setToZone($zoneViladecavalls)
             ->setFromWeight(700)
@@ -249,11 +243,11 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(1500, $currencyEuro))
             ->setEnabled(true);
 
-        $carrierWeightRangeB3 = $carrierWeightRangeFactory
+        $ShippingWeightRangeB3 = $shippingRangeDirector
             ->create()
+            ->setType(ElcodiShippingRangeTypes::TYPE_WEIGHT)
             ->setCarrier($carrier4)
             ->setName('Up to 1000g')
-            ->setDescription('Up to 1000g')
             ->setFromZone($zoneViladecavalls)
             ->setToZone($zoneViladecavalls)
             ->setFromWeight(1200)
@@ -261,13 +255,11 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(3000, $currencyEuro))
             ->setEnabled(true);
 
-        $carrierObjectManager->persist($carrier4);
-        $carrierWeightRangeObjectManager->persist($carrierWeightRangeB1);
-        $carrierWeightRangeObjectManager->persist($carrierWeightRangeB2);
-        $carrierWeightRangeObjectManager->persist($carrierWeightRangeB3);
+        $carrierDirector->save($carrier4);
+        $shippingRangeDirector->save($ShippingWeightRangeB1);
+        $shippingRangeDirector->save($ShippingWeightRangeB2);
+        $shippingRangeDirector->save($ShippingWeightRangeB3);
         $this->addReference('carrier-4', $carrier4);
-
-        $manager->flush();
     }
 
     /**

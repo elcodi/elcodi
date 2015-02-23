@@ -85,9 +85,23 @@ class Order implements OrderInterface
     /**
      * @var CurrencyInterface
      *
-     * Coupon Amount
+     * Coupon Currency
      */
     protected $couponCurrency;
+
+    /**
+     * @var integer
+     *
+     * Shipping Amount
+     */
+    protected $shippingAmount;
+
+    /**
+     * @var CurrencyInterface
+     *
+     * Shipping Currency
+     */
+    protected $shippingCurrency;
 
     /**
      * @var AddressInterface
@@ -130,6 +144,13 @@ class Order implements OrderInterface
      * StateLines for shipping
      */
     protected $shippingStateLines;
+
+    /**
+     * @var AddressInterface
+     *
+     * billing address
+     */
+    protected $billingAddress;
 
     /**
      * Get Id
@@ -290,7 +311,7 @@ class Order implements OrderInterface
      */
     public function setCouponAmount(MoneyInterface $amount)
     {
-        $this->couponAmount = $amount->getAmount();
+        $this->couponAmount   = $amount->getAmount();
         $this->couponCurrency = $amount->getCurrency();
 
         return $this;
@@ -306,6 +327,34 @@ class Order implements OrderInterface
         return Money::create(
             $this->couponAmount,
             $this->couponCurrency
+        );
+    }
+
+    /**
+     * Sets the Shipping amount with tax
+     *
+     * @param MoneyInterface $amount shipping amount
+     *
+     * @return OrderInterface
+     */
+    public function setShippingAmount(MoneyInterface $amount)
+    {
+        $this->shippingAmount   = $amount->getAmount();
+        $this->shippingCurrency = $amount->getCurrency();
+
+        return $this;
+    }
+
+    /**
+     * Gets the Shipping amount with tax
+     *
+     * @return MoneyInterface Shipping amount
+     */
+    public function getShippingAmount()
+    {
+        return Money::create(
+            $this->shippingAmount,
+            $this->shippingCurrency
         );
     }
 
@@ -377,9 +426,10 @@ class Order implements OrderInterface
      *
      * @return $this Self object
      */
-    public function setPaymentStateLineStack(StateLineStack $paymentStateLineStack)
-    {
-        $this->paymentStateLines = $paymentStateLineStack->getStateLines();
+    public function setPaymentStateLineStack(
+        StateLineStack $paymentStateLineStack
+    ) {
+        $this->paymentStateLines    = $paymentStateLineStack->getStateLines();
         $this->paymentLastStateLine = $paymentStateLineStack->getLastStateLine();
 
         return $this;
@@ -405,10 +455,35 @@ class Order implements OrderInterface
      *
      * @return $this Self object
      */
-    public function setShippingStateLineStack(StateLineStack $shippingStateLineStack)
-    {
-        $this->shippingStateLines = $shippingStateLineStack->getStateLines();
+    public function setShippingStateLineStack(
+        StateLineStack $shippingStateLineStack
+    ) {
+        $this->shippingStateLines    = $shippingStateLineStack->getStateLines();
         $this->shippingLastStateLine = $shippingStateLineStack->getLastStateLine();
+
+        return $this;
+    }
+
+    /**
+     * Get BillingAddress
+     *
+     * @return AddressInterface BillingAddress
+     */
+    public function getBillingAddress()
+    {
+        return $this->billingAddress;
+    }
+
+    /**
+     * Sets BillingAddress
+     *
+     * @param AddressInterface $billingAddress BillingAddress
+     *
+     * @return $this Self object
+     */
+    public function setBillingAddress($billingAddress)
+    {
+        $this->billingAddress = $billingAddress;
 
         return $this;
     }

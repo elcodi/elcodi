@@ -1,0 +1,12 @@
+services:
+
+    #
+    # Event Listeners
+    #
+    elcodi.event_listener.refresh_shipping_amount:
+        class: %elcodi.event_listener.refresh_shipping_amount.class%
+        arguments:
+            - @elcodi.wrapper.currency
+            - @elcodi.converter.currency
+        tags:
+            - { name: kernel.event_listener, event: cart.onload, method: refreshShippingAmount, priority: -40 }

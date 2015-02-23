@@ -22,7 +22,9 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
+use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
+use Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
@@ -65,6 +67,22 @@ interface CartInterface
      * @return $this Self object
      */
     public function setCouponAmount(MoneyInterface $amount);
+
+    /**
+     * Gets the shipping amount
+     *
+     * @return MoneyInterface Shipping amount with tax
+     */
+    public function getShippingAmount();
+
+    /**
+     * Sets the shipping amount
+     *
+     * @param MoneyInterface $shippingAmount shipping amount with tax
+     *
+     * @return $this Self object
+     */
+    public function setShippingAmount(MoneyInterface $shippingAmount);
 
     /**
      * Gets product amount with tax
@@ -179,4 +197,68 @@ interface CartInterface
      * @return integer Quantity
      */
     public function getQuantity();
+
+    /**
+     * Get DeliveryAddress
+     *
+     * @return AddressInterface DeliveryAddress
+     */
+    public function getDeliveryAddress();
+
+    /**
+     * Sets DeliveryAddress
+     *
+     * @param AddressInterface $deliveryAddress DeliveryAddress
+     *
+     * @return $this Self object
+     */
+    public function setDeliveryAddress($deliveryAddress);
+
+    /**
+     * Get BillingAddress
+     *
+     * @return AddressInterface BillingAddress
+     */
+    public function getBillingAddress();
+
+    /**
+     * Sets BillingAddress
+     *
+     * @param AddressInterface $billingAddress BillingAddress
+     *
+     * @return $this Self object
+     */
+    public function setBillingAddress($billingAddress);
+
+    /**
+     * Get ShippingRange
+     *
+     * @return ShippingRangeInterface ShippingRange
+     */
+    public function getShippingRange();
+
+    /**
+     * Sets ShippingRange
+     *
+     * @param ShippingRangeInterface $shippingRange ShippingRange
+     *
+     * @return $this Self object
+     */
+    public function setShippingRange(ShippingRangeInterface $shippingRange = null);
+
+    /**
+     * Get ShippingRange
+     *
+     * @return ShippingRangeInterface Cheapest ShippingRange
+     */
+    public function getCheapestShippingRange();
+
+    /**
+     * Sets ShippingRange
+     *
+     * @param ShippingRangeInterface $cheapestShippingRange Cheapest ShippingRange
+     *
+     * @return $this Self object
+     */
+    public function setCheapestShippingRange(ShippingRangeInterface $cheapestShippingRange = null);
 }

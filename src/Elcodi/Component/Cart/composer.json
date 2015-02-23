@@ -42,7 +42,8 @@
         "elcodi/user": "~0.4.0",
         "elcodi/product": "~0.4.0",
         "elcodi/state-transition-machine": "~0.4.0",
-        "elcodi/currency": "~0.4.0"
+        "elcodi/currency": "~0.4.0",
+        "elcodi/shipping": "~0.4.0"
     },
     "autoload": {
         "psr-4": {

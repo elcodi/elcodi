@@ -1,0 +1,83 @@
+Elcodi\Component\Shipping\Entity\ShippingRange:
+    type: entity
+    repositoryClass: Elcodi\Component\Shipping\Repository\ShippingRangeRepository
+    table: shipping_range
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        type:
+            column: type
+            type: integer
+            length: 10
+            nullable: false
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        fromPriceAmount:
+            column: from_price_amount
+            type: integer
+            nullable: true
+        toPriceAmount:
+            column: to_price_amount
+            type: integer
+            nullable: true
+        fromWeight:
+            column: from_weight
+            type: integer
+            nullable: true
+        toWeight:
+            column: to_weight
+            type: integer
+            nullable: true
+        priceAmount:
+            column: price_amount
+            type: integer
+            nullable: false
+        enabled:
+            column: enabled
+            type: boolean
+            nullable: false
+
+    manyToOne:
+        carrier:
+            targetEntity: Elcodi\Component\Shipping\Entity\Interfaces\CarrierInterface
+            inversedBy: ranges
+            joinColumn:
+                name: carrier_id
+                referencedColumnName: id
+                nullable: false
+        fromZone:
+            targetEntity: Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface
+            joinColumn:
+                name: from_zone_id
+                referencedColumnName: id
+                nullable: true
+        toZone:
+            targetEntity: Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface
+            joinColumn:
+                name: to_zone_id
+                referencedColumnName: id
+                nullable: false
+        priceCurrency:
+            targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                name: price_currency_iso
+                referencedColumnName: iso
+                nullable: false
+        fromPriceCurrency:
+            targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                name: from_price_currency_iso
+                referencedColumnName: iso
+                nullable: false
+        toPriceCurrency:
+            targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                name: to_price_currency_iso
+                referencedColumnName: iso
+                nullable: false

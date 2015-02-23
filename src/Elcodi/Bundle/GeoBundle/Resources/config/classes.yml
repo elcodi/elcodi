@@ -24,6 +24,7 @@ parameters:
     elcodi.location_provider.api.class: Elcodi\Component\Geo\Services\LocationApiProvider
     elcodi.location_api_urls.class: Elcodi\Component\Geo\ValueObject\ApiUrls
     elcodi.location_builder.class: Elcodi\Component\Geo\Services\LocationBuilder
+    elcodi.manager.address.class: Elcodi\Component\Geo\Services\AddressManager
 
     #
     # Location populators
@@ -35,3 +36,13 @@ parameters:
     # Transformers
     #
     elcodi.transformer.location_to_location_data.class: Elcodi\Component\Geo\Transformer\LocationToLocationDataTransformer
+
+    #
+    # EventDispatcher
+    #
+    elcodi.event_dispatcher.address.class: Elcodi\Component\Geo\EventDispatcher\AddressEventDispatcher
+
+    #
+    # Formatters
+    #
+    elcodi.formatter.address.class: Elcodi\Component\Geo\Formatter\AddressFormatter

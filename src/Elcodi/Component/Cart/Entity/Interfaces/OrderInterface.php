@@ -129,6 +129,22 @@ interface OrderInterface extends PriceInterface, DimensionableInterface
     public function setCouponAmount(MoneyInterface $couponAmount);
 
     /**
+     * Gets the shipping amount
+     *
+     * @return MoneyInterface Shipping amount with tax
+     */
+    public function getShippingAmount();
+
+    /**
+     * Sets the shipping amount
+     *
+     * @param MoneyInterface $shippingAmount shipping amount with tax
+     *
+     * @return $this Self object
+     */
+    public function setShippingAmount(MoneyInterface $shippingAmount);
+
+    /**
      * Set the height
      *
      * @param integer $height Height
@@ -210,7 +226,9 @@ interface OrderInterface extends PriceInterface, DimensionableInterface
      *
      * @return $this Self object
      */
-    public function setPaymentStateLineStack(StateLineStack $paymentStateLineStack);
+    public function setPaymentStateLineStack(
+        StateLineStack $paymentStateLineStack
+    );
 
     /**
      * Get ShippingStateLineStack
@@ -226,5 +244,23 @@ interface OrderInterface extends PriceInterface, DimensionableInterface
      *
      * @return $this Self object
      */
-    public function setShippingStateLineStack(StateLineStack $shippingStateLineStack);
+    public function setShippingStateLineStack(
+        StateLineStack $shippingStateLineStack
+    );
+
+    /**
+     * Get BillingAddress
+     *
+     * @return AddressInterface BillingAddress
+     */
+    public function getBillingAddress();
+
+    /**
+     * Sets BillingAddress
+     *
+     * @param AddressInterface $billingAddress BillingAddress
+     *
+     * @return $this Self object
+     */
+    public function setBillingAddress($billingAddress);
 }

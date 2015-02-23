@@ -133,6 +133,7 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
             ->setProductAmount(Money::create(20, $currency))
             ->setCouponAmount(Money::create(0, $currency))
             ->setAmount(Money::create(20, $currency))
+            ->setShippingAmount($this->getMock('Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface'))
             ->setCartLines(new ArrayCollection());
 
         $this
@@ -175,6 +176,7 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
             ->setProductAmount(Money::create(20, $currency))
             ->setCouponAmount(Money::create(0, $currency))
             ->setOrder($order)
+            ->setShippingAmount($this->getMock('Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface'))
             ->setAmount(Money::create(20, $currency))
             ->setCartLines(new ArrayCollection());
 
@@ -216,6 +218,10 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
             ->expects($this->any())
             ->method('getCartLines')
             ->will($this->returnValue(new ArrayCollection()));
+        $cart
+            ->expects($this->any())
+            ->method('getShippingAmount')
+            ->will($this->returnValue($this->getMock('Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface')));
 
         $cart
             ->expects($this->any())

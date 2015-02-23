@@ -44,6 +44,7 @@
         "elcodi/product-bundle": "~0.4.0",
         "elcodi/currency-bundle": "~0.4.0",
         "elcodi/state-transition-machine-bundle": "~0.4.0",
+        "elcodi/shipping-bundle": "~0.4.0",
         "elcodi/cart": "~0.4.0"
     },
     "require-dev": {

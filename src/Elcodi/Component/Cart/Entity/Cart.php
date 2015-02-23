@@ -24,6 +24,8 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
+use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
+use Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
@@ -99,12 +101,49 @@ class Cart implements CartInterface
     /**
      * @var MoneyInterface
      *
+     * Transient amount for shipping
+     *
+     * This value is not persisted
+     */
+    protected $shippingAmount;
+
+    /**
+     * @var MoneyInterface
+     *
      * Transient total amount
      *
      * This value is not persisted, it is calculated
      * by summing CartLine::$amount
      */
     protected $amount;
+
+    /**
+     * @var AddressInterface
+     *
+     * delivery address
+     */
+    protected $deliveryAddress;
+
+    /**
+     * @var AddressInterface
+     *
+     * billing address
+     */
+    protected $billingAddress;
+
+    /**
+     * @var ShippingRangeInterface
+     *
+     * Shipping range
+     */
+    protected $shippingRange;
+
+    /**
+     * @var ShippingRangeInterface
+     *
+     * Cheapest Shipping range
+     */
+    protected $cheapestShippingRange;
 
     /**
      * Get Id
@@ -346,6 +385,30 @@ class Cart implements CartInterface
     }
 
     /**
+     * Get ShippingAmount
+     *
+     * @return MoneyInterface ShippingAmount
+     */
+    public function getShippingAmount()
+    {
+        return $this->shippingAmount;
+    }
+
+    /**
+     * Sets ShippingAmount
+     *
+     * @param MoneyInterface $shippingAmount ShippingAmount
+     *
+     * @return $this Self object
+     */
+    public function setShippingAmount(MoneyInterface $shippingAmount)
+    {
+        $this->shippingAmount = $shippingAmount;
+
+        return $this;
+    }
+
+    /**
      * Set amount
      *
      * @param MoneyInterface $amount
@@ -431,5 +494,101 @@ class Cart implements CartInterface
             },
             0
         );
+    }
+
+    /**
+     * Get DeliveryAddress
+     *
+     * @return AddressInterface DeliveryAddress
+     */
+    public function getDeliveryAddress()
+    {
+        return $this->deliveryAddress;
+    }
+
+    /**
+     * Sets DeliveryAddress
+     *
+     * @param AddressInterface $deliveryAddress DeliveryAddress
+     *
+     * @return $this Self object
+     */
+    public function setDeliveryAddress($deliveryAddress)
+    {
+        $this->deliveryAddress = $deliveryAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get BillingAddress
+     *
+     * @return AddressInterface BillingAddress
+     */
+    public function getBillingAddress()
+    {
+        return $this->billingAddress;
+    }
+
+    /**
+     * Sets BillingAddress
+     *
+     * @param AddressInterface $billingAddress BillingAddress
+     *
+     * @return $this Self object
+     */
+    public function setBillingAddress($billingAddress)
+    {
+        $this->billingAddress = $billingAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get ShippingRange
+     *
+     * @return ShippingRangeInterface ShippingRange
+     */
+    public function getShippingRange()
+    {
+        return $this->shippingRange;
+    }
+
+    /**
+     * Sets ShippingRange
+     *
+     * @param ShippingRangeInterface $shippingRange ShippingRange
+     *
+     * @return $this Self object
+     */
+    public function setShippingRange(ShippingRangeInterface $shippingRange = null)
+    {
+        $this->shippingRange = $shippingRange;
+
+        return $this;
+    }
+
+    /**
+     * Get ShippingRange
+     *
+     * @return ShippingRangeInterface Cheapest ShippingRange
+     */
+    public function getCheapestShippingRange()
+    {
+        return $this->cheapestShippingRange;
+    }
+
+    /**
+     * Sets ShippingRange
+     *
+     * @param ShippingRangeInterface $cheapestShippingRange Cheapest ShippingRange
+     *
+     * @return $this Self object
+     */
+    public function setCheapestShippingRange(ShippingRangeInterface $cheapestShippingRange = null)
+    {
+        $this->cheapestShippingRange = $cheapestShippingRange;
+
+        return $this;
     }
 }

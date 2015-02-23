@@ -3,16 +3,10 @@ services:
     #
     # Providers
     #
-    elcodi.provider.shipping_carrier:
-        class: %elcodi.provider.shipping_carrier.class%
+    elcodi.provider.shipping_range:
+        class: %elcodi.provider.shipping_range.class%
         arguments:
-            carrier_repository: @elcodi.repository.carrier
-            currency_converter: @elcodi.converter.currency
-            warehouse_repository: @elcodi.repository.shipping_warehouse
-            zone_matcher: @elcodi.zone_matcher
-
-    elcodi.provider.shipping:
-        class: %elcodi.provider.shipping.class%
-        arguments:
-            carrier_provider: @elcodi.provider.shipping_carrier
-            carrier_resolver: @elcodi.carrier_resolver
+            - @elcodi.repository.carrier
+            - @elcodi.converter.currency
+            - @elcodi.matcher.zone
+            - @elcodi.resolver.shipping_range

@@ -77,15 +77,15 @@ class ElcodiTaxExtension extends AbstractExtension implements EntitiesOverridabl
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.core.tax.entity.tax.class" => $config['mapping']['tax']['class'],
-            "elcodi.core.tax.entity.tax.mapping_file" => $config['mapping']['tax']['mapping_file'],
-            "elcodi.core.tax.entity.tax.manager" => $config['mapping']['tax']['manager'],
-            "elcodi.core.tax.entity.tax.enabled" => $config['mapping']['tax']['enabled'],
+            "elcodi.entity.tax.class" => $config['mapping']['tax']['class'],
+            "elcodi.entity.tax.mapping_file" => $config['mapping']['tax']['mapping_file'],
+            "elcodi.entity.tax.manager" => $config['mapping']['tax']['manager'],
+            "elcodi.entity.tax.enabled" => $config['mapping']['tax']['enabled'],
 
-            "elcodi.core.tax.entity.tax_group.class" => $config['mapping']['tax_group']['class'],
-            "elcodi.core.tax.entity.tax_group.mapping_file" => $config['mapping']['tax_group']['mapping_file'],
-            "elcodi.core.tax.entity.tax_group.manager" => $config['mapping']['tax_group']['manager'],
-            "elcodi.core.tax.entity.tax_group.enabled" => $config['mapping']['tax_group']['enabled'],
+            "elcodi.entity.tax_group.class" => $config['mapping']['tax_group']['class'],
+            "elcodi.entity.tax_group.mapping_file" => $config['mapping']['tax_group']['mapping_file'],
+            "elcodi.entity.tax_group.manager" => $config['mapping']['tax_group']['manager'],
+            "elcodi.entity.tax_group.enabled" => $config['mapping']['tax_group']['enabled'],
         ];
     }
 
@@ -112,8 +112,8 @@ class ElcodiTaxExtension extends AbstractExtension implements EntitiesOverridabl
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\Tax\Entity\Interfaces\TaxInterface' => 'elcodi.core.tax.entity.tax.class',
-            'Elcodi\Component\Tax\Entity\Interfaces\TaxGroupInterface' => 'elcodi.core.tax.entity.tax_group.class',
+            'Elcodi\Component\Tax\Entity\Interfaces\TaxInterface' => 'elcodi.entity.tax.class',
+            'Elcodi\Component\Tax\Entity\Interfaces\TaxGroupInterface' => 'elcodi.entity.tax_group.class',
         ];
     }
 

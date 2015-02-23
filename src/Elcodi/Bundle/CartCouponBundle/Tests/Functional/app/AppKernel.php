@@ -68,6 +68,9 @@ class AppKernel extends AbstractElcodiKernel
             new \Elcodi\Bundle\RuleBundle\ElcodiRuleBundle(),
             new \Elcodi\Bundle\StateTransitionMachineBundle\ElcodiStateTransitionMachineBundle(),
             new \Elcodi\Bundle\ConfigurationBundle\ElcodiConfigurationBundle(),
+            new \Elcodi\Bundle\ShippingBundle\ElcodiShippingBundle(),
+            new \Elcodi\Bundle\TaxBundle\ElcodiTaxBundle(),
+            new \Elcodi\Bundle\ZoneBundle\ElcodiZoneBundle(),
         );
 
         return $bundles;

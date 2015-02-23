@@ -49,6 +49,7 @@ class LocationApiProvider implements LocationProviderInterface
      * Location to location data transformer
      *
      * @param LocationDataFactory $locationDataFactory Transformer
+     * @param ApiUrls             $apiUrls             The api urls
      */
     public function __construct(
         LocationDataFactory $locationDataFactory,

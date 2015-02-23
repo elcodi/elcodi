@@ -12,13 +12,15 @@
  *
  * @author Marc Morera <yuhu@mmoreram.com>
  * @author Aldo Chiecchia <zimage@tiscali.it>
+ * @author Elcodi Team <tech@elcodi.com>
  */
- 
+
 namespace Elcodi\Component\Media\EventDispatcher;
-use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
-use Elcodi\Component\Media\Event\ImageUploadedEvent;
+
 use Elcodi\Component\Core\EventDispatcher\Abstracts\AbstractEventDispatcher;
 use Elcodi\Component\Media\ElcodiMediaEvents;
+use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
+use Elcodi\Component\Media\Event\ImageUploadedEvent;
 
 /**
  * Class MediaEventDispatcher

@@ -3,8 +3,8 @@ services:
     #
     # Resolvers
     #
-    elcodi.carrier_resolver:
-        class: %elcodi.carrier_resolver.class%
+    elcodi.resolver.shipping_range:
+        class: %elcodi.resolver.shipping_range.class%
         arguments:
             currency_converter: @elcodi.converter.currency
-            carrier_resolver_strategy: %elcodi.core.shipping.carrier_resolver_strategy%
+            carrier_resolver_strategy: %elcodi.resolver.carrier.strategy%

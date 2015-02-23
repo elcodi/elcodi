@@ -8,5 +8,5 @@ parameters:
     #
     # Services
     #
-    elcodi.zone_matcher.class: Elcodi\Component\Zone\Services\ZoneMatcher
-    elcodi.zone_finder.class: Elcodi\Component\Zone\Services\ZoneFinder
+    elcodi.matcher.zone.class: Elcodi\Component\Zone\Services\ZoneMatcher
+    elcodi.finder.zone.class: Elcodi\Component\Zone\Services\ZoneFinder

@@ -117,11 +117,14 @@ class CartOrderTransformer
             ->setCart($cart)
             ->setQuantity($cart->getQuantity())
             ->setProductAmount($cart->getProductAmount())
+            ->setShippingAmount($cart->getShippingAmount())
             ->setAmount($cart->getAmount())
             ->setHeight($cart->getHeight())
             ->setWidth($cart->getWidth())
             ->setDepth($cart->getDepth())
             ->setWeight($cart->getWeight())
+            ->setBillingAddress($cart->getBillingAddress())
+            ->setDeliveryAddress($cart->getDeliveryAddress())
             ->setOrderLines($orderLines);
 
         $this

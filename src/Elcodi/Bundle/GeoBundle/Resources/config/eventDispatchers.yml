@@ -1,0 +1,8 @@
+services:
+
+    #
+    # EventDispatchers
+    #
+    elcodi.event_dispatcher.address:
+        class: %elcodi.event_dispatcher.address.class%
+        parent: elcodi.core.core.event_dispatcher.abstract
