@@ -1,4 +1,4 @@
-{% extends elcodi_config('store.template') ~ '::Layout/_static.html.twig' %}
+{% extends '::_base.html.twig' %}
 
 
 {% block title %}{{ page.title }}{% endblock title %}
@@ -10,4 +10,7 @@
 {% endblock meta_tags %}
 
 
-{% block content %}{{ page.content|raw }}{% endblock content %}
+{% block body %}
+    {{ block('title') }}
+    {{ page.content|raw }}
+{% endblock body %}
