@@ -12,8 +12,8 @@
  *
  * @author Marc Morera <yuhu@mmoreram.com>
  * @author Aldo Chiecchia <zimage@tiscali.it>
+ * @author Elcodi Team <tech@elcodi.com>
  */
-
 
 namespace Elcodi\Component\CartCoupon\EventListener;
 
@@ -54,7 +54,6 @@ class CheckCouponListener
     public function checkCoupon(CartCouponOnCheckEvent $event)
     {
         if ($event->getCart()->getQuantity() === 0) {
-
             throw new CouponIncompatibleException();
         }
 

@@ -21,6 +21,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
+use Elcodi\Component\Media\EventDispatcher\MediaEventDispatcher;
 use Elcodi\Component\Media\Exception\InvalidImageException;
 
 /**
@@ -50,20 +51,30 @@ class ImageUploader
     protected $fileManager;
 
     /**
+     * @var MediaEventDispatcher
+     *
+     * Media event dispatcher
+     */
+    protected $mediaEventDispatcher;
+
+    /**
      * Construct method
      *
-     * @param ObjectManager $imageObjectManager Image Object Manager
-     * @param FileManager   $fileManager        File Manager
-     * @param ImageManager  $imageManager       Image Manager
+     * @param ObjectManager        $imageObjectManager   Image Object Manager
+     * @param FileManager          $fileManager          File Manager
+     * @param ImageManager         $imageManager         Image Manager
+     * @param MediaEventDispatcher $mediaEventDispatcher Media event dispatcher
      */
     public function __construct(
         ObjectManager $imageObjectManager,
         FileManager $fileManager,
-        ImageManager $imageManager
+        ImageManager $imageManager,
+        MediaEventDispatcher $mediaEventDispatcher
     ) {
         $this->imageObjectManager = $imageObjectManager;
         $this->fileManager = $fileManager;
         $this->imageManager = $imageManager;
+        $this->mediaEventDispatcher = $mediaEventDispatcher;
     }
 
     /**
@@ -81,6 +92,10 @@ class ImageUploader
             ->imageManager
             ->createImage($file);
 
+        $this
+            ->mediaEventDispatcher
+            ->dispatchImagePreUploadEvent($image);
+
         $this->imageObjectManager->persist($image);
         $this->imageObjectManager->flush($image);
 
@@ -89,6 +104,10 @@ class ImageUploader
             file_get_contents($file->getRealPath()),
             true
         );
+
+        $this
+            ->mediaEventDispatcher
+            ->dispatchImageOnUploadEvent($image);
 
         return $image;
     }

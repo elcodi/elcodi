@@ -36,7 +36,7 @@ class CheckRulesListener
     /**
      * Construct method
      *
-     * @param CartCouponRuleManager     $cartCouponRuleManager     Manager for cart coupon rules
+     * @param CartCouponRuleManager $cartCouponRuleManager Manager for cart coupon rules
      */
     public function __construct(CartCouponRuleManager $cartCouponRuleManager)
     {

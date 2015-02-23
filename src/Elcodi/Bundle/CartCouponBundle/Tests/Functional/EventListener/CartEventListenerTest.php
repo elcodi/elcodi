@@ -21,7 +21,6 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
-use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
 

@@ -1,0 +1,8 @@
+services:
+
+    #
+    # Event Dispatchers
+    #
+    elcodi.event_dispatcher.media:
+        class: %elcodi.event_dispatcher.media.class%
+        parent: elcodi.core.core.event_dispatcher.abstract

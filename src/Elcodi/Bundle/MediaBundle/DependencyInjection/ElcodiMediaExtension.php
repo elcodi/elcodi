@@ -86,6 +86,7 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
             'repositories',
             'objectManagers',
             'transformers',
+            'eventDispatchers',
         ];
     }
 

@@ -117,16 +117,13 @@ class RefreshCouponsListener
             $coupon = $cartCoupon->getCoupon();
 
             try {
-
                 $this
                     ->cartCouponEventDispatcher
                     ->dispatchCartCouponOnCheckEvent(
                         $cart,
                         $coupon
                     );
-
             } catch (AbstractCouponException $exception) {
-
                 $this
                     ->cartCouponManager
                     ->removeCoupon(

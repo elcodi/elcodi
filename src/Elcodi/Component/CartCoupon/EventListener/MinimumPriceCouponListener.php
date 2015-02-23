@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Elcodi package.
  *
@@ -11,8 +12,8 @@
  *
  * @author Marc Morera <yuhu@mmoreram.com>
  * @author Aldo Chiecchia <zimage@tiscali.it>
+ * @author Elcodi Team <tech@elcodi.com>
  */
-
 
 namespace Elcodi\Component\CartCoupon\EventListener;
 
@@ -54,7 +55,6 @@ class MinimumPriceCouponListener
             ->getMinimumPurchase();
 
         if ($couponMinimumPrice->getAmount() === 0) {
-
             return;
         }
 
@@ -72,7 +72,6 @@ class MinimumPriceCouponListener
         }
 
         if ($productMoney->isLessThan($couponMinimumPrice)) {
-
             throw new CouponBelowMinimumPurchaseException();
         }
     }
