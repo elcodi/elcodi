@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Language\Twig;
 
 use Twig_Extension;
-use Twig_SimpleFunction;
 
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 use Elcodi\Component\Language\Services\LanguageManager;
@@ -57,14 +56,14 @@ class LanguageExtension extends Twig_Extension
     }
 
     /**
-     * Return all filters
+     * Returns a list of global variables to add to the existing list.
      *
-     * @return Twig_SimpleFunction[] Filters created
+     * @return array An array of global variables
      */
-    public function getFunctions()
+    public function getGlobals()
     {
         return array(
-            new Twig_SimpleFunction('languages', array($this, 'getLanguages')),
+            'elcodi_languages' => $this->getLanguages(),
         );
     }
 
@@ -77,21 +76,10 @@ class LanguageExtension extends Twig_Extension
     {
         $languages = $this
             ->languageManager
-            ->getLanguages();
+            ->getLanguages()
+            ->toArray();
 
-        $masterLanguage = $languages
-            ->filter(function (LanguageInterface $language) {
-                return $language->getIso() === $this->masterLocale;
-            })
-            ->first();
-
-        $languages->removeElement($masterLanguage);
-        $otherLanguagesArray = $languages->toArray();
-
-        return array_merge(
-            [$masterLanguage],
-            $otherLanguagesArray
-        );
+        return $this->promoteMasterLanguage($languages);
     }
 
     /**
@@ -102,5 +90,25 @@ class LanguageExtension extends Twig_Extension
     public function getName()
     {
         return 'language_extension';
+    }
+
+    /**
+     * Move master language to the first position
+     *
+     * @param LanguageInterface[] $languages
+     *
+     * @return LanguageInterface[]
+     */
+    protected function promoteMasterLanguage(array $languages)
+    {
+        $index = array_search($this->masterLocale, $languages);
+
+        if (false !== $index) {
+
+            unset($languages[$index]);
+            array_unshift($languages, $this->masterLocale);
+        }
+
+        return $languages;
     }
 }
