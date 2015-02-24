@@ -34,7 +34,7 @@ class CityExistsValidator extends ConstraintValidator
      *
      * A location provider
      */
-    private $locationProvider;
+    protected $locationProvider;
 
     /**
      * Builds a new class.
@@ -67,7 +67,7 @@ class CityExistsValidator extends ConstraintValidator
         }
 
         if (
-            empty($location) ||
+            is_null($location) ||
             'city' != $location->getType()
         ) {
             $this
