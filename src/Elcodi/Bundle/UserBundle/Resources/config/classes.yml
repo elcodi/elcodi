@@ -30,3 +30,8 @@ parameters:
     # Providers
     #
     elcodi.abstract_user_provider.class: Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface
+
+    #
+    # Constraints
+    #
+    elcodi.validator.city_exists.class: Elcodi\Component\Geo\Validator\Constraints\CityExistsValidator

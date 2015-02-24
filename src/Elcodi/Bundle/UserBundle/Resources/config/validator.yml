@@ -1,0 +1,11 @@
+services:
+
+    #
+    # Constraints
+    #
+    elcodi.validator.city_exists:
+        class: %elcodi.validator.city_exists.class%
+        arguments:
+            location_provider: @elcodi.location_provider
+        tags:
+            - { name: validator.constraint_validator, alias: city_exists }
