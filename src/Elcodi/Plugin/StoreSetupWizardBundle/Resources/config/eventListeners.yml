@@ -1,0 +1,13 @@
+services:
+
+    #
+    # Event listeners
+    #
+    elcodi_plugin.event_listener.dashboard_redirection:
+        class: %elcodi_plugin.event_listener.dashboard_redirection.class%
+        arguments:
+            wizard_status: @router
+        calls:
+            - [setPlugin, [@=elcodi_plugin("Elcodi\\Plugin\\StoreSetupWizardBundle")]]
+        tags:
+            - { name: firewall_listener, firewall: admin_area }

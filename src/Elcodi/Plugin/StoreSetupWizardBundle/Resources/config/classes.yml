@@ -1,0 +1,11 @@
+parameters:
+
+    #
+    # Services
+    #
+    elcodi_templates.wizard_status.service.class: Elcodi\Plugin\StoreSetupWizardBundle\Services\WizardStatus
+
+    #
+    # Event Listeners
+    #
+    elcodi_plugin.event_listener.dashboard_redirection.class: Elcodi\Plugin\StoreSetupWizardBundle\EventListener\DashboardRedirectionEventListener

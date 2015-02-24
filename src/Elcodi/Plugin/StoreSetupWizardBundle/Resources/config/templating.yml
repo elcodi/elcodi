@@ -1,0 +1,14 @@
+services:
+
+    #
+    # Twig renderer
+    #
+    elcodi_plugin.store_setup_wizard.renderer:
+        class: Elcodi\Plugin\StoreSetupWizardBundle\Templating\TwigRenderer
+        calls:
+            - [setTemplating, [@twig]]
+            - [setPlugin, [@=elcodi_plugin("Elcodi\\Plugin\\StoreSetupWizardBundle")]]
+        arguments:
+            wizard_status: @elcodi_templates.wizard_status.service
+        tags:
+            - { name: kernel.event_listener, event: admin.body_top, method: renderMiniWizard }
