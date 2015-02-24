@@ -1,0 +1,53 @@
+{
+    "name": "elcodi/fixtures-booster-bundle",
+    "description": "Elcodi Fixtures Booster Bundle",
+    "keywords": [
+        "elcodi",
+        "fixtures",
+        "booster"
+    ],
+    "homepage": "https://github.com/elcodi/FixturesBoosterBundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "The Awesome Elcodi Community",
+            "homepage": "https://github.com/elcodi/FixturesBoosterBundle/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+
+        "symfony/http-kernel": "~2.6",
+        "symfony/console": "~2.6",
+        "symfony/dependency-injection": "~2.6",
+
+        "doctrine/doctrine-fixtures-bundle": "~2.2",
+
+        "elcodi/core-bundle": "~0.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\Bundle\\FixturesBoosterBundle\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.5-dev"
+        }
+    }
+}

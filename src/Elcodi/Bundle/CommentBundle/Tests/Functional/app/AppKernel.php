@@ -44,6 +44,11 @@ class AppKernel extends AbstractElcodiKernel
             new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new \Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
+
+            /**
+             * Elcodi bundles
+             */
+            new \Elcodi\Bundle\FixturesBoosterBundle\ElcodiFixturesBoosterBundle(),
             new \Elcodi\Bundle\CoreBundle\ElcodiCoreBundle(),
             new \Elcodi\Bundle\CommentBundle\ElcodiCommentBundle(),
             new \Elcodi\Bundle\BambooBundle\ElcodiBambooBundle(),

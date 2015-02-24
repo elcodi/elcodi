@@ -97,6 +97,7 @@
         "elcodi/metric-bundle": "self.version",
         "elcodi/plugin-bundle": "self.version",
         "elcodi/template-bundle": "self.version",
+        "elcodi/fixtures-booster-bundle": "self.version",
 
         "elcodi/attribute": "self.version",
         "elcodi/banner": "self.version",
@@ -127,7 +128,10 @@
         "elcodi/plugin": "self.version",
         "elcodi/template": "self.version",
 
-        "elcodi-plugin/product-csv": "self.version"
+        "elcodi-plugin/product-csv": "self.version",
+        "elcodi-plugin/google-analytics": "self.version",
+        "elcodi-plugin/pinterest": "self.version"
+
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",

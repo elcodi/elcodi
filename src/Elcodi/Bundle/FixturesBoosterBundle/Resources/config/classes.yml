@@ -1,0 +1,12 @@
+parameters:
+
+    #
+    # Placeholder for database path, tu fulfill command dependencies. This value
+    # is overwritten in test environment
+    #
+    database_path: ~
+
+    #
+    # Commands
+    #
+    store.fixtures_booster.command.load_fixtures.class: Elcodi\Bundle\FixturesBoosterBundle\Command\LoadDataFixturesDoctrineCommand
