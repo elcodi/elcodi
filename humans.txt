@@ -1,17 +1,32 @@
 /* TEAM */
-	CTO: Marc Morera
+	CTO, Co-Founder and Chief Engonga Officer: Marc Morera
 	Contact: mmoreram at elcodi dot com
 	Twitter: @mmoreram
 	From: Barcelona, Catalonia
 
-	CEO: Aldo Chiecchia
+	Backend Engineer: Berny Cantos
+	Contact: berny at elcodi dot com
+	Twitter: @xphere
+	From: Barcelona, Catalonia
+
+	Frontend Engineer: Toni Pinel
+	Contact: toni dot pinel at elcodi dot com
+	Twitter: @tonipinel
+	From: Barcelona, Catalonia
+
+	Backend Engineer: Roger Gros
+	Contact: roger dot gros at elcodi dot com
+	Twitter: @rogergros
+	From: Barcelona, Catalonia
+
+	Technical Advisor and Co-Founder: Aldo Chiecchia
 	Contact: alch at elcodi dot com
 	Twitter: @zimage
 	From: Barcelona, Catalonia
-	
-	COO: Marc Jordana
-	Twitter: @marcjordana
-	From: Barcelona, Catalonia
+
+/* THANKS */
+	All the Elcodi Community
+	From: Worldwide
 
 /* SITE */
 	Last update: 2014/05/27
