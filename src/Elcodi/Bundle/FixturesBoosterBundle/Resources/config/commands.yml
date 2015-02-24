@@ -1,0 +1,12 @@
+services:
+
+    #
+    # Commands
+    #
+    store.fixtures_booster.command.load_fixtures:
+        class: %store.fixtures_booster.command.load_fixtures.class%
+        arguments:
+            - @kernel
+            - %database_path%
+        tags:
+            -  { name: console.command }

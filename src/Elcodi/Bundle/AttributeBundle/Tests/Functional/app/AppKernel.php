@@ -17,6 +17,7 @@
 
 namespace Elcodi\Bundle\AttributeBundle\Tests\Functional\app;
 
+use Elcodi\Bundle\FixturesBoosterBundle\ElcodiFixturesBoosterBundle;
 use Elcodi\Bundle\TestCommonBundle\Functional\Abstracts\AbstractElcodiKernel;
 
 /**
@@ -47,6 +48,7 @@ class AppKernel extends AbstractElcodiKernel
             /**
              * Elcodi core bundles
              */
+            new \Elcodi\Bundle\FixturesBoosterBundle\ElcodiFixturesBoosterBundle(),
             new \Elcodi\Bundle\CoreBundle\ElcodiCoreBundle(),
             new \Elcodi\Bundle\BambooBundle\ElcodiBambooBundle(),
             new \Elcodi\Bundle\AttributeBundle\ElcodiAttributeBundle(),
