@@ -17,10 +17,3 @@ services:
     elcodi.repository.carrier:
         parent: elcodi.abstract_repository
         arguments: [ %elcodi.entity.carrier.class% ]
-
-    #
-    # Repository for entity warehouse
-    #
-    elcodi.repository.warehouse:
-        parent: elcodi.abstract_repository
-        arguments: [ %elcodi.entity.warehouse.class% ]

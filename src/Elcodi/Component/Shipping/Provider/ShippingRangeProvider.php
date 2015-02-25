@@ -237,8 +237,7 @@ class ShippingRangeProvider
     }
 
     /**
-     * Given ShippingRange zones are satisfied by a cart, using as a warehouse
-     * the first valid warehouse available
+     * Given ShippingRange zones are satisfied by a cart,
      *
      * @param CartInterface          $cart          Cart
      * @param ShippingRangeInterface $shippingRange Carrier Range

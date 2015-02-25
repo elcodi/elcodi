@@ -21,11 +21,3 @@ services:
             - @elcodi.wrapper.currency
         calls:
             - [setEntityNamespace, ["%elcodi.entity.shipping_range.class%"]]
-
-    #
-    # Factory for entity shipping_weight_range
-    #
-    elcodi.factory.warehouse:
-        class: %elcodi.factory.warehouse.class%
-        calls:
-            - [setEntityNamespace, ["%elcodi.entity.warehouse.class%"]]

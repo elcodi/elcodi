@@ -48,13 +48,6 @@ class Configuration extends AbstractConfiguration
                             'default',
                             true
                         ))
-                        ->append($this->addMappingNode(
-                            'warehouse',
-                            'Elcodi\Component\Shipping\Entity\Warehouse',
-                            '@ElcodiShippingBundle/Resources/config/doctrine/Warehouse.orm.yml',
-                            'default',
-                            true
-                        ))
                     ->end()
                 ->end()
                 ->arrayNode('carrier')
