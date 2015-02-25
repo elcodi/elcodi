@@ -116,3 +116,39 @@ elcodi_configuration:
             type: string
             reference: elcodi.core.currency.default_currency
             read_only: false
+
+
+        #
+        # Paymill private key
+        #
+        store_paymill_private_key:
+            key: paymill_private_key
+            name: Store Payment Paymill private key
+            namespace: store
+            type: string
+            can_be_empty: true
+            reference: paymill_private_key
+
+        #
+        # Paymill public key
+        #
+        store_paymill_public_key:
+            key: paymill_public_key
+            name: Store Payment Paymill public key
+            namespace: store
+            type: string
+            can_be_empty: true
+            reference: paymill_public_key
+
+        #
+        # Paypal
+        #
+        store_paypal_web_checkout_recipient:
+            key: paypal_web_checkout_recipient
+            name: Store Payment Paypal recipient email
+            namespace: store
+            type: string
+            can_be_empty: true
+            reference: paypal_web_checkout_recipient
+            default_value: payment-test@elcodi.com
+
