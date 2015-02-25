@@ -80,13 +80,9 @@ class TwigRenderer
                 ->wizardStatus
                 ->getStepsFinishStatus();
 
-            $activeStep = null;
-            foreach ($stepsFinished as $step => $isFinished) {
-                if (false == $isFinished) {
-                    $activeStep = $step;
-                    break;
-                }
-            }
+            $activeStep = $this
+                ->wizardStatus
+                ->getNextStep();
 
             $this->appendTemplate(
                 '@ElcodiStoreSetupWizard/Wizard/miniWizard.html.twig',

@@ -24,6 +24,7 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 
 use Elcodi\Component\Plugin\Entity\Plugin;
 use Elcodi\Plugin\StoreSetupWizardBundle\Services\WizardStatus;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * Class DashboardRedirectionEventListener
@@ -38,11 +39,11 @@ class DashboardRedirectionEventListener
     protected $plugin;
 
     /**
-     * @var Router
+     * @var UrlGeneratorInterface
      *
-     * Router
+     * An url generator
      */
-    protected $router;
+    protected $urlGenerator;
 
     /**
      * @var WizardStatus
@@ -54,14 +55,14 @@ class DashboardRedirectionEventListener
     /**
      * Builds a new class
      *
-     * @param Router       $router       A router
-     * @param WizardStatus $wizardStatus A wizard status service
+     * @param UrlGeneratorInterface $urlGenerator An url generator
+     * @param WizardStatus          $wizardStatus A wizard status service
      */
     public function __construct(
-        Router $router,
+        UrlGeneratorInterface $urlGenerator,
         WizardStatus $wizardStatus
     ) {
-        $this->router       = $router;
+        $this->urlGenerator = $urlGenerator;
         $this->wizardStatus = $wizardStatus;
     }
 
@@ -97,7 +98,9 @@ class DashboardRedirectionEventListener
             if ('admin_homepage' == $currentRoute) {
                 $event->setResponse(
                     new RedirectResponse(
-                        $this->router->generate('admin_store_setup_wizard')
+                        $this
+                            ->urlGenerator
+                            ->generate('admin_store_setup_wizard')
                     )
                 );
             }

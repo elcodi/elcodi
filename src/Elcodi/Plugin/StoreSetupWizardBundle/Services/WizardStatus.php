@@ -74,15 +74,25 @@ class WizardStatus
      */
     public function isWizardFinished()
     {
+        return is_null($this->getNextStep());
+    }
+
+    /**
+     * Get the next step.
+     *
+     * @return int|null The next step, null if the wizard is finished.
+     */
+    public function getNextStep()
+    {
         $stepsFinishedStatus = $this->getStepsFinishStatus();
 
-        foreach ($stepsFinishedStatus as $stepIsFinished) {
+        foreach ($stepsFinishedStatus as $step => $stepIsFinished) {
             if (!$stepIsFinished) {
-                return false;
+                return (int)$step;
             }
         }
 
-        return true;
+        return null;
     }
 
     /**
