@@ -117,7 +117,7 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
         $this
             ->cart
             ->expects($this->any())
-            ->method('getAmount')
+            ->method('getProductAmount')
             ->will($this->returnValue($amount));
     }
 
@@ -131,7 +131,7 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
         $toWeight,
         $isSatisfied
     ) {
-        $carrierRange = $this->getShippingWeightRangeMock(
+        $shippingRange = $this->getShippingWeightRangeMock(
             $fromWeight,
             $toWeight
         );
@@ -139,7 +139,7 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
         $shippingRangeProvider = $this
             ->getMockBuilder('Elcodi\Component\Shipping\Provider\ShippingRangeProvider')
             ->setMethods(array(
-                'isCarrierRangeZonesSatisfiedByCart',
+                'isShippingRangeZonesSatisfiedByCart',
             ))
             ->setConstructorArgs(array(
                 $this->carrierRepository,
@@ -151,14 +151,14 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
 
         $shippingRangeProvider
             ->expects($this->any())
-            ->method('isCarrierRangeZonesSatisfiedByCart')
+            ->method('isShippingRangeZonesSatisfiedByCart')
             ->will($this->returnValue(true));
 
         $this->assertEquals(
             $isSatisfied,
             $shippingRangeProvider->isShippingWeightRangeSatisfiedByCart(
                 $this->cart,
-                $carrierRange
+                $shippingRange
             )
         );
     }
@@ -203,7 +203,7 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
         $shippingRangeProvider = $this
             ->getMockBuilder('Elcodi\Component\Shipping\Provider\ShippingRangeProvider')
             ->setMethods(array(
-                'isCarrierRangeZonesSatisfiedByCart',
+                'isShippingRangeZonesSatisfiedByCart',
             ))
             ->setConstructorArgs(array(
                 $this->carrierRepository,
@@ -215,7 +215,7 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
 
         $shippingRangeProvider
             ->expects($this->any())
-            ->method('isCarrierRangeZonesSatisfiedByCart')
+            ->method('isShippingRangeZonesSatisfiedByCart')
             ->will($this->returnValue(true));
 
         $this->assertEquals(
@@ -245,16 +245,16 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test getCarrierRangeSatisfiedByCartOk
+     * Test getShippingRangeSatisfiedByCartOk
      */
-    public function testGetCarrierRangeSatisfiedByCart()
+    public function testGetShippingRangeSatisfiedByCart()
     {
         $carrier = $this->getCarrierMock(50, 100, 10, 15);
 
         $shippingRangeProvider = $this
             ->getMockBuilder('Elcodi\Component\Shipping\Provider\ShippingRangeProvider')
             ->setMethods(array(
-                'isCarrierRangeZonesSatisfiedByCart',
+                'isShippingRangeZonesSatisfiedByCart',
             ))
             ->setConstructorArgs(array(
                 $this->carrierRepository,
@@ -266,12 +266,12 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
 
         $shippingRangeProvider
             ->expects($this->any())
-            ->method('isCarrierRangeZonesSatisfiedByCart')
+            ->method('isShippingRangeZonesSatisfiedByCart')
             ->will($this->returnValue(true));
 
         $this->assertInstanceOf(
             'Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface',
-            $shippingRangeProvider->getCarrierRangeSatisfiedByCart(
+            $shippingRangeProvider->getShippingRangeSatisfiedByCart(
                 $this->cart,
                 $carrier
             )
@@ -279,16 +279,16 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test getCarrierRangeSatisfiedByCartFail
+     * Test getShippingRangeSatisfiedByCartFail
      */
-    public function testGetCarrierRangeSatisfiedByCartFail()
+    public function testGetShippingRangeSatisfiedByCartFail()
     {
         $carrier = $this->getCarrierMock(10, 20, 50, 55);
 
         $shippingRangeProvider = $this
             ->getMockBuilder('Elcodi\Component\Shipping\Provider\ShippingRangeProvider')
             ->setMethods(array(
-                'isCarrierRangeZonesSatisfiedByCart',
+                'isShippingRangeZonesSatisfiedByCart',
             ))
             ->setConstructorArgs(array(
                 $this->carrierRepository,
@@ -300,12 +300,12 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
 
         $shippingRangeProvider
             ->expects($this->any())
-            ->method('isCarrierRangeZonesSatisfiedByCart')
+            ->method('isShippingRangeZonesSatisfiedByCart')
             ->will($this->returnValue(true));
 
         $this->assertFalse(
             $shippingRangeProvider
-                ->getCarrierRangeSatisfiedByCart(
+                ->getShippingRangeSatisfiedByCart(
                     $this->cart,
                     $carrier
                 )
@@ -313,9 +313,9 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test provideCarrierRangesSatisfiedWithOrder
+     * Test getAllShippingRangesSatisfiedWithCart
      */
-    public function testProvideCarrierRangesSatisfiedWithOrder()
+    public function testAllGetShippingRangesSatisfiedWithCart()
     {
         $this
             ->carrierRepository
@@ -330,7 +330,7 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
         $shippingRangeProvider = $this
             ->getMockBuilder('Elcodi\Component\Shipping\Provider\ShippingRangeProvider')
             ->setMethods(array(
-                'isCarrierRangeZonesSatisfiedByCart',
+                'isShippingRangeZonesSatisfiedByCart',
             ))
             ->setConstructorArgs(array(
                 $this->carrierRepository,
@@ -342,17 +342,17 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
 
         $shippingRangeProvider
             ->expects($this->any())
-            ->method('isCarrierRangeZonesSatisfiedByCart')
+            ->method('isShippingRangeZonesSatisfiedByCart')
             ->will($this->returnValue(true));
 
-        $carrierRanges = $shippingRangeProvider->provideCarrierRangesSatisfiedWithOrder($this->cart);
+        $shippingRanges = $shippingRangeProvider->getAllShippingRangesSatisfiedWithCart($this->cart);
 
-        $this->assertCount(2, $carrierRanges);
+        $this->assertCount(1, $shippingRanges);
 
-        foreach ($carrierRanges as $carrierRange) {
+        foreach ($shippingRanges as $shippingRange) {
             $this->assertInstanceOf(
                 'Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface',
-                $carrierRange
+                $shippingRange
             );
         }
     }
@@ -375,7 +375,7 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
     ) {
         $carrier = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\CarrierInterface');
 
-        $carrierRanges = array(
+        $shippingRanges = array(
             $this->getShippingPriceRangeMock($fromPrice, $toPrice),
             $this->getShippingWeightRangeMock($fromWeight, $toWeight),
         );
@@ -383,7 +383,7 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
         $carrier
             ->expects($this->any())
             ->method('getRanges')
-            ->will($this->returnValue($carrierRanges));
+            ->will($this->returnValue($shippingRanges));
 
         return $carrier;
     }
@@ -436,166 +436,24 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
         $fromWeight,
         $toWeight
     ) {
-        $carrierRange = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface');
+        $shippingRange = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface');
 
-        $carrierRange
+        $shippingRange
             ->expects($this->any())
             ->method('getType')
             ->will($this->returnValue(ElcodiShippingRangeTypes::TYPE_WEIGHT));
 
-        $carrierRange
+        $shippingRange
             ->expects($this->any())
             ->method('getFromWeight')
             ->will($this->returnValue($fromWeight));
 
-        $carrierRange
+        $shippingRange
             ->expects($this->any())
             ->method('getToWeight')
             ->will($this->returnValue($toWeight));
 
-        return $carrierRange;
-    }
 
-    /**
-     * Get isCarrierRangeZonesSatisfiedByCart with any Warehouse defined
-     */
-    public function testIsCarrierRangeZonesSatisfiedByCartNoWarehouse()
-    {
-        $carrierRange = $this->getShippingWeightRangeMock(
-            10,
-            20
-        );
-
-        $shippingRangeProvider = $this
-            ->getMockBuilder('Elcodi\Component\Shipping\Provider\ShippingRangeProvider')
-            ->setMethods(null)
-            ->setConstructorArgs(array(
-                $this->carrierRepository,
-                $this->currencyConverter,
-                $this->zoneMatcher,
-                $this->shippingRangeResolver,
-            ))
-            ->getMock();
-
-        $this->assertFalse(
-            $shippingRangeProvider->isCarrierRangeZonesSatisfiedByCart(
-                $this->cart,
-                $carrierRange
-            )
-        );
-    }
-
-    /**
-     * Get isCarrierRangeZonesSatisfiedByCart with any Warehouse address
-     */
-    public function testIsCarrierRangeZonesSatisfiedByCartWarehouseWithoutAddress()
-    {
-        $carrierRange = $this->getShippingWeightRangeMock(
-            10,
-            20
-        );
-
-        $shippingRangeProvider = $this
-            ->getMockBuilder('Elcodi\Component\Shipping\Provider\ShippingRangeProvider')
-            ->setMethods(null)
-            ->setConstructorArgs(array(
-                $this->carrierRepository,
-                $this->currencyConverter,
-                $this->zoneMatcher,
-                $this->shippingRangeResolver,
-            ))
-            ->getMock();
-
-        $warehouse = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\WarehouseInterface');
-
-        $warehouse
-            ->expects($this->any())
-            ->method('getAddress')
-            ->will($this->returnValue(null));
-
-        $this->assertFalse(
-            $shippingRangeProvider->isCarrierRangeZonesSatisfiedByCart(
-                $this->cart,
-                $carrierRange
-            )
-        );
-    }
-
-    /**
-     * Get isCarrierRangeZonesSatisfiedByCart with any Warehouse address
-     *
-     * @dataProvider dataIsCarrierRangeZonesSatisfiedByCartWarehouseWithAddress
-     */
-    public function testIsCarrierRangeZonesSatisfiedByCartWarehouseWithAddress(
-        $inZoneFrom,
-        $inZoneTo,
-        $isSatisfied
-    ) {
-        $carrierRange = $this->getShippingWeightRangeMock(
-            10,
-            20
-        );
-
-        $shippingRangeProvider = $this
-            ->getMockBuilder('Elcodi\Component\Shipping\Provider\ShippingRangeProvider')
-            ->setMethods(null)
-            ->setConstructorArgs(array(
-                $this->carrierRepository,
-                $this->currencyConverter,
-                $this->zoneMatcher,
-                $this->shippingRangeResolver,
-            ))
-            ->getMock();
-
-        $warehouse = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\WarehouseInterface');
-        $address = $this->getMock('Elcodi\Component\Geo\Entity\Interfaces\AddressInterface');
-
-        $warehouse
-            ->expects($this->any())
-            ->method('getAddress')
-            ->will($this->returnValue($address));
-
-        $this
-            ->zoneMatcher
-            ->expects($this->any())
-            ->method('isAddressContainedInZone')
-            ->will($this->onConsecutiveCalls($inZoneFrom, $inZoneTo));
-
-        $carrierRange
-            ->expects($this->any())
-            ->method('getFromZone')
-            ->will($this->returnValue($this->getMock('Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface')));
-
-        $carrierRange
-            ->expects($this->any())
-            ->method('getToZone')
-            ->will($this->returnValue($this->getMock('Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface')));
-
-        $this
-            ->cart
-            ->expects($this->any())
-            ->method('getDeliveryAddress')
-            ->will($this->returnValue($this->getMock('Elcodi\Component\Geo\Entity\Interfaces\AddressInterface')));
-
-        $this->assertEquals(
-            $isSatisfied,
-            $shippingRangeProvider->isCarrierRangeZonesSatisfiedByCart(
-                $this->cart,
-                $carrierRange
-            )
-        );
-    }
-
-    /**
-     * data for testIsCarrierRangeZonesSatisfiedByCartWarehouseWithAddress
-     */
-    public function dataIsCarrierRangeZonesSatisfiedByCartWarehouseWithAddress()
-    {
-        return [
-            [true, true, true],
-            [true, false, false],
-            [false, true, false],
-            [false, false, false],
-        ];
+        return $shippingRange;
     }
 }
