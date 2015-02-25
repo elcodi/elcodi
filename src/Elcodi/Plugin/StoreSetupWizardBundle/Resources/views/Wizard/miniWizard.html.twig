@@ -1,20 +1,25 @@
-<div id="step1" class="grid welcome mb-n">
+<div id="step1" class="grid welcome welcome-mini mb-n">
+    {% if not stepsFinished[1] %}{% set minutes = minutes +3 %}{% endif %}
+    {% if not stepsFinished[2] %}{% set minutes = minutes +4 %}{% endif %}
+    {% if not stepsFinished[3] %}{% set minutes = minutes +3 %}{% endif %}
+    {% if not stepsFinished[4] %}{% set minutes = minutes +2 %}{% endif %}
+    <h2><span class="icon-clock-o icon-3x mr-s"></span> {% trans with {'%1': minutes } %}You are <strong>%1 minutes</strong>  away to start selling:{% endtrans %}</h2>
     <div class="col-1-4">
-        <div class="pv-m welcome-item{% if activeStep == 1 %} welcome-active{% endif %}{% if stepsFinished[1] %} welcome-done{% endif %}">
+        <div class="pv-m welcome-item{% if activeStep == 1 %} welcome-active{% endif %}{% if stepsFinished[1] %} welcome-done tablet desktop{% endif %}">
             <h5>
                 {% if stepsFinished[1] %}
                     <span class="icon-check"></span>
                 {% else %}
                     <span>1.</span>
                 {% endif %}
-                Setup your address
+                {{ 'Setup your address'|trans }}
             </h5>
-            <p class="mb-n"><a href="{# url('admin_address_new') #}" class="button">Add an address</a></p>
+            <p class="mb-n"><a href="{# url('admin_address_new') #}" class="button">{{ 'Add an address'|trans }}</a></p>
             <p class="fz-s">Estimated time 3 min</p>
         </div>
     </div>
     <div class="col-1-4">
-        <div class="pv-m welcome-item{% if activeStep == 2 %} welcome-active{% endif %}{% if stepsFinished[2] %} welcome-done{% endif %}">
+        <div class="pv-m welcome-item{% if activeStep == 2 %} welcome-active animated bounce{% endif %}{% if stepsFinished[2] %} welcome-done{% endif %}">
             <h5>
                 {% if stepsFinished[2] %}
                     <span class="icon-check"></span>
@@ -23,12 +28,12 @@
                 {% endif %}
                 Add some products
             </h5>
-            <p class="mb-n"><a href="{{ url('admin_product_new') }}" class="button">Create my first product</a></p>
+            <p class="mb-n"><a href="{{ url('admin_product_new') }}" class="button">{{ 'Create my first product'|trans }}</a></p>
             <p class="fz-s">Estimated time 5 min</p>
         </div>
     </div>
     <div class="col-1-4">
-        <div class="pv-m welcome-item{% if activeStep == 3 %} welcome-active{% endif %}{% if stepsFinished[3] %} welcome-done{% endif %}">
+        <div class="pv-m welcome-item{% if activeStep == 3 %} welcome-active animated bounce{% endif %}{% if stepsFinished[3] %} welcome-done tablet desktop{% endif %}">
             <h5>
                 {% if stepsFinished[3] %}
                     <span class="icon-check"></span>
@@ -37,12 +42,12 @@
                 {% endif %}
                 Setup the payments
             </h5>
-            <p class="mb-n"><a href="{# url('admin_payment_edit') #}" class="button">Add payments methods</a></p>
+            <p class="mb-n"><a href="{# url('admin_payment_edit') #}" class="button">{{ 'Add payments methods'|trans }}</a></p>
             <p class="fz-s">Estimated time 3 min</p>
         </div>
     </div>
     <div class="col-1-4">
-        <div class="pv-m welcome-item{% if activeStep == 4 %} welcome-active{% endif %}{% if stepsFinished[4] %} welcome-done{% endif %}">
+        <div class="pv-m welcome-item{% if activeStep == 4 %} welcome-active animated bounce{% endif %}{% if stepsFinished[4] %} welcome-done tablet desktop{% endif %}">
             <h5>
                 {% if stepsFinished[4] %}
                     <span class="icon-check"></span>
@@ -51,7 +56,7 @@
                 {% endif %}
                 Setup your shipping
             </h5>
-            <p class="mb-n"><a href="{{ url('admin_carrier_new') }}" class="button">Add a carrier</a></p>
+            <p class="mb-n"><a href="{{ url('admin_carrier_new') }}" class="button">{{ 'Add a carrier' }}</a></p>
             <p class="fz-s">Estimated time 2 min</p>
         </div>
     </div>
