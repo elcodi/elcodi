@@ -25,21 +25,21 @@ final class ElcodiShippingResolverTypes
     /**
      * @var integer
      *
-     * Return always all available carriers
+     * Return always all available shippings range
      */
-    const CARRIER_RESOLVER_ALL = 'all';
+    const SHIPPING_RANGE_RESOLVER_ALL = 'all';
 
     /**
      * @var integer
      *
-     * Return always the highest price carrier
+     * Return always the highest price shipping range
      */
-    const CARRIER_RESOLVER_HIGHEST = 'highest';
+    const SHIPPING_RANGE_RESOLVER_HIGHEST = 'highest';
 
     /**
      * @var integer
      *
-     * Return always the lowest price carrier
+     * Return always the lowest price shipping range
      */
-    const CARRIER_RESOLVER_LOWEST = 'lowest';
+    const SHIPPING_RANGE_RESOLVER_LOWEST = 'lowest';
 }

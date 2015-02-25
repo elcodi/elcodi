@@ -67,15 +67,15 @@ class ShippingRangeResolver
 
         switch ($this->shippingRangeResolverStrategy) {
 
-            case ElcodiShippingResolverTypes::CARRIER_RESOLVER_ALL:
+            case ElcodiShippingResolverTypes::SHIPPING_RANGE_RESOLVER_ALL:
                 $validShippingRanges = $shippingRanges;
                 break;
 
-            case ElcodiShippingResolverTypes::CARRIER_RESOLVER_LOWEST:
+            case ElcodiShippingResolverTypes::SHIPPING_RANGE_RESOLVER_LOWEST:
                 $validShippingRanges = array($this->getShippingRangeWithLowestPrice($shippingRanges));
                 break;
 
-            case ElcodiShippingResolverTypes::CARRIER_RESOLVER_HIGHEST:
+            case ElcodiShippingResolverTypes::SHIPPING_RANGE_RESOLVER_HIGHEST:
                 $validShippingRanges = array($this->getShippingRangeWithHighestPrice($shippingRanges));
                 break;
         }

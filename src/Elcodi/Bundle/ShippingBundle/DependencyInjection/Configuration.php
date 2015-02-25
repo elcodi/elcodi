@@ -62,11 +62,11 @@ class Configuration extends AbstractConfiguration
                     ->children()
                         ->enumNode('resolve_strategy')
                             ->values([
-                                ElcodiShippingResolverTypes::CARRIER_RESOLVER_ALL,
-                                ElcodiShippingResolverTypes::CARRIER_RESOLVER_HIGHEST,
-                                ElcodiShippingResolverTypes::CARRIER_RESOLVER_LOWEST,
+                                ElcodiShippingResolverTypes::SHIPPING_RANGE_RESOLVER_ALL,
+                                ElcodiShippingResolverTypes::SHIPPING_RANGE_RESOLVER_LOWEST,
+                                ElcodiShippingResolverTypes::SHIPPING_RANGE_RESOLVER_HIGHEST,
                             ])
-                            ->defaultValue(ElcodiShippingResolverTypes::CARRIER_RESOLVER_ALL)
+                            ->defaultValue(ElcodiShippingResolverTypes::SHIPPING_RANGE_RESOLVER_ALL)
                         ->end()
                     ->end()
                 ->end()

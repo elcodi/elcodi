@@ -48,9 +48,9 @@ class ShippingRangeResolverTest extends PHPUnit_Framework_TestCase
     /**
      * @var ShippingRangeInterface[]
      *
-     * CarrierRange collection
+     * ShippingRange collection
      */
-    private $carrierRanges;
+    private $shippingRanges;
 
     /**
      * Setup
@@ -77,62 +77,62 @@ class ShippingRangeResolverTest extends PHPUnit_Framework_TestCase
             ->method('getIso')
             ->will($this->returnValue('USD'));
 
-        $cheapCarrierRange = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface');
+        $cheapShippingRange = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface');
 
-        $cheapCarrierRange
+        $cheapShippingRange
             ->expects($this->any())
             ->method('getPrice')
             ->will($this->returnValue(Money::create(10, $this->currency)));
 
-        $mediumCarrierRange = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface');
+        $mediumShippingRange = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface');
 
-        $mediumCarrierRange
+        $mediumShippingRange
             ->expects($this->any())
             ->method('getPrice')
             ->will($this->returnValue(Money::create(20, $this->currency)));
 
-        $expensiveCarrierRange = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface');
+        $expensiveShippingRange = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface');
 
-        $expensiveCarrierRange
+        $expensiveShippingRange
             ->expects($this->any())
             ->method('getPrice')
             ->will($this->returnValue(Money::create(30, $this->currency)));
 
-        $this->carrierRanges = array(
-            $cheapCarrierRange,
-            $mediumCarrierRange,
-            $expensiveCarrierRange,
+        $this->shippingRanges = array(
+            $cheapShippingRange,
+            $mediumShippingRange,
+            $expensiveShippingRange,
         );
     }
 
     /**
-     * Test all CarrierRanges with same currency
+     * Test all ShippingRanges with same currency
      */
-    public function testResolveAllCarrierRangesSameCurrency()
+    public function testResolveAllShippingRangesSameCurrency()
     {
         $ShippingRangeResolver = new ShippingRangeResolver(
             $this->currencyConverter,
-            ElcodiShippingResolverTypes::CARRIER_RESOLVER_ALL
+            ElcodiShippingResolverTypes::SHIPPING_RANGE_RESOLVER_ALL
         );
 
-        $ranges = $ShippingRangeResolver->resolveCarrierRanges($this->carrierRanges);
+        $ranges = $ShippingRangeResolver->resolveShippingRanges($this->shippingRanges);
         $this->assertSame(
-            $this->carrierRanges,
+            $this->shippingRanges,
             $ranges
         );
     }
 
     /**
-     * Test lowest CarrierRange with same currency
+     * Test lowest ShippingRange with same currency
      */
-    public function testResolveLowestCarrierRangesSameCurrency()
+    public function testResolveLowestShippingRangesSameCurrency()
     {
         $ShippingRangeResolver = new ShippingRangeResolver(
             $this->currencyConverter,
-            ElcodiShippingResolverTypes::CARRIER_RESOLVER_LOWEST
+            ElcodiShippingResolverTypes::SHIPPING_RANGE_RESOLVER_LOWEST
         );
 
-        $ranges = $ShippingRangeResolver->resolveCarrierRanges($this->carrierRanges);
+        $ranges = $ShippingRangeResolver->resolveShippingRanges($this->shippingRanges);
         $this->assertCount(1, $ranges);
         $range = reset($ranges);
         $this->assertSame(
@@ -142,16 +142,16 @@ class ShippingRangeResolverTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test highest CarrierRange with same currency
+     * Test highest ShippingRange with same currency
      */
-    public function testResolveHighestCarrierRangesSameCurrency()
+    public function testResolveHighestShippingRangesSameCurrency()
     {
         $ShippingRangeResolver = new ShippingRangeResolver(
             $this->currencyConverter,
-            ElcodiShippingResolverTypes::CARRIER_RESOLVER_HIGHEST
+            ElcodiShippingResolverTypes::SHIPPING_RANGE_RESOLVER_HIGHEST
         );
 
-        $ranges = $ShippingRangeResolver->resolveCarrierRanges($this->carrierRanges);
+        $ranges = $ShippingRangeResolver->resolveShippingRanges($this->shippingRanges);
         $this->assertCount(1, $ranges);
         $range = reset($ranges);
         $this->assertSame(
