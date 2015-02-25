@@ -5,14 +5,12 @@ parameters:
     #
     elcodi.entity.shipping_range.class: Elcodi\Component\Shipping\Entity\ShippingRange
     elcodi.entity.carrier.class: Elcodi\Component\Shipping\Entity\Carrier
-    elcodi.entity.warehouse.class: Elcodi\Component\Shipping\Entity\Warehouse
 
     #
     # Factories
     #
     elcodi.factory.carrier.class: Elcodi\Component\Shipping\Factory\CarrierFactory
     elcodi.factory.shipping_range.class: Elcodi\Component\Shipping\Factory\ShippingRangeFactory
-    elcodi.factory.warehouse.class: Elcodi\Component\Shipping\Factory\WarehouseFactory
 
     #
     # Providers

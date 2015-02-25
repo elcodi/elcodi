@@ -87,11 +87,6 @@ class ElcodiShippingExtension extends AbstractExtension implements EntitiesOverr
             "elcodi.entity.shipping_range.manager" => $config['mapping']['shipping_range']['manager'],
             "elcodi.entity.shipping__range.enabled" => $config['mapping']['shipping_range']['enabled'],
 
-            "elcodi.entity.warehouse.class" => $config['mapping']['warehouse']['class'],
-            "elcodi.entity.warehouse.mapping_file" => $config['mapping']['warehouse']['mapping_file'],
-            "elcodi.entity.warehouse.manager" => $config['mapping']['warehouse']['manager'],
-            "elcodi.entity.warehouse.enabled" => $config['mapping']['warehouse']['enabled'],
-
             "elcodi.resolver.carrier.strategy" => $config['carrier']['resolve_strategy'],
         ];
     }
@@ -125,7 +120,6 @@ class ElcodiShippingExtension extends AbstractExtension implements EntitiesOverr
         return [
             'Elcodi\Component\Shipping\Entity\Interfaces\CarrierInterface' => 'elcodi.entity.carrier.class',
             'Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface' => 'elcodi.entity.shipping_range.class',
-            'Elcodi\Component\Shipping\Entity\Interfaces\WarehouseInterface' => 'elcodi.entity.warehouse.class',
         ];
     }
 

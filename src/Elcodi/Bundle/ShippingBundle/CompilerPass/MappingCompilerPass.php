@@ -37,13 +37,6 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
         $this
             ->addEntityMapping(
                 $container,
-                'elcodi.entity.warehouse.manager',
-                'elcodi.entity.warehouse.class',
-                'elcodi.entity.warehouse.mapping_file',
-                'elcodi.entity.warehouse.enabled'
-            )
-            ->addEntityMapping(
-                $container,
                 'elcodi.entity.shipping_range.manager',
                 'elcodi.entity.shipping_range.class',
                 'elcodi.entity.shipping_range.mapping_file',

@@ -10,7 +10,3 @@ services:
     elcodi.object_manager.carrier:
         parent: elcodi.abstract_manager
         arguments: [ %elcodi.entity.carrier.class% ]
-
-    elcodi.object_manager.warehouse:
-        parent: elcodi.abstract_manager
-        arguments: [ %elcodi.entity.warehouse.class% ]
