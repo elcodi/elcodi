@@ -85,11 +85,12 @@ class TwigRenderer
                 ->getNextStep();
 
             $this->appendTemplate(
-                '@ElcodiStoreSetupWizard/Wizard/miniWizard.html.twig',
+                '@ElcodiStoreSetupWizard/Wizard/wizard.html.twig',
                 $event,
                 [
                     'stepsFinished' => $stepsFinished,
                     'activeStep'    => $activeStep,
+                    'isMiniWizard'  => true,
                 ]
             );
         }

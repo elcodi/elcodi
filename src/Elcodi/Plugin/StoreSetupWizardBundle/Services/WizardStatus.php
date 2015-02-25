@@ -88,11 +88,11 @@ class WizardStatus
 
         foreach ($stepsFinishedStatus as $step => $stepIsFinished) {
             if (!$stepIsFinished) {
-                return (int)$step;
+                return (int) $step;
             }
         }
 
-        return null;
+        return;
     }
 
     /**
@@ -128,7 +128,7 @@ class WizardStatus
     protected function isThereAnyProduct()
     {
         $enabledProducts = $this->productRepository->findBy([
-            'enabled' => true
+            'enabled' => true,
         ]);
 
         return !empty($enabledProducts);
@@ -152,7 +152,7 @@ class WizardStatus
     protected function isThereAnyCarrier()
     {
         $enabledCarriers = $this->carrierRepository->findBy([
-            'enabled' => true
+            'enabled' => true,
         ]);
 
         return !empty($enabledCarriers);

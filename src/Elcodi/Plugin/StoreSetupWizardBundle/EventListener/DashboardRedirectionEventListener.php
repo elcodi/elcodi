@@ -17,14 +17,13 @@
 
 namespace Elcodi\Plugin\StoreSetupWizardBundle\EventListener;
 
-use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 use Elcodi\Component\Plugin\Entity\Plugin;
 use Elcodi\Plugin\StoreSetupWizardBundle\Services\WizardStatus;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * Class DashboardRedirectionEventListener
