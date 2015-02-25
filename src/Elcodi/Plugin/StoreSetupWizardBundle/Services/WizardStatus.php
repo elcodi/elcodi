@@ -18,7 +18,9 @@
 namespace Elcodi\Plugin\StoreSetupWizardBundle\Services;
 
 use Elcodi\Component\Configuration\Services\ConfigurationManager;
+use Elcodi\Component\Product\Entity\Product;
 use Elcodi\Component\Product\Repository\ProductRepository;
+use Elcodi\Component\Shipping\Entity\Carrier;
 use Elcodi\Component\Shipping\Repository\CarrierRepository;
 
 /**
@@ -115,9 +117,11 @@ class WizardStatus
      */
     protected function isThereAnyProduct()
     {
-        $products = $this->productRepository->findAll();
+        $enabledProducts = $this->productRepository->findBy([
+            'enabled' => true
+        ]);
 
-        return !empty($products);
+        return !empty($enabledProducts);
     }
 
     /**
@@ -137,8 +141,10 @@ class WizardStatus
      */
     protected function isThereAnyCarrier()
     {
-        $carriers = $this->carrierRepository->findAll();
+        $enabledCarriers = $this->carrierRepository->findBy([
+            'enabled' => true
+        ]);
 
-        return !empty($carriers);
+        return !empty($enabledCarriers);
     }
 }
