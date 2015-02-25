@@ -66,6 +66,24 @@ class WizardStatus
     }
 
     /**
+     * Checks if the wizard has already been finished
+     *
+     * @return bool
+     */
+    public function isWizardFinished()
+    {
+        $stepsFinishedStatus = $this->getStepsFinishStatus();
+
+        foreach ($stepsFinishedStatus as $stepIsFinished) {
+            if (!$stepIsFinished) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
      * Gets the finish status for all the steps
      *
      * @return bool[]
@@ -76,7 +94,7 @@ class WizardStatus
             1 => $this->isAddressFulfilled(),
             2 => $this->isThereAnyProduct(),
             3 => $this->isPaymentFulfilled(),
-            4 => $this->isThereAnyProduct(),
+            4 => $this->isThereAnyCarrier(),
         ];
     }
 
@@ -119,8 +137,8 @@ class WizardStatus
      */
     protected function isThereAnyCarrier()
     {
-        $this->carrierRepository->findAll();
+        $carriers = $this->carrierRepository->findAll();
 
-        return !empty($products);
+        return !empty($carriers);
     }
 }

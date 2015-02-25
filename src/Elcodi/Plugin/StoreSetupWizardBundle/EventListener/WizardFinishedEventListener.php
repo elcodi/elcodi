@@ -17,18 +17,16 @@
 
 namespace Elcodi\Plugin\StoreSetupWizardBundle\EventListener;
 
-use Symfony\Bundle\FrameworkBundle\Routing\Router;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 
 use Elcodi\Component\Plugin\Entity\Plugin;
+use Elcodi\Component\Plugin\Services\PluginManager;
 use Elcodi\Plugin\StoreSetupWizardBundle\Services\WizardStatus;
 
 /**
  * Class DashboardRedirectionEventListener
  */
-class DashboardRedirectionEventListener
+class WizardFinishedEventListener
 {
     /**
      * @var Plugin
@@ -38,31 +36,31 @@ class DashboardRedirectionEventListener
     protected $plugin;
 
     /**
-     * @var Router
-     *
-     * Router
-     */
-    protected $router;
-
-    /**
      * @var WizardStatus
      *
-     * A wizard status service
+     * A wizard status service.
      */
     protected $wizardStatus;
 
     /**
+     * @var PluginManager
+     *
+     * A plugin manager service.
+     */
+    private $pluginManager;
+
+    /**
      * Builds a new class
      *
-     * @param Router       $router       A router
-     * @param WizardStatus $wizardStatus A wizard status service
+     * @param WizardStatus  $wizardStatus  A wizard status service.
+     * @param PluginManager $pluginManager A plugin manager
      */
     public function __construct(
-        Router $router,
-        WizardStatus $wizardStatus
+        WizardStatus $wizardStatus,
+        PluginManager $pluginManager
     ) {
-        $this->router       = $router;
-        $this->wizardStatus = $wizardStatus;
+        $this->wizardStatus  = $wizardStatus;
+        $this->pluginManager = $pluginManager;
     }
 
     /**
@@ -80,8 +78,7 @@ class DashboardRedirectionEventListener
     }
 
     /**
-     * Handles the event redirecting to the wizard if the user is visiting the
-     * dashboard
+     * Checks if the plugin should be disabled
      *
      * @param GetResponseEvent $event The response event
      */
@@ -89,30 +86,14 @@ class DashboardRedirectionEventListener
     {
         if (
             $this->plugin->isEnabled() &&
-            !$this->wizardStatus->isWizardFinished()
+            $this->wizardStatus->isWizardFinished()
         ) {
-            $request      = $event->getRequest();
-            $currentRoute = $this->getCurrentRequestRoute($request);
-
-            if ('admin_homepage' == $currentRoute) {
-                $event->setResponse(
-                    new RedirectResponse(
-                        $this->router->generate('admin_store_setup_wizard')
-                    )
+            $this
+                ->pluginManager
+                ->updatePlugin(
+                    'Elcodi\Plugin\StoreSetupWizardBundle',
+                    false
                 );
-            }
         }
-    }
-
-    /**
-     * Gets the current request route
-     *
-     * @param Request $request The current request
-     *
-     * @return string
-     */
-    protected function getCurrentRequestRoute(Request $request)
-    {
-        return $request->get('_route');
     }
 }

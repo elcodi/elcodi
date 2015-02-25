@@ -6,7 +6,18 @@ services:
     elcodi_plugin.event_listener.dashboard_redirection:
         class: %elcodi_plugin.event_listener.dashboard_redirection.class%
         arguments:
-            wizard_status: @router
+            router: @router
+            wizard_status: @elcodi_templates.wizard_status.service
+        calls:
+            - [setPlugin, [@=elcodi_plugin("Elcodi\\Plugin\\StoreSetupWizardBundle")]]
+        tags:
+            - { name: firewall_listener, firewall: admin_area }
+
+    elcodi_plugin.event_listener.wizard_finished:
+        class: %elcodi_plugin.event_listener.wizard_finished.class%
+        arguments:
+            wizard_status: @elcodi_templates.wizard_status.service
+            plugin_manager: @elcodi.plugin_manager
         calls:
             - [setPlugin, [@=elcodi_plugin("Elcodi\\Plugin\\StoreSetupWizardBundle")]]
         tags:
