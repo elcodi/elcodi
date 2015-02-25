@@ -117,6 +117,7 @@ class ElcodiBambooExtension extends AbstractExtension
 
         return [
             'services',
+            'twig',
             [
                 'emails/customerPasswordRemember',
                 $config['emails']['customer_password_remember']['enabled'],
