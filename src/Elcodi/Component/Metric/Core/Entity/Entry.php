@@ -50,9 +50,16 @@ class Entry implements EntryInterface
     /**
      * @var string
      *
-     * Context
+     * Value
      */
-    protected $context;
+    protected $value;
+
+    /**
+     * @var integer
+     *
+     * Type
+     */
+    protected $type;
 
     /**
      * @var DateTime
@@ -66,19 +73,22 @@ class Entry implements EntryInterface
      *
      * @param string   $token     Token
      * @param string   $event     Event
-     * @param string   $context   Context
+     * @param string   $value     Value
+     * @param integer  $type      Type
      * @param DateTime $createdAt Created At
      */
     public function __construct(
         $token,
         $event,
-        $context,
+        $value,
+        $type,
         $createdAt
     ) {
-        $this->context = $context;
-        $this->createdAt = $createdAt;
-        $this->event = $event;
         $this->token = $token;
+        $this->event = $event;
+        $this->value = $value;
+        $this->type = $type;
+        $this->createdAt = $createdAt;
     }
 
     /**
@@ -92,23 +102,13 @@ class Entry implements EntryInterface
     }
 
     /**
-     * Get Context
+     * Get Token
      *
-     * @return string Context
+     * @return string Token
      */
-    public function getContext()
+    public function getToken()
     {
-        return $this->context;
-    }
-
-    /**
-     * Get CreatedAt
-     *
-     * @return mixed CreatedAt
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
+        return $this->token;
     }
 
     /**
@@ -122,12 +122,32 @@ class Entry implements EntryInterface
     }
 
     /**
-     * Get Token
+     * Get Value
      *
-     * @return string Token
+     * @return string Value
      */
-    public function getToken()
+    public function getValue()
     {
-        return $this->token;
+        return $this->value;
+    }
+
+    /**
+     * Get Type
+     *
+     * @return int Type
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Get CreatedAt
+     *
+     * @return mixed CreatedAt
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
     }
 }

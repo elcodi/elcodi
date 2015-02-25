@@ -431,14 +431,4 @@ class Customer extends AbstractUser implements CustomerInterface
     {
         return $this->language;
     }
-
-    /**
-     * Sleep implementation for some reason
-     *
-     * @link http://asiermarques.com/2013/symfony2-security-usernamepasswordtokenserialize-must-return-a-string-or-null/
-     */
-    public function __sleep()
-    {
-        return array('id', 'email');
-    }
 }

@@ -104,7 +104,6 @@ class LanguageExtension extends Twig_Extension
         $index = array_search($this->masterLocale, $languages);
 
         if (false !== $index) {
-
             unset($languages[$index]);
             array_unshift($languages, $this->masterLocale);
         }

@@ -17,10 +17,11 @@
 
 namespace Elcodi\Component\Metric\Core\Bucket;
 
-use Redis;
+use Predis\Client as Predis;
 
 use Elcodi\Component\Metric\Core\Bucket\Abstracts\AbstractMetricsBucket;
 use Elcodi\Component\Metric\Core\Entity\Interfaces\EntryInterface;
+use Elcodi\Component\Metric\ElcodiMetricTypes;
 
 /**
  * Class RedisMetricsBucket
@@ -28,7 +29,7 @@ use Elcodi\Component\Metric\Core\Entity\Interfaces\EntryInterface;
 class RedisMetricsBucket extends AbstractMetricsBucket
 {
     /**
-     * @var Redis
+     * @var Predis
      *
      * Redis instance
      */
@@ -37,9 +38,9 @@ class RedisMetricsBucket extends AbstractMetricsBucket
     /**
      * Construct
      *
-     * @param Redis $redis Redis
+     * @param Predis $redis Redis
      */
-    public function __construct(Redis $redis)
+    public function __construct(Predis $redis)
     {
         $this->redis = $redis;
     }
@@ -53,84 +54,275 @@ class RedisMetricsBucket extends AbstractMetricsBucket
      */
     public function add(EntryInterface $entry)
     {
-        $createdAt = $entry->getCreatedAt();
-        $globalEntryKey = $entry->getEvent();
-        $entryKey = $this->generateEntryKey(
-            $entry->getToken(),
-            $entry->getEvent()
-        );
-
         $this
-            ->incrementPointerByKey($createdAt->format('Y.m.d.H'), $globalEntryKey)
-            ->incrementPointerByKey($createdAt->format('Y.m.d.H'), $entryKey)
-            ->incrementPointerByKey($createdAt->format('Y.m.d'), $globalEntryKey)
-            ->incrementPointerByKey($createdAt->format('Y.m.d'), $entryKey)
-            ->incrementPointerByKey($createdAt->format('Y.m'), $globalEntryKey)
-            ->incrementPointerByKey($createdAt->format('Y.m'), $entryKey);
+            ->addWithFormattedHour($entry, 'Y-m-d')
+            ->addWithFormattedHour($entry, 'Y-m-d-H');
+
+        return $this;
     }
 
     /**
-     * Get Count from bucket given selectors
+     * Add metric given hour formatted
      *
-     * @param string $token Event
-     * @param string $event Token
-     * @param string $date  Date
-     *
-     * @return integer Number of hits
-     */
-    public function get($token, $event, $date)
-    {
-        $entryKey = $this->generateEntryKey(
-            $token,
-            $event
-        );
-
-        return $this
-            ->redis
-            ->hGet(
-                $date,
-                $entryKey
-            );
-    }
-
-    /**
-     * Get Count from bucket given selectors
-     *
-     * @param string $event Token
-     * @param string $date  Date
-     *
-     * @return integer Number of hits
-     */
-    public function getGlobal($event, $date)
-    {
-        return $this
-            ->redis
-            ->hGet(
-                $date,
-                $event
-            );
-    }
-
-    /**
-     * Increment the pointer by one with given key
-     *
-     * @param string $key     Key
-     * @param string $hashKey Hash Key
+     * @param EntryInterface $entry          Entry
+     * @param string         $dateTimeFormat DateTime format
      *
      * @return $this Self Object
      */
-    protected function incrementPointerByKey(
-        $key,
-        $hashKey
+    protected function addWithFormattedHour(
+        EntryInterface $entry,
+        $dateTimeFormat
+    ) {
+        $entryKey = $this->generateEntryKey(
+            $entry->getToken(),
+            $entry->getEvent(),
+            $entry->getCreatedAt()->format($dateTimeFormat)
+        );
+
+        $entryType = $entry->getType();
+
+        /**
+         * If the entry must be treated as a beacon
+         */
+        if ($entryType & ElcodiMetricTypes::TYPE_BEACON_UNIQUE) {
+            $this->addBeaconMetricUnique($entry, $entryKey);
+        }
+
+        /**
+         * If the entry must be treated as a beacon
+         */
+        if ($entryType & ElcodiMetricTypes::TYPE_BEACON_TOTAL) {
+            $this->addBeaconMetricTotal($entry, $entryKey);
+        }
+
+        /**
+         * If the entry must be treated as an accumulated metric
+         */
+        if ($entryType & ElcodiMetricTypes::TYPE_ACCUMULATED) {
+            $this->addAccumulativeEntry($entry, $entryKey);
+        }
+
+        /**
+         * If the entry must be treated as a distributed metric
+         */
+        if ($entryType & ElcodiMetricTypes::TYPE_DISTRIBUTIVE) {
+            $this->addDistributedEntry($entry, $entryKey);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Add beacon unique nb given the key entry
+     *
+     * @param EntryInterface $entry    Entry
+     * @param string         $entryKey Key entry
+     *
+     * @return $this Self Object
+     */
+    protected function addBeaconMetricUnique(
+        EntryInterface $entry,
+        $entryKey
     ) {
         $this
             ->redis
-            ->hIncrBy(
-                $key,
-                $hashKey,
+            ->pfAdd(
+                $entryKey.'_unique',
+                $entry->getValue()
+            );
+
+        return $this;
+    }
+
+    /**
+     * Add beacon total nb given the key entry
+     *
+     * @param EntryInterface $entry    Entry
+     * @param string         $entryKey Key entry
+     *
+     * @return $this Self Object
+     */
+    protected function addBeaconMetricTotal(
+        EntryInterface $entry,
+        $entryKey
+    ) {
+        $this
+            ->redis
+            ->incr($entryKey.'_total');
+
+        return $this;
+    }
+
+    /**
+     * Add accumulative metric
+     *
+     * @param EntryInterface $entry    Entry
+     * @param string         $entryKey Key entry
+     *
+     * @return $this Self Object
+     */
+    protected function addAccumulativeEntry(
+        EntryInterface $entry,
+        $entryKey
+    ) {
+        $this
+            ->redis
+            ->incrby(
+                $entryKey.'_accum',
+                (int) $entry->getValue()
+            );
+
+        return $this;
+    }
+
+    /**
+     * Add distributed metric
+     *
+     * @param EntryInterface $entry    Entry
+     * @param string         $entryKey Key entry
+     *
+     * @return $this Self Object
+     */
+    protected function addDistributedEntry(
+        EntryInterface $entry,
+        $entryKey
+    ) {
+        $this
+            ->redis
+            ->hincrby(
+                $entryKey.'_distr',
+                $entry->getValue(),
                 1
             );
 
         return $this;
+    }
+
+    /**
+     * Getters
+     */
+
+    /**
+     * Get number of unique beacons given an event and a set of dates
+     *
+     * @param string $token Event
+     * @param string $event Token
+     * @param array  $dates Dates
+     *
+     * @return integer Number of hits
+     */
+    public function getBeaconsUnique($token, $event, array $dates)
+    {
+        $keys = [];
+
+        foreach ($dates as $date) {
+            $keys[] = $this->generateEntryKey(
+                $token,
+                $event,
+                $date
+            ).'_unique';
+        }
+
+        return (int) $this
+            ->redis
+            ->pfCount($keys);
+    }
+
+    /**
+     * Get the total of beacons given an event and a set of dates
+     *
+     * @param string $token Event
+     * @param string $event Token
+     * @param array  $dates Dates
+     *
+     * @return integer Number of beacons, given an event and dates
+     */
+    public function getBeaconsTotal($token, $event, array $dates)
+    {
+        $total = 0;
+
+        foreach ($dates as $date) {
+            $key = $this->generateEntryKey(
+                $token,
+                $event,
+                $date
+            );
+
+            $total += (int) $this
+                ->redis
+                ->get($key.'_total');
+        }
+
+        return $total;
+    }
+
+    /**
+     * Get distributions given an event and a set of dates
+     *
+     * @param string $token Event
+     * @param string $event Token
+     * @param array  $dates Dates
+     *
+     * @return integer Accumulation of event and given dates
+     */
+    public function getAccumulation($token, $event, array $dates)
+    {
+        $total = 0;
+
+        foreach ($dates as $date) {
+            $key = $this->generateEntryKey(
+                $token,
+                $event,
+                $date
+            );
+
+            $total += (int) $this
+                ->redis
+                ->get($key.'_accum');
+        }
+
+        return $total;
+    }
+
+    /**
+     * Get distributions given an event and a set of dates
+     *
+     * [
+     *      "value3": 24,
+     *      "value7": 13,
+     *      "value8": 9,
+     * ]
+     *
+     * @param string $token Event
+     * @param string $event Token
+     * @param array  $dates Dates
+     *
+     * @return array Distribution with totals
+     */
+    public function getDistributions($token, $event, array $dates)
+    {
+        $distributions = [];
+
+        foreach ($dates as $date) {
+            $key = $this->generateEntryKey(
+                $token,
+                $event,
+                $date
+            );
+
+            $partials = $this
+                ->redis
+                ->hgetall($key.'_distr');
+
+            foreach ($partials as $key => $value) {
+                $distributions[$key] = isset($partialTotals[$key])
+                    ? $distributions[$key] + $value
+                    : $value;
+            }
+        }
+
+        arsort($distributions);
+
+        return $distributions;
     }
 }

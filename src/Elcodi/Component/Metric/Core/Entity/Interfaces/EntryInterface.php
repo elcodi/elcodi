@@ -23,18 +23,11 @@ namespace Elcodi\Component\Metric\Core\Entity\Interfaces;
 interface EntryInterface
 {
     /**
-     * Get Context
+     * Get Token
      *
-     * @return string Context
+     * @return string Token
      */
-    public function getContext();
-
-    /**
-     * Get CreatedAt
-     *
-     * @return mixed CreatedAt
-     */
-    public function getCreatedAt();
+    public function getToken();
 
     /**
      * Get Event
@@ -44,9 +37,23 @@ interface EntryInterface
     public function getEvent();
 
     /**
-     * Get Token
+     * Get Value
      *
-     * @return string Token
+     * @return string Value
      */
-    public function getToken();
+    public function getValue();
+
+    /**
+     * Get Type
+     *
+     * @return int Type
+     */
+    public function getType();
+
+    /**
+     * Get CreatedAt
+     *
+     * @return mixed CreatedAt
+     */
+    public function getCreatedAt();
 }

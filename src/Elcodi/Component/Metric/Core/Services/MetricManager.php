@@ -67,23 +67,24 @@ class MetricManager
     /**
      * Adds a new entry into database and into metrics bucket
      *
-     * @param string $token   Event
-     * @param string $event   Token
-     * @param array  $context Context
+     * @param string   $token    Event
+     * @param string   $event    Token
+     * @param string   $uniqueId Unique id
+     * @param integer  $type     Type
+     * @param DateTime $dateTime DateTime
      *
      * @return $this Self Object
      */
-    public function addEntry($token, $event, array $context = [])
+    public function addEntry($token, $event, $uniqueId, $type, $dateTime)
     {
-        $now = new DateTime();
-        $context = json_encode($context);
         $entry = $this
             ->entryFactory
             ->create(
                 $token,
                 $event,
-                $context,
-                $now
+                $uniqueId,
+                $type,
+                $dateTime
             );
 
         $this->entryObjectManager->persist($entry);

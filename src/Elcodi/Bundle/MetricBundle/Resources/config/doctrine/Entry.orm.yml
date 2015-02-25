@@ -18,11 +18,16 @@ Elcodi\Component\Metric\Core\Entity\Entry:
             type: string
             length: 255
             nullable: false
-        context:
-            column: context
+        value:
+            column: value
             type: string
-            length: 2048
+            length: 512
             nullable: true
+        type:
+            column: type
+            type: integer
+            length: 8
+            nullable: false
         createdAt:
             column: created_at
             type: datetime

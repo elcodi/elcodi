@@ -29,15 +29,18 @@ abstract class AbstractMetricsBucket
      *
      * @param string $token Event
      * @param string $event Token
+     * @param string $date  Date
      *
      * @return string key
      */
-    protected function generateEntryKey($token, $event)
+    protected function generateEntryKey($token, $event, $date)
     {
         return
             $this->normalizeForKey($token).
             '.'.
-            $this->normalizeForKey($event);
+            $this->normalizeForKey($event).
+            '.'.
+            $this->normalizeForKey($date);
     }
 
     /**
@@ -62,23 +65,52 @@ abstract class AbstractMetricsBucket
     abstract public function add(EntryInterface $entry);
 
     /**
-     * Get Count from bucket given selectors
+     * Get number of unique beacons given an event and a set of dates
      *
      * @param string $token Event
      * @param string $event Token
-     * @param string $date  Date
+     * @param array  $dates Dates
      *
      * @return integer Number of hits
      */
-    abstract public function get($token, $event, $date);
+    abstract public function getBeaconsUnique($token, $event, array $dates);
 
     /**
-     * Get Count from bucket given selectors
+     * Get the total of beacons given an event and a set of dates
      *
+     * @param string $token Event
      * @param string $event Token
-     * @param string $date  Date
+     * @param array  $dates Dates
      *
-     * @return integer Number of hits
+     * @return integer Number of beacons, given an event and dates
      */
-    abstract public function getGlobal($event, $date);
+    abstract public function getBeaconsTotal($token, $event, array $dates);
+
+    /**
+     * Get distributions given an event and a set of dates
+     *
+     * @param string $token Event
+     * @param string $event Token
+     * @param array  $dates Dates
+     *
+     * @return integer Accumulation of event and given dates
+     */
+    abstract public function getAccumulation($token, $event, array $dates);
+
+    /**
+     * Get distributions given an event and a set of dates
+     *
+     * [
+     *      "value3": 24,
+     *      "value7": 13,
+     *      "value8": 9,
+     * ]
+     *
+     * @param string $token Event
+     * @param string $event Token
+     * @param array  $dates Dates
+     *
+     * @return array Distribution with totals
+     */
+    abstract public function getDistributions($token, $event, array $dates);
 }
