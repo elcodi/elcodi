@@ -227,14 +227,15 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
                 continue;
             }
 
+            $field = $this->submittedDataPlain[$formHash][$fieldName];
+
             foreach ($this->locales as $locale) {
-                $data = $this->submittedDataPlain[$formHash][$fieldName][$locale.'_'.$fieldName];
-                $entityData['fields'][$fieldName][$locale] = $data;
+                $entityData['fields'][$fieldName][$locale] = $field[$locale.'_'.$fieldName];
             }
 
-            if ($this->masterLocale) {
+            if ($this->masterLocale && isset($field[$this->masterLocale.'_'.$fieldName])) {
+                $masterLocaleData = $field[$this->masterLocale.'_'.$fieldName];
                 $setter = $fieldConfiguration['setter'];
-                $masterLocaleData = $this->submittedDataPlain[$formHash][$fieldName][$this->masterLocale.'_'.$fieldName];
                 $entity->$setter($masterLocaleData);
             }
         }
