@@ -16,3 +16,10 @@ services:
             template_loader: @elcodi.manager.configuration
         tags:
             -  { name: console.command }
+
+    elcodi.configuration_delete_command:
+        class: %elcodi.configuration_delete_command.class%
+        arguments:
+            template_loader: @elcodi.manager.configuration
+        tags:
+            -  { name: console.command }

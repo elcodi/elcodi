@@ -147,6 +147,18 @@ class ConfigurationManagerTest extends WebTestCase
     }
 
     /**
+     * Tests getting a non-existing parameter
+     *
+     * @expectedException \Elcodi\Component\Configuration\Exception\ConfigurationParameterNotFoundException
+     */
+    public function testGetNonExistingParameter()
+    {
+        $this
+            ->get('elcodi.manager.configuration')
+            ->get('non_existent_parameter');
+    }
+
+    /**
      * Test get value from previously inserted value in database
      */
     public function testGetParameterInsertedExisting()
@@ -219,5 +231,81 @@ class ConfigurationManagerTest extends WebTestCase
         $this
             ->get('elcodi.manager.configuration')
             ->set('my_immutable_parameter', 'non-immutable');
+    }
+
+    /**
+     * Test deletion of an immutable parameter
+     *
+     * @expectedException \Elcodi\Component\Configuration\Exception\ConfigurationNotEditableException
+     */
+    public function testImmutableConfigurationDelete()
+    {
+        $this
+            ->get('elcodi.manager.configuration')
+            ->delete('my_immutable_parameter');
+    }
+
+    /**
+     * Test parameter deletion
+     */
+    public function testDeleteParameter()
+    {
+        /*
+         * Deletion of a non-persisted parameter should return false
+         */
+        $this
+            ->assertFalse(
+                $this
+                    ->get('elcodi.manager.configuration')
+                    ->delete('my_parameter')
+            );
+
+        /*
+         * Deletion of a persisted parameter should return true
+         */
+        $this
+            ->get('elcodi.manager.configuration')
+            ->set('my_parameter', 'my_new_value');
+        $this
+            ->assertTrue(
+                $this
+                    ->get('elcodi.manager.configuration')
+                    ->delete('my_parameter')
+            );
+
+        /*
+         * Deleted parameter should not be found in cache
+         */
+        $this
+            ->assertFalse(
+              $this
+                  ->get('doctrine_cache.providers.elcodi_configurations')
+                  ->contains('my_parameter')
+            );
+
+        /*
+         * Deleted parameter should be flushed from the DB
+         */
+        $this->assertNull(
+            $this
+                ->get('elcodi.repository.configuration')
+                ->find([
+                    'namespace' => '',
+                    'key'       => 'my_parameter',
+                ])
+            );
+
+    }
+
+    /**
+     * Test deletion of a non-existing parameter
+     *
+     * @expectedException \Elcodi\Component\Configuration\Exception\ConfigurationParameterNotFoundException
+     */
+    public function testDeleteNonExistentParameter()
+    {
+        $this
+            ->get('elcodi.manager.configuration')
+            ->delete('non_existent_parameter');
     }
 }

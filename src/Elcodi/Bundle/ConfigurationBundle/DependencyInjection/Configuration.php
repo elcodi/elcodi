@@ -50,6 +50,7 @@ class Configuration extends AbstractConfiguration implements ConfigurationInterf
                     ->end()
                 ->end()
                 ->arrayNode('elements')
+                    ->useAttributeAsKey('')
                     ->prototype('array')
                         ->children()
                             ->scalarNode('key')

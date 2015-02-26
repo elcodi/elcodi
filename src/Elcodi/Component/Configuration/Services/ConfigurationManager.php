@@ -94,16 +94,24 @@ class ConfigurationManager extends AbstractCacheWrapper
      * Set a configuration value
      *
      * @param string $configurationIdentifier Configuration identifier
-     * @param mixed  $configurationValue      Configuration value
+     * @param mixed $configurationValue Configuration value
      *
      * @return ConfigurationInterface|null Object saved
      *
-     * @throws ConfigurationNotEditableException Configuration not editable
+     * @throws ConfigurationNotEditableException       Configuration parameter is read-only
+     * @throws ConfigurationParameterNotFoundException Configuration parameter not found
      */
     public function set(
         $configurationIdentifier,
         $configurationValue
     ) {
+        /**
+         * Checks if the value is defined in the configuration elements
+         */
+        if (!array_key_exists($configurationIdentifier, $this->configurationElements)) {
+            throw new ConfigurationParameterNotFoundException();
+        }
+
         list($configurationNamespace, $configurationKey) = $this->splitConfigurationKey($configurationIdentifier);
 
         /**
@@ -111,7 +119,7 @@ class ConfigurationManager extends AbstractCacheWrapper
          * we return an exception
          */
         if (
-            isset($this->configurationElements[$configurationIdentifier]) &&
+            is_array($this->configurationElements[$configurationIdentifier]) &&
             $this->configurationElements[$configurationIdentifier]['read_only'] === true
         ) {
             throw new ConfigurationNotEditableException();
@@ -150,17 +158,24 @@ class ConfigurationManager extends AbstractCacheWrapper
     }
 
     /**
-     * Load a parameter given the key and the namespace
+     * Loads a parameter given the format "namespace.key"
      *
      * @param string $configurationIdentifier Configuration identifier
      *
      * @return null|string|boolean Configuration parameter value
      *
-     * @throws ConfigurationParameterNotFoundException Configuration not found
+     * @throws ConfigurationParameterNotFoundException Configuration parameter not found
      * @throws Exception                               Configuration cannot be resolved
      */
     public function get($configurationIdentifier)
     {
+        /**
+         * Checks if the value is defined in the configuration elements
+         */
+        if (!array_key_exists($configurationIdentifier, $this->configurationElements)) {
+            throw new ConfigurationParameterNotFoundException();
+        }
+
         $valueIsCached = $this
             ->cache
             ->contains($configurationIdentifier);
@@ -214,6 +229,69 @@ class ConfigurationManager extends AbstractCacheWrapper
     }
 
     /**
+     * Deletes a parameter given the format "namespace.key"
+     *
+     * @param $configurationIdentifier
+     *
+     * @return bool
+     *
+     * @throws ConfigurationNotEditableException       Configuration parameter is read-only
+     * @throws ConfigurationParameterNotFoundException Configuration parameter not found
+     */
+    public function delete($configurationIdentifier)
+    {
+        /**
+         * Checks if the value is defined in the configuration elements
+         */
+        if (!array_key_exists($configurationIdentifier, $this->configurationElements)) {
+            throw new ConfigurationParameterNotFoundException();
+        }
+
+        /**
+         * Checks if the configuration element is read-only.
+         */
+        if (
+            is_array($this->configurationElements[$configurationIdentifier]) &&
+            $this->configurationElements[$configurationIdentifier]['read_only'] === true
+        ) {
+            throw new ConfigurationNotEditableException();
+        }
+
+        $valueIsCached = $this
+            ->cache
+            ->contains($configurationIdentifier);
+
+        /**
+         * The value is cached, so first we have to remove it
+         */
+        if (false !== $valueIsCached) {
+            $this
+                ->cache
+                ->delete($configurationIdentifier);
+        }
+        list($configurationNamespace, $configurationKey) = $this->splitConfigurationKey($configurationIdentifier);
+
+        $configurationLoaded = $this->loadConfiguration(
+            $configurationNamespace,
+            $configurationKey
+        );
+
+        if ($configurationLoaded instanceof ConfigurationInterface) {
+            /*
+             * Configuration is found, delete it
+             */
+            $this->deleteConfiguration($configurationLoaded);
+
+            return true;
+        }
+
+        /*
+         * Configuration instance was not found
+         */
+        return false;
+    }
+
+    /**
      * Loads a configuration
      *
      * @param string $configurationNamespace Configuration namespace
@@ -256,6 +334,26 @@ class ConfigurationManager extends AbstractCacheWrapper
     }
 
     /**
+     * Deletes a configuration instance
+     *
+     * @param ConfigurationInterface $configuration Configuration instance
+     *
+     * @return $this Self object
+     */
+    protected function deleteConfiguration(ConfigurationInterface $configuration)
+    {
+        $this
+            ->configurationObjectManager
+            ->remove($configuration);
+
+        $this
+            ->configurationObjectManager
+            ->flush($configuration);
+
+        return $this;
+    }
+
+    /**
      * Creates a new configuration instance and serializes
      *
      * @param string $configurationIdentifier Configuration identifier
@@ -265,7 +363,7 @@ class ConfigurationManager extends AbstractCacheWrapper
      *
      * @return ConfigurationInterface New Configuration created
      *
-     * @throws ConfigurationParameterNotFoundException Configuration not found
+     * @throws ConfigurationParameterNotFoundException Configuration parameter not found
      */
     protected function createConfigurationInstance(
         $configurationIdentifier,
