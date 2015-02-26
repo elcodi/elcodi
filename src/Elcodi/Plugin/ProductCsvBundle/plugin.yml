@@ -7,3 +7,4 @@ name: Elcodi Product CSV
 fa_icon: download
 configuration_route: admin_product_csv_configuration
 version: ~0.4
+visible: true

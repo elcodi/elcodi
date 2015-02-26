@@ -107,6 +107,13 @@ class Plugin
     protected $configuration;
 
     /**
+     * @var boolean
+     *
+     * Visible
+     */
+    protected $visible;
+
+    /**
      * Construct new plugin instance
      *
      * @param string  $author
@@ -121,6 +128,7 @@ class Plugin
      * @param string  $url
      * @param string  $version
      * @param string  $year
+     * @param boolean $visible
      */
     public function __construct(
         $author,
@@ -134,7 +142,8 @@ class Plugin
         $namespace,
         $url,
         $version,
-        $year
+        $year,
+        $visible
     ) {
         $this->author = $author;
         $this->bundle = $bundle;
@@ -148,6 +157,7 @@ class Plugin
         $this->url = $url;
         $this->version = $version;
         $this->year = $year;
+        $this->visible = $visible;
     }
 
     /**
@@ -268,5 +278,15 @@ class Plugin
     public function getYear()
     {
         return $this->year;
+    }
+
+    /**
+     * Is visible
+     *
+     * @return bool Visible
+     */
+    public function isVisible()
+    {
+        return $this->visible;
     }
 }

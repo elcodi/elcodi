@@ -1,0 +1,13 @@
+{% extends 'AdminCoreBundle::layout.html.twig' %}
+
+{% block content_title %}Welcome!{% endblock content_title %}
+
+{% block breadcrumb %}<h1>Welcome!</h1>{% endblock %}
+
+{% block body_top_hook '' %}
+
+{% block content %}
+
+{% include 'ElcodiStoreSetupWizardBundle:Wizard:wizard.html.twig' %}
+
+{% endblock content %}
