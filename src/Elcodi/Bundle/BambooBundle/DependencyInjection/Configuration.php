@@ -55,6 +55,9 @@ class Configuration extends AbstractConfiguration
                 ->scalarNode('store_under_construction')
                     ->defaultTrue()
                 ->end()
+                ->scalarNode('store_address')
+                    ->defaultValue('Store address')
+                ->end()
 
                 ->append($this->createEmailConfiguration())
             ->end();
