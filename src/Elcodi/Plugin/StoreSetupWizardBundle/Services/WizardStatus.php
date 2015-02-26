@@ -103,8 +103,8 @@ class WizardStatus
     public function getStepsFinishStatus()
     {
         return [
-            1 => $this->isAddressFulfilled(),
-            2 => $this->isThereAnyProduct(),
+            1 => $this->isThereAnyProduct(),
+            2 => $this->isAddressFulfilled(),
             3 => $this->isPaymentFulfilled(),
             4 => $this->isThereAnyCarrier(),
         ];
@@ -122,7 +122,7 @@ class WizardStatus
             ->configurationManager
             ->get('store.address');
 
-        return '' !== $storeAddress;
+        return !empty($storeAddress);
     }
 
     /**
