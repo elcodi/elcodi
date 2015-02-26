@@ -95,6 +95,13 @@ elcodi_configuration:
             type: string
             default_value: ''
 
+        store_address:
+            key: address
+            name: Store address
+            namespace: store
+            type: string
+            default_value: null
+
         #
         # Product namespace
         #

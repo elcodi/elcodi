@@ -117,7 +117,12 @@ class WizardStatus
      */
     protected function isAddressFulfilled()
     {
-        return true;
+        return false;
+        $storeAddress = $this
+            ->configurationManager
+            ->get('store.address');
+
+        return '' !== $storeAddress;
     }
 
     /**
@@ -141,7 +146,20 @@ class WizardStatus
      */
     protected function isPaymentFulfilled()
     {
-        return true;
+        $paymillPrivateKey       = $this
+            ->configurationManager
+            ->get('store.paymill_private_key');
+        $paymillPublicKey = $this
+            ->configurationManager
+            ->get('store.paymill_public_key');
+        $paypalCheckoutRecipient = $this
+            ->configurationManager
+            ->get('store.paypal_web_checkout_recipient');
+
+        return
+            '' !== $paymillPrivateKey &&
+            '' !== $paymillPublicKey &&
+            '' !== $paypalCheckoutRecipient;
     }
 
     /**
