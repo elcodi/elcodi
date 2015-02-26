@@ -20,3 +20,4 @@ parameters:
     #
     elcodi.configuration_set_command.class: Elcodi\Component\Configuration\Command\ConfigurationSetCommand
     elcodi.configuration_get_command.class: Elcodi\Component\Configuration\Command\ConfigurationGetCommand
+    elcodi.configuration_delete_command.class: Elcodi\Component\Configuration\Command\ConfigurationDeleteCommand
