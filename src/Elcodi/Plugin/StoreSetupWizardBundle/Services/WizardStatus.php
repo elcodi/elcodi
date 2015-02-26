@@ -117,7 +117,6 @@ class WizardStatus
      */
     protected function isAddressFulfilled()
     {
-        return false;
         $storeAddress = $this
             ->configurationManager
             ->get('store.address');
