@@ -10,3 +10,4 @@ url: http://url-ga.com
 fa_icon: google
 configuration_route: admin_google_analytics_configuration
 version: ~0.4
+visible: true

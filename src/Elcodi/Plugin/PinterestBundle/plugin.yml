@@ -10,3 +10,4 @@ name: Elcodi Pinterest
 fa_icon: pinterest
 configuration_route: admin_pinterest_configuration
 version: ~0.4
+visible: true

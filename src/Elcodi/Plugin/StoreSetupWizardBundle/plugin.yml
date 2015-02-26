@@ -10,3 +10,5 @@ url: http://elcodi.io/
 fa_icon: magic
 configuration_route: admin_store_setup_wizard_configuration
 version: ~0.4
+enabled: true
+visible: false

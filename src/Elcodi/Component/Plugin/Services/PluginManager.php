@@ -108,6 +108,7 @@ class PluginManager
                         'fa_icon'             => 'gear',
                         'configuration_route' => null,
                         'enabled'             => false,
+                        'visible'             => true,
                         'configuration'       => [],
                     ],
                     $this->getPluginSpecification($bundle->getPath())
@@ -162,6 +163,8 @@ class PluginManager
                 'version',
                 'fa_icon',
                 'configuration_route',
+                'enabled',
+                'visible',
             ])
         );
     }
@@ -182,6 +185,31 @@ class PluginManager
         }
 
         return $plugins;
+    }
+
+    /**
+     * Get visible plugins
+     *
+     * @return array Plugins
+     */
+    public function getVisiblePlugins()
+    {
+        $plugins = $this
+            ->configurationManager
+            ->get('store.plugins');
+
+        $visiblePlugin = [];
+        foreach ($plugins as $pluginKey => $pluginInfo) {
+            /**
+             * @var Plugin $plugin
+             */
+            $plugin = $this->hidratePlugin($pluginInfo);
+            if ($plugin->isVisible()) {
+                $visiblePlugin[] = $plugin;
+            }
+        }
+
+        return $visiblePlugin;
     }
 
     /**
@@ -248,7 +276,8 @@ class PluginManager
             $plugin['namespace'],
             $plugin['url'],
             $plugin['version'],
-            $plugin['year']
+            $plugin['year'],
+            $plugin['visible']
         );
     }
 }
