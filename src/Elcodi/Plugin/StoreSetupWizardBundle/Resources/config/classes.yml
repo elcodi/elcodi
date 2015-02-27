@@ -4,6 +4,7 @@ parameters:
     # Services
     #
     elcodi_templates.wizard_status.service.class: Elcodi\Plugin\StoreSetupWizardBundle\Services\WizardStatus
+    elcodi_templates.wizard_routes.service.class: Elcodi\Plugin\StoreSetupWizardBundle\Services\WizardRoutes
 
     #
     # Event Listeners
