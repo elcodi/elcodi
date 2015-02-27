@@ -18,10 +18,27 @@
 namespace Elcodi\Component\Cart\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 
 /**
  * OrderRepository
  */
 class OrderRepository extends EntityRepository
 {
+    /**
+     * Gets the not shipped orders.
+     *
+     * @return OrderInterface[]
+     */
+    public function getNotShippedOrders()
+    {
+        $res = $this->createQueryBuilder('o')
+            ->innerJoin('o.shippingLastStateLine', 'sl')
+            ->where('sl.name != \'shipped\'')
+            ->orderBy('o.updatedAt', 'ASC')
+            ->getQuery()
+            ->getResult();
+
+        return $res;
+    }
 }
