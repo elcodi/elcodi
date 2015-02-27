@@ -1,8 +1,13 @@
 <div id="step1" class="grid welcome">
-    {% if not stepsFinished[1] %}{% set minutes = minutes +3 %}{% endif %}
-    {% if not stepsFinished[2] %}{% set minutes = minutes +4 %}{% endif %}
-    {% if not stepsFinished[3] %}{% set minutes = minutes +3 %}{% endif %}
-    {% if not stepsFinished[4] %}{% set minutes = minutes +2 %}{% endif %}
+    {% set minutesStepOne = 4 %}
+    {% set minutesStepTwo = 2 %}
+    {% set minutesStepThree = 2 %}
+    {% set minutesStepFour = 2 %}
+
+    {% if not stepsFinished[1] %}{% set minutes = minutes + minutesStepOne %}{% endif %}
+    {% if not stepsFinished[2] %}{% set minutes = minutes + minutesStepTwo %}{% endif %}
+    {% if not stepsFinished[3] %}{% set minutes = minutes + minutesStepThree %}{% endif %}
+    {% if not stepsFinished[4] %}{% set minutes = minutes + minutesStepFour %}{% endif %}
     <h2><span class="icon-clock-o icon-3x mr-s"></span> {% trans with {'%1': minutes } %}You are <strong>%1 minutes</strong> away to start selling:{% endtrans %}</h2>
     <div class="col-1-4">
         <div class="welcome-item{% if activeStep == 1 %} welcome-active animated bounce{% endif %}{% if stepsFinished[1] %} welcome-done{% endif %}">
@@ -22,7 +27,7 @@
                 <p>{{ 'The most important thing in your store... after your customers.'|trans }}</p>
             {% endif %}
             <p class="mb-n"><a href="{{ url('admin_product_new') }}" class="button button-primary">{{ 'Create my first product'|trans }}</a></p>
-            <p class="fz-s">{% trans with {'%1': '4' } %}Estimated time %1 min{% endtrans %}</p>
+            <p class="fz-s">{% trans with {'%1': minutesStepOne } %}Estimated time %1 min{% endtrans %}</p>
         </div>
     </div>
     <div class="col-1-4">
@@ -43,7 +48,7 @@
                 <p>{{ 'To start selling on internet you need to setup your place of business'|trans }}</p>
             {% endif %}
             <p class="mb-n"><a href="{{ url('admin_address_edit') }}" class="button button-primary">{{ 'Add an address'|trans }}</a></p>
-            <p class="fz-s">{% trans with {'%1': '2' } %}Estimated time %1 min{% endtrans %}</p>
+            <p class="fz-s">{% trans with {'%1': minutesStepTwo } %}Estimated time %1 min{% endtrans %}</p>
         </div>
     </div>
     <div class="col-1-4">
@@ -64,7 +69,7 @@
                 <p>{{ 'Do you want to be paid? Just need to say how and where. '|trans }}</p>
             {% endif %}
             <p class="mb-n"><a href="{{ url('admin_payment_configuration_list') }}" class="button button-primary">{{ 'Setup payments methods'|trans }}</a></p>
-            <p class="fz-s">{% trans with {'%1': '2' } %}Estimated time %1 min{% endtrans %}</p>
+            <p class="fz-s">{% trans with {'%1': minutesStepThree } %}Estimated time %1 min{% endtrans %}</p>
         </div>
     </div>
     <div class="col-1-4">
@@ -85,7 +90,7 @@
                 <p>{{ "You need to define the carriers and the costs. (Even if it's free)" }}</p>
             {% endif %}
             <p class="mb-n"><a href="{{ url('admin_carrier_new') }}" class="button button-primary">{{ 'Add a carrier' }}</a></p>
-            <p class="fz-s">{% trans with {'%1': '2' } %}Estimated time %1 min{% endtrans %}</p>
+            <p class="fz-s">{% trans with {'%1': minutesStepFour } %}Estimated time %1 min{% endtrans %}</p>
         </div>
     </div>
 </div>
