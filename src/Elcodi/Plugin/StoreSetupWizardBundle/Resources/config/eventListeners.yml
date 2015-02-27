@@ -13,11 +13,12 @@ services:
         tags:
             - { name: firewall_listener, firewall: admin_area }
 
-    elcodi_plugin.event_listener.wizard_finished:
-        class: %elcodi_plugin.event_listener.wizard_finished.class%
+    elcodi_plugin.event_listener.disable_wizard:
+        class: %elcodi_plugin.event_listener.disable_wizard.class%
         arguments:
             wizard_status: @elcodi_templates.wizard_status.service
             plugin_manager: @elcodi.plugin_manager
+            configuration_manger: @elcodi.manager.configuration
         calls:
             - [setPlugin, [@=elcodi_plugin("Elcodi\\Plugin\\StoreSetupWizardBundle")]]
         tags:

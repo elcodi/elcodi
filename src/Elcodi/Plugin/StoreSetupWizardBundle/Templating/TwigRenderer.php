@@ -19,6 +19,7 @@ namespace Elcodi\Plugin\StoreSetupWizardBundle\Templating;
 
 use Symfony\Component\HttpFoundation\RequestStack;
 
+use Elcodi\Component\Configuration\Services\ConfigurationManager;
 use Elcodi\Component\Plugin\Entity\Plugin;
 use Elcodi\Component\Plugin\Interfaces\EventInterface;
 use Elcodi\Component\Plugin\Templating\Traits\TemplatingTrait;
@@ -53,17 +54,27 @@ class TwigRenderer
     protected $requestStack;
 
     /**
+     * @var ConfigurationManager
+     *
+     * A configuration manager
+     */
+    protected $configurationManager;
+
+    /**
      * Builds a new class
      *
-     * @param WizardStatus $wizardStatus The Wizard status
-     * @param RequestStack $requestStack A request stack
+     * @param WizardStatus         $wizardStatus         The Wizard status
+     * @param RequestStack         $requestStack         A request stack
+     * @param ConfigurationManager $configurationManager A configuration manager
      */
     public function __construct(
         WizardStatus $wizardStatus,
-        RequestStack $requestStack
+        RequestStack $requestStack,
+        ConfigurationManager $configurationManager
     ) {
-        $this->wizardStatus = $wizardStatus;
-        $this->requestStack = $requestStack;
+        $this->wizardStatus         = $wizardStatus;
+        $this->requestStack         = $requestStack;
+        $this->configurationManager = $configurationManager;
     }
 
     /**
@@ -89,7 +100,8 @@ class TwigRenderer
     {
         if (
             $this->plugin->isEnabled() &&
-            $this->isVisible()
+            $this->isVisible() &&
+            !$this->wizardStatus->isWizardFinished()
         ) {
             $stepsFinished = $this
                 ->wizardStatus
@@ -108,6 +120,40 @@ class TwigRenderer
                     'isMiniWizard'  => true,
                 ]
             );
+        }
+    }
+
+    /**
+     * Render the message to enable store.
+     *
+     * @param EventInterface $event The event
+     */
+    public function renderEnableStoreMessage(EventInterface $event)
+    {
+        if ($this->plugin->isEnabled()) {
+            $storeEnabled =
+                'on' == $this
+                    ->configurationManager
+                    ->get('store.enabled');
+
+            $masterRequest = $this
+                ->requestStack
+                ->getMasterRequest();
+
+            $route = $masterRequest
+                ->attributes
+                ->get('_route');
+
+            if (
+                $this->wizardStatus->isWizardFinished() &&
+                'admin_configuration_list' != $route &&
+                !$storeEnabled
+            ) {
+                $this->appendTemplate(
+                    '@ElcodiStoreSetupWizard/Wizard/enable-store.html.twig',
+                    $event
+                );
+            }
         }
     }
 

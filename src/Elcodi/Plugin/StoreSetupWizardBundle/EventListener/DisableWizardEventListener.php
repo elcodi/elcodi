@@ -19,14 +19,15 @@ namespace Elcodi\Plugin\StoreSetupWizardBundle\EventListener;
 
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 
+use Elcodi\Component\Configuration\Services\ConfigurationManager;
 use Elcodi\Component\Plugin\Entity\Plugin;
 use Elcodi\Component\Plugin\Services\PluginManager;
 use Elcodi\Plugin\StoreSetupWizardBundle\Services\WizardStatus;
 
 /**
- * Class DashboardRedirectionEventListener
+ * Class DisableWizardEventListener
  */
-class WizardFinishedEventListener
+class DisableWizardEventListener
 {
     /**
      * @var Plugin
@@ -47,20 +48,30 @@ class WizardFinishedEventListener
      *
      * A plugin manager service.
      */
-    private $pluginManager;
+    protected $pluginManager;
+
+    /**
+     * @var ConfigurationManager
+     *
+     * A configuration manager.
+     */
+    protected $configurationManager;
 
     /**
      * Builds a new class
      *
-     * @param WizardStatus  $wizardStatus  A wizard status service.
-     * @param PluginManager $pluginManager A plugin manager
+     * @param WizardStatus         $wizardStatus         A wizard status service
+     * @param PluginManager        $pluginManager        A plugin manager
+     * @param ConfigurationManager $configurationManager A configuration manager
      */
     public function __construct(
         WizardStatus $wizardStatus,
-        PluginManager $pluginManager
+        PluginManager $pluginManager,
+        ConfigurationManager $configurationManager
     ) {
-        $this->wizardStatus  = $wizardStatus;
-        $this->pluginManager = $pluginManager;
+        $this->wizardStatus         = $wizardStatus;
+        $this->pluginManager        = $pluginManager;
+        $this->configurationManager = $configurationManager;
     }
 
     /**
@@ -84,9 +95,15 @@ class WizardFinishedEventListener
      */
     public function handle(GetResponseEvent $event)
     {
+        $storeEnabled =
+            'on' == $this
+                ->configurationManager
+                ->get('store.enabled');
+
         if (
             $this->plugin->isEnabled() &&
-            $this->wizardStatus->isWizardFinished()
+            $this->wizardStatus->isWizardFinished() &&
+            $storeEnabled
         ) {
             $this
                 ->pluginManager
