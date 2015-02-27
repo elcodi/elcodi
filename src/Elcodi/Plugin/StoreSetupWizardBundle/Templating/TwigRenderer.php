@@ -17,6 +17,7 @@
 
 namespace Elcodi\Plugin\StoreSetupWizardBundle\Templating;
 
+use Elcodi\Plugin\StoreSetupWizardBundle\Services\WizardRoutes;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 use Elcodi\Component\Configuration\Services\ConfigurationManager;
@@ -61,20 +62,30 @@ class TwigRenderer
     protected $configurationManager;
 
     /**
+     * @var WizardRoutes
+     *
+     * The wizard routes service
+     */
+    protected $wizardRoutes;
+
+    /**
      * Builds a new class
      *
      * @param WizardStatus         $wizardStatus         The Wizard status
      * @param RequestStack         $requestStack         A request stack
      * @param ConfigurationManager $configurationManager A configuration manager
+     * @param WizardRoutes         $wizardRoutes         A wizard routes service
      */
     public function __construct(
         WizardStatus $wizardStatus,
         RequestStack $requestStack,
-        ConfigurationManager $configurationManager
+        ConfigurationManager $configurationManager,
+        WizardRoutes $wizardRoutes
     ) {
         $this->wizardStatus         = $wizardStatus;
         $this->requestStack         = $requestStack;
         $this->configurationManager = $configurationManager;
+        $this->wizardRoutes = $wizardRoutes;
     }
 
     /**
@@ -158,6 +169,61 @@ class TwigRenderer
     }
 
     /**
+     * Render the next step message.
+     *
+     * @param EventInterface $event The event
+     */
+    public function renderGoNextStepMessage(EventInterface $event)
+    {
+        if ($this->plugin->isEnabled()) {
+
+            $masterRequest = $this
+                ->requestStack
+                ->getMasterRequest();
+            $currentRoute  = $masterRequest
+                ->attributes
+                ->get('_route');
+
+            $isWizardRoute = $this
+                ->wizardRoutes
+                ->isWizardSetupRoute($currentRoute);
+
+            if ($isWizardRoute) {
+                $currentStep = $this
+                    ->wizardRoutes
+                    ->getStepByRoute($currentRoute);
+
+                $isStepFinished = $this
+                    ->wizardStatus
+                    ->isStepFinished($currentStep);
+
+                if (
+                    1 != $currentStep &&
+                    $isStepFinished
+                ) {
+                    $stepsFinished = $this
+                        ->wizardStatus
+                        ->getStepsFinishStatus();
+
+                    $activeStep = $this
+                        ->wizardStatus
+                        ->getNextStep();
+
+                    $this->appendTemplate(
+                        '@ElcodiStoreSetupWizard/Wizard/wizard.html.twig',
+                        $event,
+                        [
+                            'stepsFinished' => $stepsFinished,
+                            'activeStep'    => $activeStep,
+                            'isMiniWizard'  => true,
+                        ]
+                    );
+                }
+            }
+        }
+    }
+
+    /**
      * Checks if the wizard is visible for this request.
      *
      * @return bool If visible
@@ -176,19 +242,6 @@ class TwigRenderer
             ->attributes
             ->get('_route');
 
-        if (in_array(
-            $route,
-            [
-                'admin_product_new',
-                'admin_address_new',
-                'admin_address_edit',
-                'admin_payment_configuration_list',
-                'admin_carrier_new',
-            ]
-        )) {
-            return false;
-        }
-
-        return true;
+        return !$this->wizardRoutes->isWizardHidden($route);
     }
 }

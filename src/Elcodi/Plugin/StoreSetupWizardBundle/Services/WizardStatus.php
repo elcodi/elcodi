@@ -96,6 +96,29 @@ class WizardStatus
     }
 
     /**
+     * Checks if the received step is finished.
+     *
+     * @param integer $stepNumber A step number.
+     *
+     * @return bool If the step is finished
+     */
+    public function isStepFinished($stepNumber)
+    {
+        switch ($stepNumber) {
+            case 1:
+                return $this->isThereAnyProduct();
+            case 2:
+                return $this->isAddressFulfilled();
+            case 3:
+                return $this->isPaymentFulfilled();
+            case 4:
+                return $this->isThereAnyCarrier();
+            default:
+                return true;
+        }
+    }
+
+    /**
      * Gets the finish status for all the steps
      *
      * @return bool[]
@@ -103,10 +126,10 @@ class WizardStatus
     public function getStepsFinishStatus()
     {
         return [
-            1 => $this->isThereAnyProduct(),
-            2 => $this->isAddressFulfilled(),
-            3 => $this->isPaymentFulfilled(),
-            4 => $this->isThereAnyCarrier(),
+            1 => $this->isStepFinished(1),
+            2 => $this->isStepFinished(2),
+            3 => $this->isStepFinished(3),
+            4 => $this->isStepFinished(4),
         ];
     }
 

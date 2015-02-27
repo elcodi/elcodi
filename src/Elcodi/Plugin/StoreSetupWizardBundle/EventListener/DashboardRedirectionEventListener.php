@@ -24,6 +24,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 use Elcodi\Component\Plugin\Entity\Plugin;
 use Elcodi\Plugin\StoreSetupWizardBundle\Services\WizardStatus;
+use Elcodi\Plugin\StoreSetupWizardBundle\Services\WizardRoutes;
 
 /**
  * Class DashboardRedirectionEventListener
@@ -52,17 +53,27 @@ class DashboardRedirectionEventListener
     protected $wizardStatus;
 
     /**
+     * @var WizardRoutes
+     *
+     * The wizard routes service
+     */
+    protected $wizardRoutes;
+
+    /**
      * Builds a new class
      *
      * @param UrlGeneratorInterface $urlGenerator An url generator
      * @param WizardStatus          $wizardStatus A wizard status service
+     * @param WizardRoutes          $wizardRoutes A wizard routes service
      */
     public function __construct(
         UrlGeneratorInterface $urlGenerator,
-        WizardStatus $wizardStatus
+        WizardStatus $wizardStatus,
+        WizardRoutes $wizardRoutes
     ) {
         $this->urlGenerator = $urlGenerator;
         $this->wizardStatus = $wizardStatus;
+        $this->wizardRoutes = $wizardRoutes;
     }
 
     /**
@@ -99,7 +110,11 @@ class DashboardRedirectionEventListener
                     new RedirectResponse(
                         $this
                             ->urlGenerator
-                            ->generate('admin_store_setup_wizard')
+                            ->generate(
+                                $this
+                                    ->wizardRoutes
+                                    ->getDefaultWizardRoute()
+                            )
                     )
                 );
             }

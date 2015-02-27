@@ -8,6 +8,7 @@ services:
         arguments:
             router: @router
             wizard_status: @elcodi_templates.wizard_status.service
+            wizard_routes: @elcodi_templates.wizard_routes.service
         calls:
             - [setPlugin, [@=elcodi_plugin("Elcodi\\Plugin\\StoreSetupWizardBundle")]]
         tags:

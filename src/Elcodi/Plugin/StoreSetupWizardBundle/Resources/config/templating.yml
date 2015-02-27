@@ -12,6 +12,8 @@ services:
             wizard_status: @elcodi_templates.wizard_status.service
             request_stack: @request_stack
             configuration_manger: @elcodi.manager.configuration
+            wizard_routes: @elcodi_templates.wizard_routes.service
         tags:
             - { name: kernel.event_listener, event: admin.body_top, method: renderMiniWizard }
             - { name: kernel.event_listener, event: admin.body_top, method: renderEnableStoreMessage }
+            - { name: kernel.event_listener, event: admin.body_top, method: renderGoNextStepMessage }

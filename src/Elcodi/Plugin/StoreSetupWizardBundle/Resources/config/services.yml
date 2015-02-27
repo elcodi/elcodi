@@ -6,6 +6,11 @@ services:
     elcodi_templates.wizard_status.service:
         class: %elcodi_templates.wizard_status.service.class%
         arguments:
-          configuration_manager: @elcodi.manager.configuration
-          product_repository: @elcodi.repository.product
-          carrier_repository: @elcodi.repository.carrier
+            configuration_manager: @elcodi.manager.configuration
+            product_repository: @elcodi.repository.product
+            carrier_repository: @elcodi.repository.carrier
+
+    elcodi_templates.wizard_routes.service:
+        class: %elcodi_templates.wizard_routes.service.class%
+        arguments:
+            wizard_status: @elcodi_templates.wizard_status.service
