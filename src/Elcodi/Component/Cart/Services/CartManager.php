@@ -409,4 +409,50 @@ class CartManager
 
         return $this;
     }
+
+    /**
+     * Remove a Purchasable from Cart
+     *
+     * This method removes a Purchasable from the Cart.
+     *
+     * If the Purchasable is already in the Cart, it just decreases
+     * item quantity by $quantity
+     *
+     * @param CartInterface        $cart        Cart
+     * @param PurchasableInterface $purchasable Product or Variant to add
+     * @param integer              $quantity    Number of units to set or increase
+     *
+     * @return $this Self object
+     */
+    public function removeProduct(
+        CartInterface $cart,
+        PurchasableInterface $purchasable,
+        $quantity
+    ) {
+        /**
+         * If quantity is not a number or is 0 or less, product is not removed
+         * from cart
+         */
+        if (!is_int($quantity) || $quantity <= 0) {
+            return $this;
+        }
+
+        foreach ($cart->getCartLines() as $cartLine) {
+            /**
+             * @var CartLineInterface $cartLine
+             */
+            if (
+                (get_class($cartLine->getPurchasable()) === get_class($purchasable)) &&
+                ($cartLine->getPurchasable()->getId() == $purchasable->getId())
+            ) {
+                /**
+                 * Product already in the Cart, decrease quantity
+                 */
+
+                return $this->decreaseCartLineQuantity($cartLine, $quantity);
+            }
+        }
+
+        return $this;
+    }
 }

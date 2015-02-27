@@ -485,4 +485,57 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
                 1
             );
     }
+
+    /**
+     * removeProduct
+     *
+     * @dataProvider dataRemoveProduct
+     * @group        cart
+     */
+    public function testRemoveProduct($quantity, $productId, $quantityExpected)
+    {
+        /**
+         * @var ProductInterface $product
+         */
+
+        $product = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\ProductInterface');
+        $productToRemove = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\ProductInterface');
+
+        $product
+            ->expects($this->any())
+            ->method('getId')
+            ->willReturn('1001');
+
+        $cart = new Cart();
+        $cartLine = new CartLine();
+        $cartLine->setPurchasable($product);
+        $cart->setCartLines(new ArrayCollection(array($cartLine)));
+        $cartLine->setCart($cart);
+
+        $this->assertCount(1, $cart->getCartLines());
+
+        $productToRemove
+            ->expects($this->any())
+            ->method('getId')
+            ->willReturn($productId);
+
+        $this->cartManager->removeProduct($cart, $productToRemove, $quantity);
+
+        $this->assertCount($quantityExpected, $cart->getCartLines());
+    }
+
+    /**
+     * Data provider for testRemoveProduct
+     */
+    public function dataRemoveProduct()
+    {
+        return [
+            [1, 1001, 0],
+            [1, 1002, 1],
+            [null, 1001, 1],
+            [false, 1001, 1],
+            [true, 1001, 1],
+            [-1, 1001, 1],
+        ];
+    }
 }
