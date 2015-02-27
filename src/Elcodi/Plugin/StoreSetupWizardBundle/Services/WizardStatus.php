@@ -131,11 +131,13 @@ class WizardStatus
      */
     protected function isThereAnyProduct()
     {
-        $enabledProducts = $this->productRepository->findBy([
-            'enabled' => true,
-        ]);
+        $enabledProduct = $this
+            ->productRepository
+            ->findOneBy([
+                'enabled' => true,
+            ]);
 
-        return !empty($enabledProducts);
+        return ($enabledProduct instanceof Product);
     }
 
     /**
@@ -168,10 +170,12 @@ class WizardStatus
      */
     protected function isThereAnyCarrier()
     {
-        $enabledCarriers = $this->carrierRepository->findBy([
-            'enabled' => true,
-        ]);
+        $enabledCarrier = $this
+            ->carrierRepository
+            ->findOneBy([
+                'enabled' => true,
+            ]);
 
-        return !empty($enabledCarriers);
+        return ($enabledCarrier instanceof Carrier);
     }
 }
