@@ -21,7 +21,7 @@
             {% if not isMiniWizard %}
                 <p>{{ 'The most important thing in your store... after your customers.'|trans }}</p>
             {% endif %}
-            <p class="mb-n"><a href="{{ url('admin_product_new') }}#breadcrumb" class="button button-primary">{{ 'Create my first product'|trans }}</a></p>
+            <p class="mb-n"><a href="{{ url('admin_product_new') }}" class="button button-primary">{{ 'Create my first product'|trans }}</a></p>
             <p class="fz-s">{% trans with {'%1': '4' } %}Estimated time %1 min{% endtrans %}</p>
         </div>
     </div>
@@ -42,7 +42,7 @@
             {% if not isMiniWizard %}
                 <p>{{ 'To start selling on internet you need to setup your place of business'|trans }}</p>
             {% endif %}
-            <p class="mb-n"><a href="{{ url('admin_address_edit') }}#breadcrumb" class="button button-primary">{{ 'Add an address'|trans }}</a></p>
+            <p class="mb-n"><a href="{{ url('admin_address_edit') }}" class="button button-primary">{{ 'Add an address'|trans }}</a></p>
             <p class="fz-s">{% trans with {'%1': '2' } %}Estimated time %1 min{% endtrans %}</p>
         </div>
     </div>
@@ -63,7 +63,7 @@
             {% if not isMiniWizard %}
                 <p>{{ 'Do you want to be paid? Just need to say how and where. '|trans }}</p>
             {% endif %}
-            <p class="mb-n"><a href="{{ url('admin_payment_configuration_list') }}#breadcrumb" class="button button-primary">{{ 'Setup payments methods'|trans }}</a></p>
+            <p class="mb-n"><a href="{{ url('admin_payment_configuration_list') }}" class="button button-primary">{{ 'Setup payments methods'|trans }}</a></p>
             <p class="fz-s">{% trans with {'%1': '2' } %}Estimated time %1 min{% endtrans %}</p>
         </div>
     </div>
@@ -84,7 +84,7 @@
             {% if not isMiniWizard %}
                 <p>{{ "You need to define the carriers and the costs. (Even if it's free)" }}</p>
             {% endif %}
-            <p class="mb-n"><a href="{{ url('admin_carrier_new') }}#breadcrumb" class="button button-primary">{{ 'Add a carrier' }}</a></p>
+            <p class="mb-n"><a href="{{ url('admin_carrier_new') }}" class="button button-primary">{{ 'Add a carrier' }}</a></p>
             <p class="fz-s">{% trans with {'%1': '2' } %}Estimated time %1 min{% endtrans %}</p>
         </div>
     </div>

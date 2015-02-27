@@ -10,5 +10,6 @@ services:
             - [setPlugin, [@=elcodi_plugin("Elcodi\\Plugin\\StoreSetupWizardBundle")]]
         arguments:
             wizard_status: @elcodi_templates.wizard_status.service
+            request_stack: @request_stack
         tags:
             - { name: kernel.event_listener, event: admin.body_top, method: renderMiniWizard }

@@ -18,7 +18,9 @@
 namespace Elcodi\Plugin\StoreSetupWizardBundle\Services;
 
 use Elcodi\Component\Configuration\Services\ConfigurationManager;
+use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Repository\ProductRepository;
+use Elcodi\Component\Shipping\Entity\Interfaces\CarrierInterface;
 use Elcodi\Component\Shipping\Repository\CarrierRepository;
 
 /**
@@ -135,7 +137,7 @@ class WizardStatus
                 'enabled' => true,
             ]);
 
-        return ($enabledProduct instanceof Product);
+        return ($enabledProduct instanceof ProductInterface);
     }
 
     /**
@@ -174,6 +176,6 @@ class WizardStatus
                 'enabled' => true,
             ]);
 
-        return ($enabledCarrier instanceof Carrier);
+        return ($enabledCarrier instanceof CarrierInterface);
     }
 }
