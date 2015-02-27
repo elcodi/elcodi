@@ -5,8 +5,9 @@ services:
     #
     elcodi.core.entity_translator.event_listener.entity_translator_entity:
         class: %elcodi.core.entity_translator.event_listener.entity_translator_entity.class%
+        lazy: true
         arguments:
             container: @service_container
-            locale: @elcodi.locale_iso
+            locale: @elcodi.locale
         tags:
             - { name: doctrine.event_listener, event: postLoad }

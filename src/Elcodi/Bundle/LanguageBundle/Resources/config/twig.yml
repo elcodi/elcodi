@@ -7,6 +7,6 @@ services:
         class: %elcodi.twig_extension.language.class%
         arguments:
             - @elcodi.manager.language
-            - @elcodi.locale_iso
+            - @elcodi.locale
         tags:
             - { name: twig.extension }
