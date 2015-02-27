@@ -45,6 +45,7 @@
     "require-dev": {
         "elcodi/test-common-bundle": "~0.4.0",
         "elcodi/bamboo-bundle": "~0.4.0",
+        "elcodi/fixtures-booster-bundle": "~0.4.0",
         "doctrine/data-fixtures": "~1.0"
     },
     "autoload": {
