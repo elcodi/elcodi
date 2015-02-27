@@ -20,6 +20,7 @@ namespace Elcodi\Component\Language\Twig;
 use Twig_Extension;
 
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
+use Elcodi\Component\Language\Entity\Interfaces\LocaleInterface;
 use Elcodi\Component\Language\Services\LanguageManager;
 
 /**
@@ -35,7 +36,7 @@ class LanguageExtension extends Twig_Extension
     protected $languageManager;
 
     /**
-     * @var string
+     * @var LocaleInterface
      *
      * Master locale
      */
@@ -45,11 +46,11 @@ class LanguageExtension extends Twig_Extension
      * Construct method
      *
      * @param LanguageManager $languageManager Language manager
-     * @param string          $masterLocale    Master locale
+     * @param LocaleInterface $masterLocale    Master locale
      */
     public function __construct(
         LanguageManager $languageManager,
-        $masterLocale
+        LocaleInterface $masterLocale
     ) {
         $this->languageManager = $languageManager;
         $this->masterLocale = $masterLocale;
@@ -101,11 +102,12 @@ class LanguageExtension extends Twig_Extension
      */
     protected function promoteMasterLanguage(array $languages)
     {
-        $index = array_search($this->masterLocale, $languages);
+        $masterLocale = $this->masterLocale->getIso();
+        $index = array_search($masterLocale, $languages);
 
         if (false !== $index) {
             unset($languages[$index]);
-            array_unshift($languages, $this->masterLocale);
+            array_unshift($languages, $masterLocale);
         }
 
         return $languages;

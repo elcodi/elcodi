@@ -86,10 +86,17 @@ class PrintMoneyExtensionTest extends PHPUnit_Framework_TestCase
      */
     public function testCurrencyRateNotFoundThrowsException()
     {
+        $locale = $this->getMock('Elcodi\Component\Language\Entity\Interfaces\LocaleInterface');
+        $locale
+            ->expects($this->any())
+            ->method('getIso')
+            ->willReturn('es_ES')
+        ;
+
         $priceExtension = new PrintMoneyExtension(
             $this->getMock('Elcodi\Component\Currency\Services\CurrencyConverter', [], [], '', false),
             $this->getMock('Elcodi\Component\Currency\Wrapper\CurrencyWrapper', [], [], '', false),
-            'es_ES'
+            $locale
         );
 
         $currencyFactory = new CurrencyFactory();

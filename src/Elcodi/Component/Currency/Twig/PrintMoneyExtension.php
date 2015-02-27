@@ -28,6 +28,7 @@ use Elcodi\Component\Currency\Exception\CurrencyNotAvailableException;
 use Elcodi\Component\Currency\Exception\CurrencyNotConvertibleException;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
 use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
+use Elcodi\Component\Language\Entity\Interfaces\LocaleInterface;
 
 /**
  * Print price extension for twig
@@ -49,27 +50,27 @@ class PrintMoneyExtension extends Twig_Extension
     protected $currencyWrapper;
 
     /**
-     * @var string
+     * @var LocaleInterface
      *
-     * Locale iso
+     * Locale
      */
-    protected $localeIso;
+    protected $locale;
 
     /**
      * Construct method
      *
      * @param CurrencyConverter $currencyConverter Currency converter
      * @param CurrencyWrapper   $currencyWrapper   Currency wrapper
-     * @param string            $localeIso         Locale iso
+     * @param LocaleInterface   $locale            Locale iso
      */
     public function __construct(
         CurrencyConverter $currencyConverter,
         CurrencyWrapper $currencyWrapper,
-        $localeIso
+        LocaleInterface $locale
     ) {
         $this->currencyConverter = $currencyConverter;
         $this->currencyWrapper = $currencyWrapper;
-        $this->localeIso = $localeIso;
+        $this->locale = $locale;
     }
 
     /**
@@ -141,7 +142,7 @@ class PrintMoneyExtension extends Twig_Extension
         }
 
         $formatter = new NumberFormatter(
-            $this->localeIso,
+            $this->locale->getIso(),
             NumberFormatter::CURRENCY
         );
 
