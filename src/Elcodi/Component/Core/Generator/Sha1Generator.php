@@ -50,7 +50,7 @@ class Sha1Generator implements GeneratorInterface
      *
      * @return string Result of generation
      */
-    public function generate($length = null)
+    public function generate($length = 1)
     {
         return hash("sha1", $this->generator->generate($length));
     }
