@@ -52,13 +52,16 @@ class MetricManager
     /**
      * Construct
      *
-     * @param AbstractMetricsBucket $metricsBucket Metrics bucket
+     * @param AbstractMetricsBucket $metricsBucket      Metrics bucket
+     * @param EntryFactory          $entryFactory       Entry Factory
+     * @param ObjectManager         $entryObjectManager Entry Object Manager
      */
     public function __construct(
         AbstractMetricsBucket $metricsBucket,
         EntryFactory $entryFactory,
         ObjectManager $entryObjectManager
-    ) {
+    )
+    {
         $this->metricsBucket = $metricsBucket;
         $this->entryFactory = $entryFactory;
         $this->entryObjectManager = $entryObjectManager;
@@ -75,7 +78,13 @@ class MetricManager
      *
      * @return $this Self Object
      */
-    public function addEntry($token, $event, $uniqueId, $type, $dateTime)
+    public function addEntry(
+        $token,
+        $event,
+        $uniqueId,
+        $type,
+        $dateTime
+    )
     {
         $entry = $this
             ->entryFactory

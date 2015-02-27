@@ -33,6 +33,8 @@
         "php": ">=5.4",
         "doctrine/common": "~2.4",
         "doctrine/orm": "~2.4",
+        "twig/twig": "~1.16",
+        "predis/predis": "0.8.7",
 
         "elcodi/core": "~0.4.0"
     },
