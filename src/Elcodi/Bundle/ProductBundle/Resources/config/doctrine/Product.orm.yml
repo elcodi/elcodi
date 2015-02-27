@@ -107,6 +107,7 @@ Elcodi\Component\Product\Entity\Product:
                 name: manufacturer_id
                 referencedColumnName: id
                 nullable: true
+                onDelete: "SET NULL"
         principalVariant:
             targetEntity: Elcodi\Component\Product\Entity\Interfaces\VariantInterface
             fetch: EAGER
@@ -121,6 +122,7 @@ Elcodi\Component\Product\Entity\Product:
                 name: principal_category_id
                 referencedColumnName: id
                 nullable: true
+                onDelete: "SET NULL"
         principalImage:
             targetEntity: Elcodi\Component\Media\Entity\Interfaces\ImageInterface
             joinColumn:
