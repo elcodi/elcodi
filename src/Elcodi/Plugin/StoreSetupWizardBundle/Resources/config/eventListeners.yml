@@ -22,3 +22,14 @@ services:
             - [setPlugin, [@=elcodi_plugin("Elcodi\\Plugin\\StoreSetupWizardBundle")]]
         tags:
             - { name: firewall_listener, firewall: admin_area }
+
+    elcodi_plugin.event_listener.store_enable:
+        class: %elcodi_plugin.event_listener.store_enable.class%
+        arguments:
+            router: @router
+            wizard_status: @elcodi_templates.wizard_status.service
+            configuration_manager: @elcodi.manager.configuration
+        calls:
+            - [setPlugin, [@=elcodi_plugin("Elcodi\\Plugin\\StoreSetupWizardBundle")]]
+        tags:
+            - { name: firewall_listener, firewall: admin_area }
