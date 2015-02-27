@@ -453,7 +453,6 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
             ->method('getToWeight')
             ->will($this->returnValue($toWeight));
 
-
         return $shippingRange;
     }
 }

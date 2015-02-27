@@ -1,0 +1,9 @@
+services:
+
+    #
+    # EventDispatchers
+    #
+    elcodi.event_listener.referrer_session:
+        class: %elcodi.event_listener.referrer_session.class%
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: updateSessionReferrer }

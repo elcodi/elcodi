@@ -63,7 +63,8 @@ class CommentController
         CommentManager $commentManager,
         CommentCache $commentCache,
         ObjectRepository $commentRepository
-    ) {
+    )
+    {
         $this->commentManager = $commentManager;
         $this->commentCache = $commentCache;
         $this->commentRepository = $commentRepository;
@@ -77,7 +78,7 @@ class CommentController
      *
      * @return array Comments
      */
-    public function listComments($context, $source)
+    public function listCommentsAction($context, $source)
     {
         $comments = $this
             ->commentCache
@@ -96,12 +97,13 @@ class CommentController
      *
      * @return Response
      */
-    public function addComment(
+    public function addCommentAction(
         Request $request,
         $authorToken,
         $context,
         $source
-    ) {
+    )
+    {
         $requestBag = $request->request;
         $content = $requestBag->get('content');
         $authorName = $requestBag->get('author_name');
@@ -129,7 +131,7 @@ class CommentController
             ->createCommentStructure($comment);
 
         return new Response(json_encode([
-            'entity' => $commentStructure,
+            'entity'   => $commentStructure,
             'children' => [],
         ]));
     }
@@ -137,19 +139,20 @@ class CommentController
     /**
      * Edit a comment
      *
-     * @param Request $request
-     * @param         $commentId
-     * @param         $authorToken
+     * @param Request $request     Request
+     * @param integer $commentId   Comment id
+     * @param string  $authorToken Author Token
      *
      * @return Response
      *
-     * @throws EntityNotFoundException
+     * @throws EntityNotFoundException Comment not found
      */
-    public function editComment(
+    public function editCommentAction(
         Request $request,
         $commentId,
         $authorToken
-    ) {
+    )
+    {
         $requestBag = $request->request;
         $content = $requestBag->get('content');
         $comment = $this->findComment(
@@ -170,13 +173,14 @@ class CommentController
     /**
      * Delete a comment
      *
-     * @param $commentId
-     * @param $authorToken
+     * @param integer $commentId   Comment id
+     * @param string  $authorToken Author token
      *
      * @return Response
-     * @throws EntityNotFoundException
+     *
+     * @throws EntityNotFoundException Comment not found
      */
-    public function deleteComments($commentId, $authorToken)
+    public function deleteCommentAction($commentId, $authorToken)
     {
         $comment = $this->findComment(
             $commentId,
@@ -193,7 +197,7 @@ class CommentController
     }
 
     /**
-     * Load comment
+     * Find comment
      *
      * @param string $commentId   Comment id
      * @param string $authorToken Author token

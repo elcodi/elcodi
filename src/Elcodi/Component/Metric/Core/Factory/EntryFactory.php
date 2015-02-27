@@ -31,7 +31,8 @@ class EntryFactory
      *
      * @param string   $token     Token
      * @param string   $event     Event
-     * @param string   $context   Context
+     * @param string   $uniqueId  Unique id
+     * @param integer  $type      Type
      * @param DateTime $createdAt Created At
      *
      * @return Entry new entry instance
@@ -39,13 +40,15 @@ class EntryFactory
     public function create(
         $token,
         $event,
-        $context,
+        $uniqueId,
+        $type,
         $createdAt
     ) {
         return new Entry(
             $token,
             $event,
-            $context,
+            $uniqueId,
+            $type,
             $createdAt
         );
     }

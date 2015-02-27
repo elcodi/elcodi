@@ -497,7 +497,6 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         /**
          * @var ProductInterface $product
          */
-
         $product = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\ProductInterface');
         $productToRemove = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\ProductInterface');
 

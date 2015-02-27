@@ -93,6 +93,7 @@ class ElcodiCoreExtension extends AbstractExtension
             'classes',
             'providers',
             'eventDispatchers',
+            'eventListeners',
             'generators',
             'encoders',
             'services',

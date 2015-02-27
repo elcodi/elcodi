@@ -24,3 +24,9 @@ services:
         class: %elcodi.mapping_provider.class%
         arguments:
             mapping_implementations: %elcodi.mapping_implementations%
+
+    elcodi.referrer_provider:
+        class: %elcodi.referrer_provider.class%
+        arguments:
+            - @session
+            - @request_stack

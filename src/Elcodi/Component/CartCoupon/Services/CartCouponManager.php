@@ -100,7 +100,7 @@ class CartCouponManager
          * the scratch. This also means that cannot have any Coupon associated.
          * If is this case, we avoid this lookup.
          */
-        if ($cart->getId() == null) {
+        if ($cart->getId() === null) {
             return new ArrayCollection();
         }
 
@@ -129,7 +129,7 @@ class CartCouponManager
          * the scratch. This also means that cannot have any Coupon associated.
          * If is this case, we avoid this lookup.
          */
-        if ($cart->getId() == null) {
+        if ($cart->getId() === null) {
             return new ArrayCollection();
         }
 

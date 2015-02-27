@@ -294,7 +294,6 @@ class ConfigurationManagerTest extends WebTestCase
                     'key'       => 'my_parameter',
                 ])
             );
-
     }
 
     /**

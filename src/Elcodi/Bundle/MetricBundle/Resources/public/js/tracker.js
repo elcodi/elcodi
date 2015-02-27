@@ -14,18 +14,13 @@ var _etc = (function () {
         push: function (element) {
             var token = element[0];
             var event = element[1];
-            var context = element[2] || [];
-
-            for (contextKey in context) {
-                context.push(
-                    'c[' + contextKey + ']=' + encodeURIComponent(context[contextKey])
-                );
-            }
-            context.join('&');
+            var id = element[2];
+            var type = element[3];
 
             var _etcr = document.createElement('img');
             _etcr.src = '/_m/' + token + '/' + event + '.png';
-            _etcr.src += '?' + context;
+            _etcr.src += '?i=' + id;
+            _etcr.src += '&t=' + type;
             _etcr.src += '&_r=' + Math.random().toString(36);
             _etcr.height = "1";
             _etcr.width = "1";

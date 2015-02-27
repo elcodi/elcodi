@@ -17,10 +17,12 @@
 
 namespace Elcodi\Component\Metric\Input\Controller;
 
+use DateTime;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 
 use Elcodi\Component\Metric\Core\Services\MetricManager;
+use Elcodi\Component\Metric\ElcodiMetricTypes;
 
 /**
  * Class InputController
@@ -72,18 +74,22 @@ class InputController
      */
     public function addEntryAction($token, $event)
     {
-        $context = $this
+        $requestQuery = $this
             ->requestStack
             ->getCurrentRequest()
-            ->query
-            ->get('c', []);
+            ->query;
+
+        $value = $requestQuery->get('i', 0);
+        $type = (int) $requestQuery->get('t', ElcodiMetricTypes::TYPE_BEACON_ALL);
 
         $this
             ->metricManager
             ->addEntry(
                 $token,
                 $event,
-                $context
+                $value,
+                $type,
+                new DateTime()
             );
 
         $content = base64_decode(self::IMAGE_CONTENT);

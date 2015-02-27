@@ -94,7 +94,7 @@ class ConfigurationManager extends AbstractCacheWrapper
      * Set a configuration value
      *
      * @param string $configurationIdentifier Configuration identifier
-     * @param mixed $configurationValue Configuration value
+     * @param mixed  $configurationValue      Configuration value
      *
      * @return ConfigurationInterface|null Object saved
      *

@@ -22,7 +22,6 @@ use Exception;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Yaml\Parser;
-use Symfony\Component\Yaml\Yaml;
 
 use Elcodi\Component\Configuration\Exception\ConfigurationParameterNotFoundException;
 use Elcodi\Component\Configuration\Services\ConfigurationManager;

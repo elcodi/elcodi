@@ -23,6 +23,7 @@ use Twig_SimpleFilter;
 
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
+use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Exception\CurrencyNotAvailableException;
 use Elcodi\Component\Currency\Exception\CurrencyNotConvertibleException;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
@@ -81,6 +82,7 @@ class PrintMoneyExtension extends Twig_Extension
         return array(
             new Twig_SimpleFilter('print_convert_money', array($this, 'printConvertMoney')),
             new Twig_SimpleFilter('print_money', array($this, 'printMoney')),
+            new Twig_SimpleFilter('print_money_from_value', array($this, 'printMoneyFromValue')),
         );
     }
 
@@ -159,6 +161,29 @@ class PrintMoneyExtension extends Twig_Extension
          */
 
         return $formatter->format($money->getAmount() / 100);
+    }
+
+    /**
+     * Return a formatted price given the price in an integet format
+     *
+     * Takes the currency from CurrencyWrapper
+     *
+     * @param integer $value Value
+     *
+     * @return string The formatted price
+     */
+    public function printMoneyFromValue($value)
+    {
+        $targetCurrency = $this
+            ->currencyWrapper
+            ->loadCurrency();
+
+        $money = Money::create(
+            $value,
+            $targetCurrency
+        );
+
+        return $this->printMoney($money);
     }
 
     /**

@@ -52,45 +52,87 @@ class APIMetricExtension extends Twig_Extension
     public function getFunctions()
     {
         return [
-            new Twig_SimpleFunction('metric_count', array($this, 'getMetricCount')),
-            new Twig_SimpleFunction('metric_global_count', array($this, 'getGlobalMetricCount')),
+            new Twig_SimpleFunction('metric_beacon_unique', array($this, 'getBeaconsUnique')),
+            new Twig_SimpleFunction('metric_beacon_total', array($this, 'getBeaconsTotal')),
+            new Twig_SimpleFunction('metric_accumulation', array($this, 'getAccumulation')),
+            new Twig_SimpleFunction('metric_distributions', array($this, 'getDistributions')),
         ];
     }
 
     /**
-     * Return metric counter
+     * Return metric beacons unique counter
      *
-     * @param string $token Event
-     * @param string $event Token
-     * @param string $date  Date
+     * @param string   $token Event
+     * @param string   $event Token
+     * @param string[] $dates Dates
      *
-     * @return string Html content
+     * @return integer Beacons unique
      */
-    public function getMetricCount(
+    public function getBeaconsUnique(
         $token,
         $event,
-        $date
+        $dates
     ) {
         return (int) $this
             ->metricBucket
-            ->get($token, $event, $date);
+            ->getBeaconsUnique($token, $event, $dates);
     }
 
     /**
-     * Returns global metric counter
+     * Return metric unique counter
      *
-     * @param string $event Token
-     * @param string $date  Date
+     * @param string   $token Event
+     * @param string   $event Token
+     * @param string[] $dates Dates
      *
-     * @return string Html content
+     * @return integer Beacons total
      */
-    public function getGlobalMetricCount(
+    public function getBeaconsTotal(
+        $token,
         $event,
-        $date
+        $dates
     ) {
         return (int) $this
             ->metricBucket
-            ->getGlobal($event, $date);
+            ->getBeaconsTotal($token, $event, $dates);
+    }
+
+    /**
+     * Return metric accumulation counter
+     *
+     * @param string   $token Event
+     * @param string   $event Token
+     * @param string[] $dates Dates
+     *
+     * @return integer Accumulation
+     */
+    public function getAccumulation(
+        $token,
+        $event,
+        $dates
+    ) {
+        return $this
+            ->metricBucket
+            ->getAccumulation($token, $event, $dates);
+    }
+
+    /**
+     * Return metric distributions
+     *
+     * @param string   $token Event
+     * @param string   $event Token
+     * @param string[] $dates Dates
+     *
+     * @return array Distribution values
+     */
+    public function getDistributions(
+        $token,
+        $event,
+        $dates
+    ) {
+        return (int) $this
+            ->metricBucket
+            ->getDistributions($token, $event, $dates);
     }
 
     /**

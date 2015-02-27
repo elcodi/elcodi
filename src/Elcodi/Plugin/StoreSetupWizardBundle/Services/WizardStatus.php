@@ -18,9 +18,7 @@
 namespace Elcodi\Plugin\StoreSetupWizardBundle\Services;
 
 use Elcodi\Component\Configuration\Services\ConfigurationManager;
-use Elcodi\Component\Product\Entity\Product;
 use Elcodi\Component\Product\Repository\ProductRepository;
-use Elcodi\Component\Shipping\Entity\Carrier;
 use Elcodi\Component\Shipping\Repository\CarrierRepository;
 
 /**

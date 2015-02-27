@@ -38,7 +38,7 @@
         "symfony/config": "~2.6",
         "symfony/dependency-injection": "~2.6",
         "mmoreram/simple-doctrine-mapping": "~0.1",
-        "snc/redis-bundle": "~1.1",
+        "snc/redis-bundle": "~1.1, >=1.1.8",
 
         "elcodi/core-bundle": "~0.4.0",
         "elcodi/metric": "~0.4.0"
