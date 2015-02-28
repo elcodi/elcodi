@@ -1,5 +1,29 @@
+Elcodi Google Analytics Plugin
+==============================
+
+This bundle is part of [elcodi project](https://github.com/elcodi).
+Elcodi is a set of flexible e-commerce components for Symfony2, built as a
+decoupled and isolated repositories and under
+[MIT](http://opensource.org/licenses/MIT) license.
+
+Documentation
+-------------
+
+Check the documentation in [Elcodi Docs](http://docs.elcodi.io). Feel free to
+propose new recipes, examples or guides; our main goal is to help the developer
+building their site.
+
+Tags
+----
+
+* Use last unstable version ( alias of `dev-master` ) to stay always in last commit
+* Use last stable version tag to stay in a stable release.
+
 Contributing
--------
+------------
+
+All issues and Pull Requests should be on the main repository
+[elcodi/elcodi](https://github.com/elcodi/elcodi), so this one is read-only.
 
 This projects follows Symfony2 coding standards, so pull requests must pass phpcs
 checks. Read more details about

@@ -1,13 +1,11 @@
-author: Elcodi Team
+author: Marc Morera
 description: |
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Mauris ac nibh a eros auctor lobortis. Etiam pellentesque diam nibh, id sagittis nisi finibus ac.
-    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-    In accumsan leo in neque dictum, quis mattis ligula consectetur
+    Pinterest integration for your shop
 year: 2015
-url: http://url-pinterest-plugin.com
+url: https://www.pinterest.com/
 name: Pinterest
 fa_icon: pinterest
 configuration_route: admin_pinterest_configuration
+enabled: true
 version: ~0.4
 visible: true
