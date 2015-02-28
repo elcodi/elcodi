@@ -15,21 +15,21 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Plugin\GoogleAnalyticsBundle\DependencyInjection;
+namespace Elcodi\Plugin\DisqusBundle\DependencyInjection;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 
 /**
- * Class ElcodiGoogleAnalyticsExtension
+ * Class ElcodiDisqusExtension
  */
-class ElcodiGoogleAnalyticsExtension extends AbstractExtension
+class ElcodiDisqusExtension extends AbstractExtension
 {
     /**
      * @var string
      *
      * Extension name
      */
-    const EXTENSION_NAME = 'elcodi_google_analytics';
+    const EXTENSION_NAME = 'elcodi_disqus';
 
     /**
      * Get the Config file location

@@ -15,18 +15,18 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Plugin\GoogleAnalyticsBundle;
+namespace Elcodi\Plugin\DisqusBundle;
 
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 use Elcodi\Component\Plugin\Interfaces\PluginInterface;
-use Elcodi\Plugin\GoogleAnalyticsBundle\DependencyInjection\ElcodiGoogleAnalyticsExtension;
+use Elcodi\Plugin\DisqusBundle\DependencyInjection\ElcodiDisqusExtension;
 
 /**
- * Class ElcodiGoogleAnalyticsBundle
+ * Class ElcodiDisqusBundle
  */
-class ElcodiGoogleAnalyticsBundle extends Bundle implements PluginInterface
+class ElcodiDisqusBundle extends Bundle implements PluginInterface
 {
     /**
      * Returns the bundle's container extension.
@@ -35,6 +35,6 @@ class ElcodiGoogleAnalyticsBundle extends Bundle implements PluginInterface
      */
     public function getContainerExtension()
     {
-        return new ElcodiGoogleAnalyticsExtension();
+        return new ElcodiDisqusExtension();
     }
 }

@@ -17,6 +17,7 @@
 
 namespace Elcodi\Bundle\BannerBundle\DataFixtures\ORM;
 
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
@@ -28,7 +29,7 @@ use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
  *
  * Load fixtures of admin entities
  */
-class BannerZoneData extends AbstractFixture
+class BannerZoneData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
      * {@inheritDoc}
@@ -76,5 +77,18 @@ class BannerZoneData extends AbstractFixture
             $bannerZone,
             $bannerZoneNoLanguage,
         ]);
+    }
+
+    /**
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on
+     *
+     * @return array
+     */
+    public function getDependencies()
+    {
+        return [
+            'Elcodi\Bundle\LanguageBundle\DataFixtures\ORM\LanguageData',
+        ];
     }
 }

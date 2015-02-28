@@ -20,7 +20,6 @@ namespace Elcodi\Component\Page\Repository;
 use Doctrine\ORM\EntityRepository;
 
 use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
-use Elcodi\Component\Page\Repository\Interfaces\PageRepositoryInterface;
 
 /**
  * Class PageRepository
@@ -29,30 +28,70 @@ use Elcodi\Component\Page\Repository\Interfaces\PageRepositoryInterface;
  * @author Àlex Corretgé <alex@corretge.cat>
  * @author Berny Cantos <be@rny.cc>
  */
-class PageRepository extends EntityRepository implements PageRepositoryInterface
+class PageRepository extends EntityRepository
 {
-    /**
-     * @param mixed $id
-     *
-     * @return PageInterface
-     */
-    public function findOneById($id)
-    {
-        return parent::find($id);
-    }
-
     /**
      * Find one Page given its path
      *
      * @param string $path Page path
      *
-     * @return PageInterface
+     * @return PageInterface|null Page
      */
     public function findOneByPath($path)
     {
-        return parent::findOneBy(array(
+        return $this->findOneBy(array(
             'path'    => $path,
             'enabled' => true,
         ));
+    }
+
+    /**
+     * Find pages paginated
+     *
+     * @param string  $type          Type
+     * @param integer $page          Page
+     * @param integer $numberPerPage Number per page
+     *
+     * @return array Pages
+     */
+    public function findPages($type, $page, $numberPerPage)
+    {
+        $offset = (($page - 1) * $numberPerPage) + 1;
+
+        return $this
+            ->createQueryBuilder('p')
+            ->where('p.enabled = :enabled')
+            ->andWhere('p.type = :type')
+            ->orderBy('p.publicationDate', 'DESC')
+            ->setParameters([
+                'enabled' => true,
+                'type'    => $type,
+            ])
+            ->setFirstResult($offset)
+            ->setMaxResults($numberPerPage)
+            ->getQuery()
+            ->getArrayResult();
+    }
+
+    /**
+     * Find pages paginated
+     *
+     * @param string $type Type
+     *
+     * @return integer Number of pages
+     */
+    public function getNumberOfEnabledPages($type)
+    {
+        return $this
+            ->createQueryBuilder('p')
+            ->select('COUNT(p)')
+            ->where('p.enabled = :enabled')
+            ->andWhere('p.type = :type')
+            ->setParameters([
+                'enabled' => true,
+                'type'    => $type,
+            ])
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 }

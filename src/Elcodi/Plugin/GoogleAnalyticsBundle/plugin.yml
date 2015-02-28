@@ -5,7 +5,7 @@ description: |
     Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
     In accumsan leo in neque dictum, quis mattis ligula consectetur
 year: 2015
-name: Elcodi Google Analytics
+name: Google Analytics
 url: http://url-ga.com
 fa_icon: google
 configuration_route: admin_google_analytics_configuration

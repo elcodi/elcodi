@@ -5,7 +5,7 @@ description: |
     data. After all it aims to add the first category, product and manufacturer
     and at the end asks the store administrator for the carrier and payment data
 year: 2015
-name: Elcodi Setup Wizard
+name: Setup Wizard
 url: http://elcodi.io/
 fa_icon: magic
 configuration_route: admin_store_setup_wizard_configuration

@@ -1,0 +1,14 @@
+services:
+
+    #
+    # Twig renderer
+    #
+    elcodi_plugin.disqus.renderer:
+        class: %elcodi_plugin.disqus.renderer.class%
+        calls:
+            - [setTemplating, [@twig]]
+            - [setPlugin, [@=elcodi_plugin("Elcodi\\Plugin\\DisqusBundle")]]
+        tags:
+            - { name: kernel.event_listener, event: store.head_bottom, method: renderJavascript }
+            - { name: kernel.event_listener, event: store.blog_post_view_bottom, method: renderDisqusBlogPostBlock }
+            - { name: kernel.event_listener, event: store.product_view_bottom, method: renderDisqusProductBlock }

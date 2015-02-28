@@ -23,7 +23,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
 use Elcodi\Component\Page\Renderer\Interfaces\PageRendererInterface;
-use Elcodi\Component\Page\Repository\Interfaces\PageRepositoryInterface;
+use Elcodi\Component\Page\Repository\PageRepository;
 
 /**
  * Class PageController
@@ -33,7 +33,7 @@ use Elcodi\Component\Page\Repository\Interfaces\PageRepositoryInterface;
 class PageController
 {
     /**
-     * @var PageRepositoryInterface
+     * @var PageRepository
      *
      * Page repository
      */
@@ -56,12 +56,12 @@ class PageController
     /**
      * Constructor
      *
-     * @param PageRepositoryInterface $repository   Page repository
-     * @param RequestStack            $requestStack Request stack
-     * @param PageRendererInterface   $pageRenderer Content renderer
+     * @param PageRepository        $repository   Page repository
+     * @param RequestStack          $requestStack Request stack
+     * @param PageRendererInterface $pageRenderer Content renderer
      */
     public function __construct(
-        PageRepositoryInterface $repository,
+        PageRepository $repository,
         RequestStack $requestStack,
         PageRendererInterface $pageRenderer = null
     ) {

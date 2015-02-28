@@ -1,0 +1,6 @@
+parameters:
+
+    #
+    # Templating
+    #
+    elcodi_plugin.disqus.google_analytics.class: Elcodi\Plugin\GoogleAnalyticsBundle\Templating\TwigRenderer

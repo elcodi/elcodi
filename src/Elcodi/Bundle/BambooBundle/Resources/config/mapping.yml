@@ -1,8 +1,0 @@
-#
-# Overloads Page component
-#
-elcodi_page:
-    mapping:
-        page:
-            class: Elcodi\Bundle\BambooBundle\Entity\Page
-            mapping_file: @ElcodiBambooBundle/Resources/config/doctrine/Page.orm.yml
