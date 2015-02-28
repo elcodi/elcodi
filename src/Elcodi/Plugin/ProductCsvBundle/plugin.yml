@@ -1,4 +1,4 @@
-author: Elcodi Team
+author: Berny Cantos
 description: |
     Export you product list with only a click.
 year: 2015
@@ -7,4 +7,5 @@ name: Product CSV
 fa_icon: download
 configuration_route: admin_product_csv_configuration
 version: ~0.4
+enabled: true
 visible: true

@@ -33,7 +33,6 @@
     "require": {
         "php": ">=5.4",
 
-        "sensio/framework-extra-bundle": "~3.0",
         "symfony/config": "~2.6",
         "symfony/console": "~2.6",
         "symfony/dependency-injection": "~2.6",
@@ -42,8 +41,11 @@
         "symfony/http-foundation": "~2.6",
         "symfony/http-kernel": "~2.6",
         "symfony/yaml": "~2.6",
+        "symfony/twig-bridge": "~2.6",
         "twig/twig": "~1.16",
+        "sensio/framework-extra-bundle": "~3.0",
 
+        "elcodi/core-bundle": "~0.4.0",
         "elcodi/configuration-bundle": "~0.4.0",
         "elcodi/plugin-bundle": "~0.4.0"
     },
