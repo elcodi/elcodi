@@ -44,7 +44,7 @@ class ManufacturerFactory extends AbstractFactory
             ->setProducts(new ArrayCollection())
             ->setImages(new ArrayCollection())
             ->setImagesSort('')
-            ->setEnabled(false)
+            ->setEnabled(true)
             ->setCreatedAt(new DateTime());
 
         return $manufacturer;

@@ -76,7 +76,7 @@ class ProductFactory extends AbstractPurchasableFactory
         $product
             ->setStock($stock)
             ->setType(ElcodiProductTypes::TYPE_PRODUCT_PHYSICAL)
-            ->setShowInHome(false)
+            ->setShowInHome(true)
             ->setPrice($zeroPrice)
             ->setReducedPrice($zeroPrice)
             ->setAttributes(new ArrayCollection())
@@ -89,7 +89,7 @@ class ProductFactory extends AbstractPurchasableFactory
             ->setWidth(0)
             ->setWeight(0)
             ->setImagesSort('')
-            ->setEnabled(false)
+            ->setEnabled(true)
             ->setCreatedAt(new DateTime());
 
         return $product;
