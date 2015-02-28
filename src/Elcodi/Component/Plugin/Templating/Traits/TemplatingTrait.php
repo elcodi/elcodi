@@ -17,6 +17,8 @@
 
 namespace Elcodi\Component\Plugin\Templating\Traits;
 
+use Elcodi\Component\Plugin\Entity\Plugin;
+
 /**
  * Trait TemplatingTrait
  */
@@ -66,6 +68,30 @@ trait TemplatingTrait
                         $extraContextParams
                     )
                 )
+        );
+    }
+
+    /**
+     * Plugin can be used
+     *
+     * @param Plugin $plugin          Plugin
+     * @param array  $checkableFields Fields to check
+     *
+     * @return boolean Plugin can be used
+     */
+    protected function pluginCanBeUsed(
+        Plugin $plugin,
+        array $checkableFields = []
+    ) {
+        return array_reduce(
+            $checkableFields,
+            function ($canBeUsed, $checkableField) use ($plugin) {
+
+                return $canBeUsed &&
+                    isset($plugin->getConfiguration()[$checkableField]) &&
+                    '' !== $plugin->getConfiguration()[$checkableField];
+            },
+            $plugin->isEnabled()
         );
     }
 }

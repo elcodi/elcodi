@@ -17,6 +17,8 @@
 
 namespace Elcodi\Component\Page\Factory;
 
+use DateTime;
+
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Page\Entity\Page;
 
@@ -39,7 +41,7 @@ class PageFactory extends AbstractFactory
      */
     public function create()
     {
-        $now = new \DateTime();
+        $now = new DateTime();
 
         /**
          * @var Page $page
@@ -49,6 +51,7 @@ class PageFactory extends AbstractFactory
         $page
             ->setEnabled(true)
             ->setPersistent(false)
+            ->setPublicationDate($now)
             ->setCreatedAt($now)
             ->setUpdatedAt($now);
 

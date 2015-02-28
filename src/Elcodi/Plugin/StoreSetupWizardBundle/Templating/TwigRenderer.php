@@ -17,13 +17,13 @@
 
 namespace Elcodi\Plugin\StoreSetupWizardBundle\Templating;
 
-use Elcodi\Plugin\StoreSetupWizardBundle\Services\WizardRoutes;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 use Elcodi\Component\Configuration\Services\ConfigurationManager;
 use Elcodi\Component\Plugin\Entity\Plugin;
 use Elcodi\Component\Plugin\Interfaces\EventInterface;
 use Elcodi\Component\Plugin\Templating\Traits\TemplatingTrait;
+use Elcodi\Plugin\StoreSetupWizardBundle\Services\WizardRoutes;
 use Elcodi\Plugin\StoreSetupWizardBundle\Services\WizardStatus;
 
 /**
@@ -176,7 +176,6 @@ class TwigRenderer
     public function renderGoNextStepMessage(EventInterface $event)
     {
         if ($this->plugin->isEnabled()) {
-
             $masterRequest = $this
                 ->requestStack
                 ->getMasterRequest();

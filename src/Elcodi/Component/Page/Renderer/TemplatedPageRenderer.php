@@ -20,7 +20,6 @@ namespace Elcodi\Component\Page\Renderer;
 use RuntimeException;
 use Symfony\Component\Templating\EngineInterface;
 
-use Elcodi\Bundle\BambooBundle\Entity\Page as BambooPage;
 use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
 use Elcodi\Component\Page\Renderer\Interfaces\PageRendererInterface;
 
@@ -121,6 +120,6 @@ class TemplatedPageRenderer implements PageRendererInterface
      */
     public function supports(PageInterface $page)
     {
-        return $page instanceof BambooPage;
+        return $page instanceof PageInterface;
     }
 }

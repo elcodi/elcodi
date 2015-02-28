@@ -1,0 +1,10 @@
+author: Marc Morera
+description: |
+    Disqus integration for your shop
+year: 2015
+name: Disqus
+url: http://url-ga.com
+fa_icon: comment-o
+configuration_route: admin_disqus_configuration
+version: ~0.4
+visible: true

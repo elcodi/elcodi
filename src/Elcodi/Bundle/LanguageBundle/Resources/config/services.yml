@@ -52,4 +52,3 @@ services:
         class: %elcodi.core.language.entity.locale.class%
         factory_service: elcodi.manager.locale
         factory_method: getLocale
-

@@ -6,7 +6,7 @@ description: |
     In accumsan leo in neque dictum, quis mattis ligula consectetur
 year: 2015
 url: http://url-pinterest-plugin.com
-name: Elcodi Pinterest
+name: Pinterest
 fa_icon: pinterest
 configuration_route: admin_pinterest_configuration
 version: ~0.4

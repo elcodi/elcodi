@@ -17,6 +17,8 @@
 
 namespace Elcodi\Component\Page\Entity\Interfaces;
 
+use DateTime;
+
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
@@ -54,6 +56,22 @@ interface PageInterface
     public function setPath($path);
 
     /**
+     * Get the title
+     *
+     * @return string
+     */
+    public function getTitle();
+
+    /**
+     * Set the title
+     *
+     * @param string $title The title
+     *
+     * @return $this Self object
+     */
+    public function setTitle($title);
+
+    /**
      * Get the content
      *
      * @return string
@@ -70,20 +88,36 @@ interface PageInterface
     public function setContent($content);
 
     /**
-     * Get the title
+     * Get Type
      *
-     * @return string
+     * @return int Type
      */
-    public function getTitle();
+    public function getType();
 
     /**
-     * Set the title
+     * Sets Type
      *
-     * @param string $title The title
+     * @param int $type Type
      *
      * @return $this Self object
      */
-    public function setTitle($title);
+    public function setType($type);
+
+    /**
+     * Get PublicationDate
+     *
+     * @return DateTime PublicationDate
+     */
+    public function getPublicationDate();
+
+    /**
+     * Sets PublicationDate
+     *
+     * @param DateTime $publicationDate PublicationDate
+     *
+     * @return $this Self object
+     */
+    public function setPublicationDate($publicationDate);
 
     /**
      * Sets the persistence property

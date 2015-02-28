@@ -17,11 +17,19 @@ Elcodi\Component\Page\Entity\Page:
             column: content
             type: text
             nullable: false
+        type:
+            column: type
+            type: integer
+            nullable: false
         path:
             column: path
             type: string
             length: 255
             nullable: false
+        publicationDate:
+            column: publication_date
+            type: datetime
+            nullable: true
         persistent:
             column: persistent
             type: boolean

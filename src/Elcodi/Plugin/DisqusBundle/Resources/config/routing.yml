@@ -1,0 +1,3 @@
+ElcodiDisqusBundle:
+    resource: "@ElcodiDisqusBundle/Controller/"
+    type:     annotation

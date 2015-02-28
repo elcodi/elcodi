@@ -17,6 +17,8 @@
 
 namespace Elcodi\Component\Page\Entity;
 
+use DateTime;
+
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
@@ -60,6 +62,20 @@ class Page implements PageInterface
     protected $content;
 
     /**
+     * @var integer
+     *
+     * Type
+     */
+    protected $type;
+
+    /**
+     * @var DateTime
+     *
+     * Publication date
+     */
+    protected $publicationDate;
+
+    /**
      * @var boolean
      *
      * The persistence of the page
@@ -91,6 +107,30 @@ class Page implements PageInterface
     }
 
     /**
+     * Get the title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set the title
+     *
+     * @param string $title The title
+     *
+     * @return $this Self object
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
      * Get the content
      *
      * @return string
@@ -115,25 +155,49 @@ class Page implements PageInterface
     }
 
     /**
-     * Get the title
+     * Get Type
      *
-     * @return string
+     * @return int Type
      */
-    public function getTitle()
+    public function getType()
     {
-        return $this->title;
+        return $this->type;
     }
 
     /**
-     * Set the title
+     * Sets Type
      *
-     * @param string $title The title
+     * @param int $type Type
      *
      * @return $this Self object
      */
-    public function setTitle($title)
+    public function setType($type)
     {
-        $this->title = $title;
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get PublicationDate
+     *
+     * @return DateTime PublicationDate
+     */
+    public function getPublicationDate()
+    {
+        return $this->publicationDate;
+    }
+
+    /**
+     * Sets PublicationDate
+     *
+     * @param DateTime $publicationDate PublicationDate
+     *
+     * @return $this Self object
+     */
+    public function setPublicationDate($publicationDate)
+    {
+        $this->publicationDate = $publicationDate;
 
         return $this;
     }

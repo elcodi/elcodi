@@ -15,7 +15,7 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Plugin\PinterestBundle\Templating;
+namespace Elcodi\Plugin\DisqusBundle\Templating;
 
 use Elcodi\Component\Plugin\Entity\Plugin;
 use Elcodi\Component\Plugin\Interfaces\EventInterface;
@@ -50,45 +50,61 @@ class TwigRenderer
     }
 
     /**
-     * Renders import/export buttons
+     * Renders disqus JS element
      *
      * @param EventInterface $event Event
      */
     public function renderJavascript(EventInterface $event)
     {
         if ($this->pluginCanBeUsed($this->plugin, [
-            'asynchronous',
+            'disqus_identifier',
         ])
         ) {
-            $this->appendTemplate('@ElcodiPinterest/javascript.html.twig', $event);
+            $this->appendTemplate(
+                '@ElcodiDisqus/javascript.html.twig',
+                $event,
+                ['disqus_identifier' => $this->plugin->getConfiguration()['disqus_identifier']]
+            );
         }
     }
 
     /**
-     * Renders asynchronous javascript
+     * Renders disqus block on blog post
      *
      * @param EventInterface $event Event
      */
-    public function renderAsynchronousJavascript(EventInterface $event)
+    public function renderDisqusBlogPostBlock(EventInterface $event)
     {
         if ($this->pluginCanBeUsed($this->plugin, [
-            'asynchronous',
+            'disqus_identifier',
+            'disqus_enabled_blog_post',
         ])
         ) {
-            $this->appendTemplate('@ElcodiPinterest/javascript_asynchronous.html.twig', $event);
+            $this->appendTemplate(
+                '@ElcodiDisqus/block.html.twig',
+                $event,
+                ['disqus_identifier' => $this->plugin->getConfiguration()['disqus_identifier']]
+            );
         }
     }
 
     /**
-     * Renders import/export buttons
+     * Renders disqus block on product page
      *
      * @param EventInterface $event Event
      */
-    public function renderPin(EventInterface $event)
+    public function renderDisqusProductBlock(EventInterface $event)
     {
-        if ($this->pluginCanBeUsed($this->plugin)
+        if ($this->pluginCanBeUsed($this->plugin, [
+            'disqus_identifier',
+            'disqus_enabled_product',
+        ])
         ) {
-            $this->appendTemplate('@ElcodiPinterest/product_pin.html.twig', $event);
+            $this->appendTemplate(
+                '@ElcodiDisqus/block.html.twig',
+                $event,
+                ['disqus_identifier' => $this->plugin->getConfiguration()['disqus_identifier']]
+            );
         }
     }
 }

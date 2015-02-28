@@ -102,6 +102,27 @@ elcodi_configuration:
             type: string
             default_value: null
 
+        store_social_twitter:
+            key: social_twitter
+            name: Store Twitter
+            namespace: store
+            type: string
+            default_value: ''
+
+        store_social_facebook:
+            key: social_facebook
+            name: Store Facebook
+            namespace: store
+            type: string
+            default_value: ''
+
+        store_social_facebook:
+            key: social_facebook
+            name: Store Facebook
+            namespace: store
+            type: string
+            default_value: ''
+
         #
         # Product namespace
         #

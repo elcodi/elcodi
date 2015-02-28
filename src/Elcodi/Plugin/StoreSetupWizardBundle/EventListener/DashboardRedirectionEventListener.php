@@ -23,8 +23,8 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 use Elcodi\Component\Plugin\Entity\Plugin;
-use Elcodi\Plugin\StoreSetupWizardBundle\Services\WizardStatus;
 use Elcodi\Plugin\StoreSetupWizardBundle\Services\WizardRoutes;
+use Elcodi\Plugin\StoreSetupWizardBundle\Services\WizardStatus;
 
 /**
  * Class DashboardRedirectionEventListener
