@@ -39,7 +39,7 @@ class CarrierFactory extends AbstractFactory
          */
         $classNamespace = $this->getEntityNamespace();
         $carrier = new $classNamespace();
-        $carrier->setEnabled(false);
+        $carrier->setEnabled(true);
 
         return $carrier;
     }

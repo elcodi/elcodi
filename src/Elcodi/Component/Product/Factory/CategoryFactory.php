@@ -43,9 +43,9 @@ class CategoryFactory extends AbstractFactory
         $category
             ->setSubcategories(new ArrayCollection())
             ->setProducts(new ArrayCollection())
-            ->setRoot(false)
+            ->setRoot(true)
             ->setPosition(0)
-            ->setEnabled(false)
+            ->setEnabled(true)
             ->setCreatedAt(new DateTime());
 
         return $category;
