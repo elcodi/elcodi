@@ -56,7 +56,7 @@ class PageRepository extends EntityRepository
      */
     public function findPages($type, $page, $numberPerPage)
     {
-        $offset = (($page - 1) * $numberPerPage) + 1;
+        $offset = (($page - 1) * $numberPerPage);
 
         return $this
             ->createQueryBuilder('p')
