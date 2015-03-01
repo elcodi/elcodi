@@ -13,7 +13,7 @@
         <div class="welcome-item{% if activeStep == 1 %} welcome-active animated bounce{% endif %}{% if stepsFinished[1] %} welcome-done{% endif %}">
             {% if not isMiniWizard %}
                 <i class="icon-dropbox"></i>
-                <span class="welcome-done-sign">Done!</span>
+                <span class="welcome-done-sign">{{ 'wizard.done'|trans }}</span>
             {% endif %}
             <h5>
                 {% if stepsFinished[1] %}
@@ -34,7 +34,7 @@
         <div class="welcome-item{% if activeStep == 2 %} welcome-active animated bounce{% endif %}{% if stepsFinished[2] %} welcome-done{% endif %}">
             {% if not isMiniWizard %}
                 <i class="icon-map-marker"></i>
-                <span class="welcome-done-sign">Done!</span>
+                <span class="welcome-done-sign">{{ 'wizard.done'|trans }}</span>
             {% endif %}
             <h5>
                 {% if stepsFinished[2] %}
@@ -55,7 +55,7 @@
         <div class="welcome-item{% if activeStep == 3 %} welcome-active animated bounce{% endif %}{% if stepsFinished[3] %} welcome-done{% endif %}">
             {% if not isMiniWizard %}
                 <i class="icon-credit-card"></i>
-                <span class="welcome-done-sign">Done!</span>
+                <span class="welcome-done-sign">{{ 'wizard.done'|trans }}</span>
             {% endif %}
             <h5>
                 {% if stepsFinished[3] %}
@@ -76,7 +76,7 @@
         <div class="welcome-item{% if activeStep == 4 %} welcome-active animated bounce{% endif %}{% if stepsFinished[4] %} welcome-done{% endif %}">
             {% if not isMiniWizard %}
                 <i class="icon-truck"></i>
-                <span class="welcome-done-sign">Done!</span>
+                <span class="welcome-done-sign">{{ 'wizard.done'|trans }}</span>
             {% endif %}
             <h5>
                 {% if stepsFinished[4] %}
