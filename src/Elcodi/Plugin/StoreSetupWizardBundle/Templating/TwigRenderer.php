@@ -187,7 +187,14 @@ class TwigRenderer
                 ->wizardRoutes
                 ->isWizardSetupRoute($currentRoute);
 
-            if ($isWizardRoute) {
+            $isWizardFinished = $this
+                ->wizardStatus
+                ->isWizardFinished();
+
+            if (
+                $isWizardRoute &&
+                !$isWizardFinished
+            ) {
                 $currentStep = $this
                     ->wizardRoutes
                     ->getStepByRoute($currentRoute);
