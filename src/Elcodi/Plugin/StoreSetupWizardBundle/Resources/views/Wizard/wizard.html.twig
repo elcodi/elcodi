@@ -8,7 +8,7 @@
     {% if not stepsFinished[2] %}{% set minutes = minutes + minutesStepTwo %}{% endif %}
     {% if not stepsFinished[3] %}{% set minutes = minutes + minutesStepThree %}{% endif %}
     {% if not stepsFinished[4] %}{% set minutes = minutes + minutesStepFour %}{% endif %}
-    <h2><span class="icon-clock-o icon-3x mr-s"></span> {% trans with {'%1': minutes } %}You are <strong>%1 minutes</strong> away to start selling:{% endtrans %}</h2>
+    <h2><span class="icon-clock-o icon-3x mr-s"></span> {% trans with {'%1': minutes } %}wizard.time_to_sell{% endtrans %}</h2>
     <div class="col-1-4">
         <div class="welcome-item{% if activeStep == 1 %} welcome-active animated bounce{% endif %}{% if stepsFinished[1] %} welcome-done{% endif %}">
             {% if not isMiniWizard %}
@@ -21,13 +21,13 @@
                 {% else %}
                     <span>1.</span>
                 {% endif %}
-                {{ 'Add products'|trans }}
+                {{ 'wizard.step1.title'|trans }}
             </h5>
             {% if not isMiniWizard %}
-                <p>{{ 'The most important thing in your store... after your customers.'|trans }}</p>
+                <p>{{ 'wizard.step1.description'|trans }}</p>
             {% endif %}
-            <p class="mb-n"><a href="{{ url('admin_product_new') }}" class="button button-primary">{{ 'Create my first product'|trans }}</a></p>
-            <p class="fz-s">{% trans with {'%1': minutesStepOne } %}Estimated time %1 min{% endtrans %}</p>
+            <p class="mb-n"><a href="{{ url('admin_product_new') }}" class="button button-primary">{{ 'wizard.step1.action'|trans }}</a></p>
+            <p class="fz-s">{% trans with {'%1': minutesStepOne } %}wizard.estimated_time{% endtrans %}</p>
         </div>
     </div>
     <div class="col-1-4">
@@ -42,13 +42,13 @@
                 {% else %}
                     <span>2.</span>
                 {% endif %}
-                {{ 'Setup your address'|trans }}
+                {{ 'wizard.step2.title'|trans }}
             </h5>
             {% if not isMiniWizard %}
-                <p>{{ 'To start selling on internet you need to setup your place of business'|trans }}</p>
+                <p>{{ 'wizard.step2.description'|trans }}</p>
             {% endif %}
-            <p class="mb-n"><a href="{{ url('admin_address_edit') }}" class="button button-primary">{{ 'Add an address'|trans }}</a></p>
-            <p class="fz-s">{% trans with {'%1': minutesStepTwo } %}Estimated time %1 min{% endtrans %}</p>
+            <p class="mb-n"><a href="{{ url('admin_address_edit') }}" class="button button-primary">{{ 'wizard.step2.action'|trans }}</a></p>
+            <p class="fz-s">{% trans with {'%1': minutesStepTwo } %}wizard.estimated_time{% endtrans %}</p>
         </div>
     </div>
     <div class="col-1-4">
@@ -63,13 +63,13 @@
                 {% else %}
                     <span>3.</span>
                 {% endif %}
-                {{ 'Setup the payments'|trans }}
+                {{ 'wizard.step3.title'|trans }}
             </h5>
             {% if not isMiniWizard %}
-                <p>{{ 'Do you want to be paid? Just need to say how and where. '|trans }}</p>
+                <p>{{ 'wizard.step3.description'|trans }}</p>
             {% endif %}
-            <p class="mb-n"><a href="{{ url('admin_payment_configuration_list') }}" class="button button-primary">{{ 'Setup payments methods'|trans }}</a></p>
-            <p class="fz-s">{% trans with {'%1': minutesStepThree } %}Estimated time %1 min{% endtrans %}</p>
+            <p class="mb-n"><a href="{{ url('admin_payment_configuration_list') }}" class="button button-primary">{{ 'wizard.step3.action'|trans }}</a></p>
+            <p class="fz-s">{% trans with {'%1': minutesStepThree } %}wizard.estimated_time{% endtrans %}</p>
         </div>
     </div>
     <div class="col-1-4">
@@ -84,13 +84,13 @@
                 {% else %}
                     <span>4.</span>
                 {% endif %}
-                {{ 'Setup the shipping'|trans }}
+                {{ 'wizard.step4.title'|trans }}
             </h5>
             {% if not isMiniWizard %}
-                <p>{{ "You need to define the carriers and the costs. (Even if it's free)" }}</p>
+                <p>{{ 'wizard.step4.description'|trans }}</p>
             {% endif %}
-            <p class="mb-n"><a href="{{ url('admin_carrier_new') }}" class="button button-primary">{{ 'Add a carrier' }}</a></p>
-            <p class="fz-s">{% trans with {'%1': minutesStepFour } %}Estimated time %1 min{% endtrans %}</p>
+            <p class="mb-n"><a href="{{ url('admin_carrier_new') }}" class="button button-primary">{{ 'wizard.step4.action'|trans }}</a></p>
+            <p class="fz-s">{% trans with {'%1': minutesStepFour } %}wizard.estimated_time{% endtrans %}</p>
         </div>
     </div>
 </div>
