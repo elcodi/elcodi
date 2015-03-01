@@ -1,9 +1,10 @@
 wizard:
+    first_finish_wizard: Acaba todos los pasos antes de desactivar "tienda en construcción"
     welcome_title: ¡Ya tienes tu tienda online!
     go_general_settings: Ir a la configuración de la tienda
     ready_launch: Todo a punto!
     done: Hecho!
-    go_enable_store: Ve a la configuración y activa tu tienda.
+    go_enable_store: Ve a la configuración y desactiva "tienda en construcción".
     go_next_step: Ve al siguiente paso
     step_finished: <strong>¡Bravo!</strong> ¡Un paso menos para finalizar!
     time_to_sell: Estás a <strong>%1 minutos</strong> de empezar a vender

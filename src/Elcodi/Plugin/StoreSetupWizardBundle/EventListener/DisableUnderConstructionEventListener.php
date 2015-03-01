@@ -25,18 +25,19 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Elcodi\Component\Configuration\Services\ConfigurationManager;
 use Elcodi\Component\Plugin\Entity\Plugin;
 use Elcodi\Plugin\StoreSetupWizardBundle\Services\WizardStatus;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
- * Class StoreEnableEventListener
+ * Class DisableUnderConstructionEventListener
  */
-class StoreEnableEventListener
+class DisableUnderConstructionEventListener
 {
     /**
      * @var string
      *
      * Store enabled
      */
-    const STORE_ENABLED_CONFIG_KEY = 'store.enabled';
+    const STORE_UNDER_CONSTRUCTION_CONFIG_KEY = 'store.under_construction';
 
     /**
      * @var Plugin
@@ -64,11 +65,19 @@ class StoreEnableEventListener
      *
      * A configuration manager
      */
-    private $configurationManager;
+    protected $configurationManager;
+
+    /**
+     * @var TranslatorInterface
+     *
+     * A translator
+     */
+    protected $translator;
 
     /**
      * Builds a new class
      *
+     * @param TranslatorInterface   $translator           A translator
      * @param UrlGeneratorInterface $urlGenerator         An url generator
      * @param WizardStatus          $wizardStatus         A wizard status
      *                                                    service
@@ -76,10 +85,12 @@ class StoreEnableEventListener
      *                                                    manager
      */
     public function __construct(
+        TranslatorInterface $translator,
         UrlGeneratorInterface $urlGenerator,
         WizardStatus $wizardStatus,
         ConfigurationManager $configurationManager
     ) {
+        $this->translator           = $translator;
         $this->urlGenerator         = $urlGenerator;
         $this->wizardStatus         = $wizardStatus;
         $this->configurationManager = $configurationManager;
@@ -116,12 +127,13 @@ class StoreEnableEventListener
 
             if (
                 'admin_configuration_update' == $currentRoute &&
-                self::STORE_ENABLED_CONFIG_KEY == $request->get('name')
+                self::STORE_UNDER_CONSTRUCTION_CONFIG_KEY
+                    == $request->get('name')
 
             ) {
                 $this->configurationManager->set(
-                    self::STORE_ENABLED_CONFIG_KEY,
-                    ''
+                    self::STORE_UNDER_CONSTRUCTION_CONFIG_KEY,
+                    'on'
                 );
 
                 $event->setResponse(
@@ -129,7 +141,9 @@ class StoreEnableEventListener
                         [
                             'status'   => 403,
                             'response' => [
-                                'Finish the wizard',
+                                $this
+                                    ->translator
+                                    ->trans('wizard.first_finish_wizard'),
                             ],
                         ],
                         403

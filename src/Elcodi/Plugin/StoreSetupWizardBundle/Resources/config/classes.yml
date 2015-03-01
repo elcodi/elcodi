@@ -11,4 +11,4 @@ parameters:
     #
     elcodi_plugin.event_listener.dashboard_redirection.class: Elcodi\Plugin\StoreSetupWizardBundle\EventListener\DashboardRedirectionEventListener
     elcodi_plugin.event_listener.disable_wizard.class: Elcodi\Plugin\StoreSetupWizardBundle\EventListener\DisableWizardEventListener
-    elcodi_plugin.event_listener.store_enable.class: Elcodi\Plugin\StoreSetupWizardBundle\EventListener\StoreEnableEventListener
+    elcodi_plugin.event_listener.disable_under_construction.class: Elcodi\Plugin\StoreSetupWizardBundle\EventListener\DisableUnderConstructionEventListener

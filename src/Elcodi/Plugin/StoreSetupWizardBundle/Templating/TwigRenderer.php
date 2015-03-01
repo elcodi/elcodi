@@ -142,10 +142,10 @@ class TwigRenderer
     public function renderEnableStoreMessage(EventInterface $event)
     {
         if ($this->plugin->isEnabled()) {
-            $storeEnabled =
+            $storeUnderConstruction =
                 'on' == $this
                     ->configurationManager
-                    ->get('store.enabled');
+                    ->get('store.under_construction');
 
             $masterRequest = $this
                 ->requestStack
@@ -158,7 +158,7 @@ class TwigRenderer
             if (
                 $this->wizardStatus->isWizardFinished() &&
                 'admin_configuration_list' != $route &&
-                !$storeEnabled
+                $storeUnderConstruction
             ) {
                 $this->appendTemplate(
                     '@ElcodiStoreSetupWizard/Wizard/enable-store.html.twig',
