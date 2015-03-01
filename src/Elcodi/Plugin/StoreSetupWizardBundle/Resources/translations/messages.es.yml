@@ -10,18 +10,18 @@ wizard:
     step1:
         title: Añade un producto
         description: Lo más importante de tu tienda... después de los clientes, claro.
-        action: Crea tu primer producto
+        action: Añadir un producto
     step2:
         title: Añade tu dirección
         description: Para empezar a vender en internet necesitas añadir la dirección fiscal de tu tienda.
-        action: Añade una dirección
+        action: Añadir dirección
     step3:
-        title: Configurar los pagos
+        title: Configura los pagos
         description: Para que lo usuarios puedan pagar en tu tienda tienes que configurar los métodos de pago.
-        action: Configura los métodos de pago
+        action: Configurar pagos
     step4:
-        title: Configurar las entregas
+        title: Configura las entregas
         description: Añade al menos un transportista y sus costes. (Aunque sean gratis)
-        action: Añadir un transportista
+        action: Añadir transportista
 
 
