@@ -43,6 +43,13 @@ class Page implements PageInterface
     /**
      * @var string
      *
+     * Name
+     */
+    protected $name;
+
+    /**
+     * @var string
+     *
      * Path from which this page would be accessed
      */
     protected $path;
@@ -81,6 +88,30 @@ class Page implements PageInterface
      * The persistence of the page
      */
     protected $persistent;
+
+    /**
+     * Get Name
+     *
+     * @return string Name
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Sets Name
+     *
+     * @param string $name Name
+     *
+     * @return $this Self object
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
 
     /**
      * Get the path

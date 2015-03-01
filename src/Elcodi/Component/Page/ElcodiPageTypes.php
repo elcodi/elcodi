@@ -35,4 +35,11 @@ final class ElcodiPageTypes
      * Used in blog
      */
     const TYPE_BLOG_POST = 2;
+
+    /**
+     * Page type email
+     *
+     * Used to send emails
+     */
+    const TYPE_EMAIL = 3;
 }

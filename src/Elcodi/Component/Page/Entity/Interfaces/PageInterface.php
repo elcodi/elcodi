@@ -40,6 +40,22 @@ interface PageInterface
     EnabledInterface
 {
     /**
+     * Get Name
+     *
+     * @return string Name
+     */
+    public function getName();
+
+    /**
+     * Sets Name
+     *
+     * @param string $name Name
+     *
+     * @return $this Self object
+     */
+    public function setName($name);
+
+    /**
      * Get the path
      *
      * @return string

@@ -82,14 +82,14 @@ class ProductCollectionProviderTest extends WebTestCase
      *
      * @dataProvider dataGetHomeProducts
      */
-    public function testGetHomeProducts($count)
+    public function testGetHomeProducts($count, $numberExpected)
     {
         $products = $this
             ->productCollectionProvider
             ->getHomeProducts($count);
 
         $this->assertInstanceOf('Doctrine\Common\Collections\Collection', $products);
-        $this->assertEquals(1, $products->count());
+        $this->assertEquals($numberExpected, $products->count());
     }
 
     /**
@@ -98,9 +98,11 @@ class ProductCollectionProviderTest extends WebTestCase
     public function dataGetHomeProducts()
     {
         return [
-            [0],
-            [1],
-            [2],
+            [0, 3],
+            [1, 1],
+            [2, 2],
+            [3, 3],
+            [4, 3],
         ];
     }
 
@@ -120,7 +122,7 @@ class ProductCollectionProviderTest extends WebTestCase
     }
 
     /**
-     * Count values for testGetHomeProducts
+     * Count values for testGetOfferProducts
      */
     public function dataGetOfferProducts()
     {
