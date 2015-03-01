@@ -2,6 +2,7 @@ wizard:
     welcome_title: Welcome yo your new store!
     go_general_settings: Go to general settings
     ready_launch: Ready to launch!
+    done: Done!
     go_enable_store: Go to setup and enable your store.
     go_next_step: Go to next step
     step_finished: <strong>Yehaaaaa!</strong> One step less to go!
