@@ -7,5 +7,5 @@ url: http://www.google.com/analytics/
 fa_icon: google
 configuration_route: admin_google_analytics_configuration
 version: ~0.4
-enabled: true
+enabled: false
 visible: true

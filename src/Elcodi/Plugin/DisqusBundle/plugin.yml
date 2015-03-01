@@ -7,5 +7,5 @@ url: http://url-ga.com
 fa_icon: comment-o
 configuration_route: admin_disqus_configuration
 version: ~0.4
-enabled: true
+enabled: false
 visible: true
