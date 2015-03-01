@@ -1,0 +1,27 @@
+wizard:
+    welcome_title: ¡Ya tienes tu tienda online!
+    go_general_settings: Ir a la configuración de la tienda
+    ready_launch: Todo a punto!
+    go_enable_store: Ve a la configuración y activa tu tienda.
+    go_next_step: Ve al siguiente paso
+    step_finished: <strong>¡Bravo!</strong> ¡Un paso menos para finalizar!
+    time_to_sell: Estás a <strong>%1 minutos</strong> de empezar a vender
+    estimated_time: Tiempo estimado %1 min
+    step1:
+        title: Añade un producto
+        description: Lo más importante de tu tienda... después de los clientes, claro.
+        action: Crea tu primer producto
+    step2:
+        title: Añade tu dirección
+        description: Para empezar a vender en internet necesitas añadir la dirección fiscal de tu tienda.
+        action: Añade una dirección
+    step3:
+        title: Configurar los pagos
+        description: Para que lo usuarios puedan pagar en tu tienda tienes que configurar los métodos de pago.
+        action: Configura los métodos de pago
+    step4:
+        title: Configurar las entregas
+        description: Añade al menos un transportista y sus costes. (Aunque sean gratis)
+        action: Añadir un transportista
+
+
