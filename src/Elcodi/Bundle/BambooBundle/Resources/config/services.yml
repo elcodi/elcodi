@@ -7,9 +7,8 @@ services:
         class: Elcodi\Component\Page\Renderer\TemplatedPageRenderer
         arguments:
             - @templating.engine.twig
-            - "Pages:page-static.html.twig"
-            - @=elcodi_config("store.template")
-            - ElcodiBambooBundle
+            - "Layout:_static.html.twig"
+            - [@=elcodi_config("store.template")]
 
     #
     # Store tracker

@@ -129,7 +129,9 @@ class PageController
     protected function renderPage(PageInterface $page)
     {
         if ($this->pageRenderer && $this->pageRenderer->supports($page)) {
-            return $this->pageRenderer->render($page);
+            return $this
+                ->pageRenderer
+                ->render($page);
         }
 
         return $page->getContent();
