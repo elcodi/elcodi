@@ -8,9 +8,8 @@ services:
         arguments:
             - @templating.engine.twig
             - "Pages:page-static.html.twig"
-            -
-              - @=elcodi_config("store.template")
-              - ElcodiBambooBundle
+            - @=elcodi_config("store.template")
+            - ElcodiBambooBundle
 
     #
     # Store tracker

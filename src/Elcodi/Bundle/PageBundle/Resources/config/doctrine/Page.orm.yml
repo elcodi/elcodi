@@ -8,6 +8,12 @@ Elcodi\Component\Page\Entity\Page:
             generator:
                 strategy: AUTO
     fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: true
+            unique: true
         title:
             column: title
             type: string
@@ -25,7 +31,7 @@ Elcodi\Component\Page\Entity\Page:
             column: path
             type: string
             length: 255
-            nullable: false
+            nullable: true
         publicationDate:
             column: publication_date
             type: datetime

@@ -75,29 +75,14 @@ class ElcodiBambooExtension extends AbstractExtension
      */
     protected function getParametrizationValues(array $config)
     {
-        $config = $this->checkEmailConfiguration($config);
-
         return [
-            "elcodi.core.bamboo.cache_prefix"                                   => $config['cache_prefix'],
-            "elcodi.core.bamboo.store_tracker"                                  => $config['store_tracker'],
-            "elcodi.core.bamboo.store_name"                                     => $config['store_name'],
-            "elcodi.core.bamboo.store_slug"                                     => $config['store_slug'],
-            "elcodi.core.bamboo.store_enabled"                                  => $config['store_enabled'],
-            "elcodi.core.bamboo.store_under_construction"                       => $config['store_under_construction'],
-            "elcodi.core.bamboo.store_address"                                  => $config['store_address'],
-
-            "elcodi.core.bamboo.emails.layout"                                  => $config['emails']['defaults']['layout'],
-            "elcodi.core.bamboo.emails.sender_email"                            => $config['emails']['defaults']['sender_email'],
-
-            "elcodi.core.bamboo.emails.customer_password_remember.enabled"      => $config['emails']['customer_password_remember']['enabled'],
-            "elcodi.core.bamboo.emails.customer_password_remember.template"     => $config['emails']['customer_password_remember']['template'],
-            "elcodi.core.bamboo.emails.customer_password_remember.layout"       => $config['emails']['customer_password_remember']['layout'],
-            "elcodi.core.bamboo.emails.customer_password_remember.sender_email" => $config['emails']['customer_password_remember']['sender_email'],
-
-            "elcodi.core.bamboo.emails.customer_password_recover.enabled"       => $config['emails']['customer_password_recover']['enabled'],
-            "elcodi.core.bamboo.emails.customer_password_recover.template"      => $config['emails']['customer_password_recover']['template'],
-            "elcodi.core.bamboo.emails.customer_password_recover.layout"        => $config['emails']['customer_password_recover']['layout'],
-            "elcodi.core.bamboo.emails.customer_password_recover.sender_email"  => $config['emails']['customer_password_recover']['sender_email'],
+            "elcodi.core.bamboo.cache_prefix"             => $config['cache_prefix'],
+            "elcodi.core.bamboo.store_tracker"            => $config['store_tracker'],
+            "elcodi.core.bamboo.store_name"               => $config['store_name'],
+            "elcodi.core.bamboo.store_slug"               => $config['store_slug'],
+            "elcodi.core.bamboo.store_enabled"            => $config['store_enabled'],
+            "elcodi.core.bamboo.store_under_construction" => $config['store_under_construction'],
+            "elcodi.core.bamboo.store_address"            => $config['store_address'],
         ];
     }
 
@@ -119,14 +104,6 @@ class ElcodiBambooExtension extends AbstractExtension
         return [
             'services',
             'twig',
-            [
-                'emails/customerPasswordRemember',
-                $config['emails']['customer_password_remember']['enabled'],
-            ],
-            [
-                'emails/customerPasswordRecover',
-                $config['emails']['customer_password_recover']['enabled'],
-            ],
         ];
     }
 
@@ -138,30 +115,5 @@ class ElcodiBambooExtension extends AbstractExtension
     public function getAlias()
     {
         return static::EXTENSION_NAME;
-    }
-
-    /**
-     * Check the email configuration
-     *
-     * @param array $config Configuration
-     *
-     * @return array Configuration checked
-     */
-    public function checkEmailConfiguration(array $config)
-    {
-        $layoutNamespace = $config['emails']['defaults']['layout'];
-        $senderEmail = $config['emails']['defaults']['sender_email'];
-
-        foreach ($config['emails'] as $emailName => $emailConfiguration) {
-            if ('defaults' !== $emailName) {
-                $config['emails'][$emailName]['layout'] = $emailConfiguration['layout']
-                    ?: $layoutNamespace;
-
-                $config['emails'][$emailName]['sender_email'] = $emailConfiguration['sender_email']
-                    ?: $senderEmail;
-            }
-        }
-
-        return $config;
     }
 }

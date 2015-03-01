@@ -18,8 +18,6 @@
 namespace Elcodi\Bundle\BambooBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
-use Symfony\Component\Config\Definition\Builder\NodeDefinition;
-use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
 
@@ -58,90 +56,6 @@ class Configuration extends AbstractConfiguration
                 ->scalarNode('store_address')
                     ->defaultValue('Store address')
                 ->end()
-
-                ->append($this->createEmailConfiguration())
             ->end();
-    }
-
-    /**
-     * Creates configuration for email sending
-     *
-     * @return ArrayNodeDefinition|NodeDefinition
-     */
-    protected function createEmailConfiguration()
-    {
-        $builder = new TreeBuilder();
-        $node = $builder->root('emails');
-
-        $node
-            ->addDefaultsIfNotSet()
-            ->children()
-                ->arrayNode('defaults')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->scalarNode('layout')
-                            ->defaultValue('ElcodiBambooBundle:emails:layout.html.twig')
-                        ->end()
-                        ->scalarNode('sender_email')
-                            ->defaultValue('no-reply@elcodi.com')
-                        ->end()
-                    ->end()
-                ->end()
-
-                ->append($this->addEmailNode(
-                    'customer_password_remember',
-                    false,
-                    'ElcodiBambooBundle:emails:customer_password_remember.html.twig'
-                ))
-
-                ->append($this->addEmailNode(
-                    'customer_password_recover',
-                    false,
-                    'ElcodiBambooBundle:emails:customer_password_recover.html.twig'
-                ))
-            ->end();
-
-        return $node;
-    }
-
-    /**
-     * Add configuration for email template
-     *
-     * @param string  $nodeName    Node name
-     * @param boolean $enabled     The email is enabled by default
-     * @param string  $template    Path of the rendered template
-     * @param string  $layout      Path of the extended layout
-     * @param string  $senderEmail Sender email
-     *
-     * @return NodeDefinition Node
-     */
-    protected function addEmailNode(
-        $nodeName,
-        $enabled,
-        $template,
-        $layout = null,
-        $senderEmail = null
-    ) {
-        $builder = new TreeBuilder();
-        $node = $builder->root($nodeName);
-
-        $node
-            ->addDefaultsIfNotSet()
-            ->children()
-                ->scalarNode('enabled')
-                    ->defaultValue($enabled)
-                ->end()
-                ->scalarNode('template')
-                    ->defaultValue($template)
-                ->end()
-                ->scalarNode('layout')
-                    ->defaultValue($layout)
-                ->end()
-                ->scalarNode('sender_email')
-                    ->defaultValue($senderEmail)
-                ->end()
-            ->end();
-
-        return $node;
     }
 }
