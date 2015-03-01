@@ -95,15 +95,15 @@ class DisableWizardEventListener
      */
     public function handle(GetResponseEvent $event)
     {
-        $storeEnabled =
+        $storeUnderConstruction =
             'on' == $this
                 ->configurationManager
-                ->get('store.enabled');
+                ->get('store.under_construction');
 
         if (
             $this->plugin->isEnabled() &&
             $this->wizardStatus->isWizardFinished() &&
-            $storeEnabled
+            !$storeUnderConstruction
         ) {
             $this
                 ->pluginManager

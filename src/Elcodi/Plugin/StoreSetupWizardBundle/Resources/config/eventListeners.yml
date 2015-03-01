@@ -25,9 +25,10 @@ services:
         tags:
             - { name: firewall_listener, firewall: admin_area }
 
-    elcodi_plugin.event_listener.store_enable:
-        class: %elcodi_plugin.event_listener.store_enable.class%
+    elcodi_plugin.event_listener.disable_under_construction:
+        class: %elcodi_plugin.event_listener.disable_under_construction.class%
         arguments:
+            translator: @translator
             router: @router
             wizard_status: @elcodi_templates.wizard_status.service
             configuration_manager: @elcodi.manager.configuration

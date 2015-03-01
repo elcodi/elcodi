@@ -1,9 +1,10 @@
 wizard:
+    first_finish_wizard: Finish all the steps before going online
     welcome_title: Welcome yo your new store!
     go_general_settings: Go to general settings
     ready_launch: Ready to launch!
     done: Done!
-    go_enable_store: Go to setup and enable your store.
+    go_enable_store: Go to setup and disable the "under construction" mode.
     go_next_step: Go to next step
     step_finished: <strong>Yehaaaaa!</strong> One step less to go!
     time_to_sell: You are <strong>%1 minutes</strong> away to start selling
