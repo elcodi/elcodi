@@ -22,6 +22,11 @@
 
 
 {% block content %}
+
+    {% if plugin.configuration['disqus_identifier'] == '' %}
+        <p class="msg-warning">{{ "Warning! In order to enable Disqus you need to set your ID"|trans }}</p>
+    {% endif %}
+
     <form class="form" method="POST">
         <fieldset>
             <div class="col-1-3">
