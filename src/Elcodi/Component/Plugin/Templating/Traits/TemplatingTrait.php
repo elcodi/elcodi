@@ -17,8 +17,6 @@
 
 namespace Elcodi\Component\Plugin\Templating\Traits;
 
-use Elcodi\Component\Plugin\Entity\Plugin;
-
 /**
  * Trait TemplatingTrait
  */
@@ -74,13 +72,13 @@ trait TemplatingTrait
     /**
      * Plugin can be used
      *
-     * @param Plugin $plugin          Plugin
-     * @param array  $checkableFields Fields to check
+     * @param \Elcodi\Component\Plugin\Entity\Plugin $plugin          Plugin
+     * @param array                                  $checkableFields Fields to check
      *
      * @return boolean Plugin can be used
      */
     protected function pluginCanBeUsed(
-        Plugin $plugin,
+        \Elcodi\Component\Plugin\Entity\Plugin $plugin,
         array $checkableFields = []
     ) {
         return array_reduce(
