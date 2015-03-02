@@ -36,7 +36,7 @@
         "doctrine/orm": "~2.4",
         "symfony/routing": "~2.4",
 
-        "elcodi/core": "~0.4.0"
+        "elcodi/core": "~0.5.0"
     },
     "suggest": {
         "twig/twig": "Required if using Twig extensions",

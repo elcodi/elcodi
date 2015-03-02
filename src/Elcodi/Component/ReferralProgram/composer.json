@@ -38,11 +38,11 @@
         "symfony/event-dispatcher": "~2.6",
         "symfony/routing": "~2.6",
 
-        "elcodi/core": "~0.4.0",
-        "elcodi/user": "~0.4.0",
-        "elcodi/banner": "~0.4.0",
-        "elcodi/cart-coupon": "~0.4.0",
-        "elcodi/currency": "~0.4.0"
+        "elcodi/core": "~0.5.0",
+        "elcodi/user": "~0.5.0",
+        "elcodi/banner": "~0.5.0",
+        "elcodi/cart-coupon": "~0.5.0",
+        "elcodi/currency": "~0.5.0"
     },
     "autoload": {
         "psr-4": {

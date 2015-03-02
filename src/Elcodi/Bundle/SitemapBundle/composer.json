@@ -39,13 +39,13 @@
         "symfony/config": "~2.6",
         "symfony/dependency-injection": "~2.6",
 
-        "elcodi/core-bundle": "~0.4.0",
-        "elcodi/sitemap": "~0.4.0"
+        "elcodi/core-bundle": "~0.5.0",
+        "elcodi/sitemap": "~0.5.0"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "~0.4.0",
-        "elcodi/bamboo-bundle": "~0.4.0",
-        "elcodi/fixtures-booster-bundle": "~0.4.0",
+        "elcodi/test-common-bundle": "~0.5.0",
+        "elcodi/bamboo-bundle": "~0.5.0",
+        "elcodi/fixtures-booster-bundle": "~0.5.0",
         "doctrine/data-fixtures": "~1.0"
     },
     "autoload": {

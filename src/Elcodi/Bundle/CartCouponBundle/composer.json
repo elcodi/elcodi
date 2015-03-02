@@ -40,16 +40,16 @@
         "symfony/dependency-injection": "~2.6",
         "mmoreram/simple-doctrine-mapping": "~0.1",
 
-        "elcodi/core-bundle": "~0.4.0",
-        "elcodi/cart-bundle": "~0.4.0",
-        "elcodi/coupon-bundle": "~0.4.0",
-        "elcodi/rule-bundle": "~0.4.0",
-        "elcodi/cart-coupon": "~0.4.0"
+        "elcodi/core-bundle": "~0.5.0",
+        "elcodi/cart-bundle": "~0.5.0",
+        "elcodi/coupon-bundle": "~0.5.0",
+        "elcodi/rule-bundle": "~0.5.0",
+        "elcodi/cart-coupon": "~0.5.0"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "~0.4.0",
-        "elcodi/bamboo-bundle": "~0.4.0",
-        "elcodi/fixtures-booster-bundle": "~0.4.0",
+        "elcodi/test-common-bundle": "~0.5.0",
+        "elcodi/bamboo-bundle": "~0.5.0",
+        "elcodi/fixtures-booster-bundle": "~0.5.0",
         "doctrine/data-fixtures": "~1.0"
     },
     "autoload": {

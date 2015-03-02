@@ -40,7 +40,7 @@
         "symfony/routing": "~2.4",
         "knplabs/gaufrette": "~0.1",
 
-        "elcodi/core": "~0.4.0"
+        "elcodi/core": "~0.5.0"
     },
     "suggest": {
         "twig/twig": "Required if using Twig extensions"
