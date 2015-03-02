@@ -1,0 +1,11 @@
+google_analytics_plugin:
+    title: Google Analytics
+    field:
+        tracking_id: ID de tracking
+    action:
+        visit_google: Ir a Google Analytics
+    section:
+        settings:
+            title: Configuración Google Analytics
+    error:
+        is_disabled: El plugin está desactivado
