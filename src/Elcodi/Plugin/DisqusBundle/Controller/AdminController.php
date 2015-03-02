@@ -31,7 +31,7 @@ class AdminController extends Controller
 {
     /**
      * @Route(
-     *      path = "/disqus",
+     *      path = "/configuration",
      *      name = "admin_disqus_configuration",
      *      methods = {"GET", "POST"}
      * )

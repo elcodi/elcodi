@@ -31,7 +31,7 @@ class AdminController extends Controller
 {
     /**
      * @Route(
-     *      path = "/pinterest",
+     *      path = "/configuration",
      *      name = "admin_pinterest_configuration",
      *      methods = {"GET", "POST"}
      * )

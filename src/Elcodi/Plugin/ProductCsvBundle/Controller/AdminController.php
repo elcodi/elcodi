@@ -36,7 +36,7 @@ class AdminController extends Controller
      * @return array|RedirectResponse
      *
      * @Route(
-     *      path = "/product-csv",
+     *      path = "/configuration",
      *      name = "admin_product_csv_configuration",
      *      methods = {"GET", "POST"}
      * )
