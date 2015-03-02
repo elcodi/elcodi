@@ -1,0 +1,20 @@
+disqus_plugin:
+    title: Disqus
+    section:
+        settings:
+            title: Configuración Disqus
+        visibility:
+            title: Visibilidad
+            description: Activar Disqus por secciones.
+    field:
+        tracking_id:
+            title: ID de Tracking
+            placeholder: ej. 2583573
+        enable:
+            on_product: en página de producto
+            on_blogpost: en post de blog
+    action:
+        visit_disqus: Ir a Disqus
+    error:
+        is_disabled: El plugin está desactivado
+        need_id: Para activar Disqus necesitas configurar tu ID de tracking.

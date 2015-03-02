@@ -25,9 +25,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Elcodi\Component\Plugin\Entity\Plugin;
 
 /**
- * Class DisqusController
+ * Class AdminController
  */
-class DisqusController extends Controller
+class AdminController extends Controller
 {
     /**
      * @Route(
