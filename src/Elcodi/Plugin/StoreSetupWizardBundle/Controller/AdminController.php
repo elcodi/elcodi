@@ -32,7 +32,7 @@ class AdminController extends Controller
      * Configuration action.
      *
      * @Route(
-     *      path = "/store-setup-wizard-configuration",
+     *      path = "/configuration",
      *      name = "admin_store_setup_wizard_configuration",
      *      methods = {"GET", "POST"}
      * )

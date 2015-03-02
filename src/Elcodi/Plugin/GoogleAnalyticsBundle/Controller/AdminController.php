@@ -31,7 +31,7 @@ class AdminController extends Controller
 {
     /**
      * @Route(
-     *      path = "/google-analytics",
+     *      path = "/configuration",
      *      name = "admin_google_analytics_configuration",
      *      methods = {"GET", "POST"}
      * )
