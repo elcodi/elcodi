@@ -25,5 +25,3 @@ wizard:
         title: Setup the shipping
         description: You need to define the carriers and the costs. (Even if it's free)
         action: Setup payments methods
-
-
