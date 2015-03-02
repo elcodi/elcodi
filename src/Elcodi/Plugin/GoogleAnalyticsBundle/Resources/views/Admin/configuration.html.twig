@@ -1,40 +1,39 @@
 {% extends 'AdminCoreBundle::layout.html.twig' %}
 
 
-{% block content_title %}
-    {{ 'Configuration Zone'|trans }}
-{% endblock content_title %}
-
-
 {% block breadcrumb %}
-    {% include "@AdminCore/Common/breadcrumb.html.twig" with {
-        breadcrumb: {
-            'Plugins': {
-                    'url': url('admin_plugin_list')
-                },
-                ('Google analytics'): {
-                    'active': true
-                }
-            }
-        }
+
+    {% include '@AdminCore/Common/breadcrumb.html.twig' with {
+        breadcrumb: [
+            { name: 'admin.plugin.plural'|trans, url: url('admin_plugin_list') },
+            { name: 'google_analytics_plugin.title'|trans, active: true },
+        ]}
     %}
+
 {% endblock breadcrumb %}
 
 
 {% block content %}
+
     <form class="form" method="POST">
         <fieldset>
             <div class="col-1-3">
-                <h2 class="fw-n">Google Analytics Setup</h2>
-                <a target="_blank" href="https://www.google.com/analytics/web/">Go to google analytics</a>
+                <h2 class="fw-n">{{ 'google_analytics_plugin.section.settings.title'|trans }}</h2>
+                <a target="_blank" href="https://www.google.com/analytics/web/">
+                    {{ 'google_analytics_plugin.action.visit_google'|trans }}
+                </a>
             </div>
             <div class="col-2-3">
                 <div class="box">
                     <ol>
                         <li>
-                            <label for="analytics_tracker_id">{{ 'Google analytics tracking ID'|trans }}</label>
-
-                            <input id="analytics_tracker_id" type="text" name="analytics_tracker_id" value="{{ plugin.configuration['analytics_tracker_id'] }}" placeholder="UA-XXXXXXXX-X" />
+                            <label for="analytics_tracker_id">
+                                {{ 'google_analytics_plugin.field.tracking_id'|trans }}
+                            </label>
+                            <input id="analytics_tracker_id" type="text"
+                                   name="analytics_tracker_id"
+                                   value="{{ plugin.configuration['analytics_tracker_id'] }}"
+                                   placeholder="UA-XXXXXXXX-X" />
                         </li>
                     </ol>
                 </div>
@@ -43,8 +42,9 @@
                 &nbsp;
             </div>
             <div class="col-2-3">
-                <button type="submit" class="button-primary">{{ 'Save'|trans }}</button>
+                <button type="submit" class="button-primary">{{ 'ui.forms.save'|trans }}</button>
             </div>
         </fieldset>
     </form>
+
 {% endblock content %}

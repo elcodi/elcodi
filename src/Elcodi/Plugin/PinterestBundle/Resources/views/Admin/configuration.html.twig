@@ -1,42 +1,39 @@
 {% extends 'AdminCoreBundle::layout.html.twig' %}
 
 
-{% block content_title %}
-    {{ 'Configuration Zone'|trans }}
-{% endblock content_title %}
-
-
 {% block breadcrumb %}
-    {% include "@AdminCore/Common/breadcrumb.html.twig" with {
-        breadcrumb: {
-            'Plugins': {
-                    'url': url('admin_plugin_list')
-                },
-                ('Pinterest'): {
-                    'active': true
-                }
-            }
-        }
+
+    {% include '@AdminCore/Common/breadcrumb.html.twig' with {
+        breadcrumb: [
+            { name: 'admin.plugin.plural'|trans, url: url('admin_plugin_list') },
+            { name: 'pinterest_plugin.title'|trans, active: true },
+        ]}
     %}
+
 {% endblock breadcrumb %}
 
 
 {% block content %}
+
     <form class="form" method="post">
         <fieldset>
             <div class="col-1-3">
-                <h2 class="fw-n">Pinterest Setup</h2>
-                <a target="_blank" href="https://www.pinterest.com/">Go to Pinterest</a>
+                <h2 class="fw-n">{{ 'pinterest_plugin.section.settings.title'|trans }}</h2>
+                <a target="_blank" href="https://www.pinterest.com/">{{ 'pinterest_plugin.action.visit_pinterest'|trans }}</a>
             </div>
             <div class="col-2-3">
                 <div class="box">
                     <ol>
                         <li>
                             <div class="switch">
-								<input name="asynchronous" id="asynchronous" type="checkbox"{% if plugin.configuration.asynchronous %} checked="checked"{% endif %}>
+								<input name="asynchronous" id="asynchronous" type="checkbox"
+                                    {% if plugin.configuration.asynchronous %}
+                                        checked="checked"
+                                    {% endif %}
+                                >
 								<label for="asynchronous"></label>
 							</div>
-                            {% trans %}Js asynchronous{% endtrans %}
+                            {{ 'pinterest_plugin.field.asynchronous_javascript'|trans }}
                         </li>
                     </ol>
                 </div>
@@ -45,8 +42,11 @@
                 &nbsp;
             </div>
             <div class="col-2-3">
-                <button type="submit" class="button-primary">{{ 'Save'|trans }}</button>
+                <button type="submit" class="button-primary">
+                    {{ 'ui.forms.save'|trans }}
+                </button>
             </div>
         </fieldset>
     </form>
+
 {% endblock content %}

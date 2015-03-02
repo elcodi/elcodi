@@ -17,7 +17,6 @@
 
 namespace Elcodi\Plugin\ProductCsvBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,9 +36,8 @@ class CsvController extends Controller
      * @Route(
      *     path = "/products/export",
      *     name = "elcodi_plugin_productcsv_export",
+     *     methods = {"GET"}
      * )
-     *
-     * @Method("GET")
      *
      * @return Response
      */
@@ -50,7 +48,11 @@ class CsvController extends Controller
             ->getPlugin('Elcodi\Plugin\ProductCsvBundle');
 
         if (!$plugin->isEnabled()) {
-            $this->createNotFoundException('The plugin is disabled');
+            $this->createNotFoundException(
+                $this
+                    ->get('translator')
+                    ->trans('product_csv_plugin.error.is_disabled')
+            );
         }
 
         /**

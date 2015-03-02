@@ -1,0 +1,11 @@
+google_analytics_plugin:
+    title: Google Analytics
+    field:
+        tracking_id: Tracking ID
+    action:
+        visit_google: Go to Google Analytics
+    section:
+        settings:
+            title: Google Analytics Settings
+    error:
+        is_disabled: The plugin is disabled

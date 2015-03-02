@@ -20,6 +20,7 @@ namespace Elcodi\Plugin\ProductCsvBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 use Elcodi\Component\Plugin\Entity\Plugin;
@@ -30,6 +31,10 @@ use Elcodi\Component\Plugin\Entity\Plugin;
 class AdminController extends Controller
 {
     /**
+     * @param Request $request
+     *
+     * @return array|RedirectResponse
+     *
      * @Route(
      *      path = "/product-csv",
      *      name = "admin_product_csv_configuration",
@@ -45,6 +50,14 @@ class AdminController extends Controller
         $plugin = $this
             ->get('elcodi.plugin_manager')
             ->getPlugin('Elcodi\Plugin\ProductCsvBundle');
+
+        if (!$plugin->isEnabled()) {
+            $this->createNotFoundException(
+                $this
+                    ->get('translator')
+                    ->trans('product_csv_plugin.error.is_disabled')
+            );
+        }
 
         if ('POST' === $request->getMethod()) {
             $this

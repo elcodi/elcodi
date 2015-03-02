@@ -25,5 +25,3 @@ wizard:
         title: Configura las entregas
         description: Añade al menos un transportista y sus costes. (Aunque sean gratis)
         action: Añadir transportista
-
-
