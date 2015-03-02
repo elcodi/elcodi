@@ -89,10 +89,10 @@ class CommentController
     /**
      * Add a comment
      *
-     * @param Request $request
-     * @param         $authorToken
-     * @param         $context
-     * @param         $source
+     * @param Request $request     Request
+     * @param string  $authorToken Author Token
+     * @param string  $context     Context
+     * @param string  $source      Source
      *
      * @return Response
      */
