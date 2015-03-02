@@ -11,6 +11,7 @@ services:
             - @elcodi.cart.manager
             - @elcodi.wrapper.currency
             - @elcodi.converter.currency
+            - @elcodi.manager.configuration
         tags:
             - { name: kernel.event_listener, event: cart.preload, method: checkCartIntegrity, priority: 0 }
             - { name: kernel.event_listener, event: cart.onload, method: loadCartPrices, priority: 16 }

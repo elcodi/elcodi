@@ -21,11 +21,11 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Translation\TranslatorInterface;
 
 use Elcodi\Component\Configuration\Services\ConfigurationManager;
 use Elcodi\Component\Plugin\Entity\Plugin;
 use Elcodi\Plugin\StoreSetupWizardBundle\Services\WizardStatus;
-use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Class DisableUnderConstructionEventListener
