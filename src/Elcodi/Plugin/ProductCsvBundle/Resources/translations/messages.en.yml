@@ -1,0 +1,13 @@
+product_csv_plugin:
+    title: Product CSV
+    section:
+        export:
+            title: Export Settings
+    field:
+        export_filename:
+            title: Default filename on export
+            placeholder: Enter a filename
+    error:
+        is_disabled: The plugin is disabled
+    button:
+        export: Export
