@@ -2,7 +2,7 @@ elcodi_comments_list:
     path: /comments/{source}/{context}/list
     methods: GET
     defaults:
-        _controller: elcodi.controller.comment:listComments
+        _controller: elcodi.controller.comment:listCommentsAction
     requirements:
         source: ".+"
         context: ".+"
@@ -12,7 +12,7 @@ elcodi_comments_add:
     path: /comments/{authorToken}/{source}/{context}/add
     methods: POST
     defaults:
-        _controller: elcodi.controller.comment:addComment
+        _controller: elcodi.controller.comment:addCommentAction
     requirements:
         source: ".+"
         context: ".+"
@@ -22,7 +22,7 @@ elcodi_comments_edit:
     path: /comments/{authorToken}/{commentId}/edit
     methods: POST
     defaults:
-        _controller: elcodi.controller.comment:editComment
+        _controller: elcodi.controller.comment:editCommentAction
     requirements:
         source: ".+"
         authorToken: ".+"
@@ -32,7 +32,7 @@ elcodi_comments_delete:
     path: /comments/{authorToken}/{commentId}/delete
     methods: DELETE
     defaults:
-        _controller: elcodi.controller.comment:deleteComment
+        _controller: elcodi.controller.comment:deleteCommentAction
     requirements:
         authorToken: ".+"
         commentId: "\d+"
