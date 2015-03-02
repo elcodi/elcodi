@@ -1,0 +1,11 @@
+pinterest_plugin:
+    title: Pinterest
+    field:
+        asynchronous_javascript: Javascript asíncrono
+    action:
+        visit_pinterest: Ir a Pinterest
+    section:
+        settings:
+            title: Configuración Pinterest
+    error:
+        is_disabled: El plugin está deshabilitado

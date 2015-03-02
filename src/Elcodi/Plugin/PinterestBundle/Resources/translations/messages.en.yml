@@ -1,0 +1,11 @@
+pinterest_plugin:
+    title: Pinterest
+    field:
+        asynchronous_javascript: Asynchronous javascript
+    action:
+        visit_pinterest: Go to Pinterest
+    section:
+        settings:
+            title: Pinterest Settings
+    error:
+        is_disabled: The plugin is disabled
