@@ -64,8 +64,6 @@ class ProductCollectionProvider
             ->productRepository
             ->createQueryBuilder('p');
 
-        $this->addStockPropertiesToQueryBuilder($queryBuilder);
-
         $query = $queryBuilder
             ->andWhere('p.enabled = :enabled')
             ->andWhere('p.showInHome = :showInHome')
