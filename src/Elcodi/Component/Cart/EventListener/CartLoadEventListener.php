@@ -290,7 +290,11 @@ class CartLoadEventListener
                     $cartLine->getProductAmount(),
                     $currency
                 );
-            $productAmount = $productAmount->add($convertedProductAmount);
+            
+            $productAmount = $productAmount
+                ->add($convertedProductAmount->multiply(
+                    $cartLine->getQuantity()
+                ));
         }
 
         $cart
@@ -323,8 +327,8 @@ class CartLoadEventListener
          *
          * Line Currency was set by CartManager::addProduct when factorying CartLine
          */
-        $cartLine->setProductAmount($productPrice->multiply($cartLine->getQuantity()));
-        $cartLine->setAmount($cartLine->getProductAmount());
+        $cartLine->setProductAmount($productPrice);
+        $cartLine->setAmount($productPrice->multiply($cartLine->getQuantity()));
 
         return $cartLine;
     }
