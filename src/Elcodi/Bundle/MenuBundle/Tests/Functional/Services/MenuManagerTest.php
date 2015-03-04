@@ -95,7 +95,10 @@ class MenuManagerTest extends WebTestCase
                             'code'       => 'her',
                             'url'        => 'elcodi.dev/her',
                             'subnodes'   => [],
-                            'activeUrls' => ['dresses', 'skirts'],
+                            'activeUrls' => [
+                                'her_products_list_route',
+                                'her_offers_list_route',
+                            ],
                         ],
                     ],
                 ],
@@ -125,7 +128,10 @@ class MenuManagerTest extends WebTestCase
                     'code'       => 'her',
                     'url'        => 'elcodi.dev/her',
                     'subnodes'   => [],
-                    'activeUrls' => ['dresses', 'skirts'],
+                    'activeUrls' => [
+                        'her_products_list_route',
+                        'her_offers_list_route',
+                    ],
                 ],
             ]
         );

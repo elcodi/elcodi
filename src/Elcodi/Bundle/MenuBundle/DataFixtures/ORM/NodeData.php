@@ -55,8 +55,8 @@ class NodeData extends AbstractFixture
             ->setUrl('elcodi.dev/her')
             ->setActiveUrls(
                 [
-                    'dresses',
-                    'skirts',
+                    'her_products_list_route',
+                    'her_offers_list_route',
                 ]
             )
             ->setEnabled(true);
