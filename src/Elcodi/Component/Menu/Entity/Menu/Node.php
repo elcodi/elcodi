@@ -17,6 +17,8 @@
 
 namespace Elcodi\Component\Menu\Entity\Menu;
 
+use Doctrine\Common\Collections\Collection;
+
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface;
@@ -51,6 +53,13 @@ class Node implements NodeInterface
      * url
      */
     protected $url;
+
+    /**
+     * @var string
+     *
+     * Active urls
+     */
+    protected $activeUrls;
 
     /**
      * Gets Node code
@@ -124,5 +133,66 @@ class Node implements NodeInterface
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * Set active urls.
+     *
+     * @param array $activeUrls Active urls
+     *
+     * @return $this Self object
+     */
+    public function setActiveUrls(array $activeUrls)
+    {
+        $this->activeUrls = json_encode($activeUrls);
+
+        return $this;
+    }
+
+    /**
+     * Get the active urls.
+     *
+     * @return Collection The Active urls
+     */
+    public function getActiveUrls()
+    {
+        return json_decode($this->activeUrls, true);
+    }
+
+    /**
+     * Add an active url.
+     *
+     * @param string $activeUrl The active url.
+     *
+     * @return $this Self object
+     */
+    public function addActiveUrl($activeUrl)
+    {
+        $activeUrls       = json_decode($this->activeUrls, true);
+        $activeUrls[]     = $activeUrl;
+        $this->activeUrls = json_encode($activeUrls);
+
+        return $this;
+    }
+
+    /**
+     * Remove an active url.
+     *
+     * @param string $activeUrl The active url.
+     *
+     * @return $this Self object
+     */
+    public function removeActiveUrl($activeUrl)
+    {
+        $activeUrls    = json_decode($this->activeUrls, true);
+        $positionFound = array_search($activeUrl, $activeUrls);
+
+        if ($positionFound) {
+            unset($activeUrls[$positionFound]);
+
+            $this->activeUrls = json_encode($activeUrls);
+        }
+
+        return $this;
     }
 }

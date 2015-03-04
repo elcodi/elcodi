@@ -41,6 +41,7 @@ class NodeFactory extends AbstractFactory
         $node = new $classNamespace();
         $node
             ->setSubnodes(new ArrayCollection())
+            ->setActiveUrls([])
             ->setEnabled(false);
 
         return $node;

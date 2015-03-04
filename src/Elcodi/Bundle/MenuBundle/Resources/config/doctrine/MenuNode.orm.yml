@@ -23,6 +23,11 @@ Elcodi\Component\Menu\Entity\Menu\Node:
             type: string
             length: 255
             nullable: true
+        activeUrls:
+            column: active_urls
+            type: string
+            length: 512
+            nullable: false
         enabled:
             column: enabled
             type: boolean

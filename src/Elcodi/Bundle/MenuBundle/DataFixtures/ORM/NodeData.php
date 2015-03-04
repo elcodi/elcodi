@@ -37,7 +37,7 @@ class NodeData extends AbstractFixture
         /**
          * @var NodeFactory $menuNodeFactory
          */
-        $menuNodeFactory = $this->getFactory('menu_node');
+        $menuNodeFactory       = $this->getFactory('menu_node');
         $menuNodeObjectManager = $this->getObjectManager('menu_node');
 
         $menuNodeHim = $menuNodeFactory
@@ -45,6 +45,7 @@ class NodeData extends AbstractFixture
             ->setName('him')
             ->setCode('him')
             ->setUrl('elcodi.dev/him')
+            ->setActiveUrls([])
             ->setEnabled(true);
 
         $menuNodeHer = $menuNodeFactory
@@ -52,6 +53,12 @@ class NodeData extends AbstractFixture
             ->setName('her')
             ->setCode('her')
             ->setUrl('elcodi.dev/her')
+            ->setActiveUrls(
+                [
+                    'dresses',
+                    'skirts',
+                ]
+            )
             ->setEnabled(true);
 
         $menuNodeVogue = $menuNodeFactory
@@ -59,6 +66,7 @@ class NodeData extends AbstractFixture
             ->setName('vogue')
             ->setCode('vogue')
             ->setEnabled(true)
+            ->setActiveUrls([])
             ->addSubnode($menuNodeHim)
             ->addSubnode($menuNodeHer);
 

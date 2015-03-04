@@ -76,4 +76,38 @@ interface NodeInterface
      * @return string Url
      */
     public function getUrl();
+
+    /**
+     * Set active urls.
+     *
+     * @param array $activeUrls Active urls
+     *
+     * @return $this Self object
+     */
+    public function setActiveUrls(array $activeUrls);
+
+    /**
+     * Get the active urls.
+     *
+     * @return array The Active urls
+     */
+    public function getActiveUrls();
+
+    /**
+     * Add an active url.
+     *
+     * @param string $activeUrl The active url.
+     *
+     * @return $this Self object
+     */
+    public function addActiveUrl($activeUrl);
+
+    /**
+     * Remove an active url.
+     *
+     * @param string $activeUrl The active url.
+     *
+     * @return $this Self object
+     */
+    public function removeActiveUrl($activeUrl);
 }

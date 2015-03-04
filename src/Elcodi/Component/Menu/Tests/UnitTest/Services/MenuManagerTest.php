@@ -90,6 +90,7 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
         $node = new Node();
         $node
             ->setSubnodes(new ArrayCollection())
+            ->setActiveUrls(['url'])
             ->setId(1);
 
         $menu = new Menu();
@@ -116,7 +117,7 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
             ->with(
                 $this->equalTo('menus-admin'),
                 $this->equalTo(
-                    '{"1":{"id":1,"name":null,"code":null,"url":null,"subnodes":[]}}'
+                    '{"1":{"id":1,"name":null,"code":null,"url":null,"activeUrls":["url"],"subnodes":[]}}'
                 )
             );
 
@@ -124,11 +125,12 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
             $this->menuManager->loadMenuByCode('admin'),
             [
                 1 => [
-                    'id'       => 1,
-                    'name'     => null,
-                    'code'     => null,
-                    'url'      => null,
-                    'subnodes' => [],
+                    'id'         => 1,
+                    'name'       => null,
+                    'code'       => null,
+                    'url'        => null,
+                    'activeUrls' => ['url'],
+                    'subnodes'   => [],
                 ],
             ]
         );

@@ -163,11 +163,12 @@ class MenuManager extends AbstractCacheWrapper
     public function hydrateNode(NodeInterface $node)
     {
         return [
-            'id'       => $node->getId(),
-            'name'     => $node->getName(),
-            'code'     => $node->getCode(),
-            'url'      => $node->getUrl(),
-            'subnodes' => $this->loadSubnodes($node),
+            'id'         => $node->getId(),
+            'name'       => $node->getName(),
+            'code'       => $node->getCode(),
+            'url'        => $node->getUrl(),
+            'activeUrls' => $node->getActiveUrls(),
+            'subnodes'   => $this->loadSubnodes($node),
         ];
     }
 }

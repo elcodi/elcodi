@@ -290,7 +290,7 @@ class CartLoadEventListener
                     $cartLine->getProductAmount(),
                     $currency
                 );
-            
+
             $productAmount = $productAmount
                 ->add($convertedProductAmount->multiply(
                     $cartLine->getQuantity()
