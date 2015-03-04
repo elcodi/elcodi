@@ -230,6 +230,37 @@ class TwigRenderer
     }
 
     /**
+     * Render the disable under construction mode.
+     *
+     * @param EventInterface $event The event
+     */
+    public function renderDisableUnderConstructionMode(EventInterface $event)
+    {
+        if ($this->plugin->isEnabled()) {
+            $masterRequest = $this
+                ->requestStack
+                ->getMasterRequest();
+            $currentRoute  = $masterRequest
+                ->attributes
+                ->get('_route');
+
+            $isWizardFinished = $this
+                ->wizardStatus
+                ->isWizardFinished();
+
+            if (
+                'admin_configuration_list' == $currentRoute &&
+                $isWizardFinished
+            ) {
+                $this->appendTemplate(
+                    '@ElcodiStoreSetupWizard/Wizard/disable-under-construction.html.twig',
+                    $event
+                );
+            }
+        }
+    }
+
+    /**
      * Checks if the wizard is visible for this request.
      *
      * @return bool If visible
