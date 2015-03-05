@@ -19,6 +19,10 @@ Table of contents
   * [Services/LocationServiceProvider.php](#serviceslocationserviceproviderphp)
 1. [Event layer](#event-layer)
   * [AddressOnCloneEvent](#addressoncloneevent)
+1. [Controllers](#controllers)
+  * [LocationApiController](#locationapicontroller)
+1. [Commands](#commands)
+  * [LocationPopulateCommand](#locationpopulatecommand)
 1. [Tags](#tags)
 1. [Contributing](#contributing)
 
@@ -56,7 +60,7 @@ Or executing the following line
 $ composer require "elcodi/geo:~0.5.*"
 ```
 
-## Dependencies
+# Dependencies
 
 The Geo component has dependencies with:
 - **PHP:** Version greater or equal to 5.4
@@ -67,16 +71,16 @@ the location geo populator
 - **goodby/csv:** Used on the populator to
 - **elcodi/core:** Elcodi core component
 
-## Tests
+# Tests
 
 *Tests docs*
 
-## Model layer
+# Model layer
 
 The model for this component adds all the tools needed to manage geo location,
 these tools are the following
 
-### Location
+## Location
 
 [View code](https://github.com/elcodi/Geo/blob/master/Entity/Location.php)
 
@@ -91,7 +95,7 @@ all the levels of data that [Geonames][4] can provide us.
 - **Type:** The type, from country on the root level to the lowest level. `e.g.
 Country`
 
-### Address
+## Address
 
 [View code](https://github.com/elcodi/Geo/blob/master/Entity/Address.php)
 
@@ -120,18 +124,18 @@ office`
 12:52:20`
 - **Enabled**: If the address is enabled. `e.g. 1`
 
-## Service layer
+# Service layer
 
-### Formatter/AddressFormatter.php
+## Formatter/AddressFormatter.php
 
 [View code](https://github.com/elcodi/Geo/blob/master/Formatter/AddressFormatter.php)
 
 The address formatter provides various utilities to format an address.
 
-**e.g.** *This service can be used to print the address in string format to do a call
-to the Google Maps API*
+**e.g.** *This service can be used to print the address in string format to do a
+call to the Google Maps API*
 
-### Services/AddressManager.php
+## Services/AddressManager.php
 
 [View code](https://github.com/elcodi/Geo/blob/master/Services/AddressManager.php)
 
@@ -142,50 +146,76 @@ could be using this address.
 **e.g.** *This service is used when a customer is editing one of his existing
 addresses to ensure that any older order keeps the right address*
 
-### Services/LocationApiProvider.php
+## Services/LocationApiProvider.php
 
 [View code](https://github.com/elcodi/Geo/blob/master/Services/LocationApiProvider.php)
 
 This service uses the Locations API to provide locations and their info (Root,
 Childrens, Parents, hierarchy, etc.)
 
-**e.g.** *This service is used to fill the location selectors on the forms to add a
-new address*
+**e.g.** *This service is used to fill the location selectors on the forms to
+add a new address*
 
-### Services/LocationBuilder.php
+## Services/LocationBuilder.php
 
 [View code](https://github.com/elcodi/Geo/blob/master/Services/LocationBuilder.php)
 
 Builds a location given the location information
 
-**e.g.** *This service is used to build location entities using the info received by
-the locations API*
+**e.g.** *This service is used to build location entities using the info
+received by the locations API*
 
-### Services/LocationServiceProvider.php
+## Services/LocationServiceProvider.php
 
 [View code](https://github.com/elcodi/Geo/blob/master/Services/LocationServiceProvider.php)
 
 This service uses the Locations repository to provide locations and their info
 (Root, Childrens, Parents, hierarchy, etc.)
 
-**e.g.** *This service is used to fill the location selectors on the forms to add a
-new address*
+**e.g.** *This service is used to fill the location selectors on the forms to
+add a new address*
 
 
-## Event layer
+# Event layer
 
-### AddressOnCloneEvent
+## AddressOnCloneEvent
 
 This event is launched every time that an address is cloned, that happens when
 an address is being edited. We create a clone because other entities could be
 pointing to this address. A copy is created while other entities can keep the
 pointer to the old address.
 
-**e.g.** *A customer edits his address but hi has old orders pointing to the address
-being edited*
+**e.g.** *A customer edits his address but hi has old orders pointing to the
+address being edited*
 
 > More info about this on the
 > [Services/AddressManager.php](#servicesaddressmanagerphp) section
+
+# Controllers
+
+## LocationApiController
+
+[View code](https://github.com/elcodi/Geo/blob/master/Controller/LocationApiController.php)
+
+The location Api controller provides the actions needed to use the location
+service as an API
+
+# Commands
+
+## LocationPopulateCommand
+
+[View code](https://github.com/elcodi/Geo/blob/master/Command/LocationPopulateCommand.php)
+
+``` bash
+$ php app/console elcodi:locations:populate CountryIso
+```
+
+Populates the database with all the locations for the received country. It gets
+all the data from [Geonames].
+
+**Parameters:**
+- CountryIso: The [ISO 3166-1 (Alpha-2 code)](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) for the country
+that you want to populate.
 
 # Tags
 
@@ -219,3 +249,4 @@ guidelines in the [Submitting a Patch][2] section and use the
 [MIT]: (http://opensource.org/licenses/MIT)
 [Composer]: (https://getcomposer.org/)
 [Bamboo]: https://github.com/elcodi/bamboo
+[Geonames]: http://www.geonames.org/
