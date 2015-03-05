@@ -68,7 +68,7 @@ The Geo component has dependencies with:
 - **doctrine/orm:** The doctrine object-relational mapping
 - **mmoreram/extractor:** A file extractor to extract compressed files used on
 the location geo populator
-- **goodby/csv:** Used on the populator to
+- **goodby/csv:** Used on the populator to process csv files
 - **elcodi/core:** Elcodi core component
 
 # Tests

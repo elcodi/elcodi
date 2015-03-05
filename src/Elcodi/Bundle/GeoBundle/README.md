@@ -1,140 +1,195 @@
 Elcodi Geo Bundle for Symfony2
 ==============================
 
+Table of contents
+-----------------
+1. [Bundle](#bundle)
+1. [Overview](#overview)
+1. [Installation & Configuration](#installation-configuration)
+1. [Dependencies](#dependencies)
+1. [Tests](#tests)
+1. [Model layer](#model-layer)
+  * [Location](#location)
+  * [Address](#address)
+1. [Service layer](#service-layer)
+  * [Factories](#factories)
+  * [Formatter](#formatter)
+  * [Services](#services)
+1. [Event layer](#event-layer)
+  * [AddressOnCloneEvent](#addressoncloneevent)
+1. [Controllers](#controllers)
+  * [LocationApiController](#locationapicontroller)
+1. [Commands](#commands)
+  * [LocationPopulateCommand](#locationpopulatecommand)
+1. [Tags](#tags)
+1. [Contributing](#contributing)
+
+
+# Bundle
+
 This bundle is part of [elcodi project](https://github.com/elcodi).
 Elcodi is a set of flexible e-commerce components for Symfony2, built as a
 decoupled and isolated repositories and under
 [MIT](http://opensource.org/licenses/MIT) license.
 
-Table of contents
------------------
-1. [Documentation](#documentation)
-    * [Overview](#overview)
-    * [Installation / Configuration](#installation-configuration)
-    * [Dependencies](#dependencies)
-    * [Tests](#tests)
-    * [Model layer](#model-layer)
-    * [Service layer](#service-layer)
-    * [Event layer](#event-layer)
-    * [Controllers](#controllers)
-    * [Commands](#commands)
-1. [Tags](#tags)
-1. [Contributing](#contributing)
-
-Table of contents
------------------
-1. [Documentation](#documentation)
-    * [Quick overview](#quick-overview)
-    * [Entities](#entities)
-      * [Location entity](#location-entity)
-          * [Location fields](#location-fields)
-      * [Address entity](#address-entity)
-          * [Address fields](#address-fields)
-    * [Populating the locations](#populating-the-locations)
-    * [Locations API vs Service](#locations-api-vs-service)
-    * [Feel free to help](#feel-free-to-help)
-1. [Tags](#tags)
-1. [Contributing](#contributing)
-
-Documentation
--------------
-
-# Quick overview
+# Overview
 
 The GeoBundle provides us with a flexible and easy way to work with Geo
 locations.
 
-The bundle works with two entities, `Location` and `Address` to manage all the
-data.
-
 The bundle also provides you with a really powerful command to populate the
-database with all the geo data needed to provide localization for your site and
-the possibility to use the locations from a service or an API, among other
+database with all the geo data needed to work with localization for your site
+and the possibility to consume it directly or through an API among other
 things.
 
-# Entities
+# Installation & Configuration
 
-## Location entity
-The location entity maps the information to geographically localize anything, it
-is structured in a tree that contains all the imported countries on the root and
-all the levels of data that [Geonames][4] can provide us.
+You can install this Bundle the same way you will do with another [Symfony]
+bundle, you'll find info on this [symfony documentation page][4]
 
-### Location Fields
-- **Id:** The identifier **(Unique)**
-- **Name:** The name. `e.g. Spain`
-- **Code:** The code, usually the ISO code. `e.g. ES`
-- **Type:** The type, from country on the root level to the lowest level. `e.g.
-Country`
+In a few words, you can use [Composer] to install the bundle getting the package
+from [elcodi/geo packagist](https://packagist.org/packages/elcodi/geo) by just
+adding a line in your composer.json
 
-## Address entity
+``` json
+{
+    "require": {
+        "elcodi/geo-bundle": "~0.5.*"
+    }
+}
 
-The address entity provides a way to save a full address, it is thought to use
-soft relations with locations to save the city and the postal code.
-
-### Address Fields
-- **Id:** The identifier **(Unique)**
-- **Name:** The address name, usually a name to identify the address from other
-address. `e.g. My home`
-- **Recipient name:** The name for the address recipient. `e.g. Homer`
-- **Recipient surname:** The surname for the address recipient. `e.g. Simpson`
-- **City:** The address city, usually a soft link to a location saving a
-location id. `e.g. ES_CT_B_Barcelona`
-- **Postal code**: The address postal code, usually a soft link to a location
-saving a location id. `e.g. `
-- **Address**: The city address. `e.g. C/València 333`
-- **Address more**: A second line to save the city address. `e.g. Baixos`
-- **Phone**: An address phone number. `e.g. 958647856`
-- **Mobile**: An address mobile phone number. `e.g. 648563258`
-- **Comments**: An address comment, usually for the carrier. `e.g. It's an
-office`
-- **Created at**: The date time when the address was created. `e.g. 2015-03-05
-12:52:20`
-- **Updated at**: The date time when the address was updated. `e.g. 2015-03-05
-12:52:20`
-- **Enabled**: If the address is enabled. `e.g. 1`
-
-# Locations API vs Service
-
-The locations database uses to be immutable and heavy. So, why would you like to
-have this database replicated on all your projects? That's what we have created
-an easy way to transparently change from a service to an API.
-
-This bundle contains an interface (`LocationProviderInterface`), that's
-implemented by two services, the first one (`LocationServiceProvider`) accesses
-directly to the database and the second one (`LocationApiProvider`) uses an API
-to access the data.
-
-You can rely on the interface to build your own code and inject the service
-`@elcodi.location_provider`.
-
-By default this service is an alias for the `elcodi.location_provider.service`
-but you can customize it to use the API service by only adding a parameter:
-
-``` yml
-elcodi.location_provider: elcodi.location_provider.api
 ```
 
-# Populating the locations
-
-After the bundle is added and enabled on your project you can simply do:
+Or executing the following line
 
 ``` bash
-$ php app/console elcodi:locations:populate ES
+$ composer require "elcodi/geo-bundle:~0.5.*"
 ```
 
-Where `ES` is the code for any of the
-[ISO 3166-1 (Alpha-2 code)](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes)
-. This will populate all the locations for the given country. You can also add
-multiple countries separated by commas.
+After that you'll have to enable the bundle on your `Appkernel` file.
 
-This command generates a full tree with all the levels needed to locate your
-users.
+``` php
+// app/AppKernel.php
 
-# Feel free to help
+// ...
+class AppKernel extends Kernel
+{
+    // ...
 
-Check the documentation in [Elcodi Docs](http://docs.elcodi.io). Feel free to
-propose new recipes, examples or guides; our main goal is to help the developer
-building their site.
+    public function registerBundles()
+    {
+        $bundles = array(
+            // ...,
+            new \Elcodi\Bundle\GeoBundle\ElcodiGeoBundle(),
+        );
+
+        // ...
+    }
+}
+```
+
+# Dependencies
+
+The Geo bundle has dependencies with:
+- **PHP:** Version greater or equal to 5.4
+- **doctrine/common:** A doctrine extension for php
+- **doctrine/orm:** The doctrine object-relational mapping
+- **symfony/http-kernel:** The Symfony http kernel component needed on to
+extend the bundle
+- **symfony/config:** The symfony config component, needed to override the
+configuration
+- **symfony/dependency-injection:** The symfony dependency injection component,
+needed to define services
+- **symfony/proxy-manager:** A proxy manager, needed to define lazy services.
+- **symfony/proxy-manager-bridge:** The bridge between symfony and the proxy
+manager.
+- **mmoreram/simple-doctrine-mapping:** Needed on the compiler pass to be able
+to load the entities and related classes from the annotations
+- **goodby/csv:** Used on the populator to
+- **elcodi/core:** Elcodi core component
+- **elcodi/geo:** The geo components
+
+Also has dev dependences with:
+- **elcodi/test-common-bundle:**
+- **elcodi/bamboo-bundle:**
+- **elcodi/fixtures-booster-bundle:**
+- **doctrine/data-fixtures:**
+
+# Tests
+
+*Tests docs*
+
+# Model layer
+
+The Geo bundle provides you some services to work with the Geo models:
+
+## Location
+- `@elcodi.factory.location`: A factory to generate a new location entity
+- `@elcodi.object_manager.location`: A location entity manager
+- `@elcodi.repository.location`: A location repository
+- `@elcodi.director.location`: The location director contains the three previous
+services (Object manager, repository and factory) for the location entity.
+
+## Address
+- `@elcodi.factory.address`: A factory to generate a new address entity
+- `@elcodi.object_manager.address`: A address entity manager
+- `@elcodi.repository.address`: A address repository
+- `@elcodi.director.address`: The address director contains the three previous
+services (Object manager, repository and factory) for the address entity.
+
+# Service layer
+
+## Factories
+- `@elcodi.factory.location_data`: A factory to generate location data value
+objects
+
+## Formatter
+- `@elcodi.formatter.address`: A formatter to convert an address to different
+formats
+
+# Services
+- `@elcodi.location_provider`: A service to get locations info
+- `@elcodi.manager.address`: This service allows us to safely save an address
+without a risk of breaking a relation from another entity
+- `@elcodi.transformer.location_to_location_data`: This service transforms a
+location entity into a value object (`LocationData`)
+
+# Event layer
+
+## AddressOnCloneEvent
+
+This event is launched every time that an address is cloned, that happens when
+an address is being edited. We create a clone because other entities could be
+pointing to this address. A copy is created while other entities can keep the
+pointer to the old address.
+
+**e.g.** *A customer edits his address but hi has old orders pointing to the
+address being edited*
+
+# Controllers
+
+## LocationApiController
+
+The location Api controller provides the actions needed to use the location
+service as an API
+
+These controllers are automatically loaded with the bundle. You can customize
+their behavior on the `parameters.yml` file (Routes, prefix, etc.).
+
+# Commands
+
+## LocationPopulateCommand
+
+``` bash
+$ php app/console elcodi:locations:populate CountryIso
+```
+
+Populates the database with all the locations for the received country. It gets
+all the data from [Geonames].
+
+**Parameters:**
+- CountryIso: The [ISO 3166-1 (Alpha-2 code)](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) for the country
+that you want to populate.
 
 Tags
 ----
@@ -170,4 +225,5 @@ guidelines in the [Submitting a Patch][2] section and use the
 [1]: http://symfony.com/doc/current/contributing/code/index.html
 [2]: http://symfony.com/doc/current/contributing/code/patches.html#check-list
 [3]: http://symfony.com/doc/current/contributing/code/patches.html#make-a-pull-request
-[4]: http://www.geonames.org/
+[4]: http://symfony.com/doc/current/cookbook/bundles/installation.html
+[Symfony]: http://symfony.com/
