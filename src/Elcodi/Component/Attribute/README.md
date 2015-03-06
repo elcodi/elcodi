@@ -1,26 +1,102 @@
 Elcodi Product Attribute component for Symfony2
 ===============================================
 
-This bundle is part of [elcodi project](https://github.com/elcodi).
+# Table of contents
+
+1. [Component](#component)
+1. [Overview](#overview)
+1. [Installation](#installation)
+1. [Dependencies](#dependencies)
+1. [Tests](#tests)
+1. [Model layer](#model-layer)
+  * [Attribute](#attribute)
+  * [Value](#value)
+1. [Tags](#tags)
+1. [Contributing](#contributing)
+
+# Component
+
+This component is part of [elcodi project](https://github.com/elcodi).
 Elcodi is a set of flexible e-commerce components for Symfony2, built as a
-decoupled and isolated repositories and under
-[MIT](http://opensource.org/licenses/MIT) license.
+decoupled and isolated repositories and under [MIT] license.
 
-Documentation
--------------
+# Overview
 
-Check the documentation in [Elcodi Docs](http://docs.elcodi.io). Feel free to
-propose new recipes, examples or guides; our main goal is to help the developer
-building their site.
+The Attribute component provides us with the tools to add attributes properties.
 
-Tags
-----
+You can see this bundle working on [Bamboo] to manage the product attributes
+like color or sizes.
+
+# Installation
+
+You can use [Composer] to install this component getting the package from
+[elcodi/attribute packagist](https://packagist.org/packages/elcodi/attribute)
+by just adding a line in your composer.json
+
+``` json
+{
+    "require": {
+        "elcodi/attribute": "~0.5.*"
+    }
+}
+
+```
+
+Or executing the following line
+
+``` bash
+$ composer require "elcodi/attribute:~0.5.*"
+
+# Dependencies
+
+The Geo component has dependencies with:
+- **PHP:** Version greater or equal to 5.4
+- **doctrine/common:** A doctrine extension for php
+- **doctrine/orm:** The doctrine object-relational mapping
+
+# Tests
+
+*Tests docs*
+
+# Model layer
+
+The model for this component adds all the tools needed to manage attributes
+
+## Attribute
+
+[View code](https://github.com/elcodi/Attribute/blob/master/Entity/Attribute.php)
+
+The attribute entity maps the information for an item attribute.
+
+**Fields**
+- **Id**: The identifier **(Unique)**
+- **Name**: The name. `e.g. Color`
+- **Created at**: The date time when the attribute was created. `e.g. 2015-03-05
+12:52:20`
+- **Updated at**: The date time when the attribute was updated. `e.g. 2015-03-05
+12:52:20`
+- **Enabled**: If the address is enabled. `e.g. 1`
+
+**Relations**
+- **values**: All the available values for this attribute
+
+## Value
+
+[View code](https://github.com/elcodi/Attribute/blob/master/Entity/Value.php)
+
+**Fields**
+- **Id**: The identifier **(Unique)**
+- **Value**: The name. `e.g. Blue`
+
+**Relations**
+- **Attribute**: All the attributes that contain this value
+
+# Tags
 
 * Use last unstable version ( alias of `dev-master` ) to stay always in last commit
 * Use last stable version tag to stay in a stable release.
 
-Contributing
-------------
+# Contributing
 
 All issues and Pull Requests should be on the main repository
 [elcodi/elcodi](https://github.com/elcodi/elcodi), so this one is read-only.
