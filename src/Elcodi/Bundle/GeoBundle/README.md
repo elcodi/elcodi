@@ -1,8 +1,8 @@
 Elcodi Geo Bundle for Symfony2
 ==============================
 
-Table of contents
------------------
+# Table of contents
+
 1. [Bundle](#bundle)
 1. [Overview](#overview)
 1. [Installation & Configuration](#installation-configuration)
@@ -48,8 +48,9 @@ You can install this Bundle the same way you will do with another [Symfony]
 bundle, you'll find info on this [symfony documentation page][4]
 
 In a few words, you can use [Composer] to install the bundle getting the package
-from [elcodi/geo packagist](https://packagist.org/packages/elcodi/geo) by just
-adding a line in your composer.json
+from
+[elcodi/geo-bundle packagist](https://packagist.org/packages/elcodi/geo-bundle)
+by just adding a line in your composer.json
 
 ``` json
 {
@@ -105,15 +106,14 @@ needed to define services
 manager.
 - **mmoreram/simple-doctrine-mapping:** Needed on the compiler pass to be able
 to load the entities and related classes from the annotations
-- **goodby/csv:** Used on the populator to
-- **elcodi/core:** Elcodi core component
+- **elcodi/core-bundle:** Elcodi core bundle component
 - **elcodi/geo:** The geo components
 
 Also has dev dependences with:
-- **elcodi/test-common-bundle:**
-- **elcodi/bamboo-bundle:**
-- **elcodi/fixtures-booster-bundle:**
-- **doctrine/data-fixtures:**
+- **elcodi/test-common-bundle:** Our common test utilities
+- **elcodi/bamboo-bundle:** We use the bamboo bundle for functional tests
+- **elcodi/fixtures-booster-bundle:** Used to boost the tests execution
+- **doctrine/data-fixtures:** To load fixtures
 
 # Tests
 
@@ -191,15 +191,13 @@ all the data from [Geonames].
 - CountryIso: The [ISO 3166-1 (Alpha-2 code)](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) for the country
 that you want to populate.
 
-Tags
-----
+# Tags
 
 * Use last unstable version ( alias of `dev-master` ) to stay always in last
 commit
 * Use last stable version tag to stay in a stable release.
 
-Contributing
-------------
+# Contributing
 
 All issues and Pull Requests should be on the main repository
 [elcodi/elcodi](https://github.com/elcodi/elcodi), so this one is read-only.

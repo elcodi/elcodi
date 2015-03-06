@@ -1,8 +1,8 @@
 Elcodi Geo component for Symfony2
 =================================
 
-Table of contents
------------------
+# Table of contents
+
 1. [Component](#component)
 1. [Overview](#overview)
 1. [Installation](#installation)
