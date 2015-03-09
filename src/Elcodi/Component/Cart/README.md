@@ -91,7 +91,7 @@ The model for this component adds all the tools needed to manage the store cart.
 
 ## Cart
 
-[View code](https://github.com/elcodi/elcodi/blob/master/src/Elcodi/Component/Cart/Entity/Cart.php)
+[View code](https://github.com/elcodi/Cart/blob/master/Entity/Cart.php)
 
 The Cart entity provides a way to save all the cart data, customer, products,
 addresses, etc.
@@ -118,7 +118,7 @@ the cart
 
 ## CartLine
 
-[View code](https://github.com/elcodi/elcodi/blob/master/src/Elcodi/Component/Cart/Entity/CartLine.php)
+[View code](https://github.com/elcodi/Cart/blob/master/Entity/CartLine.php)
 
 The cart line represents one item type added to the cart. For example a specific
 product, with it's quantity, price, etc.
@@ -140,7 +140,7 @@ related order line
 
 ## Order
 
-[View code](https://github.com/elcodi/elcodi/blob/master/src/Elcodi/Component/Cart/Entity/Order.php)
+[View code](https://github.com/elcodi/Cart/blob/master/Entity/Order.php)
 
 The order represents a cart that has been processed on the checkout process
 
@@ -178,7 +178,7 @@ The order represents a cart that has been processed on the checkout process
 
 ## OrderLine
 
-[View code](https://github.com/elcodi/elcodi/blob/master/src/Elcodi/Component/Cart/Entity/OrderLine.php)
+[View code](https://github.com/elcodi/Cart/blob/master/Entity/OrderLine.php)
 
 The order line represents one item type added to the order. For example a
 specific product, with it's quantity, price, etc.
@@ -206,7 +206,7 @@ These are the useful component services that you should know.
 
 ## Services/CartManager.php
 
-[View code](https://github.com/elcodi/elcodi/blob/master/src/Elcodi/Component/Cart/Services/CartManager.php)
+[View code](https://github.com/elcodi/Cart/blob/master/Services/CartManager.php)
 
 This service is thought to work with the cart, you can do all the actions
 related with cart lines or products.
@@ -219,7 +219,7 @@ adds a product to the cart, adds more quantity for a product or empties the car*
 
 ## Transformer/CartOrderTransformer.php
 
-[View code](https://github.com/elcodi/elcodi/blob/master/src/Elcodi/Component/Cart/Transformer/CartOrderTransformer.php)
+[View code](https://github.com/elcodi/Cart/blob/master/Transformer/CartOrderTransformer.php)
 
 This service allows to convert a cart to an order, loud and clear.
 
@@ -229,7 +229,7 @@ service*
 
 ## Wrapper/CartWrapper.php
 
-[View code](https://github.com/elcodi/elcodi/blob/master/src/Elcodi/Component/Cart/Wrapper/CartWrapper.php)
+[View code](https://github.com/elcodi/Cart/blob/master/Wrapper/CartWrapper.php)
 
 The main functionality for this service is to get the current cart. This service
 does all the needed work so you don't have bother trying to check if the current
@@ -245,9 +245,9 @@ called.*
 
 # Event layer
 
-These are all the events for this components. You can get all the event
-names as constant properties at
-[ElcodiCartEvents.php](https://github.com/elcodi/elcodi/blob/master/src/Elcodi/Component/Cart/ElcodiCartEvents.php)
+These are all the events for this components. You can get all the event names as
+constant properties at
+[ElcodiCartEvents.php](https://github.com/elcodi/Cart/blob/master/ElcodiCartEvents.php)
 file.
 
 ## CartInconsistentEvent
