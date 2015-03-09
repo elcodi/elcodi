@@ -9,21 +9,12 @@ Elcodi Geo Bundle for Symfony2
 1. [Dependencies](#dependencies)
 1. [Tests](#tests)
 1. [Model layer](#model-layer)
-  * [Location](#location)
-  * [Address](#address)
 1. [Service layer](#service-layer)
-  * [Factories](#factories)
-  * [Formatter](#formatter)
-  * [Services](#services)
 1. [Event layer](#event-layer)
-  * [AddressOnCloneEvent](#addressoncloneevent)
 1. [Controllers](#controllers)
-  * [LocationApiController](#locationapicontroller)
 1. [Commands](#commands)
-  * [LocationPopulateCommand](#locationpopulatecommand)
 1. [Tags](#tags)
 1. [Contributing](#contributing)
-
 
 # Bundle
 
@@ -95,8 +86,8 @@ The Geo bundle has dependencies with:
 - **PHP:** Version greater or equal to 5.4
 - **doctrine/common:** A doctrine extension for php
 - **doctrine/orm:** The doctrine object-relational mapping
-- **symfony/http-kernel:** The Symfony http kernel component needed on to
-extend the bundle
+- **symfony/http-kernel:** The Symfony http kernel component needed to extend
+the bundle
 - **symfony/config:** The symfony config component, needed to override the
 configuration
 - **symfony/dependency-injection:** The symfony dependency injection component,
@@ -121,7 +112,9 @@ Also has dev dependences with:
 
 # Model layer
 
-The Geo bundle provides you some services to work with the Geo models:
+The Geo bundle provides you some services to work with the Geo models.
+
+[More info about the model classes on the component documentation](https://github.com/elcodi/Geo/blob/master/README.md#model-layer)
 
 ## Location
 - `@elcodi.factory.location`: A factory to generate a new location entity
@@ -138,6 +131,10 @@ services (Object manager, repository and factory) for the location entity.
 services (Object manager, repository and factory) for the address entity.
 
 # Service layer
+
+These are the useful bundle services that you should know.
+
+[More info about the services classes on the component documentation](https://github.com/elcodi/Geo/blob/master/README.md#model-layer)
 
 ## Factories
 - `@elcodi.factory.location_data`: A factory to generate location data value
@@ -156,6 +153,11 @@ location entity into a value object (`LocationData`)
 
 # Event layer
 
+These are all the events for this components. You can get all the event names as
+constant properties at
+[ElcodiGeoEvents.php](https://github.com/elcodi/Geo/blob/master/ElcodiGeoEvents.php)
+file.
+
 ## AddressOnCloneEvent
 
 This event is launched every time that an address is cloned, that happens when
@@ -168,6 +170,10 @@ address being edited*
 
 # Controllers
 
+These are the useful bundle controllers that you should know.
+
+[More info about the controller classes on the component documentation](https://github.com/elcodi/Geo#controllers)
+
 ## LocationApiController
 
 The location Api controller provides the actions needed to use the location
@@ -177,6 +183,10 @@ These controllers are automatically loaded with the bundle. You can customize
 their behavior on the `parameters.yml` file (Routes, prefix, etc.).
 
 # Commands
+
+These are the useful bundle commands that you should know.
+
+[More info about the command classes on the component documentation](https://github.com/elcodi/Geo#commands)
 
 ## LocationPopulateCommand
 
