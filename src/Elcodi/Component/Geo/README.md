@@ -26,7 +26,6 @@ Elcodi Geo component for Symfony2
 1. [Tags](#tags)
 1. [Contributing](#contributing)
 
-
 # Component
 
 This component is part of [elcodi project](https://github.com/elcodi).
@@ -126,6 +125,8 @@ office`
 
 # Service layer
 
+These are the useful component services that you should know.
+
 ## Formatter/AddressFormatter.php
 
 [View code](https://github.com/elcodi/Geo/blob/master/Formatter/AddressFormatter.php)
@@ -178,6 +179,11 @@ add a new address*
 
 # Event layer
 
+These are all the events for this bundle. You can get all the event names as
+constant properties at the component
+[ElcodiGeoEvents.php](https://github.com/elcodi/Geo/blob/master/ElcodiGeoEvents.php)
+file.
+
 ## AddressOnCloneEvent
 
 This event is launched every time that an address is cloned, that happens when
@@ -193,6 +199,8 @@ address being edited*
 
 # Controllers
 
+These are the useful component controllers that you should know.
+
 ## LocationApiController
 
 [View code](https://github.com/elcodi/Geo/blob/master/Controller/LocationApiController.php)
@@ -201,6 +209,8 @@ The location Api controller provides the actions needed to use the location
 service as an API
 
 # Commands
+
+These are the useful component commands that you should know.
 
 ## LocationPopulateCommand
 
