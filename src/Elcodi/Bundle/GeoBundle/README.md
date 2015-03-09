@@ -134,7 +134,7 @@ services (Object manager, repository and factory) for the address entity.
 
 These are the useful bundle services that you should know.
 
-[More info about the services classes on the component documentation](https://github.com/elcodi/Geo/blob/master/README.md#model-layer)
+[More info about the services classes on the component documentation](https://github.com/elcodi/Geo/blob/master/README.md#service-layer)
 
 ## Factories
 - `@elcodi.factory.location_data`: A factory to generate location data value
@@ -157,6 +157,8 @@ These are all the events for this components. You can get all the event names as
 constant properties at
 [ElcodiGeoEvents.php](https://github.com/elcodi/Geo/blob/master/ElcodiGeoEvents.php)
 file.
+
+[More info about the events on the component documentation](https://github.com/elcodi/Geo/blob/master/README.md#event-layer)
 
 ## AddressOnCloneEvent
 

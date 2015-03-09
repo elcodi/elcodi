@@ -194,6 +194,10 @@ pointer to the old address.
 **e.g.** *A customer edits his address but hi has old orders pointing to the
 address being edited*
 
+**Event properties**
+- **Original address**: The original address
+- **Cloned address**:  The new cloned address
+
 > More info about this on the
 > [Services/AddressManager.php](#servicesaddressmanagerphp) section
 
