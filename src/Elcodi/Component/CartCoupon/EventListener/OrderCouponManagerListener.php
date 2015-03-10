@@ -100,6 +100,8 @@ class OrderCouponManagerListener
             ->orderCouponObjectManager
             ->flush($orderCoupon);
 
+        $event->setOrderCoupon($orderCoupon);
+
         $this
             ->couponEventDispatcher
             ->notifyCouponUsage($coupon);
