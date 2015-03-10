@@ -65,7 +65,7 @@ $ composer require "elcodi/currency:~0.5.*"
 
 # Dependencies
 
-The Geo component has dependencies with:
+The Currency component has dependencies with:
 - **PHP:** Version greater or equal to 5.4
 - **doctrine/common:** A doctrine extension for php
 - **doctrine/orm:** The doctrine object-relational mapping
