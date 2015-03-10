@@ -19,6 +19,8 @@ Elcodi Currency component for Symfony2
   * [Services/LocationBuilder.php](#serviceslocationbuilderphp)
   * [Services/LocationServiceProvider.php](#serviceslocationserviceproviderphp)
   * [Twig/PrintMoneyExtension.php](#twigprintmoneyextensionphp)
+1. [Twig extensions](#twig-extensions)
+  * [PrintMoneyExtension](#printmoneyextension)
 1. [Commands](#commands)
   * [LocationPopulateCommand](#locationpopulatecommand)
 1. [Tags](#tags)
@@ -37,8 +39,8 @@ The currency component provides you with all you need to work with different
 currencies, exchange rates and money. It also offers you a way to print money
 objects directly from twig.
 You can see this component working on the [Bamboo] project to manage product
-prices in different currencies, to manage a cart with products in multiple
-currencies or view the cart also in different currencies.
+prices in different currencies, and carts with products in multiple currencies
+or also view the cart also in different currencies.
 
 # Installation
 
@@ -106,8 +108,6 @@ The currency exchange rate entity maps the exchange rate between the currencies.
 **Fields**
 - **Id**: The identifier **(Unique)**
 - **Exchange rate**: The exchange rate. `e.g. 0.54`
-
-**Relations**
 - **Source Currency**: The currency that we want to exchange
 - **Target Currency**: The currency that we want to get from the exchanges
 
@@ -156,7 +156,9 @@ from the database if needed.
 **e.g.** *This wrapper is used on the twig extension to take the default money
 in case you want to print money only from value*
 
-## Twig/PrintMoneyExtension.php
+# Twig extensions
+
+## PrintMoneyExtension
 
 [View code](https://github.com/elcodi/Currency/blob/master/Twig/PrintMoneyExtension.php)
 
@@ -175,13 +177,7 @@ These are the useful component commands that you should know.
 
 [View code](https://github.com/elcodi/Currency/blob/master/Command/CurrencyExchangeRatesPopulateCommand.php)
 
-``` bash
-$ php app/console elcodi:exchangerates:populate
-```
-
-Populates the database with all the currencies exchange rate. By default, It
-gets all the data from [Open exchange rates] but can be changed defining a
-different provider adapter.
+Populates the database with all the currencies exchange rate.
 
 # Tags
 
@@ -213,4 +209,3 @@ in the [Submitting a Patch][2] section and use the [Pull Request Template][3].
 [MIT]: (http://opensource.org/licenses/MIT)
 [Composer]: (https://getcomposer.org/)
 [Bamboo]: https://github.com/elcodi/bamboo
-[Open exchange rates]: https://openexchangerates.org/
