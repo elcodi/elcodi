@@ -174,7 +174,7 @@ address being edited*
 
 These are the useful bundle controllers that you should know.
 
-[More info about the controller classes on the component documentation](https://github.com/elcodi/Geo#controllers)
+[More info about the controller classes on the component documentation](https://github.com/elcodi/Geo/blob/master/README.md#controllers)
 
 ## LocationApiController
 
@@ -188,7 +188,7 @@ their behavior on the `parameters.yml` file (Routes, prefix, etc.).
 
 These are the useful bundle commands that you should know.
 
-[More info about the command classes on the component documentation](https://github.com/elcodi/Geo#commands)
+[More info about the Command classes on the component documentation](https://github.com/elcodi/Geo/blob/master/README.md#controllers)
 
 ## LocationPopulateCommand
 
@@ -236,4 +236,7 @@ guidelines in the [Submitting a Patch][2] section and use the
 [2]: http://symfony.com/doc/current/contributing/code/patches.html#check-list
 [3]: http://symfony.com/doc/current/contributing/code/patches.html#make-a-pull-request
 [4]: http://symfony.com/doc/current/cookbook/bundles/installation.html
+[Composer]: (https://getcomposer.org/)
 [Symfony]: http://symfony.com/
+[Geonames]: http://www.geonames.org/
+[Bamboo]: https://github.com/elcodi/bamboo

@@ -85,7 +85,7 @@ these tools are the following
 
 The location entity maps the information to geographically localize anything, it
 is structured in a tree that contains all the imported countries on the root and
-all the levels of data that [Geonames][4] can provide us.
+all the available levels.
 
 **Fields**
 - **Id:** The identifier **(Unique)**
@@ -107,10 +107,8 @@ soft relations with locations to save the city and the postal code.
 address. `e.g. My home`
 - **Recipient name:** The name for the address recipient. `e.g. Homer`
 - **Recipient surname:** The surname for the address recipient. `e.g. Simpson`
-- **City:** The address city, usually a soft link to a location saving a
-location id. `e.g. ES_CT_B_Barcelona`
-- **Postal code**: The address postal code, usually a soft link to a location
-saving a location id. `e.g. `
+- **City:** The address city. `e.g. ES_CT_B_Barcelona`
+- **Postal code**: The address postal code. `e.g. 08001`
 - **Address**: The city address. `e.g. C/València 333`
 - **Address more**: A second line to save the city address. `e.g. Baixos`
 - **Phone**: An address phone number. `e.g. 958647856`
@@ -179,10 +177,10 @@ add a new address*
 
 # Event layer
 
-These are all the events for this bundle. You can get all the event names as
-constant properties at the component
+These are all the events for this component. You can get all the event names as
+constant properties at file
 [ElcodiGeoEvents.php](https://github.com/elcodi/Geo/blob/master/ElcodiGeoEvents.php)
-file.
+.
 
 ## AddressOnCloneEvent
 
@@ -220,16 +218,7 @@ These are the useful component commands that you should know.
 
 [View code](https://github.com/elcodi/Geo/blob/master/Command/LocationPopulateCommand.php)
 
-``` bash
-$ php app/console elcodi:locations:populate CountryIso
-```
-
-Populates the database with all the locations for the received country. It gets
-all the data from [Geonames].
-
-**Parameters:**
-- CountryIso: The [ISO 3166-1 (Alpha-2 code)](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) for the country
-that you want to populate.
+Populates the database with all the locations from a country.
 
 # Tags
 
@@ -263,4 +252,3 @@ guidelines in the [Submitting a Patch][2] section and use the
 [MIT]: (http://opensource.org/licenses/MIT)
 [Composer]: (https://getcomposer.org/)
 [Bamboo]: https://github.com/elcodi/bamboo
-[Geonames]: http://www.geonames.org/
