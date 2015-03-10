@@ -20,8 +20,7 @@ Elcodi Currency Bundle for Symfony2
 
 This bundle is part of [elcodi project](https://github.com/elcodi).
 Elcodi is a set of flexible e-commerce components for Symfony2, built as a
-decoupled and isolated repositories and under
-[MIT](http://opensource.org/licenses/MIT) license.
+decoupled and isolated repositories and under [MIT] license.
 
 # Overview
 
@@ -83,7 +82,7 @@ class AppKernel extends Kernel
 
 # Dependencies
 
-The Geo bundle has dependencies with:
+The Currency bundle has dependencies with:
 - **PHP:** Version greater or equal to 5.4
 - **doctrine/common:** A doctrine extension for php
 - **doctrine/orm:** The doctrine object-relational mapping
@@ -115,7 +114,7 @@ Also has dev dependences with:
 
 # Model layer
 
-The Geo bundle provides you some services to work with the Geo models.
+The Currency bundle provides you some services to work with the Geo models.
 
 [More info about the model classes on the component documentation](https://github.com/elcodi/Currency/blob/master/README.md#model-layer)
 
@@ -196,5 +195,8 @@ in the [Submitting a Patch][2] section and use the [Pull Request Template][3].
 [1]: http://symfony.com/doc/current/contributing/code/index.html
 [2]: http://symfony.com/doc/current/contributing/code/patches.html#check-list
 [3]: http://symfony.com/doc/current/contributing/code/patches.html#make-a-pull-request
+[MIT]: http://opensource.org/licenses/MIT
 [Bamboo]: https://github.com/elcodi/bamboo
 [Open exchange rates]: https://openexchangerates.org/
+[Composer]: https://getcomposer.org/
+[Symfony]: http://symfony.com/
