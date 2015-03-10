@@ -9,14 +9,7 @@ Elcodi Cart Bundle for Symfony2
 1. [Dependencies](#dependencies)
 1. [Tests](#tests)
 1. [Model layer](#model-layer)
-  * [Cart](#cart)
-  * [CartLine](#cartline)
-  * [Order](#order)
-  * [OrderLine](#orderline)
 1. [Service layer](#service-layer)
-  * [Services](#services)
-  * [Transformer](#transformer)
-  * [Wrapper](#wrapper)
 1. [Event layer](#event-layer)
 1. [Tags](#tags)
 1. [Contributing](#contributing)
@@ -118,7 +111,9 @@ Also has dev dependences with:
 
 # Model layer
 
-The Cart bundle provides you some services to work with the Cart models:
+The Cart bundle provides you some services to work with the Cart models
+
+[More info about the model classes on the component documentation](https://github.com/elcodi/Cart/blob/master/README.md#model-layer)
 
 ## Cart
 - `@elcodi.factory.cart`: A factory to generate a new cart entity
@@ -175,7 +170,7 @@ constant properties at the component
 [ElcodiCartEvents.php](https://github.com/elcodi/Cart/blob/master/ElcodiCartEvents.php)
 file.
 
-[More info about the events on the component](https://github.com/elcodi/Cart/blob/master/README.md#event-layer)
+[More info about the events classes on the component](https://github.com/elcodi/Cart/blob/master/README.md#event-layer)
 
 **Events**
 - **CartInconsistentEvent**: This event is dispatched when an inconsistence is
@@ -198,14 +193,12 @@ created.
 - **OrderPreCreatedEvent**: This event is dispatched before a new order is
 created.
 
-Tags
-----
+# Tags
 
 * Use last unstable version ( alias of `dev-master` ) to stay always in last commit
 * Use last stable version tag to stay in a stable release.
 
-Contributing
-------------
+# Contributing
 
 All issues and Pull Requests should be on the main repository
 [elcodi/elcodi](https://github.com/elcodi/elcodi), so this one is read-only.

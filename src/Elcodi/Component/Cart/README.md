@@ -104,8 +104,6 @@ addresses, etc.
 12:52:20`
 - **Updated at**: The date time when the cart was updated. `e.g. 2015-03-05
 12:52:20`
-
-**Relations**
 - **Order**: The order processed from the cart (If the process has been
   finished)
 - **Customer**: The customer that owns the cart.
@@ -128,8 +126,6 @@ product, with it's quantity, price, etc.
 - **Product Ammount**: The price for a product on this line `e.g. 26`
 - **Amount**: The price for all the products on this line  `e.g. 52`
 - **Quantity**: The quantity of products on this line. `e.g. 2`
-
-**Relations**
 - **Order line**: After the cart is processed the current line is mapped on the
 related order line
 - **Cart**:  The cart that owns this cart line
@@ -159,8 +155,6 @@ The order represents a cart that has been processed on the checkout process
 12:52:20`
 - **Updated at**: The date time when the order was updated. `e.g. 2015-03-05
 12:52:20`
-
-**Relations**
 - **Cart**: The cart that was converted on the current order
 - **Payment last state line**: The state for the payment
 - **Shipping last state line**: The state for the shipping
@@ -193,8 +187,6 @@ specific product, with it's quantity, price, etc.
 - **Depth**: The depth for the order line. `e.g. 20`
 - **Weight**: The weight for the order line. `e.g. 89`
 - **Quantity**: The quantity of products on this order line. `e.g. 2`
-
-**Relations**
 - **Order**: The order that owns this order line.
 - **Currency**: The currency for the order line amount.
 - **Product**: The product on this order line.
