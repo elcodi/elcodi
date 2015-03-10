@@ -28,7 +28,7 @@ Elcodi Currency component for Symfony2
 
 # Component
 
-This bundle is part of [elcodi project](https://github.com/elcodi).
+This component is part of [elcodi project](https://github.com/elcodi).
 Elcodi is a set of flexible e-commerce components for Symfony2, built as a
 decoupled and isolated repositories and under
 [MIT](http://opensource.org/licenses/MIT) license.
