@@ -105,7 +105,9 @@ Also has dev dependences with:
 # Model layer
 
 The Attribute bundle provides you some services to work with the Attribute
-models:
+models
+
+[More info about the model classes on the component documentation](https://github.com/elcodi/Attribute/blob/master/README.md#model-layer)
 
 ## Attribute
 - `@elcodi.factory.attribute`: A factory to generate a new attribute entity

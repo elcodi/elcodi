@@ -9,8 +9,6 @@ Elcodi Product Attribute component for Symfony2
 1. [Dependencies](#dependencies)
 1. [Tests](#tests)
 1. [Model layer](#model-layer)
-  * [Attribute](#attribute)
-  * [Value](#value)
 1. [Tags](#tags)
 1. [Contributing](#contributing)
 
@@ -76,8 +74,6 @@ The attribute entity maps the information for an item attribute.
 - **Updated at**: The date time when the attribute was updated. `e.g. 2015-03-05
 12:52:20`
 - **Enabled**: If the address is enabled. `e.g. 1`
-
-**Relations**
 - **values**: All the available values for this attribute
 
 ## Value
@@ -87,8 +83,6 @@ The attribute entity maps the information for an item attribute.
 **Fields**
 - **Id**: The identifier **(Unique)**
 - **Value**: The name. `e.g. Blue`
-
-**Relations**
 - **Attribute**: All the attributes that contain this value
 
 # Tags
