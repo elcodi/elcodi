@@ -160,15 +160,9 @@ file.
 
 [More info about the events on the component documentation](https://github.com/elcodi/Geo/blob/master/README.md#event-layer)
 
-## AddressOnCloneEvent
-
-This event is launched every time that an address is cloned, that happens when
-an address is being edited. We create a clone because other entities could be
-pointing to this address. A copy is created while other entities can keep the
-pointer to the old address.
-
-**e.g.** *A customer edits his address but hi has old orders pointing to the
-address being edited*
+**Events**
+- **AddressOnCloneEvent**: This event is launched every time that an address is
+cloned, that happens when an address is being edited.
 
 # Controllers
 

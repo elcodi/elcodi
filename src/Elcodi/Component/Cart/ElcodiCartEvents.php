@@ -62,7 +62,7 @@ final class ElcodiCartEvents
      * This event is dispatched when a CartLine is being added into a Cart
      *
      * event.name : cart_line.onadd
-     * event.class : CartLineOnAdd
+     * event.class : CartLineOnAddEvent
      */
     const CARTLINE_ONADD = 'cart_line.onadd';
 
@@ -70,7 +70,7 @@ final class ElcodiCartEvents
      * This event is dispatched when a CartLine edited
      *
      * event.name : cart_line.onedit
-     * event.class : CartLineOnEdit
+     * event.class : CartLineOnEditEvent
      */
     const CARTLINE_ONEDIT = 'cart_line.onedit';
 
@@ -78,7 +78,7 @@ final class ElcodiCartEvents
      * This event is dispatched when a CartLine is removed from a Cart
      *
      * event.name : cart_line.onremove
-     * event.class : CartLineOnRemove
+     * event.class : CartLineOnRemoveEvent
      */
     const CARTLINE_ONREMOVE = 'cart_line.onremove';
 
