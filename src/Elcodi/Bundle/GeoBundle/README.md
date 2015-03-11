@@ -25,13 +25,16 @@ decoupled and isolated repositories and under
 
 # Overview
 
-The GeoBundle provides us with a flexible and easy way to work with Geo
+This bundle aims to provide a simple location structure for geo location, all
+the structure to save addresses and a flexible and easy way to work with Geo
 locations.
-
 The bundle also provides you with a really powerful command to populate the
 database with all the geo data needed to work with localization for your site
 and the possibility to consume it directly or through an API among other
 things.
+
+you can see this bundle working on the [Bamboo] project to manage customer
+addresses.
 
 # Installation & Configuration
 

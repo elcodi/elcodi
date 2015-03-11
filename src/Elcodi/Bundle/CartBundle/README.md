@@ -23,11 +23,13 @@ decoupled and isolated repositories and under
 
 # Overview
 
-The CartBundle provides us with all the tools needed to work with an e-commerce
-cart and orders.
+This bundle aims to provide a simple store cart and order system for your
+store.
 
 With this bundle you can create, persist and manage carts, update it or convert
 it to orders.
+
+You can see this component working on the [Bamboo] cart.
 
 # Installation & Configuration
 
