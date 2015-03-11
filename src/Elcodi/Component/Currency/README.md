@@ -35,9 +35,10 @@ decoupled and isolated repositories and under
 
 # Overview
 
-The currency component provides you with all you need to work with different
+This component aims to provide some currency tools to work with different
 currencies, exchange rates and money. It also offers you a way to print money
 objects directly from twig.
+
 You can see this component working on the [Bamboo] project to manage product
 prices in different currencies, and carts with products in multiple currencies
 or also view the cart also in different currencies.

@@ -39,7 +39,8 @@ decoupled and isolated repositories and under [MIT] license.
 
 # Overview
 
-The Cart component provides us with the needed tools to manage a store cart.
+This component aims to provide a simple store cart and order system for your
+store.
 
 You can see this component working on the [Bamboo] cart.
 

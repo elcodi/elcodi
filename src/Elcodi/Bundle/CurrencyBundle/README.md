@@ -24,14 +24,13 @@ decoupled and isolated repositories and under [MIT] license.
 
 # Overview
 
-The CurrencyBundle provides you with all the needed tools to work with different
+This bundle aims to provide some currency tools to work with different
 currencies, exchange rates and money. It also offers you a way to print money
 objects directly from twig.
-The bundle also comes with an adapter to get the current rates exchange from
-[Open exchange rates] using a command.
-You can see this bundle working on the [Bamboo] project to manage product prices
-in different currencies, and carts with products in multiple currencies or also
-view the cart also in different currencies.
+
+You can see this component working on the [Bamboo] project to manage product
+prices in different currencies, and carts with products in multiple currencies
+or also view the cart also in different currencies.
 
 # Installation & Configuration
 

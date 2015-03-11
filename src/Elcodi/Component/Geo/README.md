@@ -34,7 +34,8 @@ decoupled and isolated repositories and under [MIT] license.
 
 # Overview
 
-The Geo component provides us with the needed tools to manage the geo location
+This component aims to provide a simple location structure for geo location and
+all the structure to save addresses.
 you can see this components working on the [Bamboo] project to manage customer
 addresses.
 
