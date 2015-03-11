@@ -9,20 +9,7 @@ Elcodi Page component
 1. [Dependencies](#dependencies)
 1. [Tests](#tests)
 1. [Model layer](#model-layer)
-  * [Location](#location)
-  * [Address](#address)
-1. [Service layer](#service-layer)
-  * [Formatter/AddressFormatter.php](#formatteraddressformatterphp)
-  * [Services/AddressManager.php](#servicesaddressmanagerphp)
-  * [Services/LocationApiProvider.php](#serviceslocationapiproviderphp)
-  * [Services/LocationBuilder.php](#serviceslocationbuilderphp)
-  * [Services/LocationServiceProvider.php](#serviceslocationserviceproviderphp)
-1. [Event layer](#event-layer)
-  * [AddressOnCloneEvent](#addressoncloneevent)
-1. [Controllers](#controllers)
-  * [LocationApiController](#locationapicontroller)
-1. [Commands](#commands)
-  * [LocationPopulateCommand](#locationpopulatecommand)
+  * [Page](#page)
 1. [Tags](#tags)
 1. [Contributing](#contributing)
 
@@ -43,7 +30,12 @@ pages to the store (Terms & conditions, about us, etc.)
 
 You can use [Composer] to install this component getting the package from
 [elcodi/page packagist](https://packagist.org/packages/elcodi/page) by just
-adding a line in your composer.json
+executing the following line
+
+``` bash
+$ composer require "elcodi/page:~0.5.*"
+```
+You can also do it manually by adding a line in your ``composer.json`` file
 
 ``` json
 {
@@ -52,12 +44,6 @@ adding a line in your composer.json
     }
 }
 
-```
-
-Or executing the following line
-
-``` bash
-$ composer require "elcodi/page:~0.5.*"
 ```
 
 # Dependencies
