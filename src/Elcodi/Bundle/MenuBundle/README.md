@@ -10,9 +10,6 @@ Elcodi Menu Bundle for Symfony2
 1. [Tests](#tests)
 1. [Model layer](#model-layer)
 1. [Service layer](#service-layer)
-1. [Event layer](#event-layer)
-1. [Controllers](#controllers)
-1. [Commands](#commands)
 1. [Tags](#tags)
 1. [Contributing](#contributing)
 
@@ -37,7 +34,13 @@ bundle, you'll find info on this [symfony documentation page][4]
 In a few words, you can use [Composer] to install the bundle getting the package
 from
 [elcodi/menu-bundle packagist](https://packagist.org/packages/elcodi/menu-bundle)
-by just adding a line in your composer.json
+by just executing the following line
+
+``` bash
+$ composer require "elcodi/menu-bundle:~0.5.*"
+```
+
+You can also do it manually by adding a line in your ``composer.json`` file
 
 ``` json
 {
@@ -48,15 +51,10 @@ by just adding a line in your composer.json
 
 ```
 
-Or executing the following line
-
-``` bash
-$ composer require "elcodi/menu-bundle:~0.5.*"
-```
-
 After that you'll have to enable the bundle on your `Appkernel` file.
 
 ``` php
+<?php
 // app/AppKernel.php
 
 // ...
@@ -68,13 +66,50 @@ class AppKernel extends Kernel
     {
         $bundles = array(
             // ...,
+
+            // Add this bundle,
             new \Elcodi\Bundle\MenuBundle\ElcodiMenuBundle(),
+
+            // Required dependencies
+            new \Elcodi\Bundle\CoreBundle\ElcodiCoreBundle(),
+            new \Symfony\Bundle\TwigBundle\TwigBundle(),
         );
 
         // ...
     }
 }
 ```
+
+The default configuration values for the bundle are are:
+
+``` yaml
+# Default configuration for extension with alias: "elcodi_menu"
+elcodi_menu:
+    mapping:
+        menu:
+            # Menu entity implementing MenuInterface
+            class: Elcodi\Component\Menu\Entity\Menu\Menu
+            # Doctrine mapping file for this entity
+            mapping_file: @ElcodiMenuBundle/Resources/config/doctrine/Menu.orm.yml
+            # Doctrine manager name
+            manager: default
+            # Is this entity enabled?
+            enabled: true
+        menu_node:
+            # Node entity implementing NodeInterface
+            class: Elcodi\Component\Menu\Entity\Menu\Node
+            # Doctrine mapping file for this entity
+            mapping_file: @ElcodiMenuBundle/Resources/config/doctrine/MenuNode.orm.yml
+            # Doctrine manager name
+            manager: default
+            # Is this entity enabled?
+            enabled: true
+    menus:
+        # The cache key where the menus are saved
+        cache_key: menus
+```
+
+> You can overwrite them in your own configuration file using the same keys.
 
 # Dependencies
 

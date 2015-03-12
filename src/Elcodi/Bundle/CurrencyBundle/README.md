@@ -40,7 +40,13 @@ bundle, you'll find info on this [symfony documentation page][4]
 In a few words, you can use [Composer] to install the bundle getting the package
 from
 [elcodi/currency-bundle packagist](https://packagist.org/packages/elcodi/currency-bundle)
-by just adding a line in your composer.json
+by just executing the following line
+
+``` bash
+$ composer require "elcodi/currency-bundle:~0.5.*"
+```
+
+You can also do it manually by adding a line in your `composer.json` file
 
 ``` json
 {
@@ -51,15 +57,10 @@ by just adding a line in your composer.json
 
 ```
 
-Or executing the following line
-
-``` bash
-$ composer require "elcodi/currency-bundle:~0.5.*"
-```
-
 After that you'll have to enable the bundle on your `Appkernel` file.
 
 ``` php
+<?php
 // app/AppKernel.php
 
 // ...
@@ -71,12 +72,62 @@ class AppKernel extends Kernel
     {
         $bundles = array(
             // ...,
+
+            // Add this bundle
             new \Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle(),
+
+            // Required dependencies
+            new \Elcodi\Bundle\CoreBundle\ElcodiCoreBundle(),
+            new \Elcodi\Bundle\LanguageBundle\ElcodiLanguageBundle(),
+
+            // ...
         );
 
         // ...
     }
 }
+```
+
+The default configuration values for the bundle are are:
+
+```yaml
+# Default configuration for extension with alias: "elcodi_page"
+elcodi_currency:
+    mapping:
+        currency:
+            # Currency entity implementing CurrencyInterface
+            class: Elcodi\Component\Currency\Entity\Currency
+            # Doctrine mapping file for this entity
+            mapping_file: '@ElcodiCurrencyBundle/Resources/config/doctrine/Currency.orm.yml'
+            # Doctrine manager name
+            manager: default
+            # Is this entity enabled?
+            enabled: true
+        currency_exchange_rate:
+            # CurrencyExchangeRate entity implementing CurrencyExchangeRateInterface
+            class: Elcodi\Component\Currency\Entity\CurrencyExchangeRate
+            # Doctrine mapping file for this entity
+            mapping_file: '@ElcodiCurrencyBundle/Resources/config/doctrine/CurrencyExchangeRate.orm.yml'
+            # Doctrine manager name
+            manager: default
+            # Is this entity enabled?
+            enabled: true
+    currency:
+        # The default currency
+        default_currency: USD
+        # The key that will be used to persist the currency on sesion
+        session_field_name: currency_id
+    rates_provider:
+        # The base currency used for exchange, used to convert from/to any currency
+        currency_base: USD
+        # Service used to get currency exchange rates.
+        # OpenExchange adapter available (elcodi.adapter.currency_exchange_rate.open_exchange)
+        client: elcodi.adapter.currency_exchange_rate.dummy
+        open_exchange_rates:
+            # The api ID to get data from openexchange
+            api_id: '00000'
+            # The open exchange API url
+            endpoint: 'http://openexchangerates.org/api'
 ```
 
 # Dependencies
@@ -163,9 +214,9 @@ These are the useful component commands that you should know.
 $ php app/console elcodi:exchangerates:populate
 ```
 
-Populates the database with all the currencies exchange rate. By default, It
-gets all the data from [Open exchange rates] but can be changed defining a
-different provider adapter.
+Populates the database with all the currencies exchange rate.
+It can be configured to use the [Open exchange rates] adapter (Read
+[Installation & Configuration](#installation-configuration) )
 
 # Tags
 
@@ -194,6 +245,7 @@ in the [Submitting a Patch][2] section and use the [Pull Request Template][3].
 [1]: http://symfony.com/doc/current/contributing/code/index.html
 [2]: http://symfony.com/doc/current/contributing/code/patches.html#check-list
 [3]: http://symfony.com/doc/current/contributing/code/patches.html#make-a-pull-request
+[4]: http://symfony.com/doc/current/cookbook/bundles/installation.html
 [MIT]: http://opensource.org/licenses/MIT
 [Bamboo]: https://github.com/elcodi/bamboo
 [Open exchange rates]: https://openexchangerates.org/

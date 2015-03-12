@@ -44,7 +44,14 @@ bundle, you'll find info on this [symfony documentation page][4]
 In a few words, you can use [Composer] to install the bundle getting the package
 from
 [elcodi/geo-bundle packagist](https://packagist.org/packages/elcodi/geo-bundle)
-by just adding a line in your composer.json
+by just executing the following line
+
+``` bash
+$ composer require "elcodi/geo-bundle:~0.5.*"
+```
+
+You can also do it manually by adding a line in your ``composer.json`` file
+
 
 ``` json
 {
@@ -55,15 +62,10 @@ by just adding a line in your composer.json
 
 ```
 
-Or executing the following line
-
-``` bash
-$ composer require "elcodi/geo-bundle:~0.5.*"
-```
-
 After that you'll have to enable the bundle on your `Appkernel` file.
 
 ``` php
+<?php
 // app/AppKernel.php
 
 // ...
@@ -75,12 +77,58 @@ class AppKernel extends Kernel
     {
         $bundles = array(
             // ...,
+
+            // Add this bundle,
             new \Elcodi\Bundle\GeoBundle\ElcodiGeoBundle(),
+
+            // Required dependencies
+            new \Elcodi\Bundle\CoreBundle\ElcodiCoreBundle(),
         );
 
         // ...
     }
 }
+```
+
+To add a routing entry point for the bundle pages, just load the following
+resource anytime:
+
+``` yaml
+your_route_name:
+    resource: "@ElcodiGeoBundle/Resources/config/routing.yml"
+    prefix: /geo
+```
+
+> You'll need to do this to use GEO as an API
+
+The default configuration values for the bundle are are:
+
+```yaml
+# Default configuration for extension with alias: "elcodi_geo"
+elcodi_geo:
+    mapping:
+        address:
+            # Address entity implementing AddressInterface
+            class: Elcodi\Component\Geo\Entity\Address
+            # Doctrine mapping file for this entity
+            mapping_file: '@ElcodiGeoBundle/Resources/config/doctrine/Address.orm.yml'
+            # Doctrine manager name
+            manager: default
+            # Is this entity enabled?
+            enabled: true
+        location:
+            # Address entity implementing AddressInterface
+            class: Elcodi\Component\Geo\Entity\Address
+            # Doctrine mapping file for this entity
+            mapping_file: '@ElcodiGeoBundle/Resources/config/doctrine/Address.orm.yml'
+            # Doctrine manager name
+            manager: default
+            # Is this entity enabled?
+            enabled: true
+    # The populator service being used to populate the locations
+    location_populator: elcodi.location_populator.geoname
+    # The provider service being used, there are two services implemented 'service' & 'api'
+    location_provider: elcodi.location_provider.service
 ```
 
 # Dependencies

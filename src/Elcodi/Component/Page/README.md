@@ -35,7 +35,8 @@ executing the following line
 ``` bash
 $ composer require "elcodi/page:~0.5.*"
 ```
-You can also do it manually by adding a line in your ``composer.json`` file
+
+You can also do it manually by adding a line in your `composer.json` file
 
 ``` json
 {

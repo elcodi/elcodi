@@ -1,6 +1,20 @@
 Elcodi CartCoupon Bundle for Symfony2
 =====================================
 
+# Table of contents
+
+1. [Bundle](#bundle)
+1. [Overview](#overview)
+1. [Installation & Configuration](#installation-configuration)
+1. [Dependencies](#dependencies)
+1. [Tests](#tests)
+1. [Model layer](#model-layer)
+1. [Service layer](#service-layer)
+1. [Event layer](#event-layer)
+1. [Event listeners](#event-listeners)
+1. [Tags](#tags)
+1. [Contributing](#contributing)
+
 # Bundle
 
 This bundle is part of [elcodi project](https://github.com/elcodi).
@@ -24,7 +38,13 @@ bundle, you'll find info on this [symfony documentation page][4]
 In a few words, you can use [Composer] to install the bundle getting the package
 from
 [elcodi/cart-coupon-bundle packagist](https://packagist.org/packages/elcodi/cart-coupon-bundle)
-by just adding a line in your composer.json
+by just executing the following line
+
+``` bash
+$ composer require "elcodi/cart-coupon-bundle:~0.5.*"
+```
+
+You can also do it manually by adding a line in your `composer.json` file
 
 ``` json
 {
@@ -35,15 +55,10 @@ by just adding a line in your composer.json
 
 ```
 
-Or executing the following line
-
-``` bash
-$ composer require "elcodi/cart-coupon-bundle:~0.5.*"
-```
-
 After that you'll have to enable the bundle on your `Appkernel` file.
 
 ``` php
+<?php
 // app/AppKernel.php
 
 // ...
@@ -56,12 +71,13 @@ class AppKernel extends Kernel
         $bundles = array(
             // ...
 
-            // Add this bundle,
+            // Add this bundle
             new \Elcodi\Bundle\CartCouponBundle\ElcodiCartCouponBundle(),
 
             // Required dependencies
             new \Elcodi\Bundle\CartBundle\ElcodiCartBundle(),
             new \Elcodi\Bundle\CouponBundle\ElcodiCouponBundle(),
+            new \Elcodi\Bundle\CoreBundle\ElcodiCoreBundle(),
 
             // Optional dependencies
             new \Elcodi\Bundle\RuleBundle\ElcodiRuleBundle(),
@@ -73,6 +89,8 @@ class AppKernel extends Kernel
     }
 }
 ```
+
+
 
 # Dependencies
 

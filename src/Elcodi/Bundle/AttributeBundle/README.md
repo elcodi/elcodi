@@ -37,7 +37,13 @@ bundle, you'll find info on this [symfony documentation page][4]
 In a few words, you can use [Composer] to install the bundle getting the package
 from
 [elcodi/attribute-bundle packagist](https://packagist.org/packages/elcodi/attribute-bundle)
-by just adding a line in your composer.json
+by just executing the following line
+
+``` bash
+$ composer require "elcodi/attribute-bundle:~0.5.*"
+```
+
+You can also do it manually by adding a line in your `composer.json` file
 
 ``` json
 {
@@ -48,15 +54,10 @@ by just adding a line in your composer.json
 
 ```
 
-Or executing the following line
-
-``` bash
-$ composer require "elcodi/attribute-bundle:~0.5.*"
-```
-
 After that you'll have to enable the bundle on your `Appkernel` file.
 
 ``` php
+<?php
 // app/AppKernel.php
 
 // ...
@@ -68,12 +69,45 @@ class AppKernel extends Kernel
     {
         $bundles = array(
             // ...,
+
+            // Add this bundle
             new \Elcodi\Bundle\AttributeBundle\ElcodiAttributeBundle(),
+
+            // Required dependencies
+            new \Elcodi\Bundle\CoreBundle\ElcodiCoreBundle(),
+
+            // ...
         );
 
         // ...
     }
 }
+```
+
+The default configuration values for the bundle are are:
+
+```yaml
+# Default configuration for extension with alias: "elcodi_attribute"
+elcodi_attribute:
+    mapping:
+        attribute:
+            # Attribute entity implementing AttributeInterface
+            class: Elcodi\Component\Attribute\Entity\Attribute
+            # Doctrine mapping file for this entity
+            mapping_file: '@ElcodiAttributeBundle/Resources/config/doctrine/Attribute.orm.yml'
+            # Doctrine manager name
+            manager: default
+            # Is this entity enabled?
+            enabled: true
+        value:
+            # Value entity implementing ValueInterface
+            class: Elcodi\Component\Attribute\Entity\Value
+            # Doctrine mapping file for this entity
+            mapping_file: '@ElcodiAttributeBundle/Resources/config/doctrine/Value.orm.yml'
+            # Doctrine manager name
+            manager: default
+            # Is this entity enabled?
+            enabled: true
 ```
 
 # Dependencies

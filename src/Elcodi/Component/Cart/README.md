@@ -48,7 +48,14 @@ You can see this component working on the [Bamboo] cart.
 
 You can use [Composer] to install this component getting the package from
 [elcodi/cart packagist](https://packagist.org/packages/elcodi/cart) by just
-adding a line in your composer.json
+executing the following line
+
+``` bash
+$ composer require "elcodi/cart:~0.5.*"
+```
+
+You can also do it manually by adding a line in your `composer.json` file
+
 
 ``` json
 {
@@ -57,12 +64,6 @@ adding a line in your composer.json
     }
 }
 
-```
-
-Or executing the following line
-
-``` bash
-$ composer require "elcodi/cart:~0.5.*"
 ```
 
 # Dependencies

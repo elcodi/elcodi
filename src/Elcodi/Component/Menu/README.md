@@ -34,8 +34,14 @@ store backend.
 # Installation
 
 You can use [Composer] to install this component getting the package from
-[elcodi/menu packagist](https://packagist.org/packages/elcodi/menu) by
-just adding a line in your composer.json
+[elcodi/menu packagist](https://packagist.org/packages/elcodi/menu)  by just
+executing the following line
+
+``` bash
+$ composer require "elcodi/menu:~0.5.*"
+```
+
+You can also do it manually by adding a line in your `composer.json` file
 
 ``` json
 {
@@ -44,12 +50,6 @@ just adding a line in your composer.json
     }
 }
 
-```
-
-Or executing the following line
-
-``` bash
-$ composer require "elcodi/menu:~0.5.*"
 ```
 
 # Dependencies

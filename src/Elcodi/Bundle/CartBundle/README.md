@@ -39,7 +39,13 @@ bundle, you'll find info on this [symfony documentation page][4]
 In a few words, you can use [Composer] to install the bundle getting the package
 from
 [elcodi/geo-bundle packagist](https://packagist.org/packages/elcodi/cart-bundle)
-by just adding a line in your composer.json
+by just executing the following line
+
+``` bash
+$ composer require "elcodi/cart-bundle:~0.5.*"
+```
+
+You can also do it manually by adding a line in your `composer.json` file
 
 ``` json
 {
@@ -50,15 +56,10 @@ by just adding a line in your composer.json
 
 ```
 
-Or executing the following line
-
-``` bash
-$ composer require "elcodi/cart-bundle:~0.5.*"
-```
-
 After that you'll have to enable the bundle on your `Appkernel` file.
 
 ``` php
+<?php
 // app/AppKernel.php
 
 // ...
@@ -70,13 +71,89 @@ class AppKernel extends Kernel
     {
         $bundles = array(
             // ...,
+
+            // Add this bundle,
             new \Elcodi\Bundle\CartBundle\ElcodiCartBundle(),
+
+            // Required dependencies
+            new \Elcodi\Bundle\UserBundle\ElcodiUserBundle(),
+            new \Elcodi\Bundle\ProductBundle\ElcodiProductBundle(),
+            new \Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle(),
+            new \Elcodi\Bundle\CoreBundle\ElcodiCoreBundle(),
+            new \Elcodi\Bundle\ShippingBundle\ElcodiShippingBundle(),
+
+            // ...
         );
 
         // ...
     }
 }
 ```
+
+To add a routing entry point for the bundle pages, just load the following
+resource anytime:
+
+``` yaml
+# Default configuration for extension with alias: "elcodi_cart"
+elcodi_cart:
+    mapping:
+        cart:
+            # Cart entity implementing CartInterface
+            class: Elcodi\Component\Cart\Entity\Cart
+            # Doctrine mapping file for this entity
+            mapping_file: '@ElcodiCartBundle/Resources/config/doctrine/Cart.orm.yml'
+            # Doctrine manager name
+            manager: default
+            # Is this entity enabled?
+            enabled: true
+        order:
+            # Order entity implementing OrderInterface
+            class: Elcodi\Component\Cart\Entity\Order
+            # Doctrine mapping file for this entity
+            mapping_file: '@ElcodiCartBundle/Resources/config/doctrine/Order.orm.yml'
+            # Doctrine manager name
+            manager: default
+            # Is this entity enabled?
+            enabled: true
+        cart_line:
+            # CartLine entity implementing CartLineInterface
+            class: Elcodi\Component\Cart\Entity\CartLine
+            # Doctrine mapping file for this entity
+            mapping_file: '@ElcodiCartBundle/Resources/config/doctrine/CartLine.orm.yml'
+            # Doctrine manager name
+            manager: default
+            # Is this entity enabled?
+            enabled: true
+        order_line:
+            # OrderLine entity implementing OrderLineInterface
+            class: Elcodi\Component\Cart\Entity\OrderLine
+            # Doctrine mapping file for this entity
+            mapping_file: '@ElcodiCartBundle/Resources/config/doctrine/OrderLine.orm.yml'
+            # Doctrine manager name
+            manager: default
+            # Is this entity enabled?
+            enabled: true
+    cart:
+        # Should the cart be saved in session
+        save_in_session: true
+        # The field name in session where the cart is being saved
+        session_field_name: cart_id
+    payment_states_machine:
+        # The identifier for the order payment state machine
+        identifier: order_payment_states_machine
+        # The initial status for the state machine
+        point_of_entry: unpaid
+        # The other machine states (Present status, action and future status)
+        states: [[unpaid, pay, paid], [paid, refund, refunded]]
+    shipping_states_machine:
+        # The identifier for the order shipping state machine
+        identifier: order_shipping_states_machine
+        # The initial status for the state machine
+        point_of_entry: 'not shipped'
+        # The other machine states (Present status, action and future status)
+        states: [['not shipped', ship, shipped]]
+```
+
 # Dependencies
 
 The Geo component has dependencies with:

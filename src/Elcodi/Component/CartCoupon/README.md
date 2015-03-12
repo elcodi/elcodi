@@ -1,6 +1,40 @@
 Elcodi CartCoupon component for Symfony2
 ========================================
 
+# Table of contents
+
+1. [Component](#component)
+1. [Overview](#overview)
+1. [Installation](#installation)
+1. [Dependencies](#dependencies)
+1. [Tests](#tests)
+1. [Model layer](#model-layer)
+  * [CartCoupon](#cartcoupon)
+  * [OrderCoupon](#ordercoupon)
+1. [Service layer](#service-layer)
+  * [Services/CartCouponManager.php](#servicescartcouponmanagerphp)
+  * [Services/CartCouponRuleManager.php](#servicescartcouponrulemanagerphp)
+  * [Services/OrderCouponManager.php](#servicesordercouponmanagerphp)
+1. [Event layer](#event-layer)
+  * [CartCouponOnCheckEvent](#cartcoupononcheckevent)
+  * [CartCouponOnApplyEvent](#cartcoupononapplyevent)
+  * [CartCouponOnRemoveEvent](#cartcoupononremoveevent)
+  * [CartCouponOnRejectedEvent](#cartcoupononrejectedevent)
+  * [OrderCouponOnApplyEvent](#ordercoupononapplyevent)
+1. [Event listeners](#event-listeners)
+  * [AutomaticCouponApplicatorListener](#automaticcouponapplicatorlistener)
+  * [AvoidDuplicatesListener](#avoidduplicateslistener)
+  * [CartCouponManagerListener](#cartcouponmanagerlistener)
+  * [CheckCartCouponListener](#checkcartcouponlistener)
+  * [CheckCouponListener](#checkcouponlistener)
+  * [CheckRulesListener](#checkruleslistener)
+  * [ConvertToOrderCouponsListener](#converttoordercouponslistener)
+  * [MinimumPriceCouponListener](#minimumpricecouponlistener)
+  * [OrderCouponManagerListener](#ordercouponmanagerlistener)
+  * [RefreshCouponsListener](#refreshcouponslistener)
+1. [Tags](#tags)
+1. [Contributing](#contributing)
+
 # Component
 
 This component is part of [elcodi project](https://github.com/elcodi).
@@ -17,7 +51,13 @@ You can see this components working on the [Bamboo] project to set discounts.
 
 You can use [Composer] to install this component getting the package from
 [elcodi/cart-coupon packagist](https://packagist.org/packages/elcodi/cart-coupon)
-by just adding a line in your composer.json
+by just executing the following line
+
+``` bash
+$ composer require "elcodi/cart-coupon:~0.5.*"
+```
+
+You can also do it manually by adding a line in your `composer.json` file
 
 ``` json
 {
@@ -25,12 +65,6 @@ by just adding a line in your composer.json
         "elcodi/cart-coupon": "~0.5.*"
     }
 }
-```
-
-Or executing the following line
-
-``` bash
-$ composer require "elcodi/cart-coupon:~0.5.*"
 ```
 
 # Dependencies
@@ -186,7 +220,7 @@ Launched for each coupon in a cart while converting to order.
 Listeners with priority higher than 0 can stop the process by throwing exceptions
 or calling `stopPropagation`, but will not have access to the `OrderCoupon` object.
 
-# Listeners
+# Event listeners
 
 There are many listeners predefined for application.
 
