@@ -43,7 +43,14 @@ addresses.
 
 You can use [Composer] to install this component getting the package from
 [elcodi/geo packagist](https://packagist.org/packages/elcodi/geo) by just
-adding a line in your composer.json
+executing the following line
+
+``` bash
+$ composer require "elcodi/geo:~0.5.*"
+```
+
+You can also do it manually by adding a line in your `composer.json` file
+
 
 ``` json
 {
@@ -52,12 +59,6 @@ adding a line in your composer.json
     }
 }
 
-```
-
-Or executing the following line
-
-``` bash
-$ composer require "elcodi/geo:~0.5.*"
 ```
 
 # Dependencies

@@ -47,7 +47,14 @@ or also view the cart also in different currencies.
 
 You can use [Composer] to install this component getting the package from
 [elcodi/currency packagist](https://packagist.org/packages/elcodi/currency) by
-just adding a line in your composer.json
+just executing the following line
+
+``` bash
+$ composer require "elcodi/page:~0.5.*"
+```
+
+You can also do it manually by adding a line in your `composer.json` file
+
 
 ``` json
 {
@@ -56,12 +63,6 @@ just adding a line in your composer.json
     }
 }
 
-```
-
-Or executing the following line
-
-``` bash
-$ composer require "elcodi/currency:~0.5.*"
 ```
 
 # Dependencies

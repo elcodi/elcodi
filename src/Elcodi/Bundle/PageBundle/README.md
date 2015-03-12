@@ -39,7 +39,7 @@ by just executing the following line
 $ composer require "elcodi/page-bundle:~0.5.*"
 ```
 
-You can also do it manually by adding a line in your ``composer.json`` file
+You can also do it manually by adding a line in your `composer.json` file
 
 ``` json
 {
@@ -82,7 +82,7 @@ your_route_name:
     prefix: /content
 ```
 
-The default configuration values are:
+The default configuration values for the bundle are are:
 
 ```yaml
 # Default configuration for extension with alias: "elcodi_page"
@@ -110,7 +110,7 @@ elcodi_page:
         controller: 'elcodi.core.page.controller.page:renderAction'
 ```
 
-You can overwrite them in your own configuration file using the same keys.
+> You can overwrite them in your own configuration file using the same keys.
 
 # Dependencies
 

@@ -30,7 +30,14 @@ like color or sizes.
 
 You can use [Composer] to install this component getting the package from
 [elcodi/attribute packagist](https://packagist.org/packages/elcodi/attribute)
-by just adding a line in your composer.json
+by just executing the following line
+
+``` bash
+$ composer require "elcodi/attribute:~0.5.*"
+```
+
+You can also do it manually by adding a line in your `composer.json` file
+
 
 ``` json
 {
@@ -40,11 +47,6 @@ by just adding a line in your composer.json
 }
 
 ```
-
-Or executing the following line
-
-``` bash
-$ composer require "elcodi/attribute:~0.5.*"
 
 # Dependencies
 
