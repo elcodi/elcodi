@@ -32,16 +32,19 @@ class EntityTranslatorFactory
      *
      * @param EntityTranslationProviderInterface $entityTranslationProvider Entity Translation Provider
      * @param array                              $configuration             Configuration
+     * @param boolean                            $fallback                  Fallback
      *
      * @return Object Empty entity
      */
     public function create(
         EntityTranslationProviderInterface $entityTranslationProvider,
-        array $configuration
+        array $configuration,
+        $fallback
     ) {
         return new $this->entityNamespace(
             $entityTranslationProvider,
-            $configuration
+            $configuration,
+            $fallback
         );
     }
 }

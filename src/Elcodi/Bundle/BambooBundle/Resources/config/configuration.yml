@@ -123,6 +123,12 @@ elcodi_configuration:
             type: string
             default_value: ''
 
+        store_default_language:
+            key: default_language
+            name: Default language
+            namespace: default_language
+            type: string
+
         #
         # Product namespace
         #

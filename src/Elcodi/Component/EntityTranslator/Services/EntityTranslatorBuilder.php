@@ -66,20 +66,34 @@ class EntityTranslatorBuilder
     protected $entityTranslationProvider;
 
     /**
+     * @var boolean
+     *
+     * Fallback is enabled.
+     *
+     * If a field is required and the fallback flag is enabled, all translations
+     * will not be required anymore, but just the translation with same language
+     * than master
+     */
+    protected $fallback;
+
+    /**
      * Construct method
      *
      * @param EntityTranslationProviderInterface $entityTranslationProvider Translation Provider
      * @param EntityTranslatorFactory            $entityTranslatorFactory   Entity Translator Factory
      * @param array                              $configuration             Configuration
+     * @param boolean                            $fallback                  Fallback
      */
     public function __construct(
         EntityTranslationProviderInterface $entityTranslationProvider,
         EntityTranslatorFactory $entityTranslatorFactory,
-        array $configuration
+        array $configuration,
+        $fallback
     ) {
         $this->entityTranslationProvider = $entityTranslationProvider;
         $this->entityTranslatorFactory = $entityTranslatorFactory;
         $this->configuration = $configuration;
+        $this->fallback = $fallback;
     }
 
     /**
@@ -195,7 +209,8 @@ class EntityTranslatorBuilder
             ->entityTranslatorFactory
             ->create(
                 $this->entityTranslationProvider,
-                $this->configuration
+                $this->configuration,
+                $this->fallback
             );
     }
 }
