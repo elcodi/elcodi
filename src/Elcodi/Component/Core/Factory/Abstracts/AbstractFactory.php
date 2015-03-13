@@ -37,8 +37,8 @@ abstract class AbstractFactory
      *
      * Queries should be implemented in a repository class
      *
-     * This method must always returns an empty instance of the related Entity
-     * and initializes it in a consistent state
+     * This method must always return an empty instance of the related Entity
+     * and must initialize it in a consistent state
      *
      * @return Object Empty entity
      */
