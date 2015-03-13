@@ -88,7 +88,7 @@ class AppKernel extends Kernel
 }
 ```
 
-The default configuration values for the bundle are are:
+The default configuration values for the bundle are:
 
 ```yaml
 # Default configuration for extension with alias: "elcodi_page"
