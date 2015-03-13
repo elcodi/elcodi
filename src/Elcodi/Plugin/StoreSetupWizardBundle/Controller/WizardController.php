@@ -46,7 +46,7 @@ class WizardController extends Controller
 
         $activeStep = null;
         foreach ($stepsFinished as $step => $isFinished) {
-            if (false == $isFinished) {
+            if (false === $isFinished) {
                 $activeStep = $step;
                 break;
             }
