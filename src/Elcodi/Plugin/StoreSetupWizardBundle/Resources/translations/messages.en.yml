@@ -8,6 +8,7 @@ wizard:
     go_next_step: Go to next step
     step_finished: <strong>Yehaaaaa!</strong> One step less to go!
     time_to_sell: You are <strong>%1 minutes</strong> away to start selling
+    disable_under_construction: Disable the <strong>Under construction</strong> mode to start selling
     estimated_time: Estimated time %1 min
     step1:
         title: Add products

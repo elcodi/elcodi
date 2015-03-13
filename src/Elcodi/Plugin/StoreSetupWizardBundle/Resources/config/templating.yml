@@ -17,3 +17,4 @@ services:
             - { name: kernel.event_listener, event: admin.body_top, method: renderMiniWizard }
             - { name: kernel.event_listener, event: admin.body_top, method: renderEnableStoreMessage }
             - { name: kernel.event_listener, event: admin.body_top, method: renderGoNextStepMessage }
+            - { name: kernel.event_listener, event: admin.body_top, method: renderDisableUnderConstructionMode }
