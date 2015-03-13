@@ -165,7 +165,7 @@ class PrintMoneyExtension extends Twig_Extension
     }
 
     /**
-     * Return a formatted price given the price in an integet format
+     * Return a formatted price given the price in an integer format
      *
      * Takes the currency from CurrencyWrapper
      *
