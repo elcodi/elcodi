@@ -38,7 +38,7 @@ class WizardRoutes
         1 => 'admin_product_new',
         2 => 'admin_address_edit',
         3 => 'admin_payment_configuration_list',
-        4 => 'admin_carrier_new',
+        4 => 'admin_shipping_range_new',
     ];
 
     /**
@@ -139,6 +139,7 @@ class WizardRoutes
             $this->wizardRoutesByStep,
             [
                 'admin_address_new',
+                'admin_carrier_new',
             ]
         );
 

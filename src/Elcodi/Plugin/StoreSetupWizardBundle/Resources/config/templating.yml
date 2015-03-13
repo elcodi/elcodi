@@ -13,6 +13,7 @@ services:
             request_stack: @request_stack
             configuration_manger: @elcodi.manager.configuration
             wizard_routes: @elcodi_templates.wizard_routes.service
+            carrier_repository: @elcodi.repository.carrier
         tags:
             - { name: kernel.event_listener, event: admin.body_top, method: renderMiniWizard }
             - { name: kernel.event_listener, event: admin.body_top, method: renderEnableStoreMessage }

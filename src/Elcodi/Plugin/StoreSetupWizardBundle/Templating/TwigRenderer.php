@@ -23,6 +23,8 @@ use Elcodi\Component\Configuration\Services\ConfigurationManager;
 use Elcodi\Component\Plugin\Entity\Plugin;
 use Elcodi\Component\Plugin\Interfaces\EventInterface;
 use Elcodi\Component\Plugin\Templating\Traits\TemplatingTrait;
+use Elcodi\Component\Shipping\Entity\Interfaces\CarrierInterface;
+use Elcodi\Component\Shipping\Repository\CarrierRepository;
 use Elcodi\Plugin\StoreSetupWizardBundle\Services\WizardRoutes;
 use Elcodi\Plugin\StoreSetupWizardBundle\Services\WizardStatus;
 
@@ -69,23 +71,33 @@ class TwigRenderer
     protected $wizardRoutes;
 
     /**
+     * @var CarrierRepository
+     *
+     * A carrier repository
+     */
+    protected $carrierRepository;
+
+    /**
      * Builds a new class
      *
      * @param WizardStatus         $wizardStatus         The Wizard status
      * @param RequestStack         $requestStack         A request stack
      * @param ConfigurationManager $configurationManager A configuration manager
      * @param WizardRoutes         $wizardRoutes         A wizard routes service
+     * @param CarrierRepository    $carrierRepository    A carrier repository
      */
     public function __construct(
         WizardStatus $wizardStatus,
         RequestStack $requestStack,
         ConfigurationManager $configurationManager,
-        WizardRoutes $wizardRoutes
+        WizardRoutes $wizardRoutes,
+        CarrierRepository $carrierRepository
     ) {
         $this->wizardStatus         = $wizardStatus;
         $this->requestStack         = $requestStack;
         $this->configurationManager = $configurationManager;
         $this->wizardRoutes = $wizardRoutes;
+        $this->carrierRepository = $carrierRepository;
     }
 
     /**
@@ -122,6 +134,17 @@ class TwigRenderer
                 ->wizardStatus
                 ->getNextStep();
 
+            $firsCarrier = $this
+                ->carrierRepository
+                ->findOneBy(
+                    ['enabled' => true],
+                    ['id' => 'ASC']
+                );
+
+            $firsCarrier = ($firsCarrier instanceof CarrierInterface)
+                ? $firsCarrier
+                : false;
+
             $this->appendTemplate(
                 '@ElcodiStoreSetupWizard/Wizard/wizard.html.twig',
                 $event,
@@ -129,6 +152,7 @@ class TwigRenderer
                     'stepsFinished' => $stepsFinished,
                     'activeStep'    => $activeStep,
                     'isMiniWizard'  => true,
+                    'carrier'       => $firsCarrier,
                 ]
             );
         }
@@ -215,6 +239,17 @@ class TwigRenderer
                         ->wizardStatus
                         ->getNextStep();
 
+                    $firsCarrier = $this
+                        ->carrierRepository
+                        ->findOneBy(
+                            ['enabled' => true],
+                            ['id' => 'ASC']
+                        );
+
+                    $firsCarrier = ($firsCarrier instanceof CarrierInterface)
+                        ? $firsCarrier
+                        : false;
+
                     $this->appendTemplate(
                         '@ElcodiStoreSetupWizard/Wizard/wizard.html.twig',
                         $event,
@@ -222,6 +257,7 @@ class TwigRenderer
                             'stepsFinished' => $stepsFinished,
                             'activeStep'    => $activeStep,
                             'isMiniWizard'  => true,
+                            'carrier'       => $firsCarrier,
                         ]
                     );
                 }

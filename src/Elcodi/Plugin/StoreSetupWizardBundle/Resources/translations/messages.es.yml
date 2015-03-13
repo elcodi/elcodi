@@ -24,5 +24,6 @@ wizard:
         action: Configurar pagos
     step4:
         title: Configura las entregas
-        description: Añade al menos un transportista y sus costes. (Aunque sean gratis)
-        action: Añadir transportista
+        description: Añade los gastos de envio. (Aunque sean gratis)
+        action_range: Añadir rango de envio
+        action_carrier: Añadir transportista
