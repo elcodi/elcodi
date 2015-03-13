@@ -24,6 +24,6 @@ wizard:
         action: Setup payments methods
     step4:
         title: Setup the shipping
-        description: You need to add the shipping costs. (Even if are free)
+        description: You need to add the shipping costs. (Even if they are free)
         action_range: Setup shipping range
         action_carrier: Add carrier

@@ -134,15 +134,15 @@ class TwigRenderer
                 ->wizardStatus
                 ->getNextStep();
 
-            $firsCarrier = $this
+            $firstCarrier = $this
                 ->carrierRepository
                 ->findOneBy(
                     ['enabled' => true],
                     ['id' => 'ASC']
                 );
 
-            $firsCarrier = ($firsCarrier instanceof CarrierInterface)
-                ? $firsCarrier
+            $firstCarrier = ($firstCarrier instanceof CarrierInterface)
+                ? $firstCarrier
                 : false;
 
             $this->appendTemplate(
@@ -152,7 +152,7 @@ class TwigRenderer
                     'stepsFinished' => $stepsFinished,
                     'activeStep'    => $activeStep,
                     'isMiniWizard'  => true,
-                    'carrier'       => $firsCarrier,
+                    'carrier'       => $firstCarrier,
                 ]
             );
         }
@@ -239,15 +239,15 @@ class TwigRenderer
                         ->wizardStatus
                         ->getNextStep();
 
-                    $firsCarrier = $this
+                    $firstCarrier = $this
                         ->carrierRepository
                         ->findOneBy(
                             ['enabled' => true],
                             ['id' => 'ASC']
                         );
 
-                    $firsCarrier = ($firsCarrier instanceof CarrierInterface)
-                        ? $firsCarrier
+                    $firstCarrier = ($firstCarrier instanceof CarrierInterface)
+                        ? $firstCarrier
                         : false;
 
                     $this->appendTemplate(
@@ -257,7 +257,7 @@ class TwigRenderer
                             'stepsFinished' => $stepsFinished,
                             'activeStep'    => $activeStep,
                             'isMiniWizard'  => true,
-                            'carrier'       => $firsCarrier,
+                            'carrier'       => $firstCarrier,
                         ]
                     );
                 }

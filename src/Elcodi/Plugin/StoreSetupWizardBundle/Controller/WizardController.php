@@ -46,15 +46,15 @@ class WizardController extends Controller
             ->get('elcodi_templates.wizard_status.service');
         $stepsFinished       = $wizardStatusService->getStepsFinishStatus();
 
-        $firsCarrier = $this
+        $firstCarrier = $this
             ->get('elcodi.repository.carrier')
             ->findOneBy(
                 ['enabled' => true],
                 ['id' => 'ASC']
             );
 
-        $firsCarrier = ($firsCarrier instanceof CarrierInterface)
-            ? $firsCarrier
+        $firstCarrier = ($firstCarrier instanceof CarrierInterface)
+            ? $firstCarrier
             : false;
 
         $activeStep = null;
@@ -68,7 +68,7 @@ class WizardController extends Controller
         return [
             'stepsFinished' => $stepsFinished,
             'activeStep'    => $activeStep,
-            'carrier'       => $firsCarrier,
+            'carrier'       => $firstCarrier,
         ];
     }
 }
