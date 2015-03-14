@@ -132,7 +132,8 @@
         "elcodi-plugin/google-analytics": "self.version",
         "elcodi-plugin/pinterest": "self.version",
         "elcodi-plugin/disqus": "self.version",
-        "elcodi-plugin/store-setup-wizard": "self.version"
+        "elcodi-plugin/store-setup-wizard": "self.version",
+        "elcodi-plugin/twitter": "self.version"
 
     },
     "require-dev": {

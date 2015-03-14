@@ -1,0 +1,13 @@
+twitter_plugin:
+    title: Twitter
+    field:
+        twitter_account:
+            title: Cuenta de twitter
+    action:
+        visit_google: Ir a Twitter
+        result_ok: Configuración de twitter guardada
+    section:
+        settings:
+            title: Configuración de Twitter
+    error:
+        is_disabled: El plugin está desactivado
