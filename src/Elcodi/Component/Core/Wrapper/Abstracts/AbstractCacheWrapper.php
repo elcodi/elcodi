@@ -25,7 +25,7 @@ use Elcodi\Component\Core\Encoder\Interfaces\EncoderInterface;
  * Abstract caching wrapper
  *
  * This abstract class provides an easy way of mapping loaded data
- * Is just a wrapper, so every cache manager will have to extend this.
+ * It's just a wrapper, so every cache manager will have to extend this.
  */
 abstract class AbstractCacheWrapper
 {

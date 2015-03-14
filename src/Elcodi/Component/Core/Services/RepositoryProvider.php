@@ -69,7 +69,7 @@ class RepositoryProvider
     }
 
     /**
-     * Given an entity parameter definition, return associated repository
+     * Given an entity parameter definition, returns associated repository
      *
      * This method is only useful when your entities namespaces are defined as
      * a parameter, very useful when you want to provide a way of overriding

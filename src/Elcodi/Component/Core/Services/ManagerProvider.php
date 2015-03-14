@@ -69,7 +69,7 @@ class ManagerProvider
     }
 
     /**
-     * Given an entity parameter definition, return associated object Manager
+     * Given an entity parameter definition, returns associated object Manager
      *
      * This method is only useful when your entities namespaces are defined as
      * a parameter, very useful when you want to provide a way of overriding
