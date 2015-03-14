@@ -33,7 +33,7 @@ class AdminController extends Controller
     /**
      * Configure plugin action page
      *
-     * @param  Request                $request The current request
+     * @param Request $request The current request
      *
      * @return array|RedirectResponse The response
      *

@@ -1,8 +1,8 @@
 <a
     href="https://twitter.com/share"
     class="twitter-share-button"
-    data-url="{{ url('store_product_view', { id: product.id, slug: product.slug }) }}"
-    data-text="{{ product.name }}"
+    data-url="{{ url }}"
+    data-text="{{ text }}"
     {% if twitter_account %}
     data-via="{{ twitter_account }}"
     {% endif %}

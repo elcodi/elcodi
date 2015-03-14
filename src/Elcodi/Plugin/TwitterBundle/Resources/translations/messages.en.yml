@@ -9,5 +9,7 @@ twitter_plugin:
     section:
         settings:
             title: Twitter configuration
+    tweet:
+        take_look: Take a look at
     error:
         is_disabled: The plugin is disabled
