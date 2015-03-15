@@ -1,0 +1,34 @@
+services:
+
+    #
+    # Twig renderer
+    #
+    elcodi_plugin.facebook.javascript_renderer:
+        class: %elcodi_plugin.facebook.javascript_renderer.class%
+        calls:
+            - [setTemplating, [@twig]]
+            - [setPlugin, [@=elcodi_plugin("Elcodi\\Plugin\\FacebookBundle")]]
+        tags:
+            - { name: kernel.event_listener, event: store.body_bottom, method: renderJavascript }
+            - { name: kernel.event_listener, event: admin.footer_script, method: renderJavascript }
+
+    elcodi_plugin.facebook.share_post_renderer:
+        class: %elcodi_plugin.facebook.share_post_renderer.class%
+        arguments:
+            url_generator: @router
+            translator: @translator
+        calls:
+            - [setTemplating, [@twig]]
+            - [setPlugin, [@=elcodi_plugin("Elcodi\\Plugin\\FacebookBundle")]]
+        tags:
+            - { name: kernel.event_listener, event: store.product_pin_top, method: renderShareProduct }
+            - { name: kernel.event_listener, event: admin.product_top, method: renderShareProduct }
+            - { name: kernel.event_listener, event: store.order_thanks, method: renderShareOrder }
+
+    elcodi_plugin.facebook.follow_renderer:
+        class: %elcodi_plugin.facebook.follow_renderer.class%
+        calls:
+            - [setTemplating, [@twig]]
+            - [setPlugin, [@=elcodi_plugin("Elcodi\\Plugin\\FacebookBundle")]]
+        tags:
+            - { name: kernel.event_listener, event: store.footer_social, method: renderFollowButton }

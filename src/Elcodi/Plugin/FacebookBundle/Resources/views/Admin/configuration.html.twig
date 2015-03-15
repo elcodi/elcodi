@@ -6,7 +6,7 @@
     {% include '@AdminCore/Common/breadcrumb.html.twig' with {
         breadcrumb: [
             { name: 'admin.plugin.plural'|trans, url: url('admin_plugin_list') },
-            { name: 'twitter_plugin.title'|trans, active: true },
+            { name: 'facebook_plugin.title'|trans, active: true },
         ]}
     %}
 
@@ -18,22 +18,22 @@
     <form class="form" method="POST">
         <fieldset>
             <div class="col-1-3">
-                <h2 class="fw-n">{{ 'twitter_plugin.section.settings.title'|trans }}</h2>
-                <a target="_blank" href="https://twitter.com/">
-                    {{ 'twitter_plugin.action.visit_google'|trans }}
+                <h2 class="fw-n">{{ 'facebook_plugin.section.settings.title'|trans }}</h2>
+                <a target="_blank" href="https://www.facebook.com/">
+                    {{ 'facebook_plugin.action.visit_google'|trans }}
                 </a>
             </div>
             <div class="col-2-3">
                 <div class="box">
                     <ol>
                         <li>
-                            <label for="twitter_account">
-                                {{ 'twitter_plugin.field.twitter_account.title'|trans }}
+                            <label for="facebook_account">
+                                {{ 'facebook_plugin.field.facebook_account.title'|trans }}
                             </label>
-                            <input id="twitter_account" type="text"
-                                   name="twitter_account"
-                                   value="{{ plugin.configuration['twitter_account'] }}"
-                                   placeholder="twitterAccount" />
+                            <input id="facebook_account" type="text"
+                                   name="facebook_account"
+                                   value="{{ plugin.configuration['facebook_account'] }}"
+                                   placeholder="facebookAccount" />
                         </li>
                     </ol>
                 </div>

@@ -21,6 +21,9 @@ use Elcodi\Component\Plugin\Entity\Plugin;
 use Elcodi\Component\Plugin\Interfaces\EventInterface;
 use Elcodi\Component\Plugin\Templating\Traits\TemplatingTrait;
 
+/**
+ * Class FollowRenderer
+ */
 class FollowRenderer
 {
     use TemplatingTrait;

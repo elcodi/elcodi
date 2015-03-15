@@ -1,0 +1,8 @@
+parameters:
+
+    #
+    # Templating
+    #
+    elcodi_plugin.facebook.javascript_renderer.class: Elcodi\Plugin\FacebookBundle\Templating\JavascriptRenderer
+    elcodi_plugin.facebook.share_post_renderer.class: Elcodi\Plugin\FacebookBundle\Templating\SharePostRenderer
+    elcodi_plugin.facebook.follow_renderer.class: Elcodi\Plugin\FacebookBundle\Templating\FollowRenderer

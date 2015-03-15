@@ -15,16 +15,16 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Plugin\TwitterBundle\Templating;
+namespace Elcodi\Plugin\FacebookBundle\Templating;
 
 use Elcodi\Component\Plugin\Entity\Plugin;
 use Elcodi\Component\Plugin\Interfaces\EventInterface;
 use Elcodi\Component\Plugin\Templating\Traits\TemplatingTrait;
 
 /**
- * Class JavascriptRenderer
+ * Class FollowRenderer
  */
-class JavascriptRenderer
+class FollowRenderer
 {
     use TemplatingTrait;
 
@@ -50,16 +50,24 @@ class JavascriptRenderer
     }
 
     /**
-     * Renders the javascript.
+     * Renders the follow button.
      *
      * @param EventInterface $event The event
      */
-    public function renderJavascript(EventInterface $event)
+    public function renderFollowButton(EventInterface $event)
     {
-        if ($this->plugin->isEnabled()) {
+        $pluginConfiguration = $this
+            ->plugin
+            ->getConfiguration();
+
+        if (
+            $this->plugin->isEnabled() &&
+            !empty($pluginConfiguration['facebook_account'])
+        ) {
             $this->appendTemplate(
-                '@ElcodiTwitter/javascript.html.twig',
-                $event
+                '@ElcodiFacebook/Follow/follow.html.twig',
+                $event,
+                ['facebook_account' => $pluginConfiguration['facebook_account']]
             );
         }
     }

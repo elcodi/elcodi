@@ -15,7 +15,7 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Plugin\TwitterBundle\Templating;
+namespace Elcodi\Plugin\FacebookBundle\Templating;
 
 use Elcodi\Component\Plugin\Entity\Plugin;
 use Elcodi\Component\Plugin\Interfaces\EventInterface;
@@ -58,7 +58,7 @@ class JavascriptRenderer
     {
         if ($this->plugin->isEnabled()) {
             $this->appendTemplate(
-                '@ElcodiTwitter/javascript.html.twig',
+                '@ElcodiFacebook/javascript.html.twig',
                 $event
             );
         }

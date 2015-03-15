@@ -1,0 +1,11 @@
+author: Roger Gros
+description: |
+    Facebook social plugin.
+year: 2015
+name: Facebook
+url: https://facebook.com
+fa_icon: facebook
+configuration_route: admin_facebook_configuration
+version: ~0.5
+enabled: false
+visible: true

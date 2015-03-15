@@ -1,0 +1,3 @@
+ElcodiFacebookBundle:
+    resource: "@ElcodiFacebookBundle/Controller/"
+    type:     annotation

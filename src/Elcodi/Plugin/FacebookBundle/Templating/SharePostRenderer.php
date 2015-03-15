@@ -15,7 +15,7 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Plugin\TwitterBundle\Templating;
+namespace Elcodi\Plugin\FacebookBundle\Templating;
 
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Translation\TranslatorInterface;
@@ -23,13 +23,12 @@ use Symfony\Component\Translation\TranslatorInterface;
 use Elcodi\Component\Plugin\Entity\Plugin;
 use Elcodi\Component\Plugin\Interfaces\EventInterface;
 use Elcodi\Component\Plugin\Templating\Traits\TemplatingTrait;
-use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 use Elcodi\Component\Product\Entity\Product;
 
 /**
- * Class ShareTweetRenderer
+ * Class SharePostRenderer
  */
-class ShareTweetRenderer
+class SharePostRenderer
 {
     use TemplatingTrait;
 
@@ -48,7 +47,7 @@ class ShareTweetRenderer
     protected $urlGenerator;
 
     /**
-     * @var Translator
+     * @var TranslatorInterface
      *
      * A translator
      */
@@ -90,8 +89,6 @@ class ShareTweetRenderer
     public function renderShareProduct(EventInterface $event)
     {
         if ($this->plugin->isEnabled()) {
-            $pluginConfiguration = $this->plugin->getConfiguration();
-
             /**
              * @var Product $product
              */
@@ -108,19 +105,11 @@ class ShareTweetRenderer
                     true
                 );
 
-            $text     = $product->getName();
-            $category = $product->getPrincipalCategory();
-            if ($category instanceof CategoryInterface) {
-                $text = $category->getName().' - '.$text;
-            }
-
             $this->appendTemplate(
-                '@ElcodiTwitter/Tweet/share.html.twig',
+                '@ElcodiFacebook/Post/share.html.twig',
                 $event,
                 [
-                    'url'             => $shareUrl,
-                    'text'            => $text,
-                    'twitter_account' => $pluginConfiguration['twitter_account'],
+                    'url' => $shareUrl,
                 ]
             );
         }
@@ -134,8 +123,6 @@ class ShareTweetRenderer
     public function renderShareOrder(EventInterface $event)
     {
         if ($this->plugin->isEnabled()) {
-            $pluginConfiguration = $this->plugin->getConfiguration();
-
             $shareUrl = $this
                 ->urlGenerator
                 ->generate(
@@ -145,12 +132,10 @@ class ShareTweetRenderer
                 );
 
             $this->appendTemplate(
-                '@ElcodiTwitter/Tweet/share.html.twig',
+                '@ElcodiFacebook/Post/share.html.twig',
                 $event,
                 [
-                    'url'             => $shareUrl,
-                    'text'            => $this->translator->trans('twitter_plugin.tweet.take_look'),
-                    'twitter_account' => $pluginConfiguration['twitter_account'],
+                    'url' => $shareUrl,
                 ]
             );
         }
