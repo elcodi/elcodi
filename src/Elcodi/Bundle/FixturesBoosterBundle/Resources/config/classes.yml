@@ -1,7 +1,7 @@
 parameters:
 
     #
-    # Placeholder for database path, tu fulfill command dependencies. This value
+    # Placeholder for database path to fulfill command dependencies. This value
     # is overwritten in test environment
     #
     database_path: ~
