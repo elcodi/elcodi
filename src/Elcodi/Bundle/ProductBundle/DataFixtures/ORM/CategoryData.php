@@ -55,6 +55,7 @@ class CategoryData extends AbstractFixture
             ->setRoot(true);
 
         $manager->persist($rootCategory);
+        $categoryObjectManager->flush($rootCategory);
         $this->addReference('rootCategory', $rootCategory);
 
         /**
@@ -73,9 +74,6 @@ class CategoryData extends AbstractFixture
         $manager->persist($category);
         $this->addReference('category', $category);
 
-        $categoryObjectManager->flush([
-            $rootCategory,
-            $category,
-        ]);
+        $categoryObjectManager->flush($category);
     }
 }
