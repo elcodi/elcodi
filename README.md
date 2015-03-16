@@ -1,4 +1,4 @@
-Elcodi for Symfony2
+Elcodi for Symfony
 ===================
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/6aaa1c45-e569-4f31-8344-6aab899ed083/mini.png)](https://insight.sensiolabs.com/projects/6aaa1c45-e569-4f31-8344-6aab899ed083)
 [![Build Status](https://travis-ci.org/elcodi/elcodi.svg?branch=master)](https://travis-ci.org/elcodi/elcodi)
@@ -8,7 +8,7 @@ Elcodi for Symfony2
 [![Latest Unstable Version](https://poser.pugx.org/elcodi/elcodi/v/unstable.png)](https://packagist.org/packages/elcodi/elcodi)
 [![License](https://poser.pugx.org/elcodi/elcodi/license.png)](https://packagist.org/packages/elcodi/elcodi)
 
-Elcodi is a suite of e-commerce bundles and components developed for the **Symfony2 Framework**.
+Elcodi is a suite of e-commerce bundles and components developed for the **Symfony Framework**.
 
 It aims to promote SOLID principles, efficient code reutilization, separation of concerns as effective building blocks for the development of e-commerce applications.
 
@@ -52,9 +52,9 @@ this badge for your github repository.
 Contributing
 ------------
 
-This projects follows Symfony2 coding standards, so pull requests must pass phpcs
+This projects follows Symfony coding standards, so pull requests must pass phpcs
 checks. Read more details about
-[Symfony2 coding standards](http://symfony.com/doc/current/contributing/code/standards.html)
+[Symfony coding standards](http://symfony.com/doc/current/contributing/code/standards.html)
 and install the corresponding [CodeSniffer definition](https://github.com/opensky/Symfony2-coding-standard) 
 to run code validation.
 
