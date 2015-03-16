@@ -29,7 +29,7 @@ class RuleRepository extends EntityRepository
     /**
      * Return a rule by name
      *
-     * @param $name
+     * @param string $name
      *
      * @return null|RuleInterface
      */

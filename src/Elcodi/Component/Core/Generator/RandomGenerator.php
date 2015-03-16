@@ -27,7 +27,7 @@ class RandomGenerator implements GeneratorInterface
     /**
      * Generates a random string with entropy
      *
-     * @param string $length Length of generation
+     * @param integer $length Length of generation
      *
      * @return string Result of generation
      */

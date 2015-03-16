@@ -144,7 +144,7 @@ class Entry implements EntryInterface
     /**
      * Get CreatedAt
      *
-     * @return mixed CreatedAt
+     * @return DateTime|null CreatedAt
      */
     public function getCreatedAt()
     {

@@ -75,7 +75,7 @@ class CommentController
      * @param string $context Context
      * @param string $source  Source
      *
-     * @return array Comments
+     * @return Response Comments
      */
     public function listCommentsAction($context, $source)
     {
