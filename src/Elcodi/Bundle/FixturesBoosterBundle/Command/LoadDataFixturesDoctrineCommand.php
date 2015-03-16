@@ -83,13 +83,12 @@ class LoadDataFixturesDoctrineCommand extends OriginalCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         if (empty($this->databaseFilePath)) {
-            parent::execute($input, $output);
 
-            return 1;
+            return parent::execute($input, $output);
         }
 
         /**
-         * Same code than parent implementation
+         * Same code as parent implementation
          */
         $dirOrFile = $input->getOption('fixtures');
         $paths = array();
