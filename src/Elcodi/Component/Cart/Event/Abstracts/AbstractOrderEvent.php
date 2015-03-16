@@ -45,7 +45,7 @@ abstract class AbstractOrderEvent extends Event
      * construct method
      *
      * @param CartInterface  $cart  Cart
-     * @param OrderInterface $order The order created
+     * @param OrderInterface $order Order
      */
     public function __construct(
         CartInterface $cart,
@@ -66,7 +66,7 @@ abstract class AbstractOrderEvent extends Event
     }
 
     /**
-     * Return order stored
+     * Return order
      *
      * @return OrderInterface Order stored
      */

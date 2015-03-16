@@ -30,7 +30,7 @@ class XmlRender implements SitemapRenderInterface
      *
      * @param SitemapProfileInterface $sitemapProfile Sitemap profile
      *
-     * @return string Renderization
+     * @return string Rendered XML
      */
     public function render(SitemapProfileInterface $sitemapProfile)
     {
