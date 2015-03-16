@@ -34,7 +34,7 @@ class MinimumPriceCouponListener
     protected $currencyConverter;
 
     /**
-     * @param $currencyConverter
+     * @param CurrencyConverter $currencyConverter
      */
     public function __construct($currencyConverter)
     {

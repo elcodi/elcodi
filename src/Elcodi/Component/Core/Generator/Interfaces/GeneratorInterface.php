@@ -31,7 +31,7 @@ interface GeneratorInterface
     /**
      * Generates a hash
      *
-     * @param string $length Length of generation
+     * @param integer $length Length of generation
      *
      * @return string Generation
      */

@@ -69,7 +69,7 @@ class InvitationsBag
     /**
      * Sets ErrorInvitations
      *
-     * @param \Doctrine\Common\Collections\ArrayCollection $errorInvitations ErrorInvitations
+     * @param ArrayCollection $errorInvitations ErrorInvitations
      *
      * @return $this Self object
      */
@@ -83,7 +83,7 @@ class InvitationsBag
     /**
      * Get ErrorInvitations
      *
-     * @return \Doctrine\Common\Collections\ArrayCollection ErrorInvitations
+     * @return ArrayCollection ErrorInvitations
      */
     public function getErrorInvitations()
     {
@@ -93,7 +93,7 @@ class InvitationsBag
     /**
      * Sets SentInvitations
      *
-     * @param \Doctrine\Common\Collections\ArrayCollection $sentInvitations SentInvitations
+     * @param ArrayCollection $sentInvitations SentInvitations
      *
      * @return $this Self object
      */
@@ -107,7 +107,7 @@ class InvitationsBag
     /**
      * Get SentInvitations
      *
-     * @return \Doctrine\Common\Collections\ArrayCollection SentInvitations
+     * @return ArrayCollection SentInvitations
      */
     public function getSentInvitations()
     {

@@ -25,7 +25,7 @@ namespace Elcodi\Component\Cart\Entity\Traits;
  * A currency is needed so that a {@see Money} value object can be
  * exploited when doing currency arithmetics. When Currency is not
  * set, it is not possible to return a Money object, so getters
- * wil return null
+ * will return null
  */
 trait PriceTrait
 {

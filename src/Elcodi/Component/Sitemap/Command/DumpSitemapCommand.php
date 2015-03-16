@@ -66,7 +66,7 @@ class DumpSitemapCommand extends Command
      * @param InputInterface  $input  The input interface
      * @param OutputInterface $output The output interface
      *
-     * @return int|null|void
+     * @return integer|null|void
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {

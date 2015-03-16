@@ -148,7 +148,7 @@ class Cart implements CartInterface
     /**
      * Get Id
      *
-     * @return int Id
+     * @return integer Id
      */
     public function getId()
     {
@@ -158,7 +158,7 @@ class Cart implements CartInterface
     /**
      * Sets Id
      *
-     * @param int $id Id
+     * @param integer $id Id
      *
      * @return $this Self object
      */
@@ -298,7 +298,7 @@ class Cart implements CartInterface
     /**
      * Set quantity
      *
-     * @param int $quantity Quantity
+     * @param integer $quantity Quantity
      *
      * @return $this Self object
      */
@@ -435,7 +435,7 @@ class Cart implements CartInterface
     /**
      * Return the maximum depth of all the cartLines
      *
-     * @return int Depth
+     * @return integer Depth
      */
     public function getDepth()
     {
@@ -451,7 +451,7 @@ class Cart implements CartInterface
     /**
      * Return the maximum height of all the cartLines
      *
-     * @return int Height
+     * @return integer Height
      */
     public function getHeight()
     {
@@ -467,7 +467,7 @@ class Cart implements CartInterface
     /**
      * Return the maximum width of all the cartLines
      *
-     * @return int Width
+     * @return integer Width
      */
     public function getWidth()
     {
@@ -483,7 +483,7 @@ class Cart implements CartInterface
     /**
      * Get the sum of all CartLines weight
      *
-     * @return int Weight
+     * @return integer Weight
      */
     public function getWeight()
     {

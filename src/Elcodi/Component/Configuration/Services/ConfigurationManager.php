@@ -231,9 +231,9 @@ class ConfigurationManager extends AbstractCacheWrapper
     /**
      * Deletes a parameter given the format "namespace.key"
      *
-     * @param $configurationIdentifier
+     * @param string $configurationIdentifier
      *
-     * @return bool
+     * @return boolean
      *
      * @throws ConfigurationNotEditableException       Configuration parameter is read-only
      * @throws ConfigurationParameterNotFoundException Configuration parameter not found

@@ -70,7 +70,7 @@ abstract class AbstractUser implements AbstractUserInterface
     protected $lastname;
 
     /**
-     * @var int
+     * @var integer
      *
      * gender
      */
@@ -158,7 +158,7 @@ abstract class AbstractUser implements AbstractUserInterface
     /**
      * Set gender
      *
-     * @param int $gender Gender
+     * @param integer $gender Gender
      *
      * @return $this Self object
      */
@@ -172,7 +172,7 @@ abstract class AbstractUser implements AbstractUserInterface
     /**
      * Get gender
      *
-     * @return int Gender
+     * @return integer Gender
      */
     public function getGender()
     {

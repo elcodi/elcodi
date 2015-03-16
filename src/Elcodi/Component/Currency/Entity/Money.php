@@ -58,7 +58,7 @@ class Money extends StubMoney implements MoneyInterface
     /**
      * Simple Money Value Object constructor
      *
-     * @param Integer           $amount   Amount
+     * @param integer           $amount   Amount
      * @param CurrencyInterface $currency Currency
      */
     protected function __construct($amount, CurrencyInterface $currency)

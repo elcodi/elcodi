@@ -71,7 +71,7 @@ interface CouponInterface
      * @see ElcodiCouponTypes::TYPE_AMOUNT
      * @see ElcodiCouponTypes::TYPE_PERCENT
      *
-     * @param int $type Type
+     * @param integer $type Type
      *
      * @return $this Self object
      */
@@ -80,7 +80,7 @@ interface CouponInterface
     /**
      * Get type
      *
-     * @return int Type
+     * @return integer Type
      */
     public function getType();
 
@@ -89,7 +89,7 @@ interface CouponInterface
      * @see ElcodiCouponTypes::ENFORCEMENT_AUTOMATIC
      * @see ElcodiCouponTypes::ENFORCEMENT_MANUAL
      *
-     * @param int $enforcement Enforcement
+     * @param integer $enforcement Enforcement
      *
      * @return $this Self object
      */
@@ -98,7 +98,7 @@ interface CouponInterface
     /**
      * Get Enforcement
      *
-     * @return int Enforcement
+     * @return integer Enforcement
      */
     public function getEnforcement();
 
@@ -121,7 +121,7 @@ interface CouponInterface
     /**
      * Set discount
      *
-     * @param int $discount Discount
+     * @param integer $discount Discount
      *
      * @return $this Self object
      */
@@ -130,7 +130,7 @@ interface CouponInterface
     /**
      * Get discount
      *
-     * @return int discount
+     * @return integer discount
      */
     public function getDiscount();
 

@@ -70,7 +70,7 @@ class WizardStatus
     /**
      * Checks if the wizard has already been finished
      *
-     * @return bool
+     * @return boolean
      */
     public function isWizardFinished()
     {
@@ -80,7 +80,7 @@ class WizardStatus
     /**
      * Get the next step.
      *
-     * @return int|null The next step, null if the wizard is finished.
+     * @return integer|null The next step, null if the wizard is finished.
      */
     public function getNextStep()
     {
@@ -100,7 +100,7 @@ class WizardStatus
      *
      * @param integer $stepNumber A step number.
      *
-     * @return bool If the step is finished
+     * @return boolean If the step is finished
      */
     public function isStepFinished($stepNumber)
     {
@@ -121,7 +121,7 @@ class WizardStatus
     /**
      * Gets the finish status for all the steps
      *
-     * @return bool[]
+     * @return boolean[]
      */
     public function getStepsFinishStatus()
     {
@@ -136,7 +136,7 @@ class WizardStatus
     /**
      * Checks if the address has been fulfilled.
      *
-     * @return bool
+     * @return boolean
      */
     protected function isAddressFulfilled()
     {
@@ -150,7 +150,7 @@ class WizardStatus
     /**
      * Checks if there is any product on the store.
      *
-     * @return bool
+     * @return boolean
      */
     protected function isThereAnyProduct()
     {
@@ -166,7 +166,7 @@ class WizardStatus
     /**
      * Checks if the payment has been fulfilled
      *
-     * @return bool
+     * @return boolean
      */
     protected function isPaymentFulfilled()
     {
@@ -189,7 +189,7 @@ class WizardStatus
     /**
      * Checks if any carrier has been added to the store.
      *
-     * @return bool
+     * @return boolean
      */
     protected function isThereAnyCarrier()
     {

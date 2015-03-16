@@ -146,7 +146,7 @@ class PasswordManager
      * @param string       $hash        Hash given by provider
      * @param string       $newPassword New password
      *
-     * @return $this
+     * @return $this Self object
      */
     public function recoverPassword(AbstractUser $user, $hash, $newPassword)
     {

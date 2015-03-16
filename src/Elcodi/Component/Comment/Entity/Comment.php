@@ -110,7 +110,7 @@ class Comment implements CommentInterface
     /**
      * Sets Id
      *
-     * @param int $id Id
+     * @param integer $id Id
      *
      * @return $this Self object
      */
@@ -124,7 +124,7 @@ class Comment implements CommentInterface
     /**
      * Get Id
      *
-     * @return int Id
+     * @return integer Id
      */
     public function getId()
     {
@@ -206,7 +206,7 @@ class Comment implements CommentInterface
     /**
      * Sets ParsingType
      *
-     * @param int $parsingType ParsingType
+     * @param integer $parsingType ParsingType
      *
      * @return $this Self object
      */
@@ -220,7 +220,7 @@ class Comment implements CommentInterface
     /**
      * Get ParsingType
      *
-     * @return int ParsingType
+     * @return integer ParsingType
      */
     public function getParsingType()
     {

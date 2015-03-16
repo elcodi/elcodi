@@ -68,7 +68,7 @@ class Customer extends AbstractUser implements CustomerInterface
     protected $guest;
 
     /**
-     * @var bool
+     * @var boolean
      *
      * Has newsletter
      */

@@ -28,9 +28,9 @@ interface ResizeAdapterInterface
      * Interface for resize implementations
      *
      * @param string  $imageData Image Data
-     * @param Integer $height    Height value
-     * @param Integer $width     Width value
-     * @param Integer $type      Type
+     * @param integer $height    Height value
+     * @param integer $width     Width value
+     * @param integer $type      Type
      *
      * @return string Resized image data
      */

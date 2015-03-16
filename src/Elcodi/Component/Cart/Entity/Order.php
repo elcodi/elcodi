@@ -155,7 +155,7 @@ class Order implements OrderInterface
     /**
      * Get Id
      *
-     * @return int Id
+     * @return integer Id
      */
     public function getId()
     {
@@ -165,7 +165,7 @@ class Order implements OrderInterface
     /**
      * Sets Id
      *
-     * @param int $id Id
+     * @param integer $id Id
      *
      * @return $this Self object
      */
@@ -281,7 +281,7 @@ class Order implements OrderInterface
     /**
      * Set quantity
      *
-     * @param int $quantity Quantity
+     * @param integer $quantity Quantity
      *
      * @return $this Self object
      */

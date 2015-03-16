@@ -25,28 +25,28 @@ interface DimensionableInterface
     /**
      * Get Depth
      *
-     * @return int Depth
+     * @return integer Depth
      */
     public function getDepth();
 
     /**
      * Get Height
      *
-     * @return int Height
+     * @return integer Height
      */
     public function getHeight();
 
     /**
      * Get Weight
      *
-     * @return int Weight
+     * @return integer Weight
      */
     public function getWeight();
 
     /**
      * Get Width
      *
-     * @return int Width
+     * @return integer Width
      */
     public function getWidth();
 }

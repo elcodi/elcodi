@@ -33,7 +33,7 @@ class VariantRepository extends EntityRepository
      * returns the Variant that is associated with the options matching the IDs, if any
      *
      * @param ProductInterface $product            to compare Variants from
-     * @param                  $optionsSearchedIds array containing IDs of the options to match
+     * @param array            $optionsSearchedIds array containing IDs of the options to match
      *
      * @return VariantInterface|null Variant if found, or null if not
      */

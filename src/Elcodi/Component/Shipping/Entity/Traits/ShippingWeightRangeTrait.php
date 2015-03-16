@@ -39,7 +39,7 @@ trait ShippingWeightRangeTrait
     /**
      * Get ToWeight
      *
-     * @return int ToWeight
+     * @return integer ToWeight
      */
     public function getToWeight()
     {
@@ -49,7 +49,7 @@ trait ShippingWeightRangeTrait
     /**
      * Sets ToWeight
      *
-     * @param int $toWeight ToWeight
+     * @param integer $toWeight ToWeight
      *
      * @return $this Self object
      */
@@ -63,7 +63,7 @@ trait ShippingWeightRangeTrait
     /**
      * Get FromWeight
      *
-     * @return int FromWeight
+     * @return integer FromWeight
      */
     public function getFromWeight()
     {
@@ -73,7 +73,7 @@ trait ShippingWeightRangeTrait
     /**
      * Sets FromWeight
      *
-     * @param int $fromWeight FromWeight
+     * @param integer $fromWeight FromWeight
      *
      * @return $this Self object
      */

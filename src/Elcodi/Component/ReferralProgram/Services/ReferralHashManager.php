@@ -120,14 +120,10 @@ class ReferralHashManager
      *
      * @param string $hash Hash
      *
-     * @return null|ReferralHash
+     * @return ReferralHash|null
      */
     public function getReferralHashByHash($hash)
     {
-        /**
-         * @var $referralHash ReferralHash
-         */
-
         return $this->referralHashRepository->findOneBy(array(
             'hash' => $hash,
         ));

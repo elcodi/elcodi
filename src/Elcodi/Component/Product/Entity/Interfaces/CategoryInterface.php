@@ -163,7 +163,7 @@ interface CategoryInterface
     /**
      * Set position
      *
-     * @param Integer $position Category relative position
+     * @param integer $position Category relative position
      *
      * @return $this Self object
      */
@@ -172,7 +172,7 @@ interface CategoryInterface
     /**
      * Return Position
      *
-     * @return Integer Category relative position
+     * @return integer Category relative position
      */
     public function getPosition();
 }

@@ -77,7 +77,7 @@ interface AttributeInterface
     public function addValue(ValueInterface $value);
 
     /**
-     * Removes a value to this attribute collection
+     * Removes a value from this attribute collection
      *
      * @param ValueInterface $value
      *

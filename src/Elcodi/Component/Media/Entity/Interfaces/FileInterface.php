@@ -41,7 +41,7 @@ interface FileInterface extends MediaInterface
     /**
      * Set id
      *
-     * @param int $id Entity Id
+     * @param integer $id Entity Id
      *
      * @return $this Self object
      */
@@ -50,7 +50,7 @@ interface FileInterface extends MediaInterface
     /**
      * Get id
      *
-     * @return int Entity identifier
+     * @return integer Entity identifier
      */
     public function getId();
 

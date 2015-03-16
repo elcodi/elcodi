@@ -185,7 +185,7 @@ interface CartInterface
     /**
      * Sets the number of items on this cart
      *
-     * @param int $quantity Quantity
+     * @param integer $quantity Quantity
      *
      * @return $this Self object
      */

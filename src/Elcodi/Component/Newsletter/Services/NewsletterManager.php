@@ -95,7 +95,7 @@ class NewsletterManager
     /**
      * Subscribe email to newsletter
      *
-     * @param String            $email    Email
+     * @param string            $email    Email
      * @param LanguageInterface $language The language
      *
      * @return $this Self object
@@ -192,7 +192,7 @@ class NewsletterManager
      *
      * @param string $email Email
      *
-     * @return null|object Subscription instance if exists
+     * @return object|null Subscription instance if exists
      */
     public function getSubscription($email)
     {

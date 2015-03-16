@@ -45,7 +45,7 @@ interface ProductPriceInterface
     /**
      * Set price
      *
-     * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount Reduced Price
+     * @param MoneyInterface $amount Reduced Price
      *
      * @return $this Self object
      */

@@ -71,7 +71,7 @@ class Product implements ProductInterface
     protected $type;
 
     /**
-     * @var int
+     * @var integer
      *
      * Stock
      */
@@ -329,7 +329,7 @@ class Product implements ProductInterface
     /**
      * Set stock
      *
-     * @param int $stock Stock
+     * @param integer $stock Stock
      *
      * @return $this Self object
      */
@@ -343,7 +343,7 @@ class Product implements ProductInterface
     /**
      * Get stock
      *
-     * @return int Stock
+     * @return integer Stock
      */
     public function getStock()
     {
@@ -449,7 +449,7 @@ class Product implements ProductInterface
     /**
      * Sets Type
      *
-     * @param int $type Type
+     * @param integer $type Type
      *
      * @return $this Self object
      */
@@ -463,7 +463,7 @@ class Product implements ProductInterface
     /**
      * Get Type
      *
-     * @return int Type
+     * @return integer Type
      */
     public function getType()
     {

@@ -181,7 +181,7 @@ interface ReferralLineInterface
     /**
      * Sets InvitedType
      *
-     * @param int $invitedType InvitedType
+     * @param integer $invitedType InvitedType
      *
      * @return $this Self object
      */
@@ -190,7 +190,7 @@ interface ReferralLineInterface
     /**
      * Get InvitedType
      *
-     * @return int InvitedType
+     * @return integer InvitedType
      */
     public function getInvitedType();
 
@@ -213,7 +213,7 @@ interface ReferralLineInterface
     /**
      * Sets ReferrerType
      *
-     * @param int $referrerType ReferrerType
+     * @param integer $referrerType ReferrerType
      *
      * @return $this Self object
      */
@@ -222,7 +222,7 @@ interface ReferralLineInterface
     /**
      * Get ReferrerType
      *
-     * @return int ReferrerType
+     * @return integer ReferrerType
      */
     public function getReferrerType();
 

@@ -132,7 +132,7 @@ trait PurchasableWrapperTrait
     /**
      * Sets quantity
      *
-     * @param int $quantity Quantity
+     * @param integer $quantity Quantity
      *
      * @return $this Self object
      */

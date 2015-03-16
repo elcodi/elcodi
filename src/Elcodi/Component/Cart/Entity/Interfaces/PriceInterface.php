@@ -27,14 +27,14 @@ interface PriceInterface
     /**
      * Gets the product or products amount with tax
      *
-     * @return \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface Product amount with tax
+     * @return MoneyInterface Product amount with tax
      */
     public function getProductAmount();
 
     /**
      * Sets the product or products amount with tax
      *
-     * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $productAmount product amount with tax
+     * @param MoneyInterface $productAmount product amount with tax
      *
      * @return $this Self object
      */
@@ -43,14 +43,14 @@ interface PriceInterface
     /**
      * Gets the total amount with tax
      *
-     * @return \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface price with tax
+     * @return MoneyInterface price with tax
      */
     public function getAmount();
 
     /**
      * Sets the total amount with tax
      *
-     * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount amount without tax
+     * @param MoneyInterface $amount amount without tax
      *
      * @return $this Self object
      */

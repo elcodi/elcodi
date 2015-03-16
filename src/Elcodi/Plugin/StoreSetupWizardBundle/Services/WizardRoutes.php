@@ -109,7 +109,7 @@ class WizardRoutes
      *
      * @param string $route The received route
      *
-     * @return bool If is part of the wizards setup.
+     * @return boolean If is part of the wizards setup.
      */
     public function isWizardSetupRoute($route)
     {
@@ -119,7 +119,7 @@ class WizardRoutes
     /**
      * Gets the default route.
      *
-     * @return bool If is the default route.
+     * @return boolean If is the default route.
      */
     public function getDefaultWizardRoute()
     {
@@ -131,7 +131,7 @@ class WizardRoutes
      *
      * @param string $route The route to check.
      *
-     * @return bool iF the wizard is hidden.
+     * @return boolean If the wizard is hidden.
      */
     public function isWizardHidden($route)
     {

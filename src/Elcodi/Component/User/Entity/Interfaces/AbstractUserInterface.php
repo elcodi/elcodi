@@ -101,7 +101,7 @@ interface AbstractUserInterface
     /**
      * Set gender
      *
-     * @param int $gender Gender
+     * @param integer $gender Gender
      *
      * @return $this Self object
      */
@@ -110,7 +110,7 @@ interface AbstractUserInterface
     /**
      * Get gender
      *
-     * @return int Gender
+     * @return integer Gender
      */
     public function getGender();
 

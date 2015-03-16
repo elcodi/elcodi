@@ -97,7 +97,7 @@ class CartCouponManager
     {
         /**
          * If Cart id is null means that this cart has been generated from
-         * the scratch. This also means that cannot have any Coupon associated.
+         * scratch. This also means that it cannot have any Coupon associated.
          * If is this case, we avoid this lookup.
          */
         if ($cart->getId() === null) {
@@ -126,7 +126,7 @@ class CartCouponManager
     {
         /**
          * If Cart id is null means that this cart has been generated from
-         * the scratch. This also means that cannot have any Coupon associated.
+         * scratch. This also means that it cannot have any Coupon associated.
          * If is this case, we avoid this lookup.
          */
         if ($cart->getId() === null) {
