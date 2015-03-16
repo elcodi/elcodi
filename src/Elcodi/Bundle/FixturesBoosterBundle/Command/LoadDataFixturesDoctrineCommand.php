@@ -55,8 +55,8 @@ class LoadDataFixturesDoctrineCommand extends OriginalCommand
      */
     public function __construct(
         KernelInterface $kernel,
-        $databaseFilePath)
-    {
+        $databaseFilePath
+    ) {
         parent::__construct();
 
         $this->kernel = $kernel;
