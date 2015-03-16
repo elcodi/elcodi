@@ -17,13 +17,17 @@
 
 namespace Elcodi\Component\Menu\Entity\Menu\Traits;
 
+use Doctrine\Common\Collections\Collection;
+
+use Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface;
+
 /**
  * Trait SubnodesTrait
  */
 trait SubnodesTrait
 {
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var Collection
      *
      * Subnodes
      */
@@ -39,11 +43,11 @@ trait SubnodesTrait
     /**
      * Add subnode
      *
-     * @param \Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface $node Node
+     * @param NodeInterface $node Node
      *
      * @return $this Self object
      */
-    public function addSubnode(\Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface $node)
+    public function addSubnode(NodeInterface $node)
     {
         if ($node !== $this) {
             $this->subnodes->add($node);
@@ -55,11 +59,11 @@ trait SubnodesTrait
     /**
      * Remove subnode
      *
-     * @param \Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface $node Node
+     * @param NodeInterface $node Node
      *
      * @return $this Self object
      */
-    public function removeSubnode(\Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface $node)
+    public function removeSubnode(NodeInterface $node)
     {
         $this->subnodes->removeElement($node);
 
@@ -69,11 +73,11 @@ trait SubnodesTrait
     /**
      * Sets Subnodes
      *
-     * @param \Doctrine\Common\Collections\Collection $subnodes Subnodes
+     * @param Collection $subnodes Subnodes
      *
      * @return $this Self object
      */
-    public function setSubnodes(\Doctrine\Common\Collections\Collection $subnodes)
+    public function setSubnodes(Collection $subnodes)
     {
         $this->subnodes = $subnodes;
 
@@ -83,7 +87,7 @@ trait SubnodesTrait
     /**
      * Get Subnodes
      *
-     * @return \Doctrine\Common\Collections\Collection Subnodes
+     * @return Collection Subnodes
      */
     public function getSubnodes()
     {

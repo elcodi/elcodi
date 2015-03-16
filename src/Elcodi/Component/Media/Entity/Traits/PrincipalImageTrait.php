@@ -17,13 +17,15 @@
 
 namespace Elcodi\Component\Media\Entity\Traits;
 
+use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
+
 /**
  * Class PrincipalImageTrait
  */
 trait PrincipalImageTrait
 {
     /**
-     * @var \Elcodi\Component\Media\Entity\Interfaces\ImageInterface
+     * @var ImageInterface
      *
      * Principal image
      */
@@ -32,11 +34,11 @@ trait PrincipalImageTrait
     /**
      * Set the principalImage
      *
-     * @param \Elcodi\Component\Media\Entity\Interfaces\ImageInterface $principalImage Principal image
+     * @param ImageInterface $principalImage Principal image
      *
      * @return $this Self object
      */
-    public function setPrincipalImage(\Elcodi\Component\Media\Entity\Interfaces\ImageInterface $principalImage = null)
+    public function setPrincipalImage(ImageInterface $principalImage = null)
     {
         $this->principalImage = $principalImage;
 
@@ -46,7 +48,7 @@ trait PrincipalImageTrait
     /**
      * Get the principalImage
      *
-     * @return \Elcodi\Component\Media\Entity\Interfaces\ImageInterface Principal image
+     * @return ImageInterface Principal image
      */
     public function getPrincipalImage()
     {

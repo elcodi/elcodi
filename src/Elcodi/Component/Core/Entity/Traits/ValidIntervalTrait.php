@@ -17,20 +17,22 @@
 
 namespace Elcodi\Component\Core\Entity\Traits;
 
+use DateTime;
+
 /**
  * trait for add Entity valid interval
  */
 trait ValidIntervalTrait
 {
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * valid from
      */
     protected $validFrom;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * Valid to
      */
@@ -39,11 +41,11 @@ trait ValidIntervalTrait
     /**
      * Set valid from
      *
-     * @param \DateTime $validFrom Valid from
+     * @param DateTime $validFrom Valid from
      *
      * @return $this Self object
      */
-    public function setValidFrom(\DateTime $validFrom)
+    public function setValidFrom(DateTime $validFrom)
     {
         $this->validFrom = $validFrom;
 
@@ -53,7 +55,7 @@ trait ValidIntervalTrait
     /**
      * Get valid from
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getValidFrom()
     {
@@ -63,11 +65,11 @@ trait ValidIntervalTrait
     /**
      * Set valid to
      *
-     * @param \DateTime $validTo Valid to
+     * @param DateTime $validTo Valid to
      *
      * @return $this Self object
      */
-    public function setValidTo(\DateTime $validTo = null)
+    public function setValidTo(DateTime $validTo = null)
     {
         $this->validTo = $validTo;
 
@@ -77,7 +79,7 @@ trait ValidIntervalTrait
     /**
      * Get valid to
      *
-     * @return \DateTime Valid to
+     * @return DateTime Valid to
      */
     public function getValidTo()
     {
