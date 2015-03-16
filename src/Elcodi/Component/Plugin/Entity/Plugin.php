@@ -283,7 +283,7 @@ class Plugin
     /**
      * Is visible
      *
-     * @return bool Visible
+     * @return boolean Visible
      */
     public function isVisible()
     {

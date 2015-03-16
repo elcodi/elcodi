@@ -48,7 +48,7 @@ class CheckCartCouponListener
      *
      * @param CartCouponOnApplyEvent $event
      *
-     * @return bool true if the coupon applies, false otherwise
+     * @return boolean true if the coupon applies, false otherwise
      *
      */
     public function checkCoupon(CartCouponOnApplyEvent $event)

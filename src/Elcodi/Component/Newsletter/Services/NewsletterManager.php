@@ -192,7 +192,7 @@ class NewsletterManager
      *
      * @param string $email Email
      *
-     * @return null|object Subscription instance if exists
+     * @return object|null Subscription instance if exists
      */
     public function getSubscription($email)
     {

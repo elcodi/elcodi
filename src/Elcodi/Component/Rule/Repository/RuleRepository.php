@@ -31,7 +31,7 @@ class RuleRepository extends EntityRepository
      *
      * @param string $name
      *
-     * @return null|RuleInterface
+     * @return RuleInterface|null
      */
     public function findOneByName($name)
     {

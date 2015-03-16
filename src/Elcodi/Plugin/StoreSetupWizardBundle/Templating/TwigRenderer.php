@@ -263,7 +263,7 @@ class TwigRenderer
     /**
      * Checks if the wizard is visible for this request.
      *
-     * @return bool If visible
+     * @return boolean If visible
      */
     protected function isVisible()
     {

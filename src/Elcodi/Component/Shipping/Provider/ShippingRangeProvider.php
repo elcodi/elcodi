@@ -183,7 +183,7 @@ class ShippingRangeProvider
      * @param CartInterface          $cart          Cart
      * @param ShippingRangeInterface $shippingRange Carrier Range
      *
-     * @return bool ShippingRange is satisfied by cart
+     * @return boolean ShippingRange is satisfied by cart
      */
     public function isShippingPriceRangeSatisfiedByCart(
         CartInterface $cart,
@@ -216,7 +216,7 @@ class ShippingRangeProvider
      * @param CartInterface          $cart          Cart
      * @param ShippingRangeInterface $shippingRange Carrier Range
      *
-     * @return bool ShippingRange is satisfied by cart
+     * @return boolean ShippingRange is satisfied by cart
      */
     public function isShippingWeightRangeSatisfiedByCart(
         CartInterface $cart,
@@ -242,7 +242,7 @@ class ShippingRangeProvider
      * @param CartInterface          $cart          Cart
      * @param ShippingRangeInterface $shippingRange Carrier Range
      *
-     * @return bool ShippingRange is satisfied by cart
+     * @return boolean ShippingRange is satisfied by cart
      */
     public function isShippingRangeZonesSatisfiedByCart(
         CartInterface $cart,
