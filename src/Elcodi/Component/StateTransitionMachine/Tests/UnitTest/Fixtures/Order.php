@@ -31,16 +31,16 @@ class Order
     /**
      * @var StateLineInterface
      *
-     * Last stateLine in  stateLine stack
+     * Last stateLine in stateLine stack
      */
-    protected $LastStateLine;
+    protected $lastStateLine;
 
     /**
      * @var Collection
      *
      * StateLines for
      */
-    protected $StateLines;
+    protected $stateLines;
 
     /**
      * Get StateLineStack
@@ -50,22 +50,22 @@ class Order
     public function getStateLineStack()
     {
         return StateLineStack::create(
-            $this->StateLines,
-            $this->LastStateLine
+            $this->stateLines,
+            $this->lastStateLine
         );
     }
 
     /**
      * Sets StateLineStack
      *
-     * @param StateLineStack $StateLineStack StateLineStack
+     * @param StateLineStack $stateLineStack StateLineStack
      *
      * @return $this Self object
      */
-    public function setStateLineStack(StateLineStack $StateLineStack)
+    public function setStateLineStack(StateLineStack $stateLineStack)
     {
-        $this->StateLines = $StateLineStack->getStateLines();
-        $this->LastStateLine = $StateLineStack->getLastStateLine();
+        $this->stateLines = $stateLineStack->getStateLines();
+        $this->lastStateLine = $stateLineStack->getLastStateLine();
 
         return $this;
     }

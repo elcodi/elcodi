@@ -69,17 +69,17 @@ class ShippingRangeFactory extends AbstractFactory
     public function create()
     {
         /**
-         * @var ShippingRangeInterface $ShippingPriceRange
+         * @var ShippingRangeInterface $shippingPriceRange
          */
         $classNamespace = $this->getEntityNamespace();
-        $ShippingPriceRange = new $classNamespace();
+        $shippingPriceRange = new $classNamespace();
 
-        $ShippingPriceRange
+        $shippingPriceRange
             ->setPrice($this->createZeroAmountMoney())
             ->setToPrice($this->createZeroAmountMoney())
             ->setFromPrice($this->createZeroAmountMoney())
             ->setEnabled(true);
 
-        return $ShippingPriceRange;
+        return $shippingPriceRange;
     }
 }

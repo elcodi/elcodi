@@ -31,16 +31,16 @@ class UserRegisterEvent extends Event
      *
      * User
      */
-    protected $User;
+    protected $user;
 
     /**
      * Construct method
      *
-     * @param AbstractUserInterface $User User
+     * @param AbstractUserInterface $user User
      */
-    public function __construct(AbstractUserInterface $User)
+    public function __construct(AbstractUserInterface $user)
     {
-        $this->User = $User;
+        $this->user = $user;
     }
 
     /**
@@ -48,6 +48,6 @@ class UserRegisterEvent extends Event
      */
     public function getUser()
     {
-        return $this->User;
+        return $this->user;
     }
 }
