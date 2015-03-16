@@ -1,8 +1,8 @@
 author: Roger Gros
 description: |
-    Facebook social plugin.
+    facebook social plugin.
 year: 2015
-name: Facebook
+name: facebook
 url: https://facebook.com
 fa_icon: facebook
 configuration_route: admin_facebook_configuration

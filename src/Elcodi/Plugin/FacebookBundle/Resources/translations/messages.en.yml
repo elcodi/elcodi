@@ -1,14 +1,14 @@
 facebook_plugin:
-    title: Facebook
+    title: facebook
     field:
         facebook_account:
-            title: Facebook account
+            title: facebook account
     action:
-        visit_google: Go to Facebook
-        result_ok: Facebook configuration saved
+        visit_google: Go to facebook
+        result_ok: facebook configuration saved
     section:
         settings:
-            title: Facebook configuration
+            title: facebook configuration
     tweet:
         take_look: Take a look at
     error:

@@ -1,14 +1,14 @@
 facebook_plugin:
-    title: Facebook
+    title: facebook
     field:
         facebook_account:
             title: Cuenta de facebook
     action:
-        visit_google: Ir a Facebook
+        visit_google: Ir a facebook
         result_ok: Configuración de facebook guardada
     section:
         settings:
-            title: Configuración de Facebook
+            title: Configuración de facebook
     tweet:
         take_look: Echa un vistazo a
     error:
