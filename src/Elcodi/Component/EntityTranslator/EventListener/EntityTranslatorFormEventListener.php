@@ -125,8 +125,6 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
      *  * array('eventName' => array(array('methodName1', $priority), array('methodName2'))
      *
      * @return array The event names to listen to
-     *
-     * @api
      */
     public static function getSubscribedEvents()
     {
