@@ -33,15 +33,15 @@ class ZoneFactory extends AbstractFactory
     public function create()
     {
         /**
-         * @var Zone $Zone
+         * @var Zone $zone
          */
         $classNamespace = $this->getEntityNamespace();
-        $Zone = new $classNamespace();
-        $Zone
+        $zone = new $classNamespace();
+        $zone
             ->setLocations([])
             ->setEnabled(true)
             ->setCreatedAt(new \DateTime());
 
-        return $Zone;
+        return $zone;
     }
 }

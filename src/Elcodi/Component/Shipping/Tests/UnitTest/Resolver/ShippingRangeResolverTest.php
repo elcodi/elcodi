@@ -110,12 +110,12 @@ class ShippingRangeResolverTest extends PHPUnit_Framework_TestCase
      */
     public function testResolveAllShippingRangesSameCurrency()
     {
-        $ShippingRangeResolver = new ShippingRangeResolver(
+        $shippingRangeResolver = new ShippingRangeResolver(
             $this->currencyConverter,
             ElcodiShippingResolverTypes::SHIPPING_RANGE_RESOLVER_ALL
         );
 
-        $ranges = $ShippingRangeResolver->resolveShippingRanges($this->shippingRanges);
+        $ranges = $shippingRangeResolver->resolveShippingRanges($this->shippingRanges);
         $this->assertSame(
             $this->shippingRanges,
             $ranges
@@ -127,12 +127,12 @@ class ShippingRangeResolverTest extends PHPUnit_Framework_TestCase
      */
     public function testResolveLowestShippingRangesSameCurrency()
     {
-        $ShippingRangeResolver = new ShippingRangeResolver(
+        $shippingRangeResolver = new ShippingRangeResolver(
             $this->currencyConverter,
             ElcodiShippingResolverTypes::SHIPPING_RANGE_RESOLVER_LOWEST
         );
 
-        $ranges = $ShippingRangeResolver->resolveShippingRanges($this->shippingRanges);
+        $ranges = $shippingRangeResolver->resolveShippingRanges($this->shippingRanges);
         $this->assertCount(1, $ranges);
         $range = reset($ranges);
         $this->assertSame(
@@ -146,12 +146,12 @@ class ShippingRangeResolverTest extends PHPUnit_Framework_TestCase
      */
     public function testResolveHighestShippingRangesSameCurrency()
     {
-        $ShippingRangeResolver = new ShippingRangeResolver(
+        $shippingRangeResolver = new ShippingRangeResolver(
             $this->currencyConverter,
             ElcodiShippingResolverTypes::SHIPPING_RANGE_RESOLVER_HIGHEST
         );
 
-        $ranges = $ShippingRangeResolver->resolveShippingRanges($this->shippingRanges);
+        $ranges = $shippingRangeResolver->resolveShippingRanges($this->shippingRanges);
         $this->assertCount(1, $ranges);
         $range = reset($ranges);
         $this->assertSame(

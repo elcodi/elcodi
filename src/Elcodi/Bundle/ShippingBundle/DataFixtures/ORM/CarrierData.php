@@ -63,7 +63,7 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setTax($this->getReference('tax-21'))
             ->setEnabled(true);
 
-        $ShippingPriceRange1 = $shippingRangeDirector
+        $shippingPriceRange1 = $shippingRangeDirector
             ->create()
             ->setType(ElcodiShippingRangeTypes::TYPE_PRICE)
             ->setCarrier($carrier1)
@@ -75,7 +75,7 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(900, $currencyEuro))
             ->setEnabled(true);
 
-        $ShippingPriceRange2 = $shippingRangeDirector
+        $shippingPriceRange2 = $shippingRangeDirector
             ->create()
             ->setType(ElcodiShippingRangeTypes::TYPE_PRICE)
             ->setCarrier($carrier1)
@@ -87,7 +87,7 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(500, $currencyEuro))
             ->setEnabled(true);
 
-        $ShippingPriceRange3 = $shippingRangeDirector
+        $shippingPriceRange3 = $shippingRangeDirector
             ->create()
             ->setType(ElcodiShippingRangeTypes::TYPE_PRICE)
             ->setCarrier($carrier1)
@@ -100,9 +100,9 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setEnabled(true);
 
         $carrierDirector->save($carrier1);
-        $shippingRangeDirector->save($ShippingPriceRange1);
-        $shippingRangeDirector->save($ShippingPriceRange2);
-        $shippingRangeDirector->save($ShippingPriceRange3);
+        $shippingRangeDirector->save($shippingPriceRange1);
+        $shippingRangeDirector->save($shippingPriceRange2);
+        $shippingRangeDirector->save($shippingPriceRange3);
         $this->addReference('carrier-1', $carrier1);
 
         /**
@@ -115,7 +115,7 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setTax($this->getReference('tax-21'))
             ->setEnabled(true);
 
-        $ShippingPriceRangeB1 = $shippingRangeDirector
+        $shippingPriceRangeB1 = $shippingRangeDirector
             ->create()
             ->setType(ElcodiShippingRangeTypes::TYPE_PRICE)
             ->setCarrier($carrier2)
@@ -127,7 +127,7 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(700, $currencyEuro))
             ->setEnabled(true);
 
-        $ShippingPriceRangeB2 = $shippingRangeDirector
+        $shippingPriceRangeB2 = $shippingRangeDirector
             ->create()
             ->setType(ElcodiShippingRangeTypes::TYPE_PRICE)
             ->setCarrier($carrier2)
@@ -139,7 +139,7 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(300, $currencyEuro))
             ->setEnabled(true);
 
-        $ShippingPriceRangeB3 = $shippingRangeDirector
+        $shippingPriceRangeB3 = $shippingRangeDirector
             ->create()
             ->setType(ElcodiShippingRangeTypes::TYPE_PRICE)
             ->setCarrier($carrier2)
@@ -152,9 +152,9 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setEnabled(true);
 
         $carrierDirector->save($carrier2);
-        $shippingRangeDirector->save($ShippingPriceRangeB1);
-        $shippingRangeDirector->save($ShippingPriceRangeB2);
-        $shippingRangeDirector->save($ShippingPriceRangeB3);
+        $shippingRangeDirector->save($shippingPriceRangeB1);
+        $shippingRangeDirector->save($shippingPriceRangeB2);
+        $shippingRangeDirector->save($shippingPriceRangeB3);
         $this->addReference('carrier-2', $carrier2);
 
         /**
@@ -167,7 +167,7 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setTax($this->getReference('tax-16'))
             ->setEnabled(true);
 
-        $ShippingWeightRange1 = $shippingRangeDirector
+        $shippingWeightRange1 = $shippingRangeDirector
             ->create()
             ->setType(ElcodiShippingRangeTypes::TYPE_WEIGHT)
             ->setCarrier($carrier3)
@@ -179,7 +179,7 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(500, $currencyEuro))
             ->setEnabled(true);
 
-        $ShippingWeightRange2 = $shippingRangeDirector
+        $shippingWeightRange2 = $shippingRangeDirector
             ->create()
             ->setType(ElcodiShippingRangeTypes::TYPE_WEIGHT)
             ->setCarrier($carrier3)
@@ -191,7 +191,7 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(700, $currencyEuro))
             ->setEnabled(true);
 
-        $ShippingWeightRange3 = $shippingRangeDirector
+        $shippingWeightRange3 = $shippingRangeDirector
             ->create()
             ->setType(ElcodiShippingRangeTypes::TYPE_WEIGHT)
             ->setCarrier($carrier3)
@@ -204,9 +204,9 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setEnabled(true);
 
         $carrierDirector->save($carrier3);
-        $shippingRangeDirector->save($ShippingWeightRange1);
-        $shippingRangeDirector->save($ShippingWeightRange2);
-        $shippingRangeDirector->save($ShippingWeightRange3);
+        $shippingRangeDirector->save($shippingWeightRange1);
+        $shippingRangeDirector->save($shippingWeightRange2);
+        $shippingRangeDirector->save($shippingWeightRange3);
         $this->addReference('carrier-3', $carrier3);
 
         /**
@@ -219,7 +219,7 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setTax($this->getReference('tax-21'))
             ->setEnabled(true);
 
-        $ShippingWeightRangeB1 = $shippingRangeDirector
+        $shippingWeightRangeB1 = $shippingRangeDirector
             ->create()
             ->setType(ElcodiShippingRangeTypes::TYPE_WEIGHT)
             ->setCarrier($carrier4)
@@ -231,7 +231,7 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(500, $currencyEuro))
             ->setEnabled(true);
 
-        $ShippingWeightRangeB2 = $shippingRangeDirector
+        $shippingWeightRangeB2 = $shippingRangeDirector
             ->create()
             ->setType(ElcodiShippingRangeTypes::TYPE_WEIGHT)
             ->setCarrier($carrier4)
@@ -243,7 +243,7 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(1500, $currencyEuro))
             ->setEnabled(true);
 
-        $ShippingWeightRangeB3 = $shippingRangeDirector
+        $shippingWeightRangeB3 = $shippingRangeDirector
             ->create()
             ->setType(ElcodiShippingRangeTypes::TYPE_WEIGHT)
             ->setCarrier($carrier4)
@@ -256,9 +256,9 @@ class CarrierData extends AbstractFixture implements DependentFixtureInterface
             ->setEnabled(true);
 
         $carrierDirector->save($carrier4);
-        $shippingRangeDirector->save($ShippingWeightRangeB1);
-        $shippingRangeDirector->save($ShippingWeightRangeB2);
-        $shippingRangeDirector->save($ShippingWeightRangeB3);
+        $shippingRangeDirector->save($shippingWeightRangeB1);
+        $shippingRangeDirector->save($shippingWeightRangeB2);
+        $shippingRangeDirector->save($shippingWeightRangeB3);
         $this->addReference('carrier-4', $carrier4);
     }
 
