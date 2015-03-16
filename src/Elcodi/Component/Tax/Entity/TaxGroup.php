@@ -58,7 +58,7 @@ class TaxGroup implements TaxGroupInterface
     /**
      * Get Id
      *
-     * @return int Id
+     * @return integer Id
      */
     public function getId()
     {
@@ -68,7 +68,7 @@ class TaxGroup implements TaxGroupInterface
     /**
      * Sets Id
      *
-     * @param int $id Id
+     * @param integer $id Id
      *
      * @return $this Self object
      */

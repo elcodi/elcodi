@@ -58,14 +58,14 @@ interface PurchasableInterface
     /**
      * Gets the variant stock
      *
-     * @return int stock
+     * @return integer stock
      */
     public function getStock();
 
     /**
      * Sets the variant stock
      *
-     * @param int $stock
+     * @param integer $stock
      *
      * @return $this Self object
      */

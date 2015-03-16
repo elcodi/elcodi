@@ -25,14 +25,14 @@ interface IdentifiableInterface
     /**
      * Get Id
      *
-     * @return int Id
+     * @return integer Id
      */
     public function getId();
 
     /**
      * Sets Id
      *
-     * @param int $id Id
+     * @param integer $id Id
      *
      * @return $this Self object
      */

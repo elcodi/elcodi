@@ -53,7 +53,7 @@ trait DimensionsTrait
     /**
      * Get Depth
      *
-     * @return int Depth
+     * @return integer Depth
      */
     public function getDepth()
     {
@@ -63,7 +63,7 @@ trait DimensionsTrait
     /**
      * Sets Depth
      *
-     * @param int $depth Depth
+     * @param integer $depth Depth
      *
      * @return $this Self object
      */
@@ -77,7 +77,7 @@ trait DimensionsTrait
     /**
      * Get Height
      *
-     * @return int Height
+     * @return integer Height
      */
     public function getHeight()
     {
@@ -87,7 +87,7 @@ trait DimensionsTrait
     /**
      * Sets Height
      *
-     * @param int $height Height
+     * @param integer $height Height
      *
      * @return $this Self object
      */
@@ -101,7 +101,7 @@ trait DimensionsTrait
     /**
      * Get Weight
      *
-     * @return int Weight
+     * @return integer Weight
      */
     public function getWeight()
     {
@@ -111,7 +111,7 @@ trait DimensionsTrait
     /**
      * Sets Weight
      *
-     * @param int $weight Weight
+     * @param integer $weight Weight
      *
      * @return $this Self object
      */
@@ -125,7 +125,7 @@ trait DimensionsTrait
     /**
      * Get Width
      *
-     * @return int Width
+     * @return integer Width
      */
     public function getWidth()
     {
@@ -135,7 +135,7 @@ trait DimensionsTrait
     /**
      * Sets Width
      *
-     * @param int $width Width
+     * @param integer $width Width
      *
      * @return $this Self object
      */

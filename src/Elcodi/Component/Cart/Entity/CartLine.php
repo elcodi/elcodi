@@ -98,7 +98,7 @@ class CartLine implements CartLineInterface
     /**
      * Return the purchasable object depth
      *
-     * @return int Depth
+     * @return integer Depth
      */
     public function getDepth()
     {
@@ -110,7 +110,7 @@ class CartLine implements CartLineInterface
     /**
      * Return the purchasable object height
      *
-     * @return int Height
+     * @return integer Height
      */
     public function getHeight()
     {
@@ -122,7 +122,7 @@ class CartLine implements CartLineInterface
     /**
      * Return the purchasable object width
      *
-     * @return int Width
+     * @return integer Width
      */
     public function getWidth()
     {
@@ -134,7 +134,7 @@ class CartLine implements CartLineInterface
     /**
      * Return the purchasable object weight
      *
-     * @return int Weight
+     * @return integer Weight
      */
     public function getWeight()
     {

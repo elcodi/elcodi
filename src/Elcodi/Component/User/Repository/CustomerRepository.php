@@ -47,7 +47,7 @@ class CustomerRepository extends EntityRepository implements UserEmaileableInter
      * @param integer $customerId The customer Id
      * @param integer $addressId  The address Id
      *
-     * @return bool
+     * @return boolean
      */
     public function findAddress($customerId, $addressId)
     {

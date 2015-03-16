@@ -233,7 +233,7 @@ class ConfigurationManager extends AbstractCacheWrapper
      *
      * @param string $configurationIdentifier
      *
-     * @return bool
+     * @return boolean
      *
      * @throws ConfigurationNotEditableException       Configuration parameter is read-only
      * @throws ConfigurationParameterNotFoundException Configuration parameter not found

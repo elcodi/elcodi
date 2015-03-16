@@ -95,7 +95,7 @@ interface CommentInterface extends DateTimeInterface, EnabledInterface
     /**
      * Sets Id
      *
-     * @param int $id Id
+     * @param integer $id Id
      *
      * @return $this Self object
      */
@@ -104,7 +104,7 @@ interface CommentInterface extends DateTimeInterface, EnabledInterface
     /**
      * Get Id
      *
-     * @return int Id
+     * @return integer Id
      */
     public function getId();
 
@@ -143,7 +143,7 @@ interface CommentInterface extends DateTimeInterface, EnabledInterface
     /**
      * Sets ParsingType
      *
-     * @param int $parsingType ParsingType
+     * @param integer $parsingType ParsingType
      *
      * @return $this Self object
      */
@@ -152,7 +152,7 @@ interface CommentInterface extends DateTimeInterface, EnabledInterface
     /**
      * Get ParsingType
      *
-     * @return int ParsingType
+     * @return integer ParsingType
      */
     public function getParsingType();
 

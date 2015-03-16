@@ -46,14 +46,14 @@ interface EntryInterface
     /**
      * Get Type
      *
-     * @return int Type
+     * @return integer Type
      */
     public function getType();
 
     /**
      * Get CreatedAt
      *
-     * @return mixed CreatedAt
+     * @return \DateTime|null CreatedAt
      */
     public function getCreatedAt();
 }

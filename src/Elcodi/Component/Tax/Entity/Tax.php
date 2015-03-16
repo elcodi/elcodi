@@ -66,7 +66,7 @@ class Tax implements TaxInterface
     /**
      * Get Id
      *
-     * @return int Id
+     * @return integer Id
      */
     public function getId()
     {
@@ -76,7 +76,7 @@ class Tax implements TaxInterface
     /**
      * Sets Id
      *
-     * @param int $id Id
+     * @param integer $id Id
      *
      * @return $this Self object
      */

@@ -106,14 +106,14 @@ interface PageInterface
     /**
      * Get Type
      *
-     * @return int Type
+     * @return integer Type
      */
     public function getType();
 
     /**
      * Sets Type
      *
-     * @param int $type Type
+     * @param integer $type Type
      *
      * @return $this Self object
      */

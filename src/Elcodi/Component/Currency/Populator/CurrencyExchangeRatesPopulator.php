@@ -120,7 +120,7 @@ class CurrencyExchangeRatesPopulator
      *
      * @param OutputInterface $output The output interface
      *
-     * @return int|null|void
+     * @return integer|null|void
      */
     public function populate(OutputInterface $output)
     {

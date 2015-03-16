@@ -81,7 +81,7 @@ class ChainPageRenderer implements PageRendererInterface
      *
      * @param PageInterface $page Page to check support
      *
-     * @return bool
+     * @return boolean
      */
     public function supports(PageInterface $page)
     {

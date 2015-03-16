@@ -188,7 +188,7 @@ class Page implements PageInterface
     /**
      * Get Type
      *
-     * @return int Type
+     * @return integer Type
      */
     public function getType()
     {
@@ -198,7 +198,7 @@ class Page implements PageInterface
     /**
      * Sets Type
      *
-     * @param int $type Type
+     * @param integer $type Type
      *
      * @return $this Self object
      */

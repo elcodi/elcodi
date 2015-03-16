@@ -56,7 +56,7 @@ class MappingProvider
      *
      * @param string $implementation Implementation
      *
-     * @return string|bool Interface
+     * @return string|boolean Interface
      */
     public function getInterface($implementation)
     {
@@ -70,7 +70,7 @@ class MappingProvider
      *
      * @param string $interface Interface
      *
-     * @return string|bool Implementation
+     * @return string|boolean Implementation
      */
     public function getImplementation($interface)
     {

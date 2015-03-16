@@ -72,14 +72,14 @@ class Category implements CategoryInterface
     protected $products;
 
     /**
-     * @var bool
+     * @var boolean
      *
      * Category is a root category
      */
     protected $root;
 
     /**
-     * @var Integer
+     * @var integer
      *
      * Position order to show in menu
      */
@@ -258,7 +258,7 @@ class Category implements CategoryInterface
     /**
      * Set position
      *
-     * @param Integer $position Category relative position
+     * @param integer $position Category relative position
      *
      * @return $this Self object
      */
@@ -272,7 +272,7 @@ class Category implements CategoryInterface
     /**
      * Return Position
      *
-     * @return Integer Category relative position
+     * @return integer Category relative position
      */
     public function getPosition()
     {

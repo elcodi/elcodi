@@ -153,7 +153,7 @@ class CouponManager
      * @param CouponInterface $coupon Coupon to check activeness
      * @param DateTime        $now
      *
-     * @return bool
+     * @return boolean
      */
     protected function isActive(CouponInterface $coupon, \DateTime $now = null)
     {
@@ -179,7 +179,7 @@ class CouponManager
      *
      * @param CouponInterface $coupon
      *
-     * @return bool
+     * @return boolean
      */
     protected function canBeUsed(CouponInterface $coupon)
     {

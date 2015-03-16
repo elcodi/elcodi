@@ -99,7 +99,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface
     /**
      * Set quantity
      *
-     * @param int $quantity Quantity
+     * @param integer $quantity Quantity
      *
      * @return $this Self object
      */

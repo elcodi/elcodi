@@ -94,7 +94,7 @@ class Entry implements EntryInterface
     /**
      * Get Id
      *
-     * @return int Id
+     * @return integer Id
      */
     public function getId()
     {
@@ -134,7 +134,7 @@ class Entry implements EntryInterface
     /**
      * Get Type
      *
-     * @return int Type
+     * @return integer Type
      */
     public function getType()
     {

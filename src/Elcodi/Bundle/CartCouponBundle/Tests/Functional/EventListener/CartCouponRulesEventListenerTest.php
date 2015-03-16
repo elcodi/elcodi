@@ -58,8 +58,8 @@ class CartCouponRulesEventListenerTest extends WebTestCase
     /**
      * Tests coupon rules when all rules validate
      *
-     * @param array $expressions   One or more expressions, only the last one will be checked
-     * @param int   $couponsNumber Number of coupons that should apply
+     * @param array   $expressions   One or more expressions, only the last one will be checked
+     * @param integer $couponsNumber Number of coupons that should apply
      *
      * @dataProvider dataOnCartCouponApplyValidate
      */
@@ -117,8 +117,8 @@ class CartCouponRulesEventListenerTest extends WebTestCase
     /**
      * Tests coupon rules when all rules validate
      *
-     * @param array $expressions            One or more expressions, only the last one will be checked
-     * @param int   $appliedCouponsExpected Number of coupons that should apply
+     * @param array   $expressions            One or more expressions, only the last one will be checked
+     * @param integer $appliedCouponsExpected Number of coupons that should apply
      *
      * @dataProvider dataOnCartCouponApplyValidate
      */

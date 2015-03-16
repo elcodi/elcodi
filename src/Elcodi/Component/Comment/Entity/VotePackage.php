@@ -72,7 +72,7 @@ class VotePackage
     /**
      * Get NbDownVotes
      *
-     * @return int NbDownVotes
+     * @return integer NbDownVotes
      */
     public function getNbDownVotes()
     {
@@ -82,7 +82,7 @@ class VotePackage
     /**
      * Get NbUpVotes
      *
-     * @return int NbUpVotes
+     * @return integer NbUpVotes
      */
     public function getNbUpVotes()
     {
@@ -92,7 +92,7 @@ class VotePackage
     /**
      * Get NbVotes
      *
-     * @return int NbVotes
+     * @return integer NbVotes
      */
     public function getNbVotes()
     {

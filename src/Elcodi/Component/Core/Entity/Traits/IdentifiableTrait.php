@@ -32,7 +32,7 @@ trait IdentifiableTrait
     /**
      * Get Id
      *
-     * @return int Id
+     * @return integer Id
      */
     public function getId()
     {
@@ -42,7 +42,7 @@ trait IdentifiableTrait
     /**
      * Sets Id
      *
-     * @param int $id Id
+     * @param integer $id Id
      *
      * @return $this Self object
      */

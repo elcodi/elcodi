@@ -25,14 +25,14 @@ interface ShippingWeightRangeInterface
     /**
      * Get ToWeight
      *
-     * @return int ToWeight
+     * @return integer ToWeight
      */
     public function getToWeight();
 
     /**
      * Sets ToWeight
      *
-     * @param int $toWeight ToWeight
+     * @param integer $toWeight ToWeight
      *
      * @return $this Self object
      */
@@ -41,14 +41,14 @@ interface ShippingWeightRangeInterface
     /**
      * Get FromWeight
      *
-     * @return int FromWeight
+     * @return integer FromWeight
      */
     public function getFromWeight();
 
     /**
      * Sets FromWeight
      *
-     * @param int $fromWeight FromWeight
+     * @param integer $fromWeight FromWeight
      *
      * @return $this Self object
      */

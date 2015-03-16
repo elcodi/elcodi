@@ -106,7 +106,7 @@ class Variant implements VariantInterface
     /**
      * Gets the variant stock
      *
-     * @return int Stock
+     * @return integer Stock
      */
     public function getStock()
     {
@@ -116,7 +116,7 @@ class Variant implements VariantInterface
     /**
      * Sets the variant stock
      *
-     * @param int $stock
+     * @param integer $stock
      *
      * @return $this Self object
      */
