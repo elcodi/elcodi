@@ -19,13 +19,15 @@ namespace Elcodi\Component\Media\Entity\Traits;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
+
 /**
  * Trait ImagesContainerTrait
  */
 trait ImagesContainerTrait
 {
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var ArrayCollection
      *
      * Images
      */
@@ -41,11 +43,11 @@ trait ImagesContainerTrait
     /**
      * Set add image
      *
-     * @param \Elcodi\Component\Media\Entity\Interfaces\ImageInterface $image Image object to be added
+     * @param ImageInterface $image Image object to be added
      *
      * @return $this Self object
      */
-    public function addImage(\Elcodi\Component\Media\Entity\Interfaces\ImageInterface $image)
+    public function addImage(ImageInterface $image)
     {
         $this->images->add($image);
 
@@ -55,11 +57,11 @@ trait ImagesContainerTrait
     /**
      * Get if entity is enabled
      *
-     * @param \Elcodi\Component\Media\Entity\Interfaces\ImageInterface $image Image object to be removed
+     * @param ImageInterface $image Image object to be removed
      *
      * @return $this Self object
      */
-    public function removeImage(\Elcodi\Component\Media\Entity\Interfaces\ImageInterface $image)
+    public function removeImage(ImageInterface $image)
     {
         $this->images->removeElement($image);
 
@@ -69,7 +71,7 @@ trait ImagesContainerTrait
     /**
      * Get all images
      *
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     * @return ArrayCollection
      */
     public function getImages()
     {
@@ -79,7 +81,7 @@ trait ImagesContainerTrait
     /**
      * Get sorted images
      *
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     * @return ArrayCollection
      */
     public function getSortedImages()
     {
@@ -92,8 +94,8 @@ trait ImagesContainerTrait
         usort(
             $imagesCollection,
             function (
-                \Elcodi\Component\Media\Entity\Interfaces\ImageInterface $a,
-                \Elcodi\Component\Media\Entity\Interfaces\ImageInterface $b
+                ImageInterface $a,
+                ImageInterface $b
             ) use ($orderCollection) {
 
                 $aPos = array_search($a->getId(), $orderCollection);
@@ -111,11 +113,11 @@ trait ImagesContainerTrait
     /**
      * Set images
      *
-     * @param \Doctrine\Common\Collections\ArrayCollection $images Images
+     * @param ArrayCollection $images Images
      *
      * @return $this Self object
      */
-    public function setImages(\Doctrine\Common\Collections\ArrayCollection $images)
+    public function setImages(ArrayCollection $images)
     {
         $this->images = $images;
 

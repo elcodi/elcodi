@@ -17,6 +17,10 @@
 
 namespace Elcodi\Component\Shipping\Entity\Traits;
 
+use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
+use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
+use Elcodi\Component\Currency\Entity\Money;
+
 /**
  * Trait ShippingPriceRangeTrait
  */
@@ -30,7 +34,7 @@ trait ShippingPriceRangeTrait
     protected $fromPriceAmount;
 
     /**
-     * @var \Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
+     * @var CurrencyInterface
      *
      * fromPriceCurrency
      */
@@ -44,7 +48,7 @@ trait ShippingPriceRangeTrait
     protected $toPriceAmount;
 
     /**
-     * @var \Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
+     * @var CurrencyInterface
      *
      * toPriceCurrency
      */
@@ -53,11 +57,11 @@ trait ShippingPriceRangeTrait
     /**
      * Sets from price
      *
-     * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $price Price
+     * @param MoneyInterface $price Price
      *
      * @return $this Self object
      */
-    public function setFromPrice(\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $price)
+    public function setFromPrice(MoneyInterface $price)
     {
         $this->fromPriceAmount = $price->getAmount();
         $this->fromPriceCurrency = $price->getCurrency();
@@ -68,11 +72,11 @@ trait ShippingPriceRangeTrait
     /**
      * Get from price
      *
-     * @return \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface Price
+     * @return MoneyInterface Price
      */
     public function getFromPrice()
     {
-        return \Elcodi\Component\Currency\Entity\Money::create(
+        return Money::create(
             $this->fromPriceAmount,
             $this->fromPriceCurrency
         );
@@ -81,11 +85,11 @@ trait ShippingPriceRangeTrait
     /**
      * Sets to price
      *
-     * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $price Price
+     * @param MoneyInterface $price Price
      *
      * @return $this Self object
      */
-    public function setToPrice(\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $price)
+    public function setToPrice(MoneyInterface $price)
     {
         $this->toPriceAmount = $price->getAmount();
         $this->toPriceCurrency = $price->getCurrency();
@@ -96,11 +100,11 @@ trait ShippingPriceRangeTrait
     /**
      * Get to price
      *
-     * @return \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface Price
+     * @return MoneyInterface Price
      */
     public function getToPrice()
     {
-        return \Elcodi\Component\Currency\Entity\Money::create(
+        return Money::create(
             $this->toPriceAmount,
             $this->toPriceCurrency
         );

@@ -17,13 +17,15 @@
 
 namespace Elcodi\Component\ReferralProgram\Entity\Traits;
 
+use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
+
 /**
  * Class CouponAssignmentTrait
  */
 trait CouponAssignmentTrait
 {
     /**
-     * @var \Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface
+     * @var CouponInterface
      *
      * referrerCoupon
      */
@@ -37,7 +39,7 @@ trait CouponAssignmentTrait
     protected $referrerType;
 
     /**
-     * @var \Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface
+     * @var CouponInterface
      *
      * invitedCoupon
      */
@@ -53,11 +55,11 @@ trait CouponAssignmentTrait
     /**
      * Sets InvitedCoupon
      *
-     * @param \Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface $invitedCoupon InvitedCoupon
+     * @param CouponInterface $invitedCoupon InvitedCoupon
      *
      * @return $this Self object
      */
-    public function setInvitedCoupon(\Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface $invitedCoupon = null)
+    public function setInvitedCoupon(CouponInterface $invitedCoupon = null)
     {
         $this->invitedCoupon = $invitedCoupon;
 
@@ -67,7 +69,7 @@ trait CouponAssignmentTrait
     /**
      * Get InvitedCoupon
      *
-     * @return \Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface InvitedCoupon
+     * @return CouponInterface InvitedCoupon
      */
     public function getInvitedCoupon()
     {
@@ -101,11 +103,11 @@ trait CouponAssignmentTrait
     /**
      * Sets ReferrerCoupon
      *
-     * @param \Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface $referrerCoupon ReferrerCoupon
+     * @param CouponInterface $referrerCoupon ReferrerCoupon
      *
      * @return $this Self object
      */
-    public function setReferrerCoupon(\Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface $referrerCoupon = null)
+    public function setReferrerCoupon(CouponInterface $referrerCoupon = null)
     {
         $this->referrerCoupon = $referrerCoupon;
 
@@ -115,7 +117,7 @@ trait CouponAssignmentTrait
     /**
      * Get ReferrerCoupon
      *
-     * @return \Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface ReferrerCoupon
+     * @return CouponInterface ReferrerCoupon
      */
     public function getReferrerCoupon()
     {
