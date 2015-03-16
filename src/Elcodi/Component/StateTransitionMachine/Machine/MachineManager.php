@@ -17,7 +17,7 @@
 
 namespace Elcodi\Component\StateTransitionMachine\Machine;
 
-use StdClass;
+use stdClass;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 use Elcodi\Component\StateTransitionMachine\Definition\Transition;
@@ -80,7 +80,7 @@ class MachineManager
     /**
      * Initialize the object into the machine
      *
-     * @param StdClass       $object         $object Object
+     * @param stdClass       $object         Object
      * @param StateLineStack $stateLineStack StateLine Stack
      * @param string         $description    Description
      *
@@ -120,7 +120,7 @@ class MachineManager
     /**
      * Applies a transition given a object
      *
-     * @param StdClass       $object         $object Object
+     * @param stdClass       $object         Object
      * @param StateLineStack $stateLineStack StateLine Stack
      * @param string         $transitionName Transition name
      * @param string         $description    Description
@@ -169,7 +169,7 @@ class MachineManager
     /**
      * Applies a transition given a object
      *
-     * @param StdClass       $object         $object Object
+     * @param stdClass       $object         Object
      * @param StateLineStack $stateLineStack StateLine Stack
      * @param string         $transitionName Transition name
      * @param string         $description    Description
@@ -238,7 +238,7 @@ class MachineManager
      * Throw initialization events
      *
      * @param MachineInterface $machine        Machine
-     * @param StdClass         $object         $object Object
+     * @param stdClass         $object         Object
      * @param StateLineStack   $stateLineStack StateLine Stack
      *
      * @return $this Self object
@@ -267,7 +267,7 @@ class MachineManager
      * Throw transition events
      *
      * @param MachineInterface $machine        Machine
-     * @param StdClass         $object         $object Object
+     * @param stdClass         $object         Object
      * @param StateLineStack   $stateLineStack StateLine Stack
      * @param Transition       $transition     Transition
      *

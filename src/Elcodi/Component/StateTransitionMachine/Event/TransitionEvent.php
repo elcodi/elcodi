@@ -17,7 +17,7 @@
 
 namespace Elcodi\Component\StateTransitionMachine\Event;
 
-use StdClass;
+use stdClass;
 use Symfony\Component\EventDispatcher\Event;
 
 use Elcodi\Component\StateTransitionMachine\Definition\Transition;
@@ -29,7 +29,7 @@ use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 class TransitionEvent extends Event
 {
     /**
-     * @var StdClass
+     * @var stdClass
      *
      * Object
      */
@@ -52,7 +52,7 @@ class TransitionEvent extends Event
     /**
      * Construct
      *
-     * @param StdClass       $object         Object
+     * @param stdClass       $object         Object
      * @param StateLineStack $stateLineStack State line stack
      * @param Transition     $transition     Transition
      */
@@ -69,7 +69,7 @@ class TransitionEvent extends Event
     /**
      * Get Object
      *
-     * @return StdClass Object
+     * @return stdClass Object
      */
     public function getObject()
     {

@@ -14,7 +14,7 @@ services:
     # Store tracker
     #
     elcodi.store_tracker:
-        class: StdClass
+        class: stdClass
         factory_service: elcodi.manager.configuration
         factory_method: get
         arguments: ['store.tracker']
