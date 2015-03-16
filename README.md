@@ -16,7 +16,7 @@ Elcodi is now in an early development stage and provides a reference implementat
 
 See the [front-end store](http://bamboo.elcodi.com) and the [back-office](http://bamboo.elcodi.com/admin) demo application in action.
 
-Check out the source code for the [front](https://github.com/elcodi/bamboo-store) and [backend](https://github.com/elcodi/bamboo-admin) applications.
+Check out the source code for [Bamboo](https://github.com/elcodi/bamboo).
 
 Requirements
 ------------
