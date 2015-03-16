@@ -166,7 +166,7 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
     /**
      * Get historical data
      *
-     * @param \DateTime $date
+     * @param DateTime $date
      *
      * @return array
      */
