@@ -30,10 +30,14 @@ class MinimumPriceCouponListener
 {
     /**
      * @var CurrencyConverter
+     *
+     * Currency converter
      */
     protected $currencyConverter;
 
     /**
+     * Construct
+     *
      * @param CurrencyConverter $currencyConverter
      */
     public function __construct(CurrencyConverter $currencyConverter)
@@ -44,9 +48,9 @@ class MinimumPriceCouponListener
     /**
      * Check if cart meets minimum price requirements for a coupon
      *
-     * @param CartCouponOnCheckEvent $event
+     * @param CartCouponOnCheckEvent $event Event
      *
-     * @throws CouponBelowMinimumPurchaseException
+     * @throws CouponBelowMinimumPurchaseException Minimum value not reached
      */
     public function checkMinimumPrice(CartCouponOnCheckEvent $event)
     {

@@ -59,7 +59,8 @@ class TranslatorTest extends PHPUnit_Framework_TestCase
 
         $translator = new EntityTranslator(
             $entityTranslationProvider,
-            $configuration
+            $configuration,
+            true
         );
 
         $product = new TranslatableProduct();
@@ -130,7 +131,8 @@ class TranslatorTest extends PHPUnit_Framework_TestCase
 
         $translator = new EntityTranslator(
             $entityTranslationProvider,
-            $configuration
+            $configuration,
+            true
         );
 
         $product = new TranslatableProduct();
