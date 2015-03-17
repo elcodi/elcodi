@@ -56,7 +56,9 @@ class TranslatorBuilderTest extends PHPUnit_Framework_TestCase
         $translatorBuilder = new EntityTranslatorBuilder(
             $entityTranslationProvider,
             $translatorFactory,
-            $configuration
+            $configuration,
+            true
+
         );
         $translator = $translatorBuilder->compile();
         $this->assertInstanceOf('\Elcodi\Component\EntityTranslator\Services\EntityTranslator', $translator);
@@ -76,7 +78,8 @@ class TranslatorBuilderTest extends PHPUnit_Framework_TestCase
         $translatorBuilder = new EntityTranslatorBuilder(
             $entityTranslationProvider,
             $translatorFactory,
-            $configuration
+            $configuration,
+            true
         );
         $translatorBuilder->compile();
     }
