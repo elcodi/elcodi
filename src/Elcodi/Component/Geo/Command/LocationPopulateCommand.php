@@ -174,7 +174,7 @@ class LocationPopulateCommand extends Command
     }
 
     /**
-     * Drops the location and it's relations
+     * Drops the location and its relations
      *
      * @param LocationInterface $location The location to remove
      * @param OutputInterface   $output   A console output
@@ -197,7 +197,7 @@ class LocationPopulateCommand extends Command
         $elapsed = $finish->diff($start);
 
         $message = sprintf(
-            '<header>[Geo]</header> <body>Droped in %d min %d sec</body>',
+            '<header>[Geo]</header> <body>Dropped in %d min %d sec</body>',
             $elapsed->format('%i'),
             $elapsed->format('%s')
         );
