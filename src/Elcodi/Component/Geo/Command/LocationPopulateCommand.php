@@ -20,12 +20,14 @@ namespace Elcodi\Component\Geo\Command;
 use DateTime;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
+use Symfony\Component\Console\Helper\DialogHelper;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 use Elcodi\Component\Core\Services\ObjectDirector;
+use Elcodi\Component\Geo\Entity\Interfaces\LocationInterface;
 use Elcodi\Component\Geo\Populator\Interfaces\PopulatorInterface;
 
 /**
@@ -60,7 +62,7 @@ class LocationPopulateCommand extends Command
         parent::__construct();
 
         $this->locationPopulator = $locationPopulator;
-        $this->locationDirector = $locationDirector;
+        $this->locationDirector  = $locationDirector;
     }
 
     /**
@@ -85,8 +87,7 @@ class LocationPopulateCommand extends Command
     }
 
     /**
-     * This command loads all the exchange rates from base_currency to all available
-     * currencies
+     * This command loads all the locations for the received country
      *
      * @param InputInterface  $input  The input interface
      * @param OutputInterface $output The output interface
@@ -95,7 +96,10 @@ class LocationPopulateCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $countryCodes = $input->getArgument('country');
+        $dialog        = $this->getHelper('dialog');
+        $countryCodes  = $input->getArgument('country');
+        $noInteraction = $input->getOption('no-interaction');
+
         $countryCodes = explode(',', $countryCodes);
 
         $formatter = $output->getFormatter();
@@ -103,32 +107,144 @@ class LocationPopulateCommand extends Command
         $formatter->setStyle('body', new OutputFormatterStyle('white'));
 
         $output->writeln('');
-        $output->writeln('<header>[Geo]</header> <body>This process may take a few minutes. Please, be patient</body>');
+
+        $message = sprintf(
+            '<header>%s</header> <body>%s</body>',
+            '[Geo]',
+            'This process may take a few minutes. Please, be patient'
+        );
+        $output->writeln($message);
 
         foreach ($countryCodes as $countryCode) {
-            $output->writeln('<header>[Geo]</header> <body>Populating country code: '.$countryCode);
-
-            $locations = $this
-                ->locationPopulator
-                ->populate(
-                    $countryCode,
-                    $output
-                );
-
-            $output->writeln('<header>[Geo]</header> <body>Flushing manager started</body>');
-
-            $start = new DateTime();
-
-            $this
+            $country = $this
                 ->locationDirector
-                ->save($locations);
+                ->findOneBy(['code' => $countryCode]);
 
-            $finish = new DateTime();
-            $elapsed = $finish->diff($start);
+            if ($country instanceof LocationInterface) {
+                if (
+                    !$noInteraction &&
+                    !$this->confirmRemoval(
+                        $countryCode,
+                        $dialog,
+                        $output
+                    )
+                ) {
+                    return;
+                }
 
-            $output->writeln('<header>[Geo]</header> <body>Manager flushed in '.$elapsed->format('%s').' seconds</body>');
+                $this->dropLocation($country, $output);
+            }
+
+            $this->populateLocations(
+                $countryCode,
+                $output
+            );
         }
 
-        $output->writeln('<header>[Geo]</header> <body>Process finished. Please checkout your database</body>');
+        $message = sprintf(
+            '<header>%s</header> <body>%s</body>',
+            '[Geo]',
+            'Process finished. Please checkout your database'
+        );
+        $output->writeln($message);
+    }
+
+    /**
+     * Asks to confirm the location removal
+     *
+     * @param string          $countryCode  The country code
+     * @param DialogHelper    $dialogHelper A dialog helper
+     * @param OutputInterface $output       A console output
+     *
+     * @return bool
+     */
+    protected function confirmRemoval(
+        $countryCode,
+        DialogHelper $dialogHelper,
+        OutputInterface $output
+    ) {
+        $message =
+            "All locations from $countryCode will be dropped. Continue? (y/n)";
+
+        return $dialogHelper->askConfirmation(
+            $output,
+            sprintf('<question>%s</question>', $message),
+            false
+        );
+    }
+
+    /**
+     * Drops the location and it's relations
+     *
+     * @param LocationInterface $location The location to remove
+     * @param OutputInterface   $output   A console output
+     */
+    protected function dropLocation(
+        LocationInterface $location,
+        OutputInterface $output
+    ) {
+        $message = sprintf(
+            '<header>[Geo]</header> <body>Dropping country code: %s',
+            $location->getCode()
+        );
+        $output->writeln($message);
+
+        $start = new DateTime();
+
+        $this->locationDirector->remove($location);
+
+        $finish  = new DateTime();
+        $elapsed = $finish->diff($start);
+
+        $message = sprintf(
+            '<header>[Geo]</header> <body>Droped in %d min %d sec</body>',
+            $elapsed->format('%i'),
+            $elapsed->format('%s')
+        );
+        $output->writeln($message);
+    }
+
+    /**
+     * Populate the locations for the received country.
+     *
+     * @param string          $countryCode The country code to import
+     * @param OutputInterface $output      A console output
+     */
+    protected function populateLocations(
+        $countryCode,
+        OutputInterface $output
+    ) {
+        $message = sprintf(
+            '<header>[Geo]</header> <body>Populating country code: %s',
+            $countryCode
+        );
+        $output->writeln($message);
+
+        $locations = $this
+            ->locationPopulator
+            ->populate(
+                $countryCode,
+                $output
+            );
+
+        $message =
+            '<header>[Geo]</header> <body>Flushing manager started</body>';
+        $output->writeln($message);
+
+        $start = new DateTime();
+
+        $this
+            ->locationDirector
+            ->save($locations);
+
+        $finish  = new DateTime();
+        $elapsed = $finish->diff($start);
+
+        $message = sprintf(
+            '<header>[Geo]</header> <body>Flushed in %d min %d sec</body>',
+            $elapsed->format('%i'),
+            $elapsed->format('%s')
+        );
+        $output->writeln($message);
     }
 }
