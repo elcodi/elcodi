@@ -7,6 +7,11 @@ Elcodi for Symfony2
 [![Latest Unstable Version](https://poser.pugx.org/elcodi/elcodi/v/unstable.png)](https://packagist.org/packages/elcodi/elcodi)
 [![License](https://poser.pugx.org/elcodi/elcodi/license.png)](https://packagist.org/packages/elcodi/elcodi)
 
+> Warning. This project is not tagged as stable yet. It means that we don't
+> promise BC between minor versions or patch versions. As soon as possible, we
+> will release our first Release Candidate, and the first Stable Version will
+> be release on June 1st. Stay Tuned and enjoy Elcodi.
+
 Elcodi is a suite of e-commerce bundles and components developed for the **Symfony2 Framework**.
 
 It aims to promote SOLID principles, efficient code reutilization, separation of concerns as effective building blocks for the development of e-commerce applications.
