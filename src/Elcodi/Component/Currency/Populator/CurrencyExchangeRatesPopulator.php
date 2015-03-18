@@ -146,16 +146,16 @@ class CurrencyExchangeRatesPopulator
                 $currenciesCodes
             );
 
-        foreach ($rates as $code => $rate) {
+        /**
+         * @var CurrencyInterface $sourceCurrency
+         */
+        $sourceCurrency = $this
+            ->currencyRepository
+            ->findOneBy([
+                'iso' => $this->defaultCurrency,
+            ]);
 
-            /**
-             * @var CurrencyInterface $sourceCurrency
-             */
-            $sourceCurrency = $this
-                ->currencyRepository
-                ->findOneBy([
-                    'iso' => $this->defaultCurrency,
-                ]);
+        foreach ($rates as $code => $rate) {
 
             /**
              * @var CurrencyInterface $targetCurrency
