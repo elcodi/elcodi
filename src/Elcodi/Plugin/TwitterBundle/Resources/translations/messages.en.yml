@@ -1,0 +1,15 @@
+twitter_plugin:
+    title: Twitter
+    field:
+        twitter_account:
+            title: Twitter account
+    action:
+        visit_google: Go to Twitter
+        result_ok: Twitter configuration saved
+    section:
+        settings:
+            title: Twitter configuration
+    tweet:
+        take_look: Take a look at
+    error:
+        is_disabled: The plugin is disabled

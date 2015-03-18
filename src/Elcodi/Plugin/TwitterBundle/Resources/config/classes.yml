@@ -1,0 +1,8 @@
+parameters:
+
+    #
+    # Templating
+    #
+    elcodi_plugin.twitter.javascript_renderer.class: Elcodi\Plugin\TwitterBundle\Templating\JavascriptRenderer
+    elcodi_plugin.twitter.share_tweet_renderer.class: Elcodi\Plugin\TwitterBundle\Templating\ShareTweetRenderer
+    elcodi_plugin.twitter.follow_renderer.class: Elcodi\Plugin\TwitterBundle\Templating\FollowRenderer

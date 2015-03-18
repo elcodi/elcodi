@@ -1,0 +1,3 @@
+ElcodiTwitterBundle:
+    resource: "@ElcodiTwitterBundle/Controller/"
+    type:     annotation

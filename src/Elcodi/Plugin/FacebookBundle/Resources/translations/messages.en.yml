@@ -1,0 +1,15 @@
+facebook_plugin:
+    title: facebook
+    field:
+        facebook_account:
+            title: facebook account
+    action:
+        visit_google: Go to facebook
+        result_ok: facebook configuration saved
+    section:
+        settings:
+            title: facebook configuration
+    tweet:
+        take_look: Take a look at
+    error:
+        is_disabled: The plugin is disabled
