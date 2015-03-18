@@ -92,6 +92,11 @@ class ImageManager
     {
         $fileMime = $file->getMimeType();
 
+        if ('application/octet-stream' === $fileMime) {
+            $imageSizeData = getimagesize($file->getPathname());
+            $fileMime = $imageSizeData['mime'];
+        }
+
         if (strpos($fileMime, 'image/') !== 0) {
             throw new InvalidImageException();
         }
@@ -107,7 +112,9 @@ class ImageManager
          */
         $image = $this->imageFactory->create();
 
-        $imageSizeData = getimagesize($file->getPathname());
+        if (!isset($imageSizeData)) {
+            $imageSizeData = getimagesize($file->getPathname());
+        }
         $name = $file->getFilename();
         $image
             ->setWidth($imageSizeData[0])
