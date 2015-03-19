@@ -1,4 +1,4 @@
-Elcodi for Symfony2
+Elcodi for Symfony
 ===================
 [![Build Status](https://travis-ci.org/elcodi/elcodi.svg?branch=master)](https://travis-ci.org/elcodi/elcodi)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/elcodi/elcodi/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/elcodi/elcodi/?branch=master)
@@ -12,7 +12,7 @@ Elcodi for Symfony2
 > will release our first Release Candidate, and the first Stable Version will
 > be release on June 1st. Stay Tuned and enjoy Elcodi.
 
-Elcodi is a suite of e-commerce bundles and components developed for the **Symfony2 Framework**.
+Elcodi is a suite of e-commerce bundles and components developed for the **Symfony Framework**.
 
 It aims to promote SOLID principles, efficient code reutilization, separation of concerns as effective building blocks for the development of e-commerce applications.
 
@@ -20,7 +20,7 @@ Elcodi is now in an early development stage and provides a reference implementat
 
 See the [front-end store](http://bamboo.elcodi.com) and the [back-office](http://bamboo.elcodi.com/admin) demo application in action.
 
-Check out the source code for the [front](https://github.com/elcodi/bamboo-store) and [backend](https://github.com/elcodi/bamboo-admin) applications.
+Check out the source code for [Bamboo](https://github.com/elcodi/bamboo).
 
 Requirements
 ------------
@@ -56,9 +56,9 @@ this badge for your github repository.
 Contributing
 ------------
 
-This projects follows Symfony2 coding standards, so pull requests must pass phpcs
+This projects follows Symfony coding standards, so pull requests must pass phpcs
 checks. Read more details about
-[Symfony2 coding standards](http://symfony.com/doc/current/contributing/code/standards.html)
+[Symfony coding standards](http://symfony.com/doc/current/contributing/code/standards.html)
 and install the corresponding [CodeSniffer definition](https://github.com/opensky/Symfony2-coding-standard) 
 to run code validation.
 
