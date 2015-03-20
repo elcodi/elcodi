@@ -28,12 +28,12 @@ Elcodi\Component\Geo\Entity\Location:
     manyToMany:
         parents:
             targetEntity: Elcodi\Component\Geo\Entity\Interfaces\LocationInterface
-            inversedBy: children
+            mappedBy: parents
             cascade: ["persist"]
 
         children:
             targetEntity: Elcodi\Component\Geo\Entity\Interfaces\LocationInterface
-            mappedBy: parents
+            inversedBy: children
             cascade: ["persist","remove"]
             joinTable:
                 name: location_inheritance
