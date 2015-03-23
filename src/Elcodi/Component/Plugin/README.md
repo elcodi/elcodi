@@ -25,7 +25,7 @@ The basic one is `HookSystemInterface`, which defined how all implementations sh
 with `listen` method, and execute hooks with `execute`. Each listener receives an `EventInterface` with the current 
 context and content passed to the execution.
 
-The basic implemntation is an adapter over `symfony/event-dispatcher`.
+The basic implementation is an adapter over `symfony/event-dispatcher`.
 
 Check the documentation in [Elcodi Docs](http://docs.elcodi.io). Feel free to propose new recipes, examples or guides; our main goal is to help the developer building their site.
 

@@ -88,7 +88,7 @@ class ConvertToOrderCouponsListener
      *
      * @param OrderOnCreatedEvent $orderOnCreatedEvent OrderOnCreated Event
      */
-    public function convertCoupontToOrder(OrderOnCreatedEvent $orderOnCreatedEvent)
+    public function convertCouponToOrder(OrderOnCreatedEvent $orderOnCreatedEvent)
     {
         $order = $orderOnCreatedEvent->getOrder();
         $cart = $orderOnCreatedEvent->getCart();

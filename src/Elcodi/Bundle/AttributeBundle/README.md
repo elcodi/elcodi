@@ -127,7 +127,7 @@ to load the entities and related classes from the annotations
 - **elcodi/core-bundle:** Elcodi core bundle component
 - **elcodi/attribute:** The attribute components
 
-Also has dev dependences with:
+Also has dev dependencies with:
 - **elcodi/test-common-bundle:** Our common test utilities
 - **elcodi/bamboo-bundle:** We use the bamboo bundle for functional tests
 - **elcodi/fixtures-booster-bundle:** Used to boost the tests execution

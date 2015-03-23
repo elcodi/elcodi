@@ -180,7 +180,7 @@ class PluginManager
             ->get('store.plugins');
 
         foreach ($plugins as $pluginKey => $plugin) {
-            $plugins[$pluginKey] = $this->hidratePlugin($plugin);
+            $plugins[$pluginKey] = $this->hydratePlugin($plugin);
         }
 
         return $plugins;
@@ -202,7 +202,7 @@ class PluginManager
             /**
              * @var Plugin $plugin
              */
-            $plugin = $this->hidratePlugin($pluginInfo);
+            $plugin = $this->hydratePlugin($pluginInfo);
             if ($plugin->isVisible()) {
                 $visiblePlugin[] = $plugin;
             }
@@ -251,17 +251,17 @@ class PluginManager
             ->configurationManager
             ->set('store.plugins', $plugins);
 
-        return $this->hidratePlugin($plugins[$pluginNamespace]);
+        return $this->hydratePlugin($plugins[$pluginNamespace]);
     }
 
     /**
-     * Hidrate plugin
+     * Hydrate plugin
      *
      * @param array $plugin Plugin data
      *
-     * @return Plugin Hidratation
+     * @return Plugin Hydration
      */
-    protected function hidratePlugin(array $plugin)
+    protected function hydratePlugin(array $plugin)
     {
         return new Plugin(
             $plugin['author'],

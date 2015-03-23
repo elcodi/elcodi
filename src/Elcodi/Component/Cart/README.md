@@ -125,7 +125,7 @@ product, with it's quantity, price, etc.
 
 **CartLine Fields**
 - **Id**: The identifier **(Unique)**
-- **Product Ammount**: The price for a product on this line `e.g. 26`
+- **Product Amount**: The price for a product on this line `e.g. 26`
 - **Amount**: The price for all the products on this line  `e.g. 52`
 - **Quantity**: The quantity of products on this line. `e.g. 2`
 - **Order line**: After the cart is processed the current line is mapped on the
@@ -246,7 +246,7 @@ file.
 
 ## CartInconsistentEvent
 
-This event is dispatched when an inconsistence is found in a cart.
+This event is dispatched when an inconsistency is found in a cart.
 
 **e.g.** *The cart line that is supposed to be added is not enabled or there's
 not enough stock*
