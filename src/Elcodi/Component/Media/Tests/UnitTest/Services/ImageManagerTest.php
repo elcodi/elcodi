@@ -10,15 +10,18 @@
  *
  * Feel free to edit as you please, and have fun.
  *
- * @author Gonzalo Míguez <me@gmiguez.com>
+ * @author Marc Morera <yuhu@mmoreram.com>
+ * @author Aldo Chiecchia <zimage@tiscali.it>
+ * @author Elcodi Team <tech@elcodi.com>
  */
 
 namespace Elcodi\Component\Media\Tests\UnitTest\Transformer;
 
-use Elcodi\Component\Media\Entity\Image;
-use Elcodi\Component\Media\Services\ImageManager;
 use PHPUnit_Framework_TestCase;
 use Symfony\Component\HttpFoundation\File\File;
+
+use Elcodi\Component\Media\Entity\Image;
+use Elcodi\Component\Media\Services\ImageManager;
 
 /**
  * Class ImageManagerTest
@@ -75,7 +78,6 @@ class ImageManagerTest extends PHPUnit_Framework_TestCase
         );
     }
 
-
     /**
      * @param $imageFileObject
      * @param $finalMimeType
@@ -103,26 +105,26 @@ class ImageManagerTest extends PHPUnit_Framework_TestCase
      */
     public function regularImagesProvider()
     {
-        $tmpDir = sys_get_temp_dir() . DIRECTORY_SEPARATOR;
+        $tmpDir = sys_get_temp_dir().DIRECTORY_SEPARATOR;
         $imageJpeg = imagecreate(1, 1);
         $white = imagecolorallocate($imageJpeg, 255, 255, 255);
         imagesetpixel($imageJpeg, 1, 1, $white);
-        imagejpeg($imageJpeg, $tmpDir . 'test.jpg');
-        $jpegFilePath = $tmpDir . 'test.jpg';
+        imagejpeg($imageJpeg, $tmpDir.'test.jpg');
+        $jpegFilePath = $tmpDir.'test.jpg';
 
-        $pngTransparentPixel = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3a' .
+        $pngTransparentPixel = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3a'.
             'AAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII';
-        file_put_contents($tmpDir . 'test.png', base64_decode($pngTransparentPixel));
-        $pngFilePath = $tmpDir . 'test.png';
+        file_put_contents($tmpDir.'test.png', base64_decode($pngTransparentPixel));
+        $pngFilePath = $tmpDir.'test.png';
 
         $gifTransparentPixel = 'R0lGODlhAQABAJAAAP8AAAAAACH5BAUQAAAALAAAAAABAAEAAAICBAEAOw';
-        file_put_contents($tmpDir . 'test.gif', base64_decode($gifTransparentPixel));
-        $gifFilePath = $tmpDir . 'test.gif';
+        file_put_contents($tmpDir.'test.gif', base64_decode($gifTransparentPixel));
+        $gifFilePath = $tmpDir.'test.gif';
 
         return [
             [$jpegFilePath],
             [$pngFilePath],
-            [$gifFilePath]
+            [$gifFilePath],
         ];
     }
 
@@ -131,21 +133,21 @@ class ImageManagerTest extends PHPUnit_Framework_TestCase
      */
     public function imagesAsOctetStreamProvider()
     {
-        $tmpDir = sys_get_temp_dir() . DIRECTORY_SEPARATOR;
+        $tmpDir = sys_get_temp_dir().DIRECTORY_SEPARATOR;
         $imageJpeg = imagecreate(1, 1);
         $white = imagecolorallocate($imageJpeg, 255, 255, 255);
         imagesetpixel($imageJpeg, 1, 1, $white);
-        imagejpeg($imageJpeg, $tmpDir . 'test.jpg');
-        $jpegFilePath = $tmpDir . 'test.jpg';
+        imagejpeg($imageJpeg, $tmpDir.'test.jpg');
+        $jpegFilePath = $tmpDir.'test.jpg';
 
-        $pngTransparentPixel = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3a' .
+        $pngTransparentPixel = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3a'.
             'AAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII';
-        file_put_contents($tmpDir . 'test.png', base64_decode($pngTransparentPixel));
-        $pngFilePath = $tmpDir . 'test.png';
+        file_put_contents($tmpDir.'test.png', base64_decode($pngTransparentPixel));
+        $pngFilePath = $tmpDir.'test.png';
 
         $gifTransparentPixel = 'R0lGODlhAQABAJAAAP8AAAAAACH5BAUQAAAALAAAAAABAAEAAAICBAEAOw';
-        file_put_contents($tmpDir . 'test.gif', base64_decode($gifTransparentPixel));
-        $gifFilePath = $tmpDir . 'test.gif';
+        file_put_contents($tmpDir.'test.gif', base64_decode($gifTransparentPixel));
+        $gifFilePath = $tmpDir.'test.gif';
 
         $mockJpegOctet = $this
             ->getMockBuilder('\Symfony\Component\HttpFoundation\File\File')
@@ -183,7 +185,7 @@ class ImageManagerTest extends PHPUnit_Framework_TestCase
         return [
             [$mockJpegOctet, 'image/jpeg'],
             [$mockPngOctet, 'image/png'],
-            [$mockGifOctet, 'image/gif']
+            [$mockGifOctet, 'image/gif'],
         ];
     }
 }
