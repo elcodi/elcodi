@@ -136,11 +136,11 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
 
                 case ElcodiMediaImageResizeTypes::OUTBOUND_CROP:
                     $pb
-                        ->add($width.'x'.$height.'')
+                        ->add($width.'x'.$height.'^')
                         ->add('-gravity')
                         ->add('center')
-                        ->add('-extent')
-                        ->add($width.'x'.$height);
+                        ->add('-crop')
+                        ->add($width.'x'.$height.'+0+0');
 
                     break;
 
