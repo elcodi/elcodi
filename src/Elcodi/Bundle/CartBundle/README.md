@@ -178,7 +178,7 @@ statuses for the cart and orders
 - **elcodi/shipping-bundle:** Used to manage cart or order shipping properties
 - **elcodi/cart:** The cart component
 
-Also has dev dependences with:
+Also has dev dependencies with:
 - **elcodi/test-common-bundle:** Our common test utilities
 - **elcodi/bamboo-bundle:** We use the bamboo bundle for functional tests
 - **elcodi/fixtures-booster-bundle:** Used to boost the tests execution

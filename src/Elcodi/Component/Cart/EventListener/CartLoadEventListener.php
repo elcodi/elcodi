@@ -325,7 +325,7 @@ class CartLoadEventListener
         /**
          * Setting amounts for current CartLine.
          *
-         * Line Currency was set by CartManager::addProduct when factorying CartLine
+         * Line Currency was set by CartManager::addProduct when factorizing CartLine
          */
         $cartLine->setProductAmount($productPrice);
         $cartLine->setAmount($productPrice->multiply($cartLine->getQuantity()));

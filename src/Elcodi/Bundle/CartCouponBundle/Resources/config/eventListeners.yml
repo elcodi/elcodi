@@ -75,7 +75,7 @@ services:
             - @elcodi.manager.order_coupon
             - @elcodi.object_manager.order_coupon
         tags:
-            - { name: kernel.event_listener, event: order.oncreated, method: convertCoupontToOrder, priority: -16 }
+            - { name: kernel.event_listener, event: order.oncreated, method: convertCouponToOrder, priority: -16 }
 
     elcodi.event_listener.cart_coupon.order_coupon_manager:
         class: %elcodi.event_listener.cart_coupon.order_coupon_manager.class%

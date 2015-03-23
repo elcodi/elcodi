@@ -152,7 +152,7 @@ addresses to ensure that any older order keeps the right address*
 [View code](https://github.com/elcodi/Geo/blob/master/Services/LocationApiProvider.php)
 
 This service uses the Locations API to provide locations and their info (Root,
-Childrens, Parents, hierarchy, etc.)
+Children, Parents, hierarchy, etc.)
 
 **e.g.** *This service is used to fill the location selectors on the forms to
 add a new address*
@@ -171,7 +171,7 @@ received by the locations API*
 [View code](https://github.com/elcodi/Geo/blob/master/Services/LocationServiceProvider.php)
 
 This service uses the Locations repository to provide locations and their info
-(Root, Childrens, Parents, hierarchy, etc.)
+(Root, Children, Parents, hierarchy, etc.)
 
 **e.g.** *This service is used to fill the location selectors on the forms to
 add a new address*
