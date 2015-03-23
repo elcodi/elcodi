@@ -21,6 +21,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use Elcodi\Component\Shipping\Entity\Interfaces\CarrierInterface;
+
 /**
  * Class AdminController
  */
@@ -44,6 +46,17 @@ class WizardController extends Controller
             ->get('elcodi_templates.wizard_status.service');
         $stepsFinished       = $wizardStatusService->getStepsFinishStatus();
 
+        $firstCarrier = $this
+            ->get('elcodi.repository.carrier')
+            ->findOneBy(
+                ['enabled' => true],
+                ['id' => 'ASC']
+            );
+
+        $firstCarrier = ($firstCarrier instanceof CarrierInterface)
+            ? $firstCarrier
+            : false;
+
         $activeStep = null;
         foreach ($stepsFinished as $step => $isFinished) {
             if (false === $isFinished) {
@@ -55,6 +68,7 @@ class WizardController extends Controller
         return [
             'stepsFinished' => $stepsFinished,
             'activeStep'    => $activeStep,
+            'carrier'       => $firstCarrier,
         ];
     }
 }

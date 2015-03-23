@@ -20,8 +20,8 @@ namespace Elcodi\Plugin\StoreSetupWizardBundle\Services;
 use Elcodi\Component\Configuration\Services\ConfigurationManager;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Repository\ProductRepository;
-use Elcodi\Component\Shipping\Entity\Interfaces\CarrierInterface;
-use Elcodi\Component\Shipping\Repository\CarrierRepository;
+use Elcodi\Component\Shipping\Entity\Interfaces\ShippingPriceRangeInterface;
+use Elcodi\Component\Shipping\Repository\ShippingRangeRepository;
 
 /**
  * Class WizardStatus
@@ -43,28 +43,30 @@ class WizardStatus
     protected $productRepository;
 
     /**
-     * @var CarrierRepository
+     * @var ShippingRangeRepository
      *
-     * Carrier repository
+     * Shipping range repository
      */
-    protected $carrierRepository;
+    protected $shippingRangeRepository;
 
     /**
      * Builds a new WizardStepChecker
      *
-     * @param ConfigurationManager $configurationManager Configuration
-     *                                                   manager
-     * @param ProductRepository    $productRepository    Product repository
-     * @param CarrierRepository    $carrierRepository    Carrier repository
+     * @param ConfigurationManager    $configurationManager    Configuration
+     *                                                         manager
+     * @param ProductRepository       $productRepository       Product
+     *                                                         repository
+     * @param ShippingRangeRepository $shippingRangeRepository A shipping range
+     *                                                         repository
      */
     public function __construct(
         ConfigurationManager $configurationManager,
         ProductRepository $productRepository,
-        CarrierRepository $carrierRepository
+        ShippingRangeRepository $shippingRangeRepository
     ) {
-        $this->configurationManager = $configurationManager;
-        $this->productRepository    = $productRepository;
-        $this->carrierRepository    = $carrierRepository;
+        $this->configurationManager    = $configurationManager;
+        $this->productRepository       = $productRepository;
+        $this->shippingRangeRepository = $shippingRangeRepository;
     }
 
     /**
@@ -112,7 +114,7 @@ class WizardStatus
             case 3:
                 return $this->isPaymentFulfilled();
             case 4:
-                return $this->isThereAnyCarrier();
+                return $this->isThereAnyShippingRange();
             default:
                 return true;
         }
@@ -187,18 +189,16 @@ class WizardStatus
     }
 
     /**
-     * Checks if any carrier has been added to the store.
+     * Checks if any shipping range has been added to the store.
      *
      * @return boolean
      */
-    protected function isThereAnyCarrier()
+    protected function isThereAnyShippingRange()
     {
-        $enabledCarrier = $this
-            ->carrierRepository
-            ->findOneBy([
-                'enabled' => true,
-            ]);
+        $shippingRange = $this
+            ->shippingRangeRepository
+            ->findOneBy([]);
 
-        return ($enabledCarrier instanceof CarrierInterface);
+        return ($shippingRange instanceof ShippingPriceRangeInterface);
     }
 }

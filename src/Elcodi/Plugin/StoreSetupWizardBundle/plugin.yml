@@ -8,7 +8,7 @@ year: 2015
 name: Setup Wizard
 url: http://elcodi.io/
 fa_icon: magic
-configuration_route: admin_store_setup_wizard_configuration
+configuration_route: ~
 version: ~0.4
 enabled: true
 visible: false

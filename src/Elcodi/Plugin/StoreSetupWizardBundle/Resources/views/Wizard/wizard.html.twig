@@ -89,7 +89,13 @@
             {% if not isMiniWizard %}
                 <p>{{ 'wizard.step4.description'|trans }}</p>
             {% endif %}
-            <p class="mb-n"><a href="{{ url('admin_carrier_new') }}" class="button button-primary">{{ 'wizard.step4.action'|trans }}</a></p>
+            <p class="mb-n">
+                {% if carrier %}
+                <a href="{{ url('admin_shipping_range_new', {carrierId: carrier.id}) }}" class="button button-primary">{{ 'wizard.step4.action_range'|trans }}</a>
+                {% else %}
+                <a href="{{ url('admin_carrier_new') }}" class="button button-primary">{{ 'wizard.step4.action_carrier'|trans }}</a>
+                {% endif %}
+            </p>
             <p class="fz-s">{% trans with {'%1': minutesStepFour } %}wizard.estimated_time{% endtrans %}</p>
         </div>
     </div>
