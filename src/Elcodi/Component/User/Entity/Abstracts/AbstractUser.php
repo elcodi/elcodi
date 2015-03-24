@@ -104,7 +104,7 @@ abstract class AbstractUser implements AbstractUserInterface
      */
     public function getRoles()
     {
-        return array('IS_AUTHENTICATED_ANONYMOUSLY');
+        return ['IS_AUTHENTICATED_ANONYMOUSLY'];
     }
 
     /**
@@ -294,7 +294,7 @@ abstract class AbstractUser implements AbstractUserInterface
      */
     public function getFullName()
     {
-        return trim($this->firstname.' '.$this->lastname);
+        return trim($this->firstname . ' ' . $this->lastname);
     }
 
     /**
@@ -384,6 +384,6 @@ abstract class AbstractUser implements AbstractUserInterface
      */
     public function __sleep()
     {
-        return array('id', 'email');
+        return ['id', 'email'];
     }
 }

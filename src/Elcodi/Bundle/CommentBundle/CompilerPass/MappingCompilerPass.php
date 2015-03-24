@@ -48,7 +48,6 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
                 'elcodi.entity.comment_vote.class',
                 'elcodi.entity.comment_vote.mapping_file',
                 'elcodi.entity.comment_vote.enabled'
-            )
-        ;
+            );
     }
 }

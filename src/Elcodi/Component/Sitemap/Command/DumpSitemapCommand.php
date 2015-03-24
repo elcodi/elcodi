@@ -55,8 +55,8 @@ class DumpSitemapCommand extends Command
         $sitemapProfileName = $this->getSitemapProfileName();
 
         $this
-            ->setName('elcodi:sitemap:'.$sitemapProfileName.':dump')
-            ->setDescription('Dumps sitemap '.$sitemapProfileName);
+            ->setName('elcodi:sitemap:' . $sitemapProfileName . ':dump')
+            ->setDescription('Dumps sitemap ' . $sitemapProfileName);
     }
 
     /**
@@ -75,9 +75,9 @@ class DumpSitemapCommand extends Command
             ->dump();
 
         $output->writeln(
-            '<header>[Sitemap]</header> <body>Sitemap '.
-            $this->getSitemapProfileName().
-            ' built in . '.$this->getSitemapProfilePath().' </body>'
+            '<header>[Sitemap]</header> <body>Sitemap ' .
+            $this->getSitemapProfileName() .
+            ' built in . ' . $this->getSitemapProfilePath() . ' </body>'
         );
     }
 

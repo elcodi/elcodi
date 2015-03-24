@@ -41,7 +41,7 @@ class ElcodiRuleExtension extends AbstractExtension implements EntitiesOverridab
      */
     public function getConfigFilesLocation()
     {
-        return __DIR__.'/../Resources/config';
+        return __DIR__ . '/../Resources/config';
     }
 
     /**

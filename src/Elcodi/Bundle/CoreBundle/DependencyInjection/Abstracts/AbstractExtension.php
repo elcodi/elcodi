@@ -125,7 +125,7 @@ abstract class AbstractExtension
      */
     public function getNamespace()
     {
-        return 'http://example.org/schema/dic/'.$this->getAlias();
+        return 'http://example.org/schema/dic/' . $this->getAlias();
     }
 
     /**
@@ -286,7 +286,7 @@ abstract class AbstractExtension
                 $configFile = $configFile[0];
             }
 
-            $loader->load($configFile.'.yml');
+            $loader->load($configFile . '.yml');
         }
     }
 

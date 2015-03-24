@@ -122,7 +122,7 @@ class MachineBuilder
      */
     public function compile()
     {
-        $nodesVisited = array();
+        $nodesVisited = [];
 
         /**
          * Checking the configuration
@@ -301,7 +301,7 @@ class MachineBuilder
      */
     protected function checkTransitionDuplicates(TransitionChain $transitionChain)
     {
-        $states = array();
+        $states = [];
 
         /**
          * @var Transition $transition
@@ -318,7 +318,7 @@ class MachineBuilder
                     );
                 }
             } else {
-                $states[$startingStateName] = array();
+                $states[$startingStateName] = [];
             }
 
             $states[$startingStateName][$transitionName] = true;

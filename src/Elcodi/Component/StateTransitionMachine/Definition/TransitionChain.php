@@ -34,7 +34,7 @@ class TransitionChain
      */
     public function __construct()
     {
-        $this->transitions = array();
+        $this->transitions = [];
     }
 
     /**

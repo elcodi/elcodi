@@ -39,10 +39,10 @@ class PageRepository extends EntityRepository
      */
     public function findOneByPath($path)
     {
-        return $this->findOneBy(array(
+        return $this->findOneBy([
             'path'    => $path,
             'enabled' => true,
-        ));
+        ]);
     }
 
     /**

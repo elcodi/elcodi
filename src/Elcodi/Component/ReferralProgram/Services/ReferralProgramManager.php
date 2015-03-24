@@ -291,11 +291,11 @@ class ReferralProgramManager
             $referralLines = new ArrayCollection();
             $referralLine = $this
                 ->referralLineRepository
-                ->findOneBy(array(
+                ->findOneBy([
                     'enabled'      => true,
                     'closed'       => false,
                     'invitedEmail' => $invitedEmail,
-                ));
+                ]);
 
             if (!($referralLine instanceof ReferralLineInterface)) {
 
@@ -309,10 +309,10 @@ class ReferralProgramManager
 
                 $referralLines = $this
                     ->referralLineRepository
-                    ->findBy(array(
+                    ->findBy([
                         'closed'       => false,
                         'invitedEmail' => $invitedEmail,
-                    ));
+                    ]);
 
                 /**
                  * No result is found or more than one. It means than this user
@@ -424,10 +424,10 @@ class ReferralProgramManager
          * is enabled. If it is, we skip this email.
          */
         if ($this->purgeDisabledLines) {
-            $enabledReferralLine = $this->referralLineRepository->findOneBy(array(
+            $enabledReferralLine = $this->referralLineRepository->findOneBy([
                 'enabled'      => true,
                 'invitedEmail' => $invitation->getEmail(),
-            ));
+            ]);
 
             if ($enabledReferralLine instanceof ReferralLineInterface) {
                 return $this;
@@ -439,10 +439,10 @@ class ReferralProgramManager
          */
         $referralLine = $this
             ->referralLineRepository
-            ->findOneBy(array(
+            ->findOneBy([
                 'invitedEmail' => $invitation->getEmail(),
                 'referralHash' => $referralHash,
-            ));
+            ]);
         if ($referralLine instanceof ReferralLine) {
             throw new ReferralProgramLineExistsException();
         }

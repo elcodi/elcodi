@@ -71,7 +71,7 @@ class HookSystemAdapter implements HookSystemInterface
      *
      * @return mixed Content after transformation
      */
-    public function execute($hookName, $context = array(), $content = '')
+    public function execute($hookName, $context = [], $content = '')
     {
         $event = new EventAdapter($context, $content);
         $this->eventDispatcher->dispatch($hookName, $event);

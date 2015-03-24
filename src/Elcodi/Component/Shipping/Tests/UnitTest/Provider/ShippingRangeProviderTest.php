@@ -138,15 +138,15 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
 
         $shippingRangeProvider = $this
             ->getMockBuilder('Elcodi\Component\Shipping\Provider\ShippingRangeProvider')
-            ->setMethods(array(
+            ->setMethods([
                 'isShippingRangeZonesSatisfiedByCart',
-            ))
-            ->setConstructorArgs(array(
+            ])
+            ->setConstructorArgs([
                 $this->carrierRepository,
                 $this->currencyConverter,
                 $this->zoneMatcher,
                 $this->shippingRangeResolver,
-            ))
+            ])
             ->getMock();
 
         $shippingRangeProvider
@@ -202,15 +202,15 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
 
         $shippingRangeProvider = $this
             ->getMockBuilder('Elcodi\Component\Shipping\Provider\ShippingRangeProvider')
-            ->setMethods(array(
+            ->setMethods([
                 'isShippingRangeZonesSatisfiedByCart',
-            ))
-            ->setConstructorArgs(array(
+            ])
+            ->setConstructorArgs([
                 $this->carrierRepository,
                 $this->currencyConverter,
                 $this->zoneMatcher,
                 $this->shippingRangeResolver,
-            ))
+            ])
             ->getMock();
 
         $shippingRangeProvider
@@ -253,15 +253,15 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
 
         $shippingRangeProvider = $this
             ->getMockBuilder('Elcodi\Component\Shipping\Provider\ShippingRangeProvider')
-            ->setMethods(array(
+            ->setMethods([
                 'isShippingRangeZonesSatisfiedByCart',
-            ))
-            ->setConstructorArgs(array(
+            ])
+            ->setConstructorArgs([
                 $this->carrierRepository,
                 $this->currencyConverter,
                 $this->zoneMatcher,
                 $this->shippingRangeResolver,
-            ))
+            ])
             ->getMock();
 
         $shippingRangeProvider
@@ -287,15 +287,15 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
 
         $shippingRangeProvider = $this
             ->getMockBuilder('Elcodi\Component\Shipping\Provider\ShippingRangeProvider')
-            ->setMethods(array(
+            ->setMethods([
                 'isShippingRangeZonesSatisfiedByCart',
-            ))
-            ->setConstructorArgs(array(
+            ])
+            ->setConstructorArgs([
                 $this->carrierRepository,
                 $this->currencyConverter,
                 $this->zoneMatcher,
                 $this->shippingRangeResolver,
-            ))
+            ])
             ->getMock();
 
         $shippingRangeProvider
@@ -321,23 +321,23 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
             ->carrierRepository
             ->expects($this->any())
             ->method('findBy')
-            ->will($this->returnValue(array(
+            ->will($this->returnValue([
                 $this->getCarrierMock(100, 110, 40, 50),
                 $this->getCarrierMock(120, 300, 500, 1000),
                 $this->getCarrierMock(50, 101, 10, 10),
-            )));
+            ]));
 
         $shippingRangeProvider = $this
             ->getMockBuilder('Elcodi\Component\Shipping\Provider\ShippingRangeProvider')
-            ->setMethods(array(
+            ->setMethods([
                 'isShippingRangeZonesSatisfiedByCart',
-            ))
-            ->setConstructorArgs(array(
+            ])
+            ->setConstructorArgs([
                 $this->carrierRepository,
                 $this->currencyConverter,
                 $this->zoneMatcher,
                 $this->shippingRangeResolver,
-            ))
+            ])
             ->getMock();
 
         $shippingRangeProvider
@@ -375,10 +375,10 @@ class ShippingRangeProviderTest extends PHPUnit_Framework_TestCase
     ) {
         $carrier = $this->getMock('Elcodi\Component\Shipping\Entity\Interfaces\CarrierInterface');
 
-        $shippingRanges = array(
+        $shippingRanges = [
             $this->getShippingPriceRangeMock($fromPrice, $toPrice),
             $this->getShippingWeightRangeMock($fromWeight, $toWeight),
-        );
+        ];
 
         $carrier
             ->expects($this->any())

@@ -54,9 +54,9 @@ class ConfigurationExtension extends Twig_Extension
      */
     public function getFunctions()
     {
-        return array(
-            new Twig_SimpleFunction('elcodi_config', array($this, 'getParameter')),
-        );
+        return [
+            new Twig_SimpleFunction('elcodi_config', [$this, 'getParameter']),
+        ];
     }
 
     /**

@@ -48,7 +48,7 @@ class EventAdapter extends Event implements EventInterface
      * @param array  $context Caller's context
      * @param string $content Original content
      */
-    public function __construct(array $context = array(), $content = '')
+    public function __construct(array $context = [], $content = '')
     {
         $this->content = $content;
         $this->context = $context;

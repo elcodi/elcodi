@@ -75,7 +75,7 @@ class TemplatesLoadCommand extends Command
         foreach ($templates as $template) {
             $formattedLine = $formatter->formatSection(
                 'OK',
-                'Template "'.$template['bundle'].'" installed'
+                'Template "' . $template['bundle'] . '" installed'
             );
 
             $output->writeln($formattedLine);

@@ -62,7 +62,6 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
                 'elcodi.core.cart.entity.order_line.class',
                 'elcodi.core.cart.entity.order_line.mapping_file',
                 'elcodi.core.cart.entity.order_line.enabled'
-            )
-        ;
+            );
     }
 }

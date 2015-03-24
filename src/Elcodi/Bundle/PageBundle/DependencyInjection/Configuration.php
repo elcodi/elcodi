@@ -76,7 +76,6 @@ class Configuration extends AbstractConfiguration implements ConfigurationInterf
                 ->arrayNode('renderers')
                     ->prototype('scalar')->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 }

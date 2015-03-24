@@ -152,7 +152,7 @@ class TranslatableFieldType extends AbstractType
             ->getName();
 
         foreach ($this->locales as $locale) {
-            $translatedFieldName = $locale.'_'.$this->fieldName;
+            $translatedFieldName = $locale . '_' . $this->fieldName;
 
             $entityId = $this->entity->$entityIdGetter();
             $translationData = $entityId
@@ -166,7 +166,7 @@ class TranslatableFieldType extends AbstractType
                     )
                 : '';
 
-            $builder->add($translatedFieldName, $fieldType, array(
+            $builder->add($translatedFieldName, $fieldType, [
                 'required' => isset($fieldOptions['required'])
                     ? $this->evaluateRequired(
                         $fieldOptions['required'],
@@ -176,7 +176,7 @@ class TranslatableFieldType extends AbstractType
                 'mapped'   => false,
                 'label'    => $fieldOptions['label'],
                 'data'     => $translationData,
-            ));
+            ]);
         }
     }
 

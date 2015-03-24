@@ -34,7 +34,7 @@ class EntityTranslationChangesBag
      */
     public function __construct()
     {
-        $this->changes = array();
+        $this->changes = [];
     }
 
     /**

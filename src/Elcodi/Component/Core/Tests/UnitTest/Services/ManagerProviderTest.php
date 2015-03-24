@@ -64,9 +64,9 @@ class ManagerProviderTest extends PHPUnit_Framework_TestCase
         $this->objectManager = $this
             ->getMock('Doctrine\Common\Persistence\ObjectManager');
 
-        $parametersBag = new ParameterBag(array(
+        $parametersBag = new ParameterBag([
             $this->entityParameter => $this->entityNamespace,
-        ));
+        ]);
 
         $managerRegistry = $this
             ->getMockBuilder('Symfony\Bridge\Doctrine\ManagerRegistry')

@@ -60,10 +60,10 @@ class ReferralRuleRepository extends EntityRepository
             )
             ->orderBy('r.id', 'DESC')
             ->setMaxResults(1)
-            ->setParameters(array(
+            ->setParameters([
                 'enabled'  => true,
                 'datetime' => $dateTime,
-            ))
+            ])
             ->getQuery()
             ->getResult();
 

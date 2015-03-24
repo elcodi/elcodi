@@ -129,9 +129,9 @@ class PasswordManager
 
         $recoverUrl = $this
             ->router
-            ->generate($recoverPasswordUrlName, array(
+            ->generate($recoverPasswordUrlName, [
                 $hashField => $recoveryHash,
-            ), true);
+            ], true);
 
         $event = new PasswordRememberEvent($user, $recoverUrl);
         $this->eventDispatcher->dispatch(ElcodiUserEvents::PASSWORD_REMEMBER, $event);

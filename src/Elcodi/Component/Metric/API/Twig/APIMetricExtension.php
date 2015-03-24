@@ -52,10 +52,10 @@ class APIMetricExtension extends Twig_Extension
     public function getFunctions()
     {
         return [
-            new Twig_SimpleFunction('metric_beacon_unique', array($this, 'getBeaconsUnique')),
-            new Twig_SimpleFunction('metric_beacon_total', array($this, 'getBeaconsTotal')),
-            new Twig_SimpleFunction('metric_accumulation', array($this, 'getAccumulation')),
-            new Twig_SimpleFunction('metric_distributions', array($this, 'getDistributions')),
+            new Twig_SimpleFunction('metric_beacon_unique', [$this, 'getBeaconsUnique']),
+            new Twig_SimpleFunction('metric_beacon_total', [$this, 'getBeaconsTotal']),
+            new Twig_SimpleFunction('metric_accumulation', [$this, 'getAccumulation']),
+            new Twig_SimpleFunction('metric_distributions', [$this, 'getDistributions']),
         ];
     }
 

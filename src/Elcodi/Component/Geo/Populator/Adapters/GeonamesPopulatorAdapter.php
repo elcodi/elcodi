@@ -94,13 +94,13 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
      */
     protected function downloadFile($countryCode)
     {
-        $tempname = sys_get_temp_dir().'/elcodi-locator-geonames-'.$countryCode.'.zip';
+        $tempname = sys_get_temp_dir() . '/elcodi-locator-geonames-' . $countryCode . '.zip';
         if (!file_exists($tempname)) {
             $dirname = dirname($tempname);
             if (!file_exists($dirname)) {
                 mkdir($dirname, 0777, true);
             }
-            $downloadUrl = 'http://download.geonames.org/export/zip/'.$countryCode.'.zip';
+            $downloadUrl = 'http://download.geonames.org/export/zip/' . $countryCode . '.zip';
             copy($downloadUrl, $tempname);
         }
 
@@ -171,7 +171,7 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
             $state = $this
                 ->locationBuilder
                 ->addLocation(
-                    $country->getId().'_'.$stateId,
+                    $country->getId() . '_' . $stateId,
                     $columns[3],
                     $stateId,
                     'state',
@@ -182,7 +182,7 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
             $province = $this
                 ->locationBuilder
                 ->addLocation(
-                    $state->getId().'_'.$provinceId,
+                    $state->getId() . '_' . $provinceId,
                     $columns[5],
                     $provinceId,
                     'province',
@@ -193,7 +193,7 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
             $city = $this
                 ->locationBuilder
                 ->addLocation(
-                    $province->getId().'_'.$cityId,
+                    $province->getId() . '_' . $cityId,
                     $columns[2],
                     $cityId,
                     'city',
@@ -204,7 +204,7 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
             $this
                 ->locationBuilder
                 ->addLocation(
-                    $city->getId().'_'.$postalCodeId,
+                    $city->getId() . '_' . $postalCodeId,
                     $columns[1],
                     $postalCodeId,
                     'postalcode',
@@ -220,8 +220,8 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
         $lexer->parse($pathname, $interpreter);
         $finished = new DateTime();
         $elapsed = $finished->diff($started);
-        $output->writeln('<header>[Geo]</header> <body>Processed '.$nbItems.' entries</body>');
-        $output->writeln('<header>[Geo]</header> <body>File processed in '.$elapsed->format('%s').' seconds</body>');
+        $output->writeln('<header>[Geo]</header> <body>Processed ' . $nbItems . ' entries</body>');
+        $output->writeln('<header>[Geo]</header> <body>File processed in ' . $elapsed->format('%s') . ' seconds</body>');
 
         return [$country];
     }

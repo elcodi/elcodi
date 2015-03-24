@@ -41,7 +41,6 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
                 'elcodi.entity.zone.class',
                 'elcodi.entity.zone.mapping_file',
                 'elcodi.entity.zone.enabled'
-            )
-        ;
+            );
     }
 }

@@ -72,7 +72,7 @@ class EntityTranslationProvider implements EntityTranslationProviderInterface
         $this->entityTranslationRepository = $entityTranslationRepository;
         $this->entityTranslationFactory = $entityTranslationFactory;
         $this->entityTranslationObjectManager = $entityTranslationObjectManager;
-        $this->translationsToBeFlushed = array();
+        $this->translationsToBeFlushed = [];
     }
 
     /**
@@ -93,12 +93,12 @@ class EntityTranslationProvider implements EntityTranslationProviderInterface
     ) {
         $translation = $this
             ->entityTranslationRepository
-            ->findOneBy(array(
+            ->findOneBy([
                 'entityType'  => $entityType,
                 'entityId'    => $entityId,
                 'entityField' => $entityField,
                 'locale'      => $locale,
-            ));
+            ]);
 
         return $translation instanceof EntityTranslationInterface
             ? $translation->getTranslation()
@@ -125,12 +125,12 @@ class EntityTranslationProvider implements EntityTranslationProviderInterface
     ) {
         $translation = $this
             ->entityTranslationRepository
-            ->findOneBy(array(
+            ->findOneBy([
                 'entityType'  => $entityType,
                 'entityId'    => $entityId,
                 'entityField' => $entityField,
                 'locale'      => $locale,
-            ));
+            ]);
 
         if (!($translation instanceof EntityTranslationInterface)) {
             $translation = $this
@@ -164,7 +164,7 @@ class EntityTranslationProvider implements EntityTranslationProviderInterface
             ->entityTranslationObjectManager
             ->flush($this->translationsToBeFlushed);
 
-        $this->translationsToBeFlushed = array();
+        $this->translationsToBeFlushed = [];
 
         return $this;
     }

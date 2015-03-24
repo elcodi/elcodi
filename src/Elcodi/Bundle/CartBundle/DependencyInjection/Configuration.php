@@ -87,10 +87,10 @@ class Configuration extends AbstractConfiguration
                             ->defaultValue('unpaid')
                         ->end()
                         ->variableNode('states')
-                            ->defaultValue(array(
+                            ->defaultValue([
                                 ['unpaid', 'pay', 'paid'],
                                 ['paid', 'refund', 'refunded'],
-                            ))
+                            ])
                         ->end()
                     ->end()
                 ->end()
@@ -104,9 +104,9 @@ class Configuration extends AbstractConfiguration
                             ->defaultValue('not shipped')
                         ->end()
                         ->variableNode('states')
-                            ->defaultValue(array(
+                            ->defaultValue([
                                 ['not shipped', 'ship', 'shipped'],
-                            ))
+                            ])
                         ->end()
                     ->end()
                 ->end()

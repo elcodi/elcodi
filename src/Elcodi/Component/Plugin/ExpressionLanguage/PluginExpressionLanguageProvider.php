@@ -30,7 +30,7 @@ class PluginExpressionLanguageProvider implements ExpressionFunctionProviderInte
      */
     public function getFunctions()
     {
-        return array(
+        return [
             new ExpressionFunction('elcodi_plugin', function ($pluginNamespace) {
                 return sprintf(
                     '$this->get(\'elcodi.plugin_manager\')->getPlugin(%s)',
@@ -41,6 +41,6 @@ class PluginExpressionLanguageProvider implements ExpressionFunctionProviderInte
                     ->get('elcodi.plugin_manager')
                     ->getPlugin($pluginNamespace);
             }),
-        );
+        ];
     }
 }

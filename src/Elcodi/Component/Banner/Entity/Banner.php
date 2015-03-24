@@ -210,6 +210,6 @@ class Banner implements BannerInterface
      */
     public function __toString()
     {
-        return $this->getId().' - '.$this->getName();
+        return $this->getId() . ' - ' . $this->getName();
     }
 }

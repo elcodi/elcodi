@@ -56,7 +56,7 @@ trait TemplatingTrait
         array $extraContextParams = []
     ) {
         $event->setContent(
-            $event->getContent().
+            $event->getContent() .
             $this
                 ->twig
                 ->render(

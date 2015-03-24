@@ -89,7 +89,7 @@ class LocaleManager
      */
     public function initialize()
     {
-        setlocale(LC_ALL, $this->locale->getIso().'.'.$this->encoding);
+        setlocale(LC_ALL, $this->locale->getIso() . '.' . $this->encoding);
         $this->localeInfo = localeconv();
 
         return $this;

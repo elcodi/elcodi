@@ -111,7 +111,7 @@ class ShareTweetRenderer
             $text     = $product->getName();
             $category = $product->getPrincipalCategory();
             if ($category instanceof CategoryInterface) {
-                $text = $category->getName().' - '.$text;
+                $text = $category->getName() . ' - ' . $text;
             }
 
             $this->appendTemplate(

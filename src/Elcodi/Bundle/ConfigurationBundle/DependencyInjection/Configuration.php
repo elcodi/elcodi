@@ -93,7 +93,7 @@ class Configuration extends AbstractConfiguration implements ConfigurationInterf
                             $newElements = [];
                             foreach ($elements as $element) {
                                 $completeParameterName = isset($element['namespace'])
-                                    ? $element['namespace'].'.'.$element['key']
+                                    ? $element['namespace'] . '.' . $element['key']
                                     : $element['key'];
 
                                 $newElements[$completeParameterName] = $element;

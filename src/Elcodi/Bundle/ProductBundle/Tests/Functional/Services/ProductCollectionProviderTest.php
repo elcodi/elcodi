@@ -49,9 +49,9 @@ class ProductCollectionProviderTest extends WebTestCase
      */
     protected function loadFixturesBundles()
     {
-        return array(
+        return [
             'ElcodiProductBundle',
-        );
+        ];
     }
 
     /**

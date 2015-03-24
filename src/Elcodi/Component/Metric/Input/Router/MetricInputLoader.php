@@ -81,9 +81,9 @@ class MetricInputLoader implements LoaderInterface
 
         $routes = new RouteCollection();
 
-        $routes->add($this->inputControllerRouteName, new Route($this->inputResizeControllerRoute, array(
+        $routes->add($this->inputControllerRouteName, new Route($this->inputResizeControllerRoute, [
             '_controller' => 'elcodi.controller.metric_input:addEntryAction',
-        )));
+        ]));
 
         $this->loaded = true;
 

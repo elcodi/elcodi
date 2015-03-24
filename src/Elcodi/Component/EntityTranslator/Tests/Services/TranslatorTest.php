@@ -32,7 +32,7 @@ class TranslatorTest extends PHPUnit_Framework_TestCase
      */
     public function testTranslate()
     {
-        $entityTranslationProvider = $this->getMock('Elcodi\Component\EntityTranslator\Services\EntityTranslationProvider', array(), array(), '', false);
+        $entityTranslationProvider = $this->getMock('Elcodi\Component\EntityTranslator\Services\EntityTranslationProvider', [], [], '', false);
         $entityTranslationProvider
             ->expects($this->once())
             ->method('getTranslation')
@@ -44,18 +44,18 @@ class TranslatorTest extends PHPUnit_Framework_TestCase
             )
             ->will($this->returnValue('translatedProductName'));
 
-        $configuration = array(
-            'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => array(
+        $configuration = [
+            'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => [
                 'alias'    => 'product',
                 'idGetter' => 'getId',
-                'fields'   => array(
-                    'name' => array(
+                'fields'   => [
+                    'name' => [
                         'setter' => 'setName',
                         'getter' => 'getName',
-                    ),
-                ),
-            ),
-        );
+                    ],
+                ],
+            ],
+        ];
 
         $translator = new EntityTranslator(
             $entityTranslationProvider,
@@ -78,56 +78,56 @@ class TranslatorTest extends PHPUnit_Framework_TestCase
      */
     public function testSave()
     {
-        $entityTranslationProvider = $this->getMock('Elcodi\Component\EntityTranslator\Services\EntityTranslationProvider', array(), array(), '', false);
+        $entityTranslationProvider = $this->getMock('Elcodi\Component\EntityTranslator\Services\EntityTranslationProvider', [], [], '', false);
         $entityTranslationProvider
             ->expects($this->exactly(4))
             ->method('setTranslation')
-            ->withConsecutive(array(
+            ->withConsecutive([
                 $this->equalTo('product'),
                 $this->equalTo('1'),
                 $this->equalTo('name'),
                 $this->equalTo('el nombre'),
                 $this->equalTo('es'),
-            ), array(
+            ], [
                 $this->equalTo('product'),
                 $this->equalTo('1'),
                 $this->equalTo('description'),
                 $this->equalTo('la descripción'),
                 $this->equalTo('es'),
-            ), array(
+            ], [
                 $this->equalTo('product'),
                 $this->equalTo('1'),
                 $this->equalTo('name'),
                 $this->equalTo('the name'),
                 $this->equalTo('en'),
-            ), array(
+            ], [
                 $this->equalTo('product'),
                 $this->equalTo('1'),
                 $this->equalTo('description'),
                 $this->equalTo('the description'),
                 $this->equalTo('en'),
-            ));
+            ]);
 
         $entityTranslationProvider
             ->expects($this->once())
             ->method('flushTranslations');
 
-        $configuration = array(
-            'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => array(
+        $configuration = [
+            'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => [
                 'alias'    => 'product',
                 'idGetter' => 'getId',
-                'fields'   => array(
-                    'name'        => array(
+                'fields'   => [
+                    'name'        => [
                         'setter' => 'setName',
                         'getter' => 'getName',
-                    ),
-                    'description' => array(
+                    ],
+                    'description' => [
                         'setter' => 'setDescription',
                         'getter' => 'getDescription',
-                    ),
-                ),
-            ),
-        );
+                    ],
+                ],
+            ],
+        ];
 
         $translator = new EntityTranslator(
             $entityTranslationProvider,
@@ -141,16 +141,16 @@ class TranslatorTest extends PHPUnit_Framework_TestCase
             ->setName('wrong name')
             ->setDescription('wrong description');
 
-        $translator->save($product, array(
-            'es' => array(
+        $translator->save($product, [
+            'es' => [
                 'name'        => 'el nombre',
                 'description' => 'la descripción',
-            ),
-            'en' => array(
+            ],
+            'en' => [
                 'name'         => 'the name',
                 'description'  => 'the description',
                 'anotherfield' => 'some value',
-            ),
-        ));
+            ],
+        ]);
     }
 }

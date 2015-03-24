@@ -164,10 +164,10 @@ class CartCouponManager
     {
         $coupon = $this
             ->couponRepository
-            ->findOneBy(array(
+            ->findOneBy([
                 'code'    => $couponCode,
                 'enabled' => true,
-            ));
+            ]);
 
         if (false === $coupon instanceof CouponInterface) {
             throw new CouponNotAvailableException();
@@ -210,9 +210,9 @@ class CartCouponManager
     {
         $coupon = $this
             ->couponRepository
-            ->findOneBy(array(
+            ->findOneBy([
                 'code' => $couponCode,
-            ));
+            ]);
 
         if (!($coupon instanceof CouponInterface)) {
             return false;
@@ -233,10 +233,10 @@ class CartCouponManager
     {
         $cartCoupons = $this
             ->cartCouponRepository
-            ->findBy(array(
+            ->findBy([
                 'cart'   => $cart,
                 'coupon' => $coupon,
-            ));
+            ]);
 
         if (empty($cartCoupons)) {
             return false;

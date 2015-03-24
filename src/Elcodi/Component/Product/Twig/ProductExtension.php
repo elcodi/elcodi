@@ -41,7 +41,7 @@ class ProductExtension extends Twig_Extension
     public function getFunctions()
     {
         return [
-            new Twig_SimpleFunction('available_options', array($this, 'getAvailableOptions')),
+            new Twig_SimpleFunction('available_options', [$this, 'getAvailableOptions']),
         ];
     }
 
@@ -53,7 +53,7 @@ class ProductExtension extends Twig_Extension
     public function getFilters()
     {
         return [
-            new Twig_SimpleFilter('purchasable_name', array($this, 'getPurchasableName')),
+            new Twig_SimpleFilter('purchasable_name', [$this, 'getPurchasableName']),
         ];
     }
 
@@ -84,9 +84,9 @@ class ProductExtension extends Twig_Extension
                 /**
                  * @var ValueInterface $option
                  */
-                $productName .= $separator.
-                    $option->getAttribute()->getName().
-                    ' '.
+                $productName .= $separator .
+                    $option->getAttribute()->getName() .
+                    ' ' .
                     $option->getValue();
             }
         }

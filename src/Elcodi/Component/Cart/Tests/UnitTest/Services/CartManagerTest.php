@@ -155,9 +155,9 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     {
         $cart = new Cart();
         $cartLine = new CartLine();
-        $cart->setCartLines(new ArrayCollection(array(
+        $cart->setCartLines(new ArrayCollection([
             $cartLine,
-        )));
+        ]));
         $cartLine->setCart($cart);
 
         $this->assertCount(1, $cart->getCartLines());
@@ -191,9 +191,9 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     {
         $cart = new Cart();
         $cartLine = new CartLine();
-        $cart->setCartLines(new ArrayCollection(array(
+        $cart->setCartLines(new ArrayCollection([
             $cartLine,
-        )));
+        ]));
         $cartLine->setCart($cart);
 
         $this->assertCount(1, $cart->getCartLines());
@@ -234,9 +234,9 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         $product = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\ProductInterface');
         $cartLine->setQuantity($initialQuantity);
         $cartLine->setProduct($product);
-        $cart->setCartLines(new ArrayCollection(array(
+        $cart->setCartLines(new ArrayCollection([
             $cartLine,
-        )));
+        ]));
 
         $this->cartManager->editCartLine($cartLine, $product, $newQuantity);
         $this->assertEquals($finalQuantity, $cartLine->getQuantity());
@@ -247,14 +247,14 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
      */
     public function dataEditCartLine()
     {
-        return array(
-            array(null, null, null),
-            array(1, null, 1),
-            array(1, false, 1),
-            array(1, 1, 1),
-            array(null, 1, 1),
-            array(1, 2, 2),
-        );
+        return [
+            [null, null, null],
+            [1, null, 1],
+            [1, false, 1],
+            [1, 1, 1],
+            [null, 1, 1],
+            [1, 2, 2],
+        ];
     }
 
     /**
@@ -269,9 +269,9 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         $cartLine = new CartLine();
         $cartLine->setCart($cart);
         $cartLine->setQuantity($initialQuantity);
-        $cart->setCartLines(new ArrayCollection(array(
+        $cart->setCartLines(new ArrayCollection([
             $cartLine,
-        )));
+        ]));
 
         $this->cartManager->increaseCartLineQuantity($cartLine, $quantityToIncrease);
         $this->assertEquals($finalQuantity, $cartLine->getQuantity());
@@ -282,12 +282,12 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
      */
     public function dataIncreaseCartLineQuantity()
     {
-        return array(
-            array(1, null, 1),
-            array(1, false, 1),
-            array(1, 1, 2),
-            array(null, 1, 1),
-        );
+        return [
+            [1, null, 1],
+            [1, false, 1],
+            [1, 1, 2],
+            [null, 1, 1],
+        ];
     }
 
     /**
@@ -302,9 +302,9 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         $cartLine = new CartLine();
         $cartLine->setCart($cart);
         $cartLine->setQuantity($initialQuantity);
-        $cart->setCartLines(new ArrayCollection(array(
+        $cart->setCartLines(new ArrayCollection([
             $cartLine,
-        )));
+        ]));
 
         $this->cartManager->decreaseCartLineQuantity($cartLine, $quantityToIncrease);
         $this->assertEquals($finalQuantity, $cartLine->getQuantity());
@@ -315,11 +315,11 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
      */
     public function dataDecreaseCartLineQuantityNotRemove()
     {
-        return array(
-            array(2, null, 2),
-            array(2, false, 2),
-            array(3, 1, 2),
-        );
+        return [
+            [2, null, 2],
+            [2, false, 2],
+            [3, 1, 2],
+        ];
     }
 
     /**
@@ -334,9 +334,9 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         $cartLine = new CartLine();
         $cartLine->setCart($cart);
         $cartLine->setQuantity($initialQuantity);
-        $cart->setCartLines(new ArrayCollection(array(
+        $cart->setCartLines(new ArrayCollection([
             $cartLine,
-        )));
+        ]));
 
         $this->cartManager->decreaseCartLineQuantity($cartLine, $quantityToIncrease);
         $this->assertEmpty($cart->getCartLines());
@@ -347,10 +347,10 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
      */
     public function dataDecreaseCartLineQuantityRemove()
     {
-        return array(
-            array(1, 1),
-            array(1, 2),
-        );
+        return [
+            [1, 1],
+            [1, 2],
+        ];
     }
 
     /**
@@ -472,7 +472,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         $cart
             ->expects($this->any())
             ->method('getCartLines')
-            ->willReturn(new ArrayCollection(array($cartLine)));
+            ->willReturn(new ArrayCollection([$cartLine]));
 
         $cartManager
             ->expects($this->never())
@@ -508,7 +508,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         $cart = new Cart();
         $cartLine = new CartLine();
         $cartLine->setPurchasable($product);
-        $cart->setCartLines(new ArrayCollection(array($cartLine)));
+        $cart->setCartLines(new ArrayCollection([$cartLine]));
         $cartLine->setCart($cart);
 
         $this->assertCount(1, $cart->getCartLines());

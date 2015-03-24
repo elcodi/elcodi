@@ -84,9 +84,9 @@ class TemplatedPageRenderer implements PageRendererInterface
         return $this
             ->engine
             ->render(
-                $templateName, array(
+                $templateName, [
                     'page' => $page,
-                )
+                ]
             );
     }
 

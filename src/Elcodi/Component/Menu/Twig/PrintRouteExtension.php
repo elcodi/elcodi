@@ -60,7 +60,7 @@ class PrintRouteExtension extends Twig_Extension
     public function getFunctions()
     {
         return [
-            new Twig_SimpleFunction('generate_url', array($this, 'printUrl')),
+            new Twig_SimpleFunction('generate_url', [$this, 'printUrl']),
         ];
     }
 

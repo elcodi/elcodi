@@ -57,9 +57,9 @@ class LanguageManager
         return new ArrayCollection(
             $this
                 ->languageRepository
-                ->findBy(array(
+                ->findBy([
                     'enabled' => true,
-                ))
+                ])
         );
     }
 

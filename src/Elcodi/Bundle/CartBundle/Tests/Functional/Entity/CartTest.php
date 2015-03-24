@@ -41,9 +41,9 @@ class CartTest extends WebTestCase
      */
     protected function loadFixturesBundles()
     {
-        return array(
+        return [
             'ElcodiCartBundle',
-        );
+        ];
     }
 
     /**

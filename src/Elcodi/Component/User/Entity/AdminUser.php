@@ -32,6 +32,6 @@ class AdminUser extends AbstractUser implements AdminUserInterface
      */
     public function getRoles()
     {
-        return array('ROLE_ADMIN');
+        return ['ROLE_ADMIN'];
     }
 }

@@ -55,13 +55,13 @@ class ReferralHashManagerTest extends WebTestCase
      */
     protected function loadFixturesBundles()
     {
-        return array(
+        return [
             'ElcodiLanguageBundle',
             'ElcodiUserBundle',
             'ElcodiCurrencyBundle',
             'ElcodiCouponBundle',
             'ElcodiReferralProgramBundle',
-        );
+        ];
     }
 
     /**

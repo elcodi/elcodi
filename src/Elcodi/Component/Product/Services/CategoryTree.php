@@ -81,17 +81,17 @@ class CategoryTree
             }
 
             if ($parentCategoryId && !isset($categoryTree[$parentCategoryId])) {
-                $categoryTree[$parentCategoryId] = array(
+                $categoryTree[$parentCategoryId] = [
                     'entity'   => null,
-                    'children' => array(),
-                );
+                    'children' => [],
+                ];
             }
 
             if (!isset($categoryTree[$categoryId])) {
-                $categoryTree[$categoryId] = array(
+                $categoryTree[$categoryId] = [
                     'entity'   => null,
-                    'children' => array(),
-                );
+                    'children' => [],
+                ];
             }
 
             $categoryTree[$categoryId]['entity'] = $category;

@@ -41,11 +41,11 @@ class ReferralLineRepository extends EntityRepository
     {
         return new ArrayCollection(
             $this
-                ->findBy(array(
+                ->findBy([
                     'referrer' => $customer,
                     'enabled'  => true,
                     'closed'   => false,
-                ))
+                ])
         );
     }
 
@@ -61,11 +61,11 @@ class ReferralLineRepository extends EntityRepository
      */
     public function findOneByInvited(CustomerInterface $customer)
     {
-        return $this->findOneBy(array(
+        return $this->findOneBy([
             'invited' => $customer,
             'enabled' => true,
             'closed'  => false,
-        ));
+        ]);
     }
 
     /**
@@ -81,11 +81,11 @@ class ReferralLineRepository extends EntityRepository
      */
     public function findOneByReferralHashAndInvitedEmail(ReferralHash $referralHash, $invitedEmail)
     {
-        return $this->findOneBy(array(
+        return $this->findOneBy([
             'invitedEmail' => $invitedEmail,
             'referralHash' => $referralHash,
             'closed'       => false,
-        ));
+        ]);
     }
 
     /**
@@ -100,10 +100,10 @@ class ReferralLineRepository extends EntityRepository
      */
     public function findByInvitedEmail($invitedEmail)
     {
-        return new ArrayCollection($this->findBy(array(
+        return new ArrayCollection($this->findBy([
             'invitedEmail' => $invitedEmail,
             'enabled'      => true,
             'closed'       => false,
-        )));
+        ]));
     }
 }

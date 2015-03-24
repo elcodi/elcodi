@@ -94,7 +94,7 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
 
         $request = $this->client->createRequest(
             'GET',
-            $this->endPoint.'/convert/'.$value.'/'.$symbolFrom.'/'.$symbolTo,
+            $this->endPoint . '/convert/' . $value . '/' . $symbolFrom . '/' . $symbolTo,
             ['query' => $query]
         );
 
@@ -110,7 +110,7 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
      *
      * @return array
      */
-    public function getExchangeRates(array $symbols = array(), $base = null)
+    public function getExchangeRates(array $symbols = [], $base = null)
     {
         $query = [
             'app_id' => $this->appId,
@@ -123,7 +123,7 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
 
         $request = $this->client->createRequest(
             'GET',
-            $this->endPoint.'/latest.json',
+            $this->endPoint . '/latest.json',
             ['query' => $query]
         );
 
@@ -137,7 +137,7 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
     {
         $request = $this->client->createRequest(
             'GET',
-            $this->endPoint.'/currencies.json',
+            $this->endPoint . '/currencies.json',
             ['query' => ['app_id' => $this->appId]]
         );
 
@@ -159,7 +159,7 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
             //send the req and return the json
             return $response->json();
         } catch (Exception $e) {
-            return array('error' => $request->getResponse()->json());
+            return ['error' => $request->getResponse()->json()];
         }
     }
 
@@ -174,7 +174,7 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
     {
         $request = $this->client->createRequest(
             'GET',
-            $this->endPoint.'/historical/'.$date->format('Y-m-d').'.json',
+            $this->endPoint . '/historical/' . $date->format('Y-m-d') . '.json',
             [
                 'query' => [
                         'app_id' => $this->appId,

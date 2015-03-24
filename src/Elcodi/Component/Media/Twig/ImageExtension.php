@@ -108,10 +108,10 @@ class ImageExtension extends Twig_Extension
      */
     public function getFilters()
     {
-        return array(
-            new Twig_SimpleFilter('resize', array($this, 'resize')),
-            new Twig_SimpleFilter('viewImage', array($this, 'viewImage')),
-        );
+        return [
+            new Twig_SimpleFilter('resize', [$this, 'resize']),
+            new Twig_SimpleFilter('viewImage', [$this, 'viewImage']),
+        ];
     }
 
     /**
@@ -126,13 +126,13 @@ class ImageExtension extends Twig_Extension
     {
         $generatedRoute = $this
             ->router
-            ->generate($this->imageResizeControllerRouteName, array(
+            ->generate($this->imageResizeControllerRouteName, [
                 'id'      => (int) $imageMedia->getId(),
                 'height'  => (int) $options['height'],
                 'width'   => (int) $options['width'],
                 'type'    => (int) $options['type'],
                 '_format' => $imageMedia->getExtension(),
-            ), $this->generateAbsolutePath);
+            ], $this->generateAbsolutePath);
 
         /*
          * Returning generated URL, with or without absolute path
@@ -152,10 +152,10 @@ class ImageExtension extends Twig_Extension
     {
         $generatedRoute = $this
             ->router
-            ->generate($this->imageViewControllerRouteName, array(
+            ->generate($this->imageViewControllerRouteName, [
                 'id'      => (int) $imageMedia->getId(),
                 '_format' => $imageMedia->getExtension(),
-            ), $this->generateAbsolutePath);
+            ], $this->generateAbsolutePath);
 
         return $this->randomizeBaseUrls($generatedRoute);
     }
@@ -186,7 +186,7 @@ class ImageExtension extends Twig_Extension
         $random = substr(mt_rand(), 0, 1) % count($hostNames);
         $hostName = $hostNames[$random];
 
-        return '//'.$hostName.$path;
+        return '//' . $hostName . $path;
     }
 
     /**

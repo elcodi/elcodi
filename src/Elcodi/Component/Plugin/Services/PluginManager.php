@@ -145,7 +145,7 @@ class PluginManager
     protected function getPluginSpecification($bundlePath)
     {
         $yaml = new Parser();
-        $specificationFilePath = $bundlePath.'/plugin.yml';
+        $specificationFilePath = $bundlePath . '/plugin.yml';
 
         if (!file_exists($specificationFilePath)) {
             return [];

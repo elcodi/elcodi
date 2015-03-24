@@ -58,7 +58,7 @@ class CartEventListenerTest extends WebTestCase
      */
     protected function loadFixturesBundles()
     {
-        return array(
+        return [
             'ElcodiUserBundle',
             'ElcodiCurrencyBundle',
             'ElcodiAttributeBundle',
@@ -67,7 +67,7 @@ class CartEventListenerTest extends WebTestCase
             'ElcodiCartBundle',
             'ElcodiCouponBundle',
             'ElcodiRuleBundle',
-        );
+        ];
     }
 
     /**

@@ -77,12 +77,12 @@ abstract class WebTestCase extends BaseWebTestCase
     public function tearDown()
     {
         if (static::$application) {
-            static::$application->run(new ArrayInput(array(
+            static::$application->run(new ArrayInput([
                 'command'          => 'doctrine:database:drop',
                 '--no-interaction' => true,
                 '--force'          => true,
                 '--quiet'          => true,
-            )));
+            ]));
         }
     }
 
@@ -161,24 +161,24 @@ abstract class WebTestCase extends BaseWebTestCase
             return $this;
         }
 
-        static::$application->run(new ArrayInput(array(
+        static::$application->run(new ArrayInput([
             'command'          => 'doctrine:database:drop',
             '--no-interaction' => true,
             '--force'          => true,
             '--quiet'          => true,
-        )));
+        ]));
 
-        static::$application->run(new ArrayInput(array(
+        static::$application->run(new ArrayInput([
             'command'          => 'doctrine:database:create',
             '--no-interaction' => true,
             '--quiet'          => true,
-        )));
+        ]));
 
-        static::$application->run(new ArrayInput(array(
+        static::$application->run(new ArrayInput([
             'command'          => 'doctrine:schema:create',
             '--no-interaction' => true,
             '--quiet'          => true,
-        )));
+        ]));
 
         $this->loadFixtures();
 
@@ -205,15 +205,15 @@ abstract class WebTestCase extends BaseWebTestCase
 
         $bundles = static::$kernel->getBundles();
         $formattedBundles = array_map(function ($bundle) use ($bundles) {
-            return $bundles[$bundle]->getPath().'/DataFixtures/ORM/';
+            return $bundles[$bundle]->getPath() . '/DataFixtures/ORM/';
         }, $this->loadFixturesBundles());
 
-        self::$application->run(new ArrayInput(array(
+        self::$application->run(new ArrayInput([
             'command'          => 'doctrine:fixtures:load',
             '--no-interaction' => true,
             '--fixtures'       => $formattedBundles,
             '--quiet'          => true,
-        )));
+        ]));
 
         return $this;
     }
@@ -230,7 +230,7 @@ abstract class WebTestCase extends BaseWebTestCase
     protected static function getKernelClass()
     {
         $namespaceExploded = explode('\\Tests\\Functional\\', get_called_class(), 2);
-        $kernelClass = $namespaceExploded[0].'\\Tests\\Functional\\app\\AppKernel';
+        $kernelClass = $namespaceExploded[0] . '\\Tests\\Functional\\app\\AppKernel';
 
         return $kernelClass;
     }
@@ -247,7 +247,7 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * @return KernelInterface A KernelInterface instance
      */
-    protected static function createKernel(array $options = array())
+    protected static function createKernel(array $options = [])
     {
         static::$class = static::getKernelClass();
 
@@ -255,6 +255,6 @@ abstract class WebTestCase extends BaseWebTestCase
         $bundleName = explode('Elcodi\\', $namespaceExploded[0], 2)[1];
         $bundleName = str_replace('\\', '_', $bundleName);
 
-        return new static::$class($bundleName.'Test', true);
+        return new static::$class($bundleName . 'Test', true);
     }
 }

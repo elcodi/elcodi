@@ -30,7 +30,7 @@ class ConfigurationExpressionLanguageProvider implements ExpressionFunctionProvi
      */
     public function getFunctions()
     {
-        return array(
+        return [
             new ExpressionFunction('elcodi_config', function ($name) {
                 return sprintf(
                     '$this->get(\'elcodi.manager.configuration\')->get(%s)',
@@ -41,6 +41,6 @@ class ConfigurationExpressionLanguageProvider implements ExpressionFunctionProvi
                     ->get('elcodi.manager.configuration')
                     ->get($name);
             }),
-        );
+        ];
     }
 }

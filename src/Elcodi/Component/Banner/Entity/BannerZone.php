@@ -258,6 +258,6 @@ class BannerZone implements BannerZoneInterface
             $isoLang = $this->getLanguage()->getIso();
         }
 
-        return $this->getName().' - '.$isoLang;
+        return $this->getName() . ' - ' . $isoLang;
     }
 }

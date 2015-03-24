@@ -69,10 +69,10 @@ class NewsletterManagerTest extends WebTestCase
      */
     protected function loadFixturesBundles()
     {
-        return array(
+        return [
             'ElcodiLanguageBundle',
             'ElcodiNewsletterBundle',
-        );
+        ];
     }
 
     /**
@@ -96,9 +96,9 @@ class NewsletterManagerTest extends WebTestCase
     {
         $this->assertCount(2, $this
                 ->newsletterSubscriptionRepository
-                ->findBy(array(
+                ->findBy([
                     'enabled' => true,
-                ))
+                ])
         );
 
         /**
@@ -106,9 +106,9 @@ class NewsletterManagerTest extends WebTestCase
          */
         $language = $this
             ->getRepository('language')
-            ->findOneBy(array(
+            ->findOneBy([
                 'iso' => 'es',
-            ));
+            ]);
 
         $this
             ->newsletterManager
@@ -116,9 +116,9 @@ class NewsletterManagerTest extends WebTestCase
 
         $this->assertCount(3, $this
                 ->newsletterSubscriptionRepository
-                ->findBy(array(
+                ->findBy([
                     'enabled' => true,
-                ))
+                ])
         );
 
         /**
@@ -126,9 +126,9 @@ class NewsletterManagerTest extends WebTestCase
          */
         $newsletterSubscription = $this
             ->newsletterSubscriptionRepository
-            ->findOneBy(array(
+            ->findOneBy([
                 'email' => 'hi@hi.org',
-            ));
+            ]);
 
         $this->assertNotEmpty($newsletterSubscription->getHash());
     }
@@ -140,9 +140,9 @@ class NewsletterManagerTest extends WebTestCase
     {
         $this->assertCount(2, $this
                 ->newsletterSubscriptionRepository
-                ->findBy(array(
+                ->findBy([
                     'enabled' => true,
-                ))
+                ])
         );
 
         $this
@@ -151,9 +151,9 @@ class NewsletterManagerTest extends WebTestCase
 
         $this->assertCount(3, $this
                 ->newsletterSubscriptionRepository
-                ->findBy(array(
+                ->findBy([
                     'enabled' => true,
-                ))
+                ])
         );
     }
 
@@ -164,9 +164,9 @@ class NewsletterManagerTest extends WebTestCase
     {
         $this->assertCount(2, $this
                 ->newsletterSubscriptionRepository
-                ->findBy(array(
+                ->findBy([
                     'enabled' => true,
-                ))
+                ])
         );
 
         $this
@@ -183,9 +183,9 @@ class NewsletterManagerTest extends WebTestCase
          */
         $language = $this
             ->getRepository('language')
-            ->findOneBy(array(
+            ->findOneBy([
                 'iso' => 'es',
-            ));
+            ]);
 
         $reason = 'my reason';
         $this
@@ -194,16 +194,16 @@ class NewsletterManagerTest extends WebTestCase
 
         $this->assertCount(1, $this
                 ->newsletterSubscriptionRepository
-                ->findBy(array(
+                ->findBy([
                     'enabled' => true,
-                ))
+                ])
         );
 
         $disabledNewsletterSubscription = $this
             ->newsletterSubscriptionRepository
-            ->findOneBy(array(
+            ->findOneBy([
                 'enabled' => false,
-            ));
+            ]);
 
         $this->assertEquals($disabledNewsletterSubscription->getReason(), $reason);
     }

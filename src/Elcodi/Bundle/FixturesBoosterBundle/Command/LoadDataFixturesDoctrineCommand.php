@@ -90,15 +90,15 @@ class LoadDataFixturesDoctrineCommand extends OriginalCommand
          * Same code as parent implementation
          */
         $dirOrFile = $input->getOption('fixtures');
-        $paths = array();
+        $paths = [];
 
         if ($dirOrFile) {
             $paths = is_array($dirOrFile)
                 ? $dirOrFile :
-                array($dirOrFile);
+                [$dirOrFile];
         } else {
             foreach ($this->getApplication()->getKernel()->getBundles() as $bundle) {
-                $paths[] = $bundle->getPath().'/DataFixtures/ORM';
+                $paths[] = $bundle->getPath() . '/DataFixtures/ORM';
             }
         }
 
@@ -109,7 +109,7 @@ class LoadDataFixturesDoctrineCommand extends OriginalCommand
         $paths[] = get_class($this->kernel);
 
         sort($paths, SORT_STRING);
-        $backupFileName = '/tmp/'.sha1(serialize($paths)).'.backup.database';
+        $backupFileName = '/tmp/' . sha1(serialize($paths)) . '.backup.database';
         if (file_exists($backupFileName)) {
             copy($backupFileName, $this->databaseFilePath);
 

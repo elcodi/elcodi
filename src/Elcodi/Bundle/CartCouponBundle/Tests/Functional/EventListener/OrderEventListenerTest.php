@@ -48,7 +48,7 @@ class OrderEventListenerTest extends WebTestCase
      */
     protected function loadFixturesBundles()
     {
-        return array(
+        return [
             'ElcodiUserBundle',
             'ElcodiCurrencyBundle',
             'ElcodiAttributeBundle',
@@ -57,7 +57,7 @@ class OrderEventListenerTest extends WebTestCase
             'ElcodiCartBundle',
             'ElcodiCouponBundle',
             'ElcodiCartCouponBundle',
-        );
+        ];
     }
 
     /**

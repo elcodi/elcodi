@@ -57,8 +57,7 @@ class CouponFactory extends AbstractPurchasableFactory
             ->setPriority(0)
             ->setEnabled(false)
             ->setCreatedAt($now)
-            ->setValidFrom($now)
-        ;
+            ->setValidFrom($now);
 
         return $coupon;
     }

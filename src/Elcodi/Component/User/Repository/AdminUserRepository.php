@@ -36,8 +36,8 @@ class AdminUserRepository extends EntityRepository implements UserEmaileableInte
      */
     public function findOneByEmail($email)
     {
-        return $this->findOneBy(array(
+        return $this->findOneBy([
             'email' => $email,
-        ));
+        ]);
     }
 }

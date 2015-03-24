@@ -80,11 +80,11 @@ class PrintMoneyExtension extends Twig_Extension
      */
     public function getFilters()
     {
-        return array(
-            new Twig_SimpleFilter('print_convert_money', array($this, 'printConvertMoney')),
-            new Twig_SimpleFilter('print_money', array($this, 'printMoney')),
-            new Twig_SimpleFilter('print_money_from_value', array($this, 'printMoneyFromValue')),
-        );
+        return [
+            new Twig_SimpleFilter('print_convert_money', [$this, 'printConvertMoney']),
+            new Twig_SimpleFilter('print_money', [$this, 'printMoney']),
+            new Twig_SimpleFilter('print_money_from_value', [$this, 'printMoneyFromValue']),
+        ];
     }
 
     /**

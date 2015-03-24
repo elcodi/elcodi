@@ -109,7 +109,7 @@ class Customer extends AbstractUser implements CustomerInterface
      */
     public function getRoles()
     {
-        return array('ROLE_CUSTOMER');
+        return ['ROLE_CUSTOMER'];
     }
 
     /**

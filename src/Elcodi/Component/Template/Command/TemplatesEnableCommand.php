@@ -96,7 +96,7 @@ class TemplatesEnableCommand extends Command
         $formatter = $this->getHelper('formatter');
         $formattedLine = $formatter->formatSection(
             'OK',
-            'Template "'.$templateName.'" enabled'
+            'Template "' . $templateName . '" enabled'
         );
 
         $output->writeln($formattedLine);

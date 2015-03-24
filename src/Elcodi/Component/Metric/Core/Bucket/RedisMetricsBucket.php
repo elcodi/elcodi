@@ -127,7 +127,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
         $this
             ->redis
             ->pfAdd(
-                $entryKey.'_unique',
+                $entryKey . '_unique',
                 $entry->getValue()
             );
 
@@ -148,7 +148,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
     ) {
         $this
             ->redis
-            ->incr($entryKey.'_total');
+            ->incr($entryKey . '_total');
 
         return $this;
     }
@@ -168,7 +168,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
         $this
             ->redis
             ->incrby(
-                $entryKey.'_accum',
+                $entryKey . '_accum',
                 (int) $entry->getValue()
             );
 
@@ -190,7 +190,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
         $this
             ->redis
             ->hincrby(
-                $entryKey.'_distr',
+                $entryKey . '_distr',
                 $entry->getValue(),
                 1
             );
@@ -220,7 +220,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
                 $token,
                 $event,
                 $date
-            ).'_unique';
+            ) . '_unique';
         }
 
         return (int) $this
@@ -250,7 +250,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
 
             $total += (int) $this
                 ->redis
-                ->get($key.'_total');
+                ->get($key . '_total');
         }
 
         return $total;
@@ -278,7 +278,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
 
             $total += (int) $this
                 ->redis
-                ->get($key.'_accum');
+                ->get($key . '_accum');
         }
 
         return $total;
@@ -312,7 +312,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
 
             $partials = $this
                 ->redis
-                ->hgetall($key.'_distr');
+                ->hgetall($key . '_distr');
 
             foreach ($partials as $key => $value) {
                 $distributions[$key] = isset($partialTotals[$key])

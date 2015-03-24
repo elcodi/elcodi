@@ -32,7 +32,7 @@ class DummyProviderAdapter implements CurrencyExchangeRatesProviderAdapterInterf
      *
      * @return array
      */
-    public function getExchangeRates(array $symbols = array(), $base = null)
+    public function getExchangeRates(array $symbols = [], $base = null)
     {
         return [];
     }

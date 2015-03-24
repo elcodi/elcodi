@@ -66,7 +66,7 @@ class JsonEncoderTest extends PHPUnit_Framework_TestCase
             [true, 'true'],
             [false, 'false'],
             ['foo', '"foo"'],
-            [array('foo'), '["foo"]'],
+            [['foo'], '["foo"]'],
         ];
     }
 }
