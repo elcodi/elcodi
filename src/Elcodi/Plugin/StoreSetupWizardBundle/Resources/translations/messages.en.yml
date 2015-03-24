@@ -1,5 +1,5 @@
 wizard:
-    first_finish_wizard: Finish all the steps before going online
+    first_finish_wizard: Complete the following steps before going online
     welcome_title: Welcome yo your new store!
     go_general_settings: Go to general settings
     ready_launch: Ready to launch!
@@ -7,7 +7,7 @@ wizard:
     go_enable_store: Go to setup and disable the "under construction" mode.
     go_next_step: Go to next step
     step_finished: <strong>Yehaaaaa!</strong> One step less to go!
-    time_to_sell: You are <strong>%1 minutes</strong> away to start selling
+    time_to_sell: You are <strong>%1 minutes</strong> left to opening your store
     disable_under_construction: Disable the <strong>Under construction</strong> mode to start selling
     estimated_time: Estimated time %1 min
     step1:
@@ -16,14 +16,14 @@ wizard:
         action: Create my first product
     step2:
         title: Setup your address
-        description: To start selling on internet you need to setup your place of business.
+        description: To start selling online you need to setup your business address.
         action: Add an address
     step3:
         title: Setup the payments
-        description: Do you want to be paid? Just need to say how and where.
+        description: Do you want to get paid? Just say how and where.
         action: Setup payments methods
     step4:
         title: Setup the shipping
-        description: You need to add the shipping costs. (Even if they are free)
+        description: You need to add handling and shipping prices. (Even if they are free)
         action_range: Setup shipping range
         action_carrier: Add carrier
