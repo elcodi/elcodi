@@ -20,6 +20,7 @@ namespace Elcodi\Component\Product\Services;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\QueryBuilder;
 
+use Elcodi\Component\Configuration\Services\ConfigurationManager;
 use Elcodi\Component\Product\ElcodiProductStock;
 use Elcodi\Component\Product\Repository\ProductRepository;
 
@@ -38,13 +39,25 @@ class ProductCollectionProvider
     protected $productRepository;
 
     /**
+     * @var ConfigurationManager
+     *
+     * Configuration manager
+     */
+    protected $configurationManager;
+
+    /**
      * Construct method
      *
-     * @param ProductRepository $productRepository Product Repository
+     * @param ProductRepository    $productRepository    Product Repository
+     * @param ConfigurationManager $configurationManager A configuration manager
      */
-    public function __construct(ProductRepository $productRepository)
+    public function __construct(
+        ProductRepository $productRepository,
+        ConfigurationManager $configurationManager
+    )
     {
         $this->productRepository = $productRepository;
+        $this->configurationManager = $configurationManager;
     }
 
     /**
@@ -123,21 +136,27 @@ class ProductCollectionProvider
      *
      * @return QueryBuilder same object
      */
-    protected function addStockPropertiesToQueryBuilder(QueryBuilder $queryBuilder)
-    {
-        $infiniteStockIsNull = is_null(ElcodiProductStock::INFINITE_STOCK);
+    protected function addStockPropertiesToQueryBuilder(
+        QueryBuilder $queryBuilder
+    ) {
+        $useStock = $this
+            ->configurationManager
+            ->get('product.use_stock');
 
-        $queryBuilder
-            ->andWhere($queryBuilder->expr()->orX(
-                $queryBuilder->expr()->gt('p.stock', ':stockZero'),
-                $infiniteStockIsNull
-                    ? $queryBuilder->expr()->isNull('p.stock')
-                    : $queryBuilder->expr()->eq('p.stock', ':infiniteStock')
-            ))
-            ->setParameter('stockZero', 0);
-
-        if (!$infiniteStockIsNull) {
-            $queryBuilder->setParameter('infiniteStock', ElcodiProductStock::INFINITE_STOCK);
+        if ($useStock) {
+            $queryBuilder
+                ->andWhere($queryBuilder->expr()->orX(
+                    $queryBuilder->expr()->gt('p.stock', ':stockZero'),
+                    $queryBuilder->expr()->eq('p.stock', ':infiniteStock')
+                ))
+                ->setParameter(
+                    'stockZero',
+                    0
+                )
+                ->setParameter(
+                    'infiniteStock',
+                    ElcodiProductStock::INFINITE_STOCK
+                );
         }
 
         return $queryBuilder;

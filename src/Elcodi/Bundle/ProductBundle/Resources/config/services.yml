@@ -12,3 +12,4 @@ services:
         class: %elcodi.provider.product_collection.class%
         arguments:
             product_repository: @elcodi.repository.product
+            configuration_manager: @elcodi.manager.configuration
