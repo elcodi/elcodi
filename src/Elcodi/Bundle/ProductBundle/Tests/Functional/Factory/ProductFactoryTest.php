@@ -41,9 +41,9 @@ class ProductFactoryTest extends WebTestCase
      */
     protected function loadFixturesBundles()
     {
-        return array(
+        return [
             'ElcodiCurrencyBundle',
-        );
+        ];
     }
 
     /**

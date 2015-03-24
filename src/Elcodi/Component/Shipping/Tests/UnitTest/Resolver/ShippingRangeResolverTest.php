@@ -98,11 +98,11 @@ class ShippingRangeResolverTest extends PHPUnit_Framework_TestCase
             ->method('getPrice')
             ->will($this->returnValue(Money::create(30, $this->currency)));
 
-        $this->shippingRanges = array(
+        $this->shippingRanges = [
             $cheapShippingRange,
             $mediumShippingRange,
             $expensiveShippingRange,
-        );
+        ];
     }
 
     /**

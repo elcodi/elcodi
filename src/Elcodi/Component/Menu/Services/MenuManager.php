@@ -150,7 +150,7 @@ class MenuManager extends AbstractCacheWrapper
      */
     protected function buildKey($key, $menuCode)
     {
-        return $key.'-'.$menuCode;
+        return $key . '-' . $menuCode;
     }
 
     /**

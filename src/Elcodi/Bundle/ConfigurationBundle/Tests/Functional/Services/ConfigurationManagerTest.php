@@ -59,9 +59,9 @@ class ConfigurationManagerTest extends WebTestCase
      */
     protected function loadFixturesBundles()
     {
-        return array(
+        return [
             'ElcodiConfigurationBundle',
-        );
+        ];
     }
 
     /**

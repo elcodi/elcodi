@@ -66,7 +66,7 @@ class PHPEncoderTest extends PHPUnit_Framework_TestCase
             [true, 'b:1;'],
             [false, 'b:0;'],
             ['foo', 's:3:"foo";'],
-            [array('foo'), 'a:1:{i:0;s:3:"foo";}'],
+            [['foo'], 'a:1:{i:0;s:3:"foo";}'],
             ['', 's:0:"";'],
         ];
     }

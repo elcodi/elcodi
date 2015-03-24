@@ -97,9 +97,9 @@ class ReferralHashManager
         /**
          * @var $referralHash ReferralHash
          */
-        $referralHash = $this->referralHashRepository->findOneBy(array(
+        $referralHash = $this->referralHashRepository->findOneBy([
             'referrer' => $customer,
-        ));
+        ]);
 
         if (!($referralHash instanceof ReferralHashInterface)) {
             $referralHash = $this->referralHashFactory->create();
@@ -124,8 +124,8 @@ class ReferralHashManager
      */
     public function getReferralHashByHash($hash)
     {
-        return $this->referralHashRepository->findOneBy(array(
+        return $this->referralHashRepository->findOneBy([
             'hash' => $hash,
-        ));
+        ]);
     }
 }

@@ -81,9 +81,9 @@ class ImageResizeRouterLoader implements LoaderInterface
 
         $routes = new RouteCollection();
 
-        $routes->add($this->imageResizeControllerRouteName, new Route($this->imageResizeControllerRoute, array(
+        $routes->add($this->imageResizeControllerRouteName, new Route($this->imageResizeControllerRoute, [
             '_controller' => 'elcodi.controller.media_image_resize:resizeAction',
-        )));
+        ]));
 
         $this->loaded = true;
 

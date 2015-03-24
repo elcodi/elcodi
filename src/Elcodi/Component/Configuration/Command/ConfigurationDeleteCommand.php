@@ -84,7 +84,7 @@ class ConfigurationDeleteCommand extends Command
         $formatter = $this->getHelper('formatter');
         $formattedLine = $formatter->formatSection(
             'OK',
-            'Deleted configuration "'.$configurationIdentifier.'"'
+            'Deleted configuration "' . $configurationIdentifier . '"'
         );
 
         $output->writeln($formattedLine);

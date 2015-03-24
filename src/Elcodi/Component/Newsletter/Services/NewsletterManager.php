@@ -145,10 +145,10 @@ class NewsletterManager
             throw new NewsletterCannotBeRemovedException();
         }
 
-        $conditions = array(
+        $conditions = [
             'email' => $email,
             'hash'  => $hash,
-        );
+        ];
 
         if ($language instanceof LanguageInterface) {
             $conditions['language'] = $language;
@@ -198,9 +198,9 @@ class NewsletterManager
     {
         return $this
             ->newsletterSubscriptionRepository
-            ->findOneBy(array(
+            ->findOneBy([
                 'email' => $email,
-            ));
+            ]);
     }
 
     /**

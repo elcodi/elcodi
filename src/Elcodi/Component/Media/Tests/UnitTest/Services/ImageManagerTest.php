@@ -105,21 +105,21 @@ class ImageManagerTest extends PHPUnit_Framework_TestCase
      */
     public function regularImagesProvider()
     {
-        $tmpDir = sys_get_temp_dir().DIRECTORY_SEPARATOR;
+        $tmpDir = sys_get_temp_dir() . DIRECTORY_SEPARATOR;
         $imageJpeg = imagecreate(1, 1);
         $white = imagecolorallocate($imageJpeg, 255, 255, 255);
         imagesetpixel($imageJpeg, 1, 1, $white);
-        imagejpeg($imageJpeg, $tmpDir.'test.jpg');
-        $jpegFilePath = $tmpDir.'test.jpg';
+        imagejpeg($imageJpeg, $tmpDir . 'test.jpg');
+        $jpegFilePath = $tmpDir . 'test.jpg';
 
-        $pngTransparentPixel = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3a'.
+        $pngTransparentPixel = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3a' .
             'AAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII';
-        file_put_contents($tmpDir.'test.png', base64_decode($pngTransparentPixel));
-        $pngFilePath = $tmpDir.'test.png';
+        file_put_contents($tmpDir . 'test.png', base64_decode($pngTransparentPixel));
+        $pngFilePath = $tmpDir . 'test.png';
 
         $gifTransparentPixel = 'R0lGODlhAQABAJAAAP8AAAAAACH5BAUQAAAALAAAAAABAAEAAAICBAEAOw';
-        file_put_contents($tmpDir.'test.gif', base64_decode($gifTransparentPixel));
-        $gifFilePath = $tmpDir.'test.gif';
+        file_put_contents($tmpDir . 'test.gif', base64_decode($gifTransparentPixel));
+        $gifFilePath = $tmpDir . 'test.gif';
 
         return [
             [$jpegFilePath],
@@ -133,21 +133,21 @@ class ImageManagerTest extends PHPUnit_Framework_TestCase
      */
     public function imagesAsOctetStreamProvider()
     {
-        $tmpDir = sys_get_temp_dir().DIRECTORY_SEPARATOR;
+        $tmpDir = sys_get_temp_dir() . DIRECTORY_SEPARATOR;
         $imageJpeg = imagecreate(1, 1);
         $white = imagecolorallocate($imageJpeg, 255, 255, 255);
         imagesetpixel($imageJpeg, 1, 1, $white);
-        imagejpeg($imageJpeg, $tmpDir.'test.jpg');
-        $jpegFilePath = $tmpDir.'test.jpg';
+        imagejpeg($imageJpeg, $tmpDir . 'test.jpg');
+        $jpegFilePath = $tmpDir . 'test.jpg';
 
-        $pngTransparentPixel = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3a'.
+        $pngTransparentPixel = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3a' .
             'AAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII';
-        file_put_contents($tmpDir.'test.png', base64_decode($pngTransparentPixel));
-        $pngFilePath = $tmpDir.'test.png';
+        file_put_contents($tmpDir . 'test.png', base64_decode($pngTransparentPixel));
+        $pngFilePath = $tmpDir . 'test.png';
 
         $gifTransparentPixel = 'R0lGODlhAQABAJAAAP8AAAAAACH5BAUQAAAALAAAAAABAAEAAAICBAEAOw';
-        file_put_contents($tmpDir.'test.gif', base64_decode($gifTransparentPixel));
-        $gifFilePath = $tmpDir.'test.gif';
+        file_put_contents($tmpDir . 'test.gif', base64_decode($gifTransparentPixel));
+        $gifFilePath = $tmpDir . 'test.gif';
 
         $mockJpegOctet = $this
             ->getMockBuilder('\Symfony\Component\HttpFoundation\File\File')

@@ -190,7 +190,7 @@ class EntityTranslatorBuilder
                 }
 
                 throw new TranslationDefinitionException(
-                    'Field '.$classNamespace.' not found, or methods ['.$fieldConfiguration['getter'].', '.$fieldConfiguration['setter'].'] not found inside the class'
+                    'Field ' . $classNamespace . ' not found, or methods [' . $fieldConfiguration['getter'] . ', ' . $fieldConfiguration['setter'] . '] not found inside the class'
                 );
             }
         }

@@ -104,8 +104,8 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
         $this->locales = $locales;
         $this->masterLocale = $masterLocale;
         $this->fallback = $fallback;
-        $this->submittedDataPlain = array();
-        $this->translationsBackup = array();
+        $this->submittedDataPlain = [];
+        $this->translationsBackup = [];
     }
 
     /**
@@ -130,11 +130,11 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
      */
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
             FormEvents::PRE_SUBMIT   => 'preSubmit',
             FormEvents::POST_SUBMIT  => 'postSubmit',
             FormEvents::PRE_SET_DATA => 'preSetData',
-        );
+        ];
     }
 
     /**
@@ -176,9 +176,9 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
                     $this->locales,
                     $this->masterLocale,
                     $this->fallback
-                ), array(
+                ), [
                     'mapped' => false,
-                ));
+                ]);
         }
     }
 
@@ -229,11 +229,11 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
             $field = $this->submittedDataPlain[$formHash][$fieldName];
 
             foreach ($this->locales as $locale) {
-                $entityData['fields'][$fieldName][$locale] = $field[$locale.'_'.$fieldName];
+                $entityData['fields'][$fieldName][$locale] = $field[$locale . '_' . $fieldName];
             }
 
-            if ($this->masterLocale && isset($field[$this->masterLocale.'_'.$fieldName])) {
-                $masterLocaleData = $field[$this->masterLocale.'_'.$fieldName];
+            if ($this->masterLocale && isset($field[$this->masterLocale . '_' . $fieldName])) {
+                $masterLocaleData = $field[$this->masterLocale . '_' . $fieldName];
                 $setter = $fieldConfiguration['setter'];
                 $entity->$setter($masterLocaleData);
             }

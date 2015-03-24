@@ -63,9 +63,9 @@ class LanguageExtension extends Twig_Extension
      */
     public function getGlobals()
     {
-        return array(
+        return [
             'elcodi_languages' => $this->getLanguages(),
-        );
+        ];
     }
 
     /**

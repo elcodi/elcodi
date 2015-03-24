@@ -38,7 +38,7 @@ class ElcodiStoreSetupWizardExtension extends AbstractExtension
      */
     public function getConfigFilesLocation()
     {
-        return __DIR__.'/../Resources/config';
+        return __DIR__ . '/../Resources/config';
     }
 
     /**

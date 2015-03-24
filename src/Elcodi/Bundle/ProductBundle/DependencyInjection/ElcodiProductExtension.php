@@ -41,7 +41,7 @@ class ElcodiProductExtension extends AbstractExtension implements EntitiesOverri
      */
     public function getConfigFilesLocation()
     {
-        return __DIR__.'/../Resources/config';
+        return __DIR__ . '/../Resources/config';
     }
 
     /**

@@ -31,27 +31,27 @@ class TranslatorBuilderTest extends PHPUnit_Framework_TestCase
      */
     public function testCompileOk()
     {
-        $entityTranslationProvider = $this->getMock('Elcodi\Component\EntityTranslator\Services\EntityTranslationProvider', array(), array(), '', false);
-        $translatorFactory = $this->getMock('Elcodi\Component\EntityTranslator\Factory\EntityTranslatorFactory', array(), array(), '', false);
-        $translator = $this->getMock('Elcodi\Component\EntityTranslator\Services\EntityTranslator', array(), array(), '', false);
+        $entityTranslationProvider = $this->getMock('Elcodi\Component\EntityTranslator\Services\EntityTranslationProvider', [], [], '', false);
+        $translatorFactory = $this->getMock('Elcodi\Component\EntityTranslator\Factory\EntityTranslatorFactory', [], [], '', false);
+        $translator = $this->getMock('Elcodi\Component\EntityTranslator\Services\EntityTranslator', [], [], '', false);
 
         $translatorFactory
             ->expects($this->once())
             ->method('create')
             ->will($this->returnValue($translator));
 
-        $configuration = array(
-            'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => array(
+        $configuration = [
+            'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => [
                 'alias'    => 'product',
                 'idGetter' => 'getId',
-                'fields'   => array(
-                    'name' => array(
+                'fields'   => [
+                    'name' => [
                         'setter' => 'setName',
                         'getter' => 'getName',
-                    ),
-                ),
-            ),
-        );
+                    ],
+                ],
+            ],
+        ];
 
         $translatorBuilder = new EntityTranslatorBuilder(
             $entityTranslationProvider,
@@ -72,8 +72,8 @@ class TranslatorBuilderTest extends PHPUnit_Framework_TestCase
      */
     public function testCompileException($configuration)
     {
-        $entityTranslationProvider = $this->getMock('Elcodi\Component\EntityTranslator\Services\EntityTranslationProvider', array(), array(), '', false);
-        $translatorFactory = $this->getMock('Elcodi\Component\EntityTranslator\Factory\EntityTranslatorFactory', array(), array(), '', false);
+        $entityTranslationProvider = $this->getMock('Elcodi\Component\EntityTranslator\Services\EntityTranslationProvider', [], [], '', false);
+        $translatorFactory = $this->getMock('Elcodi\Component\EntityTranslator\Factory\EntityTranslatorFactory', [], [], '', false);
 
         $translatorBuilder = new EntityTranslatorBuilder(
             $entityTranslationProvider,
@@ -92,69 +92,69 @@ class TranslatorBuilderTest extends PHPUnit_Framework_TestCase
         return [
             [
                 [
-                    'Elcodi\Component\EntityTranslator\Tests\Fixtures\NonExistingProduct' => array(
+                    'Elcodi\Component\EntityTranslator\Tests\Fixtures\NonExistingProduct' => [
                         'alias'    => 'product',
                         'getterId' => 'getId',
-                        'fields'   => array(
-                            'name' => array(
+                        'fields'   => [
+                            'name' => [
                                 'setter' => 'setName',
                                 'getter' => 'getName',
-                            ),
-                        ),
-                    ),
+                            ],
+                        ],
+                    ],
                 ],
             ],
             [
                 [
-                    'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => array(
+                    'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => [
                         'alias'    => 'product',
                         'getterId' => 'nonExistingGetId',
-                        'fields'   => array(
-                            'name' => array(
+                        'fields'   => [
+                            'name' => [
                                 'setter' => 'setName',
                                 'getter' => 'getName',
-                            ),
-                        ),
-                    ),
+                            ],
+                        ],
+                    ],
                 ],
             ],
             [
                 [
-                    'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => array(
+                    'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => [
                         'alias'  => '',
-                        'fields' => array(
-                            'name' => array(
+                        'fields' => [
+                            'name' => [
                                 'setter' => 'setName',
                                 'getter' => 'getName',
-                            ),
-                        ),
-                    ),
+                            ],
+                        ],
+                    ],
                 ],
             ],
             [
                 [
-                    'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => array(
+                    'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => [
                         'alias'  => 'product',
-                        'fields' => array(
-                            'name' => array(
+                        'fields' => [
+                            'name' => [
                                 'setter' => 'nonExistingSetName',
                                 'getter' => 'getName',
-                            ),
-                        ),
-                    ),
+                            ],
+                        ],
+                    ],
                 ],
             ],
             [
                 [
-                    'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => array(
+                    'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => [
                         'alias'  => 'product',
-                        'fields' => array(
-                            'name' => array(
+                        'fields' => [
+                            'name' => [
                                 'setter' => 'setName',
                                 'getter' => 'nonExistingGetName',
-                            ),
-                        ),
-                    ),
+                            ],
+                        ],
+                    ],
                 ],
             ],
         ];

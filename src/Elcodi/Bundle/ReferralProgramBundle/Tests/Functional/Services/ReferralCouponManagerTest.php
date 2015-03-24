@@ -63,10 +63,10 @@ class ReferralCouponManagerTest extends WebTestCase
      */
     protected function loadFixturesBundles()
     {
-        return array(
+        return [
             'ElcodiUserBundle',
             'ElcodiReferralProgramBundle',
-        );
+        ];
     }
 
     /**
@@ -154,9 +154,9 @@ class ReferralCouponManagerTest extends WebTestCase
         $customerObjectManager->flush();
         $customerObjectManager->clear();
 
-        $invited = $this->getRepository('customer')->findOneBy(array(
+        $invited = $this->getRepository('customer')->findOneBy([
             'email' => 'customer3@customer.com',
-        ));
+        ]);
 
         $referralCouponManager = $this
             ->get('elcodi.manager.referral_coupon');
@@ -359,7 +359,7 @@ class ReferralCouponManagerTest extends WebTestCase
 
         $referralCouponManager
             ->checkCouponAssignment($referrer, $hash, ElcodiReferralProgramRuleTypes::TYPE_ON_FIRST_PURCHASE)
-            ->checkCouponsUsed($referrer, new ArrayCollection(array($referralLine->getReferrerAssignedCoupon())));
+            ->checkCouponsUsed($referrer, new ArrayCollection([$referralLine->getReferrerAssignedCoupon()]));
 
         $this->assertTrue($referralLine->getReferrerCouponUsed());
         $this->assertFalse($referralLine->isClosed());
@@ -380,7 +380,7 @@ class ReferralCouponManagerTest extends WebTestCase
 
         $referralCouponManager
             ->checkCouponAssignment($invited, $hash, ElcodiReferralProgramRuleTypes::TYPE_ON_FIRST_PURCHASE)
-            ->checkCouponsUsed($invited, new ArrayCollection(array($referralLine->getInvitedAssignedCoupon())));
+            ->checkCouponsUsed($invited, new ArrayCollection([$referralLine->getInvitedAssignedCoupon()]));
 
         $this->assertTrue($referralLine->getInvitedCouponUsed());
         $this->assertTrue($referralLine->isClosed());

@@ -33,7 +33,7 @@ class StateNotValidException extends Exception
      */
     public function __construct($state, $code = 0, Exception $previous = null)
     {
-        $message = 'State "'.$state.'" is not valid or is unreachable';
+        $message = 'State "' . $state . '" is not valid or is unreachable';
 
         parent::__construct($message, $code, $previous);
     }

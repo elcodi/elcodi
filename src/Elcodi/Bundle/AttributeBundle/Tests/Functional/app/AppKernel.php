@@ -32,7 +32,7 @@ class AppKernel extends AbstractElcodiKernel
      */
     public function registerBundles()
     {
-        $bundles = array(
+        $bundles = [
 
             /**
              * Symfony bundles
@@ -52,7 +52,7 @@ class AppKernel extends AbstractElcodiKernel
             new \Elcodi\Bundle\CoreBundle\ElcodiCoreBundle(),
             new \Elcodi\Bundle\BambooBundle\ElcodiBambooBundle(),
             new \Elcodi\Bundle\AttributeBundle\ElcodiAttributeBundle(),
-        );
+        ];
 
         return $bundles;
     }
@@ -64,8 +64,8 @@ class AppKernel extends AbstractElcodiKernel
      */
     protected function getContainerClass()
     {
-        return  $this->name.
-                ucfirst($this->environment).
+        return  $this->name .
+                ucfirst($this->environment) .
                 'DebugProjectContainerAttribute';
     }
 }

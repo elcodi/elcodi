@@ -37,9 +37,9 @@ class CategoryRepository extends EntityRepository
         $categories = $this
             ->createQueryBuilder('c')
             ->where('c.root = :root')
-            ->setParameters(array(
+            ->setParameters([
                 'root' => true,
-            ))
+            ])
             ->getQuery()
             ->getResult();
 
@@ -80,9 +80,9 @@ class CategoryRepository extends EntityRepository
         $categories = $this
             ->createQueryBuilder('c')
             ->where('c.parent = :parent_category')
-            ->setParameters(array(
+            ->setParameters([
                 'parent_category' => $parentCategory,
-            ))
+            ])
             ->getQuery()
             ->getResult();
 

@@ -58,10 +58,10 @@ class PageTest extends \PHPUnit_Framework_TestCase
 
     public function persistentProvider()
     {
-        return array(
-            'The page is persistent'     => array(true),
-            'The page is not persistent' => array(false),
-        );
+        return [
+            'The page is persistent'     => [true],
+            'The page is not persistent' => [false],
+        ];
     }
 
     /**

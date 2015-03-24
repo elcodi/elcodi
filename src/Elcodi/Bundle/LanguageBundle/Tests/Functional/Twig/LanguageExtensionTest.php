@@ -43,9 +43,9 @@ class LanguageExtensionTest extends WebTestCase
      */
     protected function loadFixturesBundles()
     {
-        return array(
+        return [
             'ElcodiLanguageBundle',
-        );
+        ];
     }
 
     /**

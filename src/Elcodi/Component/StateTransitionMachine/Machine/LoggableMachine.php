@@ -148,12 +148,12 @@ class LoggableMachine implements MachineInterface
             ->logger
             ->info(
                 'Transition {transition_name} in machine "{machine_id}" from "{state_from}" to "{state_to}"',
-                array(
+                [
                     'transition_name' => $transition->getName(),
                     'machine_id'      => $this->machine->getId(),
                     'state_from'      => $transition->getStart()->getName(),
                     'state_to'        => $transition->getFinal()->getName(),
-                )
+                ]
             );
     }
 }

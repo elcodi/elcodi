@@ -48,7 +48,7 @@ class LocationBuilder
     {
         $this->locationFactory = $locationFactory;
 
-        $this->locations = array();
+        $this->locations = [];
     }
 
     /**

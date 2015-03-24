@@ -41,7 +41,7 @@ class ElcodiNewsletterExtension extends AbstractExtension implements EntitiesOve
      */
     public function getConfigFilesLocation()
     {
-        return __DIR__.'/../Resources/config';
+        return __DIR__ . '/../Resources/config';
     }
 
     /**

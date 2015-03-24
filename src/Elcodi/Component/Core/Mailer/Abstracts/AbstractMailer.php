@@ -96,7 +96,7 @@ abstract class AbstractMailer
     protected function renderEmail(
         $subject,
         $receiverEmail,
-        array $context = array()
+        array $context = []
     ) {
         $message = Swift_Message::newInstance()
             ->setSubject($subject)

@@ -113,34 +113,34 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
                 case ElcodiMediaImageResizeTypes::INSET:
 
                     $pb
-                        ->add($width.'x'.$height);
+                        ->add($width . 'x' . $height);
 
                     break;
 
                 case ElcodiMediaImageResizeTypes::INSET_FILL_WHITE:
                     $pb
-                        ->add($width.'x'.$height)
+                        ->add($width . 'x' . $height)
                         ->add('-gravity')
                         ->add('center')
                         ->add('-extent')
-                        ->add($width.'x'.$height);
+                        ->add($width . 'x' . $height);
 
                     break;
 
                 case ElcodiMediaImageResizeTypes::OUTBOUNDS_FILL_WHITE:
 
                     $pb
-                        ->add($width.'x'.$height.'');
+                        ->add($width . 'x' . $height . '');
 
                     break;
 
                 case ElcodiMediaImageResizeTypes::OUTBOUND_CROP:
                     $pb
-                        ->add($width.'x'.$height.'^')
+                        ->add($width . 'x' . $height . '^')
                         ->add('-gravity')
                         ->add('center')
                         ->add('-crop')
-                        ->add($width.'x'.$height.'+0+0');
+                        ->add($width . 'x' . $height . '+0+0');
 
                     break;
 
@@ -148,7 +148,7 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
                 default:
 
                     $pb
-                        ->add($width.'x'.$height.'!');
+                        ->add($width . 'x' . $height . '!');
                     break;
             }
         }

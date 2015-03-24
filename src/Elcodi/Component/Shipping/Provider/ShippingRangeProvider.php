@@ -110,7 +110,7 @@ class ShippingRangeProvider
                 'enabled' => true,
             ]);
 
-        $satisfiedCarriers = array();
+        $satisfiedCarriers = [];
 
         foreach ($availableCarriers as $carrier) {
             $shippingRange = $this->getShippingRangeSatisfiedByCart(

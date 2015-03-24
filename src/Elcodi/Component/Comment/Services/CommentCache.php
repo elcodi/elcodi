@@ -254,17 +254,17 @@ class CommentCache extends AbstractCacheWrapper
             }
 
             if ($parentCommentId && !isset($commentTree[$parentCommentId])) {
-                $commentTree[$parentCommentId] = array(
+                $commentTree[$parentCommentId] = [
                     'entity'   => null,
-                    'children' => array(),
-                );
+                    'children' => [],
+                ];
             }
 
             if (!isset($commentTree[$commentId])) {
-                $commentTree[$commentId] = array(
+                $commentTree[$commentId] = [
                     'entity'   => null,
-                    'children' => array(),
-                );
+                    'children' => [],
+                ];
             }
 
             $commentVotePackage = $this
@@ -317,7 +317,7 @@ class CommentCache extends AbstractCacheWrapper
         $source = str_replace('.', '_', $source);
         $context = str_replace('.', '_', $context);
 
-        return $this->key.'.'.$source.'.'.$context;
+        return $this->key . '.' . $source . '.' . $context;
     }
 
     /**

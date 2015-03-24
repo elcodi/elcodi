@@ -43,5 +43,5 @@ interface HookSystemInterface
      *
      * @return mixed Content after transformation
      */
-    public function execute($hookName, $context = array(), $content = '');
+    public function execute($hookName, $context = [], $content = '');
 }

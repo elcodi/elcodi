@@ -294,14 +294,14 @@ class MachineManager
             ->eventDispatcher
             ->dispatch(
                 str_replace(
-                    array(
+                    [
                         '{machine_id}',
                         '{state_name}',
-                    ),
-                    array(
+                    ],
+                    [
                         $machine->getId(),
                         $transition->getStart()->getName(),
-                    ),
+                    ],
                     ElcodiStateTransitionMachineEvents::TRANSITION_FROM_STATE
                 ),
                 new TransitionEvent(
@@ -315,14 +315,14 @@ class MachineManager
             ->eventDispatcher
             ->dispatch(
                 str_replace(
-                    array(
+                    [
                         '{machine_id}',
                         '{state_name}',
-                    ),
-                    array(
+                    ],
+                    [
                         $machine->getId(),
                         $transition->getFinal()->getName(),
-                    ),
+                    ],
                     ElcodiStateTransitionMachineEvents::TRANSITION_TO_STATE
                 ),
                 new TransitionEvent(
@@ -336,14 +336,14 @@ class MachineManager
             ->eventDispatcher
             ->dispatch(
                 str_replace(
-                    array(
+                    [
                         '{machine_id}',
                         '{transition_name}',
-                    ),
-                    array(
+                    ],
+                    [
                         $machine->getId(),
                         $transition->getName(),
-                    ),
+                    ],
                     ElcodiStateTransitionMachineEvents::TRANSITION
                 ),
                 new TransitionEvent(

@@ -48,7 +48,6 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
                 'elcodi.core.attribute.entity.attribute_value.class',
                 'elcodi.core.attribute.entity.attribute_value.mapping_file',
                 'elcodi.core.attribute.entity.attribute_value.enabled'
-            )
-        ;
+            );
     }
 }

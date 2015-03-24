@@ -170,9 +170,9 @@ class ImageResizeController
             ->setContent($imageData);
 
         $response->headers->add(
-            array(
+            [
                 'Content-Type' => $image->getContentType(),
-            )
+            ]
         );
 
         return $response;

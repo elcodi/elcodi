@@ -84,7 +84,7 @@ class LocationApiProvider implements LocationProviderInterface
     {
         $url = $this
             ->apiUrls
-            ->getGetChildrenUrl().'?id='.$id;
+            ->getGetChildrenUrl() . '?id=' . $id;
 
         return $this->getDataFromApi($url);
     }
@@ -100,7 +100,7 @@ class LocationApiProvider implements LocationProviderInterface
     {
         $url = $this
             ->apiUrls
-            ->getGetParentsUrl().'?id='.$id;
+            ->getGetParentsUrl() . '?id=' . $id;
 
         return $this->getDataFromApi($url);
     }
@@ -116,7 +116,7 @@ class LocationApiProvider implements LocationProviderInterface
     {
         $url = $this
             ->apiUrls
-            ->getGetLocationUrl().'?id='.$id;
+            ->getGetLocationUrl() . '?id=' . $id;
 
         return $this->getDataFromApi($url);
     }
@@ -133,7 +133,7 @@ class LocationApiProvider implements LocationProviderInterface
     {
         $url = $this
             ->apiUrls
-            ->getGetHierarchyUrl().'?id='.$id;
+            ->getGetHierarchyUrl() . '?id=' . $id;
 
         return $this->getDataFromApi($url);
     }
@@ -151,7 +151,7 @@ class LocationApiProvider implements LocationProviderInterface
     {
         $url = $this
             ->apiUrls
-            ->getInUrl().'?id='.$id.'&ids='.implode(',', $ids);
+            ->getInUrl() . '?id=' . $id . '&ids=' . implode(',', $ids);
 
         return $this->getDataFromApi($url);
     }

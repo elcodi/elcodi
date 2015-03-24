@@ -67,10 +67,10 @@ class CurrencyExchangeRatesProvider
      *
      * @return array in the form of 'ISOCODE' => (float) exchange rate
      */
-    public function getExchangeRates($fromCode, $toCodes = array())
+    public function getExchangeRates($fromCode, $toCodes = [])
     {
         if (!is_array($toCodes)) {
-            $toCodes = array($toCodes);
+            $toCodes = [$toCodes];
         }
 
         if (empty($this->exchangeRates)) {
@@ -83,7 +83,7 @@ class CurrencyExchangeRatesProvider
 
         $baseExchangeRate = $this->exchangeRates[$fromCode];
 
-        $exchangeRates = array();
+        $exchangeRates = [];
         foreach ($toCodes as $code) {
             $exchangeRates[$code] = ($this->exchangeRates[$code] / $baseExchangeRate);
         }

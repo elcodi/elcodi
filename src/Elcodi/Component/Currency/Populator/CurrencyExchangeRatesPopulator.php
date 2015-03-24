@@ -131,7 +131,7 @@ class CurrencyExchangeRatesPopulator
             ]);
 
         //extract target currency codes
-        $currenciesCodes = array();
+        $currenciesCodes = [];
         foreach ($currencies as $activeCurrency) {
             if ($activeCurrency->getIso() != $this->defaultCurrency) {
                 $currenciesCodes[] = $activeCurrency->getIso();

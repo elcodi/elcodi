@@ -30,7 +30,7 @@ interface CurrencyExchangeRatesProviderAdapterInterface
      *
      * @return array exchange rates
      */
-    public function getExchangeRates(array $symbols = array(), $base = null);
+    public function getExchangeRates(array $symbols = [], $base = null);
 
     /**
      * Gets a list of all available currencies

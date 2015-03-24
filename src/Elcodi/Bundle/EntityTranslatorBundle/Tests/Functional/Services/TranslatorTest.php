@@ -85,17 +85,17 @@ class TranslatorTest extends WebTestCase
 
         $this
             ->get('elcodi.entity_translator')
-            ->save($translatableProduct, array(
-                'es' => array(
+            ->save($translatableProduct, [
+                'es' => [
                     'name'        => 'el nombre',
-                ),
-                'en' => array(
+                ],
+                'en' => [
                     'name'         => 'the name',
-                ),
-                'fr' => array(
+                ],
+                'fr' => [
                     'name'         => 'le nom',
-                ),
-            ));
+                ],
+            ]);
 
         $this->assertCount(3, $this
             ->findAll('entity_translation')

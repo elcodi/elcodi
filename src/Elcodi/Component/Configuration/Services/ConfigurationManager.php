@@ -204,7 +204,7 @@ class ConfigurationManager extends AbstractCacheWrapper
 
             if (empty($configurationValue) && !$configurationElement['can_be_empty']) {
                 $message = $configurationElement['empty_message']
-                    ?: 'The configuration element "'.$configurationIdentifier.'" cannot be resolved';
+                    ?: 'The configuration element "' . $configurationIdentifier . '" cannot be resolved';
 
                 throw new Exception($message);
             }

@@ -56,7 +56,7 @@ class AddressFormatter
             ->getHierarchy($cityLocationId);
         $cityHierarchyAsc = array_reverse($cityHierarchy);
 
-        $addressArray = array(
+        $addressArray = [
             'id'               => $address->getId(),
             'name'             => $address->getName(),
             'recipientName'    => $address->getRecipientName(),
@@ -67,7 +67,7 @@ class AddressFormatter
             'phone'            => $address->getPhone(),
             'mobile'           => $address->getMobile(),
             'comment'          => $address->getComments(),
-        );
+        ];
 
         foreach ($cityHierarchyAsc as $cityLocationNode) {
             /**

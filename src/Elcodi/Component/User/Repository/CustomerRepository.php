@@ -36,9 +36,9 @@ class CustomerRepository extends EntityRepository implements UserEmaileableInter
      */
     public function findOneByEmail($email)
     {
-        return $this->findOneBy(array(
+        return $this->findOneBy([
             'email' => $email,
-        ));
+        ]);
     }
 
     /**

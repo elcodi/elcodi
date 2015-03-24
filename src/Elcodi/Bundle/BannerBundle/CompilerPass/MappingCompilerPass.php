@@ -48,7 +48,6 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
                 'elcodi.core.banner.entity.banner_zone.class',
                 'elcodi.core.banner.entity.banner_zone.mapping_file',
                 'elcodi.core.banner.entity.banner_zone.enabled'
-            )
-        ;
+            );
     }
 }

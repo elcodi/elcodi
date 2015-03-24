@@ -44,7 +44,7 @@ class ImageServiceTest extends WebTestCase
      */
     public function testCreateImage()
     {
-        $imagePath = realpath(dirname(__FILE__)).'/images/image-10-10.gif';
+        $imagePath = realpath(dirname(__FILE__)) . '/images/image-10-10.gif';
         $file = new File($imagePath);
 
         /**

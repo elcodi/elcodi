@@ -41,7 +41,7 @@ class ElcodiTaxExtension extends AbstractExtension implements EntitiesOverridabl
      */
     public function getConfigFilesLocation()
     {
-        return __DIR__.'/../Resources/config';
+        return __DIR__ . '/../Resources/config';
     }
 
     /**

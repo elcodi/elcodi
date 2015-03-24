@@ -64,13 +64,13 @@ class ReferralProgramManagerTest extends WebTestCase
      */
     protected function loadFixturesBundles()
     {
-        return array(
+        return [
             'ElcodiLanguageBundle',
             'ElcodiUserBundle',
             'ElcodiCurrencyBundle',
             'ElcodiCouponBundle',
             'ElcodiReferralProgramBundle',
-        );
+        ];
     }
 
     /**
@@ -127,18 +127,18 @@ class ReferralProgramManagerTest extends WebTestCase
          */
         $referralHash = $this
             ->getRepository('referral_hash')
-            ->findOneBy(array(
+            ->findOneBy([
                 'referrer' => $referrer,
-            ));
+            ]);
 
         /**
          * @var $referralLine ReferralLine
          */
         $referralLines = $this
             ->getRepository('referral_line')
-            ->findBy(array(
+            ->findBy([
                 'referralHash' => $referralHash,
-            ));
+            ]);
 
         $this->assertCount(5, $referralLines);
         foreach ($referralLines as $referralLine) {

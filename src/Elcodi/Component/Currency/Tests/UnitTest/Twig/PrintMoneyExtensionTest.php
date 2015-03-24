@@ -90,8 +90,7 @@ class PrintMoneyExtensionTest extends PHPUnit_Framework_TestCase
         $locale
             ->expects($this->any())
             ->method('getIso')
-            ->willReturn('es_ES')
-        ;
+            ->willReturn('es_ES');
 
         $priceExtension = new PrintMoneyExtension(
             $this->getMock('Elcodi\Component\Currency\Services\CurrencyConverter', [], [], '', false),

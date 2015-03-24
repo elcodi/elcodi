@@ -38,7 +38,6 @@ class Configuration extends AbstractConfiguration
                 ->scalarNode('hook_system')
                     ->defaultValue('elcodi.core.plugin.hook_system.adapter.event_dispatcher')
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 }
