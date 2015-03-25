@@ -21,6 +21,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\PluginBundle\DependencyInjection\ElcodiPluginExtension;
 use Elcodi\Component\Plugin\ExpressionLanguage\PluginExpressionLanguageProvider;
 
@@ -29,7 +30,7 @@ use Elcodi\Component\Plugin\ExpressionLanguage\PluginExpressionLanguageProvider;
  *
  * @author Berny Cantos <be@rny.cc>
  */
-class ElcodiPluginBundle extends Bundle
+class ElcodiPluginBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -49,5 +50,17 @@ class ElcodiPluginBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiPluginExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [
+            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+        ];
     }
 }

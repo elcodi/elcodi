@@ -21,13 +21,14 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\GeoBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\GeoBundle\DependencyInjection\ElcodiGeoExtension;
 
 /**
  * ElcodiGeoBundle Bundle
  */
-class ElcodiGeoBundle extends Bundle
+class ElcodiGeoBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -47,5 +48,17 @@ class ElcodiGeoBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiGeoExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [
+            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+        ];
     }
 }

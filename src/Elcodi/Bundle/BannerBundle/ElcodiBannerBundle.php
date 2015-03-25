@@ -23,11 +23,12 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 use Elcodi\Bundle\BannerBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\BannerBundle\DependencyInjection\ElcodiBannerExtension;
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 
 /**
  * ElcodiBannerBundle Bundle
  */
-class ElcodiBannerBundle extends Bundle
+class ElcodiBannerBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -45,5 +46,19 @@ class ElcodiBannerBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiBannerExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [
+            '\Elcodi\Bundle\LanguageBundle\ElcodiLanguageBundle',
+            '\Elcodi\Bundle\MediaBundle\ElcodiMediaBundle',
+            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+        ];
     }
 }

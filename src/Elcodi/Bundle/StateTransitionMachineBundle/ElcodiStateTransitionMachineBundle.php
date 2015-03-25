@@ -21,13 +21,14 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\StateTransitionMachineBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\StateTransitionMachineBundle\DependencyInjection\ElcodiStateTransitionMachineExtension;
 
 /**
  * ElcodiStateTransitionMachineBundle
  */
-class ElcodiStateTransitionMachineBundle extends Bundle
+class ElcodiStateTransitionMachineBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -47,5 +48,17 @@ class ElcodiStateTransitionMachineBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiStateTransitionMachineExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [
+            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+        ];
     }
 }

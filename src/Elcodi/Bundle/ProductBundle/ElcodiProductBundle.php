@@ -21,13 +21,14 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\ProductBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\ProductBundle\DependencyInjection\ElcodiProductExtension;
 
 /**
  * ElcodiProductBundle Bundle
  */
-class ElcodiProductBundle extends Bundle
+class ElcodiProductBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -47,5 +48,23 @@ class ElcodiProductBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiProductExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [
+            '\Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle',
+            '\Elcodi\Bundle\LanguageBundle\ElcodiLanguageBundle',
+            '\Elcodi\Bundle\MediaBundle\ElcodiMediaBundle',
+            '\Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
+            '\Elcodi\Bundle\AttributeBundle\ElcodiAttributeBundle',
+            '\Elcodi\Bundle\ConfigurationBundle\ElcodiConfigurationBundle',
+            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+        ];
     }
 }

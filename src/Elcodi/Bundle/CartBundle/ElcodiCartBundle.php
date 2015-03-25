@@ -23,11 +23,13 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 use Elcodi\Bundle\CartBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\CartBundle\DependencyInjection\ElcodiCartExtension;
+use Elcodi\Bundle\CoreBundle\ElcodiCoreBundle;
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 
 /**
  * ElcodiCartBundle Bundle
  */
-class ElcodiCartBundle extends Bundle
+class ElcodiCartBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -47,5 +49,23 @@ class ElcodiCartBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiCartExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [
+            '\Elcodi\Bundle\UserBundle\ElcodiUserBundle',
+            '\Elcodi\Bundle\ProductBundle\ElcodiProductBundle',
+            '\Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
+            '\Elcodi\Bundle\StateTransitionMachineBundle\ElcodiStateTransitionMachineBundle',
+            '\Elcodi\Bundle\ShippingBundle\ElcodiShippingBundle',
+            '\Elcodi\Bundle\ConfigurationBundle\ElcodiConfigurationBundle',
+            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+        ];
     }
 }

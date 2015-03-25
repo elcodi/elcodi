@@ -17,6 +17,7 @@
 
 namespace Elcodi\Bundle\EntityTranslatorBundle\Tests\Functional\app;
 
+use Elcodi\Bundle\CoreBundle\Traits\BundleDependenciesResolver;
 use Elcodi\Bundle\TestCommonBundle\Functional\Abstracts\AbstractElcodiKernel;
 
 /**
@@ -24,6 +25,8 @@ use Elcodi\Bundle\TestCommonBundle\Functional\Abstracts\AbstractElcodiKernel;
  */
 class AppKernel extends AbstractElcodiKernel
 {
+    use BundleDependenciesResolver;
+
     /**
      * Register application bundles
      *
@@ -31,30 +34,12 @@ class AppKernel extends AbstractElcodiKernel
      */
     public function registerBundles()
     {
-        $bundles = [
-
-            /**
-             * Symfony bundles
-             */
-            new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-
-            /**
-             * Doctrine bundles
-             */
-            new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new \Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
-
-            /**
-             * Elcodi core bundles
-             */
-            new \Elcodi\Bundle\FixturesBoosterBundle\ElcodiFixturesBoosterBundle(),
-            new \Elcodi\Bundle\CoreBundle\ElcodiCoreBundle(),
-            new \Elcodi\Bundle\BambooBundle\ElcodiBambooBundle(),
-            new \Elcodi\Bundle\LanguageBundle\ElcodiLanguageBundle(),
-            new \Elcodi\Bundle\EntityTranslatorBundle\ElcodiEntityTranslatorBundle(),
-        ];
-
-        return $bundles;
+        return $this->getBundleInstances([
+            '\Symfony\Bundle\FrameworkBundle\FrameworkBundle',
+            '\Doctrine\Bundle\DoctrineBundle\DoctrineBundle',
+            '\Elcodi\Bundle\FixturesBoosterBundle\ElcodiFixturesBoosterBundle',
+            '\Elcodi\Bundle\EntityTranslatorBundle\ElcodiEntityTranslatorBundle',
+        ]);
     }
 
     /**

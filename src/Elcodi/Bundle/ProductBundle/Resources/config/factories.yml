@@ -12,7 +12,7 @@ services:
         parent: elcodi.core.currency.factory.abstract.purchasable
         calls:
             - [setEntityNamespace, ["%elcodi.core.product.entity.product.class%"]]
-            - [setUseStock, [@=elcodi_config('product.use_stock')]]
+            - [setUseStock, ["@=elcodi_config('product.use_stock', false)"]]
 
     #
     # Factory for Variant entities

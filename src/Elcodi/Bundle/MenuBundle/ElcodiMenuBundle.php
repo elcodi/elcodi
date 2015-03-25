@@ -21,13 +21,14 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\MenuBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\MenuBundle\DependencyInjection\ElcodiMenuExtension;
 
 /**
  * Class ElcodiMenuBundle
  */
-class ElcodiMenuBundle extends Bundle
+class ElcodiMenuBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -47,5 +48,18 @@ class ElcodiMenuBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiMenuExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [
+            '\Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle',
+            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+        ];
     }
 }

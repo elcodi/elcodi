@@ -20,12 +20,13 @@ namespace Elcodi\Bundle\FixturesBoosterBundle;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\FixturesBoosterBundle\DependencyInjection\ElcodiFixturesBoosterExtension;
 
 /**
  * Class ElcodiFixturesBoosterBundle
  */
-class ElcodiFixturesBoosterBundle extends Bundle
+class ElcodiFixturesBoosterBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * Returns the bundle's container extension.
@@ -35,5 +36,17 @@ class ElcodiFixturesBoosterBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiFixturesBoosterExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [
+            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+        ];
     }
 }

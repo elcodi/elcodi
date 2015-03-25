@@ -21,13 +21,14 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\TaxBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\TaxBundle\DependencyInjection\ElcodiTaxExtension;
 
 /**
  * ElcodiTaxBundle Bundle
  */
-class ElcodiTaxBundle extends Bundle
+class ElcodiTaxBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -47,5 +48,17 @@ class ElcodiTaxBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiTaxExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [
+            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+        ];
     }
 }

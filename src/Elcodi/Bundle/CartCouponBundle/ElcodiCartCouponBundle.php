@@ -23,11 +23,12 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 use Elcodi\Bundle\CartCouponBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\CartCouponBundle\DependencyInjection\ElcodiCartCouponExtension;
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 
 /**
  * Class ElcodiCartCouponBundle
  */
-class ElcodiCartCouponBundle extends Bundle
+class ElcodiCartCouponBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -47,5 +48,20 @@ class ElcodiCartCouponBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiCartCouponExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [
+            '\Elcodi\Bundle\CartBundle\ElcodiCartBundle',
+            '\Elcodi\Bundle\CouponBundle\ElcodiCouponBundle',
+            '\Elcodi\Bundle\RuleBundle\ElcodiRuleBundle',
+            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+        ];
     }
 }

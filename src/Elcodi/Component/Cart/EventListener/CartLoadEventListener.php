@@ -25,7 +25,6 @@ use Elcodi\Component\Cart\Event\CartOnLoadEvent;
 use Elcodi\Component\Cart\Event\CartPreLoadEvent;
 use Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher;
 use Elcodi\Component\Cart\Services\CartManager;
-use Elcodi\Component\Configuration\Services\ConfigurationManager;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
@@ -83,22 +82,22 @@ class CartLoadEventListener
     protected $currencyConverter;
 
     /**
-     * @var ConfigurationManager
+     * @var boolean
      *
-     * A configuration manager
+     * Uses stock
      */
-    protected $configurationManager;
+    protected $useStock;
 
     /**
      * Built method
      *
-     * @param ObjectManager        $cartObjectManager    ObjectManager for Cart
-     *                                                   entity
-     * @param CartEventDispatcher  $cartEventDispatcher  Cart event dispatcher
-     * @param CartManager          $cartManager          Cart Manager
-     * @param CurrencyWrapper      $currencyWrapper      Currency Wrapper
-     * @param CurrencyConverter    $currencyConverter    Currency Converter
-     * @param ConfigurationManager $configurationManager A configuration manager
+     * @param ObjectManager       $cartObjectManager   ObjectManager for Cart
+     *                                                 entity
+     * @param CartEventDispatcher $cartEventDispatcher Cart event dispatcher
+     * @param CartManager         $cartManager         Cart Manager
+     * @param CurrencyWrapper     $currencyWrapper     Currency Wrapper
+     * @param CurrencyConverter   $currencyConverter   Currency Converter
+     * @param boolean             $useStock            Use stock
      */
     public function __construct(
         ObjectManager $cartObjectManager,
@@ -106,14 +105,14 @@ class CartLoadEventListener
         CartManager $cartManager,
         CurrencyWrapper $currencyWrapper,
         CurrencyConverter $currencyConverter,
-        ConfigurationManager $configurationManager
+        $useStock
     ) {
         $this->cartObjectManager = $cartObjectManager;
         $this->cartEventDispatcher = $cartEventDispatcher;
         $this->cartManager = $cartManager;
         $this->currencyWrapper = $currencyWrapper;
         $this->currencyConverter = $currencyConverter;
-        $this->configurationManager = $configurationManager;
+        $this->useStock = $useStock;
     }
 
     /**
@@ -212,17 +211,14 @@ class CartLoadEventListener
      */
     protected function checkCartLine(CartLineInterface $cartLine)
     {
-        $cart        = $cartLine->getCart();
+        $cart = $cartLine->getCart();
         $purchasable = $cartLine->getPurchasable();
-        $useStock    = $this
-            ->configurationManager
-            ->get('product.use_stock');
 
         if (
             !($purchasable instanceof PurchasableInterface) ||
             !($purchasable->isEnabled()) ||
             (
-                $useStock &&
+                $this->useStock &&
                 $cartLine->getQuantity() <= 0
             )
         ) {

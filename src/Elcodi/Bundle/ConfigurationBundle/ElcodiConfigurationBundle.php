@@ -23,12 +23,13 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 use Elcodi\Bundle\ConfigurationBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\ConfigurationBundle\DependencyInjection\ElcodiConfigurationExtension;
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Component\Configuration\ExpressionLanguage\ConfigurationExpressionLanguageProvider;
 
 /**
  * ElcodiConfigurationBundle Class
  */
-class ElcodiConfigurationBundle extends Bundle
+class ElcodiConfigurationBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -49,5 +50,18 @@ class ElcodiConfigurationBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiConfigurationExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [
+            '\Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle',
+            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+        ];
     }
 }
