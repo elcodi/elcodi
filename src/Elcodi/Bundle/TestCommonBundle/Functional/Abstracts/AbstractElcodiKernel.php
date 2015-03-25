@@ -45,9 +45,7 @@ abstract class AbstractElcodiKernel extends Kernel
     public function getCacheDir()
     {
         return  sys_get_temp_dir() .
-        DIRECTORY_SEPARATOR .
-        'Elcodi' .
-        DIRECTORY_SEPARATOR .
+        '/Elcodi/' .
         $this->getContainerClass() . '/Cache/';
     }
 
@@ -59,13 +57,7 @@ abstract class AbstractElcodiKernel extends Kernel
     public function getLogDir()
     {
         return  sys_get_temp_dir() .
-        DIRECTORY_SEPARATOR .
-        'Elcodi' .
-        DIRECTORY_SEPARATOR .
+        '/Elcodi/' .
         $this->getContainerClass() . '/Log/';
     }
-
-    /**
-     *
-     */
 }
