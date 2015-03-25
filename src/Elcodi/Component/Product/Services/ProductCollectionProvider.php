@@ -38,13 +38,24 @@ class ProductCollectionProvider
     protected $productRepository;
 
     /**
+     * @var boolean
+     *
+     * If the use stock option is enabled
+     */
+    protected $useStock;
+
+    /**
      * Construct method
      *
      * @param ProductRepository $productRepository Product Repository
+     * @param boolean           $useStock          If this option is enabled
      */
-    public function __construct(ProductRepository $productRepository)
-    {
+    public function __construct(
+        ProductRepository $productRepository,
+        $useStock
+    ) {
         $this->productRepository = $productRepository;
+        $this->useStock          = $useStock;
     }
 
     /**
@@ -123,21 +134,23 @@ class ProductCollectionProvider
      *
      * @return QueryBuilder same object
      */
-    protected function addStockPropertiesToQueryBuilder(QueryBuilder $queryBuilder)
-    {
-        $infiniteStockIsNull = is_null(ElcodiProductStock::INFINITE_STOCK);
-
-        $queryBuilder
-            ->andWhere($queryBuilder->expr()->orX(
-                $queryBuilder->expr()->gt('p.stock', ':stockZero'),
-                $infiniteStockIsNull
-                    ? $queryBuilder->expr()->isNull('p.stock')
-                    : $queryBuilder->expr()->eq('p.stock', ':infiniteStock')
-            ))
-            ->setParameter('stockZero', 0);
-
-        if (!$infiniteStockIsNull) {
-            $queryBuilder->setParameter('infiniteStock', ElcodiProductStock::INFINITE_STOCK);
+    protected function addStockPropertiesToQueryBuilder(
+        QueryBuilder $queryBuilder
+    ) {
+        if ($this->useStock) {
+            $queryBuilder
+                ->andWhere($queryBuilder->expr()->orX(
+                    $queryBuilder->expr()->gt('p.stock', ':stockZero'),
+                    $queryBuilder->expr()->eq('p.stock', ':infiniteStock')
+                ))
+                ->setParameter(
+                    'stockZero',
+                    0
+                )
+                ->setParameter(
+                    'infiniteStock',
+                    ElcodiProductStock::INFINITE_STOCK
+                );
         }
 
         return $queryBuilder;
