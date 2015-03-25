@@ -20,12 +20,13 @@ namespace Elcodi\Bundle\TemplateBundle;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\TemplateBundle\DependencyInjection\ElcodiTemplateExtension;
 
 /**
  * Class ElcodiTemplateBundle
  */
-class ElcodiTemplateBundle extends Bundle
+class ElcodiTemplateBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * Returns the bundle's container extension.
@@ -35,5 +36,18 @@ class ElcodiTemplateBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiTemplateExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [
+            '\Elcodi\Bundle\ConfigurationBundle\ElcodiConfigurationBundle',
+            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+        ];
     }
 }

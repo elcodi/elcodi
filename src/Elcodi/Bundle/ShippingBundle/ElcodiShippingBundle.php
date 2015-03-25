@@ -21,13 +21,14 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\ShippingBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\ShippingBundle\DependencyInjection\ElcodiShippingExtension;
 
 /**
  * ElcodiShippingBundle
  */
-class ElcodiShippingBundle extends Bundle
+class ElcodiShippingBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -47,5 +48,22 @@ class ElcodiShippingBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiShippingExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [
+            '\Elcodi\Bundle\CartBundle\ElcodiCartBundle',
+            '\Elcodi\Bundle\TaxBundle\ElcodiTaxBundle',
+            '\Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
+            '\Elcodi\Bundle\GeoBundle\ElcodiGeoBundle',
+            '\Elcodi\Bundle\ZoneBundle\ElcodiZoneBundle',
+            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+        ];
     }
 }

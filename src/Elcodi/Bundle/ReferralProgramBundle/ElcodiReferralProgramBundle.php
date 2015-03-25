@@ -21,13 +21,14 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\ReferralProgramBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\ReferralProgramBundle\DependencyInjection\ElcodiReferralProgramExtension;
 
 /**
  * ReferralProgram Bundle
  */
-class ElcodiReferralProgramBundle extends Bundle
+class ElcodiReferralProgramBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -47,5 +48,21 @@ class ElcodiReferralProgramBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiReferralProgramExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [
+            '\Elcodi\Bundle\UserBundle\ElcodiUserBundle',
+            '\Elcodi\Bundle\BannerBundle\ElcodiBannerBundle',
+            '\Elcodi\Bundle\CartCouponBundle\ElcodiCartCouponBundle',
+            '\Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
+            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+        ];
     }
 }

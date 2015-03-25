@@ -21,13 +21,14 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\PageBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\PageBundle\DependencyInjection\ElcodiPageExtension;
 
 /**
  * Class ElcodiPageBundle
  */
-class ElcodiPageBundle extends Bundle
+class ElcodiPageBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -47,5 +48,17 @@ class ElcodiPageBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiPageExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [
+            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+        ];
     }
 }

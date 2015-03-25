@@ -21,13 +21,14 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\CurrencyBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\CurrencyBundle\DependencyInjection\ElcodiCurrencyExtension;
 
 /**
  * ElcodiCurrencyBundle Bundle
  */
-class ElcodiCurrencyBundle extends Bundle
+class ElcodiCurrencyBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -47,5 +48,18 @@ class ElcodiCurrencyBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiCurrencyExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [
+            '\Elcodi\Bundle\LanguageBundle\ElcodiLanguageBundle',
+            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+        ];
     }
 }

@@ -21,6 +21,7 @@ use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\ElcodiCoreExtension;
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 
 /**
  * ElcodiCoreBundle Bundle
@@ -29,7 +30,7 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\ElcodiCoreExtension;
  * All available bundles in this suite could have this bundle as a main
  * dependency.
  */
-class ElcodiCoreBundle extends Bundle
+class ElcodiCoreBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * Returns the bundle's container extension.
@@ -39,5 +40,15 @@ class ElcodiCoreBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiCoreExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [];
     }
 }

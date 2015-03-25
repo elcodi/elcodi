@@ -161,18 +161,23 @@ class ConfigurationManager extends AbstractCacheWrapper
      * Loads a parameter given the format "namespace.key"
      *
      * @param string $configurationIdentifier Configuration identifier
+     * @param string $defaultValue            Default value
      *
      * @return null|string|boolean Configuration parameter value
      *
      * @throws ConfigurationParameterNotFoundException Configuration parameter not found
      * @throws Exception                               Configuration cannot be resolved
      */
-    public function get($configurationIdentifier)
+    public function get($configurationIdentifier, $defaultValue = null)
     {
         /**
          * Checks if the value is defined in the configuration elements
          */
         if (!array_key_exists($configurationIdentifier, $this->configurationElements)) {
+            if (!is_null($defaultValue)) {
+                return $defaultValue;
+            }
+
             throw new ConfigurationParameterNotFoundException();
         }
 
@@ -288,6 +293,7 @@ class ConfigurationManager extends AbstractCacheWrapper
         /*
          * Configuration instance was not found
          */
+
         return false;
     }
 

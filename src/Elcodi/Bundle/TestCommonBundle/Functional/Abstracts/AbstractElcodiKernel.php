@@ -25,30 +25,6 @@ use Symfony\Component\HttpKernel\Kernel;
  */
 abstract class AbstractElcodiKernel extends Kernel
 {
-    protected function initializeContainer()
-    {
-        static $first = true;
-
-        $debug = $this->debug;
-
-        if (!$first) {
-            // disable debug mode on all but the first initialization
-            $this->debug = false;
-        }
-
-        // will not work with --process-isolation
-        $first = false;
-
-        try {
-            parent::initializeContainer();
-        } catch (\Exception $e) {
-            $this->debug = $debug;
-            throw $e;
-        }
-
-        $this->debug = $debug;
-    }
-
     /**
      * Register container configuration
      *
@@ -88,4 +64,8 @@ abstract class AbstractElcodiKernel extends Kernel
         DIRECTORY_SEPARATOR .
         $this->getContainerClass() . '/Log/';
     }
+
+    /**
+     *
+     */
 }

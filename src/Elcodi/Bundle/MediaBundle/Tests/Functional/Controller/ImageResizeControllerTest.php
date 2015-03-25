@@ -52,6 +52,7 @@ class ImageResizeControllerTest extends WebTestCase
     public function testResizeAction()
     {
         $client = $this->createClient();
+
         $image = new UploadedFile(
             dirname(__FILE__) . '/images/image.png',
             'image.png',

@@ -23,11 +23,12 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 use Elcodi\Bundle\AttributeBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\AttributeBundle\DependencyInjection\ElcodiAttributeExtension;
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 
 /**
  * Class ElcodiAttributeBundle
  */
-class ElcodiAttributeBundle extends Bundle
+class ElcodiAttributeBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -47,5 +48,17 @@ class ElcodiAttributeBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiAttributeExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [
+            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+        ];
     }
 }

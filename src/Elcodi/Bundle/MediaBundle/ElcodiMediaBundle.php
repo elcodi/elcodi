@@ -21,13 +21,14 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\MediaBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\MediaBundle\DependencyInjection\ElcodiMediaExtension;
 
 /**
  * Class MediaBundle
  */
-class ElcodiMediaBundle extends Bundle
+class ElcodiMediaBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -47,5 +48,18 @@ class ElcodiMediaBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiMediaExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [
+            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+            '\Knp\Bundle\GaufretteBundle\KnpGaufretteBundle',
+        ];
     }
 }

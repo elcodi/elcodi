@@ -21,13 +21,14 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\EntityTranslatorBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\EntityTranslatorBundle\DependencyInjection\ElcodiEntityTranslatorExtension;
 
 /**
  * ElcodiEntityTranslatorBundle Bundle
  */
-class ElcodiEntityTranslatorBundle extends Bundle
+class ElcodiEntityTranslatorBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -47,5 +48,19 @@ class ElcodiEntityTranslatorBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiEntityTranslatorExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [
+            '\Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle',
+            '\Elcodi\Bundle\LanguageBundle\ElcodiLanguageBundle',
+            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+        ];
     }
 }

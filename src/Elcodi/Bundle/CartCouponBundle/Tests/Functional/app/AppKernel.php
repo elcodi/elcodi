@@ -17,6 +17,7 @@
 
 namespace Elcodi\Bundle\CartCouponBundle\Tests\Functional\app;
 
+use Elcodi\Bundle\CoreBundle\Traits\BundleDependenciesResolver;
 use Elcodi\Bundle\TestCommonBundle\Functional\Abstracts\AbstractElcodiKernel;
 
 /**
@@ -24,6 +25,8 @@ use Elcodi\Bundle\TestCommonBundle\Functional\Abstracts\AbstractElcodiKernel;
  */
 class AppKernel extends AbstractElcodiKernel
 {
+    use BundleDependenciesResolver;
+
     /**
      * Register application bundles
      *
@@ -31,50 +34,13 @@ class AppKernel extends AbstractElcodiKernel
      */
     public function registerBundles()
     {
-        $bundles = [
-
-            /**
-             * Symfony bundles
-             */
-            new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-
-            /**
-             * Doctrine bundles
-             */
-            new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-            new \Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
-
-            /**
-             * Storage bundles
-             */
-            new \Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
-
-            /**
-             * Elcodi core bundles
-             */
-            new \Elcodi\Bundle\FixturesBoosterBundle\ElcodiFixturesBoosterBundle(),
-            new \Elcodi\Bundle\CoreBundle\ElcodiCoreBundle(),
-            new \Elcodi\Bundle\BambooBundle\ElcodiBambooBundle(),
-            new \Elcodi\Bundle\LanguageBundle\ElcodiLanguageBundle(),
-            new \Elcodi\Bundle\CartBundle\ElcodiCartBundle(),
-            new \Elcodi\Bundle\UserBundle\ElcodiUserBundle(),
-            new \Elcodi\Bundle\GeoBundle\ElcodiGeoBundle(),
-            new \Elcodi\Bundle\AttributeBundle\ElcodiAttributeBundle(),
-            new \Elcodi\Bundle\ProductBundle\ElcodiProductBundle(),
-            new \Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle(),
-            new \Elcodi\Bundle\MediaBundle\ElcodiMediaBundle(),
-            new \Elcodi\Bundle\CartCouponBundle\ElcodiCartCouponBundle(),
-            new \Elcodi\Bundle\CouponBundle\ElcodiCouponBundle(),
-            new \Elcodi\Bundle\RuleBundle\ElcodiRuleBundle(),
-            new \Elcodi\Bundle\StateTransitionMachineBundle\ElcodiStateTransitionMachineBundle(),
-            new \Elcodi\Bundle\ConfigurationBundle\ElcodiConfigurationBundle(),
-            new \Elcodi\Bundle\ShippingBundle\ElcodiShippingBundle(),
-            new \Elcodi\Bundle\TaxBundle\ElcodiTaxBundle(),
-            new \Elcodi\Bundle\ZoneBundle\ElcodiZoneBundle(),
-        ];
-
-        return $bundles;
+        return $this->getBundleInstances([
+            '\Symfony\Bundle\FrameworkBundle\FrameworkBundle',
+            '\Doctrine\Bundle\DoctrineBundle\DoctrineBundle',
+            '\Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle',
+            '\Elcodi\Bundle\FixturesBoosterBundle\ElcodiFixturesBoosterBundle',
+            '\Elcodi\Bundle\CartCouponBundle\ElcodiCartCouponBundle',
+        ]);
     }
 
     /**

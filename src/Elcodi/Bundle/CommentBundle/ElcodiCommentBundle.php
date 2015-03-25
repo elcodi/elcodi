@@ -23,11 +23,12 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 use Elcodi\Bundle\CommentBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\CommentBundle\DependencyInjection\ElcodiCommentExtension;
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 
 /**
  * ElcodiCommentBundle Class
  */
-class ElcodiCommentBundle extends Bundle
+class ElcodiCommentBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -47,5 +48,18 @@ class ElcodiCommentBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiCommentExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [
+            '\Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle',
+            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+        ];
     }
 }

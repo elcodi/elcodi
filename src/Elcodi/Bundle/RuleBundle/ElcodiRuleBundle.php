@@ -21,6 +21,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\RuleBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\RuleBundle\DependencyInjection\ElcodiRuleExtension;
 use Elcodi\Component\Rule\CompilerPass\ContextCompilerPass;
@@ -29,7 +30,7 @@ use Elcodi\Component\Rule\CompilerPass\ExpressionLanguageCompilerPass;
 /**
  * Class ElcodiRuleBundle
  */
-class ElcodiRuleBundle extends Bundle
+class ElcodiRuleBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * Builds bundle
@@ -57,5 +58,17 @@ class ElcodiRuleBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiRuleExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [
+            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+        ];
     }
 }
