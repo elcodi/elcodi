@@ -20,7 +20,6 @@ namespace Elcodi\Component\Product\Services;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\QueryBuilder;
 
-use Elcodi\Component\Configuration\Services\ConfigurationManager;
 use Elcodi\Component\Product\ElcodiProductStock;
 use Elcodi\Component\Product\Repository\ProductRepository;
 
@@ -39,25 +38,24 @@ class ProductCollectionProvider
     protected $productRepository;
 
     /**
-     * @var ConfigurationManager
+     * @var boolean
      *
-     * Configuration manager
+     * If the use stock option is enabled
      */
-    protected $configurationManager;
+    protected $useStock;
 
     /**
      * Construct method
      *
-     * @param ProductRepository    $productRepository    Product Repository
-     * @param ConfigurationManager $configurationManager A configuration manager
+     * @param ProductRepository $productRepository Product Repository
+     * @param boolean           $useStock          If this option is enabled
      */
     public function __construct(
         ProductRepository $productRepository,
-        ConfigurationManager $configurationManager
-    )
-    {
+        $useStock
+    ) {
         $this->productRepository = $productRepository;
-        $this->configurationManager = $configurationManager;
+        $this->useStock          = $useStock;
     }
 
     /**
@@ -139,11 +137,7 @@ class ProductCollectionProvider
     protected function addStockPropertiesToQueryBuilder(
         QueryBuilder $queryBuilder
     ) {
-        $useStock = $this
-            ->configurationManager
-            ->get('product.use_stock');
-
-        if ($useStock) {
+        if ($this->useStock) {
             $queryBuilder
                 ->andWhere($queryBuilder->expr()->orX(
                     $queryBuilder->expr()->gt('p.stock', ':stockZero'),
