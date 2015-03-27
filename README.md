@@ -59,7 +59,7 @@ Contributing
 This projects follows Symfony coding standards, so pull requests must pass phpcs
 checks. Read more details about
 [Symfony coding standards](http://symfony.com/doc/current/contributing/code/standards.html)
-and install the corresponding [CodeSniffer definition](https://github.com/opensky/Symfony2-coding-standard) 
+and install the corresponding [CodeSniffer definition](https://github.com/escapestudios/Symfony2-coding-standard)
 to run code validation.
 
 There is also a policy for contributing to this project. Pull requests must
