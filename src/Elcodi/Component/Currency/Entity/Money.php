@@ -32,7 +32,7 @@ use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
  *
  * Useful methods will be exposed as defined in {@see MoneyInterface}
  */
-class Money extends StubMoney implements MoneyInterface
+class Money implements MoneyInterface
 {
     /**
      * @var integer
@@ -263,10 +263,8 @@ class Money extends StubMoney implements MoneyInterface
      */
     public static function create(
         $amount,
-        CurrencyInterface $currency = null
+        CurrencyInterface $currency
     ) {
-        return ($currency instanceof CurrencyInterface)
-            ? new Money($amount, $currency)
-            : NullMoney::create();
+        return new self($amount, $currency);
     }
 }
