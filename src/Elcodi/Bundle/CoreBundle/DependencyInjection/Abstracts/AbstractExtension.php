@@ -43,8 +43,6 @@ abstract class AbstractExtension
      * This alias is also the mandatory prefix to use when using YAML.
      *
      * @return string The alias
-     *
-     * @api
      */
     abstract public function getAlias();
 
@@ -73,8 +71,6 @@ abstract class AbstractExtension
      * @param ContainerBuilder $container A ContainerBuilder instance
      *
      * @throws \InvalidArgumentException When provided tag is not defined in this extension
-     *
-     * @api
      */
     public function load(array $config, ContainerBuilder $container)
     {
@@ -120,8 +116,6 @@ abstract class AbstractExtension
      * Returns the namespace to be used for this extension (XML namespace).
      *
      * @return string The XML namespace
-     *
-     * @api
      */
     public function getNamespace()
     {
@@ -132,8 +126,6 @@ abstract class AbstractExtension
      * Returns the base path for the XSD files.
      *
      * @return string The XSD base path
-     *
-     * @api
      */
     public function getXsdValidationBasePath()
     {
