@@ -1,7 +1,0 @@
-core_referralprogram_bundle:
-    resource: "@ElcodiReferralProgramBundle/Resources/config/routing.yml"
-
-fake_route:
-    path: ""
-    defaults:
-        _controller: Elcodi\Bundle\ReferralProgramBundle\Tests\Functional\app\FakeController:FakeAction
