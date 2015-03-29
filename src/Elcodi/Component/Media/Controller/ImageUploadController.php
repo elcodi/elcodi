@@ -110,7 +110,7 @@ class ImageUploadController
             ->getCurrentRequest();
 
         /**
-         * @var $file UploadedFile
+         * @var UploadedFile $file
          */
         $file = $request
             ->files

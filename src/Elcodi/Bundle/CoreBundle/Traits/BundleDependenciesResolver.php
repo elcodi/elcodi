@@ -65,7 +65,7 @@ trait BundleDependenciesResolver
             if ($bundleNamespaceObj->implementsInterface('\Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface')) {
 
                 /**
-                 * @var $bundleNamespace \Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface
+                 * @var \Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface $bundleNamespace
                  */
                 $dependencies = $bundleNamespace::getBundleDependencies();
                 $newBundles = array_diff(
