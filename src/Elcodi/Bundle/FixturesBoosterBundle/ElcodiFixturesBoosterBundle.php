@@ -17,6 +17,7 @@
 
 namespace Elcodi\Bundle\FixturesBoosterBundle;
 
+use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -48,5 +49,17 @@ class ElcodiFixturesBoosterBundle extends Bundle implements DependentBundleInter
         return [
             '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
+    }
+
+    /**
+     * Register Commands.
+     *
+     * Disabled as commands are registered as services.
+     *
+     * @param Application $application An Application instance
+     */
+    public function registerCommands(Application $application)
+    {
+        return;
     }
 }

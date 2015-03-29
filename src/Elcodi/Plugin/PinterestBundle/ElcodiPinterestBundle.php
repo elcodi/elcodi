@@ -17,6 +17,7 @@
 
 namespace Elcodi\Plugin\PinterestBundle;
 
+use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -36,5 +37,17 @@ class ElcodiPinterestBundle extends Bundle implements PluginInterface
     public function getContainerExtension()
     {
         return new ElcodiPinterestExtension();
+    }
+
+    /**
+     * Register Commands.
+     *
+     * Disabled as commands are registered as services.
+     *
+     * @param Application $application An Application instance
+     */
+    public function registerCommands(Application $application)
+    {
+        return;
     }
 }
