@@ -108,6 +108,7 @@ class ElcodiEntityTranslatorExtension extends AbstractExtension implements Entit
             'eventDispatchers',
             'eventListeners',
             ['autoloadEventListeners', $config['auto_translate']],
+            'directors',
         ];
     }
 

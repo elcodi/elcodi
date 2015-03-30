@@ -98,6 +98,7 @@ class ElcodiStateTransitionMachineExtension extends AbstractExtension implements
             'factories',
             'repositories',
             'objectManagers',
+            'directors',
         ];
     }
 

@@ -5,6 +5,7 @@ services:
     #
     elcodi.director.zone:
         class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
         arguments:
             - @elcodi.object_manager.zone
             - @elcodi.repository.zone

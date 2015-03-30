@@ -104,6 +104,7 @@ class ElcodiConfigurationExtension extends AbstractExtension implements Entities
             'objectManagers',
             'services',
             'twig',
+            'directors',
         ];
     }
 

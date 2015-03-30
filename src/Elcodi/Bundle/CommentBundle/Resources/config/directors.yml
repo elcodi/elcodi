@@ -5,6 +5,7 @@ services:
     #
     elcodi.director.comment:
         class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
         arguments:
             - @elcodi.object_manager.comment
             - @elcodi.repository.comment
@@ -12,6 +13,7 @@ services:
 
     elcodi.director.comment_vote:
         class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
         arguments:
             - @elcodi.object_manager.comment_vote
             - @elcodi.repository.comment_vote

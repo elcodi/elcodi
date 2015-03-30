@@ -100,6 +100,7 @@ class ElcodiCouponExtension extends AbstractExtension implements EntitiesOverrid
             'eventDispatchers',
             'repositories',
             'objectManagers',
+            'directors',
         ];
     }
 

@@ -1,0 +1,20 @@
+services:
+
+    #
+    # Directors
+    #
+    elcodi.director.banner:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
+        arguments:
+            - @elcodi.object_manager.banner
+            - @elcodi.repository.banner
+            - @elcodi.factory.banner
+
+    elcodi.director.banner_zone:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
+        arguments:
+            - @elcodi.object_manager.banner_zone
+            - @elcodi.repository.banner_zone
+            - @elcodi.factory.banner_zone
