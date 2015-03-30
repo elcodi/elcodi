@@ -23,7 +23,7 @@ namespace Elcodi\Component\Newsletter;
 final class ElcodiNewsletterEvents
 {
     /**
-     * This event is fired each time a customer subscribe to newsletter
+     * This event is fired each time a customer subscribes to a newsletter
      *
      * event.name : newsletter.subscribe
      * event.class : NewsletterSubscriptionEvent
@@ -31,7 +31,7 @@ final class ElcodiNewsletterEvents
     const NEWSLETTER_SUBSCRIBE = 'newsletter.onsubscribe';
 
     /**
-     * This event is fired when customer want unsubscribe from newsletter
+     * This event is fired when a customer wants to unsubscribe from a newsletter
      *
      * event.name : newsletter.unsubscribe
      * event.class : NewsletterUnsubscriptionEvent
