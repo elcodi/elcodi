@@ -220,6 +220,6 @@ class NewsletterManager
             ->validator
             ->validateValue($email, new Email());
 
-        return ($validationViolationList->count() == 0);
+        return ($validationViolationList->count() === 0);
     }
 }
