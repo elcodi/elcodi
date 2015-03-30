@@ -251,10 +251,7 @@ class Money implements MoneyInterface
      *
      * In order to return a proper Money value object, an integer
      * amount and a Currency object implementing CurrencyInterface
-     * are needed. When the Currency object is invalid, a NullMoney
-     * instance is returned. The NullMoney is an implementation of
-     * a Null Object pattern, a dumb object that will just respond
-     * to MoneyInterface methods but that does nothing.
+     * are needed.
      *
      * @param integer           $amount   Amount
      * @param CurrencyInterface $currency Currency
