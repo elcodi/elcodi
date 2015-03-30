@@ -8,3 +8,4 @@ table-pr:
     tests_pass: ['Tests Pass?', no]
     fixed_tickets: ['Fixed Tickets', '']
     license: ['License', MIT]
+base: master
