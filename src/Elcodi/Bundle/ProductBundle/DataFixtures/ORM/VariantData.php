@@ -47,10 +47,10 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
         $variantObjectManager = $this->getObjectManager('product_variant');
 
         /**
-         * @var $optionWhite ValueInterface
-         * @var $optionRed   ValueInterface
-         * @var $optionSmall ValueInterface
-         * @var $optionLarge ValueInterface
+         * @var ValueInterface $optionWhite
+         * @var ValueInterface $optionRed
+         * @var ValueInterface $optionSmall
+         * @var ValueInterface $optionLarge
          */
         $optionWhite = $this->getReference('value-color-white');
         $optionRed = $this->getReference('value-color-red');

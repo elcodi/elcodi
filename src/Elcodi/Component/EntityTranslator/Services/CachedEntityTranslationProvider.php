@@ -188,7 +188,7 @@ class CachedEntityTranslationProvider extends AbstractCacheWrapper implements En
             ->findAll();
 
         /**
-         * @var $translation EntityTranslationInterface
+         * @var EntityTranslationInterface $translation
          */
         foreach ($translations as $translation) {
             $cacheKey = $this->buildKey(
