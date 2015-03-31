@@ -37,17 +37,17 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
         $this
             ->addEntityMapping(
                 $container,
-                'elcodi.core.currency.entity.currency.manager',
-                'elcodi.core.currency.entity.currency.class',
-                'elcodi.core.currency.entity.currency.mapping_file',
-                'elcodi.core.currency.entity.currency.enabled'
+                'elcodi.entity.currency.manager',
+                'elcodi.entity.currency.class',
+                'elcodi.entity.currency.mapping_file',
+                'elcodi.entity.currency.enabled'
             )
             ->addEntityMapping(
                 $container,
-                'elcodi.core.currency.entity.currency_exchange_rate.manager',
-                'elcodi.core.currency.entity.currency_exchange_rate.class',
-                'elcodi.core.currency.entity.currency_exchange_rate.mapping_file',
-                'elcodi.core.currency.entity.currency_exchange_rate.enabled'
+                'elcodi.entity.currency_exchange_rate.manager',
+                'elcodi.entity.currency_exchange_rate.class',
+                'elcodi.entity.currency_exchange_rate.mapping_file',
+                'elcodi.entity.currency_exchange_rate.enabled'
             );
     }
 }

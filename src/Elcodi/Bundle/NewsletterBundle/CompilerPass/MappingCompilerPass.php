@@ -37,10 +37,10 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
         $this
             ->addEntityMapping(
                 $container,
-                'elcodi.core.newsletter.entity.newsletter_subscription.manager',
-                'elcodi.core.newsletter.entity.newsletter_subscription.class',
-                'elcodi.core.newsletter.entity.newsletter_subscription.mapping_file',
-                'elcodi.core.newsletter.entity.newsletter_subscription.enabled'
+                'elcodi.entity.newsletter_subscription.manager',
+                'elcodi.entity.newsletter_subscription.class',
+                'elcodi.entity.newsletter_subscription.mapping_file',
+                'elcodi.entity.newsletter_subscription.enabled'
             );
     }
 }

@@ -37,31 +37,31 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
         $this
             ->addEntityMapping(
                 $container,
-                'elcodi.core.cart.entity.cart.manager',
-                'elcodi.core.cart.entity.cart.class',
-                'elcodi.core.cart.entity.cart.mapping_file',
-                'elcodi.core.cart.entity.cart.enabled'
+                'elcodi.entity.cart.manager',
+                'elcodi.entity.cart.class',
+                'elcodi.entity.cart.mapping_file',
+                'elcodi.entity.cart.enabled'
             )
             ->addEntityMapping(
                 $container,
-                'elcodi.core.cart.entity.cart_line.manager',
-                'elcodi.core.cart.entity.cart_line.class',
-                'elcodi.core.cart.entity.cart_line.mapping_file',
-                'elcodi.core.cart.entity.cart_line.enabled'
+                'elcodi.entity.cart_line.manager',
+                'elcodi.entity.cart_line.class',
+                'elcodi.entity.cart_line.mapping_file',
+                'elcodi.entity.cart_line.enabled'
             )
             ->addEntityMapping(
                 $container,
-                'elcodi.core.cart.entity.order.manager',
-                'elcodi.core.cart.entity.order.class',
-                'elcodi.core.cart.entity.order.mapping_file',
-                'elcodi.core.cart.entity.order.enabled'
+                'elcodi.entity.order.manager',
+                'elcodi.entity.order.class',
+                'elcodi.entity.order.mapping_file',
+                'elcodi.entity.order.enabled'
             )
             ->addEntityMapping(
                 $container,
-                'elcodi.core.cart.entity.order_line.manager',
-                'elcodi.core.cart.entity.order_line.class',
-                'elcodi.core.cart.entity.order_line.mapping_file',
-                'elcodi.core.cart.entity.order_line.enabled'
+                'elcodi.entity.order_line.manager',
+                'elcodi.entity.order_line.class',
+                'elcodi.entity.order_line.mapping_file',
+                'elcodi.entity.order_line.enabled'
             );
     }
 }

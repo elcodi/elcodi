@@ -78,10 +78,10 @@ class ElcodiMetricExtension extends AbstractExtension implements EntitiesOverrid
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.core.metric.entity.metric_entry.class"        => $config['mapping']['metric_entry']['class'],
-            "elcodi.core.metric.entity.metric_entry.mapping_file" => $config['mapping']['metric_entry']['mapping_file'],
-            "elcodi.core.metric.entity.metric_entry.manager"      => $config['mapping']['metric_entry']['manager'],
-            "elcodi.core.metric.entity.metric_entry.enabled"      => $config['mapping']['metric_entry']['enabled'],
+            "elcodi.entity.metric_entry.class"        => $config['mapping']['metric_entry']['class'],
+            "elcodi.entity.metric_entry.mapping_file" => $config['mapping']['metric_entry']['mapping_file'],
+            "elcodi.entity.metric_entry.manager"      => $config['mapping']['metric_entry']['manager'],
+            "elcodi.entity.metric_entry.enabled"      => $config['mapping']['metric_entry']['enabled'],
 
             'elcodi.core.metric.input_controller_route_name'      => $config['input']['controller_route_name'],
             'elcodi.core.metric.input_controller_route'           => $config['input']['controller_route'],
@@ -122,7 +122,7 @@ class ElcodiMetricExtension extends AbstractExtension implements EntitiesOverrid
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\Metric\Core\Entity\Interfaces\EntryInterface' => 'elcodi.core.metric.entity.metric_entry.class',
+            'Elcodi\Component\Metric\Core\Entity\Interfaces\EntryInterface' => 'elcodi.entity.metric_entry.class',
         ];
     }
 

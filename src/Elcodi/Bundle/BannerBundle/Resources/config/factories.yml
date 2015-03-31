@@ -10,7 +10,7 @@ services:
     elcodi.factory.banner:
         class: %elcodi.factory.banner.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.banner.entity.banner.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.banner.class%"]]
 
     #
     # Factory for entity banner_zone
@@ -18,4 +18,4 @@ services:
     elcodi.factory.banner_zone:
         class: %elcodi.factory.banner_zone.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.banner.entity.banner_zone.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.banner_zone.class%"]]

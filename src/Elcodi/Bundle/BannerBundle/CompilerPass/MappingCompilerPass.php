@@ -37,17 +37,17 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
         $this
             ->addEntityMapping(
                 $container,
-                'elcodi.core.banner.entity.banner.manager',
-                'elcodi.core.banner.entity.banner.class',
-                'elcodi.core.banner.entity.banner.mapping_file',
-                'elcodi.core.banner.entity.banner.enabled'
+                'elcodi.entity.banner.manager',
+                'elcodi.entity.banner.class',
+                'elcodi.entity.banner.mapping_file',
+                'elcodi.entity.banner.enabled'
             )
             ->addEntityMapping(
                 $container,
-                'elcodi.core.banner.entity.banner_zone.manager',
-                'elcodi.core.banner.entity.banner_zone.class',
-                'elcodi.core.banner.entity.banner_zone.mapping_file',
-                'elcodi.core.banner.entity.banner_zone.enabled'
+                'elcodi.entity.banner_zone.manager',
+                'elcodi.entity.banner_zone.class',
+                'elcodi.entity.banner_zone.mapping_file',
+                'elcodi.entity.banner_zone.enabled'
             );
     }
 }

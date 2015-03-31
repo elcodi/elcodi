@@ -77,10 +77,10 @@ class ElcodiRuleExtension extends AbstractExtension implements EntitiesOverridab
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.core.rule.entity.rule.class" => $config['mapping']['rule']['class'],
-            "elcodi.core.rule.entity.rule.mapping_file" => $config['mapping']['rule']['mapping_file'],
-            "elcodi.core.rule.entity.rule.manager" => $config['mapping']['rule']['manager'],
-            "elcodi.core.rule.entity.rule.enabled" => $config['mapping']['rule']['enabled'],
+            "elcodi.entity.rule.class" => $config['mapping']['rule']['class'],
+            "elcodi.entity.rule.mapping_file" => $config['mapping']['rule']['mapping_file'],
+            "elcodi.entity.rule.manager" => $config['mapping']['rule']['manager'],
+            "elcodi.entity.rule.enabled" => $config['mapping']['rule']['enabled'],
         ];
     }
 
@@ -110,7 +110,7 @@ class ElcodiRuleExtension extends AbstractExtension implements EntitiesOverridab
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\Rule\Entity\Interfaces\RuleInterface' => 'elcodi.core.rule.entity.rule.class',
+            'Elcodi\Component\Rule\Entity\Interfaces\RuleInterface' => 'elcodi.entity.rule.class',
         ];
     }
 

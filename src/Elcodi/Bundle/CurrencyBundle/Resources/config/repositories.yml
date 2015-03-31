@@ -9,11 +9,11 @@ services:
     #
     elcodi.repository.currency:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.currency.entity.currency.class% ]
+        arguments: [ %elcodi.entity.currency.class% ]
 
     #
     # Repository for entity currency_exchange_rate
     #
     elcodi.repository.currency_exchange_rate:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.currency.entity.currency_exchange_rate.class% ]
+        arguments: [ %elcodi.entity.currency_exchange_rate.class% ]

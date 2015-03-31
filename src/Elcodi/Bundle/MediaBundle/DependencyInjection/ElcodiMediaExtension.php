@@ -107,10 +107,10 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.core.media.entity.image.class" => $config['mapping']['image']['class'],
-            "elcodi.core.media.entity.image.mapping_file" => $config['mapping']['image']['mapping_file'],
-            "elcodi.core.media.entity.image.manager" => $config['mapping']['image']['manager'],
-            "elcodi.core.media.entity.image.enabled" => $config['mapping']['image']['enabled'],
+            "elcodi.entity.image.class" => $config['mapping']['image']['class'],
+            "elcodi.entity.image.mapping_file" => $config['mapping']['image']['mapping_file'],
+            "elcodi.entity.image.manager" => $config['mapping']['image']['manager'],
+            "elcodi.entity.image.enabled" => $config['mapping']['image']['enabled'],
 
             'elcodi.core.media.filesystem'                             => $config['filesystem'],
 
@@ -167,7 +167,7 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\Media\Entity\Interfaces\ImageInterface' => 'elcodi.core.media.entity.image.class',
+            'Elcodi\Component\Media\Entity\Interfaces\ImageInterface' => 'elcodi.entity.image.class',
         ];
     }
 

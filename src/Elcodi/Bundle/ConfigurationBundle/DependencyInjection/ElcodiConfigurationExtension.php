@@ -77,10 +77,10 @@ class ElcodiConfigurationExtension extends AbstractExtension implements Entities
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.core.configuration.entity.configuration.class" => $config['mapping']['configuration']['class'],
-            "elcodi.core.configuration.entity.configuration.mapping_file" => $config['mapping']['configuration']['mapping_file'],
-            "elcodi.core.configuration.entity.configuration.manager" => $config['mapping']['configuration']['manager'],
-            "elcodi.core.configuration.entity.configuration.enabled" => $config['mapping']['configuration']['enabled'],
+            "elcodi.entity.configuration.class" => $config['mapping']['configuration']['class'],
+            "elcodi.entity.configuration.mapping_file" => $config['mapping']['configuration']['mapping_file'],
+            "elcodi.entity.configuration.manager" => $config['mapping']['configuration']['manager'],
+            "elcodi.entity.configuration.enabled" => $config['mapping']['configuration']['enabled'],
 
             'elcodi.core.configuration.elements' => $config['elements'],
         ];
@@ -120,7 +120,7 @@ class ElcodiConfigurationExtension extends AbstractExtension implements Entities
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface' => 'elcodi.core.configuration.entity.configuration.class',
+            'Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface' => 'elcodi.entity.configuration.class',
         ];
     }
 

@@ -5,4 +5,4 @@ services:
     #
     elcodi.object_manager.entity_translation:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.entity_translator.entity.entity_translation.class% ]
+        arguments: [ %elcodi.entity.entity_translation.class% ]

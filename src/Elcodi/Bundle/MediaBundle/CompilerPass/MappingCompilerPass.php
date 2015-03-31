@@ -37,10 +37,10 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
         $this
             ->addEntityMapping(
                 $container,
-                'elcodi.core.media.entity.image.manager',
-                'elcodi.core.media.entity.image.class',
-                'elcodi.core.media.entity.image.mapping_file',
-                'elcodi.core.media.entity.image.enabled'
+                'elcodi.entity.image.manager',
+                'elcodi.entity.image.class',
+                'elcodi.entity.image.mapping_file',
+                'elcodi.entity.image.enabled'
             );
     }
 }

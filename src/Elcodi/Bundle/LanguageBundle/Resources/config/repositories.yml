@@ -9,4 +9,4 @@ services:
     #
     elcodi.repository.language:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.language.entity.language.class% ]
+        arguments: [ %elcodi.entity.language.class% ]

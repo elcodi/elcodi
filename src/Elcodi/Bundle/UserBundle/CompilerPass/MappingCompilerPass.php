@@ -37,24 +37,24 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
         $this
             ->addEntityMapping(
                 $container,
-                'elcodi.core.user.entity.abstract_user.manager',
-                'elcodi.core.user.entity.abstract_user.class',
-                'elcodi.core.user.entity.abstract_user.mapping_file',
-                'elcodi.core.user.entity.abstract_user.enabled'
+                'elcodi.entity.abstract_user.manager',
+                'elcodi.entity.abstract_user.class',
+                'elcodi.entity.abstract_user.mapping_file',
+                'elcodi.entity.abstract_user.enabled'
             )
             ->addEntityMapping(
                 $container,
-                'elcodi.core.user.entity.admin_user.manager',
-                'elcodi.core.user.entity.admin_user.class',
-                'elcodi.core.user.entity.admin_user.mapping_file',
-                'elcodi.core.user.entity.admin_user.enabled'
+                'elcodi.entity.admin_user.manager',
+                'elcodi.entity.admin_user.class',
+                'elcodi.entity.admin_user.mapping_file',
+                'elcodi.entity.admin_user.enabled'
             )
             ->addEntityMapping(
                 $container,
-                'elcodi.core.user.entity.customer.manager',
-                'elcodi.core.user.entity.customer.class',
-                'elcodi.core.user.entity.customer.mapping_file',
-                'elcodi.core.user.entity.customer.enabled'
+                'elcodi.entity.customer.manager',
+                'elcodi.entity.customer.class',
+                'elcodi.entity.customer.mapping_file',
+                'elcodi.entity.customer.enabled'
             );
     }
 }

@@ -7,11 +7,11 @@ services:
     #
     elcodi.repository.menu_node:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.menu.entity.menu_node.class% ]
+        arguments: [ %elcodi.entity.menu_node.class% ]
 
     #
     # Repository for entity menu
     #
     elcodi.repository.menu:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.menu.entity.menu.class% ]
+        arguments: [ %elcodi.entity.menu.class% ]

@@ -10,4 +10,4 @@ services:
     elcodi.factory.configuration:
         class: %elcodi.factory.configuration.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.configuration.entity.configuration.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.configuration.class%"]]

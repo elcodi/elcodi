@@ -9,25 +9,25 @@ services:
     #
     elcodi.repository.product:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.product.entity.product.class% ]
+        arguments: [ %elcodi.entity.product.class% ]
 
     #
     # Repository for Variant entities
     #
     elcodi.repository.product_variant:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.product.entity.product_variant.class% ]
+        arguments: [ %elcodi.entity.product_variant.class% ]
 
     #
     # Repository for entity category
     #
     elcodi.repository.category:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.product.entity.category.class% ]
+        arguments: [ %elcodi.entity.category.class% ]
 
     #
     # Repository for entity manufacturer
     #
     elcodi.repository.manufacturer:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.product.entity.manufacturer.class% ]
+        arguments: [ %elcodi.entity.manufacturer.class% ]

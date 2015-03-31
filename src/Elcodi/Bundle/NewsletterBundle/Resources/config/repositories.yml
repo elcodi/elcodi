@@ -9,4 +9,4 @@ services:
     #
     elcodi.repository.newsletter_subscription:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.newsletter.entity.newsletter_subscription.class% ]
+        arguments: [ %elcodi.entity.newsletter_subscription.class% ]

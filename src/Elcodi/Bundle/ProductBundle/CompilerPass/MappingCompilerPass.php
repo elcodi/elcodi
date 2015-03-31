@@ -37,31 +37,31 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
         $this
             ->addEntityMapping(
                 $container,
-                'elcodi.core.product.entity.product.manager',
-                'elcodi.core.product.entity.product.class',
-                'elcodi.core.product.entity.product.mapping_file',
-                'elcodi.core.product.entity.product.enabled'
+                'elcodi.entity.product.manager',
+                'elcodi.entity.product.class',
+                'elcodi.entity.product.mapping_file',
+                'elcodi.entity.product.enabled'
             )
             ->addEntityMapping(
                 $container,
-                'elcodi.core.product.entity.product_variant.manager',
-                'elcodi.core.product.entity.product_variant.class',
-                'elcodi.core.product.entity.product_variant.mapping_file',
-                'elcodi.core.product.entity.product_variant.enabled'
+                'elcodi.entity.product_variant.manager',
+                'elcodi.entity.product_variant.class',
+                'elcodi.entity.product_variant.mapping_file',
+                'elcodi.entity.product_variant.enabled'
             )
             ->addEntityMapping(
                 $container,
-                'elcodi.core.product.entity.category.manager',
-                'elcodi.core.product.entity.category.class',
-                'elcodi.core.product.entity.category.mapping_file',
-                'elcodi.core.product.entity.category.enabled'
+                'elcodi.entity.category.manager',
+                'elcodi.entity.category.class',
+                'elcodi.entity.category.mapping_file',
+                'elcodi.entity.category.enabled'
             )
             ->addEntityMapping(
                 $container,
-                'elcodi.core.product.entity.manufacturer.manager',
-                'elcodi.core.product.entity.manufacturer.class',
-                'elcodi.core.product.entity.manufacturer.mapping_file',
-                'elcodi.core.product.entity.manufacturer.enabled'
+                'elcodi.entity.manufacturer.manager',
+                'elcodi.entity.manufacturer.class',
+                'elcodi.entity.manufacturer.mapping_file',
+                'elcodi.entity.manufacturer.enabled'
             );
     }
 }

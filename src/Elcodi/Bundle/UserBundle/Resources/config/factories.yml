@@ -10,7 +10,7 @@ services:
     elcodi.factory.customer:
         class: %elcodi.factory.customer.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.user.entity.customer.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.customer.class%"]]
             - [setGenerator, [@elcodi.generator.random_string]]
 
     #
@@ -19,5 +19,5 @@ services:
     elcodi.factory.admin_user:
         class: %elcodi.factory.admin_user.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.user.entity.admin_user.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.admin_user.class%"]]
             - [setGenerator, [@elcodi.generator.random_string]]

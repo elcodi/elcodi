@@ -132,7 +132,7 @@ class CartManagerVariantTest extends AbstractCartManagerTest
     public function testPurchasableIsVariant()
     {
         $this->assertInstanceOf(
-            $this->getParameter('elcodi.core.product.entity.product_variant.class'),
+            $this->getParameter('elcodi.entity.product_variant.class'),
             $this->purchasable
         );
     }

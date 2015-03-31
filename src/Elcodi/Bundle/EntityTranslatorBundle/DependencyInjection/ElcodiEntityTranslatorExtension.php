@@ -77,10 +77,10 @@ class ElcodiEntityTranslatorExtension extends AbstractExtension implements Entit
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.core.entity_translator.entity.entity_translation.class"        => $config['mapping']['translation']['class'],
-            "elcodi.core.entity_translator.entity.entity_translation.mapping_file" => $config['mapping']['translation']['mapping_file'],
-            "elcodi.core.entity_translator.entity.entity_translation.manager"      => $config['mapping']['translation']['manager'],
-            "elcodi.core.entity_translator.entity.entity_translation.enabled"      => $config['mapping']['translation']['enabled'],
+            "elcodi.entity.entity_translation.class"        => $config['mapping']['translation']['class'],
+            "elcodi.entity.entity_translation.mapping_file" => $config['mapping']['translation']['mapping_file'],
+            "elcodi.entity.entity_translation.manager"      => $config['mapping']['translation']['manager'],
+            "elcodi.entity.entity_translation.enabled"      => $config['mapping']['translation']['enabled'],
 
             "elcodi.core.entity_translator.configuration"                          => $config['configuration'],
             "elcodi.core.entity_translator.cache_prefix"                           => $config['cache_prefix'],
@@ -118,7 +118,7 @@ class ElcodiEntityTranslatorExtension extends AbstractExtension implements Entit
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\EntityTranslator\Entity\Interfaces\EntityTranslationInterface' => 'elcodi.core.entity_translator.entity.entity_translation.class',
+            'Elcodi\Component\EntityTranslator\Entity\Interfaces\EntityTranslationInterface' => 'elcodi.entity.entity_translation.class',
         ];
     }
 

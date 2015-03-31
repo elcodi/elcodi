@@ -9,11 +9,11 @@ services:
     #
     elcodi.repository.customer:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.user.entity.customer.class% ]
+        arguments: [ %elcodi.entity.customer.class% ]
 
     #
     # Repository for entity admin
     #
     elcodi.repository.admin_user:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.user.entity.admin_user.class% ]
+        arguments: [ %elcodi.entity.admin_user.class% ]

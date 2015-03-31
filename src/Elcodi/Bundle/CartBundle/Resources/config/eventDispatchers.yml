@@ -5,16 +5,16 @@ services:
     #
     elcodi.event_dispatcher.cart:
         class: %elcodi.event_dispatcher.cart.class%
-        parent: elcodi.core.core.event_dispatcher.abstract
+        parent: elcodi.event_dispatcher.abstract
 
     elcodi.event_dispatcher.cart_line:
         class: %elcodi.event_dispatcher.cart_line.class%
-        parent: elcodi.core.core.event_dispatcher.abstract
+        parent: elcodi.event_dispatcher.abstract
 
     elcodi.event_dispatcher.order:
         class: %elcodi.event_dispatcher.order.class%
-        parent: elcodi.core.core.event_dispatcher.abstract
+        parent: elcodi.event_dispatcher.abstract
 
     elcodi.event_dispatcher.order_line:
         class: %elcodi.event_dispatcher.order_line.class%
-        parent: elcodi.core.core.event_dispatcher.abstract
+        parent: elcodi.event_dispatcher.abstract

@@ -5,4 +5,4 @@ services:
     #
     elcodi.event_dispatcher.sitemap:
         class: %elcodi.event_dispatcher.sitemap.class%
-        parent: elcodi.core.core.event_dispatcher.abstract
+        parent: elcodi.event_dispatcher.abstract

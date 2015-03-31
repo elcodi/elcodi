@@ -3,7 +3,7 @@ parameters:
     #
     # Repositories
     #
-    elcodi.core.page.repository.page.class: Elcodi\Component\Page\Repository\PageRepository
+    elcodi.repository.page.class: Elcodi\Component\Page\Repository\PageRepository
 
     #
     # Factories
@@ -13,7 +13,7 @@ parameters:
     #
     # Controllers
     #
-    elcodi.core.page.controller.page.class: Elcodi\Component\Page\Controller\PageController
+    elcodi.controller.page.class: Elcodi\Component\Page\Controller\PageController
 
     #
     # Loaders

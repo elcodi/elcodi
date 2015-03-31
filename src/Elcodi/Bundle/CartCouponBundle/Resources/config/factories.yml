@@ -10,7 +10,7 @@ services:
     elcodi.factory.cart_coupon:
         class: %elcodi.factory.cart_coupon.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.cart_coupon.entity.cart_coupon.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.cart_coupon.class%"]]
 
     #
     # Factory for entity order_coupon
@@ -18,4 +18,4 @@ services:
     elcodi.factory.order_coupon:
         class: %elcodi.factory.order_coupon.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.cart_coupon.entity.order_coupon.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.order_coupon.class%"]]
