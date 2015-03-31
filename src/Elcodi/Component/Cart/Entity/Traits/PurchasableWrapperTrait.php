@@ -55,8 +55,12 @@ trait PurchasableWrapperTrait
      *
      * @return $this Self object
      */
-    public function setPurchasable(PurchasableInterface $purchasable)
+    public function setPurchasable(PurchasableInterface $purchasable = null)
     {
+        if (!$purchasable) {
+            $this->setVariant();
+        }
+
         if ($purchasable instanceof VariantInterface) {
             $this->setVariant($purchasable);
             $product = $purchasable->getProduct();
@@ -88,7 +92,7 @@ trait PurchasableWrapperTrait
      *
      * @return $this Self object
      */
-    public function setProduct(ProductInterface $product)
+    public function setProduct(ProductInterface $product = null)
     {
         $this->product = $product;
 
@@ -112,7 +116,7 @@ trait PurchasableWrapperTrait
      *
      * @return $this Self object
      */
-    public function setVariant(VariantInterface $variant)
+    public function setVariant(VariantInterface $variant = null)
     {
         $this->variant = $variant;
 
