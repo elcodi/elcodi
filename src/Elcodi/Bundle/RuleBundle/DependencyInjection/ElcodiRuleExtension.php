@@ -100,6 +100,7 @@ class ElcodiRuleExtension extends AbstractExtension implements EntitiesOverridab
             'factories',
             'objectManagers',
             'repositories',
+            'directors',
         ];
     }
 

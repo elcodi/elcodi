@@ -5,6 +5,7 @@ services:
     #
     elcodi.director.cart:
         class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
         arguments:
             - @elcodi.object_manager.cart
             - @elcodi.repository.cart
@@ -12,6 +13,7 @@ services:
 
     elcodi.director.cart_line:
         class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
         arguments:
             - @elcodi.object_manager.cart_line
             - @elcodi.repository.cart_line
@@ -19,6 +21,7 @@ services:
 
     elcodi.director.order:
         class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
         arguments:
             - @elcodi.object_manager.order
             - @elcodi.repository.order
@@ -26,6 +29,7 @@ services:
 
     elcodi.director.order_line:
         class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
         arguments:
             - @elcodi.object_manager.order_line
             - @elcodi.repository.order_line

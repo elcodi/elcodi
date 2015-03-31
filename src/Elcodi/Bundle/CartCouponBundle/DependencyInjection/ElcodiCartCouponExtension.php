@@ -113,6 +113,7 @@ class ElcodiCartCouponExtension extends AbstractExtension implements EntitiesOve
             'repositories',
             'eventDispatchers',
             'objectManagers',
+            'directors',
         ];
     }
 

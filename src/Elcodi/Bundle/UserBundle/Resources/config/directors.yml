@@ -1,0 +1,20 @@
+services:
+
+    #
+    # Directors
+    #
+    elcodi.director.customer:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
+        arguments:
+            - @elcodi.object_manager.customer
+            - @elcodi.repository.customer
+            - @elcodi.factory.customer
+
+    elcodi.director.admin_user:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
+        arguments:
+            - @elcodi.object_manager.admin_user
+            - @elcodi.repository.admin_user
+            - @elcodi.factory.admin_user

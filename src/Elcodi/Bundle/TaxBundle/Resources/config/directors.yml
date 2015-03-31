@@ -1,0 +1,20 @@
+services:
+
+    #
+    # Directors
+    #
+    elcodi.director.tax:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
+        arguments:
+            - @elcodi.object_manager.tax
+            - @elcodi.repository.tax
+            - @elcodi.factory.tax
+
+    elcodi.director.tax_group:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
+        arguments:
+            - @elcodi.object_manager.tax_group
+            - @elcodi.repository.tax_group
+            - @elcodi.factory.tax_group

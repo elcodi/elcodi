@@ -1,0 +1,12 @@
+services:
+
+    #
+    # Directors
+    #
+    elcodi.director.configuration:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
+        arguments:
+            - @elcodi.object_manager.configuration
+            - @elcodi.repository.configuration
+            - @elcodi.factory.configuration

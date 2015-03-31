@@ -103,6 +103,7 @@ class ElcodiAttributeExtension extends AbstractExtension implements EntitiesOver
             'factories',
             'repositories',
             'objectManagers',
+            'directors',
         ];
     }
 

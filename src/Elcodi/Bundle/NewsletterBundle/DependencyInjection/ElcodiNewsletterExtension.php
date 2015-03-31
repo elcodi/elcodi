@@ -101,6 +101,7 @@ class ElcodiNewsletterExtension extends AbstractExtension implements EntitiesOve
             'eventDispatchers',
             'eventListeners',
             'objectManagers',
+            'directors',
         ];
     }
 

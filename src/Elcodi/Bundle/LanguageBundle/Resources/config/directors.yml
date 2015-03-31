@@ -1,0 +1,12 @@
+services:
+
+    #
+    # Directors
+    #
+    elcodi.director.language:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
+        arguments:
+            - @elcodi.object_manager.language
+            - @elcodi.repository.language
+            - @elcodi.factory.language

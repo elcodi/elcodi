@@ -1,0 +1,20 @@
+services:
+
+    #
+    # Directors
+    #
+    elcodi.director.currency:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
+        arguments:
+            - @elcodi.object_manager.currency
+            - @elcodi.repository.currency
+            - @elcodi.factory.currency
+
+    elcodi.director.currency_exchange_rate:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
+        arguments:
+            - @elcodi.object_manager.currency_exchange_rate
+            - @elcodi.repository.currency_exchange_rate
+            - @elcodi.factory.currency_exchange_rate

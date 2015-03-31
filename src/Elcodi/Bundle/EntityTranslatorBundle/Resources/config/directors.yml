@@ -1,0 +1,12 @@
+services:
+
+    #
+    # Directors
+    #
+    elcodi.director.entity_translation:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
+        arguments:
+            - @elcodi.object_manager.entity_translation
+            - @elcodi.repository.entity_translation
+            - @elcodi.factory.entity_translation

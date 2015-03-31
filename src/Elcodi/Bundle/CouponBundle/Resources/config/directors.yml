@@ -1,0 +1,12 @@
+services:
+
+    #
+    # Directors
+    #
+    elcodi.director.coupon:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
+        arguments:
+            - @elcodi.object_manager.coupon
+            - @elcodi.repository.coupon
+            - @elcodi.factory.coupon

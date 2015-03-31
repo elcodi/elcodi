@@ -1,0 +1,12 @@
+services:
+
+    #
+    # Directors
+    #
+    elcodi.director.newsletter_subscription:
+        class: Elcodi\Component\Core\Services\ObjectDirector
+        lazy: true
+        arguments:
+            - @elcodi.object_manager.newsletter_subscription
+            - @elcodi.repository.newsletter_subscription
+            - @elcodi.factory.newsletter_subscription
