@@ -37,17 +37,17 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
         $this
             ->addEntityMapping(
                 $container,
-                'elcodi.core.cart_coupon.entity.cart_coupon.manager',
-                'elcodi.core.cart_coupon.entity.cart_coupon.class',
-                'elcodi.core.cart_coupon.entity.cart_coupon.mapping_file',
-                'elcodi.core.cart_coupon.entity.cart_coupon.enabled'
+                'elcodi.entity.cart_coupon.manager',
+                'elcodi.entity.cart_coupon.class',
+                'elcodi.entity.cart_coupon.mapping_file',
+                'elcodi.entity.cart_coupon.enabled'
             )
             ->addEntityMapping(
                 $container,
-                'elcodi.core.cart_coupon.entity.order_coupon.manager',
-                'elcodi.core.cart_coupon.entity.order_coupon.class',
-                'elcodi.core.cart_coupon.entity.order_coupon.mapping_file',
-                'elcodi.core.cart_coupon.entity.order_coupon.enabled'
+                'elcodi.entity.order_coupon.manager',
+                'elcodi.entity.order_coupon.class',
+                'elcodi.entity.order_coupon.mapping_file',
+                'elcodi.entity.order_coupon.enabled'
             );
     }
 }

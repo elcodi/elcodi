@@ -10,7 +10,7 @@ services:
             default_locale: %locale%
 
     elcodi.provider.locale.locale:
-        class: %elcodi.core.language.entity.locale.class%
+        class: %elcodi.entity.locale.class%
         factory_service: elcodi.provider.locale
         factory_method: getLocale
         public: false
@@ -49,6 +49,6 @@ services:
         factory_method: toArray
 
     elcodi.locale:
-        class: %elcodi.core.language.entity.locale.class%
+        class: %elcodi.entity.locale.class%
         factory_service: elcodi.manager.locale
         factory_method: getLocale

@@ -77,25 +77,25 @@ class ElcodiCartExtension extends AbstractExtension implements EntitiesOverridab
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.core.cart.entity.cart.class" => $config['mapping']['cart']['class'],
-            "elcodi.core.cart.entity.cart.mapping_file" => $config['mapping']['cart']['mapping_file'],
-            "elcodi.core.cart.entity.cart.manager" => $config['mapping']['cart']['manager'],
-            "elcodi.core.cart.entity.cart.enabled" => $config['mapping']['cart']['enabled'],
+            "elcodi.entity.cart.class" => $config['mapping']['cart']['class'],
+            "elcodi.entity.cart.mapping_file" => $config['mapping']['cart']['mapping_file'],
+            "elcodi.entity.cart.manager" => $config['mapping']['cart']['manager'],
+            "elcodi.entity.cart.enabled" => $config['mapping']['cart']['enabled'],
 
-            "elcodi.core.cart.entity.order.class" => $config['mapping']['order']['class'],
-            "elcodi.core.cart.entity.order.mapping_file" => $config['mapping']['order']['mapping_file'],
-            "elcodi.core.cart.entity.order.manager" => $config['mapping']['order']['manager'],
-            "elcodi.core.cart.entity.order.enabled" => $config['mapping']['order']['enabled'],
+            "elcodi.entity.order.class" => $config['mapping']['order']['class'],
+            "elcodi.entity.order.mapping_file" => $config['mapping']['order']['mapping_file'],
+            "elcodi.entity.order.manager" => $config['mapping']['order']['manager'],
+            "elcodi.entity.order.enabled" => $config['mapping']['order']['enabled'],
 
-            "elcodi.core.cart.entity.cart_line.class" => $config['mapping']['cart_line']['class'],
-            "elcodi.core.cart.entity.cart_line.mapping_file" => $config['mapping']['cart_line']['mapping_file'],
-            "elcodi.core.cart.entity.cart_line.manager" => $config['mapping']['cart_line']['manager'],
-            "elcodi.core.cart.entity.cart_line.enabled" => $config['mapping']['cart_line']['enabled'],
+            "elcodi.entity.cart_line.class" => $config['mapping']['cart_line']['class'],
+            "elcodi.entity.cart_line.mapping_file" => $config['mapping']['cart_line']['mapping_file'],
+            "elcodi.entity.cart_line.manager" => $config['mapping']['cart_line']['manager'],
+            "elcodi.entity.cart_line.enabled" => $config['mapping']['cart_line']['enabled'],
 
-            "elcodi.core.cart.entity.order_line.class" => $config['mapping']['order_line']['class'],
-            "elcodi.core.cart.entity.order_line.mapping_file" => $config['mapping']['order_line']['mapping_file'],
-            "elcodi.core.cart.entity.order_line.manager" => $config['mapping']['order_line']['manager'],
-            "elcodi.core.cart.entity.order_line.enabled" => $config['mapping']['order_line']['enabled'],
+            "elcodi.entity.order_line.class" => $config['mapping']['order_line']['class'],
+            "elcodi.entity.order_line.mapping_file" => $config['mapping']['order_line']['mapping_file'],
+            "elcodi.entity.order_line.manager" => $config['mapping']['order_line']['manager'],
+            "elcodi.entity.order_line.enabled" => $config['mapping']['order_line']['enabled'],
 
             'elcodi.core.cart.cart_save_in_session' => $config['cart']['save_in_session'],
             'elcodi.core.cart.cart_session_field_name' => $config['cart']['session_field_name'],
@@ -145,10 +145,10 @@ class ElcodiCartExtension extends AbstractExtension implements EntitiesOverridab
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\Cart\Entity\Interfaces\CartInterface' => 'elcodi.core.cart.entity.cart.class',
-            'Elcodi\Component\Cart\Entity\Interfaces\OrderInterface' => 'elcodi.core.cart.entity.order.class',
-            'Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface' => 'elcodi.core.cart.entity.cart_line.class',
-            'Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface' => 'elcodi.core.cart.entity.order_line.class',
+            'Elcodi\Component\Cart\Entity\Interfaces\CartInterface' => 'elcodi.entity.cart.class',
+            'Elcodi\Component\Cart\Entity\Interfaces\OrderInterface' => 'elcodi.entity.order.class',
+            'Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface' => 'elcodi.entity.cart_line.class',
+            'Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface' => 'elcodi.entity.order_line.class',
         ];
     }
 

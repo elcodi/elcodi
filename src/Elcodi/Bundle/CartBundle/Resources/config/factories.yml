@@ -10,7 +10,7 @@ services:
     elcodi.factory.cart:
         class: %elcodi.factory.cart.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.cart.entity.cart.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.cart.class%"]]
 
     #
     # Factory for entity order
@@ -21,7 +21,7 @@ services:
             payment_machine_manager: @elcodi.order.payment_states_machine.manager
             shipping_machine_manager: @elcodi.order.shipping_states_machine.manager
         calls:
-            - [setEntityNamespace, ["%elcodi.core.cart.entity.order.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.order.class%"]]
 
     #
     # Factory for entity cart_line
@@ -29,7 +29,7 @@ services:
     elcodi.factory.cart_line:
         class: %elcodi.factory.cart_line.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.cart.entity.cart_line.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.cart_line.class%"]]
 
     #
     # Factory for entity order_line
@@ -37,4 +37,4 @@ services:
     elcodi.factory.order_line:
         class: %elcodi.factory.order_line.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.cart.entity.order_line.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.order_line.class%"]]

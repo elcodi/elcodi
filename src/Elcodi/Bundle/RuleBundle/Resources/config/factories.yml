@@ -10,4 +10,4 @@ services:
     elcodi.factory.rule:
         class: %elcodi.factory.rule.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.rule.entity.rule.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.rule.class%"]]

@@ -10,4 +10,4 @@ services:
     elcodi.factory.language:
         class: %elcodi.factory.language.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.language.entity.language.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.language.class%"]]

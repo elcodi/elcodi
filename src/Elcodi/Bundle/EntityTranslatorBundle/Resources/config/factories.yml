@@ -10,12 +10,12 @@ services:
     elcodi.factory.entity_translation:
         class: %elcodi.factory.entity_translation.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.entity_translator.entity.entity_translation.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.entity_translation.class%"]]
 
     #
     # Factory for Translator service
     #
-    elcodi.core.entity_translator.factory.entity_translator:
-        class: %elcodi.core.entity_translator.factory.entity_translator.class%
+    elcodi.factory.entity_translator:
+        class: %elcodi.factory.entity_translator.class%
         calls:
             - [setEntityNamespace, ["%elcodi.entity_translator.class%"]]

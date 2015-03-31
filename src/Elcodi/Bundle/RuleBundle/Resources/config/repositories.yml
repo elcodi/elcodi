@@ -9,4 +9,4 @@ services:
     #
     elcodi.repository.rule:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.rule.entity.rule.class% ]
+        arguments: [ %elcodi.entity.rule.class% ]

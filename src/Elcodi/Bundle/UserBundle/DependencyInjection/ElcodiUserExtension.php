@@ -77,20 +77,20 @@ class ElcodiUserExtension extends AbstractExtension implements EntitiesOverridab
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.core.user.entity.abstract_user.class" => $config['mapping']['abstract_user']['class'],
-            "elcodi.core.user.entity.abstract_user.mapping_file" => $config['mapping']['abstract_user']['mapping_file'],
-            "elcodi.core.user.entity.abstract_user.manager" => $config['mapping']['abstract_user']['manager'],
-            "elcodi.core.user.entity.abstract_user.enabled" => $config['mapping']['abstract_user']['enabled'],
+            "elcodi.entity.abstract_user.class" => $config['mapping']['abstract_user']['class'],
+            "elcodi.entity.abstract_user.mapping_file" => $config['mapping']['abstract_user']['mapping_file'],
+            "elcodi.entity.abstract_user.manager" => $config['mapping']['abstract_user']['manager'],
+            "elcodi.entity.abstract_user.enabled" => $config['mapping']['abstract_user']['enabled'],
 
-            "elcodi.core.user.entity.admin_user.class" => $config['mapping']['admin_user']['class'],
-            "elcodi.core.user.entity.admin_user.mapping_file" => $config['mapping']['admin_user']['mapping_file'],
-            "elcodi.core.user.entity.admin_user.manager" => $config['mapping']['admin_user']['manager'],
-            "elcodi.core.user.entity.admin_user.enabled" => $config['mapping']['admin_user']['enabled'],
+            "elcodi.entity.admin_user.class" => $config['mapping']['admin_user']['class'],
+            "elcodi.entity.admin_user.mapping_file" => $config['mapping']['admin_user']['mapping_file'],
+            "elcodi.entity.admin_user.manager" => $config['mapping']['admin_user']['manager'],
+            "elcodi.entity.admin_user.enabled" => $config['mapping']['admin_user']['enabled'],
 
-            "elcodi.core.user.entity.customer.class" => $config['mapping']['customer']['class'],
-            "elcodi.core.user.entity.customer.mapping_file" => $config['mapping']['customer']['mapping_file'],
-            "elcodi.core.user.entity.customer.manager" => $config['mapping']['customer']['manager'],
-            "elcodi.core.user.entity.customer.enabled" => $config['mapping']['customer']['enabled'],
+            "elcodi.entity.customer.class" => $config['mapping']['customer']['class'],
+            "elcodi.entity.customer.mapping_file" => $config['mapping']['customer']['mapping_file'],
+            "elcodi.entity.customer.manager" => $config['mapping']['customer']['manager'],
+            "elcodi.entity.customer.enabled" => $config['mapping']['customer']['enabled'],
         ];
     }
 
@@ -122,8 +122,8 @@ class ElcodiUserExtension extends AbstractExtension implements EntitiesOverridab
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\User\Entity\Interfaces\CustomerInterface' => 'elcodi.core.user.entity.customer.class',
-            'Elcodi\Component\User\Entity\Interfaces\AdminUserInterface' => 'elcodi.core.user.entity.admin_user.class',
+            'Elcodi\Component\User\Entity\Interfaces\CustomerInterface' => 'elcodi.entity.customer.class',
+            'Elcodi\Component\User\Entity\Interfaces\AdminUserInterface' => 'elcodi.entity.admin_user.class',
         ];
     }
 

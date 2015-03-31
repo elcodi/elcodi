@@ -5,8 +5,8 @@ services:
     #
     elcodi.object_manager.customer:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.user.entity.customer.class% ]
+        arguments: [ %elcodi.entity.customer.class% ]
 
     elcodi.object_manager.admin_user:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.user.entity.admin_user.class% ]
+        arguments: [ %elcodi.entity.admin_user.class% ]

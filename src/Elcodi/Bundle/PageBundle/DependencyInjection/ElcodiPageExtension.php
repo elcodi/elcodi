@@ -113,10 +113,10 @@ class ElcodiPageExtension extends AbstractExtension implements EntitiesOverridab
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.core.page.entity.page.class"        => $config['mapping']['page']['class'],
-            "elcodi.core.page.entity.page.mapping_file" => $config['mapping']['page']['mapping_file'],
-            "elcodi.core.page.entity.page.manager"      => $config['mapping']['page']['manager'],
-            "elcodi.core.page.entity.page.enabled"      => $config['mapping']['page']['enabled'],
+            "elcodi.entity.page.class"        => $config['mapping']['page']['class'],
+            "elcodi.entity.page.mapping_file" => $config['mapping']['page']['mapping_file'],
+            "elcodi.entity.page.manager"      => $config['mapping']['page']['manager'],
+            "elcodi.entity.page.enabled"      => $config['mapping']['page']['enabled'],
 
             "elcodi.core.page.routing.route_name" => $config['routing']['route_name'],
             "elcodi.core.page.routing.route_path" => $config['routing']['route_path'],
@@ -136,7 +136,7 @@ class ElcodiPageExtension extends AbstractExtension implements EntitiesOverridab
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\Page\Entity\Interfaces\PageInterface' => 'elcodi.core.page.entity.page.class',
+            'Elcodi\Component\Page\Entity\Interfaces\PageInterface' => 'elcodi.entity.page.class',
         ];
     }
 

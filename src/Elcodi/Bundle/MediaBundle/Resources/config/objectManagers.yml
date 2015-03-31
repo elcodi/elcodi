@@ -5,4 +5,4 @@ services:
     #
     elcodi.object_manager.image:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.media.entity.image.class% ]
+        arguments: [ %elcodi.entity.image.class% ]

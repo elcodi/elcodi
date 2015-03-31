@@ -9,4 +9,4 @@ services:
     #
     elcodi.repository.image:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.core.media.entity.image.class% ]
+        arguments: [ %elcodi.entity.image.class% ]

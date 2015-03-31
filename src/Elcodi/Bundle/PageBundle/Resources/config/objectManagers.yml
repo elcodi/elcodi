@@ -5,4 +5,4 @@ services:
     #
     elcodi.object_manager.page:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.page.entity.page.class% ]
+        arguments: [ %elcodi.entity.page.class% ]

@@ -10,4 +10,4 @@ services:
     elcodi.factory.page:
         class: %elcodi.factory.page.class%
         calls:
-            - [setEntityNamespace, [%elcodi.core.page.entity.page.class%]]
+            - [setEntityNamespace, [%elcodi.entity.page.class%]]

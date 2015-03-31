@@ -77,15 +77,15 @@ class ElcodiAttributeExtension extends AbstractExtension implements EntitiesOver
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.core.attribute.entity.attribute.class" => $config['mapping']['attribute']['class'],
-            "elcodi.core.attribute.entity.attribute.mapping_file" => $config['mapping']['attribute']['mapping_file'],
-            "elcodi.core.attribute.entity.attribute.manager" => $config['mapping']['attribute']['manager'],
-            "elcodi.core.attribute.entity.attribute.enabled" => $config['mapping']['attribute']['enabled'],
+            "elcodi.entity.attribute.class" => $config['mapping']['attribute']['class'],
+            "elcodi.entity.attribute.mapping_file" => $config['mapping']['attribute']['mapping_file'],
+            "elcodi.entity.attribute.manager" => $config['mapping']['attribute']['manager'],
+            "elcodi.entity.attribute.enabled" => $config['mapping']['attribute']['enabled'],
 
-            "elcodi.core.attribute.entity.attribute_value.class" => $config['mapping']['value']['class'],
-            "elcodi.core.attribute.entity.attribute_value.mapping_file" => $config['mapping']['value']['mapping_file'],
-            "elcodi.core.attribute.entity.attribute_value.manager" => $config['mapping']['value']['manager'],
-            "elcodi.core.attribute.entity.attribute_value.enabled" => $config['mapping']['value']['enabled'],
+            "elcodi.entity.attribute_value.class" => $config['mapping']['value']['class'],
+            "elcodi.entity.attribute_value.mapping_file" => $config['mapping']['value']['mapping_file'],
+            "elcodi.entity.attribute_value.manager" => $config['mapping']['value']['manager'],
+            "elcodi.entity.attribute_value.enabled" => $config['mapping']['value']['enabled'],
         ];
     }
 
@@ -118,8 +118,8 @@ class ElcodiAttributeExtension extends AbstractExtension implements EntitiesOver
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface' => 'elcodi.core.attribute.entity.attribute.class',
-            'Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface' => 'elcodi.core.attribute.entity.attribute_value.class',
+            'Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface' => 'elcodi.entity.attribute.class',
+            'Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface' => 'elcodi.entity.attribute_value.class',
         ];
     }
 

@@ -10,4 +10,4 @@ services:
     elcodi.factory.image:
         class: %elcodi.factory.image.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.media.entity.image.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.image.class%"]]

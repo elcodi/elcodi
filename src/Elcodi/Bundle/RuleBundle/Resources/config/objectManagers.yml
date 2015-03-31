@@ -5,4 +5,4 @@ services:
     #
     elcodi.object_manager.rule:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.rule.entity.rule.class% ]
+        arguments: [ %elcodi.entity.rule.class% ]

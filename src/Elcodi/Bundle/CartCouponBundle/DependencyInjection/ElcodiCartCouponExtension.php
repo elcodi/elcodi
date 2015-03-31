@@ -77,15 +77,15 @@ class ElcodiCartCouponExtension extends AbstractExtension implements EntitiesOve
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.core.cart_coupon.entity.cart_coupon.class" => $config['mapping']['cart_coupon']['class'],
-            "elcodi.core.cart_coupon.entity.cart_coupon.mapping_file" => $config['mapping']['cart_coupon']['mapping_file'],
-            "elcodi.core.cart_coupon.entity.cart_coupon.manager" => $config['mapping']['cart_coupon']['manager'],
-            "elcodi.core.cart_coupon.entity.cart_coupon.enabled" => $config['mapping']['cart_coupon']['enabled'],
+            "elcodi.entity.cart_coupon.class" => $config['mapping']['cart_coupon']['class'],
+            "elcodi.entity.cart_coupon.mapping_file" => $config['mapping']['cart_coupon']['mapping_file'],
+            "elcodi.entity.cart_coupon.manager" => $config['mapping']['cart_coupon']['manager'],
+            "elcodi.entity.cart_coupon.enabled" => $config['mapping']['cart_coupon']['enabled'],
 
-            "elcodi.core.cart_coupon.entity.order_coupon.class" => $config['mapping']['order_coupon']['class'],
-            "elcodi.core.cart_coupon.entity.order_coupon.mapping_file" => $config['mapping']['order_coupon']['mapping_file'],
-            "elcodi.core.cart_coupon.entity.order_coupon.manager" => $config['mapping']['order_coupon']['manager'],
-            "elcodi.core.cart_coupon.entity.order_coupon.enabled" => $config['mapping']['order_coupon']['enabled'],
+            "elcodi.entity.order_coupon.class" => $config['mapping']['order_coupon']['class'],
+            "elcodi.entity.order_coupon.mapping_file" => $config['mapping']['order_coupon']['mapping_file'],
+            "elcodi.entity.order_coupon.manager" => $config['mapping']['order_coupon']['manager'],
+            "elcodi.entity.order_coupon.enabled" => $config['mapping']['order_coupon']['enabled'],
         ];
     }
 
@@ -128,8 +128,8 @@ class ElcodiCartCouponExtension extends AbstractExtension implements EntitiesOve
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\CartCoupon\Entity\Interfaces\CartCouponInterface' => 'elcodi.core.cart_coupon.entity.cart_coupon.class',
-            'Elcodi\Component\CartCoupon\Entity\Interfaces\OrderCouponInterface' => 'elcodi.core.cart_coupon.entity.order_coupon.class',
+            'Elcodi\Component\CartCoupon\Entity\Interfaces\CartCouponInterface' => 'elcodi.entity.cart_coupon.class',
+            'Elcodi\Component\CartCoupon\Entity\Interfaces\OrderCouponInterface' => 'elcodi.entity.order_coupon.class',
         ];
     }
 

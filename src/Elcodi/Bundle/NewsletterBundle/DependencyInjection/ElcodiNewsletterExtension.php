@@ -77,10 +77,10 @@ class ElcodiNewsletterExtension extends AbstractExtension implements EntitiesOve
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.core.newsletter.entity.newsletter_subscription.class" => $config['mapping']['newsletter_subscription']['class'],
-            "elcodi.core.newsletter.entity.newsletter_subscription.mapping_file" => $config['mapping']['newsletter_subscription']['mapping_file'],
-            "elcodi.core.newsletter.entity.newsletter_subscription.manager" => $config['mapping']['newsletter_subscription']['manager'],
-            "elcodi.core.newsletter.entity.newsletter_subscription.enabled" => $config['mapping']['newsletter_subscription']['enabled'],
+            "elcodi.entity.newsletter_subscription.class" => $config['mapping']['newsletter_subscription']['class'],
+            "elcodi.entity.newsletter_subscription.mapping_file" => $config['mapping']['newsletter_subscription']['mapping_file'],
+            "elcodi.entity.newsletter_subscription.manager" => $config['mapping']['newsletter_subscription']['manager'],
+            "elcodi.entity.newsletter_subscription.enabled" => $config['mapping']['newsletter_subscription']['enabled'],
         ];
     }
 
@@ -110,7 +110,7 @@ class ElcodiNewsletterExtension extends AbstractExtension implements EntitiesOve
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\Newsletter\Entity\Interfaces\NewsletterSubscriptionInterface' => 'elcodi.core.newsletter.entity.newsletter_subscription.class',
+            'Elcodi\Component\Newsletter\Entity\Interfaces\NewsletterSubscriptionInterface' => 'elcodi.entity.newsletter_subscription.class',
         ];
     }
 

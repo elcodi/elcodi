@@ -77,25 +77,25 @@ class ElcodiProductExtension extends AbstractExtension implements EntitiesOverri
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.core.product.entity.product.class"                => $config['mapping']['product']['class'],
-            "elcodi.core.product.entity.product.mapping_file"         => $config['mapping']['product']['mapping_file'],
-            "elcodi.core.product.entity.product.manager"              => $config['mapping']['product']['manager'],
-            "elcodi.core.product.entity.product.enabled"              => $config['mapping']['product']['enabled'],
+            "elcodi.entity.product.class"                => $config['mapping']['product']['class'],
+            "elcodi.entity.product.mapping_file"         => $config['mapping']['product']['mapping_file'],
+            "elcodi.entity.product.manager"              => $config['mapping']['product']['manager'],
+            "elcodi.entity.product.enabled"              => $config['mapping']['product']['enabled'],
 
-            "elcodi.core.product.entity.product_variant.class"        => $config['mapping']['product_variant']['class'],
-            "elcodi.core.product.entity.product_variant.mapping_file" => $config['mapping']['product_variant']['mapping_file'],
-            "elcodi.core.product.entity.product_variant.manager"      => $config['mapping']['product_variant']['manager'],
-            "elcodi.core.product.entity.product_variant.enabled"      => $config['mapping']['product_variant']['enabled'],
+            "elcodi.entity.product_variant.class"        => $config['mapping']['product_variant']['class'],
+            "elcodi.entity.product_variant.mapping_file" => $config['mapping']['product_variant']['mapping_file'],
+            "elcodi.entity.product_variant.manager"      => $config['mapping']['product_variant']['manager'],
+            "elcodi.entity.product_variant.enabled"      => $config['mapping']['product_variant']['enabled'],
 
-            "elcodi.core.product.entity.category.class"               => $config['mapping']['category']['class'],
-            "elcodi.core.product.entity.category.mapping_file"        => $config['mapping']['category']['mapping_file'],
-            "elcodi.core.product.entity.category.manager"             => $config['mapping']['category']['manager'],
-            "elcodi.core.product.entity.category.enabled"             => $config['mapping']['category']['enabled'],
+            "elcodi.entity.category.class"               => $config['mapping']['category']['class'],
+            "elcodi.entity.category.mapping_file"        => $config['mapping']['category']['mapping_file'],
+            "elcodi.entity.category.manager"             => $config['mapping']['category']['manager'],
+            "elcodi.entity.category.enabled"             => $config['mapping']['category']['enabled'],
 
-            "elcodi.core.product.entity.manufacturer.class"           => $config['mapping']['manufacturer']['class'],
-            "elcodi.core.product.entity.manufacturer.mapping_file"    => $config['mapping']['manufacturer']['mapping_file'],
-            "elcodi.core.product.entity.manufacturer.manager"         => $config['mapping']['manufacturer']['manager'],
-            "elcodi.core.product.entity.manufacturer.enabled"         => $config['mapping']['manufacturer']['enabled'],
+            "elcodi.entity.manufacturer.class"           => $config['mapping']['manufacturer']['class'],
+            "elcodi.entity.manufacturer.mapping_file"    => $config['mapping']['manufacturer']['mapping_file'],
+            "elcodi.entity.manufacturer.manager"         => $config['mapping']['manufacturer']['manager'],
+            "elcodi.entity.manufacturer.enabled"         => $config['mapping']['manufacturer']['enabled'],
 
             'elcodi.core.product.use_stock'                           => $config['products']['use_stock'],
             'elcodi.core.product.load_only_categories_with_products'  => $config['categories']['load_only_categories_with_products'],
@@ -134,10 +134,10 @@ class ElcodiProductExtension extends AbstractExtension implements EntitiesOverri
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\Product\Entity\Interfaces\ProductInterface'      => 'elcodi.core.product.entity.product.class',
-            'Elcodi\Component\Product\Entity\Interfaces\VariantInterface'      => 'elcodi.core.product.entity.product_variant.class',
-            'Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface' => 'elcodi.core.product.entity.manufacturer.class',
-            'Elcodi\Component\Product\Entity\Interfaces\CategoryInterface'     => 'elcodi.core.product.entity.category.class',
+            'Elcodi\Component\Product\Entity\Interfaces\ProductInterface'      => 'elcodi.entity.product.class',
+            'Elcodi\Component\Product\Entity\Interfaces\VariantInterface'      => 'elcodi.entity.product_variant.class',
+            'Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface' => 'elcodi.entity.manufacturer.class',
+            'Elcodi\Component\Product\Entity\Interfaces\CategoryInterface'     => 'elcodi.entity.category.class',
         ];
     }
 

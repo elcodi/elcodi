@@ -3,7 +3,7 @@ parameters:
     #
     # Entities
     #
-    elcodi.core.language.entity.locale.class: Elcodi\Component\Language\Entity\Locale
+    elcodi.entity.locale.class: Elcodi\Component\Language\Entity\Locale
 
     #
     # Factories

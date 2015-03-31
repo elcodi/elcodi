@@ -77,10 +77,10 @@ class ElcodiLanguageExtension extends AbstractExtension implements EntitiesOverr
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.core.language.entity.language.class" => $config['mapping']['language']['class'],
-            "elcodi.core.language.entity.language.mapping_file" => $config['mapping']['language']['mapping_file'],
-            "elcodi.core.language.entity.language.manager" => $config['mapping']['language']['manager'],
-            "elcodi.core.language.entity.language.enabled" => $config['mapping']['language']['enabled'],
+            "elcodi.entity.language.class" => $config['mapping']['language']['class'],
+            "elcodi.entity.language.mapping_file" => $config['mapping']['language']['mapping_file'],
+            "elcodi.entity.language.manager" => $config['mapping']['language']['manager'],
+            "elcodi.entity.language.enabled" => $config['mapping']['language']['enabled'],
         ];
     }
 
@@ -115,7 +115,7 @@ class ElcodiLanguageExtension extends AbstractExtension implements EntitiesOverr
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\Language\Entity\Interfaces\LanguageInterface' => 'elcodi.core.language.entity.language.class',
+            'Elcodi\Component\Language\Entity\Interfaces\LanguageInterface' => 'elcodi.entity.language.class',
         ];
     }
 

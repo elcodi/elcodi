@@ -9,9 +9,9 @@ services:
     #
     elcodi.factory.product:
         class: %elcodi.factory.product.class%
-        parent: elcodi.core.currency.factory.abstract.purchasable
+        parent: elcodi.factory.abstract.purchasable
         calls:
-            - [setEntityNamespace, ["%elcodi.core.product.entity.product.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.product.class%"]]
             - [setUseStock, ["@=elcodi_config('product.use_stock', false)"]]
 
     #
@@ -19,9 +19,9 @@ services:
     #
     elcodi.factory.product_variant:
         class: %elcodi.factory.product_variant.class%
-        parent: elcodi.core.currency.factory.abstract.purchasable
+        parent: elcodi.factory.abstract.purchasable
         calls:
-            - [setEntityNamespace, ["%elcodi.core.product.entity.product_variant.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.product_variant.class%"]]
 
     #
     # Factory for Manufacturer entities
@@ -29,7 +29,7 @@ services:
     elcodi.factory.manufacturer:
         class: %elcodi.factory.manufacturer.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.product.entity.manufacturer.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.manufacturer.class%"]]
 
     #
     # Factory for Category entities
@@ -37,4 +37,4 @@ services:
     elcodi.factory.category:
         class: %elcodi.factory.category.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.product.entity.category.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.category.class%"]]

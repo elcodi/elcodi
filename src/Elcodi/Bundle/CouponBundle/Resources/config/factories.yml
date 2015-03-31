@@ -9,6 +9,6 @@ services:
     #
     elcodi.factory.coupon:
         class: %elcodi.factory.coupon.class%
-        parent: elcodi.core.currency.factory.abstract.purchasable
+        parent: elcodi.factory.abstract.purchasable
         calls:
             - [setEntityNamespace, ["%elcodi.entity.coupon.class%"]]

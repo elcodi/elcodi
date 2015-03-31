@@ -10,4 +10,4 @@ services:
     elcodi.repository.entity_translation:
         parent: elcodi.abstract_repository
         class: %elcodi.repository.entity_translation.class%
-        arguments: [ %elcodi.core.entity_translator.entity.entity_translation.class% ]
+        arguments: [ %elcodi.entity.entity_translation.class% ]

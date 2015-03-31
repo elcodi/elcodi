@@ -37,10 +37,10 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
         $this
             ->addEntityMapping(
                 $container,
-                'elcodi.core.page.entity.page.manager',
-                'elcodi.core.page.entity.page.class',
-                'elcodi.core.page.entity.page.mapping_file',
-                'elcodi.core.page.entity.page.enabled'
+                'elcodi.entity.page.manager',
+                'elcodi.entity.page.class',
+                'elcodi.entity.page.mapping_file',
+                'elcodi.entity.page.enabled'
             );
     }
 }

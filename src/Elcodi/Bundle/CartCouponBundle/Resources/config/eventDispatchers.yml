@@ -5,8 +5,8 @@ services:
     #
     elcodi.event_dispatcher.cart_coupon:
         class: %elcodi.event_dispatcher.cart_coupon.class%
-        parent: elcodi.core.core.event_dispatcher.abstract
+        parent: elcodi.event_dispatcher.abstract
 
     elcodi.event_dispatcher.order_coupon:
         class: %elcodi.event_dispatcher.order_coupon.class%
-        parent: elcodi.core.core.event_dispatcher.abstract
+        parent: elcodi.event_dispatcher.abstract

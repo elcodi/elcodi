@@ -5,4 +5,4 @@ services:
     #
     elcodi.object_manager.language:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.core.language.entity.language.class% ]
+        arguments: [ %elcodi.entity.language.class% ]

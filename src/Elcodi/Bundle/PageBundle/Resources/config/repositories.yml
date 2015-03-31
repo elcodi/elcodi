@@ -9,5 +9,5 @@ services:
     #
     elcodi.repository.page:
         parent: elcodi.abstract_repository
-        class: %elcodi.core.page.repository.page.class%
-        arguments: [ %elcodi.core.page.entity.page.class% ]
+        class: %elcodi.repository.page.class%
+        arguments: [ %elcodi.entity.page.class% ]

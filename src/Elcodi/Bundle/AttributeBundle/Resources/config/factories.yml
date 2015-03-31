@@ -10,7 +10,7 @@ services:
     elcodi.factory.attribute:
         class: %elcodi.factory.attribute.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.attribute.entity.attribute.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.attribute.class%"]]
 
     #
     # Factory for Value entities
@@ -18,4 +18,4 @@ services:
     elcodi.factory.attribute_value:
         class: %elcodi.factory.attribute_value.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.core.attribute.entity.attribute_value.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.attribute_value.class%"]]
