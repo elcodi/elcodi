@@ -20,11 +20,15 @@ namespace Elcodi\Bundle\NewsletterBundle\CompilerPass;
 use Mmoreram\SimpleDoctrineMapping\CompilerPass\Abstracts\AbstractMappingCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+use Elcodi\Bundle\CoreBundle\CompilerPass\Traits\EntityMappingTrait;
+
 /**
  * Class MappingCompilerPass
  */
 class MappingCompilerPass extends AbstractMappingCompilerPass
 {
+    use EntityMappingTrait;
+
     /**
      * You can modify the container here before it is dumped to PHP code.
      *
@@ -35,12 +39,11 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
     public function process(ContainerBuilder $container)
     {
         $this
-            ->addEntityMapping(
+            ->addEntityMappings(
                 $container,
-                'elcodi.entity.newsletter_subscription.manager',
-                'elcodi.entity.newsletter_subscription.class',
-                'elcodi.entity.newsletter_subscription.mapping_file',
-                'elcodi.entity.newsletter_subscription.enabled'
+                [
+                    'newsletter_subscription',
+                ]
             );
     }
 }

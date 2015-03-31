@@ -9,4 +9,4 @@ services:
     elcodi.factory.state_transition_machine_state_line:
         class: %elcodi.factory.state_transition_machine_state_line.class%
         calls:
-            - [setEntityNamespace, ["%elcodi.state_transition_machine.state_line.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.state_transition_machine.state_line.class%"]]

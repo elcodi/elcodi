@@ -20,11 +20,15 @@ namespace Elcodi\Bundle\TaxBundle\CompilerPass;
 use Mmoreram\SimpleDoctrineMapping\CompilerPass\Abstracts\AbstractMappingCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+use Elcodi\Bundle\CoreBundle\CompilerPass\Traits\EntityMappingTrait;
+
 /**
  * Class MappingCompilerPass
  */
 class MappingCompilerPass extends AbstractMappingCompilerPass
 {
+    use EntityMappingTrait;
+
     /**
      * You can modify the container here before it is dumped to PHP code.
      *
@@ -33,19 +37,12 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
     public function process(ContainerBuilder $container)
     {
         $this
-            ->addEntityMapping(
+            ->addEntityMappings(
                 $container,
-                'elcodi.entity.tax.manager',
-                'elcodi.entity.tax.class',
-                'elcodi.entity.tax.mapping_file',
-                'elcodi.entity.tax.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.entity.tax_group.manager',
-                'elcodi.entity.tax_group.class',
-                'elcodi.entity.tax_group.mapping_file',
-                'elcodi.entity.tax_group.enabled'
+                [
+                    'tax',
+                    'tax_group',
+                ]
             );
     }
 }

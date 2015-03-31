@@ -20,11 +20,15 @@ namespace Elcodi\Bundle\CurrencyBundle\CompilerPass;
 use Mmoreram\SimpleDoctrineMapping\CompilerPass\Abstracts\AbstractMappingCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+use Elcodi\Bundle\CoreBundle\CompilerPass\Traits\EntityMappingTrait;
+
 /**
  * Class MappingCompilerPass
  */
 class MappingCompilerPass extends AbstractMappingCompilerPass
 {
+    use EntityMappingTrait;
+
     /**
      * You can modify the container here before it is dumped to PHP code.
      *
@@ -35,19 +39,12 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
     public function process(ContainerBuilder $container)
     {
         $this
-            ->addEntityMapping(
+            ->addEntityMappings(
                 $container,
-                'elcodi.entity.currency.manager',
-                'elcodi.entity.currency.class',
-                'elcodi.entity.currency.mapping_file',
-                'elcodi.entity.currency.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.entity.currency_exchange_rate.manager',
-                'elcodi.entity.currency_exchange_rate.class',
-                'elcodi.entity.currency_exchange_rate.mapping_file',
-                'elcodi.entity.currency_exchange_rate.enabled'
+                [
+                    'currency',
+                    'currency_exchange_rate',
+                ]
             );
     }
 }
