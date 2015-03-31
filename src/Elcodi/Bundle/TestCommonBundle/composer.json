@@ -34,8 +34,9 @@
         "doctrine/common": "~2.4",
         "doctrine/orm": "~2.4",
         "doctrine/doctrine-fixtures-bundle": "~2.2",
-        "symfony/config": "~2.6",
+
         "symfony/http-kernel": "~2.6",
+        "symfony/config": "~2.6",
         "symfony/framework-bundle": "~2.6",
         "symfony/console": "~2.6",
         "symfony/browser-kit": "~2.6",
