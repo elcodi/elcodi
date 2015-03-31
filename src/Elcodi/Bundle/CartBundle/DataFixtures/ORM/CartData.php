@@ -23,8 +23,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
-use Elcodi\Component\Cart\Factory\CartFactory;
-use Elcodi\Component\Cart\Factory\CartLineFactory;
+use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
@@ -52,15 +51,13 @@ class CartData extends AbstractFixture implements DependentFixtureInterface
          * @var ProductInterface  $productReduced
          * @var CartLineInterface $cartLine1
          * @var CartLineInterface $cartLine2
-         * @var CartFactory $cartFactory
-         * @var CartLineFactory $cartLineFactory
+         * @var ObjectDirector $cartDirector
+         * @var ObjectDirector $cartLineDirector
          * @var AddressInterface $address1
          * @var AddressInterface $address2
          */
-        $cartFactory = $this->getFactory('cart');
-        $cartLineFactory = $this->getFactory('cart_line');
-        $cartObjectManager = $this->getObjectManager('cart');
-        $cartLineObjectManager = $this->getObjectManager('cart_line');
+        $cartDirector = $this->getDirector('cart');
+        $cartLineDirector = $this->getDirector('cart_line');
 
         $customer1 = $this->getReference('customer-1');
         $customer2 = $this->getReference('customer-2');
@@ -73,21 +70,21 @@ class CartData extends AbstractFixture implements DependentFixtureInterface
         /**
          * Empty cart
          */
-        $emptyCart = $cartFactory
+        $emptyCart = $cartDirector
             ->create()
             ->setCustomer($customer1);
 
-        $cartObjectManager->persist($emptyCart);
+        $cartDirector->save($emptyCart);
         $this->addReference('empty-cart', $emptyCart);
 
         /**
          * Full cart
          */
-        $fullCart = $cartFactory
+        $fullCart = $cartDirector
             ->create()
             ->setCustomer($customer2);
 
-        $cartLine1 = $cartLineFactory
+        $cartLine1 = $cartLineDirector
             ->create()
             ->setProduct($product)
             ->setProductAmount($product->getPrice())
@@ -95,7 +92,7 @@ class CartData extends AbstractFixture implements DependentFixtureInterface
             ->setQuantity(2)
             ->setCart($fullCart);
 
-        $cartLine2 = $cartLineFactory
+        $cartLine2 = $cartLineDirector
             ->create()
             ->setProduct($productReduced)
             ->setProductAmount($productReduced->getPrice())
@@ -110,18 +107,8 @@ class CartData extends AbstractFixture implements DependentFixtureInterface
         $fullCart->setBillingAddress($address1);
         $fullCart->setDeliveryAddress($address2);
 
-        $cartObjectManager->persist($fullCart);
+        $cartDirector->save($fullCart);
         $this->addReference('full-cart', $fullCart);
-
-        $cartObjectManager->flush([
-            $emptyCart,
-            $fullCart,
-        ]);
-
-        $cartLineObjectManager->flush([
-            $cartLine1,
-            $cartLine2,
-        ]);
     }
 
     /**

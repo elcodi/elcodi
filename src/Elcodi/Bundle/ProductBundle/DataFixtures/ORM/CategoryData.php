@@ -20,8 +20,8 @@ namespace Elcodi\Bundle\ProductBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
-use Elcodi\Component\Product\Factory\CategoryFactory;
 
 /**
  * Class CategoryData
@@ -36,26 +36,23 @@ class CategoryData extends AbstractFixture
     public function load(ObjectManager $manager)
     {
         /**
-         * @var ObjectManager   $categoryObjectManager
-         * @var CategoryFactory $categoryFactory
+         * @var ObjectDirector   $categoryDirector
          */
-        $categoryObjectManager = $this->getObjectManager('category');
-        $categoryFactory = $this->getFactory('category');
+        $categoryDirector = $this->get('elcodi.director.category');
 
         /**
          * Category
          *
          * @var CategoryInterface $rootCategory
          */
-        $rootCategory = $categoryFactory
+        $rootCategory = $categoryDirector
             ->create()
             ->setName('root-category')
             ->setSlug('root-category')
             ->setEnabled(true)
             ->setRoot(true);
 
-        $manager->persist($rootCategory);
-        $categoryObjectManager->flush($rootCategory);
+        $categoryDirector->save($rootCategory);
         $this->addReference('rootCategory', $rootCategory);
 
         /**
@@ -63,7 +60,7 @@ class CategoryData extends AbstractFixture
          *
          * @var CategoryInterface $category
          */
-        $category = $categoryFactory
+        $category = $categoryDirector
             ->create()
             ->setName('category')
             ->setSlug('category')
@@ -71,9 +68,7 @@ class CategoryData extends AbstractFixture
             ->setParent($rootCategory)
             ->setRoot(false);
 
-        $manager->persist($category);
+        $categoryDirector->save($category);
         $this->addReference('category', $category);
-
-        $categoryObjectManager->flush($category);
     }
 }

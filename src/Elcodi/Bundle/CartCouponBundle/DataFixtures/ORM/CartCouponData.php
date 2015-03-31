@@ -44,24 +44,19 @@ class CartCouponData extends AbstractFixture implements DependentFixtureInterfac
          * @var CartCouponInterface $cartCoupon
          * @var CartInterface       $cart
          * @var CouponInterface     $coupon
-         * @var CurrencyInterface   $currency
          */
-        $cartCouponFactory = $this->getFactory('cart_coupon');
-        $cartCouponObjectManager = $this->getObjectManager('cart_coupon');
+        $cartCouponDirectory = $this->get('elcodi.director.cart_coupon');
+
         $cart = $this->getReference('full-cart');
         $coupon = $this->getReference('coupon-percent');
 
-        $cartCoupon = $cartCouponFactory
+        $cartCoupon = $cartCouponDirectory
             ->create()
             ->setCart($cart)
             ->setCoupon($coupon);
 
-        $cartCouponObjectManager->persist($cartCoupon);
+        $cartCouponDirectory->save($cartCoupon);
         $this->addReference('cart-coupon', $cartCoupon);
-
-        $cartCouponObjectManager->flush([
-            $cartCoupon,
-        ]);
     }
 
     /**

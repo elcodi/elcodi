@@ -20,14 +20,13 @@ namespace Elcodi\Bundle\ConfigurationBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\Component\Configuration\Factory\ConfigurationFactory;
+use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
  * Class ConfigurationData
  */
 class ConfigurationData extends AbstractFixture
 {
-
     /**
      * Load data fixtures with the passed EntityManager
      *
@@ -36,15 +35,14 @@ class ConfigurationData extends AbstractFixture
     public function load(ObjectManager $manager)
     {
         /**
-         * @var ConfigurationFactory $configurationFactory
+         * @var ObjectDirector $configurationDirector
          */
-        $configurationFactory = $this->getFactory('configuration');
-        $configurationObjectManager = $this->getObjectManager('configuration');
+        $configurationDirector = $this->get('elcodi.director.configuration');
 
         /**
          * Parameter
          */
-        $parameter = $configurationFactory
+        $parameter = $configurationDirector
             ->create()
             ->setKey('my_boolean_parameter')
             ->setNamespace('app')
@@ -52,9 +50,6 @@ class ConfigurationData extends AbstractFixture
             ->setValue(true)
             ->setType('boolean');
 
-        $configurationObjectManager->persist($parameter);
-        $configurationObjectManager->flush([
-            $parameter,
-        ]);
+        $configurationDirector->save($parameter);
     }
 }

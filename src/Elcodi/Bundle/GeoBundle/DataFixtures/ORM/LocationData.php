@@ -20,7 +20,7 @@ namespace Elcodi\Bundle\GeoBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\Component\Geo\Factory\LocationFactory;
+use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
  * Class LocationData
@@ -33,22 +33,18 @@ class LocationData extends AbstractFixture
     public function load(ObjectManager $manager)
     {
         /**
-         * @var LocationFactory $locationFactory
+         * @var ObjectDirector $locationDirector
          */
-        $locationFactory = $this->getFactory('location');
-        $locationObjectManager = $this->getObjectManager('location');
+        $locationDirector = $this->get('elcodi.director.location');
 
-        $locationSpain = $locationFactory
+        $locationSpain = $locationDirector
             ->create()
             ->setId('ES')
             ->setName('Spain')
             ->setCode('ES')
             ->setType('country');
 
-        $locationObjectManager->persist($locationSpain);
-        $this->addReference('location-spain', $locationSpain);
-
-        $locationCatalunya = $locationFactory
+        $locationCatalunya = $locationDirector
             ->create()
             ->setId('ES_CA')
             ->setName('Catalunya')
@@ -56,10 +52,7 @@ class LocationData extends AbstractFixture
             ->setType('provincia')
             ->addParent($locationSpain);
 
-        $locationObjectManager->persist($locationCatalunya);
-        $this->addReference('location-catalunya', $locationCatalunya);
-
-        $locationVallesOriental = $locationFactory
+        $locationVallesOriental = $locationDirector
             ->create()
             ->setId('ES_CA_VO')
             ->setName('Valles Oriental')
@@ -67,10 +60,7 @@ class LocationData extends AbstractFixture
             ->setType('comarca')
             ->addParent($locationCatalunya);
 
-        $locationObjectManager->persist($locationVallesOriental);
-        $this->addReference('location-valles-oriental', $locationVallesOriental);
-
-        $locationLaBatlloria = $locationFactory
+        $locationLaBatlloria = $locationDirector
             ->create()
             ->setId('ES_CA_VO_LaBatlloria')
             ->setName('La batlloria')
@@ -78,10 +68,7 @@ class LocationData extends AbstractFixture
             ->setType('city')
             ->addParent($locationVallesOriental);
 
-        $locationObjectManager->persist($locationLaBatlloria);
-        $this->addReference('location-la-batlloria', $locationLaBatlloria);
-
-        $locationSantCeloni = $locationFactory
+        $locationSantCeloni = $locationDirector
             ->create()
             ->setId('ES_CA_VO_SantCeloni')
             ->setName('Sant Celoni')
@@ -89,10 +76,7 @@ class LocationData extends AbstractFixture
             ->setType('city')
             ->addParent($locationVallesOriental);
 
-        $locationObjectManager->persist($locationSantCeloni);
-        $this->addReference('location-sant-celoni', $locationSantCeloni);
-
-        $locationViladecavalls = $locationFactory
+        $locationViladecavalls = $locationDirector
             ->create()
             ->setId('ES_CA_VO_Viladecavalls')
             ->setName('Viladecavalls')
@@ -100,10 +84,7 @@ class LocationData extends AbstractFixture
             ->setType('city')
             ->addParent($locationVallesOriental);
 
-        $locationObjectManager->persist($locationViladecavalls);
-        $this->addReference('location-viladecavalls', $locationViladecavalls);
-
-        $location08021 = $locationFactory
+        $location08021 = $locationDirector
             ->create()
             ->setId('ES_CA_VO_Viladecavalls_08021')
             ->setName('08021')
@@ -111,10 +92,7 @@ class LocationData extends AbstractFixture
             ->setType('postalcode')
             ->addParent($locationViladecavalls);
 
-        $locationObjectManager->persist($location08021);
-        $this->addReference('location-08021', $location08021);
-
-        $location08470 = $locationFactory
+        $location08470 = $locationDirector
             ->create()
             ->setId('ES_CA_VO_SantCeloni_08470')
             ->setName('08470')
@@ -123,16 +101,24 @@ class LocationData extends AbstractFixture
             ->addParent($locationLaBatlloria)
             ->addParent($locationSantCeloni);
 
-        $locationObjectManager->persist($location08470);
-        $this->addReference('location-08470', $location08470);
-
-        $locationObjectManager->flush([
+        $locationDirector->save([
             $locationSpain,
             $locationCatalunya,
             $locationVallesOriental,
+            $locationLaBatlloria,
             $locationSantCeloni,
             $locationViladecavalls,
             $location08021,
+            $location08470,
         ]);
+
+        $this->addReference('location-spain', $locationSpain);
+        $this->addReference('location-catalunya', $locationCatalunya);
+        $this->addReference('location-valles-oriental', $locationVallesOriental);
+        $this->addReference('location-la-batlloria', $locationLaBatlloria);
+        $this->addReference('location-sant-celoni', $locationSantCeloni);
+        $this->addReference('location-viladecavalls', $locationViladecavalls);
+        $this->addReference('location-08021', $location08021);
+        $this->addReference('location-08470', $location08470);
     }
 }

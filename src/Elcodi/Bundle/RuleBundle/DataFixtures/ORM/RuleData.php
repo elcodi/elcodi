@@ -20,7 +20,7 @@ namespace Elcodi\Bundle\RuleBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\Component\Rule\Factory\RuleFactory;
+use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
  * Class RuleData
@@ -33,36 +33,29 @@ class RuleData extends AbstractFixture
     public function load(ObjectManager $manager)
     {
         /**
-         * @var RuleFactory $ruleFactory
+         * @var ObjectDirector $ruleDirector
          */
-        $ruleFactory = $this->getFactory('rule');
+        $ruleDirector = $this->get('elcodi.director.rule');
 
-        /**
-         * @var ObjectManager $ruleObjectManager
-         */
-        $ruleObjectManager = $this->getObjectManager('rule');
-
-        $cartOver1000Euros = $ruleFactory
+        $cartOver1000Euros = $ruleDirector
             ->create()
             ->setName('cart_over_1000euros')
             ->setExpression('cart.getAmount() > 1000');
 
-        $ruleObjectManager->persist($cartOver1000Euros);
+        $ruleDirector->save($cartOver1000Euros);
 
-        $cartUnder10Products = $ruleFactory
+        $cartUnder10Products = $ruleDirector
             ->create()
             ->setName('cart_under_10products')
             ->setExpression('cart.getQuantity() < 10');
 
-        $ruleObjectManager->persist($cartUnder10Products);
+        $ruleDirector->save($cartUnder10Products);
 
-        $cartValuableItems = $ruleFactory
+        $cartValuableItems = $ruleDirector
             ->create()
             ->setName('cart_valuable_items')
             ->setExpression('rule("cart_over_1000euros") and rule("cart_under_10products")');
 
-        $ruleObjectManager->persist($cartValuableItems);
-
-        $ruleObjectManager->flush();
+        $ruleDirector->save($cartValuableItems);
     }
 }

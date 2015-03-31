@@ -21,7 +21,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\Component\Menu\Factory\MenuFactory;
+use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
  * Class MenuData
@@ -36,40 +36,34 @@ class MenuData extends AbstractFixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         /**
-         * @var MenuFactory $menuFactory
+         * @var ObjectDirector $menuDirector
          */
-        $menuFactory = $this->getFactory('menu');
-        $menuObjectManager = $this->getObjectManager('menu');
+        $menuDirector = $this->get('elcodi.director.menu');
 
         /**
          * Admin menu
          */
-        $menuAdmin = $menuFactory
+        $menuAdmin = $menuDirector
             ->create()
             ->setCode('menu-admin')
             ->setEnabled(true)
             ->addSubnode($this->getReference('menu-node-vogue'));
 
-        $menuObjectManager->persist($menuAdmin);
+        $menuDirector->save($menuAdmin);
         $this->addReference('menu-admin', $menuAdmin);
 
         /**
          * Front menu
          */
-        $menuFront = $menuFactory
+        $menuFront = $menuDirector
             ->create()
             ->setCode('menu-front')
             ->setEnabled(true)
             ->addSubnode($this->getReference('menu-node-him'))
             ->addSubnode($this->getReference('menu-node-her'));
 
-        $menuObjectManager->persist($menuFront);
+        $menuDirector->save($menuFront);
         $this->addReference('menu-front', $menuFront);
-
-        $menuObjectManager->flush([
-            $menuAdmin,
-            $menuFront,
-        ]);
     }
 
     /**

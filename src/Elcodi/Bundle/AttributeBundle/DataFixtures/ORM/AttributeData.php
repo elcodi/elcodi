@@ -20,8 +20,7 @@ namespace Elcodi\Bundle\AttributeBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\Component\Attribute\Factory\AttributeFactory;
-use Elcodi\Component\Attribute\Factory\ValueFactory;
+use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
  * Class AttributeData
@@ -36,87 +35,80 @@ class AttributeData extends AbstractFixture
     public function load(ObjectManager $objectManager)
     {
         /**
-         * @var ValueFactory     $attributeValueFactory
-         * @var AttributeFactory $attributeFactory
-         * @var ObjectManager    $attributeValueObjectManager
-         * @var ObjectManager    $attributeObjectManager
+         * @var ObjectDirector   $attributeDirector
+         * @var ObjectDirector   $attributeValueDirector
          */
-        $attributeValueFactory = $this->getFactory('attribute_value');
-        $attributeFactory = $this->getFactory('attribute');
-        $attributeValueObjectManager = $this->getObjectManager('attribute_value');
-        $attributeObjectManager = $this->getObjectManager('attribute');
+        $attributeDirector = $this->get('elcodi.director.attribute');
+        $attributeValueDirector = $this->get('elcodi.director.attribute_value');
 
         /**
          * Sizes
          */
-        $sizeAttribute = $attributeFactory
+        $sizeAttribute = $attributeDirector
             ->create()
             ->setName('Size')
             ->setEnabled(true);
 
-        $attributeObjectManager->persist($sizeAttribute);
+        $attributeDirector->save($sizeAttribute);
         $this->addReference('attribute-size', $sizeAttribute);
 
-        $smallValue = $attributeValueFactory
+        $smallValue = $attributeValueDirector
             ->create()
             ->setValue('Small')
             ->setAttribute($sizeAttribute);
 
-        $attributeValueObjectManager->persist($smallValue);
+        $attributeValueDirector->save($smallValue);
         $this->addReference('value-size-small', $smallValue);
 
-        $mediumValue = $attributeValueFactory
+        $mediumValue = $attributeValueDirector
             ->create()
             ->setValue('Medium')
             ->setAttribute($sizeAttribute);
 
-        $attributeValueObjectManager->persist($mediumValue);
+        $attributeValueDirector->save($mediumValue);
         $this->addReference('value-size-medium', $mediumValue);
 
-        $largeValue = $attributeValueFactory
+        $largeValue = $attributeValueDirector
             ->create()
             ->setValue('Large')
             ->setAttribute($sizeAttribute);
 
-        $attributeValueObjectManager->persist($largeValue);
+        $attributeValueDirector->save($largeValue);
         $this->addReference('value-size-large', $largeValue);
 
         /**
          * Colors
          */
-        $colorAttribute = $attributeFactory
+        $colorAttribute = $attributeDirector
             ->create()
             ->setName('Color')
             ->setEnabled(true);
 
-        $attributeObjectManager->persist($colorAttribute);
+        $attributeDirector->save($colorAttribute);
         $this->addReference('attribute-color', $colorAttribute);
 
-        $blueValue = $attributeValueFactory
+        $blueValue = $attributeValueDirector
             ->create()
             ->setValue('Blue')
             ->setAttribute($colorAttribute);
 
-        $attributeValueObjectManager->persist($blueValue);
+        $attributeValueDirector->save($blueValue);
         $this->addReference('value-color-blue', $blueValue);
 
-        $whiteValue = $attributeValueFactory
+        $whiteValue = $attributeValueDirector
             ->create()
             ->setValue('White')
             ->setAttribute($colorAttribute);
 
-        $attributeValueObjectManager->persist($whiteValue);
+        $attributeValueDirector->save($whiteValue);
         $this->addReference('value-color-white', $whiteValue);
 
-        $redValue = $attributeValueFactory
+        $redValue = $attributeValueDirector
             ->create()
             ->setValue('Red')
             ->setAttribute($colorAttribute);
 
-        $attributeValueObjectManager->persist($redValue);
+        $attributeValueDirector->save($redValue);
         $this->addReference('value-color-red', $redValue);
-
-        $attributeObjectManager->flush();
-        $attributeValueObjectManager->flush();
     }
 }

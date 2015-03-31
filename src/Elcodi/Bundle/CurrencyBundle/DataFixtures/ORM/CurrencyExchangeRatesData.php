@@ -21,8 +21,8 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
-use Elcodi\Component\Currency\Factory\CurrencyExchangeRateFactory;
 
 /**
  * Class CurrencyExchangeRatesData
@@ -37,14 +37,13 @@ class CurrencyExchangeRatesData extends AbstractFixture implements DependentFixt
     public function load(ObjectManager $manager)
     {
         /**
-         * @var CurrencyExchangeRateFactory $currencyExchangeRateFactory
+         * @var ObjectDirector              $currencyExchangeRateDirector
          * @var CurrencyInterface           $currencyEuro
          * @var CurrencyInterface           $currencyDollar
          * @var CurrencyInterface           $currencyPound
          * @var CurrencyInterface           $currencyIen
          */
-        $currencyExchangeRateFactory = $this->getFactory('currency_exchange_rate');
-        $currencyExchangeRateObjectManager = $this->getObjectManager('currency_exchange_rate');
+        $currencyExchangeRateDirector = $this->get('elcodi.director.currency_exchange_rate');
         $currencyEuro = $this->getReference('currency-euro');
         $currencyDollar = $this->getReference('currency-dollar');
         $currencyPound = $this->getReference('currency-pound');
@@ -53,41 +52,35 @@ class CurrencyExchangeRatesData extends AbstractFixture implements DependentFixt
         /**
          * Dollar to Euro
          */
-        $dollarToEuroRate = $currencyExchangeRateFactory
+        $dollarToEuroRate = $currencyExchangeRateDirector
             ->create()
             ->setSourceCurrency($currencyDollar)
             ->setTargetCurrency($currencyEuro)
             ->setExchangeRate(0.736596);
 
-        $currencyExchangeRateObjectManager->persist($dollarToEuroRate);
+        $currencyExchangeRateDirector->save($dollarToEuroRate);
 
         /**
          * Dollar to Pound
          */
-        $dollarToPoundRate = $currencyExchangeRateFactory
+        $dollarToPoundRate = $currencyExchangeRateDirector
             ->create()
             ->setSourceCurrency($currencyDollar)
             ->setTargetCurrency($currencyPound)
             ->setExchangeRate(0.588765);
 
-        $currencyExchangeRateObjectManager->persist($dollarToPoundRate);
+        $currencyExchangeRateDirector->save($dollarToPoundRate);
 
         /**
          * Dollar to Yen
          */
-        $dollarToIenRate = $currencyExchangeRateFactory
+        $dollarToIenRate = $currencyExchangeRateDirector
             ->create()
             ->setSourceCurrency($currencyDollar)
             ->setTargetCurrency($currencyIen)
             ->setExchangeRate(101.822625);
 
-        $currencyExchangeRateObjectManager->persist($dollarToIenRate);
-
-        $manager->flush([
-            $dollarToEuroRate,
-            $dollarToPoundRate,
-            $dollarToIenRate,
-        ]);
+        $currencyExchangeRateDirector->save($dollarToIenRate);
     }
 
     /**

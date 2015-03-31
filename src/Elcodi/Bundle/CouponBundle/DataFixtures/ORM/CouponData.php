@@ -22,9 +22,9 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Coupon\ElcodiCouponTypes;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
-use Elcodi\Component\Coupon\Factory\CouponFactory;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 
@@ -41,10 +41,9 @@ class CouponData extends AbstractFixture implements DependentFixtureInterface
 
         /**
          * @var CurrencyInterface $currency
-         * @var CouponFactory     $couponFactory
+         * @var ObjectDirector    $couponDirector
          */
-        $couponFactory = $this->getFactory('coupon');
-        $couponObjectManager = $this->getObjectManager('coupon');
+        $couponDirector = $this->get('elcodi.director.coupon');
         $currency = $this->getReference('currency-dollar');
 
         /**
@@ -58,7 +57,7 @@ class CouponData extends AbstractFixture implements DependentFixtureInterface
          *
          * @var CouponInterface $couponPercent
          */
-        $couponPercent = $couponFactory
+        $couponPercent = $couponDirector
             ->create()
             ->setCode('percent')
             ->setName('10 percent discount')
@@ -67,7 +66,7 @@ class CouponData extends AbstractFixture implements DependentFixtureInterface
             ->setCount(100)
             ->setValidFrom(new DateTime())
             ->setValidTo(new DateTime('next month'));
-        $couponObjectManager->persist($couponPercent);
+        $couponDirector->save($couponPercent);
         $this->addReference('coupon-percent', $couponPercent);
 
         /**
@@ -83,7 +82,7 @@ class CouponData extends AbstractFixture implements DependentFixtureInterface
          *
          * @var CouponInterface $couponAmount
          */
-        $couponAmount = $couponFactory
+        $couponAmount = $couponDirector
             ->create()
             ->setCode('amount')
             ->setName('5 USD discount')
@@ -91,13 +90,8 @@ class CouponData extends AbstractFixture implements DependentFixtureInterface
             ->setPrice(Money::create(500, $currency))
             ->setCount(20)
             ->setValidFrom(new DateTime());
-        $couponObjectManager->persist($couponAmount);
+        $couponDirector->save($couponAmount);
         $this->addReference('coupon-amount', $couponAmount);
-
-        $couponObjectManager->flush([
-            $couponPercent,
-            $couponAmount,
-        ]);
     }
 
     /**

@@ -21,8 +21,8 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
-use Elcodi\Component\Newsletter\Factory\NewsletterSubscriptionFactory;
 
 /**
  * Class NewsletterSubscriptionData
@@ -35,40 +35,34 @@ class NewsletterSubscriptionData extends AbstractFixture implements DependentFix
     public function load(ObjectManager $manager)
     {
         /**
-         * @var NewsletterSubscriptionFactory $newsletterSubscriptionFactory
+         * @var ObjectDirector $newsletterSubscriptionDirector
          * @var LanguageInterface             $languageEs
          */
-        $newsletterSubscriptionFactory = $this->getFactory('newsletter_subscription');
-        $newsletterSubscriptionObjectManager = $this->getObjectManager('newsletter_subscription');
+        $newsletterSubscriptionDirector = $this->get('elcodi.director.newsletter_subscription');
         $languageEs = $this->getReference('language-es');
 
-        $newsletterSubscription = $newsletterSubscriptionFactory
+        $newsletterSubscription = $newsletterSubscriptionDirector
             ->create()
             ->setEmail('someemail@something.org')
             ->setLanguage($languageEs)
             ->setHash('123456789');
 
-        $newsletterSubscriptionObjectManager->persist($newsletterSubscription);
+        $newsletterSubscriptionDirector->save($newsletterSubscription);
         $this->setReference(
             'newsletter-subscription',
             $newsletterSubscription
         );
 
-        $newsletterSubscriptionNoLanguage = $newsletterSubscriptionFactory
+        $newsletterSubscriptionNoLanguage = $newsletterSubscriptionDirector
             ->create()
             ->setEmail('otheemail@something.org')
             ->setHash('0000');
 
-        $newsletterSubscriptionObjectManager->persist($newsletterSubscriptionNoLanguage);
+        $newsletterSubscriptionDirector->save($newsletterSubscriptionNoLanguage);
         $this->setReference(
             'newsletter-subscription-nolanguage',
             $newsletterSubscriptionNoLanguage
         );
-
-        $newsletterSubscriptionObjectManager->flush([
-            $newsletterSubscription,
-            $newsletterSubscriptionNoLanguage,
-        ]);
     }
 
     /**

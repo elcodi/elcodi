@@ -20,7 +20,7 @@ namespace Elcodi\Bundle\CurrencyBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\Component\Currency\Factory\CurrencyFactory;
+use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
  * Class CurrencyData
@@ -35,63 +35,55 @@ class CurrencyData extends AbstractFixture
     public function load(ObjectManager $manager)
     {
         /**
-         * @var CurrencyFactory $currencyFactory
+         * @var ObjectDirector $currencyDirector
          */
-        $currencyFactory = $this->getFactory('currency');
-        $currencyObjectManager = $this->getObjectManager('currency');
+        $currencyDirector = $this->get('elcodi.director.currency');
 
         /**
          * Dollar
          */
-        $currencyDollar = $currencyFactory
+        $currencyDollar = $currencyDirector
             ->create()
             ->setName('Dollar')
             ->setSymbol('$')
             ->setIso('USD');
 
-        $currencyObjectManager->persist($currencyDollar);
+        $currencyDirector->save($currencyDollar);
         $this->setReference('currency-dollar', $currencyDollar);
 
         /**Euro
          */
-        $currencyEuro = $currencyFactory
+        $currencyEuro = $currencyDirector
             ->create()
             ->setName('Euro')
             ->setSymbol('€')
             ->setIso('EUR');
 
-        $currencyObjectManager->persist($currencyEuro);
+        $currencyDirector->save($currencyEuro);
         $this->setReference('currency-euro', $currencyEuro);
 
         /**
          * Pound
          */
-        $currencyPound = $currencyFactory
+        $currencyPound = $currencyDirector
             ->create()
             ->setName('Pound')
             ->setSymbol('£')
             ->setIso('GBP');
 
-        $currencyObjectManager->persist($currencyPound);
+        $currencyDirector->save($currencyPound);
         $this->setReference('currency-pound', $currencyPound);
 
         /**
          * Ien
          */
-        $currencyIen = $currencyFactory
+        $currencyIen = $currencyDirector
             ->create()
             ->setName('Yen')
             ->setSymbol('円')
             ->setIso('JPY');
 
-        $currencyObjectManager->persist($currencyIen);
+        $currencyDirector->save($currencyIen);
         $this->setReference('currency-ien', $currencyIen);
-
-        $currencyObjectManager->flush([
-            $currencyDollar,
-            $currencyEuro,
-            $currencyPound,
-            $currencyIen,
-        ]);
     }
 }

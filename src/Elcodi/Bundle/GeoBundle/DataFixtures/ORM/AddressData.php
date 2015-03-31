@@ -21,6 +21,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Geo\Entity\Address;
 use Elcodi\Component\Geo\Factory\AddressFactory;
 
@@ -35,12 +36,11 @@ class AddressData extends AbstractFixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         /**
-         * @var AddressFactory $addressFactory
+         * @var ObjectDirector $addressDirector
          */
-        $addressFactory = $this->getFactory('address');
-        $addressObjectManager = $this->getObjectManager('address');
+        $addressDirector = $this->get('elcodi.director.address');
 
-        $addressSantCeloni = $addressFactory
+        $addressSantCeloni = $addressDirector
             ->create()
             ->setName('Some address')
             ->setRecipientName('user name')
@@ -54,10 +54,10 @@ class AddressData extends AbstractFixture implements DependentFixtureInterface
             ->setPostalcode('08021')
             ->setEnabled(true);
 
-        $addressObjectManager->persist($addressSantCeloni);
+        $addressDirector->save($addressSantCeloni);
         $this->addReference('address-sant-celoni', $addressSantCeloni);
 
-        $addressViladecavalls = $addressFactory
+        $addressViladecavalls = $addressDirector
             ->create()
             ->setName('Some other address')
             ->setRecipientName('user2 name')
@@ -71,13 +71,8 @@ class AddressData extends AbstractFixture implements DependentFixtureInterface
             ->setPostalcode('08232')
             ->setEnabled(true);
 
-        $addressObjectManager->persist($addressViladecavalls);
+        $addressDirector->save($addressViladecavalls);
         $this->addReference('address-viladecavalls', $addressViladecavalls);
-
-        $addressObjectManager->flush([
-            $addressSantCeloni,
-            $addressViladecavalls,
-        ]);
     }
 
     /**

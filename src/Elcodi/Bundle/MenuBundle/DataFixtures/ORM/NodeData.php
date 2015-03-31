@@ -20,7 +20,7 @@ namespace Elcodi\Bundle\MenuBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\Component\Menu\Factory\NodeFactory;
+use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
  * Class NodeData
@@ -35,12 +35,11 @@ class NodeData extends AbstractFixture
     public function load(ObjectManager $manager)
     {
         /**
-         * @var NodeFactory $menuNodeFactory
+         * @var ObjectDirector $menuNodeDirector
          */
-        $menuNodeFactory       = $this->getFactory('menu_node');
-        $menuNodeObjectManager = $this->getObjectManager('menu_node');
+        $menuNodeDirector = $this->get('elcodi.director.menu_node');
 
-        $menuNodeHim = $menuNodeFactory
+        $menuNodeHim = $menuNodeDirector
             ->create()
             ->setName('him')
             ->setCode('him')
@@ -48,7 +47,7 @@ class NodeData extends AbstractFixture
             ->setActiveUrls([])
             ->setEnabled(true);
 
-        $menuNodeHer = $menuNodeFactory
+        $menuNodeHer = $menuNodeDirector
             ->create()
             ->setName('her')
             ->setCode('her')
@@ -61,7 +60,7 @@ class NodeData extends AbstractFixture
             )
             ->setEnabled(true);
 
-        $menuNodeVogue = $menuNodeFactory
+        $menuNodeVogue = $menuNodeDirector
             ->create()
             ->setName('vogue')
             ->setCode('vogue')
@@ -70,13 +69,9 @@ class NodeData extends AbstractFixture
             ->addSubnode($menuNodeHim)
             ->addSubnode($menuNodeHer);
 
-        $menuNodeObjectManager->persist($menuNodeVogue);
+        $menuNodeDirector->save($menuNodeVogue);
         $this->addReference('menu-node-him', $menuNodeHim);
         $this->addReference('menu-node-her', $menuNodeHer);
         $this->addReference('menu-node-vogue', $menuNodeVogue);
-
-        $menuNodeObjectManager->flush([
-            $menuNodeVogue,
-        ]);
     }
 }

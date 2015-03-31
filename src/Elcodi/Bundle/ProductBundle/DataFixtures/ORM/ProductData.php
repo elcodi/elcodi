@@ -21,12 +21,12 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
-use Elcodi\Component\Product\Factory\ProductFactory;
 
 /**
  * Class ProductData
@@ -46,15 +46,14 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
          * @var CategoryInterface     $category
          * @var ManufacturerInterface $manufacturer
          * @var CurrencyInterface     $currency
-         * @var ProductFactory        $productFactory
+         * @var ObjectDirector        $productDirector
          */
         $category = $this->getReference('category');
         $manufacturer = $this->getReference('manufacturer');
         $currency = $this->getReference('currency-dollar');
-        $productObjectManager = $this->getObjectManager('product');
-        $productFactory = $this->getFactory('product');
+        $productDirector = $this->get('elcodi.director.product');
 
-        $product = $productFactory
+        $product = $productDirector
             ->create()
             ->setName('product')
             ->setSlug('product')
@@ -72,13 +71,13 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
             ->setWeight(100)
             ->setEnabled(true);
 
-        $productObjectManager->persist($product);
+        $productDirector->save($product);
         $this->addReference('product', $product);
 
         /**
          * Reduced Product
          */
-        $productReduced = $productFactory
+        $productReduced = $productDirector
             ->create()
             ->setName('product-reduced')
             ->setSlug('product-reduced')
@@ -94,7 +93,7 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
             ->setWeight(200)
             ->setEnabled(true);
 
-        $productObjectManager->persist($productReduced);
+        $productDirector->save($productReduced);
         $this->addReference('product-reduced', $productReduced);
 
         /**
@@ -102,7 +101,7 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
          *
          * @var ProductInterface $productWithVariants
          */
-        $productWithVariants = $productFactory
+        $productWithVariants = $productDirector
             ->create()
             ->setName('Product with variants')
             ->setSku('product-sku-code-variant-1')
@@ -120,14 +119,8 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
             ->setWeight(500)
             ->setEnabled(true);
 
-        $productObjectManager->persist($productWithVariants);
+        $productDirector->save($productWithVariants);
         $this->addReference('product-with-variants', $productWithVariants);
-
-        $productObjectManager->flush([
-            $product,
-            $productReduced,
-            $productWithVariants,
-        ]);
     }
 
     /**
