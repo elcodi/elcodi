@@ -17,6 +17,7 @@
 
 namespace Elcodi\Bundle\TemplateBundle;
 
+use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -49,5 +50,17 @@ class ElcodiTemplateBundle extends Bundle implements DependentBundleInterface
             '\Elcodi\Bundle\ConfigurationBundle\ElcodiConfigurationBundle',
             '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
+    }
+
+    /**
+     * Register Commands.
+     *
+     * Disabled as commands are registered as services.
+     *
+     * @param Application $application An Application instance
+     */
+    public function registerCommands(Application $application)
+    {
+        return;
     }
 }

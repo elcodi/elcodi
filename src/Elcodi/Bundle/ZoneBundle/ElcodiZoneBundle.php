@@ -17,6 +17,7 @@
 
 namespace Elcodi\Bundle\ZoneBundle;
 
+use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -61,5 +62,17 @@ class ElcodiZoneBundle extends Bundle implements DependentBundleInterface
             '\Elcodi\Bundle\GeoBundle\ElcodiGeoBundle',
             '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
+    }
+
+    /**
+     * Register Commands.
+     *
+     * Disabled as commands are registered as services.
+     *
+     * @param Application $application An Application instance
+     */
+    public function registerCommands(Application $application)
+    {
+        return;
     }
 }

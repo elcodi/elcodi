@@ -17,6 +17,7 @@
 
 namespace Elcodi\Bundle\CoreBundle;
 
+use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -39,5 +40,17 @@ class ElcodiCoreBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiCoreExtension();
+    }
+
+    /**
+     * Register Commands.
+     *
+     * Disabled as commands are registered as services
+     *
+     * @param Application $application An Application instance
+     */
+    public function registerCommands(Application $application)
+    {
+        return;
     }
 }

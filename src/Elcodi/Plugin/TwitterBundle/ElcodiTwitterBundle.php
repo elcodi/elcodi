@@ -17,6 +17,7 @@
 
 namespace Elcodi\Plugin\TwitterBundle;
 
+use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -36,5 +37,17 @@ class ElcodiTwitterBundle extends Bundle implements PluginInterface
     public function getContainerExtension()
     {
         return new ElcodiTwitterExtension();
+    }
+
+    /**
+     * Register Commands.
+     *
+     * Disabled as commands are registered as services.
+     *
+     * @param Application $application An Application instance
+     */
+    public function registerCommands(Application $application)
+    {
+        return;
     }
 }
