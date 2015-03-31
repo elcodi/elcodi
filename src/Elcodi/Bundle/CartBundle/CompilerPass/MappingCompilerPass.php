@@ -20,11 +20,15 @@ namespace Elcodi\Bundle\CartBundle\CompilerPass;
 use Mmoreram\SimpleDoctrineMapping\CompilerPass\Abstracts\AbstractMappingCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+use Elcodi\Bundle\CoreBundle\CompilerPass\Traits\EntityMappingTrait;
+
 /**
  * Class MappingCompilerPass
  */
 class MappingCompilerPass extends AbstractMappingCompilerPass
 {
+    use EntityMappingTrait;
+
     /**
      * You can modify the container here before it is dumped to PHP code.
      *
@@ -35,33 +39,14 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
     public function process(ContainerBuilder $container)
     {
         $this
-            ->addEntityMapping(
+            ->addEntityMappings(
                 $container,
-                'elcodi.entity.cart.manager',
-                'elcodi.entity.cart.class',
-                'elcodi.entity.cart.mapping_file',
-                'elcodi.entity.cart.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.entity.cart_line.manager',
-                'elcodi.entity.cart_line.class',
-                'elcodi.entity.cart_line.mapping_file',
-                'elcodi.entity.cart_line.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.entity.order.manager',
-                'elcodi.entity.order.class',
-                'elcodi.entity.order.mapping_file',
-                'elcodi.entity.order.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.entity.order_line.manager',
-                'elcodi.entity.order_line.class',
-                'elcodi.entity.order_line.mapping_file',
-                'elcodi.entity.order_line.enabled'
+                [
+                    'cart',
+                    'cart_line',
+                    'order',
+                    'order_line',
+                ]
             );
     }
 }

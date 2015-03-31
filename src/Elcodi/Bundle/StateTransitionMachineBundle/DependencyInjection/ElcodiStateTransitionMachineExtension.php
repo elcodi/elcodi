@@ -77,10 +77,10 @@ class ElcodiStateTransitionMachineExtension extends AbstractExtension implements
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.state_transition_machine.state_line.class" => $config['mapping']['state_line']['class'],
-            "elcodi.state_transition_machine.state_line.mapping_file" => $config['mapping']['state_line']['mapping_file'],
-            "elcodi.state_transition_machine.state_line.manager" => $config['mapping']['state_line']['manager'],
-            "elcodi.state_transition_machine.state_line.enabled" => $config['mapping']['state_line']['enabled'],
+            "elcodi.entity.state_transition_machine.state_line.class" => $config['mapping']['state_line']['class'],
+            "elcodi.entity.state_transition_machine.state_line.mapping_file" => $config['mapping']['state_line']['mapping_file'],
+            "elcodi.entity.state_transition_machine.state_line.manager" => $config['mapping']['state_line']['manager'],
+            "elcodi.entity.state_transition_machine.state_line.enabled" => $config['mapping']['state_line']['enabled'],
         ];
     }
 
@@ -108,7 +108,7 @@ class ElcodiStateTransitionMachineExtension extends AbstractExtension implements
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface' => 'elcodi.state_transition_machine.state_line.class',
+            'Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface' => 'elcodi.entity.state_transition_machine.state_line.class',
         ];
     }
 

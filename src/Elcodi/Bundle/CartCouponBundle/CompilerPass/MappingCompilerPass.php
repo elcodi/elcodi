@@ -20,11 +20,15 @@ namespace Elcodi\Bundle\CartCouponBundle\CompilerPass;
 use Mmoreram\SimpleDoctrineMapping\CompilerPass\Abstracts\AbstractMappingCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+use Elcodi\Bundle\CoreBundle\CompilerPass\Traits\EntityMappingTrait;
+
 /**
  * Class MappingCompilerPass
  */
 class MappingCompilerPass extends AbstractMappingCompilerPass
 {
+    use EntityMappingTrait;
+
     /**
      * You can modify the container here before it is dumped to PHP code.
      *
@@ -35,19 +39,12 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
     public function process(ContainerBuilder $container)
     {
         $this
-            ->addEntityMapping(
+            ->addEntityMappings(
                 $container,
-                'elcodi.entity.cart_coupon.manager',
-                'elcodi.entity.cart_coupon.class',
-                'elcodi.entity.cart_coupon.mapping_file',
-                'elcodi.entity.cart_coupon.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.entity.order_coupon.manager',
-                'elcodi.entity.order_coupon.class',
-                'elcodi.entity.order_coupon.mapping_file',
-                'elcodi.entity.order_coupon.enabled'
+                [
+                    'cart_coupon',
+                    'order_coupon',
+                ]
             );
     }
 }

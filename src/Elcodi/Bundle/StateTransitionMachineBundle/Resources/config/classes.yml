@@ -3,7 +3,7 @@ parameters:
     #
     # Entities
     #
-    elcodi.state_transition_machine.state_line.class: Elcodi\Component\StateTransitionMachine\Entity\StateLine
+    elcodi.entity.state_transition_machine.state_line.class: Elcodi\Component\StateTransitionMachine\Entity\StateLine
 
     #
     # Factories

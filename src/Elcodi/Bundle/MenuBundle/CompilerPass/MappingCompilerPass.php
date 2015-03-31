@@ -20,11 +20,15 @@ namespace Elcodi\Bundle\MenuBundle\CompilerPass;
 use Mmoreram\SimpleDoctrineMapping\CompilerPass\Abstracts\AbstractMappingCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+use Elcodi\Bundle\CoreBundle\CompilerPass\Traits\EntityMappingTrait;
+
 /**
  * Class MappingCompilerPass
  */
 class MappingCompilerPass extends AbstractMappingCompilerPass
 {
+    use EntityMappingTrait;
+
     /**
      * You can modify the container here before it is dumped to PHP code.
      *
@@ -35,19 +39,12 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
     public function process(ContainerBuilder $container)
     {
         $this
-            ->addEntityMapping(
+            ->addEntityMappings(
                 $container,
-                'elcodi.entity.menu.manager',
-                'elcodi.entity.menu.class',
-                'elcodi.entity.menu.mapping_file',
-                'elcodi.entity.menu.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.entity.menu_node.manager',
-                'elcodi.entity.menu_node.class',
-                'elcodi.entity.menu_node.mapping_file',
-                'elcodi.entity.menu_node.enabled'
+                [
+                    'menu',
+                    'menu_node',
+                ]
             );
     }
 }

@@ -20,11 +20,15 @@ namespace Elcodi\Bundle\BannerBundle\CompilerPass;
 use Mmoreram\SimpleDoctrineMapping\CompilerPass\Abstracts\AbstractMappingCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+use Elcodi\Bundle\CoreBundle\CompilerPass\Traits\EntityMappingTrait;
+
 /**
  * Class MappingCompilerPass
  */
 class MappingCompilerPass extends AbstractMappingCompilerPass
 {
+    use EntityMappingTrait;
+
     /**
      * You can modify the container here before it is dumped to PHP code.
      *
@@ -35,19 +39,12 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
     public function process(ContainerBuilder $container)
     {
         $this
-            ->addEntityMapping(
+            ->addEntityMappings(
                 $container,
-                'elcodi.entity.banner.manager',
-                'elcodi.entity.banner.class',
-                'elcodi.entity.banner.mapping_file',
-                'elcodi.entity.banner.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.entity.banner_zone.manager',
-                'elcodi.entity.banner_zone.class',
-                'elcodi.entity.banner_zone.mapping_file',
-                'elcodi.entity.banner_zone.enabled'
+                [
+                    'banner',
+                    'banner_zone',
+                ]
             );
     }
 }

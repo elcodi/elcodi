@@ -20,11 +20,15 @@ namespace Elcodi\Bundle\CommentBundle\CompilerPass;
 use Mmoreram\SimpleDoctrineMapping\CompilerPass\Abstracts\AbstractMappingCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+use Elcodi\Bundle\CoreBundle\CompilerPass\Traits\EntityMappingTrait;
+
 /**
  * Class MappingCompilerPass
  */
 class MappingCompilerPass extends AbstractMappingCompilerPass
 {
+    use EntityMappingTrait;
+
     /**
      * You can modify the container here before it is dumped to PHP code.
      *
@@ -35,19 +39,12 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
     public function process(ContainerBuilder $container)
     {
         $this
-            ->addEntityMapping(
+            ->addEntityMappings(
                 $container,
-                'elcodi.entity.comment.manager',
-                'elcodi.entity.comment.class',
-                'elcodi.entity.comment.mapping_file',
-                'elcodi.entity.comment.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.entity.comment_vote.manager',
-                'elcodi.entity.comment_vote.class',
-                'elcodi.entity.comment_vote.mapping_file',
-                'elcodi.entity.comment_vote.enabled'
+                [
+                    'comment',
+                    'comment_vote',
+                ]
             );
     }
 }

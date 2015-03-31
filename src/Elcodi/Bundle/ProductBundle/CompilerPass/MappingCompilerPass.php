@@ -20,11 +20,15 @@ namespace Elcodi\Bundle\ProductBundle\CompilerPass;
 use Mmoreram\SimpleDoctrineMapping\CompilerPass\Abstracts\AbstractMappingCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+use Elcodi\Bundle\CoreBundle\CompilerPass\Traits\EntityMappingTrait;
+
 /**
  * Class MappingCompilerPass
  */
 class MappingCompilerPass extends AbstractMappingCompilerPass
 {
+    use EntityMappingTrait;
+
     /**
      * You can modify the container here before it is dumped to PHP code.
      *
@@ -35,33 +39,14 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
     public function process(ContainerBuilder $container)
     {
         $this
-            ->addEntityMapping(
+            ->addEntityMappings(
                 $container,
-                'elcodi.entity.product.manager',
-                'elcodi.entity.product.class',
-                'elcodi.entity.product.mapping_file',
-                'elcodi.entity.product.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.entity.product_variant.manager',
-                'elcodi.entity.product_variant.class',
-                'elcodi.entity.product_variant.mapping_file',
-                'elcodi.entity.product_variant.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.entity.category.manager',
-                'elcodi.entity.category.class',
-                'elcodi.entity.category.mapping_file',
-                'elcodi.entity.category.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.entity.manufacturer.manager',
-                'elcodi.entity.manufacturer.class',
-                'elcodi.entity.manufacturer.mapping_file',
-                'elcodi.entity.manufacturer.enabled'
+                [
+                    'product',
+                    'product_variant',
+                    'category',
+                    'manufacturer',
+                ]
             );
     }
 }

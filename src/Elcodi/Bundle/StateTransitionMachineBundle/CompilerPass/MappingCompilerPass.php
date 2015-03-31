@@ -20,11 +20,15 @@ namespace Elcodi\Bundle\StateTransitionMachineBundle\CompilerPass;
 use Mmoreram\SimpleDoctrineMapping\CompilerPass\Abstracts\AbstractMappingCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+use Elcodi\Bundle\CoreBundle\CompilerPass\Traits\EntityMappingTrait;
+
 /**
  * Class MappingCompilerPass
  */
 class MappingCompilerPass extends AbstractMappingCompilerPass
 {
+    use EntityMappingTrait;
+
     /**
      * You can modify the container here before it is dumped to PHP code.
      *
@@ -35,12 +39,11 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
     public function process(ContainerBuilder $container)
     {
         $this
-            ->addEntityMapping(
+            ->addEntityMappings(
                 $container,
-                'elcodi.state_transition_machine.state_line.manager',
-                'elcodi.state_transition_machine.state_line.class',
-                'elcodi.state_transition_machine.state_line.mapping_file',
-                'elcodi.state_transition_machine.state_line.enabled'
+                [
+                    'state_transition_machine.state_line',
+                ]
             );
     }
 }

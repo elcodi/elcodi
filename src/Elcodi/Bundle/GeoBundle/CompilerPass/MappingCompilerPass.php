@@ -20,11 +20,15 @@ namespace Elcodi\Bundle\GeoBundle\CompilerPass;
 use Mmoreram\SimpleDoctrineMapping\CompilerPass\Abstracts\AbstractMappingCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+use Elcodi\Bundle\CoreBundle\CompilerPass\Traits\EntityMappingTrait;
+
 /**
  * Class MappingCompilerPass
  */
 class MappingCompilerPass extends AbstractMappingCompilerPass
 {
+    use EntityMappingTrait;
+
     /**
      * You can modify the container here before it is dumped to PHP code.
      *
@@ -35,19 +39,12 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
     public function process(ContainerBuilder $container)
     {
         $this
-            ->addEntityMapping(
+            ->addEntityMappings(
                 $container,
-                'elcodi.entity.address.manager',
-                'elcodi.entity.address.class',
-                'elcodi.entity.address.mapping_file',
-                'elcodi.entity.address.enabled'
-            )
-            ->addEntityMapping(
-                $container,
-                'elcodi.entity.location.manager',
-                'elcodi.entity.location.class',
-                'elcodi.entity.location.mapping_file',
-                'elcodi.entity.location.enabled'
+                [
+                    'address',
+                    'location',
+                ]
             );
     }
 }
