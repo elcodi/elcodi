@@ -42,7 +42,7 @@ class MappingCompilerPass extends AbstractMappingCompilerPass
             ->addEntityMappings(
                 $container,
                 [
-                    'metric',
+                    'metric_entry',
                 ]
             );
     }
