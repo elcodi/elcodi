@@ -8,6 +8,25 @@ https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v0.5.2...v0.5.3
 
+### v0.5.5 (01-04-2015)
+
+* [`5d08284`](https://github.com/elcodi/elcodi/commit/5d08284cd5907eaf309cec34dd15f682844ca225) Added factory trait (mmoreram)
+* [`fa7f6c0`](https://github.com/elcodi/elcodi/commit/fa7f6c07898463cdb2f3a126e6156451826fd920) Fixed entity name (mmoreram)
+* [`bbc782e`](https://github.com/elcodi/elcodi/commit/bbc782e02f4fee01ee68acc427614fb469cd1276) Fixed coding standard (mmoreram)
+* [`10660b8`](https://github.com/elcodi/elcodi/commit/10660b88a660328af75f1a122a7af137702de998) Reduced mapping code complexity with trait (mmoreram)
+* [`e1238a0`](https://github.com/elcodi/elcodi/commit/e1238a08e0c121bd46786e7cf79bd40d14711431) bootstrap changes for simplifying the long names (Luis Cordova)
+* [`f41058b`](https://github.com/elcodi/elcodi/commit/f41058b9b6ccd58c7f35a4aec51bbce908581ea9) Updated Sebastian Bergman Money lib dependency (mmoreram)
+* [`d1be30a`](https://github.com/elcodi/elcodi/commit/d1be30a755f2c29f6ddd1931552a4d13787b9e72) Add symfony/console to bundle dependencies (Philipp Wahala)
+* [`877db0c`](https://github.com/elcodi/elcodi/commit/877db0c2efbb812cc526b7b1b561dc5c67e1b13e) adding missing directors.yml (Luis Cordova)
+* [`ec7632c`](https://github.com/elcodi/elcodi/commit/ec7632c417a4133f8811cfbbe19dc3e16b1ee705) Updated all CONTRIBUTING files in subpackages (mmoreram)
+* [`90dd593`](https://github.com/elcodi/elcodi/commit/90dd593c60ad5fb82de1f02c92a5011eea763873) Updated year from all PHP Headers (mmoreram)
+* [`6939883`](https://github.com/elcodi/elcodi/commit/6939883e5f08a79bc9da7bc24291f58907f5125d) minor changes updates on gush and on year of .formatter.yml (Luis Cordova)
+* [`1c534ea`](https://github.com/elcodi/elcodi/commit/1c534ea79e34838b090653b1d164ab553a5a2dde) Removed Contributors, edited Contributing (mmoreram)
+* [`aef7f06`](https://github.com/elcodi/elcodi/commit/aef7f06fdc0faa2665407c7ea81fa3b589e51779) Fixes for the Newsletter component (Javier Eguiluz)
+* [`2539c0b`](https://github.com/elcodi/elcodi/commit/2539c0b8263ce305ec5b492e00bf707c46835b73) remove reference to NullMoney (Luis Cordova)
+* [`324bcf6`](https://github.com/elcodi/elcodi/commit/324bcf682e799717c554f5e8cb1bbb8be3d3ae6e) Correct @var argument order (Philipp Wahala)
+* [`e97bdcf`](https://github.com/elcodi/elcodi/commit/e97bdcf358e24224fcd70832b06ecf3f40ae579d) Disable default registerCommands method as all commands are registered as tagged services (Philipp Wahala)
+
 ### v0.5.4 (27-03-2015)
 
 * [`bc38455`](https://github.com/elcodi/elcodi/commit/bc3845521cc7547a913f8db87e5d690dc14884e9) Added v0.5.x changelog (mmoreram)
