@@ -1,10 +1,11 @@
 Elcodi Plugin component
 =======================
+
 You can find the last version [here](https://github.com/elcodi/plugin).
 
 This component is part of [Elcodi project](https://github.com/elcodi).
 
-[Elcodi](http://elcodi.io) is a set of flexible e-commerce components for [Symfony2](http://symfony.com), built as decoupled and isolated repositories and under [MIT license](http://opensource.org/licenses/MIT).
+[Elcodi](http://elcodi.io) is a set of flexible e-commerce components for [Symfony](http://symfony.com), built as decoupled and isolated repositories and under [MIT license](http://opensource.org/licenses/MIT).
 
 Rationale
 ---------
@@ -33,7 +34,7 @@ Contributing
 ------------
 All issues and Pull Requests should be on the main repository [elcodi/elcodi](https://github.com/elcodi/elcodi), so this one is read-only.
 
-This projects follows Symfony2 coding standards, so pull requests must pass phpcs checks. Read more details about [Symfony2 coding standards](http://symfony.com/doc/current/contributing/code/standards.html) and install the corresponding [CodeSniffer definition](https://github.com/escapestudios/Symfony2-coding-standard) to run code validation.
+This projects follows Symfony coding standards, so pull requests must pass phpcs checks. Read more details about [Symfony coding standards](http://symfony.com/doc/current/contributing/code/standards.html) and install the corresponding [CodeSniffer definition](https://github.com/escapestudios/Symfony2-coding-standard) to run code validation.
 
 There is also a policy for contributing to this project. Pull requests must be explained step by step to make the review process easy in order to accept and merge them. New features must come paired with PHPUnit tests.
 
