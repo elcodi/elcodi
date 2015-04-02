@@ -22,10 +22,10 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface;
+use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
-use Elcodi\Component\Product\Factory\VariantFactory;
 
 class VariantData extends AbstractFixture implements DependentFixtureInterface
 {
@@ -39,12 +39,11 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
         /**
          * @var ProductInterface  $productWithVariants
          * @var CurrencyInterface $currency
-         * @var VariantFactory    $variantFactory
+         * @var ObjectDirector    $variantDirector
          */
         $currency = $this->getReference('currency-dollar');
         $productWithVariants = $this->getReference('product-with-variants');
-        $variantFactory = $this->getFactory('product_variant');
-        $variantObjectManager = $this->getObjectManager('product_variant');
+        $variantDirector = $this->get('elcodi.director.product_variant');
 
         /**
          * @var ValueInterface $optionWhite
@@ -60,7 +59,7 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
         /**
          * Variant White-Small
          */
-        $variantWhiteSmall = $variantFactory
+        $variantWhiteSmall = $variantDirector
             ->create()
             ->setSku('variant-white-small-sku')
             ->setStock(100)
@@ -76,13 +75,13 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
 
         $productWithVariants->setPrincipalVariant($variantWhiteSmall);
 
-        $variantObjectManager->persist($variantWhiteSmall);
+        $variantDirector->save($variantWhiteSmall);
         $this->addReference('variant-white-small', $productWithVariants);
 
         /**
          * Variant White-Large
          */
-        $variantWhiteLarge = $variantFactory
+        $variantWhiteLarge = $variantDirector
             ->create()
             ->setSku('variant-white-large-sku')
             ->setStock(100)
@@ -96,13 +95,13 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
             ->setWeight(155)
             ->setEnabled(true);
 
-        $variantObjectManager->persist($variantWhiteLarge);
+        $variantDirector->save($variantWhiteLarge);
         $this->addReference('variant-white-large', $productWithVariants);
 
         /**
          * Variant Red-Small
          */
-        $variantRedSmall = $variantFactory
+        $variantRedSmall = $variantDirector
             ->create()
             ->setSku('variant-red-small-sku')
             ->setStock(100)
@@ -116,13 +115,13 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
             ->setWeight(1000)
             ->setEnabled(true);
 
-        $variantObjectManager->persist($variantRedSmall);
+        $variantDirector->save($variantRedSmall);
         $this->addReference('variant-red-small', $productWithVariants);
 
         /**
          * Variant Red-Large
          */
-        $variantRedLarge = $variantFactory
+        $variantRedLarge = $variantDirector
             ->create()
             ->setSku('variant-red-large-sku')
             ->setStock(100)
@@ -136,15 +135,8 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
             ->setWeight(70)
             ->setEnabled(true);
 
-        $variantObjectManager->persist($variantRedLarge);
+        $variantDirector->save($variantRedLarge);
         $this->addReference('variant-red-large', $productWithVariants);
-
-        $variantObjectManager->flush([
-            $variantWhiteSmall,
-            $variantWhiteLarge,
-            $variantRedSmall,
-            $variantRedLarge,
-        ]);
     }
 
     /**

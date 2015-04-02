@@ -21,7 +21,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\Component\Banner\Factory\BannerZoneFactory;
+use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 
 /**
@@ -37,10 +37,9 @@ class BannerZoneData extends AbstractFixture implements DependentFixtureInterfac
     public function load(ObjectManager $manager)
     {
         /**
-         * @var BannerZoneFactory $bannerZoneFactory
+         * @var ObjectDirector $bannerZoneDirector
          */
-        $bannerZoneFactory = $this->getFactory('banner_zone');
-        $bannerZonebjectManager = $this->getObjectManager('banner_zone');
+        $bannerZoneDirector = $this->get('elcodi.director.banner_zone');
 
         /**
          * BannerZone
@@ -48,7 +47,7 @@ class BannerZoneData extends AbstractFixture implements DependentFixtureInterfac
          * @var LanguageInterface $language
          */
         $language = $this->getReference('language-es');
-        $bannerZone = $bannerZoneFactory
+        $bannerZone = $bannerZoneDirector
             ->create()
             ->setName('bannerzone')
             ->setCode('bannerzone-code')
@@ -56,13 +55,13 @@ class BannerZoneData extends AbstractFixture implements DependentFixtureInterfac
             ->setHeight(300)
             ->setWidth(400);
 
-        $bannerZonebjectManager->persist($bannerZone);
+        $bannerZoneDirector->save($bannerZone);
         $this->addReference('banner-zone', $bannerZone);
 
         /**
          * BannerZone with no language
          */
-        $bannerZoneNoLanguage = $bannerZoneFactory
+        $bannerZoneNoLanguage = $bannerZoneDirector
             ->create()
             ->setName('bannerzone-nolanguage')
             ->setCode('bannerzone-code-nolanguage')
@@ -70,13 +69,8 @@ class BannerZoneData extends AbstractFixture implements DependentFixtureInterfac
             ->setHeight(300)
             ->setWidth(400);
 
-        $bannerZonebjectManager->persist($bannerZoneNoLanguage);
+        $bannerZoneDirector->save($bannerZoneNoLanguage);
         $this->addReference('banner-zone-nolanguage', $bannerZoneNoLanguage);
-
-        $bannerZonebjectManager->flush([
-            $bannerZone,
-            $bannerZoneNoLanguage,
-        ]);
     }
 
     /**

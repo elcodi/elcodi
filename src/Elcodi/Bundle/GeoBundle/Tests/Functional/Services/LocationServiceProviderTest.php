@@ -23,6 +23,7 @@ use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
  * Class LocationServiceProviderTest
+ * @group now
  */
 class LocationServiceProviderTest extends WebTestCase
 {

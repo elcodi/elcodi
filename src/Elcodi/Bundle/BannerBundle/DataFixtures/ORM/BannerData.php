@@ -22,7 +22,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Banner\Entity\Interfaces\BannerZoneInterface;
-use Elcodi\Component\Banner\Factory\BannerFactory;
+use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
  * AdminData class
@@ -37,10 +37,9 @@ class BannerData extends AbstractFixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         /**
-         * @var BannerFactory $bannerFactory
+         * @var ObjectDirector $bannerDirector
          */
-        $bannerFactory = $this->getFactory('banner');
-        $bannerObjectManager = $this->getObjectManager('banner');
+        $bannerDirector = $this->get('elcodi.director.banner');
 
         /**
          * Banner
@@ -48,14 +47,14 @@ class BannerData extends AbstractFixture implements DependentFixtureInterface
          * @var BannerZoneInterface $bannerZone
          */
         $bannerZone = $this->getReference('banner-zone');
-        $banner = $bannerFactory
+        $banner = $bannerDirector
             ->create()
             ->setName('banner')
             ->setDescription('Simple banner')
             ->addBannerZone($bannerZone)
             ->setUrl('http://myurl.com');
 
-        $bannerObjectManager->persist($banner);
+        $bannerDirector->save($banner);
         $this->addReference('banner', $banner);
 
         /**
@@ -64,20 +63,15 @@ class BannerData extends AbstractFixture implements DependentFixtureInterface
          * @var BannerZoneInterface $bannerZone
          */
         $bannerZoneNoLanguage = $this->getReference('banner-zone-nolanguage');
-        $bannerNoLanguage = $bannerFactory
+        $bannerNoLanguage = $bannerDirector
             ->create()
             ->setName('banner-nolanguage')
             ->setDescription('Simple banner no language')
             ->addBannerZone($bannerZoneNoLanguage)
             ->setUrl('http://myurl.com');
 
-        $bannerObjectManager->persist($bannerNoLanguage);
+        $bannerDirector->save($bannerNoLanguage);
         $this->addReference('banner-nolanguage', $bannerNoLanguage);
-
-        $bannerObjectManager->flush([
-            $banner,
-            $bannerNoLanguage,
-        ]);
     }
 
     /**

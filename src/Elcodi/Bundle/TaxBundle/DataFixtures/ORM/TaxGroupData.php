@@ -20,7 +20,7 @@ namespace Elcodi\Bundle\TaxBundle\DataFixtures\ORM;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
-use Elcodi\Component\Tax\Factory\TaxGroupFactory;
+use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
  * Class TaxGroupData
@@ -33,21 +33,16 @@ class TaxGroupData extends AbstractFixture
     public function load(ObjectManager $manager)
     {
         /**
-         * @var TaxGroupFactory $taxGroupFactory
+         * @var ObjectDirector $taxGroupDirector
          */
-        $taxGroupObjectManager = $this->getObjectManager('tax_group');
-        $taxGroupFactory = $this->getFactory('tax_group');
+        $taxGroupDirector = $this->getDirector('tax_group');
 
-        $andorranTaxes = $taxGroupFactory
+        $andorranTaxes = $taxGroupDirector
             ->create()
             ->setName('andorran-taxes')
             ->setDescription('All andorran taxes');
 
-        $taxGroupObjectManager->persist($andorranTaxes);
+        $taxGroupDirector->save($andorranTaxes);
         $this->addReference('tax-group-andorran', $andorranTaxes);
-
-        $taxGroupObjectManager->flush(
-            $andorranTaxes
-        );
     }
 }

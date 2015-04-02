@@ -21,8 +21,8 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Tax\Entity\Interfaces\TaxGroupInterface;
-use Elcodi\Component\Tax\Factory\TaxFactory;
 
 /**
  * AdminData class
@@ -38,37 +38,31 @@ class TaxData extends AbstractFixture implements DependentFixtureInterface
     {
 
         /**
-         * @var TaxFactory        $taxFactory
+         * @var ObjectDirector        $taxDirector
          * @var TaxGroupInterface $andorranTaxGroup
          */
-        $taxObjectManager = $this->getObjectManager('tax');
-        $taxFactory = $this->getFactory('tax');
+        $taxDirector = $this->getDirector('tax');
         $andorranTaxGroup = $this->getReference('tax-group-andorran');
 
-        $tax21 = $taxFactory
+        $tax21 = $taxDirector
             ->create()
             ->setName('tax21')
             ->setDescription('This is my tax 21')
             ->setValue(21.0)
             ->setTaxGroup($andorranTaxGroup);
 
-        $taxObjectManager->persist($tax21);
+        $taxDirector->save($tax21);
         $this->addReference('tax-21', $tax21);
 
-        $tax16 = $taxFactory
+        $tax16 = $taxDirector
             ->create()
             ->setName('tax16')
             ->setDescription('This is my tax 16')
             ->setValue(16.0)
             ->setTaxGroup($andorranTaxGroup);
 
-        $taxObjectManager->persist($tax16);
+        $taxDirector->save($tax16);
         $this->addReference('tax-16', $tax16);
-
-        $taxObjectManager->flush([
-            $tax21,
-            $tax16,
-        ]);
     }
 
     /**
