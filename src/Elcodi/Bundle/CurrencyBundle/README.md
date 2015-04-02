@@ -1,4 +1,4 @@
-Elcodi Currency Bundle for Symfony2
+Elcodi Currency Bundle for Symfony
 ===================================
 
 # Table of contents
@@ -19,7 +19,7 @@ Elcodi Currency Bundle for Symfony2
 # Bundle
 
 This bundle is part of [elcodi project](https://github.com/elcodi).
-Elcodi is a set of flexible e-commerce components for Symfony2, built as a
+Elcodi is a set of flexible e-commerce components for Symfony, built as a
 decoupled and isolated repositories and under [MIT] license.
 
 # Overview
@@ -228,9 +228,9 @@ It can be configured to use the [Open exchange rates] adapter (Read
 All issues and Pull Requests should be on the main repository
 [elcodi/elcodi](https://github.com/elcodi/elcodi), so this one is read-only.
 
-This projects follows Symfony2 coding standards, so pull requests must pass phpcs
+This projects follows Symfony coding standards, so pull requests must pass phpcs
 checks. Read more details about
-[Symfony2 coding standards](http://symfony.com/doc/current/contributing/code/standards.html)
+[Symfony coding standards](http://symfony.com/doc/current/contributing/code/standards.html)
 and install the corresponding [CodeSniffer definition](https://github.com/escapestudios/Symfony2-coding-standard)
 to run code validation.
 

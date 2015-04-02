@@ -32,4 +32,4 @@
 	Last update: 2014/05/27
 	Standards: HTML5, CSS3,..
 	Components: jQuery.
-	Software: PHP 5.4, Symfony2 Components
+	Software: PHP 5.4, Symfony Components
