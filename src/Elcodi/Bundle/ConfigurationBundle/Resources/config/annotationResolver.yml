@@ -1,0 +1,11 @@
+services:
+
+    #
+    # Annotation resolver
+    #
+    elcodi.configuration.annotation_resolver:
+        class: Elcodi\Bundle\ConfigurationBundle\Resolver\ConfigurationResolver
+        arguments:
+            - @elcodi.manager.configuration
+        tags:
+            - { name: controller_extra.annotation }

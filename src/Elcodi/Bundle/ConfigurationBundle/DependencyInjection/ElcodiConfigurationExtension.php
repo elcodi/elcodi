@@ -17,7 +17,9 @@
 
 namespace Elcodi\Bundle\ConfigurationBundle\DependencyInjection;
 
+use Doctrine\Common\Annotations\AnnotationRegistry;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
@@ -95,8 +97,13 @@ class ElcodiConfigurationExtension extends AbstractExtension implements Entities
      */
     public function getConfigFiles(array $config)
     {
+        $isControllerExtraBundlePresent = interface_exists(
+            'Mmoreram\ControllerExtraBundle\Resolver\Interfaces\AnnotationResolverInterface'
+        );
+
         return [
             'classes',
+            ['annotationResolver', $isControllerExtraBundlePresent],
             'commands',
             'services',
             'factories',
@@ -106,6 +113,23 @@ class ElcodiConfigurationExtension extends AbstractExtension implements Entities
             'twig',
             'directors',
         ];
+    }
+
+    /**
+     * Hook after load the full container
+     *
+     * @param array            $config    Configuration
+     * @param ContainerBuilder $container Container
+     */
+    protected function postLoad(array $config, ContainerBuilder $container)
+    {
+        parent::postLoad($config, $container);
+
+        if (!$container->hasDefinition('elcodi.configuration.annotation_resolver')) {
+            return;
+        }
+
+        AnnotationRegistry::registerFile(__DIR__ . '/../Annotation/Configuration.php');
     }
 
     /**
