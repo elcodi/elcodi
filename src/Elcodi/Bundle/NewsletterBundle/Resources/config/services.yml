@@ -4,7 +4,7 @@ services:
     # Services
     #
     elcodi.manager.newsletter:
-        class: %elcodi.manager.newsletter.class%
+        class: Elcodi\Component\Newsletter\Services\NewsletterManager
         arguments:
             - @elcodi.event_dispatcher.newsletter
             - @validator

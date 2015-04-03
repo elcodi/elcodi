@@ -4,14 +4,14 @@ services:
     # Transformers
     #
     elcodi.transformer.cart_order:
-        class: %elcodi.transformer.cart_order.class%
+        class: Elcodi\Component\Cart\Transformer\CartOrderTransformer
         arguments:
             - @elcodi.event_dispatcher.order
             - @elcodi.transformer.cart_line_order_line
             - @elcodi.factory.order
 
     elcodi.transformer.cart_line_order_line:
-        class: %elcodi.transformer.cart_line_order_line.class%
+        class: Elcodi\Component\Cart\Transformer\CartLineOrderLineTransformer
         arguments:
             - @elcodi.event_dispatcher.order_line
             - @elcodi.factory.order_line

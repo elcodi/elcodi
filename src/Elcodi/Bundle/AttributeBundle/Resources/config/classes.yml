@@ -1,7 +1,0 @@
-parameters:
-
-    #
-    # Factories
-    #
-    elcodi.factory.attribute.class: Elcodi\Component\Attribute\Factory\AttributeFactory
-    elcodi.factory.attribute_value.class: Elcodi\Component\Attribute\Factory\ValueFactory

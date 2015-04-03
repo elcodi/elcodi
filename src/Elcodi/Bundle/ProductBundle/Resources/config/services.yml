@@ -4,12 +4,12 @@ services:
     # Services
     #
     elcodi.provider.category_tree:
-        class: %elcodi.provider.category_tree.class%
+        class: Elcodi\Component\Product\Services\CategoryTree
         arguments:
             - @elcodi.repository.category
 
     elcodi.provider.product_collection:
-        class: %elcodi.provider.product_collection.class%
+        class: Elcodi\Component\Product\Services\ProductCollectionProvider
         arguments:
             - @elcodi.repository.product
             - "@=elcodi_config('product.use_stock', false)"

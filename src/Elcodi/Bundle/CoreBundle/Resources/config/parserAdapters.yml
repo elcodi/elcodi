@@ -4,7 +4,7 @@ services:
     # Parser Adapter
     #
     elcodi.dummy_parser_adapter:
-        class: %elcodi.dummy_parser_adapter.class%
+        class: Elcodi\Component\Core\Adapter\Parser\DummyParserAdapter
 
     elcodi.markdown_parser_adapter:
-        class: %elcodi.markdown_parser_adapter.class%
+        class: Elcodi\Component\Core\Adapter\Parser\MarkdownParserAdapter

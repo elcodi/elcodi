@@ -4,7 +4,7 @@ services:
     # Twig renderer
     #
     elcodi_plugin.twitter.javascript_renderer:
-        class: %elcodi_plugin.twitter.javascript_renderer.class%
+        class: Elcodi\Plugin\TwitterBundle\Templating\JavascriptRenderer
         calls:
             - [setTemplating, [@twig]]
             - [setPlugin, [@=elcodi_plugin("Elcodi\\Plugin\\TwitterBundle")]]
@@ -13,7 +13,7 @@ services:
             - { name: kernel.event_listener, event: admin.footer_script, method: renderJavascript }
 
     elcodi_plugin.twitter.share_tweet_renderer:
-        class: %elcodi_plugin.twitter.share_tweet_renderer.class%
+        class: Elcodi\Plugin\TwitterBundle\Templating\ShareTweetRenderer
         arguments:
             url_generator: @router
             translator: @translator
@@ -26,7 +26,7 @@ services:
             - { name: kernel.event_listener, event: store.order_thanks, method: renderShareOrder }
 
     elcodi_plugin.twitter.follow_renderer:
-        class: %elcodi_plugin.twitter.follow_renderer.class%
+        class: Elcodi\Plugin\TwitterBundle\Templating\FollowRenderer
         calls:
             - [setTemplating, [@twig]]
             - [setPlugin, [@=elcodi_plugin("Elcodi\\Plugin\\TwitterBundle")]]

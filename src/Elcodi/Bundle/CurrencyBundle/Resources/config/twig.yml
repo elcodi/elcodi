@@ -4,7 +4,7 @@ services:
     # Twig extensions
     #
     elcodi.twig_extension.print_money:
-        class: %elcodi.twig_extension.print_money.class%
+        class: Elcodi\Component\Currency\Twig\PrintMoneyExtension
         arguments:
             - @elcodi.converter.currency
             - @elcodi.wrapper.currency

@@ -8,6 +8,6 @@ services:
     # Factory for entity page
     #
     elcodi.factory.page:
-        class: %elcodi.factory.page.class%
+        class: Elcodi\Component\Page\Factory\PageFactory
         calls:
             - [setEntityNamespace, [%elcodi.entity.page.class%]]

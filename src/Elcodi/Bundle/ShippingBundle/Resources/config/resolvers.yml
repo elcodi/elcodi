@@ -4,7 +4,7 @@ services:
     # Resolvers
     #
     elcodi.resolver.shipping_range:
-        class: %elcodi.resolver.shipping_range.class%
+        class: Elcodi\Component\Shipping\Resolver\ShippingRangeResolver
         arguments:
             - @elcodi.converter.currency
             - %elcodi.resolver.carrier.strategy%

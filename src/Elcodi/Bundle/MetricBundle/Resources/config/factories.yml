@@ -8,4 +8,4 @@ services:
     # Factories
     #
     elcodi.factory.metric_entry:
-        class: %elcodi.factory.metric_entry.class%
+        class: Elcodi\Component\Metric\Core\Factory\EntryFactory

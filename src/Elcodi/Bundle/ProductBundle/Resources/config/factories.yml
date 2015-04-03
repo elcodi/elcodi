@@ -8,7 +8,7 @@ services:
     # Factory for Product entities
     #
     elcodi.factory.product:
-        class: %elcodi.factory.product.class%
+        class: Elcodi\Component\Product\Factory\ProductFactory
         parent: elcodi.factory.abstract.purchasable
         calls:
             - [setEntityNamespace, ["%elcodi.entity.product.class%"]]
@@ -18,7 +18,7 @@ services:
     # Factory for Variant entities
     #
     elcodi.factory.product_variant:
-        class: %elcodi.factory.product_variant.class%
+        class: Elcodi\Component\Product\Factory\VariantFactory
         parent: elcodi.factory.abstract.purchasable
         calls:
             - [setEntityNamespace, ["%elcodi.entity.product_variant.class%"]]
@@ -27,7 +27,7 @@ services:
     # Factory for Manufacturer entities
     #
     elcodi.factory.manufacturer:
-        class: %elcodi.factory.manufacturer.class%
+        class: Elcodi\Component\Product\Factory\ManufacturerFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.manufacturer.class%"]]
 
@@ -35,6 +35,6 @@ services:
     # Factory for Category entities
     #
     elcodi.factory.category:
-        class: %elcodi.factory.category.class%
+        class: Elcodi\Component\Product\Factory\CategoryFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.category.class%"]]

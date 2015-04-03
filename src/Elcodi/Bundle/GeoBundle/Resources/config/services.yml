@@ -4,19 +4,19 @@ services:
     # Services
     #
     elcodi.location_provider.service:
-        class: %elcodi.location_provider.service.class%
+        class: Elcodi\Component\Geo\Services\LocationServiceProvider
         arguments:
             - @elcodi.repository.location
             - @elcodi.transformer.location_to_location_data
 
     elcodi.location_provider.api:
-        class: %elcodi.location_provider.api.class%
+        class: Elcodi\Component\Geo\Services\LocationApiProvider
         arguments:
             - @elcodi.factory.location_data
             - @elcodi.location_api_urls
 
     elcodi.location_api_urls:
-        class: %elcodi.location_api_urls.class%
+        class: Elcodi\Component\Geo\ValueObject\ApiUrls
         arguments:
             - %elcodi.route.location_api.host%%elcodi.route.location_api.prefix%/%elcodi.route.location_api.get_root_locations%
             - %elcodi.route.location_api.host%%elcodi.route.location_api.prefix%/%elcodi.route.location_api.get_children%
@@ -26,12 +26,12 @@ services:
             - %elcodi.route.location_api.host%%elcodi.route.location_api.prefix%/%elcodi.route.location_api.in%
 
     elcodi.location_builder:
-        class: %elcodi.location_builder.class%
+        class: Elcodi\Component\Geo\Services\LocationBuilder
         arguments:
             - @elcodi.factory.location
 
     elcodi.manager.address:
-        class: %elcodi.manager.address.class%
+        class: Elcodi\Component\Geo\Services\AddressManager
         arguments:
             - @elcodi.object_manager.address
             - @elcodi.event_dispatcher.address

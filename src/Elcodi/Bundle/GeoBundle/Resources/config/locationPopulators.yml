@@ -4,11 +4,11 @@ services:
     # GeoData populator adapters
     #
     elcodi.location_populator:
-        class: %elcodi.location_populator.geoname.class%
+        class: Elcodi\Component\Geo\Populator\Adapters\GeonamesPopulatorAdapter
         synthetic: true
 
     elcodi.location_populator.geoname:
-        class: %elcodi.location_populator.geoname.class%
+        class: Elcodi\Component\Geo\Populator\Adapters\GeonamesPopulatorAdapter
         arguments:
             - @elcodi.extractor
             - @elcodi.location_builder

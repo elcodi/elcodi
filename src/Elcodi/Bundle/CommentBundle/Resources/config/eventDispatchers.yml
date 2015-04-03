@@ -4,6 +4,6 @@ services:
     # EventListeners
     #
     elcodi.event_dispatcher.comment:
-        class: %elcodi.event_dispatcher.comment.class%
+        class: Elcodi\Component\Comment\EventDispatcher\CommentEventDispatcher
         arguments:
             - @event_dispatcher

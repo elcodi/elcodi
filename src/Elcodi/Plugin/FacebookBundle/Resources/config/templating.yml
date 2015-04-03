@@ -4,7 +4,7 @@ services:
     # Twig renderer
     #
     elcodi_plugin.facebook.javascript_renderer:
-        class: %elcodi_plugin.facebook.javascript_renderer.class%
+        class: Elcodi\Plugin\FacebookBundle\Templating\JavascriptRenderer
         calls:
             - [setTemplating, [@twig]]
             - [setPlugin, [@=elcodi_plugin("Elcodi\\Plugin\\FacebookBundle")]]
@@ -13,7 +13,7 @@ services:
             - { name: kernel.event_listener, event: admin.footer_script, method: renderJavascript }
 
     elcodi_plugin.facebook.share_post_renderer:
-        class: %elcodi_plugin.facebook.share_post_renderer.class%
+        class: Elcodi\Plugin\FacebookBundle\Templating\SharePostRenderer
         arguments:
             url_generator: @router
             translator: @translator
@@ -26,7 +26,7 @@ services:
             - { name: kernel.event_listener, event: store.order_thanks, method: renderShareOrder }
 
     elcodi_plugin.facebook.follow_renderer:
-        class: %elcodi_plugin.facebook.follow_renderer.class%
+        class: Elcodi\Plugin\FacebookBundle\Templating\FollowRenderer
         calls:
             - [setTemplating, [@twig]]
             - [setPlugin, [@=elcodi_plugin("Elcodi\\Plugin\\FacebookBundle")]]

@@ -4,13 +4,13 @@ services:
     # Wrappers
     #
     elcodi.wrapper.customer:
-        class: %elcodi.wrapper.customer.class%
+        class: Elcodi\Component\User\Wrapper\CustomerWrapper
         arguments:
             - @elcodi.factory.customer
             - @?security.context
 
     elcodi.wrapper.admin_user:
-        class: %elcodi.wrapper.admin_user.class%
+        class: Elcodi\Component\User\Wrapper\AdminUserWrapper
         arguments:
             - @elcodi.factory.admin_user
             - @?security.context

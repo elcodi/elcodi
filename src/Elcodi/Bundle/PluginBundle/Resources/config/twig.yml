@@ -4,7 +4,7 @@ services:
     # Twig extensions
     #
     elcodi.twig_extension.plugin_hook:
-        class: %elcodi.twig_extension.plugin_hook.class%
+        class: Elcodi\Component\Plugin\Twig\HookExtension
         arguments:
             - @elcodi.hook_system
         tags:

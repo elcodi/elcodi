@@ -101,7 +101,6 @@ class ElcodiMenuExtension extends AbstractExtension implements EntitiesOverridab
     public function getConfigFiles(array $config)
     {
         return [
-            'classes',
             'services',
             'factories',
             'twig',

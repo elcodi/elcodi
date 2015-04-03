@@ -4,7 +4,7 @@ services:
     # Services
     #
     elcodi.manager.coupon:
-        class: %elcodi.manager.coupon.class%
+        class: Elcodi\Component\Coupon\Services\CouponManager
         arguments:
             - @elcodi.factory.coupon
             - @elcodi.generator.random_string

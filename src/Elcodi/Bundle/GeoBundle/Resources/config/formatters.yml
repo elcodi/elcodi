@@ -4,6 +4,6 @@ services:
     # Formatters
     #
     elcodi.formatter.address:
-        class: %elcodi.formatter.address.class%
+        class: Elcodi\Component\Geo\Formatter\AddressFormatter
         arguments:
             - @elcodi.location_provider

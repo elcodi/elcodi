@@ -103,7 +103,6 @@ class ElcodiCommentExtension extends AbstractExtension implements EntitiesOverri
     public function getConfigFiles(array $config)
     {
         return [
-            'classes',
             'controllers',
             'services',
             'factories',

@@ -8,7 +8,7 @@ services:
     # Factory for entity cart
     #
     elcodi.factory.cart:
-        class: %elcodi.factory.cart.class%
+        class: Elcodi\Component\Cart\Factory\CartFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.cart.class%"]]
 
@@ -16,7 +16,7 @@ services:
     # Factory for entity order
     #
     elcodi.factory.order:
-        class: %elcodi.factory.order.class%
+        class: Elcodi\Component\Cart\Factory\OrderFactory
         arguments:
             - @elcodi.order.payment_states_machine.manager
             - @elcodi.order.shipping_states_machine.manager
@@ -27,7 +27,7 @@ services:
     # Factory for entity cart_line
     #
     elcodi.factory.cart_line:
-        class: %elcodi.factory.cart_line.class%
+        class: Elcodi\Component\Cart\Factory\CartLineFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.cart_line.class%"]]
 
@@ -35,6 +35,6 @@ services:
     # Factory for entity order_line
     #
     elcodi.factory.order_line:
-        class: %elcodi.factory.order_line.class%
+        class: Elcodi\Component\Cart\Factory\OrderLineFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.order_line.class%"]]

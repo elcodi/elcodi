@@ -4,7 +4,7 @@ services:
     # Event Listeners
     #
     elcodi.event_listener.cart_coupon.refresh_coupons:
-        class: %elcodi.event_listener.cart_coupon.refresh_coupons.class%
+        class: Elcodi\Component\CartCoupon\EventListener\RefreshCouponsListener
         arguments:
             - @elcodi.manager.coupon
             - @elcodi.manager.cart_coupon
@@ -16,7 +16,7 @@ services:
             - { name: kernel.event_listener, event: cart.onload, method: refreshCouponAmount, priority: -32 }
 
     elcodi.event_listener.cart_coupon.automatic_coupons:
-        class: %elcodi.event_listener.cart_coupon.automatic_coupons.class%
+        class: Elcodi\Component\CartCoupon\EventListener\AutomaticCouponApplicatorListener
         arguments:
             - @elcodi.manager.cart_coupon
             - @elcodi.repository.coupon
@@ -24,21 +24,21 @@ services:
             - { name: kernel.event_listener, event: cart.onload, method: tryAutomaticCoupons, priority: -16 }
 
     elcodi.event_listener.cart_coupon.avoid_coupon_duplicates:
-        class: %elcodi.event_listener.cart_coupon.avoid_coupon_duplicates.class%
+        class: Elcodi\Component\CartCoupon\EventListener\AvoidDuplicatesListener
         arguments:
             - @elcodi.repository.cart_coupon
         tags:
             - { name: kernel.event_listener, event: cart_coupon.onapply, method: checkDuplicates, priority: 16 }
 
     elcodi.event_listener.cart_coupon.cart_coupon_checker:
-        class: %elcodi.event_listener.cart_coupon.cart_coupon_checker.class%
+        class: Elcodi\Component\CartCoupon\EventListener\CheckCartCouponListener
         arguments:
             - @elcodi.event_dispatcher.cart_coupon
         tags:
             - { name: kernel.event_listener, event: cart_coupon.onapply, method: checkCoupon, priority: 16 }
 
     elcodi.event_listener.cart_coupon.cart_coupon_manager:
-        class: %elcodi.event_listener.cart_coupon.cart_coupon_manager.class%
+        class: Elcodi\Component\CartCoupon\EventListener\CartCouponManagerListener
         arguments:
             - @elcodi.object_manager.cart_coupon
             - @elcodi.factory.cart_coupon
@@ -47,28 +47,28 @@ services:
             - { name: kernel.event_listener, event: cart_coupon.onremove, method: onCartCouponRemove, priority: 0 }
 
     elcodi.event_listener.cart_coupon.coupon_checker:
-        class: %elcodi.event_listener.cart_coupon.coupon_checker.class%
+        class: Elcodi\Component\CartCoupon\EventListener\CheckCouponListener
         arguments:
             - @elcodi.manager.coupon
         tags:
             - { name: kernel.event_listener, event: cart_coupon.oncheck, method: checkCoupon, priority: 32 }
 
     elcodi.event_listener.cart_coupon.check_minimum_price:
-        class: %elcodi.event_listener.cart_coupon.check_minimum_price.class%
+        class: Elcodi\Component\CartCoupon\EventListener\MinimumPriceCouponListener
         arguments:
             - @elcodi.converter.currency
         tags:
             - { name: kernel.event_listener, event: cart_coupon.oncheck, method: checkMinimumPrice, priority: 0 }
 
     elcodi.event_listener.cart_coupon.check_rules:
-        class: %elcodi.event_listener.cart_coupon.check_rules.class%
+        class: Elcodi\Component\CartCoupon\EventListener\CheckRulesListener
         arguments:
             - @elcodi.manager.cart_coupon_rule
         tags:
             - { name: kernel.event_listener, event: cart_coupon.oncheck, method: checkCoupon, priority: -16 }
 
     elcodi.event_listener.cart_coupon.convert_to_order:
-        class: %elcodi.event_listener.cart_coupon.convert_to_order.class%
+        class: Elcodi\Component\CartCoupon\EventListener\ConvertToOrderCouponsListener
         arguments:
             - @elcodi.event_dispatcher.order_coupon
             - @elcodi.manager.cart_coupon
@@ -78,7 +78,7 @@ services:
             - { name: kernel.event_listener, event: order.oncreated, method: convertCouponToOrder, priority: -16 }
 
     elcodi.event_listener.cart_coupon.order_coupon_manager:
-        class: %elcodi.event_listener.cart_coupon.order_coupon_manager.class%
+        class: Elcodi\Component\CartCoupon\Services\OrderCouponManager
         arguments:
             - @elcodi.object_manager.order_coupon
             - @elcodi.event_dispatcher.coupon

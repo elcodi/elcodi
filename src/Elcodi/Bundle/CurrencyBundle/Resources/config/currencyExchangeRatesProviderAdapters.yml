@@ -7,7 +7,7 @@ services:
         class: GuzzleHttp\Client
 
     elcodi.adapter.currency_exchange_rate.open_exchange:
-        class: %elcodi.adapter.currency_exchange_rate.open_exchange.class%
+        class: Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\OpenExchangeRatesProviderAdapter
         arguments:
             - @elcodi.core.currency.guzzle_client
             - %elcodi.core.currency.rates_provider_api_id%
@@ -15,4 +15,4 @@ services:
             - %elcodi.core.currency.rates_provider_currency_base%
 
     elcodi.adapter.currency_exchange_rate.dummy:
-        class: %elcodi.adapter.currency_exchange_rate.dummy.class%
+        class: Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\DummyProviderAdapter

@@ -4,7 +4,7 @@ services:
     # services
     #
     elcodi.manager.menu:
-        class: %elcodi.manager.menu.class%
+        class: Elcodi\Component\Menu\Services\MenuManager
         arguments:
             - @elcodi.repository.menu
             - %elcodi.core.menu.cache_key%

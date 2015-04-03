@@ -4,7 +4,7 @@ services:
     # Managers
     #
     elcodi.manager.rule:
-        class: %elcodi.manager.rule.class%
+        class: Elcodi\Component\Rule\Services\RuleManager
         lazy: true
         arguments:
             - @elcodi.expression_language

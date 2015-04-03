@@ -8,14 +8,14 @@ services:
     # Factory for entity address
     #
     elcodi.factory.address:
-        class: %elcodi.factory.address.class%
+        class: Elcodi\Component\Geo\Factory\AddressFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.address.class%"]]
 
     elcodi.factory.location:
-        class: %elcodi.factory.location.class%
+        class: Elcodi\Component\Geo\Factory\LocationFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.location.class%"]]
 
     elcodi.factory.location_data:
-        class: %elcodi.factory.location_data.class%
+        class: Elcodi\Component\Geo\Factory\LocationDataFactory

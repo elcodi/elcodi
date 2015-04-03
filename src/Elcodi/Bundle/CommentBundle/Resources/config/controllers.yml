@@ -4,7 +4,7 @@ services:
     # Controllers
     #
     elcodi.controller.comment:
-        class: %elcodi.controller.comment.class%
+        class: Elcodi\Component\Comment\Controller\CommentController
         arguments:
             - @elcodi.manager.comment
             - @elcodi.comment_cache

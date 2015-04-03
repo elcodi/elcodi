@@ -8,7 +8,7 @@ services:
     # Factory for entity node
     #
     elcodi.factory.menu_node:
-        class: %elcodi.factory.menu_node.class%
+        class: Elcodi\Component\Menu\Factory\NodeFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.menu_node.class%"]]
 
@@ -16,6 +16,6 @@ services:
     # Factory for entity menu
     #
     elcodi.factory.menu:
-        class: %elcodi.factory.menu.class%
+        class: Elcodi\Component\Menu\Factory\MenuFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.menu.class%"]]
