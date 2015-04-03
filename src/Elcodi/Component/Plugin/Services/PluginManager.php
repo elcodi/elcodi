@@ -34,7 +34,7 @@ use Elcodi\Component\Plugin\Interfaces\PluginInterface;
 class PluginManager
 {
     /**
-     * @var array
+     * @var KernelInterface
      *
      * Kernel
      */
