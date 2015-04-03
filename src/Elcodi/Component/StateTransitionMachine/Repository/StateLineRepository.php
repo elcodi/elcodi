@@ -17,11 +17,11 @@
 
 namespace Elcodi\Component\StateTransitionMachine\Repository;
 
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityRepository;
 
 /**
  * Class StateLineRepository
  */
-class StateLineRepository extends ObjectManager
+class StateLineRepository extends EntityRepository
 {
 }
