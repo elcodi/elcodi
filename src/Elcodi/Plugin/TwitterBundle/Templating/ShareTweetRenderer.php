@@ -48,7 +48,7 @@ class ShareTweetRenderer
     protected $urlGenerator;
 
     /**
-     * @var Translator
+     * @var TranslatorInterface
      *
      * A translator
      */
