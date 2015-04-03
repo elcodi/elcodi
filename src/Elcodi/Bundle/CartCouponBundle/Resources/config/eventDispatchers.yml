@@ -4,9 +4,9 @@ services:
     # EventDispatchers
     #
     elcodi.event_dispatcher.cart_coupon:
-        class: %elcodi.event_dispatcher.cart_coupon.class%
+        class: Elcodi\Component\CartCoupon\EventDispatcher\CartCouponEventDispatcher
         parent: elcodi.event_dispatcher.abstract
 
     elcodi.event_dispatcher.order_coupon:
-        class: %elcodi.event_dispatcher.order_coupon.class%
+        class: Elcodi\Component\CartCoupon\EventDispatcher\OrderCouponEventDispatcher
         parent: elcodi.event_dispatcher.abstract

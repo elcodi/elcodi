@@ -4,12 +4,12 @@ services:
     # Generators
     #
     elcodi.generator.random_string:
-        class: %elcodi.generator.random_string.class%
+        class: Elcodi\Component\Core\Generator\RandomGenerator
 
     elcodi.generator.sha1:
-        class: %elcodi.generator.sha1.class%
+        class: Elcodi\Component\Core\Generator\Sha1Generator
         arguments:
             - @elcodi.generator.random_string
 
     elcodi.generator.uniqid:
-        class: %elcodi.generator.uniqid.class%
+        class: Elcodi\Component\Core\Generator\UniqIdGenerator

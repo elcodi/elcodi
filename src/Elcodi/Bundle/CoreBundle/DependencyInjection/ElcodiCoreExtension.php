@@ -90,7 +90,6 @@ class ElcodiCoreExtension extends AbstractExtension
     public function getConfigFiles(array $config)
     {
         return [
-            'classes',
             'providers',
             'eventDispatchers',
             'eventListeners',

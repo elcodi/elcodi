@@ -8,6 +8,6 @@ services:
     # Factory for entity image
     #
     elcodi.factory.image:
-        class: %elcodi.factory.image.class%
+        class: Elcodi\Component\Media\Factory\ImageFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.image.class%"]]

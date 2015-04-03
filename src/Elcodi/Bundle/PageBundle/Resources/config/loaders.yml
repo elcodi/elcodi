@@ -4,7 +4,7 @@ services:
     # Router simple loader
     #
     elcodi.core.page.router.simple_loader.loader:
-        class: %elcodi.core.page.router.simple_loader.class%
+        class: Elcodi\Component\Page\Router\PageRouterSimpleLoader
         arguments:
             - %elcodi.core.page.routing.route_name%
             - %elcodi.core.page.routing.route_path%

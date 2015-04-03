@@ -4,7 +4,7 @@ services:
     # Event Listeners
     #
     elcodi.event_listener.entity_translator_entity:
-        class: %elcodi.event_listener.entity_translator_entity.class%
+        class: Elcodi\Component\EntityTranslator\EventListener\EntityTranslatorEntityEventListener
         lazy: true
         arguments:
             - @service_container

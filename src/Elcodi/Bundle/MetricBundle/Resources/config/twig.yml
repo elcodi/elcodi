@@ -4,7 +4,7 @@ services:
     # Twig extensions
     #
     elcodi.api_metric_twig_extension:
-        class: %elcodi.api_metric_twig_extension.class%
+        class: Elcodi\Component\Metric\API\Twig\APIMetricExtension
         arguments:
             - @elcodi.metrics_bucket
         tags:

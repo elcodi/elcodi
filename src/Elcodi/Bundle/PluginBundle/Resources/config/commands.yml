@@ -4,7 +4,7 @@ services:
     # Commands
     #
     elcodi.plugins_load_command:
-        class: %elcodi.plugins_load_command.class%
+        class: Elcodi\Component\Plugin\Command\PluginsLoadCommand
         arguments:
             - @elcodi.plugin_manager
         tags:

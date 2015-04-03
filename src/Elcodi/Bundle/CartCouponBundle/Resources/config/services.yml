@@ -4,7 +4,7 @@ services:
     # Services
     #
     elcodi.manager.cart_coupon:
-        class: %elcodi.manager.cart_coupon.class%
+        class: Elcodi\Component\CartCoupon\Services\CartCouponManager
         arguments:
             - @elcodi.event_dispatcher.cart_coupon
             - @elcodi.manager.coupon
@@ -12,11 +12,11 @@ services:
             - @elcodi.repository.cart_coupon
 
     elcodi.manager.order_coupon:
-        class: %elcodi.manager.order_coupon.class%
+        class: Elcodi\Component\CartCoupon\Services\OrderCouponManager
         arguments:
             - @elcodi.repository.order_coupon
 
     elcodi.manager.cart_coupon_rule:
-        class: %elcodi.manager.cart_coupon_rule.class%
+        class: Elcodi\Component\CartCoupon\Services\CartCouponRuleManager
         arguments:
             - @elcodi.manager.rule

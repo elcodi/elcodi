@@ -4,7 +4,7 @@ services:
     # Twig extensions
     #
     elcodi.twig_extension.media_image:
-        class: %elcodi.twig_extension.media_image.class%
+        class: Elcodi\Component\Media\Twig\ImageExtension
         arguments:
             - @router
             - %elcodi.core.media.image_resize_controller_route_name%

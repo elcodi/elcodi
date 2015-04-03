@@ -47,7 +47,6 @@ class ElcodiFixturesBoosterExtension extends AbstractExtension
     public function getConfigFiles(array $config)
     {
         return [
-            'classes',
             'commands',
         ];
     }

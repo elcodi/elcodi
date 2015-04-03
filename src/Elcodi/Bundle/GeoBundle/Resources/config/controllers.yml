@@ -4,7 +4,7 @@ services:
     # Controllers
     #
     elcodi.controller.location_api:
-        class: %elcodi.controller.location_api.class%
+        class: Elcodi\Component\Geo\Controller\LocationApiController
         arguments:
             - @request_stack
             - @elcodi.location_provider.service

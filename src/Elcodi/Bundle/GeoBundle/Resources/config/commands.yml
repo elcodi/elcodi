@@ -4,7 +4,7 @@ services:
     # Commands
     #
     elcodi.command.location_populate:
-        class: %elcodi.command.location_populate.class%
+        class: Elcodi\Component\Geo\Command\LocationPopulateCommand
         arguments:
             - @elcodi.location_populator
             - @elcodi.director.location

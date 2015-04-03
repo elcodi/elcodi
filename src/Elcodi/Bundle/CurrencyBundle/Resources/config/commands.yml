@@ -4,7 +4,7 @@ services:
     # Commands
     #
     elcodi.command.populate_currency_rates:
-        class: %elcodi.command.populate_currency_rates.class%
+        class: Elcodi\Component\Currency\Command\CurrencyExchangeRatesPopulateCommand
         arguments:
             - @elcodi.populator.currency_exchange_rate
         tags:

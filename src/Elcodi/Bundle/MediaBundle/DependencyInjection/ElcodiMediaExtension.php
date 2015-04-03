@@ -78,7 +78,6 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
     public function getConfigFiles(array $config)
     {
         return [
-            'classes',
             'services',
             'factories',
             'controllers',

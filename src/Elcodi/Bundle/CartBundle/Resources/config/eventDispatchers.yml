@@ -4,17 +4,17 @@ services:
     # EventDispatchers
     #
     elcodi.event_dispatcher.cart:
-        class: %elcodi.event_dispatcher.cart.class%
+        class: Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher
         parent: elcodi.event_dispatcher.abstract
 
     elcodi.event_dispatcher.cart_line:
-        class: %elcodi.event_dispatcher.cart_line.class%
+        class: Elcodi\Component\Cart\EventDispatcher\CartLineEventDispatcher
         parent: elcodi.event_dispatcher.abstract
 
     elcodi.event_dispatcher.order:
-        class: %elcodi.event_dispatcher.order.class%
+        class: Elcodi\Component\Cart\EventDispatcher\OrderEventDispatcher
         parent: elcodi.event_dispatcher.abstract
 
     elcodi.event_dispatcher.order_line:
-        class: %elcodi.event_dispatcher.order_line.class%
+        class: Elcodi\Component\Cart\EventDispatcher\OrderLineEventDispatcher
         parent: elcodi.event_dispatcher.abstract

@@ -4,23 +4,23 @@ services:
     # ExpressionLanguage
     #
     elcodi.expression_language:
-        class: %elcodi.expression_language.class%
+        class: Symfony\Component\ExpressionLanguage\ExpressionLanguage
 
     elcodi.expression_language_context_collector:
-        class: %elcodi.expression_language_context_collector.class%
+        class: Elcodi\Component\Rule\ExpressionLanguage\Context\ContextCollector
 
     #
     # ExpressionLanguage providers
     #
     elcodi.expression_language_container_provider:
-        class: %elcodi.expression_language_container_provider.class%
+        class: Elcodi\Component\Rule\ExpressionLanguage\Provider\ContainerProvider
         arguments:
             - @service_container
         tags:
             - { name: elcodi.rule_configuration }
 
     elcodi.expression_language_rule_provider:
-        class: %elcodi.expression_language_rule_provider.class%
+        class: Elcodi\Component\Rule\ExpressionLanguage\Provider\RuleProvider
         arguments:
             - @elcodi.repository.rule
             - @elcodi.manager.rule

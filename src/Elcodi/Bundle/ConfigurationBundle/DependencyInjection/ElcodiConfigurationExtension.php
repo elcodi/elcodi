@@ -96,7 +96,6 @@ class ElcodiConfigurationExtension extends AbstractExtension implements Entities
     public function getConfigFiles(array $config)
     {
         return [
-            'classes',
             'commands',
             'services',
             'factories',

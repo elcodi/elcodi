@@ -99,7 +99,6 @@ class ElcodiTaxExtension extends AbstractExtension implements EntitiesOverridabl
     public function getConfigFiles(array $config)
     {
         return [
-            'classes',
             'factories',
             'repositories',
             'objectManagers',

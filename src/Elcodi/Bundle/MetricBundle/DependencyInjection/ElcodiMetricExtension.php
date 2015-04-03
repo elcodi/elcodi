@@ -100,7 +100,6 @@ class ElcodiMetricExtension extends AbstractExtension implements EntitiesOverrid
     public function getConfigFiles(array $config)
     {
         return [
-            'classes',
             'services',
             'factories',
             'twig',

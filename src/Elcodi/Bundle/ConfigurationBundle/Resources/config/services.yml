@@ -4,7 +4,7 @@ services:
     # Services
     #
     elcodi.manager.configuration:
-        class: %elcodi.manager.configuration.class%
+        class: Elcodi\Component\Configuration\Services\ConfigurationManager
         lazy: true
         arguments:
             - @elcodi.object_manager.configuration

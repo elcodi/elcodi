@@ -4,7 +4,7 @@ services:
     # Providers
     #
     elcodi.provider.shipping_range:
-        class: %elcodi.provider.shipping_range.class%
+        class: Elcodi\Component\Shipping\Provider\ShippingRangeProvider
         arguments:
             - @elcodi.repository.carrier
             - @elcodi.converter.currency

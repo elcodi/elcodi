@@ -8,6 +8,6 @@ services:
     # Factory for entity rule
     #
     elcodi.factory.rule:
-        class: %elcodi.factory.rule.class%
+        class: Elcodi\Component\Rule\Factory\RuleFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.rule.class%"]]

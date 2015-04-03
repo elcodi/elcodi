@@ -4,20 +4,20 @@ services:
     # Service
     #
     elcodi.manager.media_image:
-        class: %elcodi.manager.media_image.class%
+        class: Elcodi\Component\Media\Services\ImageManager
         arguments:
             - @elcodi.factory.image
             - @elcodi.manager.media_file
             - @elcodi.core.media.resize.default
 
     elcodi.manager.media_file:
-        class: %elcodi.manager.media_file.class%
+        class: Elcodi\Component\Media\Services\FileManager
         arguments:
             - @elcodi.core.media.filesystem.default
             - @elcodi.transformer.media_file_identifier
 
     elcodi.image_uploader:
-        class: %elcodi.image_uploader.class%
+        class: Elcodi\Component\Media\Services\ImageUploader
         arguments:
             - @elcodi.object_manager.image
             - @elcodi.manager.media_file
@@ -28,7 +28,7 @@ services:
     # Resize
     #
     elcodi.core.media.resize.imagemagick:
-        class: %elcodi.core.media.resize.imagemagick.class%
+        class: Elcodi\Component\Media\Adapter\Resizer\ImageMagickResizeAdapter
         arguments:
             - %elcodi.core.media.image_resize_converter_bin_path%
             - %elcodi.core.media.image_resize_converter_default_profile%
@@ -37,7 +37,7 @@ services:
     # Routes
     #
     elcodi.router.media_image_resize:
-        class: %elcodi.router.media_image_resize.class%
+        class: Elcodi\Component\Media\Router\ImageResizeRouterLoader
         arguments:
             - %elcodi.core.media.image_resize_controller_route_name%
             - %elcodi.core.media.image_resize_controller_route%
@@ -45,7 +45,7 @@ services:
             - { name: routing.loader }
 
     elcodi.router.media_image_view:
-        class: %elcodi.router.media_image_view.class%
+        class: Elcodi\Component\Media\Router\ImageViewRouterLoader
         arguments:
             - %elcodi.core.media.image_view_controller_route_name%
             - %elcodi.core.media.image_view_controller_route%
@@ -53,7 +53,7 @@ services:
             - { name: routing.loader }
 
     elcodi.router.media_image_upload:
-        class: %elcodi.router.media_image_upload.class%
+        class: Elcodi\Component\Media\Router\ImageUploadRouterLoader
         arguments:
             - %elcodi.core.media.image_upload_controller_route_name%
             - %elcodi.core.media.image_upload_controller_route%

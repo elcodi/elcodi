@@ -4,7 +4,7 @@ services:
     # Constraints
     #
     elcodi.validator.city_exists:
-        class: %elcodi.validator.city_exists.class%
+        class: Elcodi\Component\Geo\Validator\Constraints\CityExistsValidator
         arguments:
             - @elcodi.location_provider
         tags:

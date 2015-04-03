@@ -12,7 +12,7 @@ security:
 
 services:
     elcodi.event_listener.customer_password:
-        class: %elcodi.event_listener.customer_password.class%
+        class: Elcodi\Component\User\EventListener\CustomerPasswordEventListener
         arguments:
             encoder: @elcodi.provider.customer_provider
         tags:
@@ -20,7 +20,7 @@ services:
             - { name: doctrine.event_listener, event: prePersist, method: prePersist }
 
     elcodi.event_listener.admin_user_password:
-        class: %elcodi.event_listener.admin_user_password.class%
+        class: Elcodi\Component\User\EventListener\AdminUserPasswordEventListener
         arguments:
             encoder: @elcodi.provider.admin_user_provider
         tags:

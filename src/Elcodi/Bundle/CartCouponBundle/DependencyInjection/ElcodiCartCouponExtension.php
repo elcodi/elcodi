@@ -105,7 +105,6 @@ class ElcodiCartCouponExtension extends AbstractExtension implements EntitiesOve
     public function getConfigFiles(array $config)
     {
         return [
-            'classes',
             'services',
             'eventListeners',
             'factories',

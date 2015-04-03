@@ -4,7 +4,7 @@ services:
     # Services
     #
     elcodi.metric_manager:
-        class: %elcodi.metric_manager.class%
+        class: Elcodi\Component\Metric\Core\Services\MetricManager
         arguments:
             - @elcodi.metrics_bucket
             - @elcodi.factory.metric_entry
@@ -14,7 +14,7 @@ services:
     # Routes
     #
     elcodi.core.metric.routes.input.loader:
-        class: %elcodi.core.metric.routes.input.loader.class%
+        class: Elcodi\Component\Metric\Input\Router\MetricInputLoader
         arguments:
             - %elcodi.core.metric.input_controller_route_name%
             - %elcodi.core.metric.input_controller_route%

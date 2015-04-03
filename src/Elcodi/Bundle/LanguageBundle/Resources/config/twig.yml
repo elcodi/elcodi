@@ -4,7 +4,7 @@ services:
     # Twig extensions
     #
     elcodi.twig_extension.language:
-        class: %elcodi.twig_extension.language.class%
+        class: Elcodi\Component\Language\Twig\LanguageExtension
         arguments:
             - @elcodi.manager.language
             - @elcodi.locale

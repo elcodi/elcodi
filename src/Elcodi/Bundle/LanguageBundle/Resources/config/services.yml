@@ -4,13 +4,13 @@ services:
     # Providers
     #
     elcodi.provider.locale:
-        class: %elcodi.provider.locale.class%
+        class: Elcodi\Component\Language\Services\LocaleProvider
         arguments:
             - @request_stack
             - %locale%
 
     elcodi.provider.locale.locale:
-        class: %elcodi.entity.locale.class%
+        class: Elcodi\Component\Language\Entity\Locale
         factory_service: elcodi.provider.locale
         factory_method: getLocale
         public: false
@@ -19,12 +19,12 @@ services:
     # Services
     #
     elcodi.manager.language:
-        class: %elcodi.manager.language.class%
+        class: Elcodi\Component\Language\Services\LanguageManager
         arguments:
             - @elcodi.repository.language
 
     elcodi.manager.locale:
-        class: %elcodi.manager.locale.class%
+        class: Elcodi\Component\Language\Services\LocaleManager
         arguments:
             - @elcodi.provider.locale.locale
         calls:
@@ -49,6 +49,6 @@ services:
         factory_method: toArray
 
     elcodi.locale:
-        class: %elcodi.entity.locale.class%
+        class: Elcodi\Component\Language\Entity\Locale
         factory_service: elcodi.manager.locale
         factory_method: getLocale

@@ -94,7 +94,6 @@ class ElcodiRuleExtension extends AbstractExtension implements EntitiesOverridab
     public function getConfigFiles(array $config)
     {
         return [
-            'classes',
             'services',
             'expressionLanguage',
             'factories',

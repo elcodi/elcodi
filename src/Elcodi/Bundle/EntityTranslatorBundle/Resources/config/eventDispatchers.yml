@@ -4,6 +4,6 @@ services:
     # Event Dispatchers
     #
     elcodi.event_dispatcher.entity_translator:
-        class: %elcodi.event_dispatcher.entity_translator.class%
+        class: Elcodi\Component\EntityTranslator\EventDispatcher\EntityTranslatorEventDispatcher
         arguments:
             - @event_dispatcher
