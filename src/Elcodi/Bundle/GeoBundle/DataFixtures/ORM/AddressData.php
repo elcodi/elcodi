@@ -23,7 +23,6 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Geo\Entity\Address;
-use Elcodi\Component\Geo\Factory\AddressFactory;
 
 /**
  * Class AddressData

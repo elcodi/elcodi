@@ -94,7 +94,7 @@ class AddressManagerTest extends PHPUnit_Framework_TestCase
             ->method('flush')
             ->with($originalAddress);
 
-        $this
+        $savedAddress = $this
             ->addressManager
             ->saveAddress($originalAddress);
 
@@ -102,10 +102,6 @@ class AddressManagerTest extends PHPUnit_Framework_TestCase
             ->addressEventDispatcher
             ->expects($this->never())
             ->method('dispatchAddressOnCloneEvent');
-
-        $savedAddress = $this
-            ->addressManager
-            ->getSavedAddress();
 
         $this->assertSame(
             $savedAddress,
@@ -146,13 +142,9 @@ class AddressManagerTest extends PHPUnit_Framework_TestCase
             ->expects($this->once())
             ->method('dispatchAddressOnCloneEvent');
 
-        $this
-            ->addressManager
-            ->saveAddress($originalAddress);
-
         $savedAddress = $this
             ->addressManager
-            ->getSavedAddress();
+            ->saveAddress($originalAddress);
 
         $this->assertEquals(
             $savedAddress,
