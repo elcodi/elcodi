@@ -120,7 +120,7 @@ class TranslatableFieldType extends AbstractType
         $masterLocale,
         $fallback
     ) {
-        $this->translationProvider = $entityTranslationProvider;
+        $this->entityTranslationProvider = $entityTranslationProvider;
         $this->formConfig = $formConfig;
         $this->entity = $entity;
         $this->fieldName = $fieldName;
@@ -157,7 +157,7 @@ class TranslatableFieldType extends AbstractType
             $entityId = $this->entity->$entityIdGetter();
             $translationData = $entityId
                 ? $this
-                    ->translationProvider
+                    ->entityTranslationProvider
                     ->getTranslation(
                         $entityAlias,
                         $entityId,
