@@ -95,7 +95,7 @@
         "elcodi/metric-bundle": "self.version",
         "elcodi/plugin-bundle": "self.version",
         "elcodi/template-bundle": "self.version",
-        "elcodi/fixtures-booster-bundle": "self.version",
+        "friends-of-elcodi/fixtures-booster-bundle": "self.version",
 
         "elcodi/attribute": "self.version",
         "elcodi/banner": "self.version",
