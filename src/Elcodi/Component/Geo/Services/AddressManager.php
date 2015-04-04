@@ -28,13 +28,6 @@ use Elcodi\Component\Geo\EventDispatcher\AddressEventDispatcher;
 class AddressManager
 {
     /**
-     * @var AddressInterface
-     *
-     * Address saved
-     */
-    protected $addressSaved;
-
-    /**
      * @var ObjectManager
      *
      * Address object manager
@@ -65,11 +58,12 @@ class AddressManager
     }
 
     /**
-     * Saves an address making a copy in case it was already persisted.
+     * Saves an address making a copy in case it was already persisted. Then
+     * returns the saved address.
      *
      * @param AddressInterface $address The address to save
      *
-     * @return $this Self object
+     * @return AddressInterface saved address.
      */
     public function saveAddress(AddressInterface $address)
     {
@@ -86,22 +80,13 @@ class AddressManager
                 $addressToSave
             );
 
-            $this->addressSaved = $addressToSave;
-        } else {
-            $this->addressObjectManager->flush($address);
-            $this->addressSaved = $address;
+            return $addressToSave;
         }
 
-        return $this;
-    }
+        $this
+            ->addressObjectManager
+            ->flush($address);
 
-    /**
-     * Get the last saved address
-     *
-     * @return AddressInterface
-     */
-    public function getSavedAddress()
-    {
-        return $this->addressSaved;
+        return $address;
     }
 }
