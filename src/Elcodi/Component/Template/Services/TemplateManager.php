@@ -32,7 +32,7 @@ use Elcodi\Component\Template\Interfaces\TemplateInterface;
 class TemplateManager
 {
     /**
-     * @var array
+     * @var KernelInterface
      *
      * Kernel
      */
