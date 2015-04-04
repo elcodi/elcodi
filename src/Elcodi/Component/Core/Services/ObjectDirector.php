@@ -19,11 +19,21 @@ namespace Elcodi\Component\Core\Services;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
+use UnexpectedValueException;
 
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 
 /**
  * Class ObjectDirector
+ *
+ * This object is a facade for these different persistance-related elements
+ *
+ * * Object Manager
+ * * Repository
+ * * Factory
+ *
+ * Allows final user to manage in a simple way an entity or a set of entities.
+ * Provide a reduced (but most used) set of methods
  */
 class ObjectDirector
 {
@@ -70,7 +80,7 @@ class ObjectDirector
      *
      * @param mixed $id The identifier.
      *
-     * @return object The object.
+     * @return object|null Fetched object
      */
     public function find($id)
     {
@@ -82,7 +92,7 @@ class ObjectDirector
     /**
      * Finds all objects in the repository.
      *
-     * @return array The objects.
+     * @return array Set of fetched objects
      */
     public function findAll()
     {
@@ -103,9 +113,9 @@ class ObjectDirector
      * @param integer|null $limit
      * @param integer|null $offset
      *
-     * @return array The objects.
+     * @return array Set of fetched objects
      *
-     * @throws \UnexpectedValueException
+     * @throws UnexpectedValueException
      */
     public function findBy(
         array $criteria,
@@ -124,11 +134,11 @@ class ObjectDirector
     }
 
     /**
-     * Finds a single object by a set of criteria.
+     * Finds a single object given a criteria
      *
      * @param array $criteria The criteria.
      *
-     * @return object The object.
+     * @return object|null Fetched object
      */
     public function findOneBy(array $criteria)
     {
@@ -140,7 +150,7 @@ class ObjectDirector
     }
 
     /**
-     * Create new instance
+     * Create a new entity instance, result of the factory creation method
      *
      * @return Object new Instance
      */
@@ -152,18 +162,19 @@ class ObjectDirector
     }
 
     /**
-     * Save the instance in the database
+     * Save the instance into database. Given data can be a single object or
+     * an array of objects.
      *
-     * This method will persist and flush the object
+     * This method will persist and flush given object/array of objects
      *
-     * @param object|array $object Object
+     * @param object|array $data Data to save into database
      *
-     * @return object|array Saved object
+     * @return object|array Saved data
      */
-    public function save($object)
+    public function save($data)
     {
-        if (is_array($object)) {
-            foreach ($object as $entity) {
+        if (is_array($data)) {
+            foreach ($data as $entity) {
                 $this
                     ->manager
                     ->persist($entity);
@@ -171,29 +182,30 @@ class ObjectDirector
         } else {
             $this
                 ->manager
-                ->persist($object);
+                ->persist($data);
         }
 
         $this
             ->manager
-            ->flush($object);
+            ->flush($data);
 
-        return $object;
+        return $data;
     }
 
     /**
-     * Remove the instance from the database
+     * Remove the instance from the database. Given data can be a single object or
+     * an array of objects.
      *
-     * This method will remove and flush the object
+     * This method will remove and flush given object/array of objects
      *
-     * @param object|array $object Object
+     * @param object|array $data Data to remove from database
      *
-     * @return object|array Saved object
+     * @return object|array Removed data
      */
-    public function remove($object)
+    public function remove($data)
     {
-        if (is_array($object)) {
-            foreach ($object as $entity) {
+        if (is_array($data)) {
+            foreach ($data as $entity) {
                 $this
                     ->manager
                     ->remove($entity);
@@ -201,13 +213,13 @@ class ObjectDirector
         } else {
             $this
                 ->manager
-                ->remove($object);
+                ->remove($data);
         }
 
         $this
             ->manager
-            ->flush($object);
+            ->flush($data);
 
-        return $object;
+        return $data;
     }
 }
