@@ -150,8 +150,7 @@ class LocationServiceProviderTest extends WebTestCase
     public function testGetChildrenLocationNotFound()
     {
         $this->setExpectedException(
-            'Doctrine\ORM\EntityNotFoundException',
-            'Entity was not found.'
+            'Doctrine\ORM\EntityNotFoundException'
         );
 
         $this
@@ -214,8 +213,7 @@ class LocationServiceProviderTest extends WebTestCase
     public function testGetParentsLocationNotFound()
     {
         $this->setExpectedException(
-            'Doctrine\ORM\EntityNotFoundException',
-            'Entity was not found.'
+            'Doctrine\ORM\EntityNotFoundException'
         );
 
         $this
@@ -285,8 +283,7 @@ class LocationServiceProviderTest extends WebTestCase
     public function testGetLocationNotFound()
     {
         $this->setExpectedException(
-            'Doctrine\ORM\EntityNotFoundException',
-            'Entity was not found.'
+            'Doctrine\ORM\EntityNotFoundException'
         );
 
         $this
@@ -379,8 +376,7 @@ class LocationServiceProviderTest extends WebTestCase
     public function testGetHierarchyNotFound()
     {
         $this->setExpectedException(
-            'Doctrine\ORM\EntityNotFoundException',
-            'Entity was not found.'
+            'Doctrine\ORM\EntityNotFoundException'
         );
 
         $this
@@ -464,8 +460,7 @@ class LocationServiceProviderTest extends WebTestCase
     public function testInLocationNotFound()
     {
         $this->setExpectedException(
-            'Doctrine\ORM\EntityNotFoundException',
-            'Entity was not found.'
+            'Doctrine\ORM\EntityNotFoundException'
         );
 
         $this
