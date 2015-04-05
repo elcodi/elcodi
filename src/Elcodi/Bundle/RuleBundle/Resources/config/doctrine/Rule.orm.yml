@@ -9,12 +9,6 @@ Elcodi\Component\Rule\Entity\Rule:
             generator:
                 strategy: AUTO
     fields:
-        name:
-            column: name
-            type: string
-            length: 64
-            nullable: false
-            unique: true
         expression:
             column: expression
             type: text
