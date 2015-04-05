@@ -27,14 +27,14 @@ use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
 class RuleRepository extends EntityRepository
 {
     /**
-     * Return a rule by name
+     * Return a rule by id
      *
-     * @param string $name
+     * @param string $id
      *
      * @return RuleInterface|null
      */
-    public function findOneByName($name)
+    public function findOneById($id)
     {
-        return parent::findOneBy(['name' => $name]);
+        return parent::findOneBy(['id' => $id]);
     }
 }
