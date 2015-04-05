@@ -45,20 +45,20 @@ class ElcodiCartExtension extends AbstractExtension implements EntitiesOverridab
     }
 
     /**
-     * Return a new Configuration instance.
+     * Return a new Settings instance.
      *
      * If object returned by this method is an instance of
-     * ConfigurationInterface, extension will use the Configuration to read all
+     * SettingsInterface, extension will use the Settings to read all
      * bundle config definitions.
      *
      * Also will call getParametrizationValues method to load some config values
      * to internal parameters.
      *
-     * @return ConfigurationInterface Configuration file
+     * @return SettingsInterface Settings file
      */
-    protected function getConfigurationInstance()
+    protected function getSettingsInstance()
     {
-        return new Configuration(static::EXTENSION_NAME);
+        return new Settings(static::EXTENSION_NAME);
     }
 
     /**
