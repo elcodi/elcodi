@@ -3,8 +3,8 @@ services:
     #
     # Event Listeners
     #
-    elcodi.event_listener.authentication_success:
-        class: %elcodi.event_listener.authentication_success.class%
+    elcodi.event_listener.update_cart_with_user:
+        class: %elcodi.event_listener.update_cart_with_user.class%
         arguments:
             cart_wrapper: @elcodi.wrapper.cart
             cart_entity_manager: @elcodi.object_manager.cart
