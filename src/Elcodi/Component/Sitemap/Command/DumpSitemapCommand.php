@@ -17,11 +17,13 @@
 
 namespace Elcodi\Component\Sitemap\Command;
 
+use Elcodi\Component\Sitemap\Dumper\SitemapDumper;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use Elcodi\Component\Sitemap\Dumper\SitemapDumper;
+use Elcodi\Component\Sitemap\Dumper\SitemapDumperChain;
 
 /**
  * Class DumpSitemapCommand
@@ -29,20 +31,20 @@ use Elcodi\Component\Sitemap\Dumper\SitemapDumper;
 class DumpSitemapCommand extends Command
 {
     /**
-     * @var SitemapDumper
+     * @var SitemapDumperChain
      *
      * Dumper
      */
-    protected $sitemapDumper;
+    protected $sitemapDumperChain;
 
     /**
      * Construct
      *
-     * @param SitemapDumper $sitemapDumper Dumper
+     * @param SitemapDumperChain $sitemapDumperChain Dumper chain
      */
-    public function __construct(SitemapDumper $sitemapDumper)
+    public function __construct(SitemapDumperChain $sitemapDumperChain)
     {
-        $this->sitemapDumper = $sitemapDumper;
+        $this->sitemapDumperChain = $sitemapDumperChain;
 
         parent::__construct();
     }
@@ -52,17 +54,13 @@ class DumpSitemapCommand extends Command
      */
     protected function configure()
     {
-        $sitemapProfileName = $this->getSitemapProfileName();
-
         $this
-            ->setName('elcodi:sitemap:' . $sitemapProfileName . ':dump')
-            ->setDescription('Dumps sitemap ' . $sitemapProfileName);
+            ->setName('elcodi:sitemap:dump')
+            ->setDescription('Dumps sitemap for given profile name')
+            ->addArgument('profileName', InputArgument::REQUIRED, 'Profile name');
     }
 
     /**
-     * This command loads all the exchange rates from base_currency to all available
-     * currencies
-     *
      * @param InputInterface  $input  The input interface
      * @param OutputInterface $output The output interface
      *
@@ -70,40 +68,23 @@ class DumpSitemapCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this
-            ->sitemapDumper
-            ->dump();
+        $profileName = $input->getArgument('profileName');
+        $dumpers = $this
+            ->sitemapDumperChain
+            ->getSitemapDumpers();
+
+        /** @var SitemapDumper $dumper */
+        $dumper = array_filter($dumpers, function($dumper) use ($profileName) {
+            /** @var SitemapDumper $dumper */
+            return $dumper->getSitemapProfile()->getName() === $profileName;
+        });
+
+        $dumper->dump();
 
         $output->writeln(
             '<header>[Sitemap]</header> <body>Sitemap ' .
-            $this->getSitemapProfileName() .
-            ' built in . ' . $this->getSitemapProfilePath() . ' </body>'
+            $profileName .
+            ' built in . ' . $dumper->getSitemapProfile()->getPath() . ' </body>'
         );
-    }
-
-    /**
-     * Get sitemap profile name
-     *
-     * @return string Sitemap profile name
-     */
-    protected function getSitemapProfileName()
-    {
-        return $this
-            ->sitemapDumper
-            ->getSitemapProfile()
-            ->getName();
-    }
-
-    /**
-     * Get sitemap profile path
-     *
-     * @return string Sitemap profile path
-     */
-    protected function getSitemapProfilePath()
-    {
-        return $this
-            ->sitemapDumper
-            ->getSitemapProfile()
-            ->getPath();
     }
 }
