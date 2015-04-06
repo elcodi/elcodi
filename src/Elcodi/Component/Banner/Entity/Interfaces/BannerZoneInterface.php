@@ -23,7 +23,7 @@ use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 
 /**
- * BannerZoneInterfaceInterface
+ * Interface BannerZoneInterfaceInterface
  */
 interface BannerZoneInterface extends IdentifiableInterface
 {

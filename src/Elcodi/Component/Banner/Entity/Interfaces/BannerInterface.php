@@ -24,7 +24,7 @@ use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
- * BannerInterface
+ * Interface BannerInterface
  */
 interface BannerInterface
     extends

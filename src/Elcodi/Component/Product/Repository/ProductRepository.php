@@ -20,7 +20,7 @@ namespace Elcodi\Component\Product\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * ProductRepository
+ * Class ProductRepository
  */
 class ProductRepository extends EntityRepository
 {

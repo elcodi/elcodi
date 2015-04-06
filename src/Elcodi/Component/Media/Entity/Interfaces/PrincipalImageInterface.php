@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Media\Entity\Interfaces;
 
 /**
- * Class PrincipalImageInterface
+ * Interface PrincipalImageInterface
  */
 interface PrincipalImageInterface
 {

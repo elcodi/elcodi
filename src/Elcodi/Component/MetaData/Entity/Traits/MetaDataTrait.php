@@ -18,7 +18,7 @@
 namespace Elcodi\Component\MetaData\Entity\Traits;
 
 /**
- * trait for add Meta data
+ * Trait for add Meta data
  */
 trait MetaDataTrait
 {

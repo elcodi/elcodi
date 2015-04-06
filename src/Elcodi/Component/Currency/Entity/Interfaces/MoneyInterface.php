@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Currency\Entity\Interfaces;
 
 /**
- * MoneyInterface
+ * Interface MoneyInterface
  */
 interface MoneyInterface
 {

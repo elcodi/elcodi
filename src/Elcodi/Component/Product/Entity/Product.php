@@ -35,7 +35,7 @@ use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
 use Elcodi\Component\Product\Entity\Traits\ProductPriceTrait;
 
 /**
- * Product entity
+ * Class Product entity
  */
 class Product implements ProductInterface
 {

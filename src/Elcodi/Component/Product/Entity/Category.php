@@ -26,7 +26,7 @@ use Elcodi\Component\MetaData\Entity\Traits\MetaDataTrait;
 use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 
 /**
- * Category
+ * Class Category
  */
 class Category implements CategoryInterface
 {

@@ -24,7 +24,7 @@ use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\MetaData\Entity\Interfaces\MetaDataInterface;
 
 /**
- * Class CategoryInterface
+ * Interface CategoryInterface
  */
 interface CategoryInterface
     extends

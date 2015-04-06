@@ -20,7 +20,7 @@ namespace Elcodi\Component\Cart\Entity\Interfaces;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 
 /**
- * Class PriceInterface
+ * Interface PriceInterface
  */
 interface PriceInterface
 {

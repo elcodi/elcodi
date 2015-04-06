@@ -25,7 +25,7 @@ use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
 
 /**
- * CouponInterface
+ * Interface CouponInterface
  */
 interface CouponInterface
     extends

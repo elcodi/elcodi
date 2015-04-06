@@ -20,7 +20,7 @@ namespace Elcodi\Component\Core\Entity\Interfaces;
 use DateTime;
 
 /**
- * Class DateTimeInterface
+ * Interface DateTimeInterface
  */
 interface DateTimeInterface
 {

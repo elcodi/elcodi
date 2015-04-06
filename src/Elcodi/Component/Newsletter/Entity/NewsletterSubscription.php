@@ -25,7 +25,7 @@ use Elcodi\Component\Newsletter\Entity\Interfaces\NewsletterSubscriptionInterfac
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
- * NewsletterSubscription
+ * Class NewsletterSubscription
  */
 class NewsletterSubscription implements NewsletterSubscriptionInterface
 {

@@ -22,7 +22,7 @@ use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 
 /**
- * Address
+ * Class Address
  */
 class Address implements AddressInterface
 {

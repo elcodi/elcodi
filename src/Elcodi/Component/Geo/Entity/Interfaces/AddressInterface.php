@@ -21,7 +21,7 @@ use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 
 /**
- * Address Interface
+ * Interface AddressInterface
  */
 interface AddressInterface extends DateTimeInterface, EnabledInterface
 {

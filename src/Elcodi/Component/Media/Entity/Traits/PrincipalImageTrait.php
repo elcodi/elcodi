@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Media\Entity\Traits;
 
 /**
- * Class PrincipalImageTrait
+ * Trait PrincipalImageTrait
  */
 trait PrincipalImageTrait
 {

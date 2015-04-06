@@ -25,7 +25,7 @@ use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
- * Class AbstractUserInterface
+ * Interface AbstractUserInterface
  */
 interface AbstractUserInterface
     extends

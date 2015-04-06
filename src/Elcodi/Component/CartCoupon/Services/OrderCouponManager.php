@@ -25,7 +25,7 @@ use Elcodi\Component\CartCoupon\Entity\Interfaces\OrderCouponInterface;
 use Elcodi\Component\CartCoupon\Repository\OrderCouponRepository;
 
 /**
- * OrderCoupon Manager
+ * Class OrderCoupon Manager
  *
  * This class aims to be a bridge between Coupons and Orders.
  * Manages all coupons instances inside Orders

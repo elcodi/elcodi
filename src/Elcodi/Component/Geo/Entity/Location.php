@@ -23,7 +23,7 @@ use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Geo\Entity\Interfaces\LocationInterface;
 
 /**
- * Address
+ * Class Location
  */
 class Location implements LocationInterface
 {

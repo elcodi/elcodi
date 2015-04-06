@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Core\Generator\Interfaces;
 
 /**
- * Class GeneratorInterface
+ * Interface GeneratorInterface
  *
  * This interface is for static generators.
  *

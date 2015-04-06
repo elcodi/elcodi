@@ -28,7 +28,7 @@ use Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
- * Class CartInterface
+ * Interface CartInterface
  */
 interface CartInterface
     extends

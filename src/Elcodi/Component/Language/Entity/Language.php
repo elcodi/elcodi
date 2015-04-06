@@ -22,7 +22,7 @@ use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 
 /**
- * Language
+ * Class Language
  */
 class Language implements LanguageInterface
 {

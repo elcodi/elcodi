@@ -24,7 +24,7 @@ use Elcodi\Component\CartCoupon\Entity\Interfaces\CartCouponInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 
 /**
- * AbstractCartCouponEvent class
+ * Class AbstractCartCouponEvent
  */
 abstract class AbstractCartCouponEvent extends Event
 {

@@ -20,7 +20,7 @@ namespace Elcodi\Component\Rule\Entity\Interfaces;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
- * Class RuleInterface
+ * Interface RuleInterface
  */
 interface RuleInterface extends IdentifiableInterface
 {

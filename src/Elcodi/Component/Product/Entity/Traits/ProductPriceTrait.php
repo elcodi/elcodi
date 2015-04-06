@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Product\Entity\Traits;
 
 /**
- * Class ProductPriceTrait
+ * Trait ProductPriceTrait
  *
  * Trait that defines common price members for a Product
  */
