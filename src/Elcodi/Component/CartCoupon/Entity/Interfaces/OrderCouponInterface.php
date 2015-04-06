@@ -23,7 +23,7 @@ use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 
 /**
- * Class OrderCouponInterface
+ * Interface OrderCouponInterface
  */
 interface OrderCouponInterface extends IdentifiableInterface
 {

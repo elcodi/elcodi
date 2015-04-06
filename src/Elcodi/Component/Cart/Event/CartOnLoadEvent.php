@@ -20,7 +20,7 @@ namespace Elcodi\Component\Cart\Event;
 use Elcodi\Component\Cart\Event\Abstracts\AbstractCartEvent;
 
 /**
- * CartloadEvent
+ * Class CartloadEvent
  */
 class CartOnLoadEvent extends AbstractCartEvent
 {

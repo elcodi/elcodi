@@ -23,7 +23,7 @@ use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
 use Elcodi\Component\User\Repository\Interfaces\UserEmaileableInterface;
 
 /**
- * AdminUserRepository
+ * Class AdminUserRepository
  */
 class AdminUserRepository extends EntityRepository implements UserEmaileableInterface
 {

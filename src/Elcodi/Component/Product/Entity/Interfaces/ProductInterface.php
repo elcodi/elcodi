@@ -28,7 +28,7 @@ use Elcodi\Component\Media\Entity\Interfaces\PrincipalImageInterface;
 use Elcodi\Component\MetaData\Entity\Interfaces\MetaDataInterface;
 
 /**
- * Class ProductInterface
+ * Interface ProductInterface
  */
 interface ProductInterface
     extends

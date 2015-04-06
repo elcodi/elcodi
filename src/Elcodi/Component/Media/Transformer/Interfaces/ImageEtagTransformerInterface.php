@@ -20,7 +20,7 @@ namespace Elcodi\Component\Media\Transformer\Interfaces;
 use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 
 /**
- * Class ImageEtagTransformerInterface
+ * Interface ImageEtagTransformerInterface
  */
 interface ImageEtagTransformerInterface
 {

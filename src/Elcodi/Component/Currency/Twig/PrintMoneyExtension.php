@@ -31,6 +31,8 @@ use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 use Elcodi\Component\Language\Entity\Interfaces\LocaleInterface;
 
 /**
+ * Class PrintMoneyExtension
+ *
  * Print price extension for twig
  */
 class PrintMoneyExtension extends Twig_Extension

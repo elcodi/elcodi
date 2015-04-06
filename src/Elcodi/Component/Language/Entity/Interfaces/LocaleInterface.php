@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Language\Entity\Interfaces;
 
 /**
- * interface LocaleInterface
+ * Interface LocaleInterface
  */
 interface LocaleInterface
 {

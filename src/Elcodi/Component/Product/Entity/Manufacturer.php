@@ -29,7 +29,7 @@ use Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 
 /**
- * Manufacturer
+ * Class Manufacturer
  */
 class Manufacturer implements ManufacturerInterface
 {

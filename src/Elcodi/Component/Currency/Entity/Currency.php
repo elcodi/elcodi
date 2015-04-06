@@ -22,7 +22,7 @@ use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 
 /**
- * Currency
+ * Class Currency
  */
 class Currency implements CurrencyInterface
 {

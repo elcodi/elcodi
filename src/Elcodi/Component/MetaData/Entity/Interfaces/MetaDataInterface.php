@@ -18,7 +18,7 @@
 namespace Elcodi\Component\MetaData\Entity\Interfaces;
 
 /**
- * Class MetaDataInterface
+ * Interface MetaDataInterface
  */
 interface MetaDataInterface
 {

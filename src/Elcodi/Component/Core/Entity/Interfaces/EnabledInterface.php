@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Core\Entity\Interfaces;
 
 /**
- * Class EnabledInterface
+ * Interface EnabledInterface
  */
 interface EnabledInterface
 {

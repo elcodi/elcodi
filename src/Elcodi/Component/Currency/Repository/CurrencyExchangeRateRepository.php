@@ -20,7 +20,7 @@ namespace Elcodi\Component\Currency\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * CurrencyExchangeRateRepository
+ * Class CurrencyExchangeRateRepository
  */
 class CurrencyExchangeRateRepository extends EntityRepository
 {

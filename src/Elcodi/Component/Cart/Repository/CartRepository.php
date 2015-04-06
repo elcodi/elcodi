@@ -23,7 +23,7 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 
 /**
- * CartRepository
+ * Class CartRepository
  */
 class CartRepository extends EntityRepository
 {

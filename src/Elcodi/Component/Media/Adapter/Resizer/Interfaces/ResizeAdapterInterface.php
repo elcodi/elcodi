@@ -20,7 +20,7 @@ namespace Elcodi\Component\Media\Adapter\Resizer\Interfaces;
 use Elcodi\Component\Media\ElcodiMediaImageResizeTypes;
 
 /**
- * Class ResizerAdapterInterface
+ * Interface ResizerAdapterInterface
  */
 interface ResizeAdapterInterface
 {

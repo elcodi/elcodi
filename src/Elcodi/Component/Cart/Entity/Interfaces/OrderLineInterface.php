@@ -21,7 +21,7 @@ use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
 
 /**
- * Class OrderLineInterface
+ * Interface OrderLineInterface
  */
 interface OrderLineInterface
     extends

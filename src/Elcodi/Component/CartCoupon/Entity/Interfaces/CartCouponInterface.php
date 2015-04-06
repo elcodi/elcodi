@@ -22,7 +22,7 @@ use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 
 /**
- * Class CartCouponInterface
+ * Interface CartCouponInterface
  */
 interface CartCouponInterface extends IdentifiableInterface
 {

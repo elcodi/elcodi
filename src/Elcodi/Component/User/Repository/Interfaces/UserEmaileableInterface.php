@@ -20,7 +20,7 @@ namespace Elcodi\Component\User\Repository\Interfaces;
 use Elcodi\Component\User\Entity\Abstracts\AbstractUser;
 
 /**
- * Class UserEmailRecoverableInterface
+ * Interface UserEmailRecoverableInterface
  */
 interface UserEmaileableInterface
 {

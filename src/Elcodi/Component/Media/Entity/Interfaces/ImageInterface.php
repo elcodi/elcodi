@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Media\Entity\Interfaces;
 
 /**
- * Class ImageInterface
+ * Interface ImageInterface
  */
 interface ImageInterface extends FileInterface
 {

@@ -20,7 +20,7 @@ namespace Elcodi\Component\Media\Transformer\Interfaces;
 use Elcodi\Component\Media\Entity\Interfaces\FileInterface;
 
 /**
- * Class FileIdentifierTransformerInterface
+ * Interface FileIdentifierTransformerInterface
  */
 interface FileIdentifierTransformerInterface
 {

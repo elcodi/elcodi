@@ -18,7 +18,7 @@
 namespace Elcodi\Component\User\Entity\Interfaces;
 
 /**
- * Class AdminUserInterface
+ * Interface AdminUserInterface
  */
 interface AdminUserInterface extends AbstractUserInterface
 {

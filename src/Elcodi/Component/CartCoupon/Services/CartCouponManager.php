@@ -31,7 +31,7 @@ use Elcodi\Component\Coupon\Repository\CouponRepository;
 use Elcodi\Component\Coupon\Services\CouponManager;
 
 /**
- * CartCoupon Manager
+ * Class CartCoupon Manager
  *
  * This class aims to be a bridge between Coupons and Carts.
  * Manages all coupons instances inside Carts

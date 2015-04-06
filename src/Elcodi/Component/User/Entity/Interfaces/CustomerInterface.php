@@ -25,6 +25,8 @@ use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 
 /**
+ * Interface CustomerInterface
+ *
  * Entities depending on CustomerInterfaces must implement shopping
  * capabilities and associations, such as addresses, orders, carts
  */

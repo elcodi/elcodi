@@ -26,7 +26,7 @@ use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
- * Class OrderInterface
+ * Interface OrderInterface
  */
 interface OrderInterface extends PriceInterface, DimensionableInterface
 {

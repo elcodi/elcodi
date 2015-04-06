@@ -23,7 +23,7 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 
 /**
- * CategoryRepository
+ * Class CategoryRepository
  */
 class CategoryRepository extends EntityRepository
 {

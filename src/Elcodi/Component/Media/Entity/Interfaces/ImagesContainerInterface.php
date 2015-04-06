@@ -20,7 +20,7 @@ namespace Elcodi\Component\Media\Entity\Interfaces;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Class ImagesContainerInterface
+ * Interface ImagesContainerInterface
  */
 interface ImagesContainerInterface
 {
