@@ -42,8 +42,8 @@ class Configuration extends AbstractConfiguration implements ConfigurationInterf
                     ->children()
                         ->append($this->addMappingNode(
                             'configuration',
-                            'Elcodi\Component\Configuration\Entity\Configuration',
-                            '@ElcodiConfigurationBundle/Resources/config/doctrine/Configuration.orm.yml',
+                            'Elcodi\Component\Settings\Entity\Settings',
+                            '@ElcodiSettingsBundle/Resources/config/doctrine/Settings.orm.yml',
                             'default',
                             true
                         ))

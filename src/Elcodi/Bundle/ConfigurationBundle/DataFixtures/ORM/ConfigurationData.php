@@ -23,9 +23,9 @@ use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
- * Class ConfigurationData
+ * Class SettingsData
  */
-class ConfigurationData extends AbstractFixture
+class SettingsData extends AbstractFixture
 {
     /**
      * Load data fixtures with the passed EntityManager
@@ -35,14 +35,14 @@ class ConfigurationData extends AbstractFixture
     public function load(ObjectManager $manager)
     {
         /**
-         * @var ObjectDirector $configurationDirector
+         * @var ObjectDirector $settingsDirector
          */
-        $configurationDirector = $this->get('elcodi.director.configuration');
+        $settingsDirector = $this->get('elcodi.director.settings');
 
         /**
          * Parameter
          */
-        $parameter = $configurationDirector
+        $parameter = $settingsDirector
             ->create()
             ->setKey('my_boolean_parameter')
             ->setNamespace('app')
@@ -50,6 +50,6 @@ class ConfigurationData extends AbstractFixture
             ->setValue(true)
             ->setType('boolean');
 
-        $configurationDirector->save($parameter);
+        $settingsDirector->save($parameter);
     }
 }

@@ -49,7 +49,7 @@ class ConfigurationManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.manager.configuration'];
+        return ['elcodi.manager.settings'];
     }
 
     /**
@@ -60,7 +60,7 @@ class ConfigurationManagerTest extends WebTestCase
     protected function loadFixturesBundles()
     {
         return [
-            'ElcodiConfigurationBundle',
+            'ElcodiSettingsBundle',
         ];
     }
 
@@ -72,14 +72,14 @@ class ConfigurationManagerTest extends WebTestCase
         $this
             ->assertFalse(
                 $this
-                    ->get('doctrine_cache.providers.elcodi_configurations')
+                    ->get('doctrine_cache.providers.elcodi_settings')
                     ->contains('app.my_boolean_parameter')
             );
 
         $this
             ->assertInstanceOf(
-                'Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface',
-                $this->find('Configuration', [
+                'Elcodi\Component\Settings\Entity\Interfaces\SettingsInterface',
+                $this->find('Settings', [
                     'namespace' => 'app',
                     'key'       => 'my_boolean_parameter',
                 ])
@@ -96,7 +96,7 @@ class ConfigurationManagerTest extends WebTestCase
             ->assertEquals(
                 true,
                 $this
-                    ->get('doctrine_cache.providers.elcodi_configurations')
+                    ->get('doctrine_cache.providers.elcodi_settings')
                     ->fetch('app.my_boolean_parameter')
             );
     }
@@ -109,13 +109,13 @@ class ConfigurationManagerTest extends WebTestCase
         $this
             ->assertFalse(
                 $this
-                    ->get('doctrine_cache.providers.elcodi_configurations')
+                    ->get('doctrine_cache.providers.elcodi_settings')
                     ->contains('my_parameter')
             );
 
         $this
             ->assertNull(
-                $this->find('Configuration', [
+                $this->find('Settings', [
                     'namespace' => '',
                     'key'       => 'my_parameter',
                 ])
@@ -132,14 +132,14 @@ class ConfigurationManagerTest extends WebTestCase
             ->assertEquals(
                 'my_parameter_value',
                 $this
-                    ->get('doctrine_cache.providers.elcodi_configurations')
+                    ->get('doctrine_cache.providers.elcodi_settings')
                     ->fetch('my_parameter')
             );
 
         $this
             ->assertInstanceOf(
-                'Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface',
-                $this->find('Configuration', [
+                'Elcodi\Component\Settings\Entity\Interfaces\SettingsInterface',
+                $this->find('Settings', [
                     'namespace' => '',
                     'key'       => 'my_parameter',
                 ])
@@ -154,7 +154,7 @@ class ConfigurationManagerTest extends WebTestCase
     public function testGetNonExistingParameter()
     {
         $this
-            ->get('elcodi.manager.configuration')
+            ->get('elcodi.manager.settings')
             ->get('non_existent_parameter');
     }
 
@@ -166,18 +166,18 @@ class ConfigurationManagerTest extends WebTestCase
         $this
             ->assertFalse(
                 $this
-                    ->get('doctrine_cache.providers.elcodi_configurations')
+                    ->get('doctrine_cache.providers.elcodi_settings')
                     ->contains('my_parameter')
             );
 
         $this
-            ->get('elcodi.manager.configuration')
+            ->get('elcodi.manager.settings')
             ->set('my_parameter', 'my_new_value');
 
         $this
             ->assertInstanceOf(
-                'Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface',
-                $this->find('Configuration', [
+                'Elcodi\Component\Settings\Entity\Interfaces\SettingsInterface',
+                $this->find('Settings', [
                     'namespace' => '',
                     'key'       => 'my_parameter',
                 ])
@@ -194,7 +194,7 @@ class ConfigurationManagerTest extends WebTestCase
             ->assertEquals(
                 'my_new_value',
                 $this
-                    ->get('doctrine_cache.providers.elcodi_configurations')
+                    ->get('doctrine_cache.providers.elcodi_settings')
                     ->fetch('my_parameter')
             );
     }
@@ -202,26 +202,26 @@ class ConfigurationManagerTest extends WebTestCase
     /**
      * Test write immutable value with different value than expected
      *
-     * @expectedException \Elcodi\Component\Configuration\Exception\ConfigurationNotEditableException
+     * @expectedException \Elcodi\Component\Settings\Exception\SettingsNotEditableException
      */
-    public function testImmutableConfigurationWrite()
+    public function testImmutableSettingsWrite()
     {
         $this
             ->assertFalse(
                 $this
-                    ->get('doctrine_cache.providers.elcodi_configurations')
+                    ->get('doctrine_cache.providers.elcodi_settings')
                     ->contains('my_immutable_parameter')
             );
 
         $this
-            ->get('elcodi.manager.configuration')
+            ->get('elcodi.manager.settings')
             ->set('my_immutable_parameter', 'immutable');
 
         $this
             ->assertEquals(
                 'immutable',
                 $this
-                    ->find('Configuration', [
+                    ->find('Settings', [
                         'namespace' => '',
                         'key'       => 'my_immutable_parameter',
                     ])
@@ -229,7 +229,7 @@ class ConfigurationManagerTest extends WebTestCase
             );
 
         $this
-            ->get('elcodi.manager.configuration')
+            ->get('elcodi.manager.settings')
             ->set('my_immutable_parameter', 'non-immutable');
     }
 
@@ -241,7 +241,7 @@ class ConfigurationManagerTest extends WebTestCase
     public function testImmutableConfigurationDelete()
     {
         $this
-            ->get('elcodi.manager.configuration')
+            ->get('elcodi.manager.settings')
             ->delete('my_immutable_parameter');
     }
 
@@ -256,7 +256,7 @@ class ConfigurationManagerTest extends WebTestCase
         $this
             ->assertFalse(
                 $this
-                    ->get('elcodi.manager.configuration')
+                    ->get('elcodi.manager.settings')
                     ->delete('my_parameter')
             );
 
@@ -264,12 +264,12 @@ class ConfigurationManagerTest extends WebTestCase
          * Deletion of a persisted parameter should return true
          */
         $this
-            ->get('elcodi.manager.configuration')
+            ->get('elcodi.manager.settings')
             ->set('my_parameter', 'my_new_value');
         $this
             ->assertTrue(
                 $this
-                    ->get('elcodi.manager.configuration')
+                    ->get('elcodi.manager.settings')
                     ->delete('my_parameter')
             );
 
@@ -279,7 +279,7 @@ class ConfigurationManagerTest extends WebTestCase
         $this
             ->assertFalse(
               $this
-                  ->get('doctrine_cache.providers.elcodi_configurations')
+                  ->get('doctrine_cache.providers.elcodi_settings')
                   ->contains('my_parameter')
             );
 
@@ -288,7 +288,7 @@ class ConfigurationManagerTest extends WebTestCase
          */
         $this->assertNull(
             $this
-                ->get('elcodi.repository.configuration')
+                ->get('elcodi.repository.settings')
                 ->find([
                     'namespace' => '',
                     'key'       => 'my_parameter',
@@ -299,12 +299,12 @@ class ConfigurationManagerTest extends WebTestCase
     /**
      * Test deletion of a non-existing parameter
      *
-     * @expectedException \Elcodi\Component\Configuration\Exception\ConfigurationParameterNotFoundException
+     * @expectedException \Elcodi\Component\Settings\Exception\SettingsParameterNotFoundException
      */
     public function testDeleteNonExistentParameter()
     {
         $this
-            ->get('elcodi.manager.configuration')
+            ->get('elcodi.manager.settings')
             ->delete('non_existent_parameter');
     }
 }

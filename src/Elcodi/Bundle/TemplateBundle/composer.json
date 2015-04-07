@@ -38,7 +38,7 @@
         "symfony/dependency-injection": "~2.6",
 
         "elcodi/core-bundle": "~0.5.0",
-        "elcodi/configuration-bundle": "~0.5.0",
+        "elcodi/settings-bundle": "~0.5.0",
         "elcodi/plugin": "~0.5.0"
     },
     "require-dev": {

@@ -64,7 +64,7 @@ class ElcodiProductBundle extends Bundle implements DependentBundleInterface
             '\Elcodi\Bundle\MediaBundle\ElcodiMediaBundle',
             '\Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
             '\Elcodi\Bundle\AttributeBundle\ElcodiAttributeBundle',
-            '\Elcodi\Bundle\ConfigurationBundle\ElcodiConfigurationBundle',
+            '\Elcodi\Bundle\SettingsBundle\ElcodiSettingsBundle',
             '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
     }

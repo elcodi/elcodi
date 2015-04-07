@@ -15,37 +15,37 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Configuration\Command;
+namespace Elcodi\Component\Settings\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use Elcodi\Component\Configuration\Services\ConfigurationManager;
+use Elcodi\Component\Settings\Services\SettingsManager;
 
 /**
- * Class ConfigurationDeleteCommand
+ * Class SettingsDeleteCommand
  */
-class ConfigurationDeleteCommand extends Command
+class SSettingsDeleteCommand extends Command
 {
     /**
-     * @var ConfigurationManager
+     * @var SettingsManager
      *
-     * Configuration manager
+     * Settings manager
      */
-    protected $configurationManager;
+    protected $settingsManager;
 
     /**
      * Constructor
      *
      * @param ConfigurationManager $configurationManager Configuration manager
      */
-    public function __construct(ConfigurationManager $configurationManager)
+    public function __construct(SettingsManager $settingsManager)
     {
         parent::__construct();
 
-        $this->configurationManager = $configurationManager;
+        $this->settingsManager = $settingsManager;
     }
 
     /**
@@ -54,12 +54,12 @@ class ConfigurationDeleteCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('elcodi:configuration:delete')
-            ->setDescription('Deletes a specific configuration value')
+            ->setName('elcodi:settings:delete')
+            ->setDescription('Deletes a specific settings value')
             ->addArgument(
                 'identifier',
                 InputArgument::REQUIRED,
-                'Configuration identifier'
+                'Settings identifier'
             );
     }
 
@@ -76,7 +76,7 @@ class ConfigurationDeleteCommand extends Command
         $configurationIdentifier = $input->getArgument('identifier');
 
         $this
-            ->configurationManager
+            ->settingsManager
             ->delete(
                 $configurationIdentifier
             );
@@ -84,7 +84,7 @@ class ConfigurationDeleteCommand extends Command
         $formatter = $this->getHelper('formatter');
         $formattedLine = $formatter->formatSection(
             'OK',
-            'Deleted configuration "' . $configurationIdentifier . '"'
+            'Deleted settings "' . $configurationIdentifier . '"'
         );
 
         $output->writeln($formattedLine);

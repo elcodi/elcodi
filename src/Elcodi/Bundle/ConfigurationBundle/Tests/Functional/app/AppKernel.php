@@ -39,7 +39,7 @@ class AppKernel extends AbstractElcodiKernel
             '\Doctrine\Bundle\DoctrineBundle\DoctrineBundle',
             '\Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle',
             '\Elcodi\Bundle\FixturesBoosterBundle\ElcodiFixturesBoosterBundle',
-            '\Elcodi\Bundle\ConfigurationBundle\ElcodiConfigurationBundle',
+            '\Elcodi\Bundle\SettingsBundle\ElcodiSettingsBundle',
         ]);
     }
 

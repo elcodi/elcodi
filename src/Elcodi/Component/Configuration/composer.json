@@ -1,13 +1,14 @@
 {
-    "name": "elcodi/configuration",
-    "description": "Elcodi Configuration Component",
+    "name": "elcodi/settings",
+    "description": "Elcodi Settings Component",
     "keywords": [
         "elcodi",
+        "Settings",
         "Configuration",
         "ecommerce",
         "component"
     ],
-    "homepage": "https://github.com/elcodi/Configuration",
+    "homepage": "https://github.com/elcodi/Settings",
 
     "type": "library",
     "license": "MIT",
@@ -28,7 +29,7 @@
         },
         {
             "name": "The Awesome Elcodi Community",
-            "homepage": "https://github.com/elcodi/Configuration/contributors"
+            "homepage": "https://github.com/elcodi/Settings/contributors"
         }
     ],
     "require": {
@@ -40,7 +41,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\Component\\Configuration\\": ""
+            "Elcodi\\Component\\Settings\\": ""
         }
     },
     "extra": {

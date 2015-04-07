@@ -25,14 +25,14 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableE
 /**
  * This is the class that loads and manages your bundle configuration
  */
-class ElcodiConfigurationExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
+class ElcodiSettingsExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
     /**
      * @var string
      *
      * Extension name
      */
-    const EXTENSION_NAME = 'elcodi_configuration';
+    const EXTENSION_NAME = 'elcodi_settings';
 
     /**
      * Get the Config file location
@@ -77,12 +77,12 @@ class ElcodiConfigurationExtension extends AbstractExtension implements Entities
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.configuration.class" => $config['mapping']['configuration']['class'],
-            "elcodi.entity.configuration.mapping_file" => $config['mapping']['configuration']['mapping_file'],
-            "elcodi.entity.configuration.manager" => $config['mapping']['configuration']['manager'],
-            "elcodi.entity.configuration.enabled" => $config['mapping']['configuration']['enabled'],
+            "elcodi.entity.settings.class" => $config['mapping']['settings']['class'],
+            "elcodi.entity.settings.mapping_file" => $config['mapping']['settings']['mapping_file'],
+            "elcodi.entity.settings.manager" => $config['mapping']['settings']['manager'],
+            "elcodi.entity.settings.enabled" => $config['mapping']['settings']['enabled'],
 
-            'elcodi.core.configuration.elements' => $config['elements'],
+            'elcodi.core.settings.elements' => $config['elements'],
         ];
     }
 
@@ -120,7 +120,7 @@ class ElcodiConfigurationExtension extends AbstractExtension implements Entities
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface' => 'elcodi.entity.configuration.class',
+            'Elcodi\Component\Settings\Entity\Interfaces\SettingsInterface' => 'elcodi.entity.settings.class',
         ];
     }
 

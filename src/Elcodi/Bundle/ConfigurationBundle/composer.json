@@ -1,12 +1,13 @@
 {
-    "name": "elcodi/configuration-bundle",
-    "description": "Elcodi Configuration Bundle",
+    "name": "elcodi/settings-bundle",
+    "description": "Elcodi Settings Bundle",
     "keywords": [
         "elcodi",
+        "settings",
         "configuration",
         "ecommerce"
     ],
-    "homepage": "https://github.com/elcodi/ConfigurationBundle",
+    "homepage": "https://github.com/elcodi/SettingsBundle",
     "type": "symfony-bundle",
     "license": "MIT",
     "support": {
@@ -26,7 +27,7 @@
         },
         {
             "name": "The Awesome Elcodi Community",
-            "homepage": "https://github.com/elcodi/ConfigurationBundle/contributors"
+            "homepage": "https://github.com/elcodi/SettingsBundle/contributors"
         }
     ],
     "require": {
@@ -42,7 +43,7 @@
         "doctrine/doctrine-cache-bundle": "~1.0",
 
         "elcodi/core-bundle": "~0.5.0",
-        "elcodi/configuration": "~0.5.0"
+        "elcodi/settings": "~0.5.0"
     },
     "require-dev": {
         "elcodi/test-common-bundle": "~0.5.0",
@@ -52,7 +53,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\Bundle\\ConfigurationBundle\\": ""
+            "Elcodi\\Bundle\\SettingsBundle\\": ""
         }
     },
     "extra": {
