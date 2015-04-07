@@ -24,7 +24,7 @@ var _etc = (function () {
             _etcr.src += '&_r=' + Math.random().toString(36);
             _etcr.height = "1";
             _etcr.width = "1";
-            _etcr.style = "display:none;";
+            _etcr.style.display = "none";
 
             this.appendTracker(_etcr);
         },
