@@ -227,18 +227,14 @@ class ElcodiSitemapExtension extends AbstractExtension
      */
     protected function loadCommands(array $config, ContainerBuilder $container)
     {
-        $profiles = $config['profiles'];
-
-        foreach ($profiles as $profileName => $profile) {
-            $container
-                ->register(
-                    'elcodi.sitemap_command.' . $profileName,
-                    '%elcodi.core.sitemap.command.dump_sitemap.class%'
-                )
-                ->addArgument(new Reference('elcodi.sitemap_dumper.' . $profileName))
-                ->setPublic(true)
-                ->addTag('console.command');
-        }
+        $container
+            ->register(
+                'elcodi.sitemap_command.dumper',
+                '%elcodi.core.sitemap.command.dump_sitemap.class%'
+            )
+            ->addArgument(new Reference('elcodi.sitemap_dumper_chain'))
+            ->setPublic(true)
+            ->addTag('console.command');
 
         return $this;
     }
