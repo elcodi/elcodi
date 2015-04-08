@@ -48,7 +48,7 @@
         "elcodi/media-bundle": "~0.5.0",
         "elcodi/currency-bundle": "~0.5.0",
         "elcodi/attribute-bundle": "~0.5.0",
-        "elcodi/configuration-bundle": "~0.5.0",
+        "elcodi/settings-bundle": "~0.5.0",
         "elcodi/product": "~0.5.0"
     },
     "require-dev": {

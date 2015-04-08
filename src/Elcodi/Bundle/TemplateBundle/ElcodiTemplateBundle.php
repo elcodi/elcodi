@@ -47,7 +47,7 @@ class ElcodiTemplateBundle extends Bundle implements DependentBundleInterface
     public static function getBundleDependencies()
     {
         return [
-            '\Elcodi\Bundle\ConfigurationBundle\ElcodiConfigurationBundle',
+            '\Elcodi\Bundle\SettingsBundle\ElcodiSettingsBundle',
             '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
     }

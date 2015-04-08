@@ -1,0 +1,13 @@
+services:
+
+    #
+    # Factories
+    #
+
+    #
+    # Factory for configuration entity
+    #
+    elcodi.factory.configuration:
+        class: %elcodi.factory.configuration.class%
+        calls:
+            - [setEntityNamespace, ["%elcodi.entity.settings.class%"]]

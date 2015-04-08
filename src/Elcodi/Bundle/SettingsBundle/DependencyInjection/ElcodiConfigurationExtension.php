@@ -15,7 +15,7 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\CartCouponBundle\DependencyInjection;
+namespace Elcodi\Bundle\ConfigurationBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -23,16 +23,16 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * Class ElcodiCartCouponExtension
+ * This is the class that loads and manages your bundle configuration
  */
-class ElcodiCartCouponExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
+class ElcodiSettingsExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
     /**
      * @var string
      *
      * Extension name
      */
-    const EXTENSION_NAME = 'elcodi_cart_coupon';
+    const EXTENSION_NAME = 'elcodi_settings';
 
     /**
      * Get the Config file location
@@ -45,20 +45,20 @@ class ElcodiCartCouponExtension extends AbstractExtension implements EntitiesOve
     }
 
     /**
-     * Return a new Settings instance.
+     * Return a new Configuration instance.
      *
      * If object returned by this method is an instance of
-     * SettingsInterface, extension will use the Settings to read all
+     * ConfigurationInterface, extension will use the Configuration to read all
      * bundle config definitions.
      *
      * Also will call getParametrizationValues method to load some config values
      * to internal parameters.
      *
-     * @return SettingsInterface Settings file
+     * @return ConfigurationInterface Configuration file
      */
-    protected function getSettingsInstance()
+    protected function getConfigurationInstance()
     {
-        return new Settings(static::EXTENSION_NAME);
+        return new Configuration(static::EXTENSION_NAME);
     }
 
     /**
@@ -77,26 +77,17 @@ class ElcodiCartCouponExtension extends AbstractExtension implements EntitiesOve
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.cart_coupon.class" => $config['mapping']['cart_coupon']['class'],
-            "elcodi.entity.cart_coupon.mapping_file" => $config['mapping']['cart_coupon']['mapping_file'],
-            "elcodi.entity.cart_coupon.manager" => $config['mapping']['cart_coupon']['manager'],
-            "elcodi.entity.cart_coupon.enabled" => $config['mapping']['cart_coupon']['enabled'],
+            "elcodi.entity.settings.class" => $config['mapping']['settings']['class'],
+            "elcodi.entity.settings.mapping_file" => $config['mapping']['settings']['mapping_file'],
+            "elcodi.entity.settings.manager" => $config['mapping']['settings']['manager'],
+            "elcodi.entity.settings.enabled" => $config['mapping']['settings']['enabled'],
 
-            "elcodi.entity.order_coupon.class" => $config['mapping']['order_coupon']['class'],
-            "elcodi.entity.order_coupon.mapping_file" => $config['mapping']['order_coupon']['mapping_file'],
-            "elcodi.entity.order_coupon.manager" => $config['mapping']['order_coupon']['manager'],
-            "elcodi.entity.order_coupon.enabled" => $config['mapping']['order_coupon']['enabled'],
+            'elcodi.core.settings.elements' => $config['elements'],
         ];
     }
 
     /**
      * Config files to load
-     *
-     * return array(
-     *      'file1.yml',
-     *      'file2.yml',
-     *      ...
-     * );
      *
      * @param array $config Config
      *
@@ -106,13 +97,13 @@ class ElcodiCartCouponExtension extends AbstractExtension implements EntitiesOve
     {
         return [
             'classes',
+            'commands',
             'services',
-            'eventListeners',
             'factories',
-            'services',
             'repositories',
-            'eventDispatchers',
             'objectManagers',
+            'services',
+            'twig',
             'directors',
         ];
     }
@@ -129,13 +120,25 @@ class ElcodiCartCouponExtension extends AbstractExtension implements EntitiesOve
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\CartCoupon\Entity\Interfaces\CartCouponInterface' => 'elcodi.entity.cart_coupon.class',
-            'Elcodi\Component\CartCoupon\Entity\Interfaces\OrderCouponInterface' => 'elcodi.entity.order_coupon.class',
+            'Elcodi\Component\Settings\Entity\Interfaces\SettingsInterface' => 'elcodi.entity.settings.class',
         ];
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the recommended alias to use in XML.
+     *
+     * This alias is also the mandatory prefix to use when using YAML.
+     *
+     * This convention is to remove the "Extension" postfix from the class
+     * name and then lowercase and underscore the result. So:
+     *
+     *     AcmeHelloExtension
+     *
+     * becomes
+     *
+     *     acme_hello
+     *
+     * This can be overridden in a sub-class to specify the alias manually.
      *
      * @return string The alias
      */

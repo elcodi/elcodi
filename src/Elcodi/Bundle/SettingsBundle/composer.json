@@ -1,12 +1,13 @@
 {
-    "name": "elcodi/template-bundle",
-    "description": "Elcodi Template Bundle",
+    "name": "elcodi/settings-bundle",
+    "description": "Elcodi Settings Bundle",
     "keywords": [
         "elcodi",
-        "template",
+        "settings",
+        "configuration",
         "ecommerce"
     ],
-    "homepage": "https://github.com/elcodi/TemplateBundle",
+    "homepage": "https://github.com/elcodi/SettingsBundle",
     "type": "symfony-bundle",
     "license": "MIT",
     "support": {
@@ -26,29 +27,33 @@
         },
         {
             "name": "The Awesome Elcodi Community",
-            "homepage": "https://github.com/elcodi/TemplateBundle/contributors"
+            "homepage": "https://github.com/elcodi/SettingsBundle/contributors"
         }
     ],
     "require": {
         "php": ">=5.4",
+        "doctrine/common": "~2.4",
+        "doctrine/orm": "~2.4",
 
         "symfony/http-kernel": "~2.6",
         "symfony/console": "~2.6",
         "symfony/config": "~2.6",
-        "symfony/dependency-injection": "~2.6",
+        "symfony/dependency-injection": "~2.6,>=2.6.3",
+        "mmoreram/simple-doctrine-mapping": "~0.1",
+        "doctrine/doctrine-cache-bundle": "~1.0",
 
         "elcodi/core-bundle": "~0.5.0",
-        "elcodi/settings-bundle": "~0.5.0",
-        "elcodi/plugin": "~0.5.0"
+        "elcodi/settings": "~0.5.0"
     },
     "require-dev": {
         "elcodi/test-common-bundle": "~0.5.0",
+        "symfony/expression-language": "~2.6",
         "elcodi/fixtures-booster-bundle": "~0.5.0",
         "doctrine/data-fixtures": "~1.0"
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\Component\\TemplateBundle\\": ""
+            "Elcodi\\Bundle\\SettingsBundle\\": ""
         }
     },
     "extra": {
