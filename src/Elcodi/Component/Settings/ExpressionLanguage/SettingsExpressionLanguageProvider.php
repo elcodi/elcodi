@@ -15,15 +15,15 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Configuration\ExpressionLanguage;
+namespace Elcodi\Component\Settings\ExpressionLanguage;
 
 use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 
 /**
- * Class ConfigurationExpressionLanguageProvider
+ * Class SettingsExpressionLanguageProvider
  */
-class ConfigurationExpressionLanguageProvider implements ExpressionFunctionProviderInterface
+class SettingsExpressionLanguageProvider implements ExpressionFunctionProviderInterface
 {
     /**
      * @return ExpressionFunction[] An array of Function instances
@@ -31,22 +31,22 @@ class ConfigurationExpressionLanguageProvider implements ExpressionFunctionProvi
     public function getFunctions()
     {
         return [
-            new ExpressionFunction('elcodi_config', function ($name, $defaultValue = null) {
+            new ExpressionFunction('elcodi_settings', function ($name, $defaultValue = null) {
 
                 return ($defaultValue)
                     ? sprintf(
-                        '$this->get(\'elcodi.manager.configuration\')->get(%s,%s)',
+                        '$this->get(\'elcodi.manager.settings\')->get(%s,%s)',
                         $name,
                         $defaultValue
                     )
                     : sprintf(
-                        '$this->get(\'elcodi.manager.configuration\')->get(%s)',
+                        '$this->get(\'elcodi.manager.settings\')->get(%s)',
                         $name
                     );
 
             }, function (array $variables, $name, $defaultValue = null) {
                 return $variables['container']
-                    ->get('elcodi.manager.configuration')
+                    ->get('elcodi.manager.settings')
                     ->get($name, $defaultValue);
             }),
         ];

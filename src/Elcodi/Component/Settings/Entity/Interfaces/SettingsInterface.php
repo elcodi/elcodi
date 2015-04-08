@@ -15,14 +15,14 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Configuration\Entity\Interfaces;
+namespace Elcodi\Component\Settings\Entity\Interfaces;
 
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 
 /**
- * Interface ConfigurationInterface
+ * Interface SettingsInterface
  */
-interface ConfigurationInterface extends DateTimeInterface
+interface SettingsInterface extends DateTimeInterface
 {
     /**
      * Get Key

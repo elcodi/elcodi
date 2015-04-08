@@ -15,13 +15,13 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Configuration\Repository;
+namespace Elcodi\Component\Settings\Exception;
 
-use Doctrine\ORM\EntityRepository;
+use Exception;
 
 /**
- * Class ConfigurationRepository
+ * Class SettingsNotEditableException
  */
-class ConfigurationRepository extends EntityRepository
+class SettingsNotEditableException extends Exception
 {
 }

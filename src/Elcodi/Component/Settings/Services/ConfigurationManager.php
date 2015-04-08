@@ -15,31 +15,31 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Configuration\Services;
+namespace Elcodi\Component\Settings\Services;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Exception;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
-use Elcodi\Component\Configuration\ElcodiConfigurationTypes;
-use Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface;
-use Elcodi\Component\Configuration\Exception\ConfigurationNotEditableException;
-use Elcodi\Component\Configuration\Exception\ConfigurationParameterNotFoundException;
-use Elcodi\Component\Configuration\Factory\ConfigurationFactory;
-use Elcodi\Component\Configuration\Repository\ConfigurationRepository;
+use Elcodi\Component\Settings\ElcodiSettingsTypes;
+use Elcodi\Component\Settings\Entity\Interfaces\SettingsInterface;
+use Elcodi\Component\Settings\Exception\SettingsNotEditableException;
+use Elcodi\Component\Settings\Exception\SettingsParameterNotFoundException;
+use Elcodi\Component\Settings\Factory\SettingsFactory;
+use Elcodi\Component\Settings\Repository\SettingsRepository;
 use Elcodi\Component\Core\Wrapper\Abstracts\AbstractCacheWrapper;
 
 /**
- * Class ConfigurationManager
+ * Class SettingsManager
  */
-class ConfigurationManager extends AbstractCacheWrapper
+class SettingsManager extends AbstractCacheWrapper
 {
     /**
      * @var ObjectManager
      *
-     * Configuration Object manager
+     * Settings Object manager
      */
-    protected $configurationObjectManager;
+    protected $settingsObjectManager;
 
     /**
      * @var ConfigurationRepository
@@ -83,7 +83,7 @@ class ConfigurationManager extends AbstractCacheWrapper
         ParameterBagInterface $parameterBag,
         array $configurationElements
     ) {
-        $this->configurationObjectManager = $configurationObjectManager;
+        $this->settingsObjectManager = $configurationObjectManager;
         $this->configurationRepository = $configurationRepository;
         $this->configurationFactory = $configurationFactory;
         $this->parameterBag = $parameterBag;
@@ -329,11 +329,11 @@ class ConfigurationManager extends AbstractCacheWrapper
     protected function flushConfiguration(ConfigurationInterface $configuration)
     {
         $this
-            ->configurationObjectManager
+            ->settingsObjectManager
             ->persist($configuration);
 
         $this
-            ->configurationObjectManager
+            ->settingsObjectManager
             ->flush($configuration);
 
         return $this;
@@ -349,11 +349,11 @@ class ConfigurationManager extends AbstractCacheWrapper
     protected function deleteConfiguration(ConfigurationInterface $configuration)
     {
         $this
-            ->configurationObjectManager
+            ->settingsObjectManager
             ->remove($configuration);
 
         $this
-            ->configurationObjectManager
+            ->settingsObjectManager
             ->flush($configuration);
 
         return $this;

@@ -15,15 +15,15 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Configuration\Entity;
+namespace Elcodi\Component\Settings\Entity;
 
-use Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface;
+use Elcodi\Component\Settings\Entity\Interfaces\SettingsInterface;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 
 /**
  * Class Parameter
  */
-class Configuration implements ConfigurationInterface
+class Settings implements SettingsInterface
 {
     use DateTimeTrait;
 

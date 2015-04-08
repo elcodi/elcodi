@@ -20,8 +20,8 @@ namespace Elcodi\Component\Configuration\Exception;
 use Exception;
 
 /**
- * Class ConfigurationParameterNotFoundException
+ * Class SettingsParameterNotFoundException
  */
-class ConfigurationParameterNotFoundException extends Exception
+class SettingsParameterNotFoundException extends Exception
 {
 }

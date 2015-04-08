@@ -15,7 +15,7 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\ConfigurationBundle\CompilerPass;
+namespace Elcodi\Bundle\SettingsBundle\CompilerPass;
 
 use Mmoreram\SimpleDoctrineMapping\CompilerPass\Abstracts\AbstractMappingCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

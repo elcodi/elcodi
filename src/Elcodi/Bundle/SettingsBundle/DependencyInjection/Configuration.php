@@ -15,13 +15,13 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\ConfigurationBundle\DependencyInjection;
+namespace Elcodi\Bundle\SettingsBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
-use Elcodi\Component\Configuration\ElcodiConfigurationTypes;
+use Elcodi\Component\Settings\ElcodiConfigurationTypes;
 
 /**
  * This is the class that validates and merges configuration from your app/config files

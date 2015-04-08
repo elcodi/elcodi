@@ -15,19 +15,19 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Configuration\Command;
+namespace Elcodi\Component\Settings\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use Elcodi\Component\Configuration\Services\ConfigurationManager;
+use Elcodi\Component\Settings\Services\SettingsManager;
 
 /**
- * Class ConfigurationGetCommand
+ * Class SettingsSetCommand
  */
-class ConfigurationGetCommand extends Command
+class SettingsSetCommand extends Command
 {
     /**
      * @var ConfigurationManager
@@ -39,13 +39,13 @@ class ConfigurationGetCommand extends Command
     /**
      * Constructor
      *
-     * @param ConfigurationManager $configurationManager Configuration manager
+     * @param ConfigurationManager $configurationManager Settings manager
      */
-    public function __construct(ConfigurationManager $configurationManager)
+    public function __construct(SettingsManager $settingsManager)
     {
         parent::__construct();
 
-        $this->configurationManager = $configurationManager;
+        $this->settingsManager = $settingsManager;
     }
 
     /**
@@ -54,17 +54,22 @@ class ConfigurationGetCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('elcodi:configuration:get')
-            ->setDescription('Get an specific json_encoded configuration value.')
+            ->setName('elcodi:settings:set')
+            ->setDescription('Set an specific settings value with a value')
             ->addArgument(
                 'identifier',
                 InputArgument::REQUIRED,
-                'Configuration identifier'
+                'Settings identifier'
+            )
+            ->addArgument(
+                'value',
+                InputArgument::REQUIRED,
+                'Settings name in a json_encode mode'
             );
     }
 
     /**
-     * This command saves a configuration value
+     * This command saves a settings value
      *
      * @param InputInterface  $input  The input interface
      * @param OutputInterface $output The output interface
@@ -73,16 +78,20 @@ class ConfigurationGetCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $configurationIdentifier = $input->getArgument('identifier');
+        $settingsIdentifier = $input->getArgument('identifier');
+        $settingsValue = json_decode($input->getArgument('value'), true);
 
-        $configurationValue = json_encode($this
-            ->configurationManager
-            ->get($configurationIdentifier));
+        $this
+            ->settingsManager
+            ->set(
+                $settingsIdentifier,
+                $settingsValue
+            );
 
         $formatter = $this->getHelper('formatter');
         $formattedLine = $formatter->formatSection(
-            $configurationIdentifier,
-            $configurationValue
+            'OK',
+            'Saved configuration "' . $settingsIdentifier . '"'
         );
 
         $output->writeln($formattedLine);

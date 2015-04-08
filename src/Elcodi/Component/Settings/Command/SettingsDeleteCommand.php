@@ -27,7 +27,7 @@ use Elcodi\Component\Settings\Services\SettingsManager;
 /**
  * Class SettingsDeleteCommand
  */
-class SSettingsDeleteCommand extends Command
+class SettingsDeleteCommand extends Command
 {
     /**
      * @var SettingsManager
@@ -39,7 +39,7 @@ class SSettingsDeleteCommand extends Command
     /**
      * Constructor
      *
-     * @param ConfigurationManager $configurationManager Configuration manager
+     * @param SettingsManager $settingsManager Settings manager
      */
     public function __construct(SettingsManager $settingsManager)
     {
@@ -64,7 +64,7 @@ class SSettingsDeleteCommand extends Command
     }
 
     /**
-     * This command saves a configuration value
+     * This command saves a settings value
      *
      * @param InputInterface  $input  The input interface
      * @param OutputInterface $output The output interface
@@ -73,18 +73,18 @@ class SSettingsDeleteCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $configurationIdentifier = $input->getArgument('identifier');
+        $settingsIdentifier = $input->getArgument('identifier');
 
         $this
             ->settingsManager
             ->delete(
-                $configurationIdentifier
+                $settingsIdentifier
             );
 
         $formatter = $this->getHelper('formatter');
         $formattedLine = $formatter->formatSection(
             'OK',
-            'Deleted settings "' . $configurationIdentifier . '"'
+            'Deleted settings "' . $settingsIdentifier . '"'
         );
 
         $output->writeln($formattedLine);

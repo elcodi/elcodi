@@ -15,20 +15,19 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Configuration\Factory;
+namespace Elcodi\Component\Settings\Factory;
 
 use DateTime;
 
-use Elcodi\Component\Configuration\ElcodiConfigurationTypes;
-use Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface;
+use Elcodi\Component\Settings\ElcodiSettingsTypes;
+use Elcodi\Component\Settings\Entity\Interfaces\SettingsInterface;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 
 /**
- * Class ConfigurationFactory
+ * Class SettingsFactory
  */
-class ConfigurationFactory extends AbstractFactory
+class SettingsFactory extends AbstractFactory
 {
-
     /**
      * Creates an instance of an entity.
      *
@@ -37,21 +36,21 @@ class ConfigurationFactory extends AbstractFactory
      * This method must always returns an empty instance of the related Entity
      * and initializes it in a consistent state
      *
-     * @return ConfigurationInterface Empty entity
+     * @return SettingsInterface Empty entity
      */
     public function create()
     {
         /**
-         * @var ConfigurationInterface $configuration
+         * @var SettingsInterface $settings
          */
         $classNamespace = $this->getEntityNamespace();
-        $configuration = new $classNamespace();
+        $settings = new $classNamespace();
 
-        $configuration
+        $settings
             ->setNamespace('')
-            ->setType(ElcodiConfigurationTypes::TYPE_STRING)
+            ->setType(ElcodiSettingsTypes::TYPE_STRING)
             ->setCreatedAt(new DateTime());
 
-        return $configuration;
+        return $settings;
     }
 }

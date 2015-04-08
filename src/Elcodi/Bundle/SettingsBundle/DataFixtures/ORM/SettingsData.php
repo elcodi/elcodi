@@ -15,7 +15,7 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\ConfigurationBundle\DataFixtures\ORM;
+namespace Elcodi\Bundle\SettingsBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 
