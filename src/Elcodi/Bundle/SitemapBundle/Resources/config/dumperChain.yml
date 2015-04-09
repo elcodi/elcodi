@@ -1,7 +1,0 @@
-services:
-
-    #
-    # Dumper chain
-    #
-    elcodi.sitemap_dumper_chain:
-        class: %elcodi.sitemap_dumper_chain.class%

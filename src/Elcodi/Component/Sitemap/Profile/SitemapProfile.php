@@ -17,88 +17,68 @@
 
 namespace Elcodi\Component\Sitemap\Profile;
 
-use Elcodi\Component\Sitemap\Loader\Interfaces\EntityLoaderInterface;
-use Elcodi\Component\Sitemap\Profile\Interfaces\SitemapProfileInterface;
+use Elcodi\Component\Sitemap\Dumper\SitemapDumper;
 
 /**
  * Class SitemapProfile
  */
-class SitemapProfile implements SitemapProfileInterface
+class SitemapProfile
 {
     /**
-     * @var EntityLoaderInterface[]
+     * @var array
      *
-     * Entity loaders
+     * Languages
      */
-    protected $entityLoaders;
+    protected $languages;
 
     /**
-     * @var string
+     * @var SitemapDumper[]
      *
-     * Path
+     * Array of SitemapDumpers
      */
-    protected $path;
-
-    /**
-     * @var string
-     *
-     * Name
-     */
-    protected $name;
+    protected $sitemapDumpers;
 
     /**
      * Construct
      *
-     * @param string $name Name
-     * @param string $path Path
+     * @var array $languages Languages
      */
-    public function __construct($name, $path)
+    public function __construct(array $languages = null)
     {
-        $this->name = $name;
-        $this->path = $path;
+        $this->languages = $languages;
     }
 
     /**
-     * Add entity loader
+     * Add a sitemapDumper
      *
-     * @param EntityLoaderInterface $entityLoader Entity Loader
+     * @param SitemapDumper $sitemapDumper Sitemap Dumper
      *
      * @return $this Self object
      */
-    public function addEntityLoader(EntityLoaderInterface $entityLoader)
+    public function addSitemapDumper(SitemapDumper $sitemapDumper)
     {
-        $this->entityLoaders[] = $entityLoader;
+        $this->sitemapDumpers[] = $sitemapDumper;
 
         return $this;
     }
 
     /**
-     * Get Entity loaders
+     * Build full profile
      *
-     * @return EntityLoaderInterface[] Entity loaders
+     * @return $this Self object
      */
-    public function getEntityLoaders()
+    public function dump()
     {
-        return $this->entityLoaders;
-    }
+        foreach ($this->sitemapDumpers as $sitemapDumper) {
+            if (is_array($this->languages)) {
+                foreach ($this->languages as $language) {
+                    $sitemapDumper->dump($language);
+                }
+            } else {
+                $sitemapDumper->dump();
+            }
+        }
 
-    /**
-     * Get Name
-     *
-     * @return string Name
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Get Path
-     *
-     * @return string Path
-     */
-    public function getPath()
-    {
-        return $this->path;
+        return $this;
     }
 }

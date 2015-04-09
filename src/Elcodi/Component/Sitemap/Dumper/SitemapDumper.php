@@ -17,95 +17,81 @@
 
 namespace Elcodi\Component\Sitemap\Dumper;
 
+use Elcodi\Component\Sitemap\Builder\SitemapBuilder;
 use Elcodi\Component\Sitemap\Dumper\Interfaces\SitemapDumperInterface;
-use Elcodi\Component\Sitemap\EventDispatcher\SitemapEventDispatcher;
-use Elcodi\Component\Sitemap\Profile\Interfaces\SitemapProfileInterface;
-use Elcodi\Component\Sitemap\Render\Interfaces\SitemapRenderInterface;
 
 /**
  * Class SitemapDumper
  */
-class SitemapDumper implements SitemapDumperInterface
+class SitemapDumper
 {
     /**
-     * @var SitemapRenderInterface
+     * @var SitemapBuilder
      *
-     * Render
+     * Sitemap Builder
      */
-    protected $sitemapRender;
+    protected $sitemapBuilder;
 
     /**
-     * @var SitemapProfileInterface
+     * @var SitemapDumperInterface
      *
-     * Profile
+     * Sitemap Dumper
      */
-    protected $sitemapProfile;
+    protected $sitemapDumper;
 
     /**
-     * @var SitemapEventDispatcher
+     * @var string
      *
-     * Event dispatcher
+     * Path
      */
-    protected $eventDispatcher;
+    protected $path;
 
     /**
-     * Construct
-     *
-     * @param SitemapRenderInterface  $sitemapRender   Render
-     * @param SitemapProfileInterface $sitemapProfile  Profile
-     * @param SitemapEventDispatcher  $eventDispatcher Event dispatcher
+     * @param SitemapBuilder         $sitemapBuilder Sitemap Builder
+     * @param SitemapDumperInterface $sitemapDumper  Sitemap Dumper
+     * @param string                 $path           Path
      */
     public function __construct(
-        SitemapRenderInterface $sitemapRender,
-        SitemapProfileInterface $sitemapProfile,
-        SitemapEventDispatcher $eventDispatcher
+        SitemapBuilder $sitemapBuilder,
+        SitemapDumperInterface $sitemapDumper,
+        $path
     ) {
-        $this->sitemapRender = $sitemapRender;
-        $this->sitemapProfile = $sitemapProfile;
-        $this->eventDispatcher = $eventDispatcher;
+        $this->sitemapBuilder = $sitemapBuilder;
+        $this->sitemapDumper = $sitemapDumper;
+        $this->path = $path;
     }
 
     /**
-     * Get SitemapProfile
+     * Dump builder using a dumper
      *
-     * @return SitemapProfileInterface SitemapProfile
+     * @param string|null $language Language
      */
-    public function getSitemapProfile()
+    public function dump($language = null)
     {
-        return $this->sitemapProfile;
-    }
+        $sitemapData = $this
+            ->sitemapBuilder
+            ->build($language);
 
-    /**
-     * Get SitemapRender
-     *
-     * @return SitemapRenderInterface SitemapRender
-     */
-    public function getSitemapRender()
-    {
-        return $this->sitemapRender;
-    }
-
-    /**
-     * Dump all the sitemap content into the desired render
-     *
-     * @return $this self Object
-     */
-    public function dump()
-    {
-        $data = $this
-            ->sitemapRender
-            ->render($this->sitemapProfile);
-
-        file_put_contents(
-            $this->sitemapProfile->getPath(),
-            $data
+        $path = $this->resolvePathWithLanguage(
+            $this->path,
+            $language
         );
 
         $this
-            ->eventDispatcher
-            ->dispatchSitemapGeneratedEvent(
-                $this->sitemapProfile->getPath(),
-                $data
-            );
+            ->sitemapDumper
+            ->dump($path, $sitemapData);
+    }
+
+    /**
+     * Given a language and a path, resolve this path
+     *
+     * @param string $path     Path
+     * @param string $language Language
+     *
+     * @return string Path resolved
+     */
+    protected function resolvePathWithLanguage($path, $language)
+    {
+        return str_replace('{_locale}', $language, $path);
     }
 }

@@ -1,0 +1,7 @@
+services:
+
+    #
+    # Renders
+    #
+    elcodi.sitemap_renderer.xml:
+        class: Elcodi\Component\Sitemap\Renderer\XmlRenderer

@@ -15,20 +15,19 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Sitemap\Dumper\Interfaces;
+namespace Elcodi\Component\Sitemap\Renderer\Interfaces;
 
 /**
- * Interface SitemapDumperInterface
+ * Interface SitemapRendererInterface
  */
-interface SitemapDumperInterface
+interface SitemapRendererInterface
 {
     /**
-     * Dumps a sitemap given a path
+     * Given an array of sitemapElements, render the Sitemap
      *
-     * @param string $path    Path
-     * @param string $sitemap Sitemap
+     * @param array $sitemapElements Elements
      *
-     * @return $this Self object
+     * @return string Render
      */
-    public function dump($path, $sitemap);
+    public function render(array $sitemapElements);
 }

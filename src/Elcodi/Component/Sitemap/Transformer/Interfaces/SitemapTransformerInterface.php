@@ -25,36 +25,20 @@ interface SitemapTransformerInterface
     /**
      * Get url given an entity
      *
-     * @param Object $entity Entity
+     * @param Mixed  $element  Element
+     * @param string $language Language
      *
      * @return string url
      */
-    public function getLoc($entity);
+    public function getLoc($element, $language = null);
 
     /**
      * Get last mod
      *
-     * @param Object $entity Entity
+     * @param Mixed  $element  Element
+     * @param string $language Language
      *
      * @return string Last mod value
      */
-    public function getLastMod($entity);
-
-    /**
-     * Get Change freq
-     *
-     * @param Object $entity Entity
-     *
-     * @return string Change freq value
-     */
-    public function getChangeFreq($entity);
-
-    /**
-     * Get Priority
-     *
-     * @param Object $entity Entity
-     *
-     * @return string Priority value
-     */
-    public function getPriority($entity);
+    public function getLastMod($element, $language = null);
 }

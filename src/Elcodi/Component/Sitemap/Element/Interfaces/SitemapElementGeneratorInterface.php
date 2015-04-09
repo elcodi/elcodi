@@ -15,21 +15,19 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Sitemap\Render\Interfaces;
-
-use Elcodi\Component\Sitemap\Profile\Interfaces\SitemapProfileInterface;
+namespace Elcodi\Component\Sitemap\Element\Interfaces;
 
 /**
- * Interface SitemapRenderInterface
+ * Interface SitemapElementGeneratorInterface
  */
-interface SitemapRenderInterface
+interface SitemapElementGeneratorInterface
 {
     /**
-     * Render a sitemap profile
+     * Generate desired elements
      *
-     * @param SitemapProfileInterface $sitemapProfile Sitemap profile
+     * @param string|null $language Language
      *
-     * @return string Rendered XML
+     * @return array Elements generated
      */
-    public function render(SitemapProfileInterface $sitemapProfile);
+    public function generateElements($language = null);
 }

@@ -52,6 +52,78 @@ class Configuration extends AbstractConfiguration
 
                                 ->end()
                             ->end()
+                            ->enumNode('changeFrequency')
+                                ->defaultValue(null)
+                                ->values([
+                                    'always',
+                                    'hourly',
+                                    'daily',
+                                    'weekly',
+                                    'monthly',
+                                    'yearly',
+                                    'never',
+                                    null,
+                                ])
+                            ->end()
+                            ->scalarNode('priority')
+                                ->defaultValue(null)
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+
+                ->arrayNode('statics')
+                    ->useAttributeAsKey('name')
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('transformer')
+                                ->defaultValue('elcodi.sitemap_transformer.static')
+                            ->end()
+                            ->enumNode('changeFrequency')
+                                ->defaultValue(null)
+                                ->values([
+                                    'always',
+                                    'hourly',
+                                    'daily',
+                                    'weekly',
+                                    'monthly',
+                                    'yearly',
+                                    'never',
+                                    null,
+                                ])
+                            ->end()
+                            ->scalarNode('priority')
+                                ->defaultValue(null)
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+
+                ->arrayNode('builders')
+                    ->useAttributeAsKey('name')
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('path')
+                                ->isRequired()
+                            ->end()
+                            ->scalarNode('renderer')
+                                ->defaultValue('elcodi.sitemap_renderer.xml')
+                            ->end()
+                            ->scalarNode('dumper')
+                                ->defaultValue('elcodi.sitemap_dumper.filesystem')
+                            ->end()
+                            ->arrayNode('blocks')
+                                ->useAttributeAsKey('name')
+                                ->prototype('scalar')
+
+                                ->end()
+                            ->end()
+                            ->arrayNode('statics')
+                                ->useAttributeAsKey('name')
+                                ->prototype('scalar')
+
+                                ->end()
+                            ->end()
                         ->end()
                     ->end()
                 ->end()
@@ -60,19 +132,10 @@ class Configuration extends AbstractConfiguration
                     ->useAttributeAsKey('name')
                     ->prototype('array')
                         ->children()
-                            ->scalarNode('path')
+                            ->scalarNode('languages')
                                 ->isRequired()
-                                ->beforeNormalization()
-                                    ->always()
-                                    ->then(function ($path) {
-                                        return realpath($path);
-                                    })
-                                ->end()
                             ->end()
-                            ->scalarNode('render')
-                                ->defaultValue('elcodi.core.sitemap.render.xml')
-                            ->end()
-                            ->arrayNode('blocks')
+                            ->arrayNode('builders')
                                 ->useAttributeAsKey('name')
                                 ->prototype('scalar')
 

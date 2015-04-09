@@ -15,26 +15,15 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Sitemap\Loader;
+namespace Elcodi\Component\Sitemap\Element;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ObjectRepository;
 
-use Elcodi\Component\Sitemap\Loader\Interfaces\EntityLoaderInterface;
-use Elcodi\Component\Sitemap\Transformer\Interfaces\SitemapTransformerInterface;
-
 /**
- * Class EntityLoader
+ * Class EntitySitemapElementProvider
  */
-class EntityLoader implements EntityLoaderInterface
+class EntitySitemapElementProvider
 {
-    /**
-     * @var SitemapTransformerInterface
-     *
-     * Sitemap transformer
-     */
-    protected $transformer;
-
     /**
      * @var ObjectRepository
      *
@@ -59,45 +48,31 @@ class EntityLoader implements EntityLoaderInterface
     /**
      * Construct method
      *
-     * @param SitemapTransformerInterface $transformer Transformer
-     * @param ObjectRepository            $repository  Repository
-     * @param string                      $method      Method
-     * @param array                       $arguments   Arguments
+     * @param ObjectRepository $repository Repository
+     * @param string           $method     Method
+     * @param array            $arguments  Arguments
      */
     public function __construct(
-        SitemapTransformerInterface $transformer,
         ObjectRepository $repository,
         $method,
         array $arguments
     ) {
-        $this->transformer = $transformer;
         $this->repository = $repository;
         $this->method = $method;
         $this->arguments = $arguments;
     }
 
     /**
-     * Load all the entities
+     * Get entities from provider
      *
-     * @return ArrayCollection Entities
+     * @return array Entities
      */
-    public function load()
+    public function getEntities()
     {
         $method = $this->method;
-        $entities = $this
+
+        return $this
             ->repository
             ->$method($this->arguments);
-
-        return new ArrayCollection($entities);
-    }
-
-    /**
-     * Get Transformer
-     *
-     * @return SitemapTransformerInterface Transformer
-     */
-    public function getTransformer()
-    {
-        return $this->transformer;
     }
 }
