@@ -6,7 +6,7 @@ services:
     elcodi.event_listener.authentication_success:
         class: %elcodi.event_listener.authentication_success.class%
         arguments:
-            cart_wrapper: @elcodi.wrapper.cart
-            cart_entity_manager: @elcodi.object_manager.cart
+            - @elcodi.wrapper.cart
+            - @elcodi.object_manager.cart
         tags:
             - { name: kernel.event_listener, event: security.authentication.success, method: onAuthenticationSuccess  }

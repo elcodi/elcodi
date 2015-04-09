@@ -6,17 +6,17 @@ services:
     elcodi.cart.manager:
         class: %elcodi.cart.manager.class%
         arguments:
-            cart_event_dispatcher: @elcodi.event_dispatcher.cart
-            cart_line_event_dispatcher: @elcodi.event_dispatcher.cart_line
-            cart_factory: @elcodi.factory.cart
-            cart_line_factory: @elcodi.factory.cart_line
+            - @elcodi.event_dispatcher.cart
+            - @elcodi.event_dispatcher.cart_line
+            - @elcodi.factory.cart
+            - @elcodi.factory.cart_line
 
     elcodi.session_manager.cart:
         class: %elcodi.session_manager.cart.class%
         arguments:
-            session: @session
-            session_field_name: %elcodi.core.cart.cart_session_field_name%
-            save_in_session: %elcodi.core.cart.cart_save_in_session%
+            - @session
+            - %elcodi.core.cart.cart_session_field_name%
+            - %elcodi.core.cart.cart_save_in_session%
 
     #
     # Wrappers
@@ -24,8 +24,8 @@ services:
     elcodi.wrapper.cart:
         class: %elcodi.wrapper.cart.class%
         arguments:
-            cart_event_dispatcher: @elcodi.event_dispatcher.cart
-            cart_session_manager: @elcodi.session_manager.cart
-            cart_repository: @elcodi.repository.cart
-            cart_factory: @elcodi.factory.cart
-            customer_wrapper: @elcodi.wrapper.customer
+            - @elcodi.event_dispatcher.cart
+            - @elcodi.session_manager.cart
+            - @elcodi.repository.cart
+            - @elcodi.factory.cart
+            - @elcodi.wrapper.customer

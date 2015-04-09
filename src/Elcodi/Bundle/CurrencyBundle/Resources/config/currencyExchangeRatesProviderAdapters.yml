@@ -9,10 +9,10 @@ services:
     elcodi.adapter.currency_exchange_rate.open_exchange:
         class: %elcodi.adapter.currency_exchange_rate.open_exchange.class%
         arguments:
-            guzzle_client: @elcodi.core.currency.guzzle_client
-            api_id: %elcodi.core.currency.rates_provider_api_id%
-            end_point: %elcodi.core.currency.rates_provider_endpoint%
-            base_currency: %elcodi.core.currency.rates_provider_currency_base%
+            - @elcodi.core.currency.guzzle_client
+            - %elcodi.core.currency.rates_provider_api_id%
+            - %elcodi.core.currency.rates_provider_endpoint%
+            - %elcodi.core.currency.rates_provider_currency_base%
 
     elcodi.adapter.currency_exchange_rate.dummy:
         class: %elcodi.adapter.currency_exchange_rate.dummy.class%

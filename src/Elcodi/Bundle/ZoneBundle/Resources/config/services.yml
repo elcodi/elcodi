@@ -6,10 +6,10 @@ services:
     elcodi.matcher.zone:
         class: %elcodi.matcher.zone.class%
         arguments:
-            location_manager: @elcodi.location_provider
+            - @elcodi.location_provider
 
     elcodi.finder.zone:
         class: %elcodi.finder.zone.class%
         arguments:
-            zone_repository: @elcodi.repository.zone
-            zone_matcher: @elcodi.matcher.zone
+            - @elcodi.repository.zone
+            - @elcodi.matcher.zone

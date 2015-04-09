@@ -6,14 +6,14 @@ services:
     elcodi.manager.comment:
         class: %elcodi.manager.comment.class%
         arguments:
-            comment_event_dispatcher: @elcodi.event_dispatcher.comment
-            comment_director: @elcodi.director.comment
-            comment_parser: @elcodi.comment_parser
+            - @elcodi.event_dispatcher.comment
+            - @elcodi.director.comment
+            - @elcodi.comment_parser
 
     elcodi.comment_parser:
         class: %elcodi.comment_parser.class%
         arguments:
-            parser_adapter: @elcodi.comment_parser_adapter
+            - @elcodi.comment_parser_adapter
 
     elcodi.comment_parser_adapter:
         class: Elcodi\Component\Core\Adapter\Parser\Interfaces\ParserAdapterInterface
@@ -22,9 +22,9 @@ services:
     elcodi.comment_cache:
         class: %elcodi.comment_cache.class%
         arguments:
-            comment_repository: @elcodi.repository.comment
-            comment_vote_manager: @elcodi.manager.comment_vote
-            cache_key: %elcodi.comment.cache_key%
+            - @elcodi.repository.comment
+            - @elcodi.manager.comment_vote
+            - %elcodi.comment.cache_key%
         calls:
             - [setCache, [@doctrine_cache.providers.elcodi_comments]]
             - [setEncoder, [@elcodi.json_encoder]]
@@ -32,5 +32,5 @@ services:
     elcodi.manager.comment_vote:
         class: %elcodi.manager.comment_vote.class%
         arguments:
-            comment_event_dispatcher: @elcodi.event_dispatcher.comment
-            vote_director: @elcodi.director.comment_vote
+            - @elcodi.event_dispatcher.comment
+            - @elcodi.director.comment_vote

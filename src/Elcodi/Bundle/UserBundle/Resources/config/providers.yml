@@ -21,11 +21,11 @@ services:
         factory_service: security.encoder_factory
         factory_method: getEncoder
         arguments:
-            customer_instance: @elcodi.customer_provider_entity_instance
+            - @elcodi.customer_provider_entity_instance
 
     elcodi.provider.admin_user_provider:
         class: %elcodi.abstract_user_provider.class%
         factory_service: security.encoder_factory
         factory_method: getEncoder
         arguments:
-            customer_instance: @elcodi.admin_user_provider_entity_instance
+            - @elcodi.admin_user_provider_entity_instance

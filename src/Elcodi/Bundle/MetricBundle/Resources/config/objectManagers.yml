@@ -8,4 +8,4 @@ services:
         factory_service: elcodi.provider.manager
         factory_method: getManagerByEntityNamespace
         arguments:
-            entity_namespace: %elcodi.entity.metric_entry.class%
+            - %elcodi.entity.metric_entry.class%

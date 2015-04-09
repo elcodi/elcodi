@@ -50,7 +50,7 @@ services:
     elcodi.event_listener.address_clone:
         class: %elcodi.event_listener.address_clone.class%
         arguments:
-            cart_repository: @elcodi.repository.cart
-            cart_object_manager: @elcodi.object_manager.cart
+            - @elcodi.repository.cart
+            - @elcodi.object_manager.cart
         tags:
             - { name: kernel.event_listener, event: address.onclone, method: updateCarts, priority: 0}

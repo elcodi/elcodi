@@ -6,5 +6,5 @@ services:
     elcodi.manager.coupon:
         class: %elcodi.manager.coupon.class%
         arguments:
-            coupon_factory: @elcodi.factory.coupon
-            coupon_code_generator: @elcodi.generator.random_string
+            - @elcodi.factory.coupon
+            - @elcodi.generator.random_string

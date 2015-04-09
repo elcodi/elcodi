@@ -6,10 +6,10 @@ services:
     elcodi.provider.category_tree:
         class: %elcodi.provider.category_tree.class%
         arguments:
-            category_repository: @elcodi.repository.category
+            - @elcodi.repository.category
 
     elcodi.provider.product_collection:
         class: %elcodi.provider.product_collection.class%
         arguments:
-            product_repository: @elcodi.repository.product
-            use_stock: "@=elcodi_config('product.use_stock', false)"
+            - @elcodi.repository.product
+            - "@=elcodi_config('product.use_stock', false)"

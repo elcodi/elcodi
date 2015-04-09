@@ -6,23 +6,23 @@ services:
     elcodi.manager.media_image:
         class: %elcodi.manager.media_image.class%
         arguments:
-            image_factory: @elcodi.factory.image
-            file_manager: @elcodi.manager.media_file
-            resize_adapter: @elcodi.core.media.resize.default
+            - @elcodi.factory.image
+            - @elcodi.manager.media_file
+            - @elcodi.core.media.resize.default
 
     elcodi.manager.media_file:
         class: %elcodi.manager.media_file.class%
         arguments:
-            filesystem: @elcodi.core.media.filesystem.default
-            file_transformer: @elcodi.transformer.media_file_identifier
+            - @elcodi.core.media.filesystem.default
+            - @elcodi.transformer.media_file_identifier
 
     elcodi.image_uploader:
         class: %elcodi.image_uploader.class%
         arguments:
-            image_object_manager: @elcodi.object_manager.image
-            file_manager: @elcodi.manager.media_file
-            image_manager: @elcodi.manager.media_image
-            media_event_dispatcher: @elcodi.event_dispatcher.media
+            - @elcodi.object_manager.image
+            - @elcodi.manager.media_file
+            - @elcodi.manager.media_image
+            - @elcodi.event_dispatcher.media
 
     #
     # Resize
@@ -30,8 +30,8 @@ services:
     elcodi.core.media.resize.imagemagick:
         class: %elcodi.core.media.resize.imagemagick.class%
         arguments:
-            image_converter_bin_path: %elcodi.core.media.image_resize_converter_bin_path%
-            image_converter_default_profile: %elcodi.core.media.image_resize_converter_default_profile%
+            - %elcodi.core.media.image_resize_converter_bin_path%
+            - %elcodi.core.media.image_resize_converter_default_profile%
 
     #
     # Routes
@@ -39,23 +39,23 @@ services:
     elcodi.router.media_image_resize:
         class: %elcodi.router.media_image_resize.class%
         arguments:
-            image_resize_controller_route_name: %elcodi.core.media.image_resize_controller_route_name%
-            image_resize_controller_route: %elcodi.core.media.image_resize_controller_route%
+            - %elcodi.core.media.image_resize_controller_route_name%
+            - %elcodi.core.media.image_resize_controller_route%
         tags:
             - { name: routing.loader }
 
     elcodi.router.media_image_view:
         class: %elcodi.router.media_image_view.class%
         arguments:
-            image_view_controller_route_name: %elcodi.core.media.image_view_controller_route_name%
-            image_view_controller_route: %elcodi.core.media.image_view_controller_route%
+            - %elcodi.core.media.image_view_controller_route_name%
+            - %elcodi.core.media.image_view_controller_route%
         tags:
             - { name: routing.loader }
 
     elcodi.router.media_image_upload:
         class: %elcodi.router.media_image_upload.class%
         arguments:
-            image_upload_controller_route_name: %elcodi.core.media.image_upload_controller_route_name%
-            image_upload_controller_route: %elcodi.core.media.image_upload_controller_route%
+            - %elcodi.core.media.image_upload_controller_route_name%
+            - %elcodi.core.media.image_upload_controller_route%
         tags:
             - { name: routing.loader }

@@ -6,5 +6,5 @@ services:
     elcodi.controller.metric_input:
         class: %elcodi.controller.metric_input.class%
         arguments:
-            request_stack: @request_stack
-            metric_manager: @elcodi.metric_manager
+            - @request_stack
+            - @elcodi.metric_manager

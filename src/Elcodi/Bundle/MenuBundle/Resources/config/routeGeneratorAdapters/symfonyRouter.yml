@@ -13,7 +13,7 @@ services:
     elcodi.adapter.menu_route_generator.symfony_routing:
         class: %elcodi.adapter.menu_route_generator.symfony_routing.class%
         arguments:
-            router: @router
+            - @router
 
     elcodi.adapter.menu_route_generator:
         alias: elcodi.adapter.menu_route_generator.symfony_routing

@@ -6,21 +6,21 @@ services:
     elcodi.manager.currency:
         class: %elcodi.manager.currency.class%
         arguments:
-            currency_repository: @elcodi.repository.currency
-            exchange_rates_repository: @elcodi.repository.currency_exchange_rate
-            currency_base: %elcodi.core.currency.rates_provider_currency_base%
+            - @elcodi.repository.currency
+            - @elcodi.repository.currency_exchange_rate
+            - %elcodi.core.currency.rates_provider_currency_base%
 
     elcodi.session_manager.currency:
         class: %elcodi.session_manager.currency.class%
         arguments:
-            session: @session
-            session_field_name: %elcodi.core.currency.session_field_name%
+            - @session
+            - %elcodi.core.currency.session_field_name%
 
     elcodi.converter.currency:
         class: %elcodi.converter.currency.class%
         arguments:
-            currency_manager: @elcodi.manager.currency
-            currency_base: %elcodi.core.currency.rates_provider_currency_base%
+            - @elcodi.manager.currency
+            - %elcodi.core.currency.rates_provider_currency_base%
 
     elcodi.populator.currency_exchange_rate:
         class: %elcodi.populator.currency_exchange_rate.class%

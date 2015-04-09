@@ -6,14 +6,14 @@ services:
     elcodi.location_provider.service:
         class: %elcodi.location_provider.service.class%
         arguments:
-            location_repository: @elcodi.repository.location
-            location_to_location_data_transformer: @elcodi.transformer.location_to_location_data
+            - @elcodi.repository.location
+            - @elcodi.transformer.location_to_location_data
 
     elcodi.location_provider.api:
         class: %elcodi.location_provider.api.class%
         arguments:
-            location_data_factory: @elcodi.factory.location_data
-            location_api_urls: @elcodi.location_api_urls
+            - @elcodi.factory.location_data
+            - @elcodi.location_api_urls
 
     elcodi.location_api_urls:
         class: %elcodi.location_api_urls.class%
@@ -28,10 +28,10 @@ services:
     elcodi.location_builder:
         class: %elcodi.location_builder.class%
         arguments:
-            location_factory: @elcodi.factory.location
+            - @elcodi.factory.location
 
     elcodi.manager.address:
         class: %elcodi.manager.address.class%
         arguments:
-            address_object_manager: @elcodi.object_manager.address
-            address_event_dispatcher: @elcodi.event_dispatcher.address
+            - @elcodi.object_manager.address
+            - @elcodi.event_dispatcher.address

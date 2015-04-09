@@ -6,5 +6,5 @@ services:
     elcodi.resolver.shipping_range:
         class: %elcodi.resolver.shipping_range.class%
         arguments:
-            currency_converter: @elcodi.converter.currency
-            carrier_resolver_strategy: %elcodi.resolver.carrier.strategy%
+            - @elcodi.converter.currency
+            - %elcodi.resolver.carrier.strategy%

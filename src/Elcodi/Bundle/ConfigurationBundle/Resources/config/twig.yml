@@ -6,6 +6,6 @@ services:
     elcodi.twig_extension.configuration:
         class: %elcodi.twig_extension.configuration.class%
         arguments:
-            configuration_manager: @elcodi.manager.configuration
+            - @elcodi.manager.configuration
         tags:
             - { name: twig.extension }
