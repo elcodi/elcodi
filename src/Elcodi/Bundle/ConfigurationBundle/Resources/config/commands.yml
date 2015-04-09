@@ -3,22 +3,22 @@ services:
     #
     # Commands
     #
-    elcodi.configuration_set_command:
-        class: %elcodi.configuration_set_command.class%
+    elcodi.command.configuration_set:
+        class: %elcodi.command.configuration_set.class%
         arguments:
             template_loader: @elcodi.manager.configuration
         tags:
             -  { name: console.command }
 
-    elcodi.configuration_get_command:
-        class: %elcodi.configuration_get_command.class%
+    elcodi.command.configuration_get:
+        class: %elcodi.command.configuration_get.class%
         arguments:
             template_loader: @elcodi.manager.configuration
         tags:
             -  { name: console.command }
 
-    elcodi.configuration_delete_command:
-        class: %elcodi.configuration_delete_command.class%
+    elcodi.command.configuration_delete:
+        class: %elcodi.command.configuration_delete.class%
         arguments:
             template_loader: @elcodi.manager.configuration
         tags:

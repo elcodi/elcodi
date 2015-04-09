@@ -18,6 +18,6 @@ parameters:
     #
     # Commands
     #
-    elcodi.configuration_set_command.class: Elcodi\Component\Configuration\Command\ConfigurationSetCommand
-    elcodi.configuration_get_command.class: Elcodi\Component\Configuration\Command\ConfigurationGetCommand
-    elcodi.configuration_delete_command.class: Elcodi\Component\Configuration\Command\ConfigurationDeleteCommand
+    elcodi.command.configuration_set.class: Elcodi\Component\Configuration\Command\ConfigurationSetCommand
+    elcodi.command.configuration_get.class: Elcodi\Component\Configuration\Command\ConfigurationGetCommand
+    elcodi.command.configuration_delete.class: Elcodi\Component\Configuration\Command\ConfigurationDeleteCommand
