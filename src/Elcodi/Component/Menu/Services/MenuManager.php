@@ -17,6 +17,8 @@
 
 namespace Elcodi\Component\Menu\Services;
 
+use Exception;
+
 use Elcodi\Component\Core\Encoder\Interfaces\EncoderInterface;
 use Elcodi\Component\Core\Wrapper\Abstracts\AbstractCacheWrapper;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\MenuInterface;
@@ -80,42 +82,114 @@ class MenuManager extends AbstractCacheWrapper
      *
      * @param string $menuCode Menu code
      *
-     * @return array|null Result
+     * @return array Menu configuration
+     *
+     * @throws Exception
      */
     public function loadMenuByCode($menuCode)
     {
         $key = $this->buildKey($this->key, $menuCode);
 
-        if (isset($this->menus[$key])) {
-            return $this->menus[$key];
-        }
+        $menu = $this->loadFromMemory($key);
+        if (!$menu) {
 
-        $menuHydrated = $this
-            ->encoder
-            ->decode($this->cache->fetch($key));
+            $menu = $this->loadFromCache($key);
+            if (!$menu) {
 
-        if (empty($menuHydrated)) {
-            $menu = $this
-                ->menuRepository
-                ->findOneBy([
-                    'code'    => $menuCode,
-                    'enabled' => true,
-                ]);
-
-            if (!($menu instanceof MenuInterface)) {
-                return;
+                $menu = $this->loadFromRepository($menuCode);
+                $this->saveToCache($key, $menu);
             }
 
-            $menuHydrated = $this->loadSubnodes($menu);
-
-            $this
-                ->cache
-                ->save($key, $this->encoder->encode($menuHydrated));
+            $this->saveToMemory($key, $menu);
         }
 
-        $this->menus[$key] = $menuHydrated;
+        return $menu;
+    }
 
-        return $menuHydrated;
+    /**
+     * Try to get menu configuration from memory
+     *
+     * @param string $key Identifier of the menu
+     *
+     * @return array|null Menu configuration
+     */
+    protected function loadFromMemory($key)
+    {
+        return isset($this->menus[$key]) ? $this->menus[$key] : null;
+    }
+
+    /**
+     * Save menu configuration to memory
+     *
+     * @param string $key   Identifier of the menu
+     * @param array  $value Configuration to cache
+     */
+    protected function saveToMemory($key, array $value)
+    {
+        $this->menus[$key] = $value;
+    }
+
+    /**
+     * Try to get menu configuration from cache
+     *
+     * @param string $key Identifier of the menu
+     *
+     * @return array|null Menu configuration
+     */
+    protected function loadFromCache($key)
+    {
+        $encoded = $this
+            ->cache
+            ->fetch($key);
+
+        return $this
+            ->encoder
+            ->decode($encoded);
+    }
+
+    /**
+     * Save menu configuration to memory
+     *
+     * @param string $key   Identifier of the menu
+     * @param array  $value Configuration to cache
+     */
+    protected function saveToCache($key, $value)
+    {
+        $encoded = $this
+            ->encoder
+            ->encode($value);
+
+        $this
+            ->cache
+            ->save($key, $encoded);
+    }
+
+    /**
+     * Try to get menu configuration from cache
+     *
+     * @param string $code Code to find the menu
+     *
+     * @return array Menu configuration
+     *
+     * @throws Exception
+     */
+    protected function loadFromRepository($code)
+    {
+        $menu = $this
+            ->menuRepository
+            ->findOneBy([
+                'code' => $code,
+                'enabled' => true,
+            ]);
+
+        if ($menu instanceof MenuInterface) {
+            return $this->loadSubnodes($menu);
+        }
+
+        throw new Exception(sprintf(
+            'Menu "%s" not found',
+            $code
+        ));
     }
 
     /**
@@ -127,22 +201,21 @@ class MenuManager extends AbstractCacheWrapper
      */
     protected function loadSubnodes(SubnodesAwareInterface $node)
     {
-        $subnodesHydrated = [];
+        $subnodes = [];
 
         $node
             ->getSubnodes()
-            ->map(function (NodeInterface $node) use (&$subnodesHydrated) {
-                if ($node->isEnabled()) {
-                    $subnodeId                    = $node->getId();
-                    $subnodesHydrated[$subnodeId] = $this->hydrateNode($node);
-                }
+            ->map(function (NodeInterface $node) use (&$subnodes) {
+
+                $subnodeId = $node->getId();
+                $subnodes[$subnodeId] = $this->hydrateNode($node);
             });
 
-        return $subnodesHydrated;
+        return $subnodes;
     }
 
     /**
-     * build menu key
+     * Build menu key for cache
      *
      * @param string $key      Key
      * @param string $menuCode Menu code
@@ -151,7 +224,7 @@ class MenuManager extends AbstractCacheWrapper
      */
     protected function buildKey($key, $menuCode)
     {
-        return $key . '-' . $menuCode;
+        return "{$key}-{$menuCode}";
     }
 
     /**
