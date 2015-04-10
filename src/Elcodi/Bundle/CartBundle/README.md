@@ -229,7 +229,7 @@ entity.
 [More info about the services classes on the component documentation](https://github.com/elcodi/Cart/blob/master/README.md#service-layer)
 
 ## Services
-- `@elcodi.cart.manager`: This service is thought to work with the cart, you can
+- `@elcodi.manager.cart`: This service is thought to work with the cart, you can
 do all the actions related with cart lines or products
 
 ## Transformer

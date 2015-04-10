@@ -3,8 +3,8 @@ services:
     #
     # Services
     #
-    elcodi.cart.manager:
-        class: %elcodi.cart.manager.class%
+    elcodi.manager.cart:
+        class: %elcodi.manager.cart.class%
         arguments:
             cart_event_dispatcher: @elcodi.event_dispatcher.cart
             cart_line_event_dispatcher: @elcodi.event_dispatcher.cart_line

@@ -11,7 +11,7 @@ parameters:
     #
     # Services
     #
-    elcodi.cart.manager.class: Elcodi\Component\Cart\Services\CartManager
+    elcodi.manager.cart.class: Elcodi\Component\Cart\Services\CartManager
     elcodi.session_manager.cart.class: Elcodi\Component\Cart\Services\CartSessionManager
 
     #

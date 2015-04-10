@@ -37,7 +37,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.cart.manager'];
+        return ['elcodi.manager.cart'];
     }
 
     /**
@@ -107,7 +107,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
     public function testAddLine()
     {
         $this
-            ->get('elcodi.cart.manager')
+            ->get('elcodi.manager.cart')
             ->addProduct(
                 $this->cart,
                 $this->cartLine->getProduct(),
@@ -152,7 +152,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
     public function testRemoveLine()
     {
         $this
-            ->get('elcodi.cart.manager')
+            ->get('elcodi.manager.cart')
             ->addProduct(
                 $this->cart,
                 $this->cartLine->getProduct(),
@@ -162,7 +162,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
         $line = $this->cart->getCartLines()->last();
 
         $this
-            ->get('elcodi.cart.manager')
+            ->get('elcodi.manager.cart')
             ->removeLine($this->cart, $line);
 
         $this->assertRemovedLine($line);
@@ -176,7 +176,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
     public function testEmptyLines()
     {
         $this
-            ->get('elcodi.cart.manager')
+            ->get('elcodi.manager.cart')
             ->addProduct(
                 $this->cart,
                 $this->cartLine->getProduct(),
@@ -186,7 +186,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
         $line = $this->cart->getCartLines()->last();
 
         $this
-            ->get('elcodi.cart.manager')
+            ->get('elcodi.manager.cart')
             ->emptyLines($this->cart);
 
         $this->assertRemovedLine($line);
@@ -200,7 +200,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
     public function testEditCartLine()
     {
         $this
-            ->get('elcodi.cart.manager')
+            ->get('elcodi.manager.cart')
             ->addProduct(
                 $this->cart,
                 $this->cartLine->getProduct(),
@@ -210,7 +210,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
         $line = $this->cart->getCartLines()->last();
 
         $this
-            ->get('elcodi.cart.manager')
+            ->get('elcodi.manager.cart')
             ->editCartLine($line, $this->purchasable, 2);
 
         $this->assertSame(
@@ -257,7 +257,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
         $this->cartLine->setQuantity($quantityStart);
 
         $this
-            ->get('elcodi.cart.manager')
+            ->get('elcodi.manager.cart')
             ->addProduct(
                 $this->cart,
                 $this->cartLine->getProduct(),
@@ -267,7 +267,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
         $line = $this->cart->getCartLines()->last();
 
         $this
-            ->get('elcodi.cart.manager')
+            ->get('elcodi.manager.cart')
             ->setCartLineQuantity($line, $quantitySetted);
 
         $this->assertResults($quantityEnd);
@@ -295,7 +295,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
             ->setQuantity($quantityStart);
 
         $this
-            ->get('elcodi.cart.manager')
+            ->get('elcodi.manager.cart')
             ->addProduct(
                 $this->cart,
                 $line->getProduct(),
@@ -309,7 +309,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
         }
 
         $this
-            ->get('elcodi.cart.manager')
+            ->get('elcodi.manager.cart')
             ->increaseCartLineQuantity($this->cart->getCartLines()->last(), $quantityAdded);
 
         $this->assertResults($quantityEnd);
@@ -333,7 +333,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
         $this->cartLine->setQuantity($quantityStart);
 
         $this
-            ->get('elcodi.cart.manager')
+            ->get('elcodi.manager.cart')
             ->addProduct(
                 $this->cart,
                 $this->cartLine->getProduct(),
@@ -343,7 +343,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
         $line = $this->cart->getCartLines()->last();
 
         $this
-            ->get('elcodi.cart.manager')
+            ->get('elcodi.manager.cart')
             ->decreaseCartLineQuantity($line, $quantityRemoved);
 
         $this->assertResults($quantityEnd);
@@ -363,7 +363,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
         $quantityEnd
     ) {
         $this
-            ->get('elcodi.cart.manager')
+            ->get('elcodi.manager.cart')
             ->addProduct($this->cart, $this->purchasable, $quantitySet);
 
         $this->assertResults($quantityEnd);
