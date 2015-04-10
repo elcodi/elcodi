@@ -1,0 +1,7 @@
+services:
+
+    #
+    # Dumpers
+    #
+    elcodi.sitemap_dumper.filesystem:
+        class: Elcodi\Component\Sitemap\Dumper\FilesystemDumper

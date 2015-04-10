@@ -1,0 +1,7 @@
+services:
+
+    #
+    # Factories
+    #
+    elcodi.factory.sitemap_element:
+        class: Elcodi\Component\Sitemap\Factory\SitemapElementFactory

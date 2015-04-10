@@ -4,5 +4,5 @@ services:
     # Event Dispatchers
     #
     elcodi.event_dispatcher.sitemap:
-        class: %elcodi.event_dispatcher.sitemap.class%
+        class: Elcodi\Component\Sitemap\EventDispatcher\SitemapEventDispatcher
         parent: elcodi.event_dispatcher.abstract

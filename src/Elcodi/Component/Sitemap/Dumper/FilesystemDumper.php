@@ -15,12 +15,14 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Sitemap\Dumper\Interfaces;
+namespace Elcodi\Component\Sitemap\Dumper;
+
+use Elcodi\Component\Sitemap\Dumper\Interfaces\SitemapDumperInterface;
 
 /**
- * Interface SitemapDumperInterface
+ * Class FilesystemDumper
  */
-interface SitemapDumperInterface
+class FilesystemDumper implements SitemapDumperInterface
 {
     /**
      * Dumps a sitemap given a path
@@ -30,5 +32,13 @@ interface SitemapDumperInterface
      *
      * @return $this Self object
      */
-    public function dump($path, $sitemap);
+    public function dump($path, $sitemap)
+    {
+        file_put_contents(
+            $path,
+            $sitemap
+        );
+
+        return $this;
+    }
 }
