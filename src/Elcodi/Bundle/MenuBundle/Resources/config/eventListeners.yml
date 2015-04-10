@@ -1,0 +1,11 @@
+services:
+
+    #
+    # Event Listeners
+    #
+    elcodi.event_listener.activate_menu_from_request:
+        class: Elcodi\Component\Menu\Listener\ActivateFromRequestListener
+        arguments:
+            - @request_stack
+        tags:
+            - { name: kernel.event_listener, event: menu.post_load }
