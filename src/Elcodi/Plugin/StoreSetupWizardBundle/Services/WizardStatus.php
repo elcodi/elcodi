@@ -65,7 +65,7 @@ class WizardStatus
      *                                                         repository
      * @param ShippingRangeRepository $shippingRangeRepository A shipping range
      *                                                         repository
-     * @param array                   $paymentEnabledMethods          The enabled
+     * @param array                   $paymentEnabledMethods   The enabled
      *                                                         payment methods
      */
     public function __construct(

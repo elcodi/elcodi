@@ -17,12 +17,11 @@
 
 namespace Elcodi\Plugin\StoreSetupWizardBundle;
 
-use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-use Elcodi\Component\Plugin\Interfaces\PluginInterface;
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Plugin\StoreSetupWizardBundle\DependencyInjection\ElcodiStoreSetupWizardExtension;
 
 /**
@@ -60,7 +59,7 @@ class ElcodiStoreSetupWizardBundle extends Bundle implements DependentBundleInte
     public static function getBundleDependencies()
     {
         return [
-            '\Elcodi\Store\PaymentBridgeBundle\PaymentBridgeBundle',
+            'Elcodi\Common\PaymentBridgeBundle\PaymentBridgeBundle',
         ];
     }
 }
