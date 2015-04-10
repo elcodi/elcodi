@@ -59,10 +59,10 @@ class ElcodiCartCouponBundle extends Bundle implements DependentBundleInterface
     public static function getBundleDependencies()
     {
         return [
-            '\Elcodi\Bundle\CartBundle\ElcodiCartBundle',
-            '\Elcodi\Bundle\CouponBundle\ElcodiCouponBundle',
-            '\Elcodi\Bundle\RuleBundle\ElcodiRuleBundle',
-            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+            'Elcodi\Bundle\CartBundle\ElcodiCartBundle',
+            'Elcodi\Bundle\CouponBundle\ElcodiCouponBundle',
+            'Elcodi\Bundle\RuleBundle\ElcodiRuleBundle',
+            'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
     }
 

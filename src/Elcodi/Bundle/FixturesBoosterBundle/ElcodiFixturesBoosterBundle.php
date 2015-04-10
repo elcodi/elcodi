@@ -47,7 +47,7 @@ class ElcodiFixturesBoosterBundle extends Bundle implements DependentBundleInter
     public static function getBundleDependencies()
     {
         return [
-            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+            'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
     }
 

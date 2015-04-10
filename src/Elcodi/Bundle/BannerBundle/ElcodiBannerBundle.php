@@ -57,9 +57,9 @@ class ElcodiBannerBundle extends Bundle implements DependentBundleInterface
     public static function getBundleDependencies()
     {
         return [
-            '\Elcodi\Bundle\LanguageBundle\ElcodiLanguageBundle',
-            '\Elcodi\Bundle\MediaBundle\ElcodiMediaBundle',
-            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+            'Elcodi\Bundle\LanguageBundle\ElcodiLanguageBundle',
+            'Elcodi\Bundle\MediaBundle\ElcodiMediaBundle',
+            'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
     }
 

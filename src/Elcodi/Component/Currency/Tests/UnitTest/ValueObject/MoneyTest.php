@@ -71,7 +71,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
 
         $twoHundredDollars = Money::create(200, $currencyMock);
 
-        $this->assertInstanceOf('\Elcodi\Component\Currency\Entity\Money', $twoHundredDollars);
+        $this->assertInstanceOf('Elcodi\Component\Currency\Entity\Money', $twoHundredDollars);
     }
 
     /**
@@ -80,7 +80,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
     public function testGetCurrency()
     {
         $this->assertInstanceOf(
-            '\Elcodi\Component\Currency\Entity\Currency',
+            'Elcodi\Component\Currency\Entity\Currency',
             $this->oneHundredDollars->getCurrency()
         );
     }

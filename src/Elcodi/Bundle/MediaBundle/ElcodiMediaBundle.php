@@ -59,8 +59,8 @@ class ElcodiMediaBundle extends Bundle implements DependentBundleInterface
     public static function getBundleDependencies()
     {
         return [
-            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
-            '\Knp\Bundle\GaufretteBundle\KnpGaufretteBundle',
+            'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+            'Knp\Bundle\GaufretteBundle\KnpGaufretteBundle',
         ];
     }
 

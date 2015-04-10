@@ -79,17 +79,17 @@ class CouponFactoryTest extends WebTestCase
         $coupon = $this->get('elcodi.factory.coupon')->create();
 
         $this->assertInstanceOf(
-            '\Elcodi\Component\Currency\Entity\Money',
+            'Elcodi\Component\Currency\Entity\Money',
             $coupon->getPrice()
         );
 
         $this->assertInstanceOf(
-            '\Elcodi\Component\Currency\Entity\Money',
+            'Elcodi\Component\Currency\Entity\Money',
             $coupon->getAbsolutePrice()
         );
 
         $this->assertInstanceOf(
-            '\Elcodi\Component\Currency\Entity\Money',
+            'Elcodi\Component\Currency\Entity\Money',
             $coupon->getMinimumPurchase()
         );
     }

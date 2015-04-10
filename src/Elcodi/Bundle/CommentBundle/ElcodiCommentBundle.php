@@ -59,8 +59,8 @@ class ElcodiCommentBundle extends Bundle implements DependentBundleInterface
     public static function getBundleDependencies()
     {
         return [
-            '\Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle',
-            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+            'Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle',
+            'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
     }
 
