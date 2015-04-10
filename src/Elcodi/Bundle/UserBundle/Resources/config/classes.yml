@@ -24,7 +24,7 @@ parameters:
     #
     elcodi.event_listener.admin_user_password.class: Elcodi\Component\User\EventListener\AdminUserPasswordEventListener
     elcodi.event_listener.customer_password.class: Elcodi\Component\User\EventListener\CustomerPasswordEventListener
-    elcodi.event_listener.authentication_success.class: Elcodi\Component\User\EventListener\AuthenticationSuccessEventListener
+    elcodi.event_listener.update_cart_with_user.class: Elcodi\Component\User\EventListener\UpdateCartWithUserListener
 
     #
     # Providers

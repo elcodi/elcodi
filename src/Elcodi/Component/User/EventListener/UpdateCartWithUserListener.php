@@ -25,9 +25,9 @@ use Elcodi\Component\Cart\Wrapper\CartWrapper;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
- * Class AuthenticationSuccessEventListener
+ * Class UpdateCartWithUserListener
  */
-class AuthenticationSuccessEventListener
+class UpdateCartWithUserListener
 {
     /**
      * @var CartWrapper
