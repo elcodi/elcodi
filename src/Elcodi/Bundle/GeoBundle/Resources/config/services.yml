@@ -18,12 +18,12 @@ services:
     elcodi.location_api_urls:
         class: Elcodi\Component\Geo\ValueObject\ApiUrls
         arguments:
-            - %elcodi.route.location_api.host%%elcodi.route.location_api.prefix%/%elcodi.route.location_api.get_root_locations%
-            - %elcodi.route.location_api.host%%elcodi.route.location_api.prefix%/%elcodi.route.location_api.get_children%
-            - %elcodi.route.location_api.host%%elcodi.route.location_api.prefix%/%elcodi.route.location_api.get_parents%
-            - %elcodi.route.location_api.host%%elcodi.route.location_api.prefix%/%elcodi.route.location_api.get_location%
-            - %elcodi.route.location_api.host%%elcodi.route.location_api.prefix%/%elcodi.route.location_api.get_hierarchy%
-            - %elcodi.route.location_api.host%%elcodi.route.location_api.prefix%/%elcodi.route.location_api.in%
+            - %elcodi.route.location_api.host%%elcodi.route.location_api_prefix%/%elcodi.route.location_api.get_root_locations%
+            - %elcodi.route.location_api.host%%elcodi.route.location_api_prefix%/%elcodi.route.location_api.get_children%
+            - %elcodi.route.location_api.host%%elcodi.route.location_api_prefix%/%elcodi.route.location_api.get_parents%
+            - %elcodi.route.location_api.host%%elcodi.route.location_api_prefix%/%elcodi.route.location_api.get_location%
+            - %elcodi.route.location_api.host%%elcodi.route.location_api_prefix%/%elcodi.route.location_api.get_hierarchy%
+            - %elcodi.route.location_api.host%%elcodi.route.location_api_prefix%/%elcodi.route.location_api.in%
 
     elcodi.location_builder:
         class: Elcodi\Component\Geo\Services\LocationBuilder

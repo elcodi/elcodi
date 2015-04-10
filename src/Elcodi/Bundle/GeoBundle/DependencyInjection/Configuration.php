@@ -60,6 +60,9 @@ class Configuration extends AbstractConfiguration
                 ->scalarNode('location_provider')
                     ->defaultValue('elcodi.location_provider.service')
                 ->end()
+                ->scalarNode('location_api_prefix')
+                    ->defaultValue('/api/locations')
+                ->end()
             ->end();
     }
 }

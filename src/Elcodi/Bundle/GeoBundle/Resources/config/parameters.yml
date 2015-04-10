@@ -9,7 +9,6 @@ parameters:
     # Location api routes
     #
     elcodi.route.location_api.host: 127.0.0.1:8000
-    elcodi.route.location_api.prefix: /%bamboo_api_prefix%/locations
 
     elcodi.route.location_api.get_root_locations: root
     elcodi.route.location_api.get_children: children
