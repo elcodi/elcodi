@@ -50,6 +50,13 @@ class WizardStatus
     protected $shippingRangeRepository;
 
     /**
+     * @var array
+     *
+     * The payment enabled methods
+     */
+    private $paymentEnabledMethods;
+
+    /**
      * Builds a new WizardStepChecker
      *
      * @param ConfigurationManager    $configurationManager    Configuration
@@ -58,15 +65,19 @@ class WizardStatus
      *                                                         repository
      * @param ShippingRangeRepository $shippingRangeRepository A shipping range
      *                                                         repository
+     * @param array                   $paymentEnabledMethods          The enabled
+     *                                                         payment methods
      */
     public function __construct(
         ConfigurationManager $configurationManager,
         ProductRepository $productRepository,
-        ShippingRangeRepository $shippingRangeRepository
+        ShippingRangeRepository $shippingRangeRepository,
+        array $paymentEnabledMethods
     ) {
         $this->configurationManager    = $configurationManager;
         $this->productRepository       = $productRepository;
         $this->shippingRangeRepository = $shippingRangeRepository;
+        $this->paymentEnabledMethods   = $paymentEnabledMethods;
     }
 
     /**
@@ -172,20 +183,37 @@ class WizardStatus
      */
     protected function isPaymentFulfilled()
     {
-        $paymillPrivateKey       = $this
+        $paymillPrivateKey = $this
             ->configurationManager
             ->get('store.paymill_private_key');
-        $paymillPublicKey = $this
+        $paymillPublicKey  = $this
             ->configurationManager
             ->get('store.paymill_public_key');
+
+        if (
+            isset($this->paymentEnabledMethods['paymill'])
+            && true == $this->paymentEnabledMethods['paymill']
+            && (
+                '' == $paymillPrivateKey ||
+                '' == $paymillPublicKey
+            )
+        ) {
+            return false;
+        }
+
         $paypalCheckoutRecipient = $this
             ->configurationManager
             ->get('store.paypal_web_checkout_recipient');
 
-        return
-            '' !== $paymillPrivateKey &&
-            '' !== $paymillPublicKey &&
-            '' !== $paypalCheckoutRecipient;
+        if (
+            isset($this->paymentEnabledMethods['paypal'])
+            && true == $this->paymentEnabledMethods['paypal']
+            && '' == $paypalCheckoutRecipient
+        ) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
