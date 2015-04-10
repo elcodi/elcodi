@@ -46,7 +46,7 @@ class AdminController extends Controller
             ->get('elcodi.plugin_manager')
             ->getPlugin('Elcodi\Plugin\PinterestBundle');
 
-        if ('POST' === $request->getMethod()) {
+        if ($request->isMethod(Request::METHOD_POST)) {
             $this
                 ->get('elcodi.plugin_manager')
                 ->updatePlugin(

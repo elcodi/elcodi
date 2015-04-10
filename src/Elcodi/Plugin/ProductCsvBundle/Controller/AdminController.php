@@ -59,7 +59,7 @@ class AdminController extends Controller
             );
         }
 
-        if ('POST' === $request->getMethod()) {
+        if ($request->isMethod(Request::METHOD_POST)) {
             $this
                 ->get('elcodi.plugin_manager')
                 ->updatePlugin(

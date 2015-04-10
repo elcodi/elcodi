@@ -53,7 +53,7 @@ class AdminController extends Controller
             ->get('elcodi.plugin_manager')
             ->getPlugin('Elcodi\Plugin\FacebookBundle');
 
-        if ('POST' === $request->getMethod()) {
+        if ($request->isMethod(Request::METHOD_POST)) {
             $pluginManager = $this
                 ->get('elcodi.plugin_manager');
 
