@@ -59,13 +59,13 @@ class ElcodiCartBundle extends Bundle implements DependentBundleInterface
     public static function getBundleDependencies()
     {
         return [
-            '\Elcodi\Bundle\UserBundle\ElcodiUserBundle',
-            '\Elcodi\Bundle\ProductBundle\ElcodiProductBundle',
-            '\Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
-            '\Elcodi\Bundle\StateTransitionMachineBundle\ElcodiStateTransitionMachineBundle',
-            '\Elcodi\Bundle\ShippingBundle\ElcodiShippingBundle',
-            '\Elcodi\Bundle\ConfigurationBundle\ElcodiConfigurationBundle',
-            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+            'Elcodi\Bundle\UserBundle\ElcodiUserBundle',
+            'Elcodi\Bundle\ProductBundle\ElcodiProductBundle',
+            'Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
+            'Elcodi\Bundle\StateTransitionMachineBundle\ElcodiStateTransitionMachineBundle',
+            'Elcodi\Bundle\ShippingBundle\ElcodiShippingBundle',
+            'Elcodi\Bundle\ConfigurationBundle\ElcodiConfigurationBundle',
+            'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
     }
 

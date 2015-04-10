@@ -59,12 +59,12 @@ class ElcodiShippingBundle extends Bundle implements DependentBundleInterface
     public static function getBundleDependencies()
     {
         return [
-            '\Elcodi\Bundle\CartBundle\ElcodiCartBundle',
-            '\Elcodi\Bundle\TaxBundle\ElcodiTaxBundle',
-            '\Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
-            '\Elcodi\Bundle\GeoBundle\ElcodiGeoBundle',
-            '\Elcodi\Bundle\ZoneBundle\ElcodiZoneBundle',
-            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+            'Elcodi\Bundle\CartBundle\ElcodiCartBundle',
+            'Elcodi\Bundle\TaxBundle\ElcodiTaxBundle',
+            'Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
+            'Elcodi\Bundle\GeoBundle\ElcodiGeoBundle',
+            'Elcodi\Bundle\ZoneBundle\ElcodiZoneBundle',
+            'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
     }
 

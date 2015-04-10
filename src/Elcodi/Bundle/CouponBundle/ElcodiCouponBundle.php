@@ -59,9 +59,9 @@ class ElcodiCouponBundle extends Bundle implements DependentBundleInterface
     public static function getBundleDependencies()
     {
         return [
-            '\Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
-            '\Elcodi\Bundle\RuleBundle\ElcodiRuleBundle',
-            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+            'Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
+            'Elcodi\Bundle\RuleBundle\ElcodiRuleBundle',
+            'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
     }
 

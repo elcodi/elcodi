@@ -59,7 +59,7 @@ class ElcodiTaxBundle extends Bundle implements DependentBundleInterface
     public static function getBundleDependencies()
     {
         return [
-            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+            'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
     }
 

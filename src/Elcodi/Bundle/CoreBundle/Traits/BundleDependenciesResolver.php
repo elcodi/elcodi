@@ -62,7 +62,7 @@ trait BundleDependenciesResolver
         foreach ($bundleNamespaces as $bundleNamespace) {
             $bundlesNamespacesStack[] = $bundleNamespace;
             $bundleNamespaceObj = new ReflectionClass($bundleNamespace);
-            if ($bundleNamespaceObj->implementsInterface('\Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface')) {
+            if ($bundleNamespaceObj->implementsInterface('Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface')) {
 
                 /**
                  * @var \Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface $bundleNamespace

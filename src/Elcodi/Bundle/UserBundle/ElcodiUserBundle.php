@@ -59,10 +59,10 @@ class ElcodiUserBundle extends Bundle implements DependentBundleInterface
     public static function getBundleDependencies()
     {
         return [
-            '\Elcodi\Bundle\GeoBundle\ElcodiGeoBundle',
-            '\Elcodi\Bundle\LanguageBundle\ElcodiLanguageBundle',
-            '\Elcodi\Bundle\CartBundle\ElcodiCartBundle',
-            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+            'Elcodi\Bundle\GeoBundle\ElcodiGeoBundle',
+            'Elcodi\Bundle\LanguageBundle\ElcodiLanguageBundle',
+            'Elcodi\Bundle\CartBundle\ElcodiCartBundle',
+            'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
     }
 

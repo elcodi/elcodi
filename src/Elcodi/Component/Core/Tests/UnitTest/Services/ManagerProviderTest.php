@@ -47,7 +47,7 @@ class ManagerProviderTest extends PHPUnit_Framework_TestCase
      *
      * Entity Namespace
      */
-    protected $entityNamespace = '\Elcodi\Entity\Namespace';
+    protected $entityNamespace = 'Elcodi\Entity\Namespace';
 
     /**
      * @var ObjectManager

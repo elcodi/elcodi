@@ -37,7 +37,7 @@ class ImageManagerTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $mockImageFactory = $this
-            ->getMockBuilder('\Elcodi\Component\Media\Factory\ImageFactory')
+            ->getMockBuilder('Elcodi\Component\Media\Factory\ImageFactory')
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -47,12 +47,12 @@ class ImageManagerTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue(new Image()));
 
         $mockFileManager = $this
-            ->getMockBuilder('\Elcodi\Component\Media\Services\FileManager')
+            ->getMockBuilder('Elcodi\Component\Media\Services\FileManager')
             ->disableOriginalConstructor()
             ->getMock();
 
         $mockResizeAdapter = $this->getMock(
-            '\Elcodi\Component\Media\Adapter\Resizer\Interfaces\ResizeAdapterInterface'
+            'Elcodi\Component\Media\Adapter\Resizer\Interfaces\ResizeAdapterInterface'
         );
 
         $imageManager = new ImageManager(
@@ -73,7 +73,7 @@ class ImageManagerTest extends PHPUnit_Framework_TestCase
     {
         $imageFile = new File($imagePath);
         $this->assertInstanceOf(
-            '\Elcodi\Component\Media\Entity\Interfaces\ImageInterface',
+            'Elcodi\Component\Media\Entity\Interfaces\ImageInterface',
             $this->imageManager->createImage($imageFile)
         );
     }
@@ -92,7 +92,7 @@ class ImageManagerTest extends PHPUnit_Framework_TestCase
         $image = $this->imageManager->createImage($imageFileObject);
 
         $this->assertInstanceOf(
-            '\Elcodi\Component\Media\Entity\Interfaces\ImageInterface',
+            'Elcodi\Component\Media\Entity\Interfaces\ImageInterface',
             $image
         );
         $this->assertEquals($finalMimeType, $image->getContentType());
@@ -150,7 +150,7 @@ class ImageManagerTest extends PHPUnit_Framework_TestCase
         $gifFilePath = $tmpDir . 'test.gif';
 
         $mockJpegOctet = $this
-            ->getMockBuilder('\Symfony\Component\HttpFoundation\File\File')
+            ->getMockBuilder('Symfony\Component\HttpFoundation\File\File')
             ->setConstructorArgs([$jpegFilePath])
             ->setMethods(['getMimeType'])
             ->getMock();
@@ -161,7 +161,7 @@ class ImageManagerTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue('application/octet-stream'));
 
         $mockPngOctet = $this
-            ->getMockBuilder('\Symfony\Component\HttpFoundation\File\File')
+            ->getMockBuilder('Symfony\Component\HttpFoundation\File\File')
             ->setConstructorArgs([$pngFilePath])
             ->setMethods(['getMimeType'])
             ->getMock();
@@ -172,7 +172,7 @@ class ImageManagerTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue('application/octet-stream'));
 
         $mockGifOctet = $this
-            ->getMockBuilder('\Symfony\Component\HttpFoundation\File\File')
+            ->getMockBuilder('Symfony\Component\HttpFoundation\File\File')
             ->setConstructorArgs([$gifFilePath])
             ->setMethods(['getMimeType'])
             ->getMock();

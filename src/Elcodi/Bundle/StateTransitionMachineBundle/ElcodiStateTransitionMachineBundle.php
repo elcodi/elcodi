@@ -59,7 +59,7 @@ class ElcodiStateTransitionMachineBundle extends Bundle implements DependentBund
     public static function getBundleDependencies()
     {
         return [
-            '\Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+            'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
     }
 
