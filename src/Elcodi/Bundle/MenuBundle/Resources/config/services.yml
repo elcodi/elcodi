@@ -9,5 +9,6 @@ services:
             - @elcodi.repository.menu
             - %elcodi.core.menu.cache_key%
         calls:
+            - [setEventDispatcher, [@event_dispatcher]]
             - [setCache, [@doctrine_cache.providers.elcodi_menus]]
             - [setEncoder, [@elcodi.json_encoder]]

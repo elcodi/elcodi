@@ -18,12 +18,14 @@
 namespace Elcodi\Component\Menu\Services;
 
 use Exception;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-use Elcodi\Component\Core\Encoder\Interfaces\EncoderInterface;
 use Elcodi\Component\Core\Wrapper\Abstracts\AbstractCacheWrapper;
+use Elcodi\Component\Menu\ElcodiMenuEvents;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\MenuInterface;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\SubnodesAwareInterface;
+use Elcodi\Component\Menu\Event\MenuEvent;
 use Elcodi\Component\Menu\Repository\MenuRepository;
 
 /**
@@ -46,18 +48,18 @@ class MenuManager extends AbstractCacheWrapper
     protected $menuRepository;
 
     /**
-     * @var EncoderInterface
-     *
-     * Encoder
-     */
-    protected $encoder;
-
-    /**
      * @var string
      *
      * key
      */
     protected $key;
+
+    /**
+     * @var EventDispatcherInterface
+     *
+     * Event dispatcher
+     */
+    protected $dispatcher;
 
     /**
      * Construct method
@@ -71,6 +73,20 @@ class MenuManager extends AbstractCacheWrapper
     ) {
         $this->menuRepository = $menuRepository;
         $this->key = $key;
+    }
+
+    /**
+     * Set the EventDispatcher
+     *
+     * @param EventDispatcherInterface $dispatcher
+     *
+     * @return $this Self object
+     */
+    public function setEventDispatcher(EventDispatcherInterface $dispatcher)
+    {
+        $this->dispatcher = $dispatcher;
+
+        return $this;
     }
 
     /**
@@ -97,13 +113,45 @@ class MenuManager extends AbstractCacheWrapper
             if (!$menu) {
 
                 $menu = $this->loadFromRepository($menuCode);
+
+                $menu = $this->dispatchMenuEvent(
+                    ElcodiMenuEvents::POST_COMPILATION,
+                    $menuCode,
+                    $menu
+                );
+
                 $this->saveToCache($key, $menu);
             }
 
             $this->saveToMemory($key, $menu);
         }
 
+        $menu = $this->dispatchMenuEvent(
+            ElcodiMenuEvents::POST_LOAD,
+            $menuCode,
+            $menu
+        );
+
         return $menu;
+    }
+
+    /**
+     * Generate node hydration
+     *
+     * @param NodeInterface $node Node
+     *
+     * @return array Node hydrated
+     */
+    public function hydrateNode(NodeInterface $node)
+    {
+        return [
+            'id'         => $node->getId(),
+            'name'       => $node->getName(),
+            'code'       => $node->getCode(),
+            'url'        => $node->getUrl(),
+            'activeUrls' => $node->getActiveUrls(),
+            'subnodes'   => $this->loadSubnodes($node),
+        ];
     }
 
     /**
@@ -232,21 +280,24 @@ class MenuManager extends AbstractCacheWrapper
     }
 
     /**
-     * Generate node hydration
+     * Dispatch a menu event and capture the
      *
-     * @param NodeInterface $node Node
+     * @param string $eventName Name of the event
+     * @param string $menuCode  Code of the menu
+     * @param array  $menu      Menu settings
      *
-     * @return array Node hydrated
+     * @return array
      */
-    public function hydrateNode(NodeInterface $node)
+    protected function dispatchMenuEvent($eventName, $menuCode, array $menu)
     {
-        return [
-            'id'         => $node->getId(),
-            'name'       => $node->getName(),
-            'code'       => $node->getCode(),
-            'url'        => $node->getUrl(),
-            'activeUrls' => $node->getActiveUrls(),
-            'subnodes'   => $this->loadSubnodes($node),
-        ];
+        $event = new MenuEvent($menuCode, $menu);
+        $this
+            ->dispatcher
+            ->dispatch(
+                $eventName,
+                $event
+            );
+
+        return $event->getResult();
     }
 }
