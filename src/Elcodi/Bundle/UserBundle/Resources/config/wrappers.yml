@@ -6,11 +6,11 @@ services:
     elcodi.wrapper.customer:
         class: %elcodi.wrapper.customer.class%
         arguments:
-            customer_factory: @elcodi.factory.customer
-            security_context: @?security.context
+            - @elcodi.factory.customer
+            - @?security.context
 
     elcodi.wrapper.admin_user:
         class: %elcodi.wrapper.admin_user.class%
         arguments:
-            admin_user_factory: @elcodi.factory.admin_user
-            security_context: @?security.context
+            - @elcodi.factory.admin_user
+            - @?security.context

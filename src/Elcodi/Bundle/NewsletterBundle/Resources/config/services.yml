@@ -6,8 +6,8 @@ services:
     elcodi.manager.newsletter:
         class: %elcodi.manager.newsletter.class%
         arguments:
-            newsletter_event_dispatcher: @elcodi.event_dispatcher.newsletter
-            validator: @validator
-            newsletter_subscription_factory: @elcodi.factory.newsletter_subscription
-            newsletter_subscription_repository: @elcodi.repository.newsletter_subscription
-            hash_generator: @elcodi.generator.sha1
+            - @elcodi.event_dispatcher.newsletter
+            - @validator
+            - @elcodi.factory.newsletter_subscription
+            - @elcodi.repository.newsletter_subscription
+            - @elcodi.generator.sha1

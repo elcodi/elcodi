@@ -6,4 +6,4 @@ services:
     elcodi.redis_metrics_bucket:
         class: %elcodi.redis_metrics_bucket.class%
         arguments:
-            redis: @snc_redis.metric
+            - @snc_redis.metric

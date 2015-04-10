@@ -6,19 +6,19 @@ services:
     elcodi.controller.media_image_resize:
         class: %elcodi.controller.media_image_resize.class%
         arguments:
-            request_stack: @request_stack
-            image_repository: @elcodi.repository.image
-            image_manager: @elcodi.manager.media_image
-            image_etag_transformer: @elcodi.transformer.media_image_etag
-            image_view_max_age: %elcodi.core.media.image_view_max_age%
-            image_view_shared_max_age: %elcodi.core.media.image_view_shared_max_age%
+            - @request_stack
+            - @elcodi.repository.image
+            - @elcodi.manager.media_image
+            - @elcodi.transformer.media_image_etag
+            - %elcodi.core.media.image_view_max_age%
+            - %elcodi.core.media.image_view_shared_max_age%
 
     elcodi.controller.media_image_upload:
         class: %elcodi.controller.media_image_upload.class%
         arguments:
-            request_stack: @request_stack
-            image_uploader: @elcodi.image_uploader
-            router: @router
-            image_upload_field_name: %elcodi.core.media.image_upload_field_name%
-            image_view_controller_route_name: %elcodi.core.media.image_view_controller_route_name%
-            image_resize_controller_route_name: %elcodi.core.media.image_resize_controller_route_name%
+            - @request_stack
+            - @elcodi.image_uploader
+            - @router
+            - %elcodi.core.media.image_upload_field_name%
+            - %elcodi.core.media.image_view_controller_route_name%
+            - %elcodi.core.media.image_resize_controller_route_name%

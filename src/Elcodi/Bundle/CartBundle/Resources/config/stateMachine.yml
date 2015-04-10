@@ -6,10 +6,10 @@ services:
     elcodi.order.payment_states_machine.builder:
         class: %elcodi.state_transition_machine.machine_builder.class%
         arguments:
-            machine_factory: @elcodi.factory.state_transition_machine
-            identifier: %elcodi.order.payment_states_machine.identifier%
-            configuration: %elcodi.order.payment_states_machine.states%
-            point_of_entry: %elcodi.order.payment_states_machine.point_of_entry%
+            - @elcodi.factory.state_transition_machine
+            - %elcodi.order.payment_states_machine.identifier%
+            - %elcodi.order.payment_states_machine.states%
+            - %elcodi.order.payment_states_machine.point_of_entry%
 
     elcodi.order.payment_states_machine:
         class: %elcodi.state_transition_machine.machine.class%
@@ -19,9 +19,9 @@ services:
     elcodi.order.payment_states_machine.manager:
         class: %elcodi.state_transition_machine.machine_manager.class%
         arguments:
-            machine: @elcodi.order.payment_states_machine
-            event_dispatcher: @event_dispatcher
-            state_line_factory: @elcodi.factory.state_transition_machine_state_line
+            - @elcodi.order.payment_states_machine
+            - @event_dispatcher
+            - @elcodi.factory.state_transition_machine_state_line
 
 
     #
@@ -30,10 +30,10 @@ services:
     elcodi.order.shipping_states_machine.builder:
         class: %elcodi.state_transition_machine.machine_builder.class%
         arguments:
-            machine_factory: @elcodi.factory.state_transition_machine
-            identifier: %elcodi.order.shipping_states_machine.identifier%
-            configuration: %elcodi.order.shipping_states_machine.states%
-            point_of_entry: %elcodi.order.shipping_states_machine.point_of_entry%
+            - @elcodi.factory.state_transition_machine
+            - %elcodi.order.shipping_states_machine.identifier%
+            - %elcodi.order.shipping_states_machine.states%
+            - %elcodi.order.shipping_states_machine.point_of_entry%
 
     elcodi.order.shipping_states_machine:
         class: %elcodi.state_transition_machine.machine.class%
@@ -43,6 +43,6 @@ services:
     elcodi.order.shipping_states_machine.manager:
         class: %elcodi.state_transition_machine.machine_manager.class%
         arguments:
-            machine: @elcodi.order.shipping_states_machine
-            event_dispatcher: @event_dispatcher
-            state_line_factory: @elcodi.factory.state_transition_machine_state_line
+            - @elcodi.order.shipping_states_machine
+            - @event_dispatcher
+            - @elcodi.factory.state_transition_machine_state_line

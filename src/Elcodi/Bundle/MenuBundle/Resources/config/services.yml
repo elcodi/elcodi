@@ -6,8 +6,8 @@ services:
     elcodi.manager.menu:
         class: %elcodi.manager.menu.class%
         arguments:
-            menu_repository: @elcodi.repository.menu
-            key: %elcodi.core.menu.cache_key%
+            - @elcodi.repository.menu
+            - %elcodi.core.menu.cache_key%
         calls:
             - [setCache, [@doctrine_cache.providers.elcodi_menus]]
             - [setEncoder, [@elcodi.json_encoder]]

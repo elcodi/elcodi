@@ -6,5 +6,5 @@ services:
     elcodi.controller.location_api:
         class: %elcodi.controller.location_api.class%
         arguments:
-            request_stack: @request_stack
-            location_manager: @elcodi.location_provider.service
+            - @request_stack
+            - @elcodi.location_provider.service

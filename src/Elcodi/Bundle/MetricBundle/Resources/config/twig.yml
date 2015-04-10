@@ -6,6 +6,6 @@ services:
     elcodi.api_metric_twig_extension:
         class: %elcodi.api_metric_twig_extension.class%
         arguments:
-            metric_bucket: @elcodi.metrics_bucket
+            - @elcodi.metrics_bucket
         tags:
             - { name: twig.extension }

@@ -6,8 +6,8 @@ services:
     elcodi.provider.locale:
         class: %elcodi.provider.locale.class%
         arguments:
-            request_stack: @request_stack
-            default_locale: %locale%
+            - @request_stack
+            - %locale%
 
     elcodi.provider.locale.locale:
         class: %elcodi.entity.locale.class%
@@ -21,12 +21,12 @@ services:
     elcodi.manager.language:
         class: %elcodi.manager.language.class%
         arguments:
-            language_repository: @elcodi.repository.language
+            - @elcodi.repository.language
 
     elcodi.manager.locale:
         class: %elcodi.manager.locale.class%
         arguments:
-            locale: @elcodi.provider.locale.locale
+            - @elcodi.provider.locale.locale
         calls:
             - [initialize, []]
 

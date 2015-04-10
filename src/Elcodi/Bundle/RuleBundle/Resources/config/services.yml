@@ -7,5 +7,5 @@ services:
         class: %elcodi.manager.rule.class%
         lazy: true
         arguments:
-            expression_language: @elcodi.expression_language
-            context_provider: @elcodi.expression_language_context_collector
+            - @elcodi.expression_language
+            - @elcodi.expression_language_context_collector

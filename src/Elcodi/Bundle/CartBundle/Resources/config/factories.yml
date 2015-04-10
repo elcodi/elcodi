@@ -18,8 +18,8 @@ services:
     elcodi.factory.order:
         class: %elcodi.factory.order.class%
         arguments:
-            payment_machine_manager: @elcodi.order.payment_states_machine.manager
-            shipping_machine_manager: @elcodi.order.shipping_states_machine.manager
+            - @elcodi.order.payment_states_machine.manager
+            - @elcodi.order.shipping_states_machine.manager
         calls:
             - [setEntityNamespace, ["%elcodi.entity.order.class%"]]
 

@@ -4,16 +4,16 @@ services:
         class: %elcodi.services.entity_translation_provider.class%
         lazy: true
         arguments:
-            translation_repository: @elcodi.repository.entity_translation
-            translation_factory: @elcodi.factory.entity_translation
-            translation_object_manager: @elcodi.object_manager.entity_translation
+            - @elcodi.repository.entity_translation
+            - @elcodi.factory.entity_translation
+            - @elcodi.object_manager.entity_translation
 
     elcodi.services.cached_entity_translation_provider:
         class: %elcodi.services.cached_entity_translation_provider.class%
         arguments:
-            translation_provider: @elcodi.services.entity_translation_provider
-            translation_repository: @elcodi.repository.entity_translation
-            cache_prefix: %elcodi.core.entity_translator.cache_prefix%
+            - @elcodi.services.entity_translation_provider
+            - @elcodi.repository.entity_translation
+            - %elcodi.core.entity_translator.cache_prefix%
         calls:
             - [setCache, [@doctrine_cache.providers.elcodi_translations]]
         tags:
@@ -28,10 +28,10 @@ services:
     elcodi.entity_translator_builder:
         class: %elcodi.entity_translator_builder.class%
         arguments:
-            translation_provider: @elcodi.entity_translation_provider
-            translator_factory: @elcodi.factory.entity_translator
-            configuration: %elcodi.core.entity_translator.configuration%
-            fallback: %elcodi.core.entity_translator.language_fallback%
+            - @elcodi.entity_translation_provider
+            - @elcodi.factory.entity_translator
+            - %elcodi.core.entity_translator.configuration%
+            - %elcodi.core.entity_translator.language_fallback%
 
     elcodi.entity_translator:
         class: %elcodi.entity_translator.class%

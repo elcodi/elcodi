@@ -6,6 +6,6 @@ services:
     elcodi.command.populate_currency_rates:
         class: %elcodi.command.populate_currency_rates.class%
         arguments:
-            currency_rates_populator: @elcodi.populator.currency_exchange_rate
+            - @elcodi.populator.currency_exchange_rate
         tags:
             -  { name: console.command }

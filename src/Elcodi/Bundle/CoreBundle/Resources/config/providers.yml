@@ -11,19 +11,19 @@ services:
     elcodi.provider.manager:
         class: %elcodi.provider.manager.class%
         arguments:
-            manager: @doctrine
-            parameters_bag: @elcodi.container_parameters
+            - @doctrine
+            - @elcodi.container_parameters
 
     elcodi.provider.repository:
         class: %elcodi.provider.repository.class%
         arguments:
-            manager_provider: @elcodi.provider.manager
-            parameters_bag: @elcodi.container_parameters
+            - @elcodi.provider.manager
+            - @elcodi.container_parameters
 
     elcodi.mapping_provider:
         class: %elcodi.mapping_provider.class%
         arguments:
-            mapping_implementations: %elcodi.mapping_implementations%
+            - %elcodi.mapping_implementations%
 
     elcodi.referrer_provider:
         class: %elcodi.referrer_provider.class%

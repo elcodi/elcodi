@@ -6,12 +6,12 @@ services:
     elcodi.transformer.cart_order:
         class: %elcodi.transformer.cart_order.class%
         arguments:
-            order_event_dispatcher: @elcodi.event_dispatcher.order
-            cart_line_order_line_transformer: @elcodi.transformer.cart_line_order_line
-            order_factory: @elcodi.factory.order
+            - @elcodi.event_dispatcher.order
+            - @elcodi.transformer.cart_line_order_line
+            - @elcodi.factory.order
 
     elcodi.transformer.cart_line_order_line:
         class: %elcodi.transformer.cart_line_order_line.class%
         arguments:
-            order_line_event_dispatcher:  @elcodi.event_dispatcher.order_line
-            order_factory: @elcodi.factory.order_line
+            - @elcodi.event_dispatcher.order_line
+            - @elcodi.factory.order_line

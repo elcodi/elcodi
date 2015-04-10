@@ -6,4 +6,4 @@ services:
     elcodi.transformer.location_to_location_data:
         class: %elcodi.transformer.location_to_location_data.class%
         arguments:
-            location_data_factory: @elcodi.factory.location_data
+            - @elcodi.factory.location_data

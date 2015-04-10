@@ -11,7 +11,7 @@ services:
         class: %elcodi.abstract_factory.purchasable.class%
         abstract: true
         arguments:
-            currency_wrapper: @elcodi.wrapper.currency
+            - @elcodi.wrapper.currency
 
     #
     # Factory for Currency entities

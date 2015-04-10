@@ -6,6 +6,6 @@ services:
     elcodi.core.page.router.simple_loader.loader:
         class: %elcodi.core.page.router.simple_loader.class%
         arguments:
-            name: %elcodi.core.page.routing.route_name%
-            path: %elcodi.core.page.routing.route_path%
-            controller: %elcodi.core.page.routing.controller%
+            - %elcodi.core.page.routing.route_name%
+            - %elcodi.core.page.routing.route_path%
+            - %elcodi.core.page.routing.controller%
