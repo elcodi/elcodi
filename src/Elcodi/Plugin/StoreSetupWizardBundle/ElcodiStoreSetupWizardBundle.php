@@ -60,7 +60,7 @@ class ElcodiStoreSetupWizardBundle extends Bundle implements DependentBundleInte
     public static function getBundleDependencies()
     {
         return [
-            '\Elcodi\Store\PaymentBridgeBundle\PaymentBridgeBundle',
+            '\Elcodi\Common\PaymentBridgeBundle\PaymentBridgeBundle',
         ];
     }
 }
