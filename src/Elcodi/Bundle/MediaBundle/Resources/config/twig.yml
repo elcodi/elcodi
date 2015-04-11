@@ -9,7 +9,5 @@ services:
             - @router
             - %elcodi.core.media.image_resize_controller_route_name%
             - %elcodi.core.media.image_view_controller_route_name%
-            - %elcodi.core.media.images.domain_sharding.enabled%
-            - %elcodi.core.media.images.domain_sharding.base_urls%
         tags:
             - { name: twig.extension }
