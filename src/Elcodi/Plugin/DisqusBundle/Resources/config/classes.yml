@@ -1,6 +1,0 @@
-parameters:
-
-    #
-    # Templating
-    #
-    elcodi_plugin.disqus.renderer.class: Elcodi\Plugin\DisqusBundle\Templating\TwigRenderer

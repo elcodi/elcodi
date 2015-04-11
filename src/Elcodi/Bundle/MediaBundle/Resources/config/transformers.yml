@@ -4,7 +4,7 @@ services:
     # Transformers
     #
     elcodi.transformer.media_image_etag:
-        class: %elcodi.transformer.media_image_etag.class%
+        class: Elcodi\Component\Media\Transformer\ImageEtagTransformer
 
     elcodi.transformer.media_file_identifier:
-        class: %elcodi.transformer.media_file_identifier.class%
+        class: Elcodi\Component\Media\Transformer\FileIdentifierTransformer

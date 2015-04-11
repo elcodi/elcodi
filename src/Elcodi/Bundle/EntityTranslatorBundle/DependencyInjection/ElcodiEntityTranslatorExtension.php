@@ -100,7 +100,6 @@ class ElcodiEntityTranslatorExtension extends AbstractExtension implements Entit
     public function getConfigFiles(array $config)
     {
         return [
-            'classes',
             'factories',
             'repositories',
             'objectManagers',

@@ -4,7 +4,7 @@ services:
     # Encoders
     #
     elcodi.json_encoder:
-        class: %elcodi.json_encoder.class%
+        class: Elcodi\Component\Core\Encoder\JsonEncoder
 
     elcodi.php_encoder:
-        class: %elcodi.php_encoder.class%
+        class: Elcodi\Component\Core\Encoder\PHPEncoder

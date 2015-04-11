@@ -4,21 +4,21 @@ services:
     # Commands
     #
     elcodi.command.configuration_set:
-        class: %elcodi.command.configuration_set.class%
+        class: Elcodi\Component\Configuration\Command\ConfigurationSetCommand
         arguments:
             - @elcodi.manager.configuration
         tags:
             -  { name: console.command }
 
     elcodi.command.configuration_get:
-        class: %elcodi.command.configuration_get.class%
+        class: Elcodi\Component\Configuration\Command\ConfigurationGetCommand
         arguments:
             - @elcodi.manager.configuration
         tags:
             -  { name: console.command }
 
     elcodi.command.configuration_delete:
-        class: %elcodi.command.configuration_delete.class%
+        class: Elcodi\Component\Configuration\Command\ConfigurationDeleteCommand
         arguments:
             - @elcodi.manager.configuration
         tags:

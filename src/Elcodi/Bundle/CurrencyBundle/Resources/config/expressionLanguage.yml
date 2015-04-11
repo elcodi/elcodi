@@ -4,7 +4,7 @@ services:
     # Specific provider for Currency Wrapper
     #
     elcodi.expression_language.money_provider:
-        class: %elcodi.expression_language.money_provider.class%
+        class: Elcodi\Component\Currency\ExpressionLanguage\MoneyProvider
         arguments:
             - @elcodi.wrapper.currency
             - @elcodi.repository.currency

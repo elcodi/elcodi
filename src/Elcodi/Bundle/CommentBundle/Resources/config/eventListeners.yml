@@ -4,7 +4,7 @@ services:
     # EventListeners
     #
     elcodi.event_listener.comment_cache_invalidation:
-        class: %elcodi.event_listener.comment_cache_invalidation.class%
+        class: Elcodi\Component\Comment\EventListener\CommentCacheInvalidationEventListener
         arguments:
             - @elcodi.comment_cache
         tags:

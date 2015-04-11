@@ -8,6 +8,6 @@ services:
     # Factory for Zone entities
     #
     elcodi.factory.zone:
-        class: %elcodi.factory.zone.class%
+        class: Elcodi\Component\Zone\Factory\ZoneFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.zone.class%"]]

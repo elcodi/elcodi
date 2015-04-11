@@ -4,7 +4,7 @@ services:
     # Services
     #
     elcodi.template_manager:
-        class: %elcodi.template_manager.class%
+        class: Elcodi\Component\Template\Services\TemplateManager
         arguments:
             - @kernel
             - @elcodi.manager.configuration

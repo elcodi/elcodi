@@ -8,7 +8,7 @@ services:
     # Factory for entity customer
     #
     elcodi.factory.customer:
-        class: %elcodi.factory.customer.class%
+        class: Elcodi\Component\User\Factory\CustomerFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.customer.class%"]]
             - [setGenerator, [@elcodi.generator.random_string]]
@@ -17,7 +17,7 @@ services:
     # Factory for entity admin user
     #
     elcodi.factory.admin_user:
-        class: %elcodi.factory.admin_user.class%
+        class: Elcodi\Component\User\Factory\AdminUserFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.admin_user.class%"]]
             - [setGenerator, [@elcodi.generator.random_string]]

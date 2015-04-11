@@ -4,7 +4,7 @@ services:
     # Event Listeners
     #
     elcodi.event_listener.newsletter:
-        class: %elcodi.event_listener.newsletter.class%
+        class: Elcodi\Component\Newsletter\EventListener\NewsletterEventListener
         arguments:
             - @elcodi.object_manager.newsletter_subscription
         tags:

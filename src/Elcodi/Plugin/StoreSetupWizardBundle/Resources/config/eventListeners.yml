@@ -4,7 +4,7 @@ services:
     # Event listeners
     #
     elcodi_plugin.event_listener.dashboard_redirection:
-        class: %elcodi_plugin.event_listener.dashboard_redirection.class%
+        class: Elcodi\Plugin\StoreSetupWizardBundle\EventListener\DashboardRedirectionEventListener
         arguments:
             router: @router
             wizard_status: @elcodi_templates.wizard_status.service
@@ -15,7 +15,7 @@ services:
             - { name: firewall_listener, firewall: admin_area }
 
     elcodi_plugin.event_listener.disable_wizard:
-        class: %elcodi_plugin.event_listener.disable_wizard.class%
+        class: Elcodi\Plugin\StoreSetupWizardBundle\EventListener\DisableWizardEventListener
         arguments:
             wizard_status: @elcodi_templates.wizard_status.service
             plugin_manager: @elcodi.plugin_manager
@@ -26,7 +26,7 @@ services:
             - { name: firewall_listener, firewall: admin_area }
 
     elcodi_plugin.event_listener.disable_under_construction:
-        class: %elcodi_plugin.event_listener.disable_under_construction.class%
+        class: Elcodi\Plugin\StoreSetupWizardBundle\EventListener\DisableUnderConstructionEventListener
         arguments:
             translator: @translator
             router: @router

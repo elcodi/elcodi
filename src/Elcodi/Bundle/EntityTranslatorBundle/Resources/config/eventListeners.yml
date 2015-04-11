@@ -4,7 +4,7 @@ services:
     # Event Listeners
     #
     elcodi.event_listener.entity_translator_form:
-        class: %elcodi.event_listener.entity_translator_form.class%
+        class: Elcodi\Component\EntityTranslator\EventListener\EntityTranslatorFormEventListener
         arguments:
             - @elcodi.entity_translation_provider
             - %elcodi.core.entity_translator.configuration%

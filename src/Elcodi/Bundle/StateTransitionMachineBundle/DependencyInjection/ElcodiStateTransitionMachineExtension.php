@@ -94,7 +94,6 @@ class ElcodiStateTransitionMachineExtension extends AbstractExtension implements
     public function getConfigFiles(array $config)
     {
         return [
-            'classes',
             'factories',
             'repositories',
             'objectManagers',

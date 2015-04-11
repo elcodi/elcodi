@@ -94,7 +94,6 @@ class ElcodiLanguageExtension extends AbstractExtension implements EntitiesOverr
     public function getConfigFiles(array $config)
     {
         return [
-            'classes',
             'factories',
             'repositories',
             'services',

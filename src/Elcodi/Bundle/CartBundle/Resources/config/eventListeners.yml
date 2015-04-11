@@ -4,7 +4,7 @@ services:
     # Event Listeners
     #
     elcodi.event_listener.cart_load:
-        class: %elcodi.event_listener.cart_load.class%
+        class: Elcodi\Component\Cart\EventListener\CartLoadEventListener
         arguments:
             - @elcodi.object_manager.cart
             - @elcodi.event_dispatcher.cart
@@ -19,12 +19,12 @@ services:
             - { name: kernel.event_listener, event: cart.onload, method: loadCartQuantities, priority: 16 }
 
     elcodi.event_listener.limit_negative_carts:
-        class: %elcodi.event_listener.limit_negative_carts.class%
+        class: Elcodi\Component\Cart\EventListener\LimitNegativeCartsListener
         tags:
             - { name: kernel.event_listener, event: cart.onload, method: limitCartAmount, priority: -255 }
 
     elcodi.event_listener.order_creation:
-        class: %elcodi.event_listener.order_creation.class%
+        class: Elcodi\Component\Cart\EventListener\OrderCreationEventListener
         arguments:
             - @elcodi.object_manager.order
             - @elcodi.object_manager.cart
@@ -33,7 +33,7 @@ services:
             - { name: kernel.event_listener, event: order.oncreated, method: setCartAsOrdered, priority: -16 }
 
     elcodi.event_listener.order_line_creation:
-        class: %elcodi.event_listener.order_line_creation.class%
+        class: Elcodi\Component\Cart\EventListener\OrderLineCreationEventListener
         arguments:
             - @elcodi.object_manager.product
             - @elcodi.object_manager.product_variant
@@ -41,14 +41,14 @@ services:
             - { name: kernel.event_listener, event: order_line.oncreated, method: updateStock, priority: 0}
 
     elcodi.event_listener.cart_session:
-        class: %elcodi.event_listener.cart_session.class%
+        class: Elcodi\Component\Cart\EventListener\CartSessionEventListener
         arguments:
             - @elcodi.session_manager.cart
         tags:
             - { name: kernel.event_listener, event: cart.onload, method: saveCartInSession, priority: -2 }
 
     elcodi.event_listener.address_clone:
-        class: %elcodi.event_listener.address_clone.class%
+        class: Elcodi\Component\Cart\EventListener\AddressCloneEventListener
         arguments:
             - @elcodi.repository.cart
             - @elcodi.object_manager.cart

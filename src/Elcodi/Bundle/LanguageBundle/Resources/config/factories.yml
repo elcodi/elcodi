@@ -8,6 +8,6 @@ services:
     # Factory for entity language
     #
     elcodi.factory.language:
-        class: %elcodi.factory.language.class%
+        class: Elcodi\Component\Language\Factory\LanguageFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.language.class%"]]

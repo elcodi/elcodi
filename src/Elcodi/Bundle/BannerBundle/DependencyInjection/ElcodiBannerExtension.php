@@ -99,7 +99,6 @@ class ElcodiBannerExtension extends AbstractExtension implements EntitiesOverrid
     public function getConfigFiles(array $config)
     {
         return [
-            'classes',
             'factories',
             'services',
             'repositories',

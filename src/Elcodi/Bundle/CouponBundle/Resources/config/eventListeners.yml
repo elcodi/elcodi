@@ -4,7 +4,7 @@ services:
     # Event Listeners
     #
     elcodi.event_listener.make_coupon_used:
-        class: %elcodi.event_listener.make_coupon_used.class%
+        class: Elcodi\Component\Coupon\EventListener\MakeCouponUsedEventListener
         arguments:
             - @elcodi.object_manager.coupon
         tags:

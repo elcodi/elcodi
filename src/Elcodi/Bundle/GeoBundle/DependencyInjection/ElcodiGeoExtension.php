@@ -100,7 +100,6 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
     public function getConfigFiles(array $config)
     {
         return [
-            'classes',
             'commands',
             'controllers',
             'directors',

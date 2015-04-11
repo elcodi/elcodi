@@ -4,7 +4,7 @@ services:
     # Commands
     #
     store.fixtures_booster.command.load_fixtures:
-        class: %store.fixtures_booster.command.load_fixtures.class%
+        class: Elcodi\Bundle\FixturesBoosterBundle\Command\LoadDataFixturesDoctrineCommand
         arguments:
             - @kernel
             - %database_path%

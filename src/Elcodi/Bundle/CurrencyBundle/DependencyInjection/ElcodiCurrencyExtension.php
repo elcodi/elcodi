@@ -116,7 +116,6 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
     public function getConfigFiles(array $config)
     {
         return [
-            'classes',
             'services',
             'commands',
             'currencyExchangeRatesProviderAdapters',

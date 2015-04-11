@@ -4,7 +4,7 @@ services:
     # Order state machine for Payment
     #
     elcodi.order.payment_states_machine.builder:
-        class: %elcodi.state_transition_machine.machine_builder.class%
+        class: Elcodi\Component\StateTransitionMachine\Machine\MachineBuilder
         arguments:
             - @elcodi.factory.state_transition_machine
             - %elcodi.order.payment_states_machine.identifier%
@@ -12,12 +12,12 @@ services:
             - %elcodi.order.payment_states_machine.point_of_entry%
 
     elcodi.order.payment_states_machine:
-        class: %elcodi.state_transition_machine.machine.class%
+        class: Elcodi\Component\StateTransitionMachine\Machine\Machine
         factory_service: elcodi.order.payment_states_machine.builder
         factory_method: compile
 
     elcodi.order.payment_states_machine.manager:
-        class: %elcodi.state_transition_machine.machine_manager.class%
+        class: Elcodi\Component\StateTransitionMachine\Machine\MachineManager
         arguments:
             - @elcodi.order.payment_states_machine
             - @event_dispatcher
@@ -28,7 +28,7 @@ services:
     # Order state machine for Shipping
     #
     elcodi.order.shipping_states_machine.builder:
-        class: %elcodi.state_transition_machine.machine_builder.class%
+        class: Elcodi\Component\StateTransitionMachine\Machine\MachineBuilder
         arguments:
             - @elcodi.factory.state_transition_machine
             - %elcodi.order.shipping_states_machine.identifier%
@@ -36,12 +36,12 @@ services:
             - %elcodi.order.shipping_states_machine.point_of_entry%
 
     elcodi.order.shipping_states_machine:
-        class: %elcodi.state_transition_machine.machine.class%
+        class: Elcodi\Component\StateTransitionMachine\Machine\Machine
         factory_service: elcodi.order.shipping_states_machine.builder
         factory_method: compile
 
     elcodi.order.shipping_states_machine.manager:
-        class: %elcodi.state_transition_machine.machine_manager.class%
+        class: Elcodi\Component\StateTransitionMachine\Machine\MachineManager
         arguments:
             - @elcodi.order.shipping_states_machine
             - @event_dispatcher
