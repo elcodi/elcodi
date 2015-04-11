@@ -4,7 +4,7 @@ services:
     # Twig renderer
     #
     elcodi_plugin.disqus.renderer:
-        class: %elcodi_plugin.disqus.renderer.class%
+        class: Elcodi\Plugin\DisqusBundle\Templating\TwigRenderer
         calls:
             - [setTemplating, [@twig]]
             - [setPlugin, [@=elcodi_plugin("Elcodi\\Plugin\\DisqusBundle")]]

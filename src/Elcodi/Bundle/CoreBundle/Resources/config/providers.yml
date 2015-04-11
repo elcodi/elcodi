@@ -4,29 +4,29 @@ services:
     # Providers
     #
     elcodi.container_parameters:
-        class: %elcodi.container_parameters.class%
+        class: Symfony\Component\DependencyInjection\ParameterBag\ParameterBag
         factory_service: service_container
         factory_method: getParameterBag
 
     elcodi.provider.manager:
-        class: %elcodi.provider.manager.class%
+        class: Elcodi\Component\Core\Services\ManagerProvider
         arguments:
             - @doctrine
             - @elcodi.container_parameters
 
     elcodi.provider.repository:
-        class: %elcodi.provider.repository.class%
+        class: Elcodi\Component\Core\Services\RepositoryProvider
         arguments:
             - @elcodi.provider.manager
             - @elcodi.container_parameters
 
     elcodi.mapping_provider:
-        class: %elcodi.mapping_provider.class%
+        class: Elcodi\Component\Core\Services\MappingProvider
         arguments:
             - %elcodi.mapping_implementations%
 
     elcodi.referrer_provider:
-        class: %elcodi.referrer_provider.class%
+        class: Elcodi\Component\Core\Services\ReferrerProvider
         arguments:
             - @session
             - @request_stack

@@ -8,7 +8,7 @@ services:
     # Factory for entity comment
     #
     elcodi.factory.comment:
-        class: %elcodi.factory.comment.class%
+        class: Elcodi\Component\Comment\Factory\CommentFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.comment.class%"]]
 
@@ -16,6 +16,6 @@ services:
     # Factory for entity vote
     #
     elcodi.factory.comment_vote:
-        class: %elcodi.factory.vote.class%
+        class: Elcodi\Component\Comment\Factory\VoteFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.comment_vote.class%"]]

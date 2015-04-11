@@ -4,18 +4,18 @@ services:
     # Services
     #
     elcodi.core.plugin.hook_system.adapter.event_dispatcher:
-        class: %elcodi.core.plugin.hook_system.adapter.event_dispatcher.class%
+        class: Elcodi\Component\Plugin\Adapter\EventDispatcher\HookSystemAdapter
         arguments:
             - @event_dispatcher
 
     elcodi.template_manager:
-        class: %elcodi.template_manager.class%
+        class: Elcodi\Component\Template\Services\TemplateManager
         arguments:
             - @kernel
             - @elcodi.manager.configuration
 
     elcodi.plugin_manager:
-        class: %elcodi.plugin_manager.class%
+        class: Elcodi\Component\Plugin\Services\PluginManager
         arguments:
             - @kernel
             - @elcodi.manager.configuration

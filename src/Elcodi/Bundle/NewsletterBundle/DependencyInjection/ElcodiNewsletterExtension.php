@@ -94,7 +94,6 @@ class ElcodiNewsletterExtension extends AbstractExtension implements EntitiesOve
     public function getConfigFiles(array $config)
     {
         return [
-            'classes',
             'services',
             'factories',
             'repositories',

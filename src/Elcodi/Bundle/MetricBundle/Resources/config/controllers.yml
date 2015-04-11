@@ -4,7 +4,7 @@ services:
     # Controllers
     #
     elcodi.controller.metric_input:
-        class: %elcodi.controller.metric_input.class%
+        class: Elcodi\Component\Metric\Input\Controller\InputController
         arguments:
             - @request_stack
             - @elcodi.metric_manager

@@ -99,7 +99,6 @@ class ElcodiAttributeExtension extends AbstractExtension implements EntitiesOver
     public function getConfigFiles(array $config)
     {
         return [
-            'classes',
             'factories',
             'repositories',
             'objectManagers',

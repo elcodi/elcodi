@@ -4,7 +4,7 @@ services:
     # Services
     #
     elcodi_plugin.product_csv.exporter:
-        class: %elcodi_plugin.product_csv.exporter.class%
+        class: Elcodi\Plugin\ProductCsvBundle\Services\ProductExporter
         arguments:
             - @elcodi_plugin.product_csv.csv_exporter
 

@@ -4,26 +4,26 @@ services:
     # Services
     #
     elcodi.manager.currency:
-        class: %elcodi.manager.currency.class%
+        class: Elcodi\Component\Currency\Services\CurrencyManager
         arguments:
             - @elcodi.repository.currency
             - @elcodi.repository.currency_exchange_rate
             - %elcodi.core.currency.rates_provider_currency_base%
 
     elcodi.session_manager.currency:
-        class: %elcodi.session_manager.currency.class%
+        class: Elcodi\Component\Currency\Services\CurrencySessionManager
         arguments:
             - @session
             - %elcodi.core.currency.session_field_name%
 
     elcodi.converter.currency:
-        class: %elcodi.converter.currency.class%
+        class: Elcodi\Component\Currency\Services\CurrencyConverter
         arguments:
             - @elcodi.manager.currency
             - %elcodi.core.currency.rates_provider_currency_base%
 
     elcodi.populator.currency_exchange_rate:
-        class: %elcodi.populator.currency_exchange_rate.class%
+        class: Elcodi\Component\Currency\Populator\CurrencyExchangeRatesPopulator
         lazy: true
         arguments:
             - @elcodi.object_manager.currency_exchange_rate
@@ -37,7 +37,7 @@ services:
     # Providers
     #
     elcodi.provider.currency_exchange_rate:
-        class: %elcodi.provider.currency_exchange_rate.class%
+        class: Elcodi\Component\Currency\Services\CurrencyExchangeRatesProvider
         arguments:
             - @elcodi.adapter.currency_exchange_rate
 
@@ -45,7 +45,7 @@ services:
     # Wrappers
     #
     elcodi.wrapper.currency:
-        class: %elcodi.wrapper.currency.class%
+        class: Elcodi\Component\Currency\Wrapper\CurrencyWrapper
         arguments:
             - @elcodi.session_manager.currency
             - @elcodi.repository.currency

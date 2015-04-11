@@ -4,7 +4,7 @@ services:
     # Twig extensions
     #
     elcodi.twig_extension.configuration:
-        class: %elcodi.twig_extension.configuration.class%
+        class: Elcodi\Component\Configuration\Twig\ConfigurationExtension
         arguments:
             - @elcodi.manager.configuration
         tags:

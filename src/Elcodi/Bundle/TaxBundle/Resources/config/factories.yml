@@ -8,7 +8,7 @@ services:
     # Factory for entity tax
     #
     elcodi.factory.tax:
-        class: %elcodi.factory.tax.class%
+        class: Elcodi\Component\Tax\Factory\TaxFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.tax.class%"]]
 
@@ -16,6 +16,6 @@ services:
     # Factory for entity tax group
     #
     elcodi.factory.tax_group:
-        class: %elcodi.factory.tax_group.class%
+        class: Elcodi\Component\Tax\Factory\TaxGroupFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.tax_group.class%"]]

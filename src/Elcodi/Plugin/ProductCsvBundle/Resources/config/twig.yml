@@ -4,7 +4,7 @@ services:
     # Twig renderer
     #
     elcodi_plugin.product_csv.renderer:
-        class: %elcodi_plugin.product_csv.renderer.class%
+        class: Elcodi\Plugin\ProductCsvBundle\Templating\TwigRenderer
         calls:
             - [setTemplating, [@twig]]
             - [setPlugin, [@=elcodi_plugin("Elcodi\\Plugin\\ProductCsvBundle")]]

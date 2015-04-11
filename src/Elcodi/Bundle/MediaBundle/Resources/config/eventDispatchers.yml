@@ -4,5 +4,5 @@ services:
     # Event Dispatchers
     #
     elcodi.event_dispatcher.media:
-        class: %elcodi.event_dispatcher.media.class%
+        class: Elcodi\Component\Media\EventDispatcher\MediaEventDispatcher
         parent: elcodi.event_dispatcher.abstract

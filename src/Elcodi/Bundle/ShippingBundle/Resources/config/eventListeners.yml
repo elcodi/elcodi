@@ -4,7 +4,7 @@ services:
     # Event Listeners
     #
     elcodi.event_listener.refresh_shipping_amount:
-        class: %elcodi.event_listener.refresh_shipping_amount.class%
+        class: Elcodi\Component\Shipping\EventListener\RefreshShippingAmountEventListener
         arguments:
             - @elcodi.wrapper.currency
             - @elcodi.converter.currency

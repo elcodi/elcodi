@@ -4,5 +4,5 @@ services:
     # Event Dispatchers
     #
     elcodi.event_dispatcher.coupon:
-        class: %elcodi.event_dispatchers.coupon.class%
+        class: Elcodi\Component\Coupon\EventDispatcher\CouponEventDispatcher
         parent: elcodi.event_dispatcher.abstract

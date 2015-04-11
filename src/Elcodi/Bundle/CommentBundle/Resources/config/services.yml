@@ -4,14 +4,14 @@ services:
     # Services
     #
     elcodi.manager.comment:
-        class: %elcodi.manager.comment.class%
+        class: Elcodi\Component\Comment\Services\CommentManager
         arguments:
             - @elcodi.event_dispatcher.comment
             - @elcodi.director.comment
             - @elcodi.comment_parser
 
     elcodi.comment_parser:
-        class: %elcodi.comment_parser.class%
+        class: Elcodi\Component\Comment\Services\CommentParser
         arguments:
             - @elcodi.comment_parser_adapter
 
@@ -20,7 +20,7 @@ services:
         synthetic: true
 
     elcodi.comment_cache:
-        class: %elcodi.comment_cache.class%
+        class: Elcodi\Component\Comment\Services\CommentCache
         arguments:
             - @elcodi.repository.comment
             - @elcodi.manager.comment_vote
@@ -30,7 +30,7 @@ services:
             - [setEncoder, [@elcodi.json_encoder]]
 
     elcodi.manager.comment_vote:
-        class: %elcodi.manager.comment_vote.class%
+        class: Elcodi\Component\Comment\Services\VoteManager
         arguments:
             - @elcodi.event_dispatcher.comment
             - @elcodi.director.comment_vote

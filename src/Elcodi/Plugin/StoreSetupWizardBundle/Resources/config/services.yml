@@ -4,13 +4,13 @@ services:
     # Services
     #
     elcodi_templates.wizard_status.service:
-        class: %elcodi_templates.wizard_status.service.class%
+        class: Elcodi\Plugin\StoreSetupWizardBundle\Services\WizardStatus
         arguments:
             configuration_manager: @elcodi.manager.configuration
             product_repository: @elcodi.repository.product
             shipping_range_repository: @elcodi.repository.shipping_range
 
     elcodi_templates.wizard_routes.service:
-        class: %elcodi_templates.wizard_routes.service.class%
+        class: Elcodi\Plugin\StoreSetupWizardBundle\Services\WizardRoutes
         arguments:
             wizard_status: @elcodi_templates.wizard_status.service

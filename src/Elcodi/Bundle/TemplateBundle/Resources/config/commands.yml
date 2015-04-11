@@ -4,14 +4,14 @@ services:
     # Commands
     #
     elcodi.templates_load_command:
-        class: %elcodi.templates_load_command.class%
+        class: Elcodi\Component\Template\Command\TemplatesLoadCommand
         arguments:
             - @elcodi.template_manager
         tags:
             -  { name: console.command }
 
     elcodi.templates_enable_command:
-        class: %elcodi.templates_enable_command.class%
+        class: Elcodi\Component\Template\Command\TemplatesEnableCommand
         arguments:
             - @elcodi.manager.configuration
         tags:

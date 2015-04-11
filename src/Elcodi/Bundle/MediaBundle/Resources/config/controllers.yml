@@ -4,7 +4,7 @@ services:
     # Controllers
     #
     elcodi.controller.media_image_resize:
-        class: %elcodi.controller.media_image_resize.class%
+        class: Elcodi\Component\Media\Controller\ImageResizeController
         arguments:
             - @request_stack
             - @elcodi.repository.image
@@ -14,7 +14,7 @@ services:
             - %elcodi.core.media.image_view_shared_max_age%
 
     elcodi.controller.media_image_upload:
-        class: %elcodi.controller.media_image_upload.class%
+        class: Elcodi\Component\Media\Controller\ImageUploadController
         arguments:
             - @request_stack
             - @elcodi.image_uploader

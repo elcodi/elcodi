@@ -1,7 +1,7 @@
 services:
 
     elcodi.services.entity_translation_provider:
-        class: %elcodi.services.entity_translation_provider.class%
+        class: Elcodi\Component\EntityTranslator\Services\EntityTranslationProvider
         lazy: true
         arguments:
             - @elcodi.repository.entity_translation
@@ -9,7 +9,7 @@ services:
             - @elcodi.object_manager.entity_translation
 
     elcodi.services.cached_entity_translation_provider:
-        class: %elcodi.services.cached_entity_translation_provider.class%
+        class: Elcodi\Component\EntityTranslator\Services\CachedEntityTranslationProvider
         arguments:
             - @elcodi.services.entity_translation_provider
             - @elcodi.repository.entity_translation
@@ -20,13 +20,13 @@ services:
             - { name: kernel.event_listener, event: translator.warmup, method: warmUp }
 
     elcodi.entity_translator_changes:
-        class: %elcodi.entity_translator_changes.class%
+        class: Elcodi\Component\EntityTranslator\Services\EntityTranslationChangesBag
 
     elcodi.entity_translation_provider:
         alias: elcodi.services.cached_entity_translation_provider
 
     elcodi.entity_translator_builder:
-        class: %elcodi.entity_translator_builder.class%
+        class: Elcodi\Component\EntityTranslator\Services\EntityTranslatorBuilder
         arguments:
             - @elcodi.entity_translation_provider
             - @elcodi.factory.entity_translator
@@ -34,6 +34,6 @@ services:
             - %elcodi.core.entity_translator.language_fallback%
 
     elcodi.entity_translator:
-        class: %elcodi.entity_translator.class%
+        class: Elcodi\Component\EntityTranslator\Services\EntityTranslator
         factory_service: elcodi.entity_translator_builder
         factory_method: compile

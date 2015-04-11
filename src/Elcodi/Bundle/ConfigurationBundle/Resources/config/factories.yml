@@ -8,6 +8,6 @@ services:
     # Factory for configuration entity
     #
     elcodi.factory.configuration:
-        class: %elcodi.factory.configuration.class%
+        class: Elcodi\Component\Configuration\Factory\ConfigurationFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.configuration.class%"]]

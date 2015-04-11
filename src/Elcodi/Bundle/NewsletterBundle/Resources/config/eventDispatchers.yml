@@ -4,5 +4,5 @@ services:
     # Event Dispatchers
     #
     elcodi.event_dispatcher.newsletter:
-        class: %elcodi.event_dispatcher.newsletter.class%
+        class: Elcodi\Component\Newsletter\EventDispatcher\NewsletterEventDispatcher
         parent: elcodi.event_dispatcher.abstract

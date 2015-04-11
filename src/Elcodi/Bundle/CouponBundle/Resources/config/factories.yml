@@ -8,7 +8,7 @@ services:
     # Factory for entity coupon
     #
     elcodi.factory.coupon:
-        class: %elcodi.factory.coupon.class%
+        class: Elcodi\Component\Coupon\Factory\CouponFactory
         parent: elcodi.factory.abstract.purchasable
         calls:
             - [setEntityNamespace, ["%elcodi.entity.coupon.class%"]]

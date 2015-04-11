@@ -52,7 +52,6 @@ class ElcodiStoreSetupWizardExtension extends AbstractExtension
     {
         return [
             'services',
-            'classes',
             'templating',
             'eventListeners',
         ];

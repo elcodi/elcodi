@@ -4,7 +4,7 @@ services:
     # Services
     #
     elcodi.manager.password:
-        class: %elcodi.manager.password.class%
+        class: Elcodi\Component\User\Services\PasswordManager
         arguments:
             - @doctrine.orm.entity_manager
             - @router
@@ -12,13 +12,13 @@ services:
             - @elcodi.generator.sha1
 
     elcodi.manager.customer:
-        class: %elcodi.manager.customer.class%
+        class: Elcodi\Component\User\Services\CustomerManager
         arguments:
             - @event_dispatcher
             - @?security.context
 
     elcodi.manager.admin_user:
-        class: %elcodi.manager.admin_user.class%
+        class: Elcodi\Component\User\Services\AdminUserManager
         arguments:
             - @event_dispatcher
             - @?security.context

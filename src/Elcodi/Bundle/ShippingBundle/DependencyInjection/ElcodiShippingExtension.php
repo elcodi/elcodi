@@ -101,7 +101,6 @@ class ElcodiShippingExtension extends AbstractExtension implements EntitiesOverr
     public function getConfigFiles(array $config)
     {
         return [
-            'classes',
             'providers',
             'resolvers',
             'factories',

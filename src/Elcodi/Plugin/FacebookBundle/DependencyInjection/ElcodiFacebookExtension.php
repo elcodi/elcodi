@@ -51,7 +51,6 @@ class ElcodiFacebookExtension extends AbstractExtension
     public function getConfigFiles(array $config)
     {
         return [
-            'classes',
             'templating',
         ];
     }

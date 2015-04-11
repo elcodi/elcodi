@@ -8,6 +8,6 @@ services:
     # Factory for entity newsletter_subscription
     #
     elcodi.factory.newsletter_subscription:
-        class: %elcodi.factory.newsletter_subscription.class%
+        class: Elcodi\Component\Newsletter\Factory\NewsletterSubscriptionFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.newsletter_subscription.class%"]]

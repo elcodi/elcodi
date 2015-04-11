@@ -56,7 +56,6 @@ class ElcodiPluginExtension extends AbstractExtension
     public function getConfigFiles(array $config)
     {
         return [
-            'classes',
             'services',
             'commands',
             'twig',
