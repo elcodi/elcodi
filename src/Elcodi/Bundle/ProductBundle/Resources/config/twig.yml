@@ -4,7 +4,7 @@ services:
     # Twig extensions
     #
     elcodi.twig_extension.product:
-        class: Elcodi\Component\Menu\Adapter\RouteGenerator\DummyRouteGeneratorAdapter
+        class: Elcodi\Component\Product\Twig\ProductExtension
         arguments: ~
         tags:
             - { name: twig.extension }
