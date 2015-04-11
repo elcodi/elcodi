@@ -3,7 +3,7 @@ services:
     #
     # Services
     #
-    elcodi.cart.manager:
+    elcodi.manager.cart:
         class: Elcodi\Component\Cart\Services\CartManager
         arguments:
             - @elcodi.event_dispatcher.cart
