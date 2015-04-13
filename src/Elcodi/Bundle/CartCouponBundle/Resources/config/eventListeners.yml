@@ -78,7 +78,7 @@ services:
             - { name: kernel.event_listener, event: order.oncreated, method: convertCouponToOrder, priority: -16 }
 
     elcodi.event_listener.cart_coupon.order_coupon_manager:
-        class: Elcodi\Component\CartCoupon\Services\OrderCouponManager
+        class: Elcodi\Component\CartCoupon\EventListener\OrderCouponManagerListener
         arguments:
             - @elcodi.object_manager.order_coupon
             - @elcodi.event_dispatcher.coupon
