@@ -148,7 +148,7 @@ abstract class AbstractExtension
     protected function getConfigFilesLocation()
     {
         throw new \RuntimeException(sprintf(
-            'Method "getConfigFiles" returns non-empty, but "getConfigFilesLocation" is missing in "%s" extension.',
+            'Method "getConfigFiles" returns non-empty, but "getConfigFilesLocation" is not implemented in "%s" extension.',
             $this->getAlias()
         ));
     }
