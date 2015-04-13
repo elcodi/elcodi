@@ -15,7 +15,7 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Media\Router;
+namespace Elcodi\Component\Core\Router;
 
 use RuntimeException;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -24,23 +24,37 @@ use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 
 /**
- * Class MediaRouterLoader
+ * Class SingleRouterLoader
  */
-class ImageResizeRouterLoader implements LoaderInterface
+class SingleRouterLoader implements LoaderInterface
 {
     /**
      * @var string
      *
-     * Upload route name
+     * Route name
      */
-    protected $imageResizeControllerRouteName;
+    protected $controllerRouteName;
 
     /**
      * @var string
      *
-     * Upload controller route
+     * Controller route
      */
-    protected $imageResizeControllerRoute;
+    protected $controllerRoute;
+
+    /**
+     * @var string
+     *
+     * Controller action
+     */
+    protected $controllerAction;
+
+    /**
+     * @var string
+     *
+     * Resource type
+     */
+    protected $resourceType;
 
     /**
      * @var boolean
@@ -50,17 +64,33 @@ class ImageResizeRouterLoader implements LoaderInterface
     protected $loaded = false;
 
     /**
+     * @var array
+     *
+     * Route options
+     */
+    protected $options;
+
+    /**
      * Construct method
      *
-     * @param string $imageResizeControllerRouteName Image resize controller route name
-     * @param string $imageResizeControllerRoute     Image resize controller route
+     * @param string $controllerRouteName controller route name
+     * @param string $controllerRoute     controller route
+     * @param string $controllerAction    controller action
+     * @param string $resourceType        resource type
+     * @param array  $options             route options
      */
     public function __construct(
-        $imageResizeControllerRouteName,
-        $imageResizeControllerRoute
+        $controllerRouteName,
+        $controllerRoute,
+        $controllerAction,
+        $resourceType,
+        array $options = []
     ) {
-        $this->imageResizeControllerRouteName = $imageResizeControllerRouteName;
-        $this->imageResizeControllerRoute = $imageResizeControllerRoute;
+        $this->controllerRouteName = $controllerRouteName;
+        $this->controllerRoute = $controllerRoute;
+        $this->controllerAction = $controllerAction;
+        $this->resourceType = $resourceType;
+        $this->options = $options;
     }
 
     /**
@@ -81,9 +111,9 @@ class ImageResizeRouterLoader implements LoaderInterface
 
         $routes = new RouteCollection();
 
-        $routes->add($this->imageResizeControllerRouteName, new Route($this->imageResizeControllerRoute, [
-            '_controller' => 'elcodi.controller.media_image_resize:resizeAction',
-        ]));
+        $defaults = array_merge(['_controller' => $this->controllerAction], $this->options);
+
+        $routes->add($this->controllerRouteName, new Route($this->controllerRoute, $defaults));
 
         $this->loaded = true;
 
@@ -100,7 +130,7 @@ class ImageResizeRouterLoader implements LoaderInterface
      */
     public function supports($resource, $type = null)
     {
-        return 'elcodi_image_resize' === $type;
+        return $this->resourceType === $type;
     }
 
     /**

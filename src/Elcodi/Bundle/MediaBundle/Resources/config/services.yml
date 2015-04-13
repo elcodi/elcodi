@@ -37,25 +37,37 @@ services:
     # Routes
     #
     elcodi.router.media_image_resize:
-        class: Elcodi\Component\Media\Router\ImageResizeRouterLoader
+        class: Elcodi\Component\Core\Router\SingleRouterLoader
         arguments:
             - %elcodi.core.media.image_resize_controller_route_name%
             - %elcodi.core.media.image_resize_controller_route%
+            - 'elcodi.controller.media_image_resize:resizeAction'
+            - 'elcodi_image_resize'
+            - []
         tags:
             - { name: routing.loader }
 
     elcodi.router.media_image_view:
-        class: Elcodi\Component\Media\Router\ImageViewRouterLoader
+        class: Elcodi\Component\Core\Router\SingleRouterLoader
         arguments:
             - %elcodi.core.media.image_view_controller_route_name%
             - %elcodi.core.media.image_view_controller_route%
+            - 'elcodi.controller.media_image_resize:resizeAction'
+            - 'elcodi_image_view'
+            -
+                height: 0
+                width: 0
+                type: 0 # ElcodiMediaImageResizeTypes::NO_RESIZE
         tags:
             - { name: routing.loader }
 
     elcodi.router.media_image_upload:
-        class: Elcodi\Component\Media\Router\ImageUploadRouterLoader
+        class: Elcodi\Component\Core\Router\SingleRouterLoader
         arguments:
             - %elcodi.core.media.image_upload_controller_route_name%
             - %elcodi.core.media.image_upload_controller_route%
+            - 'elcodi.controller.media_image_upload:uploadAction'
+            - 'elcodi_image_upload'
+            - []
         tags:
             - { name: routing.loader }
