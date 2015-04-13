@@ -20,6 +20,9 @@ namespace Elcodi\Component\Menu\Event;
 use RuntimeException;
 use Symfony\Component\EventDispatcher\Event;
 
+use Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface;
+use Elcodi\Component\Menu\Serializer\Interfaces\MenuSerializerInterface as MenuSerializer;
+
 /**
  * Class MenuEvent
  *
@@ -47,17 +50,25 @@ class MenuEvent extends Event
      * Collection of filters to run
      */
     protected $filters = [];
+    /**
+     * @var MenuSerializer
+     *
+     *
+     */
+    private $serializer;
 
     /**
      * Constructor
      *
-     * @param string $menuName Menu name
-     * @param array  $menu     Menu settings
+     * @param string         $menuName   Menu name
+     * @param array          $menu       Menu settings
+     * @param MenuSerializer $serializer Menu serializer
      */
-    public function __construct($menuName, array $menu)
+    public function __construct($menuName, array $menu, MenuSerializer $serializer)
     {
         $this->menuName = $menuName;
         $this->menu = $menu;
+        $this->serializer = $serializer;
     }
 
     /**
@@ -78,6 +89,20 @@ class MenuEvent extends Event
     public function getMenu()
     {
         return $this->menu;
+    }
+
+    /**
+     * Add a new node to the menu
+     *
+     * @param NodeInterface $node Menu node to add
+     *
+     * @return $this Self object
+     */
+    public function addNode(NodeInterface $node)
+    {
+        $this->menu[] = $this->serializer->serialize($node);
+
+        return $this;
     }
 
     /**

@@ -7,8 +7,13 @@ services:
         class: Elcodi\Component\Menu\Services\MenuManager
         arguments:
             - @elcodi.repository.menu
+            - @elcodi.serializer.menu
             - %elcodi.core.menu.cache_key%
         calls:
             - [setEventDispatcher, [@event_dispatcher]]
             - [setCache, [@doctrine_cache.providers.elcodi_menus]]
             - [setEncoder, [@elcodi.json_encoder]]
+
+    elcodi.serializer.menu:
+        class: Elcodi\Component\Menu\Serializer\MenuArraySerializer
+        public: false

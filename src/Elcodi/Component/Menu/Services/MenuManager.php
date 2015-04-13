@@ -23,10 +23,9 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Elcodi\Component\Core\Wrapper\Abstracts\AbstractCacheWrapper;
 use Elcodi\Component\Menu\ElcodiMenuEvents;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\MenuInterface;
-use Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface;
-use Elcodi\Component\Menu\Entity\Menu\Interfaces\SubnodesAwareInterface;
 use Elcodi\Component\Menu\Event\MenuEvent;
 use Elcodi\Component\Menu\Repository\MenuRepository;
+use Elcodi\Component\Menu\Serializer\Interfaces\MenuSerializerInterface;
 
 /**
  * Class MenuManager
@@ -48,6 +47,13 @@ class MenuManager extends AbstractCacheWrapper
     protected $menuRepository;
 
     /**
+     * @var MenuSerializerInterface
+     *
+     * Menu serializer
+     */
+    protected $serializer;
+
+    /**
      * @var string
      *
      * key
@@ -64,14 +70,17 @@ class MenuManager extends AbstractCacheWrapper
     /**
      * Construct method
      *
-     * @param MenuRepository $menuRepository Menu repository
-     * @param string         $key            Key
+     * @param MenuRepository          $menuRepository Menu repository
+     * @param MenuSerializerInterface $serializer     Menu serializer
+     * @param string                  $key            Key
      */
     public function __construct(
         MenuRepository $menuRepository,
+        MenuSerializerInterface $serializer,
         $key
     ) {
         $this->menuRepository = $menuRepository;
+        $this->serializer = $serializer;
         $this->key = $key;
     }
 
@@ -104,7 +113,7 @@ class MenuManager extends AbstractCacheWrapper
      */
     public function loadMenuByCode($menuCode)
     {
-        $key = $this->buildKey($this->key, $menuCode);
+        $key = $this->getCacheKey($menuCode);
 
         $menu = $this->loadFromMemory($key);
         if (!$menu) {
@@ -133,25 +142,6 @@ class MenuManager extends AbstractCacheWrapper
         );
 
         return $menu;
-    }
-
-    /**
-     * Generate node hydration
-     *
-     * @param NodeInterface $node Node
-     *
-     * @return array Node hydrated
-     */
-    public function hydrateNode(NodeInterface $node)
-    {
-        return [
-            'id'         => $node->getId(),
-            'name'       => $node->getName(),
-            'code'       => $node->getCode(),
-            'url'        => $node->getUrl(),
-            'activeUrls' => $node->getActiveUrls(),
-            'subnodes'   => $this->loadSubnodes($node),
-        ];
     }
 
     /**
@@ -231,7 +221,10 @@ class MenuManager extends AbstractCacheWrapper
             ]);
 
         if ($menu instanceof MenuInterface) {
-            return $this->loadSubnodes($menu);
+
+            return $this
+                ->serializer
+                ->serializeSubnodes($menu);
         }
 
         throw new Exception(sprintf(
@@ -241,42 +234,15 @@ class MenuManager extends AbstractCacheWrapper
     }
 
     /**
-     * Given a subnodes wrapper, load all subnodes and return their hydration
-     *
-     * @param SubnodesAwareInterface $node Node
-     *
-     * @return array Nodes hydrated
-     */
-    protected function loadSubnodes(SubnodesAwareInterface $node)
-    {
-        $subnodes = [];
-
-        $node
-            ->getSubnodes()
-            ->filter(function (NodeInterface $node) {
-
-                return $node->isEnabled();
-            })
-            ->map(function (NodeInterface $node) use (&$subnodes) {
-
-                $subnodeId = $node->getId();
-                $subnodes[$subnodeId] = $this->hydrateNode($node);
-            });
-
-        return $subnodes;
-    }
-
-    /**
      * Build menu key for cache
      *
-     * @param string $key      Key
      * @param string $menuCode Menu code
      *
      * @return string Cache key
      */
-    protected function buildKey($key, $menuCode)
+    protected function getCacheKey($menuCode)
     {
-        return "{$key}-{$menuCode}";
+        return "{$this->key}-{$menuCode}";
     }
 
     /**
@@ -290,7 +256,7 @@ class MenuManager extends AbstractCacheWrapper
      */
     protected function dispatchMenuEvent($eventName, $menuCode, array $menu)
     {
-        $event = new MenuEvent($menuCode, $menu);
+        $event = new MenuEvent($menuCode, $menu, $this->serializer);
         $this
             ->dispatcher
             ->dispatch(
