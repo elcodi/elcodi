@@ -42,6 +42,7 @@ class MenuArraySerializer implements MenuSerializerInterface
             'name'       => $node->getName(),
             'code'       => $node->getCode(),
             'url'        => $node->getUrl(),
+            'enabled'    => $node->isEnabled(),
             'activeUrls' => $node->getActiveUrls(),
             'subnodes'   => $this->serializeSubnodes($node),
         ];
