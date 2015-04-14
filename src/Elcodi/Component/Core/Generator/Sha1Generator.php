@@ -46,7 +46,7 @@ class Sha1Generator implements GeneratorInterface
     /**
      * Generates a random string
      *
-     * @param integer $length Length of generation
+     * @param integer $length Length of string generated
      *
      * @return string Result of generation
      */
