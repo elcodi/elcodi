@@ -1,3 +1,4 @@
-ElcodiDisqusBundle:
-    resource: "@ElcodiDisqusBundle/Controller/"
-    type:     annotation
+admin_disqus_configuration:
+    path: /configuration
+    defaults:  { _controller: ElcodiDisqusBundle:Admin:configuration }
+    methods: ['GET', 'POST']

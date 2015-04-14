@@ -17,7 +17,6 @@
 
 namespace Elcodi\Plugin\ProductCsvBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
@@ -33,12 +32,6 @@ use Elcodi\Plugin\ProductCsvBundle\Services\ProductExporter;
 class CsvController extends Controller
 {
     /**
-     * @Route(
-     *     path = "/products/export",
-     *     name = "elcodi_plugin_productcsv_export",
-     *     methods = {"GET"}
-     * )
-     *
      * @return Response
      */
     public function exportAction()

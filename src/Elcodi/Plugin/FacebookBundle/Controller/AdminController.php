@@ -17,8 +17,6 @@
 
 namespace Elcodi\Plugin\FacebookBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,13 +34,6 @@ class AdminController extends Controller
      * @param Request $request The current request
      *
      * @return array|RedirectResponse The response
-     *
-     * @Route(
-     *      path = "/configuration",
-     *      name = "admin_facebook_configuration",
-     *      methods = {"GET", "POST"}
-     * )
-     * @Template()
      */
     public function configurationAction(Request $request)
     {
@@ -71,8 +62,8 @@ class AdminController extends Controller
             return $this->redirectToRoute('admin_facebook_configuration');
         }
 
-        return [
+        return $this->render('ElcodiFacebookBundle:Admin:configuration.html.twig', [
             'plugin' => $plugin,
-        ];
+        ]);
     }
 }
