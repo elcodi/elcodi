@@ -22,16 +22,17 @@ namespace Elcodi\Component\Core\Generator\Interfaces;
  *
  * This interface is for static generators.
  *
- * An static generator do not have any kind of customizable behaviour, public
- * implementable method called generate() do not accept any parameter, so
- * result should not depends on context
+ * An static generator does not have any kind of customizable behaviour, its public
+ * implementable method called generate() does not accept any parameter except for
+ * the length of the string to be generated, so the result should not depend on
+ * its context.
  */
 interface GeneratorInterface
 {
     /**
      * Generates a hash
      *
-     * @param integer $length Length of generation
+     * @param integer $length Length of string generated
      *
      * @return string Generation
      */

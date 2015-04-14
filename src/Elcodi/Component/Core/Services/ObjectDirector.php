@@ -33,7 +33,7 @@ use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
  * * Factory
  *
  * Allows final user to manage in a simple way an entity or a set of entities.
- * Provide a reduced (but most used) set of methods
+ * Provides a reduced (but useful) set of methods.
  */
 class ObjectDirector
 {
@@ -134,7 +134,7 @@ class ObjectDirector
     }
 
     /**
-     * Finds a single object given a criteria
+     * Finds a single object given a criteria.
      *
      * @param array $criteria The criteria.
      *
