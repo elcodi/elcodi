@@ -2,4 +2,3 @@ split:
     # Split definition for http://gitsplit.com
     src/Elcodi/Bundle/*: git@github.com:elcodi/$i.git
     src/Elcodi/Component/*: git@github.com:elcodi/$i.git
-    src/Elcodi/Plugin/*: git@github.com:elcodi-plugins/$i.git
