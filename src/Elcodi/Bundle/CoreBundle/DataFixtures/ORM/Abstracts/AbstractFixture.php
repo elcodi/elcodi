@@ -25,9 +25,7 @@ use Symfony\Component\Yaml\Parser;
 use Elcodi\Bundle\CoreBundle\Container\Traits\ContainerAccessorTrait;
 
 /**
- * AdminData class
- *
- * Load fixtures of admin entities
+ * AbstractFixture class
  */
 abstract class AbstractFixture extends DoctrineAbstractFixture implements ContainerAwareInterface
 {
