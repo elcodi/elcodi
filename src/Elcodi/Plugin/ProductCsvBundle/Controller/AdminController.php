@@ -17,8 +17,6 @@
 
 namespace Elcodi\Plugin\ProductCsvBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,13 +32,6 @@ class AdminController extends Controller
      * @param Request $request
      *
      * @return array|RedirectResponse
-     *
-     * @Route(
-     *      path = "/configuration",
-     *      name = "admin_product_csv_configuration",
-     *      methods = {"GET", "POST"}
-     * )
-     * @Template()
      */
     public function configurationAction(Request $request)
     {
@@ -73,8 +64,8 @@ class AdminController extends Controller
             return $this->redirectToRoute('admin_product_csv_configuration');
         }
 
-        return [
+        return $this->render('ElcodiProductCsvBundle:Admin:configuration.html.twig', [
             'plugin' => $plugin,
-        ];
+        ]);
     }
 }

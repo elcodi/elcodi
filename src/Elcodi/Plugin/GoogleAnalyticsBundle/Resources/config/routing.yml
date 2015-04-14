@@ -1,3 +1,4 @@
-ElcodiGoogleAnalyticsBundle:
-    resource: "@ElcodiGoogleAnalyticsBundle/Controller/"
-    type:     annotation
+admin_google_analytics_configuration:
+    path: /configuration
+    defaults:  { _controller: ElcodiFacebookBundle:Admin:configuration }
+    methods: ['GET', 'POST']

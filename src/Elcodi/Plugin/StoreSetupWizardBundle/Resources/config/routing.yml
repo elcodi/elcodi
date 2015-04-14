@@ -1,3 +1,4 @@
-ElcodiGoogleAnalyticsBundle:
-    resource: "@ElcodiStoreSetupWizardBundle/Controller/"
-    type:     annotation
+admin_store_setup_wizard:
+    path: /store-setup-wizard
+    defaults:  { _controller: ElcodiStoreSetupWizardBundle:Wizard:view }
+    methods: ['GET']

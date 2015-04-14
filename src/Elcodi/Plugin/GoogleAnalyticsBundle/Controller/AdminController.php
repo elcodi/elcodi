@@ -17,8 +17,6 @@
 
 namespace Elcodi\Plugin\GoogleAnalyticsBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -30,12 +28,9 @@ use Elcodi\Component\Plugin\Entity\Plugin;
 class AdminController extends Controller
 {
     /**
-     * @Route(
-     *      path = "/configuration",
-     *      name = "admin_google_analytics_configuration",
-     *      methods = {"GET", "POST"}
-     * )
-     * @Template()
+     * @param Request $request
+     *
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function configurationAction(Request $request)
     {
@@ -60,8 +55,8 @@ class AdminController extends Controller
             return $this->redirectToRoute('admin_google_analytics_configuration');
         }
 
-        return [
+        return $this->render('ElcodiGoogleAnalyticsBundle:Admin:configuration.html.twig', [
             'plugin' => $plugin,
-        ];
+        ]);
     }
 }

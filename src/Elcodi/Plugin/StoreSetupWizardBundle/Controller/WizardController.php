@@ -17,8 +17,6 @@
 
 namespace Elcodi\Plugin\StoreSetupWizardBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Elcodi\Component\Shipping\Entity\Interfaces\CarrierInterface;
@@ -32,13 +30,6 @@ class WizardController extends Controller
      * View dashboard action
      *
      * @return array
-     *
-     * @Route(
-     *      path = "/store-setup-wizard",
-     *      name = "admin_store_setup_wizard",
-     *      methods = {"GET"}
-     * )
-     * @Template()
      */
     public function viewAction()
     {
@@ -65,10 +56,10 @@ class WizardController extends Controller
             }
         }
 
-        return [
+        return $this->render('ElcodiStoreSetupWizardBundle:Wizard:view.html.twig', [
             'stepsFinished' => $stepsFinished,
             'activeStep'    => $activeStep,
             'carrier'       => $firstCarrier,
-        ];
+        ]);
     }
 }

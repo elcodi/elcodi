@@ -17,8 +17,6 @@
 
 namespace Elcodi\Plugin\DisqusBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -29,14 +27,6 @@ use Elcodi\Component\Plugin\Entity\Plugin;
  */
 class AdminController extends Controller
 {
-    /**
-     * @Route(
-     *      path = "/configuration",
-     *      name = "admin_disqus_configuration",
-     *      methods = {"GET", "POST"}
-     * )
-     * @Template()
-     */
     public function configurationAction(Request $request)
     {
         /**
@@ -62,8 +52,8 @@ class AdminController extends Controller
             return $this->redirectToRoute('admin_disqus_configuration');
         }
 
-        return [
+        return $this->render('ElcodiDisqusBundle:Admin:configuration.html.twig', [
             'plugin' => $plugin,
-        ];
+        ]);
     }
 }

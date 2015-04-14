@@ -1,3 +1,9 @@
-elcodi_plugin_productcsv:
-    resource: "@ElcodiProductCsvBundle/Controller/"
-    type:     annotation
+admin_product_csv_configuration:
+    path: /configuration
+    defaults:  { _controller: ElcodiProductCsvBundle:Admin:configuration }
+    methods: ['GET', 'POST']
+
+elcodi_plugin_productcsv_export:
+    path: /products/export
+    defaults:  { _controller: ElcodiProductCsvBundle:Csv:export }
+    methods: ['GET']
