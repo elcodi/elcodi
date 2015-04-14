@@ -123,16 +123,7 @@
         "elcodi/sitemap": "self.version",
         "elcodi/metric": "self.version",
         "elcodi/plugin": "self.version",
-        "elcodi/template": "self.version",
-
-        "elcodi-plugin/product-csv": "self.version",
-        "elcodi-plugin/google-analytics": "self.version",
-        "elcodi-plugin/pinterest": "self.version",
-        "elcodi-plugin/disqus": "self.version",
-        "elcodi-plugin/store-setup-wizard": "self.version",
-        "elcodi-plugin/twitter": "self.version",
-        "elcodi-plugin/facebook": "self.version"
-
+        "elcodi/template": "self.version"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",
