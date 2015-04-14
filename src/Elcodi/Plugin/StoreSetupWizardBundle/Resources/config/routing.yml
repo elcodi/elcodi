@@ -1,3 +1,0 @@
-ElcodiGoogleAnalyticsBundle:
-    resource: "@ElcodiStoreSetupWizardBundle/Controller/"
-    type:     annotation
