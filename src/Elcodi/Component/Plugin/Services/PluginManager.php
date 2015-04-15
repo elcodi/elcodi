@@ -48,6 +48,13 @@ class PluginManager
     protected $configurationManager;
 
     /**
+     * @var Plugin[]
+     *
+     * Cached plugin list
+     */
+    protected $plugins = [];
+
+    /**
      * Construct
      *
      * @param KernelInterface      $kernel               Kernel
@@ -146,7 +153,6 @@ class PluginManager
     {
         $yaml = new Parser();
         $specificationFilePath = $bundlePath . '/plugin.yml';
-
         if (!file_exists($specificationFilePath)) {
             return [];
         }
@@ -175,6 +181,11 @@ class PluginManager
      */
     public function getPlugins()
     {
+        if ($this->plugins) {
+
+            return $this->plugins;
+        }
+
         $plugins = $this
             ->configurationManager
             ->get('store.plugins');
@@ -182,6 +193,7 @@ class PluginManager
         foreach ($plugins as $pluginKey => $plugin) {
             $plugins[$pluginKey] = $this->hydratePlugin($plugin);
         }
+        $this->plugins = $plugins;
 
         return $plugins;
     }
@@ -193,34 +205,47 @@ class PluginManager
      */
     public function getVisiblePlugins()
     {
-        $plugins = $this
-            ->configurationManager
-            ->get('store.plugins');
-
-        $visiblePlugin = [];
-        foreach ($plugins as $pluginKey => $pluginInfo) {
-            /**
-             * @var Plugin $plugin
-             */
-            $plugin = $this->hydratePlugin($pluginInfo);
-            if ($plugin->isVisible()) {
-                $visiblePlugin[] = $plugin;
-            }
-        }
-
-        return $visiblePlugin;
+        return array_filter($this->getPlugins(), function (Plugin $plugin) {
+            return $plugin->isVisible();
+        });
     }
 
     /**
-     * Get plugins
+     * Check if a specified plugin exists
+     *
+     * @param string $pluginNamespace Plugin namespace
+     *
+     * @return boolean Whether the plugin exists or not
+     */
+    public function hasPlugin($pluginNamespace)
+    {
+        $plugins = $this->getPlugins();
+
+        return isset($plugins[$pluginNamespace]);
+    }
+
+    /**
+     * Get plugin by namespace
      *
      * @param string $pluginNamespace Plugin namespace
      *
      * @return Plugin Selected plugin
+     *
+     * @throws Exception
      */
     public function getPlugin($pluginNamespace)
     {
-        return $this->getPlugins()[$pluginNamespace];
+        $plugins = $this->getPlugins();
+
+        if (!isset($plugins[$pluginNamespace])) {
+
+            throw new \Exception(sprintf(
+                'Plugin "%s" not found',
+                $pluginNamespace
+            ));
+        }
+
+        return $plugins[$pluginNamespace];
     }
 
     /**
@@ -251,7 +276,10 @@ class PluginManager
             ->configurationManager
             ->set('store.plugins', $plugins);
 
-        return $this->hydratePlugin($plugins[$pluginNamespace]);
+        $plugin = $this->hydratePlugin($plugins[$pluginNamespace]);
+        $this->plugins[$pluginNamespace] = $plugin;
+
+        return $plugin;
     }
 
     /**
