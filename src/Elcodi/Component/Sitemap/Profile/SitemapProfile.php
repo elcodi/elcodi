@@ -65,17 +65,19 @@ class SitemapProfile
     /**
      * Build full profile
      *
+     * @param string $basepath Basepath
+     *
      * @return $this Self object
      */
-    public function dump()
+    public function dump($basepath)
     {
         foreach ($this->sitemapDumpers as $sitemapDumper) {
             if (is_array($this->languages)) {
                 foreach ($this->languages as $language) {
-                    $sitemapDumper->dump($language);
+                    $sitemapDumper->dump($basepath, $language);
                 }
             } else {
-                $sitemapDumper->dump();
+                $sitemapDumper->dump($basepath);
             }
         }
 

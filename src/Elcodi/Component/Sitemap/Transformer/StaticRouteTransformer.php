@@ -57,7 +57,7 @@ class StaticRouteTransformer implements SitemapTransformerInterface
             ->router
             ->generate($element, [
                 '_locale' => $language,
-            ], true);
+            ], false);
     }
 
     /**
