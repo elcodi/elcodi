@@ -132,9 +132,10 @@ class MenuManager extends AbstractCacheWrapper
         $node
             ->getSubnodes()
             ->map(function (NodeInterface $node) use (&$subnodesHydrated) {
-
-                $subnodeId = $node->getId();
-                $subnodesHydrated[$subnodeId] = $this->hydrateNode($node);
+                if ($node->isEnabled()) {
+                    $subnodeId                    = $node->getId();
+                    $subnodesHydrated[$subnodeId] = $this->hydrateNode($node);
+                }
             });
 
         return $subnodesHydrated;
