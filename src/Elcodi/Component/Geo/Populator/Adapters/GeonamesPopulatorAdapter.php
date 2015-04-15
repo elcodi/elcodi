@@ -166,50 +166,61 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
         $nbItems = 0;
         $interpreter->addObserver(function (array $columns) use ($country, &$nbItems) {
 
-            $nbItems++;
-            $stateId = $this->normalizeId($columns[4]);
-            $state = $this
-                ->locationBuilder
-                ->addLocation(
-                    $country->getId() . '_' . $stateId,
-                    $columns[3],
-                    $stateId,
-                    'state',
-                    $country
-                );
-
-            $provinceId = $this->normalizeId($columns[6]);
-            $province = $this
-                ->locationBuilder
-                ->addLocation(
-                    $state->getId() . '_' . $provinceId,
-                    $columns[5],
-                    $provinceId,
-                    'province',
-                    $state
-                );
-
-            $cityId = $this->normalizeId($columns[2]);
-            $city = $this
-                ->locationBuilder
-                ->addLocation(
-                    $province->getId() . '_' . $cityId,
-                    $columns[2],
-                    $cityId,
-                    'city',
-                    $province
-                );
-
-            $postalCodeId = $this->normalizeId($columns[1]);
-            $this
-                ->locationBuilder
-                ->addLocation(
-                    $city->getId() . '_' . $postalCodeId,
+            if (
+                isset(
                     $columns[1],
-                    $postalCodeId,
-                    'postalcode',
-                    $city
-                );
+                    $columns[2],
+                    $columns[3],
+                    $columns[4],
+                    $columns[5],
+                    $columns[6]
+                )
+            ) {
+                $nbItems++;
+                $stateId = $this->normalizeId($columns[4]);
+                $state   = $this
+                    ->locationBuilder
+                    ->addLocation(
+                        $country->getId() . '_' . $stateId,
+                        $columns[3],
+                        $stateId,
+                        'state',
+                        $country
+                    );
+
+                $provinceId = $this->normalizeId($columns[6]);
+                $province   = $this
+                    ->locationBuilder
+                    ->addLocation(
+                        $state->getId() . '_' . $provinceId,
+                        $columns[5],
+                        $provinceId,
+                        'province',
+                        $state
+                    );
+
+                $cityId = $this->normalizeId($columns[2]);
+                $city   = $this
+                    ->locationBuilder
+                    ->addLocation(
+                        $province->getId() . '_' . $cityId,
+                        $columns[2],
+                        $cityId,
+                        'city',
+                        $province
+                    );
+
+                $postalCodeId = $this->normalizeId($columns[1]);
+                $this
+                    ->locationBuilder
+                    ->addLocation(
+                        $city->getId() . '_' . $postalCodeId,
+                        $columns[1],
+                        $postalCodeId,
+                        'postalcode',
+                        $city
+                    );
+            }
         });
 
         $config = new LexerConfig();
