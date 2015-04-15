@@ -25,9 +25,10 @@ interface SitemapRendererInterface
     /**
      * Given an array of sitemapElements, render the Sitemap
      *
-     * @param array $sitemapElements Elements
+     * @param array  $sitemapElements Elements
+     * @param string $basepath        Base path
      *
      * @return string Render
      */
-    public function render(array $sitemapElements);
+    public function render(array $sitemapElements, $basepath);
 }

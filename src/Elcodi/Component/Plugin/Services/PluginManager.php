@@ -182,7 +182,6 @@ class PluginManager
     public function getPlugins()
     {
         if ($this->plugins) {
-
             return $this->plugins;
         }
 
@@ -238,7 +237,6 @@ class PluginManager
         $plugins = $this->getPlugins();
 
         if (!isset($plugins[$pluginNamespace])) {
-
             throw new \Exception(sprintf(
                 'Plugin "%s" not found',
                 $pluginNamespace

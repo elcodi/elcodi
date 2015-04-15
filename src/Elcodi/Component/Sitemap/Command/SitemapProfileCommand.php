@@ -59,6 +59,11 @@ class SitemapProfileCommand extends Command
                 'profile-name',
                 InputArgument::REQUIRED,
                 'Profile name'
+            )
+            ->addArgument(
+                'basepath',
+                InputArgument::REQUIRED,
+                'Base path'
             );
     }
 
@@ -74,10 +79,11 @@ class SitemapProfileCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $profileName = $input->getArgument('profile-name');
+        $basepath = $input->getArgument('basepath');
         $sitemapProfile = $this
             ->container
             ->get('elcodi.sitemap_profile.' . $profileName);
 
-        $sitemapProfile->dump();
+        $sitemapProfile->dump($basepath);
     }
 }

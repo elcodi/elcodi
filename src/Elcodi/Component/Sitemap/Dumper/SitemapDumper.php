@@ -64,13 +64,14 @@ class SitemapDumper
     /**
      * Dump builder using a dumper
      *
+     * @param string      $basepath Base path
      * @param string|null $language Language
      */
-    public function dump($language = null)
+    public function dump($basepath, $language = null)
     {
         $sitemapData = $this
             ->sitemapBuilder
-            ->build($language);
+            ->build($basepath, $language);
 
         $path = $this->resolvePathWithLanguage(
             $this->path,

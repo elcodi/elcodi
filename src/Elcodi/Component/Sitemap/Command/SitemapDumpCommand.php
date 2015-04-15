@@ -61,6 +61,11 @@ class SitemapDumpCommand extends Command
                 InputArgument::REQUIRED,
                 'Builder name'
             )
+            ->addArgument(
+                'basepath',
+                InputArgument::REQUIRED,
+                'Base path'
+            )
             ->addOption(
                 'language',
                 null,
@@ -81,11 +86,12 @@ class SitemapDumpCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $builderName = $input->getArgument('builder-name');
+        $basepath = $input->getArgument('basepath');
         $language = $input->getOption('language');
-        $sitemapBuilder = $this
+        $sitemapDumper = $this
             ->container
             ->get('elcodi.sitemap_dumper.' . $builderName);
 
-        $sitemapBuilder->dump($language);
+        $sitemapDumper->dump($basepath, $language);
     }
 }

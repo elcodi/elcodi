@@ -67,11 +67,12 @@ class SitemapBuilder
     /**
      * Build sitemap builder
      *
+     * @param string      $basepath Base path
      * @param string|null $language Language
      *
      * @return string Generated data
      */
-    public function build($language = null)
+    public function build($basepath, $language = null)
     {
         $sitemapElements = [];
 
@@ -84,7 +85,7 @@ class SitemapBuilder
 
         $data = $this
             ->sitemapRenderer
-            ->render($sitemapElements);
+            ->render($sitemapElements, $basepath);
 
         return $data;
     }
