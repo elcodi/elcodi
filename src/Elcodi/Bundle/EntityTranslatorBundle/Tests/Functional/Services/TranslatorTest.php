@@ -58,7 +58,7 @@ class TranslatorTest extends WebTestCase
     }
 
     /**
-     * Test translate
+     * Test save
      */
     public function testSave()
     {
