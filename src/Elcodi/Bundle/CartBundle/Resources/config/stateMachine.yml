@@ -13,8 +13,7 @@ services:
 
     elcodi.order.payment_states_machine:
         class: Elcodi\Component\StateTransitionMachine\Machine\Machine
-        factory_service: elcodi.order.payment_states_machine.builder
-        factory_method: compile
+        factory: [@elcodi.order.payment_states_machine.builder, compile]
 
     elcodi.order.payment_states_machine.manager:
         class: Elcodi\Component\StateTransitionMachine\Machine\MachineManager
@@ -37,8 +36,7 @@ services:
 
     elcodi.order.shipping_states_machine:
         class: Elcodi\Component\StateTransitionMachine\Machine\Machine
-        factory_service: elcodi.order.shipping_states_machine.builder
-        factory_method: compile
+        factory: [@elcodi.order.shipping_states_machine.builder, compile]
 
     elcodi.order.shipping_states_machine.manager:
         class: Elcodi\Component\StateTransitionMachine\Machine\MachineManager
