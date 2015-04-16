@@ -11,8 +11,7 @@ services:
 
     elcodi.provider.locale.locale:
         class: Elcodi\Component\Language\Entity\Locale
-        factory_service: elcodi.provider.locale
-        factory_method: getLocale
+        factory: [@elcodi.provider.locale, getLocale]
         public: false
 
     #
@@ -35,20 +34,16 @@ services:
     #
     elcodi.languages:
         class: Doctrine\Common\Collections\Collection
-        factory_service: elcodi.manager.language
-        factory_method: getLanguages
+        factory: [@elcodi.manager.language, getLanguages]
 
     elcodi.languages_iso:
         class: Doctrine\Common\Collections\Collection
-        factory_service: elcodi.manager.language
-        factory_method: getLanguagesIso
+        factory: [@elcodi.manager.language, getLanguagesIso]
 
     elcodi.languages_iso_array:
         class: stdClass
-        factory_service: elcodi.languages_iso
-        factory_method: toArray
+        factory: [@elcodi.languages_iso, toArray]
 
     elcodi.locale:
         class: Elcodi\Component\Language\Entity\Locale
-        factory_service: elcodi.manager.locale
-        factory_method: getLocale
+        factory: [@elcodi.manager.locale, getLocale]
