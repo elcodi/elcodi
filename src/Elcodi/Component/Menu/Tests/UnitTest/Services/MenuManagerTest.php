@@ -91,7 +91,8 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
         $node
             ->setSubnodes(new ArrayCollection())
             ->setActiveUrls(['url'])
-            ->setId(1);
+            ->setId(1)
+            ->setEnabled(true);
 
         $menu = new Menu();
         $menu
@@ -133,6 +134,52 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
                     'subnodes'   => [],
                 ],
             ]
+        );
+    }
+
+    /**
+     * Test empty cache with disabled node
+     */
+    public function testEmptyCacheDisabledNode()
+    {
+        $node = new Node();
+        $node
+            ->setSubnodes(new ArrayCollection())
+            ->setActiveUrls(['url'])
+            ->setId(1)
+            ->setEnabled(false);
+
+        $menu = new Menu();
+        $menu
+            ->setSubnodes(new ArrayCollection())
+            ->addSubnode($node);
+
+        $this
+            ->menuRepository
+            ->expects($this->once())
+            ->method('findOneBy')
+            ->will($this->returnValue($menu));
+
+        $this
+            ->cacheProvider
+            ->expects($this->once())
+            ->method('fetch')
+            ->will($this->returnValue(null));
+
+        $this
+            ->cacheProvider
+            ->expects($this->once())
+            ->method('save')
+            ->with(
+                $this->equalTo('menus-admin'),
+                $this->equalTo(
+                    '[]'
+                )
+            );
+
+        $this->assertEquals(
+            $this->menuManager->loadMenuByCode('admin'),
+            []
         );
     }
 
