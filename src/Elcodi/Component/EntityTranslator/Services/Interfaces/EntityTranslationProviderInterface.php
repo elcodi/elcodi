@@ -40,6 +40,21 @@ interface EntityTranslationProviderInterface
     );
 
     /**
+     * Get translation unit
+     *
+     * @param string $entityType  Type of entity
+     * @param string $entityId    Id of entity
+     * @param string $locale      Locale
+     *
+     * @return string Value fetched
+     */
+    public function getTranslationUnit(
+        $entityType,
+        $entityId,
+        $locale
+    );
+
+    /**
      * Set translation
      *
      * @param string $entityType       Type of entity
