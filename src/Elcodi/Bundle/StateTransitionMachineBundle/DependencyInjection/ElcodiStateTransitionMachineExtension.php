@@ -17,10 +17,10 @@
 
 namespace Elcodi\Bundle\StateTransitionMachineBundle\DependencyInjection;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ConfigurationInterface;
-
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
+
+use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
  * This class loads and manages your bundle configuration
