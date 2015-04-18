@@ -28,8 +28,8 @@ class XmlRenderer implements SitemapRendererInterface
     /**
      * Given an array of sitemapElements, render the Sitemap
      *
-     * @param array  $sitemapElements Elements
-     * @param string $basepath        Base path
+     * @param SitemapElement[] $sitemapElements Elements
+     * @param string           $basepath        Base path
      *
      * @return string Render
      */
@@ -38,9 +38,6 @@ class XmlRenderer implements SitemapRendererInterface
         $data = '<?xml version="1.0" encoding="UTF-8"?>' . PHP_EOL;
         $data .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL;
 
-        /**
-         * @var SitemapElement $sitemapElement
-         */
         foreach ($sitemapElements as $sitemapElement) {
             $data .= '    <url>' . PHP_EOL;
             $data .= '        <loc>' . $basepath . $sitemapElement->getLocation() . '</loc>' . PHP_EOL;

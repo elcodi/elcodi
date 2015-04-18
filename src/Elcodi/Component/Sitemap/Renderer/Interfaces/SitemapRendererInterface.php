@@ -17,6 +17,8 @@
 
 namespace Elcodi\Component\Sitemap\Renderer\Interfaces;
 
+use Elcodi\Component\Sitemap\Element\SitemapElement;
+
 /**
  * Interface SitemapRendererInterface
  */
@@ -25,8 +27,8 @@ interface SitemapRendererInterface
     /**
      * Given an array of sitemapElements, render the Sitemap
      *
-     * @param array  $sitemapElements Elements
-     * @param string $basepath        Base path
+     * @param SitemapElement[] $sitemapElements Elements
+     * @param string           $basepath        Base path
      *
      * @return string Render
      */

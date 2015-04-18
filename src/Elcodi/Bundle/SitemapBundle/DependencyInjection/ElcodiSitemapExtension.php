@@ -19,6 +19,7 @@ namespace Elcodi\Bundle\SitemapBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
@@ -180,19 +181,42 @@ class ElcodiSitemapExtension extends AbstractExtension
                 ->addArgument($builder['path'])
                 ->setPublic(true);
 
-            foreach ($builder['blocks'] as $blockReference) {
-                $definition->addMethodCall(
-                    'addSitemapElementGenerator',
-                    [new Reference('elcodi.sitemap_element_generator.entity_' . $blockReference)]
+            $this
+                ->addBuilderElements(
+                    $definition,
+                    $builder['statics'],
+                    'static'
+                )
+                ->addBuilderElements(
+                    $definition,
+                    $builder['blocks'],
+                    'entity'
                 );
-            }
+        }
 
-            foreach ($builder['statics'] as $staticReference) {
-                $definition->addMethodCall(
-                    'addSitemapElementGenerator',
-                    [new Reference('elcodi.sitemap_element_generator.static_' . $staticReference)]
-                );
-            }
+        return $this;
+    }
+
+    /**
+     * Load builder blocks
+     *
+     * @param Definition $builderDefinition Block definition
+     * @param array      $elements          Elements
+     * @param string     $elementType       Element type
+     *
+     * @return $this Self object
+     */
+    protected function addBuilderElements(
+        Definition $builderDefinition,
+        array $elements,
+        $elementType
+
+    ) {
+        foreach ($elements as $blockReference) {
+            $builderDefinition->addMethodCall(
+                'addSitemapElementGenerator',
+                [new Reference('elcodi.sitemap_element_generator.' . $elementType . '_' . $blockReference)]
+            );
         }
 
         return $this;
