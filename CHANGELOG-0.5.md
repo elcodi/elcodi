@@ -1,12 +1,42 @@
 CHANGELOG for 0.5.x
 ===================
 
-This changelog references the relevant changes done in 0.5.x versions
+This Changelog references the relevant changes done in 0.5.x versions
 
 To get the diff for a specific change, go to
 https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v0.5.2...v0.5.3
+
+### v0.5.9 (19-04-2015)
+
+* [`3ee061c`](https://github.com/elcodi/elcodi/commit/3ee061c141edd30db58221064868e47ce06402b0) Fixed composer.json files (mmoreram)
+* [`d4342a6`](https://github.com/elcodi/elcodi/commit/d4342a6a3162558eeab886399f9a55c846026c4e) Refactored a Sitemap block (mmoreram)
+* [`5da3daa`](https://github.com/elcodi/elcodi/commit/5da3daa7dab8108d893245d033304dbe6bdb5c94) move to proper factory notation as elcodi supports symfony 2.6 (Luis Cordova)
+* [`9128a50`](https://github.com/elcodi/elcodi/commit/9128a502b2523a8cbfee3b59f4fb22f25a9aab52) Fixed test for disabled menus (Roger Gros)
+* [`7b7e50b`](https://github.com/elcodi/elcodi/commit/7b7e50beba39df6ffe1112c8419386800d3a2fe2) fix docblock for test (Luis Cordova)
+* [`c3ba90b`](https://github.com/elcodi/elcodi/commit/c3ba90befe69e21eff7e34da6407d5822e677b79) using the right configuration interface (Luis Cordova)
+
+### v0.5.8 (15-04-2015)
+
+* [`4702c94`](https://github.com/elcodi/elcodi/commit/4702c94a1d232544a0776aed17a43b263ae66813) Hide disabled menu options (Roger Gros)
+* [`0d59379`](https://github.com/elcodi/elcodi/commit/0d59379fec3c5827b16a8f4251f40aeb943c2468) Added basepath into all Sitemap workflow (mmoreram)
+* [`5ce8314`](https://github.com/elcodi/elcodi/commit/5ce831422992d42c155f9a46667a769d0f1eb2b4) add memory cache for PluginManager (Berny Cantos)
+* [`a589916`](https://github.com/elcodi/elcodi/commit/a589916d7c3d72175e01c5448d3580eb97220a85) add plugin extension (Berny Cantos)
+* [`3e709ff`](https://github.com/elcodi/elcodi/commit/3e709ff8afcf6ea7bc87b6325e627e52d6a55ba0) Check for not complete lines (Roger Gros)
+* [`e69144d`](https://github.com/elcodi/elcodi/commit/e69144d80d92155aa377f96b987102036d1ddd72) remove replacements in composer.json (Berny Cantos)
+* [`d1f9919`](https://github.com/elcodi/elcodi/commit/d1f99197a9cdb55b494e19055ac5efbd000bb23b) remove elcodi/plugin from gitsplit (Berny Cantos)
+* [`c1358f0`](https://github.com/elcodi/elcodi/commit/c1358f0d73c9aa298b49f9a66b4ae00337ad8d58) remove plugin subtree (Berny Cantos)
+* [`d45ba66`](https://github.com/elcodi/elcodi/commit/d45ba661c5469fb5f18bc106adce10844398e8fa) improve docblocks (Luis Cordova)
+* [`a73f2b9`](https://github.com/elcodi/elcodi/commit/a73f2b9389d032e5cd9846f628f4c6f26018b147) fixing docblock for abstract class (Luis Cordova)
+* [`97744b2`](https://github.com/elcodi/elcodi/commit/97744b2cf02ced185c7bbf86a8df0237020f9d52) improve wording of error message (Luis Cordova)
+* [`087caa6`](https://github.com/elcodi/elcodi/commit/087caa6d81823089156c4016722d94343b4a3bc0) refactor stab to single router loader (Luis Cordova)
+* [`4157fb9`](https://github.com/elcodi/elcodi/commit/4157fb901c2874d2c48c28a0971626fd71850a63) Changed dependency on wizard bundle (Roger Gros)
+* [`bff408b`](https://github.com/elcodi/elcodi/commit/bff408b128cef5976543375fdb6fb147044ef49a) Added possibility to disable payment methods (Roger Gros)
+
+### v0.5.7 (13-04-2015)
+
+* [`25d05ef`](https://github.com/elcodi/elcodi/commit/25d05efbba71ca42be4471a8ec1f9bc8ac339a49) Fixed service definition (mmoreram)
 
 ### v0.5.6 (11-04-2015)
 
