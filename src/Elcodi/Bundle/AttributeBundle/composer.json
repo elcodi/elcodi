@@ -38,7 +38,7 @@
         "symfony/console": "~2.6",
         "symfony/config": "~2.6",
         "symfony/dependency-injection": "~2.6",
-        "mmoreram/simple-doctrine-mapping": "~0.1",
+        "mmoreram/simple-doctrine-mapping": "~1.0",
 
         "elcodi/core-bundle": "~0.5.0",
         "elcodi/attribute": "~0.5.0"
