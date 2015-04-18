@@ -31,7 +31,7 @@
     ],
     "require": {
         "php": ">=5.4",
-        "doctrine/common": "~2.4",
+        "doctrine/common": "~2.5",
         "doctrine/orm": "~2.4",
 
         "symfony/http-kernel": "~2.6",
