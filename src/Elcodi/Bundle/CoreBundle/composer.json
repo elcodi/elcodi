@@ -33,7 +33,7 @@
         "php": ">=5.4",
         "ext-openssl": "*",
         "doctrine/common": "~2.5",
-        "doctrine/orm": "~2.4",
+        "doctrine/orm": "~2.5",
 
         "symfony/http-kernel": "~2.6",
         "symfony/console": "~2.6",

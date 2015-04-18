@@ -33,7 +33,7 @@
     "require": {
         "php": ">=5.4",
         "doctrine/common": "~2.5",
-        "doctrine/orm": "~2.4",
+        "doctrine/orm": "~2.5",
 
         "symfony/event-dispatcher": "~2.6",
         "symfony/dependency-injection": "~2.6",
