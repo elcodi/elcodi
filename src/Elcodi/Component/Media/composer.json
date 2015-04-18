@@ -35,9 +35,9 @@
         "doctrine/common": "~2.5",
         "doctrine/orm": "~2.5",
         "symfony/http-foundation": "~2.6",
-        "symfony/config": "~2.4",
+        "symfony/config": "~2.6",
         "symfony/process": "~2.6",
-        "symfony/routing": "~2.4",
+        "symfony/routing": "~2.6",
         "knplabs/gaufrette": "~0.1",
 
         "elcodi/core": "~0.5.0"
