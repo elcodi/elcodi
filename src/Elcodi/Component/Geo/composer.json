@@ -32,8 +32,8 @@
     ],
     "require": {
         "php": ">=5.4",
-        "doctrine/common": "~2.4",
-        "doctrine/orm": "~2.4",
+        "doctrine/common": "~2.5",
+        "doctrine/orm": "~2.5",
         "mmoreram/extractor": "~1.0",
         "goodby/csv": "~1.0",
 
