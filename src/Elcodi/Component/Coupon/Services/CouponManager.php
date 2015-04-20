@@ -19,6 +19,7 @@ namespace Elcodi\Component\Coupon\Services;
 
 use DateTime;
 
+use Elcodi\Component\Core\Factory\DateTimeFactory;
 use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException;
@@ -48,17 +49,27 @@ class CouponManager
     protected $couponCodeGenerator;
 
     /**
+     * @var DateTimeFactory
+     *
+     * DateTime Factory
+     */
+    protected $dateTimeFactory;
+
+    /**
      * Construct method
      *
      * @param CouponFactory      $couponFactory       Coupon Factory
      * @param GeneratorInterface $couponCodeGenerator Generator
+     * @param DateTimeFactory    $dateTimeFactory     DateTime Factory
      */
     public function __construct(
         CouponFactory $couponFactory,
-        GeneratorInterface $couponCodeGenerator
+        GeneratorInterface $couponCodeGenerator,
+        DateTimeFactory $dateTimeFactory
     ) {
         $this->couponFactory = $couponFactory;
         $this->couponCodeGenerator = $couponCodeGenerator;
+        $this->dateTimeFactory = $dateTimeFactory;
     }
 
     /**
@@ -89,7 +100,9 @@ class CouponManager
          * Creates a valid date interval given the referent Coupon
          */
         if (null === $dateFrom) {
-            $dateFrom = new DateTime();
+            $dateFrom = $this
+                ->dateTimeFactory
+                ->create();
         }
 
         $dateTo = null;
@@ -161,7 +174,10 @@ class CouponManager
             return false;
         }
 
-        $now = $now ?: new DateTime();
+        $now = $now ?: $this
+            ->dateTimeFactory
+            ->create();
+
         if ($coupon->getValidFrom() > $now) {
             return false;
         }

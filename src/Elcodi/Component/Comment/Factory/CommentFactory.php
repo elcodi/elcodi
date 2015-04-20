@@ -17,7 +17,6 @@
 
 namespace Elcodi\Component\Comment\Factory;
 
-use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\Component\Comment\Entity\Comment;
@@ -43,8 +42,8 @@ class CommentFactory extends AbstractFactory
         $comment
             ->setParent(null)
             ->setChildren(new ArrayCollection())
-            ->setCreatedAt(new DateTime())
-            ->setEnabled(true);
+            ->setEnabled(true)
+            ->setCreatedAt($this->now());
 
         return $comment;
     }

@@ -11,3 +11,4 @@ services:
         class: Elcodi\Component\Configuration\Factory\ConfigurationFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.configuration.class%"]]
+            - [setDateTimeFactory, ["@elcodi.factory.datetime"]]

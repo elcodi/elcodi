@@ -12,3 +12,4 @@ services:
         parent: elcodi.factory.abstract.purchasable
         calls:
             - [setEntityNamespace, ["%elcodi.entity.coupon.class%"]]
+            - [setDateTimeFactory, ["@elcodi.factory.datetime"]]

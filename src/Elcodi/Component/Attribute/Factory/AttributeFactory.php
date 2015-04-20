@@ -42,7 +42,7 @@ class AttributeFactory extends AbstractFactory
         $attribute
             ->setEnabled(true)
             ->setValues(new ArrayCollection())
-            ->setCreatedAt(new \DateTime());
+            ->setCreatedAt($this->now());
 
         return $attribute;
     }

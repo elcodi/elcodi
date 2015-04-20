@@ -17,7 +17,6 @@
 
 namespace Elcodi\Component\Banner\Factory;
 
-use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\Component\Banner\Entity\Banner;
@@ -44,8 +43,8 @@ class BannerFactory extends AbstractFactory
         $banner = new $classNamespace();
         $banner
             ->setBannerZones(new ArrayCollection())
-            ->setCreatedAt(new DateTime())
-            ->setEnabled(false);
+            ->setEnabled(false)
+            ->setCreatedAt($this->now());
 
         return $banner;
     }

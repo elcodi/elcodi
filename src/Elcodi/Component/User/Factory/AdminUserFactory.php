@@ -17,8 +17,6 @@
 
 namespace Elcodi\Component\User\Factory;
 
-use DateTime;
-
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 use Elcodi\Component\User\ElcodiUserProperties;
@@ -64,7 +62,7 @@ class AdminUserFactory extends AbstractFactory
             ->setGender(ElcodiUserProperties::GENDER_UNKNOWN)
             ->setToken($this->generator->generate(2))
             ->setEnabled(true)
-            ->setCreatedAt(new DateTime());
+            ->setCreatedAt($this->now());
 
         return $adminUser;
     }

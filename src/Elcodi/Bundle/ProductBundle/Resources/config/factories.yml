@@ -13,6 +13,7 @@ services:
         calls:
             - [setEntityNamespace, ["%elcodi.entity.product.class%"]]
             - [setUseStock, ["@=elcodi_config('product.use_stock', false)"]]
+            - [setDateTimeFactory, ["@elcodi.factory.datetime"]]
 
     #
     # Factory for Variant entities
@@ -22,6 +23,7 @@ services:
         parent: elcodi.factory.abstract.purchasable
         calls:
             - [setEntityNamespace, ["%elcodi.entity.product_variant.class%"]]
+            - [setDateTimeFactory, ["@elcodi.factory.datetime"]]
 
     #
     # Factory for Manufacturer entities
@@ -30,6 +32,7 @@ services:
         class: Elcodi\Component\Product\Factory\ManufacturerFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.manufacturer.class%"]]
+            - [setDateTimeFactory, ["@elcodi.factory.datetime"]]
 
     #
     # Factory for Category entities
@@ -38,3 +41,4 @@ services:
         class: Elcodi\Component\Product\Factory\CategoryFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.category.class%"]]
+            - [setDateTimeFactory, ["@elcodi.factory.datetime"]]

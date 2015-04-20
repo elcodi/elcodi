@@ -17,6 +17,7 @@
 
 namespace Elcodi\Component\Page\Tests\Factory;
 
+use Elcodi\Component\Core\Factory\DateTimeFactory;
 use Elcodi\Component\Page\Factory\PageFactory;
 
 /**
@@ -35,6 +36,7 @@ class PageFactoryTest extends \PHPUnit_Framework_TestCase
 
         $factory = new PageFactory();
         $factory->setEntityNamespace($entityName);
+        $factory->setDateTimeFactory(new DateTimeFactory());
 
         $result = $factory->create();
 

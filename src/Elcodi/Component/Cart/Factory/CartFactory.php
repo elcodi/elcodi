@@ -17,7 +17,6 @@
 
 namespace Elcodi\Component\Cart\Factory;
 
-use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\Component\Cart\Entity\Cart;
@@ -52,7 +51,7 @@ class CartFactory extends AbstractFactory
             ->setQuantity(0)
             ->setOrdered(false)
             ->setCartLines(new ArrayCollection())
-            ->setCreatedAt(new DateTime());
+            ->setCreatedAt($this->now());
 
         return $cart;
     }

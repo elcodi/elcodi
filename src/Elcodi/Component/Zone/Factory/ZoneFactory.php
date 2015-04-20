@@ -40,7 +40,7 @@ class ZoneFactory extends AbstractFactory
         $zone
             ->setLocations([])
             ->setEnabled(true)
-            ->setCreatedAt(new \DateTime());
+            ->setCreatedAt($this->now());
 
         return $zone;
     }

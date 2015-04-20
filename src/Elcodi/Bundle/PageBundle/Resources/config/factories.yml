@@ -11,3 +11,4 @@ services:
         class: Elcodi\Component\Page\Factory\PageFactory
         calls:
             - [setEntityNamespace, [%elcodi.entity.page.class%]]
+            - [setDateTimeFactory, ["@elcodi.factory.datetime"]]

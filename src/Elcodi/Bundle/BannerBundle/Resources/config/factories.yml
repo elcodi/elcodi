@@ -11,6 +11,7 @@ services:
         class: Elcodi\Component\Banner\Factory\BannerFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.banner.class%"]]
+            - [setDateTimeFactory, ["@elcodi.factory.datetime"]]
 
     #
     # Factory for entity banner_zone

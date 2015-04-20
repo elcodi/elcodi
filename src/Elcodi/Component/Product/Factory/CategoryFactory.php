@@ -17,7 +17,6 @@
 
 namespace Elcodi\Component\Product\Factory;
 
-use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
@@ -46,7 +45,7 @@ class CategoryFactory extends AbstractFactory
             ->setRoot(true)
             ->setPosition(0)
             ->setEnabled(true)
-            ->setCreatedAt(new DateTime());
+            ->setCreatedAt($this->now());
 
         return $category;
     }

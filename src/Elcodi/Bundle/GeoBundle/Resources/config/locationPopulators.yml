@@ -12,6 +12,7 @@ services:
         arguments:
             - @elcodi.extractor
             - @elcodi.location_builder
+            - @elcodi.factory.datetime
 
     #
     # Extractor

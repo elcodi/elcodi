@@ -19,6 +19,7 @@ namespace Elcodi\Component\Currency\Tests\UnitTest\Services;
 
 use PHPUnit_Framework_TestCase;
 
+use Elcodi\Component\Core\Factory\DateTimeFactory;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Factory\CurrencyFactory;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
@@ -50,6 +51,7 @@ class CurrencyConverterTest extends PHPUnit_Framework_TestCase
 
         $currencyFactory = new CurrencyFactory();
         $currencyFactory->setEntityNamespace('Elcodi\Component\Currency\Entity\Currency');
+        $currencyFactory->setDateTimeFactory(new DateTimeFactory());
         $currencyBase = 'USD';
 
         /**

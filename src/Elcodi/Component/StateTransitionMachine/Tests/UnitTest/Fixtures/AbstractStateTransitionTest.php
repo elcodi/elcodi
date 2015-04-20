@@ -20,6 +20,7 @@ namespace Elcodi\Component\StateTransitionMachine\Tests\UnitTest\Fixtures;
 use PHPUnit_Framework_TestCase;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
+use Elcodi\Component\Core\Factory\DateTimeFactory;
 use Elcodi\Component\StateTransitionMachine\Definition\State;
 use Elcodi\Component\StateTransitionMachine\Definition\Transition;
 use Elcodi\Component\StateTransitionMachine\Definition\TransitionChain;
@@ -85,6 +86,7 @@ abstract class AbstractStateTransitionTest extends PHPUnit_Framework_TestCase
         $machine = $this->getMachine();
         $stateLineFactory = new StateLineFactory();
         $stateLineFactory->setEntityNamespace($stateLineNamespace);
+        $stateLineFactory->setDateTimeFactory(new DateTimeFactory());
 
         /**
          * @var EventDispatcherInterface $eventDispatcher

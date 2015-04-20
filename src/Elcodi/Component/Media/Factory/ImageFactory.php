@@ -17,8 +17,6 @@
 
 namespace Elcodi\Component\Media\Factory;
 
-use DateTime;
-
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 
@@ -45,8 +43,8 @@ class ImageFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $image = new $classNamespace();
         $image
-            ->setCreatedAt(new DateTime())
-            ->setEnabled(true);
+            ->setEnabled(true)
+            ->setCreatedAt($this->now());
 
         return $image;
     }

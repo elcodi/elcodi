@@ -11,6 +11,7 @@ services:
         class: Elcodi\Component\Geo\Factory\AddressFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.address.class%"]]
+            - [setDateTimeFactory, ["@elcodi.factory.datetime"]]
 
     elcodi.factory.location:
         class: Elcodi\Component\Geo\Factory\LocationFactory

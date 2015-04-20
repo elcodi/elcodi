@@ -11,6 +11,7 @@ services:
         class: Elcodi\Component\Attribute\Factory\AttributeFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.attribute.class%"]]
+            - [setDateTimeFactory, ["@elcodi.factory.datetime"]]
 
     #
     # Factory for Value entities

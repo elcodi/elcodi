@@ -31,6 +31,7 @@ interface AbstractUserInterface
     extends
     IdentifiableInterface,
     UserInterface,
+    LastLoginInterface,
     DateTimeInterface,
     EnabledInterface
 {

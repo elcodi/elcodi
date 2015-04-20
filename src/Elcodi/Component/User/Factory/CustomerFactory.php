@@ -17,7 +17,6 @@
 
 namespace Elcodi\Component\User\Factory;
 
-use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
@@ -70,7 +69,7 @@ class CustomerFactory extends AbstractFactory
             ->setOrders(new ArrayCollection())
             ->setToken($this->generator->generate(2))
             ->setEnabled(true)
-            ->setCreatedAt(new DateTime());
+            ->setCreatedAt($this->now());
 
         return $customer;
     }

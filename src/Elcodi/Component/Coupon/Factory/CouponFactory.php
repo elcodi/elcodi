@@ -17,8 +17,6 @@
 
 namespace Elcodi\Component\Coupon\Factory;
 
-use DateTime;
-
 use Elcodi\Component\Coupon\ElcodiCouponTypes;
 use Elcodi\Component\Coupon\Entity\Coupon;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
@@ -38,7 +36,7 @@ class CouponFactory extends AbstractPurchasableFactory
      */
     public function create()
     {
-        $now = new DateTime();
+        $now = $this->now();
         $zeroPrice = $this->createZeroAmountMoney();
 
         /**

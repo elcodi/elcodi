@@ -1,0 +1,7 @@
+services:
+
+    #
+    # Factrories
+    #
+    elcodi.factory.datetime:
+        class: Elcodi\Component\Core\Factory\DateTimeFactory

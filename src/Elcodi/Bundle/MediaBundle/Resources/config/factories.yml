@@ -11,3 +11,4 @@ services:
         class: Elcodi\Component\Media\Factory\ImageFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.image.class%"]]
+            - [setDateTimeFactory, ["@elcodi.factory.datetime"]]
