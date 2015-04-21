@@ -8,16 +8,19 @@ https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v0.5.2...v0.5.3
 
-### v0.5.10 (21-04-2015)
+### v0.5.11 (21-04-2015)
 
 * [`2b4900d`](https://github.com/elcodi/elcodi/commit/2b4900d22bc1518145e181d5cd5707468b134afe) Added last-login-date and datetime factory (mmoreram)
+* [`7c5261e`](https://github.com/elcodi/elcodi/commit/7c5261e71f2e23f3a5157abc938c62cecdc27f6a) define location api prefix parameter as an extension parameter (Luis Cordova)
+* [`d2aade7`](https://github.com/elcodi/elcodi/commit/d2aade7a1189e4db221ce28c612486f9dac87524) Fixed api locations route (Roger Gros)
+
+### v0.5.10 (19-04-2015)
+
 * [`d1155e2`](https://github.com/elcodi/elcodi/commit/d1155e20314ccb2199a90aea1c42effd38e5c6eb) Updated SimpleDoctrineMapping dep to ~1.0 (mmoreram)
 * [`35eabdc`](https://github.com/elcodi/elcodi/commit/35eabdcb74b6ac087ae18a626afa26d5626f6625) Fixed some symfony deps to ~2.6 (mmoreram)
 * [`90eb76e`](https://github.com/elcodi/elcodi/commit/90eb76e56d5dcd36c1bb4d8974457b8b00aa3e95) Updated doctrine/orm dependency to ~2.5 (mmoreram)
 * [`88add29`](https://github.com/elcodi/elcodi/commit/88add2995bc03e9547c6f7594368257bfb0389ff) Updated doctrine/common dependency to ~2.5 (mmoreram)
 * [`9f9e798`](https://github.com/elcodi/elcodi/commit/9f9e7989fbe695d6818803d2b45b114d4198adb5) Updated CHANGELOG with 0.5.9 (mmoreram)
-* [`7c5261e`](https://github.com/elcodi/elcodi/commit/7c5261e71f2e23f3a5157abc938c62cecdc27f6a) define location api prefix parameter as an extension parameter (Luis Cordova)
-* [`d2aade7`](https://github.com/elcodi/elcodi/commit/d2aade7a1189e4db221ce28c612486f9dac87524) Fixed api locations route (Roger Gros)
 
 ### v0.5.9 (19-04-2015)
 
