@@ -38,7 +38,7 @@ class AppKernel extends AbstractElcodiKernel
             'Symfony\Bundle\FrameworkBundle\FrameworkBundle',
             'Doctrine\Bundle\DoctrineBundle\DoctrineBundle',
             'Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle',
-            'Elcodi\Bundle\FixturesBoosterBundle\ElcodiFixturesBoosterBundle',
+            'FriendsOfElcodi\Bundle\FixturesBoosterBundle\ElcodiFixturesBoosterBundle',
             'Elcodi\Bundle\AttributeBundle\ElcodiAttributeBundle',
         ]);
     }
