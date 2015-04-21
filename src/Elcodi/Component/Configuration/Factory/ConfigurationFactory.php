@@ -17,8 +17,6 @@
 
 namespace Elcodi\Component\Configuration\Factory;
 
-use DateTime;
-
 use Elcodi\Component\Configuration\ElcodiConfigurationTypes;
 use Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
@@ -50,7 +48,7 @@ class ConfigurationFactory extends AbstractFactory
         $configuration
             ->setNamespace('')
             ->setType(ElcodiConfigurationTypes::TYPE_STRING)
-            ->setCreatedAt(new DateTime());
+            ->setCreatedAt($this->now());
 
         return $configuration;
     }

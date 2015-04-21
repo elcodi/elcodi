@@ -11,6 +11,7 @@ services:
         class: Elcodi\Component\User\Factory\CustomerFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.customer.class%"]]
+            - [setDateTimeFactory, ["@elcodi.factory.datetime"]]
             - [setGenerator, [@elcodi.generator.random_string]]
 
     #
@@ -20,4 +21,5 @@ services:
         class: Elcodi\Component\User\Factory\AdminUserFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.admin_user.class%"]]
+            - [setDateTimeFactory, ["@elcodi.factory.datetime"]]
             - [setGenerator, [@elcodi.generator.random_string]]

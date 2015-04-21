@@ -8,5 +8,6 @@ services:
         arguments:
             - @elcodi.location_populator
             - @elcodi.director.location
+            - @elcodi.factory.datetime
         tags:
             -  { name: console.command }

@@ -55,6 +55,10 @@ Elcodi\Component\User\Entity\Abstracts\AbstractUser:
         updatedAt:
             column: updated_at
             type: datetime
+        lastLoginAt:
+            column: last_login_at
+            type: datetime
+            nullable: true
         # enable
         enabled:
             column: enabled

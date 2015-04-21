@@ -11,3 +11,4 @@ services:
         class: Elcodi\Component\Newsletter\Factory\NewsletterSubscriptionFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.newsletter_subscription.class%"]]
+            - [setDateTimeFactory, ["@elcodi.factory.datetime"]]

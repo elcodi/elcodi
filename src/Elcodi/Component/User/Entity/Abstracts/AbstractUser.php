@@ -23,6 +23,7 @@ use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
+use Elcodi\Component\User\Entity\Traits\LastLoginTrait;
 
 /**
  * AbstractUser is the building block for simple User entities,
@@ -31,6 +32,7 @@ use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 abstract class AbstractUser implements AbstractUserInterface
 {
     use IdentifiableTrait,
+        LastLoginTrait,
         DateTimeTrait,
         EnabledTrait;
 

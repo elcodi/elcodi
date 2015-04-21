@@ -10,3 +10,4 @@ services:
         class: Elcodi\Component\StateTransitionMachine\Factory\StateLineFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.state_transition_machine.state_line.class%"]]
+            - [setDateTimeFactory, ["@elcodi.factory.datetime"]]

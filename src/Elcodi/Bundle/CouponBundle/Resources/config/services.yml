@@ -8,3 +8,4 @@ services:
         arguments:
             - @elcodi.factory.coupon
             - @elcodi.generator.random_string
+            - @elcodi.factory.datetime

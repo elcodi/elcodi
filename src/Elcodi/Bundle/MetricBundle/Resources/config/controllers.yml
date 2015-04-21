@@ -8,3 +8,4 @@ services:
         arguments:
             - @request_stack
             - @elcodi.metric_manager
+            - @elcodi.factory.datetime

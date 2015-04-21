@@ -25,6 +25,7 @@ use Mmoreram\Extractor\Extractor;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Exception\FileNotFoundException;
 
+use Elcodi\Component\Core\Factory\DateTimeFactory;
 use Elcodi\Component\Geo\Entity\Interfaces\LocationInterface;
 use Elcodi\Component\Geo\Populator\Interfaces\PopulatorInterface;
 use Elcodi\Component\Geo\Services\LocationBuilder;
@@ -38,26 +39,40 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
 {
     /**
      * @var Extractor
+     *
+     * Extractor
      */
     protected $extractor;
 
     /**
      * @var LocationBuilder
+     *
+     * Location Builder
      */
     protected $locationBuilder;
+
+    /**
+     * @var DateTimeFactory
+     *
+     * DateTime Factory
+     */
+    protected $dateTimeFactory;
 
     /**
      * Constructor
      *
      * @param Extractor       $extractor       Extractor instance
      * @param LocationBuilder $locationBuilder Location builder
+     * @param DateTimeFactory $dateTimeFactory DateTime Factory
      */
     public function __construct(
         Extractor $extractor,
-        LocationBuilder $locationBuilder
+        LocationBuilder $locationBuilder,
+        DateTimeFactory $dateTimeFactory
     ) {
         $this->extractor = $extractor;
         $this->locationBuilder = $locationBuilder;
+        $this->dateTimeFactory = $dateTimeFactory;
     }
 
     /**
@@ -167,18 +182,18 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
         $interpreter->addObserver(function (array $columns) use ($country, &$nbItems) {
 
             if (
-                isset(
-                    $columns[1],
-                    $columns[2],
-                    $columns[3],
-                    $columns[4],
-                    $columns[5],
-                    $columns[6]
-                )
+            isset(
+                $columns[1],
+                $columns[2],
+                $columns[3],
+                $columns[4],
+                $columns[5],
+                $columns[6]
+            )
             ) {
                 $nbItems++;
                 $stateId = $this->normalizeId($columns[4]);
-                $state   = $this
+                $state = $this
                     ->locationBuilder
                     ->addLocation(
                         $country->getId() . '_' . $stateId,
@@ -189,7 +204,7 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
                     );
 
                 $provinceId = $this->normalizeId($columns[6]);
-                $province   = $this
+                $province = $this
                     ->locationBuilder
                     ->addLocation(
                         $state->getId() . '_' . $provinceId,
@@ -200,7 +215,7 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
                     );
 
                 $cityId = $this->normalizeId($columns[2]);
-                $city   = $this
+                $city = $this
                     ->locationBuilder
                     ->addLocation(
                         $province->getId() . '_' . $cityId,
@@ -226,10 +241,16 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
         $config = new LexerConfig();
         $config->setDelimiter("\t");
         $lexer = new Lexer($config);
-        $started = new DateTime();
+        $started = $this
+            ->dateTimeFactory
+            ->create();
+
         $output->writeln('<header>[Geo]</header> <body>Starting file processing</body>');
         $lexer->parse($pathname, $interpreter);
-        $finished = new DateTime();
+        $finished = $this
+            ->dateTimeFactory
+            ->create();
+
         $elapsed = $finished->diff($started);
         $output->writeln('<header>[Geo]</header> <body>Processed ' . $nbItems . ' entries</body>');
         $output->writeln('<header>[Geo]</header> <body>File processed in ' . $elapsed->format('%s') . ' seconds</body>');

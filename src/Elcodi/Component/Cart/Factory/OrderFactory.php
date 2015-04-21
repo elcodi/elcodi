@@ -17,7 +17,6 @@
 
 namespace Elcodi\Component\Cart\Factory;
 
-use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\Component\Cart\Entity\Order;
@@ -78,7 +77,7 @@ class OrderFactory extends AbstractFactory
             ->setHeight(0)
             ->setWidth(0)
             ->setWeight(0)
-            ->setCreatedAt(new DateTime());
+            ->setCreatedAt($this->now());
 
         $paymentStateLineStack = $this
             ->paymentMachineManager

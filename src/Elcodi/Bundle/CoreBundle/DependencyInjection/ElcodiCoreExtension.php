@@ -97,6 +97,7 @@ class ElcodiCoreExtension extends AbstractExtension
             'encoders',
             'services',
             'parserAdapters',
+            'factories',
         ];
     }
 

@@ -17,7 +17,6 @@
 
 namespace Elcodi\Component\Product\Factory;
 
-use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
@@ -45,7 +44,7 @@ class ManufacturerFactory extends AbstractFactory
             ->setImages(new ArrayCollection())
             ->setImagesSort('')
             ->setEnabled(true)
-            ->setCreatedAt(new DateTime());
+            ->setCreatedAt($this->now());
 
         return $manufacturer;
     }

@@ -17,8 +17,6 @@
 
 namespace Elcodi\Component\Newsletter\Factory;
 
-use DateTime;
-
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Newsletter\Entity\NewsletterSubscription;
 
@@ -42,8 +40,8 @@ class NewsletterSubscriptionFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $newsletterSubscription = new $classNamespace();
         $newsletterSubscription
-            ->setCreatedAt(new DateTime())
-            ->setEnabled(true);
+            ->setEnabled(true)
+            ->setCreatedAt($this->now());
 
         return $newsletterSubscription;
     }

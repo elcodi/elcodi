@@ -17,7 +17,6 @@
 
 namespace Elcodi\Component\Product\Factory;
 
-use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\Component\Currency\Factory\Abstracts\AbstractPurchasableFactory;
@@ -90,7 +89,7 @@ class ProductFactory extends AbstractPurchasableFactory
             ->setWeight(0)
             ->setImagesSort('')
             ->setEnabled(true)
-            ->setCreatedAt(new DateTime());
+            ->setCreatedAt($this->now());
 
         return $product;
     }

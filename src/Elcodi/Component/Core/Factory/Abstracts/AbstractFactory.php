@@ -17,6 +17,9 @@
 
 namespace Elcodi\Component\Core\Factory\Abstracts;
 
+use DateTime;
+
+use Elcodi\Component\Core\Factory\DateTimeFactory;
 use Elcodi\Component\Core\Factory\Traits\EntityNamespaceTrait;
 
 /**
@@ -31,6 +34,39 @@ use Elcodi\Component\Core\Factory\Traits\EntityNamespaceTrait;
 abstract class AbstractFactory
 {
     use EntityNamespaceTrait;
+
+    /**
+     * @var DateTimeFactory
+     *
+     * DateTime Factory
+     */
+    protected $dateTimeFactory;
+
+    /**
+     * Sets DateTimeFactory
+     *
+     * @param DateTimeFactory $dateTimeFactory DateTimeFactory
+     *
+     * @return $this Self object
+     */
+    public function setDateTimeFactory($dateTimeFactory)
+    {
+        $this->dateTimeFactory = $dateTimeFactory;
+
+        return $this;
+    }
+
+    /**
+     * Get now
+     *
+     * @return DateTime Now
+     */
+    public function now()
+    {
+        return $this
+            ->dateTimeFactory
+            ->create();
+    }
 
     /**
      * Creates an instance of an entity.

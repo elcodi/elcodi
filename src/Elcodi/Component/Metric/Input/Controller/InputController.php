@@ -21,6 +21,7 @@ use DateTime;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 
+use Elcodi\Component\Core\Factory\DateTimeFactory;
 use Elcodi\Component\Metric\Core\Services\MetricManager;
 use Elcodi\Component\Metric\ElcodiMetricTypes;
 
@@ -51,17 +52,27 @@ class InputController
     protected $metricManager;
 
     /**
+     * @var DateTimeFactory
+     *
+     * DateTime Factory
+     */
+    protected $dateTimeFactory;
+
+    /**
      * Construct
      *
-     * @param RequestStack  $requestStack  Request Stack
-     * @param MetricManager $metricManager Metric manager
+     * @param RequestStack    $requestStack    Request Stack
+     * @param MetricManager   $metricManager   Metric manager
+     * @param DateTimeFactory $dateTimeFactory DateTime Factory
      */
     public function __construct(
         RequestStack $requestStack,
-        MetricManager $metricManager
+        MetricManager $metricManager,
+        DateTimeFactory $dateTimeFactory
     ) {
         $this->requestStack = $requestStack;
         $this->metricManager = $metricManager;
+        $this->dateTimeFactory = $dateTimeFactory;
     }
 
     /**
@@ -89,7 +100,9 @@ class InputController
                 $event,
                 $value,
                 $type,
-                new DateTime()
+                $this
+                    ->dateTimeFactory
+                    ->create()
             );
 
         $content = base64_decode(self::IMAGE_CONTENT);

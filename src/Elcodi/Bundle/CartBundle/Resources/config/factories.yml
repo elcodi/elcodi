@@ -11,6 +11,7 @@ services:
         class: Elcodi\Component\Cart\Factory\CartFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.cart.class%"]]
+            - [setDateTimeFactory, ["@elcodi.factory.datetime"]]
 
     #
     # Factory for entity order
@@ -22,6 +23,7 @@ services:
             - @elcodi.order.shipping_states_machine.manager
         calls:
             - [setEntityNamespace, ["%elcodi.entity.order.class%"]]
+            - [setDateTimeFactory, ["@elcodi.factory.datetime"]]
 
     #
     # Factory for entity cart_line

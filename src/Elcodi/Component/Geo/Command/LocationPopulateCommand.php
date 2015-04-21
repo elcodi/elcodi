@@ -26,6 +26,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
+use Elcodi\Component\Core\Factory\DateTimeFactory;
 use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Geo\Entity\Interfaces\LocationInterface;
 use Elcodi\Component\Geo\Populator\Interfaces\PopulatorInterface;
@@ -50,19 +51,29 @@ class LocationPopulateCommand extends Command
     protected $locationDirector;
 
     /**
+     * @var DateTimeFactory
+     *
+     * DateTime Factory
+     */
+    protected $dateTimeFactory;
+
+    /**
      * Construct method
      *
      * @param PopulatorInterface $locationPopulator Location Populator
      * @param ObjectDirector     $locationDirector  Location director
+     * @param DateTimeFactory    $dateTimeFactory   DateTime Factory
      */
     public function __construct(
         PopulatorInterface $locationPopulator,
-        ObjectDirector $locationDirector
+        ObjectDirector $locationDirector,
+        DateTimeFactory $dateTimeFactory
     ) {
         parent::__construct();
 
         $this->locationPopulator = $locationPopulator;
-        $this->locationDirector  = $locationDirector;
+        $this->locationDirector = $locationDirector;
+        $this->dateTimeFactory = $dateTimeFactory;
     }
 
     /**
@@ -96,8 +107,8 @@ class LocationPopulateCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $dialog        = $this->getHelper('dialog');
-        $countryCodes  = $input->getArgument('country');
+        $dialog = $this->getHelper('dialog');
+        $countryCodes = $input->getArgument('country');
         $noInteraction = $input->getOption('no-interaction');
 
         $countryCodes = explode(',', $countryCodes);
@@ -189,11 +200,16 @@ class LocationPopulateCommand extends Command
         );
         $output->writeln($message);
 
-        $start = new DateTime();
+        $start = $this
+            ->dateTimeFactory
+            ->create();
 
         $this->locationDirector->remove($location);
 
-        $finish  = new DateTime();
+        $finish = $this
+            ->dateTimeFactory
+            ->create();
+
         $elapsed = $finish->diff($start);
 
         $message = sprintf(
@@ -231,13 +247,18 @@ class LocationPopulateCommand extends Command
             '<header>[Geo]</header> <body>Flushing manager started</body>';
         $output->writeln($message);
 
-        $start = new DateTime();
+        $start = $this
+            ->dateTimeFactory
+            ->create();
 
         $this
             ->locationDirector
             ->save($locations);
 
-        $finish  = new DateTime();
+        $finish = $this
+            ->dateTimeFactory
+            ->create();
+
         $elapsed = $finish->diff($start);
 
         $message = sprintf(

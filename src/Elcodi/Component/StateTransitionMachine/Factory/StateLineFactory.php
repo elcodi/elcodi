@@ -17,8 +17,6 @@
 
 namespace Elcodi\Component\StateTransitionMachine\Factory;
 
-use DateTime;
-
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\StateTransitionMachine\Entity\StateLine;
 
@@ -39,8 +37,7 @@ class StateLineFactory extends AbstractFactory
          */
         $classNamespace = $this->getEntityNamespace();
         $stateLine = new $classNamespace();
-        $stateLine
-            ->setCreatedAt(new DateTime());
+        $stateLine->setCreatedAt($this->now());
 
         return $stateLine;
     }

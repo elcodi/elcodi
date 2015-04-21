@@ -19,6 +19,7 @@ namespace Elcodi\Component\Currency\Tests\UnitTest\Twig;
 
 use PHPUnit_Framework_TestCase;
 
+use Elcodi\Component\Core\Factory\DateTimeFactory;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Factory\CurrencyFactory;
 use Elcodi\Component\Currency\Twig\PrintMoneyExtension;
@@ -45,6 +46,7 @@ class PrintMoneyExtensionTest extends PHPUnit_Framework_TestCase
 
         $currencyFactory = new CurrencyFactory();
         $currencyFactory->setEntityNamespace('Elcodi\Component\Currency\Entity\Currency');
+        $currencyFactory->setDateTimeFactory(new DateTimeFactory());
 
         $priceExtension = new PrintMoneyExtension(
             $this->getMock('Elcodi\Component\Currency\Services\CurrencyConverter', [], [], '', false),
@@ -100,6 +102,7 @@ class PrintMoneyExtensionTest extends PHPUnit_Framework_TestCase
 
         $currencyFactory = new CurrencyFactory();
         $currencyFactory->setEntityNamespace('Elcodi\Component\Currency\Entity\Currency');
+        $currencyFactory->setDateTimeFactory(new DateTimeFactory());
 
         $priceExtension->printMoney(
             Money::create(

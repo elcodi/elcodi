@@ -58,7 +58,7 @@ class VariantFactory extends AbstractPurchasableFactory
             ->setWeight(0)
             ->setImagesSort('')
             ->setEnabled(true)
-            ->setCreatedAt(new \DateTime());
+            ->setCreatedAt($this->now());
 
         return $variant;
     }
