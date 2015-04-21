@@ -19,8 +19,12 @@ namespace Elcodi\Component\Menu\Tests\UnitTest\Services;
 
 use Doctrine\Common\Cache\CacheProvider;
 use PHPUnit_Framework_TestCase;
+use Prophecy\Argument;
+use Prophecy\Prophecy\ObjectProphecy;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 use Elcodi\Component\Core\Encoder\Interfaces\EncoderInterface;
+use Elcodi\Component\Menu\ElcodiMenuEvents;
 use Elcodi\Component\Menu\Repository\MenuRepository;
 use Elcodi\Component\Menu\Serializer\Interfaces\MenuSerializerInterface;
 use Elcodi\Component\Menu\Services\MenuManager;
@@ -172,6 +176,33 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
             ->method('save')
             ->with($keyName, $encoded);
 
+        /**
+         * @var $dispatcherProphecy EventDispatcherInterface|ObjectProphecy
+         */
+        $dispatcherProphecy = $this->prophesize(
+            'Symfony\Component\EventDispatcher\EventDispatcherInterface'
+        );
+
+        $dispatcherProphecy
+            ->dispatch(
+                ElcodiMenuEvents::POST_COMPILATION,
+                Argument::type('Elcodi\Component\Menu\Event\MenuEvent')
+            )
+            ->shouldBeCalled();
+
+        $dispatcherProphecy
+            ->dispatch(
+                ElcodiMenuEvents::POST_LOAD,
+                Argument::type('Elcodi\Component\Menu\Event\MenuEvent')
+            )
+            ->shouldBeCalled();
+
+        $this
+            ->menuManager
+            ->setEventDispatcher(
+                $dispatcherProphecy->reveal()
+            );
+
         $this->assertEquals(
             $expected,
             $this
@@ -239,6 +270,33 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
                 ->menuManager
                 ->loadMenuByCode($menuName)
         );
+
+        /**
+         * @var $dispatcherProphecy EventDispatcherInterface|ObjectProphecy
+         */
+        $dispatcherProphecy = $this->prophesize(
+            'Symfony\Component\EventDispatcher\EventDispatcherInterface'
+        );
+
+        $dispatcherProphecy
+            ->dispatch(
+                ElcodiMenuEvents::POST_COMPILATION,
+                Argument::type('Elcodi\Component\Menu\Event\MenuEvent')
+            )
+            ->shouldNotBeCalled();
+
+        $dispatcherProphecy
+            ->dispatch(
+                ElcodiMenuEvents::POST_LOAD,
+                Argument::type('Elcodi\Component\Menu\Event\MenuEvent')
+            )
+            ->shouldBeCalled();
+
+        $this
+            ->menuManager
+            ->setEventDispatcher(
+                $dispatcherProphecy->reveal()
+            );
 
         /**
          * Load again to test internal array cache

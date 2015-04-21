@@ -256,6 +256,10 @@ class MenuManager extends AbstractCacheWrapper
      */
     protected function dispatchMenuEvent($eventName, $menuCode, array $menu)
     {
+        if (null === $this->dispatcher) {
+            return $menu;
+        }
+
         $event = new MenuEvent($menuCode, $menu, $this->serializer);
         $this
             ->dispatcher
