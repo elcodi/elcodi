@@ -45,22 +45,16 @@ class Configuration extends AbstractConfiguration
                         ))
                     ->end()
                 ->end()
+
                 ->scalarNode('filesystem')
                     ->defaultValue('gaufrette.local_filesystem')
                 ->end()
                 ->arrayNode('images')
                     ->addDefaultsIfNotSet()
                     ->children()
-
-                        ->arrayNode('domain_sharding')
-                            ->canBeEnabled()
-                            ->children()
-                                ->arrayNode('base_urls')
-                                    ->prototype('scalar')->end()
-                                ->end()
-                            ->end()
+                        ->scalarNode('generated_route_host')
+                            ->defaultValue('')
                         ->end()
-
                         ->arrayNode('view')
                             ->addDefaultsIfNotSet()
                             ->children()
@@ -122,6 +116,7 @@ class Configuration extends AbstractConfiguration
                             ->end()
                         ->end()
                     ->end()
+
                 ->end()
             ->end();
     }

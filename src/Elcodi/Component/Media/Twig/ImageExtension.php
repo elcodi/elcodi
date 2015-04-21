@@ -50,20 +50,35 @@ class ImageExtension extends Twig_Extension
     protected $imageViewControllerRouteName;
 
     /**
+     * @var string
+     *
+     * Host part of the generated URL.
+     * Useful when working with CDNs, where
+     * you might want to map, for instance,
+     * http://www.elcodi.com/image/1 to
+     * http://cdn.elcodi.com/image/1
+     */
+    protected $generatedRouteHost;
+
+    /**
      * Construct method
      *
      * @param UrlGeneratorInterface $router                         Router
      * @param string                $imageResizeControllerRouteName Image resize controller route name
      * @param string                $imageViewControllerRouteName   Image view controller route name
+     * @param string                $generatedRouteHost             Host part of the URL to be overridden, if present
      */
     public function __construct(
         UrlGeneratorInterface $router,
         $imageResizeControllerRouteName,
-        $imageViewControllerRouteName
+        $imageViewControllerRouteName,
+        $generatedRouteHost = ''
+
     ) {
         $this->router = $router;
         $this->imageResizeControllerRouteName = $imageResizeControllerRouteName;
         $this->imageViewControllerRouteName = $imageViewControllerRouteName;
+        $this->generatedRouteHost = $generatedRouteHost;
     }
 
     /**
@@ -89,15 +104,20 @@ class ImageExtension extends Twig_Extension
      */
     public function resize(ImageInterface $imageMedia, $options)
     {
-        return $this
-            ->router
+        $router = $this->router;
+
+        $routeReferenceType = $this->prepareHostUrl($router);
+
+        $generatedRoute = $router
             ->generate($this->imageResizeControllerRouteName, [
                 'id'      => (int) $imageMedia->getId(),
                 'height'  => (int) $options['height'],
                 'width'   => (int) $options['width'],
                 'type'    => (int) $options['type'],
                 '_format' => $imageMedia->getExtension(),
-            ]);
+            ], $routeReferenceType);
+
+        return $generatedRoute;
     }
 
     /**
@@ -109,12 +129,48 @@ class ImageExtension extends Twig_Extension
      */
     public function viewImage(ImageInterface $imageMedia)
     {
-        return $this
+        $router = $this->router;
+
+        $routeReferenceType = $this->prepareHostUrl($router);
+
+        $generatedRoute = $this
             ->router
             ->generate($this->imageViewControllerRouteName, [
                 'id'      => (int) $imageMedia->getId(),
                 '_format' => $imageMedia->getExtension(),
-            ]);
+            ],$routeReferenceType);
+
+        return $generatedRoute;
+    }
+
+    /**
+     * Prepares the Host part of a generated URL
+     *
+     * @param UrlGeneratorInterface $router
+     *
+     * @return array
+     */
+    protected function prepareHostUrl(UrlGeneratorInterface $router)
+    {
+        if ($this->generatedRouteHost) {
+            /*
+             * When a Host is set for the image route,
+             * we need to change the route context URL
+             * Host and the reference type to NETWORK_PATH
+             * (url scheme-agnostic)
+             */
+            $router
+                ->getContext()
+                ->setHost($this->generatedRouteHost);
+
+            $routeReferenceType = UrlGeneratorInterface::NETWORK_PATH;
+
+        } else {
+
+            $routeReferenceType = UrlGeneratorInterface::ABSOLUTE_PATH;
+        }
+
+        return $routeReferenceType;
     }
 
     /**
