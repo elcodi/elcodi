@@ -117,9 +117,11 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
         $menuName = 'admin';
         $keyName = 'menus-admin';
 
-        $menu = $this->getMockForAbstractClass(
+        $menuProphecy = $this->prophesize(
             'Elcodi\Component\Menu\Entity\Menu\Interfaces\MenuInterface'
         );
+
+        $menu = $menuProphecy->reveal();
 
         $expected = [
             'id'         => 1,
