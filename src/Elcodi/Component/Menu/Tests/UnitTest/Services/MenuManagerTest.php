@@ -18,13 +18,15 @@
 namespace Elcodi\Component\Menu\Tests\UnitTest\Services;
 
 use Doctrine\Common\Cache\CacheProvider;
-use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit_Framework_TestCase;
+use Prophecy\Argument;
+use Prophecy\Prophecy\ObjectProphecy;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-use Elcodi\Component\Core\Encoder\JsonEncoder;
-use Elcodi\Component\Menu\Entity\Menu\Menu;
-use Elcodi\Component\Menu\Entity\Menu\Node;
+use Elcodi\Component\Core\Encoder\Interfaces\EncoderInterface;
+use Elcodi\Component\Menu\ElcodiMenuEvents;
 use Elcodi\Component\Menu\Repository\MenuRepository;
+use Elcodi\Component\Menu\Serializer\Interfaces\MenuSerializerInterface;
 use Elcodi\Component\Menu\Services\MenuManager;
 
 /**
@@ -54,6 +56,20 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
     protected $cacheProvider;
 
     /**
+     * @var MenuSerializerInterface
+     *
+     * Menu serializer
+     */
+    protected $serializer;
+
+    /**
+     * @var EncoderInterface
+     *
+     * Encoder service
+     */
+    protected $encoder;
+
+    /**
      * Setup
      */
     public function setUp()
@@ -75,11 +91,22 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
             ])
             ->getMock();
 
-        $this->menuManager = new MenuManager($this->menuRepository, 'menus');
+        $this->serializer = $this
+            ->getMockForAbstractClass('Elcodi\Component\Menu\Serializer\Interfaces\MenuSerializerInterface');
+
+        $this->encoder = $this
+            ->getMockForAbstractClass('\Elcodi\Component\Core\Encoder\Interfaces\EncoderInterface');
+
+        $this->menuManager = new MenuManager(
+            $this->menuRepository,
+            $this->serializer,
+            'menus'
+        );
+
         $this
             ->menuManager
             ->setCache($this->cacheProvider)
-            ->setEncoder(new JsonEncoder());
+            ->setEncoder($this->encoder);
     }
 
     /**
@@ -87,99 +114,102 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
      */
     public function testEmptyCache()
     {
-        $node = new Node();
-        $node
-            ->setSubnodes(new ArrayCollection())
-            ->setActiveUrls(['url'])
-            ->setId(1)
-            ->setEnabled(true);
+        $menuName = 'admin';
+        $keyName = 'menus-admin';
 
-        $menu = new Menu();
-        $menu
-            ->setSubnodes(new ArrayCollection())
-            ->addSubnode($node);
-
-        $this
-            ->menuRepository
-            ->expects($this->once())
-            ->method('findOneBy')
-            ->will($this->returnValue($menu));
-
-        $this
-            ->cacheProvider
-            ->expects($this->once())
-            ->method('fetch')
-            ->will($this->returnValue(null));
-
-        $this
-            ->cacheProvider
-            ->expects($this->once())
-            ->method('save')
-            ->with(
-                $this->equalTo('menus-admin'),
-                $this->equalTo(
-                    '{"1":{"id":1,"name":null,"code":null,"url":null,"activeUrls":["url"],"subnodes":[]}}'
-                )
-            );
-
-        $this->assertEquals(
-            $this->menuManager->loadMenuByCode('admin'),
-            [
-                1 => [
-                    'id'         => 1,
-                    'name'       => null,
-                    'code'       => null,
-                    'url'        => null,
-                    'activeUrls' => ['url'],
-                    'subnodes'   => [],
-                ],
-            ]
+        $menuProphecy = $this->prophesize(
+            'Elcodi\Component\Menu\Entity\Menu\Interfaces\MenuInterface'
         );
-    }
 
-    /**
-     * Test empty cache with disabled node
-     */
-    public function testEmptyCacheDisabledNode()
-    {
-        $node = new Node();
-        $node
-            ->setSubnodes(new ArrayCollection())
-            ->setActiveUrls(['url'])
-            ->setId(1)
-            ->setEnabled(false);
+        $menu = $menuProphecy->reveal();
 
-        $menu = new Menu();
-        $menu
-            ->setSubnodes(new ArrayCollection())
-            ->addSubnode($node);
+        $expected = [
+            'id'         => 1,
+            'name'       => null,
+            'code'       => null,
+            'url'        => null,
+            'activeUrls' => ['url'],
+            'subnodes'   => [],
+        ];
 
-        $this
-            ->menuRepository
-            ->expects($this->once())
-            ->method('findOneBy')
-            ->will($this->returnValue($menu));
+        $encoded = serialize($expected);
 
         $this
             ->cacheProvider
             ->expects($this->once())
             ->method('fetch')
+            ->with($keyName)
             ->will($this->returnValue(null));
+
+        $this
+            ->encoder
+            ->expects($this->once())
+            ->method('decode')
+            ->with(null)
+            ->will($this->returnValue(null));
+
+        $this
+            ->menuRepository
+            ->expects($this->once())
+            ->method('findOneBy')
+            ->with([
+                'code' => $menuName,
+                'enabled' => true,
+            ])
+            ->will($this->returnValue($menu));
+
+        $this
+            ->serializer
+            ->expects($this->once())
+            ->method('serializeSubnodes')
+            ->with($menu)
+            ->will($this->returnValue($expected));
+
+        $this
+            ->encoder
+            ->expects($this->once())
+            ->method('encode')
+            ->with($expected)
+            ->will($this->returnValue($encoded));
 
         $this
             ->cacheProvider
             ->expects($this->once())
             ->method('save')
-            ->with(
-                $this->equalTo('menus-admin'),
-                $this->equalTo(
-                    '[]'
-                )
+            ->with($keyName, $encoded);
+
+        /**
+         * @var $dispatcherProphecy EventDispatcherInterface|ObjectProphecy
+         */
+        $dispatcherProphecy = $this->prophesize(
+            'Symfony\Component\EventDispatcher\EventDispatcherInterface'
+        );
+
+        $dispatcherProphecy
+            ->dispatch(
+                ElcodiMenuEvents::POST_COMPILATION,
+                Argument::type('Elcodi\Component\Menu\Event\MenuEvent')
+            )
+            ->shouldBeCalled();
+
+        $dispatcherProphecy
+            ->dispatch(
+                ElcodiMenuEvents::POST_LOAD,
+                Argument::type('Elcodi\Component\Menu\Event\MenuEvent')
+            )
+            ->shouldBeCalled();
+
+        $this
+            ->menuManager
+            ->setEventDispatcher(
+                $dispatcherProphecy->reveal()
             );
 
         $this->assertEquals(
-            $this->menuManager->loadMenuByCode('admin'),
-            []
+            $expected,
+            $this
+                ->menuManager
+                ->loadMenuByCode($menuName)
         );
     }
 
@@ -188,61 +218,96 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
      */
     public function testFullCache()
     {
-        $node = new Node();
-        $node
-            ->setSubnodes(new ArrayCollection())
-            ->setId(1);
+        $menuName = 'admin';
+        $keyName = 'menus-admin';
 
-        $menu = new Menu();
-        $menu
-            ->setSubnodes(new ArrayCollection())
-            ->addSubnode($node);
+        $expected = [
+            'id'         => 1,
+            'name'       => null,
+            'code'       => null,
+            'url'        => null,
+            'activeUrls' => ['url'],
+            'subnodes'   => [],
+        ];
 
-        $this
-            ->menuRepository
-            ->expects($this->any())
-            ->method('findOneBy');
+        $encoded = serialize($expected);
 
         $this
             ->cacheProvider
             ->expects($this->once())
             ->method('fetch')
-            ->will($this->returnValue(
-                '{"1":{"id":1,"name":null,"url":null,"subnodes":[]}}'
-            ));
+            ->with($keyName)
+            ->will($this->returnValue($encoded));
+
+        $this
+            ->encoder
+            ->expects($this->once())
+            ->method('decode')
+            ->with($encoded)
+            ->will($this->returnValue($expected));
+
+        $this
+            ->menuRepository
+            ->expects($this->never())
+            ->method('findOneBy');
+
+        $this
+            ->serializer
+            ->expects($this->never())
+            ->method('serializeSubnodes');
+
+        $this
+            ->encoder
+            ->expects($this->never())
+            ->method('encode');
 
         $this
             ->cacheProvider
-            ->expects($this->any())
+            ->expects($this->never())
             ->method('save');
 
-        /**
-         * Data is required twice to test how many times data is fetched from
-         * cache provider, and to test than both times, returned data is the
-         * same
-         */
         $this->assertEquals(
-            $this->menuManager->loadMenuByCode('admin'),
-            [
-                1 => [
-                    'id'       => 1,
-                    'name'     => null,
-                    'url'      => null,
-                    'subnodes' => [],
-                ],
-            ]
+            $expected,
+            $this
+                ->menuManager
+                ->loadMenuByCode($menuName)
         );
 
+        /**
+         * @var $dispatcherProphecy EventDispatcherInterface|ObjectProphecy
+         */
+        $dispatcherProphecy = $this->prophesize(
+            'Symfony\Component\EventDispatcher\EventDispatcherInterface'
+        );
+
+        $dispatcherProphecy
+            ->dispatch(
+                ElcodiMenuEvents::POST_COMPILATION,
+                Argument::type('Elcodi\Component\Menu\Event\MenuEvent')
+            )
+            ->shouldNotBeCalled();
+
+        $dispatcherProphecy
+            ->dispatch(
+                ElcodiMenuEvents::POST_LOAD,
+                Argument::type('Elcodi\Component\Menu\Event\MenuEvent')
+            )
+            ->shouldBeCalled();
+
+        $this
+            ->menuManager
+            ->setEventDispatcher(
+                $dispatcherProphecy->reveal()
+            );
+
+        /**
+         * Load again to test internal array cache
+         */
         $this->assertEquals(
-            $this->menuManager->loadMenuByCode('admin'),
-            [
-                1 => [
-                    'id'       => 1,
-                    'name'     => null,
-                    'url'      => null,
-                    'subnodes' => [],
-                ],
-            ]
+            $expected,
+            $this
+                ->menuManager
+                ->loadMenuByCode($menuName)
         );
     }
 }

@@ -79,6 +79,7 @@ class MenuManagerTest extends WebTestCase
                     'name'       => 'vogue',
                     'code'       => 'vogue',
                     'url'        => null,
+                    'enabled'    => true,
                     'activeUrls' => [],
                     'subnodes'   => [
                         2 => [
@@ -86,6 +87,7 @@ class MenuManagerTest extends WebTestCase
                             'name'       => 'him',
                             'code'       => 'him',
                             'url'        => 'elcodi.dev/him',
+                            'enabled'    => true,
                             'subnodes'   => [],
                             'activeUrls' => [],
                         ],
@@ -94,6 +96,7 @@ class MenuManagerTest extends WebTestCase
                             'name'       => 'her',
                             'code'       => 'her',
                             'url'        => 'elcodi.dev/her',
+                            'enabled'    => true,
                             'subnodes'   => [],
                             'activeUrls' => [
                                 'her_products_list_route',
@@ -119,6 +122,7 @@ class MenuManagerTest extends WebTestCase
                     'name'       => 'him',
                     'code'       => 'him',
                     'url'        => 'elcodi.dev/him',
+                    'enabled'    => true,
                     'subnodes'   => [],
                     'activeUrls' => [],
                 ],
@@ -127,6 +131,7 @@ class MenuManagerTest extends WebTestCase
                     'name'       => 'her',
                     'code'       => 'her',
                     'url'        => 'elcodi.dev/her',
+                    'enabled'    => true,
                     'subnodes'   => [],
                     'activeUrls' => [
                         'her_products_list_route',

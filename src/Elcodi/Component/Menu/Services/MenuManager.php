@@ -17,12 +17,15 @@
 
 namespace Elcodi\Component\Menu\Services;
 
-use Elcodi\Component\Core\Encoder\Interfaces\EncoderInterface;
+use Exception;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+
 use Elcodi\Component\Core\Wrapper\Abstracts\AbstractCacheWrapper;
+use Elcodi\Component\Menu\ElcodiMenuEvents;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\MenuInterface;
-use Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface;
-use Elcodi\Component\Menu\Entity\Menu\Interfaces\SubnodesAwareInterface;
+use Elcodi\Component\Menu\Event\MenuEvent;
 use Elcodi\Component\Menu\Repository\MenuRepository;
+use Elcodi\Component\Menu\Serializer\Interfaces\MenuSerializerInterface;
 
 /**
  * Class MenuManager
@@ -44,11 +47,11 @@ class MenuManager extends AbstractCacheWrapper
     protected $menuRepository;
 
     /**
-     * @var EncoderInterface
+     * @var MenuSerializerInterface
      *
-     * Encoder
+     * Menu serializer
      */
-    protected $encoder;
+    protected $serializer;
 
     /**
      * @var string
@@ -58,17 +61,41 @@ class MenuManager extends AbstractCacheWrapper
     protected $key;
 
     /**
+     * @var EventDispatcherInterface
+     *
+     * Event dispatcher
+     */
+    protected $dispatcher;
+
+    /**
      * Construct method
      *
-     * @param MenuRepository $menuRepository Menu repository
-     * @param string         $key            Key
+     * @param MenuRepository          $menuRepository Menu repository
+     * @param MenuSerializerInterface $serializer     Menu serializer
+     * @param string                  $key            Key
      */
     public function __construct(
         MenuRepository $menuRepository,
+        MenuSerializerInterface $serializer,
         $key
     ) {
         $this->menuRepository = $menuRepository;
+        $this->serializer = $serializer;
         $this->key = $key;
+    }
+
+    /**
+     * Set the EventDispatcher
+     *
+     * @param EventDispatcherInterface $dispatcher
+     *
+     * @return $this Self object
+     */
+    public function setEventDispatcher(EventDispatcherInterface $dispatcher)
+    {
+        $this->dispatcher = $dispatcher;
+
+        return $this;
     }
 
     /**
@@ -80,96 +107,167 @@ class MenuManager extends AbstractCacheWrapper
      *
      * @param string $menuCode Menu code
      *
-     * @return array|null Result
+     * @return array Menu configuration
+     *
+     * @throws Exception
      */
     public function loadMenuByCode($menuCode)
     {
-        $key = $this->buildKey($this->key, $menuCode);
+        $key = $this->getCacheKey($menuCode);
 
-        if (isset($this->menus[$key])) {
-            return $this->menus[$key];
-        }
+        $menu = $this->loadFromMemory($key);
+        if (!$menu) {
 
-        $menuHydrated = $this
-            ->encoder
-            ->decode($this->cache->fetch($key));
+            $menu = $this->loadFromCache($key);
+            if (!$menu) {
 
-        if (empty($menuHydrated)) {
-            $menu = $this
-                ->menuRepository
-                ->findOneBy([
-                    'code'    => $menuCode,
-                    'enabled' => true,
-                ]);
+                $menu = $this->loadFromRepository($menuCode);
 
-            if (!($menu instanceof MenuInterface)) {
-                return;
+                $menu = $this->dispatchMenuEvent(
+                    ElcodiMenuEvents::POST_COMPILATION,
+                    $menuCode,
+                    $menu
+                );
+
+                $this->saveToCache($key, $menu);
             }
 
-            $menuHydrated = $this->loadSubnodes($menu);
-
-            $this
-                ->cache
-                ->save($key, $this->encoder->encode($menuHydrated));
+            $this->saveToMemory($key, $menu);
         }
 
-        $this->menus[$key] = $menuHydrated;
+        $menu = $this->dispatchMenuEvent(
+            ElcodiMenuEvents::POST_LOAD,
+            $menuCode,
+            $menu
+        );
 
-        return $menuHydrated;
+        return $menu;
     }
 
     /**
-     * Given a subnodes wrapper, load all subnodes and return their hydration
+     * Try to get menu configuration from memory
      *
-     * @param SubnodesAwareInterface $node Node
+     * @param string $key Identifier of the menu
      *
-     * @return array Nodes hydrated
+     * @return array|null Menu configuration
      */
-    protected function loadSubnodes(SubnodesAwareInterface $node)
+    protected function loadFromMemory($key)
     {
-        $subnodesHydrated = [];
-
-        $node
-            ->getSubnodes()
-            ->map(function (NodeInterface $node) use (&$subnodesHydrated) {
-                if ($node->isEnabled()) {
-                    $subnodeId                    = $node->getId();
-                    $subnodesHydrated[$subnodeId] = $this->hydrateNode($node);
-                }
-            });
-
-        return $subnodesHydrated;
+        return isset($this->menus[$key]) ? $this->menus[$key] : null;
     }
 
     /**
-     * build menu key
+     * Save menu configuration to memory
      *
-     * @param string $key      Key
+     * @param string $key   Identifier of the menu
+     * @param array  $value Configuration to cache
+     */
+    protected function saveToMemory($key, array $value)
+    {
+        $this->menus[$key] = $value;
+    }
+
+    /**
+     * Try to get menu configuration from cache
+     *
+     * @param string $key Identifier of the menu
+     *
+     * @return array|null Menu configuration
+     */
+    protected function loadFromCache($key)
+    {
+        $encoded = $this
+            ->cache
+            ->fetch($key);
+
+        return $this
+            ->encoder
+            ->decode($encoded);
+    }
+
+    /**
+     * Save menu configuration to memory
+     *
+     * @param string $key   Identifier of the menu
+     * @param array  $value Configuration to cache
+     */
+    protected function saveToCache($key, $value)
+    {
+        $encoded = $this
+            ->encoder
+            ->encode($value);
+
+        $this
+            ->cache
+            ->save($key, $encoded);
+    }
+
+    /**
+     * Try to get menu configuration from cache
+     *
+     * @param string $code Code to find the menu
+     *
+     * @return array Menu configuration
+     *
+     * @throws Exception
+     */
+    protected function loadFromRepository($code)
+    {
+        $menu = $this
+            ->menuRepository
+            ->findOneBy([
+                'code' => $code,
+                'enabled' => true,
+            ]);
+
+        if ($menu instanceof MenuInterface) {
+
+            return $this
+                ->serializer
+                ->serializeSubnodes($menu);
+        }
+
+        throw new Exception(sprintf(
+            'Menu "%s" not found',
+            $code
+        ));
+    }
+
+    /**
+     * Build menu key for cache
+     *
      * @param string $menuCode Menu code
      *
      * @return string Cache key
      */
-    protected function buildKey($key, $menuCode)
+    protected function getCacheKey($menuCode)
     {
-        return $key . '-' . $menuCode;
+        return "{$this->key}-{$menuCode}";
     }
 
     /**
-     * Generate node hydration
+     * Dispatch a menu event and capture the
      *
-     * @param NodeInterface $node Node
+     * @param string $eventName Name of the event
+     * @param string $menuCode  Code of the menu
+     * @param array  $menu      Menu settings
      *
-     * @return array Node hydrated
+     * @return array
      */
-    public function hydrateNode(NodeInterface $node)
+    protected function dispatchMenuEvent($eventName, $menuCode, array $menu)
     {
-        return [
-            'id'         => $node->getId(),
-            'name'       => $node->getName(),
-            'code'       => $node->getCode(),
-            'url'        => $node->getUrl(),
-            'activeUrls' => $node->getActiveUrls(),
-            'subnodes'   => $this->loadSubnodes($node),
-        ];
+        if (null === $this->dispatcher) {
+            return $menu;
+        }
+
+        $event = new MenuEvent($menuCode, $menu, $this->serializer);
+        $this
+            ->dispatcher
+            ->dispatch(
+                $eventName,
+                $event
+            );
+
+        return $event->getResult();
     }
 }
