@@ -17,9 +17,8 @@
 
 namespace Elcodi\Component\User\Services;
 
-use Elcodi\Component\User\ElcodiUserEvents;
 use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
-use Elcodi\Component\User\Event\CustomerRegisterEvent;
+use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 use Elcodi\Component\User\Services\Abstracts\AbstractUserManager;
 
 /**
@@ -40,11 +39,12 @@ class CustomerManager extends AbstractUserManager
     {
         parent::register($user, $providerKey);
 
-        $event = new CustomerRegisterEvent($user);
-        $this->eventDispatcher->dispatch(
-            ElcodiUserEvents::CUSTOMER_REGISTER,
-            $event
-        );
+        /**
+         * @var CustomerInterface $user
+         */
+        $this
+            ->userEventDispatcher
+            ->dispatchOnCustomerRegisteredEvent($user);
 
         return $this;
     }

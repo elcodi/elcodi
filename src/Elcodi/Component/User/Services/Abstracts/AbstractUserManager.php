@@ -17,13 +17,11 @@
 
 namespace Elcodi\Component\User\Services\Abstracts;
 
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
-use Elcodi\Component\User\ElcodiUserEvents;
 use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
-use Elcodi\Component\User\Event\UserRegisterEvent;
+use Elcodi\Component\User\EventDispatcher\Interfaces\UserEventDispatcherInterface;
 
 /**
  * Class AbstractUserManager
@@ -31,11 +29,11 @@ use Elcodi\Component\User\Event\UserRegisterEvent;
 abstract class AbstractUserManager
 {
     /**
-     * @var EventDispatcherInterface
+     * @var UserEventDispatcherInterface
      *
-     * EventDispatcher instance
+     * User EventDispatcher
      */
-    protected $eventDispatcher;
+    protected $userEventDispatcher;
 
     /**
      * @var TokenStorageInterface
@@ -47,14 +45,14 @@ abstract class AbstractUserManager
     /**
      * Construct method
      *
-     * @param EventDispatcherInterface $eventDispatcher Event dispatcher
-     * @param TokenStorageInterface    $securityContext Token storage
+     * @param UserEventDispatcherInterface $userEventDispatcher User Event dispatcher
+     * @param TokenStorageInterface        $securityContext     Token storage
      */
     public function __construct(
-        EventDispatcherInterface $eventDispatcher,
+        UserEventDispatcherInterface $userEventDispatcher,
         TokenStorageInterface $securityContext = null
     ) {
-        $this->eventDispatcher = $eventDispatcher;
+        $this->userEventDispatcher = $userEventDispatcher;
         $this->tokenStorage = $securityContext;
     }
 
@@ -80,13 +78,13 @@ abstract class AbstractUserManager
             $user->getRoles()
         );
 
-        $this->tokenStorage->setToken($token);
+        $this
+            ->tokenStorage
+            ->setToken($token);
 
-        $event = new UserRegisterEvent($user);
-        $this->eventDispatcher->dispatch(
-            ElcodiUserEvents::ABSTRACTUSER_REGISTER,
-            $event
-        );
+        $this
+            ->userEventDispatcher
+            ->dispatchOnUserRegisteredEvent($user);
 
         return $this;
     }

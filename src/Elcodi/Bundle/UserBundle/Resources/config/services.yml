@@ -8,17 +8,17 @@ services:
         arguments:
             - @doctrine.orm.entity_manager
             - @router
-            - @event_dispatcher
+            - @elcodi.event_dispatcher.password
             - @elcodi.generator.sha1
 
     elcodi.manager.customer:
         class: Elcodi\Component\User\Services\CustomerManager
         arguments:
-            - @event_dispatcher
+            - @elcodi.event_dispatcher.user
             - @?security.context
 
     elcodi.manager.admin_user:
         class: Elcodi\Component\User\Services\AdminUserManager
         arguments:
-            - @event_dispatcher
+            - @elcodi.event_dispatcher.user
             - @?security.context

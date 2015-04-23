@@ -17,9 +17,8 @@
 
 namespace Elcodi\Component\User\Services;
 
-use Elcodi\Component\User\ElcodiUserEvents;
 use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
-use Elcodi\Component\User\Event\AdminUserRegisterEvent;
+use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
 use Elcodi\Component\User\Services\Abstracts\AbstractUserManager;
 
 /**
@@ -40,11 +39,12 @@ class AdminUserManager extends AbstractUserManager
     {
         parent::register($user, $providerKey);
 
-        $event = new AdminUserRegisterEvent($user);
-        $this->eventDispatcher->dispatch(
-            ElcodiUserEvents::ADMINUSER_REGISTER,
-            $event
-        );
+        /**
+         * @var AdminUserInterface $user
+         */
+        $this
+            ->userEventDispatcher
+            ->dispatchOnAdminUserRegisteredEvent($user);
 
         return $this;
     }
