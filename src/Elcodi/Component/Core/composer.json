@@ -37,7 +37,8 @@
         "doctrine/cache": "~1.0",
         "symfony/doctrine-bridge": "~2.6",
         "symfony/dependency-injection": "~2.6",
-        "symfony/event-dispatcher": "~2.6"
+        "symfony/event-dispatcher": "~2.6",
+        "symfony/http-foundation": "~2.6"
     },
     "suggest": {
         "michelf/php-markdown": "Needed for the markdown parsing adapter"
