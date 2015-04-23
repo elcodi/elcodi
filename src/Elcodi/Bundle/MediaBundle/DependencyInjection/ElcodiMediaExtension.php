@@ -113,8 +113,7 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
 
             'elcodi.core.media.filesystem'                             => $config['filesystem'],
 
-            'elcodi.core.media.images.domain_sharding.enabled'         => $config['images']['domain_sharding']['enabled'],
-            'elcodi.core.media.images.domain_sharding.base_urls'       => $config['images']['domain_sharding']['base_urls'],
+            'elcodi.core.media.generated_route_host'                   => $config['images']['generated_route_host'],
 
             'elcodi.core.media.image_view_controller_route_name'       => $config['images']['view']['controller_route_name'],
             'elcodi.core.media.image_view_controller_route'            => $config['images']['view']['controller_route'],

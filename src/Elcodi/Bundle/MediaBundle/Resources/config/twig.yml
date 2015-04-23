@@ -9,5 +9,6 @@ services:
             - @router
             - %elcodi.core.media.image_resize_controller_route_name%
             - %elcodi.core.media.image_view_controller_route_name%
+            - %elcodi.core.media.generated_route_host%
         tags:
             - { name: twig.extension }
