@@ -127,7 +127,6 @@ class MenuEvent extends Event
     public function getResult()
     {
         if (count($this->filters) === 0) {
-
             return $this->menu;
         }
 
@@ -145,16 +144,13 @@ class MenuEvent extends Event
     {
         $subnodes = [];
         foreach ($children as $childName => $childNode) {
-
             foreach ($this->filters as $filter) {
-
                 $childNode = $filter($childNode);
                 if ($childNode === false) {
                     continue 2;
                 }
 
                 if (!is_array($childNode)) {
-
                     throw new RuntimeException(sprintf(
                         'Menu filters should return an array, but "%s" was found.',
                         gettype($childNode)
