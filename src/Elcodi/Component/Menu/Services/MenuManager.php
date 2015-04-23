@@ -117,10 +117,8 @@ class MenuManager extends AbstractCacheWrapper
 
         $menu = $this->loadFromMemory($key);
         if (!$menu) {
-
             $menu = $this->loadFromCache($key);
             if (!$menu) {
-
                 $menu = $this->loadFromRepository($menuCode);
 
                 $menu = $this->dispatchMenuEvent(
@@ -221,7 +219,6 @@ class MenuManager extends AbstractCacheWrapper
             ]);
 
         if ($menu instanceof MenuInterface) {
-
             return $this
                 ->serializer
                 ->serializeSubnodes($menu);
