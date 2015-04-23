@@ -18,14 +18,11 @@
 namespace Elcodi\Component\User\Services;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
-use Elcodi\Component\User\ElcodiUserEvents;
 use Elcodi\Component\User\Entity\Abstracts\AbstractUser;
-use Elcodi\Component\User\Event\PasswordRecoverEvent;
-use Elcodi\Component\User\Event\PasswordRememberEvent;
+use Elcodi\Component\User\EventDispatcher\Interfaces\PasswordEventDispatcherInterface;
 use Elcodi\Component\User\Repository\Interfaces\UserEmaileableInterface;
 
 /**
@@ -48,11 +45,11 @@ class PasswordManager
     protected $router;
 
     /**
-     * @var EventDispatcherInterface
+     * @var PasswordEventDispatcherInterface
      *
-     * EventDispatcher
+     * Password EventDispatcher
      */
-    protected $eventDispatcher;
+    protected $passwordEventDispatcher;
 
     /**
      * @var GeneratorInterface
@@ -62,20 +59,20 @@ class PasswordManager
     protected $recoveryHashGenerator;
 
     /**
-     * @param ObjectManager            $manager               Manager
-     * @param UrlGeneratorInterface    $router                Router
-     * @param EventDispatcherInterface $eventDispatcher       Event Dispatcher
-     * @param GeneratorInterface       $recoveryHashGenerator Recovery hash generator
+     * @param ObjectManager                    $manager                 Manager
+     * @param UrlGeneratorInterface            $router                  Router
+     * @param PasswordEventDispatcherInterface $passwordEventDispatcher Password Event Dispatcher
+     * @param GeneratorInterface               $recoveryHashGenerator   Recovery hash generator
      */
     public function __construct(
         ObjectManager $manager,
         UrlGeneratorInterface $router,
-        EventDispatcherInterface $eventDispatcher,
+        PasswordEventDispatcherInterface $passwordEventDispatcher,
         GeneratorInterface $recoveryHashGenerator
     ) {
         $this->manager = $manager;
         $this->router = $router;
-        $this->eventDispatcher = $eventDispatcher;
+        $this->passwordEventDispatcher = $passwordEventDispatcher;
         $this->recoveryHashGenerator = $recoveryHashGenerator;
     }
 
@@ -133,8 +130,12 @@ class PasswordManager
                 $hashField => $recoveryHash,
             ], true);
 
-        $event = new PasswordRememberEvent($user, $recoverUrl);
-        $this->eventDispatcher->dispatch(ElcodiUserEvents::PASSWORD_REMEMBER, $event);
+        $this
+            ->passwordEventDispatcher
+            ->dispatchOnPasswordRememberEvent(
+                $user,
+                $recoverUrl
+            );
 
         return $this;
     }
@@ -156,8 +157,9 @@ class PasswordManager
                 ->setRecoveryHash(null);
             $this->manager->flush($user);
 
-            $event = new PasswordRecoverEvent($user);
-            $this->eventDispatcher->dispatch(ElcodiUserEvents::PASSWORD_RECOVER, $event);
+            $this
+            ->passwordEventDispatcher
+            ->dispatchOnPasswordRecoverEvent($user);
         }
 
         return $this;

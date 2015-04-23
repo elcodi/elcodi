@@ -19,7 +19,7 @@ namespace Elcodi\Component\User\Event;
 
 use Symfony\Component\EventDispatcher\Event;
 
-use Elcodi\Component\User\Entity\Abstracts\AbstractUser;
+use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 
 /**
  * Event fired when a customer unsubscribes from newsletter
@@ -29,7 +29,7 @@ use Elcodi\Component\User\Entity\Abstracts\AbstractUser;
 class PasswordRecoverEvent extends Event
 {
     /**
-     * @var AbstractUser
+     * @var AbstractUserInterface
      *
      * User
      */
@@ -38,9 +38,9 @@ class PasswordRecoverEvent extends Event
     /**
      * Construct method
      *
-     * @param AbstractUser $user User
+     * @param AbstractUserInterface $user User
      */
-    public function __construct(AbstractUser $user)
+    public function __construct(AbstractUserInterface $user)
     {
         $this->user = $user;
     }
@@ -48,7 +48,7 @@ class PasswordRecoverEvent extends Event
     /**
      * Get user
      *
-     * @return AbstractUser User
+     * @return AbstractUserInterface User
      */
     public function getUser()
     {
