@@ -48,6 +48,9 @@
             "Elcodi\\Component\\Template\\": ""
         }
     },
+    "config": {
+        "bin-dir": "bin"
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "0.5-dev"
