@@ -15,18 +15,18 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Menu\Listener;
+namespace Elcodi\Component\Menu\EventListener;
 
 use Symfony\Component\HttpFoundation\RequestStack;
 
-use Elcodi\Component\Menu\Event\MenuEvent;
+use Elcodi\Component\Menu\Event\Abstracts\AbstractMenuEvent;
 
 /**
  * Class ActivateFromRequestListener
  *
  * @author Berny Cantos <be@rny.cc>
  */
-class ActivateFromRequestListener
+class ActivateFromRequestEventListener
 {
     /**
      * @var RequestStack
@@ -49,9 +49,9 @@ class ActivateFromRequestListener
      * Mark menu entries as active if matches the current route.
      * Also mark entries as expanded if any subnode is the current route.
      *
-     * @param MenuEvent $event
+     * @param AbstractMenuEvent $event
      */
-    public function onMenuPostLoad(MenuEvent $event)
+    public function onMenuPostLoad(AbstractMenuEvent $event)
     {
         $masterRequest = $this
             ->requestStack

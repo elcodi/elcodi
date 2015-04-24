@@ -15,24 +15,24 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Menu\Listener;
+namespace Elcodi\Component\Menu\EventListener;
 
-use Elcodi\Component\Menu\Event\MenuEvent;
+use Elcodi\Component\Menu\Event\Abstracts\AbstractMenuEvent;
 
 /**
  * Class RemoveDisabledMenusListener
  *
  * @author Berny Cantos <be@rny.cc>
  */
-class RemoveDisabledMenusListener
+class RemoveDisabledMenusEventListener
 {
     /**
      * Mark menu entries as active if matches the current route.
      * Also mark entries as expanded if any subnode is the current route.
      *
-     * @param MenuEvent $event
+     * @param AbstractMenuEvent $event Event
      */
-    public function onMenuPostCompilation(MenuEvent $event)
+    public function onMenuPostCompilation(AbstractMenuEvent $event)
     {
         $event->addFilter(function (array $item) {
 
