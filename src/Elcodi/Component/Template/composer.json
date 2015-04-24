@@ -40,10 +40,16 @@
         "elcodi/core": "~0.5.0",
         "elcodi/configuration": "~0.5.0"
     },
+    "require-dev": {
+        "phpunit/phpunit": "4.5.0"
+    },
     "autoload": {
         "psr-4": {
             "Elcodi\\Component\\Template\\": ""
         }
+    },
+    "config": {
+        "bin-dir": "bin"
     },
     "extra": {
         "branch-alias": {

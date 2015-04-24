@@ -138,7 +138,7 @@ class ImageExtension extends Twig_Extension
             ->generate($this->imageViewControllerRouteName, [
                 'id'      => (int) $imageMedia->getId(),
                 '_format' => $imageMedia->getExtension(),
-            ],$routeReferenceType);
+            ], $routeReferenceType);
 
         return $generatedRoute;
     }
@@ -164,9 +164,7 @@ class ImageExtension extends Twig_Extension
                 ->setHost($this->generatedRouteHost);
 
             $routeReferenceType = UrlGeneratorInterface::NETWORK_PATH;
-
         } else {
-
             $routeReferenceType = UrlGeneratorInterface::ABSOLUTE_PATH;
         }
 

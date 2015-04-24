@@ -15,7 +15,7 @@ before_script:
     - sh -c "sudo mount -t tmpfs -o size=512M tmpfs /tmp/Elcodi/"
 
 script:
-  - phpunit
+  - bin/phpunit
 
 notifications:
     email: false
