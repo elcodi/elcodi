@@ -18,6 +18,8 @@
 namespace Elcodi\Component\Media\Twig;
 
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Routing\RequestContext;
+use Symfony\Component\Routing\RouterInterface;
 use Twig_Extension;
 use Twig_SimpleFilter;
 
@@ -61,6 +63,20 @@ class ImageExtension extends Twig_Extension
     protected $generatedRouteHost;
 
     /**
+     * @var RequestContext
+     *
+     * Original router context
+     */
+    protected $originalContext;
+
+    /**
+     * @var RequestContext
+     *
+     * Modified router context
+     */
+    protected $modifiedContext;
+
+    /**
      * Construct method
      *
      * @param UrlGeneratorInterface $router                         Router
@@ -79,6 +95,16 @@ class ImageExtension extends Twig_Extension
         $this->imageResizeControllerRouteName = $imageResizeControllerRouteName;
         $this->imageViewControllerRouteName = $imageViewControllerRouteName;
         $this->generatedRouteHost = $generatedRouteHost;
+
+        /*
+         * Routing context will change when a hostname is
+         * forced into the route generation.
+         */
+        $this->originalContext = $this
+            ->router
+            ->getContext();
+
+        $this->modifiedContext = clone($this->originalContext);
     }
 
     /**
@@ -106,7 +132,7 @@ class ImageExtension extends Twig_Extension
     {
         $router = $this->router;
 
-        $routeReferenceType = $this->prepareHostUrl($router);
+        $routeReferenceType = $this->prepareRouterContext($router);
 
         $generatedRoute = $router
             ->generate($this->imageResizeControllerRouteName, [
@@ -116,6 +142,8 @@ class ImageExtension extends Twig_Extension
                 'type'    => (int) $options['type'],
                 '_format' => $imageMedia->getExtension(),
             ], $routeReferenceType);
+
+        $this->fixRouterContext($router);
 
         return $generatedRoute;
     }
@@ -131,7 +159,7 @@ class ImageExtension extends Twig_Extension
     {
         $router = $this->router;
 
-        $routeReferenceType = $this->prepareHostUrl($router);
+        $routeReferenceType = $this->prepareRouterContext($router);
 
         $generatedRoute = $this
             ->router
@@ -140,35 +168,52 @@ class ImageExtension extends Twig_Extension
                 '_format' => $imageMedia->getExtension(),
             ], $routeReferenceType);
 
+        $this->fixRouterContext($router);
+
         return $generatedRoute;
     }
 
     /**
-     * Prepares the Host part of a generated URL
+     * Prepares the Host part of a image resize URL
      *
      * @param UrlGeneratorInterface $router
      *
      * @return array
      */
-    protected function prepareHostUrl(UrlGeneratorInterface $router)
+    protected function prepareRouterContext(UrlGeneratorInterface $router)
     {
         if ($this->generatedRouteHost) {
+
+            $this->router->setContext($this->modifiedContext);
+
             /*
              * When a Host is set for the image route,
              * we need to change the route context URL
-             * Host and the reference type to NETWORK_PATH
-             * (url scheme-agnostic)
              */
             $router
                 ->getContext()
                 ->setHost($this->generatedRouteHost);
 
-            $routeReferenceType = UrlGeneratorInterface::NETWORK_PATH;
+            $routeReferenceType = UrlGeneratorInterface::ABSOLUTE_URL;
         } else {
             $routeReferenceType = UrlGeneratorInterface::ABSOLUTE_PATH;
         }
 
         return $routeReferenceType;
+    }
+
+    /**
+     * Fixes a router Context back after changing the "Host" URL
+     *
+     * @param RouterInterface $router
+     */
+    public function fixRouterContext(RouterInterface $router)
+    {
+        if ($this->generatedRouteHost) {
+            $this
+                ->router
+                ->setContext($this->originalContext);
+        }
     }
 
     /**
