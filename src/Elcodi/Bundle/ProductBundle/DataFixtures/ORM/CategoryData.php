@@ -38,7 +38,7 @@ class CategoryData extends AbstractFixture
         /**
          * @var ObjectDirector   $categoryDirector
          */
-        $categoryDirector = $this->get('elcodi.director.category');
+        $categoryDirector = $this->getDirector('category');
 
         /**
          * Category

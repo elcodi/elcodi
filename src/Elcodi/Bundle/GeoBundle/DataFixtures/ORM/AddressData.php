@@ -37,7 +37,7 @@ class AddressData extends AbstractFixture implements DependentFixtureInterface
         /**
          * @var ObjectDirector $addressDirector
          */
-        $addressDirector = $this->get('elcodi.director.address');
+        $addressDirector = $this->getDirector('address');
 
         $addressSantCeloni = $addressDirector
             ->create()

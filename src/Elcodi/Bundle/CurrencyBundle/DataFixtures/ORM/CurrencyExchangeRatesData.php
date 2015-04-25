@@ -43,7 +43,7 @@ class CurrencyExchangeRatesData extends AbstractFixture implements DependentFixt
          * @var CurrencyInterface           $currencyPound
          * @var CurrencyInterface           $currencyIen
          */
-        $currencyExchangeRateDirector = $this->get('elcodi.director.currency_exchange_rate');
+        $currencyExchangeRateDirector = $this->getDirector('currency_exchange_rate');
         $currencyEuro = $this->getReference('currency-euro');
         $currencyDollar = $this->getReference('currency-dollar');
         $currencyPound = $this->getReference('currency-pound');

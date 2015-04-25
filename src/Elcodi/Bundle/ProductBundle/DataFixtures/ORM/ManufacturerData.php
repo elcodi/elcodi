@@ -37,7 +37,7 @@ class ManufacturerData extends AbstractFixture
         /**
          * @var ObjectDirector $manufacturerDirector
          */
-        $manufacturerDirector = $this->get('elcodi.director.manufacturer');
+        $manufacturerDirector = $this->getDirector('manufacturer');
 
         $manufacturer = $manufacturerDirector
             ->create()

@@ -38,8 +38,8 @@ class AttributeData extends AbstractFixture
          * @var ObjectDirector   $attributeDirector
          * @var ObjectDirector   $attributeValueDirector
          */
-        $attributeDirector = $this->get('elcodi.director.attribute');
-        $attributeValueDirector = $this->get('elcodi.director.attribute_value');
+        $attributeDirector = $this->getDirector('attribute');
+        $attributeValueDirector = $this->getDirector('attribute_value');
 
         /**
          * Sizes

@@ -39,7 +39,7 @@ class BannerData extends AbstractFixture implements DependentFixtureInterface
         /**
          * @var ObjectDirector $bannerDirector
          */
-        $bannerDirector = $this->get('elcodi.director.banner');
+        $bannerDirector = $this->getDirector('banner');
 
         /**
          * Banner
