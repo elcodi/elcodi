@@ -38,7 +38,7 @@ class MenuData extends AbstractFixture implements DependentFixtureInterface
         /**
          * @var ObjectDirector $menuDirector
          */
-        $menuDirector = $this->get('elcodi.director.menu');
+        $menuDirector = $this->getDirector('menu');
 
         /**
          * Admin menu

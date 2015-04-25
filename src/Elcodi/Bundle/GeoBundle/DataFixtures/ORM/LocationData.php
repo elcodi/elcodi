@@ -35,7 +35,7 @@ class LocationData extends AbstractFixture
         /**
          * @var ObjectDirector $locationDirector
          */
-        $locationDirector = $this->get('elcodi.director.location');
+        $locationDirector = $this->getDirector('location');
 
         $locationSpain = $locationDirector
             ->create()

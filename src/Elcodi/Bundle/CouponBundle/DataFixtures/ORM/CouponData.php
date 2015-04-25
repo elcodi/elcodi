@@ -43,7 +43,7 @@ class CouponData extends AbstractFixture implements DependentFixtureInterface
          * @var CurrencyInterface $currency
          * @var ObjectDirector    $couponDirector
          */
-        $couponDirector = $this->get('elcodi.director.coupon');
+        $couponDirector = $this->getDirector('coupon');
         $currency = $this->getReference('currency-dollar');
 
         /**

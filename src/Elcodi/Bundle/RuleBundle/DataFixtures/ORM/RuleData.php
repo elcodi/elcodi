@@ -35,7 +35,7 @@ class RuleData extends AbstractFixture
         /**
          * @var ObjectDirector $ruleDirector
          */
-        $ruleDirector = $this->get('elcodi.director.rule');
+        $ruleDirector = $this->getDirector('rule');
 
         $cartOver1000Euros = $ruleDirector
             ->create()

@@ -37,7 +37,7 @@ class NodeData extends AbstractFixture
         /**
          * @var ObjectDirector $menuNodeDirector
          */
-        $menuNodeDirector = $this->get('elcodi.director.menu_node');
+        $menuNodeDirector = $this->getDirector('menu_node');
 
         $menuNodeHim = $menuNodeDirector
             ->create()

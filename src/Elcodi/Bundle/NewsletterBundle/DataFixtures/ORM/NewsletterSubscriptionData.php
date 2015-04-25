@@ -38,7 +38,7 @@ class NewsletterSubscriptionData extends AbstractFixture implements DependentFix
          * @var ObjectDirector $newsletterSubscriptionDirector
          * @var LanguageInterface             $languageEs
          */
-        $newsletterSubscriptionDirector = $this->get('elcodi.director.newsletter_subscription');
+        $newsletterSubscriptionDirector = $this->getDirector('newsletter_subscription');
         $languageEs = $this->getReference('language-es');
 
         $newsletterSubscription = $newsletterSubscriptionDirector

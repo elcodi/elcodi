@@ -37,7 +37,7 @@ class CurrencyData extends AbstractFixture
         /**
          * @var ObjectDirector $currencyDirector
          */
-        $currencyDirector = $this->get('elcodi.director.currency');
+        $currencyDirector = $this->getDirector('currency');
 
         /**
          * Dollar

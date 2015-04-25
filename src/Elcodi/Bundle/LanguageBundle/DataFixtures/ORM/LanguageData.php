@@ -37,7 +37,7 @@ class LanguageData extends AbstractFixture
         /**
          * @var ObjectDirector $languageDirector
          */
-        $languageDirector = $this->get('elcodi.director.language');
+        $languageDirector = $this->getDirector('language');
 
         $languageEs = $languageDirector
             ->create()

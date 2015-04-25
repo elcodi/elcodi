@@ -43,7 +43,7 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
          */
         $currency = $this->getReference('currency-dollar');
         $productWithVariants = $this->getReference('product-with-variants');
-        $variantDirector = $this->get('elcodi.director.product_variant');
+        $variantDirector = $this->getDirector('product_variant');
 
         /**
          * @var ValueInterface $optionWhite

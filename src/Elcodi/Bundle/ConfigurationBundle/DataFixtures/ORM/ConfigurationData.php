@@ -37,7 +37,7 @@ class ConfigurationData extends AbstractFixture
         /**
          * @var ObjectDirector $configurationDirector
          */
-        $configurationDirector = $this->get('elcodi.director.configuration');
+        $configurationDirector = $this->getDirector('configuration');
 
         /**
          * Parameter
