@@ -3,5 +3,5 @@ services:
     #
     # Page renderers
     #
-    elcodi.core.page.chain_renderer:
-        class: Elcodi\Component\Page\Renderer\ChainPageRenderer
+    elcodi.page_renderer_chain:
+        class: Elcodi\Component\Page\Renderer\PageRendererChain

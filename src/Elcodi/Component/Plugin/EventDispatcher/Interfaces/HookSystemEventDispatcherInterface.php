@@ -15,14 +15,14 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Plugin\Interfaces;
+namespace Elcodi\Component\Plugin\EventDispatcher\Interfaces;
 
 /**
- * Interface HookSystemInterface
+ * Interface HookSystemEventDispatcherInterface
  *
  * @author Berny Cantos <be@rny.cc>
  */
-interface HookSystemInterface
+interface HookSystemEventDispatcherInterface
 {
     /**
      * Start listening on a specified hook.

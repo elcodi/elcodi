@@ -1,5 +1,9 @@
-elcodi_metric_input_routes:
-    resource: .
-    type: elcodi_metric_input
-    methods: [GET]
-    options: { i18n: false }
+#
+# Routing
+#
+
+elcodi.route.metric_input:
+    path: /_m/{token}/{event}.png
+    methods: GET
+    defaults:
+        _controller: elcodi.controller.metric_input:addEntryAction

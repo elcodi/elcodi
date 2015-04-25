@@ -20,7 +20,7 @@ namespace Elcodi\Component\Plugin\Twig;
 use Twig_Extension;
 use Twig_SimpleFunction;
 
-use Elcodi\Component\Plugin\Interfaces\HookSystemInterface;
+use Elcodi\Component\Plugin\EventDispatcher\Interfaces\HookSystemEventDispatcherInterface;
 
 /**
  * Class HookExtension for Twig
@@ -30,20 +30,20 @@ use Elcodi\Component\Plugin\Interfaces\HookSystemInterface;
 class HookExtension extends Twig_Extension
 {
     /**
-     * @var HookSystemInterface $hookSystem
+     * @var HookSystemEventDispatcherInterface $hookSystem
      *
      * Where to execute the hooks
      */
-    protected $hookSystem;
+    protected $hookSystemEventDispatcher;
 
     /**
      * Construct
      *
-     * @param HookSystemInterface $hookSystem Where to execute the hooks
+     * @param HookSystemEventDispatcherInterface $hookSystem Where to execute the hooks
      */
-    public function __construct(HookSystemInterface $hookSystem)
+    public function __construct(HookSystemEventDispatcherInterface $hookSystemEventDispatcher)
     {
-        $this->hookSystem = $hookSystem;
+        $this->hookSystemEventDispatcher = $hookSystemEventDispatcher;
     }
 
     /**
@@ -56,7 +56,7 @@ class HookExtension extends Twig_Extension
         return [
             new Twig_SimpleFunction(
                 'elcodi_hook',
-                [$this->hookSystem, 'execute'],
+                [$this->hookSystemEventDispatcher, 'execute'],
                 [
                     'is_safe' => ['html'],
                 ]

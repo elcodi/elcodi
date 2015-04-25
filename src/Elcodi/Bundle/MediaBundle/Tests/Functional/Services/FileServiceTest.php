@@ -54,7 +54,7 @@ class FileServiceTest extends WebTestCase
             ->uploadFile($image, $imageData, true);
 
         $this->assertTrue($this
-            ->get('elcodi.core.media.filesystem.default')
+            ->get('elcodi.media_filesystem')
             ->has($imageName)
         );
 
@@ -65,7 +65,7 @@ class FileServiceTest extends WebTestCase
         $this->assertEquals($imageData, $image->getContent());
 
         $this
-            ->get('elcodi.core.media.filesystem.default')
+            ->get('elcodi.media_filesystem')
             ->delete($imageName);
     }
 }

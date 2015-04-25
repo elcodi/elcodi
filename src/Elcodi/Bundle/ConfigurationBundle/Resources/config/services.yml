@@ -11,6 +11,6 @@ services:
             - @elcodi.repository.configuration
             - @elcodi.factory.configuration
             - @elcodi.container_parameters
-            - %elcodi.core.configuration.elements%
+            - %elcodi.configuration_elements%
         calls:
             - [setCache, [@doctrine_cache.providers.elcodi_configurations]]

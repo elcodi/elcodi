@@ -1,35 +1,45 @@
-elcodi_location_api_root_locations:
-    path: %elcodi.route.location_api.get_root_locations%
+#
+# Routing
+#
+
+elcodi.route.location_api_root_locations:
+    path: %elcodi.location_api_route_get_root_locations%
+    host: %elcodi.location_api_host%
     methods: GET
     defaults:
         _controller: elcodi.controller.location_api:getRootLocationsAction
 
-elcodi_location_api_children:
-    path: %elcodi.route.location_api.get_children%
+elcodi.route.location_api_children:
+    path: %elcodi.location_api_route_get_children%
+    host: %elcodi.location_api_host%
     methods: GET
     defaults:
         _controller: elcodi.controller.location_api:getChildrenAction
 
-elcodi_location_api_parents:
-    path: %elcodi.route.location_api.get_parents%
+elcodi.route.location_api_parents:
+    path: %elcodi.location_api_route_get_parents%
+    host: %elcodi.location_api_host%
     methods: GET
     defaults:
         _controller: elcodi.controller.location_api:getParentsAction
 
-elcodi_location_api_location:
-    path: %elcodi.route.location_api.get_location%
+elcodi.route.location_api_location:
+    path: %elcodi.location_api_route_get_location%
+    host: %elcodi.location_api_host%
     methods: GET
     defaults:
         _controller: elcodi.controller.location_api:getLocationAction
 
-elcodi_location_api_hierarchy:
-    path: %elcodi.route.location_api.get_hierarchy%
+elcodi.route.location_api_hierarchy:
+    path: %elcodi.location_api_route_get_hierarchy%
+    host: %elcodi.location_api_host%
     methods: GET
     defaults:
         _controller: elcodi.controller.location_api:getHierarchyAction
 
-elcodi_location_api_in:
-    path: %elcodi.route.location_api.in%
+elcodi.route.location_api_in:
+    path: %elcodi.location_api_route_in%
+    host: %elcodi.location_api_host%
     methods: GET
     defaults:
         _controller: elcodi.controller.location_api:inAction

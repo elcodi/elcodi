@@ -3,19 +3,19 @@ services:
     #
     # Order state machine for Payment
     #
-    elcodi.order.payment_states_machine.builder:
+    elcodi.order_payment_states_machine_builder:
         class: Elcodi\Component\StateTransitionMachine\Machine\MachineBuilder
         arguments:
             - @elcodi.factory.state_transition_machine
-            - %elcodi.order.payment_states_machine.identifier%
-            - %elcodi.order.payment_states_machine.states%
-            - %elcodi.order.payment_states_machine.point_of_entry%
+            - %elcodi.order_payment_states_machine_identifier%
+            - %elcodi.order_payment_states_machine_states%
+            - %elcodi.order_payment_states_machine_point_of_entry%
 
     elcodi.order.payment_states_machine:
         class: Elcodi\Component\StateTransitionMachine\Machine\Machine
-        factory: [@elcodi.order.payment_states_machine.builder, compile]
+        factory: [@elcodi.order_payment_states_machine_builder, compile]
 
-    elcodi.order.payment_states_machine.manager:
+    elcodi.order_payment_states_machine_manager:
         class: Elcodi\Component\StateTransitionMachine\Machine\MachineManager
         arguments:
             - @elcodi.order.payment_states_machine
@@ -26,19 +26,19 @@ services:
     #
     # Order state machine for Shipping
     #
-    elcodi.order.shipping_states_machine.builder:
+    elcodi.order_shipping_states_machine_builder:
         class: Elcodi\Component\StateTransitionMachine\Machine\MachineBuilder
         arguments:
             - @elcodi.factory.state_transition_machine
-            - %elcodi.order.shipping_states_machine.identifier%
-            - %elcodi.order.shipping_states_machine.states%
-            - %elcodi.order.shipping_states_machine.point_of_entry%
+            - %elcodi.order_shipping_states_machine_identifier%
+            - %elcodi.order_shipping_states_machine_states%
+            - %elcodi.order_shipping_states_machine_point_of_entry%
 
     elcodi.order.shipping_states_machine:
         class: Elcodi\Component\StateTransitionMachine\Machine\Machine
-        factory: [@elcodi.order.shipping_states_machine.builder, compile]
+        factory: [@elcodi.order_shipping_states_machine_builder, compile]
 
-    elcodi.order.shipping_states_machine.manager:
+    elcodi.order_shipping_states_machine_manager:
         class: Elcodi\Component\StateTransitionMachine\Machine\MachineManager
         arguments:
             - @elcodi.order.shipping_states_machine

@@ -77,16 +77,16 @@ class ElcodiEntityTranslatorExtension extends AbstractExtension implements Entit
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.entity_translation.class"        => $config['mapping']['translation']['class'],
-            "elcodi.entity.entity_translation.mapping_file" => $config['mapping']['translation']['mapping_file'],
-            "elcodi.entity.entity_translation.manager"      => $config['mapping']['translation']['manager'],
-            "elcodi.entity.entity_translation.enabled"      => $config['mapping']['translation']['enabled'],
+            "elcodi.entity.entity_translation.class"          => $config['mapping']['translation']['class'],
+            "elcodi.entity.entity_translation.mapping_file"   => $config['mapping']['translation']['mapping_file'],
+            "elcodi.entity.entity_translation.manager"        => $config['mapping']['translation']['manager'],
+            "elcodi.entity.entity_translation.enabled"        => $config['mapping']['translation']['enabled'],
 
-            "elcodi.core.entity_translator.configuration"                          => $config['configuration'],
-            "elcodi.core.entity_translator.cache_prefix"                           => $config['cache_prefix'],
-            "elcodi.core.entity_translator.auto_translate"                         => $config['auto_translate'],
-            "elcodi.core.entity_translator.language_master_locale"                 => $config['language']['master_locale'],
-            "elcodi.core.entity_translator.language_fallback"                      => $config['language']['fallback'],
+            "elcodi.entity_translator_configuration"          => $config['configuration'],
+            "elcodi.entity_translator_cache_prefix"           => $config['cache_prefix'],
+            "elcodi.entity_translator_auto_translate"         => $config['auto_translate'],
+            "elcodi.entity_translator_language_master_locale" => $config['language']['master_locale'],
+            "elcodi.entity_translator_language_fallback"      => $config['language']['fallback'],
         ];
     }
 

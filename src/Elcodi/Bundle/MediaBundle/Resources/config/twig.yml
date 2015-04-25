@@ -7,8 +7,8 @@ services:
         class: Elcodi\Component\Media\Twig\ImageExtension
         arguments:
             - @router
-            - %elcodi.core.media.image_resize_controller_route_name%
-            - %elcodi.core.media.image_view_controller_route_name%
-            - %elcodi.core.media.generated_route_host%
+            - elcodi.route.image_resize
+            - elcodi.route.image_view
+            - %elcodi.image_generated_route_host%
         tags:
             - { name: twig.extension }

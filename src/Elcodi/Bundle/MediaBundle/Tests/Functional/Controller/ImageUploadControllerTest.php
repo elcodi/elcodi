@@ -18,6 +18,7 @@
 namespace Elcodi\Bundle\MediaBundle\Tests\Functional\Controller;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Routing\RouteCollection;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Media\Entity\Interfaces\FileInterface;
@@ -44,7 +45,7 @@ class ImageUploadControllerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.controller.media_image_upload'];
+        return ['elcodi.controller.image_upload'];
     }
 
     /**
@@ -52,7 +53,14 @@ class ImageUploadControllerTest extends WebTestCase
      */
     public function testUploadAction()
     {
+        /**
+         * @var RouteCollection $routeCollection
+         */
         $client = $this->createClient();
+        $routeCollection = $this
+            ->get('router')
+            ->getRouteCollection();
+
         $image = new UploadedFile(
             dirname(__FILE__) . '/images/image.png',
             'image.png',
@@ -64,7 +72,9 @@ class ImageUploadControllerTest extends WebTestCase
 
         $client->request(
             'POST',
-            $this->getParameter('elcodi.core.media.image_upload_controller_route'),
+            $routeCollection
+                ->get('elcodi.route.image_upload')
+                ->getPath(),
             [],
             ['file' => $image]
         );
@@ -80,7 +90,9 @@ class ImageUploadControllerTest extends WebTestCase
         $image = $this->find('image', 1);
         $this->assertInstanceOf('Elcodi\Component\Media\Entity\Interfaces\ImageInterface', $image);
         $this->assertEmpty($image->getContent());
-        $this->get('elcodi.manager.media_file')->downloadFile($image);
+        $this
+            ->get('elcodi.manager.media_file')
+            ->downloadFile($image);
 
         $this->assertNotEmpty($image->getContent());
     }

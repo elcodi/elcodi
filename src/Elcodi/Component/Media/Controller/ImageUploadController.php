@@ -63,39 +63,39 @@ class ImageUploadController
      *
      * View image url name
      */
-    protected $viewImageUrlName;
+    protected $viewImageRouteName;
 
     /**
      * @var string
      *
      * Resize image url name
      */
-    protected $resizeImageUrlName;
+    protected $resizeImageRouteName;
 
     /**
      * Image uploader
      *
-     * @param RequestStack    $requestStack       Request stack
-     * @param ImageUploader   $imageUploader      Image uploader
-     * @param RouterInterface $router             Router
-     * @param string          $uploadFieldName    Field name when uploading
-     * @param string          $viewImageUrlName   View image url name
-     * @param string          $resizeImageUrlName Resize image url name
+     * @param RequestStack    $requestStack         Request stack
+     * @param ImageUploader   $imageUploader        Image uploader
+     * @param RouterInterface $router               Router
+     * @param string          $uploadFieldName      Field name when uploading
+     * @param string          $viewImageRouteName   View image url name
+     * @param string          $resizeImageRouteName Resize image url name
      */
     public function __construct(
         RequestStack $requestStack,
         ImageUploader $imageUploader,
         RouterInterface $router,
         $uploadFieldName,
-        $viewImageUrlName,
-        $resizeImageUrlName
+        $viewImageRouteName,
+        $resizeImageRouteName
     ) {
         $this->requestStack = $requestStack;
         $this->imageUploader = $imageUploader;
         $this->router = $router;
         $this->uploadFieldName = $uploadFieldName;
-        $this->viewImageUrlName = $viewImageUrlName;
-        $this->resizeImageUrlName = $resizeImageUrlName;
+        $this->viewImageRouteName = $viewImageRouteName;
+        $this->resizeImageRouteName = $resizeImageRouteName;
     }
 
     /**
@@ -141,10 +141,10 @@ class ImageUploadController
                     'extension' => $image->getExtension(),
                     'routes'    => [
                         'view'   => $routes
-                            ->get($this->viewImageUrlName)
+                            ->get($this->viewImageRouteName)
                             ->getPath(),
                         'resize' => $routes
-                            ->get($this->resizeImageUrlName)
+                            ->get($this->resizeImageRouteName)
                             ->getPath(),
                     ],
                 ],

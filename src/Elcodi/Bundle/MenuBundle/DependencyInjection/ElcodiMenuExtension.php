@@ -87,7 +87,7 @@ class ElcodiMenuExtension extends AbstractExtension implements EntitiesOverridab
             "elcodi.entity.menu_node.manager" => $config['mapping']['menu_node']['manager'],
             "elcodi.entity.menu_node.enabled" => $config['mapping']['menu_node']['enabled'],
 
-            'elcodi.core.menu.cache_key' => $config['menus']['cache_key'],
+            'elcodi.menu_cache_key' => $config['menus']['cache_key'],
         ];
     }
 

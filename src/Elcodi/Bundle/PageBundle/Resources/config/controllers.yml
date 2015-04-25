@@ -3,9 +3,8 @@ services:
     #
     # Controllers
     #
-    elcodi.core.page.controller.page:
+    elcodi.controller.page:
         class: Elcodi\Component\Page\Controller\PageController
         arguments:
             - @elcodi.repository.page
-            - @request_stack
-            - @elcodi.core.page.chain_renderer
+            - @elcodi.transformer.page_response

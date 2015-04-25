@@ -46,13 +46,13 @@ trait TemplatingTrait
     /**
      * Render a template and append to the current content
      *
-     * @param string                                             $template
-     * @param \Elcodi\Component\Plugin\Interfaces\EventInterface $event
-     * @param array                                              $extraContextParams
+     * @param string                                                             $template
+     * @param \Elcodi\Component\Plugin\EventDispatcher\Interfaces\EventInterface $event
+     * @param array                                                              $extraContextParams
      */
     protected function appendTemplate(
         $template,
-        \Elcodi\Component\Plugin\Interfaces\EventInterface $event,
+        \Elcodi\Component\Plugin\EventDispatcher\Interfaces\EventInterface $event,
         array $extraContextParams = []
     ) {
         $event->setContent(

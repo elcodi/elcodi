@@ -15,11 +15,10 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Plugin\Adapter\EventDispatcher;
+namespace Elcodi\Component\Plugin\EventDispatcher;
 
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-
-use Elcodi\Component\Plugin\Interfaces\HookSystemInterface;
+use Elcodi\Component\Core\EventDispatcher\Abstracts\AbstractEventDispatcher;
+use Elcodi\Component\Plugin\EventDispatcher\Interfaces\HookSystemEventDispatcherInterface;
 
 /**
  * Class HookSystemAdapter
@@ -28,25 +27,8 @@ use Elcodi\Component\Plugin\Interfaces\HookSystemInterface;
  *
  * @author Berny Cantos <be@rny.cc>
  */
-class HookSystemAdapter implements HookSystemInterface
+class HookSystemEventDispatcher extends AbstractEventDispatcher implements HookSystemEventDispatcherInterface
 {
-    /**
-     * @var EventDispatcherInterface
-     *
-     * EventDispatcher which will dispatch the events
-     */
-    protected $eventDispatcher;
-
-    /**
-     * Construct
-     *
-     * @param EventDispatcherInterface $eventDispatcher
-     */
-    public function __construct(EventDispatcherInterface $eventDispatcher)
-    {
-        $this->eventDispatcher = $eventDispatcher;
-    }
-
     /**
      * Start listening on a specified hook.
      *

@@ -13,7 +13,7 @@ services:
         arguments:
             - @elcodi.services.entity_translation_provider
             - @elcodi.repository.entity_translation
-            - %elcodi.core.entity_translator.cache_prefix%
+            - %elcodi.entity_translator_cache_prefix%
         calls:
             - [setCache, [@doctrine_cache.providers.elcodi_translations]]
         tags:
@@ -30,8 +30,8 @@ services:
         arguments:
             - @elcodi.entity_translation_provider
             - @elcodi.factory.entity_translator
-            - %elcodi.core.entity_translator.configuration%
-            - %elcodi.core.entity_translator.language_fallback%
+            - %elcodi.entity_translator_configuration%
+            - %elcodi.entity_translator_language_fallback%
 
     elcodi.entity_translator:
         class: Elcodi\Component\EntityTranslator\Services\EntityTranslator

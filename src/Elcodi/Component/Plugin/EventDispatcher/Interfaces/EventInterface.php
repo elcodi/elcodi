@@ -15,7 +15,7 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Plugin\Interfaces;
+namespace Elcodi\Component\Plugin\EventDispatcher\Interfaces;
 
 /**
  * Interface Event

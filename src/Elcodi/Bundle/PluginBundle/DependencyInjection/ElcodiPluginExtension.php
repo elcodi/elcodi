@@ -18,7 +18,6 @@
 namespace Elcodi\Bundle\PluginBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 
@@ -58,6 +57,7 @@ class ElcodiPluginExtension extends AbstractExtension
         return [
             'services',
             'commands',
+            'eventDispatchers',
             'twig',
         ];
     }
@@ -77,19 +77,6 @@ class ElcodiPluginExtension extends AbstractExtension
     protected function getConfigurationInstance()
     {
         return new Configuration($this->getAlias());
-    }
-
-    /**
-     * Hook after load the full container.
-     *
-     * @param array            $config
-     * @param ContainerBuilder $container
-     */
-    public function postLoad(array $config, ContainerBuilder $container)
-    {
-        parent::postLoad($config, $container);
-
-        $container->setAlias('elcodi.hook_system', $config['hook_system']);
     }
 
     /**

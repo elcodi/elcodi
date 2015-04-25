@@ -107,7 +107,7 @@ elcodi_page:
         # Route path for the loader
         route_path: '/{path}'
         # Which controller:action will process the request
-        controller: 'elcodi.core.page.controller.page:renderAction'
+        controller: 'elcodi.controller.page:renderAction'
 ```
 
 > You can overwrite them in your own configuration file using the same keys.

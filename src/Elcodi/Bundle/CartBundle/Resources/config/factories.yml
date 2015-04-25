@@ -19,8 +19,8 @@ services:
     elcodi.factory.order:
         class: Elcodi\Component\Cart\Factory\OrderFactory
         arguments:
-            - @elcodi.order.payment_states_machine.manager
-            - @elcodi.order.shipping_states_machine.manager
+            - @elcodi.order_payment_states_machine_manager
+            - @elcodi.order_shipping_states_machine_manager
         calls:
             - [setEntityNamespace, ["%elcodi.entity.order.class%"]]
             - [setDateTimeFactory, ["@elcodi.factory.datetime"]]
