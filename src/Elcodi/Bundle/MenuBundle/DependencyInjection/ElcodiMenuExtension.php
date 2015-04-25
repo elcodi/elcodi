@@ -108,6 +108,7 @@ class ElcodiMenuExtension extends AbstractExtension implements EntitiesOverridab
             'objectManagers',
             'directors',
             'eventListeners',
+            'eventDispatchers',
         ];
     }
 

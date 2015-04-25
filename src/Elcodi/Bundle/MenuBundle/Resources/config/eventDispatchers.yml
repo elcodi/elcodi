@@ -1,0 +1,8 @@
+services:
+
+    #
+    # Event Dispatchers
+    #
+    elcodi.event_dispatcher.menu:
+        class: Elcodi\Component\Menu\EventDispatcher\MenuEventDispatcher
+        parent: elcodi.event_dispatcher.abstract

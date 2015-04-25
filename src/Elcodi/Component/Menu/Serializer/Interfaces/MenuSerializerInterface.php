@@ -34,7 +34,7 @@ interface MenuSerializerInterface
      *
      * @return mixed Serialized node
      */
-    public function serialize(NodeInterface $node);
+    public function serializeNode(NodeInterface $node);
 
     /**
      * Given a node, serialize every child

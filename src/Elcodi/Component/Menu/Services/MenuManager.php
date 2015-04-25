@@ -18,12 +18,11 @@
 namespace Elcodi\Component\Menu\Services;
 
 use Exception;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 use Elcodi\Component\Core\Wrapper\Abstracts\AbstractCacheWrapper;
-use Elcodi\Component\Menu\ElcodiMenuEvents;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\MenuInterface;
-use Elcodi\Component\Menu\Event\MenuEvent;
+use Elcodi\Component\Menu\EventDispatcher\Interfaces\MenuEventDispatcherInterface;
+use Elcodi\Component\Menu\Processor\MenuEventProcessor;
 use Elcodi\Component\Menu\Repository\MenuRepository;
 use Elcodi\Component\Menu\Serializer\Interfaces\MenuSerializerInterface;
 
@@ -33,11 +32,11 @@ use Elcodi\Component\Menu\Serializer\Interfaces\MenuSerializerInterface;
 class MenuManager extends AbstractCacheWrapper
 {
     /**
-     * @var Array
+     * @var MenuEventDispatcherInterface
      *
-     * menus
+     * Menu Event dispatcher
      */
-    protected $menus = [];
+    protected $menuEventDispatcher;
 
     /**
      * @var MenuRepository
@@ -49,9 +48,16 @@ class MenuManager extends AbstractCacheWrapper
     /**
      * @var MenuSerializerInterface
      *
-     * Menu serializer
+     * Menu Serializer
      */
-    protected $serializer;
+    protected $menuSerializer;
+
+    /**
+     * @var MenuEventProcessor
+     *
+     * Menu Event Processor
+     */
+    protected $menuEventProcessor;
 
     /**
      * @var string
@@ -61,41 +67,34 @@ class MenuManager extends AbstractCacheWrapper
     protected $key;
 
     /**
-     * @var EventDispatcherInterface
+     * @var Array
      *
-     * Event dispatcher
+     * menus
      */
-    protected $dispatcher;
+    protected $menus;
 
     /**
      * Construct method
      *
-     * @param MenuRepository          $menuRepository Menu repository
-     * @param MenuSerializerInterface $serializer     Menu serializer
-     * @param string                  $key            Key
+     * @param MenuEventDispatcherInterface $menuEventDispatcher Menu Event Dispatcher
+     * @param MenuEventProcessor           $menuEventProcessor  Menu Event Processor
+     * @param MenuSerializerInterface      $menuSerializer      Menu Serializer
+     * @param MenuRepository               $menuRepository      Menu Repository
+     * @param string                       $key                 Key
      */
     public function __construct(
+        MenuEventDispatcherInterface $menuEventDispatcher,
+        MenuEventProcessor $menuEventProcessor,
+        MenuSerializerInterface $menuSerializer,
         MenuRepository $menuRepository,
-        MenuSerializerInterface $serializer,
         $key
     ) {
+        $this->menuEventDispatcher = $menuEventDispatcher;
+        $this->menuEventProcessor = $menuEventProcessor;
+        $this->menuSerializer = $menuSerializer;
         $this->menuRepository = $menuRepository;
-        $this->serializer = $serializer;
         $this->key = $key;
-    }
-
-    /**
-     * Set the EventDispatcher
-     *
-     * @param EventDispatcherInterface $dispatcher
-     *
-     * @return $this Self object
-     */
-    public function setEventDispatcher(EventDispatcherInterface $dispatcher)
-    {
-        $this->dispatcher = $dispatcher;
-
-        return $this;
+        $this->menus = [];
     }
 
     /**
@@ -115,31 +114,39 @@ class MenuManager extends AbstractCacheWrapper
     {
         $key = $this->getCacheKey($menuCode);
 
-        $menu = $this->loadFromMemory($key);
-        if (!$menu) {
-            $menu = $this->loadFromCache($key);
-            if (!$menu) {
-                $menu = $this->loadFromRepository($menuCode);
+        $processedMenu = $this->loadFromMemory($key);
+        if (!$processedMenu) {
 
-                $menu = $this->dispatchMenuEvent(
-                    ElcodiMenuEvents::POST_COMPILATION,
-                    $menuCode,
-                    $menu
+            /**
+             * Menu generation and caching block
+             */
+            $processedMenu = $this->loadFromCache($key);
+            if (!$processedMenu) {
+                $processedMenu = $this->buildMenuFromRepository($menuCode);
+                $this->saveToCache(
+                    $key,
+                    $processedMenu
                 );
-
-                $this->saveToCache($key, $menu);
             }
 
-            $this->saveToMemory($key, $menu);
+            $this->saveToMemory(
+                $key,
+                $processedMenu
+            );
         }
 
-        $menu = $this->dispatchMenuEvent(
-            ElcodiMenuEvents::POST_LOAD,
-            $menuCode,
-            $menu
-        );
+        $event = $this
+            ->menuEventDispatcher
+            ->dispatchPostMenuLoad(
+                $menuCode,
+                $processedMenu
+            );
 
-        return $menu;
+        $processedLoadedMenu = $this
+            ->menuEventProcessor
+            ->getProcessedMenu($event);
+
+        return $processedLoadedMenu;
     }
 
     /**
@@ -201,33 +208,58 @@ class MenuManager extends AbstractCacheWrapper
     }
 
     /**
-     * Try to get menu configuration from cache
+     * Build menu
      *
-     * @param string $code Code to find the menu
+     * @param string $menuCode Menu code
      *
      * @return array Menu configuration
      *
      * @throws Exception
+     */
+    protected function buildMenuFromRepository($menuCode)
+    {
+        $menuNodesSerialized = $this->loadFromRepository($menuCode);
+
+        $event = $this
+            ->menuEventDispatcher
+            ->dispatchPostMenuCompilation(
+                $menuCode,
+                $menuNodesSerialized
+            );
+
+        return $this
+            ->menuEventProcessor
+            ->getProcessedMenu($event);
+    }
+
+    /**
+     * Try to get menu configuration from cache
+     *
+     * @param string $code Code to find the menu
+     *
+     * @return array Menu nodes serialized
+     *
+     * @throws Exception Menu not found
      */
     protected function loadFromRepository($code)
     {
         $menu = $this
             ->menuRepository
             ->findOneBy([
-                'code' => $code,
+                'code'    => $code,
                 'enabled' => true,
             ]);
 
-        if ($menu instanceof MenuInterface) {
-            return $this
-                ->serializer
-                ->serializeSubnodes($menu);
+        if (!($menu instanceof MenuInterface)) {
+            throw new Exception(sprintf(
+                'Menu "%s" not found',
+                $code
+            ));
         }
 
-        throw new Exception(sprintf(
-            'Menu "%s" not found',
-            $code
-        ));
+        return $this
+            ->menuSerializer
+            ->serializeSubnodes($menu);
     }
 
     /**
@@ -240,31 +272,5 @@ class MenuManager extends AbstractCacheWrapper
     protected function getCacheKey($menuCode)
     {
         return "{$this->key}-{$menuCode}";
-    }
-
-    /**
-     * Dispatch a menu event and capture the
-     *
-     * @param string $eventName Name of the event
-     * @param string $menuCode  Code of the menu
-     * @param array  $menu      Menu settings
-     *
-     * @return array
-     */
-    protected function dispatchMenuEvent($eventName, $menuCode, array $menu)
-    {
-        if (null === $this->dispatcher) {
-            return $menu;
-        }
-
-        $event = new MenuEvent($menuCode, $menu, $this->serializer);
-        $this
-            ->dispatcher
-            ->dispatch(
-                $eventName,
-                $event
-            );
-
-        return $event->getResult();
     }
 }

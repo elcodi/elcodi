@@ -35,7 +35,7 @@ class MenuArraySerializer implements MenuSerializerInterface
      *
      * @return mixed Serialized node
      */
-    public function serialize(NodeInterface $node)
+    public function serializeNode(NodeInterface $node)
     {
         return [
             'id'         => $node->getId(),
@@ -60,7 +60,7 @@ class MenuArraySerializer implements MenuSerializerInterface
         $subnodes = [];
         foreach ($node->getSubnodes() as $node) {
             $subnodeId = $node->getId();
-            $subnodes[$subnodeId] = $this->serialize($node);
+            $subnodes[$subnodeId] = $this->serializeNode($node);
         }
 
         return $subnodes;

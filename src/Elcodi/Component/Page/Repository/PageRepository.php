@@ -46,6 +46,21 @@ class PageRepository extends EntityRepository
     }
 
     /**
+     * Find one Page given its id
+     *
+     * @param string $id Page id
+     *
+     * @return PageInterface|null Page
+     */
+    public function findOneById($id)
+    {
+        return $this->findOneBy([
+            'id'    => $id,
+            'enabled' => true,
+        ]);
+    }
+
+    /**
      * Find pages paginated
      *
      * @param string  $type          Type

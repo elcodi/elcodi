@@ -4,12 +4,12 @@ services:
     # Event Listeners
     #
     elcodi.event_listener.remove_disabled_menus:
-        class: Elcodi\Component\Menu\Listener\RemoveDisabledMenusListener
+        class: Elcodi\Component\Menu\EventListener\RemoveDisabledMenusEventListener
         tags:
             - { name: kernel.event_listener, event: menu.post_compilation }
 
     elcodi.event_listener.activate_menu_from_request:
-        class: Elcodi\Component\Menu\Listener\ActivateFromRequestListener
+        class: Elcodi\Component\Menu\EventListener\ActivateFromRequestEventListener
         arguments:
             - @request_stack
         tags:

@@ -79,12 +79,44 @@ class PageController
      *
      * @throws NotFoundHttpException Page not found
      */
-    public function renderAction($path = '')
+    public function renderByPathAction($path = '')
     {
         $page = $this
             ->repository
             ->findOneByPath($path);
 
+        return $this->createResponseFromPage($page);
+    }
+
+    /**
+     * Renders a page given its id, language and path
+     *
+     * @param string $id Id
+     *
+     * @return Response
+     *
+     * @throws NotFoundHttpException Page not found
+     */
+    public function renderByIdAction($id)
+    {
+        $page = $this
+            ->repository
+            ->findOneById($id);
+
+        return $this->createResponseFromPage($page);
+    }
+
+    /**
+     * Render a page given the found instance
+     *
+     * @param PageInterface|null $page Found page
+     *
+     * @return Response Page rendered
+     *
+     * @throws NotFoundHttpException Page not found
+     */
+    protected function createResponseFromPage(PageInterface $page = null)
+    {
         if (!($page instanceof PageInterface)) {
             throw new NotFoundHttpException('Page not found');
         }
@@ -93,7 +125,7 @@ class PageController
             ->requestStack
             ->getCurrentRequest();
 
-        $response = $this->createResponse($page);
+        $response = $this->createResponseInstance($page);
 
         if (!$response->isNotModified($request)) {
             $response->setContent($this->renderPage($page));
@@ -104,11 +136,13 @@ class PageController
     }
 
     /**
-     * @param PageInterface $page
+     * Creates response instance
+     *
+     * @param PageInterface $page Page
      *
      * @return Response
      */
-    protected function createResponse(PageInterface $page)
+    protected function createResponseInstance(PageInterface $page)
     {
         $response = new Response();
 
@@ -124,7 +158,7 @@ class PageController
      *
      * @param PageInterface $page
      *
-     * @return string
+     * @return string Page content
      */
     protected function renderPage(PageInterface $page)
     {
