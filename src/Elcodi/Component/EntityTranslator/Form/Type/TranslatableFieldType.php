@@ -72,7 +72,7 @@ class TranslatableFieldType extends AbstractType
     protected $fieldConfiguration;
 
     /**
-     * @var Collection
+     * @var array
      *
      * Locales
      */

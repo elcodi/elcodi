@@ -54,7 +54,7 @@ interface LocationProviderInterface
      *
      * @param string $id The location id.
      *
-     * @return LocationData
+     * @return LocationData[]
      */
     public function getLocation($id);
 
@@ -75,7 +75,7 @@ interface LocationProviderInterface
      * @param string $id  The location Id
      * @param array  $ids The location Ids
      *
-     * @return boolean
+     * @return LocationData[] Location info
      */
     public function in($id, array $ids);
 }

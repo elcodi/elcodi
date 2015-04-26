@@ -110,7 +110,7 @@ class LocationApiProvider implements LocationProviderInterface
      *
      * @param string $id The location id.
      *
-     * @return LocationData
+     * @return LocationData[] Location info
      */
     public function getLocation($id)
     {
@@ -127,7 +127,7 @@ class LocationApiProvider implements LocationProviderInterface
      *
      * @param string $id The location id.
      *
-     * @return LocationData
+     * @return LocationData[] Location info
      */
     public function getHierarchy($id)
     {
@@ -145,7 +145,7 @@ class LocationApiProvider implements LocationProviderInterface
      * @param string $id  The location Id
      * @param array  $ids The location Ids
      *
-     * @return boolean
+     * @return LocationData[] Location info
      */
     public function in($id, array $ids)
     {

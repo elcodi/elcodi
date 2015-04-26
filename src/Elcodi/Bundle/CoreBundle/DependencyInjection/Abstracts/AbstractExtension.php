@@ -137,7 +137,7 @@ abstract class AbstractExtension
      */
     public function getXsdValidationBasePath()
     {
-        return false;
+        return '';
     }
 
     /**

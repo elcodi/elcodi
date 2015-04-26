@@ -65,7 +65,7 @@ class Cart implements CartInterface
     protected $ordered;
 
     /**
-     * @var CartLineInterface[]|Collection
+     * @var Collection
      *
      * Lines
      */
@@ -258,7 +258,7 @@ class Cart implements CartInterface
     /**
      * Get lines
      *
-     * @return Collection of CartLines
+     * @return Collection CartLine collection
      */
     public function getCartLines()
     {

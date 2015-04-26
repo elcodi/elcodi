@@ -59,7 +59,7 @@ class ManagerProvider
      *
      * @param string $entityNamespace Entity Namespace
      *
-     * @return ObjectManager Object manager
+     * @return ObjectManager|null Object manager
      */
     public function getManagerByEntityNamespace($entityNamespace)
     {
@@ -77,7 +77,7 @@ class ManagerProvider
      *
      * @param string $entityParameter Entity Parameter
      *
-     * @return ObjectManager Object manager
+     * @return ObjectManager|null Object manager
      */
     public function getManagerByEntityParameter($entityParameter)
     {

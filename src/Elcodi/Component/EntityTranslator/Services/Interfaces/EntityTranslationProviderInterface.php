@@ -48,7 +48,7 @@ interface EntityTranslationProviderInterface
      * @param string $translationValue Translated value
      * @param string $locale           Locale
      *
-     * @return string Value fetched
+     * @return $this Self object
      */
     public function setTranslation(
         $entityType,
