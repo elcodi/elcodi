@@ -106,29 +106,20 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.image.class" => $config['mapping']['image']['class'],
-            "elcodi.entity.image.mapping_file" => $config['mapping']['image']['mapping_file'],
-            "elcodi.entity.image.manager" => $config['mapping']['image']['manager'],
-            "elcodi.entity.image.enabled" => $config['mapping']['image']['enabled'],
+            "elcodi.entity.image.class"                     => $config['mapping']['image']['class'],
+            "elcodi.entity.image.mapping_file"              => $config['mapping']['image']['mapping_file'],
+            "elcodi.entity.image.manager"                   => $config['mapping']['image']['manager'],
+            "elcodi.entity.image.enabled"                   => $config['mapping']['image']['enabled'],
 
-            'elcodi.core.media.filesystem'                             => $config['filesystem'],
+            'elcodi.media_filesystem_service'               => $config['filesystem'],
 
-            'elcodi.core.media.generated_route_host'                   => $config['images']['generated_route_host'],
-
-            'elcodi.core.media.image_view_controller_route_name'       => $config['images']['view']['controller_route_name'],
-            'elcodi.core.media.image_view_controller_route'            => $config['images']['view']['controller_route'],
-            'elcodi.core.media.image_view_max_age'                     => $config['images']['view']['max_age'],
-            'elcodi.core.media.image_view_shared_max_age'              => $config['images']['view']['shared_max_age'],
-
-            'elcodi.core.media.image_upload_field_name'                => $config['images']['upload']['field_name'],
-            'elcodi.core.media.image_upload_controller_route_name'     => $config['images']['upload']['controller_route_name'],
-            'elcodi.core.media.image_upload_controller_route'          => $config['images']['upload']['controller_route'],
-
-            'elcodi.core.media.image_resize_engine'                    => $config['images']['resize']['engine'],
-            'elcodi.core.media.image_resize_controller_route_name'     => $config['images']['resize']['controller_route_name'],
-            'elcodi.core.media.image_resize_controller_route'          => $config['images']['resize']['controller_route'],
-            'elcodi.core.media.image_resize_converter_bin_path'        => $config['images']['resize']['converter_bin_path'],
-            'elcodi.core.media.image_resize_converter_default_profile' => $config['images']['resize']['converter_default_profile'],
+            'elcodi.image_generated_route_host'             => $config['images']['generated_route_host'],
+            'elcodi.image_view_max_age'                     => $config['images']['view']['max_age'],
+            'elcodi.image_view_shared_max_age'              => $config['images']['view']['shared_max_age'],
+            'elcodi.image_upload_field_name'                => $config['images']['upload']['field_name'],
+            'elcodi.image_resize_engine'                    => $config['images']['resize']['engine'],
+            'elcodi.image_resize_converter_bin_path'        => $config['images']['resize']['converter_bin_path'],
+            'elcodi.image_resize_converter_default_profile' => $config['images']['resize']['converter_default_profile'],
         ];
     }
 
@@ -143,13 +134,13 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
         parent::postLoad($config, $container);
 
         $container->setAlias(
-            'elcodi.core.media.resize.default',
-            'elcodi.core.media.resize.' . $container->getParameter('elcodi.core.media.image_resize_engine')
+            'elcodi.media_resize_engine',
+            'elcodi.media_resize.' . $container->getParameter('elcodi.image_resize_engine')
         );
 
         $container->setAlias(
-            'elcodi.core.media.filesystem.default',
-            $container->getParameter('elcodi.core.media.filesystem')
+            'elcodi.media_filesystem',
+            $container->getParameter('elcodi.media_filesystem_service')
         );
     }
 

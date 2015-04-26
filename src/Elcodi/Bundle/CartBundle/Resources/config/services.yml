@@ -15,8 +15,8 @@ services:
         class: Elcodi\Component\Cart\Services\CartSessionManager
         arguments:
             - @session
-            - %elcodi.core.cart.cart_session_field_name%
-            - %elcodi.core.cart.cart_save_in_session%
+            - %elcodi.cart_session_field_name%
+            - %elcodi.cart_save_in_session%
 
     #
     # Wrappers

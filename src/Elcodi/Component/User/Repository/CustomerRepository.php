@@ -56,7 +56,7 @@ class CustomerRepository extends EntityRepository implements UserEmaileableInter
             ->select(
                 ['c', 'a']
             )
-            ->join('c.addresses', 'a')
+            ->innerJoin('c.addresses', 'a')
             ->where('c.id = :customerId')
             ->andWhere('a.id = :addressId')
             ->setParameter('customerId', $customerId)
@@ -64,6 +64,7 @@ class CustomerRepository extends EntityRepository implements UserEmaileableInter
             ->setMaxResults(1)
             ->getQuery()
             ->getResult();
+
         if (!empty($response)) {
             /**
              * @var CustomerInterface $customer

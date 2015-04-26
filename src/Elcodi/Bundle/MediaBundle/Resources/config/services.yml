@@ -8,15 +8,15 @@ services:
         arguments:
             - @elcodi.factory.image
             - @elcodi.manager.media_file
-            - @elcodi.core.media.resize.default
+            - @elcodi.media_resize_engine
 
     elcodi.manager.media_file:
         class: Elcodi\Component\Media\Services\FileManager
         arguments:
-            - @elcodi.core.media.filesystem.default
+            - @elcodi.media_filesystem
             - @elcodi.transformer.media_file_identifier
 
-    elcodi.image_uploader:
+    elcodi.uploader.image:
         class: Elcodi\Component\Media\Services\ImageUploader
         arguments:
             - @elcodi.object_manager.image
@@ -27,47 +27,8 @@ services:
     #
     # Resize
     #
-    elcodi.core.media.resize.imagemagick:
+    elcodi.media_resize.imagemagick:
         class: Elcodi\Component\Media\Adapter\Resizer\ImageMagickResizeAdapter
         arguments:
-            - %elcodi.core.media.image_resize_converter_bin_path%
-            - %elcodi.core.media.image_resize_converter_default_profile%
-
-    #
-    # Routes
-    #
-    elcodi.router.media_image_resize:
-        class: Elcodi\Component\Core\Router\SingleRouterLoader
-        arguments:
-            - %elcodi.core.media.image_resize_controller_route_name%
-            - %elcodi.core.media.image_resize_controller_route%
-            - 'elcodi.controller.media_image_resize:resizeAction'
-            - 'elcodi_image_resize'
-            - []
-        tags:
-            - { name: routing.loader }
-
-    elcodi.router.media_image_view:
-        class: Elcodi\Component\Core\Router\SingleRouterLoader
-        arguments:
-            - %elcodi.core.media.image_view_controller_route_name%
-            - %elcodi.core.media.image_view_controller_route%
-            - 'elcodi.controller.media_image_resize:resizeAction'
-            - 'elcodi_image_view'
-            -
-                height: 0
-                width: 0
-                type: 0 # ElcodiMediaImageResizeTypes::NO_RESIZE
-        tags:
-            - { name: routing.loader }
-
-    elcodi.router.media_image_upload:
-        class: Elcodi\Component\Core\Router\SingleRouterLoader
-        arguments:
-            - %elcodi.core.media.image_upload_controller_route_name%
-            - %elcodi.core.media.image_upload_controller_route%
-            - 'elcodi.controller.media_image_upload:uploadAction'
-            - 'elcodi_image_upload'
-            - []
-        tags:
-            - { name: routing.loader }
+            - %elcodi.image_resize_converter_bin_path%
+            - %elcodi.image_resize_converter_default_profile%

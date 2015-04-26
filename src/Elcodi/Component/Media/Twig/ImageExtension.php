@@ -183,7 +183,6 @@ class ImageExtension extends Twig_Extension
     protected function prepareRouterContext(UrlGeneratorInterface $router)
     {
         if ($this->generatedRouteHost) {
-
             $this->router->setContext($this->modifiedContext);
 
             /*

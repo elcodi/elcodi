@@ -83,10 +83,7 @@ class ElcodiMetricExtension extends AbstractExtension implements EntitiesOverrid
             "elcodi.entity.metric_entry.manager"      => $config['mapping']['metric_entry']['manager'],
             "elcodi.entity.metric_entry.enabled"      => $config['mapping']['metric_entry']['enabled'],
 
-            'elcodi.core.metric.input_controller_route_name'      => $config['input']['controller_route_name'],
-            'elcodi.core.metric.input_controller_route'           => $config['input']['controller_route'],
-
-            'elcodi.core.metric.bucket_client'                    => $config['bucket']['client'],
+            'elcodi.core.metric.bucket_client'        => $config['bucket']['client'],
         ];
     }
 

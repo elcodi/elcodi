@@ -21,11 +21,11 @@ use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
 use Elcodi\Component\Page\Renderer\Interfaces\PageRendererInterface;
 
 /**
- * Class ChainPageRenderer
+ * Class PageRendererChain
  *
  * @author Berny Cantos <be@rny.cc>
  */
-class ChainPageRenderer implements PageRendererInterface
+class PageRendererChain implements PageRendererInterface
 {
     /**
      * @var PageRendererInterface[]
@@ -35,7 +35,9 @@ class ChainPageRenderer implements PageRendererInterface
     protected $renderers;
 
     /**
-     * @param PageRendererInterface[] $renderers
+     * Construct
+     *
+     * @param PageRendererInterface[] $renderers Renderers
      */
     public function __construct(array $renderers = [])
     {

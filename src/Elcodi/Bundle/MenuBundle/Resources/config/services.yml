@@ -10,7 +10,7 @@ services:
             - @elcodi.processor.menu_event
             - @elcodi.serializer.menu
             - @elcodi.repository.menu
-            - %elcodi.core.menu.cache_key%
+            - %elcodi.menu_cache_key%
         calls:
             - [setCache, [@doctrine_cache.providers.elcodi_menus]]
             - [setEncoder, [@elcodi.json_encoder]]

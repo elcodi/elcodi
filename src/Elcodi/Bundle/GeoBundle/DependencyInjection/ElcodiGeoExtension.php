@@ -88,7 +88,11 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
             "elcodi.entity.location.manager"      => $config['mapping']['location']['manager'],
             "elcodi.entity.location.enabled"      => $config['mapping']['location']['enabled'],
 
-            "elcodi.route.location_api_prefix"    => $config['location_api_prefix'],
+            "elcodi.location_provider"            => $config['location_provider'],
+            "elcodi.location_populator"           => $config['location_populator'],
+
+            "elcodi.location_api_host"            => $config['location_api_host'],
+            "elcodi.location_api_prefix"          => $config['location_api_prefix'],
         ];
     }
 

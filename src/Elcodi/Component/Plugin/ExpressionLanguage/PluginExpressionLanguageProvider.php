@@ -33,12 +33,12 @@ class PluginExpressionLanguageProvider implements ExpressionFunctionProviderInte
         return [
             new ExpressionFunction('elcodi_plugin', function ($pluginNamespace) {
                 return sprintf(
-                    '$this->get(\'elcodi.plugin_manager\')->getPlugin(%s)',
+                    '$this->get(\'elcodi.manager.plugin\')->getPlugin(%s)',
                     $pluginNamespace
                 );
             }, function (array $variables, $pluginNamespace) {
                 return $variables['container']
-                    ->get('elcodi.plugin_manager')
+                    ->get('elcodi.manager.plugin')
                     ->getPlugin($pluginNamespace);
             }),
         ];

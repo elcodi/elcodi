@@ -46,18 +46,6 @@ class Configuration extends AbstractConfiguration
                     ->end()
                 ->end()
 
-                ->arrayNode('input')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->scalarNode('controller_route_name')
-                            ->defaultValue('elcodi_metric_add')
-                        ->end()
-                        ->scalarNode('controller_route')
-                            ->defaultValue('/_m/{token}/{event}.png')
-                        ->end()
-                    ->end()
-                ->end()
-
                 ->arrayNode('bucket')
                     ->addDefaultsIfNotSet()
                     ->children()

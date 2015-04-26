@@ -1,17 +1,24 @@
-elcodi_image_resize_routes:
-    resource: .
-    type: elcodi_image_resize
-    methods: [GET]
-    options: { i18n: false }
+#
+# Routing
+#
 
-elcodi_image_view_routes:
-    resource: .
-    type: elcodi_image_view
-    methods: [GET]
-    options: { i18n: false }
+elcodi.route.image_resize:
+    path: /images/{id}/resize/{height}/{width}/{type}.{_format}
+    methods: GET
+    defaults:
+        _controller: elcodi.controller.image_resize:resizeAction
 
-elcodi_image_upload_routes:
-    resource: .
-    type: elcodi_image_upload
-    methods: [POST]
-    options: { i18n: false }
+elcodi.route.image_view:
+    path: /images/{id}/render.{_format}
+    methods: GET
+    defaults:
+        _controller: elcodi.controller.image_resize:resizeAction
+        height: 0
+        width: 0
+        type: 0
+
+elcodi.route.image_upload:
+    path: /images/upload
+    methods: POST
+    defaults:
+        _controller: elcodi.controller.image_upload:uploadAction

@@ -82,7 +82,7 @@ class ElcodiConfigurationExtension extends AbstractExtension implements Entities
             "elcodi.entity.configuration.manager" => $config['mapping']['configuration']['manager'],
             "elcodi.entity.configuration.enabled" => $config['mapping']['configuration']['enabled'],
 
-            'elcodi.core.configuration.elements' => $config['elements'],
+            'elcodi.configuration_elements' => $config['elements'],
         ];
     }
 

@@ -18,6 +18,7 @@
 namespace Elcodi\Bundle\MediaBundle\Tests\Functional\Controller;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Routing\RouteCollection;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
@@ -33,7 +34,7 @@ class ImageResizeControllerTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.controller.media_image_resize'];
+        return ['elcodi.controller.image_resize'];
     }
 
     /**
@@ -51,7 +52,13 @@ class ImageResizeControllerTest extends WebTestCase
      */
     public function testResizeAction()
     {
+        /**
+         * @var RouteCollection $routeCollection
+         */
         $client = $this->createClient();
+        $routeCollection = $this
+            ->get('router')
+            ->getRouteCollection();
 
         $image = new UploadedFile(
             dirname(__FILE__) . '/images/image.png',
@@ -64,14 +71,18 @@ class ImageResizeControllerTest extends WebTestCase
 
         $client->request(
             'POST',
-            $this->getParameter('elcodi.core.media.image_upload_controller_route'),
+            $routeCollection
+                ->get('elcodi.route.image_upload')
+                ->getPath(),
             [],
             ['file' => $image]
         );
 
         $client->request(
             'GET',
-            $this->getParameter('elcodi.core.media.image_view_controller_route'),
+            $routeCollection
+                ->get('elcodi.route.image_view')
+                ->getPath(),
             ['id' => 1]
         );
 
@@ -82,7 +93,9 @@ class ImageResizeControllerTest extends WebTestCase
 
         $client->request(
             'GET',
-            $this->getParameter('elcodi.core.media.image_resize_controller_route'),
+            $routeCollection
+                ->get('elcodi.route.image_resize')
+                ->getPath(),
             ['id' => 1, 'height' => 30, 'width' => 30, 'type' => 2]
         );
 

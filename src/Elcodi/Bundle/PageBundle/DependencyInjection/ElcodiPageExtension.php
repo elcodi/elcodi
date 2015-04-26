@@ -81,18 +81,12 @@ class ElcodiPageExtension extends AbstractExtension implements EntitiesOverridab
     public function getConfigFiles(array $config)
     {
         return [
-            [
-                'controllers',
-                $config['routing']['enabled'],
-            ],
+            'controllers',
             'factories',
-            [
-                'loaders',
-                $config['routing']['enabled'],
-            ],
             'objectManagers',
             'renderers',
             'repositories',
+            'transformers',
             'directors',
         ];
     }
@@ -117,10 +111,6 @@ class ElcodiPageExtension extends AbstractExtension implements EntitiesOverridab
             "elcodi.entity.page.mapping_file" => $config['mapping']['page']['mapping_file'],
             "elcodi.entity.page.manager"      => $config['mapping']['page']['manager'],
             "elcodi.entity.page.enabled"      => $config['mapping']['page']['enabled'],
-
-            "elcodi.core.page.routing.route_name" => $config['routing']['route_name'],
-            "elcodi.core.page.routing.route_path" => $config['routing']['route_path'],
-            "elcodi.core.page.routing.controller" => $config['routing']['controller'],
         ];
     }
 
@@ -160,20 +150,13 @@ class ElcodiPageExtension extends AbstractExtension implements EntitiesOverridab
     {
         parent::postLoad($config, $container);
 
-        if ($config['routing']['enabled']) {
-            $loaderId = $config['routing']['loader'];
-            $loaderDefinition = $container->findDefinition($loaderId);
-            $loaderDefinition->addTag('routing.loader');
-            $container->setAlias('elcodi.core.page.router', $loaderId);
-        }
-
         if (!empty($config['renderers'])) {
             $rendererReferences = [];
             foreach ($config['renderers'] as $rendererId) {
                 $rendererReferences[] = new Reference($rendererId);
             }
 
-            $controllerId = 'elcodi.core.page.chain_renderer';
+            $controllerId = 'elcodi.page_renderer_chain';
             $controllerDefinition = $container->findDefinition($controllerId);
             $controllerDefinition->addArgument($rendererReferences);
         }

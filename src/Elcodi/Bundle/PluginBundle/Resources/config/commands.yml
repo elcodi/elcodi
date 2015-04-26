@@ -3,9 +3,9 @@ services:
     #
     # Commands
     #
-    elcodi.plugins_load_command:
+    elcodi.command.plugins_load:
         class: Elcodi\Component\Plugin\Command\PluginsLoadCommand
         arguments:
-            - @elcodi.plugin_manager
+            - @elcodi.manager.plugin
         tags:
             -  { name: console.command }

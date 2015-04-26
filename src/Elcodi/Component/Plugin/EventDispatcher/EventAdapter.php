@@ -15,11 +15,11 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Plugin\Adapter\EventDispatcher;
+namespace Elcodi\Component\Plugin\EventDispatcher;
 
 use Symfony\Component\EventDispatcher\Event;
 
-use Elcodi\Component\Plugin\Interfaces\EventInterface;
+use Elcodi\Component\Plugin\EventDispatcher\Interfaces\EventInterface;
 
 /**
  * Class EventAdapter

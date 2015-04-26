@@ -7,10 +7,10 @@ services:
         class: Elcodi\Component\EntityTranslator\EventListener\EntityTranslatorFormEventListener
         arguments:
             - @elcodi.entity_translation_provider
-            - %elcodi.core.entity_translator.configuration%
+            - %elcodi.entity_translator_configuration%
             - @elcodi.languages_iso_array
-            - %elcodi.core.entity_translator.language_master_locale%
-            - %elcodi.core.entity_translator.language_fallback%
+            - %elcodi.entity_translator_language_master_locale%
+            - %elcodi.entity_translator_language_fallback%
             - @elcodi.entity_translator_changes
         tags:
             - { name: kernel.event_listener, event: kernel.response, method: saveEntityTranslations }

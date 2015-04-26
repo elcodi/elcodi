@@ -1,5 +1,20 @@
-elcodi_page_render_routes:
-    resource: .
-    type: elcodi_page_render
-    methods: [GET]
-    options: { i18n: false }
+#
+# Routing
+#
+
+elcodi.route.page_render:
+    path: /page/{id}/{path}
+    methods: GET
+    defaults:
+        _controller: elcodi.controller.page:renderByIdAction
+        path: ''
+#
+# If you want to access to your pages using only the path, you can create this
+# route in your project and place it at the end od your routing definitions.
+#
+# elcodi.route.page_render_path:
+#     path: /{path}
+#     methods: GET
+#     defaults:
+#         _controller: elcodi.controller.page:renderByPathAction
+#

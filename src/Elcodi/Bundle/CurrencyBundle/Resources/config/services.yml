@@ -8,19 +8,19 @@ services:
         arguments:
             - @elcodi.repository.currency
             - @elcodi.repository.currency_exchange_rate
-            - %elcodi.core.currency.rates_provider_currency_base%
+            - %elcodi.currency_rates_provider_currency_base%
 
     elcodi.session_manager.currency:
         class: Elcodi\Component\Currency\Services\CurrencySessionManager
         arguments:
             - @session
-            - %elcodi.core.currency.session_field_name%
+            - %elcodi.currency_session_field_name%
 
     elcodi.converter.currency:
         class: Elcodi\Component\Currency\Services\CurrencyConverter
         arguments:
             - @elcodi.manager.currency
-            - %elcodi.core.currency.rates_provider_currency_base%
+            - %elcodi.currency_rates_provider_currency_base%
 
     elcodi.populator.currency_exchange_rate:
         class: Elcodi\Component\Currency\Populator\CurrencyExchangeRatesPopulator
@@ -31,7 +31,7 @@ services:
             - @elcodi.repository.currency_exchange_rate
             - @elcodi.factory.currency_exchange_rate
             - @elcodi.provider.currency_exchange_rate
-            - %elcodi.core.currency.default_currency%
+            - %elcodi.default_currency%
 
     #
     # Providers
@@ -49,4 +49,4 @@ services:
         arguments:
             - @elcodi.session_manager.currency
             - @elcodi.repository.currency
-            - %elcodi.core.currency.default_currency%
+            - %elcodi.default_currency%

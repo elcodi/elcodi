@@ -51,30 +51,9 @@ class Configuration extends AbstractConfiguration implements ConfigurationInterf
                     ->end()
                 ->end()
 
-                ->arrayNode('routing')
-                    ->addDefaultsIfNotSet()
-                    ->canBeDisabled()
-                    ->children()
-                        ->scalarNode('loader')
-                            ->defaultValue('elcodi.core.page.router.simple_loader.loader')
-                        ->end()
-
-                        ->scalarNode('route_name')
-                            ->defaultValue('elcodi_page_render_view')
-                        ->end()
-
-                        ->scalarNode('route_path')
-                            ->defaultValue('/{path}')
-                        ->end()
-
-                        ->scalarNode('controller')
-                            ->defaultValue('elcodi.core.page.controller.page:renderAction')
-                        ->end()
-                    ->end()
-                ->end()
-
                 ->arrayNode('renderers')
-                    ->prototype('scalar')->end()
+                    ->prototype('scalar')
+                    ->end()
                 ->end()
             ->end();
     }

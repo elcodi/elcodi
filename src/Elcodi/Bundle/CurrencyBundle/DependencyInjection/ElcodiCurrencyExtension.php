@@ -88,19 +88,19 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
             "elcodi.entity.currency_exchange_rate.manager"      => $config['mapping']['currency_exchange_rate']['manager'],
             "elcodi.entity.currency_exchange_rate.enabled"      => $config['mapping']['currency_exchange_rate']['enabled'],
 
-            'elcodi.core.currency.default_currency'             => $config['currency']['default_currency'],
-            'elcodi.core.currency.session_field_name'           => $config['currency']['session_field_name'],
+            'elcodi.default_currency'                           => $config['currency']['default_currency'],
+            'elcodi.currency_session_field_name'                => $config['currency']['session_field_name'],
 
-            'elcodi.core.currency.rates_provider_currency_base' => $config['rates_provider']['currency_base'],
-            'elcodi.core.currency.rates_provider_client'        => $config['rates_provider']['client'],
+            'elcodi.currency_rates_provider_currency_base'      => $config['rates_provider']['currency_base'],
+            'elcodi.currency_rates_provider_client'             => $config['rates_provider']['client'],
         ];
 
         /**
          * OpenExchangeRates
          */
         if ($config['rates_provider']['open_exchange_rates']) {
-            $result['elcodi.core.currency.rates_provider_api_id'] = $config['rates_provider']['open_exchange_rates']['api_id'];
-            $result['elcodi.core.currency.rates_provider_endpoint'] = $config['rates_provider']['open_exchange_rates']['endpoint'];
+            $result['elcodi.currency_rates_provider_api_id'] = $config['rates_provider']['open_exchange_rates']['api_id'];
+            $result['elcodi.currency_rates_provider_endpoint'] = $config['rates_provider']['open_exchange_rates']['endpoint'];
         }
 
         return $result;

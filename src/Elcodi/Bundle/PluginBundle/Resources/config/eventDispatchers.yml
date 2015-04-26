@@ -1,0 +1,8 @@
+services:
+
+    #
+    # Event Dispatchers
+    #
+    elcodi.event_dispatcher.hook_system:
+        class: Elcodi\Component\Plugin\EventDispatcher\HookSystemEventDispatcher
+        parent: elcodi.event_dispatcher.abstract

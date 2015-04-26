@@ -17,13 +17,11 @@
 
 namespace Elcodi\Component\Page\Controller;
 
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
-use Elcodi\Component\Page\Renderer\Interfaces\PageRendererInterface;
 use Elcodi\Component\Page\Repository\PageRepository;
+use Elcodi\Component\Page\Transformer\PageResponseTransformer;
 
 /**
  * Class PageController
@@ -37,137 +35,73 @@ class PageController
      *
      * Page repository
      */
-    protected $repository;
+    protected $pageRepository;
 
     /**
-     * @var RequestStack
+     * @var PageResponseTransformer
      *
-     * Request stack
+     * PageResponse Transformer
      */
-    protected $requestStack;
-
-    /**
-     * @var PageRendererInterface
-     *
-     * Page renderer
-     */
-    protected $pageRenderer;
+    protected $pageResponseTransformer;
 
     /**
      * Constructor
      *
-     * @param PageRepository        $repository   Page repository
-     * @param RequestStack          $requestStack Request stack
-     * @param PageRendererInterface $pageRenderer Content renderer
+     * @param PageRepository          $pageRepository          Page repository
+     * @param PageResponseTransformer $pageResponseTransformer PageResponse Transformer
      */
     public function __construct(
-        PageRepository $repository,
-        RequestStack $requestStack,
-        PageRendererInterface $pageRenderer = null
+        PageRepository $pageRepository,
+        PageResponseTransformer $pageResponseTransformer
     ) {
-        $this->repository = $repository;
-        $this->requestStack = $requestStack;
-        $this->pageRenderer = $pageRenderer;
+        $this->pageRepository = $pageRepository;
+        $this->pageResponseTransformer = $pageResponseTransformer;
     }
 
     /**
-     * Renders a page
+     * Renders a page given its id and path
      *
-     * @param string $path Path
+     * @param string $id   Page id
+     * @param string $path Page path
      *
-     * @return Response
+     * @return Response Generated response
+     *
+     * @throws NotFoundHttpException Page not found
+     */
+    public function renderByIdAction($id, $path = '')
+    {
+        $page = $this
+            ->pageRepository
+            ->findOneById($id);
+
+        return $this
+            ->pageResponseTransformer
+            ->createResponseFromPage(
+                $page,
+                $path
+            );
+    }
+
+    /**
+     * Renders a page given its path
+     *
+     * @param string $path Page path
+     *
+     * @return Response Generated response
      *
      * @throws NotFoundHttpException Page not found
      */
     public function renderByPathAction($path = '')
     {
         $page = $this
-            ->repository
+            ->pageRepository
             ->findOneByPath($path);
 
-        return $this->createResponseFromPage($page);
-    }
-
-    /**
-     * Renders a page given its id, language and path
-     *
-     * @param string $id Id
-     *
-     * @return Response
-     *
-     * @throws NotFoundHttpException Page not found
-     */
-    public function renderByIdAction($id)
-    {
-        $page = $this
-            ->repository
-            ->findOneById($id);
-
-        return $this->createResponseFromPage($page);
-    }
-
-    /**
-     * Render a page given the found instance
-     *
-     * @param PageInterface|null $page Found page
-     *
-     * @return Response Page rendered
-     *
-     * @throws NotFoundHttpException Page not found
-     */
-    protected function createResponseFromPage(PageInterface $page = null)
-    {
-        if (!($page instanceof PageInterface)) {
-            throw new NotFoundHttpException('Page not found');
-        }
-
-        $request = $this
-            ->requestStack
-            ->getCurrentRequest();
-
-        $response = $this->createResponseInstance($page);
-
-        if (!$response->isNotModified($request)) {
-            $response->setContent($this->renderPage($page));
-            $response->headers->set('Content-Type', 'text/html');
-        }
-
-        return $response;
-    }
-
-    /**
-     * Creates response instance
-     *
-     * @param PageInterface $page Page
-     *
-     * @return Response
-     */
-    protected function createResponseInstance(PageInterface $page)
-    {
-        $response = new Response();
-
-        $response
-            ->setLastModified($page->getUpdatedAt())
-            ->setPublic();
-
-        return $response;
-    }
-
-    /**
-     * Renders page content
-     *
-     * @param PageInterface $page
-     *
-     * @return string Page content
-     */
-    protected function renderPage(PageInterface $page)
-    {
-        if ($this->pageRenderer && $this->pageRenderer->supports($page)) {
-            return $this
-                ->pageRenderer
-                ->render($page);
-        }
-
-        return $page->getContent();
+        return $this
+            ->pageResponseTransformer
+            ->createResponseFromPage(
+                $page,
+                $path
+            );
     }
 }

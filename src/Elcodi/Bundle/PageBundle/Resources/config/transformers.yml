@@ -1,0 +1,12 @@
+services:
+
+    #
+    # Transformers
+    #
+    elcodi.transformer.page_response:
+        class: Elcodi\Component\Page\Transformer\PageResponseTransformer
+        arguments:
+            - @request_stack
+            - @router
+            - @elcodi.page_renderer_chain
+            - elcodi.route.page_render
