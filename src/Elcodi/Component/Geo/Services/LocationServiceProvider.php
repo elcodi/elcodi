@@ -62,7 +62,7 @@ class LocationServiceProvider implements LocationProviderInterface
     /**
      * Get all the root locations.
      *
-     * @return LocationData[]
+     * @return LocationData[] Location info
      */
     public function getRootLocations()
     {
@@ -78,7 +78,7 @@ class LocationServiceProvider implements LocationProviderInterface
      *
      * @param string $id The location Id.
      *
-     * @return LocationData[]
+     * @return LocationData[] Location info
      *
      * @throws EntityNotFoundException Entity not found
      */
@@ -104,7 +104,7 @@ class LocationServiceProvider implements LocationProviderInterface
      *
      * @param string $id The location Id.
      *
-     * @return LocationData[]
+     * @return LocationData[] Location info
      *
      * @throws EntityNotFoundException Entity not found
      */
@@ -130,7 +130,7 @@ class LocationServiceProvider implements LocationProviderInterface
      *
      * @param string $id The location id.
      *
-     * @return LocationData[]
+     * @return LocationData[] Location info
      *
      * @throws EntityNotFoundException Entity not found
      */
@@ -155,7 +155,7 @@ class LocationServiceProvider implements LocationProviderInterface
      *
      * @param string $id The location id.
      *
-     * @return LocationData[]
+     * @return LocationData[] Location info
      *
      * @throws EntityNotFoundException Entity not found
      */

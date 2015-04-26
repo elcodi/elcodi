@@ -19,7 +19,6 @@ namespace Elcodi\Component\CartCoupon\EventListener;
 
 use Elcodi\Component\CartCoupon\Event\CartCouponOnApplyEvent;
 use Elcodi\Component\CartCoupon\EventDispatcher\CartCouponEventDispatcher;
-use Elcodi\Component\CartCoupon\Repository\CartCouponRepository;
 
 /**
  * Class CheckCartCouponListener
@@ -27,9 +26,9 @@ use Elcodi\Component\CartCoupon\Repository\CartCouponRepository;
 class CheckCartCouponListener
 {
     /**
-     * @var CartCouponRepository
+     * @var CartCouponEventDispatcher
      *
-     * CartCoupon Repository
+     * Event dispatcher for CartCoupon
      */
     protected $cartCouponDispatcher;
 

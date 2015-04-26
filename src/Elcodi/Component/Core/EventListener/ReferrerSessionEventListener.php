@@ -42,7 +42,10 @@ class ReferrerSessionEventListener
         $referrer = parse_url($server->get("HTTP_REFERER", false), PHP_URL_HOST);
         $host = parse_url($server->get("HTTP_HOST"), PHP_URL_HOST);
 
-        if (($referrer != $host) && $referrer) {
+        if (
+            ($referrer != $host) &&
+            ($referrer !== false)
+        ) {
             $event
                 ->getRequest()
                 ->getSession()

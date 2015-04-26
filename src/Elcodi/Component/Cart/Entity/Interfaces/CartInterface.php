@@ -128,7 +128,7 @@ interface CartInterface
     /**
      * Gets lines
      *
-     * @return Collection of CartLine
+     * @return Collection CartLine collection
      */
     public function getCartLines();
 
