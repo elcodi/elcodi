@@ -19,6 +19,7 @@ namespace Elcodi\Component\Cart\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
@@ -28,7 +29,7 @@ use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 /**
  * Interface OrderInterface
  */
-interface OrderInterface extends PriceInterface, DimensionableInterface
+interface OrderInterface extends PriceInterface, DimensionableInterface, IdentifiableInterface
 {
     /**
      * Sets Customer
