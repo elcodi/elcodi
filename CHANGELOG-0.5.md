@@ -8,6 +8,36 @@ https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v0.5.2...v0.5.3
 
+### v0.5.14 (27-04-2015)
+
+* [`70853be`](https://github.com/elcodi/elcodi/commit/70853bec00a24fffdcbceb18da07908f3489bc90) Refactored Page Component and routes (mmoreram)
+* [`8d2fc24`](https://github.com/elcodi/elcodi/commit/8d2fc24e42ef2003033e613a3d144845c9f0a653) utilizing same shortcut for all fixtures (Luis Cordova)
+* [`a777121`](https://github.com/elcodi/elcodi/commit/a777121b0dbfdc162e6cc4731fb3472108283814) Fixed unwanted change of routing context hostname (Aldo Chiecchia)
+* [`23e92f3`](https://github.com/elcodi/elcodi/commit/23e92f30bf8c3915f09c7d03b2919ba27c9e0d5f) Refactored Menu engine (mmoreram)
+
+### v0.5.13 (24-04-2015)
+
+* [`2d76689`](https://github.com/elcodi/elcodi/commit/2d76689357961f85875054d881ee9e5b3a687aac) Travis uses bin/phpunit for right PHPUnit version (mmoreram)
+* [`edcd301`](https://github.com/elcodi/elcodi/commit/edcd301467b85fccfeeca5c402784c0b2bc468d3) Added all bin-dir in component composer.json (mmoreram)
+* [`c33342f`](https://github.com/elcodi/elcodi/commit/c33342f457e63bcd3c4772a07a8122d0a8fbdea8) Updated .gitignore files in all packages (mmoreram)
+* [`9ff51cf`](https://github.com/elcodi/elcodi/commit/9ff51cf635f7e4026ba681438930c204bbf2d55c) Added phpunit in require-dev block (mmoreram)
+* [`91981fc`](https://github.com/elcodi/elcodi/commit/91981fc058f6f84e3d4b26d74e76a8ebfd96ca6c) Fixed Elcodi/Core composer dependencies (mmoreram)
+* [`106e949`](https://github.com/elcodi/elcodi/commit/106e949cfb1964cc3d272a65116149d0119200d9) Added User/Password EventDispatcher (mmoreram)
+* [`6cf2469`](https://github.com/elcodi/elcodi/commit/6cf246987541d4a1c45a06520a661a854f0399c5) Added back overridable host in image url routes (Aldo Chiecchia)
+
+### v0.5.12 (23-04-2015)
+
+* [`5a3f294`](https://github.com/elcodi/elcodi/commit/5a3f2947c7fe8fbf3ad6f16ee90e03dd9e42264d) Fixed some code (mmoreram)
+* [`d7cb96d`](https://github.com/elcodi/elcodi/commit/d7cb96d65e753a6e7bd80da54666837193c2f93b) fix hhvm error with abstract mocks (Berny Cantos)
+* [`4f112d9`](https://github.com/elcodi/elcodi/commit/4f112d94560fda57f60cdc1d3721d9b1a75951b1) test menu events (Berny Cantos)
+* [`01997ae`](https://github.com/elcodi/elcodi/commit/01997ae0e4c97f7bea9f39ee94887383f3a1bf00) fix menu tests (Berny Cantos)
+* [`a7d9eb5`](https://github.com/elcodi/elcodi/commit/a7d9eb5ce204c59bcd45fce204fc6b15c2c0e595) remove disabled entries from menu (Berny Cantos)
+* [`4fae7a5`](https://github.com/elcodi/elcodi/commit/4fae7a5c9f3971118852c56331b31beb9d14da66) allow to add new nodes in MenuEvent (Berny Cantos)
+* [`7f0ed6d`](https://github.com/elcodi/elcodi/commit/7f0ed6dcc42be1c0f14c7a045bf70e4fcc47a25d) activate menu from request listener (Berny Cantos)
+* [`cd79ae0`](https://github.com/elcodi/elcodi/commit/cd79ae0f5fcfc0efb7237637670ec7a9223880b2) add events to MenuManager (Berny Cantos)
+* [`c6ef121`](https://github.com/elcodi/elcodi/commit/c6ef1216ed79da0f01a5b7a19e45c48c78e75637) filter out disabled menu nodes (Berny Cantos)
+* [`efb4e50`](https://github.com/elcodi/elcodi/commit/efb4e50d00fb08d3cb1a061296abf10312bf5029) refactor MenuManager (Berny Cantos)
+
 ### v0.5.11 (21-04-2015)
 
 * [`2b4900d`](https://github.com/elcodi/elcodi/commit/2b4900d22bc1518145e181d5cd5707468b134afe) Added last-login-date and datetime factory (mmoreram)
