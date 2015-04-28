@@ -57,4 +57,11 @@ interface ImagesContainerInterface
      * @return $this Self object
      */
     public function setImages(ArrayCollection $images);
+
+    /**
+     * Get sorted images
+     *
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getSortedImages();
 }
