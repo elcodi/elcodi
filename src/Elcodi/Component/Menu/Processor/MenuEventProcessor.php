@@ -78,9 +78,9 @@ class MenuEventProcessor
         array $nodes
     ) {
         $subnodes = [];
-        foreach ($nodes as $nodeName => $node) {
+        foreach ($nodes as $nodeName => $childNode) {
             foreach ($filters as $filter) {
-                $childNode = $filter($node);
+                $childNode = $filter($childNode);
                 if ($childNode === false) {
                     continue 2;
                 }
@@ -93,15 +93,15 @@ class MenuEventProcessor
                 }
             }
 
-            if (count($node['subnodes']) > 0) {
+            if (count($childNode['subnodes']) > 0) {
                 $childNode['subnodes'] = $this
                     ->applyFiltersToNodes(
                         $filters,
-                        $node['subnodes']
+                        $childNode['subnodes']
                     );
             }
 
-            $subnodes[$nodeName] = $node;
+            $subnodes[$nodeName] = $childNode;
         }
 
         return $subnodes;
