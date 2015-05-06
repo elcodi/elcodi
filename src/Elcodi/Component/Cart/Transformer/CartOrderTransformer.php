@@ -21,6 +21,7 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Cart\EventDispatcher\OrderEventDispatcher;
 use Elcodi\Component\Cart\Factory\OrderFactory;
+use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 
 /**
  * Class CartOrderTransformer
@@ -126,6 +127,11 @@ class CartOrderTransformer
             ->setBillingAddress($cart->getBillingAddress())
             ->setDeliveryAddress($cart->getDeliveryAddress())
             ->setOrderLines($orderLines);
+
+        $couponAmount = $cart->getCouponAmount();
+        if ($couponAmount instanceof MoneyInterface) {
+            $order->setCouponAmount($couponAmount);
+        }
 
         $this
             ->orderEventDispatcher

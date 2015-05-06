@@ -55,7 +55,7 @@ interface CartInterface
     /**
      * Gets coupon amount with tax
      *
-     * @return MoneyInterface price with tax
+     * @return MoneyInterface|null price with tax
      */
     public function getCouponAmount();
 
