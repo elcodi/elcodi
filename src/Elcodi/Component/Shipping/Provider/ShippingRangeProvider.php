@@ -251,6 +251,7 @@ class ShippingRangeProvider
         $deliveryAddress = $cart->getDeliveryAddress();
 
         return
+            $deliveryAddress === null ||
             $this
                 ->zoneMatcher
                 ->isAddressContainedInZone(
