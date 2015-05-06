@@ -17,11 +17,36 @@
 
 namespace Elcodi\Component\Product\Repository;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
+
+use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 
 /**
  * Class ProductRepository
  */
 class ProductRepository extends EntityRepository
 {
+    /**
+     * Get all the the products from the received categories
+     *
+     * @param CategoryInterface[] $categories
+     *
+     * @return ArrayCollection
+     */
+    public function getAllFromCategories(
+        array $categories
+    ) {
+        $products = $this
+            ->createQueryBuilder('p')
+            ->innerJoin('p.categories', 'c')
+            ->where('c.id IN (:categories)')
+            ->setParameters([
+                'categories' => array_values($categories),
+            ])
+            ->getQuery()
+            ->getResult();
+
+        return new ArrayCollection($products);
+    }
 }

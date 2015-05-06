@@ -98,11 +98,12 @@ class ProductCollectionProviderTest extends WebTestCase
     public function dataGetHomeProducts()
     {
         return [
-            [0, 3],
+            [0, 4],
             [1, 1],
             [2, 2],
             [3, 3],
-            [4, 3],
+            [4, 4],
+            [5, 4],
         ];
     }
 

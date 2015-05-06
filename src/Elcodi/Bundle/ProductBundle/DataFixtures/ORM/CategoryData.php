@@ -70,5 +70,21 @@ class CategoryData extends AbstractFixture
 
         $categoryDirector->save($category);
         $this->addReference('category', $category);
+
+        /**
+         * Second level category
+         *
+         * @var CategoryInterface $secondLevelCategory
+         */
+        $secondLevelCategory = $categoryDirector
+            ->create()
+            ->setName('Second level category')
+            ->setSlug('second-level-category')
+            ->setEnabled(true)
+            ->setParent($category)
+            ->setRoot(false);
+
+        $categoryDirector->save($secondLevelCategory);
+        $this->addReference('secondLevelCategory', $secondLevelCategory);
     }
 }
