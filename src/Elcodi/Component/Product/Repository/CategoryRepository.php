@@ -22,6 +22,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 
+use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
+
 /**
  * Class CategoryRepository
  */
@@ -71,12 +73,16 @@ class CategoryRepository extends EntityRepository
     /**
      * Get the children categories given a parent category.
      *
-     * @param integer $parentCategory The parent category.
+     * @param CategoryInterface $parentCategory The parent category.
+     * @param bool              $recursively    If it should check the
+     *                                          children recursively
      *
      * @return ArrayCollection The list of children categories.
      */
-    public function getChildrenCategories($parentCategory)
-    {
+    public function getChildrenCategories(
+        CategoryInterface $parentCategory,
+        $recursively = false
+    ) {
         $categories = $this
             ->createQueryBuilder('c')
             ->where('c.parent = :parent_category')
@@ -85,6 +91,17 @@ class CategoryRepository extends EntityRepository
             ])
             ->getQuery()
             ->getResult();
+
+        if ($recursively && !empty($categories)) {
+            foreach ($categories as $category) {
+                $categories = array_merge(
+                    $categories,
+                    $this
+                        ->getChildrenCategories($category, true)
+                        ->toArray()
+                );
+            }
+        }
 
         return new ArrayCollection($categories);
     }

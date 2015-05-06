@@ -17,7 +17,6 @@
 
 namespace Elcodi\Component\EntityTranslator\Form\Type;
 
-use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormConfigInterface;

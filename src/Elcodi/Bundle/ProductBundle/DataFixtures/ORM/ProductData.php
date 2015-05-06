@@ -49,6 +49,7 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
          * @var ObjectDirector        $productDirector
          */
         $category = $this->getReference('category');
+        $rootCategory = $this->getReference('rootCategory');
         $manufacturer = $this->getReference('manufacturer');
         $currency = $this->getReference('currency-dollar');
         $productDirector = $this->getDirector('product');
@@ -121,6 +122,32 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
 
         $productDirector->save($productWithVariants);
         $this->addReference('product-with-variants', $productWithVariants);
+
+        /**
+         * Root category product
+         *
+         * @var ProductInterface $rootCategoryProduct
+         */
+        $rootCategoryProduct = $productDirector
+            ->create()
+            ->setName('Root category product')
+            ->setSlug('root-category-product')
+            ->setDescription('my product description')
+            ->setShortDescription('my product short description')
+            ->addCategory($rootCategory)
+            ->setPrincipalCategory($rootCategory)
+            ->setManufacturer($manufacturer)
+            ->setStock(10)
+            ->setPrice(Money::create(500, $currency))
+            ->setSku('product-sku-code-3')
+            ->setHeight(10)
+            ->setWidth(15)
+            ->setDepth(20)
+            ->setWeight(100)
+            ->setEnabled(true);
+
+        $productDirector->save($rootCategoryProduct);
+        $this->addReference('rootCategoryProduct', $rootCategoryProduct);
     }
 
     /**
