@@ -39,7 +39,7 @@
 
         "elcodi/core-bundle": "~0.5.0",
         "elcodi/configuration-bundle": "~0.5.0",
-        "elcodi/plugin": "~0.5.0"
+        "elcodi/template": "~0.5.0"
     },
     "require-dev": {
         "elcodi/test-common-bundle": "~0.5.0",
@@ -48,7 +48,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Elcodi\\Component\\TemplateBundle\\": ""
+            "Elcodi\\Bundle\\TemplateBundle\\": ""
         }
     },
     "config": {
