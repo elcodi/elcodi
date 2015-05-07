@@ -8,6 +8,17 @@ https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v0.5.2...v0.5.3
 
+### v0.5.15 (07-05-2015)
+
+* [`a3994c6`](https://github.com/elcodi/elcodi/commit/a3994c6c00d5654488ca85987b944a5563f89033) Added Metrics Load Command (mmoreram)
+* [`d4c14a4`](https://github.com/elcodi/elcodi/commit/d4c14a4a56a2ae2ae1f3a753ae271ce470043f7b) Added respositories methods needed to get subcategories products (Roger Gros)
+* [`25ba2a4`](https://github.com/elcodi/elcodi/commit/25ba2a45a6048ed98ecb2484be84c911ae224805) Fixed template dependencies (Roger Gros)
+* [`4d8de2b`](https://github.com/elcodi/elcodi/commit/4d8de2be50bc5c1fb8254620bd9a918bec4f102e) zone is satisfied by empty address (Berny Cantos)
+* [`a06d3a6`](https://github.com/elcodi/elcodi/commit/a06d3a6925035fc194849536fe00c7301ee15091) Added coupons to orders when converting from cart (Roger Gros)
+* [`81ed406`](https://github.com/elcodi/elcodi/commit/81ed40699c184067d1e567e331a93f63c2d2e3e0) fix menu children processing after event (Berny Cantos)
+* [`7753837`](https://github.com/elcodi/elcodi/commit/7753837d93ae985e6b13f3e0dcdf47d1d72b40d0) Added getSortedImages method (Roger Gros)
+* [`36bab78`](https://github.com/elcodi/elcodi/commit/36bab781be234d9ac845d9102258c9f7634dfe48) Add identificable interface to order (Roger Gros)
+
 ### v0.5.14 (27-04-2015)
 
 * [`70853be`](https://github.com/elcodi/elcodi/commit/70853bec00a24fffdcbceb18da07908f3489bc90) Refactored Page Component and routes (mmoreram)
