@@ -1,0 +1,8 @@
+services:
+
+    #
+    # Repositories
+    #
+    elcodi.repository.metric_entry:
+        parent: elcodi.abstract_repository
+        arguments: [ %elcodi.entity.metric_entry.class% ]

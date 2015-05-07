@@ -17,7 +17,6 @@
 
 namespace Elcodi\Component\Geo\Command;
 
-use DateTime;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 use Symfony\Component\Console\Helper\DialogHelper;

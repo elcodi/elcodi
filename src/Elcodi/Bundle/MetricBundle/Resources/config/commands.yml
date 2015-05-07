@@ -1,0 +1,11 @@
+services:
+
+    #
+    # Commands
+    #
+    elcodi.command.metrics_load:
+        class: Elcodi\Component\Metric\Core\Command\MetricsLoadCommand
+        arguments:
+            - @elcodi.metric_loader
+        tags:
+            -  { name: console.command }
