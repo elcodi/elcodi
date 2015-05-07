@@ -103,6 +103,8 @@ class ElcodiMetricExtension extends AbstractExtension implements EntitiesOverrid
             'objectManagers',
             'buckets',
             'controllers',
+            'commands',
+            'repositories',
         ];
     }
 

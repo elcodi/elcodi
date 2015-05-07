@@ -104,7 +104,7 @@ class ShippingRange implements ShippingRangeInterface
      *
      * @return $this Self object
      */
-    public function setCarrier($carrier)
+    public function setCarrier(CarrierInterface $carrier)
     {
         $this->carrier = $carrier;
 
@@ -152,7 +152,7 @@ class ShippingRange implements ShippingRangeInterface
      *
      * @return $this Self object
      */
-    public function setFromZone($fromZone)
+    public function setFromZone(ZoneInterface $fromZone)
     {
         $this->fromZone = $fromZone;
 
@@ -176,7 +176,7 @@ class ShippingRange implements ShippingRangeInterface
      *
      * @return $this Self object
      */
-    public function setToZone($toZone)
+    public function setToZone(ZoneInterface $toZone)
     {
         $this->toZone = $toZone;
 

@@ -46,7 +46,7 @@ interface ShippingRangeInterface
      *
      * @return $this Self object
      */
-    public function setCarrier($carrier);
+    public function setCarrier(CarrierInterface $carrier);
 
     /**
      * Get Name
@@ -78,7 +78,7 @@ interface ShippingRangeInterface
      *
      * @return $this Self object
      */
-    public function setFromZone($fromZone);
+    public function setFromZone(ZoneInterface $fromZone);
 
     /**
      * Get ToZone
@@ -94,7 +94,7 @@ interface ShippingRangeInterface
      *
      * @return $this Self object
      */
-    public function setToZone($toZone);
+    public function setToZone(ZoneInterface $toZone);
 
     /**
      * Set price
