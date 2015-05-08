@@ -23,7 +23,7 @@ decoupled and isolated repositories and under [MIT] license.
 This component aims to provide a simple attributes system to add particularities
 to any item.
 
-You can see this bundle working on [Bamboo] to manage the product attributes
+You can see this component working on [Bamboo] to manage the product attributes
 like color or sizes.
 
 # Installation
@@ -76,7 +76,7 @@ The attribute entity maps the information for an item attribute.
 12:52:20`
 - **Updated at**: The date time when the attribute was updated. `e.g. 2015-03-05
 12:52:20`
-- **Enabled**: If the address is enabled. `e.g. 1`
+- **Enabled**: If the attribute is enabled. `e.g. 1`
 - **values**: All the available values for this attribute
 
 ## Value

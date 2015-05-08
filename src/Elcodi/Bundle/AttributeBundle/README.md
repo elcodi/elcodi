@@ -112,7 +112,7 @@ elcodi_attribute:
 
 # Dependencies
 
-The Geo bundle has dependencies with:
+The Attribute bundle has dependencies with:
 - **PHP:** Version greater or equal to 5.4
 - **doctrine/common:** A doctrine extension for php
 - **doctrine/orm:** The doctrine object-relational mapping
