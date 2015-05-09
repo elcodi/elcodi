@@ -44,9 +44,9 @@ class Zone implements ZoneInterface
     protected $code;
 
     /**
-     * @var array
+     * @var string
      *
-     * Locations ids
+     * Locations ids formatted as string
      */
     protected $locations;
 

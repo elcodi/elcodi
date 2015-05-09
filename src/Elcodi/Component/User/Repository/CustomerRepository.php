@@ -19,6 +19,7 @@ namespace Elcodi\Component\User\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
+use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 use Elcodi\Component\User\Repository\Interfaces\UserEmaileableInterface;
 
@@ -32,13 +33,14 @@ class CustomerRepository extends EntityRepository implements UserEmaileableInter
      *
      * @param string $email Email
      *
-     * @return CustomerInterface User found
+     * @return AbstractUserInterface|null User found
      */
     public function findOneByEmail($email)
     {
-        return $this->findOneBy([
-            'email' => $email,
-        ]);
+        return $this
+            ->findOneBy([
+                'email' => $email,
+            ]);
     }
 
     /**
@@ -69,7 +71,7 @@ class CustomerRepository extends EntityRepository implements UserEmaileableInter
             /**
              * @var CustomerInterface $customer
              */
-            $customer  = reset($response);
+            $customer = reset($response);
             $addresses = $customer->getAddresses();
             if ($addresses) {
                 return $addresses->first();

@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Tax\Entity;
 
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Tax\Entity\Interfaces\TaxGroupInterface;
 use Elcodi\Component\Tax\Entity\Interfaces\TaxInterface;
 
@@ -26,14 +27,7 @@ use Elcodi\Component\Tax\Entity\Interfaces\TaxInterface;
  */
 class Tax implements TaxInterface
 {
-    use EnabledTrait;
-
-    /**
-     * @var integer
-     *
-     * Identifier
-     */
-    protected $id;
+    use IdentifiableTrait, EnabledTrait;
 
     /**
      * @var string
@@ -64,30 +58,6 @@ class Tax implements TaxInterface
     protected $taxGroup;
 
     /**
-     * Get Id
-     *
-     * @return integer Id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Sets Id
-     *
-     * @param integer $id Id
-     *
-     * @return $this Self object
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    /**
      * Gets Tax name
      *
      * @return string
@@ -102,7 +72,7 @@ class Tax implements TaxInterface
      *
      * @param string $name
      *
-     * @return $this
+     * @return $this Self object
      */
     public function setName($name)
     {
@@ -126,7 +96,7 @@ class Tax implements TaxInterface
      *
      * @param string $description
      *
-     * @return $this
+     * @return $this Self object
      */
     public function setDescription($description)
     {
@@ -150,7 +120,7 @@ class Tax implements TaxInterface
      *
      * @param float $value
      *
-     * @return $this;
+     * @return $this Self object
      */
     public function setValue($value)
     {

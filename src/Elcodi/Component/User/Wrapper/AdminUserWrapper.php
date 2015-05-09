@@ -29,9 +29,14 @@ use Elcodi\Component\User\Factory\AdminUserFactory;
 class AdminUserWrapper
 {
     /**
-     * @var AdminUserInterface
+     * @var AdminUserInterface|Object|string
      *
-     * AdminUser
+     * AdminUser element. This parameter can be filled with an internal
+     * AdminUser implementation, with an object with __toString() method
+     * implemented or with a string.
+     *
+     * See \Symfony\Component\Security\Core\Authentication\Token\TokenInterface::getUser()
+     * for more information about it
      */
     protected $adminUser;
 
@@ -57,8 +62,8 @@ class AdminUserWrapper
      *
      * Otherwise, this create new Guest without persisting it
      *
-     * @param AdminUserFactory      $adminUserFactory Customer factory
-     * @param TokenStorageInterface $tokenStorage     TokenStorageInterface instance
+     * @param AdminUserFactory           $adminUserFactory Customer factory
+     * @param TokenStorageInterface|null $tokenStorage     TokenStorageInterface instance
      */
     public function __construct(
         AdminUserFactory $adminUserFactory,
@@ -104,7 +109,7 @@ class AdminUserWrapper
      * Otherwise, new AdminUser is created and stored (not flushed nor
      * persisted)
      *
-     * @return AdminUserInterface Loaded admin user
+     * @return AdminUserInterface|Object|string Loaded admin user
      */
     public function loadAdminUser()
     {
@@ -119,7 +124,9 @@ class AdminUserWrapper
         if ($token instanceof UsernamePasswordToken) {
             $this->adminUser = $token->getUser();
         } else {
-            $this->adminUser = $this->adminUserFactory->create();
+            $this->adminUser = $this
+                ->adminUserFactory
+                ->create();
         }
 
         return $this->adminUser;

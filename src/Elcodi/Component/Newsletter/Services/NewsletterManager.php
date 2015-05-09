@@ -218,7 +218,7 @@ class NewsletterManager
 
         $validationViolationList = $this
             ->validator
-            ->validateValue($email, new Email());
+            ->validate($email, new Email());
 
         return ($validationViolationList->count() === 0);
     }

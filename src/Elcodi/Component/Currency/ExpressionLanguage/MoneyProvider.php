@@ -17,11 +17,11 @@
 
 namespace Elcodi\Component\Currency\ExpressionLanguage;
 
-use Doctrine\Common\Persistence\ObjectRepository;
 use RuntimeException;
 use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 
+use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Repository\CurrencyRepository;
 use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
@@ -55,13 +55,15 @@ class MoneyProvider implements ExpressionFunctionProviderInterface
      */
     public function __construct(
         CurrencyWrapper $currencyWrapper,
-        ObjectRepository $currencyRepository
+        CurrencyRepository $currencyRepository
     ) {
         $this->currencyWrapper = $currencyWrapper;
         $this->currencyRepository = $currencyRepository;
     }
 
     /**
+     * Return functions
+     *
      * @return ExpressionFunction[] An array of Function instances
      */
     public function getFunctions()
@@ -84,6 +86,9 @@ class MoneyProvider implements ExpressionFunctionProviderInterface
                             ->currencyWrapper
                             ->getDefaultCurrency();
                     } else {
+                        /**
+                         * @var CurrencyInterface $currency
+                         */
                         $currency = $this
                             ->currencyRepository
                             ->findOneBy([

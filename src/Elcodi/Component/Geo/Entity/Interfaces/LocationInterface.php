@@ -38,7 +38,7 @@ interface LocationInterface extends IdentifiableInterface
      *
      * @param string $name The name
      *
-     * @return string
+     * @return $this Self object
      */
     public function setName($name);
 
@@ -54,7 +54,7 @@ interface LocationInterface extends IdentifiableInterface
      *
      * @param string $code The code
      *
-     * @return integer
+     * @return $this Self object
      */
     public function setCode($code);
 
@@ -70,7 +70,7 @@ interface LocationInterface extends IdentifiableInterface
      *
      * @param string $type The type
      *
-     * @return string
+     * @return $this Self object
      */
     public function setType($type);
 

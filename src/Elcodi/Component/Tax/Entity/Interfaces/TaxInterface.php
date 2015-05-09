@@ -18,28 +18,13 @@
 namespace Elcodi\Component\Tax\Entity\Interfaces;
 
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
  * Interface TaxInterface
  */
-interface TaxInterface extends EnabledInterface
+interface TaxInterface extends IdentifiableInterface, EnabledInterface
 {
-    /**
-     * Get Id
-     *
-     * @return integer Id
-     */
-    public function getId();
-
-    /**
-     * Sets Id
-     *
-     * @param integer $id Id
-     *
-     * @return $this Self object
-     */
-    public function setId($id);
-
     /**
      * Gets Tax name
      *
