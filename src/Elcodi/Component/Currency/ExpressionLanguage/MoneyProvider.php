@@ -23,6 +23,7 @@ use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 
 use Elcodi\Component\Currency\Entity\Money;
+use Elcodi\Component\Currency\Repository\CurrencyRepository;
 use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 
 /**
@@ -40,20 +41,24 @@ class MoneyProvider implements ExpressionFunctionProviderInterface
     protected $currencyWrapper;
 
     /**
-     * @var ObjectRepository
+     * @var CurrencyRepository
      *
      * Currency repository
      */
-    protected $repository;
+    protected $currencyRepository;
 
     /**
-     * @param CurrencyWrapper  $currencyWrapper
-     * @param ObjectRepository $repository
+     * Construct
+     *
+     * @param CurrencyWrapper    $currencyWrapper    Currency wrapper
+     * @param CurrencyRepository $currencyRepository Currency Repository
      */
-    public function __construct(CurrencyWrapper $currencyWrapper, ObjectRepository $repository)
-    {
+    public function __construct(
+        CurrencyWrapper $currencyWrapper,
+        ObjectRepository $currencyRepository
+    ) {
         $this->currencyWrapper = $currencyWrapper;
-        $this->repository = $repository;
+        $this->currencyRepository = $currencyRepository;
     }
 
     /**
@@ -67,28 +72,29 @@ class MoneyProvider implements ExpressionFunctionProviderInterface
              */
             new ExpressionFunction(
                 'money',
-                function ($arg) {
+                function () {
                     throw new RuntimeException(
                         'Function "money" can\'t be compiled.'
                     );
                 },
-                function (array $context, $amount, $currency = null) {
+                function (array $context, $amount, $currencyIso = null) {
 
-                    if ($currency === null) {
+                    if ($currencyIso === null) {
                         $currency = $this
                             ->currencyWrapper
                             ->getDefaultCurrency();
                     } else {
                         $currency = $this
-                            ->repository
+                            ->currencyRepository
                             ->findOneBy([
-                                'iso' => $currency,
+                                'iso' => $currencyIso,
                             ]);
                     }
 
-                    $centsPerUnit = 100;
-
-                    return Money::create($amount * $centsPerUnit, $currency);
+                    return Money::create(
+                        $amount * 100,
+                        $currency
+                    );
                 }
             ),
         ];

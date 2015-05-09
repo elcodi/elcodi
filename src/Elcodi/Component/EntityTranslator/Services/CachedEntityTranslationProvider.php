@@ -81,7 +81,7 @@ class CachedEntityTranslationProvider extends AbstractCacheWrapper implements En
      * @param string $entityField Field of entity
      * @param string $locale      Locale
      *
-     * @return string Value fetched
+     * @return string|false Value fetched
      */
     public function getTranslation(
         $entityType,

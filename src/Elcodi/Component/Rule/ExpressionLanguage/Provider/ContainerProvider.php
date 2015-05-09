@@ -47,6 +47,8 @@ class ContainerProvider implements ExpressionFunctionProviderInterface
     }
 
     /**
+     * Get functions
+     *
      * @return ExpressionFunction[] An array of Function instances
      */
     public function getFunctions()
@@ -57,13 +59,15 @@ class ContainerProvider implements ExpressionFunctionProviderInterface
              */
             new ExpressionFunction(
                 'service',
-                function ($arg) {
+                function () {
                     throw new RuntimeException(
                         'Function "rule" can\'t be compiled.'
                     );
                 },
                 function (array $context, $value) {
-                    return $this->container->get($value);
+                    return $this
+                        ->container
+                        ->get($value);
                 }
             ),
 
@@ -72,13 +76,15 @@ class ContainerProvider implements ExpressionFunctionProviderInterface
              */
             new ExpressionFunction(
                 'parameter',
-                function ($arg) {
+                function () {
                     throw new RuntimeException(
                         'Function "rule" can\'t be compiled.'
                     );
                 },
                 function (array $context, $value) {
-                    return $this->container->getParameter($value);
+                    return $this
+                        ->container
+                        ->getParameter($value);
                 }
             ),
         ];

@@ -57,7 +57,7 @@ class Category implements CategoryInterface
     protected $subCategories;
 
     /**
-     * @var Category
+     * @var CategoryInterface
      *
      * Parent
      */
@@ -188,7 +188,7 @@ class Category implements CategoryInterface
     /**
      * Set category parent
      *
-     * @param CategoryInterface $parent Category parent
+     * @param CategoryInterface|null $parent Category parent
      *
      * @return $this Self object
      */
@@ -236,7 +236,7 @@ class Category implements CategoryInterface
     /**
      * @param boolean $root
      *
-     * @return Category
+     * @return $this Self object
      */
     public function setRoot($root)
     {

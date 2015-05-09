@@ -177,7 +177,9 @@ class RefreshCouponsListener
     }
 
     /**
-     * Given a cart and a coupon, returns the real value of the coupon
+     * Given a cart and a coupon, returns the real value of the coupon.
+     * If the type of the coupon is not valid, then an empty Money instance will
+     * be returned, with value 0.
      *
      * @param CartInterface   $cart   Abstract Cart object
      * @param CouponInterface $coupon Coupon
@@ -192,26 +194,35 @@ class RefreshCouponsListener
             ->currencyWrapper
             ->getCurrency();
 
+        $couponPrice = Money::create(
+            0,
+            $currency
+        );
+
         switch ($coupon->getType()) {
-
-            case ElcodiCouponTypes::TYPE_AMOUNT:
-
-                $amount = $coupon->getPrice();
-
-                return $this
-                    ->currencyConverter
-                    ->convertMoney(
-                        $amount,
-                        $currency
-                    );
 
             case ElcodiCouponTypes::TYPE_PERCENT:
 
                 $couponPercent = $coupon->getDiscount();
 
-                return $cart
+                $couponPrice = $cart
                     ->getProductAmount()
                     ->multiply($couponPercent / 100);
+                break;
+
+            case ElcodiCouponTypes::TYPE_AMOUNT:
+
+                $amount = $coupon->getPrice();
+
+                $couponPrice = $this
+                    ->currencyConverter
+                    ->convertMoney(
+                        $amount,
+                        $currency
+                    );
+                break;
         }
+
+        return $couponPrice;
     }
 }

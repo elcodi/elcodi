@@ -17,7 +17,9 @@
 
 namespace Elcodi\Component\Page\Transformer;
 
+use RuntimeException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -88,6 +90,7 @@ class PageResponseTransformer
      *
      * @return Response Page rendered
      *
+     * @throws RuntimeException      Request object not found
      * @throws NotFoundHttpException Page not found or not valid
      */
     public function createResponseFromPage(
@@ -104,6 +107,14 @@ class PageResponseTransformer
         $request = $this
             ->requestStack
             ->getCurrentRequest();
+
+        /**
+         * Request not found because this controller is not running under
+         * Request scope
+         */
+        if (!($request instanceof Request)) {
+            throw new RuntimeException('Request object not found');
+        }
 
         /**
          * We must check that the product slug is right. Otherwise we must

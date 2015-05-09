@@ -113,7 +113,7 @@ class Product implements ProductInterface
     protected $dimensions;
 
     /**
-     * @var Manufacturer
+     * @var ManufacturerInterface
      *
      * Manufacturer
      */

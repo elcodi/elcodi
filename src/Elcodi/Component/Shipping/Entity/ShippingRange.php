@@ -67,7 +67,7 @@ class ShippingRange implements ShippingRangeInterface
     protected $toZone;
 
     /**
-     * @var float
+     * @var integer
      *
      * Product price amount
      */

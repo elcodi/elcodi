@@ -55,6 +55,7 @@ class CommentOnVotedEvent extends AbstractCommentEvent
         parent::__construct($comment);
 
         $this->vote = $vote;
+        $this->edited = $edited;
     }
 
     /**

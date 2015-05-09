@@ -59,15 +59,17 @@ class CityExistsValidator extends ConstraintValidator
          * @var LocationData $location
          */
         try {
-            $location = $this->locationProvider->getLocation(
-                $value
-            );
+            $location = $this
+                ->locationProvider
+                ->getLocation(
+                    $value
+                );
         } catch (EntityNotFoundException $e) {
             $location = null;
         }
 
         if (
-            is_null($location) ||
+            !($location instanceof LocationData) ||
             'city' != $location->getType()
         ) {
             $this

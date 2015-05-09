@@ -249,7 +249,7 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
      */
     public function saveEntityTranslations()
     {
-        if (!$this->translationsBackup) {
+        if (empty($this->translationsBackup)) {
             return;
         }
 

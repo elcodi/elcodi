@@ -18,6 +18,8 @@
 namespace Elcodi\Component\Media\Controller;
 
 use Doctrine\ORM\EntityNotFoundException;
+use RuntimeException;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -102,8 +104,9 @@ class ImageResizeController
     /**
      * Resizes an image
      *
-     * @return Response
+     * @return Response Response generated
      *
+     * @throws RuntimeException        Request not found
      * @throws EntityNotFoundException Requested image does not exist
      */
     public function resizeAction()
@@ -111,6 +114,14 @@ class ImageResizeController
         $request = $this
             ->requestStack
             ->getCurrentRequest();
+
+        /**
+         * Request not found because this controller is not running under
+         * Request scope
+         */
+        if (!($request instanceof Request)) {
+            throw new RuntimeException('Request object not found');
+        }
 
         $id = $request->get('id');
 
@@ -125,22 +136,42 @@ class ImageResizeController
             throw new EntityNotFoundException($this->imageRepository->getClassName());
         }
 
+        return $this->buildResponseFromImage(
+            $request,
+            $image
+        );
+    }
+
+    /**
+     * Create new response given a request and an image.
+     *
+     * Fill some data to this response given some Image properties and check if
+     * created Response has changed.
+     *
+     * @param Request        $request Request
+     * @param ImageInterface $image   Image
+     *
+     * @return Response Created response
+     */
+    protected function buildResponseFromImage(
+        Request $request,
+        ImageInterface $image
+    ) {
         $response = new Response();
         $height = $request->get('height');
         $width = $request->get('width');
         $type = $request->get('type');
         $response
             ->setEtag($this
-                    ->imageEtagTransformer
-                    ->transform(
-                        $image,
-                        $height,
-                        $width,
-                        $type
-                    )
+                ->imageEtagTransformer
+                ->transform(
+                    $image,
+                    $height,
+                    $width,
+                    $type
+                )
             )
             ->setLastModified($image->getUpdatedAt())
-            ->setStatusCode(304)
             ->setPublic();
 
         /**
@@ -149,7 +180,7 @@ class ImageResizeController
          * in that case
          */
         if ($response->isNotModified($request)) {
-            return $response;
+            return $response->setStatusCode(304);
         }
 
         $image = $this
@@ -169,11 +200,11 @@ class ImageResizeController
             ->setSharedMaxAge($this->sharedMaxAge)
             ->setContent($imageData);
 
-        $response->headers->add(
-            [
+        $response
+            ->headers
+            ->add([
                 'Content-Type' => $image->getContentType(),
-            ]
-        );
+            ]);
 
         return $response;
     }

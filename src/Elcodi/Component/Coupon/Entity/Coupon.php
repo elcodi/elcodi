@@ -122,7 +122,7 @@ class Coupon implements CouponInterface
     protected $priority;
 
     /**
-     * @var float
+     * @var integer
      *
      * Minimum purchase amount
      */

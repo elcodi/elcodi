@@ -119,7 +119,7 @@ interface CategoryInterface
     /**
      * Set category parent
      *
-     * @param CategoryInterface $parent Category parent
+     * @param CategoryInterface|null $parent Category parent
      *
      * @return $this Self object
      */
@@ -151,7 +151,7 @@ interface CategoryInterface
     /**
      * @param boolean $root
      *
-     * @return CategoryInterface
+     * @return $this Self object
      */
     public function setRoot($root);
 

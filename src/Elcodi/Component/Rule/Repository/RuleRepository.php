@@ -19,22 +19,9 @@ namespace Elcodi\Component\Rule\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
-use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
-
 /**
  * Class RuleRepository
  */
 class RuleRepository extends EntityRepository
 {
-    /**
-     * Return a rule by name
-     *
-     * @param string $name
-     *
-     * @return RuleInterface|null
-     */
-    public function findOneByName($name)
-    {
-        return parent::findOneBy(['name' => $name]);
-    }
 }
