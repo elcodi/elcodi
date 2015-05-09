@@ -81,7 +81,7 @@ class RuleProvider implements ExpressionFunctionProviderInterface
                      */
                     $rule = $this
                         ->ruleRepository
-                        ->findOneByName($value);
+                        ->findOneById($value);
 
                     return $rule ? $this->ruleManager->evaluate($rule, $context) : false;
                 }
