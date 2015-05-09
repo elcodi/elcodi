@@ -19,7 +19,7 @@ namespace Elcodi\Component\User\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
-use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
+use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 use Elcodi\Component\User\Repository\Interfaces\UserEmaileableInterface;
 
 /**
@@ -32,12 +32,13 @@ class AdminUserRepository extends EntityRepository implements UserEmaileableInte
      *
      * @param string $email Email
      *
-     * @return AdminUserInterface User found
+     * @return AbstractUserInterface|null User found
      */
     public function findOneByEmail($email)
     {
-        return $this->findOneBy([
-            'email' => $email,
-        ]);
+        return $this
+            ->findOneBy([
+                'email' => $email,
+            ]);
     }
 }

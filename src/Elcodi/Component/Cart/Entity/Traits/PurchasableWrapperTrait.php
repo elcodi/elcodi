@@ -61,6 +61,9 @@ trait PurchasableWrapperTrait
             $this->setVariant($purchasable);
             $product = $purchasable->getProduct();
         } else {
+            /**
+             * @var ProductInterface $purchasable
+             */
             $product = $purchasable;
         }
 

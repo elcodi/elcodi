@@ -17,7 +17,7 @@
 
 namespace Elcodi\Component\User\Repository\Interfaces;
 
-use Elcodi\Component\User\Entity\Abstracts\AbstractUser;
+use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 
 /**
  * Interface UserEmailRecoverableInterface
@@ -29,7 +29,7 @@ interface UserEmaileableInterface
      *
      * @param string $email Email
      *
-     * @return AbstractUser User found
+     * @return AbstractUserInterface|null User found
      */
     public function findOneByEmail($email);
 }
