@@ -137,33 +137,14 @@ class MachineManager
         $transitionName,
         $description = ''
     ) {
-        $startState = $stateLineStack->getLastStateLine();
-
-        if (!($startState instanceof StateLineInterface)) {
-            throw new ObjectNotInitializedException();
-        }
-
-        $transition = $this
-            ->machine
-            ->transition(
-                $startState->getName(),
-                $transitionName
+        return $this
+            ->applyTransitionAction(
+                $object,
+                $stateLineStack,
+                $transitionName,
+                $description,
+                'transition'
             );
-        $stateLine = $this->createStateLine(
-            $transition->getFinal()->getName(),
-            $description
-        );
-
-        $stateLineStack->addStateLine($stateLine);
-
-        $this->dispatchTransitionEvents(
-            $this->machine,
-            $object,
-            $stateLineStack,
-            $transition
-        );
-
-        return $stateLineStack;
     }
 
     /**
@@ -185,34 +166,14 @@ class MachineManager
         $transitionName,
         $description = ''
     ) {
-        $startState = $stateLineStack->getLastStateLine();
-
-        if (!($startState instanceof StateLineInterface)) {
-            throw new ObjectNotInitializedException();
-        }
-
-        $transition = $this
-            ->machine
-            ->reachState(
-                $startState->getName(),
-                $transitionName
+        return $this
+            ->applyTransitionAction(
+                $object,
+                $stateLineStack,
+                $transitionName,
+                $description,
+                'reachState'
             );
-
-        $stateLine = $this->createStateLine(
-            $transition->getFinal()->getName(),
-            $description
-        );
-
-        $stateLineStack->addStateLine($stateLine);
-
-        $this->dispatchTransitionEvents(
-            $this->machine,
-            $object,
-            $stateLineStack,
-            $transition
-        );
-
-        return $stateLineStack;
     }
 
     /**
@@ -232,6 +193,61 @@ class MachineManager
             ->setDescription($description);
 
         return $stateLine;
+    }
+
+    /**
+     * Applies a transition action given a object and the kind of transition is
+     * needed.
+     *
+     * @param stdClass       $object           Object
+     * @param StateLineStack $stateLineStack   StateLine Stack
+     * @param string         $transitionName   Transition name
+     * @param string         $description      Description
+     * @param string         $transitionAction Transition Action
+     *
+     * @return StateLineStack StateLine stack given
+     *
+     * @throws StateNotReachableException    State is not reachable
+     * @throws ObjectNotInitializedException Object needs to be initialized in machine
+     */
+    protected function applyTransitionAction(
+        $object,
+        StateLineStack $stateLineStack,
+        $transitionName,
+        $description,
+        $transitionAction
+    ) {
+        $startState = $stateLineStack->getLastStateLine();
+
+        if (!($startState instanceof StateLineInterface)) {
+            throw new ObjectNotInitializedException();
+        }
+
+        /**
+         * @var Transition $transition
+         */
+        $transition = $this
+            ->machine
+            ->$transitionAction(
+                $startState->getName(),
+                $transitionName
+            );
+
+        $stateLine = $this->createStateLine(
+            $transition->getFinal()->getName(),
+            $description
+        );
+
+        $stateLineStack->addStateLine($stateLine);
+
+        $this->dispatchTransitionEvents(
+            $this->machine,
+            $object,
+            $stateLineStack,
+            $transition
+        );
+
+        return $stateLineStack;
     }
 
     /**
@@ -256,7 +272,7 @@ class MachineManager
                     $machine->getId(),
                     ElcodiStateTransitionMachineEvents::INITIALIZATION
                 ),
-                new InitializationEvent(
+                InitializationEvent::create(
                     $object,
                     $stateLineStack
                 )
@@ -283,7 +299,7 @@ class MachineManager
             ->eventDispatcher
             ->dispatch(
                 ElcodiStateTransitionMachineEvents::ALL_TRANSITIONS,
-                new TransitionEvent(
+                TransitionEvent::create(
                     $object,
                     $stateLineStack,
                     $transition
@@ -304,7 +320,7 @@ class MachineManager
                     ],
                     ElcodiStateTransitionMachineEvents::TRANSITION_FROM_STATE
                 ),
-                new TransitionEvent(
+                TransitionEvent::create(
                     $object,
                     $stateLineStack,
                     $transition
@@ -325,7 +341,7 @@ class MachineManager
                     ],
                     ElcodiStateTransitionMachineEvents::TRANSITION_TO_STATE
                 ),
-                new TransitionEvent(
+                TransitionEvent::create(
                     $object,
                     $stateLineStack,
                     $transition
@@ -346,7 +362,7 @@ class MachineManager
                     ],
                     ElcodiStateTransitionMachineEvents::TRANSITION
                 ),
-                new TransitionEvent(
+                TransitionEvent::create(
                     $object,
                     $stateLineStack,
                     $transition

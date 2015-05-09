@@ -39,7 +39,7 @@ class HookExtension extends Twig_Extension
     /**
      * Construct
      *
-     * @param HookSystemEventDispatcherInterface $hookSystem Where to execute the hooks
+     * @param HookSystemEventDispatcherInterface $hookSystemEventDispatcher Where to execute the hooks
      */
     public function __construct(HookSystemEventDispatcherInterface $hookSystemEventDispatcher)
     {
