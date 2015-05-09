@@ -74,4 +74,22 @@ class InitializationEvent extends Event
     {
         return $this->stateLineStack;
     }
+
+    /**
+     * Create new object
+     *
+     * @param stdClass       $object         Object
+     * @param StateLineStack $stateLineStack State line stack
+     *
+     * @return self New instance
+     */
+    public static function create(
+        $object,
+        StateLineStack $stateLineStack
+    ) {
+        return new self(
+            $object,
+            $stateLineStack
+        );
+    }
 }

@@ -95,4 +95,25 @@ class TransitionEvent extends Event
     {
         return $this->transition;
     }
+
+    /**
+     * Create new object
+     *
+     * @param stdClass       $object         Object
+     * @param StateLineStack $stateLineStack State line stack
+     * @param Transition     $transition     Transition
+     *
+     * @return self New instance
+     */
+    public static function create(
+        $object,
+        StateLineStack $stateLineStack,
+        Transition $transition
+    ) {
+        return new self(
+            $object,
+            $stateLineStack,
+            $transition
+        );
+    }
 }
