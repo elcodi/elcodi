@@ -25,7 +25,7 @@ namespace Elcodi\Component\Product\Entity\Traits;
 trait ProductPriceTrait
 {
     /**
-     * @var float
+     * @var integer
      *
      * Product price
      */
@@ -39,7 +39,7 @@ trait ProductPriceTrait
     protected $priceCurrency;
 
     /**
-     * @var float
+     * @var integer
      *
      * Reduced price
      */

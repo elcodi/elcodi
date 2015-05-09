@@ -25,7 +25,7 @@ interface ImageInterface extends FileInterface
     /**
      * Set image width in pixels
      *
-     * @param string $width Width
+     * @param integer $width Width
      *
      * @return $this Self object
      */
@@ -41,7 +41,7 @@ interface ImageInterface extends FileInterface
     /**
      * Set image height in pixels
      *
-     * @param string $width Width
+     * @param integer $width Width
      *
      * @return $this Self object
      */

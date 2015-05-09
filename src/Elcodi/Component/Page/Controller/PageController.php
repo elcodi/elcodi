@@ -20,6 +20,7 @@ namespace Elcodi\Component\Page\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
 use Elcodi\Component\Page\Repository\PageRepository;
 use Elcodi\Component\Page\Transformer\PageResponseTransformer;
 
@@ -70,6 +71,9 @@ class PageController
      */
     public function renderByIdAction($id, $path = '')
     {
+        /**
+         * @var PageInterface $page
+         */
         $page = $this
             ->pageRepository
             ->findOneById($id);
@@ -93,6 +97,9 @@ class PageController
      */
     public function renderByPathAction($path = '')
     {
+        /**
+         * @var PageInterface $page
+         */
         $page = $this
             ->pageRepository
             ->findOneByPath($path);

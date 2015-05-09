@@ -41,7 +41,7 @@ class Image extends File implements ImageInterface
     /**
      * Set image width in pixels
      *
-     * @param string $width Width
+     * @param integer $width Width
      *
      * @return $this Self object
      */
@@ -65,7 +65,7 @@ class Image extends File implements ImageInterface
     /**
      * Set image height in pixels
      *
-     * @param string $height Height
+     * @param integer $height Height
      *
      * @return $this Self object
      */

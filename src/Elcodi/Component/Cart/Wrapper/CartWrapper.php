@@ -19,9 +19,8 @@ namespace Elcodi\Component\Cart\Wrapper;
 
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher;
-use Elcodi\Component\Cart\Factory\CartFactory;
-use Elcodi\Component\Cart\Repository\CartRepository;
 use Elcodi\Component\Cart\Services\CartSessionManager;
+use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 use Elcodi\Component\User\Wrapper\CustomerWrapper;
 
@@ -59,18 +58,11 @@ class CartWrapper
     protected $cartSessionManager;
 
     /**
-     * @var CartRepository
+     * @var ObjectDirector
      *
-     * CartRepository
+     * Cart Director
      */
-    protected $cartRepository;
-
-    /**
-     * @var CartFactory
-     *
-     * CartFactory
-     */
-    protected $cartFactory;
+    protected $cartDirector;
 
     /**
      * @var CustomerWrapper
@@ -91,21 +83,18 @@ class CartWrapper
      *
      * @param CartEventDispatcher $cartEventDispatcher Cart EventDispatcher
      * @param CartSessionManager  $cartSessionManager  CartSessionManager
-     * @param CartRepository      $cartRepository      Cart Repository
-     * @param CartFactory         $cartFactory         Cart Factory
+     * @param ObjectDirector      $cartDirector        Cart Director
      * @param CustomerWrapper     $customerWrapper     Customer Wrapper
      */
     public function __construct(
         CartEventDispatcher $cartEventDispatcher,
         CartSessionManager $cartSessionManager,
-        CartRepository $cartRepository,
-        CartFactory $cartFactory,
+        ObjectDirector $cartDirector,
         CustomerWrapper $customerWrapper
     ) {
         $this->cartEventDispatcher = $cartEventDispatcher;
         $this->cartSessionManager = $cartSessionManager;
-        $this->cartRepository = $cartRepository;
-        $this->cartFactory = $cartFactory;
+        $this->cartDirector = $cartDirector;
         $this->customerWrapper = $customerWrapper;
     }
 
@@ -179,14 +168,16 @@ class CartWrapper
      */
     public function getCartFromSession()
     {
-        $cartIdInSession = $this->cartSessionManager->get();
+        $cartIdInSession = $this
+            ->cartSessionManager
+            ->get();
 
         if (!$cartIdInSession) {
             return;
         }
 
         return $this
-            ->cartRepository
+            ->cartDirector
             ->findOneBy([
                 'id'      => $cartIdInSession,
                 'ordered' => false,
@@ -222,9 +213,9 @@ class CartWrapper
     /**
      * Resolves a cart given a customer cart and a session cart
      *
-     * @param CustomerInterface $customer         Customer
-     * @param CartInterface     $cartFromCustomer Customer Cart
-     * @param CartInterface     $cartFromSession  Cart loaded from session
+     * @param CustomerInterface  $customer         Customer
+     * @param CartInterface|null $cartFromCustomer Customer Cart
+     * @param CartInterface|null $cartFromSession  Cart loaded from session
      *
      * @return CartInterface Cart resolved
      */
@@ -244,7 +235,9 @@ class CartWrapper
                  *
                  * We create a new Cart
                  */
-                $cart = $this->cartFactory->create();
+                $cart = $this
+                    ->cartDirector
+                    ->create();
             } else {
 
                 /**

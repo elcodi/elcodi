@@ -26,6 +26,5 @@ services:
         arguments:
             - @elcodi.event_dispatcher.cart
             - @elcodi.session_manager.cart
-            - @elcodi.repository.cart
-            - @elcodi.factory.cart
+            - @elcodi.director.cart
             - @elcodi.wrapper.customer

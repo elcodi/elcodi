@@ -53,13 +53,17 @@ class RuleProvider implements ExpressionFunctionProviderInterface
      * @param ObjectRepository $ruleRepository Rule repository
      * @param RuleManager      $ruleManager    Rule manager
      */
-    public function __construct(ObjectRepository $ruleRepository, RuleManager $ruleManager)
-    {
+    public function __construct(
+        ObjectRepository $ruleRepository,
+        RuleManager $ruleManager
+    ) {
         $this->ruleRepository = $ruleRepository;
         $this->ruleManager = $ruleManager;
     }
 
     /**
+     * Get functions
+     *
      * @return ExpressionFunction[] An array of Function instances
      */
     public function getFunctions()
@@ -70,7 +74,7 @@ class RuleProvider implements ExpressionFunctionProviderInterface
              */
             new ExpressionFunction(
                 'rule',
-                function ($arg) {
+                function () {
                     throw new RuntimeException(
                         'Function "rule" can\'t be compiled.'
                     );
@@ -81,9 +85,18 @@ class RuleProvider implements ExpressionFunctionProviderInterface
                      */
                     $rule = $this
                         ->ruleRepository
-                        ->findOneByName($value);
+                        ->findOneBy([
+                            'name' => $value,
+                        ]);
 
-                    return $rule ? $this->ruleManager->evaluate($rule, $context) : false;
+                    return $rule
+                        ? $this
+                            ->ruleManager
+                            ->evaluate(
+                                $rule,
+                                $context
+                            )
+                        : false;
                 }
             ),
         ];

@@ -75,11 +75,15 @@ class FileManager
      */
     public function uploadFile(FileInterface $file, $data, $overwrite = true)
     {
-        $this->filesystem->write(
-            $this->fileIdentifierTransformer->transform($file),
-            $data,
-            $overwrite
-        );
+        $this
+            ->filesystem
+            ->write(
+                $this
+                    ->fileIdentifierTransformer
+                    ->transform($file),
+                $data,
+                $overwrite
+            );
 
         return $this;
     }
@@ -97,8 +101,8 @@ class FileManager
         $content = $this
             ->filesystem
             ->read($this
-                    ->fileIdentifierTransformer
-                    ->transform($file)
+                ->fileIdentifierTransformer
+                ->transform($file)
             );
 
         $file->setContent($content);

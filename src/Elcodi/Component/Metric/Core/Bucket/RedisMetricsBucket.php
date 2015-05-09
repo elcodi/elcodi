@@ -92,7 +92,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
          * If the entry must be treated as a beacon
          */
         if ($entryType & ElcodiMetricTypes::TYPE_BEACON_TOTAL) {
-            $this->addBeaconMetricTotal($entry, $entryKey);
+            $this->addBeaconMetricTotal($entryKey);
         }
 
         /**
@@ -137,15 +137,12 @@ class RedisMetricsBucket extends AbstractMetricsBucket
     /**
      * Add beacon total nb given the key entry
      *
-     * @param EntryInterface $entry    Entry
-     * @param string         $entryKey Key entry
+     * @param string $entryKey Key entry
      *
      * @return $this Self Object
      */
-    protected function addBeaconMetricTotal(
-        EntryInterface $entry,
-        $entryKey
-    ) {
+    protected function addBeaconMetricTotal($entryKey)
+    {
         $this
             ->redis
             ->incr($entryKey . '_total');
@@ -217,10 +214,10 @@ class RedisMetricsBucket extends AbstractMetricsBucket
 
         foreach ($dates as $date) {
             $keys[] = $this->generateEntryKey(
-                $token,
-                $event,
-                $date
-            ) . '_unique';
+                    $token,
+                    $event,
+                    $date
+                ) . '_unique';
         }
 
         return (int) $this

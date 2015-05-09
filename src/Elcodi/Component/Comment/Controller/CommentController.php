@@ -108,8 +108,13 @@ class CommentController
         $authorEmail = $requestBag->get('author_email');
         $parentId = $requestBag->get('parent');
 
+        /**
+         * @var CommentInterface|null $parent
+         */
         $parent = $parentId > 0
-            ? $this->commentRepository->find($parentId)
+            ? $this
+                ->commentRepository
+                ->find($parentId)
             : null;
 
         $comment = $this

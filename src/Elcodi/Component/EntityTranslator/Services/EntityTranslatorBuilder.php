@@ -107,7 +107,7 @@ class EntityTranslatorBuilder
             ->checkNamespace($this->configuration)
             ->checkAlias($this->configuration)
             ->checkMethods($this->configuration)
-            ->createTranslator($this->configuration);
+            ->createTranslator();
 
         return $translator;
     }

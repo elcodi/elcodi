@@ -50,7 +50,7 @@ interface MoneyInterface
     /**
      * Gets the Currency
      *
-     * @return CurrencyInterface|null Currency
+     * @return CurrencyInterface Currency
      */
     public function getCurrency();
 
@@ -65,7 +65,7 @@ interface MoneyInterface
      *
      * @param MoneyInterface $other
      *
-     * @return integer|null Comparison value
+     * @return integer Comparison value
      */
     public function compareTo(MoneyInterface $other);
 
@@ -103,7 +103,7 @@ interface MoneyInterface
      *
      * @param MoneyInterface $other
      *
-     * @return boolean|null Current money equals given as parameter
+     * @return boolean Current money equals given as parameter
      */
     public function equals(MoneyInterface $other);
 
@@ -112,7 +112,7 @@ interface MoneyInterface
      *
      * @param MoneyInterface $other
      *
-     * @return boolean|null Current money is greater than given as parameter
+     * @return boolean Current money is greater than given as parameter
      */
     public function isGreaterThan(MoneyInterface $other);
 
@@ -121,7 +121,7 @@ interface MoneyInterface
      *
      * @param MoneyInterface $other
      *
-     * @return boolean|null Current money is less than given as parameter
+     * @return boolean Current money is less than given as parameter
      */
     public function isLessThan(MoneyInterface $other);
 }
