@@ -73,14 +73,14 @@ class CategoryRepository extends EntityRepository
     /**
      * Get the children categories given a parent category.
      *
-     * @param CategoryInterface $parentCategory The parent category.
+     * @param CategoryInterface|null $parentCategory The parent category.
      * @param bool              $recursively    If it should check the
      *                                          children recursively
      *
      * @return ArrayCollection The list of children categories.
      */
     public function getChildrenCategories(
-        CategoryInterface $parentCategory,
+        CategoryInterface $parentCategory = null,
         $recursively = false
     ) {
         $categories = $this
