@@ -34,9 +34,29 @@ class Configuration extends AbstractConfiguration
     protected function setupTree(ArrayNodeDefinition $rootNode)
     {
         $rootNode
+
             ->children()
+                ->arrayNode('mapping')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->append($this->addMappingNode(
+                            'plugin',
+                            'Elcodi\Component\Plugin\Entity\Plugin',
+                            '@ElcodiPluginBundle/Resources/config/doctrine/Plugin.orm.yml',
+                            'default',
+                            true
+                        ))
+                        ->append($this->addMappingNode(
+                            'plugin_configuration',
+                            'Elcodi\Component\Plugin\Entity\PluginConfiguration',
+                            '@ElcodiPluginBundle/Resources/config/doctrine/PluginConfiguration.orm.yml',
+                            'default',
+                            true
+                        ))
+                    ->end()
+                ->end()
                 ->scalarNode('hook_system')
-                    ->defaultValue('elcodi.core.plugin.hook_system.adapter.event_dispatcher')
+                    ->defaultValue('elcodi.event_dispatcher.hook_system')
                 ->end()
             ->end();
     }

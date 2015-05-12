@@ -91,6 +91,41 @@ trait SubnodesTrait
     }
 
     /**
+     * Find subnode given its name. You can decide if this search is deep or
+     * not.
+     *
+     * This node is returned as soon as is found.
+     *
+     * @param string  $subnodeName Subnode name
+     * @param boolean $inDepth     In depth
+     *
+     * @return \Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface|null Node
+     */
+    public function findSubnodeByName($subnodeName, $inDepth = true)
+    {
+        $subnodes = $this->getSubnodes();
+
+        /**
+         * @var \Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface $subnode
+         */
+        foreach ($subnodes as $subnode) {
+            if ($subnodeName == $subnode->getName()) {
+                return $subnode;
+            }
+
+            if ($inDepth) {
+                $subnode = $subnode->findSubnodeByName($subnodeName, $inDepth);
+
+                if ($subnode instanceof \Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface) {
+                    return $subnode;
+                }
+            }
+        }
+
+        return;
+    }
+
+    /**
      * Sets Sort
      *
      * @param string $sort Sort

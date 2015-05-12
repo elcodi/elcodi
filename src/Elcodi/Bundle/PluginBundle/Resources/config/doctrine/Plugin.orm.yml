@@ -1,0 +1,38 @@
+Elcodi\Component\Plugin\Entity\Plugin:
+    type: entity
+    repositoryClass: Elcodi\Component\Plugin\Repository\PluginRepository
+    table: plugin
+    id:
+        namespace:
+            column: namespace
+            type: string
+            length: 255
+            nullable: false
+            unique: true
+    fields:
+        hash:
+            column: hash
+            type: string
+            length: 255
+            nullable: false
+            unique: true
+        type:
+            column: type
+            type: string
+            length: 255
+            nullable: false
+            unique: false
+        category:
+            column: category
+            type: string
+            length: 255
+            nullable: true
+            unique: false
+        enabled:
+            column: enabled
+            type: boolean
+
+    embedded:
+        configuration:
+            columnPrefix: 'plugin_'
+            class: Elcodi\Component\Plugin\Entity\PluginConfiguration

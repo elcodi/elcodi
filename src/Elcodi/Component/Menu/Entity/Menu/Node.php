@@ -62,6 +62,20 @@ class Node implements NodeInterface
     protected $activeUrls;
 
     /**
+     * @var boolean
+     *
+     * Active. This value is not persisted
+     */
+    protected $active;
+
+    /**
+     * @var boolean
+     *
+     * Expanded. This value is not persisted
+     */
+    protected $expanded;
+
+    /**
      * Gets Node code
      *
      * @return string
@@ -192,6 +206,54 @@ class Node implements NodeInterface
 
             $this->activeUrls = json_encode($activeUrls);
         }
+
+        return $this;
+    }
+
+    /**
+     * Get Active
+     *
+     * @return boolean Active
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Sets Active
+     *
+     * @param boolean $active Active
+     *
+     * @return $this Self object
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get Expanded
+     *
+     * @return boolean Expanded
+     */
+    public function getExpanded()
+    {
+        return $this->expanded;
+    }
+
+    /**
+     * Sets Expanded
+     *
+     * @param boolean $expanded Expanded
+     *
+     * @return $this Self object
+     */
+    public function setExpanded($expanded)
+    {
+        $this->expanded = $expanded;
 
         return $this;
     }

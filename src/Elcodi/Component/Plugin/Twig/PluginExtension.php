@@ -20,6 +20,7 @@ namespace Elcodi\Component\Plugin\Twig;
 use Twig_Extension;
 use Twig_SimpleFunction;
 
+use Elcodi\Component\Plugin\Repository\PluginRepository;
 use Elcodi\Component\Plugin\Services\PluginManager;
 
 /**
@@ -30,11 +31,11 @@ use Elcodi\Component\Plugin\Services\PluginManager;
 class PluginExtension extends Twig_Extension
 {
     /**
-     * Plugin manager
+     * @var PluginRepository
      *
-     * @var PluginManager
+     * Plugin repository
      */
-    protected $pluginManager;
+    protected $pluginRepository;
 
     /**
      * Constructor
@@ -43,7 +44,7 @@ class PluginExtension extends Twig_Extension
      */
     public function __construct(PluginManager $pluginManager)
     {
-        $this->pluginManager = $pluginManager;
+        $this->pluginRepository = $pluginRepository;
     }
 
     /**

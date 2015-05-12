@@ -24,6 +24,10 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\MenuBundle\CompilerPass\MappingCompilerPass;
+use Elcodi\Bundle\MenuBundle\CompilerPass\MenuBuilderCompilerPass;
+use Elcodi\Bundle\MenuBundle\CompilerPass\MenuChangerCompilerPass;
+use Elcodi\Bundle\MenuBundle\CompilerPass\MenuFilterCompilerPass;
+use Elcodi\Bundle\MenuBundle\CompilerPass\MenuModifierCompilerPass;
 use Elcodi\Bundle\MenuBundle\DependencyInjection\ElcodiMenuExtension;
 
 /**
@@ -39,6 +43,10 @@ class ElcodiMenuBundle extends Bundle implements DependentBundleInterface
         parent::build($container);
 
         $container->addCompilerPass(new MappingCompilerPass());
+        $container->addCompilerPass(new MenuFilterCompilerPass());
+        $container->addCompilerPass(new MenuBuilderCompilerPass());
+        $container->addCompilerPass(new MenuModifierCompilerPass());
+        $container->addCompilerPass(new MenuChangerCompilerPass());
     }
 
     /**

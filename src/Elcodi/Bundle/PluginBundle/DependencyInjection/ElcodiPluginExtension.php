@@ -46,23 +46,6 @@ class ElcodiPluginExtension extends AbstractExtension
     }
 
     /**
-     * Config files to load
-     *
-     * @param array $config Configuration
-     *
-     * @return array Config files
-     */
-    public function getConfigFiles(array $config)
-    {
-        return [
-            'services',
-            'commands',
-            'eventDispatchers',
-            'twig',
-        ];
-    }
-
-    /**
      * Return a new Configuration instance.
      *
      * If object returned by this method is an instance of
@@ -77,6 +60,54 @@ class ElcodiPluginExtension extends AbstractExtension
     protected function getConfigurationInstance()
     {
         return new Configuration($this->getAlias());
+    }
+
+    /**
+     * Load Parametrization definition
+     *
+     * return array(
+     *      'parameter1' => $config['parameter1'],
+     *      'parameter2' => $config['parameter2'],
+     *      ...
+     * );
+     *
+     * @param array $config Bundles config values
+     *
+     * @return array Parametrization values
+     */
+    protected function getParametrizationValues(array $config)
+    {
+        return [
+            "elcodi.entity.plugin.class"                      => $config['mapping']['plugin']['class'],
+            "elcodi.entity.plugin.mapping_file"               => $config['mapping']['plugin']['mapping_file'],
+            "elcodi.entity.plugin.manager"                    => $config['mapping']['plugin']['manager'],
+            "elcodi.entity.plugin.enabled"                    => $config['mapping']['plugin']['enabled'],
+
+            "elcodi.entity.plugin_configuration.class"        => $config['mapping']['plugin_configuration']['class'],
+            "elcodi.entity.plugin_configuration.mapping_file" => $config['mapping']['plugin_configuration']['mapping_file'],
+            "elcodi.entity.plugin_configuration.manager"      => $config['mapping']['plugin_configuration']['manager'],
+            "elcodi.entity.plugin_configuration.enabled"      => $config['mapping']['plugin_configuration']['enabled'],
+        ];
+    }
+
+    /**
+     * Config files to load
+     *
+     * @param array $config Configuration
+     *
+     * @return array Config files
+     */
+    public function getConfigFiles(array $config)
+    {
+        return [
+            'services',
+            'repositories',
+            'objectManagers',
+            'commands',
+            'eventDispatchers',
+            'formTypes',
+            'twig',
+        ];
     }
 
     /**
