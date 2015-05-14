@@ -17,9 +17,6 @@
 
 namespace Elcodi\Component\User\Services\Abstracts;
 
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-
 use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 use Elcodi\Component\User\EventDispatcher\Interfaces\UserEventDispatcherInterface;
 
@@ -36,52 +33,25 @@ abstract class AbstractUserManager
     protected $userEventDispatcher;
 
     /**
-     * @var TokenStorageInterface
-     *
-     * Token storage
-     */
-    protected $tokenStorage;
-
-    /**
      * Construct method
      *
      * @param UserEventDispatcherInterface $userEventDispatcher User Event dispatcher
-     * @param TokenStorageInterface        $securityContext     Token storage
      */
-    public function __construct(
-        UserEventDispatcherInterface $userEventDispatcher,
-        TokenStorageInterface $securityContext = null
-    ) {
+    public function __construct(UserEventDispatcherInterface $userEventDispatcher)
+    {
         $this->userEventDispatcher = $userEventDispatcher;
-        $this->tokenStorage = $securityContext;
     }
 
     /**
      * Register new User into the web.
      * Creates new token given a user, with related Role set.
      *
-     * @param AbstractUserInterface $user        User to register
-     * @param string                $providerKey Provider key
+     * @param AbstractUserInterface $user User to register
      *
      * @return $this Self object
      */
-    public function register(AbstractUserInterface $user, $providerKey)
+    public function register(AbstractUserInterface $user)
     {
-        if (!($this->tokenStorage instanceof TokenStorageInterface)) {
-            return $this;
-        }
-
-        $token = new UsernamePasswordToken(
-            $user,
-            null,
-            $providerKey,
-            $user->getRoles()
-        );
-
-        $this
-            ->tokenStorage
-            ->setToken($token);
-
         $this
             ->userEventDispatcher
             ->dispatchOnUserRegisteredEvent($user);
