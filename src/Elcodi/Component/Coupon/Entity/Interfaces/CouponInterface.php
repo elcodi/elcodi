@@ -215,6 +215,22 @@ interface CouponInterface
     public function getMinimumPurchase();
 
     /**
+     * Get if this coupon can be used together with another coupon
+     *
+     * @return int
+     */
+    public function getStackable();
+
+    /**
+     * Set if this coupon can be used together with another coupon
+     *
+     * @param int $stackable
+     *
+     * @return $this Self object
+     */
+    public function setStackable($stackable);
+
+    /**
      * Set rule Rule to check for applicability
      *
      * @param RuleInterface $rule New rule

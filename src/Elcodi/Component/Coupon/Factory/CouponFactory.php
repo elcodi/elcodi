@@ -53,6 +53,7 @@ class CouponFactory extends AbstractPurchasableFactory
             ->setUsed(0)
             ->setCount(0)
             ->setPriority(0)
+            ->setStackable(false)
             ->setEnabled(false)
             ->setCreatedAt($now)
             ->setValidFrom($now);

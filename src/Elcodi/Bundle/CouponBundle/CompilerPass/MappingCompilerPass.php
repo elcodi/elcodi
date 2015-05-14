@@ -19,7 +19,6 @@ namespace Elcodi\Bundle\CouponBundle\CompilerPass;
 
 use Mmoreram\SimpleDoctrineMapping\CompilerPass\Abstracts\AbstractMappingCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-
 use Elcodi\Bundle\CoreBundle\CompilerPass\Traits\EntityMappingTrait;
 
 /**
