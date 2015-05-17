@@ -1,0 +1,16 @@
+services:
+
+    #
+    # Event Listeners
+    #
+    elcodi.event_listener.product_belongs_category:
+        class: Elcodi\Component\Product\EventListener\ProductBelongsPrincipalCategoryEventListener
+        tags:
+            - { name: doctrine.event_listener, event: preFlush, method: preFlush }
+
+    elcodi.event_listener.principal_category:
+        class: Elcodi\Component\Product\EventListener\ProductPrincipalCategoryEventListener
+        tags:
+            - { name: doctrine.event_listener, event: preFlush, method: preFlush }
+
+
