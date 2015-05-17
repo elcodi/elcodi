@@ -1,5 +1,18 @@
-adapter: github
-issue_tracker: github
 table-pr:
     fixed_tickets: ['Fixed Tickets', '']
+pr_type:
+    - feature
+    - bugfix
+    - refactor
+    - tests
+    - remove
+    - style
+    - documentation
+    - security
 base: master
+repo_adapter: github
+issue_tracker: github
+repo_org: elcodi
+repo_name: elcodi
+issue_project_org: elcodi
+issue_project_name: elcodi
