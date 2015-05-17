@@ -71,7 +71,7 @@ class AutomaticCouponApplicatorListener
         $cart = $event->getCart();
 
         if ($cart->getCartLines()->isEmpty()) {
-            return;
+            return null;
         }
 
         /**

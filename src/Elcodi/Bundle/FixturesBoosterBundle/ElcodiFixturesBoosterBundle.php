@@ -60,6 +60,6 @@ class ElcodiFixturesBoosterBundle extends Bundle implements DependentBundleInter
      */
     public function registerCommands(Application $application)
     {
-        return;
+        return null;
     }
 }

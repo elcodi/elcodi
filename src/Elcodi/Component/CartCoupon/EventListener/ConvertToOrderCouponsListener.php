@@ -106,7 +106,7 @@ class ConvertToOrderCouponsListener
             ->getCoupons($cart);
 
         if ($coupons->isEmpty()) {
-            return;
+            return null;
         }
 
         /**

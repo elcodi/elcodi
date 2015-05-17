@@ -36,7 +36,7 @@ class MenuFilterCompilerPass implements CompilerPassInterface
     public function process(ContainerBuilder $container)
     {
         if (!$container->has('elcodi.menu_filterer')) {
-            return;
+            return null;
         }
 
         $definition = $container->findDefinition(

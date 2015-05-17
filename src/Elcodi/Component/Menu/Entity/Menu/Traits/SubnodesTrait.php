@@ -122,7 +122,7 @@ trait SubnodesTrait
             }
         }
 
-        return;
+        return null;
     }
 
     /**

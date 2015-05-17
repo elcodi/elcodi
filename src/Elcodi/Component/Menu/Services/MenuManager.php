@@ -185,7 +185,7 @@ class MenuManager extends AbstractCacheWrapper
             // Silent pass
         }
 
-        return;
+        return null;
     }
 
     /**

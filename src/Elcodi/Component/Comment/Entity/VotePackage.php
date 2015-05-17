@@ -53,7 +53,7 @@ class VotePackage
     protected function __construct(array $votes = null)
     {
         if (is_null($votes)) {
-            return;
+            return null;
         }
 
         foreach ($votes as $vote) {

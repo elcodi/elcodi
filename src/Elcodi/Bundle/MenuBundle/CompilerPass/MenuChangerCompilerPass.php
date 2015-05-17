@@ -36,7 +36,7 @@ class MenuChangerCompilerPass implements CompilerPassInterface
     public function process(ContainerBuilder $container)
     {
         if (!$container->has('elcodi.manager.menu')) {
-            return;
+            return null;
         }
 
         $definition = $container->findDefinition(

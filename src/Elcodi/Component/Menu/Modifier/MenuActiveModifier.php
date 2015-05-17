@@ -56,7 +56,7 @@ class MenuActiveModifier implements MenuModifierInterface
             ->getMasterRequest();
 
         if (!$masterRequest) {
-            return;
+            return null;
         }
 
         $currentRoute = $masterRequest->get('_route');

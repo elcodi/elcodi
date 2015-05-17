@@ -143,17 +143,17 @@ class CustomerWrapper
     protected function getCustomerFromToken()
     {
         if (!($this->tokenStorage instanceof TokenStorageInterface)) {
-            return;
+            return null;
         }
 
         $token = $this->tokenStorage->getToken();
         if (!($token instanceof TokenInterface)) {
-            return;
+            return null;
         }
 
         $customer = $token->getUser();
         if (!($customer instanceof CustomerInterface)) {
-            return;
+            return null;
         }
 
         return $customer;

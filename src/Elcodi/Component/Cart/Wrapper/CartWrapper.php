@@ -173,7 +173,7 @@ class CartWrapper
             ->get();
 
         if (!$cartIdInSession) {
-            return;
+            return null;
         }
 
         return $this
@@ -207,7 +207,7 @@ class CartWrapper
             return $customerCart;
         }
 
-        return;
+        return null;
     }
 
     /**

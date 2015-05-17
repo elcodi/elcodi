@@ -74,6 +74,6 @@ class ElcodiEntityTranslatorBundle extends Bundle implements DependentBundleInte
      */
     public function registerCommands(Application $application)
     {
-        return;
+        return null;
     }
 }

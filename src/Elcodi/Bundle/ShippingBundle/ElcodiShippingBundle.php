@@ -77,6 +77,6 @@ class ElcodiShippingBundle extends Bundle implements DependentBundleInterface
      */
     public function registerCommands(Application $application)
     {
-        return;
+        return null;
     }
 }
