@@ -21,10 +21,10 @@ use RuntimeException;
 use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 
+use Elcodi\Component\Core\Wrapper\Interfaces\WrapperInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Repository\CurrencyRepository;
-use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 
 /**
  * Class MoneyProvider
@@ -34,11 +34,11 @@ use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 class MoneyProvider implements ExpressionFunctionProviderInterface
 {
     /**
-     * @var CurrencyWrapper
+     * @var WrapperInterface
      *
      * Currency wrapper to get the default currency
      */
-    protected $currencyWrapper;
+    protected $defaultCurrencyWrapper;
 
     /**
      * @var CurrencyRepository
@@ -50,14 +50,14 @@ class MoneyProvider implements ExpressionFunctionProviderInterface
     /**
      * Construct
      *
-     * @param CurrencyWrapper    $currencyWrapper    Currency wrapper
-     * @param CurrencyRepository $currencyRepository Currency Repository
+     * @param WrapperInterface   $defaultCurrencyWrapper Default Currency wrapper
+     * @param CurrencyRepository $currencyRepository     Currency Repository
      */
     public function __construct(
-        CurrencyWrapper $currencyWrapper,
+        WrapperInterface $defaultCurrencyWrapper,
         CurrencyRepository $currencyRepository
     ) {
-        $this->currencyWrapper = $currencyWrapper;
+        $this->defaultCurrencyWrapper = $defaultCurrencyWrapper;
         $this->currencyRepository = $currencyRepository;
     }
 
@@ -83,8 +83,8 @@ class MoneyProvider implements ExpressionFunctionProviderInterface
 
                     if ($currencyIso === null) {
                         $currency = $this
-                            ->currencyWrapper
-                            ->getDefaultCurrency();
+                            ->defaultCurrencyWrapper
+                            ->get();
                     } else {
                         /**
                          * @var CurrencyInterface $currency

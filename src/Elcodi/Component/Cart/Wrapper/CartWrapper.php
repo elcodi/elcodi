@@ -19,8 +19,8 @@ namespace Elcodi\Component\Cart\Wrapper;
 
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher;
-use Elcodi\Component\Cart\Services\CartSessionManager;
-use Elcodi\Component\Core\Services\ObjectDirector;
+use Elcodi\Component\Cart\Factory\CartFactory;
+use Elcodi\Component\Core\Wrapper\Interfaces\WrapperInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 use Elcodi\Component\User\Wrapper\CustomerWrapper;
 
@@ -31,7 +31,7 @@ use Elcodi\Component\User\Wrapper\CustomerWrapper;
  * load it from HTTP Session, from the Customer collection
  * of pending Carts or by factoring a pristine Cart.
  *
- * The most useful method in this wrapper is loadCart(), which
+ * The most useful method in this wrapper is get(), which
  * will behave according to different scenarios:
  *
  * - When the Customer has pending Carts, the last Cart form
@@ -41,7 +41,7 @@ use Elcodi\Component\User\Wrapper\CustomerWrapper;
  * - When there is no Cart in session, a new one is factored
  *
  */
-class CartWrapper
+class CartWrapper implements WrapperInterface
 {
     /**
      * @var CartEventDispatcher
@@ -51,18 +51,18 @@ class CartWrapper
     protected $cartEventDispatcher;
 
     /**
-     * @var CartSessionManager
+     * @var CartFactory
      *
-     * CartSessionManager
+     * Cart Factory
      */
-    protected $cartSessionManager;
+    protected $cartFactory;
 
     /**
-     * @var ObjectDirector
+     * @var CartSessionWrapper
      *
-     * Cart Director
+     * Cart Session Wrapper
      */
-    protected $cartDirector;
+    protected $cartSessionWrapper;
 
     /**
      * @var CustomerWrapper
@@ -82,51 +82,42 @@ class CartWrapper
      * Construct method
      *
      * @param CartEventDispatcher $cartEventDispatcher Cart EventDispatcher
-     * @param CartSessionManager  $cartSessionManager  CartSessionManager
-     * @param ObjectDirector      $cartDirector        Cart Director
+     * @param CartFactory         $cartFactory         Cart Factory
+     * @param CartSessionWrapper  $cartSessionWrapper  Cart Session Wrapper
      * @param CustomerWrapper     $customerWrapper     Customer Wrapper
      */
     public function __construct(
         CartEventDispatcher $cartEventDispatcher,
-        CartSessionManager $cartSessionManager,
-        ObjectDirector $cartDirector,
+        CartFactory $cartFactory,
+        CartSessionWrapper $cartSessionWrapper,
         CustomerWrapper $customerWrapper
     ) {
         $this->cartEventDispatcher = $cartEventDispatcher;
-        $this->cartSessionManager = $cartSessionManager;
-        $this->cartDirector = $cartDirector;
+        $this->cartFactory = $cartFactory;
+        $this->cartSessionWrapper = $cartSessionWrapper;
         $this->customerWrapper = $customerWrapper;
     }
 
     /**
-     * Get cart
+     * Get loaded object. If object is not loaded yet, then load it and save it
+     * locally. Otherwise, just return the pre-loaded object
      *
-     * Return current cart value
-     *
-     * @return CartInterface Instance of Cart loaded
+     * @return mixed Loaded object
      */
-    public function getCart()
+    public function get()
     {
-        return $this->cart;
-    }
+        if ($this->cart instanceof CartInterface) {
+            return $this->cart;
+        }
 
-    /**
-     * Load cart
-     *
-     * This method, first of all tries to retrieve cart from session
-     *
-     * If this does not exists nor the id is not valid, a new cart is created
-     * using Cart factory
-     *
-     * This behavior can be overridden just overwriting the wrapper
-     *
-     * @return CartInterface Instance of Cart loaded
-     */
-    public function loadCart()
-    {
-        $customer = $this->customerWrapper->loadCustomer();
+        $customer = $this
+            ->customerWrapper
+            ->get();
+
         $cartFromCustomer = $this->getCustomerCart($customer);
-        $cartFromSession = $this->getCartFromSession();
+        $cartFromSession = $this
+            ->cartSessionWrapper
+            ->get();
 
         $this->cart = $this
             ->resolveCarts(
@@ -143,45 +134,15 @@ class CartWrapper
     }
 
     /**
-     * Reload cart
+     * Clean loaded object in order to reload it again.
      *
-     * This method sets to null current cart and tries to load it again
-     *
-     * @return CartInterface Cart re-loaded
+     * @return $this Self object
      */
-    public function reloadCart()
+    public function clean()
     {
         $this->cart = null;
 
-        return $this->loadCart();
-    }
-
-    /**
-     * Return cart from session
-     *
-     * If session has a cart, retrieves it and checks if exists
-     * If exists, returns it
-     * Otherwise, creates new one
-     * If session has not a cart, creates a new one and returns it
-     *
-     * @return CartInterface|null Cart
-     */
-    public function getCartFromSession()
-    {
-        $cartIdInSession = $this
-            ->cartSessionManager
-            ->get();
-
-        if (!$cartIdInSession) {
-            return null;
-        }
-
-        return $this
-            ->cartDirector
-            ->findOneBy([
-                'id'      => $cartIdInSession,
-                'ordered' => false,
-            ]);
+        return $this;
     }
 
     /**
@@ -236,7 +197,7 @@ class CartWrapper
                  * We create a new Cart
                  */
                 $cart = $this
-                    ->cartDirector
+                    ->cartFactory
                     ->create();
             } else {
 

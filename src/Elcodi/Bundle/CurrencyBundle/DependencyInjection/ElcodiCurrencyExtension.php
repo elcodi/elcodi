@@ -117,6 +117,7 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
     {
         return [
             'services',
+            'wrappers',
             'commands',
             'currencyExchangeRatesProviderAdapters',
             'expressionLanguage',

@@ -15,14 +15,14 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\CurrencyBundle\Tests\Functional\Services;
+namespace Elcodi\Bundle\CurrencyBundle\Tests\Functional\Wrapper;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class CurrencySessionManagerTest
+ * Class CurrencyWrapperTest
  */
-class CurrencySessionManagerTest extends WebTestCase
+class CurrencyWrapperTest extends WebTestCase
 {
     /**
      * Schema must be loaded in all test cases
@@ -42,7 +42,7 @@ class CurrencySessionManagerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.manager.currency_session',
+            'elcodi.wrapper.currency',
         ];
     }
 }

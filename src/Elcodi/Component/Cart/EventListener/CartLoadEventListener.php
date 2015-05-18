@@ -25,6 +25,7 @@ use Elcodi\Component\Cart\Event\CartOnLoadEvent;
 use Elcodi\Component\Cart\Event\CartPreLoadEvent;
 use Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher;
 use Elcodi\Component\Cart\Services\CartManager;
+use Elcodi\Component\Core\Wrapper\Interfaces\WrapperInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
@@ -68,7 +69,7 @@ class CartLoadEventListener
     protected $cartManager;
 
     /**
-     * @var CurrencyWrapper
+     * @var WrapperInterface
      *
      * Currency Wrapper
      */
@@ -95,7 +96,7 @@ class CartLoadEventListener
      *                                                 entity
      * @param CartEventDispatcher $cartEventDispatcher Cart event dispatcher
      * @param CartManager         $cartManager         Cart Manager
-     * @param CurrencyWrapper     $currencyWrapper     Currency Wrapper
+     * @param WrapperInterface    $currencyWrapper     Currency Wrapper
      * @param CurrencyConverter   $currencyConverter   Currency Converter
      * @param boolean             $useStock            Use stock
      */
@@ -103,7 +104,7 @@ class CartLoadEventListener
         ObjectManager $cartObjectManager,
         CartEventDispatcher $cartEventDispatcher,
         CartManager $cartManager,
-        CurrencyWrapper $currencyWrapper,
+        WrapperInterface $currencyWrapper,
         CurrencyConverter $currencyConverter,
         $useStock
     ) {
@@ -263,7 +264,10 @@ class CartLoadEventListener
      */
     protected function calculateCartPrices(CartInterface $cart)
     {
-        $currency = $this->currencyWrapper->loadCurrency();
+        $currency = $this
+            ->currencyWrapper
+            ->get();
+
         $productAmount = Money::create(0, $currency);
 
         /**

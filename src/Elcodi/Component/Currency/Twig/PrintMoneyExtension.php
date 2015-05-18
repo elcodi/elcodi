@@ -111,7 +111,9 @@ class PrintMoneyExtension extends Twig_Extension
         }
 
         if (!($targetCurrency instanceof CurrencyInterface)) {
-            $targetCurrency = $this->currencyWrapper->loadCurrency();
+            $targetCurrency = $this
+                ->currencyWrapper
+                ->get();
         }
 
         $moneyConverted = $this
@@ -179,7 +181,7 @@ class PrintMoneyExtension extends Twig_Extension
     {
         $targetCurrency = $this
             ->currencyWrapper
-            ->loadCurrency();
+            ->get();
 
         $money = Money::create(
             $value,

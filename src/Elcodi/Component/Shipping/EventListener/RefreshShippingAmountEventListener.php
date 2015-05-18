@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Shipping\EventListener;
 
 use Elcodi\Component\Cart\Event\CartOnLoadEvent;
+use Elcodi\Component\Core\Wrapper\Interfaces\WrapperInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
 use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
@@ -32,7 +33,7 @@ use Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface;
 class RefreshShippingAmountEventListener
 {
     /**
-     * @var CurrencyWrapper
+     * @var WrapperInterface
      *
      * Currency Wrapper
      */
@@ -48,11 +49,11 @@ class RefreshShippingAmountEventListener
     /**
      * Construct method
      *
-     * @param CurrencyWrapper   $currencyWrapper   Currency wrapper
+     * @param WrapperInterface  $currencyWrapper   Currency wrapper
      * @param CurrencyConverter $currencyConverter Currency converter
      */
     public function __construct(
-        CurrencyWrapper $currencyWrapper,
+        WrapperInterface $currencyWrapper,
         CurrencyConverter $currencyConverter
     ) {
         $this->currencyWrapper = $currencyWrapper;
@@ -73,7 +74,7 @@ class RefreshShippingAmountEventListener
         $cartShippingRange = $cart->getShippingRange();
         $currency = $this
             ->currencyWrapper
-            ->loadCurrency();
+            ->get();
 
         if ($cartShippingRange instanceof ShippingRangeInterface) {
             $shippingAmount = $this
