@@ -18,10 +18,10 @@ https://github.com/elcodi/elcodi/compare/v0.5.2...v0.5.3
 * [`4be012c`](https://github.com/elcodi/elcodi/commit/4be012c8a43cf6738898aad7658d6ecbfe293246) type hinting fix (Joan Galvan)
 * [`a121974`](https://github.com/elcodi/elcodi/commit/a1219749cd8f39591e6b5bfe5f7955609a489b9f) Some small fixes given by Scrutinizer (mmoreram)
 * [`f7d76aa`](https://github.com/elcodi/elcodi/commit/f7d76aa5f56f851b5443f297ee68feae3e3b90f5) Improved some methods and fixed some code (mmoreram)
+* [`20813a5`](https://github.com/elcodi/elcodi/commit/20813a5761dc27b90d1ef14af0d2d87407f62b96) Fixed some code according scrutinizer issues (mmoreram)
 
 ### v0.5.16 (09-05-2015)
 
-* [`20813a5`](https://github.com/elcodi/elcodi/commit/20813a5761dc27b90d1ef14af0d2d87407f62b96) Fixed some code according scrutinizer issues (mmoreram)
 * [`b1db6ca`](https://github.com/elcodi/elcodi/commit/b1db6caac3c5a951822ab5717c4bccdc415be1f4) Updated service definition (mmoreram)
 * [`983e7c8`](https://github.com/elcodi/elcodi/commit/983e7c88439614439599c144bf3a8622dfeb8e75) minor typos (Luis Cordova)
 
