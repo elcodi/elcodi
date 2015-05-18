@@ -130,6 +130,7 @@ class MenuManager extends AbstractCacheWrapper
                 );
             }
 
+            $this->applyMenuChangers($menu);
             $this->saveToMemory($menu);
         }
 
@@ -254,8 +255,6 @@ class MenuManager extends AbstractCacheWrapper
         $this
             ->menuObjectManager
             ->detach($menu);
-
-        $this->applyMenuChangers($menu);
 
         return $menu;
     }

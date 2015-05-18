@@ -83,7 +83,7 @@ class MenuModifier implements MenuChangerInterface
      */
     protected function applyModifiersToMenuNodes(Collection $menuNodes)
     {
-        $menuNodes->forAll(function ($_, NodeInterface $menuNode) {
+        $menuNodes->map(function (NodeInterface $menuNode) {
 
             $this->applyModifiersToMenuNodes($menuNode->getSubnodes());
             foreach ($this->menuModifiers as $menuModifier) {
