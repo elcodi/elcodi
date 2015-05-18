@@ -8,6 +8,20 @@ https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v0.5.2...v0.5.3
 
+### v0.5.16 (18-05-2015)
+
+* [`9c998b8`](https://github.com/elcodi/elcodi/commit/9c998b87ba7bffc14c3f8f5224acd2767c1a6334) Update BannerManager.php (Germán Figna)
+* [`8d2891f`](https://github.com/elcodi/elcodi/commit/8d2891fab80caa60bc6fb45e0061a58db8446f96) update gush settings (Luis Cordova)
+* [`afdd92c`](https://github.com/elcodi/elcodi/commit/afdd92cadebe890f0296f1aff398d9f6a2e27833) extract listener with autologin after registration (Berny Cantos)
+* [`3a05abb`](https://github.com/elcodi/elcodi/commit/3a05abbe76427bb9ae1d175bba26b0d8880c7050) Product category event listeners (Roger Gros)
+* [`eb8b577`](https://github.com/elcodi/elcodi/commit/eb8b577620e0b6bf3aa92dec457de78fe0fd4dfc) Revert "type hinting fix" (Marc Morera)
+* [`4be012c`](https://github.com/elcodi/elcodi/commit/4be012c8a43cf6738898aad7658d6ecbfe293246) type hinting fix (Joan Galvan)
+* [`a121974`](https://github.com/elcodi/elcodi/commit/a1219749cd8f39591e6b5bfe5f7955609a489b9f) Some small fixes given by Scrutinizer (mmoreram)
+* [`f7d76aa`](https://github.com/elcodi/elcodi/commit/f7d76aa5f56f851b5443f297ee68feae3e3b90f5) Improved some methods and fixed some code (mmoreram)
+* [`20813a5`](https://github.com/elcodi/elcodi/commit/20813a5761dc27b90d1ef14af0d2d87407f62b96) Fixed some code according scrutinizer issues (mmoreram)
+* [`b1db6ca`](https://github.com/elcodi/elcodi/commit/b1db6caac3c5a951822ab5717c4bccdc415be1f4) Updated service definition (mmoreram)
+* [`983e7c8`](https://github.com/elcodi/elcodi/commit/983e7c88439614439599c144bf3a8622dfeb8e75) minor typos (Luis Cordova)
+
 ### v0.5.15 (07-05-2015)
 
 * [`a3994c6`](https://github.com/elcodi/elcodi/commit/a3994c6c00d5654488ca85987b944a5563f89033) Added Metrics Load Command (mmoreram)
