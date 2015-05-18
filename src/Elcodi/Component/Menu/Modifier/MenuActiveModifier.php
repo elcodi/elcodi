@@ -17,6 +17,7 @@
 
 namespace Elcodi\Component\Menu\Modifier;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface;
@@ -55,14 +56,12 @@ class MenuActiveModifier implements MenuModifierInterface
             ->requestStack
             ->getMasterRequest();
 
-        if (!$masterRequest) {
-            return null;
-        }
+        if ($masterRequest instanceof Request) {
+            $currentRoute = $masterRequest->get('_route');
 
-        $currentRoute = $masterRequest->get('_route');
-
-        if (in_array($currentRoute, $menuNode->getActiveUrls())) {
-            $menuNode->setActive(true);
+            if (in_array($currentRoute, $menuNode->getActiveUrls())) {
+                $menuNode->setActive(true);
+            }
         }
     }
 }

@@ -30,8 +30,8 @@ class AdminUserManager extends AbstractUserManager
      * Register new User into the web.
      * Creates new token given a user, with related Role set.
      *
-     * @param AbstractUserInterface $user User to register
-     * @return $this Self object
+     * @param  AbstractUserInterface $user User to register
+     * @return $this                 Self object
      * @internal param string $providerKey Provider key
      *
      */

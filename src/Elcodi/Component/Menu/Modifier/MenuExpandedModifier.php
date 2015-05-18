@@ -17,6 +17,7 @@
 
 namespace Elcodi\Component\Menu\Modifier;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface;
@@ -55,18 +56,16 @@ class MenuExpandedModifier implements MenuModifierInterface
             ->requestStack
             ->getMasterRequest();
 
-        if (!$masterRequest) {
-            return null;
+        if ($masterRequest instanceof Request) {
+            $currentRoute = $masterRequest->get('_route');
+
+            $menuNode
+                ->getSubnodes()
+                ->forAll(function ($_, NodeInterface $menuNode) use ($currentRoute) {
+                    if (in_array($currentRoute, $menuNode->getActiveUrls())) {
+                        $menuNode->setExpanded(true);
+                    }
+                });
         }
-
-        $currentRoute = $masterRequest->get('_route');
-
-        $menuNode
-            ->getSubnodes()
-            ->forAll(function ($_, NodeInterface $menuNode) use ($currentRoute) {
-                if (in_array($currentRoute, $menuNode->getActiveUrls())) {
-                    $menuNode->setExpanded(true);
-                }
-            });
     }
 }
