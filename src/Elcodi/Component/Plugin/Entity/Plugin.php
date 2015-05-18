@@ -242,7 +242,7 @@ class Plugin
     {
         return $this
             ->configuration
-            ->getField($fieldName)['data'];
+            ->getFieldValue($fieldName);
     }
 
     /**
@@ -257,7 +257,7 @@ class Plugin
         foreach ($fieldValues as $field => $fieldValue) {
             $this
                 ->configuration
-                ->setField(
+                ->setFieldValue(
                     $field,
                     $fieldValue
                 );

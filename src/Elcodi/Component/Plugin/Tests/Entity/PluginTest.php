@@ -156,7 +156,7 @@ class PluginTest extends PHPUnit_Framework_TestCase
         $this
             ->plugin
             ->getConfiguration()
-            ->setField('field1', 'New value');
+            ->setFieldValue('field1', 'New value');
 
         $this->assertEquals(
             [
@@ -180,7 +180,7 @@ class PluginTest extends PHPUnit_Framework_TestCase
         $this
             ->plugin
             ->getConfiguration()
-            ->setField('field1', 'New value');
+            ->setFieldValue('field1', 'New value');
 
         $this->assertEquals(
             'New value',
@@ -225,8 +225,8 @@ class PluginTest extends PHPUnit_Framework_TestCase
             'field3',
         ]));
 
-        $configuration->setField('field1', 'Value');
-        $configuration->setField('field2', true);
+        $configuration->setFieldValue('field1', 'Value');
+        $configuration->setFieldValue('field2', true);
         $plugin->setEnabled(true);
         $this->assertTrue($plugin->isUsable([
             'field1',
@@ -255,7 +255,7 @@ class PluginTest extends PHPUnit_Framework_TestCase
         $plugin = $this->plugin;
         $configuration = $plugin->getConfiguration();
 
-        $configuration->setField('field1', 'value1');
+        $configuration->setFieldValue('field1', 'value1');
         $mergedPlugin = $plugin
             ->merge(Plugin::create(
                 'A\Plugin',

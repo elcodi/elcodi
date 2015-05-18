@@ -123,9 +123,9 @@ class PluginConfiguration
      *
      * @return mixed|null Field element value
      */
-    public function setField($fieldName, $fieldValue)
+    public function setFieldValue($fieldName, $fieldValue)
     {
-        if (!isset($this->getFields()[$fieldName])) {
+        if (!$this->hasField($fieldName)) {
             throw new RuntimeException('Field "' . $fieldName . '" not found in Plugin Configuration');
         }
 
@@ -135,6 +135,22 @@ class PluginConfiguration
         $this->setConfiguration($configuration);
 
         return $this;
+    }
+
+    /**
+     * Get field value
+     *
+     * @param string $fieldName Field name
+     *
+     * @return mixed|null Field element value
+     */
+    public function getFieldValue($fieldName)
+    {
+        if (!$this->hasField($fieldName)) {
+            throw new RuntimeException('Field "' . $fieldName . '" not found in Plugin Configuration');
+        }
+
+        return $this->getFields()[$fieldName]['data'];
     }
 
     /**
@@ -155,9 +171,9 @@ class PluginConfiguration
         foreach ($fields as $fieldName => $field) {
             if ($this->hasField($fieldName)) {
                 $newPluginConfiguration
-                    ->setField(
+                    ->setFieldValue(
                         $fieldName,
-                        $this->getField($fieldName)['data']
+                        $this->getFieldValue($fieldName)
                     );
             }
         }
