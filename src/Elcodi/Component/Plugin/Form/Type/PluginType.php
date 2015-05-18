@@ -63,6 +63,7 @@ class PluginType extends AbstractType
                     'label'    => $field['label'],
                     'data'     => $field['data'],
                     'required' => $field['required'],
+                    'attr'     => $field['attr'],
                 ]);
         }
 
