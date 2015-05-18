@@ -38,7 +38,7 @@ class BannerManager
     /**
      * Construct method
      *
-     * @param BannerRepository $bannerRepository Banner zone repository
+     * @param BannerRepository $bannerRepository Banner repository
      */
     public function __construct(BannerRepository $bannerRepository)
     {
