@@ -78,6 +78,7 @@ class PluginConfiguration implements ConfigurationInterface
                                    'date',
                                    'datetime',
                                    'time',
+                                   'hidden',
                                ])
                             ->end()
                             ->booleanNode('required')

@@ -112,7 +112,7 @@ class PluginManager
             $pluginInstance = $this
                 ->getPluginInstance(
                     $plugins,
-                    $pluginNamespace,
+                    get_class($plugin),
                     $pluginConfiguration
                 );
 
