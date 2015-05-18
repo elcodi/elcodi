@@ -70,6 +70,6 @@ class StaticRouteTransformer implements SitemapTransformerInterface
      */
     public function getLastMod($element, $language = null)
     {
-        return;
+        return null;
     }
 }

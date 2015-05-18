@@ -51,6 +51,6 @@ class ElcodiCoreBundle extends Bundle
      */
     public function registerCommands(Application $application)
     {
-        return;
+        return null;
     }
 }

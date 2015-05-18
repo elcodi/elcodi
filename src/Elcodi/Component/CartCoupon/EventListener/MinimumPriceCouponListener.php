@@ -59,7 +59,7 @@ class MinimumPriceCouponListener
             ->getMinimumPurchase();
 
         if ($couponMinimumPrice->getAmount() === 0) {
-            return;
+            return null;
         }
 
         $productMoney = $event

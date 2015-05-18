@@ -3,14 +3,32 @@ services:
     #
     # Services
     #
-    elcodi.manager.template:
-        class: Elcodi\Component\Template\Services\TemplateManager
-        arguments:
-            - @kernel
-            - @elcodi.manager.configuration
-
     elcodi.manager.plugin:
         class: Elcodi\Component\Plugin\Services\PluginManager
         arguments:
             - @kernel
-            - @elcodi.manager.configuration
+            - @elcodi.repository.plugin
+            - @elcodi.object_manager.plugin
+            - @elcodi.loader.plugin
+
+    elcodi.loader.plugin:
+        class: Elcodi\Component\Plugin\Services\PluginLoader
+
+
+    #
+    # Aliases
+    #
+    elcodi.enabled_plugins:
+        class: StdClass
+        factory: [@elcodi.repository.plugin, findBy]
+        arguments:
+            - {enabled: true}
+
+    elcodi.plugins:
+        class: StdClass
+        factory: [@elcodi.repository.plugin, findBy]
+
+    elcodi.abstract_plugin:
+        abstract: true
+        class: Elcodi\Component\Plugin\Entity\Plugin
+        factory: [@elcodi.repository.plugin, findOneByNamespace]

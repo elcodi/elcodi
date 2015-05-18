@@ -305,7 +305,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
         if ($line->getQuantity() == 0) {
             $this->assertFalse($this->cart->getCartLines()->last());
 
-            return;
+            return null;
         }
 
         $this

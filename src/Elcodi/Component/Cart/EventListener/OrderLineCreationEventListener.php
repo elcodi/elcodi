@@ -79,7 +79,7 @@ class OrderLineCreationEventListener
         $stock = $purchasable->getStock();
 
         if ($stock === ElcodiProductStock::INFINITE_STOCK) {
-            return;
+            return null;
         }
 
         $quantityPurchased = $event

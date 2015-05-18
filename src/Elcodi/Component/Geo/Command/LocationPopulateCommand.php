@@ -139,7 +139,7 @@ class LocationPopulateCommand extends Command
                         $output
                     )
                 ) {
-                    return;
+                    return null;
                 }
 
                 $this->dropLocation($country, $output);

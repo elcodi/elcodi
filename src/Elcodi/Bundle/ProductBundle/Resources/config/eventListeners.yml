@@ -12,5 +12,3 @@ services:
         class: Elcodi\Component\Product\EventListener\ProductPrincipalCategoryEventListener
         tags:
             - { name: doctrine.event_listener, event: preFlush, method: preFlush }
-
-

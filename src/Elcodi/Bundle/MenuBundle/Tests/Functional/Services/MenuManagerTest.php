@@ -21,7 +21,7 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Menu\Services\MenuManager;
 
 /**
- * Class MenuManager
+ * Class MenuManagerTest
  */
 class MenuManagerTest extends WebTestCase
 {
@@ -71,41 +71,11 @@ class MenuManagerTest extends WebTestCase
      */
     public function testLoadAdminMenu()
     {
-        $this->assertEquals(
-            $this->menuManager->loadMenuByCode('menu-admin'),
-            [
-                1 => [
-                    'id'         => 1,
-                    'name'       => 'vogue',
-                    'code'       => 'vogue',
-                    'url'        => null,
-                    'enabled'    => true,
-                    'activeUrls' => [],
-                    'subnodes'   => [
-                        2 => [
-                            'id'         => 2,
-                            'name'       => 'him',
-                            'code'       => 'him',
-                            'url'        => 'elcodi.dev/him',
-                            'enabled'    => true,
-                            'subnodes'   => [],
-                            'activeUrls' => [],
-                        ],
-                        3 => [
-                            'id'         => 3,
-                            'name'       => 'her',
-                            'code'       => 'her',
-                            'url'        => 'elcodi.dev/her',
-                            'enabled'    => true,
-                            'subnodes'   => [],
-                            'activeUrls' => [
-                                'her_products_list_route',
-                                'her_offers_list_route',
-                            ],
-                        ],
-                    ],
-                ],
-            ]
+        $this->assertInstanceOf(
+            'Elcodi\Component\Menu\Entity\Menu\Interfaces\MenuInterface',
+            $this
+                ->menuManager
+                ->loadMenuByCode('menu-admin')
         );
     }
 
@@ -114,31 +84,11 @@ class MenuManagerTest extends WebTestCase
      */
     public function testLoadFrontMenu()
     {
-        $this->assertEquals(
-            $this->menuManager->loadMenuByCode('menu-front'),
-            [
-                2 => [
-                    'id'         => 2,
-                    'name'       => 'him',
-                    'code'       => 'him',
-                    'url'        => 'elcodi.dev/him',
-                    'enabled'    => true,
-                    'subnodes'   => [],
-                    'activeUrls' => [],
-                ],
-                3 => [
-                    'id'         => 3,
-                    'name'       => 'her',
-                    'code'       => 'her',
-                    'url'        => 'elcodi.dev/her',
-                    'enabled'    => true,
-                    'subnodes'   => [],
-                    'activeUrls' => [
-                        'her_products_list_route',
-                        'her_offers_list_route',
-                    ],
-                ],
-            ]
+        $this->assertInstanceOf(
+            'Elcodi\Component\Menu\Entity\Menu\Interfaces\MenuInterface',
+            $this
+                ->menuManager
+                ->loadMenuByCode('menu-front')
         );
     }
 }

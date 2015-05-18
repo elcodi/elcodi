@@ -68,6 +68,6 @@ class VariantRepository extends EntityRepository
          * No match, probable option misconfiguration in Variants
          */
 
-        return;
+        return null;
     }
 }

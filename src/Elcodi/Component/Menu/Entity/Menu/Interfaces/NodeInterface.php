@@ -110,4 +110,36 @@ interface NodeInterface
      * @return $this Self object
      */
     public function removeActiveUrl($activeUrl);
+
+    /**
+     * Get Active
+     *
+     * @return boolean Active
+     */
+    public function getActive();
+
+    /**
+     * Sets Active
+     *
+     * @param boolean $active Active
+     *
+     * @return $this Self object
+     */
+    public function setActive($active);
+
+    /**
+     * Get Expanded
+     *
+     * @return boolean Expanded
+     */
+    public function getExpanded();
+
+    /**
+     * Sets Expanded
+     *
+     * @param boolean $expanded Expanded
+     *
+     * @return $this Self object
+     */
+    public function setExpanded($expanded);
 }

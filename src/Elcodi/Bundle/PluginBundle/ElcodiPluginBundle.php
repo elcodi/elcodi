@@ -23,6 +23,7 @@ use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
+use Elcodi\Bundle\PluginBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\PluginBundle\DependencyInjection\ElcodiPluginExtension;
 use Elcodi\Component\Plugin\ExpressionLanguage\PluginExpressionLanguageProvider;
 
@@ -40,6 +41,7 @@ class ElcodiPluginBundle extends Bundle implements DependentBundleInterface
     {
         parent::build($container);
 
+        $container->addCompilerPass(new MappingCompilerPass());
         $container->addExpressionLanguageProvider(new PluginExpressionLanguageProvider());
     }
 
@@ -74,6 +76,6 @@ class ElcodiPluginBundle extends Bundle implements DependentBundleInterface
      */
     public function registerCommands(Application $application)
     {
-        return;
+        return null;
     }
 }

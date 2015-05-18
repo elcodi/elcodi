@@ -72,6 +72,6 @@ class ElcodiStateTransitionMachineBundle extends Bundle implements DependentBund
      */
     public function registerCommands(Application $application)
     {
-        return;
+        return null;
     }
 }

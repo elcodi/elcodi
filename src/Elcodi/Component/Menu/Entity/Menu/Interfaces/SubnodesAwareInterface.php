@@ -59,6 +59,19 @@ interface SubnodesAwareInterface
     public function getSubnodes();
 
     /**
+     * Find subnode given its name. You can decide if this search is deep or
+     * not.
+     *
+     * This node is returned as soon as is found.
+     *
+     * @param string  $subnodeName Subnode name
+     * @param boolean $inDepth     In depth
+     *
+     * @return NodeInterface|null Node
+     */
+    public function findSubnodeByName($subnodeName, $inDepth = true);
+
+    /**
      * Sets Sort
      *
      * @param string $sort Sort

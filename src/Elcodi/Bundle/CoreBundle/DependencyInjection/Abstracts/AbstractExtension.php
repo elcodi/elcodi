@@ -193,7 +193,7 @@ abstract class AbstractExtension
      */
     protected function getConfigurationInstance()
     {
-        return;
+        return null;
     }
 
     /**
@@ -298,7 +298,7 @@ abstract class AbstractExtension
     protected function overrideEntities(ContainerBuilder $container)
     {
         if (!$this instanceof EntitiesOverridableExtensionInterface) {
-            return;
+            return null;
         }
 
         $overrides = $this->getEntitiesOverrides();

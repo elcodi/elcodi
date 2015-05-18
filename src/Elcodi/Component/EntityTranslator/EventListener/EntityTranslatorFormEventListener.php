@@ -150,7 +150,7 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
         $entityConfiguration = $this->getTranslatableEntityConfiguration($entity);
 
         if (is_null($entityConfiguration)) {
-            return;
+            return null;
         }
 
         $entityFields = $entityConfiguration['fields'];
@@ -207,7 +207,7 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
         $entityConfiguration = $this->getTranslatableEntityConfiguration($entity);
 
         if (is_null($entityConfiguration)) {
-            return;
+            return null;
         }
 
         $this->translationsBackup[$formHash] = [];
@@ -250,7 +250,7 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
     public function saveEntityTranslations()
     {
         if (empty($this->translationsBackup)) {
-            return;
+            return null;
         }
 
         foreach ($this->translationsBackup as $formHash => $entities) {
@@ -300,7 +300,7 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
             }
         }
 
-        return;
+        return null;
     }
 
     /**

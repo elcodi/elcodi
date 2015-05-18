@@ -36,7 +36,8 @@ Elcodi\Component\Menu\Entity\Menu\Node:
     manyToMany:
         subnodes:
             targetEntity: Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface
-            cascade: [ "persist", "remove" ]
+            cascade: [ "persist", "remove", "detach" ]
+            fetch: EAGER
             joinTable:
                 name: node_hierarchy
                 joinColumns:

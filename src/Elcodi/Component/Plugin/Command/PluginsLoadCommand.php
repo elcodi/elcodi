@@ -76,7 +76,7 @@ class PluginsLoadCommand extends Command
         foreach ($plugins as $plugin) {
             $formattedLine = $formatter->formatSection(
                 'OK',
-                'Plugin "' . $plugin['bundle'] . '" installed'
+                'Plugin "' . $plugin->getNamespace() . '" installed'
             );
 
             $output->writeln($formattedLine);

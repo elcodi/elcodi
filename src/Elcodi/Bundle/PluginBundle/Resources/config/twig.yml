@@ -3,13 +3,6 @@ services:
     #
     # Twig extensions
     #
-    elcodi.twig_extension.plugin:
-        class: Elcodi\Component\Plugin\Twig\PluginExtension
-        arguments:
-            - @elcodi.manager.plugin
-        tags:
-            - { name: twig.extension }
-
     elcodi.twig_extension.plugin_hook:
         class: Elcodi\Component\Plugin\Twig\HookExtension
         arguments:

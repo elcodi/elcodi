@@ -53,6 +53,7 @@ trait TemplatingTrait
     protected function appendTemplate(
         $template,
         \Elcodi\Component\Plugin\EventDispatcher\Interfaces\EventInterface $event,
+        \Elcodi\Component\Plugin\Entity\Plugin $plugin,
         array $extraContextParams = []
     ) {
         $event->setContent(
@@ -63,33 +64,10 @@ trait TemplatingTrait
                     $template,
                     array_merge(
                         $event->getContext(),
+                        ['plugin' => $plugin],
                         $extraContextParams
                     )
                 )
-        );
-    }
-
-    /**
-     * Plugin can be used
-     *
-     * @param \Elcodi\Component\Plugin\Entity\Plugin $plugin          Plugin
-     * @param array                                  $checkableFields Fields to check
-     *
-     * @return boolean Plugin can be used
-     */
-    protected function pluginCanBeUsed(
-        \Elcodi\Component\Plugin\Entity\Plugin $plugin,
-        array $checkableFields = []
-    ) {
-        return array_reduce(
-            $checkableFields,
-            function ($canBeUsed, $checkableField) use ($plugin) {
-
-                return $canBeUsed &&
-                    isset($plugin->getConfiguration()[$checkableField]) &&
-                    '' !== $plugin->getConfiguration()[$checkableField];
-            },
-            $plugin->isEnabled()
         );
     }
 }

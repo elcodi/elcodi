@@ -75,6 +75,6 @@ class ElcodiConfigurationBundle extends Bundle implements DependentBundleInterfa
      */
     public function registerCommands(Application $application)
     {
-        return;
+        return null;
     }
 }
