@@ -49,6 +49,12 @@ Elcodi\Component\Coupon\Entity\Coupon:
             column: minimum_purchase_amount
             type: integer
             nullable: true
+        stackable:
+            column: stackable
+            type: boolean
+            nullable: false
+            options:
+                default: false
         validFrom:
             column: valid_from
             type: datetime

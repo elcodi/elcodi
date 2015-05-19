@@ -136,6 +136,13 @@ class Coupon implements CouponInterface
     protected $minimumPurchaseCurrency;
 
     /**
+     * @var integer
+     *
+     * Whether this coupon can be used together with another coupon
+     */
+    protected $stackable;
+
+    /**
      * @var RuleInterface
      *
      * Rule to check to be applicable
@@ -440,6 +447,30 @@ class Coupon implements CouponInterface
     public function getRule()
     {
         return $this->rule;
+    }
+
+    /**
+     * Get stackable property
+     *
+     * @return int
+     */
+    public function getStackable()
+    {
+        return $this->stackable;
+    }
+
+    /**
+     * Set stackable property
+     *
+     * @param int $stackable
+     *
+     * @return $this Self object
+     */
+    public function setStackable($stackable)
+    {
+        $this->stackable = $stackable;
+
+        return $this;
     }
 
     /**

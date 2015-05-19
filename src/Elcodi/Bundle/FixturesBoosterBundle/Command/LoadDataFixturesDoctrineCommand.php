@@ -109,7 +109,7 @@ class LoadDataFixturesDoctrineCommand extends OriginalCommand
         $paths[] = get_class($this->kernel);
 
         sort($paths, SORT_STRING);
-        $backupFileName = '/tmp/' . sha1(serialize($paths)) . '.backup.database';
+        $backupFileName = sys_get_temp_dir() . '/' . sha1(serialize($paths)) . '.backup.database';
         if (file_exists($backupFileName)) {
             copy($backupFileName, $this->databaseFilePath);
 

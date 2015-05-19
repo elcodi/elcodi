@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Coupon\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
-
 use Elcodi\Component\Coupon\Event\CouponOnUsedEvent;
 
 /**

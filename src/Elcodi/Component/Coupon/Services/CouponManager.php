@@ -18,7 +18,6 @@
 namespace Elcodi\Component\Coupon\Services;
 
 use DateTime;
-
 use Elcodi\Component\Core\Factory\DateTimeFactory;
 use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
