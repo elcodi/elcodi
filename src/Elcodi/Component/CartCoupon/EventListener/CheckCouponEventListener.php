@@ -23,11 +23,11 @@ use Elcodi\Component\Coupon\Exception\CouponIncompatibleException;
 use Elcodi\Component\Coupon\Services\CouponManager;
 
 /**
- * Class CheckCouponListener
+ * Class CheckCouponEventListener
  *
  * @author Berny Cantos <be@rny.cc>
  */
-class CheckCouponListener
+class CheckCouponEventListener
 {
     /**
      * @var CouponManager

@@ -24,11 +24,11 @@ use Elcodi\Component\CartCoupon\Event\CartCouponOnRemoveEvent;
 use Elcodi\Component\CartCoupon\Factory\CartCouponFactory;
 
 /**
- * Class CartCouponManagerListener
+ * Class CartCouponManagerEventListener
  *
  * These Event Listeners are
  */
-class CartCouponManagerListener
+class CartCouponManagerEventListener
 {
     /**
      * @var ObjectManager

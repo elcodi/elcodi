@@ -22,11 +22,11 @@ use Elcodi\Component\Coupon\Exception\CouponBelowMinimumPurchaseException;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
 
 /**
- * Class MinimumPriceCouponListener
+ * Class MinimumPriceCouponEventListener
  *
  * @author Berny Cantos <be@rny.cc>
  */
-class MinimumPriceCouponListener
+class MinimumPriceCouponEventListener
 {
     /**
      * @var CurrencyConverter

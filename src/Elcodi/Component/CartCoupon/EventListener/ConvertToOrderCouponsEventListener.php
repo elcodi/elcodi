@@ -29,9 +29,9 @@ use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 
 /**
- * Class ConvertToOrderCouponsListener
+ * Class ConvertToOrderCouponsEventListener
  */
-class ConvertToOrderCouponsListener
+class ConvertToOrderCouponsEventListener
 {
     /**
      * @var OrderCouponEventDispatcher

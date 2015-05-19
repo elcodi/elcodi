@@ -22,9 +22,9 @@ use Elcodi\Component\CartCoupon\Exception\CouponAlreadyAppliedException;
 use Elcodi\Component\CartCoupon\Repository\CartCouponRepository;
 
 /**
- * Class AvoidDuplicatesListener
+ * Class AvoidDuplicatesEventListener
  */
-class AvoidDuplicatesListener
+class AvoidDuplicatesEventListener
 {
     /**
      * @var CartCouponRepository

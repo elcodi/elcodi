@@ -3,8 +3,8 @@ services:
     #
     # Event Listeners
     #
-    elcodi.event_listener.cart_coupon.refresh_coupons:
-        class: Elcodi\Component\CartCoupon\EventListener\RefreshCouponsListener
+    elcodi.event_listener.refresh_coupons:
+        class: Elcodi\Component\CartCoupon\EventListener\RefreshCouponsEventListener
         arguments:
             - @elcodi.manager.coupon
             - @elcodi.manager.cart_coupon
@@ -15,30 +15,30 @@ services:
             - { name: kernel.event_listener, event: cart.onload, method: refreshCartCoupons, priority: 0 }
             - { name: kernel.event_listener, event: cart.onload, method: refreshCouponAmount, priority: -32 }
 
-    elcodi.event_listener.cart_coupon.automatic_coupons:
-        class: Elcodi\Component\CartCoupon\EventListener\AutomaticCouponApplicatorListener
+    elcodi.event_listener.automatic_coupons:
+        class: Elcodi\Component\CartCoupon\EventListener\AutomaticCouponApplicatorEventListener
         arguments:
             - @elcodi.manager.cart_coupon
             - @elcodi.repository.coupon
         tags:
             - { name: kernel.event_listener, event: cart.onload, method: tryAutomaticCoupons, priority: -16 }
 
-    elcodi.event_listener.cart_coupon.avoid_coupon_duplicates:
-        class: Elcodi\Component\CartCoupon\EventListener\AvoidDuplicatesListener
+    elcodi.event_listener.avoid_coupon_duplicates:
+        class: Elcodi\Component\CartCoupon\EventListener\AvoidDuplicatesEventListener
         arguments:
             - @elcodi.repository.cart_coupon
         tags:
             - { name: kernel.event_listener, event: cart_coupon.onapply, method: checkDuplicates, priority: 16 }
 
-    elcodi.event_listener.cart_coupon.cart_coupon_checker:
-        class: Elcodi\Component\CartCoupon\EventListener\CheckCartCouponListener
+    elcodi.event_listener.cart_coupon_checker:
+        class: Elcodi\Component\CartCoupon\EventListener\CheckCartCouponEventListener
         arguments:
             - @elcodi.event_dispatcher.cart_coupon
         tags:
             - { name: kernel.event_listener, event: cart_coupon.onapply, method: checkCoupon, priority: 16 }
 
-    elcodi.event_listener.cart_coupon.cart_coupon_manager:
-        class: Elcodi\Component\CartCoupon\EventListener\CartCouponManagerListener
+    elcodi.event_listener.cart_coupon_manager:
+        class: Elcodi\Component\CartCoupon\EventListener\CartCouponManagerEventListener
         arguments:
             - @elcodi.object_manager.cart_coupon
             - @elcodi.factory.cart_coupon
@@ -46,29 +46,29 @@ services:
             - { name: kernel.event_listener, event: cart_coupon.onapply, method: onCartCouponApply, priority: 0 }
             - { name: kernel.event_listener, event: cart_coupon.onremove, method: onCartCouponRemove, priority: 0 }
 
-    elcodi.event_listener.cart_coupon.coupon_checker:
-        class: Elcodi\Component\CartCoupon\EventListener\CheckCouponListener
+    elcodi.event_listener.coupon_checker:
+        class: Elcodi\Component\CartCoupon\EventListener\CheckCouponEventListener
         arguments:
             - @elcodi.manager.coupon
         tags:
             - { name: kernel.event_listener, event: cart_coupon.oncheck, method: checkCoupon, priority: 32 }
 
-    elcodi.event_listener.cart_coupon.check_minimum_price:
-        class: Elcodi\Component\CartCoupon\EventListener\MinimumPriceCouponListener
+    elcodi.event_listener.check_minimum_price:
+        class: Elcodi\Component\CartCoupon\EventListener\MinimumPriceCouponEventListener
         arguments:
             - @elcodi.converter.currency
         tags:
             - { name: kernel.event_listener, event: cart_coupon.oncheck, method: checkMinimumPrice, priority: 0 }
 
-    elcodi.event_listener.cart_coupon.check_rules:
-        class: Elcodi\Component\CartCoupon\EventListener\CheckRulesListener
+    elcodi.event_listener.check_rules:
+        class: Elcodi\Component\CartCoupon\EventListener\CheckRulesEventListener
         arguments:
             - @elcodi.manager.cart_coupon_rule
         tags:
             - { name: kernel.event_listener, event: cart_coupon.oncheck, method: checkCoupon, priority: -16 }
 
-    elcodi.event_listener.cart_coupon.convert_to_order:
-        class: Elcodi\Component\CartCoupon\EventListener\ConvertToOrderCouponsListener
+    elcodi.event_listener.convert_to_order:
+        class: Elcodi\Component\CartCoupon\EventListener\ConvertToOrderCouponsEventListener
         arguments:
             - @elcodi.event_dispatcher.order_coupon
             - @elcodi.manager.cart_coupon
@@ -77,8 +77,8 @@ services:
         tags:
             - { name: kernel.event_listener, event: order.oncreated, method: convertCouponToOrder, priority: -16 }
 
-    elcodi.event_listener.cart_coupon.order_coupon_manager:
-        class: Elcodi\Component\CartCoupon\EventListener\OrderCouponManagerListener
+    elcodi.event_listener.order_coupon_manager:
+        class: Elcodi\Component\CartCoupon\EventListener\OrderCouponManagerEventListener
         arguments:
             - @elcodi.object_manager.order_coupon
             - @elcodi.event_dispatcher.coupon

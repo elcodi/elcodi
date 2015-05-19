@@ -24,11 +24,11 @@ use Elcodi\Component\CartCoupon\Factory\OrderCouponFactory;
 use Elcodi\Component\Coupon\EventDispatcher\CouponEventDispatcher;
 
 /**
- * Class OrderCouponManagerListener
+ * Class OrderCouponManagerEventListener
  *
  * This eventListener is subscribed into OpenCoupon events.
  */
-class OrderCouponManagerListener
+class OrderCouponManagerEventListener
 {
     /**
      * @var ObjectManager
