@@ -60,7 +60,7 @@ abstract class AbstractConfiguration implements ConfigurationInterface
     /**
      * Configure the root node
      *
-     * @param ArrayNodeDefinition $rootNode
+     * @param ArrayNodeDefinition $rootNode Root node
      */
     abstract protected function setupTree(ArrayNodeDefinition $rootNode);
 

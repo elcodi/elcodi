@@ -256,6 +256,8 @@ abstract class AbstractExtension
      *
      * @param array            $config    Configuration
      * @param ContainerBuilder $container Container
+     *
+     * @return $this Self object
      */
     protected function applyParametrizedValues(array $config, ContainerBuilder $container)
     {
@@ -265,6 +267,8 @@ abstract class AbstractExtension
                 ->getParameterBag()
                 ->add($parametrizationValues);
         }
+
+        return $this;
     }
 
     /**
@@ -272,6 +276,8 @@ abstract class AbstractExtension
      *
      * @param array            $configFiles Config files
      * @param ContainerBuilder $container   Container
+     *
+     * @return $this Self object
      */
     protected function loadFiles(array $configFiles, ContainerBuilder $container)
     {
@@ -288,32 +294,36 @@ abstract class AbstractExtension
 
             $loader->load($configFile . '.yml');
         }
+
+        return $this;
     }
 
     /**
      * Override Doctrine entities
      *
-     * @param ContainerBuilder $container
+     * @param ContainerBuilder $container Container
+     *
+     * @return $this Self object
      */
     protected function overrideEntities(ContainerBuilder $container)
     {
-        if (!$this instanceof EntitiesOverridableExtensionInterface) {
-            return null;
+        if ($this instanceof EntitiesOverridableExtensionInterface) {
+            $overrides = $this->getEntitiesOverrides();
+            foreach ($overrides as $interface => $override) {
+                $overrides[$interface] = $container->getParameter($override);
+            }
+
+            $container->prependExtensionConfig('doctrine', [
+                'orm' => [
+                    'resolve_target_entities' => $overrides,
+                ],
+            ]);
+
+            $container->prependExtensionConfig('elcodi_core', [
+                'mapping_implementations' => $overrides,
+            ]);
         }
 
-        $overrides = $this->getEntitiesOverrides();
-        foreach ($overrides as $interface => $override) {
-            $overrides[$interface] = $container->getParameter($override);
-        }
-
-        $container->prependExtensionConfig('doctrine', [
-            'orm' => [
-                'resolve_target_entities' => $overrides,
-            ],
-        ]);
-
-        $container->prependExtensionConfig('elcodi_core', [
-            'mapping_implementations' => $overrides,
-        ]);
+        return $this;
     }
 }
