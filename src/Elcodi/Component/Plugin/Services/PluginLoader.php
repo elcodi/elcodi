@@ -41,6 +41,10 @@ class PluginLoader
         }
 
         $parsedConfiguration = $yaml->parse(file_get_contents($specificationFilePath));
+        if (!is_array($parsedConfiguration)) {
+            return [];
+        }
+
         $processor = new Processor();
         $pluginConfiguration = $processor
             ->processConfiguration(

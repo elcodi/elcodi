@@ -66,7 +66,7 @@ class DefaultCurrencyWrapper implements WrapperInterface
      * is passed to the CurrencyWrapper service definition as a
      * mandatory constructor parameter.
      *
-     * @return mixed Loaded object
+     * @return CurrencyInterface Default currency
      *
      * @throws CurrencyNotAvailableException Currency not available
      */

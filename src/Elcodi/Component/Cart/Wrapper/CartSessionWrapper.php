@@ -74,20 +74,7 @@ class CartSessionWrapper implements WrapperInterface
             return $this->cart;
         }
 
-        $cartIdInSession = $this
-            ->cartSessionManager
-            ->get();
-
-        if (!$cartIdInSession) {
-            return;
-        }
-
-        $this->cart = $this
-            ->cartRepository
-            ->findOneBy([
-                'id'      => $cartIdInSession,
-                'ordered' => false,
-            ]);
+        $this->cart = $this->loadCartFromSession();
 
         return $this->cart;
     }
@@ -102,5 +89,28 @@ class CartSessionWrapper implements WrapperInterface
         $this->cart = null;
 
         return $this;
+    }
+
+    /**
+     * Get cart from session
+     *
+     * @return CartInterface|null Cart loaded from session
+     */
+    protected function loadCartFromSession()
+    {
+        $cartIdInSession = $this
+            ->cartSessionManager
+            ->get();
+
+        if (!$cartIdInSession) {
+            return null;
+        }
+
+        return $this
+            ->cartRepository
+            ->findOneBy([
+                'id'      => $cartIdInSession,
+                'ordered' => false,
+            ]);
     }
 }

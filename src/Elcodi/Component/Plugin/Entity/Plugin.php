@@ -57,7 +57,7 @@ class Plugin
     protected $category;
 
     /**
-     * @var array
+     * @var PluginConfiguration
      *
      * Configuration
      */

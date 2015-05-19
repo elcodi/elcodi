@@ -116,6 +116,9 @@ class PrintMoneyExtension extends Twig_Extension
                 ->get();
         }
 
+        /**
+         * @var CurrencyInterface $targetCurrency
+         */
         $moneyConverted = $this
             ->currencyConverter
             ->convertMoney(

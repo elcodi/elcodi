@@ -43,7 +43,7 @@ class CurrencyWrapper implements WrapperInterface
     protected $currencyRepository;
 
     /**
-     * @var WrapperInterface
+     * @var DefaultCurrencyWrapper
      *
      * Default currency wrapper
      */
@@ -61,12 +61,12 @@ class CurrencyWrapper implements WrapperInterface
      *
      * @param CurrencySessionManager $currencySessionManager Currency Session Manager
      * @param CurrencyRepository     $currencyRepository     Currency repository
-     * @param WrapperInterface       $defaultCurrencyWrapper Default currency wrapper
+     * @param DefaultCurrencyWrapper $defaultCurrencyWrapper Default currency wrapper
      */
     public function __construct(
         CurrencySessionManager $currencySessionManager,
         CurrencyRepository $currencyRepository,
-        WrapperInterface $defaultCurrencyWrapper
+        DefaultCurrencyWrapper $defaultCurrencyWrapper
     ) {
         $this->currencySessionManager = $currencySessionManager;
         $this->currencyRepository = $currencyRepository;
@@ -75,9 +75,12 @@ class CurrencyWrapper implements WrapperInterface
 
     /**
      * Get loaded object. If object is not loaded yet, then load it and save it
-     * locally. Otherwise, just return the pre-loaded object
+     * locally. Otherwise, just return the pre-loaded object.
      *
-     * @return mixed Loaded object
+     * The currency is loaded from session if exists. Otherwise will return the
+     * default currency and saves it to session.
+     *
+     * @return CurrencyInterface Loaded object
      *
      * @throws CurrencyNotAvailableException No currency available
      */
@@ -102,7 +105,7 @@ class CurrencyWrapper implements WrapperInterface
     /**
      * Load currency from session
      *
-     * @return CurrencyInterface Currency
+     * @return CurrencyInterface|null Currency
      *
      * @throws CurrencyNotAvailableException No currency available
      */
@@ -138,7 +141,7 @@ class CurrencyWrapper implements WrapperInterface
     /**
      * Load default currency
      *
-     * @return CurrencyInterface|null Currency
+     * @return CurrencyInterface Currency
      */
     protected function loadDefaultCurrency()
     {
