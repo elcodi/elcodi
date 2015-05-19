@@ -8,6 +8,24 @@ https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v0.5.2...v0.5.3
 
+### v0.5.18 (19-05-2015)
+
+* [`b9831b6`](https://github.com/elcodi/elcodi/commit/b9831b6d7355ef292bc2154ab64769833e105df5) Fixed code style (mmoreram)
+* [`d72cbee`](https://github.com/elcodi/elcodi/commit/d72cbee35834a6220a5ac2e8a1e77017eccec6af) Some fixes suggested by Scrutinizer (mmoreram)
+* [`2c2577c`](https://github.com/elcodi/elcodi/commit/2c2577c0867536c4e8b18b49be5edca4574520e6) Naming convention fixes (Aldo Chiecchia)
+* [`6cfd005`](https://github.com/elcodi/elcodi/commit/6cfd0058b92663f5c98d57ccd6719d9aefeb3953) Removed implicit dependant Bundle (Aldo Chiecchia)
+* [`c8b81e1`](https://github.com/elcodi/elcodi/commit/c8b81e107956d536192eba4de489f8223a11600a) Multiple coupons can now be stacked (Aldo Chiecchia)
+* [`bd0495a`](https://github.com/elcodi/elcodi/commit/bd0495af690f02501fead8f85494db8371925173) Fix for Service and Class names (Aldo Chiecchia)
+* [`b4561bd`](https://github.com/elcodi/elcodi/commit/b4561bd78289971a8fcf8202a467b551e7da37c2) Formalized what a Wrapper is (mmoreram)
+* [`da795e0`](https://github.com/elcodi/elcodi/commit/da795e0bc3b9774a6d892b91b90bb4337485ea75) Added attr into plugin field definition (mmoreram)
+* [`1deeb28`](https://github.com/elcodi/elcodi/commit/1deeb284d7fccb05ce10a9bf2ffc61a45e9480ad) Refactored Plugin entity methods (mmoreram)
+* [`9577b27`](https://github.com/elcodi/elcodi/commit/9577b278f2b52952f7780cc6dc0797ff1bef0b79) Updated menu/nodes relations fetching to EAGER (mmoreram)
+* [`123a0be`](https://github.com/elcodi/elcodi/commit/123a0be05f86e4d1d8372cab8baefed4d458a1b3) Fixed changers appliance (mmoreram)
+* [`e8e40d1`](https://github.com/elcodi/elcodi/commit/e8e40d15557f015afa0f18208cc6535be40c9667) Fixed namespace when collecting Plugins (mmoreram)
+* [`84e020e`](https://github.com/elcodi/elcodi/commit/84e020e4ff139e851ab154d1d2ebc1c817bb6a89) Added some menu tests (mmoreram)
+* [`1926436`](https://github.com/elcodi/elcodi/commit/192643624e372e72898fd88afcf396099c18c317) Added all "return null" instad of "return" (mmoreram)
+* [`2aa68dc`](https://github.com/elcodi/elcodi/commit/2aa68dc425d4155b012960b48e78e64af2d564f9) Refactored Plugins and Menus (mmoreram)
+
 ### v0.5.17 (18-05-2015)
 
 * [`9c998b8`](https://github.com/elcodi/elcodi/commit/9c998b87ba7bffc14c3f8f5224acd2767c1a6334) Update BannerManager.php (Germán Figna)
