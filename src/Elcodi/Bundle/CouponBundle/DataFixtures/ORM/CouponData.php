@@ -66,6 +66,7 @@ class CouponData extends AbstractFixture implements DependentFixtureInterface
             ->setCount(100)
             ->setValidFrom(new DateTime())
             ->setValidTo(new DateTime('next month'));
+
         $couponDirector->save($couponPercent);
         $this->addReference('coupon-percent', $couponPercent);
 

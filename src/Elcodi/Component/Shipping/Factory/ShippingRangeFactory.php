@@ -18,9 +18,9 @@
 namespace Elcodi\Component\Shipping\Factory;
 
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
+use Elcodi\Component\Core\Wrapper\Interfaces\WrapperInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
-use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 use Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface;
 
 /**
@@ -29,20 +29,20 @@ use Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface;
 class ShippingRangeFactory extends AbstractFactory
 {
     /**
-     * @var CurrencyWrapper
+     * @var WrapperInterface
      *
      * Currency wrapper used to access default Currency object
      */
-    protected $currencyWrapper;
+    protected $defaultCurrencyWrapper;
 
     /**
      * Factory constructor
      *
-     * @param CurrencyWrapper $currencyWrapper Currency wrapper
+     * @param WrapperInterface $defaultCurrencyWrapper Default Currency wrapper
      */
-    public function __construct(CurrencyWrapper $currencyWrapper)
+    public function __construct(WrapperInterface $defaultCurrencyWrapper)
     {
-        $this->currencyWrapper = $currencyWrapper;
+        $this->defaultCurrencyWrapper = $defaultCurrencyWrapper;
     }
 
     /**
@@ -55,7 +55,9 @@ class ShippingRangeFactory extends AbstractFactory
     {
         return Money::create(
             0,
-            $this->currencyWrapper->getDefaultCurrency()
+            $this
+                ->defaultCurrencyWrapper
+                ->get()
         );
     }
 

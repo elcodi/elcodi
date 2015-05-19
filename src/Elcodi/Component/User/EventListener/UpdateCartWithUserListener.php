@@ -68,8 +68,13 @@ class UpdateCartWithUserListener
      */
     public function onAuthenticationSuccess(AuthenticationEvent $event)
     {
-        $loggedUser = $event->getAuthenticationToken()->getUser();
-        $cart = $this->cartWrapper->getCartFromSession();
+        $loggedUser = $event
+            ->getAuthenticationToken()
+            ->getUser();
+
+        $cart = $this
+            ->cartWrapper
+            ->get();
 
         if (
             ($loggedUser instanceof CustomerInterface) &&

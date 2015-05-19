@@ -20,13 +20,14 @@ namespace Elcodi\Component\User\Wrapper;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
+use Elcodi\Component\Core\Wrapper\Interfaces\WrapperInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 use Elcodi\Component\User\Factory\CustomerFactory;
 
 /**
  * Cart to order service
  */
-class CustomerWrapper
+class CustomerWrapper implements WrapperInterface
 {
     /**
      * @var CustomerInterface
@@ -67,43 +68,12 @@ class CustomerWrapper
     }
 
     /**
-     * Return current loaded customer
+     * Get loaded object. If object is not loaded yet, then load it and save it
+     * locally. Otherwise, just return the pre-loaded object
      *
-     * @return CustomerInterface current customer
+     * @return mixed Loaded object
      */
-    public function getCustomer()
-    {
-        return $this->customer;
-    }
-
-    /**
-     * Set customer
-     *
-     * @param CustomerInterface $customer Customer
-     *
-     * @return $this Self object
-     */
-    public function setCustomer(CustomerInterface $customer = null)
-    {
-        $this->customer = $customer;
-
-        return $this;
-    }
-
-    /**
-     * Load customer method
-     *
-     * This method tries to load Customer stored in Session, using specific
-     * session field name.
-     *
-     * If this customer is found, stores it locally and uses it as "official"
-     * customer object
-     *
-     * Otherwise, new Customer is created and stored (not flushed nor persisted)
-     *
-     * @return CustomerInterface Loaded customer
-     */
-    public function loadCustomer()
+    public function get()
     {
         if ($this->customer instanceof CustomerInterface) {
             return $this->customer;
@@ -121,18 +91,29 @@ class CustomerWrapper
     }
 
     /**
-     * Reload Customer.
+     * Clean loaded object in order to reload it again.
      *
-     * This method assumes that current customer is not valid anymore, and tries
-     * to reload it.
-     *
-     * @return CustomerInterface Loaded customer
+     * @return $this Self object
      */
-    public function reloadCustomer()
+    public function clean()
     {
-        return $this
-            ->setCustomer(null)
-            ->loadCustomer();
+        $this->customer = null;
+
+        return $this;
+    }
+
+    /**
+     * Set customer
+     *
+     * @param CustomerInterface $customer Customer
+     *
+     * @return $this Self object
+     */
+    public function setCustomer(CustomerInterface $customer = null)
+    {
+        $this->customer = $customer;
+
+        return $this;
     }
 
     /**

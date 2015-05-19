@@ -155,7 +155,9 @@ class RefreshCouponsListener
 
         $couponAmount = Money::create(
             0,
-            $this->currencyWrapper->loadCurrency()
+            $this
+                ->currencyWrapper
+                ->get()
         );
 
         $coupons = $this
@@ -192,7 +194,7 @@ class RefreshCouponsListener
     ) {
         $currency = $this
             ->currencyWrapper
-            ->getCurrency();
+            ->get();
 
         $couponPrice = Money::create(
             0,

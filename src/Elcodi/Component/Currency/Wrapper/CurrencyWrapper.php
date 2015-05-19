@@ -17,6 +17,7 @@
 
 namespace Elcodi\Component\Currency\Wrapper;
 
+use Elcodi\Component\Core\Wrapper\Interfaces\WrapperInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Exception\CurrencyNotAvailableException;
 use Elcodi\Component\Currency\Repository\CurrencyRepository;
@@ -25,7 +26,7 @@ use Elcodi\Component\Currency\Services\CurrencySessionManager;
 /**
  * Class CurrencyWrapper
  */
-class CurrencyWrapper
+class CurrencyWrapper implements WrapperInterface
 {
     /**
      * @var CurrencySessionManager
@@ -42,11 +43,11 @@ class CurrencyWrapper
     protected $currencyRepository;
 
     /**
-     * @var string
+     * @var WrapperInterface
      *
-     * Default currency
+     * Default currency wrapper
      */
-    protected $defaultCurrencyIsoCode;
+    protected $defaultCurrencyWrapper;
 
     /**
      * @var CurrencyInterface
@@ -60,117 +61,101 @@ class CurrencyWrapper
      *
      * @param CurrencySessionManager $currencySessionManager Currency Session Manager
      * @param CurrencyRepository     $currencyRepository     Currency repository
-     * @param string                 $defaultCurrencyIsoCode Default currency
+     * @param WrapperInterface       $defaultCurrencyWrapper Default currency wrapper
      */
     public function __construct(
         CurrencySessionManager $currencySessionManager,
         CurrencyRepository $currencyRepository,
-        $defaultCurrencyIsoCode
+        WrapperInterface $defaultCurrencyWrapper
     ) {
         $this->currencySessionManager = $currencySessionManager;
         $this->currencyRepository = $currencyRepository;
-        $this->defaultCurrencyIsoCode = $defaultCurrencyIsoCode;
+        $this->defaultCurrencyWrapper = $defaultCurrencyWrapper;
     }
 
     /**
-     * Gets Currency
+     * Get loaded object. If object is not loaded yet, then load it and save it
+     * locally. Otherwise, just return the pre-loaded object
      *
-     * @return CurrencyInterface Instance of Cart loaded
+     * @return mixed Loaded object
+     *
+     * @throws CurrencyNotAvailableException No currency available
      */
-    public function getCurrency()
+    public function get()
     {
+        if ($this->currency instanceof CurrencyInterface) {
+            return $this->currency;
+        }
+
+        $this->currency = $this->loadCurrencyFromSession();
+
+        if ($this->currency instanceof CurrencyInterface) {
+            return $this->currency;
+        }
+
+        $this->currency = $this->loadDefaultCurrency();
+        $this->saveCurrencyToSession($this->currency);
+
         return $this->currency;
     }
 
     /**
-     * Loads Currency from session or repository
+     * Load currency from session
      *
-     * @return CurrencyInterface Instance of Customer loaded
+     * @return CurrencyInterface Currency
      *
-     * @throws CurrencyNotAvailableException Any currency available
+     * @throws CurrencyNotAvailableException No currency available
      */
-    public function loadCurrency()
+    protected function loadCurrencyFromSession()
     {
-        if ($this->currency instanceof CurrencyInterface) {
-            return $this->currency;
-        }
+        $currencyIdInSession = $this
+            ->currencySessionManager
+            ->get();
 
-        $currencyIdInSession = $this->currencySessionManager->get();
-
-        /**
-         * Tries to load currency saved in session
-         */
-        if ($currencyIdInSession) {
-            $this->currency = $this
+        return $currencyIdInSession
+            ? $this->currency = $this
                 ->currencyRepository
-                ->find($currencyIdInSession);
-        }
-
-        if ($this->currency instanceof CurrencyInterface) {
-            return $this->currency;
-        }
-
-        /**
-         * Otherwise, tries to load default currency. Notice that default
-         * currency is defined as parameter
-         */
-        $this->currency = $this
-            ->currencyRepository
-            ->findOneBy([
-                'iso' => $this->defaultCurrencyIsoCode,
-            ]);
-
-        if ($this->currency instanceof CurrencyInterface) {
-            $this->currencySessionManager->set($this->currency);
-
-            return $this->currency;
-        }
-
-        throw new CurrencyNotAvailableException();
+                ->find($currencyIdInSession)
+            : null;
     }
 
     /**
-     * Returns the default persisted Currency object
+     * Save currency to session
      *
-     * The currency object is fetched from the repository using
-     * default ISO code as the search criteria. Default ISO code
-     * is passed to the CurrencyWrapper service definition as a
-     * mandatory constructor parameter.
+     * @param CurrencyInterface $currency Currency
      *
-     * When the object is not found, a LogicException is thrown
-     *
-     * @return CurrencyInterface
-     *
-     * @throws \LogicException
+     * @return $this Self object
      */
-    public function getDefaultCurrency()
+    protected function saveCurrencyToSession(CurrencyInterface $currency)
     {
-        $defaultCurrency = $this
-            ->currencyRepository
-            ->findOneBy([
-                'iso' => $this->defaultCurrencyIsoCode,
-            ]);
+        $this
+            ->currencySessionManager
+            ->set($currency);
 
-        if (!($defaultCurrency instanceof CurrencyInterface)) {
-            throw new \LogicException(
-                sprintf('Default currency object for ISO code "%s" not found', $this->defaultCurrencyIsoCode)
-            );
-        }
-
-        return $defaultCurrency;
+        return $this;
     }
 
     /**
-     * Reload cart
+     * Load default currency
      *
-     * This method sets to null current cart and tries to load it again
-     *
-     * @return CurrencyInterface Currency re-loaded
+     * @return CurrencyInterface|null Currency
      */
-    public function reloadCurrency()
+    protected function loadDefaultCurrency()
+    {
+        return $this
+            ->defaultCurrencyWrapper
+            ->get();
+    }
+
+    /**
+     * Clean loaded object in order to reload it again.
+     *
+     * @return $this Self object
+     */
+    public function clean()
     {
         $this->currency = null;
 
-        return $this->loadCurrency();
+        return $this;
     }
 }

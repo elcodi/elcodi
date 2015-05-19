@@ -18,6 +18,6 @@ services:
     elcodi.factory.shipping_range:
         class: Elcodi\Component\Shipping\Factory\ShippingRangeFactory
         arguments:
-            - @elcodi.wrapper.currency
+            - @elcodi.wrapper.default_currency
         calls:
             - [setEntityNamespace, ["%elcodi.entity.shipping_range.class%"]]

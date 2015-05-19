@@ -18,9 +18,9 @@
 namespace Elcodi\Component\Currency\Factory\Abstracts;
 
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
+use Elcodi\Component\Core\Wrapper\Interfaces\WrapperInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
-use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 
 /**
  * Class AbstractPurchasableFactory
@@ -31,20 +31,20 @@ use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 abstract class AbstractPurchasableFactory extends AbstractFactory
 {
     /**
-     * @var CurrencyWrapper
+     * @var WrapperInterface
      *
      * Currency wrapper used to access default Currency object
      */
-    protected $currencyWrapper;
+    protected $defaultCurrencyWrapper;
 
     /**
      * Factory constructor
      *
-     * @param CurrencyWrapper $currencyWrapper Currency wrapper
+     * @param WrapperInterface $defaultCurrencyWrapper Default currency wrapper
      */
-    public function __construct(CurrencyWrapper $currencyWrapper)
+    public function __construct(WrapperInterface $defaultCurrencyWrapper)
     {
-        $this->currencyWrapper = $currencyWrapper;
+        $this->defaultCurrencyWrapper = $defaultCurrencyWrapper;
     }
 
     /**
@@ -57,7 +57,9 @@ abstract class AbstractPurchasableFactory extends AbstractFactory
     {
         return Money::create(
             0,
-            $this->currencyWrapper->getDefaultCurrency()
+            $this
+                ->defaultCurrencyWrapper
+                ->get()
         );
     }
 }

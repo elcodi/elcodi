@@ -10,7 +10,7 @@ services:
             - @elcodi.repository.currency_exchange_rate
             - %elcodi.currency_rates_provider_currency_base%
 
-    elcodi.session_manager.currency:
+    elcodi.manager.currency_session:
         class: Elcodi\Component\Currency\Services\CurrencySessionManager
         arguments:
             - @session
@@ -40,13 +40,3 @@ services:
         class: Elcodi\Component\Currency\Services\CurrencyExchangeRatesProvider
         arguments:
             - @elcodi.adapter.currency_exchange_rate
-
-    #
-    # Wrappers
-    #
-    elcodi.wrapper.currency:
-        class: Elcodi\Component\Currency\Wrapper\CurrencyWrapper
-        arguments:
-            - @elcodi.session_manager.currency
-            - @elcodi.repository.currency
-            - %elcodi.default_currency%
