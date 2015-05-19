@@ -38,7 +38,7 @@ class CartCouponRulesEventListenerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.event_listener.cart_coupon.check_rules',
+            'elcodi.event_listener.check_rules',
         ];
     }
 
@@ -153,23 +153,6 @@ class CartCouponRulesEventListenerTest extends WebTestCase
             );
 
         $this->assertCount($appliedCouponsExpected, $actualCartCoupons);
-    }
-
-    public function x()
-    {
-        /**
-         * @var CartInterface $cart
-         */
-        $cart = $this
-            ->getFactory('cart')
-            ->create();
-
-        /**
-         * @var CouponInterface $coupon
-         */
-        $coupon = $this
-            ->getFactory('coupon')
-            ->create();
     }
 
     /**

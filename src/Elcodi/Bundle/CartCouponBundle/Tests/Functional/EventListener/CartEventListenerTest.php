@@ -47,7 +47,7 @@ class CartEventListenerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.event_listener.cart_coupon.refresh_coupons',
+            'elcodi.event_listener.refresh_coupons',
         ];
     }
 

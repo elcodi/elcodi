@@ -31,12 +31,12 @@ use Elcodi\Component\Currency\Services\CurrencyConverter;
 use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 
 /**
- * Class RefreshCouponsListener
+ * Class RefreshCouponsEventListener
  *
  * This event listener should update the cart given in the event, applying
  * all the coupon features.
  */
-class RefreshCouponsListener
+class RefreshCouponsEventListener
 {
     /**
      * @var CouponManager

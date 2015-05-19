@@ -21,9 +21,9 @@ use Elcodi\Component\CartCoupon\Event\CartCouponOnApplyEvent;
 use Elcodi\Component\CartCoupon\EventDispatcher\CartCouponEventDispatcher;
 
 /**
- * Class CheckCartCouponListener
+ * Class CheckCartCouponEventListener
  */
-class CheckCartCouponListener
+class CheckCartCouponEventListener
 {
     /**
      * @var CartCouponEventDispatcher

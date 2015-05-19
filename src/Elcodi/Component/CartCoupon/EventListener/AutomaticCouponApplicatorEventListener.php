@@ -26,9 +26,9 @@ use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException;
 
 /**
- * Class AutomaticCouponApplicatorListener
+ * Class AutomaticCouponApplicatorEventListener
  */
-class AutomaticCouponApplicatorListener
+class AutomaticCouponApplicatorEventListener
 {
     /**
      * @var CartCouponManager
