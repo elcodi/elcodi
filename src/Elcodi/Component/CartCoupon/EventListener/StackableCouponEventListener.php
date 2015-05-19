@@ -23,9 +23,9 @@ use Elcodi\Component\CartCoupon\Exception\CouponNotStackableException;
 use Elcodi\Component\CartCoupon\Repository\CartCouponRepository;
 
 /**
- * Class StackableCouponListener
+ * Class StackableCouponEventListener
  */
-class StackableCouponListener
+class StackableCouponEventListener
 {
     /**
      * @var CartCouponRepository

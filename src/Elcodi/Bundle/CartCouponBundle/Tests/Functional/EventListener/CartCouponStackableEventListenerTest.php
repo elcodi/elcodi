@@ -157,7 +157,7 @@ class CartCouponStackableEventListenerTest extends WebTestCase
 
         /**
          * Dispatching cart.load events will recalculate
-         * cart coupon amoount
+         * cart coupon amount
          */
         $this
             ->cartEventDispatcher
@@ -179,7 +179,7 @@ class CartCouponStackableEventListenerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.event_listener.cart_coupon.stackable_coupon',
+            'elcodi.event_listener.stackable_coupon',
         ];
     }
 }
