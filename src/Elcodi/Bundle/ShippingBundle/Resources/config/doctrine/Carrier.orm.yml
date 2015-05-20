@@ -1,4 +1,4 @@
-Elcodi\Component\Shipping\Entity\Carrier:
+ Elcodi\Component\Shipping\Entity\Carrier:
     type: entity
     repositoryClass: Elcodi\Component\Shipping\Repository\CarrierRepository
     table: carrier

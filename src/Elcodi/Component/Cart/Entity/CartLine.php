@@ -48,6 +48,13 @@ class CartLine implements CartLineInterface
     protected $orderLine;
 
     /**
+     * @var float
+     *
+     * Tax percentage applied to the product
+     */
+    protected $taxPercentage;
+
+    /**
      * Set Cart
      *
      * @param CartInterface $cart Cart
@@ -141,5 +148,29 @@ class CartLine implements CartLineInterface
         return $this->quantity * $this
             ->getPurchasable()
             ->getWeight();
+    }
+
+    /**
+     * Set taxPercentage
+     *
+     * @param float $taxPercentage
+     *
+     * @return $this Self object
+     */
+    public function setTaxPercentage($taxPercentage)
+    {
+        $this->taxPercentage = $taxPercentage;
+
+        return $this;
+    }
+
+    /**
+     * Get taxPercentage
+     *
+     * @return float
+     */
+    public function getTaxPercentage()
+    {
+        return $this->taxPercentage;
     }
 }

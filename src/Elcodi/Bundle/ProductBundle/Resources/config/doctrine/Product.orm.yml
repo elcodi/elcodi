@@ -164,6 +164,12 @@ Elcodi\Component\Product\Entity\Product:
                     category_id:
                         referencedColumnName: id
                         onDelete: "CASCADE"
+        tax:
+            targetEntity: Elcodi\Component\Tax\Entity\Interfaces\TaxInterface
+            joinColumn:
+                name: tax_id
+                referencedColumnName: id
+
         images:
             targetEntity: Elcodi\Component\Media\Entity\Interfaces\ImageInterface
             joinTable:

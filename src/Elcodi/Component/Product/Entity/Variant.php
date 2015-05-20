@@ -27,6 +27,7 @@ use Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait;
 use Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
+use Elcodi\Component\Tax\Entity\Interfaces\TaxInterface;
 use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
 use Elcodi\Component\Product\Entity\Traits\ProductPriceTrait;
 
@@ -78,6 +79,13 @@ class Variant implements VariantInterface
      * Collection of possible options for this product
      */
     protected $options;
+
+    /**
+     * @var TaxInterface
+     *
+     * Tax applied on this product
+     */
+    protected $tax;
 
     /**
      * Gets the variant SKU
@@ -238,6 +246,30 @@ class Variant implements VariantInterface
     public function setProduct($product)
     {
         $this->product = $product;
+
+        return $this;
+    }
+
+    /**
+     * Returns product tax
+     *
+     * @return TaxInterface
+     */
+    public function getTax()
+    {
+        return $this->tax;
+    }
+
+    /**
+     * Sets product tax
+     *
+     * @param TaxInterface $tax
+     *
+     * @return $this Self object
+     */
+    public function setTax(TaxInterface $tax)
+    {
+        $this->tax = $tax;
 
         return $this;
     }

@@ -85,6 +85,12 @@ Elcodi\Component\Product\Entity\Variant:
                 name: reduced_price_currency_iso
                 referencedColumnName: iso
                 nullable: true
+        tax:
+            targetEntity: Elcodi\Component\Tax\Entity\Interfaces\TaxInterface
+            joinColumn:
+                name: tax_id
+                referencedColumnName: id
+
 
     manyToMany:
         options:
@@ -99,6 +105,7 @@ Elcodi\Component\Product\Entity\Variant:
                     option_id:
                         referencedColumnName: id
                         onDelete: "CASCADE"
+
         images:
             targetEntity: Elcodi\Component\Media\Entity\Interfaces\ImageInterface
             joinTable:

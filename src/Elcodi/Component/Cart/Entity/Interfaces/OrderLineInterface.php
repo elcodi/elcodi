@@ -81,4 +81,21 @@ interface OrderLineInterface
      * @return $this Self object
      */
     public function setWeight($weight);
+
+    /**
+     * Set taxPercentage
+     *
+     * @param float $taxPercentage
+     *
+     * @return $this Self object
+     */
+    public function setTaxPercentage($taxPercentage);
+
+    /**
+     * Get taxPercentage
+     *
+     * @return float
+     */
+    public function getTaxPercentage();
+
 }

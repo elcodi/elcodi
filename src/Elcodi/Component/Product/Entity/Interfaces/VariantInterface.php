@@ -104,4 +104,20 @@ interface VariantInterface
      * @return $this Self object
      */
     public function removeOption(ValueInterface $option);
+
+    /**
+     * Returns product tax
+     *
+     * @return TaxInterface
+     */
+    public function getTax();
+
+    /**
+     * Sets product tax
+     *
+     * @param TaxInterface $tax
+     *
+     * @return $this Self object
+     */
+    public function setTax(TaxInterface $tax);
 }

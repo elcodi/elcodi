@@ -264,4 +264,20 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Identif
      * @return $this Self object
      */
     public function setBillingAddress($billingAddress);
+
+    /**
+     * Set taxAmount
+     *
+     * @param float $taxAmount
+     *
+     * @return $this Self object
+     */
+    public function setTaxAmount($taxAmount);
+
+    /**
+     * Get taxAmount
+     *
+     * @return float
+     */
+    public function getTaxAmount();
 }

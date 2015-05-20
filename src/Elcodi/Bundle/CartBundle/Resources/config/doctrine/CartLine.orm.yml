@@ -19,6 +19,12 @@ Elcodi\Component\Cart\Entity\CartLine:
         quantity:
             column: quantity
             type: integer
+        taxPercentage:
+            column: tax_percentage
+            type: decimal
+            precision: 18
+            scale: 10
+            nullable: false
 
     oneToOne:
         orderLine:

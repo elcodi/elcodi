@@ -45,6 +45,13 @@ class OrderLine implements OrderLineInterface
     protected $order;
 
     /**
+     * @var float
+     *
+     * Tax percentage applied to the product
+     */
+    protected $taxPercentage;
+
+    /**
      * Set Order
      *
      * @param OrderInterface $order Order
@@ -66,5 +73,29 @@ class OrderLine implements OrderLineInterface
     public function getOrder()
     {
         return $this->order;
+    }
+
+    /**
+     * Set taxPercentage
+     *
+     * @param float $taxPercentage
+     *
+     * @return $this Self object
+     */
+    public function setTaxPercentage($taxPercentage)
+    {
+        $this->taxPercentage = $taxPercentage;
+
+        return $this;
+    }
+
+    /**
+     * Get taxPercentage
+     *
+     * @return float
+     */
+    public function getTaxPercentage()
+    {
+        return $this->taxPercentage;
     }
 }

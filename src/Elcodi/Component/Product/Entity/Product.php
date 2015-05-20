@@ -31,6 +31,7 @@ use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
+use Elcodi\Component\Tax\Entity\Interfaces\TaxInterface;
 use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
 use Elcodi\Component\Product\Entity\Traits\ProductPriceTrait;
 
@@ -153,6 +154,13 @@ class Product implements ProductInterface
      * Principal variant for this product
      */
     protected $principalVariant;
+
+    /**
+     * @var TaxInterface
+     *
+     * Tax applied on this product
+     */
+    protected $tax;
 
     /**
      * Set name
@@ -594,6 +602,30 @@ class Product implements ProductInterface
     public function hasVariants()
     {
         return $this->variants->count() > 0;
+    }
+
+    /**
+     * Returns product tax
+     *
+     * @return TaxInterface
+     */
+    public function getTax()
+    {
+        return $this->tax;
+    }
+
+    /**
+     * Sets product tax
+     *
+     * @param TaxInterface $tax
+     *
+     * @return $this Self object
+     */
+    public function setTax(TaxInterface $tax)
+    {
+        $this->tax = $tax;
+
+        return $this;
     }
 
     /**

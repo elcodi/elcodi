@@ -49,6 +49,13 @@ Elcodi\Component\Cart\Entity\Order:
         updatedAt:
             column: updated_at
             type: datetime
+        taxAmount:
+            column: tax_amount
+            type: decimal
+            precision: 18
+            scale: 10
+            nullable: false
+
 
     oneToOne:
         cart:

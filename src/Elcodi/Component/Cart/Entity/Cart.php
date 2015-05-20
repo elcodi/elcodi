@@ -146,6 +146,13 @@ class Cart implements CartInterface
     protected $cheapestShippingRange;
 
     /**
+     * @var float
+     *
+     * Tax amount
+     */
+    protected $taxAmount;
+
+    /**
      * Get Id
      *
      * @return integer Id
@@ -591,4 +598,29 @@ class Cart implements CartInterface
 
         return $this;
     }
+
+    /**
+     * Set taxAmount
+     *
+     * @param float $taxAmount
+     *
+     * @return $this Self object
+     */
+    public function setTaxAmount($taxAmount)
+    {
+        $this->taxAmount = $taxAmount;
+
+        return $this;
+    }
+
+    /**
+     * Get taxAmount
+     *
+     * @return float
+     */
+    public function getTaxAmount()
+    {
+        return $this->taxAmount;
+    }
+
 }

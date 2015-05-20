@@ -153,6 +153,13 @@ class Order implements OrderInterface
     protected $billingAddress;
 
     /**
+     * @var float
+     *
+     * Tax amount
+     */
+    protected $taxAmount;
+
+    /**
      * Get Id
      *
      * @return integer Id
@@ -486,5 +493,29 @@ class Order implements OrderInterface
         $this->billingAddress = $billingAddress;
 
         return $this;
+    }
+
+    /**
+     * Set taxAmount
+     *
+     * @param float $taxAmount
+     *
+     * @return $this Self object
+     */
+    public function setTaxAmount($taxAmount)
+    {
+        $this->taxAmount = $taxAmount;
+
+        return $this;
+    }
+
+    /**
+     * Get taxAmount
+     *
+     * @return float
+     */
+    public function getTaxAmount()
+    {
+        return $this->taxAmount;
     }
 }
