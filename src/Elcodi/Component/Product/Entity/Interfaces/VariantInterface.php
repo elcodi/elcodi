@@ -22,8 +22,10 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface;
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
+use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Media\Entity\Interfaces\ImagesContainerInterface;
 use Elcodi\Component\Media\Entity\Interfaces\PrincipalImageInterface;
+use Elcodi\Component\Tax\Entity\Interfaces\TaxInterface;
 
 /**
  * Interface VariantInterface
@@ -106,18 +108,33 @@ interface VariantInterface
     public function removeOption(ValueInterface $option);
 
     /**
-     * Returns product tax
+     * Returns variant tax
      *
      * @return TaxInterface
      */
     public function getTax();
 
     /**
-     * Sets product tax
+     * Sets variant tax
      *
      * @param TaxInterface $tax
      *
      * @return $this Self object
      */
     public function setTax(TaxInterface $tax);
+
+    /**
+     * Returns variant taxed Price
+     *
+     * @return MoneyInterface
+     */
+    public function getTaxedPrice();
+
+    /**
+     * When a tax is set on the variant      returns a money object with amount = tax amount
+     * When a tax is NOT set on the variant  returns a money object with amount = 0
+     *
+     * @return MoneyInterface
+     */
+    public function getTaxAmount();
 }

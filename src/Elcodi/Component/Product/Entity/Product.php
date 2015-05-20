@@ -24,6 +24,7 @@ use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Core\Entity\Traits\ETaggableTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
+use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait;
 use Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait;
 use Elcodi\Component\MetaData\Entity\Traits\MetaDataTrait;
@@ -626,6 +627,42 @@ class Product implements ProductInterface
         $this->tax = $tax;
 
         return $this;
+    }
+
+    /**
+     * Returns product taxed Price
+     *
+     * @return MoneyInterface
+     */
+    public function getTaxedPrice()
+    {
+        return \Elcodi\Component\Currency\Entity\Money::create(
+            $this->price,
+            $this->priceCurrency
+        )->add( $this->getTaxAmount() );
+    }
+
+    /**
+     * When a tax is set on the product      returns a money object with amount = tax amount
+     * When a tax is NOT set on the product  returns a money object with amount = 0
+     *
+     * @return MoneyInterface
+     */
+    public function getTaxAmount()
+    {
+        if( isset( $this->tax ) )
+        {
+            return \Elcodi\Component\Currency\Entity\Money::create(
+                (integer)($this->price * $this->tax->getValue()/100),
+                $this->priceCurrency
+            );
+        }else{
+            return \Elcodi\Component\Currency\Entity\Money::create(
+                0,
+                $this->priceCurrency
+            );
+        }
+
     }
 
     /**

@@ -23,9 +23,11 @@ use Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\ETaggableInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
+use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Media\Entity\Interfaces\ImagesContainerInterface;
 use Elcodi\Component\Media\Entity\Interfaces\PrincipalImageInterface;
 use Elcodi\Component\MetaData\Entity\Interfaces\MetaDataInterface;
+use Elcodi\Component\Tax\Entity\Interfaces\TaxInterface;
 
 /**
  * Interface ProductInterface
@@ -298,4 +300,19 @@ interface ProductInterface
      * @return $this Self object
      */
     public function setTax(TaxInterface $tax);
+
+    /**
+     * Returns product taxed Price
+     *
+     * @return MoneyInterface
+     */
+    public function getTaxedPrice();
+
+    /**
+     * When a tax is set on the product      returns a money object with amount = tax amount
+     * When a tax is NOT set on the product  returns a money object with amount = 0
+     *
+     * @return MoneyInterface
+     */
+    public function getTaxAmount();
 }

@@ -106,7 +106,7 @@ class Tax implements TaxInterface
     }
 
     /**
-     * Sets Tax value in percentage
+     * Gets Tax value in percentage
      *
      * @return float
      */
@@ -116,7 +116,7 @@ class Tax implements TaxInterface
     }
 
     /**
-     * Gets Tax value in percentage
+     * Sets Tax value in percentage
      *
      * @param float $value
      *
