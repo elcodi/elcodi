@@ -12,3 +12,9 @@ services:
         class: Elcodi\Component\Product\EventListener\ProductPrincipalCategoryEventListener
         tags:
             - { name: doctrine.event_listener, event: preFlush, method: preFlush }
+
+    elcodi.event_listener.root_category:
+        class: Elcodi\Component\Product\EventListener\RootCategoryEventListener
+        tags:
+            - { name: doctrine.event_listener, event: preFlush, method: preFlush }
+            - { name: doctrine.event_listener, event: preUpdate, method: preUpdate }
