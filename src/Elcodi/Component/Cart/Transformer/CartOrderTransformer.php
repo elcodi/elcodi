@@ -126,7 +126,8 @@ class CartOrderTransformer
             ->setWeight($cart->getWeight())
             ->setBillingAddress($cart->getBillingAddress())
             ->setDeliveryAddress($cart->getDeliveryAddress())
-            ->setOrderLines($orderLines);
+            ->setOrderLines($orderLines)
+            ->setTaxAmount($cart->getTaxAmount());
 
         $couponAmount = $cart->getCouponAmount();
         if ($couponAmount instanceof MoneyInterface) {

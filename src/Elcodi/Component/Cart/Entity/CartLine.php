@@ -23,6 +23,8 @@ use Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface;
 use Elcodi\Component\Cart\Entity\Traits\PriceTrait;
 use Elcodi\Component\Cart\Entity\Traits\PurchasableWrapperTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
+use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
+use Elcodi\Component\Tax\Entity\Traits\TaxTrait;
 
 /**
  * Cart line
@@ -31,7 +33,8 @@ class CartLine implements CartLineInterface
 {
     use IdentifiableTrait,
         PurchasableWrapperTrait,
-        PriceTrait;
+        PriceTrait,
+        TaxTrait;
 
     /**
      * @var CartInterface
@@ -172,5 +175,39 @@ class CartLine implements CartLineInterface
     public function getTaxPercentage()
     {
         return $this->taxPercentage;
+    }
+
+    /**
+     * Get Taxed Amount
+     *
+     * @return MoneyInterface
+     */
+    public function getTaxedAmount()
+    {
+        return \Elcodi\Component\Currency\Entity\Money::create(
+            $this->amount,
+            $this->currency
+        )->add( $this->getTaxAmount() );
+    }
+
+    /**
+     * Get Tax Amount
+     *
+     * @return MoneyInterface
+     */
+    public function getTaxAmount()
+    {
+        if( isset( $this->taxPercentage ) )
+        {
+            return \Elcodi\Component\Currency\Entity\Money::create(
+                $this->CalculateTaxAmount( $this->amount, $this->taxPercentage ),
+                $this->currency
+            );
+        }else{
+            return \Elcodi\Component\Currency\Entity\Money::create(
+                0,
+                $this->productCurrency
+            );
+        }
     }
 }

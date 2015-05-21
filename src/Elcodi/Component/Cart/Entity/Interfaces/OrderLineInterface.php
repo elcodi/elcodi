@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Cart\Entity\Interfaces;
 
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
+use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
 
 /**
@@ -98,4 +99,17 @@ interface OrderLineInterface
      */
     public function getTaxPercentage();
 
+    /**
+     * Get Taxed Price
+     *
+     * @return MoneyInterface
+     */
+    public function getTaxedAmount();
+
+    /**
+     * Get Tax Amount
+     *
+     * @return MoneyInterface
+     */
+    public function getTaxAmount();
 }

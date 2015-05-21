@@ -146,9 +146,12 @@ class Cart implements CartInterface
     protected $cheapestShippingRange;
 
     /**
-     * @var float
+     * @var MoneyInterface
      *
-     * Tax amount
+     * Transient tax amount
+     *
+     * This value is not persisted, it is calculated
+     * by summing CartLine::$getTaxAmount
      */
     protected $taxAmount;
 

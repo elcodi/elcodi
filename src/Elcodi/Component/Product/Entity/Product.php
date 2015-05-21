@@ -35,6 +35,7 @@ use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
 use Elcodi\Component\Tax\Entity\Interfaces\TaxInterface;
 use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
 use Elcodi\Component\Product\Entity\Traits\ProductPriceTrait;
+use Elcodi\Component\Tax\Entity\Traits\TaxTrait;
 
 /**
  * Class Product entity
@@ -49,7 +50,9 @@ class Product implements ProductInterface
         MetaDataTrait,
         ImagesContainerTrait,
         PrincipalImageTrait,
-        DimensionsTrait;
+        DimensionsTrait,
+        TaxTrait;
+
 
     /**
      * @var string
@@ -653,7 +656,7 @@ class Product implements ProductInterface
         if( isset( $this->tax ) )
         {
             return \Elcodi\Component\Currency\Entity\Money::create(
-                (integer)($this->price * $this->tax->getValue()/100),
+                $this->CalculateTaxAmount( $this->price, $this->tax->getValue() ),
                 $this->priceCurrency
             );
         }else{
@@ -662,7 +665,6 @@ class Product implements ProductInterface
                 $this->priceCurrency
             );
         }
-
     }
 
     /**
