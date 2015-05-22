@@ -17,12 +17,9 @@
 
 namespace Elcodi\Bundle\ProductBundle\Tests\Functional\Repository;
 
-use Doctrine\ORM\EntityManager;
-
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
+use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
-use Elcodi\Component\Product\Factory\CategoryFactory;
-use Elcodi\Component\Product\Repository\CategoryRepository;
 
 /**
  * Class CategoryRepositoryTest
@@ -30,25 +27,11 @@ use Elcodi\Component\Product\Repository\CategoryRepository;
 class RootCategoryEventListenerTest extends WebTestCase
 {
     /**
-     * @var CategoryRepository
+     * @var ObjectDirector
      *
-     * LocationProvider class
+     * The category director.
      */
-    protected $categoryRepository;
-
-    /**
-     * @var CategoryFactory
-     *
-     * Category factory class
-     */
-    protected $categoryFactory;
-
-    /**
-     * @var EntityManager
-     *
-     * Category entity manager
-     */
-    protected $entityManager;
+    protected $categoryDirector;
 
     /**
      * Setup
@@ -57,9 +40,7 @@ class RootCategoryEventListenerTest extends WebTestCase
     {
         parent::setUp();
 
-        $this->categoryRepository = $this->get('elcodi.repository.category');
-        $this->categoryFactory = $this->get('elcodi.factory.category');
-        $this->entityManager = $this->get('elcodi.object_manager.category');
+        $this->categoryDirector = $this->get('elcodi.director.category');
     }
 
     /**
@@ -93,27 +74,24 @@ class RootCategoryEventListenerTest extends WebTestCase
          * @var $rootCategory CategoryInterface
          */
         $rootCategory = $this
-            ->categoryRepository
+            ->categoryDirector
             ->findOneBy(['slug' => 'root-category']);
 
-        $category = $this->categoryFactory->create();
+        $category = $this->categoryDirector->create();
         $category->setRoot(true);
         $category->setParent($rootCategory);
         $category->setName('New root category');
         $category->setSlug('new-root-category');
 
         $this
-            ->entityManager
-            ->persist($category);
-        $this
-            ->entityManager
-            ->flush($category);
+            ->categoryDirector
+            ->save($category);
 
         /**
          * @var $category CategoryInterface
          */
         $category = $this
-            ->categoryRepository
+            ->categoryDirector
             ->findOneBy(['slug' => 'new-root-category']);
 
         $this->assertNull(
@@ -132,27 +110,27 @@ class RootCategoryEventListenerTest extends WebTestCase
          * @var $rootCategory CategoryInterface
          */
         $rootCategory = $this
-            ->categoryRepository
+            ->categoryDirector
             ->findOneBy(['slug' => 'root-category']);
 
         /**
          * @var $anotherCategory CategoryInterface
          */
         $anotherCategory = $this
-            ->categoryRepository
+            ->categoryDirector
             ->findOneBy(['slug' => 'category']);
 
         $rootCategory->setParent($anotherCategory);
 
         $this
-            ->entityManager
-            ->flush($rootCategory);
+            ->categoryDirector
+            ->save($rootCategory);
 
         /**
          * @var $category CategoryInterface
          */
         $category = $this
-            ->categoryRepository
+            ->categoryDirector
             ->findOneBy(['slug' => 'root-category']);
 
         $this->assertNull(

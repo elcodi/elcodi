@@ -72,7 +72,8 @@ class RootCategoryEventListener
      *
      * @param CategoryInterface $category The category.
      */
-    protected function removeParentCategoryForRootCategory( CategoryInterface $category ) {
+    protected function removeParentCategoryForRootCategory(CategoryInterface $category)
+    {
         if ($category->isRoot()) {
             $category->setParent(null);
         }
