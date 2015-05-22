@@ -44,7 +44,7 @@ Elcodi\Component\Cart\Entity\OrderLine:
             type: decimal
             precision: 18
             scale: 10
-            nullable: false
+            nullable: true
 
     manyToOne:
         order:

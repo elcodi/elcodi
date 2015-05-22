@@ -176,8 +176,9 @@ abstract class WebTestCase extends BaseWebTestCase
 
         static::$application->run(new ArrayInput([
             'command'          => 'doctrine:schema:create',
+            '-vvv'             => true,
             '--no-interaction' => true,
-            '--quiet'          => true,
+            //'--quiet'          => true,
         ]));
 
         $this->loadFixtures();
@@ -212,7 +213,7 @@ abstract class WebTestCase extends BaseWebTestCase
             'command'          => 'doctrine:fixtures:load',
             '--no-interaction' => true,
             '--fixtures'       => $formattedBundles,
-            '--quiet'          => true,
+            //'--quiet'          => true,
         ]));
 
         return $this;

@@ -498,13 +498,14 @@ class Order implements OrderInterface
     /**
      * Set taxAmount
      *
-     * @param float $taxAmount
+     * @param MoneyInterface $taxAmount
      *
      * @return $this Self object
      */
-    public function setTaxAmount($taxAmount)
+    public function setTaxAmount(MoneyInterface $taxAmount)
     {
-        $this->taxAmount = $taxAmount;
+        $this->taxAmount = $taxAmount->getAmount();
+        // the currency of taxAmount should be the same as the currency for amount
 
         return $this;
     }
@@ -512,10 +513,13 @@ class Order implements OrderInterface
     /**
      * Get taxAmount
      *
-     * @return float
+     * @return MoneyInterface
      */
     public function getTaxAmount()
     {
-        return $this->taxAmount;
+        return \Elcodi\Component\Currency\Entity\Money::create(
+            $this->taxAmount,
+            $this->currency
+        );
     }
 }

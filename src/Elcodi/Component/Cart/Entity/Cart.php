@@ -605,11 +605,11 @@ class Cart implements CartInterface
     /**
      * Set taxAmount
      *
-     * @param float $taxAmount
+     * @param MoneyInterface $taxAmount
      *
      * @return $this Self object
      */
-    public function setTaxAmount($taxAmount)
+    public function setTaxAmount(MoneyInterface $taxAmount)
     {
         $this->taxAmount = $taxAmount;
 
@@ -619,7 +619,7 @@ class Cart implements CartInterface
     /**
      * Get taxAmount
      *
-     * @return float
+     * @return MoneyInterface
      */
     public function getTaxAmount()
     {

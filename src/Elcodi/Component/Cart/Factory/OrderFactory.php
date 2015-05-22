@@ -23,6 +23,7 @@ use Elcodi\Component\Cart\Entity\Order;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 use Elcodi\Component\StateTransitionMachine\Machine\MachineManager;
+use Elcodi\Component\Currency\Entity\Money;
 
 /**
  * Class Order

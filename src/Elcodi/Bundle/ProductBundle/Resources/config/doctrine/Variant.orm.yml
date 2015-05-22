@@ -91,7 +91,6 @@ Elcodi\Component\Product\Entity\Variant:
                 name: tax_id
                 referencedColumnName: id
 
-
     manyToMany:
         options:
             targetEntity: Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface

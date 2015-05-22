@@ -66,6 +66,7 @@ class ElcodiProductBundle extends Bundle implements DependentBundleInterface
             'Elcodi\Bundle\AttributeBundle\ElcodiAttributeBundle',
             'Elcodi\Bundle\ConfigurationBundle\ElcodiConfigurationBundle',
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+            'Elcodi\Bundle\TaxBundle\ElcodiTaxBundle',
         ];
     }
 

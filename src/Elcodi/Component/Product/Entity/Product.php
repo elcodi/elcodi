@@ -162,7 +162,7 @@ class Product implements ProductInterface
     /**
      * @var TaxInterface
      *
-     * Tax applied on this product
+     * Tax
      */
     protected $tax;
 

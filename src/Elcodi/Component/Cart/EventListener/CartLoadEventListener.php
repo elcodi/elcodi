@@ -317,8 +317,7 @@ class CartLoadEventListener
         $cart
             ->setProductAmount($productAmount)
             ->setAmount($productAmount)
-            ->setTaxAmmount($taxAmount);
-
+            ->setTaxAmount($taxAmount);
     }
 
     /**
@@ -348,7 +347,7 @@ class CartLoadEventListener
          */
         $cartLine->setProductAmount($productPrice);
         $cartLine->setAmount($productPrice->multiply($cartLine->getQuantity()));
-        $cartLine->setTaxPercentage($cartLine->getProduct()->getTax()->getValue());
+        //$cartLine->setTaxPercentage( $cartLine->getProduct()->getTax()->getValue() );
 
         return $cartLine;
     }

@@ -86,7 +86,7 @@ class Variant implements VariantInterface
     /**
      * @var TaxInterface
      *
-     * Tax applied on this product
+     * Tax
      */
     protected $tax;
 

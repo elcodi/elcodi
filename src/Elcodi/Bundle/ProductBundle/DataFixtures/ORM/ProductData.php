@@ -53,6 +53,7 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
         $manufacturer = $this->getReference('manufacturer');
         $currency = $this->getReference('currency-dollar');
         $productDirector = $this->getDirector('product');
+//        $tax = $this->getReference('tax');
 
         $product = $productDirector
             ->create()
@@ -70,6 +71,7 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
             ->setWidth(15)
             ->setDepth(20)
             ->setWeight(100)
+//            ->setTax($tax)
             ->setEnabled(true);
 
         $productDirector->save($product);
@@ -162,6 +164,7 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
             'Elcodi\Bundle\CurrencyBundle\DataFixtures\ORM\CurrencyData',
             'Elcodi\Bundle\ProductBundle\DataFixtures\ORM\CategoryData',
             'Elcodi\Bundle\ProductBundle\DataFixtures\ORM\ManufacturerData',
+            'Elcodi\Bundle\TaxBundle\DataFixtures\ORM\TaxData',
         ];
     }
 }
