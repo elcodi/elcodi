@@ -98,6 +98,9 @@ class FileManager
      */
     public function downloadFile(FileInterface $file)
     {
+        /**
+         * @var string $content
+         */
         $content = $this
             ->filesystem
             ->read($this

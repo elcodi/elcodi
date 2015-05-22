@@ -83,7 +83,9 @@ class LoadDataFixturesDoctrineCommand extends OriginalCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         if (empty($this->databaseFilePath)) {
-            return parent::execute($input, $output);
+            parent::execute($input, $output);
+
+            return 0;
         }
 
         /**
@@ -97,7 +99,7 @@ class LoadDataFixturesDoctrineCommand extends OriginalCommand
                 ? $dirOrFile :
                 [$dirOrFile];
         } else {
-            foreach ($this->getApplication()->getKernel()->getBundles() as $bundle) {
+            foreach ($this->kernel->getBundles() as $bundle) {
                 $paths[] = $bundle->getPath() . '/DataFixtures/ORM';
             }
         }

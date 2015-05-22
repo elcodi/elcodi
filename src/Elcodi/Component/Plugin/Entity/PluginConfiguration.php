@@ -25,9 +25,9 @@ use RuntimeException;
 class PluginConfiguration
 {
     /**
-     * @var array
+     * @var string
      *
-     * Configuration
+     * Encoded configuration
      */
     protected $configuration;
 
