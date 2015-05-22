@@ -17,40 +17,16 @@
 
 namespace Elcodi\Bundle\ProductBundle\Tests\Functional\Repository;
 
-use Doctrine\ORM\EntityManager;
-
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
+use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
-use Elcodi\Component\Product\Factory\ProductFactory;
 use Elcodi\Component\Product\Repository\CategoryRepository;
-use Elcodi\Component\Product\Repository\ProductRepository;
 
 /**
  * Class ProductCategoryIntegrityEventListenerTest
  */
 class ProductCategoryIntegrityEventListenerTest extends WebTestCase
 {
-    /**
-     * @var ProductRepository
-     *
-     * Category repository class
-     */
-    protected $productRepository;
-
-    /**
-     * @var ProductFactory
-     *
-     * Category factory class
-     */
-    protected $productFactory;
-
-    /**
-     * @var EntityManager
-     *
-     * Category entity manager
-     */
-    protected $entityManager;
-
     /**
      * @var CategoryRepository
      *
@@ -59,20 +35,21 @@ class ProductCategoryIntegrityEventListenerTest extends WebTestCase
     protected $categoryRepository;
 
     /**
+     * @var ObjectDirector
+     *
+     * The product director.
+     */
+    protected $productDirector;
+
+    /**
      * Setup
      */
     public function setUp()
     {
         parent::setUp();
 
-        $this->categoryRepository = $this
-            ->get('elcodi.repository.category');
-        $this->productRepository = $this
-            ->get('elcodi.repository.product');
-        $this->productFactory = $this
-            ->get('elcodi.factory.product');
-        $this->entityManager = $this
-            ->get('elcodi.object_manager.product');
+        $this->categoryRepository = $this->get('elcodi.repository.category');
+        $this->productDirector = $this->get('elcodi.director.product');
     }
 
     /**
@@ -115,11 +92,10 @@ class ProductCategoryIntegrityEventListenerTest extends WebTestCase
         $product->setSlug('new-product-1');
         $product->setName('New product 1');
 
-        $this->entityManager->persist($product);
-        $this->entityManager->flush($product);
+        $this->productDirector->save($product);
 
         $product = $this
-            ->productRepository
+            ->productDirector
             ->findOneBy(['slug' => 'new-product-1']);
 
         $this->assertEquals(
@@ -147,11 +123,10 @@ class ProductCategoryIntegrityEventListenerTest extends WebTestCase
         $product->setSlug('new-product-2');
         $product->setName('New product 2');
 
-        $this->entityManager->persist($product);
-        $this->entityManager->flush($product);
+        $this->productDirector->save($product);
 
         $product = $this
-            ->productRepository
+            ->productDirector
             ->findOneBy(['slug' => 'new-product-2']);
 
         $this->assertEquals(
@@ -175,7 +150,7 @@ class ProductCategoryIntegrityEventListenerTest extends WebTestCase
     public function getNewProduct()
     {
         return $this
-            ->productFactory
+            ->productDirector
             ->create();
     }
 }
