@@ -21,6 +21,7 @@ services:
         arguments:
             - @elcodi.order_payment_states_machine_manager
             - @elcodi.order_shipping_states_machine_manager
+            - @elcodi.wrapper.default_currency
         calls:
             - [setEntityNamespace, ["%elcodi.entity.order.class%"]]
             - [setDateTimeFactory, ["@elcodi.factory.datetime"]]
