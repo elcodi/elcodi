@@ -13,3 +13,6 @@ services:
         arguments:
             - @elcodi.repository.product
             - "@=elcodi_config('product.use_stock', false)"
+
+    elcodi.service.category_integrity_fixer:
+        class: Elcodi\Component\Product\Services\CategoryIntegrityFixer
