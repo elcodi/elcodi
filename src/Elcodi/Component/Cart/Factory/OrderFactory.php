@@ -20,9 +20,8 @@ namespace Elcodi\Component\Cart\Factory;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\Component\Cart\Entity\Order;
-use Elcodi\Component\Currency\Entity\Money;
-use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
+use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Wrapper\DefaultCurrencyWrapper;
 use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 use Elcodi\Component\StateTransitionMachine\Machine\MachineManager;
@@ -54,8 +53,8 @@ class OrderFactory extends AbstractFactory
     /**
      * Construct method
      *
-     * @param MachineManager $paymentMachineManager Machine Manager for Payment
-     * @param MachineManager $shippingMachineManager Machine Manager for Shipping
+     * @param MachineManager         $paymentMachineManager  Machine Manager for Payment
+     * @param MachineManager         $shippingMachineManager Machine Manager for Shipping
      * @param DefaultCurrencyWrapper $defaultCurrencyWrapper
      */
     public function __construct(
