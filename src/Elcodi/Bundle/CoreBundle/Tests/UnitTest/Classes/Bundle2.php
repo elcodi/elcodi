@@ -15,19 +15,24 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\CoreBundle\Interfaces;
+namespace Elcodi\Bundle\CoreBundle\Tests\UnitTest\Classes;
+
+use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 
 /**
- * Interface DependentBundleInterface
+ * Class Bundle2
  */
-interface DependentBundleInterface
+class Bundle2 implements DependentBundleInterface
 {
     /**
-     * Return all bundle dependencies.
-     *
-     * Values can be a simple bundle namespace or its instance
+     * Create instance of current bundle, and return dependent bundle namespaces
      *
      * @return array Bundle instances
      */
-    public static function getBundleDependencies();
+    public static function getBundleDependencies()
+    {
+        return [
+            'Elcodi\Bundle\CoreBundle\Tests\UnitTest\Classes\Bundle1',
+        ];
+    }
 }

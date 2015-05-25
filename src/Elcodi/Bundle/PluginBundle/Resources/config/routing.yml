@@ -1,0 +1,3 @@
+elcodi.routes.plugins:
+    resource: .
+    type: elcodi.routes.plugins

@@ -15,19 +15,11 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\CoreBundle\Interfaces;
+namespace Elcodi\Bundle\CoreBundle\Tests\UnitTest\Classes;
 
 /**
- * Interface DependentBundleInterface
+ * Class Bundle4
  */
-interface DependentBundleInterface
+class Bundle4
 {
-    /**
-     * Return all bundle dependencies.
-     *
-     * Values can be a simple bundle namespace or its instance
-     *
-     * @return array Bundle instances
-     */
-    public static function getBundleDependencies();
 }

@@ -15,14 +15,14 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\CoreBundle\Tests\Functional\Classes;
+namespace Elcodi\Bundle\CoreBundle\Tests\UnitTest\Classes;
 
 use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 
 /**
- * Class Bundle3
+ * Class Bundle1
  */
-class Bundle3 implements DependentBundleInterface
+class Bundle1 implements DependentBundleInterface
 {
     /**
      * Create instance of current bundle, and return dependent bundle namespaces
@@ -32,9 +32,8 @@ class Bundle3 implements DependentBundleInterface
     public static function getBundleDependencies()
     {
         return [
-            'Elcodi\Bundle\CoreBundle\Tests\Functional\Classes\Bundle1',
-            'Elcodi\Bundle\CoreBundle\Tests\Functional\Classes\Bundle2',
-            'Elcodi\Bundle\CoreBundle\Tests\Functional\Classes\Bundle4',
+            'Elcodi\Bundle\CoreBundle\Tests\UnitTest\Classes\Bundle2',
+            new \Elcodi\Bundle\CoreBundle\Tests\UnitTest\Classes\Bundle5('A'),
         ];
     }
 }

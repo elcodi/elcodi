@@ -15,7 +15,7 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\CoreBundle\Tests\Functional\Classes;
+namespace Elcodi\Bundle\CoreBundle\Tests\UnitTest\Classes;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -33,13 +33,28 @@ class BundleDependenciesResolverAware
      *
      * @return Bundle[] Bundles
      */
-    public function getBundleNamespaces()
+    public function getInstancesTest1()
     {
-        $dependenciesBundles = [];
         $bundles = [
-            'Elcodi\Bundle\CoreBundle\Tests\Functional\Classes\Bundle3',
+            new \Elcodi\Bundle\CoreBundle\Tests\UnitTest\Classes\Bundle3(),
+            'Elcodi\Bundle\CoreBundle\Tests\UnitTest\Classes\Bundle5',
         ];
 
-        return $this->resolveBundleDependencies($dependenciesBundles, $bundles);
+        return $this->getBundleInstances($bundles);
+    }
+
+    /**
+     * Get bundle instances
+     *
+     * @return Bundle[] Bundles
+     */
+    public function getInstancesTest2()
+    {
+        $bundles = [
+            new \Elcodi\Bundle\CoreBundle\Tests\UnitTest\Classes\Bundle1(),
+            'Elcodi\Bundle\CoreBundle\Tests\UnitTest\Classes\Bundle2',
+        ];
+
+        return $this->getBundleInstances($bundles);
     }
 }

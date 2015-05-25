@@ -15,19 +15,18 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\CoreBundle\Interfaces;
+namespace Elcodi\Component\Payment;
 
 /**
- * Interface DependentBundleInterface
+ * Class ElcodiPaymentEvents
  */
-interface DependentBundleInterface
+final class ElcodiPaymentEvents
 {
     /**
-     * Return all bundle dependencies.
+     * This event is dispatched when all payment methods are required
      *
-     * Values can be a simple bundle namespace or its instance
-     *
-     * @return array Bundle instances
+     * event.name : payment.collect
+     * event.class : PaymentCollectionEvent
      */
-    public static function getBundleDependencies();
+    const PAYMENT_COLLECT = 'payment.collect';
 }

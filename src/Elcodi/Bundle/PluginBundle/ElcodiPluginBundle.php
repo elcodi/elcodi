@@ -21,11 +21,11 @@ use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\HttpKernel\KernelInterface;
 
 use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\PluginBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\PluginBundle\DependencyInjection\ElcodiPluginExtension;
-use Elcodi\Component\Plugin\ExpressionLanguage\PluginExpressionLanguageProvider;
 
 /**
  * Class ElcodiPluginBundle
@@ -35,6 +35,23 @@ use Elcodi\Component\Plugin\ExpressionLanguage\PluginExpressionLanguageProvider;
 class ElcodiPluginBundle extends Bundle implements DependentBundleInterface
 {
     /**
+     * @var KernelInterface
+     *
+     * Kernel
+     */
+    protected $kernel;
+
+    /**
+     * Construct
+     *
+     * @param KernelInterface $kernel Kernel
+     */
+    public function __construct(KernelInterface $kernel)
+    {
+        $this->kernel = $kernel;
+    }
+
+    /**
      * @param ContainerBuilder $container
      */
     public function build(ContainerBuilder $container)
@@ -42,7 +59,6 @@ class ElcodiPluginBundle extends Bundle implements DependentBundleInterface
         parent::build($container);
 
         $container->addCompilerPass(new MappingCompilerPass());
-        $container->addExpressionLanguageProvider(new PluginExpressionLanguageProvider());
     }
 
     /**
@@ -52,7 +68,7 @@ class ElcodiPluginBundle extends Bundle implements DependentBundleInterface
      */
     public function getContainerExtension()
     {
-        return new ElcodiPluginExtension();
+        return new ElcodiPluginExtension($this->kernel);
     }
 
     /**

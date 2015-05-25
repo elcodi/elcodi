@@ -15,24 +15,19 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\CoreBundle\Tests\Functional\Classes;
-
-use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
+namespace Elcodi\Bundle\CoreBundle\Interfaces;
 
 /**
- * Class Bundle2
+ * Interface DependedBundleInterface
  */
-class Bundle2 implements DependentBundleInterface
+interface DependedBundleInterface
 {
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Return all dependent bundles
+     *
+     * Values can be a simple bundle namespace or its instance
      *
      * @return array Bundle instances
      */
-    public static function getBundleDependencies()
-    {
-        return [
-            'Elcodi\Bundle\CoreBundle\Tests\Functional\Classes\Bundle1',
-        ];
-    }
+    public static function getDependentBundles();
 }

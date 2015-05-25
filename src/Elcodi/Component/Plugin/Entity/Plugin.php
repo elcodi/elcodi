@@ -292,6 +292,19 @@ class Plugin
     }
 
     /**
+     * Plugin is usable using all defined fields
+     *
+     * @return boolean Plugin is usable
+     */
+    public function guessIsUsable()
+    {
+        return $this
+            ->isUsable(
+                $this->getFields()
+            );
+    }
+
+    /**
      * Merge this plugin instance with a new one, and saves the result in
      * this instance.
      *

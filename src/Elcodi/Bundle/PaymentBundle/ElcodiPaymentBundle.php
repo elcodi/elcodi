@@ -15,11 +15,13 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\CoreBundle\Tests\Functional\Classes;
+namespace Elcodi\Bundle\PaymentBundle;
+
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Class Bundle4
+ * Class ElcodiPaymentBundle
  */
-class Bundle4
+class ElcodiPaymentBundle extends Bundle
 {
 }
