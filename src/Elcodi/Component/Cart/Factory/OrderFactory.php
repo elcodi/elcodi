@@ -20,7 +20,10 @@ namespace Elcodi\Component\Cart\Factory;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\Component\Cart\Entity\Order;
+use Elcodi\Component\Currency\Entity\Money;
+use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
+use Elcodi\Component\Currency\Wrapper\DefaultCurrencyWrapper;
 use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 use Elcodi\Component\StateTransitionMachine\Machine\MachineManager;
 
@@ -44,17 +47,25 @@ class OrderFactory extends AbstractFactory
     protected $shippingMachineManager;
 
     /**
+     * @var DefaultCurrencyWrapper
+     */
+    private $defaultCurrencyWrapper;
+
+    /**
      * Construct method
      *
-     * @param MachineManager $paymentMachineManager  Machine Manager for Payment
+     * @param MachineManager $paymentMachineManager Machine Manager for Payment
      * @param MachineManager $shippingMachineManager Machine Manager for Shipping
+     * @param DefaultCurrencyWrapper $defaultCurrencyWrapper
      */
     public function __construct(
         MachineManager $paymentMachineManager,
-        MachineManager $shippingMachineManager
+        MachineManager $shippingMachineManager,
+        DefaultCurrencyWrapper $defaultCurrencyWrapper
     ) {
         $this->paymentMachineManager = $paymentMachineManager;
         $this->shippingMachineManager = $shippingMachineManager;
+        $this->defaultCurrencyWrapper = $defaultCurrencyWrapper;
     }
 
     /**
@@ -77,7 +88,15 @@ class OrderFactory extends AbstractFactory
             ->setHeight(0)
             ->setWidth(0)
             ->setWeight(0)
-            ->setCreatedAt($this->now());
+            ->setCreatedAt($this->now())
+            ->setCouponAmount(
+                Money::create(
+                    0,
+                    $this
+                        ->defaultCurrencyWrapper
+                        ->get()
+                )
+            );
 
         $paymentStateLineStack = $this
             ->paymentMachineManager
