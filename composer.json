@@ -58,7 +58,7 @@
         "doctrine/common": "~2.5",
         "doctrine/orm": "~2.5",
         "doctrine/doctrine-cache-bundle": "~1.0",
-        "mmoreram/simple-doctrine-mapping": "~0.1",
+        "mmoreram/simple-doctrine-mapping": "~1.0",
 
         "sebastian/money": "~1.5",
         "knplabs/knp-gaufrette-bundle": "~0.1",
