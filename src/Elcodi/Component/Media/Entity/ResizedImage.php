@@ -20,9 +20,9 @@ namespace Elcodi\Component\Media\Entity;
 use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 
 /**
- * Class Image
+ * Class ResizedImage
  */
-class Image extends File implements ImageInterface
+class ResizedImage extends File implements ImageInterface
 {
     /**
      * @var integer
@@ -39,14 +39,16 @@ class Image extends File implements ImageInterface
     protected $height;
 
     /**
-     * @var ResizedImage[]
+     * @var string
+     *
+     * Resized type
      */
-    protected $resizedImages;
+    protected $resizedType;
 
     /**
      * Set image width in pixels
      *
-     * @param integer $width Width
+     * @param string $width Width
      *
      * @return $this Self object
      */
@@ -70,7 +72,7 @@ class Image extends File implements ImageInterface
     /**
      * Set image height in pixels
      *
-     * @param integer $height Height
+     * @param string $height Height
      *
      * @return $this Self object
      */
@@ -91,9 +93,23 @@ class Image extends File implements ImageInterface
         return $this->height;
     }
 
-    public function addResizedImage(ResizedImage $resizeImage)
+    /**
+     * @return string
+     */
+    public function getResizedType()
     {
-        // todo i think i saw some reference about not using collections from doctrine?
-        // can you link me to an example?
+        return $this->resizedType;
+    }
+
+    /**
+     * @param string $resizedType
+     *
+     * @return $this Self object
+     */
+    public function setResizedType($resizedType)
+    {
+        $this->resizedType = $resizedType;
+
+        return $this;
     }
 }
