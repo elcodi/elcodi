@@ -497,6 +497,7 @@ class Order implements OrderInterface
 
     /**
      * Set taxAmount
+     * Notice that the currency of taxAmount is the same as the currency for amount
      *
      * @param MoneyInterface $taxAmount
      *
@@ -505,19 +506,19 @@ class Order implements OrderInterface
     public function setTaxAmount(MoneyInterface $taxAmount)
     {
         $this->taxAmount = $taxAmount->getAmount();
-        // the currency of taxAmount should be the same as the currency for amount
 
         return $this;
     }
 
     /**
      * Get taxAmount
+     * Notice that the currency of taxAmount is the same as the currency for amount
      *
      * @return MoneyInterface
      */
     public function getTaxAmount()
     {
-        return \Elcodi\Component\Currency\Entity\Money::create(
+        return Money::create(
             $this->taxAmount,
             $this->currency
         );

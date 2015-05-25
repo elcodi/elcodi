@@ -187,7 +187,7 @@ class CartLine implements CartLineInterface
         return \Elcodi\Component\Currency\Entity\Money::create(
             $this->amount,
             $this->currency
-        )->add( $this->getTaxAmount() );
+        )->add($this->getTaxAmount());
     }
 
     /**
@@ -197,13 +197,12 @@ class CartLine implements CartLineInterface
      */
     public function getTaxAmount()
     {
-        if( isset( $this->taxPercentage ) )
-        {
+        if (isset($this->taxPercentage)) {
             return \Elcodi\Component\Currency\Entity\Money::create(
-                $this->CalculateTaxAmount( $this->amount, $this->taxPercentage ),
+                $this->CalculateTaxAmount($this->amount, $this->taxPercentage),
                 $this->currency
             );
-        }else{
+        } else {
             return \Elcodi\Component\Currency\Entity\Money::create(
                 0,
                 $this->productCurrency

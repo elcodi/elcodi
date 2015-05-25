@@ -287,7 +287,7 @@ class Variant implements VariantInterface
         return \Elcodi\Component\Currency\Entity\Money::create(
             $this->price,
             $this->priceCurrency
-        )->add( $this->getTaxAmount() );
+        )->add($this->getTaxAmount());
     }
 
     /**
@@ -298,13 +298,12 @@ class Variant implements VariantInterface
      */
     public function getTaxAmount()
     {
-        if( isset( $this->tax ) )
-        {
+        if (isset($this->tax)) {
             return \Elcodi\Component\Currency\Entity\Money::create(
-                $this->CalculateTaxAmount( $this->price, $this->tax->getValue() ),
+                $this->CalculateTaxAmount($this->price, $this->tax->getValue()),
                 $this->priceCurrency
             );
-        }else{
+        } else {
             return \Elcodi\Component\Currency\Entity\Money::create(
                 0,
                 $this->priceCurrency
