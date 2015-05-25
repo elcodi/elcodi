@@ -29,6 +29,8 @@ use Elcodi\Component\Cart\Factory\CartFactory;
 use Elcodi\Component\Cart\Factory\CartLineFactory;
 use Elcodi\Component\Cart\Services\CartManager;
 use Elcodi\Component\Cart\Wrapper\CartWrapper;
+use Elcodi\Component\Currency\Entity\Currency;
+use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 
 /**
@@ -76,10 +78,18 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
          * @var CartLineFactory         $cartLineFactory
          * @var CartWrapper             $cartWrapper
          */
+        $emptyMoneyWrapper = $this->getMock('Elcodi\Component\Currency\Wrapper\EmptyMoneyWrapper', [], [], '', false);
+        $currency = new Currency();
+        $currency->setIso('EUR');
+        $emptyMoneyWrapper
+            ->expects($this->any())
+            ->method('get')
+            ->willReturn(Money::create(0, $currency));
+
         $cartEventDispatcher = $this->getMock('Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher', [], [], '', false);
         $cartLineEventDispatcher = $this->getMock('Elcodi\Component\Cart\EventDispatcher\CartLineEventDispatcher', [], [], '', false);
-        $cartFactory = $this->getMock('Elcodi\Component\Cart\Factory\CartFactory', ['create']);
-        $cartLineFactory = $this->getMock('Elcodi\Component\Cart\Factory\CartLineFactory', ['create']);
+        $cartFactory = $this->getMock('Elcodi\Component\Cart\Factory\CartFactory', ['create'], [$emptyMoneyWrapper]);
+        $cartLineFactory = $this->getMock('Elcodi\Component\Cart\Factory\CartLineFactory', ['create'], [$emptyMoneyWrapper]);
 
         $this->cartManager = new CartManager(
             $cartEventDispatcher,
@@ -421,10 +431,18 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
          * @var CartLineFactory         $cartLineFactory
          * @var CartWrapper             $cartWrapper
          */
+        $emptyMoneyWrapper = $this->getMock('Elcodi\Component\Currency\Wrapper\EmptyMoneyWrapper', [], [], '', false);
+        $currency = new Currency();
+        $currency->setIso('EUR');
+        $emptyMoneyWrapper
+            ->expects($this->any())
+            ->method('get')
+            ->willReturn(Money::create(0, $currency));
+
         $cartEventDispatcher = $this->getMock('Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher', [], [], '', false);
         $cartLineEventDispatcher = $this->getMock('Elcodi\Component\Cart\EventDispatcher\CartLineEventDispatcher', [], [], '', false);
-        $cartFactory = $this->getMock('Elcodi\Component\Cart\Factory\CartFactory', ['create']);
-        $cartLineFactory = $this->getMock('Elcodi\Component\Cart\Factory\CartLineFactory', ['create']);
+        $cartFactory = $this->getMock('Elcodi\Component\Cart\Factory\CartFactory', ['create'], [$emptyMoneyWrapper]);
+        $cartLineFactory = $this->getMock('Elcodi\Component\Cart\Factory\CartLineFactory', ['create'], [$emptyMoneyWrapper]);
 
         $cartLineFactory
             ->expects($this->any())

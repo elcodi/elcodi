@@ -23,14 +23,16 @@ use Symfony\Component\HttpKernel\KernelInterface;
 
 use Elcodi\Component\Plugin\Entity\Plugin;
 use Elcodi\Component\Plugin\Entity\PluginConfiguration;
-use Elcodi\Component\Plugin\Interfaces\PluginInterface;
 use Elcodi\Component\Plugin\Repository\PluginRepository;
+use Elcodi\Component\Plugin\Services\Traits\PluginUtilsTrait;
 
 /**
  * Class PluginManager
  */
 class PluginManager
 {
+    use PluginUtilsTrait;
+
     /**
      * @var KernelInterface
      *
@@ -98,7 +100,7 @@ class PluginManager
     public function loadPlugins()
     {
         $oldPlugins = $this->getExistingPlugins();
-        $pluginBundles = $this->getInstalledPluginBundles();
+        $pluginBundles = $this->getInstalledPluginBundles($this->kernel);
         $pluginsLoaded = [];
 
         /**
@@ -161,38 +163,11 @@ class PluginManager
     }
 
     /**
-     * Load installed plugin bundles and return an array with them, indexed by
-     * their namespaces
-     *
-     * @return PluginInterface[]|Bundle[] Plugins installed
-     */
-    protected function getInstalledPluginBundles()
-    {
-        $plugins = [];
-        $bundles = $this
-            ->kernel
-            ->getBundles();
-
-        foreach ($bundles as $bundle) {
-
-            /**
-             * @var Bundle|PluginInterface $bundle
-             */
-            if ($bundle instanceof PluginInterface) {
-                $pluginNamespace = $bundle->getNamespace();
-                $plugins[$pluginNamespace] = $bundle;
-            }
-        }
-
-        return $plugins;
-    }
-
-    /**
      * Create or update existing plugin given a set of plugin instances and the
      * information to create a new one
      *
-     * @param string   $pluginNamespace     Plugin namespace
-     * @param array    $pluginConfiguration Plugin Configuration
+     * @param string $pluginNamespace     Plugin namespace
+     * @param array  $pluginConfiguration Plugin Configuration
      *
      * @return Plugin Plugin instance
      */

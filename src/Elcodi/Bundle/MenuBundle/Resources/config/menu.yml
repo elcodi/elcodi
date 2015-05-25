@@ -8,19 +8,7 @@ services:
         tags:
             - { name: menu.filter }
 
-    #
-    # Menu modifiers
-    #
-    elcodi.menu_modifier.menu_active:
-        class: Elcodi\Component\Menu\Modifier\MenuActiveModifier
-        arguments:
-            - @request_stack
+    elcodi.menu_filter.menu_expanded:
+        class: Elcodi\Component\Menu\Filter\MenuExpandedFilter
         tags:
-            - { name: menu.modifier }
-
-    elcodi.menu_modifier.menu_expanded:
-        class: Elcodi\Component\Menu\Modifier\MenuExpandedModifier
-        arguments:
-            - @request_stack
-        tags:
-            - { name: menu.modifier }
+            - { name: menu.filter }

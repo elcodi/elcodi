@@ -1,0 +1,50 @@
+services:
+
+    #
+    # Services
+    #
+    elcodi.store:
+        class: Elcodi\Component\Store\Entity\Interfaces\StoreInterface
+        factory:
+            - @elcodi.wrapper.store
+            - get
+
+    elcodi.store_uses_stock:
+        class: StdClass
+        factory:
+            - @elcodi.store
+            - getUseStock
+
+    elcodi.store_tracker:
+        class: StdClass
+        factory:
+            - @elcodi.store
+            - getTracker
+
+    elcodi.store_address:
+        class: %elcodi.entity.address.class%
+        factory:
+            - @elcodi.store
+            - getAddress
+
+    elcodi.store_template_hash:
+        class: StdClass
+        public: false
+        factory:
+            - @elcodi.store
+            - getTemplate
+
+    elcodi.store_template:
+        class: Elcodi\Component\Plugin\Entity\Interfaces\PluginInterface
+        public: false
+        factory:
+            - @elcodi.repository.plugin
+            - findOneBy
+        arguments:
+            - { hash: @elcodi.store_template_hash }
+
+    elcodi.store_template_bundle:
+        class: StdClass
+        factory:
+            - @elcodi.store_template
+            - getBundleName

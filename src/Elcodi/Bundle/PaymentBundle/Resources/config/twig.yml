@@ -1,0 +1,11 @@
+services:
+
+    #
+    # Twig Extensions
+    #
+    elcodi.twig_extension.payment:
+        class: Elcodi\Component\Payment\Twig\PaymentExtension
+        arguments:
+            - @elcodi.wrapper.payment
+        tags:
+            - { name: twig.extension }

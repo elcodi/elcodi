@@ -65,6 +65,7 @@ class ElcodiProductBundle extends Bundle implements DependentBundleInterface
             'Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
             'Elcodi\Bundle\AttributeBundle\ElcodiAttributeBundle',
             'Elcodi\Bundle\ConfigurationBundle\ElcodiConfigurationBundle',
+            'Elcodi\Bundle\StoreBundle\ElcodiStoreBundle',
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
     }

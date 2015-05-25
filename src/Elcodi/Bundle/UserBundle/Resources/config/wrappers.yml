@@ -7,10 +7,10 @@ services:
         class: Elcodi\Component\User\Wrapper\CustomerWrapper
         arguments:
             - @elcodi.factory.customer
-            - @?security.context
+            - @?security.token_storage
 
     elcodi.wrapper.admin_user:
         class: Elcodi\Component\User\Wrapper\AdminUserWrapper
         arguments:
             - @elcodi.factory.admin_user
-            - @?security.context
+            - @?security.token_storage

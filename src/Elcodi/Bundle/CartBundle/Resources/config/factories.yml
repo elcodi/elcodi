@@ -9,6 +9,7 @@ services:
     #
     elcodi.factory.cart:
         class: Elcodi\Component\Cart\Factory\CartFactory
+        parent: elcodi.factory.abstract.purchasable
         calls:
             - [setEntityNamespace, ["%elcodi.entity.cart.class%"]]
             - [setDateTimeFactory, ["@elcodi.factory.datetime"]]
@@ -18,11 +19,10 @@ services:
     #
     elcodi.factory.order:
         class: Elcodi\Component\Cart\Factory\OrderFactory
-        arguments:
-            - @elcodi.order_payment_states_machine_manager
-            - @elcodi.order_shipping_states_machine_manager
-            - @elcodi.wrapper.default_currency
+        parent: elcodi.factory.abstract.purchasable
         calls:
+            - [setPaymentMachineManager, ["@elcodi.order_payment_states_machine_manager"]]
+            - [setShippingMachineManager, ["@elcodi.order_shipping_states_machine_manager"]]
             - [setEntityNamespace, ["%elcodi.entity.order.class%"]]
             - [setDateTimeFactory, ["@elcodi.factory.datetime"]]
 
@@ -31,6 +31,7 @@ services:
     #
     elcodi.factory.cart_line:
         class: Elcodi\Component\Cart\Factory\CartLineFactory
+        parent: elcodi.factory.abstract.purchasable
         calls:
             - [setEntityNamespace, ["%elcodi.entity.cart_line.class%"]]
 
@@ -39,5 +40,6 @@ services:
     #
     elcodi.factory.order_line:
         class: Elcodi\Component\Cart\Factory\OrderLineFactory
+        parent: elcodi.factory.abstract.purchasable
         calls:
             - [setEntityNamespace, ["%elcodi.entity.order_line.class%"]]

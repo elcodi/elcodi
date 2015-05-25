@@ -92,7 +92,7 @@ class Plugin
      */
     public function getNamespace()
     {
-        return $this->namespace;
+        return trim($this->namespace, '\\');
     }
 
     /**
@@ -106,6 +106,19 @@ class Plugin
         $bundleName = end($bundleParts);
 
         return $bundleName;
+    }
+
+    /**
+     * Get Bundle name
+     *
+     * @return string Bundle name
+     */
+    public function getBundleNamespaceRoot()
+    {
+        $bundleParts = explode('\\', $this->getNamespace());
+        unset($bundleParts[count($bundleParts) - 1]);
+
+        return implode('\\', $bundleParts);
     }
 
     /**
@@ -289,6 +302,19 @@ class Plugin
             },
             $this->isEnabled()
         );
+    }
+
+    /**
+     * Plugin is usable using all defined fields
+     *
+     * @return boolean Plugin is usable
+     */
+    public function guessIsUsable()
+    {
+        return $this
+            ->isUsable(
+                array_keys($this->getFields())
+            );
     }
 
     /**

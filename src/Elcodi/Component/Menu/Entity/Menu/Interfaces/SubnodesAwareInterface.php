@@ -17,7 +17,7 @@
 
 namespace Elcodi\Component\Menu\Entity\Menu\Interfaces;
 
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Interface SubnodesAwareInterface
@@ -45,18 +45,25 @@ interface SubnodesAwareInterface
     /**
      * Sets Subnodes
      *
-     * @param Collection $subnodes Subnodes
+     * @param ArrayCollection $subnodes Subnodes
      *
      * @return $this Self object
      */
-    public function setSubnodes(Collection $subnodes);
+    public function setSubnodes(ArrayCollection $subnodes);
 
     /**
      * Get Subnodes
      *
-     * @return Collection Subnodes
+     * @return ArrayCollection Subnodes
      */
     public function getSubnodes();
+
+    /**
+     * Get Subnodes sorted by priority and filtered by tag
+     *
+     * @return ArrayCollection Subnodes
+     */
+    public function getSubnodesByTag($tag);
 
     /**
      * Find subnode given its name. You can decide if this search is deep or
@@ -70,20 +77,4 @@ interface SubnodesAwareInterface
      * @return NodeInterface|null Node
      */
     public function findSubnodeByName($subnodeName, $inDepth = true);
-
-    /**
-     * Sets Sort
-     *
-     * @param string $sort Sort
-     *
-     * @return $this Self object
-     */
-    public function setSort($sort);
-
-    /**
-     * Get Sort
-     *
-     * @return string Sort
-     */
-    public function getSort();
 }

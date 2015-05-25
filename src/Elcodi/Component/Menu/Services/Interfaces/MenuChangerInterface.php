@@ -27,9 +27,13 @@ interface MenuChangerInterface
     /**
      * Apply change
      *
-     * @param MenuInterface $menu Menu
+     * @param MenuInterface $menu  Menu
+     * @param string        $stage Stage
      *
      * @return $this Self object
      */
-    public function applyChange(MenuInterface $menu);
+    public function applyChange(
+        MenuInterface $menu,
+        $stage
+    );
 }

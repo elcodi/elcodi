@@ -1,0 +1,16 @@
+services:
+
+    #
+    # Payment Methods
+    #
+    elcodi.payment_plugins:
+        class: StdClass
+        factory: [@elcodi.repository.plugin, findBy]
+        arguments:
+            - {type: plugin, category: payment}
+
+    elcodi.enabled_payment_plugins:
+        class: StdClass
+        factory: [@elcodi.repository.plugin, findBy]
+        arguments:
+            - {enabled: true, type: plugin, category: payment}

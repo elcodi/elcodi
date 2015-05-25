@@ -21,6 +21,8 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
+use Elcodi\Component\Menu\ElcodiMenuStages;
+
 /**
  * Class MenuModifierCompilerPass
  */
@@ -30,6 +32,8 @@ class MenuModifierCompilerPass implements CompilerPassInterface
      * You can modify the container here before it is dumped to PHP code.
      *
      * @param ContainerBuilder $container
+     *
+     * @return null
      *
      * @api
      */
@@ -47,10 +51,20 @@ class MenuModifierCompilerPass implements CompilerPassInterface
             'menu.modifier'
         );
         foreach ($taggedServices as $id => $tags) {
-            $definition->addMethodCall(
-                'addMenuModifier',
-                [new Reference($id)]
-            );
+            foreach ($tags as $tag) {
+                $definition->addMethodCall(
+                    'addMenuModifier',
+                    [
+                        new Reference($id),
+                        isset($tag['menus'])
+                            ? $tag['menus']
+                            : [],
+                        isset($tag['stage'])
+                            ? $tag['stage']
+                            : ElcodiMenuStages::BEFORE_CACHE,
+                    ]
+                );
+            }
         }
     }
 }

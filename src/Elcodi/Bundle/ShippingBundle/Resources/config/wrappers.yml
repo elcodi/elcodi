@@ -1,0 +1,9 @@
+services:
+
+    #
+    # Wrappers
+    #
+    elcodi.wrapper.shipping:
+        class: Elcodi\Component\Shipping\Wrapper\ShippingWrapper
+        arguments:
+            - @elcodi.event_dispatcher.shipping

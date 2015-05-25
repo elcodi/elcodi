@@ -1,0 +1,9 @@
+services:
+
+    #
+    # Wrappers
+    #
+    elcodi.wrapper.payment:
+        class: Elcodi\Component\Payment\Wrapper\PaymentWrapper
+        arguments:
+            - @elcodi.event_dispatcher.payment

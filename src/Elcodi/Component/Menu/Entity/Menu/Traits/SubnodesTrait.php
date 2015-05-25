@@ -23,18 +23,11 @@ namespace Elcodi\Component\Menu\Entity\Menu\Traits;
 trait SubnodesTrait
 {
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \Doctrine\Common\Collections\ArrayCollection
      *
      * Subnodes
      */
     protected $subnodes;
-
-    /**
-     * @var string
-     *
-     * Sort
-     */
-    protected $sort;
 
     /**
      * Add subnode
@@ -69,11 +62,11 @@ trait SubnodesTrait
     /**
      * Sets Subnodes
      *
-     * @param \Doctrine\Common\Collections\Collection $subnodes Subnodes
+     * @param \Doctrine\Common\Collections\ArrayCollection $subnodes Subnodes
      *
      * @return $this Self object
      */
-    public function setSubnodes(\Doctrine\Common\Collections\Collection $subnodes)
+    public function setSubnodes(\Doctrine\Common\Collections\ArrayCollection $subnodes)
     {
         $this->subnodes = $subnodes;
 
@@ -81,13 +74,35 @@ trait SubnodesTrait
     }
 
     /**
-     * Get Subnodes
+     * Get Subnodes sorted by priority
      *
-     * @return \Doctrine\Common\Collections\Collection Subnodes
+     * @return \Doctrine\Common\Collections\ArrayCollection Subnodes
      */
     public function getSubnodes()
     {
-        return $this->subnodes;
+        $sort = \Doctrine\Common\Collections\Criteria::create();
+        $sort->orderBy([
+            'priority' => \Doctrine\Common\Collections\Criteria::ASC,
+        ]);
+
+        return $this
+            ->subnodes
+            ->matching($sort);
+    }
+
+    /**
+     * Get Subnodes sorted by priority and filtered by tag
+     *
+     * @return \Doctrine\Common\Collections\ArrayCollection Subnodes
+     */
+    public function getSubnodesByTag($tag)
+    {
+        return $this
+            ->getSubnodes()
+            ->filter(function (\Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface $menuNode) use ($tag) {
+
+                return $menuNode->getTag() == $tag;
+            });
     }
 
     /**
@@ -123,29 +138,5 @@ trait SubnodesTrait
         }
 
         return null;
-    }
-
-    /**
-     * Sets Sort
-     *
-     * @param string $sort Sort
-     *
-     * @return $this Self object
-     */
-    public function setSort($sort)
-    {
-        $this->sort = $sort;
-
-        return $this;
-    }
-
-    /**
-     * Get Sort
-     *
-     * @return string Sort
-     */
-    public function getSort()
-    {
-        return $this->sort;
     }
 }

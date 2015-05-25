@@ -112,34 +112,52 @@ interface NodeInterface
     public function removeActiveUrl($activeUrl);
 
     /**
-     * Get Active
+     * Get Tag
      *
-     * @return boolean Active
+     * @return string Tag
      */
-    public function getActive();
+    public function getTag();
 
     /**
-     * Sets Active
+     * Sets Tag
      *
-     * @param boolean $active Active
+     * @param string $tag Tag
      *
      * @return $this Self object
      */
-    public function setActive($active);
+    public function setTag($tag);
 
     /**
-     * Get Expanded
+     * Get Priority
      *
-     * @return boolean Expanded
+     * @return int Priority
      */
-    public function getExpanded();
+    public function getPriority();
 
     /**
-     * Sets Expanded
+     * Sets Priority
      *
-     * @param boolean $expanded Expanded
+     * @param int $priority Priority
      *
      * @return $this Self object
      */
-    public function setExpanded($expanded);
+    public function setPriority($priority);
+
+    /**
+     * Is active
+     *
+     * @param string $currentUrl Current Url
+     *
+     * @return boolean Menu node is active
+     */
+    public function isActive($currentUrl);
+
+    /**
+     * Is expanded
+     *
+     * @param string $currentUrl Current Url
+     *
+     * @return boolean Menu Node is expanded
+     */
+    public function isExpanded($currentUrl);
 }

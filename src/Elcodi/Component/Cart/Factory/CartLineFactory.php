@@ -18,12 +18,12 @@
 namespace Elcodi\Component\Cart\Factory;
 
 use Elcodi\Component\Cart\Entity\CartLine;
-use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
+use Elcodi\Component\Currency\Factory\Abstracts\AbstractPurchasableFactory;
 
 /**
  * Class CartLineFactory
  */
-class CartLineFactory extends AbstractFactory
+class CartLineFactory extends AbstractPurchasableFactory
 {
     /**
      * Creates an instance of CartLine
@@ -37,6 +37,9 @@ class CartLineFactory extends AbstractFactory
          */
         $classNamespace = $this->getEntityNamespace();
         $cartLine = new $classNamespace();
+        $cartLine
+            ->setAmount($this->createZeroAmountMoney())
+            ->setProductAmount($this->createZeroAmountMoney());
 
         return $cartLine;
     }

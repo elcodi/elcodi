@@ -31,6 +31,8 @@ class MenuChangerCompilerPass implements CompilerPassInterface
      *
      * @param ContainerBuilder $container
      *
+     * @return null
+     *
      * @api
      */
     public function process(ContainerBuilder $container)

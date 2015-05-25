@@ -54,7 +54,10 @@ class PluginsLoadCommand extends Command
     {
         $this
             ->setName('elcodi:plugins:load')
-            ->setDescription('Load plugins');
+            ->setDescription('Load plugins')
+            ->setAliases([
+                'plugin:load',
+            ]);
     }
 
     /**

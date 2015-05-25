@@ -26,7 +26,7 @@ use Elcodi\Component\Menu\Filter\Interfaces\MenuFilterInterface;
 class MenuDisabledFilter implements MenuFilterInterface
 {
     /**
-     * Filter a node once this has to be rendered
+     * Filter all disabled nodes
      *
      * @param NodeInterface $menuNode Menu node
      *

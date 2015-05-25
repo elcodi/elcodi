@@ -49,6 +49,7 @@
         "elcodi/currency-bundle": "~0.5.0",
         "elcodi/attribute-bundle": "~0.5.0",
         "elcodi/configuration-bundle": "~0.5.0",
+        "elcodi/store-bundle": "~0.5.0",
         "elcodi/product": "~0.5.0"
     },
     "require-dev": {

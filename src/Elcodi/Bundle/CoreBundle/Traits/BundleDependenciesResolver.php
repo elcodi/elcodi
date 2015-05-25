@@ -17,9 +17,6 @@
 
 namespace Elcodi\Bundle\CoreBundle\Traits;
 
-use ReflectionClass;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
-
 /**
  * Trait BundleDependenciesResolver
  */
@@ -28,63 +25,145 @@ trait BundleDependenciesResolver
     /**
      * Get bundle instances given the namespace stack
      *
-     * @param array $bundleNamespaces Bundle namespaces
+     * @param array $bundles Bundles defined by instances or namespaces
      *
-     * @return Bundle[] Bundle instances
+     * @return \Symfony\Component\HttpKernel\Bundle\Bundle[] Bundle instances
      */
-    protected function getBundleInstances(array $bundleNamespaces)
+    protected function getBundleInstances(array $bundles)
     {
-        $bundles = [];
-        $bundlesNamespacesStack = [];
-        $bundleNamespacesResolved = $this
+        $bundleStack = [];
+        $visitedBundles = [];
+        $this
             ->resolveBundleDependencies(
-                $bundlesNamespacesStack,
-                $bundleNamespaces
+                $bundleStack,
+                $visitedBundles,
+                $bundles
             );
 
-        foreach ($bundleNamespacesResolved as $bundleNamespace) {
-            $bundles[] = new $bundleNamespace($this);
+        $builtBundles = [];
+        foreach ($bundleStack as $bundle) {
+            $builtBundles[] = $this->getBundleDefinitionInstance($bundle);
         }
 
-        return $bundles;
+        return $builtBundles;
     }
 
     /**
-     * Resolve bundle dependencies
+     * Resolve bundle dependencies.
      *
-     * @param array $bundlesNamespacesStack Bundle Namespace stack
-     * @param array $bundleNamespaces       New bundles to check
+     * Given a set of already loaded bundles and a set of new needed bundles,
+     * build new dependencies and fill given array of loaded bundles.
      *
-     * @return array Bundle Namespaces resolved
+     * @param array $bundleStack    Bundle stack, defined by Instance or Namespace
+     * @param array $visitedBundles Visited bundles, defined by their namespaces
+     * @param array $bundles        New bundles to check, defined by Instance or Namespace
      */
-    protected function resolveBundleDependencies(array &$bundlesNamespacesStack, array $bundleNamespaces)
-    {
-        foreach ($bundleNamespaces as $bundleNamespace) {
-            $bundlesNamespacesStack[] = $bundleNamespace;
-            $bundleNamespaceObj = new ReflectionClass($bundleNamespace);
+    private function resolveBundleDependencies(
+        array &$bundleStack,
+        array &$visitedBundles,
+        array $bundles
+    ) {
+        $bundles = array_reverse($bundles);
+
+        foreach ($bundles as $bundle) {
+
+            /**
+             * Each visited node is prioritized and placed at the beginning.
+             */
+            $this
+                ->prioritizeBundle(
+                    $bundleStack,
+                    $bundle
+                );
+        }
+
+        foreach ($bundles as $bundle) {
+            $bundleNamespace = $this->getBundleDefinitionNamespace($bundle);
+            /**
+             * If have already visited this bundle, continue. One bundle can be
+             * processed once.
+             */
+            if (isset($visitedBundles[$bundleNamespace])) {
+                continue;
+            }
+
+            $visitedBundles[$bundleNamespace] = true;
+            $bundleNamespaceObj = new \ReflectionClass($bundleNamespace);
             if ($bundleNamespaceObj->implementsInterface('Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface')) {
 
                 /**
-                 * @var \Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface $bundleNamespace
+                 * @var \Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface|string $bundleNamespace
                  */
-                $dependencies = $bundleNamespace::getBundleDependencies();
-                $newBundles = array_diff(
-                    $dependencies,
-                    $bundlesNamespacesStack
-                );
+                $bundleDependencies = $bundleNamespace::getBundleDependencies();
 
-                if (!empty($newBundles)) {
-                    $bundleNamespaces = array_merge(
-                        $bundleNamespaces,
-                        self::resolveBundleDependencies(
-                            $bundlesNamespacesStack,
-                            $newBundles
-                        )
+                if (isset($dependenciesBundles[$bundleNamespace])) {
+                    $bundleDependencies = array_merge(
+                        $bundleDependencies,
+                        $dependenciesBundles[$bundleNamespace]
                     );
                 }
+
+                $this->resolveBundleDependencies(
+                    $bundleStack,
+                    $visitedBundles,
+                    $bundleDependencies
+                );
             }
         }
+    }
 
-        return array_unique($bundleNamespaces);
+    /**
+     * Given the global bundle stack and a bundle definition, considering this
+     * bundle definition as an instance or a namespace, prioritize this bundle
+     * inside this stack.
+     *
+     * To prioritize a bundle means that must be placed in the beginning of the
+     * stack. If already exists, then remove the old entry just before adding it
+     * again.
+     *
+     * @param array                                              $bundleStack         Bundle stack, defined by Instance or Namespace
+     * @param \Symfony\Component\HttpKernel\Bundle\Bundle|string $elementToPrioritize Element to prioritize
+     */
+    private function prioritizeBundle(
+        array &$bundleStack,
+        $elementToPrioritize
+    ) {
+        $elementNamespace = $this->getBundleDefinitionNamespace($elementToPrioritize);
+        foreach ($bundleStack as $bundlePosition => $bundle) {
+            $bundleNamespace = $this->getBundleDefinitionNamespace($bundle);
+
+            if ($elementNamespace == $bundleNamespace) {
+                unset($bundleStack[$bundlePosition]);
+            }
+        }
+        array_unshift($bundleStack, $elementToPrioritize);
+    }
+
+    /**
+     * Given a bundle instance or a namespace, return its namespace
+     *
+     * @param \Symfony\Component\HttpKernel\Bundle\Bundle|string $bundle Bundle defined by Instance or Namespace
+     *
+     * @return string Bundle namespace
+     */
+    private function getBundleDefinitionNamespace($bundle)
+    {
+        return ltrim(is_object($bundle)
+            ? get_class($bundle)
+            : $bundle, ' \\');
+    }
+
+    /**
+     * Given a bundle instance or a namespace, return the instance
+     *
+     * @param \Symfony\Component\HttpKernel\Bundle\Bundle|string $bundle Bundle defined by Instance or Namespace
+     *
+     * @return \Symfony\Component\HttpKernel\Bundle\Bundle Bundle instance
+     */
+    private function getBundleDefinitionInstance($bundle)
+    {
+        return is_object($bundle)
+            ? $bundle
+            : new $bundle();
     }
 }

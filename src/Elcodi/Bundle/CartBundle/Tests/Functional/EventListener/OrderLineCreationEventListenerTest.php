@@ -80,6 +80,7 @@ class OrderLineCreationEventListenerTest extends WebTestCase
          * @var CartLineInterface $cartLine
          */
         $cart = $this->find('cart', 2);
+
         $cartLine = $cart
             ->getCartLines()
             ->first()

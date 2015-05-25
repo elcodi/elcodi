@@ -70,6 +70,8 @@ class OrderLineCreationEventListener
      * Flushes all loaded order and related entities.
      *
      * @param OrderLineOnCreatedEvent $event Event
+     *
+     * @return null
      */
     public function updateStock(OrderLineOnCreatedEvent $event)
     {

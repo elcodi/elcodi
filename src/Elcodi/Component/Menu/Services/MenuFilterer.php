@@ -17,43 +17,38 @@
 
 namespace Elcodi\Component\Menu\Services;
 
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\MenuInterface;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface;
 use Elcodi\Component\Menu\Filter\Interfaces\MenuFilterInterface;
+use Elcodi\Component\Menu\Services\Abstracts\AbstractMenuModifier;
 use Elcodi\Component\Menu\Services\Interfaces\MenuChangerInterface;
 
 /**
  * Class MenuFilterer
  */
-class MenuFilterer implements MenuChangerInterface
+class MenuFilterer extends AbstractMenuModifier implements MenuChangerInterface
 {
-    /**
-     * @var MenuFilterInterface[]
-     *
-     * Menu filter array
-     */
-    protected $menuFilters;
-
-    /**
-     * Construct method
-     */
-    public function __construct()
-    {
-        $this->menuFilters = [];
-    }
-
     /**
      * Add menu filter
      *
-     * @var MenuFilterInterface $menuFilter Menu filter
+     * @param MenuFilterInterface $menuFilter Menu filter
+     * @param array               $menus      Menus
+     * @param string              $stage      Stage
      *
      * @return $this Self object
      */
-    public function addMenuFilter(MenuFilterInterface $menuFilter)
-    {
-        $this->menuFilters[] = $menuFilter;
+    public function addMenuFilter(
+        MenuFilterInterface $menuFilter,
+        array $menus,
+        $stage
+    ) {
+        $this->addElement(
+            $menuFilter,
+            $menus,
+            $stage
+        );
 
         return $this;
     }
@@ -61,15 +56,22 @@ class MenuFilterer implements MenuChangerInterface
     /**
      * Apply change
      *
-     * @param MenuInterface $menu Menu
+     * @param MenuInterface $menu  Menu
+     * @param string        $stage Stage
      *
      * @return $this Self object
      */
-    public function applyChange(MenuInterface $menu)
-    {
-        $menuNodes = $menu->getSubnodes();
-
-        $this->applyFiltersToMenuNodes($menuNodes);
+    public function applyChange(
+        MenuInterface $menu,
+        $stage
+    ) {
+        $menu->setSubnodes(
+            $this->applyFiltersToMenuNodes(
+                $menu->getSubnodes(),
+                $menu->getCode(),
+                $stage
+            )
+        );
 
         return $this;
     }
@@ -77,40 +79,66 @@ class MenuFilterer implements MenuChangerInterface
     /**
      * Apply menu filters to Menu
      *
-     * @param Collection $menuNodes Menu nodes
+     * @param ArrayCollection $menuNodes Menu nodes
+     * @param string          $menuCode  Menu code
+     * @param string          $stage     Stage
      *
-     * @return $this Self object
+     * @return ArrayCollection Filtered collection
      */
-    protected function applyFiltersToMenuNodes(Collection $menuNodes)
-    {
-        /**
-         * @var NodeInterface $menuNode
-         */
-        foreach ($menuNodes as $menuKey => $menuNode) {
-            if ($this->applyFiltersToMenuNode($menuNode)) {
-                $this->applyFiltersToMenuNodes($menuNode->getSubnodes());
-            } else {
-                unset($menuNodes[$menuKey]);
-            }
-        }
+    private function applyFiltersToMenuNodes(
+        ArrayCollection $menuNodes,
+        $menuCode,
+        $stage
+    ) {
+        return $menuNodes->filter(function (NodeInterface $menuNode) use ($menuCode, $stage) {
 
-        return $this;
+            if ($this->applyFiltersToMenuNode(
+                $menuNode,
+                $menuCode,
+                $stage
+            )
+            ) {
+                $menuNode->setSubnodes(
+                    $this->applyFiltersToMenuNodes(
+                        $menuNode->getSubnodes(),
+                        $menuCode,
+                        $stage
+                    )
+                );
+
+                return true;
+            }
+
+            return false;
+        });
     }
 
     /**
      * Apply menu filters to Menu
      *
      * @param NodeInterface $menuNode Menu
+     * @param string        $menuCode Menu code
+     * @param string        $stage    Stage
      *
      * @return boolean Menu node is valid
      */
-    protected function applyFiltersToMenuNode(NodeInterface $menuNode)
-    {
+    private function applyFiltersToMenuNode(
+        NodeInterface $menuNode,
+        $menuCode,
+        $stage
+    ) {
+        $menuFilters = $this->getElementsByMenuCodeAndStage(
+            $menuCode,
+            $stage
+        );
+
         return array_reduce(
-            $this->menuFilters,
+            $menuFilters,
             function ($isValid, MenuFilterInterface $menuFilter) use ($menuNode) {
 
-                return $isValid && $menuFilter->filter($menuNode);
+                return
+                    $isValid &&
+                    $menuFilter->filter($menuNode);
             },
             true
         );

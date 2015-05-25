@@ -248,6 +248,28 @@ class PluginTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test plugin can guess itself is usable
+     */
+    public function testGuessIsUsable()
+    {
+        $plugin = $this->plugin;
+
+        $this->assertFalse($plugin->guessIsUsable());
+        $plugin->setEnabled(true);
+        $this->assertFalse($plugin->guessIsUsable());
+        $plugin->setFieldValues([
+            'field1' => 'lala',
+            'field2' => false,
+        ]);
+        $this->assertFalse($plugin->guessIsUsable());
+        $plugin->setFieldValues([
+            'field1' => 'lala',
+            'field2' => true,
+        ]);
+        $this->assertTrue($plugin->guessIsUsable());
+    }
+
+    /**
      * Test merge
      */
     public function testMergeOK()

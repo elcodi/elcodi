@@ -15,6 +15,10 @@ Elcodi\Component\Cart\Entity\Cart:
             column: ordered
             type: boolean
             nullable: false
+        shippingMethod:
+            column: shipping_method
+            type: string
+            nullable: true
         createdAt:
             column: created_at
             type: datetime
@@ -51,20 +55,13 @@ Elcodi\Component\Cart\Entity\Cart:
                 referencedColumnName: id
                 nullable: true
 
-        shippingRange:
-            targetEntity: Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface
-            joinColumn:
-                name: shipping_range_id
-                referencedColumnName: id
-                nullable: true
-                onDelete: "SET NULL"
-
     oneToMany:
         cartLines:
             targetEntity: Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface
             mappedBy: cart
             cascade: [ "all" ]
             orphanRemoval: true
+            fetch: EAGER
 
     lifecycleCallbacks:
         preUpdate: [loadUpdateAt]

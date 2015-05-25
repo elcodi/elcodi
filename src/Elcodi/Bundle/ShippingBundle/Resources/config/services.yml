@@ -1,0 +1,16 @@
+services:
+
+    #
+    # Payment Methods
+    #
+    elcodi.shipping_plugins:
+        class: StdClass
+        factory: [@elcodi.repository.plugin, findBy]
+        arguments:
+            - {type: plugin, category: shipping}
+
+    elcodi.enabled_shipping_plugins:
+        class: StdClass
+        factory: [@elcodi.repository.plugin, findBy]
+        arguments:
+            - {enabled: true, type: plugin, category: shipping}

@@ -12,7 +12,7 @@ services:
         parent: elcodi.factory.abstract.purchasable
         calls:
             - [setEntityNamespace, ["%elcodi.entity.product.class%"]]
-            - [setUseStock, ["@=elcodi_config('product.use_stock', false)"]]
+            - [setUseStock, ["?@elcodi.store_uses_stock"]]
             - [setDateTimeFactory, ["@elcodi.factory.datetime"]]
 
     #

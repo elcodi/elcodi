@@ -23,7 +23,9 @@ namespace Elcodi\Bundle\CoreBundle\Interfaces;
 interface DependentBundleInterface
 {
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Return all bundle dependencies.
+     *
+     * Values can be a simple bundle namespace or its instance
      *
      * @return array Bundle instances
      */

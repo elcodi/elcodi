@@ -88,15 +88,17 @@ class Configuration extends AbstractConfiguration implements ConfigurationInterf
                         ->end()
                     ->end()
                     ->beforeNormalization()
-                        ->always(function (array $elements) {
+                        ->always(function ($elements) {
 
                             $newElements = [];
-                            foreach ($elements as $element) {
-                                $completeParameterName = isset($element['namespace'])
-                                    ? $element['namespace'] . '.' . $element['key']
-                                    : $element['key'];
+                            if (is_array($elements)) {
+                                foreach ($elements as $element) {
+                                    $completeParameterName = isset($element['namespace'])
+                                        ? $element['namespace'] . '.' . $element['key']
+                                        : $element['key'];
 
-                                $newElements[$completeParameterName] = $element;
+                                    $newElements[$completeParameterName] = $element;
+                                }
                             }
 
                             return $newElements;

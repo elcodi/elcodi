@@ -24,7 +24,6 @@ use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
-use Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
@@ -231,34 +230,34 @@ interface CartInterface
     public function setBillingAddress($billingAddress);
 
     /**
-     * Get ShippingRange
+     * Get shipping method
      *
-     * @return ShippingRangeInterface ShippingRange
+     * @return string Shipping method
      */
-    public function getShippingRange();
+    public function getShippingMethod();
+
+    /**
+     * Set shipping method
+     *
+     * @param string $shippingMethod Shipping method
+     *
+     * @return $this Self object
+     */
+    public function setShippingMethod($shippingMethod);
+
+    /**
+     * Get shipping method
+     *
+     * @return string Cheapest shipping method
+     */
+    public function getCheapestShippingMethod();
 
     /**
      * Sets ShippingRange
      *
-     * @param ShippingRangeInterface $shippingRange ShippingRange
+     * @param string $cheapestShippingMethod Cheapest shipping method
      *
      * @return $this Self object
      */
-    public function setShippingRange(ShippingRangeInterface $shippingRange = null);
-
-    /**
-     * Get ShippingRange
-     *
-     * @return ShippingRangeInterface Cheapest ShippingRange
-     */
-    public function getCheapestShippingRange();
-
-    /**
-     * Sets ShippingRange
-     *
-     * @param ShippingRangeInterface $cheapestShippingRange Cheapest ShippingRange
-     *
-     * @return $this Self object
-     */
-    public function setCheapestShippingRange(ShippingRangeInterface $cheapestShippingRange = null);
+    public function setCheapestShippingMethod($cheapestShippingMethod);
 }

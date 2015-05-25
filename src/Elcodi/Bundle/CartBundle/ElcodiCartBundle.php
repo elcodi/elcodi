@@ -64,7 +64,7 @@ class ElcodiCartBundle extends Bundle implements DependentBundleInterface
             'Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
             'Elcodi\Bundle\StateTransitionMachineBundle\ElcodiStateTransitionMachineBundle',
             'Elcodi\Bundle\ShippingBundle\ElcodiShippingBundle',
-            'Elcodi\Bundle\ConfigurationBundle\ElcodiConfigurationBundle',
+            'Elcodi\Bundle\StoreBundle\ElcodiStoreBundle',
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
     }

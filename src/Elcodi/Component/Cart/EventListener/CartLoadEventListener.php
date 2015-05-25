@@ -106,7 +106,7 @@ class CartLoadEventListener
         CartManager $cartManager,
         WrapperInterface $currencyWrapper,
         CurrencyConverter $currencyConverter,
-        $useStock
+        $useStock = false
     ) {
         $this->cartObjectManager = $cartObjectManager;
         $this->cartEventDispatcher = $cartEventDispatcher;
