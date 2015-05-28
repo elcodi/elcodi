@@ -25,6 +25,13 @@ class PaymentMethod
     /**
      * @var string
      *
+     * Identifier
+     */
+    protected $id;
+
+    /**
+     * @var string
+     *
      * Name
      */
     protected $name;
@@ -60,6 +67,7 @@ class PaymentMethod
     /**
      * Contstruct
      *
+     * @param string $id          Id
      * @param string $name        Name
      * @param string $description Description
      * @param string $url         Url
@@ -67,17 +75,29 @@ class PaymentMethod
      * @param string $script      Script
      */
     public function __construct(
+        $id,
         $name,
         $description,
         $url,
         $imageUrl = '',
         $script = ''
     ) {
+        $this->id = $id;
         $this->name = $name;
         $this->description = $description;
         $this->url = $url;
         $this->imageUrl = $imageUrl;
         $this->script = $script;
+    }
+
+    /**
+     * Get id
+     *
+     * @return string Id
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**

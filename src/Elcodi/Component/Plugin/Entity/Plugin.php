@@ -300,7 +300,7 @@ class Plugin
     {
         return $this
             ->isUsable(
-                $this->getFields()
+                array_keys($this->getFields())
             );
     }
 
