@@ -5,5 +5,5 @@ services:
     #
     elcodi.repository.plugin:
         parent: elcodi.abstract_repository
-        class: Elcodi\Component\Plugin\Repository\PageRepository
+        class: Elcodi\Component\Plugin\Repository\PluginRepository
         arguments: [ %elcodi.entity.plugin.class% ]
