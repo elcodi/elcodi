@@ -104,7 +104,6 @@ Elcodi\Component\Product\Entity\Variant:
                     option_id:
                         referencedColumnName: id
                         onDelete: "CASCADE"
-
         images:
             targetEntity: Elcodi\Component\Media\Entity\Interfaces\ImageInterface
             joinTable:

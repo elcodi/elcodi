@@ -153,7 +153,7 @@ class Order implements OrderInterface
     protected $billingAddress;
 
     /**
-     * @var float
+     * @var integer
      *
      * Tax amount
      */
