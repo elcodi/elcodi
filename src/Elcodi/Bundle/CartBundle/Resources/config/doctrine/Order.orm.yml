@@ -51,10 +51,8 @@ Elcodi\Component\Cart\Entity\Order:
             type: datetime
         taxAmount:
             column: tax_amount
-            type: decimal
-            precision: 18
-            scale: 10
-            nullable: false
+            type: integer
+            nullable: true
 
 
     oneToOne:

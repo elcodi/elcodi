@@ -23,6 +23,7 @@ use Elcodi\Component\Cart\Entity\Traits\PriceTrait;
 use Elcodi\Component\Cart\Entity\Traits\PurchasableWrapperTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
+use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
 use Elcodi\Component\Tax\Entity\Traits\TaxTrait;
 
@@ -109,7 +110,7 @@ class OrderLine implements OrderLineInterface
      */
     public function getTaxedAmount()
     {
-        return \Elcodi\Component\Currency\Entity\Money::create(
+        return Money::create(
             $this->amount,
             $this->currency
         )->add( $this->getTaxAmount() );
@@ -124,12 +125,12 @@ class OrderLine implements OrderLineInterface
     {
         if( isset( $this->taxPercentage ) )
         {
-            return \Elcodi\Component\Currency\Entity\Money::create(
+            return Money::create(
                 $this->CalculateTaxAmount( $this->amount, $this->taxPercentage ),
                 $this->currency
             );
         }else{
-            return \Elcodi\Component\Currency\Entity\Money::create(
+            return Money::create(
                 0,
                 $this->productCurrency
             );

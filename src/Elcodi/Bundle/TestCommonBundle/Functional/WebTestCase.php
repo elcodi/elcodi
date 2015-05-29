@@ -177,7 +177,7 @@ abstract class WebTestCase extends BaseWebTestCase
         static::$application->run(new ArrayInput([
             'command'          => 'doctrine:schema:create',
             '--no-interaction' => true,
-            //'--quiet'          => true,
+            '--quiet'          => true,
         ]));
 
         $this->loadFixtures();
