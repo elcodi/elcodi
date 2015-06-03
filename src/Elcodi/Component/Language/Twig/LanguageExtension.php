@@ -20,7 +20,6 @@ namespace Elcodi\Component\Language\Twig;
 use Twig_Extension;
 
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
-use Elcodi\Component\Language\Entity\Interfaces\LocaleInterface;
 use Elcodi\Component\Language\Services\LanguageManager;
 
 /**
@@ -36,24 +35,13 @@ class LanguageExtension extends Twig_Extension
     protected $languageManager;
 
     /**
-     * @var string
-     *
-     * Master locale ISO
-     */
-    protected $masterLocaleIso;
-
-    /**
      * Construct method
      *
      * @param LanguageManager $languageManager Language manager
-     * @param string          $masterLocaleIso Master locale ISO
      */
-    public function __construct(
-        LanguageManager $languageManager,
-        $masterLocaleIso
-    ) {
+    public function __construct(LanguageManager $languageManager)
+    {
         $this->languageManager = $languageManager;
-        $this->masterLocaleIso = $masterLocaleIso;
     }
 
     /**
@@ -71,16 +59,22 @@ class LanguageExtension extends Twig_Extension
     /**
      * Return all available languages
      *
+     * @param string $masterLanguage
+     *
      * @return array Available languages
      */
-    public function getLanguages()
+    public function getLanguages($masterLanguage = null)
     {
         $languages = $this
             ->languageManager
             ->getLanguages()
             ->toArray();
 
-        return $this->promoteMasterLanguage($languages);
+        if ($masterLanguage === null) {
+            return $languages;
+        }
+
+        return $this->promoteMasterLanguage($languages, $masterLanguage);
     }
 
     /**
@@ -97,16 +91,17 @@ class LanguageExtension extends Twig_Extension
      * Move master language to the first position
      *
      * @param LanguageInterface[] $languages
+     * @param string              $masterLocaleIso
      *
-     * @return LanguageInterface[]
+     * @return \Elcodi\Component\Language\Entity\Interfaces\LanguageInterface[]
      */
-    protected function promoteMasterLanguage(array $languages)
+    protected function promoteMasterLanguage(array $languages, $masterLocaleIso)
     {
-        $index = array_search($this->masterLocaleIso, $languages);
+        $index = array_search($masterLocaleIso, $languages);
 
         if (false !== $index) {
             unset($languages[$index]);
-            array_unshift($languages, $this->masterLocaleIso);
+            array_unshift($languages, $masterLocaleIso);
         }
 
         return $languages;

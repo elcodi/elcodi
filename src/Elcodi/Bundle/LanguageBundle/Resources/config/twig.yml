@@ -7,6 +7,5 @@ services:
         class: Elcodi\Component\Language\Twig\LanguageExtension
         arguments:
             - @elcodi.manager.language
-            - @=elcodi_config('store.default_language')
         tags:
             - { name: twig.extension }
