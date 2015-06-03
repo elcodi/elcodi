@@ -64,4 +64,20 @@ interface ImagesContainerInterface
      * @return \Doctrine\Common\Collections\ArrayCollection
      */
     public function getSortedImages();
+
+    /**
+     * Get ImagesSort
+     *
+     * @return string ImagesSort
+     */
+    public function getImagesSort();
+
+    /**
+     * Sets ImagesSort
+     *
+     * @param string $imagesSort ImagesSort
+     *
+     * @return $this Self object
+     */
+    public function setImagesSort($imagesSort);
 }
