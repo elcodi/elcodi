@@ -36,12 +36,12 @@
         "symfony/console": "~2.6",
         "symfony/config": "~2.6",
 
-        "elcodi/core-bundle": "~0.5.0",
-        "elcodi/state-transition-machine": "~0.5.0"
+        "elcodi/core-bundle": "self.version",
+        "elcodi/state-transition-machine": "self.version"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "~0.5.0",
-        "elcodi/fixtures-booster-bundle": "~0.5.0",
+        "elcodi/test-common-bundle": "self.version",
+        "elcodi/fixtures-booster-bundle": "self.version",
         "doctrine/data-fixtures": "^1.1",
         "phpunit/phpunit": "4.5.0"
     },

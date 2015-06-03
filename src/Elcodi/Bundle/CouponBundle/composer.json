@@ -40,14 +40,14 @@
         "symfony/dependency-injection": "~2.6",
         "mmoreram/simple-doctrine-mapping": "~1.0",
 
-        "elcodi/core-bundle": "~0.5.0",
-        "elcodi/currency-bundle": "~0.5.0",
-        "elcodi/rule-bundle": "~0.5.0",
-        "elcodi/coupon": "~0.5.0"
+        "elcodi/core-bundle": "self.version",
+        "elcodi/currency-bundle": "self.version",
+        "elcodi/rule-bundle": "self.version",
+        "elcodi/coupon": "self.version"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "~0.5.0",
-        "elcodi/fixtures-booster-bundle": "~0.5.0",
+        "elcodi/test-common-bundle": "self.version",
+        "elcodi/fixtures-booster-bundle": "self.version",
         "doctrine/data-fixtures": "^1.1",
         "phpunit/phpunit": "4.5.0"
     },
