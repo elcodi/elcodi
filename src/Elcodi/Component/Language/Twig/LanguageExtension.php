@@ -36,24 +36,24 @@ class LanguageExtension extends Twig_Extension
     protected $languageManager;
 
     /**
-     * @var LocaleInterface
+     * @var string
      *
-     * Master locale
+     * Master locale ISO
      */
-    protected $masterLocale;
+    protected $masterLocaleIso;
 
     /**
      * Construct method
      *
      * @param LanguageManager $languageManager Language manager
-     * @param LocaleInterface $masterLocale    Master locale
+     * @param string          $masterLocaleIso Master locale ISO
      */
     public function __construct(
         LanguageManager $languageManager,
-        LocaleInterface $masterLocale
+        $masterLocaleIso
     ) {
         $this->languageManager = $languageManager;
-        $this->masterLocale = $masterLocale;
+        $this->masterLocaleIso = $masterLocaleIso;
     }
 
     /**
@@ -102,12 +102,11 @@ class LanguageExtension extends Twig_Extension
      */
     protected function promoteMasterLanguage(array $languages)
     {
-        $masterLocale = $this->masterLocale->getIso();
-        $index = array_search($masterLocale, $languages);
+        $index = array_search($this->masterLocaleIso, $languages);
 
         if (false !== $index) {
             unset($languages[$index]);
-            array_unshift($languages, $masterLocale);
+            array_unshift($languages, $this->masterLocaleIso);
         }
 
         return $languages;
