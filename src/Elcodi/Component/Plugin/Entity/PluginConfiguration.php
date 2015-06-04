@@ -25,7 +25,7 @@ use RuntimeException;
 class PluginConfiguration
 {
     /**
-     * @var string
+     * @var array
      *
      * Encoded configuration
      */
@@ -50,7 +50,7 @@ class PluginConfiguration
      */
     protected function setConfiguration(array $configuration)
     {
-        $this->configuration = json_encode($configuration);
+        $this->configuration = $configuration;
 
         return $this;
     }
@@ -62,7 +62,7 @@ class PluginConfiguration
      */
     public function getConfiguration()
     {
-        return json_decode($this->configuration, true);
+        return $this->configuration;
     }
 
     /**
@@ -74,8 +74,8 @@ class PluginConfiguration
      */
     public function get($name)
     {
-        return isset($this->getConfiguration()[$name])
-            ? $this->getConfiguration()[$name]
+        return isset($this->configuration[$name])
+            ? $this->configuration[$name]
             : [];
     }
 
@@ -99,7 +99,7 @@ class PluginConfiguration
     public function getField($fieldName)
     {
         return $this->hasField($fieldName)
-            ? $this->getFields()[$fieldName]
+            ? $this->configuration['fields'][$fieldName]
             : null;
     }
 
@@ -112,7 +112,7 @@ class PluginConfiguration
      */
     public function hasField($fieldName)
     {
-        return isset($this->getFields()[$fieldName]);
+        return isset($this->configuration['fields'][$fieldName]);
     }
 
     /**
@@ -129,10 +129,7 @@ class PluginConfiguration
             throw new RuntimeException('Field "' . $fieldName . '" not found in Plugin Configuration');
         }
 
-        $configuration = $this->getConfiguration();
-        $configuration['fields'][$fieldName]['data'] = $fieldValue;
-
-        $this->setConfiguration($configuration);
+        $this->configuration['fields'][$fieldName]['data'] = $fieldValue;
 
         return $this;
     }
@@ -150,7 +147,7 @@ class PluginConfiguration
             throw new RuntimeException('Field "' . $fieldName . '" not found in Plugin Configuration');
         }
 
-        return $this->getFields()[$fieldName]['data'];
+        return $this->configuration['fields'][$fieldName]['data'];
     }
 
     /**
