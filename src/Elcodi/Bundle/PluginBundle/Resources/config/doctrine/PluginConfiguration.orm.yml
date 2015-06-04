@@ -2,4 +2,4 @@ Elcodi\Component\Plugin\Entity\PluginConfiguration:
     type: embeddable
     fields:
         configuration:
-            type: text
+            type: json_array
