@@ -97,39 +97,41 @@ class PluginManager
      */
     public function loadPlugins()
     {
-        $plugins = $this->getExistingPlugins();
+        $oldPlugins = $this->getExistingPlugins();
         $pluginBundles = $this->getInstalledPluginBundles();
         $pluginsLoaded = [];
 
         /**
          * @var Bundle $plugin
          */
-        foreach ($pluginBundles as $pluginNamespace => $plugin) {
+        foreach ($pluginBundles as $plugin) {
             $pluginConfiguration = $this
                 ->pluginLoader
                 ->getPluginConfiguration($plugin->getPath());
 
+            $pluginNamespace = get_class($plugin);
             $pluginInstance = $this
                 ->getPluginInstance(
-                    $plugins,
-                    get_class($plugin),
+                    $pluginNamespace,
                     $pluginConfiguration
                 );
+
+            if (isset($oldPlugins[$pluginNamespace])) {
+                $existingPlugin = $oldPlugins[$pluginNamespace];
+                $pluginInstance = $existingPlugin->merge($pluginInstance);
+                unset($oldPlugins[$pluginNamespace]);
+            }
 
             $this->savePlugin($pluginInstance);
 
             $pluginsLoaded[] = $pluginInstance;
-            if (isset($plugins
-                [$pluginNamespace])) {
-                unset($plugins[$pluginNamespace]);
-            }
         }
 
         /**
          * Every Plugin instance inside $plugins array should be removed from
          * database, because they are not longer installed
          */
-        $this->removePlugins($plugins);
+        $this->removePlugins($oldPlugins);
 
         return $pluginsLoaded;
     }
@@ -189,14 +191,12 @@ class PluginManager
      * Create or update existing plugin given a set of plugin instances and the
      * information to create a new one
      *
-     * @param Plugin[] $plugins             Plugins
      * @param string   $pluginNamespace     Plugin namespace
      * @param array    $pluginConfiguration Plugin Configuration
      *
      * @return Plugin Plugin instance
      */
     protected function getPluginInstance(
-        array $plugins,
         $pluginNamespace,
         $pluginConfiguration
     ) {
@@ -210,12 +210,6 @@ class PluginManager
             $pluginCategory,
             PluginConfiguration::create($pluginConfiguration)
         );
-
-        if (isset($plugins[$pluginNamespace])) {
-            $existingPlugin = $plugins[$pluginNamespace];
-            $pluginInstance = $existingPlugin->merge($pluginInstance);
-            unset($plugins[$pluginNamespace]);
-        }
 
         return $pluginInstance;
     }
