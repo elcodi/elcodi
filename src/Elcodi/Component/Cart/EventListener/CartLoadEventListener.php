@@ -246,6 +246,7 @@ class CartLoadEventListener
          * This checking has sense when the Product has not infinite stock
          */
         if (
+            $this->useStock &&
             ($cartLine->getProduct()->getStock() !== ElcodiProductStock::INFINITE_STOCK) &&
             ($cartLine->getQuantity() > $purchasable->getStock())
         ) {
