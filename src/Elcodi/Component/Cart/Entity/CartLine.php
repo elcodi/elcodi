@@ -23,6 +23,9 @@ use Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface;
 use Elcodi\Component\Cart\Entity\Traits\PriceTrait;
 use Elcodi\Component\Cart\Entity\Traits\PurchasableWrapperTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
+use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
+use Elcodi\Component\Currency\Entity\Money;
+use Elcodi\Component\Tax\Entity\Traits\TaxTrait;
 
 /**
  * Cart line
@@ -31,7 +34,8 @@ class CartLine implements CartLineInterface
 {
     use IdentifiableTrait,
         PurchasableWrapperTrait,
-        PriceTrait;
+        PriceTrait,
+        TaxTrait;
 
     /**
      * @var CartInterface
@@ -46,6 +50,14 @@ class CartLine implements CartLineInterface
      * Order Line
      */
     protected $orderLine;
+
+    /**
+     * @var float
+     *
+     * Tax percentage applied to the product
+     * This value is not persisted
+     */
+    protected $taxPercentage;
 
     /**
      * Set Cart
@@ -141,5 +153,62 @@ class CartLine implements CartLineInterface
         return $this->quantity * $this
             ->getPurchasable()
             ->getWeight();
+    }
+
+    /**
+     * Set taxPercentage
+     *
+     * @param float $taxPercentage
+     *
+     * @return $this Self object
+     */
+    public function setTaxPercentage($taxPercentage)
+    {
+        $this->taxPercentage = $taxPercentage;
+
+        return $this;
+    }
+
+    /**
+     * Get taxPercentage
+     *
+     * @return float
+     */
+    public function getTaxPercentage()
+    {
+        return $this->taxPercentage;
+    }
+
+    /**
+     * Get Taxed Amount
+     *
+     * @return MoneyInterface
+     */
+    public function getTaxedAmount()
+    {
+        return Money::create(
+            $this->amount,
+            $this->currency
+        )->add($this->getTaxAmount());
+    }
+
+    /**
+     * Get Tax Amount
+     *
+     * @return MoneyInterface
+     */
+    public function getTaxAmount()
+    {
+        if (isset($this->taxPercentage)) {
+            return Money::create(
+                $this->CalculateTaxAmount($this->amount, $this->taxPercentage),
+                $this->currency
+            );
+        } else {
+            return Money::create(
+                0,
+                $this->productCurrency
+            );
+        }
     }
 }

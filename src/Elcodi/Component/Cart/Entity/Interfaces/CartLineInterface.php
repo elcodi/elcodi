@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Cart\Entity\Interfaces;
 
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
+use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
 
 /**
@@ -61,4 +62,35 @@ interface CartLineInterface
      * @return OrderLineInterface OrderLine
      */
     public function getOrderLine();
+
+    /**
+     * Set taxPercentage
+     *
+     * @param float $taxPercentage
+     *
+     * @return $this Self object
+     */
+    public function setTaxPercentage($taxPercentage);
+
+    /**
+     * Get taxPercentage
+     *
+     * @return float
+     */
+    public function getTaxPercentage();
+
+    /**
+     * Get Taxed Price
+     *
+     * @return MoneyInterface
+     */
+    public function getTaxedAmount();
+
+    /**
+     * Get Tax Amount
+     *
+     * @return MoneyInterface
+     */
+    public function getTaxAmount();
+
 }

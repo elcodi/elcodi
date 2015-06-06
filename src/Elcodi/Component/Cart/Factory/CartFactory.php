@@ -21,6 +21,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\Component\Cart\Entity\Cart;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
+use Elcodi\Component\Currency\Entity\Money;
 
 /**
  * Class CartFactory

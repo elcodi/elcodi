@@ -49,6 +49,11 @@ Elcodi\Component\Cart\Entity\Order:
         updatedAt:
             column: updated_at
             type: datetime
+        taxAmount:
+            column: tax_amount
+            type: integer
+            nullable: true
+
 
     oneToOne:
         cart:

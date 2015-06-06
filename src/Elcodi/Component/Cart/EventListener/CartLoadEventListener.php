@@ -270,6 +270,7 @@ class CartLoadEventListener
             ->get();
 
         $productAmount = Money::create(0, $currency);
+        $taxAmount = Money::create(0, $currency);
 
         /**
          * Calculate Amount and ProductAmount
@@ -296,11 +297,28 @@ class CartLoadEventListener
                 ->add($convertedProductAmount->multiply(
                     $cartLine->getQuantity()
                 ));
+
+            /**
+             * @var MoneyInterface $taxAmount
+             * @var MoneyInterface $totalTaxAmount
+             */
+            $convertedTaxAmount = $this
+                ->currencyConverter
+                ->convertMoney(
+                    $cartLine->getTaxAmount(),
+                    $currency
+                );
+
+            $taxAmount = $taxAmount
+                ->add($convertedTaxAmount->multiply(
+                   $cartLine->getQuantity()
+                ));
         }
 
         $cart
             ->setProductAmount($productAmount)
-            ->setAmount($productAmount);
+            ->setAmount($productAmount)
+            ->setTaxAmount($taxAmount);
     }
 
     /**
@@ -330,6 +348,7 @@ class CartLoadEventListener
          */
         $cartLine->setProductAmount($productPrice);
         $cartLine->setAmount($productPrice->multiply($cartLine->getQuantity()));
+        //$cartLine->setTaxPercentage( $cartLine->getProduct()->getTax()->getValue() );
 
         return $cartLine;
     }

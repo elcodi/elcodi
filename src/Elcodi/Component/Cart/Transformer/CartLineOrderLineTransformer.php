@@ -123,7 +123,8 @@ class CartLineOrderLineTransformer
             ->setHeight($cartLine->getHeight())
             ->setWidth($cartLine->getWidth())
             ->setDepth($cartLine->getDepth())
-            ->setWeight($cartLine->getWeight());
+            ->setWeight($cartLine->getWeight())
+            ->setTaxPercentage($cartLine->getTaxPercentage());
 
         $this
             ->orderLineEventDispatcher

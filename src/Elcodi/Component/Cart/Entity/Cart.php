@@ -146,6 +146,16 @@ class Cart implements CartInterface
     protected $cheapestShippingRange;
 
     /**
+     * @var MoneyInterface
+     *
+     * Transient tax amount
+     *
+     * This value is not persisted, it is calculated
+     * by summing CartLine::$getTaxAmount
+     */
+    protected $taxAmount;
+
+    /**
      * Get Id
      *
      * @return integer Id
@@ -591,4 +601,29 @@ class Cart implements CartInterface
 
         return $this;
     }
+
+    /**
+     * Set taxAmount
+     *
+     * @param MoneyInterface $taxAmount
+     *
+     * @return $this Self object
+     */
+    public function setTaxAmount(MoneyInterface $taxAmount)
+    {
+        $this->taxAmount = $taxAmount;
+
+        return $this;
+    }
+
+    /**
+     * Get taxAmount
+     *
+     * @return MoneyInterface
+     */
+    public function getTaxAmount()
+    {
+        return $this->taxAmount;
+    }
+
 }

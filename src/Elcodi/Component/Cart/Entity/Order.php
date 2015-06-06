@@ -153,6 +153,13 @@ class Order implements OrderInterface
     protected $billingAddress;
 
     /**
+     * @var integer
+     *
+     * Tax amount
+     */
+    protected $taxAmount;
+
+    /**
      * Get Id
      *
      * @return integer Id
@@ -486,5 +493,34 @@ class Order implements OrderInterface
         $this->billingAddress = $billingAddress;
 
         return $this;
+    }
+
+    /**
+     * Set taxAmount
+     * Notice that the currency of taxAmount is the same as the currency for amount
+     *
+     * @param MoneyInterface $taxAmount
+     *
+     * @return $this Self object
+     */
+    public function setTaxAmount(MoneyInterface $taxAmount)
+    {
+        $this->taxAmount = $taxAmount->getAmount();
+
+        return $this;
+    }
+
+    /**
+     * Get taxAmount
+     * Notice that the currency of taxAmount is the same as the currency for amount
+     *
+     * @return MoneyInterface
+     */
+    public function getTaxAmount()
+    {
+        return Money::create(
+            $this->taxAmount,
+            $this->currency
+        );
     }
 }

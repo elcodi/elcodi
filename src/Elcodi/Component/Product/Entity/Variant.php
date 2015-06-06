@@ -23,12 +23,15 @@ use Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
+use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait;
 use Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
+use Elcodi\Component\Tax\Entity\Interfaces\TaxInterface;
 use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
 use Elcodi\Component\Product\Entity\Traits\ProductPriceTrait;
+use Elcodi\Component\Tax\Entity\Traits\TaxTrait;
 
 /**
  * Class Variant
@@ -49,7 +52,8 @@ class Variant implements VariantInterface
         DateTimeTrait,
         ImagesContainerTrait,
         PrincipalImageTrait,
-        DimensionsTrait;
+        DimensionsTrait,
+        TaxTrait;
 
     /**
      * @var string
@@ -78,6 +82,13 @@ class Variant implements VariantInterface
      * Collection of possible options for this product
      */
     protected $options;
+
+    /**
+     * @var TaxInterface
+     *
+     * Tax
+     */
+    protected $tax;
 
     /**
      * Gets the variant SKU
@@ -240,5 +251,63 @@ class Variant implements VariantInterface
         $this->product = $product;
 
         return $this;
+    }
+
+    /**
+     * Returns product tax
+     *
+     * @return TaxInterface
+     */
+    public function getTax()
+    {
+        return $this->tax;
+    }
+
+    /**
+     * Sets product tax
+     *
+     * @param TaxInterface $tax
+     *
+     * @return $this Self object
+     */
+    public function setTax(TaxInterface $tax)
+    {
+        $this->tax = $tax;
+
+        return $this;
+    }
+
+    /**
+     * Returns variant taxed Price
+     *
+     * @return MoneyInterface
+     */
+    public function getTaxedPrice()
+    {
+        return \Elcodi\Component\Currency\Entity\Money::create(
+            $this->price,
+            $this->priceCurrency
+        )->add($this->getTaxAmount());
+    }
+
+    /**
+     * When a tax is set on the variant      returns a money object with amount = tax amount
+     * When a tax is NOT set on the variant  returns a money object with amount = 0
+     *
+     * @return MoneyInterface
+     */
+    public function getTaxAmount()
+    {
+        if (isset($this->tax)) {
+            return \Elcodi\Component\Currency\Entity\Money::create(
+                $this->CalculateTaxAmount($this->price, $this->tax->getValue()),
+                $this->priceCurrency
+            );
+        } else {
+            return \Elcodi\Component\Currency\Entity\Money::create(
+                0,
+                $this->priceCurrency
+            );
+        }
     }
 }

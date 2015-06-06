@@ -261,4 +261,20 @@ interface CartInterface
      * @return $this Self object
      */
     public function setCheapestShippingRange(ShippingRangeInterface $cheapestShippingRange = null);
+
+    /**
+     * Set taxAmount
+     *
+     * @param MoneyInterface $taxAmount
+     *
+     * @return $this Self object
+     */
+    public function setTaxAmount(MoneyInterface $taxAmount);
+
+    /**
+     * Get taxAmount
+     *
+     * @return MoneyInterface
+     */
+    public function getTaxAmount();
 }
