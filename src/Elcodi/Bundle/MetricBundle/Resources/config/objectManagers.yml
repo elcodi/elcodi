@@ -5,6 +5,8 @@ services:
     #
     elcodi.object_manager.entry:
         class: Doctrine\Common\Persistence\ObjectManager
-        factory: [@elcodi.provider.manager, getManagerByEntityNamespace]
+        factory:
+            - @elcodi.provider.manager
+            - getManagerByEntityNamespace
         arguments:
             - %elcodi.entity.metric_entry.class%

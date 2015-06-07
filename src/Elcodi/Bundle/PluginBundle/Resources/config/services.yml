@@ -30,15 +30,21 @@ services:
     #
     elcodi.enabled_plugins:
         class: StdClass
-        factory: [@elcodi.repository.plugin, findBy]
+        factory:
+            - @elcodi.repository.plugin
+            - findBy
         arguments:
             - {enabled: true}
 
     elcodi.plugins:
         class: StdClass
-        factory: [@elcodi.repository.plugin, findBy]
+        factory:
+            - @elcodi.repository.plugin
+            - findBy
 
     elcodi.abstract_plugin:
         abstract: true
         class: Elcodi\Component\Plugin\Entity\Plugin
-        factory: [@elcodi.repository.plugin, findOneByNamespace]
+        factory:
+            - @elcodi.repository.plugin
+            - findOneByNamespace

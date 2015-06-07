@@ -5,7 +5,9 @@ services:
     #
     elcodi.abstract_manager:
         class: Doctrine\Common\Persistence\ObjectManager
-        factory: [@elcodi.provider.manager, getManagerByEntityNamespace]
+        factory:
+            - @elcodi.provider.manager
+            - getManagerByEntityNamespace
         abstract: true
 
     #
@@ -13,5 +15,7 @@ services:
     #
     elcodi.abstract_repository:
         class: Doctrine\Common\Persistence\ObjectRepository
-        factory: [@elcodi.provider.repository, getRepositoryByEntityNamespace]
+        factory:
+            - @elcodi.provider.repository
+            - getRepositoryByEntityNamespace
         abstract: true
