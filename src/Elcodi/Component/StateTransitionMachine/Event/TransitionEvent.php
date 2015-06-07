@@ -33,21 +33,21 @@ class TransitionEvent extends Event
      *
      * Object
      */
-    protected $object;
+    private $object;
 
     /**
      * @var StateLineStack
      *
      * State line stack
      */
-    protected $stateLineStack;
+    private $stateLineStack;
 
     /**
      * @var Transition
      *
      * Transition
      */
-    protected $transition;
+    private $transition;
 
     /**
      * Construct

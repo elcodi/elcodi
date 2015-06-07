@@ -33,14 +33,14 @@ class PasswordRememberEvent extends Event
      *
      * User
      */
-    protected $user;
+    private $user;
 
     /**
      * @var string
      *
      * Remember url
      */
-    protected $rememberUrl;
+    private $rememberUrl;
 
     /**
      * Construct method

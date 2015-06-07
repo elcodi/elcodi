@@ -33,21 +33,21 @@ class OrderLineOnCreatedEvent extends Event
      *
      * Order
      */
-    protected $order;
+    private $order;
 
     /**
      * @var CartLineInterface
      *
      * cartLine
      */
-    protected $cartLine;
+    private $cartLine;
 
     /**
      * @var OrderLineInterface
      *
      * OrderLine
      */
-    protected $orderLine;
+    private $orderLine;
 
     /**
      * construct method

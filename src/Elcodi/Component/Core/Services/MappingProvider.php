@@ -29,7 +29,7 @@ class MappingProvider
      *
      * interface => implementation
      */
-    protected $implementations;
+    private $implementations;
 
     /**
      * @var array
@@ -38,7 +38,7 @@ class MappingProvider
      *
      * implementation => interface
      */
-    protected $interfaces;
+    private $interfaces;
 
     /**
      * Construct

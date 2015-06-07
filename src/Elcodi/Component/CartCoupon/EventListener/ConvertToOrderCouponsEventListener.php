@@ -38,28 +38,28 @@ class ConvertToOrderCouponsEventListener
      *
      * orderCouponEventDispatcher
      */
-    protected $orderCouponEventDispatcher;
+    private $orderCouponEventDispatcher;
 
     /**
      * @var CartCouponManager
      *
      * CartCoupon manager
      */
-    protected $cartCouponManager;
+    private $cartCouponManager;
 
     /**
      * @var OrderCouponManager
      *
      * OrderCoupon manager
      */
-    protected $orderCouponManager;
+    private $orderCouponManager;
 
     /**
      * @var ObjectManager
      *
      * OrderCoupon object manager
      */
-    protected $orderCouponObjectManager;
+    private $orderCouponObjectManager;
 
     /**
      * construct method
@@ -87,6 +87,8 @@ class ConvertToOrderCouponsEventListener
      * This method adds Coupon logic in this transformation
      *
      * @param OrderOnCreatedEvent $orderOnCreatedEvent OrderOnCreated Event
+     *
+     * @return null
      */
     public function convertCouponToOrder(OrderOnCreatedEvent $orderOnCreatedEvent)
     {
@@ -135,7 +137,7 @@ class ConvertToOrderCouponsEventListener
      *
      * @return $this Self object
      */
-    protected function truncateOrderCoupons(OrderInterface $order)
+    private function truncateOrderCoupons(OrderInterface $order)
     {
         $orderCoupons = $this
             ->orderCouponManager

@@ -30,7 +30,7 @@ class CommentParser
      *
      * Parser adapter
      */
-    protected $parserAdapter;
+    private $parserAdapter;
 
     /**
      * Construct

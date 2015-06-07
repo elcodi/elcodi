@@ -27,7 +27,7 @@ trait FactoryTrait
      *
      * Factory
      */
-    protected $factory;
+    private $factory;
 
     /**
      * Get Factory

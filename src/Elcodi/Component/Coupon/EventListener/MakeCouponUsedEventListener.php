@@ -31,7 +31,7 @@ class MakeCouponUsedEventListener
      *
      * Coupon ObjectManager
      */
-    protected $couponObjectManager;
+    private $couponObjectManager;
 
     /**
      * Construct method

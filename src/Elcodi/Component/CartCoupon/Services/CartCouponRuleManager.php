@@ -31,7 +31,7 @@ class CartCouponRuleManager
      *
      * Rule manager
      */
-    protected $ruleManager;
+    private $ruleManager;
 
     /**
      * Construct method

@@ -31,7 +31,7 @@ abstract class AbstractCartEvent extends Event
      *
      * cart
      */
-    protected $cart;
+    private $cart;
 
     /**
      * Construct method

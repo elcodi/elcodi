@@ -31,7 +31,7 @@ class CustomerRegisterEvent extends Event
      *
      * Customer
      */
-    protected $customer;
+    private $customer;
 
     /**
      * Construct method

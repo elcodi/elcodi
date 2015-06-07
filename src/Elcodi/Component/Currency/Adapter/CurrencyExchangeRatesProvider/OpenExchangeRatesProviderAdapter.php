@@ -36,28 +36,28 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
      *
      * Client
      */
-    protected $client;
+    private $client;
 
     /**
      * @var string
      *
      * the app id
      */
-    protected $appId;
+    private $appId;
 
     /**
      * @var string
      *
      * the api endpoint
      */
-    protected $endPoint;
+    private $endPoint;
 
     /**
      * @var string
      *
      * base currency
      */
-    protected $baseCurrency;
+    private $baseCurrency;
 
     /**
      * Service constructor
@@ -145,6 +145,29 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
     }
 
     /**
+     * Get historical data
+     *
+     * @param DateTime $date
+     *
+     * @return array
+     */
+    public function getHistorical(DateTime $date)
+    {
+        $request = $this->client->createRequest(
+            'GET',
+            $this->endPoint . '/historical/' . $date->format('Y-m-d') . '.json',
+            [
+                'query' => [
+                    'app_id' => $this->appId,
+                    'base'   => $this->baseCurrency,
+                ],
+            ]
+        );
+
+        return $this->runRequest($request);
+    }
+
+    /**
      * Run guzzle request
      *
      * @param RequestInterface $request
@@ -161,28 +184,5 @@ class OpenExchangeRatesProviderAdapter implements CurrencyExchangeRatesProviderA
         } catch (Exception $e) {
             return ['error' => $request->getResponse()->json()];
         }
-    }
-
-    /**
-     * Get historical data
-     *
-     * @param DateTime $date
-     *
-     * @return array
-     */
-    public function getHistorical(DateTime $date)
-    {
-        $request = $this->client->createRequest(
-            'GET',
-            $this->endPoint . '/historical/' . $date->format('Y-m-d') . '.json',
-            [
-                'query' => [
-                        'app_id' => $this->appId,
-                        'base'   => $this->baseCurrency,
-                    ],
-            ]
-        );
-
-        return $this->runRequest($request);
     }
 }

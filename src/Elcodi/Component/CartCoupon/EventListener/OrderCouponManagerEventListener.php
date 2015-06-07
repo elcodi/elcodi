@@ -35,21 +35,21 @@ class OrderCouponManagerEventListener
      *
      * cartCouponObjectManager
      */
-    protected $orderCouponObjectManager;
+    private $orderCouponObjectManager;
 
     /**
      * @var CouponEventDispatcher
      *
      * CouponEventDispatcher
      */
-    protected $couponEventDispatcher;
+    private $couponEventDispatcher;
 
     /**
      * @var OrderCouponFactory
      *
      * orderCouponFactory
      */
-    protected $orderCouponFactory;
+    private $orderCouponFactory;
 
     /**
      * construct method

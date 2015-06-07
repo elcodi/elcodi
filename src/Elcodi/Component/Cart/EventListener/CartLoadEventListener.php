@@ -29,7 +29,6 @@ use Elcodi\Component\Core\Wrapper\Interfaces\WrapperInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
-use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 use Elcodi\Component\Product\ElcodiProductStock;
 use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 
@@ -52,42 +51,42 @@ class CartLoadEventListener
      *
      * ObjectManager for Cart entity
      */
-    protected $cartObjectManager;
+    private $cartObjectManager;
 
     /**
      * @var CartEventDispatcher
      *
      * Cart EventDispatcher
      */
-    protected $cartEventDispatcher;
+    private $cartEventDispatcher;
 
     /**
      * @var CartManager
      *
      * Cart Manager
      */
-    protected $cartManager;
+    private $cartManager;
 
     /**
      * @var WrapperInterface
      *
      * Currency Wrapper
      */
-    protected $currencyWrapper;
+    private $currencyWrapper;
 
     /**
      * @var CurrencyConverter
      *
      * Currency Converter
      */
-    protected $currencyConverter;
+    private $currencyConverter;
 
     /**
      * @var boolean
      *
      * Uses stock
      */
-    protected $useStock;
+    private $useStock;
 
     /**
      * Built method
@@ -210,7 +209,7 @@ class CartLoadEventListener
      *
      * @return CartLineInterface CartLine
      */
-    protected function checkCartLine(CartLineInterface $cartLine)
+    private function checkCartLine(CartLineInterface $cartLine)
     {
         $cart = $cartLine->getCart();
         $purchasable = $cartLine->getPurchasable();
@@ -263,7 +262,7 @@ class CartLoadEventListener
      *
      * @return CartInterface Cart
      */
-    protected function calculateCartPrices(CartInterface $cart)
+    private function calculateCartPrices(CartInterface $cart)
     {
         $currency = $this
             ->currencyWrapper
@@ -311,7 +310,7 @@ class CartLoadEventListener
      *
      * @return CartLineInterface Line with prices loaded
      */
-    protected function loadCartLinePrices(CartLineInterface $cartLine)
+    private function loadCartLinePrices(CartLineInterface $cartLine)
     {
         $purchasable = $cartLine->getPurchasable();
         $productPrice = $purchasable->getPrice();
@@ -341,7 +340,7 @@ class CartLoadEventListener
      *
      * @return CartInterface Cart
      */
-    protected function calculateCartQuantities(CartInterface $cart)
+    private function calculateCartQuantities(CartInterface $cart)
     {
         $quantity = 0;
 

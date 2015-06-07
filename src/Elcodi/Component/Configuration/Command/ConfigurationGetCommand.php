@@ -34,7 +34,7 @@ class ConfigurationGetCommand extends Command
      *
      * Configuration manager
      */
-    protected $configurationManager;
+    private $configurationManager;
 
     /**
      * Constructor

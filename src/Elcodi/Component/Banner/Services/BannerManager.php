@@ -33,7 +33,7 @@ class BannerManager
      *
      * Banner Repository
      */
-    protected $bannerRepository;
+    private $bannerRepository;
 
     /**
      * Construct method

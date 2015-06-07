@@ -32,7 +32,7 @@ class PluginType extends AbstractType
      *
      * Plugin
      */
-    protected $plugin;
+    private $plugin;
 
     /**
      * Construct

@@ -31,14 +31,14 @@ class CurrencySessionManager
      *
      * Session
      */
-    protected $session;
+    private $session;
 
     /**
      * @var string
      *
      * Session Field Name
      */
-    protected $sessionFieldName;
+    private $sessionFieldName;
 
     /**
      * Construct method

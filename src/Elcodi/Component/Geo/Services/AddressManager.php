@@ -32,7 +32,7 @@ class AddressManager
      *
      * Address object manager
      */
-    protected $addressObjectManager;
+    private $addressObjectManager;
 
     /**
      * @var AddressEventDispatcher

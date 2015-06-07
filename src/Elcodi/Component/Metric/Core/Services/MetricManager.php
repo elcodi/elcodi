@@ -33,21 +33,21 @@ class MetricManager
      *
      * Metrics bucket
      */
-    protected $metricsBucket;
+    private $metricsBucket;
 
     /**
      * @var EntryFactory
      *
      * Entry factory
      */
-    protected $entryFactory;
+    private $entryFactory;
 
     /**
      * @var ObjectManager
      *
      * Entry object manager
      */
-    protected $entryObjectManager;
+    private $entryObjectManager;
 
     /**
      * Construct

@@ -34,14 +34,14 @@ class UpdateCartWithUserListener
      *
      * Cart Wrapper holding reference to current Cart
      */
-    protected $cartWrapper;
+    private $cartWrapper;
 
     /**
      * @var ObjectManager
      *
      * Object manager for the Cart entity
      */
-    protected $cartManager;
+    private $cartManager;
 
     /**
      * Construct method

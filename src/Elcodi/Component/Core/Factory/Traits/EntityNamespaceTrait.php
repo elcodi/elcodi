@@ -27,7 +27,7 @@ trait EntityNamespaceTrait
      *
      * Entity namespace
      */
-    protected $entityNamespace;
+    private $entityNamespace;
 
     /**
      * Set Entity Namespace

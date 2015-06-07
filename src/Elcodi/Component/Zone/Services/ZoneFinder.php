@@ -31,14 +31,14 @@ class ZoneFinder
      *
      * Zone repository
      */
-    protected $zoneRepository;
+    private $zoneRepository;
 
     /**
      * @var ZoneMatcher
      *
      * Zone matcher
      */
-    protected $zoneMatcher;
+    private $zoneMatcher;
 
     /**
      * Construct

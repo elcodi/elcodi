@@ -35,7 +35,7 @@ class LanguageManager
      *
      * Language repository
      */
-    protected $languageRepository;
+    private $languageRepository;
 
     /**
      * Construct method

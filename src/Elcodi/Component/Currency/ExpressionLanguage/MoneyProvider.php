@@ -38,14 +38,14 @@ class MoneyProvider implements ExpressionFunctionProviderInterface
      *
      * Currency wrapper to get the default currency
      */
-    protected $defaultCurrencyWrapper;
+    private $defaultCurrencyWrapper;
 
     /**
      * @var CurrencyRepository
      *
      * Currency repository
      */
-    protected $currencyRepository;
+    private $currencyRepository;
 
     /**
      * Construct

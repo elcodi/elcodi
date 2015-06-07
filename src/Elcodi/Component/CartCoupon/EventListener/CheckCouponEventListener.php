@@ -31,8 +31,10 @@ class CheckCouponEventListener
 {
     /**
      * @var CouponManager
+     *
+     * Coupon Manager
      */
-    protected $couponManager;
+    private $couponManager;
 
     /**
      * Constructor

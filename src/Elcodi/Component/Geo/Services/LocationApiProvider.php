@@ -37,28 +37,28 @@ class LocationApiProvider implements LocationProviderInterface
      *
      * Location transformer
      */
-    protected $locationDataFactory;
+    private $locationDataFactory;
 
     /**
      * @var UrlGeneratorInterface
      *
      * Url generator
      */
-    protected $urlGeneratorInterface;
+    private $urlGeneratorInterface;
 
     /**
      * @var ApiUrls
      *
      * Api urls wrapper
      */
-    protected $apiUrls;
+    private $apiUrls;
 
     /**
      * @var string
      *
      * Host
      */
-    protected $host;
+    private $host;
 
     /**
      * Location to location data transformer
@@ -73,8 +73,7 @@ class LocationApiProvider implements LocationProviderInterface
         UrlGeneratorInterface $urlGeneratorInterface,
         ApiUrls $apiUrls,
         $host = ''
-    )
-    {
+    ) {
         $this->locationDataFactory = $locationDataFactory;
         $this->urlGeneratorInterface = $urlGeneratorInterface;
         $this->apiUrls = $apiUrls;
@@ -195,7 +194,7 @@ class LocationApiProvider implements LocationProviderInterface
             'getInUrl',
             [
                 'id'  => $id,
-                'ids' => implode(',', $ids)
+                'ids' => implode(',', $ids),
             ]
         );
 
@@ -250,8 +249,7 @@ class LocationApiProvider implements LocationProviderInterface
                         $url,
                         $parameters,
                         UrlGeneratorInterface::ABSOLUTE_PATH
-                    )
-                , '/'
+                    ), '/'
             );
     }
 
@@ -289,7 +287,7 @@ class LocationApiProvider implements LocationProviderInterface
         $client = new Client([
             'defaults' => [
                 'timeout' => 5,
-            ]
+            ],
         ]);
         $response = $client->get($url);
         $responseStatusCode = $response->getStatusCode();

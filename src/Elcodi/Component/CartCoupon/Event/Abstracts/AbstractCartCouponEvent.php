@@ -33,21 +33,21 @@ abstract class AbstractCartCouponEvent extends Event
      *
      * Cart
      */
-    protected $cart;
+    private $cart;
 
     /**
      * @var CouponInterface
      *
      * Coupon
      */
-    protected $coupon;
+    private $coupon;
 
     /**
      * @var CartCouponInterface
      *
      * CartCoupon
      */
-    protected $cartCoupon;
+    private $cartCoupon;
 
     /**
      * Construct method

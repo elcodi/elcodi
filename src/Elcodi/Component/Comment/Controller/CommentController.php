@@ -36,21 +36,21 @@ class CommentController
      *
      * Comment manager
      */
-    protected $commentManager;
+    private $commentManager;
 
     /**
      * @var CommentCache
      *
      * Comment Cache
      */
-    protected $commentCache;
+    private $commentCache;
 
     /**
      * @var ObjectRepository
      *
      * Comment repository
      */
-    protected $commentRepository;
+    private $commentRepository;
 
     /**
      * Construct
@@ -208,7 +208,7 @@ class CommentController
      *
      * @throws EntityNotFoundException Comment not found
      */
-    protected function findComment($commentId, $authorToken)
+    private function findComment($commentId, $authorToken)
     {
         $comment = $this
             ->commentRepository

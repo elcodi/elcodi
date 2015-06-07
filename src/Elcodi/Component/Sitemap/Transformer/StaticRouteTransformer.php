@@ -31,7 +31,7 @@ class StaticRouteTransformer implements SitemapTransformerInterface
      *
      * Url generator
      */
-    protected $router;
+    private $router;
 
     /**
      * Construct

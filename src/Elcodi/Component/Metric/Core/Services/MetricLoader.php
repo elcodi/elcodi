@@ -31,14 +31,14 @@ class MetricLoader
      *
      * Metrics bucket
      */
-    protected $metricsBucket;
+    private $metricsBucket;
 
     /**
      * @var EntryRepository
      *
      * Metric entry repository
      */
-    protected $entryRepository;
+    private $entryRepository;
 
     /**
      * Construct

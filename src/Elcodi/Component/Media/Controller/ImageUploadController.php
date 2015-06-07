@@ -35,42 +35,42 @@ class ImageUploadController
      *
      * Request stack
      */
-    protected $requestStack;
+    private $requestStack;
 
     /**
      * @var ImageUploader
      *
      * Image uploader
      */
-    protected $imageUploader;
+    private $imageUploader;
 
     /**
      * @var RouterInterface
      *
      * Router
      */
-    protected $router;
+    private $router;
 
     /**
      * @var string
      *
      * Field name when uploading
      */
-    protected $uploadFieldName;
+    private $uploadFieldName;
 
     /**
      * @var string
      *
      * View image url name
      */
-    protected $viewImageRouteName;
+    private $viewImageRouteName;
 
     /**
      * @var string
      *
      * Resize image url name
      */
-    protected $resizeImageRouteName;
+    private $resizeImageRouteName;
 
     /**
      * Image uploader

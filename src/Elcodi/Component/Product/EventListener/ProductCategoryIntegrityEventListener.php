@@ -33,7 +33,7 @@ class ProductCategoryIntegrityEventListener
      *
      * A category integrity fixer.
      */
-    protected $categoryIntegrityFixer;
+    private $categoryIntegrityFixer;
 
     /**
      * Builds a new class

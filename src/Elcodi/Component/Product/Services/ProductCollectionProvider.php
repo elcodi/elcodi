@@ -35,14 +35,14 @@ class ProductCollectionProvider
      *
      * Product Repository
      */
-    protected $productRepository;
+    private $productRepository;
 
     /**
      * @var boolean
      *
      * If the use stock option is enabled
      */
-    protected $useStock;
+    private $useStock;
 
     /**
      * Construct method
@@ -134,9 +134,8 @@ class ProductCollectionProvider
      *
      * @return QueryBuilder same object
      */
-    protected function addStockPropertiesToQueryBuilder(
-        QueryBuilder $queryBuilder
-    ) {
+    private function addStockPropertiesToQueryBuilder(QueryBuilder $queryBuilder)
+    {
         if ($this->useStock) {
             $queryBuilder
                 ->andWhere($queryBuilder->expr()->orX(

@@ -32,14 +32,14 @@ class DefaultCurrencyWrapper implements WrapperInterface
      *
      * Currency repository
      */
-    protected $currencyRepository;
+    private $currencyRepository;
 
     /**
      * @var string
      *
      * Default currency
      */
-    protected $defaultCurrencyIsoCode;
+    private $defaultCurrencyIsoCode;
 
     /**
      * Currency wrapper constructor

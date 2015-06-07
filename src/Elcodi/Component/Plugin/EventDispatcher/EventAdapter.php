@@ -33,14 +33,14 @@ class EventAdapter extends Event implements EventInterface
      *
      * Context from the caller
      */
-    protected $context;
+    private $context;
 
     /**
      * @var string
      *
      * Content to be returned
      */
-    protected $content;
+    private $content;
 
     /**
      * Create a new event from context and content

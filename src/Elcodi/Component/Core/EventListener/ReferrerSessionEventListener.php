@@ -28,6 +28,8 @@ class ReferrerSessionEventListener
      * Update referrer from session
      *
      * @param GetResponseEvent $event Event
+     *
+     * @return null
      */
     public function updateSessionReferrer(GetResponseEvent $event)
     {

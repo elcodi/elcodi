@@ -29,14 +29,14 @@ class CurrencyExchangeRatesProvider
      *
      * openExchangeRatesService
      */
-    protected $exchangeRatesAdapter;
+    private $exchangeRatesAdapter;
 
     /**
      * @var array
      *
      * Exchange rates
      */
-    protected $exchangeRates;
+    private $exchangeRates;
 
     /**
      * Build method

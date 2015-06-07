@@ -30,7 +30,7 @@ class PaymentWrapper implements WrapperInterface
      *
      * Payment event dispatcher
      */
-    protected $paymentEventDispatcher;
+    private $paymentEventDispatcher;
 
     /**
      * Construct

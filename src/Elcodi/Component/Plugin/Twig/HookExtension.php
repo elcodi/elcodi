@@ -34,7 +34,7 @@ class HookExtension extends Twig_Extension
      *
      * Where to execute the hooks
      */
-    protected $hookSystemEventDispatcher;
+    private $hookSystemEventDispatcher;
 
     /**
      * Construct

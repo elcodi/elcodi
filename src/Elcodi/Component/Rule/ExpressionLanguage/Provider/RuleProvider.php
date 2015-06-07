@@ -38,14 +38,14 @@ class RuleProvider implements ExpressionFunctionProviderInterface
      *
      * Rule repository
      */
-    protected $ruleRepository;
+    private $ruleRepository;
 
     /**
      * @var RuleManager
      *
      * Rule manager
      */
-    protected $ruleManager;
+    private $ruleManager;
 
     /**
      * Construct method

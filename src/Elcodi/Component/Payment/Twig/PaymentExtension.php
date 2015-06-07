@@ -32,7 +32,7 @@ class PaymentExtension extends Twig_Extension
      *
      * Payment wrapper
      */
-    protected $paymentWrapper;
+    private $paymentWrapper;
 
     /**
      * Construct

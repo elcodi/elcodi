@@ -43,21 +43,21 @@ class ImageManager
      *
      * imageFactory
      */
-    protected $imageFactory;
+    private $imageFactory;
 
     /**
      * @var FileManager
      *
      * File manager
      */
-    protected $fileManager;
+    private $fileManager;
 
     /**
      * @var ResizeAdapterInterface
      *
      * ResizerAdapter
      */
-    protected $resizeAdapter;
+    private $resizeAdapter;
 
     /**
      * Construct method

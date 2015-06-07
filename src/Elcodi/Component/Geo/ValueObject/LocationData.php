@@ -29,28 +29,28 @@ class LocationData
      *
      * The identifier
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
      *
      * The name
      */
-    protected $name;
+    private $name;
 
     /**
      * @var string
      *
      * The code
      */
-    protected $code;
+    private $code;
 
     /**
      * @var string
      *
      * The type
      */
-    protected $type;
+    private $type;
 
     /**
      * Builds a new Location data

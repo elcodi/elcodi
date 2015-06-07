@@ -34,28 +34,28 @@ class ImageUploader
      *
      * Image Object manager
      */
-    protected $imageObjectManager;
+    private $imageObjectManager;
 
     /**
      * @var ImageManager
      *
      * Image Manager
      */
-    protected $imageManager;
+    private $imageManager;
 
     /**
      * @var FileManager
      *
      * File Manager
      */
-    protected $fileManager;
+    private $fileManager;
 
     /**
      * @var MediaEventDispatcher
      *
      * Media event dispatcher
      */
-    protected $mediaEventDispatcher;
+    private $mediaEventDispatcher;
 
     /**
      * Construct method

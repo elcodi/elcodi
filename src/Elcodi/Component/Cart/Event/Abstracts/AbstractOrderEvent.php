@@ -32,14 +32,14 @@ abstract class AbstractOrderEvent extends Event
      *
      * cart
      */
-    protected $cart;
+    private $cart;
 
     /**
      * @var OrderInterface
      *
      * Order
      */
-    protected $order;
+    private $order;
 
     /**
      * construct method

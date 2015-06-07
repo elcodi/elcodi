@@ -27,7 +27,7 @@ class TransitionChain
      *
      * Transitions
      */
-    protected $transitions;
+    private $transitions;
 
     /**
      * Construct method

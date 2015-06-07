@@ -30,7 +30,7 @@ class ShippingResolver
      *
      * currencyConverter
      */
-    protected $currencyConverter;
+    private $currencyConverter;
 
     /**
      * Construct method

@@ -37,14 +37,14 @@ class LocationApiController
      *
      * Location manager
      */
-    protected $locationProvider;
+    private $locationProvider;
 
     /**
      * @var Request
      *
      * Request
      */
-    protected $request;
+    private $request;
 
     /**
      * Construct
@@ -196,7 +196,7 @@ class LocationApiController
      *
      * @return Response Response object
      */
-    protected function createResponseObject(callable $callable)
+    private function createResponseObject(callable $callable)
     {
         try {
             $response = new JsonResponse($callable());
@@ -222,7 +222,7 @@ class LocationApiController
      *
      * @return array Data normalized
      */
-    protected function normalizeLocationDataArray(array $locationDataArray)
+    private function normalizeLocationDataArray(array $locationDataArray)
     {
         $normalizedLocationDataArray = [];
 
@@ -241,7 +241,7 @@ class LocationApiController
      *
      * @return array Data normalized
      */
-    protected function normalizeLocationData(LocationData $locationData)
+    private function normalizeLocationData(LocationData $locationData)
     {
         return [
             'id'   => $locationData->getId(),

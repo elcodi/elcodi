@@ -31,35 +31,35 @@ class StaticSitemapElementGenerator implements SitemapElementGeneratorInterface
      *
      * SitemapElement factory
      */
-    protected $sitemapElementFactory;
+    private $sitemapElementFactory;
 
     /**
      * @var SitemapTransformerInterface
      *
      * Sitemap transformer
      */
-    protected $transformer;
+    private $transformer;
 
     /**
      * @var string
      *
      * Route
      */
-    protected $route;
+    private $route;
 
     /**
      * @var string
      *
      * Change frequency
      */
-    protected $changeFrequency;
+    private $changeFrequency;
 
     /**
      * @var string
      *
      * Priority
      */
-    protected $priority;
+    private $priority;
 
     /**
      * Construct method

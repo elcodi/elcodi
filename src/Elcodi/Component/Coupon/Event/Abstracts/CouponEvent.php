@@ -31,7 +31,7 @@ class CouponEvent extends Event
      *
      * Coupon
      */
-    protected $coupon;
+    private $coupon;
 
     /**
      * Build method

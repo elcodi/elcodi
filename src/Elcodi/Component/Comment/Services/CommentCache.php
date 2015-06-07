@@ -32,28 +32,28 @@ class CommentCache extends AbstractCacheWrapper
      *
      * Comment repository
      */
-    protected $commentRepository;
+    private $commentRepository;
 
     /**
      * @var VoteManager
      *
      * Vote manager
      */
-    protected $voteManager;
+    private $voteManager;
 
     /**
      * @var array|null
      *
      * Comment tree
      */
-    protected $commentTree;
+    private $commentTree;
 
     /**
      * @var string
      *
      * Key
      */
-    protected $key;
+    private $key;
 
     /**
      * Construct method
@@ -180,6 +180,44 @@ class CommentCache extends AbstractCacheWrapper
     }
 
     /**
+     * Create structure for comment
+     *
+     * @param CommentInterface $comment            Comment
+     * @param VotePackage      $commentVotePackage Vote package
+     *
+     * @return array
+     */
+    public function createCommentStructure(
+        CommentInterface $comment,
+        VotePackage $commentVotePackage = null
+    ) {
+        $commentStructure = [
+            'id'            => $comment->getId(),
+            'authorName'    => $comment->getAuthorName(),
+            'authorEmail'   => $comment->getAuthorEmail(),
+            'content'       => $comment->getContent(),
+            'context'       => $comment->getContext(),
+            'parsedContent' => $comment->getParsedContent(),
+            'parsedType'    => $comment->getParsingType(),
+            'createdAt'     => $comment->getCreatedAt()->format('Y-m-d H:i:s'),
+            'updatedAt'     => $comment->getUpdatedAt()->format('Y-m-d H:i:s'),
+        ];
+
+        if ($commentVotePackage instanceof VotePackage) {
+            $commentStructure = array_merge(
+                $commentStructure,
+                [
+                    'nbVotes'     => $commentVotePackage->getNbVotes(),
+                    'nbUpVotes'   => $commentVotePackage->getNbUpVotes(),
+                    'nbDownVotes' => $commentVotePackage->getNbDownVotes(),
+                ]
+            );
+        }
+
+        return $commentStructure;
+    }
+
+    /**
      * Load comment tree from cache
      *
      * @param string $source  Source of comments
@@ -187,7 +225,7 @@ class CommentCache extends AbstractCacheWrapper
      *
      * @return array Comment tree
      */
-    protected function loadCommentTreeFromCache($source, $context)
+    private function loadCommentTreeFromCache($source, $context)
     {
         return $this
             ->encoder
@@ -209,7 +247,7 @@ class CommentCache extends AbstractCacheWrapper
      *
      * @return array Comment tree
      */
-    protected function buildCommentTreeAndSaveIntoCache($source, $context)
+    private function buildCommentTreeAndSaveIntoCache($source, $context)
     {
         $commentTree = $this->buildCommentTree($source, $context);
         $this->saveCommentTreeIntoCache(
@@ -231,7 +269,7 @@ class CommentCache extends AbstractCacheWrapper
      *
      * @return Array Comments tree given the source
      */
-    protected function buildCommentTree($source, $context)
+    private function buildCommentTree($source, $context)
     {
         $comments = $this
             ->commentRepository
@@ -292,7 +330,7 @@ class CommentCache extends AbstractCacheWrapper
      *
      * @return $this Self object
      */
-    protected function saveCommentTreeIntoCache($commentTree, $source, $context)
+    private function saveCommentTreeIntoCache($commentTree, $source, $context)
     {
         $this
             ->cache
@@ -312,49 +350,11 @@ class CommentCache extends AbstractCacheWrapper
      *
      * @return string specific source cache key
      */
-    protected function getSpecificSourceCacheKey($source, $context)
+    private function getSpecificSourceCacheKey($source, $context)
     {
         $source = str_replace('.', '_', $source);
         $context = str_replace('.', '_', $context);
 
         return $this->key . '.' . $source . '.' . $context;
-    }
-
-    /**
-     * Create structure for comment
-     *
-     * @param CommentInterface $comment            Comment
-     * @param VotePackage      $commentVotePackage Vote package
-     *
-     * @return array
-     */
-    public function createCommentStructure(
-        CommentInterface $comment,
-        VotePackage $commentVotePackage = null
-    ) {
-        $commentStructure = [
-            'id'            => $comment->getId(),
-            'authorName'    => $comment->getAuthorName(),
-            'authorEmail'   => $comment->getAuthorEmail(),
-            'content'       => $comment->getContent(),
-            'context'       => $comment->getContext(),
-            'parsedContent' => $comment->getParsedContent(),
-            'parsedType'    => $comment->getParsingType(),
-            'createdAt'     => $comment->getCreatedAt()->format('Y-m-d H:i:s'),
-            'updatedAt'     => $comment->getUpdatedAt()->format('Y-m-d H:i:s'),
-        ];
-
-        if ($commentVotePackage instanceof VotePackage) {
-            $commentStructure = array_merge(
-                $commentStructure,
-                [
-                    'nbVotes'     => $commentVotePackage->getNbVotes(),
-                    'nbUpVotes'   => $commentVotePackage->getNbUpVotes(),
-                    'nbDownVotes' => $commentVotePackage->getNbDownVotes(),
-                ]
-            );
-        }
-
-        return $commentStructure;
     }
 }

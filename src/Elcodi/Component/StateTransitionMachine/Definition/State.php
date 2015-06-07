@@ -27,7 +27,7 @@ class State
      *
      * name
      */
-    protected $name;
+    private $name;
 
     /**
      * construct method

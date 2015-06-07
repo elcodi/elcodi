@@ -32,21 +32,21 @@ class CartSessionWrapper implements WrapperInterface
      *
      * CartSessionManager
      */
-    protected $cartSessionManager;
+    private $cartSessionManager;
 
     /**
      * @var CartRepository
      *
      * Cart repository
      */
-    protected $cartRepository;
+    private $cartRepository;
 
     /**
      * @var CartInterface
      *
      * Cart loaded
      */
-    protected $cart;
+    private $cart;
 
     /**
      * Construct method

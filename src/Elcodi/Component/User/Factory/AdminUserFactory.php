@@ -32,7 +32,7 @@ class AdminUserFactory extends AbstractFactory
      *
      * Generator
      */
-    protected $generator;
+    private $generator;
 
     /**
      * Token generator

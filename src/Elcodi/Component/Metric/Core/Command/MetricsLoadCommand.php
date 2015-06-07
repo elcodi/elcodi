@@ -35,7 +35,7 @@ class MetricsLoadCommand extends Command
      *
      * Metric loader
      */
-    protected $metricLoader;
+    private $metricLoader;
 
     /**
      * Construct

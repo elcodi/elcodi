@@ -40,21 +40,21 @@ class LocationPopulateCommand extends Command
      *
      * Location Populator
      */
-    protected $locationPopulator;
+    private $locationPopulator;
 
     /**
      * @var ObjectDirector
      *
      * Location director
      */
-    protected $locationDirector;
+    private $locationDirector;
 
     /**
      * @var DateTimeFactory
      *
      * DateTime Factory
      */
-    protected $dateTimeFactory;
+    private $dateTimeFactory;
 
     /**
      * Construct method
@@ -168,7 +168,7 @@ class LocationPopulateCommand extends Command
      *
      * @return bool
      */
-    protected function confirmRemoval(
+    private function confirmRemoval(
         $countryCode,
         DialogHelper $dialogHelper,
         OutputInterface $output
@@ -189,7 +189,7 @@ class LocationPopulateCommand extends Command
      * @param LocationInterface $location The location to remove
      * @param OutputInterface   $output   A console output
      */
-    protected function dropLocation(
+    private function dropLocation(
         LocationInterface $location,
         OutputInterface $output
     ) {
@@ -225,7 +225,7 @@ class LocationPopulateCommand extends Command
      * @param string          $countryCode The country code to import
      * @param OutputInterface $output      A console output
      */
-    protected function populateLocations(
+    private function populateLocations(
         $countryCode,
         OutputInterface $output
     ) {

@@ -29,7 +29,7 @@ trait EntityTranslatableFormTrait
      *
      * Translator form event listener
      */
-    protected $entityTranslatorFormEventListener;
+    private $entityTranslatorFormEventListener;
 
     /**
      * Get Translator form event listener

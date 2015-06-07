@@ -36,14 +36,14 @@ class PageController
      *
      * Page repository
      */
-    protected $pageRepository;
+    private $pageRepository;
 
     /**
      * @var PageResponseTransformer
      *
      * PageResponse Transformer
      */
-    protected $pageResponseTransformer;
+    private $pageResponseTransformer;
 
     /**
      * Constructor

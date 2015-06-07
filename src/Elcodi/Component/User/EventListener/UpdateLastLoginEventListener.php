@@ -33,14 +33,14 @@ class UpdateLastLoginEventListener
      *
      * Object Manager provider
      */
-    protected $objectManagerProvider;
+    private $objectManagerProvider;
 
     /**
      * @var DateTimeFactory
      *
      * DateTime factory
      */
-    protected $dateTimeFactory;
+    private $dateTimeFactory;
 
     /**
      * Construct

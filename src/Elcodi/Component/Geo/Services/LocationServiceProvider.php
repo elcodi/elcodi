@@ -36,14 +36,14 @@ class LocationServiceProvider implements LocationProviderInterface
      *
      * Location repository
      */
-    protected $locationRepository;
+    private $locationRepository;
 
     /**
      * @var LocationToLocationDataTransformer
      *
      * LocationToLocationData transformer
      */
-    protected $locationToLocationDataTransformer;
+    private $locationToLocationDataTransformer;
 
     /**
      * Construct

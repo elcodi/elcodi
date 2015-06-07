@@ -36,7 +36,7 @@ class CartSessionEventListener
      *
      * CartSessionManager
      */
-    protected $cartSessionManager;
+    private $cartSessionManager;
 
     /**
      * Construct method

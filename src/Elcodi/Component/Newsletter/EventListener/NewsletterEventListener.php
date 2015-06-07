@@ -32,7 +32,7 @@ class NewsletterEventListener
      *
      * Newsletter manager
      */
-    public $newsletterObjectManager;
+    private $newsletterObjectManager;
 
     /**
      * Construct method

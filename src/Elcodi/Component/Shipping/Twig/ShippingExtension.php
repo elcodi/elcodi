@@ -32,7 +32,7 @@ class ShippingExtension extends Twig_Extension
      *
      * Shipping Wrapper
      */
-    protected $shippingWrapper;
+    private $shippingWrapper;
 
     /**
      * Construct

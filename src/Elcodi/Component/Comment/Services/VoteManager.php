@@ -33,14 +33,14 @@ class VoteManager
      *
      * Comment event dispatcher
      */
-    protected $commentEventDispatcher;
+    private $commentEventDispatcher;
 
     /**
      * @var ObjectDirector
      *
      * Comment vote Object Director
      */
-    protected $commentVoteObjectDirector;
+    private $commentVoteObjectDirector;
 
     /**
      * Construct

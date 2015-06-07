@@ -33,14 +33,14 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
      *
      * Path of image converter
      */
-    protected $imageConverterBin;
+    private $imageConverterBin;
 
     /**
      * @var string
      *
      * Default ICC profile path
      */
-    protected $profile;
+    private $profile;
 
     /**
      * Constructor method

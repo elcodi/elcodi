@@ -38,21 +38,21 @@ class CartSessionManager
      *
      * Session
      */
-    protected $session;
+    private $session;
 
     /**
      * @var string
      *
      * Session Field Name
      */
-    protected $sessionFieldName;
+    private $sessionFieldName;
 
     /**
      * @var boolean
      *
      * Save cart in session
      */
-    protected $saveInSession;
+    private $saveInSession;
 
     /**
      * Construct method

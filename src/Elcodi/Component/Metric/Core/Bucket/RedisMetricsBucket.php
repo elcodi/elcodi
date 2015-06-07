@@ -33,7 +33,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
      *
      * Redis instance
      */
-    protected $redis;
+    private $redis;
 
     /**
      * Construct
@@ -60,144 +60,6 @@ class RedisMetricsBucket extends AbstractMetricsBucket
 
         return $this;
     }
-
-    /**
-     * Add metric given hour formatted
-     *
-     * @param EntryInterface $entry          Entry
-     * @param string         $dateTimeFormat DateTime format
-     *
-     * @return $this Self Object
-     */
-    protected function addWithFormattedHour(
-        EntryInterface $entry,
-        $dateTimeFormat
-    ) {
-        $entryKey = $this->generateEntryKey(
-            $entry->getToken(),
-            $entry->getEvent(),
-            $entry->getCreatedAt()->format($dateTimeFormat)
-        );
-
-        $entryType = $entry->getType();
-
-        /**
-         * If the entry must be treated as a beacon
-         */
-        if ($entryType & ElcodiMetricTypes::TYPE_BEACON_UNIQUE) {
-            $this->addBeaconMetricUnique($entry, $entryKey);
-        }
-
-        /**
-         * If the entry must be treated as a beacon
-         */
-        if ($entryType & ElcodiMetricTypes::TYPE_BEACON_TOTAL) {
-            $this->addBeaconMetricTotal($entryKey);
-        }
-
-        /**
-         * If the entry must be treated as an accumulated metric
-         */
-        if ($entryType & ElcodiMetricTypes::TYPE_ACCUMULATED) {
-            $this->addAccumulativeEntry($entry, $entryKey);
-        }
-
-        /**
-         * If the entry must be treated as a distributed metric
-         */
-        if ($entryType & ElcodiMetricTypes::TYPE_DISTRIBUTIVE) {
-            $this->addDistributedEntry($entry, $entryKey);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Add beacon unique nb given the key entry
-     *
-     * @param EntryInterface $entry    Entry
-     * @param string         $entryKey Key entry
-     *
-     * @return $this Self Object
-     */
-    protected function addBeaconMetricUnique(
-        EntryInterface $entry,
-        $entryKey
-    ) {
-        $this
-            ->redis
-            ->pfAdd(
-                $entryKey . '_unique',
-                $entry->getValue()
-            );
-
-        return $this;
-    }
-
-    /**
-     * Add beacon total nb given the key entry
-     *
-     * @param string $entryKey Key entry
-     *
-     * @return $this Self Object
-     */
-    protected function addBeaconMetricTotal($entryKey)
-    {
-        $this
-            ->redis
-            ->incr($entryKey . '_total');
-
-        return $this;
-    }
-
-    /**
-     * Add accumulative metric
-     *
-     * @param EntryInterface $entry    Entry
-     * @param string         $entryKey Key entry
-     *
-     * @return $this Self Object
-     */
-    protected function addAccumulativeEntry(
-        EntryInterface $entry,
-        $entryKey
-    ) {
-        $this
-            ->redis
-            ->incrby(
-                $entryKey . '_accum',
-                (int) $entry->getValue()
-            );
-
-        return $this;
-    }
-
-    /**
-     * Add distributed metric
-     *
-     * @param EntryInterface $entry    Entry
-     * @param string         $entryKey Key entry
-     *
-     * @return $this Self Object
-     */
-    protected function addDistributedEntry(
-        EntryInterface $entry,
-        $entryKey
-    ) {
-        $this
-            ->redis
-            ->hincrby(
-                $entryKey . '_distr',
-                $entry->getValue(),
-                1
-            );
-
-        return $this;
-    }
-
-    /**
-     * Getters
-     */
 
     /**
      * Get number of unique beacons given an event and a set of dates
@@ -321,5 +183,139 @@ class RedisMetricsBucket extends AbstractMetricsBucket
         arsort($distributions);
 
         return $distributions;
+    }
+
+    /**
+     * Add metric given hour formatted
+     *
+     * @param EntryInterface $entry          Entry
+     * @param string         $dateTimeFormat DateTime format
+     *
+     * @return $this Self Object
+     */
+    private function addWithFormattedHour(
+        EntryInterface $entry,
+        $dateTimeFormat
+    ) {
+        $entryKey = $this->generateEntryKey(
+            $entry->getToken(),
+            $entry->getEvent(),
+            $entry->getCreatedAt()->format($dateTimeFormat)
+        );
+
+        $entryType = $entry->getType();
+
+        /**
+         * If the entry must be treated as a beacon
+         */
+        if ($entryType & ElcodiMetricTypes::TYPE_BEACON_UNIQUE) {
+            $this->addBeaconMetricUnique($entry, $entryKey);
+        }
+
+        /**
+         * If the entry must be treated as a beacon
+         */
+        if ($entryType & ElcodiMetricTypes::TYPE_BEACON_TOTAL) {
+            $this->addBeaconMetricTotal($entryKey);
+        }
+
+        /**
+         * If the entry must be treated as an accumulated metric
+         */
+        if ($entryType & ElcodiMetricTypes::TYPE_ACCUMULATED) {
+            $this->addAccumulativeEntry($entry, $entryKey);
+        }
+
+        /**
+         * If the entry must be treated as a distributed metric
+         */
+        if ($entryType & ElcodiMetricTypes::TYPE_DISTRIBUTIVE) {
+            $this->addDistributedEntry($entry, $entryKey);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Add beacon unique nb given the key entry
+     *
+     * @param EntryInterface $entry    Entry
+     * @param string         $entryKey Key entry
+     *
+     * @return $this Self Object
+     */
+    private function addBeaconMetricUnique(
+        EntryInterface $entry,
+        $entryKey
+    ) {
+        $this
+            ->redis
+            ->pfAdd(
+                $entryKey . '_unique',
+                $entry->getValue()
+            );
+
+        return $this;
+    }
+
+    /**
+     * Add beacon total nb given the key entry
+     *
+     * @param string $entryKey Key entry
+     *
+     * @return $this Self Object
+     */
+    private function addBeaconMetricTotal($entryKey)
+    {
+        $this
+            ->redis
+            ->incr($entryKey . '_total');
+
+        return $this;
+    }
+
+    /**
+     * Add accumulative metric
+     *
+     * @param EntryInterface $entry    Entry
+     * @param string         $entryKey Key entry
+     *
+     * @return $this Self Object
+     */
+    private function addAccumulativeEntry(
+        EntryInterface $entry,
+        $entryKey
+    ) {
+        $this
+            ->redis
+            ->incrby(
+                $entryKey . '_accum',
+                (int) $entry->getValue()
+            );
+
+        return $this;
+    }
+
+    /**
+     * Add distributed metric
+     *
+     * @param EntryInterface $entry    Entry
+     * @param string         $entryKey Key entry
+     *
+     * @return $this Self Object
+     */
+    private function addDistributedEntry(
+        EntryInterface $entry,
+        $entryKey
+    ) {
+        $this
+            ->redis
+            ->hincrby(
+                $entryKey . '_distr',
+                $entry->getValue(),
+                1
+            );
+
+        return $this;
     }
 }

@@ -49,14 +49,14 @@ class CurrencyConverter
      *
      * Currency manager
      */
-    protected $currencyManager;
+    private $currencyManager;
 
     /**
      * @var string
      *
      * Currency base
      */
-    protected $currencyBase;
+    private $currencyBase;
 
     /**
      * Construct method
@@ -115,7 +115,7 @@ class CurrencyConverter
      *
      * @throws CurrencyNotConvertibleException Currencies cannot be converted
      */
-    protected function convertCurrency(
+    private function convertCurrency(
         CurrencyInterface $currencyFrom,
         CurrencyInterface $currencyTo,
         $amount
@@ -148,7 +148,7 @@ class CurrencyConverter
      *
      * @throws CurrencyNotConvertibleException Currencies cannot be converted
      */
-    protected function convertBetweenIsos(
+    private function convertBetweenIsos(
         $currencyFromIso,
         $currencyToIso,
         $amount
@@ -185,7 +185,7 @@ class CurrencyConverter
      *
      * @throws CurrencyNotConvertibleException Currencies cannot be converted
      */
-    protected function convertToIso($currencyToIso, $amount, $type)
+    private function convertToIso($currencyToIso, $amount, $type)
     {
         if (isset($this->currencyManager->getExchangeRateList()[$currencyToIso])) {
             $currencyRate = $this->currencyManager->getExchangeRateList()[$currencyToIso];

@@ -31,28 +31,28 @@ class CurrencyManager
      *
      * Currency Repository
      */
-    protected $currencyRepository;
+    private $currencyRepository;
 
     /**
      * @var CurrencyExchangeRateRepository
      *
      * CurrencyExchangeRate Repository
      */
-    protected $currencyExchangeRateRepository;
+    private $currencyExchangeRateRepository;
 
     /**
      * @var string
      *
      * Currency base iso
      */
-    protected $currencyBaseIso;
+    private $currencyBaseIso;
 
     /**
      * @var array
      *
      * Exchange Rate List
      */
-    protected $exchangeRateList;
+    private $exchangeRateList;
 
     /**
      * Build method

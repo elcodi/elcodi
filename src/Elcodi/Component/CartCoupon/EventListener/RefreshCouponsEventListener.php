@@ -43,35 +43,35 @@ class RefreshCouponsEventListener
      *
      * Coupon Manager
      */
-    protected $couponManager;
+    private $couponManager;
 
     /**
      * @var CartCouponManager
      *
      * CartCouponManager
      */
-    protected $cartCouponManager;
+    private $cartCouponManager;
 
     /**
      * @var CurrencyConverter
      *
      * Currency converter
      */
-    protected $currencyConverter;
+    private $currencyConverter;
 
     /**
      * @var CurrencyWrapper
      *
      * Currency Wrapper
      */
-    protected $currencyWrapper;
+    private $currencyWrapper;
 
     /**
      * @var CartCouponEventDispatcher
      *
      * CartCoupon Event Dispatcher
      */
-    protected $cartCouponEventDispatcher;
+    private $cartCouponEventDispatcher;
 
     /**
      * Construct method
@@ -188,7 +188,7 @@ class RefreshCouponsEventListener
      *
      * @return MoneyInterface Coupon price
      */
-    protected function getPriceCoupon(
+    private function getPriceCoupon(
         CartInterface $cart,
         CouponInterface $coupon
     ) {

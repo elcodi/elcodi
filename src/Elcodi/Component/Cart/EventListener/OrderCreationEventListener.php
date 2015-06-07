@@ -39,14 +39,14 @@ class OrderCreationEventListener
      *
      * ObjectManager for Order entity
      */
-    protected $orderObjectManager;
+    private $orderObjectManager;
 
     /**
      * @var ObjectManager
      *
      * ObjectManager for Cart entity
      */
-    protected $cartObjectManager;
+    private $cartObjectManager;
 
     /**
      * Built method

@@ -33,21 +33,21 @@ class OrderCouponOnApplyEvent extends Event
      *
      * Order
      */
-    protected $order;
+    private $order;
 
     /**
      * @var CouponInterface
      *
      * Coupon
      */
-    protected $coupon;
+    private $coupon;
 
     /**
      * @var OrderCouponInterface
      *
      * OrderCoupon
      */
-    protected $orderCoupon;
+    private $orderCoupon;
 
     /**
      * Construct method

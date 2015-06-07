@@ -34,21 +34,21 @@ class Machine implements MachineInterface
      *
      * Machine id
      */
-    protected $machineId;
+    private $machineId;
 
     /**
      * @var TransitionChain
      *
      * Transition chain
      */
-    protected $transitionChain;
+    private $transitionChain;
 
     /**
      * @var string
      *
      * Point of entry
      */
-    protected $pointOfEntry;
+    private $pointOfEntry;
 
     /**
      * @param integer         $machineId       Machine id
