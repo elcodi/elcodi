@@ -180,10 +180,12 @@ class LocationApiController
             ->query
             ->get('ids'));
 
-        return $this->createResponseObject(function () use ($id, $ids) {
-            return $this
+        $result = $this
                 ->locationProvider
                 ->in($id, $ids);
+
+        return $this->createResponseObject(function () use ($result) {
+            return ['result' => $result];
         });
     }
 

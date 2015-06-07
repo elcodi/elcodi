@@ -61,10 +61,7 @@ class Configuration extends AbstractConfiguration
                     ->defaultValue('elcodi.location_provider.service')
                 ->end()
                 ->scalarNode('location_api_host')
-                    ->defaultValue('http://127.0.0.1:8000')
-                ->end()
-                ->scalarNode('location_api_prefix')
-                    ->defaultValue('/api/locations')
+                    ->defaultNull()
                 ->end()
             ->end();
     }
