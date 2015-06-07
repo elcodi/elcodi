@@ -21,6 +21,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Exception;
 
 use Elcodi\Component\Core\Wrapper\Abstracts\AbstractCacheWrapper;
+use Elcodi\Component\Menu\ElcodiMenuStages;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\MenuInterface;
 use Elcodi\Component\Menu\Repository\MenuRepository;
 use Elcodi\Component\Menu\Services\Interfaces\MenuChangerInterface;
@@ -124,13 +125,22 @@ class MenuManager extends AbstractCacheWrapper
             if (!($menu instanceof MenuInterface)) {
                 $menu = $this->buildMenuFromRepository($menuCode);
 
+                $this->applyMenuChangers(
+                    $menu,
+                    ElcodiMenuStages::BEFORE_CACHE
+                );
+
                 $this->saveToCache(
                     $key,
                     $menu
                 );
             }
 
-            $this->applyMenuChangers($menu);
+            $this->applyMenuChangers(
+                $menu,
+                ElcodiMenuStages::AFTER_CACHE
+            );
+
             $this->saveToMemory($menu);
         }
 
@@ -262,14 +272,21 @@ class MenuManager extends AbstractCacheWrapper
     /**
      * Apply menu changers to Menu
      *
-     * @param MenuInterface $menu Menu
+     * @param MenuInterface $menu  Menu
+     * @param string        $stage Stage
      *
      * @return $this Self object
      */
-    protected function applyMenuChangers(MenuInterface $menu)
-    {
+    protected function applyMenuChangers(
+        MenuInterface $menu,
+        $stage
+    ) {
         foreach ($this->menuChangers as $menuChanger) {
-            $menuChanger->applyChange($menu);
+            $menuChanger
+                ->applyChange(
+                    $menu,
+                    $stage
+                );
         }
 
         return $this;

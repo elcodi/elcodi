@@ -20,12 +20,12 @@ namespace Elcodi\Component\Cart\Factory;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\Component\Cart\Entity\Cart;
-use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
+use Elcodi\Component\Currency\Factory\Abstracts\AbstractPurchasableFactory;
 
 /**
  * Class CartFactory
  */
-class CartFactory extends AbstractFactory
+class CartFactory extends AbstractPurchasableFactory
 {
     /**
      * Creates an instance of Cart
@@ -51,6 +51,10 @@ class CartFactory extends AbstractFactory
             ->setQuantity(0)
             ->setOrdered(false)
             ->setCartLines(new ArrayCollection())
+            ->setProductAmount($this->createZeroAmountMoney())
+            ->setAmount($this->createZeroAmountMoney())
+            ->setCouponAmount($this->createZeroAmountMoney())
+            ->setShippingAmount($this->createZeroAmountMoney())
             ->setCreatedAt($this->now());
 
         return $cart;

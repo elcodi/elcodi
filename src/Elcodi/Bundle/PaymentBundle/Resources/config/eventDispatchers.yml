@@ -1,0 +1,8 @@
+services:
+
+    #
+    # Event Dispatchers
+    #
+    elcodi.event_dispatcher.payment:
+        class: Elcodi\Component\Payment\EventDispatcher\PaymentEventDispatcher
+        parent: elcodi.event_dispatcher.abstract

@@ -23,9 +23,9 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
-use Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
@@ -33,14 +33,7 @@ use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
  */
 class Cart implements CartInterface
 {
-    use DateTimeTrait;
-
-    /**
-     * @var integer
-     *
-     * Identifier
-     */
-    protected $id;
+    use IdentifiableTrait, DateTimeTrait;
 
     /**
      * @var CustomerInterface
@@ -132,42 +125,18 @@ class Cart implements CartInterface
     protected $billingAddress;
 
     /**
-     * @var ShippingRangeInterface
+     * @var string
      *
-     * Shipping range
+     * Shipping method
      */
-    protected $shippingRange;
+    protected $shippingMethod;
 
     /**
-     * @var ShippingRangeInterface
+     * @var string
      *
-     * Cheapest Shipping range
+     * Cheapest Shipping method
      */
-    protected $cheapestShippingRange;
-
-    /**
-     * Get Id
-     *
-     * @return integer Id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Sets Id
-     *
-     * @param integer $id Id
-     *
-     * @return $this Self object
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
+    protected $cheapestShippingMethod;
 
     /**
      * Return the customer
@@ -545,49 +514,49 @@ class Cart implements CartInterface
     }
 
     /**
-     * Get ShippingRange
+     * Get shipping method
      *
-     * @return ShippingRangeInterface ShippingRange
+     * @return string Shipping method
      */
-    public function getShippingRange()
+    public function getShippingMethod()
     {
-        return $this->shippingRange;
+        return $this->shippingMethod;
     }
 
     /**
-     * Sets ShippingRange
+     * Set shipping method
      *
-     * @param ShippingRangeInterface $shippingRange ShippingRange
+     * @param string $shippingMethod Shipping method
      *
      * @return $this Self object
      */
-    public function setShippingRange(ShippingRangeInterface $shippingRange = null)
+    public function setShippingMethod($shippingMethod)
     {
-        $this->shippingRange = $shippingRange;
+        $this->shippingMethod = $shippingMethod;
 
         return $this;
     }
 
     /**
-     * Get ShippingRange
+     * Get shipping method
      *
-     * @return ShippingRangeInterface Cheapest ShippingRange
+     * @return string Cheapest shipping method
      */
-    public function getCheapestShippingRange()
+    public function getCheapestShippingMethod()
     {
-        return $this->cheapestShippingRange;
+        return $this->cheapestShippingMethod;
     }
 
     /**
      * Sets ShippingRange
      *
-     * @param ShippingRangeInterface $cheapestShippingRange Cheapest ShippingRange
+     * @param string $cheapestShippingMethod Cheapest shipping method
      *
      * @return $this Self object
      */
-    public function setCheapestShippingRange(ShippingRangeInterface $cheapestShippingRange = null)
+    public function setCheapestShippingMethod($cheapestShippingMethod)
     {
-        $this->cheapestShippingRange = $cheapestShippingRange;
+        $this->cheapestShippingMethod = $cheapestShippingMethod;
 
         return $this;
     }

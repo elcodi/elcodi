@@ -34,7 +34,7 @@ class ProductFactory extends AbstractPurchasableFactory
      *
      * Use use stock
      */
-    public $useStock;
+    public $useStock = false;
 
     /**
      * Set use stock
@@ -43,7 +43,7 @@ class ProductFactory extends AbstractPurchasableFactory
      *
      * @return $this Self object
      */
-    public function setUseStock($useStock)
+    public function setUseStock($useStock = false)
     {
         $this->useStock = $useStock;
 

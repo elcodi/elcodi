@@ -52,10 +52,10 @@ class ProductCollectionProvider
      */
     public function __construct(
         ProductRepository $productRepository,
-        $useStock
+        $useStock = false
     ) {
         $this->productRepository = $productRepository;
-        $this->useStock          = $useStock;
+        $this->useStock = $useStock;
     }
 
     /**

@@ -5,4 +5,5 @@ services:
     #
     elcodi.object_manager.configuration:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.entity.configuration.class% ]
+        arguments:
+            - %elcodi.entity.configuration.class%

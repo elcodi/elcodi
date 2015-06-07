@@ -64,7 +64,7 @@ class ElcodiCartBundle extends Bundle implements DependentBundleInterface
             'Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
             'Elcodi\Bundle\StateTransitionMachineBundle\ElcodiStateTransitionMachineBundle',
             'Elcodi\Bundle\ShippingBundle\ElcodiShippingBundle',
-            'Elcodi\Bundle\ConfigurationBundle\ElcodiConfigurationBundle',
+            'Elcodi\Bundle\StoreBundle\ElcodiStoreBundle',
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
     }
@@ -75,6 +75,8 @@ class ElcodiCartBundle extends Bundle implements DependentBundleInterface
      * Disabled as commands are registered as services.
      *
      * @param Application $application An Application instance
+     *
+     * @return null
      */
     public function registerCommands(Application $application)
     {

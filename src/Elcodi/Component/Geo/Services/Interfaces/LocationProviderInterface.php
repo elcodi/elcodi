@@ -27,7 +27,7 @@ interface LocationProviderInterface
     /**
      * Get all the root locations.
      *
-     * @return LocationData[]
+     * @return LocationData[] Collection of locations
      */
     public function getRootLocations();
 
@@ -36,7 +36,7 @@ interface LocationProviderInterface
      *
      * @param string $id The location Id.
      *
-     * @return LocationData[]
+     * @return LocationData[] Collection of locations
      */
     public function getChildren($id);
 
@@ -45,7 +45,7 @@ interface LocationProviderInterface
      *
      * @param string $id The location Id.
      *
-     * @return LocationData[]
+     * @return LocationData[] Collection of locations
      */
     public function getParents($id);
 
@@ -54,7 +54,7 @@ interface LocationProviderInterface
      *
      * @param string $id The location id.
      *
-     * @return LocationData[]
+     * @return LocationData Location info
      */
     public function getLocation($id);
 
@@ -64,7 +64,7 @@ interface LocationProviderInterface
      *
      * @param string $id The location id.
      *
-     * @return LocationData[]
+     * @return LocationData[] Collection of locations
      */
     public function getHierarchy($id);
 
@@ -75,7 +75,7 @@ interface LocationProviderInterface
      * @param string $id  The location Id
      * @param array  $ids The location Ids
      *
-     * @return LocationData[] Location info
+     * @return boolean Location is container
      */
     public function in($id, array $ids);
 }

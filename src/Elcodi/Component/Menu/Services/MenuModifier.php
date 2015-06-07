@@ -22,38 +22,33 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\MenuInterface;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface;
 use Elcodi\Component\Menu\Modifier\Interfaces\MenuModifierInterface;
+use Elcodi\Component\Menu\Services\Abstracts\AbstractMenuModifier;
 use Elcodi\Component\Menu\Services\Interfaces\MenuChangerInterface;
 
 /**
  * Class MenuModifier
  */
-class MenuModifier implements MenuChangerInterface
+class MenuModifier extends AbstractMenuModifier implements MenuChangerInterface
 {
     /**
-     * @var MenuModifierInterface[]
+     * Add menu builder
      *
-     * Menu modifier array
-     */
-    protected $menuModifiers;
-
-    /**
-     * Construct method
-     */
-    public function __construct()
-    {
-        $this->menuModifiers = [];
-    }
-
-    /**
-     * Add menu modifier
-     *
-     * @var MenuModifierInterface $menuModifier Menu modifier
+     * @param MenuModifierInterface $menuModifier Menu modifier
+     * @param array                 $menus        Menus
+     * @param string                $stage        Stage
      *
      * @return $this Self object
      */
-    public function addMenuModifier(MenuModifierInterface $menuModifier)
-    {
-        $this->menuModifiers[] = $menuModifier;
+    public function addMenuBuilder(
+        MenuModifierInterface $menuModifier,
+        array $menus,
+        $stage
+    ) {
+        $this->addElement(
+            $menuModifier,
+            $menus,
+            $stage
+        );
 
         return $this;
     }
@@ -61,15 +56,20 @@ class MenuModifier implements MenuChangerInterface
     /**
      * Apply change
      *
-     * @param MenuInterface $menu Menu
+     * @param MenuInterface $menu  Menu
+     * @param string        $stage Stage
      *
      * @return $this Self object
      */
-    public function applyChange(MenuInterface $menu)
-    {
-        $menuNodes = $menu->getSubnodes();
-
-        $this->applyModifiersToMenuNodes($menuNodes);
+    public function applyChange(
+        MenuInterface $menu,
+        $stage
+    ) {
+        $this->applyModifiersToMenuNodes(
+            $menu->getSubnodes(),
+            $menu->getCode(),
+            $stage
+        );
 
         return $this;
     }
@@ -78,15 +78,33 @@ class MenuModifier implements MenuChangerInterface
      * Apply menu filters to Menu
      *
      * @param Collection $menuNodes Menu nodes
+     * @param string     $menuCode  Menu code
+     * @param string     $stage     Stage
      *
      * @return $this Self object
      */
-    protected function applyModifiersToMenuNodes(Collection $menuNodes)
-    {
-        $menuNodes->map(function (NodeInterface $menuNode) {
+    protected function applyModifiersToMenuNodes(
+        Collection $menuNodes,
+        $menuCode,
+        $stage
+    ) {
+        $menuNodes->map(function (NodeInterface $menuNode) use ($menuCode, $stage) {
 
-            $this->applyModifiersToMenuNodes($menuNode->getSubnodes());
-            foreach ($this->menuModifiers as $menuModifier) {
+            $this->applyModifiersToMenuNodes(
+                $menuNode->getSubnodes(),
+                $menuCode,
+                $stage
+            );
+
+            $menuModifiers = $this->getElementsByMenuCodeAndStage(
+                $menuCode,
+                $stage
+            );
+
+            /**
+             * @var MenuModifierInterface $menuModifier
+             */
+            foreach ($menuModifiers as $menuModifier) {
                 $menuModifier->modify($menuNode);
             }
         });

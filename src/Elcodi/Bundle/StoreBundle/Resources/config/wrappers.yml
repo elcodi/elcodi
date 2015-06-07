@@ -1,0 +1,10 @@
+services:
+
+    #
+    # Resolvers
+    #
+    elcodi.wrapper.store:
+        class: Elcodi\Component\Store\Wrapper\StoreWrapper
+        lazy: true
+        arguments:
+            - @elcodi.repository.store

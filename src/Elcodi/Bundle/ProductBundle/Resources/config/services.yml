@@ -12,7 +12,7 @@ services:
         class: Elcodi\Component\Product\Services\ProductCollectionProvider
         arguments:
             - @elcodi.repository.product
-            - "@=elcodi_config('product.use_stock', false)"
+            - ?@elcodi.store_uses_stock
 
     elcodi.service.category_integrity_fixer:
         class: Elcodi\Component\Product\Services\CategoryIntegrityFixer

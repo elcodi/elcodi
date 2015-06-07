@@ -9,4 +9,5 @@ services:
     #
     elcodi.repository.zone:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.entity.zone.class% ]
+        arguments:
+            - %elcodi.entity.zone.class%

@@ -17,8 +17,6 @@
 
 namespace Elcodi\Component\Menu\Entity\Menu;
 
-use Doctrine\Common\Collections\Collection;
-
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface;
@@ -62,18 +60,18 @@ class Node implements NodeInterface
     protected $activeUrls;
 
     /**
-     * @var boolean
+     * @var string
      *
-     * Active. This value is not persisted
+     * Tag
      */
-    protected $active;
+    protected $tag;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * Expanded. This value is not persisted
+     * Priority
      */
-    protected $expanded;
+    protected $priority;
 
     /**
      * Gets Node code
@@ -166,7 +164,7 @@ class Node implements NodeInterface
     /**
      * Get the active urls.
      *
-     * @return Collection The Active urls
+     * @return array The Active urls
      */
     public function getActiveUrls()
     {
@@ -182,8 +180,8 @@ class Node implements NodeInterface
      */
     public function addActiveUrl($activeUrl)
     {
-        $activeUrls       = json_decode($this->activeUrls, true);
-        $activeUrls[]     = $activeUrl;
+        $activeUrls = json_decode($this->activeUrls, true);
+        $activeUrls[] = $activeUrl;
         $this->activeUrls = json_encode($activeUrls);
 
         return $this;
@@ -198,12 +196,10 @@ class Node implements NodeInterface
      */
     public function removeActiveUrl($activeUrl)
     {
-        $activeUrls    = json_decode($this->activeUrls, true);
+        $activeUrls = json_decode($this->activeUrls, true);
         $positionFound = array_search($activeUrl, $activeUrls);
-
         if ($positionFound) {
             unset($activeUrls[$positionFound]);
-
             $this->activeUrls = json_encode($activeUrls);
         }
 
@@ -211,50 +207,89 @@ class Node implements NodeInterface
     }
 
     /**
-     * Get Active
+     * Get Tag
      *
-     * @return boolean Active
+     * @return string Tag
      */
-    public function getActive()
+    public function getTag()
     {
-        return $this->active;
+        return $this->tag;
     }
 
     /**
-     * Sets Active
+     * Sets Tag
      *
-     * @param boolean $active Active
+     * @param string $tag Tag
      *
      * @return $this Self object
      */
-    public function setActive($active)
+    public function setTag($tag)
     {
-        $this->active = $active;
+        $this->tag = $tag;
 
         return $this;
     }
 
     /**
-     * Get Expanded
+     * Get Priority
      *
-     * @return boolean Expanded
+     * @return int Priority
      */
-    public function getExpanded()
+    public function getPriority()
     {
-        return $this->expanded;
+        return $this->priority;
     }
 
     /**
-     * Sets Expanded
+     * Sets Priority
      *
-     * @param boolean $expanded Expanded
+     * @param int $priority Priority
      *
      * @return $this Self object
      */
-    public function setExpanded($expanded)
+    public function setPriority($priority)
     {
-        $this->expanded = $expanded;
+        $this->priority = $priority;
 
         return $this;
+    }
+
+    /**
+     * Is active.
+     *
+     * A menu node is considered active when the current url and the internal
+     * node url is the same.
+     *
+     * @param string $currentUrl Current Url
+     *
+     * @return boolean Menu node is active
+     */
+    public function isActive($currentUrl)
+    {
+        return
+            $currentUrl == $this->url ||
+            in_array($currentUrl, $this->getActiveUrls());
+    }
+
+    /**
+     * Is expanded.
+     *
+     * A menu node is considered expanded when is enabled or has one children
+     * expanded
+     *
+     * @param string $currentUrl Current Url
+     *
+     * @return boolean Menu Node is expanded
+     */
+    public function isExpanded($currentUrl)
+    {
+        return $this
+            ->subnodes
+            ->exists(function ($_, NodeInterface $node) use ($currentUrl) {
+
+                return
+                    $node->isActive($currentUrl) ||
+                    $node->isExpanded($currentUrl);
+            });
     }
 }

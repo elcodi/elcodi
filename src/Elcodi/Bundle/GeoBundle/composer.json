@@ -31,24 +31,24 @@
     ],
     "require": {
         "php": ">=5.4",
-        "doctrine/common": "~2.5",
-        "doctrine/orm": "~2.5",
+        "doctrine/common": "^2.5",
+        "doctrine/orm": "^2.5",
 
-        "symfony/http-kernel": "~2.6",
-        "symfony/console": "~2.6",
-        "symfony/config": "~2.6",
-        "symfony/dependency-injection": "~2.6",
-        "symfony/proxy-manager-bridge": "~2.6, >=2.6.3",
-        "ocramius/proxy-manager": "~1.0",
+        "symfony/http-kernel": "^2.7",
+        "symfony/console": "^2.7",
+        "symfony/config": "^2.7",
+        "symfony/dependency-injection": "^2.7",
+        "symfony/proxy-manager-bridge": "^2.7",
+        "ocramius/proxy-manager": "^1.0",
 
-        "mmoreram/simple-doctrine-mapping": "~1.0",
+        "mmoreram/simple-doctrine-mapping": "^1.0",
 
-        "elcodi/core-bundle": "~0.5.0",
-        "elcodi/geo": "~0.5.0"
+        "elcodi/core-bundle": "^0.5.18",
+        "elcodi/geo": "^0.5.18"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "~0.5.0",
-        "elcodi/fixtures-booster-bundle": "~0.5.0",
+        "elcodi/test-common-bundle": "^0.5.18",
+        "elcodi/fixtures-booster-bundle": "^0.5.18",
         "doctrine/data-fixtures": "^1.1",
         "phpunit/phpunit": "4.5.0"
     },

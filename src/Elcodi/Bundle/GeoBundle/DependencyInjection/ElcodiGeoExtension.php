@@ -92,7 +92,6 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
             "elcodi.location_populator"           => $config['location_populator'],
 
             "elcodi.location_api_host"            => $config['location_api_host'],
-            "elcodi.location_api_prefix"          => $config['location_api_prefix'],
         ];
     }
 
@@ -114,7 +113,6 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
             'locationPopulators',
             'repositories',
             'services',
-            'parameters',
             'transformers',
             'eventDispatchers',
             'formatters',

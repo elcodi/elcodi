@@ -5,16 +5,20 @@ services:
     #
     elcodi.object_manager.cart:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.entity.cart.class% ]
+        arguments:
+            - %elcodi.entity.cart.class%
 
     elcodi.object_manager.cart_line:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.entity.cart.class% ]
+        arguments:
+            - %elcodi.entity.cart.class%
 
     elcodi.object_manager.order:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.entity.order.class% ]
+        arguments:
+            - %elcodi.entity.order.class%
 
     elcodi.object_manager.order_line:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.entity.order_line.class% ]
+        arguments:
+            - %elcodi.entity.order_line.class%

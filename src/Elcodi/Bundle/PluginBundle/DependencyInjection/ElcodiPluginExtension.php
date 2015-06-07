@@ -18,8 +18,14 @@
 namespace Elcodi\Bundle\PluginBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Symfony\Component\Config\Resource\ResourceInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\HttpKernel\KernelInterface;
+use Symfony\Component\Yaml\Yaml;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
+use Elcodi\Component\Plugin\Services\Traits\PluginUtilsTrait;
 
 /**
  * Class ElcodiPluginExtension
@@ -28,12 +34,31 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
  */
 class ElcodiPluginExtension extends AbstractExtension
 {
+    use PluginUtilsTrait;
+
     /**
      * @var string
      *
      * Extension name
      */
     const EXTENSION_NAME = 'elcodi_plugin';
+
+    /**
+     * @var KernelInterface
+     *
+     * Kernel
+     */
+    protected $kernel;
+
+    /**
+     * Constructor
+     *
+     * @param KernelInterface $kernel Kernel
+     */
+    public function __construct(KernelInterface $kernel)
+    {
+        $this->kernel = $kernel;
+    }
 
     /**
      * Get the Config file location
@@ -108,6 +133,47 @@ class ElcodiPluginExtension extends AbstractExtension
             'formTypes',
             'twig',
         ];
+    }
+
+    /**
+     * Override Doctrine entities
+     *
+     * @param ContainerBuilder $container Container
+     *
+     * @return $this Self object
+     */
+    protected function overrideEntities(ContainerBuilder $container)
+    {
+        $plugins = $this->getInstalledPluginBundles($this->kernel);
+
+        foreach ($plugins as $plugin) {
+            $configuration = $this->processPlugin($plugin);
+            foreach ($configuration as $name => $config) {
+                $container
+                    ->prependExtensionConfig(
+                        $name,
+                        $config
+                    );
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Process plugin
+     *
+     * @param Bundle $plugin Plugin
+     *
+     * @return ResourceInterface|null Resource
+     */
+    protected function processPlugin(Bundle $plugin)
+    {
+        $resourcePath = $plugin->getPath() . '/Resources/config/external.yml';
+
+        return file_exists($resourcePath)
+            ? Yaml::parse(file_get_contents($resourcePath))
+            : [];
     }
 
     /**

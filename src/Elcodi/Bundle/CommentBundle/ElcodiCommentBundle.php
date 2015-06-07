@@ -32,7 +32,14 @@ use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 class ElcodiCommentBundle extends Bundle implements DependentBundleInterface
 {
     /**
-     * @param ContainerBuilder $container
+     * Builds the bundle.
+     *
+     * It is only ever called once when the cache is empty.
+     *
+     * This method can be overridden to register compilation passes,
+     * other extensions, ...
+     *
+     * @param ContainerBuilder $container A ContainerBuilder instance
      */
     public function build(ContainerBuilder $container)
     {
@@ -70,6 +77,8 @@ class ElcodiCommentBundle extends Bundle implements DependentBundleInterface
      * Disabled as commands are registered as services.
      *
      * @param Application $application An Application instance
+     *
+     * @return null
      */
     public function registerCommands(Application $application)
     {

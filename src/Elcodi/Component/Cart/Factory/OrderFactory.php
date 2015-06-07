@@ -20,16 +20,14 @@ namespace Elcodi\Component\Cart\Factory;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\Component\Cart\Entity\Order;
-use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
-use Elcodi\Component\Currency\Entity\Money;
-use Elcodi\Component\Currency\Wrapper\DefaultCurrencyWrapper;
+use Elcodi\Component\Currency\Factory\Abstracts\AbstractPurchasableFactory;
 use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 use Elcodi\Component\StateTransitionMachine\Machine\MachineManager;
 
 /**
  * Class Order
  */
-class OrderFactory extends AbstractFactory
+class OrderFactory extends AbstractPurchasableFactory
 {
     /**
      * @var MachineManager
@@ -46,25 +44,31 @@ class OrderFactory extends AbstractFactory
     protected $shippingMachineManager;
 
     /**
-     * @var DefaultCurrencyWrapper
+     * Sets PaymentMachineManager
+     *
+     * @param MachineManager $paymentMachineManager PaymentMachineManager
+     *
+     * @return $this Self object
      */
-    private $defaultCurrencyWrapper;
+    public function setPaymentMachineManager($paymentMachineManager)
+    {
+        $this->paymentMachineManager = $paymentMachineManager;
+
+        return $this;
+    }
 
     /**
-     * Construct method
+     * Sets ShippingMachineManager
      *
-     * @param MachineManager         $paymentMachineManager  Machine Manager for Payment
-     * @param MachineManager         $shippingMachineManager Machine Manager for Shipping
-     * @param DefaultCurrencyWrapper $defaultCurrencyWrapper
+     * @param MachineManager $shippingMachineManager ShippingMachineManager
+     *
+     * @return $this Self object
      */
-    public function __construct(
-        MachineManager $paymentMachineManager,
-        MachineManager $shippingMachineManager,
-        DefaultCurrencyWrapper $defaultCurrencyWrapper
-    ) {
-        $this->paymentMachineManager = $paymentMachineManager;
+    public function setShippingMachineManager($shippingMachineManager)
+    {
         $this->shippingMachineManager = $shippingMachineManager;
-        $this->defaultCurrencyWrapper = $defaultCurrencyWrapper;
+
+        return $this;
     }
 
     /**
@@ -88,14 +92,10 @@ class OrderFactory extends AbstractFactory
             ->setWidth(0)
             ->setWeight(0)
             ->setCreatedAt($this->now())
-            ->setCouponAmount(
-                Money::create(
-                    0,
-                    $this
-                        ->defaultCurrencyWrapper
-                        ->get()
-                )
-            );
+            ->setProductAmount($this->createZeroAmountMoney())
+            ->setAmount($this->createZeroAmountMoney())
+            ->setCouponAmount($this->createZeroAmountMoney())
+            ->setShippingAmount($this->createZeroAmountMoney());
 
         $paymentStateLineStack = $this
             ->paymentMachineManager

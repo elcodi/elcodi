@@ -1,0 +1,11 @@
+services:
+
+    #
+    # Twig Extensions
+    #
+    elcodi.twig_extension.shipping:
+        class: Elcodi\Component\Shipping\Twig\ShippingExtension
+        arguments:
+            - @elcodi.wrapper.shipping
+        tags:
+            - { name: twig.extension }

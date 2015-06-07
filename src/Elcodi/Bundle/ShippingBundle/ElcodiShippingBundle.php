@@ -18,12 +18,10 @@
 namespace Elcodi\Bundle\ShippingBundle;
 
 use Symfony\Component\Console\Application;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
-use Elcodi\Bundle\ShippingBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\ShippingBundle\DependencyInjection\ElcodiShippingExtension;
 
 /**
@@ -31,16 +29,6 @@ use Elcodi\Bundle\ShippingBundle\DependencyInjection\ElcodiShippingExtension;
  */
 class ElcodiShippingBundle extends Bundle implements DependentBundleInterface
 {
-    /**
-     * @param ContainerBuilder $container
-     */
-    public function build(ContainerBuilder $container)
-    {
-        parent::build($container);
-
-        $container->addCompilerPass(new MappingCompilerPass());
-    }
-
     /**
      * Returns the bundle's container extension.
      *
@@ -59,11 +47,6 @@ class ElcodiShippingBundle extends Bundle implements DependentBundleInterface
     public static function getBundleDependencies()
     {
         return [
-            'Elcodi\Bundle\CartBundle\ElcodiCartBundle',
-            'Elcodi\Bundle\TaxBundle\ElcodiTaxBundle',
-            'Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
-            'Elcodi\Bundle\GeoBundle\ElcodiGeoBundle',
-            'Elcodi\Bundle\ZoneBundle\ElcodiZoneBundle',
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
     }
@@ -74,6 +57,8 @@ class ElcodiShippingBundle extends Bundle implements DependentBundleInterface
      * Disabled as commands are registered as services.
      *
      * @param Application $application An Application instance
+     *
+     * @return null
      */
     public function registerCommands(Application $application)
     {

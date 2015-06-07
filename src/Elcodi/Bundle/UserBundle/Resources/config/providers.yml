@@ -5,23 +5,31 @@ services:
     #
     elcodi.customer_provider_entity_instance:
         class: %elcodi.entity.customer.class%
-        factory: [@elcodi.factory.customer, create]
+        factory:
+            - @elcodi.factory.customer
+            - create
 
     elcodi.admin_user_provider_entity_instance:
         class: %elcodi.entity.admin_user.class%
-        factory: [@elcodi.factory.admin_user, create]
+        factory:
+            - @elcodi.factory.admin_user
+            - create
 
     #
     # Providers
     #
     elcodi.provider.customer_provider:
         class: Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface
-        factory: [@security.encoder_factory, getEncoder]
+        factory:
+            - @security.encoder_factory
+            - getEncoder
         arguments:
             - @elcodi.customer_provider_entity_instance
 
     elcodi.provider.admin_user_provider:
         class: Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface
-        factory: [@security.encoder_factory, getEncoder]
+        factory:
+            - @security.encoder_factory
+            - getEncoder
         arguments:
             - @elcodi.admin_user_provider_entity_instance

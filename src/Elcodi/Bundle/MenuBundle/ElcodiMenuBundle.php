@@ -78,6 +78,8 @@ class ElcodiMenuBundle extends Bundle implements DependentBundleInterface
      * Disabled as commands are registered as services.
      *
      * @param Application $application An Application instance
+     *
+     * @return null
      */
     public function registerCommands(Application $application)
     {

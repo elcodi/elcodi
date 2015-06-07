@@ -9,11 +9,13 @@ services:
     #
     elcodi.repository.comment:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.entity.comment.class% ]
+        arguments:
+            - %elcodi.entity.comment.class%
 
     #
     # Repository for entity comment_vote
     #
     elcodi.repository.comment_vote:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.entity.comment_vote.class% ]
+        arguments:
+            - %elcodi.entity.comment_vote.class%

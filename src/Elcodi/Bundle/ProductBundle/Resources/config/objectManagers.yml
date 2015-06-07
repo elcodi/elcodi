@@ -5,16 +5,20 @@ services:
     #
     elcodi.object_manager.product:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.entity.product.class% ]
+        arguments:
+            - %elcodi.entity.product.class%
 
     elcodi.object_manager.product_variant:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.entity.product_variant.class% ]
+        arguments:
+            - %elcodi.entity.product_variant.class%
 
     elcodi.object_manager.category:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.entity.category.class% ]
+        arguments:
+            - %elcodi.entity.category.class%
 
     elcodi.object_manager.manufacturer:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.entity.manufacturer.class% ]
+        arguments:
+            - %elcodi.entity.manufacturer.class%

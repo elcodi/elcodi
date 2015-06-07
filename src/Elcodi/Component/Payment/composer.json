@@ -1,0 +1,56 @@
+{
+    "name": "elcodi/payment",
+    "description": "Elcodi Payment Component",
+    "keywords": [
+        "elcodi",
+        "page",
+        "ecommerce",
+        "component"
+    ],
+    "homepage": "https://github.com/elcodi/Payment",
+    "type": "library",
+    "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "The Awesome Elcodi Community",
+            "homepage": "https://github.com/elcodi/Payment/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "symfony/event-dispatcher": "^2.7",
+        "twig/twig": "^1.18",
+
+        "elcodi/core": "^0.5.18"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\Component\\Payment\\": ""
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.5-dev"
+        }
+    }
+}

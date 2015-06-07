@@ -9,25 +9,29 @@ services:
     #
     elcodi.repository.cart:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.entity.cart.class% ]
+        arguments:
+            - %elcodi.entity.cart.class%
 
     #
     # Repository for entity order
     #
     elcodi.repository.order:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.entity.order.class% ]
+        arguments:
+            - %elcodi.entity.order.class%
 
     #
     # Repository for entity cart_line
     #
     elcodi.repository.cart_line:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.entity.cart_line.class% ]
+        arguments:
+            - %elcodi.entity.cart_line.class%
 
     #
     # Repository for entity order_line
     #
     elcodi.repository.order_line:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.entity.order_line.class% ]
+        arguments:
+            - %elcodi.entity.order_line.class%

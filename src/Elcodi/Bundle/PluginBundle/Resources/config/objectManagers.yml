@@ -5,4 +5,5 @@ services:
     #
     elcodi.object_manager.plugin:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.entity.plugin.class% ]
+        arguments:
+            - %elcodi.entity.plugin.class%

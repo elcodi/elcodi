@@ -20,6 +20,7 @@ namespace Elcodi\Component\Geo\Services;
 use Doctrine\ORM\EntityNotFoundException;
 use GuzzleHttp\Client;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 use Elcodi\Component\Geo\Factory\LocationDataFactory;
 use Elcodi\Component\Geo\Services\Interfaces\LocationProviderInterface;
@@ -39,6 +40,13 @@ class LocationApiProvider implements LocationProviderInterface
     protected $locationDataFactory;
 
     /**
+     * @var UrlGeneratorInterface
+     *
+     * Url generator
+     */
+    protected $urlGeneratorInterface;
+
+    /**
      * @var ApiUrls
      *
      * Api urls wrapper
@@ -46,31 +54,49 @@ class LocationApiProvider implements LocationProviderInterface
     protected $apiUrls;
 
     /**
+     * @var string
+     *
+     * Host
+     */
+    protected $host;
+
+    /**
      * Location to location data transformer
      *
-     * @param LocationDataFactory $locationDataFactory Transformer
-     * @param ApiUrls             $apiUrls             The api urls
+     * @param LocationDataFactory   $locationDataFactory   Transformer
+     * @param UrlGeneratorInterface $urlGeneratorInterface Url generator
+     * @param ApiUrls               $apiUrls               The api urls
+     * @param string                $host                  Host
      */
     public function __construct(
         LocationDataFactory $locationDataFactory,
-        ApiUrls $apiUrls
-    ) {
+        UrlGeneratorInterface $urlGeneratorInterface,
+        ApiUrls $apiUrls,
+        $host = ''
+    )
+    {
         $this->locationDataFactory = $locationDataFactory;
+        $this->urlGeneratorInterface = $urlGeneratorInterface;
         $this->apiUrls = $apiUrls;
+        $this->host = $host;
     }
 
     /**
      * Get all the root locations.
      *
-     * @return LocationData[]
+     * @return LocationData[] Collection of locations
      */
     public function getRootLocations()
     {
-        $url = $this
-            ->apiUrls
-            ->getGetRootLocationsUrl();
+        $url = $this->buildUrlByMethodName(
+            'getGetRootLocationsUrl',
+            []
+        );
 
-        return $this->getDataFromApi($url);
+        return $this
+            ->buildLocations(
+                $this->resolveApiUrl($url)
+            );
     }
 
     /**
@@ -78,15 +104,19 @@ class LocationApiProvider implements LocationProviderInterface
      *
      * @param string $id The location Id.
      *
-     * @return LocationData[]
+     * @return LocationData[] Collection of locations
      */
     public function getChildren($id)
     {
-        $url = $this
-            ->apiUrls
-            ->getGetChildrenUrl() . '?id=' . $id;
+        $url = $this->buildUrlByMethodName(
+            'getGetChildrenUrl',
+            ['id' => $id]
+        );
 
-        return $this->getDataFromApi($url);
+        return $this
+            ->buildLocations(
+                $this->resolveApiUrl($url)
+            );
     }
 
     /**
@@ -94,15 +124,19 @@ class LocationApiProvider implements LocationProviderInterface
      *
      * @param string $id The location Id.
      *
-     * @return LocationData[]
+     * @return LocationData[] Collection of locations
      */
     public function getParents($id)
     {
-        $url = $this
-            ->apiUrls
-            ->getGetParentsUrl() . '?id=' . $id;
+        $url = $this->buildUrlByMethodName(
+            'getGetParentsUrl',
+            ['id' => $id]
+        );
 
-        return $this->getDataFromApi($url);
+        return $this
+            ->buildLocations(
+                $this->resolveApiUrl($url)
+            );
     }
 
     /**
@@ -110,15 +144,19 @@ class LocationApiProvider implements LocationProviderInterface
      *
      * @param string $id The location id.
      *
-     * @return LocationData[] Location info
+     * @return LocationData Location info
      */
     public function getLocation($id)
     {
-        $url = $this
-            ->apiUrls
-            ->getGetLocationUrl() . '?id=' . $id;
+        $url = $this->buildUrlByMethodName(
+            'getGetLocationUrl',
+            ['id' => $id]
+        );
 
-        return $this->getDataFromApi($url);
+        return $this
+            ->buildLocation(
+                $this->resolveApiUrl($url)
+            );
     }
 
     /**
@@ -127,15 +165,19 @@ class LocationApiProvider implements LocationProviderInterface
      *
      * @param string $id The location id.
      *
-     * @return LocationData[] Location info
+     * @return LocationData[] Collection of locations
      */
     public function getHierarchy($id)
     {
-        $url = $this
-            ->apiUrls
-            ->getGetHierarchyUrl() . '?id=' . $id;
+        $url = $this->buildUrlByMethodName(
+            'getGetHierarchyUrl',
+            ['id' => $id]
+        );
 
-        return $this->getDataFromApi($url);
+        return $this
+            ->buildLocations(
+                $this->resolveApiUrl($url)
+            );
     }
 
     /**
@@ -145,30 +187,110 @@ class LocationApiProvider implements LocationProviderInterface
      * @param string $id  The location Id
      * @param array  $ids The location Ids
      *
-     * @return LocationData[] Location info
+     * @return boolean Location is container
      */
     public function in($id, array $ids)
     {
-        $url = $this
-            ->apiUrls
-            ->getInUrl() . '?id=' . $id . '&ids=' . implode(',', $ids);
+        $url = $this->buildUrlByMethodName(
+            'getInUrl',
+            [
+                'id'  => $id,
+                'ids' => implode(',', $ids)
+            ]
+        );
 
-        return $this->getDataFromApi($url);
+        $response = $this->resolveApiUrl($url);
+
+        return $response['result'];
     }
 
     /**
-     * Get content from specific url in a PHP format
+     * Given a method of the ApiUrls value object and a parameters for the route
+     * construction, return url
+     *
+     * @param string $method     Method to be called for the url name
+     * @param array  $parameters Parameters for the url construction
+     *
+     * @return string Url
+     */
+    private function buildUrlByMethodName($method, array $parameters)
+    {
+        $url = $this
+            ->apiUrls
+            ->$method();
+
+        return $this->host
+            ? $this->buildUrlWithHost(
+                $url,
+                $parameters
+            )
+            : $this->buildUrlWithoutHost(
+                $url,
+                $parameters
+            );
+    }
+
+    /**
+     * Given an url, return the complete route using host
+     *
+     * @param string $url        Url to be called
+     * @param array  $parameters Parameters for the url construction
+     *
+     * @return string Url
+     */
+    private function buildUrlWithHost($url, array $parameters)
+    {
+        return
+            trim($this->host, '/') .
+            '/' .
+            ltrim(
+                $this
+                    ->urlGeneratorInterface
+                    ->generate(
+                        $url,
+                        $parameters,
+                        UrlGeneratorInterface::ABSOLUTE_PATH
+                    )
+                , '/'
+            );
+    }
+
+    /**
+     * Given an url, return the complete route in ab absolute way
+     *
+     * @param string $url        Url to be called
+     * @param array  $parameters Parameters for the url construction
+     *
+     * @return string Url
+     */
+    private function buildUrlWithoutHost($url, array $parameters)
+    {
+        return $this
+            ->urlGeneratorInterface
+            ->generate(
+                $url,
+                $parameters,
+                UrlGeneratorInterface::ABSOLUTE_URL
+            );
+    }
+
+    /**
+     * Call given url, unpack the response and look for possible api exceptions
      *
      * @param string $url Url where to call
      *
-     * @return LocationData[] Location data
+     * @return array Response unpacked
      *
      * @throws EntityNotFoundException Entity not found
      * @throws HttpException           Http Exception
      */
-    protected function getDataFromApi($url)
+    private function resolveApiUrl($url)
     {
-        $client = new Client();
+        $client = new Client([
+            'defaults' => [
+                'timeout' => 5,
+            ]
+        ]);
         $response = $client->get($url);
         $responseStatusCode = $response->getStatusCode();
 
@@ -180,19 +302,43 @@ class LocationApiProvider implements LocationProviderInterface
             throw new HttpException('Http exception');
         }
 
-        $locationDataArray = [];
+        return $response->json(['object' => false]);
+    }
 
-        foreach ($response->json(['object' => false]) as $locationResponse) {
-            $locationDataArray[] = $this
-                ->locationDataFactory
-                ->create(
-                    $locationResponse['id'],
-                    $locationResponse['name'],
-                    $locationResponse['code'],
-                    $locationResponse['type']
-                );
+    /**
+     * Build a new set of Location instances given some data
+     *
+     * @param array $data Data where to build from
+     *
+     * @return LocationData[] Location instances
+     */
+    private function buildLocations($data)
+    {
+        $locationInstances = [];
+
+        foreach ($data as $locationData) {
+            $locationInstances[] = $this->buildLocation($locationData);
         }
 
-        return $locationDataArray;
+        return $locationInstances;
+    }
+
+    /**
+     * Build a new Location instance given some data
+     *
+     * @param array $data Data where to build from
+     *
+     * @return LocationData Location instance
+     */
+    private function buildLocation($data)
+    {
+        return $this
+            ->locationDataFactory
+            ->create(
+                $data['id'],
+                $data['name'],
+                $data['code'],
+                $data['type']
+            );
     }
 }

@@ -1,0 +1,60 @@
+{
+    "name": "elcodi/store",
+    "description": "Elcodi Shipping Component",
+    "keywords": [
+        "elcodi",
+        "store",
+        "ecommerce",
+        "component"
+    ],
+    "homepage": "https://github.com/elcodi/Store",
+    "type": "library",
+    "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "The Awesome Elcodi Community",
+            "homepage": "https://github.com/elcodi/Store/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "doctrine/common": "^2.5",
+        "doctrine/orm": "^2.5",
+
+        "elcodi/core": "^0.5.18",
+        "elcodi/geo": "^0.5.18",
+        "elcodi/currency": "^0.5.18",
+        "elcodi/language": "^0.5.18",
+        "elcodi/media": "^0.5.18"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elcodi\\Component\\Store\\": ""
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.5-dev"
+        }
+    }
+}

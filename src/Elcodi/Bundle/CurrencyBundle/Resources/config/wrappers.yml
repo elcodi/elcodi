@@ -15,3 +15,8 @@ services:
         arguments:
             - @elcodi.repository.currency
             - %elcodi.default_currency%
+
+    elcodi.wrapper.empty_money:
+        class: Elcodi\Component\Currency\Wrapper\EmptyMoneyWrapper
+        arguments:
+            - @elcodi.wrapper.default_currency

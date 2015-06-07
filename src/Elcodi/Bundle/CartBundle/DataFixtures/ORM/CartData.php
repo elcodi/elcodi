@@ -123,6 +123,7 @@ class CartData extends AbstractFixture implements DependentFixtureInterface
             'Elcodi\Bundle\ProductBundle\DataFixtures\ORM\ProductData',
             'Elcodi\Bundle\UserBundle\DataFixtures\ORM\CustomerData',
             'Elcodi\Bundle\GeoBundle\DataFixtures\ORM\AddressData',
+            'Elcodi\Bundle\CurrencyBundle\DataFixtures\ORM\CurrencyData',
         ];
     }
 }

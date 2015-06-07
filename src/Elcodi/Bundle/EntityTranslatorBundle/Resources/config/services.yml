@@ -35,4 +35,6 @@ services:
 
     elcodi.entity_translator:
         class: Elcodi\Component\EntityTranslator\Services\EntityTranslator
-        factory: [@elcodi.entity_translator_builder, compile]
+        factory:
+            - @elcodi.entity_translator_builder
+            - compile

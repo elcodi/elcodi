@@ -5,7 +5,9 @@ services:
     #
     elcodi.container_parameters:
         class: Symfony\Component\DependencyInjection\ParameterBag\ParameterBag
-        factory: [@service_container, getParameterBag]
+        factory:
+            - @service_container
+            - getParameterBag
 
     elcodi.provider.manager:
         class: Elcodi\Component\Core\Services\ManagerProvider

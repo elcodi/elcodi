@@ -11,17 +11,24 @@ services:
             - @elcodi.manager.cart
             - @elcodi.wrapper.currency
             - @elcodi.converter.currency
-            - "@=elcodi_config('product.use_stock', false)"
+            - ?@elcodi.store_uses_stock
         tags:
             - { name: kernel.event_listener, event: cart.preload, method: checkCartIntegrity, priority: 0 }
             - { name: kernel.event_listener, event: cart.onload, method: loadCartPrices, priority: 16 }
             - { name: kernel.event_listener, event: cart.onload, method: saveCart, priority: 0 }
             - { name: kernel.event_listener, event: cart.onload, method: loadCartQuantities, priority: 16 }
 
-    elcodi.event_listener.limit_negative_carts:
-        class: Elcodi\Component\Cart\EventListener\LimitNegativeCartsListener
+    elcodi.event_listener.limit_negative_cart:
+        class: Elcodi\Component\Cart\EventListener\LimitNegativeCartEventListener
         tags:
             - { name: kernel.event_listener, event: cart.onload, method: limitCartAmount, priority: -255 }
+
+    elcodi.event_listener.empty_shipping_cart:
+        class: Elcodi\Component\Cart\EventListener\CartEmptyShippingEventListener
+        arguments:
+            - @elcodi.wrapper.empty_money
+        tags:
+            - { name: kernel.event_listener, event: cart.onload, method: checkEmptyShippingAmount, priority: 16 }
 
     elcodi.event_listener.order_creation:
         class: Elcodi\Component\Cart\EventListener\OrderCreationEventListener

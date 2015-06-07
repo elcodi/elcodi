@@ -6,4 +6,4 @@ services:
     elcodi.manager.banner:
         class: Elcodi\Component\Banner\Services\BannerManager
         arguments:
-            banner_repository: @elcodi.repository.banner
+            - @elcodi.repository.banner

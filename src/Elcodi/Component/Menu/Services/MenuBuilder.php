@@ -19,38 +19,33 @@ namespace Elcodi\Component\Menu\Services;
 
 use Elcodi\Component\Menu\Builder\Interfaces\MenuBuilderInterface;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\MenuInterface;
+use Elcodi\Component\Menu\Services\Abstracts\AbstractMenuModifier;
 use Elcodi\Component\Menu\Services\Interfaces\MenuChangerInterface;
 
 /**
  * Class MenuBuilder
  */
-class MenuBuilder implements MenuChangerInterface
+class MenuBuilder extends AbstractMenuModifier implements MenuChangerInterface
 {
-    /**
-     * @var MenuBuilderInterface[]
-     *
-     * Menu builder array
-     */
-    protected $menuBuilders;
-
-    /**
-     * Construct method
-     */
-    public function __construct()
-    {
-        $this->menuBuilders = [];
-    }
-
     /**
      * Add menu builder
      *
-     * @var MenuBuilderInterface $menuBuilder Menu builder
+     * @param MenuBuilderInterface $menuBuilder Menu builder
+     * @param array                $menus       Menus
+     * @param string               $stage       Stage
      *
      * @return $this Self object
      */
-    public function addMenuBuilder(MenuBuilderInterface $menuBuilder)
-    {
-        $this->menuBuilders[] = $menuBuilder;
+    public function addMenuBuilder(
+        MenuBuilderInterface $menuBuilder,
+        array $menus,
+        $stage
+    ) {
+        $this->addElement(
+            $menuBuilder,
+            $menus,
+            $stage
+        );
 
         return $this;
     }
@@ -58,13 +53,24 @@ class MenuBuilder implements MenuChangerInterface
     /**
      * Apply change
      *
-     * @param MenuInterface $menu Menu
+     * @param MenuInterface $menu  Menu
+     * @param string        $stage Stage
      *
      * @return $this Self object
      */
-    public function applyChange(MenuInterface $menu)
-    {
-        foreach ($this->menuBuilders as $menuBuilder) {
+    public function applyChange(
+        MenuInterface $menu,
+        $stage
+    ) {
+        $menuBuilders = $this->getElementsByMenuCodeAndStage(
+            $menu->getCode(),
+            $stage
+        );
+
+        /**
+         * @var MenuBuilderInterface $menuBuilder
+         */
+        foreach ($menuBuilders as $menuBuilder) {
             $menuBuilder->build($menu);
         }
 

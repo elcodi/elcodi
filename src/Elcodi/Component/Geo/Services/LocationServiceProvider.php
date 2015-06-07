@@ -62,7 +62,7 @@ class LocationServiceProvider implements LocationProviderInterface
     /**
      * Get all the root locations.
      *
-     * @return LocationData[] Location info
+     * @return LocationData[] Collection of locations
      */
     public function getRootLocations()
     {
@@ -78,7 +78,7 @@ class LocationServiceProvider implements LocationProviderInterface
      *
      * @param string $id The location Id.
      *
-     * @return LocationData[] Location info
+     * @return LocationData[] Collection of locations
      *
      * @throws EntityNotFoundException Entity not found
      */
@@ -104,7 +104,7 @@ class LocationServiceProvider implements LocationProviderInterface
      *
      * @param string $id The location Id.
      *
-     * @return LocationData[] Location info
+     * @return LocationData[] Collection of locations
      *
      * @throws EntityNotFoundException Entity not found
      */
@@ -130,19 +130,22 @@ class LocationServiceProvider implements LocationProviderInterface
      *
      * @param string $id The location id.
      *
-     * @return LocationData[] Location info
+     * @return LocationData Location info
      *
      * @throws EntityNotFoundException Entity not found
      */
     public function getLocation($id)
     {
+        /**
+         * @var LocationInterface $location
+         */
         $location = $this
             ->locationRepository
             ->findOneBy([
                 'id' => $id,
             ]);
 
-        if (empty($location)) {
+        if (!($location instanceof LocationInterface)) {
             throw new EntityNotFoundException();
         }
 
@@ -155,7 +158,7 @@ class LocationServiceProvider implements LocationProviderInterface
      *
      * @param string $id The location id.
      *
-     * @return LocationData[] Location info
+     * @return LocationData[] Collection of locations
      *
      * @throws EntityNotFoundException Entity not found
      */
@@ -189,7 +192,7 @@ class LocationServiceProvider implements LocationProviderInterface
      * @param string $id  The location Id
      * @param array  $ids The location Ids
      *
-     * @return boolean
+     * @return boolean Location is container
      */
     public function in($id, array $ids)
     {
@@ -220,7 +223,7 @@ class LocationServiceProvider implements LocationProviderInterface
      *
      * @return LocationData[] Formatted mode of Locations
      */
-    protected function formatOutputLocationArray($locations)
+    private function formatOutputLocationArray($locations)
     {
         $formattedResponse = [];
 
@@ -242,7 +245,7 @@ class LocationServiceProvider implements LocationProviderInterface
      *
      * @return LocationData Formatted mode of Location
      */
-    protected function formatOutputLocation(LocationInterface $location)
+    private function formatOutputLocation(LocationInterface $location)
     {
         return $this
             ->locationToLocationDataTransformer

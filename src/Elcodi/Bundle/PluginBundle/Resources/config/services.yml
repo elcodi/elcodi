@@ -14,21 +14,37 @@ services:
     elcodi.loader.plugin:
         class: Elcodi\Component\Plugin\Services\PluginLoader
 
+    #
+    # Router loader
+    #
+    elcodi.loader.plugin_routes:
+        class: Elcodi\Component\Plugin\Loader\RouterLoader
+        arguments:
+            - @kernel
+            - @elcodi.enabled_plugins
+        tags:
+            - { name: routing.loader }
 
     #
     # Aliases
     #
     elcodi.enabled_plugins:
         class: StdClass
-        factory: [@elcodi.repository.plugin, findBy]
+        factory:
+            - @elcodi.repository.plugin
+            - findBy
         arguments:
             - {enabled: true}
 
     elcodi.plugins:
         class: StdClass
-        factory: [@elcodi.repository.plugin, findBy]
+        factory:
+            - @elcodi.repository.plugin
+            - findBy
 
     elcodi.abstract_plugin:
         abstract: true
         class: Elcodi\Component\Plugin\Entity\Plugin
-        factory: [@elcodi.repository.plugin, findOneByNamespace]
+        factory:
+            - @elcodi.repository.plugin
+            - findOneByNamespace

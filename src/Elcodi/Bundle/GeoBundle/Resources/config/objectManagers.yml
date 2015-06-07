@@ -5,8 +5,10 @@ services:
     #
     elcodi.object_manager.address:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.entity.address.class% ]
+        arguments:
+            - %elcodi.entity.address.class%
 
     elcodi.object_manager.location:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.entity.location.class% ]
+        arguments:
+            - %elcodi.entity.location.class%

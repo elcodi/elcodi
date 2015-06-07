@@ -8,18 +8,18 @@ services:
         arguments:
             - @elcodi.manager.configuration
         tags:
-            -  { name: console.command }
+            - { name: console.command }
 
     elcodi.command.configuration_get:
         class: Elcodi\Component\Configuration\Command\ConfigurationGetCommand
         arguments:
             - @elcodi.manager.configuration
         tags:
-            -  { name: console.command }
+            - { name: console.command }
 
     elcodi.command.configuration_delete:
         class: Elcodi\Component\Configuration\Command\ConfigurationDeleteCommand
         arguments:
             - @elcodi.manager.configuration
         tags:
-            -  { name: console.command }
+            - { name: console.command }

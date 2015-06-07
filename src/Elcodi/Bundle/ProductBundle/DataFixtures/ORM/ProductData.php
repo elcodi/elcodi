@@ -162,6 +162,7 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
             'Elcodi\Bundle\CurrencyBundle\DataFixtures\ORM\CurrencyData',
             'Elcodi\Bundle\ProductBundle\DataFixtures\ORM\CategoryData',
             'Elcodi\Bundle\ProductBundle\DataFixtures\ORM\ManufacturerData',
+            'Elcodi\Bundle\StoreBundle\DataFixtures\ORM\StoreData',
         ];
     }
 }

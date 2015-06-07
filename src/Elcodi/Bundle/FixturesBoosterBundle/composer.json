@@ -32,13 +32,13 @@
     "require": {
         "php": ">=5.4",
 
-        "symfony/http-kernel": "~2.6",
-        "symfony/console": "~2.6",
-        "symfony/dependency-injection": "~2.6",
+        "symfony/http-kernel": "^2.7",
+        "symfony/console": "^2.7",
+        "symfony/dependency-injection": "^2.7",
 
-        "doctrine/doctrine-fixtures-bundle": "~2.2",
+        "doctrine/doctrine-fixtures-bundle": "^2.2",
 
-        "elcodi/core-bundle": "~0.5.0"
+        "elcodi/core-bundle": "^0.5.18"
     },
     "autoload": {
         "psr-4": {
