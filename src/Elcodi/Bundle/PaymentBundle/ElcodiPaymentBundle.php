@@ -17,6 +17,9 @@
 
 namespace Elcodi\Bundle\PaymentBundle;
 
+use Elcodi\Bundle\PaymentBundle\DependencyInjection\ElcodiPaymentExtension;
+use Symfony\Component\Console\Application;
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -24,4 +27,39 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class ElcodiPaymentBundle extends Bundle
 {
+    /**
+     * Returns the bundle's container extension.
+     *
+     * @return ExtensionInterface The container extension
+     */
+    public function getContainerExtension()
+    {
+        return new ElcodiPaymentExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces
+     *
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies()
+    {
+        return [
+            'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
+        ];
+    }
+
+    /**
+     * Register Commands.
+     *
+     * Disabled as commands are registered as services.
+     *
+     * @param Application $application An Application instance
+     *
+     * @return null
+     */
+    public function registerCommands(Application $application)
+    {
+        return null;
+    }
 }
