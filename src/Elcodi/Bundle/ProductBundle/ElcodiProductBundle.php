@@ -64,7 +64,6 @@ class ElcodiProductBundle extends Bundle implements DependentBundleInterface
             'Elcodi\Bundle\MediaBundle\ElcodiMediaBundle',
             'Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
             'Elcodi\Bundle\AttributeBundle\ElcodiAttributeBundle',
-            'Elcodi\Bundle\ConfigurationBundle\ElcodiConfigurationBundle',
             'Elcodi\Bundle\StoreBundle\ElcodiStoreBundle',
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
@@ -76,6 +75,8 @@ class ElcodiProductBundle extends Bundle implements DependentBundleInterface
      * Disabled as commands are registered as services.
      *
      * @param Application $application An Application instance
+     *
+     * @return null
      */
     public function registerCommands(Application $application)
     {
