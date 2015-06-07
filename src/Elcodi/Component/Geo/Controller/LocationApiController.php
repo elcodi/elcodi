@@ -24,7 +24,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 
-use Elcodi\Component\Geo\Services\Interfaces\LocationproviderInterface;
+use Elcodi\Component\Geo\Services\Interfaces\LocationProviderInterface;
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
@@ -33,11 +33,11 @@ use Elcodi\Component\Geo\ValueObject\LocationData;
 class LocationApiController
 {
     /**
-     * @var LocationproviderInterface
+     * @var LocationProviderInterface
      *
      * Location manager
      */
-    protected $locationprovider;
+    protected $locationProvider;
 
     /**
      * @var Request
@@ -50,14 +50,14 @@ class LocationApiController
      * Construct
      *
      * @param RequestStack              $requestStack     Request stack
-     * @param LocationproviderInterface $locationprovider Location manager
+     * @param LocationProviderInterface $locationProvider Location manager
      */
     public function __construct(
         RequestStack $requestStack,
-        LocationproviderInterface $locationprovider
+        LocationProviderInterface $locationProvider
     ) {
         $this->request = $requestStack->getCurrentRequest();
-        $this->locationprovider = $locationprovider;
+        $this->locationProvider = $locationProvider;
     }
 
     /**
@@ -71,7 +71,7 @@ class LocationApiController
             return
                 $this->normalizeLocationDataArray(
                     $this
-                        ->locationprovider
+                        ->locationProvider
                         ->getRootLocations()
                 );
         });
@@ -92,7 +92,7 @@ class LocationApiController
         return $this->createResponseObject(function () use ($id) {
             return $this->normalizeLocationDataArray(
                 $this
-                    ->locationprovider
+                    ->locationProvider
                     ->getChildren($id)
             );
         });
@@ -113,7 +113,7 @@ class LocationApiController
         return $this->createResponseObject(function () use ($id) {
             return $this->normalizeLocationDataArray(
                 $this
-                    ->locationprovider
+                    ->locationProvider
                     ->getParents($id)
             );
         });
@@ -134,7 +134,7 @@ class LocationApiController
         return $this->createResponseObject(function () use ($id) {
             return $this->normalizeLocationData(
                 $this
-                    ->locationprovider
+                    ->locationProvider
                     ->getLocation($id)
             );
         });
@@ -156,7 +156,7 @@ class LocationApiController
         return $this->createResponseObject(function () use ($id) {
             return $this->normalizeLocationDataArray(
                 $this
-                    ->locationprovider
+                    ->locationProvider
                     ->getHierarchy($id)
             );
         });
@@ -182,7 +182,7 @@ class LocationApiController
 
         return $this->createResponseObject(function () use ($id, $ids) {
             return $this
-                ->locationprovider
+                ->locationProvider
                 ->in($id, $ids);
         });
     }
