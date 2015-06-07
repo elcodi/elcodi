@@ -17,10 +17,11 @@
 
 namespace Elcodi\Bundle\PaymentBundle;
 
-use Elcodi\Bundle\PaymentBundle\DependencyInjection\ElcodiPaymentExtension;
 use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+use Elcodi\Bundle\PaymentBundle\DependencyInjection\ElcodiPaymentExtension;
 
 /**
  * Class ElcodiPaymentBundle
