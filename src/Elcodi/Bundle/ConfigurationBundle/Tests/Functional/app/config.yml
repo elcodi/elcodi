@@ -31,14 +31,14 @@ services:
     my_class_parameter:
         class: Elcodi\Bundle\ConfigurationBundle\Tests\Functional\Fixtures\MyClass
         arguments:
-            my_parameter: @=elcodi_config("my_parameter")
+            - @=elcodi_config("my_parameter")
 
     my_class_parameter_boolean:
         class: Elcodi\Bundle\ConfigurationBundle\Tests\Functional\Fixtures\MyClass
         arguments:
-            my_parameter: @=elcodi_config("app.my_boolean_parameter")
+            - @=elcodi_config("app.my_boolean_parameter")
 
     my_class_non_existing_parameter:
         class: Elcodi\Bundle\ConfigurationBundle\Tests\Functional\Fixtures\MyClass
         arguments:
-            my_parameter: @=elcodi_config("my_non_existing_parameter")
+            - @=elcodi_config("my_non_existing_parameter")

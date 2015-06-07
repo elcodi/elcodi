@@ -9,4 +9,5 @@ services:
     #
     elcodi.repository.coupon:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.entity.coupon.class% ]
+        arguments:
+            - %elcodi.entity.coupon.class%

@@ -5,8 +5,10 @@ services:
     #
     elcodi.object_manager.tax:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.entity.tax.class% ]
+        arguments:
+            - %elcodi.entity.tax.class%
 
     elcodi.object_manager.tax_group:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.entity.tax_group.class% ]
+        arguments:
+            - %elcodi.entity.tax_group.class%

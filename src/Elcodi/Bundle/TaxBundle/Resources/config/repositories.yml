@@ -9,11 +9,13 @@ services:
     #
     elcodi.repository.tax:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.entity.tax.class% ]
+        arguments:
+            - %elcodi.entity.tax.class%
 
     #
     # Repository for entity tax group
     #
     elcodi.repository.tax_group:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.entity.tax_group.class% ]
+        arguments:
+            - %elcodi.entity.tax_group.class%

@@ -14,7 +14,7 @@ services:
     elcodi.event_listener.customer_password:
         class: Elcodi\Component\User\EventListener\CustomerPasswordEventListener
         arguments:
-            encoder: @elcodi.provider.customer_provider
+            - @elcodi.provider.customer_provider
         tags:
             - { name: doctrine.event_listener, event: preUpdate, method: preUpdate }
             - { name: doctrine.event_listener, event: prePersist, method: prePersist }
@@ -22,7 +22,7 @@ services:
     elcodi.event_listener.admin_user_password:
         class: Elcodi\Component\User\EventListener\AdminUserPasswordEventListener
         arguments:
-            encoder: @elcodi.provider.admin_user_provider
+            - @elcodi.provider.admin_user_provider
         tags:
             - { name: doctrine.event_listener, event: preUpdate, method: preUpdate }
             - { name: doctrine.event_listener, event: prePersist, method: prePersist }

@@ -5,4 +5,5 @@ services:
     #
     elcodi.object_manager.store:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.entity.store.class% ]
+        arguments:
+            - %elcodi.entity.store.class%

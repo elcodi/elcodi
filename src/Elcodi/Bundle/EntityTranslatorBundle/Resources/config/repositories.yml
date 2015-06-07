@@ -10,4 +10,5 @@ services:
     elcodi.repository.entity_translation:
         parent: elcodi.abstract_repository
         class: Elcodi\Component\EntityTranslator\Repository\EntityTranslationRepository
-        arguments: [ %elcodi.entity.entity_translation.class% ]
+        arguments:
+            - %elcodi.entity.entity_translation.class%
