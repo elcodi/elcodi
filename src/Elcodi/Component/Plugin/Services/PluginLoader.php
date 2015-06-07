@@ -48,7 +48,7 @@ class PluginLoader
         $processor = new Processor();
         $pluginConfiguration = $processor
             ->processConfiguration(
-                new PluginConfiguration(),
+                new PluginConfigurationTree(),
                 $parsedConfiguration
             );
 

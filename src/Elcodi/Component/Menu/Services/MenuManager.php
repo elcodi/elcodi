@@ -77,7 +77,8 @@ class MenuManager extends AbstractCacheWrapper
         MenuRepository $menuRepository,
         ObjectManager $menuObjectManager,
         $key
-    ) {
+    )
+    {
         $this->menuRepository = $menuRepository;
         $this->menuObjectManager = $menuObjectManager;
         $this->key = $key;
@@ -184,14 +185,16 @@ class MenuManager extends AbstractCacheWrapper
      */
     protected function loadFromCache($key)
     {
-        $encoded = $this
+        $encoded = (string)$this
             ->cache
             ->fetch($key);
 
         try {
-            return $this
-                ->encoder
-                ->decode($encoded);
+            return is_string($encoded)
+                ? $this
+                    ->encoder
+                    ->decode($encoded)
+                : null;
         } catch (Exception $e) {
             // Silent pass
         }
@@ -280,7 +283,8 @@ class MenuManager extends AbstractCacheWrapper
     protected function applyMenuChangers(
         MenuInterface $menu,
         $stage
-    ) {
+    )
+    {
         foreach ($this->menuChangers as $menuChanger) {
             $menuChanger
                 ->applyChange(
