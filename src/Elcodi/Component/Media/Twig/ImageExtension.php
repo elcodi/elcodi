@@ -34,21 +34,21 @@ class ImageExtension extends Twig_Extension
      *
      * Router
      */
-    protected $router;
+    private $router;
 
     /**
      * @var string
      *
      * Resize route name
      */
-    protected $imageResizeControllerRouteName;
+    private $imageResizeControllerRouteName;
 
     /**
      * @var string
      *
      * View route name
      */
-    protected $imageViewControllerRouteName;
+    private $imageViewControllerRouteName;
 
     /**
      * @var string
@@ -59,21 +59,21 @@ class ImageExtension extends Twig_Extension
      * http://www.elcodi.com/image/1 to
      * http://cdn.elcodi.com/image/1
      */
-    protected $generatedRouteHost;
+    private $generatedRouteHost;
 
     /**
      * @var RequestContext
      *
      * Original router context
      */
-    protected $originalContext;
+    private $originalContext;
 
     /**
      * @var RequestContext
      *
      * Modified router context
      */
-    protected $modifiedContext;
+    private $modifiedContext;
 
     /**
      * Construct method
@@ -170,35 +170,6 @@ class ImageExtension extends Twig_Extension
     }
 
     /**
-     * Prepares the Host part of a image resize URL
-     *
-     * @return mixed Route reference type
-     */
-    protected function prepareRouterContext()
-    {
-        if ($this->generatedRouteHost) {
-            $this
-                ->router
-                ->setContext($this->modifiedContext);
-
-            /**
-             * When a Host is set for the image route,
-             * we need to change the route context URL
-             */
-            $this
-                ->router
-                ->getContext()
-                ->setHost($this->generatedRouteHost);
-
-            $routeReferenceType = UrlGeneratorInterface::ABSOLUTE_URL;
-        } else {
-            $routeReferenceType = UrlGeneratorInterface::ABSOLUTE_PATH;
-        }
-
-        return $routeReferenceType;
-    }
-
-    /**
      * Fixes a router Context back after changing the "Host" URL
      *
      * @return $this Self object
@@ -222,5 +193,34 @@ class ImageExtension extends Twig_Extension
     public function getName()
     {
         return 'image_extension';
+    }
+
+    /**
+     * Prepares the Host part of a image resize URL
+     *
+     * @return mixed Route reference type
+     */
+    private function prepareRouterContext()
+    {
+        if ($this->generatedRouteHost) {
+            $this
+                ->router
+                ->setContext($this->modifiedContext);
+
+            /**
+             * When a Host is set for the image route,
+             * we need to change the route context URL
+             */
+            $this
+                ->router
+                ->getContext()
+                ->setHost($this->generatedRouteHost);
+
+            $routeReferenceType = UrlGeneratorInterface::ABSOLUTE_URL;
+        } else {
+            $routeReferenceType = UrlGeneratorInterface::ABSOLUTE_PATH;
+        }
+
+        return $routeReferenceType;
     }
 }

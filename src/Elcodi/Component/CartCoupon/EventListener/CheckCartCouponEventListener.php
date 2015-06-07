@@ -30,7 +30,7 @@ class CheckCartCouponEventListener
      *
      * Event dispatcher for CartCoupon
      */
-    protected $cartCouponDispatcher;
+    private $cartCouponDispatcher;
 
     /**
      * Construct method

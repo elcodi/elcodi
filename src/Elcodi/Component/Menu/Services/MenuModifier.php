@@ -83,7 +83,7 @@ class MenuModifier extends AbstractMenuModifier implements MenuChangerInterface
      *
      * @return $this Self object
      */
-    protected function applyModifiersToMenuNodes(
+    private function applyModifiersToMenuNodes(
         Collection $menuNodes,
         $menuCode,
         $stage

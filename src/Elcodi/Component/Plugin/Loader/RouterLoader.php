@@ -34,21 +34,21 @@ class RouterLoader extends Loader
      *
      * Route is loaded
      */
-    protected $loaded = false;
+    private $loaded = false;
 
     /**
      * @var Plugin[]
      *
      * Plugins
      */
-    protected $plugins;
+    private $plugins;
 
     /**
      * @var KernelInterface
      *
      * Kernel
      */
-    protected $kernel;
+    private $kernel;
 
     /**
      * Construct

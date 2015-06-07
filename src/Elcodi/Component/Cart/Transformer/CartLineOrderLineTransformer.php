@@ -41,14 +41,14 @@ class CartLineOrderLineTransformer
      *
      * OrderLineEventDispatcher
      */
-    protected $orderLineEventDispatcher;
+    private $orderLineEventDispatcher;
 
     /**
      * @var OrderLineFactory
      *
      * OrderLine factory
      */
-    protected $orderLineFactory;
+    private $orderLineFactory;
 
     /**
      * Construct method

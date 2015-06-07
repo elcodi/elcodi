@@ -35,14 +35,14 @@ class AutomaticCouponApplicatorEventListener
      *
      * Coupon manager
      */
-    protected $cartCouponManager;
+    private $cartCouponManager;
 
     /**
      * @var ObjectRepository
      *
      * Coupon Repository
      */
-    protected $couponRepository;
+    private $couponRepository;
 
     /**
      * Construct method
@@ -65,6 +65,8 @@ class AutomaticCouponApplicatorEventListener
      * If any applies, it will be added to the Cart
      *
      * @param CartOnLoadEvent $event Event
+     *
+     * @return null
      */
     public function tryAutomaticCoupons(CartOnLoadEvent $event)
     {

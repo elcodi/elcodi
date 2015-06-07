@@ -38,35 +38,35 @@ class PluginManager
      *
      * Kernel
      */
-    protected $kernel;
+    private $kernel;
 
     /**
      * @var PluginRepository
      *
      * Plugin repository
      */
-    protected $pluginRepository;
+    private $pluginRepository;
 
     /**
      * @var ObjectManager
      *
      * Plugin object manager
      */
-    protected $pluginObjectManager;
+    private $pluginObjectManager;
 
     /**
      * @var PluginLoader
      *
      * Plugin Loader
      */
-    protected $pluginLoader;
+    private $pluginLoader;
 
     /**
      * @var Plugin[]
      *
      * Cached plugin list
      */
-    protected $plugins = [];
+    private $plugins = [];
 
     /**
      * Construct
@@ -144,7 +144,7 @@ class PluginManager
      *
      * @return Plugin[] Plugins indexed by namespace
      */
-    protected function getExistingPlugins()
+    private function getExistingPlugins()
     {
         $pluginsIndexed = [];
         $plugins = $this
@@ -171,7 +171,7 @@ class PluginManager
      *
      * @return Plugin Plugin instance
      */
-    protected function getPluginInstance(
+    private function getPluginInstance(
         $pluginNamespace,
         $pluginConfiguration
     ) {
@@ -196,7 +196,7 @@ class PluginManager
      *
      * @return $this Self object
      */
-    protected function savePlugin(Plugin $plugin)
+    private function savePlugin(Plugin $plugin)
     {
         $this
             ->pluginObjectManager
@@ -216,7 +216,7 @@ class PluginManager
      *
      * @return $this Self object
      */
-    protected function removePlugins($plugins)
+    private function removePlugins($plugins)
     {
         foreach ($plugins as $pluginToBeRemoved) {
             $this

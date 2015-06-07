@@ -42,21 +42,21 @@ class InputController
      *
      * Request Stack
      */
-    protected $requestStack;
+    private $requestStack;
 
     /**
      * @var MetricManager
      *
      * Metric manager
      */
-    protected $metricManager;
+    private $metricManager;
 
     /**
      * @var DateTimeFactory
      *
      * DateTime Factory
      */
-    protected $dateTimeFactory;
+    private $dateTimeFactory;
 
     /**
      * Construct

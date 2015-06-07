@@ -33,14 +33,14 @@ class RuleManager implements RuleManagerInterface
      *
      * Expression Language
      */
-    protected $expressionLanguage;
+    private $expressionLanguage;
 
     /**
      * @var ExpressionContextProviderInterface
      *
      * Context
      */
-    protected $contextProvider;
+    private $contextProvider;
 
     /**
      * Construct method

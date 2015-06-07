@@ -44,21 +44,21 @@ class MachineManager
      *
      * Machine
      */
-    protected $machine;
+    private $machine;
 
     /**
      * @var EventDispatcherInterface
      *
      * Event Dispatcher
      */
-    protected $eventDispatcher;
+    private $eventDispatcher;
 
     /**
      * @var StateLineFactory
      *
      * StateLine factory
      */
-    protected $stateLineFactory;
+    private $stateLineFactory;
 
     /**
      * Construct
@@ -210,7 +210,7 @@ class MachineManager
      * @throws StateNotReachableException    State is not reachable
      * @throws ObjectNotInitializedException Object needs to be initialized in machine
      */
-    protected function applyTransitionAction(
+    private function applyTransitionAction(
         $object,
         StateLineStack $stateLineStack,
         $transitionName,
@@ -259,7 +259,7 @@ class MachineManager
      *
      * @return $this Self object
      */
-    protected function dispatchInitializationEvents(
+    private function dispatchInitializationEvents(
         MachineInterface $machine,
         $object,
         StateLineStack $stateLineStack
@@ -289,7 +289,7 @@ class MachineManager
      *
      * @return $this Self object
      */
-    protected function dispatchTransitionEvents(
+    private function dispatchTransitionEvents(
         MachineInterface $machine,
         $object,
         StateLineStack $stateLineStack,

@@ -32,7 +32,7 @@ class APIMetricExtension extends Twig_Extension
      *
      * Metric bucket
      */
-    protected $metricBucket;
+    private $metricBucket;
 
     /**
      * Construct

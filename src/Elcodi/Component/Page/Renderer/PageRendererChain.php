@@ -32,7 +32,7 @@ class PageRendererChain implements PageRendererInterface
      *
      * Multiple page renderers to select
      */
-    protected $renderers;
+    private $renderers;
 
     /**
      * Construct

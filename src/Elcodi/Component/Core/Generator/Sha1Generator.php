@@ -31,7 +31,7 @@ class Sha1Generator implements GeneratorInterface
      *
      * Generator
      */
-    protected $generator;
+    private $generator;
 
     /**
      * Construct
@@ -52,6 +52,11 @@ class Sha1Generator implements GeneratorInterface
      */
     public function generate($length = 1)
     {
-        return hash("sha1", $this->generator->generate($length));
+        return hash(
+            "sha1",
+            $this
+                ->generator
+                ->generate($length)
+        );
     }
 }

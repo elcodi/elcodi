@@ -54,28 +54,28 @@ class CartManager
      *
      * Cart Event Dispatcher
      */
-    protected $cartEventDispatcher;
+    private $cartEventDispatcher;
 
     /**
      * @var CartLineEventDispatcher
      *
      * CartLine Event Dispatcher
      */
-    protected $cartLineEventDispatcher;
+    private $cartLineEventDispatcher;
 
     /**
      * @var CartFactory
      *
      * cartFactory
      */
-    protected $cartFactory;
+    private $cartFactory;
 
     /**
      * @var CartLineFactory
      *
      * CartLine Factory
      */
-    protected $cartLineFactory;
+    private $cartLineFactory;
 
     /**
      * Construct method
@@ -95,41 +95,6 @@ class CartManager
         $this->cartLineEventDispatcher = $cartLineEventDispatcher;
         $this->cartFactory = $cartFactory;
         $this->cartLineFactory = $cartLineFactory;
-    }
-
-    /**
-     * Adds cartLine to Cart
-     *
-     * This method dispatches all Cart Check and Load events
-     * It should NOT be used to add a Purchasable to a Cart,
-     * by manually passing a newly crafted CartLine, since
-     * no product duplication check is performed: in that
-     * case CartManager::addProduct should be used
-     *
-     * @param CartInterface     $cart     Cart
-     * @param CartLineInterface $cartLine Cart line
-     *
-     * @return $this Self object
-     */
-    protected function addLine(
-        CartInterface $cart,
-        CartLineInterface $cartLine
-    ) {
-        $cartLine->setCart($cart);
-        $cart->addCartLine($cartLine);
-
-        $this
-            ->cartLineEventDispatcher
-            ->dispatchCartLineOnAddEvent(
-                $cart,
-                $cartLine
-            );
-
-        $this
-            ->cartEventDispatcher
-            ->dispatchCartLoadEvents($cart);
-
-        return $this;
     }
 
     /**
@@ -452,6 +417,41 @@ class CartManager
                 return $this->decreaseCartLineQuantity($cartLine, $quantity);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * Adds cartLine to Cart
+     *
+     * This method dispatches all Cart Check and Load events
+     * It should NOT be used to add a Purchasable to a Cart,
+     * by manually passing a newly crafted CartLine, since
+     * no product duplication check is performed: in that
+     * case CartManager::addProduct should be used
+     *
+     * @param CartInterface     $cart     Cart
+     * @param CartLineInterface $cartLine Cart line
+     *
+     * @return $this Self object
+     */
+    private function addLine(
+        CartInterface $cart,
+        CartLineInterface $cartLine
+    ) {
+        $cartLine->setCart($cart);
+        $cart->addCartLine($cartLine);
+
+        $this
+            ->cartLineEventDispatcher
+            ->dispatchCartLineOnAddEvent(
+                $cart,
+                $cartLine
+            );
+
+        $this
+            ->cartEventDispatcher
+            ->dispatchCartLoadEvents($cart);
 
         return $this;
     }

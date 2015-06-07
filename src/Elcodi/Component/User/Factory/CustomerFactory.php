@@ -34,7 +34,7 @@ class CustomerFactory extends AbstractFactory
      *
      * Generator
      */
-    protected $generator;
+    private $generator;
 
     /**
      * Token generator

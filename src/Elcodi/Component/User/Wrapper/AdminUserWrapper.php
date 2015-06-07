@@ -39,21 +39,21 @@ class AdminUserWrapper implements WrapperInterface
      * See \Symfony\Component\Security\Core\Authentication\Token\TokenInterface::getUser()
      * for more information about it
      */
-    protected $adminUser;
+    private $adminUser;
 
     /**
      * @var AdminUserFactory
      *
      * Admin User factory
      */
-    protected $adminUserFactory;
+    private $adminUserFactory;
 
     /**
      * @var TokenStorageInterface
      *
      * Token storage
      */
-    protected $tokenStorage;
+    private $tokenStorage;
 
     /**
      * Construct method

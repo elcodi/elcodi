@@ -29,28 +29,28 @@ class Transition
      *
      * name
      */
-    protected $name;
+    private $name;
 
     /**
      * @var State
      *
      * Starting state
      */
-    protected $start;
+    private $start;
 
     /**
      * @var State
      *
      * Final state
      */
-    protected $final;
+    private $final;
 
     /**
      * @var DateTime
      *
      * DateTime of the creation of this transition
      */
-    protected $createdAt;
+    private $createdAt;
 
     /**
      * Construct method

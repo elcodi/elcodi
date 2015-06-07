@@ -31,7 +31,7 @@ class AdminUserRegisterEvent extends Event
      *
      * AdminUser
      */
-    protected $adminUser;
+    private $adminUser;
 
     /**
      * Construct method

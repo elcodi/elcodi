@@ -34,7 +34,7 @@ class ContainerProvider implements ExpressionFunctionProviderInterface
      *
      * Container
      */
-    protected $container;
+    private $container;
 
     /**
      * Construct method

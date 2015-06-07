@@ -31,7 +31,7 @@ class CheckRulesEventListener
      *
      * CartCoupon Rule managers
      */
-    protected $cartCouponRuleManager;
+    private $cartCouponRuleManager;
 
     /**
      * Construct method

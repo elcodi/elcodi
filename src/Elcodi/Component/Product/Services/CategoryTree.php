@@ -30,7 +30,7 @@ class CategoryTree
      *
      * Category repository
      */
-    protected $categoryRepository;
+    private $categoryRepository;
 
     /**
      * Construct method

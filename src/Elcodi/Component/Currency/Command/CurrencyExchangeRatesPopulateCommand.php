@@ -33,7 +33,7 @@ class CurrencyExchangeRatesPopulateCommand extends Command
      *
      * ExchangeRates populator
      */
-    protected $currencyExchangeRatesPopulator;
+    private $currencyExchangeRatesPopulator;
 
     /**
      * Construct method

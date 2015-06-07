@@ -31,7 +31,7 @@ class ShippingWrapper
      *
      * Shipping event dispatcher
      */
-    protected $shippingEventDispatcher;
+    private $shippingEventDispatcher;
 
     /**
      * Construct

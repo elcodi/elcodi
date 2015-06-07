@@ -39,35 +39,35 @@ class NewsletterManager
      *
      * Newsletter EventDispatcher
      */
-    protected $newsletterEventDispatcher;
+    private $newsletterEventDispatcher;
 
     /**
      * @var ValidatorInterface
      *
      * Validator instance
      */
-    protected $validator;
+    private $validator;
 
     /**
      * @var NewsletterSubscriptionFactory
      *
      * Newsletter Subscription Factory
      */
-    protected $newsletterSubscriptionFactory;
+    private $newsletterSubscriptionFactory;
 
     /**
      * @var NewsletterSubscriptionRepository
      *
      * NewsletterSubscription Repository
      */
-    protected $newsletterSubscriptionRepository;
+    private $newsletterSubscriptionRepository;
 
     /**
      * @var GeneratorInterface
      *
      * Hash Generator
      */
-    protected $hashGenerator;
+    private $hashGenerator;
 
     /**
      * Construct method

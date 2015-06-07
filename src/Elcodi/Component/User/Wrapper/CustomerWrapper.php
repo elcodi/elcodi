@@ -34,21 +34,21 @@ class CustomerWrapper implements WrapperInterface
      *
      * Customer
      */
-    protected $customer;
+    private $customer;
 
     /**
      * @var CustomerFactory
      *
      * Customer factory
      */
-    protected $customerFactory;
+    private $customerFactory;
 
     /**
      * @var TokenStorageInterface
      *
      * Token storage
      */
-    protected $tokenStorage;
+    private $tokenStorage;
 
     /**
      * Construct method
@@ -121,7 +121,7 @@ class CustomerWrapper implements WrapperInterface
      *
      * @return CustomerInterface Current customer in token
      */
-    protected function getCustomerFromToken()
+    private function getCustomerFromToken()
     {
         if (!($this->tokenStorage instanceof TokenStorageInterface)) {
             return null;

@@ -30,14 +30,14 @@ class RepositoryProvider
      *
      * Manager
      */
-    protected $managerProvider;
+    private $managerProvider;
 
     /**
      * @var ParameterBag
      *
      * Parameter bag
      */
-    protected $parameterBag;
+    private $parameterBag;
 
     /**
      * Construct method

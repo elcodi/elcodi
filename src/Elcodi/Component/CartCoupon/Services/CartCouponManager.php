@@ -43,28 +43,28 @@ class CartCouponManager
      *
      * CartCoupon Event dispatcher
      */
-    protected $cartCouponEventDispatcher;
+    private $cartCouponEventDispatcher;
 
     /**
      * @var CouponManager
      *
      * CouponManager
      */
-    protected $couponManager;
+    private $couponManager;
 
     /**
      * @var CouponRepository
      *
      * Coupon Repository
      */
-    protected $couponRepository;
+    private $couponRepository;
 
     /**
      * @var CartCouponRepository
      *
      * Coupon Repository
      */
-    protected $cartCouponRepository;
+    private $cartCouponRepository;
 
     /**
      * Construct method

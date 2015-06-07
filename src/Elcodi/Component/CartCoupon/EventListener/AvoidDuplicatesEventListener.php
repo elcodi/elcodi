@@ -31,7 +31,7 @@ class AvoidDuplicatesEventListener
      *
      * CartCoupon Repository
      */
-    protected $cartCouponRepository;
+    private $cartCouponRepository;
 
     /**
      * Construct method
@@ -55,7 +55,7 @@ class AvoidDuplicatesEventListener
         $cartCoupon = $this
             ->cartCouponRepository
             ->findOneBy([
-                'cart' => $event->getCart(),
+                'cart'   => $event->getCart(),
                 'coupon' => $event->getCoupon(),
             ]);
 

@@ -34,7 +34,7 @@ class CityExistsValidator extends ConstraintValidator
      *
      * A location provider
      */
-    protected $locationProvider;
+    private $locationProvider;
 
     /**
      * Builds a new class.

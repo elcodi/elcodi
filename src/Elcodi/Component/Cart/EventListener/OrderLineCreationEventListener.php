@@ -41,14 +41,14 @@ class OrderLineCreationEventListener
      *
      * ObjectManager for Product
      */
-    protected $productObjectManager;
+    private $productObjectManager;
 
     /**
      * @var ObjectManager
      *
      * ObjectManager for Variant
      */
-    protected $variantObjectManager;
+    private $variantObjectManager;
 
     /**
      * Built method
@@ -102,7 +102,7 @@ class OrderLineCreationEventListener
      *
      * @return $this Self object
      */
-    protected function flushPurchasable(PurchasableInterface $purchasable)
+    private function flushPurchasable(PurchasableInterface $purchasable)
     {
         if ($purchasable instanceof ProductInterface) {
             $this

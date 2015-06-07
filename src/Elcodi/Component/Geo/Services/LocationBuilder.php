@@ -30,14 +30,14 @@ class LocationBuilder
      *
      * Location factory
      */
-    protected $locationFactory;
+    private $locationFactory;
 
     /**
      * @var array
      *
      * Location collection
      */
-    protected $locations;
+    private $locations;
 
     /**
      * Construct

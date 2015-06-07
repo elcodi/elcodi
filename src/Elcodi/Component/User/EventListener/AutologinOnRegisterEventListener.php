@@ -45,21 +45,21 @@ class AutologinOnRegisterEventListener
      *
      * Token storage
      */
-    protected $tokenStorage;
+    private $tokenStorage;
 
     /**
      * @var EventDispatcherInterface
      *
      * Event dispatcher
      */
-    protected $dispatcher;
+    private $dispatcher;
 
     /**
      * @var string
      *
      * Provider key
      */
-    protected $providerKey;
+    private $providerKey;
 
     /**
      * Constructor
@@ -135,7 +135,7 @@ class AutologinOnRegisterEventListener
      *
      * @return UsernamePasswordToken New token
      */
-    protected function createNewToken(AbstractUserInterface $user)
+    private function createNewToken(AbstractUserInterface $user)
     {
         return new UsernamePasswordToken(
             $user,

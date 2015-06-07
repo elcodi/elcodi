@@ -31,7 +31,7 @@ class LocationToLocationDataTransformer
      *
      * LocationData factory
      */
-    protected $locationDataFactory;
+    private $locationDataFactory;
 
     /**
      * Construct

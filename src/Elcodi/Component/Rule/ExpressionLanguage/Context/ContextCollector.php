@@ -28,8 +28,10 @@ class ContextCollector implements ExpressionContextProviderInterface
 {
     /**
      * @var ExpressionContextProviderInterface[]
+     *
+     * Context providers
      */
-    protected $contextProviders;
+    private $contextProviders;
 
     /**
      * Constructor

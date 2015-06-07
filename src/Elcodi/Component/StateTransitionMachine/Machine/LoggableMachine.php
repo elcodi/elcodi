@@ -35,14 +35,14 @@ class LoggableMachine implements MachineInterface
      *
      * Machine
      */
-    protected $machine;
+    private $machine;
 
     /**
      * @var LoggerInterface
      *
      * Logger
      */
-    protected $logger;
+    private $logger;
 
     /**
      * Construct

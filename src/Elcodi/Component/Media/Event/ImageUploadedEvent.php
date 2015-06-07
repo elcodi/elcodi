@@ -31,7 +31,7 @@ class ImageUploadedEvent extends Event
      *
      * Image
      */
-    protected $image;
+    private $image;
 
     /**
      * Construct

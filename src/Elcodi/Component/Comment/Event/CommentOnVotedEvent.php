@@ -31,14 +31,14 @@ class CommentOnVotedEvent extends AbstractCommentEvent
      *
      * Vote
      */
-    protected $vote;
+    private $vote;
 
     /**
      * @var boolean
      *
      * Edited
      */
-    protected $edited;
+    private $edited;
 
     /**
      * Construct method

@@ -26,6 +26,8 @@ use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 class ConfigurationExpressionLanguageProvider implements ExpressionFunctionProviderInterface
 {
     /**
+     * Get functions defined by this Expression Language element
+     *
      * @return ExpressionFunction[] An array of Function instances
      */
     public function getFunctions()

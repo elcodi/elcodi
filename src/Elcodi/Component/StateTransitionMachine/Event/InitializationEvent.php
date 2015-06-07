@@ -32,14 +32,14 @@ class InitializationEvent extends Event
      *
      * Object
      */
-    protected $object;
+    private $object;
 
     /**
      * @var StateLineStack
      *
      * State line stack
      */
-    protected $stateLineStack;
+    private $stateLineStack;
 
     /**
      * Construct

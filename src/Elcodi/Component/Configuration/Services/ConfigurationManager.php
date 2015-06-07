@@ -39,35 +39,35 @@ class ConfigurationManager extends AbstractCacheWrapper
      *
      * Configuration Object manager
      */
-    protected $configurationObjectManager;
+    private $configurationObjectManager;
 
     /**
      * @var ConfigurationRepository
      *
      * Configuration repository
      */
-    protected $configurationRepository;
+    private $configurationRepository;
 
     /**
      * @var ConfigurationFactory
      *
      * Configuration factory
      */
-    protected $configurationFactory;
+    private $configurationFactory;
 
     /**
      * @var ParameterBagInterface
      *
      * Parameter bag
      */
-    protected $parameterBag;
+    private $parameterBag;
 
     /**
      * @var array
      *
      * Configuration elements
      */
-    protected $configurationElements;
+    private $configurationElements;
 
     /**
      * @param ObjectManager           $configurationObjectManager Configuration Object manager
@@ -305,7 +305,7 @@ class ConfigurationManager extends AbstractCacheWrapper
      *
      * @return ConfigurationInterface|null Object saved
      */
-    protected function loadConfiguration(
+    private function loadConfiguration(
         $configurationNamespace,
         $configurationKey
     ) {
@@ -326,7 +326,7 @@ class ConfigurationManager extends AbstractCacheWrapper
      *
      * @return ConfigurationManager Self object
      */
-    protected function flushConfiguration(ConfigurationInterface $configuration)
+    private function flushConfiguration(ConfigurationInterface $configuration)
     {
         $this
             ->configurationObjectManager
@@ -346,7 +346,7 @@ class ConfigurationManager extends AbstractCacheWrapper
      *
      * @return $this Self object
      */
-    protected function deleteConfiguration(ConfigurationInterface $configuration)
+    private function deleteConfiguration(ConfigurationInterface $configuration)
     {
         $this
             ->configurationObjectManager
@@ -371,7 +371,7 @@ class ConfigurationManager extends AbstractCacheWrapper
      *
      * @throws ConfigurationParameterNotFoundException Configuration parameter not found
      */
-    protected function createConfigurationInstance(
+    private function createConfigurationInstance(
         $configurationIdentifier,
         $configurationNamespace,
         $configurationKey,
@@ -414,7 +414,7 @@ class ConfigurationManager extends AbstractCacheWrapper
      *
      * @return mixed flushed value
      */
-    protected function flushConfigurationToCache(
+    private function flushConfigurationToCache(
         ConfigurationInterface $configuration,
         $configurationIdentifier
     ) {
@@ -440,7 +440,7 @@ class ConfigurationManager extends AbstractCacheWrapper
      *
      * @return string[] Identifier splitted
      */
-    protected function splitConfigurationKey($configurationIdentifier)
+    private function splitConfigurationKey($configurationIdentifier)
     {
         $configurationIdentifier = explode('.', $configurationIdentifier, 2);
 
@@ -459,7 +459,7 @@ class ConfigurationManager extends AbstractCacheWrapper
      *
      * @return mixed Configuration value unserialized
      */
-    public function unserializeValue($configurationValue, $configurationType)
+    private function unserializeValue($configurationValue, $configurationType)
     {
         switch ($configurationType) {
 
@@ -483,7 +483,7 @@ class ConfigurationManager extends AbstractCacheWrapper
      *
      * @return string Configuration value serialized
      */
-    protected function serializeValue($configurationValue, $configurationType)
+    private function serializeValue($configurationValue, $configurationType)
     {
         switch ($configurationType) {
 

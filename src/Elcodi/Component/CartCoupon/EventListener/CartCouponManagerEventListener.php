@@ -35,14 +35,14 @@ class CartCouponManagerEventListener
      *
      * cartCouponObjectManager
      */
-    protected $cartCouponObjectManager;
+    private $cartCouponObjectManager;
 
     /**
      * @var CartCouponFactory
      *
      * cartCouponFactory
      */
-    protected $cartCouponFactory;
+    private $cartCouponFactory;
 
     /**
      * Construct method

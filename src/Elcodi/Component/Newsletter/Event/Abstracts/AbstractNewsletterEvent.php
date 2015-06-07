@@ -33,7 +33,7 @@ class AbstractNewsletterEvent extends Event
      *
      * NewsletterSubscription
      */
-    protected $newsletterSubscription;
+    private $newsletterSubscription;
 
     /**
      * construct method

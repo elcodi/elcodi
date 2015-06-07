@@ -29,21 +29,21 @@ class EntitySitemapElementProvider
      *
      * Repository
      */
-    protected $repository;
+    private $repository;
 
     /**
      * @var string
      *
      * Method
      */
-    protected $method;
+    private $method;
 
     /**
      * @var array
      *
      * Arguments
      */
-    protected $arguments;
+    private $arguments;
 
     /**
      * Construct method

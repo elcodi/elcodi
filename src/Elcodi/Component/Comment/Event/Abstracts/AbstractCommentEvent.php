@@ -31,7 +31,7 @@ class AbstractCommentEvent extends Event
      *
      * Comment
      */
-    protected $comment;
+    private $comment;
 
     /**
      * Construct method

@@ -32,21 +32,21 @@ class CommentManager extends AbstractCacheWrapper
      *
      * Comment event dispatcher
      */
-    protected $commentEventDispatcher;
+    private $commentEventDispatcher;
 
     /**
      * @var ObjectDirector
      *
      * Comment Director
      */
-    protected $commentDirector;
+    private $commentDirector;
 
     /**
      * @var CommentParser
      *
      * Comment parser
      */
-    protected $commentParser;
+    private $commentParser;
 
     /**
      * Construct method

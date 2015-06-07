@@ -37,42 +37,42 @@ class MachineBuilder
      *
      * Machine factory
      */
-    protected $machineFactory;
+    private $machineFactory;
 
     /**
      * @var string
      *
      * Machine id
      */
-    protected $machineId;
+    private $machineId;
 
     /**
      * @var array
      *
      * Configuration
      */
-    protected $configuration;
+    private $configuration;
 
     /**
      * @var TransitionChain
      *
      * Transition chain
      */
-    protected $transitionChain;
+    private $transitionChain;
 
     /**
      * @var string
      *
      * Point of entry
      */
-    protected $pointOfEntry;
+    private $pointOfEntry;
 
     /**
      * @var boolean
      *
      * Can be cyclic
      */
-    protected $canBeCyclic;
+    private $canBeCyclic;
 
     /**
      * construct method
@@ -172,7 +172,7 @@ class MachineBuilder
      *
      * @throws TransitionNotValidException Transition not valid
      */
-    protected function checkTransitionsConfiguration(array $configuration)
+    private function checkTransitionsConfiguration(array $configuration)
     {
         foreach ($configuration as $transitionConfiguration) {
             if (
@@ -205,7 +205,7 @@ class MachineBuilder
      *
      * @throws InvalidPointOfEntryException Invalid point of entry
      */
-    protected function checkPointOfEntry(array $configuration, $pointOfEntry)
+    private function checkPointOfEntry(array $configuration, $pointOfEntry)
     {
         foreach ($configuration as $transitionConfiguration) {
             if ($transitionConfiguration[0] === $pointOfEntry) {
@@ -227,7 +227,7 @@ class MachineBuilder
      *
      * @throws CyclesNotAllowedException Cycles found not allowed
      */
-    protected function checkCycles(
+    private function checkCycles(
         array $configuration,
         $node,
         array &$nodesVisited
@@ -262,7 +262,7 @@ class MachineBuilder
      *
      * @return TransitionChain Transition chain compiled
      */
-    protected function compileTransitions(array $configuration)
+    private function compileTransitions(array $configuration)
     {
         $transitionChain = TransitionChain::create();
 
@@ -299,7 +299,7 @@ class MachineBuilder
      * @throws InconsistentTransitionConfigurationException Duplicated pair of
      *                                                      state-transition
      */
-    protected function checkTransitionDuplicates(TransitionChain $transitionChain)
+    private function checkTransitionDuplicates(TransitionChain $transitionChain)
     {
         $states = [];
 
@@ -336,7 +336,7 @@ class MachineBuilder
      *
      * @throws StateNotValidException state is not valid
      */
-    protected function checkStates(TransitionChain $transitionChain)
+    private function checkStates(TransitionChain $transitionChain)
     {
         /**
          * @var Transition $transition

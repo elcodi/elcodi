@@ -42,21 +42,21 @@ class ObjectDirector
      *
      * Manager
      */
-    protected $manager;
+    private $manager;
 
     /**
      * @var ObjectRepository
      *
      * Repository
      */
-    protected $repository;
+    private $repository;
 
     /**
      * @var AbstractFactory
      *
      * Factory
      */
-    protected $factory;
+    private $factory;
 
     /**
      * Construct

@@ -34,7 +34,7 @@ class SitemapDumpCommand extends Command
      *
      * Container
      */
-    protected $container;
+    private $container;
 
     /**
      * Construct

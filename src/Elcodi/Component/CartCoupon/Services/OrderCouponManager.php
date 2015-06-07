@@ -41,7 +41,7 @@ class OrderCouponManager
      *
      * orderCouponRepository
      */
-    protected $orderCouponRepository;
+    private $orderCouponRepository;
 
     /**
      * construct method

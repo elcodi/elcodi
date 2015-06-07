@@ -39,14 +39,14 @@ class FileManager
      *
      * Filesystem
      */
-    public $filesystem;
+    private $filesystem;
 
     /**
      * @var FileIdentifierTransformerInterface
      *
      * File identifier Transformer
      */
-    protected $fileIdentifierTransformer;
+    private $fileIdentifierTransformer;
 
     /**
      * Construct method

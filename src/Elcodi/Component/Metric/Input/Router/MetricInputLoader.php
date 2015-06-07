@@ -33,21 +33,21 @@ class MetricInputLoader implements LoaderInterface
      *
      * Input route name
      */
-    protected $inputControllerRouteName;
+    private $inputControllerRouteName;
 
     /**
      * @var string
      *
      * Input controller route
      */
-    protected $inputResizeControllerRoute;
+    private $inputResizeControllerRoute;
 
     /**
      * @var boolean
      *
      * Route is loaded
      */
-    protected $loaded = false;
+    private $loaded = false;
 
     /**
      * Construct method

@@ -29,14 +29,14 @@ class SitemapProfile
      *
      * Languages
      */
-    protected $languages;
+    private $languages;
 
     /**
      * @var SitemapDumper[]
      *
      * Array of SitemapDumpers
      */
-    protected $sitemapDumpers;
+    private $sitemapDumpers;
 
     /**
      * Construct

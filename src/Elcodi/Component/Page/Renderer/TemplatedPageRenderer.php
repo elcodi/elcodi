@@ -37,21 +37,21 @@ class TemplatedPageRenderer implements PageRendererInterface
      *
      * Render engine
      */
-    protected $engine;
+    private $engine;
 
     /**
      * @var string
      *
      * Path of the template to render
      */
-    protected $templatePath;
+    private $templatePath;
 
     /**
      * @var array
      *
      * Bundles to search
      */
-    protected $bundles;
+    private $bundles;
 
     /**
      * Construct
@@ -91,11 +91,23 @@ class TemplatedPageRenderer implements PageRendererInterface
     }
 
     /**
+     * Check for render support of a page
+     *
+     * @param PageInterface $page Page to check support
+     *
+     * @return boolean
+     */
+    public function supports(PageInterface $page)
+    {
+        return $page instanceof PageInterface;
+    }
+
+    /**
      * Search for the template in every specified bundle
      *
      * @return string
      */
-    protected function locateTemplate()
+    private function locateTemplate()
     {
         foreach ($this->bundles as $bundleName) {
             $templateName = "{$bundleName}:{$this->templatePath}";
@@ -109,17 +121,5 @@ class TemplatedPageRenderer implements PageRendererInterface
             'Template "%s" not found',
             $this->templatePath
         ));
-    }
-
-    /**
-     * Check for render support of a page
-     *
-     * @param PageInterface $page Page to check support
-     *
-     * @return boolean
-     */
-    public function supports(PageInterface $page)
-    {
-        return $page instanceof PageInterface;
     }
 }

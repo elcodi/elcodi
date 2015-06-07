@@ -17,7 +17,6 @@
 
 namespace Elcodi\Component\Geo\Populator\Adapters;
 
-use DateTime;
 use Goodby\CSV\Import\Standard\Interpreter;
 use Goodby\CSV\Import\Standard\Lexer;
 use Goodby\CSV\Import\Standard\LexerConfig;
@@ -42,21 +41,21 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
      *
      * Extractor
      */
-    protected $extractor;
+    private $extractor;
 
     /**
      * @var LocationBuilder
      *
      * Location Builder
      */
-    protected $locationBuilder;
+    private $locationBuilder;
 
     /**
      * @var DateTimeFactory
      *
      * DateTime Factory
      */
-    protected $dateTimeFactory;
+    private $dateTimeFactory;
 
     /**
      * Constructor
@@ -107,7 +106,7 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
      *
      * @return string
      */
-    protected function downloadFile($countryCode)
+    private function downloadFile($countryCode)
     {
         $tempname = sys_get_temp_dir() . '/elcodi-locator-geonames-' . $countryCode . '.zip';
         if (!file_exists($tempname)) {
@@ -135,7 +134,7 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
      *
      * @return string Pathname of the resulting file
      */
-    protected function extractFile($tempname)
+    private function extractFile($tempname)
     {
         $extractedFiles = $this
             ->extractor
@@ -161,7 +160,7 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
      *
      * @return LocationInterface[] Root locations
      */
-    protected function loadLocationsFrom(
+    private function loadLocationsFrom(
         $countryCode,
         $pathname,
         OutputInterface $output
@@ -265,7 +264,7 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
      *
      * @return string Normalized id
      */
-    protected function normalizeId($id)
+    private function normalizeId($id)
     {
         return strtolower(trim(preg_replace('~[^a-zA-Z\d]{1}~', '', $id)));
     }
@@ -275,7 +274,7 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
      *
      * @return string[] Country code and country name
      */
-    protected function getCountryInfo($countryCode)
+    private function getCountryInfo($countryCode)
     {
         $countryNames = [
             "AD" => ["AD", "Andorra"],

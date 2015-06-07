@@ -31,7 +31,7 @@ class UserRegisterEvent extends Event
      *
      * User
      */
-    protected $user;
+    private $user;
 
     /**
      * Construct method

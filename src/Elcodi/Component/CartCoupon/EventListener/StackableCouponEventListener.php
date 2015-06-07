@@ -32,12 +32,13 @@ class StackableCouponEventListener
      *
      * CartCoupon Repository
      */
-    protected $cartCouponRepository;
+    private $cartCouponRepository;
 
     /**
      * Construct method
      *
-     * @param CartCouponRepository $cartCouponRepository Repository where to find cartcoupons
+     * @param CartCouponRepository $cartCouponRepository Repository where to
+     *                                                   find cartcoupons
      */
     public function __construct(CartCouponRepository $cartCouponRepository)
     {
@@ -45,9 +46,12 @@ class StackableCouponEventListener
     }
 
     /**
-     * Check if this coupon can be applied when other coupons had previously been applied
+     * Check if this coupon can be applied when other coupons had previously
+     * been applied
      *
      * @param CartCouponOnApplyEvent $event Event
+     *
+     * @return null
      *
      * @throws CouponNotStackableException
      */
@@ -59,30 +63,34 @@ class StackableCouponEventListener
                 'cart' => $event->getCart(),
             ]);
 
-        /*
+        /**
          * If there are no previously applied coupons we can skip the check
          */
         if (0 == count($cartCoupons)) {
-            return;
+            return null;
         }
 
         $coupon = $event->getCoupon();
 
         $appliedCouponsCanBeStacked = array_reduce(
             $cartCoupons,
-            function ($previousCouponsAreStackable, CartCouponInterface $cc) {
+            function ($previousCouponsAreStackable, CartCouponInterface $cartCoupon) {
 
-                return $previousCouponsAreStackable && $cc->getCoupon()->getStackable();
+                return
+                    $previousCouponsAreStackable &&
+                    $cartCoupon
+                        ->getCoupon()
+                        ->getStackable();
             },
             true
         );
 
-        /*
+        /**
          * Checked coupon can be stackable and everithing that was
-         * previosuly applied is also stackable
+         * previously applied is also stackable
          */
         if ($coupon->getStackable() && $appliedCouponsCanBeStacked) {
-            return;
+            return null;
         }
 
         throw new CouponNotStackableException();

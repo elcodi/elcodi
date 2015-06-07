@@ -31,14 +31,14 @@ class ManagerProvider
      *
      * Manager
      */
-    protected $manager;
+    private $manager;
 
     /**
      * @var ParameterBag
      *
      * Parameter bag
      */
-    protected $parameterBag;
+    private $parameterBag;
 
     /**
      * Construct method

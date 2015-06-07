@@ -30,7 +30,7 @@ class EmptyMoneyWrapper implements WrapperInterface
      *
      * Default currency wrapper
      */
-    protected $defaultCurrencyWrapper;
+    private $defaultCurrencyWrapper;
 
     /**
      * Currency wrapper constructor

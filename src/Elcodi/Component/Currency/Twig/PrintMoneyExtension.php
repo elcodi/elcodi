@@ -42,21 +42,21 @@ class PrintMoneyExtension extends Twig_Extension
      *
      * Currency converter
      */
-    protected $currencyConverter;
+    private $currencyConverter;
 
     /**
      * @var CurrencyWrapper
      *
      * Currency Wrapper
      */
-    protected $currencyWrapper;
+    private $currencyWrapper;
 
     /**
      * @var LocaleInterface
      *
      * Locale
      */
-    protected $locale;
+    private $locale;
 
     /**
      * Construct method

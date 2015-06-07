@@ -30,14 +30,14 @@ class SitemapBuilder
      *
      * sitemapElementGenerators
      */
-    protected $sitemapElementGenerators;
+    private $sitemapElementGenerators;
 
     /**
      * @var SitemapRendererInterface
      *
      * sitemapRenderer
      */
-    protected $sitemapRenderer;
+    private $sitemapRenderer;
 
     /**
      * Construct

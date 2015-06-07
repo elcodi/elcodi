@@ -27,42 +27,42 @@ class ApiUrls
      *
      * getRootLocations url
      */
-    protected $getRootLocationsUrl;
+    private $getRootLocationsUrl;
 
     /**
      * @var string
      *
      * getChildren url
      */
-    protected $getChildrenUrl;
+    private $getChildrenUrl;
 
     /**
      * @var string
      *
      * getParents url
      */
-    protected $getParentsUrl;
+    private $getParentsUrl;
 
     /**
      * @var string
      *
      * getLocation url
      */
-    protected $getLocationUrl;
+    private $getLocationUrl;
 
     /**
      * @var string
      *
      * getHierarchy url
      */
-    protected $getHierarchyUrl;
+    private $getHierarchyUrl;
 
     /**
      * @var string
      *
      * in url
      */
-    protected $inUrl;
+    private $inUrl;
 
     /**
      * Create new Api url

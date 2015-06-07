@@ -35,7 +35,7 @@ class ConfigurationExtension extends Twig_Extension
      *
      * Configuration manager
      */
-    protected $configurationManager;
+    private $configurationManager;
 
     /**
      * Constructor

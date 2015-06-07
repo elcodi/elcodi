@@ -30,21 +30,21 @@ class SitemapDumper
      *
      * Sitemap Builder
      */
-    protected $sitemapBuilder;
+    private $sitemapBuilder;
 
     /**
      * @var SitemapDumperInterface
      *
      * Sitemap Dumper
      */
-    protected $sitemapDumper;
+    private $sitemapDumper;
 
     /**
      * @var string
      *
      * Path
      */
-    protected $path;
+    private $path;
 
     /**
      * @param SitemapBuilder         $sitemapBuilder Sitemap Builder
@@ -91,7 +91,7 @@ class SitemapDumper
      *
      * @return string Path resolved
      */
-    protected function resolvePathWithLanguage($path, $language)
+    private function resolvePathWithLanguage($path, $language)
     {
         return str_replace('{_locale}', $language, $path);
     }

@@ -32,14 +32,14 @@ class StoreWrapper implements WrapperInterface
      *
      * Store
      */
-    protected $store;
+    private $store;
 
     /**
      * @var StoreRepository
      *
      * Store repository
      */
-    protected $storeRepository;
+    private $storeRepository;
 
     /**
      * Construct

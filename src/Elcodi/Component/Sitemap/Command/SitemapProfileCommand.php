@@ -33,7 +33,7 @@ class SitemapProfileCommand extends Command
      *
      * Container
      */
-    protected $container;
+    private $container;
 
     /**
      * Construct

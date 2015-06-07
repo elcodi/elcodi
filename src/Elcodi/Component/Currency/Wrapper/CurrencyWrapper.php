@@ -33,28 +33,28 @@ class CurrencyWrapper implements WrapperInterface
      *
      * Currency Session Manager
      */
-    protected $currencySessionManager;
+    private $currencySessionManager;
 
     /**
      * @var CurrencyRepository
      *
      * Currency repository
      */
-    protected $currencyRepository;
+    private $currencyRepository;
 
     /**
      * @var DefaultCurrencyWrapper
      *
      * Default currency wrapper
      */
-    protected $defaultCurrencyWrapper;
+    private $defaultCurrencyWrapper;
 
     /**
      * @var CurrencyInterface
      *
      * Currency
      */
-    protected $currency;
+    private $currency;
 
     /**
      * Currency wrapper constructor
@@ -103,13 +103,25 @@ class CurrencyWrapper implements WrapperInterface
     }
 
     /**
+     * Clean loaded object in order to reload it again.
+     *
+     * @return $this Self object
+     */
+    public function clean()
+    {
+        $this->currency = null;
+
+        return $this;
+    }
+
+    /**
      * Load currency from session
      *
      * @return CurrencyInterface|null Currency
      *
      * @throws CurrencyNotAvailableException No currency available
      */
-    protected function loadCurrencyFromSession()
+    private function loadCurrencyFromSession()
     {
         $currencyIdInSession = $this
             ->currencySessionManager
@@ -129,7 +141,7 @@ class CurrencyWrapper implements WrapperInterface
      *
      * @return $this Self object
      */
-    protected function saveCurrencyToSession(CurrencyInterface $currency)
+    private function saveCurrencyToSession(CurrencyInterface $currency)
     {
         $this
             ->currencySessionManager
@@ -143,22 +155,10 @@ class CurrencyWrapper implements WrapperInterface
      *
      * @return CurrencyInterface Currency
      */
-    protected function loadDefaultCurrency()
+    private function loadDefaultCurrency()
     {
         return $this
             ->defaultCurrencyWrapper
             ->get();
-    }
-
-    /**
-     * Clean loaded object in order to reload it again.
-     *
-     * @return $this Self object
-     */
-    public function clean()
-    {
-        $this->currency = null;
-
-        return $this;
     }
 }

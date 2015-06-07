@@ -33,7 +33,7 @@ class MinimumPriceCouponEventListener
      *
      * Currency converter
      */
-    protected $currencyConverter;
+    private $currencyConverter;
 
     /**
      * Construct
@@ -49,6 +49,8 @@ class MinimumPriceCouponEventListener
      * Check if cart meets minimum price requirements for a coupon
      *
      * @param CartCouponOnCheckEvent $event Event
+     *
+     * @return null
      *
      * @throws CouponBelowMinimumPurchaseException Minimum value not reached
      */

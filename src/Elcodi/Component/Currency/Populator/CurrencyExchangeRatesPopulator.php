@@ -38,56 +38,56 @@ class CurrencyExchangeRatesPopulator
      *
      * CurrencyExchangeRate object manager
      */
-    protected $currencyExchangeRateObjectManager;
+    private $currencyExchangeRateObjectManager;
 
     /**
      * @var ManagerRegistry
      *
      * Manager Registry
      */
-    protected $managerRegistry;
+    private $managerRegistry;
 
     /**
      * @var CurrencyRepository
      *
      * Currency repository
      */
-    protected $currencyRepository;
+    private $currencyRepository;
 
     /**
      * @var CurrencyExchangeRateRepository
      *
      * CurrencyExchangeRate repository
      */
-    protected $currencyExchangeRateRepository;
+    private $currencyExchangeRateRepository;
 
     /**
      * @var CurrencyExchangeRateFactory
      *
      * CurrencyExchangeRate factory
      */
-    protected $currencyExchangeRateFactory;
+    private $currencyExchangeRateFactory;
 
     /**
      * @var CurrencyExchangeRatesProvider
      *
      * CurrencyExchangeRates provider
      */
-    protected $currencyExchangeRatesProvider;
+    private $currencyExchangeRatesProvider;
 
     /**
      * @var ObjectManager
      *
      * ExchangeRate object manager
      */
-    protected $exchangeRateObjectManager;
+    private $exchangeRateObjectManager;
 
     /**
      * @var string
      *
      * Default currency
      */
-    protected $defaultCurrency;
+    private $defaultCurrency;
 
     /**
      * Construct method

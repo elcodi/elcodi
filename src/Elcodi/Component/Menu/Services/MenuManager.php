@@ -36,35 +36,35 @@ class MenuManager extends AbstractCacheWrapper
      *
      * Menu Repository
      */
-    protected $menuRepository;
+    private $menuRepository;
 
     /**
      * @var ObjectManager
      *
      * Menu Object manager
      */
-    protected $menuObjectManager;
+    private $menuObjectManager;
 
     /**
      * @var MenuChangerInterface[]
      *
      * Menu changers
      */
-    protected $menuChangers;
+    private $menuChangers;
 
     /**
      * @var string
      *
      * key
      */
-    protected $key;
+    private $key;
 
     /**
      * @var Array
      *
      * menus
      */
-    protected $menus;
+    private $menus;
 
     /**
      * Construct method
@@ -77,8 +77,7 @@ class MenuManager extends AbstractCacheWrapper
         MenuRepository $menuRepository,
         ObjectManager $menuObjectManager,
         $key
-    )
-    {
+    ) {
         $this->menuRepository = $menuRepository;
         $this->menuObjectManager = $menuObjectManager;
         $this->key = $key;
@@ -149,13 +148,30 @@ class MenuManager extends AbstractCacheWrapper
     }
 
     /**
+     * Save menu configuration to memory
+     *
+     * @param string $menuCode Code of the menu
+     *
+     * @return $this Self object
+     */
+    public function removeFromCache($menuCode)
+    {
+        $key = $this->getCacheKey($menuCode);
+        $this
+            ->cache
+            ->delete($key);
+
+        return $this;
+    }
+
+    /**
      * Try to get menu configuration from memory
      *
      * @param string $menuCode Code of the menu
      *
      * @return MenuInterface|null Menu configuration
      */
-    protected function loadFromMemory($menuCode)
+    private function loadFromMemory($menuCode)
     {
         return isset($this->menus[$menuCode])
             ? $this->menus[$menuCode]
@@ -169,7 +185,7 @@ class MenuManager extends AbstractCacheWrapper
      *
      * @return $this Self object
      */
-    protected function saveToMemory(MenuInterface $menu)
+    private function saveToMemory(MenuInterface $menu)
     {
         $this->menus[$menu->getCode()] = $menu;
 
@@ -183,9 +199,9 @@ class MenuManager extends AbstractCacheWrapper
      *
      * @return MenuInterface|null Menu
      */
-    protected function loadFromCache($key)
+    private function loadFromCache($key)
     {
-        $encoded = (string)$this
+        $encoded = (string) $this
             ->cache
             ->fetch($key);
 
@@ -210,7 +226,7 @@ class MenuManager extends AbstractCacheWrapper
      *
      * @return $this Self object
      */
-    protected function saveToCache($key, MenuInterface $menu)
+    private function saveToCache($key, MenuInterface $menu)
     {
         $encodedMenu = $this
             ->encoder
@@ -224,23 +240,6 @@ class MenuManager extends AbstractCacheWrapper
     }
 
     /**
-     * Save menu configuration to memory
-     *
-     * @param string $menuCode Code of the menu
-     *
-     * @return $this Self object
-     */
-    public function removeFromCache($menuCode)
-    {
-        $key = $this->getCacheKey($menuCode);
-        $this
-            ->cache
-            ->delete($key);
-
-        return $this;
-    }
-
-    /**
      * Build menu
      *
      * @param string $menuCode Menu code
@@ -249,7 +248,7 @@ class MenuManager extends AbstractCacheWrapper
      *
      * @throws Exception
      */
-    protected function buildMenuFromRepository($menuCode)
+    private function buildMenuFromRepository($menuCode)
     {
         $menu = $this
             ->menuRepository
@@ -280,11 +279,10 @@ class MenuManager extends AbstractCacheWrapper
      *
      * @return $this Self object
      */
-    protected function applyMenuChangers(
+    private function applyMenuChangers(
         MenuInterface $menu,
         $stage
-    )
-    {
+    ) {
         foreach ($this->menuChangers as $menuChanger) {
             $menuChanger
                 ->applyChange(
@@ -303,7 +301,7 @@ class MenuManager extends AbstractCacheWrapper
      *
      * @return string Cache key
      */
-    protected function getCacheKey($menuCode)
+    private function getCacheKey($menuCode)
     {
         return "{$this->key}-{$menuCode}";
     }

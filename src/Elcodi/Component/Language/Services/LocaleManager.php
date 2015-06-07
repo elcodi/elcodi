@@ -32,35 +32,35 @@ class LocaleManager
      *
      * Locale
      */
-    protected $locale;
+    private $locale;
 
     /**
      * @var string
      *
      * Encoding
      */
-    protected $encoding;
+    private $encoding;
 
     /**
      * @var array
      *
      * Locale information
      */
-    protected $localeInfo;
+    private $localeInfo;
 
     /**
      * @var array
      *
      * Locale to country associations
      */
-    protected $localeCountryAssociations;
+    private $localeCountryAssociations;
 
     /**
      * @var array
      *
      * Locale to translation associations
      */
-    protected $localeTranslationAssociations;
+    private $localeTranslationAssociations;
 
     /**
      * Construct method

@@ -30,7 +30,7 @@ class CommentCacheInvalidationEventListener
      *
      * Comment cache
      */
-    protected $commentCache;
+    private $commentCache;
 
     /**
      * Construct

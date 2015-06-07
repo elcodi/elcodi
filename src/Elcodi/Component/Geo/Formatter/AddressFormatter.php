@@ -97,7 +97,7 @@ class AddressFormatter
      *
      * @return string
      */
-    protected function buildFullAddressString(
+    private function buildFullAddressString(
         AddressInterface $address,
         array $cityHierarchy
     ) {

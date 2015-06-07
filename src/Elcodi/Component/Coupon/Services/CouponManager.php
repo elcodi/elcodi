@@ -39,21 +39,21 @@ class CouponManager
      *
      * Coupon Factory
      */
-    protected $couponFactory;
+    private $couponFactory;
 
     /**
      * @var GeneratorInterface
      *
      * Coupon Code generator
      */
-    protected $couponCodeGenerator;
+    private $couponCodeGenerator;
 
     /**
      * @var DateTimeFactory
      *
      * DateTime Factory
      */
-    protected $dateTimeFactory;
+    private $dateTimeFactory;
 
     /**
      * Construct method
@@ -168,7 +168,7 @@ class CouponManager
      *
      * @return boolean
      */
-    protected function isActive(CouponInterface $coupon, \DateTime $now = null)
+    private function isActive(CouponInterface $coupon, \DateTime $now = null)
     {
         if (!$coupon->isEnabled()) {
             return false;
@@ -197,7 +197,7 @@ class CouponManager
      *
      * @return boolean
      */
-    protected function canBeUsed(CouponInterface $coupon)
+    private function canBeUsed(CouponInterface $coupon)
     {
         $count = $coupon->getCount();
 

@@ -32,14 +32,14 @@ class LocaleProvider
      *
      * Request stack
      */
-    protected $requestStack;
+    private $requestStack;
 
     /**
      * @var string
      *
      * Default locale
      */
-    protected $defaultLocale;
+    private $defaultLocale;
 
     /**
      * Construct method

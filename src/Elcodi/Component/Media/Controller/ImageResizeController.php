@@ -38,42 +38,42 @@ class ImageResizeController
      *
      * Request stack
      */
-    protected $requestStack;
+    private $requestStack;
 
     /**
      * @var ImageRepository
      *
      * Image repository
      */
-    protected $imageRepository;
+    private $imageRepository;
 
     /**
      * @var ImageManager
      *
      * Image Manager
      */
-    protected $imageManager;
+    private $imageManager;
 
     /**
      * @var ImageEtagTransformerInterface
      *
      * Image ETag Transformer
      */
-    protected $imageEtagTransformer;
+    private $imageEtagTransformer;
 
     /**
      * @var integer
      *
      * Max size
      */
-    protected $maxAge;
+    private $maxAge;
 
     /**
      * @var integer
      *
      * Shared max size
      */
-    protected $sharedMaxAge;
+    private $sharedMaxAge;
 
     /**
      * Construct method
@@ -153,7 +153,7 @@ class ImageResizeController
      *
      * @return Response Created response
      */
-    protected function buildResponseFromImage(
+    private function buildResponseFromImage(
         Request $request,
         ImageInterface $image
     ) {

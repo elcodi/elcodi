@@ -48,35 +48,35 @@ class CartWrapper implements WrapperInterface
      *
      * Cart EventDispatcher
      */
-    protected $cartEventDispatcher;
+    private $cartEventDispatcher;
 
     /**
      * @var CartFactory
      *
      * Cart Factory
      */
-    protected $cartFactory;
+    private $cartFactory;
 
     /**
      * @var CartSessionWrapper
      *
      * Cart Session Wrapper
      */
-    protected $cartSessionWrapper;
+    private $cartSessionWrapper;
 
     /**
      * @var CustomerWrapper
      *
      * CustomerWrapper
      */
-    protected $customerWrapper;
+    private $customerWrapper;
 
     /**
      * @var CartInterface
      *
      * Cart loaded
      */
-    protected $cart;
+    private $cart;
 
     /**
      * Construct method
@@ -155,7 +155,7 @@ class CartWrapper implements WrapperInterface
      *
      * @return CartInterface Cart
      */
-    protected function getCustomerCart(CustomerInterface $customer)
+    private function getCustomerCart(CustomerInterface $customer)
     {
         $customerCart = $customer
             ->getCarts()
@@ -180,7 +180,7 @@ class CartWrapper implements WrapperInterface
      *
      * @return CartInterface Cart resolved
      */
-    protected function resolveCarts(
+    private function resolveCarts(
         CustomerInterface $customer,
         CartInterface $cartFromCustomer = null,
         CartInterface $cartFromSession = null
