@@ -48,3 +48,15 @@ services:
         factory:
             - @elcodi.store_template
             - getBundleName
+
+    elcodi.store_default_language:
+        class: Elcodi\Component\Language\Entity\Interfaces\LanguageInterface
+        factory:
+            - @elcodi.store
+            - getDefaultLanguage
+
+    elcodi.store_default_currency:
+        class: Elcodi\Component\Language\Entity\Interfaces\LanguageInterface
+        factory:
+            - @elcodi.store
+            - getDefaultCurrency

@@ -59,6 +59,10 @@ class ElcodiStoreBundle extends Bundle implements DependentBundleInterface
     public static function getBundleDependencies()
     {
         return [
+
+            'Elcodi\Bundle\GeoBundle\ElcodiGeoBundle',
+            'Elcodi\Bundle\LanguageBundle\ElcodiLanguageBundle',
+            'Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
     }
