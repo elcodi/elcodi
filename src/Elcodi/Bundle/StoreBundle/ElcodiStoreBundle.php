@@ -59,10 +59,6 @@ class ElcodiStoreBundle extends Bundle implements DependentBundleInterface
     public static function getBundleDependencies()
     {
         return [
-
-            'Elcodi\Bundle\GeoBundle\ElcodiGeoBundle',
-            'Elcodi\Bundle\LanguageBundle\ElcodiLanguageBundle',
-            'Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
     }
@@ -73,9 +69,11 @@ class ElcodiStoreBundle extends Bundle implements DependentBundleInterface
      * Disabled as commands are registered as services.
      *
      * @param Application $application An Application instance
+     *
+     * @return null
      */
     public function registerCommands(Application $application)
     {
-        return;
+        return null;
     }
 }
