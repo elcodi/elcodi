@@ -104,7 +104,7 @@ class PluginManager
         $pluginsLoaded = [];
 
         /**
-         * @var Bundle $plugin
+         * @var Bundle|Plugin $plugin
          */
         foreach ($pluginBundles as $plugin) {
             $pluginConfiguration = $this

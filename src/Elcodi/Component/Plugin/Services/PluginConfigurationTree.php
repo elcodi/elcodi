@@ -23,9 +23,9 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Elcodi\Component\Plugin\PluginTypes;
 
 /**
- * Class PluginConfiguration
+ * Class PluginConfigurationTree
  */
-class PluginConfiguration implements ConfigurationInterface
+class PluginConfigurationTree implements ConfigurationInterface
 {
     /**
      * Generates the configuration tree builder.
