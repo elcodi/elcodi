@@ -82,7 +82,7 @@ trait SubnodesTrait
     {
         $sort = \Doctrine\Common\Collections\Criteria::create();
         $sort->orderBy([
-            'priority' => \Doctrine\Common\Collections\Criteria::ASC,
+            'priority' => \Doctrine\Common\Collections\Criteria::DESC,
         ]);
 
         return $this

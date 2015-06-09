@@ -36,18 +36,21 @@ class MenuModifier extends AbstractMenuModifier implements MenuChangerInterface
      * @param MenuModifierInterface $menuModifier Menu modifier
      * @param array                 $menus        Menus
      * @param string                $stage        Stage
+     * @param integer               $priority     Priority
      *
      * @return $this Self object
      */
     public function addMenuBuilder(
         MenuModifierInterface $menuModifier,
         array $menus,
-        $stage
+        $stage,
+        $priority
     ) {
         $this->addElement(
             $menuModifier,
             $menus,
-            $stage
+            $stage,
+            $priority
         );
 
         return $this;

@@ -18,7 +18,6 @@
 namespace Elcodi\Bundle\PluginBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-use Symfony\Component\Config\Resource\ResourceInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -165,7 +164,7 @@ class ElcodiPluginExtension extends AbstractExtension
      *
      * @param Bundle $plugin Plugin
      *
-     * @return ResourceInterface|null Resource
+     * @return array Plugin configuration
      */
     protected function processPlugin(Bundle $plugin)
     {

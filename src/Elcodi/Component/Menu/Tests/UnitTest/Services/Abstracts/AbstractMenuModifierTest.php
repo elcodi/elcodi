@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Menu\Tests\UnitTest\Services\Abstracts;
 
 use PHPUnit_Framework_TestCase;
+use stdClass;
 
 /**
  * Class AbstractMenuModifierTest
@@ -153,5 +154,40 @@ class AbstractMenuModifierTest extends PHPUnit_Framework_TestCase
         $this->assertEmpty(
             $menuModifier->getElementsByMenuCodeAndStage('menu3', 'post')
         );
+    }
+
+    /**
+     * Test priorities
+     */
+    public function testPriorities()
+    {
+        $menuModifier = $this->getMockForAbstractClass(
+            'Elcodi\Component\Menu\Services\Abstracts\AbstractMenuModifier'
+        );
+
+        $object1 = new stdClass();
+        $object1->id = 1;
+
+        $object2 = new stdClass();
+        $object2->id = 2;
+
+        $object3 = new stdClass();
+        $object3->id = 3;
+
+        $object4 = new stdClass();
+        $object4->id = 4;
+
+        $menuModifier
+            ->addElement($object1, [], 'pre', 3)
+            ->addElement($object2, [], 'pre', 7)
+            ->addElement($object3, [], 'pre', 0)
+            ->addElement($object4, [], 'pre', 4);
+
+        $elements = $menuModifier->getElementsByMenuCodeAndStage('menu1', 'pre');
+
+        $this->assertEquals(2, $elements[0]->id);
+        $this->assertEquals(4, $elements[1]->id);
+        $this->assertEquals(1, $elements[2]->id);
+        $this->assertEquals(3, $elements[3]->id);
     }
 }

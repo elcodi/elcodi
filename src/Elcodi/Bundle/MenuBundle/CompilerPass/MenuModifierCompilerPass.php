@@ -62,6 +62,9 @@ class MenuModifierCompilerPass implements CompilerPassInterface
                         isset($tag['stage'])
                             ? $tag['stage']
                             : ElcodiMenuStages::BEFORE_CACHE,
+                        isset($tag['priority'])
+                            ? $tag['priority']
+                            : 0,
                     ]
                 );
             }
