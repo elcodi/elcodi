@@ -3,7 +3,7 @@ services:
     #
     # Wrappers
     #
-    elcodi.wrapper.payment:
+    elcodi.wrapper.payment_methods:
         class: Elcodi\Component\Payment\Wrapper\PaymentWrapper
         arguments:
             - @elcodi.event_dispatcher.payment

@@ -56,6 +56,10 @@ class ShippingExtension extends Twig_Extension
                 'elcodi_shipping_methods',
                 [$this->shippingWrapper, 'get']
             ),
+            new Twig_SimpleFunction(
+                'elcodi_shipping_method',
+                [$this->shippingWrapper, 'getOneById']
+            ),
         ];
     }
 
