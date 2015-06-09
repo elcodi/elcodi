@@ -29,7 +29,7 @@ class JsonEncoder implements EncoderInterface
      *
      * @param mixed $data Data
      *
-     * @return string encoded data
+     * @return string|boolean encoded data
      */
     public function encode($data)
     {
@@ -39,7 +39,7 @@ class JsonEncoder implements EncoderInterface
     /**
      * Decode incoming data
      *
-     * @param string $serializedData Serialized data
+     * @param string|boolean $serializedData Serialized data
      *
      * @return mixed Decoded data
      */

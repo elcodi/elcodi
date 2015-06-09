@@ -83,7 +83,7 @@ class EntityTranslationProvider implements EntityTranslationProviderInterface
      * @param string $entityField Field of entity
      * @param string $locale      Locale
      *
-     * @return string Value fetched
+     * @return string|boolean Value fetched
      */
     public function getTranslation(
         $entityType,

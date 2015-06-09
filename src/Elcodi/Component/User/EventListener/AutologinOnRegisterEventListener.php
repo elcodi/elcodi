@@ -114,7 +114,7 @@ class AutologinOnRegisterEventListener
             ->setToken($token);
 
         $event = new InteractiveLoginEvent(
-            $this->requestStack->getMasterRequest(),
+            $masterRequest,
             $token
         );
 

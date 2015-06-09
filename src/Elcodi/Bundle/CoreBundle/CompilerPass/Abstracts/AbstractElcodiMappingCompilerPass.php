@@ -15,25 +15,28 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\CoreBundle\CompilerPass\Traits;
+namespace Elcodi\Bundle\CoreBundle\CompilerPass\Abstracts;
+
+use Mmoreram\SimpleDoctrineMapping\CompilerPass\Abstracts\AbstractMappingCompilerPass;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * Trait EntityMappingTrait
+ * Class AbstractElcodiMappingCompilerPass
  */
-trait EntityMappingTrait
+abstract class AbstractElcodiMappingCompilerPass extends AbstractMappingCompilerPass
 {
     /**
      * Add entity mapping given the entity name, given that all entity
      * definitions are built the same way and given as well that the method
      * addEntityMapping exists and is accessible
      *
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container Container
-     * @param array                                                   $entities  Name of the entities
+     * @param ContainerBuilder $container Container
+     * @param array            $entities  Name of the entities
      *
      * @return $this Self object
      */
     protected function addEntityMappings(
-        \Symfony\Component\DependencyInjection\ContainerBuilder $container,
+        ContainerBuilder $container,
         array $entities
     ) {
         foreach ($entities as $entity) {

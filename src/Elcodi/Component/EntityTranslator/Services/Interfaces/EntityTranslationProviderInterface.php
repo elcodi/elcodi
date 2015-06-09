@@ -30,7 +30,7 @@ interface EntityTranslationProviderInterface
      * @param string $entityField Field of entity
      * @param string $locale      Locale
      *
-     * @return string Value fetched
+     * @return string|boolean Value fetched
      */
     public function getTranslation(
         $entityType,
@@ -42,11 +42,11 @@ interface EntityTranslationProviderInterface
     /**
      * Set translation
      *
-     * @param string $entityType       Type of entity
-     * @param string $entityId         Id of entity
-     * @param string $entityField      Field of entity
-     * @param string $translationValue Translated value
-     * @param string $locale           Locale
+     * @param string         $entityType       Type of entity
+     * @param string         $entityId         Id of entity
+     * @param string         $entityField      Field of entity
+     * @param string|boolean $translationValue Translated value
+     * @param string         $locale           Locale
      *
      * @return $this Self object
      */
