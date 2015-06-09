@@ -74,8 +74,7 @@ class CityExistsValidator extends ConstraintValidator
         ) {
             $this
                 ->context
-                ->buildViolation('Select a city')
-                ->addViolation();
+                ->addViolation('Select a city');
         }
     }
 }
