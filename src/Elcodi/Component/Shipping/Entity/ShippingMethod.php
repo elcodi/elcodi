@@ -59,8 +59,20 @@ class ShippingMethod
      */
     protected $price;
 
-    public function __construct($id, $carrierName, $name, $description, $price)
-    {
+    /**
+     * @param string         $id          Id
+     * @param string         $carrierName Carrier name
+     * @param string         $name        Name
+     * @param string         $description Description
+     * @param MoneyInterface $price       Price
+     */
+    public function __construct(
+        $id,
+        $carrierName,
+        $name,
+        $description,
+        MoneyInterface $price
+    ) {
         $this->id = $id;
         $this->carrierName = $carrierName;
         $this->name = $name;
@@ -111,7 +123,7 @@ class ShippingMethod
     /**
      * Get Price
      *
-     * @return mixed Price
+     * @return MoneyInterface Price
      */
     public function getPrice()
     {
