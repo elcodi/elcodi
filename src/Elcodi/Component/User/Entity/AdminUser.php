@@ -17,6 +17,8 @@
 
 namespace Elcodi\Component\User\Entity;
 
+use Symfony\Component\Security\Core\Role\Role;
+
 use Elcodi\Component\User\Entity\Abstracts\AbstractUser;
 use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
 
@@ -32,6 +34,8 @@ class AdminUser extends AbstractUser implements AdminUserInterface
      */
     public function getRoles()
     {
-        return ['ROLE_ADMIN'];
+        return [
+            new Role('ROLE_ADMIN'),
+        ];
     }
 }

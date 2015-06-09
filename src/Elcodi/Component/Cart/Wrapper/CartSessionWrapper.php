@@ -106,11 +106,15 @@ class CartSessionWrapper implements WrapperInterface
             return null;
         }
 
-        return $this
+        $cart = $this
             ->cartRepository
             ->findOneBy([
                 'id'      => $cartIdInSession,
                 'ordered' => false,
             ]);
+
+        return ($cart instanceof CartInterface)
+            ? $cart
+            : null;
     }
 }

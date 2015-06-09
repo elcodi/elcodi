@@ -18,6 +18,7 @@
 namespace Elcodi\Component\User\Entity;
 
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Security\Core\Role\Role;
 
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
@@ -109,7 +110,9 @@ class Customer extends AbstractUser implements CustomerInterface
      */
     public function getRoles()
     {
-        return ['ROLE_CUSTOMER'];
+        return [
+            new Role('ROLE_CUSTOMER'),
+        ];
     }
 
     /**

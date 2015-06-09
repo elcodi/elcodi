@@ -17,18 +17,15 @@
 
 namespace Elcodi\Bundle\AttributeBundle\CompilerPass;
 
-use Mmoreram\SimpleDoctrineMapping\CompilerPass\Abstracts\AbstractMappingCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-use Elcodi\Bundle\CoreBundle\CompilerPass\Traits\EntityMappingTrait;
+use Elcodi\Bundle\CoreBundle\CompilerPass\Abstracts\AbstractElcodiMappingCompilerPass;
 
 /**
  * Class MappingCompilerPass
  */
-class MappingCompilerPass extends AbstractMappingCompilerPass
+class MappingCompilerPass extends AbstractElcodiMappingCompilerPass
 {
-    use EntityMappingTrait;
-
     /**
      * You can modify the container here before it is dumped to PHP code.
      *

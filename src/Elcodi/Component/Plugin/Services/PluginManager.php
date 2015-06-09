@@ -62,13 +62,6 @@ class PluginManager
     private $pluginLoader;
 
     /**
-     * @var Plugin[]
-     *
-     * Cached plugin list
-     */
-    private $plugins = [];
-
-    /**
      * Construct
      *
      * @param KernelInterface  $kernel              Kernel
@@ -104,7 +97,7 @@ class PluginManager
         $pluginsLoaded = [];
 
         /**
-         * @var Bundle|Plugin $plugin
+         * @var Bundle $plugin
          */
         foreach ($pluginBundles as $plugin) {
             $pluginConfiguration = $this
