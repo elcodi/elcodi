@@ -53,6 +53,13 @@ trait ProductPriceTrait
     protected $reducedPriceCurrency;
 
     /**
+     * @var \Elcodi\Component\Tax\Entity\Interfaces\TaxInterface
+     *
+     * Tax to be applied
+     */
+    protected $tax;
+
+    /**
      * Set price
      *
      * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount Price
@@ -106,5 +113,29 @@ trait ProductPriceTrait
             $this->reducedPrice,
             $this->reducedPriceCurrency
         );
+    }
+
+    /**
+     * Returns product tax
+     *
+     * @return \Elcodi\Component\Tax\Entity\Interfaces\TaxInterface
+     */
+    public function getTax()
+    {
+        return $this->tax;
+    }
+
+    /**
+     * Sets product tax
+     *
+     * @param \Elcodi\Component\Tax\Entity\Interfaces\TaxInterface $tax
+     *
+     * @return $this Self object
+     */
+    public function setTax(\Elcodi\Component\Tax\Entity\Interfaces\TaxInterface $tax)
+    {
+        $this->tax = $tax;
+
+        return $this;
     }
 }

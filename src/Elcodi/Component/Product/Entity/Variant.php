@@ -52,8 +52,7 @@ class Variant implements VariantInterface
         DateTimeTrait,
         ImagesContainerTrait,
         PrincipalImageTrait,
-        DimensionsTrait,
-        TaxTrait;
+        DimensionsTrait;
 
     /**
      * @var string

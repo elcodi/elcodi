@@ -34,8 +34,7 @@ class CartLine implements CartLineInterface
 {
     use IdentifiableTrait,
         PurchasableWrapperTrait,
-        PriceTrait,
-        TaxTrait;
+        PriceTrait;
 
     /**
      * @var CartInterface

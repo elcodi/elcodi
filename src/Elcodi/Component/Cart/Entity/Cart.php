@@ -17,6 +17,7 @@
 
 namespace Elcodi\Component\Cart\Entity;
 
+use DateTime;
 use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
@@ -91,6 +92,20 @@ class Cart implements CartInterface
     /**
      * @var MoneyInterface
      *
+     * Transient amount without taxes for products
+     */
+    protected $preTaxProductAmount;
+
+    /**
+     * @var MoneyInterface
+     *
+     * Transient product tax amount
+     */
+    protected $taxProductAmount;
+
+    /**
+     * @var MoneyInterface
+     *
      * Transient amount for coupons
      *
      * This value is not persisted, it is calculated
@@ -116,6 +131,20 @@ class Cart implements CartInterface
      * by summing CartLine::$amount
      */
     protected $amount;
+
+    /**
+     * @var MoneyInterface
+     *
+     * Transient total amount without taxes
+     */
+    protected $preTaxAmount;
+
+    /**
+     * @var MoneyInterface
+     *
+     * Transient tax amount
+     */
+    protected $taxAmount;
 
     /**
      * @var AddressInterface
@@ -144,16 +173,6 @@ class Cart implements CartInterface
      * Cheapest Shipping range
      */
     protected $cheapestShippingRange;
-
-    /**
-     * @var MoneyInterface
-     *
-     * Transient tax amount
-     *
-     * This value is not persisted, it is calculated
-     * by summing CartLine::$getTaxAmount
-     */
-    protected $taxAmount;
 
     /**
      * Get Id
@@ -626,4 +645,75 @@ class Cart implements CartInterface
         return $this->taxAmount;
     }
 
+    /**
+     * Gets amount without tax
+     *
+     * @return MoneyInterface price without tax
+     */
+    public function getPreTaxAmount()
+    {
+        return $this->preTaxAmount;
+    }
+
+    /**
+     * Sets amount without tax
+     *
+     * @param MoneyInterface $preTaxAmount price without tax
+     *
+     * @return $this Self object
+     */
+    public function setPreTaxAmount(MoneyInterface $preTaxAmount)
+    {
+        $this->preTaxAmount = $preTaxAmount;
+
+        return $this;
+    }
+
+    /**
+     * Gets products amount without tax
+     *
+     * @return MoneyInterface products tax
+     */
+    public function getPreTaxProductAmount()
+    {
+        return $this->preTaxProductAmount;
+    }
+
+    /**
+     * Sets product amount without tax
+     *
+     * @param MoneyInterface $preTaxProductAmount price without tax
+     *
+     * @return $this Self object
+     */
+    public function setPreTaxProductAmount(MoneyInterface $preTaxProductAmount)
+    {
+        $this->preTaxProductAmount = $preTaxProductAmount;
+
+        return $this;
+    }
+
+    /**
+     * Gets products tax amount
+     *
+     * @return MoneyInterface products tax amount
+     */
+    public function getTaxProductAmount()
+    {
+        return $this->taxProductAmount;
+    }
+
+    /**
+     * Sets product tax amount
+     *
+     * @param MoneyInterface $taxProductAmount products tax amount
+     *
+     * @return $this Self object
+     */
+    public function setTaxProductAmount(MoneyInterface $taxProductAmount)
+    {
+        $this->taxProductAmount = $taxProductAmount;
+
+        return $this;
+    }
 }

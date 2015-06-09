@@ -117,9 +117,6 @@ class CartOrderTransformer
             ->setCustomer($cart->getCustomer())
             ->setCart($cart)
             ->setQuantity($cart->getQuantity())
-            ->setProductAmount($cart->getProductAmount())
-            ->setShippingAmount($cart->getShippingAmount())
-            ->setAmount($cart->getAmount())
             ->setHeight($cart->getHeight())
             ->setWidth($cart->getWidth())
             ->setDepth($cart->getDepth())
@@ -127,7 +124,13 @@ class CartOrderTransformer
             ->setBillingAddress($cart->getBillingAddress())
             ->setDeliveryAddress($cart->getDeliveryAddress())
             ->setOrderLines($orderLines)
-            ->setTaxAmount($cart->getTaxAmount());
+            ->setShippingAmount($cart->getShippingAmount())
+            ->setPreTaxProductAmount($cart->getPreTaxProductAmount())
+            ->setTaxProductAmount($cart->getTaxProductAmount())
+            ->setPreTaxAmount($cart->getPreTaxAmount())
+            ->setProductAmount($cart->getProductAmount())
+            ->setTaxAmount($cart->getTaxAmount())
+            ->setAmount($cart->getAmount());
 
         $couponAmount = $cart->getCouponAmount();
         if ($couponAmount instanceof MoneyInterface) {

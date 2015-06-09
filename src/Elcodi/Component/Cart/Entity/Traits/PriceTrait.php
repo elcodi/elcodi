@@ -16,6 +16,7 @@
  */
 
 namespace Elcodi\Component\Cart\Entity\Traits;
+use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 
 /**
  * Trait for entities that hold prices.
@@ -32,7 +33,23 @@ trait PriceTrait
     /**
      * @var integer
      *
-     * Product amount
+     * Product amount without taxes
+     */
+    protected $preTaxProductAmount;
+
+    /**
+     * @var integer
+     *
+     * Tax amount for product
+     */
+    protected $taxProductAmount;
+
+    /**
+     * @var integer
+     *
+     * Product amount with taxes
+     *
+     * Represents the sum of preTaxProductAmount and taxProductAmount
      */
     protected $productAmount;
 
@@ -46,7 +63,21 @@ trait PriceTrait
     /**
      * @var integer
      *
-     * Total amount
+     * Line amount without taxes
+     */
+    protected $preTaxAmount;
+
+    /**
+     * @var integer
+     *
+     * Tax line amount
+     */
+    protected $taxAmount;
+
+    /**
+     * @var integer
+     *
+     * Line amount with taxes
      */
     protected $amount;
 
@@ -59,6 +90,32 @@ trait PriceTrait
 
     /**
      * Gets the product or products amount without taxes
+     *
+     * @return \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface Product amount with tax
+     */
+    public function getPreTaxProductAmount()
+    {
+        return \Elcodi\Component\Currency\Entity\Money::create(
+            $this->preTaxProductAmount,
+            $this->productCurrency
+        );
+    }
+
+    /**
+     * Gets the amount of taxes applied to the product
+     *
+     * @return \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface Product amount with tax
+     */
+    public function getTaxProductAmount()
+    {
+        return \Elcodi\Component\Currency\Entity\Money::create(
+            $this->taxProductAmount,
+            $this->productCurrency
+        );
+    }
+
+    /**
+     * Gets the product or products amount with taxes
      *
      * @return \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface Product amount with tax
      */
@@ -77,6 +134,36 @@ trait PriceTrait
      *
      * @return $this Self object
      */
+    public function setPreTaxProductAmount(\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount)
+    {
+        $this->preTaxProductAmount = $amount->getAmount();
+        $this->productCurrency = $amount->getCurrency();
+
+        return $this;
+    }
+
+    /**
+     * Sets the amount of taxes applied to the product
+     *
+     * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount product amount with tax
+     *
+     * @return $this Self object
+     */
+    public function setTaxProductAmount(\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount)
+    {
+        $this->taxProductAmount = $amount->getAmount();
+        $this->productCurrency = $amount->getCurrency();
+
+        return $this;
+    }
+
+    /**
+     * Sets the product or products amount with taxes
+     *
+     * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount product amount with tax
+     *
+     * @return $this Self object
+     */
     public function setProductAmount(\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount)
     {
         $this->productAmount = $amount->getAmount();
@@ -86,9 +173,35 @@ trait PriceTrait
     }
 
     /**
-     * Gets the total amount without taxes
+     * Gets the total line amount without taxes
      *
-     * @return \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface price with tax
+     * @return \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface Product amount with tax
+     */
+    public function getPreTaxAmount()
+    {
+        return \Elcodi\Component\Currency\Entity\Money::create(
+            $this->preTaxAmount,
+            $this->currency
+        );
+    }
+
+    /**
+     * Gets the amount of taxes applied to this line
+     *
+     * @return \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface Product amount with tax
+     */
+    public function getTaxAmount()
+    {
+        return \Elcodi\Component\Currency\Entity\Money::create(
+            $this->taxAmount,
+            $this->currency
+        );
+    }
+
+    /**
+     * Gets the total line amount with taxes
+     *
+     * @return \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface Product amount with tax
      */
     public function getAmount()
     {
@@ -99,7 +212,37 @@ trait PriceTrait
     }
 
     /**
-     * Sets the total amount without taxes
+     * Sets the total line amount without taxes
+     *
+     * @return \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface price with tax
+     *
+     * @return $this Self object
+     */
+    public function setPreTaxAmount(\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount)
+    {
+        $this->preTaxAmount = $amount->getAmount();
+        $this->currency = $amount->getCurrency();
+
+        return $this;
+    }
+
+    /**
+     * Sets the amount of taxes applied to this line
+     *
+     * @return \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface price with tax
+     *
+     * @return $this Self object
+     */
+    public function setTaxAmount(\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount)
+    {
+        $this->taxAmount = $amount->getAmount();
+        $this->currency = $amount->getCurrency();
+
+        return $this;
+    }
+
+    /**
+     * Sets the total line amount with taxes
      *
      * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount amount without tax
      *

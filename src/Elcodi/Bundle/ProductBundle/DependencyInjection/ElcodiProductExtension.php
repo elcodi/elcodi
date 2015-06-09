@@ -139,6 +139,7 @@ class ElcodiProductExtension extends AbstractExtension implements EntitiesOverri
             'Elcodi\Component\Product\Entity\Interfaces\VariantInterface'      => 'elcodi.entity.product_variant.class',
             'Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface' => 'elcodi.entity.manufacturer.class',
             'Elcodi\Component\Product\Entity\Interfaces\CategoryInterface'     => 'elcodi.entity.category.class',
+            'Elcodi\Component\Tax\Entity\Interfaces\TaxInterface'              => 'elcodi.entity.tax.class',
         ];
     }
 

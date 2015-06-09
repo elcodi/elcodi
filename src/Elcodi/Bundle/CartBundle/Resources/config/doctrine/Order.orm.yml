@@ -11,6 +11,14 @@ Elcodi\Component\Cart\Entity\Order:
         quantity:
             column: quantity
             type: integer
+        taxProductAmount:
+            column: tax_product_amount
+            type: integer
+            nullable: false
+        preTaxProductAmount:
+            column: pre_tax_product_amount
+            type: integer
+            nullable: false
         productAmount:
             column: product_amount
             type: integer
@@ -23,6 +31,14 @@ Elcodi\Component\Cart\Entity\Order:
             column: shipping_amount
             type: integer
             nullable: true
+        taxAmount:
+            column: tax_amount
+            type: integer
+            nullable: false
+        preTaxAmount:
+            column: pre_tax_amount
+            type: integer
+            nullable: false
         amount:
             column: amount
             type: integer

@@ -29,9 +29,9 @@ use Elcodi\Component\Core\Wrapper\Interfaces\WrapperInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
-use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 use Elcodi\Component\Product\ElcodiProductStock;
 use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
+use Elcodi\Component\Tax\Entity\Interfaces\TaxInterface;
 
 /**
  * Class CartLoadEventListener
@@ -269,7 +269,6 @@ class CartLoadEventListener
             ->get();
 
         $productAmount = Money::create(0, $currency);
-        $taxAmount = Money::create(0, $currency);
 
         /**
          * Calculate Amount and ProductAmount
@@ -296,28 +295,11 @@ class CartLoadEventListener
                 ->add($convertedProductAmount->multiply(
                     $cartLine->getQuantity()
                 ));
-
-            /**
-             * @var MoneyInterface $taxAmount
-             * @var MoneyInterface $totalTaxAmount
-             */
-            $convertedTaxAmount = $this
-                ->currencyConverter
-                ->convertMoney(
-                    $cartLine->getTaxAmount(),
-                    $currency
-                );
-
-            $taxAmount = $taxAmount
-                ->add($convertedTaxAmount->multiply(
-                   $cartLine->getQuantity()
-                ));
         }
 
         $cart
             ->setProductAmount($productAmount)
-            ->setAmount($productAmount)
-            ->setTaxAmount($taxAmount);
+            ->setAmount($productAmount);
     }
 
     /**
@@ -339,15 +321,32 @@ class CartLoadEventListener
         if ($purchasable->getReducedPrice()->getAmount() > 0) {
             $productPrice = $purchasable->getReducedPrice();
         }
+        $preTaxProductAmount = $productPrice;
+        $taxProductAmount = Money::create(0, $productPrice->getCurrency());
+
+
+        if ($purchasable->getTax() instanceof TaxInterface) {
+
+            $purchasableTax = $purchasable->getTax();
+            $taxProductAmount = $productPrice
+                ->multiply($purchasableTax->getValue() / 100);
+        }
 
         /**
          * Setting amounts for current CartLine.
          *
          * Line Currency was set by CartManager::addProduct when factorizing CartLine
          */
-        $cartLine->setProductAmount($productPrice);
-        $cartLine->setAmount($productPrice->multiply($cartLine->getQuantity()));
-        //$cartLine->setTaxPercentage( $cartLine->getProduct()->getTax()->getValue() );
+        $cartLine->setPreTaxProductAmount($preTaxProductAmount);
+        $cartLine->setTaxProductAmount($taxProductAmount);
+        $cartLine->setProductAmount($preTaxProductAmount->add($taxProductAmount));
+
+        /*
+         * Total amount calculations
+         */
+        $cartLine->setPreTaxAmount($preTaxProductAmount->multiply($cartLine->getQuantity()));
+        $cartLine->setTaxAmount($taxProductAmount->multiply($cartLine->getQuantity()));
+        $cartLine->setAmount($cartLine->getPreTaxAmount()->add($cartLine->getTaxAmount()));
 
         return $cartLine;
     }

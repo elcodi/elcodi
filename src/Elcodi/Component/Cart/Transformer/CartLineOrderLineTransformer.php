@@ -118,13 +118,16 @@ class CartLineOrderLineTransformer
             ->setOrder($order)
             ->setPurchasable($cartLine->getPurchasable())
             ->setQuantity($cartLine->getQuantity())
+            ->setPreTaxProductAmount($cartLine->getPreTaxProductAmount())
+            ->setTaxProductAmount($cartLine->getTaxProductAmount())
             ->setProductAmount($cartLine->getProductAmount())
+            ->setPreTaxAmount($cartLine->getPreTaxAmount())
+            ->setTaxAmount($cartLine->getTaxAmount())
             ->setAmount($cartLine->getAmount())
             ->setHeight($cartLine->getHeight())
             ->setWidth($cartLine->getWidth())
             ->setDepth($cartLine->getDepth())
-            ->setWeight($cartLine->getWeight())
-            ->setTaxPercentage($cartLine->getTaxPercentage());
+            ->setWeight($cartLine->getWeight());
 
         $this
             ->orderLineEventDispatcher

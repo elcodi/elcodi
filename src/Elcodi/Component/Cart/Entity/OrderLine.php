@@ -38,8 +38,7 @@ class OrderLine implements OrderLineInterface
     use IdentifiableTrait,
         PurchasableWrapperTrait,
         PriceTrait,
-        DimensionsTrait,
-        TaxTrait;
+        DimensionsTrait;
 
     /**
      * @var OrderInterface

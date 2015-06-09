@@ -8,18 +8,30 @@ Elcodi\Component\Cart\Entity\OrderLine:
             generator:
                 strategy: AUTO
     fields:
+        taxProductAmount:
+            column: tax_product_amount
+            type: integer
+            nullable: false
+        preTaxProductAmount:
+            column: pre_tax_product_amount
+            type: integer
+            nullable: false
         productAmount:
             column: product_amount
-            type: decimal
+            type: integer
             nullable: false
-            precision: 10
-            scale: 2
+        taxAmount:
+            column: tax_amount
+            type: integer
+            nullable: false
+        preTaxAmount:
+            column: pre_tax_amount
+            type: integer
+            nullable: false
         amount:
             column: amount
-            type: decimal
+            type: integer
             nullable: false
-            precision: 10
-            scale: 2
         height:
             column: height
             type: integer
@@ -39,6 +51,8 @@ Elcodi\Component\Cart\Entity\OrderLine:
         quantity:
             column: quantity
             type: integer
+
+
         taxPercentage:
             column: tax_percentage
             type: decimal

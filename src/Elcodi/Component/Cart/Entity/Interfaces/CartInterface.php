@@ -53,6 +53,38 @@ interface CartInterface
     public function setAmount(MoneyInterface $amount);
 
     /**
+     * Gets amount without tax
+     *
+     * @return MoneyInterface price without tax
+     */
+    public function getPreTaxAmount();
+
+    /**
+     * Sets amount without tax
+     *
+     * @param MoneyInterface $amount price without tax
+     *
+     * @return $this Self object
+     */
+    public function setPreTaxAmount(MoneyInterface $amount);
+
+    /**
+     * Gets tax amount
+     *
+     * @return MoneyInterface tax amount
+     */
+    public function getTaxAmount();
+
+    /**
+     * Sets tax amount
+     *
+     * @param MoneyInterface $amount tax amount
+     *
+     * @return $this Self object
+     */
+    public function setTaxAmount(MoneyInterface $amount);
+
+    /**
      * Gets coupon amount with tax
      *
      * @return MoneyInterface|null price with tax
@@ -92,13 +124,45 @@ interface CartInterface
     public function getProductAmount();
 
     /**
-     * Sets product amount with tax
+     * Sets products amount with tax
      *
      * @param MoneyInterface $amount price with tax
      *
      * @return $this Self object
      */
     public function setProductAmount(MoneyInterface $amount);
+
+    /**
+     * Gets products amount without tax
+     *
+     * @return MoneyInterface products tax
+     */
+    public function getPreTaxProductAmount();
+
+    /**
+     * Sets product amount without tax
+     *
+     * @param MoneyInterface $amount price without tax
+     *
+     * @return $this Self object
+     */
+    public function setPreTaxProductAmount(MoneyInterface $amount);
+
+    /**
+     * Gets products tax amount
+     *
+     * @return MoneyInterface products tax amount
+     */
+    public function getTaxProductAmount();
+
+    /**
+     * Sets product tax amount
+     *
+     * @param MoneyInterface $amount products tax amount
+     *
+     * @return $this Self object
+     */
+    public function setTaxProductAmount(MoneyInterface $amount);
 
     /**
      * Returns the customer
@@ -261,20 +325,4 @@ interface CartInterface
      * @return $this Self object
      */
     public function setCheapestShippingRange(ShippingRangeInterface $cheapestShippingRange = null);
-
-    /**
-     * Set taxAmount
-     *
-     * @param MoneyInterface $taxAmount
-     *
-     * @return $this Self object
-     */
-    public function setTaxAmount(MoneyInterface $taxAmount);
-
-    /**
-     * Get taxAmount
-     *
-     * @return MoneyInterface
-     */
-    public function getTaxAmount();
 }

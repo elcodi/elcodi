@@ -284,35 +284,4 @@ interface ProductInterface
      * @return boolean Product has variants
      */
     public function hasVariants();
-
-    /**
-     * Returns product tax
-     *
-     * @return TaxInterface
-     */
-    public function getTax();
-
-    /**
-     * Sets product tax
-     *
-     * @param TaxInterface $tax
-     *
-     * @return $this Self object
-     */
-    public function setTax(TaxInterface $tax);
-
-    /**
-     * Returns product taxed Price
-     *
-     * @return MoneyInterface
-     */
-    public function getTaxedPrice();
-
-    /**
-     * When a tax is set on the product      returns a money object with amount = tax amount
-     * When a tax is NOT set on the product  returns a money object with amount = 0
-     *
-     * @return MoneyInterface
-     */
-    public function getTaxAmount();
 }

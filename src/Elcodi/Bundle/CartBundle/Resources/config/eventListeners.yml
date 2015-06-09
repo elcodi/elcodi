@@ -18,6 +18,14 @@ services:
             - { name: kernel.event_listener, event: cart.onload, method: saveCart, priority: 0 }
             - { name: kernel.event_listener, event: cart.onload, method: loadCartQuantities, priority: 16 }
 
+    elcodi.event_listener.tax_apply:
+        class: Elcodi\Component\Cart\EventListener\CartApplyTaxEventListener
+        arguments:
+            - @elcodi.wrapper.currency
+            - @elcodi.converter.currency
+        tags:
+            - { name: kernel.event_listener, event: cart.onload, method: , priority: -32 }
+
     elcodi.event_listener.limit_negative_carts:
         class: Elcodi\Component\Cart\EventListener\LimitNegativeCartsListener
         tags:

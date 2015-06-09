@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Product\Entity\Interfaces;
 
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
+use Elcodi\Component\Tax\Entity\Interfaces\TaxInterface;
 
 /**
  * Interface ProductPriceInterface
@@ -57,4 +58,21 @@ interface ProductPriceInterface
      * @return MoneyInterface Reduced Price
      */
     public function getReducedPrice();
+
+    /**
+     * Returns product tax
+     *
+     * @return TaxInterface
+     */
+    public function getTax();
+
+    /**
+     * Sets product tax
+     *
+     * @param TaxInterface $tax
+     *
+     * @return $this Self object
+     */
+    public function setTax(TaxInterface $tax);
+
 }

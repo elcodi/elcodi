@@ -25,30 +25,94 @@ use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 interface PriceInterface
 {
     /**
-     * Gets the product or products amount with tax
+     * Gets the product or products amount without taxes
+     *
+     * @return MoneyInterface Product amount with tax
+     */
+    public function getPreTaxProductAmount();
+
+    /**
+     * Gets the amount of taxes applied to the product
+     *
+     * @return MoneyInterface Product amount with tax
+     */
+    public function getTaxProductAmount();
+
+    /**
+     * Gets the product or products amount with taxes
      *
      * @return MoneyInterface Product amount with tax
      */
     public function getProductAmount();
 
     /**
-     * Sets the product or products amount with tax
+     * Sets the product or products amount without taxes
      *
-     * @param MoneyInterface $productAmount product amount with tax
+     * @param MoneyInterface $amount product amount with tax
      *
      * @return $this Self object
      */
-    public function setProductAmount(MoneyInterface $productAmount);
+    public function setPreTaxProductAmount(MoneyInterface $amount);
 
     /**
-     * Gets the total amount with tax
+     * Sets the amount of taxes applied to the product
      *
-     * @return MoneyInterface price with tax
+     * @param MoneyInterface $amount product amount with tax
+     *
+     * @return $this Self object
+     */
+    public function setTaxProductAmount(MoneyInterface $amount);
+
+    /**
+     * Sets the product or products amount with taxes
+     *
+     * @param MoneyInterface $amount product amount with tax
+     *
+     * @return $this Self object
+     */
+    public function setProductAmount(MoneyInterface $amount);
+
+    /**
+     * Gets the total line amount without taxes
+     *
+     * @return MoneyInterface Product amount with tax
+     */
+    public function getPreTaxAmount();
+
+    /**
+     * Gets the amount of taxes applied to this line
+     *
+     * @return MoneyInterface Product amount with tax
+     */
+    public function getTaxAmount();
+
+    /**
+     * Gets the total line amount with taxes
+     *
+     * @return MoneyInterface Product amount with tax
      */
     public function getAmount();
 
     /**
-     * Sets the total amount with tax
+     * Sets the total line amount without taxes
+     *
+     * @param MoneyInterface $amount
+     *
+     * @return $this Self object
+     */
+    public function setPreTaxAmount(MoneyInterface $amount);
+
+    /**
+     * Sets the amount of taxes applied to this line
+     *
+     * @param MoneyInterface $amount
+     *
+     * @return $this Self object
+     */
+    public function setTaxAmount(MoneyInterface $amount);
+    
+    /**
+     * Sets the total line amount with taxes
      *
      * @param MoneyInterface $amount amount without tax
      *
