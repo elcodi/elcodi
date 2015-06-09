@@ -129,15 +129,20 @@ class ImageExtension extends Twig_Extension
      */
     public function resize(ImageInterface $imageMedia, $options)
     {
-        $routeReferenceType = $this->prepareRouterContext();
+        $this->prepareRouterContext();
+
+        $absoluteUrlOption = isset($options['absolute_url'])
+            ? $options['absolute_url']
+            : false;
+        $routeReferenceType = $this->getReferenceType($absoluteUrlOption);
 
         $generatedRoute = $this
             ->router
             ->generate($this->imageResizeControllerRouteName, [
-                'id'      => (int) $imageMedia->getId(),
-                'height'  => (int) $options['height'],
-                'width'   => (int) $options['width'],
-                'type'    => (int) $options['type'],
+                'id' => (int) $imageMedia->getId(),
+                'height' => (int) $options['height'],
+                'width' => (int) $options['width'],
+                'type' => (int) $options['type'],
                 '_format' => $imageMedia->getExtension(),
             ], $routeReferenceType);
 
@@ -149,18 +154,21 @@ class ImageExtension extends Twig_Extension
     /**
      * Return route of image
      *
-     * @param ImageInterface $imageMedia Imagemedia element
+     * @param ImageInterface $imageMedia  Imagemedia element
+     * @param bool           $absoluteUrl If the url generated shoud be absolute
      *
      * @return string image route
      */
-    public function viewImage(ImageInterface $imageMedia)
+    public function viewImage(ImageInterface $imageMedia, $absoluteUrl = false)
     {
-        $routeReferenceType = $this->prepareRouterContext();
+        $this->prepareRouterContext();
+
+        $routeReferenceType = $this->getReferenceType($absoluteUrl);
 
         $generatedRoute = $this
             ->router
             ->generate($this->imageViewControllerRouteName, [
-                'id'      => (int) $imageMedia->getId(),
+                'id' => (int) $imageMedia->getId(),
                 '_format' => $imageMedia->getExtension(),
             ], $routeReferenceType);
 
@@ -174,7 +182,7 @@ class ImageExtension extends Twig_Extension
      *
      * @return $this Self object
      */
-    public function fixRouterContext()
+    private function fixRouterContext()
     {
         if ($this->generatedRouteHost) {
             $this
@@ -215,12 +223,21 @@ class ImageExtension extends Twig_Extension
                 ->router
                 ->getContext()
                 ->setHost($this->generatedRouteHost);
-
-            $routeReferenceType = UrlGeneratorInterface::ABSOLUTE_URL;
-        } else {
-            $routeReferenceType = UrlGeneratorInterface::ABSOLUTE_PATH;
         }
+    }
 
-        return $routeReferenceType;
+    /**
+     * Gets the reference type depending on the option and the generated route
+     * host.
+     *
+     * @param bool $absoluteUrlOption The received absolute url option.
+     *
+     * @return bool The reference type.
+     */
+    private function getReferenceType($absoluteUrlOption = false)
+    {
+        return ($this->generatedRouteHost || $absoluteUrlOption)
+            ? UrlGeneratorInterface::ABSOLUTE_URL
+            : UrlGeneratorInterface::ABSOLUTE_PATH;
     }
 }
