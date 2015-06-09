@@ -165,7 +165,7 @@ class ElcodiPluginExtension extends AbstractExtension
      *
      * @param Bundle $plugin Plugin
      *
-     * @return ResourceInterface|null Resource
+     * @return array Plugin configuration
      */
     protected function processPlugin(Bundle $plugin)
     {

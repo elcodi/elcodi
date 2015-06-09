@@ -105,7 +105,7 @@ class TemplatedPageRenderer implements PageRendererInterface
     /**
      * Search for the template in every specified bundle
      *
-     * @return string
+     * @return string Found existing template name
      */
     private function locateTemplate()
     {
