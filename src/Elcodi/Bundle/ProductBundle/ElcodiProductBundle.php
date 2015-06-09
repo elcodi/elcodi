@@ -63,10 +63,10 @@ class ElcodiProductBundle extends Bundle implements DependentBundleInterface
             'Elcodi\Bundle\LanguageBundle\ElcodiLanguageBundle',
             'Elcodi\Bundle\MediaBundle\ElcodiMediaBundle',
             'Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
+            'Elcodi\Bundle\TaxBundle\ElcodiTaxBundle',
             'Elcodi\Bundle\AttributeBundle\ElcodiAttributeBundle',
             'Elcodi\Bundle\ConfigurationBundle\ElcodiConfigurationBundle',
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
-            'Elcodi\Bundle\TaxBundle\ElcodiTaxBundle',
         ];
     }
 

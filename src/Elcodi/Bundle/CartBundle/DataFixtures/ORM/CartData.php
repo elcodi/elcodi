@@ -24,6 +24,7 @@ use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
 use Elcodi\Component\Core\Services\ObjectDirector;
+use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
@@ -64,8 +65,12 @@ class CartData extends AbstractFixture implements DependentFixtureInterface
         $product = $this->getReference('product');
         $productReduced = $this->getReference('product-reduced');
 
+        $currencyUsd = $this->getReference('currency-dollar');
+
         $address1 = $this->getReference('address-sant-celoni');
         $address2 = $this->getReference('address-viladecavalls');
+
+        $zeroUsd = Money::create(0, $currencyUsd);
 
         /**
          * Empty cart
@@ -88,7 +93,11 @@ class CartData extends AbstractFixture implements DependentFixtureInterface
             ->create()
             ->setProduct($product)
             ->setProductAmount($product->getPrice())
+            ->setPreTaxProductAmount($product->getPrice())
+            ->setTaxProductAmount($zeroUsd)
             ->setAmount($product->getPrice())
+            ->setPreTaxAmount($product->getPrice())
+            ->setTaxAmount($zeroUsd)
             ->setQuantity(2)
             ->setCart($fullCart);
 
@@ -96,7 +105,11 @@ class CartData extends AbstractFixture implements DependentFixtureInterface
             ->create()
             ->setProduct($productReduced)
             ->setProductAmount($productReduced->getPrice())
+            ->setPreTaxProductAmount($productReduced->getPrice())
+            ->setTaxProductAmount($zeroUsd)
             ->setAmount($productReduced->getPrice())
+            ->setPreTaxAmount($productReduced->getPrice())
+            ->setTaxAmount($zeroUsd)
             ->setQuantity(2)
             ->setCart($fullCart);
 

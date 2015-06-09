@@ -131,8 +131,12 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
             ->setCustomer($customer)
             ->setQuantity(10)
             ->setProductAmount(Money::create(20, $currency))
+            ->setPreTaxProductAmount(Money::create(20, $currency))
+            ->setTaxProductAmount(Money::create(0, $currency))
             ->setCouponAmount(Money::create(0, $currency))
             ->setAmount(Money::create(20, $currency))
+            ->setPreTaxAmount(Money::create(20, $currency))
+            ->setTaxAmount(Money::create(0, $currency))
             ->setShippingAmount($this->getMock('Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface'))
             ->setCartLines(new ArrayCollection())
             ->setTaxAmount(Money::create(0, $currency));
@@ -175,10 +179,14 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
             ->setCustomer($customer)
             ->setQuantity(10)
             ->setProductAmount(Money::create(20, $currency))
+            ->setPreTaxProductAmount(Money::create(20, $currency))
+            ->setTaxProductAmount(Money::create(0, $currency))
             ->setCouponAmount(Money::create(0, $currency))
             ->setOrder($order)
             ->setShippingAmount($this->getMock('Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface'))
             ->setAmount(Money::create(20, $currency))
+            ->setPreTaxAmount(Money::create(20, $currency))
+            ->setTaxAmount(Money::create(0, $currency))
             ->setCartLines(new ArrayCollection())
             ->setTaxAmount(Money::create(0, $currency));
 
@@ -237,6 +245,16 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
 
         $cart
             ->expects($this->any())
+            ->method('getPreTaxProductAmount')
+            ->will($this->returnValue(Money::create(10, $currency)));
+
+        $cart
+            ->expects($this->any())
+            ->method('getTaxProductAmount')
+            ->will($this->returnValue(Money::create(0, $currency)));
+
+        $cart
+            ->expects($this->any())
             ->method('getCouponAmount')
             ->will($this->returnValue(Money::create(0, $currency)));
 
@@ -244,6 +262,16 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
             ->expects($this->any())
             ->method('getAmount')
             ->will($this->returnValue(Money::create(10, $currency)));
+
+        $cart
+            ->expects($this->any())
+            ->method('getPreTaxAmount')
+            ->will($this->returnValue(Money::create(10, $currency)));
+
+        $cart
+            ->expects($this->any())
+            ->method('getTaxAmount')
+            ->will($this->returnValue(Money::create(0, $currency)));
 
         $cart
             ->expects($this->any())

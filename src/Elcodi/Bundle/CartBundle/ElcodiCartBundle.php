@@ -60,6 +60,7 @@ class ElcodiCartBundle extends Bundle implements DependentBundleInterface
     {
         return [
             'Elcodi\Bundle\UserBundle\ElcodiUserBundle',
+            'Elcodi\Bundle\TaxBundle\ElcodiTaxBundle',
             'Elcodi\Bundle\ProductBundle\ElcodiProductBundle',
             'Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
             'Elcodi\Bundle\StateTransitionMachineBundle\ElcodiStateTransitionMachineBundle',

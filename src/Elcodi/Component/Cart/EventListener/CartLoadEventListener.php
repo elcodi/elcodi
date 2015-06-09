@@ -269,37 +269,59 @@ class CartLoadEventListener
             ->get();
 
         $productAmount = Money::create(0, $currency);
+        $preTaxProductAmount = Money::create(0, $currency);
+        $taxProductAmount = Money::create(0, $currency);
 
         /**
          * Calculate Amount and ProductAmount
          */
         foreach ($cart->getCartLines() as $cartLine) {
 
+            $converter = $this->currencyConverter;
+
             /**
              * @var CartLineInterface $cartLine
              */
             $cartLine = $this->loadCartLinePrices($cartLine);
 
-            /**
-             * @var MoneyInterface $productAmount
-             * @var MoneyInterface $totalAmount
-             */
-            $convertedProductAmount = $this
-                ->currencyConverter
+            $convertedProductAmount = $converter
                 ->convertMoney(
                     $cartLine->getProductAmount(),
                     $currency
                 );
-
             $productAmount = $productAmount
                 ->add($convertedProductAmount->multiply(
+                    $cartLine->getQuantity()
+                ));
+
+            $convertedPreTaxProductAmount = $converter
+                ->convertMoney(
+                    $cartLine->getPreTaxProductAmount(),
+                    $currency
+                );
+            $preTaxProductAmount = $preTaxProductAmount
+                ->add($convertedPreTaxProductAmount->multiply(
+                    $cartLine->getQuantity()
+                ));
+
+            $convertedTaxProductAmount = $converter
+                ->convertMoney(
+                    $cartLine->getTaxProductAmount(),
+                    $currency
+                );
+            $taxProductAmount = $taxProductAmount
+                ->add($convertedTaxProductAmount->multiply(
                     $cartLine->getQuantity()
                 ));
         }
 
         $cart
             ->setProductAmount($productAmount)
-            ->setAmount($productAmount);
+            ->setPreTaxProductAmount($preTaxProductAmount)
+            ->setTaxProductAmount($taxProductAmount)
+            ->setAmount($productAmount)
+            ->setPreTaxAmount($preTaxProductAmount)
+            ->setTaxAmount($taxProductAmount);
     }
 
     /**
