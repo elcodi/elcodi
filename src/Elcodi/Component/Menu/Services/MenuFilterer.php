@@ -36,18 +36,21 @@ class MenuFilterer extends AbstractMenuModifier implements MenuChangerInterface
      * @param MenuFilterInterface $menuFilter Menu filter
      * @param array               $menus      Menus
      * @param string              $stage      Stage
+     * @param integer             $priority   Priority
      *
      * @return $this Self object
      */
     public function addMenuFilter(
         MenuFilterInterface $menuFilter,
         array $menus,
-        $stage
+        $stage,
+        $priority
     ) {
         $this->addElement(
             $menuFilter,
             $menus,
-            $stage
+            $stage,
+            $priority
         );
 
         return $this;

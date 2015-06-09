@@ -11,4 +11,4 @@ services:
     elcodi.menu_filter.menu_expanded:
         class: Elcodi\Component\Menu\Filter\MenuExpandedFilter
         tags:
-            - { name: menu.filter }
+            - { name: menu.filter, stage: after_cache, priority: -128 }
