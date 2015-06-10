@@ -113,6 +113,13 @@ class Store implements StoreInterface
     protected $defaultCurrency;
 
     /**
+     * @var string
+     *
+     * Rouring strategy
+     */
+    protected $routingStrategy;
+
+    /**
      * @var ImageInterface
      *
      * Logo
@@ -407,6 +414,30 @@ class Store implements StoreInterface
     public function setDefaultCurrency($defaultCurrency)
     {
         $this->defaultCurrency = $defaultCurrency;
+
+        return $this;
+    }
+
+    /**
+     * Get RoutingStrategy
+     *
+     * @return string RoutingStrategy
+     */
+    public function getRoutingStrategy()
+    {
+        return $this->routingStrategy;
+    }
+
+    /**
+     * Sets RoutingStrategy
+     *
+     * @param string $routingStrategy RoutingStrategy
+     *
+     * @return $this Self object
+     */
+    public function setRoutingStrategy($routingStrategy)
+    {
+        $this->routingStrategy = $routingStrategy;
 
         return $this;
     }
