@@ -18,6 +18,7 @@
 namespace Elcodi\Bundle\CoreBundle\Tests\UnitTest\Classes;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\HttpKernel\KernelInterface;
 
 use Elcodi\Bundle\CoreBundle\Traits\BundleDependenciesResolver;
 
@@ -31,30 +32,40 @@ class BundleDependenciesResolverAware
     /**
      * Get bundle instances
      *
+     * @param KernelInterface $kernel Kernel
+     *
      * @return Bundle[] Bundles
      */
-    public function getInstancesTest1()
+    public function getInstancesTest1(KernelInterface $kernel)
     {
         $bundles = [
             new \Elcodi\Bundle\CoreBundle\Tests\UnitTest\Classes\Bundle3(),
             'Elcodi\Bundle\CoreBundle\Tests\UnitTest\Classes\Bundle5',
         ];
 
-        return $this->getBundleInstances($bundles);
+        return $this->getBundleInstances(
+            $kernel,
+            $bundles
+        );
     }
 
     /**
      * Get bundle instances
      *
+     * @param KernelInterface $kernel Kernel
+     *
      * @return Bundle[] Bundles
      */
-    public function getInstancesTest2()
+    public function getInstancesTest2(KernelInterface $kernel)
     {
         $bundles = [
             new \Elcodi\Bundle\CoreBundle\Tests\UnitTest\Classes\Bundle1(),
             'Elcodi\Bundle\CoreBundle\Tests\UnitTest\Classes\Bundle2',
         ];
 
-        return $this->getBundleInstances($bundles);
+        return $this->getBundleInstances(
+            $kernel,
+            $bundles
+        );
     }
 }

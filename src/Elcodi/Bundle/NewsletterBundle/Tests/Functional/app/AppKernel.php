@@ -34,7 +34,7 @@ class AppKernel extends AbstractElcodiKernel
      */
     public function registerBundles()
     {
-        return $this->getBundleInstances([
+        return $this->getBundleInstances($this, [
             'Symfony\Bundle\FrameworkBundle\FrameworkBundle',
             'Doctrine\Bundle\DoctrineBundle\DoctrineBundle',
             'Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle',

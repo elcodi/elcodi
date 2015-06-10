@@ -31,8 +31,9 @@ class BundleDependenciesResolverTest extends PHPUnit_Framework_TestCase
      */
     public function testResolver1()
     {
+        $kernel = $this->prophesize('Symfony\Component\HttpKernel\KernelInterface');
         $bundleDependenciesResolver = new BundleDependenciesResolverAware();
-        $bundles = $bundleDependenciesResolver->getInstancesTest1();
+        $bundles = $bundleDependenciesResolver->getInstancesTest1($kernel->reveal());
 
         $this->assertInstanceOf(
             'Elcodi\Bundle\CoreBundle\Tests\UnitTest\Classes\Bundle1',
@@ -66,8 +67,9 @@ class BundleDependenciesResolverTest extends PHPUnit_Framework_TestCase
      */
     public function testResolver2()
     {
+        $kernel = $this->prophesize('Symfony\Component\HttpKernel\KernelInterface');
         $bundleDependenciesResolver = new BundleDependenciesResolverAware();
-        $bundles = $bundleDependenciesResolver->getInstancesTest2();
+        $bundles = $bundleDependenciesResolver->getInstancesTest2($kernel->reveal());
 
         $this->assertInstanceOf(
             'Elcodi\Bundle\CoreBundle\Tests\UnitTest\Classes\Bundle1',

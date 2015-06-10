@@ -21,6 +21,7 @@ use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\HttpKernel\KernelInterface;
 
 use Elcodi\Bundle\AttributeBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\AttributeBundle\DependencyInjection\ElcodiAttributeExtension;
@@ -56,7 +57,7 @@ class ElcodiAttributeBundle extends Bundle implements DependentBundleInterface
      *
      * @return array Bundle instances
      */
-    public static function getBundleDependencies()
+    public static function getBundleDependencies(KernelInterface $kernel)
     {
         return [
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
