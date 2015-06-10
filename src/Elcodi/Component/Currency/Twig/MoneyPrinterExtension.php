@@ -17,9 +17,10 @@
 
 namespace Elcodi\Component\Currency\Twig;
 
-use Elcodi\Component\Currency\Services\MoneyPrinter;
 use Twig_Extension;
 use Twig_SimpleFilter;
+
+use Elcodi\Component\Currency\Services\MoneyPrinter;
 
 /**
  * Class MoneyPrinterExtension

@@ -25,16 +25,6 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class AttributeFactoryTest extends WebTestCase
 {
     /**
-     * Schema must be loaded in all test cases
-     *
-     * @return boolean Load schema
-     */
-    protected function loadSchema()
-    {
-        return false;
-    }
-
-    /**
      * Returns the callable name of the service
      *
      * @return string[] service name

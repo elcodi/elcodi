@@ -142,7 +142,9 @@ abstract class WebTestCase extends BaseWebTestCase
      */
     protected function loadSchema()
     {
-        return true;
+        $fixtures = $this->loadFixtures();
+
+        return !empty($fixtures);
     }
 
     /**
