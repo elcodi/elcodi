@@ -26,6 +26,16 @@ use Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct;
 class TranslatorTest extends WebTestCase
 {
     /**
+     * Schema must be loaded in all test cases
+     *
+     * @return boolean Load schema
+     */
+    protected function loadSchema()
+    {
+        return true;
+    }
+
+    /**
      * Test translate
      */
     public function testTranslate()
