@@ -55,6 +55,13 @@ services:
             - @elcodi.store
             - getDefaultLanguage
 
+    elcodi.store_default_language_iso:
+        class: StdClass
+        public: false
+        factory:
+            - @elcodi.store_default_language
+            - getIso
+
     elcodi.store_default_currency:
         class: Elcodi\Component\Language\Entity\Interfaces\LanguageInterface
         factory:
