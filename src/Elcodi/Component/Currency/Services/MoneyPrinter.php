@@ -15,27 +15,24 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Currency\Twig;
+namespace Elcodi\Component\Currency\Services;
 
 use NumberFormatter;
-use Twig_Extension;
-use Twig_SimpleFilter;
 
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Exception\CurrencyNotAvailableException;
 use Elcodi\Component\Currency\Exception\CurrencyNotConvertibleException;
-use Elcodi\Component\Currency\Services\CurrencyConverter;
 use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 use Elcodi\Component\Language\Entity\Interfaces\LocaleInterface;
 
 /**
- * Class PrintMoneyExtension
+ * Class MoneyPrinter
  *
- * Print price extension for twig
+ * This service provides a different ways for Money print
  */
-class PrintMoneyExtension extends Twig_Extension
+class MoneyPrinter
 {
     /**
      * @var CurrencyConverter
@@ -73,20 +70,6 @@ class PrintMoneyExtension extends Twig_Extension
         $this->currencyConverter = $currencyConverter;
         $this->currencyWrapper = $currencyWrapper;
         $this->locale = $locale;
-    }
-
-    /**
-     * Return all filters
-     *
-     * @return Twig_SimpleFilter[] Filters
-     */
-    public function getFilters()
-    {
-        return [
-            new Twig_SimpleFilter('print_convert_money', [$this, 'printConvertMoney']),
-            new Twig_SimpleFilter('print_money', [$this, 'printMoney']),
-            new Twig_SimpleFilter('print_money_from_value', [$this, 'printMoneyFromValue']),
-        ];
     }
 
     /**
@@ -191,15 +174,5 @@ class PrintMoneyExtension extends Twig_Extension
         );
 
         return $this->printMoney($money);
-    }
-
-    /**
-     * return extension name
-     *
-     * @return string extension name
-     */
-    public function getName()
-    {
-        return 'print_money_extension';
     }
 }

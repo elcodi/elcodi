@@ -27,18 +27,18 @@ class Locale implements LocaleInterface
     /**
      * @var string
      *
-     * Iso
+     * Locale iso
      */
-    protected $iso;
+    protected $localeIso;
 
     /**
      * Construct method
      *
-     * @param string $iso Iso
+     * @param string $localeIso Locale iso
      */
-    public function __construct($iso)
+    public function __construct($localeIso)
     {
-        $this->iso = $iso;
+        $this->localeIso = $localeIso;
     }
 
     /**
@@ -48,6 +48,18 @@ class Locale implements LocaleInterface
      */
     public function getIso()
     {
-        return $this->iso;
+        return $this->localeIso;
+    }
+
+    /**
+     * Create new instance
+     *
+     * @param string $localeIso Locale iso
+     *
+     * @return self New instance
+     */
+    public static function create($localeIso)
+    {
+        return new self($localeIso);
     }
 }

@@ -28,4 +28,13 @@ interface LocaleInterface
      * @return string Iso
      */
     public function getIso();
+
+    /**
+     * Create new instance
+     *
+     * @param string $localeIso Locale iso
+     *
+     * @return self New instance
+     */
+    public static function create($localeIso);
 }

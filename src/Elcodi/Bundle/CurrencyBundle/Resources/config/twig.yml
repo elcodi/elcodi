@@ -3,11 +3,9 @@ services:
     #
     # Twig extensions
     #
-    elcodi.twig_extension.print_money:
-        class: Elcodi\Component\Currency\Twig\PrintMoneyExtension
+    elcodi.twig_extension.money_printer:
+        class: Elcodi\Component\Currency\Twig\MoneyPrinterExtension
         arguments:
-            - @elcodi.converter.currency
-            - @elcodi.wrapper.currency
-            - @elcodi.locale
+            - @elcodi.money_printer
         tags:
             - { name: twig.extension }
