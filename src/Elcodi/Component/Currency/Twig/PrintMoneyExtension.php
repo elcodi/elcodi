@@ -148,14 +148,9 @@ class PrintMoneyExtension extends Twig_Extension
             return $money->getAmount();
         }
 
-        $formatter = new NumberFormatter(
+        $moneyFormatter = new NumberFormatter(
             $this->locale->getIso(),
             NumberFormatter::CURRENCY
-        );
-
-        $formatter->setSymbol(
-            NumberFormatter::CURRENCY_SYMBOL,
-            $money->getCurrency()->getSymbol()
         );
 
         /**
@@ -168,7 +163,11 @@ class PrintMoneyExtension extends Twig_Extension
          * displaying prices. This operation does not affect amounts
          */
 
-        return $formatter->format($money->getAmount() / 100);
+        return $moneyFormatter
+            ->formatCurrency(
+                $money->getAmount() / 100,
+                $money->getCurrency()->getIso()
+            );
     }
 
     /**

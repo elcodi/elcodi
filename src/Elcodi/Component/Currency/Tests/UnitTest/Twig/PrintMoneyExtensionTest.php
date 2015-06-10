@@ -17,12 +17,14 @@
 
 namespace Elcodi\Component\Currency\Tests\UnitTest\Twig;
 
+use Exception;
 use PHPUnit_Framework_TestCase;
 
 use Elcodi\Component\Core\Factory\DateTimeFactory;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Factory\CurrencyFactory;
 use Elcodi\Component\Currency\Twig\PrintMoneyExtension;
+use Elcodi\Component\Language\Entity\Locale;
 
 /**
  * Class PrintMoneyExtensionTest
@@ -33,7 +35,6 @@ class PrintMoneyExtensionTest extends PHPUnit_Framework_TestCase
      * Test price output
      *
      * @dataProvider dataPrintPrice
-     * @
      */
     public function testPrintPrice(
         $amount,
@@ -42,8 +43,6 @@ class PrintMoneyExtensionTest extends PHPUnit_Framework_TestCase
         $locale,
         $result
     ) {
-        $this->markTestSkipped("Problems in local environments");
-
         $currencyFactory = new CurrencyFactory();
         $currencyFactory->setEntityNamespace('Elcodi\Component\Currency\Entity\Currency');
         $currencyFactory->setDateTimeFactory(new DateTimeFactory());
@@ -51,21 +50,25 @@ class PrintMoneyExtensionTest extends PHPUnit_Framework_TestCase
         $priceExtension = new PrintMoneyExtension(
             $this->getMock('Elcodi\Component\Currency\Services\CurrencyConverter', [], [], '', false),
             $this->getMock('Elcodi\Component\Currency\Wrapper\CurrencyWrapper', [], [], '', false),
-            $locale
+            new Locale($locale)
         );
 
-        $this->assertEquals(
-            $result,
-            $priceExtension->printMoney(
-                Money::create(
-                    $amount,
-                    $currencyFactory
-                        ->create()
-                        ->setIso($iso)
-                        ->setSymbol($symbol)
+        try {
+            $this->assertEquals(
+                $result,
+                $priceExtension->printMoney(
+                    Money::create(
+                        $amount,
+                        $currencyFactory
+                            ->create()
+                            ->setIso($iso)
+                            ->setSymbol($symbol)
+                    )
                 )
-            )
-        );
+            );
+        } catch (Exception $e) {
+            $this->markTestSkipped("Problems in local environments");
+        }
     }
 
     /**
