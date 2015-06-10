@@ -96,8 +96,8 @@ abstract class WebTestCase extends BaseWebTestCase
         foreach ($serviceCallableNames as $serviceCallableName) {
             if ($serviceCallableName) {
                 $this->assertNotNull(static::$kernel
-                        ->getContainer()
-                        ->get($serviceCallableName)
+                    ->getContainer()
+                    ->get($serviceCallableName)
                 );
             }
         }
@@ -136,15 +136,28 @@ abstract class WebTestCase extends BaseWebTestCase
     }
 
     /**
+     * Has fixtures to load
+     *
+     * @return boolean Some fixtures need to be installed
+     */
+    private function hasFixturesBundles()
+    {
+        $fixturesBundles = $this->loadFixturesBundles();
+
+        return (
+            is_array($fixturesBundles) &&
+            !empty($fixturesBundles)
+        );
+    }
+
+    /**
      * Schema must be loaded in all test cases
      *
      * @return boolean Load schema
      */
     protected function loadSchema()
     {
-        $fixtures = $this->loadFixtures();
-
-        return !empty($fixtures);
+        return $this->hasFixturesBundles();
     }
 
     /**
@@ -201,7 +214,7 @@ abstract class WebTestCase extends BaseWebTestCase
      */
     protected function loadFixtures()
     {
-        if (!is_array($this->loadFixturesBundles())) {
+        if (!$this->hasFixturesBundles()) {
             return $this;
         }
 
