@@ -26,16 +26,6 @@ use Elcodi\Component\Cart\Entity\Cart;
 class CartCouponManagerTest extends WebTestCase
 {
     /**
-     * Schema must be loaded in all test cases
-     *
-     * @return boolean Load schema
-     */
-    protected function loadSchema()
-    {
-        return false;
-    }
-
-    /**
      * Returns the callable name of the service
      *
      * @return string[] service name

@@ -38,16 +38,6 @@ class ImageResizeControllerTest extends WebTestCase
     }
 
     /**
-     * Schema must be loaded in all test cases
-     *
-     * @return boolean Load schema
-     */
-    protected function loadSchema()
-    {
-        return true;
-    }
-
-    /**
      * Test resize action
      */
     public function testResizeAction()

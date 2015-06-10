@@ -177,13 +177,13 @@ class LocaleManager
         $localeIso = $this->locale->getIso();
 
         if (isset($this->localeCountryAssociations[$localeIso])) {
-            return new Locale($this->localeCountryAssociations[$localeIso]);
+            return Locale::create($this->localeCountryAssociations[$localeIso]);
         }
 
         $regionLocale = \Locale::getRegion($localeIso);
 
         return $regionLocale
-            ? new Locale($regionLocale)
+            ? Locale::create($regionLocale)
             : $this->locale;
     }
 
@@ -198,7 +198,7 @@ class LocaleManager
         $localeIso = $this->locale->getIso();
 
         if (isset($this->localeTranslationAssociations[$localeIso])) {
-            return new Locale($this->localeTranslationAssociations[$localeIso]);
+            return Locale::create($this->localeTranslationAssociations[$localeIso]);
         }
 
         return $this->locale;

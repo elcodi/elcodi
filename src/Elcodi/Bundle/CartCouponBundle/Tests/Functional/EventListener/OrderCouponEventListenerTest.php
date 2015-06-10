@@ -23,16 +23,6 @@ namespace Elcodi\Bundle\CartCouponBundle\Tests\Functional\EventListener;
 class OrderCouponEventListenerTest
 {
     /**
-     * Schema must be loaded in all test cases
-     *
-     * @return boolean Load schema
-     */
-    protected function loadSchema()
-    {
-        return false;
-    }
-
-    /**
      * Returns the callable name of the service
      *
      * @return string[] service name

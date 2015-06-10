@@ -157,7 +157,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    /**q
+    /**
      *
      * @covers \Elcodi\Component\Currency\Entity\Money::equals
      */

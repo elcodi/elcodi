@@ -15,14 +15,14 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\CartBundle\Tests\Functional\EventDispatcher;
+namespace Elcodi\Bundle\CurrencyBundle\Tests\Functional\Wrapper;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class OrderEventDispatcherTest
+ * Class MoneyPrinterExtensionTest
  */
-class OrderEventDispatcherTest extends WebTestCase
+class MoneyPrinterExtensionTest extends WebTestCase
 {
     /**
      * Returns the callable name of the service
@@ -31,6 +31,8 @@ class OrderEventDispatcherTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.event_dispatcher.order'];
+        return [
+            'elcodi.twig_extension.money_printer',
+        ];
     }
 }

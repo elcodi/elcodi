@@ -35,16 +35,6 @@ class LocationServiceProviderTest extends WebTestCase
     protected $locationProvider;
 
     /**
-     * Schema must be loaded in all test cases
-     *
-     * @return boolean Load schema
-     */
-    protected function loadSchema()
-    {
-        return true;
-    }
-
-    /**
      * Returns the callable name of the service
      *
      * @return string[] service name

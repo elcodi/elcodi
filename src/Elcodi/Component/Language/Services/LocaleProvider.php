@@ -66,6 +66,6 @@ class LocaleProvider
             ? $this->requestStack->getCurrentRequest()->getLocale()
             : $this->defaultLocale;
 
-        return new Locale($locale);
+        return Locale::create($locale);
     }
 }
