@@ -127,6 +127,45 @@ class CartManagerVariantTest extends AbstractCartManagerTest
     }
 
     /**
+     * Creates a generic 20% Tax
+     *
+     * @param $taxRate
+     *
+     * @return TaxInterface
+     */
+    protected function createTaxForPurchasable($taxRate)
+    {
+        if ($taxRate == 0) {
+
+            return null;
+        }
+
+        $tax = $this
+            ->get('elcodi.factory.tax')
+            ->create()
+            ->setName('VAT')
+            ->setDescription('VAT Percent')
+            ->setValue($taxRate)
+            ->setEnabled(true);
+
+        $this
+            ->getObjectManager('tax')
+            ->persist($tax);
+
+        $this
+            ->getObjectManager('tax')
+            ->flush();
+
+        $this->purchasable->setTax($tax);
+
+        $this
+            ->getObjectManager('product_variant')
+            ->flush();
+
+        return $tax;
+    }
+
+    /**
      * Testing that a purchasable is a Variant
      */
     public function testPurchasableIsVariant()
@@ -223,15 +262,15 @@ class CartManagerVariantTest extends AbstractCartManagerTest
     public function dataAddProduct()
     {
         return [
-            [1, 1],
-            [0, 0],
-            [21, 20],
-            [false, 0],
-            [null, 0],
-            [true, 0],
-            ['true', 0],
-            ['', 0],
-            [[], 0],
+            [1, 1, 10],
+            [0, 0, 0],
+            [21, 20, 20],
+            [false, 0, 0],
+            [null, 0, 0],
+            [true, 0, 0],
+            ['true', 0, 10],
+            ['', 0, 33],
+            [[], 0, 0],
         ];
     }
 

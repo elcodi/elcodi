@@ -24,6 +24,7 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
+use Elcodi\Component\Tax\Entity\Interfaces\TaxInterface;
 
 /**
  * Class AbstractCartManagerTest
@@ -74,6 +75,13 @@ abstract class AbstractCartManagerTest extends WebTestCase
     protected $purchasable;
 
     /**
+     * @var TaxInterface
+     *
+     * Generic optional Tax for Purchasables
+     */
+    protected $tax;
+
+    /**
      * Set up
      */
     public function setUp()
@@ -116,12 +124,32 @@ abstract class AbstractCartManagerTest extends WebTestCase
 
         $this->assertEquals(
             $this->cart->getAmount(),
-            $this->cart->getCartLines()->first()->getAmount()
+            $this->cart->getPreTaxAmount()->add($this->cart->getTaxAmount())
         );
 
         $this->assertEquals(
             $this->cart->getAmount(),
-            $this->cart->getCartLines()->first()->getPurchasable()->getPrice()
+            $this->cart->getCartLines()->first()->getAmount()
+        );
+
+        /**
+         * @var PurchasableInterface $firstLinePurchasable
+         */
+        $firstLinePurchasable = $this
+            ->cart
+            ->getCartLines()
+            ->first()
+            ->getPurchasable();
+
+        $firstLinePurchasableTaxValue =
+            $firstLinePurchasable->getTax() instanceof TaxInterface ?
+                $firstLinePurchasable->getTax()->getValue() : 0;
+
+        $this->assertEquals(
+            $this->cart->getAmount(),
+            $firstLinePurchasable->getPrice()->add(
+                $firstLinePurchasable->getPrice()->multiply($firstLinePurchasableTaxValue / 100)
+            )
         );
 
         $this->assertNotNull($this->cart->getId());
@@ -223,18 +251,29 @@ abstract class AbstractCartManagerTest extends WebTestCase
             $this->cart->getCartLines()->first()->getAmount()
         );
 
-        $this->assertTrue(
-            $this
-                ->cart
-                ->getAmount()
-                ->equals($this
-                        ->cart
-                        ->getCartLines()
-                        ->first()
-                        ->getPurchasable()
+        /**
+         * @var PurchasableInterface $firstLinePurchasable
+         */
+        $firstLinePurchasable = $this
+            ->cart
+            ->getCartLines()
+            ->first()
+            ->getPurchasable();
+
+        $firstLinePurchasableTaxValue =
+            $firstLinePurchasable->getTax() instanceof TaxInterface ?
+                $firstLinePurchasable->getTax()->getValue() : 0;
+
+        $this->assertEquals(
+            $this->cart->getAmount(),
+            $firstLinePurchasable
+                ->getPrice()
+                ->add(
+                    $firstLinePurchasable
                         ->getPrice()
-                        ->multiply(2)
+                        ->multiply($firstLinePurchasableTaxValue / 100)
                 )
+                ->multiply(2)
         );
     }
 
@@ -278,10 +317,12 @@ abstract class AbstractCartManagerTest extends WebTestCase
      *
      * @param mixed $quantityStart Starting quantity
      * @param mixed $quantityAdded Quantity to add
-     * @param mixed $quantityEnd   Quantity to check against
+     * @param mixed $quantityEnd Quantity to check against
      *
      * @dataProvider dataIncreaseCartLineQuantity
      * @group        cart
+     *
+     * @return null
      */
     public function testIncreaseCartLineQuantity(
         $quantityStart,
@@ -354,14 +395,18 @@ abstract class AbstractCartManagerTest extends WebTestCase
      *
      * @param mixed $quantitySet the quantity to set
      * @param mixed $quantityEnd the quantity to check against
+     * @param float $purchasableTaxRate tax rate
      *
      * @dataProvider dataAddProduct
      * @group        cart
      */
     public function testAddProduct(
         $quantitySet,
-        $quantityEnd
+        $quantityEnd,
+        $purchasableTaxRate
     ) {
+        $this->createTaxForPurchasable($purchasableTaxRate);
+
         $this
             ->get('elcodi.manager.cart')
             ->addProduct($this->cart, $this->purchasable, $quantitySet);
@@ -385,8 +430,19 @@ abstract class AbstractCartManagerTest extends WebTestCase
             );
 
             $this->assertEquals(
-                $this->cart->getAmount()->getAmount(),
-                $cartLine->getPurchasable()->getPrice()->getAmount() * $quantity
+                $this->cart->getPreTaxAmount(),
+                $cartLine->getPreTaxAmount()
+            );
+
+            $this->assertEquals(
+                $this->cart->getTaxAmount(),
+                $cartLine->getTaxAmount()
+            );
+
+
+            $this->assertEquals(
+                $this->cart->getPreTaxAmount(),
+                $cartLine->getPurchasable()->getPrice()->multiply($quantity)
             );
 
             $this->assertNotNull($cartLine->getId());
@@ -419,6 +475,15 @@ abstract class AbstractCartManagerTest extends WebTestCase
      * @return PurchasableInterface
      */
     abstract protected function createPurchasable();
+
+    /**
+     * Creates, flushes and returns a TAx
+     *
+     * @param $taxRate
+     *
+     * @return TaxInterface
+     */
+    abstract protected function createTaxForPurchasable($taxRate);
 
     /**
      * Common asserts for a test that empties lines

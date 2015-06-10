@@ -47,7 +47,7 @@ class CartManagerProductTest extends AbstractCartManagerTest
         $product = $this
             ->get('elcodi.factory.product')
             ->create()
-            ->setPrice(Money::create(1000, $currency))
+            ->setPrice(Money::create(1645, $currency))
             ->setName('abc')
             ->setSlug('abc')
             ->setWidth(10)
@@ -66,6 +66,45 @@ class CartManagerProductTest extends AbstractCartManagerTest
             ->flush();
 
         return $product;
+    }
+
+    /**
+     * Creates a generic Tax
+     *
+     * @param $taxRate
+     *
+     * @return TaxInterface
+     */
+    protected function createTaxForPurchasable($taxRate)
+    {
+        if ($taxRate == 0) {
+
+            return null;
+        }
+
+        $tax = $this
+            ->get('elcodi.factory.tax')
+            ->create()
+            ->setName('VAT')
+            ->setDescription('VAT')
+            ->setValue($taxRate)
+            ->setEnabled(true);
+
+        $this
+            ->getObjectManager('tax')
+            ->persist($tax);
+
+        $this
+            ->getObjectManager('tax')
+            ->flush();
+
+        $this->purchasable->setTax($tax);
+
+        $this
+            ->getObjectManager('product')
+            ->flush();
+
+        return $tax;
     }
 
     /**
@@ -136,15 +175,15 @@ class CartManagerProductTest extends AbstractCartManagerTest
     public function dataAddProduct()
     {
         return [
-            [1, 1],
-            [0, 0],
-            [11, 10],
-            [false, 0],
-            [null, 0],
-            [true, 0],
-            ['true', 0],
-            ['', 0],
-            [[], 0],
+            [1, 1, 10],
+            [0, 0, 0],
+            [11, 10, 20],
+            [false, 0, 33.5],
+            [null, 0, 34.5],
+            [true, 0, 0],
+            ['true', 0, 10],
+            ['', 0, 0],
+            [[], 0, 0],
         ];
     }
 }
