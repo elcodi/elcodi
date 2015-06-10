@@ -43,6 +43,11 @@ Elcodi\Component\Store\Entity\Store:
             type: string
             length: 255
             nullable: true
+        routingStrategy:
+            column: routing_strategy
+            type: string
+            length: 255
+            nullable: false
         useStock:
             column: use_stock
             type: boolean

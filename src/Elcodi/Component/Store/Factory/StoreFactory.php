@@ -19,6 +19,7 @@ namespace Elcodi\Component\Store\Factory;
 
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Store\Entity\Store;
+use Elcodi\Component\Store\StoreRoutingStrategy;
 
 /**
  * Class StoreFactory
@@ -41,6 +42,7 @@ class StoreFactory extends AbstractFactory
         $store = new $classNamespace();
         $store
             ->setIsCompany(true)
+            ->setRoutingStrategy(StoreRoutingStrategy::STRATEGY_PREFIX_EXCEPT_DEFAULT)
             ->setEnabled(true)
             ->setCreatedAt($this->now());
 

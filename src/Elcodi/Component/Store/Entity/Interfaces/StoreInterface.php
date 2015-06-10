@@ -211,6 +211,22 @@ interface StoreInterface
     public function setDefaultCurrency($defaultCurrency);
 
     /**
+     * Get RoutingStrategy
+     *
+     * @return string RoutingStrategy
+     */
+    public function getRoutingStrategy();
+
+    /**
+     * Sets RoutingStrategy
+     *
+     * @param string $routingStrategy RoutingStrategy
+     *
+     * @return $this Self object
+     */
+    public function setRoutingStrategy($routingStrategy);
+
+    /**
      * Get Logo
      *
      * @return ImageInterface Logo
