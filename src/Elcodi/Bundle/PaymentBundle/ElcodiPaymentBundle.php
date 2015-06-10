@@ -20,6 +20,7 @@ namespace Elcodi\Bundle\PaymentBundle;
 use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\HttpKernel\KernelInterface;
 
 use Elcodi\Bundle\PaymentBundle\DependencyInjection\ElcodiPaymentExtension;
 
@@ -43,7 +44,7 @@ class ElcodiPaymentBundle extends Bundle
      *
      * @return array Bundle instances
      */
-    public static function getBundleDependencies()
+    public static function getBundleDependencies(KernelInterface $kernel)
     {
         return [
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',

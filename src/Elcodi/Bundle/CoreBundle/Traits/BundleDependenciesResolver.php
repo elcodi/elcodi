@@ -17,6 +17,8 @@
 
 namespace Elcodi\Bundle\CoreBundle\Traits;
 
+use Symfony\Component\HttpKernel\KernelInterface;
+
 /**
  * Trait BundleDependenciesResolver
  */
@@ -25,16 +27,20 @@ trait BundleDependenciesResolver
     /**
      * Get bundle instances given the namespace stack
      *
-     * @param array $bundles Bundles defined by instances or namespaces
+     * @param \Symfony\Component\HttpKernel\KernelInterface $kernel  Kernel
+     * @param array                                         $bundles Bundles defined by instances or namespaces
      *
      * @return \Symfony\Component\HttpKernel\Bundle\Bundle[] Bundle instances
      */
-    protected function getBundleInstances(array $bundles)
-    {
+    protected function getBundleInstances(
+        \Symfony\Component\HttpKernel\KernelInterface $kernel,
+        array $bundles
+    ) {
         $bundleStack = [];
         $visitedBundles = [];
         $this
             ->resolveBundleDependencies(
+                $kernel,
                 $bundleStack,
                 $visitedBundles,
                 $bundles
@@ -42,7 +48,8 @@ trait BundleDependenciesResolver
 
         $builtBundles = [];
         foreach ($bundleStack as $bundle) {
-            $builtBundles[] = $this->getBundleDefinitionInstance($bundle);
+            $builtBundles[] = $this
+                ->getBundleDefinitionInstance($bundle);
         }
 
         return $builtBundles;
@@ -54,11 +61,13 @@ trait BundleDependenciesResolver
      * Given a set of already loaded bundles and a set of new needed bundles,
      * build new dependencies and fill given array of loaded bundles.
      *
-     * @param array $bundleStack    Bundle stack, defined by Instance or Namespace
-     * @param array $visitedBundles Visited bundles, defined by their namespaces
-     * @param array $bundles        New bundles to check, defined by Instance or Namespace
+     * @param \Symfony\Component\HttpKernel\KernelInterface $kernel         Kernel
+     * @param array                                         $bundleStack    Bundle stack, defined by Instance or Namespace
+     * @param array                                         $visitedBundles Visited bundles, defined by their namespaces
+     * @param array                                         $bundles        New bundles to check, defined by Instance or Namespace
      */
     private function resolveBundleDependencies(
+        \Symfony\Component\HttpKernel\KernelInterface $kernel,
         array &$bundleStack,
         array &$visitedBundles,
         array $bundles
@@ -94,7 +103,7 @@ trait BundleDependenciesResolver
                 /**
                  * @var \Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface|string $bundleNamespace
                  */
-                $bundleDependencies = $bundleNamespace::getBundleDependencies();
+                $bundleDependencies = $bundleNamespace::getBundleDependencies($kernel);
 
                 if (isset($dependenciesBundles[$bundleNamespace])) {
                     $bundleDependencies = array_merge(
@@ -104,6 +113,7 @@ trait BundleDependenciesResolver
                 }
 
                 $this->resolveBundleDependencies(
+                    $kernel,
                     $bundleStack,
                     $visitedBundles,
                     $bundleDependencies

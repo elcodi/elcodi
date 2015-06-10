@@ -17,6 +17,8 @@
 
 namespace Elcodi\Bundle\CoreBundle\Interfaces;
 
+use Symfony\Component\HttpKernel\KernelInterface;
+
 /**
  * Interface DependentBundleInterface
  */
@@ -29,5 +31,5 @@ interface DependentBundleInterface
      *
      * @return array Bundle instances
      */
-    public static function getBundleDependencies();
+    public static function getBundleDependencies(KernelInterface $kernel);
 }

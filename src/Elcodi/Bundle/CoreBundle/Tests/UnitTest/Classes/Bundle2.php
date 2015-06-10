@@ -17,6 +17,8 @@
 
 namespace Elcodi\Bundle\CoreBundle\Tests\UnitTest\Classes;
 
+use Symfony\Component\HttpKernel\KernelInterface;
+
 use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 
 /**
@@ -29,7 +31,7 @@ class Bundle2 implements DependentBundleInterface
      *
      * @return array Bundle instances
      */
-    public static function getBundleDependencies()
+    public static function getBundleDependencies(KernelInterface $kernel)
     {
         return [
             'Elcodi\Bundle\CoreBundle\Tests\UnitTest\Classes\Bundle1',

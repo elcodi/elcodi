@@ -21,6 +21,7 @@ use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\HttpKernel\KernelInterface;
 
 use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\EntityTranslatorBundle\CompilerPass\MappingCompilerPass;
@@ -56,7 +57,7 @@ class ElcodiEntityTranslatorBundle extends Bundle implements DependentBundleInte
      *
      * @return array Bundle instances
      */
-    public static function getBundleDependencies()
+    public static function getBundleDependencies(KernelInterface $kernel)
     {
         return [
             'Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle',
