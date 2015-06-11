@@ -20,3 +20,8 @@ services:
 
     elcodi.factory.location_data:
         class: Elcodi\Component\Geo\Factory\LocationDataFactory
+
+    elcodi.factory.address_view:
+        class: Elcodi\Component\Geo\Factory\AddressViewFactory
+        arguments:
+            - @elcodi.location_provider
