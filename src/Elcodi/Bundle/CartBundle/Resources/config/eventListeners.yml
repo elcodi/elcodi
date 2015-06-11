@@ -30,6 +30,21 @@ services:
         tags:
             - { name: kernel.event_listener, event: cart.onload, method: checkEmptyShippingAmount, priority: 16 }
 
+    elcodi.event_listener.cart_shipping_method:
+        class: Elcodi\Component\Cart\EventListener\CartShippingMethodEventListener
+        arguments:
+            - @elcodi.wrapper.shipping_methods
+            - @elcodi.converter.currency
+        tags:
+            - { name: kernel.event_listener, event: cart.onload, method: loadShippingPrice, priority: 4}
+
+    elcodi.event_listener.order_shipping_method:
+        class: Elcodi\Component\Cart\EventListener\OrderShippingMethodEventListener
+        arguments:
+            - @elcodi.wrapper.shipping_methods
+        tags:
+            - { name: kernel.event_listener, event: order.oncreated, method: saveOrder, priority: 16}
+
     elcodi.event_listener.order_creation:
         class: Elcodi\Component\Cart\EventListener\OrderCreationEventListener
         arguments:

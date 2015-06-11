@@ -29,6 +29,7 @@ use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
+use Elcodi\Component\Shipping\Entity\ShippingMethod;
 use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface;
 use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
@@ -102,6 +103,13 @@ class Order implements OrderInterface
      * Shipping Currency
      */
     protected $shippingCurrency;
+
+    /**
+     * @var ShippingMethod
+     *
+     * Shipping method
+     */
+    protected $shippingMethod;
 
     /**
      * @var AddressInterface
@@ -356,6 +364,30 @@ class Order implements OrderInterface
             $this->shippingAmount,
             $this->shippingCurrency
         );
+    }
+
+    /**
+     * Get ShippingMethod
+     *
+     * @return ShippingMethod ShippingMethod
+     */
+    public function getShippingMethod()
+    {
+        return $this->shippingMethod;
+    }
+
+    /**
+     * Sets ShippingMethod
+     *
+     * @param ShippingMethod $shippingMethod ShippingMethod
+     *
+     * @return $this Self object
+     */
+    public function setShippingMethod($shippingMethod)
+    {
+        $this->shippingMethod = $shippingMethod;
+
+        return $this;
     }
 
     /**
