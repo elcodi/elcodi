@@ -160,4 +160,29 @@ interface NodeInterface
      * @return boolean Menu Node is expanded
      */
     public function isExpanded($currentUrl);
+
+    /**
+     * Set warnings
+     *
+     * @param integer $warnings Warnings
+     *
+     * @return $this Self object
+     */
+    public function setWarnings($warnings);
+
+    /**
+     * Get warnings
+     *
+     * @return integer Warnings
+     */
+    public function getWarnings();
+
+    /**
+     * Increment warnings
+     *
+     * @param integer $warnings Warnings to be incremented
+     *
+     * @return $this Self object
+     */
+    public function incrementWarnings($warnings = 1);
 }

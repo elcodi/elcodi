@@ -74,6 +74,13 @@ class Node implements NodeInterface
     protected $priority;
 
     /**
+     * @var integer
+     *
+     * Warnings
+     */
+    protected $warnings = 0;
+
+    /**
      * Gets Node code
      *
      * @return string
@@ -291,5 +298,43 @@ class Node implements NodeInterface
                     $node->isActive($currentUrl) ||
                     $node->isExpanded($currentUrl);
             });
+    }
+
+    /**
+     * Set warnings
+     *
+     * @param integer $warnings Warnings
+     *
+     * @return $this Self object
+     */
+    public function setWarnings($warnings)
+    {
+        $this->warnings = $warnings;
+
+        return $this;
+    }
+
+    /**
+     * Get warnings
+     *
+     * @return integer Warnings
+     */
+    public function getWarnings()
+    {
+        return $this->warnings;
+    }
+
+    /**
+     * Increment warnings
+     *
+     * @param integer $warnings Warnings to be incremented
+     *
+     * @return $this Self object
+     */
+    public function incrementWarnings($warnings = 1)
+    {
+        $this->warnings += (int) $warnings;
+
+        return $this;
     }
 }
