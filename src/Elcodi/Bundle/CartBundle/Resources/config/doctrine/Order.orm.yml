@@ -23,6 +23,9 @@ Elcodi\Component\Cart\Entity\Order:
             column: shipping_amount
             type: integer
             nullable: true
+        shippingMethod:
+            column: shipping_method
+            type: array
         amount:
             column: amount
             type: integer

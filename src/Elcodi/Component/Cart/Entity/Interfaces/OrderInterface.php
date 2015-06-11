@@ -23,6 +23,7 @@ use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
+use Elcodi\Component\Shipping\Entity\ShippingMethod;
 use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
@@ -144,6 +145,22 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Identif
      * @return $this Self object
      */
     public function setShippingAmount(MoneyInterface $shippingAmount);
+
+    /**
+     * Get ShippingMethod
+     *
+     * @return ShippingMethod ShippingMethod
+     */
+    public function getShippingMethod();
+
+    /**
+     * Sets ShippingMethod
+     *
+     * @param ShippingMethod $shippingMethod ShippingMethod
+     *
+     * @return $this Self object
+     */
+    public function setShippingMethod($shippingMethod);
 
     /**
      * Set the height
