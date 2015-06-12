@@ -27,15 +27,15 @@ use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 class OrderRepository extends EntityRepository
 {
     /**
-     * Gets the not shipped orders.
+     * Gets the orders to prepare.
      *
      * @return OrderInterface[]
      */
-    public function getNotShippedOrders()
+    public function getOrdersToPrepare()
     {
         $res = $this->createQueryBuilder('o')
             ->innerJoin('o.shippingLastStateLine', 'sl')
-            ->where('sl.name != \'shipped\'')
+            ->where('sl.name = \'preparing\'')
             ->orderBy('o.updatedAt', 'ASC')
             ->getQuery()
             ->getResult();

@@ -101,11 +101,19 @@ class Configuration extends AbstractConfiguration
                             ->defaultValue('order_shipping_states_machine')
                         ->end()
                         ->scalarNode('point_of_entry')
-                            ->defaultValue('not shipped')
+                            ->defaultValue('preparing')
                         ->end()
                         ->variableNode('states')
                             ->defaultValue([
-                                ['not shipped', 'ship', 'shipped'],
+                                ['preparing', 'order ready', 'processed'],
+                                ['processed', 'picked up by carrier', 'in delivery'],
+                                ['processed', 'picked up on store', 'delivered'],
+                                ['in delivery', 'delivered', 'delivered'],
+                                ['preparing', 'cancel', 'cancelled'],
+                                ['processed', 'cancel', 'cancelled'],
+                                ['in delivery', 'cancel', 'cancelled'],
+                                ['in delivery', 'return', 'returned'],
+                                ['delivered', 'return', 'returned'],
                             ])
                         ->end()
                     ->end()

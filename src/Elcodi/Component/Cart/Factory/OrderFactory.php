@@ -118,7 +118,7 @@ class OrderFactory extends AbstractPurchasableFactory
                     new ArrayCollection(),
                     null
                 ),
-                'Order not shipped'
+                'Preparing Order'
             );
 
         $order->setShippingStateLineStack($shippingStateLineStack);
