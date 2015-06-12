@@ -64,10 +64,9 @@ class ZoneMatcher
         $found = false;
 
         try {
-            $found =
-                $this
-                    ->locationProvider
-                    ->in($cityId, $locations);
+            $found = $this
+                ->locationProvider
+                ->in($cityId, $locations);
         } catch (Exception $e) {
 
             // Silent pass

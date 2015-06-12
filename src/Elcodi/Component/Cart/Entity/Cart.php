@@ -36,6 +36,13 @@ class Cart implements CartInterface
     use IdentifiableTrait, DateTimeTrait;
 
     /**
+     * @var boolean
+     *
+     * Cart is loaded
+     */
+    protected $loaded = false;
+
+    /**
      * @var CustomerInterface
      *
      * Doctrine mapping must be define in any instance
@@ -137,6 +144,30 @@ class Cart implements CartInterface
      * Cheapest Shipping method
      */
     protected $cheapestShippingMethod;
+
+    /**
+     * Get Loaded
+     *
+     * @return boolean Loaded
+     */
+    public function isLoaded()
+    {
+        return $this->loaded;
+    }
+
+    /**
+     * Sets Loaded
+     *
+     * @param boolean $loaded Loaded
+     *
+     * @return $this Self object
+     */
+    public function setLoaded($loaded)
+    {
+        $this->loaded = $loaded;
+
+        return $this;
+    }
 
     /**
      * Return the customer

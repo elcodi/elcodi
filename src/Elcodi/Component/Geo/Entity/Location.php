@@ -154,6 +154,7 @@ class Location implements LocationInterface
     public function getAllParents()
     {
         $closestParents = $this->getParents();
+
         $allParents = [];
 
         foreach ($closestParents as $parent) {
