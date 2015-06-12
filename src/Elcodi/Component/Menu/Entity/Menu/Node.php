@@ -78,7 +78,7 @@ class Node implements NodeInterface
      *
      * Warnings
      */
-    protected $warnings = 0;
+    protected $warnings;
 
     /**
      * Gets Node code
