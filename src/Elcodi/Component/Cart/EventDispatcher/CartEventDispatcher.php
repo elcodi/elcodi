@@ -40,9 +40,13 @@ class CartEventDispatcher extends AbstractEventDispatcher
      */
     public function dispatchCartLoadEvents(CartInterface $cart)
     {
-        return $this
+        $this
             ->dispatchCartPreLoadEvent($cart)
             ->dispatchCartOnLoadEvent($cart);
+
+        $cart->setLoaded(true);
+
+        return $this;
     }
 
     /**

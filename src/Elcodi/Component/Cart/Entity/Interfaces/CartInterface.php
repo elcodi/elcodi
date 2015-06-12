@@ -36,6 +36,22 @@ interface CartInterface
         IdentifiableInterface
 {
     /**
+     * Get Loaded
+     *
+     * @return boolean Loaded
+     */
+    public function isLoaded();
+
+    /**
+     * Sets Loaded
+     *
+     * @param boolean $loaded Loaded
+     *
+     * @return $this Self object
+     */
+    public function setLoaded($loaded);
+
+    /**
      * Gets amount with tax
      *
      * @return MoneyInterface price with tax
