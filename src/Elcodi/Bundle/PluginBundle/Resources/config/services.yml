@@ -21,7 +21,7 @@ services:
         class: Elcodi\Component\Plugin\Loader\RouterLoader
         arguments:
             - @kernel
-            - @elcodi.enabled_plugins
+            - @elcodi.plugins
         tags:
             - { name: routing.loader }
 
@@ -40,7 +40,7 @@ services:
         class: StdClass
         factory:
             - @elcodi.repository.plugin
-            - findBy
+            - findAll
 
     elcodi.abstract_plugin:
         abstract: true
