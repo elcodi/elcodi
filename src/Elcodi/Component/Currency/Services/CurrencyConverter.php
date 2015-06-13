@@ -52,24 +52,13 @@ class CurrencyConverter
     private $currencyManager;
 
     /**
-     * @var string
-     *
-     * Currency base
-     */
-    private $currencyBase;
-
-    /**
      * Construct method
      *
      * @param CurrencyManager $currencyManager Currency Manager
-     * @param string          $currencyBase    Currency base
      */
-    public function __construct(
-        CurrencyManager $currencyManager,
-        $currencyBase
-    ) {
+    public function __construct(CurrencyManager $currencyManager)
+    {
         $this->currencyManager = $currencyManager;
-        $this->currencyBase = $currencyBase;
     }
 
     /**
@@ -157,19 +146,19 @@ class CurrencyConverter
          * If none of given Money is baseCurrency, means we'll need to perform
          * two partial conversions
          */
-        if (!in_array($this->currencyBase, [$currencyFromIso, $currencyToIso])) {
+        if (!in_array('USD', [$currencyFromIso, $currencyToIso])) {
             return $this->convertBetweenIsos(
-                $this->currencyBase,
+                'USD',
                 $currencyToIso,
                 $this->convertBetweenIsos(
                     $currencyFromIso,
-                    $this->currencyBase,
+                    'USD',
                     $amount
                 )
             );
         }
 
-        return ($currencyFromIso === $this->currencyBase)
+        return ($currencyFromIso === 'USD')
             ? $this->convertToIso($currencyToIso, $amount, self::MULTIPLY)
             : $this->convertToIso($currencyFromIso, $amount, self::DIVIDE);
     }

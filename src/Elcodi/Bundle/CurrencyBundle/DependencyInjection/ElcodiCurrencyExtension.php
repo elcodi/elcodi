@@ -91,17 +91,8 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
             'elcodi.default_currency'                           => $config['currency']['default_currency'],
             'elcodi.currency_session_field_name'                => $config['currency']['session_field_name'],
 
-            'elcodi.currency_rates_provider_currency_base'      => $config['rates_provider']['currency_base'],
             'elcodi.currency_rates_provider_client'             => $config['rates_provider']['client'],
         ];
-
-        /**
-         * OpenExchangeRates
-         */
-        if ($config['rates_provider']['open_exchange_rates']) {
-            $result['elcodi.currency_rates_provider_api_id'] = $config['rates_provider']['open_exchange_rates']['api_id'];
-            $result['elcodi.currency_rates_provider_endpoint'] = $config['rates_provider']['open_exchange_rates']['endpoint'];
-        }
 
         return $result;
     }
@@ -141,8 +132,7 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface'             => 'elcodi.entity.currency.class',
-            'Elcodi\Component\Currency\Entity\Interfaces\CurrencyExchangeRateInterface' => 'elcodi.entity.currency_exchange_rate.class',
+            'Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface' => 'elcodi.entity.currency.class',
         ];
     }
 

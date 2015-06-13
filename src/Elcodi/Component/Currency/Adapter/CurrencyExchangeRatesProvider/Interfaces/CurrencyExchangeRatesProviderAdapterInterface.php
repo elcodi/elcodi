@@ -23,19 +23,18 @@ namespace Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\Interf
 interface CurrencyExchangeRatesProviderAdapterInterface
 {
     /**
-     * Get the latest exchange rates
+     * Get the latest exchange rates.
      *
-     * @param array  $symbols array of currency codes to get the rates for.
-     * @param string $base    Base currency, default NULL (gets it from config)
+     * This method will take in account always that the base currency is USD,
+     * and the result must complain this format.
+     *
+     * [
+     *      "EUR" => "1,78342784",
+     *      "YEN" => "0,67438268",
+     *      ...
+     * ]
      *
      * @return array exchange rates
      */
-    public function getExchangeRates(array $symbols = [], $base = null);
-
-    /**
-     * Gets a list of all available currencies
-     *
-     * @return array Currencies
-     */
-    public function getCurrencies();
+    public function getExchangeRates();
 }

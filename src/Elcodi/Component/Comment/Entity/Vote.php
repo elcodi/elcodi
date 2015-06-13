@@ -20,13 +20,14 @@ namespace Elcodi\Component\Comment\Entity;
 use Elcodi\Component\Comment\Entity\Interfaces\CommentInterface;
 use Elcodi\Component\Comment\Entity\Interfaces\VoteInterface;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 
 /**
  * Class Vote
  */
 class Vote implements VoteInterface
 {
-    use DateTimeTrait;
+    use IdentifiableTrait, DateTimeTrait;
 
     /**
      * @var boolean
@@ -41,13 +42,6 @@ class Vote implements VoteInterface
      * Vote down
      */
     const DOWN = false;
-
-    /**
-     * @var integer
-     *
-     * id
-     */
-    protected $id;
 
     /**
      * @var boolean
@@ -69,30 +63,6 @@ class Vote implements VoteInterface
      * Comment
      */
     protected $comment;
-
-    /**
-     * Sets Id
-     *
-     * @param integer $id Id
-     *
-     * @return $this Self object
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * Get Id
-     *
-     * @return integer Id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Get Comment

@@ -43,13 +43,6 @@ class Configuration extends AbstractConfiguration
                             'default',
                             true
                         ))
-                        ->append($this->addMappingNode(
-                            'tax_group',
-                            'Elcodi\Component\Tax\Entity\TaxGroup',
-                            '@ElcodiTaxBundle/Resources/config/doctrine/TaxGroup.orm.yml',
-                            'default',
-                            true
-                        ))
                     ->end()
                 ->end()
             ->end();

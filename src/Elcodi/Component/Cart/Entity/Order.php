@@ -24,6 +24,7 @@ use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface;
 use Elcodi\Component\Cart\Entity\Traits\PriceTrait;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
@@ -39,14 +40,7 @@ use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
  */
 class Order implements OrderInterface
 {
-    use DateTimeTrait, PriceTrait, DimensionsTrait;
-
-    /**
-     * @var integer
-     *
-     * Identifier
-     */
-    protected $id;
+    use IdentifiableTrait, DateTimeTrait, PriceTrait, DimensionsTrait;
 
     /**
      * @var CustomerInterface
@@ -159,30 +153,6 @@ class Order implements OrderInterface
      * billing address
      */
     protected $billingAddress;
-
-    /**
-     * Get Id
-     *
-     * @return integer Id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Sets Id
-     *
-     * @param integer $id Id
-     *
-     * @return $this Self object
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 
     /**
      * Sets Customer

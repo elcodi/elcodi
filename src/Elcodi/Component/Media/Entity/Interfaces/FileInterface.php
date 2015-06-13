@@ -39,22 +39,6 @@ interface FileInterface extends MediaInterface
     public function getPath();
 
     /**
-     * Set id
-     *
-     * @param integer $id Entity Id
-     *
-     * @return $this Self object
-     */
-    public function setId($id);
-
-    /**
-     * Get id
-     *
-     * @return integer Entity identifier
-     */
-    public function getId();
-
-    /**
      * Set the mime type of this media element
      *
      * @param string $contentType Content type
