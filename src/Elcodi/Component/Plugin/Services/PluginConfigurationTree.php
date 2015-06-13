@@ -64,23 +64,8 @@ class PluginConfigurationTree implements ConfigurationInterface
                     ->prototype('array')
                         ->addDefaultsIfNotSet()
                         ->children()
-                            ->enumNode('type')
-                               ->values([
-                                   'integer',
-                                   'text',
-                                   'textarea',
-                                   'boolean',
-                                   'checkbox',
-                                   'radio',
-                                   'email',
-                                   'password',
-                                   'url',
-                                   'date',
-                                   'datetime',
-                                   'choice',
-                                   'time',
-                                   'hidden',
-                               ])
+                            ->scalarNode('type')
+                                ->isRequired()
                             ->end()
                             ->booleanNode('required')
                                 ->defaultFalse()
