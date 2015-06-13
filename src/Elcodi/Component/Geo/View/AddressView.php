@@ -22,20 +22,12 @@ use DateTime;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Geo\Services\Interfaces\LocationProviderInterface;
 use Elcodi\Component\Geo\ValueObject\LocationData;
-use Elcodi\Component\Geo\View\Interfaces\AddressViewInterface;
 
 /**
  * Class AddressView
  */
-class AddressView implements AddressViewInterface
+class AddressView
 {
-    /**
-     * @var array
-     *
-     * The hierarchies already retrieved.
-     */
-    protected static $hierarchies = [];
-
     /**
      * @var LocationProviderInterface
      *
@@ -80,7 +72,7 @@ class AddressView implements AddressViewInterface
     /**
      * Get Address
      *
-     * @return mixed Address
+     * @return string Address
      */
     public function getAddress()
     {
@@ -92,7 +84,7 @@ class AddressView implements AddressViewInterface
     /**
      * Get AddressMore
      *
-     * @return mixed AddressMore
+     * @return string AddressMore
      */
     public function getAddressMore()
     {
@@ -116,7 +108,7 @@ class AddressView implements AddressViewInterface
     /**
      * Get Mobile
      *
-     * @return mixed Mobile
+     * @return string Mobile
      */
     public function getMobile()
     {
@@ -128,7 +120,7 @@ class AddressView implements AddressViewInterface
     /**
      * Get Name
      *
-     * @return mixed Name
+     * @return string Name
      */
     public function getName()
     {
@@ -140,7 +132,7 @@ class AddressView implements AddressViewInterface
     /**
      * Get Phone
      *
-     * @return mixed Phone
+     * @return string Phone
      */
     public function getPhone()
     {
@@ -164,7 +156,7 @@ class AddressView implements AddressViewInterface
     /**
      * Get RecipientSurname
      *
-     * @return mixed RecipientSurname
+     * @return string RecipientSurname
      */
     public function getRecipientSurname()
     {
@@ -200,7 +192,7 @@ class AddressView implements AddressViewInterface
     /**
      * Return created_at value
      *
-     * @return DateTime
+     * @return DateTime Created at
      */
     public function getCreatedAt()
     {
@@ -212,7 +204,7 @@ class AddressView implements AddressViewInterface
     /**
      * Return updated_at value
      *
-     * @return DateTime
+     * @return DateTime Updated at
      */
     public function getUpdatedAt()
     {
@@ -236,13 +228,14 @@ class AddressView implements AddressViewInterface
     /**
      * Gets the country info
      *
-     * @return LocationData
+     * @return LocationData|null Country info
      */
     public function getCountryInfo()
     {
         $hierarchy = $this->getAddressHierarchy($this->address);
 
         foreach ($hierarchy as $location) {
+
             /**
              * @var LocationData $location
              */
@@ -250,12 +243,14 @@ class AddressView implements AddressViewInterface
                 return $location;
             }
         }
+
+        return null;
     }
 
     /**
      * Get the street name.
      *
-     * @return string
+     * @return string Street name
      */
     public function getStreetName()
     {
@@ -269,13 +264,14 @@ class AddressView implements AddressViewInterface
     /**
      * Get the city location info.
      *
-     * @return LocationData
+     * @return LocationData|null
      */
     public function getCityInfo()
     {
         $hierarchy = $this->getAddressHierarchy($this->address);
 
         foreach ($hierarchy as $location) {
+
             /**
              * @var LocationData $location
              */
@@ -283,6 +279,8 @@ class AddressView implements AddressViewInterface
                 return $location;
             }
         }
+
+        return null;
     }
 
     /**
@@ -290,23 +288,12 @@ class AddressView implements AddressViewInterface
      *
      * @param AddressInterface $address
      *
-     * @return LocationData
+     * @return LocationData[] Addres hierarchy
      */
-    private function getAddressHierarchy(
-        AddressInterface $address
-    ) {
-        $city = $address->getCity();
-
-        if (isset(self::$hierarchies[$city])) {
-            return self::$hierarchies[$city];
-        }
-
-        $hierarchy = $this
+    private function getAddressHierarchy(AddressInterface $address)
+    {
+        return $this
             ->locationProvider
-            ->getHierarchy($city);
-
-        self::$hierarchies[$city] = $hierarchy;
-
-        return $hierarchy;
+            ->getHierarchy($address->getCity());
     }
 }
