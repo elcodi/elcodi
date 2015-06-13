@@ -21,11 +21,16 @@ use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
  * Interface CommentInterface
  */
-interface CommentInterface extends DateTimeInterface, EnabledInterface
+interface CommentInterface
+    extends
+    IdentifiableInterface,
+    DateTimeInterface,
+    EnabledInterface
 {
 
     /**
@@ -91,22 +96,6 @@ interface CommentInterface extends DateTimeInterface, EnabledInterface
      * @return string Content
      */
     public function getContent();
-
-    /**
-     * Sets Id
-     *
-     * @param integer $id Id
-     *
-     * @return $this Self object
-     */
-    public function setId($id);
-
-    /**
-     * Get Id
-     *
-     * @return integer Id
-     */
-    public function getId();
 
     /**
      * Sets Parent

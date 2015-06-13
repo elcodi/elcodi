@@ -81,11 +81,6 @@ class ElcodiTaxExtension extends AbstractExtension implements EntitiesOverridabl
             "elcodi.entity.tax.mapping_file" => $config['mapping']['tax']['mapping_file'],
             "elcodi.entity.tax.manager" => $config['mapping']['tax']['manager'],
             "elcodi.entity.tax.enabled" => $config['mapping']['tax']['enabled'],
-
-            "elcodi.entity.tax_group.class" => $config['mapping']['tax_group']['class'],
-            "elcodi.entity.tax_group.mapping_file" => $config['mapping']['tax_group']['mapping_file'],
-            "elcodi.entity.tax_group.manager" => $config['mapping']['tax_group']['manager'],
-            "elcodi.entity.tax_group.enabled" => $config['mapping']['tax_group']['enabled'],
         ];
     }
 
@@ -113,7 +108,6 @@ class ElcodiTaxExtension extends AbstractExtension implements EntitiesOverridabl
     {
         return [
             'Elcodi\Component\Tax\Entity\Interfaces\TaxInterface' => 'elcodi.entity.tax.class',
-            'Elcodi\Component\Tax\Entity\Interfaces\TaxGroupInterface' => 'elcodi.entity.tax_group.class',
         ];
     }
 

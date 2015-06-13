@@ -22,20 +22,14 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\Component\Comment\Entity\Interfaces\CommentInterface;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 
 /**
  * Class Comment
  */
 class Comment implements CommentInterface
 {
-    use DateTimeTrait, EnabledTrait;
-
-    /**
-     * @var integer
-     *
-     * id
-     */
-    protected $id;
+    use IdentifiableTrait, DateTimeTrait, EnabledTrait;
 
     /**
      * @var string
@@ -106,30 +100,6 @@ class Comment implements CommentInterface
      * content
      */
     protected $parsingType;
-
-    /**
-     * Sets Id
-     *
-     * @param integer $id Id
-     *
-     * @return $this Self object
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * Get Id
-     *
-     * @return integer Id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Sets Content

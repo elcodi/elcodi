@@ -38,7 +38,6 @@ class MappingCompilerPass extends AbstractElcodiMappingCompilerPass
                 $container,
                 [
                     'tax',
-                    'tax_group',
                 ]
             );
     }

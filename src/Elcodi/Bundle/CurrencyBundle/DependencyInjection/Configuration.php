@@ -18,7 +18,6 @@
 namespace Elcodi\Bundle\CurrencyBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
-use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
 
@@ -67,37 +66,11 @@ class Configuration extends AbstractConfiguration
                 ->arrayNode('rates_provider')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('currency_base')
-                            ->defaultValue('USD')
-                        ->end()
                         ->scalarNode('client')
-                            ->defaultValue('elcodi.adapter.currency_exchange_rate.dummy')
+                            ->defaultValue('elcodi.adapter.currency_exchange_rate.yahoo_finances')
                         ->end()
                     ->end()
-                    ->append($this->addOpenExchangeRatesParametersNode())
                 ->end()
             ->end();
-    }
-
-    /**
-     * Require Open exchange configuration
-     */
-    public function addOpenExchangeRatesParametersNode()
-    {
-        $treeBuilder = new TreeBuilder();
-        $node = $treeBuilder->root('open_exchange_rates');
-
-        $node
-            ->addDefaultsIfNotSet()
-            ->children()
-                ->scalarNode('api_id')
-                    ->defaultValue('00000')
-                ->end()
-                ->scalarNode('endpoint')
-                    ->defaultValue('http://openexchangerates.org/api')
-                ->end()
-            ->end();
-
-        return $node;
     }
 }

@@ -41,13 +41,6 @@ class CurrencyManager
     private $currencyExchangeRateRepository;
 
     /**
-     * @var string
-     *
-     * Currency base iso
-     */
-    private $currencyBaseIso;
-
-    /**
      * @var array
      *
      * Exchange Rate List
@@ -59,16 +52,13 @@ class CurrencyManager
      *
      * @param CurrencyRepository             $currencyRepository             Currency Repository
      * @param CurrencyExchangeRateRepository $currencyExchangeRateRepository Repo for exch. rates
-     * @param string                         $currencyBaseIso                Currency base iso
      */
     public function __construct(
         CurrencyRepository $currencyRepository,
-        CurrencyExchangeRateRepository $currencyExchangeRateRepository,
-        $currencyBaseIso
+        CurrencyExchangeRateRepository $currencyExchangeRateRepository
     ) {
         $this->currencyRepository = $currencyRepository;
         $this->currencyExchangeRateRepository = $currencyExchangeRateRepository;
-        $this->currencyBaseIso = $currencyBaseIso;
     }
 
     /**
@@ -87,7 +77,7 @@ class CurrencyManager
         $currencyBase = $this
             ->currencyRepository
             ->findOneBy([
-                'iso' => $this->currencyBaseIso,
+                'iso' => 'USD',
             ]);
 
         $availableExchangeRates = $this

@@ -24,12 +24,3 @@ Elcodi\Component\Tax\Entity\Tax:
         enabled:
             column: enabled
             type: boolean
-
-    manyToOne:
-        taxGroup:
-            targetEntity: Elcodi\Component\Tax\Entity\Interfaces\TaxGroupInterface
-            inversedBy: taxes
-            joinColumn:
-                name: tax_group_id
-                referencedColumnName: id
-                nullable: true

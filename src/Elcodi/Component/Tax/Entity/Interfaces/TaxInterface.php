@@ -72,20 +72,4 @@ interface TaxInterface extends IdentifiableInterface, EnabledInterface
      * @return $this
      */
     public function setValue($value);
-
-    /**
-     * Get TaxGroup
-     *
-     * @return TaxGroupInterface TaxGroup
-     */
-    public function getTaxGroup();
-
-    /**
-     * Sets TaxGroup
-     *
-     * @param TaxGroupInterface $taxGroup TaxGroup
-     *
-     * @return $this Self object
-     */
-    public function setTaxGroup($taxGroup);
 }

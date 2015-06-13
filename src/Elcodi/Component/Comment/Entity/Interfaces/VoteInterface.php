@@ -18,11 +18,15 @@
 namespace Elcodi\Component\Comment\Entity\Interfaces;
 
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
  * Interface VoteInterface
  */
-interface VoteInterface extends DateTimeInterface
+interface VoteInterface
+    extends
+    IdentifiableInterface,
+    DateTimeInterface
 {
     /**
      * Get Comment

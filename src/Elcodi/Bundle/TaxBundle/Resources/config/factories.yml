@@ -11,11 +11,3 @@ services:
         class: Elcodi\Component\Tax\Factory\TaxFactory
         calls:
             - [setEntityNamespace, ["%elcodi.entity.tax.class%"]]
-
-    #
-    # Factory for entity tax group
-    #
-    elcodi.factory.tax_group:
-        class: Elcodi\Component\Tax\Factory\TaxGroupFactory
-        calls:
-            - [setEntityNamespace, ["%elcodi.entity.tax_group.class%"]]
