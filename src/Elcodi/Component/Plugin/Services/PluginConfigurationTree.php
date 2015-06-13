@@ -77,6 +77,7 @@ class PluginConfigurationTree implements ConfigurationInterface
                                    'url',
                                    'date',
                                    'datetime',
+                                   'choice',
                                    'time',
                                    'hidden',
                                ])
@@ -91,7 +92,7 @@ class PluginConfigurationTree implements ConfigurationInterface
                                 ->defaultNull()
                             ->end()
                             ->arrayNode('options')
-                                ->prototype('scalar')
+                                ->prototype('variable')
                                 ->end()
                             ->end()
                             ->variableNode('attr')

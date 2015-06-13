@@ -59,12 +59,12 @@ class PluginType extends AbstractType
         foreach ($fields as $fieldName => $field) {
             $builder
                 ->remove($fieldName)
-                ->add($fieldName, $field['type'], [
+                ->add($fieldName, $field['type'], array_merge([
                     'label'    => $field['label'],
                     'data'     => $field['data'],
                     'required' => $field['required'],
                     'attr'     => $field['attr'],
-                ]);
+                ], $field['options']), $field);
         }
 
         $builder->add('save', 'submit');
