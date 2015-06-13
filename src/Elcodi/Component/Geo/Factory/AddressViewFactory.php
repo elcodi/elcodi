@@ -38,7 +38,7 @@ class AddressViewFactory
      *
      * @param LocationProviderInterface $locationProvider A location provider
      */
-    public function __construct( LocationProviderInterface $locationProvider)
+    public function __construct(LocationProviderInterface $locationProvider)
     {
         $this->locationProvider = $locationProvider;
     }
