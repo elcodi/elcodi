@@ -39,7 +39,7 @@
         "symfony/dependency-injection": "^2.7",
         "symfony/form": "^2.7",
 
-        "elcodi/core": "^0.5.18"
+        "elcodi/core": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "4.5.0"

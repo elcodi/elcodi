@@ -42,15 +42,15 @@
         "mmoreram/simple-doctrine-mapping": "^1.0",
         "ircmaxell/password-compat": "^1.0",
 
-        "elcodi/core-bundle": "^0.5.18",
-        "elcodi/geo-bundle": "^0.5.18",
-        "elcodi/language-bundle": "^0.5.18",
-        "elcodi/cart-bundle": "^0.5.18",
-        "elcodi/user": "^0.5.18"
+        "elcodi/core-bundle": "^1.0",
+        "elcodi/geo-bundle": "^1.0",
+        "elcodi/language-bundle": "^1.0",
+        "elcodi/cart-bundle": "^1.0",
+        "elcodi/user": "^1.0"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "^0.5.18",
-        "elcodi/fixtures-booster-bundle": "^0.5.18",
+        "elcodi/test-common-bundle": "^1.0",
+        "elcodi/fixtures-booster-bundle": "^1.0",
         "doctrine/data-fixtures": "^1.1",
         "phpunit/phpunit": "4.5.0"
     },
