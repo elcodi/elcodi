@@ -49,6 +49,7 @@ class CartManagerVariantTest extends AbstractCartManagerTest
         return [
             'ElcodiCurrencyBundle',
             'ElcodiAttributeBundle',
+            'ElcodiStoreBundle',
         ];
     }
 

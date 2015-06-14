@@ -19,7 +19,7 @@ namespace Elcodi\Component\Geo\Factory;
 
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Geo\Services\Interfaces\LocationProviderInterface;
-use Elcodi\Component\Geo\View\Address as AddressView;
+use Elcodi\Component\Geo\View\AddressView;
 
 /**
  * Class AddressViewFactory

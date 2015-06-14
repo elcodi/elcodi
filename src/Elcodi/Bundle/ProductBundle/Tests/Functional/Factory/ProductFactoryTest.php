@@ -33,6 +33,7 @@ class ProductFactoryTest extends WebTestCase
     {
         return [
             'ElcodiCurrencyBundle',
+            'ElcodiStoreBundle',
         ];
     }
 

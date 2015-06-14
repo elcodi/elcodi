@@ -33,6 +33,7 @@ class VariantFactoryTest extends WebTestCase
     {
         return [
             'ElcodiCurrencyBundle',
+            'ElcodiStoreBundle',
         ];
     }
 
