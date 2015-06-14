@@ -31,28 +31,6 @@ use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 abstract class AbstractCartManagerTest extends WebTestCase
 {
     /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return ['elcodi.manager.cart'];
-    }
-
-    /**
-     * Load fixtures of these bundles
-     *
-     * @return array Bundles name where fixtures should be found
-     */
-    protected function loadFixturesBundles()
-    {
-        return [
-            'ElcodiCurrencyBundle',
-        ];
-    }
-
-    /**
      * @var CartInterface
      *
      * Cart
