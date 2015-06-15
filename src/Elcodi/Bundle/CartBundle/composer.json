@@ -46,6 +46,7 @@
         "elcodi/currency-bundle": "^1.0",
         "elcodi/state-transition-machine-bundle": "^1.0",
         "elcodi/store-bundle": "^1.0",
+        "elcodi/shipping-bundle": "^1.0",
         "elcodi/cart": "^1.0"
     },
     "require-dev": {
