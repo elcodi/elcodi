@@ -7,10 +7,9 @@ Elcodi for Symfony
 [![Latest Unstable Version](https://poser.pugx.org/elcodi/elcodi/v/unstable.png)](https://packagist.org/packages/elcodi/elcodi)
 [![License](https://poser.pugx.org/elcodi/elcodi/license.png)](https://packagist.org/packages/elcodi/elcodi)
 
-> Warning. This project is not tagged as stable yet. It means that we don't
-> promise BC between minor versions or patch versions. During the first quart of
-> June we will release our first Beta version for developers. Stay Tuned and 
-> enjoy Elcodi.
+> Warning. This project is not tagged as stable yet. During this Beta stage, we
+> aim to find and resolve all bugs, empower testing layer and build even a 
+> better and bigger project documentation.
 
 Elcodi is a suite of e-commerce Components and Bundles built on top of Symfony 
 and under [MIT](http://opensource.org/licenses/MIT) license.
