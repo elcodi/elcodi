@@ -46,6 +46,8 @@
     "suggest": {
         "michelf/php-markdown": "Needed for the markdown parsing adapter"
     },
+    "minimum-stability": "beta",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Elcodi\\Component\\Core\\": ""

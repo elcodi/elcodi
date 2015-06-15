@@ -44,6 +44,8 @@
         "symfony/validator": "^2.7",
         "symfony/finder": "^2.7"
     },
+    "minimum-stability": "beta",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Elcodi\\Bundle\\TestCommonBundle\\": ""
