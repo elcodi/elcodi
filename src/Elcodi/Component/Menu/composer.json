@@ -45,6 +45,8 @@
         "twig/twig": "Required if using Twig extensions",
         "symfony/routing": "^2.7"
     },
+    "minimum-stability": "beta",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Elcodi\\Component\\Menu\\": ""

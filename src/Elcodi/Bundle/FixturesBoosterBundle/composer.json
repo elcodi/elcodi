@@ -40,6 +40,8 @@
 
         "elcodi/core-bundle": "^1.0"
     },
+    "minimum-stability": "beta",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Elcodi\\Bundle\\FixturesBoosterBundle\\": ""
