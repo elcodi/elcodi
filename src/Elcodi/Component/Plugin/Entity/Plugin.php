@@ -70,19 +70,21 @@ class Plugin
      * @param string              $type          Type
      * @param string              $category      Plugin category
      * @param PluginConfiguration $configuration Configuration
+     * @param boolean             $enabled       If the plugin is enabled
      */
     public function __construct(
         $namespace,
         $type,
         $category,
-        PluginConfiguration $configuration
+        PluginConfiguration $configuration,
+        $enabled
     ) {
         $this->namespace = $namespace;
         $this->hash = sha1($namespace);
         $this->type = $type;
         $this->category = $category;
         $this->configuration = $configuration;
-        $this->enabled = true;
+        $this->enabled = $enabled;
     }
 
     /**
@@ -347,20 +349,23 @@ class Plugin
      * @param string              $type          Type
      * @param string              $category      Plugin category
      * @param PluginConfiguration $configuration Configuration
+     * @param boolean             $enabled       If the plugin should be enabled
      *
-     * @return self New instance
+     * @return Plugin New instance
      */
     public static function create(
         $namespace,
         $type,
         $category,
-        PluginConfiguration $configuration
+        PluginConfiguration $configuration,
+        $enabled
     ) {
         return new self(
             $namespace,
             $type,
             $category,
-            $configuration
+            $configuration,
+            $enabled
         );
     }
 }
