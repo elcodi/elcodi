@@ -49,6 +49,13 @@ Elcodi\Component\Cart\Entity\OrderLine:
                 name: order_id
                 referencedColumnName: id
                 nullable: false
+        productCurrency:
+            targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
+            fetch: EAGER
+            joinColumn:
+                 name: product_currency_iso
+                 referencedColumnName: iso
+                 nullable: false
         currency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
