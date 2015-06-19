@@ -18,7 +18,7 @@ var _etc = (function () {
             var type = element[3];
 
             var _etcr = document.createElement('img');
-            _etcr.src = '/_m/' + token + '/' + event + '.png';
+            _etcr.src = '/api/_m/' + token + '/' + event + '.png';
             _etcr.src += '?i=' + id;
             _etcr.src += '&t=' + type;
             _etcr.src += '&_r=' + Math.random().toString(36);
