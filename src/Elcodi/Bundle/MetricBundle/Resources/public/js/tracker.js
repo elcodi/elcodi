@@ -6,38 +6,29 @@
  * _etc.push(['3267462837', 'product_add'])
  * _etc.push(['3267462837', 'product_add', {'user'= '12267'}])
  */
-var _etcref = _etc || [];
-var _etc = (function () {
+var _etc = (function (ts) {
 
-    var _etcbackup = _etcref.slice(0);
-    var _etc = {
-        push: function (element) {
-            var token = element[0];
-            var event = element[1];
-            var id = element[2];
-            var type = element[3];
+    function push(t) {
+        var token = t[0],
+            event = t[1],
+            id = t[2],
+            type = t[3],
+            lastChild = document.body.lastChild,
+            element = document.createElement('img');
 
-            var _etcr = document.createElement('img');
-            _etcr.src = '/api/_m/' + token + '/' + event + '.png';
-            _etcr.src += '?i=' + id;
-            _etcr.src += '&t=' + type;
-            _etcr.src += '&_r=' + Math.random().toString(36);
-            _etcr.height = "1";
-            _etcr.width = "1";
-            _etcr.style.display = "none";
-
-            this.appendTracker(_etcr);
-        },
-        appendTracker: function (_tracker) {
-            var _body = document.getElementsByTagName('body')[0];
-            var _bodylastchild = _body.lastChild;
-            _bodylastchild.parentNode.insertBefore(_tracker, _bodylastchild.nextSibling);
-        }
-    };
-
-    while (_etcbackup.length > 0) {
-        _etc.push(_etcbackup.shift());
+        element.src = '/api/_m/'.concat(token, '/', event, '.png?i=', id, '&t=', type, '&r=', 1 * new Date);
+        element.height = 1;
+        element.width = 1;
+        element.style.display = 'none';
+        lastChild.parentNode.insertBefore(element, lastChild);
     }
 
-    return _etc;
-}());
+    for (var idx = 0; idx < ts.length; ++idx) {
+        push(_etc[idx]);
+    }
+
+    return {
+        push: push,
+    };
+
+}(_etc || []));
