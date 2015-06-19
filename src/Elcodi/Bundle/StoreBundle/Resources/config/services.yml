@@ -75,8 +75,15 @@ services:
             - getRoutingStrategy
 
     elcodi.store_default_currency:
-        class: Elcodi\Component\Language\Entity\Interfaces\LanguageInterface
+        class: Elcodi\Component\Language\Entity\Interfaces\CurrencyInterface
         public: false
         factory:
             - @elcodi.store
             - getDefaultCurrency
+
+    elcodi.store_default_currency_iso:
+        class: StdClass
+        public: false
+        factory:
+            - @elcodi.store_default_currency
+            - getIso

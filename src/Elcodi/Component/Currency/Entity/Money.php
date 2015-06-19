@@ -39,21 +39,21 @@ class Money implements MoneyInterface
      *
      * Money amount
      */
-    protected $amount = 0;
+    private $amount = 0;
 
     /**
      * @var WrappedMoney
      *
      * Wrapped Money Value Object
      */
-    protected $wrappedMoney;
+    private $wrappedMoney;
 
     /**
      * @var CurrencyInterface
      *
      * Represents the Currency for current Money
      */
-    protected $currency;
+    private $currency;
 
     /**
      * Simple Money Value Object constructor
@@ -73,24 +73,6 @@ class Money implements MoneyInterface
     }
 
     /**
-     * Set currency
-     *
-     * @param CurrencyInterface $currency Currency
-     *
-     * @return $this Self object
-     */
-    public function setCurrency(CurrencyInterface $currency)
-    {
-        $this->wrappedMoney = new WrappedMoney(
-            $this->amount,
-            new WrappedCurrency($currency->getIso())
-        );
-        $this->currency = $currency;
-
-        return $this;
-    }
-
-    /**
      * Gets the Money Currency
      *
      * @return CurrencyInterface Currency
@@ -98,26 +80,6 @@ class Money implements MoneyInterface
     public function getCurrency()
     {
         return $this->currency;
-    }
-
-    /**
-     * Sets the amount
-     *
-     * @param integer $amount Amount
-     *
-     * @return $this Self object
-     */
-    public function setAmount($amount)
-    {
-        $amount = intval($amount);
-
-        $this->wrappedMoney = new WrappedMoney(
-            $amount,
-            new WrappedCurrency($this->currency->getIso())
-        );
-        $this->amount = $amount;
-
-        return $this;
     }
 
     /**
@@ -131,7 +93,8 @@ class Money implements MoneyInterface
     }
 
     /**
-     * Gets the monetary value represented by this object converted to its base units
+     * Gets the monetary value represented by this object converted to its base
+     * units
      *
      * @return float
      */
@@ -157,7 +120,9 @@ class Money implements MoneyInterface
      */
     public function compareTo(MoneyInterface $other)
     {
-        return $this->wrappedMoney->compareTo($this->newWrappedMoneyFromMoney($other));
+        return $this
+            ->wrappedMoney
+            ->compareTo($this->newWrappedMoneyFromMoney($other));
     }
 
     /**
@@ -170,9 +135,14 @@ class Money implements MoneyInterface
      */
     public function add(MoneyInterface $other)
     {
-        $wrappedMoney = $this->wrappedMoney->add($this->newWrappedMoneyFromMoney($other));
+        $wrappedMoney = $this
+            ->wrappedMoney
+            ->add($this->newWrappedMoneyFromMoney($other));
 
-        return Money::create($wrappedMoney->getAmount(), $other->getCurrency());
+        return Money::create(
+            $wrappedMoney->getAmount(),
+            $other->getCurrency()
+        );
     }
 
     /**
@@ -185,13 +155,19 @@ class Money implements MoneyInterface
      */
     public function subtract(MoneyInterface $other)
     {
-        $wrappedMoney = $this->wrappedMoney->subtract($this->newWrappedMoneyFromMoney($other));
+        $wrappedMoney = $this
+            ->wrappedMoney
+            ->subtract($this->newWrappedMoneyFromMoney($other));
 
-        return Money::create($wrappedMoney->getAmount(), $other->getCurrency());
+        return Money::create(
+            $wrappedMoney->getAmount(),
+            $other->getCurrency()
+        );
     }
 
     /**
-     * Multiplies current Money amount by a factor returns the result as a new Money
+     * Multiplies current Money amount by a factor returns the result as a new
+     * Money
      *
      * @param float $factor Factor
      *
@@ -199,9 +175,14 @@ class Money implements MoneyInterface
      */
     public function multiply($factor)
     {
-        $wrappedMoney = $this->wrappedMoney->multiply($factor);
+        $wrappedMoney = $this
+            ->wrappedMoney
+            ->multiply($factor);
 
-        return Money::create($wrappedMoney->getAmount(), $this->getCurrency());
+        return Money::create(
+            $wrappedMoney->getAmount(),
+            $this->getCurrency()
+        );
     }
 
     /**
@@ -225,7 +206,9 @@ class Money implements MoneyInterface
      */
     public function isGreaterThan(MoneyInterface $other)
     {
-        return $this->wrappedMoney->greaterThan($this->newWrappedMoneyFromMoney($other));
+        return $this
+            ->wrappedMoney
+            ->greaterThan($this->newWrappedMoneyFromMoney($other));
     }
 
     /**
@@ -237,7 +220,9 @@ class Money implements MoneyInterface
      */
     public function isLessThan(MoneyInterface $other)
     {
-        return $this->wrappedMoney->lessThan($this->newWrappedMoneyFromMoney($other));
+        return $this
+            ->wrappedMoney
+            ->lessThan($this->newWrappedMoneyFromMoney($other));
     }
 
     /**
@@ -251,7 +236,11 @@ class Money implements MoneyInterface
     {
         return new WrappedMoney(
             $money->getAmount(),
-            new WrappedCurrency($money->getCurrency()->getIso())
+            new WrappedCurrency(
+                $money
+                    ->getCurrency()
+                    ->getIso()
+            )
         );
     }
 

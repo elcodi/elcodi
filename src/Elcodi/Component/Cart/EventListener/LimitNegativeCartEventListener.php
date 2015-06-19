@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Cart\EventListener;
 
 use Elcodi\Component\Cart\Event\CartOnLoadEvent;
+use Elcodi\Component\Currency\Entity\Money;
 
 /**
  * Class LimitNegativeCartEventListener
@@ -34,11 +35,14 @@ class LimitNegativeCartEventListener
     public function limitCartAmount(CartOnLoadEvent $event)
     {
         $cart = $event->getCart();
-
         $amount = $cart->getAmount();
 
         if ($amount->getAmount() <= 0) {
-            $cart->setAmount($amount->setAmount(0));
+            $cart
+                ->setAmount(Money::create(
+                    0,
+                    $amount->getCurrency()
+                ));
         }
     }
 }
