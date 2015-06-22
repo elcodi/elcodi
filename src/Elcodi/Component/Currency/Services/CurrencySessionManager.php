@@ -72,7 +72,7 @@ class CurrencySessionManager
     }
 
     /**
-     * Get current cart id loaded in session
+     * Get currency id loaded in session
      *
      * @return integer Currency id
      */

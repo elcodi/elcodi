@@ -23,29 +23,11 @@ namespace Elcodi\Component\Currency\Entity\Interfaces;
 interface MoneyInterface
 {
     /**
-     * Sets the amount
-     *
-     * @param integer $amount Amount
-     *
-     * @return $this Self object
-     */
-    public function setAmount($amount);
-
-    /**
      * Gets the Money amount
      *
      * @return integer Amount
      */
     public function getAmount();
-
-    /**
-     * Set currency
-     *
-     * @param CurrencyInterface $currency Currency
-     *
-     * @return $this Self object
-     */
-    public function setCurrency(CurrencyInterface $currency);
 
     /**
      * Gets the Currency
