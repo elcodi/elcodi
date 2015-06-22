@@ -170,13 +170,15 @@ class PluginManager
     ) {
         $pluginType = $pluginConfiguration['type'];
         $pluginCategory = $pluginConfiguration['category'];
+        $pluginEnabledByDefault = $pluginConfiguration['enabled_by_default'];
         unset($pluginConfiguration['type']);
 
         $pluginInstance = Plugin::create(
             $pluginNamespace,
             $pluginType,
             $pluginCategory,
-            PluginConfiguration::create($pluginConfiguration)
+            PluginConfiguration::create($pluginConfiguration),
+            $pluginEnabledByDefault
         );
 
         return $pluginInstance;
