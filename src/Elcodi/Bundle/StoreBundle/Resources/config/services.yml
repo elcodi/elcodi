@@ -38,7 +38,7 @@ services:
             - getTemplate
 
     elcodi.store_template:
-        class: Elcodi\Component\Plugin\Entity\Interfaces\PluginInterface
+        class: Elcodi\Component\Plugin\Entity\Plugin
         public: false
         factory:
             - @elcodi.repository.plugin
