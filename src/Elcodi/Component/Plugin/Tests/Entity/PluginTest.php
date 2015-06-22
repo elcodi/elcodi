@@ -64,7 +64,8 @@ class PluginTest extends PHPUnit_Framework_TestCase
                         ],
                     ],
                 ]
-            )
+            ),
+            true
         );
     }
 
@@ -304,7 +305,8 @@ class PluginTest extends PHPUnit_Framework_TestCase
                             ],
                         ],
                     ]
-                )
+                ),
+                true
             ));
 
         $this->assertEquals(
@@ -344,7 +346,8 @@ class PluginTest extends PHPUnit_Framework_TestCase
                                 ],
                             ],
                         ]
-                    )
+                    ),
+                    true
                 )
             );
     }
