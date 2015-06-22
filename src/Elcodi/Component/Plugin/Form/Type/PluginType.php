@@ -19,6 +19,7 @@ namespace Elcodi\Component\Plugin\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Elcodi\Component\Plugin\Entity\Plugin;
 
@@ -28,20 +29,13 @@ use Elcodi\Component\Plugin\Entity\Plugin;
 class PluginType extends AbstractType
 {
     /**
-     * @var Plugin
-     *
-     * Plugin
+     * @param OptionsResolver $resolver
      */
-    private $plugin;
-
-    /**
-     * Construct
-     *
-     * @param Plugin $plugin Plugin
-     */
-    public function __construct(Plugin $plugin)
+    public function configureOptions(OptionsResolver $resolver)
     {
-        $this->plugin = $plugin;
+        $resolver
+            ->setRequired('plugin')
+            ->setAllowedTypes('plugin', 'Elcodi\Component\Plugin\Entity\Plugin');
     }
 
     /**
@@ -52,11 +46,11 @@ class PluginType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $fields = $this
-            ->plugin
-            ->getFields();
-
-        foreach ($fields as $fieldName => $field) {
+        /**
+         * @var Plugin $plugin
+         */
+        $plugin = $options['plugin'];
+        foreach ($plugin->getFields() as $fieldName => $field) {
             $builder
                 ->remove($fieldName)
                 ->add($fieldName, $field['type'], array_merge([
