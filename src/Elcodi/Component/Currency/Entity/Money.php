@@ -39,7 +39,7 @@ class Money implements MoneyInterface
      *
      * Money amount
      */
-    private $amount = 0;
+    private $amount;
 
     /**
      * @var WrappedMoney
