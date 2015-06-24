@@ -78,7 +78,9 @@ class GDResizeAdapter implements ResizeAdapterInterface
 
         ob_start();
         imagejpeg($newResource);
+        $content = ob_get_contents();
+        ob_end_clean();
 
-        return ob_get_contents();
+        return $content;
     }
 }
