@@ -32,3 +32,6 @@ services:
         arguments:
             - %elcodi.image_resize_converter_bin_path%
             - %elcodi.image_resize_converter_default_profile%
+
+    elcodi.media_resize.gd:
+        class: Elcodi\Component\Media\Adapter\Resizer\GDResizeAdapter

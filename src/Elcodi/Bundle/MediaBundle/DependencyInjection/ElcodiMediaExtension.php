@@ -117,7 +117,7 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
             'elcodi.image_view_max_age'                     => $config['images']['view']['max_age'],
             'elcodi.image_view_shared_max_age'              => $config['images']['view']['shared_max_age'],
             'elcodi.image_upload_field_name'                => $config['images']['upload']['field_name'],
-            'elcodi.image_resize_engine'                    => $config['images']['resize']['engine'],
+
             'elcodi.image_resize_converter_bin_path'        => $config['images']['resize']['converter_bin_path'],
             'elcodi.image_resize_converter_default_profile' => $config['images']['resize']['converter_default_profile'],
         ];
@@ -135,7 +135,7 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
 
         $container->setAlias(
             'elcodi.media_resize_engine',
-            'elcodi.media_resize.' . $container->getParameter('elcodi.image_resize_engine')
+            $config['images']['resize']['adapter']
         );
 
         $container->setAlias(
