@@ -12,8 +12,6 @@ php:
 
 matrix:
     fast_finish: true
-    allow_failures:
-        - php: 7.0
     include:
         - php: 5.4
           env: COMPOSER_OPTIONS="--prefer-lowest"
@@ -21,9 +19,10 @@ matrix:
 before_install:
     - sh -c "sudo mkdir vendor"
     - sh -c "sudo mount -t tmpfs -o size=512M tmpfs vendor"
+    - /home/travis/.phpenv/versions/$(phpenv version-name)/bin/composer self-update
 
 install:
-    - composer update --no-interaction ${COMPOSER_OPTIONS}
+    - composer install --no-interaction ${COMPOSER_OPTIONS}
 
 before_script:
     - sh -c "sudo mkdir /tmp/Elcodi"
