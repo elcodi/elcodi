@@ -101,7 +101,7 @@ class ImageResizeControllerTest extends WebTestCase
 
         $responseResize = $client->getResponse();
         $this->assertEquals(200, $responseResize->getStatusCode());
-        $this->assertEquals('image/png', $responseResize->headers->get('content-type'));
+        $this->assertEquals('image/jpeg', $responseResize->headers->get('content-type'));
         $this->assertNotEmpty($responseResize->getContent());
         $this->assertNotEquals(
             $responseView->getContent(),
