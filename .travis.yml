@@ -12,9 +12,9 @@ php:
 
 matrix:
     fast_finish: true
-    include:
-        - php: 5.4
-          env: COMPOSER_OPTIONS="update --prefer-lowest"
+#   include:
+#       - php: 5.4
+#         env: COMPOSER_OPTIONS="update --prefer-lowest"
 
 before_install:
     - sh -c "sudo mkdir vendor"
