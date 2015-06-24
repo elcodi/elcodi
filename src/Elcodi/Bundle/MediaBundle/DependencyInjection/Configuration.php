@@ -86,8 +86,8 @@ class Configuration extends AbstractConfiguration
                                  * While only one element is defined,
                                  * defined as scalarNode
                                  */
-                                ->scalarNode('engine')
-                                    ->defaultValue('imagemagick')
+                                ->scalarNode('adapter')
+                                    ->defaultValue('elcodi.media_resize.gd')
                                 ->end()
                                 ->scalarNode('converter_bin_path')
                                     ->defaultValue('/usr/bin/convert')

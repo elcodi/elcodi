@@ -1,7 +1,7 @@
 language: php
 
 env:
-    - COMPOSER_OPTIONS="--prefer-source"
+    - COMPOSER_OPTIONS="install --prefer-source"
 
 php:
     - 5.4
@@ -14,7 +14,7 @@ matrix:
     fast_finish: true
     include:
         - php: 5.4
-          env: COMPOSER_OPTIONS="--prefer-lowest"
+          env: COMPOSER_OPTIONS="update --prefer-lowest"
 
 before_install:
     - sh -c "sudo mkdir vendor"
@@ -22,7 +22,7 @@ before_install:
     - /home/travis/.phpenv/versions/$(phpenv version-name)/bin/composer self-update
 
 install:
-    - composer install --no-interaction ${COMPOSER_OPTIONS}
+    - composer ${COMPOSER_OPTIONS} --no-interaction
 
 before_script:
     - sh -c "sudo mkdir /tmp/Elcodi"
