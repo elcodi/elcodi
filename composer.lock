@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "166978ef041f1a7cfbb8263f9969a6f1",
+    "hash": "a40d7e734d255387b8673cd68f441b5a",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1401,16 +1401,16 @@
         },
         {
             "name": "predis/predis",
-            "version": "v1.0.1",
+            "version": "v0.8.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nrk/predis.git",
-                "reference": "7a170b3d8123c556597b4fbdb88631f99de180c2"
+                "reference": "4123fcd85d61354c6c9900db76c9597dbd129bf6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nrk/predis/zipball/7a170b3d8123c556597b4fbdb88631f99de180c2",
-                "reference": "7a170b3d8123c556597b4fbdb88631f99de180c2",
+                "url": "https://api.github.com/repos/nrk/predis/zipball/4123fcd85d61354c6c9900db76c9597dbd129bf6",
+                "reference": "4123fcd85d61354c6c9900db76c9597dbd129bf6",
                 "shasum": ""
             },
             "require": {
@@ -1425,8 +1425,8 @@
             },
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "Predis\\": "src/"
+                "psr-0": {
+                    "Predis": "lib/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1447,7 +1447,7 @@
                 "predis",
                 "redis"
             ],
-            "time": "2015-01-02 12:51:34"
+            "time": "2014-08-01 09:43:10"
         },
         {
             "name": "psr/log",
