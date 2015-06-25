@@ -43,18 +43,18 @@
         "mmoreram/simple-doctrine-mapping": "^1.0",
         "doctrine/doctrine-cache-bundle": "^1.0",
 
-        "elcodi/core-bundle": "^1.0",
-        "elcodi/language-bundle": "^1.0",
-        "elcodi/media-bundle": "^1.0",
-        "elcodi/currency-bundle": "^1.0",
-        "elcodi/attribute-bundle": "^1.0",
-        "elcodi/configuration-bundle": "^1.0",
-        "elcodi/store-bundle": "^1.0",
-        "elcodi/product": "^1.0"
+        "elcodi/core-bundle": "^1.0@dev",
+        "elcodi/language-bundle": "^1.0@dev",
+        "elcodi/media-bundle": "^1.0@dev",
+        "elcodi/currency-bundle": "^1.0@dev",
+        "elcodi/attribute-bundle": "^1.0@dev",
+        "elcodi/configuration-bundle": "^1.0@dev",
+        "elcodi/store-bundle": "^1.0@dev",
+        "elcodi/product": "^1.0@dev"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "^1.0",
-        "elcodi/fixtures-booster-bundle": "^1.0",
+        "elcodi/test-common-bundle": "^1.0@dev",
+        "elcodi/fixtures-booster-bundle": "^1.0@dev",
         "doctrine/data-fixtures": "^1.1",
         "phpunit/phpunit": "4.5.0"
     },

@@ -35,9 +35,9 @@
         "doctrine/common": "^2.5",
         "doctrine/orm": "^2.5",
 
-        "elcodi/core": "^1.0",
-        "elcodi/language": "^1.0",
-        "elcodi/media": "^1.0"
+        "elcodi/core": "^1.0@dev",
+        "elcodi/language": "^1.0@dev",
+        "elcodi/media": "^1.0@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "4.5.0"

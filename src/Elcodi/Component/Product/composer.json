@@ -36,12 +36,12 @@
         "doctrine/orm": "^2.5",
         "twig/twig": "^1.18",
 
-        "elcodi/core": "^1.0",
-        "elcodi/language": "^1.0",
-        "elcodi/media": "^1.0",
-        "elcodi/currency": "^1.0",
-        "elcodi/attribute": "^1.0",
-        "elcodi/metadata": "^1.0"
+        "elcodi/core": "^1.0@dev",
+        "elcodi/language": "^1.0@dev",
+        "elcodi/media": "^1.0@dev",
+        "elcodi/currency": "^1.0@dev",
+        "elcodi/attribute": "^1.0@dev",
+        "elcodi/metadata": "^1.0@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "4.5.0"

@@ -39,12 +39,12 @@
         "symfony/console": "^2.7",
         "symfony/config": "^2.7",
 
-        "elcodi/core-bundle": "^1.0",
-        "elcodi/store": "^1.0"
+        "elcodi/core-bundle": "^1.0@dev",
+        "elcodi/store": "^1.0@dev"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "^1.0",
-        "elcodi/fixtures-booster-bundle": "^1.0",
+        "elcodi/test-common-bundle": "^1.0@dev",
+        "elcodi/fixtures-booster-bundle": "^1.0@dev",
         "doctrine/data-fixtures": "^1.1",
         "phpunit/phpunit": "4.5.0"
     },
