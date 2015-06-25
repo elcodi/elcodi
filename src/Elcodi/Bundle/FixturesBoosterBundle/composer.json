@@ -38,13 +38,15 @@
 
         "doctrine/doctrine-fixtures-bundle": "^2.2",
 
-        "elcodi/core-bundle": "^1.0@dev"
+        "elcodi/core-bundle": "1.0.x-dev"
     },
     "autoload": {
         "psr-4": {
             "Elcodi\\Bundle\\FixturesBoosterBundle\\": ""
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "bin-dir": "bin"
     },

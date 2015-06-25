@@ -27,14 +27,16 @@
         "symfony/config": "^2.7",
         "symfony/dependency-injection": "^2.7",
 
-        "elcodi/core-bundle": "^1.0@dev",
-        "elcodi/plugin": "^1.0@dev"
+        "elcodi/core-bundle": "1.0.x-dev",
+        "elcodi/plugin": "1.0.x-dev"
     },
     "autoload": {
         "psr-4": {
             "Elcodi\\Bundle\\PluginBundle\\": ""
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "bin-dir": "bin"
     },

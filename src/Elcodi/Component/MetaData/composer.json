@@ -38,6 +38,8 @@
             "Elcodi\\Component\\MetaData\\": ""
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "bin-dir": "bin"
     },

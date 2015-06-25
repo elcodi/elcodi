@@ -42,15 +42,15 @@
         "mmoreram/simple-doctrine-mapping": "^1.0",
         "ircmaxell/password-compat": "^1.0",
 
-        "elcodi/core-bundle": "^1.0@dev",
-        "elcodi/geo-bundle": "^1.0@dev",
-        "elcodi/language-bundle": "^1.0@dev",
-        "elcodi/cart-bundle": "^1.0@dev",
-        "elcodi/user": "^1.0@dev"
+        "elcodi/core-bundle": "1.0.x-dev",
+        "elcodi/geo-bundle": "1.0.x-dev",
+        "elcodi/language-bundle": "1.0.x-dev",
+        "elcodi/cart-bundle": "1.0.x-dev",
+        "elcodi/user": "1.0.x-dev"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "^1.0@dev",
-        "elcodi/fixtures-booster-bundle": "^1.0@dev",
+        "elcodi/test-common-bundle": "1.0.x-dev",
+        "elcodi/fixtures-booster-bundle": "1.0.x-dev",
         "doctrine/data-fixtures": "^1.1",
         "phpunit/phpunit": "4.5.0"
     },
@@ -59,6 +59,8 @@
             "Elcodi\\Bundle\\UserBundle\\": ""
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "bin-dir": "bin"
     },
