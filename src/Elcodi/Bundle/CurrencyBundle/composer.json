@@ -60,8 +60,6 @@
     "suggest": {
         "guzzle/http": "Required for OpenExchangeRates adapter"
     },
-    "minimum-stability": "beta",
-    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Elcodi\\Bundle\\CurrencyBundle\\": ""

@@ -33,8 +33,6 @@
     "require": {
         "php": ">=5.4"
     },
-    "minimum-stability": "beta",
-    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Elcodi\\Component\\MetaData\\": ""

@@ -48,8 +48,6 @@
     "suggest": {
         "twig/twig": "Required if using Twig extensions"
     },
-    "minimum-stability": "beta",
-    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Elcodi\\Component\\Media\\": ""
