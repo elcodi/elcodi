@@ -51,6 +51,8 @@
             "Elcodi\\Component\\Core\\": ""
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "bin-dir": "bin"
     },

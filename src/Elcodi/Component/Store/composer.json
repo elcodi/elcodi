@@ -35,11 +35,11 @@
         "doctrine/common": "^2.5",
         "doctrine/orm": "^2.5",
 
-        "elcodi/core": "^1.0@dev",
-        "elcodi/geo": "^1.0@dev",
-        "elcodi/currency": "^1.0@dev",
-        "elcodi/language": "^1.0@dev",
-        "elcodi/media": "^1.0@dev"
+        "elcodi/core": "1.0.x-dev",
+        "elcodi/geo": "1.0.x-dev",
+        "elcodi/currency": "1.0.x-dev",
+        "elcodi/language": "1.0.x-dev",
+        "elcodi/media": "1.0.x-dev"
     },
     "require-dev": {
         "phpunit/phpunit": "4.5.0"
@@ -49,6 +49,8 @@
             "Elcodi\\Component\\Store\\": ""
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "bin-dir": "bin"
     },

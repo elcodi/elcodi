@@ -36,12 +36,12 @@
         "doctrine/orm": "^2.5",
         "twig/twig": "^1.18",
 
-        "elcodi/core": "^1.0@dev",
-        "elcodi/language": "^1.0@dev",
-        "elcodi/media": "^1.0@dev",
-        "elcodi/currency": "^1.0@dev",
-        "elcodi/attribute": "^1.0@dev",
-        "elcodi/metadata": "^1.0@dev"
+        "elcodi/core": "1.0.x-dev",
+        "elcodi/language": "1.0.x-dev",
+        "elcodi/media": "1.0.x-dev",
+        "elcodi/currency": "1.0.x-dev",
+        "elcodi/attribute": "1.0.x-dev",
+        "elcodi/metadata": "1.0.x-dev"
     },
     "require-dev": {
         "phpunit/phpunit": "4.5.0"
@@ -51,6 +51,8 @@
             "Elcodi\\Component\\Product\\": ""
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "bin-dir": "bin"
     },

@@ -41,15 +41,15 @@
         "symfony/dependency-injection": "^2.7",
         "mmoreram/simple-doctrine-mapping": "^1.0",
 
-        "elcodi/core-bundle": "^1.0@dev",
-        "elcodi/cart-bundle": "^1.0@dev",
-        "elcodi/coupon-bundle": "^1.0@dev",
-        "elcodi/rule-bundle": "^1.0@dev",
-        "elcodi/cart-coupon": "^1.0@dev"
+        "elcodi/core-bundle": "1.0.x-dev",
+        "elcodi/cart-bundle": "1.0.x-dev",
+        "elcodi/coupon-bundle": "1.0.x-dev",
+        "elcodi/rule-bundle": "1.0.x-dev",
+        "elcodi/cart-coupon": "1.0.x-dev"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "^1.0@dev",
-        "elcodi/fixtures-booster-bundle": "^1.0@dev",
+        "elcodi/test-common-bundle": "1.0.x-dev",
+        "elcodi/fixtures-booster-bundle": "1.0.x-dev",
         "doctrine/data-fixtures": "^1.1",
         "phpunit/phpunit": "4.5.0"
     },
@@ -58,6 +58,8 @@
             "Elcodi\\Bundle\\CartCouponBundle\\": ""
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "bin-dir": "bin"
     },

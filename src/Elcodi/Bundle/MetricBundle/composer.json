@@ -41,12 +41,12 @@
         "mmoreram/simple-doctrine-mapping": "^1.0",
         "snc/redis-bundle": "^1.1.8",
 
-        "elcodi/core-bundle": "^1.0@dev",
-        "elcodi/metric": "^1.0@dev"
+        "elcodi/core-bundle": "1.0.x-dev",
+        "elcodi/metric": "1.0.x-dev"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "^1.0@dev",
-        "elcodi/fixtures-booster-bundle": "^1.0@dev",
+        "elcodi/test-common-bundle": "1.0.x-dev",
+        "elcodi/fixtures-booster-bundle": "1.0.x-dev",
         "doctrine/data-fixtures": "^1.1",
         "phpunit/phpunit": "4.5.0"
     },
@@ -55,6 +55,8 @@
             "Elcodi\\Bundle\\MetricBundle\\": ""
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "bin-dir": "bin"
     },

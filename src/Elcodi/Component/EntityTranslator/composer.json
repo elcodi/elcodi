@@ -39,7 +39,7 @@
         "symfony/dependency-injection": "^2.7",
         "symfony/form": "^2.7",
 
-        "elcodi/core": "^1.0@dev"
+        "elcodi/core": "1.0.x-dev"
     },
     "require-dev": {
         "phpunit/phpunit": "4.5.0"
@@ -49,6 +49,8 @@
             "Elcodi\\Component\\EntityTranslator\\": ""
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "bin-dir": "bin"
     },

@@ -41,13 +41,13 @@
         "mmoreram/simple-doctrine-mapping": "^1.0",
         "doctrine/doctrine-cache-bundle": "^1.0",
 
-        "elcodi/core-bundle": "^1.0@dev",
-        "elcodi/configuration": "^1.0@dev"
+        "elcodi/core-bundle": "1.0.x-dev",
+        "elcodi/configuration": "1.0.x-dev"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "^1.0@dev",
+        "elcodi/test-common-bundle": "1.0.x-dev",
         "symfony/expression-language": "^2.7",
-        "elcodi/fixtures-booster-bundle": "^1.0@dev",
+        "elcodi/fixtures-booster-bundle": "1.0.x-dev",
         "doctrine/data-fixtures": "^1.1",
         "phpunit/phpunit": "4.5.0"
     },
@@ -56,6 +56,8 @@
             "Elcodi\\Bundle\\ConfigurationBundle\\": ""
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "bin-dir": "bin"
     },
