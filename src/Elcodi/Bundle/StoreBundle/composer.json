@@ -40,6 +40,9 @@
         "symfony/config": "^2.7",
 
         "elcodi/core-bundle": "1.0.x-dev",
+        "elcodi/geo-bundle": "1.0.x-dev",
+        "elcodi/language-bundle": "1.0.x-dev",
+        "elcodi/currency-bundle": "1.0.x-dev",
         "elcodi/store": "1.0.x-dev"
     },
     "require-dev": {
