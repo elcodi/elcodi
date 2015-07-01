@@ -17,12 +17,11 @@
 
 namespace Elcodi\Bundle\StoreBundle;
 
-use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\HttpKernel\KernelInterface;
 
+use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\StoreBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\StoreBundle\DependencyInjection\ElcodiStoreExtension;
@@ -30,7 +29,7 @@ use Elcodi\Bundle\StoreBundle\DependencyInjection\ElcodiStoreExtension;
 /**
  * ElcodiStoreBundle Bundle
  */
-class ElcodiStoreBundle extends Bundle implements DependentBundleInterface
+class ElcodiStoreBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -66,19 +65,5 @@ class ElcodiStoreBundle extends Bundle implements DependentBundleInterface
             'Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
-    }
-
-    /**
-     * Register Commands.
-     *
-     * Disabled as commands are registered as services.
-     *
-     * @param Application $application An Application instance
-     *
-     * @return null
-     */
-    public function registerCommands(Application $application)
-    {
-        return null;
     }
 }

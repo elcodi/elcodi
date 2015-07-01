@@ -17,10 +17,10 @@
 
 namespace Elcodi\Component\Plugin\Form\TypeExtension;
 
-use Elcodi\Component\Plugin\Entity\Plugin;
-
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
+
+use Elcodi\Component\Plugin\Entity\Plugin;
 
 /**
  * Class AbstractPluginTypeExtension

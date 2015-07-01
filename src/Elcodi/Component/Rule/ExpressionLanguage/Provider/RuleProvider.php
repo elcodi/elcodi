@@ -50,7 +50,7 @@ class RuleProvider implements ExpressionFunctionProviderInterface
      * Construct method
      *
      * @param RuleRepository $ruleRepository Rule repository
-     * @param RuleManager      $ruleManager    Rule manager
+     * @param RuleManager    $ruleManager    Rule manager
      */
     public function __construct(
         RuleRepository $ruleRepository,
