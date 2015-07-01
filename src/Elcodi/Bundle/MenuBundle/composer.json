@@ -36,7 +36,6 @@
         "doctrine/doctrine-cache-bundle": "^1.0",
 
         "symfony/http-kernel": "^2.7",
-        "symfony/console": "^2.7",
         "symfony/config": "^2.7",
         "symfony/dependency-injection": "^2.7",
         "symfony/twig-bundle": "^2.7",

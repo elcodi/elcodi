@@ -72,9 +72,9 @@ class LocaleManager
      */
     public function __construct(
         LocaleInterface $locale,
-        $encoding = null,
-        $localeCountryAssociations = null,
-        $localeTranslationAssociations = null
+        $encoding = '',
+        $localeCountryAssociations = [],
+        $localeTranslationAssociations = []
     ) {
         $this->locale = $locale;
         $this->encoding = $encoding;

@@ -17,20 +17,19 @@
 
 namespace Elcodi\Bundle\BannerBundle;
 
-use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 use Elcodi\Bundle\BannerBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\BannerBundle\DependencyInjection\ElcodiBannerExtension;
+use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 
 /**
  * ElcodiBannerBundle Bundle
  */
-class ElcodiBannerBundle extends Bundle implements DependentBundleInterface
+class ElcodiBannerBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -62,19 +61,5 @@ class ElcodiBannerBundle extends Bundle implements DependentBundleInterface
             'Elcodi\Bundle\MediaBundle\ElcodiMediaBundle',
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
-    }
-
-    /**
-     * Register Commands.
-     *
-     * Disabled as commands are registered as services.
-     *
-     * @param Application $application An Application instance
-     *
-     * @return null
-     */
-    public function registerCommands(Application $application)
-    {
-        return null;
     }
 }

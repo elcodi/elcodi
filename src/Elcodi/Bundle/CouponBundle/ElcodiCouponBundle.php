@@ -17,12 +17,11 @@
 
 namespace Elcodi\Bundle\CouponBundle;
 
-use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\HttpKernel\KernelInterface;
 
+use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\CouponBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\CouponBundle\DependencyInjection\ElcodiCouponExtension;
@@ -30,7 +29,7 @@ use Elcodi\Bundle\CouponBundle\DependencyInjection\ElcodiCouponExtension;
 /**
  * ElcodiCouponBundle Bundle
  */
-class ElcodiCouponBundle extends Bundle implements DependentBundleInterface
+class ElcodiCouponBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -64,19 +63,5 @@ class ElcodiCouponBundle extends Bundle implements DependentBundleInterface
             'Elcodi\Bundle\RuleBundle\ElcodiRuleBundle',
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
-    }
-
-    /**
-     * Register Commands.
-     *
-     * Disabled as commands are registered as services.
-     *
-     * @param Application $application An Application instance
-     *
-     * @return null
-     */
-    public function registerCommands(Application $application)
-    {
-        return null;
     }
 }

@@ -17,12 +17,11 @@
 
 namespace Elcodi\Bundle\UserBundle;
 
-use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\HttpKernel\KernelInterface;
 
+use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\UserBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\UserBundle\DependencyInjection\ElcodiUserExtension;
@@ -30,7 +29,7 @@ use Elcodi\Bundle\UserBundle\DependencyInjection\ElcodiUserExtension;
 /**
  * ElcodiUserBundle Bundle
  */
-class ElcodiUserBundle extends Bundle implements DependentBundleInterface
+class ElcodiUserBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -65,19 +64,5 @@ class ElcodiUserBundle extends Bundle implements DependentBundleInterface
             'Elcodi\Bundle\CartBundle\ElcodiCartBundle',
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
-    }
-
-    /**
-     * Register Commands.
-     *
-     * Disabled as commands are registered as services.
-     *
-     * @param Application $application An Application instance
-     *
-     * @return null
-     */
-    public function registerCommands(Application $application)
-    {
-        return null;
     }
 }

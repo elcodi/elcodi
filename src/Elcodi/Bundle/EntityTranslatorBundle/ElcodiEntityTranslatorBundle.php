@@ -17,12 +17,11 @@
 
 namespace Elcodi\Bundle\EntityTranslatorBundle;
 
-use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\HttpKernel\KernelInterface;
 
+use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\EntityTranslatorBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\EntityTranslatorBundle\DependencyInjection\ElcodiEntityTranslatorExtension;
@@ -30,7 +29,7 @@ use Elcodi\Bundle\EntityTranslatorBundle\DependencyInjection\ElcodiEntityTransla
 /**
  * ElcodiEntityTranslatorBundle Bundle
  */
-class ElcodiEntityTranslatorBundle extends Bundle implements DependentBundleInterface
+class ElcodiEntityTranslatorBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -64,19 +63,5 @@ class ElcodiEntityTranslatorBundle extends Bundle implements DependentBundleInte
             'Elcodi\Bundle\LanguageBundle\ElcodiLanguageBundle',
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
-    }
-
-    /**
-     * Register Commands.
-     *
-     * Disabled as commands are registered as services.
-     *
-     * @param Application $application An Application instance
-     *
-     * @return null
-     */
-    public function registerCommands(Application $application)
-    {
-        return null;
     }
 }

@@ -17,7 +17,6 @@
 
 namespace Elcodi\Bundle\CommentBundle;
 
-use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -25,12 +24,13 @@ use Symfony\Component\HttpKernel\KernelInterface;
 
 use Elcodi\Bundle\CommentBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\CommentBundle\DependencyInjection\ElcodiCommentExtension;
+use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 
 /**
  * ElcodiCommentBundle Class
  */
-class ElcodiCommentBundle extends Bundle implements DependentBundleInterface
+class ElcodiCommentBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
     /**
      * Builds the bundle.
@@ -70,19 +70,5 @@ class ElcodiCommentBundle extends Bundle implements DependentBundleInterface
             'Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle',
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
-    }
-
-    /**
-     * Register Commands.
-     *
-     * Disabled as commands are registered as services.
-     *
-     * @param Application $application An Application instance
-     *
-     * @return null
-     */
-    public function registerCommands(Application $application)
-    {
-        return null;
     }
 }

@@ -17,12 +17,11 @@
 
 namespace Elcodi\Bundle\NewsletterBundle;
 
-use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\HttpKernel\KernelInterface;
 
+use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\NewsletterBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\NewsletterBundle\DependencyInjection\ElcodiNewsletterExtension;
@@ -30,7 +29,7 @@ use Elcodi\Bundle\NewsletterBundle\DependencyInjection\ElcodiNewsletterExtension
 /**
  * Class ElcodiNewsletterBundle
  */
-class ElcodiNewsletterBundle extends Bundle implements DependentBundleInterface
+class ElcodiNewsletterBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -63,19 +62,5 @@ class ElcodiNewsletterBundle extends Bundle implements DependentBundleInterface
             'Elcodi\Bundle\LanguageBundle\ElcodiLanguageBundle',
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
-    }
-
-    /**
-     * Register Commands.
-     *
-     * Disabled as commands are registered as services.
-     *
-     * @param Application $application An Application instance
-     *
-     * @return null
-     */
-    public function registerCommands(Application $application)
-    {
-        return null;
     }
 }

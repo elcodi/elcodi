@@ -17,12 +17,11 @@
 
 namespace Elcodi\Bundle\PluginBundle;
 
-use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\HttpKernel\KernelInterface;
 
+use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\PluginBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\PluginBundle\DependencyInjection\ElcodiPluginExtension;
@@ -32,7 +31,7 @@ use Elcodi\Bundle\PluginBundle\DependencyInjection\ElcodiPluginExtension;
  *
  * @author Berny Cantos <be@rny.cc>
  */
-class ElcodiPluginBundle extends Bundle implements DependentBundleInterface
+class ElcodiPluginBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
     /**
      * @var KernelInterface
@@ -81,19 +80,5 @@ class ElcodiPluginBundle extends Bundle implements DependentBundleInterface
         return [
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
-    }
-
-    /**
-     * Register Commands.
-     *
-     * Disabled as commands are registered as services.
-     *
-     * @param Application $application An Application instance
-     *
-     * @return null
-     */
-    public function registerCommands(Application $application)
-    {
-        return null;
     }
 }
