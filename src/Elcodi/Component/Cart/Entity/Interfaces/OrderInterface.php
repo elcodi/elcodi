@@ -203,22 +203,6 @@ interface OrderInterface
     public function setWeight($weight);
 
     /**
-     * Get InvoiceAddress
-     *
-     * @return AddressInterface InvoiceAddress
-     */
-    public function getInvoiceAddress();
-
-    /**
-     * Sets InvoiceAddress
-     *
-     * @param AddressInterface $invoiceAddress InvoiceAddress
-     *
-     * @return $this Self object
-     */
-    public function setInvoiceAddress($invoiceAddress);
-
-    /**
      * Get DeliveryAddress
      *
      * @return AddressInterface DeliveryAddress
