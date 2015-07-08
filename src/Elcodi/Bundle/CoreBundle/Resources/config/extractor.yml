@@ -1,0 +1,18 @@
+services:
+
+    #
+    # Extractor
+    #
+    elcodi.extractor.directory:
+        class: Mmoreram\Extractor\Filesystem\TemporaryDirectory
+        public: false
+
+    elcodi.extractor.extension_resolver:
+        class: Mmoreram\Extractor\Resolver\ExtensionResolver
+        public: false
+
+    elcodi.extractor:
+        class: Mmoreram\Extractor\Extractor
+        arguments:
+            - @elcodi.extractor.directory
+            - @elcodi.extractor.extension_resolver
