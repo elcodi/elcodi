@@ -20,9 +20,9 @@ namespace Elcodi\Bundle\GeoBundle\Tests\Functional\Services;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class LocationApiProviderTest
+ * Class LocationPopulatorTest
  */
-class LocationApiProviderTest extends WebTestCase
+class LocationPopulatorTest extends WebTestCase
 {
     /**
      * Returns the callable name of the service
@@ -31,6 +31,6 @@ class LocationApiProviderTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.location_provider.api'];
+        return ['elcodi.location_populator'];
     }
 }

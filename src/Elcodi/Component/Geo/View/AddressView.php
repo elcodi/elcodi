@@ -19,8 +19,8 @@ namespace Elcodi\Component\Geo\View;
 
 use DateTime;
 
+use Elcodi\Component\Geo\Adapter\LocationProvider\Interfaces\LocationProviderAdapterInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
-use Elcodi\Component\Geo\Services\Interfaces\LocationProviderInterface;
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
@@ -29,7 +29,7 @@ use Elcodi\Component\Geo\ValueObject\LocationData;
 class AddressView
 {
     /**
-     * @var LocationProviderInterface
+     * @var LocationProviderAdapterInterface
      *
      * A location provider interface.
      */
@@ -45,13 +45,13 @@ class AddressView
     /**
      * Builds a new view.
      *
-     * @param AddressInterface          $address          The address to
-     *                                                    convert to a view.
-     * @param LocationProviderInterface $locationProvider A location provider
+     * @param AddressInterface                 $address          The address to
+     *                                                           convert to a view.
+     * @param LocationProviderAdapterInterface $locationProvider A location provider
      */
     public function __construct(
         AddressInterface $address,
-        LocationProviderInterface $locationProvider
+        LocationProviderAdapterInterface $locationProvider
     ) {
         $this->address = $address;
         $this->locationProvider = $locationProvider;

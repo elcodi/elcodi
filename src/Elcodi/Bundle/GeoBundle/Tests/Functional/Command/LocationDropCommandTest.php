@@ -15,14 +15,14 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\GeoBundle\Tests\Functional\Populator;
+namespace Elcodi\Bundle\GeoBundle\Tests\Functional\Command;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class LocationPopulatorTest
+ * Class LocationDropCommandTest
  */
-class GeonamesPopulatorTest extends WebTestCase
+class LocationDropCommandTest extends WebTestCase
 {
     /**
      * Returns the callable name of the service
@@ -31,6 +31,6 @@ class GeonamesPopulatorTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.location_populator.geoname'];
+        return ['elcodi.command.location_drop'];
     }
 }

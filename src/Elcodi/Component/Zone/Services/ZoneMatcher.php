@@ -19,8 +19,8 @@ namespace Elcodi\Component\Zone\Services;
 
 use Exception;
 
+use Elcodi\Component\Geo\Adapter\LocationProvider\Interfaces\LocationProviderAdapterInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
-use Elcodi\Component\Geo\Services\Interfaces\LocationProviderInterface;
 use Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface;
 
 /**
@@ -29,7 +29,7 @@ use Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface;
 class ZoneMatcher
 {
     /**
-     * @var LocationProviderInterface
+     * @var LocationProviderAdapterInterface
      *
      * Location manager
      */
@@ -38,9 +38,9 @@ class ZoneMatcher
     /**
      * Construct
      *
-     * @param LocationProviderInterface $locationProvider Location manager
+     * @param LocationProviderAdapterInterface $locationProvider Location manager
      */
-    public function __construct(LocationProviderInterface $locationProvider)
+    public function __construct(LocationProviderAdapterInterface $locationProvider)
     {
         $this->locationProvider = $locationProvider;
     }

@@ -15,24 +15,23 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\GeoBundle\Tests\Functional\Services;
+namespace Elcodi\Bundle\GeoBundle\Tests\Functional\Adapter\LocationProviderAdapter;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
-use Elcodi\Component\Geo\Services\Interfaces\LocationProviderInterface;
+use Elcodi\Component\Geo\Adapter\LocationProvider\Interfaces\LocationProviderAdapterInterface;
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
- * Class LocationServiceProviderTest
- * @group now
+ * Class LocationServiceProviderAdapterTest
  */
-class LocationServiceProviderTest extends WebTestCase
+class LocationServiceProviderAdapterTest extends WebTestCase
 {
     /**
-     * @var LocationProviderInterface
+     * @var LocationProviderAdapterInterface
      *
-     * LocationProvider class
+     * LocationProviderAdapter class
      */
-    protected $locationProvider;
+    protected $locationProviderAdapter;
 
     /**
      * Returns the callable name of the service
@@ -41,7 +40,7 @@ class LocationServiceProviderTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.location_provider.service'];
+        return ['elcodi.location_provider_adapter.service'];
     }
 
     /**
@@ -64,9 +63,9 @@ class LocationServiceProviderTest extends WebTestCase
         parent::setUp();
 
         /**
-         * @var LocationProviderInterface $locationProvider
+         * @var LocationProviderAdapterInterface $locationProviderAdapter
          */
-        $this->locationProvider = $this->get('elcodi.location_provider.service');
+        $this->locationProviderAdapter = $this->get('elcodi.location_provider_adapter.service');
     }
 
     /**
@@ -75,7 +74,7 @@ class LocationServiceProviderTest extends WebTestCase
     public function testGetRootLocations()
     {
         $rootLocations = $this
-            ->locationProvider
+            ->locationProviderAdapter
             ->getRootLocations();
 
         $this->assertCount(
@@ -107,7 +106,7 @@ class LocationServiceProviderTest extends WebTestCase
     public function testGetChildren()
     {
         $locations = $this
-            ->locationProvider
+            ->locationProviderAdapter
             ->getChildren('ES');
 
         $this->assertCount(
@@ -144,7 +143,7 @@ class LocationServiceProviderTest extends WebTestCase
         );
 
         $this
-            ->locationProvider
+            ->locationProviderAdapter
             ->getChildren('UNEXISTENT');
     }
 
@@ -154,7 +153,7 @@ class LocationServiceProviderTest extends WebTestCase
     public function testGetChildrenNotFound()
     {
         $locations = $this
-            ->locationProvider
+            ->locationProviderAdapter
             ->getChildren('ES_CA_VO_SantCeloni_08470');
 
         $this->assertCount(
@@ -170,7 +169,7 @@ class LocationServiceProviderTest extends WebTestCase
     public function testGetParents()
     {
         $locations = $this
-            ->locationProvider
+            ->locationProviderAdapter
             ->getParents('ES_CA');
 
         $this->assertCount(
@@ -207,7 +206,7 @@ class LocationServiceProviderTest extends WebTestCase
         );
 
         $this
-            ->locationProvider
+            ->locationProviderAdapter
             ->getParents('UNEXISTENT');
     }
 
@@ -217,7 +216,7 @@ class LocationServiceProviderTest extends WebTestCase
     public function testGetParentsNotFound()
     {
         $locations = $this
-            ->locationProvider
+            ->locationProviderAdapter
             ->getParents('ES');
 
         $this->assertCount(
@@ -233,7 +232,7 @@ class LocationServiceProviderTest extends WebTestCase
     public function testGetLocation()
     {
         $location = $this
-            ->locationProvider
+            ->locationProviderAdapter
             ->getLocation('ES_CA');
 
         $this->assertInstanceOf(
@@ -277,7 +276,7 @@ class LocationServiceProviderTest extends WebTestCase
         );
 
         $this
-            ->locationProvider
+            ->locationProviderAdapter
             ->getLocation('UNEXISTENT');
     }
 
@@ -287,7 +286,7 @@ class LocationServiceProviderTest extends WebTestCase
     public function testGetHierarchy()
     {
         $hierarchy = $this
-            ->locationProvider
+            ->locationProviderAdapter
             ->getHierarchy('ES_CA_VO_SantCeloni');
 
         $expectedHierarchyNames = [
@@ -324,7 +323,7 @@ class LocationServiceProviderTest extends WebTestCase
     public function testGetHierarchyMultiplePaths()
     {
         $hierarchy = $this
-            ->locationProvider
+            ->locationProviderAdapter
             ->getHierarchy('ES_CA_VO_SantCeloni_08470');
 
         $expectedHierarchyNames = [
@@ -370,7 +369,7 @@ class LocationServiceProviderTest extends WebTestCase
         );
 
         $this
-            ->locationProvider
+            ->locationProviderAdapter
             ->getHierarchy('UNEXISTENT');
     }
 
@@ -380,7 +379,7 @@ class LocationServiceProviderTest extends WebTestCase
     public function testInFound()
     {
         $found = $this
-            ->locationProvider
+            ->locationProviderAdapter
             ->in('ES_CA', [
                 'ES',
             ]);
@@ -397,7 +396,7 @@ class LocationServiceProviderTest extends WebTestCase
     public function testInMultipleFound()
     {
         $found = $this
-            ->locationProvider
+            ->locationProviderAdapter
             ->in('ES_CA_VO_Viladecavalls', [
                 'ES_CA_VO_SantCeloni',
                 'ES_CA',
@@ -415,7 +414,7 @@ class LocationServiceProviderTest extends WebTestCase
     public function testInNotFound()
     {
         $found = $this
-            ->locationProvider
+            ->locationProviderAdapter
             ->in('ES', [
                 'ES_CA',
             ]);
@@ -432,7 +431,7 @@ class LocationServiceProviderTest extends WebTestCase
     public function testInNotFoundMultiple()
     {
         $found = $this
-            ->locationProvider
+            ->locationProviderAdapter
             ->in('ES', [
                 'ES_CA',
                 'ES_CA_VO_SantCeloni',
@@ -454,7 +453,7 @@ class LocationServiceProviderTest extends WebTestCase
         );
 
         $this
-            ->locationProvider
+            ->locationProviderAdapter
             ->in('UNEXISTENT', [
                 'ES_CA_VO_SantCeloni',
                 'ES_CA',

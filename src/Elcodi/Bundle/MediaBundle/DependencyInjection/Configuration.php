@@ -87,7 +87,7 @@ class Configuration extends AbstractConfiguration
                                  * defined as scalarNode
                                  */
                                 ->scalarNode('adapter')
-                                    ->defaultValue('elcodi.media_resize.gd')
+                                    ->defaultValue('elcodi.media_resize_adapter.gd')
                                 ->end()
                                 ->scalarNode('converter_bin_path')
                                     ->defaultValue('/usr/bin/convert')

@@ -15,14 +15,14 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Geo\Services\Interfaces;
+namespace Elcodi\Component\Geo\Adapter\LocationProvider\Interfaces;
 
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
- * Interface LocationProviderInterface
+ * Interface LocationProviderAdapterInterface
  */
-interface LocationProviderInterface
+interface LocationProviderAdapterInterface
 {
     /**
      * Get all the root locations.

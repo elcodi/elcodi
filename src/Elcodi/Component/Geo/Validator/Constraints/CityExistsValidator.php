@@ -21,7 +21,7 @@ use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
-use Elcodi\Component\Geo\Services\Interfaces\LocationProviderInterface;
+use Elcodi\Component\Geo\Adapter\LocationProvider\Interfaces\LocationProviderAdapterInterface;
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
@@ -30,7 +30,7 @@ use Elcodi\Component\Geo\ValueObject\LocationData;
 class CityExistsValidator extends ConstraintValidator
 {
     /**
-     * @var LocationProviderInterface
+     * @var LocationProviderAdapterInterface
      *
      * A location provider
      */
@@ -39,11 +39,10 @@ class CityExistsValidator extends ConstraintValidator
     /**
      * Builds a new class.
      *
-     * @param LocationProviderInterface $locationProvider
+     * @param LocationProviderAdapterInterface $locationProvider
      */
-    public function __construct(
-        LocationProviderInterface $locationProvider
-    ) {
+    public function __construct(LocationProviderAdapterInterface $locationProvider)
+    {
         $this->locationProvider = $locationProvider;
     }
 

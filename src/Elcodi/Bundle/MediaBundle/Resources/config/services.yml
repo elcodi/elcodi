@@ -8,7 +8,7 @@ services:
         arguments:
             - @elcodi.factory.image
             - @elcodi.manager.media_file
-            - @elcodi.media_resize_engine
+            - @elcodi.media_resize_adapter
 
     elcodi.manager.media_file:
         class: Elcodi\Component\Media\Services\FileManager
@@ -23,15 +23,3 @@ services:
             - @elcodi.manager.media_file
             - @elcodi.manager.media_image
             - @elcodi.event_dispatcher.media
-
-    #
-    # Resize
-    #
-    elcodi.media_resize.imagemagick:
-        class: Elcodi\Component\Media\Adapter\Resizer\ImageMagickResizeAdapter
-        arguments:
-            - %elcodi.image_resize_converter_bin_path%
-            - %elcodi.image_resize_converter_default_profile%
-
-    elcodi.media_resize.gd:
-        class: Elcodi\Component\Media\Adapter\Resizer\GDResizeAdapter

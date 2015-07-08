@@ -24,7 +24,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 
-use Elcodi\Component\Geo\Services\Interfaces\LocationProviderInterface;
+use Elcodi\Component\Geo\Adapter\LocationProvider\Interfaces\LocationProviderAdapterInterface;
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
@@ -33,7 +33,7 @@ use Elcodi\Component\Geo\ValueObject\LocationData;
 class LocationApiController
 {
     /**
-     * @var LocationProviderInterface
+     * @var LocationProviderAdapterInterface
      *
      * Location manager
      */
@@ -49,12 +49,12 @@ class LocationApiController
     /**
      * Construct
      *
-     * @param RequestStack              $requestStack     Request stack
-     * @param LocationProviderInterface $locationProvider Location manager
+     * @param RequestStack                     $requestStack     Request stack
+     * @param LocationProviderAdapterInterface $locationProvider Location manager
      */
     public function __construct(
         RequestStack $requestStack,
-        LocationProviderInterface $locationProvider
+        LocationProviderAdapterInterface $locationProvider
     ) {
         $this->request = $requestStack->getCurrentRequest();
         $this->locationProvider = $locationProvider;

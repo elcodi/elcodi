@@ -88,10 +88,7 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
             "elcodi.entity.location.manager"      => $config['mapping']['location']['manager'],
             "elcodi.entity.location.enabled"      => $config['mapping']['location']['enabled'],
 
-            "elcodi.location_provider"            => $config['location_provider'],
-            "elcodi.location_populator"           => $config['location_populator'],
-
-            "elcodi.location_api_host"            => $config['location_api_host'],
+            "elcodi.location_api_host"            => $config['location']['api_host'],
         ];
     }
 
@@ -110,12 +107,13 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
             'directors',
             'factories',
             'objectManagers',
-            'locationPopulators',
             'repositories',
             'services',
             'transformers',
             'eventDispatchers',
             'formatters',
+            'adapters',
+            'validator',
         ];
     }
 
@@ -146,11 +144,14 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
     {
         parent::postLoad($config, $container);
 
-        $locatorPopulatorId = $config['location_populator'];
-        $container->setAlias('elcodi.location_populator', $locatorPopulatorId);
-
-        $locatorProviderId = $config['location_provider'];
+        $locatorProviderId = $config['location']['provider_adapter'];
         $container->setAlias('elcodi.location_provider', $locatorProviderId);
+
+        $locatorPopulatorAdapterId = $config['location']['populator_adapter'];
+        $container->setAlias('elcodi.location_populator_adapter', $locatorPopulatorAdapterId);
+
+        $locatorLoaderAdapterId = $config['location']['loader_adapter'];
+        $container->setAlias('elcodi.location_loader_adapter', $locatorLoaderAdapterId);
     }
 
     /**
