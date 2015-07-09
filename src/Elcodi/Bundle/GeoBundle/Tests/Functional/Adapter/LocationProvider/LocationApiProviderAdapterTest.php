@@ -15,14 +15,14 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\GeoBundle\Tests\Functional\Populator;
+namespace Elcodi\Bundle\GeoBundle\Tests\Functional\Adapter\LocationProvider;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class GeonamesPopulatorTest
+ * Class LocationApiProviderAdapterTest
  */
-class LocationPopulatorTest extends WebTestCase
+class LocationApiProviderAdapterTest extends WebTestCase
 {
     /**
      * Returns the callable name of the service
@@ -31,6 +31,6 @@ class LocationPopulatorTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.location_populator'];
+        return ['elcodi.location_provider_adapter.api'];
     }
 }

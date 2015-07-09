@@ -23,33 +23,33 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Geo\Command\Abstracts\AbstractLocationCommand;
-use Elcodi\Component\Geo\Services\LocationPopulator;
+use Elcodi\Component\Geo\Services\LocationLoader;
 
 /**
- * Class LocationPopulateCommand
+ * Class LocationLoadCommand
  */
-class LocationPopulateCommand extends AbstractLocationCommand
+class LocationLoadCommand extends AbstractLocationCommand
 {
     /**
-     * @var LocationPopulator
+     * @var LocationLoader
      *
-     * Location Populator
+     * Location Loader
      */
-    private $locationPopulator;
+    private $locationLoader;
 
     /**
      * Construct method
      *
-     * @param ObjectDirector    $locationDirector  Location director
-     * @param LocationPopulator $locationPopulator Location Populator
+     * @param ObjectDirector $locationDirector Location director
+     * @param LocationLoader $locationLoader   Location Loader
      */
     public function __construct(
         ObjectDirector $locationDirector,
-        LocationPopulator $locationPopulator
+        LocationLoader $locationLoader
     ) {
         parent::__construct($locationDirector);
 
-        $this->locationPopulator = $locationPopulator;
+        $this->locationLoader = $locationLoader;
     }
 
     /**
@@ -58,8 +58,8 @@ class LocationPopulateCommand extends AbstractLocationCommand
     protected function configure()
     {
         $this
-            ->setName('elcodi:locations:populate')
-            ->setDescription('Populates a set of countries');
+            ->setName('elcodi:locations:load')
+            ->setDescription('Load a set of countries from an external repository');
 
         parent::configure();
     }
@@ -74,7 +74,7 @@ class LocationPopulateCommand extends AbstractLocationCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->startCommand($output, true);
+        $this->startCommand($output);
         $countries = $input->getOption('country');
 
         foreach ($countries as $countryCode) {
@@ -90,21 +90,21 @@ class LocationPopulateCommand extends AbstractLocationCommand
 
             try {
                 $this
-                    ->locationPopulator
-                    ->populateCountry($countryCode);
+                    ->locationLoader
+                    ->loadCountry($countryCode);
 
                 $this
                     ->printMessage(
                         $output,
                         'Geo',
-                        'Country ' . $countryCode . ' populated from source'
+                        'Country ' . $countryCode . ' loaded from repository'
                     );
             } catch (Exception $exception) {
                 $this
                     ->printMessageFail(
                         $output,
                         'Geo',
-                        'Country ' . $countryCode . ' cannot be populated from source'
+                        'Country ' . $countryCode . ' cannot be loaded from repository'
                     );
             }
         }

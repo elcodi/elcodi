@@ -15,21 +15,21 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Geo\Services;
+namespace Elcodi\Component\Geo\Adapter\LocationProvider;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityNotFoundException;
 
+use Elcodi\Component\Geo\Adapter\LocationProvider\Interfaces\LocationProviderAdapterInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\LocationInterface;
 use Elcodi\Component\Geo\Repository\LocationRepository;
-use Elcodi\Component\Geo\Services\Interfaces\LocationProviderInterface;
 use Elcodi\Component\Geo\Transformer\LocationToLocationDataTransformer;
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
- * Class LocationServiceProvider
+ * Class LocationServiceProviderAdapter
  */
-class LocationServiceProvider implements LocationProviderInterface
+class LocationServiceProviderAdapter implements LocationProviderAdapterInterface
 {
     /**
      * @var LocationRepository

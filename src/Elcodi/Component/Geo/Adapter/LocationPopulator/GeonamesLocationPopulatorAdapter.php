@@ -15,26 +15,24 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Geo\Populator\Adapters;
+namespace Elcodi\Component\Geo\Adapter\LocationPopulator;
 
 use Goodby\CSV\Import\Standard\Interpreter;
 use Goodby\CSV\Import\Standard\Lexer;
 use Goodby\CSV\Import\Standard\LexerConfig;
 use Mmoreram\Extractor\Extractor;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Exception\FileNotFoundException;
 
-use Elcodi\Component\Core\Factory\DateTimeFactory;
+use Elcodi\Component\Geo\Adapter\LocationPopulator\Interfaces\LocationPopulatorAdapterInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\LocationInterface;
-use Elcodi\Component\Geo\Populator\Interfaces\PopulatorInterface;
 use Elcodi\Component\Geo\Services\LocationBuilder;
 
 /**
- * Class GeonamesPopulatorAdapter
+ * Class GeonamesLocationPopulatorAdapter
  *
  * @author Berny Cantos <be@rny.cc>
  */
-class GeonamesPopulatorAdapter implements PopulatorInterface
+class GeonamesLocationPopulatorAdapter implements LocationPopulatorAdapterInterface
 {
     /**
      * @var Extractor
@@ -51,51 +49,39 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
     private $locationBuilder;
 
     /**
-     * @var DateTimeFactory
-     *
-     * DateTime Factory
-     */
-    private $dateTimeFactory;
-
-    /**
      * Constructor
      *
      * @param Extractor       $extractor       Extractor instance
      * @param LocationBuilder $locationBuilder Location builder
-     * @param DateTimeFactory $dateTimeFactory DateTime Factory
      */
     public function __construct(
         Extractor $extractor,
-        LocationBuilder $locationBuilder,
-        DateTimeFactory $dateTimeFactory
+        LocationBuilder $locationBuilder
     ) {
         $this->extractor = $extractor;
         $this->locationBuilder = $locationBuilder;
-        $this->dateTimeFactory = $dateTimeFactory;
     }
 
     /**
      * Populate a country
      *
-     * @param string          $countryCode Country Code
-     * @param OutputInterface $output      Console Output
+     * @param string $countryCode Country Code
      *
-     * @return LocationInterface[] Root locations
+     * @return LocationInterface Root location
      */
-    public function populate($countryCode, OutputInterface $output)
+    public function populate($countryCode)
     {
         $countryCode = strtoupper($countryCode);
         $downloadedFilePath = $this->downloadFile($countryCode);
         $extractedPath = $this->extractFile($downloadedFilePath);
 
-        $locations = $this
+        $rootLocation = $this
             ->loadLocationsFrom(
                 $countryCode,
-                $extractedPath,
-                $output
+                $extractedPath
             );
 
-        return $locations;
+        return $rootLocation;
     }
 
     /**
@@ -154,16 +140,14 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
     /**
      * Extract data from de CSV and create new Location objects
      *
-     * @param string          $countryCode Country code
-     * @param string          $pathname    Pathname
-     * @param OutputInterface $output      Console Output
+     * @param string $countryCode Country code
+     * @param string $pathname    Pathname
      *
-     * @return LocationInterface[] Root locations
+     * @return LocationInterface Root location
      */
     private function loadLocationsFrom(
         $countryCode,
-        $pathname,
-        OutputInterface $output
+        $pathname
     ) {
         $countryInfo = $this->getCountryInfo($countryCode);
         $country = $this
@@ -240,21 +224,9 @@ class GeonamesPopulatorAdapter implements PopulatorInterface
         $config = new LexerConfig();
         $config->setDelimiter("\t");
         $lexer = new Lexer($config);
-        $started = $this
-            ->dateTimeFactory
-            ->create();
-
-        $output->writeln('<header>[Geo]</header> <body>Starting file processing</body>');
         $lexer->parse($pathname, $interpreter);
-        $finished = $this
-            ->dateTimeFactory
-            ->create();
 
-        $elapsed = $finished->diff($started);
-        $output->writeln('<header>[Geo]</header> <body>Processed ' . $nbItems . ' entries</body>');
-        $output->writeln('<header>[Geo]</header> <body>File processed in ' . $elapsed->format('%s') . ' seconds</body>');
-
-        return [$country];
+        return $country;
     }
 
     /**

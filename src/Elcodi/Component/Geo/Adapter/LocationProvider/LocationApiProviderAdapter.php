@@ -15,22 +15,22 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Geo\Services;
+namespace Elcodi\Component\Geo\Adapter\LocationProvider;
 
 use Doctrine\ORM\EntityNotFoundException;
 use GuzzleHttp\Client;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
+use Elcodi\Component\Geo\Adapter\LocationProvider\Interfaces\LocationProviderAdapterInterface;
 use Elcodi\Component\Geo\Factory\LocationDataFactory;
-use Elcodi\Component\Geo\Services\Interfaces\LocationProviderInterface;
 use Elcodi\Component\Geo\ValueObject\ApiUrls;
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
- * Class LocationApiProvider
+ * Class LocationApiProviderAdapter
  */
-class LocationApiProvider implements LocationProviderInterface
+class LocationApiProviderAdapter implements LocationProviderAdapterInterface
 {
     /**
      * @var LocationDataFactory

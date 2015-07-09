@@ -15,14 +15,14 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\GeoBundle\Tests\Functional\Services;
+namespace Elcodi\Bundle\GeoBundle\Tests\Functional\Formatter;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class LocationProviderTest
+ * Class AddressFormatterTest
  */
-class LocationProviderTest extends WebTestCase
+class AddressFormatterTest extends WebTestCase
 {
     /**
      * Returns the callable name of the service
@@ -31,6 +31,6 @@ class LocationProviderTest extends WebTestCase
      */
     public function getServiceCallableName()
     {
-        return ['elcodi.location_provider'];
+        return ['elcodi.formatter.address'];
     }
 }

@@ -17,8 +17,8 @@
 
 namespace Elcodi\Component\Geo\Formatter;
 
+use Elcodi\Component\Geo\Adapter\LocationProvider\Interfaces\LocationProviderAdapterInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
-use Elcodi\Component\Geo\Services\Interfaces\LocationProviderInterface;
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
@@ -27,7 +27,7 @@ use Elcodi\Component\Geo\ValueObject\LocationData;
 class AddressFormatter
 {
     /**
-     * @var LocationProviderInterface
+     * @var LocationProviderAdapterInterface
      *
      * The location provider interface
      */
@@ -36,11 +36,10 @@ class AddressFormatter
     /**
      * Builds a new address formatter
      *
-     * @param LocationProviderInterface $locationProvider A location provider
+     * @param LocationProviderAdapterInterface $locationProvider A location provider
      */
-    public function __construct(
-        LocationProviderInterface $locationProvider
-    ) {
+    public function __construct(LocationProviderAdapterInterface $locationProvider)
+    {
         $this->locationProvider = $locationProvider;
     }
 

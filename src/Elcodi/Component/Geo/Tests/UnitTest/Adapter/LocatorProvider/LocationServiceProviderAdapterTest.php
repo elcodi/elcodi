@@ -15,19 +15,19 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Geo\Tests\UnitTest\Adapter;
+namespace Elcodi\Component\Geo\Tests\UnitTest\Adapter\LocatorProvider;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit_Framework_TestCase;
 
+use Elcodi\Component\Geo\Adapter\LocationProvider\LocationServiceProviderAdapter;
 use Elcodi\Component\Geo\Repository\LocationRepository;
-use Elcodi\Component\Geo\Services\LocationServiceProvider;
 use Elcodi\Component\Geo\Transformer\LocationToLocationDataTransformer;
 
 /**
- * Class LocationServiceProviderTest
+ * Class LocationSeLoc
  */
-class LocationServiceProviderTest extends PHPUnit_Framework_TestCase
+class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @var LocationRepository
@@ -44,11 +44,11 @@ class LocationServiceProviderTest extends PHPUnit_Framework_TestCase
     protected $locationToLocationDataTransformer;
 
     /**
-     * @var LocationServiceProvider
+     * @var LocationServiceProviderAdapter
      *
      * A location service provider
      */
-    protected $locationServiceProvider;
+    protected $locationServiceProviderAdapter;
 
     /**
      * Set ups the test to be executed
@@ -67,7 +67,7 @@ class LocationServiceProviderTest extends PHPUnit_Framework_TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->locationServiceProvider = new LocationServiceProvider(
+        $this->locationServiceProviderAdapter = new LocationServiceProviderAdapter(
             $this->locationRepository,
             $this->locationToLocationDataTransformer
         );
@@ -95,7 +95,7 @@ class LocationServiceProviderTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue($formattedRoot));
 
         $rootLocations = $this
-            ->locationServiceProvider
+            ->locationServiceProviderAdapter
             ->getRootLocations();
 
         $this->assertEquals(
@@ -132,7 +132,7 @@ class LocationServiceProviderTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue($location));
 
         $childrenResponse = $this
-            ->locationServiceProvider
+            ->locationServiceProviderAdapter
             ->getChildren($locationId);
 
         $this->assertEquals(
@@ -160,7 +160,7 @@ class LocationServiceProviderTest extends PHPUnit_Framework_TestCase
         );
 
         $this
-            ->locationServiceProvider
+            ->locationServiceProviderAdapter
             ->getChildren($locationId);
     }
 
@@ -190,7 +190,7 @@ class LocationServiceProviderTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue($location));
 
         $childrenResponse = $this
-            ->locationServiceProvider
+            ->locationServiceProviderAdapter
             ->getParents($locationId);
 
         $this->assertEquals(
@@ -218,7 +218,7 @@ class LocationServiceProviderTest extends PHPUnit_Framework_TestCase
         );
 
         $this
-            ->locationServiceProvider
+            ->locationServiceProviderAdapter
             ->getParents($locationId);
     }
 
@@ -242,7 +242,7 @@ class LocationServiceProviderTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue($location));
 
         $locationResponse = $this
-            ->locationServiceProvider
+            ->locationServiceProviderAdapter
             ->getLocation($locationId);
 
         $this->assertEquals(
@@ -270,7 +270,7 @@ class LocationServiceProviderTest extends PHPUnit_Framework_TestCase
         );
 
         $this
-            ->locationServiceProvider
+            ->locationServiceProviderAdapter
             ->getLocation($locationId);
     }
 
@@ -301,7 +301,7 @@ class LocationServiceProviderTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue($location));
 
         $response = $this
-            ->locationServiceProvider
+            ->locationServiceProviderAdapter
             ->getHierarchy($locationId);
 
         $expectedResponse = [
@@ -335,7 +335,7 @@ class LocationServiceProviderTest extends PHPUnit_Framework_TestCase
         );
 
         $this
-            ->locationServiceProvider
+            ->locationServiceProviderAdapter
             ->getHierarchy($locationId);
     }
 
@@ -368,7 +368,7 @@ class LocationServiceProviderTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue($searchInLocation));
 
         $response = $this
-            ->locationServiceProvider
+            ->locationServiceProviderAdapter
             ->in($searchedId, [$searchInLocationId]);
 
         $this->assertTrue(
@@ -404,7 +404,7 @@ class LocationServiceProviderTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue($searchInLocation));
 
         $response = $this
-            ->locationServiceProvider
+            ->locationServiceProviderAdapter
             ->in('id-test', ['id-search-in']);
 
         $this->assertFalse(
@@ -445,7 +445,7 @@ class LocationServiceProviderTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue($searchInAnotherLocation));
 
         $response = $this
-            ->locationServiceProvider
+            ->locationServiceProviderAdapter
             ->in(
                 $searchedId,
                 [
@@ -487,7 +487,7 @@ class LocationServiceProviderTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue($searchInLocation));
 
         $response = $this
-            ->locationServiceProvider
+            ->locationServiceProviderAdapter
             ->in(
                 'id-test',
                 [
@@ -521,7 +521,7 @@ class LocationServiceProviderTest extends PHPUnit_Framework_TestCase
         );
 
         $this
-            ->locationServiceProvider
+            ->locationServiceProviderAdapter
             ->in(
                 $locationId,
                 $locationSearchIds

@@ -17,8 +17,8 @@
 
 namespace Elcodi\Component\Geo\Factory;
 
+use Elcodi\Component\Geo\Adapter\LocationProvider\Interfaces\LocationProviderAdapterInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
-use Elcodi\Component\Geo\Services\Interfaces\LocationProviderInterface;
 use Elcodi\Component\Geo\View\AddressView;
 
 /**
@@ -27,7 +27,7 @@ use Elcodi\Component\Geo\View\AddressView;
 class AddressViewFactory
 {
     /**
-     * @var LocationProviderInterface
+     * @var LocationProviderAdapterInterface
      *
      * A location provider
      */
@@ -36,9 +36,9 @@ class AddressViewFactory
     /**
      * Builds a new factory
      *
-     * @param LocationProviderInterface $locationProvider A location provider
+     * @param LocationProviderAdapterInterface $locationProvider A location provider
      */
-    public function __construct(LocationProviderInterface $locationProvider)
+    public function __construct(LocationProviderAdapterInterface $locationProvider)
     {
         $this->locationProvider = $locationProvider;
     }

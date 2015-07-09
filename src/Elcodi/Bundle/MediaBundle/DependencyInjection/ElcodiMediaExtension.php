@@ -87,6 +87,7 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
             'transformers',
             'eventDispatchers',
             'directors',
+            'adapters',
         ];
     }
 
@@ -134,7 +135,7 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
         parent::postLoad($config, $container);
 
         $container->setAlias(
-            'elcodi.media_resize_engine',
+            'elcodi.media_resize_adapter',
             $config['images']['resize']['adapter']
         );
 
