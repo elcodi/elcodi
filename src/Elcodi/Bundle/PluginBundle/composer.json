@@ -26,8 +26,8 @@
         "symfony/config": "^2.7",
         "symfony/dependency-injection": "^2.7",
 
-        "elcodi/core-bundle": "1.0.x-dev",
-        "elcodi/plugin": "1.0.x-dev"
+        "elcodi/core-bundle": "self.version",
+        "elcodi/plugin": "self.version"
     },
     "autoload": {
         "psr-4": {
