@@ -40,13 +40,13 @@
         "mmoreram/simple-doctrine-mapping": "^1.0",
         "doctrine/doctrine-cache-bundle": "^1.0",
 
-        "elcodi/core-bundle": "1.0.x-dev",
-        "elcodi/configuration": "1.0.x-dev"
+        "elcodi/core-bundle": "self.version",
+        "elcodi/configuration": "self.version"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "1.0.x-dev",
+        "elcodi/test-common-bundle": "self.version",
         "symfony/expression-language": "^2.7",
-        "elcodi/fixtures-booster-bundle": "1.0.x-dev",
+        "elcodi/fixtures-booster-bundle": "self.version",
         "doctrine/data-fixtures": "^1.1",
         "phpunit/phpunit": "4.5.0"
     },
