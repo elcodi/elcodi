@@ -8,6 +8,72 @@ https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v1.0.0...v1.0.1
 
+### v1.0.0-beta3 (10-07-2015)
+
+Release focused on fixes and standardization and simplification.
+
+#### TL;DR
+
+* Added new GD Image resize adapter and using by default
+* Improved all Command implementation by adding some common features in a new
+  abstract Command class
+* Fixed dependencies between packages during the Beta and RC stage
+* Added Location commands to manage all location structure in a very easy way
+* Removed all Location dumps and placed to another Repository. Usage of new
+  Command
+* Updated [Predis ](https://github.com/nrk/predis/releases/tag/v1.0.1)
+  dependency to stable
+
+#### Release log
+
+* [`443ccc4`](https://github.com/elcodi/elcodi/commit/443ccc41ec846f5ae9c7baca6b004338ef116241) Fixed class name (mmoreram)
+* [`87e35a9`](https://github.com/elcodi/elcodi/commit/87e35a9e05ed20ddb1e1491fc743821d128dfca3) Updated some commands to work with new Abstract (mmoreram)
+* [`5bf1a56`](https://github.com/elcodi/elcodi/commit/5bf1a563d54637004e9ba1db45ad8f43dc63189c) Removed comment parser (mmoreram)
+* [`2842fa8`](https://github.com/elcodi/elcodi/commit/2842fa8dec53dcc1849f96bac177e148c54705ff) Removed suggestion because is required already (mmoreram)
+* [`6849f43`](https://github.com/elcodi/elcodi/commit/6849f437a03ae98f6604b54e399b217e160c87a2) Removed property and access methods (mmoreram)
+* [`a6e4583`](https://github.com/elcodi/elcodi/commit/a6e458367f4e18b50195032257cbefa0f5b51dac) Fixed naming in currency bundle for adapters (mmoreram)
+* [`541a521`](https://github.com/elcodi/elcodi/commit/541a521e6e7b93c76a84f8c634a4231df7f7743d) Added Guzzle service in CoreBundle (mmoreram)
+* [`47b03ea`](https://github.com/elcodi/elcodi/commit/47b03ea9b26d656e850d7162ea0d3929a3561953) Using self.version during Beta and RC (mmoreram)
+* [`ab1f54e`](https://github.com/elcodi/elcodi/commit/ab1f54e662dd00d77458746d8e54e92992ba6463) Refactored some naming inside MediaBundle (mmoreram)
+* [`70e6301`](https://github.com/elcodi/elcodi/commit/70e63017c7ca1635098552ea6599bd27f75485a0) Refactor for some Location-related actions (mmoreram)
+* [`06fd8b5`](https://github.com/elcodi/elcodi/commit/06fd8b5699d82da903b281a7be05ae2b86147cea) Some internal changes for CoreBundle (mmoreram)
+* [`9eaa223`](https://github.com/elcodi/elcodi/commit/9eaa223fd664b93e884449775b8d18486b6f52b7) Removed all location dumps (mmoreram)
+* [`1b2955c`](https://github.com/elcodi/elcodi/commit/1b2955caf44c4da877edf23120b8c931e0902da7) Removed console dependency in most Bundles (mmoreram)
+* [`62dce91`](https://github.com/elcodi/elcodi/commit/62dce917c5c7121c0b2b8b2b2a6de12f43a27c4a) Used AbstractElcodiBundle in all package bundles (mmoreram)
+* [`bc347e0`](https://github.com/elcodi/elcodi/commit/bc347e08787d7f99f84f4aafdc8f380efdf0f968) Improved some code for Scrutinizer (mmoreram)
+* [`3c051d8`](https://github.com/elcodi/elcodi/commit/3c051d8f7e353fd3af2ff91496a11783e664612d) Added StoreBundle dependencies (mmoreram)
+* [`c5b7fb0`](https://github.com/elcodi/elcodi/commit/c5b7fb00440461ced2349b3d7d12a17b113cdc3f) Updated predis dependency to stable 1.* (mmoreram)
+* [`757465d`](https://github.com/elcodi/elcodi/commit/757465d41d02e0780c398b9d66f4599772fada6a) abstract PluginTypeExtension ease creation (Berny Cantos)
+* [`90f8d6f`](https://github.com/elcodi/elcodi/commit/90f8d6fb2ab275bc5b7813d374bf7554b1023044) make PluginType stateless (Berny Cantos)
+* [`866b53d`](https://github.com/elcodi/elcodi/commit/866b53d3ea68106cb3c1756eacae38d09eac27c2) Redefined interdependencies (mmoreram)
+* [`f195063`](https://github.com/elcodi/elcodi/commit/f195063d96094dc4a79409d44772c84b9ceb7f64) Downgraded predis version and fixed deps (mmoreram)
+* [`21b53df`](https://github.com/elcodi/elcodi/commit/21b53dfff477a25cbf1580ed3e7503b6dd08fb5a) Adding new stable version for predis (mmoreram)
+* [`d1f639e`](https://github.com/elcodi/elcodi/commit/d1f639ebd7dbdda4d1ae7c2f0a2cf0fba44b32ec) Removed minimum-stability and prefer-stable (mmoreram)
+* [`60e04c2`](https://github.com/elcodi/elcodi/commit/60e04c2660d939d2bcc74b61c9a50e3828fea982) dependencies between components set to @dev (mmoreram)
+* [`507d04b`](https://github.com/elcodi/elcodi/commit/507d04b273cf0ee355b03a53b7e5fd67659d89cd) Updated composer json file (mmoreram)
+* [`2a70b7f`](https://github.com/elcodi/elcodi/commit/2a70b7fc0a599ee5d7affcb887f5f9090f27025e) Removed prefer-lowest (mmoreram)
+* [`b4f3a90`](https://github.com/elcodi/elcodi/commit/b4f3a900cba202491c07b519d26115b01f55e5bf) Fixed mediabundle tests (mmoreram)
+* [`f646726`](https://github.com/elcodi/elcodi/commit/f6467265f855a04fa84643b7411b2c9f6cbcae8a) Added GD adapter for image resize (mmoreram)
+* [`ce4d63f`](https://github.com/elcodi/elcodi/commit/ce4d63f8478f010a396c6bd0697323d142649acb) Added composer.lock in order to boost travis (mmoreram)
+* [`bf04441`](https://github.com/elcodi/elcodi/commit/bf044419b455793f9a6d2ab3fc4cf0947856a42f) Fixed tests (mmoreram)
+* [`7ca9ff2`](https://github.com/elcodi/elcodi/commit/7ca9ff21034d1ca717039f2afb8bae43b500df22) Removed innecessary value pre-set (mmoreram)
+* [`2cc6d78`](https://github.com/elcodi/elcodi/commit/2cc6d78b32b86ea82aea2d8d61a07c0f83d765dc) Removed setters on Money as is a ValueObject (mmoreram)
+* [`c87405b`](https://github.com/elcodi/elcodi/commit/c87405be75dc07f728ffdfbe5f7b8c12ae957c07) Update services.yml (Berny Cantos)
+* [`bac2236`](https://github.com/elcodi/elcodi/commit/bac22367e3cedeedfaedda938de703330d94a950) Update tracker.js (Berny Cantos)
+* [`90cbae0`](https://github.com/elcodi/elcodi/commit/90cbae02430678fa9270c12c03b370a54f75c895) Fixed tracking url (mmoreram)
+* [`59ec2b7`](https://github.com/elcodi/elcodi/commit/59ec2b7c2342d038e266d674fdd5e749e3caab05) Plugins are disabled by default but can be enabled (Roger Gros)
+* [`7f98589`](https://github.com/elcodi/elcodi/commit/7f98589bdf806d76fe93210e709e0669ac18e158) added productCurrency to OrderLine ORM (Joan Galvan)
+* [`905b8c8`](https://github.com/elcodi/elcodi/commit/905b8c8ce6bc4107e98318a7afc8c8b81d913d75) Added shipping dependency to cart bundle (mmoreram)
+* [`36f184d`](https://github.com/elcodi/elcodi/commit/36f184dd72ed25ab3cd902f5e5a0bf222e81b35b) Fixed currency component dependencies (mmoreram)
+
+### v1.0.0-beta2 (15-06-2015)
+
+Early release to fix some errors in dependencies between packages
+
+* [`e6daaa6`](https://github.com/elcodi/elcodi/commit/e6daaa64bedb1901101784d140bd2ff465889263) Fixed dev-master alias for all components (mmoreram)
+* [`8f3c896`](https://github.com/elcodi/elcodi/commit/8f3c8968c4c9b20b6552a64cfb890c974dee08ef) Changed readme text to beta stage (mmoreram)
+* [`b9fe8e5`](https://github.com/elcodi/elcodi/commit/b9fe8e520bc60fde7f2e92a636db4b678c611c95) Added all package dependencies strategy to beta (mmoreram)
+
 ### v1.0.0-beta1 (14-06-2015)
 
 * [`0634ec1`](https://github.com/elcodi/elcodi/commit/0634ec1de55ceb85112d371aa619c1f73ed55ef3) Fixed use_stock injection and fixed tests (mmoreram)
