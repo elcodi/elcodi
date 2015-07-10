@@ -25,7 +25,7 @@ use Elcodi\Component\Core\Command\Abstracts\AbstractElcodiCommand;
 /**
  * Class AbstractConfigurationCommand
  */
-class AbstractConfigurationComman extends AbstractElcodiCommand
+class AbstractConfigurationCommand extends AbstractElcodiCommand
 {
     /**
      * @var ConfigurationManager
