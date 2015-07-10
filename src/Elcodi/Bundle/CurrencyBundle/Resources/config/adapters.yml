@@ -3,13 +3,10 @@ services:
     #
     # ExchangeRates Adapter
     #
-    elcodi.guzzle_client:
-        class: GuzzleHttp\Client
-
-    elcodi.adapter.currency_exchange_rate.yahoo_finances:
+    elcodi.currency_exchange_rate_adapter.yahoo_finances:
         class: Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\YahooFinanceProviderAdapter
         arguments:
             - @elcodi.guzzle_client
 
-    elcodi.adapter.currency_exchange_rate.dummy:
+    elcodi.currency_exchange_rate_adapter.dummy:
         class: Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\DummyProviderAdapter
