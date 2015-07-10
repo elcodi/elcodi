@@ -17,16 +17,16 @@
 
 namespace Elcodi\Component\Currency\Command;
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+use Elcodi\Component\Core\Command\Abstracts\AbstractElcodiCommand;
 use Elcodi\Component\Currency\Populator\CurrencyExchangeRatesPopulator;
 
 /**
  * Class CurrencyExchangeRatesPopulateCommand
  */
-class CurrencyExchangeRatesPopulateCommand extends Command
+class CurrencyExchangeRatesPopulateCommand extends AbstractElcodiCommand
 {
     /**
      * @var CurrencyExchangeRatesPopulator
@@ -68,8 +68,12 @@ class CurrencyExchangeRatesPopulateCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $this->startCommand($output);
+
         $this
             ->currencyExchangeRatesPopulator
             ->populate($output);
+
+        $this->finishCommand($output);
     }
 }

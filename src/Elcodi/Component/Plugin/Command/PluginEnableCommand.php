@@ -17,12 +17,12 @@
 
 namespace Elcodi\Component\Plugin\Command;
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 use Elcodi\Component\Plugin\Command\Abstracts\AbstractPluginEnableCommand;
+use Elcodi\Component\Plugin\Entity\Plugin;
 
 /**
  * Class PluginEnableCommand
@@ -58,7 +58,7 @@ class PluginEnableCommand extends AbstractPluginEnableCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $formatterHelper = $this->getHelper('formatter');
+        $this->startCommand($output);
         $pluginHash = $input->getArgument('hash');
         $plugin = $this
             ->pluginRepository
@@ -66,12 +66,12 @@ class PluginEnableCommand extends AbstractPluginEnableCommand
                 'hash' => $pluginHash,
             ]);
 
-        if (!($plugin instanceof \Elcodi\Component\Plugin\Entity\Plugin)) {
-            $output->writeln($formatterHelper->formatSection(
-                'FAIL',
-                'Plugin with hash "' . $pluginHash . '" not found',
-                'error'
-            ));
+        if (!($plugin instanceof Plugin)) {
+            $this->printMessageFail(
+                $output,
+                'Plugin',
+                'Plugin with hash "' . $pluginHash . '" not found'
+            );
 
             return null;
         }
@@ -80,9 +80,13 @@ class PluginEnableCommand extends AbstractPluginEnableCommand
         $this
             ->pluginObjectManager
             ->flush($plugin);
-        $output->writeln($formatterHelper->formatSection(
-            'OK',
+
+        $this->printMessage(
+            $output,
+            'Plugin',
             'Plugin with hash "' . $pluginHash . '" enabled'
-        ));
+        );
+
+        $this->finishCommand($output);
     }
 }

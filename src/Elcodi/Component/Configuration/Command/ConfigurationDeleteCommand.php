@@ -17,37 +17,16 @@
 
 namespace Elcodi\Component\Configuration\Command;
 
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use Elcodi\Component\Configuration\Services\ConfigurationManager;
+use Elcodi\Component\Configuration\Command\Abstracts\AbstractConfigurationCommand;
 
 /**
  * Class ConfigurationDeleteCommand
  */
-class ConfigurationDeleteCommand extends Command
+class ConfigurationDeleteCommand extends AbstractConfigurationCommand
 {
-    /**
-     * @var ConfigurationManager
-     *
-     * Configuration manager
-     */
-    private $configurationManager;
-
-    /**
-     * Constructor
-     *
-     * @param ConfigurationManager $configurationManager Configuration manager
-     */
-    public function __construct(ConfigurationManager $configurationManager)
-    {
-        parent::__construct();
-
-        $this->configurationManager = $configurationManager;
-    }
-
     /**
      * configure
      */
@@ -55,12 +34,9 @@ class ConfigurationDeleteCommand extends Command
     {
         $this
             ->setName('elcodi:configuration:delete')
-            ->setDescription('Deletes a specific configuration value')
-            ->addArgument(
-                'identifier',
-                InputArgument::REQUIRED,
-                'Configuration identifier'
-            );
+            ->setDescription('Deletes a specific configuration value');
+
+        parent::configure();
     }
 
     /**
@@ -73,6 +49,7 @@ class ConfigurationDeleteCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $this->startCommand($output);
         $configurationIdentifier = $input->getArgument('identifier');
 
         $this
@@ -81,12 +58,12 @@ class ConfigurationDeleteCommand extends Command
                 $configurationIdentifier
             );
 
-        $formatter = $this->getHelper('formatter');
-        $formattedLine = $formatter->formatSection(
-            'OK',
+        $this->printMessage(
+            $output,
+            'Configuration',
             'Deleted configuration "' . $configurationIdentifier . '"'
         );
 
-        $output->writeln($formattedLine);
+        $this->finishCommand($output);
     }
 }
