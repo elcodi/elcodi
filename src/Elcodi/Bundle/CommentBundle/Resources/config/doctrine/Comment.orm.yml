@@ -22,15 +22,6 @@ Elcodi\Component\Comment\Entity\Comment:
             column: content
             type: text
             nullable: false
-        parsedContent:
-            column: parsed_content
-            type: text
-            nullable: false
-        parsingType:
-            column: parsingType
-            type: string
-            length: 255
-            nullable: false
 
         authorToken:
             column: author_token

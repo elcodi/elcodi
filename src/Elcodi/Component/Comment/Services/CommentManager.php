@@ -42,27 +42,17 @@ class CommentManager extends AbstractCacheWrapper
     private $commentDirector;
 
     /**
-     * @var CommentParser
-     *
-     * Comment parser
-     */
-    private $commentParser;
-
-    /**
      * Construct method
      *
      * @param CommentEventDispatcher $commentEventDispatcher Comment event dispatcher
      * @param ObjectDirector         $commentDirector        Comment Director
-     * @param CommentParser          $commentParser          Comment parser
      */
     public function __construct(
         CommentEventDispatcher $commentEventDispatcher,
-        ObjectDirector $commentDirector,
-        CommentParser $commentParser
+        ObjectDirector $commentDirector
     ) {
         $this->commentEventDispatcher = $commentEventDispatcher;
         $this->commentDirector = $commentDirector;
-        $this->commentParser = $commentParser;
     }
 
     /**
@@ -99,10 +89,6 @@ class CommentManager extends AbstractCacheWrapper
             ->setContent($content)
             ->setContext($context);
 
-        $comment = $this
-            ->commentParser
-            ->parse($comment);
-
         $this
             ->commentDirector
             ->save($comment);
@@ -127,10 +113,6 @@ class CommentManager extends AbstractCacheWrapper
         $content
     ) {
         $comment->setContent($content);
-
-        $comment = $this
-            ->commentParser
-            ->parse($comment);
 
         $this
             ->commentDirector
