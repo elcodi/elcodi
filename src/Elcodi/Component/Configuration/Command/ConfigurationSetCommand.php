@@ -17,37 +17,17 @@
 
 namespace Elcodi\Component\Configuration\Command;
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use Elcodi\Component\Configuration\Services\ConfigurationManager;
+use Elcodi\Component\Configuration\Command\Abstracts\AbstractConfigurationCommand;
 
 /**
  * Class ConfigurationSetCommand
  */
-class ConfigurationSetCommand extends Command
+class ConfigurationSetCommand extends AbstractConfigurationCommand
 {
-    /**
-     * @var ConfigurationManager
-     *
-     * Configuration manager
-     */
-    private $configurationManager;
-
-    /**
-     * Constructor
-     *
-     * @param ConfigurationManager $configurationManager Configuration manager
-     */
-    public function __construct(ConfigurationManager $configurationManager)
-    {
-        parent::__construct();
-
-        $this->configurationManager = $configurationManager;
-    }
-
     /**
      * configure
      */
@@ -57,15 +37,12 @@ class ConfigurationSetCommand extends Command
             ->setName('elcodi:configuration:set')
             ->setDescription('Set an specific configuration value with a value')
             ->addArgument(
-                'identifier',
-                InputArgument::REQUIRED,
-                'Configuration identifier'
-            )
-            ->addArgument(
                 'value',
                 InputArgument::REQUIRED,
-                'Configuration name in a json_encode mode'
+                'Configuration name using json format'
             );
+
+        parent::configure();
     }
 
     /**
@@ -78,6 +55,8 @@ class ConfigurationSetCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $this->startCommand($output);
+
         $configurationIdentifier = $input->getArgument('identifier');
         $configurationValue = json_decode($input->getArgument('value'), true);
 
@@ -88,12 +67,12 @@ class ConfigurationSetCommand extends Command
                 $configurationValue
             );
 
-        $formatter = $this->getHelper('formatter');
-        $formattedLine = $formatter->formatSection(
-            'OK',
+        $this->printMessage(
+            $output,
+            'Configuration',
             'Saved configuration "' . $configurationIdentifier . '"'
         );
 
-        $output->writeln($formattedLine);
+        $this->finishCommand($output);
     }
 }

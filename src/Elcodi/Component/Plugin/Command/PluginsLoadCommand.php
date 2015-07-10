@@ -17,16 +17,16 @@
 
 namespace Elcodi\Component\Plugin\Command;
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+use Elcodi\Component\Core\Command\Abstracts\AbstractElcodiCommand;
 use Elcodi\Component\Plugin\Services\PluginManager;
 
 /**
  * Class PluginsLoadCommand
  */
-class PluginsLoadCommand extends Command
+class PluginsLoadCommand extends AbstractElcodiCommand
 {
     /**
      * @var PluginManager
@@ -71,18 +71,19 @@ class PluginsLoadCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $formatter = $this->getHelper('formatter');
+        $this->startCommand($output);
         $plugins = $this
             ->pluginManager
             ->loadPlugins();
 
         foreach ($plugins as $plugin) {
-            $formattedLine = $formatter->formatSection(
-                'OK',
+            $this->printMessage(
+                $output,
+                'Plugin',
                 'Plugin "' . $plugin->getNamespace() . '" installed'
             );
-
-            $output->writeln($formattedLine);
         }
+
+        $this->finishCommand($output);
     }
 }

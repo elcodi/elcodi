@@ -17,17 +17,17 @@
 
 namespace Elcodi\Component\Plugin\Command;
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+use Elcodi\Component\Core\Command\Abstracts\AbstractElcodiCommand;
 use Elcodi\Component\Plugin\Entity\Plugin;
 use Elcodi\Component\Plugin\Repository\PluginRepository;
 
 /**
  * Class PluginsListCommand
  */
-class PluginsListCommand extends Command
+class PluginsListCommand extends AbstractElcodiCommand
 {
     /**
      * @var PluginRepository
@@ -72,7 +72,7 @@ class PluginsListCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $formatterHelper = $this->getHelper('formatter');
+        $this->startCommand($output);
         $plugins = $this
             ->pluginRepository
             ->findAll();
@@ -81,10 +81,13 @@ class PluginsListCommand extends Command
          * @var Plugin $plugin
          */
         foreach ($plugins as $plugin) {
-            $output->writeln($formatterHelper->formatSection(
+            $this->printMessage(
+                $output,
                 'Plugin',
                 $plugin->getNamespace() . ' - [Hash : ' . $plugin->getHash() . ']'
-            ));
+            );
         }
+
+        $this->finishCommand($output);
     }
 }

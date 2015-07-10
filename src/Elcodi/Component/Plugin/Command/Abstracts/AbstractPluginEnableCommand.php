@@ -18,14 +18,14 @@
 namespace Elcodi\Component\Plugin\Command\Abstracts;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\Console\Command\Command;
 
+use Elcodi\Component\Core\Command\Abstracts\AbstractElcodiCommand;
 use Elcodi\Component\Plugin\Repository\PluginRepository;
 
 /**
  * Class AbstractPluginEnableCommand
  */
-abstract class AbstractPluginEnableCommand extends Command
+abstract class AbstractPluginEnableCommand extends AbstractElcodiCommand
 {
     /**
      * @var PluginRepository
