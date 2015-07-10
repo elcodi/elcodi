@@ -99,6 +99,7 @@ class ElcodiCoreExtension extends AbstractExtension
             'adapters',
             'extractor',
             'factories',
+            'guzzle',
         ];
     }
 

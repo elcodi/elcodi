@@ -42,6 +42,7 @@
         "symfony/dependency-injection": "^2.7",
         "symfony/event-dispatcher": "^2.7",
         "symfony/yaml": "^2.7",
+        "guzzlehttp/guzzle": "^5.2",
         "mmoreram/simple-doctrine-mapping": "^1.0",
         "mmoreram/extractor": "^1.1.1",
 
