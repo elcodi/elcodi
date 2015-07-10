@@ -136,9 +136,6 @@
         "mmoreram/php-formatter": "1.0.4",
         "phpunit/phpunit": "4.5.0"
     },
-    "suggest": {
-        "guzzle/http": "Required for OpenExchangeRates adapter"
-    },
     "autoload": {
         "psr-4": {
             "Elcodi\\": "src/Elcodi"
