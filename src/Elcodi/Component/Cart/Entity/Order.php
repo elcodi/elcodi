@@ -113,13 +113,6 @@ class Order implements OrderInterface
     protected $deliveryAddress;
 
     /**
-     * @var AddressInterface
-     *
-     * invoice address
-     */
-    protected $invoiceAddress;
-
-    /**
      * @var StateLineInterface
      *
      * Last stateLine in payment stateLine stack
@@ -356,30 +349,6 @@ class Order implements OrderInterface
     public function setShippingMethod($shippingMethod)
     {
         $this->shippingMethod = $shippingMethod;
-
-        return $this;
-    }
-
-    /**
-     * Get InvoiceAddress
-     *
-     * @return AddressInterface InvoiceAddress
-     */
-    public function getInvoiceAddress()
-    {
-        return $this->invoiceAddress;
-    }
-
-    /**
-     * Sets InvoiceAddress
-     *
-     * @param AddressInterface $invoiceAddress InvoiceAddress
-     *
-     * @return $this Self object
-     */
-    public function setInvoiceAddress($invoiceAddress)
-    {
-        $this->invoiceAddress = $invoiceAddress;
 
         return $this;
     }
