@@ -197,8 +197,6 @@ class CommentCache extends AbstractCacheWrapper
             'authorEmail'   => $comment->getAuthorEmail(),
             'content'       => $comment->getContent(),
             'context'       => $comment->getContext(),
-            'parsedContent' => $comment->getParsedContent(),
-            'parsedType'    => $comment->getParsingType(),
             'createdAt'     => $comment->getCreatedAt()->format('Y-m-d H:i:s'),
             'updatedAt'     => $comment->getUpdatedAt()->format('Y-m-d H:i:s'),
         ];

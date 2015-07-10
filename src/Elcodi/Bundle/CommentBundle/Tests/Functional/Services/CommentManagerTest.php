@@ -66,8 +66,6 @@ class CommentManagerTest extends WebTestCase
         $storedComment = $this->find('comment', 1);
         $this->assertEquals('http://page.com/product1', $storedComment->getSource());
         $this->assertEquals('This is my comment #1', $storedComment->getContent());
-        $this->assertEquals('This is my comment #1', $storedComment->getParsedContent());
-        $this->assertEquals('none', $storedComment->getParsingType());
         $this->assertSame('Efervescencio', $storedComment->getAuthorName());
         $this->assertSame('uhsi@noseque.com', $storedComment->getAuthorEmail());
         $this->assertSame('1234', $storedComment->getAuthorToken());

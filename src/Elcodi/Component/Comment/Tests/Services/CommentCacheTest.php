@@ -126,8 +126,6 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
                     'authorEmail'   => 'engonga@engonga.com',
                     'context'       => 'admin',
                     'content'       => 'comment1',
-                    'parsedContent' => 'comment1',
-                    'parsedType'    => 'none',
                     'nbVotes'       => 2,
                     'nbUpVotes'     => 1,
                     'nbDownVotes'   => 1,
@@ -141,9 +139,7 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
                             'authorName'    => 'Marc Morera',
                             'authorEmail'   => 'engonga@engonga.com',
                             'context'       => 'admin',
-                            'parsedContent' => 'comment2',
                             'content'       => 'comment2',
-                            'parsedType'    => 'none',
                             'nbVotes'       => 2,
                             'nbUpVotes'     => 1,
                             'nbDownVotes'   => 1,
@@ -158,9 +154,7 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
                             'authorName'    => 'Another guy',
                             'authorEmail'   => 'lala@lala.com',
                             'context'       => 'admin',
-                            'parsedContent' => 'comment3',
                             'content'       => 'comment3',
-                            'parsedType'    => 'none',
                             'nbVotes'       => 2,
                             'nbUpVotes'     => 1,
                             'nbDownVotes'   => 1,
@@ -178,8 +172,6 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
                     'authorEmail'   => 'engonga@engonga.com',
                     'context'       => 'admin',
                     'content'       => 'comment4',
-                    'parsedContent' => 'comment4',
-                    'parsedType'    => 'none',
                     'nbVotes'       => 2,
                     'nbUpVotes'     => 1,
                     'nbDownVotes'   => 1,
@@ -194,8 +186,6 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
                             'authorEmail'   => 'engonga@engonga.com',
                             'context'       => 'admin',
                             'content'       => 'comment5',
-                            'parsedContent' => 'comment5',
-                            'parsedType'    => 'none',
                             'nbVotes'       => 2,
                             'nbUpVotes'     => 1,
                             'nbDownVotes'   => 1,
@@ -226,8 +216,6 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
             ->setAuthorEmail('engonga@engonga.com')
             ->setAuthorToken('12345')
             ->setContent('comment1')
-            ->setParsedContent('comment1')
-            ->setParsingType('none')
             ->setCreatedAt(DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 00:00:00'))
             ->setUpdatedAt(DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 00:00:00'));
 
@@ -241,8 +229,6 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
             ->setAuthorEmail('engonga@engonga.com')
             ->setAuthorToken('12345')
             ->setContent('comment2')
-            ->setParsedContent('comment2')
-            ->setParsingType('none')
             ->setCreatedAt(DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 00:00:00'))
             ->setUpdatedAt(DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 00:00:00'));
 
@@ -256,8 +242,6 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
             ->setAuthorEmail('lala@lala.com')
             ->setAuthorToken('12345')
             ->setContent('comment3')
-            ->setParsedContent('comment3')
-            ->setParsingType('none')
             ->setCreatedAt(DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 00:00:00'))
             ->setUpdatedAt(DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 00:00:00'));
 
@@ -271,8 +255,6 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
             ->setAuthorEmail('engonga@engonga.com')
             ->setAuthorToken('12345')
             ->setContent('comment4')
-            ->setParsedContent('comment4')
-            ->setParsingType('none')
             ->setCreatedAt(DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 00:00:00'))
             ->setUpdatedAt(DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 00:00:00'));
 
@@ -286,8 +268,6 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
             ->setAuthorEmail('engonga@engonga.com')
             ->setAuthorToken('12345')
             ->setContent('comment5')
-            ->setParsedContent('comment5')
-            ->setParsingType('none')
             ->setCreatedAt(DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 00:00:00'))
             ->setUpdatedAt(DateTime::createFromFormat('Y-m-d H:i:s', '2015-01-01 00:00:00'));
 

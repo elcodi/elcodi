@@ -18,7 +18,6 @@
 namespace Elcodi\Bundle\CommentBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
@@ -89,7 +88,6 @@ class ElcodiCommentExtension extends AbstractExtension implements EntitiesOverri
             "elcodi.entity.comment_vote.enabled"      => $config['mapping']['comment_vote']['enabled'],
 
             'elcodi.comment.cache_key'                => $config['comments']['cache_key'],
-            'elcodi.comment.parser'                   => $config['comments']['parser'],
         ];
     }
 
@@ -129,20 +127,6 @@ class ElcodiCommentExtension extends AbstractExtension implements EntitiesOverri
             'Elcodi\Component\Comment\Entity\Interfaces\CommentInterface' => 'elcodi.entity.comment.class',
             'Elcodi\Component\Comment\Entity\Interfaces\VoteInterface'    => 'elcodi.entity.comment_vote.class',
         ];
-    }
-
-    /**
-     * Post load implementation
-     *
-     * @param array            $config    Parsed configuration
-     * @param ContainerBuilder $container A ContainerBuilder instance
-     */
-    protected function postLoad(array $config, ContainerBuilder $container)
-    {
-        parent::postLoad($config, $container);
-
-        $ratesProviderId = $config['comments']['parser'];
-        $container->setAlias('elcodi.comment_parser_adapter', $ratesProviderId);
     }
 
     /**

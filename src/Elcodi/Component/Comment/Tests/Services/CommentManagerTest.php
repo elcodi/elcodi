@@ -22,7 +22,6 @@ use PHPUnit_Framework_TestCase;
 use Elcodi\Component\Comment\Entity\Comment;
 use Elcodi\Component\Comment\Entity\Interfaces\CommentInterface;
 use Elcodi\Component\Comment\Services\CommentManager;
-use Elcodi\Component\Comment\Services\CommentParser;
 use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
@@ -57,24 +56,9 @@ class CommentManagerTest extends PHPUnit_Framework_TestCase
             ->method('create')
             ->will($this->returnValue(new Comment()));
 
-        $parserAdapter = $this->getMock('Elcodi\Component\Core\Adapter\Parser\Interfaces\ParserAdapterInterface');
-
-        $parserAdapter
-            ->expects($this->any())
-            ->method('parse')
-            ->will($this->returnArgument(0));
-
-        $parserAdapter
-            ->expects($this->any())
-            ->method('getIdentifier')
-            ->will($this->returnValue('none'));
-
-        $commentParser = new CommentParser($parserAdapter);
-
         $this->commentManager = new CommentManager(
             $this->getMock('Elcodi\Component\Comment\EventDispatcher\CommentEventDispatcher', [], [], '', false),
-            $this->commentObjectDirector,
-            $commentParser
+            $this->commentObjectDirector
         );
     }
 
@@ -101,7 +85,5 @@ class CommentManagerTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('source', $comment->getSource());
         $this->assertGreaterThan(0, $comment->getId());
         $this->assertEquals('This is my content', $comment->getContent());
-        $this->assertEquals('This is my content', $comment->getParsedContent());
-        $this->assertEquals('none', $comment->getParsingType());
     }
 }

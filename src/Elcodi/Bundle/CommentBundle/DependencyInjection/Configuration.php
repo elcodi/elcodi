@@ -58,9 +58,6 @@ class Configuration extends AbstractConfiguration
                         ->scalarNode('cache_key')
                             ->defaultValue('comments')
                         ->end()
-                        ->scalarNode('parser')
-                            ->defaultValue('elcodi.dummy_parser_adapter')
-                        ->end()
                     ->end()
                 ->end()
             ->end();

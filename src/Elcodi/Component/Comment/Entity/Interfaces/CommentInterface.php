@@ -114,38 +114,6 @@ interface CommentInterface
     public function getParent();
 
     /**
-     * Sets ParsedContent
-     *
-     * @param string $parsedContent ParsedContent
-     *
-     * @return $this Self object
-     */
-    public function setParsedContent($parsedContent);
-
-    /**
-     * Get ParsedContent
-     *
-     * @return string ParsedContent
-     */
-    public function getParsedContent();
-
-    /**
-     * Sets ParsingType
-     *
-     * @param integer $parsingType ParsingType
-     *
-     * @return $this Self object
-     */
-    public function setParsingType($parsingType);
-
-    /**
-     * Get ParsingType
-     *
-     * @return integer ParsingType
-     */
-    public function getParsingType();
-
-    /**
      * Sets Source
      *
      * @param string $source Source

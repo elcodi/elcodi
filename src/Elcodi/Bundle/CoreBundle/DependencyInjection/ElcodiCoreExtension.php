@@ -96,7 +96,6 @@ class ElcodiCoreExtension extends AbstractExtension
             'generators',
             'encoders',
             'services',
-            'adapters',
             'extractor',
             'factories',
             'guzzle',

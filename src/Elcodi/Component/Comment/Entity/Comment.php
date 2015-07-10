@@ -88,20 +88,6 @@ class Comment implements CommentInterface
     protected $content;
 
     /**
-     * @var string
-     *
-     * content
-     */
-    protected $parsedContent;
-
-    /**
-     * @var integer
-     *
-     * content
-     */
-    protected $parsingType;
-
-    /**
      * Sets Content
      *
      * @param string $content Content
@@ -147,54 +133,6 @@ class Comment implements CommentInterface
     public function getParent()
     {
         return $this->parent;
-    }
-
-    /**
-     * Sets ParsedContent
-     *
-     * @param string $parsedContent ParsedContent
-     *
-     * @return $this Self object
-     */
-    public function setParsedContent($parsedContent)
-    {
-        $this->parsedContent = $parsedContent;
-
-        return $this;
-    }
-
-    /**
-     * Get ParsedContent
-     *
-     * @return string ParsedContent
-     */
-    public function getParsedContent()
-    {
-        return $this->parsedContent;
-    }
-
-    /**
-     * Sets ParsingType
-     *
-     * @param integer $parsingType ParsingType
-     *
-     * @return $this Self object
-     */
-    public function setParsingType($parsingType)
-    {
-        $this->parsingType = $parsingType;
-
-        return $this;
-    }
-
-    /**
-     * Get ParsingType
-     *
-     * @return integer ParsingType
-     */
-    public function getParsingType()
-    {
-        return $this->parsingType;
     }
 
     /**

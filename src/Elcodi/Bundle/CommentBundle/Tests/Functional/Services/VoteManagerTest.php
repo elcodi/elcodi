@@ -66,9 +66,7 @@ class VoteManagerTest extends WebTestCase
             ->setAuthorName('percebe')
             ->setAuthorEmail('sjka@hjdhj.com')
             ->setContent('content')
-            ->setContext('admin')
-            ->setParsedContent('content')
-            ->setParsingType('none');
+            ->setContext('admin');
 
         $this->flush($comment);
 
