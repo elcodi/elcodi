@@ -59,10 +59,10 @@ class ProductCategoryIntegrityEventListener
             ->getUnitOfWork();
 
         $scheduledInsertions = $unitOfWork->getScheduledEntityInsertions();
-        $this->fixProductEntities($scheduledInsertions, $unitOfWork);
-
         $scheduledUpdates = $unitOfWork->getScheduledEntityUpdates();
-        $this->fixProductEntities($scheduledUpdates, $unitOfWork);
+
+        $entitiesChanged = array_merge($scheduledInsertions, $scheduledUpdates);
+        $this->fixProductEntities($entitiesChanged, $unitOfWork);
     }
 
 
