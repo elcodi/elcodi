@@ -17,8 +17,8 @@
 
 namespace Elcodi\Component\Product\EventListener;
 
-use Doctrine\ORM\Event\PreFlushEventArgs;
-use Doctrine\ORM\Event\PreUpdateEventArgs;
+use Doctrine\ORM\UnitOfWork;
+use Doctrine\ORM\Event\OnFlushEventArgs;
 
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Services\CategoryIntegrityFixer;
@@ -50,36 +50,43 @@ class ProductCategoryIntegrityEventListener
     /**
      * Before the flush we check that the product categories are right.
      *
-     * @param PreFlushEventArgs $args The pre flush event arguments.
+     * @param OnFlushEventArgs $args The pre flush event arguments.
      */
-    public function preFlush(PreFlushEventArgs $args)
+    public function onFlush(OnFlushEventArgs $args)
     {
-        $entityManager = $args->getEntityManager();
-        $scheduledInsertions = $entityManager
-            ->getUnitOfWork()
-            ->getScheduledEntityInsertions();
+        $unitOfWork = $args
+            ->getEntityManager()
+            ->getUnitOfWork();
 
-        foreach ($scheduledInsertions as $entity) {
+        $scheduledInsertions = $unitOfWork->getScheduledEntityInsertions();
+        $this->fixProductEntities($scheduledInsertions, $unitOfWork);
+
+        $scheduledUpdates = $unitOfWork->getScheduledEntityUpdates();
+        $this->fixProductEntities($scheduledUpdates, $unitOfWork);
+    }
+
+
+    /**
+     * Fixes all the product entities found.
+     *
+     * @param array      $entities   The entities being changed.
+     * @param UnitOfWork $unitOfWork The unit of work.
+     */
+    protected function fixProductEntities( array $entities, UnitOfWork $unitOfWork )
+    {
+        $computeChangeSets = false;
+        foreach ($entities as $entity) {
             if ($entity instanceof ProductInterface) {
                 $this
                     ->categoryIntegrityFixer
                     ->fixProduct($entity);
+
+                $computeChangeSets = true;
             }
         }
-    }
 
-    /**
-     * Before an update we check that the product categories are right.
-     *
-     * @param PreUpdateEventArgs $event The pre update event.
-     */
-    public function preUpdate(PreUpdateEventArgs $event)
-    {
-        $entity = $event->getEntity();
-        if ($entity instanceof ProductInterface) {
-            $this
-                ->categoryIntegrityFixer
-                ->fixProduct($entity);
+        if ($computeChangeSets) {
+            $unitOfWork->computeChangeSets();
         }
     }
 }
