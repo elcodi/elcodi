@@ -3,11 +3,11 @@ security:
     providers:
         customer:
             entity:
-                class: Elcodi\Component\User\Entity\Customer
+                class: %elcodi.entity.customer.class%
                 property: email
         adminuser:
             entity:
-                class: Elcodi\Component\User\Entity\AdminUser
+                class: %elcodi.entity.admin_user.class%
                 property: email
 
 services:
