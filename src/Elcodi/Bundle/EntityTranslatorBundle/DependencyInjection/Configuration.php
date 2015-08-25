@@ -94,7 +94,7 @@ class Configuration extends AbstractConfiguration implements ConfigurationInterf
                                             $fields[$fieldName]['getter'] = 'get' . ucfirst($fieldName);
                                         }
 
-                                        if (!isset($fieldConfiguration['getter'])) {
+                                        if (!isset($fieldConfiguration['setter'])) {
                                             $fields[$fieldName]['setter'] = 'set' . ucfirst($fieldName);
                                         }
                                     }
