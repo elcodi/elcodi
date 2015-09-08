@@ -86,6 +86,9 @@ abstract class AbstractConfiguration implements ConfigurationInterface
         $node = $builder->root($nodeName);
 
         $node
+            ->treatFalseLike([
+                'enabled' => false,
+            ])
             ->addDefaultsIfNotSet()
             ->children()
                 ->scalarNode('class')
@@ -102,7 +105,6 @@ abstract class AbstractConfiguration implements ConfigurationInterface
                 ->end()
                 ->booleanNode('enabled')
                     ->defaultValue($entityEnabled)
-                    ->cannotBeEmpty()
                 ->end()
             ->end()
         ->end();
