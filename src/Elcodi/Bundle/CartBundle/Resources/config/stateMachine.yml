@@ -21,7 +21,7 @@ services:
         class: Elcodi\Component\StateTransitionMachine\Machine\MachineManager
         arguments:
             - @elcodi.order.payment_states_machine
-            - @event_dispatcher
+            - @elcodi.event_dispatcher.machine
             - @elcodi.factory.state_transition_machine_state_line
 
 
@@ -46,5 +46,5 @@ services:
         class: Elcodi\Component\StateTransitionMachine\Machine\MachineManager
         arguments:
             - @elcodi.order.shipping_states_machine
-            - @event_dispatcher
+            - @elcodi.event_dispatcher.machine
             - @elcodi.factory.state_transition_machine_state_line
