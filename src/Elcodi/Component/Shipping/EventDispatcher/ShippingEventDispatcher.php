@@ -29,13 +29,13 @@ use Elcodi\Component\Shipping\Event\ShippingCollectionEvent;
 class ShippingEventDispatcher extends AbstractEventDispatcher
 {
     /**
-     * Dispatch payment methods collection
+     * Dispatch shipping methods collection
      *
      * @param CartInterface $cart Cart
      *
-     * @return ShippingMethod[] Payment methods
+     * @return ShippingMethod[] Shipping methods
      */
-    public function dispatchPaymentCollectionEvent(CartInterface $cart)
+    public function dispatchShippingCollectionEvent(CartInterface $cart)
     {
         $event = new ShippingCollectionEvent($cart);
 
