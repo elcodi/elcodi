@@ -22,7 +22,7 @@ use Symfony\Component\EventDispatcher\Event;
 use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 
 /**
- * Event fired when a customer unsubscribes from newsletter
+ * Event fired when a customer password is recovered
  *
  * This event send an email to customer
  */
