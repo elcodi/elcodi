@@ -8,6 +8,7 @@ services:
         arguments:
             - @elcodi.repository.currency
             - @elcodi.repository.currency_exchange_rate
+            - %elcodi.default_currency%
 
     elcodi.manager.currency_session:
         class: Elcodi\Component\Currency\Services\CurrencySessionManager
@@ -18,7 +19,7 @@ services:
     elcodi.converter.currency:
         class: Elcodi\Component\Currency\Services\CurrencyConverter
         arguments:
-            - @elcodi.manager.currency
+            - @elcodi.calculator.exchange_rate
 
     elcodi.money_printer:
         class: Elcodi\Component\Currency\Services\MoneyPrinter
@@ -34,4 +35,11 @@ services:
             - @elcodi.adapter.currency_exchange_rate
             - @elcodi.director.currency_exchange_rate
             - @elcodi.repository.currency
+            - %elcodi.default_currency%
+
+    elcodi.calculator.exchange_rate:
+        class: Elcodi\Component\Currency\Services\ExchangeRateCalculator
+        lazy: true
+        arguments:
+            - @elcodi.manager.currency
             - %elcodi.default_currency%

@@ -17,13 +17,12 @@
 
 namespace Elcodi\Component\Currency\Tests\UnitTest\Services;
 
+use Elcodi\Component\Currency\Entity\Currency;
+use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use PHPUnit_Framework_TestCase;
 
-use Elcodi\Component\Core\Factory\DateTimeFactory;
 use Elcodi\Component\Currency\Entity\Money;
-use Elcodi\Component\Currency\Factory\CurrencyFactory;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
-use Elcodi\Component\Currency\Services\CurrencyManager;
 
 /**
  * Class CurrencyConverterTest
@@ -31,7 +30,71 @@ use Elcodi\Component\Currency\Services\CurrencyManager;
 class CurrencyConverterTest extends PHPUnit_Framework_TestCase
 {
     /**
+     * @var CurrencyConverter
+     */
+    private $currencyConverter;
+
+    /**
+     * Sets up the fixture, for example, open a network connection.
+     * This method is called before a test is executed.
+     */
+    public function setUp()
+    {
+        $exchangeCalculatorMock = $this
+            ->getMockBuilder('Elcodi\Component\Currency\Services\ExchangeRateCalculator')
+            ->disableOriginalConstructor()
+            ->setMethods(['calculateExchangeRate'])
+            ->getMock();
+
+        $exchangeCalculatorMock
+            ->method('calculateExchangeRate')
+            ->willReturn(0.5000000000);
+
+        $this->currencyConverter = new CurrencyConverter(
+            $exchangeCalculatorMock
+        );
+    }
+
+    /**
+     * data for testConvertMoney
+     */
+    public function dataConvertMoney()
+    {
+        return [
+            'Exchange from the same currency' => [
+                'USD',
+                'USD',
+                100,
+                100,
+            ],
+            'Exchange from the same currency with no amount' => [
+                'USD',
+                'USD',
+                0,
+                0,
+            ],
+            'Exchange from different currencies' => [
+                'USD',
+                'EUR',
+                1000000,
+                500000,
+            ],
+            'Exchange from different currencies with no amount' => [
+                'EUR',
+                'USD',
+                0,
+                0,
+            ],
+        ];
+    }
+
+    /**
      * Test convert money
+     *
+     * @param $isoFrom
+     * @param $isoTo
+     * @param $amount
+     * @param $resultAmount
      *
      * @dataProvider dataConvertMoney
      */
@@ -41,63 +104,30 @@ class CurrencyConverterTest extends PHPUnit_Framework_TestCase
         $amount,
         $resultAmount
     ) {
-        $currencyManager = $this
-            ->getMockBuilder('Elcodi\Component\Currency\Services\CurrencyManager')
-            ->setMethods([
-                'getExchangeRateList',
-            ])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $currencyFactory = new CurrencyFactory();
-        $currencyFactory->setEntityNamespace('Elcodi\Component\Currency\Entity\Currency');
-        $currencyFactory->setDateTimeFactory(new DateTimeFactory());
-        $currencyBase = 'USD';
-
-        /**
-         * @var CurrencyManager $currencyManager
-         */
-        $currencyManager
-            ->expects($this->any())
-            ->method('getExchangeRateList')
-            ->will($this->returnValue([
-                'EUR' => ['rate' => '0.7365960000', 'currency' => $currencyFactory->create()],
-                'GBP' => ['rate' => '0.5887650000', 'currency' => $currencyFactory->create()],
-                'JPY' => ['rate' => '101.8226250000', 'currency' => $currencyFactory->create()],
-            ]));
-
-        $currencyConverter = new CurrencyConverter(
-            $currencyManager,
-            $currencyBase
-        );
-
-        $currencyFrom = $currencyFactory->create();
-        $currencyFrom->setIso($isoFrom);
-        $currencyTo = $currencyFactory->create();
-        $currencyTo->setIso($isoTo);
+        $currencyFrom = $this->createCurrency($isoFrom);
+        $currencyTo = $this->createCurrency($isoTo);
         $money = Money::create($amount, $currencyFrom);
 
-        $moneyResult = $currencyConverter->convertMoney($money, $currencyTo);
+        $moneyResult = $this
+            ->currencyConverter
+            ->convertMoney($money, $currencyTo);
 
         $this->assertEquals($moneyResult->getAmount(), $resultAmount);
         $this->assertEquals($moneyResult->getCurrency(), $currencyTo);
     }
 
     /**
-     * data for testConvertMoney
+     * Creates a currency.
+     *
+     * @param string $iso The currency ISO.
+     *
+     * @return CurrencyInterface
      */
-    public function dataConvertMoney()
+    protected function createCurrency($iso)
     {
-        return [
-            ['USD', 'USD', 100, 100],
-            ['USD', 'USD', 0, 0],
-            ['USD', 'EUR', 1000000, 736596],
-            ['USD', 'EUR', 1000, 736],
-            ['EUR', 'EUR', 1000, 1000],
-            ['EUR', 'USD', 1000, 1357],
-            ['EUR', 'GBP', 1000, 799],
-            ['EUR', 'GBP', 0, 0],
-            ['GBP', 'EUR', 1000, 1251],
-        ];
+        $currency = new Currency();
+        $currency
+            ->setIso($iso);
+        return $currency;
     }
 }
