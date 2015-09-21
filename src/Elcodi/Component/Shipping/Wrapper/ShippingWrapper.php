@@ -54,7 +54,7 @@ class ShippingWrapper
     {
         return $this
             ->shippingEventDispatcher
-            ->dispatchPaymentCollectionEvent($cart);
+            ->dispatchShippingCollectionEvent($cart);
     }
 
     /**

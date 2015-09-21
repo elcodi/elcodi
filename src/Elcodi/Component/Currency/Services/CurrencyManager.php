@@ -45,7 +45,6 @@ class CurrencyManager
      *
      * Exchange Rate List
      */
-
     private $exchangeRateList;
 
     /**
