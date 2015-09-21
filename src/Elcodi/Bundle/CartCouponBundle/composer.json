@@ -40,15 +40,15 @@
         "symfony/dependency-injection": "^2.7",
         "mmoreram/simple-doctrine-mapping": "^1.0",
 
-        "elcodi/core-bundle": "self.version",
-        "elcodi/cart-bundle": "self.version",
-        "elcodi/coupon-bundle": "self.version",
-        "elcodi/rule-bundle": "self.version",
-        "elcodi/cart-coupon": "self.version"
+        "elcodi/core-bundle": "^1.0",
+        "elcodi/cart-bundle": "^1.0",
+        "elcodi/coupon-bundle": "^1.0",
+        "elcodi/rule-bundle": "^1.0",
+        "elcodi/cart-coupon": "^1.0"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "self.version",
-        "elcodi/fixtures-booster-bundle": "self.version",
+        "elcodi/test-common-bundle": "^1.0",
+        "elcodi/fixtures-booster-bundle": "^1.0",
         "doctrine/data-fixtures": "^1.1",
         "phpunit/phpunit": "4.5.0"
     },

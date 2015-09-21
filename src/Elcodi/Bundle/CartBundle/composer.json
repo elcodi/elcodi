@@ -39,18 +39,18 @@
         "symfony/dependency-injection": "^2.7",
         "mmoreram/simple-doctrine-mapping": "^1.0",
 
-        "elcodi/core-bundle": "self.version",
-        "elcodi/user-bundle": "self.version",
-        "elcodi/product-bundle": "self.version",
-        "elcodi/currency-bundle": "self.version",
-        "elcodi/state-transition-machine-bundle": "self.version",
-        "elcodi/store-bundle": "self.version",
-        "elcodi/shipping-bundle": "self.version",
-        "elcodi/cart": "self.version"
+        "elcodi/core-bundle": "^1.0",
+        "elcodi/user-bundle": "^1.0",
+        "elcodi/product-bundle": "^1.0",
+        "elcodi/currency-bundle": "^1.0",
+        "elcodi/state-transition-machine-bundle": "^1.0",
+        "elcodi/store-bundle": "^1.0",
+        "elcodi/shipping-bundle": "^1.0",
+        "elcodi/cart": "^1.0"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "self.version",
-        "elcodi/fixtures-booster-bundle": "self.version",
+        "elcodi/test-common-bundle": "^1.0",
+        "elcodi/fixtures-booster-bundle": "^1.0",
         "doctrine/data-fixtures": "^1.1",
         "phpunit/phpunit": "4.5.0"
     },

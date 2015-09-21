@@ -40,12 +40,12 @@
         "mmoreram/simple-doctrine-mapping": "^1.0",
         "snc/redis-bundle": "^1.1.8",
 
-        "elcodi/core-bundle": "self.version",
-        "elcodi/metric": "self.version"
+        "elcodi/core-bundle": "^1.0",
+        "elcodi/metric": "^1.0"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "self.version",
-        "elcodi/fixtures-booster-bundle": "self.version",
+        "elcodi/test-common-bundle": "^1.0",
+        "elcodi/fixtures-booster-bundle": "^1.0",
         "doctrine/data-fixtures": "^1.1",
         "phpunit/phpunit": "4.5.0"
     },

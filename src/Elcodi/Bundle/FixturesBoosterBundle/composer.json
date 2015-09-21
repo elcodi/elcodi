@@ -38,7 +38,7 @@
 
         "doctrine/doctrine-fixtures-bundle": "^2.2",
 
-        "elcodi/core-bundle": "self.version"
+        "elcodi/core-bundle": "^1.0"
     },
     "autoload": {
         "psr-4": {
