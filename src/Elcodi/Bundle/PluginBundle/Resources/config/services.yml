@@ -44,7 +44,6 @@ services:
 
     elcodi.abstract_plugin:
         abstract: true
-        lazy: true
         class: Elcodi\Component\Plugin\Entity\Plugin
         factory:
             - @elcodi.repository.plugin
