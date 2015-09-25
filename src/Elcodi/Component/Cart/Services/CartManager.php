@@ -334,7 +334,7 @@ class CartManager
      *
      * @return $this Self object
      */
-    public function addProduct(
+    public function addPurchasable(
         CartInterface $cart,
         PurchasableInterface $purchasable,
         $quantity
@@ -389,7 +389,7 @@ class CartManager
      *
      * @return $this Self object
      */
-    public function removeProduct(
+    public function removePurchasable(
         CartInterface $cart,
         PurchasableInterface $purchasable,
         $quantity
@@ -419,6 +419,73 @@ class CartManager
         }
 
         return $this;
+    }
+
+    /**
+     * Add a Purchasable to Cart as a new CartLine
+     *
+     * This method creates a new CartLine and set item quantity
+     * correspondingly.
+     *
+     * If the Purchasable is already in the Cart, it just increments
+     * item quantity by $quantity
+     *
+     * @deprecated since version 1.0.0, to be removed in 2.0.0. Use addPurchasable()
+     *
+     * @param CartInterface        $cart        Cart
+     * @param PurchasableInterface $purchasable Product or Variant to add
+     * @param integer              $quantity    Number of units to set or increase
+     *
+     * @return $this Self object
+     */
+    public function addProduct(
+        CartInterface $cart,
+        PurchasableInterface $purchasable,
+        $quantity
+    ) {
+        @trigger_error('The ' . __METHOD__ . ' method in class CartManager is
+        deprecated since version 1.0.0 and will be removed in 2.0.0. Use the
+        addPurchasable() method instead.', E_USER_DEPRECATED);
+
+        return $this
+            ->addPurchasable(
+                $cart,
+                $purchasable,
+                $quantity
+            );
+    }
+
+    /**
+     * Remove a Purchasable from Cart
+     *
+     * This method removes a Purchasable from the Cart.
+     *
+     * If the Purchasable is already in the Cart, it just decreases
+     * item quantity by $quantity
+     *
+     * @deprecated since version 1.0, to be removed in 2.0. Use removePurchasable()
+     *
+     * @param CartInterface        $cart        Cart
+     * @param PurchasableInterface $purchasable Product or Variant to add
+     * @param integer              $quantity    Number of units to set or increase
+     *
+     * @return $this Self object
+     */
+    public function removeProduct(
+        CartInterface $cart,
+        PurchasableInterface $purchasable,
+        $quantity
+    ) {
+        @trigger_error('The ' . __METHOD__ . ' method in class CartManager is
+        deprecated since version 1.0.0 and will be removed in 2.0.0. Use the
+        removePurchasable() method instead.', E_USER_DEPRECATED);
+
+        return $this
+            ->removePurchasable(
+                $cart,
+                $purchasable,
+                $quantity
+            );
     }
 
     /**
