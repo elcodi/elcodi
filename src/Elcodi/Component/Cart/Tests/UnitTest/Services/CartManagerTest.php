@@ -121,7 +121,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
             ->method('create')
             ->will($this->returnValue(new CartLine()));
 
-        $this->cartManager->addProduct($cart, $purchaseable, 1);
+        $this->cartManager->addPurchasable($cart, $purchaseable, 1);
 
         $this->assertCount(1, $cart->getCartLines());
         $this->assertEquals(1, $cart->getTotalItemNumber());
@@ -150,8 +150,8 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
 
         $this
             ->cartManager
-            ->addProduct($cart, $purchaseable, 1)
-            ->addProduct($cart, $purchaseable, 1);
+            ->addPurchasable($cart, $purchaseable, 1)
+            ->addPurchasable($cart, $purchaseable, 1);
 
         $this->assertCount(1, $cart->getCartLines());
     }
@@ -384,7 +384,9 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         $cart = new Cart();
         $cart->setCartLines(new ArrayCollection());
 
-        $this->cartManager->addProduct($cart, $product, $quantity);
+        $this
+            ->cartManager
+            ->addPurchasable($cart, $product, $quantity);
 
         if ($productCreated) {
             $createdLine = $cart->getCartLines()->first();
@@ -497,7 +499,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
             ->method('increaseCartLineQuantity');
 
         $cartManager
-            ->addProduct(
+            ->addPurchasable(
                 $cart,
                 $variant,
                 1
@@ -536,7 +538,9 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
             ->method('getId')
             ->willReturn($productId);
 
-        $this->cartManager->removeProduct($cart, $productToRemove, $quantity);
+        $this
+            ->cartManager
+            ->removePurchasable($cart, $productToRemove, $quantity);
 
         $this->assertCount($quantityExpected, $cart->getCartLines());
     }

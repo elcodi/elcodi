@@ -146,11 +146,11 @@ class CartManagerVariantTest extends AbstractCartManagerTest
     {
         $this
             ->get('elcodi.manager.cart')
-            ->addProduct($this->cart, $this->purchasable, 1);
+            ->addPurchasable($this->cart, $this->purchasable, 1);
 
         $this
             ->get('elcodi.manager.cart')
-            ->addProduct($this->cart, $this->purchasable, 2);
+            ->addPurchasable($this->cart, $this->purchasable, 2);
 
         $this->assertEquals(1, $this->cart->getCartLines()->count());
         $this->assertResults(3);
