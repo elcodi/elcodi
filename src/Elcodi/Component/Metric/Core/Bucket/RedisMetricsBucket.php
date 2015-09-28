@@ -340,7 +340,8 @@ class RedisMetricsBucket extends AbstractMetricsBucket
     /**
      * Try a redis query and return it's result.
      *
-     * If the call catches a connection Exception, then returns false
+     * If the call catches a connection Exception, then returns the provided
+     * default value (false by default)
      *
      * @param Callable $callable     Callable function
      * @param mixed    $defaultValue Default value to return if exception
