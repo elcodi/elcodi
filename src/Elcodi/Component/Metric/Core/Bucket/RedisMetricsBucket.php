@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Metric\Core\Bucket;
 
 use Predis\Client as Predis;
+use Predis\CommunicationException;
 
 use Elcodi\Component\Metric\Core\Bucket\Abstracts\AbstractMetricsBucket;
 use Elcodi\Component\Metric\Core\Entity\Interfaces\EntryInterface;
@@ -82,9 +83,12 @@ class RedisMetricsBucket extends AbstractMetricsBucket
                 ) . '_unique';
         }
 
-        return (int) $this
-            ->redis
-            ->pfCount($keys);
+        return (int)
+        $this->doRedisQuery(function () use ($keys) {
+            $this
+                ->redis
+                ->pfCount($keys);
+        }, 0);
     }
 
     /**
@@ -107,9 +111,11 @@ class RedisMetricsBucket extends AbstractMetricsBucket
                 $date
             );
 
-            $total += (int) $this
-                ->redis
-                ->get($key . '_total');
+            $total += $this->doRedisQuery(function () use ($key) {
+                $this
+                    ->redis
+                    ->get($key . '_total');
+            }, 0);
         }
 
         return $total;
@@ -135,9 +141,11 @@ class RedisMetricsBucket extends AbstractMetricsBucket
                 $date
             );
 
-            $total += (int) $this
-                ->redis
-                ->get($key . '_accum');
+            $total += $this->doRedisQuery(function () use ($key) {
+                $this
+                    ->redis
+                    ->get($key . '_accum');
+            }, 0);
         }
 
         return $total;
@@ -169,9 +177,11 @@ class RedisMetricsBucket extends AbstractMetricsBucket
                 $date
             );
 
-            $partials = $this
-                ->redis
-                ->hgetall($key . '_distr');
+            $partials = $this->doRedisQuery(function () use ($key) {
+                $this
+                    ->redis
+                    ->hgetall($key . '_distr');
+            }, []);
 
             foreach ($partials as $key => $value) {
                 $distributions[$key] = isset($partialTotals[$key])
@@ -248,12 +258,14 @@ class RedisMetricsBucket extends AbstractMetricsBucket
         EntryInterface $entry,
         $entryKey
     ) {
-        $this
-            ->redis
-            ->pfAdd(
-                $entryKey . '_unique',
-                $entry->getValue()
-            );
+        $this->doRedisQuery(function () use ($entry, $entryKey) {
+            $this
+                ->redis
+                ->pfAdd(
+                    $entryKey . '_unique',
+                    $entry->getValue()
+                );
+        });
 
         return $this;
     }
@@ -267,9 +279,11 @@ class RedisMetricsBucket extends AbstractMetricsBucket
      */
     private function addBeaconMetricTotal($entryKey)
     {
-        $this
-            ->redis
-            ->incr($entryKey . '_total');
+        $this->doRedisQuery(function () use ($entryKey) {
+            $this
+                ->redis
+                ->incr($entryKey . '_total');
+        });
 
         return $this;
     }
@@ -286,12 +300,14 @@ class RedisMetricsBucket extends AbstractMetricsBucket
         EntryInterface $entry,
         $entryKey
     ) {
-        $this
-            ->redis
-            ->incrby(
-                $entryKey . '_accum',
-                (int) $entry->getValue()
-            );
+        $this->doRedisQuery(function () use ($entry, $entryKey) {
+            $this
+                ->redis
+                ->incrby(
+                    $entryKey . '_accum',
+                    (int) $entry->getValue()
+                );
+        });
 
         return $this;
     }
@@ -308,14 +324,37 @@ class RedisMetricsBucket extends AbstractMetricsBucket
         EntryInterface $entry,
         $entryKey
     ) {
-        $this
-            ->redis
-            ->hincrby(
-                $entryKey . '_distr',
-                $entry->getValue(),
-                1
-            );
+        $this->doRedisQuery(function () use ($entry, $entryKey) {
+            $this
+                ->redis
+                ->hincrby(
+                    $entryKey . '_distr',
+                    $entry->getValue(),
+                    1
+                );
+        });
 
         return $this;
+    }
+
+    /**
+     * Try a redis query and return it's result.
+     *
+     * If the call catches a connection Exception, then returns false
+     *
+     * @param Callable $callable     Callable function
+     * @param mixed    $defaultValue Default value to return if exception
+     *
+     * @return mixed Result of the callable or $defaultValue if connection exception
+     */
+    private function doRedisQuery(callable $callable, $defaultValue = false)
+    {
+        try {
+            $result = $callable();
+        } catch (CommunicationException $communicationException) {
+            $result = $defaultValue;
+        }
+
+        return $result;
     }
 }
