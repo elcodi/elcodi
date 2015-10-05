@@ -23,11 +23,15 @@ namespace Elcodi\Component\Menu;
 final class ElcodiMenuStages
 {
     /**
+     * @var string
+     *
      * This stage defined the moment when the menu is built before caching it
      */
     const BEFORE_CACHE = 'before_cache';
 
     /**
+     * @var string
+     *
      * This stage defined the moment when the menu is built after caching it
      */
     const AFTER_CACHE = 'after_cache';
