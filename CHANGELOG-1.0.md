@@ -8,6 +8,51 @@ https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v1.0.0...v1.0.1
 
+### v1.0.1 (28-09-2015)
+
+Elcodi can be installed now without Redis
+
+#### TL;DR
+
+* Deprecated CartManager methods in favor of more semantic methods
+* Fixed metrics to work without Redis server
+
+#### Release Log
+
+* [`17322d3`](https://github.com/elcodi/elcodi/commit/17322d31f0c1f4161b5a2d1fdd08dc6519a76aac) Changed tests for using new methods. (mmoreram)
+* [`05b7c13`](https://github.com/elcodi/elcodi/commit/05b7c13d98ed96d868402bae7142f04897142f18) Fixed wrong method PHPDoc (mmoreram)
+* [`546fb09`](https://github.com/elcodi/elcodi/commit/546fb0933f1c290ac40fbd8e302966aadf2e6218) Issue #907 (mmoreram)
+* [`58ed5cf`](https://github.com/elcodi/elcodi/commit/58ed5cf796a0b070987e46ee4e61381eceb27ac4) Issue #897 (mmoreram)
+
+### v1.0.0 (22-09-2015)
+
+First stable version for Elcodi
+
+#### TL;DR
+
+* Created new stable version for Elcodi, with the solid base of last beta
+* Created a new EventDispatcher for Machine, and placed there all related methods
+* Changed the Exchange rate calculator
+* Fixed minor issues, and errors
+* Updated all dependencies to *semver* notation
+* Updated LICENSE
+
+#### Release log
+
+* [`7bc0d7a`](https://github.com/elcodi/elcodi/commit/7bc0d7a4fb1faf1a33a87a028e62c13e42fd317d) Lazy plugins have been removed. (mmoreram)
+* [`87e090c`](https://github.com/elcodi/elcodi/commit/87e090cc4aa3a76af5731ab88be60050186a32b3) Created state machine event dispatcher (mmoreram)
+* [`7be9362`](https://github.com/elcodi/elcodi/commit/7be93623d7b380d02f4a643a64c69ede0659851f) Added Machine EventDispatcher (mmoreram)
+* [`822e7a2`](https://github.com/elcodi/elcodi/commit/822e7a2cf8b960fba811a0633c323ca298117616) Fixed minor typo (mmoreram)
+* [`df980e8`](https://github.com/elcodi/elcodi/commit/df980e887eaf7b135822981f98c3f8aa49a44767) Fixed Shipping EventDispatcher method name (mmoreram)
+* [`a0a4ab3`](https://github.com/elcodi/elcodi/commit/a0a4ab35e6333866e3408b9a7241168bd825e00e) Updated all dep versions to ^1.0 (mmoreram)
+* [`86d8f03`](https://github.com/elcodi/elcodi/commit/86d8f0344de24d3962083d7768b8c15ee66fb39e) Updated license to all files (mmoreram)
+* [`0b32f54`](https://github.com/elcodi/elcodi/commit/0b32f54ca086824e1da80322c18289c632274831) can disable entities (Berny Cantos)
+* [`08b9b42`](https://github.com/elcodi/elcodi/commit/08b9b4260a36bb7c29c3c3022d3a404269466053) Update LICENSE (Marc Morera)
+* [`0f28b23`](https://github.com/elcodi/elcodi/commit/0f28b2301d6f28d1d99f9670d72fb54ff827fc54) Fixed typo (Berny Cantos)
+* [`5a7df21`](https://github.com/elcodi/elcodi/commit/5a7df21043a4612e9668dcb7312810ead1484df8) Updated config to use parameters (Roger Gros)
+* [`f81a69c`](https://github.com/elcodi/elcodi/commit/f81a69c049c07d9077158242f819d034a51adad1) Exchange rate calculator (Roger Gros)
+* [`23915a2`](https://github.com/elcodi/elcodi/commit/23915a2b60f8282adb47254f377ea8d84a0ed0af) Make plugin services lazy by default (Berny Cantos)
+
 ### v1.0.0-beta3 (10-07-2015)
 
 Release focused on fixes and standardization and simplification.
