@@ -55,7 +55,7 @@ class AbstractElcodiCommand extends Command
         $this
             ->printMessage(
                 $output,
-                'Elcodi',
+                $this->getProjectHeader(),
                 'Command started at ' . date('r')
             );
 
@@ -63,7 +63,7 @@ class AbstractElcodiCommand extends Command
             $this
                 ->printMessage(
                     $output,
-                    'Elcodi',
+                    $this->getProjectHeader(),
                     'This process may take a few minutes. Please, be patient'
                 );
         }
@@ -163,12 +163,12 @@ class AbstractElcodiCommand extends Command
         $this
             ->printMessage(
                 $output,
-                'Elcodi',
+                $this->getProjectHeader(),
                 'Command finished in ' . $event->getDuration() . ' milliseconds'
             )
             ->printMessage(
                 $output,
-                'Elcodi',
+                $this->getProjectHeader(),
                 'Max memory used: ' . $event->getMemory() . ' bytes'
             );
 
@@ -189,5 +189,15 @@ class AbstractElcodiCommand extends Command
         return $this
             ->stopwatch
             ->stop($eventName);
+    }
+
+    /**
+     * Get project header
+     *
+     * @return string Get project header
+     */
+    protected function getProjectHeader()
+    {
+        return 'elcodi';
     }
 }
