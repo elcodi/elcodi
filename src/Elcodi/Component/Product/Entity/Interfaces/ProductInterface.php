@@ -73,6 +73,8 @@ interface ProductInterface
     public function getSlug();
 
     /**
+     * Set description.
+     *
      * @param string $description
      *
      * @return $this Self object

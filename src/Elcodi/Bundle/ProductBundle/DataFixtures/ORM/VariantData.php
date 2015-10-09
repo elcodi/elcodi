@@ -76,7 +76,7 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
         $productWithVariants->setPrincipalVariant($variantWhiteSmall);
 
         $variantDirector->save($variantWhiteSmall);
-        $this->addReference('variant-white-small', $productWithVariants);
+        $this->addReference('variant-white-small', $variantWhiteSmall);
 
         /**
          * Variant White-Large.
@@ -96,7 +96,7 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
             ->setEnabled(true);
 
         $variantDirector->save($variantWhiteLarge);
-        $this->addReference('variant-white-large', $productWithVariants);
+        $this->addReference('variant-white-large', $variantWhiteLarge);
 
         /**
          * Variant Red-Small.
@@ -116,7 +116,7 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
             ->setEnabled(true);
 
         $variantDirector->save($variantRedSmall);
-        $this->addReference('variant-red-small', $productWithVariants);
+        $this->addReference('variant-red-small', $variantRedSmall);
 
         /**
          * Variant Red-Large.
@@ -136,7 +136,7 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
             ->setEnabled(true);
 
         $variantDirector->save($variantRedLarge);
-        $this->addReference('variant-red-large', $productWithVariants);
+        $this->addReference('variant-red-large', $variantRedLarge);
     }
 
     /**

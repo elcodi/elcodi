@@ -44,7 +44,7 @@ Elcodi\Component\Product\Entity\Variant:
         imagesSort:
             column: images_sort
             type: string
-            lentgh: 2048
+            length: 2048
             nullable: true
         createdAt:
             column: created_at

@@ -17,13 +17,8 @@
 
 namespace Elcodi\Component\Cart\Services;
 
-use Doctrine\Common\Persistence\ObjectManager;
-
 use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
-use Elcodi\Component\Product\ElcodiProductStock;
-use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
-use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
-use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
+use Elcodi\Component\Product\StockUpdater\Interfaces\PurchasableStockUpdaterInterface;
 
 /**
  * Class CartLineStockUpdater.
@@ -37,31 +32,20 @@ use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
 class CartLineStockUpdater
 {
     /**
-     * @var ObjectManager
+     * @var PurchasableStockUpdaterInterface
      *
-     * ObjectManager for Product
+     * Purchasable stock updater
      */
-    private $productObjectManager;
-
-    /**
-     * @var ObjectManager
-     *
-     * ObjectManager for Variant
-     */
-    private $variantObjectManager;
+    private $purchasableStockUpdater;
 
     /**
      * Built method.
      *
-     * @param ObjectManager $productObjectManager Product Object Manager
-     * @param ObjectManager $variantObjectManager Variant Object Manager
+     * @param PurchasableStockUpdaterInterface $purchasableStockUpdater Purchasable stock updater
      */
-    public function __construct(
-        ObjectManager $productObjectManager,
-        ObjectManager $variantObjectManager
-    ) {
-        $this->productObjectManager = $productObjectManager;
-        $this->variantObjectManager = $variantObjectManager;
+    public function __construct(PurchasableStockUpdaterInterface $purchasableStockUpdater)
+    {
+        $this->purchasableStockUpdater = $purchasableStockUpdater;
     }
 
     /**
@@ -74,40 +58,11 @@ class CartLineStockUpdater
     public function updatePurchasableStockByCartLine(CartLineInterface $cartLine)
     {
         $purchasable = $cartLine->getPurchasable();
-        $stock = $purchasable->getStock();
-
-        if ($stock === ElcodiProductStock::INFINITE_STOCK) {
-            return;
-        }
-
-        $quantityPurchased = $cartLine->getQuantity();
-
-        $newStock = $stock - $quantityPurchased;
-        $newStock = max($newStock, 0);
-        $purchasable->setStock($newStock);
-
-        $this->flushPurchasable($purchasable);
-    }
-
-    /**
-     * Flush the purchasable object, depending on the type.
-     *
-     * @param PurchasableInterface $purchasable Purchasable object to flush
-     *
-     * @return $this Self object
-     */
-    private function flushPurchasable(PurchasableInterface $purchasable)
-    {
-        if ($purchasable instanceof ProductInterface) {
-            $this
-                ->productObjectManager
-                ->flush($purchasable);
-        } elseif ($purchasable instanceof VariantInterface) {
-            $this
-                ->variantObjectManager
-                ->flush($purchasable);
-        }
-
-        return $this;
+        $this
+            ->purchasableStockUpdater
+            ->updateStock(
+                $purchasable,
+                $cartLine->getQuantity()
+            );
     }
 }

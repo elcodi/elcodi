@@ -154,9 +154,9 @@
     },
     "scripts": {
         "check-style": [
-            "bin/php-cs-fixer fix --config-file=.php_cs",
-            "bin/php-formatter f:h:f src",
-            "bin/php-formatter f:u:s src"
+            "bin/php-cs-fixer fix --config-file=.php_cs || true",
+            "bin/php-formatter f:h:f src || true",
+            "bin/php-formatter f:u:s src || true"
         ],
         "test": "phpunit"
     }

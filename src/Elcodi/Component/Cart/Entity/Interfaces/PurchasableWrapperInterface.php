@@ -46,6 +46,9 @@ interface PurchasableWrapperInterface
     /**
      * Sets the product.
      *
+     * @deprecated since version 1.0.13, to be removed in 2.0.0. Use
+     *             setPurchasable instead.
+     *
      * @param ProductInterface $product Product
      *
      * @return $this Self object
@@ -55,12 +58,18 @@ interface PurchasableWrapperInterface
     /**
      * Gets the product.
      *
+     * @deprecated since version 1.0.13, to be removed in 2.0.0. Use
+     *             getPurchasable instead.
+     *
      * @return ProductInterface product attached to this cart line
      */
     public function getProduct();
 
     /**
      * Sets the product variant.
+     *
+     * @deprecated since version 1.0.13, to be removed in 2.0.0. Use
+     *             setPurchasable instead.
      *
      * @param VariantInterface $variant Variant
      *
@@ -70,6 +79,9 @@ interface PurchasableWrapperInterface
 
     /**
      * Returns the product variant.
+     *
+     * @deprecated since version 1.0.13, to be removed in 2.0.0. Use
+     *             getPurchasable instead.
      *
      * @return VariantInterface Variant
      */

@@ -49,7 +49,7 @@ class ElcodiProductExtension extends AbstractExtension implements EntitiesOverri
      * Return a new Configuration instance.
      *
      * If object returned by this method is an instance of
-     * ConfigurationInterface, extension will use the Configuration to read all
+     * ConfigurationInterface, extension will use the Configuration to read allproduct_pack
      * bundle config definitions.
      *
      * Also will call getParametrizationValues method to load some config values
@@ -88,6 +88,11 @@ class ElcodiProductExtension extends AbstractExtension implements EntitiesOverri
             'elcodi.entity.product_variant.manager' => $config['mapping']['product_variant']['manager'],
             'elcodi.entity.product_variant.enabled' => $config['mapping']['product_variant']['enabled'],
 
+            'elcodi.entity.product_pack.class' => $config['mapping']['product_pack']['class'],
+            'elcodi.entity.product_pack.mapping_file' => $config['mapping']['product_pack']['mapping_file'],
+            'elcodi.entity.product_pack.manager' => $config['mapping']['product_pack']['manager'],
+            'elcodi.entity.product_pack.enabled' => $config['mapping']['product_pack']['enabled'],
+
             'elcodi.entity.category.class' => $config['mapping']['category']['class'],
             'elcodi.entity.category.mapping_file' => $config['mapping']['category']['mapping_file'],
             'elcodi.entity.category.manager' => $config['mapping']['category']['manager'],
@@ -122,6 +127,9 @@ class ElcodiProductExtension extends AbstractExtension implements EntitiesOverri
             'directors',
             'eventListeners',
             'adapters',
+            'nameResolvers',
+            'stockUpdaters',
+            'stockValidators',
         ];
     }
 
@@ -139,6 +147,7 @@ class ElcodiProductExtension extends AbstractExtension implements EntitiesOverri
         return [
             'Elcodi\Component\Product\Entity\Interfaces\ProductInterface' => 'elcodi.entity.product.class',
             'Elcodi\Component\Product\Entity\Interfaces\VariantInterface' => 'elcodi.entity.product_variant.class',
+            'Elcodi\Component\Product\Entity\Interfaces\PackInterface' => 'elcodi.entity.product_pack.class',
             'Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface' => 'elcodi.entity.manufacturer.class',
             'Elcodi\Component\Product\Entity\Interfaces\CategoryInterface' => 'elcodi.entity.category.class',
         ];

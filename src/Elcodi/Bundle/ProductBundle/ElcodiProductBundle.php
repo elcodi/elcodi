@@ -24,6 +24,11 @@ use Symfony\Component\HttpKernel\KernelInterface;
 
 use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 use Elcodi\Bundle\ProductBundle\CompilerPass\MappingCompilerPass;
+use Elcodi\Bundle\ProductBundle\CompilerPass\PackStockUpdaterCompilerPass;
+use Elcodi\Bundle\ProductBundle\CompilerPass\PackStockValidatorCompilerPass;
+use Elcodi\Bundle\ProductBundle\CompilerPass\PurchasableNameResolverCompilerPass;
+use Elcodi\Bundle\ProductBundle\CompilerPass\PurchasableStockUpdaterCompilerPass;
+use Elcodi\Bundle\ProductBundle\CompilerPass\PurchasableStockValidatorCompilerPass;
 use Elcodi\Bundle\ProductBundle\DependencyInjection\ElcodiProductExtension;
 
 /**
@@ -39,6 +44,11 @@ class ElcodiProductBundle extends AbstractElcodiBundle implements DependentBundl
         parent::build($container);
 
         $container->addCompilerPass(new MappingCompilerPass());
+        $container->addCompilerPass(new PurchasableNameResolverCompilerPass());
+        $container->addCompilerPass(new PurchasableStockValidatorCompilerPass());
+        $container->addCompilerPass(new PurchasableStockUpdaterCompilerPass());
+        $container->addCompilerPass(new PackStockValidatorCompilerPass());
+        $container->addCompilerPass(new PackStockUpdaterCompilerPass());
     }
 
     /**

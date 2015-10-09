@@ -43,8 +43,6 @@ class CartLineOrderLineTransformerTest extends WebTestCase
 
     /**
      * test create orderLine by CartLine.
-     *
-     * @group order
      */
     public function testCreateOrderLineByCartLine()
     {

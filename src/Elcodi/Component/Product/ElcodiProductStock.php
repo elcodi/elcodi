@@ -28,4 +28,18 @@ final class ElcodiProductStock
      * Infinite stock
      */
     const INFINITE_STOCK = null;
+
+    /**
+     * @var int
+     *
+     * Inherit stock
+     */
+    const INHERIT_STOCK = 0;
+
+    /**
+     * @var int
+     *
+     * Specific stock
+     */
+    const SPECIFIC_STOCK = 1;
 }

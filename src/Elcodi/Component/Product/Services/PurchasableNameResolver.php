@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Product\Services;
 
 use Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface;
+use Elcodi\Component\Product\Entity\Interfaces\PackInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
@@ -48,25 +49,79 @@ class PurchasableNameResolver
         PurchasableInterface $purchasable,
         $separator = self::DEFAULT_SEPARATOR
     ) {
+        /**
+         * Resolver for product.
+         */
         if ($purchasable instanceof ProductInterface) {
-            return $purchasable->getName();
+            return $this->resolveProductName($purchasable);
         }
 
         /**
-         * @var VariantInterface $purchasable
+         * Resolver for variant.
          */
-        $productName = $purchasable->getProduct()->getName();
+        if ($purchasable instanceof VariantInterface) {
+            return $this->resolveVariantName(
+                $purchasable,
+                $separator
+            );
+        }
 
-        foreach ($purchasable->getOptions() as $option) {
+        /**
+         * Resolver for variant.
+         */
+        if ($purchasable instanceof PackInterface) {
+            return $this->resolvePackName($purchasable);
+        }
+    }
+
+    /**
+     * Resolve name for product.
+     *
+     * @param ProductInterface $product Product
+     *
+     * @return string Resolve product name
+     */
+    private function resolveProductName(ProductInterface $product)
+    {
+        return $product->getName();
+    }
+
+    /**
+     * Resolve name for variant.
+     *
+     * @param VariantInterface $variant   Variant
+     * @param string           $separator Separator string for product variant options
+     *
+     * @return string Resolve product name
+     */
+    private function resolveVariantName(
+        VariantInterface $variant,
+        $separator = self::DEFAULT_SEPARATOR)
+    {
+        $variantName = $variant->getProduct()->getName();
+
+        foreach ($variant->getOptions() as $option) {
             /**
              * @var ValueInterface $option
              */
-            $productName .= $separator .
+            $variantName .= $separator .
                 $option->getAttribute()->getName() .
                 ' ' .
                 $option->getValue();
         }
 
-        return $productName;
+        return $variantName;
+    }
+
+    /**
+     * Resolve name for pack.
+     *
+     * @param PackInterface $pack Pack
+     *
+     * @return string Resolve pack name
+     */
+    private function resolvePackName(PackInterface $pack)
+    {
+        return $pack->getName();
     }
 }

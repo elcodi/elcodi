@@ -20,8 +20,7 @@ namespace Elcodi\Component\Cart\Services;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
 use Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher;
-use Elcodi\Component\Product\ElcodiProductStock;
-use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
+use Elcodi\Component\Product\StockValidator\Interfaces\PurchasableStockValidatorInterface;
 
 /**
  * Class CartIntegrityValidator.
@@ -42,6 +41,13 @@ class CartIntegrityValidator
     private $cartEventDispatcher;
 
     /**
+     * @var PurchasableStockValidatorInterface
+     *
+     * Purchasable stock validator
+     */
+    private $purchasableStockValidator;
+
+    /**
      * @var CartManager
      *
      * Cart Manager
@@ -58,16 +64,19 @@ class CartIntegrityValidator
     /**
      * Built method.
      *
-     * @param CartEventDispatcher $cartEventDispatcher Cart event dispatcher
-     * @param CartManager         $cartManager         Cart Manager
-     * @param bool                $useStock            Use stock
+     * @param CartEventDispatcher                $cartEventDispatcher       Cart event dispatcher
+     * @param PurchasableStockValidatorInterface $purchasableStockValidator Purchasable stock validator
+     * @param CartManager                        $cartManager               Cart Manager
+     * @param bool                               $useStock                  Use stock
      */
     public function __construct(
         CartEventDispatcher $cartEventDispatcher,
+        PurchasableStockValidatorInterface $purchasableStockValidator,
         CartManager $cartManager,
         $useStock = false
     ) {
         $this->cartEventDispatcher = $cartEventDispatcher;
+        $this->purchasableStockValidator = $purchasableStockValidator;
         $this->cartManager = $cartManager;
         $this->useStock = $useStock;
     }
@@ -108,14 +117,17 @@ class CartIntegrityValidator
     {
         $cart = $cartLine->getCart();
         $purchasable = $cartLine->getPurchasable();
+        $realStockAvailable = $this
+            ->purchasableStockValidator
+            ->isStockAvailable(
+                $purchasable,
+                $cartLine->getQuantity(),
+                $this->useStock
+            );
 
         if (
-            !($purchasable instanceof PurchasableInterface) ||
-            !($purchasable->isEnabled()) ||
-            (
-                $this->useStock &&
-                $cartLine->getQuantity() <= 0
-            )
+            false === $realStockAvailable ||
+            $realStockAvailable === 0
         ) {
             $this->cartManager->silentRemoveLine(
                 $cart,
@@ -131,20 +143,12 @@ class CartIntegrityValidator
                     $cart,
                     $cartLine
                 );
+
+            return $cartLine;
         }
 
-        /**
-         * We cannot exceed available stock for a given purchasable
-         * when setting CartLine::$quantity.
-         *
-         * This checking has sense when the Product has not infinite stock
-         */
-        if (
-            $this->useStock &&
-            ($cartLine->getProduct()->getStock() !== ElcodiProductStock::INFINITE_STOCK) &&
-            ($cartLine->getQuantity() > $purchasable->getStock())
-        ) {
-            $cartLine->setQuantity($purchasable->getStock());
+        if (is_int($realStockAvailable)) {
+            $cartLine->setQuantity($realStockAvailable);
         }
 
         return $cartLine;
