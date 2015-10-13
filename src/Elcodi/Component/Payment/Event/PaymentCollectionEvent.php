@@ -19,6 +19,7 @@ namespace Elcodi\Component\Payment\Event;
 
 use Symfony\Component\EventDispatcher\Event;
 
+use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Payment\Entity\PaymentMethod;
 
 /**
@@ -27,11 +28,38 @@ use Elcodi\Component\Payment\Entity\PaymentMethod;
 class PaymentCollectionEvent extends Event
 {
     /**
+     * @var CartInterface
+     *
+     * Cart
+     */
+    private $cart;
+
+    /**
+     * Construct
+     *
+     * @param CartInterface $cart Cart
+     */
+    public function __construct(CartInterface $cart = null)
+    {
+        $this->cart = $cart;
+    }
+
+    /**
      * @var PaymentMethod[]
      *
      * Payment methods
      */
     protected $paymentMethods = [];
+
+    /**
+     * Get cart
+     *
+     * @return CartInterface $cart
+     */
+    public function getCart()
+    {
+        return $this->cart;
+    }
 
     /**
      * Add payment method

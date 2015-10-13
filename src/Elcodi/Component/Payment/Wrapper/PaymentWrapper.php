@@ -17,13 +17,13 @@
 
 namespace Elcodi\Component\Payment\Wrapper;
 
-use Elcodi\Component\Core\Wrapper\Interfaces\WrapperInterface;
+use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Payment\EventDispatcher\PaymentEventDispatcher;
 
 /**
  * Class PaymentWrapper
  */
-class PaymentWrapper implements WrapperInterface
+class PaymentWrapper
 {
     /**
      * @var PaymentEventDispatcher
@@ -46,13 +46,15 @@ class PaymentWrapper implements WrapperInterface
      * Get loaded object. If object is not loaded yet, then load it and save it
      * locally. Otherwise, just return the pre-loaded object
      *
+     * @param CartInterface $cart Cart
+     *
      * @return mixed Loaded object
      */
-    public function get()
+    public function get(CartInterface $cart = null)
     {
         return $this
             ->paymentEventDispatcher
-            ->dispatchPaymentCollectionEvent();
+            ->dispatchPaymentCollectionEvent($cart);
     }
 
     /**
