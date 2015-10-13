@@ -8,6 +8,25 @@ https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v1.0.0...v1.0.1
 
+### v1.0.3 (13-10-2015)
+
+Added cart in Payment Collector
+
+#### Release Log
+
+* [`1a9c85d`](https://github.com/elcodi/elcodi/commit/1a9c85d5f1fa36194901d8fff633f03170a24b4f) Issue #893 Added constructor and getter (mmoreram)
+* [`8b3577d`](https://github.com/elcodi/elcodi/commit/8b3577d5b8e4e4e79ab5f61fd252777c7aca0363) Removed beta warning from README (Aldo Chiecchia)
+* [`c0126d5`](https://github.com/elcodi/elcodi/commit/c0126d595795ac59fcfade264b10950261568b64) Fixes #887 Removed file (mmoreram)
+
+### v1.0.2 (07-10-2015)
+
+Commands are more configurable for third party implementations
+
+#### Release Log
+
+* [`19dc4a0`](https://github.com/elcodi/elcodi/commit/19dc4a02e9b9c0fb0d46196cdb99101c7bcdfcaf) Added project header method in abstract command (mmoreram)
+* [`f479c3c`](https://github.com/elcodi/elcodi/commit/f479c3c95674956407c4fa51be7dd7e02b94d1c0) Updated changelog with new stable versions (mmoreram)
+
 ### v1.0.1 (28-09-2015)
 
 Elcodi can be installed now without Redis
