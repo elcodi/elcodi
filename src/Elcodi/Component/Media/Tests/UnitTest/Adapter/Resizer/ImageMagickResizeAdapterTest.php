@@ -33,6 +33,12 @@ class ImageMagickResizeAdapterTest extends AbstractResizeAdapterTest
      */
     public function getAdapterInstance()
     {
+        if (!file_exists('/usr/bin/convert') || !file_exists('/usr/share/color/icc/colord/sRGB.icc')) {
+            $this->markTestSkipped(
+                'Both the files /usr/bin/convert and /usr/share/color/icc/colord/sRGB.icc are required.'
+            );
+        }
+
         return new ImageMagickResizeAdapter(
             '/usr/bin/convert',
             '/usr/share/color/icc/colord/sRGB.icc'
