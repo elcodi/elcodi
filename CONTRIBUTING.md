@@ -6,12 +6,14 @@ that your code fulfills these standards before any Pull Request.
 
 ``` bash
 composer.phar update
-bin/php-cs-fixer fix
-bin/php-formatter formatter:use:sort src/
-bin/php-formatter formatter:header:fix src/
+composer.phar check-style
 ```
 
 There is also a policy for contributing to this project. Pull requests must
 be explained step by step to make the review process easy in order to
 accept and merge them. New features must come paired with Unit and/or Functional
-tests.
+tests, check them using:
+
+``` bash
+composer.phar test
+```
