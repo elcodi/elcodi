@@ -363,7 +363,7 @@ class Store implements StoreInterface
      *
      * @return $this Self object
      */
-    public function setAddress($address)
+    public function setAddress(AddressInterface $address)
     {
         $this->address = $address;
 
@@ -387,7 +387,7 @@ class Store implements StoreInterface
      *
      * @return $this Self object
      */
-    public function setDefaultLanguage($defaultLanguage)
+    public function setDefaultLanguage(LanguageInterface $defaultLanguage)
     {
         $this->defaultLanguage = $defaultLanguage;
 
@@ -411,7 +411,7 @@ class Store implements StoreInterface
      *
      * @return $this Self object
      */
-    public function setDefaultCurrency($defaultCurrency)
+    public function setDefaultCurrency(CurrencyInterface $defaultCurrency)
     {
         $this->defaultCurrency = $defaultCurrency;
 
@@ -459,7 +459,7 @@ class Store implements StoreInterface
      *
      * @return $this Self object
      */
-    public function setLogo($logo)
+    public function setLogo(ImageInterface $logo)
     {
         $this->logo = $logo;
 
@@ -483,7 +483,7 @@ class Store implements StoreInterface
      *
      * @return $this Self object
      */
-    public function setSecondaryLogo($secondaryLogo)
+    public function setSecondaryLogo(ImageInterface $secondaryLogo)
     {
         $this->secondaryLogo = $secondaryLogo;
 
@@ -507,7 +507,7 @@ class Store implements StoreInterface
      *
      * @return $this Self object
      */
-    public function setMobileLogo($mobileLogo)
+    public function setMobileLogo(ImageInterface $mobileLogo)
     {
         $this->mobileLogo = $mobileLogo;
 
@@ -531,7 +531,7 @@ class Store implements StoreInterface
      *
      * @return $this Self object
      */
-    public function setHeaderImage($headerImage)
+    public function setHeaderImage(ImageInterface $headerImage)
     {
         $this->headerImage = $headerImage;
 
@@ -555,7 +555,7 @@ class Store implements StoreInterface
      *
      * @return $this Self object
      */
-    public function setBackgroundImage($backgroundImage)
+    public function setBackgroundImage(ImageInterface $backgroundImage)
     {
         $this->backgroundImage = $backgroundImage;
 

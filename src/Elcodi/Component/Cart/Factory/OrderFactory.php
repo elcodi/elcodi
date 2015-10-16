@@ -50,7 +50,7 @@ class OrderFactory extends AbstractPurchasableFactory
      *
      * @return $this Self object
      */
-    public function setPaymentMachineManager($paymentMachineManager)
+    public function setPaymentMachineManager(MachineManager $paymentMachineManager)
     {
         $this->paymentMachineManager = $paymentMachineManager;
 
@@ -64,7 +64,7 @@ class OrderFactory extends AbstractPurchasableFactory
      *
      * @return $this Self object
      */
-    public function setShippingMachineManager($shippingMachineManager)
+    public function setShippingMachineManager(MachineManager $shippingMachineManager)
     {
         $this->shippingMachineManager = $shippingMachineManager;
 

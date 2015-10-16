@@ -82,7 +82,7 @@ class MetricManager
         $event,
         $uniqueId,
         $type,
-        $dateTime
+        DateTime $dateTime
     ) {
         $entry = $this
             ->entryFactory

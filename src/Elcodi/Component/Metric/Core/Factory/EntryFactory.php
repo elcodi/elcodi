@@ -42,7 +42,7 @@ class EntryFactory
         $event,
         $uniqueId,
         $type,
-        $createdAt
+        DateTime $createdAt
     ) {
         return new Entry(
             $token,

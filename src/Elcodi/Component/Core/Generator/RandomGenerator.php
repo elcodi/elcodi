@@ -31,7 +31,7 @@ class RandomGenerator implements GeneratorInterface
      *
      * @return string Result of generation
      */
-    public function generate($length = null)
+    public function generate($length = 0)
     {
         $bits = $length * 8;
 

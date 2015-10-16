@@ -346,7 +346,7 @@ class Order implements OrderInterface
      *
      * @return $this Self object
      */
-    public function setShippingMethod($shippingMethod)
+    public function setShippingMethod(ShippingMethod $shippingMethod)
     {
         $this->shippingMethod = $shippingMethod;
 
@@ -370,7 +370,7 @@ class Order implements OrderInterface
      *
      * @return $this Self object
      */
-    public function setDeliveryAddress($deliveryAddress)
+    public function setDeliveryAddress(AddressInterface $deliveryAddress = null)
     {
         $this->deliveryAddress = $deliveryAddress;
 
@@ -452,7 +452,7 @@ class Order implements OrderInterface
      *
      * @return $this Self object
      */
-    public function setBillingAddress($billingAddress)
+    public function setBillingAddress(AddressInterface $billingAddress = null)
     {
         $this->billingAddress = $billingAddress;
 

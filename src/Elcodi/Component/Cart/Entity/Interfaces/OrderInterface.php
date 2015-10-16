@@ -164,7 +164,7 @@ interface OrderInterface
      *
      * @return $this Self object
      */
-    public function setShippingMethod($shippingMethod);
+    public function setShippingMethod(ShippingMethod $shippingMethod);
 
     /**
      * Set the height
@@ -216,7 +216,7 @@ interface OrderInterface
      *
      * @return $this Self object
      */
-    public function setDeliveryAddress($deliveryAddress);
+    public function setDeliveryAddress(AddressInterface $deliveryAddress);
 
     /**
      * Get PaymentStateLineStack
@@ -268,5 +268,5 @@ interface OrderInterface
      *
      * @return $this Self object
      */
-    public function setBillingAddress($billingAddress);
+    public function setBillingAddress(AddressInterface $billingAddress);
 }
