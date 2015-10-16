@@ -328,7 +328,7 @@ class CommentCache extends AbstractCacheWrapper
      *
      * @return $this Self object
      */
-    private function saveCommentTreeIntoCache($commentTree, $source, $context)
+    private function saveCommentTreeIntoCache(array $commentTree, $source, $context)
     {
         $this
             ->cache

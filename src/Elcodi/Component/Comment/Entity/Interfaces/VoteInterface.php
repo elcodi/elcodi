@@ -42,7 +42,7 @@ interface VoteInterface
      *
      * @return $this Self object
      */
-    public function setComment($comment);
+    public function setComment(CommentInterface $comment);
 
     /**
      * Get Type

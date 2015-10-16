@@ -17,6 +17,8 @@
 
 namespace Elcodi\Component\User\Entity\Interfaces;
 
+use DateTime;
+
 /**
  * Interface LastLoginInterface
  */
@@ -32,9 +34,9 @@ interface LastLoginInterface
     /**
      * Sets LastLoginAt
      *
-     * @param \DateTime $lastLoginAt LastLoginAt
+     * @param DateTime $lastLoginAt LastLoginAt
      *
      * @return $this Self object
      */
-    public function setLastLoginAt($lastLoginAt);
+    public function setLastLoginAt(DateTime $lastLoginAt);
 }

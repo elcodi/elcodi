@@ -267,7 +267,7 @@ class Plugin
      *
      * @return $this Self object
      */
-    public function setFieldValues($fieldValues)
+    public function setFieldValues(array $fieldValues)
     {
         foreach ($fieldValues as $field => $fieldValue) {
             $this

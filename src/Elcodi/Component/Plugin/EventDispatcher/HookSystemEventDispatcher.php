@@ -53,7 +53,7 @@ class HookSystemEventDispatcher extends AbstractEventDispatcher implements HookS
      *
      * @return mixed Content after transformation
      */
-    public function execute($hookName, $context = [], $content = '')
+    public function execute($hookName, array $context = [], $content = '')
     {
         $event = new EventAdapter($context, $content);
         $this->eventDispatcher->dispatch($hookName, $event);

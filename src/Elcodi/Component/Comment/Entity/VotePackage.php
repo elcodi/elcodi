@@ -50,12 +50,8 @@ class VotePackage
      *
      * @param VoteInterface[]|null $votes Votes
      */
-    protected function __construct(array $votes = null)
+    protected function __construct(array $votes = array())
     {
-        if (is_null($votes)) {
-            return null;
-        }
-
         foreach ($votes as $vote) {
             if ($vote instanceof VoteInterface) {
                 $this->nbVotes++;
@@ -106,7 +102,7 @@ class VotePackage
      *
      * @return $this VotePackage
      */
-    public static function create(array $votes)
+    public static function create(array $votes = array())
     {
         return new self($votes);
     }

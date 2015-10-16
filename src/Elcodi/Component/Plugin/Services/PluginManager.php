@@ -166,7 +166,7 @@ class PluginManager
      */
     private function getPluginInstance(
         $pluginNamespace,
-        $pluginConfiguration
+        array $pluginConfiguration
     ) {
         $pluginType = $pluginConfiguration['type'];
         $pluginCategory = $pluginConfiguration['category'];

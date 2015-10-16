@@ -227,7 +227,7 @@ interface CartInterface
      *
      * @return $this Self object
      */
-    public function setDeliveryAddress($deliveryAddress);
+    public function setDeliveryAddress(AddressInterface $deliveryAddress);
 
     /**
      * Get BillingAddress
@@ -243,7 +243,7 @@ interface CartInterface
      *
      * @return $this Self object
      */
-    public function setBillingAddress($billingAddress);
+    public function setBillingAddress(AddressInterface $billingAddress);
 
     /**
      * Get shipping method
