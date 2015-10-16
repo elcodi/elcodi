@@ -1,6 +1,25 @@
 build: false
 platform: x86
-clone_folder: c:\projects\elcodi\elcodi
+clone_folder: c:\projects\elcodi
+version: '{build}-$(PHP_VERSION)'
+os: Windows Server 2012
+
+environment:
+  matrix:
+  - PHP_VERSION: 5.6.14
+    PHP_DEP_VER: 5.6
+  - PHP_VERSION: 5.5.30
+    PHP_DEP_VER: 5.5
+  - PHP_VERSION: 5.4.45
+    PHP_DEP_VER: 5.4
+    PHP_VC: 9
+  BUILD_PLATFORM: x86
+  PHP_VC: 11
+  PHP_SDK: c:\projects\php-sdk
+  PHP_DEVPACK: c:\projects\php-devpack
+
+matrix:
+  fast_finish: true
 
 cache:
   - '%LOCALAPPDATA%\Composer\files'
@@ -10,22 +29,26 @@ init:
 
 install:
   - cinst -y OpenSSL.Light
-  - cinst -y php
-  - cd c:\tools\php
-  - copy php.ini-production php.ini /Y
+  - cd %APPVEYOR_BUILD_FOLDER%
+  - ps: (new-object net.webclient).DownloadFile('http://windows.php.net/downloads/releases/php-' + ${env:PHP_VERSION} + '-Win32-VC' + ${env:PHP_VC} + '-' + ${env:BUILD_PLATFORM} + '.zip', ${env:APPVEYOR_BUILD_FOLDER} + '\..\php.zip')
+  - cd ..
+  - 'mkdir php && mv php.zip php\php.zip && cd php'
+  - 7z.exe x php.zip | FIND /V "ing  "
+  - cd %APPVEYOR_BUILD_FOLDER%\..\php
+  - set PATH=%cd%;%PATH%
+  - echo extension_dir=%APPVEYOR_BUILD_FOLDER%\..\php\ext > php.ini
+  - echo memory_limit=1G >> php.ini
   - echo date.timezone="UTC" >> php.ini
-  - echo extension_dir=ext >> php.ini
   - echo extension=php_openssl.dll >> php.ini
   - echo extension=php_mbstring.dll >> php.ini
   - echo extension=php_intl.dll >> php.ini
   - echo extension=php_gd2.dll >> php.ini
   - echo extension=php_fileinfo.dll >> php.ini
   - echo extension=php_pdo_sqlite.dll >> php.ini
-  - echo memory_limit=1G >> php.ini
-  - cd c:\projects\elcodi\elcodi
+  - cd %APPVEYOR_BUILD_FOLDER%
   - php -r "readfile('http://getcomposer.org/installer');" | php
   - php composer.phar install --prefer-source --no-interaction --no-progress
 
 test_script:
-  - cd c:\projects\elcodi\elcodi
+  - cd %APPVEYOR_BUILD_FOLDER%
   - bin\phpunit.bat --verbose
