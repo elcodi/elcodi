@@ -28,7 +28,7 @@ class AdminUserPasswordEventListener extends AbstractPasswordEventListener
     /**
      * Check entity type
      *
-     * @param $entity Object Entity to check
+     * @param Object $entity Entity to check
      *
      * @return boolean Entity is ready for being encoded
      */

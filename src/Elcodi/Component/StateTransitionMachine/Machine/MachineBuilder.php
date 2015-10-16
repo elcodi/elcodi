@@ -72,7 +72,7 @@ class MachineBuilder
      *
      * Can be cyclic
      */
-    private $canBeCyclic;
+    private $canBeCyclic = true;
 
     /**
      * construct method
@@ -93,7 +93,6 @@ class MachineBuilder
         $this->configuration = $configuration;
         $this->transitionChain = TransitionChain::create();
         $this->pointOfEntry = $pointOfEntry;
-        $this->canBeCyclic = true;
     }
 
     /**

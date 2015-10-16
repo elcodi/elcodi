@@ -44,7 +44,7 @@ class InitializationEvent extends Event
     /**
      * Construct
      *
-     * @param stdClass       $object         Object
+     * @param mixed          $object         Object
      * @param StateLineStack $stateLineStack State line stack
      */
     public function __construct(
@@ -78,7 +78,7 @@ class InitializationEvent extends Event
     /**
      * Create new object
      *
-     * @param stdClass       $object         Object
+     * @param mixed          $object         Object
      * @param StateLineStack $stateLineStack State line stack
      *
      * @return self New instance

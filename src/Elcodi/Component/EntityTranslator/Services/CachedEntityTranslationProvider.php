@@ -53,7 +53,7 @@ class CachedEntityTranslationProvider extends AbstractCacheWrapper implements En
      *
      * Translations to be flushed
      */
-    protected $translationsToBeFlushed;
+    protected $translationsToBeFlushed = [];
 
     /**
      * Construct method
@@ -70,7 +70,6 @@ class CachedEntityTranslationProvider extends AbstractCacheWrapper implements En
         $this->entityTranslatorProvider = $entityTranslationProvider;
         $this->entityTranslationRepository = $entityTranslationRepository;
         $this->cachePrefix = $cachePrefix;
-        $this->translationsToBeFlushed = [];
     }
 
     /**

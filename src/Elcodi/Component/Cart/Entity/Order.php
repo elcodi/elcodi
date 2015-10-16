@@ -366,7 +366,7 @@ class Order implements OrderInterface
     /**
      * Sets DeliveryAddress
      *
-     * @param AddressInterface $deliveryAddress DeliveryAddress
+     * @param AddressInterface|null $deliveryAddress DeliveryAddress
      *
      * @return $this Self object
      */
@@ -448,7 +448,7 @@ class Order implements OrderInterface
     /**
      * Sets BillingAddress
      *
-     * @param AddressInterface $billingAddress BillingAddress
+     * @param AddressInterface|null $billingAddress BillingAddress
      *
      * @return $this Self object
      */

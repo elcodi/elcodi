@@ -25,7 +25,7 @@ interface SitemapTransformerInterface
     /**
      * Get url given an entity
      *
-     * @param Mixed  $element  Element
+     * @param mixed  $element  Element
      * @param string $language Language
      *
      * @return string url
@@ -35,7 +35,7 @@ interface SitemapTransformerInterface
     /**
      * Get last mod
      *
-     * @param Mixed  $element  Element
+     * @param mixed  $element  Element
      * @param string $language Language
      *
      * @return string Last mod value
