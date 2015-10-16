@@ -96,7 +96,7 @@ class Comment implements CommentInterface
      */
     public function setContent($content)
     {
-        $this->content = $content;
+        $this->content = (string) $content;
 
         return $this;
     }
@@ -144,7 +144,7 @@ class Comment implements CommentInterface
      */
     public function setSource($source)
     {
-        $this->source = $source;
+        $this->source = (string) $source;
 
         return $this;
     }
@@ -202,7 +202,7 @@ class Comment implements CommentInterface
      */
     public function setContext($context)
     {
-        $this->context = $context;
+        $this->context = (string) $context;
 
         return $this;
     }
@@ -226,7 +226,7 @@ class Comment implements CommentInterface
      */
     public function setAuthorEmail($authorEmail)
     {
-        $this->authorEmail = $authorEmail;
+        $this->authorEmail = (string) $authorEmail;
 
         return $this;
     }
@@ -250,7 +250,7 @@ class Comment implements CommentInterface
      */
     public function setAuthorName($authorName)
     {
-        $this->authorName = $authorName;
+        $this->authorName = (string) $authorName;
 
         return $this;
     }
@@ -274,7 +274,7 @@ class Comment implements CommentInterface
      */
     public function setAuthorToken($authorToken)
     {
-        $this->authorToken = $authorToken;
+        $this->authorToken = (string) $authorToken;
 
         return $this;
     }

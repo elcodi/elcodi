@@ -79,12 +79,12 @@ class Plugin
         PluginConfiguration $configuration,
         $enabled
     ) {
-        $this->namespace = $namespace;
+        $this->namespace = (string) $namespace;
         $this->hash = sha1($namespace);
-        $this->type = $type;
-        $this->category = $category;
+        $this->type = (string) $type;
+        $this->category = (string) $category;
         $this->configuration = $configuration;
-        $this->enabled = $enabled;
+        $this->enabled = (bool) $enabled;
     }
 
     /**
@@ -174,7 +174,7 @@ class Plugin
     {
         return $this
             ->getConfiguration()
-            ->get($configurationName);
+            ->get((string) $configurationName);
     }
 
     /**
@@ -212,7 +212,7 @@ class Plugin
     {
         return $this
             ->getConfiguration()
-            ->getField($fieldName);
+            ->getField((string) $fieldName);
     }
 
     /**
@@ -226,7 +226,7 @@ class Plugin
     {
         return $this
             ->getConfiguration()
-            ->hasField($fieldName);
+            ->hasField((string) $fieldName);
     }
 
     /**
@@ -257,7 +257,7 @@ class Plugin
     {
         return $this
             ->configuration
-            ->getFieldValue($fieldName);
+            ->getFieldValue((string) $fieldName);
     }
 
     /**

@@ -54,7 +54,7 @@ class Menu implements MenuInterface
      */
     public function setCode($code)
     {
-        $this->code = $code;
+        $this->code = (string) $code;
 
         return $this;
     }
@@ -78,7 +78,7 @@ class Menu implements MenuInterface
      */
     public function setDescription($description)
     {
-        $this->description = $description;
+        $this->description = (string) $description;
 
         return $this;
     }

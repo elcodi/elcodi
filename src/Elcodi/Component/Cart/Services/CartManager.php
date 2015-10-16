@@ -201,7 +201,7 @@ class CartManager
         }
 
         $cartLine->setPurchasable($purchasable);
-        $this->setCartLineQuantity($cartLine, $quantity);
+        $this->setCartLineQuantity($cartLine, (int) $quantity);
 
         return $this;
     }
@@ -451,7 +451,7 @@ class CartManager
             ->addPurchasable(
                 $cart,
                 $purchasable,
-                $quantity
+                (int) $quantity
             );
     }
 
@@ -484,7 +484,7 @@ class CartManager
             ->removePurchasable(
                 $cart,
                 $purchasable,
-                $quantity
+                (int) $quantity
             );
     }
 

@@ -66,10 +66,10 @@ class LocationData
         $code,
         $type
     ) {
-        $this->id   = $id;
-        $this->name = $name;
-        $this->code = $code;
-        $this->type = $type;
+        $this->id   = (string) $id;
+        $this->name = (string) $name;
+        $this->code = (string) $code;
+        $this->type = (string) $type;
     }
 
     /**

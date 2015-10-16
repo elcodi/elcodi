@@ -45,7 +45,7 @@ class ProductFactory extends AbstractPurchasableFactory
      */
     public function setUseStock($useStock = false)
     {
-        $this->useStock = $useStock;
+        $this->useStock = (bool) $useStock;
 
         return $this;
     }

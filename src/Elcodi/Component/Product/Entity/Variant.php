@@ -98,7 +98,7 @@ class Variant implements VariantInterface
      */
     public function setSku($sku)
     {
-        $this->sku = $sku;
+        $this->sku = (string) $sku;
 
         return $this;
     }
@@ -122,7 +122,7 @@ class Variant implements VariantInterface
      */
     public function setStock($stock)
     {
-        $this->stock = $stock;
+        $this->stock = (int) $stock;
 
         return $this;
     }

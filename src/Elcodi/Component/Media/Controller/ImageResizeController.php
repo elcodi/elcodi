@@ -97,8 +97,8 @@ class ImageResizeController
         $this->imageRepository = $imageRepository;
         $this->imageManager = $imageManager;
         $this->imageEtagTransformer = $imageEtagTransformer;
-        $this->maxAge = $maxAge;
-        $this->sharedMaxAge = $sharedMaxAge;
+        $this->maxAge = (int) $maxAge;
+        $this->sharedMaxAge = (int) $sharedMaxAge;
     }
 
     /**

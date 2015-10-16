@@ -173,7 +173,7 @@ class Store implements StoreInterface
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
 
         return $this;
     }
@@ -197,7 +197,7 @@ class Store implements StoreInterface
      */
     public function setLeitmotiv($leitmotiv)
     {
-        $this->leitmotiv = $leitmotiv;
+        $this->leitmotiv = (string) $leitmotiv;
 
         return $this;
     }
@@ -221,7 +221,7 @@ class Store implements StoreInterface
      */
     public function setEmail($email)
     {
-        $this->email = $email;
+        $this->email = (string) $email;
 
         return $this;
     }
@@ -245,7 +245,7 @@ class Store implements StoreInterface
      */
     public function setIsCompany($isCompany)
     {
-        $this->isCompany = $isCompany;
+        $this->isCompany = (bool) $isCompany;
 
         return $this;
     }
@@ -269,7 +269,7 @@ class Store implements StoreInterface
      */
     public function setCif($cif)
     {
-        $this->cif = $cif;
+        $this->cif = (string) $cif;
 
         return $this;
     }
@@ -293,7 +293,7 @@ class Store implements StoreInterface
      */
     public function setTracker($tracker)
     {
-        $this->tracker = $tracker;
+        $this->tracker = (string) $tracker;
 
         return $this;
     }
@@ -317,7 +317,7 @@ class Store implements StoreInterface
      */
     public function setTemplate($template)
     {
-        $this->template = $template;
+        $this->template = (string) $template;
 
         return $this;
     }
@@ -341,7 +341,7 @@ class Store implements StoreInterface
      */
     public function setUseStock($useStock)
     {
-        $this->useStock = $useStock;
+        $this->useStock = (bool) $useStock;
 
         return $this;
     }
@@ -437,7 +437,7 @@ class Store implements StoreInterface
      */
     public function setRoutingStrategy($routingStrategy)
     {
-        $this->routingStrategy = $routingStrategy;
+        $this->routingStrategy = (string) $routingStrategy;
 
         return $this;
     }

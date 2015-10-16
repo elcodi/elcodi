@@ -59,8 +59,8 @@ class MetricInputLoader implements LoaderInterface
         $inputControllerRouteName,
         $inputResizeControllerRoute
     ) {
-        $this->inputControllerRouteName = $inputControllerRouteName;
-        $this->inputResizeControllerRoute = $inputResizeControllerRoute;
+        $this->inputControllerRouteName = (string) $inputControllerRouteName;
+        $this->inputResizeControllerRoute = (string) $inputResizeControllerRoute;
     }
 
     /**

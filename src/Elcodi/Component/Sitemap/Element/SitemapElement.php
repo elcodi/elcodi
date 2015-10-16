@@ -64,7 +64,7 @@ class SitemapElement
         $changeFrequency = null,
         $priority = null
     ) {
-        $this->location = $location;
+        $this->location = (string) $location;
         $this->lastModification = $lastModification;
         $this->changeFrequency = $changeFrequency;
         $this->priority = $priority;

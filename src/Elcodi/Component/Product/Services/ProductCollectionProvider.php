@@ -55,7 +55,7 @@ class ProductCollectionProvider
         $useStock = false
     ) {
         $this->productRepository = $productRepository;
-        $this->useStock = $useStock;
+        $this->useStock = (bool) $useStock;
     }
 
     /**

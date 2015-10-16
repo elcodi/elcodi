@@ -58,7 +58,7 @@ class StateLine implements StateLineInterface
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
 
         return $this;
     }
@@ -82,7 +82,7 @@ class StateLine implements StateLineInterface
      */
     public function setDescription($description)
     {
-        $this->description = $description;
+        $this->description = (string) $description;
 
         return $this;
     }

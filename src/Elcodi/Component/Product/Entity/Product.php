@@ -163,7 +163,7 @@ class Product implements ProductInterface
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
 
         return $this;
     }
@@ -187,7 +187,7 @@ class Product implements ProductInterface
      */
     public function setSlug($slug)
     {
-        $this->slug = $slug;
+        $this->slug = (string) $slug;
 
         return $this;
     }
@@ -211,7 +211,7 @@ class Product implements ProductInterface
      */
     public function setDescription($description)
     {
-        $this->description = $description;
+        $this->description = (string) $description;
 
         return $this;
     }
@@ -235,7 +235,7 @@ class Product implements ProductInterface
      */
     public function setShortDescription($shortDescription)
     {
-        $this->shortDescription = $shortDescription;
+        $this->shortDescription = (string) $shortDescription;
 
         return $this;
     }
@@ -335,7 +335,7 @@ class Product implements ProductInterface
      */
     public function setStock($stock)
     {
-        $this->stock = $stock;
+        $this->stock = (int) $stock;
 
         return $this;
     }
@@ -359,7 +359,7 @@ class Product implements ProductInterface
      */
     public function setShowInHome($showInHome)
     {
-        $this->showInHome = $showInHome;
+        $this->showInHome = (bool) $showInHome;
 
         return $this;
     }
@@ -407,7 +407,7 @@ class Product implements ProductInterface
      */
     public function setDimensions($dimensions)
     {
-        $this->dimensions = $dimensions;
+        $this->dimensions = (string) $dimensions;
 
         return $this;
     }
@@ -441,7 +441,7 @@ class Product implements ProductInterface
      */
     public function setSku($sku)
     {
-        $this->sku = $sku;
+        $this->sku = (string) $sku;
 
         return $this;
     }
@@ -455,7 +455,7 @@ class Product implements ProductInterface
      */
     public function setType($type)
     {
-        $this->type = $type;
+        $this->type = (int) $type;
 
         return $this;
     }

@@ -77,7 +77,7 @@ class LocaleManager
         $localeTranslationAssociations = []
     ) {
         $this->locale = $locale;
-        $this->encoding = $encoding;
+        $this->encoding = (string) $encoding;
         $this->localeCountryAssociations = $localeCountryAssociations;
         $this->localeTranslationAssociations = $localeTranslationAssociations;
     }
@@ -151,7 +151,7 @@ class LocaleManager
      */
     public function setEncoding($encoding)
     {
-        $this->encoding = $encoding;
+        $this->encoding = (string) $encoding;
         $this->initialize();
 
         return $this;

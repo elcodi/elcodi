@@ -66,7 +66,7 @@ class TemplatedPageRenderer implements PageRendererInterface
         array $bundles
     ) {
         $this->engine = $engine;
-        $this->templatePath = $path;
+        $this->templatePath = (string) $path;
         $this->bundles = $bundles;
     }
 

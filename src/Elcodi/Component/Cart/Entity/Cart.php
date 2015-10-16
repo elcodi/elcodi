@@ -164,7 +164,7 @@ class Cart implements CartInterface
      */
     public function setLoaded($loaded)
     {
-        $this->loaded = $loaded;
+        $this->loaded = (bool) $loaded;
 
         return $this;
     }
@@ -226,7 +226,7 @@ class Cart implements CartInterface
      */
     public function setOrdered($ordered)
     {
-        $this->ordered = $ordered;
+        $this->ordered = (bool) $ordered;
 
         return $this;
     }
@@ -304,7 +304,7 @@ class Cart implements CartInterface
      */
     public function setQuantity($quantity)
     {
-        $this->quantity = $quantity;
+        $this->quantity = (int) $quantity;
 
         return $this;
     }
@@ -563,7 +563,7 @@ class Cart implements CartInterface
      */
     public function setShippingMethod($shippingMethod)
     {
-        $this->shippingMethod = $shippingMethod;
+        $this->shippingMethod = (string) $shippingMethod;
 
         return $this;
     }
@@ -587,7 +587,7 @@ class Cart implements CartInterface
      */
     public function setCheapestShippingMethod($cheapestShippingMethod)
     {
-        $this->cheapestShippingMethod = $cheapestShippingMethod;
+        $this->cheapestShippingMethod = (string) $cheapestShippingMethod;
 
         return $this;
     }

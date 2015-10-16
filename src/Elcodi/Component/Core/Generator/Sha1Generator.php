@@ -56,7 +56,7 @@ class Sha1Generator implements GeneratorInterface
             "sha1",
             $this
                 ->generator
-                ->generate($length)
+                ->generate((int) $length)
         );
     }
 }

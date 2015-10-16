@@ -46,8 +46,8 @@ class MenuBuilder extends AbstractMenuModifier implements MenuChangerInterface
         $this->addElement(
             $menuBuilder,
             $menus,
-            $stage,
-            $priority
+            (string) $stage,
+            (int) $priority
         );
 
         return $this;
@@ -67,7 +67,7 @@ class MenuBuilder extends AbstractMenuModifier implements MenuChangerInterface
     ) {
         $menuBuilders = $this->getElementsByMenuCodeAndStage(
             $menu->getCode(),
-            $stage
+            (string) $stage
         );
 
         /**

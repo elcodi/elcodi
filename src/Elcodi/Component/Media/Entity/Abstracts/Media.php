@@ -59,7 +59,7 @@ abstract class Media implements MediaInterface
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
 
         return $this;
     }

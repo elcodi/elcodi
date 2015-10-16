@@ -50,7 +50,7 @@ class Rule implements RuleInterface
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
 
         return $this;
     }
@@ -74,7 +74,7 @@ class Rule implements RuleInterface
      */
     public function setExpression($expression)
     {
-        $this->expression = $expression;
+        $this->expression = (string) $expression;
 
         return $this;
     }

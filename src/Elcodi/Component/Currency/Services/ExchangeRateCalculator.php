@@ -50,7 +50,7 @@ class ExchangeRateCalculator
         $defaultExchangeCurrencyIso
     ) {
         $this->currencyManager = $currencyManager;
-        $this->defaultExchangeCurrencyIso = $defaultExchangeCurrencyIso;
+        $this->defaultExchangeCurrencyIso = (string) $defaultExchangeCurrencyIso;
     }
 
     /**
@@ -93,6 +93,9 @@ class ExchangeRateCalculator
         $currencyFromIso,
         $currencyToIso
     ) {
+        $currencyFromIso = (string) $currencyFromIso;
+        $currencyToIso = (string) $currencyToIso;
+        
         $currencyExchangeRates = $this->currencyManager->getExchangeRateList();
 
         /**

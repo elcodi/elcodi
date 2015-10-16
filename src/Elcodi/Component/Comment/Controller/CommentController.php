@@ -81,7 +81,7 @@ class CommentController
     {
         $comments = $this
             ->commentCache
-            ->load($source, $context);
+            ->load((string) $source, (string) $context);
 
         return new Response(json_encode($comments));
     }
@@ -120,10 +120,10 @@ class CommentController
         $comment = $this
             ->commentManager
             ->addComment(
-                $source,
-                $context,
+                (string) $source,
+                (string) $context,
                 $content,
-                $authorToken,
+                (string) $authorToken,
                 $authorName,
                 $authorEmail,
                 $parent
@@ -158,8 +158,8 @@ class CommentController
         $requestBag = $request->request;
         $content = $requestBag->get('content');
         $comment = $this->findComment(
-            $commentId,
-            $authorToken
+            (int) $commentId,
+            (string) $authorToken
         );
 
         $this
@@ -185,8 +185,8 @@ class CommentController
     public function deleteCommentAction($commentId, $authorToken)
     {
         $comment = $this->findComment(
-            $commentId,
-            $authorToken
+            (int) $commentId,
+            (string) $authorToken
         );
 
         $this
@@ -213,8 +213,8 @@ class CommentController
         $comment = $this
             ->commentRepository
             ->findOneBy([
-                'id'          => $commentId,
-                'authorToken' => $authorToken,
+                'id'          => (string) $commentId,
+                'authorToken' => (string) $authorToken,
             ]);
 
         if (!($comment instanceof CommentInterface)) {

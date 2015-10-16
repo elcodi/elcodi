@@ -52,7 +52,7 @@ trait MetaDataTrait
      */
     public function setMetaDescription($metaDescription)
     {
-        $this->metaDescription = $metaDescription;
+        $this->metaDescription = (string) $metaDescription;
 
         return $this;
     }
@@ -76,7 +76,7 @@ trait MetaDataTrait
      */
     public function setMetaKeywords($metaKeywords)
     {
-        $this->metaKeywords = $metaKeywords;
+        $this->metaKeywords = (string) $metaKeywords;
 
         return $this;
     }
@@ -100,7 +100,7 @@ trait MetaDataTrait
      */
     public function setMetaTitle($metaTitle)
     {
-        $this->metaTitle = $metaTitle;
+        $this->metaTitle = (string) $metaTitle;
 
         return $this;
     }

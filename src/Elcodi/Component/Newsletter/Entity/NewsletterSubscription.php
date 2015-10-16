@@ -77,7 +77,7 @@ class NewsletterSubscription implements NewsletterSubscriptionInterface
      */
     public function setEmail($email)
     {
-        $this->email = $email;
+        $this->email = (string) $email;
 
         return $this;
     }
@@ -125,7 +125,7 @@ class NewsletterSubscription implements NewsletterSubscriptionInterface
      */
     public function setHash($hash)
     {
-        $this->hash = $hash;
+        $this->hash = (string) $hash;
 
         return $this;
     }
@@ -149,7 +149,7 @@ class NewsletterSubscription implements NewsletterSubscriptionInterface
      */
     public function setReason($reason)
     {
-        $this->reason = $reason;
+        $this->reason = (string) $reason;
 
         return $this;
     }

@@ -30,7 +30,7 @@ use Elcodi\Component\StateTransitionMachine\Machine\Interfaces\MachineInterface;
 class Machine implements MachineInterface
 {
     /**
-     * @var integer
+     * @var integer|string
      *
      * Machine id
      */
@@ -51,7 +51,7 @@ class Machine implements MachineInterface
     private $pointOfEntry;
 
     /**
-     * @param integer         $machineId       Machine id
+     * @param integer|string  $machineId       Machine id
      * @param TransitionChain $transitionChain Transition Chain
      * @param string          $pointOfEntry    Point of entry
      */
@@ -62,13 +62,13 @@ class Machine implements MachineInterface
     ) {
         $this->machineId = $machineId;
         $this->transitionChain = $transitionChain;
-        $this->pointOfEntry = $pointOfEntry;
+        $this->pointOfEntry = (string) $pointOfEntry;
     }
 
     /**
      * Get machine id
      *
-     * @return string Machine identifier
+     * @return integer|string Machine identifier
      */
     public function getId()
     {
@@ -100,15 +100,15 @@ class Machine implements MachineInterface
         $startStateName,
         $transitionName
     ) {
-        if (!$this->transitionChain->hasTransition($transitionName)) {
-            throw new TransitionNotValidException($transitionName);
+        if (!$this->transitionChain->hasTransition((string) $transitionName)) {
+            throw new TransitionNotValidException((string) $transitionName);
         }
 
         $transition = $this
             ->transitionChain
             ->getTransitionByStartingStateAndTransitionName(
-                $startStateName,
-                $transitionName
+                (string) $startStateName,
+                (string) $transitionName
             );
 
         if (!($transition instanceof Transition)) {
@@ -135,8 +135,8 @@ class Machine implements MachineInterface
         $transition = $this
             ->transitionChain
             ->getTransitionByStartingStateAndFinalState(
-                $startStateName,
-                $finalStateName
+                (string) $startStateName,
+                (string) $finalStateName
             );
 
         if (!($transition instanceof Transition)) {
@@ -159,7 +159,7 @@ class Machine implements MachineInterface
             $this->transitionChain->getTransitions(),
             function (Transition $transition) use ($startStateName) {
                 return
-                    $transition->getStart()->getName() === $startStateName;
+                    $transition->getStart()->getName() === (string) $startStateName;
             }
         );
     }

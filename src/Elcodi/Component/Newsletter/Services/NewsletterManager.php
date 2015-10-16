@@ -104,6 +104,8 @@ class NewsletterManager
      */
     public function subscribe($email, LanguageInterface $language = null)
     {
+        $email = (string) $email;
+
         if (!$this->validateEmail($email)) {
             throw new NewsletterCannotBeAddedException();
         }
@@ -141,6 +143,8 @@ class NewsletterManager
      */
     public function unSubscribe($email, $hash, LanguageInterface $language = null, $reason = null)
     {
+        $email = (string) $email;
+        
         if (!$this->validateEmail($email)) {
             throw new NewsletterCannotBeRemovedException();
         }
@@ -182,7 +186,7 @@ class NewsletterManager
      */
     public function isSubscribed($email)
     {
-        $newsletterSubscription = $this->getSubscription($email);
+        $newsletterSubscription = $this->getSubscription((string) $email);
 
         return ($newsletterSubscription instanceof NewsletterSubscriptionInterface);
     }
@@ -199,7 +203,7 @@ class NewsletterManager
         return $this
             ->newsletterSubscriptionRepository
             ->findOneBy([
-                'email' => $email,
+                'email' => (string) $email,
             ]);
     }
 
@@ -218,7 +222,7 @@ class NewsletterManager
 
         $validationViolationList = $this
             ->validator
-            ->validate($email, new Email());
+            ->validate((string) $email, new Email());
 
         return ($validationViolationList->count() === 0);
     }

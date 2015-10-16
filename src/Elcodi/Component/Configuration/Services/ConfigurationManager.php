@@ -105,6 +105,8 @@ class ConfigurationManager extends AbstractCacheWrapper
         $configurationIdentifier,
         $configurationValue
     ) {
+        $configurationIdentifier = (string) $configurationIdentifier;
+
         /**
          * Checks if the value is defined in the configuration elements
          */
@@ -170,6 +172,8 @@ class ConfigurationManager extends AbstractCacheWrapper
      */
     public function get($configurationIdentifier, $defaultValue = null)
     {
+        $configurationIdentifier = (string) $configurationIdentifier;
+
         /**
          * Checks if the value is defined in the configuration elements
          */
@@ -245,6 +249,8 @@ class ConfigurationManager extends AbstractCacheWrapper
      */
     public function delete($configurationIdentifier)
     {
+        $configurationIdentifier = (string) $configurationIdentifier;
+        
         /**
          * Checks if the value is defined in the configuration elements
          */
@@ -312,8 +318,8 @@ class ConfigurationManager extends AbstractCacheWrapper
         $configurationEntity = $this
             ->configurationRepository
             ->find([
-                'namespace' => $configurationNamespace,
-                'key'       => $configurationKey,
+                'namespace' => (string) $configurationNamespace,
+                'key'       => (string) $configurationKey,
             ]);
 
         return $configurationEntity;
@@ -377,6 +383,10 @@ class ConfigurationManager extends AbstractCacheWrapper
         $configurationKey,
         $configurationValue
     ) {
+        $configurationIdentifier = (string) $configurationIdentifier;
+        $configurationNamespace = (string) $configurationNamespace;
+        $configurationKey = (string) $configurationKey;
+        
         /**
          * Value is not found on database. We can just check if the value is
          * defined in the configuration elements, and we can generate new entry
@@ -426,7 +436,7 @@ class ConfigurationManager extends AbstractCacheWrapper
         $this
             ->cache
             ->save(
-                $configurationIdentifier,
+                (string) $configurationIdentifier,
                 $configurationValue
             );
 

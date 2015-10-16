@@ -78,7 +78,7 @@ class EntityTranslation implements EntityTranslationInterface
      */
     public function setEntityId($entityId)
     {
-        $this->entityId = $entityId;
+        $this->entityId = (string) $entityId;
 
         return $this;
     }
@@ -102,7 +102,7 @@ class EntityTranslation implements EntityTranslationInterface
      */
     public function setEntityType($entityType)
     {
-        $this->entityType = $entityType;
+        $this->entityType = (string) $entityType;
 
         return $this;
     }
@@ -126,7 +126,7 @@ class EntityTranslation implements EntityTranslationInterface
      */
     public function setLocale($locale)
     {
-        $this->locale = $locale;
+        $this->locale = (string) $locale;
 
         return $this;
     }
@@ -150,7 +150,7 @@ class EntityTranslation implements EntityTranslationInterface
      */
     public function setTranslation($translation)
     {
-        $this->translation = $translation;
+        $this->translation = (string) $translation;
 
         return $this;
     }
@@ -174,7 +174,7 @@ class EntityTranslation implements EntityTranslationInterface
      */
     public function setEntityField($entityField)
     {
-        $this->entityField = $entityField;
+        $this->entityField = (string) $entityField;
 
         return $this;
     }

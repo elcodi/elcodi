@@ -94,7 +94,7 @@ abstract class AbstractPasswordEventListener
      */
     public function encryptPassword($password, $salt = null)
     {
-        return $this->passwordEncoder->encodePassword($password, $salt);
+        return $this->passwordEncoder->encodePassword((string) $password, $salt);
     }
 
     /**

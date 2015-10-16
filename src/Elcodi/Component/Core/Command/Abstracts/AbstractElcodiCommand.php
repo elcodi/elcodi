@@ -99,7 +99,7 @@ class AbstractElcodiCommand extends Command
     {
         return $this
             ->stopwatch
-            ->start($eventName);
+            ->start((string) $eventName);
     }
 
     /**
@@ -188,7 +188,7 @@ class AbstractElcodiCommand extends Command
     {
         return $this
             ->stopwatch
-            ->stop($eventName);
+            ->stop((string) $eventName);
     }
 
     /**

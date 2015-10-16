@@ -45,10 +45,10 @@ class EntryFactory
         $createdAt
     ) {
         return new Entry(
-            $token,
-            $event,
-            $uniqueId,
-            $type,
+            (string) $token,
+            (string) $event,
+            (string) $uniqueId,
+            (int) $type,
             $createdAt
         );
     }

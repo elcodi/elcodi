@@ -82,12 +82,12 @@ class PaymentMethod
         $imageUrl = '',
         $script = ''
     ) {
-        $this->id = $id;
-        $this->name = $name;
-        $this->description = $description;
-        $this->url = $url;
-        $this->imageUrl = $imageUrl;
-        $this->script = $script;
+        $this->id = (string) $id;
+        $this->name = (string) $name;
+        $this->description = (string) $description;
+        $this->url = (string) $url;
+        $this->imageUrl = (string) $imageUrl;
+        $this->script = (string) $script;
     }
 
     /**

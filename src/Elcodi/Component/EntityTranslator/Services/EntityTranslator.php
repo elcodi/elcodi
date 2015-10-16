@@ -64,7 +64,7 @@ class EntityTranslator implements EntityTranslatorInterface
     ) {
         $this->entityTranslationProvider = $entityTranslationProvider;
         $this->configuration = $configuration;
-        $this->fallback = $fallback;
+        $this->fallback = (bool) $fallback;
     }
 
     /**
@@ -96,7 +96,7 @@ class EntityTranslator implements EntityTranslatorInterface
                         $configuration['alias'],
                         $entityId,
                         $fieldName,
-                        $locale
+                        (string) $locale
                     );
 
                 if ($translation || !$this->fallback) {
@@ -173,9 +173,9 @@ class EntityTranslator implements EntityTranslatorInterface
      */
     protected function getNamespacesFromClass($namespace)
     {
-        $classStack = [$namespace];
-        $classStack = array_merge($classStack, class_parents($namespace));
-        $classStack = array_merge($classStack, class_implements($namespace));
+        $classStack = [(string) $namespace];
+        $classStack = array_merge($classStack, class_parents((string) $namespace));
+        $classStack = array_merge($classStack, class_implements((string) $namespace));
 
         return $classStack;
     }

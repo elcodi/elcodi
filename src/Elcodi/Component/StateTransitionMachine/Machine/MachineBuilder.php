@@ -72,7 +72,7 @@ class MachineBuilder
      *
      * Can be cyclic
      */
-    private $canBeCyclic;
+    private $canBeCyclic = true;
 
     /**
      * construct method
@@ -89,11 +89,10 @@ class MachineBuilder
         $pointOfEntry
     ) {
         $this->machineFactory = $machineFactory;
-        $this->machineId = $machineId;
+        $this->machineId = (string) $machineId;
         $this->configuration = $configuration;
         $this->transitionChain = TransitionChain::create();
-        $this->pointOfEntry = $pointOfEntry;
-        $this->canBeCyclic = true;
+        $this->pointOfEntry = (string) $pointOfEntry;
     }
 
     /**
@@ -105,7 +104,7 @@ class MachineBuilder
      */
     public function allowCycles($canBeCyclic)
     {
-        $this->canBeCyclic = $canBeCyclic;
+        $this->canBeCyclic = (bool) $canBeCyclic;
 
         return $this;
     }
@@ -208,12 +207,12 @@ class MachineBuilder
     private function checkPointOfEntry(array $configuration, $pointOfEntry)
     {
         foreach ($configuration as $transitionConfiguration) {
-            if ($transitionConfiguration[0] === $pointOfEntry) {
+            if ($transitionConfiguration[0] === (string) $pointOfEntry) {
                 return $this;
             }
         }
 
-        throw new InvalidPointOfEntryException($pointOfEntry);
+        throw new InvalidPointOfEntryException((string) $pointOfEntry);
     }
 
     /**
@@ -232,7 +231,7 @@ class MachineBuilder
         $node,
         array &$nodesVisited
     ) {
-        if (in_array($node, $nodesVisited)) {
+        if (in_array((string) $node, $nodesVisited)) {
             if (!$this->canBeCyclic) {
                 throw new CyclesNotAllowedException();
             }
@@ -240,10 +239,10 @@ class MachineBuilder
             return $this;
         }
 
-        $nodesVisited[] = $node;
+        $nodesVisited[] = (string) $node;
 
         foreach ($configuration as $transitionConfiguration) {
-            if ($transitionConfiguration[0] === $node) {
+            if ($transitionConfiguration[0] === (string) $node) {
                 $this->checkCycles(
                     $configuration,
                     $transitionConfiguration[2],

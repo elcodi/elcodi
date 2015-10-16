@@ -82,12 +82,12 @@ class ApiUrls
         $getHierarchyUrl,
         $inUrl
     ) {
-        $this->getRootLocationsUrl = $getRootLocationsUrl;
-        $this->getChildrenUrl = $getChildrenUrl;
-        $this->getParentsUrl = $getParentsUrl;
-        $this->getLocationUrl = $getLocationUrl;
-        $this->getHierarchyUrl = $getHierarchyUrl;
-        $this->inUrl = $inUrl;
+        $this->getRootLocationsUrl = (string) $getRootLocationsUrl;
+        $this->getChildrenUrl = (string) $getChildrenUrl;
+        $this->getParentsUrl = (string) $getParentsUrl;
+        $this->getLocationUrl = (string) $getLocationUrl;
+        $this->getHierarchyUrl = (string) $getHierarchyUrl;
+        $this->inUrl = (string) $inUrl;
     }
 
     /**

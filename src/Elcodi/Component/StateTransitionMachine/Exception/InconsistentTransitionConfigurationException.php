@@ -36,6 +36,6 @@ class InconsistentTransitionConfigurationException extends Exception
     {
         $message = 'Given state "' . $state . '" only one transition with name "' . $transition . '" can be defined.';
 
-        parent::__construct($message, $code, $previous);
+        parent::__construct($message, (int) $code, $previous);
     }
 }

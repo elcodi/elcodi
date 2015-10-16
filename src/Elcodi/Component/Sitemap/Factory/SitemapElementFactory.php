@@ -41,7 +41,7 @@ class SitemapElementFactory
         $priority = null
     ) {
         return new SitemapElement(
-            $location,
+            (string) $location,
             $lastModification,
             $changeFrequency,
             $priority

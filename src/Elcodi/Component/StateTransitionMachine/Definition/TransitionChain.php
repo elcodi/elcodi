@@ -70,7 +70,7 @@ class TransitionChain
      */
     public function hasTransition($transitionName)
     {
-        return !is_null($this->getTransitionsByName($transitionName));
+        return !is_null($this->getTransitionsByName((string) $transitionName));
     }
 
     /**
@@ -85,7 +85,7 @@ class TransitionChain
         return array_filter(
             $this->transitions,
             function (Transition $transition) use ($transitionName) {
-                return $transition->getName() === $transitionName;
+                return $transition->getName() === (string) $transitionName;
             }
         );
     }
@@ -104,7 +104,7 @@ class TransitionChain
             function (Transition $transition) use ($stateName) {
                 return $transition
                     ->getStart()
-                    ->getName() === $stateName;
+                    ->getName() === (string) $stateName;
             }
         );
     }
@@ -123,7 +123,7 @@ class TransitionChain
             function (Transition $transition) use ($stateName) {
                 return $transition
                     ->getFinal()
-                    ->getName() === $stateName;
+                    ->getName() === (string) $stateName;
             }
         );
     }
@@ -144,8 +144,8 @@ class TransitionChain
             $this->transitions,
             function (Transition $transition) use ($stateName, $transitionName) {
                 return
-                    $transition->getName() === $transitionName &&
-                    $transition->getStart()->getName() === $stateName;
+                    $transition->getName() === (string) $transitionName &&
+                    $transition->getStart()->getName() === (string) $stateName;
             }
         );
 
@@ -170,8 +170,8 @@ class TransitionChain
             $this->transitions,
             function (Transition $transition) use ($startStateName, $finalStateName) {
                 return
-                    $transition->getStart()->getName() === $startStateName &&
-                    $transition->getFinal()->getName() === $finalStateName;
+                    $transition->getStart()->getName() === (string) $startStateName &&
+                    $transition->getFinal()->getName() === (string) $finalStateName;
             }
         );
 

@@ -67,8 +67,8 @@ class CartSessionManager
         $saveInSession
     ) {
         $this->session = $session;
-        $this->sessionFieldName = $sessionFieldName;
-        $this->saveInSession = $saveInSession;
+        $this->sessionFieldName = (string) $sessionFieldName;
+        $this->saveInSession = (bool) $saveInSession;
     }
 
     /**

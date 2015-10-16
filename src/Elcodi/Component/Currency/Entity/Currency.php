@@ -59,7 +59,7 @@ class Currency implements CurrencyInterface
      */
     public function setIso($iso)
     {
-        $this->iso = $iso;
+        $this->iso = (string) $iso;
 
         return $this;
     }
@@ -83,7 +83,7 @@ class Currency implements CurrencyInterface
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
 
         return $this;
     }
@@ -107,7 +107,7 @@ class Currency implements CurrencyInterface
      */
     public function setSymbol($symbol)
     {
-        $this->symbol = $symbol;
+        $this->symbol = (string) $symbol;
 
         return $this;
     }

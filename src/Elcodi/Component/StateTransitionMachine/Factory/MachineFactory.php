@@ -41,9 +41,9 @@ class MachineFactory
         $pointOfEntry
     ) {
         $machine = new Machine(
-            $machineId,
+            (int) $machineId,
             $transitionChain,
-            $pointOfEntry
+            (string) $pointOfEntry
         );
 
         return $machine;

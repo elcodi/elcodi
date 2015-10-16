@@ -82,12 +82,12 @@ class CommentManager extends AbstractCacheWrapper
             ->create()
             ->setId(round(microtime(true) * 1000))
             ->setParent($parent)
-            ->setSource($source)
-            ->setAuthorToken($authorToken)
-            ->setAuthorName($authorName)
-            ->setAuthorEmail($authorEmail)
-            ->setContent($content)
-            ->setContext($context);
+            ->setSource((string) $source)
+            ->setAuthorToken((string) $authorToken)
+            ->setAuthorName((string) $authorName)
+            ->setAuthorEmail((string) $authorEmail)
+            ->setContent((string) $content)
+            ->setContext((string) $context);
 
         $this
             ->commentDirector
@@ -112,7 +112,7 @@ class CommentManager extends AbstractCacheWrapper
         CommentInterface $comment,
         $content
     ) {
-        $comment->setContent($content);
+        $comment->setContent((string) $content);
 
         $this
             ->commentDirector

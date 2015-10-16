@@ -69,15 +69,17 @@ class LocationBuilder
         $type,
         LocationInterface $parent = null
     ) {
+        $id = (string) $id;
+        
         $location = isset($this->locations[$id])
             ? $this->locations[$id]
             : $this
                 ->locationFactory
                 ->create()
                 ->setId($id)
-                ->setName($name)
-                ->setCode($code)
-                ->setType($type);
+                ->setName((string) $name)
+                ->setCode((string) $code)
+                ->setType((string) $type);
 
         if ($parent instanceof LocationInterface) {
             $location->addParent($parent);

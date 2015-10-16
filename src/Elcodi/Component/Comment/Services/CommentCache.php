@@ -69,7 +69,7 @@ class CommentCache extends AbstractCacheWrapper
     ) {
         $this->commentRepository = $commentRepository;
         $this->voteManager = $voteManager;
-        $this->key = $key;
+        $this->key = (string) $key;
     }
 
     /**
@@ -83,8 +83,8 @@ class CommentCache extends AbstractCacheWrapper
     public function getCommentTree($source, $context)
     {
         $key = $this->getSpecificSourceCacheKey(
-            $source,
-            $context
+            (string) $source,
+            (string) $context
         );
 
         return isset($this->commentTree[$key])
@@ -105,6 +105,9 @@ class CommentCache extends AbstractCacheWrapper
      */
     public function load($source, $context)
     {
+        $source = (string) $source;
+        $context = (string) $context;
+
         $key = $this->getSpecificSourceCacheKey(
             $source,
             $context
@@ -141,6 +144,9 @@ class CommentCache extends AbstractCacheWrapper
      */
     public function invalidateCache($source, $context)
     {
+        $source = (string) $source;
+        $context = (string) $context;
+
         $key = $this->getSpecificSourceCacheKey(
             $source,
             $context
@@ -168,6 +174,9 @@ class CommentCache extends AbstractCacheWrapper
      */
     public function reload($source, $context)
     {
+        $source = (string) $source;
+        $context = (string) $context;
+
         $this->invalidateCache(
             $source,
             $context
@@ -231,8 +240,8 @@ class CommentCache extends AbstractCacheWrapper
                 $this
                     ->cache
                     ->fetch($this->getSpecificSourceCacheKey(
-                        $source,
-                        $context
+                        (string) $source,
+                        (string) $context
                     ))
             );
     }
@@ -247,6 +256,9 @@ class CommentCache extends AbstractCacheWrapper
      */
     private function buildCommentTreeAndSaveIntoCache($source, $context)
     {
+        $source = (string) $source;
+        $context = (string) $context;
+
         $commentTree = $this->buildCommentTree($source, $context);
         $this->saveCommentTreeIntoCache(
             $commentTree,
@@ -271,7 +283,7 @@ class CommentCache extends AbstractCacheWrapper
     {
         $comments = $this
             ->commentRepository
-            ->getAllCommentsSortedByParentAndIdAsc($source, $context);
+            ->getAllCommentsSortedByParentAndIdAsc((string) $source, (string) $context);
 
         $commentTree = [
             0          => null,
@@ -333,7 +345,7 @@ class CommentCache extends AbstractCacheWrapper
         $this
             ->cache
             ->save(
-                $this->getSpecificSourceCacheKey($source, $context),
+                $this->getSpecificSourceCacheKey((string) $source, (string) $context),
                 $this->encoder->encode($commentTree)
             );
 

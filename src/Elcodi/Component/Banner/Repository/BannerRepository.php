@@ -40,7 +40,7 @@ class BannerRepository extends EntityRepository
     public function getBannerByZone($bannerZoneCode, LanguageInterface $language = null)
     {
         $parameters = [
-            'code' => $bannerZoneCode,
+            'code' => (string) $bannerZoneCode,
         ];
 
         if (!is_null($language)) {

@@ -91,9 +91,9 @@ class ImageExtension extends Twig_Extension
 
     ) {
         $this->router = $router;
-        $this->imageResizeControllerRouteName = $imageResizeControllerRouteName;
-        $this->imageViewControllerRouteName = $imageViewControllerRouteName;
-        $this->generatedRouteHost = $generatedRouteHost;
+        $this->imageResizeControllerRouteName = (string) $imageResizeControllerRouteName;
+        $this->imageViewControllerRouteName = (string) $imageViewControllerRouteName;
+        $this->generatedRouteHost = (string) $generatedRouteHost;
 
         /**
          * Routing context will change when a hostname is
@@ -163,7 +163,7 @@ class ImageExtension extends Twig_Extension
     {
         $this->prepareRouterContext();
 
-        $routeReferenceType = $this->getReferenceType($absoluteUrl);
+        $routeReferenceType = $this->getReferenceType((bool) $absoluteUrl);
 
         $generatedRoute = $this
             ->router
@@ -236,7 +236,7 @@ class ImageExtension extends Twig_Extension
      */
     private function getReferenceType($absoluteUrlOption = false)
     {
-        return ($this->generatedRouteHost || $absoluteUrlOption)
+        return ($this->generatedRouteHost || ((bool) $absoluteUrlOption))
             ? UrlGeneratorInterface::ABSOLUTE_URL
             : UrlGeneratorInterface::ABSOLUTE_PATH;
     }

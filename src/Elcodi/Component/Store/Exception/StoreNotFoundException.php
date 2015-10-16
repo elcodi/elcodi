@@ -36,6 +36,6 @@ class StoreNotFoundException extends Exception
     {
         $message = 'Store not found.';
 
-        parent::__construct($message, $code, $previous);
+        parent::__construct((string) $message, (int) $code, $previous);
     }
 }

@@ -158,7 +158,7 @@ class Coupon implements CouponInterface
      */
     public function setCode($code)
     {
-        $this->code = $code;
+        $this->code = (string) $code;
 
         return $this;
     }
@@ -182,7 +182,7 @@ class Coupon implements CouponInterface
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
 
         return $this;
     }
@@ -206,7 +206,7 @@ class Coupon implements CouponInterface
      */
     public function setType($type)
     {
-        $this->type = $type;
+        $this->type = (int) $type;
 
         return $this;
     }
@@ -230,7 +230,7 @@ class Coupon implements CouponInterface
      */
     public function setEnforcement($enforcement)
     {
-        $this->enforcement = $enforcement;
+        $this->enforcement = (int) $enforcement;
 
         return $this;
     }
@@ -282,7 +282,7 @@ class Coupon implements CouponInterface
      */
     public function setDiscount($discount)
     {
-        $this->discount = $discount;
+        $this->discount = (int) $discount;
 
         return $this;
     }
@@ -334,7 +334,7 @@ class Coupon implements CouponInterface
      */
     public function setCount($count)
     {
-        $this->count = $count;
+        $this->count = (int) $count;
 
         return $this;
     }
@@ -358,7 +358,7 @@ class Coupon implements CouponInterface
      */
     public function setUsed($used)
     {
-        $this->used = $used;
+        $this->used = (int) $used;
 
         return $this;
     }
@@ -382,7 +382,7 @@ class Coupon implements CouponInterface
      */
     public function setPriority($priority)
     {
-        $this->priority = $priority;
+        $this->priority = (int) $priority;
 
         return $this;
     }
@@ -468,7 +468,7 @@ class Coupon implements CouponInterface
      */
     public function setStackable($stackable)
     {
-        $this->stackable = $stackable;
+        $this->stackable = (int) $stackable;
 
         return $this;
     }

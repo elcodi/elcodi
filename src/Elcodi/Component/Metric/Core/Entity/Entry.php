@@ -84,10 +84,10 @@ class Entry implements EntryInterface
         $type,
         $createdAt
     ) {
-        $this->token = $token;
-        $this->event = $event;
-        $this->value = $value;
-        $this->type = $type;
+        $this->token = (string) $token;
+        $this->event = (string) $event;
+        $this->value = (string) $value;
+        $this->type = (int) $type;
         $this->createdAt = $createdAt;
     }
 

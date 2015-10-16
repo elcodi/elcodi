@@ -96,8 +96,8 @@ class InputController
         $this
             ->metricManager
             ->addEntry(
-                $token,
-                $event,
+                (string) $token,
+                (string) $event,
                 $value,
                 $type,
                 $this

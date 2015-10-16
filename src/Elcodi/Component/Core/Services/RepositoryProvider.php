@@ -64,8 +64,8 @@ class RepositoryProvider
     {
         return $this
             ->managerProvider
-            ->getManagerByEntityNamespace($entityNamespace)
-            ->getRepository($entityNamespace);
+            ->getManagerByEntityNamespace((string) $entityNamespace)
+            ->getRepository((string) $entityNamespace);
     }
 
     /**
@@ -83,7 +83,7 @@ class RepositoryProvider
     {
         $entityNamespace = $this
             ->parameterBag
-            ->get($entityParameter);
+            ->get((string) $entityParameter);
 
         return $this->getRepositoryByEntityNamespace($entityNamespace);
     }

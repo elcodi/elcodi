@@ -41,10 +41,10 @@ class LocationDataFactory
         $locationType
     ) {
         return new LocationData(
-            $locationId,
-            $locationName,
-            $locationCode,
-            $locationType
+            (string) $locationId,
+            (string) $locationName,
+            (string) $locationCode,
+            (string) $locationType
         );
     }
 }

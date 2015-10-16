@@ -83,7 +83,7 @@ class Location implements LocationInterface
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
 
         return $this;
     }
@@ -107,7 +107,7 @@ class Location implements LocationInterface
      */
     public function setCode($code)
     {
-        $this->code = $code;
+        $this->code = (string) $code;
 
         return $this;
     }
@@ -131,7 +131,7 @@ class Location implements LocationInterface
      */
     public function setType($type)
     {
-        $this->type = $type;
+        $this->type = (string) $type;
 
         return $this;
     }

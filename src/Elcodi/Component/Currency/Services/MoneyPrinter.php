@@ -169,7 +169,7 @@ class MoneyPrinter
             ->get();
 
         $money = Money::create(
-            $value,
+            (int) $value,
             $targetCurrency
         );
 

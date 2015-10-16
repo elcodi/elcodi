@@ -68,7 +68,7 @@ class CurrencyManager
     ) {
         $this->currencyRepository = $currencyRepository;
         $this->currencyExchangeRateRepository = $currencyExchangeRateRepository;
-        $this->exchangeCurrencyIso = $exchangeCurrencyIso;
+        $this->exchangeCurrencyIso = (string) $exchangeCurrencyIso;
     }
 
     /**

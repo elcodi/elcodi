@@ -52,7 +52,7 @@ class Language implements LanguageInterface
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
 
         return $this;
     }
@@ -76,7 +76,7 @@ class Language implements LanguageInterface
      */
     public function setIso($iso)
     {
-        $this->iso = $iso;
+        $this->iso = (string) $iso;
 
         return $this;
     }

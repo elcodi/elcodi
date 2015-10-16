@@ -49,8 +49,8 @@ class MenuModifier extends AbstractMenuModifier implements MenuChangerInterface
         $this->addElement(
             $menuModifier,
             $menus,
-            $stage,
-            $priority
+            (string) $stage,
+            (int) $priority
         );
 
         return $this;
@@ -71,7 +71,7 @@ class MenuModifier extends AbstractMenuModifier implements MenuChangerInterface
         $this->applyModifiersToMenuNodes(
             $menu->getSubnodes(),
             $menu->getCode(),
-            $stage
+            (string) $stage
         );
 
         return $this;
@@ -95,13 +95,13 @@ class MenuModifier extends AbstractMenuModifier implements MenuChangerInterface
 
             $this->applyModifiersToMenuNodes(
                 $menuNode->getSubnodes(),
-                $menuCode,
-                $stage
+                (string) $menuCode,
+                (string) $stage
             );
 
             $menuModifiers = $this->getElementsByMenuCodeAndStage(
-                $menuCode,
-                $stage
+                (string) $menuCode,
+                (string) $stage
             );
 
             /**

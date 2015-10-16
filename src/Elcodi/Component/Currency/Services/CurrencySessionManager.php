@@ -49,7 +49,7 @@ class CurrencySessionManager
     public function __construct(SessionInterface $session, $sessionFieldName)
     {
         $this->session = $session;
-        $this->sessionFieldName = $sessionFieldName;
+        $this->sessionFieldName = (string) $sessionFieldName;
     }
 
     /**

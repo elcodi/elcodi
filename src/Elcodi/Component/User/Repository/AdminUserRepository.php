@@ -38,7 +38,7 @@ class AdminUserRepository extends EntityRepository implements UserEmaileableInte
     {
         $user = $this
             ->findOneBy([
-                'email' => $email,
+                'email' => (string) $email,
             ]);
 
         return ($user instanceof AbstractUserInterface)

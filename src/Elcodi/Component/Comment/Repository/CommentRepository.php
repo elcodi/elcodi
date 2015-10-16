@@ -48,8 +48,8 @@ class CommentRepository extends EntityRepository
             ->addOrderBy('c.parent', 'asc')
             ->addOrderBy('c.id', 'asc')
             ->setParameters([
-                'source'  => $source,
-                'context' => $context,
+                'source'  => (string) $source,
+                'context' => (string) $context,
                 'enabled' => true,
             ]);
 

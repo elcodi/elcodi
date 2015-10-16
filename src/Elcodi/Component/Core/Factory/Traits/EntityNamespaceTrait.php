@@ -38,7 +38,7 @@ trait EntityNamespaceTrait
      */
     public function setEntityNamespace($entityNamespace)
     {
-        $this->entityNamespace = $entityNamespace;
+        $this->entityNamespace = (string) $entityNamespace;
 
         return $this;
     }

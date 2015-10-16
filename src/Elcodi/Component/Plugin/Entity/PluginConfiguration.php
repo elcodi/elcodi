@@ -74,8 +74,8 @@ class PluginConfiguration
      */
     public function get($name)
     {
-        return isset($this->configuration[$name])
-            ? $this->configuration[$name]
+        return isset($this->configuration[(string) $name])
+            ? $this->configuration[(string) $name]
             : [];
     }
 
@@ -98,8 +98,8 @@ class PluginConfiguration
      */
     public function getField($fieldName)
     {
-        return $this->hasField($fieldName)
-            ? $this->configuration['fields'][$fieldName]
+        return $this->hasField((string) $fieldName)
+            ? $this->configuration['fields'][(string) $fieldName]
             : null;
     }
 
@@ -112,7 +112,7 @@ class PluginConfiguration
      */
     public function hasField($fieldName)
     {
-        return isset($this->configuration['fields'][$fieldName]);
+        return isset($this->configuration['fields'][(string) $fieldName]);
     }
 
     /**
@@ -125,11 +125,11 @@ class PluginConfiguration
      */
     public function setFieldValue($fieldName, $fieldValue)
     {
-        if (!$this->hasField($fieldName)) {
+        if (!$this->hasField((string) $fieldName)) {
             throw new RuntimeException('Field "' . $fieldName . '" not found in Plugin Configuration');
         }
 
-        $this->configuration['fields'][$fieldName]['data'] = $fieldValue;
+        $this->configuration['fields'][(string) $fieldName]['data'] = $fieldValue;
 
         return $this;
     }
@@ -143,11 +143,11 @@ class PluginConfiguration
      */
     public function getFieldValue($fieldName)
     {
-        if (!$this->hasField($fieldName)) {
+        if (!$this->hasField((string) $fieldName)) {
             throw new RuntimeException('Field "' . $fieldName . '" not found in Plugin Configuration');
         }
 
-        return $this->configuration['fields'][$fieldName]['data'];
+        return $this->configuration['fields'][(string) $fieldName]['data'];
     }
 
     /**

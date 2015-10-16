@@ -81,7 +81,7 @@ class Configuration implements ConfigurationInterface
      */
     public function setKey($key)
     {
-        $this->key = $key;
+        $this->key = (string) $key;
 
         return $this;
     }
@@ -105,7 +105,7 @@ class Configuration implements ConfigurationInterface
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
 
         return $this;
     }
@@ -129,7 +129,7 @@ class Configuration implements ConfigurationInterface
      */
     public function setNamespace($namespace)
     {
-        $this->namespace = $namespace;
+        $this->namespace = (string) $namespace;
 
         return $this;
     }
@@ -153,7 +153,7 @@ class Configuration implements ConfigurationInterface
      */
     public function setType($type)
     {
-        $this->type = $type;
+        $this->type = (string) $type;
 
         return $this;
     }
