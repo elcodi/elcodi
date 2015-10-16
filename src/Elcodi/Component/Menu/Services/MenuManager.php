@@ -50,7 +50,7 @@ class MenuManager extends AbstractCacheWrapper
      *
      * Menu changers
      */
-    private $menuChangers;
+    private $menuChangers = [];
 
     /**
      * @var string
@@ -64,7 +64,7 @@ class MenuManager extends AbstractCacheWrapper
      *
      * menus
      */
-    private $menus;
+    private $menus = [];
 
     /**
      * Construct method
@@ -81,8 +81,6 @@ class MenuManager extends AbstractCacheWrapper
         $this->menuRepository = $menuRepository;
         $this->menuObjectManager = $menuObjectManager;
         $this->key = $key;
-        $this->menuChangers = [];
-        $this->menus = [];
     }
 
     /**

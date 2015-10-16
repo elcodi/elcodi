@@ -77,7 +77,7 @@ class MachineManager
     /**
      * Initialize the object into the machine
      *
-     * @param stdClass       $object         Object
+     * @param mixed          $object         Object
      * @param StateLineStack $stateLineStack StateLine Stack
      * @param string         $description    Description
      *
@@ -119,7 +119,7 @@ class MachineManager
     /**
      * Applies a transition given a object
      *
-     * @param stdClass       $object         Object
+     * @param mixed          $object         Object
      * @param StateLineStack $stateLineStack StateLine Stack
      * @param string         $transitionName Transition name
      * @param string         $description    Description
@@ -149,7 +149,7 @@ class MachineManager
     /**
      * Applies a transition given a object
      *
-     * @param stdClass       $object         Object
+     * @param mixed          $object         Object
      * @param StateLineStack $stateLineStack StateLine Stack
      * @param string         $transitionName Transition name
      * @param string         $description    Description
@@ -198,7 +198,7 @@ class MachineManager
      * Applies a transition action given a object and the kind of transition is
      * needed.
      *
-     * @param stdClass       $object           Object
+     * @param mixed          $object           Object
      * @param StateLineStack $stateLineStack   StateLine Stack
      * @param string         $transitionName   Transition name
      * @param string         $description      Description
