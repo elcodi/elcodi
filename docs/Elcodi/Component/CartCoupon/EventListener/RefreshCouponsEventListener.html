@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Elcodi\Component\CartCoupon\EventListener\RefreshCouponsEventListener | Elcodi API Documentation</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/sami.css">
+        <script src="../../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Elcodi_Component_CartCoupon_EventListener_RefreshCouponsEventListener" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Elcodi API Documentation</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../../../../Elcodi.html">Elcodi</a></li>
+                                        <li><a href="../../../../Elcodi/Component.html">Component</a></li>
+                                        <li><a href="../../../../Elcodi/Component/CartCoupon.html">CartCoupon</a></li>
+                                        <li><a href="../../../../Elcodi/Component/CartCoupon/EventListener.html">EventListener</a></li>
+    
+                <li>RefreshCouponsEventListener</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>RefreshCouponsEventListener</h1>
+    </div>
+
+    <p>    class
+    <strong>RefreshCouponsEventListener</strong>
+</p>
+
+            <div class="description">
+            <p>Class RefreshCouponsEventListener</p>            <p>This event listener should update the cart given in the event, applying
+all the coupon features.</p>        </div>
+    
+    
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(
+    <abbr title="Elcodi\Component\CartCoupon\EventListener\Elcodi\Component\Coupon\Services\CouponManager">CouponManager</abbr> $couponManager, 
+    <abbr title="Elcodi\Component\CartCoupon\EventListener\Elcodi\Component\CartCoupon\Services\CartCouponManager">CartCouponManager</abbr> $cartCouponManager, 
+    <abbr title="Elcodi\Component\CartCoupon\EventListener\Elcodi\Component\Currency\Wrapper\CurrencyWrapper">CurrencyWrapper</abbr> $currencyWrapper, 
+    <abbr title="Elcodi\Component\CartCoupon\EventListener\Elcodi\Component\Currency\Services\CurrencyConverter">CurrencyConverter</abbr> $currencyConverter, 
+    <abbr title="Elcodi\Component\CartCoupon\EventListener\Elcodi\Component\CartCoupon\EventDispatcher\CartCouponEventDispatcher">CartCouponEventDispatcher</abbr> $cartCouponEventDispatcher)
+                                            <p>Construct method</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_refreshCartCoupons">refreshCartCoupons</a>(
+    <abbr title="Elcodi\Component\CartCoupon\EventListener\Elcodi\Component\Cart\Event\CartOnLoadEvent">CartOnLoadEvent</abbr> $event)
+                                            <p>Method subscribed to CartLoad event</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_refreshCouponAmount">refreshCouponAmount</a>(
+    <abbr title="Elcodi\Component\CartCoupon\EventListener\Elcodi\Component\Cart\Event\CartOnLoadEvent">CartOnLoadEvent</abbr> $event)
+                                            <p>Method subscribed to CartLoad event.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at line 85</div>
+        <code>                    
+    
+    <strong>__construct</strong>(
+    <abbr title="Elcodi\Component\CartCoupon\EventListener\Elcodi\Component\Coupon\Services\CouponManager">CouponManager</abbr> $couponManager, 
+    <abbr title="Elcodi\Component\CartCoupon\EventListener\Elcodi\Component\CartCoupon\Services\CartCouponManager">CartCouponManager</abbr> $cartCouponManager, 
+    <abbr title="Elcodi\Component\CartCoupon\EventListener\Elcodi\Component\Currency\Wrapper\CurrencyWrapper">CurrencyWrapper</abbr> $currencyWrapper, 
+    <abbr title="Elcodi\Component\CartCoupon\EventListener\Elcodi\Component\Currency\Services\CurrencyConverter">CurrencyConverter</abbr> $currencyConverter, 
+    <abbr title="Elcodi\Component\CartCoupon\EventListener\Elcodi\Component\CartCoupon\EventDispatcher\CartCouponEventDispatcher">CartCouponEventDispatcher</abbr> $cartCouponEventDispatcher)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Construct method</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\CartCoupon\EventListener\Elcodi\Component\Coupon\Services\CouponManager">CouponManager</abbr></td>
+                <td>$couponManager</td>
+                <td>Coupon manager</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\CartCoupon\EventListener\Elcodi\Component\CartCoupon\Services\CartCouponManager">CartCouponManager</abbr></td>
+                <td>$cartCouponManager</td>
+                <td>Cart coupon manager</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\CartCoupon\EventListener\Elcodi\Component\Currency\Wrapper\CurrencyWrapper">CurrencyWrapper</abbr></td>
+                <td>$currencyWrapper</td>
+                <td>Currency wrapper</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\CartCoupon\EventListener\Elcodi\Component\Currency\Services\CurrencyConverter">CurrencyConverter</abbr></td>
+                <td>$currencyConverter</td>
+                <td>Currency converter</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\CartCoupon\EventListener\Elcodi\Component\CartCoupon\EventDispatcher\CartCouponEventDispatcher">CartCouponEventDispatcher</abbr></td>
+                <td>$cartCouponEventDispatcher</td>
+                <td>$cartCouponEventDispatcher</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_refreshCartCoupons">
+        <div class="location">at line 108</div>
+        <code>                    
+    
+    <strong>refreshCartCoupons</strong>(
+    <abbr title="Elcodi\Component\CartCoupon\EventListener\Elcodi\Component\Cart\Event\CartOnLoadEvent">CartOnLoadEvent</abbr> $event)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Method subscribed to CartLoad event</p>                    <p>Checks if all Coupons applied to current cart are still valid.
+If are not, they will be deleted from the Cart and new Event typeof
+CartCouponOnRejected will be dispatched</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\CartCoupon\EventListener\Elcodi\Component\Cart\Event\CartOnLoadEvent">CartOnLoadEvent</abbr></td>
+                <td>$event</td>
+                <td>Event</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_refreshCouponAmount">
+        <div class="location">at line 152</div>
+        <code>                    
+    
+    <strong>refreshCouponAmount</strong>(
+    <abbr title="Elcodi\Component\CartCoupon\EventListener\Elcodi\Component\Cart\Event\CartOnLoadEvent">CartOnLoadEvent</abbr> $event)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Method subscribed to CartLoad event.</p>                    <p>Calculates coupons price given actual Cart, and overrides Cart price
+given new information.</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\CartCoupon\EventListener\Elcodi\Component\Cart\Event\CartOnLoadEvent">CartOnLoadEvent</abbr></td>
+                <td>$event</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>
