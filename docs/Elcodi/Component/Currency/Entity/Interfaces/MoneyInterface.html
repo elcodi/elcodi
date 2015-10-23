@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface | Elcodi API Documentation</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/sami.css">
+        <script src="../../../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../../js/typeahead.min.js"></script>
+        <script src="../../../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Elcodi_Component_Currency_Entity_Interfaces_MoneyInterface" data-root-path="../../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../../index.html">Elcodi API Documentation</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">interface</span></li>
+                                                            <li><a href="../../../../../Elcodi.html">Elcodi</a></li>
+                                        <li><a href="../../../../../Elcodi/Component.html">Component</a></li>
+                                        <li><a href="../../../../../Elcodi/Component/Currency.html">Currency</a></li>
+                                        <li><a href="../../../../../Elcodi/Component/Currency/Entity.html">Entity</a></li>
+                                        <li><a href="../../../../../Elcodi/Component/Currency/Entity/Interfaces.html">Interfaces</a></li>
+    
+                <li>MoneyInterface</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>MoneyInterface</h1>
+    </div>
+
+    <p>    interface
+    <strong>MoneyInterface</strong>
+</p>
+
+            <div class="description">
+            <p>Interface MoneyInterface</p>                    </div>
+    
+    
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    integer
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getAmount">getAmount</a>()
+                                            <p>Gets the Money amount</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <a href="../../../../../Elcodi/Component/Currency/Entity/Interfaces/CurrencyInterface.html"><abbr title="Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface">CurrencyInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCurrency">getCurrency</a>()
+                                            <p>Gets the Currency</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    integer
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_compareTo">compareTo</a>(
+    <abbr title="Elcodi\Component\Currency\Entity\Interfaces\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr> $other)
+                                            <p>Compares current Money object to another</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <a href="../../../../../Elcodi/Component/Currency/Entity/Interfaces/MoneyInterface.html"><abbr title="Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_add">add</a>(
+    <abbr title="Elcodi\Component\Currency\Entity\Interfaces\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr> $other)
+                                            <p>Adds a Money and returns the result as a new Money</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <a href="../../../../../Elcodi/Component/Currency/Entity/Interfaces/MoneyInterface.html"><abbr title="Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_subtract">subtract</a>(
+    <abbr title="Elcodi\Component\Currency\Entity\Interfaces\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr> $other)
+                                            <p>Subtracts a Money and returns the result as a new Money</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <a href="../../../../../Elcodi/Component/Currency/Entity/Interfaces/MoneyInterface.html"><abbr title="Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_multiply">multiply</a>(
+    float $factor)
+                                            <p>Multiplies current Money amount by a factor returns the result as a new Money</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_equals">equals</a>(
+    <abbr title="Elcodi\Component\Currency\Entity\Interfaces\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr> $other)
+                                            <p>Tells if a Money has the same value as current Money object</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isGreaterThan">isGreaterThan</a>(
+    <abbr title="Elcodi\Component\Currency\Entity\Interfaces\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr> $other)
+                                            <p>Tells if a Money value is greater than current Money object</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isLessThan">isLessThan</a>(
+    <abbr title="Elcodi\Component\Currency\Entity\Interfaces\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr> $other)
+                                            <p>Tells if a Money value is less than current Money object</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_getAmount">
+        <div class="location">at line 30</div>
+        <code>                    
+    integer
+    <strong>getAmount</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Gets the Money amount</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    integer</td>
+            <td>Amount</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCurrency">
+        <div class="location">at line 37</div>
+        <code>                    
+    <a href="../../../../../Elcodi/Component/Currency/Entity/Interfaces/CurrencyInterface.html"><abbr title="Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface">CurrencyInterface</abbr></a>
+    <strong>getCurrency</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Gets the Currency</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a href="../../../../../Elcodi/Component/Currency/Entity/Interfaces/CurrencyInterface.html"><abbr title="Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface">CurrencyInterface</abbr></a></td>
+            <td>Currency</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_compareTo">
+        <div class="location">at line 52</div>
+        <code>                    
+    integer
+    <strong>compareTo</strong>(
+    <abbr title="Elcodi\Component\Currency\Entity\Interfaces\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr> $other)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Compares current Money object to another</p>                    <p>Will return -1, 0, 1 if the amount of this Money object
+is respectively less than, equal to, or greater than the other.</p>
+
+<p>This is useful when using it as a compare function
+for usort() and the likes.</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Currency\Entity\Interfaces\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></td>
+                <td>$other</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    integer</td>
+            <td>Comparison value</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_add">
+        <div class="location">at line 62</div>
+        <code>                    
+    <a href="../../../../../Elcodi/Component/Currency/Entity/Interfaces/MoneyInterface.html"><abbr title="Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></a>
+    <strong>add</strong>(
+    <abbr title="Elcodi\Component\Currency\Entity\Interfaces\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr> $other)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Adds a Money and returns the result as a new Money</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Currency\Entity\Interfaces\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></td>
+                <td>$other</td>
+                <td>Other money</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a href="../../../../../Elcodi/Component/Currency/Entity/Interfaces/MoneyInterface.html"><abbr title="Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></a></td>
+            <td>New money instance as a result of addition
+                       between current object and given as a parameter</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_subtract">
+        <div class="location">at line 72</div>
+        <code>                    
+    <a href="../../../../../Elcodi/Component/Currency/Entity/Interfaces/MoneyInterface.html"><abbr title="Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></a>
+    <strong>subtract</strong>(
+    <abbr title="Elcodi\Component\Currency\Entity\Interfaces\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr> $other)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Subtracts a Money and returns the result as a new Money</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Currency\Entity\Interfaces\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></td>
+                <td>$other</td>
+                <td>Other money</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a href="../../../../../Elcodi/Component/Currency/Entity/Interfaces/MoneyInterface.html"><abbr title="Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></a></td>
+            <td>New money instance as a result of subtraction
+                       between current object and given as a parameter</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_multiply">
+        <div class="location">at line 81</div>
+        <code>                    
+    <a href="../../../../../Elcodi/Component/Currency/Entity/Interfaces/MoneyInterface.html"><abbr title="Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></a>
+    <strong>multiply</strong>(
+    float $factor)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Multiplies current Money amount by a factor returns the result as a new Money</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    float</td>
+                <td>$factor</td>
+                <td>Factor</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a href="../../../../../Elcodi/Component/Currency/Entity/Interfaces/MoneyInterface.html"><abbr title="Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></a></td>
+            <td>New money instance with amount multiplied by factor</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_equals">
+        <div class="location">at line 90</div>
+        <code>                    
+    boolean
+    <strong>equals</strong>(
+    <abbr title="Elcodi\Component\Currency\Entity\Interfaces\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr> $other)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Tells if a Money has the same value as current Money object</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Currency\Entity\Interfaces\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></td>
+                <td>$other</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    boolean</td>
+            <td>Current money equals given as parameter</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isGreaterThan">
+        <div class="location">at line 99</div>
+        <code>                    
+    boolean
+    <strong>isGreaterThan</strong>(
+    <abbr title="Elcodi\Component\Currency\Entity\Interfaces\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr> $other)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Tells if a Money value is greater than current Money object</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Currency\Entity\Interfaces\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></td>
+                <td>$other</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    boolean</td>
+            <td>Current money is greater than given as parameter</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isLessThan">
+        <div class="location">at line 108</div>
+        <code>                    
+    boolean
+    <strong>isLessThan</strong>(
+    <abbr title="Elcodi\Component\Currency\Entity\Interfaces\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr> $other)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Tells if a Money value is less than current Money object</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Currency\Entity\Interfaces\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></td>
+                <td>$other</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    boolean</td>
+            <td>Current money is less than given as parameter</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Elcodi\Component\CartCoupon\Services\CartCouponManager | Elcodi API Documentation</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/sami.css">
+        <script src="../../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Elcodi_Component_CartCoupon_Services_CartCouponManager" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Elcodi API Documentation</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../../../../Elcodi.html">Elcodi</a></li>
+                                        <li><a href="../../../../Elcodi/Component.html">Component</a></li>
+                                        <li><a href="../../../../Elcodi/Component/CartCoupon.html">CartCoupon</a></li>
+                                        <li><a href="../../../../Elcodi/Component/CartCoupon/Services.html">Services</a></li>
+    
+                <li>CartCouponManager</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>CartCouponManager</h1>
+    </div>
+
+    <p>    class
+    <strong>CartCouponManager</strong>
+</p>
+
+            <div class="description">
+            <p>Class CartCoupon Manager</p>            <p>This class aims to be a bridge between Coupons and Carts.
+Manages all coupons instances inside Carts</p>        </div>
+    
+    
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\CartCoupon\EventDispatcher\CartCouponEventDispatcher">CartCouponEventDispatcher</abbr> $cartCouponEventDispatcher, 
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Coupon\Services\CouponManager">CouponManager</abbr> $couponManager, 
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Coupon\Repository\CouponRepository">CouponRepository</abbr> $couponRepository, 
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\CartCoupon\Repository\CartCouponRepository">CartCouponRepository</abbr> $cartCouponRepository)
+                                            <p>Construct method</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <a href="../../../../Elcodi/Component/CartCoupon/Entity/Interfaces/CartCouponInterface.html"><abbr title="Elcodi\Component\CartCoupon\Entity\Interfaces\CartCouponInterface">CartCouponInterface</abbr></a>[]|<abbr title="Doctrine\Common\Collections\Collection">Collection</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCartCoupons">getCartCoupons</a>(
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart)
+                                            <p>Get CartCoupon instances assigned to current Cart</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Doctrine\Common\Collections\Collection">Collection</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCoupons">getCoupons</a>(
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart)
+                                            <p>Get cart coupon objects</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addCouponByCode">addCouponByCode</a>(
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart, 
+    string $couponCode)
+                                            <p>Given a coupon code, applies it to cart</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\CartCoupon\Services\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addCoupon">addCoupon</a>(
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart, 
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface">CouponInterface</abbr> $coupon)
+                                            <p>Adds a Coupon to a Cart and recalculates the Cart Totals</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_removeCouponByCode">removeCouponByCode</a>(
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart, 
+    string $couponCode)
+                                            <p>Given a coupon code, removes it from cart</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_removeCoupon">removeCoupon</a>(
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart, 
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface">CouponInterface</abbr> $coupon)
+                                            <p>Removes a Coupon from a Cart, and recalculates Cart Totals</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at line 77</div>
+        <code>                    
+    
+    <strong>__construct</strong>(
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\CartCoupon\EventDispatcher\CartCouponEventDispatcher">CartCouponEventDispatcher</abbr> $cartCouponEventDispatcher, 
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Coupon\Services\CouponManager">CouponManager</abbr> $couponManager, 
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Coupon\Repository\CouponRepository">CouponRepository</abbr> $couponRepository, 
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\CartCoupon\Repository\CartCouponRepository">CartCouponRepository</abbr> $cartCouponRepository)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Construct method</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\CartCoupon\EventDispatcher\CartCouponEventDispatcher">CartCouponEventDispatcher</abbr></td>
+                <td>$cartCouponEventDispatcher</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Coupon\Services\CouponManager">CouponManager</abbr></td>
+                <td>$couponManager</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Coupon\Repository\CouponRepository">CouponRepository</abbr></td>
+                <td>$couponRepository</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\CartCoupon\Repository\CartCouponRepository">CartCouponRepository</abbr></td>
+                <td>$cartCouponRepository</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCartCoupons">
+        <div class="location">at line 96</div>
+        <code>                    
+    <a href="../../../../Elcodi/Component/CartCoupon/Entity/Interfaces/CartCouponInterface.html"><abbr title="Elcodi\Component\CartCoupon\Entity\Interfaces\CartCouponInterface">CartCouponInterface</abbr></a>[]|<abbr title="Doctrine\Common\Collections\Collection">Collection</abbr>
+    <strong>getCartCoupons</strong>(
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get CartCoupon instances assigned to current Cart</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr></td>
+                <td>$cart</td>
+                <td>Cart</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a href="../../../../Elcodi/Component/CartCoupon/Entity/Interfaces/CartCouponInterface.html"><abbr title="Elcodi\Component\CartCoupon\Entity\Interfaces\CartCouponInterface">CartCouponInterface</abbr></a>[]|<abbr title="Doctrine\Common\Collections\Collection">Collection</abbr></td>
+            <td>OrderCoupons</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCoupons">
+        <div class="location">at line 125</div>
+        <code>                    
+    <abbr title="Doctrine\Common\Collections\Collection">Collection</abbr>
+    <strong>getCoupons</strong>(
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get cart coupon objects</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr></td>
+                <td>$cart</td>
+                <td>Cart</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Doctrine\Common\Collections\Collection">Collection</abbr></td>
+            <td>Coupons</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addCouponByCode">
+        <div class="location">at line 163</div>
+        <code>                    
+    boolean
+    <strong>addCouponByCode</strong>(
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart, 
+    string $couponCode)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Given a coupon code, applies it to cart</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr></td>
+                <td>$cart</td>
+                <td>Cart</td>
+            </tr>
+                    <tr>
+                <td>
+    string</td>
+                <td>$couponCode</td>
+                <td>Coupon code</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    boolean</td>
+            <td>Coupon has added to Cart</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Elcodi/Component/Coupon/Exception/Abstracts/AbstractCouponException.html"><abbr title="Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException">AbstractCouponException</abbr></a></td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addCoupon">
+        <div class="location">at line 189</div>
+        <code>                    
+    <abbr title="Elcodi\Component\CartCoupon\Services\$this">$this</abbr>
+    <strong>addCoupon</strong>(
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart, 
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface">CouponInterface</abbr> $coupon)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Adds a Coupon to a Cart and recalculates the Cart Totals</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr></td>
+                <td>$cart</td>
+                <td>Cart</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface">CouponInterface</abbr></td>
+                <td>$coupon</td>
+                <td>The coupon to add</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\CartCoupon\Services\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Elcodi/Component/Coupon/Exception/Abstracts/AbstractCouponException.html"><abbr title="Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException">AbstractCouponException</abbr></a></td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeCouponByCode">
+        <div class="location">at line 209</div>
+        <code>                    
+    boolean
+    <strong>removeCouponByCode</strong>(
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart, 
+    string $couponCode)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Given a coupon code, removes it from cart</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr></td>
+                <td>$cart</td>
+                <td>Cart</td>
+            </tr>
+                    <tr>
+                <td>
+    string</td>
+                <td>$couponCode</td>
+                <td>Coupon code</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    boolean</td>
+            <td>Coupon has been removed from cart</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeCoupon">
+        <div class="location">at line 232</div>
+        <code>                    
+    boolean
+    <strong>removeCoupon</strong>(
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart, 
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface">CouponInterface</abbr> $coupon)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Removes a Coupon from a Cart, and recalculates Cart Totals</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr></td>
+                <td>$cart</td>
+                <td>Cart</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\CartCoupon\Services\Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface">CouponInterface</abbr></td>
+                <td>$coupon</td>
+                <td>The coupon to remove</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    boolean</td>
+            <td>Coupon has been removed from cart</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

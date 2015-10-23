@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Elcodi\Component\Media\Services\ImageManager | Elcodi API Documentation</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/sami.css">
+        <script src="../../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Elcodi_Component_Media_Services_ImageManager" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Elcodi API Documentation</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../../../../Elcodi.html">Elcodi</a></li>
+                                        <li><a href="../../../../Elcodi/Component.html">Component</a></li>
+                                        <li><a href="../../../../Elcodi/Component/Media.html">Media</a></li>
+                                        <li><a href="../../../../Elcodi/Component/Media/Services.html">Services</a></li>
+    
+                <li>ImageManager</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>ImageManager</h1>
+    </div>
+
+    <p>    class
+    <strong>ImageManager</strong>
+</p>
+
+            <div class="description">
+            <p>Class ImageManager</p>            <p>This class manages images</p>
+
+<p>Public Methods:</p>
+
+<ul>
+<li>createImage(File)</li>
+<li>resize(ImageInterface, $height, $width, $type)</li>
+</ul>
+</p>        </div>
+    
+    
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(
+    <abbr title="Elcodi\Component\Media\Services\Elcodi\Component\Media\Factory\ImageFactory">ImageFactory</abbr> $imageFactory, 
+    <abbr title="Elcodi\Component\Media\Services\Elcodi\Component\Media\Services\FileManager">FileManager</abbr> $fileManager, 
+    <abbr title="Elcodi\Component\Media\Services\Elcodi\Component\Media\Adapter\Resizer\Interfaces\ResizeAdapterInterface">ResizeAdapterInterface</abbr> $resizeAdapter)
+                                            <p>Construct method</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <a href="../../../../Elcodi/Component/Media/Entity/Interfaces/ImageInterface.html"><abbr title="Elcodi\Component\Media\Entity\Interfaces\ImageInterface">ImageInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_createImage">createImage</a>(
+    <abbr title="Elcodi\Component\Media\Services\Symfony\Component\HttpFoundation\File\File">File</abbr> $file)
+                                            <p>Given a single File, assuming is an image, create a new
+Image object containing all needed information.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <a href="../../../../Elcodi/Component/Media/Entity/Interfaces/ImageInterface.html"><abbr title="Elcodi\Component\Media\Entity\Interfaces\ImageInterface">ImageInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_resize">resize</a>(
+    <abbr title="Elcodi\Component\Media\Services\Elcodi\Component\Media\Entity\Interfaces\ImageInterface">ImageInterface</abbr> $image, 
+    integer $height, 
+    integer $width, 
+    integer $type = ElcodiMediaImageResizeTypes::FORCE_MEASURES)
+                                            <p>Given an image, resize it.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at line 69</div>
+        <code>                    
+    
+    <strong>__construct</strong>(
+    <abbr title="Elcodi\Component\Media\Services\Elcodi\Component\Media\Factory\ImageFactory">ImageFactory</abbr> $imageFactory, 
+    <abbr title="Elcodi\Component\Media\Services\Elcodi\Component\Media\Services\FileManager">FileManager</abbr> $fileManager, 
+    <abbr title="Elcodi\Component\Media\Services\Elcodi\Component\Media\Adapter\Resizer\Interfaces\ResizeAdapterInterface">ResizeAdapterInterface</abbr> $resizeAdapter)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Construct method</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Media\Services\Elcodi\Component\Media\Factory\ImageFactory">ImageFactory</abbr></td>
+                <td>$imageFactory</td>
+                <td>Image Factory</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Media\Services\Elcodi\Component\Media\Services\FileManager">FileManager</abbr></td>
+                <td>$fileManager</td>
+                <td>File Manager</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Media\Services\Elcodi\Component\Media\Adapter\Resizer\Interfaces\ResizeAdapterInterface">ResizeAdapterInterface</abbr></td>
+                <td>$resizeAdapter</td>
+                <td>Resize Adapter</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createImage">
+        <div class="location">at line 91</div>
+        <code>                    
+    <a href="../../../../Elcodi/Component/Media/Entity/Interfaces/ImageInterface.html"><abbr title="Elcodi\Component\Media\Entity\Interfaces\ImageInterface">ImageInterface</abbr></a>
+    <strong>createImage</strong>(
+    <abbr title="Elcodi\Component\Media\Services\Symfony\Component\HttpFoundation\File\File">File</abbr> $file)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Given a single File, assuming is an image, create a new
+Image object containing all needed information.</p>                    <p>This method also persists and flush created entity</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Media\Services\Symfony\Component\HttpFoundation\File\File">File</abbr></td>
+                <td>$file</td>
+                <td>File where to get the image</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a href="../../../../Elcodi/Component/Media/Entity/Interfaces/ImageInterface.html"><abbr title="Elcodi\Component\Media\Entity\Interfaces\ImageInterface">ImageInterface</abbr></a></td>
+            <td>Image created</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Elcodi/Component/Media/Exception/InvalidImageException.html"><abbr title="Elcodi\Component\Media\Exception\InvalidImageException">InvalidImageException</abbr></a></td>
+                <td>File is not an image</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resize">
+        <div class="location">at line 140</div>
+        <code>                    
+    <a href="../../../../Elcodi/Component/Media/Entity/Interfaces/ImageInterface.html"><abbr title="Elcodi\Component\Media\Entity\Interfaces\ImageInterface">ImageInterface</abbr></a>
+    <strong>resize</strong>(
+    <abbr title="Elcodi\Component\Media\Services\Elcodi\Component\Media\Entity\Interfaces\ImageInterface">ImageInterface</abbr> $image, 
+    integer $height, 
+    integer $width, 
+    integer $type = ElcodiMediaImageResizeTypes::FORCE_MEASURES)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Given an image, resize it.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Media\Services\Elcodi\Component\Media\Entity\Interfaces\ImageInterface">ImageInterface</abbr></td>
+                <td>$image</td>
+                <td>Image</td>
+            </tr>
+                    <tr>
+                <td>
+    integer</td>
+                <td>$height</td>
+                <td>Height</td>
+            </tr>
+                    <tr>
+                <td>
+    integer</td>
+                <td>$width</td>
+                <td>Width</td>
+            </tr>
+                    <tr>
+                <td>
+    integer</td>
+                <td>$type</td>
+                <td>Type</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a href="../../../../Elcodi/Component/Media/Entity/Interfaces/ImageInterface.html"><abbr title="Elcodi\Component\Media\Entity\Interfaces\ImageInterface">ImageInterface</abbr></a></td>
+            <td>New Image instance</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>
