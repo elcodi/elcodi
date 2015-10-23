@@ -1,7 +1,7 @@
 language: php
 
 env:
-    - COMPOSER_OPTIONS="install --prefer-source"
+    - COMPOSER_OPTIONS="update --prefer-source"
 
 php:
     - 5.4
