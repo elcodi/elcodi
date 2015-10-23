@@ -134,7 +134,8 @@
         "doctrine/doctrine-fixtures-bundle": "^2.2",
         "fabpot/php-cs-fixer": "1.4.2",
         "mmoreram/php-formatter": "1.0.4",
-        "phpunit/phpunit": "4.5.0"
+        "phpunit/phpunit": "4.5.0",
+        "sami/sami": "3.1.0"
     },
     "autoload": {
         "psr-4": {

@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Elcodi\Component\User\Entity\Abstracts\AbstractUser | Elcodi API Documentation</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/sami.css">
+        <script src="../../../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../../js/typeahead.min.js"></script>
+        <script src="../../../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Elcodi_Component_User_Entity_Abstracts_AbstractUser" data-root-path="../../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../../index.html">Elcodi API Documentation</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../../../../../Elcodi.html">Elcodi</a></li>
+                                        <li><a href="../../../../../Elcodi/Component.html">Component</a></li>
+                                        <li><a href="../../../../../Elcodi/Component/User.html">User</a></li>
+                                        <li><a href="../../../../../Elcodi/Component/User/Entity.html">Entity</a></li>
+                                        <li><a href="../../../../../Elcodi/Component/User/Entity/Abstracts.html">Abstracts</a></li>
+    
+                <li>AbstractUser</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>AbstractUser</h1>
+    </div>
+
+    <p>    class
+    <strong>AbstractUser</strong>        implements
+        <a href="../../../../../Elcodi/Component/User/Entity/Interfaces/AbstractUserInterface.html"><abbr title="Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface">AbstractUserInterface</abbr></a>
+</p>
+
+            <div class="description">
+            <p>AbstractUser is the building block for simple User entities,
+consisting of username, password, email</p>                    </div>
+    
+            <h2>Traits</h2>
+
+        
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../../../../Elcodi/Component/Core/Entity/Traits/IdentifiableTrait.html"><abbr title="Elcodi\Component\Core\Entity\Traits\IdentifiableTrait">Elcodi\Component\Core\Entity\Traits\IdentifiableTrait</abbr></a>
+                                    </div>
+                <div class="col-md-6">
+                    Trait IdentifiableTrait
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../../../../Elcodi/Component/User/Entity/Traits/LastLoginTrait.html"><abbr title="Elcodi\Component\User\Entity\Traits\LastLoginTrait">Elcodi\Component\User\Entity\Traits\LastLoginTrait</abbr></a>
+                                    </div>
+                <div class="col-md-6">
+                    Trait LastLoginTrait
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../../../../Elcodi/Component/Core/Entity/Traits/DateTimeTrait.html"><abbr title="Elcodi\Component\Core\Entity\Traits\DateTimeTrait">Elcodi\Component\Core\Entity\Traits\DateTimeTrait</abbr></a>
+                                    </div>
+                <div class="col-md-6">
+                    trait for DateTime common variables and methods
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../../../../Elcodi/Component/Core/Entity/Traits/EnabledTrait.html"><abbr title="Elcodi\Component\Core\Entity\Traits\EnabledTrait">Elcodi\Component\Core\Entity\Traits\EnabledTrait</abbr></a>
+                                    </div>
+                <div class="col-md-6">
+                    Trait adding enabled/disabled fields and methods
+                </div>
+            </div>
+            </div>
+    
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    integer
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getId">getId</a>()
+                                            <p>Get Id</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../../Elcodi/Component/Core/Entity/Traits/IdentifiableTrait.html#method_getId"><abbr title="Elcodi\Component\Core\Entity\Traits\IdentifiableTrait">IdentifiableTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setId">setId</a>(
+    integer $id)
+                                            <p>Sets Id</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../../Elcodi/Component/Core/Entity/Traits/IdentifiableTrait.html#method_setId"><abbr title="Elcodi\Component\Core\Entity\Traits\IdentifiableTrait">IdentifiableTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getLastLoginAt">getLastLoginAt</a>()
+                                            <p>Get LastLoginAt</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../../Elcodi/Component/User/Entity/Traits/LastLoginTrait.html#method_getLastLoginAt"><abbr title="Elcodi\Component\User\Entity\Traits\LastLoginTrait">LastLoginTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\User\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setLastLoginAt">setLastLoginAt</a>(
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a> $lastLoginAt)
+                                            <p>Sets LastLoginAt</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../../Elcodi/Component/User/Entity/Traits/LastLoginTrait.html#method_setLastLoginAt"><abbr title="Elcodi\Component\User\Entity\Traits\LastLoginTrait">LastLoginTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setCreatedAt">setCreatedAt</a>(
+    <abbr title="Elcodi\Component\Core\Entity\Traits\DateTime">DateTime</abbr> $createdAt)
+                                            <p>Set locally created at value</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../../Elcodi/Component/Core/Entity/Traits/DateTimeTrait.html#method_setCreatedAt"><abbr title="Elcodi\Component\Core\Entity\Traits\DateTimeTrait">DateTimeTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCreatedAt">getCreatedAt</a>()
+                                            <p>Return created_at value</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../../Elcodi/Component/Core/Entity/Traits/DateTimeTrait.html#method_getCreatedAt"><abbr title="Elcodi\Component\Core\Entity\Traits\DateTimeTrait">DateTimeTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setUpdatedAt">setUpdatedAt</a>(
+    <abbr title="Elcodi\Component\Core\Entity\Traits\DateTime">DateTime</abbr> $updatedAt)
+                                            <p>Set locally updated at value</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../../Elcodi/Component/Core/Entity/Traits/DateTimeTrait.html#method_setUpdatedAt"><abbr title="Elcodi\Component\Core\Entity\Traits\DateTimeTrait">DateTimeTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getUpdatedAt">getUpdatedAt</a>()
+                                            <p>Return updated_at value</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../../Elcodi/Component/Core/Entity/Traits/DateTimeTrait.html#method_getUpdatedAt"><abbr title="Elcodi\Component\Core\Entity\Traits\DateTimeTrait">DateTimeTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_loadUpdateAt">loadUpdateAt</a>()
+                                            <p>Method triggered by LifeCycleEvent.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../../Elcodi/Component/Core/Entity/Traits/DateTimeTrait.html#method_loadUpdateAt"><abbr title="Elcodi\Component\Core\Entity\Traits\DateTimeTrait">DateTimeTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setEnabled">setEnabled</a>(
+    boolean $enabled)
+                                            <p>Set if is enabled</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../../Elcodi/Component/Core/Entity/Traits/EnabledTrait.html#method_setEnabled"><abbr title="Elcodi\Component\Core\Entity\Traits\EnabledTrait">EnabledTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isEnabled">isEnabled</a>()
+                                            <p>Get is enabled</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../../Elcodi/Component/Core/Entity/Traits/EnabledTrait.html#method_isEnabled"><abbr title="Elcodi\Component\Core\Entity\Traits\EnabledTrait">EnabledTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_enable">enable</a>()
+                                            <p>Enable</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../../Elcodi/Component/Core/Entity/Traits/EnabledTrait.html#method_enable"><abbr title="Elcodi\Component\Core\Entity\Traits\EnabledTrait">EnabledTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_disable">disable</a>()
+                                            <p>Disable</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../../Elcodi/Component/Core/Entity/Traits/EnabledTrait.html#method_disable"><abbr title="Elcodi\Component\Core\Entity\Traits\EnabledTrait">EnabledTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    string[]
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getRoles">getRoles</a>()
+                                            <p>User roles</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setFirstname">setFirstname</a>(
+    string $firstname)
+                                            <p>Sets Firstname</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getFirstname">getFirstname</a>()
+                                            <p>Get Firstname</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setLastname">setLastname</a>(
+    string $lastname)
+                                            <p>Sets Lastname</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getLastname">getLastname</a>()
+                                            <p>Get Lastname</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setGender">setGender</a>(
+    integer $gender)
+                                            <p>Set gender</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    integer
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getGender">getGender</a>()
+                                            <p>Get gender</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setEmail">setEmail</a>(
+    string $email)
+                                            <p>Set email</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getEmail">getEmail</a>()
+                                            <p>Return email</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getToken">getToken</a>()
+                                            <p>Get Token</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setToken">setToken</a>(
+    string $token)
+                                            <p>Sets Token</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    String
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getUsername">getUsername</a>()
+                                            <p>Get username</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getBirthday">getBirthday</a>()
+                                            <p>Get birthday</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setBirthday">setBirthday</a>(
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a> $birthday = null)
+                                            <p>Set birthday</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setRecoveryHash">setRecoveryHash</a>(
+    string $recoveryHash)
+                                            <p>Set recovery hash</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getRecoveryHash">getRecoveryHash</a>()
+                                            <p>Get recovery hash</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getFullName">getFullName</a>()
+                                            <p>Get user full name</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setPassword">setPassword</a>(
+    string $password)
+                                            <p>Set password</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getPassword">getPassword</a>()
+                                            <p>Get password</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getOneTimeLoginHash">getOneTimeLoginHash</a>()
+                                            <p>Gets the one time login hash</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setOneTimeLoginHash">setOneTimeLoginHash</a>(
+    string $oneTimeLoginHash)
+                                            <p>Sets a hash so it can be used to login once without the need to use the password</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getSalt">getSalt</a>()
+                                            <p>Part of UserInterface. Dummy</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_eraseCredentials">eraseCredentials</a>()
+                                            <p>Dummy function, returns empty string</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___toString">__toString</a>()
+                                            <p>String representation of the Customer</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___sleep">__sleep</a>()
+                                            <p>Sleep implementation for some reason</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_getId">
+        <div class="location">in 
+    <a href="../../../../../Elcodi/Component/Core/Entity/Traits/IdentifiableTrait.html#method_getId"><abbr title="Elcodi\Component\Core\Entity\Traits\IdentifiableTrait">IdentifiableTrait</abbr></a> at line 37</div>
+        <code>                    
+    integer
+    <strong>getId</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get Id</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    integer</td>
+            <td>Id</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setId">
+        <div class="location">in 
+    <a href="../../../../../Elcodi/Component/Core/Entity/Traits/IdentifiableTrait.html#method_setId"><abbr title="Elcodi\Component\Core\Entity\Traits\IdentifiableTrait">IdentifiableTrait</abbr></a> at line 49</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+    <strong>setId</strong>(
+    integer $id)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sets Id</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    integer</td>
+                <td>$id</td>
+                <td>Id</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLastLoginAt">
+        <div class="location">in 
+    <a href="../../../../../Elcodi/Component/User/Entity/Traits/LastLoginTrait.html#method_getLastLoginAt"><abbr title="Elcodi\Component\User\Entity\Traits\LastLoginTrait">LastLoginTrait</abbr></a> at line 37</div>
+        <code>                    
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a>
+    <strong>getLastLoginAt</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get LastLoginAt</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a></td>
+            <td>LastLoginAt</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setLastLoginAt">
+        <div class="location">in 
+    <a href="../../../../../Elcodi/Component/User/Entity/Traits/LastLoginTrait.html#method_setLastLoginAt"><abbr title="Elcodi\Component\User\Entity\Traits\LastLoginTrait">LastLoginTrait</abbr></a> at line 49</div>
+        <code>                    
+    <abbr title="Elcodi\Component\User\Entity\Traits\$this">$this</abbr>
+    <strong>setLastLoginAt</strong>(
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a> $lastLoginAt)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sets LastLoginAt</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a></td>
+                <td>$lastLoginAt</td>
+                <td>LastLoginAt</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\User\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setCreatedAt">
+        <div class="location">in 
+    <a href="../../../../../Elcodi/Component/Core/Entity/Traits/DateTimeTrait.html#method_setCreatedAt"><abbr title="Elcodi\Component\Core\Entity\Traits\DateTimeTrait">DateTimeTrait</abbr></a> at line 46</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+    <strong>setCreatedAt</strong>(
+    <abbr title="Elcodi\Component\Core\Entity\Traits\DateTime">DateTime</abbr> $createdAt)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Set locally created at value</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Core\Entity\Traits\DateTime">DateTime</abbr></td>
+                <td>$createdAt</td>
+                <td>Created at value</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCreatedAt">
+        <div class="location">in 
+    <a href="../../../../../Elcodi/Component/Core/Entity/Traits/DateTimeTrait.html#method_getCreatedAt"><abbr title="Elcodi\Component\Core\Entity\Traits\DateTimeTrait">DateTimeTrait</abbr></a> at line 58</div>
+        <code>                    
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a>
+    <strong>getCreatedAt</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Return created_at value</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setUpdatedAt">
+        <div class="location">in 
+    <a href="../../../../../Elcodi/Component/Core/Entity/Traits/DateTimeTrait.html#method_setUpdatedAt"><abbr title="Elcodi\Component\Core\Entity\Traits\DateTimeTrait">DateTimeTrait</abbr></a> at line 70</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+    <strong>setUpdatedAt</strong>(
+    <abbr title="Elcodi\Component\Core\Entity\Traits\DateTime">DateTime</abbr> $updatedAt)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Set locally updated at value</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Core\Entity\Traits\DateTime">DateTime</abbr></td>
+                <td>$updatedAt</td>
+                <td>Updated at value</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getUpdatedAt">
+        <div class="location">in 
+    <a href="../../../../../Elcodi/Component/Core/Entity/Traits/DateTimeTrait.html#method_getUpdatedAt"><abbr title="Elcodi\Component\Core\Entity\Traits\DateTimeTrait">DateTimeTrait</abbr></a> at line 82</div>
+        <code>                    
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a>
+    <strong>getUpdatedAt</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Return updated_at value</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_loadUpdateAt">
+        <div class="location">in 
+    <a href="../../../../../Elcodi/Component/Core/Entity/Traits/DateTimeTrait.html#method_loadUpdateAt"><abbr title="Elcodi\Component\Core\Entity\Traits\DateTimeTrait">DateTimeTrait</abbr></a> at line 91</div>
+        <code>                    
+    
+    <strong>loadUpdateAt</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Method triggered by LifeCycleEvent.</p>                    <p>Sets or updates $this->updatedAt</p>            </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setEnabled">
+        <div class="location">in 
+    <a href="../../../../../Elcodi/Component/Core/Entity/Traits/EnabledTrait.html#method_setEnabled"><abbr title="Elcodi\Component\Core\Entity\Traits\EnabledTrait">EnabledTrait</abbr></a> at line 39</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+    <strong>setEnabled</strong>(
+    boolean $enabled)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Set if is enabled</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    boolean</td>
+                <td>$enabled</td>
+                <td>enabled value</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isEnabled">
+        <div class="location">in 
+    <a href="../../../../../Elcodi/Component/Core/Entity/Traits/EnabledTrait.html#method_isEnabled"><abbr title="Elcodi\Component\Core\Entity\Traits\EnabledTrait">EnabledTrait</abbr></a> at line 51</div>
+        <code>                    
+    boolean
+    <strong>isEnabled</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get is enabled</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    boolean</td>
+            <td>is enabled</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_enable">
+        <div class="location">in 
+    <a href="../../../../../Elcodi/Component/Core/Entity/Traits/EnabledTrait.html#method_enable"><abbr title="Elcodi\Component\Core\Entity\Traits\EnabledTrait">EnabledTrait</abbr></a> at line 61</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+    <strong>enable</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Enable</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_disable">
+        <div class="location">in 
+    <a href="../../../../../Elcodi/Component/Core/Entity/Traits/EnabledTrait.html#method_disable"><abbr title="Elcodi\Component\Core\Entity\Traits\EnabledTrait">EnabledTrait</abbr></a> at line 71</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+    <strong>disable</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Disable</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getRoles">
+        <div class="location">at line 108</div>
+        <code>                    
+    string[]
+    <strong>getRoles</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>User roles</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    string[]</td>
+            <td>Roles</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setFirstname">
+        <div class="location">at line 122</div>
+        <code>                    
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr>
+    <strong>setFirstname</strong>(
+    string $firstname)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sets Firstname</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    string</td>
+                <td>$firstname</td>
+                <td>Firstname</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getFirstname">
+        <div class="location">at line 134</div>
+        <code>                    
+    string
+    <strong>getFirstname</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get Firstname</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    string</td>
+            <td>Firstname</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setLastname">
+        <div class="location">at line 146</div>
+        <code>                    
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr>
+    <strong>setLastname</strong>(
+    string $lastname)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sets Lastname</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    string</td>
+                <td>$lastname</td>
+                <td>Lastname</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLastname">
+        <div class="location">at line 158</div>
+        <code>                    
+    string
+    <strong>getLastname</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get Lastname</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    string</td>
+            <td>Lastname</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setGender">
+        <div class="location">at line 170</div>
+        <code>                    
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr>
+    <strong>setGender</strong>(
+    integer $gender)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Set gender</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    integer</td>
+                <td>$gender</td>
+                <td>Gender</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getGender">
+        <div class="location">at line 182</div>
+        <code>                    
+    integer
+    <strong>getGender</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get gender</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    integer</td>
+            <td>Gender</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setEmail">
+        <div class="location">at line 194</div>
+        <code>                    
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr>
+    <strong>setEmail</strong>(
+    string $email)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Set email</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    string</td>
+                <td>$email</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getEmail">
+        <div class="location">at line 206</div>
+        <code>                    
+    string
+    <strong>getEmail</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Return email</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    string</td>
+            <td>Email</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getToken">
+        <div class="location">at line 216</div>
+        <code>                    
+    string
+    <strong>getToken</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get Token</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    string</td>
+            <td>Token</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setToken">
+        <div class="location">at line 228</div>
+        <code>                    
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr>
+    <strong>setToken</strong>(
+    string $token)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sets Token</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    string</td>
+                <td>$token</td>
+                <td>Token</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getUsername">
+        <div class="location">at line 242</div>
+        <code>                    
+    String
+    <strong>getUsername</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get username</p>                    <p>Just for symfony security purposes</p>            </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    String</td>
+            <td>Username</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getBirthday">
+        <div class="location">at line 252</div>
+        <code>                    
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a>
+    <strong>getBirthday</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get birthday</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setBirthday">
+        <div class="location">at line 264</div>
+        <code>                    
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr>
+    <strong>setBirthday</strong>(
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a> $birthday = null)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Set birthday</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a></td>
+                <td>$birthday</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setRecoveryHash">
+        <div class="location">at line 278</div>
+        <code>                    
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr>
+    <strong>setRecoveryHash</strong>(
+    string $recoveryHash)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Set recovery hash</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    string</td>
+                <td>$recoveryHash</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getRecoveryHash">
+        <div class="location">at line 290</div>
+        <code>                    
+    string
+    <strong>getRecoveryHash</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get recovery hash</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    string</td>
+            <td>Recovery Hash</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getFullName">
+        <div class="location">at line 300</div>
+        <code>                    
+    string
+    <strong>getFullName</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get user full name</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    string</td>
+            <td>Full name</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setPassword">
+        <div class="location">at line 312</div>
+        <code>                    
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr>
+    <strong>setPassword</strong>(
+    string $password)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Set password</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    string</td>
+                <td>$password</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPassword">
+        <div class="location">at line 326</div>
+        <code>                    
+    string
+    <strong>getPassword</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get password</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    string</td>
+            <td>Password</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getOneTimeLoginHash">
+        <div class="location">at line 336</div>
+        <code>                    
+    string
+    <strong>getOneTimeLoginHash</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Gets the one time login hash</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    string</td>
+            <td>Login hash</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setOneTimeLoginHash">
+        <div class="location">at line 348</div>
+        <code>                    
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr>
+    <strong>setOneTimeLoginHash</strong>(
+    string $oneTimeLoginHash)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sets a hash so it can be used to login once without the need to use the password</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    string</td>
+                <td>$oneTimeLoginHash</td>
+                <td>The hash you want to set for the one time login</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\User\Entity\Interfaces\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSalt">
+        <div class="location">at line 360</div>
+        <code>                    
+    string
+    <strong>getSalt</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Part of UserInterface. Dummy</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    string</td>
+            <td>Salt</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_eraseCredentials">
+        <div class="location">at line 370</div>
+        <code>                    
+    string
+    <strong>eraseCredentials</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Dummy function, returns empty string</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    string</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___toString">
+        <div class="location">at line 380</div>
+        <code>                    
+    string
+    <strong>__toString</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>String representation of the Customer</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    string</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___sleep">
+        <div class="location">at line 390</div>
+        <code>                    
+    
+    <strong>__sleep</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sleep implementation for some reason</p>                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Elcodi\Component\Cart\ElcodiCartEvents | Elcodi API Documentation</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/sami.css">
+        <script src="../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Elcodi_Component_Cart_ElcodiCartEvents" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Elcodi API Documentation</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../../../Elcodi.html">Elcodi</a></li>
+                                        <li><a href="../../../Elcodi/Component.html">Component</a></li>
+                                        <li><a href="../../../Elcodi/Component/Cart.html">Cart</a></li>
+    
+                <li>ElcodiCartEvents</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>ElcodiCartEvents</h1>
+    </div>
+
+    <p>    class
+    <strong>ElcodiCartEvents</strong>
+</p>
+
+            <div class="description">
+            <p>Core Events related with all core entities</p>                    </div>
+    
+    
+            <h2>Constants</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td>CART_PRELOAD</td>
+                <td class="last">
+                    <p><em>This event is dispatched before the Cart is loaded</em></p>
+                    <p>event.name : cart.preload
+event.class : CartPreLoadEvent</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>CART_ONLOAD</td>
+                <td class="last">
+                    <p><em>This event is dispatched when the Cart is loaded</em></p>
+                    <p>event.name : cart.onload
+event.class : CartOnLoadEvent</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>CART_ONEMPTY</td>
+                <td class="last">
+                    <p><em>This event is dispatched when the Cart emptied</em></p>
+                    <p>event.name : cart.onempty
+event.class : CartOnEmptyEvent</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>CART_INCONSISTENT</td>
+                <td class="last">
+                    <p><em>This event is dispatched when an inconsistency is found in a cart</em></p>
+                    <p>event.name : cart.inconsistent
+event.class : CartInconsistentEvent</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>CARTLINE_ONADD</td>
+                <td class="last">
+                    <p><em>This event is dispatched when a CartLine is being added into a Cart</em></p>
+                    <p>event.name : cart_line.onadd
+event.class : CartLineOnAddEvent</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>CARTLINE_ONEDIT</td>
+                <td class="last">
+                    <p><em>This event is dispatched when a CartLine edited</em></p>
+                    <p>event.name : cart_line.onedit
+event.class : CartLineOnEditEvent</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>CARTLINE_ONREMOVE</td>
+                <td class="last">
+                    <p><em>This event is dispatched when a CartLine is removed from a Cart</em></p>
+                    <p>event.name : cart_line.onremove
+event.class : CartLineOnRemoveEvent</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>ORDER_PRECREATED</td>
+                <td class="last">
+                    <p><em>This event is dispatched before an order is created</em></p>
+                    <p>event.name : order.precreated
+event.class : OrderPreCreatedEvent</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>ORDER_ONCREATED</td>
+                <td class="last">
+                    <p><em>This event is dispatched when an order is created</em></p>
+                    <p>event.name : order.oncreated
+event.class : OrderOnCreatedEvent</p>
+                </td>
+            </tr>
+                    <tr>
+                <td>ORDERLINE_ONCREATED</td>
+                <td class="last">
+                    <p><em>This event is dispatched when an orderline is created</em></p>
+                    <p>event.name : order_line.oncreated
+event.class : OrderLineOnCreatedEvent</p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>
