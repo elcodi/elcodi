@@ -43,7 +43,7 @@ class SitemapProfile
      *
      * @var array $languages Languages
      */
-    public function __construct(array $languages = null)
+    public function __construct(array $languages = [])
     {
         $this->languages = $languages;
     }

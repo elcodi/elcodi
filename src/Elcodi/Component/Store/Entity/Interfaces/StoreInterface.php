@@ -176,7 +176,7 @@ interface StoreInterface
      *
      * @return $this Self object
      */
-    public function setAddress($address);
+    public function setAddress(AddressInterface $address);
 
     /**
      * Get DefaultLanguage
@@ -192,7 +192,7 @@ interface StoreInterface
      *
      * @return $this Self object
      */
-    public function setDefaultLanguage($defaultLanguage);
+    public function setDefaultLanguage(LanguageInterface $defaultLanguage);
 
     /**
      * Get DefaultCurrency
@@ -208,7 +208,7 @@ interface StoreInterface
      *
      * @return $this Self object
      */
-    public function setDefaultCurrency($defaultCurrency);
+    public function setDefaultCurrency(CurrencyInterface $defaultCurrency);
 
     /**
      * Get RoutingStrategy
@@ -240,7 +240,7 @@ interface StoreInterface
      *
      * @return $this Self object
      */
-    public function setLogo($logo);
+    public function setLogo(ImageInterface $logo);
 
     /**
      * Get SecondaryLogo
@@ -256,7 +256,7 @@ interface StoreInterface
      *
      * @return $this Self object
      */
-    public function setSecondaryLogo($secondaryLogo);
+    public function setSecondaryLogo(ImageInterface $secondaryLogo);
 
     /**
      * Get MobileLogo
@@ -272,7 +272,7 @@ interface StoreInterface
      *
      * @return $this Self object
      */
-    public function setMobileLogo($mobileLogo);
+    public function setMobileLogo(ImageInterface $mobileLogo);
 
     /**
      * Get HeaderImage
@@ -288,7 +288,7 @@ interface StoreInterface
      *
      * @return $this Self object
      */
-    public function setHeaderImage($headerImage);
+    public function setHeaderImage(ImageInterface $headerImage);
 
     /**
      * Get BackgroundImage
@@ -304,5 +304,5 @@ interface StoreInterface
      *
      * @return $this Self object
      */
-    public function setBackgroundImage($backgroundImage);
+    public function setBackgroundImage(ImageInterface $backgroundImage);
 }

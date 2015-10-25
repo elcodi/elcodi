@@ -57,7 +57,7 @@ class TransitionEvent extends Event
      * @param Transition     $transition     Transition
      */
     public function __construct(
-        $object,
+        stdClass $object,
         StateLineStack $stateLineStack,
         Transition $transition
     ) {
@@ -106,7 +106,7 @@ class TransitionEvent extends Event
      * @return self New instance
      */
     public static function create(
-        $object,
+        stdClass $object,
         StateLineStack $stateLineStack,
         Transition $transition
     ) {

@@ -127,7 +127,7 @@ class ImageExtension extends Twig_Extension
      *
      * @return string image route
      */
-    public function resize(ImageInterface $imageMedia, $options)
+    public function resize(ImageInterface $imageMedia, array $options)
     {
         $this->prepareRouterContext();
 

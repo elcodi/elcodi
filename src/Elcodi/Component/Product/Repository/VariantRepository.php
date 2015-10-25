@@ -37,7 +37,7 @@ class VariantRepository extends EntityRepository
      *
      * @return VariantInterface|null Variant if found, or null if not
      */
-    public function findByOptionIds(ProductInterface $product, $optionsSearchedIds = [])
+    public function findByOptionIds(ProductInterface $product, array $optionsSearchedIds = [])
     {
         sort($optionsSearchedIds);
 

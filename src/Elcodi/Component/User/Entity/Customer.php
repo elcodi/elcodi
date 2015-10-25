@@ -244,7 +244,7 @@ class Customer extends AbstractUser implements CustomerInterface
      *
      * @return $this Self object
      */
-    public function setOrders($orders)
+    public function setOrders(Collection $orders)
     {
         $this->orders = $orders;
 
@@ -294,7 +294,7 @@ class Customer extends AbstractUser implements CustomerInterface
      *
      * @return $this Self object
      */
-    public function setCarts($carts)
+    public function setCarts(Collection $carts)
     {
         $this->carts = $carts;
 

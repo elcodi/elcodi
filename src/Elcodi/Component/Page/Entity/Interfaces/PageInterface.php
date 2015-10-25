@@ -133,7 +133,7 @@ interface PageInterface
      *
      * @return $this Self object
      */
-    public function setPublicationDate($publicationDate);
+    public function setPublicationDate(DateTime $publicationDate);
 
     /**
      * Sets the persistence property

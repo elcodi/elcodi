@@ -310,7 +310,7 @@ class LocationApiProviderAdapter implements LocationProviderAdapterInterface
      *
      * @return LocationData[] Location instances
      */
-    private function buildLocations($data)
+    private function buildLocations(array $data)
     {
         $locationInstances = [];
 
@@ -328,7 +328,7 @@ class LocationApiProviderAdapter implements LocationProviderAdapterInterface
      *
      * @return LocationData Location instance
      */
-    private function buildLocation($data)
+    private function buildLocation(array $data)
     {
         return $this
             ->locationDataFactory
