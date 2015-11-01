@@ -1,0 +1,2130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Elcodi\Component\Product\Entity\Variant | Elcodi API Documentation</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/sami.css">
+        <script src="../../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Elcodi_Component_Product_Entity_Variant" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Elcodi API Documentation</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../../../../Elcodi.html">Elcodi</a></li>
+                                        <li><a href="../../../../Elcodi/Component.html">Component</a></li>
+                                        <li><a href="../../../../Elcodi/Component/Product.html">Product</a></li>
+                                        <li><a href="../../../../Elcodi/Component/Product/Entity.html">Entity</a></li>
+    
+                <li>Variant</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>Variant</h1>
+    </div>
+
+    <p>    class
+    <strong>Variant</strong>        implements
+        <a href="../../../../Elcodi/Component/Product/Entity/Interfaces/VariantInterface.html"><abbr title="Elcodi\Component\Product\Entity\Interfaces\VariantInterface">VariantInterface</abbr></a>
+</p>
+
+            <div class="description">
+            <p>Class Variant</p>            <p>A Product variant is a specific combination of finite options
+for a given Product. The multiplicity of attribute/options define
+a "tuple" of a product and its related options such that a specific
+combination is univocally determined.</p>
+
+<p>A Variant will normally have a different SKU than its parent product,
+so it can have independent stock and pricing informations.</p>        </div>
+    
+            <h2>Traits</h2>
+
+        
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../../../Elcodi/Component/Core/Entity/Traits/IdentifiableTrait.html"><abbr title="Elcodi\Component\Core\Entity\Traits\IdentifiableTrait">Elcodi\Component\Core\Entity\Traits\IdentifiableTrait</abbr></a>
+                                    </div>
+                <div class="col-md-6">
+                    Trait IdentifiableTrait
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../../../Elcodi/Component/Product/Entity/Traits/ProductPriceTrait.html"><abbr title="Elcodi\Component\Product\Entity\Traits\ProductPriceTrait">Elcodi\Component\Product\Entity\Traits\ProductPriceTrait</abbr></a>
+                                    </div>
+                <div class="col-md-6">
+                    Trait ProductPriceTrait
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../../../Elcodi/Component/Core/Entity/Traits/EnabledTrait.html"><abbr title="Elcodi\Component\Core\Entity\Traits\EnabledTrait">Elcodi\Component\Core\Entity\Traits\EnabledTrait</abbr></a>
+                                    </div>
+                <div class="col-md-6">
+                    Trait adding enabled/disabled fields and methods
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../../../Elcodi/Component/Core/Entity/Traits/DateTimeTrait.html"><abbr title="Elcodi\Component\Core\Entity\Traits\DateTimeTrait">Elcodi\Component\Core\Entity\Traits\DateTimeTrait</abbr></a>
+                                    </div>
+                <div class="col-md-6">
+                    trait for DateTime common variables and methods
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../../../Elcodi/Component/Media/Entity/Traits/ImagesContainerTrait.html"><abbr title="Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait">Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait</abbr></a>
+                                    </div>
+                <div class="col-md-6">
+                    Trait ImagesContainerTrait
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../../../Elcodi/Component/Media/Entity/Traits/PrincipalImageTrait.html"><abbr title="Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait">Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait</abbr></a>
+                                    </div>
+                <div class="col-md-6">
+                    Trait PrincipalImageTrait
+                </div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <a href="../../../../Elcodi/Component/Product/Entity/Traits/DimensionsTrait.html"><abbr title="Elcodi\Component\Product\Entity\Traits\DimensionsTrait">Elcodi\Component\Product\Entity\Traits\DimensionsTrait</abbr></a>
+                                    </div>
+                <div class="col-md-6">
+                    Trait DimensionsTrait
+                </div>
+            </div>
+            </div>
+    
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    integer
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getId">getId</a>()
+                                            <p>Get Id</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Core/Entity/Traits/IdentifiableTrait.html#method_getId"><abbr title="Elcodi\Component\Core\Entity\Traits\IdentifiableTrait">IdentifiableTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setId">setId</a>(
+    integer $id)
+                                            <p>Sets Id</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Core/Entity/Traits/IdentifiableTrait.html#method_setId"><abbr title="Elcodi\Component\Core\Entity\Traits\IdentifiableTrait">IdentifiableTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Product\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setPrice">setPrice</a>(
+    <abbr title="Elcodi\Component\Product\Entity\Traits\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr> $amount)
+                                            <p>Set price</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/ProductPriceTrait.html#method_setPrice"><abbr title="Elcodi\Component\Product\Entity\Traits\ProductPriceTrait">ProductPriceTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <a href="../../../../Elcodi/Component/Currency/Entity/Interfaces/MoneyInterface.html"><abbr title="Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getPrice">getPrice</a>()
+                                            <p>Get price</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/ProductPriceTrait.html#method_getPrice"><abbr title="Elcodi\Component\Product\Entity\Traits\ProductPriceTrait">ProductPriceTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Product\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setReducedPrice">setReducedPrice</a>(
+    <abbr title="Elcodi\Component\Product\Entity\Traits\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr> $amount)
+                                            <p>Set price</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/ProductPriceTrait.html#method_setReducedPrice"><abbr title="Elcodi\Component\Product\Entity\Traits\ProductPriceTrait">ProductPriceTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <a href="../../../../Elcodi/Component/Currency/Entity/Interfaces/MoneyInterface.html"><abbr title="Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getReducedPrice">getReducedPrice</a>()
+                                            <p>Get price</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/ProductPriceTrait.html#method_getReducedPrice"><abbr title="Elcodi\Component\Product\Entity\Traits\ProductPriceTrait">ProductPriceTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setEnabled">setEnabled</a>(
+    boolean $enabled)
+                                            <p>Set if is enabled</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Core/Entity/Traits/EnabledTrait.html#method_setEnabled"><abbr title="Elcodi\Component\Core\Entity\Traits\EnabledTrait">EnabledTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isEnabled">isEnabled</a>()
+                                            <p>Get is enabled</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Core/Entity/Traits/EnabledTrait.html#method_isEnabled"><abbr title="Elcodi\Component\Core\Entity\Traits\EnabledTrait">EnabledTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_enable">enable</a>()
+                                            <p>Enable</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Core/Entity/Traits/EnabledTrait.html#method_enable"><abbr title="Elcodi\Component\Core\Entity\Traits\EnabledTrait">EnabledTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_disable">disable</a>()
+                                            <p>Disable</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Core/Entity/Traits/EnabledTrait.html#method_disable"><abbr title="Elcodi\Component\Core\Entity\Traits\EnabledTrait">EnabledTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setCreatedAt">setCreatedAt</a>(
+    <abbr title="Elcodi\Component\Core\Entity\Traits\DateTime">DateTime</abbr> $createdAt)
+                                            <p>Set locally created at value</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Core/Entity/Traits/DateTimeTrait.html#method_setCreatedAt"><abbr title="Elcodi\Component\Core\Entity\Traits\DateTimeTrait">DateTimeTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCreatedAt">getCreatedAt</a>()
+                                            <p>Return created_at value</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Core/Entity/Traits/DateTimeTrait.html#method_getCreatedAt"><abbr title="Elcodi\Component\Core\Entity\Traits\DateTimeTrait">DateTimeTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setUpdatedAt">setUpdatedAt</a>(
+    <abbr title="Elcodi\Component\Core\Entity\Traits\DateTime">DateTime</abbr> $updatedAt)
+                                            <p>Set locally updated at value</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Core/Entity/Traits/DateTimeTrait.html#method_setUpdatedAt"><abbr title="Elcodi\Component\Core\Entity\Traits\DateTimeTrait">DateTimeTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getUpdatedAt">getUpdatedAt</a>()
+                                            <p>Return updated_at value</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Core/Entity/Traits/DateTimeTrait.html#method_getUpdatedAt"><abbr title="Elcodi\Component\Core\Entity\Traits\DateTimeTrait">DateTimeTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_loadUpdateAt">loadUpdateAt</a>()
+                                            <p>Method triggered by LifeCycleEvent.</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Core/Entity/Traits/DateTimeTrait.html#method_loadUpdateAt"><abbr title="Elcodi\Component\Core\Entity\Traits\DateTimeTrait">DateTimeTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Media\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addImage">addImage</a>(
+    <abbr title="Elcodi\Component\Media\Entity\Traits\Elcodi\Component\Media\Entity\Interfaces\ImageInterface">ImageInterface</abbr> $image)
+                                            <p>Set add image</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Media/Entity/Traits/ImagesContainerTrait.html#method_addImage"><abbr title="Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait">ImagesContainerTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Media\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_removeImage">removeImage</a>(
+    <abbr title="Elcodi\Component\Media\Entity\Traits\Elcodi\Component\Media\Entity\Interfaces\ImageInterface">ImageInterface</abbr> $image)
+                                            <p>Get if entity is enabled</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Media/Entity/Traits/ImagesContainerTrait.html#method_removeImage"><abbr title="Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait">ImagesContainerTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Doctrine\Common\Collections\ArrayCollection">ArrayCollection</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getImages">getImages</a>()
+                                            <p>Get all images</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Media/Entity/Traits/ImagesContainerTrait.html#method_getImages"><abbr title="Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait">ImagesContainerTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Doctrine\Common\Collections\ArrayCollection">ArrayCollection</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getSortedImages">getSortedImages</a>()
+                                            <p>Get sorted images</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Media/Entity/Traits/ImagesContainerTrait.html#method_getSortedImages"><abbr title="Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait">ImagesContainerTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Media\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setImages">setImages</a>(
+    <abbr title="Elcodi\Component\Media\Entity\Traits\Doctrine\Common\Collections\ArrayCollection">ArrayCollection</abbr> $images)
+                                            <p>Set images</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Media/Entity/Traits/ImagesContainerTrait.html#method_setImages"><abbr title="Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait">ImagesContainerTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getImagesSort">getImagesSort</a>()
+                                            <p>Get ImagesSort</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Media/Entity/Traits/ImagesContainerTrait.html#method_getImagesSort"><abbr title="Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait">ImagesContainerTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Media\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setImagesSort">setImagesSort</a>(
+    string $imagesSort)
+                                            <p>Sets ImagesSort</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Media/Entity/Traits/ImagesContainerTrait.html#method_setImagesSort"><abbr title="Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait">ImagesContainerTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Media\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setPrincipalImage">setPrincipalImage</a>(
+    <abbr title="Elcodi\Component\Media\Entity\Traits\Elcodi\Component\Media\Entity\Interfaces\ImageInterface">ImageInterface</abbr> $principalImage = null)
+                                            <p>Set the principalImage</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Media/Entity/Traits/PrincipalImageTrait.html#method_setPrincipalImage"><abbr title="Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait">PrincipalImageTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <a href="../../../../Elcodi/Component/Media/Entity/Interfaces/ImageInterface.html"><abbr title="Elcodi\Component\Media\Entity\Interfaces\ImageInterface">ImageInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getPrincipalImage">getPrincipalImage</a>()
+                                            <p>Get the principalImage</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Media/Entity/Traits/PrincipalImageTrait.html#method_getPrincipalImage"><abbr title="Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait">PrincipalImageTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    integer
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getDepth">getDepth</a>()
+                                            <p>Get Depth</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/DimensionsTrait.html#method_getDepth"><abbr title="Elcodi\Component\Product\Entity\Traits\DimensionsTrait">DimensionsTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Product\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setDepth">setDepth</a>(
+    integer $depth)
+                                            <p>Sets Depth</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/DimensionsTrait.html#method_setDepth"><abbr title="Elcodi\Component\Product\Entity\Traits\DimensionsTrait">DimensionsTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    integer
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getHeight">getHeight</a>()
+                                            <p>Get Height</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/DimensionsTrait.html#method_getHeight"><abbr title="Elcodi\Component\Product\Entity\Traits\DimensionsTrait">DimensionsTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Product\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setHeight">setHeight</a>(
+    integer $height)
+                                            <p>Sets Height</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/DimensionsTrait.html#method_setHeight"><abbr title="Elcodi\Component\Product\Entity\Traits\DimensionsTrait">DimensionsTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    integer
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getWeight">getWeight</a>()
+                                            <p>Get Weight</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/DimensionsTrait.html#method_getWeight"><abbr title="Elcodi\Component\Product\Entity\Traits\DimensionsTrait">DimensionsTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Product\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setWeight">setWeight</a>(
+    integer $weight)
+                                            <p>Sets Weight</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/DimensionsTrait.html#method_setWeight"><abbr title="Elcodi\Component\Product\Entity\Traits\DimensionsTrait">DimensionsTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    integer
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getWidth">getWidth</a>()
+                                            <p>Get Width</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/DimensionsTrait.html#method_getWidth"><abbr title="Elcodi\Component\Product\Entity\Traits\DimensionsTrait">DimensionsTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Product\Entity\Traits\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setWidth">setWidth</a>(
+    integer $width)
+                                            <p>Sets Width</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/DimensionsTrait.html#method_setWidth"><abbr title="Elcodi\Component\Product\Entity\Traits\DimensionsTrait">DimensionsTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getSku">getSku</a>()
+                                            <p>Gets the variant SKU</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setSku">setSku</a>(
+    string $sku)
+                                            <p>Sets the variant SKU</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    integer
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getStock">getStock</a>()
+                                            <p>Gets the variant stock</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setStock">setStock</a>(
+    integer $stock)
+                                            <p>Sets the variant stock</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Doctrine\Common\Collections\Collection">Collection</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getOptions">getOptions</a>()
+                                            <p>Gets this variant option values</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setOptions">setOptions</a>(
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\Doctrine\Common\Collections\Collection">Collection</abbr> $options)
+                                            <p>Sets this variant option values</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addOption">addOption</a>(
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface">ValueInterface</abbr> $option)
+                                            <p>Adds an option to this variant</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_removeOption">removeOption</a>(
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface">ValueInterface</abbr> $option)
+                                            <p>Removes an option from this variant</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <a href="../../../../Elcodi/Component/Product/Entity/Interfaces/ProductInterface.html"><abbr title="Elcodi\Component\Product\Entity\Interfaces\ProductInterface">ProductInterface</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getProduct">getProduct</a>()
+                                            <p>Gets parent product</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setProduct">setProduct</a>(
+    <a href="../../../../Elcodi/Component/Product/Entity/Interfaces/ProductInterface.html"><abbr title="Elcodi\Component\Product\Entity\Interfaces\ProductInterface">ProductInterface</abbr></a> $product)
+                                            <p>Sets parent product</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_getId">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Core/Entity/Traits/IdentifiableTrait.html#method_getId"><abbr title="Elcodi\Component\Core\Entity\Traits\IdentifiableTrait">IdentifiableTrait</abbr></a> at line 37</div>
+        <code>                    
+    integer
+    <strong>getId</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get Id</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    integer</td>
+            <td>Id</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setId">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Core/Entity/Traits/IdentifiableTrait.html#method_setId"><abbr title="Elcodi\Component\Core\Entity\Traits\IdentifiableTrait">IdentifiableTrait</abbr></a> at line 49</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+    <strong>setId</strong>(
+    integer $id)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sets Id</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    integer</td>
+                <td>$id</td>
+                <td>Id</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setPrice">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/ProductPriceTrait.html#method_setPrice"><abbr title="Elcodi\Component\Product\Entity\Traits\ProductPriceTrait">ProductPriceTrait</abbr></a> at line 62</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Product\Entity\Traits\$this">$this</abbr>
+    <strong>setPrice</strong>(
+    <abbr title="Elcodi\Component\Product\Entity\Traits\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr> $amount)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Set price</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Product\Entity\Traits\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></td>
+                <td>$amount</td>
+                <td>Price</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Product\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPrice">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/ProductPriceTrait.html#method_getPrice"><abbr title="Elcodi\Component\Product\Entity\Traits\ProductPriceTrait">ProductPriceTrait</abbr></a> at line 75</div>
+        <code>                    
+    <a href="../../../../Elcodi/Component/Currency/Entity/Interfaces/MoneyInterface.html"><abbr title="Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></a>
+    <strong>getPrice</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get price</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a href="../../../../Elcodi/Component/Currency/Entity/Interfaces/MoneyInterface.html"><abbr title="Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></a></td>
+            <td>Price</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setReducedPrice">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/ProductPriceTrait.html#method_setReducedPrice"><abbr title="Elcodi\Component\Product\Entity\Traits\ProductPriceTrait">ProductPriceTrait</abbr></a> at line 90</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Product\Entity\Traits\$this">$this</abbr>
+    <strong>setReducedPrice</strong>(
+    <abbr title="Elcodi\Component\Product\Entity\Traits\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr> $amount)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Set price</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Product\Entity\Traits\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></td>
+                <td>$amount</td>
+                <td>Reduced Price</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Product\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getReducedPrice">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/ProductPriceTrait.html#method_getReducedPrice"><abbr title="Elcodi\Component\Product\Entity\Traits\ProductPriceTrait">ProductPriceTrait</abbr></a> at line 103</div>
+        <code>                    
+    <a href="../../../../Elcodi/Component/Currency/Entity/Interfaces/MoneyInterface.html"><abbr title="Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></a>
+    <strong>getReducedPrice</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get price</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a href="../../../../Elcodi/Component/Currency/Entity/Interfaces/MoneyInterface.html"><abbr title="Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface">MoneyInterface</abbr></a></td>
+            <td>Reduced Price</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setEnabled">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Core/Entity/Traits/EnabledTrait.html#method_setEnabled"><abbr title="Elcodi\Component\Core\Entity\Traits\EnabledTrait">EnabledTrait</abbr></a> at line 39</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+    <strong>setEnabled</strong>(
+    boolean $enabled)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Set if is enabled</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    boolean</td>
+                <td>$enabled</td>
+                <td>enabled value</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isEnabled">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Core/Entity/Traits/EnabledTrait.html#method_isEnabled"><abbr title="Elcodi\Component\Core\Entity\Traits\EnabledTrait">EnabledTrait</abbr></a> at line 51</div>
+        <code>                    
+    boolean
+    <strong>isEnabled</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get is enabled</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    boolean</td>
+            <td>is enabled</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_enable">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Core/Entity/Traits/EnabledTrait.html#method_enable"><abbr title="Elcodi\Component\Core\Entity\Traits\EnabledTrait">EnabledTrait</abbr></a> at line 61</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+    <strong>enable</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Enable</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_disable">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Core/Entity/Traits/EnabledTrait.html#method_disable"><abbr title="Elcodi\Component\Core\Entity\Traits\EnabledTrait">EnabledTrait</abbr></a> at line 71</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+    <strong>disable</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Disable</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setCreatedAt">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Core/Entity/Traits/DateTimeTrait.html#method_setCreatedAt"><abbr title="Elcodi\Component\Core\Entity\Traits\DateTimeTrait">DateTimeTrait</abbr></a> at line 46</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+    <strong>setCreatedAt</strong>(
+    <abbr title="Elcodi\Component\Core\Entity\Traits\DateTime">DateTime</abbr> $createdAt)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Set locally created at value</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Core\Entity\Traits\DateTime">DateTime</abbr></td>
+                <td>$createdAt</td>
+                <td>Created at value</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCreatedAt">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Core/Entity/Traits/DateTimeTrait.html#method_getCreatedAt"><abbr title="Elcodi\Component\Core\Entity\Traits\DateTimeTrait">DateTimeTrait</abbr></a> at line 58</div>
+        <code>                    
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a>
+    <strong>getCreatedAt</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Return created_at value</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setUpdatedAt">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Core/Entity/Traits/DateTimeTrait.html#method_setUpdatedAt"><abbr title="Elcodi\Component\Core\Entity\Traits\DateTimeTrait">DateTimeTrait</abbr></a> at line 70</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr>
+    <strong>setUpdatedAt</strong>(
+    <abbr title="Elcodi\Component\Core\Entity\Traits\DateTime">DateTime</abbr> $updatedAt)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Set locally updated at value</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Core\Entity\Traits\DateTime">DateTime</abbr></td>
+                <td>$updatedAt</td>
+                <td>Updated at value</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Core\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getUpdatedAt">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Core/Entity/Traits/DateTimeTrait.html#method_getUpdatedAt"><abbr title="Elcodi\Component\Core\Entity\Traits\DateTimeTrait">DateTimeTrait</abbr></a> at line 82</div>
+        <code>                    
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a>
+    <strong>getUpdatedAt</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Return updated_at value</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a target="_blank" href="http://php.net/DateTime"><abbr title="DateTime">DateTime</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_loadUpdateAt">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Core/Entity/Traits/DateTimeTrait.html#method_loadUpdateAt"><abbr title="Elcodi\Component\Core\Entity\Traits\DateTimeTrait">DateTimeTrait</abbr></a> at line 91</div>
+        <code>                    
+    
+    <strong>loadUpdateAt</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Method triggered by LifeCycleEvent.</p>                    <p>Sets or updates $this->updatedAt</p>            </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addImage">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Media/Entity/Traits/ImagesContainerTrait.html#method_addImage"><abbr title="Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait">ImagesContainerTrait</abbr></a> at line 48</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Media\Entity\Traits\$this">$this</abbr>
+    <strong>addImage</strong>(
+    <abbr title="Elcodi\Component\Media\Entity\Traits\Elcodi\Component\Media\Entity\Interfaces\ImageInterface">ImageInterface</abbr> $image)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Set add image</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Media\Entity\Traits\Elcodi\Component\Media\Entity\Interfaces\ImageInterface">ImageInterface</abbr></td>
+                <td>$image</td>
+                <td>Image object to be added</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Media\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeImage">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Media/Entity/Traits/ImagesContainerTrait.html#method_removeImage"><abbr title="Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait">ImagesContainerTrait</abbr></a> at line 62</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Media\Entity\Traits\$this">$this</abbr>
+    <strong>removeImage</strong>(
+    <abbr title="Elcodi\Component\Media\Entity\Traits\Elcodi\Component\Media\Entity\Interfaces\ImageInterface">ImageInterface</abbr> $image)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get if entity is enabled</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Media\Entity\Traits\Elcodi\Component\Media\Entity\Interfaces\ImageInterface">ImageInterface</abbr></td>
+                <td>$image</td>
+                <td>Image object to be removed</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Media\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getImages">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Media/Entity/Traits/ImagesContainerTrait.html#method_getImages"><abbr title="Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait">ImagesContainerTrait</abbr></a> at line 74</div>
+        <code>                    
+    <abbr title="Doctrine\Common\Collections\ArrayCollection">ArrayCollection</abbr>
+    <strong>getImages</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get all images</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Doctrine\Common\Collections\ArrayCollection">ArrayCollection</abbr></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSortedImages">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Media/Entity/Traits/ImagesContainerTrait.html#method_getSortedImages"><abbr title="Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait">ImagesContainerTrait</abbr></a> at line 84</div>
+        <code>                    
+    <abbr title="Doctrine\Common\Collections\ArrayCollection">ArrayCollection</abbr>
+    <strong>getSortedImages</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get sorted images</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Doctrine\Common\Collections\ArrayCollection">ArrayCollection</abbr></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setImages">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Media/Entity/Traits/ImagesContainerTrait.html#method_setImages"><abbr title="Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait">ImagesContainerTrait</abbr></a> at line 118</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Media\Entity\Traits\$this">$this</abbr>
+    <strong>setImages</strong>(
+    <abbr title="Elcodi\Component\Media\Entity\Traits\Doctrine\Common\Collections\ArrayCollection">ArrayCollection</abbr> $images)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Set images</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Media\Entity\Traits\Doctrine\Common\Collections\ArrayCollection">ArrayCollection</abbr></td>
+                <td>$images</td>
+                <td>Images</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Media\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getImagesSort">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Media/Entity/Traits/ImagesContainerTrait.html#method_getImagesSort"><abbr title="Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait">ImagesContainerTrait</abbr></a> at line 130</div>
+        <code>                    
+    string
+    <strong>getImagesSort</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get ImagesSort</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    string</td>
+            <td>ImagesSort</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setImagesSort">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Media/Entity/Traits/ImagesContainerTrait.html#method_setImagesSort"><abbr title="Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait">ImagesContainerTrait</abbr></a> at line 142</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Media\Entity\Traits\$this">$this</abbr>
+    <strong>setImagesSort</strong>(
+    string $imagesSort)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sets ImagesSort</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    string</td>
+                <td>$imagesSort</td>
+                <td>ImagesSort</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Media\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setPrincipalImage">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Media/Entity/Traits/PrincipalImageTrait.html#method_setPrincipalImage"><abbr title="Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait">PrincipalImageTrait</abbr></a> at line 39</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Media\Entity\Traits\$this">$this</abbr>
+    <strong>setPrincipalImage</strong>(
+    <abbr title="Elcodi\Component\Media\Entity\Traits\Elcodi\Component\Media\Entity\Interfaces\ImageInterface">ImageInterface</abbr> $principalImage = null)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Set the principalImage</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Media\Entity\Traits\Elcodi\Component\Media\Entity\Interfaces\ImageInterface">ImageInterface</abbr></td>
+                <td>$principalImage</td>
+                <td>Principal image</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Media\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPrincipalImage">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Media/Entity/Traits/PrincipalImageTrait.html#method_getPrincipalImage"><abbr title="Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait">PrincipalImageTrait</abbr></a> at line 51</div>
+        <code>                    
+    <a href="../../../../Elcodi/Component/Media/Entity/Interfaces/ImageInterface.html"><abbr title="Elcodi\Component\Media\Entity\Interfaces\ImageInterface">ImageInterface</abbr></a>
+    <strong>getPrincipalImage</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get the principalImage</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a href="../../../../Elcodi/Component/Media/Entity/Interfaces/ImageInterface.html"><abbr title="Elcodi\Component\Media\Entity\Interfaces\ImageInterface">ImageInterface</abbr></a></td>
+            <td>Principal image</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDepth">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/DimensionsTrait.html#method_getDepth"><abbr title="Elcodi\Component\Product\Entity\Traits\DimensionsTrait">DimensionsTrait</abbr></a> at line 58</div>
+        <code>                    
+    integer
+    <strong>getDepth</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get Depth</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    integer</td>
+            <td>Depth</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setDepth">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/DimensionsTrait.html#method_setDepth"><abbr title="Elcodi\Component\Product\Entity\Traits\DimensionsTrait">DimensionsTrait</abbr></a> at line 70</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Product\Entity\Traits\$this">$this</abbr>
+    <strong>setDepth</strong>(
+    integer $depth)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sets Depth</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    integer</td>
+                <td>$depth</td>
+                <td>Depth</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Product\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getHeight">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/DimensionsTrait.html#method_getHeight"><abbr title="Elcodi\Component\Product\Entity\Traits\DimensionsTrait">DimensionsTrait</abbr></a> at line 82</div>
+        <code>                    
+    integer
+    <strong>getHeight</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get Height</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    integer</td>
+            <td>Height</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setHeight">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/DimensionsTrait.html#method_setHeight"><abbr title="Elcodi\Component\Product\Entity\Traits\DimensionsTrait">DimensionsTrait</abbr></a> at line 94</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Product\Entity\Traits\$this">$this</abbr>
+    <strong>setHeight</strong>(
+    integer $height)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sets Height</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    integer</td>
+                <td>$height</td>
+                <td>Height</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Product\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getWeight">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/DimensionsTrait.html#method_getWeight"><abbr title="Elcodi\Component\Product\Entity\Traits\DimensionsTrait">DimensionsTrait</abbr></a> at line 106</div>
+        <code>                    
+    integer
+    <strong>getWeight</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get Weight</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    integer</td>
+            <td>Weight</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setWeight">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/DimensionsTrait.html#method_setWeight"><abbr title="Elcodi\Component\Product\Entity\Traits\DimensionsTrait">DimensionsTrait</abbr></a> at line 118</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Product\Entity\Traits\$this">$this</abbr>
+    <strong>setWeight</strong>(
+    integer $weight)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sets Weight</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    integer</td>
+                <td>$weight</td>
+                <td>Weight</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Product\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getWidth">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/DimensionsTrait.html#method_getWidth"><abbr title="Elcodi\Component\Product\Entity\Traits\DimensionsTrait">DimensionsTrait</abbr></a> at line 130</div>
+        <code>                    
+    integer
+    <strong>getWidth</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get Width</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    integer</td>
+            <td>Width</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setWidth">
+        <div class="location">in 
+    <a href="../../../../Elcodi/Component/Product/Entity/Traits/DimensionsTrait.html#method_setWidth"><abbr title="Elcodi\Component\Product\Entity\Traits\DimensionsTrait">DimensionsTrait</abbr></a> at line 142</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Product\Entity\Traits\$this">$this</abbr>
+    <strong>setWidth</strong>(
+    integer $width)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sets Width</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    integer</td>
+                <td>$width</td>
+                <td>Width</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Product\Entity\Traits\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSku">
+        <div class="location">at line 87</div>
+        <code>                    
+    string
+    <strong>getSku</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Gets the variant SKU</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    string</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setSku">
+        <div class="location">at line 99</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\$this">$this</abbr>
+    <strong>setSku</strong>(
+    string $sku)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sets the variant SKU</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    string</td>
+                <td>$sku</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getStock">
+        <div class="location">at line 111</div>
+        <code>                    
+    integer
+    <strong>getStock</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Gets the variant stock</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    integer</td>
+            <td>stock</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setStock">
+        <div class="location">at line 123</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\$this">$this</abbr>
+    <strong>setStock</strong>(
+    integer $stock)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sets the variant stock</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    integer</td>
+                <td>$stock</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getOptions">
+        <div class="location">at line 135</div>
+        <code>                    
+    <abbr title="Doctrine\Common\Collections\Collection">Collection</abbr>
+    <strong>getOptions</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Gets this variant option values</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Doctrine\Common\Collections\Collection">Collection</abbr></td>
+            <td>Variant options</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setOptions">
+        <div class="location">at line 147</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\$this">$this</abbr>
+    <strong>setOptions</strong>(
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\Doctrine\Common\Collections\Collection">Collection</abbr> $options)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sets this variant option values</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\Doctrine\Common\Collections\Collection">Collection</abbr></td>
+                <td>$options</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addOption">
+        <div class="location">at line 195</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\$this">$this</abbr>
+    <strong>addOption</strong>(
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface">ValueInterface</abbr> $option)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Adds an option to this variant</p>                    <p>Passed option Attribute is also added to the attribute collection
+of the parent Product.</p>
+
+<p>If Variant::product is not set or does not implement ProductInterface
+a LogicException is thrown: presence of the parent product is mandatory
+since adding an Option to a Variant also updates the Parent product
+Attribute collection. This way Variant::options and Product::attributes
+are synchronized</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface">ValueInterface</abbr></td>
+                <td>$option</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/LogicException"><abbr title="LogicException">LogicException</abbr></a></td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeOption">
+        <div class="location">at line 214</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\$this">$this</abbr>
+    <strong>removeOption</strong>(
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface">ValueInterface</abbr> $option)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Removes an option from this variant</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface">ValueInterface</abbr></td>
+                <td>$option</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getProduct">
+        <div class="location">at line 226</div>
+        <code>                    
+    <a href="../../../../Elcodi/Component/Product/Entity/Interfaces/ProductInterface.html"><abbr title="Elcodi\Component\Product\Entity\Interfaces\ProductInterface">ProductInterface</abbr></a>
+    <strong>getProduct</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Gets parent product</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a href="../../../../Elcodi/Component/Product/Entity/Interfaces/ProductInterface.html"><abbr title="Elcodi\Component\Product\Entity\Interfaces\ProductInterface">ProductInterface</abbr></a></td>
+            <td>Product</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setProduct">
+        <div class="location">at line 238</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\$this">$this</abbr>
+    <strong>setProduct</strong>(
+    <a href="../../../../Elcodi/Component/Product/Entity/Interfaces/ProductInterface.html"><abbr title="Elcodi\Component\Product\Entity\Interfaces\ProductInterface">ProductInterface</abbr></a> $product)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sets parent product</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <a href="../../../../Elcodi/Component/Product/Entity/Interfaces/ProductInterface.html"><abbr title="Elcodi\Component\Product\Entity\Interfaces\ProductInterface">ProductInterface</abbr></a></td>
+                <td>$product</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Product\Entity\Interfaces\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

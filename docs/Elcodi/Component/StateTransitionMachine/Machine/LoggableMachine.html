@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Elcodi\Component\StateTransitionMachine\Machine\LoggableMachine | Elcodi API Documentation</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/sami.css">
+        <script src="../../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Elcodi_Component_StateTransitionMachine_Machine_LoggableMachine" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Elcodi API Documentation</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../../../../Elcodi.html">Elcodi</a></li>
+                                        <li><a href="../../../../Elcodi/Component.html">Component</a></li>
+                                        <li><a href="../../../../Elcodi/Component/StateTransitionMachine.html">StateTransitionMachine</a></li>
+                                        <li><a href="../../../../Elcodi/Component/StateTransitionMachine/Machine.html">Machine</a></li>
+    
+                <li>LoggableMachine</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>LoggableMachine</h1>
+    </div>
+
+    <p>    class
+    <strong>LoggableMachine</strong>        implements
+        <a href="../../../../Elcodi/Component/StateTransitionMachine/Machine/Interfaces/MachineInterface.html"><abbr title="Elcodi\Component\StateTransitionMachine\Machine\Interfaces\MachineInterface">MachineInterface</abbr></a>
+</p>
+
+            <div class="description">
+            <p>Class LoggableMachine</p>                    </div>
+    
+    
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(
+    <abbr title="Elcodi\Component\StateTransitionMachine\Machine\Elcodi\Component\StateTransitionMachine\Machine\Interfaces\MachineInterface">MachineInterface</abbr> $machine, 
+    <abbr title="Elcodi\Component\StateTransitionMachine\Machine\Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
+                                            <p>Construct</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getId">getId</a>()
+                                            <p>Get machine id</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getPointOfEntry">getPointOfEntry</a>()
+                                            <p>Get point of entry</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <a href="../../../../Elcodi/Component/StateTransitionMachine/Definition/Transition.html"><abbr title="Elcodi\Component\StateTransitionMachine\Definition\Transition">Transition</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_transition">transition</a>(
+    string $startStateName, 
+    string $transitionName)
+                                            <p>Applies a transition from a state</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <a href="../../../../Elcodi/Component/StateTransitionMachine/Definition/Transition.html"><abbr title="Elcodi\Component\StateTransitionMachine\Definition\Transition">Transition</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_reachState">reachState</a>(
+    string $startStateName, 
+    string $finalStateName)
+                                            <p>Reaches a state given a start state</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\StateTransitionMachine\Machine\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_logTransition">logTransition</a>(
+    <abbr title="Elcodi\Component\StateTransitionMachine\Machine\Elcodi\Component\StateTransitionMachine\Definition\Transition">Transition</abbr> $transition)
+                                            <p>Log transition</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at line 53</div>
+        <code>                    
+    
+    <strong>__construct</strong>(
+    <abbr title="Elcodi\Component\StateTransitionMachine\Machine\Elcodi\Component\StateTransitionMachine\Machine\Interfaces\MachineInterface">MachineInterface</abbr> $machine, 
+    <abbr title="Elcodi\Component\StateTransitionMachine\Machine\Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Construct</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\StateTransitionMachine\Machine\Elcodi\Component\StateTransitionMachine\Machine\Interfaces\MachineInterface">MachineInterface</abbr></td>
+                <td>$machine</td>
+                <td>Machine</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\StateTransitionMachine\Machine\Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+                <td>$logger</td>
+                <td>Logger</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getId">
+        <div class="location">at line 66</div>
+        <code>                    
+    string
+    <strong>getId</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get machine id</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    string</td>
+            <td>Machine identifier</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPointOfEntry">
+        <div class="location">at line 78</div>
+        <code>                    
+    string
+    <strong>getPointOfEntry</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get point of entry</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    string</td>
+            <td>Point of entry</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_transition">
+        <div class="location">at line 96</div>
+        <code>                    
+    <a href="../../../../Elcodi/Component/StateTransitionMachine/Definition/Transition.html"><abbr title="Elcodi\Component\StateTransitionMachine\Definition\Transition">Transition</abbr></a>
+    <strong>transition</strong>(
+    string $startStateName, 
+    string $transitionName)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Applies a transition from a state</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    string</td>
+                <td>$startStateName</td>
+                <td>Start state name</td>
+            </tr>
+                    <tr>
+                <td>
+    string</td>
+                <td>$transitionName</td>
+                <td>Transition name</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a href="../../../../Elcodi/Component/StateTransitionMachine/Definition/Transition.html"><abbr title="Elcodi\Component\StateTransitionMachine\Definition\Transition">Transition</abbr></a></td>
+            <td>Transition created</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Elcodi/Component/StateTransitionMachine/Exception/TransitionNotAccessibleException.html"><abbr title="Elcodi\Component\StateTransitionMachine\Exception\TransitionNotAccessibleException">TransitionNotAccessibleException</abbr></a></td>
+                <td>Transition not accessible</td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Elcodi/Component/StateTransitionMachine/Exception/TransitionNotValidException.html"><abbr title="Elcodi\Component\StateTransitionMachine\Exception\TransitionNotValidException">TransitionNotValidException</abbr></a></td>
+                <td>Invalid transition name</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_reachState">
+        <div class="location">at line 122</div>
+        <code>                    
+    <a href="../../../../Elcodi/Component/StateTransitionMachine/Definition/Transition.html"><abbr title="Elcodi\Component\StateTransitionMachine\Definition\Transition">Transition</abbr></a>
+    <strong>reachState</strong>(
+    string $startStateName, 
+    string $finalStateName)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Reaches a state given a start state</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    string</td>
+                <td>$startStateName</td>
+                <td>Start state name</td>
+            </tr>
+                    <tr>
+                <td>
+    string</td>
+                <td>$finalStateName</td>
+                <td>Final state name</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a href="../../../../Elcodi/Component/StateTransitionMachine/Definition/Transition.html"><abbr title="Elcodi\Component\StateTransitionMachine\Definition\Transition">Transition</abbr></a></td>
+            <td>Transition created</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Elcodi/Component/StateTransitionMachine/Exception/StateNotReachableException.html"><abbr title="Elcodi\Component\StateTransitionMachine\Exception\StateNotReachableException">StateNotReachableException</abbr></a></td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_logTransition">
+        <div class="location">at line 145</div>
+        <code>                    
+    <abbr title="Elcodi\Component\StateTransitionMachine\Machine\$this">$this</abbr>
+    <strong>logTransition</strong>(
+    <abbr title="Elcodi\Component\StateTransitionMachine\Machine\Elcodi\Component\StateTransitionMachine\Definition\Transition">Transition</abbr> $transition)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Log transition</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\StateTransitionMachine\Machine\Elcodi\Component\StateTransitionMachine\Definition\Transition">Transition</abbr></td>
+                <td>$transition</td>
+                <td>Transition to log</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\StateTransitionMachine\Machine\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>
