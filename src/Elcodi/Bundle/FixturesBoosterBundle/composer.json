@@ -30,7 +30,7 @@
         }
     ],
     "require": {
-        "php": ">=5.4",
+        "php": "^5.4|^7.0",
 
         "symfony/http-kernel": "^2.7",
         "symfony/console": "^2.7",
