@@ -6,7 +6,7 @@ os: Windows Server 2012
 
 environment:
   matrix:
-  - PHP_VERSION: 5.6.14
+  - PHP_VERSION: 5.6.15
     PHP_DEP_VER: 5.6
   - PHP_VERSION: 5.5.30
     PHP_DEP_VER: 5.5
@@ -51,4 +51,4 @@ install:
 
 test_script:
   - cd %APPVEYOR_BUILD_FOLDER%
-  - bin\phpunit.bat --verbose
+  - vendor\bin\phpunit.bat --verbose
