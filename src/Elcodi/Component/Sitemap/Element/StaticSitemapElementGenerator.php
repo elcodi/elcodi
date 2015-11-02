@@ -79,7 +79,7 @@ class StaticSitemapElementGenerator implements SitemapElementGeneratorInterface
     ) {
         $this->sitemapElementFactory = $sitemapElementFactory;
         $this->transformer = $transformer;
-        $this->route = $route;
+        $this->route = (string) $route;
         $this->changeFrequency = $changeFrequency;
         $this->priority = $priority;
     }

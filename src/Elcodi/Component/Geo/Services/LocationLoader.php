@@ -65,7 +65,7 @@ class LocationLoader
     {
         $content = $this
             ->locationLoaderAdapter
-            ->getSqlForCountry($countryIso);
+            ->getSqlForCountry((string) $countryIso);
 
         $statement = $this
             ->locationEntityManager

@@ -69,7 +69,7 @@ class Zone implements ZoneInterface
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
 
         return $this;
     }
@@ -93,7 +93,7 @@ class Zone implements ZoneInterface
      */
     public function setCode($code)
     {
-        $this->code = $code;
+        $this->code = (string) $code;
 
         return $this;
     }
@@ -135,7 +135,7 @@ class Zone implements ZoneInterface
             array_unique(
                 array_merge(
                     $this->getLocations(),
-                    [$location]
+                    [(string) $location]
                 )
             )
         );
@@ -153,10 +153,10 @@ class Zone implements ZoneInterface
     public function removeLocation($location)
     {
         $locations = $this->getLocations();
-        $key = array_search($location, $locations);
+        $key = array_search((string) $location, $locations);
 
         if ($key !== false) {
-            unset($locations[$location]);
+            unset($locations[(string) $location]);
         }
 
         $this->setLocations($locations);

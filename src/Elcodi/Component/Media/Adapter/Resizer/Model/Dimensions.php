@@ -131,14 +131,14 @@ class Dimensions
         $newHeight,
         $type
     ) {
-        $this->originalWidth = $originalWidth;
-        $this->originalHeight = $originalHeight;
+        $this->originalWidth = (float) $originalWidth;
+        $this->originalHeight = (float) $originalHeight;
         $this->originalAspectRatio = $originalWidth / $originalHeight;
 
         $this->resolveDimensions(
-            $newWidth,
-            $newHeight,
-            $type
+            (float) $newWidth,
+            (float) $newHeight,
+            (int) $type
         );
     }
 
@@ -156,6 +156,10 @@ class Dimensions
         $newHeight,
         $type
     ) {
+        $newWidth = (float) $newWidth;
+        $newHeight = (float) $newHeight;
+        $type = (int) $type;
+
         $this->dstX = 0;
         $this->dstY = 0;
         $this->dstWidth = $newWidth;
@@ -379,11 +383,11 @@ class Dimensions
         $type
     ) {
         return new self(
-            $originalWidth,
-            $originalHeight,
-            $newWidth,
-            $newHeight,
-            $type
+            (float) $originalWidth,
+            (float) $originalHeight,
+            (float) $newWidth,
+            (float) $newHeight,
+            (int) $type
         );
     }
 }

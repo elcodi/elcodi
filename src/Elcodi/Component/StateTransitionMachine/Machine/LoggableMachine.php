@@ -100,8 +100,8 @@ class LoggableMachine implements MachineInterface
         $transition = $this
             ->machine
             ->transition(
-                $startStateName,
-                $transitionName
+                (string) $startStateName,
+                (string) $transitionName
             );
 
         $this->logTransition($transition);
@@ -126,8 +126,8 @@ class LoggableMachine implements MachineInterface
         $transition = $this
             ->machine
             ->reachState(
-                $startStateName,
-                $finalStateName
+                (string) $startStateName,
+                (string) $finalStateName
             );
 
         $this->logTransition($transition);

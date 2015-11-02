@@ -52,7 +52,7 @@ class DefaultCurrencyWrapper implements WrapperInterface
         $defaultCurrencyIsoCode
     ) {
         $this->currencyRepository = $currencyRepository;
-        $this->defaultCurrencyIsoCode = $defaultCurrencyIsoCode;
+        $this->defaultCurrencyIsoCode = (string) $defaultCurrencyIsoCode;
     }
 
     /**

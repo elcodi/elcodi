@@ -106,7 +106,7 @@ class CurrencyExchangeRate implements CurrencyExchangeRateInterface
      */
     public function setExchangeRate($exchangeRate)
     {
-        $this->exchangeRate = $exchangeRate;
+        $this->exchangeRate = (float) $exchangeRate;
 
         return $this;
     }

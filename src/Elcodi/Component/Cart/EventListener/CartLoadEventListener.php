@@ -112,7 +112,7 @@ class CartLoadEventListener
         $this->cartManager = $cartManager;
         $this->currencyWrapper = $currencyWrapper;
         $this->currencyConverter = $currencyConverter;
-        $this->useStock = $useStock;
+        $this->useStock = (bool) $useStock;
     }
 
     /**

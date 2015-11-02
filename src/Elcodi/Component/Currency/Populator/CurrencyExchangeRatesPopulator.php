@@ -73,7 +73,7 @@ class CurrencyExchangeRatesPopulator
         $this->currencyExchangeRatesAdapter = $currencyExchangeRatesAdapter;
         $this->currencyExchangeRateObjectDirector = $currencyExchangeRateObjectDirector;
         $this->currencyRepository = $currencyRepository;
-        $this->defaultCurrency = $defaultCurrency;
+        $this->defaultCurrency = (string) $defaultCurrency;
     }
 
     /**

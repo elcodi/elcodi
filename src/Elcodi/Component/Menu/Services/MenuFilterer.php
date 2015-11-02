@@ -49,8 +49,8 @@ class MenuFilterer extends AbstractMenuModifier implements MenuChangerInterface
         $this->addElement(
             $menuFilter,
             $menus,
-            $stage,
-            $priority
+            (string) $stage,
+            (int) $priority
         );
 
         return $this;
@@ -72,7 +72,7 @@ class MenuFilterer extends AbstractMenuModifier implements MenuChangerInterface
             $this->applyFiltersToMenuNodes(
                 $menu->getSubnodes(),
                 $menu->getCode(),
-                $stage
+                (string) $stage
             )
         );
 
@@ -97,15 +97,15 @@ class MenuFilterer extends AbstractMenuModifier implements MenuChangerInterface
 
             if ($this->applyFiltersToMenuNode(
                 $menuNode,
-                $menuCode,
-                $stage
+                (string) $menuCode,
+                (string) $stage
             )
             ) {
                 $menuNode->setSubnodes(
                     $this->applyFiltersToMenuNodes(
                         $menuNode->getSubnodes(),
-                        $menuCode,
-                        $stage
+                        (string) $menuCode,
+                        (string) $stage
                     )
                 );
 
@@ -131,8 +131,8 @@ class MenuFilterer extends AbstractMenuModifier implements MenuChangerInterface
         $stage
     ) {
         $menuFilters = $this->getElementsByMenuCodeAndStage(
-            $menuCode,
-            $stage
+            (string) $menuCode,
+            (string) $stage
         );
 
         return array_reduce(

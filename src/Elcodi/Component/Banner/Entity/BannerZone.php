@@ -82,7 +82,7 @@ class BannerZone implements BannerZoneInterface
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
 
         return $this;
     }
@@ -106,7 +106,7 @@ class BannerZone implements BannerZoneInterface
      */
     public function setCode($code)
     {
-        $this->code = $code;
+        $this->code = (string) $code;
 
         return $this;
     }

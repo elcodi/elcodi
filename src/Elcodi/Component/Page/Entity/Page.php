@@ -108,7 +108,7 @@ class Page implements PageInterface
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
 
         return $this;
     }
@@ -132,7 +132,7 @@ class Page implements PageInterface
      */
     public function setPath($path)
     {
-        $this->path = $path;
+        $this->path = (string) $path;
 
         return $this;
     }
@@ -156,7 +156,7 @@ class Page implements PageInterface
      */
     public function setTitle($title)
     {
-        $this->title = $title;
+        $this->title = (string) $title;
 
         return $this;
     }
@@ -180,7 +180,7 @@ class Page implements PageInterface
      */
     public function setContent($content)
     {
-        $this->content = $content;
+        $this->content = (string) $content;
 
         return $this;
     }
@@ -204,7 +204,7 @@ class Page implements PageInterface
      */
     public function setType($type)
     {
-        $this->type = $type;
+        $this->type = (int) $type;
 
         return $this;
     }
@@ -242,7 +242,7 @@ class Page implements PageInterface
      */
     public function setPersistent($persistent)
     {
-        $this->persistent = $persistent;
+        $this->persistent = (bool) $persistent;
 
         return $this;
     }

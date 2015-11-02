@@ -51,7 +51,7 @@ class PasswordRememberEvent extends Event
     public function __construct(AbstractUserInterface $user, $rememberUrl)
     {
         $this->user = $user;
-        $this->rememberUrl = $rememberUrl;
+        $this->rememberUrl = (string) $rememberUrl;
     }
 
     /**

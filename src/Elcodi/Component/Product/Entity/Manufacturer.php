@@ -77,7 +77,7 @@ class Manufacturer implements ManufacturerInterface
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
 
         return $this;
     }
@@ -101,7 +101,7 @@ class Manufacturer implements ManufacturerInterface
      */
     public function setDescription($description)
     {
-        $this->description = $description;
+        $this->description = (string) $description;
 
         return $this;
     }
@@ -123,7 +123,7 @@ class Manufacturer implements ManufacturerInterface
      */
     public function setSlug($slug)
     {
-        $this->slug = $slug;
+        $this->slug = (string) $slug;
 
         return $this;
     }

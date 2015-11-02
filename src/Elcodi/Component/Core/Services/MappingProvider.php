@@ -60,8 +60,8 @@ class MappingProvider
      */
     public function getInterface($implementation)
     {
-        return isset($this->interfaces[$implementation])
-            ? $this->interfaces[$implementation]
+        return isset($this->interfaces[(string) $implementation])
+            ? $this->interfaces[(string) $implementation]
             : false;
     }
 
@@ -74,8 +74,8 @@ class MappingProvider
      */
     public function getImplementation($interface)
     {
-        return isset($this->implementations[$interface])
-            ? $this->implementations[$interface]
+        return isset($this->implementations[(string) $interface])
+            ? $this->implementations[(string) $interface]
             : false;
     }
 }

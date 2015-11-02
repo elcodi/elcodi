@@ -35,8 +35,8 @@ class FilesystemDumper implements SitemapDumperInterface
     public function dump($path, $sitemap)
     {
         file_put_contents(
-            $path,
-            $sitemap
+            (string) $path,
+            (string) $sitemap
         );
 
         return $this;

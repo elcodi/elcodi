@@ -58,7 +58,7 @@ class SitemapDumper
     ) {
         $this->sitemapBuilder = $sitemapBuilder;
         $this->sitemapDumper = $sitemapDumper;
-        $this->path = $path;
+        $this->path = (string) $path;
     }
 
     /**
@@ -71,7 +71,7 @@ class SitemapDumper
     {
         $sitemapData = $this
             ->sitemapBuilder
-            ->build($basepath, $language);
+            ->build((string) $basepath, $language);
 
         $path = $this->resolvePathWithLanguage(
             $this->path,
@@ -93,6 +93,6 @@ class SitemapDumper
      */
     private function resolvePathWithLanguage($path, $language)
     {
-        return str_replace('{_locale}', $language, $path);
+        return str_replace('{_locale}', (string) $language, (string) $path);
     }
 }

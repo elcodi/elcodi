@@ -73,10 +73,10 @@ class ShippingMethod
         $description,
         MoneyInterface $price
     ) {
-        $this->id = $id;
-        $this->carrierName = $carrierName;
-        $this->name = $name;
-        $this->description = $description;
+        $this->id = (string) $id;
+        $this->carrierName = (string) $carrierName;
+        $this->name = (string) $name;
+        $this->description = (string) $description;
         $this->price = $price;
     }
 

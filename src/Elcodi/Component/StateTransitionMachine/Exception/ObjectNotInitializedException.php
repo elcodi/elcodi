@@ -38,6 +38,6 @@ class ObjectNotInitializedException extends Exception
     {
         $message = 'Given object needs to be initialized into this machine before applying any state transition';
 
-        parent::__construct($message, $code, $previous);
+        parent::__construct($message, (int) $code, $previous);
     }
 }

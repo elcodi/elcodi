@@ -107,7 +107,7 @@ class Vote implements VoteInterface
      */
     public function setType($type)
     {
-        $this->type = $type;
+        $this->type = (bool) $type;
 
         return $this;
     }
@@ -131,7 +131,7 @@ class Vote implements VoteInterface
      */
     public function setAuthorToken($authorToken)
     {
-        $this->authorToken = $authorToken;
+        $this->authorToken = (string) $authorToken;
 
         return $this;
     }

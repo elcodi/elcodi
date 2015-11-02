@@ -79,9 +79,9 @@ abstract class AbstractMailer
     ) {
         $this->templatingEngine = $templatingEngine;
         $this->mailer = $mailer;
-        $this->layout = $layout;
-        $this->template = $template;
-        $this->fromEmail = $fromEmail;
+        $this->layout = (string) $layout;
+        $this->template = (string) $template;
+        $this->fromEmail = (string) $fromEmail;
     }
 
     /**
@@ -99,9 +99,9 @@ abstract class AbstractMailer
         array $context = []
     ) {
         $message = Swift_Message::newInstance()
-            ->setSubject($subject)
+            ->setSubject((string) $subject)
             ->setFrom($this->fromEmail)
-            ->setTo($receiverEmail)
+            ->setTo((string) $receiverEmail)
             ->setContentType('text/html')
             ->setBody(
                 $this->templatingEngine->render(

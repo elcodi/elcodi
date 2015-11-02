@@ -98,7 +98,7 @@ class CurrencyConverter
         $amount
     ) {
         if ($currencyFrom->getIso() == $currencyTo->getIso()) {
-            return Money::create($amount, $currencyFrom);
+            return Money::create((int) $amount, $currencyFrom);
         }
 
         $exchangeRate = $this
@@ -109,7 +109,7 @@ class CurrencyConverter
             );
 
         return Money::create(
-            $amount * $exchangeRate,
+            ((int) $amount) * $exchangeRate,
             $currencyTo
         );
     }

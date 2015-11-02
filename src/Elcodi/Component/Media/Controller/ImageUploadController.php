@@ -93,9 +93,9 @@ class ImageUploadController
         $this->requestStack = $requestStack;
         $this->imageUploader = $imageUploader;
         $this->router = $router;
-        $this->uploadFieldName = $uploadFieldName;
-        $this->viewImageRouteName = $viewImageRouteName;
-        $this->resizeImageRouteName = $resizeImageRouteName;
+        $this->uploadFieldName = (string) $uploadFieldName;
+        $this->viewImageRouteName = (string) $viewImageRouteName;
+        $this->resizeImageRouteName = (string) $resizeImageRouteName;
     }
 
     /**

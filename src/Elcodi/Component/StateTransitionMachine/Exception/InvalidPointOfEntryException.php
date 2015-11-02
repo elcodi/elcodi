@@ -35,6 +35,6 @@ class InvalidPointOfEntryException extends Exception
     {
         $message = 'Invalid point of entry "' . $state . '"';
 
-        parent::__construct($message, $code, $previous);
+        parent::__construct($message, (int) $code, $previous);
     }
 }

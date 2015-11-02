@@ -124,7 +124,7 @@ class GeonamesLocationPopulatorAdapter implements LocationPopulatorAdapterInterf
     {
         $extractedFiles = $this
             ->extractor
-            ->extractFromFile($tempname)
+            ->extractFromFile((string) $tempname)
             ->files()
             ->notName('readme.txt')
             ->getIterator();
@@ -149,7 +149,7 @@ class GeonamesLocationPopulatorAdapter implements LocationPopulatorAdapterInterf
         $countryCode,
         $pathname
     ) {
-        $countryInfo = $this->getCountryInfo($countryCode);
+        $countryInfo = $this->getCountryInfo((string) $countryCode);
         $country = $this
             ->locationBuilder
             ->addLocation(
@@ -224,7 +224,7 @@ class GeonamesLocationPopulatorAdapter implements LocationPopulatorAdapterInterf
         $config = new LexerConfig();
         $config->setDelimiter("\t");
         $lexer = new Lexer($config);
-        $lexer->parse($pathname, $interpreter);
+        $lexer->parse((string) $pathname, $interpreter);
 
         return $country;
     }
@@ -501,6 +501,6 @@ class GeonamesLocationPopulatorAdapter implements LocationPopulatorAdapterInterf
             "ZW" => ["ZW", "Zimbabwe"],
         ];
 
-        return $countryNames[$countryCode];
+        return $countryNames[(string) $countryCode];
     }
 }

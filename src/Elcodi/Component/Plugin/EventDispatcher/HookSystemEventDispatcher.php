@@ -39,7 +39,7 @@ class HookSystemEventDispatcher extends AbstractEventDispatcher implements HookS
      */
     public function listen($hookName, $callable)
     {
-        $this->eventDispatcher->addListener($hookName, $callable);
+        $this->eventDispatcher->addListener((string) $hookName, $callable);
 
         return $this;
     }
@@ -55,8 +55,8 @@ class HookSystemEventDispatcher extends AbstractEventDispatcher implements HookS
      */
     public function execute($hookName, $context = [], $content = '')
     {
-        $event = new EventAdapter($context, $content);
-        $this->eventDispatcher->dispatch($hookName, $event);
+        $event = new EventAdapter($context, (string) $content);
+        $this->eventDispatcher->dispatch((string) $hookName, $event);
 
         return $event->getContent();
     }

@@ -44,7 +44,7 @@ class EntityTranslatorFactory
         return new $this->entityNamespace(
             $entityTranslationProvider,
             $configuration,
-            $fallback
+            (bool) $fallback
         );
     }
 }

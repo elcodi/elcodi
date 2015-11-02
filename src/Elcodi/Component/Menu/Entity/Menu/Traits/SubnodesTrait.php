@@ -129,7 +129,7 @@ trait SubnodesTrait
             }
 
             if ($inDepth) {
-                $subnode = $subnode->findSubnodeByName($subnodeName, $inDepth);
+                $subnode = $subnode->findSubnodeByName($subnodeName, (bool) $inDepth);
 
                 if ($subnode instanceof \Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface) {
                     return $subnode;

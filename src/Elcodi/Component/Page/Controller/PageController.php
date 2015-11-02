@@ -76,13 +76,13 @@ class PageController
          */
         $page = $this
             ->pageRepository
-            ->findOneById($id);
+            ->findOneById((string) $id);
 
         return $this
             ->pageResponseTransformer
             ->createResponseFromPage(
                 $page,
-                $path
+                (string) $path
             );
     }
 
@@ -102,13 +102,13 @@ class PageController
          */
         $page = $this
             ->pageRepository
-            ->findOneByPath($path);
+            ->findOneByPath((string) $path);
 
         return $this
             ->pageResponseTransformer
             ->createResponseFromPage(
                 $page,
-                $path
+                (string) $path
             );
     }
 }

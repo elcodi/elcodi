@@ -87,10 +87,10 @@ class MetricManager
         $entry = $this
             ->entryFactory
             ->create(
-                $token,
-                $event,
-                $uniqueId,
-                $type,
+                (string) $token,
+                (string) $event,
+                (string) $uniqueId,
+                (int) $type,
                 $dateTime
             );
 

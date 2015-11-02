@@ -87,7 +87,7 @@ class LocationServiceProviderAdapter implements LocationProviderAdapterInterface
         $location = $this
             ->locationRepository
             ->findOneBy([
-                'id' => $id,
+                'id' => (string) $id,
             ]);
 
         if (empty($location)) {
@@ -113,7 +113,7 @@ class LocationServiceProviderAdapter implements LocationProviderAdapterInterface
         $location = $this
             ->locationRepository
             ->findOneBy([
-                'id' => $id,
+                'id' => (string) $id,
             ]);
 
         if (empty($location)) {
@@ -142,7 +142,7 @@ class LocationServiceProviderAdapter implements LocationProviderAdapterInterface
         $location = $this
             ->locationRepository
             ->findOneBy([
-                'id' => $id,
+                'id' => (string) $id,
             ]);
 
         if (!($location instanceof LocationInterface)) {
@@ -167,7 +167,7 @@ class LocationServiceProviderAdapter implements LocationProviderAdapterInterface
         $location = $this
             ->locationRepository
             ->findOneBy([
-                'id' => $id,
+                'id' => (string) $id,
             ]);
 
         if (empty($location)) {
@@ -196,7 +196,7 @@ class LocationServiceProviderAdapter implements LocationProviderAdapterInterface
      */
     public function in($id, array $ids)
     {
-        $allParents = $this->getHierarchy($id);
+        $allParents = $this->getHierarchy((string) $id);
 
         /**
          * To increase the efficiency, we can index the results of the parent

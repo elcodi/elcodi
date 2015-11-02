@@ -129,7 +129,7 @@ class CommentEventDispatcher extends AbstractEventDispatcher
         $event = new CommentOnVotedEvent(
             $comment,
             $vote,
-            $edited
+            (bool) $edited
         );
 
         $this

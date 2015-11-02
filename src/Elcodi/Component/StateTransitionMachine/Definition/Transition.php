@@ -61,7 +61,7 @@ class Transition
      */
     public function __construct($name, State $start, State $final)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
         $this->start = $start;
         $this->final = $final;
         $this->createdAt = new DateTime();

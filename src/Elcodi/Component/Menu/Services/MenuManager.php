@@ -50,7 +50,7 @@ class MenuManager extends AbstractCacheWrapper
      *
      * Menu changers
      */
-    private $menuChangers;
+    private $menuChangers = [];
 
     /**
      * @var string
@@ -64,7 +64,7 @@ class MenuManager extends AbstractCacheWrapper
      *
      * menus
      */
-    private $menus;
+    private $menus = [];
 
     /**
      * Construct method
@@ -80,9 +80,7 @@ class MenuManager extends AbstractCacheWrapper
     ) {
         $this->menuRepository = $menuRepository;
         $this->menuObjectManager = $menuObjectManager;
-        $this->key = $key;
-        $this->menuChangers = [];
-        $this->menus = [];
+        $this->key = (string) $key;
     }
 
     /**
@@ -114,6 +112,8 @@ class MenuManager extends AbstractCacheWrapper
      */
     public function loadMenuByCode($menuCode)
     {
+        $menuCode = (string) $menuCode;
+
         $menu = $this->loadFromMemory($menuCode);
         if (!($menu instanceof MenuInterface)) {
 
@@ -156,7 +156,7 @@ class MenuManager extends AbstractCacheWrapper
      */
     public function removeFromCache($menuCode)
     {
-        $key = $this->getCacheKey($menuCode);
+        $key = $this->getCacheKey((string) $menuCode);
         $this
             ->cache
             ->delete($key);
@@ -173,8 +173,8 @@ class MenuManager extends AbstractCacheWrapper
      */
     private function loadFromMemory($menuCode)
     {
-        return isset($this->menus[$menuCode])
-            ? $this->menus[$menuCode]
+        return isset($this->menus[(string) $menuCode])
+            ? $this->menus[(string) $menuCode]
             : null;
     }
 
@@ -203,7 +203,7 @@ class MenuManager extends AbstractCacheWrapper
     {
         $encoded = (string) $this
             ->cache
-            ->fetch($key);
+            ->fetch((string) $key);
 
         try {
             return is_string($encoded)
@@ -234,7 +234,7 @@ class MenuManager extends AbstractCacheWrapper
 
         $this
             ->cache
-            ->save($key, $encodedMenu);
+            ->save((string) $key, $encodedMenu);
 
         return $this;
     }
@@ -253,7 +253,7 @@ class MenuManager extends AbstractCacheWrapper
         $menu = $this
             ->menuRepository
             ->findOneBy([
-                'code'    => $menuCode,
+                'code'    => (string) $menuCode,
                 'enabled' => true,
             ]);
 
@@ -287,7 +287,7 @@ class MenuManager extends AbstractCacheWrapper
             $menuChanger
                 ->applyChange(
                     $menu,
-                    $stage
+                    (string) $stage
                 );
         }
 

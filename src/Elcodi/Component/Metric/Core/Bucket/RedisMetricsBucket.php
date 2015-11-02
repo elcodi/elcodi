@@ -77,8 +77,8 @@ class RedisMetricsBucket extends AbstractMetricsBucket
 
         foreach ($dates as $date) {
             $keys[] = $this->generateEntryKey(
-                    $token,
-                    $event,
+                    (string) $token,
+                    (string) $event,
                     $date
                 ) . '_unique';
         }
@@ -106,8 +106,8 @@ class RedisMetricsBucket extends AbstractMetricsBucket
 
         foreach ($dates as $date) {
             $key = $this->generateEntryKey(
-                $token,
-                $event,
+                (string) $token,
+                (string) $event,
                 $date
             );
 
@@ -136,8 +136,8 @@ class RedisMetricsBucket extends AbstractMetricsBucket
 
         foreach ($dates as $date) {
             $key = $this->generateEntryKey(
-                $token,
-                $event,
+                (string) $token,
+                (string) $event,
                 $date
             );
 
@@ -172,8 +172,8 @@ class RedisMetricsBucket extends AbstractMetricsBucket
 
         foreach ($dates as $date) {
             $key = $this->generateEntryKey(
-                $token,
-                $event,
+                (string) $token,
+                (string) $event,
                 $date
             );
 
@@ -210,7 +210,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
         $entryKey = $this->generateEntryKey(
             $entry->getToken(),
             $entry->getEvent(),
-            $entry->getCreatedAt()->format($dateTimeFormat)
+            $entry->getCreatedAt()->format((string) $dateTimeFormat)
         );
 
         $entryType = $entry->getType();

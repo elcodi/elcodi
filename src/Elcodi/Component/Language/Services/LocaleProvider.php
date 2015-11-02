@@ -52,7 +52,7 @@ class LocaleProvider
         $defaultLocale
     ) {
         $this->requestStack = $requestStack;
-        $this->defaultLocale = $defaultLocale;
+        $this->defaultLocale = (string) $defaultLocale;
     }
 
     /**

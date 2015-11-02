@@ -122,7 +122,7 @@ class Customer extends AbstractUser implements CustomerInterface
      */
     public function setPhone($phone)
     {
-        $this->phone = $phone;
+        $this->phone = (string) $phone;
 
         return $this;
     }
@@ -146,7 +146,7 @@ class Customer extends AbstractUser implements CustomerInterface
      */
     public function setIdentityDocument($identityDocument)
     {
-        $this->identityDocument = $identityDocument;
+        $this->identityDocument = (string) $identityDocument;
 
         return $this;
     }
@@ -170,7 +170,7 @@ class Customer extends AbstractUser implements CustomerInterface
      */
     public function setGuest($guest)
     {
-        $this->guest = $guest;
+        $this->guest = (bool) $guest;
 
         return $this;
     }
@@ -194,7 +194,7 @@ class Customer extends AbstractUser implements CustomerInterface
      */
     public function setNewsletter($newsletter)
     {
-        $this->newsletter = $newsletter;
+        $this->newsletter = (bool) $newsletter;
 
         return $this;
     }

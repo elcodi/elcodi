@@ -61,7 +61,7 @@ trait TemplatingTrait
             $this
                 ->twig
                 ->render(
-                    $template,
+                    (string) $template,
                     array_merge(
                         $event->getContext(),
                         ['plugin' => $plugin],

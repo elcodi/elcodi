@@ -57,7 +57,7 @@ class BannerManager
     {
         return $this
             ->bannerRepository
-            ->getBannerByZone($bannerZoneCode, $language);
+            ->getBannerByZone((string) $bannerZoneCode, $language);
     }
 
     /**

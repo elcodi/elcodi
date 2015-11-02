@@ -65,7 +65,7 @@ class LocationPopulator
     {
         $rootLocation = $this
             ->locationPopulatorAdapter
-            ->populate($countryCode);
+            ->populate((string) $countryCode);
 
         $this
             ->locationObjectManager

@@ -39,7 +39,7 @@ class CustomerRepository extends EntityRepository implements UserEmaileableInter
     {
         $user = $this
             ->findOneBy([
-                'email' => $email,
+                'email' => (string) $email,
             ]);
 
         return ($user instanceof AbstractUserInterface)
@@ -65,8 +65,8 @@ class CustomerRepository extends EntityRepository implements UserEmaileableInter
             ->innerJoin('c.addresses', 'a')
             ->where('c.id = :customerId')
             ->andWhere('a.id = :addressId')
-            ->setParameter('customerId', $customerId)
-            ->setParameter('addressId', $addressId)
+            ->setParameter('customerId', (int) $customerId)
+            ->setParameter('addressId', (int) $addressId)
             ->setMaxResults(1)
             ->getQuery()
             ->getResult();

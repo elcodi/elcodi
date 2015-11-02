@@ -69,7 +69,7 @@ trait DimensionsTrait
      */
     public function setDepth($depth)
     {
-        $this->depth = $depth;
+        $this->depth = (int) $depth;
 
         return $this;
     }
@@ -93,7 +93,7 @@ trait DimensionsTrait
      */
     public function setHeight($height)
     {
-        $this->height = $height;
+        $this->height = (int) $height;
 
         return $this;
     }
@@ -117,7 +117,7 @@ trait DimensionsTrait
      */
     public function setWeight($weight)
     {
-        $this->weight = $weight;
+        $this->weight = (int) $weight;
 
         return $this;
     }
@@ -141,7 +141,7 @@ trait DimensionsTrait
      */
     public function setWidth($width)
     {
-        $this->width = $width;
+        $this->width = (int) $width;
 
         return $this;
     }

@@ -122,12 +122,12 @@ class TranslatableFieldType extends AbstractType
         $this->entityTranslationProvider = $entityTranslationProvider;
         $this->formConfig = $formConfig;
         $this->entity = $entity;
-        $this->fieldName = $fieldName;
+        $this->fieldName = (string) $fieldName;
         $this->entityConfiguration = $entityConfiguration;
         $this->fieldConfiguration = $fieldConfiguration;
         $this->locales = $locales;
-        $this->masterLocale = $masterLocale;
-        $this->fallback = $fallback;
+        $this->masterLocale = (string) $masterLocale;
+        $this->fallback = (bool) $fallback;
     }
 
     /**
@@ -190,7 +190,7 @@ class TranslatableFieldType extends AbstractType
      */
     public function evaluateRequired($required, $locale)
     {
-        return (boolean) $required
+        return (bool) $required
             ? !$this->fallback || ($this->masterLocale === $locale)
             : false;
     }

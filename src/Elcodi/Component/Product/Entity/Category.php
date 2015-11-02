@@ -94,7 +94,7 @@ class Category implements CategoryInterface
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
 
         return $this;
     }
@@ -118,7 +118,7 @@ class Category implements CategoryInterface
      */
     public function setSlug($slug)
     {
-        $this->slug = $slug;
+        $this->slug = (string) $slug;
 
         return $this;
     }
@@ -240,7 +240,7 @@ class Category implements CategoryInterface
      */
     public function setRoot($root)
     {
-        $this->root = $root;
+        $this->root = (bool) $root;
 
         return $this;
     }
@@ -264,7 +264,7 @@ class Category implements CategoryInterface
      */
     public function setPosition($position)
     {
-        $this->position = $position;
+        $this->position = (int) $position;
 
         return $this;
     }

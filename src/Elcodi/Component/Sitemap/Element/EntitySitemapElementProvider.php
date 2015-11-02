@@ -58,7 +58,7 @@ class EntitySitemapElementProvider
         array $arguments
     ) {
         $this->repository = $repository;
-        $this->method = $method;
+        $this->method = (string) $method;
         $this->arguments = $arguments;
     }
 

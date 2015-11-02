@@ -65,7 +65,7 @@ class MetricLoader
     {
         $entries = $this
             ->entryRepository
-            ->getEntriesFromLastDays($days);
+            ->getEntriesFromLastDays((int) $days);
 
         foreach ($entries as $entry) {
             $this

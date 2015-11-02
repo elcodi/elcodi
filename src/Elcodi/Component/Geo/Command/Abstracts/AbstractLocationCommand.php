@@ -88,7 +88,7 @@ class AbstractLocationCommand extends AbstractElcodiCommand
         $country = $this
             ->locationDirector
             ->findOneBy([
-                'code' => $countryCode,
+                'code' => (string) $countryCode,
             ]);
 
         if ($country instanceof LocationInterface) {
@@ -97,7 +97,7 @@ class AbstractLocationCommand extends AbstractElcodiCommand
                 !$this->confirmRemoval(
                     $input,
                     $output,
-                    $countryCode,
+                    (string) $countryCode,
                     $output
                 )
             ) {

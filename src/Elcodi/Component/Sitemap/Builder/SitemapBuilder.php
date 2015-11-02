@@ -85,7 +85,7 @@ class SitemapBuilder
 
         $data = $this
             ->sitemapRenderer
-            ->render($sitemapElements, $basepath);
+            ->render($sitemapElements, (string) $basepath);
 
         return $data;
     }

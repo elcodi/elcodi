@@ -77,7 +77,7 @@ class LocationApiProviderAdapter implements LocationProviderAdapterInterface
         $this->locationDataFactory = $locationDataFactory;
         $this->urlGeneratorInterface = $urlGeneratorInterface;
         $this->apiUrls = $apiUrls;
-        $this->host = $host;
+        $this->host = (string) $host;
     }
 
     /**
@@ -109,7 +109,7 @@ class LocationApiProviderAdapter implements LocationProviderAdapterInterface
     {
         $url = $this->buildUrlByMethodName(
             'getGetChildrenUrl',
-            ['id' => $id]
+            ['id' => (string) $id]
         );
 
         return $this
@@ -129,7 +129,7 @@ class LocationApiProviderAdapter implements LocationProviderAdapterInterface
     {
         $url = $this->buildUrlByMethodName(
             'getGetParentsUrl',
-            ['id' => $id]
+            ['id' => (string) $id]
         );
 
         return $this
@@ -149,7 +149,7 @@ class LocationApiProviderAdapter implements LocationProviderAdapterInterface
     {
         $url = $this->buildUrlByMethodName(
             'getGetLocationUrl',
-            ['id' => $id]
+            ['id' => (string) $id]
         );
 
         return $this
@@ -170,7 +170,7 @@ class LocationApiProviderAdapter implements LocationProviderAdapterInterface
     {
         $url = $this->buildUrlByMethodName(
             'getGetHierarchyUrl',
-            ['id' => $id]
+            ['id' => (string) $id]
         );
 
         return $this
@@ -193,7 +193,7 @@ class LocationApiProviderAdapter implements LocationProviderAdapterInterface
         $url = $this->buildUrlByMethodName(
             'getInUrl',
             [
-                'id'  => $id,
+                'id'  => (string) $id,
                 'ids' => implode(',', $ids),
             ]
         );
@@ -246,7 +246,7 @@ class LocationApiProviderAdapter implements LocationProviderAdapterInterface
                 $this
                     ->urlGeneratorInterface
                     ->generate(
-                        $url,
+                        (string) $url,
                         $parameters,
                         UrlGeneratorInterface::ABSOLUTE_PATH
                     ), '/'
@@ -266,7 +266,7 @@ class LocationApiProviderAdapter implements LocationProviderAdapterInterface
         return $this
             ->urlGeneratorInterface
             ->generate(
-                $url,
+                (string) $url,
                 $parameters,
                 UrlGeneratorInterface::ABSOLUTE_URL
             );
@@ -289,7 +289,7 @@ class LocationApiProviderAdapter implements LocationProviderAdapterInterface
                 'timeout' => 5,
             ],
         ]);
-        $response = $client->get($url);
+        $response = $client->get((string) $url);
         $responseStatusCode = $response->getStatusCode();
 
         if (404 == $responseStatusCode) {

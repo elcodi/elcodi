@@ -92,13 +92,13 @@ class PasswordManager
         $recoverPasswordUrlName,
         $hashField = 'hash'
     ) {
-        $user = $userRepository->findOneByEmail($email);
+        $user = $userRepository->findOneByEmail((string) $email);
 
         if (!($user instanceof AbstractUser)) {
             return false;
         }
 
-        $this->rememberPassword($user, $recoverPasswordUrlName, $hashField);
+        $this->rememberPassword($user, (string) $recoverPasswordUrlName, (string) $hashField);
 
         return true;
     }
@@ -126,7 +126,7 @@ class PasswordManager
 
         $recoverUrl = $this
             ->router
-            ->generate($recoverPasswordUrlName, [
+            ->generate((string) $recoverPasswordUrlName, [
                 $hashField => $recoveryHash,
             ], true);
 
@@ -153,7 +153,7 @@ class PasswordManager
     {
         if ($hash == $user->getRecoveryHash()) {
             $user
-                ->setPassword($newPassword)
+                ->setPassword((string) $newPassword)
                 ->setRecoveryHash(null);
             $this->manager->flush($user);
 

@@ -93,7 +93,7 @@ class EntityTranslatorBuilder
         $this->entityTranslationProvider = $entityTranslationProvider;
         $this->entityTranslatorFactory = $entityTranslatorFactory;
         $this->configuration = $configuration;
-        $this->fallback = $fallback;
+        $this->fallback = (bool) $fallback;
     }
 
     /**

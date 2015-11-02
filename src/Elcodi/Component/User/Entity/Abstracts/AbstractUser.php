@@ -121,7 +121,7 @@ abstract class AbstractUser implements AbstractUserInterface
      */
     public function setFirstname($firstname)
     {
-        $this->firstname = $firstname;
+        $this->firstname = (string) $firstname;
 
         return $this;
     }
@@ -145,7 +145,7 @@ abstract class AbstractUser implements AbstractUserInterface
      */
     public function setLastname($lastname)
     {
-        $this->lastname = $lastname;
+        $this->lastname = (string) $lastname;
 
         return $this;
     }
@@ -193,7 +193,7 @@ abstract class AbstractUser implements AbstractUserInterface
      */
     public function setEmail($email)
     {
-        $this->email = $email;
+        $this->email = (string) $email;
 
         return $this;
     }
@@ -227,7 +227,7 @@ abstract class AbstractUser implements AbstractUserInterface
      */
     public function setToken($token)
     {
-        $this->token = $token;
+        $this->token = (string) $token;
 
         return $this;
     }
@@ -277,7 +277,7 @@ abstract class AbstractUser implements AbstractUserInterface
      */
     public function setRecoveryHash($recoveryHash)
     {
-        $this->recoveryHash = $recoveryHash;
+        $this->recoveryHash = (string) $recoveryHash;
 
         return $this;
     }
@@ -311,8 +311,8 @@ abstract class AbstractUser implements AbstractUserInterface
      */
     public function setPassword($password)
     {
-        if (null !== $password) {
-            $this->password = $password;
+        if (trim($password)) {
+            $this->password = trim($password);
         }
 
         return $this;
@@ -347,7 +347,7 @@ abstract class AbstractUser implements AbstractUserInterface
      */
     public function setOneTimeLoginHash($oneTimeLoginHash)
     {
-        $this->oneTimeLoginHash = $oneTimeLoginHash;
+        $this->oneTimeLoginHash = (string) $oneTimeLoginHash;
 
         return $this;
     }

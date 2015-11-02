@@ -65,7 +65,7 @@ class ManagerProvider
     {
         return $this
             ->manager
-            ->getManagerForClass($entityNamespace);
+            ->getManagerForClass((string) $entityNamespace);
     }
 
     /**
@@ -83,7 +83,7 @@ class ManagerProvider
     {
         $entityNamespace = $this
             ->parameterBag
-            ->get($entityParameter);
+            ->get((string) $entityParameter);
 
         return $this->getManagerByEntityNamespace($entityNamespace);
     }

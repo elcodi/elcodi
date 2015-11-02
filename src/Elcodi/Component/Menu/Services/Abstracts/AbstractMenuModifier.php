@@ -96,7 +96,7 @@ abstract class AbstractMenuModifier
 
         $this->addElementByStage(
             $element,
-            $stage
+            (string) $stage
         );
 
         $this->priorities[$elementId] = $priority;
@@ -116,12 +116,12 @@ abstract class AbstractMenuModifier
         $menuCode,
         $stage
     ) {
-        $elementsByMenuCode = isset($this->elementsStoredByMenuCode[$menuCode])
-            ? $this->elementsStoredByMenuCode[$menuCode]
+        $elementsByMenuCode = isset($this->elementsStoredByMenuCode[(string) $menuCode])
+            ? $this->elementsStoredByMenuCode[(string) $menuCode]
             : [];
 
-        $elementsByStage = isset($this->elementsStoredByStage[$stage])
-            ? $this->elementsStoredByStage[$stage]
+        $elementsByStage = isset($this->elementsStoredByStage[(string) $stage])
+            ? $this->elementsStoredByStage[(string) $stage]
             : [];
 
         $elements = array_values(
@@ -156,12 +156,12 @@ abstract class AbstractMenuModifier
         $element,
         $menuCode
     ) {
-        if (!isset($this->elementsStoredByMenuCode[$menuCode])) {
-            $this->elementsStoredByMenuCode[$menuCode] = [];
+        if (!isset($this->elementsStoredByMenuCode[(string) $menuCode])) {
+            $this->elementsStoredByMenuCode[(string) $menuCode] = [];
         }
 
         $elementId = spl_object_hash($element);
-        $this->elementsStoredByMenuCode[$menuCode][$elementId] = $element;
+        $this->elementsStoredByMenuCode[(string) $menuCode][$elementId] = $element;
 
         return $this;
     }
@@ -178,12 +178,12 @@ abstract class AbstractMenuModifier
         $element,
         $stage
     ) {
-        if (!isset($this->elementsStoredByStage[$stage])) {
-            $this->elementsStoredByStage[$stage] = [];
+        if (!isset($this->elementsStoredByStage[(string) $stage])) {
+            $this->elementsStoredByStage[(string) $stage] = [];
         }
 
         $elementId = spl_object_hash($element);
-        $this->elementsStoredByStage[$stage][$elementId] = $element;
+        $this->elementsStoredByStage[(string) $stage][$elementId] = $element;
 
         return $this;
     }

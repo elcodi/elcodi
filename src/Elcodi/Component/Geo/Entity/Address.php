@@ -108,7 +108,7 @@ class Address implements AddressInterface
      */
     public function setAddress($address)
     {
-        $this->address = $address;
+        $this->address = (string) $address;
 
         return $this;
     }
@@ -132,7 +132,7 @@ class Address implements AddressInterface
      */
     public function setAddressMore($addressMore)
     {
-        $this->addressMore = $addressMore;
+        $this->addressMore = (string) $addressMore;
 
         return $this;
     }
@@ -156,7 +156,7 @@ class Address implements AddressInterface
      */
     public function setComments($comments)
     {
-        $this->comments = $comments;
+        $this->comments = (string) $comments;
 
         return $this;
     }
@@ -180,7 +180,7 @@ class Address implements AddressInterface
      */
     public function setMobile($mobile)
     {
-        $this->mobile = $mobile;
+        $this->mobile = (string) $mobile;
 
         return $this;
     }
@@ -204,7 +204,7 @@ class Address implements AddressInterface
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
 
         return $this;
     }
@@ -228,7 +228,7 @@ class Address implements AddressInterface
      */
     public function setPhone($phone)
     {
-        $this->phone = $phone;
+        $this->phone = (string) $phone;
 
         return $this;
     }
@@ -252,7 +252,7 @@ class Address implements AddressInterface
      */
     public function setRecipientName($recipientName)
     {
-        $this->recipientName = $recipientName;
+        $this->recipientName = (string) $recipientName;
 
         return $this;
     }
@@ -276,7 +276,7 @@ class Address implements AddressInterface
      */
     public function setRecipientSurname($recipientSurname)
     {
-        $this->recipientSurname = $recipientSurname;
+        $this->recipientSurname = (string) $recipientSurname;
 
         return $this;
     }
@@ -300,7 +300,7 @@ class Address implements AddressInterface
      */
     public function setCity($city)
     {
-        $this->city = $city;
+        $this->city = (string) $city;
 
         return $this;
     }
@@ -324,7 +324,7 @@ class Address implements AddressInterface
      */
     public function setPostalcode($postalCode)
     {
-        $this->postalCode = $postalCode;
+        $this->postalCode = (string) $postalCode;
 
         return $this;
     }

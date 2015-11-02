@@ -99,7 +99,7 @@ class Node implements NodeInterface
      */
     public function setCode($code)
     {
-        $this->code = $code;
+        $this->code = (string) $code;
 
         return $this;
     }
@@ -113,7 +113,7 @@ class Node implements NodeInterface
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
 
         return $this;
     }
@@ -139,7 +139,7 @@ class Node implements NodeInterface
      */
     public function setUrl($url)
     {
-        $this->url = $url;
+        $this->url = (string) $url;
 
         return $this;
     }
@@ -188,7 +188,7 @@ class Node implements NodeInterface
     public function addActiveUrl($activeUrl)
     {
         $activeUrls = json_decode($this->activeUrls, true);
-        $activeUrls[] = $activeUrl;
+        $activeUrls[] = (string) $activeUrl;
         $this->activeUrls = json_encode($activeUrls);
 
         return $this;
@@ -204,7 +204,7 @@ class Node implements NodeInterface
     public function removeActiveUrl($activeUrl)
     {
         $activeUrls = json_decode($this->activeUrls, true);
-        $positionFound = array_search($activeUrl, $activeUrls);
+        $positionFound = array_search((string) $activeUrl, $activeUrls);
         if ($positionFound) {
             unset($activeUrls[$positionFound]);
             $this->activeUrls = json_encode($activeUrls);
@@ -232,7 +232,7 @@ class Node implements NodeInterface
      */
     public function setTag($tag)
     {
-        $this->tag = $tag;
+        $this->tag = (string) $tag;
 
         return $this;
     }
@@ -256,7 +256,7 @@ class Node implements NodeInterface
      */
     public function setPriority($priority)
     {
-        $this->priority = $priority;
+        $this->priority = (int) $priority;
 
         return $this;
     }
@@ -274,8 +274,8 @@ class Node implements NodeInterface
     public function isActive($currentUrl)
     {
         return
-            $currentUrl == $this->url ||
-            in_array($currentUrl, $this->getActiveUrls());
+            ((string) $currentUrl) == $this->url ||
+            in_array((string) $currentUrl, $this->getActiveUrls());
     }
 
     /**
@@ -290,6 +290,8 @@ class Node implements NodeInterface
      */
     public function isExpanded($currentUrl)
     {
+        $currentUrl = (string) $currentUrl;
+
         return $this
             ->subnodes
             ->exists(function ($_, NodeInterface $node) use ($currentUrl) {
@@ -309,7 +311,7 @@ class Node implements NodeInterface
      */
     public function setWarnings($warnings)
     {
-        $this->warnings = $warnings;
+        $this->warnings = (int) $warnings;
 
         return $this;
     }

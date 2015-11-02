@@ -165,7 +165,7 @@ class CartCouponManager
         $coupon = $this
             ->couponRepository
             ->findOneBy([
-                'code'    => $couponCode,
+                'code'    => (string) $couponCode,
                 'enabled' => true,
             ]);
 
@@ -211,7 +211,7 @@ class CartCouponManager
         $coupon = $this
             ->couponRepository
             ->findOneBy([
-                'code' => $couponCode,
+                'code' => (string) $couponCode,
             ]);
 
         if (!($coupon instanceof CouponInterface)) {

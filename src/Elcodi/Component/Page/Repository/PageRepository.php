@@ -40,7 +40,7 @@ class PageRepository extends EntityRepository
     public function findOneByPath($path)
     {
         return $this->findOneBy([
-            'path'    => $path,
+            'path'    => (string) $path,
             'enabled' => true,
         ]);
     }
@@ -55,7 +55,7 @@ class PageRepository extends EntityRepository
     public function findOneById($id)
     {
         return $this->findOneBy([
-            'id'    => $id,
+            'id'      => (string) $id,
             'enabled' => true,
         ]);
     }
@@ -80,10 +80,10 @@ class PageRepository extends EntityRepository
             ->orderBy('p.publicationDate', 'DESC')
             ->setParameters([
                 'enabled' => true,
-                'type'    => $type,
+                'type'    => (string) $type,
             ])
             ->setFirstResult($offset)
-            ->setMaxResults($numberPerPage)
+            ->setMaxResults((int) $numberPerPage)
             ->getQuery()
             ->getArrayResult();
     }
@@ -104,7 +104,7 @@ class PageRepository extends EntityRepository
             ->andWhere('p.type = :type')
             ->setParameters([
                 'enabled' => true,
-                'type'    => $type,
+                'type'    => (string) $type,
             ])
             ->getQuery()
             ->getSingleScalarResult();

@@ -36,11 +36,11 @@ abstract class AbstractMetricsBucket
     protected function generateEntryKey($token, $event, $date)
     {
         return
-            $this->normalizeForKey($token) .
+            $this->normalizeForKey((string) $token) .
             '.' .
-            $this->normalizeForKey($event) .
+            $this->normalizeForKey((string) $event) .
             '.' .
-            $this->normalizeForKey($date);
+            $this->normalizeForKey((string) $date);
     }
 
     /**

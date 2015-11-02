@@ -36,7 +36,7 @@ class State
      */
     public function __construct($name)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
     }
 
     /**

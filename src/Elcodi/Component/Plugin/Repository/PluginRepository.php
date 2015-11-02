@@ -38,7 +38,7 @@ class PluginRepository extends EntityRepository
     {
         return $this->findBy([
             'type' => PluginTypes::TYPE_PLUGIN,
-            'category' => $category,
+            'category' => (string) $category,
             'enabled'  => true,
         ]);
     }
@@ -54,7 +54,7 @@ class PluginRepository extends EntityRepository
     {
         return $this->findBy([
             'type' => PluginTypes::TYPE_TEMPLATE,
-            'category' => $category,
+            'category' => (string) $category,
             'enabled'  => true,
         ]);
     }

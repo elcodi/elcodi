@@ -39,7 +39,7 @@ class PasswordEventDispatcher extends AbstractEventDispatcher implements Passwor
      */
     public function dispatchOnPasswordRememberEvent(AbstractUserInterface $user, $recoverUrl)
     {
-        $event = new PasswordRememberEvent($user, $recoverUrl);
+        $event = new PasswordRememberEvent($user, (string) $recoverUrl);
         $this
             ->eventDispatcher
             ->dispatch(

@@ -68,7 +68,7 @@ class Tax implements TaxInterface
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
 
         return $this;
     }
@@ -92,7 +92,7 @@ class Tax implements TaxInterface
      */
     public function setDescription($description)
     {
-        $this->description = $description;
+        $this->description = (string) $description;
 
         return $this;
     }
@@ -116,7 +116,7 @@ class Tax implements TaxInterface
      */
     public function setValue($value)
     {
-        $this->value = $value;
+        $this->value = (float) $value;
 
         return $this;
     }

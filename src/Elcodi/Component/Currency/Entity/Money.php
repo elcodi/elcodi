@@ -63,7 +63,7 @@ class Money implements MoneyInterface
      */
     protected function __construct($amount, CurrencyInterface $currency)
     {
-        $this->amount = intval($amount);
+        $this->amount = (int) $amount;
         $this->currency = $currency;
 
         $this->wrappedMoney = new WrappedMoney(
@@ -177,7 +177,7 @@ class Money implements MoneyInterface
     {
         $wrappedMoney = $this
             ->wrappedMoney
-            ->multiply($factor);
+            ->multiply((float) $factor);
 
         return Money::create(
             $wrappedMoney->getAmount(),
@@ -263,6 +263,6 @@ class Money implements MoneyInterface
         $amount,
         CurrencyInterface $currency
     ) {
-        return new self($amount, $currency);
+        return new self((int) $amount, $currency);
     }
 }

@@ -94,10 +94,10 @@ class EntityTranslationProvider implements EntityTranslationProviderInterface
         $translation = $this
             ->entityTranslationRepository
             ->findOneBy([
-                'entityType'  => $entityType,
-                'entityId'    => $entityId,
-                'entityField' => $entityField,
-                'locale'      => $locale,
+                'entityType'  => (string) $entityType,
+                'entityId'    => (string) $entityId,
+                'entityField' => (string) $entityField,
+                'locale'      => (string) $locale,
             ]);
 
         return $translation instanceof EntityTranslationInterface
@@ -126,20 +126,20 @@ class EntityTranslationProvider implements EntityTranslationProviderInterface
         $translation = $this
             ->entityTranslationRepository
             ->findOneBy([
-                'entityType'  => $entityType,
-                'entityId'    => $entityId,
-                'entityField' => $entityField,
-                'locale'      => $locale,
+                'entityType'  => (string) $entityType,
+                'entityId'    => (string) $entityId,
+                'entityField' => (string) $entityField,
+                'locale'      => (string) $locale,
             ]);
 
         if (!($translation instanceof EntityTranslationInterface)) {
             $translation = $this
                 ->entityTranslationFactory
                 ->create()
-                ->setEntityType($entityType)
-                ->setEntityId($entityId)
-                ->setEntityField($entityField)
-                ->setLocale($locale);
+                ->setEntityType((string) $entityType)
+                ->setEntityId((string) $entityId)
+                ->setEntityField((string) $entityField)
+                ->setLocale((string) $locale);
 
             $this
                 ->entityTranslationObjectManager

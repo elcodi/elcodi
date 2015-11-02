@@ -50,8 +50,8 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
      */
     public function __construct($imageConverterBin, $profile)
     {
-        $this->imageConverterBin = $imageConverterBin;
-        $this->profile = $profile;
+        $this->imageConverterBin = (string) $imageConverterBin;
+        $this->profile = (string) $profile;
     }
 
     /**
@@ -73,13 +73,13 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
         $type = ElcodiMediaImageResizeTypes::FORCE_MEASURES
     ) {
         if (ElcodiMediaImageResizeTypes::NO_RESIZE === $type) {
-            return $imageData;
+            return (string) $imageData;
         }
 
         $originalFile = new File(tempnam(sys_get_temp_dir(), '_original'));
         $resizedFile = new File(tempnam(sys_get_temp_dir(), '_resize'));
 
-        file_put_contents($originalFile, $imageData);
+        file_put_contents($originalFile, (string) $imageData);
 
         //ImageMagick params
         $pb = new ProcessBuilder();

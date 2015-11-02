@@ -174,7 +174,7 @@ class PluginManager
         unset($pluginConfiguration['type']);
 
         $pluginInstance = Plugin::create(
-            $pluginNamespace,
+            (string) $pluginNamespace,
             $pluginType,
             $pluginCategory,
             PluginConfiguration::create($pluginConfiguration),

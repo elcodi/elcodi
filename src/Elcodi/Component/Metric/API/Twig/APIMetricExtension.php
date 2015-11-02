@@ -75,7 +75,7 @@ class APIMetricExtension extends Twig_Extension
     ) {
         return (int) $this
             ->metricBucket
-            ->getBeaconsUnique($token, $event, $dates);
+            ->getBeaconsUnique((string) $token, (string) $event, $dates);
     }
 
     /**
@@ -94,7 +94,7 @@ class APIMetricExtension extends Twig_Extension
     ) {
         return (int) $this
             ->metricBucket
-            ->getBeaconsTotal($token, $event, $dates);
+            ->getBeaconsTotal((string) $token, (string) $event, $dates);
     }
 
     /**
@@ -113,7 +113,7 @@ class APIMetricExtension extends Twig_Extension
     ) {
         return $this
             ->metricBucket
-            ->getAccumulation($token, $event, $dates);
+            ->getAccumulation((string) $token, (string) $event, $dates);
     }
 
     /**
@@ -132,7 +132,7 @@ class APIMetricExtension extends Twig_Extension
     ) {
         return (int) $this
             ->metricBucket
-            ->getDistributions($token, $event, $dates);
+            ->getDistributions((string) $token, (string) $event, $dates);
     }
 
     /**

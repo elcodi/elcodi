@@ -82,10 +82,10 @@ class PrintRouteExtension extends Twig_Extension
                 ->urlGenerator
                 ->generate($route);
         } catch (ExceptionInterface $e) {
-            $url = (string) $route;
+            $url = $route;
         }
 
-        return $url;
+        return (string) $url;
     }
 
     /**

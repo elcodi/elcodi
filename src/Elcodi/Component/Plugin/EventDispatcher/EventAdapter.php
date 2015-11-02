@@ -50,7 +50,7 @@ class EventAdapter extends Event implements EventInterface
      */
     public function __construct(array $context = [], $content = '')
     {
-        $this->content = $content;
+        $this->content = (string) $content;
         $this->context = $context;
     }
 
@@ -64,8 +64,8 @@ class EventAdapter extends Event implements EventInterface
      */
     public function get($key, $default = null)
     {
-        if (array_key_exists($key, $this->context)) {
-            return $this->context[$key];
+        if (array_key_exists((string) $key, $this->context)) {
+            return $this->context[(string) $key];
         }
 
         return $default;
@@ -88,7 +88,7 @@ class EventAdapter extends Event implements EventInterface
      */
     public function getContent()
     {
-        return (string) $this->content;
+        return $this->content;
     }
 
     /**
@@ -100,7 +100,7 @@ class EventAdapter extends Event implements EventInterface
      */
     public function setContent($content)
     {
-        $this->content = $content;
+        $this->content = (string) $content;
 
         return $this;
     }

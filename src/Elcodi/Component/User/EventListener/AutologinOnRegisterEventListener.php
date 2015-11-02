@@ -77,8 +77,8 @@ class AutologinOnRegisterEventListener
     ) {
         $this->requestStack = $requestStack;
         $this->tokenStorage = $tokenStorage;
-        $this->providerKey = $providerKey;
         $this->dispatcher = $dispatcher;
+        $this->providerKey = (string) $providerKey;
     }
 
     /**

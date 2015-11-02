@@ -88,7 +88,7 @@ class Banner implements BannerInterface
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
 
         return $this;
     }
@@ -112,7 +112,7 @@ class Banner implements BannerInterface
      */
     public function setDescription($description)
     {
-        $this->description = $description;
+        $this->description = (string) $description;
 
         return $this;
     }
@@ -136,7 +136,7 @@ class Banner implements BannerInterface
      */
     public function setUrl($url)
     {
-        $this->url = $url;
+        $this->url = (string) $url;
 
         return $this;
     }

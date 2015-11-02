@@ -100,7 +100,7 @@ class MachineManager
 
         $stateLine = $this->createStateLine(
             $pointOfEntry,
-            $description
+            (string) $description
         );
 
         $stateLineStack->addStateLine($stateLine);
@@ -140,8 +140,8 @@ class MachineManager
             ->applyTransitionAction(
                 $object,
                 $stateLineStack,
-                $transitionName,
-                $description,
+                (string) $transitionName,
+                (string) $description,
                 'transition'
             );
     }
@@ -169,8 +169,8 @@ class MachineManager
             ->applyTransitionAction(
                 $object,
                 $stateLineStack,
-                $transitionName,
-                $description,
+                (string) $transitionName,
+                (string) $description,
                 'reachState'
             );
     }
@@ -188,8 +188,8 @@ class MachineManager
         $stateLine = $this
             ->stateLineFactory
             ->create()
-            ->setName($name)
-            ->setDescription($description);
+            ->setName((string) $name)
+            ->setDescription((string) $description);
 
         return $stateLine;
     }
@@ -229,12 +229,12 @@ class MachineManager
             ->machine
             ->$transitionAction(
                 $startState->getName(),
-                $transitionName
+                (string) $transitionName
             );
 
         $stateLine = $this->createStateLine(
             $transition->getFinal()->getName(),
-            $description
+            (string) $description
         );
 
         $stateLineStack->addStateLine($stateLine);

@@ -74,14 +74,14 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
      *
      * Submitted data in plain mode
      */
-    private $submittedDataPlain;
+    private $submittedDataPlain = [];
 
     /**
      * @var array
      *
      * Local and temporary backup of translations
      */
-    private $translationsBackup;
+    private $translationsBackup = [];
 
     /**
      * Construct method
@@ -102,10 +102,8 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
         $this->entityTranslationProvider = $entityTranslationProvider;
         $this->translationConfiguration = $translationConfiguration;
         $this->locales = $locales;
-        $this->masterLocale = $masterLocale;
-        $this->fallback = $fallback;
-        $this->submittedDataPlain = [];
-        $this->translationsBackup = [];
+        $this->masterLocale = (string) $masterLocale;
+        $this->fallback = (bool) $fallback;
     }
 
     /**
@@ -328,9 +326,9 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
      */
     private function getNamespacesFromClass($namespace)
     {
-        $classStack = [$namespace];
-        $classStack = array_merge($classStack, class_parents($namespace));
-        $classStack = array_merge($classStack, class_implements($namespace));
+        $classStack = [(string) $namespace];
+        $classStack = array_merge($classStack, class_parents((string) $namespace));
+        $classStack = array_merge($classStack, class_implements((string) $namespace));
 
         return $classStack;
     }

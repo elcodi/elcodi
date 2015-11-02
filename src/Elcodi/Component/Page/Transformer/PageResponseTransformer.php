@@ -79,7 +79,7 @@ class PageResponseTransformer
         $this->requestStack = $requestStack;
         $this->urlGenerator = $urlGenerator;
         $this->pageRenderer = $pageRenderer;
-        $this->pageRenderRoute = $pageRenderRoute;
+        $this->pageRenderRoute = (string) $pageRenderRoute;
     }
 
     /**

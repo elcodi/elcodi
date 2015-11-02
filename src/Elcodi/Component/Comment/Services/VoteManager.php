@@ -76,7 +76,7 @@ class VoteManager
         $vote = $this
             ->commentVoteObjectDirector
             ->findOneBy([
-                'authorToken' => $authorToken,
+                'authorToken' => (string) $authorToken,
                 'comment'     => $comment,
             ]);
 
@@ -86,13 +86,13 @@ class VoteManager
             $vote = $this
                 ->commentVoteObjectDirector
                 ->create()
-                ->setAuthorToken($authorToken)
+                ->setAuthorToken((string) $authorToken)
                 ->setComment($comment);
 
             $edited = false;
         }
 
-        $vote->setType($type);
+        $vote->setType((bool) $type);
 
         $this
             ->commentVoteObjectDirector
@@ -123,7 +123,7 @@ class VoteManager
         $vote = $this
             ->commentVoteObjectDirector
             ->findOneBy([
-                'authorToken' => $authorToken,
+                'authorToken' => (string) $authorToken,
                 'comment'     => $comment,
             ]);
 
