@@ -11,7 +11,7 @@ matrix:
     - php: hhvm-nightly
 
 before_script:
-  - composer install --prefer-source --no-interaction
+  - composer install --prefer-dist --no-interaction
 
 script:
   - bin/phpunit -c phpunit.xml.dist
