@@ -50,7 +50,7 @@ class CartCouponStackableEventListenerTest extends WebTestCase
      *
      * @return array Bundles name where fixtures should be found
      */
-    protected function loadFixturesBundles()
+    protected static function loadFixturesBundles()
     {
         return [
             'ElcodiCartBundle',
