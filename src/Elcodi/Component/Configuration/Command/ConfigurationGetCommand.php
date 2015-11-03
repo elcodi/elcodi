@@ -50,8 +50,8 @@ class ConfigurationGetCommand extends AbstractConfigurationCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->startCommand($output);
-        $configurationIdentifier = $input->getArgument('identifier');
 
+        $configurationIdentifier = $input->getArgument('identifier');
         $configurationValue = json_encode($this
             ->configurationManager
             ->get($configurationIdentifier));
