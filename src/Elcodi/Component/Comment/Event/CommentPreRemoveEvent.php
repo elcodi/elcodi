@@ -22,6 +22,6 @@ use Elcodi\Component\Comment\Event\Abstracts\AbstractCommentEvent;
 /**
  * Class CommentPreRemoveEvent
  */
-class CommentPreRemoveEvent extends AbstractCommentEvent
+final class CommentPreRemoveEvent extends AbstractCommentEvent
 {
 }

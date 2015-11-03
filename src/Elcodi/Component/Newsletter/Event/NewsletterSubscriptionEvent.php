@@ -24,6 +24,6 @@ use Elcodi\Component\Newsletter\Event\Abstracts\AbstractNewsletterEvent;
  *
  * This event send an email to customer
  */
-class NewsletterSubscriptionEvent extends AbstractNewsletterEvent
+final class NewsletterSubscriptionEvent extends AbstractNewsletterEvent
 {
 }

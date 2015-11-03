@@ -24,7 +24,7 @@ use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 /**
  * Event fired when a customer registers
  */
-class CustomerRegisterEvent extends Event
+final class CustomerRegisterEvent extends Event
 {
     /**
      * @var CustomerInterface

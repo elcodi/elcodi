@@ -22,6 +22,6 @@ use Elcodi\Component\CartCoupon\Event\Abstracts\AbstractCartCouponEvent;
 /**
  * Class CartCouponOnRemoveEvent
  */
-class CartCouponOnRemoveEvent extends AbstractCartCouponEvent
+final class CartCouponOnRemoveEvent extends AbstractCartCouponEvent
 {
 }

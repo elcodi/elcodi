@@ -22,6 +22,6 @@ use Elcodi\Component\Cart\Event\Abstracts\AbstractCartEvent;
 /**
  * Event dispatched before an order is created
  */
-class OrderPreCreatedEvent extends AbstractCartEvent
+final class OrderPreCreatedEvent extends AbstractCartEvent
 {
 }

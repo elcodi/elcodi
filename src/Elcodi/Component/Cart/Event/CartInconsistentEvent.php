@@ -22,6 +22,6 @@ use Elcodi\Component\Cart\Event\Abstracts\AbstractCartLineEvent;
 /**
  * Class CartInconsistentEvent
  */
-class CartInconsistentEvent extends AbstractCartLineEvent
+final class CartInconsistentEvent extends AbstractCartLineEvent
 {
 }
