@@ -47,7 +47,7 @@ class ConfigurationManagerTest extends WebTestCase
      *
      * @return array Bundles name where fixtures should be found
      */
-    protected function loadFixturesBundles()
+    protected static function loadFixturesBundles()
     {
         return [
             'ElcodiConfigurationBundle',
@@ -240,6 +240,9 @@ class ConfigurationManagerTest extends WebTestCase
      */
     public function testDeleteParameter()
     {
+        static::setUpBeforeClass();
+        $this->setUp();
+
         /*
          * Deletion of a non-persisted parameter should return false
          */
