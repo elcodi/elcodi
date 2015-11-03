@@ -35,6 +35,7 @@
         "php": "^5.4|^7.0",
         "doctrine/common": "^2.5",
         "doctrine/orm": "^2.5",
+        "symfony/console": "^2.7",
 
         "elcodi/core": "^1.0"
     },
