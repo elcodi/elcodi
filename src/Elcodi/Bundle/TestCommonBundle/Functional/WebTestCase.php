@@ -48,10 +48,7 @@ abstract class WebTestCase extends BaseWebTestCase
      */
     protected $client;
 
-    /**
-     * Set up
-     */
-    public function setUp()
+    public static function setUpBeforeClass()
     {
         try {
             static::$kernel = static::createKernel();
@@ -59,7 +56,6 @@ abstract class WebTestCase extends BaseWebTestCase
 
             static::$application = new Application(static::$kernel);
             static::$application->setAutoExit(false);
-            $this->container = static::$kernel->getContainer();
         } catch (Exception $e) {
             throw new RuntimeException(
                 sprintf('Unable to start the application: %s', $e->getMessage()),
@@ -68,13 +64,41 @@ abstract class WebTestCase extends BaseWebTestCase
             );
         }
 
-        $this->createSchema();
+        static::$application->run(new ArrayInput([
+            'command'          => 'doctrine:database:drop',
+            '--no-interaction' => true,
+            '--force'          => true,
+            '--quiet'          => true,
+        ]));
+
+        static::$application->run(new ArrayInput([
+            'command'          => 'doctrine:database:create',
+            '--no-interaction' => true,
+            '--quiet'          => true,
+        ]));
+
+        static::$application->run(new ArrayInput([
+            'command'          => 'doctrine:schema:create',
+            '--no-interaction' => true,
+            '--quiet'          => true,
+        ]));
+
+        $bundles = static::$kernel->getBundles();
+        $formattedBundles = array_map(function ($bundle) use ($bundles) {
+            return $bundles[$bundle]->getPath() . '/DataFixtures/ORM/';
+        }, static::loadFixturesBundles() ?: []);
+
+        if ($formattedBundles) {
+            self::$application->run(new ArrayInput([
+                'command'          => 'doctrine:fixtures:load',
+                '--no-interaction' => true,
+                '--fixtures'       => $formattedBundles,
+                '--quiet'          => true,
+            ]));
+        }
     }
 
-    /**
-     * Tear down
-     */
-    public function tearDown()
+    public static function tearDownAfterClass()
     {
         if (static::$application) {
             static::$application->run(new ArrayInput([
@@ -84,6 +108,12 @@ abstract class WebTestCase extends BaseWebTestCase
                 '--quiet'          => true,
             ]));
         }
+    }
+
+    public function setUp()
+    {
+        static::$kernel->boot();
+        $this->container = static::$kernel->getContainer();
     }
 
     /**
@@ -130,7 +160,7 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * @return array Bundles name where fixtures should be found
      */
-    protected function loadFixturesBundles()
+    protected static function loadFixturesBundles()
     {
         return false;
     }
