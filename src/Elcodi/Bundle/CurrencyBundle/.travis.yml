@@ -1,5 +1,13 @@
 language: php
 
+sudo: false
+
+cache:
+  directories:
+    - vendor
+    - $HOME/.composer/cache
+    - /tmp/Elcodi/
+
 php:
   - 5.4
   - 5.5
@@ -11,10 +19,12 @@ matrix:
     - php: hhvm-nightly
 
 before_install:
+  - composer self-update
+  - 'if [[ -n "$GH_TOKEN" ]]; then composer config github-oauth.github.com ${GH_TOKEN}; fi;'
   - composer require --no-update symfony/twig-bundle ~2.4
 
 install:
-  - composer install --prefer-source --no-interaction
+  - composer install --prefer-dist --no-interaction --no-progress
 
 script:
   - phpunit
