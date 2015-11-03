@@ -15,7 +15,7 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\ProductBundle\Tests\Functional\Repository;
+namespace Elcodi\Bundle\ProductBundle\Tests\Functional\EventListener;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Core\Services\ObjectDirector;
