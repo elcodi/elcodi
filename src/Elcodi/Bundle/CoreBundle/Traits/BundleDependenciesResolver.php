@@ -105,13 +105,6 @@ trait BundleDependenciesResolver
                  */
                 $bundleDependencies = $bundleNamespace::getBundleDependencies($kernel);
 
-                if (isset($dependenciesBundles[$bundleNamespace])) {
-                    $bundleDependencies = array_merge(
-                        $bundleDependencies,
-                        $dependenciesBundles[$bundleNamespace]
-                    );
-                }
-
                 $this->resolveBundleDependencies(
                     $kernel,
                     $bundleStack,
