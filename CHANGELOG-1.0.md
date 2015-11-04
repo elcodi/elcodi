@@ -8,9 +8,22 @@ https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v1.0.0...v1.0.1
 
+### v1.0.5 (04-11-2015)
+
+Fixed related purchasable provider adapter.
+Some improvements related to travis
+
+#### Release Log
+
+* [`68dc92b`](https://github.com/elcodi/elcodi/commit/68dc92bf7bbfafddcb856b5e59cfcb5464726482) Fixed tests for green color! (mmoreram)
+* [`63ab636`](https://github.com/elcodi/elcodi/commit/63ab6365d74a6f8e8c2a22e749ea5d4edf615ef1) moved setup and teardown before and after class (Emanuele Minotto)
+* [`c2bf4d2`](https://github.com/elcodi/elcodi/commit/c2bf4d2ff6e3dc3b49b1917c37a06ef8864f3f1c) appveyor tests improvement (Emanuele Minotto)
+* [`1ee466f`](https://github.com/elcodi/elcodi/commit/1ee466f47d5b3346c3cbca2ee1a72a6e6bd20929) added code coverage for components and bundles (Emanuele Minotto)
+* [`b25f774`](https://github.com/elcodi/elcodi/commit/b25f7741b5f6819862ccb154ac2566deff5fed11) Fixed adapter for related purchasables (mmoreram)
+
 ### v1.0.4 (04-11-2015)
 
-Soe work related to tests and integrations with CI services
+Some work related to tests and integrations with CI services
 
 #### TL;DR
 
@@ -23,26 +36,26 @@ amazing job by Emanuele Minotto.
 
 #### Release Log
 
-* ['eb7b86c'](https://github.com/elcodi/elcodi/commit/eb7b86c82fc55b352b1c01b027d35a79881c1026) added travis cache and new infrastructure (Emanuele Minotto)
-* ['4865b86'](https://github.com/elcodi/elcodi/commit/4865b86d12055186b7c254cad0c522c2c8af7eb2) Added Related purchasable adapter (mmoreram)
-* ['eb6509b'](https://github.com/elcodi/elcodi/commit/eb6509b35284da3e29c17aa50d3782f2afff29d8) Added dependency from Configuration to Console (mmoreram)
-* ['60b994f'](https://github.com/elcodi/elcodi/commit/60b994f35010974c2ae0f99c776e61f2f263de21) Issue #946 Changed dependencies (mmoreram)
-* ['1b4bb11'](https://github.com/elcodi/elcodi/commit/1b4bb111ac2a922ec749e451fe91822045ff615b) Update BundleDependenciesResolver.php (Rucheng Tang)
-* ['015952b'](https://github.com/elcodi/elcodi/commit/015952b0bfb6b74a62a8f9fdcc2c95f221093ac9) some travis fixes (Emanuele Minotto)
-* ['955166d'](https://github.com/elcodi/elcodi/commit/955166dae9edaeaae9987e5589d0e6e2b97d54e8) restored default bin-dir (Emanuele Minotto)
-* ['d7331c5'](https://github.com/elcodi/elcodi/commit/d7331c5d052a6c7de468a97e63ed7327d6646dbf) fixed php 5.6 version and phpunit path (Emanuele Minotto)
-* ['442bd44'](https://github.com/elcodi/elcodi/commit/442bd449d50e38fe45d6983f8688543f2904e937) moved documentation to gh-pages using sami and travis (Emanuele Minotto)
-* ['7df50cf'](https://github.com/elcodi/elcodi/commit/7df50cf311a4cba82112c0a9a1e15437b5ce4cbb) moved code coverage to coveralls (Emanuele Minotto)
-* ['6de664d'](https://github.com/elcodi/elcodi/commit/6de664dd178952857ada9b7cb34ecadb506172a7) expanded repos matrix + indentation (Emanuele Minotto)
-* ['a226a4a'](https://github.com/elcodi/elcodi/commit/a226a4a8f14ce04eab32960551b94b912453836d) Updated php dependency for ^5.4 & 7.* (mmoreram)
-* ['5289860'](https://github.com/elcodi/elcodi/commit/52898608d4e6261e85814d7acaa146a7e6afda0b) Closes #937 Added Sami (mmoreram)
-* ['9dae0a5'](https://github.com/elcodi/elcodi/commit/9dae0a51688b3cb43934a719ef19c93cd9f0563b) Added test coverage report (mmoreram)
-* ['6c853dd'](https://github.com/elcodi/elcodi/commit/6c853dde9593c43c290ade00fc3212482960e296) Removed lock and travis updates (mmoreram)
-* ['a91ec6e'](https://github.com/elcodi/elcodi/commit/a91ec6ea4e11e7ce360f4760b0ed8c7bd989ccab) added php versions matrix (Emanuele Minotto)
-* ['ffcf0ae'](https://github.com/elcodi/elcodi/commit/ffcf0ae4ca66728f4a4c344c6df86b3a824e4c6f) Removed unstable version badge (Marc Morera)
-* ['09e3b4d'](https://github.com/elcodi/elcodi/commit/09e3b4d918ecd690592433dbbd489be4de9e75ba) appveyor configuration & badge (Emanuele Minotto)
-* ['86fcce4'](https://github.com/elcodi/elcodi/commit/86fcce4ea2798578ff6c67def1d8ec8a4bf76a59) skipping testResize if convert is not provided (Emanuele Minotto)
-* ['c5c4acd'](https://github.com/elcodi/elcodi/commit/c5c4acd4c7bc18b5d0a6aca4b97d2e00936985f9) added composer scripts (Emanuele Minotto)
+* [`eb7b86c`](https://github.com/elcodi/elcodi/commit/eb7b86c82fc55b352b1c01b027d35a79881c1026) added travis cache and new infrastructure (Emanuele Minotto)
+* [`4865b86`](https://github.com/elcodi/elcodi/commit/4865b86d12055186b7c254cad0c522c2c8af7eb2) Added Related purchasable adapter (mmoreram)
+* [`eb6509b`](https://github.com/elcodi/elcodi/commit/eb6509b35284da3e29c17aa50d3782f2afff29d8) Added dependency from Configuration to Console (mmoreram)
+* [`60b994f`](https://github.com/elcodi/elcodi/commit/60b994f35010974c2ae0f99c776e61f2f263de21) Issue #946 Changed dependencies (mmoreram)
+* [`1b4bb11`](https://github.com/elcodi/elcodi/commit/1b4bb111ac2a922ec749e451fe91822045ff615b) Update BundleDependenciesResolver.php (Rucheng Tang)
+* [`015952b`](https://github.com/elcodi/elcodi/commit/015952b0bfb6b74a62a8f9fdcc2c95f221093ac9) some travis fixes (Emanuele Minotto)
+* [`955166d`](https://github.com/elcodi/elcodi/commit/955166dae9edaeaae9987e5589d0e6e2b97d54e8) restored default bin-dir (Emanuele Minotto)
+* [`d7331c5`](https://github.com/elcodi/elcodi/commit/d7331c5d052a6c7de468a97e63ed7327d6646dbf) fixed php 5.6 version and phpunit path (Emanuele Minotto)
+* [`442bd44`](https://github.com/elcodi/elcodi/commit/442bd449d50e38fe45d6983f8688543f2904e937) moved documentation to gh-pages using sami and travis (Emanuele Minotto)
+* [`7df50cf`](https://github.com/elcodi/elcodi/commit/7df50cf311a4cba82112c0a9a1e15437b5ce4cbb) moved code coverage to coveralls (Emanuele Minotto)
+* [`6de664d`](https://github.com/elcodi/elcodi/commit/6de664dd178952857ada9b7cb34ecadb506172a7) expanded repos matrix + indentation (Emanuele Minotto)
+* [`a226a4a`](https://github.com/elcodi/elcodi/commit/a226a4a8f14ce04eab32960551b94b912453836d) Updated php dependency for ^5.4 & 7.* (mmoreram)
+* [`5289860`](https://github.com/elcodi/elcodi/commit/52898608d4e6261e85814d7acaa146a7e6afda0b) Closes #937 Added Sami (mmoreram)
+* [`9dae0a5`](https://github.com/elcodi/elcodi/commit/9dae0a51688b3cb43934a719ef19c93cd9f0563b) Added test coverage report (mmoreram)
+* [`6c853dd`](https://github.com/elcodi/elcodi/commit/6c853dde9593c43c290ade00fc3212482960e296) Removed lock and travis updates (mmoreram)
+* [`a91ec6e`](https://github.com/elcodi/elcodi/commit/a91ec6ea4e11e7ce360f4760b0ed8c7bd989ccab) added php versions matrix (Emanuele Minotto)
+* [`ffcf0ae`](https://github.com/elcodi/elcodi/commit/ffcf0ae4ca66728f4a4c344c6df86b3a824e4c6f) Removed unstable version badge (Marc Morera)
+* [`09e3b4d`](https://github.com/elcodi/elcodi/commit/09e3b4d918ecd690592433dbbd489be4de9e75ba) appveyor configuration & badge (Emanuele Minotto)
+* [`86fcce4`](https://github.com/elcodi/elcodi/commit/86fcce4ea2798578ff6c67def1d8ec8a4bf76a59) skipping testResize if convert is not provided (Emanuele Minotto)
+* [`c5c4acd`](https://github.com/elcodi/elcodi/commit/c5c4acd4c7bc18b5d0a6aca4b97d2e00936985f9) added composer scripts (Emanuele Minotto)
 
 ### v1.0.3 (13-10-2015)
 
