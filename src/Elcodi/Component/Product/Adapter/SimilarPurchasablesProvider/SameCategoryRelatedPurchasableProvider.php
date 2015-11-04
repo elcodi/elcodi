@@ -17,8 +17,6 @@
 
 namespace Elcodi\Component\Product\Adapter\SimilarPurchasablesProvider;
 
-use Doctrine\Common\Collections\Collection;
-
 use Elcodi\Component\Product\Adapter\SimilarPurchasablesProvider\Interfaces\RelatedPurchasablesProviderInterface;
 use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
