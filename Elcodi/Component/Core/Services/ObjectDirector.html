@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Elcodi\Component\Core\Services\ObjectDirector | Elcodi API Documentation</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/sami.css">
+        <script src="../../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Elcodi_Component_Core_Services_ObjectDirector" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Elcodi API Documentation</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../../../../Elcodi.html">Elcodi</a></li>
+                                        <li><a href="../../../../Elcodi/Component.html">Component</a></li>
+                                        <li><a href="../../../../Elcodi/Component/Core.html">Core</a></li>
+                                        <li><a href="../../../../Elcodi/Component/Core/Services.html">Services</a></li>
+    
+                <li>ObjectDirector</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>ObjectDirector</h1>
+    </div>
+
+    <p>    class
+    <strong>ObjectDirector</strong>
+</p>
+
+            <div class="description">
+            <p>Class ObjectDirector</p>            <p>This object is a facade for these different persistance-related elements</p>
+
+<ul>
+<li>Object Manager</li>
+<li>Repository</li>
+<li>Factory</li>
+</ul>
+
+<p>Allows final user to manage in a simple way an entity or a set of entities.
+Provides a reduced (but useful) set of methods.</p>        </div>
+    
+    
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(
+    <abbr title="Elcodi\Component\Core\Services\Doctrine\Common\Persistence\ObjectManager">ObjectManager</abbr> $manager, 
+    <abbr title="Elcodi\Component\Core\Services\Doctrine\Common\Persistence\ObjectRepository">ObjectRepository</abbr> $repository, 
+    <abbr title="Elcodi\Component\Core\Services\Elcodi\Component\Core\Factory\Abstracts\AbstractFactory">AbstractFactory</abbr> $factory)
+                                            <p>Construct</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_find">find</a>(
+    mixed $id)
+                                            <p>Finds an object by its primary key / identifier.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_findAll">findAll</a>()
+                                            <p>Finds all objects in the repository.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_findBy">findBy</a>(
+    array $criteria, 
+    array $orderBy = null, 
+    integer|null $limit = null, 
+    integer|null $offset = null)
+                                            <p>Finds objects by a set of criteria.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    object|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_findOneBy">findOneBy</a>(
+    array $criteria)
+                                            <p>Finds a single object given a criteria.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    Object
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_create">create</a>()
+                                            <p>Create a new entity instance, result of the factory creation method</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    object|array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_save">save</a>(
+    object|array $data)
+                                            <p>Save the instance into database. Given data can be a single object or
+an array of objects.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    object|array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_remove">remove</a>(
+    object|array $data)
+                                            <p>Remove the instance from the database. Given data can be a single object or
+an array of objects.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at line 68</div>
+        <code>                    
+    
+    <strong>__construct</strong>(
+    <abbr title="Elcodi\Component\Core\Services\Doctrine\Common\Persistence\ObjectManager">ObjectManager</abbr> $manager, 
+    <abbr title="Elcodi\Component\Core\Services\Doctrine\Common\Persistence\ObjectRepository">ObjectRepository</abbr> $repository, 
+    <abbr title="Elcodi\Component\Core\Services\Elcodi\Component\Core\Factory\Abstracts\AbstractFactory">AbstractFactory</abbr> $factory)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Construct</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Core\Services\Doctrine\Common\Persistence\ObjectManager">ObjectManager</abbr></td>
+                <td>$manager</td>
+                <td>Manager</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Core\Services\Doctrine\Common\Persistence\ObjectRepository">ObjectRepository</abbr></td>
+                <td>$repository</td>
+                <td>Repository</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Core\Services\Elcodi\Component\Core\Factory\Abstracts\AbstractFactory">AbstractFactory</abbr></td>
+                <td>$factory</td>
+                <td>Factory</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_find">
+        <div class="location">at line 85</div>
+        <code>                    
+    object|null
+    <strong>find</strong>(
+    mixed $id)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Finds an object by its primary key / identifier.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    mixed</td>
+                <td>$id</td>
+                <td>The identifier.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    object|null</td>
+            <td>Fetched object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findAll">
+        <div class="location">at line 97</div>
+        <code>                    
+    array
+    <strong>findAll</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Finds all objects in the repository.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    array</td>
+            <td>Set of fetched objects</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findBy">
+        <div class="location">at line 120</div>
+        <code>                    
+    array
+    <strong>findBy</strong>(
+    array $criteria, 
+    array $orderBy = null, 
+    integer|null $limit = null, 
+    integer|null $offset = null)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Finds objects by a set of criteria.</p>                    <p>Optionally sorting and limiting details can be passed. An implementation may throw
+an UnexpectedValueException if certain values of the sorting or limiting details are
+not supported.</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    array</td>
+                <td>$criteria</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>
+    array</td>
+                <td>$orderBy</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>
+    integer|null</td>
+                <td>$limit</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>
+    integer|null</td>
+                <td>$offset</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    array</td>
+            <td>Set of fetched objects</td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/UnexpectedValueException"><abbr title="UnexpectedValueException">UnexpectedValueException</abbr></a></td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findOneBy">
+        <div class="location">at line 143</div>
+        <code>                    
+    object|null
+    <strong>findOneBy</strong>(
+    array $criteria)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Finds a single object given a criteria.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    array</td>
+                <td>$criteria</td>
+                <td>The criteria.</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    object|null</td>
+            <td>Fetched object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_create">
+        <div class="location">at line 157</div>
+        <code>                    
+    Object
+    <strong>create</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Create a new entity instance, result of the factory creation method</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    Object</td>
+            <td>new Instance</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_save">
+        <div class="location">at line 174</div>
+        <code>                    
+    object|array
+    <strong>save</strong>(
+    object|array $data)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Save the instance into database. Given data can be a single object or
+an array of objects.</p>                    <p>This method will persist and flush given object/array of objects</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    object|array</td>
+                <td>$data</td>
+                <td>Data to save into database</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    object|array</td>
+            <td>Saved data</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_remove">
+        <div class="location">at line 205</div>
+        <code>                    
+    object|array
+    <strong>remove</strong>(
+    object|array $data)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Remove the instance from the database. Given data can be a single object or
+an array of objects.</p>                    <p>This method will remove and flush given object/array of objects</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    object|array</td>
+                <td>$data</td>
+                <td>Data to remove from database</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    object|array</td>
+            <td>Removed data</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

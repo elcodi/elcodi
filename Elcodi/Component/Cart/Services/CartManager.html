@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Elcodi\Component\Cart\Services\CartManager | Elcodi API Documentation</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/sami.css">
+        <script src="../../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Elcodi_Component_Cart_Services_CartManager" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Elcodi API Documentation</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../../../../Elcodi.html">Elcodi</a></li>
+                                        <li><a href="../../../../Elcodi/Component.html">Component</a></li>
+                                        <li><a href="../../../../Elcodi/Component/Cart.html">Cart</a></li>
+                                        <li><a href="../../../../Elcodi/Component/Cart/Services.html">Services</a></li>
+    
+                <li>CartManager</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>CartManager</h1>
+    </div>
+
+    <p>    class
+    <strong>CartManager</strong>
+</p>
+
+            <div class="description">
+            <p>Cart manager service</p>            <p>This service hosts all cart and cartLine related actions.
+This class has not states, so every method just has input parameters and
+return some output values.</p>
+
+<p>Some of these methods also can dispatch some Cart events</p>
+
+<p>Api Methods:</p>
+
+<ul>
+<li>addLine(AbstractCart, CartLine) : self</li>
+<li>removeLine(AbstractCart, CartLine) : self</li>
+<li>silentRemoveLine(AbstractCart, CartLine) : self</li>
+<li><p>emptyLines() : self</p></li>
+<li><p>increaseCartLineQuantity(CartLine, $quantity) : self</p></li>
+<li>decreaseCartLineQuantity(CartLine, $quantity) : self</li>
+<li><p>setCartLineQuantity(CartLine, $quantity) : self</p></li>
+<li><p>addProduct(AbstractCart, PurchasableInterface, $quantity) : self</p></li>
+</ul>
+</p>        </div>
+    
+    
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher">CartEventDispatcher</abbr> $cartEventDispatcher, 
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\EventDispatcher\CartLineEventDispatcher">CartLineEventDispatcher</abbr> $cartLineEventDispatcher, 
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Factory\CartFactory">CartFactory</abbr> $cartFactory, 
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Factory\CartLineFactory">CartLineFactory</abbr> $cartLineFactory)
+                                            <p>Construct method</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_removeLine">removeLine</a>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart, 
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface">CartLineInterface</abbr> $cartLine)
+                                            <p>Removes CartLine from Cart</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_silentRemoveLine">silentRemoveLine</a>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart, 
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface">CartLineInterface</abbr> $cartLine)
+                                            <p>Removes CartLine from Cart</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_emptyLines">emptyLines</a>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart)
+                                            <p>Empty cart.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_editCartLine">editCartLine</a>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface">CartLineInterface</abbr> $cartLine, 
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface">PurchasableInterface</abbr> $purchasable, 
+    integer $quantity)
+                                            <p>Edit CartLine</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_increaseCartLineQuantity">increaseCartLineQuantity</a>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface">CartLineInterface</abbr> $cartLine, 
+    integer $quantity)
+                                            <p>Adds quantity to cartLine</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_decreaseCartLineQuantity">decreaseCartLineQuantity</a>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface">CartLineInterface</abbr> $cartLine, 
+    integer $quantity)
+                                            <p>Removes quantity to cartLine</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setCartLineQuantity">setCartLineQuantity</a>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface">CartLineInterface</abbr> $cartLine, 
+    integer $quantity)
+                                            <p>Sets quantity to cartLine</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addPurchasable">addPurchasable</a>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart, 
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface">PurchasableInterface</abbr> $purchasable, 
+    integer $quantity)
+                                            <p>Add a Purchasable to Cart as a new CartLine</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_removePurchasable">removePurchasable</a>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart, 
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface">PurchasableInterface</abbr> $purchasable, 
+    integer $quantity)
+                                            <p>Remove a Purchasable from Cart</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addProduct">addProduct</a>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart, 
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface">PurchasableInterface</abbr> $purchasable, 
+    integer $quantity)
+                                            <p>Add a Purchasable to Cart as a new CartLine</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_removeProduct">removeProduct</a>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart, 
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface">PurchasableInterface</abbr> $purchasable, 
+    integer $quantity)
+                                            <p>Remove a Purchasable from Cart</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at line 88</div>
+        <code>                    
+    
+    <strong>__construct</strong>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher">CartEventDispatcher</abbr> $cartEventDispatcher, 
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\EventDispatcher\CartLineEventDispatcher">CartLineEventDispatcher</abbr> $cartLineEventDispatcher, 
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Factory\CartFactory">CartFactory</abbr> $cartFactory, 
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Factory\CartLineFactory">CartLineFactory</abbr> $cartLineFactory)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Construct method</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher">CartEventDispatcher</abbr></td>
+                <td>$cartEventDispatcher</td>
+                <td>Cart Event Dispatcher</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\EventDispatcher\CartLineEventDispatcher">CartLineEventDispatcher</abbr></td>
+                <td>$cartLineEventDispatcher</td>
+                <td>CartLine Event dispatcher</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Factory\CartFactory">CartFactory</abbr></td>
+                <td>$cartFactory</td>
+                <td>Cart factory</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Factory\CartLineFactory">CartLineFactory</abbr></td>
+                <td>$cartLineFactory</td>
+                <td>CartLine factory</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeLine">
+        <div class="location">at line 112</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr>
+    <strong>removeLine</strong>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart, 
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface">CartLineInterface</abbr> $cartLine)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Removes CartLine from Cart</p>                    <p>This method dispatches all Cart Load events, if defined.
+If this method is called in CartCheckEvents, $dispatchEvents should be
+set to false</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr></td>
+                <td>$cart</td>
+                <td>Cart</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface">CartLineInterface</abbr></td>
+                <td>$cartLine</td>
+                <td>Cart line</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_silentRemoveLine">
+        <div class="location">at line 133</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr>
+    <strong>silentRemoveLine</strong>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart, 
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface">CartLineInterface</abbr> $cartLine)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Removes CartLine from Cart</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr></td>
+                <td>$cart</td>
+                <td>Cart</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface">CartLineInterface</abbr></td>
+                <td>$cartLine</td>
+                <td>Cart line</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_emptyLines">
+        <div class="location">at line 158</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr>
+    <strong>emptyLines</strong>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Empty cart.</p>                    <p>This method dispatches all Cart Load events</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr></td>
+                <td>$cart</td>
+                <td>Cart</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_editCartLine">
+        <div class="location">at line 192</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr>
+    <strong>editCartLine</strong>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface">CartLineInterface</abbr> $cartLine, 
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface">PurchasableInterface</abbr> $purchasable, 
+    integer $quantity)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Edit CartLine</p>                    <p>The line is updated only if it belongs to a Cart</p>
+
+<p>This method dispatches all Cart Check and Load events</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface">CartLineInterface</abbr></td>
+                <td>$cartLine</td>
+                <td>Cart line</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface">PurchasableInterface</abbr></td>
+                <td>$purchasable</td>
+                <td>purchasable to be edited</td>
+            </tr>
+                    <tr>
+                <td>
+    integer</td>
+                <td>$quantity</td>
+                <td>item quantity</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_increaseCartLineQuantity">
+        <div class="location">at line 221</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr>
+    <strong>increaseCartLineQuantity</strong>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface">CartLineInterface</abbr> $cartLine, 
+    integer $quantity)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Adds quantity to cartLine</p>                    <p>If quantity is higher than item stock, throw exception</p>
+
+<p>This method dispatches all Cart Check and Load events</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface">CartLineInterface</abbr></td>
+                <td>$cartLine</td>
+                <td>Cart line</td>
+            </tr>
+                    <tr>
+                <td>
+    integer</td>
+                <td>$quantity</td>
+                <td>Number of units to decrease CartLine quantity</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_decreaseCartLineQuantity">
+        <div class="location">at line 249</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr>
+    <strong>decreaseCartLineQuantity</strong>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface">CartLineInterface</abbr> $cartLine, 
+    integer $quantity)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Removes quantity to cartLine</p>                    <p>If quantity is 0, deletes whole line</p>
+
+<p>This method dispatches all Cart Check and Load events</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface">CartLineInterface</abbr></td>
+                <td>$cartLine</td>
+                <td>Cart line</td>
+            </tr>
+                    <tr>
+                <td>
+    integer</td>
+                <td>$quantity</td>
+                <td>Number of units to decrease CartLine quantity</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setCartLineQuantity">
+        <div class="location">at line 275</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr>
+    <strong>setCartLineQuantity</strong>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface">CartLineInterface</abbr> $cartLine, 
+    integer $quantity)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sets quantity to cartLine</p>                    <p>If quantity is higher than item stock, throw exception</p>
+
+<p>This method dispatches all Cart Check and Load events</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface">CartLineInterface</abbr></td>
+                <td>$cartLine</td>
+                <td>Cart line</td>
+            </tr>
+                    <tr>
+                <td>
+    integer</td>
+                <td>$quantity</td>
+                <td>CartLine quantity to set</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addPurchasable">
+        <div class="location">at line 337</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr>
+    <strong>addPurchasable</strong>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart, 
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface">PurchasableInterface</abbr> $purchasable, 
+    integer $quantity)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Add a Purchasable to Cart as a new CartLine</p>                    <p>This method creates a new CartLine and set item quantity
+correspondingly.</p>
+
+<p>If the Purchasable is already in the Cart, it just increments
+item quantity by $quantity</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr></td>
+                <td>$cart</td>
+                <td>Cart</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface">PurchasableInterface</abbr></td>
+                <td>$purchasable</td>
+                <td>Product or Variant to add</td>
+            </tr>
+                    <tr>
+                <td>
+    integer</td>
+                <td>$quantity</td>
+                <td>Number of units to set or increase</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removePurchasable">
+        <div class="location">at line 392</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr>
+    <strong>removePurchasable</strong>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart, 
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface">PurchasableInterface</abbr> $purchasable, 
+    integer $quantity)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Remove a Purchasable from Cart</p>                    <p>This method removes a Purchasable from the Cart.</p>
+
+<p>If the Purchasable is already in the Cart, it just decreases
+item quantity by $quantity</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr></td>
+                <td>$cart</td>
+                <td>Cart</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface">PurchasableInterface</abbr></td>
+                <td>$purchasable</td>
+                <td>Product or Variant to add</td>
+            </tr>
+                    <tr>
+                <td>
+    integer</td>
+                <td>$quantity</td>
+                <td>Number of units to set or increase</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addProduct">
+        <div class="location">at line 441</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr>
+    <strong>addProduct</strong>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart, 
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface">PurchasableInterface</abbr> $purchasable, 
+    integer $quantity)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Add a Purchasable to Cart as a new CartLine</p>                    <p>This method creates a new CartLine and set item quantity
+correspondingly.</p>
+
+<p>If the Purchasable is already in the Cart, it just increments
+item quantity by $quantity</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr></td>
+                <td>$cart</td>
+                <td>Cart</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface">PurchasableInterface</abbr></td>
+                <td>$purchasable</td>
+                <td>Product or Variant to add</td>
+            </tr>
+                    <tr>
+                <td>
+    integer</td>
+                <td>$quantity</td>
+                <td>Number of units to set or increase</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeProduct">
+        <div class="location">at line 474</div>
+        <code>                    
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr>
+    <strong>removeProduct</strong>(
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr> $cart, 
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface">PurchasableInterface</abbr> $purchasable, 
+    integer $quantity)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Remove a Purchasable from Cart</p>                    <p>This method removes a Purchasable from the Cart.</p>
+
+<p>If the Purchasable is already in the Cart, it just decreases
+item quantity by $quantity</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Cart\Entity\Interfaces\CartInterface">CartInterface</abbr></td>
+                <td>$cart</td>
+                <td>Cart</td>
+            </tr>
+                    <tr>
+                <td>
+    <abbr title="Elcodi\Component\Cart\Services\Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface">PurchasableInterface</abbr></td>
+                <td>$purchasable</td>
+                <td>Product or Variant to add</td>
+            </tr>
+                    <tr>
+                <td>
+    integer</td>
+                <td>$quantity</td>
+                <td>Number of units to set or increase</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="Elcodi\Component\Cart\Services\$this">$this</abbr></td>
+            <td>Self object</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>
