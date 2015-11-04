@@ -1,14 +1,23 @@
 language: php
 
+sudo: false
+
+cache:
+  directories:
+    - vendor
+    - $HOME/.composer/cache
+    - /tmp/Elcodi/
+
 php:
   - 5.6
 
 before_install:
   - phpenv config-rm xdebug.ini
   - composer self-update
+  - 'if [[ -n "$GH_TOKEN" ]]; then composer config github-oauth.github.com ${GH_TOKEN}; fi;'
 
 install:
-  - composer install --prefer-source --no-interaction
+  - composer install --prefer-dist --no-interaction --no-progress
 
 script:
   - vendor/bin/phpunit
