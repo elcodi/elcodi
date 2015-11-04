@@ -33,7 +33,7 @@ class EventAdapter extends Event implements EventInterface
      *
      * Context from the caller
      */
-    private $context;
+    private $context = [];
 
     /**
      * @var string

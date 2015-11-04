@@ -116,7 +116,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * @param string
+     * @param string $phone
      *
      * @return $this
      */

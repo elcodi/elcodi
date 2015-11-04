@@ -123,7 +123,7 @@ class APIMetricExtension extends Twig_Extension
      * @param string   $event Token
      * @param string[] $dates Dates
      *
-     * @return array Distribution values
+     * @return integer Distribution values
      */
     public function getDistributions(
         $token,

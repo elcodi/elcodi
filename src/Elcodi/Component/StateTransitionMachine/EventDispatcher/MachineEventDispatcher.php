@@ -36,7 +36,7 @@ class MachineEventDispatcher extends AbstractEventDispatcher
      * Throw initialization events
      *
      * @param MachineInterface $machine        Machine
-     * @param stdClass         $object         Object
+     * @param mixed            $object         Object
      * @param StateLineStack   $stateLineStack StateLine Stack
      *
      * @return $this Self object
@@ -65,7 +65,7 @@ class MachineEventDispatcher extends AbstractEventDispatcher
      * Throw transition events
      *
      * @param MachineInterface $machine        Machine
-     * @param stdClass         $object         Object
+     * @param mixed            $object         Object
      * @param StateLineStack   $stateLineStack StateLine Stack
      * @param Transition       $transition     Transition
      *

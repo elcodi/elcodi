@@ -74,14 +74,14 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
      *
      * Submitted data in plain mode
      */
-    private $submittedDataPlain;
+    private $submittedDataPlain = [];
 
     /**
      * @var array
      *
      * Local and temporary backup of translations
      */
-    private $translationsBackup;
+    private $translationsBackup = [];
 
     /**
      * Construct method
@@ -104,8 +104,6 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
         $this->locales = $locales;
         $this->masterLocale = $masterLocale;
         $this->fallback = $fallback;
-        $this->submittedDataPlain = [];
-        $this->translationsBackup = [];
     }
 
     /**

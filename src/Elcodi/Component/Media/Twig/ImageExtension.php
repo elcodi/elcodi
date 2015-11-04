@@ -123,7 +123,7 @@ class ImageExtension extends Twig_Extension
      * Return route of image with desired resize
      *
      * @param ImageInterface $imageMedia Imagemedia element
-     * @param Array          $options    Options
+     * @param array          $options    Options
      *
      * @return string image route
      */

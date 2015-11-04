@@ -29,7 +29,7 @@ class PluginConfiguration
      *
      * Encoded configuration
      */
-    protected $configuration;
+    protected $configuration = [];
 
     /**
      * Construct

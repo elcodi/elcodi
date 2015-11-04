@@ -33,7 +33,7 @@ use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 interface CustomerInterface extends AbstractUserInterface
 {
     /**
-     * @param string
+     * @param string $phone
      *
      * @return $this
      */

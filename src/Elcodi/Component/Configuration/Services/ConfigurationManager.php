@@ -160,8 +160,8 @@ class ConfigurationManager extends AbstractCacheWrapper
     /**
      * Loads a parameter given the format "namespace.key"
      *
-     * @param string $configurationIdentifier Configuration identifier
-     * @param string $defaultValue            Default value
+     * @param string      $configurationIdentifier Configuration identifier
+     * @param string|null $defaultValue            Default value
      *
      * @return null|string|boolean Configuration parameter value
      *
