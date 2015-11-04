@@ -1,7 +1,7 @@
 services:
 
     #
-    # ExchangeRates Adapter
+    # ExchangeRates Adapters
     #
     elcodi.currency_exchange_rate_adapter.yahoo_finances:
         class: Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\YahooFinanceProviderAdapter
