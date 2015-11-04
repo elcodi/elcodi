@@ -97,7 +97,10 @@ class SameCategoryRelatedPurchasableProvider implements RelatedPurchasablesProvi
             return [];
         }
 
-        return $this->getRelatedProductsGivenAnArrayOfProducts($products);
+        return $this->getRelatedProductsGivenAnArrayOfProducts(
+            $products,
+            $limit
+        );
     }
 
     /**
@@ -127,10 +130,15 @@ class SameCategoryRelatedPurchasableProvider implements RelatedPurchasablesProvi
      * Build a basic query given a set of categories and a set of unwanted
      * products
      *
+     * @param ProductInterface[] $products Products
+     * @param int                $limit    Limit
+     *
      * @return array
      */
-    private function getRelatedProductsGivenAnArrayOfProducts(array $products)
-    {
+    private function getRelatedProductsGivenAnArrayOfProducts(
+        array $products,
+        $limit
+    ) {
         $categories = [];
 
         /**
@@ -164,6 +172,7 @@ class SameCategoryRelatedPurchasableProvider implements RelatedPurchasablesProvi
                 'products'   => $products,
                 'enabled'    => true,
             ])
+            ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
     }
