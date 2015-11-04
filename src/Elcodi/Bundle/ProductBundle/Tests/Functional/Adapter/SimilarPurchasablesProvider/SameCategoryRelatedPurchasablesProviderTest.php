@@ -103,6 +103,21 @@ class SameCategoryRelatedPurchasablesProviderTest extends WebTestCase
                 1
             )
         );
+
+        /**
+         * For this test, we emulate that product 2 has category 1.
+         */
+        $category2 = $this->find('category', 2);
+        $product2 = $this->find('product', 2);
+        $product2->setPrincipalCategory($category2);
+        $this->flush($product2);
+
+        /**
+         * Testing when limit 1 is requested with 2 possible elements
+         */
+        $this->assertCount(1, $relatedPurchasablesProvider
+            ->getRelatedPurchasables($product, 1)
+        );
     }
 
     /**
@@ -132,6 +147,14 @@ class SameCategoryRelatedPurchasablesProviderTest extends WebTestCase
          */
         $this->assertCount(0, $relatedPurchasablesProvider
             ->getRelatedPurchasablesFromArray($products, 0)
+        );
+
+        /**
+         * Testing when limit 1 is requested. More than 0 but less than the
+         * total
+         */
+        $this->assertCount(1, $relatedPurchasablesProvider
+            ->getRelatedPurchasablesFromArray($products, 1)
         );
 
         $this->assertCount(2, $relatedPurchasablesProvider
