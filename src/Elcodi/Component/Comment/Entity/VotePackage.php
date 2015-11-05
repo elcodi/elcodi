@@ -50,7 +50,7 @@ class VotePackage
      *
      * @param VoteInterface[]|null $votes Votes
      */
-    protected function __construct(array $votes = array())
+    protected function __construct(array $votes = [])
     {
         foreach ($votes as $vote) {
             if ($vote instanceof VoteInterface) {
@@ -102,7 +102,7 @@ class VotePackage
      *
      * @return $this VotePackage
      */
-    public static function create(array $votes = array())
+    public static function create(array $votes = [])
     {
         return new self($votes);
     }

@@ -18,43 +18,43 @@
 namespace Elcodi\Component\Product\Twig;
 
 use Twig_Extension;
-use Twig_SimpleFunction;
+use Twig_SimpleFilter;
 
-use Elcodi\Component\Product\Services\ProductOptionsResolver;
+use Elcodi\Component\Product\Services\PurchasableNameResolver;
 
 /**
  * Product extension for twig
  */
-class ProductExtension extends Twig_Extension
+class PurchasableExtension extends Twig_Extension
 {
     /**
-     * @var ProductOptionsResolver
+     * @var PurchasableNameResolver
      *
-     * Product options resolver
+     * Purchasable name resolver
      */
-    private $productOptionsResolver;
+    private $purchasableNameResolver;
 
     /**
-     * Construct
+     * Constructor
      *
-     * @param ProductOptionsResolver $productOptionsResolver Product options resolver
+     * @param PurchasableNameResolver $purchasableNameResolver Purchasable name resolver
      */
-    public function __construct(ProductOptionsResolver $productOptionsResolver)
+    public function __construct(PurchasableNameResolver $purchasableNameResolver)
     {
-        $this->productOptionsResolver = $productOptionsResolver;
+        $this->purchasableNameResolver = $purchasableNameResolver;
     }
 
     /**
      * Returns defined twig functions
      *
-     * @return Twig_SimpleFunction[] Functions
+     * @return Twig_SimpleFilter[] Filters
      */
-    public function getFunctions()
+    public function getFilters()
     {
         return [
-            new Twig_SimpleFunction('available_options', [
-                $this->productOptionsResolver,
-                'getAvailableOptions',
+            new Twig_SimpleFilter('purchasable_name', [
+                $this->purchasableNameResolver,
+                'getPurchasableName',
             ]),
         ];
     }
@@ -66,6 +66,6 @@ class ProductExtension extends Twig_Extension
      */
     public function getName()
     {
-        return 'product_extension';
+        return 'purchasable_extension';
     }
 }

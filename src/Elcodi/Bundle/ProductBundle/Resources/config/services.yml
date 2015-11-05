@@ -16,3 +16,9 @@ services:
 
     elcodi.service.category_integrity_fixer:
         class: Elcodi\Component\Product\Services\CategoryIntegrityFixer
+
+    elcodi.resolver.product_options:
+        class: Elcodi\Component\Product\Services\ProductOptionsResolver
+
+    elcodi.resolver.purchasable_name:
+        class: Elcodi\Component\Product\Services\PurchasableNameResolver
