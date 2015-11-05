@@ -118,7 +118,7 @@ class Comment implements CommentInterface
      *
      * @return $this Self object
      */
-    public function setParent($parent = null)
+    public function setParent(CommentInterface $parent = null)
     {
         $this->parent = $parent;
 

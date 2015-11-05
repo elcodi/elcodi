@@ -78,7 +78,7 @@ class CartLine implements CartLineInterface
      *
      * @return $this Self object
      */
-    public function setOrderLine($orderLine)
+    public function setOrderLine(OrderLineInterface $orderLine)
     {
         $this->orderLine = $orderLine;
 

@@ -119,7 +119,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @return $this Self object
      */
-    public function setOrders($orders);
+    public function setOrders(Collection $orders);
 
     /**
      * Get user orders
@@ -151,7 +151,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @return $this Self object
      */
-    public function setCarts($carts);
+    public function setCarts(Collection $carts);
 
     /**
      * Get Cart collection

@@ -82,7 +82,7 @@ class Entry implements EntryInterface
         $event,
         $value,
         $type,
-        $createdAt
+        DateTime $createdAt
     ) {
         $this->token = $token;
         $this->event = $event;

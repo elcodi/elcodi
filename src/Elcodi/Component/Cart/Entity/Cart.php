@@ -513,7 +513,7 @@ class Cart implements CartInterface
      *
      * @return $this Self object
      */
-    public function setDeliveryAddress($deliveryAddress)
+    public function setDeliveryAddress(AddressInterface $deliveryAddress)
     {
         $this->deliveryAddress = $deliveryAddress;
 
@@ -537,7 +537,7 @@ class Cart implements CartInterface
      *
      * @return $this Self object
      */
-    public function setBillingAddress($billingAddress)
+    public function setBillingAddress(AddressInterface $billingAddress)
     {
         $this->billingAddress = $billingAddress;
 

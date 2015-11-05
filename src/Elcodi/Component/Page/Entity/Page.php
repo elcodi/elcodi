@@ -226,7 +226,7 @@ class Page implements PageInterface
      *
      * @return $this Self object
      */
-    public function setPublicationDate($publicationDate)
+    public function setPublicationDate(DateTime $publicationDate)
     {
         $this->publicationDate = $publicationDate;
 

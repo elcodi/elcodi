@@ -29,7 +29,7 @@ class UniqIdGenerator implements GeneratorInterface
     /**
      * Generates a unique Id
      *
-     * @param integer $length Length of string generated
+     * @param integer|null $length Length of string generated
      *
      * @return string Result of generation
      */

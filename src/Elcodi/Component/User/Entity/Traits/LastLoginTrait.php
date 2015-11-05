@@ -46,7 +46,7 @@ trait LastLoginTrait
      *
      * @return $this Self object
      */
-    public function setLastLoginAt($lastLoginAt)
+    public function setLastLoginAt(\DateTime $lastLoginAt)
     {
         $this->lastLoginAt = $lastLoginAt;
 

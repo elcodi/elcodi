@@ -53,7 +53,7 @@ interface VariantInterface
      *
      * @return $this Self object
      */
-    public function setProduct($product);
+    public function setProduct(ProductInterface $product);
 
     /**
      * Gets this variant option values
