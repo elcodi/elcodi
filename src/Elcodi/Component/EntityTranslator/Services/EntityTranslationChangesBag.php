@@ -27,15 +27,7 @@ class EntityTranslationChangesBag
      *
      * Entity Translation changes
      */
-    protected $changes;
-
-    /**
-     * Construct method
-     */
-    public function __construct()
-    {
-        $this->changes = [];
-    }
+    protected $changes = [];
 
     /**
      * Add change

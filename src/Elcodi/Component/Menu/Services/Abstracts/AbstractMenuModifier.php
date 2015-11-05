@@ -27,47 +27,36 @@ abstract class AbstractMenuModifier
      *
      * All elements
      */
-    private $allElements;
+    private $allElements = [];
 
     /**
      * @var array
      *
      * Elements stored by menu code
      */
-    private $elementsStoredByMenuCode;
+    private $elementsStoredByMenuCode = [];
 
     /**
      * @var array
      *
      * Element stored by stage
      */
-    private $elementsStoredByStage;
+    private $elementsStoredByStage = [];
 
     /**
      * @var array
      *
      * Priorities
      */
-    private $priorities;
-
-    /**
-     * Construct method
-     */
-    public function __construct()
-    {
-        $this->elementsStoredByMenuCode = [];
-        $this->elementsStoredByStage = [];
-        $this->allElements = [];
-        $this->priorities = [];
-    }
+    private $priorities = [];
 
     /**
      * Add element
      *
-     * @param mixed   $element  Element
-     * @param array   $menus    Menu codes
-     * @param string  $stage    Stage
-     * @param integer $priority Priority
+     * @param mixed        $element  Element
+     * @param array|string $menus    Menu codes
+     * @param string       $stage    Stage
+     * @param integer      $priority Priority
      *
      * @return $this Self object
      */

@@ -27,15 +27,7 @@ class TransitionChain
      *
      * Transitions
      */
-    private $transitions;
-
-    /**
-     * Construct method
-     */
-    public function __construct()
-    {
-        $this->transitions = [];
-    }
+    private $transitions = [];
 
     /**
      * add Transition

@@ -87,8 +87,8 @@ abstract class AbstractPasswordEventListener
     /**
      * Encode a password
      *
-     * @param string $password Password
-     * @param string $salt     salt
+     * @param string      $password Password
+     * @param string|null $salt     salt
      *
      * @return string password encrypted
      */

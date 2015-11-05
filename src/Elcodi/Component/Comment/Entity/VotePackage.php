@@ -48,7 +48,7 @@ class VotePackage
     /**
      * Construct
      *
-     * @param VoteInterface[]|null $votes Votes
+     * @param VoteInterface[] $votes Votes
      */
     protected function __construct(array $votes = [])
     {
