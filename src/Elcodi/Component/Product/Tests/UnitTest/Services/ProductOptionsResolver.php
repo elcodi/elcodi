@@ -15,18 +15,18 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Product\Tests\UnitTest\Twig;
+namespace Elcodi\Component\Product\Tests\UnitTest\Services;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit_Framework_TestCase;
 
 use Elcodi\Component\Attribute\Entity\Value;
-use Elcodi\Component\Product\Twig\ProductExtension;
+use Elcodi\Component\Product\Services\ProductOptionsResolver;
 
 /**
- * Class ProductExtensionTest
+ * Class ProductOptionsResolverTest
  */
-class ProductExtensionTest extends PHPUnit_Framework_TestCase
+class ProductOptionsResolverTest extends PHPUnit_Framework_TestCase
 {
     /**
      * Test for Product twig extension
@@ -59,10 +59,13 @@ class ProductExtensionTest extends PHPUnit_Framework_TestCase
             ->method('getOptions')
             ->willReturn(new ArrayCollection([$option]));
 
-        $productExtension = new ProductExtension();
+        $productOptionsResolver = new ProductOptionsResolver();
         $this->assertEquals(
             new ArrayCollection([$option]),
-            $productExtension->getAvailableOptions($product, $attribute)
+            $productOptionsResolver->getAvailableOptions(
+                $product,
+                $attribute
+            )
         );
     }
 }
