@@ -17,6 +17,8 @@
 
 namespace Elcodi\Component\Product\Adapter\SimilarPurchasablesProvider;
 
+use Doctrine\Common\Collections\Collection;
+
 use Elcodi\Component\Product\Adapter\SimilarPurchasablesProvider\Interfaces\RelatedPurchasablesProviderInterface;
 use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
@@ -159,9 +161,6 @@ class SameCategoryRelatedPurchasableProvider implements RelatedPurchasablesProvi
         return $this
             ->productRepository
             ->createQueryBuilder('p')
-            ->select('p', 'v', 'o')
-            ->leftJoin('p.variants', 'v')
-            ->leftJoin('v.options', 'o')
             ->where("p.principalCategory IN(:categories)")
             ->andWhere("p NOT IN(:products)")
             ->andWhere('p.enabled = :enabled')
