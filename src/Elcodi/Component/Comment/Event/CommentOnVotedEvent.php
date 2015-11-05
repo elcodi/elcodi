@@ -24,7 +24,7 @@ use Elcodi\Component\Comment\Event\Abstracts\AbstractCommentEvent;
 /**
  * Class CommentOnVotedEvent
  */
-class CommentOnVotedEvent extends AbstractCommentEvent
+final class CommentOnVotedEvent extends AbstractCommentEvent
 {
     /**
      * @var VoteInterface

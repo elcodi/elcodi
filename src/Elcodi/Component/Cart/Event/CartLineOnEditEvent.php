@@ -22,6 +22,6 @@ use Elcodi\Component\Cart\Event\Abstracts\AbstractCartLineEvent;
 /**
  * Class CartLineOnEditEvent
  */
-class CartLineOnEditEvent extends AbstractCartLineEvent
+final class CartLineOnEditEvent extends AbstractCartLineEvent
 {
 }

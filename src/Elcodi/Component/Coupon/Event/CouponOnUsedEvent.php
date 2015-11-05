@@ -22,6 +22,6 @@ use Elcodi\Component\Coupon\Event\Abstracts\CouponEvent;
 /**
  * Class CouponOnUsedEvent
  */
-class CouponOnUsedEvent extends CouponEvent
+final class CouponOnUsedEvent extends CouponEvent
 {
 }

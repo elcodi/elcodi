@@ -26,7 +26,7 @@ use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
  *
  * This event send an email to customer
  */
-class PasswordRememberEvent extends Event
+final class PasswordRememberEvent extends Event
 {
     /**
      * @var AbstractUserInterface

@@ -24,7 +24,7 @@ use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 /**
  * Class UserRegisterEvent
  */
-class UserRegisterEvent extends Event
+final class UserRegisterEvent extends Event
 {
     /**
      * @var AbstractUserInterface

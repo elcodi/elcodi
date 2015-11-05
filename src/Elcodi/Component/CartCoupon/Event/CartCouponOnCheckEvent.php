@@ -24,6 +24,6 @@ use Elcodi\Component\CartCoupon\Event\Abstracts\AbstractCartCouponEvent;
  *
  * @author Berny Cantos <be@rny.cc>
  */
-class CartCouponOnCheckEvent extends AbstractCartCouponEvent
+final class CartCouponOnCheckEvent extends AbstractCartCouponEvent
 {
 }

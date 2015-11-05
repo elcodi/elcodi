@@ -22,6 +22,6 @@ use Elcodi\Component\Cart\Event\Abstracts\AbstractCartEvent;
 /**
  * Class CartPreLoadEvent
  */
-class CartPreLoadEvent extends AbstractCartEvent
+final class CartPreLoadEvent extends AbstractCartEvent
 {
 }
