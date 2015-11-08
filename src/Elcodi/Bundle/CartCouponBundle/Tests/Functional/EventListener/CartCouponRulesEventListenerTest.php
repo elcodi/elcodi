@@ -47,7 +47,7 @@ class CartCouponRulesEventListenerTest extends WebTestCase
      *
      * @return array Bundles name where fixtures should be found
      */
-    protected static function loadFixturesBundles()
+    protected function loadFixturesBundles()
     {
         return [
             'ElcodiCartBundle',
@@ -65,9 +65,6 @@ class CartCouponRulesEventListenerTest extends WebTestCase
      */
     public function testOnCartCouponApplyValidate(array $expressions, $couponsNumber)
     {
-        static::setUpBeforeClass();
-        $this->setUp();
-
         /**
          * @var CartInterface $cart
          * @var CouponInterface $coupon

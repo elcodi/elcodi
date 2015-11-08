@@ -72,9 +72,6 @@ class TranslatorTest extends WebTestCase
      */
     public function testSave()
     {
-        static::setUpBeforeClass();
-        $this->setUp();
-
         $translation = $this
             ->getFactory('entity_translation')
             ->create()

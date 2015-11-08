@@ -57,7 +57,7 @@ class NewsletterManagerTest extends WebTestCase
      *
      * @return array Bundles name where fixtures should be found
      */
-    protected static function loadFixturesBundles()
+    protected function loadFixturesBundles()
     {
         return [
             'ElcodiLanguageBundle',
@@ -128,9 +128,6 @@ class NewsletterManagerTest extends WebTestCase
      */
     public function testSubscribeNoLanguage()
     {
-        static::setUpBeforeClass();
-        $this->setUp();
-
         $this->assertCount(2, $this
                 ->newsletterSubscriptionRepository
                 ->findBy([
@@ -155,9 +152,6 @@ class NewsletterManagerTest extends WebTestCase
      */
     public function testUnsubscribeExisting()
     {
-        static::setUpBeforeClass();
-        $this->setUp();
-
         $this->assertCount(2, $this
                 ->newsletterSubscriptionRepository
                 ->findBy([

@@ -29,7 +29,7 @@ class CartLineTest extends WebTestCase
      *
      * @return array Bundles name where fixtures should be found
      */
-    protected static function loadFixturesBundles()
+    protected function loadFixturesBundles()
     {
         return [
             'ElcodiCartBundle',
