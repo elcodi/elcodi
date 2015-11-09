@@ -8,6 +8,29 @@ https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v1.0.0...v1.0.1
 
+### v1.0.6 (09-11-2015)
+
+This version introduces some breaking changes. This is because there were some
+issues (not about architecture, but casting and initialization) that needed to
+be improved.
+
+#### TL;DR
+
+* Fixed som castings in the domain layer
+* Added command for Translations Cache Warm-up
+* Some improvements related to architecture (decreasing Twig extension 
+  responsibilities)
+
+#### Release Log
+
+* [`a135723`](https://github.com/elcodi/elcodi/commit/a1357236d1a3f55b1554d7b8a07fb66d9847b14b) Issue #974 Created anonymous functions (mmoreram)
+* [`947cd81`](https://github.com/elcodi/elcodi/commit/947cd81552ee6bebb4579c22cde66e3771e4b4b4) phpdoc fixes + attributes initialization (Emanuele Minotto)
+* [`3f8c07a`](https://github.com/elcodi/elcodi/commit/3f8c07a69df5edf0b9f0a161a4f48c0b4773ce73) Issue #921 All events set final classes (mmoreram)
+* [`84ccc53`](https://github.com/elcodi/elcodi/commit/84ccc5381c02dd3eee85090d8728f01d9889dfc2) Placed all logic in service layer (mmoreram)
+* [`21c3fe3`](https://github.com/elcodi/elcodi/commit/21c3fe3c7e3a6d2d376fdd660217ba9f0eee6666) Issue #890 Created command (mmoreram)
+* [`b17656c`](https://github.com/elcodi/elcodi/commit/b17656c7dcc8e36e1584a7f24d9cb07762dac642) types casting (Emanuele Minotto)
+* [`8a0eed7`](https://github.com/elcodi/elcodi/commit/8a0eed7aa5f9aa7a6df269b5189ca7565efdadb5) Fixed query builder in adapter (mmoreram)
+
 ### v1.0.5 (04-11-2015)
 
 Fixed related purchasable provider adapter.
