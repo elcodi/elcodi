@@ -17,40 +17,17 @@
 
 namespace Elcodi\Component\Media\Event;
 
-use Symfony\Component\EventDispatcher\Event;
-
 use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 
 /**
- * Class ImageUploadedEvent
+ * Interface ImageUploadedEventInterface
  */
-final class ImageUploadedEvent extends Event
-    implements ImageUploadedEventInterface
+interface ImageUploadedEventInterface
 {
-    /**
-     * @var ImageInterface
-     *
-     * Image
-     */
-    private $image;
-
-    /**
-     * Construct
-     *
-     * @param ImageInterface $image Image
-     */
-    public function __construct(ImageInterface $image)
-    {
-        $this->image = $image;
-    }
-
     /**
      * Get image
      *
      * @return ImageInterface Image
      */
-    public function getImage()
-    {
-        return $this->image;
-    }
+    public function getImage();
 }

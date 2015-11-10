@@ -17,38 +17,15 @@
 
 namespace Elcodi\Component\User\Event;
 
-use Symfony\Component\EventDispatcher\Event;
-
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
  * Event fired when a customer registers
  */
-final class CustomerRegisterEvent extends Event
-    implements CustomerRegisterEventInterface
+interface CustomerRegisterEventInterface
 {
-    /**
-     * @var CustomerInterface
-     *
-     * Customer
-     */
-    private $customer;
-
-    /**
-     * Construct method
-     *
-     * @param CustomerInterface $customer Customer
-     */
-    public function __construct(CustomerInterface $customer)
-    {
-        $this->customer = $customer;
-    }
-
     /**
      * @return CustomerInterface User
      */
-    public function getCustomer()
-    {
-        return $this->customer;
-    }
+    public function getCustomer();
 }

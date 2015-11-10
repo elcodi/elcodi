@@ -17,38 +17,15 @@
 
 namespace Elcodi\Component\User\Event;
 
-use Symfony\Component\EventDispatcher\Event;
-
 use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
 
 /**
- * Class AdminUserRegisterEvent
+ * Interface AdminUserRegisterEventInterface
  */
-final class AdminUserRegisterEvent extends Event
-    implements AdminUserRegisterEventInterface
+interface AdminUserRegisterEventInterface
 {
-    /**
-     * @var AdminUserInterface
-     *
-     * AdminUser
-     */
-    private $adminUser;
-
-    /**
-     * Construct method
-     *
-     * @param AdminUserInterface $adminUser Admin User
-     */
-    public function __construct(AdminUserInterface $adminUser)
-    {
-        $this->adminUser = $adminUser;
-    }
-
     /**
      * @return AdminUserInterface Admin User
      */
-    public function getAdminUser()
-    {
-        return $this->adminUser;
-    }
+    public function getAdminUser();
 }

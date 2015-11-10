@@ -17,50 +17,20 @@
 
 namespace Elcodi\Component\Shipping\Event;
 
-use Symfony\Component\EventDispatcher\Event;
-
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Shipping\Entity\ShippingMethod;
 
 /**
  * Class ShippingCollectionEvent
  */
-final class ShippingCollectionEvent extends Event
-    implements ShippingCollectionEventInterface
+interface ShippingCollectionEventInterface
 {
-    /**
-     * @var CartInterface
-     *
-     * Cart
-     */
-    private $cart;
-
-    /**
-     * @var ShippingMethod[]
-     *
-     * Shipping methods
-     */
-    private $shippingMethods = [];
-
-    /**
-     * Construct
-     *
-     * @param CartInterface $cart Cart
-     */
-    public function __construct(CartInterface $cart)
-    {
-        $this->cart = $cart;
-    }
-
     /**
      * Get cart
      *
      * @return CartInterface $cart
      */
-    public function getCart()
-    {
-        return $this->cart;
-    }
+    public function getCart();
 
     /**
      * Add shipping method
@@ -69,20 +39,12 @@ final class ShippingCollectionEvent extends Event
      *
      * @return $this Self object
      */
-    public function addShippingMethod(ShippingMethod $shippingMethod)
-    {
-        $this->shippingMethods[] =  $shippingMethod;
-
-        return $this;
-    }
+    public function addShippingMethod(ShippingMethod $shippingMethod);
 
     /**
      * Get shipping methods
      *
      * @return ShippingMethod[] Shipping methods
      */
-    public function getShippingMethods()
-    {
-        return $this->shippingMethods;
-    }
+    public function getShippingMethods();
 }

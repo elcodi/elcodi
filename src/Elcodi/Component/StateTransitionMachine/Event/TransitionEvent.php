@@ -27,6 +27,7 @@ use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
  * Class TransitionEvent
  */
 final class TransitionEvent extends Event
+    implements TransitionEventInterface
 {
     /**
      * @var stdClass

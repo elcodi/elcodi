@@ -17,38 +17,15 @@
 
 namespace Elcodi\Component\User\Event;
 
-use Symfony\Component\EventDispatcher\Event;
-
 use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 
 /**
- * Class UserRegisterEvent
+ * Interface UserRegisterEventInterface
  */
-final class UserRegisterEvent extends Event
-    implements UserRegisterEventInterface
+interface UserRegisterEventInterface
 {
-    /**
-     * @var AbstractUserInterface
-     *
-     * User
-     */
-    private $user;
-
-    /**
-     * Construct method
-     *
-     * @param AbstractUserInterface $user User
-     */
-    public function __construct(AbstractUserInterface $user)
-    {
-        $this->user = $user;
-    }
-
     /**
      * @return AbstractUserInterface User
      */
-    public function getUser()
-    {
-        return $this->user;
-    }
+    public function getUser();
 }
