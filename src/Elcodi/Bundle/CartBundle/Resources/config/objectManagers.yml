@@ -11,7 +11,7 @@ services:
     elcodi.object_manager.cart_line:
         parent: elcodi.abstract_manager
         arguments:
-            - %elcodi.entity.cart.class%
+            - %elcodi.entity.cart_line.class%
 
     elcodi.object_manager.order:
         parent: elcodi.abstract_manager
