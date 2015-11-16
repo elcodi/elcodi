@@ -33,7 +33,7 @@
         "symfony/http-kernel": "^2.7",
         "symfony/console": "^2.7",
         "symfony/yaml": "^2.7",
-        "twig/twig": "^1.18",
+        "twig/twig": "^1.23",
 
         "elcodi/configuration": "^1.0",
         "elcodi/core": "^1.0"

@@ -18,42 +18,30 @@
 namespace Elcodi\Component\Language\Twig;
 
 use Twig_Extension;
+use Twig_Extension_GlobalsInterface;
 
-use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
-use Elcodi\Component\Language\Entity\Interfaces\LocaleInterface;
-use Elcodi\Component\Language\Services\LanguageManager;
+use Elcodi\Component\Language\Services\PromotedLanguageManager;
 
 /**
  * Class LanguageExtension
  */
-class LanguageExtension extends Twig_Extension
+class LanguageExtension extends Twig_Extension implements Twig_Extension_GlobalsInterface
 {
     /**
-     * @var LanguageManager
+     * @var PromotedLanguageManager
      *
-     * Language manager
+     * Promoted Language manager
      */
-    private $languageManager;
-
-    /**
-     * @var LocaleInterface
-     *
-     * Master locale
-     */
-    private $masterLocale;
+    private $promotedLanguageManager;
 
     /**
      * Construct method
      *
-     * @param LanguageManager $languageManager Language manager
-     * @param LocaleInterface $masterLocale    Master locale
+     * @param PromotedLanguageManager $promotedLanguageManager Promoted Language manager
      */
-    public function __construct(
-        LanguageManager $languageManager,
-        LocaleInterface $masterLocale
-    ) {
-        $this->languageManager = $languageManager;
-        $this->masterLocale = $masterLocale;
+    public function __construct(PromotedLanguageManager $promotedLanguageManager)
+    {
+        $this->promotedLanguageManager = $promotedLanguageManager;
     }
 
     /**
@@ -64,23 +52,12 @@ class LanguageExtension extends Twig_Extension
     public function getGlobals()
     {
         return [
-            'elcodi_languages' => $this->getLanguages(),
+            'elcodi_languages' => function () {
+                return $this
+                    ->promotedLanguageManager
+                    ->getLanguagesWithMasterLanguagePromoted();
+            },
         ];
-    }
-
-    /**
-     * Return all available languages
-     *
-     * @return array Available languages
-     */
-    public function getLanguages()
-    {
-        $languages = $this
-            ->languageManager
-            ->getLanguages()
-            ->toArray();
-
-        return $this->promoteMasterLanguage($languages);
     }
 
     /**
@@ -91,25 +68,5 @@ class LanguageExtension extends Twig_Extension
     public function getName()
     {
         return 'language_extension';
-    }
-
-    /**
-     * Move master language to the first position
-     *
-     * @param LanguageInterface[] $languages
-     *
-     * @return LanguageInterface[]
-     */
-    private function promoteMasterLanguage(array $languages)
-    {
-        $masterLocale = $this->masterLocale->getIso();
-        $index = array_search($masterLocale, $languages);
-
-        if (false !== $index) {
-            unset($languages[$index]);
-            array_unshift($languages, $masterLocale);
-        }
-
-        return $languages;
     }
 }

@@ -35,29 +35,4 @@ class LanguageExtensionTest extends WebTestCase
             'elcodi.twig_extension.language',
         ];
     }
-
-    /**
-     * Load fixtures of these bundles
-     *
-     * @return array Bundles name where fixtures should be found
-     */
-    protected static function loadFixturesBundles()
-    {
-        return [
-            'ElcodiLanguageBundle',
-        ];
-    }
-
-    /**
-     * Test the result of the function
-     */
-    public function testGetLanguages()
-    {
-        $this->assertCount(
-            5,
-            $this
-                ->get('elcodi.twig_extension.language')
-                ->getLanguages()
-        );
-    }
 }

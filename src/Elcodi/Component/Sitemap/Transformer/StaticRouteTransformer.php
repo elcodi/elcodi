@@ -46,7 +46,7 @@ class StaticRouteTransformer implements SitemapTransformerInterface
     /**
      * Get url given an entity
      *
-     * @param mixed  $element  Element
+     * @param mixed       $element  Element
      * @param string|null $language Language
      *
      * @return string url

@@ -17,8 +17,6 @@
 
 namespace Elcodi\Component\StateTransitionMachine\Machine;
 
-use stdClass;
-
 use Elcodi\Component\StateTransitionMachine\Definition\Transition;
 use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface;
 use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;

@@ -48,6 +48,11 @@ abstract class WebTestCase extends BaseWebTestCase
      */
     protected $client;
 
+    /**
+     * Set up before class
+     *
+     * @throws RuntimeException unable to start the application
+     */
     public static function setUpBeforeClass()
     {
         try {
@@ -98,6 +103,11 @@ abstract class WebTestCase extends BaseWebTestCase
         }
     }
 
+    /**
+     * Tear down after class
+     *
+     * @throws \Exception When doRun returns Exception
+     */
     public static function tearDownAfterClass()
     {
         if (static::$application) {
@@ -110,6 +120,9 @@ abstract class WebTestCase extends BaseWebTestCase
         }
     }
 
+    /**
+     * Setup
+     */
     public function setUp()
     {
         static::$kernel->boot();
