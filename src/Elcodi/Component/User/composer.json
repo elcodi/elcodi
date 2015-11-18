@@ -52,8 +52,6 @@
             "Elcodi\\Component\\User\\": ""
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
