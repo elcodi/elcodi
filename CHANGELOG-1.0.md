@@ -8,6 +8,25 @@ https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v1.0.0...v1.0.1
 
+### v1.0.7 (18-11-2015)
+
+This version introduces some breaking changes if you have implemented your Order
+instance using OrderInterface. In that case you will have to implement three
+more methods.
+
+* Added PaymentMethod field in Order
+* Added a placeholder for some extra data for shipping and payment methods (each
+  one can use an array to store some extra data)
+* Fixed object manager definition (by default, doesn't change anything)
+* Removed logic from TwigExtension, created some extra services and using
+  Extension as a simple entry point to the service layer
+
+#### Release Log
+
+* [`df27c86`](https://github.com/elcodi/elcodi/commit/df27c864a478f244c534f46984eb143b6e907877) Issue #894 Added payment method in Order (mmoreram)
+* [`b156b44`](https://github.com/elcodi/elcodi/commit/b156b44fa382bebb31a5ccbe5adbcf1b34e1b28f) Removed logic from TwigExtension (mmoreram)
+* [`37e733d`](https://github.com/elcodi/elcodi/commit/37e733d8e2e91e336a1f736e2bb5ee0f1b228342) Update objectManagers.yml (Germán Figna)
+
 ### v1.0.6 (09-11-2015)
 
 This version introduces some breaking changes. This is because there were some
