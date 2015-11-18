@@ -33,8 +33,8 @@
     "require": {
         "php": "^5.4|^7.0",
         "doctrine/orm": "^2.5",
-        "symfony/http-foundation": "^2.7",
-        "symfony/http-kernel": "^2.7",
+        "symfony/http-foundation": "^2.7|^3.0",
+        "symfony/http-kernel": "^2.7|^3.0",
 
         "elcodi/core": "^1.0",
         "elcodi/metadata": "^1.0"

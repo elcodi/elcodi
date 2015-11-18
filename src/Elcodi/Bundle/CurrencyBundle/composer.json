@@ -38,11 +38,11 @@
         "doctrine/common": "^2.5",
         "doctrine/orm": "^2.5",
 
-        "symfony/http-kernel": "^2.7",
-        "symfony/config": "^2.7",
-        "symfony/dependency-injection": "^2.7",
-        "symfony/proxy-manager-bridge": "^2.7",
-        "symfony/twig-bundle": "^2.7",
+        "symfony/http-kernel": "^2.7|^3.0",
+        "symfony/config": "^2.7|^3.0",
+        "symfony/dependency-injection": "^2.7|^3.0",
+        "symfony/proxy-manager-bridge": "^2.7|^3.0",
+        "symfony/twig-bundle": "^2.7|^3.0",
         "ocramius/proxy-manager": "^1.0",
         "mmoreram/simple-doctrine-mapping": "^1.0",
 

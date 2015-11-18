@@ -34,9 +34,9 @@
         "doctrine/common": "^2.5",
         "doctrine/orm": "^2.5",
 
-        "symfony/http-kernel": "^2.7",
-        "symfony/config": "^2.7",
-        "symfony/dependency-injection": "^2.7",
+        "symfony/http-kernel": "^2.7|^3.0",
+        "symfony/config": "^2.7|^3.0",
+        "symfony/dependency-injection": "^2.7|^3.0",
         "mmoreram/simple-doctrine-mapping": "^1.0",
         "doctrine/doctrine-cache-bundle": "^1.0",
 
@@ -45,7 +45,7 @@
     },
     "require-dev": {
         "elcodi/test-common-bundle": "^1.0",
-        "symfony/expression-language": "^2.7",
+        "symfony/expression-language": "^2.7|^3.0",
         "elcodi/fixtures-booster-bundle": "^1.0",
         "doctrine/data-fixtures": "^1.1",
         "phpunit/phpunit": "4.5.0"

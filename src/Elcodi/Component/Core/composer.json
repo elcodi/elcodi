@@ -35,9 +35,9 @@
         "doctrine/common": "^2.5",
         "doctrine/orm": "^2.5",
         "doctrine/cache": "^1.0",
-        "symfony/doctrine-bridge": "^2.7",
-        "symfony/dependency-injection": "^2.7",
-        "symfony/event-dispatcher": "^2.7",
+        "symfony/doctrine-bridge": "^2.7|^3.0",
+        "symfony/dependency-injection": "^2.7|^3.0",
+        "symfony/event-dispatcher": "^2.7|^3.0",
         "symfony/http-foundation": "^2.7"
     },
     "require-dev": {

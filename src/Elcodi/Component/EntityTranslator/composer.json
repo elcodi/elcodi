@@ -35,9 +35,9 @@
         "doctrine/common": "^2.5",
         "doctrine/orm": "^2.5",
 
-        "symfony/event-dispatcher": "^2.7",
-        "symfony/dependency-injection": "^2.7",
-        "symfony/form": "^2.7",
+        "symfony/event-dispatcher": "^2.7|^3.0",
+        "symfony/dependency-injection": "^2.7|^3.0",
+        "symfony/form": "^2.7|^3.0",
 
         "elcodi/core": "^1.0"
     },

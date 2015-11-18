@@ -34,7 +34,7 @@
         "php": "^5.4|^7.0",
         "doctrine/common": "^2.5",
         "doctrine/orm": "^2.5",
-        "symfony/routing": "^2.7",
+        "symfony/routing": "^2.7|^3.0",
 
         "elcodi/core": "^1.0"
     },

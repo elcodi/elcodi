@@ -35,10 +35,10 @@
         "doctrine/orm": "^2.5",
         "doctrine/doctrine-cache-bundle": "^1.0",
 
-        "symfony/http-kernel": "^2.7",
-        "symfony/config": "^2.7",
-        "symfony/dependency-injection": "^2.7",
-        "symfony/twig-bundle": "^2.7",
+        "symfony/http-kernel": "^2.7|^3.0",
+        "symfony/config": "^2.7|^3.0",
+        "symfony/dependency-injection": "^2.7|^3.0",
+        "symfony/twig-bundle": "^2.7|^3.0",
         "mmoreram/simple-doctrine-mapping": "^1.0",
 
         "elcodi/core-bundle": "^1.0",

@@ -27,12 +27,12 @@
         "php": "^5.4|^7.0",
         "doctrine/common": "^2.5",
 
-        "symfony/event-dispatcher": "^2.7",
-        "symfony/dependency-injection": "^2.7",
-        "symfony/expression-language": "^2.7",
-        "symfony/http-kernel": "^2.7",
-        "symfony/console": "^2.7",
-        "symfony/yaml": "^2.7",
+        "symfony/event-dispatcher": "^2.7|^3.0",
+        "symfony/dependency-injection": "^2.7|^3.0",
+        "symfony/expression-language": "^2.7|^3.0",
+        "symfony/http-kernel": "^2.7|^3.0",
+        "symfony/console": "^2.7|^3.0",
+        "symfony/yaml": "^2.7|^3.0",
         "twig/twig": "^1.23",
 
         "elcodi/configuration": "^1.0",

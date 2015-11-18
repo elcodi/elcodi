@@ -33,7 +33,7 @@
         "php": "^5.4|^7.0",
         "doctrine/common": "^2.5",
         "doctrine/orm": "^2.5",
-        "symfony/console": "^2.7",
+        "symfony/console": "^2.7|^3.0",
         "twig/twig": "^1.23",
         "predis/predis": "^0.8.7",
 
