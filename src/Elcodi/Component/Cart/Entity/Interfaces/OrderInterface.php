@@ -22,6 +22,7 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
+use Elcodi\Component\Payment\Entity\PaymentMethod;
 use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
 use Elcodi\Component\Shipping\Entity\ShippingMethod;
 use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
@@ -165,6 +166,54 @@ interface OrderInterface
      * @return $this Self object
      */
     public function setShippingMethod(ShippingMethod $shippingMethod);
+
+    /**
+     * Get ShippingMethodExtra
+     *
+     * @return array ShippingMethodExtra
+     */
+    public function getShippingMethodExtra();
+
+    /**
+     * Sets ShippingMethodExtra
+     *
+     * @param array $shippingMethodExtra ShippingMethodExtra
+     *
+     * @return $this Self object
+     */
+    public function setShippingMethodExtra(array $shippingMethodExtra);
+
+    /**
+     * Get PaymentMethod
+     *
+     * @return PaymentMethod PaymentMethod
+     */
+    public function getPaymentMethod();
+
+    /**
+     * Sets PaymentMethod
+     *
+     * @param PaymentMethod $paymentMethod PaymentMethod
+     *
+     * @return $this Self object
+     */
+    public function setPaymentMethod(PaymentMethod $paymentMethod);
+
+    /**
+     * Get PaymentMethodExtra
+     *
+     * @return array PaymentMethodExtra
+     */
+    public function getPaymentMethodExtra();
+
+    /**
+     * Sets PaymentMethodExtra
+     *
+     * @param array $paymentMethodExtra PaymentMethodExtra
+     *
+     * @return $this Self object
+     */
+    public function setPaymentMethodExtra(array $paymentMethodExtra);
 
     /**
      * Set the height

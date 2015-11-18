@@ -29,6 +29,7 @@ use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
+use Elcodi\Component\Payment\Entity\PaymentMethod;
 use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
 use Elcodi\Component\Shipping\Entity\ShippingMethod;
 use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface;
@@ -104,6 +105,27 @@ class Order implements OrderInterface
      * Shipping method
      */
     protected $shippingMethod;
+
+    /**
+     * @var array
+     *
+     * Shipping method extra
+     */
+    protected $shippingMethodExtra = [];
+
+    /**
+     * @var PaymentMethod
+     *
+     * Payment method
+     */
+    protected $paymentMethod;
+
+    /**
+     * @var array
+     *
+     * Payment method extra
+     */
+    protected $paymentMethodExtra = [];
 
     /**
      * @var AddressInterface
@@ -349,6 +371,78 @@ class Order implements OrderInterface
     public function setShippingMethod(ShippingMethod $shippingMethod)
     {
         $this->shippingMethod = $shippingMethod;
+
+        return $this;
+    }
+
+    /**
+     * Get ShippingMethodExtra
+     *
+     * @return array ShippingMethodExtra
+     */
+    public function getShippingMethodExtra()
+    {
+        return $this->shippingMethodExtra;
+    }
+
+    /**
+     * Sets ShippingMethodExtra
+     *
+     * @param array $shippingMethodExtra ShippingMethodExtra
+     *
+     * @return $this Self object
+     */
+    public function setShippingMethodExtra(array $shippingMethodExtra)
+    {
+        $this->shippingMethodExtra = $shippingMethodExtra;
+
+        return $this;
+    }
+
+    /**
+     * Get PaymentMethod
+     *
+     * @return PaymentMethod PaymentMethod
+     */
+    public function getPaymentMethod()
+    {
+        return $this->paymentMethod;
+    }
+
+    /**
+     * Sets PaymentMethod
+     *
+     * @param PaymentMethod $paymentMethod PaymentMethod
+     *
+     * @return $this Self object
+     */
+    public function setPaymentMethod(PaymentMethod $paymentMethod)
+    {
+        $this->paymentMethod = $paymentMethod;
+
+        return $this;
+    }
+
+    /**
+     * Get PaymentMethodExtra
+     *
+     * @return array PaymentMethodExtra
+     */
+    public function getPaymentMethodExtra()
+    {
+        return $this->paymentMethodExtra;
+    }
+
+    /**
+     * Sets PaymentMethodExtra
+     *
+     * @param array $paymentMethodExtra PaymentMethodExtra
+     *
+     * @return $this Self object
+     */
+    public function setPaymentMethodExtra(array $paymentMethodExtra)
+    {
+        $this->paymentMethodExtra = $paymentMethodExtra;
 
         return $this;
     }
