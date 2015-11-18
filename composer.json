@@ -53,7 +53,7 @@
         "symfony/twig-bundle": "^2.7",
         "symfony/swiftmailer-bundle": "^2.3.8",
         "symfony/form": "^2.7",
-        "twig/twig": "^1.18",
+        "twig/twig": "^1.23",
         "ocramius/proxy-manager": "^1.0",
 
         "doctrine/common": "^2.5",

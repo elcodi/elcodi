@@ -20,9 +20,9 @@ namespace Elcodi\Bundle\LanguageBundle\Tests\Functional\Services;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Tests LanguageManagerTest class
+ * Tests PromotedLanguageManagerTest class
  */
-class LanguageManagerTest extends WebTestCase
+class PromotedLanguageManagerTest extends WebTestCase
 {
     /**
      * Returns the callable name of the service
@@ -32,7 +32,7 @@ class LanguageManagerTest extends WebTestCase
     public function getServiceCallableName()
     {
         return [
-            'elcodi.manager.language',
+            'elcodi.manager.promoted_language',
         ];
     }
 
@@ -49,39 +49,25 @@ class LanguageManagerTest extends WebTestCase
     }
 
     /**
-     * Test get languages
+     * Test getLanguagesWithMasterLanguagePromoted
      */
-    public function testGetLanguages()
+    public function testGetLanguagesWithMasterLanguagePromoted()
     {
         $languages = $this
-            ->get('elcodi.manager.language')
-            ->getLanguages();
+            ->get('elcodi.manager.promoted_language')
+            ->getLanguagesWithMasterLanguagePromoted();
 
         $this->assertCount(5, $languages);
         $this->assertContainsOnlyInstancesOf(
             'Elcodi\Component\Language\Entity\Interfaces\LanguageInterface',
             $languages
         );
+
         $this->assertEquals(
-            'es',
+            'en',
             $languages
                 ->first()
                 ->getIso()
-        );
-    }
-
-    /**
-     * Test get languages iso
-     */
-    public function testGetLanguagesIso()
-    {
-        $languages = $this
-            ->get('elcodi.manager.language')
-            ->getLanguagesIso();
-
-        $this->assertEquals(
-            ['es', 'en', 'fr', 'it', 'de'],
-            $languages->toArray()
         );
     }
 }

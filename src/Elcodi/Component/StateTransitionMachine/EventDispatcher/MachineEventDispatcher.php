@@ -17,8 +17,6 @@
 
 namespace Elcodi\Component\StateTransitionMachine\EventDispatcher;
 
-use stdClass;
-
 use Elcodi\Component\Core\EventDispatcher\Abstracts\AbstractEventDispatcher;
 use Elcodi\Component\StateTransitionMachine\Definition\Transition;
 use Elcodi\Component\StateTransitionMachine\ElcodiStateTransitionMachineEvents;

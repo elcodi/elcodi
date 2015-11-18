@@ -24,6 +24,12 @@ services:
         arguments:
             - @elcodi.repository.language
 
+    elcodi.manager.promoted_language:
+        class: Elcodi\Component\Language\Services\PromotedLanguageManager
+        arguments:
+            - @elcodi.manager.language
+            - @elcodi.locale
+
     elcodi.manager.locale:
         class: Elcodi\Component\Language\Services\LocaleManager
         arguments:
