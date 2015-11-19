@@ -34,7 +34,7 @@
         "php": "^5.4|^7.0",
 
         "psr/log": "^1.0",
-        "symfony/event-dispatcher": "^2.7",
+        "symfony/event-dispatcher": "^2.7|^3.0",
 
         "elcodi/core": "^1.0"
     },
@@ -46,8 +46,6 @@
             "Elcodi\\Component\\StateTransitionMachine\\": ""
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
