@@ -55,7 +55,7 @@ class CheckCouponEventListener
      */
     public function checkCoupon(CartCouponOnCheckEvent $event)
     {
-        if ($event->getCart()->getQuantity() === 0) {
+        if ($event->getCart()->getTotalItemNumber() === 0) {
             throw new CouponIncompatibleException();
         }
 

@@ -26,16 +26,6 @@ use Elcodi\Component\Coupon\Entity\Coupon;
 class CouponFactoryTest extends WebTestCase
 {
     /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return ['elcodi.factory.coupon'];
-    }
-
-    /**
      * Load fixtures of these bundles
      *
      * @return array Bundles name where fixtures should be found

@@ -49,6 +49,16 @@ abstract class WebTestCase extends BaseWebTestCase
     protected $client;
 
     /**
+     * Reload scenario
+     *
+     * @throws RuntimeException unable to start the application
+     */
+    protected function reloadScenario()
+    {
+        static::setUpBeforeClass();
+    }
+
+    /**
      * Set up before class
      *
      * @throws RuntimeException unable to start the application
@@ -61,6 +71,7 @@ abstract class WebTestCase extends BaseWebTestCase
 
             static::$application = new Application(static::$kernel);
             static::$application->setAutoExit(false);
+            static::$container = static::$kernel->getContainer();
         } catch (Exception $e) {
             throw new RuntimeException(
                 sprintf('Unable to start the application: %s', $e->getMessage()),
@@ -69,44 +80,13 @@ abstract class WebTestCase extends BaseWebTestCase
             );
         }
 
-        static::$application->run(new ArrayInput([
-            'command'          => 'doctrine:database:drop',
-            '--no-interaction' => true,
-            '--force'          => true,
-            '--quiet'          => true,
-        ]));
-
-        static::$application->run(new ArrayInput([
-            'command'          => 'doctrine:database:create',
-            '--no-interaction' => true,
-            '--quiet'          => true,
-        ]));
-
-        static::$application->run(new ArrayInput([
-            'command'          => 'doctrine:schema:create',
-            '--no-interaction' => true,
-            '--quiet'          => true,
-        ]));
-
-        $bundles = static::$kernel->getBundles();
-        $formattedBundles = array_map(function ($bundle) use ($bundles) {
-            return $bundles[$bundle]->getPath() . '/DataFixtures/ORM/';
-        }, static::loadFixturesBundles() ?: []);
-
-        if ($formattedBundles) {
-            self::$application->run(new ArrayInput([
-                'command'          => 'doctrine:fixtures:load',
-                '--no-interaction' => true,
-                '--fixtures'       => $formattedBundles,
-                '--quiet'          => true,
-            ]));
-        }
+        static::createSchema();
     }
 
     /**
      * Tear down after class
      *
-     * @throws \Exception When doRun returns Exception
+     * @throws Exception When doRun returns Exception
      */
     public static function tearDownAfterClass()
     {
@@ -118,54 +98,6 @@ abstract class WebTestCase extends BaseWebTestCase
                 '--quiet'          => true,
             ]));
         }
-    }
-
-    /**
-     * Setup
-     */
-    public function setUp()
-    {
-        static::$kernel->boot();
-        $this->container = static::$kernel->getContainer();
-    }
-
-    /**
-     * Test service can be instanced through container
-     */
-    public function testServiceLoadFromContainer()
-    {
-        $serviceCallableNames = $this->getServiceCallableName();
-
-        foreach ($serviceCallableNames as $serviceCallableName) {
-            if ($serviceCallableName) {
-                $this->assertNotNull(static::$kernel
-                    ->getContainer()
-                    ->get($serviceCallableName)
-                );
-            }
-        }
-    }
-
-    /**
-     * Returns the callable name of the service
-     *
-     * If returns false, avoid service check.
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return [];
-    }
-
-    /**
-     * Returns if service must be retrieved from container
-     *
-     * @return boolean
-     */
-    protected function mustTestGetService()
-    {
-        return true;
     }
 
     /**
@@ -181,11 +113,11 @@ abstract class WebTestCase extends BaseWebTestCase
     /**
      * Has fixtures to load
      *
-     * @return boolean Some fixtures need to be installed
+     * @return static boolean Some fixtures need to be installed
      */
-    private function hasFixturesBundles()
+    private static function hasFixturesBundles()
     {
-        $fixturesBundles = $this->loadFixturesBundles();
+        $fixturesBundles = static::loadFixturesBundles();
 
         return (
             is_array($fixturesBundles) &&
@@ -198,9 +130,9 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * @return boolean Load schema
      */
-    protected function loadSchema()
+    protected static function loadSchema()
     {
-        return $this->hasFixturesBundles();
+        return static::hasFixturesBundles();
     }
 
     /**
@@ -213,10 +145,10 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * @return $this Self object
      */
-    protected function createSchema()
+    protected static function createSchema()
     {
-        if (!$this->loadSchema()) {
-            return $this;
+        if (!static::loadSchema()) {
+            return;
         }
 
         static::$application->run(new ArrayInput([
@@ -238,9 +170,7 @@ abstract class WebTestCase extends BaseWebTestCase
             '--quiet'          => true,
         ]));
 
-        $this->loadFixtures();
-
-        return $this;
+        static::loadFixtures();
     }
 
     /**
@@ -252,28 +182,30 @@ abstract class WebTestCase extends BaseWebTestCase
      * All other methods will be loaded if this one is loaded.
      *
      * Otherwise, will return.
-     *
-     * @return $this Self object
      */
-    protected function loadFixtures()
+    protected static function loadFixtures()
     {
-        if (!$this->hasFixturesBundles()) {
-            return $this;
+        if (!static::hasFixturesBundles()) {
+            return;
         }
 
         $bundles = static::$kernel->getBundles();
-        $formattedBundles = array_map(function ($bundle) use ($bundles) {
-            return $bundles[$bundle]->getPath() . '/DataFixtures/ORM/';
-        }, $this->loadFixturesBundles());
+        $fixturesBundles = static::loadFixturesBundles();
 
-        self::$application->run(new ArrayInput([
-            'command'          => 'doctrine:fixtures:load',
-            '--no-interaction' => true,
-            '--fixtures'       => $formattedBundles,
-            '--quiet'          => true,
-        ]));
+        if (!empty($fixturesBundles)) {
+            $formattedBundles = array_map(function ($bundle) use ($bundles) {
+                return $bundles[$bundle]->getPath() . '/DataFixtures/ORM/';
+            }, $fixturesBundles);
 
-        return $this;
+            static::$application->run(new ArrayInput([
+                'command'          => 'doctrine:fixtures:load',
+                '--no-interaction' => true,
+                '--fixtures'       => $formattedBundles,
+                '--quiet'          => true,
+            ]));
+        }
+
+        return;
     }
 
     /**

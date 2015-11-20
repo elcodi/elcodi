@@ -28,18 +28,6 @@ use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 class ImageServiceTest extends WebTestCase
 {
     /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return [
-            'elcodi.manager.media_image',
-        ];
-    }
-
-    /**
      * Test image object creation
      */
     public function testCreateImage()

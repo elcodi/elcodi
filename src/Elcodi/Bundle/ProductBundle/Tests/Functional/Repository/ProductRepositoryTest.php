@@ -19,6 +19,7 @@ namespace Elcodi\Bundle\ProductBundle\Tests\Functional\Repository;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
+use Elcodi\Component\Product\Repository\CategoryRepository;
 use Elcodi\Component\Product\Repository\ProductRepository;
 
 /**
@@ -39,18 +40,6 @@ class ProductRepositoryTest extends WebTestCase
      * LocationProvider class
      */
     protected $productRepository;
-
-    /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return [
-            'elcodi.repository.product',
-        ];
-    }
 
     /**
      * Load fixtures of these bundles

@@ -33,16 +33,6 @@ class ConfigurationManagerTest extends WebTestCase
     protected $configurationManager;
 
     /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return ['elcodi.manager.configuration'];
-    }
-
-    /**
      * Load fixtures of these bundles
      *
      * @return array Bundles name where fixtures should be found
@@ -153,6 +143,8 @@ class ConfigurationManagerTest extends WebTestCase
      */
     public function testGetParameterInsertedExisting()
     {
+        $this->reloadScenario();
+
         $this
             ->assertFalse(
                 $this
@@ -240,10 +232,9 @@ class ConfigurationManagerTest extends WebTestCase
      */
     public function testDeleteParameter()
     {
-        static::setUpBeforeClass();
-        $this->setUp();
+        $this->reloadScenario();
 
-        /*
+        /**
          * Deletion of a non-persisted parameter should return false
          */
         $this
@@ -253,7 +244,7 @@ class ConfigurationManagerTest extends WebTestCase
                     ->delete('my_parameter')
             );
 
-        /*
+        /**
          * Deletion of a persisted parameter should return true
          */
         $this
@@ -266,7 +257,7 @@ class ConfigurationManagerTest extends WebTestCase
                     ->delete('my_parameter')
             );
 
-        /*
+        /**
          * Deleted parameter should not be found in cache
          */
         $this
@@ -276,7 +267,7 @@ class ConfigurationManagerTest extends WebTestCase
                   ->contains('my_parameter')
             );
 
-        /*
+        /**
          * Deleted parameter should be flushed from the DB
          */
         $this->assertNull(

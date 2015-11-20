@@ -200,6 +200,8 @@ interface CartInterface
     /**
      * Sets the number of items on this cart
      *
+     * @deprecated since version 1.0.8, to be removed in 2.0.0.
+     *
      * @param integer $quantity Quantity
      *
      * @return $this Self object
@@ -209,9 +211,18 @@ interface CartInterface
     /**
      * Gets the number of items on this cart
      *
+     * @deprecated since version 1.0.8, to be removed in 2.0.0. Use getTotalItemNumber()
+     *
      * @return integer Quantity
      */
     public function getQuantity();
+
+    /**
+     * Return the total amount of items added to the Cart
+     *
+     * @return integer
+     */
+    public function getTotalItemNumber();
 
     /**
      * Get DeliveryAddress

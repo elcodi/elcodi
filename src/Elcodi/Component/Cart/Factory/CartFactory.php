@@ -48,7 +48,6 @@ class CartFactory extends AbstractPurchasableFactory
         $classNamespace = $this->getEntityNamespace();
         $cart = new $classNamespace();
         $cart
-            ->setQuantity(0)
             ->setOrdered(false)
             ->setCartLines(new ArrayCollection())
             ->setProductAmount($this->createZeroAmountMoney())

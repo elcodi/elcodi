@@ -25,18 +25,6 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class PromotedLanguageManagerTest extends WebTestCase
 {
     /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return [
-            'elcodi.manager.promoted_language',
-        ];
-    }
-
-    /**
      * Load fixtures of these bundles
      *
      * @return array Bundles name where fixtures should be found

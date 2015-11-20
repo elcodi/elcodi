@@ -79,9 +79,11 @@ class AutomaticCouponApplicatorEventListener
         /**
          * @var CouponInterface[] $automaticCoupons
          */
-        $automaticCoupons = $this->couponRepository->findBy([
-            'enforcement' => ElcodiCouponTypes::ENFORCEMENT_AUTOMATIC,
-        ]);
+        $automaticCoupons = $this
+            ->couponRepository
+            ->findBy([
+                'enforcement' => ElcodiCouponTypes::ENFORCEMENT_AUTOMATIC,
+            ]);
 
         foreach ($automaticCoupons as $coupon) {
             try {

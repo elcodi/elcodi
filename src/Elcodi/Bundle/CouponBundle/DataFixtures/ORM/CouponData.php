@@ -38,7 +38,6 @@ class CouponData extends AbstractFixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-
         /**
          * @var CurrencyInterface $currency
          * @var ObjectDirector    $couponDirector

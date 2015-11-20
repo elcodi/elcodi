@@ -45,18 +45,6 @@ class ProductCollectionProviderTest extends WebTestCase
     }
 
     /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return [
-            'elcodi.provider.product_collection',
-        ];
-    }
-
-    /**
      * Setup
      */
     public function setUp()

@@ -32,16 +32,22 @@ class CartCouponStackableEventListenerTest extends WebTestCase
 {
     /**
      * @var Cart
+     *
+     * Cart
      */
     protected $cart;
 
     /**
      * @var CartCouponManager
+     *
+     * Cart Coupon manager
      */
     protected $cartCouponManager;
 
     /**
      * @var CartEventDispatcher
+     *
+     * Cart event dispatcher
      */
     protected $cartEventDispatcher;
 
@@ -60,6 +66,8 @@ class CartCouponStackableEventListenerTest extends WebTestCase
 
     public function setUp()
     {
+        $this->reloadScenario();
+
         parent::setUp();
 
         /**
@@ -132,6 +140,9 @@ class CartCouponStackableEventListenerTest extends WebTestCase
             ->addCoupon($this->cart, $stackableCouponPercent->setEnabled(true));
     }
 
+    /**
+     * test StackableCouponCalculatedAmount
+     */
     public function testStackableCouponCalculatedAmount()
     {
         /**
@@ -169,17 +180,5 @@ class CartCouponStackableEventListenerTest extends WebTestCase
             560,
             $appliedCouponsAmount
         );
-    }
-
-    /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return [
-            'elcodi.event_listener.stackable_coupon',
-        ];
     }
 }

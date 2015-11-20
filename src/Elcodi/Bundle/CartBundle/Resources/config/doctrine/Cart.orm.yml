@@ -8,9 +8,6 @@ Elcodi\Component\Cart\Entity\Cart:
             generator:
                 strategy: AUTO
     fields:
-        quantity:
-            column: quantity
-            type: integer
         ordered:
             column: ordered
             type: boolean

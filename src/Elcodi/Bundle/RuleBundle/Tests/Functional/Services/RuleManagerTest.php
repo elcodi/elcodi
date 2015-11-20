@@ -34,16 +34,6 @@ class RuleManagerTest extends WebTestCase
     protected $ruleManager;
 
     /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return ['elcodi.manager.rule'];
-    }
-
-    /**
      * Load fixtures of these bundles
      *
      * @return array Bundles name where fixtures should be found
