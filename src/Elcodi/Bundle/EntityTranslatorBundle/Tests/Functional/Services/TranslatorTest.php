@@ -30,7 +30,7 @@ class TranslatorTest extends WebTestCase
      *
      * @return boolean Load schema
      */
-    protected function loadSchema()
+    protected static function loadSchema()
     {
         return true;
     }
@@ -72,8 +72,7 @@ class TranslatorTest extends WebTestCase
      */
     public function testSave()
     {
-        static::setUpBeforeClass();
-        $this->setUp();
+        $this->reloadScenario();
 
         $translation = $this
             ->getFactory('entity_translation')

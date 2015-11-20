@@ -42,16 +42,6 @@ class CartOrderTransformerTest extends WebTestCase
     protected $order;
 
     /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return ['elcodi.transformer.cart_order'];
-    }
-
-    /**
      * Load fixtures of these bundles
      *
      * @return array Bundles name where fixtures should be found
@@ -73,8 +63,7 @@ class CartOrderTransformerTest extends WebTestCase
         /**
          * @var CartOrderTransformer $cartOrderTransformer
          */
-        $cartOrderTransformer = $this
-            ->get('elcodi.transformer.cart_order');
+        $cartOrderTransformer = $this->get('elcodi.transformer.cart_order');
 
         /**
          * @var CartInterface $cart

@@ -25,18 +25,6 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class FileServiceTest extends WebTestCase
 {
     /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return [
-            'elcodi.manager.media_file',
-        ];
-    }
-
-    /**
      * Given a file, upload using single local filesystem.
      * This method also tests download method.
      */

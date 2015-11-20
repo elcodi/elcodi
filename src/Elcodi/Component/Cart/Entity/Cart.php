@@ -298,6 +298,8 @@ class Cart implements CartInterface
     /**
      * Set quantity
      *
+     * @deprecated since version 1.0.8, to be removed in 2.0.0.
+     *
      * @param integer $quantity Quantity
      *
      * @return $this Self object
@@ -312,6 +314,8 @@ class Cart implements CartInterface
     /**
      * Get quantity
      *
+     * @deprecated since version 1.0.8, to be removed in 2.0.0. Use getTotalItemNumber()
+     *
      * @return integer Quantity
      */
     public function getQuantity()
@@ -320,8 +324,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Return the total amount of items
-     * added to the Cart
+     * Return the total amount of items added to the Cart.
      *
      * @return integer
      */

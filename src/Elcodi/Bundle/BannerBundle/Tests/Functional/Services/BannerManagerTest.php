@@ -38,16 +38,6 @@ class BannerManagerTest extends WebTestCase
     }
 
     /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return ['elcodi.manager.banner'];
-    }
-
-    /**
      * Load banners given a banner_zone with language
      */
     public function testGetBannersFromBannerZoneCode()

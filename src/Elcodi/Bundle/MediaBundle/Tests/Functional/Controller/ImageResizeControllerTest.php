@@ -32,19 +32,9 @@ class ImageResizeControllerTest extends WebTestCase
      *
      * @return boolean Load schema
      */
-    protected function loadSchema()
+    protected static function loadSchema()
     {
         return true;
-    }
-
-    /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return ['elcodi.controller.image_resize'];
     }
 
     /**

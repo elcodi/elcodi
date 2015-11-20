@@ -29,16 +29,6 @@ use Elcodi\Component\Currency\Entity\Money;
 class CartManagerProductTest extends AbstractCartManagerTest
 {
     /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return ['elcodi.manager.cart'];
-    }
-
-    /**
      * Load fixtures of these bundles
      *
      * @return array Bundles name where fixtures should be found

@@ -30,16 +30,6 @@ use Elcodi\Component\Cart\Transformer\CartOrderTransformer;
 class CartLineOrderLineTransformerTest extends WebTestCase
 {
     /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return ['elcodi.transformer.cart_line_order_line'];
-    }
-
-    /**
      * Load fixtures of these bundles
      *
      * @return array Bundles name where fixtures should be found

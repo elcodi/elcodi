@@ -38,9 +38,8 @@ class MakeCouponUsedEventListener
      *
      * @param ObjectManager $couponObjectManager Coupon Object Manager
      */
-    public function __construct(
-        ObjectManager $couponObjectManager
-    ) {
+    public function __construct(ObjectManager $couponObjectManager)
+    {
         $this->couponObjectManager = $couponObjectManager;
     }
 

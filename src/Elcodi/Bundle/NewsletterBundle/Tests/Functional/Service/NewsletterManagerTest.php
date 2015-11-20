@@ -43,16 +43,6 @@ class NewsletterManagerTest extends WebTestCase
     protected $newsletterSubscriptionRepository;
 
     /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return ['elcodi.manager.newsletter'];
-    }
-
-    /**
      * Load fixtures of these bundles
      *
      * @return array Bundles name where fixtures should be found
@@ -70,6 +60,8 @@ class NewsletterManagerTest extends WebTestCase
      */
     public function setUp()
     {
+        $this->reloadScenario();
+
         parent::setUp();
 
         $this->newsletterManager = $this
@@ -128,9 +120,6 @@ class NewsletterManagerTest extends WebTestCase
      */
     public function testSubscribeNoLanguage()
     {
-        static::setUpBeforeClass();
-        $this->setUp();
-
         $this->assertCount(2, $this
                 ->newsletterSubscriptionRepository
                 ->findBy([
@@ -155,9 +144,6 @@ class NewsletterManagerTest extends WebTestCase
      */
     public function testUnsubscribeExisting()
     {
-        static::setUpBeforeClass();
-        $this->setUp();
-
         $this->assertCount(2, $this
                 ->newsletterSubscriptionRepository
                 ->findBy([

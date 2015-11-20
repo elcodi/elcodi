@@ -26,16 +26,6 @@ use Elcodi\Component\Cart\Entity\Cart;
 class CartCouponManagerTest extends WebTestCase
 {
     /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return ['elcodi.manager.cart_coupon'];
-    }
-
-    /**
      * Tests that if cart is new, getCartCoupons return empty Collection
      */
     public function testGetCartCouponsNewCart()
