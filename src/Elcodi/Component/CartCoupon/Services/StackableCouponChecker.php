@@ -15,17 +15,18 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\CartCoupon\EventListener;
+namespace Elcodi\Component\CartCoupon\Services;
 
+use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\CartCoupon\Entity\Interfaces\CartCouponInterface;
-use Elcodi\Component\CartCoupon\Event\CartCouponOnApplyEvent;
 use Elcodi\Component\CartCoupon\Exception\CouponNotStackableException;
 use Elcodi\Component\CartCoupon\Repository\CartCouponRepository;
+use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 
 /**
- * Class StackableCouponEventListener
+ * Class StackableCouponChecker
  */
-class StackableCouponEventListener
+class StackableCouponChecker
 {
     /**
      * @var CartCouponRepository
@@ -49,28 +50,29 @@ class StackableCouponEventListener
      * Check if this coupon can be applied when other coupons had previously
      * been applied
      *
-     * @param CartCouponOnApplyEvent $event Event
+     * @param CartInterface   $cart   Cart
+     * @param CouponInterface $coupon Coupon
      *
      * @return null
      *
-     * @throws CouponNotStackableException
+     * @throws CouponNotStackableException Coupon is not stackable
      */
-    public function checkStackableCoupon(CartCouponOnApplyEvent $event)
-    {
+    public function checkStackableCoupon(
+        CartInterface $cart,
+        CouponInterface $coupon
+    ) {
         $cartCoupons = $this
             ->cartCouponRepository
             ->findBy([
-                'cart' => $event->getCart(),
+                'cart' => $cart,
             ]);
 
         /**
          * If there are no previously applied coupons we can skip the check
          */
         if (0 == count($cartCoupons)) {
-            return null;
+            return;
         }
-
-        $coupon = $event->getCoupon();
 
         $appliedCouponsCanBeStacked = array_reduce(
             $cartCoupons,
@@ -86,7 +88,7 @@ class StackableCouponEventListener
         );
 
         /**
-         * Checked coupon can be stackable and everithing that was
+         * Checked coupon can be stackable and everything that was
          * previously applied is also stackable
          */
         if ($coupon->getStackable() && $appliedCouponsCanBeStacked) {
