@@ -3,92 +3,101 @@ services:
     #
     # Event Listeners
     #
-    elcodi.event_listener.refresh_coupons:
-        class: Elcodi\Component\CartCoupon\EventListener\RefreshCouponsEventListener
+    elcodi.event_listener.covert_cart_coupons_to_order_coupons:
+        class: Elcodi\Component\CartCoupon\EventListener\ConvertCartCouponsToOrderCouponsEventListener
         arguments:
-            - @elcodi.manager.coupon
-            - @elcodi.manager.cart_coupon
-            - @elcodi.wrapper.currency
-            - @elcodi.converter.currency
-            - @elcodi.event_dispatcher.cart_coupon
+            - @elcodi.transformer.cart_coupon_to_order_coupon
         tags:
-            - { name: kernel.event_listener, event: cart.onload, method: refreshCartCoupons, priority: 0 }
+            - { name: kernel.event_listener, event: order.oncreated, method: createOrderCouponsByCartCoupons, priority: -16 }
+
+    elcodi.event_listener.create_and_save_cart_coupon:
+        class: Elcodi\Component\CartCoupon\EventListener\CreateAndSaveCartCouponEventListener
+        arguments:
+            - @elcodi.manager.cart_coupon
+        tags:
+            - { name: kernel.event_listener, event: cart_coupon.onapply, method: createAndSaveCartCoupon, priority: 0 }
+
+    elcodi.event_listener.create_order_coupon_by_coupon:
+        class: Elcodi\Component\CartCoupon\EventListener\CreateOrderCouponByCouponEventListener
+        arguments:
+            - @elcodi.transformer.coupon_to_order_coupon
+        tags:
+            - { name: kernel.event_listener, event: order_coupon.onapply, method: createOrderCouponByCoupon, priority: 0 }
+
+    elcodi.event_listener.load_cart_coupon_amount:
+        class: Elcodi\Component\CartCoupon\EventListener\LoadCartCouponAmountEventListener
+        arguments:
+            - @elcodi.loader.cart_coupon_prices
+        tags:
             - { name: kernel.event_listener, event: cart.onload, method: refreshCouponAmount, priority: -32 }
 
-    elcodi.event_listener.automatic_coupons:
-        class: Elcodi\Component\CartCoupon\EventListener\AutomaticCouponApplicatorEventListener
+    elcodi.event_listener.remove_cart_coupon:
+        class: Elcodi\Component\CartCoupon\EventListener\RemoveCartCouponEventListener
         arguments:
             - @elcodi.manager.cart_coupon
-            - @elcodi.repository.coupon
+        tags:
+            - { name: kernel.event_listener, event: cart_coupon.onremove, method: removeCartCoupon, priority: 0 }
+
+    elcodi.event_listener.try_automatic_coupons_application:
+        class: Elcodi\Component\CartCoupon\EventListener\TryAutomaticCouponsApplicationEventListener
+        arguments:
+            - @elcodi.applicator.automatic_coupon
         tags:
             - { name: kernel.event_listener, event: cart.onload, method: tryAutomaticCoupons, priority: -16 }
 
-    elcodi.event_listener.avoid_coupon_duplicates:
-        class: Elcodi\Component\CartCoupon\EventListener\AvoidDuplicatesEventListener
-        arguments:
-            - @elcodi.repository.cart_coupon
-        tags:
-            - { name: kernel.event_listener, event: cart_coupon.onapply, method: checkDuplicates, priority: 16 }
-
-    elcodi.event_listener.check_stackable_coupon:
-        class: Elcodi\Component\CartCoupon\EventListener\CheckStackableCouponsEventListener
-        arguments:
-            - @elcodi.checker.stackable_coupon
-        tags:
-            - { name: kernel.event_listener, event: cart_coupon.onapply, method: checkStackableCoupon, priority: 16 }
-
-    elcodi.event_listener.cart_coupon_checker:
-        class: Elcodi\Component\CartCoupon\EventListener\CheckCartCouponEventListener
+    elcodi.event_listener.validate_cart_coupon:
+        class: Elcodi\Component\CartCoupon\EventListener\ValidateCartCouponEventListener
         arguments:
             - @elcodi.event_dispatcher.cart_coupon
         tags:
-            - { name: kernel.event_listener, event: cart_coupon.onapply, method: checkCoupon, priority: 16 }
+            - { name: kernel.event_listener, event: cart_coupon.onapply, method: validateCoupon, priority: 16 }
 
-    elcodi.event_listener.cart_coupon_manager:
-        class: Elcodi\Component\CartCoupon\EventListener\CartCouponManagerEventListener
+    elcodi.event_listener.validate_coupon_duplication:
+        class: Elcodi\Component\CartCoupon\EventListener\ValidateCouponDuplicationEventListener
         arguments:
-            - @elcodi.object_manager.cart_coupon
-            - @elcodi.factory.cart_coupon
+            - @elcodi.validator.duplicated_coupon
         tags:
-            - { name: kernel.event_listener, event: cart_coupon.onapply, method: onCartCouponApply, priority: 0 }
-            - { name: kernel.event_listener, event: cart_coupon.onremove, method: onCartCouponRemove, priority: 0 }
+            - { name: kernel.event_listener, event: cart_coupon.onapply, method: validateDuplicatedCoupon, priority: 16 }
 
-    elcodi.event_listener.coupon_checker:
-        class: Elcodi\Component\CartCoupon\EventListener\CheckCouponEventListener
+    elcodi.event_listener.validate_coupon:
+        class: Elcodi\Component\CartCoupon\EventListener\ValidateCouponEventListener
         arguments:
-            - @elcodi.manager.coupon
+            - @elcodi.validator.cart_coupon
         tags:
-            - { name: kernel.event_listener, event: cart_coupon.oncheck, method: checkCoupon, priority: 32 }
+            - { name: kernel.event_listener, event: cart_coupon.oncheck, method: validateCoupon, priority: 32 }
 
-    elcodi.event_listener.check_minimum_price:
-        class: Elcodi\Component\CartCoupon\EventListener\MinimumPriceCouponEventListener
+    elcodi.event_listener.validate_coupon_minimum_price:
+        class: Elcodi\Component\CartCoupon\EventListener\ValidateCouponMinimumPriceEventListener
         arguments:
-            - @elcodi.converter.currency
+            - @elcodi.validator.cart_coupon_minimum_price
         tags:
-            - { name: kernel.event_listener, event: cart_coupon.oncheck, method: checkMinimumPrice, priority: 0 }
+            - { name: kernel.event_listener, event: cart_coupon.oncheck, method: validateCartCouponMinimumPrice, priority: 0 }
 
-    elcodi.event_listener.check_rules:
-        class: Elcodi\Component\CartCoupon\EventListener\CheckRulesEventListener
+    elcodi.event_listener.validate_coupon_rules:
+        class: Elcodi\Component\CartCoupon\EventListener\ValidateCouponRulesEventListener
         arguments:
-            - @elcodi.manager.cart_coupon_rule
+            - @elcodi.validator.cart_coupon_rule
         tags:
-            - { name: kernel.event_listener, event: cart_coupon.oncheck, method: checkCoupon, priority: -16 }
+            - { name: kernel.event_listener, event: cart_coupon.oncheck, method: validateCartCouponRules, priority: -16 }
 
-    elcodi.event_listener.convert_to_order:
-        class: Elcodi\Component\CartCoupon\EventListener\ConvertToOrderCouponsEventListener
+    elcodi.event_listener.validate_coupons_from_cart:
+        class: Elcodi\Component\CartCoupon\EventListener\ValidateCouponsFromCartEventListener
         arguments:
-            - @elcodi.event_dispatcher.order_coupon
-            - @elcodi.manager.cart_coupon
-            - @elcodi.manager.order_coupon
-            - @elcodi.object_manager.order_coupon
+            - @elcodi.validator.cart_coupon
         tags:
-            - { name: kernel.event_listener, event: order.oncreated, method: convertCouponToOrder, priority: -16 }
+            - { name: kernel.event_listener, event: cart.onload, method: refreshCartCoupons, priority: 0 }
 
-    elcodi.event_listener.order_coupon_manager:
-        class: Elcodi\Component\CartCoupon\EventListener\OrderCouponManagerEventListener
+    elcodi.event_listener.validate_stackable_coupon:
+        class: Elcodi\Component\CartCoupon\EventListener\ValidateStackableCouponsEventListener
         arguments:
-            - @elcodi.object_manager.order_coupon
-            - @elcodi.event_dispatcher.coupon
-            - @elcodi.factory.order_coupon
+            - @elcodi.validator.stackable_coupon
         tags:
-            - { name: kernel.event_listener, event: order_coupon.onapply, method: convertToOrderCoupons, priority: 0 }
+            - { name: kernel.event_listener, event: cart_coupon.onapply, method: validateStackableCoupon, priority: 16 }
+
+    elcodi.event_listener.update_cart_after_coupon_change:
+        class: Elcodi\Component\CartCoupon\EventListener\CartUpdateAfterCouponChangeEventListener
+        arguments:
+            - @elcodi.event_dispatcher.cart
+        tags:
+            - { name: kernel.event_listener, event: cart_coupon.onapply, method: updateCart, priority: -100 }
+            - { name: kernel.event_listener, event: cart_coupon.onremove, method: updateCart, priority: -100 }

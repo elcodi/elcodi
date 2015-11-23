@@ -19,9 +19,49 @@ namespace Elcodi\Component\CartCoupon\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
+use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
+use Elcodi\Component\CartCoupon\Entity\Interfaces\OrderCouponInterface;
+
 /**
  * Class OrderCouponRepository
  */
 class OrderCouponRepository extends EntityRepository
 {
+    /**
+     * Find OrderCoupon instances assigned to current order
+     *
+     * @param OrderInterface $order Order
+     *
+     * @return OrderCouponInterface[] OrderCoupons
+     */
+    public function findOrderCouponsByOrder(OrderInterface $order)
+    {
+        return $this
+            ->createQueryBuilder('oc')
+            ->where('oc.order = :order')
+            ->setParameter('order', $order)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * Find OrderCoupon instances assigned to current order
+     *
+     * @param OrderInterface $order Order
+     *
+     * @return OrderCouponInterface[] OrderCoupons
+     */
+    public function findCouponsByOrder(OrderInterface $order)
+    {
+        $orderCoupons = $this
+            ->createQueryBuilder('oc')
+            ->where('oc.order = :order')
+            ->setParameter('order', $order)
+            ->getQuery()
+            ->getResult();
+
+        return array_map(function (OrderCouponInterface $orderCoupon) {
+            return $orderCoupon->getCoupon();
+        }, $orderCoupons);
+    }
 }

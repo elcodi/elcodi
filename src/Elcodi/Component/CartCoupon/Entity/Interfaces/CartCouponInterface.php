@@ -27,6 +27,13 @@ use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 interface CartCouponInterface extends IdentifiableInterface
 {
     /**
+     * Get Cart
+     *
+     * @return CartInterface Cart
+     */
+    public function getCart();
+
+    /**
      * Sets Cart
      *
      * @param CartInterface $cart Cart
@@ -36,11 +43,11 @@ interface CartCouponInterface extends IdentifiableInterface
     public function setCart(CartInterface $cart);
 
     /**
-     * Get Cart
+     * Get Coupon
      *
-     * @return CartInterface Cart
+     * @return CouponInterface Coupon
      */
-    public function getCart();
+    public function getCoupon();
 
     /**
      * Sets Coupon
@@ -50,11 +57,4 @@ interface CartCouponInterface extends IdentifiableInterface
      * @return $this Self object
      */
     public function setCoupon(CouponInterface $coupon);
-
-    /**
-     * Get Coupon
-     *
-     * @return CouponInterface Coupon
-     */
-    public function getCoupon();
 }
