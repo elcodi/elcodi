@@ -27,6 +27,10 @@ use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Component\Configuration\ExpressionLanguage\ConfigurationExpressionLanguageProvider;
 
+@trigger_error('Warning. Bundle ConfigurationBundle is deprecated and will be
+removed the April 1st. If you\'re using it out of the box, please, fork it as
+soon as possible and decouple from this package.', E_USER_DEPRECATED);
+
 /**
  * ElcodiConfigurationBundle Class
  */

@@ -1,6 +1,10 @@
 Configuration Bundle
 ====================
 
+> Warning. This package is deprecated and will be removed the April 1st.
+> If you're using it out of the box, please, fork it as soon as possible and
+> decouple from this package.
+
 This package is part of [Elcodi](http://github.com/elcodi/elcodi) project, a 
 suite of e-commerce Components and Bundles built on top of Symfony and under
 [MIT](http://opensource.org/licenses/MIT) license.
