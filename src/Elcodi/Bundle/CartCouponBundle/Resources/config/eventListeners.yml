@@ -30,10 +30,10 @@ services:
         tags:
             - { name: kernel.event_listener, event: cart_coupon.onapply, method: checkDuplicates, priority: 16 }
 
-    elcodi.event_listener.stackable_coupon:
-        class: Elcodi\Component\CartCoupon\EventListener\StackableCouponEventListener
+    elcodi.event_listener.check_stackable_coupon:
+        class: Elcodi\Component\CartCoupon\EventListener\CheckStackableCouponsEventListener
         arguments:
-            - @elcodi.repository.cart_coupon
+            - @elcodi.checker.stackable_coupon
         tags:
             - { name: kernel.event_listener, event: cart_coupon.onapply, method: checkStackableCoupon, priority: 16 }
 
