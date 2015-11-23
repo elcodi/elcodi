@@ -76,10 +76,20 @@ class StackableCouponEventListenerTest extends WebTestCase
     public function dataCheckStackableCoupon()
     {
         return [
+
+            // Try to apply non stackable. Should be OK
             [[1], false],
+
+            // Try to apply stackable. Should be OK
             [[3], false],
+
+            // Try to apply two stackables. Should be OK
             [[3, 4], false],
+
+            // Try to apply a non stackable after a stackable. Should throw Exception
             [[3, 1], true],
+
+            // Try to apply a stackable after a non stackable. Should throw Exception
             [[1, 3], true],
         ];
     }

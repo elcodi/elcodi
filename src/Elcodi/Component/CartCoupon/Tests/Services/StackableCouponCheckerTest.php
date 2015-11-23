@@ -77,11 +77,22 @@ class StackableCouponCheckerTest extends PHPUnit_Framework_TestCase
     public function dataCheckStackableCoupon()
     {
         return [
+            // Try to apply stackable coupon with none applied. Should be OK
             [true, [], false],
+
+            // Try to apply non stackable coupon with none applied. Should be OK
             [false, [], false],
+
+            // Try to apply non stackable coupon with all stackable. Should throw exception
             [false, [true, true], true],
+
+            // Try to apply non stackable coupon with one non stackable. Should throw exception
             [false, [false, true], true],
+
+            // Try to apply stackable coupon with one non stackable. Should throw exception
             [true, [false, true], true],
+
+            // Try to apply stackable coupon with all stackables. Should be OK
             [true, [true, true], false],
         ];
     }
