@@ -194,7 +194,7 @@ class BannerZone implements BannerZoneInterface
      */
     public function getBanners()
     {
-        $this->banners;
+        return $this->banners;
     }
 
     /**
