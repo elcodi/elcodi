@@ -245,6 +245,6 @@ abstract class WebTestCase extends BaseWebTestCase
         $bundleName = explode('Elcodi\\', $namespaceExploded[0], 2)[1];
         $bundleName = str_replace('\\', '_', $bundleName);
 
-        return new static::$class($bundleName . 'Test', true);
+        return new static::$class($bundleName . 'Test', false);
     }
 }

@@ -22,6 +22,6 @@ use Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException;
 /**
  * Custom CouponAlreadyAppliedException
  */
-class CouponAlreadyAppliedException extends AbstractCouponException
+final class CouponAlreadyAppliedException extends AbstractCouponException
 {
 }

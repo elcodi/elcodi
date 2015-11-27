@@ -44,6 +44,16 @@ class CartCoupon implements CartCouponInterface
     protected $coupon;
 
     /**
+     * Get Cart
+     *
+     * @return CartInterface Cart
+     */
+    public function getCart()
+    {
+        return $this->cart;
+    }
+
+    /**
      * Sets Cart
      *
      * @param CartInterface $cart Cart
@@ -58,13 +68,13 @@ class CartCoupon implements CartCouponInterface
     }
 
     /**
-     * Get Cart
+     * Get Coupon
      *
-     * @return CartInterface Cart
+     * @return CouponInterface Coupon
      */
-    public function getCart()
+    public function getCoupon()
     {
-        return $this->cart;
+        return $this->coupon;
     }
 
     /**
@@ -79,15 +89,5 @@ class CartCoupon implements CartCouponInterface
         $this->coupon = $coupon;
 
         return $this;
-    }
-
-    /**
-     * Get Coupon
-     *
-     * @return CouponInterface Coupon
-     */
-    public function getCoupon()
-    {
-        return $this->coupon;
     }
 }

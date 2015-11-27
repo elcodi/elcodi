@@ -109,6 +109,7 @@ class ElcodiCartCouponExtension extends AbstractExtension implements EntitiesOve
             'eventListeners',
             'factories',
             'services',
+            'transformers',
             'repositories',
             'eventDispatchers',
             'objectManagers',

@@ -22,6 +22,6 @@ use Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException;
 /**
  * Custom CouponNotStackableException
  */
-class CouponNotStackableException extends AbstractCouponException
+final class CouponNotStackableException extends AbstractCouponException
 {
 }

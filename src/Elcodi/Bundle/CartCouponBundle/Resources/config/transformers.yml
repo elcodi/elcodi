@@ -1,0 +1,18 @@
+services:
+
+    #
+    # Transformers
+    #
+    elcodi.transformer.coupon_to_order_coupon:
+        class: Elcodi\Component\CartCoupon\Transformer\CouponToOrderCouponTransformer
+        arguments:
+            - @elcodi.object_manager.order_coupon
+            - @elcodi.event_dispatcher.coupon
+            - @elcodi.factory.order_coupon
+
+    elcodi.transformer.cart_coupon_to_order_coupon:
+        class: Elcodi\Component\CartCoupon\Transformer\CartCouponToOrderCouponTransformer
+        arguments:
+            - @elcodi.manager.cart_coupon
+            - @elcodi.truncator.order_coupon
+            - @elcodi.event_dispatcher.order_coupon
