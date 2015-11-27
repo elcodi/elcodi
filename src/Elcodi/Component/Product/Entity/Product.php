@@ -32,6 +32,7 @@ use Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
 use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
+use Elcodi\Component\Product\Entity\Traits\NameTrait;
 use Elcodi\Component\Product\Entity\Traits\ProductPriceTrait;
 
 /**
@@ -47,14 +48,8 @@ class Product implements ProductInterface
         MetaDataTrait,
         ImagesContainerTrait,
         PrincipalImageTrait,
-        DimensionsTrait;
-
-    /**
-     * @var string
-     *
-     * Name
-     */
-    protected $name;
+        DimensionsTrait,
+        NameTrait;
 
     /**
      * @var string
@@ -153,30 +148,6 @@ class Product implements ProductInterface
      * Principal variant for this product
      */
     protected $principalVariant;
-
-    /**
-     * Set name
-     *
-     * @param string $name Name
-     *
-     * @return $this Self object
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string name
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
 
     /**
      * Set slug

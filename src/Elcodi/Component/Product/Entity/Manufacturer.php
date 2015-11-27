@@ -27,6 +27,7 @@ use Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait;
 use Elcodi\Component\MetaData\Entity\Traits\MetaDataTrait;
 use Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
+use Elcodi\Component\Product\Entity\Traits\NameTrait;
 
 /**
  * Class Manufacturer
@@ -38,14 +39,9 @@ class Manufacturer implements ManufacturerInterface
         PrincipalImageTrait,
         DateTimeTrait,
         EnabledTrait,
-        MetaDataTrait;
+        MetaDataTrait,
+        NameTrait;
 
-    /**
-     * @var string
-     *
-     * Name
-     */
-    protected $name;
 
     /**
      * @var string
@@ -67,30 +63,6 @@ class Manufacturer implements ManufacturerInterface
      * Products
      */
     protected $products;
-
-    /**
-     * Set name
-     *
-     * @param string $name Name
-     *
-     * @return $this Self object
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string Name
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
 
     /**
      * Set description

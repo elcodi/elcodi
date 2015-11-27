@@ -58,22 +58,6 @@ interface ProductInterface
     public function getId();
 
     /**
-     * Set name
-     *
-     * @param string $name Name
-     *
-     * @return $this Self object
-     */
-    public function setName($name);
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName();
-
-    /**
      * Set slug
      *
      * @param string $slug Slug

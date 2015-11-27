@@ -24,6 +24,7 @@ use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\MetaData\Entity\Traits\MetaDataTrait;
 use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
+use Elcodi\Component\Product\Entity\Traits\NameTrait;
 
 /**
  * Class Category
@@ -33,14 +34,8 @@ class Category implements CategoryInterface
     use IdentifiableTrait,
         DateTimeTrait,
         EnabledTrait,
-        MetaDataTrait;
-
-    /**
-     * @var string
-     *
-     * Category name
-     */
-    protected $name;
+        MetaDataTrait,
+        NameTrait;
 
     /**
      * @var string
@@ -84,30 +79,6 @@ class Category implements CategoryInterface
      * Position order to show in menu
      */
     protected $position;
-
-    /**
-     * Set name
-     *
-     * @param string $name Name
-     *
-     * @return $this Self object
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Return name
-     *
-     * @return string name
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
 
     /**
      * Set slug
