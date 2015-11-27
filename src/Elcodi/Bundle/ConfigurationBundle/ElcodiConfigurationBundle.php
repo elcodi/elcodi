@@ -17,6 +17,7 @@
 
 namespace Elcodi\Bundle\ConfigurationBundle;
 
+use Mmoreram\SymfonyBundleDependencies\DependentBundleInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -24,7 +25,6 @@ use Symfony\Component\HttpKernel\KernelInterface;
 use Elcodi\Bundle\ConfigurationBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\ConfigurationBundle\DependencyInjection\ElcodiConfigurationExtension;
 use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
-use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Component\Configuration\ExpressionLanguage\ConfigurationExpressionLanguageProvider;
 
 @trigger_error('Warning. Bundle ConfigurationBundle is deprecated and will be
