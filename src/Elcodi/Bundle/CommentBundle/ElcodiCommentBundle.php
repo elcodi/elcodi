@@ -17,6 +17,7 @@
 
 namespace Elcodi\Bundle\CommentBundle;
 
+use Mmoreram\SymfonyBundleDependencies\DependentBundleInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -25,7 +26,6 @@ use Symfony\Component\HttpKernel\KernelInterface;
 use Elcodi\Bundle\CommentBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\CommentBundle\DependencyInjection\ElcodiCommentExtension;
 use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
-use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 
 /**
  * ElcodiCommentBundle Class

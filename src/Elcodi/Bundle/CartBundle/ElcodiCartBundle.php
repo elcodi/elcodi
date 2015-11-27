@@ -17,6 +17,7 @@
 
 namespace Elcodi\Bundle\CartBundle;
 
+use Mmoreram\SymfonyBundleDependencies\DependentBundleInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -24,7 +25,6 @@ use Symfony\Component\HttpKernel\KernelInterface;
 use Elcodi\Bundle\CartBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\CartBundle\DependencyInjection\ElcodiCartExtension;
 use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
-use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 
 /**
  * ElcodiCartBundle Bundle

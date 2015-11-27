@@ -17,6 +17,7 @@
 
 namespace Elcodi\Bundle\BannerBundle;
 
+use Mmoreram\SymfonyBundleDependencies\DependentBundleInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -24,7 +25,6 @@ use Symfony\Component\HttpKernel\KernelInterface;
 use Elcodi\Bundle\BannerBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\BannerBundle\DependencyInjection\ElcodiBannerExtension;
 use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
-use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 
 /**
  * ElcodiBannerBundle Bundle

@@ -17,12 +17,12 @@
 
 namespace Elcodi\Bundle\MetricBundle;
 
+use Mmoreram\SymfonyBundleDependencies\DependentBundleInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
-use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\MetricBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\MetricBundle\DependencyInjection\ElcodiMetricExtension;
 

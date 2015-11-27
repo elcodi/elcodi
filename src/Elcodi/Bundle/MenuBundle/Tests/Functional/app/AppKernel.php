@@ -17,7 +17,8 @@
 
 namespace Elcodi\Bundle\MenuBundle\Tests\Functional\app;
 
-use Elcodi\Bundle\CoreBundle\Traits\BundleDependenciesResolver;
+use Mmoreram\SymfonyBundleDependencies\BundleDependenciesResolver;
+
 use Elcodi\Bundle\TestCommonBundle\Functional\Abstracts\AbstractElcodiKernel;
 
 /**

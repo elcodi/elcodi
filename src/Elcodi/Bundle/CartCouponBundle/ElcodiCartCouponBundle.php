@@ -17,6 +17,7 @@
 
 namespace Elcodi\Bundle\CartCouponBundle;
 
+use Mmoreram\SymfonyBundleDependencies\DependentBundleInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -24,7 +25,6 @@ use Symfony\Component\HttpKernel\KernelInterface;
 use Elcodi\Bundle\CartCouponBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\CartCouponBundle\DependencyInjection\ElcodiCartCouponExtension;
 use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
-use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 
 /**
  * Class ElcodiCartCouponBundle

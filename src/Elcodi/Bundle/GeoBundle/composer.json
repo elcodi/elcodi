@@ -41,6 +41,7 @@
         "ocramius/proxy-manager": "^1.0",
 
         "mmoreram/simple-doctrine-mapping": "^1.0",
+        "mmoreram/symfony-bundle-dependencies": "^1.0",
 
         "elcodi/core-bundle": "^1.0",
         "elcodi/geo": "^1.0"

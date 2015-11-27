@@ -17,7 +17,9 @@
 
 namespace Elcodi\Bundle\CoreBundle\Traits;
 
-use Symfony\Component\HttpKernel\KernelInterface;
+@trigger_error('Warning. This feature is extracted from Elcodi and placed in the
+repository mmoreram/symfony-bundle-dependencies. Will be removed permanently in
+v2.0.0.', E_USER_DEPRECATED);
 
 /**
  * Trait BundleDependenciesResolver
@@ -98,7 +100,10 @@ trait BundleDependenciesResolver
 
             $visitedBundles[$bundleNamespace] = true;
             $bundleNamespaceObj = new \ReflectionClass($bundleNamespace);
-            if ($bundleNamespaceObj->implementsInterface('Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface')) {
+            if (
+                $bundleNamespaceObj->implementsInterface('Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface') ||
+                $bundleNamespaceObj->implementsInterface('Mmoreram\SymfonyBundleDependencies\DependentBundleInterface')
+            ) {
 
                 /**
                  * @var \Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface|string $bundleNamespace

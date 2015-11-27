@@ -17,12 +17,12 @@
 
 namespace Elcodi\Bundle\LanguageBundle;
 
+use Mmoreram\SymfonyBundleDependencies\DependentBundleInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
-use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\LanguageBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\LanguageBundle\DependencyInjection\ElcodiLanguageExtension;
 

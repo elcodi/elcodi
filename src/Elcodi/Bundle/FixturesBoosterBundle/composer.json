@@ -35,6 +35,7 @@
         "symfony/http-kernel": "^2.7|^3.0",
         "symfony/console": "^2.7|^3.0",
         "symfony/dependency-injection": "^2.7|^3.0",
+        "mmoreram/symfony-bundle-dependencies": "^1.0",
 
         "doctrine/doctrine-fixtures-bundle": "^2.2",
 
