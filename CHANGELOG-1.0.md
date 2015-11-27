@@ -8,6 +8,28 @@ https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v1.0.0...v1.0.1
 
+### v1.0.8 (27-11-2015)
+
+This version fixes some important issues related to Cart and Coupon. Symfony3
+support has been added.
+
+* Refactored full CartCoupon and CartCouponBundle
+* Important to read #997 in order to understand the direction of all components
+  and bundles
+* Increased tests coverage
+
+#### Release Log
+
+* [`9bab937`](https://github.com/elcodi/elcodi/commit/9bab93751b8abc505030c5fd6c5dda2bddd60cea) Big refactor to CartCoupon layer (mmoreram)
+* [`14d02cc`](https://github.com/elcodi/elcodi/commit/14d02cc663c0ca78e32128888579e485e4527367) added some Descriptions to tests (mmoreram)
+* [`ba8e311`](https://github.com/elcodi/elcodi/commit/ba8e31189d5f9d15e5f62c54b03aaa41782a490e) Issue #986 Isolated stackable business logic (mmoreram)
+* [`d3a094c`](https://github.com/elcodi/elcodi/commit/d3a094c018298b0b2408f2e20a3006006011e0bf) Adding configuration comp+bundle deprecation (mmoreram)
+* [`d604ceb`](https://github.com/elcodi/elcodi/commit/d604ceb8f6604d61c04578ea498f748a569835ab) fixed getter (Emanuele Minotto)
+* [`61138d8`](https://github.com/elcodi/elcodi/commit/61138d8f30cee7b531fd5f52db394871c7925ca7) Fixes optional dependency (Berny Cantos)
+* [`d5232f3`](https://github.com/elcodi/elcodi/commit/d5232f3119205a4f95b7cb1ce90f5be6bff02c0a) Fixed event-listener that updated coupon usage (mmoreram)
+* [`17a80ad`](https://github.com/elcodi/elcodi/commit/17a80adcc0f3912347dcdc0eea496b8063e84c93) Removed minimum-stability and prefer-stable (mmoreram)
+* [`70fb72f`](https://github.com/elcodi/elcodi/commit/70fb72f896ee95f70995d915463af655a59c31cb) Added support for Symfony3 (mmoreram)
+
 ### v1.0.7 (18-11-2015)
 
 This version introduces some breaking changes if you have implemented your Order
