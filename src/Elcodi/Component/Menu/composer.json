@@ -46,6 +46,9 @@
         "symfony/routing": "^2.7"
     },
     "autoload": {
+        "exclude-from-classmap": [
+            "/Tests/"
+        ],
         "psr-4": {
             "Elcodi\\Component\\Menu\\": ""
         }

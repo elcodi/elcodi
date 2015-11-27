@@ -53,6 +53,9 @@
         "symfony/twig-bundle": "Required if using Twig extensions"
     },
     "autoload": {
+        "exclude-from-classmap": [
+            "/Tests/"
+        ],
         "psr-4": {
             "Elcodi\\Bundle\\LanguageBundle\\": ""
         }

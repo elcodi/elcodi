@@ -49,6 +49,9 @@
         "twig/twig": "Required if using Twig extensions"
     },
     "autoload": {
+        "exclude-from-classmap": [
+            "/Tests/"
+        ],
         "psr-4": {
             "Elcodi\\Component\\Media\\": ""
         }

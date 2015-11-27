@@ -47,6 +47,9 @@
         "michelf/php-markdown": "Needed for the markdown parsing adapter"
     },
     "autoload": {
+        "exclude-from-classmap": [
+            "/Tests/"
+        ],
         "psr-4": {
             "Elcodi\\Component\\Core\\": ""
         }
