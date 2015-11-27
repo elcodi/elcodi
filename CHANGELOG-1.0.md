@@ -8,6 +8,16 @@ https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v1.0.0...v1.0.1
 
+### v1.0.9 (27-11-2015)
+
+This version deprecates the usage of internal classes related to dependencies
+between bundles, and makes use of the external library
+[symfony-bundle-dependencies](https://github.com/mmoreram/symfony-bundle-dependencies).
+
+#### Release Log
+
+* [`ca69eee`](https://github.com/elcodi/elcodi/commit/ca69eeec925a25d584d9bdddd73a10397b17e870) Added new dependency with library (mmoreram)
+
 ### v1.0.8 (27-11-2015)
 
 This version fixes some important issues related to Cart and Coupon. Symfony3
