@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -18,6 +18,7 @@
 namespace Elcodi\Component\User\Entity;
 
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Security\Core\Role\Role;
 
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
@@ -109,11 +110,15 @@ class Customer extends AbstractUser implements CustomerInterface
      */
     public function getRoles()
     {
-        return ['ROLE_CUSTOMER'];
+        return [
+            new Role('ROLE_CUSTOMER'),
+        ];
     }
 
     /**
-     * @param string
+     * Set phone
+     *
+     * @param string $phone Phone
      *
      * @return $this
      */
@@ -241,7 +246,7 @@ class Customer extends AbstractUser implements CustomerInterface
      *
      * @return $this Self object
      */
-    public function setOrders($orders)
+    public function setOrders(Collection $orders)
     {
         $this->orders = $orders;
 
@@ -291,7 +296,7 @@ class Customer extends AbstractUser implements CustomerInterface
      *
      * @return $this Self object
      */
-    public function setCarts($carts)
+    public function setCarts(Collection $carts)
     {
         $this->carts = $carts;
 

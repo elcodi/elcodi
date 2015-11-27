@@ -1,10 +1,9 @@
 services:
 
     #
-    # Resolvers
+    # Wrappers
     #
-    elcodi.resolver.shipping_range:
-        class: Elcodi\Component\Shipping\Resolver\ShippingRangeResolver
+    elcodi.resolver.shipping:
+        class: Elcodi\Component\Shipping\Resolver\ShippingResolver
         arguments:
             - @elcodi.converter.currency
-            - %elcodi.resolver.carrier.strategy%

@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -24,21 +24,21 @@ use Elcodi\Component\Comment\Event\Abstracts\AbstractCommentEvent;
 /**
  * Class CommentOnVotedEvent
  */
-class CommentOnVotedEvent extends AbstractCommentEvent
+final class CommentOnVotedEvent extends AbstractCommentEvent
 {
     /**
      * @var VoteInterface
      *
      * Vote
      */
-    protected $vote;
+    private $vote;
 
     /**
      * @var boolean
      *
      * Edited
      */
-    protected $edited;
+    private $edited;
 
     /**
      * Construct method

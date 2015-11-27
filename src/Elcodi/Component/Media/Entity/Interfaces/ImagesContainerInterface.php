@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -64,4 +64,20 @@ interface ImagesContainerInterface
      * @return \Doctrine\Common\Collections\ArrayCollection
      */
     public function getSortedImages();
+
+    /**
+     * Get ImagesSort
+     *
+     * @return string ImagesSort
+     */
+    public function getImagesSort();
+
+    /**
+     * Sets ImagesSort
+     *
+     * @param string $imagesSort ImagesSort
+     *
+     * @return $this Self object
+     */
+    public function setImagesSort($imagesSort);
 }

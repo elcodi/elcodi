@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -18,6 +18,7 @@
 namespace Elcodi\Component\User\Entity\Abstracts;
 
 use DateTime;
+use Symfony\Component\Security\Core\Role\Role;
 
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
@@ -106,7 +107,9 @@ abstract class AbstractUser implements AbstractUserInterface
      */
     public function getRoles()
     {
-        return ['IS_AUTHENTICATED_ANONYMOUSLY'];
+        return [
+            new Role('IS_AUTHENTICATED_ANONYMOUSLY'),
+        ];
     }
 
     /**

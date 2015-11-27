@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -31,14 +31,14 @@ class CurrencySessionManager
      *
      * Session
      */
-    protected $session;
+    private $session;
 
     /**
      * @var string
      *
      * Session Field Name
      */
-    protected $sessionFieldName;
+    private $sessionFieldName;
 
     /**
      * Construct method
@@ -72,7 +72,7 @@ class CurrencySessionManager
     }
 
     /**
-     * Get current cart id loaded in session
+     * Get currency id loaded in session
      *
      * @return integer Currency id
      */

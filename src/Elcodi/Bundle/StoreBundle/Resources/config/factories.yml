@@ -1,0 +1,14 @@
+services:
+
+    #
+    # Factories
+    #
+
+    #
+    # Factory for entity store
+    #
+    elcodi.factory.store:
+        class: Elcodi\Component\Store\Factory\StoreFactory
+        calls:
+            - [setEntityNamespace, ["%elcodi.entity.store.class%"]]
+            - [setDateTimeFactory, ["@elcodi.factory.datetime"]]

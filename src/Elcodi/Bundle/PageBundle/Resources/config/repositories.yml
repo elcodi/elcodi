@@ -9,5 +9,6 @@ services:
     #
     elcodi.repository.page:
         parent: elcodi.abstract_repository
-        class: Elcodi\Component\Page\Repository\PageRepository
-        arguments: [ %elcodi.entity.page.class% ]
+        class: Doctrine\Common\Persistence\ObjectRepository
+        arguments:
+            - %elcodi.entity.page.class%

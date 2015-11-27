@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -40,13 +40,6 @@ class Configuration extends AbstractConfiguration
                             'tax',
                             'Elcodi\Component\Tax\Entity\Tax',
                             '@ElcodiTaxBundle/Resources/config/doctrine/Tax.orm.yml',
-                            'default',
-                            true
-                        ))
-                        ->append($this->addMappingNode(
-                            'tax_group',
-                            'Elcodi\Component\Tax\Entity\TaxGroup',
-                            '@ElcodiTaxBundle/Resources/config/doctrine/TaxGroup.orm.yml',
                             'default',
                             true
                         ))

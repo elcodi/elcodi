@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -49,9 +49,21 @@ abstract class WebTestCase extends BaseWebTestCase
     protected $client;
 
     /**
-     * Set up
+     * Reload scenario
+     *
+     * @throws RuntimeException unable to start the application
      */
-    public function setUp()
+    protected function reloadScenario()
+    {
+        static::setUpBeforeClass();
+    }
+
+    /**
+     * Set up before class
+     *
+     * @throws RuntimeException unable to start the application
+     */
+    public static function setUpBeforeClass()
     {
         try {
             static::$kernel = static::createKernel();
@@ -59,7 +71,7 @@ abstract class WebTestCase extends BaseWebTestCase
 
             static::$application = new Application(static::$kernel);
             static::$application->setAutoExit(false);
-            $this->container = static::$kernel->getContainer();
+            static::$container = static::$kernel->getContainer();
         } catch (Exception $e) {
             throw new RuntimeException(
                 sprintf('Unable to start the application: %s', $e->getMessage()),
@@ -68,13 +80,15 @@ abstract class WebTestCase extends BaseWebTestCase
             );
         }
 
-        $this->createSchema();
+        static::createSchema();
     }
 
     /**
-     * Tear down
+     * Tear down after class
+     *
+     * @throws Exception When doRun returns Exception
      */
-    public function tearDown()
+    public static function tearDownAfterClass()
     {
         if (static::$application) {
             static::$application->run(new ArrayInput([
@@ -87,52 +101,28 @@ abstract class WebTestCase extends BaseWebTestCase
     }
 
     /**
-     * Test service can be instanced through container
-     */
-    public function testServiceLoadFromContainer()
-    {
-        $serviceCallableNames = $this->getServiceCallableName();
-
-        foreach ($serviceCallableNames as $serviceCallableName) {
-            if ($serviceCallableName) {
-                $this->assertNotNull(static::$kernel
-                        ->getContainer()
-                        ->get($serviceCallableName)
-                );
-            }
-        }
-    }
-
-    /**
-     * Returns the callable name of the service
-     *
-     * If returns false, avoid service check.
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return [];
-    }
-
-    /**
-     * Returns if service must be retrieved from container
-     *
-     * @return boolean
-     */
-    protected function mustTestGetService()
-    {
-        return true;
-    }
-
-    /**
      * Load fixtures of these bundles
      *
      * @return array Bundles name where fixtures should be found
      */
-    protected function loadFixturesBundles()
+    protected static function loadFixturesBundles()
     {
         return false;
+    }
+
+    /**
+     * Has fixtures to load
+     *
+     * @return static boolean Some fixtures need to be installed
+     */
+    private static function hasFixturesBundles()
+    {
+        $fixturesBundles = static::loadFixturesBundles();
+
+        return (
+            is_array($fixturesBundles) &&
+            !empty($fixturesBundles)
+        );
     }
 
     /**
@@ -140,9 +130,9 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * @return boolean Load schema
      */
-    protected function loadSchema()
+    protected static function loadSchema()
     {
-        return true;
+        return static::hasFixturesBundles();
     }
 
     /**
@@ -155,10 +145,10 @@ abstract class WebTestCase extends BaseWebTestCase
      *
      * @return $this Self object
      */
-    protected function createSchema()
+    protected static function createSchema()
     {
-        if (!$this->loadSchema()) {
-            return $this;
+        if (!static::loadSchema()) {
+            return;
         }
 
         static::$application->run(new ArrayInput([
@@ -180,9 +170,7 @@ abstract class WebTestCase extends BaseWebTestCase
             '--quiet'          => true,
         ]));
 
-        $this->loadFixtures();
-
-        return $this;
+        static::loadFixtures();
     }
 
     /**
@@ -194,28 +182,30 @@ abstract class WebTestCase extends BaseWebTestCase
      * All other methods will be loaded if this one is loaded.
      *
      * Otherwise, will return.
-     *
-     * @return $this Self object
      */
-    protected function loadFixtures()
+    protected static function loadFixtures()
     {
-        if (!is_array($this->loadFixturesBundles())) {
-            return $this;
+        if (!static::hasFixturesBundles()) {
+            return;
         }
 
         $bundles = static::$kernel->getBundles();
-        $formattedBundles = array_map(function ($bundle) use ($bundles) {
-            return $bundles[$bundle]->getPath() . '/DataFixtures/ORM/';
-        }, $this->loadFixturesBundles());
+        $fixturesBundles = static::loadFixturesBundles();
 
-        self::$application->run(new ArrayInput([
-            'command'          => 'doctrine:fixtures:load',
-            '--no-interaction' => true,
-            '--fixtures'       => $formattedBundles,
-            '--quiet'          => true,
-        ]));
+        if (!empty($fixturesBundles)) {
+            $formattedBundles = array_map(function ($bundle) use ($bundles) {
+                return $bundles[$bundle]->getPath() . '/DataFixtures/ORM/';
+            }, $fixturesBundles);
 
-        return $this;
+            static::$application->run(new ArrayInput([
+                'command'          => 'doctrine:fixtures:load',
+                '--no-interaction' => true,
+                '--fixtures'       => $formattedBundles,
+                '--quiet'          => true,
+            ]));
+        }
+
+        return;
     }
 
     /**

@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -66,6 +66,7 @@ class Configuration extends AbstractConfiguration implements ConfigurationInterf
                     ->end()
                 ->end()
                 ->arrayNode('configuration')
+                    ->useAttributeAsKey('name')
                     ->prototype('array')
                         ->children()
                             ->scalarNode('alias')
@@ -93,7 +94,7 @@ class Configuration extends AbstractConfiguration implements ConfigurationInterf
                                             $fields[$fieldName]['getter'] = 'get' . ucfirst($fieldName);
                                         }
 
-                                        if (!isset($fieldConfiguration['getter'])) {
+                                        if (!isset($fieldConfiguration['setter'])) {
                                             $fields[$fieldName]['setter'] = 'set' . ucfirst($fieldName);
                                         }
                                     }

@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,16 +17,11 @@
 
 namespace Elcodi\Component\Currency\Populator;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
-use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\Console\Output\OutputInterface;
-
+use Elcodi\Component\Core\Services\ObjectDirector;
+use Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\Interfaces\CurrencyExchangeRatesProviderAdapterInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyExchangeRateInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
-use Elcodi\Component\Currency\Factory\CurrencyExchangeRateFactory;
-use Elcodi\Component\Currency\Repository\CurrencyExchangeRateRepository;
 use Elcodi\Component\Currency\Repository\CurrencyRepository;
-use Elcodi\Component\Currency\Services\CurrencyExchangeRatesProvider;
 
 /**
  * Class CurrencyExchangeRatesPopulator
@@ -34,113 +29,81 @@ use Elcodi\Component\Currency\Services\CurrencyExchangeRatesProvider;
 class CurrencyExchangeRatesPopulator
 {
     /**
-     * @var ObjectManager
+     * @var CurrencyExchangeRatesProviderAdapterInterface
      *
-     * CurrencyExchangeRate object manager
+     * CurrencyExchangeRates adapter
      */
-    protected $currencyExchangeRateObjectManager;
+    private $currencyExchangeRatesAdapter;
 
     /**
-     * @var ManagerRegistry
+     * @var ObjectDirector
      *
-     * Manager Registry
+     * CurrencyExchangeRate object director
      */
-    protected $managerRegistry;
+    private $currencyExchangeRateObjectDirector;
 
     /**
      * @var CurrencyRepository
      *
      * Currency repository
      */
-    protected $currencyRepository;
-
-    /**
-     * @var CurrencyExchangeRateRepository
-     *
-     * CurrencyExchangeRate repository
-     */
-    protected $currencyExchangeRateRepository;
-
-    /**
-     * @var CurrencyExchangeRateFactory
-     *
-     * CurrencyExchangeRate factory
-     */
-    protected $currencyExchangeRateFactory;
-
-    /**
-     * @var CurrencyExchangeRatesProvider
-     *
-     * CurrencyExchangeRates provider
-     */
-    protected $currencyExchangeRatesProvider;
-
-    /**
-     * @var ObjectManager
-     *
-     * ExchangeRate object manager
-     */
-    protected $exchangeRateObjectManager;
+    private $currencyRepository;
 
     /**
      * @var string
      *
      * Default currency
      */
-    protected $defaultCurrency;
+    private $defaultCurrency;
 
     /**
      * Construct method
      *
-     * @param ObjectManager                  $currencyExchangeRateObjectManager Currency Exchange rate object manager
-     * @param CurrencyRepository             $currencyRepository                Currency repository
-     * @param CurrencyExchangeRateRepository $currencyExchangeRateRepository    Currency Exchange rate repository,
-     * @param CurrencyExchangeRateFactory    $currencyExchangeRateFactory       CurrencyExchangeRate factory
-     * @param CurrencyExchangeRatesProvider  $currencyExchangeRatesProvider     ExchangeRates provider
-     * @param string                         $defaultCurrency                   Default currency
+     * @param CurrencyExchangeRatesProviderAdapterInterface $currencyExchangeRatesAdapter       ExchangeRates adapter
+     * @param ObjectDirector                                $currencyExchangeRateObjectDirector Currency Exchange rate object director
+     * @param CurrencyRepository                            $currencyRepository                 Currency repository
+     * @param string                                        $defaultCurrency                    Default currency
      */
     public function __construct(
-        ObjectManager $currencyExchangeRateObjectManager,
+        CurrencyExchangeRatesProviderAdapterInterface $currencyExchangeRatesAdapter,
+        ObjectDirector $currencyExchangeRateObjectDirector,
         CurrencyRepository $currencyRepository,
-        CurrencyExchangeRateRepository $currencyExchangeRateRepository,
-        CurrencyExchangeRateFactory $currencyExchangeRateFactory,
-        CurrencyExchangeRatesProvider $currencyExchangeRatesProvider,
         $defaultCurrency
     ) {
-        $this->currencyExchangeRateObjectManager = $currencyExchangeRateObjectManager;
+        $this->currencyExchangeRatesAdapter = $currencyExchangeRatesAdapter;
+        $this->currencyExchangeRateObjectDirector = $currencyExchangeRateObjectDirector;
         $this->currencyRepository = $currencyRepository;
-        $this->currencyExchangeRateRepository = $currencyExchangeRateRepository;
-        $this->currencyExchangeRateFactory = $currencyExchangeRateFactory;
-        $this->currencyExchangeRatesProvider = $currencyExchangeRatesProvider;
         $this->defaultCurrency = $defaultCurrency;
     }
 
     /**
      * Populates the exchange rates
      *
-     * @param OutputInterface $output The output interface
-     *
-     * @return integer|null|void
+     * @return $this Self object
      */
-    public function populate(OutputInterface $output)
+    public function populate()
     {
+        $currenciesCodes = [];
         $currencies = $this
             ->currencyRepository
-            ->findBy([
-                'enabled' => true,
-            ]);
+            ->findAll();
 
-        //extract target currency codes
-        $currenciesCodes = [];
-        foreach ($currencies as $activeCurrency) {
-            if ($activeCurrency->getIso() != $this->defaultCurrency) {
-                $currenciesCodes[] = $activeCurrency->getIso();
+        /**
+         * Create an array of all active currency codes
+         *
+         * @var CurrencyInterface $currency
+         */
+        foreach ($currencies as $currency) {
+            if ($currency->getIso() != $this->defaultCurrency) {
+                $currenciesCodes[] = $currency->getIso();
             }
         }
 
-        //get rates for all of the enabled and active currencies
+        /**
+         * Get rates for all of the enabled and active currencies
+         */
         $rates = $this
-            ->currencyExchangeRatesProvider
+            ->currencyExchangeRatesAdapter
             ->getExchangeRates(
                 $this->defaultCurrency,
                 $currenciesCodes
@@ -155,6 +118,12 @@ class CurrencyExchangeRatesPopulator
                 'iso' => $this->defaultCurrency,
             ]);
 
+        /**
+         * [
+         *      "EUR" => "1,378278",
+         *      "YEN" => "0,784937",
+         * ]
+         */
         foreach ($rates as $code => $rate) {
 
             /**
@@ -166,31 +135,37 @@ class CurrencyExchangeRatesPopulator
                     'iso' => $code,
                 ]);
 
-            //check if this is a new exchange rate, or if we have to create a new one
+            if (!($targetCurrency instanceof CurrencyInterface)) {
+                continue;
+            }
+
+            /**
+             * check if this is a new exchange rate, or if we have to
+             * create a new one
+             */
             $exchangeRate = $this
-                ->currencyExchangeRateRepository
+                ->currencyExchangeRateObjectDirector
                 ->findOneBy([
                     'sourceCurrency' => $sourceCurrency,
                     'targetCurrency' => $targetCurrency,
                 ]);
 
             if (!($exchangeRate instanceof CurrencyExchangeRateInterface)) {
-                $exchangeRate = $this->currencyExchangeRateFactory->create();
+                $exchangeRate = $this
+                    ->currencyExchangeRateObjectDirector
+                    ->create();
             }
 
-            $exchangeRate->setExchangeRate($rate);
-            $exchangeRate->setSourceCurrency($sourceCurrency);
-            $exchangeRate->setTargetCurrency($targetCurrency);
+            $exchangeRate
+                ->setExchangeRate($rate)
+                ->setSourceCurrency($sourceCurrency)
+                ->setTargetCurrency($targetCurrency);
 
-            if (!$exchangeRate->getId()) {
-                $this
-                    ->currencyExchangeRateObjectManager
-                    ->persist($exchangeRate);
-            }
+            $this
+                ->currencyExchangeRateObjectDirector
+                ->save($exchangeRate);
         }
 
-        $this
-            ->currencyExchangeRateObjectManager
-            ->flush();
+        return $this;
     }
 }

@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -27,28 +27,28 @@ class SitemapElement
      *
      * location
      */
-    protected $location;
+    private $location;
 
     /**
      * @var null|string
      *
      * lastModification
      */
-    protected $lastModification;
+    private $lastModification;
 
     /**
      * @var null|string
      *
      * changeFrequency
      */
-    protected $changeFrequency;
+    private $changeFrequency;
 
     /**
      * @var null|string
      *
      * priority
      */
-    protected $priority;
+    private $priority;
 
     /**
      * Constructor

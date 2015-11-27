@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,22 +17,39 @@
 
 namespace Elcodi\Bundle\PluginBundle;
 
-use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\HttpKernel\KernelInterface;
 
+use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
+use Elcodi\Bundle\PluginBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\PluginBundle\DependencyInjection\ElcodiPluginExtension;
-use Elcodi\Component\Plugin\ExpressionLanguage\PluginExpressionLanguageProvider;
 
 /**
  * Class ElcodiPluginBundle
  *
  * @author Berny Cantos <be@rny.cc>
  */
-class ElcodiPluginBundle extends Bundle implements DependentBundleInterface
+class ElcodiPluginBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
+    /**
+     * @var KernelInterface
+     *
+     * Kernel
+     */
+    protected $kernel;
+
+    /**
+     * Construct
+     *
+     * @param KernelInterface $kernel Kernel
+     */
+    public function __construct(KernelInterface $kernel)
+    {
+        $this->kernel = $kernel;
+    }
+
     /**
      * @param ContainerBuilder $container
      */
@@ -40,7 +57,7 @@ class ElcodiPluginBundle extends Bundle implements DependentBundleInterface
     {
         parent::build($container);
 
-        $container->addExpressionLanguageProvider(new PluginExpressionLanguageProvider());
+        $container->addCompilerPass(new MappingCompilerPass());
     }
 
     /**
@@ -50,7 +67,7 @@ class ElcodiPluginBundle extends Bundle implements DependentBundleInterface
      */
     public function getContainerExtension()
     {
-        return new ElcodiPluginExtension();
+        return new ElcodiPluginExtension($this->kernel);
     }
 
     /**
@@ -58,22 +75,10 @@ class ElcodiPluginBundle extends Bundle implements DependentBundleInterface
      *
      * @return array Bundle instances
      */
-    public static function getBundleDependencies()
+    public static function getBundleDependencies(KernelInterface $kernel)
     {
         return [
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
-    }
-
-    /**
-     * Register Commands.
-     *
-     * Disabled as commands are registered as services.
-     *
-     * @param Application $application An Application instance
-     */
-    public function registerCommands(Application $application)
-    {
-        return;
     }
 }

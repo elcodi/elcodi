@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -32,37 +32,27 @@ class CommentManager extends AbstractCacheWrapper
      *
      * Comment event dispatcher
      */
-    protected $commentEventDispatcher;
+    private $commentEventDispatcher;
 
     /**
      * @var ObjectDirector
      *
      * Comment Director
      */
-    protected $commentDirector;
-
-    /**
-     * @var CommentParser
-     *
-     * Comment parser
-     */
-    protected $commentParser;
+    private $commentDirector;
 
     /**
      * Construct method
      *
      * @param CommentEventDispatcher $commentEventDispatcher Comment event dispatcher
      * @param ObjectDirector         $commentDirector        Comment Director
-     * @param CommentParser          $commentParser          Comment parser
      */
     public function __construct(
         CommentEventDispatcher $commentEventDispatcher,
-        ObjectDirector $commentDirector,
-        CommentParser $commentParser
+        ObjectDirector $commentDirector
     ) {
         $this->commentEventDispatcher = $commentEventDispatcher;
         $this->commentDirector = $commentDirector;
-        $this->commentParser = $commentParser;
     }
 
     /**
@@ -99,10 +89,6 @@ class CommentManager extends AbstractCacheWrapper
             ->setContent($content)
             ->setContext($context);
 
-        $comment = $this
-            ->commentParser
-            ->parse($comment);
-
         $this
             ->commentDirector
             ->save($comment);
@@ -127,10 +113,6 @@ class CommentManager extends AbstractCacheWrapper
         $content
     ) {
         $comment->setContent($content);
-
-        $comment = $this
-            ->commentParser
-            ->parse($comment);
 
         $this
             ->commentDirector

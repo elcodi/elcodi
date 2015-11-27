@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -32,35 +32,35 @@ class LocaleManager
      *
      * Locale
      */
-    protected $locale;
+    private $locale;
 
     /**
      * @var string
      *
      * Encoding
      */
-    protected $encoding;
+    private $encoding;
 
     /**
      * @var array
      *
      * Locale information
      */
-    protected $localeInfo;
+    private $localeInfo;
 
     /**
      * @var array
      *
      * Locale to country associations
      */
-    protected $localeCountryAssociations;
+    private $localeCountryAssociations;
 
     /**
      * @var array
      *
      * Locale to translation associations
      */
-    protected $localeTranslationAssociations;
+    private $localeTranslationAssociations;
 
     /**
      * Construct method
@@ -72,9 +72,9 @@ class LocaleManager
      */
     public function __construct(
         LocaleInterface $locale,
-        $encoding = null,
-        $localeCountryAssociations = null,
-        $localeTranslationAssociations = null
+        $encoding = '',
+        array $localeCountryAssociations = [],
+        array $localeTranslationAssociations = []
     ) {
         $this->locale = $locale;
         $this->encoding = $encoding;
@@ -177,13 +177,13 @@ class LocaleManager
         $localeIso = $this->locale->getIso();
 
         if (isset($this->localeCountryAssociations[$localeIso])) {
-            return new Locale($this->localeCountryAssociations[$localeIso]);
+            return Locale::create($this->localeCountryAssociations[$localeIso]);
         }
 
         $regionLocale = \Locale::getRegion($localeIso);
 
         return $regionLocale
-            ? new Locale($regionLocale)
+            ? Locale::create($regionLocale)
             : $this->locale;
     }
 
@@ -198,7 +198,7 @@ class LocaleManager
         $localeIso = $this->locale->getIso();
 
         if (isset($this->localeTranslationAssociations[$localeIso])) {
-            return new Locale($this->localeTranslationAssociations[$localeIso]);
+            return Locale::create($this->localeTranslationAssociations[$localeIso]);
         }
 
         return $this->locale;

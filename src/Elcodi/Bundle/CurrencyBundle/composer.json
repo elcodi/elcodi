@@ -34,43 +34,36 @@
         }
     ],
     "require": {
-        "php": ">=5.4",
-        "doctrine/common": "~2.5",
-        "doctrine/orm": "~2.5",
+        "php": "^5.4|^7.0",
+        "doctrine/common": "^2.5",
+        "doctrine/orm": "^2.5",
 
-        "symfony/http-kernel": "~2.6",
-        "symfony/console": "~2.6",
-        "symfony/config": "~2.6",
-        "symfony/dependency-injection": "~2.6",
-        "symfony/proxy-manager-bridge": "~2.6, >=2.6.3",
-        "symfony/twig-bundle": "~2.6",
-        "ocramius/proxy-manager": "~1.0",
-        "mmoreram/simple-doctrine-mapping": "~1.0",
+        "symfony/http-kernel": "^2.7|^3.0",
+        "symfony/config": "^2.7|^3.0",
+        "symfony/dependency-injection": "^2.7|^3.0",
+        "symfony/proxy-manager-bridge": "^2.7|^3.0",
+        "symfony/twig-bundle": "^2.7|^3.0",
+        "ocramius/proxy-manager": "^1.0",
+        "mmoreram/simple-doctrine-mapping": "^1.0",
 
-        "elcodi/core-bundle": "~0.5.0",
-        "elcodi/language-bundle": "~0.5.0",
-        "elcodi/currency": "~0.5.0"
+        "elcodi/core-bundle": "^1.0",
+        "elcodi/language-bundle": "^1.0",
+        "elcodi/currency": "^1.0"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "~0.5.0",
-        "elcodi/fixtures-booster-bundle": "~0.5.0",
-        "doctrine/data-fixtures": "~1.0",
+        "elcodi/test-common-bundle": "^1.0",
+        "elcodi/fixtures-booster-bundle": "^1.0",
+        "doctrine/data-fixtures": "^1.1",
         "phpunit/phpunit": "4.5.0"
-    },
-    "suggest": {
-        "guzzle/http": "Required for OpenExchangeRates adapter"
     },
     "autoload": {
         "psr-4": {
             "Elcodi\\Bundle\\CurrencyBundle\\": ""
         }
     },
-    "config": {
-        "bin-dir": "bin"
-    },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.5-dev"
+            "dev-master": "1.0-dev"
         }
     }
 }

@@ -1,0 +1,14 @@
+services:
+
+    #
+    # Menu filters
+    #
+    elcodi.menu_filter.menu_disabled:
+        class: Elcodi\Component\Menu\Filter\MenuDisabledFilter
+        tags:
+            - { name: menu.filter }
+
+    elcodi.menu_filter.menu_expanded:
+        class: Elcodi\Component\Menu\Filter\MenuExpandedFilter
+        tags:
+            - { name: menu.filter, stage: after_cache, priority: -128 }

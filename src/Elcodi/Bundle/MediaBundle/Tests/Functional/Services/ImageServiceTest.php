@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -27,18 +27,6 @@ use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
  */
 class ImageServiceTest extends WebTestCase
 {
-    /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return [
-            'elcodi.manager.media_image',
-        ];
-    }
-
     /**
      * Test image object creation
      */

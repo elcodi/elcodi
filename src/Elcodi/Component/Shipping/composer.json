@@ -31,16 +31,13 @@
         }
     ],
     "require": {
-        "php": ">=5.4",
-        "doctrine/common": "~2.5",
-        "doctrine/orm": "~2.5",
+        "php": "^5.4|^7.0",
+        "symfony/event-dispatcher": "^2.7|^3.0",
+        "twig/twig": "^1.23",
 
-        "elcodi/geo": "~0.5.0",
-        "elcodi/tax": "~0.5.0",
-        "elcodi/currency": "~0.5.0",
-        "elcodi/cart": "~0.5.0",
-        "elcodi/core": "~0.5.0",
-        "elcodi/zone": "~0.5.0"
+        "elcodi/core": "^1.0",
+        "elcodi/cart": "^1.0",
+        "elcodi/currency": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "4.5.0"
@@ -50,12 +47,9 @@
             "Elcodi\\Component\\Shipping\\": ""
         }
     },
-    "config": {
-        "bin-dir": "bin"
-    },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.5-dev"
+            "dev-master": "1.0-dev"
         }
     }
 }

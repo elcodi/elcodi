@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -31,44 +31,44 @@ class CurrencyManager
      *
      * Currency Repository
      */
-    protected $currencyRepository;
+    private $currencyRepository;
 
     /**
      * @var CurrencyExchangeRateRepository
      *
      * CurrencyExchangeRate Repository
      */
-    protected $currencyExchangeRateRepository;
-
-    /**
-     * @var string
-     *
-     * Currency base iso
-     */
-    protected $currencyBaseIso;
+    private $currencyExchangeRateRepository;
 
     /**
      * @var array
      *
      * Exchange Rate List
      */
-    protected $exchangeRateList;
+    private $exchangeRateList;
+
+    /**
+     * @var string
+     *
+     * The exchange currency ISO.
+     */
+    private $exchangeCurrencyIso;
 
     /**
      * Build method
      *
      * @param CurrencyRepository             $currencyRepository             Currency Repository
      * @param CurrencyExchangeRateRepository $currencyExchangeRateRepository Repo for exch. rates
-     * @param string                         $currencyBaseIso                Currency base iso
+     * @param string                         $exchangeCurrencyIso            The exchange currency iso
      */
     public function __construct(
         CurrencyRepository $currencyRepository,
         CurrencyExchangeRateRepository $currencyExchangeRateRepository,
-        $currencyBaseIso
+        $exchangeCurrencyIso
     ) {
         $this->currencyRepository = $currencyRepository;
         $this->currencyExchangeRateRepository = $currencyExchangeRateRepository;
-        $this->currencyBaseIso = $currencyBaseIso;
+        $this->exchangeCurrencyIso = $exchangeCurrencyIso;
     }
 
     /**
@@ -87,7 +87,7 @@ class CurrencyManager
         $currencyBase = $this
             ->currencyRepository
             ->findOneBy([
-                'iso' => $this->currencyBaseIso,
+                'iso' => $this->exchangeCurrencyIso,
             ]);
 
         $availableExchangeRates = $this

@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -72,20 +72,4 @@ interface TaxInterface extends IdentifiableInterface, EnabledInterface
      * @return $this
      */
     public function setValue($value);
-
-    /**
-     * Get TaxGroup
-     *
-     * @return TaxGroupInterface TaxGroup
-     */
-    public function getTaxGroup();
-
-    /**
-     * Sets TaxGroup
-     *
-     * @param TaxGroupInterface $taxGroup TaxGroup
-     *
-     * @return $this Self object
-     */
-    public function setTaxGroup($taxGroup);
 }

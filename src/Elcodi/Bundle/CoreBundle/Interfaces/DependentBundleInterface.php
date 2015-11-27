@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,15 +17,19 @@
 
 namespace Elcodi\Bundle\CoreBundle\Interfaces;
 
+use Symfony\Component\HttpKernel\KernelInterface;
+
 /**
  * Interface DependentBundleInterface
  */
 interface DependentBundleInterface
 {
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Return all bundle dependencies.
+     *
+     * Values can be a simple bundle namespace or its instance
      *
      * @return array Bundle instances
      */
-    public static function getBundleDependencies();
+    public static function getBundleDependencies(KernelInterface $kernel);
 }

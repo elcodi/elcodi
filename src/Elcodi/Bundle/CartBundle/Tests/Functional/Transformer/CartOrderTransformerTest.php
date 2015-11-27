@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -42,21 +42,11 @@ class CartOrderTransformerTest extends WebTestCase
     protected $order;
 
     /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return ['elcodi.transformer.cart_order'];
-    }
-
-    /**
      * Load fixtures of these bundles
      *
      * @return array Bundles name where fixtures should be found
      */
-    protected function loadFixturesBundles()
+    protected static function loadFixturesBundles()
     {
         return [
             'ElcodiCartBundle',
@@ -73,8 +63,7 @@ class CartOrderTransformerTest extends WebTestCase
         /**
          * @var CartOrderTransformer $cartOrderTransformer
          */
-        $cartOrderTransformer = $this
-            ->get('elcodi.transformer.cart_order');
+        $cartOrderTransformer = $this->get('elcodi.transformer.cart_order');
 
         /**
          * @var CartInterface $cart

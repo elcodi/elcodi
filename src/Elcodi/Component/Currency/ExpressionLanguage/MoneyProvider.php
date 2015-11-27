@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -21,10 +21,10 @@ use RuntimeException;
 use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 
+use Elcodi\Component\Core\Wrapper\Interfaces\WrapperInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Repository\CurrencyRepository;
-use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 
 /**
  * Class MoneyProvider
@@ -34,30 +34,30 @@ use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 class MoneyProvider implements ExpressionFunctionProviderInterface
 {
     /**
-     * @var CurrencyWrapper
+     * @var WrapperInterface
      *
      * Currency wrapper to get the default currency
      */
-    protected $currencyWrapper;
+    private $defaultCurrencyWrapper;
 
     /**
      * @var CurrencyRepository
      *
      * Currency repository
      */
-    protected $currencyRepository;
+    private $currencyRepository;
 
     /**
      * Construct
      *
-     * @param CurrencyWrapper    $currencyWrapper    Currency wrapper
-     * @param CurrencyRepository $currencyRepository Currency Repository
+     * @param WrapperInterface   $defaultCurrencyWrapper Default Currency wrapper
+     * @param CurrencyRepository $currencyRepository     Currency Repository
      */
     public function __construct(
-        CurrencyWrapper $currencyWrapper,
+        WrapperInterface $defaultCurrencyWrapper,
         CurrencyRepository $currencyRepository
     ) {
-        $this->currencyWrapper = $currencyWrapper;
+        $this->defaultCurrencyWrapper = $defaultCurrencyWrapper;
         $this->currencyRepository = $currencyRepository;
     }
 
@@ -83,8 +83,8 @@ class MoneyProvider implements ExpressionFunctionProviderInterface
 
                     if ($currencyIso === null) {
                         $currency = $this
-                            ->currencyWrapper
-                            ->getDefaultCurrency();
+                            ->defaultCurrencyWrapper
+                            ->get();
                     } else {
                         /**
                          * @var CurrencyInterface $currency

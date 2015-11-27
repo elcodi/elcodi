@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -19,8 +19,7 @@ namespace Elcodi\Component\Currency\Factory\Abstracts;
 
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
-use Elcodi\Component\Currency\Entity\Money;
-use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
+use Elcodi\Component\Currency\Wrapper\EmptyMoneyWrapper;
 
 /**
  * Class AbstractPurchasableFactory
@@ -31,20 +30,20 @@ use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 abstract class AbstractPurchasableFactory extends AbstractFactory
 {
     /**
-     * @var CurrencyWrapper
+     * @var EmptyMoneyWrapper
      *
-     * Currency wrapper used to access default Currency object
+     * Empty money wrapper
      */
-    protected $currencyWrapper;
+    protected $emptyMoneyWrapper;
 
     /**
      * Factory constructor
      *
-     * @param CurrencyWrapper $currencyWrapper Currency wrapper
+     * @param EmptyMoneyWrapper $emptyMoneyWrapper Empty money wrapper
      */
-    public function __construct(CurrencyWrapper $currencyWrapper)
+    public function __construct(EmptyMoneyWrapper $emptyMoneyWrapper)
     {
-        $this->currencyWrapper = $currencyWrapper;
+        $this->emptyMoneyWrapper = $emptyMoneyWrapper;
     }
 
     /**
@@ -55,9 +54,8 @@ abstract class AbstractPurchasableFactory extends AbstractFactory
      */
     protected function createZeroAmountMoney()
     {
-        return Money::create(
-            0,
-            $this->currencyWrapper->getDefaultCurrency()
-        );
+        return $this
+            ->emptyMoneyWrapper
+            ->get();
     }
 }

@@ -20,3 +20,8 @@ services:
         class: Elcodi\Component\CartCoupon\Services\CartCouponRuleManager
         arguments:
             - @elcodi.manager.rule
+
+    elcodi.checker.stackable_coupon:
+        class: Elcodi\Component\CartCoupon\Services\StackableCouponChecker
+        arguments:
+            - @elcodi.repository.cart_coupon

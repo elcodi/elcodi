@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -21,11 +21,16 @@ use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
  * Interface CommentInterface
  */
-interface CommentInterface extends DateTimeInterface, EnabledInterface
+interface CommentInterface
+    extends
+    IdentifiableInterface,
+    DateTimeInterface,
+    EnabledInterface
 {
 
     /**
@@ -93,29 +98,13 @@ interface CommentInterface extends DateTimeInterface, EnabledInterface
     public function getContent();
 
     /**
-     * Sets Id
-     *
-     * @param integer $id Id
-     *
-     * @return $this Self object
-     */
-    public function setId($id);
-
-    /**
-     * Get Id
-     *
-     * @return integer Id
-     */
-    public function getId();
-
-    /**
      * Sets Parent
      *
      * @param CommentInterface|null $parent Parent
      *
      * @return $this Self object
      */
-    public function setParent($parent = null);
+    public function setParent(CommentInterface $parent = null);
 
     /**
      * Get Parent
@@ -123,38 +112,6 @@ interface CommentInterface extends DateTimeInterface, EnabledInterface
      * @return CommentInterface|null Parent
      */
     public function getParent();
-
-    /**
-     * Sets ParsedContent
-     *
-     * @param string $parsedContent ParsedContent
-     *
-     * @return $this Self object
-     */
-    public function setParsedContent($parsedContent);
-
-    /**
-     * Get ParsedContent
-     *
-     * @return string ParsedContent
-     */
-    public function getParsedContent();
-
-    /**
-     * Sets ParsingType
-     *
-     * @param integer $parsingType ParsingType
-     *
-     * @return $this Self object
-     */
-    public function setParsingType($parsingType);
-
-    /**
-     * Get ParsingType
-     *
-     * @return integer ParsingType
-     */
-    public function getParsingType();
 
     /**
      * Sets Source

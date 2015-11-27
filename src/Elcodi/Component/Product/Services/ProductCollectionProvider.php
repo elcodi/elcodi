@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -35,14 +35,14 @@ class ProductCollectionProvider
      *
      * Product Repository
      */
-    protected $productRepository;
+    private $productRepository;
 
     /**
      * @var boolean
      *
      * If the use stock option is enabled
      */
-    protected $useStock;
+    private $useStock;
 
     /**
      * Construct method
@@ -52,10 +52,10 @@ class ProductCollectionProvider
      */
     public function __construct(
         ProductRepository $productRepository,
-        $useStock
+        $useStock = false
     ) {
         $this->productRepository = $productRepository;
-        $this->useStock          = $useStock;
+        $this->useStock = $useStock;
     }
 
     /**
@@ -134,9 +134,8 @@ class ProductCollectionProvider
      *
      * @return QueryBuilder same object
      */
-    protected function addStockPropertiesToQueryBuilder(
-        QueryBuilder $queryBuilder
-    ) {
+    private function addStockPropertiesToQueryBuilder(QueryBuilder $queryBuilder)
+    {
         if ($this->useStock) {
             $queryBuilder
                 ->andWhere($queryBuilder->expr()->orX(

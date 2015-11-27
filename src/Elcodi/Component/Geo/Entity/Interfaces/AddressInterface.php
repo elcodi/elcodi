@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -19,32 +19,21 @@ namespace Elcodi\Component\Geo\Entity\Interfaces;
 
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
+use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
  * Interface AddressInterface
  */
-interface AddressInterface extends DateTimeInterface, EnabledInterface
+interface AddressInterface
+    extends
+    IdentifiableInterface,
+    DateTimeInterface,
+    EnabledInterface
 {
-    /**
-     * Set id
-     *
-     * @param string $id Id
-     *
-     * @return $this Self object
-     */
-    public function setId($id);
-
-    /**
-     * Get id
-     *
-     * @return string Id
-     */
-    public function getId();
-
     /**
      * Sets Address
      *
-     * @param mixed $address Address
+     * @param string $address Address
      *
      * @return $this Self object
      */
@@ -53,14 +42,14 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
     /**
      * Get Address
      *
-     * @return mixed Address
+     * @return string Address
      */
     public function getAddress();
 
     /**
      * Sets AddressMore
      *
-     * @param mixed $addressMore AddressMore
+     * @param string $addressMore AddressMore
      *
      * @return $this Self object
      */
@@ -69,7 +58,7 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
     /**
      * Get AddressMore
      *
-     * @return mixed AddressMore
+     * @return string AddressMore
      */
     public function getAddressMore();
 
@@ -92,7 +81,7 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
     /**
      * Sets Mobile
      *
-     * @param mixed $mobile Mobile
+     * @param string $mobile Mobile
      *
      * @return $this Self object
      */
@@ -101,14 +90,14 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
     /**
      * Get Mobile
      *
-     * @return mixed Mobile
+     * @return string Mobile
      */
     public function getMobile();
 
     /**
      * Sets Name
      *
-     * @param mixed $name Name
+     * @param string $name Name
      *
      * @return $this Self object
      */
@@ -117,14 +106,14 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
     /**
      * Get Name
      *
-     * @return mixed Name
+     * @return string Name
      */
     public function getName();
 
     /**
      * Sets Phone
      *
-     * @param mixed $phone Phone
+     * @param string $phone Phone
      *
      * @return $this Self object
      */
@@ -133,7 +122,7 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
     /**
      * Get Phone
      *
-     * @return mixed Phone
+     * @return string Phone
      */
     public function getPhone();
 
@@ -156,7 +145,7 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
     /**
      * Sets RecipientSurname
      *
-     * @param mixed $recipientSurname RecipientSurname
+     * @param string $recipientSurname RecipientSurname
      *
      * @return $this Self object
      */
@@ -165,7 +154,7 @@ interface AddressInterface extends DateTimeInterface, EnabledInterface
     /**
      * Get RecipientSurname
      *
-     * @return mixed RecipientSurname
+     * @return string RecipientSurname
      */
     public function getRecipientSurname();
 

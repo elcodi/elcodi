@@ -1,0 +1,9 @@
+services:
+
+    #
+    # Object Managers
+    #
+    elcodi.object_manager.plugin:
+        parent: elcodi.abstract_manager
+        arguments:
+            - %elcodi.entity.plugin.class%

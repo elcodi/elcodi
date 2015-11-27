@@ -1,0 +1,120 @@
+Elcodi\Component\Store\Entity\Store:
+    type: entity
+    repositoryClass: Elcodi\Component\Store\Repository\StoreRepository
+    table: store
+
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        leitmotiv:
+            column: leitmotiv
+            type: string
+            length: 255
+            nullable: true
+        email:
+            column: email
+            type: string
+            length: 255
+            nullable: true
+        isCompany:
+            column: is_company
+            type: boolean
+        cif:
+            column: cif
+            type: string
+            length: 255
+            nullable: true
+        tracker:
+            column: tracker
+            type: string
+            length: 255
+            nullable: true
+        template:
+            column: template
+            type: string
+            length: 255
+            nullable: true
+        routingStrategy:
+            column: routing_strategy
+            type: string
+            length: 255
+            nullable: false
+        useStock:
+            column: use_stock
+            type: boolean
+
+        createdAt:
+            column: created_at
+            type: datetime
+        updatedAt:
+            column: updated_at
+            type: datetime
+        enabled:
+            column: enabled
+            type: boolean
+            nullable: false
+
+    manyToOne:
+        address:
+            targetEntity: Elcodi\Component\Geo\Entity\Interfaces\AddressInterface
+            joinColumn:
+                name: address_id
+                referencedColumnName: id
+                nullable: true
+        defaultLanguage:
+            targetEntity: Elcodi\Component\Language\Entity\Interfaces\LanguageInterface
+            joinColumn:
+                name: default_language_iso
+                referencedColumnName: iso
+                nullable: true
+        defaultCurrency:
+            targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
+            joinColumn:
+                name: default_currency_iso
+                referencedColumnName: iso
+                nullable: true
+
+    oneToOne:
+        logo:
+            targetEntity: Elcodi\Component\Media\Entity\Interfaces\ImageInterface
+            joinColumn:
+                name: logo_id
+                referencedColumnName: id
+                nullable: true
+        secondaryLogo:
+            targetEntity: Elcodi\Component\Media\Entity\Interfaces\ImageInterface
+            joinColumn:
+                name: secondary_logo_id
+                referencedColumnName: id
+                nullable: true
+        mobileLogo:
+            targetEntity: Elcodi\Component\Media\Entity\Interfaces\ImageInterface
+            joinColumn:
+                name: mobile_logo_id
+                referencedColumnName: id
+                nullable: true
+        headerImage:
+            targetEntity: Elcodi\Component\Media\Entity\Interfaces\ImageInterface
+            joinColumn:
+                name: header_image_id
+                referencedColumnName: id
+                nullable: true
+        backgroundImage:
+            targetEntity: Elcodi\Component\Media\Entity\Interfaces\ImageInterface
+            joinColumn:
+                name: background_image_id
+                referencedColumnName: id
+                nullable: true
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]

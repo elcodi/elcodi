@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -30,28 +30,6 @@ use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
  */
 abstract class AbstractCartManagerTest extends WebTestCase
 {
-    /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return ['elcodi.manager.cart'];
-    }
-
-    /**
-     * Load fixtures of these bundles
-     *
-     * @return array Bundles name where fixtures should be found
-     */
-    protected function loadFixturesBundles()
-    {
-        return [
-            'ElcodiCurrencyBundle',
-        ];
-    }
-
     /**
      * @var CartInterface
      *
@@ -108,7 +86,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
     {
         $this
             ->get('elcodi.manager.cart')
-            ->addProduct(
+            ->addPurchasable(
                 $this->cart,
                 $this->cartLine->getProduct(),
                 $this->cartLine->getQuantity()
@@ -153,7 +131,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
     {
         $this
             ->get('elcodi.manager.cart')
-            ->addProduct(
+            ->addPurchasable(
                 $this->cart,
                 $this->cartLine->getProduct(),
                 $this->cartLine->getQuantity()
@@ -177,7 +155,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
     {
         $this
             ->get('elcodi.manager.cart')
-            ->addProduct(
+            ->addPurchasable(
                 $this->cart,
                 $this->cartLine->getProduct(),
                 $this->cartLine->getQuantity()
@@ -201,7 +179,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
     {
         $this
             ->get('elcodi.manager.cart')
-            ->addProduct(
+            ->addPurchasable(
                 $this->cart,
                 $this->cartLine->getProduct(),
                 $this->cartLine->getQuantity()
@@ -258,7 +236,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
 
         $this
             ->get('elcodi.manager.cart')
-            ->addProduct(
+            ->addPurchasable(
                 $this->cart,
                 $this->cartLine->getProduct(),
                 $this->cartLine->getQuantity()
@@ -296,7 +274,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
 
         $this
             ->get('elcodi.manager.cart')
-            ->addProduct(
+            ->addPurchasable(
                 $this->cart,
                 $line->getProduct(),
                 $line->getQuantity()
@@ -305,7 +283,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
         if ($line->getQuantity() == 0) {
             $this->assertFalse($this->cart->getCartLines()->last());
 
-            return;
+            return null;
         }
 
         $this
@@ -334,7 +312,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
 
         $this
             ->get('elcodi.manager.cart')
-            ->addProduct(
+            ->addPurchasable(
                 $this->cart,
                 $this->cartLine->getProduct(),
                 $this->cartLine->getQuantity()
@@ -364,7 +342,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
     ) {
         $this
             ->get('elcodi.manager.cart')
-            ->addProduct($this->cart, $this->purchasable, $quantitySet);
+            ->addPurchasable($this->cart, $this->purchasable, $quantitySet);
 
         $this->assertResults($quantityEnd);
     }

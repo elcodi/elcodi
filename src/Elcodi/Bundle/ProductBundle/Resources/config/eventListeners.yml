@@ -3,14 +3,15 @@ services:
     #
     # Event Listeners
     #
-    elcodi.event_listener.product_belongs_category:
-        class: Elcodi\Component\Product\EventListener\ProductBelongsPrincipalCategoryEventListener
+    elcodi.event_listener.product_category_integrity:
+        class: Elcodi\Component\Product\EventListener\ProductCategoryIntegrityEventListener
+        arguments:
+            - @elcodi.service.category_integrity_fixer
         tags:
             - { name: doctrine.event_listener, event: preFlush, method: preFlush }
 
-    elcodi.event_listener.principal_category:
-        class: Elcodi\Component\Product\EventListener\ProductPrincipalCategoryEventListener
+    elcodi.event_listener.root_category:
+        class: Elcodi\Component\Product\EventListener\RootCategoryEventListener
         tags:
             - { name: doctrine.event_listener, event: preFlush, method: preFlush }
-
-
+            - { name: doctrine.event_listener, event: preUpdate, method: preUpdate }

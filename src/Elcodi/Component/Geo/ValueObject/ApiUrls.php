@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -27,42 +27,42 @@ class ApiUrls
      *
      * getRootLocations url
      */
-    protected $getRootLocationsUrl;
+    private $getRootLocationsUrl;
 
     /**
      * @var string
      *
      * getChildren url
      */
-    protected $getChildrenUrl;
+    private $getChildrenUrl;
 
     /**
      * @var string
      *
      * getParents url
      */
-    protected $getParentsUrl;
+    private $getParentsUrl;
 
     /**
      * @var string
      *
      * getLocation url
      */
-    protected $getLocationUrl;
+    private $getLocationUrl;
 
     /**
      * @var string
      *
      * getHierarchy url
      */
-    protected $getHierarchyUrl;
+    private $getHierarchyUrl;
 
     /**
      * @var string
      *
      * in url
      */
-    protected $inUrl;
+    private $inUrl;
 
     /**
      * Create new Api url

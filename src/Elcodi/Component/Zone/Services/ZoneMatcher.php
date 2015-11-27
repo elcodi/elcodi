@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -19,8 +19,8 @@ namespace Elcodi\Component\Zone\Services;
 
 use Exception;
 
+use Elcodi\Component\Geo\Adapter\LocationProvider\Interfaces\LocationProviderAdapterInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
-use Elcodi\Component\Geo\Services\Interfaces\LocationProviderInterface;
 use Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface;
 
 /**
@@ -29,7 +29,7 @@ use Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface;
 class ZoneMatcher
 {
     /**
-     * @var LocationProviderInterface
+     * @var LocationProviderAdapterInterface
      *
      * Location manager
      */
@@ -38,9 +38,9 @@ class ZoneMatcher
     /**
      * Construct
      *
-     * @param LocationProviderInterface $locationProvider Location manager
+     * @param LocationProviderAdapterInterface $locationProvider Location manager
      */
-    public function __construct(LocationProviderInterface $locationProvider)
+    public function __construct(LocationProviderAdapterInterface $locationProvider)
     {
         $this->locationProvider = $locationProvider;
     }
@@ -64,10 +64,9 @@ class ZoneMatcher
         $found = false;
 
         try {
-            $found =
-                $this
-                    ->locationProvider
-                    ->in($cityId, $locations);
+            $found = $this
+                ->locationProvider
+                ->in($cityId, $locations);
         } catch (Exception $e) {
 
             // Silent pass

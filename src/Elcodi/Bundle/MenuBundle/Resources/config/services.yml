@@ -6,20 +6,24 @@ services:
     elcodi.manager.menu:
         class: Elcodi\Component\Menu\Services\MenuManager
         arguments:
-            - @elcodi.event_dispatcher.menu
-            - @elcodi.processor.menu_event
-            - @elcodi.serializer.menu
             - @elcodi.repository.menu
+            - @elcodi.object_manager.menu
             - %elcodi.menu_cache_key%
         calls:
             - [setCache, [@doctrine_cache.providers.elcodi_menus]]
-            - [setEncoder, [@elcodi.json_encoder]]
+            - [setEncoder, [@elcodi.php_encoder]]
 
-    elcodi.serializer.menu:
-        class: Elcodi\Component\Menu\Serializer\MenuArraySerializer
-        public: false
+    elcodi.menu_builder:
+        class: Elcodi\Component\Menu\Services\MenuBuilder
+        tags:
+            - { name: menu.changer }
 
-    elcodi.processor.menu_event:
-        class: Elcodi\Component\Menu\Processor\MenuEventProcessor
-        arguments:
-            - @elcodi.serializer.menu
+    elcodi.menu_filterer:
+        class: Elcodi\Component\Menu\Services\MenuFilterer
+        tags:
+            - { name: menu.changer }
+
+    elcodi.menu_modifier:
+        class: Elcodi\Component\Menu\Services\MenuModifier
+        tags:
+            - { name: menu.changer }

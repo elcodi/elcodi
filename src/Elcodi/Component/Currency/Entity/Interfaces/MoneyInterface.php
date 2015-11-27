@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -23,29 +23,11 @@ namespace Elcodi\Component\Currency\Entity\Interfaces;
 interface MoneyInterface
 {
     /**
-     * Sets the amount
-     *
-     * @param integer $amount Amount
-     *
-     * @return $this Self object
-     */
-    public function setAmount($amount);
-
-    /**
      * Gets the Money amount
      *
      * @return integer Amount
      */
     public function getAmount();
-
-    /**
-     * Set currency
-     *
-     * @param CurrencyInterface $currency Currency
-     *
-     * @return $this Self object
-     */
-    public function setCurrency(CurrencyInterface $currency);
 
     /**
      * Gets the Currency

@@ -1,0 +1,8 @@
+services:
+
+    #
+    # Event Dispatchers
+    #
+    elcodi.event_dispatcher.machine:
+        class: Elcodi\Component\StateTransitionMachine\EventDispatcher\MachineEventDispatcher
+        parent: elcodi.event_dispatcher.abstract

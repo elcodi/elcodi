@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -81,11 +81,6 @@ class ElcodiTaxExtension extends AbstractExtension implements EntitiesOverridabl
             "elcodi.entity.tax.mapping_file" => $config['mapping']['tax']['mapping_file'],
             "elcodi.entity.tax.manager" => $config['mapping']['tax']['manager'],
             "elcodi.entity.tax.enabled" => $config['mapping']['tax']['enabled'],
-
-            "elcodi.entity.tax_group.class" => $config['mapping']['tax_group']['class'],
-            "elcodi.entity.tax_group.mapping_file" => $config['mapping']['tax_group']['mapping_file'],
-            "elcodi.entity.tax_group.manager" => $config['mapping']['tax_group']['manager'],
-            "elcodi.entity.tax_group.enabled" => $config['mapping']['tax_group']['enabled'],
         ];
     }
 
@@ -113,7 +108,6 @@ class ElcodiTaxExtension extends AbstractExtension implements EntitiesOverridabl
     {
         return [
             'Elcodi\Component\Tax\Entity\Interfaces\TaxInterface' => 'elcodi.entity.tax.class',
-            'Elcodi\Component\Tax\Entity\Interfaces\TaxGroupInterface' => 'elcodi.entity.tax_group.class',
         ];
     }
 

@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -134,6 +134,13 @@ class Coupon implements CouponInterface
      * Minimum purchase currency
      */
     protected $minimumPurchaseCurrency;
+
+    /**
+     * @var integer
+     *
+     * Whether this coupon can be used together with another coupon
+     */
+    protected $stackable;
 
     /**
      * @var RuleInterface
@@ -440,6 +447,30 @@ class Coupon implements CouponInterface
     public function getRule()
     {
         return $this->rule;
+    }
+
+    /**
+     * Get stackable property
+     *
+     * @return int
+     */
+    public function getStackable()
+    {
+        return $this->stackable;
+    }
+
+    /**
+     * Set stackable property
+     *
+     * @param int $stackable
+     *
+     * @return $this Self object
+     */
+    public function setStackable($stackable)
+    {
+        $this->stackable = $stackable;
+
+        return $this;
     }
 
     /**

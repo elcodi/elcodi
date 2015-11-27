@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -29,21 +29,21 @@ class SitemapProfile
      *
      * Languages
      */
-    protected $languages;
+    private $languages;
 
     /**
      * @var SitemapDumper[]
      *
      * Array of SitemapDumpers
      */
-    protected $sitemapDumpers;
+    private $sitemapDumpers;
 
     /**
      * Construct
      *
      * @var array $languages Languages
      */
-    public function __construct(array $languages = null)
+    public function __construct(array $languages = [])
     {
         $this->languages = $languages;
     }

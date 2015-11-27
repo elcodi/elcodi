@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,24 +17,25 @@
 
 namespace Elcodi\Component\Sitemap\Command;
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+use Elcodi\Component\Core\Command\Abstracts\AbstractElcodiCommand;
+
 /**
  * Class SitemapDumpCommand
  */
-class SitemapDumpCommand extends Command
+class SitemapDumpCommand extends AbstractElcodiCommand
 {
     /**
      * @var ContainerInterface
      *
      * Container
      */
-    protected $container;
+    private $container;
 
     /**
      * Construct
@@ -85,6 +86,8 @@ class SitemapDumpCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $this->startCommand($output);
+
         $builderName = $input->getArgument('builder-name');
         $basepath = $input->getArgument('basepath');
         $language = $input->getOption('language');
@@ -92,6 +95,11 @@ class SitemapDumpCommand extends Command
             ->container
             ->get('elcodi.sitemap_dumper.' . $builderName);
 
-        $sitemapDumper->dump($basepath, $language);
+        $sitemapDumper->dump(
+            $basepath,
+            $language
+        );
+
+        $this->finishCommand($output);
     }
 }

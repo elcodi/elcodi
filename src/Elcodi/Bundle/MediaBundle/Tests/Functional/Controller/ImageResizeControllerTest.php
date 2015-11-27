@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -28,21 +28,11 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class ImageResizeControllerTest extends WebTestCase
 {
     /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return ['elcodi.controller.image_resize'];
-    }
-
-    /**
      * Schema must be loaded in all test cases
      *
      * @return boolean Load schema
      */
-    protected function loadSchema()
+    protected static function loadSchema()
     {
         return true;
     }
@@ -101,7 +91,7 @@ class ImageResizeControllerTest extends WebTestCase
 
         $responseResize = $client->getResponse();
         $this->assertEquals(200, $responseResize->getStatusCode());
-        $this->assertEquals('image/png', $responseResize->headers->get('content-type'));
+        $this->assertEquals('image/jpeg', $responseResize->headers->get('content-type'));
         $this->assertNotEmpty($responseResize->getContent());
         $this->assertNotEquals(
             $responseView->getContent(),

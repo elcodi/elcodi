@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -60,7 +60,7 @@ abstract class AbstractConfiguration implements ConfigurationInterface
     /**
      * Configure the root node
      *
-     * @param ArrayNodeDefinition $rootNode
+     * @param ArrayNodeDefinition $rootNode Root node
      */
     abstract protected function setupTree(ArrayNodeDefinition $rootNode);
 
@@ -86,6 +86,9 @@ abstract class AbstractConfiguration implements ConfigurationInterface
         $node = $builder->root($nodeName);
 
         $node
+            ->treatFalseLike([
+                'enabled' => false,
+            ])
             ->addDefaultsIfNotSet()
             ->children()
                 ->scalarNode('class')
@@ -102,7 +105,6 @@ abstract class AbstractConfiguration implements ConfigurationInterface
                 ->end()
                 ->booleanNode('enabled')
                     ->defaultValue($entityEnabled)
-                    ->cannotBeEmpty()
                 ->end()
             ->end()
         ->end();

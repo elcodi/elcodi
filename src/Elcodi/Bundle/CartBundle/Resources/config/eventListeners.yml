@@ -11,17 +11,39 @@ services:
             - @elcodi.manager.cart
             - @elcodi.wrapper.currency
             - @elcodi.converter.currency
-            - "@=elcodi_config('product.use_stock', false)"
+            - @?elcodi.store_uses_stock
         tags:
             - { name: kernel.event_listener, event: cart.preload, method: checkCartIntegrity, priority: 0 }
             - { name: kernel.event_listener, event: cart.onload, method: loadCartPrices, priority: 16 }
             - { name: kernel.event_listener, event: cart.onload, method: saveCart, priority: 0 }
             - { name: kernel.event_listener, event: cart.onload, method: loadCartQuantities, priority: 16 }
 
-    elcodi.event_listener.limit_negative_carts:
-        class: Elcodi\Component\Cart\EventListener\LimitNegativeCartsListener
+    elcodi.event_listener.limit_negative_cart:
+        class: Elcodi\Component\Cart\EventListener\LimitNegativeCartEventListener
         tags:
             - { name: kernel.event_listener, event: cart.onload, method: limitCartAmount, priority: -255 }
+
+    elcodi.event_listener.empty_shipping_cart:
+        class: Elcodi\Component\Cart\EventListener\CartEmptyShippingEventListener
+        arguments:
+            - @elcodi.wrapper.empty_money
+        tags:
+            - { name: kernel.event_listener, event: cart.onload, method: checkEmptyShippingAmount, priority: 16 }
+
+    elcodi.event_listener.cart_shipping_method:
+        class: Elcodi\Component\Cart\EventListener\CartShippingMethodEventListener
+        arguments:
+            - @elcodi.wrapper.shipping_methods
+            - @elcodi.converter.currency
+        tags:
+            - { name: kernel.event_listener, event: cart.onload, method: loadShippingPrice, priority: 4}
+
+    elcodi.event_listener.order_shipping_method:
+        class: Elcodi\Component\Cart\EventListener\OrderShippingMethodEventListener
+        arguments:
+            - @elcodi.wrapper.shipping_methods
+        tags:
+            - { name: kernel.event_listener, event: order.oncreated, method: saveOrder, priority: 16}
 
     elcodi.event_listener.order_creation:
         class: Elcodi\Component\Cart\EventListener\OrderCreationEventListener

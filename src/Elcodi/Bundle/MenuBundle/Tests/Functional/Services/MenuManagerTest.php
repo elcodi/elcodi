@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -21,28 +21,16 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Menu\Services\MenuManager;
 
 /**
- * Class MenuManager
+ * Class MenuManagerTest
  */
 class MenuManagerTest extends WebTestCase
 {
-    /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return [
-            'elcodi.manager.menu',
-        ];
-    }
-
     /**
      * Load fixtures of these bundles
      *
      * @return array Bundles name where fixtures should be found
      */
-    protected function loadFixturesBundles()
+    protected static function loadFixturesBundles()
     {
         return [
             'ElcodiMenuBundle',
@@ -71,41 +59,11 @@ class MenuManagerTest extends WebTestCase
      */
     public function testLoadAdminMenu()
     {
-        $this->assertEquals(
-            $this->menuManager->loadMenuByCode('menu-admin'),
-            [
-                1 => [
-                    'id'         => 1,
-                    'name'       => 'vogue',
-                    'code'       => 'vogue',
-                    'url'        => null,
-                    'enabled'    => true,
-                    'activeUrls' => [],
-                    'subnodes'   => [
-                        2 => [
-                            'id'         => 2,
-                            'name'       => 'him',
-                            'code'       => 'him',
-                            'url'        => 'elcodi.dev/him',
-                            'enabled'    => true,
-                            'subnodes'   => [],
-                            'activeUrls' => [],
-                        ],
-                        3 => [
-                            'id'         => 3,
-                            'name'       => 'her',
-                            'code'       => 'her',
-                            'url'        => 'elcodi.dev/her',
-                            'enabled'    => true,
-                            'subnodes'   => [],
-                            'activeUrls' => [
-                                'her_products_list_route',
-                                'her_offers_list_route',
-                            ],
-                        ],
-                    ],
-                ],
-            ]
+        $this->assertInstanceOf(
+            'Elcodi\Component\Menu\Entity\Menu\Interfaces\MenuInterface',
+            $this
+                ->menuManager
+                ->loadMenuByCode('menu-admin')
         );
     }
 
@@ -114,31 +72,11 @@ class MenuManagerTest extends WebTestCase
      */
     public function testLoadFrontMenu()
     {
-        $this->assertEquals(
-            $this->menuManager->loadMenuByCode('menu-front'),
-            [
-                2 => [
-                    'id'         => 2,
-                    'name'       => 'him',
-                    'code'       => 'him',
-                    'url'        => 'elcodi.dev/him',
-                    'enabled'    => true,
-                    'subnodes'   => [],
-                    'activeUrls' => [],
-                ],
-                3 => [
-                    'id'         => 3,
-                    'name'       => 'her',
-                    'code'       => 'her',
-                    'url'        => 'elcodi.dev/her',
-                    'enabled'    => true,
-                    'subnodes'   => [],
-                    'activeUrls' => [
-                        'her_products_list_route',
-                        'her_offers_list_route',
-                    ],
-                ],
-            ]
+        $this->assertInstanceOf(
+            'Elcodi\Component\Menu\Entity\Menu\Interfaces\MenuInterface',
+            $this
+                ->menuManager
+                ->loadMenuByCode('menu-front')
         );
     }
 }

@@ -1,0 +1,34 @@
+services:
+
+    #
+    # Adapters for Location loader
+    #
+    elcodi.location_loader_adapter.github:
+        class: Elcodi\Component\Geo\Adapter\LocationLoader\GithubLocationLoaderAdapter
+
+
+    #
+    # Adapters for Location populator
+    #
+    elcodi.location_populator_adapter.geonames:
+        class: Elcodi\Component\Geo\Adapter\LocationPopulator\GeonamesLocationPopulatorAdapter
+        arguments:
+            - @elcodi.extractor
+            - @elcodi.location_builder
+
+    #
+    # Adapters for Location provider
+    #
+    elcodi.location_provider_adapter.service:
+        class: Elcodi\Component\Geo\Adapter\LocationProvider\LocationServiceProviderAdapter
+        arguments:
+            - @elcodi.repository.location
+            - @elcodi.transformer.location_to_location_data
+
+    elcodi.location_provider_adapter.api:
+        class: Elcodi\Component\Geo\Adapter\LocationProvider\LocationApiProviderAdapter
+        arguments:
+            - @elcodi.factory.location_data
+            - @router
+            - @elcodi.location_api_urls
+            - %elcodi.location_api_host%

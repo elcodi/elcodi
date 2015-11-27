@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -23,18 +23,11 @@ namespace Elcodi\Component\Menu\Entity\Menu\Traits;
 trait SubnodesTrait
 {
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \Doctrine\Common\Collections\ArrayCollection
      *
      * Subnodes
      */
     protected $subnodes;
-
-    /**
-     * @var string
-     *
-     * Sort
-     */
-    protected $sort;
 
     /**
      * Add subnode
@@ -69,11 +62,11 @@ trait SubnodesTrait
     /**
      * Sets Subnodes
      *
-     * @param \Doctrine\Common\Collections\Collection $subnodes Subnodes
+     * @param \Doctrine\Common\Collections\ArrayCollection $subnodes Subnodes
      *
      * @return $this Self object
      */
-    public function setSubnodes(\Doctrine\Common\Collections\Collection $subnodes)
+    public function setSubnodes(\Doctrine\Common\Collections\ArrayCollection $subnodes)
     {
         $this->subnodes = $subnodes;
 
@@ -81,36 +74,69 @@ trait SubnodesTrait
     }
 
     /**
-     * Get Subnodes
+     * Get Subnodes sorted by priority
      *
-     * @return \Doctrine\Common\Collections\Collection Subnodes
+     * @return \Doctrine\Common\Collections\ArrayCollection Subnodes
      */
     public function getSubnodes()
     {
-        return $this->subnodes;
+        $sort = \Doctrine\Common\Collections\Criteria::create();
+        $sort->orderBy([
+            'priority' => \Doctrine\Common\Collections\Criteria::DESC,
+        ]);
+
+        return $this
+            ->subnodes
+            ->matching($sort);
     }
 
     /**
-     * Sets Sort
+     * Get Subnodes sorted by priority and filtered by tag
      *
-     * @param string $sort Sort
-     *
-     * @return $this Self object
+     * @return \Doctrine\Common\Collections\ArrayCollection Subnodes
      */
-    public function setSort($sort)
+    public function getSubnodesByTag($tag)
     {
-        $this->sort = $sort;
+        return $this
+            ->getSubnodes()
+            ->filter(function (\Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface $menuNode) use ($tag) {
 
-        return $this;
+                return $menuNode->getTag() == $tag;
+            });
     }
 
     /**
-     * Get Sort
+     * Find subnode given its name. You can decide if this search is deep or
+     * not.
      *
-     * @return string Sort
+     * This node is returned as soon as is found.
+     *
+     * @param string  $subnodeName Subnode name
+     * @param boolean $inDepth     In depth
+     *
+     * @return \Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface|null Node
      */
-    public function getSort()
+    public function findSubnodeByName($subnodeName, $inDepth = true)
     {
-        return $this->sort;
+        $subnodes = $this->getSubnodes();
+
+        /**
+         * @var \Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface $subnode
+         */
+        foreach ($subnodes as $subnode) {
+            if ($subnodeName == $subnode->getName()) {
+                return $subnode;
+            }
+
+            if ($inDepth) {
+                $subnode = $subnode->findSubnodeByName($subnodeName, $inDepth);
+
+                if ($subnode instanceof \Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface) {
+                    return $subnode;
+                }
+            }
+        }
+
+        return null;
     }
 }

@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -24,11 +24,14 @@ use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface;
 use Elcodi\Component\Cart\Entity\Traits\PriceTrait;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
+use Elcodi\Component\Payment\Entity\PaymentMethod;
 use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
+use Elcodi\Component\Shipping\Entity\ShippingMethod;
 use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface;
 use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
@@ -38,14 +41,7 @@ use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
  */
 class Order implements OrderInterface
 {
-    use DateTimeTrait, PriceTrait, DimensionsTrait;
-
-    /**
-     * @var integer
-     *
-     * Identifier
-     */
-    protected $id;
+    use IdentifiableTrait, DateTimeTrait, PriceTrait, DimensionsTrait;
 
     /**
      * @var CustomerInterface
@@ -104,18 +100,39 @@ class Order implements OrderInterface
     protected $shippingCurrency;
 
     /**
+     * @var ShippingMethod
+     *
+     * Shipping method
+     */
+    protected $shippingMethod;
+
+    /**
+     * @var array
+     *
+     * Shipping method extra
+     */
+    protected $shippingMethodExtra = [];
+
+    /**
+     * @var PaymentMethod
+     *
+     * Payment method
+     */
+    protected $paymentMethod;
+
+    /**
+     * @var array
+     *
+     * Payment method extra
+     */
+    protected $paymentMethodExtra = [];
+
+    /**
      * @var AddressInterface
      *
      * delivery address
      */
     protected $deliveryAddress;
-
-    /**
-     * @var AddressInterface
-     *
-     * invoice address
-     */
-    protected $invoiceAddress;
 
     /**
      * @var StateLineInterface
@@ -151,30 +168,6 @@ class Order implements OrderInterface
      * billing address
      */
     protected $billingAddress;
-
-    /**
-     * Get Id
-     *
-     * @return integer Id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Sets Id
-     *
-     * @param integer $id Id
-     *
-     * @return $this Self object
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 
     /**
      * Sets Customer
@@ -359,25 +352,97 @@ class Order implements OrderInterface
     }
 
     /**
-     * Get InvoiceAddress
+     * Get ShippingMethod
      *
-     * @return AddressInterface InvoiceAddress
+     * @return ShippingMethod ShippingMethod
      */
-    public function getInvoiceAddress()
+    public function getShippingMethod()
     {
-        return $this->invoiceAddress;
+        return $this->shippingMethod;
     }
 
     /**
-     * Sets InvoiceAddress
+     * Sets ShippingMethod
      *
-     * @param AddressInterface $invoiceAddress InvoiceAddress
+     * @param ShippingMethod $shippingMethod ShippingMethod
      *
      * @return $this Self object
      */
-    public function setInvoiceAddress($invoiceAddress)
+    public function setShippingMethod(ShippingMethod $shippingMethod)
     {
-        $this->invoiceAddress = $invoiceAddress;
+        $this->shippingMethod = $shippingMethod;
+
+        return $this;
+    }
+
+    /**
+     * Get ShippingMethodExtra
+     *
+     * @return array ShippingMethodExtra
+     */
+    public function getShippingMethodExtra()
+    {
+        return $this->shippingMethodExtra;
+    }
+
+    /**
+     * Sets ShippingMethodExtra
+     *
+     * @param array $shippingMethodExtra ShippingMethodExtra
+     *
+     * @return $this Self object
+     */
+    public function setShippingMethodExtra(array $shippingMethodExtra)
+    {
+        $this->shippingMethodExtra = $shippingMethodExtra;
+
+        return $this;
+    }
+
+    /**
+     * Get PaymentMethod
+     *
+     * @return PaymentMethod PaymentMethod
+     */
+    public function getPaymentMethod()
+    {
+        return $this->paymentMethod;
+    }
+
+    /**
+     * Sets PaymentMethod
+     *
+     * @param PaymentMethod $paymentMethod PaymentMethod
+     *
+     * @return $this Self object
+     */
+    public function setPaymentMethod(PaymentMethod $paymentMethod)
+    {
+        $this->paymentMethod = $paymentMethod;
+
+        return $this;
+    }
+
+    /**
+     * Get PaymentMethodExtra
+     *
+     * @return array PaymentMethodExtra
+     */
+    public function getPaymentMethodExtra()
+    {
+        return $this->paymentMethodExtra;
+    }
+
+    /**
+     * Sets PaymentMethodExtra
+     *
+     * @param array $paymentMethodExtra PaymentMethodExtra
+     *
+     * @return $this Self object
+     */
+    public function setPaymentMethodExtra(array $paymentMethodExtra)
+    {
+        $this->paymentMethodExtra = $paymentMethodExtra;
 
         return $this;
     }
@@ -395,11 +460,11 @@ class Order implements OrderInterface
     /**
      * Sets DeliveryAddress
      *
-     * @param AddressInterface $deliveryAddress DeliveryAddress
+     * @param AddressInterface|null $deliveryAddress DeliveryAddress
      *
      * @return $this Self object
      */
-    public function setDeliveryAddress($deliveryAddress)
+    public function setDeliveryAddress(AddressInterface $deliveryAddress = null)
     {
         $this->deliveryAddress = $deliveryAddress;
 
@@ -477,11 +542,11 @@ class Order implements OrderInterface
     /**
      * Sets BillingAddress
      *
-     * @param AddressInterface $billingAddress BillingAddress
+     * @param AddressInterface|null $billingAddress BillingAddress
      *
      * @return $this Self object
      */
-    public function setBillingAddress($billingAddress)
+    public function setBillingAddress(AddressInterface $billingAddress = null)
     {
         $this->billingAddress = $billingAddress;
 

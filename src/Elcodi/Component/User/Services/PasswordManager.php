@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -35,28 +35,28 @@ class PasswordManager
      *
      * Entity manager
      */
-    protected $manager;
+    private $manager;
 
     /**
      * @var UrlGeneratorInterface
      *
      * Router generator
      */
-    protected $router;
+    private $router;
 
     /**
      * @var PasswordEventDispatcherInterface
      *
      * Password EventDispatcher
      */
-    protected $passwordEventDispatcher;
+    private $passwordEventDispatcher;
 
     /**
      * @var GeneratorInterface
      *
      * Recovery hash generator
      */
-    protected $recoveryHashGenerator;
+    private $recoveryHashGenerator;
 
     /**
      * @param ObjectManager                    $manager                 Manager

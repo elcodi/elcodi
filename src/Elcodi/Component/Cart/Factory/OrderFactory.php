@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -20,14 +20,14 @@ namespace Elcodi\Component\Cart\Factory;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Elcodi\Component\Cart\Entity\Order;
-use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
+use Elcodi\Component\Currency\Factory\Abstracts\AbstractPurchasableFactory;
 use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 use Elcodi\Component\StateTransitionMachine\Machine\MachineManager;
 
 /**
  * Class Order
  */
-class OrderFactory extends AbstractFactory
+class OrderFactory extends AbstractPurchasableFactory
 {
     /**
      * @var MachineManager
@@ -44,17 +44,31 @@ class OrderFactory extends AbstractFactory
     protected $shippingMachineManager;
 
     /**
-     * Construct method
+     * Sets PaymentMachineManager
      *
-     * @param MachineManager $paymentMachineManager  Machine Manager for Payment
-     * @param MachineManager $shippingMachineManager Machine Manager for Shipping
+     * @param MachineManager $paymentMachineManager PaymentMachineManager
+     *
+     * @return $this Self object
      */
-    public function __construct(
-        MachineManager $paymentMachineManager,
-        MachineManager $shippingMachineManager
-    ) {
+    public function setPaymentMachineManager(MachineManager $paymentMachineManager)
+    {
         $this->paymentMachineManager = $paymentMachineManager;
+
+        return $this;
+    }
+
+    /**
+     * Sets ShippingMachineManager
+     *
+     * @param MachineManager $shippingMachineManager ShippingMachineManager
+     *
+     * @return $this Self object
+     */
+    public function setShippingMachineManager(MachineManager $shippingMachineManager)
+    {
         $this->shippingMachineManager = $shippingMachineManager;
+
+        return $this;
     }
 
     /**
@@ -77,7 +91,11 @@ class OrderFactory extends AbstractFactory
             ->setHeight(0)
             ->setWidth(0)
             ->setWeight(0)
-            ->setCreatedAt($this->now());
+            ->setCreatedAt($this->now())
+            ->setProductAmount($this->createZeroAmountMoney())
+            ->setAmount($this->createZeroAmountMoney())
+            ->setCouponAmount($this->createZeroAmountMoney())
+            ->setShippingAmount($this->createZeroAmountMoney());
 
         $paymentStateLineStack = $this
             ->paymentMachineManager
@@ -100,7 +118,7 @@ class OrderFactory extends AbstractFactory
                     new ArrayCollection(),
                     null
                 ),
-                'Order not shipped'
+                'Preparing Order'
             );
 
         $order->setShippingStateLineStack($shippingStateLineStack);

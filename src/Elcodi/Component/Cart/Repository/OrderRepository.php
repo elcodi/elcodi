@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -27,15 +27,15 @@ use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 class OrderRepository extends EntityRepository
 {
     /**
-     * Gets the not shipped orders.
+     * Gets the orders to prepare.
      *
      * @return OrderInterface[]
      */
-    public function getNotShippedOrders()
+    public function getOrdersToPrepare()
     {
         $res = $this->createQueryBuilder('o')
             ->innerJoin('o.shippingLastStateLine', 'sl')
-            ->where('sl.name != \'shipped\'')
+            ->where('sl.name = \'preparing\'')
             ->orderBy('o.updatedAt', 'ASC')
             ->getQuery()
             ->getResult();

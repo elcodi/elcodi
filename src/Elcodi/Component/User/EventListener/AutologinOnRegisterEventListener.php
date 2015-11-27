@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -18,12 +18,14 @@
 namespace Elcodi\Component\User\EventListener;
 
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use Symfony\Component\Security\Http\SecurityEvents;
 
+use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 use Elcodi\Component\User\Event\UserRegisterEvent;
 
 /**
@@ -43,21 +45,21 @@ class AutologinOnRegisterEventListener
      *
      * Token storage
      */
-    protected $tokenStorage;
+    private $tokenStorage;
 
     /**
      * @var EventDispatcherInterface
      *
      * Event dispatcher
      */
-    protected $dispatcher;
+    private $dispatcher;
 
     /**
      * @var string
      *
      * Provider key
      */
-    protected $providerKey;
+    private $providerKey;
 
     /**
      * Constructor
@@ -83,20 +85,28 @@ class AutologinOnRegisterEventListener
      * Autologin users after registration
      *
      * @param UserRegisterEvent $event User registered event
+     *
+     * @return $this Self object
      */
     public function onUserRegister(UserRegisterEvent $event)
     {
-        if (null === $this->tokenStorage->getToken()) {
-            return;
+        $masterRequest = $this
+            ->requestStack
+            ->getMasterRequest();
+
+        if (!($masterRequest instanceof Request)) {
+            return $this;
         }
 
-        $user = $event->getUser();
+        if (null === $this
+                ->tokenStorage
+                ->getToken()
+        ) {
+            return $this;
+        }
 
-        $token = new UsernamePasswordToken(
-            $user,
-            null,
-            $this->providerKey,
-            $user->getRoles()
+        $token = $this->createNewToken(
+            $event->getUser()
         );
 
         $this
@@ -104,7 +114,7 @@ class AutologinOnRegisterEventListener
             ->setToken($token);
 
         $event = new InteractiveLoginEvent(
-            $this->requestStack->getMasterRequest(),
+            $masterRequest,
             $token
         );
 
@@ -114,5 +124,24 @@ class AutologinOnRegisterEventListener
                 SecurityEvents::INTERACTIVE_LOGIN,
                 $event
             );
+
+        return $this;
+    }
+
+    /**
+     * Generate new token given a user
+     *
+     * @param AbstractUserInterface $user User
+     *
+     * @return UsernamePasswordToken New token
+     */
+    private function createNewToken(AbstractUserInterface $user)
+    {
+        return new UsernamePasswordToken(
+            $user,
+            null,
+            $this->providerKey,
+            $user->getRoles()
+        );
     }
 }

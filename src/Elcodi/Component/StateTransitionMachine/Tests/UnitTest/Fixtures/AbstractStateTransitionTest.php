@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -74,15 +74,12 @@ abstract class AbstractStateTransitionTest extends PHPUnit_Framework_TestCase
     /**
      * Return MachineManager
      *
-     * @param integer $nbEventDispatcherCalls Number of times eventDispatcher::dispatch will be called
-     * @param string  $stateLineNamespace     StateLine Entity Namespace
+     * @param string $stateLineNamespace StateLine Entity Namespace
      *
      * @return MachineManager Machine Manager
      */
-    public function getMachineManager(
-        $nbEventDispatcherCalls = 4,
-        $stateLineNamespace = 'Elcodi\Component\StateTransitionMachine\Entity\StateLine'
-    ) {
+    public function getMachineManager($stateLineNamespace = 'Elcodi\Component\StateTransitionMachine\Entity\StateLine')
+    {
         $machine = $this->getMachine();
         $stateLineFactory = new StateLineFactory();
         $stateLineFactory->setEntityNamespace($stateLineNamespace);
@@ -91,10 +88,7 @@ abstract class AbstractStateTransitionTest extends PHPUnit_Framework_TestCase
         /**
          * @var EventDispatcherInterface $eventDispatcher
          */
-        $eventDispatcher = $this->getMock('Symfony\Component\EventDispatcher\EventDispatcherInterface');
-        $eventDispatcher
-            ->expects($this->exactly($nbEventDispatcherCalls))
-            ->method('dispatch');
+        $eventDispatcher = $this->getMock('Elcodi\Component\StateTransitionMachine\EventDispatcher\MachineEventDispatcher', [], [], '', false);
 
         $machineManager = new MachineManager(
             $machine,

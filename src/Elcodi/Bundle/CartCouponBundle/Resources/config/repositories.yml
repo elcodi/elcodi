@@ -9,11 +9,13 @@ services:
     #
     elcodi.repository.cart_coupon:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.entity.cart_coupon.class% ]
+        arguments:
+            - %elcodi.entity.cart_coupon.class%
 
     #
     # Repository for entity order_coupon
     #
     elcodi.repository.order_coupon:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.entity.order_coupon.class% ]
+        arguments:
+            - %elcodi.entity.order_coupon.class%

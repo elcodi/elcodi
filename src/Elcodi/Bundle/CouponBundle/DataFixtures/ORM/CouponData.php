@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -38,7 +38,6 @@ class CouponData extends AbstractFixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-
         /**
          * @var CurrencyInterface $currency
          * @var ObjectDirector    $couponDirector
@@ -66,6 +65,7 @@ class CouponData extends AbstractFixture implements DependentFixtureInterface
             ->setCount(100)
             ->setValidFrom(new DateTime())
             ->setValidTo(new DateTime('next month'));
+
         $couponDirector->save($couponPercent);
         $this->addReference('coupon-percent', $couponPercent);
 
@@ -92,6 +92,55 @@ class CouponData extends AbstractFixture implements DependentFixtureInterface
             ->setValidFrom(new DateTime());
         $couponDirector->save($couponAmount);
         $this->addReference('coupon-amount', $couponAmount);
+
+        /**
+         * Stackable Coupon with 10% of discount
+         *
+         * Valid from now without expire time
+         *
+         * Customer only can redeem it 5 times in all life
+         *
+         * Only 100 available
+         *
+         * @var CouponInterface $couponPercent
+         */
+        $stackableCouponPercent = $couponDirector
+            ->create()
+            ->setCode('stackable-percent')
+            ->setName('12 percent discount - stackable')
+            ->setType(ElcodiCouponTypes::TYPE_PERCENT)
+            ->setDiscount(12)
+            ->setCount(100)
+            ->setStackable(true)
+            ->setValidFrom(new DateTime())
+            ->setValidTo(new DateTime('next month'));
+        $couponDirector->save($stackableCouponPercent);
+        $this->addReference('stackable-coupon-percent', $stackableCouponPercent);
+
+        /**
+         * Stackable Coupon with 2 USD of discount.
+         *
+         * Valid from now without expire time
+         *
+         * Customer only can redeem it n times in all life
+         *
+         * Only 20 available
+         *
+         * Prices are stored in cents. @see \Elcodi\Component\Currency\Entity\Money
+         *
+         * @var CouponInterface $couponAmount
+         */
+        $stackableCouponAmount = $couponDirector
+            ->create()
+            ->setCode('stackable-amount')
+            ->setName('2 USD discount - stackable')
+            ->setType(ElcodiCouponTypes::TYPE_AMOUNT)
+            ->setPrice(Money::create(200, $currency))
+            ->setCount(20)
+            ->setStackable(true)
+            ->setValidFrom(new DateTime());
+        $couponDirector->save($stackableCouponAmount);
+        $this->addReference('stackable-coupon-amount', $stackableCouponAmount);
     }
 
     /**

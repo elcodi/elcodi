@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -20,13 +20,14 @@ namespace Elcodi\Component\Comment\Entity;
 use Elcodi\Component\Comment\Entity\Interfaces\CommentInterface;
 use Elcodi\Component\Comment\Entity\Interfaces\VoteInterface;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 
 /**
  * Class Vote
  */
 class Vote implements VoteInterface
 {
-    use DateTimeTrait;
+    use IdentifiableTrait, DateTimeTrait;
 
     /**
      * @var boolean
@@ -41,13 +42,6 @@ class Vote implements VoteInterface
      * Vote down
      */
     const DOWN = false;
-
-    /**
-     * @var integer
-     *
-     * id
-     */
-    protected $id;
 
     /**
      * @var boolean
@@ -71,30 +65,6 @@ class Vote implements VoteInterface
     protected $comment;
 
     /**
-     * Sets Id
-     *
-     * @param integer $id Id
-     *
-     * @return $this Self object
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * Get Id
-     *
-     * @return integer Id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * Get Comment
      *
      * @return CommentInterface Comment
@@ -111,7 +81,7 @@ class Vote implements VoteInterface
      *
      * @return $this Self object
      */
-    public function setComment($comment)
+    public function setComment(CommentInterface $comment)
     {
         $this->comment = $comment;
 

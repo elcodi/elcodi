@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -31,35 +31,35 @@ abstract class AbstractMailer
      *
      * Templating
      */
-    protected $templatingEngine;
+    private $templatingEngine;
 
     /**
      * @var Swift_Mailer
      *
      * Mailer
      */
-    protected $mailer;
+    private $mailer;
 
     /**
      * @var string
      *
      * layout
      */
-    protected $layout;
+    private $layout;
 
     /**
      * @var string
      *
      * template
      */
-    protected $template;
+    private $template;
 
     /**
      * @var string
      *
      * Email of the sender
      */
-    protected $fromEmail;
+    private $fromEmail;
 
     /**
      * Constructor

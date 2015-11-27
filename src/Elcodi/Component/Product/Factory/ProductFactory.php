@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -34,7 +34,7 @@ class ProductFactory extends AbstractPurchasableFactory
      *
      * Use use stock
      */
-    public $useStock;
+    public $useStock = false;
 
     /**
      * Set use stock
@@ -43,7 +43,7 @@ class ProductFactory extends AbstractPurchasableFactory
      *
      * @return $this Self object
      */
-    public function setUseStock($useStock)
+    public function setUseStock($useStock = false)
     {
         $this->useStock = $useStock;
 

@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -41,14 +41,14 @@ class OrderLineCreationEventListener
      *
      * ObjectManager for Product
      */
-    protected $productObjectManager;
+    private $productObjectManager;
 
     /**
      * @var ObjectManager
      *
      * ObjectManager for Variant
      */
-    protected $variantObjectManager;
+    private $variantObjectManager;
 
     /**
      * Built method
@@ -70,6 +70,8 @@ class OrderLineCreationEventListener
      * Flushes all loaded order and related entities.
      *
      * @param OrderLineOnCreatedEvent $event Event
+     *
+     * @return null
      */
     public function updateStock(OrderLineOnCreatedEvent $event)
     {
@@ -79,7 +81,7 @@ class OrderLineCreationEventListener
         $stock = $purchasable->getStock();
 
         if ($stock === ElcodiProductStock::INFINITE_STOCK) {
-            return;
+            return null;
         }
 
         $quantityPurchased = $event
@@ -100,7 +102,7 @@ class OrderLineCreationEventListener
      *
      * @return $this Self object
      */
-    protected function flushPurchasable(PurchasableInterface $purchasable)
+    private function flushPurchasable(PurchasableInterface $purchasable)
     {
         if ($purchasable instanceof ProductInterface) {
             $this

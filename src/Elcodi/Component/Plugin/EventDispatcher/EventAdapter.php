@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -33,14 +33,14 @@ class EventAdapter extends Event implements EventInterface
      *
      * Context from the caller
      */
-    protected $context;
+    private $context;
 
     /**
      * @var string
      *
      * Content to be returned
      */
-    protected $content;
+    private $content;
 
     /**
      * Create a new event from context and content

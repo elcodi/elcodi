@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -35,28 +35,28 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
      *
      * Entity Translation provider
      */
-    protected $entityTranslationProvider;
+    private $entityTranslationProvider;
 
     /**
      * @var array
      *
      * Translation configuration
      */
-    protected $translationConfiguration;
+    private $translationConfiguration;
 
     /**
      * @var array
      *
      * Locales
      */
-    protected $locales;
+    private $locales;
 
     /**
      * @var string
      *
      * Master locale
      */
-    protected $masterLocale;
+    private $masterLocale;
 
     /**
      * @var boolean
@@ -67,21 +67,21 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
      * will not be required anymore, but just the translation with same language
      * than master
      */
-    protected $fallback;
+    private $fallback;
 
     /**
      * @var array
      *
      * Submitted data in plain mode
      */
-    protected $submittedDataPlain;
+    private $submittedDataPlain = [];
 
     /**
      * @var array
      *
      * Local and temporary backup of translations
      */
-    protected $translationsBackup;
+    private $translationsBackup = [];
 
     /**
      * Construct method
@@ -104,8 +104,6 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
         $this->locales = $locales;
         $this->masterLocale = $masterLocale;
         $this->fallback = $fallback;
-        $this->submittedDataPlain = [];
-        $this->translationsBackup = [];
     }
 
     /**
@@ -141,6 +139,8 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
      * Pre set data
      *
      * @param FormEvent $event Event
+     *
+     * @return null
      */
     public function preSetData(FormEvent $event)
     {
@@ -150,7 +150,7 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
         $entityConfiguration = $this->getTranslatableEntityConfiguration($entity);
 
         if (is_null($entityConfiguration)) {
-            return;
+            return null;
         }
 
         $entityFields = $entityConfiguration['fields'];
@@ -198,6 +198,8 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
      * Post submit
      *
      * @param FormEvent $event Event
+     *
+     * @return null
      */
     public function postSubmit(FormEvent $event)
     {
@@ -207,7 +209,7 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
         $entityConfiguration = $this->getTranslatableEntityConfiguration($entity);
 
         if (is_null($entityConfiguration)) {
-            return;
+            return null;
         }
 
         $this->translationsBackup[$formHash] = [];
@@ -250,7 +252,7 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
     public function saveEntityTranslations()
     {
         if (empty($this->translationsBackup)) {
-            return;
+            return null;
         }
 
         foreach ($this->translationsBackup as $formHash => $entities) {
@@ -282,6 +284,18 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
     }
 
     /**
+     * Get form unique hash
+     *
+     * @param FormInterface $form Form
+     *
+     * @return string Form hash
+     */
+    public function getFormHash(FormInterface $form)
+    {
+        return spl_object_hash($form);
+    }
+
+    /**
      * Get configuration for a translatable entity, or null if the entity is not
      * translatable
      *
@@ -289,7 +303,7 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
      *
      * @return array|null Configuration
      */
-    protected function getTranslatableEntityConfiguration($entity)
+    private function getTranslatableEntityConfiguration($entity)
     {
         $entityNamespace = get_class($entity);
         $classStack = $this->getNamespacesFromClass($entityNamespace);
@@ -300,7 +314,7 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
             }
         }
 
-        return;
+        return null;
     }
 
     /**
@@ -310,24 +324,12 @@ class EntityTranslatorFormEventListener implements EventSubscriberInterface
      *
      * @return string[] Set of classes and interfaces
      */
-    protected function getNamespacesFromClass($namespace)
+    private function getNamespacesFromClass($namespace)
     {
         $classStack = [$namespace];
         $classStack = array_merge($classStack, class_parents($namespace));
         $classStack = array_merge($classStack, class_implements($namespace));
 
         return $classStack;
-    }
-
-    /**
-     * Get form unique hash
-     *
-     * @param FormInterface $form Form
-     *
-     * @return string Form hash
-     */
-    public function getFormHash(FormInterface $form)
-    {
-        return spl_object_hash($form);
     }
 }

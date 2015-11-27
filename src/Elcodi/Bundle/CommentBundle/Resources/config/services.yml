@@ -8,16 +8,6 @@ services:
         arguments:
             - @elcodi.event_dispatcher.comment
             - @elcodi.director.comment
-            - @elcodi.comment_parser
-
-    elcodi.comment_parser:
-        class: Elcodi\Component\Comment\Services\CommentParser
-        arguments:
-            - @elcodi.comment_parser_adapter
-
-    elcodi.comment_parser_adapter:
-        class: Elcodi\Component\Core\Adapter\Parser\Interfaces\ParserAdapterInterface
-        synthetic: true
 
     elcodi.comment_cache:
         class: Elcodi\Component\Comment\Services\CommentCache

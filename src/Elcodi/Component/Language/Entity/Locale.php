@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -27,18 +27,18 @@ class Locale implements LocaleInterface
     /**
      * @var string
      *
-     * Iso
+     * Locale iso
      */
-    protected $iso;
+    protected $localeIso;
 
     /**
      * Construct method
      *
-     * @param string $iso Iso
+     * @param string $localeIso Locale iso
      */
-    public function __construct($iso)
+    public function __construct($localeIso)
     {
-        $this->iso = $iso;
+        $this->localeIso = $localeIso;
     }
 
     /**
@@ -48,6 +48,18 @@ class Locale implements LocaleInterface
      */
     public function getIso()
     {
-        return $this->iso;
+        return $this->localeIso;
+    }
+
+    /**
+     * Create new instance
+     *
+     * @param string $localeIso Locale iso
+     *
+     * @return self New instance
+     */
+    public static function create($localeIso)
+    {
+        return new self($localeIso);
     }
 }

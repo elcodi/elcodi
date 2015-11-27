@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -36,7 +36,7 @@ class MachineManagerTest extends AbstractStateTransitionTest
      */
     public function testInitializeNotEmpty()
     {
-        $machineManager = $this->getMachineManager(0);
+        $machineManager = $this->getMachineManager();
 
         $order = new Order();
         $stateLineStack = StateLineStack::create(
@@ -58,7 +58,7 @@ class MachineManagerTest extends AbstractStateTransitionTest
      */
     public function testInitializeEmpty()
     {
-        $machineManager = $this->getMachineManager(1);
+        $machineManager = $this->getMachineManager();
 
         $order = new Order();
         $stateLineStack = StateLineStack::create(
@@ -84,7 +84,7 @@ class MachineManagerTest extends AbstractStateTransitionTest
      */
     public function testMakeTransitionNonInitialized()
     {
-        $machineManager = $this->getMachineManager(0);
+        $machineManager = $this->getMachineManager();
 
         $order = new Order();
         $stateLineStack = StateLineStack::create(
@@ -106,7 +106,7 @@ class MachineManagerTest extends AbstractStateTransitionTest
      */
     public function testMakeTransitionInitialized()
     {
-        $machineManager = $this->getMachineManager(5);
+        $machineManager = $this->getMachineManager();
 
         $order = new Order();
         $stateLineStack = StateLineStack::create(
@@ -139,7 +139,7 @@ class MachineManagerTest extends AbstractStateTransitionTest
      */
     public function testReachStateNonInitialized()
     {
-        $machineManager = $this->getMachineManager(0);
+        $machineManager = $this->getMachineManager();
 
         $order = new Order();
         $stateLineStack = StateLineStack::create(
@@ -161,7 +161,7 @@ class MachineManagerTest extends AbstractStateTransitionTest
      */
     public function testReachStateInitialized()
     {
-        $machineManager = $this->getMachineManager(5);
+        $machineManager = $this->getMachineManager();
 
         $order = new Order();
         $stateLineStack = StateLineStack::create(

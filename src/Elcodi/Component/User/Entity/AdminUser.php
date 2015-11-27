@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -16,6 +16,8 @@
  */
 
 namespace Elcodi\Component\User\Entity;
+
+use Symfony\Component\Security\Core\Role\Role;
 
 use Elcodi\Component\User\Entity\Abstracts\AbstractUser;
 use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
@@ -32,6 +34,8 @@ class AdminUser extends AbstractUser implements AdminUserInterface
      */
     public function getRoles()
     {
-        return ['ROLE_ADMIN'];
+        return [
+            new Role('ROLE_ADMIN'),
+        ];
     }
 }

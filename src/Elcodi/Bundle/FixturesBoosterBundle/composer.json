@@ -30,27 +30,24 @@
         }
     ],
     "require": {
-        "php": ">=5.4",
+        "php": "^5.4|^7.0",
 
-        "symfony/http-kernel": "~2.6",
-        "symfony/console": "~2.6",
-        "symfony/dependency-injection": "~2.6",
+        "symfony/http-kernel": "^2.7|^3.0",
+        "symfony/console": "^2.7|^3.0",
+        "symfony/dependency-injection": "^2.7|^3.0",
 
-        "doctrine/doctrine-fixtures-bundle": "~2.2",
+        "doctrine/doctrine-fixtures-bundle": "^2.2",
 
-        "elcodi/core-bundle": "~0.5.0"
+        "elcodi/core-bundle": "^1.0"
     },
     "autoload": {
         "psr-4": {
             "Elcodi\\Bundle\\FixturesBoosterBundle\\": ""
         }
     },
-    "config": {
-        "bin-dir": "bin"
-    },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.5-dev"
+            "dev-master": "1.0-dev"
         }
     }
 }

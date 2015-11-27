@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -43,21 +43,21 @@ class ImageManager
      *
      * imageFactory
      */
-    protected $imageFactory;
+    private $imageFactory;
 
     /**
      * @var FileManager
      *
      * File manager
      */
-    protected $fileManager;
+    private $fileManager;
 
     /**
      * @var ResizeAdapterInterface
      *
      * ResizerAdapter
      */
-    protected $resizeAdapter;
+    private $resizeAdapter;
 
     /**
      * Construct method

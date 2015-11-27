@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -24,7 +24,6 @@ use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
-use Elcodi\Component\Shipping\Entity\Interfaces\ShippingRangeInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
@@ -36,6 +35,22 @@ interface CartInterface
         DimensionableInterface,
         IdentifiableInterface
 {
+    /**
+     * Get Loaded
+     *
+     * @return boolean Loaded
+     */
+    public function isLoaded();
+
+    /**
+     * Sets Loaded
+     *
+     * @param boolean $loaded Loaded
+     *
+     * @return $this Self object
+     */
+    public function setLoaded($loaded);
+
     /**
      * Gets amount with tax
      *
@@ -185,6 +200,8 @@ interface CartInterface
     /**
      * Sets the number of items on this cart
      *
+     * @deprecated since version 1.0.8, to be removed in 2.0.0.
+     *
      * @param integer $quantity Quantity
      *
      * @return $this Self object
@@ -194,9 +211,18 @@ interface CartInterface
     /**
      * Gets the number of items on this cart
      *
+     * @deprecated since version 1.0.8, to be removed in 2.0.0. Use getTotalItemNumber()
+     *
      * @return integer Quantity
      */
     public function getQuantity();
+
+    /**
+     * Return the total amount of items added to the Cart
+     *
+     * @return integer
+     */
+    public function getTotalItemNumber();
 
     /**
      * Get DeliveryAddress
@@ -212,7 +238,7 @@ interface CartInterface
      *
      * @return $this Self object
      */
-    public function setDeliveryAddress($deliveryAddress);
+    public function setDeliveryAddress(AddressInterface $deliveryAddress);
 
     /**
      * Get BillingAddress
@@ -228,37 +254,37 @@ interface CartInterface
      *
      * @return $this Self object
      */
-    public function setBillingAddress($billingAddress);
+    public function setBillingAddress(AddressInterface $billingAddress);
 
     /**
-     * Get ShippingRange
+     * Get shipping method
      *
-     * @return ShippingRangeInterface ShippingRange
+     * @return string Shipping method
      */
-    public function getShippingRange();
+    public function getShippingMethod();
+
+    /**
+     * Set shipping method
+     *
+     * @param string $shippingMethod Shipping method
+     *
+     * @return $this Self object
+     */
+    public function setShippingMethod($shippingMethod);
+
+    /**
+     * Get shipping method
+     *
+     * @return string Cheapest shipping method
+     */
+    public function getCheapestShippingMethod();
 
     /**
      * Sets ShippingRange
      *
-     * @param ShippingRangeInterface $shippingRange ShippingRange
+     * @param string $cheapestShippingMethod Cheapest shipping method
      *
      * @return $this Self object
      */
-    public function setShippingRange(ShippingRangeInterface $shippingRange = null);
-
-    /**
-     * Get ShippingRange
-     *
-     * @return ShippingRangeInterface Cheapest ShippingRange
-     */
-    public function getCheapestShippingRange();
-
-    /**
-     * Sets ShippingRange
-     *
-     * @param ShippingRangeInterface $cheapestShippingRange Cheapest ShippingRange
-     *
-     * @return $this Self object
-     */
-    public function setCheapestShippingRange(ShippingRangeInterface $cheapestShippingRange = null);
+    public function setCheapestShippingMethod($cheapestShippingMethod);
 }

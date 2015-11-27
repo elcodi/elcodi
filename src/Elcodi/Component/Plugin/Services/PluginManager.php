@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,292 +17,212 @@
 
 namespace Elcodi\Component\Plugin\Services;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Exception;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\HttpKernel\KernelInterface;
-use Symfony\Component\Yaml\Parser;
 
-use Elcodi\Component\Configuration\Exception\ConfigurationParameterNotFoundException;
-use Elcodi\Component\Configuration\Services\ConfigurationManager;
 use Elcodi\Component\Plugin\Entity\Plugin;
-use Elcodi\Component\Plugin\Interfaces\PluginInterface;
+use Elcodi\Component\Plugin\Entity\PluginConfiguration;
+use Elcodi\Component\Plugin\Repository\PluginRepository;
+use Elcodi\Component\Plugin\Services\Traits\PluginUtilsTrait;
 
 /**
  * Class PluginManager
  */
 class PluginManager
 {
+    use PluginUtilsTrait;
+
     /**
      * @var KernelInterface
      *
      * Kernel
      */
-    protected $kernel;
+    private $kernel;
 
     /**
-     * @var ConfigurationManager
+     * @var PluginRepository
      *
-     * Configuration manager
+     * Plugin repository
      */
-    protected $configurationManager;
+    private $pluginRepository;
 
     /**
-     * @var Plugin[]
+     * @var ObjectManager
      *
-     * Cached plugin list
+     * Plugin object manager
      */
-    protected $plugins = [];
+    private $pluginObjectManager;
+
+    /**
+     * @var PluginLoader
+     *
+     * Plugin Loader
+     */
+    private $pluginLoader;
 
     /**
      * Construct
      *
-     * @param KernelInterface      $kernel               Kernel
-     * @param ConfigurationManager $configurationManager Configuration Manager
+     * @param KernelInterface  $kernel              Kernel
+     * @param PluginRepository $pluginRepository    Plugin repository
+     * @param ObjectManager    $pluginObjectManager Plugin object manager
+     * @param PluginLoader     $pluginLoader        Plugin Loader
      */
     public function __construct(
         KernelInterface $kernel,
-        ConfigurationManager $configurationManager = null
+        PluginRepository $pluginRepository,
+        ObjectManager $pluginObjectManager,
+        PluginLoader $pluginLoader
     ) {
         $this->kernel = $kernel;
-        $this->configurationManager = $configurationManager;
+        $this->pluginRepository = $pluginRepository;
+        $this->pluginObjectManager = $pluginObjectManager;
+        $this->pluginLoader = $pluginLoader;
     }
 
     /**
-     * Load templates
+     * Load plugins.
      *
-     * @return array Templates found
+     * This method will look for new plugins installed in our kernel and will
+     * try to install them. It will look for already installed plugins as well,
+     * and update with new information, maintaining old values.
      *
-     * @throws ConfigurationParameterNotFoundException Parameter not found
-     * @throws Exception                               ConfigurationBundle not installed
+     * @return Plugin[] Plugins loaded
      */
     public function loadPlugins()
     {
-        if (!($this->configurationManager instanceof ConfigurationManager)) {
-            throw new Exception('You need to install ConfigurationBundle');
-        }
-
-        $plugins = $this
-            ->configurationManager
-            ->get('store.plugins');
-
-        $plugins = new ArrayCollection($plugins);
-        $bundles = $this->kernel->getBundles();
-        $bundlesFound = [];
+        $oldPlugins = $this->getExistingPlugins();
+        $pluginBundles = $this->getInstalledPluginBundles($this->kernel);
+        $pluginsLoaded = [];
 
         /**
-         * We add new Plugins found but we don't touch old configurations
-         *
-         * @var Bundle $bundle
+         * @var Bundle $plugin
          */
-        foreach ($bundles as $bundle) {
-            if ($bundle instanceof PluginInterface) {
-                $bundleName = $bundle->getName();
-                $bundleNamespace = $bundle->getNamespace();
-                $bundlesFound[] = $bundleNamespace;
+        foreach ($pluginBundles as $plugin) {
+            $pluginConfiguration = $this
+                ->pluginLoader
+                ->getPluginConfiguration($plugin->getPath());
 
-                $specification = array_merge(
-                    [
-                        'bundle'              => $bundleName,
-                        'namespace'           => $bundleNamespace,
-                        'name'                => 'Unnamed',
-                        'description'         => '',
-                        'version'             => 'Any',
-                        'author'              => 'Anonymous',
-                        'year'                => 'NaN',
-                        'url'                 => '',
-                        'fa_icon'             => 'gear',
-                        'configuration_route' => null,
-                        'enabled'             => false,
-                        'visible'             => true,
-                        'configuration'       => [],
-                    ],
-                    $this->getPluginSpecification($bundle->getPath())
+            $pluginNamespace = get_class($plugin);
+            $pluginInstance = $this
+                ->getPluginInstance(
+                    $pluginNamespace,
+                    $pluginConfiguration
                 );
 
-                $plugins->set($bundleNamespace, $specification);
+            if (isset($oldPlugins[$pluginNamespace])) {
+                $existingPlugin = $oldPlugins[$pluginNamespace];
+                $pluginInstance = $existingPlugin->merge($pluginInstance);
+                unset($oldPlugins[$pluginNamespace]);
             }
+
+            $this->savePlugin($pluginInstance);
+
+            $pluginsLoaded[] = $pluginInstance;
         }
 
         /**
-         * We remove old plugin references
+         * Every Plugin instance inside $plugins array should be removed from
+         * database, because they are not longer installed
          */
-        foreach ($plugins as $pluginNamespace => $plugin) {
-            if (!in_array($pluginNamespace, $bundlesFound)) {
-                unset($plugins[$pluginNamespace]);
-            }
-        }
+        $this->removePlugins($oldPlugins);
 
-        $pluginsArray = $plugins->toArray();
-
-        $this
-            ->configurationManager
-            ->set('store.plugins', $pluginsArray);
-
-        return $pluginsArray;
+        return $pluginsLoaded;
     }
 
     /**
-     * Read plugin specification
+     * Load existing plugins from database and return an array with them all,
+     * indexed by its namespace
      *
-     * @param string $bundlePath Bundle path
-     *
-     * @return array Plugin specification
+     * @return Plugin[] Plugins indexed by namespace
      */
-    protected function getPluginSpecification($bundlePath)
+    private function getExistingPlugins()
     {
-        $yaml = new Parser();
-        $specificationFilePath = $bundlePath . '/plugin.yml';
-        if (!file_exists($specificationFilePath)) {
-            return [];
-        }
-
-        return array_intersect_key(
-            $yaml->parse(file_get_contents($specificationFilePath)),
-            array_flip([
-                'name',
-                'author',
-                'url',
-                'description',
-                'year',
-                'version',
-                'fa_icon',
-                'configuration_route',
-                'enabled',
-                'visible',
-            ])
-        );
-    }
-
-    /**
-     * Get plugins
-     *
-     * @return array Plugins
-     */
-    public function getPlugins()
-    {
-        if ($this->plugins) {
-            return $this->plugins;
-        }
-
+        $pluginsIndexed = [];
         $plugins = $this
-            ->configurationManager
-            ->get('store.plugins');
+            ->pluginRepository
+            ->findAll();
 
-        foreach ($plugins as $pluginKey => $plugin) {
-            $plugins[$pluginKey] = $this->hydratePlugin($plugin);
-        }
-        $this->plugins = $plugins;
-
-        return $plugins;
-    }
-
-    /**
-     * Get visible plugins
-     *
-     * @return array Plugins
-     */
-    public function getVisiblePlugins()
-    {
-        return array_filter($this->getPlugins(), function (Plugin $plugin) {
-            return $plugin->isVisible();
-        });
-    }
-
-    /**
-     * Check if a specified plugin exists
-     *
-     * @param string $pluginNamespace Plugin namespace
-     *
-     * @return boolean Whether the plugin exists or not
-     */
-    public function hasPlugin($pluginNamespace)
-    {
-        $plugins = $this->getPlugins();
-
-        return isset($plugins[$pluginNamespace]);
-    }
-
-    /**
-     * Get plugin by namespace
-     *
-     * @param string $pluginNamespace Plugin namespace
-     *
-     * @return Plugin Selected plugin
-     *
-     * @throws Exception
-     */
-    public function getPlugin($pluginNamespace)
-    {
-        $plugins = $this->getPlugins();
-
-        if (!isset($plugins[$pluginNamespace])) {
-            throw new \Exception(sprintf(
-                'Plugin "%s" not found',
-                $pluginNamespace
-            ));
+        /**
+         * @var Plugin $plugin
+         */
+        foreach ($plugins as $plugin) {
+            $pluginNamespace = $plugin->getNamespace();
+            $pluginsIndexed[$pluginNamespace] = $plugin;
         }
 
-        return $plugins[$pluginNamespace];
+        return $pluginsIndexed;
     }
 
     /**
-     * Update plugin configuration
+     * Create or update existing plugin given a set of plugin instances and the
+     * information to create a new one
      *
-     * @param string  $pluginNamespace Plugin namespace
-     * @param boolean $enabled         Enabled
-     * @param array   $configuration   Configuration
+     * @param string $pluginNamespace     Plugin namespace
+     * @param array  $pluginConfiguration Plugin Configuration
      *
-     * @return $this Self Object
+     * @return Plugin Plugin instance
      */
-    public function updatePlugin(
+    private function getPluginInstance(
         $pluginNamespace,
-        $enabled,
-        array $configuration = []
+        array $pluginConfiguration
     ) {
-        $plugins = $this
-            ->configurationManager
-            ->get('store.plugins');
+        $pluginType = $pluginConfiguration['type'];
+        $pluginCategory = $pluginConfiguration['category'];
+        $pluginEnabledByDefault = $pluginConfiguration['enabled_by_default'];
+        unset($pluginConfiguration['type']);
 
-        $plugins[$pluginNamespace]['enabled'] = $enabled;
-        $plugins[$pluginNamespace]['configuration'] = array_merge(
-            $plugins[$pluginNamespace]['configuration'],
-            $configuration
+        $pluginInstance = Plugin::create(
+            $pluginNamespace,
+            $pluginType,
+            $pluginCategory,
+            PluginConfiguration::create($pluginConfiguration),
+            $pluginEnabledByDefault
         );
 
-        $this
-            ->configurationManager
-            ->set('store.plugins', $plugins);
-
-        $plugin = $this->hydratePlugin($plugins[$pluginNamespace]);
-        $this->plugins[$pluginNamespace] = $plugin;
-
-        return $plugin;
+        return $pluginInstance;
     }
 
     /**
-     * Hydrate plugin
+     * Saves a plugin into database
      *
-     * @param array $plugin Plugin data
+     * @param Plugin $plugin Plugin
      *
-     * @return Plugin Hydration
+     * @return $this Self object
      */
-    protected function hydratePlugin(array $plugin)
+    private function savePlugin(Plugin $plugin)
     {
-        return new Plugin(
-            $plugin['author'],
-            $plugin['bundle'],
-            $plugin['configuration'],
-            $plugin['configuration_route'],
-            $plugin['description'],
-            $plugin['enabled'],
-            $plugin['fa_icon'],
-            $plugin['name'],
-            $plugin['namespace'],
-            $plugin['url'],
-            $plugin['version'],
-            $plugin['year'],
-            $plugin['visible']
-        );
+        $this
+            ->pluginObjectManager
+            ->persist($plugin);
+
+        $this
+            ->pluginObjectManager
+            ->flush($plugin);
+
+        return $this;
+    }
+
+    /**
+     * Remove a set of Plugins from database
+     *
+     * @param Plugin[] $plugins Plugins
+     *
+     * @return $this Self object
+     */
+    private function removePlugins($plugins)
+    {
+        foreach ($plugins as $pluginToBeRemoved) {
+            $this
+                ->pluginObjectManager
+                ->remove($pluginToBeRemoved);
+
+            $this
+                ->pluginObjectManager
+                ->flush($pluginToBeRemoved);
+        }
+
+        return $this;
     }
 }

@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -18,12 +18,12 @@
 namespace Elcodi\Component\Cart\Factory;
 
 use Elcodi\Component\Cart\Entity\OrderLine;
-use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
+use Elcodi\Component\Currency\Factory\Abstracts\AbstractPurchasableFactory;
 
 /**
  * Class OrderLine
  */
-class OrderLineFactory extends AbstractFactory
+class OrderLineFactory extends AbstractPurchasableFactory
 {
     /**
      * Creates an instance of an entity.
@@ -44,7 +44,9 @@ class OrderLineFactory extends AbstractFactory
             ->setWidth(0)
             ->setHeight(0)
             ->setWidth(0)
-            ->setWeight(0);
+            ->setWeight(0)
+            ->setAmount($this->createZeroAmountMoney())
+            ->setProductAmount($this->createZeroAmountMoney());
 
         return $orderLine;
     }

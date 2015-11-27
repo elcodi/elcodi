@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -37,7 +37,7 @@ class VariantRepository extends EntityRepository
      *
      * @return VariantInterface|null Variant if found, or null if not
      */
-    public function findByOptionIds(ProductInterface $product, $optionsSearchedIds = [])
+    public function findByOptionIds(ProductInterface $product, array $optionsSearchedIds = [])
     {
         sort($optionsSearchedIds);
 
@@ -68,6 +68,6 @@ class VariantRepository extends EntityRepository
          * No match, probable option misconfiguration in Variants
          */
 
-        return;
+        return null;
     }
 }

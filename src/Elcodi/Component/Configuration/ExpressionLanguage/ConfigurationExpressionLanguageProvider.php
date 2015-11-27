@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -26,6 +26,8 @@ use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 class ConfigurationExpressionLanguageProvider implements ExpressionFunctionProviderInterface
 {
     /**
+     * Get functions defined by this Expression Language element
+     *
      * @return ExpressionFunction[] An array of Function instances
      */
     public function getFunctions()

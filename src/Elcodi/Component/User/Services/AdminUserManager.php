@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -30,8 +30,8 @@ class AdminUserManager extends AbstractUserManager
      * Register new User into the web.
      * Creates new token given a user, with related Role set.
      *
-     * @param AbstractUserInterface $user User to register
-     * @return $this Self object
+     * @param  AbstractUserInterface $user User to register
+     * @return $this                 Self object
      * @internal param string $providerKey Provider key
      *
      */

@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -25,14 +25,51 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 class LanguageManagerTest extends WebTestCase
 {
     /**
-     * Returns the callable name of the service
+     * Load fixtures of these bundles
      *
-     * @return string[] service name
+     * @return array Bundles name where fixtures should be found
      */
-    public function getServiceCallableName()
+    protected static function loadFixturesBundles()
     {
         return [
-            'elcodi.manager.language',
+            'ElcodiLanguageBundle',
         ];
+    }
+
+    /**
+     * Test get languages
+     */
+    public function testGetLanguages()
+    {
+        $languages = $this
+            ->get('elcodi.manager.language')
+            ->getLanguages();
+
+        $this->assertCount(5, $languages);
+        $this->assertContainsOnlyInstancesOf(
+            'Elcodi\Component\Language\Entity\Interfaces\LanguageInterface',
+            $languages
+        );
+        $this->assertEquals(
+            'es',
+            $languages
+                ->first()
+                ->getIso()
+        );
+    }
+
+    /**
+     * Test get languages iso
+     */
+    public function testGetLanguagesIso()
+    {
+        $languages = $this
+            ->get('elcodi.manager.language')
+            ->getLanguagesIso();
+
+        $this->assertEquals(
+            ['es', 'en', 'fr', 'it', 'de'],
+            $languages->toArray()
+        );
     }
 }

@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -34,31 +34,11 @@ class RuleManagerTest extends WebTestCase
     protected $ruleManager;
 
     /**
-     * Schema must be loaded in all test cases
-     *
-     * @return boolean Load schema
-     */
-    protected function loadSchema()
-    {
-        return true;
-    }
-
-    /**
-     * Returns the callable name of the service
-     *
-     * @return string[] service name
-     */
-    public function getServiceCallableName()
-    {
-        return ['elcodi.manager.rule'];
-    }
-
-    /**
      * Load fixtures of these bundles
      *
      * @return array Bundles name where fixtures should be found
      */
-    protected function loadFixturesBundles()
+    protected static function loadFixturesBundles()
     {
         return [
             'ElcodiRuleBundle',

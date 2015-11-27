@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -19,9 +19,8 @@ namespace Elcodi\Component\Geo\Tests\UnitTest\Adapter;
 
 use PHPUnit_Framework_TestCase;
 
-use Elcodi\Component\Geo\Entity\Address;
+use Elcodi\Component\Geo\Adapter\LocationProvider\Interfaces\LocationProviderAdapterInterface;
 use Elcodi\Component\Geo\Formatter\AddressFormatter;
-use Elcodi\Component\Geo\Services\Interfaces\LocationProviderInterface;
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
@@ -37,7 +36,9 @@ class AddressFormatterTest extends PHPUnit_Framework_TestCase
     protected $addressFormatter;
 
     /**
-     * @var LocationProviderInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var LocationProviderAdapterInterface|\PHPUnit_Framework_MockObject_MockObject
+     *
+     * Location provider
      */
     protected $locationProvider;
 
@@ -47,7 +48,7 @@ class AddressFormatterTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->locationProvider = $this->getMockBuilder(
-            'Elcodi\Component\Geo\Services\LocationServiceProvider'
+            'Elcodi\Component\Geo\Adapter\LocationProvider\Interfaces\LocationProviderAdapterInterface'
         )
             ->disableOriginalConstructor()
             ->getMock();

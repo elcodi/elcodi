@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -48,14 +48,10 @@ class VotePackage
     /**
      * Construct
      *
-     * @param VoteInterface[]|null $votes Votes
+     * @param VoteInterface[] $votes Votes
      */
-    protected function __construct(array $votes = null)
+    protected function __construct(array $votes = [])
     {
-        if (is_null($votes)) {
-            return;
-        }
-
         foreach ($votes as $vote) {
             if ($vote instanceof VoteInterface) {
                 $this->nbVotes++;
@@ -106,7 +102,7 @@ class VotePackage
      *
      * @return $this VotePackage
      */
-    public static function create(array $votes)
+    public static function create(array $votes = [])
     {
         return new self($votes);
     }

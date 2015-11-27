@@ -6,8 +6,22 @@ services:
     elcodi.command.location_populate:
         class: Elcodi\Component\Geo\Command\LocationPopulateCommand
         arguments:
-            - @elcodi.location_populator
             - @elcodi.director.location
-            - @elcodi.factory.datetime
+            - @elcodi.location_populator
+        tags:
+            -  { name: console.command }
+
+    elcodi.command.location_load:
+        class: Elcodi\Component\Geo\Command\LocationLoadCommand
+        arguments:
+            - @elcodi.director.location
+            - @elcodi.location_loader
+        tags:
+            -  { name: console.command }
+
+    elcodi.command.location_drop:
+        class: Elcodi\Component\Geo\Command\LocationDropCommand
+        arguments:
+            - @elcodi.director.location
         tags:
             -  { name: console.command }

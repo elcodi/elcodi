@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -25,10 +25,10 @@ use Elcodi\Component\Cart\Event\CartOnLoadEvent;
 use Elcodi\Component\Cart\Event\CartPreLoadEvent;
 use Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher;
 use Elcodi\Component\Cart\Services\CartManager;
+use Elcodi\Component\Core\Wrapper\Interfaces\WrapperInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
-use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 use Elcodi\Component\Product\ElcodiProductStock;
 use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 
@@ -51,42 +51,42 @@ class CartLoadEventListener
      *
      * ObjectManager for Cart entity
      */
-    protected $cartObjectManager;
+    private $cartObjectManager;
 
     /**
      * @var CartEventDispatcher
      *
      * Cart EventDispatcher
      */
-    protected $cartEventDispatcher;
+    private $cartEventDispatcher;
 
     /**
      * @var CartManager
      *
      * Cart Manager
      */
-    protected $cartManager;
+    private $cartManager;
 
     /**
-     * @var CurrencyWrapper
+     * @var WrapperInterface
      *
      * Currency Wrapper
      */
-    protected $currencyWrapper;
+    private $currencyWrapper;
 
     /**
      * @var CurrencyConverter
      *
      * Currency Converter
      */
-    protected $currencyConverter;
+    private $currencyConverter;
 
     /**
      * @var boolean
      *
      * Uses stock
      */
-    protected $useStock;
+    private $useStock;
 
     /**
      * Built method
@@ -95,7 +95,7 @@ class CartLoadEventListener
      *                                                 entity
      * @param CartEventDispatcher $cartEventDispatcher Cart event dispatcher
      * @param CartManager         $cartManager         Cart Manager
-     * @param CurrencyWrapper     $currencyWrapper     Currency Wrapper
+     * @param WrapperInterface    $currencyWrapper     Currency Wrapper
      * @param CurrencyConverter   $currencyConverter   Currency Converter
      * @param boolean             $useStock            Use stock
      */
@@ -103,9 +103,9 @@ class CartLoadEventListener
         ObjectManager $cartObjectManager,
         CartEventDispatcher $cartEventDispatcher,
         CartManager $cartManager,
-        CurrencyWrapper $currencyWrapper,
+        WrapperInterface $currencyWrapper,
         CurrencyConverter $currencyConverter,
-        $useStock
+        $useStock = false
     ) {
         $this->cartObjectManager = $cartObjectManager;
         $this->cartEventDispatcher = $cartEventDispatcher;
@@ -209,7 +209,7 @@ class CartLoadEventListener
      *
      * @return CartLineInterface CartLine
      */
-    protected function checkCartLine(CartLineInterface $cartLine)
+    private function checkCartLine(CartLineInterface $cartLine)
     {
         $cart = $cartLine->getCart();
         $purchasable = $cartLine->getPurchasable();
@@ -245,6 +245,7 @@ class CartLoadEventListener
          * This checking has sense when the Product has not infinite stock
          */
         if (
+            $this->useStock &&
             ($cartLine->getProduct()->getStock() !== ElcodiProductStock::INFINITE_STOCK) &&
             ($cartLine->getQuantity() > $purchasable->getStock())
         ) {
@@ -261,9 +262,12 @@ class CartLoadEventListener
      *
      * @return CartInterface Cart
      */
-    protected function calculateCartPrices(CartInterface $cart)
+    private function calculateCartPrices(CartInterface $cart)
     {
-        $currency = $this->currencyWrapper->loadCurrency();
+        $currency = $this
+            ->currencyWrapper
+            ->get();
+
         $productAmount = Money::create(0, $currency);
 
         /**
@@ -306,7 +310,7 @@ class CartLoadEventListener
      *
      * @return CartLineInterface Line with prices loaded
      */
-    protected function loadCartLinePrices(CartLineInterface $cartLine)
+    private function loadCartLinePrices(CartLineInterface $cartLine)
     {
         $purchasable = $cartLine->getPurchasable();
         $productPrice = $purchasable->getPrice();
@@ -336,7 +340,7 @@ class CartLoadEventListener
      *
      * @return CartInterface Cart
      */
-    protected function calculateCartQuantities(CartInterface $cart)
+    private function calculateCartQuantities(CartInterface $cart)
     {
         $quantity = 0;
 

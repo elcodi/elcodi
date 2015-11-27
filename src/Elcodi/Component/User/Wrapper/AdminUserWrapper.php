@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -20,13 +20,14 @@ namespace Elcodi\Component\User\Wrapper;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
+use Elcodi\Component\Core\Wrapper\Interfaces\WrapperInterface;
 use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
 use Elcodi\Component\User\Factory\AdminUserFactory;
 
 /**
  * Cart to order service
  */
-class AdminUserWrapper
+class AdminUserWrapper implements WrapperInterface
 {
     /**
      * @var AdminUserInterface|Object|string
@@ -38,21 +39,21 @@ class AdminUserWrapper
      * See \Symfony\Component\Security\Core\Authentication\Token\TokenInterface::getUser()
      * for more information about it
      */
-    protected $adminUser;
+    private $adminUser;
 
     /**
      * @var AdminUserFactory
      *
      * Admin User factory
      */
-    protected $adminUserFactory;
+    private $adminUserFactory;
 
     /**
      * @var TokenStorageInterface
      *
      * Token storage
      */
-    protected $tokenStorage;
+    private $tokenStorage;
 
     /**
      * Construct method
@@ -74,44 +75,12 @@ class AdminUserWrapper
     }
 
     /**
-     * Return current loaded customer
+     * Get loaded object. If object is not loaded yet, then load it and save it
+     * locally. Otherwise, just return the pre-loaded object
      *
-     * @return AdminUserInterface current customer
+     * @return mixed Loaded object
      */
-    public function getAdminUser()
-    {
-        return $this->adminUser;
-    }
-
-    /**
-     * Set admin user
-     *
-     * @param AdminUserInterface $adminUser Admin User
-     *
-     * @return $this Self object
-     */
-    public function setAdminUser(AdminUserInterface $adminUser = null)
-    {
-        $this->adminUser = $adminUser;
-
-        return $this;
-    }
-
-    /**
-     * Load admin user method
-     *
-     * This method tries to load AdminUser stored in Session, using specific
-     * session field name.
-     *
-     * If this AdminUser is found, stores it locally and uses it as "official"
-     * adminUser object
-     *
-     * Otherwise, new AdminUser is created and stored (not flushed nor
-     * persisted)
-     *
-     * @return AdminUserInterface|Object|string Loaded admin user
-     */
-    public function loadAdminUser()
+    public function get()
     {
         if ($this->adminUser instanceof AdminUserInterface) {
             return $this->adminUser;
@@ -121,29 +90,24 @@ class AdminUserWrapper
             ? $this->tokenStorage->getToken()
             : null;
 
-        if ($token instanceof UsernamePasswordToken) {
-            $this->adminUser = $token->getUser();
-        } else {
-            $this->adminUser = $this
+        $this->adminUser = ($token instanceof UsernamePasswordToken)
+            ? $token->getUser()
+            : $this
                 ->adminUserFactory
                 ->create();
-        }
 
         return $this->adminUser;
     }
 
     /**
-     * Reload AdminUser.
+     * Clean loaded object in order to reload it again.
      *
-     * This method assumes that current adminUser is not valid anymore, and
-     * tries to reload it.
-     *
-     * @return AdminUserInterface Loaded customer
+     * @return $this Self object
      */
-    public function reloadAdminUser()
+    public function clean()
     {
-        return $this
-            ->setAdminUser(null)
-            ->loadAdminUser();
+        $this->adminUser = null;
+
+        return $this;
     }
 }

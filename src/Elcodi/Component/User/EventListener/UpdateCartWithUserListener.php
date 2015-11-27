@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -34,14 +34,14 @@ class UpdateCartWithUserListener
      *
      * Cart Wrapper holding reference to current Cart
      */
-    protected $cartWrapper;
+    private $cartWrapper;
 
     /**
      * @var ObjectManager
      *
      * Object manager for the Cart entity
      */
-    protected $cartManager;
+    private $cartManager;
 
     /**
      * Construct method
@@ -68,8 +68,13 @@ class UpdateCartWithUserListener
      */
     public function onAuthenticationSuccess(AuthenticationEvent $event)
     {
-        $loggedUser = $event->getAuthenticationToken()->getUser();
-        $cart = $this->cartWrapper->getCartFromSession();
+        $loggedUser = $event
+            ->getAuthenticationToken()
+            ->getUser();
+
+        $cart = $this
+            ->cartWrapper
+            ->get();
 
         if (
             ($loggedUser instanceof CustomerInterface) &&

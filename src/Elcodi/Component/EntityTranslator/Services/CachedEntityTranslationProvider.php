@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -53,7 +53,7 @@ class CachedEntityTranslationProvider extends AbstractCacheWrapper implements En
      *
      * Translations to be flushed
      */
-    protected $translationsToBeFlushed;
+    protected $translationsToBeFlushed = [];
 
     /**
      * Construct method
@@ -70,7 +70,6 @@ class CachedEntityTranslationProvider extends AbstractCacheWrapper implements En
         $this->entityTranslatorProvider = $entityTranslationProvider;
         $this->entityTranslationRepository = $entityTranslationRepository;
         $this->cachePrefix = $cachePrefix;
-        $this->translationsToBeFlushed = [];
     }
 
     /**
@@ -81,7 +80,7 @@ class CachedEntityTranslationProvider extends AbstractCacheWrapper implements En
      * @param string $entityField Field of entity
      * @param string $locale      Locale
      *
-     * @return string|false Value fetched
+     * @return string|boolean Value fetched
      */
     public function getTranslation(
         $entityType,
@@ -124,11 +123,11 @@ class CachedEntityTranslationProvider extends AbstractCacheWrapper implements En
     /**
      * Set translation
      *
-     * @param string $entityType       Type of entity
-     * @param string $entityId         Id of entity
-     * @param string $entityField      Field of entity
-     * @param string $translationValue Translated value
-     * @param string $locale           Locale
+     * @param string         $entityType       Type of entity
+     * @param string         $entityId         Id of entity
+     * @param string         $entityField      Field of entity
+     * @param string|boolean $translationValue Translated value
+     * @param string         $locale           Locale
      *
      * @return $this Self object
      */

@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -33,7 +33,9 @@ use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 interface CustomerInterface extends AbstractUserInterface
 {
     /**
-     * @param string
+     * Set phone
+     *
+     * @param string $phone Phone
      *
      * @return $this
      */
@@ -119,7 +121,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @return $this Self object
      */
-    public function setOrders($orders);
+    public function setOrders(Collection $orders);
 
     /**
      * Get user orders
@@ -151,7 +153,7 @@ interface CustomerInterface extends AbstractUserInterface
      *
      * @return $this Self object
      */
-    public function setCarts($carts);
+    public function setCarts(Collection $carts);
 
     /**
      * Get Cart collection

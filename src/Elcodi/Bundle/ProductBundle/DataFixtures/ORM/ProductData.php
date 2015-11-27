@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -162,6 +162,7 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
             'Elcodi\Bundle\CurrencyBundle\DataFixtures\ORM\CurrencyData',
             'Elcodi\Bundle\ProductBundle\DataFixtures\ORM\CategoryData',
             'Elcodi\Bundle\ProductBundle\DataFixtures\ORM\ManufacturerData',
+            'Elcodi\Bundle\StoreBundle\DataFixtures\ORM\StoreData',
         ];
     }
 }

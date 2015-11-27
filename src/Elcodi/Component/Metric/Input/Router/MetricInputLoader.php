@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -33,21 +33,21 @@ class MetricInputLoader implements LoaderInterface
      *
      * Input route name
      */
-    protected $inputControllerRouteName;
+    private $inputControllerRouteName;
 
     /**
      * @var string
      *
      * Input controller route
      */
-    protected $inputResizeControllerRoute;
+    private $inputResizeControllerRoute;
 
     /**
      * @var boolean
      *
      * Route is loaded
      */
-    protected $loaded = false;
+    private $loaded = false;
 
     /**
      * Construct method

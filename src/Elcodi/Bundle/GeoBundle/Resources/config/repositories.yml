@@ -9,11 +9,13 @@ services:
     #
     elcodi.repository.address:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.entity.address.class% ]
+        arguments:
+            - %elcodi.entity.address.class%
 
     #
     # Repository for entity location
     #
     elcodi.repository.location:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.entity.location.class% ]
+        arguments:
+            - %elcodi.entity.location.class%

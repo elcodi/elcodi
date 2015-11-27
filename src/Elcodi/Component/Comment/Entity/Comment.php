@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -22,20 +22,14 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\Component\Comment\Entity\Interfaces\CommentInterface;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
+use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 
 /**
  * Class Comment
  */
 class Comment implements CommentInterface
 {
-    use DateTimeTrait, EnabledTrait;
-
-    /**
-     * @var integer
-     *
-     * id
-     */
-    protected $id;
+    use IdentifiableTrait, DateTimeTrait, EnabledTrait;
 
     /**
      * @var string
@@ -94,44 +88,6 @@ class Comment implements CommentInterface
     protected $content;
 
     /**
-     * @var string
-     *
-     * content
-     */
-    protected $parsedContent;
-
-    /**
-     * @var integer
-     *
-     * content
-     */
-    protected $parsingType;
-
-    /**
-     * Sets Id
-     *
-     * @param integer $id Id
-     *
-     * @return $this Self object
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * Get Id
-     *
-     * @return integer Id
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * Sets Content
      *
      * @param string $content Content
@@ -162,7 +118,7 @@ class Comment implements CommentInterface
      *
      * @return $this Self object
      */
-    public function setParent($parent = null)
+    public function setParent(CommentInterface $parent = null)
     {
         $this->parent = $parent;
 
@@ -177,54 +133,6 @@ class Comment implements CommentInterface
     public function getParent()
     {
         return $this->parent;
-    }
-
-    /**
-     * Sets ParsedContent
-     *
-     * @param string $parsedContent ParsedContent
-     *
-     * @return $this Self object
-     */
-    public function setParsedContent($parsedContent)
-    {
-        $this->parsedContent = $parsedContent;
-
-        return $this;
-    }
-
-    /**
-     * Get ParsedContent
-     *
-     * @return string ParsedContent
-     */
-    public function getParsedContent()
-    {
-        return $this->parsedContent;
-    }
-
-    /**
-     * Sets ParsingType
-     *
-     * @param integer $parsingType ParsingType
-     *
-     * @return $this Self object
-     */
-    public function setParsingType($parsingType)
-    {
-        $this->parsingType = $parsingType;
-
-        return $this;
-    }
-
-    /**
-     * Get ParsingType
-     *
-     * @return integer ParsingType
-     */
-    public function getParsingType()
-    {
-        return $this->parsingType;
     }
 
     /**

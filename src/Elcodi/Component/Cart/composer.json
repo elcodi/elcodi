@@ -31,19 +31,17 @@
         }
     ],
     "require": {
-        "php": ">=5.4",
-        "doctrine/common": "~2.5",
-        "doctrine/orm": "~2.5",
-        "symfony/event-dispatcher": "~2.6",
-        "symfony/http-foundation": "~2.6",
-        "sebastian/money": "~1.3",
+        "php": "^5.4|^7.0",
+        "doctrine/common": "^2.5",
+        "doctrine/orm": "^2.5",
+        "symfony/event-dispatcher": "^2.7|^3.0",
+        "symfony/http-foundation": "^2.7|^3.0",
 
-        "elcodi/core": "~0.5.0",
-        "elcodi/user": "~0.5.0",
-        "elcodi/product": "~0.5.0",
-        "elcodi/state-transition-machine": "~0.5.0",
-        "elcodi/currency": "~0.5.0",
-        "elcodi/shipping": "~0.5.0"
+        "elcodi/core": "^1.0",
+        "elcodi/user": "^1.0",
+        "elcodi/product": "^1.0",
+        "elcodi/state-transition-machine": "^1.0",
+        "elcodi/currency": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "4.5.0"
@@ -53,12 +51,9 @@
             "Elcodi\\Component\\Cart\\": ""
         }
     },
-    "config": {
-        "bin-dir": "bin"
-    },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.5-dev"
+            "dev-master": "1.0-dev"
         }
     }
 }

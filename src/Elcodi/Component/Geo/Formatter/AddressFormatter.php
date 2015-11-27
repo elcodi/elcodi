@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,8 +17,8 @@
 
 namespace Elcodi\Component\Geo\Formatter;
 
+use Elcodi\Component\Geo\Adapter\LocationProvider\Interfaces\LocationProviderAdapterInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
-use Elcodi\Component\Geo\Services\Interfaces\LocationProviderInterface;
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
@@ -27,7 +27,7 @@ use Elcodi\Component\Geo\ValueObject\LocationData;
 class AddressFormatter
 {
     /**
-     * @var LocationProviderInterface
+     * @var LocationProviderAdapterInterface
      *
      * The location provider interface
      */
@@ -36,11 +36,10 @@ class AddressFormatter
     /**
      * Builds a new address formatter
      *
-     * @param LocationProviderInterface $locationProvider A location provider
+     * @param LocationProviderAdapterInterface $locationProvider A location provider
      */
-    public function __construct(
-        LocationProviderInterface $locationProvider
-    ) {
+    public function __construct(LocationProviderAdapterInterface $locationProvider)
+    {
         $this->locationProvider = $locationProvider;
     }
 
@@ -97,7 +96,7 @@ class AddressFormatter
      *
      * @return string
      */
-    protected function buildFullAddressString(
+    private function buildFullAddressString(
         AddressInterface $address,
         array $cityHierarchy
     ) {

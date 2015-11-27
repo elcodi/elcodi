@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,22 +17,33 @@
 
 namespace Elcodi\Component\Product\Twig;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Twig_Extension;
-use Twig_SimpleFilter;
 use Twig_SimpleFunction;
 
-use Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface;
-use Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface;
-use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
-use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
-use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
+use Elcodi\Component\Product\Services\ProductOptionsResolver;
 
 /**
  * Product extension for twig
  */
 class ProductExtension extends Twig_Extension
 {
+    /**
+     * @var ProductOptionsResolver
+     *
+     * Product options resolver
+     */
+    private $productOptionsResolver;
+
+    /**
+     * Construct
+     *
+     * @param ProductOptionsResolver $productOptionsResolver Product options resolver
+     */
+    public function __construct(ProductOptionsResolver $productOptionsResolver)
+    {
+        $this->productOptionsResolver = $productOptionsResolver;
+    }
+
     /**
      * Returns defined twig functions
      *
@@ -41,99 +52,11 @@ class ProductExtension extends Twig_Extension
     public function getFunctions()
     {
         return [
-            new Twig_SimpleFunction('available_options', [$this, 'getAvailableOptions']),
+            new Twig_SimpleFunction('available_options', [
+                $this->productOptionsResolver,
+                'getAvailableOptions',
+            ]),
         ];
-    }
-
-    /**
-     * Returns defined twig functions
-     *
-     * @return Twig_SimpleFilter[] Filters
-     */
-    public function getFilters()
-    {
-        return [
-            new Twig_SimpleFilter('purchasable_name', [$this, 'getPurchasableName']),
-        ];
-    }
-
-    /**
-     * Returns a human readable name for a purchasable, whether Product or Variant
-     *
-     * @param PurchasableInterface $purchasable Purchasable to get name from
-     * @param string               $separator   Separator string for product variant options
-     *
-     * @return string
-     */
-    public function getPurchasableName(
-        PurchasableInterface $purchasable,
-        $separator = ' - '
-    ) {
-        if ($purchasable instanceof ProductInterface) {
-            /**
-             * @var ProductInterface $purchasable
-             */
-            $productName = $purchasable->getName();
-        } else {
-            /**
-             * @var VariantInterface $purchasable
-             */
-            $productName = $purchasable->getProduct()->getName();
-
-            foreach ($purchasable->getOptions() as $option) {
-                /**
-                 * @var ValueInterface $option
-                 */
-                $productName .= $separator .
-                    $option->getAttribute()->getName() .
-                    ' ' .
-                    $option->getValue();
-            }
-        }
-
-        return $productName;
-    }
-
-    /**
-     * Returns an array of unique available options for a Product
-     *
-     * Returned Options belong to Variants available for purchase
-     *
-     * @param AttributeInterface $attribute
-     *
-     * @param ProductInterface   $product
-     * @param AttributeInterface $attribute
-     *
-     * @return ArrayCollection
-     */
-    public function getAvailableOptions(
-        ProductInterface $product,
-        AttributeInterface $attribute
-    ) {
-        $availableOptions = new ArrayCollection();
-
-        foreach ($product->getVariants() as $variant) {
-
-            /**
-             * @var VariantInterface $variant
-             */
-            if (!$variant->isEnabled() || $variant->getStock() <= 0) {
-                continue;
-            }
-
-            foreach ($variant->getOptions() as $option) {
-                /**
-                 * @var ValueInterface $option
-                 */
-                if ($option->getAttribute() == $attribute &&
-                    !$availableOptions->contains($option)
-                ) {
-                    $availableOptions->add($option);
-                }
-            }
-        }
-
-        return $availableOptions;
     }
 
     /**

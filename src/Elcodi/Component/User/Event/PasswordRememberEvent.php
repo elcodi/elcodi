@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -26,21 +26,21 @@ use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
  *
  * This event send an email to customer
  */
-class PasswordRememberEvent extends Event
+final class PasswordRememberEvent extends Event
 {
     /**
      * @var AbstractUserInterface
      *
      * User
      */
-    protected $user;
+    private $user;
 
     /**
      * @var string
      *
      * Remember url
      */
-    protected $rememberUrl;
+    private $rememberUrl;
 
     /**
      * Construct method

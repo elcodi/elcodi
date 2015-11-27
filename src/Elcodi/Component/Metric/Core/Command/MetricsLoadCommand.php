@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,25 +17,24 @@
 
 namespace Elcodi\Component\Metric\Core\Command;
 
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+use Elcodi\Component\Core\Command\Abstracts\AbstractElcodiCommand;
 use Elcodi\Component\Metric\Core\Services\MetricLoader;
 
 /**
  * Class MetricsLoadCommand
  */
-class MetricsLoadCommand extends Command
+class MetricsLoadCommand extends AbstractElcodiCommand
 {
     /**
      * @var MetricLoader
      *
      * Metric loader
      */
-    protected $metricLoader;
+    private $metricLoader;
 
     /**
      * Construct
@@ -71,26 +70,24 @@ class MetricsLoadCommand extends Command
      * @param InputInterface  $input  The input interface
      * @param OutputInterface $output The output interface
      *
-     * @return integer|null|void
+     * @return void
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $this->startCommand($output);
+
         $days = $input->getArgument('days');
-
-        $formatter = $output->getFormatter();
-        $formatter->setStyle('header', new OutputFormatterStyle('green'));
-        $formatter->setStyle('body', new OutputFormatterStyle('white'));
-
         $entries = $this
             ->metricLoader
             ->loadEntriesFromLastDays($days);
 
         $nbEntries = count($entries);
-        $message = sprintf(
-            '<header>%s</header> <body>%s</body>',
-            '[Metric]',
-            'Process finished. Added ' . $nbEntries . ' entries from last ' . $days . ' days'
+        $this->printMessage(
+            $output,
+            'Metric',
+            'Added ' . $nbEntries . ' entries from last ' . $days . ' days'
         );
-        $output->writeln($message);
+
+        $this->finishCommand($output);
     }
 }

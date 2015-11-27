@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -28,6 +28,19 @@ use Elcodi\Component\Currency\Entity\Money;
  */
 class CartManagerProductTest extends AbstractCartManagerTest
 {
+    /**
+     * Load fixtures of these bundles
+     *
+     * @return array Bundles name where fixtures should be found
+     */
+    protected static function loadFixturesBundles()
+    {
+        return [
+            'ElcodiCurrencyBundle',
+            'ElcodiStoreBundle',
+        ];
+    }
+
     /**
      * Creates, flushes and returns a Purchasable
      *

@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -83,7 +83,7 @@ class EntityTranslationProvider implements EntityTranslationProviderInterface
      * @param string $entityField Field of entity
      * @param string $locale      Locale
      *
-     * @return string Value fetched
+     * @return string|boolean Value fetched
      */
     public function getTranslation(
         $entityType,

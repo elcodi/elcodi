@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,7 +17,6 @@
 
 namespace Elcodi\Component\Rule\ExpressionLanguage\Provider;
 
-use Doctrine\Common\Persistence\ObjectRepository;
 use RuntimeException;
 use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
@@ -38,23 +37,23 @@ class RuleProvider implements ExpressionFunctionProviderInterface
      *
      * Rule repository
      */
-    protected $ruleRepository;
+    private $ruleRepository;
 
     /**
      * @var RuleManager
      *
      * Rule manager
      */
-    protected $ruleManager;
+    private $ruleManager;
 
     /**
      * Construct method
      *
-     * @param ObjectRepository $ruleRepository Rule repository
-     * @param RuleManager      $ruleManager    Rule manager
+     * @param RuleRepository $ruleRepository Rule repository
+     * @param RuleManager    $ruleManager    Rule manager
      */
     public function __construct(
-        ObjectRepository $ruleRepository,
+        RuleRepository $ruleRepository,
         RuleManager $ruleManager
     ) {
         $this->ruleRepository = $ruleRepository;

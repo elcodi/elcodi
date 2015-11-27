@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -29,6 +29,8 @@ use Elcodi\Component\Cart\Factory\CartFactory;
 use Elcodi\Component\Cart\Factory\CartLineFactory;
 use Elcodi\Component\Cart\Services\CartManager;
 use Elcodi\Component\Cart\Wrapper\CartWrapper;
+use Elcodi\Component\Currency\Entity\Currency;
+use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 
 /**
@@ -76,10 +78,18 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
          * @var CartLineFactory         $cartLineFactory
          * @var CartWrapper             $cartWrapper
          */
+        $emptyMoneyWrapper = $this->getMock('Elcodi\Component\Currency\Wrapper\EmptyMoneyWrapper', [], [], '', false);
+        $currency = new Currency();
+        $currency->setIso('EUR');
+        $emptyMoneyWrapper
+            ->expects($this->any())
+            ->method('get')
+            ->willReturn(Money::create(0, $currency));
+
         $cartEventDispatcher = $this->getMock('Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher', [], [], '', false);
         $cartLineEventDispatcher = $this->getMock('Elcodi\Component\Cart\EventDispatcher\CartLineEventDispatcher', [], [], '', false);
-        $cartFactory = $this->getMock('Elcodi\Component\Cart\Factory\CartFactory', ['create']);
-        $cartLineFactory = $this->getMock('Elcodi\Component\Cart\Factory\CartLineFactory', ['create']);
+        $cartFactory = $this->getMock('Elcodi\Component\Cart\Factory\CartFactory', ['create'], [$emptyMoneyWrapper]);
+        $cartLineFactory = $this->getMock('Elcodi\Component\Cart\Factory\CartLineFactory', ['create'], [$emptyMoneyWrapper]);
 
         $this->cartManager = new CartManager(
             $cartEventDispatcher,
@@ -111,7 +121,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
             ->method('create')
             ->will($this->returnValue(new CartLine()));
 
-        $this->cartManager->addProduct($cart, $purchaseable, 1);
+        $this->cartManager->addPurchasable($cart, $purchaseable, 1);
 
         $this->assertCount(1, $cart->getCartLines());
         $this->assertEquals(1, $cart->getTotalItemNumber());
@@ -140,8 +150,8 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
 
         $this
             ->cartManager
-            ->addProduct($cart, $purchaseable, 1)
-            ->addProduct($cart, $purchaseable, 1);
+            ->addPurchasable($cart, $purchaseable, 1)
+            ->addPurchasable($cart, $purchaseable, 1);
 
         $this->assertCount(1, $cart->getCartLines());
     }
@@ -374,7 +384,9 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         $cart = new Cart();
         $cart->setCartLines(new ArrayCollection());
 
-        $this->cartManager->addProduct($cart, $product, $quantity);
+        $this
+            ->cartManager
+            ->addPurchasable($cart, $product, $quantity);
 
         if ($productCreated) {
             $createdLine = $cart->getCartLines()->first();
@@ -421,10 +433,18 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
          * @var CartLineFactory         $cartLineFactory
          * @var CartWrapper             $cartWrapper
          */
+        $emptyMoneyWrapper = $this->getMock('Elcodi\Component\Currency\Wrapper\EmptyMoneyWrapper', [], [], '', false);
+        $currency = new Currency();
+        $currency->setIso('EUR');
+        $emptyMoneyWrapper
+            ->expects($this->any())
+            ->method('get')
+            ->willReturn(Money::create(0, $currency));
+
         $cartEventDispatcher = $this->getMock('Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher', [], [], '', false);
         $cartLineEventDispatcher = $this->getMock('Elcodi\Component\Cart\EventDispatcher\CartLineEventDispatcher', [], [], '', false);
-        $cartFactory = $this->getMock('Elcodi\Component\Cart\Factory\CartFactory', ['create']);
-        $cartLineFactory = $this->getMock('Elcodi\Component\Cart\Factory\CartLineFactory', ['create']);
+        $cartFactory = $this->getMock('Elcodi\Component\Cart\Factory\CartFactory', ['create'], [$emptyMoneyWrapper]);
+        $cartLineFactory = $this->getMock('Elcodi\Component\Cart\Factory\CartLineFactory', ['create'], [$emptyMoneyWrapper]);
 
         $cartLineFactory
             ->expects($this->any())
@@ -479,7 +499,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
             ->method('increaseCartLineQuantity');
 
         $cartManager
-            ->addProduct(
+            ->addPurchasable(
                 $cart,
                 $variant,
                 1
@@ -518,7 +538,9 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
             ->method('getId')
             ->willReturn($productId);
 
-        $this->cartManager->removeProduct($cart, $productToRemove, $quantity);
+        $this
+            ->cartManager
+            ->removePurchasable($cart, $productToRemove, $quantity);
 
         $this->assertCount($quantityExpected, $cart->getCartLines());
     }

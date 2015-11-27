@@ -1,0 +1,13 @@
+services:
+
+    #
+    # Repositories
+    #
+
+    #
+    # Repository for entity store
+    #
+    elcodi.repository.store:
+        parent: elcodi.abstract_repository
+        arguments:
+            - %elcodi.entity.store.class%

@@ -1,0 +1,5 @@
+Elcodi\Component\Plugin\Entity\PluginConfiguration:
+    type: embeddable
+    fields:
+        configuration:
+            type: json_array

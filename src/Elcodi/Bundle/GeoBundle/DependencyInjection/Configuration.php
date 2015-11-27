@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -54,17 +54,22 @@ class Configuration extends AbstractConfiguration
                         ))
                     ->end()
                 ->end()
-                ->scalarNode('location_populator')
-                    ->defaultValue('elcodi.location_populator.geoname')
-                ->end()
-                ->scalarNode('location_provider')
-                    ->defaultValue('elcodi.location_provider.service')
-                ->end()
-                ->scalarNode('location_api_host')
-                    ->defaultValue('http://127.0.0.1:8000')
-                ->end()
-                ->scalarNode('location_api_prefix')
-                    ->defaultValue('/api/locations')
+                ->arrayNode('location')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('populator_adapter')
+                            ->defaultValue('elcodi.location_populator_adapter.geonames')
+                        ->end()
+                        ->scalarNode('loader_adapter')
+                            ->defaultValue('elcodi.location_loader_adapter.github')
+                        ->end()
+                        ->scalarNode('provider_adapter')
+                            ->defaultValue('elcodi.location_provider_adapter.service')
+                        ->end()
+                        ->scalarNode('api_host')
+                            ->defaultNull()
+                        ->end()
+                    ->end()
                 ->end()
             ->end();
     }

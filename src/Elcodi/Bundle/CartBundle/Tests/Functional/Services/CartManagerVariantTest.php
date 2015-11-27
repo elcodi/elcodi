@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -44,11 +44,12 @@ class CartManagerVariantTest extends AbstractCartManagerTest
      *
      * @return array Bundles name where fixtures should be found
      */
-    protected function loadFixturesBundles()
+    protected static function loadFixturesBundles()
     {
         return [
             'ElcodiCurrencyBundle',
             'ElcodiAttributeBundle',
+            'ElcodiStoreBundle',
         ];
     }
 
@@ -145,11 +146,11 @@ class CartManagerVariantTest extends AbstractCartManagerTest
     {
         $this
             ->get('elcodi.manager.cart')
-            ->addProduct($this->cart, $this->purchasable, 1);
+            ->addPurchasable($this->cart, $this->purchasable, 1);
 
         $this
             ->get('elcodi.manager.cart')
-            ->addProduct($this->cart, $this->purchasable, 2);
+            ->addPurchasable($this->cart, $this->purchasable, 2);
 
         $this->assertEquals(1, $this->cart->getCartLines()->count());
         $this->assertResults(3);

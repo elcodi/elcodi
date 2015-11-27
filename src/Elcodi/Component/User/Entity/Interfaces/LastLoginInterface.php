@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -16,6 +16,8 @@
  */
 
 namespace Elcodi\Component\User\Entity\Interfaces;
+
+use DateTime;
 
 /**
  * Interface LastLoginInterface
@@ -32,9 +34,9 @@ interface LastLoginInterface
     /**
      * Sets LastLoginAt
      *
-     * @param \DateTime $lastLoginAt LastLoginAt
+     * @param DateTime $lastLoginAt LastLoginAt
      *
      * @return $this Self object
      */
-    public function setLastLoginAt($lastLoginAt);
+    public function setLastLoginAt(DateTime $lastLoginAt);
 }

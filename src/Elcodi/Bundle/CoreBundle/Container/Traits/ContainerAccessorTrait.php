@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -34,7 +34,7 @@ trait ContainerAccessorTrait
      *
      * Container
      */
-    protected $container;
+    protected static $container;
 
     /**
      * Get manager given its its entity name
@@ -45,9 +45,7 @@ trait ContainerAccessorTrait
      */
     public function getObjectManager($entityName)
     {
-        return $this
-            ->container
-            ->get('elcodi.object_manager.' . $entityName);
+        return self::$container->get('elcodi.object_manager.' . $entityName);
     }
 
     /**
@@ -59,9 +57,7 @@ trait ContainerAccessorTrait
      */
     public function getRepository($entityName)
     {
-        return $this
-            ->container
-            ->get('elcodi.repository.' . $entityName);
+        return self::$container->get('elcodi.repository.' . $entityName);
     }
 
     /**
@@ -73,9 +69,7 @@ trait ContainerAccessorTrait
      */
     public function getFactory($entityName)
     {
-        return $this
-            ->container
-            ->get('elcodi.factory.' . $entityName);
+        return self::$container->get('elcodi.factory.' . $entityName);
     }
 
     /**
@@ -87,9 +81,7 @@ trait ContainerAccessorTrait
      */
     public function getDirector($entityName)
     {
-        return $this
-            ->container
-            ->get('elcodi.director.' . $entityName);
+        return self::$container->get('elcodi.director.' . $entityName);
     }
 
     /**
@@ -101,9 +93,7 @@ trait ContainerAccessorTrait
      */
     public function get($serviceName)
     {
-        return $this
-            ->container
-            ->get($serviceName);
+        return self::$container->get($serviceName);
     }
 
     /**
@@ -115,9 +105,7 @@ trait ContainerAccessorTrait
      */
     public function getParameter($parameterName)
     {
-        return $this
-            ->container
-            ->getParameter($parameterName);
+        return self::$container->getParameter($parameterName);
     }
 
     /**

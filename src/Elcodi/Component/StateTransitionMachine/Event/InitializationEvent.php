@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -25,26 +25,26 @@ use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 /**
  * Class InitializationEvent
  */
-class InitializationEvent extends Event
+final class InitializationEvent extends Event
 {
     /**
      * @var stdClass
      *
      * Object
      */
-    protected $object;
+    private $object;
 
     /**
      * @var StateLineStack
      *
      * State line stack
      */
-    protected $stateLineStack;
+    private $stateLineStack;
 
     /**
      * Construct
      *
-     * @param stdClass       $object         Object
+     * @param mixed          $object         Object
      * @param StateLineStack $stateLineStack State line stack
      */
     public function __construct(
@@ -78,7 +78,7 @@ class InitializationEvent extends Event
     /**
      * Create new object
      *
-     * @param stdClass       $object         Object
+     * @param mixed          $object         Object
      * @param StateLineStack $stateLineStack State line stack
      *
      * @return self New instance

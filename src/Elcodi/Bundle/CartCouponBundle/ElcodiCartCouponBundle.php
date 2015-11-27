@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,19 +17,19 @@
 
 namespace Elcodi\Bundle\CartCouponBundle;
 
-use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\HttpKernel\KernelInterface;
 
 use Elcodi\Bundle\CartCouponBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\CartCouponBundle\DependencyInjection\ElcodiCartCouponExtension;
+use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 
 /**
  * Class ElcodiCartCouponBundle
  */
-class ElcodiCartCouponBundle extends Bundle implements DependentBundleInterface
+class ElcodiCartCouponBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -56,7 +56,7 @@ class ElcodiCartCouponBundle extends Bundle implements DependentBundleInterface
      *
      * @return array Bundle instances
      */
-    public static function getBundleDependencies()
+    public static function getBundleDependencies(KernelInterface $kernel)
     {
         return [
             'Elcodi\Bundle\CartBundle\ElcodiCartBundle',
@@ -64,17 +64,5 @@ class ElcodiCartCouponBundle extends Bundle implements DependentBundleInterface
             'Elcodi\Bundle\RuleBundle\ElcodiRuleBundle',
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
-    }
-
-    /**
-     * Register Commands.
-     *
-     * Disabled as commands are registered as services.
-     *
-     * @param Application $application An Application instance
-     */
-    public function registerCommands(Application $application)
-    {
-        return;
     }
 }

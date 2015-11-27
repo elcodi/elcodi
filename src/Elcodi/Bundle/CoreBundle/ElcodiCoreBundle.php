@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,10 +17,9 @@
 
 namespace Elcodi\Bundle\CoreBundle;
 
-use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\ElcodiCoreExtension;
 
 /**
@@ -30,7 +29,7 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\ElcodiCoreExtension;
  * All available bundles in this suite could have this bundle as a main
  * dependency.
  */
-class ElcodiCoreBundle extends Bundle
+class ElcodiCoreBundle extends AbstractElcodiBundle
 {
     /**
      * Returns the bundle's container extension.
@@ -40,17 +39,5 @@ class ElcodiCoreBundle extends Bundle
     public function getContainerExtension()
     {
         return new ElcodiCoreExtension();
-    }
-
-    /**
-     * Register Commands.
-     *
-     * Disabled as commands are registered as services
-     *
-     * @param Application $application An Application instance
-     */
-    public function registerCommands(Application $application)
-    {
-        return;
     }
 }

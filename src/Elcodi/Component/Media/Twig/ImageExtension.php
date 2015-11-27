@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -34,21 +34,21 @@ class ImageExtension extends Twig_Extension
      *
      * Router
      */
-    protected $router;
+    private $router;
 
     /**
      * @var string
      *
      * Resize route name
      */
-    protected $imageResizeControllerRouteName;
+    private $imageResizeControllerRouteName;
 
     /**
      * @var string
      *
      * View route name
      */
-    protected $imageViewControllerRouteName;
+    private $imageViewControllerRouteName;
 
     /**
      * @var string
@@ -59,21 +59,21 @@ class ImageExtension extends Twig_Extension
      * http://www.elcodi.com/image/1 to
      * http://cdn.elcodi.com/image/1
      */
-    protected $generatedRouteHost;
+    private $generatedRouteHost;
 
     /**
      * @var RequestContext
      *
      * Original router context
      */
-    protected $originalContext;
+    private $originalContext;
 
     /**
      * @var RequestContext
      *
      * Modified router context
      */
-    protected $modifiedContext;
+    private $modifiedContext;
 
     /**
      * Construct method
@@ -123,21 +123,26 @@ class ImageExtension extends Twig_Extension
      * Return route of image with desired resize
      *
      * @param ImageInterface $imageMedia Imagemedia element
-     * @param Array          $options    Options
+     * @param array          $options    Options
      *
      * @return string image route
      */
-    public function resize(ImageInterface $imageMedia, $options)
+    public function resize(ImageInterface $imageMedia, array $options)
     {
-        $routeReferenceType = $this->prepareRouterContext();
+        $this->prepareRouterContext();
+
+        $absoluteUrlOption = isset($options['absolute_url'])
+            ? $options['absolute_url']
+            : false;
+        $routeReferenceType = $this->getReferenceType($absoluteUrlOption);
 
         $generatedRoute = $this
             ->router
             ->generate($this->imageResizeControllerRouteName, [
-                'id'      => (int) $imageMedia->getId(),
-                'height'  => (int) $options['height'],
-                'width'   => (int) $options['width'],
-                'type'    => (int) $options['type'],
+                'id' => (int) $imageMedia->getId(),
+                'height' => (int) $options['height'],
+                'width' => (int) $options['width'],
+                'type' => (int) $options['type'],
                 '_format' => $imageMedia->getExtension(),
             ], $routeReferenceType);
 
@@ -149,18 +154,21 @@ class ImageExtension extends Twig_Extension
     /**
      * Return route of image
      *
-     * @param ImageInterface $imageMedia Imagemedia element
+     * @param ImageInterface $imageMedia  Imagemedia element
+     * @param bool           $absoluteUrl If the url generated shoud be absolute
      *
      * @return string image route
      */
-    public function viewImage(ImageInterface $imageMedia)
+    public function viewImage(ImageInterface $imageMedia, $absoluteUrl = false)
     {
-        $routeReferenceType = $this->prepareRouterContext();
+        $this->prepareRouterContext();
+
+        $routeReferenceType = $this->getReferenceType($absoluteUrl);
 
         $generatedRoute = $this
             ->router
             ->generate($this->imageViewControllerRouteName, [
-                'id'      => (int) $imageMedia->getId(),
+                'id' => (int) $imageMedia->getId(),
                 '_format' => $imageMedia->getExtension(),
             ], $routeReferenceType);
 
@@ -170,40 +178,11 @@ class ImageExtension extends Twig_Extension
     }
 
     /**
-     * Prepares the Host part of a image resize URL
-     *
-     * @return mixed Route reference type
-     */
-    protected function prepareRouterContext()
-    {
-        if ($this->generatedRouteHost) {
-            $this
-                ->router
-                ->setContext($this->modifiedContext);
-
-            /**
-             * When a Host is set for the image route,
-             * we need to change the route context URL
-             */
-            $this
-                ->router
-                ->getContext()
-                ->setHost($this->generatedRouteHost);
-
-            $routeReferenceType = UrlGeneratorInterface::ABSOLUTE_URL;
-        } else {
-            $routeReferenceType = UrlGeneratorInterface::ABSOLUTE_PATH;
-        }
-
-        return $routeReferenceType;
-    }
-
-    /**
      * Fixes a router Context back after changing the "Host" URL
      *
      * @return $this Self object
      */
-    public function fixRouterContext()
+    private function fixRouterContext()
     {
         if ($this->generatedRouteHost) {
             $this
@@ -222,5 +201,43 @@ class ImageExtension extends Twig_Extension
     public function getName()
     {
         return 'image_extension';
+    }
+
+    /**
+     * Prepares the Host part of a image resize URL
+     *
+     * @return mixed Route reference type
+     */
+    private function prepareRouterContext()
+    {
+        if ($this->generatedRouteHost) {
+            $this
+                ->router
+                ->setContext($this->modifiedContext);
+
+            /**
+             * When a Host is set for the image route,
+             * we need to change the route context URL
+             */
+            $this
+                ->router
+                ->getContext()
+                ->setHost($this->generatedRouteHost);
+        }
+    }
+
+    /**
+     * Gets the reference type depending on the option and the generated route
+     * host.
+     *
+     * @param bool $absoluteUrlOption The received absolute url option.
+     *
+     * @return bool The reference type.
+     */
+    private function getReferenceType($absoluteUrlOption = false)
+    {
+        return ($this->generatedRouteHost || $absoluteUrlOption)
+            ? UrlGeneratorInterface::ABSOLUTE_URL
+            : UrlGeneratorInterface::ABSOLUTE_PATH;
     }
 }

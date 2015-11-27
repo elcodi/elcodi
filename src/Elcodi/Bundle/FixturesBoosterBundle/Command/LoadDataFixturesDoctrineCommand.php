@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -19,6 +19,7 @@ namespace Elcodi\Bundle\FixturesBoosterBundle\Command;
 
 use Doctrine\Bundle\FixturesBundle\Command\LoadDataFixturesDoctrineCommand as OriginalCommand;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 
@@ -64,6 +65,22 @@ class LoadDataFixturesDoctrineCommand extends OriginalCommand
     }
 
     /**
+     * Configure command
+     */
+    protected function configure()
+    {
+        parent::configure();
+
+        $this
+            ->addOption(
+                'no-booster',
+                null,
+                InputOption::VALUE_OPTIONAL,
+                'Disables the booster'
+            );
+    }
+
+    /**
      * Executes the current command.
      *
      * This method is not abstract because you can use this class
@@ -82,8 +99,13 @@ class LoadDataFixturesDoctrineCommand extends OriginalCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        if (empty($this->databaseFilePath)) {
-            return parent::execute($input, $output);
+        if (
+            empty($this->databaseFilePath) ||
+            $input->getOption('no-booster')
+        ) {
+            parent::execute($input, $output);
+
+            return 0;
         }
 
         /**
@@ -97,7 +119,7 @@ class LoadDataFixturesDoctrineCommand extends OriginalCommand
                 ? $dirOrFile :
                 [$dirOrFile];
         } else {
-            foreach ($this->getApplication()->getKernel()->getBundles() as $bundle) {
+            foreach ($this->kernel->getBundles() as $bundle) {
                 $paths[] = $bundle->getPath() . '/DataFixtures/ORM';
             }
         }
@@ -109,7 +131,7 @@ class LoadDataFixturesDoctrineCommand extends OriginalCommand
         $paths[] = get_class($this->kernel);
 
         sort($paths, SORT_STRING);
-        $backupFileName = '/tmp/' . sha1(serialize($paths)) . '.backup.database';
+        $backupFileName = sys_get_temp_dir() . '/' . sha1(serialize($paths)) . '.backup.database';
         if (file_exists($backupFileName)) {
             copy($backupFileName, $this->databaseFilePath);
 

@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -72,6 +72,14 @@ class Configuration extends AbstractConfiguration
                         ->booleanNode('use_stock')
                             ->defaultFalse()
                         ->end()
+                        ->arrayNode('related_products_adapter')
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->scalarNode('adapter')
+                                    ->defaultValue('elcodi.related_products_provider_adapter.same_category')
+                                ->end()
+                            ->end()
+                        ->end()
                     ->end()
                 ->end()
                 ->arrayNode('categories')
@@ -82,6 +90,14 @@ class Configuration extends AbstractConfiguration
                         ->end()
                         ->scalarNode('cache_key')
                             ->defaultValue('categories')
+                        ->end()
+                    ->end()
+                ->end()
+                ->arrayNode('related_purchasables_provider')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('adapter')
+                            ->defaultValue('elcodi.related_purchasables_provider.same_category')
                         ->end()
                     ->end()
                 ->end()

@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -43,17 +43,17 @@ class XmlRenderer implements SitemapRendererInterface
             $data .= '        <loc>' . $basepath . $sitemapElement->getLocation() . '</loc>' . PHP_EOL;
 
             $lastModification = $sitemapElement->getLastModification();
-            if ($lastModification) {
+            if (null !== $lastModification) {
                 $data .= '        <lastmod>' . $lastModification . '</lastmod>' . PHP_EOL;
             }
 
             $changeFrequency = $sitemapElement->getChangeFrequency();
-            if ($changeFrequency) {
+            if (null !== $changeFrequency) {
                 $data .= '        <changefreq>' . $changeFrequency . '</changefreq>' . PHP_EOL;
             }
 
             $priority = $sitemapElement->getPriority();
-            if ($priority) {
+            if (null !== $priority) {
                 $data .= '        <priority>' . $priority . '</priority>' . PHP_EOL;
             }
 

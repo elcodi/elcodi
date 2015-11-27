@@ -1,0 +1,7 @@
+services:
+
+    #
+    # Services
+    #
+    elcodi.guzzle_client:
+        class: GuzzleHttp\Client

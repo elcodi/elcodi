@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -31,45 +31,22 @@ use Elcodi\Component\Currency\Exception\CurrencyNotConvertibleException;
 class CurrencyConverter
 {
     /**
-     * @var boolean
+     * @var ExchangeRateCalculator
      *
-     * Multiply
+     * The exchange rate calculator.
      */
-    const MULTIPLY = true;
-
-    /**
-     * @var boolean
-     *
-     * Multiply
-     */
-    const DIVIDE = false;
-
-    /**
-     * @var CurrencyManager
-     *
-     * Currency manager
-     */
-    protected $currencyManager;
-
-    /**
-     * @var string
-     *
-     * Currency base
-     */
-    protected $currencyBase;
+    private $exchangeRateCalculator;
 
     /**
      * Construct method
      *
-     * @param CurrencyManager $currencyManager Currency Manager
-     * @param string          $currencyBase    Currency base
+     * @param ExchangeRateCalculator $exchangeRateCalculator Exchange rate
+     *                                                       calculator
      */
     public function __construct(
-        CurrencyManager $currencyManager,
-        $currencyBase
+        ExchangeRateCalculator $exchangeRateCalculator
     ) {
-        $this->currencyManager = $currencyManager;
-        $this->currencyBase = $currencyBase;
+        $this->exchangeRateCalculator = $exchangeRateCalculator;
     }
 
     /**
@@ -115,7 +92,7 @@ class CurrencyConverter
      *
      * @throws CurrencyNotConvertibleException Currencies cannot be converted
      */
-    protected function convertCurrency(
+    private function convertCurrency(
         CurrencyInterface $currencyFrom,
         CurrencyInterface $currencyTo,
         $amount
@@ -124,81 +101,16 @@ class CurrencyConverter
             return Money::create($amount, $currencyFrom);
         }
 
-        $convertedAmount = $this->convertBetweenIsos(
-            $currencyFrom->getIso(),
-            $currencyTo->getIso(),
-            $amount
-        );
-
-        return Money::create($convertedAmount, $currencyTo);
-    }
-
-    /**
-     * Convert amount between two currencies
-     *
-     * If are the same currency, return same amount
-     *
-     * If is impossible to convert between them, throw Exception
-     *
-     * @param string  $currencyFromIso Currency iso where to convert from
-     * @param string  $currencyToIso   Currency iso where to convert to
-     * @param integer $amount          Amount to convert
-     *
-     * @return float value converted
-     *
-     * @throws CurrencyNotConvertibleException Currencies cannot be converted
-     */
-    protected function convertBetweenIsos(
-        $currencyFromIso,
-        $currencyToIso,
-        $amount
-    ) {
-        /**
-         * If none of given Money is baseCurrency, means we'll need to perform
-         * two partial conversions
-         */
-        if (!in_array($this->currencyBase, [$currencyFromIso, $currencyToIso])) {
-            return $this->convertBetweenIsos(
-                $this->currencyBase,
-                $currencyToIso,
-                $this->convertBetweenIsos(
-                    $currencyFromIso,
-                    $this->currencyBase,
-                    $amount
-                )
+        $exchangeRate = $this
+            ->exchangeRateCalculator
+            ->calculateExchangeRate(
+                $currencyFrom,
+                $currencyTo
             );
-        }
 
-        return ($currencyFromIso === $this->currencyBase)
-            ? $this->convertToIso($currencyToIso, $amount, self::MULTIPLY)
-            : $this->convertToIso($currencyFromIso, $amount, self::DIVIDE);
-    }
-
-    /**
-     * Convert Amount given base currency iso
-     *
-     * @param string  $currencyToIso Currency iso where to convert to
-     * @param integer $amount        Amount to convert
-     * @param boolean $type          Type of conversion
-     *
-     * @return float conversion
-     *
-     * @throws CurrencyNotConvertibleException Currencies cannot be converted
-     */
-    protected function convertToIso($currencyToIso, $amount, $type)
-    {
-        if (isset($this->currencyManager->getExchangeRateList()[$currencyToIso])) {
-            $currencyRate = $this->currencyManager->getExchangeRateList()[$currencyToIso];
-        } else {
-
-            /**
-             * No CurrencyRate can be found
-             */
-            throw new CurrencyNotConvertibleException();
-        }
-
-        return $type
-            ? $amount * $currencyRate['rate']
-            : $amount / $currencyRate['rate'];
+        return Money::create(
+            $amount * $exchangeRate,
+            $currencyTo
+        );
     }
 }

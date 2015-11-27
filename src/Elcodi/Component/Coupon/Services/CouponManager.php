@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -39,21 +39,21 @@ class CouponManager
      *
      * Coupon Factory
      */
-    protected $couponFactory;
+    private $couponFactory;
 
     /**
      * @var GeneratorInterface
      *
      * Coupon Code generator
      */
-    protected $couponCodeGenerator;
+    private $couponCodeGenerator;
 
     /**
      * @var DateTimeFactory
      *
      * DateTime Factory
      */
-    protected $dateTimeFactory;
+    private $dateTimeFactory;
 
     /**
      * Construct method
@@ -168,7 +168,7 @@ class CouponManager
      *
      * @return boolean
      */
-    protected function isActive(CouponInterface $coupon, \DateTime $now = null)
+    private function isActive(CouponInterface $coupon, \DateTime $now = null)
     {
         if (!$coupon->isEnabled()) {
             return false;
@@ -197,7 +197,7 @@ class CouponManager
      *
      * @return boolean
      */
-    protected function canBeUsed(CouponInterface $coupon)
+    private function canBeUsed(CouponInterface $coupon)
     {
         $count = $coupon->getCount();
 

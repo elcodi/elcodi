@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,15 +17,10 @@
 
 namespace Elcodi\Component\StateTransitionMachine\Machine;
 
-use stdClass;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-
 use Elcodi\Component\StateTransitionMachine\Definition\Transition;
-use Elcodi\Component\StateTransitionMachine\ElcodiStateTransitionMachineEvents;
 use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface;
 use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
-use Elcodi\Component\StateTransitionMachine\Event\InitializationEvent;
-use Elcodi\Component\StateTransitionMachine\Event\TransitionEvent;
+use Elcodi\Component\StateTransitionMachine\EventDispatcher\MachineEventDispatcher;
 use Elcodi\Component\StateTransitionMachine\Exception\ObjectAlreadyInitializedException;
 use Elcodi\Component\StateTransitionMachine\Exception\ObjectNotInitializedException;
 use Elcodi\Component\StateTransitionMachine\Exception\StateNotReachableException;
@@ -44,43 +39,43 @@ class MachineManager
      *
      * Machine
      */
-    protected $machine;
+    private $machine;
 
     /**
-     * @var EventDispatcherInterface
+     * @var MachineEventDispatcher
      *
-     * Event Dispatcher
+     * Machine Event Dispatcher
      */
-    protected $eventDispatcher;
+    private $machineEventDispatcher;
 
     /**
      * @var StateLineFactory
      *
      * StateLine factory
      */
-    protected $stateLineFactory;
+    private $stateLineFactory;
 
     /**
      * Construct
      *
-     * @param MachineInterface         $machine          Machine
-     * @param EventDispatcherInterface $eventDispatcher  Event Dispatcher
-     * @param StateLineFactory         $stateLineFactory StateLine Factory
+     * @param MachineInterface       $machine                Machine
+     * @param MachineEventDispatcher $machineEventDispatcher Event Dispatcher
+     * @param StateLineFactory       $stateLineFactory       StateLine Factory
      */
     public function __construct(
         MachineInterface $machine,
-        EventDispatcherInterface $eventDispatcher,
+        MachineEventDispatcher $machineEventDispatcher,
         StateLineFactory $stateLineFactory
     ) {
         $this->machine = $machine;
-        $this->eventDispatcher = $eventDispatcher;
+        $this->machineEventDispatcher = $machineEventDispatcher;
         $this->stateLineFactory = $stateLineFactory;
     }
 
     /**
      * Initialize the object into the machine
      *
-     * @param stdClass       $object         Object
+     * @param mixed          $object         Object
      * @param StateLineStack $stateLineStack StateLine Stack
      * @param string         $description    Description
      *
@@ -108,11 +103,13 @@ class MachineManager
 
         $stateLineStack->addStateLine($stateLine);
 
-        $this->dispatchInitializationEvents(
-            $this->machine,
-            $object,
-            $stateLineStack
-        );
+        $this
+            ->machineEventDispatcher
+            ->dispatchInitializationEvents(
+                $this->machine,
+                $object,
+                $stateLineStack
+            );
 
         return $stateLineStack;
     }
@@ -120,7 +117,7 @@ class MachineManager
     /**
      * Applies a transition given a object
      *
-     * @param stdClass       $object         Object
+     * @param mixed          $object         Object
      * @param StateLineStack $stateLineStack StateLine Stack
      * @param string         $transitionName Transition name
      * @param string         $description    Description
@@ -150,7 +147,7 @@ class MachineManager
     /**
      * Applies a transition given a object
      *
-     * @param stdClass       $object         Object
+     * @param mixed          $object         Object
      * @param StateLineStack $stateLineStack StateLine Stack
      * @param string         $transitionName Transition name
      * @param string         $description    Description
@@ -199,7 +196,7 @@ class MachineManager
      * Applies a transition action given a object and the kind of transition is
      * needed.
      *
-     * @param stdClass       $object           Object
+     * @param mixed          $object           Object
      * @param StateLineStack $stateLineStack   StateLine Stack
      * @param string         $transitionName   Transition name
      * @param string         $description      Description
@@ -210,7 +207,7 @@ class MachineManager
      * @throws StateNotReachableException    State is not reachable
      * @throws ObjectNotInitializedException Object needs to be initialized in machine
      */
-    protected function applyTransitionAction(
+    private function applyTransitionAction(
         $object,
         StateLineStack $stateLineStack,
         $transitionName,
@@ -240,133 +237,15 @@ class MachineManager
 
         $stateLineStack->addStateLine($stateLine);
 
-        $this->dispatchTransitionEvents(
-            $this->machine,
-            $object,
-            $stateLineStack,
-            $transition
-        );
+        $this
+            ->machineEventDispatcher
+            ->dispatchTransitionEvents(
+                $this->machine,
+                $object,
+                $stateLineStack,
+                $transition
+            );
 
         return $stateLineStack;
-    }
-
-    /**
-     * Throw initialization events
-     *
-     * @param MachineInterface $machine        Machine
-     * @param stdClass         $object         Object
-     * @param StateLineStack   $stateLineStack StateLine Stack
-     *
-     * @return $this Self object
-     */
-    protected function dispatchInitializationEvents(
-        MachineInterface $machine,
-        $object,
-        StateLineStack $stateLineStack
-    ) {
-        $this
-            ->eventDispatcher
-            ->dispatch(
-                str_replace(
-                    '{machine_id}',
-                    $machine->getId(),
-                    ElcodiStateTransitionMachineEvents::INITIALIZATION
-                ),
-                InitializationEvent::create(
-                    $object,
-                    $stateLineStack
-                )
-            );
-    }
-
-    /**
-     * Throw transition events
-     *
-     * @param MachineInterface $machine        Machine
-     * @param stdClass         $object         Object
-     * @param StateLineStack   $stateLineStack StateLine Stack
-     * @param Transition       $transition     Transition
-     *
-     * @return $this Self object
-     */
-    protected function dispatchTransitionEvents(
-        MachineInterface $machine,
-        $object,
-        StateLineStack $stateLineStack,
-        Transition $transition
-    ) {
-        $this
-            ->eventDispatcher
-            ->dispatch(
-                ElcodiStateTransitionMachineEvents::ALL_TRANSITIONS,
-                TransitionEvent::create(
-                    $object,
-                    $stateLineStack,
-                    $transition
-                )
-            );
-
-        $this
-            ->eventDispatcher
-            ->dispatch(
-                str_replace(
-                    [
-                        '{machine_id}',
-                        '{state_name}',
-                    ],
-                    [
-                        $machine->getId(),
-                        $transition->getStart()->getName(),
-                    ],
-                    ElcodiStateTransitionMachineEvents::TRANSITION_FROM_STATE
-                ),
-                TransitionEvent::create(
-                    $object,
-                    $stateLineStack,
-                    $transition
-                )
-            );
-
-        $this
-            ->eventDispatcher
-            ->dispatch(
-                str_replace(
-                    [
-                        '{machine_id}',
-                        '{state_name}',
-                    ],
-                    [
-                        $machine->getId(),
-                        $transition->getFinal()->getName(),
-                    ],
-                    ElcodiStateTransitionMachineEvents::TRANSITION_TO_STATE
-                ),
-                TransitionEvent::create(
-                    $object,
-                    $stateLineStack,
-                    $transition
-                )
-            );
-
-        $this
-            ->eventDispatcher
-            ->dispatch(
-                str_replace(
-                    [
-                        '{machine_id}',
-                        '{transition_name}',
-                    ],
-                    [
-                        $machine->getId(),
-                        $transition->getName(),
-                    ],
-                    ElcodiStateTransitionMachineEvents::TRANSITION
-                ),
-                TransitionEvent::create(
-                    $object,
-                    $stateLineStack,
-                    $transition
-                )
-            );
     }
 }

@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -16,8 +16,6 @@
  */
 
 namespace Elcodi\Component\Menu\Entity\Menu;
-
-use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
@@ -60,6 +58,27 @@ class Node implements NodeInterface
      * Active urls
      */
     protected $activeUrls;
+
+    /**
+     * @var string
+     *
+     * Tag
+     */
+    protected $tag;
+
+    /**
+     * @var integer
+     *
+     * Priority
+     */
+    protected $priority;
+
+    /**
+     * @var integer
+     *
+     * Warnings
+     */
+    protected $warnings;
 
     /**
      * Gets Node code
@@ -152,7 +171,7 @@ class Node implements NodeInterface
     /**
      * Get the active urls.
      *
-     * @return Collection The Active urls
+     * @return array The Active urls
      */
     public function getActiveUrls()
     {
@@ -168,8 +187,8 @@ class Node implements NodeInterface
      */
     public function addActiveUrl($activeUrl)
     {
-        $activeUrls       = json_decode($this->activeUrls, true);
-        $activeUrls[]     = $activeUrl;
+        $activeUrls = json_decode($this->activeUrls, true);
+        $activeUrls[] = $activeUrl;
         $this->activeUrls = json_encode($activeUrls);
 
         return $this;
@@ -184,14 +203,137 @@ class Node implements NodeInterface
      */
     public function removeActiveUrl($activeUrl)
     {
-        $activeUrls    = json_decode($this->activeUrls, true);
+        $activeUrls = json_decode($this->activeUrls, true);
         $positionFound = array_search($activeUrl, $activeUrls);
-
         if ($positionFound) {
             unset($activeUrls[$positionFound]);
-
             $this->activeUrls = json_encode($activeUrls);
         }
+
+        return $this;
+    }
+
+    /**
+     * Get Tag
+     *
+     * @return string Tag
+     */
+    public function getTag()
+    {
+        return $this->tag;
+    }
+
+    /**
+     * Sets Tag
+     *
+     * @param string $tag Tag
+     *
+     * @return $this Self object
+     */
+    public function setTag($tag)
+    {
+        $this->tag = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Get Priority
+     *
+     * @return int Priority
+     */
+    public function getPriority()
+    {
+        return $this->priority;
+    }
+
+    /**
+     * Sets Priority
+     *
+     * @param int $priority Priority
+     *
+     * @return $this Self object
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
+
+        return $this;
+    }
+
+    /**
+     * Is active.
+     *
+     * A menu node is considered active when the current url and the internal
+     * node url is the same.
+     *
+     * @param string $currentUrl Current Url
+     *
+     * @return boolean Menu node is active
+     */
+    public function isActive($currentUrl)
+    {
+        return
+            $currentUrl == $this->url ||
+            in_array($currentUrl, $this->getActiveUrls());
+    }
+
+    /**
+     * Is expanded.
+     *
+     * A menu node is considered expanded when is enabled or has one children
+     * expanded
+     *
+     * @param string $currentUrl Current Url
+     *
+     * @return boolean Menu Node is expanded
+     */
+    public function isExpanded($currentUrl)
+    {
+        return $this
+            ->subnodes
+            ->exists(function ($_, NodeInterface $node) use ($currentUrl) {
+
+                return
+                    $node->isActive($currentUrl) ||
+                    $node->isExpanded($currentUrl);
+            });
+    }
+
+    /**
+     * Set warnings
+     *
+     * @param integer $warnings Warnings
+     *
+     * @return $this Self object
+     */
+    public function setWarnings($warnings)
+    {
+        $this->warnings = $warnings;
+
+        return $this;
+    }
+
+    /**
+     * Get warnings
+     *
+     * @return integer Warnings
+     */
+    public function getWarnings()
+    {
+        return $this->warnings;
+    }
+
+    /**
+     * Increment warnings
+     *
+     * @param integer $warnings Warnings to be incremented
+     *
+     * @return $this Self object
+     */
+    public function incrementWarnings($warnings = 1)
+    {
+        $this->warnings += (int) $warnings;
 
         return $this;
     }

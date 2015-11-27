@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -22,14 +22,20 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
+use Elcodi\Component\Payment\Entity\PaymentMethod;
 use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
+use Elcodi\Component\Shipping\Entity\ShippingMethod;
 use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
  * Interface OrderInterface
  */
-interface OrderInterface extends PriceInterface, DimensionableInterface, IdentifiableInterface
+interface OrderInterface
+    extends
+    PriceInterface,
+    DimensionableInterface,
+    IdentifiableInterface
 {
     /**
      * Sets Customer
@@ -146,6 +152,70 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Identif
     public function setShippingAmount(MoneyInterface $shippingAmount);
 
     /**
+     * Get ShippingMethod
+     *
+     * @return ShippingMethod ShippingMethod
+     */
+    public function getShippingMethod();
+
+    /**
+     * Sets ShippingMethod
+     *
+     * @param ShippingMethod $shippingMethod ShippingMethod
+     *
+     * @return $this Self object
+     */
+    public function setShippingMethod(ShippingMethod $shippingMethod);
+
+    /**
+     * Get ShippingMethodExtra
+     *
+     * @return array ShippingMethodExtra
+     */
+    public function getShippingMethodExtra();
+
+    /**
+     * Sets ShippingMethodExtra
+     *
+     * @param array $shippingMethodExtra ShippingMethodExtra
+     *
+     * @return $this Self object
+     */
+    public function setShippingMethodExtra(array $shippingMethodExtra);
+
+    /**
+     * Get PaymentMethod
+     *
+     * @return PaymentMethod PaymentMethod
+     */
+    public function getPaymentMethod();
+
+    /**
+     * Sets PaymentMethod
+     *
+     * @param PaymentMethod $paymentMethod PaymentMethod
+     *
+     * @return $this Self object
+     */
+    public function setPaymentMethod(PaymentMethod $paymentMethod);
+
+    /**
+     * Get PaymentMethodExtra
+     *
+     * @return array PaymentMethodExtra
+     */
+    public function getPaymentMethodExtra();
+
+    /**
+     * Sets PaymentMethodExtra
+     *
+     * @param array $paymentMethodExtra PaymentMethodExtra
+     *
+     * @return $this Self object
+     */
+    public function setPaymentMethodExtra(array $paymentMethodExtra);
+
+    /**
      * Set the height
      *
      * @param integer $height Height
@@ -182,22 +252,6 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Identif
     public function setWeight($weight);
 
     /**
-     * Get InvoiceAddress
-     *
-     * @return AddressInterface InvoiceAddress
-     */
-    public function getInvoiceAddress();
-
-    /**
-     * Sets InvoiceAddress
-     *
-     * @param AddressInterface $invoiceAddress InvoiceAddress
-     *
-     * @return $this Self object
-     */
-    public function setInvoiceAddress($invoiceAddress);
-
-    /**
      * Get DeliveryAddress
      *
      * @return AddressInterface DeliveryAddress
@@ -211,7 +265,7 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Identif
      *
      * @return $this Self object
      */
-    public function setDeliveryAddress($deliveryAddress);
+    public function setDeliveryAddress(AddressInterface $deliveryAddress);
 
     /**
      * Get PaymentStateLineStack
@@ -263,5 +317,5 @@ interface OrderInterface extends PriceInterface, DimensionableInterface, Identif
      *
      * @return $this Self object
      */
-    public function setBillingAddress($billingAddress);
+    public function setBillingAddress(AddressInterface $billingAddress);
 }

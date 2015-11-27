@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,32 +17,31 @@
 
 namespace Elcodi\Component\Currency\Command;
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+use Elcodi\Component\Core\Command\Abstracts\AbstractElcodiCommand;
 use Elcodi\Component\Currency\Populator\CurrencyExchangeRatesPopulator;
 
 /**
  * Class CurrencyExchangeRatesPopulateCommand
  */
-class CurrencyExchangeRatesPopulateCommand extends Command
+class CurrencyExchangeRatesPopulateCommand extends AbstractElcodiCommand
 {
     /**
      * @var CurrencyExchangeRatesPopulator
      *
      * ExchangeRates populator
      */
-    protected $currencyExchangeRatesPopulator;
+    private $currencyExchangeRatesPopulator;
 
     /**
      * Construct method
      *
      * @param CurrencyExchangeRatesPopulator $currencyExchangeRatesPopulator CurrencyExchangeRates populator
      */
-    public function __construct(
-        CurrencyExchangeRatesPopulator $currencyExchangeRatesPopulator
-    ) {
+    public function __construct(CurrencyExchangeRatesPopulator $currencyExchangeRatesPopulator)
+    {
         parent::__construct();
 
         $this->currencyExchangeRatesPopulator = $currencyExchangeRatesPopulator;
@@ -69,8 +68,12 @@ class CurrencyExchangeRatesPopulateCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $this->startCommand($output);
+
         $this
             ->currencyExchangeRatesPopulator
             ->populate($output);
+
+        $this->finishCommand($output);
     }
 }

@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -29,21 +29,21 @@ class EntitySitemapElementProvider
      *
      * Repository
      */
-    protected $repository;
+    private $repository;
 
     /**
      * @var string
      *
      * Method
      */
-    protected $method;
+    private $method;
 
     /**
      * @var array
      *
      * Arguments
      */
-    protected $arguments;
+    private $arguments;
 
     /**
      * Construct method

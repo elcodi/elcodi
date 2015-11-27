@@ -5,8 +5,10 @@ services:
     #
     elcodi.object_manager.menu:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.entity.menu.class% ]
+        arguments:
+            - %elcodi.entity.menu.class%
 
     elcodi.object_manager.menu_node:
         parent: elcodi.abstract_manager
-        arguments: [ %elcodi.entity.menu_node.class% ]
+        arguments:
+            - %elcodi.entity.menu_node.class%

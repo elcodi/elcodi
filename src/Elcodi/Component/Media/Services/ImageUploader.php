@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -34,28 +34,28 @@ class ImageUploader
      *
      * Image Object manager
      */
-    protected $imageObjectManager;
+    private $imageObjectManager;
 
     /**
      * @var ImageManager
      *
      * Image Manager
      */
-    protected $imageManager;
+    private $imageManager;
 
     /**
      * @var FileManager
      *
      * File Manager
      */
-    protected $fileManager;
+    private $fileManager;
 
     /**
      * @var MediaEventDispatcher
      *
      * Media event dispatcher
      */
-    protected $mediaEventDispatcher;
+    private $mediaEventDispatcher;
 
     /**
      * Construct method

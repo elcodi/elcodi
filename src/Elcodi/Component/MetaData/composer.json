@@ -31,19 +31,16 @@
         }
     ],
     "require": {
-        "php": ">=5.4"
+        "php": "^5.4|^7.0"
     },
     "autoload": {
         "psr-4": {
             "Elcodi\\Component\\MetaData\\": ""
         }
     },
-    "config": {
-        "bin-dir": "bin"
-    },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.5-dev"
+            "dev-master": "1.0-dev"
         }
     }
 }

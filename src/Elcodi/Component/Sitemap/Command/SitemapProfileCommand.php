@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,23 +17,24 @@
 
 namespace Elcodi\Component\Sitemap\Command;
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+use Elcodi\Component\Core\Command\Abstracts\AbstractElcodiCommand;
+
 /**
  * Class SitemapProfileCommand
  */
-class SitemapProfileCommand extends Command
+class SitemapProfileCommand extends AbstractElcodiCommand
 {
     /**
      * @var ContainerInterface
      *
      * Container
      */
-    protected $container;
+    private $container;
 
     /**
      * Construct
@@ -78,6 +79,8 @@ class SitemapProfileCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $this->startCommand($output);
+
         $profileName = $input->getArgument('profile-name');
         $basepath = $input->getArgument('basepath');
         $sitemapProfile = $this
@@ -85,5 +88,7 @@ class SitemapProfileCommand extends Command
             ->get('elcodi.sitemap_profile.' . $profileName);
 
         $sitemapProfile->dump($basepath);
+
+        $this->finishCommand($output);
     }
 }

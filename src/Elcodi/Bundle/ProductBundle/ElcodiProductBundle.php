@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,11 +17,11 @@
 
 namespace Elcodi\Bundle\ProductBundle;
 
-use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\HttpKernel\KernelInterface;
 
+use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
 use Elcodi\Bundle\ProductBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\ProductBundle\DependencyInjection\ElcodiProductExtension;
@@ -29,7 +29,7 @@ use Elcodi\Bundle\ProductBundle\DependencyInjection\ElcodiProductExtension;
 /**
  * ElcodiProductBundle Bundle
  */
-class ElcodiProductBundle extends Bundle implements DependentBundleInterface
+class ElcodiProductBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -56,7 +56,7 @@ class ElcodiProductBundle extends Bundle implements DependentBundleInterface
      *
      * @return array Bundle instances
      */
-    public static function getBundleDependencies()
+    public static function getBundleDependencies(KernelInterface $kernel)
     {
         return [
             'Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle',
@@ -64,20 +64,8 @@ class ElcodiProductBundle extends Bundle implements DependentBundleInterface
             'Elcodi\Bundle\MediaBundle\ElcodiMediaBundle',
             'Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
             'Elcodi\Bundle\AttributeBundle\ElcodiAttributeBundle',
-            'Elcodi\Bundle\ConfigurationBundle\ElcodiConfigurationBundle',
+            'Elcodi\Bundle\StoreBundle\ElcodiStoreBundle',
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
-    }
-
-    /**
-     * Register Commands.
-     *
-     * Disabled as commands are registered as services.
-     *
-     * @param Application $application An Application instance
-     */
-    public function registerCommands(Application $application)
-    {
-        return;
     }
 }

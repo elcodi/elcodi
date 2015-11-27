@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -54,28 +54,28 @@ class CartManager
      *
      * Cart Event Dispatcher
      */
-    protected $cartEventDispatcher;
+    private $cartEventDispatcher;
 
     /**
      * @var CartLineEventDispatcher
      *
      * CartLine Event Dispatcher
      */
-    protected $cartLineEventDispatcher;
+    private $cartLineEventDispatcher;
 
     /**
      * @var CartFactory
      *
      * cartFactory
      */
-    protected $cartFactory;
+    private $cartFactory;
 
     /**
      * @var CartLineFactory
      *
      * CartLine Factory
      */
-    protected $cartLineFactory;
+    private $cartLineFactory;
 
     /**
      * Construct method
@@ -95,41 +95,6 @@ class CartManager
         $this->cartLineEventDispatcher = $cartLineEventDispatcher;
         $this->cartFactory = $cartFactory;
         $this->cartLineFactory = $cartLineFactory;
-    }
-
-    /**
-     * Adds cartLine to Cart
-     *
-     * This method dispatches all Cart Check and Load events
-     * It should NOT be used to add a Purchasable to a Cart,
-     * by manually passing a newly crafted CartLine, since
-     * no product duplication check is performed: in that
-     * case CartManager::addProduct should be used
-     *
-     * @param CartInterface     $cart     Cart
-     * @param CartLineInterface $cartLine Cart line
-     *
-     * @return $this Self object
-     */
-    protected function addLine(
-        CartInterface $cart,
-        CartLineInterface $cartLine
-    ) {
-        $cartLine->setCart($cart);
-        $cart->addCartLine($cartLine);
-
-        $this
-            ->cartLineEventDispatcher
-            ->dispatchCartLineOnAddEvent(
-                $cart,
-                $cartLine
-            );
-
-        $this
-            ->cartEventDispatcher
-            ->dispatchCartLoadEvents($cart);
-
-        return $this;
     }
 
     /**
@@ -369,7 +334,7 @@ class CartManager
      *
      * @return $this Self object
      */
-    public function addProduct(
+    public function addPurchasable(
         CartInterface $cart,
         PurchasableInterface $purchasable,
         $quantity
@@ -424,7 +389,7 @@ class CartManager
      *
      * @return $this Self object
      */
-    public function removeProduct(
+    public function removePurchasable(
         CartInterface $cart,
         PurchasableInterface $purchasable,
         $quantity
@@ -452,6 +417,108 @@ class CartManager
                 return $this->decreaseCartLineQuantity($cartLine, $quantity);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * Add a Purchasable to Cart as a new CartLine
+     *
+     * This method creates a new CartLine and set item quantity
+     * correspondingly.
+     *
+     * If the Purchasable is already in the Cart, it just increments
+     * item quantity by $quantity
+     *
+     * @deprecated since version 1.0.0, to be removed in 2.0.0. Use addPurchasable()
+     *
+     * @param CartInterface        $cart        Cart
+     * @param PurchasableInterface $purchasable Product or Variant to add
+     * @param integer              $quantity    Number of units to set or increase
+     *
+     * @return $this Self object
+     */
+    public function addProduct(
+        CartInterface $cart,
+        PurchasableInterface $purchasable,
+        $quantity
+    ) {
+        @trigger_error('The ' . __METHOD__ . ' method in class CartManager is
+        deprecated since version 1.0.0 and will be removed in 2.0.0. Use the
+        addPurchasable() method instead.', E_USER_DEPRECATED);
+
+        return $this
+            ->addPurchasable(
+                $cart,
+                $purchasable,
+                $quantity
+            );
+    }
+
+    /**
+     * Remove a Purchasable from Cart
+     *
+     * This method removes a Purchasable from the Cart.
+     *
+     * If the Purchasable is already in the Cart, it just decreases
+     * item quantity by $quantity
+     *
+     * @deprecated since version 1.0, to be removed in 2.0. Use removePurchasable()
+     *
+     * @param CartInterface        $cart        Cart
+     * @param PurchasableInterface $purchasable Product or Variant to add
+     * @param integer              $quantity    Number of units to set or increase
+     *
+     * @return $this Self object
+     */
+    public function removeProduct(
+        CartInterface $cart,
+        PurchasableInterface $purchasable,
+        $quantity
+    ) {
+        @trigger_error('The ' . __METHOD__ . ' method in class CartManager is
+        deprecated since version 1.0.0 and will be removed in 2.0.0. Use the
+        removePurchasable() method instead.', E_USER_DEPRECATED);
+
+        return $this
+            ->removePurchasable(
+                $cart,
+                $purchasable,
+                $quantity
+            );
+    }
+
+    /**
+     * Adds cartLine to Cart
+     *
+     * This method dispatches all Cart Check and Load events
+     * It should NOT be used to add a Purchasable to a Cart,
+     * by manually passing a newly crafted CartLine, since
+     * no product duplication check is performed: in that
+     * case CartManager::addProduct should be used
+     *
+     * @param CartInterface     $cart     Cart
+     * @param CartLineInterface $cartLine Cart line
+     *
+     * @return $this Self object
+     */
+    private function addLine(
+        CartInterface $cart,
+        CartLineInterface $cartLine
+    ) {
+        $cartLine->setCart($cart);
+        $cart->addCartLine($cartLine);
+
+        $this
+            ->cartLineEventDispatcher
+            ->dispatchCartLineOnAddEvent(
+                $cart,
+                $cartLine
+            );
+
+        $this
+            ->cartEventDispatcher
+            ->dispatchCartLoadEvents($cart);
 
         return $this;
     }

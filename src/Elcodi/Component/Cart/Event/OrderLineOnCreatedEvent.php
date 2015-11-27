@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -26,28 +26,28 @@ use Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface;
 /**
  * Class OrderLineOnCreatedEvent
  */
-class OrderLineOnCreatedEvent extends Event
+final class OrderLineOnCreatedEvent extends Event
 {
     /**
      * @var OrderInterface
      *
      * Order
      */
-    protected $order;
+    private $order;
 
     /**
      * @var CartLineInterface
      *
      * cartLine
      */
-    protected $cartLine;
+    private $cartLine;
 
     /**
      * @var OrderLineInterface
      *
      * OrderLine
      */
-    protected $orderLine;
+    private $orderLine;
 
     /**
      * construct method

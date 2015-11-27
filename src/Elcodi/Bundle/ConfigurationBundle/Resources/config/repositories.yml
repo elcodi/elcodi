@@ -9,4 +9,5 @@ services:
     #
     elcodi.repository.configuration:
         parent: elcodi.abstract_repository
-        arguments: [ %elcodi.entity.configuration.class% ]
+        arguments:
+            - %elcodi.entity.configuration.class%

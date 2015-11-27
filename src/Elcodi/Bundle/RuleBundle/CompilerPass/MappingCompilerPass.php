@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,18 +17,15 @@
 
 namespace Elcodi\Bundle\RuleBundle\CompilerPass;
 
-use Mmoreram\SimpleDoctrineMapping\CompilerPass\Abstracts\AbstractMappingCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-use Elcodi\Bundle\CoreBundle\CompilerPass\Traits\EntityMappingTrait;
+use Elcodi\Bundle\CoreBundle\CompilerPass\Abstracts\AbstractElcodiMappingCompilerPass;
 
 /**
  * Class MappingCompilerPass
  */
-class MappingCompilerPass extends AbstractMappingCompilerPass
+class MappingCompilerPass extends AbstractElcodiMappingCompilerPass
 {
-    use EntityMappingTrait;
-
     /**
      * You can modify the container here before it is dumped to PHP code.
      *

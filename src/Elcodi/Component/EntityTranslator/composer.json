@@ -31,15 +31,15 @@
         }
     ],
     "require": {
-        "php": ">=5.4",
-        "doctrine/common": "~2.5",
-        "doctrine/orm": "~2.5",
+        "php": "^5.4|^7.0",
+        "doctrine/common": "^2.5",
+        "doctrine/orm": "^2.5",
 
-        "symfony/event-dispatcher": "~2.6",
-        "symfony/dependency-injection": "~2.6",
-        "symfony/form": "~2.6",
+        "symfony/event-dispatcher": "^2.7|^3.0",
+        "symfony/dependency-injection": "^2.7|^3.0",
+        "symfony/form": "^2.7|^3.0",
 
-        "elcodi/core": "~0.5.0"
+        "elcodi/core": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "4.5.0"
@@ -49,12 +49,9 @@
             "Elcodi\\Component\\EntityTranslator\\": ""
         }
     },
-    "config": {
-        "bin-dir": "bin"
-    },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.5-dev"
+            "dev-master": "1.0-dev"
         }
     }
 }

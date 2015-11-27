@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -39,28 +39,28 @@ class PageResponseTransformer
      *
      * Request stack
      */
-    protected $requestStack;
+    private $requestStack;
 
     /**
      * @var UrlGeneratorInterface
      *
      * Url Generator
      */
-    protected $urlGenerator;
+    private $urlGenerator;
 
     /**
      * @var PageRendererInterface
      *
      * Page renderer
      */
-    protected $pageRenderer;
+    private $pageRenderer;
 
     /**
      * @var string
      *
      * Page Render route
      */
-    protected $pageRenderRoute;
+    private $pageRenderRoute;
 
     /**
      * Constructor
@@ -152,7 +152,7 @@ class PageResponseTransformer
      *
      * @return Response
      */
-    protected function createResponseInstance(PageInterface $page)
+    private function createResponseInstance(PageInterface $page)
     {
         $response = new Response();
 
@@ -170,7 +170,7 @@ class PageResponseTransformer
      *
      * @return string Page content
      */
-    protected function renderPage(PageInterface $page)
+    private function renderPage(PageInterface $page)
     {
         if ($this->pageRenderer && $this->pageRenderer->supports($page)) {
             return $this

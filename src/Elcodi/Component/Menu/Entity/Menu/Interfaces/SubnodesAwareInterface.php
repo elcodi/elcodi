@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,7 +17,7 @@
 
 namespace Elcodi\Component\Menu\Entity\Menu\Interfaces;
 
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Interface SubnodesAwareInterface
@@ -45,32 +45,36 @@ interface SubnodesAwareInterface
     /**
      * Sets Subnodes
      *
-     * @param Collection $subnodes Subnodes
+     * @param ArrayCollection $subnodes Subnodes
      *
      * @return $this Self object
      */
-    public function setSubnodes(Collection $subnodes);
+    public function setSubnodes(ArrayCollection $subnodes);
 
     /**
      * Get Subnodes
      *
-     * @return Collection Subnodes
+     * @return ArrayCollection Subnodes
      */
     public function getSubnodes();
 
     /**
-     * Sets Sort
+     * Get Subnodes sorted by priority and filtered by tag
      *
-     * @param string $sort Sort
-     *
-     * @return $this Self object
+     * @return ArrayCollection Subnodes
      */
-    public function setSort($sort);
+    public function getSubnodesByTag($tag);
 
     /**
-     * Get Sort
+     * Find subnode given its name. You can decide if this search is deep or
+     * not.
      *
-     * @return string Sort
+     * This node is returned as soon as is found.
+     *
+     * @param string  $subnodeName Subnode name
+     * @param boolean $inDepth     In depth
+     *
+     * @return NodeInterface|null Node
      */
-    public function getSort();
+    public function findSubnodeByName($subnodeName, $inDepth = true);
 }

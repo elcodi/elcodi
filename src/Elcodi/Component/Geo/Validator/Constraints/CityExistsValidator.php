@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -21,7 +21,7 @@ use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
-use Elcodi\Component\Geo\Services\Interfaces\LocationProviderInterface;
+use Elcodi\Component\Geo\Adapter\LocationProvider\Interfaces\LocationProviderAdapterInterface;
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
@@ -30,20 +30,19 @@ use Elcodi\Component\Geo\ValueObject\LocationData;
 class CityExistsValidator extends ConstraintValidator
 {
     /**
-     * @var LocationProviderInterface
+     * @var LocationProviderAdapterInterface
      *
      * A location provider
      */
-    protected $locationProvider;
+    private $locationProvider;
 
     /**
      * Builds a new class.
      *
-     * @param LocationProviderInterface $locationProvider
+     * @param LocationProviderAdapterInterface $locationProvider
      */
-    public function __construct(
-        LocationProviderInterface $locationProvider
-    ) {
+    public function __construct(LocationProviderAdapterInterface $locationProvider)
+    {
         $this->locationProvider = $locationProvider;
     }
 
@@ -74,8 +73,7 @@ class CityExistsValidator extends ConstraintValidator
         ) {
             $this
                 ->context
-                ->buildViolation('Select a city')
-                ->addViolation();
+                ->addViolation('Select a city');
         }
     }
 }

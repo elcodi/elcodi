@@ -9,6 +9,7 @@ $config = Symfony\CS\Config\Config::create()
         'multiline_spaces_before_semicolon',
         'short_array_syntax',
         '-remove_lines_between_uses',
+        '-empty_return',
     ]);
 
 if (null === $input->getArgument('path')) {

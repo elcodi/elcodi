@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -58,7 +58,7 @@ class CustomerWrapperTest extends \PHPUnit_Framework_TestCase
             ->method('create');
 
         $wrapper = new CustomerWrapper($factory, $tokenStorage);
-        $actual = $wrapper->loadCustomer();
+        $actual = $wrapper->get();
 
         $this->assertSame($customer, $actual);
     }
@@ -93,7 +93,7 @@ class CustomerWrapperTest extends \PHPUnit_Framework_TestCase
             ->willReturn($customer);
 
         $wrapper = new CustomerWrapper($factory, $tokenStorage);
-        $actual = $wrapper->loadCustomer();
+        $actual = $wrapper->get();
 
         $this->assertSame($customer, $actual);
     }
@@ -116,7 +116,7 @@ class CustomerWrapperTest extends \PHPUnit_Framework_TestCase
             ->willReturn($customer);
 
         $wrapper = new CustomerWrapper($factory, null);
-        $actual = $wrapper->loadCustomer();
+        $actual = $wrapper->get();
 
         $this->assertSame($customer, $actual);
     }

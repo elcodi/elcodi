@@ -31,41 +31,44 @@
         }
     ],
     "require": {
-        "php": ">=5.4",
+        "php": "^5.4|^7.0",
 
-        "symfony/http-kernel": "~2.6",
-        "symfony/dependency-injection": "~2.6, >=2.6.3",
-        "symfony/config": "~2.6",
-        "symfony/yaml": "~2.6",
-        "symfony/console": "~2.6",
-        "symfony/framework-bundle": "~2.6",
-        "symfony/class-loader": "~2.6",
-        "symfony/security": "~2.6",
-        "symfony/http-foundation": "~2.6",
-        "symfony/validator": "~2.6",
-        "symfony/process": "~2.6",
-        "symfony/event-dispatcher": "~2.6",
-        "symfony/expression-language": "~2.6",
-        "symfony/finder": "~2.6",
-        "symfony/browser-kit": "~2.6",
-        "symfony/routing": "~2.6",
-        "symfony/proxy-manager-bridge": "~2.6, >=2.6.3",
-        "symfony/twig-bundle": "~2.6",
-        "symfony/swiftmailer-bundle": "~2.3",
-        "symfony/form": "~2.6",
-        "ocramius/proxy-manager": "~1.0",
+        "symfony/http-kernel": "^2.7|^3.0",
+        "symfony/dependency-injection": "^2.7|^3.0",
+        "symfony/config": "^2.7|^3.0",
+        "symfony/yaml": "^2.7|^3.0",
+        "symfony/console": "^2.7|^3.0",
+        "symfony/framework-bundle": "^2.7|^3.0",
+        "symfony/class-loader": "^2.7|^3.0",
+        "symfony/security": "^2.7|^3.0",
+        "symfony/http-foundation": "^2.7|^3.0",
+        "symfony/validator": "^2.7|^3.0",
+        "symfony/process": "^2.7|^3.0",
+        "symfony/event-dispatcher": "^2.7|^3.0",
+        "symfony/expression-language": "^2.7|^3.0",
+        "symfony/finder": "^2.7|^3.0",
+        "symfony/browser-kit": "^2.7|^3.0",
+        "symfony/routing": "^2.7|^3.0",
+        "symfony/proxy-manager-bridge": "^2.7|^3.0",
+        "symfony/twig-bundle": "^2.7|^3.0",
+        "symfony/swiftmailer-bundle": "^2.3.8",
+        "symfony/form": "^2.7|^3.0",
+        "twig/twig": "^1.23",
+        "ocramius/proxy-manager": "^1.0",
 
-        "doctrine/common": "~2.5",
-        "doctrine/orm": "~2.5",
-        "doctrine/doctrine-cache-bundle": "~1.0",
-        "mmoreram/simple-doctrine-mapping": "~0.1",
+        "doctrine/common": "^2.5",
+        "doctrine/orm": "^2.5",
+        "doctrine/doctrine-bundle": "^1.5.0",
+        "doctrine/doctrine-cache-bundle": "^1.0",
+        "mmoreram/simple-doctrine-mapping": "^1.0",
 
-        "sebastian/money": "~1.5",
-        "knplabs/knp-gaufrette-bundle": "~0.1",
-        "ircmaxell/password-compat": "~1.0",
-        "guzzlehttp/guzzle": "~5.2",
-        "mmoreram/extractor": "~1.0, >=1.1.1",
-        "goodby/csv": "~1.0"
+        "sebastian/money": "^1.5",
+        "knplabs/knp-gaufrette-bundle": "^0.1.7",
+        "predis/predis": "^1.0.1",
+        "ircmaxell/password-compat": "^1.0",
+        "guzzlehttp/guzzle": "^5.2",
+        "mmoreram/extractor": "^1.2.0",
+        "goodby/csv": "^1.0"
     },
     "replace": {
         "elcodi/attribute-bundle": "self.version",
@@ -94,8 +97,9 @@
         "elcodi/sitemap-bundle": "self.version",
         "elcodi/metric-bundle": "self.version",
         "elcodi/plugin-bundle": "self.version",
-        "elcodi/template-bundle": "self.version",
         "elcodi/fixtures-booster-bundle": "self.version",
+        "elcodi/payment-bundle": "self.version",
+        "elcodi/store-bundle": "self.version",
 
         "elcodi/attribute": "self.version",
         "elcodi/banner": "self.version",
@@ -123,28 +127,31 @@
         "elcodi/sitemap": "self.version",
         "elcodi/metric": "self.version",
         "elcodi/plugin": "self.version",
-        "elcodi/template": "self.version"
+        "elcodi/payment": "self.version",
+        "elcodi/store": "self.version"
     },
     "require-dev": {
-        "doctrine/doctrine-fixtures-bundle": "~2.2",
+        "doctrine/doctrine-fixtures-bundle": "^2.2",
         "fabpot/php-cs-fixer": "1.4.2",
-        "mmoreram/php-formatter": "1.0.4",
+        "mmoreram/php-formatter": "1.1.0",
         "phpunit/phpunit": "4.5.0"
-    },
-    "suggest": {
-        "guzzle/http": "Required for OpenExchangeRates adapter"
     },
     "autoload": {
         "psr-4": {
             "Elcodi\\": "src/Elcodi"
         }
     },
-    "config": {
-        "bin-dir": "bin"
-    },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.5-dev"
+            "dev-master": "1.0-dev"
         }
+    },
+    "scripts": {
+        "check-style": [
+            "php-cs-fixer fix --config-file=.php_cs",
+            "php-formatter f:h:f src",
+            "php-formatter f:u:s src"
+        ],
+        "test": "phpunit"
     }
 }

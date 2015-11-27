@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -33,21 +33,21 @@ class MetricManager
      *
      * Metrics bucket
      */
-    protected $metricsBucket;
+    private $metricsBucket;
 
     /**
      * @var EntryFactory
      *
      * Entry factory
      */
-    protected $entryFactory;
+    private $entryFactory;
 
     /**
      * @var ObjectManager
      *
      * Entry object manager
      */
-    protected $entryObjectManager;
+    private $entryObjectManager;
 
     /**
      * Construct
@@ -82,7 +82,7 @@ class MetricManager
         $event,
         $uniqueId,
         $type,
-        $dateTime
+        DateTime $dateTime
     ) {
         $entry = $this
             ->entryFactory

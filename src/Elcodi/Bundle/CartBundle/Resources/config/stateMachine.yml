@@ -13,13 +13,15 @@ services:
 
     elcodi.order.payment_states_machine:
         class: Elcodi\Component\StateTransitionMachine\Machine\Machine
-        factory: [@elcodi.order_payment_states_machine_builder, compile]
+        factory:
+            - @elcodi.order_payment_states_machine_builder
+            - compile
 
     elcodi.order_payment_states_machine_manager:
         class: Elcodi\Component\StateTransitionMachine\Machine\MachineManager
         arguments:
             - @elcodi.order.payment_states_machine
-            - @event_dispatcher
+            - @elcodi.event_dispatcher.machine
             - @elcodi.factory.state_transition_machine_state_line
 
 
@@ -36,11 +38,13 @@ services:
 
     elcodi.order.shipping_states_machine:
         class: Elcodi\Component\StateTransitionMachine\Machine\Machine
-        factory: [@elcodi.order_shipping_states_machine_builder, compile]
+        factory:
+            - @elcodi.order_shipping_states_machine_builder
+            - compile
 
     elcodi.order_shipping_states_machine_manager:
         class: Elcodi\Component\StateTransitionMachine\Machine\MachineManager
         arguments:
             - @elcodi.order.shipping_states_machine
-            - @event_dispatcher
+            - @elcodi.event_dispatcher.machine
             - @elcodi.factory.state_transition_machine_state_line

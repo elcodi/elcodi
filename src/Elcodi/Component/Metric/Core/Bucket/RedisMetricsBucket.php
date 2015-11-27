@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi.com
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -18,6 +18,7 @@
 namespace Elcodi\Component\Metric\Core\Bucket;
 
 use Predis\Client as Predis;
+use Predis\CommunicationException;
 
 use Elcodi\Component\Metric\Core\Bucket\Abstracts\AbstractMetricsBucket;
 use Elcodi\Component\Metric\Core\Entity\Interfaces\EntryInterface;
@@ -33,7 +34,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
      *
      * Redis instance
      */
-    protected $redis;
+    private $redis;
 
     /**
      * Construct
@@ -62,6 +63,139 @@ class RedisMetricsBucket extends AbstractMetricsBucket
     }
 
     /**
+     * Get number of unique beacons given an event and a set of dates
+     *
+     * @param string $token Event
+     * @param string $event Token
+     * @param array  $dates Dates
+     *
+     * @return integer Number of hits
+     */
+    public function getBeaconsUnique($token, $event, array $dates)
+    {
+        $keys = [];
+
+        foreach ($dates as $date) {
+            $keys[] = $this->generateEntryKey(
+                    $token,
+                    $event,
+                    $date
+                ) . '_unique';
+        }
+
+        return (int)
+        $this->doRedisQuery(function () use ($keys) {
+            $this
+                ->redis
+                ->pfCount($keys);
+        }, 0);
+    }
+
+    /**
+     * Get the total of beacons given an event and a set of dates
+     *
+     * @param string $token Event
+     * @param string $event Token
+     * @param array  $dates Dates
+     *
+     * @return integer Number of beacons, given an event and dates
+     */
+    public function getBeaconsTotal($token, $event, array $dates)
+    {
+        $total = 0;
+
+        foreach ($dates as $date) {
+            $key = $this->generateEntryKey(
+                $token,
+                $event,
+                $date
+            );
+
+            $total += $this->doRedisQuery(function () use ($key) {
+                $this
+                    ->redis
+                    ->get($key . '_total');
+            }, 0);
+        }
+
+        return $total;
+    }
+
+    /**
+     * Get distributions given an event and a set of dates
+     *
+     * @param string $token Event
+     * @param string $event Token
+     * @param array  $dates Dates
+     *
+     * @return integer Accumulation of event and given dates
+     */
+    public function getAccumulation($token, $event, array $dates)
+    {
+        $total = 0;
+
+        foreach ($dates as $date) {
+            $key = $this->generateEntryKey(
+                $token,
+                $event,
+                $date
+            );
+
+            $total += $this->doRedisQuery(function () use ($key) {
+                $this
+                    ->redis
+                    ->get($key . '_accum');
+            }, 0);
+        }
+
+        return $total;
+    }
+
+    /**
+     * Get distributions given an event and a set of dates
+     *
+     * [
+     *      "value3": 24,
+     *      "value7": 13,
+     *      "value8": 9,
+     * ]
+     *
+     * @param string $token Event
+     * @param string $event Token
+     * @param array  $dates Dates
+     *
+     * @return array Distribution with totals
+     */
+    public function getDistributions($token, $event, array $dates)
+    {
+        $distributions = [];
+
+        foreach ($dates as $date) {
+            $key = $this->generateEntryKey(
+                $token,
+                $event,
+                $date
+            );
+
+            $partials = $this->doRedisQuery(function () use ($key) {
+                $this
+                    ->redis
+                    ->hgetall($key . '_distr');
+            }, []);
+
+            foreach ($partials as $key => $value) {
+                $distributions[$key] = isset($partialTotals[$key])
+                    ? $distributions[$key] + $value
+                    : $value;
+            }
+        }
+
+        arsort($distributions);
+
+        return $distributions;
+    }
+
+    /**
      * Add metric given hour formatted
      *
      * @param EntryInterface $entry          Entry
@@ -69,7 +203,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
      *
      * @return $this Self Object
      */
-    protected function addWithFormattedHour(
+    private function addWithFormattedHour(
         EntryInterface $entry,
         $dateTimeFormat
     ) {
@@ -120,16 +254,18 @@ class RedisMetricsBucket extends AbstractMetricsBucket
      *
      * @return $this Self Object
      */
-    protected function addBeaconMetricUnique(
+    private function addBeaconMetricUnique(
         EntryInterface $entry,
         $entryKey
     ) {
-        $this
-            ->redis
-            ->pfAdd(
-                $entryKey . '_unique',
-                $entry->getValue()
-            );
+        $this->doRedisQuery(function () use ($entry, $entryKey) {
+            $this
+                ->redis
+                ->pfAdd(
+                    $entryKey . '_unique',
+                    $entry->getValue()
+                );
+        });
 
         return $this;
     }
@@ -141,11 +277,13 @@ class RedisMetricsBucket extends AbstractMetricsBucket
      *
      * @return $this Self Object
      */
-    protected function addBeaconMetricTotal($entryKey)
+    private function addBeaconMetricTotal($entryKey)
     {
-        $this
-            ->redis
-            ->incr($entryKey . '_total');
+        $this->doRedisQuery(function () use ($entryKey) {
+            $this
+                ->redis
+                ->incr($entryKey . '_total');
+        });
 
         return $this;
     }
@@ -158,16 +296,18 @@ class RedisMetricsBucket extends AbstractMetricsBucket
      *
      * @return $this Self Object
      */
-    protected function addAccumulativeEntry(
+    private function addAccumulativeEntry(
         EntryInterface $entry,
         $entryKey
     ) {
-        $this
-            ->redis
-            ->incrby(
-                $entryKey . '_accum',
-                (int) $entry->getValue()
-            );
+        $this->doRedisQuery(function () use ($entry, $entryKey) {
+            $this
+                ->redis
+                ->incrby(
+                    $entryKey . '_accum',
+                    (int) $entry->getValue()
+                );
+        });
 
         return $this;
     }
@@ -180,146 +320,42 @@ class RedisMetricsBucket extends AbstractMetricsBucket
      *
      * @return $this Self Object
      */
-    protected function addDistributedEntry(
+    private function addDistributedEntry(
         EntryInterface $entry,
         $entryKey
     ) {
-        $this
-            ->redis
-            ->hincrby(
-                $entryKey . '_distr',
-                $entry->getValue(),
-                1
-            );
+        $this->doRedisQuery(function () use ($entry, $entryKey) {
+            $this
+                ->redis
+                ->hincrby(
+                    $entryKey . '_distr',
+                    $entry->getValue(),
+                    1
+                );
+        });
 
         return $this;
     }
 
     /**
-     * Getters
-     */
-
-    /**
-     * Get number of unique beacons given an event and a set of dates
+     * Try a redis query and return it's result.
      *
-     * @param string $token Event
-     * @param string $event Token
-     * @param array  $dates Dates
+     * If the call catches a connection Exception, then returns the provided
+     * default value (false by default)
      *
-     * @return integer Number of hits
+     * @param Callable $callable     Callable function
+     * @param mixed    $defaultValue Default value to return if exception
+     *
+     * @return mixed Result of the callable or $defaultValue if connection exception
      */
-    public function getBeaconsUnique($token, $event, array $dates)
+    private function doRedisQuery(callable $callable, $defaultValue = false)
     {
-        $keys = [];
-
-        foreach ($dates as $date) {
-            $keys[] = $this->generateEntryKey(
-                    $token,
-                    $event,
-                    $date
-                ) . '_unique';
+        try {
+            $result = $callable();
+        } catch (CommunicationException $communicationException) {
+            $result = $defaultValue;
         }
 
-        return (int) $this
-            ->redis
-            ->pfCount($keys);
-    }
-
-    /**
-     * Get the total of beacons given an event and a set of dates
-     *
-     * @param string $token Event
-     * @param string $event Token
-     * @param array  $dates Dates
-     *
-     * @return integer Number of beacons, given an event and dates
-     */
-    public function getBeaconsTotal($token, $event, array $dates)
-    {
-        $total = 0;
-
-        foreach ($dates as $date) {
-            $key = $this->generateEntryKey(
-                $token,
-                $event,
-                $date
-            );
-
-            $total += (int) $this
-                ->redis
-                ->get($key . '_total');
-        }
-
-        return $total;
-    }
-
-    /**
-     * Get distributions given an event and a set of dates
-     *
-     * @param string $token Event
-     * @param string $event Token
-     * @param array  $dates Dates
-     *
-     * @return integer Accumulation of event and given dates
-     */
-    public function getAccumulation($token, $event, array $dates)
-    {
-        $total = 0;
-
-        foreach ($dates as $date) {
-            $key = $this->generateEntryKey(
-                $token,
-                $event,
-                $date
-            );
-
-            $total += (int) $this
-                ->redis
-                ->get($key . '_accum');
-        }
-
-        return $total;
-    }
-
-    /**
-     * Get distributions given an event and a set of dates
-     *
-     * [
-     *      "value3": 24,
-     *      "value7": 13,
-     *      "value8": 9,
-     * ]
-     *
-     * @param string $token Event
-     * @param string $event Token
-     * @param array  $dates Dates
-     *
-     * @return array Distribution with totals
-     */
-    public function getDistributions($token, $event, array $dates)
-    {
-        $distributions = [];
-
-        foreach ($dates as $date) {
-            $key = $this->generateEntryKey(
-                $token,
-                $event,
-                $date
-            );
-
-            $partials = $this
-                ->redis
-                ->hgetall($key . '_distr');
-
-            foreach ($partials as $key => $value) {
-                $distributions[$key] = isset($partialTotals[$key])
-                    ? $distributions[$key] + $value
-                    : $value;
-            }
-        }
-
-        arsort($distributions);
-
-        return $distributions;
+        return $result;
     }
 }
