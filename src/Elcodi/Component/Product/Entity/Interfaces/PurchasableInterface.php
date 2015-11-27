@@ -39,6 +39,23 @@ interface PurchasableInterface
     ProductPriceInterface,
     DimensionableInterface
 {
+
+    /**
+     * Set name
+     *
+     * @param string $name Name
+     *
+     * @return $this Self object
+     */
+    public function setName($name);
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName();
+
     /**
      * Gets the variant SKU
      *

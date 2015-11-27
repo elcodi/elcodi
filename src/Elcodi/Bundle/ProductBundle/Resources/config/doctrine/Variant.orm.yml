@@ -8,6 +8,11 @@ Elcodi\Component\Product\Entity\Variant:
             generator:
                 strategy: AUTO
     fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
         sku:
             column: sku
             type: string

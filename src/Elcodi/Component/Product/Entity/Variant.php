@@ -28,6 +28,7 @@ use Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
 use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
+use Elcodi\Component\Product\Entity\Traits\NameTrait;
 use Elcodi\Component\Product\Entity\Traits\ProductPriceTrait;
 
 /**
@@ -49,7 +50,8 @@ class Variant implements VariantInterface
         DateTimeTrait,
         ImagesContainerTrait,
         PrincipalImageTrait,
-        DimensionsTrait;
+        DimensionsTrait,
+        NameTrait;
 
     /**
      * @var string
