@@ -48,7 +48,6 @@
         "elcodi/media-bundle": "^1.0",
         "elcodi/currency-bundle": "^1.0",
         "elcodi/attribute-bundle": "^1.0",
-        "elcodi/configuration-bundle": "^1.0",
         "elcodi/store-bundle": "^1.0",
         "elcodi/product": "^1.0"
     },
