@@ -34,6 +34,9 @@
         "php": "^5.4|^7.0"
     },
     "autoload": {
+        "exclude-from-classmap": [
+            "/Tests/"
+        ],
         "psr-4": {
             "Elcodi\\Component\\MetaData\\": ""
         }

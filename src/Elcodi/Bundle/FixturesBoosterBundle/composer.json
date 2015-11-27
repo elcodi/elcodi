@@ -42,6 +42,9 @@
         "elcodi/core-bundle": "^1.0"
     },
     "autoload": {
+        "exclude-from-classmap": [
+            "/Tests/"
+        ],
         "psr-4": {
             "Elcodi\\Bundle\\FixturesBoosterBundle\\": ""
         }

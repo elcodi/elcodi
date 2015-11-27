@@ -48,6 +48,9 @@
         "guzzle/http": "Required for OpenExchangeRates adapter"
     },
     "autoload": {
+        "exclude-from-classmap": [
+            "/Tests/"
+        ],
         "psr-4": {
             "Elcodi\\Component\\Currency\\": ""
         }

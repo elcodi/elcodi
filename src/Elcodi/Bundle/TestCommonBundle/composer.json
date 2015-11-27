@@ -45,6 +45,9 @@
         "symfony/finder": "^2.7"
     },
     "autoload": {
+        "exclude-from-classmap": [
+            "/Tests/"
+        ],
         "psr-4": {
             "Elcodi\\Bundle\\TestCommonBundle\\": ""
         }

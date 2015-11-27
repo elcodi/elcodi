@@ -31,6 +31,9 @@
         "elcodi/plugin": "^1.0"
     },
     "autoload": {
+        "exclude-from-classmap": [
+            "/Tests/"
+        ],
         "psr-4": {
             "Elcodi\\Bundle\\PluginBundle\\": ""
         }
