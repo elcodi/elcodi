@@ -15,7 +15,7 @@ services:
         arguments:
             - @elcodi.manager.cart_coupon
         tags:
-            - { name: kernel.event_listener, event: cart_coupon.onapply, method: createAndSaveCartCoupon, priority: 0 }
+            - { name: kernel.event_listener, event: cart_coupon.onapply, method: createAndSaveCartCoupon, priority: 1 }
 
     elcodi.event_listener.create_order_coupon_by_coupon:
         class: Elcodi\Component\CartCoupon\EventListener\CreateOrderCouponByCouponEventListener
@@ -29,7 +29,7 @@ services:
         arguments:
             - @elcodi.loader.cart_coupon_prices
         tags:
-            - { name: kernel.event_listener, event: cart.onload, method: refreshCouponAmount, priority: -32 }
+            - { name: kernel.event_listener, event: cart.onload, method: refreshCouponAmount, priority: 6 }
 
     elcodi.event_listener.remove_cart_coupon:
         class: Elcodi\Component\CartCoupon\EventListener\RemoveCartCouponEventListener
@@ -43,7 +43,7 @@ services:
         arguments:
             - @elcodi.applicator.automatic_coupon
         tags:
-            - { name: kernel.event_listener, event: cart.onload, method: tryAutomaticCoupons, priority: -16 }
+            - { name: kernel.event_listener, event: cart.onload, method: tryAutomaticCoupons, priority: 16 }
 
     elcodi.event_listener.validate_cart_coupon:
         class: Elcodi\Component\CartCoupon\EventListener\ValidateCartCouponEventListener
@@ -85,7 +85,7 @@ services:
         arguments:
             - @elcodi.validator.cart_coupon
         tags:
-            - { name: kernel.event_listener, event: cart.onload, method: refreshCartCoupons, priority: 0 }
+            - { name: kernel.event_listener, event: cart.onload, method: refreshCartCoupons, priority: 10 }
 
     elcodi.event_listener.validate_stackable_coupon:
         class: Elcodi\Component\CartCoupon\EventListener\ValidateStackableCouponsEventListener
@@ -99,5 +99,5 @@ services:
         arguments:
             - @elcodi.event_dispatcher.cart
         tags:
-            - { name: kernel.event_listener, event: cart_coupon.onapply, method: updateCart, priority: -100 }
-            - { name: kernel.event_listener, event: cart_coupon.onremove, method: updateCart, priority: -100 }
+            - { name: kernel.event_listener, event: cart_coupon.onapply, method: updateCart, priority: 0 }
+            - { name: kernel.event_listener, event: cart_coupon.onremove, method: updateCart, priority: 0 }

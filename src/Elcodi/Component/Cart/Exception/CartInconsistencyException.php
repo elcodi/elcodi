@@ -22,6 +22,6 @@ use Exception;
 /**
  * CartInconsistencyException
  */
-class CartInconsistencyException extends Exception
+final class CartInconsistencyException extends Exception
 {
 }

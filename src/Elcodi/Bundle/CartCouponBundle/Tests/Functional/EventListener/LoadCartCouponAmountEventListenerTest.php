@@ -48,5 +48,27 @@ class LoadCartCouponAmountEventListenerTest extends AbstractCartCouponEventListe
             ->getCurrency()
             ->getSymbol()
         );
+
+        $this->assertEquals(360, $cart
+            ->getCouponAmount()
+            ->getAmount()
+        );
+
+        $this->assertEquals('$', $cart
+            ->getCouponAmount()
+            ->getCurrency()
+            ->getSymbol()
+        );
+
+        $this->assertEquals(2640, $cart
+            ->getAmount()
+            ->getAmount()
+        );
+
+        $this->assertEquals('$', $cart
+            ->getCouponAmount()
+            ->getCurrency()
+            ->getSymbol()
+        );
     }
 }

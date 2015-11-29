@@ -190,11 +190,15 @@ class CartCouponManager
                 'enabled' => true,
             ]);
 
-        if (false === $coupon instanceof CouponInterface) {
+        if (!($coupon instanceof CouponInterface)) {
             throw new CouponNotAvailableException();
         }
 
-        return $this->addCoupon($cart, $coupon);
+        return $this
+            ->addCoupon(
+                $cart,
+                $coupon
+            );
     }
 
     /**
@@ -243,7 +247,11 @@ class CartCouponManager
             return false;
         }
 
-        return $this->removeCoupon($cart, $coupon);
+        return $this
+            ->removeCoupon(
+                $cart,
+                $coupon
+            );
     }
 
     /**

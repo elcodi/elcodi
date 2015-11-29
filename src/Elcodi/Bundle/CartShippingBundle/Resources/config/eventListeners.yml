@@ -1,0 +1,15 @@
+services:
+
+    elcodi.event_listener.load_cart_shipping_amount:
+        class: Elcodi\Component\CartShipping\EventListener\LoadCartShippingAmountEventListener
+        arguments:
+            - @elcodi.loader.cart_shipping_amount
+        tags:
+            - { name: kernel.event_listener, event: cart.onload, method: loadCartShippingAmount, priority: 6 }
+
+    elcodi.event_listener.load_order_shipping_method:
+        class: Elcodi\Component\CartShipping\EventListener\LoadOrderShippingMethodEventListener
+        arguments:
+            - @elcodi.loader.order_shipping_method
+        tags:
+            - { name: kernel.event_listener, event: order.oncreated, method: loadOrderShippingMethod, priority: 16 }

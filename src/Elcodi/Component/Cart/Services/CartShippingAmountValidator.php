@@ -15,16 +15,22 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Cart\EventListener;
+namespace Elcodi\Component\Cart\Services;
 
-use Elcodi\Component\Cart\Event\CartOnLoadEvent;
-use Elcodi\Component\Currency\Entity\Money;
+use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
+use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Wrapper\EmptyMoneyWrapper;
 
 /**
- * Class CartEmptyShippingEventListener
+ * Class CartShippingAmountValidator
+ *
+ * Api Methods:
+ *
+ * * validateEmptyShippingAmount(CartInterface)
+ *
+ * @api
  */
-class CartEmptyShippingEventListener
+class CartShippingAmountValidator
 {
     /**
      * @var EmptyMoneyWrapper
@@ -47,15 +53,12 @@ class CartEmptyShippingEventListener
      * If the cart's shipping amount is not defined, then put an empty Money
      * value
      *
-     * @param CartOnLoadEvent $event Event
-     *
-     * @return $this Self object
+     * @param CartInterface $cart Cart
      */
-    public function checkEmptyShippingAmount(CartOnLoadEvent $event)
+    public function validateEmptyShippingAmount(CartInterface $cart)
     {
-        $cart = $event->getCart();
-
-        if (!($cart->getShippingAmount() instanceof Money)) {
+        $shippingAmount = $cart->getShippingAmount();
+        if (!($shippingAmount instanceof MoneyInterface)) {
             $cart
                 ->setShippingAmount(
                     $this
@@ -63,7 +66,5 @@ class CartEmptyShippingEventListener
                         ->get()
                 );
         }
-
-        return $this;
     }
 }

@@ -33,7 +33,7 @@ use Elcodi\Component\Geo\Event\AddressOnCloneEvent;
  *
  * * updateCarts
  */
-class AddressCloneEventListener
+final class AddressCloneEventListener
 {
     /**
      * @var CartRepository

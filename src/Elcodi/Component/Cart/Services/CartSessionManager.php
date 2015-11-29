@@ -28,8 +28,10 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
  *
  * Api Methods:
  *
- * * set(Cart) : self
- * * get() : integer
+ * * set(CartInterface)
+ * * get()
+ *
+ * @api
  */
 class CartSessionManager
 {

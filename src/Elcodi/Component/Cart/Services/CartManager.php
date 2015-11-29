@@ -46,6 +46,8 @@ use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
  * * setCartLineQuantity(CartLine, $quantity) : self
  *
  * * addProduct(AbstractCart, PurchasableInterface, $quantity) : self
+ *
+ * @api
  */
 class CartManager
 {
@@ -155,9 +157,8 @@ class CartManager
      *
      * @return $this Self object
      */
-    public function emptyLines(
-        CartInterface $cart
-    ) {
+    public function emptyLines(CartInterface $cart)
+    {
         $cart
             ->getCartLines()
             ->map(function (CartLineInterface $cartLine) use ($cart) {

@@ -1,0 +1,68 @@
+{
+    "name": "elcodi/cart-shipping-bundle",
+    "description": "Elcodi Cart-Shipping bridge Bundle",
+    "keywords": [
+        "elcodi",
+        "cart",
+        "shipping",
+        "ecommerce"
+    ],
+    "homepage": "https://github.com/elcodi/CartShippingBundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "support": {
+        "email": "devs@elcodi.com",
+        "forum": "https://gitter.im/elcodi/elcodi",
+        "source": "https://github.com/elcodi/elcodi",
+        "issues": "https://github.com/elcodi/elcodi/issues"
+    },
+    "authors": [
+        {
+            "name": "Marc Morera",
+            "email": "yuhu@mmoreram.com"
+        },
+        {
+            "name": "Aldo Chiecchia",
+            "email": "zimage@tiscali.it"
+        },
+        {
+            "name": "The Awesome Elcodi Community",
+            "homepage": "https://github.com/elcodi/CartShippingBundle/contributors"
+        }
+    ],
+    "require": {
+        "php": "^5.4|^7.0",
+        "doctrine/common": "^2.5",
+        "doctrine/orm": "^2.5",
+
+        "symfony/http-kernel": "^2.7|^3.0",
+        "symfony/config": "^2.7|^3.0",
+        "symfony/dependency-injection": "^2.7|^3.0",
+        "mmoreram/simple-doctrine-mapping": "^1.0",
+        "mmoreram/symfony-bundle-dependencies": "^1.0",
+
+        "elcodi/core-bundle": "^1.0",
+        "elcodi/cart-bundle": "^1.0",
+        "elcodi/shipping-bundle": "^1.0",
+        "elcodi/cart-shipping": "^1.0"
+    },
+    "require-dev": {
+        "elcodi/test-common-bundle": "^1.0",
+        "elcodi/fixtures-booster-bundle": "^1.0",
+        "doctrine/data-fixtures": "^1.1",
+        "phpunit/phpunit": "4.5.0"
+    },
+    "autoload": {
+        "exclude-from-classmap": [
+            "/Tests/"
+        ],
+        "psr-4": {
+            "Elcodi\\Bundle\\CartShippingBundle\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

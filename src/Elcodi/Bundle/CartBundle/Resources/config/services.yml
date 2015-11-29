@@ -17,3 +17,38 @@ services:
             - @session
             - %elcodi.cart_session_field_name%
             - %elcodi.cart_save_in_session%
+
+    elcodi.loader.cart_prices:
+        class: Elcodi\Component\Cart\Services\CartPricesLoader
+        arguments:
+            - @elcodi.wrapper.currency
+            - @elcodi.converter.currency
+
+    elcodi.loader.cart_purchasable_quantity:
+        class: Elcodi\Component\Cart\Services\CartPurchasablesQuantityLoader
+
+    elcodi.cart_saver:
+        class: Elcodi\Component\Cart\Services\CartSaver
+        arguments:
+            - @elcodi.object_manager.cart
+
+    elcodi.validator.cart_integrity:
+        class: Elcodi\Component\Cart\Services\CartIntegrityValidator
+        arguments:
+            - @elcodi.event_dispatcher.cart
+            - @elcodi.manager.cart
+            - @?elcodi.store_uses_stock
+
+    elcodi.validator.cart_amount:
+        class: Elcodi\Component\Cart\Services\CartAmountValidator
+
+    elcodi.updater.cart_line_stock:
+        class: Elcodi\Component\Cart\Services\CartLineStockUpdater
+        arguments:
+            - @elcodi.object_manager.product
+            - @elcodi.object_manager.product_variant
+
+    elcodi.validator.cart_shipping_method:
+        class: Elcodi\Component\Cart\Services\CartShippingAmountValidator
+        arguments:
+            - @elcodi.wrapper.empty_money

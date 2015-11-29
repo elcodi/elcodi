@@ -32,6 +32,8 @@ use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
  * Api Methods:
  *
  * * createOrderFromCart(AbstractCart) : AbstractOrder
+ *
+ * @api
  */
 class CartOrderTransformer
 {
