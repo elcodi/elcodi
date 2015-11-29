@@ -1,49 +1,61 @@
 services:
 
-    #
-    # Event Listeners
-    #
-    elcodi.event_listener.cart_load:
-        class: Elcodi\Component\Cart\EventListener\CartLoadEventListener
+    elcodi.event_listener.load_cart_prices:
+        class: Elcodi\Component\Cart\EventListener\LoadCartPricesEventListener
         arguments:
-            - @elcodi.object_manager.cart
-            - @elcodi.event_dispatcher.cart
-            - @elcodi.manager.cart
-            - @elcodi.wrapper.currency
-            - @elcodi.converter.currency
-            - @?elcodi.store_uses_stock
+            - @elcodi.loader.cart_prices
         tags:
-            - { name: kernel.event_listener, event: cart.preload, method: checkCartIntegrity, priority: 0 }
-            - { name: kernel.event_listener, event: cart.onload, method: loadCartPrices, priority: 16 }
+            - { name: kernel.event_listener, event: cart.onload, method: loadCartProductsAmount, priority: 16 }
+            - { name: kernel.event_listener, event: cart.onload, method: loadCartTotalAmount, priority: 2 }
+
+    elcodi.event_listener.load_cart_purchasables_quantity:
+        class: Elcodi\Component\Cart\EventListener\LoadCartPurchasablesQuantityEventListener
+        arguments:
+            - @elcodi.loader.cart_purchasable_quantity
+        tags:
+            - { name: kernel.event_listener, event: cart.onload, method: loadCartPurchasablesQuantities, priority: 8 }
+
+    elcodi.event_listener.save_cart:
+        class: Elcodi\Component\Cart\EventListener\SaveCartEventListener
+        arguments:
+            - @elcodi.cart_saver
+        tags:
             - { name: kernel.event_listener, event: cart.onload, method: saveCart, priority: 0 }
-            - { name: kernel.event_listener, event: cart.onload, method: loadCartQuantities, priority: 16 }
 
-    elcodi.event_listener.limit_negative_cart:
-        class: Elcodi\Component\Cart\EventListener\LimitNegativeCartEventListener
-        tags:
-            - { name: kernel.event_listener, event: cart.onload, method: limitCartAmount, priority: -255 }
-
-    elcodi.event_listener.empty_shipping_cart:
-        class: Elcodi\Component\Cart\EventListener\CartEmptyShippingEventListener
+    elcodi.event_listener.validate_cart_integrity:
+        class: Elcodi\Component\Cart\EventListener\ValidateCartIntegrityEventListener
         arguments:
-            - @elcodi.wrapper.empty_money
+            - @elcodi.validator.cart_integrity
         tags:
-            - { name: kernel.event_listener, event: cart.onload, method: checkEmptyShippingAmount, priority: 16 }
+            - { name: kernel.event_listener, event: cart.preload, method: validateCartIntegrity, priority: 24 }
 
-    elcodi.event_listener.cart_shipping_method:
-        class: Elcodi\Component\Cart\EventListener\CartShippingMethodEventListener
+    elcodi.event_listener.validate_cart_amount:
+        class: Elcodi\Component\Cart\EventListener\ValidateCartAmountEventListener
         arguments:
-            - @elcodi.wrapper.shipping_methods
-            - @elcodi.converter.currency
+            - @elcodi.validator.cart_amount
         tags:
-            - { name: kernel.event_listener, event: cart.onload, method: loadShippingPrice, priority: 4}
+            - { name: kernel.event_listener, event: cart.onload, method: validateAmount, priority: 1 }
 
-    elcodi.event_listener.order_shipping_method:
-        class: Elcodi\Component\Cart\EventListener\OrderShippingMethodEventListener
+    elcodi.event_listener.update_stock_by_cart_line:
+        class: Elcodi\Component\Cart\EventListener\UpdateStockByCartLineEventListener
         arguments:
-            - @elcodi.wrapper.shipping_methods
+            - @elcodi.updater.cart_line_stock
         tags:
-            - { name: kernel.event_listener, event: order.oncreated, method: saveOrder, priority: 16}
+            - { name: kernel.event_listener, event: order_line.oncreated, method: updatePurchasableStockByCartLine, priority: 0 }
+
+    elcodi.event_listener.validate_empty_shipping_amount:
+        class: Elcodi\Component\Cart\EventListener\ValidateEmptyShippingAmountEventListener
+        arguments:
+            - @elcodi.validator.cart_shipping_method
+        tags:
+            - { name: kernel.event_listener, event: cart.onload, method: validateEmptyShippingAmount, priority: 4 }
+
+    elcodi.event_listener.save_cart_to_session:
+        class: Elcodi\Component\Cart\EventListener\SaveCartToSessionEventListener
+        arguments:
+            - @elcodi.session_manager.cart
+        tags:
+            - { name: kernel.event_listener, event: cart.onload, method: saveCartInSession, priority: -2 }
 
     elcodi.event_listener.order_creation:
         class: Elcodi\Component\Cart\EventListener\OrderCreationEventListener
@@ -53,21 +65,6 @@ services:
         tags:
             - { name: kernel.event_listener, event: order.oncreated, method: saveOrder, priority: 0}
             - { name: kernel.event_listener, event: order.oncreated, method: setCartAsOrdered, priority: -16 }
-
-    elcodi.event_listener.order_line_creation:
-        class: Elcodi\Component\Cart\EventListener\OrderLineCreationEventListener
-        arguments:
-            - @elcodi.object_manager.product
-            - @elcodi.object_manager.product_variant
-        tags:
-            - { name: kernel.event_listener, event: order_line.oncreated, method: updateStock, priority: 0}
-
-    elcodi.event_listener.cart_session:
-        class: Elcodi\Component\Cart\EventListener\CartSessionEventListener
-        arguments:
-            - @elcodi.session_manager.cart
-        tags:
-            - { name: kernel.event_listener, event: cart.onload, method: saveCartInSession, priority: -2 }
 
     elcodi.event_listener.address_clone:
         class: Elcodi\Component\Cart\EventListener\AddressCloneEventListener

@@ -76,8 +76,7 @@ class CartCouponPricesLoader
     }
 
     /**
-     * Calculates coupons price given actual Cart, and overrides Cart price
-     * given new information.
+     * Calculates coupons price given actual Cart.
      *
      * @param CartInterface $cart Cart
      */
@@ -105,10 +104,6 @@ class CartCouponPricesLoader
         }
 
         $cart->setCouponAmount($couponAmount);
-        $amount = $cart->getProductAmount();
-        $amount = $amount->add($cart->getShippingAmount());
-        $amount = $amount->subtract($couponAmount);
-        $cart->setAmount($amount);
     }
 
     /**

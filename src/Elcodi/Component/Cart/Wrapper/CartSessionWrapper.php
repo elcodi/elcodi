@@ -24,6 +24,14 @@ use Elcodi\Component\Core\Wrapper\Interfaces\WrapperInterface;
 
 /**
  * Class CartSessionWrapper
+ *
+ * Api Methods:
+ *
+ * * get()
+ * * clean()
+ * * loadCartFromSession()
+ *
+ * @api
  */
 class CartSessionWrapper implements WrapperInterface
 {

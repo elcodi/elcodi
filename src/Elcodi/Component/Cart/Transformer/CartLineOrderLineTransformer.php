@@ -33,6 +33,8 @@ use Elcodi\Component\Cart\Factory\OrderLineFactory;
  *
  * * createOrderLinesByCartLines(OrderInterface, Collection) : Collection
  * * createOrderLineFromCartLine(OrderInterface, CartLineInterface) : OrderLineInterface
+ *
+ * @api
  */
 class CartLineOrderLineTransformer
 {

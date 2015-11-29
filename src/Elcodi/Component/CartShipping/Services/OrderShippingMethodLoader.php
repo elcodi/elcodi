@@ -15,17 +15,17 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Cart\EventListener;
+namespace Elcodi\Component\CartShipping\Services;
 
-use Elcodi\Component\Cart\Event\CartOnLoadEvent;
-use Elcodi\Component\Currency\Services\CurrencyConverter;
+use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
+use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Shipping\Entity\ShippingMethod;
 use Elcodi\Component\Shipping\Wrapper\ShippingWrapper;
 
 /**
- * Class CartShippingMethodEventListener
+ * Class OrderShippingMethodLoader
  */
-class CartShippingMethodEventListener
+class OrderShippingMethodLoader
 {
     /**
      * @var ShippingWrapper
@@ -35,24 +35,13 @@ class CartShippingMethodEventListener
     private $shippingWrapper;
 
     /**
-     * @var CurrencyConverter
-     *
-     * Currency Converter
-     */
-    private $currencyConverter;
-
-    /**
      * Construct
      *
-     * @param ShippingWrapper   $shippingWrapper   Shipping wrapper
-     * @param CurrencyConverter $currencyConverter Currency Converter
+     * @param ShippingWrapper $shippingWrapper Shipping wrapper
      */
-    public function __construct(
-        ShippingWrapper $shippingWrapper,
-        CurrencyConverter $currencyConverter
-    ) {
+    public function __construct(ShippingWrapper $shippingWrapper)
+    {
         $this->shippingWrapper = $shippingWrapper;
-        $this->currencyConverter = $currencyConverter;
     }
 
     /**
@@ -60,13 +49,15 @@ class CartShippingMethodEventListener
      *
      * Flushes all loaded order and related entities.
      *
-     * @param CartOnLoadEvent $event Event
+     * @param CartInterface  $cart  Cart
+     * @param OrderInterface $order Order
      *
      * @return $this Self object
      */
-    public function loadShippingPrice(CartOnLoadEvent $event)
-    {
-        $cart = $event->getCart();
+    public function loadOrderShippingMethod(
+        CartInterface $cart,
+        OrderInterface $order
+    ) {
         $shippingMethodId = $cart->getShippingMethod();
 
         if (empty($shippingMethodId)) {
@@ -78,20 +69,8 @@ class CartShippingMethodEventListener
             ->getOneById($cart, $shippingMethodId);
 
         if ($shippingMethod instanceof ShippingMethod) {
-            $cartAmount = $cart->getAmount();
-            $convertedShippingAmount = $this
-                ->currencyConverter
-                ->convertMoney(
-                    $shippingMethod->getPrice(),
-                    $cartAmount->getCurrency()
-                );
-
-            $cart
-                ->setAmount(
-                    $cartAmount->add($convertedShippingAmount)
-                );
+            $order->setShippingAmount($shippingMethod->getPrice());
+            $order->setShippingMethod($shippingMethod);
         }
-
-        return $this;
     }
 }

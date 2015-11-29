@@ -40,6 +40,13 @@ use Elcodi\Component\User\Wrapper\CustomerWrapper;
  *   the Customer and is returned
  * - When there is no Cart in session, a new one is factored
  *
+ * Api Methods:
+ *
+ * * get()
+ * * clean()
+ *
+ * @api
+ *
  */
 class CartWrapper implements WrapperInterface
 {

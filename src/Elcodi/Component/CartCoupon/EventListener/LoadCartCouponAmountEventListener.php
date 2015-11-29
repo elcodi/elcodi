@@ -45,8 +45,7 @@ final class LoadCartCouponAmountEventListener
     /**
      * Method subscribed to CartLoad event.
      *
-     * Calculates coupons price given actual Cart, and overrides Cart price
-     * given new information.
+     * Calculates coupons price given actual Cart
      *
      * @param CartOnLoadEvent $event
      */

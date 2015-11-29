@@ -15,16 +15,16 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Cart\EventListener;
+namespace Elcodi\Component\CartShipping\Services;
 
-use Elcodi\Component\Cart\Event\OrderOnCreatedEvent;
+use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Shipping\Entity\ShippingMethod;
 use Elcodi\Component\Shipping\Wrapper\ShippingWrapper;
 
 /**
- * Class OrderShippingMethodEventListener
+ * Class CartShippingAmountLoader
  */
-class OrderShippingMethodEventListener
+class CartShippingAmountLoader
 {
     /**
      * @var ShippingWrapper
@@ -48,29 +48,24 @@ class OrderShippingMethodEventListener
      *
      * Flushes all loaded order and related entities.
      *
-     * @param OrderOnCreatedEvent $event Event
-     *
-     * @return $this Self object
+     * @param CartInterface $cart Cart
      */
-    public function saveOrder(OrderOnCreatedEvent $event)
+    public function loadCartShippingAmount(CartInterface $cart)
     {
-        $cart = $event->getCart();
         $shippingMethodId = $cart->getShippingMethod();
 
         if (empty($shippingMethodId)) {
-            return $this;
+            return;
         }
 
         $shippingMethod = $this
             ->shippingWrapper
             ->getOneById($cart, $shippingMethodId);
 
-        $order = $event->getOrder();
         if ($shippingMethod instanceof ShippingMethod) {
-            $order->setShippingAmount($shippingMethod->getPrice());
-            $order->setShippingMethod($shippingMethod);
+            $cart->setShippingAmount(
+                $shippingMethod->getPrice()
+            );
         }
-
-        return $this;
     }
 }

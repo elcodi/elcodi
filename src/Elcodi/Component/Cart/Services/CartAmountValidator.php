@@ -15,26 +15,40 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Cart\EventListener;
+namespace Elcodi\Component\Cart\Services;
 
-use Elcodi\Component\Cart\Event\CartOnLoadEvent;
+use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Currency\Entity\Money;
 
 /**
- * Class LimitNegativeCartEventListener
+ * Class CartAmountValidator
  *
- * @author Berny Cantos <be@rny.cc>
+ * Api Methods:
+ *
+ * * validateAmount(CartInterface)
+ * * validateNegativeAmount(CartInterface)
+ *
+ * @api
  */
-class LimitNegativeCartEventListener
+class CartAmountValidator
 {
     /**
      * When a cart goes below 0 (due to discounts), set the amount to 0.
      *
-     * @param CartOnLoadEvent $event Event
+     * @param CartInterface $cart Cart
      */
-    public function limitCartAmount(CartOnLoadEvent $event)
+    public function validateAmount(CartInterface $cart)
     {
-        $cart = $event->getCart();
+        $this->validateNegativeAmount($cart);
+    }
+
+    /**
+     * When a cart goes below 0 (due to discounts), set the amount to 0.
+     *
+     * @param CartInterface $cart Cart
+     */
+    public function validateNegativeAmount(CartInterface $cart)
+    {
         $amount = $cart->getAmount();
 
         if ($amount->getAmount() <= 0) {

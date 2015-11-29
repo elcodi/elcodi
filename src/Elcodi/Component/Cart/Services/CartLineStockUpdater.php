@@ -15,26 +15,26 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Cart\EventListener;
+namespace Elcodi\Component\Cart\Services;
 
 use Doctrine\Common\Persistence\ObjectManager;
 
-use Elcodi\Component\Cart\Event\OrderLineOnCreatedEvent;
+use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
 use Elcodi\Component\Product\ElcodiProductStock;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
 
 /**
- * Class OrderLineCreationEventListener
+ * Class CartLineStockUpdater
  *
- * These event listeners are supposed to be used when an OrderLine is created
+ * Api Methods:
  *
- * Public methods:
+ * * updatePurchasableStockByCartLine(CartLineInterface)
  *
- * * updateStock
+ * @api
  */
-class OrderLineCreationEventListener
+class CartLineStockUpdater
 {
     /**
      * @var ObjectManager
@@ -69,24 +69,18 @@ class OrderLineCreationEventListener
      *
      * Flushes all loaded order and related entities.
      *
-     * @param OrderLineOnCreatedEvent $event Event
-     *
-     * @return null
+     * @param CartLineInterface $cartLine Cart line
      */
-    public function updateStock(OrderLineOnCreatedEvent $event)
+    public function updatePurchasableStockByCartLine(CartLineInterface $cartLine)
     {
-        $purchasable = $event
-            ->getCartLine()
-            ->getPurchasable();
+        $purchasable = $cartLine->getPurchasable();
         $stock = $purchasable->getStock();
 
         if ($stock === ElcodiProductStock::INFINITE_STOCK) {
-            return null;
+            return;
         }
 
-        $quantityPurchased = $event
-            ->getCartLine()
-            ->getQuantity();
+        $quantityPurchased = $cartLine->getQuantity();
 
         $newStock = $stock - $quantityPurchased;
         $newStock = max($newStock, 0);

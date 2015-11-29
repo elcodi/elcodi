@@ -32,7 +32,7 @@ use Elcodi\Component\Cart\Event\OrderOnCreatedEvent;
  * * saveOrder
  * * setCartAsOrdered
  */
-class OrderCreationEventListener
+final class OrderCreationEventListener
 {
     /**
      * @var ObjectManager
