@@ -8,6 +8,19 @@ https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v1.0.0...v1.0.1
 
+### v1.0.10 (29-11-2015)
+
+This version fixes a bug in cart prices calculation.
+Introduces as well a new component called CartShipping and a new bundle called
+CartShippingBundle. Placed there all related to Cart shipping calculation.
+
+#### Release Log
+
+* [`4f8fa43`](https://github.com/elcodi/elcodi/commit/4f8fa430f6801656e76a16162ca2051df6e0b376) Fixed issue related to cart amount (mmoreram)
+* [`f7d0655`](https://github.com/elcodi/elcodi/commit/f7d06555ec427dd58830e46db15d4ade10e756ea) Added finder^3.0 as well (mmoreram)
+* [`52aa24a`](https://github.com/elcodi/elcodi/commit/52aa24a4b54d2758e5bfcf3c28392be065c46efb) Removed from composer the configuration-bundle line (mmoreram)
+* [`6026c8c`](https://github.com/elcodi/elcodi/commit/6026c8c098a22ff30383064da2c83e40e0ac4347) exclude tests from production classes map (Emanuele Minotto)
+
 ### v1.0.9 (27-11-2015)
 
 This version deprecates the usage of internal classes related to dependencies
