@@ -17,6 +17,8 @@
 
 namespace Elcodi\Component\Menu\Entity\Menu;
 
+use Doctrine\Common\Collections\Collection;
+
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface;
@@ -273,16 +275,21 @@ class Node implements NodeInterface
      */
     public function isActive($currentUrl)
     {
+        $activeUrls = $this->getActiveUrls();
+
         return
             $currentUrl == $this->url ||
-            in_array($currentUrl, $this->getActiveUrls());
+            (
+                is_array($activeUrls) &&
+                in_array($currentUrl, $this->getActiveUrls())
+            );
     }
 
     /**
      * Is expanded.
      *
-     * A menu node is considered expanded when is enabled or has one children
-     * expanded
+     * A menu node is considered expanded when any of their children is active
+     * or expanded
      *
      * @param string $currentUrl Current Url
      *
@@ -290,6 +297,10 @@ class Node implements NodeInterface
      */
     public function isExpanded($currentUrl)
     {
+        if (!$this->subnodes instanceof Collection) {
+            return false;
+        }
+
         return $this
             ->subnodes
             ->exists(function ($_, NodeInterface $node) use ($currentUrl) {
