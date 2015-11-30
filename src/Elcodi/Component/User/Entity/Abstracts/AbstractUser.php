@@ -25,6 +25,7 @@ use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 use Elcodi\Component\User\Entity\Traits\LastLoginTrait;
+use Elcodi\Component\User\Exception\InvalidPasswordException;
 
 /**
  * AbstractUser is the building block for simple User entities,
@@ -311,9 +312,15 @@ abstract class AbstractUser implements AbstractUserInterface
      */
     public function setPassword($password)
     {
-        if (null !== $password) {
-            $this->password = $password;
+        if (null === $password) {
+            return $this;
         }
+
+        if (!is_string($password) || trim($password) == '') {
+            throw new InvalidPasswordException();
+        }
+
+        $this->password = $password;
 
         return $this;
     }
