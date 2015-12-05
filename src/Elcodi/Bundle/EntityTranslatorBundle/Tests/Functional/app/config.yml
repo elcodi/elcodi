@@ -1,6 +1,6 @@
 imports:
-    - { resource: @ElcodiCoreBundle/Resources/config/test/configuration.test.yml }
-    - { resource: @ElcodiCoreBundle/Resources/config/test/cache.test.yml }
+    - { resource: '@ElcodiCoreBundle/Resources/config/test/configuration.test.yml' }
+    - { resource: '@ElcodiCoreBundle/Resources/config/test/cache.test.yml' }
 
 elcodi_entity_translator:
     configuration:

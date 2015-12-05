@@ -7,4 +7,4 @@ services:
         class: Elcodi\Component\Store\Wrapper\StoreWrapper
         lazy: true
         arguments:
-            - @elcodi.repository.store
+            - '@elcodi.repository.store'

@@ -6,6 +6,6 @@ services:
     elcodi.controller.metric_input:
         class: Elcodi\Component\Metric\Input\Controller\InputController
         arguments:
-            - @request_stack
-            - @elcodi.metric_manager
-            - @elcodi.factory.datetime
+            - '@request_stack'
+            - '@elcodi.metric_manager'
+            - '@elcodi.factory.datetime'

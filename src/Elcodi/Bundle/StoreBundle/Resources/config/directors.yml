@@ -7,6 +7,6 @@ services:
         class: Elcodi\Component\Core\Services\ObjectDirector
         lazy: true
         arguments:
-            - @elcodi.object_manager.store
-            - @elcodi.repository.store
-            - @elcodi.factory.store
+            - '@elcodi.object_manager.store'
+            - '@elcodi.repository.store'
+            - '@elcodi.factory.store'

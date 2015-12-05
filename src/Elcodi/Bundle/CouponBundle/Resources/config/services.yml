@@ -6,6 +6,6 @@ services:
     elcodi.manager.coupon:
         class: Elcodi\Component\Coupon\Services\CouponManager
         arguments:
-            - @elcodi.factory.coupon
-            - @elcodi.generator.random_string
-            - @elcodi.factory.datetime
+            - '@elcodi.factory.coupon'
+            - '@elcodi.generator.random_string'
+            - '@elcodi.factory.datetime'

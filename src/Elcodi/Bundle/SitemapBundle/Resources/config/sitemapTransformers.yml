@@ -6,4 +6,4 @@ services:
     elcodi.sitemap_transformer.static:
         class: Elcodi\Component\Sitemap\Transformer\StaticRouteTransformer
         arguments:
-            - @router
+            - '@router'

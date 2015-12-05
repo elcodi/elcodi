@@ -7,5 +7,5 @@ services:
         class: Elcodi\Component\Rule\Services\RuleManager
         lazy: true
         arguments:
-            - @elcodi.expression_language
-            - @elcodi.expression_language_context_collector
+            - '@elcodi.expression_language'
+            - '@elcodi.expression_language_context_collector'

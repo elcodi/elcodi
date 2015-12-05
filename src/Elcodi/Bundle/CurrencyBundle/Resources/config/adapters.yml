@@ -6,7 +6,7 @@ services:
     elcodi.currency_exchange_rate_adapter.yahoo_finances:
         class: Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\YahooFinanceProviderAdapter
         arguments:
-            - @elcodi.guzzle_client
+            - '@elcodi.guzzle_client'
 
     elcodi.currency_exchange_rate_adapter.dummy:
         class: Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\DummyProviderAdapter

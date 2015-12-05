@@ -7,6 +7,6 @@ services:
         class: Elcodi\Component\Core\Services\ObjectDirector
         lazy: true
         arguments:
-            - @elcodi.object_manager.page
-            - @elcodi.repository.page
-            - @elcodi.factory.page
+            - '@elcodi.object_manager.page'
+            - '@elcodi.repository.page'
+            - '@elcodi.factory.page'

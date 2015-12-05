@@ -6,7 +6,7 @@ services:
     elcodi.payment_plugins:
         class: StdClass
         factory:
-            - @elcodi.repository.plugin
+            - '@elcodi.repository.plugin'
             - findBy
         arguments:
             - {type: plugin, category: payment}
@@ -14,7 +14,7 @@ services:
     elcodi.enabled_payment_plugins:
         class: StdClass
         factory:
-            - @elcodi.repository.plugin
+            - '@elcodi.repository.plugin'
             - findBy
         arguments:
             - {enabled: true, type: plugin, category: payment}

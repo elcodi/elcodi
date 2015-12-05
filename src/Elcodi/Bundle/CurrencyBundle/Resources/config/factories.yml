@@ -11,7 +11,7 @@ services:
         class: Elcodi\Component\Currency\Factory\Abstracts\AbstractPurchasableFactory
         abstract: true
         arguments:
-            - @elcodi.wrapper.empty_money
+            - '@elcodi.wrapper.empty_money'
 
     #
     # Factory for Currency entities

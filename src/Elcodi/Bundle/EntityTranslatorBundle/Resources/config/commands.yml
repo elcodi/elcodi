@@ -6,4 +6,4 @@ services:
     elcodi.command.translations_warmup:
         class: Elcodi\Component\EntityTranslator\Console\TranslationsWarmupCommand
         arguments:
-            - @elcodi.event_dispatcher.entity_translator
+            - '@elcodi.event_dispatcher.entity_translator'

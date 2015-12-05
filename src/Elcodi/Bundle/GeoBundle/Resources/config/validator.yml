@@ -6,6 +6,6 @@ services:
     elcodi.validator.city_exists:
         class: Elcodi\Component\Geo\Validator\Constraints\CityExistsValidator
         arguments:
-            - @elcodi.location_provider
+            - '@elcodi.location_provider'
         tags:
             - { name: validator.constraint_validator, alias: city_exists }

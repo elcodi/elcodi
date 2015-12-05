@@ -6,6 +6,6 @@ services:
     elcodi.twig_extension.language:
         class: Elcodi\Component\Language\Twig\LanguageExtension
         arguments:
-            - @elcodi.manager.promoted_language
+            - '@elcodi.manager.promoted_language'
         tags:
             - { name: twig.extension }

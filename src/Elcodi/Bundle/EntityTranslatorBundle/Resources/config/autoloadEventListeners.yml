@@ -7,7 +7,7 @@ services:
         class: Elcodi\Component\EntityTranslator\EventListener\EntityTranslatorEntityEventListener
         lazy: true
         arguments:
-            - @service_container
-            - @elcodi.locale
+            - '@service_container'
+            - '@elcodi.locale'
         tags:
             - { name: doctrine.event_listener, event: postLoad }

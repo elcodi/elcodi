@@ -6,13 +6,13 @@ services:
     elcodi.provider.locale:
         class: Elcodi\Component\Language\Services\LocaleProvider
         arguments:
-            - @request_stack
+            - '@request_stack'
             - %locale%
 
     elcodi.provider.locale.locale:
         class: Elcodi\Component\Language\Entity\Locale
         factory:
-            - @elcodi.provider.locale
+            - '@elcodi.provider.locale'
             - getLocale
         public: false
 
@@ -22,18 +22,18 @@ services:
     elcodi.manager.language:
         class: Elcodi\Component\Language\Services\LanguageManager
         arguments:
-            - @elcodi.repository.language
+            - '@elcodi.repository.language'
 
     elcodi.manager.promoted_language:
         class: Elcodi\Component\Language\Services\PromotedLanguageManager
         arguments:
-            - @elcodi.manager.language
-            - @elcodi.locale
+            - '@elcodi.manager.language'
+            - '@elcodi.locale'
 
     elcodi.manager.locale:
         class: Elcodi\Component\Language\Services\LocaleManager
         arguments:
-            - @elcodi.provider.locale.locale
+            - '@elcodi.provider.locale.locale'
         calls:
             - [initialize, []]
 
@@ -43,23 +43,23 @@ services:
     elcodi.languages:
         class: Doctrine\Common\Collections\Collection
         factory:
-            - @elcodi.manager.language
+            - '@elcodi.manager.language'
             - getLanguages
 
     elcodi.languages_iso:
         class: Doctrine\Common\Collections\Collection
         factory:
-            - @elcodi.manager.language
+            - '@elcodi.manager.language'
             - getLanguagesIso
 
     elcodi.languages_iso_array:
         class: stdClass
         factory:
-            - @elcodi.languages_iso
+            - '@elcodi.languages_iso'
             - toArray
 
     elcodi.locale:
         class: Elcodi\Component\Language\Entity\Locale
         factory:
-            - @elcodi.manager.locale
+            - '@elcodi.manager.locale'
             - getLocale

@@ -6,17 +6,17 @@ services:
     elcodi.wrapper.currency:
         class: Elcodi\Component\Currency\Wrapper\CurrencyWrapper
         arguments:
-            - @elcodi.manager.currency_session
-            - @elcodi.repository.currency
-            - @elcodi.wrapper.default_currency
+            - '@elcodi.manager.currency_session'
+            - '@elcodi.repository.currency'
+            - '@elcodi.wrapper.default_currency'
 
     elcodi.wrapper.default_currency:
         class: Elcodi\Component\Currency\Wrapper\DefaultCurrencyWrapper
         arguments:
-            - @elcodi.repository.currency
+            - '@elcodi.repository.currency'
             - %elcodi.default_currency%
 
     elcodi.wrapper.empty_money:
         class: Elcodi\Component\Currency\Wrapper\EmptyMoneyWrapper
         arguments:
-            - @elcodi.wrapper.default_currency
+            - '@elcodi.wrapper.default_currency'

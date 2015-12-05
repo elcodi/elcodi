@@ -6,6 +6,6 @@ services:
     elcodi.twig_extension.plugin_hook:
         class: Elcodi\Component\Plugin\Twig\HookExtension
         arguments:
-            - @elcodi.event_dispatcher.hook_system
+            - '@elcodi.event_dispatcher.hook_system'
         tags:
             - { name: twig.extension }

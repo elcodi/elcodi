@@ -4,18 +4,18 @@ services:
         class: Elcodi\Component\EntityTranslator\Services\EntityTranslationProvider
         lazy: true
         arguments:
-            - @elcodi.repository.entity_translation
-            - @elcodi.factory.entity_translation
-            - @elcodi.object_manager.entity_translation
+            - '@elcodi.repository.entity_translation'
+            - '@elcodi.factory.entity_translation'
+            - '@elcodi.object_manager.entity_translation'
 
     elcodi.services.cached_entity_translation_provider:
         class: Elcodi\Component\EntityTranslator\Services\CachedEntityTranslationProvider
         arguments:
-            - @elcodi.services.entity_translation_provider
-            - @elcodi.repository.entity_translation
+            - '@elcodi.services.entity_translation_provider'
+            - '@elcodi.repository.entity_translation'
             - %elcodi.entity_translator_cache_prefix%
         calls:
-            - [setCache, [@doctrine_cache.providers.elcodi_translations]]
+            - [setCache, ['@doctrine_cache.providers.elcodi_translations']]
         tags:
             - { name: kernel.event_listener, event: translator.warmup, method: warmUp }
 
@@ -28,13 +28,13 @@ services:
     elcodi.entity_translator_builder:
         class: Elcodi\Component\EntityTranslator\Services\EntityTranslatorBuilder
         arguments:
-            - @elcodi.entity_translation_provider
-            - @elcodi.factory.entity_translator
+            - '@elcodi.entity_translation_provider'
+            - '@elcodi.factory.entity_translator'
             - %elcodi.entity_translator_configuration%
             - %elcodi.entity_translator_language_fallback%
 
     elcodi.entity_translator:
         class: Elcodi\Component\EntityTranslator\Services\EntityTranslator
         factory:
-            - @elcodi.entity_translator_builder
+            - '@elcodi.entity_translator_builder'
             - compile

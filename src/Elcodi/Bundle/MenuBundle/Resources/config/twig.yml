@@ -6,6 +6,6 @@ services:
     elcodi.twig_extension.menu_print_route:
         class: Elcodi\Component\Menu\Twig\PrintRouteExtension
         arguments:
-            - @router
+            - '@router'
         tags:
             - { name: twig.extension }

@@ -6,6 +6,6 @@ services:
     elcodi.twig_extension.shipping:
         class: Elcodi\Component\Shipping\Twig\ShippingExtension
         arguments:
-            - @elcodi.wrapper.shipping_methods
+            - '@elcodi.wrapper.shipping_methods'
         tags:
             - { name: twig.extension }

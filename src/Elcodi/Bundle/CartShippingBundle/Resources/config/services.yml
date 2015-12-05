@@ -3,9 +3,9 @@ services:
     elcodi.loader.cart_shipping_amount:
         class: Elcodi\Component\CartShipping\Services\CartShippingAmountLoader
         arguments:
-            - @elcodi.wrapper.shipping_methods
+            - '@elcodi.wrapper.shipping_methods'
 
     elcodi.loader.order_shipping_method:
         class: Elcodi\Component\CartShipping\Services\OrderShippingMethodLoader
         arguments:
-            - @elcodi.wrapper.shipping_methods
+            - '@elcodi.wrapper.shipping_methods'

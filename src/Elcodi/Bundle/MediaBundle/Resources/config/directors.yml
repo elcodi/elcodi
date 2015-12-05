@@ -7,6 +7,6 @@ services:
         class: Elcodi\Component\Core\Services\ObjectDirector
         lazy: true
         arguments:
-            - @elcodi.object_manager.image
-            - @elcodi.repository.image
-            - @elcodi.factory.image
+            - '@elcodi.object_manager.image'
+            - '@elcodi.repository.image'
+            - '@elcodi.factory.image'

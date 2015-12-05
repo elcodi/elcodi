@@ -7,14 +7,14 @@ services:
         class: Elcodi\Component\Core\Services\ObjectDirector
         lazy: true
         arguments:
-            - @elcodi.object_manager.attribute
-            - @elcodi.repository.attribute
-            - @elcodi.factory.attribute
+            - '@elcodi.object_manager.attribute'
+            - '@elcodi.repository.attribute'
+            - '@elcodi.factory.attribute'
 
     elcodi.director.attribute_value:
         class: Elcodi\Component\Core\Services\ObjectDirector
         lazy: true
         arguments:
-            - @elcodi.object_manager.attribute_value
-            - @elcodi.repository.attribute_value
-            - @elcodi.factory.attribute_value
+            - '@elcodi.object_manager.attribute_value'
+            - '@elcodi.repository.attribute_value'
+            - '@elcodi.factory.attribute_value'

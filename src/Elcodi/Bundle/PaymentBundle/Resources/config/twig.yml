@@ -6,6 +6,6 @@ services:
     elcodi.twig_extension.payment:
         class: Elcodi\Component\Payment\Twig\PaymentExtension
         arguments:
-            - @elcodi.wrapper.payment_methods
+            - '@elcodi.wrapper.payment_methods'
         tags:
             - { name: twig.extension }

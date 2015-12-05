@@ -7,10 +7,10 @@ services:
         class: Elcodi\Component\Configuration\Services\ConfigurationManager
         lazy: true
         arguments:
-            - @elcodi.object_manager.configuration
-            - @elcodi.repository.configuration
-            - @elcodi.factory.configuration
-            - @elcodi.container_parameters
+            - '@elcodi.object_manager.configuration'
+            - '@elcodi.repository.configuration'
+            - '@elcodi.factory.configuration'
+            - '@elcodi.container_parameters'
             - %elcodi.configuration_elements%
         calls:
-            - [setCache, [@doctrine_cache.providers.elcodi_configurations]]
+            - [setCache, ['@doctrine_cache.providers.elcodi_configurations']]

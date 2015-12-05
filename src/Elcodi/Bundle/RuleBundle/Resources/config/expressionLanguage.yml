@@ -15,14 +15,14 @@ services:
     elcodi.expression_language_container_provider:
         class: Elcodi\Component\Rule\ExpressionLanguage\Provider\ContainerProvider
         arguments:
-            - @service_container
+            - '@service_container'
         tags:
             - { name: elcodi.rule_configuration }
 
     elcodi.expression_language_rule_provider:
         class: Elcodi\Component\Rule\ExpressionLanguage\Provider\RuleProvider
         arguments:
-            - @elcodi.repository.rule
-            - @elcodi.manager.rule
+            - '@elcodi.repository.rule'
+            - '@elcodi.manager.rule'
         tags:
             - { name: elcodi.rule_configuration }

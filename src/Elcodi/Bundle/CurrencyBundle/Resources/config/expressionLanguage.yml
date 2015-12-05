@@ -6,7 +6,7 @@ services:
     elcodi.expression_language.money_provider:
         class: Elcodi\Component\Currency\ExpressionLanguage\MoneyProvider
         arguments:
-            - @elcodi.wrapper.default_currency
-            - @elcodi.repository.currency
+            - '@elcodi.wrapper.default_currency'
+            - '@elcodi.repository.currency'
         tags:
             - { name: elcodi.rule_configuration }

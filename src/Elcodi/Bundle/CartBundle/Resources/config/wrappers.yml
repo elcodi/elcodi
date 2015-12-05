@@ -6,13 +6,13 @@ services:
     elcodi.wrapper.cart:
         class: Elcodi\Component\Cart\Wrapper\CartWrapper
         arguments:
-            - @elcodi.event_dispatcher.cart
-            - @elcodi.factory.cart
-            - @elcodi.wrapper.cart_session
-            - @elcodi.wrapper.customer
+            - '@elcodi.event_dispatcher.cart'
+            - '@elcodi.factory.cart'
+            - '@elcodi.wrapper.cart_session'
+            - '@elcodi.wrapper.customer'
 
     elcodi.wrapper.cart_session:
         class: Elcodi\Component\Cart\Wrapper\CartSessionWrapper
         arguments:
-            - @elcodi.session_manager.cart
-            - @elcodi.repository.cart
+            - '@elcodi.session_manager.cart'
+            - '@elcodi.repository.cart'

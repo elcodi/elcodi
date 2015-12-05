@@ -14,5 +14,5 @@ services:
     elcodi.extractor:
         class: Mmoreram\Extractor\Extractor
         arguments:
-            - @elcodi.extractor.directory
-            - @elcodi.extractor.extension_resolver
+            - '@elcodi.extractor.directory'
+            - '@elcodi.extractor.extension_resolver'

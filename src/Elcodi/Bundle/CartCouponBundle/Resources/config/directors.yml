@@ -7,14 +7,14 @@ services:
         class: Elcodi\Component\Core\Services\ObjectDirector
         lazy: true
         arguments:
-            - @elcodi.object_manager.cart_coupon
-            - @elcodi.repository.cart_coupon
-            - @elcodi.factory.cart_coupon
+            - '@elcodi.object_manager.cart_coupon'
+            - '@elcodi.repository.cart_coupon'
+            - '@elcodi.factory.cart_coupon'
 
     elcodi.director.order_coupon:
         class: Elcodi\Component\Core\Services\ObjectDirector
         lazy: true
         arguments:
-            - @elcodi.object_manager.order_coupon
-            - @elcodi.repository.order_coupon
-            - @elcodi.factory.order_coupon
+            - '@elcodi.object_manager.order_coupon'
+            - '@elcodi.repository.order_coupon'
+            - '@elcodi.factory.order_coupon'

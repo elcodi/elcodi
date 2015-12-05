@@ -7,6 +7,6 @@ services:
         class: Elcodi\Component\Core\Services\ObjectDirector
         lazy: true
         arguments:
-            - @elcodi.object_manager.zone
-            - @elcodi.repository.zone
-            - @elcodi.factory.zone
+            - '@elcodi.object_manager.zone'
+            - '@elcodi.repository.zone'
+            - '@elcodi.factory.zone'
