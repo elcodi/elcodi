@@ -34,7 +34,7 @@ before_install:
   - 'if [[ -n "$GH_TOKEN" ]]; then composer config github-oauth.github.com ${GH_TOKEN}; fi;'
 
 install:
-  - composer update --prefer-dist --no-interaction --no-progress
+  - composer install --prefer-dist --no-interaction --no-progress
 
 script:
   - vendor/bin/phpunit
