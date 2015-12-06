@@ -33,14 +33,14 @@ class NewsletterManagerTest extends WebTestCase
      *
      * Newsletter manager
      */
-    protected $newsletterManager;
+    private $newsletterManager;
 
     /**
      * @var NewsletterSubscriptionRepository
      *
      * NewsletterSubscription Repository
      */
-    protected $newsletterSubscriptionRepository;
+    private $newsletterSubscriptionRepository;
 
     /**
      * Load fixtures of these bundles

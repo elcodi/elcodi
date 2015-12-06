@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Newsletter\Services;
 
 use Symfony\Component\Validator\Constraints\Email;
-use Symfony\Component\Validator\ValidatorInterface;
+use Symfony\Component\Validator\Validator\RecursiveValidator;
 
 use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
@@ -42,7 +42,7 @@ class NewsletterManager
     private $newsletterEventDispatcher;
 
     /**
-     * @var ValidatorInterface
+     * @var RecursiveValidator
      *
      * Validator instance
      */
@@ -73,14 +73,14 @@ class NewsletterManager
      * Construct method
      *
      * @param NewsletterEventDispatcher        $newsletterEventDispatcher        Newsletter EventDispatcher
-     * @param ValidatorInterface               $validator                        Validator class
+     * @param RecursiveValidator               $validator                        Validator class
      * @param NewsletterSubscriptionFactory    $newsletterSubscriptionFactory    NewsletterSubscription Factory
      * @param NewsletterSubscriptionRepository $newsletterSubscriptionRepository NewsletterSubscription Repository
      * @param GeneratorInterface               $hashGenerator                    Hash generator
      */
     public function __construct(
         NewsletterEventDispatcher $newsletterEventDispatcher,
-        ValidatorInterface $validator,
+        RecursiveValidator $validator,
         NewsletterSubscriptionFactory $newsletterSubscriptionFactory,
         NewsletterSubscriptionRepository $newsletterSubscriptionRepository,
         GeneratorInterface $hashGenerator

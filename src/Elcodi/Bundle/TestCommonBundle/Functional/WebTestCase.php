@@ -18,9 +18,9 @@
 namespace Elcodi\Bundle\TestCommonBundle\Functional;
 
 use Exception;
+use PHPUnit_Framework_TestCase;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as BaseWebTestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -30,7 +30,7 @@ use Elcodi\Bundle\CoreBundle\Container\Traits\ContainerAccessorTrait;
 /**
  * Core abstract tests class
  */
-abstract class WebTestCase extends BaseWebTestCase
+abstract class WebTestCase extends PHPUnit_Framework_TestCase
 {
     use ContainerAccessorTrait;
 
@@ -42,11 +42,11 @@ abstract class WebTestCase extends BaseWebTestCase
     protected static $application;
 
     /**
-     * @var Client
+     * @var KernelInterface
      *
-     * Client
+     * kernel
      */
-    protected $client;
+    protected static $kernel;
 
     /**
      * Reload scenario
@@ -233,18 +233,34 @@ abstract class WebTestCase extends BaseWebTestCase
      *  * environment
      *  * debug
      *
-     * @param array $options An array of options
-     *
      * @return KernelInterface A KernelInterface instance
      */
-    protected static function createKernel(array $options = [])
+    protected static function createKernel()
     {
-        static::$class = static::getKernelClass();
+        $class = static::getKernelClass();
 
         $namespaceExploded = explode('\\Tests\\Functional\\', get_called_class(), 2);
         $bundleName = explode('Elcodi\\', $namespaceExploded[0], 2)[1];
         $bundleName = str_replace('\\', '_', $bundleName);
 
-        return new static::$class($bundleName . 'Test', false);
+        return new $class($bundleName . 'Test', false);
+    }
+
+    /**
+     * Creates a Client.
+     *
+     * @param array $server An array of server parameters
+     *
+     * @return Client A Client instance
+     */
+    protected static function createClient(array $server = [])
+    {
+        $client = static::$kernel
+            ->getContainer()
+            ->get('test.client');
+
+        $client->setServerParameters($server);
+
+        return $client;
     }
 }

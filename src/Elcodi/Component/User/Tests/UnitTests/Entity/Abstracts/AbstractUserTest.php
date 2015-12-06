@@ -54,7 +54,6 @@ class AbstractUserTest extends PHPUnit_Framework_TestCase
         $user->setPassword('  1  ');
         $user->setPassword('1234');
         $user->setPassword('blabla');
-
     }
 
     /**
