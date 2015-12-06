@@ -20,7 +20,7 @@ namespace Elcodi\Bundle\CartShippingBundle\DependencyInjection;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 
 /**
- * Class ElcodiCartShippingExtension
+ * Class ElcodiCartShippingExtension.
  */
 class ElcodiCartShippingExtension extends AbstractExtension
 {
@@ -32,7 +32,7 @@ class ElcodiCartShippingExtension extends AbstractExtension
     const EXTENSION_NAME = 'elcodi_cart_shipping';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -42,7 +42,7 @@ class ElcodiCartShippingExtension extends AbstractExtension
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * return array(
      *      'file1.yml',
@@ -63,7 +63,7 @@ class ElcodiCartShippingExtension extends AbstractExtension
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */

@@ -20,7 +20,7 @@ namespace Elcodi\Component\EntityTranslator\Event;
 use Symfony\Component\EventDispatcher\Event;
 
 /**
- * Class EntityTranslatorWarmUpEvent
+ * Class EntityTranslatorWarmUpEvent.
  */
 final class EntityTranslatorWarmUpEvent extends Event
 {

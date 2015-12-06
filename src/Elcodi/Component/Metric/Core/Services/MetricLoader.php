@@ -22,7 +22,7 @@ use Elcodi\Component\Metric\Core\Entity\Interfaces\EntryInterface;
 use Elcodi\Component\Metric\Core\Repository\EntryRepository;
 
 /**
- * Class MetricLoader
+ * Class MetricLoader.
  */
 class MetricLoader
 {
@@ -41,7 +41,7 @@ class MetricLoader
     private $entryRepository;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param AbstractMetricsBucket $metricsBucket   Metrics bucket
      * @param EntryRepository       $entryRepository Metric entry repository
@@ -55,9 +55,9 @@ class MetricLoader
     }
 
     /**
-     * Load metrics from last X days and cache them
+     * Load metrics from last X days and cache them.
      *
-     * @param integer $days Number of days you want to load and cache
+     * @param int $days Number of days you want to load and cache
      *
      * @return EntryInterface[] Array of loaded entries
      */

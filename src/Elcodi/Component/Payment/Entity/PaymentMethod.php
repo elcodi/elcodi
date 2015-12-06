@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Payment\Entity;
 
 /**
- * Class PaymentMethod
+ * Class PaymentMethod.
  */
 class PaymentMethod
 {
@@ -65,7 +65,7 @@ class PaymentMethod
     protected $script;
 
     /**
-     * Contstruct
+     * Contstruct.
      *
      * @param string $id          Id
      * @param string $name        Name
@@ -91,7 +91,7 @@ class PaymentMethod
     }
 
     /**
-     * Get id
+     * Get id.
      *
      * @return string Id
      */
@@ -101,7 +101,7 @@ class PaymentMethod
     }
 
     /**
-     * Get Name
+     * Get Name.
      *
      * @return string Name
      */
@@ -111,7 +111,7 @@ class PaymentMethod
     }
 
     /**
-     * Get Description
+     * Get Description.
      *
      * @return string Description
      */
@@ -121,7 +121,7 @@ class PaymentMethod
     }
 
     /**
-     * Get Url
+     * Get Url.
      *
      * @return string Url
      */
@@ -131,7 +131,7 @@ class PaymentMethod
     }
 
     /**
-     * Get ImageUrl
+     * Get ImageUrl.
      *
      * @return string ImageUrl
      */
@@ -141,7 +141,7 @@ class PaymentMethod
     }
 
     /**
-     * Get Script
+     * Get Script.
      *
      * @return string Script
      */

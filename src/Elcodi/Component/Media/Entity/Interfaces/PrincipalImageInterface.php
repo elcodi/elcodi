@@ -18,12 +18,12 @@
 namespace Elcodi\Component\Media\Entity\Interfaces;
 
 /**
- * Interface PrincipalImageInterface
+ * Interface PrincipalImageInterface.
  */
 interface PrincipalImageInterface
 {
     /**
-     * Set the principalImage
+     * Set the principalImage.
      *
      * @param ImageInterface $principalImage Principal image
      *
@@ -32,7 +32,7 @@ interface PrincipalImageInterface
     public function setPrincipalImage(ImageInterface $principalImage = null);
 
     /**
-     * Get the principalImage
+     * Get the principalImage.
      *
      * @return ImageInterface Principal image
      */

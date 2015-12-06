@@ -23,7 +23,7 @@ use Elcodi\Component\Coupon\Exception\CouponBelowMinimumPurchaseException;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
 
 /**
- * Class CartCouponMinimumPriceValidator
+ * Class CartCouponMinimumPriceValidator.
  *
  * API methods:
  *
@@ -41,7 +41,7 @@ class CartCouponMinimumPriceValidator
     private $currencyConverter;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param CurrencyConverter $currencyConverter
      */
@@ -51,7 +51,7 @@ class CartCouponMinimumPriceValidator
     }
 
     /**
-     * Check if cart meets minimum price requirements for a coupon
+     * Check if cart meets minimum price requirements for a coupon.
      *
      * @param CartInterface   $cart   Cart
      * @param CouponInterface $coupon Coupon

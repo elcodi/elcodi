@@ -20,7 +20,7 @@ namespace Elcodi\Bundle\PaymentBundle\DependencyInjection;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 
 /**
- * Class ElcodiPaymentExtension
+ * Class ElcodiPaymentExtension.
  */
 class ElcodiPaymentExtension extends AbstractExtension
 {
@@ -32,7 +32,7 @@ class ElcodiPaymentExtension extends AbstractExtension
     const EXTENSION_NAME = 'elcodi_payment';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -42,7 +42,7 @@ class ElcodiPaymentExtension extends AbstractExtension
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * return array(
      *      'file1.yml',
@@ -65,7 +65,7 @@ class ElcodiPaymentExtension extends AbstractExtension
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */

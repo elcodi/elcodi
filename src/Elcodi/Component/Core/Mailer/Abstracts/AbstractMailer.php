@@ -22,7 +22,7 @@ use Swift_Message;
 use Symfony\Component\Templating\EngineInterface;
 
 /**
- * Class AbstractMailer
+ * Class AbstractMailer.
  */
 abstract class AbstractMailer
 {
@@ -62,7 +62,7 @@ abstract class AbstractMailer
     private $fromEmail;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param EngineInterface $templatingEngine Templating engine
      * @param Swift_Mailer    $mailer           Mailer
@@ -85,7 +85,7 @@ abstract class AbstractMailer
     }
 
     /**
-     * Render email
+     * Render email.
      *
      * @param string $subject       Email subject
      * @param string $receiverEmail Receiver Email

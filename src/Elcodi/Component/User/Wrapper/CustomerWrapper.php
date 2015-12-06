@@ -25,7 +25,7 @@ use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 use Elcodi\Component\User\Factory\CustomerFactory;
 
 /**
- * Cart to order service
+ * Cart to order service.
  */
 class CustomerWrapper implements WrapperInterface
 {
@@ -51,7 +51,7 @@ class CustomerWrapper implements WrapperInterface
     private $tokenStorage;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * This wrapper loads Customer from database if this exists and is authenticated.
      * Otherwise, this create new Guest without persisting it
@@ -69,7 +69,7 @@ class CustomerWrapper implements WrapperInterface
 
     /**
      * Get loaded object. If object is not loaded yet, then load it and save it
-     * locally. Otherwise, just return the pre-loaded object
+     * locally. Otherwise, just return the pre-loaded object.
      *
      * @return mixed Loaded object
      */
@@ -103,7 +103,7 @@ class CustomerWrapper implements WrapperInterface
     }
 
     /**
-     * Set customer
+     * Set customer.
      *
      * @param CustomerInterface $customer Customer
      *

@@ -20,7 +20,7 @@ namespace Elcodi\Component\Coupon\Exception;
 use Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException;
 
 /**
- * Custom CouponBelowMinimumPurchaseException
+ * Custom CouponBelowMinimumPurchaseException.
  */
 class CouponBelowMinimumPurchaseException extends AbstractCouponException
 {

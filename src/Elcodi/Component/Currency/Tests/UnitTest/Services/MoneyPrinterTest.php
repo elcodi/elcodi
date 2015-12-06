@@ -27,12 +27,12 @@ use Elcodi\Component\Currency\Services\MoneyPrinter;
 use Elcodi\Component\Language\Entity\Locale;
 
 /**
- * Class MoneyPrinterTest
+ * Class MoneyPrinterTest.
  */
 class MoneyPrinterTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Test price output
+     * Test price output.
      *
      * @dataProvider dataPrintPrice
      */
@@ -67,12 +67,12 @@ class MoneyPrinterTest extends PHPUnit_Framework_TestCase
                 )
             );
         } catch (Exception $e) {
-            $this->markTestSkipped("Problems in local environments");
+            $this->markTestSkipped('Problems in local environments');
         }
     }
 
     /**
-     * data for testPrintPrice
+     * data for testPrintPrice.
      */
     public function dataPrintPrice()
     {

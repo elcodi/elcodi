@@ -24,12 +24,12 @@ use Elcodi\Component\CartCoupon\Entity\Interfaces\CartCouponInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 
 /**
- * Class CartCouponRepository
+ * Class CartCouponRepository.
  */
 class CartCouponRepository extends EntityRepository
 {
     /**
-     * Get CartCoupon instances assigned to current Cart
+     * Get CartCoupon instances assigned to current Cart.
      *
      * @param CartInterface $cart Cart
      *
@@ -46,7 +46,7 @@ class CartCouponRepository extends EntityRepository
     }
 
     /**
-     * Get cart coupon objects
+     * Get cart coupon objects.
      *
      * @param CartInterface $cart Cart
      *

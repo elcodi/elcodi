@@ -18,21 +18,21 @@
 namespace Elcodi\Component\Core\Entity\Traits;
 
 /**
- * Trait IdentifiableTrait
+ * Trait IdentifiableTrait.
  */
 trait IdentifiableTrait
 {
     /**
-     * @var integer
+     * @var int
      *
      * Identifier
      */
     protected $id;
 
     /**
-     * Get Id
+     * Get Id.
      *
-     * @return integer Id
+     * @return int Id
      */
     public function getId()
     {
@@ -40,9 +40,9 @@ trait IdentifiableTrait
     }
 
     /**
-     * Sets Id
+     * Sets Id.
      *
-     * @param integer $id Id
+     * @param int $id Id
      *
      * @return $this Self object
      */

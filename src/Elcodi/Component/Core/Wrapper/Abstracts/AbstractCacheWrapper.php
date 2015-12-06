@@ -22,7 +22,7 @@ use Doctrine\Common\Cache\CacheProvider;
 use Elcodi\Component\Core\Encoder\Interfaces\EncoderInterface;
 
 /**
- * Abstract caching wrapper
+ * Abstract caching wrapper.
  *
  * This abstract class provides an easy way of mapping loaded data.
  * It's just a wrapper, so every cache manager will have to extend this.
@@ -44,7 +44,7 @@ abstract class AbstractCacheWrapper
     protected $encoder;
 
     /**
-     * Set Cache
+     * Set Cache.
      *
      * @param CacheProvider $cache Cache
      *
@@ -58,7 +58,7 @@ abstract class AbstractCacheWrapper
     }
 
     /**
-     * Set encoder
+     * Set encoder.
      *
      * @param EncoderInterface $encoder Encoder
      *

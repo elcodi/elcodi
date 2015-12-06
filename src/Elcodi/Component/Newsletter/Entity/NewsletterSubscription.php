@@ -25,7 +25,7 @@ use Elcodi\Component\Newsletter\Entity\Interfaces\NewsletterSubscriptionInterfac
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
- * Class NewsletterSubscription
+ * Class NewsletterSubscription.
  */
 class NewsletterSubscription implements NewsletterSubscriptionInterface
 {
@@ -55,7 +55,7 @@ class NewsletterSubscription implements NewsletterSubscriptionInterface
     protected $language;
 
     /**
-     * @var String
+     * @var string
      *
      * Subscription Hash
      */
@@ -69,7 +69,7 @@ class NewsletterSubscription implements NewsletterSubscriptionInterface
     protected $reason;
 
     /**
-     * Set email
+     * Set email.
      *
      * @param string $email Email
      *
@@ -83,7 +83,7 @@ class NewsletterSubscription implements NewsletterSubscriptionInterface
     }
 
     /**
-     * Return email
+     * Return email.
      *
      * @return string Email
      */
@@ -93,7 +93,7 @@ class NewsletterSubscription implements NewsletterSubscriptionInterface
     }
 
     /**
-     * Set Language
+     * Set Language.
      *
      * @param LanguageInterface $language Language
      *
@@ -107,7 +107,7 @@ class NewsletterSubscription implements NewsletterSubscriptionInterface
     }
 
     /**
-     * Get language
+     * Get language.
      *
      * @return LanguageInterface Language
      */
@@ -117,7 +117,7 @@ class NewsletterSubscription implements NewsletterSubscriptionInterface
     }
 
     /**
-     * Set hash
+     * Set hash.
      *
      * @param string $hash Hash
      *
@@ -131,7 +131,7 @@ class NewsletterSubscription implements NewsletterSubscriptionInterface
     }
 
     /**
-     * Get hash
+     * Get hash.
      *
      * @return string Hash
      */
@@ -141,7 +141,7 @@ class NewsletterSubscription implements NewsletterSubscriptionInterface
     }
 
     /**
-     * Set the unsubscribe reason
+     * Set the unsubscribe reason.
      *
      * @param string $reason Reason
      *
@@ -155,7 +155,7 @@ class NewsletterSubscription implements NewsletterSubscriptionInterface
     }
 
     /**
-     * Get the unsubscribe reason
+     * Get the unsubscribe reason.
      *
      * @return string Reason
      */
@@ -165,7 +165,7 @@ class NewsletterSubscription implements NewsletterSubscriptionInterface
     }
 
     /**
-     * Returns a string representation of the class
+     * Returns a string representation of the class.
      *
      * @return string
      */

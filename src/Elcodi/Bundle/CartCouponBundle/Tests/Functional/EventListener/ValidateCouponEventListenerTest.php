@@ -20,12 +20,12 @@ namespace Elcodi\Bundle\CartCouponBundle\Tests\Functional\EventListener;
 use Elcodi\Bundle\CartCouponBundle\Tests\Functional\EventListener\Abstracts\AbstractCartCouponEventListenerTest;
 
 /**
- * Class ValidateCouponEventListenerTest
+ * Class ValidateCouponEventListenerTest.
  */
 class ValidateCouponEventListenerTest extends AbstractCartCouponEventListenerTest
 {
     /**
-     * Test duplicated coupons with invalid card
+     * Test duplicated coupons with invalid card.
      *
      * @expectedException \Elcodi\Component\Coupon\Exception\CouponIncompatibleException
      */
@@ -43,12 +43,13 @@ class ValidateCouponEventListenerTest extends AbstractCartCouponEventListenerTes
     }
 
     /**
-     * Test duplicated coupons with non active/enabled coupon
+     * Test duplicated coupons with non active/enabled coupon.
      *
      * @expectedException \Elcodi\Component\Coupon\Exception\CouponNotActiveException
      */
     public function testDuplicatedCouponNotActive()
     {
+        $this->reloadScenario();
         $cart = $this->getLoadedCart(2);
         $coupon = $this->find('coupon', 3);
 
@@ -61,12 +62,13 @@ class ValidateCouponEventListenerTest extends AbstractCartCouponEventListenerTes
     }
 
     /**
-     * Test duplicated coupons with non usable coupon
+     * Test duplicated coupons with non usable coupon.
      *
      * @expectedException \Elcodi\Component\Coupon\Exception\CouponAppliedException
      */
     public function testDuplicatedCouponNotUsable()
     {
+        $this->reloadScenario();
         $cart = $this->getLoadedCart(2);
         $coupon = $this
             ->getEnabledCoupon(3)

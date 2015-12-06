@@ -21,7 +21,7 @@ use Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher;
 use Elcodi\Component\CartCoupon\Event\Abstracts\AbstractCartCouponEvent;
 
 /**
- * Class CartUpdateAfterCouponChangeEventListener
+ * Class CartUpdateAfterCouponChangeEventListener.
  */
 class CartUpdateAfterCouponChangeEventListener
 {
@@ -33,7 +33,7 @@ class CartUpdateAfterCouponChangeEventListener
     private $cartEventDispatcher;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param CartEventDispatcher $cartEventDispatcher Cart event dispatcher
      */
@@ -43,7 +43,7 @@ class CartUpdateAfterCouponChangeEventListener
     }
 
     /**
-     * Update cart after a success addition
+     * Update cart after a success addition.
      *
      * @param AbstractCartCouponEvent $event Event
      */

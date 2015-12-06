@@ -23,7 +23,7 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * This class loads and manages your bundle configuration
+ * This class loads and manages your bundle configuration.
  */
 class ElcodiTaxExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
@@ -35,7 +35,7 @@ class ElcodiTaxExtension extends AbstractExtension implements EntitiesOverridabl
     const EXTENSION_NAME = 'elcodi_tax';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -62,7 +62,7 @@ class ElcodiTaxExtension extends AbstractExtension implements EntitiesOverridabl
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -77,15 +77,15 @@ class ElcodiTaxExtension extends AbstractExtension implements EntitiesOverridabl
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.tax.class" => $config['mapping']['tax']['class'],
-            "elcodi.entity.tax.mapping_file" => $config['mapping']['tax']['mapping_file'],
-            "elcodi.entity.tax.manager" => $config['mapping']['tax']['manager'],
-            "elcodi.entity.tax.enabled" => $config['mapping']['tax']['enabled'],
+            'elcodi.entity.tax.class' => $config['mapping']['tax']['class'],
+            'elcodi.entity.tax.mapping_file' => $config['mapping']['tax']['mapping_file'],
+            'elcodi.entity.tax.manager' => $config['mapping']['tax']['manager'],
+            'elcodi.entity.tax.enabled' => $config['mapping']['tax']['enabled'],
         ];
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * @param array $config Configuration
      *
@@ -112,7 +112,7 @@ class ElcodiTaxExtension extends AbstractExtension implements EntitiesOverridabl
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */

@@ -25,7 +25,7 @@ use Elcodi\Component\Geo\EventDispatcher\AddressEventDispatcher;
 use Elcodi\Component\Geo\Services\AddressManager;
 
 /**
- * Class AddressManagerTest
+ * Class AddressManagerTest.
  */
 class AddressManagerTest extends PHPUnit_Framework_TestCase
 {
@@ -51,7 +51,7 @@ class AddressManagerTest extends PHPUnit_Framework_TestCase
     protected $addressEventDispatcher;
 
     /**
-     * Set ups the test to be executed
+     * Set ups the test to be executed.
      */
     public function setUp()
     {
@@ -74,7 +74,7 @@ class AddressManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the method when the address being saved is new
+     * Tests the method when the address being saved is new.
      */
     public function testSavingNewAddress()
     {
@@ -111,7 +111,7 @@ class AddressManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the method when the address being saved is already persisted
+     * Tests the method when the address being saved is already persisted.
      */
     public function testSavingAlreadyPersistedAddress()
     {

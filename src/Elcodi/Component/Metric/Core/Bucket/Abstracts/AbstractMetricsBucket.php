@@ -20,12 +20,12 @@ namespace Elcodi\Component\Metric\Core\Bucket\Abstracts;
 use Elcodi\Component\Metric\Core\Entity\Interfaces\EntryInterface;
 
 /**
- * Class AbstractMetricsBucket
+ * Class AbstractMetricsBucket.
  */
 abstract class AbstractMetricsBucket
 {
     /**
-     * Create key given an entry
+     * Create key given an entry.
      *
      * @param string $token Event
      * @param string $event Token
@@ -44,7 +44,7 @@ abstract class AbstractMetricsBucket
     }
 
     /**
-     * Normalize string for key format
+     * Normalize string for key format.
      *
      * @param string $string String
      *
@@ -56,7 +56,7 @@ abstract class AbstractMetricsBucket
     }
 
     /**
-     * Add Metric into Bucket
+     * Add Metric into Bucket.
      *
      * @param EntryInterface $entry Entry
      *
@@ -65,40 +65,40 @@ abstract class AbstractMetricsBucket
     abstract public function add(EntryInterface $entry);
 
     /**
-     * Get number of unique beacons given an event and a set of dates
+     * Get number of unique beacons given an event and a set of dates.
      *
      * @param string $token Event
      * @param string $event Token
      * @param array  $dates Dates
      *
-     * @return integer Number of hits
+     * @return int Number of hits
      */
     abstract public function getBeaconsUnique($token, $event, array $dates);
 
     /**
-     * Get the total of beacons given an event and a set of dates
+     * Get the total of beacons given an event and a set of dates.
      *
      * @param string $token Event
      * @param string $event Token
      * @param array  $dates Dates
      *
-     * @return integer Number of beacons, given an event and dates
+     * @return int Number of beacons, given an event and dates
      */
     abstract public function getBeaconsTotal($token, $event, array $dates);
 
     /**
-     * Get distributions given an event and a set of dates
+     * Get distributions given an event and a set of dates.
      *
      * @param string $token Event
      * @param string $event Token
      * @param array  $dates Dates
      *
-     * @return integer Accumulation of event and given dates
+     * @return int Accumulation of event and given dates
      */
     abstract public function getAccumulation($token, $event, array $dates);
 
     /**
-     * Get distributions given an event and a set of dates
+     * Get distributions given an event and a set of dates.
      *
      * [
      *      "value3": 24,

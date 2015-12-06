@@ -23,7 +23,7 @@ use Elcodi\Component\CartCoupon\Repository\CartCouponRepository;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 
 /**
- * Class DuplicatedCouponValidator
+ * Class DuplicatedCouponValidator.
  *
  * API methods:
  *
@@ -41,7 +41,7 @@ class DuplicatedCouponValidator
     private $cartCouponRepository;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CartCouponRepository $cartCouponRepository Repository where to find cart coupons
      */
@@ -51,7 +51,7 @@ class DuplicatedCouponValidator
     }
 
     /**
-     * Check if this coupon is already applied to the cart
+     * Check if this coupon is already applied to the cart.
      *
      * @param CartInterface   $cart   Cart
      * @param CouponInterface $coupon Coupon
@@ -65,7 +65,7 @@ class DuplicatedCouponValidator
         $cartCoupon = $this
             ->cartCouponRepository
             ->findOneBy([
-                'cart'   => $cart,
+                'cart' => $cart,
                 'coupon' => $coupon,
             ]);
 

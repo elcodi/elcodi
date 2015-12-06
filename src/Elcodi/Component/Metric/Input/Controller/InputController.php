@@ -26,7 +26,7 @@ use Elcodi\Component\Metric\Core\Services\MetricManager;
 use Elcodi\Component\Metric\ElcodiMetricTypes;
 
 /**
- * Class InputController
+ * Class InputController.
  */
 class InputController
 {
@@ -59,7 +59,7 @@ class InputController
     private $dateTimeFactory;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param RequestStack    $requestStack    Request Stack
      * @param MetricManager   $metricManager   Metric manager
@@ -76,7 +76,7 @@ class InputController
     }
 
     /**
-     * /token/event.pixel
+     * /token/event.pixel.
      *
      * @param string $token Event
      * @param string $event Token

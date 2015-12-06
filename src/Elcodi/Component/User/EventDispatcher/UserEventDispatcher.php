@@ -28,12 +28,12 @@ use Elcodi\Component\User\Event\UserRegisterEvent;
 use Elcodi\Component\User\EventDispatcher\Interfaces\UserEventDispatcherInterface;
 
 /**
- * Class UserEventDispatcher
+ * Class UserEventDispatcher.
  */
 class UserEventDispatcher extends AbstractEventDispatcher implements UserEventDispatcherInterface
 {
     /**
-     * Dispatch user created event
+     * Dispatch user created event.
      *
      * @param AbstractUserInterface $user User registered
      *
@@ -53,7 +53,7 @@ class UserEventDispatcher extends AbstractEventDispatcher implements UserEventDi
     }
 
     /**
-     * Dispatch customer created event
+     * Dispatch customer created event.
      *
      * @param CustomerInterface $customer Customer registered
      *
@@ -73,7 +73,7 @@ class UserEventDispatcher extends AbstractEventDispatcher implements UserEventDi
     }
 
     /**
-     * Dispatch admin user created event
+     * Dispatch admin user created event.
      *
      * @param AdminUserInterface $adminUser AdminUser registered
      *

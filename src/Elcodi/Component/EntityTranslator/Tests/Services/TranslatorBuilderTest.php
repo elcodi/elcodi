@@ -22,12 +22,12 @@ use PHPUnit_Framework_TestCase;
 use Elcodi\Component\EntityTranslator\Services\EntityTranslatorBuilder;
 
 /**
- * Class TranslatorBuilderTest
+ * Class TranslatorBuilderTest.
  */
 class TranslatorBuilderTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Test compilation ok
+     * Test compilation ok.
      */
     public function testCompileOk()
     {
@@ -42,9 +42,9 @@ class TranslatorBuilderTest extends PHPUnit_Framework_TestCase
 
         $configuration = [
             'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => [
-                'alias'    => 'product',
+                'alias' => 'product',
                 'idGetter' => 'getId',
-                'fields'   => [
+                'fields' => [
                     'name' => [
                         'setter' => 'setName',
                         'getter' => 'getName',
@@ -65,7 +65,7 @@ class TranslatorBuilderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test compilation fail
+     * Test compilation fail.
      *
      * @dataProvider dataCompileException
      * @expectedException \Elcodi\Component\EntityTranslator\Exception\TranslationDefinitionException
@@ -85,7 +85,7 @@ class TranslatorBuilderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * data testCompileException
+     * data testCompileException.
      */
     public function dataCompileException()
     {
@@ -93,35 +93,8 @@ class TranslatorBuilderTest extends PHPUnit_Framework_TestCase
             [
                 [
                     'Elcodi\Component\EntityTranslator\Tests\Fixtures\NonExistingProduct' => [
-                        'alias'    => 'product',
+                        'alias' => 'product',
                         'getterId' => 'getId',
-                        'fields'   => [
-                            'name' => [
-                                'setter' => 'setName',
-                                'getter' => 'getName',
-                            ],
-                        ],
-                    ],
-                ],
-            ],
-            [
-                [
-                    'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => [
-                        'alias'    => 'product',
-                        'getterId' => 'nonExistingGetId',
-                        'fields'   => [
-                            'name' => [
-                                'setter' => 'setName',
-                                'getter' => 'getName',
-                            ],
-                        ],
-                    ],
-                ],
-            ],
-            [
-                [
-                    'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => [
-                        'alias'  => '',
                         'fields' => [
                             'name' => [
                                 'setter' => 'setName',
@@ -134,7 +107,34 @@ class TranslatorBuilderTest extends PHPUnit_Framework_TestCase
             [
                 [
                     'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => [
-                        'alias'  => 'product',
+                        'alias' => 'product',
+                        'getterId' => 'nonExistingGetId',
+                        'fields' => [
+                            'name' => [
+                                'setter' => 'setName',
+                                'getter' => 'getName',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            [
+                [
+                    'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => [
+                        'alias' => '',
+                        'fields' => [
+                            'name' => [
+                                'setter' => 'setName',
+                                'getter' => 'getName',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            [
+                [
+                    'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => [
+                        'alias' => 'product',
                         'fields' => [
                             'name' => [
                                 'setter' => 'nonExistingSetName',
@@ -147,7 +147,7 @@ class TranslatorBuilderTest extends PHPUnit_Framework_TestCase
             [
                 [
                     'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => [
-                        'alias'  => 'product',
+                        'alias' => 'product',
                         'fields' => [
                             'name' => [
                                 'setter' => 'setName',

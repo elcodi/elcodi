@@ -23,7 +23,7 @@ use Twig_SimpleFilter;
 use Elcodi\Component\Currency\Services\MoneyPrinter;
 
 /**
- * Class MoneyPrinterExtension
+ * Class MoneyPrinterExtension.
  *
  * Money printer extension for twig
  */
@@ -37,7 +37,7 @@ class MoneyPrinterExtension extends Twig_Extension
     private $moneyPrinter;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param MoneyPrinter $moneyPrinter Money printer
      */
@@ -47,7 +47,7 @@ class MoneyPrinterExtension extends Twig_Extension
     }
 
     /**
-     * Return all filters
+     * Return all filters.
      *
      * @return Twig_SimpleFilter[] Filters
      */
@@ -70,7 +70,7 @@ class MoneyPrinterExtension extends Twig_Extension
     }
 
     /**
-     * return extension name
+     * return extension name.
      *
      * @return string extension name
      */

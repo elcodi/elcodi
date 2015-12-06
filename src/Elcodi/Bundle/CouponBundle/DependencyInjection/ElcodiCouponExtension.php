@@ -23,7 +23,7 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * This is the class that loads and manages your bundle configuration
+ * This is the class that loads and manages your bundle configuration.
  */
 class ElcodiCouponExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
@@ -35,7 +35,7 @@ class ElcodiCouponExtension extends AbstractExtension implements EntitiesOverrid
     const EXTENSION_NAME = 'elcodi_coupon';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -62,7 +62,7 @@ class ElcodiCouponExtension extends AbstractExtension implements EntitiesOverrid
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -77,15 +77,15 @@ class ElcodiCouponExtension extends AbstractExtension implements EntitiesOverrid
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.coupon.class" => $config['mapping']['coupon']['class'],
-            "elcodi.entity.coupon.mapping_file" => $config['mapping']['coupon']['mapping_file'],
-            "elcodi.entity.coupon.manager" => $config['mapping']['coupon']['manager'],
-            "elcodi.entity.coupon.enabled" => $config['mapping']['coupon']['enabled'],
+            'elcodi.entity.coupon.class' => $config['mapping']['coupon']['class'],
+            'elcodi.entity.coupon.mapping_file' => $config['mapping']['coupon']['mapping_file'],
+            'elcodi.entity.coupon.manager' => $config['mapping']['coupon']['manager'],
+            'elcodi.entity.coupon.enabled' => $config['mapping']['coupon']['enabled'],
         ];
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * @param array $config Configuration
      *
@@ -121,7 +121,7 @@ class ElcodiCouponExtension extends AbstractExtension implements EntitiesOverrid
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */

@@ -27,7 +27,7 @@ use Elcodi\Component\Media\Entity\Interfaces\PrincipalImageInterface;
 use Elcodi\Component\MetaData\Entity\Interfaces\MetaDataInterface;
 
 /**
- * Interface ManufacturerInterface
+ * Interface ManufacturerInterface.
  */
 interface ManufacturerInterface
     extends
@@ -39,7 +39,7 @@ interface ManufacturerInterface
     PrincipalImageInterface
 {
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name Name
      *
@@ -48,14 +48,14 @@ interface ManufacturerInterface
     public function setName($name);
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string Name
      */
     public function getName();
 
     /**
-     * Set description
+     * Set description.
      *
      * @param string $description Description
      *
@@ -69,7 +69,7 @@ interface ManufacturerInterface
     public function getDescription();
 
     /**
-     * Set slug
+     * Set slug.
      *
      * @param string $slug Slug
      *
@@ -78,14 +78,14 @@ interface ManufacturerInterface
     public function setSlug($slug);
 
     /**
-     * Get slug
+     * Get slug.
      *
      * @return string Slug
      */
     public function getSlug();
 
     /**
-     * Set products
+     * Set products.
      *
      * @param Collection $products Products
      *
@@ -94,14 +94,14 @@ interface ManufacturerInterface
     public function setProducts(Collection $products);
 
     /**
-     * Get products
+     * Get products.
      *
      * @return Collection Products
      */
     public function getProducts();
 
     /**
-     * Add product
+     * Add product.
      *
      * @param ProductInterface $product Product
      *
@@ -110,7 +110,7 @@ interface ManufacturerInterface
     public function addProduct(ProductInterface $product);
 
     /**
-     * Remove product
+     * Remove product.
      *
      * @param ProductInterface $product Product
      *

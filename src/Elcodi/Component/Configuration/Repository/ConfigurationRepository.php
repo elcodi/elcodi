@@ -20,7 +20,7 @@ namespace Elcodi\Component\Configuration\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class ConfigurationRepository
+ * Class ConfigurationRepository.
  */
 class ConfigurationRepository extends EntityRepository
 {

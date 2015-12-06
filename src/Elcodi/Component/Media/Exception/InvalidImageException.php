@@ -20,7 +20,7 @@ namespace Elcodi\Component\Media\Exception;
 use Exception;
 
 /**
- * Class InvalidImageException
+ * Class InvalidImageException.
  */
 class InvalidImageException extends Exception
 {

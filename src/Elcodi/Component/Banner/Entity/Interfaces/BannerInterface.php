@@ -24,7 +24,7 @@ use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
- * Interface BannerInterface
+ * Interface BannerInterface.
  */
 interface BannerInterface
     extends
@@ -33,7 +33,7 @@ interface BannerInterface
     DateTimeInterface
 {
     /**
-     * Set banner name
+     * Set banner name.
      *
      * @param string $name Name of the banner
      *
@@ -42,14 +42,14 @@ interface BannerInterface
     public function setName($name);
 
     /**
-     * Get banner name
+     * Get banner name.
      *
      * @return string
      */
     public function getName();
 
     /**
-     * Set banner description
+     * Set banner description.
      *
      * @param string $description Description of the banner
      *
@@ -58,14 +58,14 @@ interface BannerInterface
     public function setDescription($description);
 
     /**
-     * Get banner description
+     * Get banner description.
      *
      * @return string
      */
     public function getDescription();
 
     /**
-     * Set banner url
+     * Set banner url.
      *
      * @param string $url Url of the banner
      *
@@ -74,14 +74,14 @@ interface BannerInterface
     public function setUrl($url);
 
     /**
-     * Get banner url
+     * Get banner url.
      *
      * @return string
      */
     public function getUrl();
 
     /**
-     * Set banner zones to banner
+     * Set banner zones to banner.
      *
      * @param Collection $bannerZones Banner zones
      *
@@ -90,14 +90,14 @@ interface BannerInterface
     public function setBannerZones(Collection $bannerZones);
 
     /**
-     * Get banner zones from banner
+     * Get banner zones from banner.
      *
      * @return Collection banner zones
      */
     public function getBannerZones();
 
     /**
-     * Add banner zone to banner
+     * Add banner zone to banner.
      *
      * @param BannerZoneInterface $bannerZone Banner Zone
      *
@@ -106,7 +106,7 @@ interface BannerInterface
     public function addBannerZone(BannerZoneInterface $bannerZone);
 
     /**
-     * Remove banner zone from banner
+     * Remove banner zone from banner.
      *
      * @param BannerZoneInterface $bannerZone Banner Zone
      *

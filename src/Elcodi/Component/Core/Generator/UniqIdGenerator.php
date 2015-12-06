@@ -20,16 +20,16 @@ namespace Elcodi\Component\Core\Generator;
 use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 
 /**
- * Class UniqIdGenerator
+ * Class UniqIdGenerator.
  *
  * This class is a unique id generator.
  */
 class UniqIdGenerator implements GeneratorInterface
 {
     /**
-     * Generates a unique Id
+     * Generates a unique Id.
      *
-     * @param integer|null $length Length of string generated
+     * @param int|null $length Length of string generated
      *
      * @return string Result of generation
      */

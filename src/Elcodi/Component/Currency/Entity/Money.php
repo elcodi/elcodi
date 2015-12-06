@@ -24,7 +24,7 @@ use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 
 /**
- * Class Money
+ * Class Money.
  *
  * Wrapper for Sebastian Bergman's {@see Money Value Object}
  *
@@ -35,7 +35,7 @@ use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 class Money implements MoneyInterface
 {
     /**
-     * @var integer
+     * @var int
      *
      * Money amount
      */
@@ -56,9 +56,9 @@ class Money implements MoneyInterface
     private $currency;
 
     /**
-     * Simple Money Value Object constructor
+     * Simple Money Value Object constructor.
      *
-     * @param integer           $amount   Amount
+     * @param int               $amount   Amount
      * @param CurrencyInterface $currency Currency
      */
     protected function __construct($amount, CurrencyInterface $currency)
@@ -73,7 +73,7 @@ class Money implements MoneyInterface
     }
 
     /**
-     * Gets the Money Currency
+     * Gets the Money Currency.
      *
      * @return CurrencyInterface Currency
      */
@@ -83,9 +83,9 @@ class Money implements MoneyInterface
     }
 
     /**
-     * Gets the Money amount
+     * Gets the Money amount.
      *
-     * @return integer Amount
+     * @return int Amount
      */
     public function getAmount()
     {
@@ -94,7 +94,7 @@ class Money implements MoneyInterface
 
     /**
      * Gets the monetary value represented by this object converted to its base
-     * units
+     * units.
      *
      * @return float
      */
@@ -106,7 +106,7 @@ class Money implements MoneyInterface
     }
 
     /**
-     * Compares current Money object to another
+     * Compares current Money object to another.
      *
      * Will return -1, 0, 1 if the amount of this Money object
      * is respectively less than, equal to, or greater than the other.
@@ -116,7 +116,7 @@ class Money implements MoneyInterface
      *
      * @param MoneyInterface $other
      *
-     * @return integer Comparison value
+     * @return int Comparison value
      */
     public function compareTo(MoneyInterface $other)
     {
@@ -126,7 +126,7 @@ class Money implements MoneyInterface
     }
 
     /**
-     * Adds a Money and returns the result as a new Money
+     * Adds a Money and returns the result as a new Money.
      *
      * @param MoneyInterface $other Other money
      *
@@ -139,14 +139,14 @@ class Money implements MoneyInterface
             ->wrappedMoney
             ->add($this->newWrappedMoneyFromMoney($other));
 
-        return Money::create(
+        return self::create(
             $wrappedMoney->getAmount(),
             $other->getCurrency()
         );
     }
 
     /**
-     * Subtracts a Money and returns the result as a new Money
+     * Subtracts a Money and returns the result as a new Money.
      *
      * @param MoneyInterface $other Other money
      *
@@ -159,7 +159,7 @@ class Money implements MoneyInterface
             ->wrappedMoney
             ->subtract($this->newWrappedMoneyFromMoney($other));
 
-        return Money::create(
+        return self::create(
             $wrappedMoney->getAmount(),
             $other->getCurrency()
         );
@@ -167,7 +167,7 @@ class Money implements MoneyInterface
 
     /**
      * Multiplies current Money amount by a factor returns the result as a new
-     * Money
+     * Money.
      *
      * @param float $factor Factor
      *
@@ -179,18 +179,18 @@ class Money implements MoneyInterface
             ->wrappedMoney
             ->multiply($factor);
 
-        return Money::create(
+        return self::create(
             $wrappedMoney->getAmount(),
             $this->getCurrency()
         );
     }
 
     /**
-     * Tells if a Money has the same value as current Money object
+     * Tells if a Money has the same value as current Money object.
      *
      * @param MoneyInterface $other
      *
-     * @return boolean Current money equals given as parameter
+     * @return bool Current money equals given as parameter
      */
     public function equals(MoneyInterface $other)
     {
@@ -198,11 +198,11 @@ class Money implements MoneyInterface
     }
 
     /**
-     * Tells if a Money value is greater than current Money object
+     * Tells if a Money value is greater than current Money object.
      *
      * @param MoneyInterface $other
      *
-     * @return boolean Current money is greater than given as parameter
+     * @return bool Current money is greater than given as parameter
      */
     public function isGreaterThan(MoneyInterface $other)
     {
@@ -212,11 +212,11 @@ class Money implements MoneyInterface
     }
 
     /**
-     * Tells if a Money value is less than current Money object
+     * Tells if a Money value is less than current Money object.
      *
      * @param MoneyInterface $other
      *
-     * @return boolean Current money is less than given as parameter
+     * @return bool Current money is less than given as parameter
      */
     public function isLessThan(MoneyInterface $other)
     {
@@ -226,7 +226,7 @@ class Money implements MoneyInterface
     }
 
     /**
-     * Returns a new WrappedMoney given a MoneyInterface
+     * Returns a new WrappedMoney given a MoneyInterface.
      *
      * @param MoneyInterface $money Money
      *
@@ -245,7 +245,7 @@ class Money implements MoneyInterface
     }
 
     /**
-     * Returns a new instance of a Money object
+     * Returns a new instance of a Money object.
      *
      * This factory should be the only process to instantiate a
      * object implementing MoneyInterface.
@@ -254,7 +254,7 @@ class Money implements MoneyInterface
      * amount and a Currency object implementing CurrencyInterface
      * are needed.
      *
-     * @param integer           $amount   Amount
+     * @param int               $amount   Amount
      * @param CurrencyInterface $currency Currency
      *
      * @return MoneyInterface new Money instance

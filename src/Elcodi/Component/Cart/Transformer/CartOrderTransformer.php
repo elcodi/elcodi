@@ -24,7 +24,7 @@ use Elcodi\Component\Cart\Factory\OrderFactory;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 
 /**
- * Class CartOrderTransformer
+ * Class CartOrderTransformer.
  *
  * This class is intended to create an Order given a Cart.
  * The scope of this class are both implementations
@@ -59,7 +59,7 @@ class CartOrderTransformer
     private $orderFactory;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param OrderEventDispatcher         $orderEventDispatcher         Order EventDispatcher
      * @param CartLineOrderLineTransformer $cartLineOrderLineTransformer CartLine to OrderLine transformer

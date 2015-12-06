@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Core\Entity\Traits;
 
 /**
- * trait for DateTime common variables and methods
+ * trait for DateTime common variables and methods.
  */
 trait DateTimeTrait
 {
@@ -37,7 +37,7 @@ trait DateTimeTrait
     protected $updatedAt;
 
     /**
-     * Set locally created at value
+     * Set locally created at value.
      *
      * @param \DateTime $createdAt Created at value
      *
@@ -51,7 +51,7 @@ trait DateTimeTrait
     }
 
     /**
-     * Return created_at value
+     * Return created_at value.
      *
      * @return \DateTime
      */
@@ -61,7 +61,7 @@ trait DateTimeTrait
     }
 
     /**
-     * Set locally updated at value
+     * Set locally updated at value.
      *
      * @param \DateTime $updatedAt Updated at value
      *
@@ -75,7 +75,7 @@ trait DateTimeTrait
     }
 
     /**
-     * Return updated_at value
+     * Return updated_at value.
      *
      * @return \DateTime
      */
@@ -86,7 +86,7 @@ trait DateTimeTrait
 
     /**
      * Method triggered by LifeCycleEvent.
-     * Sets or updates $this->updatedAt
+     * Sets or updates $this->updatedAt.
      */
     public function loadUpdateAt()
     {

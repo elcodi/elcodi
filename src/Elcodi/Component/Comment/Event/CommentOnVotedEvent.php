@@ -22,7 +22,7 @@ use Elcodi\Component\Comment\Entity\Interfaces\VoteInterface;
 use Elcodi\Component\Comment\Event\Abstracts\AbstractCommentEvent;
 
 /**
- * Class CommentOnVotedEvent
+ * Class CommentOnVotedEvent.
  */
 final class CommentOnVotedEvent extends AbstractCommentEvent
 {
@@ -34,18 +34,18 @@ final class CommentOnVotedEvent extends AbstractCommentEvent
     private $vote;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * Edited
      */
     private $edited;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CommentInterface $comment Comment
      * @param VoteInterface    $vote    Vote
-     * @param boolean          $edited  Vote is edition of one already added
+     * @param bool             $edited  Vote is edition of one already added
      */
     public function __construct(
         CommentInterface $comment,
@@ -59,7 +59,7 @@ final class CommentOnVotedEvent extends AbstractCommentEvent
     }
 
     /**
-     * Get Vote
+     * Get Vote.
      *
      * @return mixed Vote
      */
@@ -69,9 +69,9 @@ final class CommentOnVotedEvent extends AbstractCommentEvent
     }
 
     /**
-     * Get Edited
+     * Get Edited.
      *
-     * @return boolean Edited
+     * @return bool Edited
      */
     public function getEdited()
     {

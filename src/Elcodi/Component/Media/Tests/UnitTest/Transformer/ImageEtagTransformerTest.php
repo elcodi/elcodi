@@ -22,12 +22,12 @@ use PHPUnit_Framework_TestCase;
 use Elcodi\Component\Media\Transformer\ImageEtagTransformer;
 
 /**
- * Class ImageEtagTransformerTest
+ * Class ImageEtagTransformerTest.
  */
 class ImageEtagTransformerTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Test image etag generator
+     * Test image etag generator.
      */
     public function testGetEtag()
     {
@@ -35,17 +35,17 @@ class ImageEtagTransformerTest extends PHPUnit_Framework_TestCase
         $dateTime = $this->getMock('DateTime');
         $dateTime
             ->expects($this->any())
-            ->method("getTimestamp")
+            ->method('getTimestamp')
             ->will($this->returnValue('123456'));
 
         $image = $this->getMock('Elcodi\Component\Media\Entity\Interfaces\ImageInterface');
         $image
             ->expects($this->any())
-            ->method("getId")
+            ->method('getId')
             ->will($this->returnValue('2'));
         $image
             ->expects($this->any())
-            ->method("getUpdatedAt")
+            ->method('getUpdatedAt')
             ->will($this->returnValue($dateTime));
 
         $this->assertEquals(

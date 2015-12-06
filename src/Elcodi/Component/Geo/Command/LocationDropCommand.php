@@ -23,12 +23,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Elcodi\Component\Geo\Command\Abstracts\AbstractLocationCommand;
 
 /**
- * Class LocationDropCommand
+ * Class LocationDropCommand.
  */
 class LocationDropCommand extends AbstractLocationCommand
 {
     /**
-     * configure
+     * configure.
      */
     protected function configure()
     {
@@ -40,12 +40,12 @@ class LocationDropCommand extends AbstractLocationCommand
     }
 
     /**
-     * This command loads all the locations for the received country
+     * This command loads all the locations for the received country.
      *
      * @param InputInterface  $input  The input interface
      * @param OutputInterface $output The output interface
      *
-     * @return integer|null|void
+     * @return int|null|void
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {

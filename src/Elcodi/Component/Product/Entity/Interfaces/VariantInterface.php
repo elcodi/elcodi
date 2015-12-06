@@ -26,7 +26,7 @@ use Elcodi\Component\Media\Entity\Interfaces\ImagesContainerInterface;
 use Elcodi\Component\Media\Entity\Interfaces\PrincipalImageInterface;
 
 /**
- * Interface VariantInterface
+ * Interface VariantInterface.
  *
  * A Product variant is a specific combination of finite options
  * for a given Product.
@@ -40,14 +40,14 @@ interface VariantInterface
     PrincipalImageInterface
 {
     /**
-     * Gets parent product
+     * Gets parent product.
      *
      * @return ProductInterface Product
      */
     public function getProduct();
 
     /**
-     * Sets parent product
+     * Sets parent product.
      *
      * @param ProductInterface $product
      *
@@ -56,14 +56,14 @@ interface VariantInterface
     public function setProduct(ProductInterface $product);
 
     /**
-     * Gets this variant option values
+     * Gets this variant option values.
      *
      * @return Collection Variant options
      */
     public function getOptions();
 
     /**
-     * Sets this variant option values
+     * Sets this variant option values.
      *
      * @param Collection $options
      *
@@ -72,7 +72,7 @@ interface VariantInterface
     public function setOptions(Collection $options);
 
     /**
-     * Adds an option to this variant
+     * Adds an option to this variant.
      *
      * @param ValueInterface $option
      *
@@ -81,7 +81,7 @@ interface VariantInterface
     public function addOption(ValueInterface $option);
 
     /**
-     * Removes an option from this variant
+     * Removes an option from this variant.
      *
      * @param ValueInterface $option
      *

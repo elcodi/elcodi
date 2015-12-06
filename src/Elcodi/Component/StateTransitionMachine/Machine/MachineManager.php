@@ -30,7 +30,7 @@ use Elcodi\Component\StateTransitionMachine\Factory\StateLineFactory;
 use Elcodi\Component\StateTransitionMachine\Machine\Interfaces\MachineInterface;
 
 /**
- * Class MachineManager
+ * Class MachineManager.
  */
 class MachineManager
 {
@@ -56,7 +56,7 @@ class MachineManager
     private $stateLineFactory;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param MachineInterface       $machine                Machine
      * @param MachineEventDispatcher $machineEventDispatcher Event Dispatcher
@@ -73,7 +73,7 @@ class MachineManager
     }
 
     /**
-     * Initialize the object into the machine
+     * Initialize the object into the machine.
      *
      * @param mixed          $object         Object
      * @param StateLineStack $stateLineStack StateLine Stack
@@ -115,7 +115,7 @@ class MachineManager
     }
 
     /**
-     * Applies a transition given a object
+     * Applies a transition given a object.
      *
      * @param mixed          $object         Object
      * @param StateLineStack $stateLineStack StateLine Stack
@@ -145,7 +145,7 @@ class MachineManager
     }
 
     /**
-     * Applies a transition given a object
+     * Applies a transition given a object.
      *
      * @param mixed          $object         Object
      * @param StateLineStack $stateLineStack StateLine Stack
@@ -174,7 +174,7 @@ class MachineManager
     }
 
     /**
-     * Create an state line given its name and description
+     * Create an state line given its name and description.
      *
      * @param string $name        Name
      * @param string $description Description

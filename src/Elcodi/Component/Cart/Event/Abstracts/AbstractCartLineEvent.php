@@ -23,7 +23,7 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
 
 /**
- * Class AbstractCartLineEvent
+ * Class AbstractCartLineEvent.
  */
 abstract class AbstractCartLineEvent extends Event
 {
@@ -42,7 +42,7 @@ abstract class AbstractCartLineEvent extends Event
     private $cartLine;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CartInterface     $cart     Cart
      * @param CartLineInterface $cartLine Cart line
@@ -56,7 +56,7 @@ abstract class AbstractCartLineEvent extends Event
     }
 
     /**
-     * Get cart
+     * Get cart.
      *
      * @return CartInterface Cart
      */
@@ -66,7 +66,7 @@ abstract class AbstractCartLineEvent extends Event
     }
 
     /**
-     * Get cartLine
+     * Get cartLine.
      *
      * @return CartLineInterface Cart Line
      */

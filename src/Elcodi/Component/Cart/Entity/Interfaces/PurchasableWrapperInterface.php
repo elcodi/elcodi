@@ -22,7 +22,7 @@ use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
 
 /**
- * Interface PurchasableWrapperInterface
+ * Interface PurchasableWrapperInterface.
  */
 interface PurchasableWrapperInterface
 {
@@ -37,14 +37,14 @@ interface PurchasableWrapperInterface
     public function setPurchasable(PurchasableInterface $purchasable);
 
     /**
-     * Gets the purchasable object
+     * Gets the purchasable object.
      *
      * @return PurchasableInterface
      */
     public function getPurchasable();
 
     /**
-     * Sets the product
+     * Sets the product.
      *
      * @param ProductInterface $product Product
      *
@@ -53,14 +53,14 @@ interface PurchasableWrapperInterface
     public function setProduct(ProductInterface $product);
 
     /**
-     * Gets the product
+     * Gets the product.
      *
      * @return ProductInterface product attached to this cart line
      */
     public function getProduct();
 
     /**
-     * Sets the product variant
+     * Sets the product variant.
      *
      * @param VariantInterface $variant Variant
      *
@@ -69,25 +69,25 @@ interface PurchasableWrapperInterface
     public function setVariant(VariantInterface $variant);
 
     /**
-     * Returns the product variant
+     * Returns the product variant.
      *
      * @return VariantInterface Variant
      */
     public function getVariant();
 
     /**
-     * Sets quantity
+     * Sets quantity.
      *
-     * @param integer $quantity Quantity
+     * @param int $quantity Quantity
      *
      * @return $this Self object
      */
     public function setQuantity($quantity);
 
     /**
-     * Gets quantity
+     * Gets quantity.
      *
-     * @return integer Quantity
+     * @return int Quantity
      */
     public function getQuantity();
 }

@@ -20,7 +20,7 @@ namespace Elcodi\Component\Configuration\Exception;
 use Exception;
 
 /**
- * Class ConfigurationNotEditableException
+ * Class ConfigurationNotEditableException.
  */
 class ConfigurationNotEditableException extends Exception
 {

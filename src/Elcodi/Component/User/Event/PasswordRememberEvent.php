@@ -22,7 +22,7 @@ use Symfony\Component\EventDispatcher\Event;
 use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 
 /**
- * Event fired when a customer unsubscribes from newsletter
+ * Event fired when a customer unsubscribes from newsletter.
  *
  * This event send an email to customer
  */
@@ -43,7 +43,7 @@ final class PasswordRememberEvent extends Event
     private $rememberUrl;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param AbstractUserInterface $user        User
      * @param string                $rememberUrl Remember url
@@ -55,7 +55,7 @@ final class PasswordRememberEvent extends Event
     }
 
     /**
-     * Get user
+     * Get user.
      *
      * @return AbstractUserInterface User
      */
@@ -65,7 +65,7 @@ final class PasswordRememberEvent extends Event
     }
 
     /**
-     * Get remember url
+     * Get remember url.
      *
      * @return string Remember url
      */

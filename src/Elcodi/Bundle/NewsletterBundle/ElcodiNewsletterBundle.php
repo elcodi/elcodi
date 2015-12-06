@@ -27,7 +27,7 @@ use Elcodi\Bundle\NewsletterBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\NewsletterBundle\DependencyInjection\ElcodiNewsletterExtension;
 
 /**
- * Class ElcodiNewsletterBundle
+ * Class ElcodiNewsletterBundle.
  */
 class ElcodiNewsletterBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
@@ -52,7 +52,7 @@ class ElcodiNewsletterBundle extends AbstractElcodiBundle implements DependentBu
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

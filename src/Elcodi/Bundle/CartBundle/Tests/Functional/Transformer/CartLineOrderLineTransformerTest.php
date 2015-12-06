@@ -25,12 +25,12 @@ use Elcodi\Component\Cart\Transformer\CartLineOrderLineTransformer;
 use Elcodi\Component\Cart\Transformer\CartOrderTransformer;
 
 /**
- * Class CartLineOrderLineTransformer
+ * Class CartLineOrderLineTransformer.
  */
 class CartLineOrderLineTransformerTest extends WebTestCase
 {
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -42,7 +42,7 @@ class CartLineOrderLineTransformerTest extends WebTestCase
     }
 
     /**
-     * test create orderLine by CartLine
+     * test create orderLine by CartLine.
      *
      * @group order
      */

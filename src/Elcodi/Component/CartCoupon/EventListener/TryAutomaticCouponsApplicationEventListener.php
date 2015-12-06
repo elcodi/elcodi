@@ -21,7 +21,7 @@ use Elcodi\Component\Cart\Event\CartOnLoadEvent;
 use Elcodi\Component\CartCoupon\Services\AutomaticCouponApplicator;
 
 /**
- * Class TryAutomaticCouponsApplicationEventListener
+ * Class TryAutomaticCouponsApplicationEventListener.
  */
 final class TryAutomaticCouponsApplicationEventListener
 {
@@ -33,7 +33,7 @@ final class TryAutomaticCouponsApplicationEventListener
     private $automaticCouponApplicator;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param AutomaticCouponApplicator $automaticCouponApplicator Automatic coupon applicator
      */
@@ -43,14 +43,12 @@ final class TryAutomaticCouponsApplicationEventListener
     }
 
     /**
-     * Method subscribed to PreCartLoad event
+     * Method subscribed to PreCartLoad event.
      *
      * Iterate over all automatic Coupons and check if they apply.
      * If any applies, it will be added to the Cart
      *
      * @param CartOnLoadEvent $event Event
-     *
-     * @return null
      */
     public function tryAutomaticCoupons(CartOnLoadEvent $event)
     {

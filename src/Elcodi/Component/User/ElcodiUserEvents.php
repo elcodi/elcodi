@@ -18,12 +18,12 @@
 namespace Elcodi\Component\User;
 
 /**
- * ElcodiUserEvents
+ * ElcodiUserEvents.
  */
 final class ElcodiUserEvents
 {
     /**
-     * This event is fired when customer wants to remember his password
+     * This event is fired when customer wants to remember his password.
      *
      * event.name : password.remember
      * event.class : PasswordRememberEvent
@@ -31,7 +31,7 @@ final class ElcodiUserEvents
     const PASSWORD_REMEMBER = 'password.remember';
 
     /**
-     * This event is fired when customer wants to recover his password
+     * This event is fired when customer wants to recover his password.
      *
      * event.name : password.recover
      * event.class : PasswordRecoverEvent
@@ -39,7 +39,7 @@ final class ElcodiUserEvents
     const PASSWORD_RECOVER = 'password.recover';
 
     /**
-     * This event is fired when a user is registered
+     * This event is fired when a user is registered.
      *
      * event.name : user.register
      * event.class : UserRegisterEvent
@@ -47,7 +47,7 @@ final class ElcodiUserEvents
     const ABSTRACTUSER_REGISTER = 'user.register';
 
     /**
-     * This event is fired when customer is registered into the web
+     * This event is fired when customer is registered into the web.
      *
      * event.name : customer.register
      * event.class : CustomerRegisterEvent
@@ -55,7 +55,7 @@ final class ElcodiUserEvents
     const CUSTOMER_REGISTER = 'customer.register';
 
     /**
-     * This event is fired when an adminuser is registered into the admin
+     * This event is fired when an adminuser is registered into the admin.
      *
      * event.name : adminuser.register
      * event.class : AdminUserRegisterEvent

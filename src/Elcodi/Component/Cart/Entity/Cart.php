@@ -29,14 +29,14 @@ use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
- * Cart
+ * Cart.
  */
 class Cart implements CartInterface
 {
     use IdentifiableTrait, DateTimeTrait;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * Cart is loaded
      */
@@ -58,7 +58,7 @@ class Cart implements CartInterface
     protected $order;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * Ordered
      */
@@ -72,7 +72,7 @@ class Cart implements CartInterface
     protected $cartLines;
 
     /**
-     * @var integer
+     * @var int
      *
      * Quantity
      */
@@ -146,9 +146,9 @@ class Cart implements CartInterface
     protected $cheapestShippingMethod;
 
     /**
-     * Get Loaded
+     * Get Loaded.
      *
-     * @return boolean Loaded
+     * @return bool Loaded
      */
     public function isLoaded()
     {
@@ -156,9 +156,9 @@ class Cart implements CartInterface
     }
 
     /**
-     * Sets Loaded
+     * Sets Loaded.
      *
-     * @param boolean $loaded Loaded
+     * @param bool $loaded Loaded
      *
      * @return $this Self object
      */
@@ -170,7 +170,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Return the customer
+     * Return the customer.
      *
      * @return CustomerInterface Customer
      */
@@ -180,7 +180,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Set the customer
+     * Set the customer.
      *
      * @param CustomerInterface $customer Customer
      *
@@ -194,7 +194,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Set order
+     * Set order.
      *
      * @param OrderInterface $order
      *
@@ -208,7 +208,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Get order
+     * Get order.
      *
      * @return OrderInterface
      */
@@ -218,9 +218,9 @@ class Cart implements CartInterface
     }
 
     /**
-     * Set ordered
+     * Set ordered.
      *
-     * @param boolean $ordered Has been ordered
+     * @param bool $ordered Has been ordered
      *
      * @return $this Self object
      */
@@ -232,9 +232,9 @@ class Cart implements CartInterface
     }
 
     /**
-     * Is ordered
+     * Is ordered.
      *
-     * @return boolean is ordered
+     * @return bool is ordered
      */
     public function isOrdered()
     {
@@ -242,7 +242,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Set cart lines
+     * Set cart lines.
      *
      * @param Collection $cartLines Cart Lines
      *
@@ -256,7 +256,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Get lines
+     * Get lines.
      *
      * @return Collection CartLine collection
      */
@@ -266,7 +266,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Add Cart Line
+     * Add Cart Line.
      *
      * @param CartLineInterface $cartLine Cart line
      *
@@ -282,7 +282,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Remove Cart Line
+     * Remove Cart Line.
      *
      * @param CartLineInterface $cartLine Cart line
      *
@@ -296,11 +296,11 @@ class Cart implements CartInterface
     }
 
     /**
-     * Set quantity
+     * Set quantity.
      *
      * @deprecated since version 1.0.8, to be removed in 2.0.0.
      *
-     * @param integer $quantity Quantity
+     * @param int $quantity Quantity
      *
      * @return $this Self object
      */
@@ -312,11 +312,11 @@ class Cart implements CartInterface
     }
 
     /**
-     * Get quantity
+     * Get quantity.
      *
      * @deprecated since version 1.0.8, to be removed in 2.0.0. Use getTotalItemNumber()
      *
-     * @return integer Quantity
+     * @return int Quantity
      */
     public function getQuantity()
     {
@@ -326,7 +326,7 @@ class Cart implements CartInterface
     /**
      * Return the total amount of items added to the Cart.
      *
-     * @return integer
+     * @return int
      */
     public function getTotalItemNumber()
     {
@@ -340,7 +340,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Set product amount
+     * Set product amount.
      *
      * @param MoneyInterface $productAmount
      *
@@ -354,7 +354,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Get product amount
+     * Get product amount.
      *
      * @return MoneyInterface Product amount
      */
@@ -364,7 +364,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Set coupon amount
+     * Set coupon amount.
      *
      * @param MoneyInterface $couponAmount
      *
@@ -378,7 +378,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Get coupon amount
+     * Get coupon amount.
      *
      * @return MoneyInterface Coupon amount
      */
@@ -388,7 +388,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Get ShippingAmount
+     * Get ShippingAmount.
      *
      * @return MoneyInterface ShippingAmount
      */
@@ -398,7 +398,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Sets ShippingAmount
+     * Sets ShippingAmount.
      *
      * @param MoneyInterface $shippingAmount ShippingAmount
      *
@@ -412,7 +412,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Set amount
+     * Set amount.
      *
      * @param MoneyInterface $amount
      *
@@ -426,7 +426,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Get amount
+     * Get amount.
      *
      * @return MoneyInterface Amount
      */
@@ -436,9 +436,9 @@ class Cart implements CartInterface
     }
 
     /**
-     * Return the maximum depth of all the cartLines
+     * Return the maximum depth of all the cartLines.
      *
-     * @return integer Depth
+     * @return int Depth
      */
     public function getDepth()
     {
@@ -452,9 +452,9 @@ class Cart implements CartInterface
     }
 
     /**
-     * Return the maximum height of all the cartLines
+     * Return the maximum height of all the cartLines.
      *
-     * @return integer Height
+     * @return int Height
      */
     public function getHeight()
     {
@@ -468,9 +468,9 @@ class Cart implements CartInterface
     }
 
     /**
-     * Return the maximum width of all the cartLines
+     * Return the maximum width of all the cartLines.
      *
-     * @return integer Width
+     * @return int Width
      */
     public function getWidth()
     {
@@ -484,9 +484,9 @@ class Cart implements CartInterface
     }
 
     /**
-     * Get the sum of all CartLines weight
+     * Get the sum of all CartLines weight.
      *
-     * @return integer Weight
+     * @return int Weight
      */
     public function getWeight()
     {
@@ -500,7 +500,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Get DeliveryAddress
+     * Get DeliveryAddress.
      *
      * @return AddressInterface DeliveryAddress
      */
@@ -510,7 +510,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Sets DeliveryAddress
+     * Sets DeliveryAddress.
      *
      * @param AddressInterface $deliveryAddress DeliveryAddress
      *
@@ -524,7 +524,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Get BillingAddress
+     * Get BillingAddress.
      *
      * @return AddressInterface BillingAddress
      */
@@ -534,7 +534,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Sets BillingAddress
+     * Sets BillingAddress.
      *
      * @param AddressInterface $billingAddress BillingAddress
      *
@@ -548,7 +548,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Get shipping method
+     * Get shipping method.
      *
      * @return string Shipping method
      */
@@ -558,7 +558,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Set shipping method
+     * Set shipping method.
      *
      * @param string $shippingMethod Shipping method
      *
@@ -572,7 +572,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Get shipping method
+     * Get shipping method.
      *
      * @return string Cheapest shipping method
      */
@@ -582,7 +582,7 @@ class Cart implements CartInterface
     }
 
     /**
-     * Sets ShippingRange
+     * Sets ShippingRange.
      *
      * @param string $cheapestShippingMethod Cheapest shipping method
      *

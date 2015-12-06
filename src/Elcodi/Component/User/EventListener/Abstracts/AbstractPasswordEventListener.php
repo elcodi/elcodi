@@ -22,7 +22,7 @@ use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 
 /**
- * Password event listener
+ * Password event listener.
  */
 abstract class AbstractPasswordEventListener
 {
@@ -34,7 +34,7 @@ abstract class AbstractPasswordEventListener
     protected $passwordEncoder;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param PasswordEncoderInterface $passwordEncoder Password encoder
      */
@@ -44,7 +44,7 @@ abstract class AbstractPasswordEventListener
     }
 
     /**
-     * PreUpdate event listener
+     * PreUpdate event listener.
      *
      * Only computes password change if password is one of file to be changed
      *
@@ -66,7 +66,7 @@ abstract class AbstractPasswordEventListener
     }
 
     /**
-     * New entity. Password must be encrypted always
+     * New entity. Password must be encrypted always.
      *
      * @param LifecycleEventArgs $args Event args
      */
@@ -85,7 +85,7 @@ abstract class AbstractPasswordEventListener
     }
 
     /**
-     * Encode a password
+     * Encode a password.
      *
      * @param string      $password Password
      * @param string|null $salt     salt
@@ -98,11 +98,11 @@ abstract class AbstractPasswordEventListener
     }
 
     /**
-     * Check entity type
+     * Check entity type.
      *
      * @param $entity Object Entity to check
      *
-     * @return boolean Entity is ready for being encoded
+     * @return bool Entity is ready for being encoded
      */
     abstract public function checkEntityType($entity);
 }

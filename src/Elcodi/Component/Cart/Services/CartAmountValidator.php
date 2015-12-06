@@ -21,7 +21,7 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Currency\Entity\Money;
 
 /**
- * Class CartAmountValidator
+ * Class CartAmountValidator.
  *
  * Api Methods:
  *

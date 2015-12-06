@@ -25,7 +25,7 @@ use Elcodi\Component\Geo\Repository\LocationRepository;
 use Elcodi\Component\Geo\Transformer\LocationToLocationDataTransformer;
 
 /**
- * Class LocationSeLoc
+ * Class LocationSeLoc.
  */
 class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
 {
@@ -51,7 +51,7 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
     protected $locationServiceProviderAdapter;
 
     /**
-     * Set ups the test to be executed
+     * Set ups the test to be executed.
      */
     public function setUp()
     {
@@ -74,13 +74,13 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test the getAllRoots method
+     * Test the getAllRoots method.
      */
     public function testGetRootLocations()
     {
-        $location          = $this->getMockedLocation('id-root');
-        $allRoots          = [$location];
-        $formattedRoot     = 'formatted-root';
+        $location = $this->getMockedLocation('id-root');
+        $allRoots = [$location];
+        $formattedRoot = 'formatted-root';
         $formattedAllRoots = [$formattedRoot];
 
         $this->locationRepository
@@ -106,7 +106,7 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test the getChildren method
+     * Test the getChildren method.
      */
     public function testGetChildren()
     {
@@ -116,10 +116,10 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
             ->will($this->returnArgument(0));
 
         $childrenLocation = $this->getMockedLocation('id-children');
-        $children         = new ArrayCollection([$childrenLocation]);
+        $children = new ArrayCollection([$childrenLocation]);
 
         $locationId = 'id-test';
-        $location   = $this->getMockedLocation(
+        $location = $this->getMockedLocation(
             $locationId,
             null,
             $children
@@ -143,7 +143,7 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test the getChildren method when the given location is not found
+     * Test the getChildren method when the given location is not found.
      */
     public function testGetChildrenNotFound()
     {
@@ -165,7 +165,7 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test the getParents
+     * Test the getParents.
      */
     public function testGetParents()
     {
@@ -175,10 +175,10 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
             ->will($this->returnArgument(0));
 
         $parentLocation = $this->getMockedLocation('id-parent');
-        $parents        = new ArrayCollection([$parentLocation]);
+        $parents = new ArrayCollection([$parentLocation]);
 
         $locationId = 'id-test';
-        $location   = $this->getMockedLocation(
+        $location = $this->getMockedLocation(
             $locationId,
             $parents
         );
@@ -201,7 +201,7 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test the getParents method when the given location is not found
+     * Test the getParents method when the given location is not found.
      */
     public function testGetParentsNotFound()
     {
@@ -223,7 +223,7 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test get location
+     * Test get location.
      */
     public function testGetLocation()
     {
@@ -233,7 +233,7 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
             ->will($this->returnArgument(0));
 
         $locationId = 'id-test';
-        $location   = $this->getMockedLocation($locationId);
+        $location = $this->getMockedLocation($locationId);
 
         $this->locationRepository
             ->expects($this->once())
@@ -253,7 +253,7 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test get location when the location is not found
+     * Test get location when the location is not found.
      */
     public function testGetLocationNotFound()
     {
@@ -275,7 +275,7 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test get hierarchy
+     * Test get hierarchy.
      */
     public function testGetHierarchy()
     {
@@ -284,11 +284,11 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
             ->method('transform')
             ->will($this->returnArgument(0));
 
-        $locationId        = 'id-test';
-        $location          = $this->getMockedLocation($locationId);
+        $locationId = 'id-test';
+        $location = $this->getMockedLocation($locationId);
         $locationParentOne = $this->getMockedLocation('id-parent-one');
         $locationParentTwo = $this->getMockedLocation('id-parent-two');
-        $parents           = [$locationParentOne, $locationParentTwo];
+        $parents = [$locationParentOne, $locationParentTwo];
         $location
             ->expects($this->once())
             ->method('getAllParents')
@@ -318,7 +318,7 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test get hierarchy when the location is not found
+     * Test get hierarchy when the location is not found.
      */
     public function testGetHierarchyNotFound()
     {
@@ -340,7 +340,7 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test in method for one place to search and id is found
+     * Test in method for one place to search and id is found.
      */
     public function testInOnePlaceToSearchFound()
     {
@@ -352,10 +352,10 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
         $searchedId = 'id-parent-one';
 
         $searchInLocationId = 'id-test';
-        $searchInLocation   = $this->getMockedLocation($searchInLocationId);
-        $searchInParentOne  = $this->getMockedLocation($searchedId);
-        $searchInParentTwo  = $this->getMockedLocation('id-parent-two');
-        $parents            = [$searchInParentOne, $searchInParentTwo];
+        $searchInLocation = $this->getMockedLocation($searchInLocationId);
+        $searchInParentOne = $this->getMockedLocation($searchedId);
+        $searchInParentTwo = $this->getMockedLocation('id-parent-two');
+        $parents = [$searchInParentOne, $searchInParentTwo];
         $searchInLocation
             ->expects($this->once())
             ->method('getAllParents')
@@ -378,7 +378,7 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test in method for one place to search and id is not found
+     * Test in method for one place to search and id is not found.
      */
     public function testInOnePlaceToSearchNotFound()
     {
@@ -388,10 +388,10 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
             ->will($this->returnArgument(0));
 
         $searchInLocationId = 'id-test';
-        $searchInLocation   = $this->getMockedLocation($searchInLocationId);
-        $searchInParentOne  = $this->getMockedLocation('id-parent-one');
-        $searchInParentTwo  = $this->getMockedLocation('id-parent-two');
-        $parents            = [$searchInParentOne, $searchInParentTwo];
+        $searchInLocation = $this->getMockedLocation($searchInLocationId);
+        $searchInParentOne = $this->getMockedLocation('id-parent-one');
+        $searchInParentTwo = $this->getMockedLocation('id-parent-two');
+        $parents = [$searchInParentOne, $searchInParentTwo];
         $searchInLocation
             ->expects($this->once())
             ->method('getAllParents')
@@ -414,7 +414,7 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test in method on two places to search and id is found
+     * Test in method on two places to search and id is found.
      */
     public function testInTwoPlacesSearchFound()
     {
@@ -425,14 +425,14 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
 
         $searchedId = 'id-parent-one';
 
-        $searchInLocationId        = 'id-search-here';
+        $searchInLocationId = 'id-search-here';
         $searchInAnotherLocationId = 'id-search-here-too';
-        $searchInAnotherLocation   = $this->getMockedLocation(
+        $searchInAnotherLocation = $this->getMockedLocation(
             $searchInAnotherLocationId
         );
-        $searchInParentOne         = $this->getMockedLocation($searchedId);
-        $searchInParentTwo         = $this->getMockedLocation('id-parent-two');
-        $parents                   = [$searchInParentOne, $searchInParentTwo];
+        $searchInParentOne = $this->getMockedLocation($searchedId);
+        $searchInParentTwo = $this->getMockedLocation('id-parent-two');
+        $parents = [$searchInParentOne, $searchInParentTwo];
         $searchInAnotherLocation
             ->expects($this->once())
             ->method('getAllParents')
@@ -461,7 +461,7 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test in method on two places to search and id is not found
+     * Test in method on two places to search and id is not found.
      */
     public function testInTwoPlacesSearchNotFound()
     {
@@ -471,10 +471,10 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
             ->will($this->returnArgument(0));
 
         $searchInLocationId = 'id-test';
-        $searchInLocation   = $this->getMockedLocation($searchInLocationId);
-        $searchInParentOne  = $this->getMockedLocation('id-parent-one');
-        $searchInParentTwo  = $this->getMockedLocation('id-parent-two');
-        $parents            = [$searchInParentOne, $searchInParentTwo];
+        $searchInLocation = $this->getMockedLocation($searchInLocationId);
+        $searchInParentOne = $this->getMockedLocation('id-parent-one');
+        $searchInParentTwo = $this->getMockedLocation('id-parent-two');
+        $parents = [$searchInParentOne, $searchInParentTwo];
         $searchInLocation
             ->expects($this->once())
             ->method('getAllParents')
@@ -503,11 +503,11 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test the in method when the received location is not found
+     * Test the in method when the received location is not found.
      */
     public function testInLocationNotFound()
     {
-        $locationId        = 'id-test';
+        $locationId = 'id-test';
         $locationSearchIds = ['id-search1', 'id-search2'];
 
         $this->locationRepository
@@ -529,7 +529,7 @@ class LocationServiceProviderAdapterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Gets a mocked location with the received parents and children
+     * Gets a mocked location with the received parents and children.
      *
      * @param string          $id       The location id
      * @param ArrayCollection $parents  The location parents

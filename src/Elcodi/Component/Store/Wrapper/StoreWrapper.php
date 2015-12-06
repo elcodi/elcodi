@@ -23,7 +23,7 @@ use Elcodi\Component\Store\Exception\StoreNotFoundException;
 use Elcodi\Component\Store\Repository\StoreRepository;
 
 /**
- * Class StoreWrapper
+ * Class StoreWrapper.
  */
 class StoreWrapper implements WrapperInterface
 {
@@ -42,7 +42,7 @@ class StoreWrapper implements WrapperInterface
     private $storeRepository;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param StoreRepository $storeRepository Store Repository
      */
@@ -52,7 +52,7 @@ class StoreWrapper implements WrapperInterface
     }
 
     /**
-     * Load store
+     * Load store.
      *
      * @return StoreInterface $store Loaded store
      *

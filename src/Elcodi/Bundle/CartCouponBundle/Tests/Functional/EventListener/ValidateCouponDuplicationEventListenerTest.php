@@ -21,12 +21,12 @@ use Elcodi\Bundle\CartCouponBundle\Tests\Functional\EventListener\Abstracts\Abst
 use Elcodi\Component\CartCoupon\Exception\CouponAlreadyAppliedException;
 
 /**
- * Class ValidateCouponDuplicationEventListenerTest
+ * Class ValidateCouponDuplicationEventListenerTest.
  */
 class ValidateCouponDuplicationEventListenerTest extends AbstractCartCouponEventListenerTest
 {
     /**
-     * Test validateDuplicatedCoupon
+     * Test validateDuplicatedCoupon.
      */
     public function testValidateDuplicatedCoupon()
     {

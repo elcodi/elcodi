@@ -23,12 +23,12 @@ use Elcodi\Component\User\Entity\Abstracts\AbstractUser;
 use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
 
 /**
- * Class AdminUser
+ * Class AdminUser.
  */
 class AdminUser extends AbstractUser implements AdminUserInterface
 {
     /**
-     * Admin User roles
+     * Admin User roles.
      *
      * @return string[] Roles
      */

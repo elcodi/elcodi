@@ -24,7 +24,7 @@ use Elcodi\Component\CartCoupon\Entity\Interfaces\OrderCouponInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 
 /**
- * Class OrderCouponOnApplyEvent
+ * Class OrderCouponOnApplyEvent.
  */
 final class OrderCouponOnApplyEvent extends Event
 {
@@ -50,7 +50,7 @@ final class OrderCouponOnApplyEvent extends Event
     private $orderCoupon;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param OrderInterface  $order  Order
      * @param CouponInterface $coupon Coupon
@@ -64,7 +64,7 @@ final class OrderCouponOnApplyEvent extends Event
     }
 
     /**
-     * Set OrderCoupon
+     * Set OrderCoupon.
      *
      * @param OrderCouponInterface $orderCoupon OrderCoupon
      *
@@ -78,7 +78,7 @@ final class OrderCouponOnApplyEvent extends Event
     }
 
     /**
-     * Return order
+     * Return order.
      *
      * @return OrderInterface Order
      */
@@ -88,7 +88,7 @@ final class OrderCouponOnApplyEvent extends Event
     }
 
     /**
-     * Return Coupon
+     * Return Coupon.
      *
      * @return CouponInterface Coupon
      */
@@ -98,7 +98,7 @@ final class OrderCouponOnApplyEvent extends Event
     }
 
     /**
-     * Get OrderCoupon
+     * Get OrderCoupon.
      *
      * @return OrderCouponInterface OrderCoupon
      */

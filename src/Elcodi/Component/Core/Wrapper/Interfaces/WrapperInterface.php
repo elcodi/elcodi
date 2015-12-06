@@ -18,13 +18,13 @@
 namespace Elcodi\Component\Core\Wrapper\Interfaces;
 
 /**
- * Interface WrapperInterface
+ * Interface WrapperInterface.
  */
 interface WrapperInterface
 {
     /**
      * Get loaded object. If object is not loaded yet, then load it and save it
-     * locally. Otherwise, just return the pre-loaded object
+     * locally. Otherwise, just return the pre-loaded object.
      *
      * @return mixed Loaded object
      */

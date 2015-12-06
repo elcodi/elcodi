@@ -25,7 +25,7 @@ use Elcodi\Component\Coupon\Exception\CouponIncompatibleException;
 use Elcodi\Component\Coupon\Services\CouponManager;
 
 /**
- * Class CartCouponValidator
+ * Class CartCouponValidator.
  *
  * API methods:
  *
@@ -58,7 +58,7 @@ class CartCouponValidator
     private $cartCouponEventDispatcher;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CartCouponManager         $cartCouponManager         Cart coupon manager
      * @param CouponManager             $couponManager             Coupon Manager
@@ -77,7 +77,7 @@ class CartCouponValidator
     /**
      * Checks if all Coupons applied to current cart are still valid.
      * If are not, they will be deleted from the Cart and new Event typeof
-     * CartCouponOnRejected will be dispatched
+     * CartCouponOnRejected will be dispatched.
      *
      * @param CartInterface $cart Cart
      */
@@ -116,7 +116,7 @@ class CartCouponValidator
     }
 
     /**
-     * Check if cart meets basic requirements for a coupon
+     * Check if cart meets basic requirements for a coupon.
      *
      * @param CartInterface   $cart   Cart
      * @param CouponInterface $coupon Coupon

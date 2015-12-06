@@ -24,7 +24,7 @@ use Symfony\Component\DependencyInjection\Reference;
 use Elcodi\Component\Menu\ElcodiMenuStages;
 
 /**
- * Class MenuModifierCompilerPass
+ * Class MenuModifierCompilerPass.
  */
 class MenuModifierCompilerPass implements CompilerPassInterface
 {
@@ -32,8 +32,6 @@ class MenuModifierCompilerPass implements CompilerPassInterface
      * You can modify the container here before it is dumped to PHP code.
      *
      * @param ContainerBuilder $container
-     *
-     * @return null
      *
      * @api
      */

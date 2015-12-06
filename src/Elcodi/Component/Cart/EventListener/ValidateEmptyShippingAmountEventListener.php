@@ -22,7 +22,7 @@ use Elcodi\Component\Cart\Services\CartShippingAmountValidator;
 use Elcodi\Component\Currency\Entity\Money;
 
 /**
- * Class ValidateEmptyShippingAmountEventListener
+ * Class ValidateEmptyShippingAmountEventListener.
  */
 final class ValidateEmptyShippingAmountEventListener
 {
@@ -34,7 +34,7 @@ final class ValidateEmptyShippingAmountEventListener
     private $cartShippingAmountValidator;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param CartShippingAmountValidator $cartShippingAmountValidator Cart shipping amount validator
      */
@@ -45,7 +45,7 @@ final class ValidateEmptyShippingAmountEventListener
 
     /**
      * If the cart's shipping amount is not defined, then put an empty Money
-     * value
+     * value.
      *
      * @param CartOnLoadEvent $event Event
      */

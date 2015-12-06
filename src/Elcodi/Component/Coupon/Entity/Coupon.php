@@ -28,7 +28,7 @@ use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
 
 /**
- * Class Coupon
+ * Class Coupon.
  */
 class Coupon implements CouponInterface
 {
@@ -52,21 +52,21 @@ class Coupon implements CouponInterface
     protected $name;
 
     /**
-     * @var integer
+     * @var int
      *
      * Type
      */
     protected $type;
 
     /**
-     * @var integer
+     * @var int
      *
      * Enforcement type
      */
     protected $enforcement;
 
     /**
-     * @var integer
+     * @var int
      *
      * Price amount
      */
@@ -80,14 +80,14 @@ class Coupon implements CouponInterface
     protected $priceCurrency;
 
     /**
-     * @var integer
+     * @var int
      *
      * Discount
      */
     protected $discount = 0;
 
     /**
-     * @var integer
+     * @var int
      *
      * Absolute price amount
      */
@@ -101,28 +101,28 @@ class Coupon implements CouponInterface
     protected $absolutePriceCurrency;
 
     /**
-     * @var integer
+     * @var int
      *
      * Count
      */
     protected $count;
 
     /**
-     * @var integer
+     * @var int
      *
      * Used times
      */
     protected $used;
 
     /**
-     * @var integer
+     * @var int
      *
      * Priority
      */
     protected $priority;
 
     /**
-     * @var integer
+     * @var int
      *
      * Minimum purchase amount
      */
@@ -136,7 +136,7 @@ class Coupon implements CouponInterface
     protected $minimumPurchaseCurrency;
 
     /**
-     * @var integer
+     * @var int
      *
      * Whether this coupon can be used together with another coupon
      */
@@ -150,7 +150,7 @@ class Coupon implements CouponInterface
     protected $rule;
 
     /**
-     * Set code
+     * Set code.
      *
      * @param string $code Code
      *
@@ -164,7 +164,7 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Get code
+     * Get code.
      *
      * @return string Code
      */
@@ -174,7 +174,7 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Set name coupon name
+     * Set name coupon name.
      *
      * @param string $name
      *
@@ -188,7 +188,7 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -198,9 +198,9 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Set type
+     * Set type.
      *
-     * @param integer $type Type
+     * @param int $type Type
      *
      * @return $this Self object
      */
@@ -212,9 +212,9 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Get type
+     * Get type.
      *
-     * @return integer Type
+     * @return int Type
      */
     public function getType()
     {
@@ -222,9 +222,9 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Sets Enforcement
+     * Sets Enforcement.
      *
-     * @param integer $enforcement Enforcement
+     * @param int $enforcement Enforcement
      *
      * @return $this Self object
      */
@@ -236,9 +236,9 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Get Enforcement
+     * Get Enforcement.
      *
-     * @return integer Enforcement
+     * @return int Enforcement
      */
     public function getEnforcement()
     {
@@ -246,7 +246,7 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Set price
+     * Set price.
      *
      * @param MoneyInterface $amount Price
      *
@@ -261,7 +261,7 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Get price
+     * Get price.
      *
      * @return MoneyInterface Price
      */
@@ -274,9 +274,9 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Set discount
+     * Set discount.
      *
-     * @param integer $discount Discount
+     * @param int $discount Discount
      *
      * @return $this Self object
      */
@@ -288,9 +288,9 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Get discount
+     * Get discount.
      *
-     * @return integer discount
+     * @return int discount
      */
     public function getDiscount()
     {
@@ -298,7 +298,7 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Set absolute price
+     * Set absolute price.
      *
      * @param MoneyInterface $amount Absolute Price
      *
@@ -313,7 +313,7 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Get absolute price
+     * Get absolute price.
      *
      * @return MoneyInterface Absolute Price
      */
@@ -326,9 +326,9 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Set count
+     * Set count.
      *
-     * @param integer $count
+     * @param int $count
      *
      * @return $this Self object
      */
@@ -340,9 +340,9 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Get count
+     * Get count.
      *
-     * @return integer
+     * @return int
      */
     public function getCount()
     {
@@ -350,9 +350,9 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Set used
+     * Set used.
      *
-     * @param integer $used
+     * @param int $used
      *
      * @return $this Self object
      */
@@ -364,9 +364,9 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Get used
+     * Get used.
      *
-     * @return integer Number this coupon has been used
+     * @return int Number this coupon has been used
      */
     public function getUsed()
     {
@@ -374,9 +374,9 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Set priority
+     * Set priority.
      *
-     * @param integer $priority
+     * @param int $priority
      *
      * @return $this Self object
      */
@@ -388,9 +388,9 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Get priority
+     * Get priority.
      *
-     * @return integer Number this coupon has been priority
+     * @return int Number this coupon has been priority
      */
     public function getPriority()
     {
@@ -398,7 +398,7 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Set minimum purchase
+     * Set minimum purchase.
      *
      * @param MoneyInterface $amount Absolute Price
      *
@@ -413,7 +413,7 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Get minimum purchase
+     * Get minimum purchase.
      *
      * @return MoneyInterface Absolute Price
      */
@@ -426,7 +426,7 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Set rule Rule to check for applicability
+     * Set rule Rule to check for applicability.
      *
      * @param RuleInterface $rule New rule
      *
@@ -440,7 +440,7 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Get rule to check for applicability
+     * Get rule to check for applicability.
      *
      * @return RuleInterface Current rule
      */
@@ -450,7 +450,7 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Get stackable property
+     * Get stackable property.
      *
      * @return int
      */
@@ -460,7 +460,7 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * Set stackable property
+     * Set stackable property.
      *
      * @param int $stackable
      *
@@ -474,7 +474,7 @@ class Coupon implements CouponInterface
     }
 
     /**
-     * String representation of Coupon
+     * String representation of Coupon.
      *
      * @return string
      */
@@ -485,7 +485,7 @@ class Coupon implements CouponInterface
 
     /**
      * Increment used variable by one, and disables it if there are no more
-     * available units
+     * available units.
      *
      * @return $this Self object
      */

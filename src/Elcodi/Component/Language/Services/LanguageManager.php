@@ -24,7 +24,7 @@ use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 use Elcodi\Component\Language\Repository\LanguageRepository;
 
 /**
- * Language manager Services
+ * Language manager Services.
  *
  * Manages all languages actions
  */
@@ -38,7 +38,7 @@ class LanguageManager
     private $languageRepository;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param LanguageRepository $languageRepository Language repository
      */
@@ -48,7 +48,7 @@ class LanguageManager
     }
 
     /**
-     * Get enabled languages
+     * Get enabled languages.
      *
      * @return Collection Set of enabled languages
      */
@@ -64,7 +64,7 @@ class LanguageManager
     }
 
     /**
-     * Get enabled languages iso
+     * Get enabled languages iso.
      *
      * @return Collection Enabled languages iso
      */

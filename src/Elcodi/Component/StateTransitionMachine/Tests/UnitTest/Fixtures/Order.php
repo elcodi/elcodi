@@ -24,7 +24,7 @@ use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface
 use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 
 /**
- * Class Order
+ * Class Order.
  */
 class Order
 {
@@ -43,7 +43,7 @@ class Order
     protected $stateLines;
 
     /**
-     * Get StateLineStack
+     * Get StateLineStack.
      *
      * @return StateLineStack StateLineStack
      */
@@ -56,7 +56,7 @@ class Order
     }
 
     /**
-     * Sets StateLineStack
+     * Sets StateLineStack.
      *
      * @param StateLineStack $stateLineStack StateLineStack
      *

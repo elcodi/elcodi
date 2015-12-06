@@ -22,12 +22,12 @@ use Elcodi\Component\Coupon\Exception\CouponBelowMinimumPurchaseException;
 use Elcodi\Component\Currency\Entity\Money;
 
 /**
- * Class ValidateCouponMinimumPriceEventListenerTest
+ * Class ValidateCouponMinimumPriceEventListenerTest.
  */
 class ValidateCouponMinimumPriceEventListenerTest extends AbstractCartCouponEventListenerTest
 {
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -41,7 +41,7 @@ class ValidateCouponMinimumPriceEventListenerTest extends AbstractCartCouponEven
     }
 
     /**
-     * Test testValidateCartCouponMinimumPrice
+     * Test testValidateCartCouponMinimumPrice.
      *
      * @dataProvider dataValidateCartCouponMinimumPrice
      */
@@ -71,7 +71,7 @@ class ValidateCouponMinimumPriceEventListenerTest extends AbstractCartCouponEven
         }
 
         /**
-         * Clean operations to avoid restart scenario
+         * Clean operations to avoid restart scenario.
          */
         $this
             ->get('elcodi.manager.cart_coupon')
@@ -82,7 +82,7 @@ class ValidateCouponMinimumPriceEventListenerTest extends AbstractCartCouponEven
     }
 
     /**
-     * Data for testValidateCartCouponMinimumPrice
+     * Data for testValidateCartCouponMinimumPrice.
      */
     public function dataValidateCartCouponMinimumPrice()
     {

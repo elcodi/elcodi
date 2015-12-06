@@ -21,7 +21,7 @@ use Elcodi\Component\Cart\Event\OrderLineOnCreatedEvent;
 use Elcodi\Component\Cart\Services\CartLineStockUpdater;
 
 /**
- * Class UpdateStockByCartLineEventListener
+ * Class UpdateStockByCartLineEventListener.
  */
 final class UpdateStockByCartLineEventListener
 {
@@ -33,7 +33,7 @@ final class UpdateStockByCartLineEventListener
     private $cartLineStockUpdater;
 
     /**
-     * Built method
+     * Built method.
      *
      * @param CartLineStockUpdater $cartLineStockUpdater Cartline stock updater
      */
@@ -43,7 +43,7 @@ final class UpdateStockByCartLineEventListener
     }
 
     /**
-     * Performs all processes to be performed after the order creation
+     * Performs all processes to be performed after the order creation.
      *
      * Flushes all loaded order and related entities.
      *

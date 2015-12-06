@@ -21,12 +21,12 @@ use Elcodi\Component\Core\Mailer\Abstracts\AbstractMailer;
 use Elcodi\Component\User\Event\PasswordRecoverEvent;
 
 /**
- * Class PasswordRecoverMailer
+ * Class PasswordRecoverMailer.
  */
 class PasswordRecoverMailer extends AbstractMailer
 {
     /**
-     * Send email
+     * Send email.
      *
      * @param PasswordRecoverEvent $event Event
      */

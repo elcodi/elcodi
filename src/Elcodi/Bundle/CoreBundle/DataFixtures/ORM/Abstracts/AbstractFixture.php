@@ -25,14 +25,14 @@ use Symfony\Component\Yaml\Parser;
 use Elcodi\Bundle\CoreBundle\Container\Traits\ContainerAccessorTrait;
 
 /**
- * AbstractFixture class
+ * AbstractFixture class.
  */
 abstract class AbstractFixture extends DoctrineAbstractFixture implements ContainerAwareInterface
 {
     use ContainerAccessorTrait;
 
     /**
-     * Set container
+     * Set container.
      *
      * @param ContainerInterface $container Container
      *
@@ -46,7 +46,7 @@ abstract class AbstractFixture extends DoctrineAbstractFixture implements Contai
     }
 
     /**
-     * Parse some content using a YAML parser
+     * Parse some content using a YAML parser.
      *
      * @param string $filePath File path
      *

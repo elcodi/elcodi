@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Core\Entity\Traits;
 
 /**
- * trait for add Entity valid interval
+ * trait for add Entity valid interval.
  */
 trait ValidIntervalTrait
 {
@@ -37,7 +37,7 @@ trait ValidIntervalTrait
     protected $validTo;
 
     /**
-     * Set valid from
+     * Set valid from.
      *
      * @param \DateTime $validFrom Valid from
      *
@@ -51,7 +51,7 @@ trait ValidIntervalTrait
     }
 
     /**
-     * Get valid from
+     * Get valid from.
      *
      * @return \DateTime
      */
@@ -61,7 +61,7 @@ trait ValidIntervalTrait
     }
 
     /**
-     * Set valid to
+     * Set valid to.
      *
      * @param \DateTime $validTo Valid to
      *
@@ -75,7 +75,7 @@ trait ValidIntervalTrait
     }
 
     /**
-     * Get valid to
+     * Get valid to.
      *
      * @return \DateTime Valid to
      */

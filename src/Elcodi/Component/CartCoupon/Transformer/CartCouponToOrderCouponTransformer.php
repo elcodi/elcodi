@@ -26,7 +26,7 @@ use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 
 /**
- * Class CartCouponToOrderCouponTransformer
+ * Class CartCouponToOrderCouponTransformer.
  *
  * API methods:
  *
@@ -58,7 +58,7 @@ class CartCouponToOrderCouponTransformer
     private $orderCouponEventDispatcher;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param CartCouponManager          $cartCouponManager          CartCoupon manager
      * @param OrderCouponTruncator       $orderCouponTruncator       OrderCoupon truncator
@@ -112,7 +112,7 @@ class CartCouponToOrderCouponTransformer
             ->truncateOrderCoupons($order);
 
         /**
-         * An event is dispatched for each convertible coupon
+         * An event is dispatched for each convertible coupon.
          */
         foreach ($coupons as $coupon) {
             $this

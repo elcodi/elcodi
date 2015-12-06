@@ -27,7 +27,7 @@ use Elcodi\Bundle\PageBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\PageBundle\DependencyInjection\ElcodiPageExtension;
 
 /**
- * Class ElcodiPageBundle
+ * Class ElcodiPageBundle.
  */
 class ElcodiPageBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
@@ -52,7 +52,7 @@ class ElcodiPageBundle extends AbstractElcodiBundle implements DependentBundleIn
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

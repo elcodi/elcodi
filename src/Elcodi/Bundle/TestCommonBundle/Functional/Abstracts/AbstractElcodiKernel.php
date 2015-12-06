@@ -21,24 +21,24 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
 
 /**
- * AbstractElcodiKernel for all Elcodi specific Kernels
+ * AbstractElcodiKernel for all Elcodi specific Kernels.
  */
 abstract class AbstractElcodiKernel extends Kernel
 {
     /**
-     * Register container configuration
+     * Register container configuration.
      *
      * @param LoaderInterface $loader Loader
      */
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $classInfo = new \ReflectionClass($this);
-        $dir =  dirname($classInfo->getFileName());
+        $dir = dirname($classInfo->getFileName());
         $loader->load($dir . '/config.yml');
     }
 
     /**
-     * Return Cache dir
+     * Return Cache dir.
      *
      * @return string
      */
@@ -50,7 +50,7 @@ abstract class AbstractElcodiKernel extends Kernel
     }
 
     /**
-     * Return log dir
+     * Return log dir.
      *
      * @return string
      */

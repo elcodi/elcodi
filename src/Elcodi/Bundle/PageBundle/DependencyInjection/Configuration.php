@@ -23,14 +23,14 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
 
 /**
- * Class Configuration
+ * Class Configuration.
  *
  * @author Berny Cantos <be@rny.cc>
  */
 class Configuration extends AbstractConfiguration implements ConfigurationInterface
 {
     /**
-     * Configure the root node
+     * Configure the root node.
      *
      * @param ArrayNodeDefinition $rootNode
      */

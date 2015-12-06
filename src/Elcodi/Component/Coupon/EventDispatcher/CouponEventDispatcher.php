@@ -23,12 +23,12 @@ use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\Coupon\Event\CouponOnUsedEvent;
 
 /**
- * Class CouponEventDispatcher
+ * Class CouponEventDispatcher.
  */
 class CouponEventDispatcher extends AbstractEventDispatcher
 {
     /**
-     * Notify Coupon usage
+     * Notify Coupon usage.
      *
      * @param CouponInterface $coupon Coupon used
      *

@@ -23,12 +23,12 @@ use Elcodi\Component\CartCoupon\Exception\CouponNotStackableException;
 use Elcodi\Component\CartCoupon\Services\StackableCouponValidator;
 
 /**
- * Class StackableCouponValidatorTest
+ * Class StackableCouponValidatorTest.
  */
 class StackableCouponValidatorTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Test cart with stackable coupon and all stacked coupons are stackable
+     * Test cart with stackable coupon and all stacked coupons are stackable.
      *
      * @covers checkStackableCoupon
      *
@@ -72,7 +72,7 @@ class StackableCouponValidatorTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Data for testCheckStackableCoupon
+     * Data for testCheckStackableCoupon.
      */
     public function dataCheckStackableCoupon()
     {
@@ -98,7 +98,7 @@ class StackableCouponValidatorTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Private geta CartCoupon array given stackable information
+     * Private geta CartCoupon array given stackable information.
      *
      * @return array Cart coupons
      */

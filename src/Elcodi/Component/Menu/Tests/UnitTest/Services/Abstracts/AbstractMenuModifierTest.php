@@ -21,12 +21,12 @@ use PHPUnit_Framework_TestCase;
 use stdClass;
 
 /**
- * Class AbstractMenuModifierTest
+ * Class AbstractMenuModifierTest.
  */
 class AbstractMenuModifierTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Test when none menu is specified
+     * Test when none menu is specified.
      */
     public function testNoMenuAssigned()
     {
@@ -47,7 +47,7 @@ class AbstractMenuModifierTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test when one menu is assigned as an individual string
+     * Test when one menu is assigned as an individual string.
      */
     public function testOneSingleMenuAssigned()
     {
@@ -72,7 +72,7 @@ class AbstractMenuModifierTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test when several menus are assigned as an array
+     * Test when several menus are assigned as an array.
      */
     public function testSeveralMenusAssigned()
     {
@@ -101,7 +101,7 @@ class AbstractMenuModifierTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test stage definition
+     * Test stage definition.
      */
     public function testStage()
     {
@@ -126,7 +126,7 @@ class AbstractMenuModifierTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test stage definition in big scenario
+     * Test stage definition in big scenario.
      */
     public function testStageWithMenus()
     {
@@ -157,7 +157,7 @@ class AbstractMenuModifierTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test priorities
+     * Test priorities.
      */
     public function testPriorities()
     {

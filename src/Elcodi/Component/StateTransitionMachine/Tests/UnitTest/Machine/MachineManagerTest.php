@@ -25,12 +25,12 @@ use Elcodi\Component\StateTransitionMachine\Tests\UnitTest\Fixtures\AbstractStat
 use Elcodi\Component\StateTransitionMachine\Tests\UnitTest\Fixtures\Order;
 
 /**
- * Class MachineManagerTest
+ * Class MachineManagerTest.
  */
 class MachineManagerTest extends AbstractStateTransitionTest
 {
     /**
-     * Test initialize
+     * Test initialize.
      *
      * @expectedException \Elcodi\Component\StateTransitionMachine\Exception\ObjectAlreadyInitializedException
      */
@@ -54,7 +54,7 @@ class MachineManagerTest extends AbstractStateTransitionTest
     }
 
     /**
-     * Test initialize
+     * Test initialize.
      */
     public function testInitializeEmpty()
     {
@@ -78,7 +78,7 @@ class MachineManagerTest extends AbstractStateTransitionTest
     }
 
     /**
-     * Test make transition with a non-initialized object
+     * Test make transition with a non-initialized object.
      *
      * @expectedException \Elcodi\Component\StateTransitionMachine\Exception\ObjectNotInitializedException
      */
@@ -102,7 +102,7 @@ class MachineManagerTest extends AbstractStateTransitionTest
     }
 
     /**
-     * Test make transition with an initialized object
+     * Test make transition with an initialized object.
      */
     public function testMakeTransitionInitialized()
     {
@@ -133,7 +133,7 @@ class MachineManagerTest extends AbstractStateTransitionTest
     }
 
     /**
-     * Test make transition with a non-initialized object
+     * Test make transition with a non-initialized object.
      *
      * @expectedException \Elcodi\Component\StateTransitionMachine\Exception\ObjectNotInitializedException
      */
@@ -157,7 +157,7 @@ class MachineManagerTest extends AbstractStateTransitionTest
     }
 
     /**
-     * Test make transition with an initialized object
+     * Test make transition with an initialized object.
      */
     public function testReachStateInitialized()
     {

@@ -18,7 +18,7 @@
 namespace Elcodi\Component\MetaData\Entity\Traits;
 
 /**
- * Trait for add Meta data
+ * Trait for add Meta data.
  */
 trait MetaDataTrait
 {
@@ -44,7 +44,7 @@ trait MetaDataTrait
     protected $metaKeywords;
 
     /**
-     * Set meta description
+     * Set meta description.
      *
      * @param string $metaDescription
      *
@@ -58,7 +58,7 @@ trait MetaDataTrait
     }
 
     /**
-     * Get meta description
+     * Get meta description.
      *
      * @return string Meta description
      */
@@ -68,7 +68,7 @@ trait MetaDataTrait
     }
 
     /**
-     * Set meta keywords
+     * Set meta keywords.
      *
      * @param string $metaKeywords Meta keywords
      *
@@ -82,7 +82,7 @@ trait MetaDataTrait
     }
 
     /**
-     * Get meta keywords
+     * Get meta keywords.
      *
      * @return string Meta keywords
      */
@@ -92,7 +92,7 @@ trait MetaDataTrait
     }
 
     /**
-     * Set meta title
+     * Set meta title.
      *
      * @param string $metaTitle Meta title
      *
@@ -106,7 +106,7 @@ trait MetaDataTrait
     }
 
     /**
-     * Get meta title
+     * Get meta title.
      *
      * @return string Meta title
      */

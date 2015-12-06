@@ -20,7 +20,7 @@ namespace Elcodi\Component\Coupon\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class CouponRepository
+ * Class CouponRepository.
  */
 class CouponRepository extends EntityRepository
 {

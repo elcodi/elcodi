@@ -29,12 +29,12 @@ use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 
 /**
- * Class CouponData
+ * Class CouponData.
  */
 class CouponData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(ObjectManager $manager)
     {
@@ -46,7 +46,7 @@ class CouponData extends AbstractFixture implements DependentFixtureInterface
         $currency = $this->getReference('currency-dollar');
 
         /**
-         * Coupon with 12% of discount
+         * Coupon with 12% of discount.
          *
          * Valid from now without expire time
          *
@@ -94,7 +94,7 @@ class CouponData extends AbstractFixture implements DependentFixtureInterface
         $this->addReference('coupon-amount', $couponAmount);
 
         /**
-         * Stackable Coupon with 10% of discount
+         * Stackable Coupon with 10% of discount.
          *
          * Valid from now without expire time
          *
@@ -145,7 +145,7 @@ class CouponData extends AbstractFixture implements DependentFixtureInterface
 
     /**
      * This method must return an array of fixtures classes
-     * on which the implementing class depends on
+     * on which the implementing class depends on.
      *
      * @return array
      */

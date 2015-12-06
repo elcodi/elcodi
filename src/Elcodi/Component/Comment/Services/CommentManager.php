@@ -23,7 +23,7 @@ use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Core\Wrapper\Abstracts\AbstractCacheWrapper;
 
 /**
- * Class CommentManager
+ * Class CommentManager.
  */
 class CommentManager extends AbstractCacheWrapper
 {
@@ -42,7 +42,7 @@ class CommentManager extends AbstractCacheWrapper
     private $commentDirector;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CommentEventDispatcher $commentEventDispatcher Comment event dispatcher
      * @param ObjectDirector         $commentDirector        Comment Director
@@ -56,7 +56,7 @@ class CommentManager extends AbstractCacheWrapper
     }
 
     /**
-     * Add comment into source
+     * Add comment into source.
      *
      * @param string                $source      Source
      * @param string                $context     Context
@@ -101,7 +101,7 @@ class CommentManager extends AbstractCacheWrapper
     }
 
     /**
-     * Edit a comment
+     * Edit a comment.
      *
      * @param CommentInterface $comment Comment
      * @param string           $content Content
@@ -126,7 +126,7 @@ class CommentManager extends AbstractCacheWrapper
     }
 
     /**
-     * Remove a comment
+     * Remove a comment.
      *
      * @param CommentInterface $comment Comment
      *

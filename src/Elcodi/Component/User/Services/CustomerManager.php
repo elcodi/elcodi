@@ -22,7 +22,7 @@ use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 use Elcodi\Component\User\Services\Abstracts\AbstractUserManager;
 
 /**
- * Manager for Customer entities
+ * Manager for Customer entities.
  */
 class CustomerManager extends AbstractUserManager
 {

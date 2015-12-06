@@ -18,12 +18,12 @@
 namespace Elcodi\Component\Sitemap\Element\Interfaces;
 
 /**
- * Interface SitemapElementGeneratorInterface
+ * Interface SitemapElementGeneratorInterface.
  */
 interface SitemapElementGeneratorInterface
 {
     /**
-     * Generate desired elements
+     * Generate desired elements.
      *
      * @param string|null $language Language
      *

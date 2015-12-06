@@ -23,7 +23,7 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Shipping\Entity\ShippingMethod;
 
 /**
- * Class ShippingCollectionEvent
+ * Class ShippingCollectionEvent.
  */
 final class ShippingCollectionEvent extends Event
 {
@@ -42,7 +42,7 @@ final class ShippingCollectionEvent extends Event
     private $shippingMethods = [];
 
     /**
-     * Construct
+     * Construct.
      *
      * @param CartInterface $cart Cart
      */
@@ -52,7 +52,7 @@ final class ShippingCollectionEvent extends Event
     }
 
     /**
-     * Get cart
+     * Get cart.
      *
      * @return CartInterface $cart
      */
@@ -62,7 +62,7 @@ final class ShippingCollectionEvent extends Event
     }
 
     /**
-     * Add shipping method
+     * Add shipping method.
      *
      * @param ShippingMethod $shippingMethod Shipping method
      *
@@ -70,13 +70,13 @@ final class ShippingCollectionEvent extends Event
      */
     public function addShippingMethod(ShippingMethod $shippingMethod)
     {
-        $this->shippingMethods[] =  $shippingMethod;
+        $this->shippingMethods[] = $shippingMethod;
 
         return $this;
     }
 
     /**
-     * Get shipping methods
+     * Get shipping methods.
      *
      * @return ShippingMethod[] Shipping methods
      */

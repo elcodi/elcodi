@@ -25,7 +25,7 @@ use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 use Elcodi\Bundle\SitemapBundle\DependencyInjection\ElcodiSitemapExtension;
 
 /**
- * ElcodiSitemapBundle
+ * ElcodiSitemapBundle.
  */
 class ElcodiSitemapBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
@@ -40,7 +40,7 @@ class ElcodiSitemapBundle extends AbstractElcodiBundle implements DependentBundl
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

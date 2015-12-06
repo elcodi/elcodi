@@ -23,7 +23,7 @@ use Twig_SimpleFunction;
 use Elcodi\Component\Metric\Core\Bucket\Abstracts\AbstractMetricsBucket;
 
 /**
- * Class APIMetricExtension
+ * Class APIMetricExtension.
  */
 class APIMetricExtension extends Twig_Extension
 {
@@ -35,7 +35,7 @@ class APIMetricExtension extends Twig_Extension
     private $metricBucket;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param AbstractMetricsBucket $metricBucket Metric bucket
      */

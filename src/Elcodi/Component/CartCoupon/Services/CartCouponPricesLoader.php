@@ -26,7 +26,7 @@ use Elcodi\Component\Currency\Services\CurrencyConverter;
 use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 
 /**
- * Class CartCouponPricesLoader
+ * Class CartCouponPricesLoader.
  *
  * API methods:
  *
@@ -59,7 +59,7 @@ class CartCouponPricesLoader
     private $currencyWrapper;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CartCouponManager $cartCouponManager Cart coupon manager
      * @param CurrencyWrapper   $currencyWrapper   Currency wrapper

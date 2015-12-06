@@ -21,7 +21,7 @@ use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Newsletter\Entity\NewsletterSubscription;
 
 /**
- * Class NewsletterSubscriptionFactory
+ * Class NewsletterSubscriptionFactory.
  */
 class NewsletterSubscriptionFactory extends AbstractFactory
 {

@@ -26,7 +26,7 @@ use Elcodi\Component\Geo\Command\Abstracts\AbstractLocationCommand;
 use Elcodi\Component\Geo\Services\LocationLoader;
 
 /**
- * Class LocationLoadCommand
+ * Class LocationLoadCommand.
  */
 class LocationLoadCommand extends AbstractLocationCommand
 {
@@ -38,7 +38,7 @@ class LocationLoadCommand extends AbstractLocationCommand
     private $locationLoader;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param ObjectDirector $locationDirector Location director
      * @param LocationLoader $locationLoader   Location Loader
@@ -53,7 +53,7 @@ class LocationLoadCommand extends AbstractLocationCommand
     }
 
     /**
-     * configure
+     * configure.
      */
     protected function configure()
     {
@@ -65,12 +65,12 @@ class LocationLoadCommand extends AbstractLocationCommand
     }
 
     /**
-     * This command loads all the locations for the received country
+     * This command loads all the locations for the received country.
      *
      * @param InputInterface  $input  The input interface
      * @param OutputInterface $output The output interface
      *
-     * @return integer|null|void
+     * @return int|null|void
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {

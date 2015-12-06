@@ -29,7 +29,7 @@ use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
  * A Customer is a User with shopping capabilities and associations,
- * such as addresses, orders, carts
+ * such as addresses, orders, carts.
  */
 class Customer extends AbstractUser implements CustomerInterface
 {
@@ -62,14 +62,14 @@ class Customer extends AbstractUser implements CustomerInterface
     protected $identityDocument;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * Is guest
      */
     protected $guest;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * Has newsletter
      */
@@ -104,7 +104,7 @@ class Customer extends AbstractUser implements CustomerInterface
     protected $invoiceAddress;
 
     /**
-     * User roles
+     * User roles.
      *
      * @return string[] Roles
      */
@@ -116,7 +116,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Set phone
+     * Set phone.
      *
      * @param string $phone Phone
      *
@@ -130,7 +130,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Get phone
+     * Get phone.
      *
      * @return string
      */
@@ -140,7 +140,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Set identity document
+     * Set identity document.
      *
      * @param string $identityDocument
      *
@@ -154,7 +154,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Get identity document
+     * Get identity document.
      *
      * @return string Identity document
      */
@@ -164,9 +164,9 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Sets Guest
+     * Sets Guest.
      *
-     * @param boolean $guest Guest
+     * @param bool $guest Guest
      *
      * @return $this Self object
      */
@@ -178,9 +178,9 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Get Guest
+     * Get Guest.
      *
-     * @return boolean Guest
+     * @return bool Guest
      */
     public function isGuest()
     {
@@ -188,9 +188,9 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Sets Newsletter
+     * Sets Newsletter.
      *
-     * @param boolean $newsletter Newsletter
+     * @param bool $newsletter Newsletter
      *
      * @return $this Self object
      */
@@ -202,9 +202,9 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Get Newsletter
+     * Get Newsletter.
      *
-     * @return boolean Newsletter
+     * @return bool Newsletter
      */
     public function getNewsletter()
     {
@@ -212,7 +212,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Add Order
+     * Add Order.
      *
      * @param OrderInterface $order Order
      *
@@ -226,7 +226,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Remove Order
+     * Remove Order.
      *
      * @param OrderInterface $order
      *
@@ -240,7 +240,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Set orders
+     * Set orders.
      *
      * @param Collection $orders Orders
      *
@@ -254,7 +254,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Get user orders
+     * Get user orders.
      *
      * @return Collection Customer orders
      */
@@ -264,7 +264,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Add Cart
+     * Add Cart.
      *
      * @param CartInterface $cart
      *
@@ -278,7 +278,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Remove Cart
+     * Remove Cart.
      *
      * @param CartInterface $cart
      *
@@ -304,7 +304,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Get Cart collection
+     * Get Cart collection.
      *
      * @return Collection
      */
@@ -314,7 +314,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Add address
+     * Add address.
      *
      * @param AddressInterface $address
      *
@@ -328,7 +328,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Remove address
+     * Remove address.
      *
      * @param AddressInterface $address
      *
@@ -342,7 +342,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Set addresses
+     * Set addresses.
      *
      * @param Collection $addresses Addresses
      *
@@ -356,7 +356,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Get addresses
+     * Get addresses.
      *
      * @return Collection Addresses
      */
@@ -366,7 +366,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Set Delivery Address
+     * Set Delivery Address.
      *
      * @param AddressInterface $deliveryAddress
      *
@@ -380,7 +380,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Get Delivery address
+     * Get Delivery address.
      *
      * @return AddressInterface
      */
@@ -390,7 +390,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Set Invoice Address
+     * Set Invoice Address.
      *
      * @param AddressInterface $invoiceAddress
      *
@@ -404,7 +404,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Get Invoice address
+     * Get Invoice address.
      *
      * @return AddressInterface
      */
@@ -414,7 +414,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Set language
+     * Set language.
      *
      * @param LanguageInterface $language The language
      *
@@ -428,7 +428,7 @@ class Customer extends AbstractUser implements CustomerInterface
     }
 
     /**
-     * Get language
+     * Get language.
      *
      * @return LanguageInterface
      */

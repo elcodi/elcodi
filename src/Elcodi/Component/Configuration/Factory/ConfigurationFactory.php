@@ -22,11 +22,10 @@ use Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 
 /**
- * Class ConfigurationFactory
+ * Class ConfigurationFactory.
  */
 class ConfigurationFactory extends AbstractFactory
 {
-
     /**
      * Creates an instance of an entity.
      *

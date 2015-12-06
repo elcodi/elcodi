@@ -20,7 +20,7 @@ namespace Elcodi\Component\Attribute\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class ValueRepository
+ * Class ValueRepository.
  */
 class ValueRepository extends EntityRepository
 {

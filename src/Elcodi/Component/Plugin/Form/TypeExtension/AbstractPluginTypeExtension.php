@@ -23,7 +23,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Elcodi\Component\Plugin\Entity\Plugin;
 
 /**
- * Class AbstractPluginTypeExtension
+ * Class AbstractPluginTypeExtension.
  *
  * @author Berny Cantos <be@rny.cc>
  */
@@ -43,7 +43,7 @@ abstract class AbstractPluginTypeExtension extends AbstractTypeExtension
     }
 
     /**
-     * Build form function
+     * Build form function.
      *
      * @param FormBuilderInterface $builder the formBuilder
      * @param array                $options the options for this form
@@ -68,7 +68,7 @@ abstract class AbstractPluginTypeExtension extends AbstractTypeExtension
     }
 
     /**
-     * Build form function
+     * Build form function.
      *
      * @param FormBuilderInterface $builder the formBuilder
      * @param array                $options the options for this form

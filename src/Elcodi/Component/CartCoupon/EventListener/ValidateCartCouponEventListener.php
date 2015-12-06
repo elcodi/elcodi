@@ -21,7 +21,7 @@ use Elcodi\Component\CartCoupon\Event\CartCouponOnApplyEvent;
 use Elcodi\Component\CartCoupon\EventDispatcher\CartCouponEventDispatcher;
 
 /**
- * Class ValidateCartCouponEventListener
+ * Class ValidateCartCouponEventListener.
  */
 final class ValidateCartCouponEventListener
 {
@@ -33,7 +33,7 @@ final class ValidateCartCouponEventListener
     private $cartCouponDispatcher;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CartCouponEventDispatcher $cartCouponDispatcher Event dispatcher for CartCoupon
      */
@@ -43,7 +43,7 @@ final class ValidateCartCouponEventListener
     }
 
     /**
-     * Checks if a Coupon is applicable to a Cart
+     * Checks if a Coupon is applicable to a Cart.
      *
      * @param CartCouponOnApplyEvent $event Event
      */

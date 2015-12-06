@@ -18,12 +18,12 @@
 namespace Elcodi\Component\Shipping;
 
 /**
- * Class ElcodiShippingEvents
+ * Class ElcodiShippingEvents.
  */
 final class ElcodiShippingEvents
 {
     /**
-     * This event is dispatched when all shipping possibilities are required
+     * This event is dispatched when all shipping possibilities are required.
      *
      * event.name : shipping.collect
      * event.class : ShippingCollectionEvent

@@ -18,35 +18,35 @@
 namespace Elcodi\Component\Product\Entity\Interfaces;
 
 /**
- * Interface DimensionableInterface
+ * Interface DimensionableInterface.
  */
 interface DimensionableInterface
 {
     /**
-     * Get Depth
+     * Get Depth.
      *
-     * @return integer Depth
+     * @return int Depth
      */
     public function getDepth();
 
     /**
-     * Get Height
+     * Get Height.
      *
-     * @return integer Height
+     * @return int Height
      */
     public function getHeight();
 
     /**
-     * Get Weight
+     * Get Weight.
      *
-     * @return integer Weight
+     * @return int Weight
      */
     public function getWeight();
 
     /**
-     * Get Width
+     * Get Width.
      *
-     * @return integer Width
+     * @return int Width
      */
     public function getWidth();
 }

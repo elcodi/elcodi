@@ -20,7 +20,7 @@ namespace Elcodi\Component\Newsletter\Exception;
 use Elcodi\Component\Newsletter\Exception\Abstracts\AbstractNewsletterException;
 
 /**
- * Custom NewsletterCannotBeAddedException
+ * Custom NewsletterCannotBeAddedException.
  */
 class NewsletterCannotBeAddedException extends AbstractNewsletterException
 {

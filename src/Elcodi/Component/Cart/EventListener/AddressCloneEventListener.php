@@ -25,7 +25,7 @@ use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Geo\Event\AddressOnCloneEvent;
 
 /**
- * Class AddressCloneEventListener
+ * Class AddressCloneEventListener.
  *
  * These event listener is used when an address is cloned
  *
@@ -50,7 +50,7 @@ final class AddressCloneEventListener
     private $cartObjectManager;
 
     /**
-     * Builds an event listener
+     * Builds an event listener.
      *
      * @param CartRepository $cartRepository
      * @param ObjectManager  $cartObjectManager
@@ -59,20 +59,20 @@ final class AddressCloneEventListener
         CartRepository $cartRepository,
         ObjectManager $cartObjectManager
     ) {
-        $this->cartRepository    = $cartRepository;
+        $this->cartRepository = $cartRepository;
         $this->cartObjectManager = $cartObjectManager;
     }
 
     /**
-     * Updates all the carts with the cloned address
+     * Updates all the carts with the cloned address.
      *
      * @param AddressOnCloneEvent $event Event
      */
     public function updateCarts(AddressOnCloneEvent $event)
     {
         $originalAddress = $event->getOriginalAddress();
-        $clonedAddress   = $event->getClonedAddress();
-        $carts           = $this
+        $clonedAddress = $event->getClonedAddress();
+        $carts = $this
             ->cartRepository
             ->findAllCartsWithAddress($originalAddress);
 
@@ -81,7 +81,7 @@ final class AddressCloneEventListener
              * @var CartInterface $cart
              */
             $deliveryAddress = $cart->getDeliveryAddress();
-            $billingAddress  = $cart->getBillingAddress();
+            $billingAddress = $cart->getBillingAddress();
 
             if (
                 $deliveryAddress instanceof AddressInterface

@@ -21,7 +21,7 @@ use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Page\Entity\Page;
 
 /**
- * Class PageFactory
+ * Class PageFactory.
  *
  * @author Cayetano Soriano <neoshadybeat@gmail.com>
  * @author Jordi Grados <planetzombies@gmail.com>

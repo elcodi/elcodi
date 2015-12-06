@@ -23,7 +23,7 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Payment\Entity\PaymentMethod;
 
 /**
- * Class PaymentCollectionEvent
+ * Class PaymentCollectionEvent.
  */
 final class PaymentCollectionEvent extends Event
 {
@@ -35,7 +35,7 @@ final class PaymentCollectionEvent extends Event
     private $cart;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param CartInterface $cart Cart
      */
@@ -52,7 +52,7 @@ final class PaymentCollectionEvent extends Event
     protected $paymentMethods = [];
 
     /**
-     * Get cart
+     * Get cart.
      *
      * @return CartInterface $cart
      */
@@ -62,7 +62,7 @@ final class PaymentCollectionEvent extends Event
     }
 
     /**
-     * Add payment method
+     * Add payment method.
      *
      * @param PaymentMethod $paymentMethod Payment method
      *
@@ -70,13 +70,13 @@ final class PaymentCollectionEvent extends Event
      */
     public function addPaymentMethod(PaymentMethod $paymentMethod)
     {
-        $this->paymentMethods[] =  $paymentMethod;
+        $this->paymentMethods[] = $paymentMethod;
 
         return $this;
     }
 
     /**
-     * Get payment methods
+     * Get payment methods.
      *
      * @return PaymentMethod[] Payment methods
      */

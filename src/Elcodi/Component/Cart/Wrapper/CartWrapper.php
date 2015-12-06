@@ -25,7 +25,7 @@ use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 use Elcodi\Component\User\Wrapper\CustomerWrapper;
 
 /**
- * Class CartWrapper
+ * Class CartWrapper.
  *
  * Envelopes a Cart object and provides the minimum logic to
  * load it from HTTP Session, from the Customer collection
@@ -46,7 +46,6 @@ use Elcodi\Component\User\Wrapper\CustomerWrapper;
  * * clean()
  *
  * @api
- *
  */
 class CartWrapper implements WrapperInterface
 {
@@ -86,7 +85,7 @@ class CartWrapper implements WrapperInterface
     private $cart;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CartEventDispatcher $cartEventDispatcher Cart EventDispatcher
      * @param CartFactory         $cartFactory         Cart Factory
@@ -107,7 +106,7 @@ class CartWrapper implements WrapperInterface
 
     /**
      * Get loaded object. If object is not loaded yet, then load it and save it
-     * locally. Otherwise, just return the pre-loaded object
+     * locally. Otherwise, just return the pre-loaded object.
      *
      * @return mixed Loaded object
      */
@@ -153,7 +152,7 @@ class CartWrapper implements WrapperInterface
     }
 
     /**
-     * Return customer related cart
+     * Return customer related cart.
      *
      * If customer has any cart related, creates new and returns it
      * Otherwise, retrieves it and saves it to session
@@ -179,7 +178,7 @@ class CartWrapper implements WrapperInterface
     }
 
     /**
-     * Resolves a cart given a customer cart and a session cart
+     * Resolves a cart given a customer cart and a session cart.
      *
      * @param CustomerInterface  $customer         Customer
      * @param CartInterface|null $cartFromCustomer Customer Cart

@@ -21,12 +21,12 @@ use Elcodi\Component\Core\Mailer\Abstracts\AbstractMailer;
 use Elcodi\Component\User\Event\PasswordRememberEvent;
 
 /**
- * Class PasswordRememberMailer
+ * Class PasswordRememberMailer.
  */
 class PasswordRememberMailer extends AbstractMailer
 {
     /**
-     * Send password remember email
+     * Send password remember email.
      *
      * @param PasswordRememberEvent $event Event
      */
@@ -36,7 +36,7 @@ class PasswordRememberMailer extends AbstractMailer
             'Password remember email',
             $event->getUser()->getEmail(),
             [
-                'user'        => $event->getUser(),
+                'user' => $event->getUser(),
                 'rememberUrl' => $event->getRememberUrl(),
             ]
         );

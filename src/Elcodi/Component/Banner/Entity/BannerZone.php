@@ -25,7 +25,7 @@ use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 
 /**
- * BannerZone
+ * BannerZone.
  */
 class BannerZone implements BannerZoneInterface
 {
@@ -74,7 +74,7 @@ class BannerZone implements BannerZoneInterface
     protected $width;
 
     /**
-     * Set banner name
+     * Set banner name.
      *
      * @param string $name Name of the banner
      *
@@ -88,7 +88,7 @@ class BannerZone implements BannerZoneInterface
     }
 
     /**
-     * Get banner name
+     * Get banner name.
      *
      * @return string Name
      */
@@ -98,7 +98,7 @@ class BannerZone implements BannerZoneInterface
     }
 
     /**
-     * Set code
+     * Set code.
      *
      * @param string $code
      *
@@ -112,7 +112,7 @@ class BannerZone implements BannerZoneInterface
     }
 
     /**
-     * Get code
+     * Get code.
      *
      * @return string Code
      */
@@ -122,7 +122,7 @@ class BannerZone implements BannerZoneInterface
     }
 
     /**
-     * Set Language
+     * Set Language.
      *
      * @param LanguageInterface $language Language to set
      *
@@ -136,7 +136,7 @@ class BannerZone implements BannerZoneInterface
     }
 
     /**
-     * Get Language
+     * Get Language.
      *
      * @return LanguageInterface Language
      */
@@ -146,7 +146,7 @@ class BannerZone implements BannerZoneInterface
     }
 
     /**
-     * Add banner into banner zone
+     * Add banner into banner zone.
      *
      * @param BannerInterface $banner Banner
      *
@@ -160,7 +160,7 @@ class BannerZone implements BannerZoneInterface
     }
 
     /**
-     * Remove banner from banner zone
+     * Remove banner from banner zone.
      *
      * @param BannerInterface $banner Banner
      *
@@ -174,7 +174,7 @@ class BannerZone implements BannerZoneInterface
     }
 
     /**
-     * Set banners into banner zone
+     * Set banners into banner zone.
      *
      * @param Collection $banners Banners
      *
@@ -188,7 +188,7 @@ class BannerZone implements BannerZoneInterface
     }
 
     /**
-     * Get banners
+     * Get banners.
      *
      * @return Collection Banners
      */
@@ -198,7 +198,7 @@ class BannerZone implements BannerZoneInterface
     }
 
     /**
-     * Set the BannerZoneInterface height in pixels
+     * Set the BannerZoneInterface height in pixels.
      *
      * @param float $height Height
      *
@@ -212,7 +212,7 @@ class BannerZone implements BannerZoneInterface
     }
 
     /**
-     * Get the BannerZoneInterface height in pixels
+     * Get the BannerZoneInterface height in pixels.
      *
      * @return float Height
      */
@@ -222,7 +222,7 @@ class BannerZone implements BannerZoneInterface
     }
 
     /**
-     * Set the BannerZoneInterface width in pixels
+     * Set the BannerZoneInterface width in pixels.
      *
      * @param float $width Width
      *
@@ -236,7 +236,7 @@ class BannerZone implements BannerZoneInterface
     }
 
     /**
-     * Get the BannerZoneInterface width in pixels
+     * Get the BannerZoneInterface width in pixels.
      *
      * @return float Width
      */
@@ -246,7 +246,7 @@ class BannerZone implements BannerZoneInterface
     }
 
     /**
-     * To string method
+     * To string method.
      *
      * @return string BannerZoneInterface to string
      */

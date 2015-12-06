@@ -23,7 +23,7 @@ use Elcodi\Component\EntityTranslator\Repository\EntityTranslationRepository;
 use Elcodi\Component\EntityTranslator\Services\Interfaces\EntityTranslationProviderInterface;
 
 /**
- * Class CachedEntityTranslationProvider
+ * Class CachedEntityTranslationProvider.
  */
 class CachedEntityTranslationProvider extends AbstractCacheWrapper implements EntityTranslationProviderInterface
 {
@@ -56,7 +56,7 @@ class CachedEntityTranslationProvider extends AbstractCacheWrapper implements En
     protected $translationsToBeFlushed = [];
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param EntityTranslationProviderInterface $entityTranslationProvider   Translation Provider
      * @param EntityTranslationRepository        $entityTranslationRepository Entity Translation Repository
@@ -73,14 +73,14 @@ class CachedEntityTranslationProvider extends AbstractCacheWrapper implements En
     }
 
     /**
-     * Get translation
+     * Get translation.
      *
      * @param string $entityType  Type of entity
      * @param string $entityId    Id of entity
      * @param string $entityField Field of entity
      * @param string $locale      Locale
      *
-     * @return string|boolean Value fetched
+     * @return string|bool Value fetched
      */
     public function getTranslation(
         $entityType,
@@ -121,13 +121,13 @@ class CachedEntityTranslationProvider extends AbstractCacheWrapper implements En
     }
 
     /**
-     * Set translation
+     * Set translation.
      *
-     * @param string         $entityType       Type of entity
-     * @param string         $entityId         Id of entity
-     * @param string         $entityField      Field of entity
-     * @param string|boolean $translationValue Translated value
-     * @param string         $locale           Locale
+     * @param string      $entityType       Type of entity
+     * @param string      $entityId         Id of entity
+     * @param string      $entityField      Field of entity
+     * @param string|bool $translationValue Translated value
+     * @param string      $locale           Locale
      *
      * @return $this Self object
      */
@@ -176,7 +176,7 @@ class CachedEntityTranslationProvider extends AbstractCacheWrapper implements En
     }
 
     /**
-     * Warm-up translations
+     * Warm-up translations.
      *
      * @return $this Self object
      */
@@ -209,7 +209,7 @@ class CachedEntityTranslationProvider extends AbstractCacheWrapper implements En
     }
 
     /**
-     * Get translation
+     * Get translation.
      *
      * @param string $entityType  Type of entity
      * @param string $entityId    Id of entity

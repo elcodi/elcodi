@@ -18,12 +18,12 @@
 namespace Elcodi\Component\Sitemap\Dumper\Interfaces;
 
 /**
- * Interface SitemapDumperInterface
+ * Interface SitemapDumperInterface.
  */
 interface SitemapDumperInterface
 {
     /**
-     * Dumps a sitemap given a path
+     * Dumps a sitemap given a path.
      *
      * @param string $path    Path
      * @param string $sitemap Sitemap

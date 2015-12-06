@@ -21,7 +21,7 @@ use Elcodi\Component\Comment\Event\Abstracts\AbstractCommentEvent;
 use Elcodi\Component\Comment\Services\CommentCache;
 
 /**
- * Class CommentCacheInvalidationEventListener
+ * Class CommentCacheInvalidationEventListener.
  */
 class CommentCacheInvalidationEventListener
 {
@@ -33,7 +33,7 @@ class CommentCacheInvalidationEventListener
     private $commentCache;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param CommentCache $commentCache Comment cache
      */
@@ -43,7 +43,7 @@ class CommentCacheInvalidationEventListener
     }
 
     /**
-     * on Comment change
+     * on Comment change.
      *
      * @param AbstractCommentEvent $event Event
      */

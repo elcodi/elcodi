@@ -20,14 +20,14 @@ namespace Elcodi\Component\Geo\Adapter\LocationPopulator\Interfaces;
 use Elcodi\Component\Geo\Entity\Interfaces\LocationInterface;
 
 /**
- * Interface PopulatorInterface
+ * Interface PopulatorInterface.
  *
  * @author Berny Cantos <be@rny.cc>
  */
 interface LocationPopulatorAdapterInterface
 {
     /**
-     * Populate a country
+     * Populate a country.
      *
      * @param string $countryCode Country Code
      *

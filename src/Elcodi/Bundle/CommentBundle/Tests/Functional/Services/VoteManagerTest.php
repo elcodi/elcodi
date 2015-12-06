@@ -22,14 +22,14 @@ use Elcodi\Component\Comment\Entity\Vote;
 use Elcodi\Component\Comment\Services\VoteManager;
 
 /**
- * Class VoteManagerTest
+ * Class VoteManagerTest.
  */
 class VoteManagerTest extends WebTestCase
 {
     /**
-     * Schema must be loaded in all test cases
+     * Schema must be loaded in all test cases.
      *
-     * @return boolean Load schema
+     * @return bool Load schema
      */
     protected static function loadSchema()
     {
@@ -37,7 +37,7 @@ class VoteManagerTest extends WebTestCase
     }
 
     /**
-     * Test add vote
+     * Test add vote.
      */
     public function testVote()
     {
@@ -59,7 +59,7 @@ class VoteManagerTest extends WebTestCase
         $this->flush($comment);
 
         /**
-         * Customer votes UP
+         * Customer votes UP.
          */
         $voteManager->vote(
             $comment,
@@ -73,7 +73,7 @@ class VoteManagerTest extends WebTestCase
         $this->assertEquals(0, $votePackage->getNbDownVotes());
 
         /**
-         * Customer votes DOWN the same comment
+         * Customer votes DOWN the same comment.
          */
         $voteManager->vote(
             $comment,
@@ -87,7 +87,7 @@ class VoteManagerTest extends WebTestCase
         $this->assertEquals(1, $votePackage->getNbDownVotes());
 
         /**
-         * Customer2 votes UP the comment
+         * Customer2 votes UP the comment.
          */
         $voteManager->vote(
             $comment,
@@ -101,7 +101,7 @@ class VoteManagerTest extends WebTestCase
         $this->assertEquals(1, $votePackage->getNbDownVotes());
 
         /**
-         * Customer removed his vote
+         * Customer removed his vote.
          */
         $voteManager->removeVote(
             $comment,

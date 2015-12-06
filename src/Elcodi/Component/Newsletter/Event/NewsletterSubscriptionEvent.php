@@ -20,7 +20,7 @@ namespace Elcodi\Component\Newsletter\Event;
 use Elcodi\Component\Newsletter\Event\Abstracts\AbstractNewsletterEvent;
 
 /**
- * Event fired when a customer subscribes to newsletter
+ * Event fired when a customer subscribes to newsletter.
  *
  * This event send an email to customer
  */

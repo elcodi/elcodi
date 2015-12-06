@@ -18,7 +18,7 @@
 namespace Elcodi\Component\EntityTranslator\Services;
 
 /**
- * Class EntityTranslationChangesBag
+ * Class EntityTranslationChangesBag.
  */
 class EntityTranslationChangesBag
 {
@@ -30,7 +30,7 @@ class EntityTranslationChangesBag
     protected $changes = [];
 
     /**
-     * Add change
+     * Add change.
      *
      * @param array $change Change
      *
@@ -44,7 +44,7 @@ class EntityTranslationChangesBag
     }
 
     /**
-     * Get changes
+     * Get changes.
      *
      * @return array Entity Translation changes
      */

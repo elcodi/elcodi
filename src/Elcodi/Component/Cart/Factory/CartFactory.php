@@ -23,12 +23,12 @@ use Elcodi\Component\Cart\Entity\Cart;
 use Elcodi\Component\Currency\Factory\Abstracts\AbstractPurchasableFactory;
 
 /**
- * Class CartFactory
+ * Class CartFactory.
  */
 class CartFactory extends AbstractPurchasableFactory
 {
     /**
-     * Creates an instance of Cart
+     * Creates an instance of Cart.
      *
      * Cart factory does not need to known about Currency
      * objects in order to initialize Money objects for

@@ -31,7 +31,7 @@ use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
 use Elcodi\Component\Product\Entity\Traits\ProductPriceTrait;
 
 /**
- * Class Variant
+ * Class Variant.
  *
  * A Product variant is a specific combination of finite options
  * for a given Product. The multiplicity of attribute/options define
@@ -59,7 +59,7 @@ class Variant implements VariantInterface
     protected $sku;
 
     /**
-     * @var integer
+     * @var int
      *
      * Stock available
      */
@@ -80,7 +80,7 @@ class Variant implements VariantInterface
     protected $options;
 
     /**
-     * Gets the variant SKU
+     * Gets the variant SKU.
      *
      * @return string
      */
@@ -90,7 +90,7 @@ class Variant implements VariantInterface
     }
 
     /**
-     * Sets the variant SKU
+     * Sets the variant SKU.
      *
      * @param string $sku
      *
@@ -104,9 +104,9 @@ class Variant implements VariantInterface
     }
 
     /**
-     * Gets the variant stock
+     * Gets the variant stock.
      *
-     * @return integer Stock
+     * @return int Stock
      */
     public function getStock()
     {
@@ -114,9 +114,9 @@ class Variant implements VariantInterface
     }
 
     /**
-     * Sets the variant stock
+     * Sets the variant stock.
      *
-     * @param integer $stock
+     * @param int $stock
      *
      * @return $this Self object
      */
@@ -128,7 +128,7 @@ class Variant implements VariantInterface
     }
 
     /**
-     * Gets this variant option values
+     * Gets this variant option values.
      *
      * @return Collection
      */
@@ -138,7 +138,7 @@ class Variant implements VariantInterface
     }
 
     /**
-     * Sets this variant option values
+     * Sets this variant option values.
      *
      * @param Collection $options
      *
@@ -175,7 +175,7 @@ class Variant implements VariantInterface
     }
 
     /**
-     * Adds an option to this variant
+     * Adds an option to this variant.
      *
      * Passed option Attribute is also added to the attribute collection
      * of the parent Product.
@@ -205,7 +205,7 @@ class Variant implements VariantInterface
     }
 
     /**
-     * Removes an option from this variant
+     * Removes an option from this variant.
      *
      * @param ValueInterface $option
      *
@@ -219,7 +219,7 @@ class Variant implements VariantInterface
     }
 
     /**
-     * Gets parent product
+     * Gets parent product.
      *
      * @return ProductInterface
      */
@@ -229,7 +229,7 @@ class Variant implements VariantInterface
     }
 
     /**
-     * Sets parent product
+     * Sets parent product.
      *
      * @param ProductInterface $product
      *

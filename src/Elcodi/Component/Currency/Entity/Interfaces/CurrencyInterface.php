@@ -21,7 +21,7 @@ use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 
 /**
- * Interface CurrencyInterface
+ * Interface CurrencyInterface.
  */
 interface CurrencyInterface
     extends
@@ -29,14 +29,14 @@ interface CurrencyInterface
     EnabledInterface
 {
     /**
-     * Get currency iso
+     * Get currency iso.
      *
      * @return string
      */
     public function getIso();
 
     /**
-     * Set currency iso
+     * Set currency iso.
      *
      * @param string $iso The currency iso
      *
@@ -45,7 +45,7 @@ interface CurrencyInterface
     public function setIso($iso);
 
     /**
-     * Sets Name
+     * Sets Name.
      *
      * @param string $name Name
      *
@@ -54,21 +54,21 @@ interface CurrencyInterface
     public function setName($name);
 
     /**
-     * Get Name
+     * Get Name.
      *
      * @return string Name
      */
     public function getName();
 
     /**
-     * Get currency symbol
+     * Get currency symbol.
      *
      * @return string
      */
     public function getSymbol();
 
     /**
-     * Set currency symbol
+     * Set currency symbol.
      *
      * @param string $symbol The currency symbol
      *

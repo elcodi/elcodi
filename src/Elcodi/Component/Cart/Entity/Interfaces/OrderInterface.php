@@ -29,7 +29,7 @@ use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
- * Interface OrderInterface
+ * Interface OrderInterface.
  */
 interface OrderInterface
     extends
@@ -38,7 +38,7 @@ interface OrderInterface
     IdentifiableInterface
 {
     /**
-     * Sets Customer
+     * Sets Customer.
      *
      * @param CustomerInterface $customer Customer
      *
@@ -47,14 +47,14 @@ interface OrderInterface
     public function setCustomer(CustomerInterface $customer);
 
     /**
-     * Get Customer
+     * Get Customer.
      *
      * @return CustomerInterface Customer
      */
     public function getCustomer();
 
     /**
-     * Set cart
+     * Set cart.
      *
      * @param CartInterface $cart Cart
      *
@@ -63,14 +63,14 @@ interface OrderInterface
     public function setCart(CartInterface $cart);
 
     /**
-     * Get cart
+     * Get cart.
      *
      * @return CartInterface Cart
      */
     public function getCart();
 
     /**
-     * Set order Lines
+     * Set order Lines.
      *
      * @param Collection $orderLines Order lines
      *
@@ -79,14 +79,14 @@ interface OrderInterface
     public function setOrderLines(Collection $orderLines);
 
     /**
-     * Get order lines
+     * Get order lines.
      *
      * @return Collection Order lines
      */
     public function getOrderLines();
 
     /**
-     * Add order line
+     * Add order line.
      *
      * @param OrderLineInterface $orderLine Order line
      *
@@ -95,7 +95,7 @@ interface OrderInterface
     public function addOrderLine(OrderLineInterface $orderLine);
 
     /**
-     * Remove order line
+     * Remove order line.
      *
      * @param OrderLineInterface $orderLine Order line
      *
@@ -104,30 +104,30 @@ interface OrderInterface
     public function removeOrderLine(OrderLineInterface $orderLine);
 
     /**
-     * Set quantity
+     * Set quantity.
      *
-     * @param integer $quantity Quantity
+     * @param int $quantity Quantity
      *
      * @return $this Self object
      */
     public function setQuantity($quantity);
 
     /**
-     * Get quantity
+     * Get quantity.
      *
-     * @return integer Quantity
+     * @return int Quantity
      */
     public function getQuantity();
 
     /**
-     * Gets the Coupon amount with tax
+     * Gets the Coupon amount with tax.
      *
      * @return MoneyInterface
      */
     public function getCouponAmount();
 
     /**
-     * Sets the Coupon amount with tax
+     * Sets the Coupon amount with tax.
      *
      * @param MoneyInterface $couponAmount coupon amount
      *
@@ -136,14 +136,14 @@ interface OrderInterface
     public function setCouponAmount(MoneyInterface $couponAmount);
 
     /**
-     * Gets the shipping amount
+     * Gets the shipping amount.
      *
      * @return MoneyInterface Shipping amount with tax
      */
     public function getShippingAmount();
 
     /**
-     * Sets the shipping amount
+     * Sets the shipping amount.
      *
      * @param MoneyInterface $shippingAmount shipping amount with tax
      *
@@ -152,14 +152,14 @@ interface OrderInterface
     public function setShippingAmount(MoneyInterface $shippingAmount);
 
     /**
-     * Get ShippingMethod
+     * Get ShippingMethod.
      *
      * @return ShippingMethod ShippingMethod
      */
     public function getShippingMethod();
 
     /**
-     * Sets ShippingMethod
+     * Sets ShippingMethod.
      *
      * @param ShippingMethod $shippingMethod ShippingMethod
      *
@@ -168,14 +168,14 @@ interface OrderInterface
     public function setShippingMethod(ShippingMethod $shippingMethod);
 
     /**
-     * Get ShippingMethodExtra
+     * Get ShippingMethodExtra.
      *
      * @return array ShippingMethodExtra
      */
     public function getShippingMethodExtra();
 
     /**
-     * Sets ShippingMethodExtra
+     * Sets ShippingMethodExtra.
      *
      * @param array $shippingMethodExtra ShippingMethodExtra
      *
@@ -184,14 +184,14 @@ interface OrderInterface
     public function setShippingMethodExtra(array $shippingMethodExtra);
 
     /**
-     * Get PaymentMethod
+     * Get PaymentMethod.
      *
      * @return PaymentMethod PaymentMethod
      */
     public function getPaymentMethod();
 
     /**
-     * Sets PaymentMethod
+     * Sets PaymentMethod.
      *
      * @param PaymentMethod $paymentMethod PaymentMethod
      *
@@ -200,14 +200,14 @@ interface OrderInterface
     public function setPaymentMethod(PaymentMethod $paymentMethod);
 
     /**
-     * Get PaymentMethodExtra
+     * Get PaymentMethodExtra.
      *
      * @return array PaymentMethodExtra
      */
     public function getPaymentMethodExtra();
 
     /**
-     * Sets PaymentMethodExtra
+     * Sets PaymentMethodExtra.
      *
      * @param array $paymentMethodExtra PaymentMethodExtra
      *
@@ -216,50 +216,50 @@ interface OrderInterface
     public function setPaymentMethodExtra(array $paymentMethodExtra);
 
     /**
-     * Set the height
+     * Set the height.
      *
-     * @param integer $height Height
+     * @param int $height Height
      *
      * @return $this Self object
      */
     public function setHeight($height);
 
     /**
-     * Set the width
+     * Set the width.
      *
-     * @param integer $width Width
+     * @param int $width Width
      *
      * @return $this Self object
      */
     public function setWidth($width);
 
     /**
-     * Set the depth
+     * Set the depth.
      *
-     * @param integer $depth Depth
+     * @param int $depth Depth
      *
      * @return $this Self object
      */
     public function setDepth($depth);
 
     /**
-     * Set the weight
+     * Set the weight.
      *
-     * @param integer $weight Weight
+     * @param int $weight Weight
      *
      * @return $this Self object
      */
     public function setWeight($weight);
 
     /**
-     * Get DeliveryAddress
+     * Get DeliveryAddress.
      *
      * @return AddressInterface DeliveryAddress
      */
     public function getDeliveryAddress();
 
     /**
-     * Sets DeliveryAddress
+     * Sets DeliveryAddress.
      *
      * @param AddressInterface $deliveryAddress DeliveryAddress
      *
@@ -268,14 +268,14 @@ interface OrderInterface
     public function setDeliveryAddress(AddressInterface $deliveryAddress);
 
     /**
-     * Get PaymentStateLineStack
+     * Get PaymentStateLineStack.
      *
      * @return StateLineStack PaymentStateLineStack
      */
     public function getPaymentStateLineStack();
 
     /**
-     * Sets PaymentStateLineStack
+     * Sets PaymentStateLineStack.
      *
      * @param StateLineStack $paymentStateLineStack PaymentStateLineStack
      *
@@ -286,14 +286,14 @@ interface OrderInterface
     );
 
     /**
-     * Get ShippingStateLineStack
+     * Get ShippingStateLineStack.
      *
      * @return StateLineStack ShippingStateLineStack
      */
     public function getShippingStateLineStack();
 
     /**
-     * Sets ShippingStateLineStack
+     * Sets ShippingStateLineStack.
      *
      * @param StateLineStack $shippingStateLineStack ShippingStateLineStack
      *
@@ -304,14 +304,14 @@ interface OrderInterface
     );
 
     /**
-     * Get BillingAddress
+     * Get BillingAddress.
      *
      * @return AddressInterface BillingAddress
      */
     public function getBillingAddress();
 
     /**
-     * Sets BillingAddress
+     * Sets BillingAddress.
      *
      * @param AddressInterface $billingAddress BillingAddress
      *

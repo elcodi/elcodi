@@ -24,12 +24,12 @@ use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 use Elcodi\Component\User\Repository\Interfaces\UserEmaileableInterface;
 
 /**
- * Class CustomerRepository
+ * Class CustomerRepository.
  */
 class CustomerRepository extends EntityRepository implements UserEmaileableInterface
 {
     /**
-     * Find one Entity given an email
+     * Find one Entity given an email.
      *
      * @param string $email Email
      *
@@ -48,12 +48,12 @@ class CustomerRepository extends EntityRepository implements UserEmaileableInter
     }
 
     /**
-     * Find a user address by it's id
+     * Find a user address by it's id.
      *
-     * @param integer $customerId The customer Id
-     * @param integer $addressId  The address Id
+     * @param int $customerId The customer Id
+     * @param int $addressId  The address Id
      *
-     * @return boolean
+     * @return bool
      */
     public function findAddress($customerId, $addressId)
     {

@@ -24,7 +24,7 @@ use Elcodi\Component\Geo\Formatter\AddressFormatter;
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
- * Class AddressManagerTest
+ * Class AddressManagerTest.
  */
 class AddressFormatterTest extends PHPUnit_Framework_TestCase
 {
@@ -43,7 +43,7 @@ class AddressFormatterTest extends PHPUnit_Framework_TestCase
     protected $locationProvider;
 
     /**
-     * Set ups the test to be executed
+     * Set ups the test to be executed.
      */
     public function setUp()
     {
@@ -59,7 +59,7 @@ class AddressFormatterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test the toArray method
+     * Test the toArray method.
      */
     public function testFormatToArray()
     {
@@ -94,21 +94,21 @@ class AddressFormatterTest extends PHPUnit_Framework_TestCase
         $expectedFullAddress = 'C/ engonga 43, Estudis de TV3, Catalunya 06580';
 
         $expectedResponse = [
-            'id'               => '42',
-            'name'             => 'My home',
-            'recipientName'    => 'Marc',
+            'id' => '42',
+            'name' => 'My home',
+            'recipientName' => 'Marc',
             'recipientSurname' => 'Robirosa',
-            'address'          => 'C/ engonga',
-            'addressMore'      => '43',
-            'postalCode'       => '06580',
-            'phone'            => '958652654',
-            'mobile'           => '647852365',
-            'comment'          => 'Aixo en el basquetbol es veu molt clar',
-            'city'             => [
-                'city'    => 'Estudis de TV3',
+            'address' => 'C/ engonga',
+            'addressMore' => '43',
+            'postalCode' => '06580',
+            'phone' => '958652654',
+            'mobile' => '647852365',
+            'comment' => 'Aixo en el basquetbol es veu molt clar',
+            'city' => [
+                'city' => 'Estudis de TV3',
                 'country' => 'Catalunya',
             ],
-            'fullAddress'      => $expectedFullAddress,
+            'fullAddress' => $expectedFullAddress,
         ];
 
         $this

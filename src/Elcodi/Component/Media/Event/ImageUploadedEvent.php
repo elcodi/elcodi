@@ -22,7 +22,7 @@ use Symfony\Component\EventDispatcher\Event;
 use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 
 /**
- * Class ImageUploadedEvent
+ * Class ImageUploadedEvent.
  */
 final class ImageUploadedEvent extends Event
 {
@@ -34,7 +34,7 @@ final class ImageUploadedEvent extends Event
     private $image;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param ImageInterface $image Image
      */
@@ -44,7 +44,7 @@ final class ImageUploadedEvent extends Event
     }
 
     /**
-     * Get image
+     * Get image.
      *
      * @return ImageInterface Image
      */

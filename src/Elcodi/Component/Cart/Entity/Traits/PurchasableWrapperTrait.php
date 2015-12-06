@@ -22,7 +22,7 @@ use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
 
 /**
- * Trait PurchasableWrapperTrait
+ * Trait PurchasableWrapperTrait.
  */
 trait PurchasableWrapperTrait
 {
@@ -41,7 +41,7 @@ trait PurchasableWrapperTrait
     protected $variant;
 
     /**
-     * @var integer
+     * @var int
      *
      * Quantity
      */
@@ -73,7 +73,7 @@ trait PurchasableWrapperTrait
     }
 
     /**
-     * Gets the purchasable object
+     * Gets the purchasable object.
      *
      * @return PurchasableInterface
      */
@@ -85,7 +85,7 @@ trait PurchasableWrapperTrait
     }
 
     /**
-     * Sets the product
+     * Sets the product.
      *
      * @param ProductInterface $product Product
      *
@@ -99,7 +99,7 @@ trait PurchasableWrapperTrait
     }
 
     /**
-     * Gets the product
+     * Gets the product.
      *
      * @return ProductInterface product attached to this cart line
      */
@@ -109,7 +109,7 @@ trait PurchasableWrapperTrait
     }
 
     /**
-     * Sets the product variant
+     * Sets the product variant.
      *
      * @param VariantInterface $variant Variant
      *
@@ -123,7 +123,7 @@ trait PurchasableWrapperTrait
     }
 
     /**
-     * Returns the product variant
+     * Returns the product variant.
      *
      * @return VariantInterface Variant
      */
@@ -133,9 +133,9 @@ trait PurchasableWrapperTrait
     }
 
     /**
-     * Sets quantity
+     * Sets quantity.
      *
-     * @param integer $quantity Quantity
+     * @param int $quantity Quantity
      *
      * @return $this Self object
      */
@@ -147,9 +147,9 @@ trait PurchasableWrapperTrait
     }
 
     /**
-     * Gets quantity
+     * Gets quantity.
      *
-     * @return integer Quantity
+     * @return int Quantity
      */
     public function getQuantity()
     {

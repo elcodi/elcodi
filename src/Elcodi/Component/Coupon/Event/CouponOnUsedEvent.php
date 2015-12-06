@@ -20,7 +20,7 @@ namespace Elcodi\Component\Coupon\Event;
 use Elcodi\Component\Coupon\Event\Abstracts\CouponEvent;
 
 /**
- * Class CouponOnUsedEvent
+ * Class CouponOnUsedEvent.
  */
 final class CouponOnUsedEvent extends CouponEvent
 {

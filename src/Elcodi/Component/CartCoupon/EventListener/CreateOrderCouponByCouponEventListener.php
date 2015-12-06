@@ -21,7 +21,7 @@ use Elcodi\Component\CartCoupon\Event\OrderCouponOnApplyEvent;
 use Elcodi\Component\CartCoupon\Transformer\CouponToOrderCouponTransformer;
 
 /**
- * Class CreateOrderCouponByCouponEventListener
+ * Class CreateOrderCouponByCouponEventListener.
  */
 final class CreateOrderCouponByCouponEventListener
 {
@@ -33,7 +33,7 @@ final class CreateOrderCouponByCouponEventListener
     private $couponToOrderCouponTransformer;
 
     /**
-     * construct method
+     * construct method.
      *
      * @param CouponToOrderCouponTransformer $couponToOrderCouponTransformer Coupon to OrderCoupon transformer
      */

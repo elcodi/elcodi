@@ -18,7 +18,7 @@
 namespace Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces;
 
 /**
- * Class EntitiesOverridableExtensionInterface
+ * Class EntitiesOverridableExtensionInterface.
  */
 interface EntitiesOverridableExtensionInterface
 {

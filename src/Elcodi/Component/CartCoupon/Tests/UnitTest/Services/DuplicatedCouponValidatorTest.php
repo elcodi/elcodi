@@ -24,12 +24,12 @@ use Elcodi\Component\CartCoupon\Exception\CouponAlreadyAppliedException;
 use Elcodi\Component\CartCoupon\Services\DuplicatedCouponValidator;
 
 /**
- * Class DuplicatedCouponValidatorTest
+ * Class DuplicatedCouponValidatorTest.
  */
 class DuplicatedCouponValidatorTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Test checkDuplicates with duplication
+     * Test checkDuplicates with duplication.
      *
      * @covers checkDuplicates
      * @dataProvider dataCheckDuplicates
@@ -49,7 +49,7 @@ class DuplicatedCouponValidatorTest extends PHPUnit_Framework_TestCase
 
         $cartCouponRepository
             ->findOneBy([
-                'cart'   => $cart,
+                'cart' => $cart,
                 'coupon' => $coupon,
             ])
             ->willReturn($cartCoupon);
@@ -72,7 +72,7 @@ class DuplicatedCouponValidatorTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Data for testCheckDuplicates
+     * Data for testCheckDuplicates.
      */
     public function dataCheckDuplicates()
     {

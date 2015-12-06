@@ -20,12 +20,12 @@ namespace Elcodi\Bundle\BannerBundle\Tests\Functional\Services;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Tests BannerManager class
+ * Tests BannerManager class.
  */
 class BannerManagerTest extends WebTestCase
 {
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -38,7 +38,7 @@ class BannerManagerTest extends WebTestCase
     }
 
     /**
-     * Load banners given a banner_zone with language
+     * Load banners given a banner_zone with language.
      */
     public function testGetBannersFromBannerZoneCode()
     {
@@ -57,7 +57,7 @@ class BannerManagerTest extends WebTestCase
     }
 
     /**
-     * Load banners given a banner_zone with language
+     * Load banners given a banner_zone with language.
      */
     public function testGetBannersFromBannerZoneCodeNoLanguage()
     {

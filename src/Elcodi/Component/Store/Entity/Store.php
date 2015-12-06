@@ -27,7 +27,7 @@ use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 use Elcodi\Component\Store\Entity\Interfaces\StoreInterface;
 
 /**
- * Class Store
+ * Class Store.
  */
 class Store implements StoreInterface
 {
@@ -57,7 +57,7 @@ class Store implements StoreInterface
     protected $email;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * Is company
      */
@@ -85,7 +85,7 @@ class Store implements StoreInterface
     protected $template;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * Use stock
      */
@@ -155,7 +155,7 @@ class Store implements StoreInterface
     protected $backgroundImage;
 
     /**
-     * Get Name
+     * Get Name.
      *
      * @return string Name
      */
@@ -165,7 +165,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Sets Name
+     * Sets Name.
      *
      * @param string $name Name
      *
@@ -179,7 +179,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Get Leitmotiv
+     * Get Leitmotiv.
      *
      * @return string Leitmotiv
      */
@@ -189,7 +189,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Sets Leitmotiv
+     * Sets Leitmotiv.
      *
      * @param string $leitmotiv Leitmotiv
      *
@@ -203,7 +203,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Get Email
+     * Get Email.
      *
      * @return string Email
      */
@@ -213,7 +213,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Sets Email
+     * Sets Email.
      *
      * @param string $email Email
      *
@@ -227,9 +227,9 @@ class Store implements StoreInterface
     }
 
     /**
-     * Get IsCompany
+     * Get IsCompany.
      *
-     * @return boolean IsCompany
+     * @return bool IsCompany
      */
     public function getIsCompany()
     {
@@ -237,9 +237,9 @@ class Store implements StoreInterface
     }
 
     /**
-     * Sets IsCompany
+     * Sets IsCompany.
      *
-     * @param boolean $isCompany IsCompany
+     * @param bool $isCompany IsCompany
      *
      * @return $this Self object
      */
@@ -251,7 +251,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Get Cif
+     * Get Cif.
      *
      * @return string Cif
      */
@@ -261,7 +261,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Sets Cif
+     * Sets Cif.
      *
      * @param string $cif Cif
      *
@@ -275,7 +275,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Get Tracker
+     * Get Tracker.
      *
      * @return string Tracker
      */
@@ -285,7 +285,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Sets Tracker
+     * Sets Tracker.
      *
      * @param string $tracker Tracker
      *
@@ -299,7 +299,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Get Template
+     * Get Template.
      *
      * @return string Template
      */
@@ -309,7 +309,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Sets Template
+     * Sets Template.
      *
      * @param string $template Template
      *
@@ -323,9 +323,9 @@ class Store implements StoreInterface
     }
 
     /**
-     * Get UseStock
+     * Get UseStock.
      *
-     * @return boolean UseStock
+     * @return bool UseStock
      */
     public function getUseStock()
     {
@@ -333,9 +333,9 @@ class Store implements StoreInterface
     }
 
     /**
-     * Sets UseStock
+     * Sets UseStock.
      *
-     * @param boolean $useStock UseStock
+     * @param bool $useStock UseStock
      *
      * @return $this Self object
      */
@@ -347,7 +347,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Get Address
+     * Get Address.
      *
      * @return AddressInterface Address
      */
@@ -357,7 +357,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Sets Address
+     * Sets Address.
      *
      * @param AddressInterface $address Address
      *
@@ -371,7 +371,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Get DefaultLanguage
+     * Get DefaultLanguage.
      *
      * @return LanguageInterface DefaultLanguage
      */
@@ -381,7 +381,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Sets DefaultLanguage
+     * Sets DefaultLanguage.
      *
      * @param LanguageInterface $defaultLanguage DefaultLanguage
      *
@@ -395,7 +395,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Get DefaultCurrency
+     * Get DefaultCurrency.
      *
      * @return CurrencyInterface DefaultCurrency
      */
@@ -405,7 +405,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Sets DefaultCurrency
+     * Sets DefaultCurrency.
      *
      * @param CurrencyInterface $defaultCurrency DefaultCurrency
      *
@@ -419,7 +419,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Get RoutingStrategy
+     * Get RoutingStrategy.
      *
      * @return string RoutingStrategy
      */
@@ -429,7 +429,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Sets RoutingStrategy
+     * Sets RoutingStrategy.
      *
      * @param string $routingStrategy RoutingStrategy
      *
@@ -443,7 +443,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Get Logo
+     * Get Logo.
      *
      * @return ImageInterface Logo
      */
@@ -453,7 +453,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Sets Logo
+     * Sets Logo.
      *
      * @param ImageInterface $logo Logo
      *
@@ -467,7 +467,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Get SecondaryLogo
+     * Get SecondaryLogo.
      *
      * @return ImageInterface SecondaryLogo
      */
@@ -477,7 +477,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Sets SecondaryLogo
+     * Sets SecondaryLogo.
      *
      * @param ImageInterface $secondaryLogo SecondaryLogo
      *
@@ -491,7 +491,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Get MobileLogo
+     * Get MobileLogo.
      *
      * @return ImageInterface MobileLogo
      */
@@ -501,7 +501,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Sets MobileLogo
+     * Sets MobileLogo.
      *
      * @param ImageInterface $mobileLogo MobileLogo
      *
@@ -515,7 +515,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Get HeaderImage
+     * Get HeaderImage.
      *
      * @return ImageInterface HeaderImage
      */
@@ -525,7 +525,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Sets HeaderImage
+     * Sets HeaderImage.
      *
      * @param ImageInterface $headerImage HeaderImage
      *
@@ -539,7 +539,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Get BackgroundImage
+     * Get BackgroundImage.
      *
      * @return ImageInterface BackgroundImage
      */
@@ -549,7 +549,7 @@ class Store implements StoreInterface
     }
 
     /**
-     * Sets BackgroundImage
+     * Sets BackgroundImage.
      *
      * @param ImageInterface $backgroundImage BackgroundImage
      *

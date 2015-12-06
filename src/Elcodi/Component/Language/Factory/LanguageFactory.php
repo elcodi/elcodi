@@ -21,7 +21,7 @@ use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 
 /**
- * Class LanguageFactory
+ * Class LanguageFactory.
  */
 class LanguageFactory extends AbstractFactory
 {

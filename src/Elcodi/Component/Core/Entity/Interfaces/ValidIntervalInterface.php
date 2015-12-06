@@ -20,12 +20,12 @@ namespace Elcodi\Component\Core\Entity\Interfaces;
 use DateTime;
 
 /**
- * Interface ValidIntervalInterface
+ * Interface ValidIntervalInterface.
  */
 interface ValidIntervalInterface
 {
     /**
-     * Set valid from
+     * Set valid from.
      *
      * @param DateTime $validFrom Valid from
      *
@@ -34,14 +34,14 @@ interface ValidIntervalInterface
     public function setValidFrom(DateTime $validFrom);
 
     /**
-     * Get valid from
+     * Get valid from.
      *
      * @return DateTime
      */
     public function getValidFrom();
 
     /**
-     * Set valid to
+     * Set valid to.
      *
      * @param DateTime $validTo Valid to
      *
@@ -50,7 +50,7 @@ interface ValidIntervalInterface
     public function setValidTo(DateTime $validTo = null);
 
     /**
-     * Get valid to
+     * Get valid to.
      *
      * @return DateTime Valid to
      */

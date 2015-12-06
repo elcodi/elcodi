@@ -27,7 +27,7 @@ use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Repository\CurrencyRepository;
 
 /**
- * Class MoneyProvider
+ * Class MoneyProvider.
  *
  * Extends ExpressionLanguage to create money objects
  */
@@ -48,7 +48,7 @@ class MoneyProvider implements ExpressionFunctionProviderInterface
     private $currencyRepository;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param WrapperInterface   $defaultCurrencyWrapper Default Currency wrapper
      * @param CurrencyRepository $currencyRepository     Currency Repository
@@ -62,7 +62,7 @@ class MoneyProvider implements ExpressionFunctionProviderInterface
     }
 
     /**
-     * Return functions
+     * Return functions.
      *
      * @return ExpressionFunction[] An array of Function instances
      */
@@ -70,7 +70,7 @@ class MoneyProvider implements ExpressionFunctionProviderInterface
     {
         return [
             /**
-             * Evaluate a rule by name
+             * Evaluate a rule by name.
              */
             new ExpressionFunction(
                 'money',

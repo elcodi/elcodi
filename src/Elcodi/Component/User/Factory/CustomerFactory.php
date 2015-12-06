@@ -25,7 +25,7 @@ use Elcodi\Component\User\ElcodiUserProperties;
 use Elcodi\Component\User\Entity\Customer;
 
 /**
- * Class CustomerFactory
+ * Class CustomerFactory.
  */
 class CustomerFactory extends AbstractFactory
 {
@@ -37,7 +37,7 @@ class CustomerFactory extends AbstractFactory
     private $generator;
 
     /**
-     * Token generator
+     * Token generator.
      *
      * @param GeneratorInterface $generator Token generator
      */

@@ -22,7 +22,7 @@ use Elcodi\Component\Currency\Repository\CurrencyExchangeRateRepository;
 use Elcodi\Component\Currency\Repository\CurrencyRepository;
 
 /**
- * Class CurrencyManager
+ * Class CurrencyManager.
  */
 class CurrencyManager
 {
@@ -55,7 +55,7 @@ class CurrencyManager
     private $exchangeCurrencyIso;
 
     /**
-     * Build method
+     * Build method.
      *
      * @param CurrencyRepository             $currencyRepository             Currency Repository
      * @param CurrencyExchangeRateRepository $currencyExchangeRateRepository Repo for exch. rates
@@ -72,7 +72,7 @@ class CurrencyManager
     }
 
     /**
-     * Given a the currency base, returns a list of all exchange rates
+     * Given a the currency base, returns a list of all exchange rates.
      *
      * @return array Exchange rate list
      */
@@ -104,7 +104,7 @@ class CurrencyManager
             $targetCurrencyIso = $targetCurrency->getIso();
 
             $this->exchangeRateList[$targetCurrencyIso] = [
-                'rate'     => $exchangeRate->getExchangeRate(),
+                'rate' => $exchangeRate->getExchangeRate(),
                 'currency' => $targetCurrency,
             ];
         }

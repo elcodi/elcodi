@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Plugin\EventDispatcher\Interfaces;
 
 /**
- * Interface HookSystemEventDispatcherInterface
+ * Interface HookSystemEventDispatcherInterface.
  *
  * @author Berny Cantos <be@rny.cc>
  */

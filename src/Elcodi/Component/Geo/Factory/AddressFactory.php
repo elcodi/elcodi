@@ -21,7 +21,7 @@ use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Geo\Entity\Address;
 
 /**
- * Class AddressFactory
+ * Class AddressFactory.
  */
 class AddressFactory extends AbstractFactory
 {

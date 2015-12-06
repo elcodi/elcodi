@@ -21,19 +21,19 @@ use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
- * Interface TaxInterface
+ * Interface TaxInterface.
  */
 interface TaxInterface extends IdentifiableInterface, EnabledInterface
 {
     /**
-     * Gets Tax name
+     * Gets Tax name.
      *
      * @return string
      */
     public function getName();
 
     /**
-     * Sets tax name
+     * Sets tax name.
      *
      * @param string $name
      *
@@ -42,14 +42,14 @@ interface TaxInterface extends IdentifiableInterface, EnabledInterface
     public function setName($name);
 
     /**
-     * Get Tax description
+     * Get Tax description.
      *
      * @return string
      */
     public function getDescription();
 
     /**
-     * Sets Tax description
+     * Sets Tax description.
      *
      * @param string $description
      *
@@ -58,14 +58,14 @@ interface TaxInterface extends IdentifiableInterface, EnabledInterface
     public function setDescription($description);
 
     /**
-     * Sets Tax value in percentage
+     * Sets Tax value in percentage.
      *
      * @return float
      */
     public function getValue();
 
     /**
-     * Gets Tax value in percentage
+     * Gets Tax value in percentage.
      *
      * @param float $value
      *

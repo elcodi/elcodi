@@ -23,26 +23,26 @@ use Elcodi\Component\StateTransitionMachine\Exception\TransitionNotAccessibleExc
 use Elcodi\Component\StateTransitionMachine\Exception\TransitionNotValidException;
 
 /**
- * Interface MachineInterface
+ * Interface MachineInterface.
  */
 interface MachineInterface
 {
     /**
-     * Get machine id
+     * Get machine id.
      *
      * @return string Machine identifier
      */
     public function getId();
 
     /**
-     * Get point of entry
+     * Get point of entry.
      *
      * @return string Point of entry
      */
     public function getPointOfEntry();
 
     /**
-     * Applies a transition from a state
+     * Applies a transition from a state.
      *
      * @param string $startStateName Start state name
      * @param string $transitionName Transition name
@@ -58,7 +58,7 @@ interface MachineInterface
     );
 
     /**
-     * Reaches a state given a start state
+     * Reaches a state given a start state.
      *
      * @param string $startStateName Start state name
      * @param string $finalStateName Final state name

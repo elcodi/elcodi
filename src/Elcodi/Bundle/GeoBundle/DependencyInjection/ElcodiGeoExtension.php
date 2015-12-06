@@ -24,7 +24,7 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * This is the class that loads and manages your bundle configuration
+ * This is the class that loads and manages your bundle configuration.
  */
 class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
@@ -36,7 +36,7 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
     const EXTENSION_NAME = 'elcodi_geo';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -63,7 +63,7 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -78,22 +78,22 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.address.class"         => $config['mapping']['address']['class'],
-            "elcodi.entity.address.mapping_file"  => $config['mapping']['address']['mapping_file'],
-            "elcodi.entity.address.manager"       => $config['mapping']['address']['manager'],
-            "elcodi.entity.address.enabled"       => $config['mapping']['address']['enabled'],
+            'elcodi.entity.address.class' => $config['mapping']['address']['class'],
+            'elcodi.entity.address.mapping_file' => $config['mapping']['address']['mapping_file'],
+            'elcodi.entity.address.manager' => $config['mapping']['address']['manager'],
+            'elcodi.entity.address.enabled' => $config['mapping']['address']['enabled'],
 
-            "elcodi.entity.location.class"        => $config['mapping']['location']['class'],
-            "elcodi.entity.location.mapping_file" => $config['mapping']['location']['mapping_file'],
-            "elcodi.entity.location.manager"      => $config['mapping']['location']['manager'],
-            "elcodi.entity.location.enabled"      => $config['mapping']['location']['enabled'],
+            'elcodi.entity.location.class' => $config['mapping']['location']['class'],
+            'elcodi.entity.location.mapping_file' => $config['mapping']['location']['mapping_file'],
+            'elcodi.entity.location.manager' => $config['mapping']['location']['manager'],
+            'elcodi.entity.location.enabled' => $config['mapping']['location']['enabled'],
 
-            "elcodi.location_api_host"            => $config['location']['api_host'],
+            'elcodi.location_api_host' => $config['location']['api_host'],
         ];
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * @param array $config Configuration
      *
@@ -129,13 +129,13 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\Geo\Entity\Interfaces\AddressInterface'  => 'elcodi.entity.address.class',
+            'Elcodi\Component\Geo\Entity\Interfaces\AddressInterface' => 'elcodi.entity.address.class',
             'Elcodi\Component\Geo\Entity\Interfaces\LocationInterface' => 'elcodi.entity.location.class',
         ];
     }
 
     /**
-     * Post load implementation
+     * Post load implementation.
      *
      * @param array            $config    Parsed configuration
      * @param ContainerBuilder $container A ContainerBuilder instance
@@ -155,7 +155,7 @@ class ElcodiGeoExtension extends AbstractExtension implements EntitiesOverridabl
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */

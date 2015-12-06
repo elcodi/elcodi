@@ -20,12 +20,12 @@ namespace Elcodi\Component\Core\Entity\Interfaces;
 use DateTime;
 
 /**
- * Interface DateTimeInterface
+ * Interface DateTimeInterface.
  */
 interface DateTimeInterface
 {
     /**
-     * Set locally created at value
+     * Set locally created at value.
      *
      * @param DateTime $createdAt Created at value
      *
@@ -34,14 +34,14 @@ interface DateTimeInterface
     public function setCreatedAt(DateTime $createdAt);
 
     /**
-     * Return created_at value
+     * Return created_at value.
      *
      * @return DateTime
      */
     public function getCreatedAt();
 
     /**
-     * Set locally updated at value
+     * Set locally updated at value.
      *
      * @param DateTime $updatedAt Updated at value
      *
@@ -50,7 +50,7 @@ interface DateTimeInterface
     public function setUpdatedAt(DateTime $updatedAt);
 
     /**
-     * Return updated_at value
+     * Return updated_at value.
      *
      * @return DateTime
      */

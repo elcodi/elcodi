@@ -20,14 +20,14 @@ namespace Elcodi\Component\Core\Generator;
 use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 
 /**
- * Class RandomGenerator
+ * Class RandomGenerator.
  */
 class RandomGenerator implements GeneratorInterface
 {
     /**
-     * Generates a random string with entropy
+     * Generates a random string with entropy.
      *
-     * @param integer|null $length Length of string generated
+     * @param int|null $length Length of string generated
      *
      * @return string Result of generation
      */

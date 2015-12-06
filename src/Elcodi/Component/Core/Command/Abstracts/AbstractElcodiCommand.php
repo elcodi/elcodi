@@ -24,7 +24,7 @@ use Symfony\Component\Stopwatch\Stopwatch;
 use Symfony\Component\Stopwatch\StopwatchEvent;
 
 /**
- * Class AbstractElcodiCommand
+ * Class AbstractElcodiCommand.
  */
 class AbstractElcodiCommand extends Command
 {
@@ -36,10 +36,10 @@ class AbstractElcodiCommand extends Command
     private $stopwatch;
 
     /**
-     * Start command
+     * Start command.
      *
      * @param OutputInterface $output      Output
-     * @param boolean         $longCommand Show long time message
+     * @param bool            $longCommand Show long time message
      *
      * @return $this Self object
      */
@@ -72,7 +72,7 @@ class AbstractElcodiCommand extends Command
     }
 
     /**
-     * Configure formatter with Elcodi specific style
+     * Configure formatter with Elcodi specific style.
      *
      * @param OutputInterface $output Output
      *
@@ -89,7 +89,7 @@ class AbstractElcodiCommand extends Command
     }
 
     /**
-     * Start stopwatch
+     * Start stopwatch.
      *
      * @param string $eventName Event name
      *
@@ -103,7 +103,7 @@ class AbstractElcodiCommand extends Command
     }
 
     /**
-     * Print message
+     * Print message.
      *
      * @param OutputInterface $output Output
      * @param string          $header Message header
@@ -127,7 +127,7 @@ class AbstractElcodiCommand extends Command
     }
 
     /**
-     * Print message
+     * Print message.
      *
      * @param OutputInterface $output Output
      * @param string          $header Message header
@@ -151,7 +151,7 @@ class AbstractElcodiCommand extends Command
     }
 
     /**
-     * Finish command
+     * Finish command.
      *
      * @param OutputInterface $output Output
      *
@@ -178,7 +178,7 @@ class AbstractElcodiCommand extends Command
     }
 
     /**
-     * Stop stopwatch
+     * Stop stopwatch.
      *
      * @param string $eventName Event name
      *
@@ -192,7 +192,7 @@ class AbstractElcodiCommand extends Command
     }
 
     /**
-     * Get project header
+     * Get project header.
      *
      * @return string Get project header
      */

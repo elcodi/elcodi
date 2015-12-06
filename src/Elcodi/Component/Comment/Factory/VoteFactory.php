@@ -21,12 +21,12 @@ use Elcodi\Component\Comment\Entity\Vote;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 
 /**
- * Class VoteFactory
+ * Class VoteFactory.
  */
 class VoteFactory extends AbstractFactory
 {
     /**
-     * Creates an instance of Vote
+     * Creates an instance of Vote.
      *
      * @return Vote New Vote entity
      */
@@ -43,7 +43,7 @@ class VoteFactory extends AbstractFactory
     }
 
     /**
-     * Creates an instance of Up Vote
+     * Creates an instance of Up Vote.
      *
      * @return Vote New Up Vote entity
      */
@@ -55,7 +55,7 @@ class VoteFactory extends AbstractFactory
     }
 
     /**
-     * Creates an instance of Down Vote
+     * Creates an instance of Down Vote.
      *
      * @return Vote New Down Vote entity
      */

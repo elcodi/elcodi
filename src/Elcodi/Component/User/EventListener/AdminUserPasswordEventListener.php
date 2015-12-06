@@ -21,19 +21,19 @@ use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
 use Elcodi\Component\User\EventListener\Abstracts\AbstractPasswordEventListener;
 
 /**
- * Class AdminUserPasswordEventListener
+ * Class AdminUserPasswordEventListener.
  */
 class AdminUserPasswordEventListener extends AbstractPasswordEventListener
 {
     /**
-     * Check entity type
+     * Check entity type.
      *
-     * @param Object $entity Entity to check
+     * @param object $entity Entity to check
      *
-     * @return boolean Entity is ready for being encoded
+     * @return bool Entity is ready for being encoded
      */
     public function checkEntityType($entity)
     {
-        return ($entity instanceof AdminUserInterface);
+        return $entity instanceof AdminUserInterface;
     }
 }

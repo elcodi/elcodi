@@ -22,7 +22,7 @@ use Symfony\Component\EventDispatcher\Event;
 use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
 
 /**
- * Class AdminUserRegisterEvent
+ * Class AdminUserRegisterEvent.
  */
 final class AdminUserRegisterEvent extends Event
 {
@@ -34,7 +34,7 @@ final class AdminUserRegisterEvent extends Event
     private $adminUser;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param AdminUserInterface $adminUser Admin User
      */

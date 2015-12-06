@@ -21,12 +21,12 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Coupon\Entity\Coupon;
 
 /**
- * Class CouponFactoryTest
+ * Class CouponFactoryTest.
  */
 class CouponFactoryTest extends WebTestCase
 {
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -38,7 +38,7 @@ class CouponFactoryTest extends WebTestCase
     }
 
     /**
-     * Tests that the Coupon object is factored correctly
+     * Tests that the Coupon object is factored correctly.
      */
     public function testCreateCouponFactory()
     {
@@ -49,7 +49,7 @@ class CouponFactoryTest extends WebTestCase
     }
 
     /**
-     * Tests that amounts in the Currency objects are Money value objects
+     * Tests that amounts in the Currency objects are Money value objects.
      */
     public function testCouponPricesAreMoney()
     {

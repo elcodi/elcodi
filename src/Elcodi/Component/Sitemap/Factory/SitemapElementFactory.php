@@ -20,12 +20,12 @@ namespace Elcodi\Component\Sitemap\Factory;
 use Elcodi\Component\Sitemap\Element\SitemapElement;
 
 /**
- * Class SitemapElementFactory
+ * Class SitemapElementFactory.
  */
 class SitemapElementFactory
 {
     /**
-     * Create new SitemapElement
+     * Create new SitemapElement.
      *
      * @param string      $location         Location
      * @param string|null $lastModification Last modification

@@ -20,12 +20,12 @@ namespace Elcodi\Component\Media\Transformer\Interfaces;
 use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 
 /**
- * Interface ImageEtagTransformerInterface
+ * Interface ImageEtagTransformerInterface.
  */
 interface ImageEtagTransformerInterface
 {
     /**
-     * Transforms an Image with some resizing information into an ETag
+     * Transforms an Image with some resizing information into an ETag.
      *
      * @param ImageInterface $image  Image
      * @param string         $height Height

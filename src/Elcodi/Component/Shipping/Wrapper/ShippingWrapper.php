@@ -22,7 +22,7 @@ use Elcodi\Component\Shipping\Entity\ShippingMethod;
 use Elcodi\Component\Shipping\EventDispatcher\ShippingEventDispatcher;
 
 /**
- * Class ShippingWrapper
+ * Class ShippingWrapper.
  */
 class ShippingWrapper
 {
@@ -34,7 +34,7 @@ class ShippingWrapper
     private $shippingEventDispatcher;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param ShippingEventDispatcher $shippingEventDispatcher Shipping event dispatcher
      */
@@ -44,7 +44,7 @@ class ShippingWrapper
     }
 
     /**
-     * Get loaded shipping methods given a cart
+     * Get loaded shipping methods given a cart.
      *
      * @param CartInterface $cart Cart
      *
@@ -58,7 +58,7 @@ class ShippingWrapper
     }
 
     /**
-     * Get loaded shipping method given its id
+     * Get loaded shipping method given its id.
      *
      * @param CartInterface $cart             Cart
      * @param string        $shippingMethodId Shipping method id

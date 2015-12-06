@@ -20,7 +20,7 @@ namespace Elcodi\Component\Currency\Exception;
 use Exception;
 
 /**
- * Class CurrencyNotAvailableException
+ * Class CurrencyNotAvailableException.
  */
 class CurrencyNotAvailableException extends Exception
 {

@@ -22,7 +22,7 @@ use Doctrine\ORM\EntityRepository;
 use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
 
 /**
- * Class PageRepository
+ * Class PageRepository.
  *
  * @author Jonas HAOUZI <haouzijonas@gmail.com>
  * @author Àlex Corretgé <alex@corretge.cat>
@@ -31,7 +31,7 @@ use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
 class PageRepository extends EntityRepository
 {
     /**
-     * Find one Page given its path
+     * Find one Page given its path.
      *
      * @param string $path Page path
      *
@@ -40,13 +40,13 @@ class PageRepository extends EntityRepository
     public function findOneByPath($path)
     {
         return $this->findOneBy([
-            'path'    => $path,
+            'path' => $path,
             'enabled' => true,
         ]);
     }
 
     /**
-     * Find one Page given its id
+     * Find one Page given its id.
      *
      * @param string $id Page id
      *
@@ -55,17 +55,17 @@ class PageRepository extends EntityRepository
     public function findOneById($id)
     {
         return $this->findOneBy([
-            'id'    => $id,
+            'id' => $id,
             'enabled' => true,
         ]);
     }
 
     /**
-     * Find pages paginated
+     * Find pages paginated.
      *
-     * @param string  $type          Type
-     * @param integer $page          Page
-     * @param integer $numberPerPage Number per page
+     * @param string $type          Type
+     * @param int    $page          Page
+     * @param int    $numberPerPage Number per page
      *
      * @return array Pages
      */
@@ -80,7 +80,7 @@ class PageRepository extends EntityRepository
             ->orderBy('p.publicationDate', 'DESC')
             ->setParameters([
                 'enabled' => true,
-                'type'    => $type,
+                'type' => $type,
             ])
             ->setFirstResult($offset)
             ->setMaxResults($numberPerPage)
@@ -89,11 +89,11 @@ class PageRepository extends EntityRepository
     }
 
     /**
-     * Find pages paginated
+     * Find pages paginated.
      *
      * @param string $type Type
      *
-     * @return integer Number of pages
+     * @return int Number of pages
      */
     public function getNumberOfEnabledPages($type)
     {
@@ -104,7 +104,7 @@ class PageRepository extends EntityRepository
             ->andWhere('p.type = :type')
             ->setParameters([
                 'enabled' => true,
-                'type'    => $type,
+                'type' => $type,
             ])
             ->getQuery()
             ->getSingleScalarResult();

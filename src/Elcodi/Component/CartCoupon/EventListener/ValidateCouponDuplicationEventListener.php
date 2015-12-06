@@ -22,7 +22,7 @@ use Elcodi\Component\CartCoupon\Exception\CouponAlreadyAppliedException;
 use Elcodi\Component\CartCoupon\Services\DuplicatedCouponValidator;
 
 /**
- * Class ValidateCouponDuplicationEventListener
+ * Class ValidateCouponDuplicationEventListener.
  */
 final class ValidateCouponDuplicationEventListener
 {
@@ -34,7 +34,7 @@ final class ValidateCouponDuplicationEventListener
     private $duplicatedCouponValidator;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param DuplicatedCouponValidator $duplicatedCouponValidator Duplicated coupon validator
      */
@@ -44,7 +44,7 @@ final class ValidateCouponDuplicationEventListener
     }
 
     /**
-     * Check if this coupon is already applied to the cart
+     * Check if this coupon is already applied to the cart.
      *
      * @param CartCouponOnApplyEvent $event Event
      *

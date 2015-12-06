@@ -27,7 +27,7 @@ use Elcodi\Bundle\AttributeBundle\DependencyInjection\ElcodiAttributeExtension;
 use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 
 /**
- * Class ElcodiAttributeBundle
+ * Class ElcodiAttributeBundle.
  */
 class ElcodiAttributeBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
@@ -52,7 +52,7 @@ class ElcodiAttributeBundle extends AbstractElcodiBundle implements DependentBun
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

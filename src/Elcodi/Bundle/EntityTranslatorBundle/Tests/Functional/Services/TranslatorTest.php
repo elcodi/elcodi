@@ -21,14 +21,14 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct;
 
 /**
- * Class TranslatorTest
+ * Class TranslatorTest.
  */
 class TranslatorTest extends WebTestCase
 {
     /**
-     * Schema must be loaded in all test cases
+     * Schema must be loaded in all test cases.
      *
-     * @return boolean Load schema
+     * @return bool Load schema
      */
     protected static function loadSchema()
     {
@@ -36,7 +36,7 @@ class TranslatorTest extends WebTestCase
     }
 
     /**
-     * Test translate
+     * Test translate.
      */
     public function testTranslate()
     {
@@ -68,7 +68,7 @@ class TranslatorTest extends WebTestCase
     }
 
     /**
-     * Test save
+     * Test save.
      */
     public function testSave()
     {
@@ -99,13 +99,13 @@ class TranslatorTest extends WebTestCase
             ->get('elcodi.entity_translator')
             ->save($translatableProduct, [
                 'es' => [
-                    'name'        => 'el nombre',
+                    'name' => 'el nombre',
                 ],
                 'en' => [
-                    'name'         => 'the name',
+                    'name' => 'the name',
                 ],
                 'fr' => [
-                    'name'         => 'le nom',
+                    'name' => 'le nom',
                 ],
             ]);
 

@@ -27,7 +27,7 @@ use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Coupon\Repository\CouponRepository;
 
 /**
- * Class CartCouponManagerTest
+ * Class CartCouponManagerTest.
  */
 class CartCouponManagerTest extends PHPUnit_Framework_TestCase
 {
@@ -60,7 +60,7 @@ class CartCouponManagerTest extends PHPUnit_Framework_TestCase
     private $cartCouponRepository;
 
     /**
-     * Setup
+     * Setup.
      */
     public function setUp()
     {
@@ -71,7 +71,7 @@ class CartCouponManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test create and save
+     * Test create and save.
      *
      * @covers createAndSaveCartCoupon
      */
@@ -103,7 +103,7 @@ class CartCouponManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test getCartCoupons
+     * Test getCartCoupons.
      *
      * @covers getCartCoupons
      */
@@ -125,7 +125,7 @@ class CartCouponManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test getCartCoupons
+     * Test getCartCoupons.
      *
      * @covers getCartCoupons
      */
@@ -146,7 +146,7 @@ class CartCouponManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test getCartCoupons
+     * Test getCartCoupons.
      *
      * @covers getCoupons
      */
@@ -168,7 +168,7 @@ class CartCouponManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test getCartCoupons
+     * Test getCartCoupons.
      *
      * @covers getCoupons
      */
@@ -189,7 +189,7 @@ class CartCouponManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test add coupon by code
+     * Test add coupon by code.
      *
      * @covers addCouponByCode
      *
@@ -220,7 +220,7 @@ class CartCouponManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test add coupon by code
+     * Test add coupon by code.
      *
      * @covers addCouponByCode
      */
@@ -250,7 +250,7 @@ class CartCouponManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test add coupon by code
+     * Test add coupon by code.
      *
      * @covers addCouponByCode
      */
@@ -275,7 +275,7 @@ class CartCouponManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test add coupon by code
+     * Test add coupon by code.
      *
      * @covers removeCouponByCode
      */
@@ -306,7 +306,7 @@ class CartCouponManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test add coupon by code
+     * Test add coupon by code.
      *
      * @covers removeCouponByCode
      * @covers removeCoupon
@@ -346,7 +346,7 @@ class CartCouponManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test add coupon by code
+     * Test add coupon by code.
      *
      * @covers removeCouponByCode
      * @covers removeCoupon
@@ -392,7 +392,7 @@ class CartCouponManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test remove cart coupon
+     * Test remove cart coupon.
      *
      * @covers removeCartCoupon
      */
@@ -413,7 +413,7 @@ class CartCouponManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Create new CartCouponManager instance
+     * Create new CartCouponManager instance.
      *
      * @return CartCouponManager
      */

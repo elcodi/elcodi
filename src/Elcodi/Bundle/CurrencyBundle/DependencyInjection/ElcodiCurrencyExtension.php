@@ -24,7 +24,7 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * This is the class that loads and manages your bundle configuration
+ * This is the class that loads and manages your bundle configuration.
  */
 class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
@@ -36,7 +36,7 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
     const EXTENSION_NAME = 'elcodi_currency';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -63,7 +63,7 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -78,25 +78,25 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
     protected function getParametrizationValues(array $config)
     {
         $result = [
-            "elcodi.entity.currency.class"                      => $config['mapping']['currency']['class'],
-            "elcodi.entity.currency.mapping_file"               => $config['mapping']['currency']['mapping_file'],
-            "elcodi.entity.currency.manager"                    => $config['mapping']['currency']['manager'],
-            "elcodi.entity.currency.enabled"                    => $config['mapping']['currency']['enabled'],
+            'elcodi.entity.currency.class' => $config['mapping']['currency']['class'],
+            'elcodi.entity.currency.mapping_file' => $config['mapping']['currency']['mapping_file'],
+            'elcodi.entity.currency.manager' => $config['mapping']['currency']['manager'],
+            'elcodi.entity.currency.enabled' => $config['mapping']['currency']['enabled'],
 
-            "elcodi.entity.currency_exchange_rate.class"        => $config['mapping']['currency_exchange_rate']['class'],
-            "elcodi.entity.currency_exchange_rate.mapping_file" => $config['mapping']['currency_exchange_rate']['mapping_file'],
-            "elcodi.entity.currency_exchange_rate.manager"      => $config['mapping']['currency_exchange_rate']['manager'],
-            "elcodi.entity.currency_exchange_rate.enabled"      => $config['mapping']['currency_exchange_rate']['enabled'],
+            'elcodi.entity.currency_exchange_rate.class' => $config['mapping']['currency_exchange_rate']['class'],
+            'elcodi.entity.currency_exchange_rate.mapping_file' => $config['mapping']['currency_exchange_rate']['mapping_file'],
+            'elcodi.entity.currency_exchange_rate.manager' => $config['mapping']['currency_exchange_rate']['manager'],
+            'elcodi.entity.currency_exchange_rate.enabled' => $config['mapping']['currency_exchange_rate']['enabled'],
 
-            'elcodi.default_currency'                           => $config['currency']['default_currency'],
-            'elcodi.currency_session_field_name'                => $config['currency']['session_field_name'],
+            'elcodi.default_currency' => $config['currency']['default_currency'],
+            'elcodi.currency_session_field_name' => $config['currency']['session_field_name'],
         ];
 
         return $result;
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * @param array $config Configuration
      *
@@ -135,7 +135,7 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
     }
 
     /**
-     * Post load implementation
+     * Post load implementation.
      *
      * @param array            $config    Parsed configuration
      * @param ContainerBuilder $container A ContainerBuilder instance
@@ -152,7 +152,7 @@ class ElcodiCurrencyExtension extends AbstractExtension implements EntitiesOverr
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */

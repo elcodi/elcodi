@@ -25,12 +25,12 @@ use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Geo\Entity\Address;
 
 /**
- * Class AddressData
+ * Class AddressData.
  */
 class AddressData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(ObjectManager $manager)
     {
@@ -76,7 +76,7 @@ class AddressData extends AbstractFixture implements DependentFixtureInterface
 
     /**
      * This method must return an array of fixtures classes
-     * on which the implementing class depends on
+     * on which the implementing class depends on.
      *
      * @return array
      */

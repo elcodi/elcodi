@@ -24,7 +24,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Elcodi\Component\Plugin\Entity\Plugin;
 
 /**
- * Class PluginType
+ * Class PluginType.
  */
 class PluginType extends AbstractType
 {
@@ -39,7 +39,7 @@ class PluginType extends AbstractType
     }
 
     /**
-     * Buildform function
+     * Buildform function.
      *
      * @param FormBuilderInterface $builder the formBuilder
      * @param array                $options the options for this form
@@ -54,10 +54,10 @@ class PluginType extends AbstractType
             $builder
                 ->remove($fieldName)
                 ->add($fieldName, $field['type'], array_merge([
-                    'label'    => $field['label'],
-                    'data'     => $field['data'],
+                    'label' => $field['label'],
+                    'data' => $field['data'],
                     'required' => $field['required'],
-                    'attr'     => $field['attr'],
+                    'attr' => $field['attr'],
                 ], $field['options']), $field);
         }
 

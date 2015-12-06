@@ -25,18 +25,18 @@ use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 
 /**
- * Class NewsletterSubscriptionData
+ * Class NewsletterSubscriptionData.
  */
 class NewsletterSubscriptionData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(ObjectManager $manager)
     {
         /**
-         * @var ObjectDirector $newsletterSubscriptionDirector
-         * @var LanguageInterface             $languageEs
+         * @var ObjectDirector    $newsletterSubscriptionDirector
+         * @var LanguageInterface $languageEs
          */
         $newsletterSubscriptionDirector = $this->getDirector('newsletter_subscription');
         $languageEs = $this->getReference('language-es');
@@ -67,7 +67,7 @@ class NewsletterSubscriptionData extends AbstractFixture implements DependentFix
 
     /**
      * This method must return an array of fixtures classes
-     * on which the implementing class depends on
+     * on which the implementing class depends on.
      *
      * @return array
      */

@@ -26,7 +26,7 @@ use Elcodi\Component\MetaData\Entity\Traits\MetaDataTrait;
 use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
 
 /**
- * Class Page
+ * Class Page.
  *
  * @author Cayetano Soriano <neoshadybeat@gmail.com>
  * @author Jordi Grados <planetzombies@gmail.com>
@@ -69,7 +69,7 @@ class Page implements PageInterface
     protected $content;
 
     /**
-     * @var integer
+     * @var int
      *
      * Type
      */
@@ -83,14 +83,14 @@ class Page implements PageInterface
     protected $publicationDate;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * The persistence of the page
      */
     protected $persistent;
 
     /**
-     * Get Name
+     * Get Name.
      *
      * @return string Name
      */
@@ -100,7 +100,7 @@ class Page implements PageInterface
     }
 
     /**
-     * Sets Name
+     * Sets Name.
      *
      * @param string $name Name
      *
@@ -114,7 +114,7 @@ class Page implements PageInterface
     }
 
     /**
-     * Get the path
+     * Get the path.
      *
      * @return string
      */
@@ -124,7 +124,7 @@ class Page implements PageInterface
     }
 
     /**
-     * Set the path
+     * Set the path.
      *
      * @param string $path The path
      *
@@ -138,7 +138,7 @@ class Page implements PageInterface
     }
 
     /**
-     * Get the title
+     * Get the title.
      *
      * @return string
      */
@@ -148,7 +148,7 @@ class Page implements PageInterface
     }
 
     /**
-     * Set the title
+     * Set the title.
      *
      * @param string $title The title
      *
@@ -162,7 +162,7 @@ class Page implements PageInterface
     }
 
     /**
-     * Get the content
+     * Get the content.
      *
      * @return string
      */
@@ -172,7 +172,7 @@ class Page implements PageInterface
     }
 
     /**
-     * Set the content
+     * Set the content.
      *
      * @param string $content The content
      *
@@ -186,9 +186,9 @@ class Page implements PageInterface
     }
 
     /**
-     * Get Type
+     * Get Type.
      *
-     * @return integer Type
+     * @return int Type
      */
     public function getType()
     {
@@ -196,9 +196,9 @@ class Page implements PageInterface
     }
 
     /**
-     * Sets Type
+     * Sets Type.
      *
-     * @param integer $type Type
+     * @param int $type Type
      *
      * @return $this Self object
      */
@@ -210,7 +210,7 @@ class Page implements PageInterface
     }
 
     /**
-     * Get PublicationDate
+     * Get PublicationDate.
      *
      * @return DateTime PublicationDate
      */
@@ -220,7 +220,7 @@ class Page implements PageInterface
     }
 
     /**
-     * Sets PublicationDate
+     * Sets PublicationDate.
      *
      * @param DateTime $publicationDate PublicationDate
      *
@@ -234,9 +234,9 @@ class Page implements PageInterface
     }
 
     /**
-     * Sets the persistence property
+     * Sets the persistence property.
      *
-     * @param boolean $persistent If the page can't be removed
+     * @param bool $persistent If the page can't be removed
      *
      * @return $this Self object
      */
@@ -248,9 +248,9 @@ class Page implements PageInterface
     }
 
     /**
-     * Gets the page persistence
+     * Gets the page persistence.
      *
-     * @return boolean If the page is persistent
+     * @return bool If the page is persistent
      */
     public function isPersistent()
     {

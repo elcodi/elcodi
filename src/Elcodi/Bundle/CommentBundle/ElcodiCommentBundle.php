@@ -28,7 +28,7 @@ use Elcodi\Bundle\CommentBundle\DependencyInjection\ElcodiCommentExtension;
 use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 
 /**
- * ElcodiCommentBundle Class
+ * ElcodiCommentBundle Class.
  */
 class ElcodiCommentBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
@@ -60,7 +60,7 @@ class ElcodiCommentBundle extends AbstractElcodiBundle implements DependentBundl
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

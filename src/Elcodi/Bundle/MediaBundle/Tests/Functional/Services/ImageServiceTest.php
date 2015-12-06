@@ -23,12 +23,12 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 
 /**
- * Class ImageServiceTest
+ * Class ImageServiceTest.
  */
 class ImageServiceTest extends WebTestCase
 {
     /**
-     * Test image object creation
+     * Test image object creation.
      */
     public function testCreateImage()
     {

@@ -21,7 +21,7 @@ use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 use Elcodi\Component\Product\Repository\CategoryRepository;
 
 /**
- * Class CategoryTree
+ * Class CategoryTree.
  */
 class CategoryTree
 {
@@ -33,7 +33,7 @@ class CategoryTree
     private $categoryRepository;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CategoryRepository $categoryRepository Category Repository
      */
@@ -43,7 +43,7 @@ class CategoryTree
     }
 
     /**
-     * Builds a category tree with all the categories and subcategories
+     * Builds a category tree with all the categories and subcategories.
      *
      * cost O(n)
      *
@@ -56,7 +56,7 @@ class CategoryTree
             ->getAllCategoriesSortedByParentAndPositionAsc();
 
         $categoryTree = [
-            0          => null,
+            0 => null,
             'children' => [],
         ];
 
@@ -74,7 +74,7 @@ class CategoryTree
 
                     /**
                      * If category is not root and has no parent,
-                     * don't insert it into the tree
+                     * don't insert it into the tree.
                      */
                     continue;
                 }
@@ -82,14 +82,14 @@ class CategoryTree
 
             if ($parentCategoryId && !isset($categoryTree[$parentCategoryId])) {
                 $categoryTree[$parentCategoryId] = [
-                    'entity'   => null,
+                    'entity' => null,
                     'children' => [],
                 ];
             }
 
             if (!isset($categoryTree[$categoryId])) {
                 $categoryTree[$categoryId] = [
-                    'entity'   => null,
+                    'entity' => null,
                     'children' => [],
                 ];
             }

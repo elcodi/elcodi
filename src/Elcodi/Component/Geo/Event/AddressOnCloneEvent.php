@@ -22,7 +22,7 @@ use Symfony\Component\EventDispatcher\Event;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 
 /**
- * Class CartLineOnAddEvent
+ * Class CartLineOnAddEvent.
  */
 final class AddressOnCloneEvent extends Event
 {
@@ -41,7 +41,7 @@ final class AddressOnCloneEvent extends Event
     private $clonedAddress;
 
     /**
-     * Builds a new address on clone event
+     * Builds a new address on clone event.
      *
      * @param AddressInterface $originalAddress The original address
      * @param AddressInterface $clonedAddress   The new address clone
@@ -51,11 +51,11 @@ final class AddressOnCloneEvent extends Event
         AddressInterface $clonedAddress
     ) {
         $this->originalAddress = $originalAddress;
-        $this->clonedAddress   = $clonedAddress;
+        $this->clonedAddress = $clonedAddress;
     }
 
     /**
-     * Get the original address
+     * Get the original address.
      *
      * @return AddressInterface
      */
@@ -65,7 +65,7 @@ final class AddressOnCloneEvent extends Event
     }
 
     /**
-     * Get the cloned address
+     * Get the cloned address.
      *
      * @return AddressInterface
      */

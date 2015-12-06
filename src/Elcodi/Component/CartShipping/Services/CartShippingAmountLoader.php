@@ -22,7 +22,7 @@ use Elcodi\Component\Shipping\Entity\ShippingMethod;
 use Elcodi\Component\Shipping\Wrapper\ShippingWrapper;
 
 /**
- * Class CartShippingAmountLoader
+ * Class CartShippingAmountLoader.
  */
 class CartShippingAmountLoader
 {
@@ -34,7 +34,7 @@ class CartShippingAmountLoader
     private $shippingWrapper;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param ShippingWrapper $shippingWrapper Shipping wrapper
      */
@@ -44,7 +44,7 @@ class CartShippingAmountLoader
     }
 
     /**
-     * Performs all processes to be performed after the order creation
+     * Performs all processes to be performed after the order creation.
      *
      * Flushes all loaded order and related entities.
      *

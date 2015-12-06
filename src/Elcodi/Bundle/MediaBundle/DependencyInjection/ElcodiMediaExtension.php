@@ -24,7 +24,7 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * Class ElcodiMediaExtension
+ * Class ElcodiMediaExtension.
  */
 class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
@@ -36,7 +36,7 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
     const EXTENSION_NAME = 'elcodi_media';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -63,7 +63,7 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * return array(
      *      'file1.yml',
@@ -92,7 +92,7 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -107,25 +107,25 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.image.class"                     => $config['mapping']['image']['class'],
-            "elcodi.entity.image.mapping_file"              => $config['mapping']['image']['mapping_file'],
-            "elcodi.entity.image.manager"                   => $config['mapping']['image']['manager'],
-            "elcodi.entity.image.enabled"                   => $config['mapping']['image']['enabled'],
+            'elcodi.entity.image.class' => $config['mapping']['image']['class'],
+            'elcodi.entity.image.mapping_file' => $config['mapping']['image']['mapping_file'],
+            'elcodi.entity.image.manager' => $config['mapping']['image']['manager'],
+            'elcodi.entity.image.enabled' => $config['mapping']['image']['enabled'],
 
-            'elcodi.media_filesystem_service'               => $config['filesystem'],
+            'elcodi.media_filesystem_service' => $config['filesystem'],
 
-            'elcodi.image_generated_route_host'             => $config['images']['generated_route_host'],
-            'elcodi.image_view_max_age'                     => $config['images']['view']['max_age'],
-            'elcodi.image_view_shared_max_age'              => $config['images']['view']['shared_max_age'],
-            'elcodi.image_upload_field_name'                => $config['images']['upload']['field_name'],
+            'elcodi.image_generated_route_host' => $config['images']['generated_route_host'],
+            'elcodi.image_view_max_age' => $config['images']['view']['max_age'],
+            'elcodi.image_view_shared_max_age' => $config['images']['view']['shared_max_age'],
+            'elcodi.image_upload_field_name' => $config['images']['upload']['field_name'],
 
-            'elcodi.image_resize_converter_bin_path'        => $config['images']['resize']['converter_bin_path'],
+            'elcodi.image_resize_converter_bin_path' => $config['images']['resize']['converter_bin_path'],
             'elcodi.image_resize_converter_default_profile' => $config['images']['resize']['converter_default_profile'],
         ];
     }
 
     /**
-     * Post load implementation
+     * Post load implementation.
      *
      * @param ContainerBuilder $container A ContainerBuilder instance
      * @param array            $config    Parsed configuration
@@ -162,7 +162,7 @@ class ElcodiMediaExtension extends AbstractExtension implements EntitiesOverrida
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */

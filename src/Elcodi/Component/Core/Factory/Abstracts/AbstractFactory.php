@@ -23,7 +23,7 @@ use Elcodi\Component\Core\Factory\DateTimeFactory;
 use Elcodi\Component\Core\Factory\Traits\EntityNamespaceTrait;
 
 /**
- * Class AbstractFactory
+ * Class AbstractFactory.
  *
  * Entity factories create a pristine instance for the specified Entity
  *
@@ -43,7 +43,7 @@ abstract class AbstractFactory
     private $dateTimeFactory;
 
     /**
-     * Sets DateTimeFactory
+     * Sets DateTimeFactory.
      *
      * @param DateTimeFactory $dateTimeFactory DateTimeFactory
      *
@@ -57,7 +57,7 @@ abstract class AbstractFactory
     }
 
     /**
-     * Get now
+     * Get now.
      *
      * @return DateTime Now
      */
@@ -76,7 +76,7 @@ abstract class AbstractFactory
      * This method must always return an empty instance of the related Entity
      * and must initialize it in a consistent state
      *
-     * @return Object Empty entity
+     * @return object Empty entity
      */
     abstract public function create();
 }

@@ -20,7 +20,7 @@ namespace Elcodi\Component\Comment\Event;
 use Elcodi\Component\Comment\Event\Abstracts\AbstractCommentEvent;
 
 /**
- * Class CommentOnRemoveEvent
+ * Class CommentOnRemoveEvent.
  */
 final class CommentOnRemoveEvent extends AbstractCommentEvent
 {

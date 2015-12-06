@@ -18,37 +18,37 @@
 namespace Elcodi\Component\Coupon;
 
 /**
- * Class ElcodiCouponTypes
+ * Class ElcodiCouponTypes.
  */
 final class ElcodiCouponTypes
 {
     /**
-     * @var integer
+     * @var int
      *
      * Coupon type absolute amount
      */
     const TYPE_AMOUNT = 1;
 
     /**
-     * @var integer
+     * @var int
      *
      * Coupon type percent
      */
     const TYPE_PERCENT = 2;
 
     /**
-     * Appliance type
+     * Appliance type.
      */
 
     /**
-     * @var integer
+     * @var int
      *
      * Automatic enforcement
      */
     const ENFORCEMENT_AUTOMATIC = 1;
 
     /**
-     * @var integer
+     * @var int
      *
      * Manual enforcement
      */

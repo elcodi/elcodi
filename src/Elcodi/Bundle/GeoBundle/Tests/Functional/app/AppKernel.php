@@ -22,14 +22,14 @@ use Mmoreram\SymfonyBundleDependencies\BundleDependenciesResolver;
 use Elcodi\Bundle\TestCommonBundle\Functional\Abstracts\AbstractElcodiKernel;
 
 /**
- * Class AppKernel
+ * Class AppKernel.
  */
 class AppKernel extends AbstractElcodiKernel
 {
     use BundleDependenciesResolver;
 
     /**
-     * Register application bundles
+     * Register application bundles.
      *
      * @return array Array of bundles instances
      */

@@ -21,12 +21,12 @@ use Elcodi\Component\Sitemap\Element\SitemapElement;
 use Elcodi\Component\Sitemap\Renderer\Interfaces\SitemapRendererInterface;
 
 /**
- * Class XmlRenderer
+ * Class XmlRenderer.
  */
 class XmlRenderer implements SitemapRendererInterface
 {
     /**
-     * Given an array of sitemapElements, render the Sitemap
+     * Given an array of sitemapElements, render the Sitemap.
      *
      * @param SitemapElement[] $sitemapElements Elements
      * @param string           $basepath        Base path

@@ -22,7 +22,7 @@ use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 
 /**
- * Class ManagerProvider
+ * Class ManagerProvider.
  */
 class ManagerProvider
 {
@@ -41,7 +41,7 @@ class ManagerProvider
     private $parameterBag;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param ManagerRegistry $manager      Manager
      * @param ParameterBag    $parameterBag Parameter bag
@@ -55,7 +55,7 @@ class ManagerProvider
     }
 
     /**
-     * Given an entity namespace, return associated object Manager
+     * Given an entity namespace, return associated object Manager.
      *
      * @param string $entityNamespace Entity Namespace
      *
@@ -69,7 +69,7 @@ class ManagerProvider
     }
 
     /**
-     * Given an entity parameter definition, returns associated object Manager
+     * Given an entity parameter definition, returns associated object Manager.
      *
      * This method is only useful when your entities namespaces are defined as
      * a parameter, very useful when you want to provide a way of overriding

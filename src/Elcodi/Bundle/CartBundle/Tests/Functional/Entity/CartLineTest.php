@@ -20,12 +20,12 @@ namespace Elcodi\Bundle\CartBundle\Tests\Functional\Entity;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class CartTest
+ * Class CartTest.
  */
 class CartLineTest extends WebTestCase
 {
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -37,7 +37,7 @@ class CartLineTest extends WebTestCase
     }
 
     /**
-     * Test cart dimensions
+     * Test cart dimensions.
      */
     public function testDimensions()
     {

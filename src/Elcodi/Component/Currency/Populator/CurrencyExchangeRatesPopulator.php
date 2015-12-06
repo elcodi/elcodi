@@ -24,7 +24,7 @@ use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Repository\CurrencyRepository;
 
 /**
- * Class CurrencyExchangeRatesPopulator
+ * Class CurrencyExchangeRatesPopulator.
  */
 class CurrencyExchangeRatesPopulator
 {
@@ -57,7 +57,7 @@ class CurrencyExchangeRatesPopulator
     private $defaultCurrency;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CurrencyExchangeRatesProviderAdapterInterface $currencyExchangeRatesAdapter       ExchangeRates adapter
      * @param ObjectDirector                                $currencyExchangeRateObjectDirector Currency Exchange rate object director
@@ -77,7 +77,7 @@ class CurrencyExchangeRatesPopulator
     }
 
     /**
-     * Populates the exchange rates
+     * Populates the exchange rates.
      *
      * @return $this Self object
      */
@@ -89,7 +89,7 @@ class CurrencyExchangeRatesPopulator
             ->findAll();
 
         /**
-         * Create an array of all active currency codes
+         * Create an array of all active currency codes.
          *
          * @var CurrencyInterface $currency
          */
@@ -100,7 +100,7 @@ class CurrencyExchangeRatesPopulator
         }
 
         /**
-         * Get rates for all of the enabled and active currencies
+         * Get rates for all of the enabled and active currencies.
          */
         $rates = $this
             ->currencyExchangeRatesAdapter
@@ -122,7 +122,7 @@ class CurrencyExchangeRatesPopulator
          * [
          *      "EUR" => "1,378278",
          *      "YEN" => "0,784937",
-         * ]
+         * ].
          */
         foreach ($rates as $code => $rate) {
 
@@ -141,7 +141,7 @@ class CurrencyExchangeRatesPopulator
 
             /**
              * check if this is a new exchange rate, or if we have to
-             * create a new one
+             * create a new one.
              */
             $exchangeRate = $this
                 ->currencyExchangeRateObjectDirector

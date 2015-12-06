@@ -23,12 +23,12 @@ use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Geo\Event\AddressOnCloneEvent;
 
 /**
- * Class CartLineEventDispatcher
+ * Class CartLineEventDispatcher.
  */
 class AddressEventDispatcher extends AbstractEventDispatcher
 {
     /**
-     * Dispatches the address on clone event
+     * Dispatches the address on clone event.
      *
      * @param AddressInterface $originalAddress The original address
      * @param AddressInterface $clonedAddress   The cloned address

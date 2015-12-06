@@ -20,12 +20,12 @@ namespace Elcodi\Component\Product\Services;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 
 /**
- * Class CategoryIntegrityFixer
+ * Class CategoryIntegrityFixer.
  */
 class CategoryIntegrityFixer
 {
     /**
-     * Fixes the product categories
+     * Fixes the product categories.
      *
      * @param ProductInterface $product The product to fix.
      */
@@ -40,7 +40,7 @@ class CategoryIntegrityFixer
         ) {
             /**
              * The product has a principal category but this one is not assigned
-             * as product category so this one is added
+             * as product category so this one is added.
              */
             $categories->add($principalCategory);
             $product->setCategories($categories);
@@ -50,7 +50,7 @@ class CategoryIntegrityFixer
         ) {
             /**
              * The product does not have principal category but has categories
-             * assigned so the first category is assigned as principal category
+             * assigned so the first category is assigned as principal category.
              */
             $product->setPrincipalCategory($categories->first());
         }

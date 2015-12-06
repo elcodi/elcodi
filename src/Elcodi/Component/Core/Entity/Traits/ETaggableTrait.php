@@ -21,12 +21,12 @@ use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
- * trait for entities that can hash their state and return an ETag header
+ * trait for entities that can hash their state and return an ETag header.
  */
 trait ETaggableTrait
 {
     /**
-     * Return etag from entity
+     * Return etag from entity.
      *
      * @return string ETag
      */

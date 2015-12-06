@@ -29,19 +29,19 @@ use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
- * Class CartData
+ * Class CartData.
  */
 class CartData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
-     * Load data fixtures with the passed EntityManager
+     * Load data fixtures with the passed EntityManager.
      *
      * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager)
     {
         /**
-         * Carts
+         * Carts.
          *
          * @var CartInterface     $emptyCart
          * @var CartInterface     $fullCart
@@ -51,10 +51,10 @@ class CartData extends AbstractFixture implements DependentFixtureInterface
          * @var ProductInterface  $productReduced
          * @var CartLineInterface $cartLine1
          * @var CartLineInterface $cartLine2
-         * @var ObjectDirector $cartDirector
-         * @var ObjectDirector $cartLineDirector
-         * @var AddressInterface $address1
-         * @var AddressInterface $address2
+         * @var ObjectDirector    $cartDirector
+         * @var ObjectDirector    $cartLineDirector
+         * @var AddressInterface  $address1
+         * @var AddressInterface  $address2
          */
         $cartDirector = $this->getDirector('cart');
         $cartLineDirector = $this->getDirector('cart_line');
@@ -68,7 +68,7 @@ class CartData extends AbstractFixture implements DependentFixtureInterface
         $address2 = $this->getReference('address-viladecavalls');
 
         /**
-         * Empty cart
+         * Empty cart.
          */
         $emptyCart = $cartDirector
             ->create()
@@ -78,7 +78,7 @@ class CartData extends AbstractFixture implements DependentFixtureInterface
         $this->addReference('empty-cart', $emptyCart);
 
         /**
-         * Full cart
+         * Full cart.
          */
         $fullCart = $cartDirector
             ->create()
@@ -113,7 +113,7 @@ class CartData extends AbstractFixture implements DependentFixtureInterface
 
     /**
      * This method must return an array of fixtures classes
-     * on which the implementing class depends on
+     * on which the implementing class depends on.
      *
      * @return array
      */

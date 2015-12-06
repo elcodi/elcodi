@@ -20,7 +20,7 @@ namespace Elcodi\Component\User\Exception;
 use InvalidArgumentException;
 
 /**
- * Class InvalidPasswordException
+ * Class InvalidPasswordException.
  */
 final class InvalidPasswordException extends InvalidArgumentException
 {

@@ -21,12 +21,12 @@ use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 
 /**
- * Class ConfigurationExpressionLanguageProvider
+ * Class ConfigurationExpressionLanguageProvider.
  */
 class ConfigurationExpressionLanguageProvider implements ExpressionFunctionProviderInterface
 {
     /**
-     * Get functions defined by this Expression Language element
+     * Get functions defined by this Expression Language element.
      *
      * @return ExpressionFunction[] An array of Function instances
      */

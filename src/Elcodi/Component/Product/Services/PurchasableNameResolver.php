@@ -23,7 +23,7 @@ use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
 
 /**
- * Class PurchasableNameResolver
+ * Class PurchasableNameResolver.
  */
 class PurchasableNameResolver
 {

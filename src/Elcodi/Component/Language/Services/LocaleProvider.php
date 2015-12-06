@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Elcodi\Component\Language\Entity\Locale;
 
 /**
- * Class LocaleProvider
+ * Class LocaleProvider.
  */
 class LocaleProvider
 {
@@ -42,7 +42,7 @@ class LocaleProvider
     private $defaultLocale;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param RequestStack $requestStack  Request Stack
      * @param string       $defaultLocale Default Locale
@@ -56,7 +56,7 @@ class LocaleProvider
     }
 
     /**
-     * Get usable locale from current request environment
+     * Get usable locale from current request environment.
      *
      * @return Locale Locale loaded
      */

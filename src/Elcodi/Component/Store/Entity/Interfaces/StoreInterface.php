@@ -26,7 +26,7 @@ use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 
 /**
- * Interface StoreInterface
+ * Interface StoreInterface.
  */
 interface StoreInterface
     extends
@@ -35,14 +35,14 @@ interface StoreInterface
     EnabledInterface
 {
     /**
-     * Get Name
+     * Get Name.
      *
      * @return string Name
      */
     public function getName();
 
     /**
-     * Sets Name
+     * Sets Name.
      *
      * @param string $name Name
      *
@@ -51,14 +51,14 @@ interface StoreInterface
     public function setName($name);
 
     /**
-     * Get Leitmotiv
+     * Get Leitmotiv.
      *
      * @return string Leitmotiv
      */
     public function getLeitmotiv();
 
     /**
-     * Sets Leitmotiv
+     * Sets Leitmotiv.
      *
      * @param string $leitmotiv Leitmotiv
      *
@@ -67,14 +67,14 @@ interface StoreInterface
     public function setLeitmotiv($leitmotiv);
 
     /**
-     * Get Email
+     * Get Email.
      *
      * @return string Email
      */
     public function getEmail();
 
     /**
-     * Sets Email
+     * Sets Email.
      *
      * @param string $email Email
      *
@@ -83,30 +83,30 @@ interface StoreInterface
     public function setEmail($email);
 
     /**
-     * Get IsCompany
+     * Get IsCompany.
      *
-     * @return boolean IsCompany
+     * @return bool IsCompany
      */
     public function getIsCompany();
 
     /**
-     * Sets IsCompany
+     * Sets IsCompany.
      *
-     * @param boolean $isCompany IsCompany
+     * @param bool $isCompany IsCompany
      *
      * @return $this Self object
      */
     public function setIsCompany($isCompany);
 
     /**
-     * Get Cif
+     * Get Cif.
      *
      * @return string Cif
      */
     public function getCif();
 
     /**
-     * Sets Cif
+     * Sets Cif.
      *
      * @param string $cif Cif
      *
@@ -115,14 +115,14 @@ interface StoreInterface
     public function setCif($cif);
 
     /**
-     * Get Tracker
+     * Get Tracker.
      *
      * @return string Tracker
      */
     public function getTracker();
 
     /**
-     * Sets Tracker
+     * Sets Tracker.
      *
      * @param string $tracker Tracker
      *
@@ -131,14 +131,14 @@ interface StoreInterface
     public function setTracker($tracker);
 
     /**
-     * Get Template
+     * Get Template.
      *
      * @return string Template
      */
     public function getTemplate();
 
     /**
-     * Sets Template
+     * Sets Template.
      *
      * @param string $template Template
      *
@@ -147,30 +147,30 @@ interface StoreInterface
     public function setTemplate($template);
 
     /**
-     * Get UseStock
+     * Get UseStock.
      *
-     * @return boolean UseStock
+     * @return bool UseStock
      */
     public function getUseStock();
 
     /**
-     * Sets UseStock
+     * Sets UseStock.
      *
-     * @param boolean $useStock UseStock
+     * @param bool $useStock UseStock
      *
      * @return $this Self object
      */
     public function setUseStock($useStock);
 
     /**
-     * Get Address
+     * Get Address.
      *
      * @return AddressInterface Address
      */
     public function getAddress();
 
     /**
-     * Sets Address
+     * Sets Address.
      *
      * @param AddressInterface $address Address
      *
@@ -179,14 +179,14 @@ interface StoreInterface
     public function setAddress(AddressInterface $address);
 
     /**
-     * Get DefaultLanguage
+     * Get DefaultLanguage.
      *
      * @return LanguageInterface DefaultLanguage
      */
     public function getDefaultLanguage();
 
     /**
-     * Sets DefaultLanguage
+     * Sets DefaultLanguage.
      *
      * @param LanguageInterface $defaultLanguage DefaultLanguage
      *
@@ -195,14 +195,14 @@ interface StoreInterface
     public function setDefaultLanguage(LanguageInterface $defaultLanguage);
 
     /**
-     * Get DefaultCurrency
+     * Get DefaultCurrency.
      *
      * @return CurrencyInterface DefaultCurrency
      */
     public function getDefaultCurrency();
 
     /**
-     * Sets DefaultCurrency
+     * Sets DefaultCurrency.
      *
      * @param CurrencyInterface $defaultCurrency DefaultCurrency
      *
@@ -211,14 +211,14 @@ interface StoreInterface
     public function setDefaultCurrency(CurrencyInterface $defaultCurrency);
 
     /**
-     * Get RoutingStrategy
+     * Get RoutingStrategy.
      *
      * @return string RoutingStrategy
      */
     public function getRoutingStrategy();
 
     /**
-     * Sets RoutingStrategy
+     * Sets RoutingStrategy.
      *
      * @param string $routingStrategy RoutingStrategy
      *
@@ -227,14 +227,14 @@ interface StoreInterface
     public function setRoutingStrategy($routingStrategy);
 
     /**
-     * Get Logo
+     * Get Logo.
      *
      * @return ImageInterface Logo
      */
     public function getLogo();
 
     /**
-     * Sets Logo
+     * Sets Logo.
      *
      * @param ImageInterface $logo Logo
      *
@@ -243,14 +243,14 @@ interface StoreInterface
     public function setLogo(ImageInterface $logo);
 
     /**
-     * Get SecondaryLogo
+     * Get SecondaryLogo.
      *
      * @return ImageInterface SecondaryLogo
      */
     public function getSecondaryLogo();
 
     /**
-     * Sets SecondaryLogo
+     * Sets SecondaryLogo.
      *
      * @param ImageInterface $secondaryLogo SecondaryLogo
      *
@@ -259,14 +259,14 @@ interface StoreInterface
     public function setSecondaryLogo(ImageInterface $secondaryLogo);
 
     /**
-     * Get MobileLogo
+     * Get MobileLogo.
      *
      * @return ImageInterface MobileLogo
      */
     public function getMobileLogo();
 
     /**
-     * Sets MobileLogo
+     * Sets MobileLogo.
      *
      * @param ImageInterface $mobileLogo MobileLogo
      *
@@ -275,14 +275,14 @@ interface StoreInterface
     public function setMobileLogo(ImageInterface $mobileLogo);
 
     /**
-     * Get HeaderImage
+     * Get HeaderImage.
      *
      * @return ImageInterface HeaderImage
      */
     public function getHeaderImage();
 
     /**
-     * Sets HeaderImage
+     * Sets HeaderImage.
      *
      * @param ImageInterface $headerImage HeaderImage
      *
@@ -291,14 +291,14 @@ interface StoreInterface
     public function setHeaderImage(ImageInterface $headerImage);
 
     /**
-     * Get BackgroundImage
+     * Get BackgroundImage.
      *
      * @return ImageInterface BackgroundImage
      */
     public function getBackgroundImage();
 
     /**
-     * Sets BackgroundImage
+     * Sets BackgroundImage.
      *
      * @param ImageInterface $backgroundImage BackgroundImage
      *

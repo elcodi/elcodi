@@ -32,7 +32,7 @@ use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\User\Entity\Customer;
 
 /**
- * Class CartOrderTransformerTest
+ * Class CartOrderTransformerTest.
  */
 class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
 {
@@ -58,7 +58,7 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
     protected $cartLineOrderLineTransformer;
 
     /**
-     * Setup
+     * Setup.
      */
     public function setUp()
     {
@@ -99,7 +99,7 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * test Create Order from Cart
+     * test Create Order from Cart.
      *
      * @group order
      */
@@ -142,7 +142,7 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * test Create Order from Cart
+     * test Create Order from Cart.
      *
      * @group order
      */
@@ -186,7 +186,7 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test dimensions transformation
+     * Test dimensions transformation.
      *
      * @group Order
      */

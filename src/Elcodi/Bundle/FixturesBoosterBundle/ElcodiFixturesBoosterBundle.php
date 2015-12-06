@@ -25,7 +25,7 @@ use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 use Elcodi\Bundle\FixturesBoosterBundle\DependencyInjection\ElcodiFixturesBoosterExtension;
 
 /**
- * Class ElcodiFixturesBoosterBundle
+ * Class ElcodiFixturesBoosterBundle.
  */
 class ElcodiFixturesBoosterBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
@@ -40,7 +40,7 @@ class ElcodiFixturesBoosterBundle extends AbstractElcodiBundle implements Depend
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

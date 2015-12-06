@@ -21,7 +21,7 @@ use Elcodi\Component\Cart\Event\CartOnLoadEvent;
 use Elcodi\Component\CartCoupon\Services\CartCouponValidator;
 
 /**
- * Class ValidateCouponsFromCartEventListener
+ * Class ValidateCouponsFromCartEventListener.
  *
  * This event listener should update the cart given in the event, applying
  * all the coupon features.
@@ -36,7 +36,7 @@ final class ValidateCouponsFromCartEventListener
     private $cartCouponValidator;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param CartCouponValidator $cartCouponValidator Cart Coupon validator
      */
@@ -46,7 +46,7 @@ final class ValidateCouponsFromCartEventListener
     }
 
     /**
-     * Method subscribed to CartLoad event
+     * Method subscribed to CartLoad event.
      *
      * Checks if all Coupons applied to current cart are still valid.
      * If are not, they will be deleted from the Cart and new Event typeof

@@ -22,7 +22,7 @@ use Symfony\Component\EventDispatcher\Event;
 use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 
 /**
- * Event fired when a customer password is recovered
+ * Event fired when a customer password is recovered.
  *
  * This event send an email to customer
  */
@@ -36,7 +36,7 @@ final class PasswordRecoverEvent extends Event
     private $user;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param AbstractUserInterface $user User
      */
@@ -46,7 +46,7 @@ final class PasswordRecoverEvent extends Event
     }
 
     /**
-     * Get user
+     * Get user.
      *
      * @return AbstractUserInterface User
      */

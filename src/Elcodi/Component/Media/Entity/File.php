@@ -21,7 +21,7 @@ use Elcodi\Component\Media\Entity\Abstracts\Media;
 use Elcodi\Component\Media\Entity\Interfaces\FileInterface;
 
 /**
- * Class File
+ * Class File.
  */
 class File extends Media implements FileInterface
 {
@@ -47,7 +47,7 @@ class File extends Media implements FileInterface
     protected $extension;
 
     /**
-     * @var integer
+     * @var int
      *
      * Size
      */
@@ -61,7 +61,7 @@ class File extends Media implements FileInterface
     protected $content;
 
     /**
-     * Set path
+     * Set path.
      *
      * @param string $path Path to file
      *
@@ -75,7 +75,7 @@ class File extends Media implements FileInterface
     }
 
     /**
-     * Get path
+     * Get path.
      *
      * @return string Path
      */
@@ -85,7 +85,7 @@ class File extends Media implements FileInterface
     }
 
     /**
-     * Set the mime type of this media element
+     * Set the mime type of this media element.
      *
      * @param string $contentType Content type
      *
@@ -99,7 +99,7 @@ class File extends Media implements FileInterface
     }
 
     /**
-     * Get the mime type of this media element
+     * Get the mime type of this media element.
      *
      * @return string Content type
      */
@@ -109,7 +109,7 @@ class File extends Media implements FileInterface
     }
 
     /**
-     * Set the extension of the file
+     * Set the extension of the file.
      *
      * @param string $extension Extension
      *
@@ -123,7 +123,7 @@ class File extends Media implements FileInterface
     }
 
     /**
-     * Get the extension of the file
+     * Get the extension of the file.
      *
      * @return string Extension
      */
@@ -133,9 +133,9 @@ class File extends Media implements FileInterface
     }
 
     /**
-     * Set the file size in bytes
+     * Set the file size in bytes.
      *
-     * @param integer $size Size
+     * @param int $size Size
      *
      * @return $this Self object
      */
@@ -147,9 +147,9 @@ class File extends Media implements FileInterface
     }
 
     /**
-     * Get the file size in bytes
+     * Get the file size in bytes.
      *
-     * @return integer Size
+     * @return int Size
      */
     public function getSize()
     {
@@ -157,7 +157,7 @@ class File extends Media implements FileInterface
     }
 
     /**
-     * Set the content
+     * Set the content.
      *
      * @param string $content Content
      *
@@ -171,7 +171,7 @@ class File extends Media implements FileInterface
     }
 
     /**
-     * Get the content
+     * Get the content.
      *
      * @return string Content
      */

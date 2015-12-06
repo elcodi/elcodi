@@ -26,7 +26,7 @@ use Elcodi\Component\MetaData\Entity\Traits\MetaDataTrait;
 use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 
 /**
- * Class Category
+ * Class Category.
  */
 class Category implements CategoryInterface
 {
@@ -72,21 +72,21 @@ class Category implements CategoryInterface
     protected $products;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * Category is a root category
      */
     protected $root;
 
     /**
-     * @var integer
+     * @var int
      *
      * Position order to show in menu
      */
     protected $position;
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name Name
      *
@@ -100,7 +100,7 @@ class Category implements CategoryInterface
     }
 
     /**
-     * Return name
+     * Return name.
      *
      * @return string name
      */
@@ -110,7 +110,7 @@ class Category implements CategoryInterface
     }
 
     /**
-     * Set slug
+     * Set slug.
      *
      * @param string $slug Slug
      *
@@ -124,7 +124,7 @@ class Category implements CategoryInterface
     }
 
     /**
-     * Get slug
+     * Get slug.
      *
      * @return string Slug
      */
@@ -134,7 +134,7 @@ class Category implements CategoryInterface
     }
 
     /**
-     * Set subcategories
+     * Set subcategories.
      *
      * @param Collection $subCategories Sub categories
      *
@@ -148,7 +148,7 @@ class Category implements CategoryInterface
     }
 
     /**
-     * Get subcategories
+     * Get subcategories.
      *
      * @return Collection Subcategories
      */
@@ -158,7 +158,7 @@ class Category implements CategoryInterface
     }
 
     /**
-     * Add Subcategory
+     * Add Subcategory.
      *
      * @param CategoryInterface $category Category to add as subcategory
      *
@@ -172,7 +172,7 @@ class Category implements CategoryInterface
     }
 
     /**
-     * Remove subcategory
+     * Remove subcategory.
      *
      * @param CategoryInterface $category
      *
@@ -186,7 +186,7 @@ class Category implements CategoryInterface
     }
 
     /**
-     * Set category parent
+     * Set category parent.
      *
      * @param CategoryInterface|null $parent Category parent
      *
@@ -200,7 +200,7 @@ class Category implements CategoryInterface
     }
 
     /**
-     * Get category parent
+     * Get category parent.
      *
      * @return CategoryInterface Category parent
      */
@@ -210,7 +210,7 @@ class Category implements CategoryInterface
     }
 
     /**
-     * Set products
+     * Set products.
      *
      * @param Collection $products Products
      *
@@ -224,7 +224,7 @@ class Category implements CategoryInterface
     }
 
     /**
-     * Get products
+     * Get products.
      *
      * @return Collection
      */
@@ -234,7 +234,7 @@ class Category implements CategoryInterface
     }
 
     /**
-     * @param boolean $root
+     * @param bool $root
      *
      * @return $this Self object
      */
@@ -246,9 +246,9 @@ class Category implements CategoryInterface
     }
 
     /**
-     * Get if is root
+     * Get if is root.
      *
-     * @return boolean
+     * @return bool
      */
     public function isRoot()
     {
@@ -256,9 +256,9 @@ class Category implements CategoryInterface
     }
 
     /**
-     * Set position
+     * Set position.
      *
-     * @param integer $position Category relative position
+     * @param int $position Category relative position
      *
      * @return $this Self object
      */
@@ -270,9 +270,9 @@ class Category implements CategoryInterface
     }
 
     /**
-     * Return Position
+     * Return Position.
      *
-     * @return integer Category relative position
+     * @return int Category relative position
      */
     public function getPosition()
     {
@@ -280,7 +280,7 @@ class Category implements CategoryInterface
     }
 
     /**
-     * To string method
+     * To string method.
      *
      * @return string
      */

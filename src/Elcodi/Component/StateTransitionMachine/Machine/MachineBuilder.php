@@ -28,7 +28,7 @@ use Elcodi\Component\StateTransitionMachine\Exception\TransitionNotValidExceptio
 use Elcodi\Component\StateTransitionMachine\Factory\MachineFactory;
 
 /**
- * Class MachineBuilder
+ * Class MachineBuilder.
  */
 class MachineBuilder
 {
@@ -68,14 +68,14 @@ class MachineBuilder
     private $pointOfEntry;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * Can be cyclic
      */
     private $canBeCyclic = true;
 
     /**
-     * construct method
+     * construct method.
      *
      * @param MachineFactory $machineFactory Machine factory
      * @param string         $machineId      Machine id
@@ -96,9 +96,9 @@ class MachineBuilder
     }
 
     /**
-     * Set allow cycles
+     * Set allow cycles.
      *
-     * @param boolean $canBeCyclic The Machine can be cyclic
+     * @param bool $canBeCyclic The Machine can be cyclic
      *
      * @return $this Self object
      */
@@ -110,7 +110,7 @@ class MachineBuilder
     }
 
     /**
-     * Compile machine
+     * Compile machine.
      *
      * @throws TransitionNotValidException                  Transition not valid
      * @throws StateNotValidException                       state is not valid
@@ -124,7 +124,7 @@ class MachineBuilder
         $nodesVisited = [];
 
         /**
-         * Checking the configuration
+         * Checking the configuration.
          */
         $this
             ->checkTransitionsConfiguration($this->configuration)
@@ -139,12 +139,12 @@ class MachineBuilder
             );
 
         /**
-         * Once checked we compile the structure
+         * Once checked we compile the structure.
          */
         $this->transitionChain = $this->compileTransitions($this->configuration);
 
         /**
-         * We check the compilation
+         * We check the compilation.
          */
         $this
             ->checkTransitionDuplicates($this->transitionChain)
@@ -163,7 +163,7 @@ class MachineBuilder
 
     /**
      * Given an array of configuration, checks that all data is prepared for
-     * being compiled
+     * being compiled.
      *
      * @param array $configuration Configuration
      *
@@ -195,7 +195,7 @@ class MachineBuilder
     }
 
     /**
-     * Check point of entry
+     * Check point of entry.
      *
      * @param array  $configuration Configuration
      * @param string $pointOfEntry  Point of entry
@@ -216,7 +216,7 @@ class MachineBuilder
     }
 
     /**
-     * Check cycles
+     * Check cycles.
      *
      * @param array  $configuration Configuration
      * @param string $node          Node to check
@@ -255,7 +255,7 @@ class MachineBuilder
     }
 
     /**
-     * Compile transitions and return structure compiled
+     * Compile transitions and return structure compiled.
      *
      * @param array $configuration Configuration
      *
@@ -287,7 +287,7 @@ class MachineBuilder
     }
 
     /**
-     * Check transitions duplicates
+     * Check transitions duplicates.
      *
      * An transition from a state should exist once
      *
@@ -327,7 +327,7 @@ class MachineBuilder
     }
 
     /**
-     * Compile next states of each state
+     * Compile next states of each state.
      *
      * @param TransitionChain $transitionChain Transition chain
      *

@@ -21,7 +21,7 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Product\Services\ProductCollectionProvider;
 
 /**
- * Tests ProductCollectionProvider class
+ * Tests ProductCollectionProvider class.
  */
 class ProductCollectionProviderTest extends WebTestCase
 {
@@ -33,7 +33,7 @@ class ProductCollectionProviderTest extends WebTestCase
     protected $productCollectionProvider;
 
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -45,7 +45,7 @@ class ProductCollectionProviderTest extends WebTestCase
     }
 
     /**
-     * Setup
+     * Setup.
      */
     public function setUp()
     {
@@ -56,7 +56,7 @@ class ProductCollectionProviderTest extends WebTestCase
     }
 
     /**
-     * Test get home products
+     * Test get home products.
      *
      * @dataProvider dataGetHomeProducts
      */
@@ -71,7 +71,7 @@ class ProductCollectionProviderTest extends WebTestCase
     }
 
     /**
-     * Count values for testGetHomeProducts
+     * Count values for testGetHomeProducts.
      */
     public function dataGetHomeProducts()
     {
@@ -86,7 +86,7 @@ class ProductCollectionProviderTest extends WebTestCase
     }
 
     /**
-     * Test get home products
+     * Test get home products.
      *
      * @dataProvider dataGetOfferProducts
      */
@@ -101,7 +101,7 @@ class ProductCollectionProviderTest extends WebTestCase
     }
 
     /**
-     * Count values for testGetOfferProducts
+     * Count values for testGetOfferProducts.
      */
     public function dataGetOfferProducts()
     {

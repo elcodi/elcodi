@@ -29,12 +29,12 @@ use Elcodi\Component\Rule\CompilerPass\ContextCompilerPass;
 use Elcodi\Component\Rule\CompilerPass\ExpressionLanguageCompilerPass;
 
 /**
- * Class ElcodiRuleBundle
+ * Class ElcodiRuleBundle.
  */
 class ElcodiRuleBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
     /**
-     * Builds bundle
+     * Builds bundle.
      *
      * @param ContainerBuilder $container Container
      */
@@ -43,7 +43,7 @@ class ElcodiRuleBundle extends AbstractElcodiBundle implements DependentBundleIn
         parent::build($container);
 
         /**
-         * Adds compiler pass
+         * Adds compiler pass.
          */
         $container
             ->addCompilerPass(new MappingCompilerPass())
@@ -62,7 +62,7 @@ class ElcodiRuleBundle extends AbstractElcodiBundle implements DependentBundleIn
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

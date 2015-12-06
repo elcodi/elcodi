@@ -20,7 +20,7 @@ namespace Elcodi\Component\Menu\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class NodeRepository
+ * Class NodeRepository.
  */
 class NodeRepository extends EntityRepository
 {

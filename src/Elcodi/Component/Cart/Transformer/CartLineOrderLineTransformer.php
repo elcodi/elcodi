@@ -27,7 +27,7 @@ use Elcodi\Component\Cart\EventDispatcher\OrderLineEventDispatcher;
 use Elcodi\Component\Cart\Factory\OrderLineFactory;
 
 /**
- * Class CartLineOrderLineTransformer
+ * Class CartLineOrderLineTransformer.
  *
  * Api Methods:
  *
@@ -53,7 +53,7 @@ class CartLineOrderLineTransformer
     private $orderLineFactory;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param OrderLineEventDispatcher $orderLineEventDispatcher Event dispatcher
      * @param OrderLineFactory         $orderLineFactory         OrderLineFactory
@@ -67,7 +67,7 @@ class CartLineOrderLineTransformer
     }
 
     /**
-     * Given a set of CartLines, return a set of OrderLines
+     * Given a set of CartLines, return a set of OrderLines.
      *
      * @param OrderInterface $order     Order
      * @param Collection     $cartLines Set of CartLines
@@ -98,7 +98,7 @@ class CartLineOrderLineTransformer
     }
 
     /**
-     * Given a cart line, creates a new order line
+     * Given a cart line, creates a new order line.
      *
      * @param OrderInterface    $order    Order
      * @param CartLineInterface $cartLine Cart Line

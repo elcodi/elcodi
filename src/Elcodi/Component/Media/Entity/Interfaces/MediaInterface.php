@@ -22,7 +22,7 @@ use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
- * Interface MediaInterface
+ * Interface MediaInterface.
  */
 interface MediaInterface
     extends
@@ -31,7 +31,7 @@ interface MediaInterface
     DateTimeInterface
 {
     /**
-     * The name of this media, e.g. for managing media documents
+     * The name of this media, e.g. for managing media documents.
      *
      * For example an image file name.
      *
@@ -40,7 +40,7 @@ interface MediaInterface
     public function getName();
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name Name
      *

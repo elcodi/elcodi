@@ -23,7 +23,7 @@ use Elcodi\Component\Comment\Repository\CommentRepository;
 use Elcodi\Component\Core\Wrapper\Abstracts\AbstractCacheWrapper;
 
 /**
- * Class CommentCache
+ * Class CommentCache.
  */
 class CommentCache extends AbstractCacheWrapper
 {
@@ -56,7 +56,7 @@ class CommentCache extends AbstractCacheWrapper
     private $key;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CommentRepository $commentRepository Comment Repository
      * @param VoteManager       $voteManager       Vote manager
@@ -73,7 +73,7 @@ class CommentCache extends AbstractCacheWrapper
     }
 
     /**
-     * Get comment tree
+     * Get comment tree.
      *
      * @param string $source  Source of comments
      * @param string $context Context of comment
@@ -115,12 +115,12 @@ class CommentCache extends AbstractCacheWrapper
         }
 
         /**
-         * Fetch key from cache
+         * Fetch key from cache.
          */
         $commentTree = $this->loadCommentTreeFromCache($source, $context);
 
         /**
-         * If cache key is empty, build it
+         * If cache key is empty, build it.
          */
         if (empty($commentTree)) {
             $commentTree = $this->buildCommentTreeAndSaveIntoCache($source, $context);
@@ -132,7 +132,7 @@ class CommentCache extends AbstractCacheWrapper
     }
 
     /**
-     * Invalidates cache from source
+     * Invalidates cache from source.
      *
      * @param string $source  Source of comments
      * @param string $context Context of comment
@@ -159,7 +159,7 @@ class CommentCache extends AbstractCacheWrapper
     }
 
     /**
-     * Invalidates cache and reload all cache from source
+     * Invalidates cache and reload all cache from source.
      *
      * @param string $source  Source of comments
      * @param string $context Context of comment
@@ -180,7 +180,7 @@ class CommentCache extends AbstractCacheWrapper
     }
 
     /**
-     * Create structure for comment
+     * Create structure for comment.
      *
      * @param CommentInterface $comment            Comment
      * @param VotePackage      $commentVotePackage Vote package
@@ -192,21 +192,21 @@ class CommentCache extends AbstractCacheWrapper
         VotePackage $commentVotePackage = null
     ) {
         $commentStructure = [
-            'id'            => $comment->getId(),
-            'authorName'    => $comment->getAuthorName(),
-            'authorEmail'   => $comment->getAuthorEmail(),
-            'content'       => $comment->getContent(),
-            'context'       => $comment->getContext(),
-            'createdAt'     => $comment->getCreatedAt()->format('Y-m-d H:i:s'),
-            'updatedAt'     => $comment->getUpdatedAt()->format('Y-m-d H:i:s'),
+            'id' => $comment->getId(),
+            'authorName' => $comment->getAuthorName(),
+            'authorEmail' => $comment->getAuthorEmail(),
+            'content' => $comment->getContent(),
+            'context' => $comment->getContext(),
+            'createdAt' => $comment->getCreatedAt()->format('Y-m-d H:i:s'),
+            'updatedAt' => $comment->getUpdatedAt()->format('Y-m-d H:i:s'),
         ];
 
         if ($commentVotePackage instanceof VotePackage) {
             $commentStructure = array_merge(
                 $commentStructure,
                 [
-                    'nbVotes'     => $commentVotePackage->getNbVotes(),
-                    'nbUpVotes'   => $commentVotePackage->getNbUpVotes(),
+                    'nbVotes' => $commentVotePackage->getNbVotes(),
+                    'nbUpVotes' => $commentVotePackage->getNbUpVotes(),
                     'nbDownVotes' => $commentVotePackage->getNbDownVotes(),
                 ]
             );
@@ -216,7 +216,7 @@ class CommentCache extends AbstractCacheWrapper
     }
 
     /**
-     * Load comment tree from cache
+     * Load comment tree from cache.
      *
      * @param string $source  Source of comments
      * @param string $context Context of comment
@@ -238,7 +238,7 @@ class CommentCache extends AbstractCacheWrapper
     }
 
     /**
-     * Build comment tree and save it into cache
+     * Build comment tree and save it into cache.
      *
      * @param string $source  Source of comments
      * @param string $context Context of comment
@@ -258,14 +258,14 @@ class CommentCache extends AbstractCacheWrapper
     }
 
     /**
-     * Build comments tree from doctrine given their source
+     * Build comments tree from doctrine given their source.
      *
      * cost O(n)
      *
      * @param string $source  Source of comments
      * @param string $context Context of comment
      *
-     * @return Array Comments tree given the source
+     * @return array Comments tree given the source
      */
     private function buildCommentTree($source, $context)
     {
@@ -274,7 +274,7 @@ class CommentCache extends AbstractCacheWrapper
             ->getAllCommentsSortedByParentAndIdAsc($source, $context);
 
         $commentTree = [
-            0          => null,
+            0 => null,
             'children' => [],
         ];
 
@@ -291,14 +291,14 @@ class CommentCache extends AbstractCacheWrapper
 
             if ($parentCommentId && !isset($commentTree[$parentCommentId])) {
                 $commentTree[$parentCommentId] = [
-                    'entity'   => null,
+                    'entity' => null,
                     'children' => [],
                 ];
             }
 
             if (!isset($commentTree[$commentId])) {
                 $commentTree[$commentId] = [
-                    'entity'   => null,
+                    'entity' => null,
                     'children' => [],
                 ];
             }
@@ -320,7 +320,7 @@ class CommentCache extends AbstractCacheWrapper
     }
 
     /**
-     * Save given comment tree into cache
+     * Save given comment tree into cache.
      *
      * @param array  $commentTree Comment tree
      * @param string $source      Source of comments
@@ -341,7 +341,7 @@ class CommentCache extends AbstractCacheWrapper
     }
 
     /**
-     * Get cache key given the source
+     * Get cache key given the source.
      *
      * @param string $source  Source of comments
      * @param string $context Context of comment

@@ -23,12 +23,12 @@ use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Menu\Entity\Menu\Menu;
 
 /**
- * Class MenuFactory
+ * Class MenuFactory.
  */
 class MenuFactory extends AbstractFactory
 {
     /**
-     * Creates an instance of Menu entity
+     * Creates an instance of Menu entity.
      *
      * @return Menu Empty entity
      */

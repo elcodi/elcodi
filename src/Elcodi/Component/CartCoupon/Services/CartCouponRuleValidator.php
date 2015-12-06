@@ -25,7 +25,7 @@ use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\Rule\Services\Interfaces\RuleManagerInterface;
 
 /**
- * Class CartCouponRuleValidator
+ * Class CartCouponRuleValidator.
  *
  * API methods:
  *
@@ -43,7 +43,7 @@ class CartCouponRuleValidator
     private $ruleManager;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param RuleManagerInterface $ruleManager Rule manager
      */
@@ -77,7 +77,7 @@ class CartCouponRuleValidator
                 ->evaluate(
                     $rule,
                     [
-                        'cart'   => $cart,
+                        'cart' => $cart,
                         'coupon' => $coupon,
                     ]
                 );

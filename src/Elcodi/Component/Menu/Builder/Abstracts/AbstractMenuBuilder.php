@@ -20,7 +20,7 @@ namespace Elcodi\Component\Menu\Builder\Abstracts;
 use Elcodi\Component\Menu\Factory\NodeFactory;
 
 /**
- * Class AbstractMenuBuilder
+ * Class AbstractMenuBuilder.
  */
 class AbstractMenuBuilder
 {
@@ -32,7 +32,7 @@ class AbstractMenuBuilder
     protected $menuNodeFactory;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param NodeFactory $menuNodeFactory Menu node factory
      */

@@ -20,12 +20,12 @@ namespace Elcodi\Component\Menu\Entity\Menu\Interfaces;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Interface SubnodesAwareInterface
+ * Interface SubnodesAwareInterface.
  */
 interface SubnodesAwareInterface
 {
     /**
-     * Add subnode
+     * Add subnode.
      *
      * @param NodeInterface $node Node
      *
@@ -34,7 +34,7 @@ interface SubnodesAwareInterface
     public function addSubnode(NodeInterface $node);
 
     /**
-     * Remove subnode
+     * Remove subnode.
      *
      * @param NodeInterface $node Node
      *
@@ -43,7 +43,7 @@ interface SubnodesAwareInterface
     public function removeSubnode(NodeInterface $node);
 
     /**
-     * Sets Subnodes
+     * Sets Subnodes.
      *
      * @param ArrayCollection $subnodes Subnodes
      *
@@ -52,14 +52,14 @@ interface SubnodesAwareInterface
     public function setSubnodes(ArrayCollection $subnodes);
 
     /**
-     * Get Subnodes
+     * Get Subnodes.
      *
      * @return ArrayCollection Subnodes
      */
     public function getSubnodes();
 
     /**
-     * Get Subnodes sorted by priority and filtered by tag
+     * Get Subnodes sorted by priority and filtered by tag.
      *
      * @return ArrayCollection Subnodes
      */
@@ -71,8 +71,8 @@ interface SubnodesAwareInterface
      *
      * This node is returned as soon as is found.
      *
-     * @param string  $subnodeName Subnode name
-     * @param boolean $inDepth     In depth
+     * @param string $subnodeName Subnode name
+     * @param bool   $inDepth     In depth
      *
      * @return NodeInterface|null Node
      */

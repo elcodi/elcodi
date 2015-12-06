@@ -21,7 +21,7 @@ use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\EntityTranslator\Entity\Interfaces\EntityTranslationInterface;
 
 /**
- * Class EntityTranslationFactory
+ * Class EntityTranslationFactory.
  */
 class EntityTranslationFactory extends AbstractFactory
 {
@@ -33,7 +33,7 @@ class EntityTranslationFactory extends AbstractFactory
      * This method must always returns an empty instance of the related Entity
      * and initializes it in a consistent state
      *
-     * @return Object Empty entity
+     * @return object Empty entity
      */
     public function create()
     {

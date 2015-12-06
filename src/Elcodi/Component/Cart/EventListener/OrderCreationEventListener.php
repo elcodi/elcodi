@@ -22,7 +22,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Elcodi\Component\Cart\Event\OrderOnCreatedEvent;
 
 /**
- * Class OrderCreationEventListener
+ * Class OrderCreationEventListener.
  *
  * These event listeners are supposed to be used when an Order is created given
  * a Cart
@@ -49,7 +49,7 @@ final class OrderCreationEventListener
     private $cartObjectManager;
 
     /**
-     * Built method
+     * Built method.
      *
      * @param ObjectManager $orderObjectManager ObjectManager for Order entity
      * @param ObjectManager $cartObjectManager  ObjectManager for Cart entity
@@ -63,7 +63,7 @@ final class OrderCreationEventListener
     }
 
     /**
-     * Performs all processes to be performed after the order creation
+     * Performs all processes to be performed after the order creation.
      *
      * Flushes all loaded order and related entities.
      *
@@ -79,7 +79,7 @@ final class OrderCreationEventListener
 
     /**
      * After an Order is created, the cart is set as Ordered enabling related
-     * flag
+     * flag.
      *
      * @param OrderOnCreatedEvent $event Event
      */

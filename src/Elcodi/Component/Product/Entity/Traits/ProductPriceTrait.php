@@ -18,14 +18,14 @@
 namespace Elcodi\Component\Product\Entity\Traits;
 
 /**
- * Trait ProductPriceTrait
+ * Trait ProductPriceTrait.
  *
  * Trait that defines common price members for a Product
  */
 trait ProductPriceTrait
 {
     /**
-     * @var integer
+     * @var int
      *
      * Product price
      */
@@ -39,7 +39,7 @@ trait ProductPriceTrait
     protected $priceCurrency;
 
     /**
-     * @var integer
+     * @var int
      *
      * Reduced price
      */
@@ -53,7 +53,7 @@ trait ProductPriceTrait
     protected $reducedPriceCurrency;
 
     /**
-     * Set price
+     * Set price.
      *
      * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount Price
      *
@@ -68,7 +68,7 @@ trait ProductPriceTrait
     }
 
     /**
-     * Get price
+     * Get price.
      *
      * @return \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface Price
      */
@@ -81,7 +81,7 @@ trait ProductPriceTrait
     }
 
     /**
-     * Set price
+     * Set price.
      *
      * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount Reduced Price
      *
@@ -96,7 +96,7 @@ trait ProductPriceTrait
     }
 
     /**
-     * Get price
+     * Get price.
      *
      * @return \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface Reduced Price
      */

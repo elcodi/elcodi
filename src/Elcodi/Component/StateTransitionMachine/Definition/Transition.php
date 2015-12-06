@@ -20,7 +20,7 @@ namespace Elcodi\Component\StateTransitionMachine\Definition;
 use DateTime;
 
 /**
- * Class Transition
+ * Class Transition.
  */
 class Transition
 {
@@ -53,7 +53,7 @@ class Transition
     private $createdAt;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param string $name  Name
      * @param State  $start Starting state
@@ -68,7 +68,7 @@ class Transition
     }
 
     /**
-     * Get Name
+     * Get Name.
      *
      * @return string Transition name
      */
@@ -78,7 +78,7 @@ class Transition
     }
 
     /**
-     * Get Starting state
+     * Get Starting state.
      *
      * @return State Starting state
      */
@@ -88,7 +88,7 @@ class Transition
     }
 
     /**
-     * Get Final state
+     * Get Final state.
      *
      * @return State Final state
      */
@@ -98,7 +98,7 @@ class Transition
     }
 
     /**
-     * Get CreatedAt
+     * Get CreatedAt.
      *
      * @return DateTime CreatedAt
      */

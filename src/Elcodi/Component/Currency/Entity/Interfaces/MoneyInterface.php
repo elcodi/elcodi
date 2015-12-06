@@ -18,26 +18,26 @@
 namespace Elcodi\Component\Currency\Entity\Interfaces;
 
 /**
- * Interface MoneyInterface
+ * Interface MoneyInterface.
  */
 interface MoneyInterface
 {
     /**
-     * Gets the Money amount
+     * Gets the Money amount.
      *
-     * @return integer Amount
+     * @return int Amount
      */
     public function getAmount();
 
     /**
-     * Gets the Currency
+     * Gets the Currency.
      *
      * @return CurrencyInterface Currency
      */
     public function getCurrency();
 
     /**
-     * Compares current Money object to another
+     * Compares current Money object to another.
      *
      * Will return -1, 0, 1 if the amount of this Money object
      * is respectively less than, equal to, or greater than the other.
@@ -47,12 +47,12 @@ interface MoneyInterface
      *
      * @param MoneyInterface $other
      *
-     * @return integer Comparison value
+     * @return int Comparison value
      */
     public function compareTo(MoneyInterface $other);
 
     /**
-     * Adds a Money and returns the result as a new Money
+     * Adds a Money and returns the result as a new Money.
      *
      * @param MoneyInterface $other Other money
      *
@@ -62,7 +62,7 @@ interface MoneyInterface
     public function add(MoneyInterface $other);
 
     /**
-     * Subtracts a Money and returns the result as a new Money
+     * Subtracts a Money and returns the result as a new Money.
      *
      * @param MoneyInterface $other Other money
      *
@@ -72,7 +72,7 @@ interface MoneyInterface
     public function subtract(MoneyInterface $other);
 
     /**
-     * Multiplies current Money amount by a factor returns the result as a new Money
+     * Multiplies current Money amount by a factor returns the result as a new Money.
      *
      * @param float $factor Factor
      *
@@ -81,29 +81,29 @@ interface MoneyInterface
     public function multiply($factor);
 
     /**
-     * Tells if a Money has the same value as current Money object
+     * Tells if a Money has the same value as current Money object.
      *
      * @param MoneyInterface $other
      *
-     * @return boolean Current money equals given as parameter
+     * @return bool Current money equals given as parameter
      */
     public function equals(MoneyInterface $other);
 
     /**
-     * Tells if a Money value is greater than current Money object
+     * Tells if a Money value is greater than current Money object.
      *
      * @param MoneyInterface $other
      *
-     * @return boolean Current money is greater than given as parameter
+     * @return bool Current money is greater than given as parameter
      */
     public function isGreaterThan(MoneyInterface $other);
 
     /**
-     * Tells if a Money value is less than current Money object
+     * Tells if a Money value is less than current Money object.
      *
      * @param MoneyInterface $other
      *
-     * @return boolean Current money is less than given as parameter
+     * @return bool Current money is less than given as parameter
      */
     public function isLessThan(MoneyInterface $other);
 }

@@ -23,7 +23,7 @@ use Symfony\Component\EventDispatcher\Event;
 use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 
 /**
- * Class InitializationEvent
+ * Class InitializationEvent.
  */
 final class InitializationEvent extends Event
 {
@@ -42,7 +42,7 @@ final class InitializationEvent extends Event
     private $stateLineStack;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param mixed          $object         Object
      * @param StateLineStack $stateLineStack State line stack
@@ -56,7 +56,7 @@ final class InitializationEvent extends Event
     }
 
     /**
-     * Get Object
+     * Get Object.
      *
      * @return StdClass Object
      */
@@ -66,7 +66,7 @@ final class InitializationEvent extends Event
     }
 
     /**
-     * Get StateLine Stack
+     * Get StateLine Stack.
      *
      * @return StateLineStack
      */
@@ -76,7 +76,7 @@ final class InitializationEvent extends Event
     }
 
     /**
-     * Create new object
+     * Create new object.
      *
      * @param mixed          $object         Object
      * @param StateLineStack $stateLineStack State line stack

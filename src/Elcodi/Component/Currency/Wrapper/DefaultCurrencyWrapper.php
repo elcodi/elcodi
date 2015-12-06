@@ -23,7 +23,7 @@ use Elcodi\Component\Currency\Exception\CurrencyNotAvailableException;
 use Elcodi\Component\Currency\Repository\CurrencyRepository;
 
 /**
- * Class DefaultCurrencyWrapper
+ * Class DefaultCurrencyWrapper.
  */
 class DefaultCurrencyWrapper implements WrapperInterface
 {
@@ -42,7 +42,7 @@ class DefaultCurrencyWrapper implements WrapperInterface
     private $defaultCurrencyIsoCode;
 
     /**
-     * Currency wrapper constructor
+     * Currency wrapper constructor.
      *
      * @param CurrencyRepository $currencyRepository     Currency repository
      * @param string             $defaultCurrencyIsoCode Default currency
@@ -57,7 +57,7 @@ class DefaultCurrencyWrapper implements WrapperInterface
 
     /**
      * Get loaded object. If object is not loaded yet, then load it and save it
-     * locally. Otherwise, just return the pre-loaded object
+     * locally. Otherwise, just return the pre-loaded object.
      *
      * Returns the default persisted Currency object
      *

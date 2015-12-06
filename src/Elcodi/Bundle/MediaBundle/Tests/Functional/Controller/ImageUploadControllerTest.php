@@ -24,14 +24,14 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Media\Entity\Interfaces\FileInterface;
 
 /**
- * Class ImageUploadControllerTest
+ * Class ImageUploadControllerTest.
  */
 class ImageUploadControllerTest extends WebTestCase
 {
     /**
-     * Schema must be loaded in all test cases
+     * Schema must be loaded in all test cases.
      *
-     * @return boolean Load schema
+     * @return bool Load schema
      */
     protected static function loadSchema()
     {
@@ -39,7 +39,7 @@ class ImageUploadControllerTest extends WebTestCase
     }
 
     /**
-     * Test resize action
+     * Test resize action.
      */
     public function testUploadAction()
     {

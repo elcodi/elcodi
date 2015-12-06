@@ -21,7 +21,7 @@ use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Rule\Entity\Rule;
 
 /**
- * Class RuleFactory
+ * Class RuleFactory.
  */
 class RuleFactory extends AbstractFactory
 {

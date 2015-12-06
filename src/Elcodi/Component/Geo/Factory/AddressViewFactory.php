@@ -22,7 +22,7 @@ use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Geo\View\AddressView;
 
 /**
- * Class AddressViewFactory
+ * Class AddressViewFactory.
  */
 class AddressViewFactory
 {
@@ -34,7 +34,7 @@ class AddressViewFactory
     private $locationProvider;
 
     /**
-     * Builds a new factory
+     * Builds a new factory.
      *
      * @param LocationProviderAdapterInterface $locationProvider A location provider
      */

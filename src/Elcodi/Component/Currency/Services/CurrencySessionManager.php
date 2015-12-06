@@ -22,7 +22,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 
 /**
- * Class CurrencySessionManager
+ * Class CurrencySessionManager.
  */
 class CurrencySessionManager
 {
@@ -41,7 +41,7 @@ class CurrencySessionManager
     private $sessionFieldName;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param SessionInterface $session          HTTP session
      * @param string           $sessionFieldName Session key representing currency id
@@ -53,7 +53,7 @@ class CurrencySessionManager
     }
 
     /**
-     * Set Currency in session
+     * Set Currency in session.
      *
      * @param CurrencyInterface $currency Currency
      *
@@ -72,9 +72,9 @@ class CurrencySessionManager
     }
 
     /**
-     * Get currency id loaded in session
+     * Get currency id loaded in session.
      *
-     * @return integer Currency id
+     * @return int Currency id
      */
     public function get()
     {

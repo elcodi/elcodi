@@ -21,12 +21,12 @@ use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\StateTransitionMachine\Entity\StateLine;
 
 /**
- * Class StateLineFactory
+ * Class StateLineFactory.
  */
 class StateLineFactory extends AbstractFactory
 {
     /**
-     * Creates an instance of StateLine entity
+     * Creates an instance of StateLine entity.
      *
      * @return StateLine Empty entity
      */

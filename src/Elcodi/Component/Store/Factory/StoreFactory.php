@@ -22,7 +22,7 @@ use Elcodi\Component\Store\Entity\Store;
 use Elcodi\Component\Store\StoreRoutingStrategy;
 
 /**
- * Class StoreFactory
+ * Class StoreFactory.
  */
 class StoreFactory extends AbstractFactory
 {

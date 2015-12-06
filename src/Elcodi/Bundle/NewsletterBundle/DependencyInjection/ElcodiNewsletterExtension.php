@@ -23,7 +23,7 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * This class loads and manages your bundle configuration
+ * This class loads and manages your bundle configuration.
  */
 class ElcodiNewsletterExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
@@ -35,7 +35,7 @@ class ElcodiNewsletterExtension extends AbstractExtension implements EntitiesOve
     const EXTENSION_NAME = 'elcodi_newsletter';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -62,7 +62,7 @@ class ElcodiNewsletterExtension extends AbstractExtension implements EntitiesOve
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -77,15 +77,15 @@ class ElcodiNewsletterExtension extends AbstractExtension implements EntitiesOve
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.newsletter_subscription.class" => $config['mapping']['newsletter_subscription']['class'],
-            "elcodi.entity.newsletter_subscription.mapping_file" => $config['mapping']['newsletter_subscription']['mapping_file'],
-            "elcodi.entity.newsletter_subscription.manager" => $config['mapping']['newsletter_subscription']['manager'],
-            "elcodi.entity.newsletter_subscription.enabled" => $config['mapping']['newsletter_subscription']['enabled'],
+            'elcodi.entity.newsletter_subscription.class' => $config['mapping']['newsletter_subscription']['class'],
+            'elcodi.entity.newsletter_subscription.mapping_file' => $config['mapping']['newsletter_subscription']['mapping_file'],
+            'elcodi.entity.newsletter_subscription.manager' => $config['mapping']['newsletter_subscription']['manager'],
+            'elcodi.entity.newsletter_subscription.enabled' => $config['mapping']['newsletter_subscription']['enabled'],
         ];
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * @param array $config Configuration
      *
@@ -115,7 +115,7 @@ class ElcodiNewsletterExtension extends AbstractExtension implements EntitiesOve
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */

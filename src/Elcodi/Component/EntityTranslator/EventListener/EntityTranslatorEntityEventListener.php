@@ -23,7 +23,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Elcodi\Component\Language\Entity\Interfaces\LocaleInterface;
 
 /**
- * Class EntityTranslatorEntityEventListener
+ * Class EntityTranslatorEntityEventListener.
  */
 class EntityTranslatorEntityEventListener
 {
@@ -42,7 +42,7 @@ class EntityTranslatorEntityEventListener
     protected $locale;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param ContainerInterface $container Container
      * @param LocaleInterface    $locale    Locale
@@ -56,7 +56,7 @@ class EntityTranslatorEntityEventListener
     }
 
     /**
-     * Translate the entity to given locale
+     * Translate the entity to given locale.
      *
      * @param LifecycleEventArgs $args Arguments
      */

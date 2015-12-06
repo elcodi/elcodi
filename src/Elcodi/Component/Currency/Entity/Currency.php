@@ -22,7 +22,7 @@ use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 
 /**
- * Class Currency
+ * Class Currency.
  */
 class Currency implements CurrencyInterface
 {
@@ -51,7 +51,7 @@ class Currency implements CurrencyInterface
     protected $symbol;
 
     /**
-     * Set iso
+     * Set iso.
      *
      * @param string $iso Iso
      *
@@ -65,7 +65,7 @@ class Currency implements CurrencyInterface
     }
 
     /**
-     * Get iso
+     * Get iso.
      *
      * @return string
      */
@@ -75,7 +75,7 @@ class Currency implements CurrencyInterface
     }
 
     /**
-     * Sets Name
+     * Sets Name.
      *
      * @param string $name Name
      *
@@ -89,7 +89,7 @@ class Currency implements CurrencyInterface
     }
 
     /**
-     * Get Name
+     * Get Name.
      *
      * @return string Name
      */
@@ -99,7 +99,7 @@ class Currency implements CurrencyInterface
     }
 
     /**
-     * Set symbol
+     * Set symbol.
      *
      * @param string $symbol Symbol
      *
@@ -113,7 +113,7 @@ class Currency implements CurrencyInterface
     }
 
     /**
-     * Get symbol
+     * Get symbol.
      *
      * @return string
      */

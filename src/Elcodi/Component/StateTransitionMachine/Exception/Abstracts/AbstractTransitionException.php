@@ -20,7 +20,7 @@ namespace Elcodi\Component\StateTransitionMachine\Exception\Abstracts;
 use Exception;
 
 /**
- * Class AbstractTransitionException
+ * Class AbstractTransitionException.
  */
 abstract class AbstractTransitionException extends Exception
 {

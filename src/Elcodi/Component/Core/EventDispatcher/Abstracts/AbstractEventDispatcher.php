@@ -20,7 +20,7 @@ namespace Elcodi\Component\Core\EventDispatcher\Abstracts;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
- * Class AbstractEventDispatcher
+ * Class AbstractEventDispatcher.
  */
 abstract class AbstractEventDispatcher
 {
@@ -32,7 +32,7 @@ abstract class AbstractEventDispatcher
     protected $eventDispatcher;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param EventDispatcherInterface $eventDispatcher Event Dispatcher
      */

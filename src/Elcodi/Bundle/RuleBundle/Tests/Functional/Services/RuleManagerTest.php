@@ -22,7 +22,7 @@ use Elcodi\Component\Rule\Entity\Rule;
 use Elcodi\Component\Rule\Services\RuleManager;
 
 /**
- * Class RuleManagerTest
+ * Class RuleManagerTest.
  */
 class RuleManagerTest extends WebTestCase
 {
@@ -34,7 +34,7 @@ class RuleManagerTest extends WebTestCase
     protected $ruleManager;
 
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -46,7 +46,7 @@ class RuleManagerTest extends WebTestCase
     }
 
     /**
-     * Set up
+     * Set up.
      */
     public function setUp()
     {
@@ -56,7 +56,7 @@ class RuleManagerTest extends WebTestCase
     }
 
     /**
-     * Test if it can evaluate simple rules
+     * Test if it can evaluate simple rules.
      */
     public function testEvaluateSimpleRule()
     {
@@ -74,13 +74,13 @@ class RuleManagerTest extends WebTestCase
     }
 
     /**
-     * Evaluate compound rules
+     * Evaluate compound rules.
      *
      * @dataProvider providerEvaluateCompoundRule
      *
-     * @param integer $amount
-     * @param integer $quantity
-     * @param boolean $expected
+     * @param int  $amount
+     * @param int  $quantity
+     * @param bool $expected
      */
     public function testEvaluateCompoundRule($amount, $quantity, $expected)
     {
@@ -99,17 +99,17 @@ class RuleManagerTest extends WebTestCase
     }
 
     /**
-     * Tests for "cart.getAmount() > 1000 and cart.getQuantity() < 10"
+     * Tests for "cart.getAmount() > 1000 and cart.getQuantity() < 10".
      *
      * @return array
      */
     public function providerEvaluateCompoundRule()
     {
         return [
-           [  100, 20, false ],
-           [ 1100, 20, false ],
-           [  100,  5, false ],
-           [ 1100,  5, true  ],
+           [100, 20, false],
+           [1100, 20, false],
+           [100,  5, false],
+           [1100,  5, true],
        ];
     }
 }

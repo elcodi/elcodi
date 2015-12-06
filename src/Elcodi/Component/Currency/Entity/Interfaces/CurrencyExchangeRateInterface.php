@@ -20,12 +20,12 @@ namespace Elcodi\Component\Currency\Entity\Interfaces;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
- * Interface CurrencyExchangeRateInterface
+ * Interface CurrencyExchangeRateInterface.
  */
 interface CurrencyExchangeRateInterface extends IdentifiableInterface
 {
     /**
-     * Set the source Currency
+     * Set the source Currency.
      *
      * @param CurrencyInterface $currency
      *
@@ -34,14 +34,14 @@ interface CurrencyExchangeRateInterface extends IdentifiableInterface
     public function setSourceCurrency(CurrencyInterface $currency);
 
     /**
-     * Get the source Currency
+     * Get the source Currency.
      *
      * @return CurrencyInterface
      */
     public function getSourceCurrency();
 
     /**
-     * Set the target currency
+     * Set the target currency.
      *
      * @param CurrencyInterface $currency
      *
@@ -50,14 +50,14 @@ interface CurrencyExchangeRateInterface extends IdentifiableInterface
     public function setTargetCurrency(CurrencyInterface $currency);
 
     /**
-     * Get the target Currency
+     * Get the target Currency.
      *
      * @return CurrencyInterface
      */
     public function getTargetCurrency();
 
     /**
-     * Sets the exchange rate
+     * Sets the exchange rate.
      *
      * @param float $exchangeRate the exchange rate
      *
@@ -66,7 +66,7 @@ interface CurrencyExchangeRateInterface extends IdentifiableInterface
     public function setExchangeRate($exchangeRate);
 
     /**
-     * Gets the exchange rate
+     * Gets the exchange rate.
      *
      * @return float The exchange rate
      */

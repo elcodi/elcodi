@@ -20,12 +20,12 @@ namespace Elcodi\Component\EntityTranslator\EventListener\Interfaces;
 use Elcodi\Component\EntityTranslator\EventListener\EntityTranslatorFormEventListener;
 
 /**
- * Interface EntityTranslatableFormInterface
+ * Interface EntityTranslatableFormInterface.
  */
 interface EntityTranslatableFormInterface
 {
     /**
-     * get translator form event subscriber
+     * get translator form event subscriber.
      *
      * @return EntityTranslatorFormEventListener Event Listener
      */

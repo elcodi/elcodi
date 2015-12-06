@@ -26,7 +26,7 @@ use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 
 /**
- * Class AbstractCartManagerTest
+ * Class AbstractCartManagerTest.
  */
 abstract class AbstractCartManagerTest extends WebTestCase
 {
@@ -52,7 +52,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
     protected $purchasable;
 
     /**
-     * Set up
+     * Set up.
      */
     public function setUp()
     {
@@ -78,7 +78,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
     }
 
     /**
-     * Test add line
+     * Test add line.
      *
      * @group cart
      */
@@ -123,7 +123,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
     }
 
     /**
-     * Test remove line
+     * Test remove line.
      *
      * @group cart
      */
@@ -147,7 +147,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
     }
 
     /**
-     * Test empty lines
+     * Test empty lines.
      *
      * @group cart
      */
@@ -171,7 +171,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
     }
 
     /**
-     * Test edit cart line
+     * Test edit cart line.
      *
      * @group cart
      */
@@ -217,7 +217,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
     }
 
     /**
-     * Test set cartline quantity
+     * Test set cartline quantity.
      *
      * @param mixed $quantityStart  Starting quantity
      * @param mixed $quantitySetted Quantity to set
@@ -252,7 +252,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
     }
 
     /**
-     * Test increase cartline quantity
+     * Test increase cartline quantity.
      *
      * @param mixed $quantityStart Starting quantity
      * @param mixed $quantityAdded Quantity to add
@@ -294,7 +294,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
     }
 
     /**
-     * Test decrease cartline quantity
+     * Test decrease cartline quantity.
      *
      * @param mixed $quantityStart   Starting quantity
      * @param mixed $quantityRemoved Quantity to remove
@@ -328,7 +328,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
     }
 
     /**
-     * Test add product
+     * Test add product.
      *
      * @param mixed $quantitySet the quantity to set
      * @param mixed $quantityEnd the quantity to check against
@@ -348,7 +348,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
     }
 
     /**
-     * Test result
+     * Test result.
      *
      * @param mixed $quantity the quantity to check against
      */
@@ -392,14 +392,14 @@ abstract class AbstractCartManagerTest extends WebTestCase
     }
 
     /**
-     * Creates, flushes and returns a Purchasable
+     * Creates, flushes and returns a Purchasable.
      *
      * @return PurchasableInterface
      */
     abstract protected function createPurchasable();
 
     /**
-     * Common asserts for a test that empties lines
+     * Common asserts for a test that empties lines.
      *
      * @param CartLineInterface $line The CartLineInterface needed
      */

@@ -18,21 +18,21 @@
 namespace Elcodi\Component\Core\Entity\Interfaces;
 
 /**
- * Interface IdentifiableInterface
+ * Interface IdentifiableInterface.
  */
 interface IdentifiableInterface
 {
     /**
-     * Get Id
+     * Get Id.
      *
-     * @return integer Id
+     * @return int Id
      */
     public function getId();
 
     /**
-     * Sets Id
+     * Sets Id.
      *
-     * @param integer $id Id
+     * @param int $id Id
      *
      * @return $this Self object
      */

@@ -23,7 +23,7 @@ use Elcodi\Component\Menu\Entity\Menu\Interfaces\MenuInterface;
 use Elcodi\Component\Menu\Entity\Menu\Traits\SubnodesTrait;
 
 /**
- * Class Menu
+ * Class Menu.
  */
 class Menu implements MenuInterface
 {
@@ -46,7 +46,7 @@ class Menu implements MenuInterface
     protected $description;
 
     /**
-     * Sets Code
+     * Sets Code.
      *
      * @param string $code Code
      *
@@ -60,7 +60,7 @@ class Menu implements MenuInterface
     }
 
     /**
-     * Get Code
+     * Get Code.
      *
      * @return string Code
      */
@@ -70,7 +70,7 @@ class Menu implements MenuInterface
     }
 
     /**
-     * Sets Description
+     * Sets Description.
      *
      * @param string $description Description
      *
@@ -84,7 +84,7 @@ class Menu implements MenuInterface
     }
 
     /**
-     * Get Description
+     * Get Description.
      *
      * @return string Description
      */

@@ -22,12 +22,12 @@ repository mmoreram/symfony-bundle-dependencies. Will be removed permanently in
 v2.0.0.', E_USER_DEPRECATED);
 
 /**
- * Trait BundleDependenciesResolver
+ * Trait BundleDependenciesResolver.
  */
 trait BundleDependenciesResolver
 {
     /**
-     * Get bundle instances given the namespace stack
+     * Get bundle instances given the namespace stack.
      *
      * @param \Symfony\Component\HttpKernel\KernelInterface $kernel  Kernel
      * @param array                                         $bundles Bundles defined by instances or namespaces
@@ -148,7 +148,7 @@ trait BundleDependenciesResolver
     }
 
     /**
-     * Given a bundle instance or a namespace, return its namespace
+     * Given a bundle instance or a namespace, return its namespace.
      *
      * @param \Symfony\Component\HttpKernel\Bundle\Bundle|string $bundle Bundle defined by Instance or Namespace
      *
@@ -162,7 +162,7 @@ trait BundleDependenciesResolver
     }
 
     /**
-     * Given a bundle instance or a namespace, return the instance
+     * Given a bundle instance or a namespace, return the instance.
      *
      * @param \Symfony\Component\HttpKernel\Bundle\Bundle|string $bundle Bundle defined by Instance or Namespace
      *

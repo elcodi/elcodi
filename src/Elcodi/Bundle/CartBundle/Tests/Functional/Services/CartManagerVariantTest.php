@@ -26,7 +26,7 @@ use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
 
 /**
- * Class CartManagerVariantTest
+ * Class CartManagerVariantTest.
  *
  * This will test CartManager common methods using a Product with variants
  */
@@ -40,7 +40,7 @@ class CartManagerVariantTest extends AbstractCartManagerTest
     protected $variant;
 
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -54,7 +54,7 @@ class CartManagerVariantTest extends AbstractCartManagerTest
     }
 
     /**
-     * Creates, flushes and returns a Purchasable
+     * Creates, flushes and returns a Purchasable.
      *
      * @return PurchasableInterface
      */
@@ -128,7 +128,7 @@ class CartManagerVariantTest extends AbstractCartManagerTest
     }
 
     /**
-     * Testing that a purchasable is a Variant
+     * Testing that a purchasable is a Variant.
      */
     public function testPurchasableIsVariant()
     {
@@ -140,7 +140,7 @@ class CartManagerVariantTest extends AbstractCartManagerTest
 
     /**
      * Testing that the same purchasable does not generate
-     * two different CartLine
+     * two different CartLine.
      */
     public function testAddSameVariantTwice()
     {
@@ -157,7 +157,7 @@ class CartManagerVariantTest extends AbstractCartManagerTest
     }
 
     /**
-     * Data for testIncreaseCartLineQuantity
+     * Data for testIncreaseCartLineQuantity.
      */
     public function dataIncreaseCartLineQuantity()
     {
@@ -178,7 +178,7 @@ class CartManagerVariantTest extends AbstractCartManagerTest
     }
 
     /**
-     * Data for testDecreaseCartLineQuantity
+     * Data for testDecreaseCartLineQuantity.
      */
     public function dataDecreaseCartLineQuantity()
     {
@@ -198,7 +198,7 @@ class CartManagerVariantTest extends AbstractCartManagerTest
     }
 
     /**
-     * Data for testSetCartLineQuantity
+     * Data for testSetCartLineQuantity.
      */
     public function dataSetCartLineQuantity()
     {
@@ -219,7 +219,7 @@ class CartManagerVariantTest extends AbstractCartManagerTest
     }
 
     /**
-     * Data for testAddProduct
+     * Data for testAddProduct.
      */
     public function dataAddProduct()
     {
@@ -238,7 +238,7 @@ class CartManagerVariantTest extends AbstractCartManagerTest
 
     /**
      * Adding an Option to a Variant if a parent Product is not set must throw
-     * a LogicException
+     * a LogicException.
      *
      * @expectedException \LogicException
      */

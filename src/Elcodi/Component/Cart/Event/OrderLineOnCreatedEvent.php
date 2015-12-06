@@ -24,7 +24,7 @@ use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface;
 
 /**
- * Class OrderLineOnCreatedEvent
+ * Class OrderLineOnCreatedEvent.
  */
 final class OrderLineOnCreatedEvent extends Event
 {
@@ -50,7 +50,7 @@ final class OrderLineOnCreatedEvent extends Event
     private $orderLine;
 
     /**
-     * construct method
+     * construct method.
      *
      * @param OrderInterface     $order     Order line
      * @param CartLineInterface  $cartLine  Cart line
@@ -67,7 +67,7 @@ final class OrderLineOnCreatedEvent extends Event
     }
 
     /**
-     * Get order
+     * Get order.
      *
      * @return OrderInterface Order
      */
@@ -77,7 +77,7 @@ final class OrderLineOnCreatedEvent extends Event
     }
 
     /**
-     * Get cartLine
+     * Get cartLine.
      *
      * @return CartLineInterface Cart Line
      */
@@ -87,7 +87,7 @@ final class OrderLineOnCreatedEvent extends Event
     }
 
     /**
-     * Get cartLine
+     * Get cartLine.
      *
      * @return OrderLineInterface Order Line
      */

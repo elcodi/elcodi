@@ -21,7 +21,7 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Configuration\Services\ConfigurationManager;
 
 /**
- * Class ConfigurationManagerTest
+ * Class ConfigurationManagerTest.
  */
 class ConfigurationManagerTest extends WebTestCase
 {
@@ -33,7 +33,7 @@ class ConfigurationManagerTest extends WebTestCase
     protected $configurationManager;
 
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -45,7 +45,7 @@ class ConfigurationManagerTest extends WebTestCase
     }
 
     /**
-     * Test get value from existing value in database
+     * Test get value from existing value in database.
      */
     public function testGetParameterExisting()
     {
@@ -61,7 +61,7 @@ class ConfigurationManagerTest extends WebTestCase
                 'Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface',
                 $this->find('Configuration', [
                     'namespace' => 'app',
-                    'key'       => 'my_boolean_parameter',
+                    'key' => 'my_boolean_parameter',
                 ])
             );
 
@@ -82,7 +82,7 @@ class ConfigurationManagerTest extends WebTestCase
     }
 
     /**
-     * Test get value from non existing value in database
+     * Test get value from non existing value in database.
      */
     public function testGetParameterNonExisting()
     {
@@ -97,7 +97,7 @@ class ConfigurationManagerTest extends WebTestCase
             ->assertNull(
                 $this->find('Configuration', [
                     'namespace' => '',
-                    'key'       => 'my_parameter',
+                    'key' => 'my_parameter',
                 ])
             );
 
@@ -121,13 +121,13 @@ class ConfigurationManagerTest extends WebTestCase
                 'Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface',
                 $this->find('Configuration', [
                     'namespace' => '',
-                    'key'       => 'my_parameter',
+                    'key' => 'my_parameter',
                 ])
             );
     }
 
     /**
-     * Tests getting a non-existing parameter
+     * Tests getting a non-existing parameter.
      *
      * @expectedException \Elcodi\Component\Configuration\Exception\ConfigurationParameterNotFoundException
      */
@@ -139,7 +139,7 @@ class ConfigurationManagerTest extends WebTestCase
     }
 
     /**
-     * Test get value from previously inserted value in database
+     * Test get value from previously inserted value in database.
      */
     public function testGetParameterInsertedExisting()
     {
@@ -161,7 +161,7 @@ class ConfigurationManagerTest extends WebTestCase
                 'Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface',
                 $this->find('Configuration', [
                     'namespace' => '',
-                    'key'       => 'my_parameter',
+                    'key' => 'my_parameter',
                 ])
             );
 
@@ -182,7 +182,7 @@ class ConfigurationManagerTest extends WebTestCase
     }
 
     /**
-     * Test write immutable value with different value than expected
+     * Test write immutable value with different value than expected.
      *
      * @expectedException \Elcodi\Component\Configuration\Exception\ConfigurationNotEditableException
      */
@@ -205,7 +205,7 @@ class ConfigurationManagerTest extends WebTestCase
                 $this
                     ->find('Configuration', [
                         'namespace' => '',
-                        'key'       => 'my_immutable_parameter',
+                        'key' => 'my_immutable_parameter',
                     ])
                     ->getValue()
             );
@@ -216,7 +216,7 @@ class ConfigurationManagerTest extends WebTestCase
     }
 
     /**
-     * Test deletion of an immutable parameter
+     * Test deletion of an immutable parameter.
      *
      * @expectedException \Elcodi\Component\Configuration\Exception\ConfigurationNotEditableException
      */
@@ -228,14 +228,14 @@ class ConfigurationManagerTest extends WebTestCase
     }
 
     /**
-     * Test parameter deletion
+     * Test parameter deletion.
      */
     public function testDeleteParameter()
     {
         $this->reloadScenario();
 
         /**
-         * Deletion of a non-persisted parameter should return false
+         * Deletion of a non-persisted parameter should return false.
          */
         $this
             ->assertFalse(
@@ -245,7 +245,7 @@ class ConfigurationManagerTest extends WebTestCase
             );
 
         /**
-         * Deletion of a persisted parameter should return true
+         * Deletion of a persisted parameter should return true.
          */
         $this
             ->get('elcodi.manager.configuration')
@@ -258,7 +258,7 @@ class ConfigurationManagerTest extends WebTestCase
             );
 
         /**
-         * Deleted parameter should not be found in cache
+         * Deleted parameter should not be found in cache.
          */
         $this
             ->assertFalse(
@@ -268,20 +268,20 @@ class ConfigurationManagerTest extends WebTestCase
             );
 
         /**
-         * Deleted parameter should be flushed from the DB
+         * Deleted parameter should be flushed from the DB.
          */
         $this->assertNull(
             $this
                 ->get('elcodi.repository.configuration')
                 ->find([
                     'namespace' => '',
-                    'key'       => 'my_parameter',
+                    'key' => 'my_parameter',
                 ])
             );
     }
 
     /**
-     * Test deletion of a non-existing parameter
+     * Test deletion of a non-existing parameter.
      *
      * @expectedException \Elcodi\Component\Configuration\Exception\ConfigurationParameterNotFoundException
      */

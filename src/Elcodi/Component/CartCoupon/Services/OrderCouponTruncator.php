@@ -24,7 +24,7 @@ use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\CartCoupon\Repository\OrderCouponRepository;
 
 /**
- * Class OrderCouponTruncator
+ * Class OrderCouponTruncator.
  *
  * API methods:
  *
@@ -49,7 +49,7 @@ class OrderCouponTruncator
     private $orderCouponObjectManager;
 
     /**
-     * construct method
+     * construct method.
      *
      * @param OrderCouponRepository $orderCouponRepository    OrderCoupon repository
      * @param ObjectManager         $orderCouponObjectManager OrderCoupon object manager
@@ -63,7 +63,7 @@ class OrderCouponTruncator
     }
 
     /**
-     * Purge existing OrderCoupons
+     * Purge existing OrderCoupons.
      *
      * @param OrderInterface $order Order where to delete all coupons
      *

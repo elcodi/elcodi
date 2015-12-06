@@ -21,20 +21,20 @@ use Elcodi\Component\Core\Factory\Traits\EntityNamespaceTrait;
 use Elcodi\Component\EntityTranslator\Services\Interfaces\EntityTranslationProviderInterface;
 
 /**
- * Class EntityTranslatorFactory
+ * Class EntityTranslatorFactory.
  */
 class EntityTranslatorFactory
 {
     use EntityNamespaceTrait;
 
     /**
-     * Creates an instance of a translator
+     * Creates an instance of a translator.
      *
      * @param EntityTranslationProviderInterface $entityTranslationProvider Entity Translation Provider
      * @param array                              $configuration             Configuration
-     * @param boolean                            $fallback                  Fallback
+     * @param bool                               $fallback                  Fallback
      *
-     * @return Object Empty entity
+     * @return object Empty entity
      */
     public function create(
         EntityTranslationProviderInterface $entityTranslationProvider,

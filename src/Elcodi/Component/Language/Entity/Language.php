@@ -22,7 +22,7 @@ use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 
 /**
- * Class Language
+ * Class Language.
  */
 class Language implements LanguageInterface
 {
@@ -44,7 +44,7 @@ class Language implements LanguageInterface
     protected $iso;
 
     /**
-     * Set language name
+     * Set language name.
      *
      * @param string $name Name of the shop
      *
@@ -58,7 +58,7 @@ class Language implements LanguageInterface
     }
 
     /**
-     * Get shop name
+     * Get shop name.
      *
      * @return string Name
      */
@@ -68,7 +68,7 @@ class Language implements LanguageInterface
     }
 
     /**
-     * Set iso
+     * Set iso.
      *
      * @param string $iso Iso
      *
@@ -82,7 +82,7 @@ class Language implements LanguageInterface
     }
 
     /**
-     * Get iso
+     * Get iso.
      *
      * @return string Iso
      */
@@ -92,9 +92,9 @@ class Language implements LanguageInterface
     }
 
     /**
-     * To string
+     * To string.
      *
-     * @return String
+     * @return string
      */
     public function __toString()
     {

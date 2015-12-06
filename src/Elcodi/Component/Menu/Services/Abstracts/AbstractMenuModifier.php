@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Menu\Services\Abstracts;
 
 /**
- * Class AbstractMenuModifier
+ * Class AbstractMenuModifier.
  */
 abstract class AbstractMenuModifier
 {
@@ -51,12 +51,12 @@ abstract class AbstractMenuModifier
     private $priorities = [];
 
     /**
-     * Add element
+     * Add element.
      *
      * @param mixed        $element  Element
      * @param array|string $menus    Menu codes
      * @param string       $stage    Stage
-     * @param integer      $priority Priority
+     * @param int          $priority Priority
      *
      * @return $this Self object
      */
@@ -94,7 +94,7 @@ abstract class AbstractMenuModifier
     }
 
     /**
-     * Get elements given a stage and the code of the menu
+     * Get elements given a stage and the code of the menu.
      *
      * @param string $menuCode Menu code
      * @param string $stage    Stage
@@ -134,7 +134,7 @@ abstract class AbstractMenuModifier
     }
 
     /**
-     * Add element by menu code
+     * Add element by menu code.
      *
      * @param mixed  $element  Element
      * @param string $menuCode Menu code
@@ -156,7 +156,7 @@ abstract class AbstractMenuModifier
     }
 
     /**
-     * Add element by stage
+     * Add element by stage.
      *
      * @param mixed  $element Element
      * @param string $stage   Stage

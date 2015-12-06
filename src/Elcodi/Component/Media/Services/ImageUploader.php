@@ -25,7 +25,7 @@ use Elcodi\Component\Media\EventDispatcher\MediaEventDispatcher;
 use Elcodi\Component\Media\Exception\InvalidImageException;
 
 /**
- * Class ImageUploader
+ * Class ImageUploader.
  */
 class ImageUploader
 {
@@ -58,7 +58,7 @@ class ImageUploader
     private $mediaEventDispatcher;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param ObjectManager        $imageObjectManager   Image Object Manager
      * @param FileManager          $fileManager          File Manager
@@ -78,7 +78,7 @@ class ImageUploader
     }
 
     /**
-     * Upload an image
+     * Upload an image.
      *
      * @param UploadedFile $file File to upload
      *

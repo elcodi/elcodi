@@ -23,7 +23,7 @@ use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Media\Entity\Interfaces\MediaInterface;
 
 /**
- * Class Media
+ * Class Media.
  */
 abstract class Media implements MediaInterface
 {
@@ -39,7 +39,7 @@ abstract class Media implements MediaInterface
     protected $name;
 
     /**
-     * The name of this media, e.g. for managing media documents
+     * The name of this media, e.g. for managing media documents.
      *
      * For example an image file name.
      *
@@ -51,7 +51,7 @@ abstract class Media implements MediaInterface
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name Name
      *

@@ -21,7 +21,7 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
 
 /**
- * Class CartPurchasablesQuantityLoader
+ * Class CartPurchasablesQuantityLoader.
  *
  * Api Methods:
  *
@@ -32,7 +32,7 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
 class CartPurchasablesQuantityLoader
 {
     /**
-     * Calculates and load how many purchasables has this cart
+     * Calculates and load how many purchasables has this cart.
      *
      * @param CartInterface $cart Cart
      */
@@ -41,7 +41,7 @@ class CartPurchasablesQuantityLoader
         $quantity = 0;
 
         /**
-         * Calculate max shipping delay
+         * Calculate max shipping delay.
          */
         foreach ($cart->getCartLines() as $cartLine) {
 

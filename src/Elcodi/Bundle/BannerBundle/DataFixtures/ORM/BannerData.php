@@ -25,14 +25,14 @@ use Elcodi\Component\Banner\Entity\Interfaces\BannerZoneInterface;
 use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
- * AdminData class
+ * AdminData class.
  *
  * Load fixtures of admin entities
  */
 class BannerData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(ObjectManager $manager)
     {
@@ -42,7 +42,7 @@ class BannerData extends AbstractFixture implements DependentFixtureInterface
         $bannerDirector = $this->getDirector('banner');
 
         /**
-         * Banner
+         * Banner.
          *
          * @var BannerZoneInterface $bannerZone
          */
@@ -58,7 +58,7 @@ class BannerData extends AbstractFixture implements DependentFixtureInterface
         $this->addReference('banner', $banner);
 
         /**
-         * Banner no language
+         * Banner no language.
          *
          * @var BannerZoneInterface $bannerZone
          */
@@ -76,7 +76,7 @@ class BannerData extends AbstractFixture implements DependentFixtureInterface
 
     /**
      * This method must return an array of fixtures classes
-     * on which the implementing class depends on
+     * on which the implementing class depends on.
      *
      * @return array
      */

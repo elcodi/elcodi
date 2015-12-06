@@ -21,12 +21,12 @@ use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Zone\Entity\Zone;
 
 /**
- * Factory for Zone entities
+ * Factory for Zone entities.
  */
 class ZoneFactory extends AbstractFactory
 {
     /**
-     * Creates an Zone instance
+     * Creates an Zone instance.
      *
      * @return Zone New Zone entity
      */

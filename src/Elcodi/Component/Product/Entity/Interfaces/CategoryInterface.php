@@ -25,7 +25,7 @@ use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\MetaData\Entity\Interfaces\MetaDataInterface;
 
 /**
- * Interface CategoryInterface
+ * Interface CategoryInterface.
  */
 interface CategoryInterface
     extends
@@ -35,7 +35,7 @@ interface CategoryInterface
     EnabledInterface
 {
     /**
-     * Set id
+     * Set id.
      *
      * @param string $id Id
      *
@@ -44,14 +44,14 @@ interface CategoryInterface
     public function setId($id);
 
     /**
-     * Get id
+     * Get id.
      *
      * @return string Id
      */
     public function getId();
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name Name
      *
@@ -60,14 +60,14 @@ interface CategoryInterface
     public function setName($name);
 
     /**
-     * Return name
+     * Return name.
      *
      * @return string name
      */
     public function getName();
 
     /**
-     * Set slug
+     * Set slug.
      *
      * @param string $slug Slug
      *
@@ -76,14 +76,14 @@ interface CategoryInterface
     public function setSlug($slug);
 
     /**
-     * Get slug
+     * Get slug.
      *
      * @return string Slug
      */
     public function getSlug();
 
     /**
-     * Set subcategories
+     * Set subcategories.
      *
      * @param Collection $subCategories Sub categories
      *
@@ -92,14 +92,14 @@ interface CategoryInterface
     public function setSubCategories(Collection $subCategories);
 
     /**
-     * Get subcategories
+     * Get subcategories.
      *
      * @return Collection Subcategories
      */
     public function getSubCategories();
 
     /**
-     * Add Subcategory
+     * Add Subcategory.
      *
      * @param CategoryInterface $category Category to add as subcategory
      *
@@ -108,7 +108,7 @@ interface CategoryInterface
     public function addSubCategory(CategoryInterface $category);
 
     /**
-     * Remove subcategory
+     * Remove subcategory.
      *
      * @param CategoryInterface $category
      *
@@ -117,7 +117,7 @@ interface CategoryInterface
     public function removeSubCategory(CategoryInterface $category);
 
     /**
-     * Set category parent
+     * Set category parent.
      *
      * @param CategoryInterface|null $parent Category parent
      *
@@ -126,14 +126,14 @@ interface CategoryInterface
     public function setParent(CategoryInterface $parent = null);
 
     /**
-     * Get category parent
+     * Get category parent.
      *
      * @return CategoryInterface Category parent
      */
     public function getParent();
 
     /**
-     * Set products
+     * Set products.
      *
      * @param Collection $products Products
      *
@@ -142,39 +142,39 @@ interface CategoryInterface
     public function setProducts(Collection $products);
 
     /**
-     * Get products
+     * Get products.
      *
      * @return Collection
      */
     public function getProducts();
 
     /**
-     * @param boolean $root
+     * @param bool $root
      *
      * @return $this Self object
      */
     public function setRoot($root);
 
     /**
-     * Get if is root
+     * Get if is root.
      *
-     * @return boolean
+     * @return bool
      */
     public function isRoot();
 
     /**
-     * Set position
+     * Set position.
      *
-     * @param integer $position Category relative position
+     * @param int $position Category relative position
      *
      * @return $this Self object
      */
     public function setPosition($position);
 
     /**
-     * Return Position
+     * Return Position.
      *
-     * @return integer Category relative position
+     * @return int Category relative position
      */
     public function getPosition();
 }

@@ -25,12 +25,12 @@ use Elcodi\Component\User\Event\PasswordRememberEvent;
 use Elcodi\Component\User\EventDispatcher\Interfaces\PasswordEventDispatcherInterface;
 
 /**
- * Class PasswordEventDispatcher
+ * Class PasswordEventDispatcher.
  */
 class PasswordEventDispatcher extends AbstractEventDispatcher implements PasswordEventDispatcherInterface
 {
     /**
-     * Dispatch password remember event
+     * Dispatch password remember event.
      *
      * @param AbstractUserInterface $user       User
      * @param string                $recoverUrl Recover url
@@ -49,7 +49,7 @@ class PasswordEventDispatcher extends AbstractEventDispatcher implements Passwor
     }
 
     /**
-     * Dispatch password recover event
+     * Dispatch password recover event.
      *
      * @param AbstractUserInterface $user User
      *

@@ -18,26 +18,26 @@
 namespace Elcodi\Component\Page;
 
 /**
- * Class ElcodiPageTypes
+ * Class ElcodiPageTypes.
  */
 final class ElcodiPageTypes
 {
     /**
-     * Page type regular
+     * Page type regular.
      *
      * Used in footer
      */
     const TYPE_REGULAR = 1;
 
     /**
-     * Page type blog post
+     * Page type blog post.
      *
      * Used in blog
      */
     const TYPE_BLOG_POST = 2;
 
     /**
-     * Page type email
+     * Page type email.
      *
      * Used to send emails
      */

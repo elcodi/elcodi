@@ -25,7 +25,7 @@ use Elcodi\Component\EntityTranslator\Repository\EntityTranslationRepository;
 use Elcodi\Component\EntityTranslator\Services\Interfaces\EntityTranslationProviderInterface;
 
 /**
- * Class EntityTranslationProvider
+ * Class EntityTranslationProvider.
  */
 class EntityTranslationProvider implements EntityTranslationProviderInterface
 {
@@ -58,7 +58,7 @@ class EntityTranslationProvider implements EntityTranslationProviderInterface
     protected $translationsToBeFlushed;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param EntityTranslationRepository $entityTranslationRepository    Entity Translation Repository
      * @param EntityTranslationFactory    $entityTranslationFactory       Entity Translation Factory
@@ -76,14 +76,14 @@ class EntityTranslationProvider implements EntityTranslationProviderInterface
     }
 
     /**
-     * Get translation
+     * Get translation.
      *
      * @param string $entityType  Type of entity
      * @param string $entityId    Id of entity
      * @param string $entityField Field of entity
      * @param string $locale      Locale
      *
-     * @return string|boolean Value fetched
+     * @return string|bool Value fetched
      */
     public function getTranslation(
         $entityType,
@@ -94,10 +94,10 @@ class EntityTranslationProvider implements EntityTranslationProviderInterface
         $translation = $this
             ->entityTranslationRepository
             ->findOneBy([
-                'entityType'  => $entityType,
-                'entityId'    => $entityId,
+                'entityType' => $entityType,
+                'entityId' => $entityId,
                 'entityField' => $entityField,
-                'locale'      => $locale,
+                'locale' => $locale,
             ]);
 
         return $translation instanceof EntityTranslationInterface
@@ -106,7 +106,7 @@ class EntityTranslationProvider implements EntityTranslationProviderInterface
     }
 
     /**
-     * Set translation
+     * Set translation.
      *
      * @param string $entityType       Type of entity
      * @param string $entityId         Id of entity
@@ -126,10 +126,10 @@ class EntityTranslationProvider implements EntityTranslationProviderInterface
         $translation = $this
             ->entityTranslationRepository
             ->findOneBy([
-                'entityType'  => $entityType,
-                'entityId'    => $entityId,
+                'entityType' => $entityType,
+                'entityId' => $entityId,
                 'entityField' => $entityField,
-                'locale'      => $locale,
+                'locale' => $locale,
             ]);
 
         if (!($translation instanceof EntityTranslationInterface)) {

@@ -22,7 +22,7 @@ use Elcodi\Component\Currency\Entity\Interfaces\CurrencyExchangeRateInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 
 /**
- * Class CurrencyExchangeRate
+ * Class CurrencyExchangeRate.
  */
 class CurrencyExchangeRate implements CurrencyExchangeRateInterface
 {
@@ -50,7 +50,7 @@ class CurrencyExchangeRate implements CurrencyExchangeRateInterface
     protected $exchangeRate;
 
     /**
-     * Set the source Currency
+     * Set the source Currency.
      *
      * @param CurrencyInterface $currency
      *
@@ -64,7 +64,7 @@ class CurrencyExchangeRate implements CurrencyExchangeRateInterface
     }
 
     /**
-     * Get the source Currency
+     * Get the source Currency.
      *
      * @return CurrencyInterface
      */
@@ -74,7 +74,7 @@ class CurrencyExchangeRate implements CurrencyExchangeRateInterface
     }
 
     /**
-     * Set the target currency
+     * Set the target currency.
      *
      * @param CurrencyInterface $currency
      *
@@ -88,7 +88,7 @@ class CurrencyExchangeRate implements CurrencyExchangeRateInterface
     }
 
     /**
-     * Get the target Currency
+     * Get the target Currency.
      *
      * @return CurrencyInterface
      */
@@ -98,7 +98,7 @@ class CurrencyExchangeRate implements CurrencyExchangeRateInterface
     }
 
     /**
-     * Sets the exchange rate
+     * Sets the exchange rate.
      *
      * @param float $exchangeRate the exchange rate
      *
@@ -112,7 +112,7 @@ class CurrencyExchangeRate implements CurrencyExchangeRateInterface
     }
 
     /**
-     * Gets the exchange ate
+     * Gets the exchange ate.
      *
      * @return float The exchange rate
      */

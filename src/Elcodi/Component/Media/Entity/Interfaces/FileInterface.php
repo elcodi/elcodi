@@ -18,12 +18,12 @@
 namespace Elcodi\Component\Media\Entity\Interfaces;
 
 /**
- * Interface FileInterface
+ * Interface FileInterface.
  */
 interface FileInterface extends MediaInterface
 {
     /**
-     * Set path
+     * Set path.
      *
      * @param string $path Path to file
      *
@@ -32,14 +32,14 @@ interface FileInterface extends MediaInterface
     public function setPath($path);
 
     /**
-     * Get path
+     * Get path.
      *
      * @return string Path
      */
     public function getPath();
 
     /**
-     * Set the mime type of this media element
+     * Set the mime type of this media element.
      *
      * @param string $contentType Content type
      *
@@ -48,14 +48,14 @@ interface FileInterface extends MediaInterface
     public function setContentType($contentType);
 
     /**
-     * Get the mime type of this media element
+     * Get the mime type of this media element.
      *
      * @return string
      */
     public function getContentType();
 
     /**
-     * Set the extension of the file
+     * Set the extension of the file.
      *
      * @param string $extension Extension
      *
@@ -64,14 +64,14 @@ interface FileInterface extends MediaInterface
     public function setExtension($extension);
 
     /**
-     * Get the extension of the file
+     * Get the extension of the file.
      *
      * @return string
      */
     public function getExtension();
 
     /**
-     * Set the file size in bytes
+     * Set the file size in bytes.
      *
      * @param string $size Size
      *
@@ -80,14 +80,14 @@ interface FileInterface extends MediaInterface
     public function setSize($size);
 
     /**
-     * Get the file size in bytes
+     * Get the file size in bytes.
      *
-     * @return integer Size
+     * @return int Size
      */
     public function getSize();
 
     /**
-     * Set the content
+     * Set the content.
      *
      * @param string $content Content
      *
@@ -96,7 +96,7 @@ interface FileInterface extends MediaInterface
     public function setContent($content);
 
     /**
-     * Get the content
+     * Get the content.
      *
      * @return string Content
      */

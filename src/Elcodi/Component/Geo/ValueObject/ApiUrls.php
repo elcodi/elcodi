@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Geo\ValueObject;
 
 /**
- * Class ApiUrls
+ * Class ApiUrls.
  */
 class ApiUrls
 {
@@ -65,7 +65,7 @@ class ApiUrls
     private $inUrl;
 
     /**
-     * Create new Api url
+     * Create new Api url.
      *
      * @param string $getRootLocationsUrl getRootLocations url
      * @param string $getChildrenUrl      getChildren url
@@ -91,7 +91,7 @@ class ApiUrls
     }
 
     /**
-     * Get GetRootLocationsUrl
+     * Get GetRootLocationsUrl.
      *
      * @return string GetRootLocationsUrl
      */
@@ -101,7 +101,7 @@ class ApiUrls
     }
 
     /**
-     * Get GetChildrenUrl
+     * Get GetChildrenUrl.
      *
      * @return string GetChildrenUrl
      */
@@ -111,7 +111,7 @@ class ApiUrls
     }
 
     /**
-     * Get GetParentsUrl
+     * Get GetParentsUrl.
      *
      * @return string GetParentsUrl
      */
@@ -121,7 +121,7 @@ class ApiUrls
     }
 
     /**
-     * Get GetLocationUrl
+     * Get GetLocationUrl.
      *
      * @return string GetLocationUrl
      */
@@ -131,7 +131,7 @@ class ApiUrls
     }
 
     /**
-     * Get GetHierarchyUrl
+     * Get GetHierarchyUrl.
      *
      * @return string GetHierarchyUrl
      */
@@ -141,7 +141,7 @@ class ApiUrls
     }
 
     /**
-     * Get InUrl
+     * Get InUrl.
      *
      * @return string InUrl
      */

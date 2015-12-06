@@ -20,7 +20,7 @@ namespace Elcodi\Component\Media\Entity\Traits;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Trait ImagesContainerTrait
+ * Trait ImagesContainerTrait.
  */
 trait ImagesContainerTrait
 {
@@ -39,7 +39,7 @@ trait ImagesContainerTrait
     protected $imagesSort;
 
     /**
-     * Set add image
+     * Set add image.
      *
      * @param \Elcodi\Component\Media\Entity\Interfaces\ImageInterface $image Image object to be added
      *
@@ -53,7 +53,7 @@ trait ImagesContainerTrait
     }
 
     /**
-     * Get if entity is enabled
+     * Get if entity is enabled.
      *
      * @param \Elcodi\Component\Media\Entity\Interfaces\ImageInterface $image Image object to be removed
      *
@@ -67,7 +67,7 @@ trait ImagesContainerTrait
     }
 
     /**
-     * Get all images
+     * Get all images.
      *
      * @return \Doctrine\Common\Collections\ArrayCollection
      */
@@ -77,7 +77,7 @@ trait ImagesContainerTrait
     }
 
     /**
-     * Get sorted images
+     * Get sorted images.
      *
      * @return \Doctrine\Common\Collections\ArrayCollection
      */
@@ -109,7 +109,7 @@ trait ImagesContainerTrait
     }
 
     /**
-     * Set images
+     * Set images.
      *
      * @param \Doctrine\Common\Collections\ArrayCollection $images Images
      *
@@ -123,7 +123,7 @@ trait ImagesContainerTrait
     }
 
     /**
-     * Get ImagesSort
+     * Get ImagesSort.
      *
      * @return string ImagesSort
      */
@@ -133,7 +133,7 @@ trait ImagesContainerTrait
     }
 
     /**
-     * Sets ImagesSort
+     * Sets ImagesSort.
      *
      * @param string $imagesSort ImagesSort
      *

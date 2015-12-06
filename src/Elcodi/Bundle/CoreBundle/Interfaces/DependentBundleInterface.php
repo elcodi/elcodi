@@ -24,7 +24,7 @@ repository mmoreram/symfony-bundle-dependencies. Will be removed permanently in
 v2.0.0.', E_USER_DEPRECATED);
 
 /**
- * Interface DependentBundleInterface
+ * Interface DependentBundleInterface.
  */
 interface DependentBundleInterface
 {

@@ -23,7 +23,7 @@ use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface;
 
 /**
- * Class Zone
+ * Class Zone.
  */
 class Zone implements ZoneInterface
 {
@@ -51,7 +51,7 @@ class Zone implements ZoneInterface
     protected $locations;
 
     /**
-     * Get Name
+     * Get Name.
      *
      * @return string Name
      */
@@ -61,7 +61,7 @@ class Zone implements ZoneInterface
     }
 
     /**
-     * Sets Name
+     * Sets Name.
      *
      * @param string $name Name
      *
@@ -75,7 +75,7 @@ class Zone implements ZoneInterface
     }
 
     /**
-     * Get Code
+     * Get Code.
      *
      * @return string Code
      */
@@ -85,7 +85,7 @@ class Zone implements ZoneInterface
     }
 
     /**
-     * Sets Code
+     * Sets Code.
      *
      * @param string $code Code
      *
@@ -99,7 +99,7 @@ class Zone implements ZoneInterface
     }
 
     /**
-     * Get Locations
+     * Get Locations.
      *
      * @return array Locations
      */
@@ -109,7 +109,7 @@ class Zone implements ZoneInterface
     }
 
     /**
-     * Sets Locations
+     * Sets Locations.
      *
      * @param array $locations Locations
      *
@@ -123,7 +123,7 @@ class Zone implements ZoneInterface
     }
 
     /**
-     * Add location
+     * Add location.
      *
      * @param string $location Location
      *
@@ -144,7 +144,7 @@ class Zone implements ZoneInterface
     }
 
     /**
-     * Remove location
+     * Remove location.
      *
      * @param string $location Location
      *

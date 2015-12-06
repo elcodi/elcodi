@@ -21,7 +21,7 @@ use Elcodi\Component\Sitemap\Builder\SitemapBuilder;
 use Elcodi\Component\Sitemap\Dumper\Interfaces\SitemapDumperInterface;
 
 /**
- * Class SitemapDumper
+ * Class SitemapDumper.
  */
 class SitemapDumper
 {
@@ -62,7 +62,7 @@ class SitemapDumper
     }
 
     /**
-     * Dump builder using a dumper
+     * Dump builder using a dumper.
      *
      * @param string      $basepath Base path
      * @param string|null $language Language
@@ -84,7 +84,7 @@ class SitemapDumper
     }
 
     /**
-     * Given a language and a path, resolve this path
+     * Given a language and a path, resolve this path.
      *
      * @param string $path     Path
      * @param string $language Language

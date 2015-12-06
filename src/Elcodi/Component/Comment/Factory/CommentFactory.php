@@ -23,12 +23,12 @@ use Elcodi\Component\Comment\Entity\Comment;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 
 /**
- * Class CommentFactory
+ * Class CommentFactory.
  */
 class CommentFactory extends AbstractFactory
 {
     /**
-     * Creates an instance of Comment
+     * Creates an instance of Comment.
      *
      * @return Comment New Cart entity
      */

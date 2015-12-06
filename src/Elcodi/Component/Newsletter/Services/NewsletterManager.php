@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Newsletter\Services;
 
 use Symfony\Component\Validator\Constraints\Email;
-use Symfony\Component\Validator\ValidatorInterface;
+use Symfony\Component\Validator\Validator\RecursiveValidator;
 
 use Elcodi\Component\Core\Generator\Interfaces\GeneratorInterface;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
@@ -30,7 +30,7 @@ use Elcodi\Component\Newsletter\Factory\NewsletterSubscriptionFactory;
 use Elcodi\Component\Newsletter\Repository\NewsletterSubscriptionRepository;
 
 /**
- * Manager for newsletter
+ * Manager for newsletter.
  */
 class NewsletterManager
 {
@@ -42,7 +42,7 @@ class NewsletterManager
     private $newsletterEventDispatcher;
 
     /**
-     * @var ValidatorInterface
+     * @var RecursiveValidator
      *
      * Validator instance
      */
@@ -70,17 +70,17 @@ class NewsletterManager
     private $hashGenerator;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param NewsletterEventDispatcher        $newsletterEventDispatcher        Newsletter EventDispatcher
-     * @param ValidatorInterface               $validator                        Validator class
+     * @param RecursiveValidator               $validator                        Validator class
      * @param NewsletterSubscriptionFactory    $newsletterSubscriptionFactory    NewsletterSubscription Factory
      * @param NewsletterSubscriptionRepository $newsletterSubscriptionRepository NewsletterSubscription Repository
      * @param GeneratorInterface               $hashGenerator                    Hash generator
      */
     public function __construct(
         NewsletterEventDispatcher $newsletterEventDispatcher,
-        ValidatorInterface $validator,
+        RecursiveValidator $validator,
         NewsletterSubscriptionFactory $newsletterSubscriptionFactory,
         NewsletterSubscriptionRepository $newsletterSubscriptionRepository,
         GeneratorInterface $hashGenerator
@@ -93,7 +93,7 @@ class NewsletterManager
     }
 
     /**
-     * Subscribe email to newsletter
+     * Subscribe email to newsletter.
      *
      * @param string            $email    Email
      * @param LanguageInterface $language The language
@@ -128,7 +128,7 @@ class NewsletterManager
     }
 
     /**
-     * Unsubscribe email from newsletter
+     * Unsubscribe email from newsletter.
      *
      * @param string            $email    Email
      * @param string            $hash     Hash to remove
@@ -147,7 +147,7 @@ class NewsletterManager
 
         $conditions = [
             'email' => $email,
-            'hash'  => $hash,
+            'hash' => $hash,
         ];
 
         if ($language instanceof LanguageInterface) {
@@ -174,21 +174,21 @@ class NewsletterManager
     }
 
     /**
-     * Is subscribed
+     * Is subscribed.
      *
      * @param string $email Email
      *
-     * @return boolean Is subscribed
+     * @return bool Is subscribed
      */
     public function isSubscribed($email)
     {
         $newsletterSubscription = $this->getSubscription($email);
 
-        return ($newsletterSubscription instanceof NewsletterSubscriptionInterface);
+        return $newsletterSubscription instanceof NewsletterSubscriptionInterface;
     }
 
     /**
-     * Is subscribed
+     * Is subscribed.
      *
      * @param string $email Email
      *
@@ -204,11 +204,11 @@ class NewsletterManager
     }
 
     /**
-     * Return if email is valid
+     * Return if email is valid.
      *
      * @param string $email Email
      *
-     * @return boolean Email is valid
+     * @return bool Email is valid
      */
     public function validateEmail($email)
     {
@@ -220,6 +220,6 @@ class NewsletterManager
             ->validator
             ->validate($email, new Email());
 
-        return ($validationViolationList->count() === 0);
+        return $validationViolationList->count() === 0;
     }
 }

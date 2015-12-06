@@ -23,7 +23,7 @@ use Twig_Extension;
 use Twig_SimpleFunction;
 
 /**
- * Class PrintRouteExtension
+ * Class PrintRouteExtension.
  *
  * Twig extension that uses an adapter to return an URL.
  *
@@ -43,7 +43,7 @@ class PrintRouteExtension extends Twig_Extension
     private $urlGenerator;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param UrlGeneratorInterface $urlGenerator Url Generator
      */

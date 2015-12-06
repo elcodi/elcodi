@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Plugin;
 
 /**
- * Class PluginTypes
+ * Class PluginTypes.
  */
 final class PluginTypes
 {

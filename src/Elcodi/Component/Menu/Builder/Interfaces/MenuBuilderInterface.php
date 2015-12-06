@@ -20,12 +20,12 @@ namespace Elcodi\Component\Menu\Builder\Interfaces;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\MenuInterface;
 
 /**
- * Interface MenuBuilderInterface
+ * Interface MenuBuilderInterface.
  */
 interface MenuBuilderInterface
 {
     /**
-     * Build the menu
+     * Build the menu.
      *
      * @param MenuInterface $menu Menu
      */

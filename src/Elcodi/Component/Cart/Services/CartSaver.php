@@ -22,7 +22,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 
 /**
- * Class CartSaver
+ * Class CartSaver.
  *
  * Api Methods:
  *
@@ -40,7 +40,7 @@ class CartSaver
     private $cartObjectManager;
 
     /**
-     * Built method
+     * Built method.
      *
      * @param ObjectManager $cartObjectManager ObjectManager for Cart
      */

@@ -18,12 +18,12 @@
 namespace Elcodi\Component\StateTransitionMachine;
 
 /**
- * Class ElcodiStateTransitionMachineEvents
+ * Class ElcodiStateTransitionMachineEvents.
  */
 class ElcodiStateTransitionMachineEvents
 {
     /**
-     * This event is fired each time an object is initialized into the machine
+     * This event is fired each time an object is initialized into the machine.
      *
      * event.name : state_machine.{machine_id}.initialization
      * event.class : InitializationEvent
@@ -31,7 +31,7 @@ class ElcodiStateTransitionMachineEvents
     const INITIALIZATION = 'state_machine.{machine_id}.initialization';
 
     /**
-     * This event is fired each time a transition is done from a state
+     * This event is fired each time a transition is done from a state.
      *
      * event.name : state_machine.{machine_id}.transition_from_{state_name}
      * event.class : TransitionEvent
@@ -39,7 +39,7 @@ class ElcodiStateTransitionMachineEvents
     const TRANSITION_FROM_STATE = 'state_machine.{machine_id}.transition_from_{state_name}';
 
     /**
-     * This event is fired each time a transition is done
+     * This event is fired each time a transition is done.
      *
      * event.name : state_machine.{machine_id}.{transition_name}
      * event.class : TransitionEvent
@@ -47,7 +47,7 @@ class ElcodiStateTransitionMachineEvents
     const TRANSITION = 'state_machine.{machine_id}.transition_{transition_name}';
 
     /**
-     * This event is fired each time a transition is done to a state
+     * This event is fired each time a transition is done to a state.
      *
      * event.name : state_machine.{machine_id}.transition_to_{state_name}
      * event.class : TransitionEvent
@@ -55,7 +55,7 @@ class ElcodiStateTransitionMachineEvents
     const TRANSITION_TO_STATE = 'state_machine.{machine_id}.transition_to_{state_name}';
 
     /**
-     * This event is fired each time a transition is done
+     * This event is fired each time a transition is done.
      *
      * event.name : state_machine.{machine_id}.{transition_name}
      * event.class : TransitionEvent

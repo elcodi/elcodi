@@ -21,7 +21,7 @@ use Elcodi\Component\Cart\Event\Abstracts\AbstractCartEvent;
 use Elcodi\Component\Cart\Services\CartSaver;
 
 /**
- * Class SaveCartEventListener
+ * Class SaveCartEventListener.
  */
 final class SaveCartEventListener
 {
@@ -33,7 +33,7 @@ final class SaveCartEventListener
     private $cartSaver;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param CartSaver $cartSaver Cart prices loader
      */
@@ -43,7 +43,7 @@ final class SaveCartEventListener
     }
 
     /**
-     * Save cart
+     * Save cart.
      *
      * @param AbstractCartEvent $event Event
      */

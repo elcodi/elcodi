@@ -20,12 +20,12 @@ namespace Elcodi\Component\Menu\Modifier\Interfaces;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface;
 
 /**
- * Interface MenuModifierInterface
+ * Interface MenuModifierInterface.
  */
 interface MenuModifierInterface
 {
     /**
-     * Modifier the menu node
+     * Modifier the menu node.
      *
      * @param NodeInterface $menuNode Menu node
      */

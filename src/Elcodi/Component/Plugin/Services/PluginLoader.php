@@ -21,12 +21,12 @@ use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Yaml\Parser;
 
 /**
- * Class PluginLoader
+ * Class PluginLoader.
  */
 class PluginLoader
 {
     /**
-     * Given a Bundle path, return a new PluginConfiguration instance
+     * Given a Bundle path, return a new PluginConfiguration instance.
      *
      * @param string $pluginPath Plugin Path
      *

@@ -23,12 +23,12 @@ use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 
 /**
- * Interface OrderCouponInterface
+ * Interface OrderCouponInterface.
  */
 interface OrderCouponInterface extends IdentifiableInterface
 {
     /**
-     * Sets Order
+     * Sets Order.
      *
      * @param OrderInterface $order Order
      *
@@ -37,14 +37,14 @@ interface OrderCouponInterface extends IdentifiableInterface
     public function setOrder(OrderInterface $order);
 
     /**
-     * Get Order
+     * Get Order.
      *
      * @return OrderInterface Order
      */
     public function getOrder();
 
     /**
-     * Sets Coupon
+     * Sets Coupon.
      *
      * @param CouponInterface $coupon Coupon
      *
@@ -53,14 +53,14 @@ interface OrderCouponInterface extends IdentifiableInterface
     public function setCoupon(CouponInterface $coupon);
 
     /**
-     * Get Coupon
+     * Get Coupon.
      *
      * @return CouponInterface Coupon
      */
     public function getCoupon();
 
     /**
-     * Set code
+     * Set code.
      *
      * @param string $code Code
      *
@@ -69,14 +69,14 @@ interface OrderCouponInterface extends IdentifiableInterface
     public function setCode($code);
 
     /**
-     * Get code
+     * Get code.
      *
      * @return string Code
      */
     public function getCode();
 
     /**
-     * Set name coupon name
+     * Set name coupon name.
      *
      * @param string $name
      *
@@ -85,14 +85,14 @@ interface OrderCouponInterface extends IdentifiableInterface
     public function setName($name);
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
     public function getName();
 
     /**
-     * Set amount
+     * Set amount.
      *
      * @param MoneyInterface $amount Price
      *
@@ -101,7 +101,7 @@ interface OrderCouponInterface extends IdentifiableInterface
     public function setAmount(MoneyInterface $amount);
 
     /**
-     * Get amount
+     * Get amount.
      *
      * @return MoneyInterface Price
      */

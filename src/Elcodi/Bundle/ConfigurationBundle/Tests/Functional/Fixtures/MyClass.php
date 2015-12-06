@@ -18,7 +18,7 @@
 namespace Elcodi\Bundle\ConfigurationBundle\Tests\Functional\Fixtures;
 
 /**
- * Class MyClass
+ * Class MyClass.
  */
 class MyClass
 {
@@ -30,7 +30,7 @@ class MyClass
     public $value;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param string $value Value
      */
@@ -40,7 +40,7 @@ class MyClass
     }
 
     /**
-     * Get Value
+     * Get Value.
      *
      * @return string Value
      */

@@ -35,7 +35,7 @@ use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
 use Elcodi\Component\Product\Entity\Traits\ProductPriceTrait;
 
 /**
- * Class Product entity
+ * Class Product entity.
  */
 class Product implements ProductInterface
 {
@@ -64,14 +64,14 @@ class Product implements ProductInterface
     protected $sku;
 
     /**
-     * @var integer
+     * @var int
      *
      * Product type
      */
     protected $type;
 
     /**
-     * @var integer
+     * @var int
      *
      * Stock
      */
@@ -99,7 +99,7 @@ class Product implements ProductInterface
     protected $description;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * Product must show in home
      */
@@ -155,7 +155,7 @@ class Product implements ProductInterface
     protected $principalVariant;
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name Name
      *
@@ -169,7 +169,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string name
      */
@@ -179,7 +179,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Set slug
+     * Set slug.
      *
      * @param string $slug Slug
      *
@@ -193,7 +193,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Get slug
+     * Get slug.
      *
      * @return string slug
      */
@@ -203,7 +203,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Set description
+     * Set description.
      *
      * @param string $description Description
      *
@@ -217,7 +217,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Get description
+     * Get description.
      *
      * @return string Description
      */
@@ -227,7 +227,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Set short description
+     * Set short description.
      *
      * @param string $shortDescription Short description
      *
@@ -241,7 +241,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Get short description
+     * Get short description.
      *
      * @return string Short description
      */
@@ -251,7 +251,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Set categories
+     * Set categories.
      *
      * @param Collection $categories Categories
      *
@@ -265,7 +265,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Get categories
+     * Get categories.
      *
      * @return Collection Categories
      */
@@ -275,7 +275,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Add category
+     * Add category.
      *
      * @param CategoryInterface $category Category
      *
@@ -289,7 +289,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Remove category
+     * Remove category.
      *
      * @param CategoryInterface $category Category
      *
@@ -303,7 +303,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Set the principalCategory
+     * Set the principalCategory.
      *
      * @param CategoryInterface $principalCategory Principal category
      *
@@ -317,7 +317,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Get the principalCategory
+     * Get the principalCategory.
      *
      * @return CategoryInterface Principal category
      */
@@ -327,9 +327,9 @@ class Product implements ProductInterface
     }
 
     /**
-     * Set stock
+     * Set stock.
      *
-     * @param integer $stock Stock
+     * @param int $stock Stock
      *
      * @return $this Self object
      */
@@ -341,9 +341,9 @@ class Product implements ProductInterface
     }
 
     /**
-     * Get stock
+     * Get stock.
      *
-     * @return integer Stock
+     * @return int Stock
      */
     public function getStock()
     {
@@ -351,9 +351,9 @@ class Product implements ProductInterface
     }
 
     /**
-     * Set show in home
+     * Set show in home.
      *
-     * @param boolean $showInHome Show in home
+     * @param bool $showInHome Show in home
      *
      * @return $this Self object
      */
@@ -365,9 +365,9 @@ class Product implements ProductInterface
     }
 
     /**
-     * Get show in home
+     * Get show in home.
      *
-     * @return boolean Show in home
+     * @return bool Show in home
      */
     public function getShowInHome()
     {
@@ -375,7 +375,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Set product manufacturer
+     * Set product manufacturer.
      *
      * @param ManufacturerInterface $manufacturer Manufacturer
      *
@@ -389,7 +389,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Product manufacturer
+     * Product manufacturer.
      *
      * @return ManufacturerInterface Manufacturer
      */
@@ -399,7 +399,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Sets Dimensions
+     * Sets Dimensions.
      *
      * @param string $dimensions Dimensions
      *
@@ -413,7 +413,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Get Dimensions
+     * Get Dimensions.
      *
      * @return string Dimensions
      */
@@ -423,7 +423,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Gets product SKU
+     * Gets product SKU.
      *
      * @return string
      */
@@ -433,7 +433,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Sets product SKU
+     * Sets product SKU.
      *
      * @param string $sku
      *
@@ -447,9 +447,9 @@ class Product implements ProductInterface
     }
 
     /**
-     * Sets Type
+     * Sets Type.
      *
-     * @param integer $type Type
+     * @param int $type Type
      *
      * @return $this Self object
      */
@@ -461,9 +461,9 @@ class Product implements ProductInterface
     }
 
     /**
-     * Get Type
+     * Get Type.
      *
-     * @return integer Type
+     * @return int Type
      */
     public function getType()
     {
@@ -471,7 +471,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Adds an attribute if not already in the collection
+     * Adds an attribute if not already in the collection.
      *
      * @param AttributeInterface $attribute Attribute
      *
@@ -487,7 +487,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Removes an attribute from the collection
+     * Removes an attribute from the collection.
      *
      * @param AttributeInterface $attribute Attribute to be removed
      *
@@ -501,7 +501,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Returns product attributes
+     * Returns product attributes.
      *
      * @return Collection Attributes
      */
@@ -511,7 +511,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Sets product attributes
+     * Sets product attributes.
      *
      * @param Collection $attributes Attributes
      *
@@ -525,7 +525,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Gets product variants
+     * Gets product variants.
      *
      * @return Collection Variants
      */
@@ -535,7 +535,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Adds a Variant for this Product
+     * Adds a Variant for this Product.
      *
      * @param VariantInterface $variant
      *
@@ -549,7 +549,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Sets product variants
+     * Sets product variants.
      *
      * @param Collection $variants Variants
      *
@@ -563,7 +563,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Returns product principal variant
+     * Returns product principal variant.
      *
      * @return VariantInterface
      */
@@ -573,7 +573,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Sets product principal variant
+     * Sets product principal variant.
      *
      * @param VariantInterface $principalVariant
      *
@@ -587,9 +587,9 @@ class Product implements ProductInterface
     }
 
     /**
-     * Tells if this product has variants
+     * Tells if this product has variants.
      *
-     * @return boolean Product has variants
+     * @return bool Product has variants
      */
     public function hasVariants()
     {
@@ -597,7 +597,7 @@ class Product implements ProductInterface
     }
 
     /**
-     * Product stringified
+     * Product stringified.
      *
      * @return string Product in string mode
      */

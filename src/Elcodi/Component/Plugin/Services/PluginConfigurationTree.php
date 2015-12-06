@@ -23,7 +23,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Elcodi\Component\Plugin\PluginTypes;
 
 /**
- * Class PluginConfigurationTree
+ * Class PluginConfigurationTree.
  */
 class PluginConfigurationTree implements ConfigurationInterface
 {

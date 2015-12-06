@@ -25,7 +25,7 @@ use Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface;
 use Elcodi\Component\Menu\Entity\Menu\Traits\SubnodesTrait;
 
 /**
- * Class Node
+ * Class Node.
  */
 class Node implements NodeInterface
 {
@@ -69,21 +69,21 @@ class Node implements NodeInterface
     protected $tag;
 
     /**
-     * @var integer
+     * @var int
      *
      * Priority
      */
     protected $priority;
 
     /**
-     * @var integer
+     * @var int
      *
      * Warnings
      */
     protected $warnings;
 
     /**
-     * Gets Node code
+     * Gets Node code.
      *
      * @return string
      */
@@ -93,7 +93,7 @@ class Node implements NodeInterface
     }
 
     /**
-     * Sets Node code
+     * Sets Node code.
      *
      * @param string $code
      *
@@ -107,7 +107,7 @@ class Node implements NodeInterface
     }
 
     /**
-     * Sets Node name
+     * Sets Node name.
      *
      * @param string $name Name
      *
@@ -121,7 +121,7 @@ class Node implements NodeInterface
     }
 
     /**
-     * Gets Node name
+     * Gets Node name.
      *
      * @return string Name
      */
@@ -131,7 +131,7 @@ class Node implements NodeInterface
     }
 
     /**
-     * Sets Node URL
+     * Sets Node URL.
      *
      * Can be a plain URL or a route name
      *
@@ -147,7 +147,7 @@ class Node implements NodeInterface
     }
 
     /**
-     * Gets Node url
+     * Gets Node url.
      *
      * @return string Url
      */
@@ -216,7 +216,7 @@ class Node implements NodeInterface
     }
 
     /**
-     * Get Tag
+     * Get Tag.
      *
      * @return string Tag
      */
@@ -226,7 +226,7 @@ class Node implements NodeInterface
     }
 
     /**
-     * Sets Tag
+     * Sets Tag.
      *
      * @param string $tag Tag
      *
@@ -240,7 +240,7 @@ class Node implements NodeInterface
     }
 
     /**
-     * Get Priority
+     * Get Priority.
      *
      * @return int Priority
      */
@@ -250,7 +250,7 @@ class Node implements NodeInterface
     }
 
     /**
-     * Sets Priority
+     * Sets Priority.
      *
      * @param int $priority Priority
      *
@@ -271,7 +271,7 @@ class Node implements NodeInterface
      *
      * @param string $currentUrl Current Url
      *
-     * @return boolean Menu node is active
+     * @return bool Menu node is active
      */
     public function isActive($currentUrl)
     {
@@ -293,7 +293,7 @@ class Node implements NodeInterface
      *
      * @param string $currentUrl Current Url
      *
-     * @return boolean Menu Node is expanded
+     * @return bool Menu Node is expanded
      */
     public function isExpanded($currentUrl)
     {
@@ -312,9 +312,9 @@ class Node implements NodeInterface
     }
 
     /**
-     * Set warnings
+     * Set warnings.
      *
-     * @param integer $warnings Warnings
+     * @param int $warnings Warnings
      *
      * @return $this Self object
      */
@@ -326,9 +326,9 @@ class Node implements NodeInterface
     }
 
     /**
-     * Get warnings
+     * Get warnings.
      *
-     * @return integer Warnings
+     * @return int Warnings
      */
     public function getWarnings()
     {
@@ -336,9 +336,9 @@ class Node implements NodeInterface
     }
 
     /**
-     * Increment warnings
+     * Increment warnings.
      *
-     * @param integer $warnings Warnings to be incremented
+     * @param int $warnings Warnings to be incremented
      *
      * @return $this Self object
      */

@@ -20,7 +20,7 @@ namespace Elcodi\Component\Cart\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class CartLineRepository
+ * Class CartLineRepository.
  */
 class CartLineRepository extends EntityRepository
 {

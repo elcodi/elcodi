@@ -24,7 +24,7 @@ use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 
 /**
- * Class MediaRouterLoader
+ * Class MediaRouterLoader.
  */
 class MetricInputLoader implements LoaderInterface
 {
@@ -43,14 +43,14 @@ class MetricInputLoader implements LoaderInterface
     private $inputResizeControllerRoute;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * Route is loaded
      */
     private $loaded = false;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param string $inputControllerRouteName   Input controller route name
      * @param string $inputResizeControllerRoute Input controller route
@@ -96,7 +96,7 @@ class MetricInputLoader implements LoaderInterface
      * @param mixed  $resource A resource
      * @param string $type     The resource type
      *
-     * @return boolean true if this class supports the given resource, false otherwise
+     * @return bool true if this class supports the given resource, false otherwise
      */
     public function supports($resource, $type = null)
     {

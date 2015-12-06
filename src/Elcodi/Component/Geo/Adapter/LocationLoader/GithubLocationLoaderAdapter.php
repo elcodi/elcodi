@@ -20,12 +20,12 @@ namespace Elcodi\Component\Geo\Adapter\LocationLoader;
 use Elcodi\Component\Geo\Adapter\LocationLoader\Interfaces\LocationLoaderAdapterInterface;
 
 /**
- * Class GithubLocationLoaderAdapter
+ * Class GithubLocationLoaderAdapter.
  */
 class GithubLocationLoaderAdapter implements LocationLoaderAdapterInterface
 {
     /**
-     * Given a country name, return the sql to be loaded
+     * Given a country name, return the sql to be loaded.
      *
      * @param string $countryName Country name
      *
@@ -33,7 +33,7 @@ class GithubLocationLoaderAdapter implements LocationLoaderAdapterInterface
      */
     public function getSqlForCountry($countryName)
     {
-        $url = "https://raw.githubusercontent.com/elcodi/LocationDumps/master/" . $countryName . ".sql";
+        $url = 'https://raw.githubusercontent.com/elcodi/LocationDumps/master/' . $countryName . '.sql';
 
         return file_get_contents($url);
     }

@@ -24,12 +24,12 @@ use Elcodi\Component\Shipping\Entity\ShippingMethod;
 use Elcodi\Component\Shipping\Event\ShippingCollectionEvent;
 
 /**
- * Class ShippingEventDispatcher
+ * Class ShippingEventDispatcher.
  */
 class ShippingEventDispatcher extends AbstractEventDispatcher
 {
     /**
-     * Dispatch shipping methods collection
+     * Dispatch shipping methods collection.
      *
      * @param CartInterface $cart Cart
      *

@@ -18,26 +18,26 @@
 namespace Elcodi\Component\Product;
 
 /**
- * Class ElcodiProductTypes
+ * Class ElcodiProductTypes.
  */
 final class ElcodiProductTypes
 {
     /**
-     * @var integer
+     * @var int
      *
      * Physical product type
      */
     const TYPE_PRODUCT_PHYSICAL = 0;
 
     /**
-     * @var integer
+     * @var int
      *
      * Virtual product type
      */
     const TYPE_PRODUCT_VIRTUAL = 1;
 
     /**
-     * @var integer
+     * @var int
      *
      * Downloadable product type
      */

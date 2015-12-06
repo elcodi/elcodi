@@ -23,7 +23,7 @@ use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 
 /**
- * Class ContainerProvider
+ * Class ContainerProvider.
  *
  * Extends ExpressionLanguage to access services and parameters in current container
  */
@@ -37,7 +37,7 @@ class ContainerProvider implements ExpressionFunctionProviderInterface
     private $container;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param ContainerInterface $container Container
      */
@@ -47,7 +47,7 @@ class ContainerProvider implements ExpressionFunctionProviderInterface
     }
 
     /**
-     * Get functions
+     * Get functions.
      *
      * @return ExpressionFunction[] An array of Function instances
      */
@@ -55,7 +55,7 @@ class ContainerProvider implements ExpressionFunctionProviderInterface
     {
         return [
             /**
-             * Get a service from the container
+             * Get a service from the container.
              */
             new ExpressionFunction(
                 'service',
@@ -72,7 +72,7 @@ class ContainerProvider implements ExpressionFunctionProviderInterface
             ),
 
             /**
-             * Get a parameter from the container
+             * Get a parameter from the container.
              */
             new ExpressionFunction(
                 'parameter',

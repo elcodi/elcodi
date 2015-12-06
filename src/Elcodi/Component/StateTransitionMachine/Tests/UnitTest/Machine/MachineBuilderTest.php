@@ -21,12 +21,12 @@ use Elcodi\Component\StateTransitionMachine\Machine\MachineBuilder;
 use Elcodi\Component\StateTransitionMachine\Tests\UnitTest\Fixtures\AbstractStateTransitionTest;
 
 /**
- * Class MachineBuilderTest
+ * Class MachineBuilderTest.
  */
 class MachineBuilderTest extends AbstractStateTransitionTest
 {
     /**
-     * Test the compilation without errors
+     * Test the compilation without errors.
      *
      * for example:
      *
@@ -56,7 +56,7 @@ class MachineBuilderTest extends AbstractStateTransitionTest
     }
 
     /**
-     * data for testCompileOk
+     * data for testCompileOk.
      */
     public function dataCompileOk()
     {
@@ -79,7 +79,7 @@ class MachineBuilderTest extends AbstractStateTransitionTest
     }
 
     /**
-     * Test failure with non-valid transitions
+     * Test failure with non-valid transitions.
      *
      * @param string $transition Transition
      *
@@ -100,7 +100,7 @@ class MachineBuilderTest extends AbstractStateTransitionTest
     }
 
     /**
-     * data for testTransitionNonValid
+     * data for testTransitionNonValid.
      */
     public function dataTransitionNonValid()
     {
@@ -129,7 +129,7 @@ class MachineBuilderTest extends AbstractStateTransitionTest
     }
 
     /**
-     * Test invalid point of entry
+     * Test invalid point of entry.
      *
      * @param array  $configuration Configuration
      * @param string $pointOfEntry  Point of entry
@@ -152,7 +152,7 @@ class MachineBuilderTest extends AbstractStateTransitionTest
     }
 
     /**
-     * data for testInvalidPointOfEntry
+     * data for testInvalidPointOfEntry.
      */
     public function dataInvalidPointOfEntry()
     {
@@ -191,7 +191,7 @@ class MachineBuilderTest extends AbstractStateTransitionTest
     }
 
     /**
-     * Test failure with non-allowed cycles
+     * Test failure with non-allowed cycles.
      *
      * @param array $configuration Configuration
      *
@@ -213,7 +213,7 @@ class MachineBuilderTest extends AbstractStateTransitionTest
     }
 
     /**
-     * data for testCyclesNotAllowed
+     * data for testCyclesNotAllowed.
      */
     public function dataCyclesNotAllowed()
     {
@@ -228,7 +228,7 @@ class MachineBuilderTest extends AbstractStateTransitionTest
     }
 
     /**
-     * Test failure with inconsistent transitions
+     * Test failure with inconsistent transitions.
      *
      * @param array $configuration Configuration
      *
@@ -250,7 +250,7 @@ class MachineBuilderTest extends AbstractStateTransitionTest
     }
 
     /**
-     * data for testInconsistentTransitions
+     * data for testInconsistentTransitions.
      */
     public function dataInconsistentTransitions()
     {
@@ -265,7 +265,7 @@ class MachineBuilderTest extends AbstractStateTransitionTest
     }
 
     /**
-     * Test failure with invalid states
+     * Test failure with invalid states.
      *
      * @param array $configuration Configuration
      *
@@ -286,7 +286,7 @@ class MachineBuilderTest extends AbstractStateTransitionTest
     }
 
     /**
-     * data for testInvalidStates
+     * data for testInvalidStates.
      */
     public function dataInvalidStates()
     {

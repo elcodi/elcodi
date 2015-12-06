@@ -27,7 +27,7 @@ use Elcodi\Component\Media\Exception\InvalidImageException;
 use Elcodi\Component\Media\Factory\ImageFactory;
 
 /**
- * Class ImageManager
+ * Class ImageManager.
  *
  * This class manages images
  *
@@ -60,7 +60,7 @@ class ImageManager
     private $resizeAdapter;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param ImageFactory           $imageFactory  Image Factory
      * @param FileManager            $fileManager   File Manager
@@ -131,9 +131,9 @@ class ImageManager
      * Given an image, resize it.
      *
      * @param ImageInterface $image  Image
-     * @param integer        $height Height
-     * @param integer        $width  Width
-     * @param integer        $type   Type
+     * @param int            $height Height
+     * @param int            $width  Width
+     * @param int            $type   Type
      *
      * @return ImageInterface New Image instance
      */
@@ -162,7 +162,7 @@ class ImageManager
          * We need to physically store the new resized
          * image in order to access its metadata, such as
          * file size, image dimensions, mime type etc.
-         * Ideally, we should be doing this in memory
+         * Ideally, we should be doing this in memory.
          */
         $resizedFile = new File(tempnam(sys_get_temp_dir(), '_generated'));
         file_put_contents($resizedFile, $resizedImageData);

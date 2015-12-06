@@ -23,7 +23,7 @@ use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Geo\EventDispatcher\AddressEventDispatcher;
 
 /**
- * Class AddressManager
+ * Class AddressManager.
  */
 class AddressManager
 {
@@ -42,7 +42,7 @@ class AddressManager
     private $addressEventDispatcher;
 
     /**
-     * Builds an address manager
+     * Builds an address manager.
      *
      * @param ObjectManager          $addressObjectManager   An address object
      *                                                       manager
@@ -53,7 +53,7 @@ class AddressManager
         ObjectManager $addressObjectManager,
         AddressEventDispatcher $addressEventDispatcher
     ) {
-        $this->addressObjectManager   = $addressObjectManager;
+        $this->addressObjectManager = $addressObjectManager;
         $this->addressEventDispatcher = $addressEventDispatcher;
     }
 

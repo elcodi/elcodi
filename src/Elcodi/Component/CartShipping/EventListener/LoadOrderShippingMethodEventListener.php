@@ -21,7 +21,7 @@ use Elcodi\Component\Cart\Event\OrderOnCreatedEvent;
 use Elcodi\Component\CartShipping\Services\OrderShippingMethodLoader;
 
 /**
- * Class LoadOrderShippingMethodEventListener
+ * Class LoadOrderShippingMethodEventListener.
  */
 final class LoadOrderShippingMethodEventListener
 {
@@ -33,7 +33,7 @@ final class LoadOrderShippingMethodEventListener
     private $orderShippingMethodLoader;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param OrderShippingMethodLoader $orderShippingMethodLoader Order shipping method loader
      */
@@ -43,7 +43,7 @@ final class LoadOrderShippingMethodEventListener
     }
 
     /**
-     * Load cart shipping amount
+     * Load cart shipping amount.
      *
      * @param OrderOnCreatedEvent $event Event
      */

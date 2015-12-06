@@ -23,7 +23,7 @@ use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 
 /**
- * Interface NewsletterSubscriptionInterface
+ * Interface NewsletterSubscriptionInterface.
  */
 interface NewsletterSubscriptionInterface
     extends
@@ -32,7 +32,7 @@ interface NewsletterSubscriptionInterface
     EnabledInterface
 {
     /**
-     * Set email
+     * Set email.
      *
      * @param string $email Email
      *
@@ -41,14 +41,14 @@ interface NewsletterSubscriptionInterface
     public function setEmail($email);
 
     /**
-     * Return email
+     * Return email.
      *
      * @return string Email
      */
     public function getEmail();
 
     /**
-     * Set Language
+     * Set Language.
      *
      * @param LanguageInterface $language Language
      *
@@ -57,14 +57,14 @@ interface NewsletterSubscriptionInterface
     public function setLanguage(LanguageInterface $language = null);
 
     /**
-     * Get language
+     * Get language.
      *
      * @return LanguageInterface Language
      */
     public function getLanguage();
 
     /**
-     * Set hash
+     * Set hash.
      *
      * @param string $hash Hash
      *
@@ -73,14 +73,14 @@ interface NewsletterSubscriptionInterface
     public function setHash($hash);
 
     /**
-     * Get hash
+     * Get hash.
      *
      * @return string Hash
      */
     public function getHash();
 
     /**
-     * Set the unsubscribe reason
+     * Set the unsubscribe reason.
      *
      * @param string $reason Reason
      *
@@ -89,7 +89,7 @@ interface NewsletterSubscriptionInterface
     public function setReason($reason);
 
     /**
-     * Get the unsubscribe reason
+     * Get the unsubscribe reason.
      *
      * @return string Reason
      */

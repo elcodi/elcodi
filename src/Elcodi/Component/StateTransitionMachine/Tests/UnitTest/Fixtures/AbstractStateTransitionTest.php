@@ -29,12 +29,12 @@ use Elcodi\Component\StateTransitionMachine\Machine\Machine;
 use Elcodi\Component\StateTransitionMachine\Machine\MachineManager;
 
 /**
- * Class MachineMockery
+ * Class MachineMockery.
  */
 abstract class AbstractStateTransitionTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Return compiled machine
+     * Return compiled machine.
      *
      * @return Machine Machine instance
      */
@@ -56,7 +56,7 @@ abstract class AbstractStateTransitionTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Return transition
+     * Return transition.
      *
      * @return Transition transition
      */
@@ -72,7 +72,7 @@ abstract class AbstractStateTransitionTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Return MachineManager
+     * Return MachineManager.
      *
      * @param string $stateLineNamespace StateLine Entity Namespace
      *

@@ -23,7 +23,7 @@ use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Repository\CategoryRepository;
 
 /**
- * Class ProductCategoryIntegrityEventListenerTest
+ * Class ProductCategoryIntegrityEventListenerTest.
  */
 class ProductCategoryIntegrityEventListenerTest extends WebTestCase
 {
@@ -42,7 +42,7 @@ class ProductCategoryIntegrityEventListenerTest extends WebTestCase
     protected $productDirector;
 
     /**
-     * Setup
+     * Setup.
      */
     public function setUp()
     {
@@ -53,7 +53,7 @@ class ProductCategoryIntegrityEventListenerTest extends WebTestCase
     }
 
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */

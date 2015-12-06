@@ -27,7 +27,7 @@ use Elcodi\Component\Geo\Transformer\LocationToLocationDataTransformer;
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
- * Class LocationServiceProviderAdapter
+ * Class LocationServiceProviderAdapter.
  */
 class LocationServiceProviderAdapter implements LocationProviderAdapterInterface
 {
@@ -46,7 +46,7 @@ class LocationServiceProviderAdapter implements LocationProviderAdapterInterface
     private $locationToLocationDataTransformer;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param LocationRepository                $locationRepository                Location repository
      * @param LocationToLocationDataTransformer $locationToLocationDataTransformer LocationToLocationData transformer
@@ -187,19 +187,19 @@ class LocationServiceProviderAdapter implements LocationProviderAdapterInterface
 
     /**
      * Checks if the first received id is contained between the rest of ids
-     * received as second parameter
+     * received as second parameter.
      *
      * @param string $id  The location Id
      * @param array  $ids The location Ids
      *
-     * @return boolean Location is container
+     * @return bool Location is container
      */
     public function in($id, array $ids)
     {
         $allParents = $this->getHierarchy($id);
 
         /**
-         * To increase the efficiency, we can index the results of the parent
+         * To increase the efficiency, we can index the results of the parent.
          */
         $allParentsIndexed = [];
         foreach ($allParents as $parent) {
@@ -217,7 +217,7 @@ class LocationServiceProviderAdapter implements LocationProviderAdapterInterface
 
     /**
      * Given a group of locations, return a simplified output using the
-     * ValueObject LocationData, ready to be serialized
+     * ValueObject LocationData, ready to be serialized.
      *
      * @param array|Collection $locations The locations to format.
      *
@@ -239,7 +239,7 @@ class LocationServiceProviderAdapter implements LocationProviderAdapterInterface
 
     /**
      * Given a location, return a simplified output using the
-     * ValueObject LocationData, ready to be serialized
+     * ValueObject LocationData, ready to be serialized.
      *
      * @param LocationInterface $location The location to format.
      *

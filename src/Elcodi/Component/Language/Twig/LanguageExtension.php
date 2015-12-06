@@ -23,7 +23,7 @@ use Twig_Extension_GlobalsInterface;
 use Elcodi\Component\Language\Services\PromotedLanguageManager;
 
 /**
- * Class LanguageExtension
+ * Class LanguageExtension.
  */
 class LanguageExtension extends Twig_Extension implements Twig_Extension_GlobalsInterface
 {
@@ -35,7 +35,7 @@ class LanguageExtension extends Twig_Extension implements Twig_Extension_Globals
     private $promotedLanguageManager;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param PromotedLanguageManager $promotedLanguageManager Promoted Language manager
      */
@@ -61,7 +61,7 @@ class LanguageExtension extends Twig_Extension implements Twig_Extension_Globals
     }
 
     /**
-     * return extension name
+     * return extension name.
      *
      * @return string extension name
      */

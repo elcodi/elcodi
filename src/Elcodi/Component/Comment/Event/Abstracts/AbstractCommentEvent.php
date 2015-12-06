@@ -22,7 +22,7 @@ use Symfony\Component\EventDispatcher\Event;
 use Elcodi\Component\Comment\Entity\Interfaces\CommentInterface;
 
 /**
- * Class AbstractCommentEvent
+ * Class AbstractCommentEvent.
  */
 class AbstractCommentEvent extends Event
 {
@@ -34,7 +34,7 @@ class AbstractCommentEvent extends Event
     private $comment;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CommentInterface $comment Comment
      */
@@ -44,7 +44,7 @@ class AbstractCommentEvent extends Event
     }
 
     /**
-     * Get Comment
+     * Get Comment.
      *
      * @return CommentInterface Comment
      */

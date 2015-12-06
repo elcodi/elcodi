@@ -23,7 +23,7 @@ use Elcodi\Component\Plugin\Entity\Plugin;
 use Elcodi\Component\Plugin\Entity\PluginConfiguration;
 
 /**
- * Class PluginTest
+ * Class PluginTest.
  */
 class PluginTest extends PHPUnit_Framework_TestCase
 {
@@ -35,7 +35,7 @@ class PluginTest extends PHPUnit_Framework_TestCase
     protected $plugin;
 
     /**
-     * Setup
+     * Setup.
      */
     public function setUp()
     {
@@ -44,23 +44,23 @@ class PluginTest extends PHPUnit_Framework_TestCase
             'plugin',
             'social',
             PluginConfiguration::create([
-                    'name'        => 'A Plugin',
+                    'name' => 'A Plugin',
                     'description' => 'A plugin description',
-                    'fa_icon'     => 'plugin_icon',
-                    'fields'      => [
+                    'fa_icon' => 'plugin_icon',
+                    'fields' => [
                         'field1' => [
-                            'type'     => 'text',
-                            'label'    => 'label1',
+                            'type' => 'text',
+                            'label' => 'label1',
                             'required' => true,
-                            'data'     => null,
-                            'options'  => [],
+                            'data' => null,
+                            'options' => [],
                         ],
                         'field2' => [
-                            'type'     => 'boolean',
-                            'label'    => 'label2',
+                            'type' => 'boolean',
+                            'label' => 'label2',
                             'required' => true,
-                            'data'     => false,
-                            'options'  => [],
+                            'data' => false,
+                            'options' => [],
                         ],
                     ],
                 ]
@@ -70,7 +70,7 @@ class PluginTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test get configuration value
+     * Test get configuration value.
      */
     public function testGetConfigurationValue()
     {
@@ -81,25 +81,25 @@ class PluginTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test get fields
+     * Test get fields.
      */
     public function testGetFields()
     {
         $this->assertEquals(
             [
                 'field1' => [
-                    'type'     => 'text',
-                    'label'    => 'label1',
+                    'type' => 'text',
+                    'label' => 'label1',
                     'required' => true,
-                    'data'     => null,
-                    'options'  => [],
+                    'data' => null,
+                    'options' => [],
                 ],
                 'field2' => [
-                    'type'     => 'boolean',
-                    'label'    => 'label2',
+                    'type' => 'boolean',
+                    'label' => 'label2',
                     'required' => true,
-                    'data'     => false,
-                    'options'  => [],
+                    'data' => false,
+                    'options' => [],
                 ],
             ],
             $this->plugin->getFields()
@@ -107,7 +107,7 @@ class PluginTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test get fields
+     * Test get fields.
      */
     public function testHasFields()
     {
@@ -115,24 +115,24 @@ class PluginTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test get field
+     * Test get field.
      */
     public function testGetField()
     {
         $this->assertEquals(
             [
-                'type'     => 'text',
-                'label'    => 'label1',
+                'type' => 'text',
+                'label' => 'label1',
                 'required' => true,
-                'data'     => null,
-                'options'  => [],
+                'data' => null,
+                'options' => [],
             ],
             $this->plugin->getField('field1')
         );
     }
 
     /**
-     * Test has field
+     * Test has field.
      */
     public function testHasField()
     {
@@ -142,7 +142,7 @@ class PluginTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test get field values
+     * Test get field values.
      */
     public function testGetFieldValues()
     {
@@ -169,7 +169,7 @@ class PluginTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test get field value
+     * Test get field value.
      */
     public function testGetFieldValue()
     {
@@ -190,7 +190,7 @@ class PluginTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test set field values
+     * Test set field values.
      */
     public function testSetFieldValues()
     {
@@ -211,7 +211,7 @@ class PluginTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test plugin is usable
+     * Test plugin is usable.
      */
     public function testIsUsable()
     {
@@ -249,7 +249,7 @@ class PluginTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test plugin can guess itself is usable
+     * Test plugin can guess itself is usable.
      */
     public function testGuessIsUsable()
     {
@@ -271,7 +271,7 @@ class PluginTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test merge
+     * Test merge.
      */
     public function testMergeOK()
     {
@@ -285,23 +285,23 @@ class PluginTest extends PHPUnit_Framework_TestCase
                 'plugin',
                 'social',
                 PluginConfiguration::create([
-                        'name'        => 'A Plugin',
+                        'name' => 'A Plugin',
                         'description' => 'A plugin description',
-                        'fa_icon'     => 'plugin_icon',
-                        'fields'      => [
+                        'fa_icon' => 'plugin_icon',
+                        'fields' => [
                             'field1' => [
-                                'type'     => 'text',
-                                'label'    => 'label1',
+                                'type' => 'text',
+                                'label' => 'label1',
                                 'required' => true,
-                                'data'     => null,
-                                'options'  => [],
+                                'data' => null,
+                                'options' => [],
                             ],
                             'field3' => [
-                                'type'     => 'textarea',
-                                'label'    => 'label3',
+                                'type' => 'textarea',
+                                'label' => 'label3',
                                 'required' => true,
-                                'data'     => null,
-                                'options'  => [],
+                                'data' => null,
+                                'options' => [],
                             ],
                         ],
                     ]
@@ -319,7 +319,7 @@ class PluginTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test merge with exception
+     * Test merge with exception.
      *
      * @expectedException \RuntimeException
      */
@@ -333,16 +333,16 @@ class PluginTest extends PHPUnit_Framework_TestCase
                     'plugin',
                     'social',
                     PluginConfiguration::create([
-                            'name'        => 'A Plugin',
+                            'name' => 'A Plugin',
                             'description' => 'A plugin description',
-                            'fa_icon'     => 'plugin_icon',
-                            'fields'      => [
+                            'fa_icon' => 'plugin_icon',
+                            'fields' => [
                                 'field1' => [
-                                    'type'     => 'text',
-                                    'label'    => 'label1',
+                                    'type' => 'text',
+                                    'label' => 'label1',
                                     'required' => true,
-                                    'data'     => null,
-                                    'options'  => [],
+                                    'data' => null,
+                                    'options' => [],
                                 ],
                             ],
                         ]

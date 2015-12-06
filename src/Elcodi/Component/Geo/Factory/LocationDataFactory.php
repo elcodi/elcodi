@@ -20,12 +20,12 @@ namespace Elcodi\Component\Geo\Factory;
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
- * Class LocationDataFactory
+ * Class LocationDataFactory.
  */
 class LocationDataFactory
 {
     /**
-     * Create new Location
+     * Create new Location.
      *
      * @param string $locationId   Location id
      * @param string $locationName Location name

@@ -21,7 +21,7 @@ use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
- * Interface LanguageInterface
+ * Interface LanguageInterface.
  */
 interface LanguageInterface
     extends
@@ -29,7 +29,7 @@ interface LanguageInterface
     EnabledInterface
 {
     /**
-     * Set language name
+     * Set language name.
      *
      * @param string $name Name of the shop
      *
@@ -38,14 +38,14 @@ interface LanguageInterface
     public function setName($name);
 
     /**
-     * Get shop name
+     * Get shop name.
      *
      * @return string
      */
     public function getName();
 
     /**
-     * Set iso
+     * Set iso.
      *
      * @param string $iso Iso
      *
@@ -54,7 +54,7 @@ interface LanguageInterface
     public function setIso($iso);
 
     /**
-     * Get iso
+     * Get iso.
      *
      * @return string
      */

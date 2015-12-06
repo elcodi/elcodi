@@ -27,7 +27,7 @@ use Elcodi\Bundle\BannerBundle\DependencyInjection\ElcodiBannerExtension;
 use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 
 /**
- * ElcodiBannerBundle Bundle
+ * ElcodiBannerBundle Bundle.
  */
 class ElcodiBannerBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
@@ -50,7 +50,7 @@ class ElcodiBannerBundle extends AbstractElcodiBundle implements DependentBundle
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

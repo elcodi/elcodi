@@ -18,12 +18,12 @@
 namespace Elcodi\Component\Comment;
 
 /**
- * Class ElcodiCommentEvents
+ * Class ElcodiCommentEvents.
  */
 final class ElcodiCommentEvents
 {
     /**
-     * This event is dispatched when a comment is added
+     * This event is dispatched when a comment is added.
      *
      * event.name : comment.onadd
      * event.class : CommentOnAddEvent
@@ -31,7 +31,7 @@ final class ElcodiCommentEvents
     const COMMENT_ONADD = 'comment.onadd';
 
     /**
-     * This event is dispatched when a comment is edited
+     * This event is dispatched when a comment is edited.
      *
      * event.name : comment.onedit
      * event.class : CommentOnEditEvent
@@ -39,7 +39,7 @@ final class ElcodiCommentEvents
     const COMMENT_ONEDIT = 'comment.onedit';
 
     /**
-     * This event is dispatched before a comment is removed
+     * This event is dispatched before a comment is removed.
      *
      * event.name : comment.preremove
      * event.class : CommentPreRemoveEvent
@@ -47,7 +47,7 @@ final class ElcodiCommentEvents
     const COMMENT_PREREMOVE = 'comment.preremove';
 
     /**
-     * This event is dispatched when a comment is removed
+     * This event is dispatched when a comment is removed.
      *
      * event.name : comment.onremove
      * event.class : CommentOnRemoveEvent
@@ -55,7 +55,7 @@ final class ElcodiCommentEvents
     const COMMENT_ONREMOVE = 'comment.onremove';
 
     /**
-     * This event is dispatched when a comment is voted
+     * This event is dispatched when a comment is voted.
      *
      * event.name : comment.onvoted
      * event.class : CommentOnVotedEvent

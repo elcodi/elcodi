@@ -24,7 +24,7 @@ use Elcodi\Component\Core\Command\Abstracts\AbstractElcodiCommand;
 use Elcodi\Component\EntityTranslator\EventDispatcher\EntityTranslatorEventDispatcher;
 
 /**
- * Class TranslationsWarmupCommand
+ * Class TranslationsWarmupCommand.
  */
 class TranslationsWarmupCommand extends AbstractElcodiCommand
 {
@@ -36,7 +36,7 @@ class TranslationsWarmupCommand extends AbstractElcodiCommand
     private $entityTranslationEventDispatcher;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param EntityTranslatorEventDispatcher $entityTranslationEventDispatcher Entity translator event dispatcher
      */
@@ -48,7 +48,7 @@ class TranslationsWarmupCommand extends AbstractElcodiCommand
     }
 
     /**
-     * configure
+     * configure.
      */
     protected function configure()
     {
@@ -59,12 +59,12 @@ class TranslationsWarmupCommand extends AbstractElcodiCommand
 
     /**
      * This command loads all the exchange rates from base_currency to all available
-     * currencies
+     * currencies.
      *
      * @param InputInterface  $input  The input interface
      * @param OutputInterface $output The output interface
      *
-     * @return integer|null|void
+     * @return int|null|void
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {

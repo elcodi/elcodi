@@ -25,12 +25,12 @@ use Symfony\Component\Routing\RouteCollection;
 use Elcodi\Component\Plugin\Entity\Plugin;
 
 /**
- * Class RouterLoader
+ * Class RouterLoader.
  */
 class RouterLoader extends Loader
 {
     /**
-     * @var boolean
+     * @var bool
      *
      * Route is loaded
      */
@@ -51,7 +51,7 @@ class RouterLoader extends Loader
     private $kernel;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param KernelInterface $kernel  Kernel
      * @param Plugin[]        $plugins Plugins
@@ -92,7 +92,7 @@ class RouterLoader extends Loader
     }
 
     /**
-     * Return route collection for injected plugins
+     * Return route collection for injected plugins.
      *
      * @return RouteCollection Collection generated
      */
@@ -110,7 +110,7 @@ class RouterLoader extends Loader
     }
 
     /**
-     * Return route collection for injected plugins
+     * Return route collection for injected plugins.
      *
      * @return RouteCollection Collection generated
      */

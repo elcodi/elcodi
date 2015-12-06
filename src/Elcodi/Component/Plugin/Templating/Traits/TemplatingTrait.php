@@ -18,19 +18,19 @@
 namespace Elcodi\Component\Plugin\Templating\Traits;
 
 /**
- * Trait TemplatingTrait
+ * Trait TemplatingTrait.
  */
 trait TemplatingTrait
 {
     /**
-     * Current Twig environment
+     * Current Twig environment.
      *
      * @var \Twig_Environment
      */
     protected $twig;
 
     /**
-     * Set templating
+     * Set templating.
      *
      * @param \Twig_Environment $twig
      *
@@ -44,7 +44,7 @@ trait TemplatingTrait
     }
 
     /**
-     * Render a template and append to the current content
+     * Render a template and append to the current content.
      *
      * @param string                                                             $template
      * @param \Elcodi\Component\Plugin\EventDispatcher\Interfaces\EventInterface $event

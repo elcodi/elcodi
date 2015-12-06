@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Menu;
 
 /**
- * Class ElcodiMenuStages
+ * Class ElcodiMenuStages.
  */
 final class ElcodiMenuStages
 {

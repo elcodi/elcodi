@@ -18,19 +18,19 @@
 namespace Elcodi\Component\Language\Entity\Interfaces;
 
 /**
- * Interface LocaleInterface
+ * Interface LocaleInterface.
  */
 interface LocaleInterface
 {
     /**
-     * Get Iso
+     * Get Iso.
      *
      * @return string Iso
      */
     public function getIso();
 
     /**
-     * Create new instance
+     * Create new instance.
      *
      * @param string $localeIso Locale iso
      *

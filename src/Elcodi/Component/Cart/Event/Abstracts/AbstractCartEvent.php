@@ -22,7 +22,7 @@ use Symfony\Component\EventDispatcher\Event;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 
 /**
- * Class AbstractCartEvent
+ * Class AbstractCartEvent.
  */
 abstract class AbstractCartEvent extends Event
 {
@@ -34,7 +34,7 @@ abstract class AbstractCartEvent extends Event
     private $cart;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CartInterface $cart Cart
      */
@@ -44,7 +44,7 @@ abstract class AbstractCartEvent extends Event
     }
 
     /**
-     * Get cart
+     * Get cart.
      *
      * @return CartInterface Cart
      */

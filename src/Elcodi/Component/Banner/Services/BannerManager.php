@@ -24,7 +24,7 @@ use Elcodi\Component\Banner\Repository\BannerRepository;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 
 /**
- * BannerManager
+ * BannerManager.
  */
 class BannerManager
 {
@@ -36,7 +36,7 @@ class BannerManager
     private $bannerRepository;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param BannerRepository $bannerRepository Banner repository
      */
@@ -46,7 +46,7 @@ class BannerManager
     }
 
     /**
-     * Get banners from a bannerZone code, given a language
+     * Get banners from a bannerZone code, given a language.
      *
      * @param string            $bannerZoneCode Banner zone code
      * @param LanguageInterface $language       Language
@@ -61,7 +61,7 @@ class BannerManager
     }
 
     /**
-     * Get banners from a bannerZone, given a language
+     * Get banners from a bannerZone, given a language.
      *
      * @param BannerZoneInterface $bannerZone Banner zone
      * @param LanguageInterface   $language   Language

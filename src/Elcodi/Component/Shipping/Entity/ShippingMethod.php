@@ -20,7 +20,7 @@ namespace Elcodi\Component\Shipping\Entity;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 
 /**
- * Class ShippingMethod
+ * Class ShippingMethod.
  */
 class ShippingMethod
 {
@@ -81,7 +81,7 @@ class ShippingMethod
     }
 
     /**
-     * Get Id
+     * Get Id.
      *
      * @return string Id
      */
@@ -91,7 +91,7 @@ class ShippingMethod
     }
 
     /**
-     * Get CarrierName
+     * Get CarrierName.
      *
      * @return string CarrierName
      */
@@ -101,7 +101,7 @@ class ShippingMethod
     }
 
     /**
-     * Get Name
+     * Get Name.
      *
      * @return string Name
      */
@@ -111,7 +111,7 @@ class ShippingMethod
     }
 
     /**
-     * Get Description
+     * Get Description.
      *
      * @return string Description
      */
@@ -121,7 +121,7 @@ class ShippingMethod
     }
 
     /**
-     * Get Price
+     * Get Price.
      *
      * @return MoneyInterface Price
      */

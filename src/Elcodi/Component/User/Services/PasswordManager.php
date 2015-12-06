@@ -26,7 +26,7 @@ use Elcodi\Component\User\EventDispatcher\Interfaces\PasswordEventDispatcherInte
 use Elcodi\Component\User\Repository\Interfaces\UserEmaileableInterface;
 
 /**
- * Manager for passwords
+ * Manager for passwords.
  */
 class PasswordManager
 {
@@ -77,14 +77,14 @@ class PasswordManager
     }
 
     /**
-     * Remember a password from a user, given its email
+     * Remember a password from a user, given its email.
      *
      * @param UserEmaileableInterface $userRepository         User repository
      * @param string                  $email                  User email
      * @param string                  $recoverPasswordUrlName Recover password name
      * @param string                  $hashField              Hash
      *
-     * @return boolean its been found and processed
+     * @return bool its been found and processed
      */
     public function rememberPasswordByEmail(
         UserEmaileableInterface $userRepository,
@@ -141,7 +141,7 @@ class PasswordManager
     }
 
     /**
-     * Recovers a password given a user
+     * Recovers a password given a user.
      *
      * @param AbstractUser $user        User
      * @param string       $hash        Hash given by provider

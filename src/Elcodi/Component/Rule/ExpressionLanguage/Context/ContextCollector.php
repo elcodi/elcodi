@@ -20,7 +20,7 @@ namespace Elcodi\Component\Rule\ExpressionLanguage\Context;
 use Elcodi\Component\Rule\ExpressionLanguage\Interfaces\ExpressionContextProviderInterface;
 
 /**
- * Class ContextCollector
+ * Class ContextCollector.
  *
  * Provides context for ExpressionLanguage
  */
@@ -34,7 +34,7 @@ class ContextCollector implements ExpressionContextProviderInterface
     private $contextProviders;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param ExpressionContextProviderInterface[] $contextProviders Context providers
      */
@@ -44,7 +44,7 @@ class ContextCollector implements ExpressionContextProviderInterface
     }
 
     /**
-     * Get provided context
+     * Get provided context.
      *
      * @return array
      */

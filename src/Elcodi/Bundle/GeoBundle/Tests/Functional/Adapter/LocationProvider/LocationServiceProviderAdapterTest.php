@@ -22,7 +22,7 @@ use Elcodi\Component\Geo\Adapter\LocationProvider\Interfaces\LocationProviderAda
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
- * Class LocationServiceProviderAdapterTest
+ * Class LocationServiceProviderAdapterTest.
  */
 class LocationServiceProviderAdapterTest extends WebTestCase
 {
@@ -34,7 +34,7 @@ class LocationServiceProviderAdapterTest extends WebTestCase
     protected $locationProviderAdapter;
 
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -46,7 +46,7 @@ class LocationServiceProviderAdapterTest extends WebTestCase
     }
 
     /**
-     * Setup
+     * Setup.
      */
     public function setUp()
     {
@@ -59,7 +59,7 @@ class LocationServiceProviderAdapterTest extends WebTestCase
     }
 
     /**
-     * Test that we are returning the root locations
+     * Test that we are returning the root locations.
      */
     public function testGetRootLocations()
     {
@@ -91,7 +91,7 @@ class LocationServiceProviderAdapterTest extends WebTestCase
     }
 
     /**
-     * Test get children
+     * Test get children.
      */
     public function testGetChildren()
     {
@@ -124,7 +124,7 @@ class LocationServiceProviderAdapterTest extends WebTestCase
     }
 
     /**
-     * Test get children with a non-existent entity
+     * Test get children with a non-existent entity.
      */
     public function testGetChildrenLocationNotFound()
     {
@@ -138,7 +138,7 @@ class LocationServiceProviderAdapterTest extends WebTestCase
     }
 
     /**
-     * Test get children with a location without children
+     * Test get children with a location without children.
      */
     public function testGetChildrenNotFound()
     {
@@ -154,7 +154,7 @@ class LocationServiceProviderAdapterTest extends WebTestCase
     }
 
     /**
-     * Test get parents
+     * Test get parents.
      */
     public function testGetParents()
     {
@@ -187,7 +187,7 @@ class LocationServiceProviderAdapterTest extends WebTestCase
     }
 
     /**
-     * Test get parents with a non-existent location
+     * Test get parents with a non-existent location.
      */
     public function testGetParentsLocationNotFound()
     {
@@ -201,7 +201,7 @@ class LocationServiceProviderAdapterTest extends WebTestCase
     }
 
     /**
-     * Test get parents with a root location
+     * Test get parents with a root location.
      */
     public function testGetParentsNotFound()
     {
@@ -217,7 +217,7 @@ class LocationServiceProviderAdapterTest extends WebTestCase
     }
 
     /**
-     * Test get location
+     * Test get location.
      */
     public function testGetLocation()
     {
@@ -257,7 +257,7 @@ class LocationServiceProviderAdapterTest extends WebTestCase
     }
 
     /**
-     * Test get location not found
+     * Test get location not found.
      */
     public function testGetLocationNotFound()
     {
@@ -271,7 +271,7 @@ class LocationServiceProviderAdapterTest extends WebTestCase
     }
 
     /**
-     * Test get hierarchy
+     * Test get hierarchy.
      */
     public function testGetHierarchy()
     {
@@ -308,7 +308,7 @@ class LocationServiceProviderAdapterTest extends WebTestCase
     }
 
     /**
-     * Test get hierarchy for multiple paths
+     * Test get hierarchy for multiple paths.
      */
     public function testGetHierarchyMultiplePaths()
     {
@@ -364,7 +364,7 @@ class LocationServiceProviderAdapterTest extends WebTestCase
     }
 
     /**
-     * Test in found
+     * Test in found.
      */
     public function testInFound()
     {
@@ -381,7 +381,7 @@ class LocationServiceProviderAdapterTest extends WebTestCase
     }
 
     /**
-     * Test in found with multiples possibilities
+     * Test in found with multiples possibilities.
      */
     public function testInMultipleFound()
     {
@@ -399,7 +399,7 @@ class LocationServiceProviderAdapterTest extends WebTestCase
     }
 
     /**
-     * Test in not found
+     * Test in not found.
      */
     public function testInNotFound()
     {
@@ -416,7 +416,7 @@ class LocationServiceProviderAdapterTest extends WebTestCase
     }
 
     /**
-     * Test in not found for multiple options
+     * Test in not found for multiple options.
      */
     public function testInNotFoundMultiple()
     {
@@ -434,7 +434,7 @@ class LocationServiceProviderAdapterTest extends WebTestCase
     }
 
     /**
-     * Test in with a non-existent location
+     * Test in with a non-existent location.
      */
     public function testInLocationNotFound()
     {

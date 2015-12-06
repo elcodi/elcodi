@@ -28,7 +28,7 @@ use Elcodi\Component\Coupon\Exception\CouponNotAvailableException;
 use Elcodi\Component\Coupon\Repository\CouponRepository;
 
 /**
- * Class CartCoupon Manager
+ * Class CartCoupon Manager.
  *
  * API methods:
  *
@@ -74,7 +74,7 @@ class CartCouponManager
     private $cartCouponRepository;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CartCouponEventDispatcher $cartCouponEventDispatcher CartCoupon event dispatcher
      * @param CouponRepository          $couponRepository          Coupon Repository
@@ -94,7 +94,7 @@ class CartCouponManager
     }
 
     /**
-     * Create a cart coupon given a cart and a coupon
+     * Create a cart coupon given a cart and a coupon.
      *
      * @param CartInterface   $cart   Cart
      * @param CouponInterface $coupon Coupon
@@ -107,7 +107,7 @@ class CartCouponManager
     ) {
         /**
          * We create a new instance of CartCoupon.
-         * We also persist and flush relation
+         * We also persist and flush relation.
          */
         $cartCoupon = $this
             ->cartCouponDirector
@@ -124,7 +124,7 @@ class CartCouponManager
     }
 
     /**
-     * Get CartCoupon instances assigned to current Cart
+     * Get CartCoupon instances assigned to current Cart.
      *
      * @param CartInterface $cart Cart
      *
@@ -147,7 +147,7 @@ class CartCouponManager
     }
 
     /**
-     * Get cart coupon objects
+     * Get cart coupon objects.
      *
      * @param CartInterface $cart Cart
      *
@@ -170,14 +170,14 @@ class CartCouponManager
     }
 
     /**
-     * Given a coupon code, applies it to cart
+     * Given a coupon code, applies it to cart.
      *
      * @param CartInterface $cart       Cart
      * @param string        $couponCode Coupon code
      *
      * @throws AbstractCouponException
      *
-     * @return boolean Coupon has added to Cart
+     * @return bool Coupon has added to Cart
      */
     public function addCouponByCode(
         CartInterface $cart,
@@ -186,7 +186,7 @@ class CartCouponManager
         $coupon = $this
             ->couponRepository
             ->findOneBy([
-                'code'    => $couponCode,
+                'code' => $couponCode,
                 'enabled' => true,
             ]);
 
@@ -202,7 +202,7 @@ class CartCouponManager
     }
 
     /**
-     * Adds a Coupon to a Cart and recalculates the Cart Totals
+     * Adds a Coupon to a Cart and recalculates the Cart Totals.
      *
      * @param CartInterface   $cart   Cart
      * @param CouponInterface $coupon The coupon to add
@@ -226,12 +226,12 @@ class CartCouponManager
     }
 
     /**
-     * Given a coupon code, removes it from cart
+     * Given a coupon code, removes it from cart.
      *
      * @param CartInterface $cart       Cart
      * @param string        $couponCode Coupon code
      *
-     * @return boolean Coupon has been removed from cart
+     * @return bool Coupon has been removed from cart
      */
     public function removeCouponByCode(
         CartInterface $cart,
@@ -255,12 +255,12 @@ class CartCouponManager
     }
 
     /**
-     * Removes a Coupon from a Cart, and recalculates Cart Totals
+     * Removes a Coupon from a Cart, and recalculates Cart Totals.
      *
      * @param CartInterface   $cart   Cart
      * @param CouponInterface $coupon The coupon to remove
      *
-     * @return boolean Coupon has been removed from cart
+     * @return bool Coupon has been removed from cart
      */
     public function removeCoupon(
         CartInterface $cart,
@@ -269,7 +269,7 @@ class CartCouponManager
         $cartCoupons = $this
             ->cartCouponDirector
             ->findBy([
-                'cart'   => $cart,
+                'cart' => $cart,
                 'coupon' => $coupon,
             ]);
 
@@ -289,7 +289,7 @@ class CartCouponManager
     }
 
     /**
-     * Removed a CartCoupon
+     * Removed a CartCoupon.
      *
      * @param CartCouponInterface $cartCoupon Cart coupon
      */

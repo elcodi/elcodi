@@ -20,12 +20,12 @@ namespace Elcodi\Component\Media\Entity\Interfaces;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Interface ImagesContainerInterface
+ * Interface ImagesContainerInterface.
  */
 interface ImagesContainerInterface
 {
     /**
-     * Set add image
+     * Set add image.
      *
      * @param ImageInterface $image Image object to be added
      *
@@ -34,7 +34,7 @@ interface ImagesContainerInterface
     public function addImage(ImageInterface $image);
 
     /**
-     * Get if entity is enabled
+     * Get if entity is enabled.
      *
      * @param ImageInterface $image Image object to be removed
      *
@@ -43,14 +43,14 @@ interface ImagesContainerInterface
     public function removeImage(ImageInterface $image);
 
     /**
-     * Get all images
+     * Get all images.
      *
      * @return ArrayCollection
      */
     public function getImages();
 
     /**
-     * Set images
+     * Set images.
      *
      * @param ArrayCollection $images Images
      *
@@ -59,21 +59,21 @@ interface ImagesContainerInterface
     public function setImages(ArrayCollection $images);
 
     /**
-     * Get sorted images
+     * Get sorted images.
      *
      * @return \Doctrine\Common\Collections\ArrayCollection
      */
     public function getSortedImages();
 
     /**
-     * Get ImagesSort
+     * Get ImagesSort.
      *
      * @return string ImagesSort
      */
     public function getImagesSort();
 
     /**
-     * Sets ImagesSort
+     * Sets ImagesSort.
      *
      * @param string $imagesSort ImagesSort
      *

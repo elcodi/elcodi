@@ -22,19 +22,19 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
- * Interface LocationInterface
+ * Interface LocationInterface.
  */
 interface LocationInterface extends IdentifiableInterface
 {
     /**
-     * Gets the name
+     * Gets the name.
      *
      * @return string
      */
     public function getName();
 
     /**
-     * Sets the name
+     * Sets the name.
      *
      * @param string $name The name
      *
@@ -43,14 +43,14 @@ interface LocationInterface extends IdentifiableInterface
     public function setName($name);
 
     /**
-     * Gets the code
+     * Gets the code.
      *
      * @return string
      */
     public function getCode();
 
     /**
-     * Sets the code
+     * Sets the code.
      *
      * @param string $code The code
      *
@@ -59,14 +59,14 @@ interface LocationInterface extends IdentifiableInterface
     public function setCode($code);
 
     /**
-     * Gets the type
+     * Gets the type.
      *
      * @return string
      */
     public function getType();
 
     /**
-     * Sets the type
+     * Sets the type.
      *
      * @param string $type The type
      *
@@ -75,21 +75,21 @@ interface LocationInterface extends IdentifiableInterface
     public function setType($type);
 
     /**
-     * Get the closest parents
+     * Get the closest parents.
      *
      * @return Collection Closest parents
      */
     public function getParents();
 
     /**
-     * Get all the parents
+     * Get all the parents.
      *
      * @return array All parents
      */
     public function getAllParents();
 
     /**
-     * Set parent locations
+     * Set parent locations.
      *
      * @param Collection $parents Locations
      *
@@ -98,7 +98,7 @@ interface LocationInterface extends IdentifiableInterface
     public function setParents(Collection $parents);
 
     /**
-     * Add parent Location
+     * Add parent Location.
      *
      * @param LocationInterface $location Location
      *
@@ -107,7 +107,7 @@ interface LocationInterface extends IdentifiableInterface
     public function addParent(LocationInterface $location);
 
     /**
-     * Remove parentLocation
+     * Remove parentLocation.
      *
      * @param LocationInterface $location Location
      *
@@ -116,14 +116,14 @@ interface LocationInterface extends IdentifiableInterface
     public function removeParent(LocationInterface $location);
 
     /**
-     * Get the children
+     * Get the children.
      *
      * @return Collection Children
      */
     public function getChildren();
 
     /**
-     * Set the children
+     * Set the children.
      *
      * @param Collection $children Locations
      *
@@ -132,7 +132,7 @@ interface LocationInterface extends IdentifiableInterface
     public function setChildren(Collection $children);
 
     /**
-     * Get the children
+     * Get the children.
      *
      * @param LocationInterface $location Location
      *

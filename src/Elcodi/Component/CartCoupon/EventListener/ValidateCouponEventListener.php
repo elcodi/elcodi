@@ -22,7 +22,7 @@ use Elcodi\Component\CartCoupon\Services\CartCouponValidator;
 use Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException;
 
 /**
- * Class ValidateCouponEventListener
+ * Class ValidateCouponEventListener.
  */
 final class ValidateCouponEventListener
 {
@@ -34,7 +34,7 @@ final class ValidateCouponEventListener
     private $cartCouponValidator;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param CartCouponValidator $cartCouponValidator CartCoupon validator
      */
@@ -44,7 +44,7 @@ final class ValidateCouponEventListener
     }
 
     /**
-     * Check if cart meets basic requirements for a coupon
+     * Check if cart meets basic requirements for a coupon.
      *
      * @param CartCouponOnCheckEvent $event
      *

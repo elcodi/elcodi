@@ -23,12 +23,12 @@ use Elcodi\Component\Currency\Factory\Abstracts\AbstractPurchasableFactory;
 use Elcodi\Component\Product\Entity\Variant;
 
 /**
- * Factory for Variant entities
+ * Factory for Variant entities.
  */
 class VariantFactory extends AbstractPurchasableFactory
 {
     /**
-     * Creates and returns a pristine Variant instance
+     * Creates and returns a pristine Variant instance.
      *
      * Prices are initialized to "zero amount" Money value objects,
      * using injected CurrencyWrapper default Currency
@@ -45,7 +45,7 @@ class VariantFactory extends AbstractPurchasableFactory
         $classNamespace = $this->getEntityNamespace();
         $variant = new $classNamespace();
         $variant
-            ->setSku("")
+            ->setSku('')
             ->setStock(0)
             ->setPrice($zeroPrice)
             ->setReducedPrice($zeroPrice)

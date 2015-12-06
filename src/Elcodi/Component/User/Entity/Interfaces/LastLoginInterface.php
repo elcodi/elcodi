@@ -20,19 +20,19 @@ namespace Elcodi\Component\User\Entity\Interfaces;
 use DateTime;
 
 /**
- * Interface LastLoginInterface
+ * Interface LastLoginInterface.
  */
 interface LastLoginInterface
 {
     /**
-     * Get LastLoginAt
+     * Get LastLoginAt.
      *
      * @return \DateTime LastLoginAt
      */
     public function getLastLoginAt();
 
     /**
-     * Sets LastLoginAt
+     * Sets LastLoginAt.
      *
      * @param DateTime $lastLoginAt LastLoginAt
      *

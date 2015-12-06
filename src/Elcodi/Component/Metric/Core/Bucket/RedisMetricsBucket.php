@@ -25,7 +25,7 @@ use Elcodi\Component\Metric\Core\Entity\Interfaces\EntryInterface;
 use Elcodi\Component\Metric\ElcodiMetricTypes;
 
 /**
- * Class RedisMetricsBucket
+ * Class RedisMetricsBucket.
  */
 class RedisMetricsBucket extends AbstractMetricsBucket
 {
@@ -37,7 +37,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
     private $redis;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param Predis $redis Redis
      */
@@ -47,7 +47,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
     }
 
     /**
-     * Add Metric into Bucket
+     * Add Metric into Bucket.
      *
      * @param EntryInterface $entry Entry
      *
@@ -63,13 +63,13 @@ class RedisMetricsBucket extends AbstractMetricsBucket
     }
 
     /**
-     * Get number of unique beacons given an event and a set of dates
+     * Get number of unique beacons given an event and a set of dates.
      *
      * @param string $token Event
      * @param string $event Token
      * @param array  $dates Dates
      *
-     * @return integer Number of hits
+     * @return int Number of hits
      */
     public function getBeaconsUnique($token, $event, array $dates)
     {
@@ -92,13 +92,13 @@ class RedisMetricsBucket extends AbstractMetricsBucket
     }
 
     /**
-     * Get the total of beacons given an event and a set of dates
+     * Get the total of beacons given an event and a set of dates.
      *
      * @param string $token Event
      * @param string $event Token
      * @param array  $dates Dates
      *
-     * @return integer Number of beacons, given an event and dates
+     * @return int Number of beacons, given an event and dates
      */
     public function getBeaconsTotal($token, $event, array $dates)
     {
@@ -122,13 +122,13 @@ class RedisMetricsBucket extends AbstractMetricsBucket
     }
 
     /**
-     * Get distributions given an event and a set of dates
+     * Get distributions given an event and a set of dates.
      *
      * @param string $token Event
      * @param string $event Token
      * @param array  $dates Dates
      *
-     * @return integer Accumulation of event and given dates
+     * @return int Accumulation of event and given dates
      */
     public function getAccumulation($token, $event, array $dates)
     {
@@ -152,7 +152,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
     }
 
     /**
-     * Get distributions given an event and a set of dates
+     * Get distributions given an event and a set of dates.
      *
      * [
      *      "value3": 24,
@@ -196,7 +196,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
     }
 
     /**
-     * Add metric given hour formatted
+     * Add metric given hour formatted.
      *
      * @param EntryInterface $entry          Entry
      * @param string         $dateTimeFormat DateTime format
@@ -216,28 +216,28 @@ class RedisMetricsBucket extends AbstractMetricsBucket
         $entryType = $entry->getType();
 
         /**
-         * If the entry must be treated as a beacon
+         * If the entry must be treated as a beacon.
          */
         if ($entryType & ElcodiMetricTypes::TYPE_BEACON_UNIQUE) {
             $this->addBeaconMetricUnique($entry, $entryKey);
         }
 
         /**
-         * If the entry must be treated as a beacon
+         * If the entry must be treated as a beacon.
          */
         if ($entryType & ElcodiMetricTypes::TYPE_BEACON_TOTAL) {
             $this->addBeaconMetricTotal($entryKey);
         }
 
         /**
-         * If the entry must be treated as an accumulated metric
+         * If the entry must be treated as an accumulated metric.
          */
         if ($entryType & ElcodiMetricTypes::TYPE_ACCUMULATED) {
             $this->addAccumulativeEntry($entry, $entryKey);
         }
 
         /**
-         * If the entry must be treated as a distributed metric
+         * If the entry must be treated as a distributed metric.
          */
         if ($entryType & ElcodiMetricTypes::TYPE_DISTRIBUTIVE) {
             $this->addDistributedEntry($entry, $entryKey);
@@ -247,7 +247,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
     }
 
     /**
-     * Add beacon unique nb given the key entry
+     * Add beacon unique nb given the key entry.
      *
      * @param EntryInterface $entry    Entry
      * @param string         $entryKey Key entry
@@ -271,7 +271,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
     }
 
     /**
-     * Add beacon total nb given the key entry
+     * Add beacon total nb given the key entry.
      *
      * @param string $entryKey Key entry
      *
@@ -289,7 +289,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
     }
 
     /**
-     * Add accumulative metric
+     * Add accumulative metric.
      *
      * @param EntryInterface $entry    Entry
      * @param string         $entryKey Key entry
@@ -313,7 +313,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
     }
 
     /**
-     * Add distributed metric
+     * Add distributed metric.
      *
      * @param EntryInterface $entry    Entry
      * @param string         $entryKey Key entry
@@ -343,7 +343,7 @@ class RedisMetricsBucket extends AbstractMetricsBucket
      * If the call catches a connection Exception, then returns the provided
      * default value (false by default)
      *
-     * @param Callable $callable     Callable function
+     * @param callable $callable     Callable function
      * @param mixed    $defaultValue Default value to return if exception
      *
      * @return mixed Result of the callable or $defaultValue if connection exception

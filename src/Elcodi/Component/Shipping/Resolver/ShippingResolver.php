@@ -21,7 +21,7 @@ use Elcodi\Component\Currency\Services\CurrencyConverter;
 use Elcodi\Component\Shipping\Entity\ShippingMethod;
 
 /**
- * Class ShippingResolver
+ * Class ShippingResolver.
  */
 class ShippingResolver
 {
@@ -33,7 +33,7 @@ class ShippingResolver
     private $currencyConverter;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CurrencyConverter $currencyConverter Currency Converter
      */
@@ -43,7 +43,7 @@ class ShippingResolver
     }
 
     /**
-     * Given a set of shipping methods, return the one with the lowest price
+     * Given a set of shipping methods, return the one with the lowest price.
      *
      * @param ShippingMethod[] $shippingMethods Shipping methods
      *

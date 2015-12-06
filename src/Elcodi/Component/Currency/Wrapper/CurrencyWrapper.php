@@ -24,7 +24,7 @@ use Elcodi\Component\Currency\Repository\CurrencyRepository;
 use Elcodi\Component\Currency\Services\CurrencySessionManager;
 
 /**
- * Class CurrencyWrapper
+ * Class CurrencyWrapper.
  */
 class CurrencyWrapper implements WrapperInterface
 {
@@ -57,7 +57,7 @@ class CurrencyWrapper implements WrapperInterface
     private $currency;
 
     /**
-     * Currency wrapper constructor
+     * Currency wrapper constructor.
      *
      * @param CurrencySessionManager $currencySessionManager Currency Session Manager
      * @param CurrencyRepository     $currencyRepository     Currency repository
@@ -115,7 +115,7 @@ class CurrencyWrapper implements WrapperInterface
     }
 
     /**
-     * Load currency from session
+     * Load currency from session.
      *
      * @return CurrencyInterface|null Currency
      *
@@ -135,7 +135,7 @@ class CurrencyWrapper implements WrapperInterface
     }
 
     /**
-     * Save currency to session
+     * Save currency to session.
      *
      * @param CurrencyInterface $currency Currency
      *
@@ -151,7 +151,7 @@ class CurrencyWrapper implements WrapperInterface
     }
 
     /**
-     * Load default currency
+     * Load default currency.
      *
      * @return CurrencyInterface Currency
      */

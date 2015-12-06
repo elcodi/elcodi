@@ -22,7 +22,7 @@ use Doctrine\ORM\EntityRepository;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 
 /**
- * Class OrderRepository
+ * Class OrderRepository.
  */
 class OrderRepository extends EntityRepository
 {

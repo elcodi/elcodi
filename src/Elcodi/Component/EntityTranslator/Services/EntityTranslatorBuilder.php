@@ -23,7 +23,7 @@ use Elcodi\Component\EntityTranslator\Services\Interfaces\EntityTranslationProvi
 use Elcodi\Component\EntityTranslator\Services\Interfaces\EntityTranslatorInterface;
 
 /**
- * Class EntityTranslatorBuilder
+ * Class EntityTranslatorBuilder.
  */
 class EntityTranslatorBuilder
 {
@@ -66,7 +66,7 @@ class EntityTranslatorBuilder
     protected $entityTranslationProvider;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * Fallback is enabled.
      *
@@ -77,12 +77,12 @@ class EntityTranslatorBuilder
     protected $fallback;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param EntityTranslationProviderInterface $entityTranslationProvider Translation Provider
      * @param EntityTranslatorFactory            $entityTranslatorFactory   Entity Translator Factory
      * @param array                              $configuration             Configuration
-     * @param boolean                            $fallback                  Fallback
+     * @param bool                               $fallback                  Fallback
      */
     public function __construct(
         EntityTranslationProviderInterface $entityTranslationProvider,
@@ -97,7 +97,7 @@ class EntityTranslatorBuilder
     }
 
     /**
-     * Compile translator
+     * Compile translator.
      *
      * @return EntityTranslatorInterface $translator
      */
@@ -113,7 +113,7 @@ class EntityTranslatorBuilder
     }
 
     /**
-     * Check namespace
+     * Check namespace.
      *
      * @param array $configuration Configuration
      *
@@ -133,7 +133,7 @@ class EntityTranslatorBuilder
     }
 
     /**
-     * Check alias
+     * Check alias.
      *
      * @param array $configuration Configuration
      *
@@ -156,7 +156,7 @@ class EntityTranslatorBuilder
     }
 
     /**
-     * Check namespaces
+     * Check namespaces.
      *
      * @param array $configuration Configuration
      *
@@ -199,7 +199,7 @@ class EntityTranslatorBuilder
     }
 
     /**
-     * Compile the translator and return an instance
+     * Compile the translator and return an instance.
      *
      * @return EntityTranslatorInterface
      */

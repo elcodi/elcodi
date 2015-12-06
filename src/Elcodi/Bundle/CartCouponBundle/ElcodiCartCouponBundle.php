@@ -27,7 +27,7 @@ use Elcodi\Bundle\CartCouponBundle\DependencyInjection\ElcodiCartCouponExtension
 use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 
 /**
- * Class ElcodiCartCouponBundle
+ * Class ElcodiCartCouponBundle.
  */
 class ElcodiCartCouponBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
@@ -52,7 +52,7 @@ class ElcodiCartCouponBundle extends AbstractElcodiBundle implements DependentBu
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

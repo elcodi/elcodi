@@ -18,12 +18,12 @@
 namespace Elcodi\Component\Core\Entity\Interfaces;
 
 /**
- * Interface ETaggableInterface
+ * Interface ETaggableInterface.
  */
 interface ETaggableInterface
 {
     /**
-     * Return etag from entity
+     * Return etag from entity.
      *
      * @return string ETag
      */

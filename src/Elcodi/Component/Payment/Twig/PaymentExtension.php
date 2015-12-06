@@ -23,7 +23,7 @@ use Twig_SimpleFunction;
 use Elcodi\Component\Payment\Wrapper\PaymentWrapper;
 
 /**
- * Class PaymentExtension
+ * Class PaymentExtension.
  */
 class PaymentExtension extends Twig_Extension
 {
@@ -35,7 +35,7 @@ class PaymentExtension extends Twig_Extension
     private $paymentWrapper;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param PaymentWrapper $paymentWrapper Payment wrapper
      */

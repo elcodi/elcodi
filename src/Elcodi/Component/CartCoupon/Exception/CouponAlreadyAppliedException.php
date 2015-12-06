@@ -20,7 +20,7 @@ namespace Elcodi\Component\CartCoupon\Exception;
 use Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException;
 
 /**
- * Custom CouponAlreadyAppliedException
+ * Custom CouponAlreadyAppliedException.
  */
 final class CouponAlreadyAppliedException extends AbstractCouponException
 {

@@ -24,7 +24,7 @@ use Elcodi\Component\Rule\ExpressionLanguage\Interfaces\ExpressionContextProvide
 use Elcodi\Component\Rule\Services\Interfaces\RuleManagerInterface;
 
 /**
- * Class RuleManager
+ * Class RuleManager.
  */
 class RuleManager implements RuleManagerInterface
 {
@@ -43,7 +43,7 @@ class RuleManager implements RuleManagerInterface
     private $contextProvider;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param ExpressionLanguage                 $expressionLanguage Expression language
      * @param ExpressionContextProviderInterface $contextProvider    Context provider
@@ -57,7 +57,7 @@ class RuleManager implements RuleManagerInterface
     }
 
     /**
-     * Evaluates a rule and returns result
+     * Evaluates a rule and returns result.
      *
      * @param RuleInterface $rule
      * @param array         $context

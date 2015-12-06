@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Metric;
 
 /**
- * Class ElcodiMetricTypes
+ * Class ElcodiMetricTypes.
  */
 final class ElcodiMetricTypes
 {
@@ -50,7 +50,7 @@ final class ElcodiMetricTypes
     const TYPE_BEACON_ALL = 3;
 
     /**
-     * Metric type accumulated
+     * Metric type accumulated.
      *
      * This type will be treated as an accumulated element in the metric
      * ecosystem
@@ -63,7 +63,7 @@ final class ElcodiMetricTypes
     const TYPE_ACCUMULATED = 4;
 
     /**
-     * Metric type distributive
+     * Metric type distributive.
      *
      * This type will be treated as an distributive element in the metric
      * ecosystem

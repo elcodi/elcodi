@@ -23,12 +23,12 @@ use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
- * Class NodeData
+ * Class NodeData.
  */
 class NodeData extends AbstractFixture
 {
     /**
-     * Load data fixtures with the passed EntityManager
+     * Load data fixtures with the passed EntityManager.
      *
      * @param ObjectManager $manager
      */

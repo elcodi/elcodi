@@ -30,7 +30,7 @@ namespace Elcodi\Component\Cart\Entity\Traits;
 trait PriceTrait
 {
     /**
-     * @var integer
+     * @var int
      *
      * Product amount
      */
@@ -44,7 +44,7 @@ trait PriceTrait
     protected $productCurrency;
 
     /**
-     * @var integer
+     * @var int
      *
      * Total amount
      */
@@ -58,7 +58,7 @@ trait PriceTrait
     protected $currency;
 
     /**
-     * Gets the product or products amount with tax
+     * Gets the product or products amount with tax.
      *
      * @return \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface Product amount with tax
      */
@@ -71,7 +71,7 @@ trait PriceTrait
     }
 
     /**
-     * Sets the product or products amount with tax
+     * Sets the product or products amount with tax.
      *
      * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount product amount with tax
      *
@@ -86,7 +86,7 @@ trait PriceTrait
     }
 
     /**
-     * Gets the total amount with tax
+     * Gets the total amount with tax.
      *
      * @return \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface price with tax
      */
@@ -99,7 +99,7 @@ trait PriceTrait
     }
 
     /**
-     * Sets the total amount with tax
+     * Sets the total amount with tax.
      *
      * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount amount without tax
      *

@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Core\Generator\Interfaces;
 
 /**
- * Interface GeneratorInterface
+ * Interface GeneratorInterface.
  *
  * This interface is for static generators.
  *
@@ -30,9 +30,9 @@ namespace Elcodi\Component\Core\Generator\Interfaces;
 interface GeneratorInterface
 {
     /**
-     * Generates a hash
+     * Generates a hash.
      *
-     * @param integer $length Length of string generated
+     * @param int $length Length of string generated
      *
      * @return string Generation
      */

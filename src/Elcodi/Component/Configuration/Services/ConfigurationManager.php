@@ -30,7 +30,7 @@ use Elcodi\Component\Configuration\Repository\ConfigurationRepository;
 use Elcodi\Component\Core\Wrapper\Abstracts\AbstractCacheWrapper;
 
 /**
- * Class ConfigurationManager
+ * Class ConfigurationManager.
  */
 class ConfigurationManager extends AbstractCacheWrapper
 {
@@ -91,7 +91,7 @@ class ConfigurationManager extends AbstractCacheWrapper
     }
 
     /**
-     * Set a configuration value
+     * Set a configuration value.
      *
      * @param string $configurationIdentifier Configuration identifier
      * @param mixed  $configurationValue      Configuration value
@@ -106,7 +106,7 @@ class ConfigurationManager extends AbstractCacheWrapper
         $configurationValue
     ) {
         /**
-         * Checks if the value is defined in the configuration elements
+         * Checks if the value is defined in the configuration elements.
          */
         if (!array_key_exists($configurationIdentifier, $this->configurationElements)) {
             throw new ConfigurationParameterNotFoundException();
@@ -116,7 +116,7 @@ class ConfigurationManager extends AbstractCacheWrapper
 
         /**
          * We must check if the configuration element is read-only. If it is,
-         * we return an exception
+         * we return an exception.
          */
         if (
             is_array($this->configurationElements[$configurationIdentifier]) &&
@@ -158,12 +158,12 @@ class ConfigurationManager extends AbstractCacheWrapper
     }
 
     /**
-     * Loads a parameter given the format "namespace.key"
+     * Loads a parameter given the format "namespace.key".
      *
      * @param string      $configurationIdentifier Configuration identifier
      * @param string|null $defaultValue            Default value
      *
-     * @return null|string|boolean Configuration parameter value
+     * @return null|string|bool Configuration parameter value
      *
      * @throws ConfigurationParameterNotFoundException Configuration parameter not found
      * @throws Exception                               Configuration cannot be resolved
@@ -171,7 +171,7 @@ class ConfigurationManager extends AbstractCacheWrapper
     public function get($configurationIdentifier, $defaultValue = null)
     {
         /**
-         * Checks if the value is defined in the configuration elements
+         * Checks if the value is defined in the configuration elements.
          */
         if (!array_key_exists($configurationIdentifier, $this->configurationElements)) {
             if (!is_null($defaultValue)) {
@@ -187,7 +187,7 @@ class ConfigurationManager extends AbstractCacheWrapper
 
         /**
          * The value is cached, so we can securely return its value.
-         * We must unserialize the value if needed
+         * We must unserialize the value if needed.
          */
         if (false !== $valueIsCached) {
             return $this
@@ -234,11 +234,11 @@ class ConfigurationManager extends AbstractCacheWrapper
     }
 
     /**
-     * Deletes a parameter given the format "namespace.key"
+     * Deletes a parameter given the format "namespace.key".
      *
      * @param string $configurationIdentifier
      *
-     * @return boolean
+     * @return bool
      *
      * @throws ConfigurationNotEditableException       Configuration parameter is read-only
      * @throws ConfigurationParameterNotFoundException Configuration parameter not found
@@ -246,7 +246,7 @@ class ConfigurationManager extends AbstractCacheWrapper
     public function delete($configurationIdentifier)
     {
         /**
-         * Checks if the value is defined in the configuration elements
+         * Checks if the value is defined in the configuration elements.
          */
         if (!array_key_exists($configurationIdentifier, $this->configurationElements)) {
             throw new ConfigurationParameterNotFoundException();
@@ -267,7 +267,7 @@ class ConfigurationManager extends AbstractCacheWrapper
             ->contains($configurationIdentifier);
 
         /**
-         * The value is cached, so first we have to remove it
+         * The value is cached, so first we have to remove it.
          */
         if (false !== $valueIsCached) {
             $this
@@ -298,7 +298,7 @@ class ConfigurationManager extends AbstractCacheWrapper
     }
 
     /**
-     * Loads a configuration
+     * Loads a configuration.
      *
      * @param string $configurationNamespace Configuration namespace
      * @param string $configurationKey       Configuration key
@@ -313,14 +313,14 @@ class ConfigurationManager extends AbstractCacheWrapper
             ->configurationRepository
             ->find([
                 'namespace' => $configurationNamespace,
-                'key'       => $configurationKey,
+                'key' => $configurationKey,
             ]);
 
         return $configurationEntity;
     }
 
     /**
-     * Flushes a configuration instance
+     * Flushes a configuration instance.
      *
      * @param ConfigurationInterface $configuration Configuration instance
      *
@@ -340,7 +340,7 @@ class ConfigurationManager extends AbstractCacheWrapper
     }
 
     /**
-     * Deletes a configuration instance
+     * Deletes a configuration instance.
      *
      * @param ConfigurationInterface $configuration Configuration instance
      *
@@ -360,7 +360,7 @@ class ConfigurationManager extends AbstractCacheWrapper
     }
 
     /**
-     * Creates a new configuration instance and serializes
+     * Creates a new configuration instance and serializes.
      *
      * @param string $configurationIdentifier Configuration identifier
      * @param string $configurationNamespace  Configuration namespace
@@ -380,7 +380,7 @@ class ConfigurationManager extends AbstractCacheWrapper
         /**
          * Value is not found on database. We can just check if the value is
          * defined in the configuration elements, and we can generate new entry
-         * for our database
+         * for our database.
          */
         if (!$this->configurationElements[$configurationIdentifier]) {
             throw new ConfigurationParameterNotFoundException();
@@ -407,7 +407,7 @@ class ConfigurationManager extends AbstractCacheWrapper
     }
 
     /**
-     * Saves configuration into cache
+     * Saves configuration into cache.
      *
      * @param ConfigurationInterface $configuration           Configuration
      * @param string                 $configurationIdentifier Configuration identifier
@@ -434,7 +434,7 @@ class ConfigurationManager extends AbstractCacheWrapper
     }
 
     /**
-     * Split the configuration identifier and return each part
+     * Split the configuration identifier and return each part.
      *
      * @param string $configurationIdentifier Configuration identifier
      *
@@ -452,7 +452,7 @@ class ConfigurationManager extends AbstractCacheWrapper
     }
 
     /**
-     * Unserialize configuration value
+     * Unserialize configuration value.
      *
      * @param string $configurationValue Configuration value
      * @param string $configurationType  Configuration type
@@ -476,7 +476,7 @@ class ConfigurationManager extends AbstractCacheWrapper
     }
 
     /**
-     * Serialize configuration value
+     * Serialize configuration value.
      *
      * @param string $configurationValue Configuration value
      * @param string $configurationType  Configuration type

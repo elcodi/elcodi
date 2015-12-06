@@ -18,19 +18,19 @@
 namespace Elcodi\Bundle\MediaBundle\Tests\Functional\Controller;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\Routing\RouteCollection;
+use Symfony\Component\Routing\RouterInterface;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class ImageResizeControllerTest
+ * Class ImageResizeControllerTest.
  */
 class ImageResizeControllerTest extends WebTestCase
 {
     /**
-     * Schema must be loaded in all test cases
+     * Schema must be loaded in all test cases.
      *
-     * @return boolean Load schema
+     * @return bool Load schema
      */
     protected static function loadSchema()
     {
@@ -38,17 +38,16 @@ class ImageResizeControllerTest extends WebTestCase
     }
 
     /**
-     * Test resize action
+     * Test resize action.
      */
     public function testResizeAction()
     {
         /**
-         * @var RouteCollection $routeCollection
+         * @var RouterInterface $router
          */
         $client = $this->createClient();
-        $routeCollection = $this
-            ->get('router')
-            ->getRouteCollection();
+        $router = $this->get('router');
+        $routeCollection = $router->getRouteCollection();
 
         $image = new UploadedFile(
             dirname(__FILE__) . '/images/image.png',
@@ -70,10 +69,12 @@ class ImageResizeControllerTest extends WebTestCase
 
         $client->request(
             'GET',
-            $routeCollection
-                ->get('elcodi.route.image_view')
-                ->getPath(),
-            ['id' => 1]
+            $router->generate(
+                'elcodi.route.image_view', [
+                    'id' => 1,
+                    '_format' => 'json',
+                ]
+            )
         );
 
         $responseView = $client->getResponse();
@@ -83,10 +84,15 @@ class ImageResizeControllerTest extends WebTestCase
 
         $client->request(
             'GET',
-            $routeCollection
-                ->get('elcodi.route.image_resize')
-                ->getPath(),
-            ['id' => 1, 'height' => 30, 'width' => 30, 'type' => 2]
+            $router->generate(
+                'elcodi.route.image_resize', [
+                    'id' => 1,
+                    'height' => 30,
+                    'width' => 30,
+                    'type' => 2,
+                    '_format' => 'json',
+                ]
+            )
         );
 
         $responseResize = $client->getResponse();

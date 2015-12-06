@@ -25,23 +25,23 @@ use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 
 /**
- * Class CurrencyExchangeRatesData
+ * Class CurrencyExchangeRatesData.
  */
 class CurrencyExchangeRatesData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
-     * Load data fixtures with the passed EntityManager
+     * Load data fixtures with the passed EntityManager.
      *
      * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager)
     {
         /**
-         * @var ObjectDirector              $currencyExchangeRateDirector
-         * @var CurrencyInterface           $currencyEuro
-         * @var CurrencyInterface           $currencyDollar
-         * @var CurrencyInterface           $currencyPound
-         * @var CurrencyInterface           $currencyIen
+         * @var ObjectDirector    $currencyExchangeRateDirector
+         * @var CurrencyInterface $currencyEuro
+         * @var CurrencyInterface $currencyDollar
+         * @var CurrencyInterface $currencyPound
+         * @var CurrencyInterface $currencyIen
          */
         $currencyExchangeRateDirector = $this->getDirector('currency_exchange_rate');
         $currencyEuro = $this->getReference('currency-euro');
@@ -50,7 +50,7 @@ class CurrencyExchangeRatesData extends AbstractFixture implements DependentFixt
         $currencyIen = $this->getReference('currency-ien');
 
         /**
-         * Dollar to Euro
+         * Dollar to Euro.
          */
         $dollarToEuroRate = $currencyExchangeRateDirector
             ->create()
@@ -61,7 +61,7 @@ class CurrencyExchangeRatesData extends AbstractFixture implements DependentFixt
         $currencyExchangeRateDirector->save($dollarToEuroRate);
 
         /**
-         * Dollar to Pound
+         * Dollar to Pound.
          */
         $dollarToPoundRate = $currencyExchangeRateDirector
             ->create()
@@ -72,7 +72,7 @@ class CurrencyExchangeRatesData extends AbstractFixture implements DependentFixt
         $currencyExchangeRateDirector->save($dollarToPoundRate);
 
         /**
-         * Dollar to Yen
+         * Dollar to Yen.
          */
         $dollarToIenRate = $currencyExchangeRateDirector
             ->create()
@@ -85,7 +85,7 @@ class CurrencyExchangeRatesData extends AbstractFixture implements DependentFixt
 
     /**
      * This method must return an array of fixtures classes
-     * on which the implementing class depends on
+     * on which the implementing class depends on.
      *
      * @return array
      */

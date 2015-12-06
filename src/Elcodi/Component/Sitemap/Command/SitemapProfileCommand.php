@@ -25,7 +25,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Elcodi\Component\Core\Command\Abstracts\AbstractElcodiCommand;
 
 /**
- * Class SitemapProfileCommand
+ * Class SitemapProfileCommand.
  */
 class SitemapProfileCommand extends AbstractElcodiCommand
 {
@@ -37,7 +37,7 @@ class SitemapProfileCommand extends AbstractElcodiCommand
     private $container;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param ContainerInterface $container Container
      */
@@ -49,7 +49,7 @@ class SitemapProfileCommand extends AbstractElcodiCommand
     }
 
     /**
-     * configure
+     * configure.
      */
     protected function configure()
     {
@@ -70,12 +70,12 @@ class SitemapProfileCommand extends AbstractElcodiCommand
 
     /**
      * Get the dumper name from the input object and tries to dump all sitemap
-     * content
+     * content.
      *
      * @param InputInterface  $input  The input interface
      * @param OutputInterface $output The output interface
      *
-     * @return integer|null|void
+     * @return int|null|void
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {

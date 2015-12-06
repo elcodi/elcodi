@@ -25,12 +25,12 @@ use Elcodi\Component\Plugin\Command\Abstracts\AbstractPluginEnableCommand;
 use Elcodi\Component\Plugin\Entity\Plugin;
 
 /**
- * Class PluginEnableCommand
+ * Class PluginEnableCommand.
  */
 class PluginEnableCommand extends AbstractPluginEnableCommand
 {
     /**
-     * configure
+     * configure.
      */
     protected function configure()
     {
@@ -49,12 +49,10 @@ class PluginEnableCommand extends AbstractPluginEnableCommand
 
     /**
      * This command loads all the exchange rates from base_currency to all available
-     * currencies
+     * currencies.
      *
      * @param InputInterface  $input  The input interface
      * @param OutputInterface $output The output interface
-     *
-     * @return void
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {

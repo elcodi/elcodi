@@ -23,7 +23,7 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * Class ElcodiMenuExtension
+ * Class ElcodiMenuExtension.
  */
 class ElcodiMenuExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
@@ -35,7 +35,7 @@ class ElcodiMenuExtension extends AbstractExtension implements EntitiesOverridab
     const EXTENSION_NAME = 'elcodi_menu';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -62,7 +62,7 @@ class ElcodiMenuExtension extends AbstractExtension implements EntitiesOverridab
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -77,22 +77,22 @@ class ElcodiMenuExtension extends AbstractExtension implements EntitiesOverridab
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.menu.class" => $config['mapping']['menu']['class'],
-            "elcodi.entity.menu.mapping_file" => $config['mapping']['menu']['mapping_file'],
-            "elcodi.entity.menu.manager" => $config['mapping']['menu']['manager'],
-            "elcodi.entity.menu.enabled" => $config['mapping']['menu']['enabled'],
+            'elcodi.entity.menu.class' => $config['mapping']['menu']['class'],
+            'elcodi.entity.menu.mapping_file' => $config['mapping']['menu']['mapping_file'],
+            'elcodi.entity.menu.manager' => $config['mapping']['menu']['manager'],
+            'elcodi.entity.menu.enabled' => $config['mapping']['menu']['enabled'],
 
-            "elcodi.entity.menu_node.class" => $config['mapping']['menu_node']['class'],
-            "elcodi.entity.menu_node.mapping_file" => $config['mapping']['menu_node']['mapping_file'],
-            "elcodi.entity.menu_node.manager" => $config['mapping']['menu_node']['manager'],
-            "elcodi.entity.menu_node.enabled" => $config['mapping']['menu_node']['enabled'],
+            'elcodi.entity.menu_node.class' => $config['mapping']['menu_node']['class'],
+            'elcodi.entity.menu_node.mapping_file' => $config['mapping']['menu_node']['mapping_file'],
+            'elcodi.entity.menu_node.manager' => $config['mapping']['menu_node']['manager'],
+            'elcodi.entity.menu_node.enabled' => $config['mapping']['menu_node']['enabled'],
 
             'elcodi.menu_cache_key' => $config['menus']['cache_key'],
         ];
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * @param array $config Config array
      *
@@ -129,7 +129,7 @@ class ElcodiMenuExtension extends AbstractExtension implements EntitiesOverridab
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */

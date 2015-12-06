@@ -21,12 +21,12 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Product\Adapter\SimilarPurchasablesProvider\SameCategoryRelatedPurchasableProvider;
 
 /**
- * Class SameCategoryRelatedPurchasablesProviderTest
+ * Class SameCategoryRelatedPurchasablesProviderTest.
  */
 class SameCategoryRelatedPurchasablesProviderTest extends WebTestCase
 {
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -38,7 +38,7 @@ class SameCategoryRelatedPurchasablesProviderTest extends WebTestCase
     }
 
     /**
-     * Test method getRelatedProducts
+     * Test method getRelatedProducts.
      */
     public function testGetRelatedPurchasables()
     {
@@ -49,7 +49,7 @@ class SameCategoryRelatedPurchasablesProviderTest extends WebTestCase
         $product = $this->find('product', 1);
 
         /**
-         * Testing when limit 0 is requested
+         * Testing when limit 0 is requested.
          */
         $this->assertCount(0, $relatedPurchasablesProvider
             ->getRelatedPurchasables($product, 0)
@@ -59,7 +59,7 @@ class SameCategoryRelatedPurchasablesProviderTest extends WebTestCase
 
         /**
          * Testing when limit 1 is requested with 1 possible elements. We check
-         * as well that is not the same product
+         * as well that is not the same product.
          */
         $this->assertCount(1, $products);
         $firstProduct = reset($products);
@@ -70,14 +70,14 @@ class SameCategoryRelatedPurchasablesProviderTest extends WebTestCase
         $this->assertEquals(3, $firstProduct->getId());
 
         /**
-         * Testing when limit 2 is requested with 1 possible elements
+         * Testing when limit 2 is requested with 1 possible elements.
          */
         $this->assertCount(1, $relatedPurchasablesProvider
             ->getRelatedPurchasables($product, 2)
         );
 
         /**
-         * Testing with a non valid purchasable instance
+         * Testing with a non valid purchasable instance.
          */
         $purchasable = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface');
         $this->assertCount(0, $relatedPurchasablesProvider
@@ -85,7 +85,7 @@ class SameCategoryRelatedPurchasablesProviderTest extends WebTestCase
         );
 
         /**
-         * Testing with a Variant object
+         * Testing with a Variant object.
          */
         $this->assertCount(1, $relatedPurchasablesProvider
             ->getRelatedPurchasables(
@@ -95,7 +95,7 @@ class SameCategoryRelatedPurchasablesProviderTest extends WebTestCase
         );
 
         /**
-         * Testing without categories where to match
+         * Testing without categories where to match.
          */
         $this->assertCount(0, $relatedPurchasablesProvider
             ->getRelatedPurchasables(
@@ -113,7 +113,7 @@ class SameCategoryRelatedPurchasablesProviderTest extends WebTestCase
         $this->flush($product2);
 
         /**
-         * Testing when limit 1 is requested with 2 possible elements
+         * Testing when limit 1 is requested with 2 possible elements.
          */
         $this->assertCount(1, $relatedPurchasablesProvider
             ->getRelatedPurchasables($product, 1)
@@ -121,7 +121,7 @@ class SameCategoryRelatedPurchasablesProviderTest extends WebTestCase
     }
 
     /**
-     * Test method getRelatedPurchasablesFromArray
+     * Test method getRelatedPurchasablesFromArray.
      */
     public function testGetRelatedPurchasablesFromArray()
     {
@@ -143,7 +143,7 @@ class SameCategoryRelatedPurchasablesProviderTest extends WebTestCase
         ];
 
         /**
-         * Testing when limit 0 is requested
+         * Testing when limit 0 is requested.
          */
         $this->assertCount(0, $relatedPurchasablesProvider
             ->getRelatedPurchasablesFromArray($products, 0)
@@ -151,7 +151,7 @@ class SameCategoryRelatedPurchasablesProviderTest extends WebTestCase
 
         /**
          * Testing when limit 1 is requested. More than 0 but less than the
-         * total
+         * total.
          */
         $this->assertCount(1, $relatedPurchasablesProvider
             ->getRelatedPurchasablesFromArray($products, 1)

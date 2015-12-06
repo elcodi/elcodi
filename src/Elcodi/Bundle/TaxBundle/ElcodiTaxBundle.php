@@ -27,7 +27,7 @@ use Elcodi\Bundle\TaxBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\TaxBundle\DependencyInjection\ElcodiTaxExtension;
 
 /**
- * ElcodiTaxBundle Bundle
+ * ElcodiTaxBundle Bundle.
  */
 class ElcodiTaxBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
@@ -52,7 +52,7 @@ class ElcodiTaxBundle extends AbstractElcodiBundle implements DependentBundleInt
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

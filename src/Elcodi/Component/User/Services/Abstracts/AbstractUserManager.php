@@ -21,7 +21,7 @@ use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 use Elcodi\Component\User\EventDispatcher\Interfaces\UserEventDispatcherInterface;
 
 /**
- * Class AbstractUserManager
+ * Class AbstractUserManager.
  */
 abstract class AbstractUserManager
 {
@@ -33,7 +33,7 @@ abstract class AbstractUserManager
     protected $userEventDispatcher;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param UserEventDispatcherInterface $userEventDispatcher User Event dispatcher
      */

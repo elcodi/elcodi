@@ -27,7 +27,7 @@ use Elcodi\Component\Plugin\Repository\PluginRepository;
 use Elcodi\Component\Plugin\Services\Traits\PluginUtilsTrait;
 
 /**
- * Class PluginManager
+ * Class PluginManager.
  */
 class PluginManager
 {
@@ -62,7 +62,7 @@ class PluginManager
     private $pluginLoader;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param KernelInterface  $kernel              Kernel
      * @param PluginRepository $pluginRepository    Plugin repository
@@ -124,7 +124,7 @@ class PluginManager
 
         /**
          * Every Plugin instance inside $plugins array should be removed from
-         * database, because they are not longer installed
+         * database, because they are not longer installed.
          */
         $this->removePlugins($oldPlugins);
 
@@ -133,7 +133,7 @@ class PluginManager
 
     /**
      * Load existing plugins from database and return an array with them all,
-     * indexed by its namespace
+     * indexed by its namespace.
      *
      * @return Plugin[] Plugins indexed by namespace
      */
@@ -157,7 +157,7 @@ class PluginManager
 
     /**
      * Create or update existing plugin given a set of plugin instances and the
-     * information to create a new one
+     * information to create a new one.
      *
      * @param string $pluginNamespace     Plugin namespace
      * @param array  $pluginConfiguration Plugin Configuration
@@ -185,7 +185,7 @@ class PluginManager
     }
 
     /**
-     * Saves a plugin into database
+     * Saves a plugin into database.
      *
      * @param Plugin $plugin Plugin
      *
@@ -205,7 +205,7 @@ class PluginManager
     }
 
     /**
-     * Remove a set of Plugins from database
+     * Remove a set of Plugins from database.
      *
      * @param Plugin[] $plugins Plugins
      *

@@ -20,7 +20,7 @@ namespace Elcodi\Component\Comment\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class VoteRepository
+ * Class VoteRepository.
  */
 class VoteRepository extends EntityRepository
 {

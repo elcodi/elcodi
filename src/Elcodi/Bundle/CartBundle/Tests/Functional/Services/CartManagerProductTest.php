@@ -22,14 +22,14 @@ use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 
 /**
- * Tests CartManager class
+ * Tests CartManager class.
  *
  * This will test CartManager common methods using a Product with no variants
  */
 class CartManagerProductTest extends AbstractCartManagerTest
 {
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -42,7 +42,7 @@ class CartManagerProductTest extends AbstractCartManagerTest
     }
 
     /**
-     * Creates, flushes and returns a Purchasable
+     * Creates, flushes and returns a Purchasable.
      *
      * @return mixed
      */
@@ -82,7 +82,7 @@ class CartManagerProductTest extends AbstractCartManagerTest
     }
 
     /**
-     * Data for testIncreaseCartLineQuantity
+     * Data for testIncreaseCartLineQuantity.
      */
     public function dataIncreaseCartLineQuantity()
     {
@@ -103,7 +103,7 @@ class CartManagerProductTest extends AbstractCartManagerTest
     }
 
     /**
-     * Data for testDecreaseCartLineQuantity
+     * Data for testDecreaseCartLineQuantity.
      */
     public function dataDecreaseCartLineQuantity()
     {
@@ -123,7 +123,7 @@ class CartManagerProductTest extends AbstractCartManagerTest
     }
 
     /**
-     * Data for testSetCartLineQuantity
+     * Data for testSetCartLineQuantity.
      */
     public function dataSetCartLineQuantity()
     {
@@ -144,7 +144,7 @@ class CartManagerProductTest extends AbstractCartManagerTest
     }
 
     /**
-     * Data for testAddProduct
+     * Data for testAddProduct.
      */
     public function dataAddProduct()
     {

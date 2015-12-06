@@ -29,7 +29,7 @@ use Elcodi\Component\User\Exception\InvalidPasswordException;
 
 /**
  * AbstractUser is the building block for simple User entities,
- * consisting of username, password, email
+ * consisting of username, password, email.
  */
 abstract class AbstractUser implements AbstractUserInterface
 {
@@ -74,7 +74,7 @@ abstract class AbstractUser implements AbstractUserInterface
     protected $lastname;
 
     /**
-     * @var integer
+     * @var int
      *
      * gender
      */
@@ -102,7 +102,7 @@ abstract class AbstractUser implements AbstractUserInterface
     protected $oneTimeLoginHash;
 
     /**
-     * User roles
+     * User roles.
      *
      * @return string[] Roles
      */
@@ -114,7 +114,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Sets Firstname
+     * Sets Firstname.
      *
      * @param string $firstname Firstname
      *
@@ -128,7 +128,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Get Firstname
+     * Get Firstname.
      *
      * @return string Firstname
      */
@@ -138,7 +138,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Sets Lastname
+     * Sets Lastname.
      *
      * @param string $lastname Lastname
      *
@@ -152,7 +152,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Get Lastname
+     * Get Lastname.
      *
      * @return string Lastname
      */
@@ -162,9 +162,9 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Set gender
+     * Set gender.
      *
-     * @param integer $gender Gender
+     * @param int $gender Gender
      *
      * @return $this Self object
      */
@@ -176,9 +176,9 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Get gender
+     * Get gender.
      *
-     * @return integer Gender
+     * @return int Gender
      */
     public function getGender()
     {
@@ -186,7 +186,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Set email
+     * Set email.
      *
      * @param string $email
      *
@@ -200,7 +200,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Return email
+     * Return email.
      *
      * @return string Email
      */
@@ -210,7 +210,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Get Token
+     * Get Token.
      *
      * @return string Token
      */
@@ -220,7 +220,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Sets Token
+     * Sets Token.
      *
      * @param string $token Token
      *
@@ -234,11 +234,11 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Get username
+     * Get username.
      *
      * Just for symfony security purposes
      *
-     * @return String Username
+     * @return string Username
      */
     public function getUsername()
     {
@@ -246,7 +246,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Get birthday
+     * Get birthday.
      *
      * @return DateTime
      */
@@ -256,7 +256,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Set birthday
+     * Set birthday.
      *
      * @param DateTime $birthday
      *
@@ -270,7 +270,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Set recovery hash
+     * Set recovery hash.
      *
      * @param string $recoveryHash
      *
@@ -284,7 +284,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Get recovery hash
+     * Get recovery hash.
      *
      * @return string Recovery Hash
      */
@@ -294,7 +294,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Get user full name
+     * Get user full name.
      *
      * @return string Full name
      */
@@ -304,7 +304,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Set password
+     * Set password.
      *
      * @param string $password Password
      *
@@ -326,7 +326,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Get password
+     * Get password.
      *
      * @return string Password
      */
@@ -336,7 +336,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Gets the one time login hash
+     * Gets the one time login hash.
      *
      * @return string Login hash
      */
@@ -346,7 +346,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Sets a hash so it can be used to login once without the need to use the password
+     * Sets a hash so it can be used to login once without the need to use the password.
      *
      * @param string $oneTimeLoginHash The hash you want to set for the one time login
      *
@@ -360,27 +360,27 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Part of UserInterface. Dummy
+     * Part of UserInterface. Dummy.
      *
      * @return string Salt
      */
     public function getSalt()
     {
-        return "";
+        return '';
     }
 
     /**
-     * Dummy function, returns empty string
+     * Dummy function, returns empty string.
      *
      * @return string
      */
     public function eraseCredentials()
     {
-        return "";
+        return '';
     }
 
     /**
-     * String representation of the Customer
+     * String representation of the Customer.
      *
      * @return string
      */
@@ -390,7 +390,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Sleep implementation for some reason
+     * Sleep implementation for some reason.
      *
      * @link http://asiermarques.com/2013/symfony2-security-usernamepasswordtokenserialize-must-return-a-string-or-null/
      */

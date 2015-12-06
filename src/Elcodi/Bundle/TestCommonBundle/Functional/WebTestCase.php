@@ -18,9 +18,9 @@
 namespace Elcodi\Bundle\TestCommonBundle\Functional;
 
 use Exception;
+use PHPUnit_Framework_TestCase;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as BaseWebTestCase;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -28,9 +28,9 @@ use Symfony\Component\HttpKernel\KernelInterface;
 use Elcodi\Bundle\CoreBundle\Container\Traits\ContainerAccessorTrait;
 
 /**
- * Core abstract tests class
+ * Core abstract tests class.
  */
-abstract class WebTestCase extends BaseWebTestCase
+abstract class WebTestCase extends PHPUnit_Framework_TestCase
 {
     use ContainerAccessorTrait;
 
@@ -42,14 +42,14 @@ abstract class WebTestCase extends BaseWebTestCase
     protected static $application;
 
     /**
-     * @var Client
+     * @var KernelInterface
      *
-     * Client
+     * kernel
      */
-    protected $client;
+    protected static $kernel;
 
     /**
-     * Reload scenario
+     * Reload scenario.
      *
      * @throws RuntimeException unable to start the application
      */
@@ -59,7 +59,7 @@ abstract class WebTestCase extends BaseWebTestCase
     }
 
     /**
-     * Set up before class
+     * Set up before class.
      *
      * @throws RuntimeException unable to start the application
      */
@@ -84,7 +84,7 @@ abstract class WebTestCase extends BaseWebTestCase
     }
 
     /**
-     * Tear down after class
+     * Tear down after class.
      *
      * @throws Exception When doRun returns Exception
      */
@@ -92,16 +92,16 @@ abstract class WebTestCase extends BaseWebTestCase
     {
         if (static::$application) {
             static::$application->run(new ArrayInput([
-                'command'          => 'doctrine:database:drop',
+                'command' => 'doctrine:database:drop',
                 '--no-interaction' => true,
-                '--force'          => true,
-                '--quiet'          => true,
+                '--force' => true,
+                '--quiet' => true,
             ]));
         }
     }
 
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -111,7 +111,7 @@ abstract class WebTestCase extends BaseWebTestCase
     }
 
     /**
-     * Has fixtures to load
+     * Has fixtures to load.
      *
      * @return static boolean Some fixtures need to be installed
      */
@@ -119,16 +119,15 @@ abstract class WebTestCase extends BaseWebTestCase
     {
         $fixturesBundles = static::loadFixturesBundles();
 
-        return (
+        return
             is_array($fixturesBundles) &&
-            !empty($fixturesBundles)
-        );
+            !empty($fixturesBundles);
     }
 
     /**
-     * Schema must be loaded in all test cases
+     * Schema must be loaded in all test cases.
      *
-     * @return boolean Load schema
+     * @return bool Load schema
      */
     protected static function loadSchema()
     {
@@ -136,7 +135,7 @@ abstract class WebTestCase extends BaseWebTestCase
     }
 
     /**
-     * Creates schema
+     * Creates schema.
      *
      * Only creates schema if loadSchema() is set to true.
      * All other methods will be loaded if this one is loaded.
@@ -152,29 +151,29 @@ abstract class WebTestCase extends BaseWebTestCase
         }
 
         static::$application->run(new ArrayInput([
-            'command'          => 'doctrine:database:drop',
+            'command' => 'doctrine:database:drop',
             '--no-interaction' => true,
-            '--force'          => true,
-            '--quiet'          => true,
+            '--force' => true,
+            '--quiet' => true,
         ]));
 
         static::$application->run(new ArrayInput([
-            'command'          => 'doctrine:database:create',
+            'command' => 'doctrine:database:create',
             '--no-interaction' => true,
-            '--quiet'          => true,
+            '--quiet' => true,
         ]));
 
         static::$application->run(new ArrayInput([
-            'command'          => 'doctrine:schema:create',
+            'command' => 'doctrine:schema:create',
             '--no-interaction' => true,
-            '--quiet'          => true,
+            '--quiet' => true,
         ]));
 
         static::loadFixtures();
     }
 
     /**
-     * load fixtures method
+     * load fixtures method.
      *
      * This method is only called if create Schema is set to true
      *
@@ -198,10 +197,10 @@ abstract class WebTestCase extends BaseWebTestCase
             }, $fixturesBundles);
 
             static::$application->run(new ArrayInput([
-                'command'          => 'doctrine:fixtures:load',
+                'command' => 'doctrine:fixtures:load',
                 '--no-interaction' => true,
-                '--fixtures'       => $formattedBundles,
-                '--quiet'          => true,
+                '--fixtures' => $formattedBundles,
+                '--quiet' => true,
             ]));
         }
 
@@ -233,18 +232,34 @@ abstract class WebTestCase extends BaseWebTestCase
      *  * environment
      *  * debug
      *
-     * @param array $options An array of options
-     *
      * @return KernelInterface A KernelInterface instance
      */
-    protected static function createKernel(array $options = [])
+    protected static function createKernel()
     {
-        static::$class = static::getKernelClass();
+        $class = static::getKernelClass();
 
         $namespaceExploded = explode('\\Tests\\Functional\\', get_called_class(), 2);
         $bundleName = explode('Elcodi\\', $namespaceExploded[0], 2)[1];
         $bundleName = str_replace('\\', '_', $bundleName);
 
-        return new static::$class($bundleName . 'Test', false);
+        return new $class($bundleName . 'Test', false);
+    }
+
+    /**
+     * Creates a Client.
+     *
+     * @param array $server An array of server parameters
+     *
+     * @return Client A Client instance
+     */
+    protected static function createClient(array $server = [])
+    {
+        $client = static::$kernel
+            ->getContainer()
+            ->get('test.client');
+
+        $client->setServerParameters($server);
+
+        return $client;
     }
 }

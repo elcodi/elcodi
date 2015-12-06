@@ -26,7 +26,7 @@ use Symfony\Component\Routing\RouterInterface;
 use Elcodi\Component\Media\Services\ImageUploader;
 
 /**
- * Class ImageUploadController
+ * Class ImageUploadController.
  */
 class ImageUploadController
 {
@@ -73,7 +73,7 @@ class ImageUploadController
     private $resizeImageRouteName;
 
     /**
-     * Image uploader
+     * Image uploader.
      *
      * @param RequestStack    $requestStack         Request stack
      * @param ImageUploader   $imageUploader        Image uploader
@@ -99,7 +99,7 @@ class ImageUploadController
     }
 
     /**
-     * Dynamic upload action
+     * Dynamic upload action.
      *
      * @return JsonResponse Upload response
      */
@@ -118,7 +118,7 @@ class ImageUploadController
 
         if (!($file instanceof UploadedFile)) {
             return new JsonResponse([
-                'status'   => 'ko',
+                'status' => 'ko',
                 'response' => [
                     'message' => 'Image not found',
                 ],
@@ -135,12 +135,12 @@ class ImageUploadController
                 ->getRouteCollection();
 
             $response = [
-                'status'   => 'ok',
+                'status' => 'ok',
                 'response' => [
-                    'id'        => $image->getId(),
+                    'id' => $image->getId(),
                     'extension' => $image->getExtension(),
-                    'routes'    => [
-                        'view'   => $routes
+                    'routes' => [
+                        'view' => $routes
                             ->get($this->viewImageRouteName)
                             ->getPath(),
                         'resize' => $routes
@@ -151,7 +151,7 @@ class ImageUploadController
             ];
         } catch (Exception $exception) {
             $response = [
-                'status'   => 'ko',
+                'status' => 'ko',
                 'response' => [
                     'message' => $exception->getMessage(),
                 ],

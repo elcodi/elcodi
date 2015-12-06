@@ -23,7 +23,7 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * Class ElcodiRuleExtension
+ * Class ElcodiRuleExtension.
  */
 class ElcodiRuleExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
@@ -35,7 +35,7 @@ class ElcodiRuleExtension extends AbstractExtension implements EntitiesOverridab
     const EXTENSION_NAME = 'elcodi_rule';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -62,7 +62,7 @@ class ElcodiRuleExtension extends AbstractExtension implements EntitiesOverridab
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -77,15 +77,15 @@ class ElcodiRuleExtension extends AbstractExtension implements EntitiesOverridab
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.rule.class" => $config['mapping']['rule']['class'],
-            "elcodi.entity.rule.mapping_file" => $config['mapping']['rule']['mapping_file'],
-            "elcodi.entity.rule.manager" => $config['mapping']['rule']['manager'],
-            "elcodi.entity.rule.enabled" => $config['mapping']['rule']['enabled'],
+            'elcodi.entity.rule.class' => $config['mapping']['rule']['class'],
+            'elcodi.entity.rule.mapping_file' => $config['mapping']['rule']['mapping_file'],
+            'elcodi.entity.rule.manager' => $config['mapping']['rule']['manager'],
+            'elcodi.entity.rule.enabled' => $config['mapping']['rule']['enabled'],
         ];
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * @param array $config Configuration
      *
@@ -114,7 +114,7 @@ class ElcodiRuleExtension extends AbstractExtension implements EntitiesOverridab
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */

@@ -21,7 +21,7 @@ use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
- * Interface NodeInterface
+ * Interface NodeInterface.
  */
 interface NodeInterface
     extends
@@ -30,14 +30,14 @@ interface NodeInterface
     SubnodesAwareInterface
 {
     /**
-     * Gets Node code
+     * Gets Node code.
      *
      * @return string
      */
     public function getCode();
 
     /**
-     * Sets Node code
+     * Sets Node code.
      *
      * @param string $code
      *
@@ -46,7 +46,7 @@ interface NodeInterface
     public function setCode($code);
 
     /**
-     * Sets Name
+     * Sets Name.
      *
      * @param string $name Name
      *
@@ -55,14 +55,14 @@ interface NodeInterface
     public function setName($name);
 
     /**
-     * Get Name
+     * Get Name.
      *
      * @return string Name
      */
     public function getName();
 
     /**
-     * Sets Url
+     * Sets Url.
      *
      * @param string $url Url
      *
@@ -71,7 +71,7 @@ interface NodeInterface
     public function setUrl($url);
 
     /**
-     * Get Url
+     * Get Url.
      *
      * @return string Url
      */
@@ -112,14 +112,14 @@ interface NodeInterface
     public function removeActiveUrl($activeUrl);
 
     /**
-     * Get Tag
+     * Get Tag.
      *
      * @return string Tag
      */
     public function getTag();
 
     /**
-     * Sets Tag
+     * Sets Tag.
      *
      * @param string $tag Tag
      *
@@ -128,14 +128,14 @@ interface NodeInterface
     public function setTag($tag);
 
     /**
-     * Get Priority
+     * Get Priority.
      *
      * @return int Priority
      */
     public function getPriority();
 
     /**
-     * Sets Priority
+     * Sets Priority.
      *
      * @param int $priority Priority
      *
@@ -144,43 +144,43 @@ interface NodeInterface
     public function setPriority($priority);
 
     /**
-     * Is active
+     * Is active.
      *
      * @param string $currentUrl Current Url
      *
-     * @return boolean Menu node is active
+     * @return bool Menu node is active
      */
     public function isActive($currentUrl);
 
     /**
-     * Is expanded
+     * Is expanded.
      *
      * @param string $currentUrl Current Url
      *
-     * @return boolean Menu Node is expanded
+     * @return bool Menu Node is expanded
      */
     public function isExpanded($currentUrl);
 
     /**
-     * Set warnings
+     * Set warnings.
      *
-     * @param integer $warnings Warnings
+     * @param int $warnings Warnings
      *
      * @return $this Self object
      */
     public function setWarnings($warnings);
 
     /**
-     * Get warnings
+     * Get warnings.
      *
-     * @return integer Warnings
+     * @return int Warnings
      */
     public function getWarnings();
 
     /**
-     * Increment warnings
+     * Increment warnings.
      *
-     * @param integer $warnings Warnings to be incremented
+     * @param int $warnings Warnings to be incremented
      *
      * @return $this Self object
      */

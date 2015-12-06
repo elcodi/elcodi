@@ -25,12 +25,12 @@ use Elcodi\Component\Cart\Event\OrderLineOnCreatedEvent;
 use Elcodi\Component\Core\EventDispatcher\Abstracts\AbstractEventDispatcher;
 
 /**
- * Class OrderLineEventDispatcher
+ * Class OrderLineEventDispatcher.
  */
 class OrderLineEventDispatcher extends AbstractEventDispatcher
 {
     /**
-     * Event dispatched when a Cart is being converted to an OrderLine
+     * Event dispatched when a Cart is being converted to an OrderLine.
      *
      * @param OrderInterface     $order     Order
      * @param CartLineInterface  $cartLine  CartLine

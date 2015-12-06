@@ -22,12 +22,12 @@ use PHPUnit_Framework_TestCase;
 use Elcodi\Component\Core\Encoder\JsonEncoder;
 
 /**
- * Class JsonEncoderTest
+ * Class JsonEncoderTest.
  */
 class JsonEncoderTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Test json encode
+     * Test json encode.
      *
      * @dataProvider dataEncodeDecode
      */
@@ -42,7 +42,7 @@ class JsonEncoderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test json decode
+     * Test json decode.
      *
      * @dataProvider dataEncodeDecode
      */
@@ -57,7 +57,7 @@ class JsonEncoderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * data provider for json encode
+     * data provider for json encode.
      */
     public function dataEncodeDecode()
     {

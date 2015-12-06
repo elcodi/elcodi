@@ -21,19 +21,19 @@ use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
- * Interface StateLineInterface
+ * Interface StateLineInterface.
  */
 interface StateLineInterface extends IdentifiableInterface, DateTimeInterface
 {
     /**
-     * Get Name
+     * Get Name.
      *
      * @return string Name
      */
     public function getName();
 
     /**
-     * Get Description
+     * Get Description.
      *
      * @return string Description
      */

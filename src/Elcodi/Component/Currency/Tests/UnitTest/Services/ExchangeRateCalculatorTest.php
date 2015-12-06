@@ -24,7 +24,7 @@ use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Services\ExchangeRateCalculator;
 
 /**
- * Class ExchangeRateCalculatorTest
+ * Class ExchangeRateCalculatorTest.
  *
  * @author Roger Gros <roger@gros.cat>
  */
@@ -127,7 +127,7 @@ class ExchangeRateCalculatorTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * The data provider for testNonPresentCurrencyConversions
+     * The data provider for testNonPresentCurrencyConversions.
      *
      * @return array
      */

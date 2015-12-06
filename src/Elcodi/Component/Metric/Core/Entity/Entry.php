@@ -22,12 +22,12 @@ use DateTime;
 use Elcodi\Component\Metric\Core\Entity\Interfaces\EntryInterface;
 
 /**
- * Class Entry
+ * Class Entry.
  */
 class Entry implements EntryInterface
 {
     /**
-     * @var integer
+     * @var int
      *
      * Identifier
      */
@@ -55,7 +55,7 @@ class Entry implements EntryInterface
     protected $value;
 
     /**
-     * @var integer
+     * @var int
      *
      * Type
      */
@@ -69,12 +69,12 @@ class Entry implements EntryInterface
     protected $createdAt;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param string   $token     Token
      * @param string   $event     Event
      * @param string   $value     Value
-     * @param integer  $type      Type
+     * @param int      $type      Type
      * @param DateTime $createdAt Created At
      */
     public function __construct(
@@ -92,9 +92,9 @@ class Entry implements EntryInterface
     }
 
     /**
-     * Get Id
+     * Get Id.
      *
-     * @return integer Id
+     * @return int Id
      */
     public function getId()
     {
@@ -102,7 +102,7 @@ class Entry implements EntryInterface
     }
 
     /**
-     * Get Token
+     * Get Token.
      *
      * @return string Token
      */
@@ -112,7 +112,7 @@ class Entry implements EntryInterface
     }
 
     /**
-     * Get Event
+     * Get Event.
      *
      * @return string Event
      */
@@ -122,7 +122,7 @@ class Entry implements EntryInterface
     }
 
     /**
-     * Get Value
+     * Get Value.
      *
      * @return string Value
      */
@@ -132,9 +132,9 @@ class Entry implements EntryInterface
     }
 
     /**
-     * Get Type
+     * Get Type.
      *
-     * @return integer Type
+     * @return int Type
      */
     public function getType()
     {
@@ -142,7 +142,7 @@ class Entry implements EntryInterface
     }
 
     /**
-     * Get CreatedAt
+     * Get CreatedAt.
      *
      * @return DateTime|null CreatedAt
      */

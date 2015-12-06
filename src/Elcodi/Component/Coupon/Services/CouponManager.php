@@ -28,7 +28,7 @@ use Elcodi\Component\Coupon\Exception\CouponNotActiveException;
 use Elcodi\Component\Coupon\Factory\CouponFactory;
 
 /**
- * Coupon manager service
+ * Coupon manager service.
  *
  * Manages all coupon actions
  */
@@ -56,7 +56,7 @@ class CouponManager
     private $dateTimeFactory;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CouponFactory      $couponFactory       Coupon Factory
      * @param GeneratorInterface $couponCodeGenerator Generator
@@ -73,7 +73,7 @@ class CouponManager
     }
 
     /**
-     * Creates a new coupon instance, given an existing Coupon as reference
+     * Creates a new coupon instance, given an existing Coupon as reference.
      *
      * You can specify a DateTime new coupon will be valid from.
      * If not specified, current DateTime will be used
@@ -97,7 +97,7 @@ class CouponManager
     public function duplicateCoupon(CouponInterface $coupon, DateTime $dateFrom = null)
     {
         /**
-         * Creates a valid date interval given the referent Coupon
+         * Creates a valid date interval given the referent Coupon.
          */
         if (null === $dateFrom) {
             $dateFrom = $this
@@ -143,7 +143,7 @@ class CouponManager
      *
      * @param CouponInterface $coupon Coupon to work with
      *
-     * @return boolean Coupon can be applied
+     * @return bool Coupon can be applied
      *
      * @throws AbstractCouponException
      */
@@ -161,12 +161,12 @@ class CouponManager
     }
 
     /**
-     * Check if a coupon is currently active
+     * Check if a coupon is currently active.
      *
      * @param CouponInterface $coupon Coupon to check activeness
      * @param DateTime        $now
      *
-     * @return boolean
+     * @return bool
      */
     private function isActive(CouponInterface $coupon, \DateTime $now = null)
     {
@@ -191,11 +191,11 @@ class CouponManager
     }
 
     /**
-     * Check if a coupon can be currently used
+     * Check if a coupon can be currently used.
      *
      * @param CouponInterface $coupon
      *
-     * @return boolean
+     * @return bool
      */
     private function canBeUsed(CouponInterface $coupon)
     {

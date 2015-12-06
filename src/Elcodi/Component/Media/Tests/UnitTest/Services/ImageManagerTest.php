@@ -24,7 +24,7 @@ use Elcodi\Component\Media\Entity\Image;
 use Elcodi\Component\Media\Services\ImageManager;
 
 /**
- * Class ImageManagerTest
+ * Class ImageManagerTest.
  */
 class ImageManagerTest extends PHPUnit_Framework_TestCase
 {
@@ -32,7 +32,7 @@ class ImageManagerTest extends PHPUnit_Framework_TestCase
     protected $imageManager;
 
     /**
-     * Set up tests
+     * Set up tests.
      */
     public function setUp()
     {
@@ -65,7 +65,7 @@ class ImageManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test image etag generator
+     * Test image etag generator.
      *
      * @dataProvider regularImagesProvider
      */
@@ -99,7 +99,7 @@ class ImageManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Regular images provider for tests
+     * Regular images provider for tests.
      *
      * @return array
      */
@@ -129,7 +129,7 @@ class ImageManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Images as octet stream for tests provider
+     * Images as octet stream for tests provider.
      */
     public function imagesAsOctetStreamProvider()
     {

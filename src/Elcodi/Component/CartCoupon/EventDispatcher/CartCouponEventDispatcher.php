@@ -28,12 +28,12 @@ use Elcodi\Component\Core\EventDispatcher\Abstracts\AbstractEventDispatcher;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 
 /**
- * Class CartCouponEventDispatcher
+ * Class CartCouponEventDispatcher.
  */
 class CartCouponEventDispatcher extends AbstractEventDispatcher
 {
     /**
-     * Dispatch event to check a coupon applies to a Cart
+     * Dispatch event to check a coupon applies to a Cart.
      *
      * @param CartInterface   $cart   Cart where the coupon should apply
      * @param CouponInterface $coupon Coupon to be checked
@@ -52,7 +52,7 @@ class CartCouponEventDispatcher extends AbstractEventDispatcher
     }
 
     /**
-     * Dispatch event just before a coupon is applied into a Cart
+     * Dispatch event just before a coupon is applied into a Cart.
      *
      * @param CartInterface   $cart   Cart where to apply the coupon
      * @param CouponInterface $coupon Coupon to be applied
@@ -71,7 +71,7 @@ class CartCouponEventDispatcher extends AbstractEventDispatcher
     }
 
     /**
-     * Dispatch event just before a coupon is removed from a Cart
+     * Dispatch event just before a coupon is removed from a Cart.
      *
      * @param CartCouponInterface $cartCoupon CartCoupon to remove
      *
@@ -92,7 +92,7 @@ class CartCouponEventDispatcher extends AbstractEventDispatcher
     }
 
     /**
-     * Dispatch event when a coupon application is rejected
+     * Dispatch event when a coupon application is rejected.
      *
      * @param CartInterface   $cart   Cart where the coupon should be rejected
      * @param CouponInterface $coupon Rejected coupon

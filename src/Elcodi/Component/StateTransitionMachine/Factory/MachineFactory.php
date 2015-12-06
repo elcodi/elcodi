@@ -22,14 +22,14 @@ use Elcodi\Component\StateTransitionMachine\Machine\Interfaces\MachineInterface;
 use Elcodi\Component\StateTransitionMachine\Machine\Machine;
 
 /**
- * Class MachineFactory
+ * Class MachineFactory.
  */
 class MachineFactory
 {
     /**
-     * Generate new machine
+     * Generate new machine.
      *
-     * @param integer         $machineId       Machine id
+     * @param int             $machineId       Machine id
      * @param TransitionChain $transitionChain Transition Chain
      * @param string          $pointOfEntry    Point of entry
      *

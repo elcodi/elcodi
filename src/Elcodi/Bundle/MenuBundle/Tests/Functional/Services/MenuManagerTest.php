@@ -21,12 +21,12 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Menu\Services\MenuManager;
 
 /**
- * Class MenuManagerTest
+ * Class MenuManagerTest.
  */
 class MenuManagerTest extends WebTestCase
 {
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -45,7 +45,7 @@ class MenuManagerTest extends WebTestCase
     protected $menuManager;
 
     /**
-     * Setup
+     * Setup.
      */
     public function setUp()
     {
@@ -55,7 +55,7 @@ class MenuManagerTest extends WebTestCase
     }
 
     /**
-     * Test load structure
+     * Test load structure.
      */
     public function testLoadAdminMenu()
     {
@@ -68,7 +68,7 @@ class MenuManagerTest extends WebTestCase
     }
 
     /**
-     * Test load structure
+     * Test load structure.
      */
     public function testLoadFrontMenu()
     {

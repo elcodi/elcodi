@@ -20,7 +20,7 @@ namespace Elcodi\Component\EntityTranslator\Exception;
 use Exception;
 
 /**
- * Class TranslationDefinitionException
+ * Class TranslationDefinitionException.
  */
 class TranslationDefinitionException extends Exception
 {

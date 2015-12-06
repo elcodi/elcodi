@@ -20,7 +20,7 @@ namespace Elcodi\Component\Core\Services;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
- * Class ReferrerProvider
+ * Class ReferrerProvider.
  */
 class ReferrerProvider
 {
@@ -32,7 +32,7 @@ class ReferrerProvider
     private $session;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param SessionInterface $session Session
      */
@@ -42,7 +42,7 @@ class ReferrerProvider
     }
 
     /**
-     * Get referrer
+     * Get referrer.
      *
      * @return string Referrer
      */
@@ -54,7 +54,7 @@ class ReferrerProvider
     }
 
     /**
-     * Get referrer
+     * Get referrer.
      *
      * @return string Referrer
      */
@@ -64,9 +64,9 @@ class ReferrerProvider
     }
 
     /**
-     * Referrer is search engine
+     * Referrer is search engine.
      *
-     * @return boolean Is search engine
+     * @return bool Is search engine
      */
     public function referrerIsSearchEngine()
     {
@@ -79,7 +79,7 @@ class ReferrerProvider
         }
 
         if (strlen($referrerHostExploded[$positionToCheck]) <= 3) {
-            $positionToCheck--;
+            --$positionToCheck;
 
             if (!isset($referrerHostExploded[$positionToCheck])) {
                 return false;

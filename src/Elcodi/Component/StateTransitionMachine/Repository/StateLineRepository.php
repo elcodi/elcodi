@@ -20,7 +20,7 @@ namespace Elcodi\Component\StateTransitionMachine\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class StateLineRepository
+ * Class StateLineRepository.
  */
 class StateLineRepository extends EntityRepository
 {

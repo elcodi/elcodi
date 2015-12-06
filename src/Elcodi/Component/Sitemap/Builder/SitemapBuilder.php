@@ -21,7 +21,7 @@ use Elcodi\Component\Sitemap\Element\Interfaces\SitemapElementGeneratorInterface
 use Elcodi\Component\Sitemap\Renderer\Interfaces\SitemapRendererInterface;
 
 /**
- * Class SitemapBuilder
+ * Class SitemapBuilder.
  */
 class SitemapBuilder
 {
@@ -40,7 +40,7 @@ class SitemapBuilder
     private $sitemapRenderer;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param SitemapRendererInterface $sitemapRenderer sitemapRenderer
      */
@@ -50,7 +50,7 @@ class SitemapBuilder
     }
 
     /**
-     * Add a new SitemapElement Generator
+     * Add a new SitemapElement Generator.
      *
      * @param SitemapElementGeneratorInterface $sitemapElementGenerator sitemapRenderer
      *
@@ -65,7 +65,7 @@ class SitemapBuilder
     }
 
     /**
-     * Build sitemap builder
+     * Build sitemap builder.
      *
      * @param string      $basepath Base path
      * @param string|null $language Language

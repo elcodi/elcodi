@@ -25,7 +25,7 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * Class ElcodiPageExtension
+ * Class ElcodiPageExtension.
  *
  * @author Berny Cantos <be@rny.cc>
  */
@@ -39,7 +39,7 @@ class ElcodiPageExtension extends AbstractExtension implements EntitiesOverridab
     const EXTENSION_NAME = 'elcodi_page';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -66,7 +66,7 @@ class ElcodiPageExtension extends AbstractExtension implements EntitiesOverridab
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * return array(
      *      'file1.yml',
@@ -92,7 +92,7 @@ class ElcodiPageExtension extends AbstractExtension implements EntitiesOverridab
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -107,10 +107,10 @@ class ElcodiPageExtension extends AbstractExtension implements EntitiesOverridab
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.page.class"        => $config['mapping']['page']['class'],
-            "elcodi.entity.page.mapping_file" => $config['mapping']['page']['mapping_file'],
-            "elcodi.entity.page.manager"      => $config['mapping']['page']['manager'],
-            "elcodi.entity.page.enabled"      => $config['mapping']['page']['enabled'],
+            'elcodi.entity.page.class' => $config['mapping']['page']['class'],
+            'elcodi.entity.page.mapping_file' => $config['mapping']['page']['mapping_file'],
+            'elcodi.entity.page.manager' => $config['mapping']['page']['manager'],
+            'elcodi.entity.page.enabled' => $config['mapping']['page']['enabled'],
         ];
     }
 
@@ -131,7 +131,7 @@ class ElcodiPageExtension extends AbstractExtension implements EntitiesOverridab
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */
@@ -141,7 +141,7 @@ class ElcodiPageExtension extends AbstractExtension implements EntitiesOverridab
     }
 
     /**
-     * Post load implementation
+     * Post load implementation.
      *
      * @param array            $config    Parsed configuration
      * @param ContainerBuilder $container A ContainerBuilder instance

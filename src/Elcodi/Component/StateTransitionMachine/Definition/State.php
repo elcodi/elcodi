@@ -18,7 +18,7 @@
 namespace Elcodi\Component\StateTransitionMachine\Definition;
 
 /**
- * Class State
+ * Class State.
  */
 class State
 {
@@ -30,7 +30,7 @@ class State
     private $name;
 
     /**
-     * construct method
+     * construct method.
      *
      * @param string $name State name
      */
@@ -40,7 +40,7 @@ class State
     }
 
     /**
-     * Get Name
+     * Get Name.
      *
      * @return string Name
      */

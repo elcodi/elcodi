@@ -23,7 +23,7 @@ use Twig_SimpleFilter;
 use Elcodi\Component\Product\Services\PurchasableNameResolver;
 
 /**
- * Product extension for twig
+ * Product extension for twig.
  */
 class PurchasableExtension extends Twig_Extension
 {
@@ -35,7 +35,7 @@ class PurchasableExtension extends Twig_Extension
     private $purchasableNameResolver;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param PurchasableNameResolver $purchasableNameResolver Purchasable name resolver
      */
@@ -45,7 +45,7 @@ class PurchasableExtension extends Twig_Extension
     }
 
     /**
-     * Returns defined twig functions
+     * Returns defined twig functions.
      *
      * @return Twig_SimpleFilter[] Filters
      */
@@ -60,7 +60,7 @@ class PurchasableExtension extends Twig_Extension
     }
 
     /**
-     * return extension name
+     * return extension name.
      *
      * @return string extension name
      */

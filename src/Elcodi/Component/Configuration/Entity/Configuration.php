@@ -21,7 +21,7 @@ use Elcodi\Component\Configuration\Entity\Interfaces\ConfigurationInterface;
 use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 
 /**
- * Class Parameter
+ * Class Parameter.
  */
 class Configuration implements ConfigurationInterface
 {
@@ -63,7 +63,7 @@ class Configuration implements ConfigurationInterface
     protected $value;
 
     /**
-     * Get Key
+     * Get Key.
      *
      * @return string Key
      */
@@ -73,7 +73,7 @@ class Configuration implements ConfigurationInterface
     }
 
     /**
-     * Sets Key
+     * Sets Key.
      *
      * @param string $key Key
      *
@@ -87,7 +87,7 @@ class Configuration implements ConfigurationInterface
     }
 
     /**
-     * Get Name
+     * Get Name.
      *
      * @return string Name
      */
@@ -97,7 +97,7 @@ class Configuration implements ConfigurationInterface
     }
 
     /**
-     * Sets Name
+     * Sets Name.
      *
      * @param string $name Name
      *
@@ -111,7 +111,7 @@ class Configuration implements ConfigurationInterface
     }
 
     /**
-     * Get Namespace
+     * Get Namespace.
      *
      * @return string Namespace
      */
@@ -121,7 +121,7 @@ class Configuration implements ConfigurationInterface
     }
 
     /**
-     * Sets Namespace
+     * Sets Namespace.
      *
      * @param string $namespace Namespace
      *
@@ -135,7 +135,7 @@ class Configuration implements ConfigurationInterface
     }
 
     /**
-     * Get Type
+     * Get Type.
      *
      * @return string Type
      */
@@ -145,7 +145,7 @@ class Configuration implements ConfigurationInterface
     }
 
     /**
-     * Sets Type
+     * Sets Type.
      *
      * @param string $type Type
      *
@@ -159,7 +159,7 @@ class Configuration implements ConfigurationInterface
     }
 
     /**
-     * Get Value
+     * Get Value.
      *
      * @return mixed Value
      */
@@ -169,7 +169,7 @@ class Configuration implements ConfigurationInterface
     }
 
     /**
-     * Sets Value
+     * Sets Value.
      *
      * @param mixed $value Value
      *

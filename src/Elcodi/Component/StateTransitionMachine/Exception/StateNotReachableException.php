@@ -20,7 +20,7 @@ namespace Elcodi\Component\StateTransitionMachine\Exception;
 use Exception;
 
 /**
- * Class StateNotReachableException
+ * Class StateNotReachableException.
  */
 class StateNotReachableException extends Exception
 {

@@ -22,12 +22,12 @@ use Elcodi\Component\EntityTranslator\ElcodiTranslatorEvents;
 use Elcodi\Component\EntityTranslator\Event\EntityTranslatorWarmUpEvent;
 
 /**
- * Class EntityTranslatorEventDispatcher
+ * Class EntityTranslatorEventDispatcher.
  */
 class EntityTranslatorEventDispatcher extends AbstractEventDispatcher
 {
     /**
-     * Dispatch cache warm-up
+     * Dispatch cache warm-up.
      */
     public function dispatchTranslatorWarmUp()
     {

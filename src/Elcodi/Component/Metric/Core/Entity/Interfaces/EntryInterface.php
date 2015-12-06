@@ -18,40 +18,40 @@
 namespace Elcodi\Component\Metric\Core\Entity\Interfaces;
 
 /**
- * Interface EntryInterface
+ * Interface EntryInterface.
  */
 interface EntryInterface
 {
     /**
-     * Get Token
+     * Get Token.
      *
      * @return string Token
      */
     public function getToken();
 
     /**
-     * Get Event
+     * Get Event.
      *
      * @return string Event
      */
     public function getEvent();
 
     /**
-     * Get Value
+     * Get Value.
      *
      * @return string Value
      */
     public function getValue();
 
     /**
-     * Get Type
+     * Get Type.
      *
-     * @return integer Type
+     * @return int Type
      */
     public function getType();
 
     /**
-     * Get CreatedAt
+     * Get CreatedAt.
      *
      * @return \DateTime|null CreatedAt
      */

@@ -22,12 +22,12 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
 
 /**
- * Class Configuration
+ * Class Configuration.
  */
 class Configuration extends AbstractConfiguration
 {
     /**
-     * Configure the root node
+     * Configure the root node.
      *
      * @param ArrayNodeDefinition $rootNode
      */

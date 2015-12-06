@@ -27,7 +27,7 @@ use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
 use Elcodi\Component\Product\Repository\ProductRepository;
 
 /**
- * Class SameCategoryRelatedPurchasableProvider
+ * Class SameCategoryRelatedPurchasableProvider.
  *
  * This adapter takes in account only the principal category of the purchasable.
  * If the purchasable is a Product, then its principal category is used.
@@ -43,7 +43,7 @@ class SameCategoryRelatedPurchasableProvider implements RelatedPurchasablesProvi
     private $productRepository;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param ProductRepository $productRepository Product Repository
      */
@@ -106,7 +106,7 @@ class SameCategoryRelatedPurchasableProvider implements RelatedPurchasablesProvi
     /**
      * Given a purchasable, get it's main product. This purchasable must be an
      * implementation of ProductInterface or VariantInterface. Otherwise the
-     * method will return false
+     * method will return false.
      *
      * @param PurchasableInterface $purchasable Purchasable
      *
@@ -128,7 +128,7 @@ class SameCategoryRelatedPurchasableProvider implements RelatedPurchasablesProvi
 
     /**
      * Build a basic query given a set of categories and a set of unwanted
-     * products
+     * products.
      *
      * @param ProductInterface[] $products Products
      * @param int                $limit    Limit
@@ -161,13 +161,13 @@ class SameCategoryRelatedPurchasableProvider implements RelatedPurchasablesProvi
         return $this
             ->productRepository
             ->createQueryBuilder('p')
-            ->where("p.principalCategory IN(:categories)")
-            ->andWhere("p NOT IN(:products)")
+            ->where('p.principalCategory IN(:categories)')
+            ->andWhere('p NOT IN(:products)')
             ->andWhere('p.enabled = :enabled')
             ->setParameters([
                 'categories' => $categories,
-                'products'   => $products,
-                'enabled'    => true,
+                'products' => $products,
+                'enabled' => true,
             ])
             ->setMaxResults($limit)
             ->getQuery()

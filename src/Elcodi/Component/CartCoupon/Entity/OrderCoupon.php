@@ -26,7 +26,7 @@ use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 
 /**
- * Class OrderCoupon
+ * Class OrderCoupon.
  */
 class OrderCoupon implements OrderCouponInterface
 {
@@ -47,7 +47,7 @@ class OrderCoupon implements OrderCouponInterface
     protected $coupon;
 
     /**
-     * @var integer
+     * @var int
      *
      * Amount
      */
@@ -75,7 +75,7 @@ class OrderCoupon implements OrderCouponInterface
     protected $name;
 
     /**
-     * Sets Order
+     * Sets Order.
      *
      * @param OrderInterface $order Order
      *
@@ -89,7 +89,7 @@ class OrderCoupon implements OrderCouponInterface
     }
 
     /**
-     * Get Order
+     * Get Order.
      *
      * @return OrderInterface Order
      */
@@ -99,7 +99,7 @@ class OrderCoupon implements OrderCouponInterface
     }
 
     /**
-     * Sets Coupon
+     * Sets Coupon.
      *
      * @param CouponInterface $coupon Coupon
      *
@@ -113,7 +113,7 @@ class OrderCoupon implements OrderCouponInterface
     }
 
     /**
-     * Get Coupon
+     * Get Coupon.
      *
      * @return CouponInterface Coupon
      */
@@ -123,7 +123,7 @@ class OrderCoupon implements OrderCouponInterface
     }
 
     /**
-     * Set code
+     * Set code.
      *
      * @param string $code Code
      *
@@ -137,7 +137,7 @@ class OrderCoupon implements OrderCouponInterface
     }
 
     /**
-     * Get code
+     * Get code.
      *
      * @return string Code
      */
@@ -147,7 +147,7 @@ class OrderCoupon implements OrderCouponInterface
     }
 
     /**
-     * Set name coupon name
+     * Set name coupon name.
      *
      * @param string $name
      *
@@ -161,7 +161,7 @@ class OrderCoupon implements OrderCouponInterface
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -171,7 +171,7 @@ class OrderCoupon implements OrderCouponInterface
     }
 
     /**
-     * Set amount
+     * Set amount.
      *
      * @param MoneyInterface $amount Price
      *
@@ -186,7 +186,7 @@ class OrderCoupon implements OrderCouponInterface
     }
 
     /**
-     * Get amount
+     * Get amount.
      *
      * @return MoneyInterface Price
      */

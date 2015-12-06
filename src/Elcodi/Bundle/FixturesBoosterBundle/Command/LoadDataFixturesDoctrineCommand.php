@@ -24,7 +24,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
- * Class LoadDataFixturesDoctrineCommand
+ * Class LoadDataFixturesDoctrineCommand.
  *
  * Wrapper of original Doctrine. In order to boost all the fixtures, this
  * command tries to reuse sqlite instances.
@@ -49,7 +49,7 @@ class LoadDataFixturesDoctrineCommand extends OriginalCommand
     protected $databaseFilePath;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param KernelInterface $kernel           Kernel
      * @param string          $databaseFilePath Database file path
@@ -65,7 +65,7 @@ class LoadDataFixturesDoctrineCommand extends OriginalCommand
     }
 
     /**
-     * Configure command
+     * Configure command.
      */
     protected function configure()
     {
@@ -109,7 +109,7 @@ class LoadDataFixturesDoctrineCommand extends OriginalCommand
         }
 
         /**
-         * Same code as parent implementation
+         * Same code as parent implementation.
          */
         $dirOrFile = $input->getOption('fixtures');
         $paths = [];
@@ -126,7 +126,7 @@ class LoadDataFixturesDoctrineCommand extends OriginalCommand
 
         /**
          * In order to take in account the kernel as well (same fixtures,
-         * different kernel/different schema, make the tests crash
+         * different kernel/different schema, make the tests crash.
          */
         $paths[] = get_class($this->kernel);
 
@@ -142,7 +142,7 @@ class LoadDataFixturesDoctrineCommand extends OriginalCommand
 
         /**
          * If new file has been created, copy it with generated hash value. Now
-         * this backup will be reusable for next iterations
+         * this backup will be reusable for next iterations.
          */
         if (file_exists($this->databaseFilePath)) {
             copy($this->databaseFilePath, $backupFileName);

@@ -23,7 +23,7 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * This is the class that loads and manages your bundle configuration
+ * This is the class that loads and manages your bundle configuration.
  */
 class ElcodiBannerExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
@@ -35,7 +35,7 @@ class ElcodiBannerExtension extends AbstractExtension implements EntitiesOverrid
     const EXTENSION_NAME = 'elcodi_banner';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -62,7 +62,7 @@ class ElcodiBannerExtension extends AbstractExtension implements EntitiesOverrid
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -77,20 +77,20 @@ class ElcodiBannerExtension extends AbstractExtension implements EntitiesOverrid
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.banner.class"             => $config['mapping']['banner']['class'],
-            "elcodi.entity.banner.mapping_file"      => $config['mapping']['banner']['mapping_file'],
-            "elcodi.entity.banner.manager"           => $config['mapping']['banner']['manager'],
-            "elcodi.entity.banner.enabled"           => $config['mapping']['banner']['enabled'],
+            'elcodi.entity.banner.class' => $config['mapping']['banner']['class'],
+            'elcodi.entity.banner.mapping_file' => $config['mapping']['banner']['mapping_file'],
+            'elcodi.entity.banner.manager' => $config['mapping']['banner']['manager'],
+            'elcodi.entity.banner.enabled' => $config['mapping']['banner']['enabled'],
 
-            "elcodi.entity.banner_zone.class"        => $config['mapping']['banner_zone']['class'],
-            "elcodi.entity.banner_zone.mapping_file" => $config['mapping']['banner_zone']['mapping_file'],
-            "elcodi.entity.banner_zone.manager"      => $config['mapping']['banner_zone']['manager'],
-            "elcodi.entity.banner_zone.enabled"      => $config['mapping']['banner_zone']['enabled'],
+            'elcodi.entity.banner_zone.class' => $config['mapping']['banner_zone']['class'],
+            'elcodi.entity.banner_zone.mapping_file' => $config['mapping']['banner_zone']['mapping_file'],
+            'elcodi.entity.banner_zone.manager' => $config['mapping']['banner_zone']['manager'],
+            'elcodi.entity.banner_zone.enabled' => $config['mapping']['banner_zone']['enabled'],
         ];
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * @param array $config Configuration
      *
@@ -119,13 +119,13 @@ class ElcodiBannerExtension extends AbstractExtension implements EntitiesOverrid
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\Banner\Entity\Interfaces\BannerInterface'     => 'elcodi.entity.banner.class',
+            'Elcodi\Component\Banner\Entity\Interfaces\BannerInterface' => 'elcodi.entity.banner.class',
             'Elcodi\Component\Banner\Entity\Interfaces\BannerZoneInterface' => 'elcodi.entity.banner_zone.class',
         ];
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */

@@ -23,28 +23,28 @@ use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 
 /**
- * Class Vote
+ * Class Vote.
  */
 class Vote implements VoteInterface
 {
     use IdentifiableTrait, DateTimeTrait;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * Vote up
      */
     const UP = true;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * Vote down
      */
     const DOWN = false;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * Type
      */
@@ -65,7 +65,7 @@ class Vote implements VoteInterface
     protected $comment;
 
     /**
-     * Get Comment
+     * Get Comment.
      *
      * @return CommentInterface Comment
      */
@@ -75,7 +75,7 @@ class Vote implements VoteInterface
     }
 
     /**
-     * Sets Comment
+     * Sets Comment.
      *
      * @param CommentInterface $comment Comment
      *
@@ -89,9 +89,9 @@ class Vote implements VoteInterface
     }
 
     /**
-     * Get Type
+     * Get Type.
      *
-     * @return boolean Type
+     * @return bool Type
      */
     public function getType()
     {
@@ -99,9 +99,9 @@ class Vote implements VoteInterface
     }
 
     /**
-     * Sets Type
+     * Sets Type.
      *
-     * @param boolean $type Type
+     * @param bool $type Type
      *
      * @return $this Self object
      */
@@ -113,7 +113,7 @@ class Vote implements VoteInterface
     }
 
     /**
-     * Get AuthorToken
+     * Get AuthorToken.
      *
      * @return string AuthorToken
      */
@@ -123,7 +123,7 @@ class Vote implements VoteInterface
     }
 
     /**
-     * Sets AuthorToken
+     * Sets AuthorToken.
      *
      * @param string $authorToken AuthorToken
      *

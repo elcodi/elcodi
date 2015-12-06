@@ -20,19 +20,19 @@ namespace Elcodi\Component\Attribute\Entity\Interfaces;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
- * Interface ValueInterface
+ * Interface ValueInterface.
  */
 interface ValueInterface extends IdentifiableInterface
 {
     /**
-     * Get Value
+     * Get Value.
      *
      * @return string Value
      */
     public function getValue();
 
     /**
-     * Sets Value
+     * Sets Value.
      *
      * @param string $value Value
      *
@@ -41,14 +41,14 @@ interface ValueInterface extends IdentifiableInterface
     public function setValue($value);
 
     /**
-     * Get Attribute
+     * Get Attribute.
      *
      * @return AttributeInterface Attribute
      */
     public function getAttribute();
 
     /**
-     * Sets Attribute
+     * Sets Attribute.
      *
      * @param AttributeInterface $attribute Attribute
      *

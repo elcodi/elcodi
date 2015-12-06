@@ -25,7 +25,7 @@ use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 use Elcodi\Component\StateTransitionMachine\Machine\MachineManager;
 
 /**
- * Class Order
+ * Class Order.
  */
 class OrderFactory extends AbstractPurchasableFactory
 {
@@ -44,7 +44,7 @@ class OrderFactory extends AbstractPurchasableFactory
     protected $shippingMachineManager;
 
     /**
-     * Sets PaymentMachineManager
+     * Sets PaymentMachineManager.
      *
      * @param MachineManager $paymentMachineManager PaymentMachineManager
      *
@@ -58,7 +58,7 @@ class OrderFactory extends AbstractPurchasableFactory
     }
 
     /**
-     * Sets ShippingMachineManager
+     * Sets ShippingMachineManager.
      *
      * @param MachineManager $shippingMachineManager ShippingMachineManager
      *

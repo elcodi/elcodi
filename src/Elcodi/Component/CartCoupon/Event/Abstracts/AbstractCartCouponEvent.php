@@ -24,7 +24,7 @@ use Elcodi\Component\CartCoupon\Entity\Interfaces\CartCouponInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 
 /**
- * Class AbstractCartCouponEvent
+ * Class AbstractCartCouponEvent.
  */
 abstract class AbstractCartCouponEvent extends Event
 {
@@ -50,7 +50,7 @@ abstract class AbstractCartCouponEvent extends Event
     private $cartCoupon;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CartInterface   $cart   Cart
      * @param CouponInterface $coupon Coupon
@@ -62,7 +62,7 @@ abstract class AbstractCartCouponEvent extends Event
     }
 
     /**
-     * Set CartCoupon
+     * Set CartCoupon.
      *
      * @param CartCouponInterface $cartCoupon CartCoupon
      *
@@ -76,7 +76,7 @@ abstract class AbstractCartCouponEvent extends Event
     }
 
     /**
-     * Return cart
+     * Return cart.
      *
      * @return CartInterface $cart
      */
@@ -86,7 +86,7 @@ abstract class AbstractCartCouponEvent extends Event
     }
 
     /**
-     * Return Coupon
+     * Return Coupon.
      *
      * @return CouponInterface Coupon
      */
@@ -96,7 +96,7 @@ abstract class AbstractCartCouponEvent extends Event
     }
 
     /**
-     * Get CartCoupon
+     * Get CartCoupon.
      *
      * @return CartCouponInterface|null Cart Coupon
      */

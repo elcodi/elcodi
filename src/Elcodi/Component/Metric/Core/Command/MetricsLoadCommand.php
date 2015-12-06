@@ -25,7 +25,7 @@ use Elcodi\Component\Core\Command\Abstracts\AbstractElcodiCommand;
 use Elcodi\Component\Metric\Core\Services\MetricLoader;
 
 /**
- * Class MetricsLoadCommand
+ * Class MetricsLoadCommand.
  */
 class MetricsLoadCommand extends AbstractElcodiCommand
 {
@@ -37,7 +37,7 @@ class MetricsLoadCommand extends AbstractElcodiCommand
     private $metricLoader;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param MetricLoader $metricLoader Metric loader
      */
@@ -49,7 +49,7 @@ class MetricsLoadCommand extends AbstractElcodiCommand
     }
 
     /**
-     * configure
+     * configure.
      */
     protected function configure()
     {
@@ -65,12 +65,10 @@ class MetricsLoadCommand extends AbstractElcodiCommand
 
     /**
      * This command loads all the exchange rates from base_currency to all available
-     * currencies
+     * currencies.
      *
      * @param InputInterface  $input  The input interface
      * @param OutputInterface $output The output interface
-     *
-     * @return void
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {

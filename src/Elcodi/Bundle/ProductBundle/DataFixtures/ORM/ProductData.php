@@ -29,19 +29,19 @@ use Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 
 /**
- * Class ProductData
+ * Class ProductData.
  */
 class ProductData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
-     * Load data fixtures with the passed EntityManager
+     * Load data fixtures with the passed EntityManager.
      *
      * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager)
     {
         /**
-         * Product
+         * Product.
          *
          * @var CategoryInterface     $category
          * @var ManufacturerInterface $manufacturer
@@ -76,7 +76,7 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
         $this->addReference('product', $product);
 
         /**
-         * Reduced Product
+         * Reduced Product.
          */
         $productReduced = $productDirector
             ->create()
@@ -98,7 +98,7 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
         $this->addReference('product-reduced', $productReduced);
 
         /**
-         * Product with variants
+         * Product with variants.
          *
          * @var ProductInterface $productWithVariants
          */
@@ -124,7 +124,7 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
         $this->addReference('product-with-variants', $productWithVariants);
 
         /**
-         * Root category product
+         * Root category product.
          *
          * @var ProductInterface $rootCategoryProduct
          */
@@ -152,7 +152,7 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
 
     /**
      * This method must return an array of fixtures classes
-     * on which the implementing class depends on
+     * on which the implementing class depends on.
      *
      * @return array
      */

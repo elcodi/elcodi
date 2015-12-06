@@ -22,7 +22,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Elcodi\Component\Coupon\Event\CouponOnUsedEvent;
 
 /**
- * Class MakeCouponUsedEventListener
+ * Class MakeCouponUsedEventListener.
  */
 class MakeCouponUsedEventListener
 {
@@ -34,7 +34,7 @@ class MakeCouponUsedEventListener
     private $couponObjectManager;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param ObjectManager $couponObjectManager Coupon Object Manager
      */

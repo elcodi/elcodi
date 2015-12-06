@@ -23,7 +23,7 @@ use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Geo\Entity\Interfaces\LocationInterface;
 
 /**
- * Class Location
+ * Class Location.
  */
 class Location implements LocationInterface
 {
@@ -65,7 +65,7 @@ class Location implements LocationInterface
     protected $children;
 
     /**
-     * Gets the name
+     * Gets the name.
      *
      * @return string
      */
@@ -75,7 +75,7 @@ class Location implements LocationInterface
     }
 
     /**
-     * Sets the name
+     * Sets the name.
      *
      * @param string $name The name
      *
@@ -89,7 +89,7 @@ class Location implements LocationInterface
     }
 
     /**
-     * Gets the code
+     * Gets the code.
      *
      * @return string
      */
@@ -99,7 +99,7 @@ class Location implements LocationInterface
     }
 
     /**
-     * Sets the code
+     * Sets the code.
      *
      * @param string $code The code
      *
@@ -113,7 +113,7 @@ class Location implements LocationInterface
     }
 
     /**
-     * Gets the type
+     * Gets the type.
      *
      * @return string
      */
@@ -123,7 +123,7 @@ class Location implements LocationInterface
     }
 
     /**
-     * Sets the type
+     * Sets the type.
      *
      * @param string $type The type
      *
@@ -137,7 +137,7 @@ class Location implements LocationInterface
     }
 
     /**
-     * Get the closest parents
+     * Get the closest parents.
      *
      * @return Collection Closest parents
      */
@@ -147,7 +147,7 @@ class Location implements LocationInterface
     }
 
     /**
-     * Get all the parents
+     * Get all the parents.
      *
      * @return array All parents
      */
@@ -175,7 +175,7 @@ class Location implements LocationInterface
     }
 
     /**
-     * Set parent locations
+     * Set parent locations.
      *
      * @param Collection $parents Locations
      *
@@ -189,7 +189,7 @@ class Location implements LocationInterface
     }
 
     /**
-     * Add parent Location
+     * Add parent Location.
      *
      * @param LocationInterface $location Location
      *
@@ -209,7 +209,7 @@ class Location implements LocationInterface
     }
 
     /**
-     * Remove parentLocation
+     * Remove parentLocation.
      *
      * @param LocationInterface $location Location
      *
@@ -225,7 +225,7 @@ class Location implements LocationInterface
     }
 
     /**
-     * Get the children
+     * Get the children.
      *
      * @return Collection Children
      */
@@ -235,7 +235,7 @@ class Location implements LocationInterface
     }
 
     /**
-     * Set the children
+     * Set the children.
      *
      * @param Collection $children Locations
      *
@@ -249,7 +249,7 @@ class Location implements LocationInterface
     }
 
     /**
-     * Get the children
+     * Get the children.
      *
      * @param LocationInterface $location Location
      *
@@ -267,8 +267,7 @@ class Location implements LocationInterface
     }
 
     /**
-     * To string
-     *
+     * To string.
      */
     public function __toString()
     {

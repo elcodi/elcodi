@@ -24,24 +24,24 @@ use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 
 /**
- * Class CategoryData
+ * Class CategoryData.
  */
 class CategoryData extends AbstractFixture
 {
     /**
-     * Load data fixtures with the passed EntityManager
+     * Load data fixtures with the passed EntityManager.
      *
      * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager)
     {
         /**
-         * @var ObjectDirector   $categoryDirector
+         * @var ObjectDirector $categoryDirector
          */
         $categoryDirector = $this->getDirector('category');
 
         /**
-         * Category
+         * Category.
          *
          * @var CategoryInterface $rootCategory
          */
@@ -56,7 +56,7 @@ class CategoryData extends AbstractFixture
         $this->addReference('rootCategory', $rootCategory);
 
         /**
-         * Category
+         * Category.
          *
          * @var CategoryInterface $category
          */
@@ -72,7 +72,7 @@ class CategoryData extends AbstractFixture
         $this->addReference('category', $category);
 
         /**
-         * Second level category
+         * Second level category.
          *
          * @var CategoryInterface $secondLevelCategory
          */

@@ -21,7 +21,7 @@ use Elcodi\Component\CartCoupon\Event\CartCouponOnApplyEvent;
 use Elcodi\Component\CartCoupon\Services\StackableCouponValidator;
 
 /**
- * Class ValidateStackableCouponsEventListener
+ * Class ValidateStackableCouponsEventListener.
  */
 final class ValidateStackableCouponsEventListener
 {
@@ -33,7 +33,7 @@ final class ValidateStackableCouponsEventListener
     private $stackableCouponValidator;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param StackableCouponValidator $stackableCouponValidator Stackable Coupon Validator
      */
@@ -44,7 +44,7 @@ final class ValidateStackableCouponsEventListener
 
     /**
      * Check if this coupon can be applied when other coupons had previously
-     * been applied
+     * been applied.
      *
      * @param CartCouponOnApplyEvent $event Event
      */

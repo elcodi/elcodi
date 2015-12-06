@@ -18,14 +18,14 @@
 namespace Elcodi\Component\Rule\ExpressionLanguage\Interfaces;
 
 /**
- * Interface ExpressionContextProviderInterface
+ * Interface ExpressionContextProviderInterface.
  *
  * Provides context for ExpressionLanguage
  */
 interface ExpressionContextProviderInterface
 {
     /**
-     * Get provided context
+     * Get provided context.
      *
      * @return array
      */

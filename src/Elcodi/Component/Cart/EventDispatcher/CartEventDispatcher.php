@@ -27,12 +27,12 @@ use Elcodi\Component\Cart\Event\CartPreLoadEvent;
 use Elcodi\Component\Core\EventDispatcher\Abstracts\AbstractEventDispatcher;
 
 /**
- * Class CartEventDispatcher
+ * Class CartEventDispatcher.
  */
 class CartEventDispatcher extends AbstractEventDispatcher
 {
     /**
-     * Dispatch all cart events
+     * Dispatch all cart events.
      *
      * @param CartInterface $cart Cart
      *
@@ -50,7 +50,7 @@ class CartEventDispatcher extends AbstractEventDispatcher
     }
 
     /**
-     * Dispatch cart event just before is loaded
+     * Dispatch cart event just before is loaded.
      *
      * This event is dispatched while final elements on Cart environment
      * have not been calculated and completed.
@@ -73,7 +73,7 @@ class CartEventDispatcher extends AbstractEventDispatcher
     }
 
     /**
-     * Dispatch event when Cart is loaded
+     * Dispatch event when Cart is loaded.
      *
      * This event considers that all changes related with the entity have
      * been executed. At this point, all related operations can be done, for
@@ -94,7 +94,7 @@ class CartEventDispatcher extends AbstractEventDispatcher
     }
 
     /**
-     * Dispatch cart event for inconsistent cart
+     * Dispatch cart event for inconsistent cart.
      *
      * @param CartInterface     $cart     Cart
      * @param CartLineInterface $cartLine CartLine
@@ -117,7 +117,7 @@ class CartEventDispatcher extends AbstractEventDispatcher
     }
 
     /**
-     * Dispatch cart event when a cart ois emptied
+     * Dispatch cart event when a cart ois emptied.
      *
      * @param CartInterface $cart Cart
      *

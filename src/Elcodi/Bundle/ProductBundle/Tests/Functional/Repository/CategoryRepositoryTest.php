@@ -22,7 +22,7 @@ use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 use Elcodi\Component\Product\Repository\CategoryRepository;
 
 /**
- * Class CategoryRepositoryTest
+ * Class CategoryRepositoryTest.
  */
 class CategoryRepositoryTest extends WebTestCase
 {
@@ -34,7 +34,7 @@ class CategoryRepositoryTest extends WebTestCase
     protected $categoryRepository;
 
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -46,7 +46,7 @@ class CategoryRepositoryTest extends WebTestCase
     }
 
     /**
-     * Setup
+     * Setup.
      */
     public function setUp()
     {
@@ -56,7 +56,7 @@ class CategoryRepositoryTest extends WebTestCase
     }
 
     /**
-     * Test category repository provider
+     * Test category repository provider.
      */
     public function testRepositoryProvider()
     {
@@ -68,7 +68,7 @@ class CategoryRepositoryTest extends WebTestCase
 
     /**
      * Test the repository to check that the get children categories returns
-     * only the first level children categories (Not recursive)
+     * only the first level children categories (Not recursive).
      */
     public function testGetChildrenCategoriesNotRecursively()
     {
@@ -92,7 +92,7 @@ class CategoryRepositoryTest extends WebTestCase
 
     /**
      * Test the repository to check that the get children categories returns
-     * all the children categories (Recursively)
+     * all the children categories (Recursively).
      */
     public function testGetChildrenCategoriesRecursively()
     {

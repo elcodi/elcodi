@@ -25,12 +25,12 @@ use Doctrine\ORM\QueryBuilder;
 use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 
 /**
- * Class CategoryRepository
+ * Class CategoryRepository.
  */
 class CategoryRepository extends EntityRepository
 {
     /**
-     * Get root categories
+     * Get root categories.
      *
      * @return ArrayCollection Collection of Root categories
      */
@@ -108,9 +108,9 @@ class CategoryRepository extends EntityRepository
 
     /**
      * Get the available parent categories for the received, usually the
-     * category itself and all the non root categories are excluded
+     * category itself and all the non root categories are excluded.
      *
-     * @param integer|null $categoryId The category id
+     * @param int|null $categoryId The category id
      *
      * @return QueryBuilder
      */

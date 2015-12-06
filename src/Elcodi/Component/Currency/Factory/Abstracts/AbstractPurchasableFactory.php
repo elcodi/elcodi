@@ -22,7 +22,7 @@ use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Wrapper\EmptyMoneyWrapper;
 
 /**
- * Class AbstractPurchasableFactory
+ * Class AbstractPurchasableFactory.
  *
  * Abstract factory for purchasable entities that need
  * a default currency to be properly initialized
@@ -37,7 +37,7 @@ abstract class AbstractPurchasableFactory extends AbstractFactory
     protected $emptyMoneyWrapper;
 
     /**
-     * Factory constructor
+     * Factory constructor.
      *
      * @param EmptyMoneyWrapper $emptyMoneyWrapper Empty money wrapper
      */
@@ -48,7 +48,7 @@ abstract class AbstractPurchasableFactory extends AbstractFactory
 
     /**
      * Returns a zero-initialized Money object
-     * to be assigned to product prices
+     * to be assigned to product prices.
      *
      * @return MoneyInterface
      */

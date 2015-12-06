@@ -21,7 +21,7 @@ use Elcodi\Component\Cart\Entity\OrderLine;
 use Elcodi\Component\Currency\Factory\Abstracts\AbstractPurchasableFactory;
 
 /**
- * Class OrderLine
+ * Class OrderLine.
  */
 class OrderLineFactory extends AbstractPurchasableFactory
 {

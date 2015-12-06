@@ -25,7 +25,7 @@ use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
 
 /**
- * Interface CouponInterface
+ * Interface CouponInterface.
  */
 interface CouponInterface
     extends
@@ -35,7 +35,7 @@ interface CouponInterface
     ValidIntervalInterface
 {
     /**
-     * Set code
+     * Set code.
      *
      * @param string $code Code
      *
@@ -44,14 +44,14 @@ interface CouponInterface
     public function setCode($code);
 
     /**
-     * Get code
+     * Get code.
      *
      * @return string Code
      */
     public function getCode();
 
     /**
-     * Set name coupon name
+     * Set name coupon name.
      *
      * @param string $name
      *
@@ -60,50 +60,52 @@ interface CouponInterface
     public function setName($name);
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
     public function getName();
 
     /**
-     * Set type
+     * Set type.
+     *
      * @see ElcodiCouponTypes::TYPE_AMOUNT
      * @see ElcodiCouponTypes::TYPE_PERCENT
      *
-     * @param integer $type Type
+     * @param int $type Type
      *
      * @return $this Self object
      */
     public function setType($type);
 
     /**
-     * Get type
+     * Get type.
      *
-     * @return integer Type
+     * @return int Type
      */
     public function getType();
 
     /**
-     * Sets Enforcement
+     * Sets Enforcement.
+     *
      * @see ElcodiCouponTypes::ENFORCEMENT_AUTOMATIC
      * @see ElcodiCouponTypes::ENFORCEMENT_MANUAL
      *
-     * @param integer $enforcement Enforcement
+     * @param int $enforcement Enforcement
      *
      * @return $this Self object
      */
     public function setEnforcement($enforcement);
 
     /**
-     * Get Enforcement
+     * Get Enforcement.
      *
-     * @return integer Enforcement
+     * @return int Enforcement
      */
     public function getEnforcement();
 
     /**
-     * Set price
+     * Set price.
      *
      * @param MoneyInterface $amount Price
      *
@@ -112,30 +114,30 @@ interface CouponInterface
     public function setPrice(MoneyInterface $amount);
 
     /**
-     * Get price
+     * Get price.
      *
      * @return MoneyInterface Price
      */
     public function getPrice();
 
     /**
-     * Set discount
+     * Set discount.
      *
-     * @param integer $discount Discount
+     * @param int $discount Discount
      *
      * @return $this Self object
      */
     public function setDiscount($discount);
 
     /**
-     * Get discount
+     * Get discount.
      *
-     * @return integer discount
+     * @return int discount
      */
     public function getDiscount();
 
     /**
-     * Set absolute price
+     * Set absolute price.
      *
      * @param MoneyInterface $amount Absolute Price
      *
@@ -144,62 +146,62 @@ interface CouponInterface
     public function setAbsolutePrice(MoneyInterface $amount);
 
     /**
-     * Get absolute price
+     * Get absolute price.
      *
      * @return MoneyInterface Absolute Price
      */
     public function getAbsolutePrice();
 
     /**
-     * Set count
+     * Set count.
      *
-     * @param integer $count
+     * @param int $count
      *
      * @return $this Self object
      */
     public function setCount($count);
 
     /**
-     * Get count
+     * Get count.
      *
-     * @return integer
+     * @return int
      */
     public function getCount();
 
     /**
-     * Set used
+     * Set used.
      *
-     * @param integer $used
+     * @param int $used
      *
      * @return $this Self object
      */
     public function setUsed($used);
 
     /**
-     * Get used
+     * Get used.
      *
-     * @return integer Number this coupon has been used
+     * @return int Number this coupon has been used
      */
     public function getUsed();
 
     /**
-     * Set priority
+     * Set priority.
      *
-     * @param integer $priority
+     * @param int $priority
      *
      * @return $this Self object
      */
     public function setPriority($priority);
 
     /**
-     * Get priority
+     * Get priority.
      *
-     * @return integer Number this coupon has been priority
+     * @return int Number this coupon has been priority
      */
     public function getPriority();
 
     /**
-     * Set minimum purchase
+     * Set minimum purchase.
      *
      * @param MoneyInterface $amount Absolute Price
      *
@@ -208,21 +210,21 @@ interface CouponInterface
     public function setMinimumPurchase(MoneyInterface $amount);
 
     /**
-     * Get minimum purchase
+     * Get minimum purchase.
      *
      * @return MoneyInterface Absolute Price
      */
     public function getMinimumPurchase();
 
     /**
-     * Get if this coupon can be used together with another coupon
+     * Get if this coupon can be used together with another coupon.
      *
      * @return int
      */
     public function getStackable();
 
     /**
-     * Set if this coupon can be used together with another coupon
+     * Set if this coupon can be used together with another coupon.
      *
      * @param int $stackable
      *
@@ -231,7 +233,7 @@ interface CouponInterface
     public function setStackable($stackable);
 
     /**
-     * Set rule Rule to check for applicability
+     * Set rule Rule to check for applicability.
      *
      * @param RuleInterface $rule New rule
      *
@@ -240,7 +242,7 @@ interface CouponInterface
     public function setRule(RuleInterface $rule);
 
     /**
-     * Get rule to check for applicability
+     * Get rule to check for applicability.
      *
      * @return RuleInterface Current rule
      */
@@ -248,7 +250,7 @@ interface CouponInterface
 
     /**
      * Increment used variable by one, and disables it if there are no more
-     * available units
+     * available units.
      *
      * @return $this Self object
      */

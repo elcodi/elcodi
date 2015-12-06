@@ -18,39 +18,39 @@
 namespace Elcodi\Component\Media\Entity\Interfaces;
 
 /**
- * Interface ImageInterface
+ * Interface ImageInterface.
  */
 interface ImageInterface extends FileInterface
 {
     /**
-     * Set image width in pixels
+     * Set image width in pixels.
      *
-     * @param integer $width Width
+     * @param int $width Width
      *
      * @return $this Self object
      */
     public function setWidth($width);
 
     /**
-     * Get image width in pixels
+     * Get image width in pixels.
      *
-     * @return integer
+     * @return int
      */
     public function getWidth();
 
     /**
-     * Set image height in pixels
+     * Set image height in pixels.
      *
-     * @param integer $width Width
+     * @param int $width Width
      *
      * @return $this Self object
      */
     public function setHeight($width);
 
     /**
-     * Get image height in pixels
+     * Get image height in pixels.
      *
-     * @return integer
+     * @return int
      */
     public function getHeight();
 }

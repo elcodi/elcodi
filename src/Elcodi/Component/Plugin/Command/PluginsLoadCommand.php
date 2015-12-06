@@ -24,7 +24,7 @@ use Elcodi\Component\Core\Command\Abstracts\AbstractElcodiCommand;
 use Elcodi\Component\Plugin\Services\PluginManager;
 
 /**
- * Class PluginsLoadCommand
+ * Class PluginsLoadCommand.
  */
 class PluginsLoadCommand extends AbstractElcodiCommand
 {
@@ -36,7 +36,7 @@ class PluginsLoadCommand extends AbstractElcodiCommand
     protected $pluginManager;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param PluginManager $pluginManager Plugin manager
      */
@@ -48,7 +48,7 @@ class PluginsLoadCommand extends AbstractElcodiCommand
     }
 
     /**
-     * configure
+     * configure.
      */
     protected function configure()
     {
@@ -62,12 +62,10 @@ class PluginsLoadCommand extends AbstractElcodiCommand
 
     /**
      * This command loads all the exchange rates from base_currency to all available
-     * currencies
+     * currencies.
      *
      * @param InputInterface  $input  The input interface
      * @param OutputInterface $output The output interface
-     *
-     * @return void
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {

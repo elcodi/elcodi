@@ -21,12 +21,12 @@ use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Currency\Entity\Currency;
 
 /**
- * Class CurrencyFactory
+ * Class CurrencyFactory.
  */
 class CurrencyFactory extends AbstractFactory
 {
     /**
-     * Creates an instance of Currency entity
+     * Creates an instance of Currency entity.
      *
      * @return Currency Empty entity
      */

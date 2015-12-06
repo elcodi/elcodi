@@ -22,17 +22,17 @@ use DateTime;
 use Elcodi\Component\Metric\Core\Entity\Entry;
 
 /**
- * Class EntryFactory
+ * Class EntryFactory.
  */
 class EntryFactory
 {
     /**
-     * Create entry
+     * Create entry.
      *
      * @param string   $token     Token
      * @param string   $event     Event
      * @param string   $uniqueId  Unique id
-     * @param integer  $type      Type
+     * @param int      $type      Type
      * @param DateTime $createdAt Created At
      *
      * @return Entry new entry instance

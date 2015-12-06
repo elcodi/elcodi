@@ -26,7 +26,7 @@ use Elcodi\Component\Cart\Factory\CartLineFactory;
 use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 
 /**
- * Cart manager service
+ * Cart manager service.
  *
  * This service hosts all cart and cartLine related actions.
  * This class has not states, so every method just has input parameters and
@@ -80,7 +80,7 @@ class CartManager
     private $cartLineFactory;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CartEventDispatcher     $cartEventDispatcher     Cart Event Dispatcher
      * @param CartLineEventDispatcher $cartLineEventDispatcher CartLine Event dispatcher
@@ -100,7 +100,7 @@ class CartManager
     }
 
     /**
-     * Removes CartLine from Cart
+     * Removes CartLine from Cart.
      *
      * This method dispatches all Cart Load events, if defined.
      * If this method is called in CartCheckEvents, $dispatchEvents should be
@@ -125,7 +125,7 @@ class CartManager
     }
 
     /**
-     * Removes CartLine from Cart
+     * Removes CartLine from Cart.
      *
      * @param CartInterface     $cart     Cart
      * @param CartLineInterface $cartLine Cart line
@@ -178,7 +178,7 @@ class CartManager
     }
 
     /**
-     * Edit CartLine
+     * Edit CartLine.
      *
      * The line is updated only if it belongs to a Cart
      *
@@ -186,7 +186,7 @@ class CartManager
      *
      * @param CartLineInterface    $cartLine    Cart line
      * @param PurchasableInterface $purchasable purchasable to be edited
-     * @param integer              $quantity    item quantity
+     * @param int                  $quantity    item quantity
      *
      * @return $this Self object
      */
@@ -208,14 +208,14 @@ class CartManager
     }
 
     /**
-     * Adds quantity to cartLine
+     * Adds quantity to cartLine.
      *
      * If quantity is higher than item stock, throw exception
      *
      * This method dispatches all Cart Check and Load events
      *
      * @param CartLineInterface $cartLine Cart line
-     * @param integer           $quantity Number of units to decrease CartLine quantity
+     * @param int               $quantity Number of units to decrease CartLine quantity
      *
      * @return $this Self object
      */
@@ -236,14 +236,14 @@ class CartManager
     }
 
     /**
-     * Removes quantity to cartLine
+     * Removes quantity to cartLine.
      *
      * If quantity is 0, deletes whole line
      *
      * This method dispatches all Cart Check and Load events
      *
      * @param CartLineInterface $cartLine Cart line
-     * @param integer           $quantity Number of units to decrease CartLine quantity
+     * @param int               $quantity Number of units to decrease CartLine quantity
      *
      * @return $this Self object
      */
@@ -262,14 +262,14 @@ class CartManager
     }
 
     /**
-     * Sets quantity to cartLine
+     * Sets quantity to cartLine.
      *
      * If quantity is higher than item stock, throw exception
      *
      * This method dispatches all Cart Check and Load events
      *
      * @param CartLineInterface $cartLine Cart line
-     * @param integer           $quantity CartLine quantity to set
+     * @param int               $quantity CartLine quantity to set
      *
      * @return $this Self object
      */
@@ -307,7 +307,7 @@ class CartManager
 
             /**
              * Nothing to do here. Quantity value is not an integer, so will not
-             * be treated as such
+             * be treated as such.
              */
 
             return $this;
@@ -321,7 +321,7 @@ class CartManager
     }
 
     /**
-     * Add a Purchasable to Cart as a new CartLine
+     * Add a Purchasable to Cart as a new CartLine.
      *
      * This method creates a new CartLine and set item quantity
      * correspondingly.
@@ -331,7 +331,7 @@ class CartManager
      *
      * @param CartInterface        $cart        Cart
      * @param PurchasableInterface $purchasable Product or Variant to add
-     * @param integer              $quantity    Number of units to set or increase
+     * @param int                  $quantity    Number of units to set or increase
      *
      * @return $this Self object
      */
@@ -342,7 +342,7 @@ class CartManager
     ) {
         /**
          * If quantity is not a number or is 0 or less, product is not added
-         * into cart
+         * into cart.
          */
         if (!is_int($quantity) || $quantity <= 0) {
             return $this;
@@ -359,7 +359,7 @@ class CartManager
             ) {
 
                 /**
-                 * Product already in the Cart, increase quantity
+                 * Product already in the Cart, increase quantity.
                  */
 
                 return $this->increaseCartLineQuantity($cartLine, $quantity);
@@ -377,7 +377,7 @@ class CartManager
     }
 
     /**
-     * Remove a Purchasable from Cart
+     * Remove a Purchasable from Cart.
      *
      * This method removes a Purchasable from the Cart.
      *
@@ -386,7 +386,7 @@ class CartManager
      *
      * @param CartInterface        $cart        Cart
      * @param PurchasableInterface $purchasable Product or Variant to add
-     * @param integer              $quantity    Number of units to set or increase
+     * @param int                  $quantity    Number of units to set or increase
      *
      * @return $this Self object
      */
@@ -397,7 +397,7 @@ class CartManager
     ) {
         /**
          * If quantity is not a number or is 0 or less, product is not removed
-         * from cart
+         * from cart.
          */
         if (!is_int($quantity) || $quantity <= 0) {
             return $this;
@@ -412,7 +412,7 @@ class CartManager
                 ($cartLine->getPurchasable()->getId() == $purchasable->getId())
             ) {
                 /**
-                 * Product already in the Cart, decrease quantity
+                 * Product already in the Cart, decrease quantity.
                  */
 
                 return $this->decreaseCartLineQuantity($cartLine, $quantity);
@@ -423,7 +423,7 @@ class CartManager
     }
 
     /**
-     * Add a Purchasable to Cart as a new CartLine
+     * Add a Purchasable to Cart as a new CartLine.
      *
      * This method creates a new CartLine and set item quantity
      * correspondingly.
@@ -435,7 +435,7 @@ class CartManager
      *
      * @param CartInterface        $cart        Cart
      * @param PurchasableInterface $purchasable Product or Variant to add
-     * @param integer              $quantity    Number of units to set or increase
+     * @param int                  $quantity    Number of units to set or increase
      *
      * @return $this Self object
      */
@@ -457,7 +457,7 @@ class CartManager
     }
 
     /**
-     * Remove a Purchasable from Cart
+     * Remove a Purchasable from Cart.
      *
      * This method removes a Purchasable from the Cart.
      *
@@ -468,7 +468,7 @@ class CartManager
      *
      * @param CartInterface        $cart        Cart
      * @param PurchasableInterface $purchasable Product or Variant to add
-     * @param integer              $quantity    Number of units to set or increase
+     * @param int                  $quantity    Number of units to set or increase
      *
      * @return $this Self object
      */
@@ -490,7 +490,7 @@ class CartManager
     }
 
     /**
-     * Adds cartLine to Cart
+     * Adds cartLine to Cart.
      *
      * This method dispatches all Cart Check and Load events
      * It should NOT be used to add a Purchasable to a Cart,

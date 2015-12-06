@@ -27,7 +27,7 @@ use Elcodi\Bundle\ProductBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\ProductBundle\DependencyInjection\ElcodiProductExtension;
 
 /**
- * ElcodiProductBundle Bundle
+ * ElcodiProductBundle Bundle.
  */
 class ElcodiProductBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
@@ -52,7 +52,7 @@ class ElcodiProductBundle extends AbstractElcodiBundle implements DependentBundl
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */
