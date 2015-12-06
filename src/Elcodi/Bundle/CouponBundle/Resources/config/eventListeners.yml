@@ -6,6 +6,6 @@ services:
     elcodi.event_listener.make_coupon_used:
         class: Elcodi\Component\Coupon\EventListener\MakeCouponUsedEventListener
         arguments:
-            - @elcodi.object_manager.coupon
+            - '@elcodi.object_manager.coupon'
         tags:
             - { name: kernel.event_listener, event: coupon.onused, method: makeUse, priority: 0 }

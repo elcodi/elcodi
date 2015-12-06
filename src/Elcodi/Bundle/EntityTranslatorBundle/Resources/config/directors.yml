@@ -7,6 +7,6 @@ services:
         class: Elcodi\Component\Core\Services\ObjectDirector
         lazy: true
         arguments:
-            - @elcodi.object_manager.entity_translation
-            - @elcodi.repository.entity_translation
-            - @elcodi.factory.entity_translation
+            - '@elcodi.object_manager.entity_translation'
+            - '@elcodi.repository.entity_translation'
+            - '@elcodi.factory.entity_translation'

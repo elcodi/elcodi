@@ -9,7 +9,7 @@ Elcodi\Component\Configuration\Entity\Configuration:
             length: 255
             nullable: false
         key:
-            column: `key`
+            column: '`key`'
             type: string
             length: 255
             nullable: false

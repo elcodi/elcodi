@@ -6,7 +6,7 @@ services:
     elcodi.adapter.menu_route_generator.symfony_routing:
         class: Elcodi\Component\Menu\Adapter\RouteGenerator\SymfonyRouteGeneratorAdapter
         arguments:
-            - @router
+            - '@router'
 
     elcodi.adapter.menu_route_generator:
         alias: elcodi.adapter.menu_route_generator.symfony_routing

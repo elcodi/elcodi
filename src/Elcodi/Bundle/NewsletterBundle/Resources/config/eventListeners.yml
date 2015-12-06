@@ -6,7 +6,7 @@ services:
     elcodi.event_listener.newsletter:
         class: Elcodi\Component\Newsletter\EventListener\NewsletterEventListener
         arguments:
-            - @elcodi.object_manager.newsletter_subscription
+            - '@elcodi.object_manager.newsletter_subscription'
         tags:
             - { name: kernel.event_listener, event: newsletter.onsubscribe, method: onNewsletterSubscribeFlush, priority: 0 }
             - { name: kernel.event_listener, event: newsletter.onunsubscribe, method: onNewsletterUnsubscribeFlush, priority: 0 }

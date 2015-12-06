@@ -6,13 +6,13 @@ services:
     elcodi.provider.category_tree:
         class: Elcodi\Component\Product\Services\CategoryTree
         arguments:
-            - @elcodi.repository.category
+            - '@elcodi.repository.category'
 
     elcodi.provider.product_collection:
         class: Elcodi\Component\Product\Services\ProductCollectionProvider
         arguments:
-            - @elcodi.repository.product
-            - @elcodi.store_uses_stock
+            - '@elcodi.repository.product'
+            - '@elcodi.store_uses_stock'
 
     elcodi.service.category_integrity_fixer:
         class: Elcodi\Component\Product\Services\CategoryIntegrityFixer

@@ -6,10 +6,10 @@ services:
     elcodi.manager.plugin:
         class: Elcodi\Component\Plugin\Services\PluginManager
         arguments:
-            - @kernel
-            - @elcodi.repository.plugin
-            - @elcodi.object_manager.plugin
-            - @elcodi.loader.plugin
+            - '@kernel'
+            - '@elcodi.repository.plugin'
+            - '@elcodi.object_manager.plugin'
+            - '@elcodi.loader.plugin'
 
     elcodi.loader.plugin:
         class: Elcodi\Component\Plugin\Services\PluginLoader
@@ -20,8 +20,8 @@ services:
     elcodi.loader.plugin_routes:
         class: Elcodi\Component\Plugin\Loader\RouterLoader
         arguments:
-            - @kernel
-            - @elcodi.plugins
+            - '@kernel'
+            - '@elcodi.plugins'
         tags:
             - { name: routing.loader }
 
@@ -31,7 +31,7 @@ services:
     elcodi.enabled_plugins:
         class: StdClass
         factory:
-            - @elcodi.repository.plugin
+            - '@elcodi.repository.plugin'
             - findBy
         arguments:
             - {enabled: true}
@@ -39,12 +39,12 @@ services:
     elcodi.plugins:
         class: StdClass
         factory:
-            - @elcodi.repository.plugin
+            - '@elcodi.repository.plugin'
             - findAll
 
     elcodi.abstract_plugin:
         abstract: true
         class: Elcodi\Component\Plugin\Entity\Plugin
         factory:
-            - @elcodi.repository.plugin
+            - '@elcodi.repository.plugin'
             - findOneByNamespace

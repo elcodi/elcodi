@@ -6,20 +6,20 @@ services:
     elcodi.manager.media_image:
         class: Elcodi\Component\Media\Services\ImageManager
         arguments:
-            - @elcodi.factory.image
-            - @elcodi.manager.media_file
-            - @elcodi.media_resize_adapter
+            - '@elcodi.factory.image'
+            - '@elcodi.manager.media_file'
+            - '@elcodi.media_resize_adapter'
 
     elcodi.manager.media_file:
         class: Elcodi\Component\Media\Services\FileManager
         arguments:
-            - @elcodi.media_filesystem
-            - @elcodi.transformer.media_file_identifier
+            - '@elcodi.media_filesystem'
+            - '@elcodi.transformer.media_file_identifier'
 
     elcodi.uploader.image:
         class: Elcodi\Component\Media\Services\ImageUploader
         arguments:
-            - @elcodi.object_manager.image
-            - @elcodi.manager.media_file
-            - @elcodi.manager.media_image
-            - @elcodi.event_dispatcher.media
+            - '@elcodi.object_manager.image'
+            - '@elcodi.manager.media_file'
+            - '@elcodi.manager.media_image'
+            - '@elcodi.event_dispatcher.media'

@@ -7,6 +7,6 @@ services:
         class: Elcodi\Component\Core\Services\ObjectDirector
         lazy: true
         arguments:
-            - @elcodi.object_manager.tax
-            - @elcodi.repository.tax
-            - @elcodi.factory.tax
+            - '@elcodi.object_manager.tax'
+            - '@elcodi.repository.tax'
+            - '@elcodi.factory.tax'

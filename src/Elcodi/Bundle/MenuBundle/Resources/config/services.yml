@@ -6,12 +6,12 @@ services:
     elcodi.manager.menu:
         class: Elcodi\Component\Menu\Services\MenuManager
         arguments:
-            - @elcodi.repository.menu
-            - @elcodi.object_manager.menu
+            - '@elcodi.repository.menu'
+            - '@elcodi.object_manager.menu'
             - %elcodi.menu_cache_key%
         calls:
-            - [setCache, [@doctrine_cache.providers.elcodi_menus]]
-            - [setEncoder, [@elcodi.php_encoder]]
+            - [setCache, ['@doctrine_cache.providers.elcodi_menus']]
+            - [setEncoder, ['@elcodi.php_encoder']]
 
     elcodi.menu_builder:
         class: Elcodi\Component\Menu\Services\MenuBuilder

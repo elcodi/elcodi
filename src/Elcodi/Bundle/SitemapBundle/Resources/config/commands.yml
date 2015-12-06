@@ -6,13 +6,13 @@ services:
     elcodi.command.sitemap_dump:
         class: Elcodi\Component\Sitemap\Command\SitemapDumpCommand
         arguments:
-            - @service_container
+            - '@service_container'
         tags:
             -  { name: console.command }
 
     elcodi.command.sitemap_profile:
         class: Elcodi\Component\Sitemap\Command\SitemapProfileCommand
         arguments:
-            - @service_container
+            - '@service_container'
         tags:
             -  { name: console.command }

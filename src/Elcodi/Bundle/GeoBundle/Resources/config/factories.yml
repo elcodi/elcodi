@@ -24,4 +24,4 @@ services:
     elcodi.factory.address_view:
         class: Elcodi\Component\Geo\Factory\AddressViewFactory
         arguments:
-            - @elcodi.location_provider
+            - '@elcodi.location_provider'

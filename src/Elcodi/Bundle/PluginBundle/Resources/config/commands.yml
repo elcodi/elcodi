@@ -6,22 +6,22 @@ services:
     elcodi.command.plugins_load:
         class: Elcodi\Component\Plugin\Command\PluginsLoadCommand
         arguments:
-            - @elcodi.manager.plugin
+            - '@elcodi.manager.plugin'
         tags:
             - { name: console.command }
 
     elcodi.command.plugins_list:
         class: Elcodi\Component\Plugin\Command\PluginsListCommand
         arguments:
-            - @elcodi.repository.plugin
+            - '@elcodi.repository.plugin'
         tags:
             - { name: console.command }
 
     elcodi.command.plugin_enable_abstract:
         abstract: true
         arguments:
-            - @elcodi.repository.plugin
-            - @elcodi.object_manager.plugin
+            - '@elcodi.repository.plugin'
+            - '@elcodi.object_manager.plugin'
 
     elcodi.command.plugin_enable:
         class: Elcodi\Component\Plugin\Command\PluginEnableCommand

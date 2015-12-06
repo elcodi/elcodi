@@ -7,14 +7,14 @@ services:
         class: Elcodi\Component\Core\Services\ObjectDirector
         lazy: true
         arguments:
-            - @elcodi.object_manager.menu_node
-            - @elcodi.repository.menu_node
-            - @elcodi.factory.menu_node
+            - '@elcodi.object_manager.menu_node'
+            - '@elcodi.repository.menu_node'
+            - '@elcodi.factory.menu_node'
 
     elcodi.director.menu:
         class: Elcodi\Component\Core\Services\ObjectDirector
         lazy: true
         arguments:
-            - @elcodi.object_manager.menu
-            - @elcodi.repository.menu
-            - @elcodi.factory.menu
+            - '@elcodi.object_manager.menu'
+            - '@elcodi.repository.menu'
+            - '@elcodi.factory.menu'

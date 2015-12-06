@@ -6,13 +6,13 @@ services:
     elcodi.twig_extension.product:
         class: Elcodi\Component\Product\Twig\ProductExtension
         arguments:
-            - @elcodi.resolver.product_options
+            - '@elcodi.resolver.product_options'
         tags:
             - { name: twig.extension }
 
     elcodi.twig_extension.purchasable:
         class: Elcodi\Component\Product\Twig\PurchasableExtension
         arguments:
-            - @elcodi.resolver.purchasable_name
+            - '@elcodi.resolver.purchasable_name'
         tags:
             - { name: twig.extension }

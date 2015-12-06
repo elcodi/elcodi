@@ -6,11 +6,11 @@ services:
     elcodi.wrapper.customer:
         class: Elcodi\Component\User\Wrapper\CustomerWrapper
         arguments:
-            - @elcodi.factory.customer
-            - @?security.token_storage
+            - '@elcodi.factory.customer'
+            - '@?security.token_storage'
 
     elcodi.wrapper.admin_user:
         class: Elcodi\Component\User\Wrapper\AdminUserWrapper
         arguments:
-            - @elcodi.factory.admin_user
-            - @?security.token_storage
+            - '@elcodi.factory.admin_user'
+            - '@?security.token_storage'

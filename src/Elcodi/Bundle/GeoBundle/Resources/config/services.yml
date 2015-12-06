@@ -6,25 +6,25 @@ services:
     elcodi.location_builder:
         class: Elcodi\Component\Geo\Services\LocationBuilder
         arguments:
-            - @elcodi.factory.location
+            - '@elcodi.factory.location'
 
     elcodi.location_populator:
         class: Elcodi\Component\Geo\Services\LocationPopulator
         arguments:
-            - @elcodi.location_populator_adapter
-            - @elcodi.object_manager.location
+            - '@elcodi.location_populator_adapter'
+            - '@elcodi.object_manager.location'
 
     elcodi.location_loader:
         class: Elcodi\Component\Geo\Services\LocationLoader
         arguments:
-            - @elcodi.object_manager.location
-            - @elcodi.location_loader_adapter
+            - '@elcodi.object_manager.location'
+            - '@elcodi.location_loader_adapter'
 
     elcodi.manager.address:
         class: Elcodi\Component\Geo\Services\AddressManager
         arguments:
-            - @elcodi.object_manager.address
-            - @elcodi.event_dispatcher.address
+            - '@elcodi.object_manager.address'
+            - '@elcodi.event_dispatcher.address'
 
 
     elcodi.location_api_urls:

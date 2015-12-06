@@ -6,4 +6,4 @@ services:
     elcodi.wrapper.shipping_methods:
         class: Elcodi\Component\Shipping\Wrapper\ShippingWrapper
         arguments:
-            - @elcodi.event_dispatcher.shipping
+            - '@elcodi.event_dispatcher.shipping'

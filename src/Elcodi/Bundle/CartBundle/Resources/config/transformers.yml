@@ -6,12 +6,12 @@ services:
     elcodi.transformer.cart_order:
         class: Elcodi\Component\Cart\Transformer\CartOrderTransformer
         arguments:
-            - @elcodi.event_dispatcher.order
-            - @elcodi.transformer.cart_line_order_line
-            - @elcodi.factory.order
+            - '@elcodi.event_dispatcher.order'
+            - '@elcodi.transformer.cart_line_order_line'
+            - '@elcodi.factory.order'
 
     elcodi.transformer.cart_line_order_line:
         class: Elcodi\Component\Cart\Transformer\CartLineOrderLineTransformer
         arguments:
-            - @elcodi.event_dispatcher.order_line
-            - @elcodi.factory.order_line
+            - '@elcodi.event_dispatcher.order_line'
+            - '@elcodi.factory.order_line'

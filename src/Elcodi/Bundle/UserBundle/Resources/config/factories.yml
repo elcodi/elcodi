@@ -12,7 +12,7 @@ services:
         calls:
             - [setEntityNamespace, ["%elcodi.entity.customer.class%"]]
             - [setDateTimeFactory, ["@elcodi.factory.datetime"]]
-            - [setGenerator, [@elcodi.generator.random_string]]
+            - [setGenerator, ['@elcodi.generator.random_string']]
 
     #
     # Factory for entity admin user
@@ -22,4 +22,4 @@ services:
         calls:
             - [setEntityNamespace, ["%elcodi.entity.admin_user.class%"]]
             - [setDateTimeFactory, ["@elcodi.factory.datetime"]]
-            - [setGenerator, [@elcodi.generator.random_string]]
+            - [setGenerator, ['@elcodi.generator.random_string']]

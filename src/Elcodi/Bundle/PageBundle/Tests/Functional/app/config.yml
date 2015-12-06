@@ -1,2 +1,2 @@
 imports:
-    - { resource: @ElcodiCoreBundle/Resources/config/test/configuration.test.yml }
+    - { resource: '@ElcodiCoreBundle/Resources/config/test/configuration.test.yml' }

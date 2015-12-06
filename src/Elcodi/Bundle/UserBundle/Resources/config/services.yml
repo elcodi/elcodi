@@ -6,17 +6,17 @@ services:
     elcodi.manager.password:
         class: Elcodi\Component\User\Services\PasswordManager
         arguments:
-            - @doctrine.orm.entity_manager
-            - @router
-            - @elcodi.event_dispatcher.password
-            - @elcodi.generator.sha1
+            - '@doctrine.orm.entity_manager'
+            - '@router'
+            - '@elcodi.event_dispatcher.password'
+            - '@elcodi.generator.sha1'
 
     elcodi.manager.customer:
         class: Elcodi\Component\User\Services\CustomerManager
         arguments:
-            - @elcodi.event_dispatcher.user
+            - '@elcodi.event_dispatcher.user'
 
     elcodi.manager.admin_user:
         class: Elcodi\Component\User\Services\AdminUserManager
         arguments:
-            - @elcodi.event_dispatcher.user
+            - '@elcodi.event_dispatcher.user'

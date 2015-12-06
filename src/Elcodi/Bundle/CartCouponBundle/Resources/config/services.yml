@@ -6,16 +6,16 @@ services:
     elcodi.manager.cart_coupon:
         class: Elcodi\Component\CartCoupon\Services\CartCouponManager
         arguments:
-            - @elcodi.event_dispatcher.cart_coupon
-            - @elcodi.repository.coupon
-            - @elcodi.director.cart_coupon
-            - @elcodi.repository.cart_coupon
+            - '@elcodi.event_dispatcher.cart_coupon'
+            - '@elcodi.repository.coupon'
+            - '@elcodi.director.cart_coupon'
+            - '@elcodi.repository.cart_coupon'
 
     elcodi.truncator.order_coupon:
         class: Elcodi\Component\CartCoupon\Services\OrderCouponTruncator
         arguments:
-            - @elcodi.repository.order_coupon
-            - @elcodi.object_manager.order_coupon
+            - '@elcodi.repository.order_coupon'
+            - '@elcodi.object_manager.order_coupon'
 
     #
     # Applicators
@@ -23,8 +23,8 @@ services:
     elcodi.applicator.automatic_coupon:
         class: Elcodi\Component\CartCoupon\Services\AutomaticCouponApplicator
         arguments:
-            - @elcodi.manager.cart_coupon
-            - @elcodi.repository.coupon
+            - '@elcodi.manager.cart_coupon'
+            - '@elcodi.repository.coupon'
 
     #
     # Loaders
@@ -32,9 +32,9 @@ services:
     elcodi.loader.cart_coupon_prices:
         class: Elcodi\Component\CartCoupon\Services\CartCouponPricesLoader
         arguments:
-            - @elcodi.manager.cart_coupon
-            - @elcodi.wrapper.currency
-            - @elcodi.converter.currency
+            - '@elcodi.manager.cart_coupon'
+            - '@elcodi.wrapper.currency'
+            - '@elcodi.converter.currency'
 
     #
     # Validator
@@ -42,26 +42,26 @@ services:
     elcodi.validator.cart_coupon_minimum_price:
         class: Elcodi\Component\CartCoupon\Services\CartCouponMinimumPriceValidator
         arguments:
-            - @elcodi.converter.currency
+            - '@elcodi.converter.currency'
 
     elcodi.validator.cart_coupon_rule:
         class: Elcodi\Component\CartCoupon\Services\CartCouponRuleValidator
         arguments:
-            - @elcodi.manager.rule
+            - '@elcodi.manager.rule'
 
     elcodi.validator.cart_coupon:
         class: Elcodi\Component\CartCoupon\Services\CartCouponValidator
         arguments:
-            - @elcodi.manager.cart_coupon
-            - @elcodi.manager.coupon
-            - @elcodi.event_dispatcher.cart_coupon
+            - '@elcodi.manager.cart_coupon'
+            - '@elcodi.manager.coupon'
+            - '@elcodi.event_dispatcher.cart_coupon'
 
     elcodi.validator.duplicated_coupon:
         class: Elcodi\Component\CartCoupon\Services\DuplicatedCouponValidator
         arguments:
-            - @elcodi.repository.cart_coupon
+            - '@elcodi.repository.cart_coupon'
 
     elcodi.validator.stackable_coupon:
         class: Elcodi\Component\CartCoupon\Services\StackableCouponValidator
         arguments:
-            - @elcodi.repository.cart_coupon
+            - '@elcodi.repository.cart_coupon'

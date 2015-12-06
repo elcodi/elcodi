@@ -7,14 +7,14 @@ services:
         class: Elcodi\Component\Core\Services\ObjectDirector
         lazy: true
         arguments:
-            - @elcodi.object_manager.address
-            - @elcodi.repository.address
-            - @elcodi.factory.address
+            - '@elcodi.object_manager.address'
+            - '@elcodi.repository.address'
+            - '@elcodi.factory.address'
 
     elcodi.director.location:
         class: Elcodi\Component\Core\Services\ObjectDirector
         lazy: true
         arguments:
-            - @elcodi.object_manager.location
-            - @elcodi.repository.location
-            - @elcodi.factory.location
+            - '@elcodi.object_manager.location'
+            - '@elcodi.repository.location'
+            - '@elcodi.factory.location'

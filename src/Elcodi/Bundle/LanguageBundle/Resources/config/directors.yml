@@ -7,6 +7,6 @@ services:
         class: Elcodi\Component\Core\Services\ObjectDirector
         lazy: true
         arguments:
-            - @elcodi.object_manager.language
-            - @elcodi.repository.language
-            - @elcodi.factory.language
+            - '@elcodi.object_manager.language'
+            - '@elcodi.repository.language'
+            - '@elcodi.factory.language'

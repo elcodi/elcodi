@@ -7,14 +7,14 @@ services:
         class: Elcodi\Component\Core\Services\ObjectDirector
         lazy: true
         arguments:
-            - @elcodi.object_manager.comment
-            - @elcodi.repository.comment
-            - @elcodi.factory.comment
+            - '@elcodi.object_manager.comment'
+            - '@elcodi.repository.comment'
+            - '@elcodi.factory.comment'
 
     elcodi.director.comment_vote:
         class: Elcodi\Component\Core\Services\ObjectDirector
         lazy: true
         arguments:
-            - @elcodi.object_manager.comment_vote
-            - @elcodi.repository.comment_vote
-            - @elcodi.factory.comment_vote
+            - '@elcodi.object_manager.comment_vote'
+            - '@elcodi.repository.comment_vote'
+            - '@elcodi.factory.comment_vote'

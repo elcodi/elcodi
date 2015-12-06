@@ -6,4 +6,4 @@ services:
     elcodi.wrapper.payment_methods:
         class: Elcodi\Component\Payment\Wrapper\PaymentWrapper
         arguments:
-            - @elcodi.event_dispatcher.payment
+            - '@elcodi.event_dispatcher.payment'

@@ -6,19 +6,19 @@ services:
     elcodi.controller.image_resize:
         class: Elcodi\Component\Media\Controller\ImageResizeController
         arguments:
-            - @request_stack
-            - @elcodi.repository.image
-            - @elcodi.manager.media_image
-            - @elcodi.transformer.media_image_etag
+            - '@request_stack'
+            - '@elcodi.repository.image'
+            - '@elcodi.manager.media_image'
+            - '@elcodi.transformer.media_image_etag'
             - %elcodi.image_view_max_age%
             - %elcodi.image_view_shared_max_age%
 
     elcodi.controller.image_upload:
         class: Elcodi\Component\Media\Controller\ImageUploadController
         arguments:
-            - @request_stack
-            - @elcodi.uploader.image
-            - @router
+            - '@request_stack'
+            - '@elcodi.uploader.image'
+            - '@router'
             - %elcodi.image_upload_field_name%
             - elcodi.route.image_view
             - elcodi.route.image_resize

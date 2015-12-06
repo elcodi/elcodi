@@ -6,84 +6,84 @@ services:
     elcodi.store:
         class: Elcodi\Component\Store\Entity\Interfaces\StoreInterface
         factory:
-            - @elcodi.wrapper.store
+            - '@elcodi.wrapper.store'
             - get
 
     elcodi.store_uses_stock:
         class: StdClass
         public: false
         factory:
-            - @elcodi.store
+            - '@elcodi.store'
             - getUseStock
 
     elcodi.store_tracker:
         class: StdClass
         public: false
         factory:
-            - @elcodi.store
+            - '@elcodi.store'
             - getTracker
 
     elcodi.store_address:
         class: %elcodi.entity.address.class%
         public: false
         factory:
-            - @elcodi.store
+            - '@elcodi.store'
             - getAddress
 
     elcodi.store_template_hash:
         class: StdClass
         public: false
         factory:
-            - @elcodi.store
+            - '@elcodi.store'
             - getTemplate
 
     elcodi.store_template:
         class: Elcodi\Component\Plugin\Entity\Plugin
         public: false
         factory:
-            - @elcodi.repository.plugin
+            - '@elcodi.repository.plugin'
             - findOneBy
         arguments:
-            - { hash: @elcodi.store_template_hash }
+            - { hash: '@elcodi.store_template_hash' }
 
     elcodi.store_template_bundle:
         class: StdClass
         public: false
         factory:
-            - @elcodi.store_template
+            - '@elcodi.store_template'
             - getBundleName
 
     elcodi.store_default_language:
         class: Elcodi\Component\Language\Entity\Interfaces\LanguageInterface
         public: false
         factory:
-            - @elcodi.store
+            - '@elcodi.store'
             - getDefaultLanguage
 
     elcodi.store_default_language_iso:
         class: StdClass
         public: false
         factory:
-            - @elcodi.store_default_language
+            - '@elcodi.store_default_language'
             - getIso
 
     elcodi.store_routing_strategy:
         class: StdClass
         public: false
         factory:
-            - @elcodi.store
+            - '@elcodi.store'
             - getRoutingStrategy
 
     elcodi.store_default_currency:
         class: Elcodi\Component\Language\Entity\Interfaces\CurrencyInterface
         public: false
         factory:
-            - @elcodi.store
+            - '@elcodi.store'
             - getDefaultCurrency
 
     elcodi.store_default_currency_iso:
         class: StdClass
         public: false
         factory:
-            - @elcodi.store_default_currency
+            - '@elcodi.store_default_currency'
             - getIso

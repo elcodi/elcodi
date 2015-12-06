@@ -6,4 +6,4 @@ services:
     elcodi.transformer.location_to_location_data:
         class: Elcodi\Component\Geo\Transformer\LocationToLocationDataTransformer
         arguments:
-            - @elcodi.factory.location_data
+            - '@elcodi.factory.location_data'

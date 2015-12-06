@@ -6,4 +6,4 @@ services:
     elcodi.resolver.shipping:
         class: Elcodi\Component\Shipping\Resolver\ShippingResolver
         arguments:
-            - @elcodi.converter.currency
+            - '@elcodi.converter.currency'

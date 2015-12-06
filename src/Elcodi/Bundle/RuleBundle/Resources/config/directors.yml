@@ -7,6 +7,6 @@ services:
         class: Elcodi\Component\Core\Services\ObjectDirector
         lazy: true
         arguments:
-            - @elcodi.object_manager.rule
-            - @elcodi.repository.rule
-            - @elcodi.factory.rule
+            - '@elcodi.object_manager.rule'
+            - '@elcodi.repository.rule'
+            - '@elcodi.factory.rule'
