@@ -25,7 +25,7 @@ use Elcodi\Component\Geo\Adapter\LocationProvider\Interfaces\LocationProviderAda
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
- * Class CityExistsValidator
+ * Class CityExistsValidator.
  */
 class CityExistsValidator extends ConstraintValidator
 {

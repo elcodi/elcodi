@@ -23,7 +23,7 @@ use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 
 /**
- * Class Address
+ * Class Address.
  */
 class Address implements AddressInterface
 {
@@ -100,7 +100,7 @@ class Address implements AddressInterface
     protected $postalCode;
 
     /**
-     * Sets Address
+     * Sets Address.
      *
      * @param string $address Address
      *
@@ -114,7 +114,7 @@ class Address implements AddressInterface
     }
 
     /**
-     * Get Address
+     * Get Address.
      *
      * @return string Address
      */
@@ -124,7 +124,7 @@ class Address implements AddressInterface
     }
 
     /**
-     * Sets AddressMore
+     * Sets AddressMore.
      *
      * @param string $addressMore AddressMore
      *
@@ -138,7 +138,7 @@ class Address implements AddressInterface
     }
 
     /**
-     * Get AddressMore
+     * Get AddressMore.
      *
      * @return string AddressMore
      */
@@ -148,7 +148,7 @@ class Address implements AddressInterface
     }
 
     /**
-     * Sets Comments
+     * Sets Comments.
      *
      * @param string $comments Comments
      *
@@ -162,7 +162,7 @@ class Address implements AddressInterface
     }
 
     /**
-     * Get Comments
+     * Get Comments.
      *
      * @return string Comments
      */
@@ -172,7 +172,7 @@ class Address implements AddressInterface
     }
 
     /**
-     * Sets Mobile
+     * Sets Mobile.
      *
      * @param string $mobile Mobile
      *
@@ -186,7 +186,7 @@ class Address implements AddressInterface
     }
 
     /**
-     * Get Mobile
+     * Get Mobile.
      *
      * @return string Mobile
      */
@@ -196,7 +196,7 @@ class Address implements AddressInterface
     }
 
     /**
-     * Sets Name
+     * Sets Name.
      *
      * @param string $name Name
      *
@@ -210,7 +210,7 @@ class Address implements AddressInterface
     }
 
     /**
-     * Get Name
+     * Get Name.
      *
      * @return string Name
      */
@@ -220,7 +220,7 @@ class Address implements AddressInterface
     }
 
     /**
-     * Sets Phone
+     * Sets Phone.
      *
      * @param string $phone Phone
      *
@@ -234,7 +234,7 @@ class Address implements AddressInterface
     }
 
     /**
-     * Get Phone
+     * Get Phone.
      *
      * @return string Phone
      */
@@ -244,7 +244,7 @@ class Address implements AddressInterface
     }
 
     /**
-     * Sets RecipientName
+     * Sets RecipientName.
      *
      * @param string $recipientName RecipientName
      *
@@ -258,7 +258,7 @@ class Address implements AddressInterface
     }
 
     /**
-     * Get RecipientName
+     * Get RecipientName.
      *
      * @return string RecipientName
      */
@@ -268,7 +268,7 @@ class Address implements AddressInterface
     }
 
     /**
-     * Sets RecipientSurname
+     * Sets RecipientSurname.
      *
      * @param string $recipientSurname RecipientSurname
      *
@@ -282,7 +282,7 @@ class Address implements AddressInterface
     }
 
     /**
-     * Get RecipientSurname
+     * Get RecipientSurname.
      *
      * @return string RecipientSurname
      */
@@ -292,7 +292,7 @@ class Address implements AddressInterface
     }
 
     /**
-     * Sets City
+     * Sets City.
      *
      * @param string $city City
      *
@@ -306,7 +306,7 @@ class Address implements AddressInterface
     }
 
     /**
-     * Get City
+     * Get City.
      *
      * @return string City
      */
@@ -316,7 +316,7 @@ class Address implements AddressInterface
     }
 
     /**
-     * Sets Postalcode
+     * Sets Postalcode.
      *
      * @param string $postalCode Postalcode
      *
@@ -330,7 +330,7 @@ class Address implements AddressInterface
     }
 
     /**
-     * Get Postalcode
+     * Get Postalcode.
      *
      * @return string Postalcode
      */

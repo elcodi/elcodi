@@ -18,22 +18,22 @@
 namespace Elcodi\Component\EntityTranslator\Services\Interfaces;
 
 /**
- * Interface EntityTranslatorInterface
+ * Interface EntityTranslatorInterface.
  */
 interface EntityTranslatorInterface
 {
     /**
-     * Translate object
+     * Translate object.
      *
-     * @param Object $object Object
+     * @param object $object Object
      * @param string $locale Locale to be translated
      */
     public function translate($object, $locale);
 
     /**
-     * Saves object translations
+     * Saves object translations.
      *
-     * @param Object $object       Object
+     * @param object $object       Object
      * @param array  $translations Translations
      */
     public function save($object, array $translations);

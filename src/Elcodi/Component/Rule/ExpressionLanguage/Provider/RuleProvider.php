@@ -26,7 +26,7 @@ use Elcodi\Component\Rule\Repository\RuleRepository;
 use Elcodi\Component\Rule\Services\RuleManager;
 
 /**
- * Class RuleProvider
+ * Class RuleProvider.
  *
  * Extends ExpressionLanguage to access rules from repository
  */
@@ -47,7 +47,7 @@ class RuleProvider implements ExpressionFunctionProviderInterface
     private $ruleManager;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param RuleRepository $ruleRepository Rule repository
      * @param RuleManager    $ruleManager    Rule manager
@@ -61,7 +61,7 @@ class RuleProvider implements ExpressionFunctionProviderInterface
     }
 
     /**
-     * Get functions
+     * Get functions.
      *
      * @return ExpressionFunction[] An array of Function instances
      */
@@ -69,7 +69,7 @@ class RuleProvider implements ExpressionFunctionProviderInterface
     {
         return [
             /**
-             * Evaluate a rule by name
+             * Evaluate a rule by name.
              */
             new ExpressionFunction(
                 'rule',

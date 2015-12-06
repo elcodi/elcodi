@@ -23,12 +23,12 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
 use Elcodi\Component\Cart\Transformer\CartOrderTransformer;
 
 /**
- * Class OrderLineCreationEventListenerTest
+ * Class OrderLineCreationEventListenerTest.
  */
 class OrderLineCreationEventListenerTest extends WebTestCase
 {
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -40,7 +40,7 @@ class OrderLineCreationEventListenerTest extends WebTestCase
     }
 
     /**
-     * Test update stock positive
+     * Test update stock positive.
      *
      * @dataProvider dataUpdateStock
      */
@@ -56,7 +56,7 @@ class OrderLineCreationEventListenerTest extends WebTestCase
             ->get('elcodi.transformer.cart_order');
 
         /**
-         * @var CartInterface $cart
+         * @var CartInterface     $cart
          * @var CartLineInterface $cartLine
          */
         $cart = $this->find('cart', 2);
@@ -83,7 +83,7 @@ class OrderLineCreationEventListenerTest extends WebTestCase
     }
 
     /**
-     * Data for testUpdateStock
+     * Data for testUpdateStock.
      */
     public function dataUpdateStock()
     {

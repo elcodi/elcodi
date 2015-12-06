@@ -21,7 +21,7 @@ use Elcodi\Component\Cart\Event\Abstracts\AbstractCartEvent;
 use Elcodi\Component\Cart\Services\CartAmountValidator;
 
 /**
- * Class ValidateCartAmountEventListener
+ * Class ValidateCartAmountEventListener.
  *
  * @author Berny Cantos <be@rny.cc>
  */
@@ -35,7 +35,7 @@ final class ValidateCartAmountEventListener
     private $cartAmountValidator;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param CartAmountValidator $cartAmountValidator Cart amount validator
      */
@@ -45,7 +45,7 @@ final class ValidateCartAmountEventListener
     }
 
     /**
-     * Validate cart amount
+     * Validate cart amount.
      *
      * @param AbstractCartEvent $event Event
      */

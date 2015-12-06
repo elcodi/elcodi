@@ -22,7 +22,7 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface;
 
 /**
- * Class StateLineStack
+ * Class StateLineStack.
  */
 class StateLineStack
 {
@@ -41,7 +41,7 @@ class StateLineStack
     protected $lastStateLine;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param Collection         $stateLines    State Lines
      * @param StateLineInterface $lastStateLine Last stateLine
@@ -55,7 +55,7 @@ class StateLineStack
     }
 
     /**
-     * Add state line
+     * Add state line.
      *
      * @param StateLineInterface $stateLine State line
      *
@@ -73,7 +73,7 @@ class StateLineStack
     }
 
     /**
-     * Remove state line
+     * Remove state line.
      *
      * @param StateLineInterface $stateLine State line
      *
@@ -89,7 +89,7 @@ class StateLineStack
     }
 
     /**
-     * Get state lines
+     * Get state lines.
      *
      * @return Collection StateLines
      */
@@ -99,7 +99,7 @@ class StateLineStack
     }
 
     /**
-     * Get LastStateLine
+     * Get LastStateLine.
      *
      * @return StateLineInterface LastStateLine
      */
@@ -109,7 +109,7 @@ class StateLineStack
     }
 
     /**
-     * Create new StateLineStack
+     * Create new StateLineStack.
      *
      * @param Collection         $stateLines    State Lines
      * @param StateLineInterface $lastStateLine Last stateLine

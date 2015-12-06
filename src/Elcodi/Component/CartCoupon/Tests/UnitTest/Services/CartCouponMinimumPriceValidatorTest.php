@@ -24,12 +24,12 @@ use Elcodi\Component\CartCoupon\Services\CartCouponMinimumPriceValidator;
 use Elcodi\Component\Coupon\Exception\CouponBelowMinimumPurchaseException;
 
 /**
- * Class CartCouponMinimumPriceValidatorTest
+ * Class CartCouponMinimumPriceValidatorTest.
  */
 class CartCouponMinimumPriceValidatorTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Test validateCartCouponMinimumPrice
+     * Test validateCartCouponMinimumPrice.
      *
      * @covers validateCartCouponMinimumPrice
      * @dataProvider dataValidateCartCouponMinimumPrice
@@ -117,7 +117,7 @@ class CartCouponMinimumPriceValidatorTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Data for testValidateCartCouponMinimumPrice
+     * Data for testValidateCartCouponMinimumPrice.
      */
     public function dataValidateCartCouponMinimumPrice()
     {

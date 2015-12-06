@@ -24,7 +24,7 @@ use Elcodi\Component\Product\ElcodiProductStock;
 use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 
 /**
- * Class CartIntegrityValidator
+ * Class CartIntegrityValidator.
  *
  * Api Methods:
  *
@@ -49,18 +49,18 @@ class CartIntegrityValidator
     private $cartManager;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * Uses stock
      */
     private $useStock;
 
     /**
-     * Built method
+     * Built method.
      *
      * @param CartEventDispatcher $cartEventDispatcher Cart event dispatcher
      * @param CartManager         $cartManager         Cart Manager
-     * @param boolean             $useStock            Use stock
+     * @param bool                $useStock            Use stock
      */
     public function __construct(
         CartEventDispatcher $cartEventDispatcher,
@@ -73,14 +73,14 @@ class CartIntegrityValidator
     }
 
     /**
-     * Validate cart integrity
+     * Validate cart integrity.
      *
      * @param CartInterface $cart Cart
      */
     public function validateCartIntegrity(CartInterface $cart)
     {
         /**
-         * Check every CartLine
+         * Check every CartLine.
          *
          * @var CartLineInterface $cartLine
          */
@@ -90,7 +90,7 @@ class CartIntegrityValidator
     }
 
     /**
-     * Check CartLine integrity
+     * Check CartLine integrity.
      *
      * When a purchasable is not enabled or its quantity is <=0,
      * the line is discarded and a ElcodiCartEvents::CART_INCONSISTENT
@@ -123,7 +123,7 @@ class CartIntegrityValidator
             );
 
             /**
-             * An inconsistent cart event is dispatched
+             * An inconsistent cart event is dispatched.
              */
             $this
                 ->cartEventDispatcher
@@ -135,7 +135,7 @@ class CartIntegrityValidator
 
         /**
          * We cannot exceed available stock for a given purchasable
-         * when setting CartLine::$quantity
+         * when setting CartLine::$quantity.
          *
          * This checking has sense when the Product has not infinite stock
          */

@@ -23,7 +23,7 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * Class ElcodiCartCouponExtension
+ * Class ElcodiCartCouponExtension.
  */
 class ElcodiCartCouponExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
@@ -35,7 +35,7 @@ class ElcodiCartCouponExtension extends AbstractExtension implements EntitiesOve
     const EXTENSION_NAME = 'elcodi_cart_coupon';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -62,7 +62,7 @@ class ElcodiCartCouponExtension extends AbstractExtension implements EntitiesOve
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -77,20 +77,20 @@ class ElcodiCartCouponExtension extends AbstractExtension implements EntitiesOve
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.cart_coupon.class" => $config['mapping']['cart_coupon']['class'],
-            "elcodi.entity.cart_coupon.mapping_file" => $config['mapping']['cart_coupon']['mapping_file'],
-            "elcodi.entity.cart_coupon.manager" => $config['mapping']['cart_coupon']['manager'],
-            "elcodi.entity.cart_coupon.enabled" => $config['mapping']['cart_coupon']['enabled'],
+            'elcodi.entity.cart_coupon.class' => $config['mapping']['cart_coupon']['class'],
+            'elcodi.entity.cart_coupon.mapping_file' => $config['mapping']['cart_coupon']['mapping_file'],
+            'elcodi.entity.cart_coupon.manager' => $config['mapping']['cart_coupon']['manager'],
+            'elcodi.entity.cart_coupon.enabled' => $config['mapping']['cart_coupon']['enabled'],
 
-            "elcodi.entity.order_coupon.class" => $config['mapping']['order_coupon']['class'],
-            "elcodi.entity.order_coupon.mapping_file" => $config['mapping']['order_coupon']['mapping_file'],
-            "elcodi.entity.order_coupon.manager" => $config['mapping']['order_coupon']['manager'],
-            "elcodi.entity.order_coupon.enabled" => $config['mapping']['order_coupon']['enabled'],
+            'elcodi.entity.order_coupon.class' => $config['mapping']['order_coupon']['class'],
+            'elcodi.entity.order_coupon.mapping_file' => $config['mapping']['order_coupon']['mapping_file'],
+            'elcodi.entity.order_coupon.manager' => $config['mapping']['order_coupon']['manager'],
+            'elcodi.entity.order_coupon.enabled' => $config['mapping']['order_coupon']['enabled'],
         ];
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * return array(
      *      'file1.yml',
@@ -135,7 +135,7 @@ class ElcodiCartCouponExtension extends AbstractExtension implements EntitiesOve
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */

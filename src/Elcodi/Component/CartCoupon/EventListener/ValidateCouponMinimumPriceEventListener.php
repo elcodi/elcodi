@@ -21,7 +21,7 @@ use Elcodi\Component\CartCoupon\Event\CartCouponOnCheckEvent;
 use Elcodi\Component\CartCoupon\Services\CartCouponMinimumPriceValidator;
 
 /**
- * Class ValidateCouponMinimumPriceEventListener
+ * Class ValidateCouponMinimumPriceEventListener.
  */
 final class ValidateCouponMinimumPriceEventListener
 {
@@ -33,7 +33,7 @@ final class ValidateCouponMinimumPriceEventListener
     private $cartCouponMinimumPriceValidator;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param CartCouponMinimumPriceValidator $cartCouponMinimumPriceValidator CartCoupon minimum price validator
      */
@@ -43,7 +43,7 @@ final class ValidateCouponMinimumPriceEventListener
     }
 
     /**
-     * Check if cart meets minimum price requirements for a coupon
+     * Check if cart meets minimum price requirements for a coupon.
      *
      * @param CartCouponOnCheckEvent $event Event
      */

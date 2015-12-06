@@ -23,12 +23,12 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 
 /**
- * Class CartRepository
+ * Class CartRepository.
  */
 class CartRepository extends EntityRepository
 {
     /**
-     * Finds all the carts that had an address for billing or delivery
+     * Finds all the carts that had an address for billing or delivery.
      *
      * @param AddressInterface $address The address to search
      *

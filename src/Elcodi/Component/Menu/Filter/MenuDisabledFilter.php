@@ -21,16 +21,16 @@ use Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface;
 use Elcodi\Component\Menu\Filter\Interfaces\MenuFilterInterface;
 
 /**
- * Class MenuDisabledFilter
+ * Class MenuDisabledFilter.
  */
 class MenuDisabledFilter implements MenuFilterInterface
 {
     /**
-     * Filter all disabled nodes
+     * Filter all disabled nodes.
      *
      * @param NodeInterface $menuNode Menu node
      *
-     * @return boolean Node must be rendered
+     * @return bool Node must be rendered
      */
     public function filter(NodeInterface $menuNode)
     {

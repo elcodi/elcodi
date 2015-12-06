@@ -18,12 +18,12 @@
 namespace Elcodi\Component\MetaData\Entity\Interfaces;
 
 /**
- * Interface MetaDataInterface
+ * Interface MetaDataInterface.
  */
 interface MetaDataInterface
 {
     /**
-     * Set meta description
+     * Set meta description.
      *
      * @param string $metaDescription
      *
@@ -32,14 +32,14 @@ interface MetaDataInterface
     public function setMetaDescription($metaDescription);
 
     /**
-     * Get meta description
+     * Get meta description.
      *
      * @return string Meta description
      */
     public function getMetaDescription();
 
     /**
-     * Set meta keywords
+     * Set meta keywords.
      *
      * @param string $metaKeywords Meta keywords
      *
@@ -48,14 +48,14 @@ interface MetaDataInterface
     public function setMetaKeywords($metaKeywords);
 
     /**
-     * Get meta keywords
+     * Get meta keywords.
      *
      * @return string Meta keywords
      */
     public function getMetaKeywords();
 
     /**
-     * Set meta title
+     * Set meta title.
      *
      * @param string $metaTitle Meta title
      *
@@ -64,7 +64,7 @@ interface MetaDataInterface
     public function setMetaTitle($metaTitle);
 
     /**
-     * Get meta title
+     * Get meta title.
      *
      * @return string Meta title
      */

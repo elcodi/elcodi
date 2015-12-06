@@ -23,7 +23,7 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * This class loads and manages your bundle configuration
+ * This class loads and manages your bundle configuration.
  */
 class ElcodiEntityTranslatorExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
@@ -35,7 +35,7 @@ class ElcodiEntityTranslatorExtension extends AbstractExtension implements Entit
     const EXTENSION_NAME = 'elcodi_entity_translator';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -62,7 +62,7 @@ class ElcodiEntityTranslatorExtension extends AbstractExtension implements Entit
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -77,21 +77,21 @@ class ElcodiEntityTranslatorExtension extends AbstractExtension implements Entit
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.entity_translation.class"          => $config['mapping']['translation']['class'],
-            "elcodi.entity.entity_translation.mapping_file"   => $config['mapping']['translation']['mapping_file'],
-            "elcodi.entity.entity_translation.manager"        => $config['mapping']['translation']['manager'],
-            "elcodi.entity.entity_translation.enabled"        => $config['mapping']['translation']['enabled'],
+            'elcodi.entity.entity_translation.class' => $config['mapping']['translation']['class'],
+            'elcodi.entity.entity_translation.mapping_file' => $config['mapping']['translation']['mapping_file'],
+            'elcodi.entity.entity_translation.manager' => $config['mapping']['translation']['manager'],
+            'elcodi.entity.entity_translation.enabled' => $config['mapping']['translation']['enabled'],
 
-            "elcodi.entity_translator_configuration"          => $config['configuration'],
-            "elcodi.entity_translator_cache_prefix"           => $config['cache_prefix'],
-            "elcodi.entity_translator_auto_translate"         => $config['auto_translate'],
-            "elcodi.entity_translator_language_master_locale" => $config['language']['master_locale'],
-            "elcodi.entity_translator_language_fallback"      => $config['language']['fallback'],
+            'elcodi.entity_translator_configuration' => $config['configuration'],
+            'elcodi.entity_translator_cache_prefix' => $config['cache_prefix'],
+            'elcodi.entity_translator_auto_translate' => $config['auto_translate'],
+            'elcodi.entity_translator_language_master_locale' => $config['language']['master_locale'],
+            'elcodi.entity_translator_language_fallback' => $config['language']['fallback'],
         ];
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * @param array $config Configuration
      *
@@ -123,7 +123,7 @@ class ElcodiEntityTranslatorExtension extends AbstractExtension implements Entit
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */

@@ -21,14 +21,14 @@ use Mmoreram\SimpleDoctrineMapping\CompilerPass\Abstracts\AbstractMappingCompile
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * Class AbstractElcodiMappingCompilerPass
+ * Class AbstractElcodiMappingCompilerPass.
  */
 abstract class AbstractElcodiMappingCompilerPass extends AbstractMappingCompilerPass
 {
     /**
      * Add entity mapping given the entity name, given that all entity
      * definitions are built the same way and given as well that the method
-     * addEntityMapping exists and is accessible
+     * addEntityMapping exists and is accessible.
      *
      * @param ContainerBuilder $container Container
      * @param array            $entities  Name of the entities

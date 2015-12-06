@@ -22,7 +22,7 @@ use Symfony\Component\EventDispatcher\Event;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
- * Event fired when a customer registers
+ * Event fired when a customer registers.
  */
 final class CustomerRegisterEvent extends Event
 {
@@ -34,7 +34,7 @@ final class CustomerRegisterEvent extends Event
     private $customer;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CustomerInterface $customer Customer
      */

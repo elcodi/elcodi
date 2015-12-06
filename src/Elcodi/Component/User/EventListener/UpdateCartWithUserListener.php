@@ -25,7 +25,7 @@ use Elcodi\Component\Cart\Wrapper\CartWrapper;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
- * Class UpdateCartWithUserListener
+ * Class UpdateCartWithUserListener.
  */
 class UpdateCartWithUserListener
 {
@@ -44,7 +44,7 @@ class UpdateCartWithUserListener
     private $cartManager;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CartWrapper   $cartWrapper Cart Wrapper
      * @param ObjectManager $cartManager Object Manager

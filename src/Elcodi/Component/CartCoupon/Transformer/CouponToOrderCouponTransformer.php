@@ -26,7 +26,7 @@ use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\Coupon\EventDispatcher\CouponEventDispatcher;
 
 /**
- * Class CouponToOrderCouponTransformer
+ * Class CouponToOrderCouponTransformer.
  *
  * API methods:
  *
@@ -58,7 +58,7 @@ class CouponToOrderCouponTransformer
     private $orderCouponFactory;
 
     /**
-     * construct method
+     * construct method.
      *
      * @param ObjectManager         $orderCouponObjectManager OrderCoupon ObjectManager
      * @param CouponEventDispatcher $couponEventDispatcher    CouponEventDispatcher
@@ -76,7 +76,7 @@ class CouponToOrderCouponTransformer
 
     /**
      * Creates a new OrderCoupon instance given a Coupon and saves it into the
-     * persistence layer
+     * persistence layer.
      *
      * Also notifies to CouponBundle that a simple coupon has been
      * used by an Order.

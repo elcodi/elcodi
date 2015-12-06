@@ -23,7 +23,7 @@ use Elcodi\Component\Product\Repository\CategoryRepository;
 use Elcodi\Component\Product\Repository\ProductRepository;
 
 /**
- * Class ProductRepositoryTest
+ * Class ProductRepositoryTest.
  */
 class ProductRepositoryTest extends WebTestCase
 {
@@ -42,7 +42,7 @@ class ProductRepositoryTest extends WebTestCase
     protected $productRepository;
 
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -54,7 +54,7 @@ class ProductRepositoryTest extends WebTestCase
     }
 
     /**
-     * Setup
+     * Setup.
      */
     public function setUp()
     {
@@ -65,7 +65,7 @@ class ProductRepositoryTest extends WebTestCase
     }
 
     /**
-     * Test product repository provider
+     * Test product repository provider.
      */
     public function testRepositoryProvider()
     {

@@ -26,17 +26,17 @@ use Elcodi\Component\Menu\Services\Abstracts\AbstractMenuModifier;
 use Elcodi\Component\Menu\Services\Interfaces\MenuChangerInterface;
 
 /**
- * Class MenuModifier
+ * Class MenuModifier.
  */
 class MenuModifier extends AbstractMenuModifier implements MenuChangerInterface
 {
     /**
-     * Add menu builder
+     * Add menu builder.
      *
      * @param MenuModifierInterface $menuModifier Menu modifier
      * @param array                 $menus        Menus
      * @param string                $stage        Stage
-     * @param integer               $priority     Priority
+     * @param int                   $priority     Priority
      *
      * @return $this Self object
      */
@@ -57,7 +57,7 @@ class MenuModifier extends AbstractMenuModifier implements MenuChangerInterface
     }
 
     /**
-     * Apply change
+     * Apply change.
      *
      * @param MenuInterface $menu  Menu
      * @param string        $stage Stage
@@ -78,7 +78,7 @@ class MenuModifier extends AbstractMenuModifier implements MenuChangerInterface
     }
 
     /**
-     * Apply menu filters to Menu
+     * Apply menu filters to Menu.
      *
      * @param Collection $menuNodes Menu nodes
      * @param string     $menuCode  Menu code

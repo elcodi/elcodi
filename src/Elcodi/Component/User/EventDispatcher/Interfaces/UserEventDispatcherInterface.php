@@ -22,12 +22,12 @@ use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
- * Interface UserEventDispatcherInterface
+ * Interface UserEventDispatcherInterface.
  */
 interface UserEventDispatcherInterface
 {
     /**
-     * Dispatch user created event
+     * Dispatch user created event.
      *
      * @param AbstractUserInterface $user User registered
      *
@@ -36,7 +36,7 @@ interface UserEventDispatcherInterface
     public function dispatchOnUserRegisteredEvent(AbstractUserInterface $user);
 
     /**
-     * Dispatch customer created event
+     * Dispatch customer created event.
      *
      * @param CustomerInterface $customer Customer registered
      *
@@ -45,7 +45,7 @@ interface UserEventDispatcherInterface
     public function dispatchOnCustomerRegisteredEvent(CustomerInterface $customer);
 
     /**
-     * Dispatch admin user created event
+     * Dispatch admin user created event.
      *
      * @param AdminUserInterface $adminUser AdminUser registered
      *

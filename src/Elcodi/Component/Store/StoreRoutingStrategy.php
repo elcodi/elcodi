@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Store;
 
 /**
- * Class StoreRoutingStrategy
+ * Class StoreRoutingStrategy.
  */
 final class StoreRoutingStrategy
 {

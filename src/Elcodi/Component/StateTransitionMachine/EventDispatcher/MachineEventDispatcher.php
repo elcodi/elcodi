@@ -26,12 +26,12 @@ use Elcodi\Component\StateTransitionMachine\Event\TransitionEvent;
 use Elcodi\Component\StateTransitionMachine\Machine\Interfaces\MachineInterface;
 
 /**
- * Class MachineEventDispatcher
+ * Class MachineEventDispatcher.
  */
 class MachineEventDispatcher extends AbstractEventDispatcher
 {
     /**
-     * Throw initialization events
+     * Throw initialization events.
      *
      * @param MachineInterface $machine        Machine
      * @param mixed            $object         Object
@@ -60,7 +60,7 @@ class MachineEventDispatcher extends AbstractEventDispatcher
     }
 
     /**
-     * Throw transition events
+     * Throw transition events.
      *
      * @param MachineInterface $machine        Machine
      * @param mixed            $object         Object

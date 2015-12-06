@@ -22,7 +22,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
- * Class MenuChangerCompilerPass
+ * Class MenuChangerCompilerPass.
  */
 class MenuChangerCompilerPass implements CompilerPassInterface
 {
@@ -30,8 +30,6 @@ class MenuChangerCompilerPass implements CompilerPassInterface
      * You can modify the container here before it is dumped to PHP code.
      *
      * @param ContainerBuilder $container
-     *
-     * @return null
      *
      * @api
      */

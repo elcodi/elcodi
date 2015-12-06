@@ -29,7 +29,7 @@ use Elcodi\Component\Media\Services\ImageManager;
 use Elcodi\Component\Media\Transformer\Interfaces\ImageEtagTransformerInterface;
 
 /**
- * Class ImageController
+ * Class ImageController.
  */
 class ImageResizeController
 {
@@ -62,28 +62,28 @@ class ImageResizeController
     private $imageEtagTransformer;
 
     /**
-     * @var integer
+     * @var int
      *
      * Max size
      */
     private $maxAge;
 
     /**
-     * @var integer
+     * @var int
      *
      * Shared max size
      */
     private $sharedMaxAge;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param RequestStack                  $requestStack         Request Stack
      * @param ImageRepository               $imageRepository      Image Repository
      * @param ImageManager                  $imageManager         Image Manager
      * @param ImageEtagTransformerInterface $imageEtagTransformer ImageEtagTransformer Image Etag Transformer
-     * @param integer                       $maxAge               Max size
-     * @param integer                       $sharedMaxAge         Shared max size
+     * @param int                           $maxAge               Max size
+     * @param int                           $sharedMaxAge         Shared max size
      */
     public function __construct(
         RequestStack $requestStack,
@@ -102,7 +102,7 @@ class ImageResizeController
     }
 
     /**
-     * Resizes an image
+     * Resizes an image.
      *
      * @return Response Response generated
      *
@@ -117,7 +117,7 @@ class ImageResizeController
 
         /**
          * Request not found because this controller is not running under
-         * Request scope
+         * Request scope.
          */
         if (!($request instanceof Request)) {
             throw new RuntimeException('Request object not found');
@@ -126,7 +126,7 @@ class ImageResizeController
         $id = $request->get('id');
 
         /**
-         * We retrieve image given its id
+         * We retrieve image given its id.
          */
         $image = $this
             ->imageRepository
@@ -177,7 +177,7 @@ class ImageResizeController
         /**
          * If the object has not been modified, we return the response.
          * Symfony will automatically put a 304 status in the response
-         * in that case
+         * in that case.
          */
         if ($response->isNotModified($request)) {
             return $response->setStatusCode(304);

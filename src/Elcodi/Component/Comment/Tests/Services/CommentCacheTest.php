@@ -29,7 +29,7 @@ use Elcodi\Component\Comment\Services\CommentCache;
 use Elcodi\Component\Comment\Services\VoteManager;
 
 /**
- * Class CommentCacheTest
+ * Class CommentCacheTest.
  */
 class CommentCacheTest extends PHPUnit_Framework_TestCase
 {
@@ -55,7 +55,7 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
     protected $commentRepository;
 
     /**
-     * Setup
+     * Setup.
      */
     public function setUp()
     {
@@ -103,7 +103,7 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test load
+     * Test load.
      */
     public function testLoad()
     {
@@ -120,44 +120,44 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals([
             [
-                'entity'   => [
-                    'id'            => 1,
-                    'authorName'    => 'Marc Morera',
-                    'authorEmail'   => 'engonga@engonga.com',
-                    'context'       => 'admin',
-                    'content'       => 'comment1',
-                    'nbVotes'       => 2,
-                    'nbUpVotes'     => 1,
-                    'nbDownVotes'   => 1,
+                'entity' => [
+                    'id' => 1,
+                    'authorName' => 'Marc Morera',
+                    'authorEmail' => 'engonga@engonga.com',
+                    'context' => 'admin',
+                    'content' => 'comment1',
+                    'nbVotes' => 2,
+                    'nbUpVotes' => 1,
+                    'nbDownVotes' => 1,
                     'createdAt' => '2015-01-01 00:00:00',
                     'updatedAt' => '2015-01-01 00:00:00',
                 ],
                 'children' => [
                     [
-                        'entity'   => [
-                            'id'            => 2,
-                            'authorName'    => 'Marc Morera',
-                            'authorEmail'   => 'engonga@engonga.com',
-                            'context'       => 'admin',
-                            'content'       => 'comment2',
-                            'nbVotes'       => 2,
-                            'nbUpVotes'     => 1,
-                            'nbDownVotes'   => 1,
+                        'entity' => [
+                            'id' => 2,
+                            'authorName' => 'Marc Morera',
+                            'authorEmail' => 'engonga@engonga.com',
+                            'context' => 'admin',
+                            'content' => 'comment2',
+                            'nbVotes' => 2,
+                            'nbUpVotes' => 1,
+                            'nbDownVotes' => 1,
                     'createdAt' => '2015-01-01 00:00:00',
                     'updatedAt' => '2015-01-01 00:00:00',
                         ],
                         'children' => [],
                     ],
                     [
-                        'entity'   => [
-                            'id'            => 3,
-                            'authorName'    => 'Another guy',
-                            'authorEmail'   => 'lala@lala.com',
-                            'context'       => 'admin',
-                            'content'       => 'comment3',
-                            'nbVotes'       => 2,
-                            'nbUpVotes'     => 1,
-                            'nbDownVotes'   => 1,
+                        'entity' => [
+                            'id' => 3,
+                            'authorName' => 'Another guy',
+                            'authorEmail' => 'lala@lala.com',
+                            'context' => 'admin',
+                            'content' => 'comment3',
+                            'nbVotes' => 2,
+                            'nbUpVotes' => 1,
+                            'nbDownVotes' => 1,
                     'createdAt' => '2015-01-01 00:00:00',
                     'updatedAt' => '2015-01-01 00:00:00',
                         ],
@@ -166,29 +166,29 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
                 ],
             ],
             [
-                'entity'   => [
-                    'id'            => 4,
-                    'authorName'    => 'Marc Morera',
-                    'authorEmail'   => 'engonga@engonga.com',
-                    'context'       => 'admin',
-                    'content'       => 'comment4',
-                    'nbVotes'       => 2,
-                    'nbUpVotes'     => 1,
-                    'nbDownVotes'   => 1,
+                'entity' => [
+                    'id' => 4,
+                    'authorName' => 'Marc Morera',
+                    'authorEmail' => 'engonga@engonga.com',
+                    'context' => 'admin',
+                    'content' => 'comment4',
+                    'nbVotes' => 2,
+                    'nbUpVotes' => 1,
+                    'nbDownVotes' => 1,
                     'createdAt' => '2015-01-01 00:00:00',
                     'updatedAt' => '2015-01-01 00:00:00',
                 ],
                 'children' => [
                     [
-                        'entity'   => [
-                            'id'            => 5,
-                            'authorName'    => 'Marc Morera',
-                            'authorEmail'   => 'engonga@engonga.com',
-                            'context'       => 'admin',
-                            'content'       => 'comment5',
-                            'nbVotes'       => 2,
-                            'nbUpVotes'     => 1,
-                            'nbDownVotes'   => 1,
+                        'entity' => [
+                            'id' => 5,
+                            'authorName' => 'Marc Morera',
+                            'authorEmail' => 'engonga@engonga.com',
+                            'context' => 'admin',
+                            'content' => 'comment5',
+                            'nbVotes' => 2,
+                            'nbUpVotes' => 1,
+                            'nbDownVotes' => 1,
                     'createdAt' => '2015-01-01 00:00:00',
                     'updatedAt' => '2015-01-01 00:00:00',
                         ],
@@ -200,7 +200,7 @@ class CommentCacheTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Get comments structure
+     * Get comments structure.
      *
      * @return Collection Comment Structure
      */

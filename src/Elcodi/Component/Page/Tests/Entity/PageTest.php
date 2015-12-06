@@ -20,7 +20,7 @@ namespace Elcodi\Component\Page\Tests\Entity;
 use Elcodi\Component\Page\Entity\Page;
 
 /**
- * Class PageTest
+ * Class PageTest.
  *
  * @author Cayetano Soriano <neoshadybeat@gmail.com>
  * @author Jordi Grados <planetzombies@gmail.com>
@@ -59,7 +59,7 @@ class PageTest extends \PHPUnit_Framework_TestCase
     public function persistentProvider()
     {
         return [
-            'The page is persistent'     => [true],
+            'The page is persistent' => [true],
             'The page is not persistent' => [false],
         ];
     }
@@ -67,7 +67,7 @@ class PageTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider persistentProvider
      *
-     * @param boolean $persistent The persistence of the page
+     * @param bool $persistent The persistence of the page
      */
     public function testPersistent($persistent)
     {

@@ -25,12 +25,12 @@ use Elcodi\Component\Cart\Event\CartLineOnEditEvent;
 use Elcodi\Component\Core\EventDispatcher\Abstracts\AbstractEventDispatcher;
 
 /**
- * Class CartLineEventDispatcher
+ * Class CartLineEventDispatcher.
  */
 class CartLineEventDispatcher extends AbstractEventDispatcher
 {
     /**
-     * Dispatch cartLine event when is added into cart
+     * Dispatch cartLine event when is added into cart.
      *
      * @param CartInterface     $cart     Cart
      * @param CartLineInterface $cartLine CartLine
@@ -53,7 +53,7 @@ class CartLineEventDispatcher extends AbstractEventDispatcher
     }
 
     /**
-     * Dispatch cartLine event when is edited
+     * Dispatch cartLine event when is edited.
      *
      * @param CartInterface     $cart     Cart
      * @param CartLineInterface $cartLine CartLine
@@ -76,7 +76,7 @@ class CartLineEventDispatcher extends AbstractEventDispatcher
     }
 
     /**
-     * Dispatch cartLine event when is removed
+     * Dispatch cartLine event when is removed.
      *
      * @param CartInterface     $cart     Cart
      * @param CartLineInterface $cartLine CartLine

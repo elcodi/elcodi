@@ -27,7 +27,7 @@ use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
- * Interface CartInterface
+ * Interface CartInterface.
  */
 interface CartInterface
     extends
@@ -36,30 +36,30 @@ interface CartInterface
         IdentifiableInterface
 {
     /**
-     * Get Loaded
+     * Get Loaded.
      *
-     * @return boolean Loaded
+     * @return bool Loaded
      */
     public function isLoaded();
 
     /**
-     * Sets Loaded
+     * Sets Loaded.
      *
-     * @param boolean $loaded Loaded
+     * @param bool $loaded Loaded
      *
      * @return $this Self object
      */
     public function setLoaded($loaded);
 
     /**
-     * Gets amount with tax
+     * Gets amount with tax.
      *
      * @return MoneyInterface price with tax
      */
     public function getAmount();
 
     /**
-     * Sets amount with tax
+     * Sets amount with tax.
      *
      * @param MoneyInterface $amount price with tax
      *
@@ -68,14 +68,14 @@ interface CartInterface
     public function setAmount(MoneyInterface $amount);
 
     /**
-     * Gets coupon amount with tax
+     * Gets coupon amount with tax.
      *
      * @return MoneyInterface|null price with tax
      */
     public function getCouponAmount();
 
     /**
-     * Sets coupon amount with tax
+     * Sets coupon amount with tax.
      *
      * @param MoneyInterface $amount price with tax
      *
@@ -84,14 +84,14 @@ interface CartInterface
     public function setCouponAmount(MoneyInterface $amount);
 
     /**
-     * Gets the shipping amount
+     * Gets the shipping amount.
      *
      * @return MoneyInterface Shipping amount with tax
      */
     public function getShippingAmount();
 
     /**
-     * Sets the shipping amount
+     * Sets the shipping amount.
      *
      * @param MoneyInterface $shippingAmount shipping amount with tax
      *
@@ -100,14 +100,14 @@ interface CartInterface
     public function setShippingAmount(MoneyInterface $shippingAmount);
 
     /**
-     * Gets product amount with tax
+     * Gets product amount with tax.
      *
      * @return MoneyInterface price with tax
      */
     public function getProductAmount();
 
     /**
-     * Sets product amount with tax
+     * Sets product amount with tax.
      *
      * @param MoneyInterface $amount price with tax
      *
@@ -116,14 +116,14 @@ interface CartInterface
     public function setProductAmount(MoneyInterface $amount);
 
     /**
-     * Returns the customer
+     * Returns the customer.
      *
      * @return CustomerInterface Customer
      */
     public function getCustomer();
 
     /**
-     * Sets the customer
+     * Sets the customer.
      *
      * @param CustomerInterface $customer Customer
      *
@@ -132,7 +132,7 @@ interface CartInterface
     public function setCustomer(CustomerInterface $customer);
 
     /**
-     * Sets cart lines
+     * Sets cart lines.
      *
      * @param Collection $cartLines Cart Lines
      *
@@ -141,14 +141,14 @@ interface CartInterface
     public function setCartLines(Collection $cartLines);
 
     /**
-     * Gets lines
+     * Gets lines.
      *
      * @return Collection CartLine collection
      */
     public function getCartLines();
 
     /**
-     * Adds a Cart Line
+     * Adds a Cart Line.
      *
      * @param CartLineInterface $cartLine Cart line
      *
@@ -157,7 +157,7 @@ interface CartInterface
     public function addCartLine(CartLineInterface $cartLine);
 
     /**
-     * Removes a Cart Line from this Cart
+     * Removes a Cart Line from this Cart.
      *
      * @param CartLineInterface $cartLine Cart line
      *
@@ -166,7 +166,7 @@ interface CartInterface
     public function removeCartLine(CartLineInterface $cartLine);
 
     /**
-     * Sets an Order to this Cart
+     * Sets an Order to this Cart.
      *
      * @param OrderInterface $order
      *
@@ -175,64 +175,64 @@ interface CartInterface
     public function setOrder(OrderInterface $order);
 
     /**
-     * Gets Cart Order
+     * Gets Cart Order.
      *
      * @return OrderInterface
      */
     public function getOrder();
 
     /**
-     * Sets the ordered flag
+     * Sets the ordered flag.
      *
-     * @param boolean $ordered Has been ordered
+     * @param bool $ordered Has been ordered
      *
      * @return $this Self object
      */
     public function setOrdered($ordered);
 
     /**
-     * Tells if this cart has been converted to an Order
+     * Tells if this cart has been converted to an Order.
      *
-     * @return boolean is ordered
+     * @return bool is ordered
      */
     public function isOrdered();
 
     /**
-     * Sets the number of items on this cart
+     * Sets the number of items on this cart.
      *
      * @deprecated since version 1.0.8, to be removed in 2.0.0.
      *
-     * @param integer $quantity Quantity
+     * @param int $quantity Quantity
      *
      * @return $this Self object
      */
     public function setQuantity($quantity);
 
     /**
-     * Gets the number of items on this cart
+     * Gets the number of items on this cart.
      *
      * @deprecated since version 1.0.8, to be removed in 2.0.0. Use getTotalItemNumber()
      *
-     * @return integer Quantity
+     * @return int Quantity
      */
     public function getQuantity();
 
     /**
-     * Return the total amount of items added to the Cart
+     * Return the total amount of items added to the Cart.
      *
-     * @return integer
+     * @return int
      */
     public function getTotalItemNumber();
 
     /**
-     * Get DeliveryAddress
+     * Get DeliveryAddress.
      *
      * @return AddressInterface DeliveryAddress
      */
     public function getDeliveryAddress();
 
     /**
-     * Sets DeliveryAddress
+     * Sets DeliveryAddress.
      *
      * @param AddressInterface $deliveryAddress DeliveryAddress
      *
@@ -241,14 +241,14 @@ interface CartInterface
     public function setDeliveryAddress(AddressInterface $deliveryAddress);
 
     /**
-     * Get BillingAddress
+     * Get BillingAddress.
      *
      * @return AddressInterface BillingAddress
      */
     public function getBillingAddress();
 
     /**
-     * Sets BillingAddress
+     * Sets BillingAddress.
      *
      * @param AddressInterface $billingAddress BillingAddress
      *
@@ -257,14 +257,14 @@ interface CartInterface
     public function setBillingAddress(AddressInterface $billingAddress);
 
     /**
-     * Get shipping method
+     * Get shipping method.
      *
      * @return string Shipping method
      */
     public function getShippingMethod();
 
     /**
-     * Set shipping method
+     * Set shipping method.
      *
      * @param string $shippingMethod Shipping method
      *
@@ -273,14 +273,14 @@ interface CartInterface
     public function setShippingMethod($shippingMethod);
 
     /**
-     * Get shipping method
+     * Get shipping method.
      *
      * @return string Cheapest shipping method
      */
     public function getCheapestShippingMethod();
 
     /**
-     * Sets ShippingRange
+     * Sets ShippingRange.
      *
      * @param string $cheapestShippingMethod Cheapest shipping method
      *

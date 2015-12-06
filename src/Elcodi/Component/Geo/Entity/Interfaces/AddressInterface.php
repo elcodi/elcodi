@@ -22,7 +22,7 @@ use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
- * Interface AddressInterface
+ * Interface AddressInterface.
  */
 interface AddressInterface
     extends
@@ -31,7 +31,7 @@ interface AddressInterface
     EnabledInterface
 {
     /**
-     * Sets Address
+     * Sets Address.
      *
      * @param string $address Address
      *
@@ -40,14 +40,14 @@ interface AddressInterface
     public function setAddress($address);
 
     /**
-     * Get Address
+     * Get Address.
      *
      * @return string Address
      */
     public function getAddress();
 
     /**
-     * Sets AddressMore
+     * Sets AddressMore.
      *
      * @param string $addressMore AddressMore
      *
@@ -56,14 +56,14 @@ interface AddressInterface
     public function setAddressMore($addressMore);
 
     /**
-     * Get AddressMore
+     * Get AddressMore.
      *
      * @return string AddressMore
      */
     public function getAddressMore();
 
     /**
-     * Sets Comments
+     * Sets Comments.
      *
      * @param string $comments Comments
      *
@@ -72,14 +72,14 @@ interface AddressInterface
     public function setComments($comments);
 
     /**
-     * Get Comments
+     * Get Comments.
      *
      * @return string Comments
      */
     public function getComments();
 
     /**
-     * Sets Mobile
+     * Sets Mobile.
      *
      * @param string $mobile Mobile
      *
@@ -88,14 +88,14 @@ interface AddressInterface
     public function setMobile($mobile);
 
     /**
-     * Get Mobile
+     * Get Mobile.
      *
      * @return string Mobile
      */
     public function getMobile();
 
     /**
-     * Sets Name
+     * Sets Name.
      *
      * @param string $name Name
      *
@@ -104,14 +104,14 @@ interface AddressInterface
     public function setName($name);
 
     /**
-     * Get Name
+     * Get Name.
      *
      * @return string Name
      */
     public function getName();
 
     /**
-     * Sets Phone
+     * Sets Phone.
      *
      * @param string $phone Phone
      *
@@ -120,14 +120,14 @@ interface AddressInterface
     public function setPhone($phone);
 
     /**
-     * Get Phone
+     * Get Phone.
      *
      * @return string Phone
      */
     public function getPhone();
 
     /**
-     * Sets RecipientName
+     * Sets RecipientName.
      *
      * @param string $recipientName RecipientName
      *
@@ -136,14 +136,14 @@ interface AddressInterface
     public function setRecipientName($recipientName);
 
     /**
-     * Get RecipientName
+     * Get RecipientName.
      *
      * @return string RecipientName
      */
     public function getRecipientName();
 
     /**
-     * Sets RecipientSurname
+     * Sets RecipientSurname.
      *
      * @param string $recipientSurname RecipientSurname
      *
@@ -152,14 +152,14 @@ interface AddressInterface
     public function setRecipientSurname($recipientSurname);
 
     /**
-     * Get RecipientSurname
+     * Get RecipientSurname.
      *
      * @return string RecipientSurname
      */
     public function getRecipientSurname();
 
     /**
-     * Sets City
+     * Sets City.
      *
      * @param string $city City
      *
@@ -168,14 +168,14 @@ interface AddressInterface
     public function setCity($city);
 
     /**
-     * Get City
+     * Get City.
      *
      * @return string City
      */
     public function getCity();
 
     /**
-     * Sets Postalcode
+     * Sets Postalcode.
      *
      * @param string $postalCode Postalcode
      *
@@ -184,7 +184,7 @@ interface AddressInterface
     public function setPostalcode($postalCode);
 
     /**
-     * Get Postalcode
+     * Get Postalcode.
      *
      * @return string Postalcode
      */

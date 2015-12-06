@@ -24,7 +24,7 @@ use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface;
 
 /**
- * Class ZoneMatcher
+ * Class ZoneMatcher.
  */
 class ZoneMatcher
 {
@@ -36,7 +36,7 @@ class ZoneMatcher
     protected $locationProvider;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param LocationProviderAdapterInterface $locationProvider Location manager
      */
@@ -53,7 +53,7 @@ class ZoneMatcher
      * @param AddressInterface $address Address
      * @param ZoneInterface    $zone    Zone
      *
-     * @return boolean Address is contained in zone
+     * @return bool Address is contained in zone
      */
     public function isAddressContainedInZone(
         AddressInterface $address,

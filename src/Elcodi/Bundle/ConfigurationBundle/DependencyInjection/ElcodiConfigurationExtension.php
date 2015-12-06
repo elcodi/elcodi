@@ -23,7 +23,7 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * This is the class that loads and manages your bundle configuration
+ * This is the class that loads and manages your bundle configuration.
  */
 class ElcodiConfigurationExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
@@ -35,7 +35,7 @@ class ElcodiConfigurationExtension extends AbstractExtension implements Entities
     const EXTENSION_NAME = 'elcodi_configuration';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -62,7 +62,7 @@ class ElcodiConfigurationExtension extends AbstractExtension implements Entities
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -77,17 +77,17 @@ class ElcodiConfigurationExtension extends AbstractExtension implements Entities
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.configuration.class" => $config['mapping']['configuration']['class'],
-            "elcodi.entity.configuration.mapping_file" => $config['mapping']['configuration']['mapping_file'],
-            "elcodi.entity.configuration.manager" => $config['mapping']['configuration']['manager'],
-            "elcodi.entity.configuration.enabled" => $config['mapping']['configuration']['enabled'],
+            'elcodi.entity.configuration.class' => $config['mapping']['configuration']['class'],
+            'elcodi.entity.configuration.mapping_file' => $config['mapping']['configuration']['mapping_file'],
+            'elcodi.entity.configuration.manager' => $config['mapping']['configuration']['manager'],
+            'elcodi.entity.configuration.enabled' => $config['mapping']['configuration']['enabled'],
 
             'elcodi.configuration_elements' => $config['elements'],
         ];
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * @param array $config Config
      *

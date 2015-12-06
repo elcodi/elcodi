@@ -20,12 +20,12 @@ namespace Elcodi\Bundle\CartCouponBundle\Tests\Functional\EventListener;
 use Elcodi\Bundle\CartCouponBundle\Tests\Functional\EventListener\Abstracts\AbstractCartCouponEventListenerTest;
 
 /**
- * Class CreateOrderCouponByCouponEventListenerTest
+ * Class CreateOrderCouponByCouponEventListenerTest.
  */
 class CreateOrderCouponByCouponEventListenerTest extends AbstractCartCouponEventListenerTest
 {
     /**
-     * Test createOrderCouponByCoupon
+     * Test createOrderCouponByCoupon.
      */
     public function testCreateOrderCouponByCoupon()
     {

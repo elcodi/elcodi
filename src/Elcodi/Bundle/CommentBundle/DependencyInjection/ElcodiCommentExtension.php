@@ -23,7 +23,7 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * This is the class that loads and manages your bundle configuration
+ * This is the class that loads and manages your bundle configuration.
  */
 class ElcodiCommentExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
@@ -35,7 +35,7 @@ class ElcodiCommentExtension extends AbstractExtension implements EntitiesOverri
     const EXTENSION_NAME = 'elcodi_comment';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -62,7 +62,7 @@ class ElcodiCommentExtension extends AbstractExtension implements EntitiesOverri
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -77,22 +77,22 @@ class ElcodiCommentExtension extends AbstractExtension implements EntitiesOverri
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.comment.class"             => $config['mapping']['comment']['class'],
-            "elcodi.entity.comment.mapping_file"      => $config['mapping']['comment']['mapping_file'],
-            "elcodi.entity.comment.manager"           => $config['mapping']['comment']['manager'],
-            "elcodi.entity.comment.enabled"           => $config['mapping']['comment']['enabled'],
+            'elcodi.entity.comment.class' => $config['mapping']['comment']['class'],
+            'elcodi.entity.comment.mapping_file' => $config['mapping']['comment']['mapping_file'],
+            'elcodi.entity.comment.manager' => $config['mapping']['comment']['manager'],
+            'elcodi.entity.comment.enabled' => $config['mapping']['comment']['enabled'],
 
-            "elcodi.entity.comment_vote.class"        => $config['mapping']['comment_vote']['class'],
-            "elcodi.entity.comment_vote.mapping_file" => $config['mapping']['comment_vote']['mapping_file'],
-            "elcodi.entity.comment_vote.manager"      => $config['mapping']['comment_vote']['manager'],
-            "elcodi.entity.comment_vote.enabled"      => $config['mapping']['comment_vote']['enabled'],
+            'elcodi.entity.comment_vote.class' => $config['mapping']['comment_vote']['class'],
+            'elcodi.entity.comment_vote.mapping_file' => $config['mapping']['comment_vote']['mapping_file'],
+            'elcodi.entity.comment_vote.manager' => $config['mapping']['comment_vote']['manager'],
+            'elcodi.entity.comment_vote.enabled' => $config['mapping']['comment_vote']['enabled'],
 
-            'elcodi.comment.cache_key'                => $config['comments']['cache_key'],
+            'elcodi.comment.cache_key' => $config['comments']['cache_key'],
         ];
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * @param array $config Config
      *
@@ -125,7 +125,7 @@ class ElcodiCommentExtension extends AbstractExtension implements EntitiesOverri
     {
         return [
             'Elcodi\Component\Comment\Entity\Interfaces\CommentInterface' => 'elcodi.entity.comment.class',
-            'Elcodi\Component\Comment\Entity\Interfaces\VoteInterface'    => 'elcodi.entity.comment_vote.class',
+            'Elcodi\Component\Comment\Entity\Interfaces\VoteInterface' => 'elcodi.entity.comment_vote.class',
         ];
     }
 

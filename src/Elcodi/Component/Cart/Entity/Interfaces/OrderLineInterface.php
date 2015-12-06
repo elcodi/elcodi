@@ -21,7 +21,7 @@ use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
 
 /**
- * Interface OrderLineInterface
+ * Interface OrderLineInterface.
  */
 interface OrderLineInterface
     extends
@@ -31,7 +31,7 @@ interface OrderLineInterface
     DimensionableInterface
 {
     /**
-     * Set Order
+     * Set Order.
      *
      * @param OrderInterface $order Order
      *
@@ -40,43 +40,43 @@ interface OrderLineInterface
     public function setOrder(OrderInterface $order);
 
     /**
-     * Get order
+     * Get order.
      *
      * @return OrderInterface Order
      */
     public function getOrder();
 
     /**
-     * Set the height
+     * Set the height.
      *
-     * @param integer $height Height
+     * @param int $height Height
      *
      * @return $this Self object
      */
     public function setHeight($height);
 
     /**
-     * Set the width
+     * Set the width.
      *
-     * @param integer $width Width
+     * @param int $width Width
      *
      * @return $this Self object
      */
     public function setWidth($width);
 
     /**
-     * Set the depth
+     * Set the depth.
      *
-     * @param integer $depth Depth
+     * @param int $depth Depth
      *
      * @return $this Self object
      */
     public function setDepth($depth);
 
     /**
-     * Set the weight
+     * Set the weight.
      *
-     * @param integer $weight Weight
+     * @param int $weight Weight
      *
      * @return $this Self object
      */

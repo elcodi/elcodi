@@ -23,12 +23,12 @@ use PHPUnit_Framework_TestCase;
 use Elcodi\Component\Menu\Entity\Menu\Node;
 
 /**
- * Class NodeTest
+ * Class NodeTest.
  */
 class NodeTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Test isActive with non matching urls
+     * Test isActive with non matching urls.
      */
     public function testIsActive()
     {
@@ -44,7 +44,7 @@ class NodeTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test IsExpanded
+     * Test IsExpanded.
      */
     public function testIsExpanded()
     {

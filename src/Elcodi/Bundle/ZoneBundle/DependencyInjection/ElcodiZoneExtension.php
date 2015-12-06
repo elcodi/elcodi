@@ -23,7 +23,7 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * This is the class that loads and manages your bundle configuration
+ * This is the class that loads and manages your bundle configuration.
  */
 class ElcodiZoneExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
@@ -35,7 +35,7 @@ class ElcodiZoneExtension extends AbstractExtension implements EntitiesOverridab
     const EXTENSION_NAME = 'elcodi_zone';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -62,7 +62,7 @@ class ElcodiZoneExtension extends AbstractExtension implements EntitiesOverridab
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -77,15 +77,15 @@ class ElcodiZoneExtension extends AbstractExtension implements EntitiesOverridab
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.zone.class"        => $config['mapping']['Zone']['class'],
-            "elcodi.entity.zone.mapping_file" => $config['mapping']['Zone']['mapping_file'],
-            "elcodi.entity.zone.manager"      => $config['mapping']['Zone']['manager'],
-            "elcodi.entity.zone.enabled"      => $config['mapping']['Zone']['enabled'],
+            'elcodi.entity.zone.class' => $config['mapping']['Zone']['class'],
+            'elcodi.entity.zone.mapping_file' => $config['mapping']['Zone']['mapping_file'],
+            'elcodi.entity.zone.manager' => $config['mapping']['Zone']['manager'],
+            'elcodi.entity.zone.enabled' => $config['mapping']['Zone']['enabled'],
         ];
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * @param array $config Configuration array
      *
@@ -114,12 +114,12 @@ class ElcodiZoneExtension extends AbstractExtension implements EntitiesOverridab
     public function getEntitiesOverrides()
     {
         return [
-            'Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface'  => 'elcodi.entity.zone.class',
+            'Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface' => 'elcodi.entity.zone.class',
         ];
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */

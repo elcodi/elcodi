@@ -27,7 +27,7 @@ use Elcodi\Component\Menu\Repository\MenuRepository;
 use Elcodi\Component\Menu\Services\Interfaces\MenuChangerInterface;
 
 /**
- * Class MenuManager
+ * Class MenuManager.
  */
 class MenuManager extends AbstractCacheWrapper
 {
@@ -60,14 +60,14 @@ class MenuManager extends AbstractCacheWrapper
     private $key;
 
     /**
-     * @var Array
+     * @var array
      *
      * menus
      */
     private $menus = [];
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param MenuRepository $menuRepository    Menu Repository
      * @param ObjectManager  $menuObjectManager Menu Object Manager
@@ -84,7 +84,7 @@ class MenuManager extends AbstractCacheWrapper
     }
 
     /**
-     * Add menu changer
+     * Add menu changer.
      *
      * @param MenuChangerInterface $menuChanger Menu changer
      *
@@ -116,7 +116,7 @@ class MenuManager extends AbstractCacheWrapper
         if (!($menu instanceof MenuInterface)) {
 
             /**
-             * Menu generation and caching block
+             * Menu generation and caching block.
              */
             $key = $this->getCacheKey($menuCode);
             $menu = $this->loadFromCache($key);
@@ -146,7 +146,7 @@ class MenuManager extends AbstractCacheWrapper
     }
 
     /**
-     * Save menu configuration to memory
+     * Save menu configuration to memory.
      *
      * @param string $menuCode Code of the menu
      *
@@ -163,7 +163,7 @@ class MenuManager extends AbstractCacheWrapper
     }
 
     /**
-     * Try to get menu configuration from memory
+     * Try to get menu configuration from memory.
      *
      * @param string $menuCode Code of the menu
      *
@@ -177,7 +177,7 @@ class MenuManager extends AbstractCacheWrapper
     }
 
     /**
-     * Save menu configuration to memory
+     * Save menu configuration to memory.
      *
      * @param MenuInterface $menu Menu loaded and processed
      *
@@ -191,7 +191,7 @@ class MenuManager extends AbstractCacheWrapper
     }
 
     /**
-     * Try to get menu configuration from cache
+     * Try to get menu configuration from cache.
      *
      * @param string $key Identifier of the menu
      *
@@ -217,7 +217,7 @@ class MenuManager extends AbstractCacheWrapper
     }
 
     /**
-     * Save menu configuration to memory
+     * Save menu configuration to memory.
      *
      * @param string        $key  Cache key
      * @param MenuInterface $menu Menu to cache
@@ -238,7 +238,7 @@ class MenuManager extends AbstractCacheWrapper
     }
 
     /**
-     * Build menu
+     * Build menu.
      *
      * @param string $menuCode Menu code
      *
@@ -251,7 +251,7 @@ class MenuManager extends AbstractCacheWrapper
         $menu = $this
             ->menuRepository
             ->findOneBy([
-                'code'    => $menuCode,
+                'code' => $menuCode,
                 'enabled' => true,
             ]);
 
@@ -270,7 +270,7 @@ class MenuManager extends AbstractCacheWrapper
     }
 
     /**
-     * Apply menu changers to Menu
+     * Apply menu changers to Menu.
      *
      * @param MenuInterface $menu  Menu
      * @param string        $stage Stage
@@ -293,7 +293,7 @@ class MenuManager extends AbstractCacheWrapper
     }
 
     /**
-     * Build menu key for cache
+     * Build menu key for cache.
      *
      * @param string $menuCode Menu code
      *

@@ -20,7 +20,7 @@ namespace Elcodi\Bundle\FixturesBoosterBundle\DependencyInjection;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 
 /**
- * Class ElcodiFixturesBoosterExtension
+ * Class ElcodiFixturesBoosterExtension.
  */
 class ElcodiFixturesBoosterExtension extends AbstractExtension
 {
@@ -52,7 +52,7 @@ class ElcodiFixturesBoosterExtension extends AbstractExtension
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */

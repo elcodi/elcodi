@@ -21,7 +21,7 @@ use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Product\Entity\Interfaces\DimensionableInterface;
 
 /**
- * Interface CartLineInterface
+ * Interface CartLineInterface.
  */
 interface CartLineInterface
     extends
@@ -31,7 +31,7 @@ interface CartLineInterface
     DimensionableInterface
 {
     /**
-     * Set Cart
+     * Set Cart.
      *
      * @param CartInterface $cart Cart
      *
@@ -40,14 +40,14 @@ interface CartLineInterface
     public function setCart(CartInterface $cart);
 
     /**
-     * Get cart
+     * Get cart.
      *
      * @return CartInterface
      */
     public function getCart();
 
     /**
-     * Sets OrderLine
+     * Sets OrderLine.
      *
      * @param OrderLineInterface $orderLine OrderLine
      *
@@ -56,7 +56,7 @@ interface CartLineInterface
     public function setOrderLine(OrderLineInterface $orderLine);
 
     /**
-     * Get OrderLine
+     * Get OrderLine.
      *
      * @return OrderLineInterface OrderLine
      */

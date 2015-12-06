@@ -28,12 +28,12 @@ use Elcodi\Component\Comment\Event\CommentPreRemoveEvent;
 use Elcodi\Component\Core\EventDispatcher\Abstracts\AbstractEventDispatcher;
 
 /**
- * Class CommentEventDispatcher
+ * Class CommentEventDispatcher.
  */
 class CommentEventDispatcher extends AbstractEventDispatcher
 {
     /**
-     * Dispatch Comment added event
+     * Dispatch Comment added event.
      *
      * @param CommentInterface $comment Comment
      *
@@ -53,7 +53,7 @@ class CommentEventDispatcher extends AbstractEventDispatcher
     }
 
     /**
-     * Dispatch Comment edited event
+     * Dispatch Comment edited event.
      *
      * @param CommentInterface $comment Comment
      *
@@ -73,7 +73,7 @@ class CommentEventDispatcher extends AbstractEventDispatcher
     }
 
     /**
-     * Dispatch Comment pre removed event
+     * Dispatch Comment pre removed event.
      *
      * @param CommentInterface $comment Comment
      *
@@ -93,7 +93,7 @@ class CommentEventDispatcher extends AbstractEventDispatcher
     }
 
     /**
-     * Dispatch Comment removed event
+     * Dispatch Comment removed event.
      *
      * @param CommentInterface $comment Comment
      *
@@ -113,11 +113,11 @@ class CommentEventDispatcher extends AbstractEventDispatcher
     }
 
     /**
-     * Dispatch Comment voted event
+     * Dispatch Comment voted event.
      *
      * @param CommentInterface $comment Comment
      * @param VoteInterface    $vote    Vote
-     * @param boolean          $edited  Vote is edition of one already added
+     * @param bool             $edited  Vote is edition of one already added
      *
      * @return $this Self object
      */

@@ -22,7 +22,7 @@ use Symfony\Component\EventDispatcher\Event;
 use Elcodi\Component\Plugin\EventDispatcher\Interfaces\EventInterface;
 
 /**
- * Class EventAdapter
+ * Class EventAdapter.
  *
  * @author Berny Cantos <be@rny.cc>
  */
@@ -43,7 +43,7 @@ class EventAdapter extends Event implements EventInterface
     private $content;
 
     /**
-     * Create a new event from context and content
+     * Create a new event from context and content.
      *
      * @param array  $context Caller's context
      * @param string $content Original content
@@ -55,7 +55,7 @@ class EventAdapter extends Event implements EventInterface
     }
 
     /**
-     * Get a value from the context, with a fallback default
+     * Get a value from the context, with a fallback default.
      *
      * @param string     $key     Index in the context
      * @param mixed|null $default Default value if there's no entry
@@ -72,7 +72,7 @@ class EventAdapter extends Event implements EventInterface
     }
 
     /**
-     * Get full context
+     * Get full context.
      *
      * @return array
      */
@@ -82,7 +82,7 @@ class EventAdapter extends Event implements EventInterface
     }
 
     /**
-     * Get current content
+     * Get current content.
      *
      * @return string
      */
@@ -92,7 +92,7 @@ class EventAdapter extends Event implements EventInterface
     }
 
     /**
-     * Set current content
+     * Set current content.
      *
      * @param string $content
      *

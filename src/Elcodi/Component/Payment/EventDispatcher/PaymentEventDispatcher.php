@@ -17,8 +17,6 @@
 
 namespace Elcodi\Component\Payment\EventDispatcher;
 
-use Symfony\Component\EventDispatcher\Event;
-
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Core\EventDispatcher\Abstracts\AbstractEventDispatcher;
 use Elcodi\Component\Payment\ElcodiPaymentEvents;
@@ -26,12 +24,12 @@ use Elcodi\Component\Payment\Entity\PaymentMethod;
 use Elcodi\Component\Payment\Event\PaymentCollectionEvent;
 
 /**
- * Class PaymentEventDispatcher
+ * Class PaymentEventDispatcher.
  */
 class PaymentEventDispatcher extends AbstractEventDispatcher
 {
     /**
-     * Dispatch payment methods collection
+     * Dispatch payment methods collection.
      *
      * @param CartInterface $cart Cart
      *

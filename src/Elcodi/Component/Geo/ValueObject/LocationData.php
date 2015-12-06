@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Geo\ValueObject;
 
 /**
- * Class LocationData value object
+ * Class LocationData value object.
  *
  * Saves all the data for a location
  */
@@ -53,7 +53,7 @@ class LocationData
     private $type;
 
     /**
-     * Builds a new Location data
+     * Builds a new Location data.
      *
      * @param string $id   The identifier
      * @param string $name The name
@@ -66,14 +66,14 @@ class LocationData
         $code,
         $type
     ) {
-        $this->id   = $id;
+        $this->id = $id;
         $this->name = $name;
         $this->code = $code;
         $this->type = $type;
     }
 
     /**
-     * Get the id
+     * Get the id.
      *
      * @return string
      */
@@ -83,7 +83,7 @@ class LocationData
     }
 
     /**
-     * Get the name
+     * Get the name.
      *
      * @return string
      */
@@ -93,7 +93,7 @@ class LocationData
     }
 
     /**
-     * Get the code
+     * Get the code.
      *
      * @return string
      */
@@ -103,7 +103,7 @@ class LocationData
     }
 
     /**
-     * Get the type
+     * Get the type.
      *
      * @return string
      */

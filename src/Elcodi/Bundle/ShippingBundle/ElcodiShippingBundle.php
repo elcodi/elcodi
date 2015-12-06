@@ -25,7 +25,7 @@ use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 use Elcodi\Bundle\ShippingBundle\DependencyInjection\ElcodiShippingExtension;
 
 /**
- * ElcodiShippingBundle
+ * ElcodiShippingBundle.
  */
 class ElcodiShippingBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
@@ -40,7 +40,7 @@ class ElcodiShippingBundle extends AbstractElcodiBundle implements DependentBund
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

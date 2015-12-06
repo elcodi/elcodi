@@ -24,7 +24,7 @@ use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Services\CategoryIntegrityFixer;
 
 /**
- * Class ProductCategoryIntegrityEventListener
+ * Class ProductCategoryIntegrityEventListener.
  */
 class ProductCategoryIntegrityEventListener
 {
@@ -36,7 +36,7 @@ class ProductCategoryIntegrityEventListener
     private $categoryIntegrityFixer;
 
     /**
-     * Builds a new class
+     * Builds a new class.
      *
      * @param CategoryIntegrityFixer $categoryIntegrityFixer A category
      *                                                       integrity fixer.

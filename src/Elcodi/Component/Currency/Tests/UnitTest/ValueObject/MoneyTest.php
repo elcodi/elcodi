@@ -21,7 +21,7 @@ use Elcodi\Component\Currency\Entity\Currency;
 use Elcodi\Component\Currency\Entity\Money;
 
 /**
- * Class MoneyTest
+ * Class MoneyTest.
  *
  * Tests for Money Value Object
  */
@@ -42,7 +42,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
     private $oneHundredDollars;
 
     /**
-     * Setup
+     * Setup.
      */
     public function setup()
     {
@@ -158,7 +158,6 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     *
      * @covers \Elcodi\Component\Currency\Entity\Money::equals
      */
     public function testMoneyIsEqualTo()

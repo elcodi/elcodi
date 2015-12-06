@@ -21,7 +21,7 @@ use Doctrine\Common\Persistence\ObjectRepository;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 
 /**
- * Class RepositoryProvider
+ * Class RepositoryProvider.
  */
 class RepositoryProvider
 {
@@ -40,7 +40,7 @@ class RepositoryProvider
     private $parameterBag;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param ManagerProvider $managerProvider Manager
      * @param ParameterBag    $parameterBag    Parameter bag
@@ -54,7 +54,7 @@ class RepositoryProvider
     }
 
     /**
-     * Given an entity namespace, return associated repository
+     * Given an entity namespace, return associated repository.
      *
      * @param string $entityNamespace Entity Namespace
      *
@@ -69,7 +69,7 @@ class RepositoryProvider
     }
 
     /**
-     * Given an entity parameter definition, returns associated repository
+     * Given an entity parameter definition, returns associated repository.
      *
      * This method is only useful when your entities namespaces are defined as
      * a parameter, very useful when you want to provide a way of overriding

@@ -20,7 +20,7 @@ namespace Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider;
 use Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\Interfaces\CurrencyExchangeRatesProviderAdapterInterface;
 
 /**
- * Class DummyProviderAdapter
+ * Class DummyProviderAdapter.
  */
 class DummyProviderAdapter implements CurrencyExchangeRatesProviderAdapterInterface
 {

@@ -21,7 +21,7 @@ use Elcodi\Component\Cart\Event\Abstracts\AbstractCartEvent;
 use Elcodi\Component\Cart\Services\CartIntegrityValidator;
 
 /**
- * Class ValidateCartIntegrityEventListener
+ * Class ValidateCartIntegrityEventListener.
  */
 final class ValidateCartIntegrityEventListener
 {
@@ -33,7 +33,7 @@ final class ValidateCartIntegrityEventListener
     private $cartIntegrityValidator;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param CartIntegrityValidator $cartIntegrityValidator Cart validator
      */
@@ -43,7 +43,7 @@ final class ValidateCartIntegrityEventListener
     }
 
     /**
-     * Validate cart
+     * Validate cart.
      *
      * @param AbstractCartEvent $event Event
      */

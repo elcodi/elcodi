@@ -18,21 +18,21 @@
 namespace Elcodi\Component\Core\Entity\Traits;
 
 /**
- * Trait adding enabled/disabled fields and methods
+ * Trait adding enabled/disabled fields and methods.
  */
 trait EnabledTrait
 {
     /**
-     * @var boolean
+     * @var bool
      *
      * Enabled
      */
     protected $enabled;
 
     /**
-     * Set if is enabled
+     * Set if is enabled.
      *
-     * @param boolean $enabled enabled value
+     * @param bool $enabled enabled value
      *
      * @return $this Self object
      */
@@ -44,9 +44,9 @@ trait EnabledTrait
     }
 
     /**
-     * Get is enabled
+     * Get is enabled.
      *
-     * @return boolean is enabled
+     * @return bool is enabled
      */
     public function isEnabled()
     {
@@ -54,7 +54,7 @@ trait EnabledTrait
     }
 
     /**
-     * Enable
+     * Enable.
      *
      * @return $this Self object
      */
@@ -64,7 +64,7 @@ trait EnabledTrait
     }
 
     /**
-     * Disable
+     * Disable.
      *
      * @return $this Self object
      */

@@ -26,7 +26,7 @@ use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
 
 /**
- * Class CartLineStockUpdater
+ * Class CartLineStockUpdater.
  *
  * Api Methods:
  *
@@ -51,7 +51,7 @@ class CartLineStockUpdater
     private $variantObjectManager;
 
     /**
-     * Built method
+     * Built method.
      *
      * @param ObjectManager $productObjectManager Product Object Manager
      * @param ObjectManager $variantObjectManager Variant Object Manager
@@ -65,7 +65,7 @@ class CartLineStockUpdater
     }
 
     /**
-     * Performs all processes to be performed after the order creation
+     * Performs all processes to be performed after the order creation.
      *
      * Flushes all loaded order and related entities.
      *
@@ -90,7 +90,7 @@ class CartLineStockUpdater
     }
 
     /**
-     * Flush the purchasable object, depending on the type
+     * Flush the purchasable object, depending on the type.
      *
      * @param PurchasableInterface $purchasable Purchasable object to flush
      *

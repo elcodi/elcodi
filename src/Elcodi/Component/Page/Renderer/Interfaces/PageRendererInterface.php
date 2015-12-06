@@ -20,14 +20,14 @@ namespace Elcodi\Component\Page\Renderer\Interfaces;
 use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
 
 /**
- * Interface PageRendererInterface
+ * Interface PageRendererInterface.
  *
  * @author Berny Cantos <be@rny.cc>
  */
 interface PageRendererInterface
 {
     /**
-     * Render a page
+     * Render a page.
      *
      * @param PageInterface $page Page to render
      *
@@ -36,11 +36,11 @@ interface PageRendererInterface
     public function render(PageInterface $page);
 
     /**
-     * Check for render support of a page
+     * Check for render support of a page.
      *
      * @param PageInterface $page Page to check support
      *
-     * @return boolean
+     * @return bool
      */
     public function supports(PageInterface $page);
 }

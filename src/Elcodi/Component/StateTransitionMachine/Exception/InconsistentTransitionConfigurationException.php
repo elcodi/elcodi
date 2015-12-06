@@ -20,16 +20,16 @@ namespace Elcodi\Component\StateTransitionMachine\Exception;
 use Exception;
 
 /**
- * Class InconsistentTransitionConfigurationException
+ * Class InconsistentTransitionConfigurationException.
  */
 class InconsistentTransitionConfigurationException extends Exception
 {
     /**
-     * Exception constructor
+     * Exception constructor.
      *
      * @param string    $state      State name
      * @param string    $transition Transition name
-     * @param integer   $code       [optional] The Exception code.
+     * @param int       $code       [optional] The Exception code.
      * @param Exception $previous   [optional] The previous exception used for the exception chaining. Since 5.3.0
      */
     public function __construct($state, $transition, $code = 0, Exception $previous = null)

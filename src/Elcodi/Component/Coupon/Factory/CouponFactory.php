@@ -23,7 +23,7 @@ use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\Currency\Factory\Abstracts\AbstractPurchasableFactory;
 
 /**
- * Class CouponFactory
+ * Class CouponFactory.
  */
 class CouponFactory extends AbstractPurchasableFactory
 {

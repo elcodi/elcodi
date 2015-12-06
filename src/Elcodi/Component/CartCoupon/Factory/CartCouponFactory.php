@@ -21,7 +21,7 @@ use Elcodi\Component\CartCoupon\Entity\CartCoupon;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 
 /**
- * Class CartCoupon
+ * Class CartCoupon.
  */
 class CartCouponFactory extends AbstractFactory
 {

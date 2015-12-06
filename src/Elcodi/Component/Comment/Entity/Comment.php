@@ -25,7 +25,7 @@ use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 
 /**
- * Class Comment
+ * Class Comment.
  */
 class Comment implements CommentInterface
 {
@@ -88,7 +88,7 @@ class Comment implements CommentInterface
     protected $content;
 
     /**
-     * Sets Content
+     * Sets Content.
      *
      * @param string $content Content
      *
@@ -102,7 +102,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Get Content
+     * Get Content.
      *
      * @return string Content
      */
@@ -112,7 +112,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Sets Parent
+     * Sets Parent.
      *
      * @param CommentInterface|null $parent Parent
      *
@@ -126,7 +126,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Get Parent
+     * Get Parent.
      *
      * @return CommentInterface|null Parent
      */
@@ -136,7 +136,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Sets Source
+     * Sets Source.
      *
      * @param string $source Source
      *
@@ -150,7 +150,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Get Source
+     * Get Source.
      *
      * @return string Source
      */
@@ -160,7 +160,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Set Children
+     * Set Children.
      *
      * @param Collection $children Children
      *
@@ -174,7 +174,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Get Children
+     * Get Children.
      *
      * @return Collection Children
      */
@@ -184,7 +184,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Get Context
+     * Get Context.
      *
      * @return string Context
      */
@@ -194,7 +194,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Sets Context
+     * Sets Context.
      *
      * @param string $context Context
      *
@@ -208,7 +208,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Get AuthorEmail
+     * Get AuthorEmail.
      *
      * @return string AuthorEmail
      */
@@ -218,7 +218,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Sets AuthorEmail
+     * Sets AuthorEmail.
      *
      * @param string $authorEmail AuthorEmail
      *
@@ -232,7 +232,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Get AuthorName
+     * Get AuthorName.
      *
      * @return string AuthorName
      */
@@ -242,7 +242,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Sets AuthorName
+     * Sets AuthorName.
      *
      * @param string $authorName AuthorName
      *
@@ -256,7 +256,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Get AuthorToken
+     * Get AuthorToken.
      *
      * @return string AuthorToken
      */
@@ -266,7 +266,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * Sets AuthorToken
+     * Sets AuthorToken.
      *
      * @param string $authorToken AuthorToken
      *

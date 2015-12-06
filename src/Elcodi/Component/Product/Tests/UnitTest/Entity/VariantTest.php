@@ -26,7 +26,7 @@ use Elcodi\Component\Product\Entity\Product;
 use Elcodi\Component\Product\Entity\Variant;
 
 /**
- * Class VariantTest
+ * Class VariantTest.
  */
 class VariantTest extends PHPUnit_Framework_TestCase
 {
@@ -94,7 +94,7 @@ class VariantTest extends PHPUnit_Framework_TestCase
 
     /**
      * Tests that adding an option to a Variant with no
-     * configured parent Product throws a LogicException
+     * configured parent Product throws a LogicException.
      *
      * @expectedException \LogicException
      */
@@ -108,7 +108,7 @@ class VariantTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Shortcut method to assert product Attribute collection size
+     * Shortcut method to assert product Attribute collection size.
      *
      * @param Product $product
      * @param         $size
@@ -122,11 +122,11 @@ class VariantTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Dataprovider for testSetOptions
+     * Dataprovider for testSetOptions.
      *
      * @param ArrayCollection $options              Option collection to be tested
-     * @param integer         $count                Number of expected items in the collection
-     * @param boolean         $initializeCollection whether to initialize the Option collection
+     * @param int             $count                Number of expected items in the collection
+     * @param bool            $initializeCollection whether to initialize the Option collection
      *
      * @dataProvider dataSetOptions
      */
@@ -167,7 +167,7 @@ class VariantTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Data provider for Variant::setOptions() test values
+     * Data provider for Variant::setOptions() test values.
      *
      * @return array
      */
@@ -198,9 +198,9 @@ class VariantTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Shortcut for creating a new Value / Attribute
+     * Shortcut for creating a new Value / Attribute.
      *
-     * @param integer   $size      Collection size
+     * @param int       $size      Collection size
      * @param Attribute $attribute Whether to use an existing Attribute for the Options
      *
      * @return ArrayCollection

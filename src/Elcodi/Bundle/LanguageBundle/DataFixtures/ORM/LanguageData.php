@@ -23,14 +23,14 @@ use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
- * AdminData class
+ * AdminData class.
  *
  * Load fixtures of admin entities
  */
 class LanguageData extends AbstractFixture
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(ObjectManager $manager)
     {

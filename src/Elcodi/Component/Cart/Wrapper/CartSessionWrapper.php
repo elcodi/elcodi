@@ -23,7 +23,7 @@ use Elcodi\Component\Cart\Services\CartSessionManager;
 use Elcodi\Component\Core\Wrapper\Interfaces\WrapperInterface;
 
 /**
- * Class CartSessionWrapper
+ * Class CartSessionWrapper.
  *
  * Api Methods:
  *
@@ -57,7 +57,7 @@ class CartSessionWrapper implements WrapperInterface
     private $cart;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CartSessionManager $cartSessionManager CartSessionManager
      * @param CartRepository     $cartRepository     Cart Repository
@@ -72,7 +72,7 @@ class CartSessionWrapper implements WrapperInterface
 
     /**
      * Get loaded object. If object is not loaded yet, then load it and save it
-     * locally. Otherwise, just return the pre-loaded object
+     * locally. Otherwise, just return the pre-loaded object.
      *
      * @return CartInterface|null Loaded object
      */
@@ -100,7 +100,7 @@ class CartSessionWrapper implements WrapperInterface
     }
 
     /**
-     * Get cart from session
+     * Get cart from session.
      *
      * @return CartInterface|null Cart loaded from session
      */
@@ -117,7 +117,7 @@ class CartSessionWrapper implements WrapperInterface
         $cart = $this
             ->cartRepository
             ->findOneBy([
-                'id'      => $cartIdInSession,
+                'id' => $cartIdInSession,
                 'ordered' => false,
             ]);
 

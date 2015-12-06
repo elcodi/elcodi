@@ -29,7 +29,7 @@ use Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 
 /**
- * Class Manufacturer
+ * Class Manufacturer.
  */
 class Manufacturer implements ManufacturerInterface
 {
@@ -69,7 +69,7 @@ class Manufacturer implements ManufacturerInterface
     protected $products;
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name Name
      *
@@ -83,7 +83,7 @@ class Manufacturer implements ManufacturerInterface
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string Name
      */
@@ -93,7 +93,7 @@ class Manufacturer implements ManufacturerInterface
     }
 
     /**
-     * Set description
+     * Set description.
      *
      * @param string $description Description
      *
@@ -115,7 +115,7 @@ class Manufacturer implements ManufacturerInterface
     }
 
     /**
-     * Set slug
+     * Set slug.
      *
      * @param string $slug Slug
      *
@@ -129,7 +129,7 @@ class Manufacturer implements ManufacturerInterface
     }
 
     /**
-     * Get slug
+     * Get slug.
      *
      * @return string Slug
      */
@@ -139,7 +139,7 @@ class Manufacturer implements ManufacturerInterface
     }
 
     /**
-     * Set products
+     * Set products.
      *
      * @param Collection $products Products
      *
@@ -153,7 +153,7 @@ class Manufacturer implements ManufacturerInterface
     }
 
     /**
-     * Get products
+     * Get products.
      *
      * @return Collection Products
      */
@@ -163,7 +163,7 @@ class Manufacturer implements ManufacturerInterface
     }
 
     /**
-     * Add product
+     * Add product.
      *
      * @param ProductInterface $product Product
      *
@@ -177,7 +177,7 @@ class Manufacturer implements ManufacturerInterface
     }
 
     /**
-     * Remove product
+     * Remove product.
      *
      * @param ProductInterface $product Product
      *
@@ -191,7 +191,7 @@ class Manufacturer implements ManufacturerInterface
     }
 
     /**
-     * To string
+     * To string.
      *
      * @return string
      */

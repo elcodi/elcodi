@@ -24,34 +24,34 @@ use Elcodi\Component\Product\Repository\CategoryRepository;
 use Elcodi\Component\Product\Services\CategoryTree;
 
 /**
- * Class CategoryTreeTest
+ * Class CategoryTreeTest.
  */
 class CategoryTreeTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Data provider for testBuildCategory
+     * Data provider for testBuildCategory.
      *
      * @return array
      */
     public function buildCategoryProvider()
     {
         return [
-            'No categories'                  => [
+            'No categories' => [
                 [],
                 [],
             ],
-            'Only parent categories'         => [
+            'Only parent categories' => [
                 [
                     $this->getCategoryEntity(1, true, null),
                     $this->getCategoryEntity(2, true, null),
                 ],
                 [
                     [
-                        'entity'   => $this->getCategoryEntity(1, true, null),
+                        'entity' => $this->getCategoryEntity(1, true, null),
                         'children' => [],
                     ],
                     [
-                        'entity'   => $this->getCategoryEntity(2, true, null),
+                        'entity' => $this->getCategoryEntity(2, true, null),
                         'children' => [],
                     ],
                 ],
@@ -67,10 +67,10 @@ class CategoryTreeTest extends PHPUnit_Framework_TestCase
                 ],
                 [
                     [
-                        'entity'   => $this->getCategoryEntity(1, true, null),
+                        'entity' => $this->getCategoryEntity(1, true, null),
                         'children' => [
                             [
-                                'entity'   => $this->getCategoryEntity(
+                                'entity' => $this->getCategoryEntity(
                                     4,
                                     false,
                                     $this->getCategoryEntity(1, false, null)
@@ -78,7 +78,7 @@ class CategoryTreeTest extends PHPUnit_Framework_TestCase
                                 'children' => [],
                             ],
                             [
-                                'entity'   => $this->getCategoryEntity(
+                                'entity' => $this->getCategoryEntity(
                                     5,
                                     false,
                                     $this->getCategoryEntity(1, false, null)
@@ -88,10 +88,10 @@ class CategoryTreeTest extends PHPUnit_Framework_TestCase
                         ],
                     ],
                     [
-                        'entity'   => $this->getCategoryEntity(2, true, null),
+                        'entity' => $this->getCategoryEntity(2, true, null),
                         'children' => [
                             [
-                                'entity'   => $this->getCategoryEntity(
+                                'entity' => $this->getCategoryEntity(
                                     6,
                                     false,
                                     $this->getCategoryEntity(2, false, null)
@@ -101,7 +101,7 @@ class CategoryTreeTest extends PHPUnit_Framework_TestCase
                         ],
                     ],
                     [
-                        'entity'   => $this->getCategoryEntity(3, true, null),
+                        'entity' => $this->getCategoryEntity(3, true, null),
                         'children' => [],
                     ],
                 ],
@@ -110,7 +110,7 @@ class CategoryTreeTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests that the tree builder is working fine
+     * Tests that the tree builder is working fine.
      *
      * @dataProvider buildCategoryProvider
      *
@@ -120,8 +120,8 @@ class CategoryTreeTest extends PHPUnit_Framework_TestCase
     public function testBuildCategory($allRepositoryCategories, $expectedCategoryTree)
     {
         $mockCategoryRepository = $this->buildCategoryRepositoryMock($allRepositoryCategories);
-        $categoryTreeClass      = $this->buildCategoryTreeClass($mockCategoryRepository);
-        $categoryTreeResponse   = $categoryTreeClass->buildCategoryTree();
+        $categoryTreeClass = $this->buildCategoryTreeClass($mockCategoryRepository);
+        $categoryTreeResponse = $categoryTreeClass->buildCategoryTree();
 
         $message = 'The received response does not match with the expected one';
 
@@ -174,8 +174,8 @@ class CategoryTreeTest extends PHPUnit_Framework_TestCase
     /**
      * Gets a new category entity class.
      *
-     * @param integer       $id             The id to set to the entity.
-     * @param boolean       $isRoot         If the category is a root category.
+     * @param int           $id             The id to set to the entity.
+     * @param bool          $isRoot         If the category is a root category.
      * @param Category|null $parentCategory The category to set as parent
      *
      * @return Category

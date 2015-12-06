@@ -22,19 +22,19 @@ use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
- * Interface ZoneInterface
+ * Interface ZoneInterface.
  */
 interface ZoneInterface extends IdentifiableInterface, DateTimeInterface, EnabledInterface
 {
     /**
-     * Get Name
+     * Get Name.
      *
      * @return string Name
      */
     public function getName();
 
     /**
-     * Sets Name
+     * Sets Name.
      *
      * @param string $name Name
      *
@@ -43,14 +43,14 @@ interface ZoneInterface extends IdentifiableInterface, DateTimeInterface, Enable
     public function setName($name);
 
     /**
-     * Get Code
+     * Get Code.
      *
      * @return string Code
      */
     public function getCode();
 
     /**
-     * Sets Code
+     * Sets Code.
      *
      * @param string $code Code
      *
@@ -59,14 +59,14 @@ interface ZoneInterface extends IdentifiableInterface, DateTimeInterface, Enable
     public function setCode($code);
 
     /**
-     * Get Locations
+     * Get Locations.
      *
      * @return mixed Locations
      */
     public function getLocations();
 
     /**
-     * Sets Locations
+     * Sets Locations.
      *
      * @param array $locations Locations
      *
@@ -75,7 +75,7 @@ interface ZoneInterface extends IdentifiableInterface, DateTimeInterface, Enable
     public function setLocations(array $locations);
 
     /**
-     * Add location
+     * Add location.
      *
      * @param string $location Location
      *
@@ -84,7 +84,7 @@ interface ZoneInterface extends IdentifiableInterface, DateTimeInterface, Enable
     public function addLocation($location);
 
     /**
-     * Remove location
+     * Remove location.
      *
      * @param string $location Location
      *

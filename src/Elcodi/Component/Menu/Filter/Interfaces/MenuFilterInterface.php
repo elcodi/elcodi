@@ -20,16 +20,16 @@ namespace Elcodi\Component\Menu\Filter\Interfaces;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface;
 
 /**
- * Interface MenuFilterInterface
+ * Interface MenuFilterInterface.
  */
 interface MenuFilterInterface
 {
     /**
-     * Filter a node once this has to be rendered
+     * Filter a node once this has to be rendered.
      *
      * @param NodeInterface $menuNode Menu node
      *
-     * @return boolean Node must be rendered
+     * @return bool Node must be rendered
      */
     public function filter(NodeInterface $menuNode);
 }

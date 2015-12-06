@@ -21,7 +21,7 @@ use Elcodi\Component\Language\Entity\Interfaces\LocaleInterface;
 use Elcodi\Component\Language\Entity\Locale;
 
 /**
- * Locale manager service
+ * Locale manager service.
  *
  * Manages locale
  */
@@ -63,7 +63,7 @@ class LocaleManager
     private $localeTranslationAssociations;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param LocaleInterface $locale                        Locale
      * @param string          $encoding                      Encoding
@@ -83,7 +83,7 @@ class LocaleManager
     }
 
     /**
-     * Initialize locale
+     * Initialize locale.
      *
      * @return $this Self object
      */
@@ -96,7 +96,7 @@ class LocaleManager
     }
 
     /**
-     * Returns current locale
+     * Returns current locale.
      *
      * @return Locale locale
      */
@@ -106,7 +106,7 @@ class LocaleManager
     }
 
     /**
-     * Returns current locale
+     * Returns current locale.
      *
      * @return Locale locale
      */
@@ -118,7 +118,7 @@ class LocaleManager
     }
 
     /**
-     * Sets locale
+     * Sets locale.
      *
      * @param LocaleInterface $locale locale
      *
@@ -133,7 +133,7 @@ class LocaleManager
     }
 
     /**
-     * Returns current encoding
+     * Returns current encoding.
      *
      * @return string encoding
      */
@@ -143,7 +143,7 @@ class LocaleManager
     }
 
     /**
-     * Sets encoding
+     * Sets encoding.
      *
      * @param string $encoding encoding
      *
@@ -158,7 +158,7 @@ class LocaleManager
     }
 
     /**
-     * Returns current locale info
+     * Returns current locale info.
      *
      * @return array localeInfo
      */
@@ -168,7 +168,7 @@ class LocaleManager
     }
 
     /**
-     * Returns the ISO code of the country according to locale
+     * Returns the ISO code of the country according to locale.
      *
      * @return Locale 2-letter ISO code
      */
@@ -189,7 +189,7 @@ class LocaleManager
 
     /**
      * Returns the locale used to look for translations, which may not be the
-     * same as $this->locale
+     * same as $this->locale.
      *
      * @return Locale Locale
      */

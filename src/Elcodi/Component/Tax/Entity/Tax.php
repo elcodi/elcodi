@@ -22,7 +22,7 @@ use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Tax\Entity\Interfaces\TaxInterface;
 
 /**
- * Class Tax
+ * Class Tax.
  */
 class Tax implements TaxInterface
 {
@@ -50,7 +50,7 @@ class Tax implements TaxInterface
     protected $value;
 
     /**
-     * Gets Tax name
+     * Gets Tax name.
      *
      * @return string
      */
@@ -60,7 +60,7 @@ class Tax implements TaxInterface
     }
 
     /**
-     * Sets tax name
+     * Sets tax name.
      *
      * @param string $name
      *
@@ -74,7 +74,7 @@ class Tax implements TaxInterface
     }
 
     /**
-     * Get Tax description
+     * Get Tax description.
      *
      * @return string
      */
@@ -84,7 +84,7 @@ class Tax implements TaxInterface
     }
 
     /**
-     * Sets Tax description
+     * Sets Tax description.
      *
      * @param string $description
      *
@@ -98,7 +98,7 @@ class Tax implements TaxInterface
     }
 
     /**
-     * Sets Tax value in percentage
+     * Sets Tax value in percentage.
      *
      * @return float
      */
@@ -108,7 +108,7 @@ class Tax implements TaxInterface
     }
 
     /**
-     * Gets Tax value in percentage
+     * Gets Tax value in percentage.
      *
      * @param float $value
      *
@@ -122,7 +122,7 @@ class Tax implements TaxInterface
     }
 
     /**
-     * Returns the tax name
+     * Returns the tax name.
      *
      * @return string
      */

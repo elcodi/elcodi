@@ -24,7 +24,7 @@ use Elcodi\Component\Metric\Core\Bucket\Abstracts\AbstractMetricsBucket;
 use Elcodi\Component\Metric\Core\Factory\EntryFactory;
 
 /**
- * Class MetricManager
+ * Class MetricManager.
  */
 class MetricManager
 {
@@ -50,7 +50,7 @@ class MetricManager
     private $entryObjectManager;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param AbstractMetricsBucket $metricsBucket      Metrics bucket
      * @param EntryFactory          $entryFactory       Entry Factory
@@ -67,12 +67,12 @@ class MetricManager
     }
 
     /**
-     * Adds a new entry into database and into metrics bucket
+     * Adds a new entry into database and into metrics bucket.
      *
      * @param string   $token    Event
      * @param string   $event    Token
      * @param string   $uniqueId Unique id
-     * @param integer  $type     Type
+     * @param int      $type     Type
      * @param DateTime $dateTime DateTime
      *
      * @return $this Self Object

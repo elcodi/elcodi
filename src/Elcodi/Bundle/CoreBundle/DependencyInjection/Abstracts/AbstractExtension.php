@@ -29,7 +29,7 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * Class AbstractExtension
+ * Class AbstractExtension.
  */
 abstract class AbstractExtension
     implements
@@ -49,7 +49,7 @@ abstract class AbstractExtension
     abstract public function getAlias();
 
     /**
-     * Returns extension configuration
+     * Returns extension configuration.
      *
      * @param array            $config    An array of configuration values
      * @param ContainerBuilder $container A ContainerBuilder instance
@@ -141,7 +141,7 @@ abstract class AbstractExtension
     }
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -154,7 +154,7 @@ abstract class AbstractExtension
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * Each array position can be a simple file name if must be loaded always,
      * or an array, with the filename in the first position, and a boolean in
@@ -197,7 +197,7 @@ abstract class AbstractExtension
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -226,7 +226,7 @@ abstract class AbstractExtension
     }
 
     /**
-     * Hook after load the full container
+     * Hook after load the full container.
      *
      * @param array            $config    Configuration
      * @param ContainerBuilder $container Container
@@ -237,7 +237,7 @@ abstract class AbstractExtension
     }
 
     /**
-     * Process configuration
+     * Process configuration.
      *
      * @param ConfigurationInterface $configuration Configuration object
      * @param array                  $configs       Configuration stack
@@ -252,7 +252,7 @@ abstract class AbstractExtension
     }
 
     /**
-     * Apply parametrized values
+     * Apply parametrized values.
      *
      * @param array            $config    Configuration
      * @param ContainerBuilder $container Container
@@ -272,7 +272,7 @@ abstract class AbstractExtension
     }
 
     /**
-     * Load multiple files
+     * Load multiple files.
      *
      * @param array            $configFiles Config files
      * @param ContainerBuilder $container   Container
@@ -299,7 +299,7 @@ abstract class AbstractExtension
     }
 
     /**
-     * Override Doctrine entities
+     * Override Doctrine entities.
      *
      * @param ContainerBuilder $container Container
      *

@@ -22,19 +22,19 @@ use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 
 /**
- * Interface CartCouponInterface
+ * Interface CartCouponInterface.
  */
 interface CartCouponInterface extends IdentifiableInterface
 {
     /**
-     * Get Cart
+     * Get Cart.
      *
      * @return CartInterface Cart
      */
     public function getCart();
 
     /**
-     * Sets Cart
+     * Sets Cart.
      *
      * @param CartInterface $cart Cart
      *
@@ -43,14 +43,14 @@ interface CartCouponInterface extends IdentifiableInterface
     public function setCart(CartInterface $cart);
 
     /**
-     * Get Coupon
+     * Get Coupon.
      *
      * @return CouponInterface Coupon
      */
     public function getCoupon();
 
     /**
-     * Sets Coupon
+     * Sets Coupon.
      *
      * @param CouponInterface $coupon Coupon
      *

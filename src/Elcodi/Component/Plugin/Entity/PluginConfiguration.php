@@ -20,7 +20,7 @@ namespace Elcodi\Component\Plugin\Entity;
 use RuntimeException;
 
 /**
- * Class PluginConfiguration
+ * Class PluginConfiguration.
  */
 class PluginConfiguration
 {
@@ -32,7 +32,7 @@ class PluginConfiguration
     protected $configuration;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param array $configuration Configuration
      */
@@ -42,7 +42,7 @@ class PluginConfiguration
     }
 
     /**
-     * Get configuration
+     * Get configuration.
      *
      * @param array $configuration Configuration
      *
@@ -56,7 +56,7 @@ class PluginConfiguration
     }
 
     /**
-     * Get configuration
+     * Get configuration.
      *
      * @return array $configuration Configuration
      */
@@ -66,7 +66,7 @@ class PluginConfiguration
     }
 
     /**
-     * Get configuration element
+     * Get configuration element.
      *
      * @param string $name Configuration element name
      *
@@ -80,7 +80,7 @@ class PluginConfiguration
     }
 
     /**
-     * Get fields
+     * Get fields.
      *
      * @return array Fields
      */
@@ -90,7 +90,7 @@ class PluginConfiguration
     }
 
     /**
-     * Get field element
+     * Get field element.
      *
      * @param string $fieldName Field name
      *
@@ -104,7 +104,7 @@ class PluginConfiguration
     }
 
     /**
-     * Has field element
+     * Has field element.
      *
      * @param string $fieldName Field name
      *
@@ -116,7 +116,7 @@ class PluginConfiguration
     }
 
     /**
-     * Get field element
+     * Get field element.
      *
      * @param string $fieldName  Field name
      * @param mixed  $fieldValue Field value
@@ -135,7 +135,7 @@ class PluginConfiguration
     }
 
     /**
-     * Get field value
+     * Get field value.
      *
      * @param string $fieldName Field name
      *
@@ -181,7 +181,7 @@ class PluginConfiguration
     }
 
     /**
-     * Return new PluginConfiguration instance
+     * Return new PluginConfiguration instance.
      *
      * @param array $configuration Configuration
      *

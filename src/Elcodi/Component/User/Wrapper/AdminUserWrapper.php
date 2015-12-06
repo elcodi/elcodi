@@ -25,12 +25,12 @@ use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
 use Elcodi\Component\User\Factory\AdminUserFactory;
 
 /**
- * Cart to order service
+ * Cart to order service.
  */
 class AdminUserWrapper implements WrapperInterface
 {
     /**
-     * @var AdminUserInterface|Object|string
+     * @var AdminUserInterface|object|string
      *
      * AdminUser element. This parameter can be filled with an internal
      * AdminUser implementation, with an object with __toString() method
@@ -56,7 +56,7 @@ class AdminUserWrapper implements WrapperInterface
     private $tokenStorage;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * This wrapper loads AdminUser from database if this exists and is
      * authenticated.
@@ -76,7 +76,7 @@ class AdminUserWrapper implements WrapperInterface
 
     /**
      * Get loaded object. If object is not loaded yet, then load it and save it
-     * locally. Otherwise, just return the pre-loaded object
+     * locally. Otherwise, just return the pre-loaded object.
      *
      * @return mixed Loaded object
      */

@@ -20,12 +20,12 @@ namespace Elcodi\Bundle\LanguageBundle\Tests\Functional\Services;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Tests LanguageManagerTest class
+ * Tests LanguageManagerTest class.
  */
 class LanguageManagerTest extends WebTestCase
 {
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -37,7 +37,7 @@ class LanguageManagerTest extends WebTestCase
     }
 
     /**
-     * Test get languages
+     * Test get languages.
      */
     public function testGetLanguages()
     {
@@ -59,7 +59,7 @@ class LanguageManagerTest extends WebTestCase
     }
 
     /**
-     * Test get languages iso
+     * Test get languages iso.
      */
     public function testGetLanguagesIso()
     {

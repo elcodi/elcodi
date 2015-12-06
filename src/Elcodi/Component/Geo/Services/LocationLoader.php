@@ -22,7 +22,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Elcodi\Component\Geo\Adapter\LocationLoader\Interfaces\LocationLoaderAdapterInterface;
 
 /**
- * Class LocationLoader
+ * Class LocationLoader.
  */
 class LocationLoader
 {
@@ -41,7 +41,7 @@ class LocationLoader
     private $locationLoaderAdapter;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param EntityManagerInterface         $locationEntityManager Location Entity manager
      * @param LocationLoaderAdapterInterface $locationLoaderAdapter Location Loader adapter
@@ -55,7 +55,7 @@ class LocationLoader
     }
 
     /**
-     * Load country data
+     * Load country data.
      *
      * @param string $countryIso Country iso
      *

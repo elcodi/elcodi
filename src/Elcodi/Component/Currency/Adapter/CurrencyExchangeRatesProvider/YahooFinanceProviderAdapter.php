@@ -22,7 +22,7 @@ use GuzzleHttp\Client;
 use Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\Interfaces\CurrencyExchangeRatesProviderAdapterInterface;
 
 /**
- * Class YahooFinanceProviderAdapter
+ * Class YahooFinanceProviderAdapter.
  */
 class YahooFinanceProviderAdapter implements CurrencyExchangeRatesProviderAdapterInterface
 {
@@ -34,7 +34,7 @@ class YahooFinanceProviderAdapter implements CurrencyExchangeRatesProviderAdapte
     private $client;
 
     /**
-     * Service constructor
+     * Service constructor.
      *
      * @param Client $client Guzzle client for requests
      */

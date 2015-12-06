@@ -23,7 +23,7 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * This is the class that loads and manages your bundle configuration
+ * This is the class that loads and manages your bundle configuration.
  */
 class ElcodiLanguageExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
@@ -35,7 +35,7 @@ class ElcodiLanguageExtension extends AbstractExtension implements EntitiesOverr
     const EXTENSION_NAME = 'elcodi_language';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -62,7 +62,7 @@ class ElcodiLanguageExtension extends AbstractExtension implements EntitiesOverr
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -77,15 +77,15 @@ class ElcodiLanguageExtension extends AbstractExtension implements EntitiesOverr
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.language.class" => $config['mapping']['language']['class'],
-            "elcodi.entity.language.mapping_file" => $config['mapping']['language']['mapping_file'],
-            "elcodi.entity.language.manager" => $config['mapping']['language']['manager'],
-            "elcodi.entity.language.enabled" => $config['mapping']['language']['enabled'],
+            'elcodi.entity.language.class' => $config['mapping']['language']['class'],
+            'elcodi.entity.language.mapping_file' => $config['mapping']['language']['mapping_file'],
+            'elcodi.entity.language.manager' => $config['mapping']['language']['manager'],
+            'elcodi.entity.language.enabled' => $config['mapping']['language']['enabled'],
         ];
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * @param array $config Configuration
      *
@@ -120,7 +120,7 @@ class ElcodiLanguageExtension extends AbstractExtension implements EntitiesOverr
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */

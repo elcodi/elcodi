@@ -24,7 +24,7 @@ use Elcodi\Component\Product\ElcodiProductStock;
 use Elcodi\Component\Product\Repository\ProductRepository;
 
 /**
- * Product Collection provider
+ * Product Collection provider.
  *
  * Locale is injected because we can just query products.
  */
@@ -38,17 +38,17 @@ class ProductCollectionProvider
     private $productRepository;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * If the use stock option is enabled
      */
     private $useStock;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param ProductRepository $productRepository Product Repository
-     * @param boolean           $useStock          If this option is enabled
+     * @param bool              $useStock          If this option is enabled
      */
     public function __construct(
         ProductRepository $productRepository,
@@ -63,9 +63,9 @@ class ProductCollectionProvider
      * All products returned are
      * * enabled
      * * with stock > 0
-     * * with stock infinite
+     * * with stock infinite.
      *
-     * @param integer $limit Product limit. By default, this value is 0
+     * @param int $limit Product limit. By default, this value is 0
      *
      * @return ArrayCollection Set of products, result of the query
      */
@@ -95,9 +95,9 @@ class ProductCollectionProvider
 
     /**
      * Get products with price reduction.
-     * All products returned are activated and none deleted
+     * All products returned are activated and none deleted.
      *
-     * @param integer $limit Product limit. By default, this value is 0
+     * @param int $limit Product limit. By default, this value is 0
      *
      * @return ArrayCollection Set of products, result of the query
      */
@@ -128,7 +128,7 @@ class ProductCollectionProvider
     }
 
     /**
-     * Add stock properties to query builder
+     * Add stock properties to query builder.
      *
      * @param QueryBuilder $queryBuilder QueryBuilder
      *

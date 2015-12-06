@@ -20,7 +20,7 @@ namespace Elcodi\Component\Language\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class LanguageRepository
+ * Class LanguageRepository.
  */
 class LanguageRepository extends EntityRepository
 {

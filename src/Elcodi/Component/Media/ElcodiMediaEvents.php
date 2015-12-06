@@ -18,12 +18,12 @@
 namespace Elcodi\Component\Media;
 
 /**
- * Class ElcodiMediaEvents
+ * Class ElcodiMediaEvents.
  */
 final class ElcodiMediaEvents
 {
     /**
-     * This event is fired each time an image is going to be uploaded
+     * This event is fired each time an image is going to be uploaded.
      *
      * event.name : image.preupload
      * event.class : ImageUploadEvent
@@ -31,7 +31,7 @@ final class ElcodiMediaEvents
     const IMAGE_PREUPLOAD = 'image.preupload';
 
     /**
-     * This event is fired each time an image has been uploaded
+     * This event is fired each time an image has been uploaded.
      *
      * event.name : image.onupload
      * event.class : ImageUploadEvent

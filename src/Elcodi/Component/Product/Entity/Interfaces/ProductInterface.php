@@ -28,7 +28,7 @@ use Elcodi\Component\Media\Entity\Interfaces\PrincipalImageInterface;
 use Elcodi\Component\MetaData\Entity\Interfaces\MetaDataInterface;
 
 /**
- * Interface ProductInterface
+ * Interface ProductInterface.
  */
 interface ProductInterface
     extends
@@ -41,7 +41,7 @@ interface ProductInterface
     PrincipalImageInterface
 {
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name Name
      *
@@ -50,14 +50,14 @@ interface ProductInterface
     public function setName($name);
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
     public function getName();
 
     /**
-     * Set slug
+     * Set slug.
      *
      * @param string $slug Slug
      *
@@ -66,7 +66,7 @@ interface ProductInterface
     public function setSlug($slug);
 
     /**
-     * Get slug
+     * Get slug.
      *
      * @return string slug
      */
@@ -80,14 +80,14 @@ interface ProductInterface
     public function setDescription($description);
 
     /**
-     * Get description
+     * Get description.
      *
      * @return string Description
      */
     public function getDescription();
 
     /**
-     * Set short description
+     * Set short description.
      *
      * @param string $shortDescription Short description
      *
@@ -96,14 +96,14 @@ interface ProductInterface
     public function setShortDescription($shortDescription);
 
     /**
-     * Get short description
+     * Get short description.
      *
      * @return string Short description
      */
     public function getShortDescription();
 
     /**
-     * Set categories
+     * Set categories.
      *
      * @param Collection $categories Categories
      *
@@ -112,14 +112,14 @@ interface ProductInterface
     public function setCategories(Collection $categories);
 
     /**
-     * Get categories
+     * Get categories.
      *
      * @return Collection Categories
      */
     public function getCategories();
 
     /**
-     * Add category
+     * Add category.
      *
      * @param CategoryInterface $category Category
      *
@@ -128,7 +128,7 @@ interface ProductInterface
     public function addCategory(CategoryInterface $category);
 
     /**
-     * Remove category
+     * Remove category.
      *
      * @param CategoryInterface $category Category
      *
@@ -137,7 +137,7 @@ interface ProductInterface
     public function removeCategory(CategoryInterface $category);
 
     /**
-     * Set the principalCategory
+     * Set the principalCategory.
      *
      * @param CategoryInterface $principalCategory Principal category
      *
@@ -146,30 +146,30 @@ interface ProductInterface
     public function setPrincipalCategory(CategoryInterface $principalCategory = null);
 
     /**
-     * Get the principalCategory
+     * Get the principalCategory.
      *
      * @return CategoryInterface Principal category
      */
     public function getPrincipalCategory();
 
     /**
-     * Set show in home
+     * Set show in home.
      *
-     * @param boolean $showInHome Show in home
+     * @param bool $showInHome Show in home
      *
      * @return $this Self object
      */
     public function setShowInHome($showInHome);
 
     /**
-     * Get show in home
+     * Get show in home.
      *
-     * @return boolean Show in home
+     * @return bool Show in home
      */
     public function getShowInHome();
 
     /**
-     * Set product manufacturer
+     * Set product manufacturer.
      *
      * @param ManufacturerInterface $manufacturer Manufacturer
      *
@@ -178,21 +178,21 @@ interface ProductInterface
     public function setManufacturer(ManufacturerInterface $manufacturer = null);
 
     /**
-     * Product manufacturer
+     * Product manufacturer.
      *
      * @return ManufacturerInterface Manufacturer
      */
     public function getManufacturer();
 
     /**
-     * Returns product principal variant
+     * Returns product principal variant.
      *
      * @return VariantInterface
      */
     public function getPrincipalVariant();
 
     /**
-     * Sets product principal variant
+     * Sets product principal variant.
      *
      * @param VariantInterface $principalVariant
      *
@@ -201,7 +201,7 @@ interface ProductInterface
     public function setPrincipalVariant(VariantInterface $principalVariant);
 
     /**
-     * Adds an attribute if not already in the collection
+     * Adds an attribute if not already in the collection.
      *
      * @param AttributeInterface $attribute Attribute
      *
@@ -210,7 +210,7 @@ interface ProductInterface
     public function addAttribute(AttributeInterface $attribute);
 
     /**
-     * Removes an attribute from the collection
+     * Removes an attribute from the collection.
      *
      * @param AttributeInterface $attribute Attribute to be removed
      *
@@ -219,14 +219,14 @@ interface ProductInterface
     public function removeAttribute(AttributeInterface $attribute);
 
     /**
-     * Returns product attributes
+     * Returns product attributes.
      *
      * @return Collection Attributes
      */
     public function getAttributes();
 
     /**
-     * Sets product attributes
+     * Sets product attributes.
      *
      * @param Collection $attributes Attributes
      *
@@ -235,14 +235,14 @@ interface ProductInterface
     public function setAttributes(Collection $attributes);
 
     /**
-     * Gets product variants
+     * Gets product variants.
      *
      * @return Collection Variants
      */
     public function getVariants();
 
     /**
-     * Adds a Variant for this Product
+     * Adds a Variant for this Product.
      *
      * @param VariantInterface $variant Variant
      *
@@ -251,7 +251,7 @@ interface ProductInterface
     public function addVariant(VariantInterface $variant);
 
     /**
-     * Sets product variants
+     * Sets product variants.
      *
      * @param Collection $variants Variants
      *
@@ -260,9 +260,9 @@ interface ProductInterface
     public function setVariants(Collection $variants);
 
     /**
-     * Tells if this product has variants
+     * Tells if this product has variants.
      *
-     * @return boolean Product has variants
+     * @return bool Product has variants
      */
     public function hasVariants();
 }

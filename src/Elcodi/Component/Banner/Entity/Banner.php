@@ -28,7 +28,7 @@ use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 use Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait;
 
 /**
- * Banner
+ * Banner.
  */
 class Banner implements BannerInterface
 {
@@ -59,7 +59,7 @@ class Banner implements BannerInterface
     protected $url;
 
     /**
-     * @var integer
+     * @var int
      *
      * Position
      */
@@ -80,7 +80,7 @@ class Banner implements BannerInterface
     protected $bannerZones;
 
     /**
-     * Set banner name
+     * Set banner name.
      *
      * @param string $name Name of the banner
      *
@@ -94,7 +94,7 @@ class Banner implements BannerInterface
     }
 
     /**
-     * Get banner name
+     * Get banner name.
      *
      * @return string Name
      */
@@ -104,7 +104,7 @@ class Banner implements BannerInterface
     }
 
     /**
-     * Set banner description
+     * Set banner description.
      *
      * @param string $description Description of the banner
      *
@@ -118,7 +118,7 @@ class Banner implements BannerInterface
     }
 
     /**
-     * Get banner description
+     * Get banner description.
      *
      * @return string Description
      */
@@ -128,7 +128,7 @@ class Banner implements BannerInterface
     }
 
     /**
-     * Set banner url
+     * Set banner url.
      *
      * @param string $url Url of the banner
      *
@@ -142,7 +142,7 @@ class Banner implements BannerInterface
     }
 
     /**
-     * Get banner url
+     * Get banner url.
      *
      * @return string Url
      */
@@ -152,7 +152,7 @@ class Banner implements BannerInterface
     }
 
     /**
-     * Set banner zones to banner
+     * Set banner zones to banner.
      *
      * @param Collection $bannerZones Banner zones
      *
@@ -166,7 +166,7 @@ class Banner implements BannerInterface
     }
 
     /**
-     * Get banner zones from banner
+     * Get banner zones from banner.
      *
      * @return Collection banner zones
      */
@@ -176,7 +176,7 @@ class Banner implements BannerInterface
     }
 
     /**
-     * Add banner zone to banner
+     * Add banner zone to banner.
      *
      * @param BannerZoneInterface $bannerZone Banner Zone
      *
@@ -190,7 +190,7 @@ class Banner implements BannerInterface
     }
 
     /**
-     * Remove banner zone from banner
+     * Remove banner zone from banner.
      *
      * @param BannerZoneInterface $bannerZone Banner Zone
      *
@@ -204,7 +204,7 @@ class Banner implements BannerInterface
     }
 
     /**
-     * To string
+     * To string.
      *
      * @return string
      */

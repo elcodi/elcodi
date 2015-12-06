@@ -28,7 +28,7 @@ use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Geo\Entity\Interfaces\LocationInterface;
 
 /**
- * Class AbstractLocationCommand
+ * Class AbstractLocationCommand.
  */
 class AbstractLocationCommand extends AbstractElcodiCommand
 {
@@ -40,7 +40,7 @@ class AbstractLocationCommand extends AbstractElcodiCommand
     protected $locationDirector;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param ObjectDirector $locationDirector Location director
      */
@@ -52,7 +52,7 @@ class AbstractLocationCommand extends AbstractElcodiCommand
     }
 
     /**
-     * configure
+     * configure.
      */
     protected function configure()
     {
@@ -72,7 +72,7 @@ class AbstractLocationCommand extends AbstractElcodiCommand
     }
 
     /**
-     * Ensure deletion of a country
+     * Ensure deletion of a country.
      *
      * @param InputInterface  $input  The input interface
      * @param OutputInterface $output The output interface
@@ -118,7 +118,7 @@ class AbstractLocationCommand extends AbstractElcodiCommand
     }
 
     /**
-     * Asks to confirm the location removal
+     * Asks to confirm the location removal.
      *
      * @param InputInterface  $input       The input interface
      * @param OutputInterface $output      The output interface
@@ -145,7 +145,7 @@ class AbstractLocationCommand extends AbstractElcodiCommand
     }
 
     /**
-     * Drops the country and its relations
+     * Drops the country and its relations.
      *
      * @param LocationInterface $location The location to remove
      * @param OutputInterface   $output   A console output

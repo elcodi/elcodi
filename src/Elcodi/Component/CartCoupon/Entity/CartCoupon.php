@@ -23,7 +23,7 @@ use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 
 /**
- * Class CartCoupon
+ * Class CartCoupon.
  */
 class CartCoupon implements CartCouponInterface
 {
@@ -44,7 +44,7 @@ class CartCoupon implements CartCouponInterface
     protected $coupon;
 
     /**
-     * Get Cart
+     * Get Cart.
      *
      * @return CartInterface Cart
      */
@@ -54,7 +54,7 @@ class CartCoupon implements CartCouponInterface
     }
 
     /**
-     * Sets Cart
+     * Sets Cart.
      *
      * @param CartInterface $cart Cart
      *
@@ -68,7 +68,7 @@ class CartCoupon implements CartCouponInterface
     }
 
     /**
-     * Get Coupon
+     * Get Coupon.
      *
      * @return CouponInterface Coupon
      */
@@ -78,7 +78,7 @@ class CartCoupon implements CartCouponInterface
     }
 
     /**
-     * Sets Coupon
+     * Sets Coupon.
      *
      * @param CouponInterface $coupon Coupon
      *

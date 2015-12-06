@@ -23,7 +23,7 @@ use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 
 /**
- * Class RootCategoryEventListener
+ * Class RootCategoryEventListener.
  */
 class RootCategoryEventListener
 {

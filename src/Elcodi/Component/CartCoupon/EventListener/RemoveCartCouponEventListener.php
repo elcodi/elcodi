@@ -21,7 +21,7 @@ use Elcodi\Component\CartCoupon\Event\CartCouponOnRemoveEvent;
 use Elcodi\Component\CartCoupon\Services\CartCouponManager;
 
 /**
- * Class RemoveCartCouponEventListener
+ * Class RemoveCartCouponEventListener.
  */
 final class RemoveCartCouponEventListener
 {
@@ -33,7 +33,7 @@ final class RemoveCartCouponEventListener
     private $cartCouponManager;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CartCouponManager $cartCouponManager CartCoupon manager
      */
@@ -43,7 +43,7 @@ final class RemoveCartCouponEventListener
     }
 
     /**
-     * Removes Coupon from Cart, and flushes it
+     * Removes Coupon from Cart, and flushes it.
      *
      * @param CartCouponOnRemoveEvent $event Event
      */

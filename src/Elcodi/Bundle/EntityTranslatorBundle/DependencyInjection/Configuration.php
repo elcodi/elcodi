@@ -23,12 +23,12 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
 
 /**
- * This is the class that validates and merges configuration from your app/config files
+ * This is the class that validates and merges configuration from your app/config files.
  */
 class Configuration extends AbstractConfiguration implements ConfigurationInterface
 {
     /**
-     * Configure the root node
+     * Configure the root node.
      *
      * @param ArrayNodeDefinition $rootNode
      */

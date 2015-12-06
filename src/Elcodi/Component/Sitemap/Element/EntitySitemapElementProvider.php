@@ -20,7 +20,7 @@ namespace Elcodi\Component\Sitemap\Element;
 use Doctrine\Common\Persistence\ObjectRepository;
 
 /**
- * Class EntitySitemapElementProvider
+ * Class EntitySitemapElementProvider.
  */
 class EntitySitemapElementProvider
 {
@@ -46,7 +46,7 @@ class EntitySitemapElementProvider
     private $arguments;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param ObjectRepository $repository Repository
      * @param string           $method     Method
@@ -63,7 +63,7 @@ class EntitySitemapElementProvider
     }
 
     /**
-     * Get entities from provider
+     * Get entities from provider.
      *
      * @return array Entities
      */

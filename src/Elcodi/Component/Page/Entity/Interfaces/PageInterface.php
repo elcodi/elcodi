@@ -25,7 +25,7 @@ use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\MetaData\Entity\Interfaces\MetaDataInterface;
 
 /**
- * Interface PageInterface
+ * Interface PageInterface.
  *
  * @author Cayetano Soriano <neoshadybeat@gmail.com>
  * @author Jordi Grados <planetzombies@gmail.com>
@@ -40,14 +40,14 @@ interface PageInterface
     EnabledInterface
 {
     /**
-     * Get Name
+     * Get Name.
      *
      * @return string Name
      */
     public function getName();
 
     /**
-     * Sets Name
+     * Sets Name.
      *
      * @param string $name Name
      *
@@ -56,14 +56,14 @@ interface PageInterface
     public function setName($name);
 
     /**
-     * Get the path
+     * Get the path.
      *
      * @return string
      */
     public function getPath();
 
     /**
-     * Set the path
+     * Set the path.
      *
      * @param string $path The path
      *
@@ -72,14 +72,14 @@ interface PageInterface
     public function setPath($path);
 
     /**
-     * Get the title
+     * Get the title.
      *
      * @return string
      */
     public function getTitle();
 
     /**
-     * Set the title
+     * Set the title.
      *
      * @param string $title The title
      *
@@ -88,14 +88,14 @@ interface PageInterface
     public function setTitle($title);
 
     /**
-     * Get the content
+     * Get the content.
      *
      * @return string
      */
     public function getContent();
 
     /**
-     * Set the content
+     * Set the content.
      *
      * @param string $content The content
      *
@@ -104,30 +104,30 @@ interface PageInterface
     public function setContent($content);
 
     /**
-     * Get Type
+     * Get Type.
      *
-     * @return integer Type
+     * @return int Type
      */
     public function getType();
 
     /**
-     * Sets Type
+     * Sets Type.
      *
-     * @param integer $type Type
+     * @param int $type Type
      *
      * @return $this Self object
      */
     public function setType($type);
 
     /**
-     * Get PublicationDate
+     * Get PublicationDate.
      *
      * @return DateTime PublicationDate
      */
     public function getPublicationDate();
 
     /**
-     * Sets PublicationDate
+     * Sets PublicationDate.
      *
      * @param DateTime $publicationDate PublicationDate
      *
@@ -136,18 +136,18 @@ interface PageInterface
     public function setPublicationDate(DateTime $publicationDate);
 
     /**
-     * Sets the persistence property
+     * Sets the persistence property.
      *
-     * @param boolean $persistent If the page can't be removed
+     * @param bool $persistent If the page can't be removed
      *
      * @return $this Self object
      */
     public function setPersistent($persistent);
 
     /**
-     * Gets the page persistence
+     * Gets the page persistence.
      *
-     * @return boolean If the page is persistent
+     * @return bool If the page is persistent
      */
     public function isPersistent();
 }

@@ -23,7 +23,7 @@ use Elcodi\Component\Core\Command\Abstracts\AbstractElcodiCommand;
 use Elcodi\Component\Plugin\Repository\PluginRepository;
 
 /**
- * Class AbstractPluginEnableCommand
+ * Class AbstractPluginEnableCommand.
  */
 abstract class AbstractPluginEnableCommand extends AbstractElcodiCommand
 {
@@ -42,7 +42,7 @@ abstract class AbstractPluginEnableCommand extends AbstractElcodiCommand
     protected $pluginObjectManager;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param PluginRepository $pluginRepository    Plugin repository
      * @param ObjectManager    $pluginObjectManager pluginObjectManager

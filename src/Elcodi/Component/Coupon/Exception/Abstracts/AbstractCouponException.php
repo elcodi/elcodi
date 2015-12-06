@@ -20,7 +20,7 @@ namespace Elcodi\Component\Coupon\Exception\Abstracts;
 use Exception;
 
 /**
- * Custom AbstractCouponException
+ * Custom AbstractCouponException.
  */
 abstract class AbstractCouponException extends Exception
 {

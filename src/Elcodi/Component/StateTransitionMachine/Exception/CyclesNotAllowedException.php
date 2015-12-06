@@ -20,7 +20,7 @@ namespace Elcodi\Component\StateTransitionMachine\Exception;
 use Exception;
 
 /**
- * Class CyclesNotAllowedException
+ * Class CyclesNotAllowedException.
  */
 class CyclesNotAllowedException extends Exception
 {

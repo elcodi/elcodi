@@ -24,15 +24,15 @@ use Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException;
 use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
 
 /**
- * Class ValidateCouponRulesEventListenerTest
+ * Class ValidateCouponRulesEventListenerTest.
  */
 class ValidateCouponRulesEventListenerTest extends AbstractCartCouponEventListenerTest
 {
     /**
-     * Tests coupon rules when all rules validate
+     * Tests coupon rules when all rules validate.
      *
-     * @param array   $expressions   One or more expressions, only the last one will be checked
-     * @param integer $couponsNumber Number of coupons that should apply
+     * @param array $expressions   One or more expressions, only the last one will be checked
+     * @param int   $couponsNumber Number of coupons that should apply
      *
      * @dataProvider dataValidateCartCouponRules
      */
@@ -76,7 +76,7 @@ class ValidateCouponRulesEventListenerTest extends AbstractCartCouponEventListen
         $this->assertCount($couponsNumber, $cartCoupons);
 
         /**
-         * Clean operations to avoid restart scenario
+         * Clean operations to avoid restart scenario.
          */
         $coupon->setRule(null);
         $this->getDirector('rule')->remove($rules);
@@ -89,7 +89,7 @@ class ValidateCouponRulesEventListenerTest extends AbstractCartCouponEventListen
     }
 
     /**
-     * Data for testValidateCartCouponRules
+     * Data for testValidateCartCouponRules.
      */
     public function dataValidateCartCouponRules()
     {
@@ -113,7 +113,7 @@ class ValidateCouponRulesEventListenerTest extends AbstractCartCouponEventListen
             [
                 [
                     'few_products' => 'cart.getTotalItemNumber() < 5',
-                    'low_cost'     => 'cart.getAmount().getAmount() > 2000',
+                    'low_cost' => 'cart.getAmount().getAmount() > 2000',
                     'rule("few_products") and rule("low_cost")',
                 ],
                 1,

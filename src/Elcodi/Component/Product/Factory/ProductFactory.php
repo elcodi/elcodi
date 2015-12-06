@@ -25,21 +25,21 @@ use Elcodi\Component\Product\ElcodiProductTypes;
 use Elcodi\Component\Product\Entity\Product;
 
 /**
- * Factory for Product entities
+ * Factory for Product entities.
  */
 class ProductFactory extends AbstractPurchasableFactory
 {
     /**
-     * @var boolean
+     * @var bool
      *
      * Use use stock
      */
     public $useStock = false;
 
     /**
-     * Set use stock
+     * Set use stock.
      *
-     * @param boolean $useStock Infinite stock
+     * @param bool $useStock Infinite stock
      *
      * @return $this Self object
      */
@@ -51,7 +51,7 @@ class ProductFactory extends AbstractPurchasableFactory
     }
 
     /**
-     * Creates and returns a pristine Product instance
+     * Creates and returns a pristine Product instance.
      *
      * Prices are initialized to "zero amount" Money value objects,
      * using injected CurrencyWrapper default Currency

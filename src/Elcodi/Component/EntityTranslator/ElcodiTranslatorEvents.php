@@ -18,12 +18,12 @@
 namespace Elcodi\Component\EntityTranslator;
 
 /**
- * Class ElcodiTranslatorEvents
+ * Class ElcodiTranslatorEvents.
  */
 final class ElcodiTranslatorEvents
 {
     /**
-     * This event is fired each time a coupon has been used
+     * This event is fired each time a coupon has been used.
      *
      * event.name : translator.warmup
      * event.class : TranslatorWarmUpEvent

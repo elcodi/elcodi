@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Media\Entity\Traits;
 
 /**
- * Trait PrincipalImageTrait
+ * Trait PrincipalImageTrait.
  */
 trait PrincipalImageTrait
 {
@@ -30,7 +30,7 @@ trait PrincipalImageTrait
     protected $principalImage;
 
     /**
-     * Set the principalImage
+     * Set the principalImage.
      *
      * @param \Elcodi\Component\Media\Entity\Interfaces\ImageInterface $principalImage Principal image
      *
@@ -44,7 +44,7 @@ trait PrincipalImageTrait
     }
 
     /**
-     * Get the principalImage
+     * Get the principalImage.
      *
      * @return \Elcodi\Component\Media\Entity\Interfaces\ImageInterface Principal image
      */

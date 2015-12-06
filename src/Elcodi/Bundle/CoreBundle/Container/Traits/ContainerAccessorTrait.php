@@ -25,7 +25,7 @@ use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
- * Trait ContainerAccessorTrait
+ * Trait ContainerAccessorTrait.
  */
 trait ContainerAccessorTrait
 {
@@ -37,7 +37,7 @@ trait ContainerAccessorTrait
     protected static $container;
 
     /**
-     * Get manager given its its entity name
+     * Get manager given its its entity name.
      *
      * @param string $entityName Entity name
      *
@@ -49,7 +49,7 @@ trait ContainerAccessorTrait
     }
 
     /**
-     * Get entity repository given its entity name
+     * Get entity repository given its entity name.
      *
      * @param string $entityName Entity name
      *
@@ -61,7 +61,7 @@ trait ContainerAccessorTrait
     }
 
     /**
-     * Get factory given its its entity name
+     * Get factory given its its entity name.
      *
      * @param string $entityName Entity name
      *
@@ -73,7 +73,7 @@ trait ContainerAccessorTrait
     }
 
     /**
-     * Get director given its its entity name
+     * Get director given its its entity name.
      *
      * @param string $entityName Entity name
      *
@@ -85,7 +85,7 @@ trait ContainerAccessorTrait
     }
 
     /**
-     * Get container service
+     * Get container service.
      *
      * @param string $serviceName Container service name
      *
@@ -97,7 +97,7 @@ trait ContainerAccessorTrait
     }
 
     /**
-     * Get container parameter
+     * Get container parameter.
      *
      * @param string $parameterName Container parameter name
      *
@@ -109,7 +109,7 @@ trait ContainerAccessorTrait
     }
 
     /**
-     * Get the entity instance with id $id
+     * Get the entity instance with id $id.
      *
      * @param string $entityName Entity name
      * @param mixed  $id         Instance id
@@ -124,7 +124,7 @@ trait ContainerAccessorTrait
     }
 
     /**
-     * Get all entity instances
+     * Get all entity instances.
      *
      * @param string $entityName Entity name
      *
@@ -139,7 +139,7 @@ trait ContainerAccessorTrait
 
     /**
      * Save an entity. To ensure the method is simple, the entity will be
-     * persisted always
+     * persisted always.
      *
      * @param mixed $entity Entity
      *

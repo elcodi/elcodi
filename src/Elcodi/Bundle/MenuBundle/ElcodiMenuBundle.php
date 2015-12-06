@@ -31,7 +31,7 @@ use Elcodi\Bundle\MenuBundle\CompilerPass\MenuModifierCompilerPass;
 use Elcodi\Bundle\MenuBundle\DependencyInjection\ElcodiMenuExtension;
 
 /**
- * Class ElcodiMenuBundle
+ * Class ElcodiMenuBundle.
  */
 class ElcodiMenuBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
@@ -60,7 +60,7 @@ class ElcodiMenuBundle extends AbstractElcodiBundle implements DependentBundleIn
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

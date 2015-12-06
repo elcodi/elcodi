@@ -18,12 +18,12 @@
 namespace Elcodi\Component\Payment;
 
 /**
- * Class ElcodiPaymentEvents
+ * Class ElcodiPaymentEvents.
  */
 final class ElcodiPaymentEvents
 {
     /**
-     * This event is dispatched when all payment methods are required
+     * This event is dispatched when all payment methods are required.
      *
      * event.name : payment.collect
      * event.class : PaymentCollectionEvent

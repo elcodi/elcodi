@@ -20,7 +20,7 @@ namespace Elcodi\Component\Geo\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class AddressRepository
+ * Class AddressRepository.
  */
 class AddressRepository extends EntityRepository
 {

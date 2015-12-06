@@ -24,12 +24,12 @@ use Elcodi\Component\Core\EventDispatcher\Abstracts\AbstractEventDispatcher;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 
 /**
- * Class OrderCouponEventDispatcher
+ * Class OrderCouponEventDispatcher.
  */
 class OrderCouponEventDispatcher extends AbstractEventDispatcher
 {
     /**
-     * Dispatch event just before a coupon is applied into an Order
+     * Dispatch event just before a coupon is applied into an Order.
      *
      * @param OrderInterface  $cart   Cart where to apply the coupon
      * @param CouponInterface $coupon Coupon to be applied

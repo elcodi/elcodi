@@ -22,7 +22,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 
 /**
- * Class CartSessionManager
+ * Class CartSessionManager.
  *
  * Manages all cart mapping in session
  *
@@ -50,18 +50,18 @@ class CartSessionManager
     private $sessionFieldName;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * Save cart in session
      */
     private $saveInSession;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param SessionInterface $session          HTTP session
      * @param string           $sessionFieldName Session key representing cart
-     * @param boolean          $saveInSession    save cart in session
+     * @param bool             $saveInSession    save cart in session
      */
     public function __construct(
         SessionInterface $session,
@@ -74,7 +74,7 @@ class CartSessionManager
     }
 
     /**
-     * Set Cart in session
+     * Set Cart in session.
      *
      * @param CartInterface $cart Cart
      *
@@ -97,9 +97,9 @@ class CartSessionManager
     }
 
     /**
-     * Get current cart id loaded in session
+     * Get current cart id loaded in session.
      *
-     * @return integer Cart id
+     * @return int Cart id
      */
     public function get()
     {

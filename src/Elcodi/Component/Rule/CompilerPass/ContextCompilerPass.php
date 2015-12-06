@@ -22,12 +22,12 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
- * Class ContextCompilerPass
+ * Class ContextCompilerPass.
  */
 class ContextCompilerPass implements CompilerPassInterface
 {
     /**
-     * Collect services tagged to add context for RuleManager
+     * Collect services tagged to add context for RuleManager.
      *
      * @param ContainerBuilder $container Container
      */

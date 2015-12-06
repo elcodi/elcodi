@@ -28,7 +28,7 @@ use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 use Elcodi\Component\Language\Entity\Interfaces\LocaleInterface;
 
 /**
- * Class MoneyPrinter
+ * Class MoneyPrinter.
  *
  * This service provides a different ways for Money print
  */
@@ -56,7 +56,7 @@ class MoneyPrinter
     private $locale;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CurrencyConverter $currencyConverter Currency converter
      * @param CurrencyWrapper   $currencyWrapper   Currency wrapper
@@ -73,7 +73,7 @@ class MoneyPrinter
     }
 
     /**
-     * Return a formatted price given an Money object and the target currency
+     * Return a formatted price given an Money object and the target currency.
      *
      * If money is null, print empty string
      *
@@ -113,7 +113,7 @@ class MoneyPrinter
     }
 
     /**
-     * Return a formatted price given an Money object
+     * Return a formatted price given an Money object.
      *
      * If money is null, print empty string
      *
@@ -140,7 +140,7 @@ class MoneyPrinter
          * The precision of the integer amount for a given Money
          * (cents, thousandths, 10-thousandths, etc) should be
          * stored in the Currency object. We assume amounts are
-         * represented in cents
+         * represented in cents.
          *
          * Loss of precision due to conversion is possible, but only when
          * displaying prices. This operation does not affect amounts
@@ -154,11 +154,11 @@ class MoneyPrinter
     }
 
     /**
-     * Return a formatted price given the price in an integer format
+     * Return a formatted price given the price in an integer format.
      *
      * Takes the currency from CurrencyWrapper
      *
-     * @param integer $value Value
+     * @param int $value Value
      *
      * @return string The formatted price
      */

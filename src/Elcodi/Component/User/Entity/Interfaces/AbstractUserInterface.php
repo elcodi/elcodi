@@ -25,7 +25,7 @@ use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
- * Interface AbstractUserInterface
+ * Interface AbstractUserInterface.
  */
 interface AbstractUserInterface
     extends
@@ -36,7 +36,7 @@ interface AbstractUserInterface
     EnabledInterface
 {
     /**
-     * Sets a hash so it can be used to login once without the need to use the password
+     * Sets a hash so it can be used to login once without the need to use the password.
      *
      * @param string $oneTimeLoginHash The hash you want to set for the one time login
      *
@@ -45,14 +45,14 @@ interface AbstractUserInterface
     public function setOneTimeLoginHash($oneTimeLoginHash);
 
     /**
-     * Gets the one time login hash
+     * Gets the one time login hash.
      *
      * @return string Login hash
      */
     public function getOneTimeLoginHash();
 
     /**
-     * Set recovery hash
+     * Set recovery hash.
      *
      * @param string $recoveryHash
      *
@@ -61,14 +61,14 @@ interface AbstractUserInterface
     public function setRecoveryHash($recoveryHash);
 
     /**
-     * Get recovery hash
+     * Get recovery hash.
      *
      * @return string Recovery Hash
      */
     public function getRecoveryHash();
 
     /**
-     * Sets Firstname
+     * Sets Firstname.
      *
      * @param string $firstname Firstname
      *
@@ -77,14 +77,14 @@ interface AbstractUserInterface
     public function setFirstname($firstname);
 
     /**
-     * Get Firstname
+     * Get Firstname.
      *
      * @return string Firstname
      */
     public function getFirstname();
 
     /**
-     * Sets Lastname
+     * Sets Lastname.
      *
      * @param string $lastname Lastname
      *
@@ -93,30 +93,30 @@ interface AbstractUserInterface
     public function setLastname($lastname);
 
     /**
-     * Get Lastname
+     * Get Lastname.
      *
      * @return string Lastname
      */
     public function getLastname();
 
     /**
-     * Set gender
+     * Set gender.
      *
-     * @param integer $gender Gender
+     * @param int $gender Gender
      *
      * @return $this Self object
      */
     public function setGender($gender);
 
     /**
-     * Get gender
+     * Get gender.
      *
-     * @return integer Gender
+     * @return int Gender
      */
     public function getGender();
 
     /**
-     * Set email
+     * Set email.
      *
      * @param string $email
      *
@@ -125,21 +125,21 @@ interface AbstractUserInterface
     public function setEmail($email);
 
     /**
-     * Return email
+     * Return email.
      *
      * @return string Email
      */
     public function getEmail();
 
     /**
-     * Get birthday
+     * Get birthday.
      *
      * @return DateTime
      */
     public function getBirthday();
 
     /**
-     * Set birthday
+     * Set birthday.
      *
      * @param DateTime $birthday
      *
@@ -148,14 +148,14 @@ interface AbstractUserInterface
     public function setBirthday(DateTime $birthday = null);
 
     /**
-     * Get user full name
+     * Get user full name.
      *
      * @return string Full name
      */
     public function getFullName();
 
     /**
-     * Set password
+     * Set password.
      *
      * @param string $password
      *
@@ -164,14 +164,14 @@ interface AbstractUserInterface
     public function setPassword($password);
 
     /**
-     * Get Token
+     * Get Token.
      *
      * @return string Token
      */
     public function getToken();
 
     /**
-     * Sets Token
+     * Sets Token.
      *
      * @param string $token Token
      *

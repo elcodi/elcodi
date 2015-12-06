@@ -20,12 +20,12 @@ namespace Elcodi\Component\Core\Factory;
 use DateTime;
 
 /**
- * Class DateTimeFactory
+ * Class DateTimeFactory.
  */
 class DateTimeFactory
 {
     /**
-     * Create current datetime
+     * Create current datetime.
      *
      * @return DateTime Now
      */

@@ -20,7 +20,7 @@ namespace Elcodi\Component\EntityTranslator\Entity;
 use Elcodi\Component\EntityTranslator\Entity\Interfaces\EntityTranslationInterface;
 
 /**
- * Class EntityTranslation
+ * Class EntityTranslation.
  */
 class EntityTranslation implements EntityTranslationInterface
 {
@@ -60,7 +60,7 @@ class EntityTranslation implements EntityTranslationInterface
     protected $locale;
 
     /**
-     * Get EntityId
+     * Get EntityId.
      *
      * @return string EntityId
      */
@@ -70,7 +70,7 @@ class EntityTranslation implements EntityTranslationInterface
     }
 
     /**
-     * Sets EntityId
+     * Sets EntityId.
      *
      * @param string $entityId EntityId
      *
@@ -84,7 +84,7 @@ class EntityTranslation implements EntityTranslationInterface
     }
 
     /**
-     * Get EntityType
+     * Get EntityType.
      *
      * @return string EntityType
      */
@@ -94,7 +94,7 @@ class EntityTranslation implements EntityTranslationInterface
     }
 
     /**
-     * Sets EntityType
+     * Sets EntityType.
      *
      * @param string $entityType EntityType
      *
@@ -108,7 +108,7 @@ class EntityTranslation implements EntityTranslationInterface
     }
 
     /**
-     * Get Locale
+     * Get Locale.
      *
      * @return string Locale
      */
@@ -118,7 +118,7 @@ class EntityTranslation implements EntityTranslationInterface
     }
 
     /**
-     * Sets Locale
+     * Sets Locale.
      *
      * @param string $locale Locale
      *
@@ -132,7 +132,7 @@ class EntityTranslation implements EntityTranslationInterface
     }
 
     /**
-     * Get Translation
+     * Get Translation.
      *
      * @return string Translation
      */
@@ -142,7 +142,7 @@ class EntityTranslation implements EntityTranslationInterface
     }
 
     /**
-     * Sets Translation
+     * Sets Translation.
      *
      * @param string $translation Translation
      *
@@ -156,7 +156,7 @@ class EntityTranslation implements EntityTranslationInterface
     }
 
     /**
-     * Get EntityField
+     * Get EntityField.
      *
      * @return string EntityField
      */
@@ -166,7 +166,7 @@ class EntityTranslation implements EntityTranslationInterface
     }
 
     /**
-     * Sets EntityField
+     * Sets EntityField.
      *
      * @param string $entityField EntityField
      *

@@ -20,14 +20,14 @@ namespace Elcodi\Component\Product\Entity\Interfaces;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 
 /**
- * Interface ProductPriceInterface
+ * Interface ProductPriceInterface.
  *
  * Defines common price members for a Product
  */
 interface ProductPriceInterface
 {
     /**
-     * Set price
+     * Set price.
      *
      * @param MoneyInterface $amount Price
      *
@@ -36,14 +36,14 @@ interface ProductPriceInterface
     public function setPrice(MoneyInterface $amount);
 
     /**
-     * Get price
+     * Get price.
      *
      * @return MoneyInterface Price
      */
     public function getPrice();
 
     /**
-     * Set price
+     * Set price.
      *
      * @param MoneyInterface $amount Reduced Price
      *
@@ -52,7 +52,7 @@ interface ProductPriceInterface
     public function setReducedPrice(MoneyInterface $amount);
 
     /**
-     * Get price
+     * Get price.
      *
      * @return MoneyInterface Reduced Price
      */

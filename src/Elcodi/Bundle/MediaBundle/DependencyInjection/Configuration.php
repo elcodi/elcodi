@@ -22,12 +22,12 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration;
 
 /**
- * Class Configuration
+ * Class Configuration.
  */
 class Configuration extends AbstractConfiguration
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function setupTree(ArrayNodeDefinition $rootNode)
     {
@@ -81,7 +81,7 @@ class Configuration extends AbstractConfiguration
                             ->children()
 
                                 /**
-                                 * This elements should be defined as an enumValue
+                                 * This elements should be defined as an enumValue.
                                  *
                                  * While only one element is defined,
                                  * defined as scalarNode

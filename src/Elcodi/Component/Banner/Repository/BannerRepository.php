@@ -23,12 +23,12 @@ use Doctrine\ORM\EntityRepository;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 
 /**
- * BannerRepository
+ * BannerRepository.
  */
 class BannerRepository extends EntityRepository
 {
     /**
-     * Get activated banners by specific banner zone (and optional zone code)
+     * Get activated banners by specific banner zone (and optional zone code).
      *
      * Return an ArrayCollection object
      *

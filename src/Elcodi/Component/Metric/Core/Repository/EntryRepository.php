@@ -23,14 +23,14 @@ use Doctrine\ORM\EntityRepository;
 use Elcodi\Component\Metric\Core\Entity\Interfaces\EntryInterface;
 
 /**
- * Class EntryRepository
+ * Class EntryRepository.
  */
 class EntryRepository extends EntityRepository
 {
     /**
-     * Load entries from last X days
+     * Load entries from last X days.
      *
-     * @param integer $days Days
+     * @param int $days Days
      *
      * @return EntryInterface[] Entries
      */

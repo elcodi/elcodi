@@ -21,7 +21,7 @@ use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 
 /**
- * Class ImageFactory
+ * Class ImageFactory.
  */
 class ImageFactory extends AbstractFactory
 {

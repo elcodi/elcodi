@@ -20,33 +20,33 @@ namespace Elcodi\Component\Comment\Entity;
 use Elcodi\Component\Comment\Entity\Interfaces\VoteInterface;
 
 /**
- * Class VotePackage
+ * Class VotePackage.
  */
 class VotePackage
 {
     /**
-     * @var integer
+     * @var int
      *
      * Number of up votes
      */
     protected $nbUpVotes = 0;
 
     /**
-     * @var integer
+     * @var int
      *
      * Number of down votes
      */
     protected $nbDownVotes = 0;
 
     /**
-     * @var integer
+     * @var int
      *
      * Number of votes
      */
     protected $nbVotes = 0;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param VoteInterface[] $votes Votes
      */
@@ -54,21 +54,21 @@ class VotePackage
     {
         foreach ($votes as $vote) {
             if ($vote instanceof VoteInterface) {
-                $this->nbVotes++;
+                ++$this->nbVotes;
 
                 if (Vote::UP === $vote->getType()) {
-                    $this->nbUpVotes++;
+                    ++$this->nbUpVotes;
                 } else {
-                    $this->nbDownVotes++;
+                    ++$this->nbDownVotes;
                 }
             }
         }
     }
 
     /**
-     * Get NbDownVotes
+     * Get NbDownVotes.
      *
-     * @return integer NbDownVotes
+     * @return int NbDownVotes
      */
     public function getNbDownVotes()
     {
@@ -76,9 +76,9 @@ class VotePackage
     }
 
     /**
-     * Get NbUpVotes
+     * Get NbUpVotes.
      *
-     * @return integer NbUpVotes
+     * @return int NbUpVotes
      */
     public function getNbUpVotes()
     {
@@ -86,9 +86,9 @@ class VotePackage
     }
 
     /**
-     * Get NbVotes
+     * Get NbVotes.
      *
-     * @return integer NbVotes
+     * @return int NbVotes
      */
     public function getNbVotes()
     {
@@ -96,7 +96,7 @@ class VotePackage
     }
 
     /**
-     * Static create
+     * Static create.
      *
      * @param VoteInterface[] $votes Votes
      *

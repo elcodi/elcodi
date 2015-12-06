@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Configuration;
 
 /**
- * Class ElcodiConfigurationTypes
+ * Class ElcodiConfigurationTypes.
  */
 final class ElcodiConfigurationTypes
 {

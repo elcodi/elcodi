@@ -21,7 +21,7 @@ use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
- * Interface VoteInterface
+ * Interface VoteInterface.
  */
 interface VoteInterface
     extends
@@ -29,14 +29,14 @@ interface VoteInterface
     DateTimeInterface
 {
     /**
-     * Get Comment
+     * Get Comment.
      *
      * @return CommentInterface Comment
      */
     public function getComment();
 
     /**
-     * Sets Comment
+     * Sets Comment.
      *
      * @param CommentInterface $comment Comment
      *
@@ -45,30 +45,30 @@ interface VoteInterface
     public function setComment(CommentInterface $comment);
 
     /**
-     * Get Type
+     * Get Type.
      *
-     * @return boolean Type
+     * @return bool Type
      */
     public function getType();
 
     /**
-     * Sets Type
+     * Sets Type.
      *
-     * @param boolean $type Type
+     * @param bool $type Type
      *
      * @return $this Self object
      */
     public function setType($type);
 
     /**
-     * Get AuthorToken
+     * Get AuthorToken.
      *
      * @return string AuthorToken
      */
     public function getAuthorToken();
 
     /**
-     * Sets AuthorToken
+     * Sets AuthorToken.
      *
      * @param string $authorToken AuthorToken
      *

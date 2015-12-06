@@ -24,7 +24,7 @@ use Elcodi\Component\Media\Adapter\Resizer\Interfaces\ResizeAdapterInterface;
 use Elcodi\Component\Media\ElcodiMediaImageResizeTypes;
 
 /**
- * Class ImageMagickResizerAdapter
+ * Class ImageMagickResizerAdapter.
  */
 class ImageMagickResizeAdapter implements ResizeAdapterInterface
 {
@@ -43,7 +43,7 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
     private $profile;
 
     /**
-     * Constructor method
+     * Constructor method.
      *
      * @param string $imageConverterBin Path of image converter
      * @param string $profile           Default ICC profile path
@@ -55,12 +55,12 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
     }
 
     /**
-     * Generate Thumbnail images with ImageMagick
+     * Generate Thumbnail images with ImageMagick.
      *
-     * @param string  $imageData Image Data
-     * @param integer $height    Height value
-     * @param integer $width     Width value
-     * @param integer $type      Type
+     * @param string $imageData Image Data
+     * @param int    $height    Height value
+     * @param int    $width     Width value
+     * @param int    $type      Type
      *
      * @return string Resized image data
      *
@@ -95,15 +95,15 @@ class ImageMagickResizeAdapter implements ResizeAdapterInterface
         $pb->add('-filter')->add('Lanczos');
 
         if ($width == 0) {
-            $width = "";
+            $width = '';
         }
 
         if ($height == 0) {
-            $height = "";
+            $height = '';
         }
 
         /**
-         * Apply some filters depending on type of resizing
+         * Apply some filters depending on type of resizing.
          */
         if ($width || $height) {
             $pb->add('-resize');

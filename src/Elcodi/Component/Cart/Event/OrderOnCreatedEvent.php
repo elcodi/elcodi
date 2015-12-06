@@ -20,7 +20,7 @@ namespace Elcodi\Component\Cart\Event;
 use Elcodi\Component\Cart\Event\Abstracts\AbstractOrderEvent;
 
 /**
- * Event dispatched when an Order created
+ * Event dispatched when an Order created.
  */
 final class OrderOnCreatedEvent extends AbstractOrderEvent
 {

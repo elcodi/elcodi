@@ -20,16 +20,14 @@ namespace Elcodi\Component\Core\EventListener;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 
 /**
- * Class ReferrerSessionEventListener
+ * Class ReferrerSessionEventListener.
  */
 class ReferrerSessionEventListener
 {
     /**
-     * Update referrer from session
+     * Update referrer from session.
      *
      * @param GetResponseEvent $event Event
-     *
-     * @return null
      */
     public function updateSessionReferrer(GetResponseEvent $event)
     {
@@ -41,8 +39,8 @@ class ReferrerSessionEventListener
             ->getRequest()
             ->server;
 
-        $referrer = parse_url($server->get("HTTP_REFERER", false), PHP_URL_HOST);
-        $host = parse_url($server->get("HTTP_HOST"), PHP_URL_HOST);
+        $referrer = parse_url($server->get('HTTP_REFERER', false), PHP_URL_HOST);
+        $host = parse_url($server->get('HTTP_HOST'), PHP_URL_HOST);
 
         if (
             ($referrer != $host) &&

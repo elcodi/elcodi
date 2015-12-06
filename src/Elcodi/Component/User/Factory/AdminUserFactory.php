@@ -23,7 +23,7 @@ use Elcodi\Component\User\ElcodiUserProperties;
 use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
 
 /**
- * Class AdminUserFactory
+ * Class AdminUserFactory.
  */
 class AdminUserFactory extends AbstractFactory
 {
@@ -35,7 +35,7 @@ class AdminUserFactory extends AbstractFactory
     private $generator;
 
     /**
-     * Token generator
+     * Token generator.
      *
      * @param GeneratorInterface $generator Token generator
      */

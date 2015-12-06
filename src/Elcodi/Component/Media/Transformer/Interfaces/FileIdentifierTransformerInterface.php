@@ -20,12 +20,12 @@ namespace Elcodi\Component\Media\Transformer\Interfaces;
 use Elcodi\Component\Media\Entity\Interfaces\FileInterface;
 
 /**
- * Interface FileIdentifierTransformerInterface
+ * Interface FileIdentifierTransformerInterface.
  */
 interface FileIdentifierTransformerInterface
 {
     /**
-     * Transforms an entity to be stored
+     * Transforms an entity to be stored.
      *
      * @param FileInterface $file File to transform
      *

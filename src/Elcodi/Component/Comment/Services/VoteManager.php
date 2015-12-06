@@ -24,7 +24,7 @@ use Elcodi\Component\Comment\EventDispatcher\CommentEventDispatcher;
 use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
- * Class VoteManager
+ * Class VoteManager.
  */
 class VoteManager
 {
@@ -43,7 +43,7 @@ class VoteManager
     private $commentVoteObjectDirector;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param CommentEventDispatcher $commentEventDispatcher    Comment event dispatcher
      * @param ObjectDirector         $commentVoteObjectDirector Comment vote Object Director
@@ -57,11 +57,11 @@ class VoteManager
     }
 
     /**
-     * Vote action
+     * Vote action.
      *
      * @param CommentInterface $comment     Comment
      * @param string           $authorToken Author token
-     * @param boolean          $type        Vote type
+     * @param bool             $type        Vote type
      *
      * @return VoteInterface Vote
      */
@@ -77,7 +77,7 @@ class VoteManager
             ->commentVoteObjectDirector
             ->findOneBy([
                 'authorToken' => $authorToken,
-                'comment'     => $comment,
+                'comment' => $comment,
             ]);
 
         $edited = true;
@@ -106,7 +106,7 @@ class VoteManager
     }
 
     /**
-     * Remove Vote action
+     * Remove Vote action.
      *
      * @param CommentInterface $comment     Comment
      * @param string           $authorToken Author token
@@ -124,7 +124,7 @@ class VoteManager
             ->commentVoteObjectDirector
             ->findOneBy([
                 'authorToken' => $authorToken,
-                'comment'     => $comment,
+                'comment' => $comment,
             ]);
 
         if ($vote instanceof VoteInterface) {
@@ -137,7 +137,7 @@ class VoteManager
     }
 
     /**
-     * Get comment votes
+     * Get comment votes.
      *
      * @param CommentInterface $comment Comment
      *

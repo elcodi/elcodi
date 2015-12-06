@@ -24,7 +24,7 @@ use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
- * Interface AttributeInterface
+ * Interface AttributeInterface.
  *
  * Attributes are a key-value structure used to describe
  * product features or options.
@@ -36,7 +36,7 @@ interface AttributeInterface
     DateTimeInterface
 {
     /**
-     * Sets attribute name
+     * Sets attribute name.
      *
      * @param string $name
      *
@@ -45,14 +45,14 @@ interface AttributeInterface
     public function setName($name);
 
     /**
-     * Return attribute name
+     * Return attribute name.
      *
      * @return string
      */
     public function getName();
 
     /**
-     * Sets attribute values
+     * Sets attribute values.
      *
      * @param Collection $values
      *
@@ -61,14 +61,14 @@ interface AttributeInterface
     public function setValues(Collection $values);
 
     /**
-     * Gets attribute values
+     * Gets attribute values.
      *
      * @return Collection
      */
     public function getValues();
 
     /**
-     * Adds a value to this attribute collection
+     * Adds a value to this attribute collection.
      *
      * @param ValueInterface $value
      *
@@ -77,7 +77,7 @@ interface AttributeInterface
     public function addValue(ValueInterface $value);
 
     /**
-     * Removes a value from this attribute collection
+     * Removes a value from this attribute collection.
      *
      * @param ValueInterface $value
      *

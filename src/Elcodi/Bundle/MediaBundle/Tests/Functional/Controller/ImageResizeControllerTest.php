@@ -18,20 +18,19 @@
 namespace Elcodi\Bundle\MediaBundle\Tests\Functional\Controller;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Routing\RouterInterface;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class ImageResizeControllerTest
+ * Class ImageResizeControllerTest.
  */
 class ImageResizeControllerTest extends WebTestCase
 {
     /**
-     * Schema must be loaded in all test cases
+     * Schema must be loaded in all test cases.
      *
-     * @return boolean Load schema
+     * @return bool Load schema
      */
     protected static function loadSchema()
     {
@@ -39,7 +38,7 @@ class ImageResizeControllerTest extends WebTestCase
     }
 
     /**
-     * Test resize action
+     * Test resize action.
      */
     public function testResizeAction()
     {
@@ -87,10 +86,10 @@ class ImageResizeControllerTest extends WebTestCase
             'GET',
             $router->generate(
                 'elcodi.route.image_resize', [
-                    'id'     => 1,
+                    'id' => 1,
                     'height' => 30,
-                    'width'  => 30,
-                    'type'   => 2,
+                    'width' => 30,
+                    'type' => 2,
                     '_format' => 'json',
                 ]
             )

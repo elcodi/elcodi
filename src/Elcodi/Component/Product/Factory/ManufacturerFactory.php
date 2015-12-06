@@ -23,12 +23,12 @@ use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Product\Entity\Manufacturer;
 
 /**
- * Class ManufacturerFactory
+ * Class ManufacturerFactory.
  */
 class ManufacturerFactory extends AbstractFactory
 {
     /**
-     * Creates an instance of Manufacturer
+     * Creates an instance of Manufacturer.
      *
      * @return Manufacturer New Manufacturer entity
      */

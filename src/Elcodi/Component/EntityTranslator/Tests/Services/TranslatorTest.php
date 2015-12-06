@@ -23,12 +23,12 @@ use Elcodi\Component\EntityTranslator\Services\EntityTranslator;
 use Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct;
 
 /**
- * Class TranslatorTest
+ * Class TranslatorTest.
  */
 class TranslatorTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Test translate
+     * Test translate.
      */
     public function testTranslate()
     {
@@ -46,9 +46,9 @@ class TranslatorTest extends PHPUnit_Framework_TestCase
 
         $configuration = [
             'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => [
-                'alias'    => 'product',
+                'alias' => 'product',
                 'idGetter' => 'getId',
-                'fields'   => [
+                'fields' => [
                     'name' => [
                         'setter' => 'setName',
                         'getter' => 'getName',
@@ -74,7 +74,7 @@ class TranslatorTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test the save method
+     * Test the save method.
      */
     public function testSave()
     {
@@ -114,10 +114,10 @@ class TranslatorTest extends PHPUnit_Framework_TestCase
 
         $configuration = [
             'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' => [
-                'alias'    => 'product',
+                'alias' => 'product',
                 'idGetter' => 'getId',
-                'fields'   => [
-                    'name'        => [
+                'fields' => [
+                    'name' => [
                         'setter' => 'setName',
                         'getter' => 'getName',
                     ],
@@ -143,12 +143,12 @@ class TranslatorTest extends PHPUnit_Framework_TestCase
 
         $translator->save($product, [
             'es' => [
-                'name'        => 'el nombre',
+                'name' => 'el nombre',
                 'description' => 'la descripción',
             ],
             'en' => [
-                'name'         => 'the name',
-                'description'  => 'the description',
+                'name' => 'the name',
+                'description' => 'the description',
                 'anotherfield' => 'some value',
             ],
         ]);

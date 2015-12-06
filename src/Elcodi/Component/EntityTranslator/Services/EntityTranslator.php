@@ -21,7 +21,7 @@ use Elcodi\Component\EntityTranslator\Services\Interfaces\EntityTranslationProvi
 use Elcodi\Component\EntityTranslator\Services\Interfaces\EntityTranslatorInterface;
 
 /**
- * Class EntityTranslator
+ * Class EntityTranslator.
  */
 class EntityTranslator implements EntityTranslatorInterface
 {
@@ -40,7 +40,7 @@ class EntityTranslator implements EntityTranslatorInterface
     protected $configuration;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * Fallback is enabled.
      *
@@ -51,11 +51,11 @@ class EntityTranslator implements EntityTranslatorInterface
     protected $fallback;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param EntityTranslationProviderInterface $entityTranslationProvider Translation Provider
      * @param array                              $configuration             Configuration
-     * @param boolean                            $fallback                  Use fallback
+     * @param bool                               $fallback                  Use fallback
      */
     public function __construct(
         EntityTranslationProviderInterface $entityTranslationProvider,
@@ -68,12 +68,12 @@ class EntityTranslator implements EntityTranslatorInterface
     }
 
     /**
-     * Translate object
+     * Translate object.
      *
-     * @param Object $object Object
+     * @param object $object Object
      * @param string $locale Locale to be translated
      *
-     * @return Object Translated Object
+     * @return object Translated Object
      */
     public function translate($object, $locale)
     {
@@ -109,7 +109,7 @@ class EntityTranslator implements EntityTranslatorInterface
     }
 
     /**
-     * Saves object translations
+     * Saves object translations.
      *
      * $translations = array(
      *      'es' => array(
@@ -122,7 +122,7 @@ class EntityTranslator implements EntityTranslatorInterface
      *      ),
      * );
      *
-     * @param Object $object       Object
+     * @param object $object       Object
      * @param array  $translations Translations
      *
      * @return $this Self object
@@ -165,7 +165,7 @@ class EntityTranslator implements EntityTranslatorInterface
     }
 
     /**
-     * Get all possible classes given an object
+     * Get all possible classes given an object.
      *
      * @param string $namespace Namespace
      *

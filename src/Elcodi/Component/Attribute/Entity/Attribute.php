@@ -26,7 +26,7 @@ use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 
 /**
- * Class Attribute
+ * Class Attribute.
  */
 class Attribute implements AttributeInterface
 {
@@ -42,14 +42,14 @@ class Attribute implements AttributeInterface
     protected $name;
 
     /**
-     * Values for this Attribute
+     * Values for this Attribute.
      *
      * @var Collection
      */
     protected $values;
 
     /**
-     * Return attribute name
+     * Return attribute name.
      *
      * @return string
      */
@@ -59,7 +59,7 @@ class Attribute implements AttributeInterface
     }
 
     /**
-     * Sets attribute name
+     * Sets attribute name.
      *
      * @param string $name
      *
@@ -73,7 +73,7 @@ class Attribute implements AttributeInterface
     }
 
     /**
-     * Gets attribute values
+     * Gets attribute values.
      *
      * @return Collection
      */
@@ -83,7 +83,7 @@ class Attribute implements AttributeInterface
     }
 
     /**
-     * Sets attribute values
+     * Sets attribute values.
      *
      * @param Collection $values
      *
@@ -97,7 +97,7 @@ class Attribute implements AttributeInterface
     }
 
     /**
-     * Adds a value to this attribute collection
+     * Adds a value to this attribute collection.
      *
      * @param ValueInterface $value
      *
@@ -111,7 +111,7 @@ class Attribute implements AttributeInterface
     }
 
     /**
-     * Removes a value from this attribute collection
+     * Removes a value from this attribute collection.
      *
      * @param ValueInterface $value
      *
@@ -125,7 +125,7 @@ class Attribute implements AttributeInterface
     }
 
     /**
-     * Returns the attribute name
+     * Returns the attribute name.
      *
      * @return string
      */

@@ -135,9 +135,9 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^2.2",
-        "fabpot/php-cs-fixer": "1.4.2",
+        "fabpot/php-cs-fixer": "1.11",
         "mmoreram/php-formatter": "1.1.0",
-        "phpunit/phpunit": "4.5.0"
+        "phpunit/phpunit": "4.8.19"
     },
     "autoload": {
         "exclude-from-classmap": [

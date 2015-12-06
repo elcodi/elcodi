@@ -24,7 +24,7 @@ use Elcodi\Component\StateTransitionMachine\Definition\Transition;
 use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 
 /**
- * Class TransitionEvent
+ * Class TransitionEvent.
  */
 final class TransitionEvent extends Event
 {
@@ -50,7 +50,7 @@ final class TransitionEvent extends Event
     private $transition;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param stdClass       $object         Object
      * @param StateLineStack $stateLineStack State line stack
@@ -67,7 +67,7 @@ final class TransitionEvent extends Event
     }
 
     /**
-     * Get Object
+     * Get Object.
      *
      * @return stdClass Object
      */
@@ -77,7 +77,7 @@ final class TransitionEvent extends Event
     }
 
     /**
-     * Get StateLine Stack
+     * Get StateLine Stack.
      *
      * @return StateLineStack
      */
@@ -87,7 +87,7 @@ final class TransitionEvent extends Event
     }
 
     /**
-     * get transition
+     * get transition.
      *
      * @return Transition Transition
      */
@@ -97,7 +97,7 @@ final class TransitionEvent extends Event
     }
 
     /**
-     * Create new object
+     * Create new object.
      *
      * @param stdClass       $object         Object
      * @param StateLineStack $stateLineStack State line stack

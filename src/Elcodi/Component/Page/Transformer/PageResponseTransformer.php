@@ -30,7 +30,7 @@ use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
 use Elcodi\Component\Page\Renderer\Interfaces\PageRendererInterface;
 
 /**
- * Class PageResponseTransformer
+ * Class PageResponseTransformer.
  */
 class PageResponseTransformer
 {
@@ -63,7 +63,7 @@ class PageResponseTransformer
     private $pageRenderRoute;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param RequestStack          $requestStack    Request stack
      * @param UrlGeneratorInterface $urlGenerator    Url generator
@@ -83,7 +83,7 @@ class PageResponseTransformer
     }
 
     /**
-     * Render a page given the found instance
+     * Render a page given the found instance.
      *
      * @param PageInterface|null $page Found page
      * @param string             $path Page route path
@@ -110,7 +110,7 @@ class PageResponseTransformer
 
         /**
          * Request not found because this controller is not running under
-         * Request scope
+         * Request scope.
          */
         if (!($request instanceof Request)) {
             throw new RuntimeException('Request object not found');
@@ -118,7 +118,7 @@ class PageResponseTransformer
 
         /**
          * We must check that the product slug is right. Otherwise we must
-         * return a Redirection 301 to the right url
+         * return a Redirection 301 to the right url.
          */
         if (
             $page->getPath() &&
@@ -128,7 +128,7 @@ class PageResponseTransformer
                 $this
                     ->urlGenerator
                     ->generate($this->pageRenderRoute, [
-                        'id'   => $page->getId(),
+                        'id' => $page->getId(),
                         'path' => $page->getPath(),
                     ]),
                 301
@@ -146,7 +146,7 @@ class PageResponseTransformer
     }
 
     /**
-     * Creates response instance
+     * Creates response instance.
      *
      * @param PageInterface $page Page
      *
@@ -164,7 +164,7 @@ class PageResponseTransformer
     }
 
     /**
-     * Renders page content
+     * Renders page content.
      *
      * @param PageInterface $page
      *

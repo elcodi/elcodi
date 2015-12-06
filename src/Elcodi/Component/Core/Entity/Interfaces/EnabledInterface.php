@@ -18,23 +18,23 @@
 namespace Elcodi\Component\Core\Entity\Interfaces;
 
 /**
- * Interface EnabledInterface
+ * Interface EnabledInterface.
  */
 interface EnabledInterface
 {
     /**
-     * Set isEnabled
+     * Set isEnabled.
      *
-     * @param boolean $enabled enabled value
+     * @param bool $enabled enabled value
      *
      * @return $this Self object
      */
     public function setEnabled($enabled);
 
     /**
-     * Get if entity is enabled
+     * Get if entity is enabled.
      *
-     * @return boolean Enabled
+     * @return bool Enabled
      */
     public function isEnabled();
 }

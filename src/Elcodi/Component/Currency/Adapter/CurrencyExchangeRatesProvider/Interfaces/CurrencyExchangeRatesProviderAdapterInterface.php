@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\Interfaces;
 
 /**
- * Interface CurrencyExchangeRatesProviderAdapterInterface
+ * Interface CurrencyExchangeRatesProviderAdapterInterface.
  */
 interface CurrencyExchangeRatesProviderAdapterInterface
 {

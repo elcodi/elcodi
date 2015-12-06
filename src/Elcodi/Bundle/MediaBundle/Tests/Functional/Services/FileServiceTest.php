@@ -20,7 +20,7 @@ namespace Elcodi\Bundle\MediaBundle\Tests\Functional\Services;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class FileServiceTest
+ * Class FileServiceTest.
  */
 class FileServiceTest extends WebTestCase
 {

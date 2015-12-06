@@ -24,12 +24,12 @@ use Prophecy\Argument;
 use Elcodi\Component\CartCoupon\Services\AutomaticCouponApplicator;
 
 /**
- * Class AutomaticCouponApplicatorTest
+ * Class AutomaticCouponApplicatorTest.
  */
 class AutomaticCouponApplicatorTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Test empty cart
+     * Test empty cart.
      *
      * @covers tryAutomaticCoupons
      */

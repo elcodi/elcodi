@@ -20,12 +20,12 @@ namespace Elcodi\Bundle\CartBundle\Tests\Functional\EventListener;
 use Elcodi\Bundle\CartBundle\Tests\Functional\EventListener\Abstracts\AbstractCartEventListenerTest;
 
 /**
- * Class SaveCartEventListenerTest
+ * Class SaveCartEventListenerTest.
  */
 class SaveCartEventListenerTest extends AbstractCartEventListenerTest
 {
     /**
-     * Test loadCartPurchasablesQuantities
+     * Test loadCartPurchasablesQuantities.
      */
     public function testSaveCart()
     {

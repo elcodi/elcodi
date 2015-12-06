@@ -23,12 +23,12 @@ use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 use Elcodi\Component\User\Repository\Interfaces\UserEmaileableInterface;
 
 /**
- * Class AdminUserRepository
+ * Class AdminUserRepository.
  */
 class AdminUserRepository extends EntityRepository implements UserEmaileableInterface
 {
     /**
-     * Find one Entity given an email
+     * Find one Entity given an email.
      *
      * @param string $email Email
      *

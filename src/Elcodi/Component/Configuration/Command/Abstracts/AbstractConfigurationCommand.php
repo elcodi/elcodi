@@ -23,7 +23,7 @@ use Elcodi\Component\Configuration\Services\ConfigurationManager;
 use Elcodi\Component\Core\Command\Abstracts\AbstractElcodiCommand;
 
 /**
- * Class AbstractConfigurationCommand
+ * Class AbstractConfigurationCommand.
  */
 class AbstractConfigurationCommand extends AbstractElcodiCommand
 {
@@ -35,7 +35,7 @@ class AbstractConfigurationCommand extends AbstractElcodiCommand
     protected $configurationManager;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param ConfigurationManager $configurationManager Configuration manager
      */
@@ -47,7 +47,7 @@ class AbstractConfigurationCommand extends AbstractElcodiCommand
     }
 
     /**
-     * configure
+     * configure.
      */
     protected function configure()
     {

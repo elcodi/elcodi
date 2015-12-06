@@ -28,7 +28,7 @@ use Elcodi\Component\Geo\Adapter\LocationProvider\Interfaces\LocationProviderAda
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
- * Class LocationApiController
+ * Class LocationApiController.
  */
 class LocationApiController
 {
@@ -47,7 +47,7 @@ class LocationApiController
     private $request;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param RequestStack                     $requestStack     Request stack
      * @param LocationProviderAdapterInterface $locationProvider Location manager
@@ -78,7 +78,7 @@ class LocationApiController
     }
 
     /**
-     * Get the children given a location id
+     * Get the children given a location id.
      *
      * @return Response Data serialized in json
      */
@@ -99,7 +99,7 @@ class LocationApiController
     }
 
     /**
-     * Get the parents given a location id
+     * Get the parents given a location id.
      *
      * @return Response Data serialized in json
      */
@@ -120,7 +120,7 @@ class LocationApiController
     }
 
     /**
-     * Get the full location info given it's id
+     * Get the full location info given it's id.
      *
      * @return Response Data serialized in json
      */
@@ -142,7 +142,7 @@ class LocationApiController
 
     /**
      * Get the hierarchy given a location sorted from root to the given
-     * location
+     * location.
      *
      * @return Response Data serialized in json
      */
@@ -164,7 +164,7 @@ class LocationApiController
 
     /**
      * Checks if the first received id is contained between the rest of ids
-     * received as second parameter
+     * received as second parameter.
      *
      * @return Response Data serialized in json
      */
@@ -190,9 +190,9 @@ class LocationApiController
     }
 
     /**
-     * Create new response
+     * Create new response.
      *
-     * @param Callable $callable Callable
+     * @param callable $callable Callable
      *
      * @return Response Response object
      */
@@ -216,7 +216,7 @@ class LocationApiController
     }
 
     /**
-     * Normalize an array of LocationData objects to be json encoded
+     * Normalize an array of LocationData objects to be json encoded.
      *
      * @param LocationData[] $locationDataArray Location data array
      *
@@ -235,7 +235,7 @@ class LocationApiController
     }
 
     /**
-     * Normalize LocationData object to be json encoded
+     * Normalize LocationData object to be json encoded.
      *
      * @param LocationData $locationData Location data
      *
@@ -244,7 +244,7 @@ class LocationApiController
     private function normalizeLocationData(LocationData $locationData)
     {
         return [
-            'id'   => $locationData->getId(),
+            'id' => $locationData->getId(),
             'name' => $locationData->getName(),
             'code' => $locationData->getCode(),
             'type' => $locationData->getType(),

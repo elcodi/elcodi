@@ -22,7 +22,7 @@ use Elcodi\Component\Sitemap\Factory\SitemapElementFactory;
 use Elcodi\Component\Sitemap\Transformer\Interfaces\SitemapTransformerInterface;
 
 /**
- * Class StaticSitemapElementGenerator
+ * Class StaticSitemapElementGenerator.
  */
 class StaticSitemapElementGenerator implements SitemapElementGeneratorInterface
 {
@@ -62,7 +62,7 @@ class StaticSitemapElementGenerator implements SitemapElementGeneratorInterface
     private $priority;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param SitemapElementFactory       $sitemapElementFactory SitemapElement Factory
      * @param SitemapTransformerInterface $transformer           Transformer
@@ -85,7 +85,7 @@ class StaticSitemapElementGenerator implements SitemapElementGeneratorInterface
     }
 
     /**
-     * Generate desired elements
+     * Generate desired elements.
      *
      * @param string|null $language Language
      *

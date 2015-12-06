@@ -23,7 +23,7 @@ use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\Cart\Transformer\CartOrderTransformer;
 
 /**
- * Class CartOrderTransformerTest
+ * Class CartOrderTransformerTest.
  */
 class CartOrderTransformerTest extends WebTestCase
 {
@@ -42,7 +42,7 @@ class CartOrderTransformerTest extends WebTestCase
     protected $order;
 
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -54,7 +54,7 @@ class CartOrderTransformerTest extends WebTestCase
     }
 
     /**
-     * Setup
+     * Setup.
      */
     public function setUp()
     {
@@ -78,7 +78,7 @@ class CartOrderTransformerTest extends WebTestCase
     }
 
     /**
-     * test createFromCart method when a cart is already ordered
+     * test createFromCart method when a cart is already ordered.
      *
      * @group order
      */

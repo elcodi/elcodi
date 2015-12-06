@@ -21,7 +21,7 @@ use Symfony\Component\Console\Application;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Class AbstractElcodiBundle
+ * Class AbstractElcodiBundle.
  */
 class AbstractElcodiBundle extends Bundle
 {
@@ -31,8 +31,6 @@ class AbstractElcodiBundle extends Bundle
      * Disabled as commands are registered as services.
      *
      * @param Application $application An Application instance
-     *
-     * @return null
      */
     public function registerCommands(Application $application)
     {

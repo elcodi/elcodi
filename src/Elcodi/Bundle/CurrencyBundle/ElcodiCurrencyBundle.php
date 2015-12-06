@@ -27,7 +27,7 @@ use Elcodi\Bundle\CurrencyBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\CurrencyBundle\DependencyInjection\ElcodiCurrencyExtension;
 
 /**
- * ElcodiCurrencyBundle Bundle
+ * ElcodiCurrencyBundle Bundle.
  */
 class ElcodiCurrencyBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
@@ -52,7 +52,7 @@ class ElcodiCurrencyBundle extends AbstractElcodiBundle implements DependentBund
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

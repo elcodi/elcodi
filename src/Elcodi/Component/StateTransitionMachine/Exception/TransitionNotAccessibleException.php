@@ -20,7 +20,7 @@ namespace Elcodi\Component\StateTransitionMachine\Exception;
 use Elcodi\Component\StateTransitionMachine\Exception\Abstracts\AbstractTransitionException;
 
 /**
- * Class TransitionNotAccessibleException
+ * Class TransitionNotAccessibleException.
  */
 class TransitionNotAccessibleException extends AbstractTransitionException
 {

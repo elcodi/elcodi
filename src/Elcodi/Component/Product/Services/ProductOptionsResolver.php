@@ -25,12 +25,12 @@ use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
 
 /**
- * Class ProductOptionsResolver
+ * Class ProductOptionsResolver.
  */
 class ProductOptionsResolver
 {
     /**
-     * Returns an array of unique available options for a Product
+     * Returns an array of unique available options for a Product.
      *
      * Returned Options belong to Variants available for purchase
      *

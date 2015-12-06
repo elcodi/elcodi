@@ -27,7 +27,7 @@ use Elcodi\Bundle\CouponBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\CouponBundle\DependencyInjection\ElcodiCouponExtension;
 
 /**
- * ElcodiCouponBundle Bundle
+ * ElcodiCouponBundle Bundle.
  */
 class ElcodiCouponBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
@@ -52,7 +52,7 @@ class ElcodiCouponBundle extends AbstractElcodiBundle implements DependentBundle
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

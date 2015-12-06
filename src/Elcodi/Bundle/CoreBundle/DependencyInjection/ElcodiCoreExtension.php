@@ -22,7 +22,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 
 /**
- * This is the class that loads and manages your bundle configuration
+ * This is the class that loads and manages your bundle configuration.
  */
 class ElcodiCoreExtension extends AbstractExtension
 {
@@ -34,7 +34,7 @@ class ElcodiCoreExtension extends AbstractExtension
     const EXTENSION_NAME = 'elcodi_core';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -61,7 +61,7 @@ class ElcodiCoreExtension extends AbstractExtension
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -76,12 +76,12 @@ class ElcodiCoreExtension extends AbstractExtension
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.mapping_implementations" => $config['mapping_implementations'],
+            'elcodi.mapping_implementations' => $config['mapping_implementations'],
         ];
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * @param array $config Configuration
      *
@@ -103,7 +103,7 @@ class ElcodiCoreExtension extends AbstractExtension
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */

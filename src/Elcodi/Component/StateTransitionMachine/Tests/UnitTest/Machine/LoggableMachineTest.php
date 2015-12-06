@@ -21,12 +21,12 @@ use Elcodi\Component\StateTransitionMachine\Machine\LoggableMachine;
 use Elcodi\Component\StateTransitionMachine\Tests\UnitTest\Fixtures\AbstractStateTransitionTest;
 
 /**
- * Class LoggableMachineTest
+ * Class LoggableMachineTest.
  */
 class LoggableMachineTest extends AbstractStateTransitionTest
 {
     /**
-     * Test log in make transition
+     * Test log in make transition.
      */
     public function testMakeTransitionLog()
     {
@@ -50,7 +50,7 @@ class LoggableMachineTest extends AbstractStateTransitionTest
     }
 
     /**
-     * Test log in reach state
+     * Test log in reach state.
      */
     public function testReachStateLog()
     {

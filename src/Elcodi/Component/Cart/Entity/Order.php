@@ -37,7 +37,7 @@ use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
 use Elcodi\Component\User\Entity\Interfaces\CustomerInterface;
 
 /**
- * Order
+ * Order.
  */
 class Order implements OrderInterface
 {
@@ -65,14 +65,14 @@ class Order implements OrderInterface
     protected $orderLines;
 
     /**
-     * @var integer
+     * @var int
      *
      * Quantity
      */
     protected $quantity;
 
     /**
-     * @var integer
+     * @var int
      *
      * Coupon Amount
      */
@@ -86,7 +86,7 @@ class Order implements OrderInterface
     protected $couponCurrency;
 
     /**
-     * @var integer
+     * @var int
      *
      * Shipping Amount
      */
@@ -170,7 +170,7 @@ class Order implements OrderInterface
     protected $billingAddress;
 
     /**
-     * Sets Customer
+     * Sets Customer.
      *
      * @param CustomerInterface $customer Customer
      *
@@ -184,7 +184,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Get Customer
+     * Get Customer.
      *
      * @return CustomerInterface Customer
      */
@@ -194,7 +194,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Set cart
+     * Set cart.
      *
      * @param CartInterface $cart Cart
      *
@@ -208,7 +208,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Get cart
+     * Get cart.
      *
      * @return CartInterface Cart
      */
@@ -218,7 +218,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Set order Lines
+     * Set order Lines.
      *
      * @param Collection $orderLines Order lines
      *
@@ -232,7 +232,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Get order lines
+     * Get order lines.
      *
      * @return Collection Order lines
      */
@@ -242,7 +242,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Add order line
+     * Add order line.
      *
      * @param OrderLineInterface $orderLine Order line
      *
@@ -258,7 +258,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Remove order line
+     * Remove order line.
      *
      * @param OrderLineInterface $orderLine Order line
      *
@@ -272,9 +272,9 @@ class Order implements OrderInterface
     }
 
     /**
-     * Set quantity
+     * Set quantity.
      *
-     * @param integer $quantity Quantity
+     * @param int $quantity Quantity
      *
      * @return $this Self object
      */
@@ -286,9 +286,9 @@ class Order implements OrderInterface
     }
 
     /**
-     * Get quantity
+     * Get quantity.
      *
-     * @return integer Quantity
+     * @return int Quantity
      */
     public function getQuantity()
     {
@@ -296,7 +296,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Sets the Coupon amount with tax
+     * Sets the Coupon amount with tax.
      *
      * @param MoneyInterface $amount coupon amount
      *
@@ -304,14 +304,14 @@ class Order implements OrderInterface
      */
     public function setCouponAmount(MoneyInterface $amount)
     {
-        $this->couponAmount   = $amount->getAmount();
+        $this->couponAmount = $amount->getAmount();
         $this->couponCurrency = $amount->getCurrency();
 
         return $this;
     }
 
     /**
-     * Gets the Coupon amount with tax
+     * Gets the Coupon amount with tax.
      *
      * @return MoneyInterface Coupon amount
      */
@@ -324,7 +324,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Sets the Shipping amount with tax
+     * Sets the Shipping amount with tax.
      *
      * @param MoneyInterface $amount shipping amount
      *
@@ -332,14 +332,14 @@ class Order implements OrderInterface
      */
     public function setShippingAmount(MoneyInterface $amount)
     {
-        $this->shippingAmount   = $amount->getAmount();
+        $this->shippingAmount = $amount->getAmount();
         $this->shippingCurrency = $amount->getCurrency();
 
         return $this;
     }
 
     /**
-     * Gets the Shipping amount with tax
+     * Gets the Shipping amount with tax.
      *
      * @return MoneyInterface Shipping amount
      */
@@ -352,7 +352,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Get ShippingMethod
+     * Get ShippingMethod.
      *
      * @return ShippingMethod ShippingMethod
      */
@@ -362,7 +362,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Sets ShippingMethod
+     * Sets ShippingMethod.
      *
      * @param ShippingMethod $shippingMethod ShippingMethod
      *
@@ -376,7 +376,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Get ShippingMethodExtra
+     * Get ShippingMethodExtra.
      *
      * @return array ShippingMethodExtra
      */
@@ -386,7 +386,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Sets ShippingMethodExtra
+     * Sets ShippingMethodExtra.
      *
      * @param array $shippingMethodExtra ShippingMethodExtra
      *
@@ -400,7 +400,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Get PaymentMethod
+     * Get PaymentMethod.
      *
      * @return PaymentMethod PaymentMethod
      */
@@ -410,7 +410,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Sets PaymentMethod
+     * Sets PaymentMethod.
      *
      * @param PaymentMethod $paymentMethod PaymentMethod
      *
@@ -424,7 +424,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Get PaymentMethodExtra
+     * Get PaymentMethodExtra.
      *
      * @return array PaymentMethodExtra
      */
@@ -434,7 +434,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Sets PaymentMethodExtra
+     * Sets PaymentMethodExtra.
      *
      * @param array $paymentMethodExtra PaymentMethodExtra
      *
@@ -448,7 +448,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Get DeliveryAddress
+     * Get DeliveryAddress.
      *
      * @return AddressInterface DeliveryAddress
      */
@@ -458,7 +458,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Sets DeliveryAddress
+     * Sets DeliveryAddress.
      *
      * @param AddressInterface|null $deliveryAddress DeliveryAddress
      *
@@ -472,7 +472,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Get PaymentStateLineStack
+     * Get PaymentStateLineStack.
      *
      * @return StateLineStack PaymentStateLineStack
      */
@@ -485,7 +485,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Sets PaymentStateLineStack
+     * Sets PaymentStateLineStack.
      *
      * @param StateLineStack $paymentStateLineStack PaymentStateLineStack
      *
@@ -494,14 +494,14 @@ class Order implements OrderInterface
     public function setPaymentStateLineStack(
         StateLineStack $paymentStateLineStack
     ) {
-        $this->paymentStateLines    = $paymentStateLineStack->getStateLines();
+        $this->paymentStateLines = $paymentStateLineStack->getStateLines();
         $this->paymentLastStateLine = $paymentStateLineStack->getLastStateLine();
 
         return $this;
     }
 
     /**
-     * Get ShippingStateLineStack
+     * Get ShippingStateLineStack.
      *
      * @return StateLineStack ShippingStateLineStack
      */
@@ -514,7 +514,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Sets ShippingStateLineStack
+     * Sets ShippingStateLineStack.
      *
      * @param StateLineStack $shippingStateLineStack ShippingStateLineStack
      *
@@ -523,14 +523,14 @@ class Order implements OrderInterface
     public function setShippingStateLineStack(
         StateLineStack $shippingStateLineStack
     ) {
-        $this->shippingStateLines    = $shippingStateLineStack->getStateLines();
+        $this->shippingStateLines = $shippingStateLineStack->getStateLines();
         $this->shippingLastStateLine = $shippingStateLineStack->getLastStateLine();
 
         return $this;
     }
 
     /**
-     * Get BillingAddress
+     * Get BillingAddress.
      *
      * @return AddressInterface BillingAddress
      */
@@ -540,7 +540,7 @@ class Order implements OrderInterface
     }
 
     /**
-     * Sets BillingAddress
+     * Sets BillingAddress.
      *
      * @param AddressInterface|null $billingAddress BillingAddress
      *

@@ -23,7 +23,7 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 
 /**
- * Class AbstractOrderEvent
+ * Class AbstractOrderEvent.
  */
 abstract class AbstractOrderEvent extends Event
 {
@@ -42,7 +42,7 @@ abstract class AbstractOrderEvent extends Event
     private $order;
 
     /**
-     * construct method
+     * construct method.
      *
      * @param CartInterface  $cart  Cart
      * @param OrderInterface $order Order
@@ -56,7 +56,7 @@ abstract class AbstractOrderEvent extends Event
     }
 
     /**
-     * Get cart
+     * Get cart.
      *
      * @return CartInterface Cart
      */
@@ -66,7 +66,7 @@ abstract class AbstractOrderEvent extends Event
     }
 
     /**
-     * Return order
+     * Return order.
      *
      * @return OrderInterface Order stored
      */

@@ -22,7 +22,7 @@ use Elcodi\Component\Zone\Entity\Interfaces\ZoneInterface;
 use Elcodi\Component\Zone\Repository\ZoneRepository;
 
 /**
- * Class ZoneFinder
+ * Class ZoneFinder.
  */
 class ZoneFinder
 {
@@ -41,7 +41,7 @@ class ZoneFinder
     private $zoneMatcher;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param ZoneRepository $zoneRepository Zone repository
      * @param ZoneMatcher    $zoneMatcher    Zone matcher
@@ -55,11 +55,11 @@ class ZoneFinder
     }
 
     /**
-     * Get all zones where the address is included in
+     * Get all zones where the address is included in.
      *
      * @param AddressInterface $address Address
      *
-     * @return boolean Zones where address is contained
+     * @return bool Zones where address is contained
      */
     public function getZonesFromAddress(AddressInterface $address)
     {

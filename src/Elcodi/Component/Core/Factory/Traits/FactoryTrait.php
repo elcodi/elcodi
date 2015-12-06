@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Core\Factory\Traits;
 
 /**
- * Trait FactoryTrait
+ * Trait FactoryTrait.
  */
 trait FactoryTrait
 {
@@ -30,7 +30,7 @@ trait FactoryTrait
     private $factory;
 
     /**
-     * Get Factory
+     * Get Factory.
      *
      * @return \Elcodi\Component\Core\Factory\Abstracts\AbstractFactory Factory
      */
@@ -40,7 +40,7 @@ trait FactoryTrait
     }
 
     /**
-     * Sets Factory
+     * Sets Factory.
      *
      * @param \Elcodi\Component\Core\Factory\Abstracts\AbstractFactory $factory Factory
      *

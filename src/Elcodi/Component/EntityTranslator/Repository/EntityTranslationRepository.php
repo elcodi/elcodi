@@ -20,7 +20,7 @@ namespace Elcodi\Component\EntityTranslator\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class EntityTranslationRepository
+ * Class EntityTranslationRepository.
  */
 class EntityTranslationRepository extends EntityRepository
 {

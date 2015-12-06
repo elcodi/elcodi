@@ -30,7 +30,7 @@ use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 class VariantData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
-     * Loads sample fixtures for product Variant entities
+     * Loads sample fixtures for product Variant entities.
      *
      * @param ObjectManager $manager
      */
@@ -57,7 +57,7 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
         $optionLarge = $this->getReference('value-size-large');
 
         /**
-         * Variant White-Small
+         * Variant White-Small.
          */
         $variantWhiteSmall = $variantDirector
             ->create()
@@ -79,7 +79,7 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
         $this->addReference('variant-white-small', $productWithVariants);
 
         /**
-         * Variant White-Large
+         * Variant White-Large.
          */
         $variantWhiteLarge = $variantDirector
             ->create()
@@ -99,7 +99,7 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
         $this->addReference('variant-white-large', $productWithVariants);
 
         /**
-         * Variant Red-Small
+         * Variant Red-Small.
          */
         $variantRedSmall = $variantDirector
             ->create()
@@ -119,7 +119,7 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
         $this->addReference('variant-red-small', $productWithVariants);
 
         /**
-         * Variant Red-Large
+         * Variant Red-Large.
          */
         $variantRedLarge = $variantDirector
             ->create()
@@ -141,7 +141,7 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
 
     /**
      * This method must return an array of fixtures classes
-     * on which the implementing class depends on
+     * on which the implementing class depends on.
      *
      * @return array
      */

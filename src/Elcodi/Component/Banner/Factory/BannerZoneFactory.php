@@ -23,7 +23,7 @@ use Elcodi\Component\Banner\Entity\Interfaces\BannerZoneInterface;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 
 /**
- * BannerZone Factory
+ * BannerZone Factory.
  */
 class BannerZoneFactory extends AbstractFactory
 {

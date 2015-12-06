@@ -21,7 +21,7 @@ use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Exception\CurrencyNotConvertibleException;
 
 /**
- * Class ExchangeRateCalculator
+ * Class ExchangeRateCalculator.
  *
  * @author Roger Gros <roger@gros.cat>
  */
@@ -60,6 +60,7 @@ class ExchangeRateCalculator
      * @param CurrencyInterface $currencyTo   The currency we are converting to.
      *
      * @return float
+     *
      * @throws CurrencyNotConvertibleException
      */
     public function calculateExchangeRate(
@@ -87,6 +88,7 @@ class ExchangeRateCalculator
      * @param string $currencyToIso   The currency ISO we are converting to.
      *
      * @return float
+     *
      * @throws CurrencyNotConvertibleException
      */
     protected function calculateExchangeRateBetweenIsos(

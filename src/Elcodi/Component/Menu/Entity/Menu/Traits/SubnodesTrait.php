@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Menu\Entity\Menu\Traits;
 
 /**
- * Trait SubnodesTrait
+ * Trait SubnodesTrait.
  */
 trait SubnodesTrait
 {
@@ -30,7 +30,7 @@ trait SubnodesTrait
     protected $subnodes;
 
     /**
-     * Add subnode
+     * Add subnode.
      *
      * @param \Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface $node Node
      *
@@ -46,7 +46,7 @@ trait SubnodesTrait
     }
 
     /**
-     * Remove subnode
+     * Remove subnode.
      *
      * @param \Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface $node Node
      *
@@ -60,7 +60,7 @@ trait SubnodesTrait
     }
 
     /**
-     * Sets Subnodes
+     * Sets Subnodes.
      *
      * @param \Doctrine\Common\Collections\ArrayCollection $subnodes Subnodes
      *
@@ -74,7 +74,7 @@ trait SubnodesTrait
     }
 
     /**
-     * Get Subnodes sorted by priority
+     * Get Subnodes sorted by priority.
      *
      * @return \Doctrine\Common\Collections\ArrayCollection Subnodes
      */
@@ -91,7 +91,7 @@ trait SubnodesTrait
     }
 
     /**
-     * Get Subnodes sorted by priority and filtered by tag
+     * Get Subnodes sorted by priority and filtered by tag.
      *
      * @return \Doctrine\Common\Collections\ArrayCollection Subnodes
      */
@@ -111,8 +111,8 @@ trait SubnodesTrait
      *
      * This node is returned as soon as is found.
      *
-     * @param string  $subnodeName Subnode name
-     * @param boolean $inDepth     In depth
+     * @param string $subnodeName Subnode name
+     * @param bool   $inDepth     In depth
      *
      * @return \Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface|null Node
      */

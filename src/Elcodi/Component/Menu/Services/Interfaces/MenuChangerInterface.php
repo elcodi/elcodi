@@ -20,12 +20,12 @@ namespace Elcodi\Component\Menu\Services\Interfaces;
 use Elcodi\Component\Menu\Entity\Menu\Interfaces\MenuInterface;
 
 /**
- * Interface MenuChangerInterface
+ * Interface MenuChangerInterface.
  */
 interface MenuChangerInterface
 {
     /**
-     * Apply change
+     * Apply change.
      *
      * @param MenuInterface $menu  Menu
      * @param string        $stage Stage

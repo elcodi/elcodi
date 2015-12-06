@@ -25,12 +25,12 @@ use Elcodi\Component\Cart\Event\OrderPreCreatedEvent;
 use Elcodi\Component\Core\EventDispatcher\Abstracts\AbstractEventDispatcher;
 
 /**
- * Class OrderEventDispatcher
+ * Class OrderEventDispatcher.
  */
 class OrderEventDispatcher extends AbstractEventDispatcher
 {
     /**
-     * Event dispatched just before a Cart is converted to an Order
+     * Event dispatched just before a Cart is converted to an Order.
      *
      * @param CartInterface $cart Cart
      *
@@ -47,7 +47,7 @@ class OrderEventDispatcher extends AbstractEventDispatcher
     }
 
     /**
-     * Event dispatched when a Cart is being converted to an Order
+     * Event dispatched when a Cart is being converted to an Order.
      *
      * @param CartInterface  $cart  Cart
      * @param OrderInterface $order Order

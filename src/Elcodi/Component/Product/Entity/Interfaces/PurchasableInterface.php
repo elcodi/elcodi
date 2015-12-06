@@ -20,7 +20,7 @@ namespace Elcodi\Component\Product\Entity\Interfaces;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 
 /**
- * Interface PurchasableInterface
+ * Interface PurchasableInterface.
  *
  * a Purchasable is an object that:
  *
@@ -31,7 +31,6 @@ use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
  * Using this consistent interface, services and classes that operate on
  * these features (such as CartManager) will have a shallow dependency
  * with more concrete product classes or interfaces
- *
  */
 interface PurchasableInterface
     extends
@@ -40,14 +39,14 @@ interface PurchasableInterface
     DimensionableInterface
 {
     /**
-     * Gets the variant SKU
+     * Gets the variant SKU.
      *
      * @return string
      */
     public function getSku();
 
     /**
-     * Sets the variant SKU
+     * Sets the variant SKU.
      *
      * @param string $sku
      *
@@ -56,52 +55,52 @@ interface PurchasableInterface
     public function setSku($sku);
 
     /**
-     * Gets the variant stock
+     * Gets the variant stock.
      *
-     * @return integer stock
+     * @return int stock
      */
     public function getStock();
 
     /**
-     * Sets the variant stock
+     * Sets the variant stock.
      *
-     * @param integer $stock
+     * @param int $stock
      *
      * @return $this Self object
      */
     public function setStock($stock);
 
     /**
-     * Set the height
+     * Set the height.
      *
-     * @param integer $height Height
+     * @param int $height Height
      *
      * @return $this Self object
      */
     public function setHeight($height);
 
     /**
-     * Set the width
+     * Set the width.
      *
-     * @param integer $width Width
+     * @param int $width Width
      *
      * @return $this Self object
      */
     public function setWidth($width);
 
     /**
-     * Set the depth
+     * Set the depth.
      *
-     * @param integer $depth Depth
+     * @param int $depth Depth
      *
      * @return $this Self object
      */
     public function setDepth($depth);
 
     /**
-     * Set the weight
+     * Set the weight.
      *
-     * @param integer $weight Weight
+     * @param int $weight Weight
      *
      * @return $this Self object
      */

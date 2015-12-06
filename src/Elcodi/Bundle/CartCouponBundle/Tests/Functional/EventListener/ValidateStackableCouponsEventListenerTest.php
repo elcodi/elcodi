@@ -22,12 +22,12 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\CartCoupon\Exception\CouponNotStackableException;
 
 /**
- * Class ValidateStackableCouponsEventListenerTest
+ * Class ValidateStackableCouponsEventListenerTest.
  */
 class ValidateStackableCouponsEventListenerTest extends AbstractCartCouponEventListenerTest
 {
     /**
-     * Test cart with stackable coupon and all stacked coupons are stackable
+     * Test cart with stackable coupon and all stacked coupons are stackable.
      *
      * @dataProvider dataValidateStackableCoupon
      */
@@ -50,7 +50,7 @@ class ValidateStackableCouponsEventListenerTest extends AbstractCartCouponEventL
         }
 
         /**
-         * Clean operations to avoid restart scenario
+         * Clean operations to avoid restart scenario.
          */
         $this->removeCouponsToCartByCouponIds(
             $cart,
@@ -59,7 +59,7 @@ class ValidateStackableCouponsEventListenerTest extends AbstractCartCouponEventL
     }
 
     /**
-     * Data for testValidateStackableCoupon
+     * Data for testValidateStackableCoupon.
      */
     public function dataValidateStackableCoupon()
     {
@@ -83,7 +83,7 @@ class ValidateStackableCouponsEventListenerTest extends AbstractCartCouponEventL
     }
 
     /**
-     * Add a set of coupons into a cart given their ids
+     * Add a set of coupons into a cart given their ids.
      */
     private function addCouponsToCartByCouponIds(
         CartInterface $cart,
@@ -102,7 +102,7 @@ class ValidateStackableCouponsEventListenerTest extends AbstractCartCouponEventL
     }
 
     /**
-     * Remove a set of coupons from a cart given their ids
+     * Remove a set of coupons from a cart given their ids.
      */
     private function removeCouponsToCartByCouponIds(
         CartInterface $cart,

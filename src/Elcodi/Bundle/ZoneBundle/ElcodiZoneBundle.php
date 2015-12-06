@@ -27,7 +27,7 @@ use Elcodi\Bundle\ZoneBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\ZoneBundle\DependencyInjection\ElcodiZoneExtension;
 
 /**
- * Class ElcodiZoneBundle
+ * Class ElcodiZoneBundle.
  */
 class ElcodiZoneBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
@@ -52,7 +52,7 @@ class ElcodiZoneBundle extends AbstractElcodiBundle implements DependentBundleIn
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

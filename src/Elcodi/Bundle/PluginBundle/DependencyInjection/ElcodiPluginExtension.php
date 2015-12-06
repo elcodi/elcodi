@@ -27,7 +27,7 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Component\Plugin\Services\Traits\PluginUtilsTrait;
 
 /**
- * Class ElcodiPluginExtension
+ * Class ElcodiPluginExtension.
  *
  * @author Berny Cantos <be@rny.cc>
  */
@@ -50,7 +50,7 @@ class ElcodiPluginExtension extends AbstractExtension
     protected $kernel;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param KernelInterface $kernel Kernel
      */
@@ -60,7 +60,7 @@ class ElcodiPluginExtension extends AbstractExtension
     }
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -87,7 +87,7 @@ class ElcodiPluginExtension extends AbstractExtension
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -102,20 +102,20 @@ class ElcodiPluginExtension extends AbstractExtension
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.plugin.class"                      => $config['mapping']['plugin']['class'],
-            "elcodi.entity.plugin.mapping_file"               => $config['mapping']['plugin']['mapping_file'],
-            "elcodi.entity.plugin.manager"                    => $config['mapping']['plugin']['manager'],
-            "elcodi.entity.plugin.enabled"                    => $config['mapping']['plugin']['enabled'],
+            'elcodi.entity.plugin.class' => $config['mapping']['plugin']['class'],
+            'elcodi.entity.plugin.mapping_file' => $config['mapping']['plugin']['mapping_file'],
+            'elcodi.entity.plugin.manager' => $config['mapping']['plugin']['manager'],
+            'elcodi.entity.plugin.enabled' => $config['mapping']['plugin']['enabled'],
 
-            "elcodi.entity.plugin_configuration.class"        => $config['mapping']['plugin_configuration']['class'],
-            "elcodi.entity.plugin_configuration.mapping_file" => $config['mapping']['plugin_configuration']['mapping_file'],
-            "elcodi.entity.plugin_configuration.manager"      => $config['mapping']['plugin_configuration']['manager'],
-            "elcodi.entity.plugin_configuration.enabled"      => $config['mapping']['plugin_configuration']['enabled'],
+            'elcodi.entity.plugin_configuration.class' => $config['mapping']['plugin_configuration']['class'],
+            'elcodi.entity.plugin_configuration.mapping_file' => $config['mapping']['plugin_configuration']['mapping_file'],
+            'elcodi.entity.plugin_configuration.manager' => $config['mapping']['plugin_configuration']['manager'],
+            'elcodi.entity.plugin_configuration.enabled' => $config['mapping']['plugin_configuration']['enabled'],
         ];
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * @param array $config Configuration
      *
@@ -135,7 +135,7 @@ class ElcodiPluginExtension extends AbstractExtension
     }
 
     /**
-     * Override Doctrine entities
+     * Override Doctrine entities.
      *
      * @param ContainerBuilder $container Container
      *
@@ -160,7 +160,7 @@ class ElcodiPluginExtension extends AbstractExtension
     }
 
     /**
-     * Process plugin
+     * Process plugin.
      *
      * @param Bundle $plugin Plugin
      *
@@ -176,7 +176,7 @@ class ElcodiPluginExtension extends AbstractExtension
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */

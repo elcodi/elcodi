@@ -23,26 +23,26 @@ use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
- * Class AttributeData
+ * Class AttributeData.
  */
 class AttributeData extends AbstractFixture
 {
     /**
-     * Loads sample fixtures for Attribute entities
+     * Loads sample fixtures for Attribute entities.
      *
      * @param ObjectManager $objectManager
      */
     public function load(ObjectManager $objectManager)
     {
         /**
-         * @var ObjectDirector   $attributeDirector
-         * @var ObjectDirector   $attributeValueDirector
+         * @var ObjectDirector $attributeDirector
+         * @var ObjectDirector $attributeValueDirector
          */
         $attributeDirector = $this->getDirector('attribute');
         $attributeValueDirector = $this->getDirector('attribute_value');
 
         /**
-         * Sizes
+         * Sizes.
          */
         $sizeAttribute = $attributeDirector
             ->create()
@@ -77,7 +77,7 @@ class AttributeData extends AbstractFixture
         $this->addReference('value-size-large', $largeValue);
 
         /**
-         * Colors
+         * Colors.
          */
         $colorAttribute = $attributeDirector
             ->create()

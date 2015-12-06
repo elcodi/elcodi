@@ -24,7 +24,7 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * Class ElcodiMetricExtension
+ * Class ElcodiMetricExtension.
  */
 class ElcodiMetricExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
@@ -36,7 +36,7 @@ class ElcodiMetricExtension extends AbstractExtension implements EntitiesOverrid
     const EXTENSION_NAME = 'elcodi_metric';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -63,7 +63,7 @@ class ElcodiMetricExtension extends AbstractExtension implements EntitiesOverrid
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -78,17 +78,17 @@ class ElcodiMetricExtension extends AbstractExtension implements EntitiesOverrid
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.metric_entry.class"        => $config['mapping']['metric_entry']['class'],
-            "elcodi.entity.metric_entry.mapping_file" => $config['mapping']['metric_entry']['mapping_file'],
-            "elcodi.entity.metric_entry.manager"      => $config['mapping']['metric_entry']['manager'],
-            "elcodi.entity.metric_entry.enabled"      => $config['mapping']['metric_entry']['enabled'],
+            'elcodi.entity.metric_entry.class' => $config['mapping']['metric_entry']['class'],
+            'elcodi.entity.metric_entry.mapping_file' => $config['mapping']['metric_entry']['mapping_file'],
+            'elcodi.entity.metric_entry.manager' => $config['mapping']['metric_entry']['manager'],
+            'elcodi.entity.metric_entry.enabled' => $config['mapping']['metric_entry']['enabled'],
 
-            'elcodi.core.metric.bucket_client'        => $config['bucket']['client'],
+            'elcodi.core.metric.bucket_client' => $config['bucket']['client'],
         ];
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * @param array $config Config array
      *
@@ -125,7 +125,7 @@ class ElcodiMetricExtension extends AbstractExtension implements EntitiesOverrid
     }
 
     /**
-     * Post load implementation
+     * Post load implementation.
      *
      * @param array            $config    Parsed configuration
      * @param ContainerBuilder $container A ContainerBuilder instance
@@ -139,7 +139,7 @@ class ElcodiMetricExtension extends AbstractExtension implements EntitiesOverrid
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */

@@ -22,7 +22,7 @@ use Symfony\Component\EventDispatcher\Event;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 
 /**
- * Class CouponEvent
+ * Class CouponEvent.
  */
 class CouponEvent extends Event
 {
@@ -34,7 +34,7 @@ class CouponEvent extends Event
     private $coupon;
 
     /**
-     * Build method
+     * Build method.
      *
      * @param CouponInterface $coupon Coupon
      */
@@ -44,7 +44,7 @@ class CouponEvent extends Event
     }
 
     /**
-     * Get coupon
+     * Get coupon.
      *
      * @return CouponInterface Coupon
      */

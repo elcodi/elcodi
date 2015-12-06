@@ -22,12 +22,12 @@ use PHPUnit_Framework_TestCase;
 use Elcodi\Component\Menu\Filter\MenuDisabledFilter;
 
 /**
- * Class MenuDisabledFilterTest
+ * Class MenuDisabledFilterTest.
  */
 class MenuDisabledFilterTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Test filter disabled
+     * Test filter disabled.
      *
      * @dataProvider dataFilterDisabled
      */
@@ -47,7 +47,7 @@ class MenuDisabledFilterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Data for test filter disabled
+     * Data for test filter disabled.
      */
     public function dataFilterDisabled()
     {

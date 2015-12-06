@@ -22,12 +22,12 @@ use PHPUnit_Framework_TestCase;
 use Elcodi\Component\Media\Transformer\FileIdentifierTransformer;
 
 /**
- * Class FileIdentifierTransformerTest
+ * Class FileIdentifierTransformerTest.
  */
 class FileIdentifierTransformerTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Test image etag generator
+     * Test image etag generator.
      */
     public function testGetEtag()
     {
@@ -36,11 +36,11 @@ class FileIdentifierTransformerTest extends PHPUnit_Framework_TestCase
         $file = $this->getMock('Elcodi\Component\Media\Entity\Interfaces\FileInterface');
         $file
             ->expects($this->any())
-            ->method("getId")
+            ->method('getId')
             ->will($this->returnValue('2'));
         $file
             ->expects($this->any())
-            ->method("getExtension")
+            ->method('getExtension')
             ->will($this->returnValue('png'));
 
         $this->assertEquals(

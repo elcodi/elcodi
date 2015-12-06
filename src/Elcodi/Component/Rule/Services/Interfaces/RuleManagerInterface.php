@@ -20,14 +20,14 @@ namespace Elcodi\Component\Rule\Services\Interfaces;
 use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
 
 /**
- * Interface RuleManagerInterface
+ * Interface RuleManagerInterface.
  *
  * @author Berny Cantos <be@rny.cc>
  */
 interface RuleManagerInterface
 {
     /**
-     * Evaluates a rule and returns result
+     * Evaluates a rule and returns result.
      *
      * @param RuleInterface $rule
      * @param array         $context

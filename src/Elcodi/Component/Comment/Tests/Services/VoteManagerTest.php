@@ -26,7 +26,7 @@ use Elcodi\Component\Comment\Services\VoteManager;
 use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
- * Class VoteManagerTest
+ * Class VoteManagerTest.
  */
 class VoteManagerTest extends PHPUnit_Framework_TestCase
 {
@@ -66,13 +66,13 @@ class VoteManagerTest extends PHPUnit_Framework_TestCase
     protected $voteManager;
 
     /**
-     * Setup
+     * Setup.
      */
     public function setUp()
     {
         $this->commentEventDispatcher = $this->getMock('Elcodi\Component\Comment\EventDispatcher\CommentEventDispatcher', [], [], '', false);
         $this->voteDirector = $this->getMock('Elcodi\Component\Core\Services\ObjectDirector', [], [], '', false);
-        $this->authorToken = "12345";
+        $this->authorToken = '12345';
         $this->comment = $this->getMock('Elcodi\Component\Comment\Entity\Interfaces\CommentInterface');
 
         $this->voteManager = new VoteManager(
@@ -82,7 +82,7 @@ class VoteManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test vote when no exists
+     * Test vote when no exists.
      */
     public function testVote()
     {
@@ -123,7 +123,7 @@ class VoteManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test vote when exists
+     * Test vote when exists.
      */
     public function testExistingVote()
     {
@@ -168,7 +168,7 @@ class VoteManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test remove vote when exists
+     * Test remove vote when exists.
      */
     public function testRemoveExistingVote()
     {
@@ -200,7 +200,7 @@ class VoteManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test remove vote when no exists
+     * Test remove vote when no exists.
      */
     public function testRemoveNonExistingVote()
     {

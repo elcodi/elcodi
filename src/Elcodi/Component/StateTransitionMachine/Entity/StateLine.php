@@ -22,7 +22,7 @@ use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StateLineInterface;
 
 /**
- * Class StateLine
+ * Class StateLine.
  */
 class StateLine implements StateLineInterface
 {
@@ -50,7 +50,7 @@ class StateLine implements StateLineInterface
     protected $stateLineStack;
 
     /**
-     * Sets Name
+     * Sets Name.
      *
      * @param string $name Name
      *
@@ -64,7 +64,7 @@ class StateLine implements StateLineInterface
     }
 
     /**
-     * Get Name
+     * Get Name.
      *
      * @return string Name
      */
@@ -74,7 +74,7 @@ class StateLine implements StateLineInterface
     }
 
     /**
-     * Sets Description
+     * Sets Description.
      *
      * @param string $description Description
      *
@@ -88,7 +88,7 @@ class StateLine implements StateLineInterface
     }
 
     /**
-     * Get Description
+     * Get Description.
      *
      * @return string Description
      */

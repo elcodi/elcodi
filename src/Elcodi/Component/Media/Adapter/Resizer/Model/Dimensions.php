@@ -20,7 +20,7 @@ namespace Elcodi\Component\Media\Adapter\Resizer\Model;
 use Elcodi\Component\Media\ElcodiMediaImageResizeTypes;
 
 /**
- * Class Dimensions
+ * Class Dimensions.
  */
 class Dimensions
 {
@@ -116,13 +116,13 @@ class Dimensions
     private $dstFrameY;
 
     /**
-     * Construct
+     * Construct.
      *
-     * @param float   $originalWidth  Original width
-     * @param float   $originalHeight Original height
-     * @param float   $newWidth       New width
-     * @param float   $newHeight      New height
-     * @param integer $type           Resize type
+     * @param float $originalWidth  Original width
+     * @param float $originalHeight Original height
+     * @param float $newWidth       New width
+     * @param float $newHeight      New height
+     * @param int   $type           Resize type
      */
     private function __construct(
         $originalWidth,
@@ -143,11 +143,11 @@ class Dimensions
     }
 
     /**
-     * Resolve dimensions
+     * Resolve dimensions.
      *
-     * @param float   $newWidth  New width
-     * @param float   $newHeight New height
-     * @param integer $type      Resize type
+     * @param float $newWidth  New width
+     * @param float $newHeight New height
+     * @param int   $type      Resize type
      *
      * @return $this Self object
      */
@@ -233,7 +233,7 @@ class Dimensions
     }
 
     /**
-     * Get OriginalWidth
+     * Get OriginalWidth.
      *
      * @return float OriginalWidth
      */
@@ -243,7 +243,7 @@ class Dimensions
     }
 
     /**
-     * Get OriginalHeight
+     * Get OriginalHeight.
      *
      * @return float OriginalHeight
      */
@@ -253,7 +253,7 @@ class Dimensions
     }
 
     /**
-     * Get OriginalAspectRatio
+     * Get OriginalAspectRatio.
      *
      * @return float OriginalAspectRatio
      */
@@ -263,7 +263,7 @@ class Dimensions
     }
 
     /**
-     * Get SrcY
+     * Get SrcY.
      *
      * @return float SrcY
      */
@@ -273,7 +273,7 @@ class Dimensions
     }
 
     /**
-     * Get SrcX
+     * Get SrcX.
      *
      * @return float SrcX
      */
@@ -283,7 +283,7 @@ class Dimensions
     }
 
     /**
-     * Get SrcWidth
+     * Get SrcWidth.
      *
      * @return float SrcWidth
      */
@@ -293,7 +293,7 @@ class Dimensions
     }
 
     /**
-     * Get SrcHeight
+     * Get SrcHeight.
      *
      * @return float SrcHeight
      */
@@ -303,7 +303,7 @@ class Dimensions
     }
 
     /**
-     * Get DstY
+     * Get DstY.
      *
      * @return float DstY
      */
@@ -313,7 +313,7 @@ class Dimensions
     }
 
     /**
-     * Get DstX
+     * Get DstX.
      *
      * @return float DstX
      */
@@ -323,7 +323,7 @@ class Dimensions
     }
 
     /**
-     * Get DstWidth
+     * Get DstWidth.
      *
      * @return float DstWidth
      */
@@ -333,7 +333,7 @@ class Dimensions
     }
 
     /**
-     * Get DstHeight
+     * Get DstHeight.
      *
      * @return float DstHeight
      */
@@ -343,7 +343,7 @@ class Dimensions
     }
 
     /**
-     * Get DstFrameX
+     * Get DstFrameX.
      *
      * @return float DstFrameX
      */
@@ -353,7 +353,7 @@ class Dimensions
     }
 
     /**
-     * Get DstFrameY
+     * Get DstFrameY.
      *
      * @return float DstFrameY
      */
@@ -363,11 +363,11 @@ class Dimensions
     }
 
     /**
-     * @param float   $originalWidth  Original width
-     * @param float   $originalHeight Original height
-     * @param float   $newWidth       New width
-     * @param float   $newHeight      New height
-     * @param integer $type           Resize type
+     * @param float $originalWidth  Original width
+     * @param float $originalHeight Original height
+     * @param float $newWidth       New width
+     * @param float $newHeight      New height
+     * @param int   $type           Resize type
      *
      * @return self New instance
      */

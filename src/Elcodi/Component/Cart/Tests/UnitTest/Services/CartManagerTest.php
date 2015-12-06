@@ -34,7 +34,7 @@ use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 
 /**
- * Class CartManagerTest
+ * Class CartManagerTest.
  */
 class CartManagerTest extends PHPUnit_Framework_TestCase
 {
@@ -67,7 +67,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     protected $cart;
 
     /**
-     * Set up
+     * Set up.
      */
     public function setUp()
     {
@@ -103,7 +103,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * addLine with empty cart
+     * addLine with empty cart.
      *
      * @group cart
      */
@@ -128,7 +128,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * addLine twice with empty cart
+     * addLine twice with empty cart.
      *
      * @group cart
      */
@@ -157,7 +157,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * removeLine with a non empty cart
+     * removeLine with a non empty cart.
      *
      * @group cart
      */
@@ -176,7 +176,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * removeLine with an empty cart
+     * removeLine with an empty cart.
      *
      * @group cart
      */
@@ -193,7 +193,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * emptyLines with a non empty cart
+     * emptyLines with a non empty cart.
      *
      * @group cart
      */
@@ -212,7 +212,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * emptyLines with an empty cart
+     * emptyLines with an empty cart.
      *
      * @group cart
      */
@@ -227,7 +227,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * editCartLine test
+     * editCartLine test.
      *
      * @dataProvider dataEditCartLine
      * @group        cart
@@ -253,7 +253,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Data provider for testEditCartLine
+     * Data provider for testEditCartLine.
      */
     public function dataEditCartLine()
     {
@@ -268,7 +268,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * increaseCartLineQuantity with empty Cart
+     * increaseCartLineQuantity with empty Cart.
      *
      * @dataProvider dataIncreaseCartLineQuantity
      * @group        cart
@@ -288,7 +288,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Data provider for testEditCartLine
+     * Data provider for testEditCartLine.
      */
     public function dataIncreaseCartLineQuantity()
     {
@@ -301,7 +301,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * increaseCartLineQuantity with empty Cart
+     * increaseCartLineQuantity with empty Cart.
      *
      * @dataProvider dataDecreaseCartLineQuantityNotRemove
      * @group        cart
@@ -321,7 +321,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Data provider for testEditCartLine
+     * Data provider for testEditCartLine.
      */
     public function dataDecreaseCartLineQuantityNotRemove()
     {
@@ -333,7 +333,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * increaseCartLineQuantity with empty Cart
+     * increaseCartLineQuantity with empty Cart.
      *
      * @dataProvider dataDecreaseCartLineQuantityRemove
      * @group        cart
@@ -353,7 +353,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Data provider for testEditCartLine
+     * Data provider for testEditCartLine.
      */
     public function dataDecreaseCartLineQuantityRemove()
     {
@@ -364,7 +364,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * addProduct
+     * addProduct.
      *
      * @dataProvider dataAddProduct
      * @group        cart
@@ -402,7 +402,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Data provider for testAddProduct
+     * Data provider for testAddProduct.
      */
     public function dataAddProduct()
     {
@@ -422,7 +422,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     /**
      * Testing that when I add a product with id 1 and a variant with the same
      * id (1), new variant is added into the cart, instead of incrementing first
-     * mentioned product
+     * mentioned product.
      */
     public function testAddProductAndVariantSameId()
     {
@@ -507,7 +507,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * removeProduct
+     * removeProduct.
      *
      * @dataProvider dataRemoveProduct
      * @group        cart
@@ -546,7 +546,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Data provider for testRemoveProduct
+     * Data provider for testRemoveProduct.
      */
     public function dataRemoveProduct()
     {

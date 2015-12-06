@@ -23,12 +23,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Elcodi\Component\Configuration\Command\Abstracts\AbstractConfigurationCommand;
 
 /**
- * Class ConfigurationGetCommand
+ * Class ConfigurationGetCommand.
  */
 class ConfigurationGetCommand extends AbstractConfigurationCommand
 {
     /**
-     * configure
+     * configure.
      */
     protected function configure()
     {
@@ -40,12 +40,10 @@ class ConfigurationGetCommand extends AbstractConfigurationCommand
     }
 
     /**
-     * This command saves a configuration value
+     * This command saves a configuration value.
      *
      * @param InputInterface  $input  The input interface
      * @param OutputInterface $output The output interface
-     *
-     * @return void
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {

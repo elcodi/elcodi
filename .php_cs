@@ -10,6 +10,8 @@ $config = Symfony\CS\Config\Config::create()
         'short_array_syntax',
         '-remove_lines_between_uses',
         '-empty_return',
+        '-phpdoc_var_without_name',
+        '-phpdoc_to_comment',
     ]);
 
 if (null === $input->getArgument('path')) {

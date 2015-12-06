@@ -23,12 +23,12 @@ use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
- * Class CurrencyData
+ * Class CurrencyData.
  */
 class CurrencyData extends AbstractFixture
 {
     /**
-     * Load data fixtures with the passed EntityManager
+     * Load data fixtures with the passed EntityManager.
      *
      * @param ObjectManager $manager
      */
@@ -40,7 +40,7 @@ class CurrencyData extends AbstractFixture
         $currencyDirector = $this->getDirector('currency');
 
         /**
-         * Dollar
+         * Dollar.
          */
         $currencyDollar = $currencyDirector
             ->create()
@@ -63,7 +63,7 @@ class CurrencyData extends AbstractFixture
         $this->setReference('currency-euro', $currencyEuro);
 
         /**
-         * Pound
+         * Pound.
          */
         $currencyPound = $currencyDirector
             ->create()
@@ -75,7 +75,7 @@ class CurrencyData extends AbstractFixture
         $this->setReference('currency-pound', $currencyPound);
 
         /**
-         * Ien
+         * Ien.
          */
         $currencyIen = $currencyDirector
             ->create()

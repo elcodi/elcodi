@@ -25,7 +25,7 @@ use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException;
 
 /**
- * Class AutomaticCouponApplicator
+ * Class AutomaticCouponApplicator.
  *
  * API methods:
  *
@@ -50,7 +50,7 @@ class AutomaticCouponApplicator
     private $couponRepository;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CartCouponManager $cartCouponManager Manager for cart coupon rules
      * @param ObjectRepository  $couponRepository  Repository to get coupons
@@ -64,7 +64,7 @@ class AutomaticCouponApplicator
     }
 
     /**
-     * Method subscribed to PreCartLoad event
+     * Method subscribed to PreCartLoad event.
      *
      * Iterate over all automatic Coupons and check if they apply.
      * If any applies, it will be added to the Cart
@@ -91,7 +91,7 @@ class AutomaticCouponApplicator
     }
 
     /**
-     * Get current cart automatic coupons
+     * Get current cart automatic coupons.
      *
      * @param CartInterface $cart Cart
      *

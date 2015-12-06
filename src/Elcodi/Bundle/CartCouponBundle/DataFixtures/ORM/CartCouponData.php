@@ -26,19 +26,19 @@ use Elcodi\Component\CartCoupon\Entity\Interfaces\CartCouponInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 
 /**
- * Class CartCouponData
+ * Class CartCouponData.
  */
 class CartCouponData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
-     * Load data fixtures with the passed EntityManager
+     * Load data fixtures with the passed EntityManager.
      *
      * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager)
     {
         /**
-         * Carts
+         * Carts.
          *
          * @var CartCouponInterface $cartCoupon
          * @var CartInterface       $cart
@@ -60,7 +60,7 @@ class CartCouponData extends AbstractFixture implements DependentFixtureInterfac
 
     /**
      * This method must return an array of fixtures classes
-     * on which the implementing class depends on
+     * on which the implementing class depends on.
      *
      * @return array
      */

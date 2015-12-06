@@ -23,7 +23,7 @@ use Twig_SimpleFunction;
 use Elcodi\Component\Shipping\Wrapper\ShippingWrapper;
 
 /**
- * Class ShippingExtension
+ * Class ShippingExtension.
  */
 class ShippingExtension extends Twig_Extension
 {
@@ -35,7 +35,7 @@ class ShippingExtension extends Twig_Extension
     private $shippingWrapper;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param ShippingWrapper $shippingWrapper Shipping wrapper
      */

@@ -26,7 +26,7 @@ use Elcodi\Component\Product\Entity\Product;
 use Elcodi\Component\Product\Services\CategoryIntegrityFixer;
 
 /**
- * Class CategoryIntegrityFixerTest
+ * Class CategoryIntegrityFixerTest.
  */
 class CategoryIntegrityFixerTest extends PHPUnit_Framework_TestCase
 {
@@ -102,9 +102,9 @@ class CategoryIntegrityFixerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Gets a new category
+     * Gets a new category.
      *
-     * @param integer $id It's id
+     * @param int $id It's id
      *
      * @return CategoryInterface
      */
@@ -117,9 +117,9 @@ class CategoryIntegrityFixerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Gets a new product
+     * Gets a new product.
      *
-     * @param integer $id The product id.
+     * @param int $id The product id.
      *
      * @return Product
      */

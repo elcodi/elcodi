@@ -18,23 +18,23 @@
 namespace Elcodi\Component\Core\Encoder\Interfaces;
 
 /**
- * Interface EncoderInterface
+ * Interface EncoderInterface.
  */
 interface EncoderInterface
 {
     /**
-     * Encode incoming data
+     * Encode incoming data.
      *
      * @param mixed $data Data
      *
-     * @return string|boolean encoded data
+     * @return string|bool encoded data
      */
     public function encode($data);
 
     /**
-     * Decode incoming data
+     * Decode incoming data.
      *
-     * @param string|boolean $serializedData Serialized data
+     * @param string|bool $serializedData Serialized data
      *
      * @return mixed Decoded data
      */

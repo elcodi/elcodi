@@ -22,7 +22,7 @@ use Symfony\Component\EventDispatcher\Event;
 use Elcodi\Component\Newsletter\Entity\Interfaces\NewsletterSubscriptionInterface;
 
 /**
- * Event fired when a customer subscribes to newsletter
+ * Event fired when a customer subscribes to newsletter.
  *
  * This event sends an email to customer
  */
@@ -36,7 +36,7 @@ class AbstractNewsletterEvent extends Event
     private $newsletterSubscription;
 
     /**
-     * construct method
+     * construct method.
      *
      * @param NewsletterSubscriptionInterface $newsletterSubscription Newsletter subscription
      */
@@ -46,7 +46,7 @@ class AbstractNewsletterEvent extends Event
     }
 
     /**
-     * Return order
+     * Return order.
      *
      * @return NewsletterSubscriptionInterface Newsletter Subscription
      */

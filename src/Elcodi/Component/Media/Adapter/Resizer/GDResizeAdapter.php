@@ -24,17 +24,17 @@ use Elcodi\Component\Media\Adapter\Resizer\Model\Dimensions;
 use Elcodi\Component\Media\ElcodiMediaImageResizeTypes;
 
 /**
- * Class GDResizeAdapter
+ * Class GDResizeAdapter.
  */
 class GDResizeAdapter implements ResizeAdapterInterface
 {
     /**
-     * Interface for resize implementations
+     * Interface for resize implementations.
      *
-     * @param string  $imageData Image Data
-     * @param integer $height    Height value
-     * @param integer $width     Width value
-     * @param integer $type      Type
+     * @param string $imageData Image Data
+     * @param int    $height    Height value
+     * @param int    $width     Width value
+     * @param int    $type      Type
      *
      * @return string Resized image data
      */

@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Core\Factory\Traits;
 
 /**
- * Trait EntityNamespaceTrait
+ * Trait EntityNamespaceTrait.
  */
 trait EntityNamespaceTrait
 {
@@ -30,7 +30,7 @@ trait EntityNamespaceTrait
     private $entityNamespace;
 
     /**
-     * Set Entity Namespace
+     * Set Entity Namespace.
      *
      * @param string $entityNamespace Entity namespace
      *
@@ -44,7 +44,7 @@ trait EntityNamespaceTrait
     }
 
     /**
-     * Get entity Namespace
+     * Get entity Namespace.
      *
      * @return string Entity Namespace
      */

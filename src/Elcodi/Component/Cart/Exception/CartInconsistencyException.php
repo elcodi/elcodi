@@ -20,7 +20,7 @@ namespace Elcodi\Component\Cart\Exception;
 use Exception;
 
 /**
- * CartInconsistencyException
+ * CartInconsistencyException.
  */
 final class CartInconsistencyException extends Exception
 {

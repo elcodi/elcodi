@@ -24,12 +24,12 @@ use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
- * Class ZoneData
+ * Class ZoneData.
  */
 class ZoneData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
-     * Loads sample fixtures for Zone entities
+     * Loads sample fixtures for Zone entities.
      *
      * @param ObjectManager $objectManager
      */
@@ -62,7 +62,7 @@ class ZoneData extends AbstractFixture implements DependentFixtureInterface
 
     /**
      * This method must return an array of fixtures classes
-     * on which the implementing class depends on
+     * on which the implementing class depends on.
      *
      * @return array
      */

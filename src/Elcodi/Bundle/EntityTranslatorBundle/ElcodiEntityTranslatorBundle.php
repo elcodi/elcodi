@@ -27,7 +27,7 @@ use Elcodi\Bundle\EntityTranslatorBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\EntityTranslatorBundle\DependencyInjection\ElcodiEntityTranslatorExtension;
 
 /**
- * ElcodiEntityTranslatorBundle Bundle
+ * ElcodiEntityTranslatorBundle Bundle.
  */
 class ElcodiEntityTranslatorBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
@@ -52,7 +52,7 @@ class ElcodiEntityTranslatorBundle extends AbstractElcodiBundle implements Depen
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

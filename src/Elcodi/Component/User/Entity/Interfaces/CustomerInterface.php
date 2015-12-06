@@ -25,7 +25,7 @@ use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 
 /**
- * Interface CustomerInterface
+ * Interface CustomerInterface.
  *
  * Entities depending on CustomerInterfaces must implement shopping
  * capabilities and associations, such as addresses, orders, carts
@@ -33,7 +33,7 @@ use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 interface CustomerInterface extends AbstractUserInterface
 {
     /**
-     * Set phone
+     * Set phone.
      *
      * @param string $phone Phone
      *
@@ -42,14 +42,14 @@ interface CustomerInterface extends AbstractUserInterface
     public function setPhone($phone);
 
     /**
-     * Get phone
+     * Get phone.
      *
      * @return string
      */
     public function getPhone();
 
     /**
-     * Set identity document
+     * Set identity document.
      *
      * @param string $identityDocument
      *
@@ -58,46 +58,46 @@ interface CustomerInterface extends AbstractUserInterface
     public function setIdentityDocument($identityDocument);
 
     /**
-     * Get identity document
+     * Get identity document.
      *
      * @return string Identity document
      */
     public function getIdentityDocument();
 
     /**
-     * Sets Guest
+     * Sets Guest.
      *
-     * @param boolean $guest Guest
+     * @param bool $guest Guest
      *
      * @return $this Self object
      */
     public function setGuest($guest);
 
     /**
-     * Get Guest
+     * Get Guest.
      *
-     * @return boolean Guest
+     * @return bool Guest
      */
     public function isGuest();
 
     /**
-     * Sets Newsletter
+     * Sets Newsletter.
      *
-     * @param boolean $newsletter Newsletter
+     * @param bool $newsletter Newsletter
      *
      * @return $this Self object
      */
     public function setNewsletter($newsletter);
 
     /**
-     * Get Newsletter
+     * Get Newsletter.
      *
-     * @return boolean Newsletter
+     * @return bool Newsletter
      */
     public function getNewsletter();
 
     /**
-     * Add Order
+     * Add Order.
      *
      * @param OrderInterface $order Order
      *
@@ -106,7 +106,7 @@ interface CustomerInterface extends AbstractUserInterface
     public function addOrder(OrderInterface $order);
 
     /**
-     * Remove Order
+     * Remove Order.
      *
      * @param OrderInterface $order
      *
@@ -115,7 +115,7 @@ interface CustomerInterface extends AbstractUserInterface
     public function removeOrder(OrderInterface $order);
 
     /**
-     * Set orders
+     * Set orders.
      *
      * @param Collection $orders Orders
      *
@@ -124,14 +124,14 @@ interface CustomerInterface extends AbstractUserInterface
     public function setOrders(Collection $orders);
 
     /**
-     * Get user orders
+     * Get user orders.
      *
      * @return Collection Customerinterface orders
      */
     public function getOrders();
 
     /**
-     * Add Cart
+     * Add Cart.
      *
      * @param CartInterface $cart
      *
@@ -140,7 +140,7 @@ interface CustomerInterface extends AbstractUserInterface
     public function addCart(CartInterface $cart);
 
     /**
-     * Remove Cart
+     * Remove Cart.
      *
      * @param CartInterface $cart
      *
@@ -156,14 +156,14 @@ interface CustomerInterface extends AbstractUserInterface
     public function setCarts(Collection $carts);
 
     /**
-     * Get Cart collection
+     * Get Cart collection.
      *
      * @return Collection
      */
     public function getCarts();
 
     /**
-     * Add address
+     * Add address.
      *
      * @param AddressInterface $address
      *
@@ -172,7 +172,7 @@ interface CustomerInterface extends AbstractUserInterface
     public function addAddress(AddressInterface $address);
 
     /**
-     * Remove address
+     * Remove address.
      *
      * @param AddressInterface $address
      *
@@ -181,7 +181,7 @@ interface CustomerInterface extends AbstractUserInterface
     public function removeAddress(AddressInterface $address);
 
     /**
-     * Set addresses
+     * Set addresses.
      *
      * @param Collection $addresses Addresses
      *
@@ -190,14 +190,14 @@ interface CustomerInterface extends AbstractUserInterface
     public function setAddresses(Collection $addresses);
 
     /**
-     * Get addresses
+     * Get addresses.
      *
      * @return Collection Addresses
      */
     public function getAddresses();
 
     /**
-     * Set Delivery Address
+     * Set Delivery Address.
      *
      * @param AddressInterface $deliveryAddress
      *
@@ -206,14 +206,14 @@ interface CustomerInterface extends AbstractUserInterface
     public function setDeliveryAddress(AddressInterface $deliveryAddress = null);
 
     /**
-     * Get Delivery address
+     * Get Delivery address.
      *
      * @return AddressInterface
      */
     public function getDeliveryAddress();
 
     /**
-     * Set Invoice Address
+     * Set Invoice Address.
      *
      * @param AddressInterface $invoiceAddress
      *
@@ -222,14 +222,14 @@ interface CustomerInterface extends AbstractUserInterface
     public function setInvoiceAddress(AddressInterface $invoiceAddress = null);
 
     /**
-     * Get Invoice address
+     * Get Invoice address.
      *
      * @return AddressInterface
      */
     public function getInvoiceAddress();
 
     /**
-     * Set language
+     * Set language.
      *
      * @param LanguageInterface $language The language
      *
@@ -238,7 +238,7 @@ interface CustomerInterface extends AbstractUserInterface
     public function setLanguage(LanguageInterface $language);
 
     /**
-     * Get language
+     * Get language.
      *
      * @return LanguageInterface
      */

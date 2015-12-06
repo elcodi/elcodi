@@ -23,7 +23,7 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
- * Class AbstractConfiguration
+ * Class AbstractConfiguration.
  */
 abstract class AbstractConfiguration implements ConfigurationInterface
 {
@@ -35,7 +35,7 @@ abstract class AbstractConfiguration implements ConfigurationInterface
     protected $extensionName;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @var string $extensionName Extension name
      */
@@ -45,7 +45,7 @@ abstract class AbstractConfiguration implements ConfigurationInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getConfigTreeBuilder()
     {
@@ -58,20 +58,20 @@ abstract class AbstractConfiguration implements ConfigurationInterface
     }
 
     /**
-     * Configure the root node
+     * Configure the root node.
      *
      * @param ArrayNodeDefinition $rootNode Root node
      */
     abstract protected function setupTree(ArrayNodeDefinition $rootNode);
 
     /**
-     * Add a mapping node into configuration
+     * Add a mapping node into configuration.
      *
-     * @param string         $nodeName          Node name
-     * @param string         $entityClass       Class of the entity
-     * @param string         $entityMappingFile Path of the file where the mapping is defined
-     * @param string         $entityManager     Name of the entityManager assigned to manage the entity
-     * @param string|boolean $entityEnabled     The entity mapping will be added to the application
+     * @param string      $nodeName          Node name
+     * @param string      $entityClass       Class of the entity
+     * @param string      $entityMappingFile Path of the file where the mapping is defined
+     * @param string      $entityManager     Name of the entityManager assigned to manage the entity
+     * @param string|bool $entityEnabled     The entity mapping will be added to the application
      *
      * @return NodeDefinition Node
      */

@@ -23,12 +23,12 @@ use Doctrine\ORM\EntityRepository;
 use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 
 /**
- * Class ProductRepository
+ * Class ProductRepository.
  */
 class ProductRepository extends EntityRepository
 {
     /**
-     * Get all the the products from the received categories
+     * Get all the the products from the received categories.
      *
      * @param CategoryInterface[] $categories
      *

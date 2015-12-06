@@ -20,7 +20,7 @@ namespace Elcodi\Component\Rule\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class RuleRepository
+ * Class RuleRepository.
  */
 class RuleRepository extends EntityRepository
 {

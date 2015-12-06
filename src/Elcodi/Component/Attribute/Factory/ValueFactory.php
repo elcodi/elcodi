@@ -21,12 +21,12 @@ use Elcodi\Component\Attribute\Entity\Value;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 
 /**
- * Factory for Value entities
+ * Factory for Value entities.
  */
 class ValueFactory extends AbstractFactory
 {
     /**
-     * Creates a Value instance
+     * Creates a Value instance.
      *
      * @return Value New Value entity
      */

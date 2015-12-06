@@ -27,7 +27,7 @@ use Elcodi\Bundle\StateTransitionMachineBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\StateTransitionMachineBundle\DependencyInjection\ElcodiStateTransitionMachineExtension;
 
 /**
- * ElcodiStateTransitionMachineBundle
+ * ElcodiStateTransitionMachineBundle.
  */
 class ElcodiStateTransitionMachineBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
@@ -52,7 +52,7 @@ class ElcodiStateTransitionMachineBundle extends AbstractElcodiBundle implements
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

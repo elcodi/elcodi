@@ -21,7 +21,7 @@ use Elcodi\Component\Cart\Event\CartOnLoadEvent;
 use Elcodi\Component\CartShipping\Services\CartShippingAmountLoader;
 
 /**
- * Class LoadCartShippingAmountEventListener
+ * Class LoadCartShippingAmountEventListener.
  */
 final class LoadCartShippingAmountEventListener
 {
@@ -33,7 +33,7 @@ final class LoadCartShippingAmountEventListener
     private $cartShippingAmountLoader;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param CartShippingAmountLoader $cartShippingAmountLoader Cart shipping amount loader
      */
@@ -43,7 +43,7 @@ final class LoadCartShippingAmountEventListener
     }
 
     /**
-     * Load cart shipping amount
+     * Load cart shipping amount.
      *
      * @param CartOnLoadEvent $event Event
      */

@@ -21,7 +21,7 @@ use Elcodi\Component\Cart\Event\CartOnLoadEvent;
 use Elcodi\Component\CartCoupon\Services\CartCouponPricesLoader;
 
 /**
- * Class LoadCartCouponAmountEventListener
+ * Class LoadCartCouponAmountEventListener.
  */
 final class LoadCartCouponAmountEventListener
 {
@@ -33,7 +33,7 @@ final class LoadCartCouponAmountEventListener
     private $cartCouponPricesLoader;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param CartCouponPricesLoader $cartCouponPricesLoader CartCoupon prices loader
      */

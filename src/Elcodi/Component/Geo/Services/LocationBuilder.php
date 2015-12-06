@@ -21,7 +21,7 @@ use Elcodi\Component\Geo\Entity\Interfaces\LocationInterface;
 use Elcodi\Component\Geo\Factory\LocationFactory;
 
 /**
- * Class LocationBuilder
+ * Class LocationBuilder.
  */
 class LocationBuilder
 {
@@ -40,7 +40,7 @@ class LocationBuilder
     private $locations;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param LocationFactory $locationFactory Location factory
      */
@@ -52,7 +52,7 @@ class LocationBuilder
     }
 
     /**
-     * Given a location information, create a new Location
+     * Given a location information, create a new Location.
      *
      * @param string                 $id     Location id
      * @param string                 $name   Location name

@@ -29,7 +29,7 @@ use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 use Elcodi\Component\User\Event\UserRegisterEvent;
 
 /**
- * Class AutologinOnRegisterEventListener
+ * Class AutologinOnRegisterEventListener.
  */
 class AutologinOnRegisterEventListener
 {
@@ -62,7 +62,7 @@ class AutologinOnRegisterEventListener
     private $providerKey;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param RequestStack             $requestStack Request stack
      * @param TokenStorageInterface    $tokenStorage Token storage
@@ -82,7 +82,7 @@ class AutologinOnRegisterEventListener
     }
 
     /**
-     * Autologin users after registration
+     * Autologin users after registration.
      *
      * @param UserRegisterEvent $event User registered event
      *
@@ -129,7 +129,7 @@ class AutologinOnRegisterEventListener
     }
 
     /**
-     * Generate new token given a user
+     * Generate new token given a user.
      *
      * @param AbstractUserInterface $user User
      *

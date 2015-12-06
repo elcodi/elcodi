@@ -23,7 +23,7 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\Component\Language\Entity\Interfaces\LocaleInterface;
 
 /**
- * Language manager Services with promoted addition
+ * Language manager Services with promoted addition.
  */
 class PromotedLanguageManager
 {
@@ -42,7 +42,7 @@ class PromotedLanguageManager
     private $masterLocale;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param LanguageManager $languageManager Language manager
      * @param LocaleInterface $masterLocale    Master locale
@@ -56,7 +56,7 @@ class PromotedLanguageManager
     }
 
     /**
-     * Return all languages with the master one promoted to the first position
+     * Return all languages with the master one promoted to the first position.
      *
      * @return Collection Languages collection
      */

@@ -20,7 +20,7 @@ namespace Elcodi\Component\Banner\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * BannerZoneRepository
+ * BannerZoneRepository.
  */
 class BannerZoneRepository extends EntityRepository
 {

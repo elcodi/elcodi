@@ -18,7 +18,7 @@
 namespace Elcodi\Component\User\Entity\Traits;
 
 /**
- * Trait LastLoginTrait
+ * Trait LastLoginTrait.
  */
 trait LastLoginTrait
 {
@@ -30,7 +30,7 @@ trait LastLoginTrait
     protected $lastLoginAt;
 
     /**
-     * Get LastLoginAt
+     * Get LastLoginAt.
      *
      * @return \DateTime LastLoginAt
      */
@@ -40,7 +40,7 @@ trait LastLoginTrait
     }
 
     /**
-     * Sets LastLoginAt
+     * Sets LastLoginAt.
      *
      * @param \DateTime $lastLoginAt LastLoginAt
      *

@@ -24,7 +24,7 @@ use UnexpectedValueException;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 
 /**
- * Class ObjectDirector
+ * Class ObjectDirector.
  *
  * This object is a facade for these different persistance-related elements
  *
@@ -59,7 +59,7 @@ class ObjectDirector
     private $factory;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param ObjectManager    $manager    Manager
      * @param ObjectRepository $repository Repository
@@ -108,10 +108,10 @@ class ObjectDirector
      * an UnexpectedValueException if certain values of the sorting or limiting details are
      * not supported.
      *
-     * @param array        $criteria
-     * @param array|null   $orderBy
-     * @param integer|null $limit
-     * @param integer|null $offset
+     * @param array      $criteria
+     * @param array|null $orderBy
+     * @param int|null   $limit
+     * @param int|null   $offset
      *
      * @return array Set of fetched objects
      *
@@ -150,9 +150,9 @@ class ObjectDirector
     }
 
     /**
-     * Create a new entity instance, result of the factory creation method
+     * Create a new entity instance, result of the factory creation method.
      *
-     * @return Object new Instance
+     * @return object new Instance
      */
     public function create()
     {

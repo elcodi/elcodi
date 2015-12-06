@@ -22,7 +22,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Elcodi\Component\Sitemap\Transformer\Interfaces\SitemapTransformerInterface;
 
 /**
- * Class StaticRouteTransformer
+ * Class StaticRouteTransformer.
  */
 class StaticRouteTransformer implements SitemapTransformerInterface
 {
@@ -34,7 +34,7 @@ class StaticRouteTransformer implements SitemapTransformerInterface
     private $router;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param UrlGeneratorInterface $router Router
      */
@@ -44,7 +44,7 @@ class StaticRouteTransformer implements SitemapTransformerInterface
     }
 
     /**
-     * Get url given an entity
+     * Get url given an entity.
      *
      * @param mixed       $element  Element
      * @param string|null $language Language
@@ -61,7 +61,7 @@ class StaticRouteTransformer implements SitemapTransformerInterface
     }
 
     /**
-     * Get last mod
+     * Get last mod.
      *
      * @param mixed  $element  Element
      * @param string $language Language

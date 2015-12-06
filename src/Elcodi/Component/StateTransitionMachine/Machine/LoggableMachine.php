@@ -26,7 +26,7 @@ use Elcodi\Component\StateTransitionMachine\Exception\TransitionNotValidExceptio
 use Elcodi\Component\StateTransitionMachine\Machine\Interfaces\MachineInterface;
 
 /**
- * Class LoggableMachine
+ * Class LoggableMachine.
  */
 class LoggableMachine implements MachineInterface
 {
@@ -45,7 +45,7 @@ class LoggableMachine implements MachineInterface
     private $logger;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param MachineInterface $machine Machine
      * @param LoggerInterface  $logger  Logger
@@ -59,7 +59,7 @@ class LoggableMachine implements MachineInterface
     }
 
     /**
-     * Get machine id
+     * Get machine id.
      *
      * @return string Machine identifier
      */
@@ -71,7 +71,7 @@ class LoggableMachine implements MachineInterface
     }
 
     /**
-     * Get point of entry
+     * Get point of entry.
      *
      * @return string Point of entry
      */
@@ -83,7 +83,7 @@ class LoggableMachine implements MachineInterface
     }
 
     /**
-     * Applies a transition from a state
+     * Applies a transition from a state.
      *
      * @param string $startStateName Start state name
      * @param string $transitionName Transition name
@@ -110,7 +110,7 @@ class LoggableMachine implements MachineInterface
     }
 
     /**
-     * Reaches a state given a start state
+     * Reaches a state given a start state.
      *
      * @param string $startStateName Start state name
      * @param string $finalStateName Final state name
@@ -136,7 +136,7 @@ class LoggableMachine implements MachineInterface
     }
 
     /**
-     * Log transition
+     * Log transition.
      *
      * @param Transition $transition Transition to log
      *
@@ -150,9 +150,9 @@ class LoggableMachine implements MachineInterface
                 'Transition {transition_name} in machine "{machine_id}" from "{state_from}" to "{state_to}"',
                 [
                     'transition_name' => $transition->getName(),
-                    'machine_id'      => $this->machine->getId(),
-                    'state_from'      => $transition->getStart()->getName(),
-                    'state_to'        => $transition->getFinal()->getName(),
+                    'machine_id' => $this->machine->getId(),
+                    'state_from' => $transition->getStart()->getName(),
+                    'state_to' => $transition->getFinal()->getName(),
                 ]
             );
     }

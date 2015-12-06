@@ -21,16 +21,16 @@ use Elcodi\Component\Menu\Entity\Menu\Interfaces\NodeInterface;
 use Elcodi\Component\Menu\Filter\Interfaces\MenuFilterInterface;
 
 /**
- * Class MenuExpandedFilter
+ * Class MenuExpandedFilter.
  */
 class MenuExpandedFilter implements MenuFilterInterface
 {
     /**
-     * Filter all menus without url that has no children
+     * Filter all menus without url that has no children.
      *
      * @param NodeInterface $menuNode Menu node
      *
-     * @return boolean Node must be rendered
+     * @return bool Node must be rendered
      */
     public function filter(NodeInterface $menuNode)
     {

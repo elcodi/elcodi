@@ -24,12 +24,12 @@ use Elcodi\Component\Newsletter\Event\NewsletterSubscriptionEvent;
 use Elcodi\Component\Newsletter\Event\NewsletterUnsubscriptionEvent;
 
 /**
- * Class NewsletterEventDispatcher
+ * Class NewsletterEventDispatcher.
  */
 class NewsletterEventDispatcher extends AbstractEventDispatcher
 {
     /**
-     * Dispatch subscription event
+     * Dispatch subscription event.
      *
      * @param NewsletterSubscriptionInterface $newsletterSubscription Newsletter subscription
      *
@@ -45,7 +45,7 @@ class NewsletterEventDispatcher extends AbstractEventDispatcher
     }
 
     /**
-     * Dispatch unsubscription event
+     * Dispatch unsubscription event.
      *
      * @param NewsletterSubscriptionInterface $newsletterSubscription Newsletter subscription
      *

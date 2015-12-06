@@ -20,12 +20,12 @@ namespace Elcodi\Component\User\EventDispatcher\Interfaces;
 use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 
 /**
- * Interface PasswordEventDispatcherInterface
+ * Interface PasswordEventDispatcherInterface.
  */
 interface PasswordEventDispatcherInterface
 {
     /**
-     * Dispatch password remember event
+     * Dispatch password remember event.
      *
      * @param AbstractUserInterface $user       User
      * @param string                $recoverUrl Recover url
@@ -38,7 +38,7 @@ interface PasswordEventDispatcherInterface
     );
 
     /**
-     * Dispatch password recover event
+     * Dispatch password recover event.
      *
      * @param AbstractUserInterface $user User
      *

@@ -27,7 +27,7 @@ use Elcodi\Bundle\MediaBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\MediaBundle\DependencyInjection\ElcodiMediaExtension;
 
 /**
- * Class MediaBundle
+ * Class MediaBundle.
  */
 class ElcodiMediaBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
@@ -52,7 +52,7 @@ class ElcodiMediaBundle extends AbstractElcodiBundle implements DependentBundleI
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

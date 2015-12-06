@@ -23,12 +23,12 @@ use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Product\Entity\Category;
 
 /**
- * Class CategoryFactory
+ * Class CategoryFactory.
  */
 class CategoryFactory extends AbstractFactory
 {
     /**
-     * Creates an instance of Category
+     * Creates an instance of Category.
      *
      * @return Category New Category entity
      */

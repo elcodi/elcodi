@@ -23,12 +23,12 @@ use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Menu\Entity\Menu\Node;
 
 /**
- * Class NodeFactory
+ * Class NodeFactory.
  */
 class NodeFactory extends AbstractFactory
 {
     /**
-     * Creates an instance of Node entity
+     * Creates an instance of Node entity.
      *
      * @return Node Empty entity
      */

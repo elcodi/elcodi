@@ -22,7 +22,7 @@ use Symfony\Component\EventDispatcher\Event;
 use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 
 /**
- * Class UserRegisterEvent
+ * Class UserRegisterEvent.
  */
 final class UserRegisterEvent extends Event
 {
@@ -34,7 +34,7 @@ final class UserRegisterEvent extends Event
     private $user;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param AbstractUserInterface $user User
      */

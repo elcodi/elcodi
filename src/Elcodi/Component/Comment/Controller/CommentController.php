@@ -27,7 +27,7 @@ use Elcodi\Component\Comment\Services\CommentCache;
 use Elcodi\Component\Comment\Services\CommentManager;
 
 /**
- * Class CommentController
+ * Class CommentController.
  */
 class CommentController
 {
@@ -53,7 +53,7 @@ class CommentController
     private $commentRepository;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param CommentManager   $commentManager    Comment manager
      * @param CommentCache     $commentCache      Comment cache
@@ -70,7 +70,7 @@ class CommentController
     }
 
     /**
-     * List comments
+     * List comments.
      *
      * @param string $context Context
      * @param string $source  Source
@@ -87,7 +87,7 @@ class CommentController
     }
 
     /**
-     * Add a comment
+     * Add a comment.
      *
      * @param Request $request     Request
      * @param string  $authorToken Author Token
@@ -134,16 +134,16 @@ class CommentController
             ->createCommentStructure($comment);
 
         return new Response(json_encode([
-            'entity'   => $commentStructure,
+            'entity' => $commentStructure,
             'children' => [],
         ]));
     }
 
     /**
-     * Edit a comment
+     * Edit a comment.
      *
      * @param Request $request     Request
-     * @param integer $commentId   Comment id
+     * @param int     $commentId   Comment id
      * @param string  $authorToken Author Token
      *
      * @return Response
@@ -173,10 +173,10 @@ class CommentController
     }
 
     /**
-     * Delete a comment
+     * Delete a comment.
      *
-     * @param integer $commentId   Comment id
-     * @param string  $authorToken Author token
+     * @param int    $commentId   Comment id
+     * @param string $authorToken Author token
      *
      * @return Response
      *
@@ -199,7 +199,7 @@ class CommentController
     }
 
     /**
-     * Find comment
+     * Find comment.
      *
      * @param string $commentId   Comment id
      * @param string $authorToken Author token
@@ -213,7 +213,7 @@ class CommentController
         $comment = $this
             ->commentRepository
             ->findOneBy([
-                'id'          => $commentId,
+                'id' => $commentId,
                 'authorToken' => $authorToken,
             ]);
 

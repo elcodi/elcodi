@@ -20,7 +20,7 @@ namespace Elcodi\Component\Sitemap\Profile;
 use Elcodi\Component\Sitemap\Dumper\SitemapDumper;
 
 /**
- * Class SitemapProfile
+ * Class SitemapProfile.
  */
 class SitemapProfile
 {
@@ -39,7 +39,7 @@ class SitemapProfile
     private $sitemapDumpers;
 
     /**
-     * Construct
+     * Construct.
      *
      * @var array $languages Languages
      */
@@ -49,7 +49,7 @@ class SitemapProfile
     }
 
     /**
-     * Add a sitemapDumper
+     * Add a sitemapDumper.
      *
      * @param SitemapDumper $sitemapDumper Sitemap Dumper
      *
@@ -63,7 +63,7 @@ class SitemapProfile
     }
 
     /**
-     * Build full profile
+     * Build full profile.
      *
      * @param string $basepath Basepath
      *

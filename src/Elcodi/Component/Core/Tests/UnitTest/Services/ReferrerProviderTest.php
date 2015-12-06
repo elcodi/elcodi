@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Elcodi\Component\Core\Services\ReferrerProvider;
 
 /**
- * Class ReferrerProviderTest
+ * Class ReferrerProviderTest.
  */
 class ReferrerProviderTest extends PHPUnit_Framework_TestCase
 {
@@ -42,7 +42,7 @@ class ReferrerProviderTest extends PHPUnit_Framework_TestCase
     protected $referrerProvider;
 
     /**
-     * Setup
+     * Setup.
      */
     public function setup()
     {
@@ -51,7 +51,7 @@ class ReferrerProviderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test get referrer with not empty in session
+     * Test get referrer with not empty in session.
      */
     public function testGetReferrerNotEmpty()
     {
@@ -70,7 +70,7 @@ class ReferrerProviderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test get referrer with empty in session
+     * Test get referrer with empty in session.
      */
     public function testGetReferrerEmpty()
     {
@@ -89,7 +89,7 @@ class ReferrerProviderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test get referrer domain
+     * Test get referrer domain.
      *
      * @dataProvider getReferrerDomainTest
      */
@@ -110,7 +110,7 @@ class ReferrerProviderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Data for testGetReferrerDomain
+     * Data for testGetReferrerDomain.
      */
     public function getReferrerDomainTest()
     {
@@ -130,7 +130,7 @@ class ReferrerProviderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test referrer is search engine
+     * Test referrer is search engine.
      *
      * @dataProvider dataReferrerIsSearchEngine
      */
@@ -151,7 +151,7 @@ class ReferrerProviderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Data for testReferrerIsSearchEngine
+     * Data for testReferrerIsSearchEngine.
      */
     public function dataReferrerIsSearchEngine()
     {

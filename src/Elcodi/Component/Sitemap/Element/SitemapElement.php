@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Sitemap\Element;
 
 /**
- * Class SitemapElement
+ * Class SitemapElement.
  */
 class SitemapElement
 {
@@ -51,7 +51,7 @@ class SitemapElement
     private $priority;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param string      $location         Location
      * @param string|null $lastModification Last modification
@@ -71,7 +71,7 @@ class SitemapElement
     }
 
     /**
-     * Get Location
+     * Get Location.
      *
      * @return string Location
      */
@@ -81,7 +81,7 @@ class SitemapElement
     }
 
     /**
-     * Get LastModification
+     * Get LastModification.
      *
      * @return string|null LastModification
      */
@@ -91,7 +91,7 @@ class SitemapElement
     }
 
     /**
-     * Get ChangeFrequency
+     * Get ChangeFrequency.
      *
      * @return string|null ChangeFrequency
      */
@@ -101,7 +101,7 @@ class SitemapElement
     }
 
     /**
-     * Get Priority
+     * Get Priority.
      *
      * @return string|null Priority
      */

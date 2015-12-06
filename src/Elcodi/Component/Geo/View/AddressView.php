@@ -24,7 +24,7 @@ use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
- * Class AddressView
+ * Class AddressView.
  */
 class AddressView
 {
@@ -58,7 +58,7 @@ class AddressView
     }
 
     /**
-     * Get id
+     * Get id.
      *
      * @return string Id
      */
@@ -70,7 +70,7 @@ class AddressView
     }
 
     /**
-     * Get Address
+     * Get Address.
      *
      * @return string Address
      */
@@ -82,7 +82,7 @@ class AddressView
     }
 
     /**
-     * Get AddressMore
+     * Get AddressMore.
      *
      * @return string AddressMore
      */
@@ -94,7 +94,7 @@ class AddressView
     }
 
     /**
-     * Get Comments
+     * Get Comments.
      *
      * @return string Comments
      */
@@ -106,7 +106,7 @@ class AddressView
     }
 
     /**
-     * Get Mobile
+     * Get Mobile.
      *
      * @return string Mobile
      */
@@ -118,7 +118,7 @@ class AddressView
     }
 
     /**
-     * Get Name
+     * Get Name.
      *
      * @return string Name
      */
@@ -130,7 +130,7 @@ class AddressView
     }
 
     /**
-     * Get Phone
+     * Get Phone.
      *
      * @return string Phone
      */
@@ -142,7 +142,7 @@ class AddressView
     }
 
     /**
-     * Get RecipientName
+     * Get RecipientName.
      *
      * @return string RecipientName
      */
@@ -154,7 +154,7 @@ class AddressView
     }
 
     /**
-     * Get RecipientSurname
+     * Get RecipientSurname.
      *
      * @return string RecipientSurname
      */
@@ -166,7 +166,7 @@ class AddressView
     }
 
     /**
-     * Get City
+     * Get City.
      *
      * @return string City
      */
@@ -178,7 +178,7 @@ class AddressView
     }
 
     /**
-     * Get Postalcode
+     * Get Postalcode.
      *
      * @return string Postalcode
      */
@@ -190,7 +190,7 @@ class AddressView
     }
 
     /**
-     * Return created_at value
+     * Return created_at value.
      *
      * @return DateTime Created at
      */
@@ -202,7 +202,7 @@ class AddressView
     }
 
     /**
-     * Return updated_at value
+     * Return updated_at value.
      *
      * @return DateTime Updated at
      */
@@ -214,9 +214,9 @@ class AddressView
     }
 
     /**
-     * Get if entity is enabled
+     * Get if entity is enabled.
      *
-     * @return boolean Enabled
+     * @return bool Enabled
      */
     public function isEnabled()
     {
@@ -226,7 +226,7 @@ class AddressView
     }
 
     /**
-     * Gets the country info
+     * Gets the country info.
      *
      * @return LocationData|null Country info
      */

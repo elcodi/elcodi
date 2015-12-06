@@ -23,7 +23,7 @@ use Twig_SimpleFunction;
 use Elcodi\Component\Product\Services\ProductOptionsResolver;
 
 /**
- * Product extension for twig
+ * Product extension for twig.
  */
 class ProductExtension extends Twig_Extension
 {
@@ -35,7 +35,7 @@ class ProductExtension extends Twig_Extension
     private $productOptionsResolver;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param ProductOptionsResolver $productOptionsResolver Product options resolver
      */
@@ -45,7 +45,7 @@ class ProductExtension extends Twig_Extension
     }
 
     /**
-     * Returns defined twig functions
+     * Returns defined twig functions.
      *
      * @return Twig_SimpleFunction[] Functions
      */
@@ -60,7 +60,7 @@ class ProductExtension extends Twig_Extension
     }
 
     /**
-     * return extension name
+     * return extension name.
      *
      * @return string extension name
      */

@@ -18,12 +18,12 @@
 namespace Elcodi\Component\Geo\Adapter\LocationLoader\Interfaces;
 
 /**
- * Interface LocationLoaderAdapterInterface
+ * Interface LocationLoaderAdapterInterface.
  */
 interface LocationLoaderAdapterInterface
 {
     /**
-     * Given a country name, return the sql to be loaded
+     * Given a country name, return the sql to be loaded.
      *
      * @param string $countryName Country name
      *

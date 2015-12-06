@@ -20,7 +20,7 @@ namespace Elcodi\Component\Newsletter\Exception\Abstracts;
 use Exception;
 
 /**
- * Custom AbstractNewsletterException
+ * Custom AbstractNewsletterException.
  */
 abstract class AbstractNewsletterException extends Exception
 {

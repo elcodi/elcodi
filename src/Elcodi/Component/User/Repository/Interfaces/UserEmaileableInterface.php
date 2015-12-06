@@ -20,12 +20,12 @@ namespace Elcodi\Component\User\Repository\Interfaces;
 use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 
 /**
- * Interface UserEmailRecoverableInterface
+ * Interface UserEmailRecoverableInterface.
  */
 interface UserEmaileableInterface
 {
     /**
-     * Find one Entity given an email
+     * Find one Entity given an email.
      *
      * @param string $email Email
      *

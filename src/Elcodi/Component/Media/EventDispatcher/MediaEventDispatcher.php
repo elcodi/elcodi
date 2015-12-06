@@ -23,12 +23,12 @@ use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 use Elcodi\Component\Media\Event\ImageUploadedEvent;
 
 /**
- * Class MediaEventDispatcher
+ * Class MediaEventDispatcher.
  */
 class MediaEventDispatcher extends AbstractEventDispatcher
 {
     /**
-     * Create image pre uploaded event
+     * Create image pre uploaded event.
      *
      * @param ImageInterface $image Image
      *
@@ -47,7 +47,7 @@ class MediaEventDispatcher extends AbstractEventDispatcher
     }
 
     /**
-     * Create image on uploaded event
+     * Create image on uploaded event.
      *
      * @param ImageInterface $image Image
      *

@@ -32,7 +32,7 @@ removed the April 1st. If you\'re using it out of the box, please, fork it as
 soon as possible and decouple from this package.', E_USER_DEPRECATED);
 
 /**
- * ElcodiConfigurationBundle Class
+ * ElcodiConfigurationBundle Class.
  */
 class ElcodiConfigurationBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
@@ -58,7 +58,7 @@ class ElcodiConfigurationBundle extends AbstractElcodiBundle implements Dependen
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

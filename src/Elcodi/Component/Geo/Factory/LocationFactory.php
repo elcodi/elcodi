@@ -23,7 +23,7 @@ use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Geo\Entity\Location;
 
 /**
- * Class LocationFactory
+ * Class LocationFactory.
  */
 class LocationFactory extends AbstractFactory
 {

@@ -20,16 +20,16 @@ namespace Elcodi\Component\Core\Encoder;
 use Elcodi\Component\Core\Encoder\Interfaces\EncoderInterface;
 
 /**
- * Class JsonEncoder
+ * Class JsonEncoder.
  */
 class JsonEncoder implements EncoderInterface
 {
     /**
-     * Encode incoming data
+     * Encode incoming data.
      *
      * @param mixed $data Data
      *
-     * @return string|boolean encoded data
+     * @return string|bool encoded data
      */
     public function encode($data)
     {
@@ -37,9 +37,9 @@ class JsonEncoder implements EncoderInterface
     }
 
     /**
-     * Decode incoming data
+     * Decode incoming data.
      *
-     * @param string|boolean $serializedData Serialized data
+     * @param string|bool $serializedData Serialized data
      *
      * @return mixed Decoded data
      */

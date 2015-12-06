@@ -25,7 +25,7 @@ use Elcodi\Component\Cart\Entity\Traits\PurchasableWrapperTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 
 /**
- * Cart line
+ * Cart line.
  */
 class CartLine implements CartLineInterface
 {
@@ -48,7 +48,7 @@ class CartLine implements CartLineInterface
     protected $orderLine;
 
     /**
-     * Set Cart
+     * Set Cart.
      *
      * @param CartInterface $cart Cart
      *
@@ -62,7 +62,7 @@ class CartLine implements CartLineInterface
     }
 
     /**
-     * Get cart
+     * Get cart.
      *
      * @return CartInterface Cart
      */
@@ -72,7 +72,7 @@ class CartLine implements CartLineInterface
     }
 
     /**
-     * Sets OrderLine
+     * Sets OrderLine.
      *
      * @param OrderLineInterface $orderLine OrderLine
      *
@@ -86,7 +86,7 @@ class CartLine implements CartLineInterface
     }
 
     /**
-     * Get OrderLine
+     * Get OrderLine.
      *
      * @return OrderLineInterface OrderLine
      */
@@ -96,9 +96,9 @@ class CartLine implements CartLineInterface
     }
 
     /**
-     * Return the purchasable object depth
+     * Return the purchasable object depth.
      *
-     * @return integer Depth
+     * @return int Depth
      */
     public function getDepth()
     {
@@ -108,9 +108,9 @@ class CartLine implements CartLineInterface
     }
 
     /**
-     * Return the purchasable object height
+     * Return the purchasable object height.
      *
-     * @return integer Height
+     * @return int Height
      */
     public function getHeight()
     {
@@ -120,9 +120,9 @@ class CartLine implements CartLineInterface
     }
 
     /**
-     * Return the purchasable object width
+     * Return the purchasable object width.
      *
-     * @return integer Width
+     * @return int Width
      */
     public function getWidth()
     {
@@ -132,9 +132,9 @@ class CartLine implements CartLineInterface
     }
 
     /**
-     * Return the purchasable object weight
+     * Return the purchasable object weight.
      *
-     * @return integer Weight
+     * @return int Weight
      */
     public function getWeight()
     {

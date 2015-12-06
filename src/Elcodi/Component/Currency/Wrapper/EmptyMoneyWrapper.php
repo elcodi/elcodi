@@ -21,7 +21,7 @@ use Elcodi\Component\Core\Wrapper\Interfaces\WrapperInterface;
 use Elcodi\Component\Currency\Entity\Money;
 
 /**
- * Class EmptyMoneyWrapper
+ * Class EmptyMoneyWrapper.
  */
 class EmptyMoneyWrapper implements WrapperInterface
 {
@@ -33,7 +33,7 @@ class EmptyMoneyWrapper implements WrapperInterface
     private $defaultCurrencyWrapper;
 
     /**
-     * Currency wrapper constructor
+     * Currency wrapper constructor.
      *
      * @param DefaultCurrencyWrapper $defaultCurrencyWrapper Default currency wrapper
      */
@@ -43,7 +43,7 @@ class EmptyMoneyWrapper implements WrapperInterface
     }
 
     /**
-     * Get empty money value, created with default language
+     * Get empty money value, created with default language.
      *
      * @return Money Empty-valued money
      */

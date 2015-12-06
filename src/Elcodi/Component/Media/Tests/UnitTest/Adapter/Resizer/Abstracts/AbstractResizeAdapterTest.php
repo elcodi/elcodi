@@ -24,21 +24,21 @@ use Elcodi\Component\Media\Adapter\Resizer\Interfaces\ResizeAdapterInterface;
 use Elcodi\Component\Media\ElcodiMediaImageResizeTypes;
 
 /**
- * Class AbstractResizeAdapterTest
+ * Class AbstractResizeAdapterTest.
  *
  * @ignore
  */
 abstract class AbstractResizeAdapterTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Return instance of resizeAdapter
+     * Return instance of resizeAdapter.
      *
      * @return ResizeAdapterInterface Resize Adapter
      */
     abstract public function getAdapterInstance();
 
     /**
-     * Test adapter resize action
+     * Test adapter resize action.
      *
      * @dataProvider dataResize
      */
@@ -75,7 +75,7 @@ abstract class AbstractResizeAdapterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Data for testResize
+     * Data for testResize.
      */
     public function dataResize()
     {

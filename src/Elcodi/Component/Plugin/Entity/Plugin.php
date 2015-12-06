@@ -22,7 +22,7 @@ use RuntimeException;
 use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 
 /**
- * Class Plugin
+ * Class Plugin.
  */
 class Plugin
 {
@@ -64,13 +64,13 @@ class Plugin
     protected $configuration;
 
     /**
-     * Construct new plugin instance
+     * Construct new plugin instance.
      *
      * @param string              $namespace     Namespace
      * @param string              $type          Type
      * @param string              $category      Plugin category
      * @param PluginConfiguration $configuration Configuration
-     * @param boolean             $enabled       If the plugin is enabled
+     * @param bool                $enabled       If the plugin is enabled
      */
     public function __construct(
         $namespace,
@@ -88,7 +88,7 @@ class Plugin
     }
 
     /**
-     * Get Namespace
+     * Get Namespace.
      *
      * @return string Namespace
      */
@@ -98,7 +98,7 @@ class Plugin
     }
 
     /**
-     * Get Bundle name
+     * Get Bundle name.
      *
      * @return string Bundle name
      */
@@ -111,7 +111,7 @@ class Plugin
     }
 
     /**
-     * Get Bundle name
+     * Get Bundle name.
      *
      * @return string Bundle name
      */
@@ -124,7 +124,7 @@ class Plugin
     }
 
     /**
-     * Get Path
+     * Get Path.
      *
      * @return string Path
      */
@@ -134,7 +134,7 @@ class Plugin
     }
 
     /**
-     * Get Type
+     * Get Type.
      *
      * @return string Type
      */
@@ -144,7 +144,7 @@ class Plugin
     }
 
     /**
-     * Get Category
+     * Get Category.
      *
      * @return string Category
      */
@@ -154,7 +154,7 @@ class Plugin
     }
 
     /**
-     * Get configuration
+     * Get configuration.
      *
      * @return PluginConfiguration Configuration
      */
@@ -164,7 +164,7 @@ class Plugin
     }
 
     /**
-     * Get configuration value
+     * Get configuration value.
      *
      * @param string $configurationName Configuration element name
      *
@@ -178,7 +178,7 @@ class Plugin
     }
 
     /**
-     * Get fields
+     * Get fields.
      *
      * @return array Fields
      */
@@ -190,9 +190,9 @@ class Plugin
     }
 
     /**
-     * Has fields
+     * Has fields.
      *
-     * @return boolean Has fields
+     * @return bool Has fields
      */
     public function hasFields()
     {
@@ -202,7 +202,7 @@ class Plugin
     }
 
     /**
-     * Get field value
+     * Get field value.
      *
      * @param string $fieldName Field name
      *
@@ -216,11 +216,11 @@ class Plugin
     }
 
     /**
-     * Has field
+     * Has field.
      *
      * @param string $fieldName Field name
      *
-     * @return boolean Has field
+     * @return bool Has field
      */
     public function hasField($fieldName)
     {
@@ -230,7 +230,7 @@ class Plugin
     }
 
     /**
-     * Get an array with all field values, indexed by the field name
+     * Get an array with all field values, indexed by the field name.
      *
      * @return array Fields with values
      */
@@ -247,7 +247,7 @@ class Plugin
     }
 
     /**
-     * Get a field value
+     * Get a field value.
      *
      * @param string $fieldName Field name
      *
@@ -261,7 +261,7 @@ class Plugin
     }
 
     /**
-     * Get an array with all field values, indexed by the field name
+     * Get an array with all field values, indexed by the field name.
      *
      * @param array $fieldValues All field values to be set
      *
@@ -282,11 +282,11 @@ class Plugin
     }
 
     /**
-     * Plugin is usable
+     * Plugin is usable.
      *
      * @param array $requiredFields Fields to check
      *
-     * @return boolean Plugin is usable
+     * @return bool Plugin is usable
      */
     public function isUsable(array $requiredFields = [])
     {
@@ -307,9 +307,9 @@ class Plugin
     }
 
     /**
-     * Plugin is usable using all defined fields
+     * Plugin is usable using all defined fields.
      *
-     * @return boolean Plugin is usable
+     * @return bool Plugin is usable
      */
     public function guessIsUsable()
     {
@@ -343,13 +343,13 @@ class Plugin
     }
 
     /**
-     * Return new plugin instance
+     * Return new plugin instance.
      *
      * @param string              $namespace     Namespace
      * @param string              $type          Type
      * @param string              $category      Plugin category
      * @param PluginConfiguration $configuration Configuration
-     * @param boolean             $enabled       If the plugin should be enabled
+     * @param bool                $enabled       If the plugin should be enabled
      *
      * @return Plugin New instance
      */

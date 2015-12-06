@@ -20,7 +20,7 @@ namespace Elcodi\Component\Product\Adapter\SimilarPurchasablesProvider\Interface
 use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 
 /**
- * Interface RelatedPurchasablesProviderInterface
+ * Interface RelatedPurchasablesProviderInterface.
  */
 interface RelatedPurchasablesProviderInterface
 {

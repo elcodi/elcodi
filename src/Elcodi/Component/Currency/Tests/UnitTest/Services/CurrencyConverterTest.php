@@ -25,7 +25,7 @@ use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
 
 /**
- * Class CurrencyConverterTest
+ * Class CurrencyConverterTest.
  */
 class CurrencyConverterTest extends PHPUnit_Framework_TestCase
 {
@@ -56,7 +56,7 @@ class CurrencyConverterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * data for testConvertMoney
+     * data for testConvertMoney.
      */
     public function dataConvertMoney()
     {
@@ -89,7 +89,7 @@ class CurrencyConverterTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test convert money
+     * Test convert money.
      *
      * @param $isoFrom
      * @param $isoTo

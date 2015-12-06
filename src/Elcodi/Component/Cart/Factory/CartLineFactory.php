@@ -21,12 +21,12 @@ use Elcodi\Component\Cart\Entity\CartLine;
 use Elcodi\Component\Currency\Factory\Abstracts\AbstractPurchasableFactory;
 
 /**
- * Class CartLineFactory
+ * Class CartLineFactory.
  */
 class CartLineFactory extends AbstractPurchasableFactory
 {
     /**
-     * Creates an instance of CartLine
+     * Creates an instance of CartLine.
      *
      * @return CartLine New CartLine entity
      */

@@ -20,12 +20,12 @@ namespace Elcodi\Component\StateTransitionMachine\Tests\Machine;
 use Elcodi\Component\StateTransitionMachine\Tests\UnitTest\Fixtures\AbstractStateTransitionTest;
 
 /**
- * Class MachineTest
+ * Class MachineTest.
  */
 class MachineTest extends AbstractStateTransitionTest
 {
     /**
-     * Test get machine id
+     * Test get machine id.
      */
     public function testGetId()
     {
@@ -35,7 +35,7 @@ class MachineTest extends AbstractStateTransitionTest
     }
 
     /**
-     * Test get point of view
+     * Test get point of view.
      */
     public function testGetPointOfEntry()
     {
@@ -45,7 +45,7 @@ class MachineTest extends AbstractStateTransitionTest
     }
 
     /**
-     * Test make transition
+     * Test make transition.
      */
     public function testMakeTransitionOk()
     {
@@ -59,7 +59,7 @@ class MachineTest extends AbstractStateTransitionTest
     }
 
     /**
-     * Test make transition with exception
+     * Test make transition with exception.
      *
      * @expectedException \Elcodi\Component\StateTransitionMachine\Exception\TransitionNotAccessibleException
      */
@@ -71,7 +71,7 @@ class MachineTest extends AbstractStateTransitionTest
     }
 
     /**
-     * Test reach state
+     * Test reach state.
      */
     public function testReachStateOk()
     {
@@ -85,7 +85,7 @@ class MachineTest extends AbstractStateTransitionTest
     }
 
     /**
-     * Test reach state with exception
+     * Test reach state with exception.
      *
      * @expectedException \Elcodi\Component\StateTransitionMachine\Exception\StateNotReachableException
      */

@@ -20,19 +20,19 @@ namespace Elcodi\Component\Configuration\Entity\Interfaces;
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 
 /**
- * Interface ConfigurationInterface
+ * Interface ConfigurationInterface.
  */
 interface ConfigurationInterface extends DateTimeInterface
 {
     /**
-     * Get Key
+     * Get Key.
      *
      * @return string Key
      */
     public function getKey();
 
     /**
-     * Sets Key
+     * Sets Key.
      *
      * @param string $key Key
      *
@@ -41,14 +41,14 @@ interface ConfigurationInterface extends DateTimeInterface
     public function setKey($key);
 
     /**
-     * Get Name
+     * Get Name.
      *
      * @return string Name
      */
     public function getName();
 
     /**
-     * Sets Name
+     * Sets Name.
      *
      * @param string $name Name
      *
@@ -57,14 +57,14 @@ interface ConfigurationInterface extends DateTimeInterface
     public function setName($name);
 
     /**
-     * Get Namespace
+     * Get Namespace.
      *
      * @return string Namespace
      */
     public function getNamespace();
 
     /**
-     * Sets Namespace
+     * Sets Namespace.
      *
      * @param string $namespace Namespace
      *
@@ -73,14 +73,14 @@ interface ConfigurationInterface extends DateTimeInterface
     public function setNamespace($namespace);
 
     /**
-     * Get Type
+     * Get Type.
      *
      * @return string Type
      */
     public function getType();
 
     /**
-     * Sets Type
+     * Sets Type.
      *
      * @param string $type Type
      *
@@ -89,14 +89,14 @@ interface ConfigurationInterface extends DateTimeInterface
     public function setType($type);
 
     /**
-     * Get Value
+     * Get Value.
      *
      * @return mixed Value
      */
     public function getValue();
 
     /**
-     * Sets Value
+     * Sets Value.
      *
      * @param mixed $value Value
      *

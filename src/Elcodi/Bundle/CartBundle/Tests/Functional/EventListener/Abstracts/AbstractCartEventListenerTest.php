@@ -21,12 +21,12 @@ use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 
 /**
- * Class AbstractCartEventListenerTest
+ * Class AbstractCartEventListenerTest.
  */
 abstract class AbstractCartEventListenerTest extends WebTestCase
 {
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -38,9 +38,9 @@ abstract class AbstractCartEventListenerTest extends WebTestCase
     }
 
     /**
-     * Get loaded cart
+     * Get loaded cart.
      *
-     * @param integer $cartId Cart id
+     * @param int $cartId Cart id
      *
      * @return CartInterface Cart loaded
      */

@@ -20,7 +20,7 @@ namespace Elcodi\Component\CartCoupon\Exception;
 use Elcodi\Component\Coupon\Exception\Abstracts\AbstractCouponException;
 
 /**
- * Custom CouponNotStackableException
+ * Custom CouponNotStackableException.
  */
 final class CouponNotStackableException extends AbstractCouponException
 {

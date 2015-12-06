@@ -20,7 +20,7 @@ namespace Elcodi\Component\StateTransitionMachine\Exception;
 use Exception;
 
 /**
- * Class ObjectNotInitializedException
+ * Class ObjectNotInitializedException.
  */
 class ObjectNotInitializedException extends Exception
 {
@@ -31,10 +31,10 @@ class ObjectNotInitializedException extends Exception
      * @link http://php.net/manual/en/exception.construct.php
      *
      * @param string    $message  [optional] The Exception message to throw.
-     * @param integer   $code     [optional] The Exception code.
+     * @param int       $code     [optional] The Exception code.
      * @param Exception $previous [optional] The previous exception used for the exception chaining. Since 5.3.0
      */
-    public function __construct($message = "", $code = 0, Exception $previous = null)
+    public function __construct($message = '', $code = 0, Exception $previous = null)
     {
         $message = 'Given object needs to be initialized into this machine before applying any state transition';
 

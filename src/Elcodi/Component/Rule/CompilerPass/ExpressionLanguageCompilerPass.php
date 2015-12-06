@@ -22,12 +22,12 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
- * Class ExpressionLanguageCompilerPass
+ * Class ExpressionLanguageCompilerPass.
  */
 class ExpressionLanguageCompilerPass implements CompilerPassInterface
 {
     /**
-     * Collect services tagged to configure the ExpressionLanguage instance of RuleManager
+     * Collect services tagged to configure the ExpressionLanguage instance of RuleManager.
      *
      * @param ContainerBuilder $container Container
      */

@@ -18,12 +18,12 @@
 namespace Elcodi\Component\Geo;
 
 /**
- * Core Events related with all core entities
+ * Core Events related with all core entities.
  */
 final class ElcodiGeoEvents
 {
     /**
-     * This event is dispatched when an address is cloned by a customer
+     * This event is dispatched when an address is cloned by a customer.
      *
      * event.name : address.onclone
      * event.class : AddressOnCloneEvent

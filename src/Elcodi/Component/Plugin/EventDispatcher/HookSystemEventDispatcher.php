@@ -21,7 +21,7 @@ use Elcodi\Component\Core\EventDispatcher\Abstracts\AbstractEventDispatcher;
 use Elcodi\Component\Plugin\EventDispatcher\Interfaces\HookSystemEventDispatcherInterface;
 
 /**
- * Class HookSystemAdapter
+ * Class HookSystemAdapter.
  *
  * Implements HookSystem over Symfony EventDispatcher component
  *

@@ -24,7 +24,7 @@ use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
 use Elcodi\Component\Page\Renderer\Interfaces\PageRendererInterface;
 
 /**
- * Class TemplatedPageRenderer
+ * Class TemplatedPageRenderer.
  *
  * Add layout rendering
  *
@@ -54,7 +54,7 @@ class TemplatedPageRenderer implements PageRendererInterface
     private $bundles;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param EngineInterface $engine  Render engine
      * @param string          $path    Relative path to the template
@@ -71,7 +71,7 @@ class TemplatedPageRenderer implements PageRendererInterface
     }
 
     /**
-     * Render a page
+     * Render a page.
      *
      * @param PageInterface $page Page to render
      *
@@ -91,11 +91,11 @@ class TemplatedPageRenderer implements PageRendererInterface
     }
 
     /**
-     * Check for render support of a page
+     * Check for render support of a page.
      *
      * @param PageInterface $page Page to check support
      *
-     * @return boolean
+     * @return bool
      */
     public function supports(PageInterface $page)
     {
@@ -103,7 +103,7 @@ class TemplatedPageRenderer implements PageRendererInterface
     }
 
     /**
-     * Search for the template in every specified bundle
+     * Search for the template in every specified bundle.
      *
      * @return string Found existing template name
      */

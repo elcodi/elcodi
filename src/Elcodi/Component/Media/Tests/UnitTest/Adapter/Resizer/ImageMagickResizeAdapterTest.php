@@ -22,12 +22,12 @@ use Elcodi\Component\Media\Adapter\Resizer\Interfaces\ResizeAdapterInterface;
 use Elcodi\Component\Media\Tests\UnitTest\Adapter\Resizer\Abstracts\AbstractResizeAdapterTest;
 
 /**
- * Class ImageMagickResizeAdapterTest
+ * Class ImageMagickResizeAdapterTest.
  */
 class ImageMagickResizeAdapterTest extends AbstractResizeAdapterTest
 {
     /**
-     * Return instance of resizeAdapter
+     * Return instance of resizeAdapter.
      *
      * @return ResizeAdapterInterface Resize Adapter
      */

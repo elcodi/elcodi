@@ -23,7 +23,7 @@ use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Exception\CurrencyNotConvertibleException;
 
 /**
- * Class CurrencyConverter
+ * Class CurrencyConverter.
  *
  * This service provides a way of converting Amounts between different
  * currencies
@@ -38,7 +38,7 @@ class CurrencyConverter
     private $exchangeRateCalculator;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param ExchangeRateCalculator $exchangeRateCalculator Exchange rate
      *                                                       calculator
@@ -50,7 +50,7 @@ class CurrencyConverter
     }
 
     /**
-     * Given an amount, convert it to desired Currency
+     * Given an amount, convert it to desired Currency.
      *
      * If amount currency is the same as desired Currency, return itself
      *
@@ -78,7 +78,7 @@ class CurrencyConverter
     }
 
     /**
-     * Convert amount between two currencies
+     * Convert amount between two currencies.
      *
      * If are the same currency, return same amount
      *
@@ -86,7 +86,7 @@ class CurrencyConverter
      *
      * @param CurrencyInterface $currencyFrom Currency where to convert from
      * @param CurrencyInterface $currencyTo   Currency where to convert to
-     * @param integer           $amount       Amount to convert
+     * @param int               $amount       Amount to convert
      *
      * @return MoneyInterface Money converted
      *

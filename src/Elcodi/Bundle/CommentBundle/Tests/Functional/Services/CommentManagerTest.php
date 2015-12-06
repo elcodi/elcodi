@@ -20,14 +20,14 @@ namespace Elcodi\Bundle\CommentBundle\Tests\Functional\Services;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 
 /**
- * Class CommentManagerTest
+ * Class CommentManagerTest.
  */
 class CommentManagerTest extends WebTestCase
 {
     /**
-     * Schema must be loaded in all test cases
+     * Schema must be loaded in all test cases.
      *
-     * @return boolean Load schema
+     * @return bool Load schema
      */
     protected static function loadSchema()
     {
@@ -35,7 +35,7 @@ class CommentManagerTest extends WebTestCase
     }
 
     /**
-     * Test add comment
+     * Test add comment.
      */
     public function testAddComment()
     {

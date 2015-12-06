@@ -23,12 +23,12 @@ use PHPUnit_Framework_TestCase;
 use Elcodi\Component\Product\Services\PurchasableNameResolver;
 
 /**
- * Class PurchasableNameResolverTest
+ * Class PurchasableNameResolverTest.
  */
 class PurchasableNameRetrieverTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Test getPurchasableName with a product
+     * Test getPurchasableName with a product.
      */
     public function testGetPurchasableNameWithProduct()
     {
@@ -47,7 +47,7 @@ class PurchasableNameRetrieverTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test getPurchasableName with a product
+     * Test getPurchasableName with a product.
      */
     public function testGetPurchasableNameWithVariant()
     {

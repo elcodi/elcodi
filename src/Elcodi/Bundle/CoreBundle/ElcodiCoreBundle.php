@@ -23,7 +23,7 @@ use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\ElcodiCoreExtension;
 
 /**
- * ElcodiCoreBundle Bundle
+ * ElcodiCoreBundle Bundle.
  *
  * This is the core of the suite.
  * All available bundles in this suite could have this bundle as a main

@@ -28,7 +28,7 @@ use Elcodi\Component\Geo\ValueObject\ApiUrls;
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
- * Class LocationApiProviderAdapter
+ * Class LocationApiProviderAdapter.
  */
 class LocationApiProviderAdapter implements LocationProviderAdapterInterface
 {
@@ -61,7 +61,7 @@ class LocationApiProviderAdapter implements LocationProviderAdapterInterface
     private $host;
 
     /**
-     * Location to location data transformer
+     * Location to location data transformer.
      *
      * @param LocationDataFactory   $locationDataFactory   Transformer
      * @param UrlGeneratorInterface $urlGeneratorInterface Url generator
@@ -181,19 +181,19 @@ class LocationApiProviderAdapter implements LocationProviderAdapterInterface
 
     /**
      * Checks if the first received id is contained between the rest of ids
-     * received as second parameter
+     * received as second parameter.
      *
      * @param string $id  The location Id
      * @param array  $ids The location Ids
      *
-     * @return boolean Location is container
+     * @return bool Location is container
      */
     public function in($id, array $ids)
     {
         $url = $this->buildUrlByMethodName(
             'getInUrl',
             [
-                'id'  => $id,
+                'id' => $id,
                 'ids' => implode(',', $ids),
             ]
         );
@@ -205,7 +205,7 @@ class LocationApiProviderAdapter implements LocationProviderAdapterInterface
 
     /**
      * Given a method of the ApiUrls value object and a parameters for the route
-     * construction, return url
+     * construction, return url.
      *
      * @param string $method     Method to be called for the url name
      * @param array  $parameters Parameters for the url construction
@@ -230,7 +230,7 @@ class LocationApiProviderAdapter implements LocationProviderAdapterInterface
     }
 
     /**
-     * Given an url, return the complete route using host
+     * Given an url, return the complete route using host.
      *
      * @param string $url        Url to be called
      * @param array  $parameters Parameters for the url construction
@@ -254,7 +254,7 @@ class LocationApiProviderAdapter implements LocationProviderAdapterInterface
     }
 
     /**
-     * Given an url, return the complete route in ab absolute way
+     * Given an url, return the complete route in ab absolute way.
      *
      * @param string $url        Url to be called
      * @param array  $parameters Parameters for the url construction
@@ -273,7 +273,7 @@ class LocationApiProviderAdapter implements LocationProviderAdapterInterface
     }
 
     /**
-     * Call given url, unpack the response and look for possible api exceptions
+     * Call given url, unpack the response and look for possible api exceptions.
      *
      * @param string $url Url where to call
      *
@@ -304,7 +304,7 @@ class LocationApiProviderAdapter implements LocationProviderAdapterInterface
     }
 
     /**
-     * Build a new set of Location instances given some data
+     * Build a new set of Location instances given some data.
      *
      * @param array $data Data where to build from
      *
@@ -322,7 +322,7 @@ class LocationApiProviderAdapter implements LocationProviderAdapterInterface
     }
 
     /**
-     * Build a new Location instance given some data
+     * Build a new Location instance given some data.
      *
      * @param array $data Data where to build from
      *

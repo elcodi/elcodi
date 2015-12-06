@@ -25,7 +25,7 @@ use Elcodi\Component\Comment\Services\CommentManager;
 use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
- * Class CommentManagerTest
+ * Class CommentManagerTest.
  */
 class CommentManagerTest extends PHPUnit_Framework_TestCase
 {
@@ -44,7 +44,7 @@ class CommentManagerTest extends PHPUnit_Framework_TestCase
     protected $commentObjectDirector;
 
     /**
-     * Setup
+     * Setup.
      */
     public function setUp()
     {
@@ -63,7 +63,7 @@ class CommentManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test loading simple comments from source
+     * Test loading simple comments from source.
      */
     public function testAddComment()
     {

@@ -22,7 +22,7 @@ use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 
 /**
- * Class CategoryRepositoryTest
+ * Class CategoryRepositoryTest.
  */
 class RootCategoryEventListenerTest extends WebTestCase
 {
@@ -34,7 +34,7 @@ class RootCategoryEventListenerTest extends WebTestCase
     protected $categoryDirector;
 
     /**
-     * Setup
+     * Setup.
      */
     public function setUp()
     {
@@ -44,7 +44,7 @@ class RootCategoryEventListenerTest extends WebTestCase
     }
 
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -56,7 +56,7 @@ class RootCategoryEventListenerTest extends WebTestCase
     }
 
     /**
-     * Test that creating a new root category the parent category should be null
+     * Test that creating a new root category the parent category should be null.
      */
     public function testNewRootCategoryIsSavedWithoutParent()
     {
@@ -92,7 +92,7 @@ class RootCategoryEventListenerTest extends WebTestCase
 
     /**
      * Test that modifying a new root category the parent category should be
-     * null
+     * null.
      */
     public function testEditRootCategoryIsSavedWithoutParent()
     {

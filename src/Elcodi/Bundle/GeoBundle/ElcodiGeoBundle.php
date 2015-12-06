@@ -27,7 +27,7 @@ use Elcodi\Bundle\GeoBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\GeoBundle\DependencyInjection\ElcodiGeoExtension;
 
 /**
- * ElcodiGeoBundle Bundle
+ * ElcodiGeoBundle Bundle.
  */
 class ElcodiGeoBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
@@ -52,7 +52,7 @@ class ElcodiGeoBundle extends AbstractElcodiBundle implements DependentBundleInt
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

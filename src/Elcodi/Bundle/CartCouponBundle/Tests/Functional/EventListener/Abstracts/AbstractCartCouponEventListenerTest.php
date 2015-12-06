@@ -22,12 +22,12 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 
 /**
- * Class AbstractCartCouponEventListenerTest
+ * Class AbstractCartCouponEventListenerTest.
  */
 abstract class AbstractCartCouponEventListenerTest extends WebTestCase
 {
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -40,9 +40,9 @@ abstract class AbstractCartCouponEventListenerTest extends WebTestCase
     }
 
     /**
-     * Get loaded cart
+     * Get loaded cart.
      *
-     * @param integer $cartId Cart id
+     * @param int $cartId Cart id
      *
      * @return CartInterface Cart loaded
      */
@@ -57,9 +57,9 @@ abstract class AbstractCartCouponEventListenerTest extends WebTestCase
     }
 
     /**
-     * Get coupon enabled
+     * Get coupon enabled.
      *
-     * @param integer $couponId Coupon id
+     * @param int $couponId Coupon id
      *
      * @return CouponInterface Enabled coupon
      */

@@ -21,7 +21,7 @@ use Elcodi\Component\CartCoupon\Event\CartCouponOnCheckEvent;
 use Elcodi\Component\CartCoupon\Services\CartCouponRuleValidator;
 
 /**
- * Class ValidateCouponRulesEventListener
+ * Class ValidateCouponRulesEventListener.
  */
 final class ValidateCouponRulesEventListener
 {
@@ -33,7 +33,7 @@ final class ValidateCouponRulesEventListener
     private $cartCouponRuleValidator;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CartCouponRuleValidator $cartCouponRuleValidator Validator for cart coupon rules
      */
@@ -43,7 +43,7 @@ final class ValidateCouponRulesEventListener
     }
 
     /**
-     * Check for the rules required by the coupon
+     * Check for the rules required by the coupon.
      *
      * @param CartCouponOnCheckEvent $event Event
      */

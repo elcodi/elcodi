@@ -27,7 +27,7 @@ use Elcodi\Bundle\MetricBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\MetricBundle\DependencyInjection\ElcodiMetricExtension;
 
 /**
- * Class ElcodiMenuBundle
+ * Class ElcodiMenuBundle.
  */
 class ElcodiMetricBundle extends AbstractElcodiBundle implements DependentBundleInterface
 {
@@ -52,7 +52,7 @@ class ElcodiMetricBundle extends AbstractElcodiBundle implements DependentBundle
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

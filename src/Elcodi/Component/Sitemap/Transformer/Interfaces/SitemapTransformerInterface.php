@@ -18,12 +18,12 @@
 namespace Elcodi\Component\Sitemap\Transformer\Interfaces;
 
 /**
- * Interface SitemapTransformerInterface
+ * Interface SitemapTransformerInterface.
  */
 interface SitemapTransformerInterface
 {
     /**
-     * Get url given an entity
+     * Get url given an entity.
      *
      * @param mixed  $element  Element
      * @param string $language Language
@@ -33,7 +33,7 @@ interface SitemapTransformerInterface
     public function getLoc($element, $language = null);
 
     /**
-     * Get last mod
+     * Get last mod.
      *
      * @param mixed  $element  Element
      * @param string $language Language

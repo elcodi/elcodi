@@ -23,12 +23,12 @@ use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 
 /**
- * Interface BannerZoneInterfaceInterface
+ * Interface BannerZoneInterfaceInterface.
  */
 interface BannerZoneInterface extends IdentifiableInterface
 {
     /**
-     * Set banner name
+     * Set banner name.
      *
      * @param string $name Name of the banner
      *
@@ -37,14 +37,14 @@ interface BannerZoneInterface extends IdentifiableInterface
     public function setName($name);
 
     /**
-     * Get banner name
+     * Get banner name.
      *
      * @return string Name
      */
     public function getName();
 
     /**
-     * Set code
+     * Set code.
      *
      * @param string $code
      *
@@ -53,14 +53,14 @@ interface BannerZoneInterface extends IdentifiableInterface
     public function setCode($code);
 
     /**
-     * Get code
+     * Get code.
      *
      * @return string Code
      */
     public function getCode();
 
     /**
-     * Set Language
+     * Set Language.
      *
      * @param LanguageInterface $language Language to set
      *
@@ -69,14 +69,14 @@ interface BannerZoneInterface extends IdentifiableInterface
     public function setLanguage(LanguageInterface $language = null);
 
     /**
-     * Get Language
+     * Get Language.
      *
      * @return LanguageInterface Language
      */
     public function getLanguage();
 
     /**
-     * Add banner into banner zone
+     * Add banner into banner zone.
      *
      * @param BannerInterface $banner Banner
      *
@@ -85,7 +85,7 @@ interface BannerZoneInterface extends IdentifiableInterface
     public function addBanner(BannerInterface $banner);
 
     /**
-     * Remove banner from banner zone
+     * Remove banner from banner zone.
      *
      * @param BannerInterface $banner Banner
      *
@@ -94,7 +94,7 @@ interface BannerZoneInterface extends IdentifiableInterface
     public function removeBanner(BannerInterface $banner);
 
     /**
-     * Set banners into banner zone
+     * Set banners into banner zone.
      *
      * @param Collection $banners Banners
      *
@@ -103,14 +103,14 @@ interface BannerZoneInterface extends IdentifiableInterface
     public function setBanners(Collection $banners);
 
     /**
-     * Get banners
+     * Get banners.
      *
      * @return Collection Banners
      */
     public function getBanners();
 
     /**
-     * Set the BannerZoneInterface height in pixels
+     * Set the BannerZoneInterface height in pixels.
      *
      * @param float $height Height
      *
@@ -119,14 +119,14 @@ interface BannerZoneInterface extends IdentifiableInterface
     public function setHeight($height);
 
     /**
-     * Get the BannerZoneInterface height in pixels
+     * Get the BannerZoneInterface height in pixels.
      *
      * @return float Height
      */
     public function getHeight();
 
     /**
-     * Set the BannerZoneInterface width in pixels
+     * Set the BannerZoneInterface width in pixels.
      *
      * @param float $width Width
      *
@@ -135,7 +135,7 @@ interface BannerZoneInterface extends IdentifiableInterface
     public function setWidth($width);
 
     /**
-     * Get the BannerZoneInterface width in pixels
+     * Get the BannerZoneInterface width in pixels.
      *
      * @return float Width
      */

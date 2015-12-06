@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Product;
 
 /**
- * Class ElcodiProductTypes
+ * Class ElcodiProductTypes.
  */
 final class ElcodiProductStock
 {

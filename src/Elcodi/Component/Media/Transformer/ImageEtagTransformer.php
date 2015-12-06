@@ -21,12 +21,12 @@ use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 use Elcodi\Component\Media\Transformer\Interfaces\ImageEtagTransformerInterface;
 
 /**
- * Class ImageEtagGenerator
+ * Class ImageEtagGenerator.
  */
 class ImageEtagTransformer implements ImageEtagTransformerInterface
 {
     /**
-     * Transforms an Image with some resizing information into an ETag
+     * Transforms an Image with some resizing information into an ETag.
      *
      * @param ImageInterface $image  Image
      * @param string         $height Height
@@ -42,10 +42,10 @@ class ImageEtagTransformer implements ImageEtagTransformerInterface
         $type
     ) {
         return sha1(
-            $image->getId() . "." .
-            $image->getUpdatedAt()->getTimestamp() . "." .
-            $height . "." .
-            $width . "." .
+            $image->getId() . '.' .
+            $image->getUpdatedAt()->getTimestamp() . '.' .
+            $height . '.' .
+            $width . '.' .
             $type
         );
     }

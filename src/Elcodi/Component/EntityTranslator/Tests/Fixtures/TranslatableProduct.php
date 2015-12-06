@@ -18,7 +18,7 @@
 namespace Elcodi\Component\EntityTranslator\Tests\Fixtures;
 
 /**
- * Class TranslatableProduct
+ * Class TranslatableProduct.
  */
 class TranslatableProduct
 {
@@ -44,7 +44,7 @@ class TranslatableProduct
     protected $description;
 
     /**
-     * Get Id
+     * Get Id.
      *
      * @return string Id
      */
@@ -54,7 +54,7 @@ class TranslatableProduct
     }
 
     /**
-     * Sets Id
+     * Sets Id.
      *
      * @param string $id Id
      *
@@ -68,7 +68,7 @@ class TranslatableProduct
     }
 
     /**
-     * Get Name
+     * Get Name.
      *
      * @return mixed Name
      */
@@ -78,7 +78,7 @@ class TranslatableProduct
     }
 
     /**
-     * Sets Name
+     * Sets Name.
      *
      * @param mixed $name Name
      *
@@ -92,7 +92,7 @@ class TranslatableProduct
     }
 
     /**
-     * Get Description
+     * Get Description.
      *
      * @return string Description
      */
@@ -102,7 +102,7 @@ class TranslatableProduct
     }
 
     /**
-     * Sets Description
+     * Sets Description.
      *
      * @param string $description Description
      *

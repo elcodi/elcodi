@@ -20,7 +20,7 @@ namespace Elcodi\Component\Menu\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class MenuRepository
+ * Class MenuRepository.
  */
 class MenuRepository extends EntityRepository
 {

@@ -23,20 +23,20 @@ use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
- * AdminData class
+ * AdminData class.
  *
  * Load fixtures of tax entities
  */
 class TaxData extends AbstractFixture
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(ObjectManager $manager)
     {
 
         /**
-         * @var ObjectDirector        $taxDirector
+         * @var ObjectDirector $taxDirector
          */
         $taxDirector = $this->getDirector('tax');
 

@@ -20,19 +20,19 @@ namespace Elcodi\Component\Cart\Entity\Interfaces;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 
 /**
- * Interface PriceInterface
+ * Interface PriceInterface.
  */
 interface PriceInterface
 {
     /**
-     * Gets the product or products amount with tax
+     * Gets the product or products amount with tax.
      *
      * @return MoneyInterface Product amount with tax
      */
     public function getProductAmount();
 
     /**
-     * Sets the product or products amount with tax
+     * Sets the product or products amount with tax.
      *
      * @param MoneyInterface $productAmount product amount with tax
      *
@@ -41,14 +41,14 @@ interface PriceInterface
     public function setProductAmount(MoneyInterface $productAmount);
 
     /**
-     * Gets the total amount with tax
+     * Gets the total amount with tax.
      *
      * @return MoneyInterface price with tax
      */
     public function getAmount();
 
     /**
-     * Sets the total amount with tax
+     * Sets the total amount with tax.
      *
      * @param MoneyInterface $amount amount without tax
      *

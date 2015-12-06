@@ -21,7 +21,7 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Payment\EventDispatcher\PaymentEventDispatcher;
 
 /**
- * Class PaymentWrapper
+ * Class PaymentWrapper.
  */
 class PaymentWrapper
 {
@@ -33,7 +33,7 @@ class PaymentWrapper
     private $paymentEventDispatcher;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param PaymentEventDispatcher $paymentEventDispatcher Payment event dispatcher
      */
@@ -44,7 +44,7 @@ class PaymentWrapper
 
     /**
      * Get loaded object. If object is not loaded yet, then load it and save it
-     * locally. Otherwise, just return the pre-loaded object
+     * locally. Otherwise, just return the pre-loaded object.
      *
      * @param CartInterface $cart Cart
      *

@@ -22,7 +22,7 @@ use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
- * Class AddressFormatter
+ * Class AddressFormatter.
  */
 class AddressFormatter
 {
@@ -34,7 +34,7 @@ class AddressFormatter
     private $locationProvider;
 
     /**
-     * Builds a new address formatter
+     * Builds a new address formatter.
      *
      * @param LocationProviderAdapterInterface $locationProvider A location provider
      */
@@ -44,7 +44,7 @@ class AddressFormatter
     }
 
     /**
-     * Formats an address on an array
+     * Formats an address on an array.
      *
      * @param AddressInterface $address The address to format
      *
@@ -52,23 +52,23 @@ class AddressFormatter
      */
     public function toArray(AddressInterface $address)
     {
-        $cityLocationId   = $address->getCity();
-        $cityHierarchy    = $this
+        $cityLocationId = $address->getCity();
+        $cityHierarchy = $this
             ->locationProvider
             ->getHierarchy($cityLocationId);
         $cityHierarchyAsc = array_reverse($cityHierarchy);
 
         $addressArray = [
-            'id'               => $address->getId(),
-            'name'             => $address->getName(),
-            'recipientName'    => $address->getRecipientName(),
+            'id' => $address->getId(),
+            'name' => $address->getName(),
+            'recipientName' => $address->getRecipientName(),
             'recipientSurname' => $address->getRecipientSurname(),
-            'address'          => $address->getAddress(),
-            'addressMore'      => $address->getAddressMore(),
-            'postalCode'       => $address->getPostalcode(),
-            'phone'            => $address->getPhone(),
-            'mobile'           => $address->getMobile(),
-            'comment'          => $address->getComments(),
+            'address' => $address->getAddress(),
+            'addressMore' => $address->getAddressMore(),
+            'postalCode' => $address->getPostalcode(),
+            'phone' => $address->getPhone(),
+            'mobile' => $address->getMobile(),
+            'comment' => $address->getComments(),
         ];
 
         foreach ($cityHierarchyAsc as $cityLocationNode) {
@@ -89,7 +89,7 @@ class AddressFormatter
     }
 
     /**
-     * Builds a full address string
+     * Builds a full address string.
      *
      * @param AddressInterface $address       The address
      * @param array            $cityHierarchy The full city hierarchy

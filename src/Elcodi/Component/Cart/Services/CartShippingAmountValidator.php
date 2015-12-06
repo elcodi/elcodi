@@ -22,7 +22,7 @@ use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Wrapper\EmptyMoneyWrapper;
 
 /**
- * Class CartShippingAmountValidator
+ * Class CartShippingAmountValidator.
  *
  * Api Methods:
  *
@@ -40,7 +40,7 @@ class CartShippingAmountValidator
     private $emptyMoneyWrapper;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param EmptyMoneyWrapper $emptyMoneyWrapper Empty money wrapper
      */
@@ -51,7 +51,7 @@ class CartShippingAmountValidator
 
     /**
      * If the cart's shipping amount is not defined, then put an empty Money
-     * value
+     * value.
      *
      * @param CartInterface $cart Cart
      */

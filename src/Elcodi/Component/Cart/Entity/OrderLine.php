@@ -25,7 +25,7 @@ use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
 
 /**
- * OrderLine
+ * OrderLine.
  *
  * This entity is just an extension of existant order line with some additional
  * parameters
@@ -45,7 +45,7 @@ class OrderLine implements OrderLineInterface
     protected $order;
 
     /**
-     * Set Order
+     * Set Order.
      *
      * @param OrderInterface $order Order
      *
@@ -59,7 +59,7 @@ class OrderLine implements OrderLineInterface
     }
 
     /**
-     * Get order
+     * Get order.
      *
      * @return OrderInterface Order
      */

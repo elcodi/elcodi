@@ -25,7 +25,7 @@ use Elcodi\Component\Plugin\Entity\Plugin;
 use Elcodi\Component\Plugin\Repository\PluginRepository;
 
 /**
- * Class PluginsListCommand
+ * Class PluginsListCommand.
  */
 class PluginsListCommand extends AbstractElcodiCommand
 {
@@ -37,7 +37,7 @@ class PluginsListCommand extends AbstractElcodiCommand
     protected $pluginRepository;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param PluginRepository $pluginRepository Plugin repository
      */
@@ -49,7 +49,7 @@ class PluginsListCommand extends AbstractElcodiCommand
     }
 
     /**
-     * configure
+     * configure.
      */
     protected function configure()
     {
@@ -63,12 +63,10 @@ class PluginsListCommand extends AbstractElcodiCommand
 
     /**
      * This command loads all the exchange rates from base_currency to all available
-     * currencies
+     * currencies.
      *
      * @param InputInterface  $input  The input interface
      * @param OutputInterface $output The output interface
-     *
-     * @return void
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {

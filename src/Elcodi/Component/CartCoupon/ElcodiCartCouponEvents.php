@@ -18,12 +18,12 @@
 namespace Elcodi\Component\CartCoupon;
 
 /**
- * ElcodiCartCouponEvents
+ * ElcodiCartCouponEvents.
  */
 final class ElcodiCartCouponEvents
 {
     /**
-     * This event is dispatched while checking if a Coupon applies to a Cart
+     * This event is dispatched while checking if a Coupon applies to a Cart.
      *
      * event.name : cart_coupon.oncheck
      * event.class : CartCouponOnCheckEvent
@@ -31,7 +31,7 @@ final class ElcodiCartCouponEvents
     const CART_COUPON_ONCHECK = 'cart_coupon.oncheck';
 
     /**
-     * This event is dispatched each time a coupon is applied into a Cart
+     * This event is dispatched each time a coupon is applied into a Cart.
      *
      * event.name : cart_coupon.onapply
      * event.class : CartCouponOnApplyEvent
@@ -39,7 +39,7 @@ final class ElcodiCartCouponEvents
     const CART_COUPON_ONAPPLY = 'cart_coupon.onapply';
 
     /**
-     * This event is dispatched each time a coupon is removed from a Cart
+     * This event is dispatched each time a coupon is removed from a Cart.
      *
      * event.name : cart_coupon.onremove
      * event.class : CartCouponOnRemoveEvent
@@ -47,7 +47,7 @@ final class ElcodiCartCouponEvents
     const CART_COUPON_ONREMOVE = 'cart_coupon.onremove';
 
     /**
-     * This event is dispatched each time a coupon is rejected from a Cart
+     * This event is dispatched each time a coupon is rejected from a Cart.
      *
      * event.name : cart_coupon.onrejected
      * event.class : CartCouponOnRejectedEvent
@@ -55,7 +55,7 @@ final class ElcodiCartCouponEvents
     const CART_COUPON_ONREJECTED = 'cart_coupon.onrejected';
 
     /**
-     * This event is dispatched each time a coupon is applied into an Order
+     * This event is dispatched each time a coupon is applied into an Order.
      *
      * event.name : order_coupon.onapply
      * event.class : OrderCouponOnApplyEvent

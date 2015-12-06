@@ -18,19 +18,19 @@
 namespace Elcodi\Component\EntityTranslator\Entity\Interfaces;
 
 /**
- * Interface EntityTranslationInterface
+ * Interface EntityTranslationInterface.
  */
 interface EntityTranslationInterface
 {
     /**
-     * Get EntityId
+     * Get EntityId.
      *
      * @return string EntityId
      */
     public function getEntityId();
 
     /**
-     * Sets EntityId
+     * Sets EntityId.
      *
      * @param string $entityId EntityId
      *
@@ -39,14 +39,14 @@ interface EntityTranslationInterface
     public function setEntityId($entityId);
 
     /**
-     * Get EntityType
+     * Get EntityType.
      *
      * @return string EntityType
      */
     public function getEntityType();
 
     /**
-     * Sets EntityType
+     * Sets EntityType.
      *
      * @param string $entityType EntityType
      *
@@ -55,14 +55,14 @@ interface EntityTranslationInterface
     public function setEntityType($entityType);
 
     /**
-     * Get Locale
+     * Get Locale.
      *
      * @return string Locale
      */
     public function getLocale();
 
     /**
-     * Sets Locale
+     * Sets Locale.
      *
      * @param string $locale Locale
      *
@@ -71,14 +71,14 @@ interface EntityTranslationInterface
     public function setLocale($locale);
 
     /**
-     * Get Translation
+     * Get Translation.
      *
      * @return string Translation
      */
     public function getTranslation();
 
     /**
-     * Sets Translation
+     * Sets Translation.
      *
      * @param string $translation Translation
      *
@@ -87,14 +87,14 @@ interface EntityTranslationInterface
     public function setTranslation($translation);
 
     /**
-     * Get EntityField
+     * Get EntityField.
      *
      * @return string EntityField
      */
     public function getEntityField();
 
     /**
-     * Sets EntityField
+     * Sets EntityField.
      *
      * @param string $entityField EntityField
      *

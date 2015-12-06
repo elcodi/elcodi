@@ -23,7 +23,7 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * This class loads and manages your bundle configuration
+ * This class loads and manages your bundle configuration.
  */
 class ElcodiUserExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
@@ -35,7 +35,7 @@ class ElcodiUserExtension extends AbstractExtension implements EntitiesOverridab
     const EXTENSION_NAME = 'elcodi_user';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -62,7 +62,7 @@ class ElcodiUserExtension extends AbstractExtension implements EntitiesOverridab
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -77,25 +77,25 @@ class ElcodiUserExtension extends AbstractExtension implements EntitiesOverridab
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.abstract_user.class" => $config['mapping']['abstract_user']['class'],
-            "elcodi.entity.abstract_user.mapping_file" => $config['mapping']['abstract_user']['mapping_file'],
-            "elcodi.entity.abstract_user.manager" => $config['mapping']['abstract_user']['manager'],
-            "elcodi.entity.abstract_user.enabled" => $config['mapping']['abstract_user']['enabled'],
+            'elcodi.entity.abstract_user.class' => $config['mapping']['abstract_user']['class'],
+            'elcodi.entity.abstract_user.mapping_file' => $config['mapping']['abstract_user']['mapping_file'],
+            'elcodi.entity.abstract_user.manager' => $config['mapping']['abstract_user']['manager'],
+            'elcodi.entity.abstract_user.enabled' => $config['mapping']['abstract_user']['enabled'],
 
-            "elcodi.entity.admin_user.class" => $config['mapping']['admin_user']['class'],
-            "elcodi.entity.admin_user.mapping_file" => $config['mapping']['admin_user']['mapping_file'],
-            "elcodi.entity.admin_user.manager" => $config['mapping']['admin_user']['manager'],
-            "elcodi.entity.admin_user.enabled" => $config['mapping']['admin_user']['enabled'],
+            'elcodi.entity.admin_user.class' => $config['mapping']['admin_user']['class'],
+            'elcodi.entity.admin_user.mapping_file' => $config['mapping']['admin_user']['mapping_file'],
+            'elcodi.entity.admin_user.manager' => $config['mapping']['admin_user']['manager'],
+            'elcodi.entity.admin_user.enabled' => $config['mapping']['admin_user']['enabled'],
 
-            "elcodi.entity.customer.class" => $config['mapping']['customer']['class'],
-            "elcodi.entity.customer.mapping_file" => $config['mapping']['customer']['mapping_file'],
-            "elcodi.entity.customer.manager" => $config['mapping']['customer']['manager'],
-            "elcodi.entity.customer.enabled" => $config['mapping']['customer']['enabled'],
+            'elcodi.entity.customer.class' => $config['mapping']['customer']['class'],
+            'elcodi.entity.customer.mapping_file' => $config['mapping']['customer']['mapping_file'],
+            'elcodi.entity.customer.manager' => $config['mapping']['customer']['manager'],
+            'elcodi.entity.customer.enabled' => $config['mapping']['customer']['enabled'],
         ];
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * @param array $config Configuration
      *
@@ -128,7 +128,7 @@ class ElcodiUserExtension extends AbstractExtension implements EntitiesOverridab
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */

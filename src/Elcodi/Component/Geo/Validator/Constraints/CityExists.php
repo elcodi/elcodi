@@ -20,7 +20,7 @@ namespace Elcodi\Component\Geo\Validator\Constraints;
 use Symfony\Component\Validator\Constraint;
 
 /**
- * Class CityExists
+ * Class CityExists.
  *
  * @Annotation
  */

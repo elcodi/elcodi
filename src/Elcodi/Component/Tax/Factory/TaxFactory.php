@@ -21,7 +21,7 @@ use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 use Elcodi\Component\Tax\Entity\Tax;
 
 /**
- * Class TaxFactory
+ * Class TaxFactory.
  */
 class TaxFactory extends AbstractFactory
 {

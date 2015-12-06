@@ -18,42 +18,42 @@
 namespace Elcodi\Component\Product\Entity\Traits;
 
 /**
- * Trait DimensionsTrait
+ * Trait DimensionsTrait.
  */
 trait DimensionsTrait
 {
     /**
-     * @var integer
+     * @var int
      *
      * Width
      */
     protected $width;
 
     /**
-     * @var integer
+     * @var int
      *
      * height
      */
     protected $height;
 
     /**
-     * @var integer
+     * @var int
      *
      * depth
      */
     protected $depth;
 
     /**
-     * @var integer
+     * @var int
      *
      * weight
      */
     protected $weight;
 
     /**
-     * Get Depth
+     * Get Depth.
      *
-     * @return integer Depth
+     * @return int Depth
      */
     public function getDepth()
     {
@@ -61,9 +61,9 @@ trait DimensionsTrait
     }
 
     /**
-     * Sets Depth
+     * Sets Depth.
      *
-     * @param integer $depth Depth
+     * @param int $depth Depth
      *
      * @return $this Self object
      */
@@ -75,9 +75,9 @@ trait DimensionsTrait
     }
 
     /**
-     * Get Height
+     * Get Height.
      *
-     * @return integer Height
+     * @return int Height
      */
     public function getHeight()
     {
@@ -85,9 +85,9 @@ trait DimensionsTrait
     }
 
     /**
-     * Sets Height
+     * Sets Height.
      *
-     * @param integer $height Height
+     * @param int $height Height
      *
      * @return $this Self object
      */
@@ -99,9 +99,9 @@ trait DimensionsTrait
     }
 
     /**
-     * Get Weight
+     * Get Weight.
      *
-     * @return integer Weight
+     * @return int Weight
      */
     public function getWeight()
     {
@@ -109,9 +109,9 @@ trait DimensionsTrait
     }
 
     /**
-     * Sets Weight
+     * Sets Weight.
      *
-     * @param integer $weight Weight
+     * @param int $weight Weight
      *
      * @return $this Self object
      */
@@ -123,9 +123,9 @@ trait DimensionsTrait
     }
 
     /**
-     * Get Width
+     * Get Width.
      *
-     * @return integer Width
+     * @return int Width
      */
     public function getWidth()
     {
@@ -133,9 +133,9 @@ trait DimensionsTrait
     }
 
     /**
-     * Sets Width
+     * Sets Width.
      *
-     * @param integer $width Width
+     * @param int $width Width
      *
      * @return $this Self object
      */

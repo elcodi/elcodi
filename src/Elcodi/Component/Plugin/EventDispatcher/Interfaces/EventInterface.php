@@ -18,14 +18,14 @@
 namespace Elcodi\Component\Plugin\EventDispatcher\Interfaces;
 
 /**
- * Interface Event
+ * Interface Event.
  *
  * @author Berny Cantos <be@rny.cc>
  */
 interface EventInterface
 {
     /**
-     * Get a value from the context, with a fallback default
+     * Get a value from the context, with a fallback default.
      *
      * @param string     $key     Index in the context
      * @param mixed|null $default Default value if there's no entry
@@ -35,21 +35,21 @@ interface EventInterface
     public function get($key, $default = null);
 
     /**
-     * Get full context
+     * Get full context.
      *
      * @return array
      */
     public function getContext();
 
     /**
-     * Get current content
+     * Get current content.
      *
      * @return string
      */
     public function getContent();
 
     /**
-     * Set current content
+     * Set current content.
      *
      * @param string $content
      *

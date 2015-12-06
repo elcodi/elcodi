@@ -20,7 +20,7 @@ namespace Elcodi\Component\Newsletter\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class NewsletterSubscriptionRepository
+ * Class NewsletterSubscriptionRepository.
  */
 class NewsletterSubscriptionRepository extends EntityRepository
 {

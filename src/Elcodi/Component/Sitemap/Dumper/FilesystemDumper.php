@@ -20,12 +20,12 @@ namespace Elcodi\Component\Sitemap\Dumper;
 use Elcodi\Component\Sitemap\Dumper\Interfaces\SitemapDumperInterface;
 
 /**
- * Class FilesystemDumper
+ * Class FilesystemDumper.
  */
 class FilesystemDumper implements SitemapDumperInterface
 {
     /**
-     * Dumps a sitemap given a path
+     * Dumps a sitemap given a path.
      *
      * @param string $path    Path
      * @param string $sitemap Sitemap

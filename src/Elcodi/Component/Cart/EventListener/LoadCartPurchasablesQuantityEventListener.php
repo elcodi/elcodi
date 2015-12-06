@@ -21,7 +21,7 @@ use Elcodi\Component\Cart\Event\CartOnLoadEvent;
 use Elcodi\Component\Cart\Services\CartPurchasablesQuantityLoader;
 
 /**
- * Class LoadCartPurchasablesQuantityEventListener
+ * Class LoadCartPurchasablesQuantityEventListener.
  */
 final class LoadCartPurchasablesQuantityEventListener
 {
@@ -33,7 +33,7 @@ final class LoadCartPurchasablesQuantityEventListener
     private $cartPurchasablesQuantityLoader;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param CartPurchasablesQuantityLoader $cartPurchasablesQuantityLoader Cart purchasables quantity loader
      */
@@ -43,7 +43,7 @@ final class LoadCartPurchasablesQuantityEventListener
     }
 
     /**
-     * Load cart purchasables quantity
+     * Load cart purchasables quantity.
      */
     public function loadCartPurchasablesQuantities(CartOnLoadEvent $event)
     {

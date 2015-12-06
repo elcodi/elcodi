@@ -22,7 +22,7 @@ use Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 
 /**
- * Class Value
+ * Class Value.
  */
 class Value implements ValueInterface
 {
@@ -43,7 +43,7 @@ class Value implements ValueInterface
     protected $attribute;
 
     /**
-     * Get Value
+     * Get Value.
      *
      * @return string Value
      */
@@ -53,7 +53,7 @@ class Value implements ValueInterface
     }
 
     /**
-     * Sets Value
+     * Sets Value.
      *
      * @param string $value Value
      *
@@ -67,7 +67,7 @@ class Value implements ValueInterface
     }
 
     /**
-     * Get Attribute
+     * Get Attribute.
      *
      * @return AttributeInterface Attribute
      */
@@ -77,7 +77,7 @@ class Value implements ValueInterface
     }
 
     /**
-     * Sets Attribute
+     * Sets Attribute.
      *
      * @param AttributeInterface $attribute Attribute
      *
@@ -91,7 +91,7 @@ class Value implements ValueInterface
     }
 
     /**
-     * String representation of a value
+     * String representation of a value.
      *
      * @return string String representation
      */

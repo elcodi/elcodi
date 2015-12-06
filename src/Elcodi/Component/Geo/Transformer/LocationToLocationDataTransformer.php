@@ -22,7 +22,7 @@ use Elcodi\Component\Geo\Factory\LocationDataFactory;
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
- * Class LocationToLocationDataTransformer
+ * Class LocationToLocationDataTransformer.
  */
 class LocationToLocationDataTransformer
 {
@@ -34,7 +34,7 @@ class LocationToLocationDataTransformer
     private $locationDataFactory;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param LocationDataFactory $locationDataFactory LocationData factory
      */
@@ -44,7 +44,7 @@ class LocationToLocationDataTransformer
     }
 
     /**
-     * Transform a Location to LocationData
+     * Transform a Location to LocationData.
      *
      * @param LocationInterface $location Location
      *

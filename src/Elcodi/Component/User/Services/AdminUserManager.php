@@ -22,7 +22,7 @@ use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
 use Elcodi\Component\User\Services\Abstracts\AbstractUserManager;
 
 /**
- * Class AdminUserManager
+ * Class AdminUserManager.
  */
 class AdminUserManager extends AbstractUserManager
 {
@@ -30,10 +30,11 @@ class AdminUserManager extends AbstractUserManager
      * Register new User into the web.
      * Creates new token given a user, with related Role set.
      *
-     * @param  AbstractUserInterface $user User to register
-     * @return $this                 Self object
-     * @internal param string $providerKey Provider key
+     * @param AbstractUserInterface $user User to register
      *
+     * @return $this Self object
+     *
+     * @internal param string $providerKey Provider key
      */
     public function register(AbstractUserInterface $user)
     {

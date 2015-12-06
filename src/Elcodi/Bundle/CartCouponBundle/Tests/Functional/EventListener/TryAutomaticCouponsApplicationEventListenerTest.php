@@ -23,12 +23,12 @@ use Elcodi\Bundle\CartCouponBundle\Tests\Functional\EventListener\Abstracts\Abst
 use Elcodi\Component\Coupon\ElcodiCouponTypes;
 
 /**
- * Class TryAutomaticCouponsApplicationEventListenerTest
+ * Class TryAutomaticCouponsApplicationEventListenerTest.
  */
 class TryAutomaticCouponsApplicationEventListenerTest extends AbstractCartCouponEventListenerTest
 {
     /**
-     * Test tryAutomaticCoupons
+     * Test tryAutomaticCoupons.
      */
     public function testTryAutomaticCoupons()
     {

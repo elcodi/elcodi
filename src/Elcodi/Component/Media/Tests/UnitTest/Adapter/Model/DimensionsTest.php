@@ -23,12 +23,12 @@ use Elcodi\Component\Media\Adapter\Resizer\Model\Dimensions;
 use Elcodi\Component\Media\ElcodiMediaImageResizeTypes;
 
 /**
- * Class DimensionsTest
+ * Class DimensionsTest.
  */
 class DimensionsTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Test dimensions
+     * Test dimensions.
      *
      * working with an image with dimensions 400x400
      */
@@ -56,7 +56,7 @@ class DimensionsTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test dimensions
+     * Test dimensions.
      *
      * working with an image with dimensions 400x400
      */
@@ -84,7 +84,7 @@ class DimensionsTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test dimensions
+     * Test dimensions.
      *
      * working with an image with dimensions 400x400
      */
@@ -112,7 +112,7 @@ class DimensionsTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test dimensions
+     * Test dimensions.
      *
      * working with an image with dimensions 400x400
      */
@@ -140,7 +140,7 @@ class DimensionsTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test dimensions
+     * Test dimensions.
      *
      * working with an image with dimensions 400x400
      */
@@ -168,7 +168,7 @@ class DimensionsTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test dimensions
+     * Test dimensions.
      *
      * working with an image with dimensions 400x400
      */

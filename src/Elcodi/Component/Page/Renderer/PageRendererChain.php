@@ -21,7 +21,7 @@ use Elcodi\Component\Page\Entity\Interfaces\PageInterface;
 use Elcodi\Component\Page\Renderer\Interfaces\PageRendererInterface;
 
 /**
- * Class PageRendererChain
+ * Class PageRendererChain.
  *
  * @author Berny Cantos <be@rny.cc>
  */
@@ -35,7 +35,7 @@ class PageRendererChain implements PageRendererInterface
     private $renderers;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param PageRendererInterface[] $renderers Renderers
      */
@@ -45,7 +45,7 @@ class PageRendererChain implements PageRendererInterface
     }
 
     /**
-     * Adds a new renderer
+     * Adds a new renderer.
      *
      * @param PageRendererInterface $renderer
      *
@@ -59,7 +59,7 @@ class PageRendererChain implements PageRendererInterface
     }
 
     /**
-     * Render a page
+     * Render a page.
      *
      * @param PageInterface $page Page to render
      *
@@ -79,11 +79,11 @@ class PageRendererChain implements PageRendererInterface
     }
 
     /**
-     * Supports everything because falls back to `getContent`
+     * Supports everything because falls back to `getContent`.
      *
      * @param PageInterface $page Page to check support
      *
-     * @return boolean
+     * @return bool
      */
     public function supports(PageInterface $page)
     {

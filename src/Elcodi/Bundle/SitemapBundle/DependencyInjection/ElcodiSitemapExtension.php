@@ -25,7 +25,7 @@ use Symfony\Component\DependencyInjection\Reference;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 
 /**
- * Class ElcodiSitemapExtension
+ * Class ElcodiSitemapExtension.
  */
 class ElcodiSitemapExtension extends AbstractExtension
 {
@@ -37,7 +37,7 @@ class ElcodiSitemapExtension extends AbstractExtension
     const EXTENSION_NAME = 'elcodi_sitemap';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -64,7 +64,7 @@ class ElcodiSitemapExtension extends AbstractExtension
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -82,7 +82,7 @@ class ElcodiSitemapExtension extends AbstractExtension
     }
 
     /**
-     * Hook after load the full container
+     * Hook after load the full container.
      *
      * @param array            $config    Configuration
      * @param ContainerBuilder $container Container
@@ -98,7 +98,7 @@ class ElcodiSitemapExtension extends AbstractExtension
     }
 
     /**
-     * Load blocks
+     * Load blocks.
      *
      * @param array            $blocks    Blocks
      * @param ContainerBuilder $container Container
@@ -135,7 +135,7 @@ class ElcodiSitemapExtension extends AbstractExtension
     }
 
     /**
-     * Load statics
+     * Load statics.
      *
      * @param array            $statics   Statics
      * @param ContainerBuilder $container Container
@@ -162,7 +162,7 @@ class ElcodiSitemapExtension extends AbstractExtension
     }
 
     /**
-     * Load builders
+     * Load builders.
      *
      * @param array            $builders  Builders
      * @param ContainerBuilder $container Container
@@ -198,7 +198,7 @@ class ElcodiSitemapExtension extends AbstractExtension
     }
 
     /**
-     * Load builder blocks
+     * Load builder blocks.
      *
      * @param Definition $builderDefinition Block definition
      * @param array      $elements          Elements
@@ -223,7 +223,7 @@ class ElcodiSitemapExtension extends AbstractExtension
     }
 
     /**
-     * Load dumpers
+     * Load dumpers.
      *
      * @param array            $builders  Builders
      * @param ContainerBuilder $container Container
@@ -248,7 +248,7 @@ class ElcodiSitemapExtension extends AbstractExtension
     }
 
     /**
-     * Load profiles
+     * Load profiles.
      *
      * @param array            $profiles  Profiles
      * @param ContainerBuilder $container Container
@@ -278,7 +278,7 @@ class ElcodiSitemapExtension extends AbstractExtension
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * @param array $config Configuration
      *
@@ -297,7 +297,7 @@ class ElcodiSitemapExtension extends AbstractExtension
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */

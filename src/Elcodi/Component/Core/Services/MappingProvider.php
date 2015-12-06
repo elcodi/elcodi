@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Core\Services;
 
 /**
- * Class MappingProvider
+ * Class MappingProvider.
  */
 class MappingProvider
 {
@@ -41,7 +41,7 @@ class MappingProvider
     private $interfaces;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param array $implementations Implementations
      */
@@ -52,11 +52,11 @@ class MappingProvider
     }
 
     /**
-     * Get interface given implementation
+     * Get interface given implementation.
      *
      * @param string $implementation Implementation
      *
-     * @return string|boolean Interface
+     * @return string|bool Interface
      */
     public function getInterface($implementation)
     {
@@ -66,11 +66,11 @@ class MappingProvider
     }
 
     /**
-     * Get implementation given interface
+     * Get implementation given interface.
      *
      * @param string $interface Interface
      *
-     * @return string|boolean Implementation
+     * @return string|bool Implementation
      */
     public function getImplementation($interface)
     {

@@ -20,7 +20,7 @@ namespace Elcodi\Component\EntityTranslator\EventListener\Traits;
 use Elcodi\Component\EntityTranslator\EventListener\EntityTranslatorFormEventListener;
 
 /**
- * Trait EntityTranslatableFormTrait
+ * Trait EntityTranslatableFormTrait.
  */
 trait EntityTranslatableFormTrait
 {
@@ -32,7 +32,7 @@ trait EntityTranslatableFormTrait
     private $entityTranslatorFormEventListener;
 
     /**
-     * Get Translator form event listener
+     * Get Translator form event listener.
      *
      * @return EntityTranslatorFormEventListener Translator form event listener
      */
@@ -42,7 +42,7 @@ trait EntityTranslatableFormTrait
     }
 
     /**
-     * Set Entity Translator Form event listener
+     * Set Entity Translator Form event listener.
      *
      * @param EntityTranslatorFormEventListener $entityTranslatorFormEventListener Translator form event listener
      *

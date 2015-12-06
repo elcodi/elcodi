@@ -25,7 +25,7 @@ use Elcodi\Component\Page\Repository\PageRepository;
 use Elcodi\Component\Page\Transformer\PageResponseTransformer;
 
 /**
- * Class PageController
+ * Class PageController.
  *
  * @author Berny Cantos <be@rny.cc>
  */
@@ -46,7 +46,7 @@ class PageController
     private $pageResponseTransformer;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param PageRepository          $pageRepository          Page repository
      * @param PageResponseTransformer $pageResponseTransformer PageResponse Transformer
@@ -60,7 +60,7 @@ class PageController
     }
 
     /**
-     * Renders a page given its id and path
+     * Renders a page given its id and path.
      *
      * @param string $id   Page id
      * @param string $path Page path
@@ -87,7 +87,7 @@ class PageController
     }
 
     /**
-     * Renders a page given its path
+     * Renders a page given its path.
      *
      * @param string $path Page path
      *

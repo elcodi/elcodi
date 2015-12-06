@@ -18,26 +18,26 @@
 namespace Elcodi\Component\User;
 
 /**
- * Class ElcodiUserProperties
+ * Class ElcodiUserProperties.
  */
 final class ElcodiUserProperties
 {
     /**
-     * @var integer
+     * @var int
      *
      * User gender male
      */
     const GENDER_MALE = 0;
 
     /**
-     * @var integer
+     * @var int
      *
      * User gender female
      */
     const GENDER_FEMALE = 1;
 
     /**
-     * @var integer
+     * @var int
      *
      * Unknown user gender
      */

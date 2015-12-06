@@ -25,7 +25,7 @@ use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Services\CurrencyConverter;
 
 /**
- * Class CartPricesLoader
+ * Class CartPricesLoader.
  *
  * Api Methods:
  *
@@ -51,7 +51,7 @@ class CartPricesLoader
     private $currencyConverter;
 
     /**
-     * Built method
+     * Built method.
      *
      * @param WrapperInterface  $currencyWrapper   Currency Wrapper
      * @param CurrencyConverter $currencyConverter Currency Converter
@@ -65,7 +65,7 @@ class CartPricesLoader
     }
 
     /**
-     * Load cart products prices
+     * Load cart products prices.
      *
      * @param CartInterface $cart Cart
      */
@@ -78,7 +78,7 @@ class CartPricesLoader
         $productAmount = Money::create(0, $currency);
 
         /**
-         * Calculate Amount and ProductAmount
+         * Calculate Amount and ProductAmount.
          */
         foreach ($cart->getCartLines() as $cartLine) {
 
@@ -108,7 +108,7 @@ class CartPricesLoader
     }
 
     /**
-     * Load cart total price
+     * Load cart total price.
      *
      * @param CartInterface $cart Cart
      */
@@ -121,7 +121,7 @@ class CartPricesLoader
         $finalAmount = clone $cart->getProductAmount();
 
         /**
-         * Calculates the shipping amount
+         * Calculates the shipping amount.
          */
         $shippingAmount = $cart->getShippingAmount();
         if ($shippingAmount instanceof MoneyInterface) {
@@ -135,7 +135,7 @@ class CartPricesLoader
         }
 
         /**
-         * Calculates the coupon amount
+         * Calculates the coupon amount.
          */
         $couponAmount = $cart->getCouponAmount();
         if ($couponAmount instanceof MoneyInterface) {
@@ -153,7 +153,7 @@ class CartPricesLoader
 
     /**
      * Loads CartLine prices.
-     * This method does not consider Coupon
+     * This method does not consider Coupon.
      *
      * @param CartLineInterface $cartLine Cart line
      *

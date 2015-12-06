@@ -18,12 +18,12 @@
 namespace Elcodi\Component\Sitemap;
 
 /**
- * Class ElcodiSitemapEvents
+ * Class ElcodiSitemapEvents.
  */
 final class ElcodiSitemapEvents
 {
     /**
-     * This event is fired each time a sitemap is generated
+     * This event is fired each time a sitemap is generated.
      *
      * event.name : sitemap.generated
      * event.class : SitemapGeneratedEvent

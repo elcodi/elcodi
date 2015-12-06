@@ -24,12 +24,12 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractConfiguration
 use Elcodi\Component\Configuration\ElcodiConfigurationTypes;
 
 /**
- * This is the class that validates and merges configuration from your app/config files
+ * This is the class that validates and merges configuration from your app/config files.
  */
 class Configuration extends AbstractConfiguration implements ConfigurationInterface
 {
     /**
-     * Configure the root node
+     * Configure the root node.
      *
      * @param ArrayNodeDefinition $rootNode
      */

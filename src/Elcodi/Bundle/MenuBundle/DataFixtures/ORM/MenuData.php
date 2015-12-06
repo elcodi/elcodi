@@ -24,12 +24,12 @@ use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
- * Class MenuData
+ * Class MenuData.
  */
 class MenuData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
-     * Load data fixtures with the passed EntityManager
+     * Load data fixtures with the passed EntityManager.
      *
      * @param ObjectManager $manager
      */
@@ -41,7 +41,7 @@ class MenuData extends AbstractFixture implements DependentFixtureInterface
         $menuDirector = $this->getDirector('menu');
 
         /**
-         * Admin menu
+         * Admin menu.
          */
         $menuAdmin = $menuDirector
             ->create()
@@ -53,7 +53,7 @@ class MenuData extends AbstractFixture implements DependentFixtureInterface
         $this->addReference('menu-admin', $menuAdmin);
 
         /**
-         * Front menu
+         * Front menu.
          */
         $menuFront = $menuDirector
             ->create()
@@ -68,7 +68,7 @@ class MenuData extends AbstractFixture implements DependentFixtureInterface
 
     /**
      * This method must return an array of fixtures classes
-     * on which the implementing class depends on
+     * on which the implementing class depends on.
      *
      * @return array
      */

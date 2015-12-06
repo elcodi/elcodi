@@ -22,12 +22,12 @@ use PHPUnit_Framework_TestCase;
 use Elcodi\Component\Store\Wrapper\StoreWrapper;
 
 /**
- * Class StoreWrapperTest
+ * Class StoreWrapperTest.
  */
 class StoreWrapperTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Test no store
+     * Test no store.
      *
      * @expectedException \Elcodi\Component\Store\Exception\StoreNotFoundException
      */
@@ -44,7 +44,7 @@ class StoreWrapperTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test with store
+     * Test with store.
      */
     public function testLoadWithStore()
     {

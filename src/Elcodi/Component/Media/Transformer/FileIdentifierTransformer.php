@@ -21,12 +21,12 @@ use Elcodi\Component\Media\Entity\Interfaces\FileInterface;
 use Elcodi\Component\Media\Transformer\Interfaces\FileIdentifierTransformerInterface;
 
 /**
- * Class FileIdentifierTransformer
+ * Class FileIdentifierTransformer.
  */
 class FileIdentifierTransformer implements FileIdentifierTransformerInterface
 {
     /**
-     * Transforms an entity to be stored
+     * Transforms an entity to be stored.
      *
      * @param FileInterface $file File to transform
      *

@@ -24,7 +24,7 @@ use Elcodi\Component\Newsletter\Repository\NewsletterSubscriptionRepository;
 use Elcodi\Component\Newsletter\Services\NewsletterManager;
 
 /**
- * Class NewsletterManagerTest
+ * Class NewsletterManagerTest.
  */
 class NewsletterManagerTest extends WebTestCase
 {
@@ -43,7 +43,7 @@ class NewsletterManagerTest extends WebTestCase
     private $newsletterSubscriptionRepository;
 
     /**
-     * Load fixtures of these bundles
+     * Load fixtures of these bundles.
      *
      * @return array Bundles name where fixtures should be found
      */
@@ -56,7 +56,7 @@ class NewsletterManagerTest extends WebTestCase
     }
 
     /**
-     * Set up
+     * Set up.
      */
     public function setUp()
     {
@@ -72,7 +72,7 @@ class NewsletterManagerTest extends WebTestCase
     }
 
     /**
-     * Test subscribe
+     * Test subscribe.
      */
     public function testSubscribe()
     {
@@ -116,7 +116,7 @@ class NewsletterManagerTest extends WebTestCase
     }
 
     /**
-     * Test subscribe
+     * Test subscribe.
      */
     public function testSubscribeNoLanguage()
     {
@@ -140,7 +140,7 @@ class NewsletterManagerTest extends WebTestCase
     }
 
     /**
-     * Test subscribe
+     * Test subscribe.
      */
     public function testUnsubscribeExisting()
     {
@@ -191,7 +191,7 @@ class NewsletterManagerTest extends WebTestCase
     }
 
     /**
-     * Test subscribe
+     * Test subscribe.
      *
      * @expectedException \Elcodi\Component\Newsletter\Exception\NewsletterCannotBeRemovedException
      */
@@ -203,7 +203,7 @@ class NewsletterManagerTest extends WebTestCase
     }
 
     /**
-     * Tests validateEmail method emails acceptance with right emails
+     * Tests validateEmail method emails acceptance with right emails.
      *
      * @dataProvider dataValidateEmail
      */
@@ -215,7 +215,7 @@ class NewsletterManagerTest extends WebTestCase
     }
 
     /**
-     * Return good emails
+     * Return good emails.
      */
     public function dataValidateEmail()
     {
@@ -233,7 +233,7 @@ class NewsletterManagerTest extends WebTestCase
     }
 
     /**
-     * Test isSubscribed
+     * Test isSubscribed.
      */
     public function testIsSubscribed()
     {
@@ -247,7 +247,7 @@ class NewsletterManagerTest extends WebTestCase
     }
 
     /**
-     * Test getSubscription
+     * Test getSubscription.
      */
     public function testGetSubscription()
     {

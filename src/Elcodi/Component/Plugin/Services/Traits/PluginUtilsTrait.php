@@ -18,13 +18,13 @@
 namespace Elcodi\Component\Plugin\Services\Traits;
 
 /**
- * Trait PluginUtilsTrait
+ * Trait PluginUtilsTrait.
  */
 trait PluginUtilsTrait
 {
     /**
      * Load installed plugin bundles and return an array with them, indexed by
-     * their namespaces
+     * their namespaces.
      *
      * @return \Symfony\Component\HttpKernel\Bundle\Bundle[] Plugins installed
      */

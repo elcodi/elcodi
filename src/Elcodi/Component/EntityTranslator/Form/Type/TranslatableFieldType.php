@@ -24,7 +24,7 @@ use Symfony\Component\Form\FormConfigInterface;
 use Elcodi\Component\EntityTranslator\Services\Interfaces\EntityTranslationProviderInterface;
 
 /**
- * Class TranslatableFieldType
+ * Class TranslatableFieldType.
  */
 class TranslatableFieldType extends AbstractType
 {
@@ -43,7 +43,7 @@ class TranslatableFieldType extends AbstractType
     protected $formConfig;
 
     /**
-     * @var Object
+     * @var object
      *
      * Entity
      */
@@ -85,7 +85,7 @@ class TranslatableFieldType extends AbstractType
     protected $masterLocale;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * Fallback is enabled.
      *
@@ -96,17 +96,17 @@ class TranslatableFieldType extends AbstractType
     protected $fallback;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param EntityTranslationProviderInterface $entityTranslationProvider Entity Translation provider
      * @param FormConfigInterface                $formConfig                Form config
-     * @param Object                             $entity                    Entity
+     * @param object                             $entity                    Entity
      * @param string                             $fieldName                 Field name
      * @param array                              $entityConfiguration       Entity configuration
      * @param array                              $fieldConfiguration        Field configuration
      * @param array                              $locales                   Locales
      * @param string                             $masterLocale              Master locale
-     * @param boolean                            $fallback                  Fallback
+     * @param bool                               $fallback                  Fallback
      */
     public function __construct(
         EntityTranslationProviderInterface $entityTranslationProvider,
@@ -131,7 +131,7 @@ class TranslatableFieldType extends AbstractType
     }
 
     /**
-     * Buildform function
+     * Buildform function.
      *
      * @param FormBuilderInterface $builder the formBuilder
      * @param array                $options the options for this form
@@ -172,21 +172,21 @@ class TranslatableFieldType extends AbstractType
                         $locale
                     )
                     : false,
-                'mapped'      => false,
-                'label'       => $fieldOptions['label'],
-                'data'        => $translationData,
+                'mapped' => false,
+                'label' => $fieldOptions['label'],
+                'data' => $translationData,
                 'constraints' => $fieldOptions['constraints'],
             ]);
         }
     }
 
     /**
-     * Check the require value
+     * Check the require value.
      *
-     * @param boolean $required Form field is required
-     * @param string  $locale   Locale
+     * @param bool   $required Form field is required
+     * @param string $locale   Locale
      *
-     * @return boolean translatable field is required
+     * @return bool translatable field is required
      */
     public function evaluateRequired($required, $locale)
     {

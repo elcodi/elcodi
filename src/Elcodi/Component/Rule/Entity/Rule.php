@@ -21,7 +21,7 @@ use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Rule\Entity\Interfaces\RuleInterface;
 
 /**
- * Class Rule
+ * Class Rule.
  */
 class Rule implements RuleInterface
 {
@@ -42,7 +42,7 @@ class Rule implements RuleInterface
     protected $expression;
 
     /**
-     * Sets name
+     * Sets name.
      *
      * @param string $name Name
      *
@@ -56,7 +56,7 @@ class Rule implements RuleInterface
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string Name
      */
@@ -66,7 +66,7 @@ class Rule implements RuleInterface
     }
 
     /**
-     * Sets expression
+     * Sets expression.
      *
      * @param string $expression Expression
      *
@@ -80,7 +80,7 @@ class Rule implements RuleInterface
     }
 
     /**
-     * Get expression
+     * Get expression.
      *
      * @return string Expression
      */

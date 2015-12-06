@@ -20,28 +20,28 @@ namespace Elcodi\Component\Media\Entity;
 use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 
 /**
- * Class Image
+ * Class Image.
  */
 class Image extends File implements ImageInterface
 {
     /**
-     * @var integer
+     * @var int
      *
      * Width
      */
     protected $width;
 
     /**
-     * @var integer
+     * @var int
      *
      * Height
      */
     protected $height;
 
     /**
-     * Set image width in pixels
+     * Set image width in pixels.
      *
-     * @param integer $width Width
+     * @param int $width Width
      *
      * @return $this Self object
      */
@@ -53,9 +53,9 @@ class Image extends File implements ImageInterface
     }
 
     /**
-     * Get image width in pixels
+     * Get image width in pixels.
      *
-     * @return integer Width
+     * @return int Width
      */
     public function getWidth()
     {
@@ -63,9 +63,9 @@ class Image extends File implements ImageInterface
     }
 
     /**
-     * Set image height in pixels
+     * Set image height in pixels.
      *
-     * @param integer $height Height
+     * @param int $height Height
      *
      * @return $this Self object
      */
@@ -77,9 +77,9 @@ class Image extends File implements ImageInterface
     }
 
     /**
-     * Get image height in pixels
+     * Get image height in pixels.
      *
-     * @return integer Height
+     * @return int Height
      */
     public function getHeight()
     {

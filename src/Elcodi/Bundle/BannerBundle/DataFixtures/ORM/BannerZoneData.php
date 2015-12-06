@@ -25,14 +25,14 @@ use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
 
 /**
- * AdminData class
+ * AdminData class.
  *
  * Load fixtures of admin entities
  */
 class BannerZoneData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(ObjectManager $manager)
     {
@@ -42,7 +42,7 @@ class BannerZoneData extends AbstractFixture implements DependentFixtureInterfac
         $bannerZoneDirector = $this->getDirector('banner_zone');
 
         /**
-         * BannerZone
+         * BannerZone.
          *
          * @var LanguageInterface $language
          */
@@ -59,7 +59,7 @@ class BannerZoneData extends AbstractFixture implements DependentFixtureInterfac
         $this->addReference('banner-zone', $bannerZone);
 
         /**
-         * BannerZone with no language
+         * BannerZone with no language.
          */
         $bannerZoneNoLanguage = $bannerZoneDirector
             ->create()
@@ -75,7 +75,7 @@ class BannerZoneData extends AbstractFixture implements DependentFixtureInterfac
 
     /**
      * This method must return an array of fixtures classes
-     * on which the implementing class depends on
+     * on which the implementing class depends on.
      *
      * @return array
      */

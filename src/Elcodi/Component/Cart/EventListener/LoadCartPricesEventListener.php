@@ -21,7 +21,7 @@ use Elcodi\Component\Cart\Event\CartOnLoadEvent;
 use Elcodi\Component\Cart\Services\CartPricesLoader;
 
 /**
- * Class LoadCartPricesEventListener
+ * Class LoadCartPricesEventListener.
  */
 final class LoadCartPricesEventListener
 {
@@ -33,7 +33,7 @@ final class LoadCartPricesEventListener
     private $cartPricesLoader;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param CartPricesLoader $cartPricesLoader Cart prices loader
      */
@@ -43,7 +43,7 @@ final class LoadCartPricesEventListener
     }
 
     /**
-     * Load cart products amount
+     * Load cart products amount.
      */
     public function loadCartProductsAmount(CartOnLoadEvent $event)
     {
@@ -55,7 +55,7 @@ final class LoadCartPricesEventListener
     }
 
     /**
-     * Load cart total amount
+     * Load cart total amount.
      */
     public function loadCartTotalAmount(CartOnLoadEvent $event)
     {

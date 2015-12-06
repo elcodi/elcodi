@@ -24,7 +24,7 @@ use Elcodi\Component\Core\Services\ManagerProvider;
 use Elcodi\Component\User\Entity\Interfaces\LastLoginInterface;
 
 /**
- * Class UpdateLastLoginEventListener
+ * Class UpdateLastLoginEventListener.
  */
 class UpdateLastLoginEventListener
 {
@@ -43,7 +43,7 @@ class UpdateLastLoginEventListener
     private $dateTimeFactory;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param ManagerProvider $objectManagerProvider Object manager provider
      * @param DateTimeFactory $dateTimeFactory       DateTime factory
@@ -57,7 +57,7 @@ class UpdateLastLoginEventListener
     }
 
     /**
-     * Update last login date
+     * Update last login date.
      *
      * @param InteractiveLoginEvent $event Interactive login event
      *

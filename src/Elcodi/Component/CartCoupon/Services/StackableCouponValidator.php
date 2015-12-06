@@ -24,7 +24,7 @@ use Elcodi\Component\CartCoupon\Repository\CartCouponRepository;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 
 /**
- * Class StackableCouponValidator
+ * Class StackableCouponValidator.
  *
  * API methods:
  *
@@ -42,7 +42,7 @@ class StackableCouponValidator
     private $cartCouponRepository;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CartCouponRepository $cartCouponRepository Repository where to
      *                                                   find cartcoupons
@@ -54,7 +54,7 @@ class StackableCouponValidator
 
     /**
      * Check if this coupon can be applied when other coupons had previously
-     * been applied
+     * been applied.
      *
      * @param CartInterface   $cart   Cart
      * @param CouponInterface $coupon Coupon
@@ -72,7 +72,7 @@ class StackableCouponValidator
             ]);
 
         /**
-         * If there are no previously applied coupons we can skip the check
+         * If there are no previously applied coupons we can skip the check.
          */
         if (0 == count($cartCoupons)) {
             return;
@@ -93,7 +93,7 @@ class StackableCouponValidator
 
         /**
          * Checked coupon can be stackable and everything that was
-         * previously applied is also stackable
+         * previously applied is also stackable.
          */
         if ($coupon->getStackable() && $appliedCouponsCanBeStacked) {
             return;

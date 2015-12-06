@@ -27,7 +27,7 @@ use Elcodi\Bundle\PluginBundle\CompilerPass\MappingCompilerPass;
 use Elcodi\Bundle\PluginBundle\DependencyInjection\ElcodiPluginExtension;
 
 /**
- * Class ElcodiPluginBundle
+ * Class ElcodiPluginBundle.
  *
  * @author Berny Cantos <be@rny.cc>
  */
@@ -41,7 +41,7 @@ class ElcodiPluginBundle extends AbstractElcodiBundle implements DependentBundle
     protected $kernel;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param KernelInterface $kernel Kernel
      */
@@ -71,7 +71,7 @@ class ElcodiPluginBundle extends AbstractElcodiBundle implements DependentBundle
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

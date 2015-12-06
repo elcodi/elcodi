@@ -21,7 +21,7 @@ use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
- * Interface MenuInterface
+ * Interface MenuInterface.
  */
 interface MenuInterface
     extends
@@ -30,7 +30,7 @@ interface MenuInterface
     SubnodesAwareInterface
 {
     /**
-     * Sets Code
+     * Sets Code.
      *
      * @param string $code Code
      *
@@ -39,14 +39,14 @@ interface MenuInterface
     public function setCode($code);
 
     /**
-     * Get Code
+     * Get Code.
      *
      * @return string Code
      */
     public function getCode();
 
     /**
-     * Sets Description
+     * Sets Description.
      *
      * @param string $description Description
      *
@@ -55,7 +55,7 @@ interface MenuInterface
     public function setDescription($description);
 
     /**
-     * Get Description
+     * Get Description.
      *
      * @return string Description
      */

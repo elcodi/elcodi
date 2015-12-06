@@ -23,7 +23,7 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * This class loads and manages your bundle configuration
+ * This class loads and manages your bundle configuration.
  */
 class ElcodiStoreExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
@@ -35,7 +35,7 @@ class ElcodiStoreExtension extends AbstractExtension implements EntitiesOverrida
     const EXTENSION_NAME = 'elcodi_store';
 
     /**
-     * Get the Config file location
+     * Get the Config file location.
      *
      * @return string Config file location
      */
@@ -62,7 +62,7 @@ class ElcodiStoreExtension extends AbstractExtension implements EntitiesOverrida
     }
 
     /**
-     * Load Parametrization definition
+     * Load Parametrization definition.
      *
      * return array(
      *      'parameter1' => $config['parameter1'],
@@ -77,15 +77,15 @@ class ElcodiStoreExtension extends AbstractExtension implements EntitiesOverrida
     protected function getParametrizationValues(array $config)
     {
         return [
-            "elcodi.entity.store.class"        => $config['mapping']['store']['class'],
-            "elcodi.entity.store.mapping_file" => $config['mapping']['store']['mapping_file'],
-            "elcodi.entity.store.manager"      => $config['mapping']['store']['manager'],
-            "elcodi.entity.store.enabled"      => $config['mapping']['store']['enabled'],
+            'elcodi.entity.store.class' => $config['mapping']['store']['class'],
+            'elcodi.entity.store.mapping_file' => $config['mapping']['store']['mapping_file'],
+            'elcodi.entity.store.manager' => $config['mapping']['store']['manager'],
+            'elcodi.entity.store.enabled' => $config['mapping']['store']['enabled'],
         ];
     }
 
     /**
-     * Config files to load
+     * Config files to load.
      *
      * @param array $config Configuration
      *
@@ -114,7 +114,7 @@ class ElcodiStoreExtension extends AbstractExtension implements EntitiesOverrida
     }
 
     /**
-     * Returns the extension alias, same value as extension name
+     * Returns the extension alias, same value as extension name.
      *
      * @return string The alias
      */

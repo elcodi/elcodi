@@ -24,7 +24,7 @@ use Elcodi\Component\Configuration\Exception\ConfigurationParameterNotFoundExcep
 use Elcodi\Component\Configuration\Services\ConfigurationManager;
 
 /**
- * Class ConfigurationExtension
+ * Class ConfigurationExtension.
  *
  * Provides a simple twig function to access runtime configuration parameters
  */
@@ -38,7 +38,7 @@ class ConfigurationExtension extends Twig_Extension
     private $configurationManager;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param ConfigurationManager $configurationManager
      */
@@ -60,12 +60,12 @@ class ConfigurationExtension extends Twig_Extension
     }
 
     /**
-     * Load a parameter given the key and the namespace
+     * Load a parameter given the key and the namespace.
      *
      * @param string $parameterKey       Parameter key
      * @param string $parameterNamespace Parameter namespace
      *
-     * @return null|string|boolean Configuration parameter value
+     * @return null|string|bool Configuration parameter value
      *
      * @throws ConfigurationParameterNotFoundException Configuration not found
      */
@@ -79,7 +79,7 @@ class ConfigurationExtension extends Twig_Extension
     }
 
     /**
-     * return extension name
+     * return extension name.
      *
      * @return string extension name
      */

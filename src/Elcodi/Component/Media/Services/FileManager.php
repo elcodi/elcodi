@@ -23,7 +23,7 @@ use Elcodi\Component\Media\Entity\Interfaces\FileInterface;
 use Elcodi\Component\Media\Transformer\Interfaces\FileIdentifierTransformerInterface;
 
 /**
- * Class FileManager
+ * Class FileManager.
  *
  * This class manages filesystem files
  *
@@ -49,7 +49,7 @@ class FileManager
     private $fileIdentifierTransformer;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param Filesystem                         $fileSystem                Filesystem
      * @param FileIdentifierTransformerInterface $fileIdentifierTransformer File identifier transformer
@@ -63,13 +63,13 @@ class FileManager
     }
 
     /**
-     * Adds a File to an specific FileSystem, given an specific data
+     * Adds a File to an specific FileSystem, given an specific data.
      *
      * Last parameter determines if file must be overwritten if already exists
      *
      * @param FileInterface $file      File to upload
      * @param string        $data      File data
-     * @param boolean       $overwrite Overwrite file if exists
+     * @param bool          $overwrite Overwrite file if exists
      *
      * @return $this Self object
      */

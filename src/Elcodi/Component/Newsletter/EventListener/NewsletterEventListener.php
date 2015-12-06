@@ -23,7 +23,7 @@ use Elcodi\Component\Newsletter\Event\NewsletterSubscriptionEvent;
 use Elcodi\Component\Newsletter\Event\NewsletterUnsubscriptionEvent;
 
 /**
- * Class NewsletterEventListener
+ * Class NewsletterEventListener.
  */
 class NewsletterEventListener
 {
@@ -35,7 +35,7 @@ class NewsletterEventListener
     private $newsletterObjectManager;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param ObjectManager $newsletterObjectManager Newsletter object manager
      */
@@ -45,7 +45,7 @@ class NewsletterEventListener
     }
 
     /**
-     * Subscribed on newsletter subscription
+     * Subscribed on newsletter subscription.
      *
      * @param NewsletterSubscriptionEvent $event Event
      */
@@ -58,7 +58,7 @@ class NewsletterEventListener
     }
 
     /**
-     * Subscribed on newsletter unsubscription
+     * Subscribed on newsletter unsubscription.
      *
      * @param NewsletterUnsubscriptionEvent $event Event
      */

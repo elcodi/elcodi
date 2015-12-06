@@ -23,7 +23,7 @@ use Twig_SimpleFunction;
 use Elcodi\Component\Plugin\EventDispatcher\Interfaces\HookSystemEventDispatcherInterface;
 
 /**
- * Class HookExtension for Twig
+ * Class HookExtension for Twig.
  *
  * @author Berny Cantos <be@rny.cc>
  */
@@ -37,7 +37,7 @@ class HookExtension extends Twig_Extension
     private $hookSystemEventDispatcher;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param HookSystemEventDispatcherInterface $hookSystemEventDispatcher Where to execute the hooks
      */

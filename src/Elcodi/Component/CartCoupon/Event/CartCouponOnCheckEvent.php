@@ -20,7 +20,7 @@ namespace Elcodi\Component\CartCoupon\Event;
 use Elcodi\Component\CartCoupon\Event\Abstracts\AbstractCartCouponEvent;
 
 /**
- * Class CartCouponOnCheckEvent
+ * Class CartCouponOnCheckEvent.
  */
 final class CartCouponOnCheckEvent extends AbstractCartCouponEvent
 {

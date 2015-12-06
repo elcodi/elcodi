@@ -24,7 +24,7 @@ use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
 use Elcodi\Bundle\PaymentBundle\DependencyInjection\ElcodiPaymentExtension;
 
 /**
- * Class ElcodiPaymentBundle
+ * Class ElcodiPaymentBundle.
  */
 class ElcodiPaymentBundle extends AbstractElcodiBundle
 {
@@ -39,7 +39,7 @@ class ElcodiPaymentBundle extends AbstractElcodiBundle
     }
 
     /**
-     * Create instance of current bundle, and return dependent bundle namespaces
+     * Create instance of current bundle, and return dependent bundle namespaces.
      *
      * @return array Bundle instances
      */

@@ -23,12 +23,12 @@ use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
 use Elcodi\Component\CartCoupon\Entity\Interfaces\OrderCouponInterface;
 
 /**
- * Class OrderCouponRepository
+ * Class OrderCouponRepository.
  */
 class OrderCouponRepository extends EntityRepository
 {
     /**
-     * Find OrderCoupon instances assigned to current order
+     * Find OrderCoupon instances assigned to current order.
      *
      * @param OrderInterface $order Order
      *
@@ -45,7 +45,7 @@ class OrderCouponRepository extends EntityRepository
     }
 
     /**
-     * Find OrderCoupon instances assigned to current order
+     * Find OrderCoupon instances assigned to current order.
      *
      * @param OrderInterface $order Order
      *

@@ -23,7 +23,7 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 
 /**
- * Class CommentRepository
+ * Class CommentRepository.
  */
 class CommentRepository extends EntityRepository
 {
@@ -48,7 +48,7 @@ class CommentRepository extends EntityRepository
             ->addOrderBy('c.parent', 'asc')
             ->addOrderBy('c.id', 'asc')
             ->setParameters([
-                'source'  => $source,
+                'source' => $source,
                 'context' => $context,
                 'enabled' => true,
             ]);

@@ -25,7 +25,7 @@ use Twig_SimpleFilter;
 use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
 
 /**
- * Class ImageExtension
+ * Class ImageExtension.
  */
 class ImageExtension extends Twig_Extension
 {
@@ -76,7 +76,7 @@ class ImageExtension extends Twig_Extension
     private $modifiedContext;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param UrlGeneratorInterface $router                         Router
      * @param string                $imageResizeControllerRouteName Image resize controller route name
@@ -103,11 +103,11 @@ class ImageExtension extends Twig_Extension
             ->router
             ->getContext();
 
-        $this->modifiedContext = clone($this->originalContext);
+        $this->modifiedContext = clone $this->originalContext;
     }
 
     /**
-     * Return all filters
+     * Return all filters.
      *
      * @return Twig_SimpleFilter[] Filters created
      */
@@ -120,7 +120,7 @@ class ImageExtension extends Twig_Extension
     }
 
     /**
-     * Return route of image with desired resize
+     * Return route of image with desired resize.
      *
      * @param ImageInterface $imageMedia Imagemedia element
      * @param array          $options    Options
@@ -152,7 +152,7 @@ class ImageExtension extends Twig_Extension
     }
 
     /**
-     * Return route of image
+     * Return route of image.
      *
      * @param ImageInterface $imageMedia  Imagemedia element
      * @param bool           $absoluteUrl If the url generated shoud be absolute
@@ -178,7 +178,7 @@ class ImageExtension extends Twig_Extension
     }
 
     /**
-     * Fixes a router Context back after changing the "Host" URL
+     * Fixes a router Context back after changing the "Host" URL.
      *
      * @return $this Self object
      */
@@ -194,7 +194,7 @@ class ImageExtension extends Twig_Extension
     }
 
     /**
-     * return extension name
+     * return extension name.
      *
      * @return string extension name
      */
@@ -204,7 +204,7 @@ class ImageExtension extends Twig_Extension
     }
 
     /**
-     * Prepares the Host part of a image resize URL
+     * Prepares the Host part of a image resize URL.
      *
      * @return mixed Route reference type
      */
@@ -217,7 +217,7 @@ class ImageExtension extends Twig_Extension
 
             /**
              * When a Host is set for the image route,
-             * we need to change the route context URL
+             * we need to change the route context URL.
              */
             $this
                 ->router

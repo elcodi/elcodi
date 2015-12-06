@@ -22,7 +22,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Elcodi\Component\Geo\Adapter\LocationPopulator\Interfaces\LocationPopulatorAdapterInterface;
 
 /**
- * Class LocationPopulator
+ * Class LocationPopulator.
  */
 class LocationPopulator
 {
@@ -41,7 +41,7 @@ class LocationPopulator
     private $locationObjectManager;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param LocationPopulatorAdapterInterface $locationPopulatorAdapter
      * @param ObjectManager                     $locationObjectManager

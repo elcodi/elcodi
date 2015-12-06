@@ -24,7 +24,7 @@ use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
 
 /**
- * Interface CommentInterface
+ * Interface CommentInterface.
  */
 interface CommentInterface
     extends
@@ -32,16 +32,15 @@ interface CommentInterface
     DateTimeInterface,
     EnabledInterface
 {
-
     /**
-     * Get AuthorEmail
+     * Get AuthorEmail.
      *
      * @return string AuthorEmail
      */
     public function getAuthorEmail();
 
     /**
-     * Sets AuthorEmail
+     * Sets AuthorEmail.
      *
      * @param string $authorEmail AuthorEmail
      *
@@ -50,14 +49,14 @@ interface CommentInterface
     public function setAuthorEmail($authorEmail);
 
     /**
-     * Get AuthorName
+     * Get AuthorName.
      *
      * @return string AuthorName
      */
     public function getAuthorName();
 
     /**
-     * Sets AuthorName
+     * Sets AuthorName.
      *
      * @param string $authorName AuthorName
      *
@@ -66,14 +65,14 @@ interface CommentInterface
     public function setAuthorName($authorName);
 
     /**
-     * Get AuthorToken
+     * Get AuthorToken.
      *
      * @return string AuthorToken
      */
     public function getAuthorToken();
 
     /**
-     * Sets AuthorToken
+     * Sets AuthorToken.
      *
      * @param string $authorToken AuthorToken
      *
@@ -82,7 +81,7 @@ interface CommentInterface
     public function setAuthorToken($authorToken);
 
     /**
-     * Sets Content
+     * Sets Content.
      *
      * @param string $content Content
      *
@@ -91,14 +90,14 @@ interface CommentInterface
     public function setContent($content);
 
     /**
-     * Get Content
+     * Get Content.
      *
      * @return string Content
      */
     public function getContent();
 
     /**
-     * Sets Parent
+     * Sets Parent.
      *
      * @param CommentInterface|null $parent Parent
      *
@@ -107,14 +106,14 @@ interface CommentInterface
     public function setParent(CommentInterface $parent = null);
 
     /**
-     * Get Parent
+     * Get Parent.
      *
      * @return CommentInterface|null Parent
      */
     public function getParent();
 
     /**
-     * Sets Source
+     * Sets Source.
      *
      * @param string $source Source
      *
@@ -123,14 +122,14 @@ interface CommentInterface
     public function setSource($source);
 
     /**
-     * Get Source
+     * Get Source.
      *
      * @return string Source
      */
     public function getSource();
 
     /**
-     * Set Children
+     * Set Children.
      *
      * @param Collection $children Children
      *
@@ -139,21 +138,21 @@ interface CommentInterface
     public function setChildren(Collection $children);
 
     /**
-     * Get Children
+     * Get Children.
      *
      * @return Collection Children
      */
     public function getChildren();
 
     /**
-     * Get Context
+     * Get Context.
      *
      * @return string Context
      */
     public function getContext();
 
     /**
-     * Sets Context
+     * Sets Context.
      *
      * @param string $context Context
      *

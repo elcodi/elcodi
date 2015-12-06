@@ -20,7 +20,7 @@ namespace Elcodi\Component\Geo\Adapter\LocationProvider\Interfaces;
 use Elcodi\Component\Geo\ValueObject\LocationData;
 
 /**
- * Interface LocationProviderAdapterInterface
+ * Interface LocationProviderAdapterInterface.
  */
 interface LocationProviderAdapterInterface
 {
@@ -70,12 +70,12 @@ interface LocationProviderAdapterInterface
 
     /**
      * Checks if the first received id is contained between the rest of ids
-     * received as second parameter
+     * received as second parameter.
      *
      * @param string $id  The location Id
      * @param array  $ids The location Ids
      *
-     * @return boolean Location is container
+     * @return bool Location is container
      */
     public function in($id, array $ids);
 }

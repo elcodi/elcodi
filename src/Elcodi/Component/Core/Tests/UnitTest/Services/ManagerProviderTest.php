@@ -24,7 +24,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 use Elcodi\Component\Core\Services\ManagerProvider;
 
 /**
- * Class ManagerProviderTest
+ * Class ManagerProviderTest.
  */
 class ManagerProviderTest extends PHPUnit_Framework_TestCase
 {
@@ -57,7 +57,7 @@ class ManagerProviderTest extends PHPUnit_Framework_TestCase
     protected $objectManager;
 
     /**
-     * Setup method
+     * Setup method.
      */
     public function setUp()
     {
@@ -86,7 +86,7 @@ class ManagerProviderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test getManagerByEntityNamespace
+     * Test getManagerByEntityNamespace.
      */
     public function testGetManagerByEntityNamespace()
     {
@@ -98,7 +98,7 @@ class ManagerProviderTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test getManagerByEntityParameter
+     * Test getManagerByEntityParameter.
      */
     public function testGetManagerByEntityParameter()
     {

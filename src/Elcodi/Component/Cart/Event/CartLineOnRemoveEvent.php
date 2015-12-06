@@ -20,7 +20,7 @@ namespace Elcodi\Component\Cart\Event;
 use Elcodi\Component\Cart\Event\Abstracts\AbstractCartLineEvent;
 
 /**
- * Class CartLineOnRemoveEvent
+ * Class CartLineOnRemoveEvent.
  */
 final class CartLineOnRemoveEvent extends AbstractCartLineEvent
 {

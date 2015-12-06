@@ -20,7 +20,7 @@ namespace Elcodi\Component\Media\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class ImageRepository
+ * Class ImageRepository.
  */
 class ImageRepository extends EntityRepository
 {

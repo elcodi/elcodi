@@ -20,7 +20,7 @@ namespace Elcodi\Component\Store\Exception;
 use Exception;
 
 /**
- * Class StoreNotFoundException
+ * Class StoreNotFoundException.
  */
 class StoreNotFoundException extends Exception
 {
@@ -34,7 +34,7 @@ class StoreNotFoundException extends Exception
      *
      * @link http://php.net/manual/en/exception.construct.php
      */
-    public function __construct($message = "", $code = 0, Exception $previous = null)
+    public function __construct($message = '', $code = 0, Exception $previous = null)
     {
         $message = 'Store not found.';
 

@@ -21,7 +21,7 @@ use Elcodi\Component\Core\Factory\DateTimeFactory;
 use Elcodi\Component\Page\Factory\PageFactory;
 
 /**
- * Class PageFactoryTest
+ * Class PageFactoryTest.
  *
  * @author Cayetano Soriano <neoshadybeat@gmail.com>
  * @author Jordi Grados <planetzombies@gmail.com>

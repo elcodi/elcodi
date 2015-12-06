@@ -22,7 +22,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Elcodi\Bundle\CoreBundle\CompilerPass\Abstracts\AbstractElcodiMappingCompilerPass;
 
 /**
- * Class MappingCompilerPass
+ * Class MappingCompilerPass.
  */
 class MappingCompilerPass extends AbstractElcodiMappingCompilerPass
 {

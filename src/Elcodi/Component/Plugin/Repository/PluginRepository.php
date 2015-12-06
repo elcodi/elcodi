@@ -23,12 +23,12 @@ use Elcodi\Component\Plugin\Entity\Plugin;
 use Elcodi\Component\Plugin\PluginTypes;
 
 /**
- * Class PluginRepository
+ * Class PluginRepository.
  */
 class PluginRepository extends EntityRepository
 {
     /**
-     * Find certain type plugins
+     * Find certain type plugins.
      *
      * @param string $category Plugin category
      *
@@ -39,12 +39,12 @@ class PluginRepository extends EntityRepository
         return $this->findBy([
             'type' => PluginTypes::TYPE_PLUGIN,
             'category' => $category,
-            'enabled'  => true,
+            'enabled' => true,
         ]);
     }
 
     /**
-     * Find all templates given a category
+     * Find all templates given a category.
      *
      * @param string $category Plugin category
      *
@@ -55,7 +55,7 @@ class PluginRepository extends EntityRepository
         return $this->findBy([
             'type' => PluginTypes::TYPE_TEMPLATE,
             'category' => $category,
-            'enabled'  => true,
+            'enabled' => true,
         ]);
     }
 }

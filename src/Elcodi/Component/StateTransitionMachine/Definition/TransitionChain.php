@@ -18,7 +18,7 @@
 namespace Elcodi\Component\StateTransitionMachine\Definition;
 
 /**
- * Class TransitionChain
+ * Class TransitionChain.
  */
 class TransitionChain
 {
@@ -30,7 +30,7 @@ class TransitionChain
     private $transitions = [];
 
     /**
-     * add Transition
+     * add Transition.
      *
      * @param Transition $transition Transition
      *
@@ -44,7 +44,7 @@ class TransitionChain
     }
 
     /**
-     * add Transition
+     * add Transition.
      *
      * @return array Transitions of the chain
      */
@@ -54,11 +54,11 @@ class TransitionChain
     }
 
     /**
-     * Has transition
+     * Has transition.
      *
      * @param string $transitionName Transition name
      *
-     * @return boolean Transition exists
+     * @return bool Transition exists
      */
     public function hasTransition($transitionName)
     {
@@ -66,7 +66,7 @@ class TransitionChain
     }
 
     /**
-     * Get transitions with specific name
+     * Get transitions with specific name.
      *
      * @param string $transitionName Transition name
      *
@@ -83,7 +83,7 @@ class TransitionChain
     }
 
     /**
-     * Get transitions given the name of the start state
+     * Get transitions given the name of the start state.
      *
      * @param string $stateName State name
      *
@@ -102,7 +102,7 @@ class TransitionChain
     }
 
     /**
-     * Get transitions given the name of the final state name
+     * Get transitions given the name of the final state name.
      *
      * @param string $stateName State name
      *
@@ -121,7 +121,7 @@ class TransitionChain
     }
 
     /**
-     * Get transition starting state name and transition name
+     * Get transition starting state name and transition name.
      *
      * @param string $stateName      State name
      * @param string $transitionName Transition name
@@ -147,7 +147,7 @@ class TransitionChain
     }
 
     /**
-     * Get transition starting state name and final state name
+     * Get transition starting state name and final state name.
      *
      * @param string $startStateName Start state name
      * @param string $finalStateName Final state name
@@ -173,7 +173,7 @@ class TransitionChain
     }
 
     /**
-     * Create new TransitionChain instance
+     * Create new TransitionChain instance.
      *
      * @return TransitionChain Instance
      */

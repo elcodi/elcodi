@@ -23,12 +23,12 @@ use Elcodi\Component\Attribute\Entity\Attribute;
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
 
 /**
- * Factory for Attribute entities
+ * Factory for Attribute entities.
  */
 class AttributeFactory extends AbstractFactory
 {
     /**
-     * Creates an Attribute instance
+     * Creates an Attribute instance.
      *
      * @return Attribute New Attribute entity
      */

@@ -23,14 +23,14 @@ use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
 use Elcodi\Component\Core\Services\ObjectDirector;
 
 /**
- * AdminData class
+ * AdminData class.
  *
  * Load fixtures of admin entities
  */
 class CustomerData extends AbstractFixture
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(ObjectManager $manager)
     {
@@ -40,7 +40,7 @@ class CustomerData extends AbstractFixture
         $customerDirector = $this->getDirector('customer');
 
         /**
-         * Customer 1
+         * Customer 1.
          */
         $customer1 = $customerDirector
             ->create()
@@ -51,7 +51,7 @@ class CustomerData extends AbstractFixture
         $this->addReference('customer-1', $customer1);
 
         /**
-         * Customer 2
+         * Customer 2.
          */
         $customer2 = $customerDirector
             ->create()

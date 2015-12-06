@@ -22,12 +22,12 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class ZoneRepository
+ * Class ZoneRepository.
  */
 class ZoneRepository extends EntityRepository
 {
     /**
-     * Find active zones
+     * Find active zones.
      *
      * @return Collection Active zones
      */

@@ -20,7 +20,7 @@ namespace Elcodi\Component\Tax\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class TaxRepository
+ * Class TaxRepository.
  */
 class TaxRepository extends EntityRepository
 {

@@ -21,7 +21,7 @@ use Elcodi\Component\CartCoupon\Event\CartCouponOnApplyEvent;
 use Elcodi\Component\CartCoupon\Services\CartCouponManager;
 
 /**
- * Class CreateAndSaveCartCouponEventListener
+ * Class CreateAndSaveCartCouponEventListener.
  */
 final class CreateAndSaveCartCouponEventListener
 {
@@ -33,7 +33,7 @@ final class CreateAndSaveCartCouponEventListener
     private $cartCouponManager;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param CartCouponManager $cartCouponManager CartCoupon manager
      */
@@ -43,7 +43,7 @@ final class CreateAndSaveCartCouponEventListener
     }
 
     /**
-     * Creates a new CartCoupon instance
+     * Creates a new CartCoupon instance.
      *
      * @param CartCouponOnApplyEvent $event Event
      */

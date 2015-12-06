@@ -20,7 +20,7 @@ namespace Elcodi\Component\Language\Entity;
 use Elcodi\Component\Language\Entity\Interfaces\LocaleInterface;
 
 /**
- * Class Locale
+ * Class Locale.
  */
 class Locale implements LocaleInterface
 {
@@ -32,7 +32,7 @@ class Locale implements LocaleInterface
     protected $localeIso;
 
     /**
-     * Construct method
+     * Construct method.
      *
      * @param string $localeIso Locale iso
      */
@@ -42,7 +42,7 @@ class Locale implements LocaleInterface
     }
 
     /**
-     * Get Iso
+     * Get Iso.
      *
      * @return string Iso
      */
@@ -52,7 +52,7 @@ class Locale implements LocaleInterface
     }
 
     /**
-     * Create new instance
+     * Create new instance.
      *
      * @param string $localeIso Locale iso
      *

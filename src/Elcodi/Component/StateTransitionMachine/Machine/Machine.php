@@ -25,12 +25,12 @@ use Elcodi\Component\StateTransitionMachine\Exception\TransitionNotValidExceptio
 use Elcodi\Component\StateTransitionMachine\Machine\Interfaces\MachineInterface;
 
 /**
- * Class Machine
+ * Class Machine.
  */
 class Machine implements MachineInterface
 {
     /**
-     * @var integer
+     * @var int
      *
      * Machine id
      */
@@ -51,7 +51,7 @@ class Machine implements MachineInterface
     private $pointOfEntry;
 
     /**
-     * @param integer         $machineId       Machine id
+     * @param int             $machineId       Machine id
      * @param TransitionChain $transitionChain Transition Chain
      * @param string          $pointOfEntry    Point of entry
      */
@@ -66,7 +66,7 @@ class Machine implements MachineInterface
     }
 
     /**
-     * Get machine id
+     * Get machine id.
      *
      * @return string Machine identifier
      */
@@ -76,7 +76,7 @@ class Machine implements MachineInterface
     }
 
     /**
-     * Get point of entry
+     * Get point of entry.
      *
      * @return string Point of entry
      */
@@ -86,7 +86,7 @@ class Machine implements MachineInterface
     }
 
     /**
-     * Applies a transition from a state
+     * Applies a transition from a state.
      *
      * @param string $startStateName Start state name
      * @param string $transitionName Transition name
@@ -119,7 +119,7 @@ class Machine implements MachineInterface
     }
 
     /**
-     * Reaches a state given a start state
+     * Reaches a state given a start state.
      *
      * @param string $startStateName Start state name
      * @param string $finalStateName Final state name
@@ -147,7 +147,7 @@ class Machine implements MachineInterface
     }
 
     /**
-     * Get available states given a start state
+     * Get available states given a start state.
      *
      * @param string $startStateName Start state name
      *

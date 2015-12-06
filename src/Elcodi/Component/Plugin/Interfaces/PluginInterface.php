@@ -18,7 +18,7 @@
 namespace Elcodi\Component\Plugin\Interfaces;
 
 /**
- * Interface PluginInterface
+ * Interface PluginInterface.
  */
 interface PluginInterface
 {

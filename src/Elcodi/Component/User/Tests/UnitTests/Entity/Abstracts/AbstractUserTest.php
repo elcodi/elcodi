@@ -22,12 +22,12 @@ use PHPUnit_Framework_TestCase;
 use Elcodi\Component\User\Exception\InvalidPasswordException;
 
 /**
- * Class AbstractUserTest
+ * Class AbstractUserTest.
  */
 class AbstractUserTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Test set password method
+     * Test set password method.
      */
     public function testSetPassword()
     {
@@ -46,7 +46,7 @@ class AbstractUserTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test set password method without exception
+     * Test set password method without exception.
      */
     public function testSetPasswordWithoutException()
     {
@@ -57,7 +57,7 @@ class AbstractUserTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test set password method with exception
+     * Test set password method with exception.
      *
      * @dataProvider dataSetPasswordWithException
      */
@@ -74,7 +74,7 @@ class AbstractUserTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Data for testSetPasswordWithException
+     * Data for testSetPasswordWithException.
      */
     public function dataSetPasswordWithException($value)
     {
