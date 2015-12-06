@@ -6,7 +6,6 @@ cache:
   directories:
     - vendor
     - $HOME/.composer/cache
-    - /tmp/Elcodi/
 
 php:
   - 5.4
