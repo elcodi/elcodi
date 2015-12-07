@@ -8,6 +8,22 @@ https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v1.0.0...v1.0.1
 
+### v1.0.11 (07-12-2015)
+
+First steps for Entity and Factory unit tests
+Fixed as well some issues with new Symfony versions
+Upgraded the code style with new formatters versions
+
+#### Release Log
+
+* [`8bd8778`](https://github.com/elcodi/elcodi/commit/8bd8778dbf436d2fc547f005cfd27afae6256ff7) Added abstract tests for entity & factory (Emanuele Minotto)
+* [`eb64036`](https://github.com/elcodi/elcodi/commit/eb640360c57ad5de25f6a26fa57ea05171a54392) Updated contribution policy (mmoreram)
+* [`edfd514`](https://github.com/elcodi/elcodi/commit/edfd5147d82d9150908547981225150df2cdc85f) quoted strings correctly to solve yaml component deprecation (Emanuele Minotto)
+* [`49af2e7`](https://github.com/elcodi/elcodi/commit/49af2e78fef7d220944e1d014163d8c4b404d2aa) Updated formatters versions (mmoreram)
+* [`49eadb4`](https://github.com/elcodi/elcodi/commit/49eadb4b1d8db4286812336ce6f9ffd843579818) Fixed tests for Symfony3 (mmoreram)
+* [`424aa10`](https://github.com/elcodi/elcodi/commit/424aa10a30b053929250e97b2d59f9788f4771db) Added checking layer in setPassword() (mmoreram)
+* [`33a6d1c`](https://github.com/elcodi/elcodi/commit/33a6d1c99a04ddf78b517334fd59c2dfbf3e5ee2) Added a layer of checking on Node (mmoreram)
+
 ### v1.0.10 (29-11-2015)
 
 This version fixes a bug in cart prices calculation.
