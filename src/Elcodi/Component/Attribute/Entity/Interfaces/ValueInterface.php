@@ -54,5 +54,5 @@ interface ValueInterface extends IdentifiableInterface
      *
      * @return $this Self object
      */
-    public function setAttribute($attribute);
+    public function setAttribute(AttributeInterface $attribute);
 }

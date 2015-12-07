@@ -83,7 +83,7 @@ class Value implements ValueInterface
      *
      * @return $this Self object
      */
-    public function setAttribute($attribute)
+    public function setAttribute(AttributeInterface $attribute)
     {
         $this->attribute = $attribute;
 
