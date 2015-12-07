@@ -19,9 +19,6 @@ env:
   global:
     - secure: b4fh7VMvVktVPsMY9Z8/YOHXWoSGrl/caETmnYsuF3dTV3eOLIQxtP9eW58JBpH14CBLxzbs8D7l2bcvHShsU946Pgxn58xAWO4QLSiZtEJGOB/bVu2s7V/ckEmzbCc83TRiDb4EBaMWLoFWRQn87m00zky4URtDjMGjGgdAfOA=
 
-matrix:
-  fast_finish: true
-
 before_install:
   - 'if [[ $TRAVIS_PHP_VERSION != "hhvm" && $TRAVIS_PHP_VERSION != "7.0" ]]; then phpenv config-rm xdebug.ini; fi;'
   - composer self-update
