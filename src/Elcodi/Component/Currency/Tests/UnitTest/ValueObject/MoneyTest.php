@@ -60,10 +60,6 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         $this->oneHundredDollars = Money::create(100, $this->currencyMockUSD);
     }
 
-    /**
-     * @covers \Elcodi\Component\Currency\Entity\Money::__construct
-     * @covers \Elcodi\Component\Currency\Entity\Money::newWrappedMoneyFromMoney
-     */
     public function testInitialize()
     {
         $currencyMock = new Currency();
@@ -74,9 +70,6 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Elcodi\Component\Currency\Entity\Money', $twoHundredDollars);
     }
 
-    /**
-     * @covers \Elcodi\Component\Currency\Entity\Money::getCurrency
-     */
     public function testGetCurrency()
     {
         $this->assertInstanceOf(
@@ -85,9 +78,6 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @covers \Elcodi\Component\Currency\Entity\Money::getAmount
-     */
     public function testAmountIsNumeric()
     {
         $this->assertInternalType(
@@ -96,9 +86,6 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @covers \Elcodi\Component\Currency\Entity\Money::add
-     */
     public function testAddMoney()
     {
         $fiftyDollars = Money::create(50, $this->currencyMockUSD);
@@ -109,10 +96,6 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @covers \Elcodi\Component\Currency\Entity\Money::subtract
-     * @covers \Elcodi\Component\Currency\Entity\Money::create
-     */
     public function testMethodWillReturnMoneyInstance()
     {
         $fiftyDollars = Money::create(50, $this->currencyMockUSD);
@@ -127,9 +110,6 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @covers \Elcodi\Component\Currency\Entity\Money::subtract
-     */
     public function testSubtractMoney()
     {
         $oneHundredFiftyDollars = Money::create(150, $this->currencyMockUSD);
@@ -143,9 +123,6 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @covers \Elcodi\Component\Currency\Entity\Money::multiply
-     */
     public function testMultiplyMoneyByFactor()
     {
         $this->assertEquals(
@@ -171,9 +148,6 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @covers \Elcodi\Component\Currency\Entity\Money::equals
-     */
     public function testMoneyIsNotEqualTo()
     {
         $fiftyDollars = Money::create(50, $this->currencyMockUSD);
@@ -209,9 +183,6 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @covers \Elcodi\Component\Currency\Entity\Money::compareTo
-     */
     public function testCompareTo()
     {
         /* Testing greater-than */
@@ -242,9 +213,6 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @covers \Elcodi\Component\Currency\Entity\Money::isGreaterThan
-     */
     public function testIsGreaterThan()
     {
         $fiftyDollars = Money::create(50, $this->currencyMockUSD);
@@ -256,9 +224,6 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @covers \Elcodi\Component\Currency\Entity\Money::isLessThan
-     */
     public function testIsLessThan()
     {
         $fiftyDollars = Money::create(50, $this->currencyMockUSD);

@@ -17,6 +17,10 @@
 
 namespace Elcodi\Component\Page\Tests\Entity;
 
+use DateTime;
+use PHPUnit_Framework_TestCase;
+
+use Elcodi\Component\Core\Tests\Entity\Traits;
 use Elcodi\Component\Page\Entity\Page;
 
 /**
@@ -27,53 +31,87 @@ use Elcodi\Component\Page\Entity\Page;
  * @author Damien Gavard <damien.gavard@gmail.com>
  * @author Berny Cantos <be@rny.cc>
  */
-class PageTest extends \PHPUnit_Framework_TestCase
+class PageTest extends PHPUnit_Framework_TestCase
 {
-    public function testTitle()
-    {
-        $page = new Page();
-        $title = 'Contact page title';
+    use Traits\IdentifiableTrait, Traits\DateTimeTrait, Traits\EnabledTrait;
 
-        $this->assertSame($page, $page->setTitle($title));
-        $this->assertEquals($title, $page->getTitle());
+    /**
+     * @var Page
+     */
+    protected $object;
+
+    /**
+     * Sets up the fixture, for example, opens a network connection.
+     * This method is called before a test is executed.
+     */
+    protected function setUp()
+    {
+        $this->object = new Page();
+    }
+
+    public function testName()
+    {
+        $name = sha1(rand());
+
+        $setterOutput = $this->object->setName($name);
+        $this->assertInstanceOf(get_class($this->object), $setterOutput);
+
+        $getterOutput = $this->object->getName();
+        $this->assertSame($name, $getterOutput);
     }
 
     public function testPath()
     {
-        $page = new Page();
-        $path = '/path/to/contact';
+        $path = sha1(rand());
 
-        $this->assertSame($page, $page->setPath($path));
-        $this->assertEquals($path, $page->getPath());
+        $setterOutput = $this->object->setPath($path);
+        $this->assertInstanceOf(get_class($this->object), $setterOutput);
+
+        $getterOutput = $this->object->getPath();
+        $this->assertSame($path, $getterOutput);
+    }
+
+    public function testTitle()
+    {
+        $title = sha1(rand());
+
+        $setterOutput = $this->object->setTitle($title);
+        $this->assertInstanceOf(get_class($this->object), $setterOutput);
+
+        $getterOutput = $this->object->getTitle();
+        $this->assertSame($title, $getterOutput);
     }
 
     public function testContent()
     {
-        $page = new Page();
-        $content = 'This is the content of the contact page.';
+        $content = sha1(rand());
 
-        $this->assertSame($page, $page->setContent($content));
-        $this->assertEquals($content, $page->getContent());
+        $setterOutput = $this->object->setContent($content);
+        $this->assertInstanceOf(get_class($this->object), $setterOutput);
+
+        $getterOutput = $this->object->getContent();
+        $this->assertSame($content, $getterOutput);
     }
 
-    public function persistentProvider()
+    public function testType()
     {
-        return [
-            'The page is persistent' => [true],
-            'The page is not persistent' => [false],
-        ];
+        $type = rand();
+
+        $setterOutput = $this->object->setType($type);
+        $this->assertInstanceOf(get_class($this->object), $setterOutput);
+
+        $getterOutput = $this->object->getType();
+        $this->assertSame($type, $getterOutput);
     }
 
-    /**
-     * @dataProvider persistentProvider
-     *
-     * @param bool $persistent The persistence of the page
-     */
-    public function testPersistent($persistent)
+    public function testPersistent()
     {
-        $page = new Page();
+        $persistent = (bool) rand(0, 1);
 
-        $this->assertSame($page, $page->setPersistent($persistent));
-        $this->assertEquals($persistent, $page->isPersistent());
+        $setterOutput = $this->object->setPersistent($persistent);
+        $this->assertInstanceOf(get_class($this->object), $setterOutput);
+
+        $getterOutput = $this->object->isPersistent();
+        $this->assertSame($persistent, $getterOutput);
     }
 }

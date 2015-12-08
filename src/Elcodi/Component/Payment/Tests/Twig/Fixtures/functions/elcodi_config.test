@@ -1,0 +1,8 @@
+--TEST--
+"elcodi_config" function
+--TEMPLATE--
+OK
+--DATA--
+return array()
+--EXPECT--
+OK
