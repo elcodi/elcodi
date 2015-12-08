@@ -5,6 +5,7 @@ services:
     #
     elcodi.twig_extension.money_printer:
         class: Elcodi\Component\Currency\Twig\MoneyPrinterExtension
+        public: false
         arguments:
             - '@elcodi.money_printer'
         tags:

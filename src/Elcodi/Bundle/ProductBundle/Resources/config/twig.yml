@@ -5,6 +5,7 @@ services:
     #
     elcodi.twig_extension.product:
         class: Elcodi\Component\Product\Twig\ProductExtension
+        public: false
         arguments:
             - '@elcodi.resolver.product_options'
         tags:
@@ -12,6 +13,7 @@ services:
 
     elcodi.twig_extension.purchasable:
         class: Elcodi\Component\Product\Twig\PurchasableExtension
+        public: false
         arguments:
             - '@elcodi.resolver.purchasable_name'
         tags:

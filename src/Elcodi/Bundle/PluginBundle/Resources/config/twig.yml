@@ -5,6 +5,7 @@ services:
     #
     elcodi.twig_extension.plugin_hook:
         class: Elcodi\Component\Plugin\Twig\HookExtension
+        public: false
         arguments:
             - '@elcodi.event_dispatcher.hook_system'
         tags:

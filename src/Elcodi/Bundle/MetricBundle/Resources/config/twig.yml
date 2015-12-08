@@ -5,6 +5,7 @@ services:
     #
     elcodi.api_metric_twig_extension:
         class: Elcodi\Component\Metric\API\Twig\APIMetricExtension
+        public: false
         arguments:
             - '@elcodi.metrics_bucket'
         tags:

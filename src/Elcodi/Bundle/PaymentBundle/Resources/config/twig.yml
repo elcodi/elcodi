@@ -5,6 +5,7 @@ services:
     #
     elcodi.twig_extension.payment:
         class: Elcodi\Component\Payment\Twig\PaymentExtension
+        public: false
         arguments:
             - '@elcodi.wrapper.payment_methods'
         tags:
