@@ -5,6 +5,7 @@ services:
     #
     elcodi.twig_extension.language:
         class: Elcodi\Component\Language\Twig\LanguageExtension
+        public: false
         arguments:
             - '@elcodi.manager.promoted_language'
         tags:

@@ -5,6 +5,7 @@ services:
     #
     elcodi.twig_extension.shipping:
         class: Elcodi\Component\Shipping\Twig\ShippingExtension
+        public: false
         arguments:
             - '@elcodi.wrapper.shipping_methods'
         tags:

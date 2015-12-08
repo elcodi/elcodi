@@ -5,6 +5,7 @@ services:
     #
     elcodi.twig_extension.media_image:
         class: Elcodi\Component\Media\Twig\ImageExtension
+        public: false
         arguments:
             - '@router'
             - elcodi.route.image_resize
