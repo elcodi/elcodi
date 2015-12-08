@@ -491,9 +491,8 @@ class Order implements OrderInterface
      *
      * @return $this Self object
      */
-    public function setPaymentStateLineStack(
-        StateLineStack $paymentStateLineStack
-    ) {
+    public function setPaymentStateLineStack(StateLineStack $paymentStateLineStack)
+    {
         $this->paymentStateLines = $paymentStateLineStack->getStateLines();
         $this->paymentLastStateLine = $paymentStateLineStack->getLastStateLine();
 
@@ -520,9 +519,8 @@ class Order implements OrderInterface
      *
      * @return $this Self object
      */
-    public function setShippingStateLineStack(
-        StateLineStack $shippingStateLineStack
-    ) {
+    public function setShippingStateLineStack(StateLineStack $shippingStateLineStack)
+    {
         $this->shippingStateLines = $shippingStateLineStack->getStateLines();
         $this->shippingLastStateLine = $shippingStateLineStack->getLastStateLine();
 
