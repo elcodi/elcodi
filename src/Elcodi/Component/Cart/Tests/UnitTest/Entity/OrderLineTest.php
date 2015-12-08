@@ -15,15 +15,14 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Tax\Tests\UnitTest\Entity;
+namespace Elcodi\Component\Cart\Tests\UnitTest\Entity;
 
 use Elcodi\Component\Core\Tests\UnitTest\Entity\AbstractEntityTest;
-use Elcodi\Component\Tax\Entity\Tax;
 
 /**
- * Class TaxTest.
+ * Class OrderLineTest.
  */
-class TaxTest extends AbstractEntityTest
+class OrderLineTest extends AbstractEntityTest
 {
     /**
      * Return the entity namespace.
@@ -32,7 +31,7 @@ class TaxTest extends AbstractEntityTest
      */
     public function getEntityNamespace()
     {
-        return 'Elcodi\Component\Tax\Entity\Tax';
+        return 'Elcodi\Component\Cart\Entity\OrderLine';
     }
 
     /**
@@ -64,39 +63,39 @@ class TaxTest extends AbstractEntityTest
         return [
             [[
                 'type' => $this::GETTER_SETTER,
-                'getter' => 'getName',
-                'setter' => 'setName',
-                'value' => sha1(rand()),
+                'getter' => 'getOrder',
+                'setter' => 'setOrder',
+                'value' => 'Elcodi\Component\Cart\Entity\Interfaces\OrderInterface',
                 'nullable' => false,
             ]],
             [[
                 'type' => $this::GETTER_SETTER,
-                'getter' => 'getDescription',
-                'setter' => 'setDescription',
-                'value' => sha1(rand()),
+                'getter' => 'getHeight',
+                'setter' => 'setHeight',
+                'value' => 10,
                 'nullable' => false,
             ]],
             [[
                 'type' => $this::GETTER_SETTER,
-                'getter' => 'getValue',
-                'setter' => 'setValue',
-                'value' => microtime(true),
+                'getter' => 'getWidth',
+                'setter' => 'setWidth',
+                'value' => 10,
+                'nullable' => false,
+            ]],
+            [[
+                'type' => $this::GETTER_SETTER,
+                'getter' => 'getDepth',
+                'setter' => 'setDepth',
+                'value' => 10,
+                'nullable' => false,
+            ]],
+            [[
+                'type' => $this::GETTER_SETTER,
+                'getter' => 'getWeight',
+                'setter' => 'setWeight',
+                'value' => 10,
                 'nullable' => false,
             ]],
         ];
-    }
-
-    /**
-     * Test the string casting.
-     */
-    public function testToString()
-    {
-        $object = new Tax();
-        $name = sha1(rand());
-
-        $setterOutput = $object->setName($name);
-        $this->assertInstanceOf(get_class($object), $setterOutput);
-
-        $this->assertSame($name, (string) $object);
     }
 }

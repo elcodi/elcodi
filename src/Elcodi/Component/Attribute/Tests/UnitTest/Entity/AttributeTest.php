@@ -38,23 +38,22 @@ class AttributeTest extends AbstractEntityTest
      * Return the fields to test in entities.
      *
      * [
-     *      [
+     *      [[
      *          "type" => $this::GETTER_SETTER,
      *          "getter" => "getValue",
      *          "setter" => "setValue",
      *          "value" => "Elcodi\Component\...\Interfaces\AnInterface"
      *          "nullable" => true
-     *      ],
-     *      [
+     *      ]],
+     *      [[
      *          "type" => $this::ADDER_REMOVER|$this::ADDER_REMOVER,
      *          "getter" => "getValue",
      *          "setter" => "setValue",
      *          "adder" => "addValue",
      *          "removed" => "removeValue",
-     *          "nullable" => false,
      *          "bag" => "collection", // can be array
      *          "value" => "Elcodi\Component\...\Interfaces\AnInterface"
-     *      ]
+     *      ]]
      * ]
      *
      * @return array Fields
@@ -62,23 +61,22 @@ class AttributeTest extends AbstractEntityTest
     public function getTestableFields()
     {
         return [
-            [
+            [[
                 'type' => $this::GETTER_SETTER,
                 'getter' => 'getName',
                 'setter' => 'setName',
                 'value' => 'value',
                 'nullable' => false,
-            ],
-            [
+            ]],
+            [[
                 'type' => $this::ADDER_REMOVER,
                 'getter' => 'getValues',
                 'setter' => 'setValues',
                 'adder' => 'addValue',
                 'remover' => 'removeValue',
-                'nullable' => false,
                 'bag' => '\Doctrine\Common\Collections\ArrayCollection',
                 'value' => '\Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface',
-            ],
+            ]],
         ];
     }
 }

@@ -46,17 +46,57 @@ abstract class AbstractEntityTest extends PHPUnit_Framework_TestCase
     abstract public function getEntityNamespace();
 
     /**
+     * Test testable field.
+     *
+     * @dataProvider getTestableFields
+     *
+     * @param array $field Field to be tested
+     */
+    public function testFields(array $field)
+    {
+        $this->doTestField($field);
+    }
+
+    /**
+     * Test testable trait field.
+     *
+     * @dataProvider getTestableTraitsFields
+     *
+     * @param array $field Field to be tested
+     */
+    public function testTestableTraitField(array $field)
+    {
+        $this->doTestField($field);
+    }
+
+    /**
+     * Test all desired tests.
+     *
+     * @param array $field Field to be tested
+     */
+    private function doTestField(array $field)
+    {
+        if ($field['type'] & $this::GETTER_SETTER) {
+            $this->checkGetterSetter($field);
+        }
+
+        if ($field['type'] & $this::ADDER_REMOVER) {
+            $this->checkAdderRemover($field);
+        }
+    }
+
+    /**
      * Return the fields to test in entities.
      *
      * [
-     *      [
+     *      [[
      *          "type" => $this::GETTER_SETTER,
      *          "getter" => "getValue",
      *          "setter" => "setValue",
      *          "value" => "Elcodi\Component\...\Interfaces\AnInterface"
      *          "nullable" => true
-     *      ],
-     *      [
+     *      ]],
+     *      [[
      *          "type" => $this::ADDER_REMOVER|$this::ADDER_REMOVER,
      *          "getter" => "getValue",
      *          "setter" => "setValue",
@@ -64,7 +104,7 @@ abstract class AbstractEntityTest extends PHPUnit_Framework_TestCase
      *          "removed" => "removeValue",
      *          "bag" => "collection", // can be array
      *          "value" => "Elcodi\Component\...\Interfaces\AnInterface"
-     *      ]
+     *      ]]
      * ]
      *
      * @return array Fields
@@ -72,22 +112,17 @@ abstract class AbstractEntityTest extends PHPUnit_Framework_TestCase
     abstract public function getTestableFields();
 
     /**
-     * Test all desired tests.
+     * Add traits.
      */
-    public function testFields()
+    public function getTestableTraitsFields()
     {
-        $fields = $this->getTestableFields();
-        $fields = $this->addTraits($fields);
+        $fields = [];
+        $fields = $this->addTraitDateTime($fields);
+        $fields = $this->addTraitEnabled($fields);
+        $fields = $this->addTraitIdentifiable($fields);
+        $fields = $this->addTraitValidInterval($fields);
 
-        foreach ($fields as $field) {
-            if ($field['type'] & $this::GETTER_SETTER) {
-                $this->checkGetterSetter($field);
-            }
-
-            if ($field['type'] & $this::ADDER_REMOVER) {
-                $this->checkAdderRemover($field);
-            }
-        }
+        return $fields;
     }
 
     /**
@@ -142,14 +177,14 @@ abstract class AbstractEntityTest extends PHPUnit_Framework_TestCase
             ? new $bagType()
             : [];
 
-        $this->assertSame(
+        $this->assertEquals(
             $class,
             $class->$setter($bag)
         );
         $this->assertEmpty($class->$getter());
 
         $value1 = $this->getFieldValue($field);
-        $this->assertSame(
+        $this->assertEquals(
             $class,
             $class->$adder($value1)
         );
@@ -181,24 +216,11 @@ abstract class AbstractEntityTest extends PHPUnit_Framework_TestCase
     private function getFieldValue($field)
     {
         $value = $field['value'];
-        if (class_exists($value) || interface_exists($value)) {
+        if (is_string($value) && (class_exists($value) || interface_exists($value))) {
             $value = $this->getMock($value, [], [], '', false);
         }
 
         return $value;
-    }
-
-    /**
-     * Add traits.
-     */
-    private function addTraits($fields)
-    {
-        $fields = $this->addTraitDateTime($fields);
-        $fields = $this->addTraitEnabled($fields);
-        $fields = $this->addTraitIdentifiable($fields);
-        $fields = $this->addTraitValidInterval($fields);
-
-        return $fields;
     }
 
     /**
@@ -211,21 +233,21 @@ abstract class AbstractEntityTest extends PHPUnit_Framework_TestCase
             'Elcodi\Component\Core\Entity\Traits\DateTimeTrait',
             class_uses($classNamespace)
         )) {
-            $fields[] = [
+            $fields[] = [[
                 'type' => $this::GETTER_SETTER,
                 'getter' => 'getCreatedAt',
                 'setter' => 'setCreatedAt',
                 'value' => '\DateTime',
                 'nullable' => false,
-            ];
+            ]];
 
-            $fields[] = [
+            $fields[] = [[
                 'type' => $this::GETTER_SETTER,
                 'getter' => 'getUpdatedAt',
                 'setter' => 'setUpdatedAt',
                 'value' => '\DateTime',
                 'nullable' => false,
-            ];
+            ]];
         }
 
         return $fields;
@@ -241,13 +263,13 @@ abstract class AbstractEntityTest extends PHPUnit_Framework_TestCase
             'Elcodi\Component\Core\Entity\Traits\EnabledTrait',
             class_uses($classNamespace)
         )) {
-            $fields[] = [
+            $fields[] = [[
                 'type' => $this::GETTER_SETTER,
                 'getter' => 'isEnabled',
                 'setter' => 'setEnabled',
                 'value' => '\DateTime',
                 'nullable' => false,
-            ];
+            ]];
         }
 
         return $fields;
@@ -263,13 +285,13 @@ abstract class AbstractEntityTest extends PHPUnit_Framework_TestCase
             'Elcodi\Component\Core\Entity\Traits\IdentifiableTrait',
             class_uses($classNamespace)
         )) {
-            $fields[] = [
+            $fields[] = [[
                 'type' => $this::GETTER_SETTER,
                 'getter' => 'getId',
                 'setter' => 'setId',
                 'value' => 1,
                 'nullable' => false,
-            ];
+            ]];
         }
 
         return $fields;
@@ -285,21 +307,21 @@ abstract class AbstractEntityTest extends PHPUnit_Framework_TestCase
             'Elcodi\Component\Core\Entity\Traits\ValidIntervalTrait',
             class_uses($classNamespace)
         )) {
-            $fields[] = [
+            $fields[] = [[
                 'type' => $this::GETTER_SETTER,
                 'getter' => 'getValidFrom',
                 'setter' => 'setValidFrom',
                 'value' => '\DateTime',
                 'nullable' => false,
-            ];
+            ]];
 
-            $fields[] = [
+            $fields[] = [[
                 'type' => $this::GETTER_SETTER,
                 'getter' => 'getValidTo',
                 'setter' => 'setValidTo',
                 'value' => '\DateTime',
                 'nullable' => true,
-            ];
+            ]];
         }
 
         return $fields;
