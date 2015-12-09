@@ -8,6 +8,19 @@ https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v1.0.0...v1.0.1
 
+### v1.0.12 (09-12-2015)
+
+Fixed some DIC definitions.
+Some tests for entities and factories
+
+#### Release Log
+
+* [`bf9a802`](https://github.com/elcodi/elcodi/commit/bf9a802683e1da5e56d25393572b783fc811da1c) Fixed stdClass DIC definitions (mmoreram)
+* [`88ab625`](https://github.com/elcodi/elcodi/commit/88ab625e98109bc205a4ffd1f4b000d0ec67125d) Added entity tests for cart component (mmoreram)
+* [`e957e4e`](https://github.com/elcodi/elcodi/commit/e957e4e49455c8b12a5253dd82b0855902356774) travis: drop unused fast_finish (Tomáš Votruba)
+* [`8a0874c`](https://github.com/elcodi/elcodi/commit/8a0874c9ba867da3cbdefd6d5e67ee0d1f0f0881) Twig Extensions are private (mmoreram)
+* [`03a2a3d`](https://github.com/elcodi/elcodi/commit/03a2a3d6c08406525040f96e3bcdd1bf029f2eda) Implemented tests for Tax component (Emanuele Minotto)
+
 ### v1.0.11 (07-12-2015)
 
 First steps for Entity and Factory unit tests
