@@ -12,23 +12,18 @@ services:
 
     elcodi.store_uses_stock:
         class: StdClass
-        public: false
-        lazy: true
         factory:
             - '@elcodi.store'
             - getUseStock
 
     elcodi.store_tracker:
         class: StdClass
-        public: false
-        lazy: true
         factory:
             - '@elcodi.store'
             - getTracker
 
     elcodi.store_address:
         class: %elcodi.entity.address.class%
-        public: false
         lazy: true
         factory:
             - '@elcodi.store'
@@ -36,15 +31,12 @@ services:
 
     elcodi.store_template_hash:
         class: StdClass
-        public: false
-        lazy: true
         factory:
             - '@elcodi.store'
             - getTemplate
 
     elcodi.store_template:
         class: Elcodi\Component\Plugin\Entity\Plugin
-        public: false
         lazy: true
         factory:
             - '@elcodi.repository.plugin'
@@ -54,15 +46,12 @@ services:
 
     elcodi.store_template_bundle:
         class: StdClass
-        public: false
-        lazy: true
         factory:
             - '@elcodi.store_template'
             - getBundleName
 
     elcodi.store_default_language:
         class: Elcodi\Component\Language\Entity\Interfaces\LanguageInterface
-        public: false
         lazy: true
         factory:
             - '@elcodi.store'
@@ -70,23 +59,18 @@ services:
 
     elcodi.store_default_language_iso:
         class: StdClass
-        public: false
-        lazy: true
         factory:
             - '@elcodi.store_default_language'
             - getIso
 
     elcodi.store_routing_strategy:
         class: StdClass
-        public: false
-        lazy: true
         factory:
             - '@elcodi.store'
             - getRoutingStrategy
 
     elcodi.store_default_currency:
         class: Elcodi\Component\Language\Entity\Interfaces\CurrencyInterface
-        public: false
         lazy: true
         factory:
             - '@elcodi.store'
@@ -94,8 +78,6 @@ services:
 
     elcodi.store_default_currency_iso:
         class: StdClass
-        public: false
-        lazy: true
         factory:
             - '@elcodi.store_default_currency'
             - getIso
