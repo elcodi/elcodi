@@ -41,7 +41,7 @@
         "symfony/twig-bundle": "^2.7|^3.0",
         "knplabs/knp-gaufrette-bundle": "^0.1.7",
         "mmoreram/simple-doctrine-mapping": "^1.0",
-        "mmoreram/symfony-bundle-dependencies": "^1.0",
+        "mmoreram/symfony-bundle-dependencies": "^1.1.1",
 
         "elcodi/core-bundle": "^1.0",
         "elcodi/media": "^1.0"
