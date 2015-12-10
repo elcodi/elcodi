@@ -61,7 +61,7 @@
         "doctrine/doctrine-bundle": "^1.5.0",
         "doctrine/doctrine-cache-bundle": "^1.0",
         "mmoreram/simple-doctrine-mapping": "^1.0",
-        "mmoreram/symfony-bundle-dependencies": "^1.0",
+        "mmoreram/symfony-bundle-dependencies": "^1.1.1",
 
         "sebastian/money": "^1.5",
         "knplabs/knp-gaufrette-bundle": "^0.1.7",

@@ -22,9 +22,9 @@ repository mmoreram/symfony-bundle-dependencies. Will be removed permanently in
 v2.0.0.', E_USER_DEPRECATED);
 
 /**
- * Trait BundleDependenciesResolver.
+ * Trait CachedBundleDependenciesResolver.
  */
-trait BundleDependenciesResolver
+trait CachedBundleDependenciesResolver
 {
     /**
      * Get bundle instances given the namespace stack.
