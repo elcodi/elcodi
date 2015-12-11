@@ -8,6 +8,19 @@ https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v1.0.0...v1.0.1
 
+### v1.0.13 (11-12-2015)
+
+Adding extra layer of cache when bundles are resolved on tests
+Added two new methods in Product Repository (from a deprecated method) and added
+some changes for improving the performance.
+
+#### Release Log
+
+* [`981cca4`](https://github.com/elcodi/elcodi/commit/981cca4c9add0ca6e0498b0c43f102d13c9ecf6f) Added methods to product repository (mmoreram)
+* [`d80f3d3`](https://github.com/elcodi/elcodi/commit/d80f3d37aa1e6a3e32bb7e307fda8c2a7477fe81) Improved the abstract factory method (mmoreram)
+* [`ca0df05`](https://github.com/elcodi/elcodi/commit/ca0df054952483620b9fd7fe9dd75e0bca6f130c) Fixed BC Break and improved Kernels (mmoreram)
+* [`2004e1e`](https://github.com/elcodi/elcodi/commit/2004e1e1d97cea650affdc9651a4bb7d8c524518) Updated resolver deps version (mmoreram)
+
 ### v1.0.12 (09-12-2015)
 
 Fixed some DIC definitions.
