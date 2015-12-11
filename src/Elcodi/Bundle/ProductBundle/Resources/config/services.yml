@@ -10,6 +10,7 @@ services:
 
     elcodi.provider.product_collection:
         class: Elcodi\Component\Product\Services\ProductCollectionProvider
+        deprecated: 'The "%service_id%" service is deprecated. Use "elcodi.repository.product" instead'
         arguments:
             - '@elcodi.repository.product'
             - '@elcodi.store_uses_stock'

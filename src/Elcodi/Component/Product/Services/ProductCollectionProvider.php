@@ -23,6 +23,9 @@ use Doctrine\ORM\QueryBuilder;
 use Elcodi\Component\Product\ElcodiProductStock;
 use Elcodi\Component\Product\Repository\ProductRepository;
 
+@trigger_error('This class is deprecated since version v1.0.13 and will be
+removed in v2.0.0.', E_USER_DEPRECATED);
+
 /**
  * Product Collection provider.
  *

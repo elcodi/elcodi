@@ -137,4 +137,83 @@ class ProductRepositoryTest extends WebTestCase
             'It should only return one product on the root category'
         );
     }
+
+    /**
+     * Test get home products.
+     *
+     * @dataProvider dataGetHomeProducts
+     */
+    public function testGetHomeProducts($count, $numberExpected, $useStock)
+    {
+        $product = $this->find('product', 2);
+        $oldStock = $product->getStock();
+        $product->setStock(0);
+        $this->flush($product);
+
+        $products = $this
+            ->productRepository
+            ->getHomeProducts($count, $useStock);
+
+        $this->assertTrue(is_array($products));
+        $this->assertCount($numberExpected, $products);
+
+        $product->setStock($oldStock);
+        $this->flush($product);
+    }
+
+    /**
+     * Count values for testGetHomeProducts.
+     */
+    public function dataGetHomeProducts()
+    {
+        return [
+            [0, 4, false],
+            [1, 1, false],
+            [2, 2, false],
+            [3, 3, false],
+            [4, 4, false],
+            [5, 4, false],
+            [0, 3, true],
+            [3, 3, true],
+            [4, 3, true],
+        ];
+    }
+
+    /**
+     * Test get home products.
+     *
+     * @dataProvider dataGetOfferProducts
+     */
+    public function testGetOfferProducts($count, $numberExpected, $useStock)
+    {
+        $product = $this->find('product', 2);
+        $oldStock = $product->getStock();
+        $product->setStock(0);
+        $this->flush($product);
+
+        $products = $this
+            ->productRepository
+            ->getOfferProducts($count, $useStock);
+
+        $this->assertTrue(is_array($products));
+        $this->assertCount($numberExpected, $products);
+
+        $product->setStock($oldStock);
+        $this->flush($product);
+    }
+
+    /**
+     * Count values for testGetOfferProducts.
+     */
+    public function dataGetOfferProducts()
+    {
+        return [
+            [0, 1, false],
+            [1, 1, false],
+            [2, 1, false],
+            [0, 0, true],
+            [1, 0, true],
+            [2, 0, true],
+        ];
+    }
 }
