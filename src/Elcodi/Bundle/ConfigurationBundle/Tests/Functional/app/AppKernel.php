@@ -17,7 +17,7 @@
 
 namespace Elcodi\Bundle\ConfigurationBundle\Tests\Functional\app;
 
-use Mmoreram\SymfonyBundleDependencies\BundleDependenciesResolver;
+use Mmoreram\SymfonyBundleDependencies\CachedBundleDependenciesResolver;
 
 use Elcodi\Bundle\TestCommonBundle\Functional\Abstracts\AbstractElcodiKernel;
 
@@ -26,7 +26,7 @@ use Elcodi\Bundle\TestCommonBundle\Functional\Abstracts\AbstractElcodiKernel;
  */
 class AppKernel extends AbstractElcodiKernel
 {
-    use BundleDependenciesResolver;
+    use CachedBundleDependenciesResolver;
 
     /**
      * Register application bundles.
