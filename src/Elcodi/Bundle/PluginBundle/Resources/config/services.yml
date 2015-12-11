@@ -47,4 +47,4 @@ services:
         class: Elcodi\Component\Plugin\Entity\Plugin
         factory:
             - '@elcodi.repository.plugin'
-            - findOneByNamespace
+            - find
