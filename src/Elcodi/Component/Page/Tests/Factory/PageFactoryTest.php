@@ -17,7 +17,8 @@
 
 namespace Elcodi\Component\Page\Tests\Factory;
 
-use Elcodi\Component\Core\Factory\DateTimeFactory;
+use PHPUnit_Framework_TestCase;
+
 use Elcodi\Component\Page\Factory\PageFactory;
 
 /**
@@ -28,18 +29,27 @@ use Elcodi\Component\Page\Factory\PageFactory;
  * @author Damien Gavard <damien.gavard@gmail.com>
  * @author Berny Cantos <be@rny.cc>
  */
-class PageFactoryTest extends \PHPUnit_Framework_TestCase
+class PageFactoryTest extends PHPUnit_Framework_TestCase
 {
-    public function testCreateReturnAPage()
+    /**
+     * @var PageFactory
+     */
+    protected $object;
+
+    /**
+     * Sets up the fixture, for example, opens a network connection.
+     * This method is called before a test is executed.
+     */
+    protected function setUp()
     {
-        $entityName = 'Elcodi\Component\Page\Entity\Page';
+        // $this->object = new PageFactory();
+    }
 
-        $factory = new PageFactory();
-        $factory->setEntityNamespace($entityName);
-        $factory->setDateTimeFactory(new DateTimeFactory());
-
-        $result = $factory->create();
-
-        $this->assertInstanceOf($entityName, $result);
+    public function testCreate()
+    {
+        // Remove the following lines when you implement this test.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
     }
 }

@@ -137,7 +137,8 @@
         "doctrine/doctrine-fixtures-bundle": "^2.2",
         "fabpot/php-cs-fixer": "1.11",
         "mmoreram/php-formatter": "1.1.0",
-        "phpunit/phpunit": "4.8.19"
+        "phpunit/phpunit": "4.8.19",
+        "matthiasnoback/symfony-dependency-injection-test": "^0.7.6"
     },
     "autoload": {
         "exclude-from-classmap": [
