@@ -351,4 +351,40 @@ class PluginTest extends PHPUnit_Framework_TestCase
                 )
             );
     }
+
+    /**
+     * Test that the plugin namespace class exists.
+     *
+     * @group testplugin
+     */
+    public function testPluginExists()
+    {
+        $plugin = $this->getMock('Elcodi\Component\Plugin\Entity\Plugin', [
+            'getNamespace',
+        ], [], '', false);
+
+        $plugin
+            ->method('getNamespace')
+            ->will($this->returnValue('Elcodi\Component\Plugin\Tests\Entity\PluginTest'));
+
+        $this->assertTrue($plugin->exists());
+    }
+
+    /**
+     * Test that the plugin namespace class not exists.
+     *
+     * @group testplugin
+     */
+    public function testPluginNotExists()
+    {
+        $plugin = $this->getMock('Elcodi\Component\Plugin\Entity\Plugin', [
+            'getNamespace',
+        ], [], '', false);
+
+        $plugin
+            ->method('getNamespace')
+            ->will($this->returnValue('Elcodi\Component\Plugin\Tests\Entity\NonexistibgPluginTest'));
+
+        $this->assertFalse($plugin->exists());
+    }
 }

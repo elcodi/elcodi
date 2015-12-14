@@ -23,6 +23,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\RouteCollection;
 
 use Elcodi\Component\Plugin\Entity\Plugin;
+use Elcodi\Component\Plugin\Exception\PluginNotFoundException;
 
 /**
  * Class RouterLoader.
@@ -101,6 +102,10 @@ class RouterLoader extends Loader
         $routes = new RouteCollection();
 
         foreach ($this->plugins as $plugin) {
+            if (!$plugin->exists()) {
+                throw PluginNotFoundException::createPluginRouteNotFound($plugin);
+            }
+
             $routes->addCollection(
                 $this->addPluginRoutesCollection($plugin)
             );
