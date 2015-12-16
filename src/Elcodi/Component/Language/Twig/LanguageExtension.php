@@ -19,8 +19,11 @@ namespace Elcodi\Component\Language\Twig;
 
 use Twig_Extension;
 use Twig_Extension_GlobalsInterface;
-
 use Elcodi\Component\Language\Services\PromotedLanguageManager;
+
+@trigger_error('The class LanguageExtension is deprecated since v1.0.14 and will
+be removed in v2.0.0. Define the global in your project config.yml instead.',
+    E_USER_DEPRECATED);
 
 /**
  * Class LanguageExtension.
@@ -52,11 +55,9 @@ class LanguageExtension extends Twig_Extension implements Twig_Extension_Globals
     public function getGlobals()
     {
         return [
-            'elcodi_languages' => function () {
-                return $this
-                    ->promotedLanguageManager
-                    ->getLanguagesWithMasterLanguagePromoted();
-            },
+            'elcodi_languages' => $this
+                ->promotedLanguageManager
+                ->getLanguagesWithMasterLanguagePromoted(),
         ];
     }
 
