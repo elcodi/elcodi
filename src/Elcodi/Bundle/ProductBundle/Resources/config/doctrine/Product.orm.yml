@@ -35,7 +35,6 @@ Elcodi\Component\Product\Entity\Product:
         showInHome:
             column: show_in_home
             type: boolean
-            nullable: true
         dimensions:
             column: dimensions
             type: string
@@ -72,7 +71,7 @@ Elcodi\Component\Product\Entity\Product:
         imagesSort:
             column: images_sort
             type: string
-            lentgh: 2048
+            length: 2048
             nullable: true
         metaTitle:
             column: meta_title

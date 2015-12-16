@@ -36,6 +36,7 @@ services:
         class: Elcodi\Component\Cart\Services\CartIntegrityValidator
         arguments:
             - '@elcodi.event_dispatcher.cart'
+            - '@elcodi.stock_validator.purchasable'
             - '@elcodi.manager.cart'
             - '@?elcodi.store_uses_stock'
 
@@ -45,8 +46,7 @@ services:
     elcodi.updater.cart_line_stock:
         class: Elcodi\Component\Cart\Services\CartLineStockUpdater
         arguments:
-            - '@elcodi.object_manager.product'
-            - '@elcodi.object_manager.product_variant'
+            - '@elcodi.stock_updater.purchasable'
 
     elcodi.validator.cart_shipping_method:
         class: Elcodi\Component\Cart\Services\CartShippingAmountValidator

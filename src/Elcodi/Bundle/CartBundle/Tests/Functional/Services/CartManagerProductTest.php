@@ -18,8 +18,6 @@
 namespace Elcodi\Bundle\CartBundle\Tests\Functional\Services;
 
 use Elcodi\Bundle\CartBundle\Tests\Functional\Services\Abstracts\AbstractCartManagerTest;
-use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
-use Elcodi\Component\Currency\Entity\Money;
 
 /**
  * Tests CartManager class.
@@ -36,8 +34,7 @@ class CartManagerProductTest extends AbstractCartManagerTest
     protected static function loadFixturesBundles()
     {
         return [
-            'ElcodiCurrencyBundle',
-            'ElcodiStoreBundle',
+            'ElcodiProductBundle',
         ];
     }
 
@@ -48,37 +45,7 @@ class CartManagerProductTest extends AbstractCartManagerTest
      */
     protected function createPurchasable()
     {
-        /**
-         * @var CurrencyInterface $currency
-         */
-        $currency = $this
-            ->getRepository('currency')
-            ->findOneBy([
-                'iso' => 'USD',
-            ]);
-
-        $product = $this
-            ->get('elcodi.factory.product')
-            ->create()
-            ->setPrice(Money::create(1000, $currency))
-            ->setName('abc')
-            ->setSlug('abc')
-            ->setWidth(10)
-            ->setHeight(10)
-            ->setDepth(10)
-            ->setWeight(10)
-            ->setEnabled(true)
-            ->setStock(10);
-
-        $this
-            ->getObjectManager('product')
-            ->persist($product);
-
-        $this
-            ->getObjectManager('product')
-            ->flush();
-
-        return $product;
+        return $this->find('product', 1);
     }
 
     /**
@@ -144,9 +111,9 @@ class CartManagerProductTest extends AbstractCartManagerTest
     }
 
     /**
-     * Data for testAddProduct.
+     * Data for testAddPurchasable.
      */
-    public function dataAddProduct()
+    public function dataAddPurchasable()
     {
         return [
             [1, 1],

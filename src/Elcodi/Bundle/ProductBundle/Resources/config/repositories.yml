@@ -21,6 +21,14 @@ services:
             - %elcodi.entity.product_variant.class%
 
     #
+    # Repository for Pack entities
+    #
+    elcodi.repository.product_pack:
+        parent: elcodi.abstract_repository
+        arguments:
+            - %elcodi.entity.product_pack.class%
+
+    #
     # Repository for entity category
     #
     elcodi.repository.category:

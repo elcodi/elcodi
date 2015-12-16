@@ -13,6 +13,11 @@ services:
         arguments:
             - %elcodi.entity.product_variant.class%
 
+    elcodi.object_manager.product_pack:
+        parent: elcodi.abstract_manager
+        arguments:
+            - %elcodi.entity.product_pack.class%
+
     elcodi.object_manager.category:
         parent: elcodi.abstract_manager
         arguments:
