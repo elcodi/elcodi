@@ -23,6 +23,11 @@ use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
 
+@trigger_error('This class is deprecated since version v1.0.15 and will be
+removed in v2.0.0. Use
+Elcodi\Component\Product\NameResolver\PurchasableNameResolver instead',
+    E_USER_DEPRECATED);
+
 /**
  * Class PurchasableNameResolver.
  */
