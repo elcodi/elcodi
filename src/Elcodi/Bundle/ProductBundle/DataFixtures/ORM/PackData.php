@@ -21,6 +21,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\Bundle\ProductBundle\DataFixtures\ORM\Traits\ProductWithImagesTrait;
 use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Money;
@@ -33,6 +34,8 @@ use Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface;
  */
 class PackData extends AbstractFixture implements DependentFixtureInterface
 {
+    use ProductWithImagesTrait;
+
     /**
      * Load data fixtures with the passed EntityManager.
      *
@@ -101,6 +104,11 @@ class PackData extends AbstractFixture implements DependentFixtureInterface
             ->setDepth(30)
             ->setWeight(200)
             ->setEnabled(true);
+
+        $this->storeProductImage(
+            $packInherit,
+            'pack.jpg'
+        );
 
         $packDirector->save($packInherit);
         $this->addReference('pack-inherit', $packInherit);

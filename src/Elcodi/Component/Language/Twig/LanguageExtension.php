@@ -19,6 +19,7 @@ namespace Elcodi\Component\Language\Twig;
 
 use Twig_Extension;
 use Twig_Extension_GlobalsInterface;
+
 use Elcodi\Component\Language\Services\PromotedLanguageManager;
 
 @trigger_error('The class LanguageExtension is deprecated since v1.0.14 and will

@@ -20,28 +20,28 @@ namespace Elcodi\Component\Product\Twig;
 use Twig_Extension;
 use Twig_SimpleFilter;
 
-use Elcodi\Component\Product\Services\PurchasableNameResolver;
+use Elcodi\Component\Product\ImageResolver\Interfaces\PurchasableImageResolverInterface;
 
 /**
- * Product extension for twig.
+ * Class ImageResolverExtension.
  */
-final class PurchasableExtension extends Twig_Extension
+final class PurchasableImageResolverExtension extends Twig_Extension
 {
     /**
-     * @var PurchasableNameResolver
+     * @var PurchasableImageResolverInterface
      *
-     * Purchasable name resolver
+     * Purchasable image resolver
      */
-    private $purchasableNameResolver;
+    private $purchasableImageResolver;
 
     /**
-     * Constructor.
+     * Construct.
      *
-     * @param PurchasableNameResolver $purchasableNameResolver Purchasable name resolver
+     * @param PurchasableImageResolverInterface $purchasableImageResolver Purchasable image resolver
      */
-    public function __construct(PurchasableNameResolver $purchasableNameResolver)
+    public function __construct(PurchasableImageResolverInterface $purchasableImageResolver)
     {
-        $this->purchasableNameResolver = $purchasableNameResolver;
+        $this->purchasableImageResolver = $purchasableImageResolver;
     }
 
     /**
@@ -52,9 +52,9 @@ final class PurchasableExtension extends Twig_Extension
     public function getFilters()
     {
         return [
-            new Twig_SimpleFilter('purchasable_name', [
-                $this->purchasableNameResolver,
-                'getPurchasableName',
+            new Twig_SimpleFilter('resolve_image', [
+                $this->purchasableImageResolver,
+                'resolveImage',
             ]),
         ];
     }
@@ -66,6 +66,6 @@ final class PurchasableExtension extends Twig_Extension
      */
     public function getName()
     {
-        return 'purchasable_extension';
+        return 'purchasable_image_resolver_extension';
     }
 }

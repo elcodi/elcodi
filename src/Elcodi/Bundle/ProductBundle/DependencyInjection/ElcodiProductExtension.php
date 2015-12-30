@@ -130,6 +130,7 @@ class ElcodiProductExtension extends AbstractExtension implements EntitiesOverri
             'nameResolvers',
             'stockUpdaters',
             'stockValidators',
+            'imageResolvers',
         ];
     }
 

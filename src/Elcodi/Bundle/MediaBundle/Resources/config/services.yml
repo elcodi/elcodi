@@ -23,3 +23,6 @@ services:
             - '@elcodi.manager.media_file'
             - '@elcodi.manager.media_image'
             - '@elcodi.event_dispatcher.media'
+
+    elcodi.resolver.image:
+        class: Elcodi\Component\Media\Services\ImageResolver

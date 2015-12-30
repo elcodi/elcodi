@@ -21,6 +21,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\Bundle\ProductBundle\DataFixtures\ORM\Traits\ProductWithImagesTrait;
 use Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface;
 use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
@@ -29,6 +30,8 @@ use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 
 class VariantData extends AbstractFixture implements DependentFixtureInterface
 {
+    use ProductWithImagesTrait;
+
     /**
      * Loads sample fixtures for product Variant entities.
      *
@@ -114,6 +117,11 @@ class VariantData extends AbstractFixture implements DependentFixtureInterface
             ->setDepth(33)
             ->setWeight(1000)
             ->setEnabled(true);
+
+        $this->storeProductImage(
+            $variantRedSmall,
+            'variant.jpg'
+        );
 
         $variantDirector->save($variantRedSmall);
         $this->addReference('variant-red-small', $variantRedSmall);

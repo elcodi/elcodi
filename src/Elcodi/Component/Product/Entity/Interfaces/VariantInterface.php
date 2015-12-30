@@ -22,8 +22,7 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface;
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
-use Elcodi\Component\Media\Entity\Interfaces\ImagesContainerInterface;
-use Elcodi\Component\Media\Entity\Interfaces\PrincipalImageInterface;
+use Elcodi\Component\Media\Entity\Interfaces\ImagesContainerWithPrincipalImageInterface;
 
 /**
  * Interface VariantInterface.
@@ -36,8 +35,7 @@ interface VariantInterface
     IdentifiableInterface,
     PurchasableInterface,
     DateTimeInterface,
-    ImagesContainerInterface,
-    PrincipalImageInterface
+    ImagesContainerWithPrincipalImageInterface
 {
     /**
      * Gets parent product.

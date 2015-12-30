@@ -21,6 +21,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\Bundle\ProductBundle\DataFixtures\ORM\Traits\ProductWithImagesTrait;
 use Elcodi\Component\Core\Services\ObjectDirector;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Money;
@@ -33,6 +34,8 @@ use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
  */
 class ProductData extends AbstractFixture implements DependentFixtureInterface
 {
+    use ProductWithImagesTrait;
+
     /**
      * Load data fixtures with the passed EntityManager.
      *
@@ -93,6 +96,11 @@ class ProductData extends AbstractFixture implements DependentFixtureInterface
             ->setDepth(35)
             ->setWeight(200)
             ->setEnabled(true);
+
+        $this->storeProductImage(
+            $productReduced,
+            'product.jpg'
+        );
 
         $productDirector->save($productReduced);
         $this->addReference('product-reduced', $productReduced);
