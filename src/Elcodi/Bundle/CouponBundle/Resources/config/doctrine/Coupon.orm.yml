@@ -33,6 +33,11 @@ Elcodi\Component\Coupon\Entity\Coupon:
         discount:
             column: discount
             type: integer
+        value:
+            column: value
+            type: string
+            length: 255
+            nullable: true
         count:
             column: count
             type: integer

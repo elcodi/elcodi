@@ -1,0 +1,67 @@
+services:
+
+    #
+    # Applicators
+    #
+    elcodi.cart_coupon_applicator.absolute:
+        class: Elcodi\Component\CartCoupon\Applicator\AbsoluteCartCouponApplicator
+        arguments:
+            - '@elcodi.wrapper.currency'
+            - '@elcodi.converter.currency'
+        tags:
+            - { name: elcodi.cart_coupon_applicator }
+
+    elcodi.cart_coupon_applicator.mxn_abstract:
+        class: Elcodi\Component\CartCoupon\Applicator\Abstracts\AbstractMxNCartCouponApplicator
+        abstract: true
+        arguments:
+            - '@elcodi.wrapper.currency'
+            - '@elcodi.converter.currency'
+            - '@elcodi.cart_coupon_applicator_function_collector'
+
+    elcodi.cart_coupon_applicator.mxn_group:
+        class: Elcodi\Component\CartCoupon\Applicator\MxNGroupCartCouponApplicator
+        parent: elcodi.cart_coupon_applicator.mxn_abstract
+        tags:
+            - { name: elcodi.cart_coupon_applicator }
+
+    elcodi.cart_coupon_applicator.mxn_specific:
+        class: Elcodi\Component\CartCoupon\Applicator\MxNSpecificCartCouponApplicator
+        parent: elcodi.cart_coupon_applicator.mxn_abstract
+        tags:
+            - { name: elcodi.cart_coupon_applicator }
+
+    elcodi.cart_coupon_applicator.percent:
+        class: Elcodi\Component\CartCoupon\Applicator\PercentCartCouponApplicator
+        tags:
+            - { name: elcodi.cart_coupon_applicator }
+
+
+    elcodi.cart_coupon_applicator_collector:
+        class: Elcodi\Component\CartCoupon\Applicator\CartCouponApplicatorCollector
+        arguments:
+            - '@elcodi.wrapper.currency'
+
+    #
+    # Expression Language functions
+    #
+    elcodi.cart_coupon_applicator_function.category:
+        class: Elcodi\Component\CartCoupon\Applicator\ExpressionLanguage\CategoryFunction
+        public: false
+        tags:
+            - { name: elcodi.cart_coupon_applicator_function }
+
+    elcodi.cart_coupon_applicator_function.manufacturer:
+        class: Elcodi\Component\CartCoupon\Applicator\ExpressionLanguage\ManufacturerFunction
+        public: false
+        tags:
+            - { name: elcodi.cart_coupon_applicator_function }
+
+    elcodi.cart_coupon_applicator_function.product:
+        class: Elcodi\Component\CartCoupon\Applicator\ExpressionLanguage\ProductFunction
+        public: false
+        tags:
+            - { name: elcodi.cart_coupon_applicator_function }
+
+    elcodi.cart_coupon_applicator_function_collector:
+        class: Elcodi\Component\CartCoupon\Applicator\ExpressionLanguage\ExpressionLanguageFunctionCollector

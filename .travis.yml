@@ -22,7 +22,6 @@ matrix:
       env: $SYMFONY_VERSION="^3.0.0"
   allow_failures:
     - php: nightly
-    - env: $SYMFONY_VERSION="^3.0.0"
 
 before_install:
   - composer self-update

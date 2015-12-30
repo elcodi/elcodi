@@ -25,6 +25,8 @@ use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
 use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
 use Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait;
 use Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait;
+use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
+use Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
 use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
@@ -240,5 +242,41 @@ class Variant implements VariantInterface
         $this->product = $product;
 
         return $this;
+    }
+
+    /**
+     * Get categories.
+     *
+     * @return Collection Categories
+     */
+    public function getCategories()
+    {
+        return $this
+            ->product
+            ->getCategories();
+    }
+
+    /**
+     * Get the principalCategory.
+     *
+     * @return CategoryInterface Principal category
+     */
+    public function getPrincipalCategory()
+    {
+        return $this
+            ->product
+            ->getPrincipalCategory();
+    }
+
+    /**
+     * Product manufacturer.
+     *
+     * @return ManufacturerInterface Manufacturer
+     */
+    public function getManufacturer()
+    {
+        return $this
+            ->product
+            ->getManufacturer();
     }
 }

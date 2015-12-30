@@ -153,6 +153,22 @@ interface CouponInterface
     public function getAbsolutePrice();
 
     /**
+     * Get Value.
+     *
+     * @return string Value
+     */
+    public function getValue();
+
+    /**
+     * Sets Value.
+     *
+     * @param string $value Value
+     *
+     * @return $this Self object
+     */
+    public function setValue($value);
+
+    /**
      * Set count.
      *
      * @param int $count
