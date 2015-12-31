@@ -22,8 +22,7 @@ use Doctrine\Common\Collections\Collection;
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
-use Elcodi\Component\Media\Entity\Interfaces\ImagesContainerInterface;
-use Elcodi\Component\Media\Entity\Interfaces\PrincipalImageInterface;
+use Elcodi\Component\Media\Entity\Interfaces\ImagesContainerWithPrincipalImageInterface;
 use Elcodi\Component\MetaData\Entity\Interfaces\MetaDataInterface;
 
 /**
@@ -35,8 +34,7 @@ interface ManufacturerInterface
     DateTimeInterface,
     EnabledInterface,
     MetaDataInterface,
-    ImagesContainerInterface,
-    PrincipalImageInterface
+    ImagesContainerWithPrincipalImageInterface
 {
     /**
      * Set name.

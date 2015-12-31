@@ -20,9 +20,9 @@ namespace Elcodi\Bundle\ProductBundle\CompilerPass;
 use Elcodi\Bundle\CoreBundle\CompilerPass\Abstracts\AbstractTagCompilerPass;
 
 /**
- * Class PackStockUpdaterCompilerPass.
+ * Class PurchasableImageResolverCompilerPass.
  */
-class PackStockUpdaterCompilerPass extends AbstractTagCompilerPass
+class PurchasableImageResolverCompilerPass extends AbstractTagCompilerPass
 {
     /**
      * Get collector service name.
@@ -31,7 +31,7 @@ class PackStockUpdaterCompilerPass extends AbstractTagCompilerPass
      */
     public function getCollectorServiceName()
     {
-        return 'elcodi.stock_updater.product_pack';
+        return 'elcodi.image_resolver.purchasable';
     }
 
     /**
@@ -41,7 +41,7 @@ class PackStockUpdaterCompilerPass extends AbstractTagCompilerPass
      */
     public function getCollectorMethodName()
     {
-        return 'addPurchasableStockUpdater';
+        return 'addPurchasableImageResolver';
     }
 
     /**
@@ -51,6 +51,6 @@ class PackStockUpdaterCompilerPass extends AbstractTagCompilerPass
      */
     public function getTagName()
     {
-        return 'elcodi.simple_purchasable_stock_updater';
+        return 'elcodi.purchasable_image_resolver';
     }
 }

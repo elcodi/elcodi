@@ -7,16 +7,17 @@ services:
         class: Elcodi\Component\Product\StockValidator\ProductStockValidator
         tags:
             - { name: elcodi.purchasable_stock_validator }
-            - { name: elcodi.simple_purchasable_stock_validator }
 
     elcodi.stock_validator.product_variant:
         class: Elcodi\Component\Product\StockValidator\VariantStockValidator
         tags:
             - { name: elcodi.purchasable_stock_validator }
-            - { name: elcodi.simple_purchasable_stock_validator }
 
     elcodi.stock_validator.product_pack:
         class: Elcodi\Component\Product\StockValidator\PackStockValidator
+        calls:
+            - [ addPurchasableStockValidator, ['@elcodi.stock_validator.product'] ]
+            - [ addPurchasableStockValidator, ['@elcodi.stock_validator.product_variant'] ]
         tags:
             - { name: elcodi.purchasable_stock_validator }
 
