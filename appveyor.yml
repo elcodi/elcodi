@@ -1,9 +1,4 @@
 build: false
-platform: x86
-clone_folder: c:\projects\elcodi
-
-matrix:
-  fast_finish: true
 
 cache:
   - '%LOCALAPPDATA%\Composer\files'
@@ -25,13 +20,14 @@ install:
   - echo extension=php_gd2.dll >> php.ini
   - echo extension=php_fileinfo.dll >> php.ini
   - echo extension=php_pdo_sqlite.dll >> php.ini
+
+before_test:
   - cd %APPVEYOR_BUILD_FOLDER%
   - php -r "readfile('http://getcomposer.org/installer');" | php
   - php composer.phar config preferred-install source
-  - IF %GH_TOKEN% php composer.phar config github-oauth.github.com %GH_TOKEN%
-  - IF %GH_TOKEN% php composer.phar config preferred-install dist
+  - IF DEFINED %GH_TOKEN% php composer.phar config github-oauth.github.com %GH_TOKEN%
+  - IF DEFINED %GH_TOKEN% php composer.phar config preferred-install dist
   - php composer.phar install --no-interaction --no-progress
 
 test_script:
-  - cd %APPVEYOR_BUILD_FOLDER%
-  - vendor\bin\phpunit.bat --verbose
+  - vendor\bin\phpunit.bat -v
