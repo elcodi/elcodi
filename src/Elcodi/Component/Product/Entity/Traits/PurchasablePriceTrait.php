@@ -18,11 +18,11 @@
 namespace Elcodi\Component\Product\Entity\Traits;
 
 /**
- * Trait ProductPriceTrait.
+ * Trait PurchasablePriceTrait.
  *
- * Trait that defines common price members for a Product
+ * Trait that defines common price members for a Purchasable
  */
-trait ProductPriceTrait
+trait PurchasablePriceTrait
 {
     /**
      * @var int
@@ -106,5 +106,27 @@ trait ProductPriceTrait
             $this->reducedPrice,
             $this->reducedPriceCurrency
         );
+    }
+
+    /**
+     * Get price.
+     *
+     * @return \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface Reduced Price
+     */
+    public function getResolvedPrice()
+    {
+        return $this->inOffer()
+            ? $this->getReducedPrice()
+            : $this->getPrice();
+    }
+
+    /**
+     * Is in offer.
+     *
+     * @return bool Purchasable is in offer
+     */
+    public function inOffer()
+    {
+        return $this->reducedPrice > 0;
     }
 }

@@ -47,7 +47,7 @@ class CartManagerPackWithSpecificStockTest extends AbstractCartManagerTest
      */
     protected function createPurchasable()
     {
-        return $this->find('product_pack', 1);
+        return $this->find('purchasable', 9);
     }
 
     /**

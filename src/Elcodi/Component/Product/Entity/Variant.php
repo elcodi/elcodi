@@ -20,15 +20,10 @@ namespace Elcodi\Component\Product\Entity;
 use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface;
-use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
-use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
-use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
-use Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait;
-use Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait;
+use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
+use Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
-use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
-use Elcodi\Component\Product\Entity\Traits\ProductPriceTrait;
 
 /**
  * Class Variant.
@@ -41,30 +36,8 @@ use Elcodi\Component\Product\Entity\Traits\ProductPriceTrait;
  * A Variant will normally have a different SKU than its parent product,
  * so it can have independent stock and pricing informations.
  */
-class Variant implements VariantInterface
+class Variant extends Purchasable implements VariantInterface
 {
-    use IdentifiableTrait,
-        ProductPriceTrait,
-        EnabledTrait,
-        DateTimeTrait,
-        ImagesContainerTrait,
-        PrincipalImageTrait,
-        DimensionsTrait;
-
-    /**
-     * @var string
-     *
-     * Product SKU
-     */
-    protected $sku;
-
-    /**
-     * @var int
-     *
-     * Stock available
-     */
-    protected $stock;
-
     /**
      * @var ProductInterface
      *
@@ -80,49 +53,25 @@ class Variant implements VariantInterface
     protected $options;
 
     /**
-     * Gets the variant SKU.
+     * Gets parent product.
      *
-     * @return string
+     * @return ProductInterface
      */
-    public function getSku()
+    public function getProduct()
     {
-        return $this->sku;
+        return $this->product;
     }
 
     /**
-     * Sets the variant SKU.
+     * Sets parent product.
      *
-     * @param string $sku
+     * @param ProductInterface $product
      *
      * @return $this Self object
      */
-    public function setSku($sku)
+    public function setProduct(ProductInterface $product)
     {
-        $this->sku = $sku;
-
-        return $this;
-    }
-
-    /**
-     * Gets the variant stock.
-     *
-     * @return int Stock
-     */
-    public function getStock()
-    {
-        return $this->stock;
-    }
-
-    /**
-     * Sets the variant stock.
-     *
-     * @param int $stock
-     *
-     * @return $this Self object
-     */
-    public function setStock($stock)
-    {
-        $this->stock = $stock;
+        $this->product = $product;
 
         return $this;
     }
@@ -146,9 +95,9 @@ class Variant implements VariantInterface
      */
     public function setOptions(Collection $options)
     {
-        /*
+        /**
          * We want to be able to assign an empty
-         * ArrayCollection to variant options
+         * ArrayCollection to variant options.
          *
          * When the collection is not empty, each
          * option in the collection will be added
@@ -165,8 +114,9 @@ class Variant implements VariantInterface
          * @var ValueInterface $option
          */
         foreach ($options as $option) {
-            /*
-             * We need to update the parent product attribute collection
+
+            /**
+             * We need to update the parent product attribute collection.
              */
             $this->addOption($option);
         }
@@ -219,26 +169,48 @@ class Variant implements VariantInterface
     }
 
     /**
-     * Gets parent product.
+     * Get categories.
      *
-     * @return ProductInterface
+     * @return Collection Categories
      */
-    public function getProduct()
+    public function getCategories()
     {
-        return $this->product;
+        return $this
+            ->getProduct()
+            ->getCategories();
     }
 
     /**
-     * Sets parent product.
+     * Get the principalCategory.
      *
-     * @param ProductInterface $product
-     *
-     * @return $this Self object
+     * @return CategoryInterface Principal category
      */
-    public function setProduct(ProductInterface $product)
+    public function getPrincipalCategory()
     {
-        $this->product = $product;
+        return $this
+            ->getProduct()
+            ->getPrincipalCategory();
+    }
 
-        return $this;
+    /**
+     * Product manufacturer.
+     *
+     * @return ManufacturerInterface Manufacturer
+     */
+    public function getManufacturer()
+    {
+        return $this
+            ->getProduct()
+            ->getManufacturer();
+    }
+
+    /**
+     * Get purchasable type.
+     *
+     * @return string Purchasable type
+     */
+    public function getPurchasableType()
+    {
+        return 'product_variant';
     }
 }

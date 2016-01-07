@@ -19,88 +19,11 @@ namespace Elcodi\Component\Product\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
-use Elcodi\Component\Core\Entity\Interfaces\ETaggableInterface;
-use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
-use Elcodi\Component\Media\Entity\Interfaces\ImagesContainerWithPrincipalImageInterface;
-use Elcodi\Component\MetaData\Entity\Interfaces\MetaDataInterface;
-
 /**
  * Interface PackInterface.
  */
-interface PackInterface
-    extends
-    IdentifiableInterface,
-    PurchasableInterface,
-    DateTimeInterface,
-    ETaggableInterface,
-    MetaDataInterface,
-    ImagesContainerWithPrincipalImageInterface
+interface PackInterface extends PurchasableInterface
 {
-    /**
-     * Set name.
-     *
-     * @param string $name Name
-     *
-     * @return $this Self object
-     */
-    public function setName($name);
-
-    /**
-     * Get name.
-     *
-     * @return string
-     */
-    public function getName();
-
-    /**
-     * Set slug.
-     *
-     * @param string $slug Slug
-     *
-     * @return $this Self object
-     */
-    public function setSlug($slug);
-
-    /**
-     * Get slug.
-     *
-     * @return string slug
-     */
-    public function getSlug();
-
-    /**
-     * Set description.
-     *
-     * @param string $description
-     *
-     * @return $this Self object
-     */
-    public function setDescription($description);
-
-    /**
-     * Get description.
-     *
-     * @return string Description
-     */
-    public function getDescription();
-
-    /**
-     * Set short description.
-     *
-     * @param string $shortDescription Short description
-     *
-     * @return $this Self object
-     */
-    public function setShortDescription($shortDescription);
-
-    /**
-     * Get short description.
-     *
-     * @return string Short description
-     */
-    public function getShortDescription();
-
     /**
      * Adds an purchasable if not already in the collection.
      *
@@ -134,38 +57,6 @@ interface PackInterface
      * @return $this Self object
      */
     public function setPurchasables(Collection $purchasables);
-
-    /**
-     * Get Products.
-     *
-     * @return Collection Products
-     */
-    public function getProducts();
-
-    /**
-     * Sets Products.
-     *
-     * @param Collection $products Products
-     *
-     * @return $this Self object
-     */
-    public function setProducts($products);
-
-    /**
-     * Get Variants.
-     *
-     * @return Collection Variants
-     */
-    public function getVariants();
-
-    /**
-     * Sets Variants.
-     *
-     * @param Collection $variants Variants
-     *
-     * @return $this Self object
-     */
-    public function setVariants($variants);
 
     /**
      * Set categories.
@@ -209,29 +100,6 @@ interface PackInterface
      * @return $this Self object
      */
     public function setPrincipalCategory(CategoryInterface $principalCategory = null);
-
-    /**
-     * Get the principalCategory.
-     *
-     * @return CategoryInterface Principal category
-     */
-    public function getPrincipalCategory();
-
-    /**
-     * Set show in home.
-     *
-     * @param bool $showInHome Show in home
-     *
-     * @return $this Self object
-     */
-    public function setShowInHome($showInHome);
-
-    /**
-     * Get show in home.
-     *
-     * @return bool Show in home
-     */
-    public function getShowInHome();
 
     /**
      * Set product manufacturer.

@@ -41,8 +41,8 @@ class PackStockValidatorTest extends WebTestCase
      */
     public function testIsStockAvailableNonInheritance()
     {
-        $pack = $this->find('product_pack', 1);
-        $packStockValidator = $this->get('elcodi.stock_validator.product_pack');
+        $pack = $this->find('purchasable_pack', 9);
+        $packStockValidator = $this->get('elcodi.stock_validator.purchasable_pack');
         $this->assertTrue(
             $packStockValidator->isStockAvailable(
                 $pack,
@@ -85,8 +85,8 @@ class PackStockValidatorTest extends WebTestCase
      */
     public function testIsStockAvailableInheritance()
     {
-        $pack = $this->find('product_pack', 2);
-        $packStockValidator = $this->get('elcodi.stock_validator.product_pack');
+        $pack = $this->find('purchasable_pack', 10);
+        $packStockValidator = $this->get('elcodi.stock_validator.purchasable_pack');
         $this->assertTrue(
             $packStockValidator->isStockAvailable(
                 $pack,

@@ -119,7 +119,7 @@ class CartOrderTransformer
             ->setCustomer($cart->getCustomer())
             ->setCart($cart)
             ->setQuantity($cart->getQuantity())
-            ->setProductAmount($cart->getProductAmount())
+            ->setPurchasableAmount($cart->getPurchasableAmount())
             ->setShippingAmount($cart->getShippingAmount())
             ->setAmount($cart->getAmount())
             ->setHeight($cart->getHeight())

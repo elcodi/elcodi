@@ -57,8 +57,9 @@ class PackData extends AbstractFixture implements DependentFixtureInterface
         $productReduced = $this->getReference('product-reduced');
         $variant = $this->getReference('variant-red-small');
         $currency = $this->getReference('currency-dollar');
-        $packDirector = $this->getDirector('product_pack');
+        $packDirector = $this->getDirector('purchasable_pack');
 
+        // Id assigned = 9
         $pack = $packDirector
             ->create()
             ->setName('pack')
@@ -84,6 +85,7 @@ class PackData extends AbstractFixture implements DependentFixtureInterface
         $packDirector->save($pack);
         $this->addReference('pack', $pack);
 
+        // Id assigned = 10
         $packInherit = $packDirector
             ->create()
             ->setName('pack-inherit')

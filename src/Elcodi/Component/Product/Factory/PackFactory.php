@@ -53,7 +53,7 @@ class PackFactory extends AbstractPurchasableFactory
             ->setShowInHome(true)
             ->setPrice($zeroPrice)
             ->setReducedPrice($zeroPrice)
-            ->initializePurchasable(new ArrayCollection())
+            ->setPurchasables(new ArrayCollection())
             ->setCategories(new ArrayCollection())
             ->setImages(new ArrayCollection())
             ->setWidth(0)

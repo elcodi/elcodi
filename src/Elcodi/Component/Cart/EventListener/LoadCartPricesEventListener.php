@@ -43,13 +43,13 @@ final class LoadCartPricesEventListener
     }
 
     /**
-     * Load cart products amount.
+     * Load cart purchasable amount.
      */
-    public function loadCartProductsAmount(CartOnLoadEvent $event)
+    public function loadCartPurchasablesAmount(CartOnLoadEvent $event)
     {
         $this
             ->cartPricesLoader
-            ->loadCartProductsAmount(
+            ->loadCartPurchasablesAmount(
                 $event->getCart()
             );
     }

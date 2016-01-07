@@ -97,7 +97,7 @@ class CartCouponMinimumPriceValidatorTest extends PHPUnit_Framework_TestCase
             ->willReturn($minimumPurchase->reveal());
 
         $cart
-            ->getProductAmount()
+            ->getPurchasableAmount()
             ->willReturn($productMoney->reveal());
 
         try {

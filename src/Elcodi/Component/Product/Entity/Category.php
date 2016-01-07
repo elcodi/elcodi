@@ -69,7 +69,7 @@ class Category implements CategoryInterface
      * Many-to-Many association between categories
      * and products. The resulting collection could be huge.
      */
-    protected $products;
+    protected $purchasables;
 
     /**
      * @var bool
@@ -210,30 +210,6 @@ class Category implements CategoryInterface
     }
 
     /**
-     * Set products.
-     *
-     * @param Collection $products Products
-     *
-     * @return $this Self object
-     */
-    public function setProducts(Collection $products)
-    {
-        $this->products = $products;
-
-        return $this;
-    }
-
-    /**
-     * Get products.
-     *
-     * @return Collection
-     */
-    public function getProducts()
-    {
-        return $this->products;
-    }
-
-    /**
      * @param bool $root
      *
      * @return $this Self object
@@ -277,6 +253,16 @@ class Category implements CategoryInterface
     public function getPosition()
     {
         return $this->position;
+    }
+
+    /**
+     * Get purchasables.
+     *
+     * @return Collection
+     */
+    public function getPurchasables()
+    {
+        return $this->purchasables;
     }
 
     /**

@@ -20,118 +20,22 @@ namespace Elcodi\Component\Product\Entity;
 use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface;
-use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
-use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
-use Elcodi\Component\Core\Entity\Traits\ETaggableTrait;
-use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
-use Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait;
-use Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait;
-use Elcodi\Component\MetaData\Entity\Traits\MetaDataTrait;
 use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
-use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
-use Elcodi\Component\Product\Entity\Traits\ProductPriceTrait;
 
 /**
  * Class Product entity.
  */
-class Product implements ProductInterface
+class Product extends Purchasable implements ProductInterface
 {
-    use IdentifiableTrait,
-        ProductPriceTrait,
-        DateTimeTrait,
-        EnabledTrait,
-        ETaggableTrait,
-        MetaDataTrait,
-        ImagesContainerTrait,
-        PrincipalImageTrait,
-        DimensionsTrait;
-
-    /**
-     * @var string
-     *
-     * Name
-     */
-    protected $name;
-
-    /**
-     * @var string
-     *
-     * Product SKU
-     */
-    protected $sku;
-
     /**
      * @var int
      *
      * Product type
      */
     protected $type;
-
-    /**
-     * @var int
-     *
-     * Stock
-     */
-    protected $stock;
-
-    /**
-     * @var string
-     *
-     * Slug
-     */
-    protected $slug;
-
-    /**
-     * @var string
-     *
-     * Short description
-     */
-    protected $shortDescription;
-
-    /**
-     * @var string
-     *
-     * Description
-     */
-    protected $description;
-
-    /**
-     * @var bool
-     *
-     * Product must show in home
-     */
-    protected $showInHome;
-
-    /**
-     * @var string
-     *
-     * Product dimensions
-     */
-    protected $dimensions;
-
-    /**
-     * @var ManufacturerInterface
-     *
-     * Manufacturer
-     */
-    protected $manufacturer;
-
-    /**
-     * @var Collection
-     *
-     * Many-to-Many association between products and categories.
-     */
-    protected $categories;
-
-    /**
-     * @var CategoryInterface
-     *
-     * Principal category
-     */
-    protected $principalCategory;
 
     /**
      * @var Collection
@@ -155,102 +59,6 @@ class Product implements ProductInterface
     protected $principalVariant;
 
     /**
-     * Set name.
-     *
-     * @param string $name Name
-     *
-     * @return $this Self object
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name.
-     *
-     * @return string name
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set slug.
-     *
-     * @param string $slug Slug
-     *
-     * @return $this Self object
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Get slug.
-     *
-     * @return string slug
-     */
-    public function getSlug()
-    {
-        return $this->slug;
-    }
-
-    /**
-     * Set description.
-     *
-     * @param string $description Description
-     *
-     * @return $this Self object
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description.
-     *
-     * @return string Description
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set short description.
-     *
-     * @param string $shortDescription Short description
-     *
-     * @return $this Self object
-     */
-    public function setShortDescription($shortDescription)
-    {
-        $this->shortDescription = $shortDescription;
-
-        return $this;
-    }
-
-    /**
-     * Get short description.
-     *
-     * @return string Short description
-     */
-    public function getShortDescription()
-    {
-        return $this->shortDescription;
-    }
-
-    /**
      * Set categories.
      *
      * @param Collection $categories Categories
@@ -265,16 +73,6 @@ class Product implements ProductInterface
     }
 
     /**
-     * Get categories.
-     *
-     * @return Collection Categories
-     */
-    public function getCategories()
-    {
-        return $this->categories;
-    }
-
-    /**
      * Add category.
      *
      * @param CategoryInterface $category Category
@@ -283,7 +81,9 @@ class Product implements ProductInterface
      */
     public function addCategory(CategoryInterface $category)
     {
-        $this->categories->add($category);
+        $this
+            ->categories
+            ->add($category);
 
         return $this;
     }
@@ -297,7 +97,9 @@ class Product implements ProductInterface
      */
     public function removeCategory(CategoryInterface $category)
     {
-        $this->categories->removeElement($category);
+        $this
+            ->categories
+            ->removeElement($category);
 
         return $this;
     }
@@ -317,64 +119,6 @@ class Product implements ProductInterface
     }
 
     /**
-     * Get the principalCategory.
-     *
-     * @return CategoryInterface Principal category
-     */
-    public function getPrincipalCategory()
-    {
-        return $this->principalCategory;
-    }
-
-    /**
-     * Set stock.
-     *
-     * @param int $stock Stock
-     *
-     * @return $this Self object
-     */
-    public function setStock($stock)
-    {
-        $this->stock = $stock;
-
-        return $this;
-    }
-
-    /**
-     * Get stock.
-     *
-     * @return int Stock
-     */
-    public function getStock()
-    {
-        return $this->stock;
-    }
-
-    /**
-     * Set show in home.
-     *
-     * @param bool $showInHome Show in home
-     *
-     * @return $this Self object
-     */
-    public function setShowInHome($showInHome)
-    {
-        $this->showInHome = $showInHome;
-
-        return $this;
-    }
-
-    /**
-     * Get show in home.
-     *
-     * @return bool Show in home
-     */
-    public function getShowInHome()
-    {
-        return $this->showInHome;
-    }
-
-    /**
      * Set product manufacturer.
      *
      * @param ManufacturerInterface $manufacturer Manufacturer
@@ -384,64 +128,6 @@ class Product implements ProductInterface
     public function setManufacturer(ManufacturerInterface $manufacturer = null)
     {
         $this->manufacturer = $manufacturer;
-
-        return $this;
-    }
-
-    /**
-     * Product manufacturer.
-     *
-     * @return ManufacturerInterface Manufacturer
-     */
-    public function getManufacturer()
-    {
-        return $this->manufacturer;
-    }
-
-    /**
-     * Sets Dimensions.
-     *
-     * @param string $dimensions Dimensions
-     *
-     * @return $this Self object
-     */
-    public function setDimensions($dimensions)
-    {
-        $this->dimensions = $dimensions;
-
-        return $this;
-    }
-
-    /**
-     * Get Dimensions.
-     *
-     * @return string Dimensions
-     */
-    public function getDimensions()
-    {
-        return $this->dimensions;
-    }
-
-    /**
-     * Gets product SKU.
-     *
-     * @return string
-     */
-    public function getSku()
-    {
-        return $this->sku;
-    }
-
-    /**
-     * Sets product SKU.
-     *
-     * @param string $sku
-     *
-     * @return $this Self object
-     */
-    public function setSku($sku)
-    {
-        $this->sku = $sku;
 
         return $this;
     }
@@ -597,12 +283,12 @@ class Product implements ProductInterface
     }
 
     /**
-     * Product stringified.
+     * Get purchasable type.
      *
-     * @return string Product in string mode
+     * @return string Purchasable type
      */
-    public function __toString()
+    public function getPurchasableType()
     {
-        return (string) $this->getName();
+        return 'product';
     }
 }

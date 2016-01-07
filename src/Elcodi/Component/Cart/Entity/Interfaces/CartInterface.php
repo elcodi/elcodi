@@ -100,20 +100,20 @@ interface CartInterface
     public function setShippingAmount(MoneyInterface $shippingAmount);
 
     /**
-     * Gets product amount with tax.
+     * Gets purchasable amount with tax.
      *
      * @return MoneyInterface price with tax
      */
-    public function getProductAmount();
+    public function getPurchasableAmount();
 
     /**
-     * Sets product amount with tax.
+     * Sets purchasable amount with tax.
      *
      * @param MoneyInterface $amount price with tax
      *
      * @return $this Self object
      */
-    public function setProductAmount(MoneyInterface $amount);
+    public function setPurchasableAmount(MoneyInterface $amount);
 
     /**
      * Returns the customer.

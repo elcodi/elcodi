@@ -136,7 +136,7 @@ class CartCouponPricesLoader
                 $couponPercent = $coupon->getDiscount();
 
                 $couponPrice = $cart
-                    ->getProductAmount()
+                    ->getPurchasableAmount()
                     ->multiply($couponPercent / 100);
                 break;
 

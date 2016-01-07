@@ -54,10 +54,16 @@ class VariantNameResolver implements PurchasableNameResolverInterface
             return false;
         }
 
+        if (!is_null($purchasable->getName())) {
+            return $purchasable->getName();
+        }
+
         /**
          * @var $purchasable VariantInterface
          */
-        $variantName = $purchasable->getProduct()->getName();
+        $variantName = $purchasable
+            ->getProduct()
+            ->getName();
 
         foreach ($purchasable->getOptions() as $option) {
             /**

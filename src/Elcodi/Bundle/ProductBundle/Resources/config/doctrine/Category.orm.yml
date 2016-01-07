@@ -68,8 +68,8 @@ Elcodi\Component\Product\Entity\Category:
                 onUpdate: "CASCADE"
 
     manyToMany:
-        products:
-            targetEntity: Elcodi\Component\Product\Entity\Interfaces\ProductInterface
+        purchasables:
+            targetEntity: Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface
             mappedBy: categories
 
     lifecycleCallbacks:

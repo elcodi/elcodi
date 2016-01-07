@@ -5,6 +5,14 @@ services:
     #
 
     #
+    # Repository for abstract purchasable
+    #
+    elcodi.repository.purchasable:
+        parent: elcodi.abstract_repository
+        arguments:
+            - %elcodi.entity.purchasable.class%
+
+    #
     # Repository for entity product
     #
     elcodi.repository.product:
@@ -23,10 +31,10 @@ services:
     #
     # Repository for Pack entities
     #
-    elcodi.repository.product_pack:
+    elcodi.repository.purchasable_pack:
         parent: elcodi.abstract_repository
         arguments:
-            - %elcodi.entity.product_pack.class%
+            - %elcodi.entity.purchasable_pack.class%
 
     #
     # Repository for entity category

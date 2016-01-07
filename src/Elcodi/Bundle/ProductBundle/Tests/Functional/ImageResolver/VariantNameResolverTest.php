@@ -41,7 +41,7 @@ class VariantNameResolverTest extends WebTestCase
      */
     public function testResolveImage()
     {
-        $variant = $this->find('product_variant', 3);
+        $variant = $this->find('product_variant', 7);
         $this->assertEquals(
             'variant.jpg',
             $this
@@ -56,7 +56,7 @@ class VariantNameResolverTest extends WebTestCase
      */
     public function testResolveImageEmpty()
     {
-        $variant = $this->find('product_variant', 2);
+        $variant = $this->find('product_variant', 6);
         $this->assertFalse(
             $this
                 ->get('elcodi.image_resolver.purchasable')

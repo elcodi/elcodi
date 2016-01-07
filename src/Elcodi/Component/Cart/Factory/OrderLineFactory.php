@@ -46,7 +46,7 @@ class OrderLineFactory extends AbstractPurchasableFactory
             ->setWidth(0)
             ->setWeight(0)
             ->setAmount($this->createZeroAmountMoney())
-            ->setProductAmount($this->createZeroAmountMoney());
+            ->setPurchasableAmount($this->createZeroAmountMoney());
 
         return $orderLine;
     }

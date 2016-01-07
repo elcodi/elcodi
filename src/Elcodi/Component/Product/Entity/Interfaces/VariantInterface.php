@@ -20,9 +20,6 @@ namespace Elcodi\Component\Product\Entity\Interfaces;
 use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface;
-use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
-use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
-use Elcodi\Component\Media\Entity\Interfaces\ImagesContainerWithPrincipalImageInterface;
 
 /**
  * Interface VariantInterface.
@@ -30,12 +27,7 @@ use Elcodi\Component\Media\Entity\Interfaces\ImagesContainerWithPrincipalImageIn
  * A Product variant is a specific combination of finite options
  * for a given Product.
  */
-interface VariantInterface
-    extends
-    IdentifiableInterface,
-    PurchasableInterface,
-    DateTimeInterface,
-    ImagesContainerWithPrincipalImageInterface
+interface VariantInterface extends PurchasableInterface
 {
     /**
      * Gets parent product.

@@ -31,7 +31,7 @@ class LoadCartPurchasablesQuantityEventListenerTest extends AbstractCartEventLis
     {
         $cart = $this->getLoadedCart(2);
         $this->assertEquals(3000, $cart
-            ->getProductAmount()
+            ->getPurchasableAmount()
             ->getAmount()
         );
 
