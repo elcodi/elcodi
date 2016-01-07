@@ -17,10 +17,10 @@ services:
         tags:
             - { name: elcodi.purchasable_stock_updater }
 
-    elcodi.stock_updater.product_pack:
+    elcodi.stock_updater.purchasable_pack:
         class: Elcodi\Component\Product\StockUpdater\PackStockUpdater
         arguments:
-            - '@elcodi.object_manager.product_pack'
+            - '@elcodi.object_manager.purchasable_pack'
         calls:
             - [ addPurchasableStockUpdater, ['@elcodi.stock_updater.product'] ]
             - [ addPurchasableStockUpdater, ['@elcodi.stock_updater.product_variant'] ]

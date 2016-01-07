@@ -92,7 +92,7 @@ class OrderFactory extends AbstractPurchasableFactory
             ->setWidth(0)
             ->setWeight(0)
             ->setCreatedAt($this->now())
-            ->setProductAmount($this->createZeroAmountMoney())
+            ->setPurchasableAmount($this->createZeroAmountMoney())
             ->setAmount($this->createZeroAmountMoney())
             ->setCouponAmount($this->createZeroAmountMoney())
             ->setShippingAmount($this->createZeroAmountMoney());

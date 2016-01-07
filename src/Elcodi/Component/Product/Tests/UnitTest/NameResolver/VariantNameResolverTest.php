@@ -47,6 +47,10 @@ class VariantNameResolverTest extends PHPUnit_Framework_TestCase
             ->getProduct()
             ->willReturn($product->reveal());
 
+        $variant
+            ->getName()
+            ->willReturn(null);
+
         $attribute1 = $this->prophesize('Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface');
         $attribute1->getName()->willReturn('attribute1');
         $value1 = $this->prophesize('Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface');
@@ -108,6 +112,37 @@ class VariantNameResolverTest extends PHPUnit_Framework_TestCase
         $this->assertFalse(
             $productNameResolver->resolveName(
                 $purchasable->reveal()
+            )
+        );
+    }
+
+    /**
+     * Test resolve name.
+     *
+     * @dataProvider dataResolveName
+     */
+    public function testResolveNameWithName(PurchasableNameResolverInterface $resolver)
+    {
+        $variant = $this->prophesize('Elcodi\Component\Product\Entity\Interfaces\VariantInterface');
+
+        $variant
+            ->getName()
+            ->willReturn('Variant name');
+
+        $variant = $variant->reveal();
+
+        $this->assertEquals(
+            'Variant name',
+            $resolver->resolveName(
+                $variant
+            )
+        );
+
+        $this->assertEquals(
+            'Variant name',
+            $resolver->resolveName(
+                $variant,
+                ' # '
             )
         );
     }

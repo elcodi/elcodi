@@ -53,8 +53,8 @@ Elcodi\Component\Product\Entity\Manufacturer:
             type: boolean
 
     oneToMany:
-        products:
-            targetEntity: Elcodi\Component\Product\Entity\Interfaces\ProductInterface
+        purchasables:
+            targetEntity: Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface
             mappedBy: manufacturer
 
     manyToOne:

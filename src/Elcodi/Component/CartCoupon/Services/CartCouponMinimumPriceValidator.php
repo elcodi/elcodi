@@ -68,7 +68,7 @@ class CartCouponMinimumPriceValidator
             return;
         }
 
-        $productMoney = $cart->getProductAmount();
+        $productMoney = $cart->getPurchasableAmount();
 
         if ($couponMinimumPrice->getCurrency() != $productMoney->getCurrency()) {
             $couponMinimumPrice = $this

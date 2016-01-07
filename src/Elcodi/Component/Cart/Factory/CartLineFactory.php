@@ -39,7 +39,7 @@ class CartLineFactory extends AbstractPurchasableFactory
         $cartLine = new $classNamespace();
         $cartLine
             ->setAmount($this->createZeroAmountMoney())
-            ->setProductAmount($this->createZeroAmountMoney());
+            ->setPurchasableAmount($this->createZeroAmountMoney());
 
         return $cartLine;
     }

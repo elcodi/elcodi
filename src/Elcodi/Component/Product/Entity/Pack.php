@@ -17,55 +17,19 @@
 
 namespace Elcodi\Component\Product\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
-use Elcodi\Component\Core\Entity\Traits\DateTimeTrait;
-use Elcodi\Component\Core\Entity\Traits\EnabledTrait;
-use Elcodi\Component\Core\Entity\Traits\ETaggableTrait;
-use Elcodi\Component\Core\Entity\Traits\IdentifiableTrait;
-use Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait;
-use Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait;
-use Elcodi\Component\MetaData\Entity\Traits\MetaDataTrait;
 use Elcodi\Component\Product\ElcodiProductStock;
 use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 use Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface;
 use Elcodi\Component\Product\Entity\Interfaces\PackInterface;
-use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
-use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
-use Elcodi\Component\Product\Entity\Traits\DimensionsTrait;
-use Elcodi\Component\Product\Entity\Traits\ProductPriceTrait;
 
 /**
  * Class Pack entity.
  */
-class Pack implements PackInterface
+class Pack extends Purchasable implements PackInterface
 {
-    use IdentifiableTrait,
-        ProductPriceTrait,
-        DateTimeTrait,
-        EnabledTrait,
-        ETaggableTrait,
-        MetaDataTrait,
-        ImagesContainerTrait,
-        PrincipalImageTrait,
-        DimensionsTrait;
-
-    /**
-     * @var string
-     *
-     * Name
-     */
-    protected $name;
-
-    /**
-     * @var string
-     *
-     * Pack SKU
-     */
-    protected $sku;
-
     /**
      * @var int
      *
@@ -81,48 +45,6 @@ class Pack implements PackInterface
     protected $stockType;
 
     /**
-     * @var int
-     *
-     * Stock
-     */
-    protected $stock;
-
-    /**
-     * @var string
-     *
-     * Slug
-     */
-    protected $slug;
-
-    /**
-     * @var string
-     *
-     * Short description
-     */
-    protected $shortDescription;
-
-    /**
-     * @var string
-     *
-     * Description
-     */
-    protected $description;
-
-    /**
-     * @var ManufacturerInterface
-     *
-     * Manufacturer
-     */
-    protected $manufacturer;
-
-    /**
-     * @var Collection
-     *
-     * Many-to-Many association between products and categories.
-     */
-    protected $categories;
-
-    /**
      * @var CategoryInterface
      *
      * Principal category
@@ -130,128 +52,11 @@ class Pack implements PackInterface
     protected $principalCategory;
 
     /**
-     * @var bool
-     *
-     * Pack must show in home
-     */
-    protected $showInHome;
-
-    /**
-     * @var string
-     *
-     * Pack dimensions
-     */
-    protected $dimensions;
-
-    /**
      * @var Collection
      *
-     * Products
+     * Purchasables
      */
-    protected $products;
-
-    /**
-     * @var Collection
-     *
-     * Variants
-     */
-    protected $variants;
-
-    /**
-     * Set name.
-     *
-     * @param string $name Name
-     *
-     * @return $this Self object
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name.
-     *
-     * @return string name
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set slug.
-     *
-     * @param string $slug Slug
-     *
-     * @return $this Self object
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Get slug.
-     *
-     * @return string slug
-     */
-    public function getSlug()
-    {
-        return $this->slug;
-    }
-
-    /**
-     * Set description.
-     *
-     * @param string $description Description
-     *
-     * @return $this Self object
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description.
-     *
-     * @return string Description
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set short description.
-     *
-     * @param string $shortDescription Short description
-     *
-     * @return $this Self object
-     */
-    public function setShortDescription($shortDescription)
-    {
-        $this->shortDescription = $shortDescription;
-
-        return $this;
-    }
-
-    /**
-     * Get short description.
-     *
-     * @return string Short description
-     */
-    public function getShortDescription()
-    {
-        return $this->shortDescription;
-    }
+    protected $purchasables;
 
     /**
      * Set stock type.
@@ -275,20 +80,6 @@ class Pack implements PackInterface
     public function getStockType()
     {
         return $this->stockType;
-    }
-
-    /**
-     * Set stock.
-     *
-     * @param int $stock Stock
-     *
-     * @return $this Self object
-     */
-    public function setStock($stock)
-    {
-        $this->stock = $stock;
-
-        return $this;
     }
 
     /**
@@ -317,78 +108,6 @@ class Pack implements PackInterface
     }
 
     /**
-     * Set show in home.
-     *
-     * @param bool $showInHome Show in home
-     *
-     * @return $this Self object
-     */
-    public function setShowInHome($showInHome)
-    {
-        $this->showInHome = $showInHome;
-
-        return $this;
-    }
-
-    /**
-     * Get show in home.
-     *
-     * @return bool Show in home
-     */
-    public function getShowInHome()
-    {
-        return $this->showInHome;
-    }
-
-    /**
-     * Sets Dimensions.
-     *
-     * @param string $dimensions Dimensions
-     *
-     * @return $this Self object
-     */
-    public function setDimensions($dimensions)
-    {
-        $this->dimensions = $dimensions;
-
-        return $this;
-    }
-
-    /**
-     * Get Dimensions.
-     *
-     * @return string Dimensions
-     */
-    public function getDimensions()
-    {
-        return $this->dimensions;
-    }
-
-    /**
-     * Gets Pack SKU.
-     *
-     * @return string Pack SKU
-     */
-    public function getSku()
-    {
-        return $this->sku;
-    }
-
-    /**
-     * Sets Pack SKU.
-     *
-     * @param string $sku
-     *
-     * @return $this Self object
-     */
-    public function setSku($sku)
-    {
-        $this->sku = $sku;
-
-        return $this;
-    }
-
-    /**
      * Sets Type.
      *
      * @param int $type Type
@@ -413,19 +132,6 @@ class Pack implements PackInterface
     }
 
     /**
-     * Initializes purchasables.
-     *
-     * @return $this Self object
-     */
-    public function initializePurchasable()
-    {
-        $this->products = new ArrayCollection();
-        $this->variants = new ArrayCollection();
-
-        return $this;
-    }
-
-    /**
      * Adds an purchasable if not already in the collection.
      *
      * @param PurchasableInterface $purchasable Purchasable
@@ -434,13 +140,9 @@ class Pack implements PackInterface
      */
     public function addPurchasable(PurchasableInterface $purchasable)
     {
-        if ($purchasable instanceof ProductInterface) {
-            $this->products->add($purchasable);
-        }
-
-        if ($purchasable instanceof VariantInterface) {
-            $this->variants->add($purchasable);
-        }
+        $this
+            ->purchasables
+            ->add($purchasable);
 
         return $this;
     }
@@ -454,30 +156,21 @@ class Pack implements PackInterface
      */
     public function removePurchasable(PurchasableInterface $purchasable)
     {
-        if ($purchasable instanceof ProductInterface) {
-            $this->products->removeElement($purchasable);
-        }
+        $this
+            ->purchasables
+            ->removeElement($purchasable);
 
-        if ($purchasable instanceof VariantInterface) {
-            $this->variants->removeElement($purchasable);
-        }
+        return $this;
     }
 
     /**
      * Returns purchasable purchasables.
      *
-     * @param Collection $emptyCollection Empty collection
-     *
      * @return Collection Purchasables
      */
     public function getPurchasables()
     {
-        return new ArrayCollection(
-            array_merge(
-                $this->products->toArray(),
-                $this->variants->toArray()
-            )
-        );
+        return $this->purchasables;
     }
 
     /**
@@ -489,59 +182,7 @@ class Pack implements PackInterface
      */
     public function setPurchasables(Collection $purchasables)
     {
-        $this->initializePurchasable();
-
-        foreach ($purchasables as $purchasable) {
-            $this->addPurchasable($purchasable);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get Products.
-     *
-     * @return Collection Products
-     */
-    public function getProducts()
-    {
-        return $this->products;
-    }
-
-    /**
-     * Sets Products.
-     *
-     * @param Collection $products Products
-     *
-     * @return $this Self object
-     */
-    public function setProducts($products)
-    {
-        $this->products = $products;
-
-        return $this;
-    }
-
-    /**
-     * Get Variants.
-     *
-     * @return Collection Variants
-     */
-    public function getVariants()
-    {
-        return $this->variants;
-    }
-
-    /**
-     * Sets Variants.
-     *
-     * @param Collection $variants Variants
-     *
-     * @return $this Self object
-     */
-    public function setVariants($variants)
-    {
-        $this->variants = $variants;
+        $this->purchasables = $purchasables;
 
         return $this;
     }
@@ -558,16 +199,6 @@ class Pack implements PackInterface
         $this->categories = $categories;
 
         return $this;
-    }
-
-    /**
-     * Get categories.
-     *
-     * @return Collection Categories
-     */
-    public function getCategories()
-    {
-        return $this->categories;
     }
 
     /**
@@ -613,16 +244,6 @@ class Pack implements PackInterface
     }
 
     /**
-     * Get the principalCategory.
-     *
-     * @return CategoryInterface Principal category
-     */
-    public function getPrincipalCategory()
-    {
-        return $this->principalCategory;
-    }
-
-    /**
      * Set product manufacturer.
      *
      * @param ManufacturerInterface $manufacturer Manufacturer
@@ -637,22 +258,12 @@ class Pack implements PackInterface
     }
 
     /**
-     * Product manufacturer.
+     * Get purchasable type.
      *
-     * @return ManufacturerInterface Manufacturer
+     * @return string Purchasable type
      */
-    public function getManufacturer()
+    public function getPurchasableType()
     {
-        return $this->manufacturer;
-    }
-
-    /**
-     * Pack stringified.
-     *
-     * @return string Pack in string mode
-     */
-    public function __toString()
-    {
-        return (string) $this->getName();
+        return 'purchasable_pack';
     }
 }

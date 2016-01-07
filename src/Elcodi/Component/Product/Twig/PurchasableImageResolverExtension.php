@@ -52,9 +52,9 @@ final class PurchasableImageResolverExtension extends Twig_Extension
     public function getFilters()
     {
         return [
-            new Twig_SimpleFilter('resolve_image', [
+            new Twig_SimpleFilter('valid_image', [
                 $this->purchasableImageResolver,
-                'resolveImage',
+                'getValidImage',
             ]),
         ];
     }

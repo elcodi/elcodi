@@ -8,8 +8,8 @@ Elcodi\Component\Cart\Entity\CartLine:
             generator:
                 strategy: AUTO
     fields:
-        productAmount:
-            column: product_amount
+        purchasableAmount:
+            column: purchasable_amount
             type: integer
             nullable: false
         amount:
@@ -36,10 +36,10 @@ Elcodi\Component\Cart\Entity\CartLine:
                 name: cart_id
                 referencedColumnName: id
                 nullable: false
-        productCurrency:
+        purchasableCurrency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
-                 name: product_currency_iso
+                 name: purchasable_currency_iso
                  referencedColumnName: iso
                  nullable: false
         currency:
@@ -48,21 +48,9 @@ Elcodi\Component\Cart\Entity\CartLine:
                  name: currency_iso
                  referencedColumnName: iso
                  nullable: false
-        product:
-            targetEntity: Elcodi\Component\Product\Entity\Interfaces\ProductInterface
+        purchasable:
+            targetEntity: Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface
             joinColumn:
-                name: product_id
-                referencedColumnName: id
-                nullable: true
-        variant:
-            targetEntity: Elcodi\Component\Product\Entity\Interfaces\VariantInterface
-            joinColumn:
-                name: variant_id
-                referencedColumnName: id
-                nullable: true
-        pack:
-            targetEntity: Elcodi\Component\Product\Entity\Interfaces\PackInterface
-            joinColumn:
-                name: pack_id
+                name: purchasable_id
                 referencedColumnName: id
                 nullable: true
