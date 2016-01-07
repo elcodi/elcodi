@@ -13,7 +13,7 @@ services:
         tags:
             - { name: elcodi.purchasable_stock_validator }
 
-    elcodi.stock_validator.product_pack:
+    elcodi.stock_validator.purchasable_pack:
         class: Elcodi\Component\Product\StockValidator\PackStockValidator
         calls:
             - [ addPurchasableStockValidator, ['@elcodi.stock_validator.product'] ]

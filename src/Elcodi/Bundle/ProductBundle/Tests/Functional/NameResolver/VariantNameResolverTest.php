@@ -41,7 +41,7 @@ class VariantNameResolverTest extends WebTestCase
      */
     public function testResolveName()
     {
-        $variant = $this->find('product_variant', 2);
+        $variant = $this->find('product_variant', 6);
         $this->assertEquals(
             'Product with variants - Size Large - Color White',
             $this

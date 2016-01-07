@@ -133,22 +133,6 @@ interface CategoryInterface
     public function getParent();
 
     /**
-     * Set products.
-     *
-     * @param Collection $products Products
-     *
-     * @return $this Self object
-     */
-    public function setProducts(Collection $products);
-
-    /**
-     * Get products.
-     *
-     * @return Collection
-     */
-    public function getProducts();
-
-    /**
      * @param bool $root
      *
      * @return $this Self object

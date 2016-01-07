@@ -25,20 +25,20 @@ use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 interface PriceInterface
 {
     /**
-     * Gets the product or products amount with tax.
+     * Gets the purchasable or purchasables amount with tax.
      *
-     * @return MoneyInterface Product amount with tax
+     * @return MoneyInterface Purchasable amount with tax
      */
-    public function getProductAmount();
+    public function getPurchasableAmount();
 
     /**
-     * Sets the product or products amount with tax.
+     * Sets the purchasable or purchasables amount with tax.
      *
-     * @param MoneyInterface $productAmount product amount with tax
+     * @param MoneyInterface $purchasableAmount purchasable amount with tax
      *
      * @return $this Self object
      */
-    public function setProductAmount(MoneyInterface $productAmount);
+    public function setPurchasableAmount(MoneyInterface $purchasableAmount);
 
     /**
      * Gets the total amount with tax.

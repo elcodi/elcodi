@@ -39,9 +39,10 @@ class MappingCompilerPass extends AbstractElcodiMappingCompilerPass
             ->addEntityMappings(
                 $container,
                 [
+                    'purchasable',
                     'product',
                     'product_variant',
-                    'product_pack',
+                    'purchasable_pack',
                     'category',
                     'manufacturer',
                 ]

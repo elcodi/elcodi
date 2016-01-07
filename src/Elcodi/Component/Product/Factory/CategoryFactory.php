@@ -41,7 +41,6 @@ class CategoryFactory extends AbstractFactory
         $category = new $classNamespace();
         $category
             ->setSubcategories(new ArrayCollection())
-            ->setProducts(new ArrayCollection())
             ->setRoot(true)
             ->setPosition(0)
             ->setEnabled(true)

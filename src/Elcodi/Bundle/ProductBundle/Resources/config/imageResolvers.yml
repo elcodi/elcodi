@@ -22,7 +22,7 @@ services:
         tags:
             - { name: elcodi.purchasable_image_resolver }
 
-    elcodi.image_resolver.product_pack:
+    elcodi.image_resolver.purchasable_pack:
         class: Elcodi\Component\Product\ImageResolver\PackImageResolver
         parent: elcodi.image_resolver.abstract_product
         calls:

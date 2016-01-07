@@ -17,10 +17,7 @@
 
 namespace Elcodi\Component\Cart\Entity\Traits;
 
-use Elcodi\Component\Product\Entity\Interfaces\PackInterface;
-use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
-use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
 
 /**
  * Trait PurchasableWrapperTrait.
@@ -28,25 +25,11 @@ use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
 trait PurchasableWrapperTrait
 {
     /**
-     * @var ProductInterface
+     * @var PurchasableInterface
      *
-     * Product
+     * Purchasable
      */
-    protected $product;
-
-    /**
-     * @var VariantInterface
-     *
-     * Product variant
-     */
-    protected $variant;
-
-    /**
-     * @var PackInterface
-     *
-     * Pack
-     */
-    protected $pack;
+    protected $purchasable;
 
     /**
      * @var int
@@ -56,8 +39,7 @@ trait PurchasableWrapperTrait
     protected $quantity;
 
     /**
-     * Set the purchasable object. This method is responsible for choosing how
-     * this object must be stored depending on the type.
+     * Set the purchasable object.
      *
      * @param PurchasableInterface $purchasable Purchasable object
      *
@@ -65,23 +47,7 @@ trait PurchasableWrapperTrait
      */
     public function setPurchasable(PurchasableInterface $purchasable)
     {
-        if ($purchasable instanceof ProductInterface) {
-            $this->product = $purchasable;
-
-            return $this;
-        }
-
-        if ($purchasable instanceof VariantInterface) {
-            $this->variant = $purchasable;
-            $product = $purchasable->getProduct();
-            $this->product = $product;
-
-            return $this;
-        }
-
-        if ($purchasable instanceof PackInterface) {
-            $this->pack = $purchasable;
-        }
+        $this->purchasable = $purchasable;
 
         return $this;
     }
@@ -93,89 +59,7 @@ trait PurchasableWrapperTrait
      */
     public function getPurchasable()
     {
-        if ($this->variant instanceof VariantInterface) {
-            return $this->variant;
-        }
-
-        if ($this->product instanceof ProductInterface) {
-            return $this->product;
-        }
-
-        if ($this->pack instanceof PackInterface) {
-            return $this->pack;
-        }
-    }
-
-    /**
-     * Sets the product.
-     *
-     * @deprecated since version 1.0.13, to be removed in 2.0.0. Use
-     *             setPurchasable instead.
-     *
-     * @param ProductInterface $product Product
-     *
-     * @return $this Self object
-     */
-    public function setProduct(ProductInterface $product)
-    {
-        @trigger_error('Deprecated since version 1.0.13, to be removed in 2.0.0.
-        Use setPurchasable instead', E_USER_DEPRECATED);
-
-        $this->product = $product;
-
-        return $this;
-    }
-
-    /**
-     * Gets the product.
-     *
-     * @deprecated since version 1.0.13, to be removed in 2.0.0. Use
-     *             getPurchasable instead.
-     *
-     * @return ProductInterface product attached to this cart line
-     */
-    public function getProduct()
-    {
-        @trigger_error('Deprecated since version 1.0.13, to be removed in 2.0.0.
-        Use getPurchasable instead', E_USER_DEPRECATED);
-
-        return $this->product;
-    }
-
-    /**
-     * Sets the product variant.
-     *
-     * @deprecated since version 1.0.13, to be removed in 2.0.0. Use
-     *             setPurchasable instead.
-     *
-     * @param VariantInterface $variant Variant
-     *
-     * @return $this Self object
-     */
-    public function setVariant(VariantInterface $variant)
-    {
-        @trigger_error('Deprecated since version 1.0.13, to be removed in 2.0.0.
-        Use setPurchasable instead', E_USER_DEPRECATED);
-
-        $this->variant = $variant;
-
-        return $this;
-    }
-
-    /**
-     * Returns the product variant.
-     *
-     * @deprecated since version 1.0.13, to be removed in 2.0.0. Use
-     *             getPurchasable instead.
-     *
-     * @return VariantInterface Variant
-     */
-    public function getVariant()
-    {
-        @trigger_error('Deprecated since version 1.0.13, to be removed in 2.0.0.
-        Use getPurchasable instead', E_USER_DEPRECATED);
-
-        return $this->variant;
+        return $this->purchasable;
     }
 
     /**
