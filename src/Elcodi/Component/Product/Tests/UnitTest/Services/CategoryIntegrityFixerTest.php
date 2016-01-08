@@ -15,13 +15,14 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Component\Product\Tests\UnitTest\Services;
+namespace Elcodi\Component\Purchasable\Tests\UnitTest\Services;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit_Framework_TestCase;
 
 use Elcodi\Component\Product\Entity\Category;
 use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
+use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Product;
 use Elcodi\Component\Product\Services\CategoryIntegrityFixer;
 
@@ -46,47 +47,45 @@ class CategoryIntegrityFixerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test that the principal category is assigned as category when a product
+     * Test that the principal category is assigned as category when a purchasable
      * only has principal category.
      */
-    public function testFixProductWhenPrincipalCategoryNotAssigned()
+    public function testFixPurchasableWhenPrincipalCategoryNotAssigned()
     {
-        $product = $this->getNewProduct(1);
+        $purchasable = $this->getNewCategorizablePurchasable(1);
         $category = $this->getNewCategory(1);
-        $product->setPrincipalCategory($category);
+        $purchasable->setPrincipalCategory($category);
 
-        self::$categoryIntegrityFixer
-            ->fixProduct($product);
+        self::$categoryIntegrityFixer->fixCategoriesIntegrity($purchasable);
 
-        $categories = $product->getCategories();
+        $categories = $purchasable->getCategories();
 
         $this->assertEquals(
             1,
             $categories->count(),
-            'Only one category is expected to be assigned to the product'
+            'Only one category is expected to be assigned to the purchasable'
         );
 
         $this->assertEquals(
             1,
             $categories->first()->getId(),
-            'The category assigned to the product is not the principal category'
+            'The category assigned to the purchasable is not the principal category'
         );
     }
 
     /**
-     * Test that the principal category is assigned when a product has
+     * Test that the principal category is assigned when a purchasable has
      * categories but not principal category.
      */
-    public function testFixProductWhenNoPrincipalCategoryButCategories()
+    public function testFixPurchasableWhenNoPrincipalCategoryButCategories()
     {
-        $product = $this->getNewProduct(1);
+        $purchasable = $this->getNewCategorizablePurchasable(1);
         $category = $this->getNewCategory(1);
-        $product->addCategory($category);
+        $purchasable->addCategory($category);
 
-        self::$categoryIntegrityFixer
-            ->fixProduct($product);
+        self::$categoryIntegrityFixer->fixCategoriesIntegrity($purchasable);
 
-        $principalCategory = $product->getPrincipalCategory();
+        $principalCategory = $purchasable->getPrincipalCategory();
 
         $this->assertInstanceOf(
             get_class($category),
@@ -117,18 +116,18 @@ class CategoryIntegrityFixerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Gets a new product.
+     * Gets a new categorizable purchasable.
      *
-     * @param int $id The product id.
+     * @param int $id The purchasable id.
      *
-     * @return Product
+     * @return ProductInterface
      */
-    public function getNewProduct($id)
+    public function getNewCategorizablePurchasable($id)
     {
-        $product = new Product();
-        $product->setId($id);
-        $product->setCategories(new ArrayCollection());
+        $purchasable = new Product();
+        $purchasable->setId($id);
+        $purchasable->setCategories(new ArrayCollection());
 
-        return $product;
+        return $purchasable;
     }
 }

@@ -24,44 +24,8 @@ use Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface;
 /**
  * Interface ProductInterface.
  */
-interface ProductInterface extends PurchasableInterface
+interface ProductInterface extends PurchasableInterface, CategorizableInterface
 {
-    /**
-     * Set categories.
-     *
-     * @param Collection $categories Categories
-     *
-     * @return $this Self object
-     */
-    public function setCategories(Collection $categories);
-
-    /**
-     * Add category.
-     *
-     * @param CategoryInterface $category Category
-     *
-     * @return $this Self object
-     */
-    public function addCategory(CategoryInterface $category);
-
-    /**
-     * Remove category.
-     *
-     * @param CategoryInterface $category Category
-     *
-     * @return $this Self object
-     */
-    public function removeCategory(CategoryInterface $category);
-
-    /**
-     * Set the principalCategory.
-     *
-     * @param CategoryInterface $principalCategory Principal category
-     *
-     * @return $this Self object
-     */
-    public function setPrincipalCategory(CategoryInterface $principalCategory = null);
-
     /**
      * Set product manufacturer.
      *

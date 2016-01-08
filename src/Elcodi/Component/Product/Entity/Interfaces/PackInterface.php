@@ -22,7 +22,7 @@ use Doctrine\Common\Collections\Collection;
 /**
  * Interface PackInterface.
  */
-interface PackInterface extends PurchasableInterface
+interface PackInterface extends PurchasableInterface, CategorizableInterface
 {
     /**
      * Adds an purchasable if not already in the collection.
@@ -57,49 +57,6 @@ interface PackInterface extends PurchasableInterface
      * @return $this Self object
      */
     public function setPurchasables(Collection $purchasables);
-
-    /**
-     * Set categories.
-     *
-     * @param Collection $categories Categories
-     *
-     * @return $this Self object
-     */
-    public function setCategories(Collection $categories);
-
-    /**
-     * Get categories.
-     *
-     * @return Collection Categories
-     */
-    public function getCategories();
-
-    /**
-     * Add category.
-     *
-     * @param CategoryInterface $category Category
-     *
-     * @return $this Self object
-     */
-    public function addCategory(CategoryInterface $category);
-
-    /**
-     * Remove category.
-     *
-     * @param CategoryInterface $category Category
-     *
-     * @return $this Self object
-     */
-    public function removeCategory(CategoryInterface $category);
-
-    /**
-     * Set the principalCategory.
-     *
-     * @param CategoryInterface $principalCategory Principal category
-     *
-     * @return $this Self object
-     */
-    public function setPrincipalCategory(CategoryInterface $principalCategory = null);
 
     /**
      * Set product manufacturer.

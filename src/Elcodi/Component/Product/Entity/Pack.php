@@ -210,7 +210,14 @@ class Pack extends Purchasable implements PackInterface
      */
     public function addCategory(CategoryInterface $category)
     {
-        $this->categories->add($category);
+        if (!$this
+            ->categories
+            ->contains($category)
+        ) {
+            $this
+                ->categories
+                ->add($category);
+        }
 
         return $this;
     }
