@@ -81,9 +81,14 @@ class Product extends Purchasable implements ProductInterface
      */
     public function addCategory(CategoryInterface $category)
     {
-        $this
+        if (!$this
             ->categories
-            ->add($category);
+            ->contains($category)
+        ) {
+            $this
+                ->categories
+                ->add($category);
+        }
 
         return $this;
     }

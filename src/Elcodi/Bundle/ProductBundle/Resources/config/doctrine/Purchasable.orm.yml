@@ -161,7 +161,7 @@ Elcodi\Component\Product\Entity\Purchasable:
             targetEntity: Elcodi\Component\Product\Entity\Interfaces\CategoryInterface
             inversedBy: purchasables
             joinTable:
-                name: product_category
+                name: purchasable_category
                 joinColumns:
                     purchasable_id:
                         referencedColumnName: id
