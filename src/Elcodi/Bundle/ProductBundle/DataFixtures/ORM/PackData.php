@@ -49,7 +49,7 @@ class PackData extends AbstractFixture implements DependentFixtureInterface
          * @var CategoryInterface     $category
          * @var ManufacturerInterface $manufacturer
          * @var CurrencyInterface     $currency
-         * @var ObjectDirector        $productDirector
+         * @var ObjectDirector        $packDirector
          */
         $category = $this->getReference('category');
         $manufacturer = $this->getReference('manufacturer');
