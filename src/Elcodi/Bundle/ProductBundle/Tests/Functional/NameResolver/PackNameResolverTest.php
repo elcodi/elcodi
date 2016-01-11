@@ -41,11 +41,11 @@ class PackNameResolverTest extends WebTestCase
      */
     public function testResolveName()
     {
-        $pack = $this->find('product_pack', 1);
+        $pack = $this->find('purchasable_pack', 9);
         $this->assertEquals(
             'pack',
             $this
-                ->get('elcodi.name_resolver.product_pack')
+                ->get('elcodi.name_resolver.purchasable_pack')
                 ->resolveName($pack)
         );
         $this->assertEquals(

@@ -11,8 +11,8 @@ Elcodi\Component\Cart\Entity\Order:
         quantity:
             column: quantity
             type: integer
-        productAmount:
-            column: product_amount
+        purchasableAmount:
+            column: purchasable_amount
             type: integer
             nullable: false
         couponAmount:
@@ -109,10 +109,10 @@ Elcodi\Component\Cart\Entity\Order:
                  referencedColumnName: iso
                  nullable: false
 
-        productCurrency:
+        purchasableCurrency:
             targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
             joinColumn:
-                 name: product_currency_iso
+                 name: purchasable_currency_iso
                  referencedColumnName: iso
                  nullable: false
 

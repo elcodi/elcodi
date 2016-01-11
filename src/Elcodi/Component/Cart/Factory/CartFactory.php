@@ -32,7 +32,7 @@ class CartFactory extends AbstractPurchasableFactory
      *
      * Cart factory does not need to known about Currency
      * objects in order to initialize Money objects for
-     * properties such as Cart::amount, Cart::productAmount
+     * properties such as Cart::amount, Cart::purchasableAmount
      * and Cart::couponAmount since they are meant to be
      * set by event listeners.
      *
@@ -50,7 +50,7 @@ class CartFactory extends AbstractPurchasableFactory
         $cart
             ->setOrdered(false)
             ->setCartLines(new ArrayCollection())
-            ->setProductAmount($this->createZeroAmountMoney())
+            ->setPurchasableAmount($this->createZeroAmountMoney())
             ->setAmount($this->createZeroAmountMoney())
             ->setCouponAmount($this->createZeroAmountMoney())
             ->setShippingAmount($this->createZeroAmountMoney())

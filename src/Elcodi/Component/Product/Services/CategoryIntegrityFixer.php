@@ -17,7 +17,8 @@
 
 namespace Elcodi\Component\Product\Services;
 
-use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
+use Elcodi\Component\Product\Entity\Interfaces\CategorizableInterface;
+use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 
 /**
  * Class CategoryIntegrityFixer.
@@ -25,34 +26,42 @@ use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 class CategoryIntegrityFixer
 {
     /**
-     * Fixes the product categories.
+     * Fixes all purchasable categories given a set of purchasables.
      *
-     * @param ProductInterface $product The product to fix.
+     * @param CategorizableInterface[] $categorizables Categorizable instances
      */
-    public function fixProduct(ProductInterface $product)
+    public function fixCategoriesIntegrityByArray(array $categorizables)
     {
-        $principalCategory = $product->getPrincipalCategory();
-        $categories = $product->getCategories();
+        foreach ($categorizables as $categorizable) {
+            if ($categorizable instanceof CategorizableInterface) {
+                $this->fixCategoriesIntegrity($categorizable);
+            }
+        }
+    }
 
-        if (
-            !empty($principalCategory) &&
-            !$categories->contains($principalCategory)
-        ) {
+    /**
+     * Fixes the categories of a categorizable object.
+     *
+     * @param CategorizableInterface $categorizable Categorizable instance
+     */
+    public function fixCategoriesIntegrity(CategorizableInterface $categorizable)
+    {
+        $principalCategory = $categorizable->getPrincipalCategory();
+        $categories = $categorizable->getCategories();
+
+        if ($principalCategory instanceof CategoryInterface) {
             /**
              * The product has a principal category but this one is not assigned
              * as product category so this one is added.
              */
-            $categories->add($principalCategory);
-            $product->setCategories($categories);
-        } elseif (
-            empty($principalCategory) &&
-            0 < $categories->count()
-        ) {
+            $categorizable->addCategory($principalCategory);
+        } elseif (!$categories->isEmpty()) {
+
             /**
              * The product does not have principal category but has categories
              * assigned so the first category is assigned as principal category.
              */
-            $product->setPrincipalCategory($categories->first());
+            $categorizable->setPrincipalCategory($categories->first());
         }
     }
 }

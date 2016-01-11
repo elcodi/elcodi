@@ -20,12 +20,12 @@ namespace Elcodi\Bundle\ProductBundle\Tests\Functional\Repository;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 use Elcodi\Component\Product\Repository\CategoryRepository;
-use Elcodi\Component\Product\Repository\ProductRepository;
+use Elcodi\Component\Product\Repository\PurchasableRepository;
 
 /**
- * Class ProductRepositoryTest.
+ * Class PurchasableRepositoryTest.
  */
-class ProductRepositoryTest extends WebTestCase
+class PurchasableRepositoryTest extends WebTestCase
 {
     /**
      * @var CategoryRepository
@@ -35,11 +35,11 @@ class ProductRepositoryTest extends WebTestCase
     protected $categoryRepository;
 
     /**
-     * @var ProductRepository
+     * @var PurchasableRepository
      *
      * LocationProvider class
      */
-    protected $productRepository;
+    protected $purchasableRepository;
 
     /**
      * Load fixtures of these bundles.
@@ -60,25 +60,25 @@ class ProductRepositoryTest extends WebTestCase
     {
         parent::setUp();
 
-        $this->productRepository = $this->get('elcodi.repository.product');
+        $this->purchasableRepository = $this->get('elcodi.repository.purchasable');
         $this->categoryRepository = $this->get('elcodi.repository.category');
     }
 
     /**
-     * Test product repository provider.
+     * Test purchasable repository provider.
      */
     public function testRepositoryProvider()
     {
         $this->assertInstanceOf(
             'Doctrine\Common\Persistence\ObjectRepository',
-            $this->get('elcodi.repository.product')
+            $this->get('elcodi.repository.purchasable')
         );
     }
 
     /**
-     * Test when getting products from a category with not empty subcategories.
+     * Test when getting purchasables from a category with not empty subcategories.
      */
-    public function testGettingProductsFromOneCategoryWithSubcategories()
+    public function testGettingPurchasablesFromOneCategoryWithSubcategories()
     {
         /**
          * @var $rootCategory CategoryInterface
@@ -87,29 +87,29 @@ class ProductRepositoryTest extends WebTestCase
             ->categoryRepository
             ->findOneBy(['slug' => 'root-category']);
 
-        $products = $this
-            ->productRepository
+        $purchasables = $this
+            ->purchasableRepository
             ->getAllFromCategories([$rootCategory]);
 
         $this->assertCount(
             1,
-            $products,
-            'It should only return one product on the root category'
+            $purchasables,
+            'It should only return one purchasable on the root category'
         );
 
-        $product = $products[0];
+        $purchasable = $purchasables[0];
 
         $this->assertEquals(
-            $product->getName(),
+            $purchasable->getName(),
             'Root category product',
-            'The product expected was the one on the root category'
+            'The purchasable expected was the one on the root category'
         );
     }
 
     /**
-     * Test when getting products from multiple categories.
+     * Test when getting purchasables from multiple categories.
      */
-    public function testGettingProductsFromMultipleCategories()
+    public function testGettingPurchasablesFromMultipleCategories()
     {
         /**
          * @var $rootCategory CategoryInterface
@@ -122,8 +122,8 @@ class ProductRepositoryTest extends WebTestCase
             ->categoryRepository
             ->findOneBy(['slug' => 'category']);
 
-        $products = $this
-            ->productRepository
+        $purchasables = $this
+            ->purchasableRepository
             ->getAllFromCategories(
                 [
                     $rootCategory,
@@ -132,80 +132,79 @@ class ProductRepositoryTest extends WebTestCase
             );
 
         $this->assertCount(
-            3,
-            $products,
-            'It should only return one product on the root category'
+            5,
+            $purchasables
         );
     }
 
     /**
-     * Test get home products.
+     * Test get home purchasables.
      *
-     * @dataProvider dataGetHomeProducts
+     * @dataProvider dataGetHomePurchasables
      */
-    public function testGetHomeProducts($count, $numberExpected, $useStock)
+    public function testGetHomePurchasables($count, $numberExpected, $useStock)
     {
-        $product = $this->find('product', 2);
-        $oldStock = $product->getStock();
-        $product->setStock(0);
-        $this->flush($product);
+        $purchasable = $this->find('purchasable', 2);
+        $oldStock = $purchasable->getStock();
+        $purchasable->setStock(0);
+        $this->flush($purchasable);
 
-        $products = $this
-            ->productRepository
-            ->getHomeProducts($count, $useStock);
+        $purchasables = $this
+            ->purchasableRepository
+            ->getHomePurchasables($count, $useStock);
 
-        $this->assertTrue(is_array($products));
-        $this->assertCount($numberExpected, $products);
+        $this->assertTrue(is_array($purchasables));
+        $this->assertCount($numberExpected, $purchasables);
 
-        $product->setStock($oldStock);
-        $this->flush($product);
+        $purchasable->setStock($oldStock);
+        $this->flush($purchasable);
     }
 
     /**
-     * Count values for testGetHomeProducts.
+     * Count values for testGetHomePurchasables.
      */
-    public function dataGetHomeProducts()
+    public function dataGetHomePurchasables()
     {
         return [
-            [0, 4, false],
+            [0, 6, false],
             [1, 1, false],
             [2, 2, false],
             [3, 3, false],
-            [4, 4, false],
-            [5, 4, false],
-            [0, 3, true],
-            [3, 3, true],
-            [4, 3, true],
+            [6, 6, false],
+            [7, 6, false],
+            [0, 4, true],
+            [4, 4, true],
+            [5, 4, true],
         ];
     }
 
     /**
-     * Test get home products.
+     * Test get home purchasables.
      *
-     * @dataProvider dataGetOfferProducts
+     * @dataProvider dataGetOfferPurchasables
      */
-    public function testGetOfferProducts($count, $numberExpected, $useStock)
+    public function testGetOfferPurchasables($count, $numberExpected, $useStock)
     {
-        $product = $this->find('product', 2);
-        $oldStock = $product->getStock();
-        $product->setStock(0);
-        $this->flush($product);
+        $purchasable = $this->find('purchasable', 2);
+        $oldStock = $purchasable->getStock();
+        $purchasable->setStock(0);
+        $this->flush($purchasable);
 
-        $products = $this
-            ->productRepository
-            ->getOfferProducts($count, $useStock);
+        $purchasables = $this
+            ->purchasableRepository
+            ->getOfferPurchasables($count, $useStock);
 
-        $this->assertTrue(is_array($products));
-        $this->assertCount($numberExpected, $products);
+        $this->assertTrue(is_array($purchasables));
+        $this->assertCount($numberExpected, $purchasables);
 
-        $product->setStock($oldStock);
-        $this->flush($product);
+        $purchasable->setStock($oldStock);
+        $this->flush($purchasable);
     }
 
     /**
-     * Count values for testGetOfferProducts.
+     * Count values for testGetOfferPurchasables.
      */
-    public function dataGetOfferProducts()
+    public function dataGetOfferPurchasables()
     {
         return [
             [0, 1, false],

@@ -20,13 +20,13 @@ namespace Elcodi\Component\Product\EventListener;
 use Doctrine\ORM\Event\PreFlushEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 
-use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
+use Elcodi\Component\Product\Entity\Interfaces\CategorizableInterface;
 use Elcodi\Component\Product\Services\CategoryIntegrityFixer;
 
 /**
- * Class ProductCategoryIntegrityEventListener.
+ * Class CategoryIntegrityEventListener.
  */
-class ProductCategoryIntegrityEventListener
+class CategoryIntegrityEventListener
 {
     /**
      * @var CategoryIntegrityFixer
@@ -57,13 +57,9 @@ class ProductCategoryIntegrityEventListener
             ->getUnitOfWork()
             ->getScheduledEntityInsertions();
 
-        foreach ($scheduledInsertions as $entity) {
-            if ($entity instanceof ProductInterface) {
-                $this
-                    ->categoryIntegrityFixer
-                    ->fixProduct($entity);
-            }
-        }
+        $this
+            ->categoryIntegrityFixer
+            ->fixCategoriesIntegrityByArray($scheduledInsertions);
     }
 
     /**
@@ -74,10 +70,10 @@ class ProductCategoryIntegrityEventListener
     public function preUpdate(PreUpdateEventArgs $event)
     {
         $entity = $event->getEntity();
-        if ($entity instanceof ProductInterface) {
+        if ($entity instanceof CategorizableInterface) {
             $this
                 ->categoryIntegrityFixer
-                ->fixProduct($entity);
+                ->fixCategoriesIntegrity($entity);
         }
     }
 }

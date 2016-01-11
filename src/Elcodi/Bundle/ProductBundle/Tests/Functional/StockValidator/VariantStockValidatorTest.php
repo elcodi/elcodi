@@ -41,7 +41,7 @@ class VariantStockValidatorTest extends WebTestCase
      */
     public function testIsStockAvailable()
     {
-        $variant = $this->find('product_variant', 1);
+        $variant = $this->find('product_variant', 6);
         $variantStockValidator = $this->get('elcodi.stock_validator.product_variant');
         $this->assertTrue(
             $variantStockValidator->isStockAvailable(

@@ -17,8 +17,6 @@
 
 namespace Elcodi\Component\Product\Entity\Interfaces;
 
-use Doctrine\Common\Collections\Collection;
-
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\EnabledInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
@@ -81,38 +79,4 @@ interface ManufacturerInterface
      * @return string Slug
      */
     public function getSlug();
-
-    /**
-     * Set products.
-     *
-     * @param Collection $products Products
-     *
-     * @return $this Self object
-     */
-    public function setProducts(Collection $products);
-
-    /**
-     * Get products.
-     *
-     * @return Collection Products
-     */
-    public function getProducts();
-
-    /**
-     * Add product.
-     *
-     * @param ProductInterface $product Product
-     *
-     * @return $this Self object
-     */
-    public function addProduct(ProductInterface $product);
-
-    /**
-     * Remove product.
-     *
-     * @param ProductInterface $product Product
-     *
-     * @return $this Self object
-     */
-    public function removeProduct(ProductInterface $product);
 }

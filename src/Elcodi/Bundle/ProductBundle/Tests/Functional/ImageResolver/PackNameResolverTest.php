@@ -41,7 +41,7 @@ class PackNameResolverTest extends WebTestCase
      */
     public function testResolveImage()
     {
-        $pack = $this->find('product_pack', 2);
+        $pack = $this->find('purchasable_pack', 10);
 
         $this->assertEquals(
             'pack.jpg',
@@ -57,7 +57,7 @@ class PackNameResolverTest extends WebTestCase
      */
     public function testResolveImageInherit()
     {
-        $pack = $this->find('product_pack', 1);
+        $pack = $this->find('purchasable_pack', 9);
         $this->assertEquals(
             'product.jpg',
             $this

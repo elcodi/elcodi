@@ -40,7 +40,6 @@ class ManufacturerFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $manufacturer = new $classNamespace();
         $manufacturer
-            ->setProducts(new ArrayCollection())
             ->setImages(new ArrayCollection())
             ->setImagesSort('')
             ->setEnabled(true)
