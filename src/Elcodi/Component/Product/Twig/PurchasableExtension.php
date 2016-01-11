@@ -25,7 +25,7 @@ use Elcodi\Component\Product\Services\PurchasableNameResolver;
 /**
  * Product extension for twig.
  */
-class PurchasableExtension extends Twig_Extension
+final class PurchasableExtension extends Twig_Extension
 {
     /**
      * @var PurchasableNameResolver

@@ -49,6 +49,8 @@ class OrderLineCreationEventListenerTest extends WebTestCase
         $quantity,
         $finalStock
     ) {
+        $this->reloadScenario();
+
         /**
          * @var CartOrderTransformer $cartOrderTransformer
          */
@@ -60,7 +62,6 @@ class OrderLineCreationEventListenerTest extends WebTestCase
          * @var CartLineInterface $cartLine
          */
         $cart = $this->find('cart', 2);
-
         $cartLine = $cart
             ->getCartLines()
             ->first()

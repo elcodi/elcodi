@@ -1,0 +1,35 @@
+services:
+
+    #
+    # Name resolvers
+    #
+    elcodi.image_resolver.abstract_product:
+        class: Elcodi\Component\Product\ImageResolver\Abstracts\AbstractImageResolver
+        arguments:
+            - '@elcodi.resolver.image'
+
+    elcodi.image_resolver.product:
+        class: Elcodi\Component\Product\ImageResolver\ProductImageResolver
+        parent: elcodi.image_resolver.abstract_product
+        tags:
+            - { name: elcodi.purchasable_image_resolver }
+
+    elcodi.image_resolver.product_variant:
+        class: Elcodi\Component\Product\ImageResolver\VariantImageResolver
+        parent: elcodi.image_resolver.abstract_product
+        calls:
+            - [ addPurchasableImageResolver, ['@elcodi.image_resolver.product'] ]
+        tags:
+            - { name: elcodi.purchasable_image_resolver }
+
+    elcodi.image_resolver.product_pack:
+        class: Elcodi\Component\Product\ImageResolver\PackImageResolver
+        parent: elcodi.image_resolver.abstract_product
+        calls:
+            - [ addPurchasableImageResolver, ['@elcodi.image_resolver.product'] ]
+            - [ addPurchasableImageResolver, ['@elcodi.image_resolver.product_variant'] ]
+        tags:
+            - { name: elcodi.purchasable_image_resolver }
+
+    elcodi.image_resolver.purchasable:
+        class: Elcodi\Component\Product\ImageResolver\PurchasableImageResolver

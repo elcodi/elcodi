@@ -23,8 +23,7 @@ use Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Elcodi\Component\Core\Entity\Interfaces\ETaggableInterface;
 use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
-use Elcodi\Component\Media\Entity\Interfaces\ImagesContainerInterface;
-use Elcodi\Component\Media\Entity\Interfaces\PrincipalImageInterface;
+use Elcodi\Component\Media\Entity\Interfaces\ImagesContainerWithPrincipalImageInterface;
 use Elcodi\Component\MetaData\Entity\Interfaces\MetaDataInterface;
 
 /**
@@ -37,8 +36,7 @@ interface ProductInterface
     DateTimeInterface,
     ETaggableInterface,
     MetaDataInterface,
-    ImagesContainerInterface,
-    PrincipalImageInterface
+    ImagesContainerWithPrincipalImageInterface
 {
     /**
      * Set name.
@@ -73,6 +71,8 @@ interface ProductInterface
     public function getSlug();
 
     /**
+     * Set description.
+     *
      * @param string $description
      *
      * @return $this Self object

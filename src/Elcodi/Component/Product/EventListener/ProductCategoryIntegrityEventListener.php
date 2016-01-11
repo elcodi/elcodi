@@ -38,12 +38,10 @@ class ProductCategoryIntegrityEventListener
     /**
      * Builds a new class.
      *
-     * @param CategoryIntegrityFixer $categoryIntegrityFixer A category
-     *                                                       integrity fixer.
+     * @param CategoryIntegrityFixer $categoryIntegrityFixer Fixer
      */
-    public function __construct(
-        CategoryIntegrityFixer $categoryIntegrityFixer
-    ) {
+    public function __construct(CategoryIntegrityFixer $categoryIntegrityFixer)
+    {
         $this->categoryIntegrityFixer = $categoryIntegrityFixer;
     }
 

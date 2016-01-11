@@ -1,0 +1,22 @@
+services:
+
+    #
+    # Name resolvers
+    #
+    elcodi.name_resolver.product:
+        class: Elcodi\Component\Product\NameResolver\ProductNameResolver
+        tags:
+            - { name: elcodi.purchasable_name_resolver }
+
+    elcodi.name_resolver.product_variant:
+        class: Elcodi\Component\Product\NameResolver\VariantNameResolver
+        tags:
+            - { name: elcodi.purchasable_name_resolver }
+
+    elcodi.name_resolver.product_pack:
+        class: Elcodi\Component\Product\NameResolver\PackNameResolver
+        tags:
+            - { name: elcodi.purchasable_name_resolver }
+
+    elcodi.name_resolver.purchasable:
+        class: Elcodi\Component\Product\NameResolver\PurchasableNameResolver

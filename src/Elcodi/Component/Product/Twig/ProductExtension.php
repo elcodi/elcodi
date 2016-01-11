@@ -25,7 +25,7 @@ use Elcodi\Component\Product\Services\ProductOptionsResolver;
 /**
  * Product extension for twig.
  */
-class ProductExtension extends Twig_Extension
+final class ProductExtension extends Twig_Extension
 {
     /**
      * @var ProductOptionsResolver

@@ -18,3 +18,11 @@ services:
             - '@elcodi.resolver.purchasable_name'
         tags:
             - { name: twig.extension }
+
+    elcodi.twig_extension.purchasable_image_resolver:
+        class: Elcodi\Component\Product\Twig\PurchasableImageResolverExtension
+        public: false
+        arguments:
+            - '@elcodi.image_resolver.purchasable'
+        tags:
+            - { name: twig.extension }

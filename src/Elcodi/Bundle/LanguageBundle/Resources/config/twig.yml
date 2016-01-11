@@ -6,6 +6,7 @@ services:
     elcodi.twig_extension.language:
         class: Elcodi\Component\Language\Twig\LanguageExtension
         public: false
+        deprecated: 'The "%service_id%" service is deprecated since v1.0.14 and will be removed in v2.0.0. Define the global in your project config.yml instead'
         arguments:
             - '@elcodi.manager.promoted_language'
         tags:

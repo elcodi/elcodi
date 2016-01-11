@@ -20,27 +20,12 @@ namespace Elcodi\Bundle\CartBundle\Tests\Functional\Transformer;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\OrderInterface;
-use Elcodi\Component\Cart\Transformer\CartOrderTransformer;
 
 /**
  * Class CartOrderTransformerTest.
  */
 class CartOrderTransformerTest extends WebTestCase
 {
-    /**
-     * @var CartInterface
-     *
-     * Cart
-     */
-    protected $cart;
-
-    /**
-     * @var OrderInterface
-     *
-     * Order
-     */
-    protected $order;
-
     /**
      * Load fixtures of these bundles.
      *
@@ -50,47 +35,80 @@ class CartOrderTransformerTest extends WebTestCase
     {
         return [
             'ElcodiCartBundle',
+            'ElcodiProductBundle',
         ];
     }
 
     /**
-     * Setup.
+     * test createFromCart method.
      */
-    public function setUp()
+    public function testCreateOrderFromCart()
     {
-        parent::setUp();
-
-        /**
-         * @var CartOrderTransformer $cartOrderTransformer
-         */
-        $cartOrderTransformer = $this->get('elcodi.transformer.cart_order');
-
         /**
          * @var CartInterface $cart
          */
-        $this->cart = $this->find('cart', 2);
+        $cart = $this->find('cart', 2);
 
         $this
             ->get('elcodi.event_dispatcher.cart')
-            ->dispatchCartLoadEvents($this->cart);
+            ->dispatchCartLoadEvents($cart);
 
-        $this->order = $cartOrderTransformer->createOrderFromCart($this->cart);
-    }
-
-    /**
-     * test createFromCart method when a cart is already ordered.
-     *
-     * @group order
-     */
-    public function testCreateOrderFromCartOrdered()
-    {
         /**
          * @var $order OrderInterface
          */
         $order = $this
             ->get('elcodi.transformer.cart_order')
-            ->createOrderFromCart($this->cart);
+            ->createOrderFromCart($cart);
 
-        $this->assertEquals(2, $order->getOrderLines()->count());
+        $this->assertEquals(2, $order
+            ->getOrderLines()
+            ->count()
+        );
+    }
+
+    /**
+     * Test createFromCart with complex scenario.
+     */
+    public function testCreateOrderFromCartComplex()
+    {
+        $cart = $this->find('cart', 1);
+
+        $this
+            ->get('elcodi.event_dispatcher.cart')
+            ->dispatchCartLoadEvents($cart);
+
+        $cartManager = $this->get('elcodi.manager.cart');
+        $cartManager->addPurchasable(
+            $cart,
+            $this->find('product', 1),
+            1
+        );
+        $cartManager->addPurchasable(
+            $cart,
+            $this->find('product_variant', 1),
+            1
+        );
+        $cartManager->addPurchasable(
+            $cart,
+            $this->find('product_pack', 1),
+            1
+        );
+
+        /**
+         * @var $order OrderInterface
+         */
+        $order = $this
+            ->get('elcodi.transformer.cart_order')
+            ->createOrderFromCart($cart);
+
+        $this->assertEquals(3, $order
+            ->getOrderLines()
+            ->count()
+        );
+
+        $this->assertEquals(7500, $order
+            ->getAmount()
+            ->getAmount()
+        );
     }
 }

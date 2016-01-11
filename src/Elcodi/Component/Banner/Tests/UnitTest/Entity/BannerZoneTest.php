@@ -17,8 +17,8 @@
 
 namespace Elcodi\Component\Banner\Tests\UnitTest\Entity;
 
-use Elcodi\Component\Core\Tests\UnitTest\Entity\AbstractEntityTest;
 use Elcodi\Component\Banner\Entity\BannerZone;
+use Elcodi\Component\Core\Tests\UnitTest\Entity\AbstractEntityTest;
 
 /**
  * Class BannerZoneTest.

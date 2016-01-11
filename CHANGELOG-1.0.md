@@ -8,6 +8,18 @@ https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v1.0.0...v1.0.1
 
+### v1.0.14 (16-12-2015)
+
+Added Product Pack implementation
+Deprecations and improvements for new Symfony versions
+
+#### Release Log
+
+* [`e78b0cf`](https://github.com/elcodi/elcodi/commit/e78b0cf261659a28eb72dc3c8fa0fe963fae85ce) Issue #1042 Deprecated class and service (mmoreram)
+* [`ed88f83`](https://github.com/elcodi/elcodi/commit/ed88f8384cf5049c91da214adf4ed66c296f53f4) Added Product Pack (mmoreram)
+* [`79b183b`](https://github.com/elcodi/elcodi/commit/79b183be8a43d793178348b46589592c795ee7aa) Moved form type name into `getBlockPrefix` (Emanuele Minotto)
+* [`e198ed9`](https://github.com/elcodi/elcodi/commit/e198ed9bd9ce794103dcdd778b86c9c2c9c06d0e) Implemented tests for Banner component (Emanuele Minotto)
+
 ### v1.0.13 (11-12-2015)
 
 Adding extra layer of cache when bundles are resolved on tests
