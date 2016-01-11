@@ -4,31 +4,28 @@ sudo: false
 
 cache:
   directories:
-    - vendor
     - $HOME/.composer/cache
-    - /tmp/Elcodi/
 
-php:
-  - 5.4
-  - 5.5
-  - 5.6
-  - hhvm
-  - 7.0
-
-env:
-  global:
-    - secure: b4fh7VMvVktVPsMY9Z8/YOHXWoSGrl/caETmnYsuF3dTV3eOLIQxtP9eW58JBpH14CBLxzbs8D7l2bcvHShsU946Pgxn58xAWO4QLSiZtEJGOB/bVu2s7V/ckEmzbCc83TRiDb4EBaMWLoFWRQn87m00zky4URtDjMGjGgdAfOA=
+matrix:
+  include:
+    - php: 5.4
+    - php: 5.5
+    - php: 5.6
+    - php: 7.0
+    - php: hhvm
+    - php: nightly
+  allow_failures:
+    - php: nightly
 
 before_install:
-  - 'if [[ $TRAVIS_PHP_VERSION != "hhvm" && $TRAVIS_PHP_VERSION != "7.0" ]]; then phpenv config-rm xdebug.ini; fi;'
   - composer self-update
+  - composer config preferred-install source
   - 'if [[ -n "$GH_TOKEN" ]]; then composer config github-oauth.github.com ${GH_TOKEN}; fi;'
+  - 'if [[ -n "$GH_TOKEN" ]]; then composer config preferred-install dist; fi;'
 
-install:
-  - composer install --prefer-dist --no-interaction --no-progress
+install: composer install --no-interaction --no-progress
 
-script:
-  - vendor/bin/phpunit
+script: vendor/bin/phpunit -v
 
 after_success:
   - 'if [[ $TRAVIS_PULL_REQUEST == "false" && $TRAVIS_BRANCH == "master" && $TRAVIS_PHP_VERSION == "5.6" ]]; then sh generate-api.sh; fi;'
