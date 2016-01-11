@@ -32,7 +32,7 @@ class ReferrerSessionEventListener
     public function updateSessionReferrer(GetResponseEvent $event)
     {
         if (!$event->isMasterRequest()) {
-            return null;
+            return;
         }
 
         $server = $event

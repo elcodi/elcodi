@@ -17,8 +17,8 @@
 
 namespace Elcodi\Component\Core\Services;
 
+use Doctrine\Common\Persistence\AbstractManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 
 /**
@@ -27,7 +27,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 class ManagerProvider
 {
     /**
-     * @var ManagerRegistry
+     * @var AbstractManagerRegistry
      *
      * Manager
      */
@@ -43,11 +43,11 @@ class ManagerProvider
     /**
      * Construct method.
      *
-     * @param ManagerRegistry $manager      Manager
-     * @param ParameterBag    $parameterBag Parameter bag
+     * @param AbstractManagerRegistry $manager      Manager
+     * @param ParameterBag            $parameterBag Parameter bag
      */
     public function __construct(
-        ManagerRegistry $manager,
+        AbstractManagerRegistry $manager,
         ParameterBag $parameterBag
     ) {
         $this->manager = $manager;
