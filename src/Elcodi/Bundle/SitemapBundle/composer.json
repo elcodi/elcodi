@@ -46,7 +46,7 @@
         "elcodi/test-common-bundle": "^1.0",
         "elcodi/fixtures-booster-bundle": "^1.0",
         "doctrine/data-fixtures": "^1.1",
-        "phpunit/phpunit": "4.5.0"
+        "phpunit/phpunit": "4.8.19"
     },
     "autoload": {
         "exclude-from-classmap": [
