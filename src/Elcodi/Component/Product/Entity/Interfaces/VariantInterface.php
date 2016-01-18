@@ -86,4 +86,25 @@ interface VariantInterface
      * @return $this Self object
      */
     public function removeOption(ValueInterface $option);
+
+    /**
+     * Get categories.
+     *
+     * @return Collection Categories
+     */
+    public function getCategories();
+
+    /**
+     * Get the principalCategory.
+     *
+     * @return CategoryInterface Principal category
+     */
+    public function getPrincipalCategory();
+
+    /**
+     * Product manufacturer.
+     *
+     * @return ManufacturerInterface Manufacturer
+     */
+    public function getManufacturer();
 }

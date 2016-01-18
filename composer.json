@@ -64,7 +64,7 @@
         "mmoreram/symfony-bundle-dependencies": "^1.1.1",
 
         "sebastian/money": "^1.5",
-        "knplabs/knp-gaufrette-bundle": "^0.1.7",
+        "knplabs/knp-gaufrette-bundle": "^0.3.0",
         "predis/predis": "^1.0.1",
         "ircmaxell/password-compat": "^1.0",
         "guzzlehttp/guzzle": "^5.2",

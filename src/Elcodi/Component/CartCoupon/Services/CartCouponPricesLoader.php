@@ -18,11 +18,10 @@
 namespace Elcodi\Component\CartCoupon\Services;
 
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
-use Elcodi\Component\Coupon\ElcodiCouponTypes;
+use Elcodi\Component\CartCoupon\Applicator\CartCouponApplicatorCollector;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
-use Elcodi\Component\Currency\Services\CurrencyConverter;
 use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 
 /**
@@ -45,13 +44,6 @@ class CartCouponPricesLoader
     private $cartCouponManager;
 
     /**
-     * @var CurrencyConverter
-     *
-     * Currency converter
-     */
-    private $currencyConverter;
-
-    /**
      * @var CurrencyWrapper
      *
      * Currency Wrapper
@@ -59,20 +51,27 @@ class CartCouponPricesLoader
     private $currencyWrapper;
 
     /**
+     * @var CartCouponApplicatorCollector
+     *
+     * Cart Coupon applicator
+     */
+    private $cartCouponApplicatorCollector;
+
+    /**
      * Construct method.
      *
-     * @param CartCouponManager $cartCouponManager Cart coupon manager
-     * @param CurrencyWrapper   $currencyWrapper   Currency wrapper
-     * @param CurrencyConverter $currencyConverter Currency converter
+     * @param CartCouponManager             $cartCouponManager             Cart coupon manager
+     * @param CurrencyWrapper               $currencyWrapper               Currency wrapper
+     * @param CartCouponApplicatorCollector $cartCouponApplicatorCollector Cart Coupon applicator
      */
     public function __construct(
         CartCouponManager $cartCouponManager,
         CurrencyWrapper $currencyWrapper,
-        CurrencyConverter $currencyConverter
+        CartCouponApplicatorCollector $cartCouponApplicatorCollector
     ) {
         $this->cartCouponManager = $cartCouponManager;
         $this->currencyWrapper = $currencyWrapper;
-        $this->currencyConverter = $currencyConverter;
+        $this->cartCouponApplicatorCollector = $cartCouponApplicatorCollector;
     }
 
     /**
@@ -111,6 +110,10 @@ class CartCouponPricesLoader
      * If the type of the coupon is not valid, then an empty Money instance will
      * be returned, with value 0.
      *
+     * @deprecated since version 1.1.0, to be removed in 2.0.0. Use
+     *             CartCouponApplicatorCollector::getCouponAbsoluteValue
+     *             instead.
+     *
      * @param CartInterface   $cart   Abstract Cart object
      * @param CouponInterface $coupon Coupon
      *
@@ -120,39 +123,11 @@ class CartCouponPricesLoader
         CartInterface $cart,
         CouponInterface $coupon
     ) {
-        $currency = $this
-            ->currencyWrapper
-            ->get();
-
-        $couponPrice = Money::create(
-            0,
-            $currency
-        );
-
-        switch ($coupon->getType()) {
-
-            case ElcodiCouponTypes::TYPE_PERCENT:
-
-                $couponPercent = $coupon->getDiscount();
-
-                $couponPrice = $cart
-                    ->getProductAmount()
-                    ->multiply($couponPercent / 100);
-                break;
-
-            case ElcodiCouponTypes::TYPE_AMOUNT:
-
-                $amount = $coupon->getPrice();
-
-                $couponPrice = $this
-                    ->currencyConverter
-                    ->convertMoney(
-                        $amount,
-                        $currency
-                    );
-                break;
-        }
-
-        return $couponPrice;
+        return $this
+            ->cartCouponApplicatorCollector
+            ->getCouponAbsoluteValue(
+                $cart,
+                $coupon
+            );
     }
 }

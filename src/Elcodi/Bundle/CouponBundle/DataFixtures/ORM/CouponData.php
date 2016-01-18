@@ -22,8 +22,10 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Elcodi\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
+use Elcodi\Component\CartCoupon\Applicator\AbsoluteCartCouponApplicator;
+use Elcodi\Component\CartCoupon\Applicator\Abstracts\AbstractMxNCartCouponApplicator;
+use Elcodi\Component\CartCoupon\Applicator\PercentCartCouponApplicator;
 use Elcodi\Component\Core\Services\ObjectDirector;
-use Elcodi\Component\Coupon\ElcodiCouponTypes;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
 use Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface;
 use Elcodi\Component\Currency\Entity\Money;
@@ -60,7 +62,7 @@ class CouponData extends AbstractFixture implements DependentFixtureInterface
             ->create()
             ->setCode('percent')
             ->setName('10 percent discount')
-            ->setType(ElcodiCouponTypes::TYPE_PERCENT)
+            ->setType(PercentCartCouponApplicator::id())
             ->setDiscount(12)
             ->setCount(100)
             ->setValidFrom(new DateTime())
@@ -86,7 +88,7 @@ class CouponData extends AbstractFixture implements DependentFixtureInterface
             ->create()
             ->setCode('amount')
             ->setName('5 USD discount')
-            ->setType(ElcodiCouponTypes::TYPE_AMOUNT)
+            ->setType(AbsoluteCartCouponApplicator::id())
             ->setPrice(Money::create(500, $currency))
             ->setCount(20)
             ->setValidFrom(new DateTime());
@@ -108,7 +110,7 @@ class CouponData extends AbstractFixture implements DependentFixtureInterface
             ->create()
             ->setCode('stackable-percent')
             ->setName('12 percent discount - stackable')
-            ->setType(ElcodiCouponTypes::TYPE_PERCENT)
+            ->setType(PercentCartCouponApplicator::id())
             ->setDiscount(12)
             ->setCount(100)
             ->setStackable(true)
@@ -134,13 +136,38 @@ class CouponData extends AbstractFixture implements DependentFixtureInterface
             ->create()
             ->setCode('stackable-amount')
             ->setName('2 USD discount - stackable')
-            ->setType(ElcodiCouponTypes::TYPE_AMOUNT)
+            ->setType(AbsoluteCartCouponApplicator::id())
             ->setPrice(Money::create(200, $currency))
             ->setCount(20)
             ->setStackable(true)
             ->setValidFrom(new DateTime());
         $couponDirector->save($stackableCouponAmount);
         $this->addReference('stackable-coupon-amount', $stackableCouponAmount);
+
+        /**
+         * Coupon MxN. Valid for products with category 1.
+         *
+         * Valid from now without expire time
+         *
+         * Customer only can redeem it n times in all life
+         *
+         * Only 20 available
+         *
+         * Prices are stored in cents. @see \Elcodi\Component\Currency\Entity\Money
+         *
+         * @var CouponInterface $couponAmount
+         */
+        $coupon2x1Category1 = $couponDirector
+            ->create()
+            ->setCode('2x1category1')
+            ->setEnabled(true)
+            ->setName('2x1 in products from category1')
+            ->setType(AbstractMxNCartCouponApplicator::id())
+            ->setValue('2x1:cat(1):P')
+            ->setCount(20)
+            ->setValidFrom(new DateTime());
+        $couponDirector->save($coupon2x1Category1);
+        $this->addReference('coupon-2x1-category1', $coupon2x1Category1);
     }
 
     /**

@@ -131,6 +131,7 @@ class CouponManager
             ->setMinimumPurchase($coupon->getMinimumPurchase())
             ->setValidFrom($dateFrom)
             ->setValidTo($dateTo)
+            ->setValue($coupon->getValue())
             ->setRule($coupon->getRule())
             ->setEnforcement($coupon->getEnforcement())
             ->setEnabled(true);
