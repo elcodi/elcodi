@@ -8,6 +8,26 @@ https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v1.0.0...v1.0.1
 
+### v1.0.15 (18-01-2016)
+
+Created infrastructure for Image Resolver
+Some test coverage for entities
+
+#### Release Log
+
+* [`f5a8505`](https://github.com/elcodi/elcodi/commit/f5a850565d77f1bd0e711117ec8f001529fbd358) fixed appveyor ci reference (Emanuele Minotto)
+* [`6dd05ee`](https://github.com/elcodi/elcodi/commit/6dd05ee9c237c33e132fad11e98b169f835e98a7) Updated .travis to explicitely test some versions (mmoreram)
+* [`9e77168`](https://github.com/elcodi/elcodi/commit/9e771681d39c39dc40995b1f98db925f9b291dea) Deleted humans (mmoreram)
+* [`550395f`](https://github.com/elcodi/elcodi/commit/550395f900acf455355d4e1a374d1d5a5f8b1eb3) Updated headers with new year (mmoreram)
+* [`d4883f4`](https://github.com/elcodi/elcodi/commit/d4883f40bf7179866fdffd29304c401b34a688a4) Updated all PHPUnit deps in packages (mmoreram)
+* [`2f0c04e`](https://github.com/elcodi/elcodi/commit/2f0c04e963c91b6fdd901a7e2c3703d18d273b66) Reduced elcodi/core dependencies (mmoreram)
+* [`b212a8f`](https://github.com/elcodi/elcodi/commit/b212a8f285b147b2c71902efd8da7f4d9ae0a750) Added entities tests. Related to #1038 (mmoreram)
+* [`3e2e1fd`](https://github.com/elcodi/elcodi/commit/3e2e1fd39cf6e4f9626401ec49850bd8db9ed780) fixed scripts (Emanuele Minotto)
+* [`e4f029a`](https://github.com/elcodi/elcodi/commit/e4f029ab0d8926015ad3d10db54476ff45c97aaa) added installation preference based on GH_TOKEN env (Emanuele Minotto)
+* [`84bafe1`](https://github.com/elcodi/elcodi/commit/84bafe1ebaff0630a2a3552c774fec98189978be) Avoid saving translation if form is invalid (Berny Cantos)
+* [`1d990e5`](https://github.com/elcodi/elcodi/commit/1d990e520572066025560267292722bea0c9c1e3) Image Resolver for purchasable entities (mmoreram)
+* [`c530d34`](https://github.com/elcodi/elcodi/commit/c530d348d21eb718f54fac6a5cabef0d57326a9b) Deprecated class PurchasableNameResolver (mmoreram)
+
 ### v1.0.14 (16-12-2015)
 
 Added Product Pack implementation
