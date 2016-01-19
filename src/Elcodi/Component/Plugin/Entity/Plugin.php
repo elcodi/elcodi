@@ -368,4 +368,12 @@ class Plugin
             $enabled
         );
     }
+
+    /**
+     * @return bool
+     */
+    public function exists()
+    {
+        return class_exists($this->getNamespace());
+    }
 }
