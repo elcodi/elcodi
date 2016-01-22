@@ -20,6 +20,11 @@ See the [front-end store](http://bamboo.elcodi.com) and the
 [back-office](http://bamboo.elcodi.com/admin) demo application in action, and 
 check out the source code for [Bamboo](https://github.com/elcodi/bamboo).
 
+Elcodi was awarded as the **Best Open Source** project of 2015 by the Symfony
+Community awards.
+
+![Best Open Source](http://awards.symfony.com/images/badges/business/open_source.png)
+
 Requirements
 ------------
 
