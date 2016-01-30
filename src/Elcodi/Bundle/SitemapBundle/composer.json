@@ -39,12 +39,12 @@
         "symfony/dependency-injection": "^2.7|^3.0",
         "mmoreram/symfony-bundle-dependencies": "^1.1.1",
 
-        "elcodi/core-bundle": "^1.0",
-        "elcodi/sitemap": "^1.0"
+        "elcodi/core-bundle": "^2.0",
+        "elcodi/sitemap": "^2.0"
     },
     "require-dev": {
-        "elcodi/test-common-bundle": "^1.0",
-        "elcodi/fixtures-booster-bundle": "^1.0",
+        "elcodi/test-common-bundle": "^2.0",
+        "elcodi/fixtures-booster-bundle": "^2.0",
         "doctrine/data-fixtures": "^1.1",
         "phpunit/phpunit": "4.8.19"
     },
