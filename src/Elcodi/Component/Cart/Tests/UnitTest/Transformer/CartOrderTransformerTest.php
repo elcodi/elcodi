@@ -129,7 +129,6 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
         $cart = new Cart();
         $cart
             ->setCustomer($customer)
-            ->setQuantity(10)
             ->setPurchasableAmount(Money::create(20, $currency))
             ->setCouponAmount(Money::create(0, $currency))
             ->setAmount(Money::create(20, $currency))
@@ -172,7 +171,6 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
         $cart = new Cart();
         $cart
             ->setCustomer($customer)
-            ->setQuantity(10)
             ->setPurchasableAmount(Money::create(20, $currency))
             ->setCouponAmount(Money::create(0, $currency))
             ->setOrder($order)

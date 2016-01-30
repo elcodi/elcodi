@@ -296,34 +296,6 @@ class Cart implements CartInterface
     }
 
     /**
-     * Set quantity.
-     *
-     * @deprecated since version 1.0.8, to be removed in 2.0.0.
-     *
-     * @param int $quantity Quantity
-     *
-     * @return $this Self object
-     */
-    public function setQuantity($quantity)
-    {
-        $this->quantity = $quantity;
-
-        return $this;
-    }
-
-    /**
-     * Get quantity.
-     *
-     * @deprecated since version 1.0.8, to be removed in 2.0.0. Use getTotalItemNumber()
-     *
-     * @return int Quantity
-     */
-    public function getQuantity()
-    {
-        return $this->quantity;
-    }
-
-    /**
      * Return the total amount of items added to the Cart.
      *
      * @return int

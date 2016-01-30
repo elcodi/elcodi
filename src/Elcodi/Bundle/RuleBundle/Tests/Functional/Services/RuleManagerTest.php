@@ -61,10 +61,10 @@ class RuleManagerTest extends WebTestCase
     public function testEvaluateSimpleRule()
     {
         $rule = new Rule();
-        $rule->setExpression('cart.getQuantity() < 10');
+        $rule->setExpression('cart.getTotalItemNumber() < 10');
 
         $cart = $this->getMock('Elcodi\Component\Cart\Entity\Interfaces\CartInterface');
-        $cart->expects($this->any())->method('getQuantity')->willReturn(5);
+        $cart->expects($this->any())->method('getTotalItemNumber')->willReturn(5);
 
         $context = [
             'cart' => $cart,
@@ -89,7 +89,7 @@ class RuleManagerTest extends WebTestCase
 
         $cart = $this->getMock('Elcodi\Component\Cart\Entity\Interfaces\CartInterface');
         $cart->expects($this->any())->method('getAmount')->willReturn($amount);
-        $cart->expects($this->any())->method('getQuantity')->willReturn($quantity);
+        $cart->expects($this->any())->method('getTotalItemNumber')->willReturn($quantity);
 
         $context = [
             'cart' => $cart,
@@ -99,7 +99,7 @@ class RuleManagerTest extends WebTestCase
     }
 
     /**
-     * Tests for "cart.getAmount() > 1000 and cart.getQuantity() < 10".
+     * Tests for "cart.getAmount() > 1000 and cart.getTotalItemNumber() < 10".
      *
      * @return array
      */

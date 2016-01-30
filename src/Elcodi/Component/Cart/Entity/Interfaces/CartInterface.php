@@ -198,26 +198,6 @@ interface CartInterface
     public function isOrdered();
 
     /**
-     * Sets the number of items on this cart.
-     *
-     * @deprecated since version 1.0.8, to be removed in 2.0.0.
-     *
-     * @param int $quantity Quantity
-     *
-     * @return $this Self object
-     */
-    public function setQuantity($quantity);
-
-    /**
-     * Gets the number of items on this cart.
-     *
-     * @deprecated since version 1.0.8, to be removed in 2.0.0. Use getTotalItemNumber()
-     *
-     * @return int Quantity
-     */
-    public function getQuantity();
-
-    /**
      * Return the total amount of items added to the Cart.
      *
      * @return int
