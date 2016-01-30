@@ -31,7 +31,7 @@ use Elcodi\Component\Cart\Services\CartManager;
 use Elcodi\Component\Cart\Wrapper\CartWrapper;
 use Elcodi\Component\Currency\Entity\Currency;
 use Elcodi\Component\Currency\Entity\Money;
-use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
+use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 
 /**
  * Class CartManagerTest.
@@ -113,7 +113,7 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         $cart->setCartLines(new ArrayCollection());
         $this->assertEquals(0, $cart->getTotalItemNumber());
         $purchaseable = $this->getMock(
-            'Elcodi\Component\Product\Entity\Interfaces\ProductInterface'
+            'Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface'
         );
 
         $this->cartLineFactory
@@ -239,16 +239,16 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
         $cartLine->setCart($cart);
 
         /**
-         * @var ProductInterface $product
+         * @var PurchasableInterface $purchasable
          */
-        $product = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\ProductInterface');
+        $purchasable = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface');
         $cartLine->setQuantity($initialQuantity);
-        $cartLine->setProduct($product);
+        $cartLine->setPurchasable($purchasable);
         $cart->setCartLines(new ArrayCollection([
             $cartLine,
         ]));
 
-        $this->cartManager->editCartLine($cartLine, $product, $newQuantity);
+        $this->cartManager->editCartLine($cartLine, $purchasable, $newQuantity);
         $this->assertEquals($finalQuantity, $cartLine->getQuantity());
     }
 
@@ -364,37 +364,37 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * addProduct.
+     * addPurchasable.
      *
-     * @dataProvider dataAddProduct
+     * @dataProvider dataAddPurchasable
      * @group        cart
      */
-    public function testAddProduct($quantity, $productCreated, $quantityExpected)
+    public function testAddPurchasable($quantity, $purchasableCreated, $quantityExpected)
     {
         $cartLine = new CartLine();
         $this->cartLineFactory
-            ->expects($this->exactly(intval($productCreated)))
+            ->expects($this->exactly(intval($purchasableCreated)))
             ->method('create')
             ->will($this->returnValue($cartLine));
 
         /**
-         * @var ProductInterface $product
+         * @var PurchasableInterface $purchasable
          */
-        $product = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\ProductInterface');
+        $purchasable = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface');
         $cart = new Cart();
         $cart->setCartLines(new ArrayCollection());
 
         $this
             ->cartManager
-            ->addPurchasable($cart, $product, $quantity);
+            ->addPurchasable($cart, $purchasable, $quantity);
 
-        if ($productCreated) {
+        if ($purchasableCreated) {
             $createdLine = $cart->getCartLines()->first();
-            $createdProduct = $createdLine->getProduct();
+            $createdPurchasable = $createdLine->getPurchasable();
 
             $this->assertCount(1, $cart->getCartLines());
             $this->assertInstanceOf('Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface', $createdLine);
-            $this->assertSame($createdProduct, $product);
+            $this->assertSame($createdPurchasable, $purchasable);
             $this->assertEquals($createdLine->getQuantity(), $quantityExpected);
         } else {
             $this->assertCount(0, $cart->getCartLines());
@@ -402,9 +402,9 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Data provider for testAddProduct.
+     * Data provider for testAddPurchasable.
      */
-    public function dataAddProduct()
+    public function dataAddPurchasable()
     {
         return [
             [1, true, 1],
@@ -420,135 +420,48 @@ class CartManagerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Testing that when I add a product with id 1 and a variant with the same
-     * id (1), new variant is added into the cart, instead of incrementing first
-     * mentioned product.
-     */
-    public function testAddProductAndVariantSameId()
-    {
-        /**
-         * @var CartEventDispatcher     $cartEventDispatcher
-         * @var CartLineEventDispatcher $cartLineEventDispatcher
-         * @var CartFactory             $cartFactory
-         * @var CartLineFactory         $cartLineFactory
-         * @var CartWrapper             $cartWrapper
-         */
-        $emptyMoneyWrapper = $this->getMock('Elcodi\Component\Currency\Wrapper\EmptyMoneyWrapper', [], [], '', false);
-        $currency = new Currency();
-        $currency->setIso('EUR');
-        $emptyMoneyWrapper
-            ->expects($this->any())
-            ->method('get')
-            ->willReturn(Money::create(0, $currency));
-
-        $cartEventDispatcher = $this->getMock('Elcodi\Component\Cart\EventDispatcher\CartEventDispatcher', [], [], '', false);
-        $cartLineEventDispatcher = $this->getMock('Elcodi\Component\Cart\EventDispatcher\CartLineEventDispatcher', [], [], '', false);
-        $cartFactory = $this->getMock('Elcodi\Component\Cart\Factory\CartFactory', ['create'], [$emptyMoneyWrapper]);
-        $cartLineFactory = $this->getMock('Elcodi\Component\Cart\Factory\CartLineFactory', ['create'], [$emptyMoneyWrapper]);
-
-        $cartLineFactory
-            ->expects($this->any())
-            ->method('create')
-            ->willReturn(new CartLine());
-
-        $cartManager = $this
-            ->getMockBuilder('Elcodi\Component\Cart\Services\CartManager')
-            ->setMethods([
-                'increaseCartLineQuantity',
-            ])
-            ->setConstructorArgs([
-                $cartEventDispatcher,
-                $cartLineEventDispatcher,
-                $cartFactory,
-                $cartLineFactory,
-            ])
-            ->getMock();
-
-        $cart = $this->getMock('Elcodi\Component\Cart\Entity\Interfaces\CartInterface');
-        $cartLine = $this->getMock('Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface');
-        $product = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\ProductInterface');
-        $variant = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\VariantInterface');
-
-        $product
-            ->expects($this->any())
-            ->method('getId')
-            ->willReturn(1);
-
-        $variant
-            ->expects($this->any())
-            ->method('getId')
-            ->willReturn(1);
-
-        $variant
-            ->expects($this->any())
-            ->method('getProduct')
-            ->willReturn($this->getMock('Elcodi\Component\Product\Entity\Interfaces\ProductInterface'));
-
-        $cartLine
-            ->expects($this->any())
-            ->method('getPurchasable')
-            ->willReturn($product);
-
-        $cart
-            ->expects($this->any())
-            ->method('getCartLines')
-            ->willReturn(new ArrayCollection([$cartLine]));
-
-        $cartManager
-            ->expects($this->never())
-            ->method('increaseCartLineQuantity');
-
-        $cartManager
-            ->addPurchasable(
-                $cart,
-                $variant,
-                1
-            );
-    }
-
-    /**
-     * removeProduct.
+     * removePurchasable.
      *
-     * @dataProvider dataRemoveProduct
+     * @dataProvider dataRemovePurchasable
      * @group        cart
      */
-    public function testRemoveProduct($quantity, $productId, $quantityExpected)
+    public function testRemovePurchasable($quantity, $purchasableId, $quantityExpected)
     {
         /**
-         * @var ProductInterface $product
+         * @var PurchasableInterface $purchasable
          */
-        $product = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\ProductInterface');
-        $productToRemove = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\ProductInterface');
+        $purchasable = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface');
+        $purchasableToRemove = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface');
 
-        $product
+        $purchasable
             ->expects($this->any())
             ->method('getId')
             ->willReturn('1001');
 
         $cart = new Cart();
         $cartLine = new CartLine();
-        $cartLine->setPurchasable($product);
+        $cartLine->setPurchasable($purchasable);
         $cart->setCartLines(new ArrayCollection([$cartLine]));
         $cartLine->setCart($cart);
 
         $this->assertCount(1, $cart->getCartLines());
 
-        $productToRemove
+        $purchasableToRemove
             ->expects($this->any())
             ->method('getId')
-            ->willReturn($productId);
+            ->willReturn($purchasableId);
 
         $this
             ->cartManager
-            ->removePurchasable($cart, $productToRemove, $quantity);
+            ->removePurchasable($cart, $purchasableToRemove, $quantity);
 
         $this->assertCount($quantityExpected, $cart->getCartLines());
     }
 
     /**
-     * Data provider for testRemoveProduct.
+     * Data provider for testRemovePurchasable.
      */
-    public function dataRemoveProduct()
+    public function dataRemovePurchasable()
     {
         return [
             [1, 1001, 0],

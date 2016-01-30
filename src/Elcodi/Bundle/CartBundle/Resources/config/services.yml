@@ -24,9 +24,6 @@ services:
             - '@elcodi.wrapper.currency'
             - '@elcodi.converter.currency'
 
-    elcodi.loader.cart_purchasable_quantity:
-        class: Elcodi\Component\Cart\Services\CartPurchasablesQuantityLoader
-
     elcodi.cart_saver:
         class: Elcodi\Component\Cart\Services\CartSaver
         arguments:

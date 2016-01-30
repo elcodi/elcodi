@@ -108,8 +108,7 @@ class MxNGroupCartCouponApplicator extends AbstractMxNCartCouponApplicator
                 ? 1
                 : -1;
         });
-
-        $groups = $totalElements / $m;
+        $groups = floor($totalElements / $m);
         if ($groups > 0) {
             $nbMoneys = $groups * $freePerGroup;
             $moneysToDiscount = array_slice($moneys, 0, $nbMoneys);

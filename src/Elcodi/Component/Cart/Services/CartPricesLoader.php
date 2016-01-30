@@ -29,7 +29,7 @@ use Elcodi\Component\Currency\Services\CurrencyConverter;
  *
  * Api Methods:
  *
- * * loadCartProductsAmount(CartInterface)
+ * * loadCartPurchasablesAmount(CartInterface)
  * * loadCartTotalAmount(CartInterface)
  *
  * @api
@@ -65,20 +65,20 @@ class CartPricesLoader
     }
 
     /**
-     * Load cart products prices.
+     * Load cart purchasables prices.
      *
      * @param CartInterface $cart Cart
      */
-    public function loadCartProductsAmount(CartInterface $cart)
+    public function loadCartPurchasablesAmount(CartInterface $cart)
     {
         $currency = $this
             ->currencyWrapper
             ->get();
 
-        $productAmount = Money::create(0, $currency);
+        $purchasableAmount = Money::create(0, $currency);
 
         /**
-         * Calculate Amount and ProductAmount.
+         * Calculate Amount and PurchasableAmount.
          */
         foreach ($cart->getCartLines() as $cartLine) {
 
@@ -88,23 +88,23 @@ class CartPricesLoader
             $cartLine = $this->loadCartLinePrices($cartLine);
 
             /**
-             * @var MoneyInterface $productAmount
+             * @var MoneyInterface $purchasableAmount
              * @var MoneyInterface $totalAmount
              */
-            $convertedProductAmount = $this
+            $convertedPurchasableAmount = $this
                 ->currencyConverter
                 ->convertMoney(
-                    $cartLine->getProductAmount(),
+                    $cartLine->getPurchasableAmount(),
                     $currency
                 );
 
-            $productAmount = $productAmount
-                ->add($convertedProductAmount->multiply(
+            $purchasableAmount = $purchasableAmount
+                ->add($convertedPurchasableAmount->multiply(
                     $cartLine->getQuantity()
                 ));
         }
 
-        $cart->setProductAmount($productAmount);
+        $cart->setPurchasableAmount($purchasableAmount);
     }
 
     /**
@@ -118,7 +118,7 @@ class CartPricesLoader
             ->currencyWrapper
             ->get();
 
-        $finalAmount = clone $cart->getProductAmount();
+        $finalAmount = clone $cart->getPurchasableAmount();
 
         /**
          * Calculates the shipping amount.
@@ -162,22 +162,22 @@ class CartPricesLoader
     private function loadCartLinePrices(CartLineInterface $cartLine)
     {
         $purchasable = $cartLine->getPurchasable();
-        $productPrice = $purchasable->getPrice();
+        $purchasablePrice = $purchasable->getPrice();
 
         /**
-         * If present, reducedPrice will be used as product price in current CartLine.
+         * If present, reducedPrice will be used as purchasable price in current CartLine.
          */
         if ($purchasable->getReducedPrice()->getAmount() > 0) {
-            $productPrice = $purchasable->getReducedPrice();
+            $purchasablePrice = $purchasable->getReducedPrice();
         }
 
         /**
          * Setting amounts for current CartLine.
          *
-         * Line Currency was set by CartManager::addProduct when factorizing CartLine
+         * Line Currency was set by CartManager::addPurchasable when factorizing CartLine
          */
-        $cartLine->setProductAmount($productPrice);
-        $cartLine->setAmount($productPrice->multiply($cartLine->getQuantity()));
+        $cartLine->setPurchasableAmount($purchasablePrice);
+        $cartLine->setAmount($purchasablePrice->multiply($cartLine->getQuantity()));
 
         return $cartLine;
     }

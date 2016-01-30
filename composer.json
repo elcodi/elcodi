@@ -95,7 +95,6 @@
         "elcodi/state-transition-machine-bundle": "self.version",
         "elcodi/page-bundle": "self.version",
         "elcodi/entity-translator-bundle": "self.version",
-        "elcodi/configuration-bundle": "self.version",
         "elcodi/sitemap-bundle": "self.version",
         "elcodi/metric-bundle": "self.version",
         "elcodi/plugin-bundle": "self.version",
@@ -126,7 +125,6 @@
         "elcodi/state-transition-machine": "self.version",
         "elcodi/page": "self.version",
         "elcodi/entity-translator": "self.version",
-        "elcodi/configuration": "self.version",
         "elcodi/sitemap": "self.version",
         "elcodi/metric": "self.version",
         "elcodi/plugin": "self.version",
@@ -149,7 +147,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0-dev"
+            "dev-master": "2.0-dev"
         }
     },
     "scripts": {

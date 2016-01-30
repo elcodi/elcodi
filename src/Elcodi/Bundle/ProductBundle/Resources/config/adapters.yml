@@ -6,4 +6,4 @@ services:
     elcodi.related_purchasables_provider.same_category:
         class: Elcodi\Component\Product\Adapter\SimilarPurchasablesProvider\SameCategoryRelatedPurchasableProvider
         arguments:
-            - '@elcodi.repository.product'
+            - '@elcodi.repository.purchasable'

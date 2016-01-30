@@ -48,36 +48,31 @@ class MxNCartCouponApplicatorTest extends WebTestCase
         $value,
         $result
     ) {
-        $this->reloadScenario();
+        $cartManager = $this->get('elcodi.manager.cart');
+        $cartCouponManager = $this->get('elcodi.manager.cart_coupon');
+        $cart = $this->find('cart', 1);
 
-        $cart = $this->find('cart', 2);
         $this
             ->get('elcodi.event_dispatcher.cart')
             ->dispatchCartLoadEvents($cart);
 
-        $this
-            ->get('elcodi.manager.cart')
-            ->addPurchasable(
-                $cart,
-                $this->find('product', 3),
-                4
-            );
+        $cartManager->addPurchasable(
+            $cart,
+            $this->find('purchasable', 3),
+            4
+        );
 
-        $this
-            ->get('elcodi.manager.cart')
-            ->addPurchasable(
-                $cart,
-                $this->find('product_variant', 3),
-                2
-            );
+        $cartManager->addPurchasable(
+            $cart,
+            $this->find('purchasable', 7),
+            2
+        );
 
-        $this
-            ->get('elcodi.manager.cart')
-            ->addPurchasable(
-                $cart,
-                $this->find('product_pack', 1),
-                3
-            );
+        $cartManager->addPurchasable(
+            $cart,
+            $this->find('purchasable', 9),
+            3
+        );
 
         $coupon = $this
             ->getRepository('coupon')
@@ -86,16 +81,23 @@ class MxNCartCouponApplicatorTest extends WebTestCase
             );
 
         $coupon->setValue($value);
-        $this
-            ->get('elcodi.manager.cart_coupon')
-            ->addCoupon(
-                $cart,
-                $coupon
-            );
+        $cartCouponManager->addCoupon(
+            $cart,
+            $coupon
+        );
 
         $this->assertEquals(
             $result,
             $cart->getAmount()->getAmount()
+        );
+
+        $cartCouponManager->removeCoupon(
+            $cart,
+            $coupon
+        );
+
+        $cartManager->emptyLines(
+            $cart
         );
     }
 
@@ -107,34 +109,37 @@ class MxNCartCouponApplicatorTest extends WebTestCase
         return [
 
             // Specific scenarios
-            ['2x1', 15000],
-            ['2x1:m(1)&c(2)&p(3)', 21500],
-            ['2x1:m(1)&c(2)&p(3):P', 23000],
-            ['2x1:m(1)&c(2)&p(3):V', 23500],
-            ['2x1:m(1)&c(2)&p(3):K', 25000],
-            ['2x1:p(1):P', 24000],
-            ['2x1:p(1):K', 20000],
-            ['2x1:c(1)', 25000],
-            ['2x1:c(2)', 15500],
-            ['3x2:c(2)', 19000],
-            ['10x1:c(2)', 9500],
-            ['4x3:c(2)', 24000],
-            ['2x1::V', 23500],
+            ['2x1', 13500],
+            ['2x1:p("3,7,9")', 13500],
+            ['2x1:m(1)&c(2)&p("3,7")', 18500],
+            ['2x1:m(1)&c(2)&p("3,7"):P', 20000],
+            ['2x1:m(1)&c(2)&p("3,7"):V', 20500],
+            ['2x1:m(1)&c(2)&p("3,7"):K', 22000],
+            ['2x1:p(9):P', 22000],
+            ['2x1:p(9):K', 17000],
+            ['2x1:c(1)', 22000],
+            ['2x1:c(2)', 13500],
+            ['3x2:c(2)', 16000],
+            ['10x1:c(2)', 7500],
+            ['4x3:c(2)', 21000],
+            ['2x1::V', 20500],
 
             // Group scenarios (with G modifier)
-            ['2x1:m(1)&c(2)&p(3):G', 22000],
-            ['2x1:m(1)&c(2)&p(3):PG', 23000],
-            ['2x1:m(1)&c(2)&p(3):VG', 23500],
-            ['2x1:m(1)&c(2)&p(3):KG', 25000],
-            ['2x1:p(1):PG', 24000],
-            ['2x1:p(1):KG', 20000],
-            ['2x1:c(1):G', 25000],
-            ['2x1:c(2):G', 20000],
-            ['3x2:c(2):G', 22000],
-            ['10x1:c(2):G', 11000],
-            ['10x2:c(2):G', 16000],
-            ['10x2:c(2):VG', 23500],
-            ['2x1::VG', 23500],
+            ['2x1::G', 18000],
+            ['2x1:m(1)&c(2)&p("3,7"):G', 19000],
+            ['2x1:m(1)&c(2)&p("3,7"):PG', 20000],
+            ['2x1:m(1)&c(2)&p("3,7"):VG', 20500],
+            ['2x1:m(1)&c(2)&p("3,7"):KG', 22000],
+            ['2x1:p(9):PG', 22000],
+            ['2x1:p(9):KG', 17000],
+            ['2x1:c(1):G', 22000],
+            ['2x1:c(2):G', 18000],
+            ['3x2:c(2):G', 19000],
+            ['9x1:c(2):G', 5000],
+            ['9x2:c(2):G', 10000],
+            ['9x2:c(2):VG', 22000],
+            ['10x1:c(2):G', 22000],
+            ['2x1::VG', 20500],
         ];
     }
 }

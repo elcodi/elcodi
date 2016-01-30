@@ -56,6 +56,7 @@ class VariantFactory extends AbstractPurchasableFactory
             ->setWidth(0)
             ->setDepth(0)
             ->setWeight(0)
+            ->setShowInHome(false)
             ->setImagesSort('')
             ->setEnabled(true)
             ->setCreatedAt($this->now());

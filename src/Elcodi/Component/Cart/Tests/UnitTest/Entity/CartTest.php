@@ -96,15 +96,8 @@ class CartTest extends AbstractEntityTest
             ]],
             [[
                 'type' => $this::GETTER_SETTER,
-                'getter' => 'getQuantity',
-                'setter' => 'setQuantity',
-                'value' => 10,
-                'nullable' => false,
-            ]],
-            [[
-                'type' => $this::GETTER_SETTER,
-                'getter' => 'getProductAmount',
-                'setter' => 'setProductAmount',
+                'getter' => 'getPurchasableAmount',
+                'setter' => 'setPurchasableAmount',
                 'value' => 'Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface',
                 'nullable' => false,
             ]],

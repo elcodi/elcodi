@@ -118,8 +118,8 @@ class CartOrderTransformer
         $order
             ->setCustomer($cart->getCustomer())
             ->setCart($cart)
-            ->setQuantity($cart->getQuantity())
-            ->setProductAmount($cart->getProductAmount())
+            ->setQuantity($cart->getTotalItemNumber())
+            ->setPurchasableAmount($cart->getPurchasableAmount())
             ->setShippingAmount($cart->getShippingAmount())
             ->setAmount($cart->getAmount())
             ->setHeight($cart->getHeight())

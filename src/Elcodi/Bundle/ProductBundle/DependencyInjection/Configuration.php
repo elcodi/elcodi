@@ -37,6 +37,13 @@ class Configuration extends AbstractConfiguration
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->append($this->addMappingNode(
+                            'purchasable',
+                            'Elcodi\Component\Product\Entity\Purchasable',
+                            '@ElcodiProductBundle/Resources/config/doctrine/Purchasable.orm.yml',
+                            'default',
+                            true
+                        ))
+                        ->append($this->addMappingNode(
                             'product',
                             'Elcodi\Component\Product\Entity\Product',
                             '@ElcodiProductBundle/Resources/config/doctrine/Product.orm.yml',
@@ -51,7 +58,7 @@ class Configuration extends AbstractConfiguration
                             true
                         ))
                         ->append($this->addMappingNode(
-                            'product_pack',
+                            'purchasable_pack',
                             'Elcodi\Component\Product\Entity\Pack',
                             '@ElcodiProductBundle/Resources/config/doctrine/Pack.orm.yml',
                             'default',

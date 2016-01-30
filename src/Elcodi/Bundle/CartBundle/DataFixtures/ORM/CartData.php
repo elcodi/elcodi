@@ -86,16 +86,16 @@ class CartData extends AbstractFixture implements DependentFixtureInterface
 
         $cartLine1 = $cartLineDirector
             ->create()
-            ->setProduct($product)
-            ->setProductAmount($product->getPrice())
+            ->setPurchasable($product)
+            ->setPurchasableAmount($product->getPrice())
             ->setAmount($product->getPrice())
             ->setQuantity(2)
             ->setCart($fullCart);
 
         $cartLine2 = $cartLineDirector
             ->create()
-            ->setProduct($productReduced)
-            ->setProductAmount($productReduced->getPrice())
+            ->setPurchasable($productReduced)
+            ->setPurchasableAmount($productReduced->getPrice())
             ->setAmount($productReduced->getPrice())
             ->setQuantity(2)
             ->setCart($fullCart);

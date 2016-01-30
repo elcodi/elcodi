@@ -41,13 +41,13 @@ class VariantStockUpdaterTest extends WebTestCase
      */
     public function testUpdateStock()
     {
-        $variant = $this->find('product_variant', 1);
+        $variant = $this->find('product_variant', 6);
         $this->get('elcodi.stock_updater.product_variant')->updateStock(
             $variant,
             20
         );
         $this->clear($variant);
-        $variant = $this->find('product_variant', 1);
+        $variant = $this->find('product_variant', 6);
         $this->assertEquals(
             80,
             $variant->getStock()

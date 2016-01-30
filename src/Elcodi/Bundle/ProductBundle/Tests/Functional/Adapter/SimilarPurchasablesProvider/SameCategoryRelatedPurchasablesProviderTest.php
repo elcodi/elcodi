@@ -46,52 +46,41 @@ class SameCategoryRelatedPurchasablesProviderTest extends WebTestCase
          * @var SameCategoryRelatedPurchasableProvider $relatedPurchasablesProvider
          */
         $relatedPurchasablesProvider = $this->get('elcodi.related_purchasables_provider.same_category');
-        $product = $this->find('product', 1);
+        $purchasable = $this->find('purchasable', 1);
 
         /**
          * Testing when limit 0 is requested.
          */
         $this->assertCount(0, $relatedPurchasablesProvider
-            ->getRelatedPurchasables($product, 0)
+            ->getRelatedPurchasables($purchasable, 0)
         );
 
-        $products = $relatedPurchasablesProvider->getRelatedPurchasables($product, 1);
+        $purchasables = $relatedPurchasablesProvider->getRelatedPurchasables($purchasable, 1);
 
         /**
          * Testing when limit 1 is requested with 1 possible elements. We check
          * as well that is not the same product.
          */
-        $this->assertCount(1, $products);
-        $firstProduct = reset($products);
+        $this->assertCount(1, $purchasables);
+        $firstPurchasable = reset($purchasables);
         $this->assertInstanceOf(
-            'Elcodi\Component\Product\Entity\Interfaces\ProductInterface',
-            $firstProduct
+            'Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface',
+            $firstPurchasable
         );
-        $this->assertEquals(3, $firstProduct->getId());
 
         /**
-         * Testing when limit 2 is requested with 1 possible elements.
+         * Testing when limit 3 is requested with 2 possible elements.
          */
-        $this->assertCount(1, $relatedPurchasablesProvider
-            ->getRelatedPurchasables($product, 2)
+        $this->assertCount(2, $relatedPurchasablesProvider
+            ->getRelatedPurchasables($purchasable, 2)
         );
 
         /**
          * Testing with a non valid purchasable instance.
          */
-        $purchasable = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface');
+        $purchasable3 = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface');
         $this->assertCount(0, $relatedPurchasablesProvider
-            ->getRelatedPurchasables($purchasable, 1)
-        );
-
-        /**
-         * Testing with a Variant object.
-         */
-        $this->assertCount(1, $relatedPurchasablesProvider
-            ->getRelatedPurchasables(
-                $this->find('product_variant', 1),
-                2
-            )
+            ->getRelatedPurchasables($purchasable3, 1)
         );
 
         /**
@@ -99,7 +88,7 @@ class SameCategoryRelatedPurchasablesProviderTest extends WebTestCase
          */
         $this->assertCount(0, $relatedPurchasablesProvider
             ->getRelatedPurchasables(
-                $this->find('product', 2),
+                $this->find('purchasable', 2),
                 1
             )
         );
@@ -108,15 +97,15 @@ class SameCategoryRelatedPurchasablesProviderTest extends WebTestCase
          * For this test, we emulate that product 2 has category 1.
          */
         $category2 = $this->find('category', 2);
-        $product2 = $this->find('product', 2);
-        $product2->setPrincipalCategory($category2);
-        $this->flush($product2);
+        $purchasable2 = $this->find('purchasable', 2);
+        $purchasable2->setPrincipalCategory($category2);
+        $this->flush($purchasable2);
 
         /**
          * Testing when limit 1 is requested with 2 possible elements.
          */
         $this->assertCount(1, $relatedPurchasablesProvider
-            ->getRelatedPurchasables($product, 1)
+            ->getRelatedPurchasables($purchasable, 1)
         );
     }
 
@@ -129,24 +118,24 @@ class SameCategoryRelatedPurchasablesProviderTest extends WebTestCase
          * For this test, we emulate that product 2 has category 1.
          */
         $category1 = $this->find('category', 1);
-        $product2 = $this->find('product', 2);
-        $product2->setPrincipalCategory($category1);
-        $this->flush($product2);
+        $purchasable2 = $this->find('purchasable', 2);
+        $purchasable2->setPrincipalCategory($category1);
+        $this->flush($purchasable2);
 
         /**
          * @var SameCategoryRelatedPurchasableProvider $relatedPurchasablesProvider
          */
         $relatedPurchasablesProvider = $this->get('elcodi.related_purchasables_provider.same_category');
-        $products = [
-            $this->find('product', 1),
-            $this->find('product', 2),
+        $purchasables = [
+            $this->find('purchasable', 1),
+            $this->find('purchasable', 2),
         ];
 
         /**
          * Testing when limit 0 is requested.
          */
         $this->assertCount(0, $relatedPurchasablesProvider
-            ->getRelatedPurchasablesFromArray($products, 0)
+            ->getRelatedPurchasablesFromArray($purchasables, 0)
         );
 
         /**
@@ -154,15 +143,15 @@ class SameCategoryRelatedPurchasablesProviderTest extends WebTestCase
          * total.
          */
         $this->assertCount(1, $relatedPurchasablesProvider
-            ->getRelatedPurchasablesFromArray($products, 1)
+            ->getRelatedPurchasablesFromArray($purchasables, 1)
         );
 
         $this->assertCount(2, $relatedPurchasablesProvider
-            ->getRelatedPurchasablesFromArray($products, 2)
+            ->getRelatedPurchasablesFromArray($purchasables, 2)
         );
 
-        $this->assertCount(2, $relatedPurchasablesProvider
-            ->getRelatedPurchasablesFromArray($products, 3)
+        $this->assertCount(4, $relatedPurchasablesProvider
+            ->getRelatedPurchasablesFromArray($purchasables, 5)
         );
     }
 }
