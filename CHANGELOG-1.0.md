@@ -8,6 +8,16 @@ https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v1.0.0...v1.0.1
 
+### v1.0.16 (30-01-2016)
+
+Added coupons query language
+
+#### Release Log
+
+* [`a25ec80`](https://github.com/elcodi/elcodi/commit/a25ec8023623a19cea109fbb07b3b78ac6a017f5) Added badge (mmoreram)
+* [`c4a2cc4`](https://github.com/elcodi/elcodi/commit/c4a2cc4f5f3ecae8ce473e4a50b4be4d8c81cd9c) [Plugin] Check if plugin really exists before load routing information related to #981 (Miguel Vilata)
+* [`102208f`](https://github.com/elcodi/elcodi/commit/102208f6069e6e546223fc6d2bb05d1b546ac34d) Coupons Query Language (CQL) (mmoreram)
+
 ### v1.0.15 (18-01-2016)
 
 Created infrastructure for Image Resolver
