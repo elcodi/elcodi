@@ -3,6 +3,11 @@ services:
     #
     # Object Managers
     #
+    elcodi.object_manager.purchasable:
+        parent: elcodi.abstract_manager
+        arguments:
+            - %elcodi.entity.purchasable.class%
+
     elcodi.object_manager.product:
         parent: elcodi.abstract_manager
         arguments:
@@ -13,10 +18,10 @@ services:
         arguments:
             - %elcodi.entity.product_variant.class%
 
-    elcodi.object_manager.product_pack:
+    elcodi.object_manager.purchasable_pack:
         parent: elcodi.abstract_manager
         arguments:
-            - %elcodi.entity.product_pack.class%
+            - %elcodi.entity.purchasable_pack.class%
 
     elcodi.object_manager.category:
         parent: elcodi.abstract_manager

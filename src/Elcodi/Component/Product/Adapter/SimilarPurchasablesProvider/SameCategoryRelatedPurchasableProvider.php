@@ -21,35 +21,31 @@ use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Product\Adapter\SimilarPurchasablesProvider\Interfaces\RelatedPurchasablesProviderInterface;
 use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
-use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
-use Elcodi\Component\Product\Entity\Interfaces\VariantInterface;
-use Elcodi\Component\Product\Repository\ProductRepository;
+use Elcodi\Component\Product\Repository\PurchasableRepository;
 
 /**
  * Class SameCategoryRelatedPurchasableProvider.
  *
  * This adapter takes in account only the principal category of the purchasable.
- * If the purchasable is a Product, then its principal category is used.
- * If the purchasable is a Variant, then its product principal category is used.
  */
 class SameCategoryRelatedPurchasableProvider implements RelatedPurchasablesProviderInterface
 {
     /**
-     * @var ProductRepository
+     * @var PurchasableRepository
      *
-     * Product Repository
+     * Purchasable Repository
      */
-    private $productRepository;
+    private $purchasableRepository;
 
     /**
      * Construct method.
      *
-     * @param ProductRepository $productRepository Product Repository
+     * @param PurchasableRepository $purchasableRepository Purchasable Repository
      */
-    public function __construct(ProductRepository $productRepository)
+    public function __construct(PurchasableRepository $purchasableRepository)
     {
-        $this->productRepository = $productRepository;
+        $this->purchasableRepository = $purchasableRepository;
     }
 
     /**
@@ -58,7 +54,7 @@ class SameCategoryRelatedPurchasableProvider implements RelatedPurchasablesProvi
      * @param PurchasableInterface $purchasable Purchasable
      * @param int                  $limit       Limit of elements retrieved
      *
-     * @return array Related products
+     * @return array Related purchasables
      */
     public function getRelatedPurchasables(PurchasableInterface $purchasable, $limit)
     {
@@ -79,73 +75,13 @@ class SameCategoryRelatedPurchasableProvider implements RelatedPurchasablesProvi
      */
     public function getRelatedPurchasablesFromArray(array $purchasables, $limit)
     {
-        $products = array_reduce($purchasables,
-            function ($products, PurchasableInterface $purchasable) {
-                $product = $this->getProductByPurchasable($purchasable);
-                if ($product instanceof ProductInterface) {
-                    return array_merge(
-                        $products,
-                        [$product]
-                    );
-                }
-            }, []);
-
-        if (
-            $limit <= 0 ||
-            empty($products)
-        ) {
-            return [];
-        }
-
-        return $this->getRelatedProductsGivenAnArrayOfProducts(
-            $products,
-            $limit
-        );
-    }
-
-    /**
-     * Given a purchasable, get it's main product. This purchasable must be an
-     * implementation of ProductInterface or VariantInterface. Otherwise the
-     * method will return false.
-     *
-     * @param PurchasableInterface $purchasable Purchasable
-     *
-     * @return ProductInterface|false Product instance or false
-     */
-    private function getProductByPurchasable(PurchasableInterface $purchasable)
-    {
-        if (
-            !($purchasable instanceof ProductInterface) &&
-            !($purchasable instanceof VariantInterface)
-        ) {
-            return false;
-        }
-
-        return $purchasable instanceof ProductInterface
-            ? $purchasable
-            : $purchasable->getProduct();
-    }
-
-    /**
-     * Build a basic query given a set of categories and a set of unwanted
-     * products.
-     *
-     * @param ProductInterface[] $products Products
-     * @param int                $limit    Limit
-     *
-     * @return array
-     */
-    private function getRelatedProductsGivenAnArrayOfProducts(
-        array $products,
-        $limit
-    ) {
         $categories = [];
 
         /**
-         * @var ProductInterface $product
+         * @var PurchasableInterface $product
          */
-        foreach ($products as $product) {
-            $category = $product->getPrincipalCategory();
+        foreach ($purchasables as $purchasable) {
+            $category = $purchasable->getPrincipalCategory();
             if (
                 $category instanceof CategoryInterface &&
                 !in_array($category, $categories)
@@ -159,14 +95,14 @@ class SameCategoryRelatedPurchasableProvider implements RelatedPurchasablesProvi
         }
 
         return $this
-            ->productRepository
+            ->purchasableRepository
             ->createQueryBuilder('p')
             ->where('p.principalCategory IN(:categories)')
-            ->andWhere('p NOT IN(:products)')
+            ->andWhere('p NOT IN(:purchasables)')
             ->andWhere('p.enabled = :enabled')
             ->setParameters([
                 'categories' => $categories,
-                'products' => $products,
+                'purchasables' => $purchasables,
                 'enabled' => true,
             ])
             ->setMaxResults($limit)

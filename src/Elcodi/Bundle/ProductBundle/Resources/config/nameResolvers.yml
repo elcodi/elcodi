@@ -13,7 +13,7 @@ services:
         tags:
             - { name: elcodi.purchasable_name_resolver }
 
-    elcodi.name_resolver.product_pack:
+    elcodi.name_resolver.purchasable_pack:
         class: Elcodi\Component\Product\NameResolver\PackNameResolver
         tags:
             - { name: elcodi.purchasable_name_resolver }

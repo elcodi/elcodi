@@ -81,12 +81,12 @@ class Cart implements CartInterface
     /**
      * @var MoneyInterface
      *
-     * Transient amount for products
+     * Transient amount for purchasables
      *
      * This value is not persisted, it is calculated
-     * by summing CartLine::$productAmount
+     * by summing CartLine::$purchasableAmount
      */
-    protected $productAmount;
+    protected $purchasableAmount;
 
     /**
      * @var MoneyInterface
@@ -296,34 +296,6 @@ class Cart implements CartInterface
     }
 
     /**
-     * Set quantity.
-     *
-     * @deprecated since version 1.0.8, to be removed in 2.0.0.
-     *
-     * @param int $quantity Quantity
-     *
-     * @return $this Self object
-     */
-    public function setQuantity($quantity)
-    {
-        $this->quantity = $quantity;
-
-        return $this;
-    }
-
-    /**
-     * Get quantity.
-     *
-     * @deprecated since version 1.0.8, to be removed in 2.0.0. Use getTotalItemNumber()
-     *
-     * @return int Quantity
-     */
-    public function getQuantity()
-    {
-        return $this->quantity;
-    }
-
-    /**
      * Return the total amount of items added to the Cart.
      *
      * @return int
@@ -340,27 +312,27 @@ class Cart implements CartInterface
     }
 
     /**
-     * Set product amount.
+     * Set purchasable amount.
      *
-     * @param MoneyInterface $productAmount
+     * @param MoneyInterface $purchasableAmount
      *
      * @return $this Self object
      */
-    public function setProductAmount(MoneyInterface $productAmount)
+    public function setPurchasableAmount(MoneyInterface $purchasableAmount)
     {
-        $this->productAmount = $productAmount;
+        $this->purchasableAmount = $purchasableAmount;
 
         return $this;
     }
 
     /**
-     * Get product amount.
+     * Get purchasable amount.
      *
-     * @return MoneyInterface Product amount
+     * @return MoneyInterface Purchasable amount
      */
-    public function getProductAmount()
+    public function getPurchasableAmount()
     {
-        return $this->productAmount;
+        return $this->purchasableAmount;
     }
 
     /**

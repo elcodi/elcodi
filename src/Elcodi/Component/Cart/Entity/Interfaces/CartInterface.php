@@ -100,20 +100,20 @@ interface CartInterface
     public function setShippingAmount(MoneyInterface $shippingAmount);
 
     /**
-     * Gets product amount with tax.
+     * Gets purchasable amount with tax.
      *
      * @return MoneyInterface price with tax
      */
-    public function getProductAmount();
+    public function getPurchasableAmount();
 
     /**
-     * Sets product amount with tax.
+     * Sets purchasable amount with tax.
      *
      * @param MoneyInterface $amount price with tax
      *
      * @return $this Self object
      */
-    public function setProductAmount(MoneyInterface $amount);
+    public function setPurchasableAmount(MoneyInterface $amount);
 
     /**
      * Returns the customer.
@@ -196,26 +196,6 @@ interface CartInterface
      * @return bool is ordered
      */
     public function isOrdered();
-
-    /**
-     * Sets the number of items on this cart.
-     *
-     * @deprecated since version 1.0.8, to be removed in 2.0.0.
-     *
-     * @param int $quantity Quantity
-     *
-     * @return $this Self object
-     */
-    public function setQuantity($quantity);
-
-    /**
-     * Gets the number of items on this cart.
-     *
-     * @deprecated since version 1.0.8, to be removed in 2.0.0. Use getTotalItemNumber()
-     *
-     * @return int Quantity
-     */
-    public function getQuantity();
 
     /**
      * Return the total amount of items added to the Cart.

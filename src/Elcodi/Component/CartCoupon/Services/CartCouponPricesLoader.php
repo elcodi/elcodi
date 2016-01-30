@@ -20,7 +20,6 @@ namespace Elcodi\Component\CartCoupon\Services;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\CartCoupon\Applicator\CartCouponApplicatorCollector;
 use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
-use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 use Elcodi\Component\Currency\Entity\Money;
 use Elcodi\Component\Currency\Wrapper\CurrencyWrapper;
 
@@ -94,7 +93,8 @@ class CartCouponPricesLoader
 
         foreach ($coupons as $coupon) {
             $currentCouponAmount = $this
-                ->getCouponAbsolutePrice(
+                ->cartCouponApplicatorCollector
+                ->getCouponAbsoluteValue(
                     $cart,
                     $coupon
                 );
@@ -103,31 +103,5 @@ class CartCouponPricesLoader
         }
 
         $cart->setCouponAmount($couponAmount);
-    }
-
-    /**
-     * Given a cart and a coupon, returns the real value of the coupon.
-     * If the type of the coupon is not valid, then an empty Money instance will
-     * be returned, with value 0.
-     *
-     * @deprecated since version 1.1.0, to be removed in 2.0.0. Use
-     *             CartCouponApplicatorCollector::getCouponAbsoluteValue
-     *             instead.
-     *
-     * @param CartInterface   $cart   Abstract Cart object
-     * @param CouponInterface $coupon Coupon
-     *
-     * @return MoneyInterface Coupon price
-     */
-    public function getCouponAbsolutePrice(
-        CartInterface $cart,
-        CouponInterface $coupon
-    ) {
-        return $this
-            ->cartCouponApplicatorCollector
-            ->getCouponAbsoluteValue(
-                $cart,
-                $coupon
-            );
     }
 }

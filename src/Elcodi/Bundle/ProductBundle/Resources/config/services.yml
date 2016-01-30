@@ -8,19 +8,8 @@ services:
         arguments:
             - '@elcodi.repository.category'
 
-    elcodi.provider.product_collection:
-        class: Elcodi\Component\Product\Services\ProductCollectionProvider
-        deprecated: 'The "%service_id%" service is deprecated. Use "elcodi.repository.product" instead'
-        arguments:
-            - '@elcodi.repository.product'
-            - '@elcodi.store_uses_stock'
-
     elcodi.service.category_integrity_fixer:
         class: Elcodi\Component\Product\Services\CategoryIntegrityFixer
 
     elcodi.resolver.product_options:
         class: Elcodi\Component\Product\Services\ProductOptionsResolver
-
-    elcodi.resolver.purchasable_name:
-        class: Elcodi\Component\Product\Services\PurchasableNameResolver
-        deprecated: 'The "%service_id%" service is deprecated. Use "elcodi.name_resolver.purchasable" instead'

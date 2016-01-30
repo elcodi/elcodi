@@ -28,11 +28,11 @@ services:
     #
     # Factory for Pack entities
     #
-    elcodi.factory.product_pack:
+    elcodi.factory.purchasable_pack:
         class: Elcodi\Component\Product\Factory\PackFactory
         parent: elcodi.factory.abstract.purchasable
         calls:
-            - [setEntityNamespace, ["%elcodi.entity.product_pack.class%"]]
+            - [setEntityNamespace, ["%elcodi.entity.purchasable_pack.class%"]]
             - [setDateTimeFactory, ["@elcodi.factory.datetime"]]
 
     #

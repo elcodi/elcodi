@@ -48,7 +48,7 @@ class CartManagerVariantTest extends AbstractCartManagerTest
      */
     protected function createPurchasable()
     {
-        return $this->find('product_variant', 1);
+        return $this->find('purchasable', 6);
     }
 
     /**
