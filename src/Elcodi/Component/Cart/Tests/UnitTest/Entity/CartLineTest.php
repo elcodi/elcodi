@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi Networks S.L.
+ * Copyright (c) 2014-2016 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -86,13 +86,13 @@ class CartLineTest extends AbstractEntityTest
      */
     public function testGetSpaceDimensions($method)
     {
-        $product = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\ProductInterface');
-        $product
+        $purchasable = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface');
+        $purchasable
             ->method($method)
             ->will($this->returnValue(5));
 
         $cartLine = new CartLine();
-        $cartLine->setPurchasable($product);
+        $cartLine->setPurchasable($purchasable);
         $this->assertEquals(
             5,
             $cartLine->$method()
@@ -100,8 +100,8 @@ class CartLineTest extends AbstractEntityTest
 
         $variant = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\VariantInterface');
         $variant
-            ->method('getProduct')
-            ->will($this->returnValue($product));
+            ->method('getPurchasable')
+            ->will($this->returnValue($purchasable));
         $variant
             ->method($method)
             ->will($this->returnValue(10));
@@ -131,13 +131,13 @@ class CartLineTest extends AbstractEntityTest
      */
     public function testGetWeight()
     {
-        $product = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\ProductInterface');
-        $product
+        $purchasable = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface');
+        $purchasable
             ->method('getWeight')
             ->will($this->returnValue(5));
 
         $cartLine = new CartLine();
-        $cartLine->setPurchasable($product);
+        $cartLine->setPurchasable($purchasable);
         $cartLine->setQuantity(2);
         $this->assertEquals(
             10,
@@ -146,8 +146,8 @@ class CartLineTest extends AbstractEntityTest
 
         $variant = $this->getMock('Elcodi\Component\Product\Entity\Interfaces\VariantInterface');
         $variant
-            ->method('getProduct')
-            ->will($this->returnValue($product));
+            ->method('getPurchasable')
+            ->will($this->returnValue($purchasable));
         $variant
             ->method('getWeight')
             ->will($this->returnValue(10));

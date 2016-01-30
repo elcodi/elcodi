@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi Networks S.L.
+ * Copyright (c) 2014-2016 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -99,6 +99,13 @@ class Coupon implements CouponInterface
      * Absolute price currency
      */
     protected $absolutePriceCurrency;
+
+    /**
+     * @var string
+     *
+     * Plain value
+     */
+    protected $value;
 
     /**
      * @var int
@@ -323,6 +330,30 @@ class Coupon implements CouponInterface
             $this->absolutePriceAmount,
             $this->absolutePriceCurrency
         );
+    }
+
+    /**
+     * Get Value.
+     *
+     * @return string Value
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * Sets Value.
+     *
+     * @param string $value Value
+     *
+     * @return $this Self object
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
     }
 
     /**

@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi Networks S.L.
+ * Copyright (c) 2014-2016 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -41,13 +41,13 @@ class PackStockUpdaterTest extends WebTestCase
      */
     public function atestUpdateStockNonInherit()
     {
-        $pack = $this->find('product_pack', 1);
-        $this->get('elcodi.stock_updater.product_pack')->updateStock(
+        $pack = $this->find('purchasable_pack', 9);
+        $this->get('elcodi.stock_updater.purchasable_pack')->updateStock(
             $pack,
             4
         );
-        $this->getObjectManager('product_pack')->clear();
-        $pack = $this->find('product_pack', 1);
+        $this->getObjectManager('purchasable_pack')->clear();
+        $pack = $this->find('purchasable_pack', 9);
         $this->assertEquals(
             6,
             $pack->getStock()
@@ -61,13 +61,13 @@ class PackStockUpdaterTest extends WebTestCase
     {
         $this->reloadScenario();
 
-        $pack = $this->find('product_pack', 2);
-        $this->get('elcodi.stock_updater.product_pack')->updateStock(
+        $pack = $this->find('purchasable_pack', 10);
+        $this->get('elcodi.stock_updater.purchasable_pack')->updateStock(
             $pack,
             3
         );
         $this->clear($pack);
-        $pack = $this->find('product_pack', 2);
+        $pack = $this->find('purchasable_pack', 10);
         $this->assertEquals(
             2,
             $pack->getStock()
@@ -97,13 +97,13 @@ class PackStockUpdaterTest extends WebTestCase
     {
         $this->reloadScenario();
 
-        $pack = $this->find('product_pack', 2);
-        $this->get('elcodi.stock_updater.product_pack')->updateStock(
+        $pack = $this->find('purchasable_pack', 10);
+        $this->get('elcodi.stock_updater.purchasable_pack')->updateStock(
             $pack,
             9
         );
         $this->clear($pack);
-        $pack = $this->find('product_pack', 2);
+        $pack = $this->find('purchasable_pack', 10);
         $this->assertEquals(
             0,
             $pack->getStock()

@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi Networks S.L.
+ * Copyright (c) 2014-2016 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -41,11 +41,11 @@ class PackNameResolverTest extends WebTestCase
      */
     public function testResolveName()
     {
-        $pack = $this->find('product_pack', 1);
+        $pack = $this->find('purchasable_pack', 9);
         $this->assertEquals(
             'pack',
             $this
-                ->get('elcodi.name_resolver.product_pack')
+                ->get('elcodi.name_resolver.purchasable_pack')
                 ->resolveName($pack)
         );
         $this->assertEquals(

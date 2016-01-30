@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi Networks S.L.
+ * Copyright (c) 2014-2016 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -41,13 +41,13 @@ class VariantStockUpdaterTest extends WebTestCase
      */
     public function testUpdateStock()
     {
-        $variant = $this->find('product_variant', 1);
+        $variant = $this->find('product_variant', 6);
         $this->get('elcodi.stock_updater.product_variant')->updateStock(
             $variant,
             20
         );
         $this->clear($variant);
-        $variant = $this->find('product_variant', 1);
+        $variant = $this->find('product_variant', 6);
         $this->assertEquals(
             80,
             $variant->getStock()

@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi Networks S.L.
+ * Copyright (c) 2014-2016 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -23,6 +23,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\RouteCollection;
 
 use Elcodi\Component\Plugin\Entity\Plugin;
+use Elcodi\Component\Plugin\Exception\PluginNotFoundException;
 
 /**
  * Class RouterLoader.
@@ -101,6 +102,10 @@ class RouterLoader extends Loader
         $routes = new RouteCollection();
 
         foreach ($this->plugins as $plugin) {
+            if (!$plugin->exists()) {
+                throw PluginNotFoundException::createPluginRouteNotFound($plugin);
+            }
+
             $routes->addCollection(
                 $this->addPluginRoutesCollection($plugin)
             );

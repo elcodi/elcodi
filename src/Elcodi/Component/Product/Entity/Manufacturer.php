@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi Networks S.L.
+ * Copyright (c) 2014-2016 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -26,7 +26,6 @@ use Elcodi\Component\Media\Entity\Traits\ImagesContainerTrait;
 use Elcodi\Component\Media\Entity\Traits\PrincipalImageTrait;
 use Elcodi\Component\MetaData\Entity\Traits\MetaDataTrait;
 use Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface;
-use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 
 /**
  * Class Manufacturer.
@@ -64,9 +63,9 @@ class Manufacturer implements ManufacturerInterface
     /**
      * @var Collection
      *
-     * Products
+     * Purchasables
      */
-    protected $products;
+    protected $purchasables;
 
     /**
      * Set name.
@@ -139,55 +138,13 @@ class Manufacturer implements ManufacturerInterface
     }
 
     /**
-     * Set products.
+     * Get purchasables.
      *
-     * @param Collection $products Products
-     *
-     * @return $this Self object
+     * @return Collection Purchasables
      */
-    public function setProducts(Collection $products)
+    public function getPurchasables()
     {
-        $this->products = $products;
-
-        return $this;
-    }
-
-    /**
-     * Get products.
-     *
-     * @return Collection Products
-     */
-    public function getProducts()
-    {
-        return $this->products;
-    }
-
-    /**
-     * Add product.
-     *
-     * @param ProductInterface $product Product
-     *
-     * @return $this Self object
-     */
-    public function addProduct(ProductInterface $product)
-    {
-        $this->products->add($product);
-
-        return $this;
-    }
-
-    /**
-     * Remove product.
-     *
-     * @param ProductInterface $product Product
-     *
-     * @return $this Self object
-     */
-    public function removeProduct(ProductInterface $product)
-    {
-        $this->products->removeElement($product);
-
-        return $this;
+        return $this->purchasables;
     }
 
     /**

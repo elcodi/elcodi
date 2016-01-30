@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi Networks S.L.
+ * Copyright (c) 2014-2016 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -20,11 +20,11 @@ namespace Elcodi\Component\Product\Entity\Interfaces;
 use Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface;
 
 /**
- * Interface ProductPriceInterface.
+ * Interface PurchasablePriceInterface.
  *
- * Defines common price members for a Product
+ * Defines common price members for a Purchasable
  */
-interface ProductPriceInterface
+interface PurchasablePriceInterface
 {
     /**
      * Set price.
@@ -57,4 +57,18 @@ interface ProductPriceInterface
      * @return MoneyInterface Reduced Price
      */
     public function getReducedPrice();
+
+    /**
+     * Is in offer.
+     *
+     * @return bool Purchasable is in offer
+     */
+    public function inOffer();
+
+    /**
+     * Get resolved price.
+     *
+     * @return MoneyInterface Reduced Price
+     */
+    public function getResolvedPrice();
 }

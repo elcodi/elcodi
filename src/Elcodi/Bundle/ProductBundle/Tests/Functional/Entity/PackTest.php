@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi Networks S.L.
+ * Copyright (c) 2014-2016 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -42,7 +42,7 @@ class PackTest extends WebTestCase
     public function testGetStockSpecificStock()
     {
         $this->assertEquals(10, $this
-            ->find('product_pack', 1)
+            ->find('purchasable_pack', 9)
             ->getStock()
         );
     }
@@ -53,7 +53,7 @@ class PackTest extends WebTestCase
     public function testGetStockInheritStock()
     {
         $this->assertEquals(5, $this
-            ->find('product_pack', 2)
+            ->find('purchasable_pack', 10)
             ->getStock()
         );
     }

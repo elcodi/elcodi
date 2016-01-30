@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi Networks S.L.
+ * Copyright (c) 2014-2016 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -20,154 +20,12 @@ namespace Elcodi\Component\Product\Entity\Interfaces;
 use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface;
-use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
-use Elcodi\Component\Core\Entity\Interfaces\ETaggableInterface;
-use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
-use Elcodi\Component\Media\Entity\Interfaces\ImagesContainerWithPrincipalImageInterface;
-use Elcodi\Component\MetaData\Entity\Interfaces\MetaDataInterface;
 
 /**
  * Interface ProductInterface.
  */
-interface ProductInterface
-    extends
-    IdentifiableInterface,
-    PurchasableInterface,
-    DateTimeInterface,
-    ETaggableInterface,
-    MetaDataInterface,
-    ImagesContainerWithPrincipalImageInterface
+interface ProductInterface extends PurchasableInterface, CategorizableInterface
 {
-    /**
-     * Set name.
-     *
-     * @param string $name Name
-     *
-     * @return $this Self object
-     */
-    public function setName($name);
-
-    /**
-     * Get name.
-     *
-     * @return string
-     */
-    public function getName();
-
-    /**
-     * Set slug.
-     *
-     * @param string $slug Slug
-     *
-     * @return $this Self object
-     */
-    public function setSlug($slug);
-
-    /**
-     * Get slug.
-     *
-     * @return string slug
-     */
-    public function getSlug();
-
-    /**
-     * Set description.
-     *
-     * @param string $description
-     *
-     * @return $this Self object
-     */
-    public function setDescription($description);
-
-    /**
-     * Get description.
-     *
-     * @return string Description
-     */
-    public function getDescription();
-
-    /**
-     * Set short description.
-     *
-     * @param string $shortDescription Short description
-     *
-     * @return $this Self object
-     */
-    public function setShortDescription($shortDescription);
-
-    /**
-     * Get short description.
-     *
-     * @return string Short description
-     */
-    public function getShortDescription();
-
-    /**
-     * Set categories.
-     *
-     * @param Collection $categories Categories
-     *
-     * @return $this Self object
-     */
-    public function setCategories(Collection $categories);
-
-    /**
-     * Get categories.
-     *
-     * @return Collection Categories
-     */
-    public function getCategories();
-
-    /**
-     * Add category.
-     *
-     * @param CategoryInterface $category Category
-     *
-     * @return $this Self object
-     */
-    public function addCategory(CategoryInterface $category);
-
-    /**
-     * Remove category.
-     *
-     * @param CategoryInterface $category Category
-     *
-     * @return $this Self object
-     */
-    public function removeCategory(CategoryInterface $category);
-
-    /**
-     * Set the principalCategory.
-     *
-     * @param CategoryInterface $principalCategory Principal category
-     *
-     * @return $this Self object
-     */
-    public function setPrincipalCategory(CategoryInterface $principalCategory = null);
-
-    /**
-     * Get the principalCategory.
-     *
-     * @return CategoryInterface Principal category
-     */
-    public function getPrincipalCategory();
-
-    /**
-     * Set show in home.
-     *
-     * @param bool $showInHome Show in home
-     *
-     * @return $this Self object
-     */
-    public function setShowInHome($showInHome);
-
-    /**
-     * Get show in home.
-     *
-     * @return bool Show in home
-     */
-    public function getShowInHome();
-
     /**
      * Set product manufacturer.
      *
@@ -176,13 +34,6 @@ interface ProductInterface
      * @return $this Self object
      */
     public function setManufacturer(ManufacturerInterface $manufacturer = null);
-
-    /**
-     * Product manufacturer.
-     *
-     * @return ManufacturerInterface Manufacturer
-     */
-    public function getManufacturer();
 
     /**
      * Returns product principal variant.
@@ -265,4 +116,20 @@ interface ProductInterface
      * @return bool Product has variants
      */
     public function hasVariants();
+
+    /**
+     * Sets Type.
+     *
+     * @param int $type Type
+     *
+     * @return $this Self object
+     */
+    public function setType($type);
+
+    /**
+     * Get Type.
+     *
+     * @return int Type
+     */
+    public function getType();
 }

@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi Networks S.L.
+ * Copyright (c) 2014-2016 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -31,7 +31,7 @@ class LoadCartPricesEventListenerTest extends AbstractCartEventListenerTest
     {
         $cart = $this->getLoadedCart(2);
         $this->assertEquals(3000, $cart
-            ->getProductAmount()
+            ->getPurchasableAmount()
             ->getAmount()
         );
 

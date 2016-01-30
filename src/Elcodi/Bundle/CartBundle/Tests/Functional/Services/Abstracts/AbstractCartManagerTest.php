@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi Networks S.L.
+ * Copyright (c) 2014-2016 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -22,7 +22,6 @@ use Doctrine\ORM\UnitOfWork;
 use Elcodi\Bundle\TestCommonBundle\Functional\WebTestCase;
 use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
-use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 
 /**
@@ -45,9 +44,9 @@ abstract class AbstractCartManagerTest extends WebTestCase
     protected $cartLine;
 
     /**
-     * @var ProductInterface
+     * @var PurchasableInterface
      *
-     * Product
+     * Purchasable
      */
     protected $purchasable;
 
@@ -68,7 +67,7 @@ abstract class AbstractCartManagerTest extends WebTestCase
             ->get('elcodi.factory.cart_line')
             ->create()
             ->setPurchasable($this->purchasable)
-            ->setProductAmount($this->purchasable->getPrice())
+            ->setPurchasableAmount($this->purchasable->getPrice())
             ->setAmount($this->purchasable->getPrice())
             ->setQuantity(1);
 

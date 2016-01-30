@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi Networks S.L.
+ * Copyright (c) 2014-2016 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -131,22 +131,6 @@ interface CategoryInterface
      * @return CategoryInterface Category parent
      */
     public function getParent();
-
-    /**
-     * Set products.
-     *
-     * @param Collection $products Products
-     *
-     * @return $this Self object
-     */
-    public function setProducts(Collection $products);
-
-    /**
-     * Get products.
-     *
-     * @return Collection
-     */
-    public function getProducts();
 
     /**
      * @param bool $root

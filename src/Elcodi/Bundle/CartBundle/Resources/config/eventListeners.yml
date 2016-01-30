@@ -5,7 +5,7 @@ services:
         arguments:
             - '@elcodi.loader.cart_prices'
         tags:
-            - { name: kernel.event_listener, event: cart.onload, method: loadCartProductsAmount, priority: 16 }
+            - { name: kernel.event_listener, event: cart.onload, method: loadCartPurchasablesAmount, priority: 16 }
             - { name: kernel.event_listener, event: cart.onload, method: loadCartTotalAmount, priority: 2 }
 
     elcodi.event_listener.load_cart_purchasables_quantity:

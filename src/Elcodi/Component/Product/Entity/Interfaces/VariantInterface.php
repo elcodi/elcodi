@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi Networks S.L.
+ * Copyright (c) 2014-2016 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -20,9 +20,6 @@ namespace Elcodi\Component\Product\Entity\Interfaces;
 use Doctrine\Common\Collections\Collection;
 
 use Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface;
-use Elcodi\Component\Core\Entity\Interfaces\DateTimeInterface;
-use Elcodi\Component\Core\Entity\Interfaces\IdentifiableInterface;
-use Elcodi\Component\Media\Entity\Interfaces\ImagesContainerWithPrincipalImageInterface;
 
 /**
  * Interface VariantInterface.
@@ -30,12 +27,7 @@ use Elcodi\Component\Media\Entity\Interfaces\ImagesContainerWithPrincipalImageIn
  * A Product variant is a specific combination of finite options
  * for a given Product.
  */
-interface VariantInterface
-    extends
-    IdentifiableInterface,
-    PurchasableInterface,
-    DateTimeInterface,
-    ImagesContainerWithPrincipalImageInterface
+interface VariantInterface extends PurchasableInterface
 {
     /**
      * Gets parent product.
@@ -86,4 +78,25 @@ interface VariantInterface
      * @return $this Self object
      */
     public function removeOption(ValueInterface $option);
+
+    /**
+     * Get categories.
+     *
+     * @return Collection Categories
+     */
+    public function getCategories();
+
+    /**
+     * Get the principalCategory.
+     *
+     * @return CategoryInterface Principal category
+     */
+    public function getPrincipalCategory();
+
+    /**
+     * Product manufacturer.
+     *
+     * @return ManufacturerInterface Manufacturer
+     */
+    public function getManufacturer();
 }

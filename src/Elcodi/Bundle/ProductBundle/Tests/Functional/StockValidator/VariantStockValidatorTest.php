@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi Networks S.L.
+ * Copyright (c) 2014-2016 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -41,7 +41,7 @@ class VariantStockValidatorTest extends WebTestCase
      */
     public function testIsStockAvailable()
     {
-        $variant = $this->find('product_variant', 1);
+        $variant = $this->find('product_variant', 6);
         $variantStockValidator = $this->get('elcodi.stock_validator.product_variant');
         $this->assertTrue(
             $variantStockValidator->isStockAvailable(

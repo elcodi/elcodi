@@ -1,7 +1,7 @@
 Elcodi for Symfony
 ===================
 [![Build Status](https://travis-ci.org/elcodi/elcodi.svg?branch=master)](https://travis-ci.org/elcodi/elcodi)
-[![Build Status](https://ci.appveyor.com/api/projects/status/mx697959y072u2jx/branch/master?svg=true)](https://ci.appveyor.com/project/elcodi/elcodi/branch/master)
+[![Build Status](https://ci.appveyor.com/api/projects/status/mx697959y072u2jx/branch/master?svg=true)](https://ci.appveyor.com/project/mmoreram/elcodi/branch/master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/elcodi/elcodi/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/elcodi/elcodi/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/elcodi/elcodi/v/stable.png)](https://packagist.org/packages/elcodi/elcodi)
 [![Total Downloads](https://poser.pugx.org/elcodi/elcodi/downloads.png)](https://packagist.org/packages/elcodi/elcodi)
@@ -19,6 +19,11 @@ in e-commerce web projects.
 See the [front-end store](http://bamboo.elcodi.com) and the 
 [back-office](http://bamboo.elcodi.com/admin) demo application in action, and 
 check out the source code for [Bamboo](https://github.com/elcodi/bamboo).
+
+Elcodi was awarded as the **Best Open Source** project of 2015 by the Symfony
+Community awards.
+
+![Best Open Source](http://awards.symfony.com/images/badges/business/open_source.png)
 
 Requirements
 ------------

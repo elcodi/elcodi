@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi Networks S.L.
+ * Copyright (c) 2014-2016 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -32,16 +32,16 @@ trait PriceTrait
     /**
      * @var int
      *
-     * Product amount
+     * Purchasable amount
      */
-    protected $productAmount;
+    protected $purchasableAmount;
 
     /**
      * @var \Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
      *
      * Currency for the amounts stored in this entity
      */
-    protected $productCurrency;
+    protected $purchasableCurrency;
 
     /**
      * @var int
@@ -58,29 +58,29 @@ trait PriceTrait
     protected $currency;
 
     /**
-     * Gets the product or products amount with tax.
+     * Gets the purchasable or purchasables amount with tax.
      *
-     * @return \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface Product amount with tax
+     * @return \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface Purchasable amount with tax
      */
-    public function getProductAmount()
+    public function getPurchasableAmount()
     {
         return \Elcodi\Component\Currency\Entity\Money::create(
-            $this->productAmount,
-            $this->productCurrency
+            $this->purchasableAmount,
+            $this->purchasableCurrency
         );
     }
 
     /**
-     * Sets the product or products amount with tax.
+     * Sets the purchasable or purchasables amount with tax.
      *
-     * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount product amount with tax
+     * @param \Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount purchasable amount with tax
      *
      * @return $this Self object
      */
-    public function setProductAmount(\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount)
+    public function setPurchasableAmount(\Elcodi\Component\Currency\Entity\Interfaces\MoneyInterface $amount)
     {
-        $this->productAmount = $amount->getAmount();
-        $this->productCurrency = $amount->getCurrency();
+        $this->purchasableAmount = $amount->getAmount();
+        $this->purchasableCurrency = $amount->getCurrency();
 
         return $this;
     }

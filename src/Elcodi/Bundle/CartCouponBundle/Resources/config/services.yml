@@ -34,7 +34,7 @@ services:
         arguments:
             - '@elcodi.manager.cart_coupon'
             - '@elcodi.wrapper.currency'
-            - '@elcodi.converter.currency'
+            - '@elcodi.cart_coupon_applicator_collector'
 
     #
     # Validator

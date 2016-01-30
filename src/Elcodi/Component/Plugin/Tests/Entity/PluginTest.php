@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi Networks S.L.
+ * Copyright (c) 2014-2016 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -350,5 +350,41 @@ class PluginTest extends PHPUnit_Framework_TestCase
                     true
                 )
             );
+    }
+
+    /**
+     * Test that the plugin namespace class exists.
+     *
+     * @group testplugin
+     */
+    public function testPluginExists()
+    {
+        $plugin = $this->getMock('Elcodi\Component\Plugin\Entity\Plugin', [
+            'getNamespace',
+        ], [], '', false);
+
+        $plugin
+            ->method('getNamespace')
+            ->will($this->returnValue('Elcodi\Component\Plugin\Tests\Entity\PluginTest'));
+
+        $this->assertTrue($plugin->exists());
+    }
+
+    /**
+     * Test that the plugin namespace class not exists.
+     *
+     * @group testplugin
+     */
+    public function testPluginNotExists()
+    {
+        $plugin = $this->getMock('Elcodi\Component\Plugin\Entity\Plugin', [
+            'getNamespace',
+        ], [], '', false);
+
+        $plugin
+            ->method('getNamespace')
+            ->will($this->returnValue('Elcodi\Component\Plugin\Tests\Entity\NonexistibgPluginTest'));
+
+        $this->assertFalse($plugin->exists());
     }
 }

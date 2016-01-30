@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi Networks S.L.
+ * Copyright (c) 2014-2016 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -100,20 +100,20 @@ interface CartInterface
     public function setShippingAmount(MoneyInterface $shippingAmount);
 
     /**
-     * Gets product amount with tax.
+     * Gets purchasable amount with tax.
      *
      * @return MoneyInterface price with tax
      */
-    public function getProductAmount();
+    public function getPurchasableAmount();
 
     /**
-     * Sets product amount with tax.
+     * Sets purchasable amount with tax.
      *
      * @param MoneyInterface $amount price with tax
      *
      * @return $this Self object
      */
-    public function setProductAmount(MoneyInterface $amount);
+    public function setPurchasableAmount(MoneyInterface $amount);
 
     /**
      * Returns the customer.

@@ -2,145 +2,15 @@ Elcodi\Component\Product\Entity\Product:
     type: entity
     repositoryClass: Elcodi\Component\Product\Repository\ProductRepository
     table: product
-    id:
-        id:
-            type: integer
-            generator:
-                strategy: AUTO
-    fields:
-        name:
-            column: name
-            type: string
-            length: 255
-            nullable: false
-        sku:
-            column: sku
-            type: string
-            length: 255
-            nullable: true
-        slug:
-            column: slug
-            type: string
-            length: 255
-            nullable: false
-        shortDescription:
-            column: short_description
-            type: string
-            length: 255
-            nullable: true
-        description:
-            column: description
-            type: text
-            nullable: true
-        showInHome:
-            column: show_in_home
-            type: boolean
-        dimensions:
-            column: dimensions
-            type: string
-            length: 255
-            nullable: true
-        stock:
-            column: stock
-            type: integer
-            nullable: true
-        price:
-            column: price
-            type: integer
-            nullable: true
-        reducedPrice:
-            column: reduced_price
-            type: integer
-            nullable: true
-        height:
-            column: height
-            type: integer
-            nullable: false
-        width:
-            column: width
-            type: integer
-            nullable: false
-        depth:
-            column: depth
-            type: integer
-            nullable: false
-        weight:
-            column: weight
-            type: integer
-            nullable: false
-        imagesSort:
-            column: images_sort
-            type: string
-            length: 2048
-            nullable: true
-        metaTitle:
-            column: meta_title
-            type: string
-            length: 255
-            nullable: true
-        metaDescription:
-            column: meta_description
-            type: string
-            length: 255
-            nullable: true
-        metaKeywords:
-            column: meta_keywords
-            type: string
-            length: 255
-            nullable: true
-        createdAt:
-            column: created_at
-            type: datetime
-        updatedAt:
-            column: updated_at
-            type: datetime
-        enabled:
-            column: enabled
-            type: boolean
 
     manyToOne:
-        manufacturer:
-            targetEntity: Elcodi\Component\Product\Entity\Interfaces\ManufacturerInterface
-            inversedBy: products
-            joinColumn:
-                name: manufacturer_id
-                referencedColumnName: id
-                nullable: true
-                onDelete: "SET NULL"
         principalVariant:
             targetEntity: Elcodi\Component\Product\Entity\Interfaces\VariantInterface
-            fetch: EAGER
             joinColumn:
                 name: principal_variant_id
                 referencedColumnName: id
                 nullable: true
                 onDelete: "SET NULL"
-        principalCategory:
-            targetEntity: Elcodi\Component\Product\Entity\Interfaces\CategoryInterface
-            joinColumn:
-                name: principal_category_id
-                referencedColumnName: id
-                nullable: true
-                onDelete: "SET NULL"
-        principalImage:
-            targetEntity: Elcodi\Component\Media\Entity\Interfaces\ImageInterface
-            joinColumn:
-                onDelete: SET NULL
-                name: principal_image_id
-                referencedColumnName: id
-                nullable: true
-        priceCurrency:
-            targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
-            joinColumn:
-                 name: price_currency_iso
-                 referencedColumnName: iso
-                 nullable: true
-        reducedPriceCurrency:
-            targetEntity: Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
-            joinColumn:
-                 name: reduced_price_currency_iso
-                 referencedColumnName: iso
-                 nullable: true
 
     oneToMany:
         variants:
@@ -150,31 +20,6 @@ Elcodi\Component\Product\Entity\Product:
             orphanRemoval: true
 
     manyToMany:
-        categories:
-            targetEntity: Elcodi\Component\Product\Entity\Interfaces\CategoryInterface
-            inversedBy: products
-            joinTable:
-                name: product_category
-                joinColumns:
-                    product_id:
-                        referencedColumnName: id
-                        onDelete: "CASCADE"
-                inverseJoinColumns:
-                    category_id:
-                        referencedColumnName: id
-                        onDelete: "CASCADE"
-        images:
-            targetEntity: Elcodi\Component\Media\Entity\Interfaces\ImageInterface
-            joinTable:
-                name: product_image
-                joinColumns:
-                    product_id:
-                        referencedColumnName: id
-                        onDelete: "CASCADE"
-                inverseJoinColumns:
-                    image_id:
-                        referencedColumnName: id
-                        onDelete: "CASCADE"
         attributes:
             targetEntity: Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface
             joinTable:
@@ -188,6 +33,3 @@ Elcodi\Component\Product\Entity\Product:
                         referencedColumnName: id
                         onDelete: "CASCADE"
 
-    lifecycleCallbacks:
-        preUpdate: [loadUpdateAt]
-        prePersist: [loadUpdateAt]

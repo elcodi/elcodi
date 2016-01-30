@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2015 Elcodi Networks S.L.
+ * Copyright (c) 2014-2016 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -46,6 +46,10 @@ class VariantNameResolverTest extends PHPUnit_Framework_TestCase
         $variant
             ->getProduct()
             ->willReturn($product->reveal());
+
+        $variant
+            ->getName()
+            ->willReturn(null);
 
         $attribute1 = $this->prophesize('Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface');
         $attribute1->getName()->willReturn('attribute1');
@@ -108,6 +112,37 @@ class VariantNameResolverTest extends PHPUnit_Framework_TestCase
         $this->assertFalse(
             $productNameResolver->resolveName(
                 $purchasable->reveal()
+            )
+        );
+    }
+
+    /**
+     * Test resolve name.
+     *
+     * @dataProvider dataResolveName
+     */
+    public function testResolveNameWithName(PurchasableNameResolverInterface $resolver)
+    {
+        $variant = $this->prophesize('Elcodi\Component\Product\Entity\Interfaces\VariantInterface');
+
+        $variant
+            ->getName()
+            ->willReturn('Variant name');
+
+        $variant = $variant->reveal();
+
+        $this->assertEquals(
+            'Variant name',
+            $resolver->resolveName(
+                $variant
+            )
+        );
+
+        $this->assertEquals(
+            'Variant name',
+            $resolver->resolveName(
+                $variant,
+                ' # '
             )
         );
     }
