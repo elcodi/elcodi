@@ -67,7 +67,7 @@ class PercentCartCouponApplicator implements CartCouponApplicatorInterface
         $couponPercent = $coupon->getDiscount();
 
         return $cart
-            ->getProductAmount()
+            ->getPurchasableAmount()
             ->multiply($couponPercent / 100);
     }
 }
