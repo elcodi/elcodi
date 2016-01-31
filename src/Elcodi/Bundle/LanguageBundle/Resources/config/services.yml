@@ -46,6 +46,12 @@ services:
             - '@elcodi.manager.language'
             - getLanguages
 
+    elcodi.languages_with_master_promoted:
+        class: Doctrine\Common\Collections\Collection
+        factory:
+            - '@elcodi.manager.promoted_language'
+            - getLanguagesWithMasterLanguagePromoted
+
     elcodi.languages_iso:
         class: Doctrine\Common\Collections\Collection
         factory:
