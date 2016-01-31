@@ -49,9 +49,6 @@
         "doctrine/data-fixtures": "^1.1",
         "phpunit/phpunit": "4.8.19"
     },
-    "suggest": {
-        "symfony/twig-bundle": "Required if using Twig extensions"
-    },
     "autoload": {
         "exclude-from-classmap": [
             "/Tests/"
