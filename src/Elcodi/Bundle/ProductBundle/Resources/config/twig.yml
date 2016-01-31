@@ -4,18 +4,18 @@ services:
     # Twig extensions
     #
     elcodi.twig_extension.product:
-        class: Elcodi\Component\Product\Twig\ProductExtension
+        class: Elcodi\Component\Product\Twig\ProductOptionsResolverExtension
         public: false
         arguments:
             - '@elcodi.resolver.product_options'
         tags:
             - { name: twig.extension }
 
-    elcodi.twig_extension.purchasable:
-        class: Elcodi\Component\Product\Twig\PurchasableExtension
+    elcodi.twig_extension.purchasable_name_resolver:
+        class: Elcodi\Component\Product\Twig\PurchasableNameResolverExtension
         public: false
         arguments:
-            - '@elcodi.resolver.purchasable_name'
+            - '@elcodi.name_resolver.purchasable'
         tags:
             - { name: twig.extension }
 

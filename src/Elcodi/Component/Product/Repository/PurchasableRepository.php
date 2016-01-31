@@ -17,7 +17,6 @@
 
 namespace Elcodi\Component\Product\Repository;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 
@@ -30,34 +29,34 @@ use Elcodi\Component\Product\Entity\Interfaces\CategoryInterface;
 class PurchasableRepository extends EntityRepository
 {
     /**
-     * Get all the the products from the received categories.
+     * Get all the the Purchasables from the received categories.
      *
      * @param CategoryInterface[] $categories
      *
-     * @return ArrayCollection
+     * @return array All Purchasables by a set of category ids
      */
     public function getAllFromCategories(array $categories)
     {
-        $products = $this
-            ->createQueryBuilder('p')
+        $queryBuilder = $this->createQueryBuilder('p');
+        $this->addPerformanceJoinsToQueryBuilder($queryBuilder);
+
+        return $queryBuilder
             ->innerJoin('p.categories', 'c')
             ->where('c.id IN (:categories)')
             ->setParameters([
-                'categories' => array_values($categories),
+                'categories' => $categories,
             ])
             ->getQuery()
             ->getResult();
-
-        return new ArrayCollection($products);
     }
 
     /**
      * Get purchasables that can be shown in Home.
      *
-     * @param int  $limit    Product limit. By default, this value is 0
+     * @param int  $limit    Purchasable limit. By default, this value is 0
      * @param bool $useStock Use stock
      *
-     * @return array Set of products, result of the query
+     * @return array Set of Purchasables, result of the query
      */
     public function getHomePurchasables(
         $limit = 0,
@@ -91,10 +90,10 @@ class PurchasableRepository extends EntityRepository
      * Get purchasables with price reduction.
      * All purchasables returned are activated and none deleted.
      *
-     * @param int  $limit    Product limit. By default, this value is 0
+     * @param int  $limit    Purchasable limit. By default, this value is 0
      * @param bool $useStock Use stock
      *
-     * @return array Set of products, result of the query
+     * @return array Set of Purchasables, result of the query
      */
     public function getOfferPurchasables(
         $limit = 0,

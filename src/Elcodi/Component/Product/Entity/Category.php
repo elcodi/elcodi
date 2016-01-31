@@ -166,7 +166,14 @@ class Category implements CategoryInterface
      */
     public function addSubCategory(CategoryInterface $category)
     {
-        $this->subCategories->add($category);
+        if (!$this
+            ->subCategories
+            ->contains($category)
+        ) {
+            $this
+                ->subCategories
+                ->add($category);
+        }
 
         return $this;
     }
@@ -180,7 +187,9 @@ class Category implements CategoryInterface
      */
     public function removeSubCategory(CategoryInterface $category)
     {
-        $this->subCategories->removeElement($category);
+        $this
+            ->subCategories
+            ->removeElement($category);
 
         return $this;
     }
