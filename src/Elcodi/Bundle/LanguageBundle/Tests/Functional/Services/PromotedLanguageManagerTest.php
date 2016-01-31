@@ -57,5 +57,10 @@ class PromotedLanguageManagerTest extends WebTestCase
                 ->first()
                 ->getIso()
         );
+
+        $this->assertEquals(
+            $languages,
+            $this->get('elcodi.languages_with_master_promoted')
+        );
     }
 }
