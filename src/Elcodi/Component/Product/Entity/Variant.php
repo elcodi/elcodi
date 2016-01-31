@@ -148,8 +148,15 @@ class Variant extends Purchasable implements VariantInterface
             throw new \LogicException('Cannot add options to a Variant before setting a parent Product');
         }
 
-        $this->options->add($option);
-        $this->product->addAttribute($option->getAttribute());
+        $this
+            ->options
+            ->add($option);
+
+        $this
+            ->product
+            ->addAttribute(
+                $option->getAttribute()
+            );
 
         return $this;
     }
@@ -163,7 +170,9 @@ class Variant extends Purchasable implements VariantInterface
      */
     public function removeOption(ValueInterface $option)
     {
-        $this->options->removeElement($option);
+        $this
+            ->options
+            ->removeElement($option);
 
         return $this;
     }

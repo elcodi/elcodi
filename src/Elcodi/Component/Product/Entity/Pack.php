@@ -231,7 +231,9 @@ class Pack extends Purchasable implements PackInterface
      */
     public function removeCategory(CategoryInterface $category)
     {
-        $this->categories->removeElement($category);
+        $this
+            ->categories
+            ->removeElement($category);
 
         return $this;
     }

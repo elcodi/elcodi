@@ -170,8 +170,13 @@ class Product extends Purchasable implements ProductInterface
      */
     public function addAttribute(AttributeInterface $attribute)
     {
-        if (!$this->attributes->contains($attribute)) {
-            $this->attributes->add($attribute);
+        if (!$this
+            ->attributes
+            ->contains($attribute))
+        {
+            $this
+                ->attributes
+                ->add($attribute);
         }
 
         return $this;
@@ -186,7 +191,9 @@ class Product extends Purchasable implements ProductInterface
      */
     public function removeAttribute(AttributeInterface $attribute)
     {
-        $this->attributes->removeElement($attribute);
+        $this
+            ->attributes
+            ->removeElement($attribute);
 
         return $this;
     }
@@ -234,7 +241,14 @@ class Product extends Purchasable implements ProductInterface
      */
     public function addVariant(VariantInterface $variant)
     {
-        $this->variants->add($variant);
+        if (!$this
+            ->variants
+            ->contains($variant))
+        {
+            $this
+                ->variants
+                ->add($variant);
+        }
 
         return $this;
     }
@@ -284,7 +298,9 @@ class Product extends Purchasable implements ProductInterface
      */
     public function hasVariants()
     {
-        return $this->variants->count() > 0;
+        return !$this
+            ->variants
+            ->isEmpty();
     }
 
     /**

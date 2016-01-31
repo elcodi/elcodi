@@ -12,8 +12,6 @@ https://github.com/elcodi/elcodi/compare/v2.0.0...v2.0.1
 
 Added the new Purchasable schema
 
-#### TL;DR
-
 * A new usable interface called PurchasableInterface has been created
 * Using Doctrine CTI (Class Table Inheritance)[http://doctrine-orm.readthedocs.org/projects/doctrine-orm/en/latest/reference/inheritance-mapping.html#class-table-inheritance]
 to make more usable the purchasable implementation
@@ -21,9 +19,12 @@ to make more usable the purchasable implementation
 Purchasables instead of
 * Introduced a new Purchasable element called Pack, a set of other purchasables,
 including as well other packs
+* Removed as well all legacy code marked as Deprecated code, including both
+packages Configuration and ConfigurationBundle
 
 #### Release Log
 
+* [`a768a22`](https://github.com/elcodi/elcodi/commit/a768a22622ffc78360ac580bbe5395ef5a1fe69c) Removed all deprecated code (mmoreram)
 * [`1924f4a`](https://github.com/elcodi/elcodi/commit/1924f4aa185e6adfc37ea4b9a45f28b7c91b46cb) Updated dev-master in all components (mmoreram)
 * [`f6d511b`](https://github.com/elcodi/elcodi/commit/f6d511be76c9b0f2990042a27c7cad764928f893) Updated componsents to work with ^2.0 (mmoreram)
 * [`9e093cd`](https://github.com/elcodi/elcodi/commit/9e093cd98392c81f121ffd6217cb7b5b084c36f2) Fixes after rebase with master (mmoreram)

@@ -17,18 +17,18 @@
 
 namespace Elcodi\Component\Product\Twig;
 
+use Elcodi\Component\Product\NameResolver\Interfaces\PurchasableNameResolverInterface;
 use Twig_Extension;
 use Twig_SimpleFilter;
 
-use Elcodi\Component\Product\Services\PurchasableNameResolver;
 
 /**
- * Product extension for twig.
+ * Class PurchasableNameResolverExtension.
  */
-final class PurchasableExtension extends Twig_Extension
+final class PurchasableNameResolverExtension extends Twig_Extension
 {
     /**
-     * @var PurchasableNameResolver
+     * @var PurchasableNameResolverInterface
      *
      * Purchasable name resolver
      */
@@ -37,9 +37,9 @@ final class PurchasableExtension extends Twig_Extension
     /**
      * Constructor.
      *
-     * @param PurchasableNameResolver $purchasableNameResolver Purchasable name resolver
+     * @param PurchasableNameResolverInterface $purchasableNameResolver Purchasable name resolver
      */
-    public function __construct(PurchasableNameResolver $purchasableNameResolver)
+    public function __construct(PurchasableNameResolverInterface $purchasableNameResolver)
     {
         $this->purchasableNameResolver = $purchasableNameResolver;
     }
@@ -54,7 +54,7 @@ final class PurchasableExtension extends Twig_Extension
         return [
             new Twig_SimpleFilter('purchasable_name', [
                 $this->purchasableNameResolver,
-                'getPurchasableName',
+                'resolveName',
             ]),
         ];
     }
@@ -66,6 +66,6 @@ final class PurchasableExtension extends Twig_Extension
      */
     public function getName()
     {
-        return 'purchasable_extension';
+        return 'purchasable_name_resolver_extension';
     }
 }

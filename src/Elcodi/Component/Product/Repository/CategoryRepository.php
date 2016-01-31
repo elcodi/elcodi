@@ -17,8 +17,6 @@
 
 namespace Elcodi\Component\Product\Repository;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 
@@ -32,11 +30,11 @@ class CategoryRepository extends EntityRepository
     /**
      * Get root categories.
      *
-     * @return ArrayCollection Collection of Root categories
+     * @return array Array of Root categories
      */
     public function getParentCategories()
     {
-        $categories = $this
+        return $this
             ->createQueryBuilder('c')
             ->where('c.root = :root')
             ->setParameters([
@@ -44,30 +42,21 @@ class CategoryRepository extends EntityRepository
             ])
             ->getQuery()
             ->getResult();
-
-        return new ArrayCollection($categories);
     }
 
     /**
      * Get all categories ordered by parent elements and position, ascendant.
      *
-     * @return Collection Category collection
+     * @return array Categories sorted by parent and position, both ascending
      */
     public function getAllCategoriesSortedByParentAndPositionAsc()
     {
-        /**
-         * @var QueryBuilder
-         */
-        $queryBuilder = $this
+        return $this
             ->createQueryBuilder('c')
             ->addOrderBy('c.parent', 'asc')
-            ->addOrderBy('c.position', 'asc');
-
-        $categories = $queryBuilder
+            ->addOrderBy('c.position', 'asc')
             ->getQuery()
             ->getResult();
-
-        return new ArrayCollection($categories);
     }
 
     /**
@@ -77,7 +66,7 @@ class CategoryRepository extends EntityRepository
      * @param bool              $recursively    If it should check the
      *                                          children recursively
      *
-     * @return ArrayCollection The list of children categories.
+     * @return array The list of children categories.
      */
     public function getChildrenCategories(
         CategoryInterface $parentCategory,
@@ -96,14 +85,12 @@ class CategoryRepository extends EntityRepository
             foreach ($categories as $category) {
                 $categories = array_merge(
                     $categories,
-                    $this
-                        ->getChildrenCategories($category, true)
-                        ->toArray()
+                    $this->getChildrenCategories($category, true)
                 );
             }
         }
 
-        return new ArrayCollection($categories);
+        return $categories;
     }
 
     /**
