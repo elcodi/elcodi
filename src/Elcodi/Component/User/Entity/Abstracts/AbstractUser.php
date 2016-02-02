@@ -39,6 +39,38 @@ abstract class AbstractUser implements AbstractUserInterface
         EnabledTrait;
 
     /**
+     * Gender not defined (automatically created user or privacy preferences).
+     *
+     * @var int
+     */
+    const GENDER_UNDEFINED = 0;
+
+    /**
+     * Gender male.
+     *
+     * @var int
+     */
+    const GENDER_MALE = 1;
+
+    /**
+     * Gender female.
+     *
+     * @var int
+     */
+    const GENDER_FEMALE = 2;
+
+    /**
+     * Allowed user genders.
+     * 
+     * @var array
+     */
+    private static $genders = [
+        self::GENDER_UNDEFINED,
+        self::GENDER_MALE,
+        self::GENDER_FEMALE,
+    ];
+
+    /**
      * @var string
      *
      * Password
@@ -74,11 +106,11 @@ abstract class AbstractUser implements AbstractUserInterface
     protected $lastname;
 
     /**
-     * @var int
+     * User gender, by default undefined.
      *
-     * gender
+     * @var int
      */
-    protected $gender;
+    protected $gender = self::GENDER_UNDEFINED;
 
     /**
      * @var DateTime
@@ -162,7 +194,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Set gender.
+     * Set gender, if the gender is allowed.
      *
      * @param int $gender Gender
      *
@@ -170,7 +202,11 @@ abstract class AbstractUser implements AbstractUserInterface
      */
     public function setGender($gender)
     {
-        $this->gender = (int) $gender;
+        if (!in_array($gender, self::$genders, true)) {
+            return $this;
+        }
+
+        $this->gender = $gender;
 
         return $this;
     }

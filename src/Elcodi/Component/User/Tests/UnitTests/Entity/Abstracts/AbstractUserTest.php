@@ -19,6 +19,7 @@ namespace Elcodi\Component\User\Tests\UnitTests\Entity\Abstracts;
 
 use PHPUnit_Framework_TestCase;
 
+use Elcodi\Component\User\Entity\Abstracts\AbstractUser;
 use Elcodi\Component\User\Exception\InvalidPasswordException;
 
 /**
@@ -26,6 +27,44 @@ use Elcodi\Component\User\Exception\InvalidPasswordException;
  */
 class AbstractUserTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * Test user genders.
+     *
+     * @param int $gender
+     * @param int $expected
+     *
+     * @dataProvider gendersProvider
+     */
+    public function testGender($gender, $expected)
+    {
+        $user = $this->getMockForAbstractClass('Elcodi\Component\User\Entity\Abstracts\AbstractUser');
+        $setterOutput = $user->setGender($gender);
+
+        $this->assertInstanceOf(
+            'Elcodi\Component\User\Entity\Abstracts\AbstractUser',
+            $setterOutput
+        );
+
+        $this->assertEquals($expected, $user->getGender());
+    }
+
+    /**
+     * @return array
+     */
+    public function gendersProvider()
+    {
+        return [
+            [AbstractUser::GENDER_UNDEFINED, 0],
+            [AbstractUser::GENDER_MALE, 1],
+            [AbstractUser::GENDER_FEMALE, 2],
+            [mt_rand(3, PHP_INT_MAX), AbstractUser::GENDER_UNDEFINED],
+            [
+                mt_rand(~PHP_INT_MAX /* PHP_INT_MIN === ~PHP_INT_MAX */, -1),
+                AbstractUser::GENDER_UNDEFINED
+            ],
+        ];
+    }
+
     /**
      * Test set password method.
      */
