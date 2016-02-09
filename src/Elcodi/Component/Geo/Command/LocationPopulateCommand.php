@@ -76,6 +76,8 @@ class LocationPopulateCommand extends AbstractLocationCommand
     {
         $this->startCommand($output, true);
         $countries = $input->getOption('country');
+        if (!$countries)
+            throw new \InvalidArgumentException("Specify country as argument eg: --country=FR" );        
 
         foreach ($countries as $countryCode) {
             $countryCode = strtoupper($countryCode);
