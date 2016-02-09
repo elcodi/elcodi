@@ -60,7 +60,7 @@ class AbstractUserTest extends PHPUnit_Framework_TestCase
             [mt_rand(3, PHP_INT_MAX), AbstractUser::GENDER_UNDEFINED],
             [
                 mt_rand(~PHP_INT_MAX /* PHP_INT_MIN === ~PHP_INT_MAX */, -1),
-                AbstractUser::GENDER_UNDEFINED
+                AbstractUser::GENDER_UNDEFINED,
             ],
         ];
     }

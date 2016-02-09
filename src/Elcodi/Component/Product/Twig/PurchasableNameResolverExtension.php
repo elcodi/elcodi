@@ -17,10 +17,10 @@
 
 namespace Elcodi\Component\Product\Twig;
 
-use Elcodi\Component\Product\NameResolver\Interfaces\PurchasableNameResolverInterface;
 use Twig_Extension;
 use Twig_SimpleFilter;
 
+use Elcodi\Component\Product\NameResolver\Interfaces\PurchasableNameResolverInterface;
 
 /**
  * Class PurchasableNameResolverExtension.
