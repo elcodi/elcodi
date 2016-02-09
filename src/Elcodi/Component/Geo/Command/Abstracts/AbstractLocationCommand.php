@@ -17,6 +17,7 @@
 
 namespace Elcodi\Component\Geo\Command\Abstracts;
 
+use InvalidArgumentException;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -69,6 +70,26 @@ class AbstractLocationCommand extends AbstractElcodiCommand
                 InputOption::VALUE_NONE,
                 'Drop country if this is already loaded'
             );
+    }
+
+    /**
+     * Get a country list from an input object or throw an Exception if none is
+     * properly defined.
+     *
+     * @param InputInterface $input Input
+     *
+     * @return array Country array from input
+     *
+     * @throws InvalidArgumentException Countries not found
+     */
+    protected function getCountriesFromInput(InputInterface $input)
+    {
+        $countries = $input->getOption('country');
+        if (!is_array($countries) || empty($countries)) {
+            throw new InvalidArgumentException('You need to specify minimum a Country. eg: --country=FR');
+        }
+
+        return $countries;
     }
 
     /**
