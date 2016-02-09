@@ -172,8 +172,7 @@ class Product extends Purchasable implements ProductInterface
     {
         if (!$this
             ->attributes
-            ->contains($attribute))
-        {
+            ->contains($attribute)) {
             $this
                 ->attributes
                 ->add($attribute);
@@ -243,8 +242,7 @@ class Product extends Purchasable implements ProductInterface
     {
         if (!$this
             ->variants
-            ->contains($variant))
-        {
+            ->contains($variant)) {
             $this
                 ->variants
                 ->add($variant);
