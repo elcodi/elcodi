@@ -8,6 +8,36 @@ https://github.com/elcodi/elcodi/commit/XXX where XXX is the change hash To
 get the diff between two versions, go to
 https://github.com/elcodi/elcodi/compare/v2.0.0...v2.0.1
 
+### v2.0.3 (15-02-2016)
+
+* Some fixes and tests
+* Added as well strict gender
+
+#### Release Log
+
+* [`80d8d71`](https://github.com/elcodi/elcodi/commit/80d8d713a1cf9c5fd6ecbce82c1650e2a25ea877) Fixed gaufrette bundle deps in media bundle (mmoreram)
+* [`5e98b99`](https://github.com/elcodi/elcodi/commit/5e98b99c81c9e0aacb1db090fc8a1706baa39b8f) Added country check in all geo commands (mmoreram)
+* [`ae49206`](https://github.com/elcodi/elcodi/commit/ae4920637e0003e7ad93ccb0b0797ef186e0ecdd) Added coupon entity test (mmoreram)
+* [`195a088`](https://github.com/elcodi/elcodi/commit/195a0883b11a9438ed22caa2db6717fdc5032b57) strict user gender (Emanuele Minotto)
+
+### v2.0.2 (31-01-2016)
+
+* Added languages with master promoted services
+* Removed twig dependencies
+
+#### Release Log
+
+* [`ae19d5a`](https://github.com/elcodi/elcodi/commit/ae19d5a51618f7b68f45fc398b4068b98006b7c4) Removed twig deps. No longer used (mmoreram)
+* [`cfe5922`](https://github.com/elcodi/elcodi/commit/cfe59228071a1404a0fde3a636cd4099f4d20a9e) Added languages with master promoted service (mmoreram)
+
+### v2.0.1 (31-01-2016)
+
+Some fixes related to v2.0.0
+
+#### Release Log
+
+* [`8883710`](https://github.com/elcodi/elcodi/commit/8883710eb9765b5f444fd0b399d77d44714ee505) Some fixes related to v2.0.0 (mmoreram)
+
 ### v2.0.0 (30-01-2016)
 
 Added the new Purchasable schema
