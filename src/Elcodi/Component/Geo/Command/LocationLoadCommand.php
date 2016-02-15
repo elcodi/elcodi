@@ -75,7 +75,7 @@ class LocationLoadCommand extends AbstractLocationCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->startCommand($output);
-        $countries = $input->getOption('country');
+        $countries = $this->getCountriesFromInput($input);
 
         foreach ($countries as $countryCode) {
             $countryCode = strtoupper($countryCode);

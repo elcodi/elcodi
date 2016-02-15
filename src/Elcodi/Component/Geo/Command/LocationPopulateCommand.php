@@ -75,7 +75,7 @@ class LocationPopulateCommand extends AbstractLocationCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->startCommand($output, true);
-        $countries = $input->getOption('country');
+        $countries = $this->getCountriesFromInput($input);
 
         foreach ($countries as $countryCode) {
             $countryCode = strtoupper($countryCode);
