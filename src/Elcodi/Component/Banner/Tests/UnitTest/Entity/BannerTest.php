@@ -66,21 +66,21 @@ class BannerTest extends AbstractEntityTest
                 'type' => $this::GETTER_SETTER,
                 'getter' => 'getName',
                 'setter' => 'setName',
-                'value' => sha1(rand()),
+                'value' => sha1(mt_rand()),
                 'nullable' => false,
             ]],
             [[
                 'type' => $this::GETTER_SETTER,
                 'getter' => 'getDescription',
                 'setter' => 'setDescription',
-                'value' => sha1(rand()),
+                'value' => sha1(mt_rand()),
                 'nullable' => false,
             ]],
             [[
                 'type' => $this::GETTER_SETTER,
                 'getter' => 'getUrl',
                 'setter' => 'setUrl',
-                'value' => sha1(rand()),
+                'value' => sha1(mt_rand()),
                 'nullable' => false,
             ]],
             [[
@@ -101,8 +101,8 @@ class BannerTest extends AbstractEntityTest
     public function testToString()
     {
         $object = new Banner();
-        $id = rand();
-        $name = sha1(rand());
+        $id = mt_rand();
+        $name = sha1(mt_rand());
 
         $object->setId($id);
         $object->setName($name);
