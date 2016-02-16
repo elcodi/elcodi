@@ -66,14 +66,14 @@ class BannerZoneTest extends AbstractEntityTest
                 'type' => $this::GETTER_SETTER,
                 'getter' => 'getName',
                 'setter' => 'setName',
-                'value' => sha1(rand()),
+                'value' => sha1(mt_rand()),
                 'nullable' => false,
             ]],
             [[
                 'type' => $this::GETTER_SETTER,
                 'getter' => 'getCode',
                 'setter' => 'setCode',
-                'value' => sha1(rand()),
+                'value' => sha1(mt_rand()),
                 'nullable' => false,
             ]],
             [[

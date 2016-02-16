@@ -35,7 +35,7 @@ class FileServiceTest extends WebTestCase
 
         $fileTransformer = $this->get('elcodi.transformer.media_file_identifier');
         $imageName = $fileTransformer->transform($image);
-        $imageData = file_get_contents(realpath(dirname(__FILE__)) . '/images/image-10-10.gif');
+        $imageData = file_get_contents(__DIR__ . '/images/image-10-10.gif');
 
         $this
             ->get('elcodi.manager.media_file')

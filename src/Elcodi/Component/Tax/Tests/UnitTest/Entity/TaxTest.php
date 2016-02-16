@@ -66,14 +66,14 @@ class TaxTest extends AbstractEntityTest
                 'type' => $this::GETTER_SETTER,
                 'getter' => 'getName',
                 'setter' => 'setName',
-                'value' => sha1(rand()),
+                'value' => sha1(mt_rand()),
                 'nullable' => false,
             ]],
             [[
                 'type' => $this::GETTER_SETTER,
                 'getter' => 'getDescription',
                 'setter' => 'setDescription',
-                'value' => sha1(rand()),
+                'value' => sha1(mt_rand()),
                 'nullable' => false,
             ]],
             [[
@@ -92,7 +92,7 @@ class TaxTest extends AbstractEntityTest
     public function testToString()
     {
         $object = new Tax();
-        $name = sha1(rand());
+        $name = sha1(mt_rand());
 
         $setterOutput = $object->setName($name);
         $this->assertInstanceOf(get_class($object), $setterOutput);
