@@ -50,7 +50,7 @@ class ImageResizeControllerTest extends WebTestCase
         $routeCollection = $router->getRouteCollection();
 
         $image = new UploadedFile(
-            dirname(__FILE__) . '/images/image.png',
+            __DIR__ . '/images/image.png',
             'image.png',
             'image/png',
             3966,

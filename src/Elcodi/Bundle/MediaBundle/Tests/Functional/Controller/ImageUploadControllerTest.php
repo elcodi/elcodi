@@ -52,7 +52,7 @@ class ImageUploadControllerTest extends WebTestCase
             ->getRouteCollection();
 
         $image = new UploadedFile(
-            dirname(__FILE__) . '/images/image.png',
+            __DIR__ . '/images/image.png',
             'image.png',
             'image/png',
             3966,
