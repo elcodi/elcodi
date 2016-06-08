@@ -22,6 +22,7 @@ use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
 use Elcodi\Component\Cart\Entity\Interfaces\CartLineInterface;
 use Elcodi\Component\Cart\Event\CartLineOnAddEvent;
 use Elcodi\Component\Cart\Event\CartLineOnEditEvent;
+use Elcodi\Component\Cart\Event\CartLineOnRemoveEvent;
 use Elcodi\Component\Core\EventDispatcher\Abstracts\AbstractEventDispatcher;
 
 /**
@@ -89,7 +90,7 @@ class CartLineEventDispatcher extends AbstractEventDispatcher
     ) {
         $this->eventDispatcher->dispatch(
             ElcodiCartEvents::CARTLINE_ONREMOVE,
-            new CartLineOnAddEvent(
+            new CartLineOnRemoveEvent(
                 $cart,
                 $cartLine
             )
