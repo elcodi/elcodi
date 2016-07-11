@@ -240,7 +240,7 @@ interface StoreInterface
      *
      * @return $this Self object
      */
-    public function setLogo(ImageInterface $logo);
+    public function setLogo(ImageInterface $logo = null);
 
     /**
      * Get SecondaryLogo.
@@ -256,7 +256,7 @@ interface StoreInterface
      *
      * @return $this Self object
      */
-    public function setSecondaryLogo(ImageInterface $secondaryLogo);
+    public function setSecondaryLogo(ImageInterface $secondaryLogo = null);
 
     /**
      * Get MobileLogo.
@@ -272,7 +272,7 @@ interface StoreInterface
      *
      * @return $this Self object
      */
-    public function setMobileLogo(ImageInterface $mobileLogo);
+    public function setMobileLogo(ImageInterface $mobileLogo = null);
 
     /**
      * Get HeaderImage.
@@ -288,7 +288,7 @@ interface StoreInterface
      *
      * @return $this Self object
      */
-    public function setHeaderImage(ImageInterface $headerImage);
+    public function setHeaderImage(ImageInterface $headerImage = null);
 
     /**
      * Get BackgroundImage.
@@ -304,5 +304,5 @@ interface StoreInterface
      *
      * @return $this Self object
      */
-    public function setBackgroundImage(ImageInterface $backgroundImage);
+    public function setBackgroundImage(ImageInterface $backgroundImage = null);
 }
