@@ -17,6 +17,8 @@ Elcodi\Component\Product\Entity\Pack:
                 joinColumns:
                     pack_id:
                         referencedColumnName: id
+                        onDelete: "CASCADE"
                 inverseJoinColumns:
                     purchasable_id:
                         referencedColumnName: id
+                        onDelete: "CASCADE"
