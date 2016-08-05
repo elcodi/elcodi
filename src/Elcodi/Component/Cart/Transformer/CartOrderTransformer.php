@@ -59,6 +59,13 @@ class CartOrderTransformer
     private $orderFactory;
 
     /**
+     * @var CartLineObjectManager
+     *
+     * Object manager for cartline
+     */
+    private $cartLineObjectManager;
+
+    /**
      * Construct method.
      *
      * @param OrderEventDispatcher         $orderEventDispatcher         Order EventDispatcher
@@ -68,11 +75,13 @@ class CartOrderTransformer
     public function __construct(
         OrderEventDispatcher $orderEventDispatcher,
         CartLineOrderLineTransformer $cartLineOrderLineTransformer,
-        OrderFactory $orderFactory
+        OrderFactory $orderFactory,
+        $cartLineObjectManager
     ) {
         $this->orderEventDispatcher = $orderEventDispatcher;
         $this->cartLineOrderLineTransformer = $cartLineOrderLineTransformer;
         $this->orderFactory = $orderFactory;
+        $this->cartLineObjectManager = $cartLineObjectManager;
     }
 
     /**
@@ -142,6 +151,12 @@ class CartOrderTransformer
                 $order
             );
 
+        // Salvataggio per fare in modo che rimanga collegato orderLineId al cartLine
+        foreach ($cart->getCartLines() as $cartLine) {
+            $this->cartLineObjectManager->persist($cartLine);
+        }
+        $this->cartLineObjectManager->flush();
+        
         return $order;
     }
 }

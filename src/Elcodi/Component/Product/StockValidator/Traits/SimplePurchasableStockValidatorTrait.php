@@ -22,37 +22,31 @@ use Elcodi\Component\Product\Entity\Interfaces\PurchasableInterface;
 /**
  * Trait SimplePurchasableStockValidatorTrait.
  */
-trait SimplePurchasableStockValidatorTrait
-{
-    /**
-     * Make a simple validation of a Purchasable instance.
-     *
-     * @param PurchasableInterface $purchasable   Purchasable
-     * @param int                  $stockRequired Stock required
-     * @param bool                 $useStock      Use stock
-     *
-     * @return bool|int Is valid or the number of elements that can be used
-     */
-    public function isValidUsingSimplePurchasableValidation(
-        PurchasableInterface $purchasable,
-        $stockRequired,
-        $useStock
-    ) {
-        if (
-            !$purchasable->isEnabled() ||
-            $stockRequired <= 0 ||
-            (
-                $useStock &&
-                $purchasable->getStock() <= 0
-            )
-        ) {
-            return false;
-        }
+trait SimplePurchasableStockValidatorTrait {
+	/**
+	 * Make a simple validation of a Purchasable instance.
+	 *
+	 * @param PurchasableInterface $purchasable   Purchasable
+	 * @param int                  $stockRequired Stock required
+	 * @param bool                 $useStock      Use stock
+	 *
+	 * @return bool|int Is valid or the number of elements that can be used
+	 */
+	public function isValidUsingSimplePurchasableValidation(
+		PurchasableInterface $purchasable,
+		$stockRequired,
+		$useStock
+	) {
 
-        if ($purchasable->getStock() < $stockRequired) {
-            return $purchasable->getStock();
-        }
+		if ($useStock) {
+			if (!$purchasable->isEnabled() || $stockRequired <= 0 || ($useStock && $purchasable->getStock() <= 0)) {
+				return false;
+			}
 
-        return true;
-    }
+			if ($purchasable->getStock() < $stockRequired) {
+				return $purchasable->getStock();
+			}
+		}
+		return true;
+	}
 }

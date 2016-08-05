@@ -87,10 +87,17 @@ class CartOrderTransformerTest extends PHPUnit_Framework_TestCase
             [], [], '', false
         );
 
+        $cartLineObjectManager = $this
+            ->getMock(
+                'Doctrine\Common\Persistence\ObjectManager',
+                [], [], '', false
+            );
+
         $cartOrderTransformer = new CartOrderTransformer(
             $orderEventDispatcher,
             $cartLineOrderLineTransformer,
-            $orderFactory
+            $orderFactory,
+            $cartLineObjectManager
         );
 
         $this->orderFactory = $orderFactory;
