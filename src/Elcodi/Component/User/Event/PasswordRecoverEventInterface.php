@@ -3,7 +3,7 @@
 /*
  * This file is part of the Elcodi package.
  *
- * Copyright (c) 2014-2016 Elcodi Networks S.L.
+ * Copyright (c) 2014-2015 Elcodi Networks S.L.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,38 +17,19 @@
 
 namespace Elcodi\Component\User\Event;
 
-use Symfony\Component\EventDispatcher\Event;
-
 use Elcodi\Component\User\Entity\Interfaces\AbstractUserInterface;
 
 /**
- * Class UserRegisterEvent.
+ * Event fired when a customer password is recovered
+ *
+ * This event send an email to customer
  */
-final class UserRegisterEvent extends Event
-    implements UserRegisterEventInterface
+interface PasswordRecoverEventInterface
 {
     /**
-     * @var AbstractUserInterface
+     * Get user
      *
-     * User
-     */
-    private $user;
-
-    /**
-     * Construct method.
-     *
-     * @param AbstractUserInterface $user User
-     */
-    public function __construct(AbstractUserInterface $user)
-    {
-        $this->user = $user;
-    }
-
-    /**
      * @return AbstractUserInterface User
      */
-    public function getUser()
-    {
-        return $this->user;
-    }
+    public function getUser();
 }

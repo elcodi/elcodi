@@ -26,6 +26,7 @@ use Elcodi\Component\Shipping\Entity\ShippingMethod;
  * Class ShippingCollectionEvent.
  */
 final class ShippingCollectionEvent extends Event
+    implements ShippingCollectionEventInterface
 {
     /**
      * @var CartInterface

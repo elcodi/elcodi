@@ -26,6 +26,7 @@ use Elcodi\Component\Payment\Entity\PaymentMethod;
  * Class PaymentCollectionEvent.
  */
 final class PaymentCollectionEvent extends Event
+    implements PaymentCollectionEventInterface
 {
     /**
      * @var CartInterface

@@ -27,6 +27,7 @@ use Elcodi\Component\Coupon\Entity\Interfaces\CouponInterface;
  * Class OrderCouponOnApplyEvent.
  */
 final class OrderCouponOnApplyEvent extends Event
+    implements OrderCouponOnApplyEventInterface
 {
     /**
      * @var OrderInterface

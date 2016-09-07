@@ -25,6 +25,7 @@ use Elcodi\Component\Media\Entity\Interfaces\ImageInterface;
  * Class ImageUploadedEvent.
  */
 final class ImageUploadedEvent extends Event
+    implements ImageUploadedEventInterface
 {
     /**
      * @var ImageInterface

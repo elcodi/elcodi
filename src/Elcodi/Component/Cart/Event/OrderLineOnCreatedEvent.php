@@ -27,6 +27,7 @@ use Elcodi\Component\Cart\Entity\Interfaces\OrderLineInterface;
  * Class OrderLineOnCreatedEvent.
  */
 final class OrderLineOnCreatedEvent extends Event
+    implements OrderLineOnCreatedEventInterface
 {
     /**
      * @var OrderInterface

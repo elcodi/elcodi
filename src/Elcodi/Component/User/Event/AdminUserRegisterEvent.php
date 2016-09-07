@@ -25,6 +25,7 @@ use Elcodi\Component\User\Entity\Interfaces\AdminUserInterface;
  * Class AdminUserRegisterEvent.
  */
 final class AdminUserRegisterEvent extends Event
+    implements AdminUserRegisterEventInterface
 {
     /**
      * @var AdminUserInterface

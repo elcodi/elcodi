@@ -26,6 +26,7 @@ use Elcodi\Component\StateTransitionMachine\Entity\StateLineStack;
  * Class InitializationEvent.
  */
 final class InitializationEvent extends Event
+    implements InitializationEventInterface
 {
     /**
      * @var stdClass

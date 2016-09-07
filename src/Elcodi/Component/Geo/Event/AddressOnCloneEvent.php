@@ -25,6 +25,7 @@ use Elcodi\Component\Geo\Entity\Interfaces\AddressInterface;
  * Class CartLineOnAddEvent.
  */
 final class AddressOnCloneEvent extends Event
+    implements AddressOnCloneEventInterface
 {
     /**
      * @var AddressInterface
